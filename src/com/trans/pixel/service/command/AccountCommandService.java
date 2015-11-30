@@ -6,7 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.UserBean;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
@@ -28,8 +30,17 @@ public class AccountCommandService extends BaseCommandService {
 		RequestRegisterCommand registerCommand = request.getRegisterCommand();
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		HeadInfo head = request.getHead();
+		int serverId = head.getServerId();
+		String account = head.getAccount();
 		
-		long userId = accountService.registerAccount(head.getServerId(), head.getAccount());
+		long userId = accountService.getUserId(serverId, account);
+		if (userId != 0) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_HAS_REGISTER);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		userId = accountService.registerAccount(serverId, account);
 		UserBean user = initUser(userId, head.getServerId(), head.getAccount(), registerCommand.getUserName());
 		userService.addNewUser(user);
 		super.buildUserInfo(userInfoBuilder, user);

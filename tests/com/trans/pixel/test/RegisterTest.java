@@ -27,6 +27,5 @@ public class RegisterTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
-        Assert.assertTrue(response.hasUserInfoCommand());
 	}
 }
