@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="war" name="Framework">
+
+    <property file="build.properties"/>
+
+    <property name="projectName" value="${targetName}" />
+    <!-- webapp路径 -->
+    <property name="webapp.dir" value="${basedir}/WebContent" />
+    <!-- 配置文件目录 -->
+    <property name="config.dir" value="${webapp.dir}/WEB-INF/classes/config" />
+    <!-- java源文件路径 -->
+    <property name="src.dir" value="${basedir}/src" />
+    <!-- 资源文件目录 -->    
+    <property name="res.dir" value="${basedir}/resources" />
+    <!-- jar 包路径 -->
+    <property name="lib.dir" value="${webapp.dir}/WEB-INF/lib" />
+    <!-- 生成在此目录中 -->
+    <property name="dist.dir" value="${basedir}/dist" />
+    <!-- 编译文件生成的目录 -->
+    <property name="build.dir" value="${basedir}/build" />
+    <!-- test 代码路径-->
+    <property name="test.dir" value="${basedir}/test"/>
+    <!-- test 测试报告目录-->
+    <property name="report.dir" value="${dist.dir}/report"/>
+    <!-- 将生成测试覆盖率报告时所生成的JUnit测试报告也统一放到report目录下 -->  
+    <property name="report.junit.dir" location="${report.dir}/junit"/>  
+    <!-- 存放测试覆盖率报告结果的目录,最后浏览该目录下的index.html就能看到报告了 -->  
+    <property name="report.result.dir" location="${report.dir}/result"/>  
+    <!-- 用于存放生成测试覆盖率报告时所需的被Cobertura标记过的应用代码class文件的目录 -->  
+    <property name="report.instrument.dir" location="${report.dir}/instrument"/>  
+
+
+ 
+    <!-- 初始化classpath -->
+    <path id="classpath">
+	<!-- tomcat lib -->
+	<fileset dir="${tomcat.lib}">
+	    <include name="**/*.jar" />
+	</fileset>
+        <!-- webapp/lib -->
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+    <!-- tomcat 远程发布-->
+    <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="classpath">
+    </taskdef>
+    <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" 
+	     classpathref="classpath">
+    </taskdef>
+ 
+    <!-- 配置Cobatura ant扩展任务(其实这个tasks.properties是位于lib/cobertura.jar中的) -->  
+    <taskdef classpathref="classpath" resource="tasks.properties"/> 
+ 
+    <!-- 删除之前的目录结构 -->
+    <target name="clear" description="清理旧文件">
+        <echo message="删除之前的目录结构" />
+        <delete dir="${build.dir}" />
+        <delete dir="${dist.dir}" />
+    </target>
+  
+    <!-- 创建目录结构 -->
+    <target name="creatDir" depends="clear" description="创建初始化目录结构">
+        <echo message="创建目录结构" />
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${dist.dir}" />
+	<mkdir dir="${report.dir}" />
+        <mkdir dir="${report.junit.dir}" />
+        <mkdir dir="${report.result.dir}" />
+        <mkdir dir="${report.instrument.dir}" />
+    </target>
+  
+    <!-- 编译java -->
+    <target name="build" depends="creatDir" description="编译java文件">
+        <echo message="编译java" />
+        <javac srcdir="${src.dir}" destdir="${build.dir}"
+            includeantruntime="false" nowarn="on" source="1.6" target="1.6"
+            deprecation="true" debug="true" encoding="UTF-8" >
+            <compilerarg line="-Xlint:unchecked" />
+            <classpath refid="classpath" />
+        </javac>
+	<!-- 拷贝src目录下文件到编译目录下，最终生成.class文件到WEB-INF/classes目录下 -->
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.xml" />
+                <include name="**/*.properties" />
+            </fileset>
+        </copy>
+	<!-- 拷贝resource目录下文件到编译目录下，最终拷贝到WEB-INF/classes目录下-->
+        <copy todir="${build.dir}">
+            <fileset dir="${res.dir}">
+                <include name="**/*.xml" />
+                <include name="**/*.properties" />
+            </fileset>
+        </copy>
+	<!-- 拷贝config目录下文件到编译目录下，最终拷贝到WEB-INF/classes/config目录下-->
+        <copy todir="${build.dir}/config">
+            <fileset dir="${config.dir}">
+                <include name="**/*.xml" />
+                <include name="**/*.properties" />
+            </fileset>
+        </copy>
+    </target>
+    
+    <!-- 生成测试覆盖率报告(期间会进行JUnit测试) -->  
+    <target name="report" depends="build">  
+        <echo message="测试报告" />
+        <cobertura-instrument todir="${report.instrument.dir}">  
+            <ignore regex="org.apache.log4j.*"/>   
+            <!-- 指定需要生成代码覆盖率报告的class -->  
+            <fileset dir="${build.dir}">
+                <include name="**/**.class"/>  
+                <exclude name="**/*Test.class"/>  
+            </fileset>  
+        </cobertura-instrument>  
+        <!-- printsummary表示是否打印基本信息,haltonfailure表示测试失败是否中止,fork必须启用,可设置为"on,true,yes"等-->  
+        <junit printsummary="on" haltonerror="on" haltonfailure="on" fork="on">  
+            <!-- instrumented classes should be before the original (uninstrumented) classes -->  
+            <classpath location="${report.instrument.dir}"/>  
+            <classpath location="${build.dir}"/>  
+            <classpath refid="classpath"/>  
+            <!-- 同时运行多个测试用例,todir用来存放测试的输出结果,如果不指定<formatter/>是不会输出结果到todir中的 -->  
+            <formatter type="plain"/>  
+            <batchtest todir="${report.junit.dir}">  
+                <fileset dir="${build.dir}">  
+                    <include name="**/*Test.class"/>  
+                </fileset>  
+            </batchtest>  
+        </junit>  
+        <!-- srcdir指定被测试的Java源码目录,destdir指定存放生成的报告的目录(默认就会生成html格式的报告) -->  
+        <cobertura-report srcdir="${src.dir}" destdir="${report.result.dir}"/>  
+        <!-- 最后将ser文件统一备份到报告目录中(默认的会在build.xml的同一目录下生成cobertura.ser) -->  
+        <move file="cobertura.ser" todir="${report.dir}"/>  
+    </target>
+
+
+    <!-- 打成war包, 名称默认为 项目名 -->
+    <target name="war" depends="build" description="打成war包">
+    <echo message="打成war包" />
+        <war warfile="${dist.dir}/${projectName}.war" webxml="${webapp.dir}/WEB-INF/web.xml">
+	    <!-- 导入页面文件 -->
+	    <fileset dir="${webapp.dir}" >
+		<include name="**/*.jsp" />
+		<include name="**/*.html" />
+	    </fileset>
+            <lib dir="${lib.dir}" />
+            <classes dir="${build.dir}" >
+                <exclude name="**/*Test.class" />
+            </classes>
+        </war>
+    </target>
+
+    <!--deploy-->
+    <target name="deploy" depends="war">
+	<echo message="发布war包"/>
+	<deploy url="${url1}" username="${username}" password="${password}" 
+		path="/${projectName}" war="${dist.dir}/${projectName}.war"/>
+
+    </target>
+    <!--undeploy-->
+    <target name="undeploy">
+	<echo message="删除服务器目标应用文件"/>
+	<undeploy url="${url1}" username="${username}"
+		 password="${password}" path="/${projectName}" />
+    </target>
+
+</project>
