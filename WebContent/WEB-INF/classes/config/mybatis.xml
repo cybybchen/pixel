@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- changes from the defaults for testing -->
+		<setting name="cacheEnabled" value="true" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+	</settings>
+	
+	<!-- 别名,方便在mapper.xml中引用-->
+	<typeAliases>
+		<typeAlias type="com.trans.pixel.model.UserBean"
+			alias="UserBean" />		
+	</typeAliases>
+
+	<mappers>
+<!-- 		<mapper resource="AccountMapper.xml" /> -->
+	</mappers>
+</configuration>

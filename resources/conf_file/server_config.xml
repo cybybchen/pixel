@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<server id="1" server_id="1" server_addr="localhost:8080/Lol450" status="1"/>
+	<server id="2" server_id="2" server_addr="localhost:8080/Lol450" status="1"/>
+</root>
