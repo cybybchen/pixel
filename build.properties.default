@@ -1,0 +1,6 @@
+tomcat.lib=/home/ybchen/android/eclipse.javaee/apache-tomcat-7.0.50/lib
+targetName=Lol450
+url1=http://www.transmension.com.cn:8080/manager/text
+username=ybchen
+password=chenyanbin
+
