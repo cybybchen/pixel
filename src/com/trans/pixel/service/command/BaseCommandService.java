@@ -20,10 +20,14 @@ public class BaseCommandService {
 		builder.setUser(userBuilder.build());
 	}
 	
-	public ErrorCommand buildErrorCommand(ErrorConst errorConst) {
+	protected ErrorCommand buildErrorCommand(ErrorConst errorConst) {
         ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
         erBuilder.setCode(String.valueOf(errorConst.getCode()));
         erBuilder.setMessage(errorConst.getMesssage());
         return erBuilder.build();
     }
+	
+	protected int calUserFighting() {
+		return 100;
+	}
 }

@@ -25,7 +25,7 @@ public class LoginCommandService extends BaseCommandService {
 	@Resource
     private UserService userService;
 	
-	public void login(RequestCommand request, Builder responseBuilder) {
+	public ResponseUserInfoCommand login(RequestCommand request, Builder responseBuilder) {
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		HeadInfo head = request.getHead();
 		
@@ -33,10 +33,10 @@ public class LoginCommandService extends BaseCommandService {
 		if (userId == 0) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
-            return ;
+            return null;
 		}
 		UserBean user = userService.getUser(userId);
 		super.buildUserInfo(userInfoBuilder, user);
-		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
+		return userInfoBuilder.build();
 	}
 }

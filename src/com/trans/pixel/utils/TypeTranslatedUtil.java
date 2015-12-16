@@ -1,5 +1,9 @@
 package com.trans.pixel.utils;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
+
 
 public class TypeTranslatedUtil {
 	public static int stringToInt(String str) {
@@ -41,4 +45,64 @@ public class TypeTranslatedUtil {
 		}
 		return result;
 	}
+	
+	public static JSONArray jsonGetArray(JSONObject json, String property) {
+		JSONArray value = null;
+		try {
+			value = json.getJSONArray(property);
+		} catch (JSONException e) {
+
+		}
+		return value;
+	}
+	
+	public static int jsonGetInt(JSONObject json, String property) {
+		int value = 0;
+		try {
+			value = json.getInt(property);
+		} catch (JSONException e) {
+
+		}
+		return value;
+	}
+	
+	public static long jsonGetLong(JSONObject json, String property) {
+		long value = 0;
+		try {
+			value = json.getLong(property);
+		} catch (JSONException e) {
+
+		}
+		return value;
+	}
+	
+	public static float jsonGetFloat(JSONObject json, String property) {
+		float value = .0f;
+		try {
+			value = (float) json.getDouble(property);
+		} catch (JSONException e) {
+
+		}
+		return value;
+	}
+	
+	public static String jsonGetString(JSONObject json, String property) {
+		String value = "";
+		try {
+			value = json.getString(property);
+		} catch (JSONException e) {
+
+		}
+		return value;
+	}  
+	
+	public static boolean jsonGetBoolean(JSONObject json, String property) {
+		boolean value = false;
+		try {
+			value = json.getBoolean(property);
+		} catch (JSONException e) {
+
+		}
+		return value;
+	} 
 }

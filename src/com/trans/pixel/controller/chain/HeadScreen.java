@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.trans.pixel.model.UserBean;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -67,6 +68,13 @@ public class HeadScreen extends RequestScreen {
 	@Override
 	protected boolean handleLoginCommand(RequestCommand cmd,
 			Builder responseBuilder) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLevelResultCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;
 	}

@@ -8,22 +8,28 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.UserBean;
 import com.trans.pixel.model.mapper.UserMapper;
+import com.trans.pixel.service.redis.UserRedisService;
 
 @Service
 public class UserService {
 	Logger log = LoggerFactory.getLogger(UserService.class);
 	
 	@Resource
+    private UserRedisService userRedisService;
+	@Resource
     private UserMapper userMapper;
 	
 	public UserBean getUser(long userId) {
     	log.info("The user id is: " + userId);
-    	UserBean user = userMapper.queryById(userId);
+    	UserBean user = userRedisService.getUserByUserId(userId);
+    	if (user == null)
+    		user = userMapper.queryById(userId);
         
         return user;
     }
 	
 	public int addNewUser(UserBean user) {
+		userRedisService.updateUser(user);
 		
 		return userMapper.addNewUser(user);
 	}

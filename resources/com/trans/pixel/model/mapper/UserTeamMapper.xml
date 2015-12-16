@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserTeamMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.UserTeamBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="mode" column="mode" />
+		<result property="record" column="record" />
+	</resultMap>
+	
+	<select id="selectUserTeam" resultMap="resultMap">
+		SELECT *
+		from user_team where user_id=#{userId} and mode=#{mode}
+	</select>
+	
+	<insert id="updateUserTeam" parameterType="com.trans.pixel.model.UserTeanBean">
+	    INSERT INTO user_team(user_id, mode, record)
+	    VALUES(#{userId}, #{mode}, #{record})
+	    ON 
+	    duplicate key update
+	    record=#{record}
+	</insert>
+	
+	<select id="selectUserTeamList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_team where user_id=#{userId}
+	</select>
+	
+</mapper>

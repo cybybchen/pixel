@@ -1,7 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;

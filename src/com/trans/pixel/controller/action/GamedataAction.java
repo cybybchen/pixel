@@ -31,13 +31,14 @@ public class GamedataAction {
 	private static final Logger logger = LoggerFactory.getLogger(GamedataAction.class);
 	private static final String CONTENT_TYPE = "application/octet-stream";
 	
+	private static long lastTime = System.currentTimeMillis();
+	private static long actions = 0;
+	private static long actionCost = 0;
 	@Resource
     @Qualifier("chainOfScreens")
     private ArrayList<RequestHandle> chainOfScreens;
 	
 	private RequestHandle genericErrorHandle = new GenericErrorHandle();
-
-//    private RequestHandle genericErrorHandle = new GenericErrorHandle();
 
     private PixelRequest httpcmd(HttpServletRequest request) throws IOException {
         InputStream in = request.getInputStream();
@@ -68,6 +69,8 @@ public class GamedataAction {
     @RequestMapping("/gamedata")
     @ResponseBody
     public void exec(HttpServletRequest request, HttpServletResponse response) {
+    	long startTime = System.currentTimeMillis();
+		long actionStartTime = System.currentTimeMillis();
         try {
             response.setContentType(CONTENT_TYPE);
             PixelRequest req = null;
@@ -95,6 +98,19 @@ public class GamedataAction {
         } catch (Throwable e) {
             logger.error("PIXEL_ERRO", e);
         }
+        
+        logger.debug("ybchen pixel test" + (System.currentTimeMillis() - startTime));
+		
+		actionCost += (System.currentTimeMillis()-actionStartTime);
+		actions++;
+		long now = System.currentTimeMillis();
+		if(now - lastTime > 5000)
+		{
+			logger.error("ybchen pixel Time: " + (now - lastTime) + " actions: " + actions + "average cost: " + actionCost / actions);
+			actionCost = 0;
+			actions = 0;
+			lastTime = now;
+		}
     }
 
 }

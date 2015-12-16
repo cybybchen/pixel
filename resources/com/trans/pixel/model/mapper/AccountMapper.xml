@@ -7,9 +7,6 @@
 	</select>
 	
 	<insert id="registerAccount" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.AccountBean">
-<!-- 		<selectKey resultType="long" order="AFTER" keyProperty="userid"> -->
-<!-- 			SELECT LAST_INSERT_ID() AS userid -->
-<!-- 		</selectKey> -->
 	    INSERT INTO account(server_id, account) 
 	    VALUES(#{serverId}, #{account})
 	</insert>

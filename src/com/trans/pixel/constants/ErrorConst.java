@@ -5,8 +5,8 @@ import java.util.Map;
 
 public enum ErrorConst {
 
-	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), CHEAT_RACETIME(1002, "成绩异常"), NOT_RACE_START(1003,
-            "比赛尚未开启"), WRONG_CAR_ID(1004, "使用车辆与赛道限制不符"), BIND_USER(1005, "账号已冻结"),WRONG_CONSUMBLE(1006,"模组异常"),
+	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
+            "准备时间不足"), WRONG_CAR_ID(1004, "使用车辆与赛道限制不符"), BIND_USER(1005, "账号已冻结"),WRONG_CONSUMBLE(1006,"模组异常"),
             USER_CAR_NOT_EXIST(1008, "该用户的车辆不存在"), NOT_ENOUGH_GOLD(1009, "金币不足");
 
     private final int code;
