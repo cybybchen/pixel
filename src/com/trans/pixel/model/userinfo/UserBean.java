@@ -1,4 +1,4 @@
-package com.trans.pixel.model;
+package com.trans.pixel.model.userinfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +19,7 @@ public class UserBean {
 	public int pointUnion = 0;
 	public int completeLevel = 0;
 	public int receiveNoticeId = 0;
+	public int lastLootTime = 0;
 	public long getId() {
 		return id;
 	}
@@ -97,6 +98,12 @@ public class UserBean {
 	public void setReceiveNoticeId(int receiveNoticeId) {
 		this.receiveNoticeId = receiveNoticeId;
 	}
+	public int getLastLootTime() {
+		return lastLootTime;
+	}
+	public void setLastLootTime(int lastLootTime) {
+		this.lastLootTime = lastLootTime;
+	}
 	public Map<String, String> toMap() {
 		Map<String, String> userMap = new HashMap<String, String>();
 		userMap.put(ID, "" + id);
@@ -112,6 +119,7 @@ public class UserBean {
 		userMap.put(POINT_UNION, "" + pointUnion);
 		userMap.put(COMPLETE_LEVEL, "" + completeLevel);
 		userMap.put(RECEIVE_NOTICE_ID, "" + receiveNoticeId);
+		userMap.put(LAST_LOOT_TIME, "" + lastLootTime);
 		
 		return userMap;
 	}
@@ -133,6 +141,7 @@ public class UserBean {
 		userBean.setPointUnion(TypeTranslatedUtil.stringToInt(userMap.get(POINT_UNION)));
 		userBean.setCompleteLevel(TypeTranslatedUtil.stringToInt(userMap.get(COMPLETE_LEVEL)));
 		userBean.setReceiveNoticeId(TypeTranslatedUtil.stringToInt(userMap.get(RECEIVE_NOTICE_ID)));
+		userBean.setLastLootTime(TypeTranslatedUtil.stringToInt(userMap.get(LAST_LOOT_TIME)));
 		
 		return userBean;
 	}
@@ -150,4 +159,5 @@ public class UserBean {
 	private final static String POINT_UNION = "point_union";
 	private final static String COMPLETE_LEVEL = "complete_level";
 	private final static String RECEIVE_NOTICE_ID = "receive_notice_id";
+	private final static String LAST_LOOT_TIME = "last_loot_time";
 }

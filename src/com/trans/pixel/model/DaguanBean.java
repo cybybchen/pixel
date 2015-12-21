@@ -1,5 +1,19 @@
 package com.trans.pixel.model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
+import com.trans.pixel.constants.DirConst;
+import com.trans.pixel.utils.TypeTranslatedUtil;
+
 import net.sf.json.JSONObject;
 
 public class DaguanBean {
@@ -72,6 +86,38 @@ public class DaguanBean {
 		return daguan;
 	}
 	
+	public static List<DaguanBean> xmlParse() {
+		Logger logger = Logger.getLogger(DaguanBean.class);
+		List<DaguanBean> list = new ArrayList<DaguanBean>();
+		String fileName = FILE_NAME;
+		try {
+			String filePath = DirConst.getConfigXmlPath(fileName);
+			SAXReader reader = new SAXReader();
+			InputStream inStream = new FileInputStream(new File(filePath));
+			Document doc = reader.read(inStream);
+			// 获取根节点
+			Element root = doc.getRootElement();
+			List<?> rootList = root.elements();
+			for (int i = 0; i < rootList.size(); i++) {
+				DaguanBean dg = new DaguanBean();
+				Element levelElement = (Element) rootList.get(i);
+				dg.setId(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(ID)));
+				dg.setName(levelElement.attributeValue(NAME));
+				dg.setZhanli(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(ZHANLI)));
+				dg.setNandu(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(NANDU)));
+				dg.setGold(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(GOLD)));
+				dg.setExperience(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(EXPERIENCE)));
+				
+				list.add(dg);
+			}
+		} catch (Exception e) {
+			logger.error("parse " + fileName + " failed");
+		}
+
+		return list;
+	}
+	
+	private final static String FILE_NAME = "lol_daguan.xml";
 	private final static String ID = "id";
 	private final static String NAME = "name";
 	private final static String ZHANLI = "zhanli";

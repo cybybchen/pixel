@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserEquipMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserEquipBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="equipId" column="equip_id" />
+		<result property="equipCount" column="equip_count" />
+	</resultMap>
+	
+	<select id="selectUserEquip" resultMap="resultMap">
+		SELECT *
+		from user_equip where user_id=#{userId} and equip_id=#{equipId}
+	</select>
+	
+	<insert id="updateUserEquip" parameterType="com.trans.pixel.model.userinfo.UserEquipBean">
+	    INSERT INTO user_Equip(user_id, equip_id, equip_count)
+	    VALUES(#{userId}, #{equipId}, #{equipCount})
+	    ON 
+	    duplicate key update
+	    equip_count=#{equipCount}
+	</insert>
+	
+	<select id="selectUserEquipList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_equip where user_id=#{userId}
+	</select>
+	
+</mapper>

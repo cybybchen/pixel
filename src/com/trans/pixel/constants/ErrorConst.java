@@ -3,20 +3,22 @@ package com.trans.pixel.constants;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum ErrorConst {
+public enum ErrorConst implements ResultConst {
 
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
-            "准备时间不足"), WRONG_CAR_ID(1004, "使用车辆与赛道限制不符"), BIND_USER(1005, "账号已冻结"),WRONG_CONSUMBLE(1006,"模组异常"),
-            USER_CAR_NOT_EXIST(1008, "该用户的车辆不存在"), NOT_ENOUGH_GOLD(1009, "金币不足");
+            "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), NOT_ENGHOU_EXP(1006, "升级所需经验不足"),
+            NOT_ENGHOU_EQUIP(1007, "升级所需装备不足"), EQUIP_HAS_ADD(1008, "已添加过"), SERVER_ERROR(1100, "服务器异常错误");
 
     private final int code;
 
     private final String message;
 
+    @Override
     public int getCode() {
         return code;
     }
 
+    @Override
     public String getMesssage() {
         return message;
     }
@@ -33,7 +35,8 @@ public enum ErrorConst {
         }
     }
 
-    public static ErrorConst getErrorCode(int code) {
+    @Override
+    public ErrorConst getErrorCode(int code) {
         return map.get(code);
     }
 

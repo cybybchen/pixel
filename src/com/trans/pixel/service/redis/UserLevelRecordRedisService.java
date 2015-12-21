@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.UserLevelRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelRecordBean;
 
 @Repository
 public class UserLevelRecordRedisService {

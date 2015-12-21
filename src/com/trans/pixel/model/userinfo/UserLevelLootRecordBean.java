@@ -1,4 +1,4 @@
-package com.trans.pixel.model;
+package com.trans.pixel.model.userinfo;
 
 import java.util.ArrayList;
 import java.util.List;

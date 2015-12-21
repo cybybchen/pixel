@@ -97,7 +97,7 @@ public class XiaoguanBean {
 	}
 	
 	public static List<XiaoguanBean> xmlParse(int diff) {
-		Logger logger = Logger.getLogger(WinBean.class);
+		Logger logger = Logger.getLogger(XiaoguanBean.class);
 		List<XiaoguanBean> list = new ArrayList<XiaoguanBean>();
 		String fileName = FILE_NAME_PREFIX + diff + ".xml";
 		try {

@@ -1,4 +1,4 @@
-package com.trans.pixel.model;
+package com.trans.pixel.model.userinfo;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Map;
 
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserLevelRecordBean {

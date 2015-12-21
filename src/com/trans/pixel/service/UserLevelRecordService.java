@@ -5,9 +5,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LevelConst;
-import com.trans.pixel.model.UserLevelRecordBean;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.mapper.UserLevelRecordMapper;
+import com.trans.pixel.model.userinfo.UserLevelRecordBean;
 import com.trans.pixel.service.redis.UserLevelRecordRedisService;
 
 @Service

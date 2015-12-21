@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.UserTeamBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 
 @Repository
 public class UserTeamRedisService {

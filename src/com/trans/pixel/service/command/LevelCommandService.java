@@ -9,10 +9,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.UserBean;
-import com.trans.pixel.model.UserLevelRecordBean;
 import com.trans.pixel.model.WinBean;
+import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelRecordBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -71,7 +72,7 @@ public class LevelCommandService extends BaseCommandService {
 		}
 		
 		userLevelRecord = userLevelRecordService.updateUserLevelRecord(levelId, userLevelRecord);
-		userLevelRecord.setLastLevelResultTime((int)(System.currentTimeMillis() / 1000));
+		userLevelRecord.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userLevelRecordService.updateUserLevelRecord(userLevelRecord);
 		WinBean winBean = winService.getWinByLevelId(levelId);
 		rewardService.doRewards(user, winBean.getRewardList());

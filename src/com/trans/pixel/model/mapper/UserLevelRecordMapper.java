@@ -1,6 +1,6 @@
 package com.trans.pixel.model.mapper;
 
-import com.trans.pixel.model.UserLevelRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelRecordBean;
 
 public interface UserLevelRecordMapper {
 	public UserLevelRecordBean selectUserLevelRecord(long userId);

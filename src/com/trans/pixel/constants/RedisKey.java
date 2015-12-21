@@ -16,6 +16,9 @@ public class RedisKey {
 	public final static String LEVEL_KEY = "level";
 	public static final String LEVEL_DIFF_PREDIX = "level_diff_"; 
 	
+	//daguan redis
+	public static final String DAGUAN_KEY = "daguan";
+	
 	//user level record redis
 	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_record_";
 	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_level_loot_record_";
@@ -28,4 +31,16 @@ public class RedisKey {
 	
 	//loot redis
 	public static final String LOOT_LEVEL_KEY = "loot_level_key";
+	
+	//user hero redis
+	public static final String USER_HERO_PREFIX = "user_hero_";
+	
+	//hero upgrade redis
+	public static final String HERO_UPGRADE_LEVEL_key = "hero_upgrade_level_key";
+	
+	//hero redis
+	public static final String HERO_KEY = "hero_key";
+	
+	//user equip redis
+	public static final String USER_EQUIP_PREFIX = "user_equip_";
 }

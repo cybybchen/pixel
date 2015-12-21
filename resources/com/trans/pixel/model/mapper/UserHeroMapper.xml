@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserHeroMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserHeroBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="heroId" column="hero_id" />
+		<result property="heroInfo" column="hero_info" />
+	</resultMap>
+	
+	<select id="selectUserHero" resultMap="resultMap">
+		SELECT *
+		from user_hero where user_id=#{userId} and hero_id=#{heroId}
+	</select>
+	
+	<insert id="updateUserHero" parameterType="com.trans.pixel.model.userinfo.UserHeroBean">
+	    INSERT INTO user_hero(user_id, hero_id, hero_info)
+	    VALUES(#{userId}, #{heroId}, #{heroInfo})
+	    ON 
+	    duplicate key update
+	    hero_info=#{heroInfo}
+	</insert>
+	
+	<select id="selectUserHeroList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_hero where user_id=#{userId}
+	</select>
+	
+</mapper>

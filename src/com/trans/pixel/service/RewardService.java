@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.UserBean;
-import com.trans.pixel.model.UserLevelLootRecordBean;
+import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelLootRecordBean;
 
 @Service
 public class RewardService {

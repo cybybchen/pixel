@@ -9,8 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LevelConst;
-import com.trans.pixel.model.UserLevelRecordBean;
+import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.XiaoguanBean;
+import com.trans.pixel.model.userinfo.UserLevelRecordBean;
 import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
@@ -128,11 +129,32 @@ public class LevelService {
 		return xiaoguan;
 	}
 	
+	public DaguanBean getDaguan(int levelId) {
+		XiaoguanBean xg = getXiaoguan(levelId);
+		if (xg == null)
+			return null;
+		
+		DaguanBean dg = levelRedisService.getDaguanById(xg.getDaguan());
+		if (dg == null) {
+			parseDaguanAndSave();
+			dg = levelRedisService.getDaguanById(xg.getDaguan());
+		}
+		
+		return dg;
+	}
+	
 	private void parseAndSaveConfig(int diff) {
 		List<XiaoguanBean> xiaoguanList = XiaoguanBean.xmlParse(diff);
 		if (xiaoguanList != null && xiaoguanList.size() != 0) {
 			levelRedisService.setXiaoguanList(xiaoguanList);
 			levelRedisService.setXiaoguanListByDiff(xiaoguanList, diff);
+		}
+	}
+	
+	private void parseDaguanAndSave() {
+		List<DaguanBean> dgList = DaguanBean.xmlParse();
+		if (dgList != null && dgList.size() != 0) {
+			levelRedisService.setDaguanList(dgList);
 		}
 	}
 }

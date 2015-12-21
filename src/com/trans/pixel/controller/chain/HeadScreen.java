@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.trans.pixel.model.UserBean;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;

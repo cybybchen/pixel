@@ -3274,6 +3274,1601 @@ public final class Commands {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.HeadInfo)
   }
 
+  public interface HeroInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 infoId = 1;
+    /**
+     * <code>required int32 infoId = 1;</code>
+     */
+    boolean hasInfoId();
+    /**
+     * <code>required int32 infoId = 1;</code>
+     */
+    int getInfoId();
+
+    // optional int32 level = 2;
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    int getLevel();
+
+    // optional int32 starLevel = 3;
+    /**
+     * <code>optional int32 starLevel = 3;</code>
+     */
+    boolean hasStarLevel();
+    /**
+     * <code>optional int32 starLevel = 3;</code>
+     */
+    int getStarLevel();
+
+    // optional int32 equipLevel = 4;
+    /**
+     * <code>optional int32 equipLevel = 4;</code>
+     */
+    boolean hasEquipLevel();
+    /**
+     * <code>optional int32 equipLevel = 4;</code>
+     */
+    int getEquipLevel();
+
+    // optional int32 equipInfo = 5;
+    /**
+     * <code>optional int32 equipInfo = 5;</code>
+     */
+    boolean hasEquipInfo();
+    /**
+     * <code>optional int32 equipInfo = 5;</code>
+     */
+    int getEquipInfo();
+
+    // repeated .com.trans.pixel.protoc.SkillInfo skill = 6;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> 
+        getSkillList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    com.trans.pixel.protoc.Commands.SkillInfo getSkill(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    int getSkillCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> 
+        getSkillOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    com.trans.pixel.protoc.Commands.SkillInfoOrBuilder getSkillOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.HeroInfo}
+   */
+  public static final class HeroInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements HeroInfoOrBuilder {
+    // Use HeroInfo.newBuilder() to construct.
+    private HeroInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HeroInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HeroInfo defaultInstance;
+    public static HeroInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HeroInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HeroInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              infoId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              level_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              starLevel_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              equipLevel_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              equipInfo_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                skill_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.SkillInfo>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              skill_.add(input.readMessage(com.trans.pixel.protoc.Commands.SkillInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          skill_ = java.util.Collections.unmodifiableList(skill_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_HeroInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.HeroInfo.class, com.trans.pixel.protoc.Commands.HeroInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HeroInfo> PARSER =
+        new com.google.protobuf.AbstractParser<HeroInfo>() {
+      public HeroInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HeroInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HeroInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 infoId = 1;
+    public static final int INFOID_FIELD_NUMBER = 1;
+    private int infoId_;
+    /**
+     * <code>required int32 infoId = 1;</code>
+     */
+    public boolean hasInfoId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 infoId = 1;</code>
+     */
+    public int getInfoId() {
+      return infoId_;
+    }
+
+    // optional int32 level = 2;
+    public static final int LEVEL_FIELD_NUMBER = 2;
+    private int level_;
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // optional int32 starLevel = 3;
+    public static final int STARLEVEL_FIELD_NUMBER = 3;
+    private int starLevel_;
+    /**
+     * <code>optional int32 starLevel = 3;</code>
+     */
+    public boolean hasStarLevel() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 starLevel = 3;</code>
+     */
+    public int getStarLevel() {
+      return starLevel_;
+    }
+
+    // optional int32 equipLevel = 4;
+    public static final int EQUIPLEVEL_FIELD_NUMBER = 4;
+    private int equipLevel_;
+    /**
+     * <code>optional int32 equipLevel = 4;</code>
+     */
+    public boolean hasEquipLevel() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 equipLevel = 4;</code>
+     */
+    public int getEquipLevel() {
+      return equipLevel_;
+    }
+
+    // optional int32 equipInfo = 5;
+    public static final int EQUIPINFO_FIELD_NUMBER = 5;
+    private int equipInfo_;
+    /**
+     * <code>optional int32 equipInfo = 5;</code>
+     */
+    public boolean hasEquipInfo() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 equipInfo = 5;</code>
+     */
+    public int getEquipInfo() {
+      return equipInfo_;
+    }
+
+    // repeated .com.trans.pixel.protoc.SkillInfo skill = 6;
+    public static final int SKILL_FIELD_NUMBER = 6;
+    private java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> skill_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> getSkillList() {
+      return skill_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> 
+        getSkillOrBuilderList() {
+      return skill_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    public int getSkillCount() {
+      return skill_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    public com.trans.pixel.protoc.Commands.SkillInfo getSkill(int index) {
+      return skill_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     */
+    public com.trans.pixel.protoc.Commands.SkillInfoOrBuilder getSkillOrBuilder(
+        int index) {
+      return skill_.get(index);
+    }
+
+    private void initFields() {
+      infoId_ = 0;
+      level_ = 0;
+      starLevel_ = 0;
+      equipLevel_ = 0;
+      equipInfo_ = 0;
+      skill_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasInfoId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getSkillCount(); i++) {
+        if (!getSkill(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, infoId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, level_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, starLevel_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, equipLevel_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, equipInfo_);
+      }
+      for (int i = 0; i < skill_.size(); i++) {
+        output.writeMessage(6, skill_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, infoId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, level_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, starLevel_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, equipLevel_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, equipInfo_);
+      }
+      for (int i = 0; i < skill_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, skill_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.HeroInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.HeroInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.HeroInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.HeroInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_HeroInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.HeroInfo.class, com.trans.pixel.protoc.Commands.HeroInfo.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.HeroInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSkillFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        infoId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        starLevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        equipLevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        equipInfo_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (skillBuilder_ == null) {
+          skill_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+        } else {
+          skillBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_HeroInfo_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.HeroInfo getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.HeroInfo.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.HeroInfo build() {
+        com.trans.pixel.protoc.Commands.HeroInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.HeroInfo buildPartial() {
+        com.trans.pixel.protoc.Commands.HeroInfo result = new com.trans.pixel.protoc.Commands.HeroInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.infoId_ = infoId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.starLevel_ = starLevel_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.equipLevel_ = equipLevel_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.equipInfo_ = equipInfo_;
+        if (skillBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+            skill_ = java.util.Collections.unmodifiableList(skill_);
+            bitField0_ = (bitField0_ & ~0x00000020);
+          }
+          result.skill_ = skill_;
+        } else {
+          result.skill_ = skillBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.HeroInfo) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.HeroInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.HeroInfo other) {
+        if (other == com.trans.pixel.protoc.Commands.HeroInfo.getDefaultInstance()) return this;
+        if (other.hasInfoId()) {
+          setInfoId(other.getInfoId());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasStarLevel()) {
+          setStarLevel(other.getStarLevel());
+        }
+        if (other.hasEquipLevel()) {
+          setEquipLevel(other.getEquipLevel());
+        }
+        if (other.hasEquipInfo()) {
+          setEquipInfo(other.getEquipInfo());
+        }
+        if (skillBuilder_ == null) {
+          if (!other.skill_.isEmpty()) {
+            if (skill_.isEmpty()) {
+              skill_ = other.skill_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+            } else {
+              ensureSkillIsMutable();
+              skill_.addAll(other.skill_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.skill_.isEmpty()) {
+            if (skillBuilder_.isEmpty()) {
+              skillBuilder_.dispose();
+              skillBuilder_ = null;
+              skill_ = other.skill_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+              skillBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSkillFieldBuilder() : null;
+            } else {
+              skillBuilder_.addAllMessages(other.skill_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasInfoId()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getSkillCount(); i++) {
+          if (!getSkill(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.HeroInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.HeroInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 infoId = 1;
+      private int infoId_ ;
+      /**
+       * <code>required int32 infoId = 1;</code>
+       */
+      public boolean hasInfoId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 infoId = 1;</code>
+       */
+      public int getInfoId() {
+        return infoId_;
+      }
+      /**
+       * <code>required int32 infoId = 1;</code>
+       */
+      public Builder setInfoId(int value) {
+        bitField0_ |= 0x00000001;
+        infoId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 infoId = 1;</code>
+       */
+      public Builder clearInfoId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        infoId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 2;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000002;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 starLevel = 3;
+      private int starLevel_ ;
+      /**
+       * <code>optional int32 starLevel = 3;</code>
+       */
+      public boolean hasStarLevel() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 starLevel = 3;</code>
+       */
+      public int getStarLevel() {
+        return starLevel_;
+      }
+      /**
+       * <code>optional int32 starLevel = 3;</code>
+       */
+      public Builder setStarLevel(int value) {
+        bitField0_ |= 0x00000004;
+        starLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 starLevel = 3;</code>
+       */
+      public Builder clearStarLevel() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        starLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 equipLevel = 4;
+      private int equipLevel_ ;
+      /**
+       * <code>optional int32 equipLevel = 4;</code>
+       */
+      public boolean hasEquipLevel() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 equipLevel = 4;</code>
+       */
+      public int getEquipLevel() {
+        return equipLevel_;
+      }
+      /**
+       * <code>optional int32 equipLevel = 4;</code>
+       */
+      public Builder setEquipLevel(int value) {
+        bitField0_ |= 0x00000008;
+        equipLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 equipLevel = 4;</code>
+       */
+      public Builder clearEquipLevel() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        equipLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 equipInfo = 5;
+      private int equipInfo_ ;
+      /**
+       * <code>optional int32 equipInfo = 5;</code>
+       */
+      public boolean hasEquipInfo() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 equipInfo = 5;</code>
+       */
+      public int getEquipInfo() {
+        return equipInfo_;
+      }
+      /**
+       * <code>optional int32 equipInfo = 5;</code>
+       */
+      public Builder setEquipInfo(int value) {
+        bitField0_ |= 0x00000010;
+        equipInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 equipInfo = 5;</code>
+       */
+      public Builder clearEquipInfo() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        equipInfo_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.SkillInfo skill = 6;
+      private java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> skill_ =
+        java.util.Collections.emptyList();
+      private void ensureSkillIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          skill_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.SkillInfo>(skill_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Commands.SkillInfo, com.trans.pixel.protoc.Commands.SkillInfo.Builder, com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> skillBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> getSkillList() {
+        if (skillBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(skill_);
+        } else {
+          return skillBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public int getSkillCount() {
+        if (skillBuilder_ == null) {
+          return skill_.size();
+        } else {
+          return skillBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public com.trans.pixel.protoc.Commands.SkillInfo getSkill(int index) {
+        if (skillBuilder_ == null) {
+          return skill_.get(index);
+        } else {
+          return skillBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder setSkill(
+          int index, com.trans.pixel.protoc.Commands.SkillInfo value) {
+        if (skillBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillIsMutable();
+          skill_.set(index, value);
+          onChanged();
+        } else {
+          skillBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder setSkill(
+          int index, com.trans.pixel.protoc.Commands.SkillInfo.Builder builderForValue) {
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder addSkill(com.trans.pixel.protoc.Commands.SkillInfo value) {
+        if (skillBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillIsMutable();
+          skill_.add(value);
+          onChanged();
+        } else {
+          skillBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder addSkill(
+          int index, com.trans.pixel.protoc.Commands.SkillInfo value) {
+        if (skillBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillIsMutable();
+          skill_.add(index, value);
+          onChanged();
+        } else {
+          skillBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder addSkill(
+          com.trans.pixel.protoc.Commands.SkillInfo.Builder builderForValue) {
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.add(builderForValue.build());
+          onChanged();
+        } else {
+          skillBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder addSkill(
+          int index, com.trans.pixel.protoc.Commands.SkillInfo.Builder builderForValue) {
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder addAllSkill(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.SkillInfo> values) {
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          super.addAll(values, skill_);
+          onChanged();
+        } else {
+          skillBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder clearSkill() {
+        if (skillBuilder_ == null) {
+          skill_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+          onChanged();
+        } else {
+          skillBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public Builder removeSkill(int index) {
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.remove(index);
+          onChanged();
+        } else {
+          skillBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public com.trans.pixel.protoc.Commands.SkillInfo.Builder getSkillBuilder(
+          int index) {
+        return getSkillFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public com.trans.pixel.protoc.Commands.SkillInfoOrBuilder getSkillOrBuilder(
+          int index) {
+        if (skillBuilder_ == null) {
+          return skill_.get(index);  } else {
+          return skillBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> 
+           getSkillOrBuilderList() {
+        if (skillBuilder_ != null) {
+          return skillBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(skill_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public com.trans.pixel.protoc.Commands.SkillInfo.Builder addSkillBuilder() {
+        return getSkillFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Commands.SkillInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public com.trans.pixel.protoc.Commands.SkillInfo.Builder addSkillBuilder(
+          int index) {
+        return getSkillFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Commands.SkillInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Commands.SkillInfo.Builder> 
+           getSkillBuilderList() {
+        return getSkillFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Commands.SkillInfo, com.trans.pixel.protoc.Commands.SkillInfo.Builder, com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> 
+          getSkillFieldBuilder() {
+        if (skillBuilder_ == null) {
+          skillBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Commands.SkillInfo, com.trans.pixel.protoc.Commands.SkillInfo.Builder, com.trans.pixel.protoc.Commands.SkillInfoOrBuilder>(
+                  skill_,
+                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  getParentForChildren(),
+                  isClean());
+          skill_ = null;
+        }
+        return skillBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.HeroInfo)
+    }
+
+    static {
+      defaultInstance = new HeroInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.HeroInfo)
+  }
+
+  public interface SkillInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 skillId = 1;
+    /**
+     * <code>required int32 skillId = 1;</code>
+     */
+    boolean hasSkillId();
+    /**
+     * <code>required int32 skillId = 1;</code>
+     */
+    int getSkillId();
+
+    // required int32 skillLevel = 2;
+    /**
+     * <code>required int32 skillLevel = 2;</code>
+     */
+    boolean hasSkillLevel();
+    /**
+     * <code>required int32 skillLevel = 2;</code>
+     */
+    int getSkillLevel();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.SkillInfo}
+   */
+  public static final class SkillInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements SkillInfoOrBuilder {
+    // Use SkillInfo.newBuilder() to construct.
+    private SkillInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SkillInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SkillInfo defaultInstance;
+    public static SkillInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SkillInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SkillInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              skillId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              skillLevel_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_SkillInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_SkillInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.SkillInfo.class, com.trans.pixel.protoc.Commands.SkillInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SkillInfo> PARSER =
+        new com.google.protobuf.AbstractParser<SkillInfo>() {
+      public SkillInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SkillInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SkillInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 skillId = 1;
+    public static final int SKILLID_FIELD_NUMBER = 1;
+    private int skillId_;
+    /**
+     * <code>required int32 skillId = 1;</code>
+     */
+    public boolean hasSkillId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 skillId = 1;</code>
+     */
+    public int getSkillId() {
+      return skillId_;
+    }
+
+    // required int32 skillLevel = 2;
+    public static final int SKILLLEVEL_FIELD_NUMBER = 2;
+    private int skillLevel_;
+    /**
+     * <code>required int32 skillLevel = 2;</code>
+     */
+    public boolean hasSkillLevel() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 skillLevel = 2;</code>
+     */
+    public int getSkillLevel() {
+      return skillLevel_;
+    }
+
+    private void initFields() {
+      skillId_ = 0;
+      skillLevel_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasSkillId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSkillLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, skillId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, skillLevel_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, skillId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, skillLevel_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.SkillInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.SkillInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.SkillInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.SkillInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_SkillInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_SkillInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.SkillInfo.class, com.trans.pixel.protoc.Commands.SkillInfo.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.SkillInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        skillId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        skillLevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_SkillInfo_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.SkillInfo getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.SkillInfo.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.SkillInfo build() {
+        com.trans.pixel.protoc.Commands.SkillInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.SkillInfo buildPartial() {
+        com.trans.pixel.protoc.Commands.SkillInfo result = new com.trans.pixel.protoc.Commands.SkillInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.skillId_ = skillId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.skillLevel_ = skillLevel_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.SkillInfo) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.SkillInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.SkillInfo other) {
+        if (other == com.trans.pixel.protoc.Commands.SkillInfo.getDefaultInstance()) return this;
+        if (other.hasSkillId()) {
+          setSkillId(other.getSkillId());
+        }
+        if (other.hasSkillLevel()) {
+          setSkillLevel(other.getSkillLevel());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSkillId()) {
+          
+          return false;
+        }
+        if (!hasSkillLevel()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.SkillInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.SkillInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 skillId = 1;
+      private int skillId_ ;
+      /**
+       * <code>required int32 skillId = 1;</code>
+       */
+      public boolean hasSkillId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 skillId = 1;</code>
+       */
+      public int getSkillId() {
+        return skillId_;
+      }
+      /**
+       * <code>required int32 skillId = 1;</code>
+       */
+      public Builder setSkillId(int value) {
+        bitField0_ |= 0x00000001;
+        skillId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 skillId = 1;</code>
+       */
+      public Builder clearSkillId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        skillId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 skillLevel = 2;
+      private int skillLevel_ ;
+      /**
+       * <code>required int32 skillLevel = 2;</code>
+       */
+      public boolean hasSkillLevel() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 skillLevel = 2;</code>
+       */
+      public int getSkillLevel() {
+        return skillLevel_;
+      }
+      /**
+       * <code>required int32 skillLevel = 2;</code>
+       */
+      public Builder setSkillLevel(int value) {
+        bitField0_ |= 0x00000002;
+        skillLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 skillLevel = 2;</code>
+       */
+      public Builder clearSkillLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        skillLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.SkillInfo)
+    }
+
+    static {
+      defaultInstance = new SkillInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.SkillInfo)
+  }
+
   public interface ErrorCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -10550,6 +12145,2673 @@ public final class Commands {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestUpdateTeamCommand)
   }
 
+  public interface RequestHeroLevelUpCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 levelUpType = 1;
+    /**
+     * <code>required int32 levelUpType = 1;</code>
+     *
+     * <pre>
+     *1:level 2:star 3:equip
+     * </pre>
+     */
+    boolean hasLevelUpType();
+    /**
+     * <code>required int32 levelUpType = 1;</code>
+     *
+     * <pre>
+     *1:level 2:star 3:equip
+     * </pre>
+     */
+    int getLevelUpType();
+
+    // required int32 heroId = 2;
+    /**
+     * <code>required int32 heroId = 2;</code>
+     */
+    boolean hasHeroId();
+    /**
+     * <code>required int32 heroId = 2;</code>
+     */
+    int getHeroId();
+
+    // required int32 infoId = 3;
+    /**
+     * <code>required int32 infoId = 3;</code>
+     */
+    boolean hasInfoId();
+    /**
+     * <code>required int32 infoId = 3;</code>
+     */
+    int getInfoId();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestHeroLevelUpCommand}
+   */
+  public static final class RequestHeroLevelUpCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestHeroLevelUpCommandOrBuilder {
+    // Use RequestHeroLevelUpCommand.newBuilder() to construct.
+    private RequestHeroLevelUpCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestHeroLevelUpCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestHeroLevelUpCommand defaultInstance;
+    public static RequestHeroLevelUpCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestHeroLevelUpCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestHeroLevelUpCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              levelUpType_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              heroId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              infoId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.class, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestHeroLevelUpCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestHeroLevelUpCommand>() {
+      public RequestHeroLevelUpCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestHeroLevelUpCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestHeroLevelUpCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 levelUpType = 1;
+    public static final int LEVELUPTYPE_FIELD_NUMBER = 1;
+    private int levelUpType_;
+    /**
+     * <code>required int32 levelUpType = 1;</code>
+     *
+     * <pre>
+     *1:level 2:star 3:equip
+     * </pre>
+     */
+    public boolean hasLevelUpType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 levelUpType = 1;</code>
+     *
+     * <pre>
+     *1:level 2:star 3:equip
+     * </pre>
+     */
+    public int getLevelUpType() {
+      return levelUpType_;
+    }
+
+    // required int32 heroId = 2;
+    public static final int HEROID_FIELD_NUMBER = 2;
+    private int heroId_;
+    /**
+     * <code>required int32 heroId = 2;</code>
+     */
+    public boolean hasHeroId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 heroId = 2;</code>
+     */
+    public int getHeroId() {
+      return heroId_;
+    }
+
+    // required int32 infoId = 3;
+    public static final int INFOID_FIELD_NUMBER = 3;
+    private int infoId_;
+    /**
+     * <code>required int32 infoId = 3;</code>
+     */
+    public boolean hasInfoId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 infoId = 3;</code>
+     */
+    public int getInfoId() {
+      return infoId_;
+    }
+
+    private void initFields() {
+      levelUpType_ = 0;
+      heroId_ = 0;
+      infoId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasLevelUpType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHeroId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasInfoId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, levelUpType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, heroId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, infoId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, levelUpType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, heroId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, infoId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestHeroLevelUpCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.class, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        levelUpType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        heroId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        infoId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand build() {
+        com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand buildPartial() {
+        com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand result = new com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.levelUpType_ = levelUpType_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.heroId_ = heroId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.infoId_ = infoId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand other) {
+        if (other == com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.getDefaultInstance()) return this;
+        if (other.hasLevelUpType()) {
+          setLevelUpType(other.getLevelUpType());
+        }
+        if (other.hasHeroId()) {
+          setHeroId(other.getHeroId());
+        }
+        if (other.hasInfoId()) {
+          setInfoId(other.getInfoId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasLevelUpType()) {
+          
+          return false;
+        }
+        if (!hasHeroId()) {
+          
+          return false;
+        }
+        if (!hasInfoId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 levelUpType = 1;
+      private int levelUpType_ ;
+      /**
+       * <code>required int32 levelUpType = 1;</code>
+       *
+       * <pre>
+       *1:level 2:star 3:equip
+       * </pre>
+       */
+      public boolean hasLevelUpType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 levelUpType = 1;</code>
+       *
+       * <pre>
+       *1:level 2:star 3:equip
+       * </pre>
+       */
+      public int getLevelUpType() {
+        return levelUpType_;
+      }
+      /**
+       * <code>required int32 levelUpType = 1;</code>
+       *
+       * <pre>
+       *1:level 2:star 3:equip
+       * </pre>
+       */
+      public Builder setLevelUpType(int value) {
+        bitField0_ |= 0x00000001;
+        levelUpType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 levelUpType = 1;</code>
+       *
+       * <pre>
+       *1:level 2:star 3:equip
+       * </pre>
+       */
+      public Builder clearLevelUpType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        levelUpType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 heroId = 2;
+      private int heroId_ ;
+      /**
+       * <code>required int32 heroId = 2;</code>
+       */
+      public boolean hasHeroId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 heroId = 2;</code>
+       */
+      public int getHeroId() {
+        return heroId_;
+      }
+      /**
+       * <code>required int32 heroId = 2;</code>
+       */
+      public Builder setHeroId(int value) {
+        bitField0_ |= 0x00000002;
+        heroId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 heroId = 2;</code>
+       */
+      public Builder clearHeroId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        heroId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 infoId = 3;
+      private int infoId_ ;
+      /**
+       * <code>required int32 infoId = 3;</code>
+       */
+      public boolean hasInfoId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 infoId = 3;</code>
+       */
+      public int getInfoId() {
+        return infoId_;
+      }
+      /**
+       * <code>required int32 infoId = 3;</code>
+       */
+      public Builder setInfoId(int value) {
+        bitField0_ |= 0x00000004;
+        infoId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 infoId = 3;</code>
+       */
+      public Builder clearInfoId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        infoId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestHeroLevelUpCommand)
+    }
+
+    static {
+      defaultInstance = new RequestHeroLevelUpCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestHeroLevelUpCommand)
+  }
+
+  public interface ResponseHeroResultCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 heroId = 1;
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    boolean hasHeroId();
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    int getHeroId();
+
+    // required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;
+    /**
+     * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+     */
+    boolean hasHeroInfo();
+    /**
+     * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+     */
+    com.trans.pixel.protoc.Commands.HeroInfo getHeroInfo();
+    /**
+     * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+     */
+    com.trans.pixel.protoc.Commands.HeroInfoOrBuilder getHeroInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.ResponseHeroResultCommand}
+   */
+  public static final class ResponseHeroResultCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements ResponseHeroResultCommandOrBuilder {
+    // Use ResponseHeroResultCommand.newBuilder() to construct.
+    private ResponseHeroResultCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResponseHeroResultCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResponseHeroResultCommand defaultInstance;
+    public static ResponseHeroResultCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResponseHeroResultCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResponseHeroResultCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              heroId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.trans.pixel.protoc.Commands.HeroInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = heroInfo_.toBuilder();
+              }
+              heroInfo_ = input.readMessage(com.trans.pixel.protoc.Commands.HeroInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(heroInfo_);
+                heroInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.class, com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResponseHeroResultCommand> PARSER =
+        new com.google.protobuf.AbstractParser<ResponseHeroResultCommand>() {
+      public ResponseHeroResultCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResponseHeroResultCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResponseHeroResultCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 heroId = 1;
+    public static final int HEROID_FIELD_NUMBER = 1;
+    private int heroId_;
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    public boolean hasHeroId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    public int getHeroId() {
+      return heroId_;
+    }
+
+    // required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;
+    public static final int HEROINFO_FIELD_NUMBER = 2;
+    private com.trans.pixel.protoc.Commands.HeroInfo heroInfo_;
+    /**
+     * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+     */
+    public boolean hasHeroInfo() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+     */
+    public com.trans.pixel.protoc.Commands.HeroInfo getHeroInfo() {
+      return heroInfo_;
+    }
+    /**
+     * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+     */
+    public com.trans.pixel.protoc.Commands.HeroInfoOrBuilder getHeroInfoOrBuilder() {
+      return heroInfo_;
+    }
+
+    private void initFields() {
+      heroId_ = 0;
+      heroInfo_ = com.trans.pixel.protoc.Commands.HeroInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasHeroId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHeroInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getHeroInfo().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, heroId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, heroInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, heroId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, heroInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.ResponseHeroResultCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponseHeroResultCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.ResponseHeroResultCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.class, com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getHeroInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        heroId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (heroInfoBuilder_ == null) {
+          heroInfo_ = com.trans.pixel.protoc.Commands.HeroInfo.getDefaultInstance();
+        } else {
+          heroInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseHeroResultCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseHeroResultCommand build() {
+        com.trans.pixel.protoc.Commands.ResponseHeroResultCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseHeroResultCommand buildPartial() {
+        com.trans.pixel.protoc.Commands.ResponseHeroResultCommand result = new com.trans.pixel.protoc.Commands.ResponseHeroResultCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.heroId_ = heroId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (heroInfoBuilder_ == null) {
+          result.heroInfo_ = heroInfo_;
+        } else {
+          result.heroInfo_ = heroInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.ResponseHeroResultCommand) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.ResponseHeroResultCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.ResponseHeroResultCommand other) {
+        if (other == com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.getDefaultInstance()) return this;
+        if (other.hasHeroId()) {
+          setHeroId(other.getHeroId());
+        }
+        if (other.hasHeroInfo()) {
+          mergeHeroInfo(other.getHeroInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasHeroId()) {
+          
+          return false;
+        }
+        if (!hasHeroInfo()) {
+          
+          return false;
+        }
+        if (!getHeroInfo().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.ResponseHeroResultCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.ResponseHeroResultCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 heroId = 1;
+      private int heroId_ ;
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public boolean hasHeroId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public int getHeroId() {
+        return heroId_;
+      }
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public Builder setHeroId(int value) {
+        bitField0_ |= 0x00000001;
+        heroId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public Builder clearHeroId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        heroId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;
+      private com.trans.pixel.protoc.Commands.HeroInfo heroInfo_ = com.trans.pixel.protoc.Commands.HeroInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.HeroInfo, com.trans.pixel.protoc.Commands.HeroInfo.Builder, com.trans.pixel.protoc.Commands.HeroInfoOrBuilder> heroInfoBuilder_;
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public boolean hasHeroInfo() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.HeroInfo getHeroInfo() {
+        if (heroInfoBuilder_ == null) {
+          return heroInfo_;
+        } else {
+          return heroInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public Builder setHeroInfo(com.trans.pixel.protoc.Commands.HeroInfo value) {
+        if (heroInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          heroInfo_ = value;
+          onChanged();
+        } else {
+          heroInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public Builder setHeroInfo(
+          com.trans.pixel.protoc.Commands.HeroInfo.Builder builderForValue) {
+        if (heroInfoBuilder_ == null) {
+          heroInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          heroInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public Builder mergeHeroInfo(com.trans.pixel.protoc.Commands.HeroInfo value) {
+        if (heroInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              heroInfo_ != com.trans.pixel.protoc.Commands.HeroInfo.getDefaultInstance()) {
+            heroInfo_ =
+              com.trans.pixel.protoc.Commands.HeroInfo.newBuilder(heroInfo_).mergeFrom(value).buildPartial();
+          } else {
+            heroInfo_ = value;
+          }
+          onChanged();
+        } else {
+          heroInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public Builder clearHeroInfo() {
+        if (heroInfoBuilder_ == null) {
+          heroInfo_ = com.trans.pixel.protoc.Commands.HeroInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          heroInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.HeroInfo.Builder getHeroInfoBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getHeroInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.HeroInfoOrBuilder getHeroInfoOrBuilder() {
+        if (heroInfoBuilder_ != null) {
+          return heroInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return heroInfo_;
+        }
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.HeroInfo, com.trans.pixel.protoc.Commands.HeroInfo.Builder, com.trans.pixel.protoc.Commands.HeroInfoOrBuilder> 
+          getHeroInfoFieldBuilder() {
+        if (heroInfoBuilder_ == null) {
+          heroInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.HeroInfo, com.trans.pixel.protoc.Commands.HeroInfo.Builder, com.trans.pixel.protoc.Commands.HeroInfoOrBuilder>(
+                  heroInfo_,
+                  getParentForChildren(),
+                  isClean());
+          heroInfo_ = null;
+        }
+        return heroInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseHeroResultCommand)
+    }
+
+    static {
+      defaultInstance = new ResponseHeroResultCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseHeroResultCommand)
+  }
+
+  public interface RequestLootResultCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestLootResultCommand}
+   */
+  public static final class RequestLootResultCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestLootResultCommandOrBuilder {
+    // Use RequestLootResultCommand.newBuilder() to construct.
+    private RequestLootResultCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestLootResultCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestLootResultCommand defaultInstance;
+    public static RequestLootResultCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestLootResultCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestLootResultCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestLootResultCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.RequestLootResultCommand.class, com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestLootResultCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestLootResultCommand>() {
+      public RequestLootResultCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestLootResultCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestLootResultCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestLootResultCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.RequestLootResultCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestLootResultCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.RequestLootResultCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestLootResultCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.RequestLootResultCommand.class, com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.RequestLootResultCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestLootResultCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.RequestLootResultCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestLootResultCommand build() {
+        com.trans.pixel.protoc.Commands.RequestLootResultCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestLootResultCommand buildPartial() {
+        com.trans.pixel.protoc.Commands.RequestLootResultCommand result = new com.trans.pixel.protoc.Commands.RequestLootResultCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.RequestLootResultCommand) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.RequestLootResultCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.RequestLootResultCommand other) {
+        if (other == com.trans.pixel.protoc.Commands.RequestLootResultCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.RequestLootResultCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.RequestLootResultCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestLootResultCommand)
+    }
+
+    static {
+      defaultInstance = new RequestLootResultCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestLootResultCommand)
+  }
+
+  public interface ResponseLootResultCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 gold = 1;
+    /**
+     * <code>optional int32 gold = 1;</code>
+     */
+    boolean hasGold();
+    /**
+     * <code>optional int32 gold = 1;</code>
+     */
+    int getGold();
+
+    // optional int32 exp = 2;
+    /**
+     * <code>optional int32 exp = 2;</code>
+     */
+    boolean hasExp();
+    /**
+     * <code>optional int32 exp = 2;</code>
+     */
+    int getExp();
+
+    // optional int32 lastLootTime = 3;
+    /**
+     * <code>optional int32 lastLootTime = 3;</code>
+     */
+    boolean hasLastLootTime();
+    /**
+     * <code>optional int32 lastLootTime = 3;</code>
+     */
+    int getLastLootTime();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.ResponseLootResultCommand}
+   */
+  public static final class ResponseLootResultCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements ResponseLootResultCommandOrBuilder {
+    // Use ResponseLootResultCommand.newBuilder() to construct.
+    private ResponseLootResultCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResponseLootResultCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResponseLootResultCommand defaultInstance;
+    public static ResponseLootResultCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResponseLootResultCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResponseLootResultCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              gold_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              exp_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              lastLootTime_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.ResponseLootResultCommand.class, com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResponseLootResultCommand> PARSER =
+        new com.google.protobuf.AbstractParser<ResponseLootResultCommand>() {
+      public ResponseLootResultCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResponseLootResultCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResponseLootResultCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 gold = 1;
+    public static final int GOLD_FIELD_NUMBER = 1;
+    private int gold_;
+    /**
+     * <code>optional int32 gold = 1;</code>
+     */
+    public boolean hasGold() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 gold = 1;</code>
+     */
+    public int getGold() {
+      return gold_;
+    }
+
+    // optional int32 exp = 2;
+    public static final int EXP_FIELD_NUMBER = 2;
+    private int exp_;
+    /**
+     * <code>optional int32 exp = 2;</code>
+     */
+    public boolean hasExp() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 exp = 2;</code>
+     */
+    public int getExp() {
+      return exp_;
+    }
+
+    // optional int32 lastLootTime = 3;
+    public static final int LASTLOOTTIME_FIELD_NUMBER = 3;
+    private int lastLootTime_;
+    /**
+     * <code>optional int32 lastLootTime = 3;</code>
+     */
+    public boolean hasLastLootTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 lastLootTime = 3;</code>
+     */
+    public int getLastLootTime() {
+      return lastLootTime_;
+    }
+
+    private void initFields() {
+      gold_ = 0;
+      exp_ = 0;
+      lastLootTime_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, gold_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, exp_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, lastLootTime_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, gold_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, exp_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, lastLootTime_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseLootResultCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.ResponseLootResultCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponseLootResultCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.ResponseLootResultCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.ResponseLootResultCommand.class, com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.ResponseLootResultCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        gold_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        exp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        lastLootTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseLootResultCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.ResponseLootResultCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseLootResultCommand build() {
+        com.trans.pixel.protoc.Commands.ResponseLootResultCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseLootResultCommand buildPartial() {
+        com.trans.pixel.protoc.Commands.ResponseLootResultCommand result = new com.trans.pixel.protoc.Commands.ResponseLootResultCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.gold_ = gold_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.exp_ = exp_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.lastLootTime_ = lastLootTime_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.ResponseLootResultCommand) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.ResponseLootResultCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.ResponseLootResultCommand other) {
+        if (other == com.trans.pixel.protoc.Commands.ResponseLootResultCommand.getDefaultInstance()) return this;
+        if (other.hasGold()) {
+          setGold(other.getGold());
+        }
+        if (other.hasExp()) {
+          setExp(other.getExp());
+        }
+        if (other.hasLastLootTime()) {
+          setLastLootTime(other.getLastLootTime());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.ResponseLootResultCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.ResponseLootResultCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 gold = 1;
+      private int gold_ ;
+      /**
+       * <code>optional int32 gold = 1;</code>
+       */
+      public boolean hasGold() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 gold = 1;</code>
+       */
+      public int getGold() {
+        return gold_;
+      }
+      /**
+       * <code>optional int32 gold = 1;</code>
+       */
+      public Builder setGold(int value) {
+        bitField0_ |= 0x00000001;
+        gold_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 gold = 1;</code>
+       */
+      public Builder clearGold() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        gold_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 exp = 2;
+      private int exp_ ;
+      /**
+       * <code>optional int32 exp = 2;</code>
+       */
+      public boolean hasExp() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 exp = 2;</code>
+       */
+      public int getExp() {
+        return exp_;
+      }
+      /**
+       * <code>optional int32 exp = 2;</code>
+       */
+      public Builder setExp(int value) {
+        bitField0_ |= 0x00000002;
+        exp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 exp = 2;</code>
+       */
+      public Builder clearExp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        exp_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 lastLootTime = 3;
+      private int lastLootTime_ ;
+      /**
+       * <code>optional int32 lastLootTime = 3;</code>
+       */
+      public boolean hasLastLootTime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 lastLootTime = 3;</code>
+       */
+      public int getLastLootTime() {
+        return lastLootTime_;
+      }
+      /**
+       * <code>optional int32 lastLootTime = 3;</code>
+       */
+      public Builder setLastLootTime(int value) {
+        bitField0_ |= 0x00000004;
+        lastLootTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 lastLootTime = 3;</code>
+       */
+      public Builder clearLastLootTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        lastLootTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseLootResultCommand)
+    }
+
+    static {
+      defaultInstance = new ResponseLootResultCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseLootResultCommand)
+  }
+
+  public interface RequestAddHeroEquipCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 heroId = 1;
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    boolean hasHeroId();
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    int getHeroId();
+
+    // required int32 infoId = 2;
+    /**
+     * <code>required int32 infoId = 2;</code>
+     */
+    boolean hasInfoId();
+    /**
+     * <code>required int32 infoId = 2;</code>
+     */
+    int getInfoId();
+
+    // optional int32 armId = 3;
+    /**
+     * <code>optional int32 armId = 3;</code>
+     */
+    boolean hasArmId();
+    /**
+     * <code>optional int32 armId = 3;</code>
+     */
+    int getArmId();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestAddHeroEquipCommand}
+   */
+  public static final class RequestAddHeroEquipCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestAddHeroEquipCommandOrBuilder {
+    // Use RequestAddHeroEquipCommand.newBuilder() to construct.
+    private RequestAddHeroEquipCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestAddHeroEquipCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestAddHeroEquipCommand defaultInstance;
+    public static RequestAddHeroEquipCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestAddHeroEquipCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestAddHeroEquipCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              heroId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              infoId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              armId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.class, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestAddHeroEquipCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestAddHeroEquipCommand>() {
+      public RequestAddHeroEquipCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestAddHeroEquipCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestAddHeroEquipCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 heroId = 1;
+    public static final int HEROID_FIELD_NUMBER = 1;
+    private int heroId_;
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    public boolean hasHeroId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 heroId = 1;</code>
+     */
+    public int getHeroId() {
+      return heroId_;
+    }
+
+    // required int32 infoId = 2;
+    public static final int INFOID_FIELD_NUMBER = 2;
+    private int infoId_;
+    /**
+     * <code>required int32 infoId = 2;</code>
+     */
+    public boolean hasInfoId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 infoId = 2;</code>
+     */
+    public int getInfoId() {
+      return infoId_;
+    }
+
+    // optional int32 armId = 3;
+    public static final int ARMID_FIELD_NUMBER = 3;
+    private int armId_;
+    /**
+     * <code>optional int32 armId = 3;</code>
+     */
+    public boolean hasArmId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 armId = 3;</code>
+     */
+    public int getArmId() {
+      return armId_;
+    }
+
+    private void initFields() {
+      heroId_ = 0;
+      infoId_ = 0;
+      armId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasHeroId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasInfoId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, heroId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, infoId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, armId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, heroId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, infoId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, armId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestAddHeroEquipCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.class, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        heroId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        infoId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        armId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand build() {
+        com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand buildPartial() {
+        com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand result = new com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.heroId_ = heroId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.infoId_ = infoId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.armId_ = armId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand other) {
+        if (other == com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.getDefaultInstance()) return this;
+        if (other.hasHeroId()) {
+          setHeroId(other.getHeroId());
+        }
+        if (other.hasInfoId()) {
+          setInfoId(other.getInfoId());
+        }
+        if (other.hasArmId()) {
+          setArmId(other.getArmId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasHeroId()) {
+          
+          return false;
+        }
+        if (!hasInfoId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 heroId = 1;
+      private int heroId_ ;
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public boolean hasHeroId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public int getHeroId() {
+        return heroId_;
+      }
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public Builder setHeroId(int value) {
+        bitField0_ |= 0x00000001;
+        heroId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 heroId = 1;</code>
+       */
+      public Builder clearHeroId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        heroId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 infoId = 2;
+      private int infoId_ ;
+      /**
+       * <code>required int32 infoId = 2;</code>
+       */
+      public boolean hasInfoId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 infoId = 2;</code>
+       */
+      public int getInfoId() {
+        return infoId_;
+      }
+      /**
+       * <code>required int32 infoId = 2;</code>
+       */
+      public Builder setInfoId(int value) {
+        bitField0_ |= 0x00000002;
+        infoId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 infoId = 2;</code>
+       */
+      public Builder clearInfoId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        infoId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 armId = 3;
+      private int armId_ ;
+      /**
+       * <code>optional int32 armId = 3;</code>
+       */
+      public boolean hasArmId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 armId = 3;</code>
+       */
+      public int getArmId() {
+        return armId_;
+      }
+      /**
+       * <code>optional int32 armId = 3;</code>
+       */
+      public Builder setArmId(int value) {
+        bitField0_ |= 0x00000004;
+        armId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 armId = 3;</code>
+       */
+      public Builder clearArmId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        armId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestAddHeroEquipCommand)
+    }
+
+    static {
+      defaultInstance = new RequestAddHeroEquipCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestAddHeroEquipCommand)
+  }
+
   public interface RequestCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -10664,6 +14926,48 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.RequestLevelLootResultCommand levelLootResultCommand = 8;</code>
      */
     com.trans.pixel.protoc.Commands.RequestLevelLootResultCommandOrBuilder getLevelLootResultCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+     */
+    boolean hasHeroLevelUpCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand getHeroLevelUpCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommandOrBuilder getHeroLevelUpCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+     */
+    boolean hasLootResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestLootResultCommand getLootResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestLootResultCommandOrBuilder getLootResultCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+     */
+    boolean hasAddHeroEquipCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand getAddHeroEquipCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommandOrBuilder getAddHeroEquipCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -10818,6 +15122,45 @@ public final class Commands {
                 levelLootResultCommand_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000080;
+              break;
+            }
+            case 74: {
+              com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                subBuilder = heroLevelUpCommand_.toBuilder();
+              }
+              heroLevelUpCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(heroLevelUpCommand_);
+                heroLevelUpCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
+            case 82: {
+              com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000200) == 0x00000200)) {
+                subBuilder = lootResultCommand_.toBuilder();
+              }
+              lootResultCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.RequestLootResultCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(lootResultCommand_);
+                lootResultCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000200;
+              break;
+            }
+            case 90: {
+              com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000400) == 0x00000400)) {
+                subBuilder = addHeroEquipCommand_.toBuilder();
+              }
+              addHeroEquipCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(addHeroEquipCommand_);
+                addHeroEquipCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000400;
               break;
             }
           }
@@ -11036,6 +15379,72 @@ public final class Commands {
       return levelLootResultCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;
+    public static final int HEROLEVELUPCOMMAND_FIELD_NUMBER = 9;
+    private com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand heroLevelUpCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+     */
+    public boolean hasHeroLevelUpCommand() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand getHeroLevelUpCommand() {
+      return heroLevelUpCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommandOrBuilder getHeroLevelUpCommandOrBuilder() {
+      return heroLevelUpCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;
+    public static final int LOOTRESULTCOMMAND_FIELD_NUMBER = 10;
+    private com.trans.pixel.protoc.Commands.RequestLootResultCommand lootResultCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+     */
+    public boolean hasLootResultCommand() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestLootResultCommand getLootResultCommand() {
+      return lootResultCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestLootResultCommandOrBuilder getLootResultCommandOrBuilder() {
+      return lootResultCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;
+    public static final int ADDHEROEQUIPCOMMAND_FIELD_NUMBER = 11;
+    private com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand addHeroEquipCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+     */
+    public boolean hasAddHeroEquipCommand() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand getAddHeroEquipCommand() {
+      return addHeroEquipCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommandOrBuilder getAddHeroEquipCommandOrBuilder() {
+      return addHeroEquipCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.Commands.HeadInfo.getDefaultInstance();
       registerCommand_ = com.trans.pixel.protoc.Commands.RequestRegisterCommand.getDefaultInstance();
@@ -11045,6 +15454,9 @@ public final class Commands {
       levelStartCommand_ = com.trans.pixel.protoc.Commands.RequestLevelStartCommand.getDefaultInstance();
       levelLootStartCommand_ = com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand.getDefaultInstance();
       levelLootResultCommand_ = com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand.getDefaultInstance();
+      heroLevelUpCommand_ = com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.getDefaultInstance();
+      lootResultCommand_ = com.trans.pixel.protoc.Commands.RequestLootResultCommand.getDefaultInstance();
+      addHeroEquipCommand_ = com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11089,6 +15501,18 @@ public final class Commands {
           return false;
         }
       }
+      if (hasHeroLevelUpCommand()) {
+        if (!getHeroLevelUpCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasAddHeroEquipCommand()) {
+        if (!getAddHeroEquipCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -11119,6 +15543,15 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(8, levelLootResultCommand_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeMessage(9, heroLevelUpCommand_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeMessage(10, lootResultCommand_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeMessage(11, addHeroEquipCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -11160,6 +15593,18 @@ public final class Commands {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, levelLootResultCommand_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, heroLevelUpCommand_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, lootResultCommand_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, addHeroEquipCommand_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11277,6 +15722,9 @@ public final class Commands {
           getLevelStartCommandFieldBuilder();
           getLevelLootStartCommandFieldBuilder();
           getLevelLootResultCommandFieldBuilder();
+          getHeroLevelUpCommandFieldBuilder();
+          getLootResultCommandFieldBuilder();
+          getAddHeroEquipCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -11333,6 +15781,24 @@ public final class Commands {
           levelLootResultCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000080);
+        if (heroLevelUpCommandBuilder_ == null) {
+          heroLevelUpCommand_ = com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.getDefaultInstance();
+        } else {
+          heroLevelUpCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommand_ = com.trans.pixel.protoc.Commands.RequestLootResultCommand.getDefaultInstance();
+        } else {
+          lootResultCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        if (addHeroEquipCommandBuilder_ == null) {
+          addHeroEquipCommand_ = com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.getDefaultInstance();
+        } else {
+          addHeroEquipCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -11425,6 +15891,30 @@ public final class Commands {
         } else {
           result.levelLootResultCommand_ = levelLootResultCommandBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        if (heroLevelUpCommandBuilder_ == null) {
+          result.heroLevelUpCommand_ = heroLevelUpCommand_;
+        } else {
+          result.heroLevelUpCommand_ = heroLevelUpCommandBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        if (lootResultCommandBuilder_ == null) {
+          result.lootResultCommand_ = lootResultCommand_;
+        } else {
+          result.lootResultCommand_ = lootResultCommandBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        if (addHeroEquipCommandBuilder_ == null) {
+          result.addHeroEquipCommand_ = addHeroEquipCommand_;
+        } else {
+          result.addHeroEquipCommand_ = addHeroEquipCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11465,6 +15955,15 @@ public final class Commands {
         if (other.hasLevelLootResultCommand()) {
           mergeLevelLootResultCommand(other.getLevelLootResultCommand());
         }
+        if (other.hasHeroLevelUpCommand()) {
+          mergeHeroLevelUpCommand(other.getHeroLevelUpCommand());
+        }
+        if (other.hasLootResultCommand()) {
+          mergeLootResultCommand(other.getLootResultCommand());
+        }
+        if (other.hasAddHeroEquipCommand()) {
+          mergeAddHeroEquipCommand(other.getAddHeroEquipCommand());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -11504,6 +16003,18 @@ public final class Commands {
         }
         if (hasLevelLootStartCommand()) {
           if (!getLevelLootStartCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasHeroLevelUpCommand()) {
+          if (!getHeroLevelUpCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasAddHeroEquipCommand()) {
+          if (!getAddHeroEquipCommand().isInitialized()) {
             
             return false;
           }
@@ -12466,6 +16977,357 @@ public final class Commands {
         return levelLootResultCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;
+      private com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand heroLevelUpCommand_ = com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommandOrBuilder> heroLevelUpCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public boolean hasHeroLevelUpCommand() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand getHeroLevelUpCommand() {
+        if (heroLevelUpCommandBuilder_ == null) {
+          return heroLevelUpCommand_;
+        } else {
+          return heroLevelUpCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public Builder setHeroLevelUpCommand(com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand value) {
+        if (heroLevelUpCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          heroLevelUpCommand_ = value;
+          onChanged();
+        } else {
+          heroLevelUpCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public Builder setHeroLevelUpCommand(
+          com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder builderForValue) {
+        if (heroLevelUpCommandBuilder_ == null) {
+          heroLevelUpCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          heroLevelUpCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public Builder mergeHeroLevelUpCommand(com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand value) {
+        if (heroLevelUpCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100) &&
+              heroLevelUpCommand_ != com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.getDefaultInstance()) {
+            heroLevelUpCommand_ =
+              com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.newBuilder(heroLevelUpCommand_).mergeFrom(value).buildPartial();
+          } else {
+            heroLevelUpCommand_ = value;
+          }
+          onChanged();
+        } else {
+          heroLevelUpCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public Builder clearHeroLevelUpCommand() {
+        if (heroLevelUpCommandBuilder_ == null) {
+          heroLevelUpCommand_ = com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          heroLevelUpCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder getHeroLevelUpCommandBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getHeroLevelUpCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommandOrBuilder getHeroLevelUpCommandOrBuilder() {
+        if (heroLevelUpCommandBuilder_ != null) {
+          return heroLevelUpCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return heroLevelUpCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestHeroLevelUpCommand heroLevelUpCommand = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommandOrBuilder> 
+          getHeroLevelUpCommandFieldBuilder() {
+        if (heroLevelUpCommandBuilder_ == null) {
+          heroLevelUpCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand.Builder, com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommandOrBuilder>(
+                  heroLevelUpCommand_,
+                  getParentForChildren(),
+                  isClean());
+          heroLevelUpCommand_ = null;
+        }
+        return heroLevelUpCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;
+      private com.trans.pixel.protoc.Commands.RequestLootResultCommand lootResultCommand_ = com.trans.pixel.protoc.Commands.RequestLootResultCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestLootResultCommand, com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder, com.trans.pixel.protoc.Commands.RequestLootResultCommandOrBuilder> lootResultCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public boolean hasLootResultCommand() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestLootResultCommand getLootResultCommand() {
+        if (lootResultCommandBuilder_ == null) {
+          return lootResultCommand_;
+        } else {
+          return lootResultCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public Builder setLootResultCommand(com.trans.pixel.protoc.Commands.RequestLootResultCommand value) {
+        if (lootResultCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          lootResultCommand_ = value;
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public Builder setLootResultCommand(
+          com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder builderForValue) {
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public Builder mergeLootResultCommand(com.trans.pixel.protoc.Commands.RequestLootResultCommand value) {
+        if (lootResultCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) == 0x00000200) &&
+              lootResultCommand_ != com.trans.pixel.protoc.Commands.RequestLootResultCommand.getDefaultInstance()) {
+            lootResultCommand_ =
+              com.trans.pixel.protoc.Commands.RequestLootResultCommand.newBuilder(lootResultCommand_).mergeFrom(value).buildPartial();
+          } else {
+            lootResultCommand_ = value;
+          }
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public Builder clearLootResultCommand() {
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommand_ = com.trans.pixel.protoc.Commands.RequestLootResultCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder getLootResultCommandBuilder() {
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return getLootResultCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestLootResultCommandOrBuilder getLootResultCommandOrBuilder() {
+        if (lootResultCommandBuilder_ != null) {
+          return lootResultCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return lootResultCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLootResultCommand lootResultCommand = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestLootResultCommand, com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder, com.trans.pixel.protoc.Commands.RequestLootResultCommandOrBuilder> 
+          getLootResultCommandFieldBuilder() {
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.RequestLootResultCommand, com.trans.pixel.protoc.Commands.RequestLootResultCommand.Builder, com.trans.pixel.protoc.Commands.RequestLootResultCommandOrBuilder>(
+                  lootResultCommand_,
+                  getParentForChildren(),
+                  isClean());
+          lootResultCommand_ = null;
+        }
+        return lootResultCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;
+      private com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand addHeroEquipCommand_ = com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommandOrBuilder> addHeroEquipCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public boolean hasAddHeroEquipCommand() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand getAddHeroEquipCommand() {
+        if (addHeroEquipCommandBuilder_ == null) {
+          return addHeroEquipCommand_;
+        } else {
+          return addHeroEquipCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public Builder setAddHeroEquipCommand(com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand value) {
+        if (addHeroEquipCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          addHeroEquipCommand_ = value;
+          onChanged();
+        } else {
+          addHeroEquipCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public Builder setAddHeroEquipCommand(
+          com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder builderForValue) {
+        if (addHeroEquipCommandBuilder_ == null) {
+          addHeroEquipCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          addHeroEquipCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public Builder mergeAddHeroEquipCommand(com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand value) {
+        if (addHeroEquipCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) == 0x00000400) &&
+              addHeroEquipCommand_ != com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.getDefaultInstance()) {
+            addHeroEquipCommand_ =
+              com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.newBuilder(addHeroEquipCommand_).mergeFrom(value).buildPartial();
+          } else {
+            addHeroEquipCommand_ = value;
+          }
+          onChanged();
+        } else {
+          addHeroEquipCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public Builder clearAddHeroEquipCommand() {
+        if (addHeroEquipCommandBuilder_ == null) {
+          addHeroEquipCommand_ = com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          addHeroEquipCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder getAddHeroEquipCommandBuilder() {
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return getAddHeroEquipCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommandOrBuilder getAddHeroEquipCommandOrBuilder() {
+        if (addHeroEquipCommandBuilder_ != null) {
+          return addHeroEquipCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return addHeroEquipCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddHeroEquipCommand addHeroEquipCommand = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommandOrBuilder> 
+          getAddHeroEquipCommandFieldBuilder() {
+        if (addHeroEquipCommandBuilder_ == null) {
+          addHeroEquipCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand.Builder, com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommandOrBuilder>(
+                  addHeroEquipCommand_,
+                  getParentForChildren(),
+                  isClean());
+          addHeroEquipCommand_ = null;
+        }
+        return addHeroEquipCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
     }
 
@@ -12563,6 +17425,34 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseLevelLootResultCommand levelLootResultCommand = 7;</code>
      */
     com.trans.pixel.protoc.Commands.ResponseLevelLootResultCommandOrBuilder getLevelLootResultCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+     */
+    boolean hasHeroResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+     */
+    com.trans.pixel.protoc.Commands.ResponseHeroResultCommand getHeroResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+     */
+    com.trans.pixel.protoc.Commands.ResponseHeroResultCommandOrBuilder getHeroResultCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+     */
+    boolean hasLootResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+     */
+    com.trans.pixel.protoc.Commands.ResponseLootResultCommand getLootResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+     */
+    com.trans.pixel.protoc.Commands.ResponseLootResultCommandOrBuilder getLootResultCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseCommand}
@@ -12695,6 +17585,32 @@ public final class Commands {
                 levelLootResultCommand_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000020;
+              break;
+            }
+            case 66: {
+              com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = heroResultCommand_.toBuilder();
+              }
+              heroResultCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(heroResultCommand_);
+                heroResultCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 74: {
+              com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                subBuilder = lootResultCommand_.toBuilder();
+              }
+              lootResultCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.ResponseLootResultCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(lootResultCommand_);
+                lootResultCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
               break;
             }
           }
@@ -12869,6 +17785,50 @@ public final class Commands {
       return levelLootResultCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;
+    public static final int HERORESULTCOMMAND_FIELD_NUMBER = 8;
+    private com.trans.pixel.protoc.Commands.ResponseHeroResultCommand heroResultCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+     */
+    public boolean hasHeroResultCommand() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+     */
+    public com.trans.pixel.protoc.Commands.ResponseHeroResultCommand getHeroResultCommand() {
+      return heroResultCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+     */
+    public com.trans.pixel.protoc.Commands.ResponseHeroResultCommandOrBuilder getHeroResultCommandOrBuilder() {
+      return heroResultCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;
+    public static final int LOOTRESULTCOMMAND_FIELD_NUMBER = 9;
+    private com.trans.pixel.protoc.Commands.ResponseLootResultCommand lootResultCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+     */
+    public boolean hasLootResultCommand() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+     */
+    public com.trans.pixel.protoc.Commands.ResponseLootResultCommand getLootResultCommand() {
+      return lootResultCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+     */
+    public com.trans.pixel.protoc.Commands.ResponseLootResultCommandOrBuilder getLootResultCommandOrBuilder() {
+      return lootResultCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.Commands.HeadInfo.getDefaultInstance();
       errorCommand_ = com.trans.pixel.protoc.Commands.ErrorCommand.getDefaultInstance();
@@ -12876,6 +17836,8 @@ public final class Commands {
       userInfoCommand_ = com.trans.pixel.protoc.Commands.ResponseUserInfoCommand.getDefaultInstance();
       levelResultCommand_ = com.trans.pixel.protoc.Commands.ResponseLevelResultCommand.getDefaultInstance();
       levelLootResultCommand_ = com.trans.pixel.protoc.Commands.ResponseLevelLootResultCommand.getDefaultInstance();
+      heroResultCommand_ = com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.getDefaultInstance();
+      lootResultCommand_ = com.trans.pixel.protoc.Commands.ResponseLootResultCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -12914,6 +17876,12 @@ public final class Commands {
           return false;
         }
       }
+      if (hasHeroResultCommand()) {
+        if (!getHeroResultCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -12938,6 +17906,12 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(7, levelLootResultCommand_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(8, heroResultCommand_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(9, lootResultCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -12971,6 +17945,14 @@ public final class Commands {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, levelLootResultCommand_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, heroResultCommand_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, lootResultCommand_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13090,6 +18072,8 @@ public final class Commands {
           getUserInfoCommandFieldBuilder();
           getLevelResultCommandFieldBuilder();
           getLevelLootResultCommandFieldBuilder();
+          getHeroResultCommandFieldBuilder();
+          getLootResultCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -13134,6 +18118,18 @@ public final class Commands {
           levelLootResultCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000020);
+        if (heroResultCommandBuilder_ == null) {
+          heroResultCommand_ = com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.getDefaultInstance();
+        } else {
+          heroResultCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommand_ = com.trans.pixel.protoc.Commands.ResponseLootResultCommand.getDefaultInstance();
+        } else {
+          lootResultCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -13210,6 +18206,22 @@ public final class Commands {
         } else {
           result.levelLootResultCommand_ = levelLootResultCommandBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        if (heroResultCommandBuilder_ == null) {
+          result.heroResultCommand_ = heroResultCommand_;
+        } else {
+          result.heroResultCommand_ = heroResultCommandBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        if (lootResultCommandBuilder_ == null) {
+          result.lootResultCommand_ = lootResultCommand_;
+        } else {
+          result.lootResultCommand_ = lootResultCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13244,6 +18256,12 @@ public final class Commands {
         if (other.hasLevelLootResultCommand()) {
           mergeLevelLootResultCommand(other.getLevelLootResultCommand());
         }
+        if (other.hasHeroResultCommand()) {
+          mergeHeroResultCommand(other.getHeroResultCommand());
+        }
+        if (other.hasLootResultCommand()) {
+          mergeLootResultCommand(other.getLootResultCommand());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -13277,6 +18295,12 @@ public final class Commands {
         }
         if (hasLevelLootResultCommand()) {
           if (!getLevelLootResultCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasHeroResultCommand()) {
+          if (!getHeroResultCommand().isInitialized()) {
             
             return false;
           }
@@ -14005,6 +19029,240 @@ public final class Commands {
         return levelLootResultCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;
+      private com.trans.pixel.protoc.Commands.ResponseHeroResultCommand heroResultCommand_ = com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.ResponseHeroResultCommand, com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder, com.trans.pixel.protoc.Commands.ResponseHeroResultCommandOrBuilder> heroResultCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public boolean hasHeroResultCommand() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseHeroResultCommand getHeroResultCommand() {
+        if (heroResultCommandBuilder_ == null) {
+          return heroResultCommand_;
+        } else {
+          return heroResultCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public Builder setHeroResultCommand(com.trans.pixel.protoc.Commands.ResponseHeroResultCommand value) {
+        if (heroResultCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          heroResultCommand_ = value;
+          onChanged();
+        } else {
+          heroResultCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public Builder setHeroResultCommand(
+          com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder builderForValue) {
+        if (heroResultCommandBuilder_ == null) {
+          heroResultCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          heroResultCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public Builder mergeHeroResultCommand(com.trans.pixel.protoc.Commands.ResponseHeroResultCommand value) {
+        if (heroResultCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+              heroResultCommand_ != com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.getDefaultInstance()) {
+            heroResultCommand_ =
+              com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.newBuilder(heroResultCommand_).mergeFrom(value).buildPartial();
+          } else {
+            heroResultCommand_ = value;
+          }
+          onChanged();
+        } else {
+          heroResultCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public Builder clearHeroResultCommand() {
+        if (heroResultCommandBuilder_ == null) {
+          heroResultCommand_ = com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          heroResultCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder getHeroResultCommandBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getHeroResultCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseHeroResultCommandOrBuilder getHeroResultCommandOrBuilder() {
+        if (heroResultCommandBuilder_ != null) {
+          return heroResultCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return heroResultCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.ResponseHeroResultCommand, com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder, com.trans.pixel.protoc.Commands.ResponseHeroResultCommandOrBuilder> 
+          getHeroResultCommandFieldBuilder() {
+        if (heroResultCommandBuilder_ == null) {
+          heroResultCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.ResponseHeroResultCommand, com.trans.pixel.protoc.Commands.ResponseHeroResultCommand.Builder, com.trans.pixel.protoc.Commands.ResponseHeroResultCommandOrBuilder>(
+                  heroResultCommand_,
+                  getParentForChildren(),
+                  isClean());
+          heroResultCommand_ = null;
+        }
+        return heroResultCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;
+      private com.trans.pixel.protoc.Commands.ResponseLootResultCommand lootResultCommand_ = com.trans.pixel.protoc.Commands.ResponseLootResultCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.ResponseLootResultCommand, com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder, com.trans.pixel.protoc.Commands.ResponseLootResultCommandOrBuilder> lootResultCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public boolean hasLootResultCommand() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseLootResultCommand getLootResultCommand() {
+        if (lootResultCommandBuilder_ == null) {
+          return lootResultCommand_;
+        } else {
+          return lootResultCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public Builder setLootResultCommand(com.trans.pixel.protoc.Commands.ResponseLootResultCommand value) {
+        if (lootResultCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          lootResultCommand_ = value;
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public Builder setLootResultCommand(
+          com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder builderForValue) {
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public Builder mergeLootResultCommand(com.trans.pixel.protoc.Commands.ResponseLootResultCommand value) {
+        if (lootResultCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              lootResultCommand_ != com.trans.pixel.protoc.Commands.ResponseLootResultCommand.getDefaultInstance()) {
+            lootResultCommand_ =
+              com.trans.pixel.protoc.Commands.ResponseLootResultCommand.newBuilder(lootResultCommand_).mergeFrom(value).buildPartial();
+          } else {
+            lootResultCommand_ = value;
+          }
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public Builder clearLootResultCommand() {
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommand_ = com.trans.pixel.protoc.Commands.ResponseLootResultCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          lootResultCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder getLootResultCommandBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getLootResultCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseLootResultCommandOrBuilder getLootResultCommandOrBuilder() {
+        if (lootResultCommandBuilder_ != null) {
+          return lootResultCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return lootResultCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseLootResultCommand lootResultCommand = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.ResponseLootResultCommand, com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder, com.trans.pixel.protoc.Commands.ResponseLootResultCommandOrBuilder> 
+          getLootResultCommandFieldBuilder() {
+        if (lootResultCommandBuilder_ == null) {
+          lootResultCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.ResponseLootResultCommand, com.trans.pixel.protoc.Commands.ResponseLootResultCommand.Builder, com.trans.pixel.protoc.Commands.ResponseLootResultCommandOrBuilder>(
+                  lootResultCommand_,
+                  getParentForChildren(),
+                  isClean());
+          lootResultCommand_ = null;
+        }
+        return lootResultCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseCommand)
     }
 
@@ -14031,6 +19289,16 @@ public final class Commands {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_HeadInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_HeroInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_SkillInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_SkillInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_ErrorCommand_descriptor;
   private static
@@ -14097,6 +19365,31 @@ public final class Commands {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestLootResultCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -14126,53 +19419,77 @@ public final class Commands {
       "\030\003 \002(\005\"u\n\010HeadInfo\022\017\n\007version\030\001 \002(\005\022\020\n\010d" +
       "atetime\030\002 \002(\003\022\023\n\013gameVersion\030\003 \002(\005\022\020\n\010se",
       "rverId\030\004 \002(\005\022\017\n\007account\030\005 \002(\t\022\016\n\006userId\030" +
-      "\006 \001(\003\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(\t\022\017\n\007m" +
-      "essage\030\002 \002(\t\"\035\n\033ResponseNeedRegisterComm" +
-      "and\"*\n\026RequestRegisterCommand\022\020\n\010userNam" +
-      "e\030\001 \002(\t\"\025\n\023RequestLoginCommand\"I\n\027Respon" +
-      "seUserInfoCommand\022.\n\004user\030\001 \002(\0132 .com.tr" +
-      "ans.pixel.protoc.UserInfo\"\201\001\n\024ResponsePo" +
-      "pupCommand\022\021\n\tpopScreen\030\001 \002(\005\022\016\n\006flowID\030" +
-      "\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013" +
-      "yesButtonID\030\005 \001(\t\022\022\n\nnoButtonID\030\006 \001(\t\"+\n",
-      "\030RequestLevelStartCommand\022\017\n\007levelId\030\001 \002" +
-      "(\005\"Q\n\031RequestLevelResultCommand\022\017\n\007level" +
-      "Id\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\022\021\n\tfightInfo\030" +
-      "\003 \002(\t\"P\n\032ResponseLevelResultCommand\0222\n\006r" +
-      "eward\030\001 \003(\0132\".com.trans.pixel.protoc.Rew" +
-      "ardInfo\"/\n\034RequestLevelLootStartCommand\022" +
-      "\017\n\007levelId\030\001 \002(\005\"\037\n\035RequestLevelLootResu" +
-      "ltCommand\"T\n\036ResponseLevelLootResultComm" +
-      "and\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.RewardInfo\":\n\030RequestUpdateTeamComm",
-      "and\022\014\n\004mode\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\"\341\004\n\016" +
-      "RequestCommand\022.\n\004head\030\001 \002(\0132 .com.trans" +
-      ".pixel.protoc.HeadInfo\022G\n\017registerComman" +
-      "d\030\002 \001(\0132..com.trans.pixel.protoc.Request" +
-      "RegisterCommand\022A\n\014loginCommand\030\003 \001(\0132+." +
-      "com.trans.pixel.protoc.RequestLoginComma" +
-      "nd\022M\n\022levelResultCommand\030\004 \001(\01321.com.tra" +
-      "ns.pixel.protoc.RequestLevelResultComman" +
-      "d\022K\n\021updateTeamCommand\030\005 \001(\01320.com.trans" +
-      ".pixel.protoc.RequestUpdateTeamCommand\022K",
-      "\n\021levelStartCommand\030\006 \001(\01320.com.trans.pi" +
-      "xel.protoc.RequestLevelStartCommand\022S\n\025l" +
-      "evelLootStartCommand\030\007 \001(\01324.com.trans.p" +
-      "ixel.protoc.RequestLevelLootStartCommand" +
-      "\022U\n\026levelLootResultCommand\030\010 \001(\01325.com.t" +
-      "rans.pixel.protoc.RequestLevelLootResult" +
-      "Command\"\301\003\n\017ResponseCommand\022.\n\004head\030\001 \002(" +
-      "\0132 .com.trans.pixel.protoc.HeadInfo\022:\n\014e" +
-      "rrorCommand\030\002 \001(\0132$.com.trans.pixel.prot" +
-      "oc.ErrorCommand\022P\n\023needRegisterCommand\030\003",
-      " \001(\01323.com.trans.pixel.protoc.ResponseNe" +
-      "edRegisterCommand\022H\n\017userInfoCommand\030\004 \001" +
-      "(\0132/.com.trans.pixel.protoc.ResponseUser" +
-      "InfoCommand\022N\n\022levelResultCommand\030\006 \001(\0132" +
-      "2.com.trans.pixel.protoc.ResponseLevelRe" +
-      "sultCommand\022V\n\026levelLootResultCommand\030\007 " +
-      "\001(\01326.com.trans.pixel.protoc.ResponseLev" +
-      "elLootResultCommand"
+      "\006 \001(\003\"\225\001\n\010HeroInfo\022\016\n\006infoId\030\001 \002(\005\022\r\n\005le" +
+      "vel\030\002 \001(\005\022\021\n\tstarLevel\030\003 \001(\005\022\022\n\nequipLev" +
+      "el\030\004 \001(\005\022\021\n\tequipInfo\030\005 \001(\005\0220\n\005skill\030\006 \003" +
+      "(\0132!.com.trans.pixel.protoc.SkillInfo\"0\n" +
+      "\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLeve" +
+      "l\030\002 \002(\005\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(\t\022\017\n" +
+      "\007message\030\002 \002(\t\"\035\n\033ResponseNeedRegisterCo" +
+      "mmand\"*\n\026RequestRegisterCommand\022\020\n\010userN" +
+      "ame\030\001 \002(\t\"\025\n\023RequestLoginCommand\"I\n\027Resp",
+      "onseUserInfoCommand\022.\n\004user\030\001 \002(\0132 .com." +
+      "trans.pixel.protoc.UserInfo\"\201\001\n\024Response" +
+      "PopupCommand\022\021\n\tpopScreen\030\001 \002(\005\022\016\n\006flowI" +
+      "D\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading\030\004 \001(\t\022\023" +
+      "\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoButtonID\030\006 \001(\t\"" +
+      "+\n\030RequestLevelStartCommand\022\017\n\007levelId\030\001" +
+      " \002(\005\"Q\n\031RequestLevelResultCommand\022\017\n\007lev" +
+      "elId\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\022\021\n\tfightInf" +
+      "o\030\003 \002(\t\"P\n\032ResponseLevelResultCommand\0222\n" +
+      "\006reward\030\001 \003(\0132\".com.trans.pixel.protoc.R",
+      "ewardInfo\"/\n\034RequestLevelLootStartComman" +
+      "d\022\017\n\007levelId\030\001 \002(\005\"\037\n\035RequestLevelLootRe" +
+      "sultCommand\"T\n\036ResponseLevelLootResultCo" +
+      "mmand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel." +
+      "protoc.RewardInfo\":\n\030RequestUpdateTeamCo" +
+      "mmand\022\014\n\004mode\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\"P\n" +
+      "\031RequestHeroLevelUpCommand\022\023\n\013levelUpTyp" +
+      "e\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\005\"" +
+      "_\n\031ResponseHeroResultCommand\022\016\n\006heroId\030\001" +
+      " \002(\005\0222\n\010heroInfo\030\002 \002(\0132 .com.trans.pixel",
+      ".protoc.HeroInfo\"\032\n\030RequestLootResultCom" +
+      "mand\"L\n\031ResponseLootResultCommand\022\014\n\004gol" +
+      "d\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014lastLootTime\030\003 \001" +
+      "(\005\"K\n\032RequestAddHeroEquipCommand\022\016\n\006hero" +
+      "Id\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \001(\005\"" +
+      "\316\006\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com.t" +
+      "rans.pixel.protoc.HeadInfo\022G\n\017registerCo" +
+      "mmand\030\002 \001(\0132..com.trans.pixel.protoc.Req" +
+      "uestRegisterCommand\022A\n\014loginCommand\030\003 \001(" +
+      "\0132+.com.trans.pixel.protoc.RequestLoginC",
+      "ommand\022M\n\022levelResultCommand\030\004 \001(\01321.com" +
+      ".trans.pixel.protoc.RequestLevelResultCo" +
+      "mmand\022K\n\021updateTeamCommand\030\005 \001(\01320.com.t" +
+      "rans.pixel.protoc.RequestUpdateTeamComma" +
+      "nd\022K\n\021levelStartCommand\030\006 \001(\01320.com.tran" +
+      "s.pixel.protoc.RequestLevelStartCommand\022" +
+      "S\n\025levelLootStartCommand\030\007 \001(\01324.com.tra" +
+      "ns.pixel.protoc.RequestLevelLootStartCom" +
+      "mand\022U\n\026levelLootResultCommand\030\010 \001(\01325.c" +
+      "om.trans.pixel.protoc.RequestLevelLootRe",
+      "sultCommand\022M\n\022heroLevelUpCommand\030\t \001(\0132" +
+      "1.com.trans.pixel.protoc.RequestHeroLeve" +
+      "lUpCommand\022K\n\021lootResultCommand\030\n \001(\01320." +
+      "com.trans.pixel.protoc.RequestLootResult" +
+      "Command\022O\n\023addHeroEquipCommand\030\013 \001(\01322.c" +
+      "om.trans.pixel.protoc.RequestAddHeroEqui" +
+      "pCommand\"\335\004\n\017ResponseCommand\022.\n\004head\030\001 \002" +
+      "(\0132 .com.trans.pixel.protoc.HeadInfo\022:\n\014" +
+      "errorCommand\030\002 \001(\0132$.com.trans.pixel.pro" +
+      "toc.ErrorCommand\022P\n\023needRegisterCommand\030",
+      "\003 \001(\01323.com.trans.pixel.protoc.ResponseN" +
+      "eedRegisterCommand\022H\n\017userInfoCommand\030\004 " +
+      "\001(\0132/.com.trans.pixel.protoc.ResponseUse" +
+      "rInfoCommand\022N\n\022levelResultCommand\030\006 \001(\013" +
+      "22.com.trans.pixel.protoc.ResponseLevelR" +
+      "esultCommand\022V\n\026levelLootResultCommand\030\007" +
+      " \001(\01326.com.trans.pixel.protoc.ResponseLe" +
+      "velLootResultCommand\022L\n\021heroResultComman" +
+      "d\030\010 \001(\01321.com.trans.pixel.protoc.Respons" +
+      "eHeroResultCommand\022L\n\021lootResultCommand\030",
+      "\t \001(\01321.com.trans.pixel.protoc.ResponseL" +
+      "ootResultCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -14197,96 +19514,138 @@ public final class Commands {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeadInfo_descriptor,
               new java.lang.String[] { "Version", "Datetime", "GameVersion", "ServerId", "Account", "UserId", });
-          internal_static_com_trans_pixel_protoc_ErrorCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_HeroInfo_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_HeroInfo_descriptor,
+              new java.lang.String[] { "InfoId", "Level", "StarLevel", "EquipLevel", "EquipInfo", "Skill", });
+          internal_static_com_trans_pixel_protoc_SkillInfo_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_com_trans_pixel_protoc_SkillInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_SkillInfo_descriptor,
+              new java.lang.String[] { "SkillId", "SkillLevel", });
+          internal_static_com_trans_pixel_protoc_ErrorCommand_descriptor =
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_ErrorCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ErrorCommand_descriptor,
               new java.lang.String[] { "Code", "Message", });
           internal_static_com_trans_pixel_protoc_ResponseNeedRegisterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_ResponseNeedRegisterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseNeedRegisterCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestRegisterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_RequestRegisterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRegisterCommand_descriptor,
               new java.lang.String[] { "UserName", });
           internal_static_com_trans_pixel_protoc_RequestLoginCommand_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_RequestLoginCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLoginCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_ResponseUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserInfoCommand_descriptor,
               new java.lang.String[] { "User", });
           internal_static_com_trans_pixel_protoc_ResponsePopupCommand_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_ResponsePopupCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePopupCommand_descriptor,
               new java.lang.String[] { "PopScreen", "FlowID", "Text", "Heading", "YesButtonID", "NoButtonID", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "LevelId", });
           internal_static_com_trans_pixel_protoc_RequestLevelResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_RequestLevelResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelResultCommand_descriptor,
               new java.lang.String[] { "LevelId", "TeamInfo", "FightInfo", });
           internal_static_com_trans_pixel_protoc_ResponseLevelResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_ResponseLevelResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestLevelLootStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootStartCommand_descriptor,
               new java.lang.String[] { "LevelId", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor,
               new java.lang.String[] { "Mode", "TeamInfo", });
+          internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor =
+            getDescriptor().getMessageTypes().get(18);
+          internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor,
+              new java.lang.String[] { "LevelUpType", "HeroId", "InfoId", });
+          internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor =
+            getDescriptor().getMessageTypes().get(19);
+          internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor,
+              new java.lang.String[] { "HeroId", "HeroInfo", });
+          internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor =
+            getDescriptor().getMessageTypes().get(20);
+          internal_static_com_trans_pixel_protoc_RequestLootResultCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor =
+            getDescriptor().getMessageTypes().get(21);
+          internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor,
+              new java.lang.String[] { "Gold", "Exp", "LastLootTime", });
+          internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor =
+            getDescriptor().getMessageTypes().get(22);
+          internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor,
+              new java.lang.String[] { "HeroId", "InfoId", "ArmId", });
           internal_static_com_trans_pixel_protoc_RequestCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "LevelResultCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootStartCommand", "LevelLootResultCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "LevelResultCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "LootResultCommand", "AddHeroEquipCommand", });
           internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_ResponseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor,
-              new java.lang.String[] { "Head", "ErrorCommand", "NeedRegisterCommand", "UserInfoCommand", "LevelResultCommand", "LevelLootResultCommand", });
+              new java.lang.String[] { "Head", "ErrorCommand", "NeedRegisterCommand", "UserInfoCommand", "LevelResultCommand", "LevelLootResultCommand", "HeroResultCommand", "LootResultCommand", });
           return null;
         }
       };

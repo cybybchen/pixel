@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.trans.pixel.model.UserTeamBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 
 public interface UserTeamMapper {
 	

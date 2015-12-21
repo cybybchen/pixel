@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.UserTeamBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
 @Service

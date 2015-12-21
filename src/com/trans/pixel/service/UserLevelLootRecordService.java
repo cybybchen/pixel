@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.UserLevelLootRecordBean;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.mapper.UserLevelLootRecordMapper;
+import com.trans.pixel.model.userinfo.UserLevelLootRecordBean;
 import com.trans.pixel.service.redis.UserLevelLootRecordRedisService;
 
 @Service
