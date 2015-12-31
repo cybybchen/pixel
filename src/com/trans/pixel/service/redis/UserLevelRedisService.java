@@ -13,27 +13,27 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.userinfo.UserLevelRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 
 @Repository
-public class UserLevelRecordRedisService {
+public class UserLevelRedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
-	public UserLevelRecordBean selectUserLevelRecord(final long userId) {
-		return redisTemplate.execute(new RedisCallback<UserLevelRecordBean>() {
+	public UserLevelBean selectUserLevelRecord(final long userId) {
+		return redisTemplate.execute(new RedisCallback<UserLevelBean>() {
 			@Override
-			public UserLevelRecordBean doInRedis(RedisConnection arg0)
+			public UserLevelBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_LEVEL_RECORD_PREFIX + userId);
 				
-				return UserLevelRecordBean.convertLevelRecordMapToUserLevelRecordBean(bhOps.entries());
+				return UserLevelBean.convertLevelRecordMapToUserLevelRecordBean(bhOps.entries());
 			}
 		});
 	}
 	
-	public void updateUserLevelRecord(final UserLevelRecordBean userLevelRecordBean) {
+	public void updateUserLevelRecord(final UserLevelBean userLevelRecordBean) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)

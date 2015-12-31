@@ -8,7 +8,7 @@ import net.sf.json.JSONObject;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
-public class UserLevelLootRecordBean {
+public class UserLevelLootBean {
 	private long id = 0;
 	private long userId = 0;
 	private int packageCount = 0;
@@ -71,10 +71,10 @@ public class UserLevelLootRecordBean {
 		
 		return json.toString();
 	}
-	public static UserLevelLootRecordBean fromJson(String jsonString) {
+	public static UserLevelLootBean fromJson(String jsonString) {
 		if (jsonString == null)
 			return null;
-		UserLevelLootRecordBean bean = new UserLevelLootRecordBean();
+		UserLevelLootBean bean = new UserLevelLootBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
 		bean.setId(json.getInt(ID));

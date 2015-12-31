@@ -15,9 +15,6 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.trans.pixel.constants.DirConst;
-import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.WinBean;
-import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroBean {

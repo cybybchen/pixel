@@ -17,37 +17,37 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserPvpMapBean;
 
 @Repository
-public class UserEquipRedisService {
+public class UserPvpMapRedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
-	public UserEquipBean selectUserEquip(final long userId, final int equipId) {
-		return redisTemplate.execute(new RedisCallback<UserEquipBean>() {
+	public UserPvpMapBean selectUserPvpMap(final long userId, final int mapId) {
+		return redisTemplate.execute(new RedisCallback<UserPvpMapBean>() {
 			@Override
-			public UserEquipBean doInRedis(RedisConnection arg0)
+			public UserPvpMapBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_PVP_MAP_PREFIX + userId);
 				
 				
-				return UserEquipBean.fromJson(bhOps.get("" + equipId));
+				return UserPvpMapBean.fromJson(bhOps.get("" + mapId));
 			}
 		});
 	}
 	
-	public void updateUserEquip(final UserEquipBean userEquip) {
+	public void updateUserPvpMap(final UserPvpMapBean userPvpMap) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userEquip.getUserId());
+						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_PVP_MAP_PREFIX + userPvpMap.getUserId());
 				
 				
-				bhOps.put("" + userEquip.getEquipId(), userEquip.toJson());
+				bhOps.put("" + userPvpMap.getMapId(), userPvpMap.toJson());
 				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				
 				return null;
@@ -55,16 +55,16 @@ public class UserEquipRedisService {
 		});
 	}
 	
-	public void updateUserEquipList(final List<UserEquipBean> userEquipList, final long userId) {
+	public void updateUserPvpMapList(final List<UserPvpMapBean> userPvpMapList, final long userId) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_PVP_MAP_PREFIX + userId);
 				
-				for (UserEquipBean userEquip : userEquipList) {
-					bhOps.put("" + userEquip.getEquipId(), userEquip.toJson());
+				for (UserPvpMapBean userPvpMap : userPvpMapList) {
+					bhOps.put("" + userPvpMap.getMapId(), userPvpMap.toJson());
 				}
 				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				
@@ -73,24 +73,24 @@ public class UserEquipRedisService {
 		});
 	}
 	
-	public List<UserEquipBean> selectUserEquipList(final long userId) {
-		return redisTemplate.execute(new RedisCallback<List<UserEquipBean>>() {
+	public List<UserPvpMapBean> selectUserPvpMapList(final long userId) {
+		return redisTemplate.execute(new RedisCallback<List<UserPvpMapBean>>() {
 			@Override
-			public List<UserEquipBean> doInRedis(RedisConnection arg0)
+			public List<UserPvpMapBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_PVP_MAP_PREFIX + userId);
 				
-				List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
+				List<UserPvpMapBean> userPvpMapList = new ArrayList<UserPvpMapBean>();
 				Iterator<Entry<String, String>> ite = bhOps.entries().entrySet().iterator();
 				while (ite.hasNext()) {
 					Entry<String, String> entry = ite.next();
-					UserEquipBean userEquip = UserEquipBean.fromJson(entry.getValue());
-					if (userEquip != null)
-						userEquipList.add(userEquip);
+					UserPvpMapBean userPvpMap = UserPvpMapBean.fromJson(entry.getValue());
+					if (userPvpMap != null)
+						userPvpMapList.add(userPvpMap);
 				}
 				
-				return userEquipList;
+				return userPvpMapList;
 			}
 		});
 	}

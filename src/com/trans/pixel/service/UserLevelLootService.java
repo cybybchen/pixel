@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.XiaoguanBean;
-import com.trans.pixel.model.mapper.UserLevelLootRecordMapper;
-import com.trans.pixel.model.userinfo.UserLevelLootRecordBean;
-import com.trans.pixel.service.redis.UserLevelLootRecordRedisService;
+import com.trans.pixel.model.mapper.UserLevelLootMapper;
+import com.trans.pixel.model.userinfo.UserLevelLootBean;
+import com.trans.pixel.service.redis.UserLevelLootRedisService;
 
 @Service
-public class UserLevelLootRecordService {
+public class UserLevelLootService {
 	@Resource
-	private UserLevelLootRecordRedisService userLevelLootRecordRedisService;
+	private UserLevelLootRedisService userLevelLootRecordRedisService;
 	@Resource
-	private UserLevelLootRecordMapper userLevelLootRecordMapper;
+	private UserLevelLootMapper userLevelLootRecordMapper;
 	@Resource
 	private LevelService levelService;
 	@Resource
@@ -26,8 +26,8 @@ public class UserLevelLootRecordService {
 	@Resource
 	private RewardService rewardService;
 	
-	public UserLevelLootRecordBean selectUserLevelLootRecord(long userId) {
-		UserLevelLootRecordBean userLevelLootRecordBean = userLevelLootRecordRedisService.selectUserLevelLootRecord(userId);
+	public UserLevelLootBean selectUserLevelLootRecord(long userId) {
+		UserLevelLootBean userLevelLootRecordBean = userLevelLootRecordRedisService.selectUserLevelLootRecord(userId);
 		if (userLevelLootRecordBean == null) {
 			userLevelLootRecordBean = userLevelLootRecordMapper.selectUserLevelLootRecord(userId);
 		}
@@ -39,13 +39,13 @@ public class UserLevelLootRecordService {
 		return userLevelLootRecordBean;
 	}
 	
-	public void updateUserLevelLootRecord(UserLevelLootRecordBean userLevelLootRecord) {
+	public void updateUserLevelLootRecord(UserLevelLootBean userLevelLootRecord) {
 		userLevelLootRecordRedisService.updateUserLevelLootRecord(userLevelLootRecord);
 		userLevelLootRecordMapper.updateUserLevelLootRecord(userLevelLootRecord);
 	}
 	
-	public UserLevelLootRecordBean switchLootLevel(int levelId, long userId) {
-		UserLevelLootRecordBean userLevelLootRecord = selectUserLevelLootRecord(userId);
+	public UserLevelLootBean switchLootLevel(int levelId, long userId) {
+		UserLevelLootBean userLevelLootRecord = selectUserLevelLootRecord(userId);
 		XiaoguanBean xg = levelService.getXiaoguan(levelId);
 		if (xg == null)
 			return userLevelLootRecord;
@@ -63,15 +63,15 @@ public class UserLevelLootRecordService {
 	}
 	
 	public List<RewardBean> getLootRewards(long userId) {
-		UserLevelLootRecordBean userLevelLootRecord = selectUserLevelLootRecord(userId);
+		UserLevelLootBean userLevelLootRecord = selectUserLevelLootRecord(userId);
 		if (userLevelLootRecord == null)
 			return null;
 		
 		return rewardService.getLootRewards(userLevelLootRecord);
 	} 
 	
-	private UserLevelLootRecordBean initUserLevelLootRecord(long userId) {
-		UserLevelLootRecordBean userLevelLootRecordBean = new UserLevelLootRecordBean();
+	private UserLevelLootBean initUserLevelLootRecord(long userId) {
+		UserLevelLootBean userLevelLootRecordBean = new UserLevelLootBean();
 		userLevelLootRecordBean.setUserId(userId);
 		userLevelLootRecordBean.setPackageCount(5);
 		userLevelLootRecordBean.setLevelLootStartTime((int)(System.currentTimeMillis() / 1000));

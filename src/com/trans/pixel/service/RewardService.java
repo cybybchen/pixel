@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserLevelLootRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelLootBean;
 
 @Service
 public class RewardService {
@@ -22,7 +22,7 @@ public class RewardService {
 		
 	}
 	
-	public List<RewardBean> getLootRewards(UserLevelLootRecordBean userLevelLootRecord) {
+	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
 		for (int lootLevel : rewardRecordList) {

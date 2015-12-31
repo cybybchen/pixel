@@ -17,7 +17,6 @@ public class LootCommandService {
 	private LootService lootService;
 	public void lootResult(RequestLootResultCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseLootResultCommand.Builder builder = ResponseLootResultCommand.newBuilder();
-		long userId = user.getId();
 		user = lootService.updateLootResult(user);
 		builder.setExp(user.getExp());
 		builder.setGold(user.getCoin());

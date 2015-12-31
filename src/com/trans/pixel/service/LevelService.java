@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.LevelConst;
 import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.XiaoguanBean;
-import com.trans.pixel.model.userinfo.UserLevelRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
@@ -28,7 +28,7 @@ public class LevelService {
 		return levelId / DIFF_DELTA;
 	}
 	
-	public boolean isCheatLevelFirstTime(int levelId, UserLevelRecordBean userLevelRecord) {
+	public boolean isCheatLevelFirstTime(int levelId, UserLevelBean userLevelRecord) {
 		XiaoguanBean xg = getXiaoguan(levelId);
 		if (xg == null)
 			return true;
@@ -44,15 +44,15 @@ public class LevelService {
 				int unlockedKunnanDaguan = getDaguanId(userLevelRecord.getPutongLevel());
 				if (unlockedKunnanDaguan < xg.getDaguan())
 					return true;
-				if (xg.getXiaoguan() != UserLevelRecordBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) + 1)
+				if (xg.getXiaoguan() != UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) + 1)
 					return true;
 				
 				return false;
 			case LevelConst.DIFF_DIYU:
-				boolean isUnlockedDaguan = UserLevelRecordBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) == XIAOGUAN_COUNT_EVERY_DAGUAN;
+				boolean isUnlockedDaguan = UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) == XIAOGUAN_COUNT_EVERY_DAGUAN;
 				if (!isUnlockedDaguan)
 					return true;
-				if (xg.getXiaoguan() != UserLevelRecordBean.getXiaoguanRecord(userLevelRecord.getDiyuLevel(), xg.getDaguan()) + 1)
+				if (xg.getXiaoguan() != UserLevelBean.getXiaoguanRecord(userLevelRecord.getDiyuLevel(), xg.getDaguan()) + 1)
 					return true;
 				
 				return false;
@@ -61,7 +61,7 @@ public class LevelService {
 		}
 	}
 	
-	public boolean isCheatLevelLoot(int levelId, UserLevelRecordBean userLevelRecord) {
+	public boolean isCheatLevelLoot(int levelId, UserLevelBean userLevelRecord) {
 		XiaoguanBean xg = getXiaoguan(levelId);
 		if (xg == null)
 			return true;
@@ -77,15 +77,15 @@ public class LevelService {
 				int unlockedKunnanDaguan = getDaguanId(userLevelRecord.getPutongLevel());
 				if (unlockedKunnanDaguan < xg.getDaguan())
 					return true;
-				if (xg.getXiaoguan() >= UserLevelRecordBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) + 1)
+				if (xg.getXiaoguan() >= UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) + 1)
 					return true;
 				
 				return false;
 			case LevelConst.DIFF_DIYU:
-				boolean isUnlockedDaguan = UserLevelRecordBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) == XIAOGUAN_COUNT_EVERY_DAGUAN;
+				boolean isUnlockedDaguan = UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) == XIAOGUAN_COUNT_EVERY_DAGUAN;
 				if (!isUnlockedDaguan)
 					return true;
-				if (xg.getXiaoguan() >= UserLevelRecordBean.getXiaoguanRecord(userLevelRecord.getDiyuLevel(), xg.getDaguan()) + 1)
+				if (xg.getXiaoguan() >= UserLevelBean.getXiaoguanRecord(userLevelRecord.getDiyuLevel(), xg.getDaguan()) + 1)
 					return true;
 				
 				return false;

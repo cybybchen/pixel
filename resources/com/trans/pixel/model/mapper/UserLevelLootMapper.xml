@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trans.pixel.model.mapper.UserLevelRecordMapper">
 
-	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserLevelLootRecordBean">
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserLevelLootBean">
 		<id property="id" column="id" />
 		<result property="userId" column="user_id" />
 		<result property="packageCount" column="package_count" />
@@ -14,16 +14,16 @@
 
 	<select id="selectUserLevelLootRecord" parameterType="long" resultMap="resultMap">
 		SELECT *
-		from user_level_loot_record where user_id = #{userId}
+		from user_level_loot where user_id = #{userId}
 	</select>
 	
-	<insert id="insertUserLevelLootRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelLootRecordBean">
-		INSERT INTO user_level_record(user_id, package_count, loot_level, last_level_loot_time, loot_time, loot_reward_record)
+	<insert id="insertUserLevelLootRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelLootBean">
+		INSERT INTO user_level_loot(user_id, package_count, loot_level, last_level_loot_time, loot_time, loot_reward_record)
 		VALUES(#{userId}, #{packageCount}, #{lootLevel}, #{lastLevelLootTime}, #{lootTime}, #{loot_reward_record})
 	</insert>
 	
-	<update id="updateUserLevelLootRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelLootRecordBean">
-		UPDATE user_level_loot_record 
+	<update id="updateUserLevelLootRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelLootBean">
+		UPDATE user_level_loot
 		SET package_count=#{packageCount},
 		loot_level=#{lootLevel}
 		last_level_loot_time=#{lastLevelLootTime}, 

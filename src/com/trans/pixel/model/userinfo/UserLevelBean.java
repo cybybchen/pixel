@@ -9,7 +9,7 @@ import net.sf.json.JSONObject;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
-public class UserLevelRecordBean {
+public class UserLevelBean {
 	private long id = 0;
 	private long userId = 0;
 	private int lastLevelResultTime = 0;
@@ -85,10 +85,10 @@ public class UserLevelRecordBean {
 		
 		return levelRecordMap;
 	}
-	public static UserLevelRecordBean convertLevelRecordMapToUserLevelRecordBean(Map<String, String> levelRecordMap) {
+	public static UserLevelBean convertLevelRecordMapToUserLevelRecordBean(Map<String, String> levelRecordMap) {
 		if (levelRecordMap == null)
 			return null;
-		UserLevelRecordBean levelRecord = new UserLevelRecordBean();
+		UserLevelBean levelRecord = new UserLevelBean();
 		
 		levelRecord.setId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(ID)));
 		levelRecord.setUserId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(USER_ID)));

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserMineMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserMineBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="mapId" column="map_id" />
+		<result property="mineId" column="mine_id" />
+		<result property="relativeUserId" column="relative_user_id" />
+		<result property="preventTime" column="prevent_time" />
+	</resultMap>
+	
+	<select id="selectUserMine" resultMap="resultMap">
+		SELECT *
+		from user_mine where user_id=#{userId} and map_id=#{mapId} and mine_id=#{mineId}
+	</select>
+	
+	<insert id="updateUserMine" parameterType="com.trans.pixel.model.userinfo.UserMineBean">
+	    INSERT INTO user_mine(user_id, map_id, mine_id, relative_user_id, prevent_time)
+	    VALUES(#{userId}, #{mapId}, #{mine_id}, #{relativeUserId}, #{preventTime})
+	    ON 
+	    duplicate key update
+	    relative_user_id=#{relativeUserId}, prevent_time=#{preventTime}
+	</insert>
+	
+	<select id="selectUserMineList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_mine where user_id=#{userId}
+	</select>
+	
+</mapper>

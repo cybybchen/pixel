@@ -3,6 +3,8 @@ package com.trans.pixel.constants;
 public class RedisKey {
 	public final static String PREFIX = "pixel:";
 	
+	public static final String SERVER_PREFIX = "server_";
+	
 	//account redis
 	public final static String ACCOUNT_PREFIX = "account_";
 	
@@ -43,4 +45,13 @@ public class RedisKey {
 	
 	//user equip redis
 	public static final String USER_EQUIP_PREFIX = "user_equip_";
+	
+	//user pvp map redis
+	public static final String USER_PVP_MAP_PREFIX = "user_pvp_map_";
+	
+	//user mine redis
+	public static final String USER_MINE_PREFIX = "user_mine_";
+	
+	//zhanli rank redis
+	public static final String RANK_PREFIX = "rank_";
 }

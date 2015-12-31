@@ -13,7 +13,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.WinBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserLevelRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -24,8 +24,8 @@ import com.trans.pixel.protoc.Commands.ResponseLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseLevelResultCommand;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.RewardService;
-import com.trans.pixel.service.UserLevelLootRecordService;
-import com.trans.pixel.service.UserLevelRecordService;
+import com.trans.pixel.service.UserLevelLootService;
+import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.WinService;
 
 @Service
@@ -39,14 +39,14 @@ public class LevelCommandService extends BaseCommandService {
 	@Resource
 	private RewardService rewardService;
 	@Resource
-	private UserLevelRecordService userLevelRecordService;
+	private UserLevelService userLevelRecordService;
 	@Resource
-	private UserLevelLootRecordService userLevelLootRecordService;
+	private UserLevelLootService userLevelLootRecordService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
-		UserLevelRecordBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
+		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
 		if (!levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -64,7 +64,7 @@ public class LevelCommandService extends BaseCommandService {
 		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
-		UserLevelRecordBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
+		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
 		if (!levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -84,7 +84,7 @@ public class LevelCommandService extends BaseCommandService {
 	public void levelLootStart(RequestLevelLootStartCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
-		UserLevelRecordBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
+		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
 		if (!levelService.isCheatLevelLoot(levelId, userLevelRecord)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);

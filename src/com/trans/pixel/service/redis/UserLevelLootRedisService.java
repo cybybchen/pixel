@@ -14,28 +14,28 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.userinfo.UserLevelLootRecordBean;
-import com.trans.pixel.model.userinfo.UserLevelRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelLootBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 
 @Repository
-public class UserLevelLootRecordRedisService {
+public class UserLevelLootRedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
-	public UserLevelLootRecordBean selectUserLevelLootRecord(final long userId) {
-		return redisTemplate.execute(new RedisCallback<UserLevelLootRecordBean>() {
+	public UserLevelLootBean selectUserLevelLootRecord(final long userId) {
+		return redisTemplate.execute(new RedisCallback<UserLevelLootBean>() {
 			@Override
-			public UserLevelLootRecordBean doInRedis(RedisConnection arg0)
+			public UserLevelLootBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundValueOperations<String, String> bvOps = redisTemplate
 						.boundValueOps(RedisKey.PREFIX + RedisKey.USER_LEVEL_LOOT_RECORD_PREFIX + userId);
 				
-				return UserLevelLootRecordBean.fromJson(bvOps.get());
+				return UserLevelLootBean.fromJson(bvOps.get());
 			}
 		});
 	}
 	
-	public void updateUserLevelLootRecord(final UserLevelLootRecordBean userLevelLootRecordBean) {
+	public void updateUserLevelLootRecord(final UserLevelLootBean userLevelLootRecordBean) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)

@@ -10,7 +10,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserLevelRecordBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.service.redis.LootRedisService;
 
 @Service
@@ -18,7 +18,7 @@ public class LootService {
 	@Resource
 	private LootRedisService lootRedisService;
 	@Resource
-	private UserLevelRecordService userLevelRecordService;
+	private UserLevelService userLevelRecordService;
 	@Resource
 	private LevelService levelService;
 	@Resource
@@ -36,7 +36,7 @@ public class LootService {
 	
 	public UserBean updateLootResult(UserBean user) {
 		long userId = user.getId();
-		UserLevelRecordBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
+		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
 		DaguanBean dg = levelService.getDaguan(userLevelRecord.getPutongLevel());
 		int addGold = 0;
 		int addExp = 0;
