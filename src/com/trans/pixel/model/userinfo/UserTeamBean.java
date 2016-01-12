@@ -6,7 +6,7 @@ public class UserTeamBean {
 	public long id = 0;
 	public long userId = 0;
 	public int mode = 0;
-	public String record = "";
+	public String teamRecord = "";
 	public long getId() {
 		return id;
 	}
@@ -25,19 +25,18 @@ public class UserTeamBean {
 	public void setMode(int mode) {
 		this.mode = mode;
 	}
-	public String getRecord() {
-		return record;
+	public String getTeamRecord() {
+		return teamRecord;
 	}
-	public void setRecord(String record) {
-		this.record = record;
+	public void setTeamRecord(String teamRecord) {
+		this.teamRecord = teamRecord;
 	}
-	
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
 		json.put(USER_ID, userId);
 		json.put(MODE, mode);
-		json.put(RECORD, record);
+		json.put(TAAM_RECORD, teamRecord);
 		
 		return json.toString();
 	}
@@ -50,7 +49,7 @@ public class UserTeamBean {
 		bean.setId(json.getLong(ID));
 		bean.setUserId(json.getLong(USER_ID));
 		bean.setMode(json.getInt(MODE));
-		bean.setRecord(json.getString(RECORD));
+		bean.setTeamRecord(json.getString(TAAM_RECORD));
 
 		return bean;
 	}
@@ -58,5 +57,5 @@ public class UserTeamBean {
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String MODE = "mode";
-	private static final String RECORD = "record";
+	private static final String TAAM_RECORD = "team_record";
 }

@@ -7,7 +7,7 @@ public enum SuccessConst implements ResultConst {
 
 	HERO_LEVELUP_SUCCESS(1, "人物升级成功"), STAR_LEVELUP_SUCCESS(2, "人物升星成功"), EQUIP_LEVELUP_SUCECESS(3, "人物装备升级成功"), ADD_EQUIP_SUCCESS(4,
             "人物装备添加成功"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), EXP_NOT_ENGHOU(1006, "升级所需经验不足"),
-            PVP_ATTACK_SUCCESS(1007, "挑战胜利"), PVP_ATTACK_FAIL(1008, "挑战失败");
+            PVP_ATTACK_SUCCESS(1007, "挑战胜利"), PVP_ATTACK_FAIL(1008, "挑战失败"), LADDER_ATTACK_SUCCESS(1009, "天梯挑战胜利"), LADDER_ATTACK_FAIL(1010, "天梯挑战失败");
 
     private final int code;
 

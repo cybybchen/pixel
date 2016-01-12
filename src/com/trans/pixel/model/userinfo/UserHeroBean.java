@@ -108,7 +108,7 @@ public class UserHeroBean {
 		return bean;
 	}
 	
-	public UserHero toUserHeroBuilder() {
+	public UserHero buildUserHero() {
 		UserHero.Builder builder = UserHero.newBuilder();
 		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
 		List<HeroInfoBean> heroInfoList = toHeroInfoList();

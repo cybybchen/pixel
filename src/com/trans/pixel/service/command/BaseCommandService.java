@@ -9,6 +9,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
+import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseLootResultCommand;
@@ -16,6 +17,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserMine;
+import com.trans.pixel.protoc.Commands.UserRank;
 
 @Service
 public class BaseCommandService {
@@ -49,23 +51,32 @@ public class BaseCommandService {
 		return builder.build();
 	}
 	
-	protected ResponseGetUserMineCommand builderGetUserMineCommand(List<UserMineBean> userMineList) {
+	protected ResponseGetUserMineCommand buildGetUserMineCommand(List<UserMineBean> userMineList) {
 		ResponseGetUserMineCommand.Builder builder = ResponseGetUserMineCommand.newBuilder();
 		List<UserMine> userMineBuilderList = new ArrayList<UserMine>();
 		for (UserMineBean userMine : userMineList) {
-			userMineBuilderList.add(userMine.toUserMineBuilder());
+			userMineBuilderList.add(userMine.buildUserMine());
 		}
 		builder.addAllUserMine(userMineBuilderList);
 		
 		return builder.build();
 	}
 	
-	protected List<UserHero> getUserHeroList(List<UserHeroBean> userHeroList) {
+	protected List<UserHero> buildUserHeroList(List<UserHeroBean> userHeroList) {
 		List<UserHero> userHeroBuilderList = new ArrayList<UserHero>();
 		for (UserHeroBean userHero : userHeroList) {
-			userHeroBuilderList.add(userHero.toUserHeroBuilder());
+			userHeroBuilderList.add(userHero.buildUserHero());
 		}
 		
 		return userHeroBuilderList;
+	}
+	
+	protected List<UserRank> buildUserRankList(List<UserRankBean> userRankList) {
+		List<UserRank> userRankBuilderList = new ArrayList<UserRank>();
+		for (UserRankBean userRank : userRankList) {
+			userRankBuilderList.add(userRank.buildUserRank());
+		}
+		
+		return userRankBuilderList;
 	}
 }

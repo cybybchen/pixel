@@ -57,6 +57,7 @@ public class RedisKey {
 	
 	//ladder rank redis
 	public static final String LADDER_RANK_KEY = "ladder_rank_key";
+	public static final String LADDER_RANK_INFO_KEY = "ladder_rank_info_key";
 	
 	//pvp xiaoguai
 	public static final String PVP_XIAOGUAI_REFIX = "pvp_xiaoguai_";

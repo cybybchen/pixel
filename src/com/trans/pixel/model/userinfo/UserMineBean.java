@@ -83,7 +83,7 @@ public class UserMineBean {
 		return bean;
 	}
 	
-	public UserMine toUserMineBuilder() {
+	public UserMine buildUserMine() {
 		UserMine.Builder builder = UserMine.newBuilder();
 		builder.setMapId(mapId);
 		builder.setMineId(mineId);

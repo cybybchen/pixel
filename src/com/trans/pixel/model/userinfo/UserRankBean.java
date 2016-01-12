@@ -1,16 +1,8 @@
 package com.trans.pixel.model.userinfo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.model.hero.HeroBean;
-import com.trans.pixel.model.hero.HeroEquipBean;
-import com.trans.pixel.model.hero.HeroSkillBean;
-import com.trans.pixel.model.hero.HeroStarBean;
-import com.trans.pixel.utils.TypeTranslatedUtil;
+import com.trans.pixel.protoc.Commands.UserRank;
 
 public class UserRankBean {
 	private int id = 0;
@@ -18,6 +10,7 @@ public class UserRankBean {
 	private int level = 0;
 	private int zhanli = 0;
 	private long rank = 0;
+	private String teamRecord = "";
 	public int getId() {
 		return id;
 	}
@@ -48,7 +41,12 @@ public class UserRankBean {
 	public void setRank(long rank) {
 		this.rank = rank;
 	}
-	
+	public String getTeamRecord() {
+		return teamRecord;
+	}
+	public void setTeamRecord(String teamRecord) {
+		this.teamRecord = teamRecord;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -56,6 +54,7 @@ public class UserRankBean {
 		json.put(LEVEL, level);
 		json.put(ZHANLI, zhanli);
 		json.put(RANK, rank);
+		json.put(TEAM_RECORD, teamRecord);
 		
 		return json.toString();
 	}
@@ -70,8 +69,18 @@ public class UserRankBean {
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setZhanli(json.getInt(ZHANLI));
 		bean.setRank(json.getInt(RANK));
+		bean.setTeamRecord(json.getString(TEAM_RECORD));
 		
 		return bean;
+	}
+	
+	public UserRank buildUserRank() {
+		UserRank.Builder builder = UserRank.newBuilder();
+		builder.setUserId(userId);
+		builder.setRank(rank);
+		builder.setTeamRecord(teamRecord);
+		
+		return builder.build();
 	}
 	
 	private static final String ID = "id";
@@ -79,4 +88,5 @@ public class UserRankBean {
 	private static final String LEVEL = "level";
 	private static final String ZHANLI = "zhanli";
 	private static final String RANK = "rank";
+	private static final String TEAM_RECORD = "team_record";
 }

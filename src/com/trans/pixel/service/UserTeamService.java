@@ -30,7 +30,7 @@ public class UserTeamService {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setUserId(userId);
 		userTeam.setMode(mode);
-		userTeam.setRecord(record);
+		userTeam.setTeamRecord(record);
 		userTeamRedisService.updateUserTeam(userTeam);
 		userTeamMapper.updateUserTeam(userTeam);
 	}
