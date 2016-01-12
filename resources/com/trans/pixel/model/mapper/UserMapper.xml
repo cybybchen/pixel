@@ -5,7 +5,19 @@
 	<resultMap id="userMap" type="com.trans.pixel.model.userinfo.UserBean">
 		<id property="id" column="id" />
 		<result property="account" column="account" />
-		<result property="name" column="name" />
+		<result property="userName" column="name" />
+		<result property="serverId" column="server_id" />
+		<result property="jewel" column="jewel" />
+		<result property="coin" column="coin" />
+		<result property="exp" column="exp" />
+		<result property="pointVS" column="point_vs" />
+		<result property="pointLadder" column="point_ladder" />
+		<result property="pointExpedition" column="point_expedition" />
+		<result property="pointUnion" column="point_union" />
+		<result property="completeLevel" column="complete_level" />
+		<result property="receiveNoticeId" column="receive_notice_id" />
+		<result property="lastLootTime" column="last_loot_time" />
+		<result property="lastLoginTime" column="last_login_time" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -14,12 +26,17 @@
 	</select>
 	
 	<insert id="addNewUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
-		INSERT INTO user(id, server_id, account, name)
-		VALUES(#{id}, #{serverId}, #{account}, #{userName})
+		INSERT INTO user(id, account, name, server_id, jewel, coin, exp, point_vs, point_ladder, point_expedition, 
+		point_union, complete_level, receive_notice_id, last_loot_time, last_login_time)
+		VALUES(#{id}, #{account}, #{userName}, #{serverId}, #{jewel}, #{coin}, #{exp}, #{pointVS}, #{pointLadder},
+		#{pointExpedition}, #{pointUnion}, #{completeLevel}, #{receiveNoticeId}, #{lastLootTime}, {lastLoginTime})
 	</insert>
 	
-	<update id="updateUser" parameterType="com.trans.pixel.model.UserBean">
-		UPDATE user SET server_id=#{serverId}, account=#{account}, name=#{userName}
+	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
+		UPDATE user SET account=#{account}, name=#{userName}, server_id=#{serverId}, jewel=#{jewel}, coin=#{coin},
+		exp=#{exp}, point_vs=#{pointVS}, point_ladder=#{pointLadder}, point_expedition=#{pointExpedition},
+		point_union=#{pointUnion}, complete_level=#{completeLevel}, receive_notice_id=#{receiveNoticeId},
+		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}
 		WHERE id={id}
 	</update>
 

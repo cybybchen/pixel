@@ -20,7 +20,7 @@ public class UserService {
     private UserMapper userMapper;
 	
 	public UserBean getUser(long userId) {
-    	log.info("The user id is: " + userId);
+    	log.debug("The user id is: " + userId);
     	UserBean user = userRedisService.getUserByUserId(userId);
     	if (user == null)
     		user = userMapper.queryById(userId);

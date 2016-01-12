@@ -7,7 +7,6 @@ import net.sf.json.JSONObject;
 
 import org.dom4j.Element;
 
-import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroSkillBean {

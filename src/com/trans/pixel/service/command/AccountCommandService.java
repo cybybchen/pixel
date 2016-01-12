@@ -26,7 +26,7 @@ public class AccountCommandService extends BaseCommandService {
 	@Resource
     private UserService userService;
 	
-	public ResponseUserInfoCommand register(RequestCommand request, Builder responseBuilder) {
+	public void register(RequestCommand request, Builder responseBuilder) {
 		RequestRegisterCommand registerCommand = request.getRegisterCommand();
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		HeadInfo head = request.getHead();
@@ -37,14 +37,14 @@ public class AccountCommandService extends BaseCommandService {
 		if (userId != 0) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_HAS_REGISTER);
             responseBuilder.setErrorCommand(errorCommand);
-			return null;
+			return;
 		}
 		
 		userId = accountService.registerAccount(serverId, account);
 		UserBean user = initUser(userId, head.getServerId(), head.getAccount(), registerCommand.getUserName());
 		userService.addNewUser(user);
 		super.buildUserInfo(userInfoBuilder, user);
-		return userInfoBuilder.build();
+		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
 	}
 	
 	private UserBean initUser(long userId, int serverId, String account, String userName) {

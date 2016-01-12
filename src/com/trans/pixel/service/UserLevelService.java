@@ -2,6 +2,8 @@ package com.trans.pixel.service;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LevelConst;
@@ -12,30 +14,34 @@ import com.trans.pixel.service.redis.UserLevelRedisService;
 
 @Service
 public class UserLevelService {
+	private static final Logger log = LoggerFactory.getLogger(UserLevelService.class);
 	
 	@Resource
 	private LevelService levelService;
 	@Resource
-	private UserLevelRedisService userLevelRecordRedisService;
+	private UserLevelRedisService userLevelRedisService;
 	@Resource
-	private UserLevelMapper userLevelRecordMapper;
+	private UserLevelMapper userLevelMapper;
 	
 	public UserLevelBean selectUserLevelRecord(long userId) {
-		UserLevelBean userLevelRecordBean = userLevelRecordRedisService.selectUserLevelRecord(userId);
+		log.debug("222222222222222");
+		UserLevelBean userLevelRecordBean = userLevelRedisService.selectUserLevelRecord(userId);
 		if (userLevelRecordBean == null) {
-			userLevelRecordBean = userLevelRecordMapper.selectUserLevelRecord(userId);
+			log.debug("33333333333");
+			userLevelRecordBean = userLevelMapper.selectUserLevelRecord(userId);
 		}
 		if (userLevelRecordBean == null) {
+			log.debug("4444444444");
 			userLevelRecordBean = initUserLevelRecord(userId);
-			userLevelRecordMapper.insertUserLevelRecord(userLevelRecordBean);
+			userLevelMapper.insertUserLevelRecord(userLevelRecordBean);
 		}
 		
 		return userLevelRecordBean;
 	}
 	
 	public void updateUserLevelRecord(UserLevelBean userLevelRecord) {
-		userLevelRecordRedisService.updateUserLevelRecord(userLevelRecord);
-		userLevelRecordMapper.updateUserLevelRecord(userLevelRecord);
+		userLevelRedisService.updateUserLevelRecord(userLevelRecord);
+		userLevelMapper.updateUserLevelRecord(userLevelRecord);
 	}
 	
 	public UserLevelBean updateUserLevelRecord(int levelId, UserLevelBean userLevelRecord) {
@@ -65,7 +71,10 @@ public class UserLevelService {
 		UserLevelBean userLevelRecordBean = new UserLevelBean();
 		userLevelRecordBean.setUserId(userId);
 		userLevelRecordBean.setPutongLevel(0);
+		log.debug("**********************************");
+		log.debug("111:" + LevelConst.DIFF_KUNNAN);
 		userLevelRecordBean.setKunnanLevel(UserLevelBean.initLevelRecord(levelService.getXiaoguanListByDiff(LevelConst.DIFF_KUNNAN)));
+		log.debug("2222:" + LevelConst.DIFF_DIYU);
 		userLevelRecordBean.setDiyuLevel(UserLevelBean.initLevelRecord(levelService.getXiaoguanListByDiff(LevelConst.DIFF_DIYU)));
 		
 		return userLevelRecordBean;

@@ -1,5 +1,7 @@
 package com.trans.pixel.model.userinfo;
 
+import com.trans.pixel.protoc.Commands.UserMine;
+
 import net.sf.json.JSONObject;
 
 public class UserMineBean {
@@ -9,6 +11,7 @@ public class UserMineBean {
 	private int mineId = 0;
 	private long relativeUserId = 0;
 	private long preventTime = 0;
+	private int level = 0;
 	public int getId() {
 		return id;
 	}
@@ -45,7 +48,12 @@ public class UserMineBean {
 	public void setPreventTime(long preventTime) {
 		this.preventTime = preventTime;
 	}
-	
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -54,6 +62,7 @@ public class UserMineBean {
 		json.put(MINE_ID, mineId);
 		json.put(RELATIVE_USER_ID, relativeUserId);
 		json.put(PREVENT_TIME, preventTime);
+		json.put(LEVEL, level);
 		
 		return json.toString();
 	}
@@ -69,8 +78,22 @@ public class UserMineBean {
 		bean.setMineId(json.getInt(MINE_ID));
 		bean.setRelativeUserId(json.getInt(RELATIVE_USER_ID));
 		bean.setPreventTime(json.getInt(PREVENT_TIME));
+		bean.setLevel(json.getInt(LEVEL));
 
 		return bean;
+	}
+	
+	public UserMine toUserMineBuilder() {
+		UserMine.Builder builder = UserMine.newBuilder();
+		builder.setMapId(mapId);
+		builder.setMineId(mineId);
+		if (relativeUserId != 0) {
+			builder.setPreventTime(preventTime);
+			builder.setRelatedUserId(relativeUserId);
+			builder.setLevel(level);
+		}
+		
+		return builder.build();
 	}
 	
 	private static final String ID = "id";
@@ -79,4 +102,5 @@ public class UserMineBean {
 	private static final String MINE_ID = "mine_id";
 	private static final String RELATIVE_USER_ID = "relative_user_id";
 	private static final String PREVENT_TIME = "prevent_time";
+	private static final String LEVEL = "level";
 }

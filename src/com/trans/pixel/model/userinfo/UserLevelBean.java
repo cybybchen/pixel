@@ -4,9 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.model.XiaoguanBean;
+import com.trans.pixel.service.LevelService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserLevelBean {
@@ -56,9 +60,11 @@ public class UserLevelBean {
 	public static String initLevelRecord(List<XiaoguanBean> xiaoguanList) {
 		JSONObject json = new JSONObject();
 		for (XiaoguanBean xg : xiaoguanList) {
-			json.put("" + xg.getDaguan(), Math.min(xg.getXiaoguan(), json.getInt("" + xg.getDaguan())));
+			int originalXiaoguan = TypeTranslatedUtil.jsonGetInt(json, "" + xg.getDaguan());
+			json.put("" + xg.getDaguan(), Math.min(xg.getXiaoguan(), originalXiaoguan));
 		}
-		
+		Logger log = LoggerFactory.getLogger(UserLevelBean.class);
+		log.debug("222:" + json.toString());
 		return json.toString();
 	}
 	
@@ -69,12 +75,14 @@ public class UserLevelBean {
 	
 	public static String updateXiaoguanRecord(String string, XiaoguanBean xg) {
 		JSONObject json = JSONObject.fromObject(string);
-		json.put("" + xg.getDaguan(), Math.max(json.getInt("" + xg.getDaguan()), xg.getXiaoguan()));
+		int originalXiaoguan = TypeTranslatedUtil.jsonGetInt(json, "" + xg.getDaguan());
+		json.put("" + xg.getDaguan(), Math.max(originalXiaoguan, xg.getXiaoguan()));
 		
 		return json.toString();
 	}
 	
 	public Map<String, String> toMap() {
+		Logger log = LoggerFactory.getLogger(UserLevelBean.class);
 		Map<String, String> levelRecordMap = new HashMap<String, String>();
 		levelRecordMap.put(ID, "" + id);
 		levelRecordMap.put(USER_ID, "" + userId);
@@ -83,11 +91,16 @@ public class UserLevelBean {
 		levelRecordMap.put(KUNNAN_LEVEL, kunnanLevel);
 		levelRecordMap.put(DIYU_LEVEL, diyuLevel);
 		
+		log.debug("111: " + levelRecordMap);
+		
 		return levelRecordMap;
 	}
 	public static UserLevelBean convertLevelRecordMapToUserLevelRecordBean(Map<String, String> levelRecordMap) {
-		if (levelRecordMap == null)
+		Logger log = LoggerFactory.getLogger(UserLevelBean.class);
+		log.debug("11122222222222: " + levelRecordMap);
+		if (levelRecordMap == null || levelRecordMap.size() == 0)
 			return null;
+		log.debug("11122222222222333333333333333333: ");
 		UserLevelBean levelRecord = new UserLevelBean();
 		
 		levelRecord.setId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(ID)));

@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.model.hero.HeroSkillBean;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 
 public class SkillInfoBean {
@@ -48,6 +49,21 @@ public class SkillInfoBean {
 		builder.setSkillLevel(skillLevel);
 		
 		return builder.build();
+	}
+	
+	public static List<SkillInfoBean> initSkillInfo(List<HeroSkillBean> skillList) {
+		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
+		for (HeroSkillBean skill : skillList) {
+			if (skill.getUnlock() == 1) {
+				SkillInfoBean skillInfo = new SkillInfoBean();
+				skillInfo.setSkillId(skill.getSkillId());
+				skillInfo.setSkillLevel(1);
+				skillInfoList.add(skillInfo);
+				break;
+			}
+		}
+		
+		return skillInfoList;
 	}
 	
 	private static final String SKILL_ID = "skill_id";

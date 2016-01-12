@@ -16,7 +16,7 @@ import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
 public class LevelService {
-	Logger log = LoggerFactory.getLogger(LevelService.class);
+	private static final Logger log = LoggerFactory.getLogger(LevelService.class);
 	
 	@Resource
 	private LevelRedisService levelRedisService;
@@ -106,6 +106,7 @@ public class LevelService {
 	}
 	
 	public List<XiaoguanBean> getXiaoguanListByDiff(int diff) {
+		log.debug("111 diff is:" + diff);
 		List<XiaoguanBean> xgList = levelRedisService.getXiaoguanListByDiff(diff);
 		if (xgList == null || xgList.size() == 0) {
 			parseAndSaveConfig(diff);
@@ -144,6 +145,7 @@ public class LevelService {
 	}
 	
 	private void parseAndSaveConfig(int diff) {
+		log.debug("diff is:" + diff);
 		List<XiaoguanBean> xiaoguanList = XiaoguanBean.xmlParse(diff);
 		if (xiaoguanList != null && xiaoguanList.size() != 0) {
 			levelRedisService.setXiaoguanList(xiaoguanList);

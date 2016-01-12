@@ -19,7 +19,7 @@ import com.trans.pixel.service.HeroLevelUpService;
 import com.trans.pixel.service.UserHeroService;
 
 @Service
-public class HeroLevelUpCommand extends BaseCommandService {
+public class HeroLevelUpCommandService extends BaseCommandService {
 
 	@Resource
 	private HeroLevelUpService heroLevelUpService;

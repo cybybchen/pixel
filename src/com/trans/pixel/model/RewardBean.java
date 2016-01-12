@@ -1,12 +1,19 @@
 package com.trans.pixel.model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.json.JSONObject;
 
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
 import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
+import com.trans.pixel.constants.DirConst;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -14,7 +21,7 @@ public class RewardBean {
 	private int itemId = 0;
 	private String name = "";
 	private int weight = 0;
-	private int number = 0;
+	private int count = 0;
 	public int getItemId() {
 		return itemId;
 	}
@@ -33,18 +40,18 @@ public class RewardBean {
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	public int getNumber() {
-		return number;
+	public int getCount() {
+		return count;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	public RewardInfo buildRewardInfo() {
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemId(itemId);
 		reward.setName(name);
-		reward.setNumber(number);
+		reward.setCount(count);
 		
 		return reward.build();
 	}
@@ -54,7 +61,7 @@ public class RewardBean {
 		json.put(ITEM_ID, itemId);
 		json.put(NAME, name);
 		json.put(WEIGHT, weight);
-		json.put(NUMBER, number);
+		json.put(COUNT, count);
 		
 		return json.toString();
 	}
@@ -67,7 +74,7 @@ public class RewardBean {
 		bean.setItemId(json.getInt(ITEM_ID));
 		bean.setName(json.getString(NAME));
 		bean.setWeight(json.getInt(WEIGHT));
-		bean.setNumber(json.getInt(NUMBER));
+		bean.setCount(json.getInt(COUNT));
 
 		return bean;
 	}
@@ -77,9 +84,33 @@ public class RewardBean {
 		reward.setItemId(TypeTranslatedUtil.stringToInt(e.attributeValue(ITEM_ID)));
 		reward.setName(e.attributeValue(NAME));
 		reward.setWeight(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHT)));
-		reward.setNumber(TypeTranslatedUtil.stringToInt(e.attributeValue(NUMBER)));
+		reward.setCount(TypeTranslatedUtil.stringToInt(e.attributeValue(COUNT)));
 		
 		return reward;
+	}
+	
+	public static List<RewardBean> xmlParseLottery(int type) {
+		Logger logger = Logger.getLogger(WinBean.class);
+		List<RewardBean> list = new ArrayList<RewardBean>();
+		String fileName = LOTTERY_FILE_PREFIX + type;
+		try {
+			String filePath = DirConst.getConfigXmlPath(fileName);
+			SAXReader reader = new SAXReader();
+			InputStream inStream = new FileInputStream(new File(filePath));
+			Document doc = reader.read(inStream);
+			// 获取根节点
+			Element root = doc.getRootElement();
+			List<?> rootList = root.elements();
+			for (int i = 0; i < rootList.size(); i++) {
+				Element rewardElement = (Element) rootList.get(i);
+				RewardBean reward = RewardBean.xmlParse(rewardElement);
+				list.add(reward);
+			}
+		} catch (Exception e) {
+			logger.error("parse " + fileName + " failed");
+		}
+
+		return list;
 	}
 	
 	public static List<RewardInfo> buildRewardInfoList(List<RewardBean> rewardList) {
@@ -90,15 +121,16 @@ public class RewardBean {
 			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
 			rewardInfo.setItemId(reward.getItemId());
 			rewardInfo.setName(reward.getName());
-			rewardInfo.setNumber(reward.getNumber());
+			rewardInfo.setCount(reward.getCount());
 			rewardInfoList.add(rewardInfo.build());
 		}
 		
 		return rewardInfoList;
 	}
 	
-	private static final String ITEM_ID = "itemid";
+	private static final String LOTTERY_FILE_PREFIX = "lol_lottery_";
+	private static final String ITEM_ID = "itemId";
 	private static final String NAME = "name";
 	private static final String WEIGHT = "weight";
-	private static final String NUMBER = "number";
+	private static final String COUNT = "count";
 }

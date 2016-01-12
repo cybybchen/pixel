@@ -6,6 +6,8 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.model.hero.HeroBean;
+import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -120,6 +122,18 @@ public class HeroInfoBean {
 		}
 		
 		return builderList;
+	}
+	
+	public static HeroInfoBean initHeroInfo(HeroBean hero) {
+		HeroInfoBean heroInfo = new HeroInfoBean();
+		heroInfo.setId(0);
+		heroInfo.setLevel(1);
+		heroInfo.setStarLevel(1);
+		heroInfo.setEquipLevel(1);
+		heroInfo.setEquipInfo(0);
+		heroInfo.setSkillInfoList(SkillInfoBean.initSkillInfo(hero.getSkillList()));
+		
+		return heroInfo;
 	}
 	
 	private static final String ID = "id";

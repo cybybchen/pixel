@@ -7,10 +7,20 @@ import org.slf4j.LoggerFactory;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.HeadInfo;
+import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
+import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
+import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
+import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AccountService;
 import com.trans.pixel.service.UserService;
@@ -74,6 +84,76 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestLevelResultCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLevelStartCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLevelLootStartCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLevelLootResultCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackRelativeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLootResultCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestHeroLevelUpCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAddHeroEquipCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUpdateTeamCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRefreshRelatedUserCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLotteryHeroCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

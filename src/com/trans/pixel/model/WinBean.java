@@ -81,6 +81,7 @@ public class WinBean {
 					rewardList.add(reward);
 				}
 				win.setRewardList(rewardList);
+				list.add(win);
 
 			}
 		} catch (Exception e) {

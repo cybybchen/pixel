@@ -227,7 +227,7 @@ public class PvpFieldBean {
 		return list;
 	}
 	
-	private static final String FILE_NAME = "lol_pvpfield.xml";
+	private static final String FILE_NAME = "pvp/lol_pvpfield.xml";
 	private static final String ID = "id";
 	private static final String NAME = "name";
 	private static final String YIELD = "yield";

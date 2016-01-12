@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -17,9 +18,54 @@ import com.trans.pixel.model.userinfo.UserLevelLootBean;
 public class RewardService {
 	@Resource
 	private LootService lootService;
+	@Resource
+	private UserHeroService userHeroService;
+	@Resource
+	private UserService userService;
 	
 	public void doRewards(UserBean user, List<RewardBean> rewardList) {
+		int coin = user.getCoin();
+		int jewel = user.getJewel();
+		for (RewardBean reward : rewardList) {
+			doReward(user, reward);
+		}
 		
+		if (coin != user.getCoin() || jewel != user.getJewel()) {
+			userService.updateUser(user);
+		}
+	}
+	
+	public void doReward(UserBean user, RewardBean reward) {
+		int rewardId = reward.getItemId();
+		int rewardCount = reward.getCount();
+		if (rewardId > RewardConst.HERO) {
+			int heroId = rewardId % RewardConst.HERO_STAR;
+			userHeroService.addUserHero(user.getId(), heroId);
+		} else if (rewardId > RewardConst.PROP) {
+			
+		} else if (rewardId > RewardConst.PACKAGE) {
+			
+		} else if (rewardId > RewardConst.CHIP) {
+			
+		} else if (rewardId > RewardConst.EQUIPMENT) {
+			
+		} else {
+			switch (rewardId) {
+				case RewardConst.EXP:
+					user.setExp(user.getExp() + rewardCount);
+					break;
+				case RewardConst.COIN:
+					user.setCoin(user.getCoin() + rewardCount);
+					break;
+				case RewardConst.JEWEL:
+					user.setJewel(user.getJewel() + rewardCount);
+					break;
+				case RewardConst.MAGICCOIN:
+					break;
+				default:
+					break;
+			}
+		}
 	}
 	
 	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord) {

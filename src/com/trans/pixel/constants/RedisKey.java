@@ -54,4 +54,10 @@ public class RedisKey {
 	
 	//zhanli rank redis
 	public static final String RANK_PREFIX = "rank_";
+	
+	//pvp xiaoguai
+	public static final String PVP_XIAOGUAI_REFIX = "pvp_xiaoguai_";
+	
+	//lottery 
+	public static final String LOTTERY_KEY_PREFIX = "lorrery_";
 }

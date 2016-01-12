@@ -15,7 +15,9 @@ public class RewardConst {
 	
 	public static final int PACKAGE = 30000;	
 	
-	public static final int ITEM = 40000;
+	public static final int PROP = 40000;
 	
 	public static final int HERO = 50000;
+	
+	public static final int HERO_STAR = 1000;
 }

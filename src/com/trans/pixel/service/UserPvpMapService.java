@@ -27,6 +27,15 @@ public class UserPvpMapService {
 		return userPvpMapList;
 	}
 	
+	public UserPvpMapBean selectUserPvpMap(long userId, int mapId) {
+		UserPvpMapBean userPvpMap = userPvpMapRedisService.selectUserPvpMap(userId, mapId);
+		if (userPvpMap == null) {
+			userPvpMap = userPvpMapMapper.selectUserPvpMap(userId, mapId);
+		}
+		
+		return userPvpMap;
+	}
+	
 	public void unlockUserPvpMap(long userId, int zhanli) {
 		
 	}

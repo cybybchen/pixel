@@ -6,8 +6,9 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.protoc.Commands.HeroInfo;
+import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserHeroBean {
@@ -105,6 +106,22 @@ public class UserHeroBean {
 		bean.setHeroInfo(json.getString(HERO_INFO));
 
 		return bean;
+	}
+	
+	public UserHero toUserHeroBuilder() {
+		UserHero.Builder builder = UserHero.newBuilder();
+		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
+		List<HeroInfoBean> heroInfoList = toHeroInfoList();
+		for (HeroInfoBean heroInfo : heroInfoList) {
+			HeroInfo heroInfoBuilder = heroInfo.buildHeroInfo();
+			heroInfoBuilderList.add(heroInfoBuilder);
+			
+		}
+		builder.setUserId(userId);
+		builder.setHeroId(heroId);
+		builder.addAllHeroInfo(heroInfoBuilderList);
+		
+		return builder.build();
 	}
 	
 	private static final String ID = "id";

@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -17,6 +19,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 
 @Repository
 public class UserRedisService {
+	Logger log = LoggerFactory.getLogger(UserRedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -42,6 +45,7 @@ public class UserRedisService {
 						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_PREFIX + user.getId());
 				
 				
+				log.debug("user is:" + user.toMap());
 				bhOps.putAll(user.toMap());
 				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				

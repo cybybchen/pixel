@@ -17,10 +17,10 @@ import org.dom4j.io.SAXReader;
 import com.trans.pixel.constants.DirConst;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
-public class PvpMineBean {
+public class PvpXiaoguaiBean {
 	private int id = 0;
 	private String name = "";
-	private List<MineBean> mineList = new ArrayList<MineBean>();
+	private List<FieldBean> fieldList = new ArrayList<FieldBean>();
 	public int getId() {
 		return id;
 	}
@@ -33,44 +33,44 @@ public class PvpMineBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<MineBean> getMineList() {
-		return mineList;
+	public List<FieldBean> getFieldList() {
+		return fieldList;
 	}
-	public void setMineList(List<MineBean> mineList) {
-		this.mineList = mineList;
+	public void setFieldList(List<FieldBean> fieldList) {
+		this.fieldList = fieldList;
 	}
 	
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
 		json.put(NAME, name);
-		json.put(MINE, mineList);
+		json.put(FIELD, fieldList);
 		
 		return json.toString();
 	}
-	public static PvpMineBean fromJson(String jsonString) {
+	public static PvpXiaoguaiBean fromJson(String jsonString) {
 		if (jsonString == null)
 			return null;
-		PvpMineBean bean = new PvpMineBean();
+		PvpXiaoguaiBean bean = new PvpXiaoguaiBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
 		bean.setId(json.getInt(ID));
 		bean.setName(json.getString(NAME));
 		
-		List<MineBean> mineList = new ArrayList<MineBean>();
-		JSONArray mineArray = TypeTranslatedUtil.jsonGetArray(json, MINE);
-		for (int i = 0;i < mineArray.size(); ++i) {
-			MineBean mine = MineBean.fromJson(mineArray.getString(i));
-			mineList.add(mine);
+		List<FieldBean> fieldList = new ArrayList<FieldBean>();
+		JSONArray fieldArray = TypeTranslatedUtil.jsonGetArray(json, FIELD);
+		for (int i = 0;i < fieldArray.size(); ++i) {
+			FieldBean field = FieldBean.fromJson(fieldArray.getString(i));
+			fieldList.add(field);
 		}
-		bean.setMineList(mineList);
-	
+		bean.setFieldList(fieldList);
+		
 		return bean;
 	}
 	
-	public static List<PvpMineBean> xmlParse() {
+	public static List<PvpXiaoguaiBean> xmlParse() {
 		Logger logger = Logger.getLogger(PvpMineBean.class);
-		List<PvpMineBean> list = new ArrayList<PvpMineBean>();
+		List<PvpXiaoguaiBean> list = new ArrayList<PvpXiaoguaiBean>();
 		String fileName = FILE_NAME;
 		try {
 			String filePath = DirConst.getConfigXmlPath(fileName);
@@ -79,15 +79,15 @@ public class PvpMineBean {
 			Document doc = reader.read(inStream);
 			// 获取根节点
 			Element root = doc.getRootElement();
-			List<?> pvpMineList = root.elements();
-			for (int i = 0; i < pvpMineList.size(); i++) {
-				PvpMineBean pvpMine = new PvpMineBean();
-				Element pvpMineElement = (Element) pvpMineList.get(i);
-				pvpMine.setId(TypeTranslatedUtil.stringToInt(pvpMineElement.attributeValue(ID)));
-				pvpMine.setName(pvpMineElement.attributeValue(NAME));
-				pvpMine.setMineList(MineBean.xmlParse(pvpMineElement.elements(MINE)));
+			List<?> pvpXiaoguaiList = root.elements();
+			for (int i = 0; i < pvpXiaoguaiList.size(); i++) {
+				PvpXiaoguaiBean pvpXiaoguao = new PvpXiaoguaiBean();
+				Element pvpXiaoguaiElement = (Element) pvpXiaoguaiList.get(i);
+				pvpXiaoguao.setId(TypeTranslatedUtil.stringToInt(pvpXiaoguaiElement.attributeValue(ID)));
+				pvpXiaoguao.setName(pvpXiaoguaiElement.attributeValue(NAME));
+				pvpXiaoguao.setFieldList(FieldBean.xmlParse(pvpXiaoguaiElement.elements(FIELD)));
 				
-				list.add(pvpMine);
+				list.add(pvpXiaoguao);
 			}
 		} catch (Exception e) {
 			logger.error("parse " + fileName + " failed");
@@ -96,8 +96,8 @@ public class PvpMineBean {
 		return list;
 	}
 	
-	private static final String FILE_NAME = "pvp/lol_pvpkuangdian.xml";
+	private static final String FILE_NAME = "pvp/lol_pvpxiaoguai.xml";
 	private static final String ID = "id";
 	private static final String NAME = "name";
-	private static final String MINE = "kuangdian";
+	private static final String FIELD = "field";
 }

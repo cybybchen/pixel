@@ -3,7 +3,7 @@
 <mapper namespace="com.trans.pixel.model.mapper.AccountMapper">
 
 	<select id="queryUserId" resultType="long">
-	    SELECT * from account where server_id=#{serverId} and account=#{account}
+	    SELECT id from account where server_id=#{serverId} and account=#{account}
 	</select>
 	
 	<insert id="registerAccount" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.AccountBean">

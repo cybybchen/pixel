@@ -23,11 +23,15 @@ public class AccountService {
     	log.debug("serverId={},The account={}", serverId, account);
     	long userId = accountRedis.getUserIdByServerIdAndAccount(serverId, account);
     	
-    	if (userId == 0)
-    		userId = accountMapper.queryUserId(serverId, account);
-    	
-    	if (userId == 0)
-    		userId = registerAccount(serverId, account);
+    	if (userId == 0) {
+    		try {
+	    		Object object = accountMapper.queryUserId(serverId, account);
+	    		if (object != null)
+	    			userId = (Integer)object;
+	    		} catch (Exception e) {
+	//				logger.error("get userId from register failed");
+			}
+    	}
         
         return userId;
     }
