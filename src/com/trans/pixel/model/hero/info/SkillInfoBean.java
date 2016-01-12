@@ -56,7 +56,7 @@ public class SkillInfoBean {
 		for (HeroSkillBean skill : skillList) {
 			if (skill.getUnlock() == 1) {
 				SkillInfoBean skillInfo = new SkillInfoBean();
-				skillInfo.setSkillId(skill.getSkillId());
+				skillInfo.setSkillId(skill.getSkillid());
 				skillInfo.setSkillLevel(1);
 				skillInfoList.add(skillInfo);
 				break;

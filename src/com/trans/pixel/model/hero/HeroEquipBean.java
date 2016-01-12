@@ -10,18 +10,18 @@ import org.dom4j.Element;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroEquipBean {
-	private int equipId = 0;
+	private int equipid = 0;
 	private int arm1 = 0;
 	private int arm2 = 0;
 	private int arm3 = 0;
 	private int arm4 = 0;
 	private int arm5 = 0;
 	private int arm6 = 0;
-	public int getEquipId() {
-		return equipId;
+	public int getEquipid() {
+		return equipid;
 	}
-	public void setEquipId(int equipId) {
-		this.equipId = equipId;
+	public void setEquipid(int equipid) {
+		this.equipid = equipid;
 	}
 	public int getArm1() {
 		return arm1;
@@ -109,7 +109,7 @@ public class HeroEquipBean {
 	
 	public String toJson() {
 		JSONObject json = new JSONObject();
-		json.put(EQUIPID, equipId);
+		json.put(EQUIPID, equipid);
 		json.put(ARM1, arm1);
 		json.put(ARM2, arm2);
 		json.put(ARM3, arm3);
@@ -125,7 +125,7 @@ public class HeroEquipBean {
 		HeroEquipBean bean = new HeroEquipBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
-		bean.setEquipId(json.getInt(EQUIPID));
+		bean.setEquipid(json.getInt(EQUIPID));
 		bean.setArm1(json.getInt(ARM1));
 		bean.setArm2(json.getInt(ARM2));
 		bean.setArm3(json.getInt(ARM3));
@@ -142,7 +142,7 @@ public class HeroEquipBean {
 		for (int i = 0; i < elementList.size(); i++) {
 			HeroEquipBean heroEquip = new HeroEquipBean();
 			Element heroEquipElement = (Element) elementList.get(i);
-			heroEquip.setEquipId(TypeTranslatedUtil.stringToInt(heroEquipElement.attributeValue(EQUIPID)));
+			heroEquip.setEquipid(TypeTranslatedUtil.stringToInt(heroEquipElement.attributeValue(EQUIPID)));
 			heroEquip.setArm1(TypeTranslatedUtil.stringToInt(heroEquipElement.attributeValue(ARM1)));
 			heroEquip.setArm2(TypeTranslatedUtil.stringToInt(heroEquipElement.attributeValue(ARM2)));
 			heroEquip.setArm3(TypeTranslatedUtil.stringToInt(heroEquipElement.attributeValue(ARM3)));

@@ -10,25 +10,26 @@ import org.dom4j.Element;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroStarBean {
-	private int starId = 0;
-	private float starValue = 0;
-	public int getStarId() {
-		return starId;
-	}
-	public void setStarId(int starId) {
-		this.starId = starId;
-	}
-	public float getStarValue() {
-		return starValue;
-	}
-	public void setStarValue(float starValue) {
-		this.starValue = starValue;
-	}
+	private int starid = 0;
+	private float starvalue = 0;
 	
+	
+	public int getStarid() {
+		return starid;
+	}
+	public void setStarid(int starid) {
+		this.starid = starid;
+	}
+	public float getStarvalue() {
+		return starvalue;
+	}
+	public void setStarvalue(float starvalue) {
+		this.starvalue = starvalue;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
-		json.put(STARID, starId);
-		json.put(STARVALUE, starValue);
+		json.put(STARID, starid);
+		json.put(STARVALUE, starvalue);
 		
 		return json.toString();
 	}
@@ -38,8 +39,8 @@ public class HeroStarBean {
 		HeroStarBean bean = new HeroStarBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
-		bean.setStarId(json.getInt(STARID));
-		bean.setStarValue(json.getInt(STARVALUE));
+		bean.setStarid(json.getInt(STARID));
+		bean.setStarvalue(json.getInt(STARVALUE));
 
 		return bean;
 	}
@@ -50,8 +51,8 @@ public class HeroStarBean {
 		for (int i = 0; i < elementList.size(); i++) {
 			HeroStarBean heroStar = new HeroStarBean();
 			Element heroStarElement = (Element) elementList.get(i);
-			heroStar.setStarId(TypeTranslatedUtil.stringToInt(heroStarElement.attributeValue(STARID)));
-			heroStar.setStarValue(TypeTranslatedUtil.stringToInt(heroStarElement.attributeValue(STARVALUE)));
+			heroStar.setStarid(TypeTranslatedUtil.stringToInt(heroStarElement.attributeValue(STARID)));
+			heroStar.setStarvalue(TypeTranslatedUtil.stringToInt(heroStarElement.attributeValue(STARVALUE)));
 			heroStarList.add(heroStar);
 		}
 		

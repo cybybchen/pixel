@@ -141,7 +141,7 @@ public class HeroBean {
 
 	public HeroEquipBean getEquip(int equipId) {
 		for (HeroEquipBean equip : equipList) {
-			if (equip.getEquipId() == equipId)
+			if (equip.getEquipid() == equipId)
 				return equip;
 		}
 		

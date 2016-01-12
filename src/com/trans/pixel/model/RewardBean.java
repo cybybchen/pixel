@@ -92,7 +92,7 @@ public class RewardBean {
 	public static List<RewardBean> xmlParseLottery(int type) {
 		Logger logger = Logger.getLogger(WinBean.class);
 		List<RewardBean> list = new ArrayList<RewardBean>();
-		String fileName = LOTTERY_FILE_PREFIX + type;
+		String fileName = LOTTERY_FILE_PREFIX + type + ".xml";
 		try {
 			String filePath = DirConst.getConfigXmlPath(fileName);
 			SAXReader reader = new SAXReader();
@@ -129,7 +129,7 @@ public class RewardBean {
 	}
 	
 	private static final String LOTTERY_FILE_PREFIX = "lol_lottery_";
-	private static final String ITEM_ID = "itemId";
+	private static final String ITEM_ID = "itemid";
 	private static final String NAME = "name";
 	private static final String WEIGHT = "weight";
 	private static final String COUNT = "count";

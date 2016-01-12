@@ -10,14 +10,14 @@ import org.dom4j.Element;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroSkillBean {
-	private int skillId = 0;
+	private int skillid = 0;
 	private String skill = "";
 	private int unlock = 0;
-	public int getSkillId() {
-		return skillId;
+	public int getSkillid() {
+		return skillid;
 	}
-	public void setSkillId(int skillId) {
-		this.skillId = skillId;
+	public void setSkillid(int skillid) {
+		this.skillid = skillid;
 	}
 	public String getSkill() {
 		return skill;
@@ -34,7 +34,7 @@ public class HeroSkillBean {
 	
 	public String toJson() {
 		JSONObject json = new JSONObject();
-		json.put(SKILL_ID, skillId);
+		json.put(SKILL_ID, skillid);
 		json.put(SKILL, skill);
 		json.put(UNLOCK, unlock);
 		
@@ -46,7 +46,7 @@ public class HeroSkillBean {
 		HeroSkillBean bean = new HeroSkillBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
-		bean.setSkillId(json.getInt(SKILL_ID));
+		bean.setSkillid(json.getInt(SKILL_ID));
 		bean.setSkill(json.getString(SKILL));
 		bean.setUnlock(json.getInt(UNLOCK));
 
@@ -59,7 +59,7 @@ public class HeroSkillBean {
 		for (int i = 0; i < elementList.size(); i++) {
 			HeroSkillBean heroSkill = new HeroSkillBean();
 			Element heroSkillElement = (Element) elementList.get(i);
-			heroSkill.setSkillId(TypeTranslatedUtil.stringToInt(heroSkillElement.attributeValue(SKILL_ID)));
+			heroSkill.setSkillid(TypeTranslatedUtil.stringToInt(heroSkillElement.attributeValue(SKILL_ID)));
 			heroSkill.setSkill(heroSkillElement.attributeValue(SKILL));
 			heroSkill.setUnlock(TypeTranslatedUtil.stringToInt(heroSkillElement.attributeValue(UNLOCK)));
 			heroSkillList.add(heroSkill);
