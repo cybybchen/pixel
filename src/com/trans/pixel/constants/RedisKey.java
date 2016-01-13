@@ -2,6 +2,7 @@ package com.trans.pixel.constants;
 
 public class RedisKey {
 	public final static String PREFIX = "pixel:";
+	public final static String SPLIT = ":";
 	
 	public static final String SERVER_PREFIX = "server_";
 	
@@ -64,4 +65,7 @@ public class RedisKey {
 	
 	//lottery 
 	public static final String LOTTERY_KEY_PREFIX = "lorrery_";
+	
+	//mail
+	public static final String MAIL_PREFIX = "mail_";
 }

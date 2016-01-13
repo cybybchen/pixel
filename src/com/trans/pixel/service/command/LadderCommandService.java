@@ -18,7 +18,6 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.LadderService;
 
@@ -29,7 +28,7 @@ public class LadderCommandService extends BaseCommandService {
 	@Resource
 	private PushCommandService pushCommandService;
 	
-	public void getLadderRankList(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
+	public void handleGetLadderRankListCommand(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
 		ResponseGetLadderRankListCommand.Builder builder = ResponseGetLadderRankListCommand.newBuilder();
 		List<UserRankBean> rankList = ladderService.getRankList(user.getServerId());
 		List<UserRank> userRankBuilderList = super.buildUserRankList(rankList);
@@ -38,13 +37,8 @@ public class LadderCommandService extends BaseCommandService {
 		responseBuilder.setGetLadderRankListCommand(builder.build());
 	}
 	
-	public void getUserLadderRankList(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
-		ResponseGetUserLadderRankListCommand.Builder builder = ResponseGetUserLadderRankListCommand.newBuilder();
-		List<UserRankBean> rankList = ladderService.getRankListByUserId(user.getServerId(), user.getId());
-		List<UserRank> userRankBuilderList = super.buildUserRankList(rankList);
-		builder.addAllUserRank(userRankBuilderList);
-		
-		responseBuilder.setGetUserLadderRankListCommand(builder.build());
+	public void handleGetUserLadderRankListCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
+		super.handleGetUserLadderRankListCommand(responseBuilder, user);
 	}
 	
 	public void attackLadderMode(RequestAttackLadderModeCommand cmd, Builder responseBuilder, UserBean user) {	
@@ -60,7 +54,7 @@ public class LadderCommandService extends BaseCommandService {
 		
 		if (result == SuccessConst.LADDER_ATTACK_SUCCESS) {
 			builder.setRet(true);
-			
+			pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
 		} else 
 			builder.setRet(false);
 		

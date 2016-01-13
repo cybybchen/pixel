@@ -49,11 +49,6 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {
-		ResponseGetUserLadderRankListCommand.Builder builder = ResponseGetUserLadderRankListCommand.newBuilder();
-		List<UserRankBean> rankList = ladderService.getRankListByUserId(user.getServerId(), user.getId());
-		List<UserRank> userRankBuilderList = super.buildUserRankList(rankList);
-		builder.addAllUserRank(userRankBuilderList);
-		
-		responseBuilder.setGetUserLadderRankListCommand(builder.build());
+		super.handleGetUserLadderRankListCommand(responseBuilder, user);
 	}
 }

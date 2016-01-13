@@ -23,6 +23,7 @@ public class UserBean {
 	public int refreshLeftTimes = 0;
 	public String lastLoginTime = "";
 	public int ladderModeLeftTimes = 0;
+	public long ladderModeHistoryTop = 10000;
 	public long getId() {
 		return id;
 	}
@@ -125,6 +126,12 @@ public class UserBean {
 	public void setLadderModeLeftTimes(int ladderModeLeftTimes) {
 		this.ladderModeLeftTimes = ladderModeLeftTimes;
 	}
+	public long getLadderModeHistoryTop() {
+		return ladderModeHistoryTop;
+	}
+	public void setLadderModeHistoryTop(long ladderModeHistoryTop) {
+		this.ladderModeHistoryTop = ladderModeHistoryTop;
+	}
 	public Map<String, String> toMap() {
 		Map<String, String> userMap = new HashMap<String, String>();
 		userMap.put(ID, "" + id);
@@ -144,6 +151,7 @@ public class UserBean {
 		userMap.put(REFRESH_LEFT_TIMES, "" + refreshLeftTimes);
 		userMap.put(LAST_LOGIN_TIME, "" + lastLoginTime);
 		userMap.put(LADDER_MODE_LEFT_TIMES, "" + ladderModeLeftTimes);
+		userMap.put(LADDER_MODE_HISTORY_TOP, "" + ladderModeHistoryTop);
 		
 		return userMap;
 	}
@@ -169,6 +177,7 @@ public class UserBean {
 		userBean.setRefreshLeftTimes(TypeTranslatedUtil.stringToInt(userMap.get(REFRESH_LEFT_TIMES)));
 		userBean.setLastLoginTime(userMap.get(LAST_LOGIN_TIME));
 		userBean.setLadderModeLeftTimes(TypeTranslatedUtil.stringToInt(userMap.get(LADDER_MODE_LEFT_TIMES)));
+		userBean.setLadderModeHistoryTop(TypeTranslatedUtil.stringToLong(userMap.get(LADDER_MODE_HISTORY_TOP)));
 		
 		return userBean;
 	}
@@ -190,4 +199,5 @@ public class UserBean {
 	private final static String REFRESH_LEFT_TIMES = "refresh_left_times";
 	private final static String LAST_LOGIN_TIME = "last_login_time";
 	private final static String LADDER_MODE_LEFT_TIMES = "ladder_mode_left_times";
+	private final static String LADDER_MODE_HISTORY_TOP = "ladder_mode_history_mode";
 }
