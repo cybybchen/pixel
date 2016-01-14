@@ -22,6 +22,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 
 @Repository
@@ -53,7 +54,7 @@ public class MailRedisService {
 	}
 
 	
-	public List<MailBean> getMailByUserIdAndType(final long userId, final int type) {
+	public List<MailBean> getMailListByUserIdAndType(final long userId, final int type) {
 		return redisTemplate.execute(new RedisCallback<List<MailBean>>() {
 			@Override
 			public List<MailBean> doInRedis(RedisConnection arg0)
@@ -69,7 +70,7 @@ public class MailRedisService {
 					if (mail != null) {
 						if (isInvalidMail(mail.getStartDate())) {
 							bhOps.delete("" + mail.getId());
-						} else
+						} else if (!mail.isRead())
 							mailList.add(mail);
 					}
 					
@@ -82,7 +83,7 @@ public class MailRedisService {
 		});
 	}
 
-	public void deleteMailByTypeAndId(final long userId, final int type, final int id) {
+	public void deleteMail(final long userId, final int type, final int id) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -90,6 +91,19 @@ public class MailRedisService {
 				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(userId, type));
 				bhOps.delete(id);
+				return null;
+			}
+		});
+	}
+	
+	public void updateMail(final MailBean mail) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+						.boundHashOps(buildMailRedisKey(mail.getUserId(), mail.getType()));
+				bhOps.put(mail.getId(), mail.toJson());
 				return null;
 			}
 		});
@@ -120,7 +134,36 @@ public class MailRedisService {
 		});
 	}
 
-	public int batchDeleteMail(final long userId, final int type, final ArrayList<Integer> idList) {
+	public List<MailBean> getMailList(final long userId, final int type, final List<Integer> idList) {
+		return redisTemplate.execute(new RedisCallback<List<MailBean>>() {
+			@Override
+			public List<MailBean> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				List<MailBean> mailList = new ArrayList<MailBean>();
+				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+						.boundHashOps(buildMailRedisKey(userId, type));
+				
+				Iterator<Entry<Integer, String>> it= bhOps.entries().entrySet().iterator();
+				while(it.hasNext()) {
+					Entry<Integer, String> entry = it.next();
+					MailBean mail = MailBean.fromJson(entry.getValue());
+					if (mail != null) {
+						if (isInvalidMail(mail.getStartDate())) {
+							bhOps.delete("" + mail.getId());
+						} else if (!mail.isRead() && idList.contains(mail.getId()))
+							mailList.add(mail);
+					}
+					
+					if (mailList.size() >= MailConst.MAIL_COUNT_MAX_ONTTYPE)
+						return mailList;
+				}
+				
+				return mailList;
+			}
+		});
+	}
+	
+	public int deleteMail(final long userId, final int type, final List<Integer> idList) {
 		return redisTemplate.execute(new RedisCallback<Integer>() {
 			@Override
 			public Integer doInRedis(RedisConnection arg0)
@@ -139,7 +182,7 @@ public class MailRedisService {
 	}
 
 	public MailBean getMailByTypeAndUserIds(final long toUserId, final int type, final long fromUserId) {
-		List<MailBean> mailList = getMailByUserIdAndType(toUserId,
+		List<MailBean> mailList = getMailListByUserIdAndType(toUserId,
 				type);
 		if (mailList != null && mailList.size() > 0) {
 			for (MailBean mail : mailList) {
@@ -170,7 +213,7 @@ public class MailRedisService {
 	}
 	
 	private static boolean isInvalidMail(String time) {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 		String currentTimeStr = df.format(new Date());
 		Date currentDate = null;
 		Calendar calendar = Calendar.getInstance();   

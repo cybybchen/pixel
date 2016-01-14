@@ -8,22 +8,27 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.Mail;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseLootResultCommand;
+import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserMine;
 import com.trans.pixel.protoc.Commands.UserRank;
-import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.LadderService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class BaseCommandService {
@@ -89,6 +94,15 @@ public class BaseCommandService {
 		return userRankBuilderList;
 	}
 	
+	protected List<Mail> buildMailList(List<MailBean> mailList) {
+		List<Mail> mailBuilderList = new ArrayList<Mail>();
+		for (MailBean mail : mailList) {
+			mailBuilderList.add(mail.buildMail());
+		}
+		
+		return mailBuilderList;
+	}
+	
 	protected void handleGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {	
 		ResponseGetUserLadderRankListCommand.Builder builder = ResponseGetUserLadderRankListCommand.newBuilder();
 		List<UserRankBean> rankList = ladderService.getRankListByUserId(user.getServerId(), user.getId());
@@ -96,5 +110,24 @@ public class BaseCommandService {
 		builder.addAllUserRank(userRankBuilderList);
 		
 		responseBuilder.setGetUserLadderRankListCommand(builder.build());
+	}
+	
+	protected MailBean buildMail(long userId, String content, int type, List<RewardBean> rewardList) {
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setContent(content);
+		mail.setType(type);
+		mail.setRewardList(rewardList);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
+	}
+	
+	protected ResponseMessageCommand buildMessageCommand(SuccessConst success) {
+		ResponseMessageCommand.Builder builder = ResponseMessageCommand.newBuilder();
+		builder.setCode(success.getCode());
+		builder.setMsg(success.getMesssage());
+		
+		return builder.build();
 	}
 }

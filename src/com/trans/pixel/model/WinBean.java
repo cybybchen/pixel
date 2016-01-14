@@ -35,7 +35,7 @@ public class WinBean {
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
-		json.put(REWARDLIST, rewardList);
+		json.put(REWARD_LIST, rewardList);
 		
 		return json.toString();
 	}
@@ -47,7 +47,7 @@ public class WinBean {
 		
 		bean.setId(json.getInt(ID));
 		List<RewardBean> list = new ArrayList<RewardBean>();
-		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, REWARDLIST);
+		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, REWARD_LIST);
 		for (int i = 0;i < array.size(); ++i) {
 			RewardBean reward = RewardBean.fromJson(array.getString(i));
 			list.add(reward);
@@ -93,5 +93,5 @@ public class WinBean {
 	
 	private static final String FILE_NAME = "lol_win.xml";
 	private static final String ID = "id";
-	private static final String REWARDLIST = "rewardList";
+	private static final String REWARD_LIST = "reward_list";
 }

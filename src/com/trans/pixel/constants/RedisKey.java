@@ -1,8 +1,13 @@
 package com.trans.pixel.constants;
 
 public class RedisKey {
+	public static String buildConfigKey(String configKey) {
+		return PREFIX + CONFIG_PREFIX + configKey;
+	}
 	public final static String PREFIX = "pixel:";
 	public final static String SPLIT = ":";
+	
+	public static final String CONFIG_PREFIX = "config:";
 	
 	public static final String SERVER_PREFIX = "server_";
 	
@@ -59,6 +64,8 @@ public class RedisKey {
 	//ladder rank redis
 	public static final String LADDER_RANK_KEY = "ladder_rank_key";
 	public static final String LADDER_RANK_INFO_KEY = "ladder_rank_info_key";
+	public static final String LADDER_RANKING_CONFIG_KEY = "ladder_ranking_config_key";
+	public static final String LADDER_DAILY_CONFIG_KEY = "ladder_daily_config_key";
 	
 	//pvp xiaoguai
 	public static final String PVP_XIAOGUAI_REFIX = "pvp_xiaoguai_";

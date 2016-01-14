@@ -14,6 +14,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.trans.pixel.constants.DirConst;
+import com.trans.pixel.protoc.Commands.Mail;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 

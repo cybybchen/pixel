@@ -49,8 +49,17 @@ public class DateUtil {
      * 
      * @return
      */
-    public static String getCurrentDateString() {
+    public static String getCurrentDayDateString() {
         return new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).format(new Date());
+    }
+    
+    /**
+     * 获得当天的格式化日期。
+     * 
+     * @return
+     */
+    public static String getCurrentDateString() {
+        return new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date());
     }
 
     /**

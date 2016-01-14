@@ -7,19 +7,24 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.ResponseAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.LadderService;
+import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.UserService;
 
 @Service
 public class LadderCommandService extends BaseCommandService {
@@ -27,6 +32,10 @@ public class LadderCommandService extends BaseCommandService {
 	private LadderService ladderService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private UserService userService;
+	@Resource
+	private MailService mailService;
 	
 	public void handleGetLadderRankListCommand(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
 		ResponseGetLadderRankListCommand.Builder builder = ResponseGetLadderRankListCommand.newBuilder();
@@ -42,7 +51,7 @@ public class LadderCommandService extends BaseCommandService {
 	}
 	
 	public void attackLadderMode(RequestAttackLadderModeCommand cmd, Builder responseBuilder, UserBean user) {	
-		ResponseAttackLadderModeCommand.Builder builder = ResponseAttackLadderModeCommand.newBuilder();
+		ResponseMessageCommand.Builder builder = ResponseMessageCommand.newBuilder();
 		long attackRank = cmd.getRank();
 		
 		ResultConst result = ladderService.attack(user, attackRank);
@@ -53,12 +62,24 @@ public class LadderCommandService extends BaseCommandService {
 		}
 		
 		if (result == SuccessConst.LADDER_ATTACK_SUCCESS) {
-			builder.setRet(true);
 			pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
-		} else 
-			builder.setRet(false);
+			updateUserLadderHistoryTop(user, attackRank, responseBuilder);
+		} 
 		
+		builder.setCode(result.getCode());
 		builder.setMsg(result.getMesssage());
-		responseBuilder.setAttackLadderModeCommand(builder.build());
+		responseBuilder.setMessageCommand(builder.build());
+	}
+	
+	private void updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
+		long oldRank = user.getLadderModeHistoryTop();
+		if (oldRank > newRank) {
+			user.setLadderModeHistoryTop(newRank);
+			userService.updateUser(user);
+			String content = "天梯奖励";
+			List<RewardBean> rewardList = ladderService.getRankChangeReward(newRank, oldRank);
+			MailBean mail = super.buildMail(user.getId(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
+			mailService.addMail(mail);
+		}
 	}
 }

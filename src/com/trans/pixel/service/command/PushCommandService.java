@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
-import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
-import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.PvpMapService;
@@ -50,5 +48,11 @@ public class PushCommandService extends BaseCommandService {
 	
 	public void pushGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {
 		super.handleGetUserLadderRankListCommand(responseBuilder, user);
+	}
+	
+	public void pushUserInfoCommand(Builder responseBuilder, UserBean user) {
+		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
+		super.buildUserInfo(builder, user);
+		responseBuilder.setUserInfoCommand(builder.build());
 	}
 }

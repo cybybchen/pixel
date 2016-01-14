@@ -1,8 +1,14 @@
 package com.trans.pixel.model;
 
-import com.trans.pixel.utils.TypeTranslatedUtil;
+import java.util.ArrayList;
+import java.util.List;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+
+import com.trans.pixel.protoc.Commands.Mail;
+import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class MailBean {
 	private int id = 0;
@@ -12,8 +18,8 @@ public class MailBean {
 	private String startDate = "";
 	private String endDate = "";
 	private String content = "";
-	private int rewardId = 0;
-	private int rewardCount = 0;
+	List<RewardBean> rewardList = new ArrayList<RewardBean>();
+	boolean isRead = false;
 	public int getId() {
 		return id;
 	}
@@ -56,19 +62,19 @@ public class MailBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getRewardId() {
-		return rewardId;
-	}
-	public void setRewardId(int rewardId) {
-		this.rewardId = rewardId;
-	}
-	public int getRewardCount() {
-		return rewardCount;
-	}
-	public void setRewardCount(int rewardCount) {
-		this.rewardCount = rewardCount;
-	}
 	
+	public List<RewardBean> getRewardList() {
+		return rewardList;
+	}
+	public void setRewardList(List<RewardBean> rewardList) {
+		this.rewardList = rewardList;
+	}
+	public boolean isRead() {
+		return isRead;
+	}
+	public void setRead(boolean isRead) {
+		this.isRead = isRead;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -78,8 +84,8 @@ public class MailBean {
 		json.put(START_DATE, startDate);
 		json.put(END_DATE, endDate);
 		json.put(CONTENT, content);
-		json.put(REWARD_ID, rewardId);
-		json.put(REWARD_COUNT, rewardCount);
+		json.put(REWARD_LIST, rewardList);
+		json.put(IS_READ, isRead);
 		
 		return json.toString();
 	}
@@ -96,10 +102,35 @@ public class MailBean {
 		bean.setStartDate(TypeTranslatedUtil.jsonGetString(json, START_DATE));
 		bean.setEndDate(TypeTranslatedUtil.jsonGetString(json, END_DATE));
 		bean.setContent(TypeTranslatedUtil.jsonGetString(json, CONTENT));
-		bean.setRewardId(TypeTranslatedUtil.jsonGetInt(json, REWARD_ID));
-		bean.setRewardCount(TypeTranslatedUtil.jsonGetInt(json, REWARD_COUNT));
+		
+		List<RewardBean> list = new ArrayList<RewardBean>();
+		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, REWARD_LIST);
+		for (int i = 0;i < array.size(); ++i) {
+			RewardBean reward = RewardBean.fromJson(array.getString(i));
+			list.add(reward);
+		}
+		bean.setRewardList(list);
+		bean.setRead(TypeTranslatedUtil.jsonGetBoolean(json, IS_READ));
 
 		return bean;
+	}
+	
+	public Mail buildMail() {
+		Mail.Builder builder = Mail.newBuilder();
+		builder.setContent(content);
+		builder.setFromUserId(fromUserId);
+		builder.setId(id);
+		builder.setStartDate(startDate);
+		builder.setType(type);
+		builder.setUserId(userId);
+		
+		List<RewardInfo> rewardInfoBuilderList = new ArrayList<RewardInfo>();
+		for (RewardBean reward : rewardList) {
+			rewardInfoBuilderList.add(reward.buildRewardInfo());
+		}
+		builder.addAllReward(rewardInfoBuilderList);
+		
+		return builder.build();
 	}
 	
 	private static final String ID = "id";
@@ -109,6 +140,6 @@ public class MailBean {
 	private static final String START_DATE = "start_date";
 	private static final String END_DATE = "end_date";
 	private static final String CONTENT = "content";
-	private static final String REWARD_ID = "reward_id";
-	private static final String REWARD_COUNT = "reward_count";
+	private static final String REWARD_LIST = "reward_list";
+	private static final String IS_READ = "is_read";
 }

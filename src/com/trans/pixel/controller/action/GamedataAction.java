@@ -87,14 +87,15 @@ public class GamedataAction {
                     if (!result) {
                         break;
                     }
-                }
-                cmdhttp(rep, response);
+                } 
             } catch (Exception e) {
                 genericErrorHandle.handleRequest(req, rep);
                 logger.error("PIXEL_RESPONSE_ERROR", e);
             } finally {
                 
             }
+            
+            cmdhttp(rep, response);
         } catch (Throwable e) {
             logger.error("PIXEL_ERRO", e);
         }
