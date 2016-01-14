@@ -11,6 +11,9 @@ public class RedisKey {
 	
 	public static final String SERVER_PREFIX = "server_";
 	
+	//server
+	public static final String SERVER_KEY = "server";
+	
 	//account redis
 	public final static String ACCOUNT_PREFIX = "account_";
 	

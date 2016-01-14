@@ -1,6 +1,8 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -12,21 +14,40 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LadderRankConst;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.ServerRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class LadderService {	
 	@Resource
 	private LadderRedisService ladderRedisService;
 	@Resource
+	private ServerRedisService serverRedisService;
+	@Resource
 	private UserService userService;
+	@Resource
+	private MailService mailService;
+	
+	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
+        public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
+                if (bean1.getRanking() < bean2.getRanking()) {
+                        return 1;
+                } else {
+                        return -1;
+                }
+        }
+};
+
 	
 	private List<Long> getRelativeRanks(long rank) {
 		List<Long> rankList = new ArrayList<Long>();
@@ -119,6 +140,51 @@ public class LadderService {
 			startRank = endRank;
 			endRank = oldRank;
 		}
+		
+		return rewardList;
+	}
+	
+	public void sendLadderDailyReward() {
+		List<LadderDailyBean> ladderDailyList = getLadderDailyList();
+		Collections.sort(ladderDailyList, comparator);
+		List<Integer> serverIds = serverRedisService.getServerIdList();
+		for (Integer serverId : serverIds) {
+			int index = 0;
+			while (index < ladderDailyList.size()) {
+				LadderDailyBean startRanking = ladderDailyList.get(index);
+				LadderDailyBean endRanking = ladderDailyList.get(++index);
+				long startRank = startRanking.getRanking();
+				long endRank = endRanking.getRanking();
+				for (long i = startRank; i < endRank; ++i) {
+					UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
+					MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
+					mailService.addMail(mail);
+				}
+			}
+		}
+	}
+	
+	private MailBean buildLadderDailyMail(long userId, LadderDailyBean ladderDaily) {
+		MailBean mail = new MailBean();
+		mail.setContent("");
+		mail.setRewardList(buildRewardList(ladderDaily));
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+		mail.setUserId(userId);
+		
+		return mail;
+	}
+	
+	private List<RewardBean> buildRewardList(LadderDailyBean ladderDaily) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		RewardBean reward = new RewardBean();
+		reward.setItemId(ladderDaily.getItemid1());
+		reward.setCount(ladderDaily.getCount1());
+		rewardList.add(reward);
+		reward = new RewardBean();
+		reward.setItemId(ladderDaily.getItemid2());
+		reward.setCount(ladderDaily.getCount2());
+		rewardList.add(reward);
 		
 		return rewardList;
 	}
