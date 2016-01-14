@@ -94,8 +94,8 @@ public class LadderService {
 		if (attackResult(myRankBean, attackRankBean)) {
 			attackRankBean.setRank(myRankBean.getRank());
 			myRankBean.setRank(attackRank);
-			updateUserRank(myRankBean);
-			updateUserRank(attackRankBean);
+			updateUserRank(serverId, myRankBean);
+			updateUserRank(serverId, attackRankBean);
 			ret = SuccessConst.LADDER_ATTACK_SUCCESS;
 		} else
 			ret = SuccessConst.LADDER_ATTACK_FAIL;
@@ -189,8 +189,9 @@ public class LadderService {
 		return rewardList;
 	}
 	
-	private void updateUserRank(UserRankBean userRank) {
-		
+	private void updateUserRank(int serverId, UserRankBean userRank) {
+		ladderRedisService.updateUserRank(serverId, userRank);
+		ladderRedisService.updateUserRankInfo(serverId, userRank);
 	}
 	
 	private boolean attackResult(UserRankBean myRankBean, UserRankBean attackRankBean) {
