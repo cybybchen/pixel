@@ -1,0 +1,36 @@
+#include "../../../../core/projects/xcode/Core.xcconfig"
+
+PRODUCT_NAME = Mayhem
+
+// Precompiled header is required for fast builds, and includes common headers into all source
+// builds
+GCC_PREFIX_HEADER = Mayhem_Prefix.pch
+GCC_WARN_UNUSED_VALUE = YES
+
+// Header search paths
+PATH_APP = ../../../app
+PATH_CORE = ../../../../core
+PATH_IPSP = ../../../../modules/ipsp
+PATH_COMPONENTS_INCLUDE = ../../src ../../vendor ../../vendor/curl/include $(PATH_IPSP)/src
+USER_HEADER_SEARCH_PATHS = $(PATH_CORE)/src $(PATH_APP)/src $(PATH_COMPONENTS_INCLUDE)
+
+LIBRARY_SEARCH_PATHS = ../../lib
+
+// Custom preprocessor symbols for use by module only (not visible by Core)
+// defined in the target:
+SYMBOLS_BASE_APP_Debug =
+SYMBOLS_BASE_APP_Release =
+SYMBOLS_BASE_APP_Dist =
+SYMBOLS_BASE_APP = $(SYMBOLS_BASE_APP_$(CORE_CONFIGURATION))
+
+// Deployment target OS
+IPHONEOS_DEPLOYMENT_TARGET = $(IPHONEOS_DEPLOYMENT_TARGET_$(TARGETED_DEVICE_FAMILY_NAME))
+
+// Friendly targeted device family name from XCode's TARGETED_DEVICE_FAMILY enum
+TARGETED_DEVICE_FAMILY_NAME_1 = IPHONE
+TARGETED_DEVICE_FAMILY_NAME_2 = IPAD
+TARGETED_DEVICE_FAMILY_NAME_3 = UNIVERSAL
+TARGETED_DEVICE_FAMILY_NAME = $(TARGETED_DEVICE_FAMILY_NAME_$(TARGETED_DEVICE_FAMILY))
+
+// Ensure we get the same symbols as core
+#include "../../../../app/projects/xcode/Core.override.xcconfig"
