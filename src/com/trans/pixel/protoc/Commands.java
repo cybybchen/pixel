@@ -6421,27 +6421,42 @@ public final class Commands {
      */
     long getUserId();
 
-    // required int64 rank = 2;
+    // required string userName = 2;
     /**
-     * <code>required int64 rank = 2;</code>
+     * <code>required string userName = 2;</code>
+     */
+    boolean hasUserName();
+    /**
+     * <code>required string userName = 2;</code>
+     */
+    java.lang.String getUserName();
+    /**
+     * <code>required string userName = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserNameBytes();
+
+    // required int64 rank = 3;
+    /**
+     * <code>required int64 rank = 3;</code>
      */
     boolean hasRank();
     /**
-     * <code>required int64 rank = 2;</code>
+     * <code>required int64 rank = 3;</code>
      */
     long getRank();
 
-    // required string teamRecord = 3;
+    // required string teamRecord = 4;
     /**
-     * <code>required string teamRecord = 3;</code>
+     * <code>required string teamRecord = 4;</code>
      */
     boolean hasTeamRecord();
     /**
-     * <code>required string teamRecord = 3;</code>
+     * <code>required string teamRecord = 4;</code>
      */
     java.lang.String getTeamRecord();
     /**
-     * <code>required string teamRecord = 3;</code>
+     * <code>required string teamRecord = 4;</code>
      */
     com.google.protobuf.ByteString
         getTeamRecordBytes();
@@ -6502,13 +6517,18 @@ public final class Commands {
               userId_ = input.readInt64();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
+              userName_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
               rank_ = input.readInt64();
               break;
             }
-            case 26: {
-              bitField0_ |= 0x00000004;
+            case 34: {
+              bitField0_ |= 0x00000008;
               teamRecord_ = input.readBytes();
               break;
             }
@@ -6568,33 +6588,76 @@ public final class Commands {
       return userId_;
     }
 
-    // required int64 rank = 2;
-    public static final int RANK_FIELD_NUMBER = 2;
-    private long rank_;
+    // required string userName = 2;
+    public static final int USERNAME_FIELD_NUMBER = 2;
+    private java.lang.Object userName_;
     /**
-     * <code>required int64 rank = 2;</code>
+     * <code>required string userName = 2;</code>
      */
-    public boolean hasRank() {
+    public boolean hasUserName() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int64 rank = 2;</code>
+     * <code>required string userName = 2;</code>
+     */
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          userName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string userName = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int64 rank = 3;
+    public static final int RANK_FIELD_NUMBER = 3;
+    private long rank_;
+    /**
+     * <code>required int64 rank = 3;</code>
+     */
+    public boolean hasRank() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int64 rank = 3;</code>
      */
     public long getRank() {
       return rank_;
     }
 
-    // required string teamRecord = 3;
-    public static final int TEAMRECORD_FIELD_NUMBER = 3;
+    // required string teamRecord = 4;
+    public static final int TEAMRECORD_FIELD_NUMBER = 4;
     private java.lang.Object teamRecord_;
     /**
-     * <code>required string teamRecord = 3;</code>
+     * <code>required string teamRecord = 4;</code>
      */
     public boolean hasTeamRecord() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required string teamRecord = 3;</code>
+     * <code>required string teamRecord = 4;</code>
      */
     public java.lang.String getTeamRecord() {
       java.lang.Object ref = teamRecord_;
@@ -6611,7 +6674,7 @@ public final class Commands {
       }
     }
     /**
-     * <code>required string teamRecord = 3;</code>
+     * <code>required string teamRecord = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTeamRecordBytes() {
@@ -6629,6 +6692,7 @@ public final class Commands {
 
     private void initFields() {
       userId_ = 0L;
+      userName_ = "";
       rank_ = 0L;
       teamRecord_ = "";
     }
@@ -6638,6 +6702,10 @@ public final class Commands {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasUserId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUserName()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6660,10 +6728,13 @@ public final class Commands {
         output.writeInt64(1, userId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt64(2, rank_);
+        output.writeBytes(2, getUserNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getTeamRecordBytes());
+        output.writeInt64(3, rank_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getTeamRecordBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -6680,11 +6751,15 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, rank_);
+          .computeBytesSize(2, getUserNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getTeamRecordBytes());
+          .computeInt64Size(3, rank_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getTeamRecordBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6804,10 +6879,12 @@ public final class Commands {
         super.clear();
         userId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        rank_ = 0L;
+        userName_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        teamRecord_ = "";
+        rank_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
+        teamRecord_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -6843,9 +6920,13 @@ public final class Commands {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.rank_ = rank_;
+        result.userName_ = userName_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
+        }
+        result.rank_ = rank_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         result.teamRecord_ = teamRecord_;
         result.bitField0_ = to_bitField0_;
@@ -6867,11 +6948,16 @@ public final class Commands {
         if (other.hasUserId()) {
           setUserId(other.getUserId());
         }
+        if (other.hasUserName()) {
+          bitField0_ |= 0x00000002;
+          userName_ = other.userName_;
+          onChanged();
+        }
         if (other.hasRank()) {
           setRank(other.getRank());
         }
         if (other.hasTeamRecord()) {
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
           teamRecord_ = other.teamRecord_;
           onChanged();
         }
@@ -6881,6 +6967,10 @@ public final class Commands {
 
       public final boolean isInitialized() {
         if (!hasUserId()) {
+          
+          return false;
+        }
+        if (!hasUserName()) {
           
           return false;
         }
@@ -6947,35 +7037,841 @@ public final class Commands {
         return this;
       }
 
-      // required int64 rank = 2;
-      private long rank_ ;
+      // required string userName = 2;
+      private java.lang.Object userName_ = "";
       /**
-       * <code>required int64 rank = 2;</code>
+       * <code>required string userName = 2;</code>
        */
-      public boolean hasRank() {
+      public boolean hasUserName() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int64 rank = 2;</code>
+       * <code>required string userName = 2;</code>
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          userName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string userName = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string userName = 2;</code>
+       */
+      public Builder setUserName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string userName = 2;</code>
+       */
+      public Builder clearUserName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        userName_ = getDefaultInstance().getUserName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string userName = 2;</code>
+       */
+      public Builder setUserNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int64 rank = 3;
+      private long rank_ ;
+      /**
+       * <code>required int64 rank = 3;</code>
+       */
+      public boolean hasRank() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int64 rank = 3;</code>
        */
       public long getRank() {
         return rank_;
       }
       /**
-       * <code>required int64 rank = 2;</code>
+       * <code>required int64 rank = 3;</code>
        */
       public Builder setRank(long value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         rank_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 rank = 2;</code>
+       * <code>required int64 rank = 3;</code>
        */
       public Builder clearRank() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         rank_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required string teamRecord = 4;
+      private java.lang.Object teamRecord_ = "";
+      /**
+       * <code>required string teamRecord = 4;</code>
+       */
+      public boolean hasTeamRecord() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string teamRecord = 4;</code>
+       */
+      public java.lang.String getTeamRecord() {
+        java.lang.Object ref = teamRecord_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          teamRecord_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string teamRecord = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTeamRecordBytes() {
+        java.lang.Object ref = teamRecord_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          teamRecord_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string teamRecord = 4;</code>
+       */
+      public Builder setTeamRecord(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        teamRecord_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string teamRecord = 4;</code>
+       */
+      public Builder clearTeamRecord() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        teamRecord_ = getDefaultInstance().getTeamRecord();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string teamRecord = 4;</code>
+       */
+      public Builder setTeamRecordBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        teamRecord_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserRank)
+    }
+
+    static {
+      defaultInstance = new UserRank(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserRank)
+  }
+
+  public interface UserFriendOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int64 friendId = 1;
+    /**
+     * <code>required int64 friendId = 1;</code>
+     */
+    boolean hasFriendId();
+    /**
+     * <code>required int64 friendId = 1;</code>
+     */
+    long getFriendId();
+
+    // required string friendName = 2;
+    /**
+     * <code>required string friendName = 2;</code>
+     */
+    boolean hasFriendName();
+    /**
+     * <code>required string friendName = 2;</code>
+     */
+    java.lang.String getFriendName();
+    /**
+     * <code>required string friendName = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getFriendNameBytes();
+
+    // required string teamRecord = 3;
+    /**
+     * <code>required string teamRecord = 3;</code>
+     */
+    boolean hasTeamRecord();
+    /**
+     * <code>required string teamRecord = 3;</code>
+     */
+    java.lang.String getTeamRecord();
+    /**
+     * <code>required string teamRecord = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getTeamRecordBytes();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.UserFriend}
+   */
+  public static final class UserFriend extends
+      com.google.protobuf.GeneratedMessage
+      implements UserFriendOrBuilder {
+    // Use UserFriend.newBuilder() to construct.
+    private UserFriend(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private UserFriend(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final UserFriend defaultInstance;
+    public static UserFriend getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public UserFriend getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserFriend(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              friendId_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              friendName_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              teamRecord_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_UserFriend_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_UserFriend_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.UserFriend.class, com.trans.pixel.protoc.Commands.UserFriend.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<UserFriend> PARSER =
+        new com.google.protobuf.AbstractParser<UserFriend>() {
+      public UserFriend parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserFriend(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserFriend> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int64 friendId = 1;
+    public static final int FRIENDID_FIELD_NUMBER = 1;
+    private long friendId_;
+    /**
+     * <code>required int64 friendId = 1;</code>
+     */
+    public boolean hasFriendId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 friendId = 1;</code>
+     */
+    public long getFriendId() {
+      return friendId_;
+    }
+
+    // required string friendName = 2;
+    public static final int FRIENDNAME_FIELD_NUMBER = 2;
+    private java.lang.Object friendName_;
+    /**
+     * <code>required string friendName = 2;</code>
+     */
+    public boolean hasFriendName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string friendName = 2;</code>
+     */
+    public java.lang.String getFriendName() {
+      java.lang.Object ref = friendName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          friendName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string friendName = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFriendNameBytes() {
+      java.lang.Object ref = friendName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        friendName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string teamRecord = 3;
+    public static final int TEAMRECORD_FIELD_NUMBER = 3;
+    private java.lang.Object teamRecord_;
+    /**
+     * <code>required string teamRecord = 3;</code>
+     */
+    public boolean hasTeamRecord() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string teamRecord = 3;</code>
+     */
+    public java.lang.String getTeamRecord() {
+      java.lang.Object ref = teamRecord_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          teamRecord_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string teamRecord = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTeamRecordBytes() {
+      java.lang.Object ref = teamRecord_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teamRecord_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      friendId_ = 0L;
+      friendName_ = "";
+      teamRecord_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasFriendId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFriendName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTeamRecord()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, friendId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getFriendNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getTeamRecordBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, friendId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getFriendNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getTeamRecordBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.UserFriend parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.UserFriend prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.UserFriend}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.UserFriendOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_UserFriend_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_UserFriend_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.UserFriend.class, com.trans.pixel.protoc.Commands.UserFriend.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.UserFriend.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        friendId_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        friendName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        teamRecord_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_UserFriend_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.UserFriend getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.UserFriend.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.UserFriend build() {
+        com.trans.pixel.protoc.Commands.UserFriend result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.UserFriend buildPartial() {
+        com.trans.pixel.protoc.Commands.UserFriend result = new com.trans.pixel.protoc.Commands.UserFriend(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.friendId_ = friendId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.friendName_ = friendName_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.teamRecord_ = teamRecord_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.UserFriend) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.UserFriend)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.UserFriend other) {
+        if (other == com.trans.pixel.protoc.Commands.UserFriend.getDefaultInstance()) return this;
+        if (other.hasFriendId()) {
+          setFriendId(other.getFriendId());
+        }
+        if (other.hasFriendName()) {
+          bitField0_ |= 0x00000002;
+          friendName_ = other.friendName_;
+          onChanged();
+        }
+        if (other.hasTeamRecord()) {
+          bitField0_ |= 0x00000004;
+          teamRecord_ = other.teamRecord_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasFriendId()) {
+          
+          return false;
+        }
+        if (!hasFriendName()) {
+          
+          return false;
+        }
+        if (!hasTeamRecord()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.UserFriend parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.UserFriend) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int64 friendId = 1;
+      private long friendId_ ;
+      /**
+       * <code>required int64 friendId = 1;</code>
+       */
+      public boolean hasFriendId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 friendId = 1;</code>
+       */
+      public long getFriendId() {
+        return friendId_;
+      }
+      /**
+       * <code>required int64 friendId = 1;</code>
+       */
+      public Builder setFriendId(long value) {
+        bitField0_ |= 0x00000001;
+        friendId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 friendId = 1;</code>
+       */
+      public Builder clearFriendId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        friendId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required string friendName = 2;
+      private java.lang.Object friendName_ = "";
+      /**
+       * <code>required string friendName = 2;</code>
+       */
+      public boolean hasFriendName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string friendName = 2;</code>
+       */
+      public java.lang.String getFriendName() {
+        java.lang.Object ref = friendName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          friendName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string friendName = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFriendNameBytes() {
+        java.lang.Object ref = friendName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          friendName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string friendName = 2;</code>
+       */
+      public Builder setFriendName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        friendName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string friendName = 2;</code>
+       */
+      public Builder clearFriendName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        friendName_ = getDefaultInstance().getFriendName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string friendName = 2;</code>
+       */
+      public Builder setFriendNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        friendName_ = value;
         onChanged();
         return this;
       }
@@ -7054,15 +7950,15 @@ public final class Commands {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserRank)
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserFriend)
     }
 
     static {
-      defaultInstance = new UserRank(true);
+      defaultInstance = new UserFriend(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserRank)
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserFriend)
   }
 
   public interface MailOrBuilder
@@ -8600,6 +9496,784 @@ public final class Commands {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Mail)
+  }
+
+  public interface MailListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 type = 1;
+    /**
+     * <code>required int32 type = 1;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>required int32 type = 1;</code>
+     */
+    int getType();
+
+    // repeated .com.trans.pixel.protoc.Mail mail = 2;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Commands.Mail> 
+        getMailList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    com.trans.pixel.protoc.Commands.Mail getMail(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    int getMailCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
+        getMailOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.MailList}
+   */
+  public static final class MailList extends
+      com.google.protobuf.GeneratedMessage
+      implements MailListOrBuilder {
+    // Use MailList.newBuilder() to construct.
+    private MailList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MailList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MailList defaultInstance;
+    public static MailList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MailList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MailList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              type_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                mail_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.Mail>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              mail_.add(input.readMessage(com.trans.pixel.protoc.Commands.Mail.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          mail_ = java.util.Collections.unmodifiableList(mail_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_MailList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_MailList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.MailList.class, com.trans.pixel.protoc.Commands.MailList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MailList> PARSER =
+        new com.google.protobuf.AbstractParser<MailList>() {
+      public MailList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MailList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MailList> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>required int32 type = 1;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 type = 1;</code>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    // repeated .com.trans.pixel.protoc.Mail mail = 2;
+    public static final int MAIL_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.Commands.Mail> mail_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Commands.Mail> getMailList() {
+      return mail_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
+        getMailOrBuilderList() {
+      return mail_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    public int getMailCount() {
+      return mail_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    public com.trans.pixel.protoc.Commands.Mail getMail(int index) {
+      return mail_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+     */
+    public com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
+        int index) {
+      return mail_.get(index);
+    }
+
+    private void initFields() {
+      type_ = 0;
+      mail_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getMailCount(); i++) {
+        if (!getMail(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, type_);
+      }
+      for (int i = 0; i < mail_.size(); i++) {
+        output.writeMessage(2, mail_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, type_);
+      }
+      for (int i = 0; i < mail_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, mail_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.MailList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.MailList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.MailList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.MailListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_MailList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_MailList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.MailList.class, com.trans.pixel.protoc.Commands.MailList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.MailList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMailFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (mailBuilder_ == null) {
+          mail_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          mailBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_MailList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.MailList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.MailList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.MailList build() {
+        com.trans.pixel.protoc.Commands.MailList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.MailList buildPartial() {
+        com.trans.pixel.protoc.Commands.MailList result = new com.trans.pixel.protoc.Commands.MailList(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (mailBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            mail_ = java.util.Collections.unmodifiableList(mail_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.mail_ = mail_;
+        } else {
+          result.mail_ = mailBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.MailList) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.MailList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.MailList other) {
+        if (other == com.trans.pixel.protoc.Commands.MailList.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (mailBuilder_ == null) {
+          if (!other.mail_.isEmpty()) {
+            if (mail_.isEmpty()) {
+              mail_ = other.mail_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureMailIsMutable();
+              mail_.addAll(other.mail_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.mail_.isEmpty()) {
+            if (mailBuilder_.isEmpty()) {
+              mailBuilder_.dispose();
+              mailBuilder_ = null;
+              mail_ = other.mail_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              mailBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMailFieldBuilder() : null;
+            } else {
+              mailBuilder_.addAllMessages(other.mail_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getMailCount(); i++) {
+          if (!getMail(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.MailList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.MailList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 type = 1;
+      private int type_ ;
+      /**
+       * <code>required int32 type = 1;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.Mail mail = 2;
+      private java.util.List<com.trans.pixel.protoc.Commands.Mail> mail_ =
+        java.util.Collections.emptyList();
+      private void ensureMailIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          mail_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.Mail>(mail_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder> mailBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Commands.Mail> getMailList() {
+        if (mailBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mail_);
+        } else {
+          return mailBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public int getMailCount() {
+        if (mailBuilder_ == null) {
+          return mail_.size();
+        } else {
+          return mailBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.Mail getMail(int index) {
+        if (mailBuilder_ == null) {
+          return mail_.get(index);
+        } else {
+          return mailBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder setMail(
+          int index, com.trans.pixel.protoc.Commands.Mail value) {
+        if (mailBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMailIsMutable();
+          mail_.set(index, value);
+          onChanged();
+        } else {
+          mailBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder setMail(
+          int index, com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
+        if (mailBuilder_ == null) {
+          ensureMailIsMutable();
+          mail_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          mailBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder addMail(com.trans.pixel.protoc.Commands.Mail value) {
+        if (mailBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMailIsMutable();
+          mail_.add(value);
+          onChanged();
+        } else {
+          mailBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder addMail(
+          int index, com.trans.pixel.protoc.Commands.Mail value) {
+        if (mailBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMailIsMutable();
+          mail_.add(index, value);
+          onChanged();
+        } else {
+          mailBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder addMail(
+          com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
+        if (mailBuilder_ == null) {
+          ensureMailIsMutable();
+          mail_.add(builderForValue.build());
+          onChanged();
+        } else {
+          mailBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder addMail(
+          int index, com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
+        if (mailBuilder_ == null) {
+          ensureMailIsMutable();
+          mail_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          mailBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder addAllMail(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.Mail> values) {
+        if (mailBuilder_ == null) {
+          ensureMailIsMutable();
+          super.addAll(values, mail_);
+          onChanged();
+        } else {
+          mailBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder clearMail() {
+        if (mailBuilder_ == null) {
+          mail_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          mailBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public Builder removeMail(int index) {
+        if (mailBuilder_ == null) {
+          ensureMailIsMutable();
+          mail_.remove(index);
+          onChanged();
+        } else {
+          mailBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.Mail.Builder getMailBuilder(
+          int index) {
+        return getMailFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
+          int index) {
+        if (mailBuilder_ == null) {
+          return mail_.get(index);  } else {
+          return mailBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
+           getMailOrBuilderList() {
+        if (mailBuilder_ != null) {
+          return mailBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(mail_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.Mail.Builder addMailBuilder() {
+        return getMailFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Commands.Mail.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public com.trans.pixel.protoc.Commands.Mail.Builder addMailBuilder(
+          int index) {
+        return getMailFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Commands.Mail.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Commands.Mail.Builder> 
+           getMailBuilderList() {
+        return getMailFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder> 
+          getMailFieldBuilder() {
+        if (mailBuilder_ == null) {
+          mailBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder>(
+                  mail_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          mail_ = null;
+        }
+        return mailBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.MailList)
+    }
+
+    static {
+      defaultInstance = new MailList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.MailList)
   }
 
   public interface ErrorCommandOrBuilder
@@ -26723,29 +28397,29 @@ public final class Commands {
   public interface ResponseGetUserMailListCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Mail mail = 1;
+    // repeated .com.trans.pixel.protoc.MailList mailList = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    java.util.List<com.trans.pixel.protoc.Commands.Mail> 
-        getMailList();
+    java.util.List<com.trans.pixel.protoc.Commands.MailList> 
+        getMailListList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    com.trans.pixel.protoc.Commands.Mail getMail(int index);
+    com.trans.pixel.protoc.Commands.MailList getMailList(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    int getMailCount();
+    int getMailListCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
-        getMailOrBuilderList();
+    java.util.List<? extends com.trans.pixel.protoc.Commands.MailListOrBuilder> 
+        getMailListOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
+    com.trans.pixel.protoc.Commands.MailListOrBuilder getMailListOrBuilder(
         int index);
   }
   /**
@@ -26801,10 +28475,10 @@ public final class Commands {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                mail_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.Mail>();
+                mailList_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.MailList>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              mail_.add(input.readMessage(com.trans.pixel.protoc.Commands.Mail.PARSER, extensionRegistry));
+              mailList_.add(input.readMessage(com.trans.pixel.protoc.Commands.MailList.PARSER, extensionRegistry));
               break;
             }
           }
@@ -26816,7 +28490,7 @@ public final class Commands {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          mail_ = java.util.Collections.unmodifiableList(mail_);
+          mailList_ = java.util.Collections.unmodifiableList(mailList_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -26849,52 +28523,52 @@ public final class Commands {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Mail mail = 1;
-    public static final int MAIL_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.Commands.Mail> mail_;
+    // repeated .com.trans.pixel.protoc.MailList mailList = 1;
+    public static final int MAILLIST_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.Commands.MailList> mailList_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.Commands.Mail> getMailList() {
-      return mail_;
+    public java.util.List<com.trans.pixel.protoc.Commands.MailList> getMailListList() {
+      return mailList_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
-        getMailOrBuilderList() {
-      return mail_;
+    public java.util.List<? extends com.trans.pixel.protoc.Commands.MailListOrBuilder> 
+        getMailListOrBuilderList() {
+      return mailList_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    public int getMailCount() {
-      return mail_.size();
+    public int getMailListCount() {
+      return mailList_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    public com.trans.pixel.protoc.Commands.Mail getMail(int index) {
-      return mail_.get(index);
+    public com.trans.pixel.protoc.Commands.MailList getMailList(int index) {
+      return mailList_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
      */
-    public com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
+    public com.trans.pixel.protoc.Commands.MailListOrBuilder getMailListOrBuilder(
         int index) {
-      return mail_.get(index);
+      return mailList_.get(index);
     }
 
     private void initFields() {
-      mail_ = java.util.Collections.emptyList();
+      mailList_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getMailCount(); i++) {
-        if (!getMail(i).isInitialized()) {
+      for (int i = 0; i < getMailListCount(); i++) {
+        if (!getMailList(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -26906,8 +28580,8 @@ public final class Commands {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < mail_.size(); i++) {
-        output.writeMessage(1, mail_.get(i));
+      for (int i = 0; i < mailList_.size(); i++) {
+        output.writeMessage(1, mailList_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -26918,9 +28592,9 @@ public final class Commands {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < mail_.size(); i++) {
+      for (int i = 0; i < mailList_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, mail_.get(i));
+          .computeMessageSize(1, mailList_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -27030,7 +28704,7 @@ public final class Commands {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getMailFieldBuilder();
+          getMailListFieldBuilder();
         }
       }
       private static Builder create() {
@@ -27039,11 +28713,11 @@ public final class Commands {
 
       public Builder clear() {
         super.clear();
-        if (mailBuilder_ == null) {
-          mail_ = java.util.Collections.emptyList();
+        if (mailListBuilder_ == null) {
+          mailList_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          mailBuilder_.clear();
+          mailListBuilder_.clear();
         }
         return this;
       }
@@ -27072,14 +28746,14 @@ public final class Commands {
       public com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand buildPartial() {
         com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand result = new com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand(this);
         int from_bitField0_ = bitField0_;
-        if (mailBuilder_ == null) {
+        if (mailListBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            mail_ = java.util.Collections.unmodifiableList(mail_);
+            mailList_ = java.util.Collections.unmodifiableList(mailList_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.mail_ = mail_;
+          result.mailList_ = mailList_;
         } else {
-          result.mail_ = mailBuilder_.build();
+          result.mailList_ = mailListBuilder_.build();
         }
         onBuilt();
         return result;
@@ -27096,29 +28770,29 @@ public final class Commands {
 
       public Builder mergeFrom(com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand other) {
         if (other == com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand.getDefaultInstance()) return this;
-        if (mailBuilder_ == null) {
-          if (!other.mail_.isEmpty()) {
-            if (mail_.isEmpty()) {
-              mail_ = other.mail_;
+        if (mailListBuilder_ == null) {
+          if (!other.mailList_.isEmpty()) {
+            if (mailList_.isEmpty()) {
+              mailList_ = other.mailList_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureMailIsMutable();
-              mail_.addAll(other.mail_);
+              ensureMailListIsMutable();
+              mailList_.addAll(other.mailList_);
             }
             onChanged();
           }
         } else {
-          if (!other.mail_.isEmpty()) {
-            if (mailBuilder_.isEmpty()) {
-              mailBuilder_.dispose();
-              mailBuilder_ = null;
-              mail_ = other.mail_;
+          if (!other.mailList_.isEmpty()) {
+            if (mailListBuilder_.isEmpty()) {
+              mailListBuilder_.dispose();
+              mailListBuilder_ = null;
+              mailList_ = other.mailList_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              mailBuilder_ = 
+              mailListBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getMailFieldBuilder() : null;
+                   getMailListFieldBuilder() : null;
             } else {
-              mailBuilder_.addAllMessages(other.mail_);
+              mailListBuilder_.addAllMessages(other.mailList_);
             }
           }
         }
@@ -27127,8 +28801,8 @@ public final class Commands {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getMailCount(); i++) {
-          if (!getMail(i).isInitialized()) {
+        for (int i = 0; i < getMailListCount(); i++) {
+          if (!getMailList(i).isInitialized()) {
             
             return false;
           }
@@ -27155,244 +28829,244 @@ public final class Commands {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Mail mail = 1;
-      private java.util.List<com.trans.pixel.protoc.Commands.Mail> mail_ =
+      // repeated .com.trans.pixel.protoc.MailList mailList = 1;
+      private java.util.List<com.trans.pixel.protoc.Commands.MailList> mailList_ =
         java.util.Collections.emptyList();
-      private void ensureMailIsMutable() {
+      private void ensureMailListIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          mail_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.Mail>(mail_);
+          mailList_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.MailList>(mailList_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder> mailBuilder_;
+          com.trans.pixel.protoc.Commands.MailList, com.trans.pixel.protoc.Commands.MailList.Builder, com.trans.pixel.protoc.Commands.MailListOrBuilder> mailListBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.Commands.Mail> getMailList() {
-        if (mailBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(mail_);
+      public java.util.List<com.trans.pixel.protoc.Commands.MailList> getMailListList() {
+        if (mailListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mailList_);
         } else {
-          return mailBuilder_.getMessageList();
+          return mailListBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public int getMailCount() {
-        if (mailBuilder_ == null) {
-          return mail_.size();
+      public int getMailListCount() {
+        if (mailListBuilder_ == null) {
+          return mailList_.size();
         } else {
-          return mailBuilder_.getCount();
+          return mailListBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public com.trans.pixel.protoc.Commands.Mail getMail(int index) {
-        if (mailBuilder_ == null) {
-          return mail_.get(index);
+      public com.trans.pixel.protoc.Commands.MailList getMailList(int index) {
+        if (mailListBuilder_ == null) {
+          return mailList_.get(index);
         } else {
-          return mailBuilder_.getMessage(index);
+          return mailListBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder setMail(
-          int index, com.trans.pixel.protoc.Commands.Mail value) {
-        if (mailBuilder_ == null) {
+      public Builder setMailList(
+          int index, com.trans.pixel.protoc.Commands.MailList value) {
+        if (mailListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMailIsMutable();
-          mail_.set(index, value);
+          ensureMailListIsMutable();
+          mailList_.set(index, value);
           onChanged();
         } else {
-          mailBuilder_.setMessage(index, value);
+          mailListBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder setMail(
-          int index, com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
-        if (mailBuilder_ == null) {
-          ensureMailIsMutable();
-          mail_.set(index, builderForValue.build());
+      public Builder setMailList(
+          int index, com.trans.pixel.protoc.Commands.MailList.Builder builderForValue) {
+        if (mailListBuilder_ == null) {
+          ensureMailListIsMutable();
+          mailList_.set(index, builderForValue.build());
           onChanged();
         } else {
-          mailBuilder_.setMessage(index, builderForValue.build());
+          mailListBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder addMail(com.trans.pixel.protoc.Commands.Mail value) {
-        if (mailBuilder_ == null) {
+      public Builder addMailList(com.trans.pixel.protoc.Commands.MailList value) {
+        if (mailListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMailIsMutable();
-          mail_.add(value);
+          ensureMailListIsMutable();
+          mailList_.add(value);
           onChanged();
         } else {
-          mailBuilder_.addMessage(value);
+          mailListBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder addMail(
-          int index, com.trans.pixel.protoc.Commands.Mail value) {
-        if (mailBuilder_ == null) {
+      public Builder addMailList(
+          int index, com.trans.pixel.protoc.Commands.MailList value) {
+        if (mailListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMailIsMutable();
-          mail_.add(index, value);
+          ensureMailListIsMutable();
+          mailList_.add(index, value);
           onChanged();
         } else {
-          mailBuilder_.addMessage(index, value);
+          mailListBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder addMail(
-          com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
-        if (mailBuilder_ == null) {
-          ensureMailIsMutable();
-          mail_.add(builderForValue.build());
+      public Builder addMailList(
+          com.trans.pixel.protoc.Commands.MailList.Builder builderForValue) {
+        if (mailListBuilder_ == null) {
+          ensureMailListIsMutable();
+          mailList_.add(builderForValue.build());
           onChanged();
         } else {
-          mailBuilder_.addMessage(builderForValue.build());
+          mailListBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder addMail(
-          int index, com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
-        if (mailBuilder_ == null) {
-          ensureMailIsMutable();
-          mail_.add(index, builderForValue.build());
+      public Builder addMailList(
+          int index, com.trans.pixel.protoc.Commands.MailList.Builder builderForValue) {
+        if (mailListBuilder_ == null) {
+          ensureMailListIsMutable();
+          mailList_.add(index, builderForValue.build());
           onChanged();
         } else {
-          mailBuilder_.addMessage(index, builderForValue.build());
+          mailListBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder addAllMail(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.Mail> values) {
-        if (mailBuilder_ == null) {
-          ensureMailIsMutable();
-          super.addAll(values, mail_);
+      public Builder addAllMailList(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.MailList> values) {
+        if (mailListBuilder_ == null) {
+          ensureMailListIsMutable();
+          super.addAll(values, mailList_);
           onChanged();
         } else {
-          mailBuilder_.addAllMessages(values);
+          mailListBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder clearMail() {
-        if (mailBuilder_ == null) {
-          mail_ = java.util.Collections.emptyList();
+      public Builder clearMailList() {
+        if (mailListBuilder_ == null) {
+          mailList_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          mailBuilder_.clear();
+          mailListBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public Builder removeMail(int index) {
-        if (mailBuilder_ == null) {
-          ensureMailIsMutable();
-          mail_.remove(index);
+      public Builder removeMailList(int index) {
+        if (mailListBuilder_ == null) {
+          ensureMailListIsMutable();
+          mailList_.remove(index);
           onChanged();
         } else {
-          mailBuilder_.remove(index);
+          mailListBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public com.trans.pixel.protoc.Commands.Mail.Builder getMailBuilder(
+      public com.trans.pixel.protoc.Commands.MailList.Builder getMailListBuilder(
           int index) {
-        return getMailFieldBuilder().getBuilder(index);
+        return getMailListFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
+      public com.trans.pixel.protoc.Commands.MailListOrBuilder getMailListOrBuilder(
           int index) {
-        if (mailBuilder_ == null) {
-          return mail_.get(index);  } else {
-          return mailBuilder_.getMessageOrBuilder(index);
+        if (mailListBuilder_ == null) {
+          return mailList_.get(index);  } else {
+          return mailListBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
-           getMailOrBuilderList() {
-        if (mailBuilder_ != null) {
-          return mailBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.trans.pixel.protoc.Commands.MailListOrBuilder> 
+           getMailListOrBuilderList() {
+        if (mailListBuilder_ != null) {
+          return mailListBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(mail_);
+          return java.util.Collections.unmodifiableList(mailList_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public com.trans.pixel.protoc.Commands.Mail.Builder addMailBuilder() {
-        return getMailFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.Commands.Mail.getDefaultInstance());
+      public com.trans.pixel.protoc.Commands.MailList.Builder addMailListBuilder() {
+        return getMailListFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Commands.MailList.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public com.trans.pixel.protoc.Commands.Mail.Builder addMailBuilder(
+      public com.trans.pixel.protoc.Commands.MailList.Builder addMailListBuilder(
           int index) {
-        return getMailFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.Commands.Mail.getDefaultInstance());
+        return getMailListFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Commands.MailList.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.MailList mailList = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.Commands.Mail.Builder> 
-           getMailBuilderList() {
-        return getMailFieldBuilder().getBuilderList();
+      public java.util.List<com.trans.pixel.protoc.Commands.MailList.Builder> 
+           getMailListBuilderList() {
+        return getMailListFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder> 
-          getMailFieldBuilder() {
-        if (mailBuilder_ == null) {
-          mailBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder>(
-                  mail_,
+          com.trans.pixel.protoc.Commands.MailList, com.trans.pixel.protoc.Commands.MailList.Builder, com.trans.pixel.protoc.Commands.MailListOrBuilder> 
+          getMailListFieldBuilder() {
+        if (mailListBuilder_ == null) {
+          mailListBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Commands.MailList, com.trans.pixel.protoc.Commands.MailList.Builder, com.trans.pixel.protoc.Commands.MailListOrBuilder>(
+                  mailList_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          mail_ = null;
+          mailList_ = null;
         }
-        return mailBuilder_;
+        return mailListBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseGetUserMailListCommand)
@@ -29782,6 +31456,1096 @@ public final class Commands {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestDeleteMailCommand)
   }
 
+  public interface RequestAddFriendCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int64 userId = 1;
+    /**
+     * <code>required int64 userId = 1;</code>
+     */
+    boolean hasUserId();
+    /**
+     * <code>required int64 userId = 1;</code>
+     */
+    long getUserId();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestAddFriendCommand}
+   */
+  public static final class RequestAddFriendCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestAddFriendCommandOrBuilder {
+    // Use RequestAddFriendCommand.newBuilder() to construct.
+    private RequestAddFriendCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestAddFriendCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestAddFriendCommand defaultInstance;
+    public static RequestAddFriendCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestAddFriendCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestAddFriendCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              userId_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.RequestAddFriendCommand.class, com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestAddFriendCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestAddFriendCommand>() {
+      public RequestAddFriendCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestAddFriendCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestAddFriendCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int64 userId = 1;
+    public static final int USERID_FIELD_NUMBER = 1;
+    private long userId_;
+    /**
+     * <code>required int64 userId = 1;</code>
+     */
+    public boolean hasUserId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 userId = 1;</code>
+     */
+    public long getUserId() {
+      return userId_;
+    }
+
+    private void initFields() {
+      userId_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasUserId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, userId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, userId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.RequestAddFriendCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.RequestAddFriendCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestAddFriendCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.RequestAddFriendCommand.class, com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.RequestAddFriendCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        userId_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestAddFriendCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestAddFriendCommand build() {
+        com.trans.pixel.protoc.Commands.RequestAddFriendCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.RequestAddFriendCommand buildPartial() {
+        com.trans.pixel.protoc.Commands.RequestAddFriendCommand result = new com.trans.pixel.protoc.Commands.RequestAddFriendCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.userId_ = userId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.RequestAddFriendCommand) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.RequestAddFriendCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.RequestAddFriendCommand other) {
+        if (other == com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance()) return this;
+        if (other.hasUserId()) {
+          setUserId(other.getUserId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasUserId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.RequestAddFriendCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.RequestAddFriendCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int64 userId = 1;
+      private long userId_ ;
+      /**
+       * <code>required int64 userId = 1;</code>
+       */
+      public boolean hasUserId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 userId = 1;</code>
+       */
+      public long getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>required int64 userId = 1;</code>
+       */
+      public Builder setUserId(long value) {
+        bitField0_ |= 0x00000001;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 userId = 1;</code>
+       */
+      public Builder clearUserId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestAddFriendCommand)
+    }
+
+    static {
+      defaultInstance = new RequestAddFriendCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestAddFriendCommand)
+  }
+
+  public interface ResponseGetUserFriendListCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.UserFriend friend = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Commands.UserFriend> 
+        getFriendList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    com.trans.pixel.protoc.Commands.UserFriend getFriend(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    int getFriendCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Commands.UserFriendOrBuilder> 
+        getFriendOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    com.trans.pixel.protoc.Commands.UserFriendOrBuilder getFriendOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.ResponseGetUserFriendListCommand}
+   */
+  public static final class ResponseGetUserFriendListCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements ResponseGetUserFriendListCommandOrBuilder {
+    // Use ResponseGetUserFriendListCommand.newBuilder() to construct.
+    private ResponseGetUserFriendListCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResponseGetUserFriendListCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResponseGetUserFriendListCommand defaultInstance;
+    public static ResponseGetUserFriendListCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResponseGetUserFriendListCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResponseGetUserFriendListCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                friend_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.UserFriend>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              friend_.add(input.readMessage(com.trans.pixel.protoc.Commands.UserFriend.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          friend_ = java.util.Collections.unmodifiableList(friend_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.class, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResponseGetUserFriendListCommand> PARSER =
+        new com.google.protobuf.AbstractParser<ResponseGetUserFriendListCommand>() {
+      public ResponseGetUserFriendListCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResponseGetUserFriendListCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResponseGetUserFriendListCommand> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.UserFriend friend = 1;
+    public static final int FRIEND_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.Commands.UserFriend> friend_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Commands.UserFriend> getFriendList() {
+      return friend_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Commands.UserFriendOrBuilder> 
+        getFriendOrBuilderList() {
+      return friend_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    public int getFriendCount() {
+      return friend_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    public com.trans.pixel.protoc.Commands.UserFriend getFriend(int index) {
+      return friend_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+     */
+    public com.trans.pixel.protoc.Commands.UserFriendOrBuilder getFriendOrBuilder(
+        int index) {
+      return friend_.get(index);
+    }
+
+    private void initFields() {
+      friend_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getFriendCount(); i++) {
+        if (!getFriend(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < friend_.size(); i++) {
+        output.writeMessage(1, friend_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < friend_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, friend_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponseGetUserFriendListCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.class, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getFriendFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (friendBuilder_ == null) {
+          friend_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          friendBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Commands.internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand build() {
+        com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand buildPartial() {
+        com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand result = new com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand(this);
+        int from_bitField0_ = bitField0_;
+        if (friendBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            friend_ = java.util.Collections.unmodifiableList(friend_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.friend_ = friend_;
+        } else {
+          result.friend_ = friendBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand) {
+          return mergeFrom((com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand other) {
+        if (other == com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.getDefaultInstance()) return this;
+        if (friendBuilder_ == null) {
+          if (!other.friend_.isEmpty()) {
+            if (friend_.isEmpty()) {
+              friend_ = other.friend_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureFriendIsMutable();
+              friend_.addAll(other.friend_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.friend_.isEmpty()) {
+            if (friendBuilder_.isEmpty()) {
+              friendBuilder_.dispose();
+              friendBuilder_ = null;
+              friend_ = other.friend_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              friendBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFriendFieldBuilder() : null;
+            } else {
+              friendBuilder_.addAllMessages(other.friend_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getFriendCount(); i++) {
+          if (!getFriend(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.UserFriend friend = 1;
+      private java.util.List<com.trans.pixel.protoc.Commands.UserFriend> friend_ =
+        java.util.Collections.emptyList();
+      private void ensureFriendIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          friend_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.UserFriend>(friend_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Commands.UserFriend, com.trans.pixel.protoc.Commands.UserFriend.Builder, com.trans.pixel.protoc.Commands.UserFriendOrBuilder> friendBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Commands.UserFriend> getFriendList() {
+        if (friendBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(friend_);
+        } else {
+          return friendBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public int getFriendCount() {
+        if (friendBuilder_ == null) {
+          return friend_.size();
+        } else {
+          return friendBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public com.trans.pixel.protoc.Commands.UserFriend getFriend(int index) {
+        if (friendBuilder_ == null) {
+          return friend_.get(index);
+        } else {
+          return friendBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder setFriend(
+          int index, com.trans.pixel.protoc.Commands.UserFriend value) {
+        if (friendBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendIsMutable();
+          friend_.set(index, value);
+          onChanged();
+        } else {
+          friendBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder setFriend(
+          int index, com.trans.pixel.protoc.Commands.UserFriend.Builder builderForValue) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder addFriend(com.trans.pixel.protoc.Commands.UserFriend value) {
+        if (friendBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendIsMutable();
+          friend_.add(value);
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder addFriend(
+          int index, com.trans.pixel.protoc.Commands.UserFriend value) {
+        if (friendBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFriendIsMutable();
+          friend_.add(index, value);
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder addFriend(
+          com.trans.pixel.protoc.Commands.UserFriend.Builder builderForValue) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.add(builderForValue.build());
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder addFriend(
+          int index, com.trans.pixel.protoc.Commands.UserFriend.Builder builderForValue) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          friendBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder addAllFriend(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.UserFriend> values) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          super.addAll(values, friend_);
+          onChanged();
+        } else {
+          friendBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder clearFriend() {
+        if (friendBuilder_ == null) {
+          friend_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          friendBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public Builder removeFriend(int index) {
+        if (friendBuilder_ == null) {
+          ensureFriendIsMutable();
+          friend_.remove(index);
+          onChanged();
+        } else {
+          friendBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public com.trans.pixel.protoc.Commands.UserFriend.Builder getFriendBuilder(
+          int index) {
+        return getFriendFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public com.trans.pixel.protoc.Commands.UserFriendOrBuilder getFriendOrBuilder(
+          int index) {
+        if (friendBuilder_ == null) {
+          return friend_.get(index);  } else {
+          return friendBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Commands.UserFriendOrBuilder> 
+           getFriendOrBuilderList() {
+        if (friendBuilder_ != null) {
+          return friendBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(friend_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public com.trans.pixel.protoc.Commands.UserFriend.Builder addFriendBuilder() {
+        return getFriendFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Commands.UserFriend.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public com.trans.pixel.protoc.Commands.UserFriend.Builder addFriendBuilder(
+          int index) {
+        return getFriendFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Commands.UserFriend.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserFriend friend = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Commands.UserFriend.Builder> 
+           getFriendBuilderList() {
+        return getFriendFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Commands.UserFriend, com.trans.pixel.protoc.Commands.UserFriend.Builder, com.trans.pixel.protoc.Commands.UserFriendOrBuilder> 
+          getFriendFieldBuilder() {
+        if (friendBuilder_ == null) {
+          friendBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Commands.UserFriend, com.trans.pixel.protoc.Commands.UserFriend.Builder, com.trans.pixel.protoc.Commands.UserFriendOrBuilder>(
+                  friend_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          friend_ = null;
+        }
+        return friendBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseGetUserFriendListCommand)
+    }
+
+    static {
+      defaultInstance = new ResponseGetUserFriendListCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseGetUserFriendListCommand)
+  }
+
   public interface RequestCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -30064,6 +32828,20 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.RequestDeleteMailCommand deleteMailCommand = 20;</code>
      */
     com.trans.pixel.protoc.Commands.RequestDeleteMailCommandOrBuilder getDeleteMailCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+     */
+    boolean hasAddFriendCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestAddFriendCommand getAddFriendCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+     */
+    com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder getAddFriendCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -30374,6 +33152,19 @@ public final class Commands {
                 deleteMailCommand_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00080000;
+              break;
+            }
+            case 170: {
+              com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00100000) == 0x00100000)) {
+                subBuilder = addFriendCommand_.toBuilder();
+              }
+              addFriendCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.RequestAddFriendCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(addFriendCommand_);
+                addFriendCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00100000;
               break;
             }
           }
@@ -30856,6 +33647,28 @@ public final class Commands {
       return deleteMailCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;
+    public static final int ADDFRIENDCOMMAND_FIELD_NUMBER = 21;
+    private com.trans.pixel.protoc.Commands.RequestAddFriendCommand addFriendCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+     */
+    public boolean hasAddFriendCommand() {
+      return ((bitField0_ & 0x00100000) == 0x00100000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestAddFriendCommand getAddFriendCommand() {
+      return addFriendCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+     */
+    public com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder getAddFriendCommandOrBuilder() {
+      return addFriendCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.Commands.HeadInfo.getDefaultInstance();
       registerCommand_ = com.trans.pixel.protoc.Commands.RequestRegisterCommand.getDefaultInstance();
@@ -30877,6 +33690,7 @@ public final class Commands {
       getUserMailListCommand_ = com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand.getDefaultInstance();
       readMailCommand_ = com.trans.pixel.protoc.Commands.RequestReadMailCommand.getDefaultInstance();
       deleteMailCommand_ = com.trans.pixel.protoc.Commands.RequestDeleteMailCommand.getDefaultInstance();
+      addFriendCommand_ = com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -30975,6 +33789,12 @@ public final class Commands {
           return false;
         }
       }
+      if (hasAddFriendCommand()) {
+        if (!getAddFriendCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -31041,6 +33861,9 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
         output.writeMessage(20, deleteMailCommand_);
+      }
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
+        output.writeMessage(21, addFriendCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -31130,6 +33953,10 @@ public final class Commands {
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(20, deleteMailCommand_);
+      }
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, addFriendCommand_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -31259,6 +34086,7 @@ public final class Commands {
           getGetUserMailListCommandFieldBuilder();
           getReadMailCommandFieldBuilder();
           getDeleteMailCommandFieldBuilder();
+          getAddFriendCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -31387,6 +34215,12 @@ public final class Commands {
           deleteMailCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00080000);
+        if (addFriendCommandBuilder_ == null) {
+          addFriendCommand_ = com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance();
+        } else {
+          addFriendCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00100000);
         return this;
       }
 
@@ -31575,6 +34409,14 @@ public final class Commands {
         } else {
           result.deleteMailCommand_ = deleteMailCommandBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
+          to_bitField0_ |= 0x00100000;
+        }
+        if (addFriendCommandBuilder_ == null) {
+          result.addFriendCommand_ = addFriendCommand_;
+        } else {
+          result.addFriendCommand_ = addFriendCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -31650,6 +34492,9 @@ public final class Commands {
         }
         if (other.hasDeleteMailCommand()) {
           mergeDeleteMailCommand(other.getDeleteMailCommand());
+        }
+        if (other.hasAddFriendCommand()) {
+          mergeAddFriendCommand(other.getAddFriendCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -31744,6 +34589,12 @@ public final class Commands {
         }
         if (hasDeleteMailCommand()) {
           if (!getDeleteMailCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasAddFriendCommand()) {
+          if (!getAddFriendCommand().isInitialized()) {
             
             return false;
           }
@@ -34110,6 +36961,123 @@ public final class Commands {
         return deleteMailCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;
+      private com.trans.pixel.protoc.Commands.RequestAddFriendCommand addFriendCommand_ = com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestAddFriendCommand, com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder, com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder> addFriendCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public boolean hasAddFriendCommand() {
+        return ((bitField0_ & 0x00100000) == 0x00100000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestAddFriendCommand getAddFriendCommand() {
+        if (addFriendCommandBuilder_ == null) {
+          return addFriendCommand_;
+        } else {
+          return addFriendCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public Builder setAddFriendCommand(com.trans.pixel.protoc.Commands.RequestAddFriendCommand value) {
+        if (addFriendCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          addFriendCommand_ = value;
+          onChanged();
+        } else {
+          addFriendCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public Builder setAddFriendCommand(
+          com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder builderForValue) {
+        if (addFriendCommandBuilder_ == null) {
+          addFriendCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          addFriendCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public Builder mergeAddFriendCommand(com.trans.pixel.protoc.Commands.RequestAddFriendCommand value) {
+        if (addFriendCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00100000) == 0x00100000) &&
+              addFriendCommand_ != com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance()) {
+            addFriendCommand_ =
+              com.trans.pixel.protoc.Commands.RequestAddFriendCommand.newBuilder(addFriendCommand_).mergeFrom(value).buildPartial();
+          } else {
+            addFriendCommand_ = value;
+          }
+          onChanged();
+        } else {
+          addFriendCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public Builder clearAddFriendCommand() {
+        if (addFriendCommandBuilder_ == null) {
+          addFriendCommand_ = com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          addFriendCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00100000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder getAddFriendCommandBuilder() {
+        bitField0_ |= 0x00100000;
+        onChanged();
+        return getAddFriendCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      public com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder getAddFriendCommandOrBuilder() {
+        if (addFriendCommandBuilder_ != null) {
+          return addFriendCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return addFriendCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestAddFriendCommand addFriendCommand = 21;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.RequestAddFriendCommand, com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder, com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder> 
+          getAddFriendCommandFieldBuilder() {
+        if (addFriendCommandBuilder_ == null) {
+          addFriendCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.RequestAddFriendCommand, com.trans.pixel.protoc.Commands.RequestAddFriendCommand.Builder, com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder>(
+                  addFriendCommand_,
+                  getParentForChildren(),
+                  isClean());
+          addFriendCommand_ = null;
+        }
+        return addFriendCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
     }
 
@@ -34389,6 +37357,20 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseMessageCommand messageCommand = 20;</code>
      */
     com.trans.pixel.protoc.Commands.ResponseMessageCommandOrBuilder getMessageCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+     */
+    boolean hasGetUserFriendListCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+     */
+    com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand getGetUserFriendListCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+     */
+    com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommandOrBuilder getGetUserFriendListCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseCommand}
@@ -34690,6 +37672,19 @@ public final class Commands {
                 messageCommand_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00040000;
+              break;
+            }
+            case 170: {
+              com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00080000) == 0x00080000)) {
+                subBuilder = getUserFriendListCommand_.toBuilder();
+              }
+              getUserFriendListCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(getUserFriendListCommand_);
+                getUserFriendListCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00080000;
               break;
             }
           }
@@ -35150,6 +38145,28 @@ public final class Commands {
       return messageCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
+    public static final int GETUSERFRIENDLISTCOMMAND_FIELD_NUMBER = 21;
+    private com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand getUserFriendListCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+     */
+    public boolean hasGetUserFriendListCommand() {
+      return ((bitField0_ & 0x00080000) == 0x00080000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+     */
+    public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand getGetUserFriendListCommand() {
+      return getUserFriendListCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+     */
+    public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommandOrBuilder getGetUserFriendListCommandOrBuilder() {
+      return getUserFriendListCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.Commands.HeadInfo.getDefaultInstance();
       errorCommand_ = com.trans.pixel.protoc.Commands.ErrorCommand.getDefaultInstance();
@@ -35170,6 +38187,7 @@ public final class Commands {
       getUserMailListCommand_ = com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand.getDefaultInstance();
       sendRewardCommand_ = com.trans.pixel.protoc.Commands.ResponseSendRewardCommand.getDefaultInstance();
       messageCommand_ = com.trans.pixel.protoc.Commands.ResponseMessageCommand.getDefaultInstance();
+      getUserFriendListCommand_ = com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -35280,6 +38298,12 @@ public final class Commands {
           return false;
         }
       }
+      if (hasGetUserFriendListCommand()) {
+        if (!getGetUserFriendListCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -35343,6 +38367,9 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         output.writeMessage(20, messageCommand_);
+      }
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        output.writeMessage(21, getUserFriendListCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -35428,6 +38455,10 @@ public final class Commands {
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(20, messageCommand_);
+      }
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, getUserFriendListCommand_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -35560,6 +38591,7 @@ public final class Commands {
           getGetUserMailListCommandFieldBuilder();
           getSendRewardCommandFieldBuilder();
           getMessageCommandFieldBuilder();
+          getGetUserFriendListCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -35682,6 +38714,12 @@ public final class Commands {
           messageCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00040000);
+        if (getUserFriendListCommandBuilder_ == null) {
+          getUserFriendListCommand_ = com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.getDefaultInstance();
+        } else {
+          getUserFriendListCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00080000);
         return this;
       }
 
@@ -35862,6 +38900,14 @@ public final class Commands {
         } else {
           result.messageCommand_ = messageCommandBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
+          to_bitField0_ |= 0x00080000;
+        }
+        if (getUserFriendListCommandBuilder_ == null) {
+          result.getUserFriendListCommand_ = getUserFriendListCommand_;
+        } else {
+          result.getUserFriendListCommand_ = getUserFriendListCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -35934,6 +38980,9 @@ public final class Commands {
         }
         if (other.hasMessageCommand()) {
           mergeMessageCommand(other.getMessageCommand());
+        }
+        if (other.hasGetUserFriendListCommand()) {
+          mergeGetUserFriendListCommand(other.getGetUserFriendListCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -36040,6 +39089,12 @@ public final class Commands {
         }
         if (hasMessageCommand()) {
           if (!getMessageCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasGetUserFriendListCommand()) {
+          if (!getGetUserFriendListCommand().isInitialized()) {
             
             return false;
           }
@@ -38289,6 +41344,123 @@ public final class Commands {
         return messageCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
+      private com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand getUserFriendListCommand_ = com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommandOrBuilder> getUserFriendListCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public boolean hasGetUserFriendListCommand() {
+        return ((bitField0_ & 0x00080000) == 0x00080000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand getGetUserFriendListCommand() {
+        if (getUserFriendListCommandBuilder_ == null) {
+          return getUserFriendListCommand_;
+        } else {
+          return getUserFriendListCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public Builder setGetUserFriendListCommand(com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand value) {
+        if (getUserFriendListCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          getUserFriendListCommand_ = value;
+          onChanged();
+        } else {
+          getUserFriendListCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public Builder setGetUserFriendListCommand(
+          com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder builderForValue) {
+        if (getUserFriendListCommandBuilder_ == null) {
+          getUserFriendListCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          getUserFriendListCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public Builder mergeGetUserFriendListCommand(com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand value) {
+        if (getUserFriendListCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00080000) == 0x00080000) &&
+              getUserFriendListCommand_ != com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.getDefaultInstance()) {
+            getUserFriendListCommand_ =
+              com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.newBuilder(getUserFriendListCommand_).mergeFrom(value).buildPartial();
+          } else {
+            getUserFriendListCommand_ = value;
+          }
+          onChanged();
+        } else {
+          getUserFriendListCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public Builder clearGetUserFriendListCommand() {
+        if (getUserFriendListCommandBuilder_ == null) {
+          getUserFriendListCommand_ = com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          getUserFriendListCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00080000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder getGetUserFriendListCommandBuilder() {
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return getGetUserFriendListCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      public com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommandOrBuilder getGetUserFriendListCommandOrBuilder() {
+        if (getUserFriendListCommandBuilder_ != null) {
+          return getUserFriendListCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return getUserFriendListCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommandOrBuilder> 
+          getGetUserFriendListCommandFieldBuilder() {
+        if (getUserFriendListCommandBuilder_ == null) {
+          getUserFriendListCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand.Builder, com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommandOrBuilder>(
+                  getUserFriendListCommand_,
+                  getParentForChildren(),
+                  isClean());
+          getUserFriendListCommand_ = null;
+        }
+        return getUserFriendListCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseCommand)
     }
 
@@ -38341,10 +41513,20 @@ public final class Commands {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_UserFriend_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_UserFriend_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_Mail_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_Mail_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_MailList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_MailList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_ErrorCommand_descriptor;
   private static
@@ -38536,6 +41718,16 @@ public final class Commands {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestDeleteMailCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -38575,155 +41767,166 @@ public final class Commands {
       "(\005\022\022\n\nskillLevel\030\002 \002(\005\"d\n\010UserMine\022\r\n\005ma" +
       "pId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\025\n\rrelatedUser",
       "Id\030\003 \001(\003\022\023\n\013preventTime\030\004 \001(\003\022\r\n\005level\030\005" +
-      " \001(\005\"<\n\010UserRank\022\016\n\006userId\030\001 \002(\003\022\014\n\004rank" +
-      "\030\002 \002(\003\022\022\n\nteamRecord\030\003 \002(\t\"\255\001\n\004Mail\022\n\n\002i" +
-      "d\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n\nfromUserId\030\003 " +
-      "\002(\003\022\014\n\004type\030\004 \002(\005\022\021\n\tstartDate\030\005 \002(\t\022\017\n\007" +
-      "endDate\030\006 \002(\t\022\017\n\007content\030\007 \002(\t\0222\n\006reward" +
-      "\030\010 \003(\0132\".com.trans.pixel.protoc.RewardIn" +
-      "fo\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(\t\022\017\n\007mess" +
+      " \001(\005\"N\n\010UserRank\022\016\n\006userId\030\001 \002(\003\022\020\n\010user" +
+      "Name\030\002 \002(\t\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamRecord\030\004" +
+      " \002(\t\"F\n\nUserFriend\022\020\n\010friendId\030\001 \002(\003\022\022\n\n" +
+      "friendName\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(\t\"\255\001\n" +
+      "\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n\nfro" +
+      "mUserId\030\003 \002(\003\022\014\n\004type\030\004 \002(\005\022\021\n\tstartDate" +
+      "\030\005 \002(\t\022\017\n\007endDate\030\006 \002(\t\022\017\n\007content\030\007 \002(\t" +
+      "\0222\n\006reward\030\010 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo\"D\n\010MailList\022\014\n\004type\030\001 \002(\005\022*",
+      "\n\004mail\030\002 \003(\0132\034.com.trans.pixel.protoc.Ma" +
+      "il\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(\t\022\017\n\007mess" +
       "age\030\002 \002(\t\"\035\n\033ResponseNeedRegisterCommand" +
-      "\"*\n\026RequestRegisterCommand\022\020\n\010userName\030\001",
+      "\"*\n\026RequestRegisterCommand\022\020\n\010userName\030\001" +
       " \002(\t\"\025\n\023RequestLoginCommand\"I\n\027ResponseU" +
       "serInfoCommand\022.\n\004user\030\001 \002(\0132 .com.trans" +
       ".pixel.protoc.UserInfo\"\201\001\n\024ResponsePopup" +
       "Command\022\021\n\tpopScreen\030\001 \002(\005\022\016\n\006flowID\030\002 \001" +
       "(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yes" +
-      "ButtonID\030\005 \001(\t\022\022\n\nnoButtonID\030\006 \001(\t\"+\n\030Re" +
+      "ButtonID\030\005 \001(\t\022\022\n\nnoButtonID\030\006 \001(\t\"+\n\030Re",
       "questLevelStartCommand\022\017\n\007levelId\030\001 \002(\005\"" +
       "Q\n\031RequestLevelResultCommand\022\017\n\007levelId\030" +
       "\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\022\021\n\tfightInfo\030\003 \002" +
-      "(\t\"P\n\032ResponseLevelResultCommand\0222\n\006rewa",
+      "(\t\"P\n\032ResponseLevelResultCommand\0222\n\006rewa" +
       "rd\030\001 \003(\0132\".com.trans.pixel.protoc.Reward" +
       "Info\"/\n\034RequestLevelLootStartCommand\022\017\n\007" +
       "levelId\030\001 \002(\005\"\037\n\035RequestLevelLootResultC" +
       "ommand\"T\n\036ResponseLevelLootResultCommand" +
       "\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.proto" +
-      "c.RewardInfo\":\n\030RequestUpdateTeamCommand" +
+      "c.RewardInfo\":\n\030RequestUpdateTeamCommand",
       "\022\014\n\004mode\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\"P\n\031Requ" +
       "estHeroLevelUpCommand\022\023\n\013levelUpType\030\001 \002" +
       "(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\005\"_\n\031Re" +
-      "sponseHeroResultCommand\022\016\n\006heroId\030\001 \002(\005\022",
+      "sponseHeroResultCommand\022\016\n\006heroId\030\001 \002(\005\022" +
       "2\n\010heroInfo\030\002 \002(\0132 .com.trans.pixel.prot" +
       "oc.HeroInfo\"\032\n\030RequestLootResultCommand\"" +
       "L\n\031ResponseLootResultCommand\022\014\n\004gold\030\001 \001" +
       "(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014lastLootTime\030\003 \001(\005\"K\n" +
       "\032RequestAddHeroEquipCommand\022\016\n\006heroId\030\001 " +
-      "\002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \001(\005\"=\n\034Re" +
+      "\002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \001(\005\"=\n\034Re",
       "questAttackRelativeCommand\022\r\n\005mapId\030\001 \002(" +
       "\005\022\016\n\006mineId\030\002 \002(\005\"b\n\035ResponseAttackRelat" +
       "iveCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(" +
-      "\005\022\023\n\013preventTime\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n",
+      "\005\022\023\n\013preventTime\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n" +
       "\032ResponseGetUserMineCommand\0222\n\010userMine\030" +
       "\001 \003(\0132 .com.trans.pixel.protoc.UserMine\"" +
       "A\n RequestRefreshRelatedUserCommand\022\r\n\005m" +
       "apId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"M\n!ResponseRe" +
       "freshRelatedUserCommand\022\021\n\tleftTimes\030\001 \002" +
-      "(\005\022\025\n\rrelatedUserId\030\002 \002(\003\")\n\031RequestLott" +
+      "(\005\022\025\n\rrelatedUserId\030\002 \002(\003\")\n\031RequestLott",
       "eryHeroCommand\022\014\n\004type\030\001 \002(\005\"q\n\032Response" +
       "LotteryHeroCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewe" +
       "l\030\002 \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans." +
-      "pixel.protoc.RewardInfo\"P\n\032ResponseGetUs",
+      "pixel.protoc.RewardInfo\"P\n\032ResponseGetUs" +
       "erHeroCommand\0222\n\010userHero\030\001 \003(\0132 .com.tr" +
       "ans.pixel.protoc.UserHero\"!\n\037RequestGetL" +
       "adderRankListCommand\"%\n#RequestGetUserLa" +
       "dderRankListCommand\"V\n ResponseGetLadder" +
       "RankListCommand\0222\n\010userRank\030\001 \003(\0132 .com." +
-      "trans.pixel.protoc.UserRank\"Z\n$ResponseG" +
+      "trans.pixel.protoc.UserRank\"Z\n$ResponseG",
       "etUserLadderRankListCommand\0222\n\010userRank\030" +
       "\001 \003(\0132 .com.trans.pixel.protoc.UserRank\"" +
       ".\n\036RequestAttackLadderModeCommand\022\014\n\004ran" +
-      "k\030\001 \002(\003\";\n\037ResponseAttackLadderModeComma",
+      "k\030\001 \002(\003\";\n\037ResponseAttackLadderModeComma" +
       "nd\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035RequestG" +
-      "etUserMailListCommand\022\014\n\004type\030\001 \002(\005\"L\n\036R" +
-      "esponseGetUserMailListCommand\022*\n\004mail\030\001 " +
-      "\003(\0132\034.com.trans.pixel.protoc.Mail\"2\n\026Req" +
-      "uestReadMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030" +
-      "\002 \003(\005\"3\n\026ResponseMessageCommand\022\014\n\004code\030" +
-      "\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031ResponseSendReward" +
-      "Command\0222\n\006reward\030\001 \003(\0132\".com.trans.pixe" +
-      "l.protoc.RewardInfo\"4\n\030RequestDeleteMail" +
-      "Command\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\"\323\014\n\016Re",
-      "questCommand\022.\n\004head\030\001 \002(\0132 .com.trans.p" +
-      "ixel.protoc.HeadInfo\022G\n\017registerCommand\030" +
-      "\002 \001(\0132..com.trans.pixel.protoc.RequestRe" +
-      "gisterCommand\022A\n\014loginCommand\030\003 \001(\0132+.co" +
-      "m.trans.pixel.protoc.RequestLoginCommand" +
-      "\022M\n\022levelResultCommand\030\004 \001(\01321.com.trans" +
-      ".pixel.protoc.RequestLevelResultCommand\022" +
-      "K\n\021updateTeamCommand\030\005 \001(\01320.com.trans.p" +
-      "ixel.protoc.RequestUpdateTeamCommand\022K\n\021" +
-      "levelStartCommand\030\006 \001(\01320.com.trans.pixe",
-      "l.protoc.RequestLevelStartCommand\022S\n\025lev" +
-      "elLootStartCommand\030\007 \001(\01324.com.trans.pix" +
-      "el.protoc.RequestLevelLootStartCommand\022U" +
-      "\n\026levelLootResultCommand\030\010 \001(\01325.com.tra" +
-      "ns.pixel.protoc.RequestLevelLootResultCo" +
-      "mmand\022M\n\022heroLevelUpCommand\030\t \001(\01321.com." +
-      "trans.pixel.protoc.RequestHeroLevelUpCom" +
-      "mand\022K\n\021lootResultCommand\030\n \001(\01320.com.tr" +
-      "ans.pixel.protoc.RequestLootResultComman" +
-      "d\022O\n\023addHeroEquipCommand\030\013 \001(\01322.com.tra",
-      "ns.pixel.protoc.RequestAddHeroEquipComma" +
-      "nd\022S\n\025attackRelativeCommand\030\014 \001(\01324.com." +
-      "trans.pixel.protoc.RequestAttackRelative" +
-      "Command\022[\n\031refreshRelatedUserCommand\030\r \001" +
-      "(\01328.com.trans.pixel.protoc.RequestRefre" +
-      "shRelatedUserCommand\022M\n\022lotteryHeroComma" +
-      "nd\030\016 \001(\01321.com.trans.pixel.protoc.Reques" +
-      "tLotteryHeroCommand\022Y\n\030getLadderRankList" +
-      "Command\030\017 \001(\01327.com.trans.pixel.protoc.R" +
-      "equestGetLadderRankListCommand\022a\n\034getUse",
-      "rLadderRankListCommand\030\020 \001(\0132;.com.trans" +
-      ".pixel.protoc.RequestGetUserLadderRankLi" +
-      "stCommand\022W\n\027attackLadderModeCommand\030\021 \001" +
-      "(\01326.com.trans.pixel.protoc.RequestAttac" +
-      "kLadderModeCommand\022U\n\026getUserMailListCom" +
-      "mand\030\022 \001(\01325.com.trans.pixel.protoc.Requ" +
-      "estGetUserMailListCommand\022G\n\017readMailCom" +
-      "mand\030\023 \001(\0132..com.trans.pixel.protoc.Requ" +
-      "estReadMailCommand\022K\n\021deleteMailCommand\030" +
-      "\024 \001(\01320.com.trans.pixel.protoc.RequestDe",
-      "leteMailCommand\"\211\014\n\017ResponseCommand\022.\n\004h" +
-      "ead\030\001 \002(\0132 .com.trans.pixel.protoc.HeadI" +
-      "nfo\022:\n\014errorCommand\030\002 \001(\0132$.com.trans.pi" +
-      "xel.protoc.ErrorCommand\022P\n\023needRegisterC" +
-      "ommand\030\003 \001(\01323.com.trans.pixel.protoc.Re" +
-      "sponseNeedRegisterCommand\022H\n\017userInfoCom" +
-      "mand\030\004 \001(\0132/.com.trans.pixel.protoc.Resp" +
-      "onseUserInfoCommand\022N\n\022levelResultComman" +
-      "d\030\006 \001(\01322.com.trans.pixel.protoc.Respons" +
-      "eLevelResultCommand\022V\n\026levelLootResultCo",
-      "mmand\030\007 \001(\01326.com.trans.pixel.protoc.Res" +
-      "ponseLevelLootResultCommand\022L\n\021heroResul" +
-      "tCommand\030\010 \001(\01321.com.trans.pixel.protoc." +
-      "ResponseHeroResultCommand\022L\n\021lootResultC" +
+      "etUserMailListCommand\022\014\n\004type\030\001 \002(\005\"T\n\036R" +
+      "esponseGetUserMailListCommand\0222\n\010mailLis" +
+      "t\030\001 \003(\0132 .com.trans.pixel.protoc.MailLis" +
+      "t\"2\n\026RequestReadMailCommand\022\014\n\004type\030\001 \002(" +
+      "\005\022\n\n\002id\030\002 \003(\005\"3\n\026ResponseMessageCommand\022",
+      "\014\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031ResponseSe" +
+      "ndRewardCommand\0222\n\006reward\030\001 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.RewardInfo\"4\n\030RequestDe" +
+      "leteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(" +
+      "\005\")\n\027RequestAddFriendCommand\022\016\n\006userId\030\001" +
+      " \002(\003\"V\n ResponseGetUserFriendListCommand" +
+      "\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel.proto" +
+      "c.UserFriend\"\236\r\n\016RequestCommand\022.\n\004head\030" +
+      "\001 \002(\0132 .com.trans.pixel.protoc.HeadInfo\022" +
+      "G\n\017registerCommand\030\002 \001(\0132..com.trans.pix",
+      "el.protoc.RequestRegisterCommand\022A\n\014logi" +
+      "nCommand\030\003 \001(\0132+.com.trans.pixel.protoc." +
+      "RequestLoginCommand\022M\n\022levelResultComman" +
+      "d\030\004 \001(\01321.com.trans.pixel.protoc.Request" +
+      "LevelResultCommand\022K\n\021updateTeamCommand\030" +
+      "\005 \001(\01320.com.trans.pixel.protoc.RequestUp" +
+      "dateTeamCommand\022K\n\021levelStartCommand\030\006 \001" +
+      "(\01320.com.trans.pixel.protoc.RequestLevel" +
+      "StartCommand\022S\n\025levelLootStartCommand\030\007 " +
+      "\001(\01324.com.trans.pixel.protoc.RequestLeve",
+      "lLootStartCommand\022U\n\026levelLootResultComm" +
+      "and\030\010 \001(\01325.com.trans.pixel.protoc.Reque" +
+      "stLevelLootResultCommand\022M\n\022heroLevelUpC" +
       "ommand\030\t \001(\01321.com.trans.pixel.protoc.Re" +
-      "sponseLootResultCommand\022T\n\025attackRelativ" +
-      "eCommand\030\n \001(\01325.com.trans.pixel.protoc." +
-      "ResponseAttackRelativeCommand\022N\n\022getUser" +
-      "MineCommand\030\013 \001(\01322.com.trans.pixel.prot" +
-      "oc.ResponseGetUserMineCommand\022\\\n\031refresh",
-      "RelatedUserCommand\030\014 \001(\01329.com.trans.pix" +
-      "el.protoc.ResponseRefreshRelatedUserComm" +
-      "and\022N\n\022lotteryHeroCommand\030\r \001(\01322.com.tr" +
-      "ans.pixel.protoc.ResponseLotteryHeroComm" +
-      "and\022N\n\022getUserHeroCommand\030\016 \001(\01322.com.tr" +
-      "ans.pixel.protoc.ResponseGetUserHeroComm" +
-      "and\022Z\n\030getLadderRankListCommand\030\017 \001(\01328." +
-      "com.trans.pixel.protoc.ResponseGetLadder" +
-      "RankListCommand\022b\n\034getUserLadderRankList" +
-      "Command\030\020 \001(\0132<.com.trans.pixel.protoc.R",
-      "esponseGetUserLadderRankListCommand\022X\n\027a" +
-      "ttackLadderModeCommand\030\021 \001(\01327.com.trans" +
-      ".pixel.protoc.ResponseAttackLadderModeCo" +
-      "mmand\022V\n\026getUserMailListCommand\030\022 \001(\01326." +
-      "com.trans.pixel.protoc.ResponseGetUserMa" +
-      "ilListCommand\022L\n\021sendRewardCommand\030\023 \001(\013" +
-      "21.com.trans.pixel.protoc.ResponseSendRe" +
-      "wardCommand\022F\n\016messageCommand\030\024 \001(\0132..co" +
-      "m.trans.pixel.protoc.ResponseMessageComm" +
-      "and"
+      "questHeroLevelUpCommand\022K\n\021lootResultCom" +
+      "mand\030\n \001(\01320.com.trans.pixel.protoc.Requ" +
+      "estLootResultCommand\022O\n\023addHeroEquipComm" +
+      "and\030\013 \001(\01322.com.trans.pixel.protoc.Reque" +
+      "stAddHeroEquipCommand\022S\n\025attackRelativeC" +
+      "ommand\030\014 \001(\01324.com.trans.pixel.protoc.Re",
+      "questAttackRelativeCommand\022[\n\031refreshRel" +
+      "atedUserCommand\030\r \001(\01328.com.trans.pixel." +
+      "protoc.RequestRefreshRelatedUserCommand\022" +
+      "M\n\022lotteryHeroCommand\030\016 \001(\01321.com.trans." +
+      "pixel.protoc.RequestLotteryHeroCommand\022Y" +
+      "\n\030getLadderRankListCommand\030\017 \001(\01327.com.t" +
+      "rans.pixel.protoc.RequestGetLadderRankLi" +
+      "stCommand\022a\n\034getUserLadderRankListComman" +
+      "d\030\020 \001(\0132;.com.trans.pixel.protoc.Request" +
+      "GetUserLadderRankListCommand\022W\n\027attackLa",
+      "dderModeCommand\030\021 \001(\01326.com.trans.pixel." +
+      "protoc.RequestAttackLadderModeCommand\022U\n" +
+      "\026getUserMailListCommand\030\022 \001(\01325.com.tran" +
+      "s.pixel.protoc.RequestGetUserMailListCom" +
+      "mand\022G\n\017readMailCommand\030\023 \001(\0132..com.tran" +
+      "s.pixel.protoc.RequestReadMailCommand\022K\n" +
+      "\021deleteMailCommand\030\024 \001(\01320.com.trans.pix" +
+      "el.protoc.RequestDeleteMailCommand\022I\n\020ad" +
+      "dFriendCommand\030\025 \001(\0132/.com.trans.pixel.p" +
+      "rotoc.RequestAddFriendCommand\"\345\014\n\017Respon",
+      "seCommand\022.\n\004head\030\001 \002(\0132 .com.trans.pixe" +
+      "l.protoc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132" +
+      "$.com.trans.pixel.protoc.ErrorCommand\022P\n" +
+      "\023needRegisterCommand\030\003 \001(\01323.com.trans.p" +
+      "ixel.protoc.ResponseNeedRegisterCommand\022" +
+      "H\n\017userInfoCommand\030\004 \001(\0132/.com.trans.pix" +
+      "el.protoc.ResponseUserInfoCommand\022N\n\022lev" +
+      "elResultCommand\030\006 \001(\01322.com.trans.pixel." +
+      "protoc.ResponseLevelResultCommand\022V\n\026lev" +
+      "elLootResultCommand\030\007 \001(\01326.com.trans.pi",
+      "xel.protoc.ResponseLevelLootResultComman" +
+      "d\022L\n\021heroResultCommand\030\010 \001(\01321.com.trans" +
+      ".pixel.protoc.ResponseHeroResultCommand\022" +
+      "L\n\021lootResultCommand\030\t \001(\01321.com.trans.p" +
+      "ixel.protoc.ResponseLootResultCommand\022T\n" +
+      "\025attackRelativeCommand\030\n \001(\01325.com.trans" +
+      ".pixel.protoc.ResponseAttackRelativeComm" +
+      "and\022N\n\022getUserMineCommand\030\013 \001(\01322.com.tr" +
+      "ans.pixel.protoc.ResponseGetUserMineComm" +
+      "and\022\\\n\031refreshRelatedUserCommand\030\014 \001(\01329",
+      ".com.trans.pixel.protoc.ResponseRefreshR" +
+      "elatedUserCommand\022N\n\022lotteryHeroCommand\030" +
+      "\r \001(\01322.com.trans.pixel.protoc.ResponseL" +
+      "otteryHeroCommand\022N\n\022getUserHeroCommand\030" +
+      "\016 \001(\01322.com.trans.pixel.protoc.ResponseG" +
+      "etUserHeroCommand\022Z\n\030getLadderRankListCo" +
+      "mmand\030\017 \001(\01328.com.trans.pixel.protoc.Res" +
+      "ponseGetLadderRankListCommand\022b\n\034getUser" +
+      "LadderRankListCommand\030\020 \001(\0132<.com.trans." +
+      "pixel.protoc.ResponseGetUserLadderRankLi",
+      "stCommand\022X\n\027attackLadderModeCommand\030\021 \001" +
+      "(\01327.com.trans.pixel.protoc.ResponseAtta" +
+      "ckLadderModeCommand\022V\n\026getUserMailListCo" +
+      "mmand\030\022 \001(\01326.com.trans.pixel.protoc.Res" +
+      "ponseGetUserMailListCommand\022L\n\021sendRewar" +
+      "dCommand\030\023 \001(\01321.com.trans.pixel.protoc." +
+      "ResponseSendRewardCommand\022F\n\016messageComm" +
+      "and\030\024 \001(\0132..com.trans.pixel.protoc.Respo" +
+      "nseMessageCommand\022Z\n\030getUserFriendListCo" +
+      "mmand\030\025 \001(\01328.com.trans.pixel.protoc.Res",
+      "ponseGetUserFriendListCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -38777,253 +41980,277 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRank_descriptor,
-              new java.lang.String[] { "UserId", "Rank", "TeamRecord", });
-          internal_static_com_trans_pixel_protoc_Mail_descriptor =
+              new java.lang.String[] { "UserId", "UserName", "Rank", "TeamRecord", });
+          internal_static_com_trans_pixel_protoc_UserFriend_descriptor =
             getDescriptor().getMessageTypes().get(8);
+          internal_static_com_trans_pixel_protoc_UserFriend_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_UserFriend_descriptor,
+              new java.lang.String[] { "FriendId", "FriendName", "TeamRecord", });
+          internal_static_com_trans_pixel_protoc_Mail_descriptor =
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_Mail_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Mail_descriptor,
               new java.lang.String[] { "Id", "UserId", "FromUserId", "Type", "StartDate", "EndDate", "Content", "Reward", });
+          internal_static_com_trans_pixel_protoc_MailList_descriptor =
+            getDescriptor().getMessageTypes().get(10);
+          internal_static_com_trans_pixel_protoc_MailList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_MailList_descriptor,
+              new java.lang.String[] { "Type", "Mail", });
           internal_static_com_trans_pixel_protoc_ErrorCommand_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_ErrorCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ErrorCommand_descriptor,
               new java.lang.String[] { "Code", "Message", });
           internal_static_com_trans_pixel_protoc_ResponseNeedRegisterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_ResponseNeedRegisterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseNeedRegisterCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestRegisterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_RequestRegisterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRegisterCommand_descriptor,
               new java.lang.String[] { "UserName", });
           internal_static_com_trans_pixel_protoc_RequestLoginCommand_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestLoginCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLoginCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_ResponseUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserInfoCommand_descriptor,
               new java.lang.String[] { "User", });
           internal_static_com_trans_pixel_protoc_ResponsePopupCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_ResponsePopupCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePopupCommand_descriptor,
               new java.lang.String[] { "PopScreen", "FlowID", "Text", "Heading", "YesButtonID", "NoButtonID", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "LevelId", });
           internal_static_com_trans_pixel_protoc_RequestLevelResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestLevelResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelResultCommand_descriptor,
               new java.lang.String[] { "LevelId", "TeamInfo", "FightInfo", });
           internal_static_com_trans_pixel_protoc_ResponseLevelResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_ResponseLevelResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestLevelLootStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootStartCommand_descriptor,
               new java.lang.String[] { "LevelId", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor,
               new java.lang.String[] { "Mode", "TeamInfo", });
           internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHeroLevelUpCommand_descriptor,
               new java.lang.String[] { "LevelUpType", "HeroId", "InfoId", });
           internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseHeroResultCommand_descriptor,
               new java.lang.String[] { "HeroId", "HeroInfo", });
           internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLootResultCommand_descriptor,
               new java.lang.String[] { "Gold", "Exp", "LastLootTime", });
           internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor,
               new java.lang.String[] { "HeroId", "InfoId", "ArmId", });
           internal_static_com_trans_pixel_protoc_RequestAttackRelativeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_RequestAttackRelativeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackRelativeCommand_descriptor,
               new java.lang.String[] { "MapId", "MineId", });
           internal_static_com_trans_pixel_protoc_ResponseAttackRelativeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_ResponseAttackRelativeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseAttackRelativeCommand_descriptor,
               new java.lang.String[] { "MapId", "MineId", "PreventTime", "Level", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_ResponseGetUserMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserMineCommand_descriptor,
               new java.lang.String[] { "UserMine", });
           internal_static_com_trans_pixel_protoc_RequestRefreshRelatedUserCommand_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_RequestRefreshRelatedUserCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshRelatedUserCommand_descriptor,
               new java.lang.String[] { "MapId", "MineId", });
           internal_static_com_trans_pixel_protoc_ResponseRefreshRelatedUserCommand_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_ResponseRefreshRelatedUserCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRefreshRelatedUserCommand_descriptor,
               new java.lang.String[] { "LeftTimes", "RelatedUserId", });
           internal_static_com_trans_pixel_protoc_RequestLotteryHeroCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_RequestLotteryHeroCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLotteryHeroCommand_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_com_trans_pixel_protoc_ResponseLotteryHeroCommand_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_ResponseLotteryHeroCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLotteryHeroCommand_descriptor,
               new java.lang.String[] { "Coin", "Jewel", "RewardList", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserHeroCommand_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_ResponseGetUserHeroCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserHeroCommand_descriptor,
               new java.lang.String[] { "UserHero", });
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Rank", });
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Ret", "Msg", });
           internal_static_com_trans_pixel_protoc_RequestGetUserMailListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_RequestGetUserMailListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetUserMailListCommand_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserMailListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_ResponseGetUserMailListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserMailListCommand_descriptor,
-              new java.lang.String[] { "Mail", });
+              new java.lang.String[] { "MailList", });
           internal_static_com_trans_pixel_protoc_RequestReadMailCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_com_trans_pixel_protoc_RequestReadMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestReadMailCommand_descriptor,
               new java.lang.String[] { "Type", "Id", });
           internal_static_com_trans_pixel_protoc_ResponseMessageCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_ResponseMessageCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseMessageCommand_descriptor,
               new java.lang.String[] { "Code", "Msg", });
           internal_static_com_trans_pixel_protoc_ResponseSendRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_ResponseSendRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseSendRewardCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_RequestDeleteMailCommand_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_com_trans_pixel_protoc_RequestDeleteMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestDeleteMailCommand_descriptor,
               new java.lang.String[] { "Type", "Id", });
+          internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_descriptor =
+            getDescriptor().getMessageTypes().get(49);
+          internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestAddFriendCommand_descriptor,
+              new java.lang.String[] { "UserId", });
+          internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_descriptor =
+            getDescriptor().getMessageTypes().get(50);
+          internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponseGetUserFriendListCommand_descriptor,
+              new java.lang.String[] { "Friend", });
           internal_static_com_trans_pixel_protoc_RequestCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(51);
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "LevelResultCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "LootResultCommand", "AddHeroEquipCommand", "AttackRelativeCommand", "RefreshRelatedUserCommand", "LotteryHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "LevelResultCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "LootResultCommand", "AddHeroEquipCommand", "AttackRelativeCommand", "RefreshRelatedUserCommand", "LotteryHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", });
           internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(52);
           internal_static_com_trans_pixel_protoc_ResponseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor,
-              new java.lang.String[] { "Head", "ErrorCommand", "NeedRegisterCommand", "UserInfoCommand", "LevelResultCommand", "LevelLootResultCommand", "HeroResultCommand", "LootResultCommand", "AttackRelativeCommand", "GetUserMineCommand", "RefreshRelatedUserCommand", "LotteryHeroCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", });
+              new java.lang.String[] { "Head", "ErrorCommand", "NeedRegisterCommand", "UserInfoCommand", "LevelResultCommand", "LevelLootResultCommand", "HeroResultCommand", "LootResultCommand", "AttackRelativeCommand", "GetUserMineCommand", "RefreshRelatedUserCommand", "LotteryHeroCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", });
           return null;
         }
       };

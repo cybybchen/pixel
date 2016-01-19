@@ -1,0 +1,8 @@
+安装protobuf
+yum install protobuf-python protobuf
+导出Commands.pb.h和.cc
+protoc -I=./ --cpp_out=./ *proto
+导出Commands.java
+protoc -I=./ --java_out=../src/ *proto
+导出Commands_pb.lua（调用protoc-gen-lua插件）
+protoc -I=./ --plugin=protoc-gen-lua=protoc-gen-lua/protoc-gen-lua --lua_out=./ *proto
