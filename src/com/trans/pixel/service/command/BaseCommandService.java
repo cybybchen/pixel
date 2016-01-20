@@ -12,17 +12,20 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.Mail;
+import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
+import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserMine;
@@ -94,13 +97,25 @@ public class BaseCommandService {
 		return userRankBuilderList;
 	}
 	
-	protected List<Mail> buildMailList(List<MailBean> mailList) {
+	protected MailList buildMailList(int type, List<MailBean> mailList) {
+		MailList.Builder mailListBuilder = MailList.newBuilder();
 		List<Mail> mailBuilderList = new ArrayList<Mail>();
 		for (MailBean mail : mailList) {
 			mailBuilderList.add(mail.buildMail());
 		}
+		mailListBuilder.setType(type);
+		mailListBuilder.addAllMail(mailBuilderList);
 		
-		return mailBuilderList;
+		return mailListBuilder.build();
+	}
+	
+	protected List<UserFriend> buildUserFriendList(List<UserFriendBean> userFriendList) {
+		List<UserFriend> userFriendBuilderList = new ArrayList<UserFriend>();
+		for (UserFriendBean userFriend : userFriendList) {
+			userFriendBuilderList.add(userFriend.buildUserFriend());
+		}
+		
+		return userFriendBuilderList;
 	}
 	
 	protected void handleGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {	
@@ -118,6 +133,17 @@ public class BaseCommandService {
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setRewardList(rewardList);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
+	}
+	
+	protected MailBean buildMail(long userId, long friendId, String content, int type) {
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setFromUserId(friendId);
+		mail.setContent(content);
+		mail.setType(type);
 		mail.setStartDate(DateUtil.getCurrentDateString());
 		
 		return mail;

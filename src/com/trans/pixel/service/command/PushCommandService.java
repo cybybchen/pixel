@@ -1,20 +1,29 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
+import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
+import com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
+import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
+import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeroService;
 
 @Service
@@ -28,6 +37,10 @@ public class PushCommandService extends BaseCommandService {
 	private UserHeroService userHeroService;
 	@Resource
 	private LadderService ladderService;
+	@Resource
+	private MailService mailService;
+	@Resource
+	private UserFriendService userFriendService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -54,5 +67,23 @@ public class PushCommandService extends BaseCommandService {
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 		super.buildUserInfo(builder, user);
 		responseBuilder.setUserInfoCommand(builder.build());
+	}
+	
+	public void pushUserMailListCommand(Builder responseBuilder, UserBean user) {
+		ResponseGetUserMailListCommand.Builder builder = ResponseGetUserMailListCommand.newBuilder();
+		List<MailList> mailBuilderList = new ArrayList<MailList>();
+		for (Integer type : MailConst.MAIL_TYPES) {
+			List<MailBean> mailList = mailService.getMailList(user.getId(), type);
+			mailBuilderList.add(super.buildMailList(type, mailList));
+		}
+		builder.addAllMailList(mailBuilderList);
+		responseBuilder.setGetUserMailListCommand(builder.build());
+	}
+	
+	public void pushUserFriendListCommand(Builder responseBuilder, UserBean user) {
+		ResponseGetUserFriendListCommand.Builder builder = ResponseGetUserFriendListCommand.newBuilder();
+		List<UserFriendBean> userFriendList = userFriendService.getUserFriendList(user.getId());
+		builder.addAllFriend(super.buildUserFriendList(userFriendList));
+		responseBuilder.setGetUserFriendListCommand(builder.build());
 	}
 }

@@ -78,4 +78,7 @@ public class RedisKey {
 	
 	//mail
 	public static final String MAIL_PREFIX = "mail_";
+	
+	//user friend redis
+	public static final String USER_FRIEND_PREFIX = "user_friend_";
 }

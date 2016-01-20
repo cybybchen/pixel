@@ -9,7 +9,7 @@ public enum ErrorConst implements ResultConst {
             "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), NOT_ENGHOU_EXP(1006, "升级所需经验不足"),
             NOT_ENGHOU_EQUIP(1007, "升级所需装备不足"), EQUIP_HAS_ADD(1008, "已添加过"), PVP_MAP_ERROR(1009, "PVP地图异常"), NOT_ENOUGH_COIN(1010, "金币不足"),
             NOT_ENOUGH_JEWEL(1011, "钻石不足"), NOT_ENOUGH_LADDER_MODE_TIMES(1012, "今日剩余挑战次数为0"), MAIL_IS_NOT_EXIST(1013, "邮件不存在"),
-            MAIL_HAS_READ(1014, "该邮件内容已读取"), SERVER_ERROR(1100, "服务器异常错误");
+            MAIL_HAS_READ(1014, "该邮件内容已读取"), FRIEND_HAS_ADDED(1015, "该玩家已经添加"), SERVER_ERROR(1100, "服务器异常错误");
 
     private final int code;
 
