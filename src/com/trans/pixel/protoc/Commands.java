@@ -33312,19 +33312,19 @@ public final class Commands {
      */
     com.trans.pixel.protoc.Commands.RequestAddFriendCommandOrBuilder getAddFriendCommandOrBuilder();
 
-    // optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;
+    // optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
      */
-    boolean hasReceiveFriend();
+    boolean hasReceiveFriendCommand();
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
      */
-    com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand getReceiveFriend();
+    com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand getReceiveFriendCommand();
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
      */
-    com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder getReceiveFriendOrBuilder();
+    com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder getReceiveFriendCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -33653,12 +33653,12 @@ public final class Commands {
             case 178: {
               com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder subBuilder = null;
               if (((bitField0_ & 0x00200000) == 0x00200000)) {
-                subBuilder = receiveFriend_.toBuilder();
+                subBuilder = receiveFriendCommand_.toBuilder();
               }
-              receiveFriend_ = input.readMessage(com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.PARSER, extensionRegistry);
+              receiveFriendCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(receiveFriend_);
-                receiveFriend_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(receiveFriendCommand_);
+                receiveFriendCommand_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00200000;
               break;
@@ -34165,26 +34165,26 @@ public final class Commands {
       return addFriendCommand_;
     }
 
-    // optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;
-    public static final int RECEIVEFRIEND_FIELD_NUMBER = 22;
-    private com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand receiveFriend_;
+    // optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;
+    public static final int RECEIVEFRIENDCOMMAND_FIELD_NUMBER = 22;
+    private com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand receiveFriendCommand_;
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
      */
-    public boolean hasReceiveFriend() {
+    public boolean hasReceiveFriendCommand() {
       return ((bitField0_ & 0x00200000) == 0x00200000);
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
      */
-    public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand getReceiveFriend() {
-      return receiveFriend_;
+    public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand getReceiveFriendCommand() {
+      return receiveFriendCommand_;
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+     * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
      */
-    public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder getReceiveFriendOrBuilder() {
-      return receiveFriend_;
+    public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder getReceiveFriendCommandOrBuilder() {
+      return receiveFriendCommand_;
     }
 
     private void initFields() {
@@ -34209,7 +34209,7 @@ public final class Commands {
       readMailCommand_ = com.trans.pixel.protoc.Commands.RequestReadMailCommand.getDefaultInstance();
       deleteMailCommand_ = com.trans.pixel.protoc.Commands.RequestDeleteMailCommand.getDefaultInstance();
       addFriendCommand_ = com.trans.pixel.protoc.Commands.RequestAddFriendCommand.getDefaultInstance();
-      receiveFriend_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
+      receiveFriendCommand_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -34385,7 +34385,7 @@ public final class Commands {
         output.writeMessage(21, addFriendCommand_);
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
-        output.writeMessage(22, receiveFriend_);
+        output.writeMessage(22, receiveFriendCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -34482,7 +34482,7 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(22, receiveFriend_);
+          .computeMessageSize(22, receiveFriendCommand_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -34613,7 +34613,7 @@ public final class Commands {
           getReadMailCommandFieldBuilder();
           getDeleteMailCommandFieldBuilder();
           getAddFriendCommandFieldBuilder();
-          getReceiveFriendFieldBuilder();
+          getReceiveFriendCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -34748,10 +34748,10 @@ public final class Commands {
           addFriendCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00100000);
-        if (receiveFriendBuilder_ == null) {
-          receiveFriend_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
+        if (receiveFriendCommandBuilder_ == null) {
+          receiveFriendCommand_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
         } else {
-          receiveFriendBuilder_.clear();
+          receiveFriendCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00200000);
         return this;
@@ -34953,10 +34953,10 @@ public final class Commands {
         if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
           to_bitField0_ |= 0x00200000;
         }
-        if (receiveFriendBuilder_ == null) {
-          result.receiveFriend_ = receiveFriend_;
+        if (receiveFriendCommandBuilder_ == null) {
+          result.receiveFriendCommand_ = receiveFriendCommand_;
         } else {
-          result.receiveFriend_ = receiveFriendBuilder_.build();
+          result.receiveFriendCommand_ = receiveFriendCommandBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -35037,8 +35037,8 @@ public final class Commands {
         if (other.hasAddFriendCommand()) {
           mergeAddFriendCommand(other.getAddFriendCommand());
         }
-        if (other.hasReceiveFriend()) {
-          mergeReceiveFriend(other.getReceiveFriend());
+        if (other.hasReceiveFriendCommand()) {
+          mergeReceiveFriendCommand(other.getReceiveFriendCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -37622,121 +37622,121 @@ public final class Commands {
         return addFriendCommandBuilder_;
       }
 
-      // optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;
-      private com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand receiveFriend_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
+      // optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;
+      private com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand receiveFriendCommand_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder> receiveFriendBuilder_;
+          com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder> receiveFriendCommandBuilder_;
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public boolean hasReceiveFriend() {
+      public boolean hasReceiveFriendCommand() {
         return ((bitField0_ & 0x00200000) == 0x00200000);
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand getReceiveFriend() {
-        if (receiveFriendBuilder_ == null) {
-          return receiveFriend_;
+      public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand getReceiveFriendCommand() {
+        if (receiveFriendCommandBuilder_ == null) {
+          return receiveFriendCommand_;
         } else {
-          return receiveFriendBuilder_.getMessage();
+          return receiveFriendCommandBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public Builder setReceiveFriend(com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand value) {
-        if (receiveFriendBuilder_ == null) {
+      public Builder setReceiveFriendCommand(com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand value) {
+        if (receiveFriendCommandBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          receiveFriend_ = value;
+          receiveFriendCommand_ = value;
           onChanged();
         } else {
-          receiveFriendBuilder_.setMessage(value);
+          receiveFriendCommandBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00200000;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public Builder setReceiveFriend(
+      public Builder setReceiveFriendCommand(
           com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder builderForValue) {
-        if (receiveFriendBuilder_ == null) {
-          receiveFriend_ = builderForValue.build();
+        if (receiveFriendCommandBuilder_ == null) {
+          receiveFriendCommand_ = builderForValue.build();
           onChanged();
         } else {
-          receiveFriendBuilder_.setMessage(builderForValue.build());
+          receiveFriendCommandBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00200000;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public Builder mergeReceiveFriend(com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand value) {
-        if (receiveFriendBuilder_ == null) {
+      public Builder mergeReceiveFriendCommand(com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand value) {
+        if (receiveFriendCommandBuilder_ == null) {
           if (((bitField0_ & 0x00200000) == 0x00200000) &&
-              receiveFriend_ != com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance()) {
-            receiveFriend_ =
-              com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.newBuilder(receiveFriend_).mergeFrom(value).buildPartial();
+              receiveFriendCommand_ != com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance()) {
+            receiveFriendCommand_ =
+              com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.newBuilder(receiveFriendCommand_).mergeFrom(value).buildPartial();
           } else {
-            receiveFriend_ = value;
+            receiveFriendCommand_ = value;
           }
           onChanged();
         } else {
-          receiveFriendBuilder_.mergeFrom(value);
+          receiveFriendCommandBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00200000;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public Builder clearReceiveFriend() {
-        if (receiveFriendBuilder_ == null) {
-          receiveFriend_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
+      public Builder clearReceiveFriendCommand() {
+        if (receiveFriendCommandBuilder_ == null) {
+          receiveFriendCommand_ = com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.getDefaultInstance();
           onChanged();
         } else {
-          receiveFriendBuilder_.clear();
+          receiveFriendCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00200000);
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder getReceiveFriendBuilder() {
+      public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder getReceiveFriendCommandBuilder() {
         bitField0_ |= 0x00200000;
         onChanged();
-        return getReceiveFriendFieldBuilder().getBuilder();
+        return getReceiveFriendCommandFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
-      public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder getReceiveFriendOrBuilder() {
-        if (receiveFriendBuilder_ != null) {
-          return receiveFriendBuilder_.getMessageOrBuilder();
+      public com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder getReceiveFriendCommandOrBuilder() {
+        if (receiveFriendCommandBuilder_ != null) {
+          return receiveFriendCommandBuilder_.getMessageOrBuilder();
         } else {
-          return receiveFriend_;
+          return receiveFriendCommand_;
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriend = 22;</code>
+       * <code>optional .com.trans.pixel.protoc.RequestReceiveFriendCommand receiveFriendCommand = 22;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder> 
-          getReceiveFriendFieldBuilder() {
-        if (receiveFriendBuilder_ == null) {
-          receiveFriendBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          getReceiveFriendCommandFieldBuilder() {
+        if (receiveFriendCommandBuilder_ == null) {
+          receiveFriendCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand.Builder, com.trans.pixel.protoc.Commands.RequestReceiveFriendCommandOrBuilder>(
-                  receiveFriend_,
+                  receiveFriendCommand_,
                   getParentForChildren(),
                   isClean());
-          receiveFriend_ = null;
+          receiveFriendCommand_ = null;
         }
-        return receiveFriendBuilder_;
+        return receiveFriendCommandBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
@@ -42510,7 +42510,7 @@ public final class Commands {
       " \002(\003\")\n\033RequestReceiveFriendCommand\022\n\n\002i" +
       "d\030\001 \003(\005\"V\n ResponseGetUserFriendListComm" +
       "and\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.UserFriend\"\352\r\n\016RequestCommand\022.\n\004he" +
+      "otoc.UserFriend\"\361\r\n\016RequestCommand\022.\n\004he" +
       "ad\030\001 \002(\0132 .com.trans.pixel.protoc.HeadIn",
       "fo\022G\n\017registerCommand\030\002 \001(\0132..com.trans." +
       "pixel.protoc.RequestRegisterCommand\022A\n\014l" +
@@ -42552,50 +42552,50 @@ public final class Commands {
       "\022K\n\021deleteMailCommand\030\024 \001(\01320.com.trans." +
       "pixel.protoc.RequestDeleteMailCommand\022I\n" +
       "\020addFriendCommand\030\025 \001(\0132/.com.trans.pixe",
-      "l.protoc.RequestAddFriendCommand\022J\n\rrece" +
-      "iveFriend\030\026 \001(\01323.com.trans.pixel.protoc" +
-      ".RequestReceiveFriendCommand\"\345\014\n\017Respons" +
-      "eCommand\022.\n\004head\030\001 \002(\0132 .com.trans.pixel" +
-      ".protoc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$" +
-      ".com.trans.pixel.protoc.ErrorCommand\022P\n\023" +
-      "needRegisterCommand\030\003 \001(\01323.com.trans.pi" +
-      "xel.protoc.ResponseNeedRegisterCommand\022H" +
-      "\n\017userInfoCommand\030\004 \001(\0132/.com.trans.pixe" +
-      "l.protoc.ResponseUserInfoCommand\022N\n\022leve",
-      "lResultCommand\030\006 \001(\01322.com.trans.pixel.p" +
-      "rotoc.ResponseLevelResultCommand\022V\n\026leve" +
-      "lLootResultCommand\030\007 \001(\01326.com.trans.pix" +
-      "el.protoc.ResponseLevelLootResultCommand" +
-      "\022L\n\021heroResultCommand\030\010 \001(\01321.com.trans." +
-      "pixel.protoc.ResponseHeroResultCommand\022L" +
-      "\n\021lootResultCommand\030\t \001(\01321.com.trans.pi" +
-      "xel.protoc.ResponseLootResultCommand\022T\n\025" +
-      "attackRelativeCommand\030\n \001(\01325.com.trans." +
-      "pixel.protoc.ResponseAttackRelativeComma",
-      "nd\022N\n\022getUserMineCommand\030\013 \001(\01322.com.tra" +
-      "ns.pixel.protoc.ResponseGetUserMineComma" +
-      "nd\022\\\n\031refreshRelatedUserCommand\030\014 \001(\01329." +
-      "com.trans.pixel.protoc.ResponseRefreshRe" +
-      "latedUserCommand\022N\n\022lotteryHeroCommand\030\r" +
-      " \001(\01322.com.trans.pixel.protoc.ResponseLo" +
-      "tteryHeroCommand\022N\n\022getUserHeroCommand\030\016" +
-      " \001(\01322.com.trans.pixel.protoc.ResponseGe" +
-      "tUserHeroCommand\022Z\n\030getLadderRankListCom" +
-      "mand\030\017 \001(\01328.com.trans.pixel.protoc.Resp",
-      "onseGetLadderRankListCommand\022b\n\034getUserL" +
-      "adderRankListCommand\030\020 \001(\0132<.com.trans.p" +
-      "ixel.protoc.ResponseGetUserLadderRankLis" +
-      "tCommand\022X\n\027attackLadderModeCommand\030\021 \001(" +
-      "\01327.com.trans.pixel.protoc.ResponseAttac" +
-      "kLadderModeCommand\022V\n\026getUserMailListCom" +
-      "mand\030\022 \001(\01326.com.trans.pixel.protoc.Resp" +
-      "onseGetUserMailListCommand\022L\n\021sendReward" +
-      "Command\030\023 \001(\01321.com.trans.pixel.protoc.R" +
-      "esponseSendRewardCommand\022F\n\016messageComma",
-      "nd\030\024 \001(\0132..com.trans.pixel.protoc.Respon" +
-      "seMessageCommand\022Z\n\030getUserFriendListCom" +
-      "mand\030\025 \001(\01328.com.trans.pixel.protoc.Resp" +
-      "onseGetUserFriendListCommand"
+      "l.protoc.RequestAddFriendCommand\022Q\n\024rece" +
+      "iveFriendCommand\030\026 \001(\01323.com.trans.pixel" +
+      ".protoc.RequestReceiveFriendCommand\"\345\014\n\017" +
+      "ResponseCommand\022.\n\004head\030\001 \002(\0132 .com.tran" +
+      "s.pixel.protoc.HeadInfo\022:\n\014errorCommand\030" +
+      "\002 \001(\0132$.com.trans.pixel.protoc.ErrorComm" +
+      "and\022P\n\023needRegisterCommand\030\003 \001(\01323.com.t" +
+      "rans.pixel.protoc.ResponseNeedRegisterCo" +
+      "mmand\022H\n\017userInfoCommand\030\004 \001(\0132/.com.tra" +
+      "ns.pixel.protoc.ResponseUserInfoCommand\022",
+      "N\n\022levelResultCommand\030\006 \001(\01322.com.trans." +
+      "pixel.protoc.ResponseLevelResultCommand\022" +
+      "V\n\026levelLootResultCommand\030\007 \001(\01326.com.tr" +
+      "ans.pixel.protoc.ResponseLevelLootResult" +
+      "Command\022L\n\021heroResultCommand\030\010 \001(\01321.com" +
+      ".trans.pixel.protoc.ResponseHeroResultCo" +
+      "mmand\022L\n\021lootResultCommand\030\t \001(\01321.com.t" +
+      "rans.pixel.protoc.ResponseLootResultComm" +
+      "and\022T\n\025attackRelativeCommand\030\n \001(\01325.com" +
+      ".trans.pixel.protoc.ResponseAttackRelati",
+      "veCommand\022N\n\022getUserMineCommand\030\013 \001(\01322." +
+      "com.trans.pixel.protoc.ResponseGetUserMi" +
+      "neCommand\022\\\n\031refreshRelatedUserCommand\030\014" +
+      " \001(\01329.com.trans.pixel.protoc.ResponseRe" +
+      "freshRelatedUserCommand\022N\n\022lotteryHeroCo" +
+      "mmand\030\r \001(\01322.com.trans.pixel.protoc.Res" +
+      "ponseLotteryHeroCommand\022N\n\022getUserHeroCo" +
+      "mmand\030\016 \001(\01322.com.trans.pixel.protoc.Res" +
+      "ponseGetUserHeroCommand\022Z\n\030getLadderRank" +
+      "ListCommand\030\017 \001(\01328.com.trans.pixel.prot",
+      "oc.ResponseGetLadderRankListCommand\022b\n\034g" +
+      "etUserLadderRankListCommand\030\020 \001(\0132<.com." +
+      "trans.pixel.protoc.ResponseGetUserLadder" +
+      "RankListCommand\022X\n\027attackLadderModeComma" +
+      "nd\030\021 \001(\01327.com.trans.pixel.protoc.Respon" +
+      "seAttackLadderModeCommand\022V\n\026getUserMail" +
+      "ListCommand\030\022 \001(\01326.com.trans.pixel.prot" +
+      "oc.ResponseGetUserMailListCommand\022L\n\021sen" +
+      "dRewardCommand\030\023 \001(\01321.com.trans.pixel.p" +
+      "rotoc.ResponseSendRewardCommand\022F\n\016messa",
+      "geCommand\030\024 \001(\0132..com.trans.pixel.protoc" +
+      ".ResponseMessageCommand\022Z\n\030getUserFriend" +
+      "ListCommand\030\025 \001(\01328.com.trans.pixel.prot" +
+      "oc.ResponseGetUserFriendListCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -42919,7 +42919,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "LevelResultCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "LootResultCommand", "AddHeroEquipCommand", "AttackRelativeCommand", "RefreshRelatedUserCommand", "LotteryHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriend", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "LevelResultCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "LootResultCommand", "AddHeroEquipCommand", "AttackRelativeCommand", "RefreshRelatedUserCommand", "LotteryHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", });
           internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor =
             getDescriptor().getMessageTypes().get(53);
           internal_static_com_trans_pixel_protoc_ResponseCommand_fieldAccessorTable = new

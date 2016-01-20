@@ -302,7 +302,7 @@ message RequestCommand {
 	optional RequestReadMailCommand readMailCommand = 19;
 	optional RequestDeleteMailCommand deleteMailCommand = 20;
 	optional RequestAddFriendCommand addFriendCommand = 21;
-	optional RequestReceiveFriendCommand receiveFriend = 22;
+	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 }
 // response command list transfer only use it
 message ResponseCommand {
