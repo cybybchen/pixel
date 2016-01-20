@@ -13,6 +13,7 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MailList;
+import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -52,7 +53,7 @@ public class MailCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
-	public void handleDeleteMailCommand(RequestReadMailCommand cmd, Builder responseBuilder, UserBean user) {	
+	public void handleDeleteMailCommand(RequestDeleteMailCommand cmd, Builder responseBuilder, UserBean user) {	
 		int type = cmd.getType();
 		List<Integer> ids = cmd.getIdList();
 		int count = mailService.deleteMail(user, type, ids);

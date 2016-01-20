@@ -7,9 +7,14 @@ import org.slf4j.LoggerFactory;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.HeadInfo;
+import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -18,6 +23,8 @@ import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
+import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
@@ -154,6 +161,55 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestLotteryHeroCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetLadderRankListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackLadderModeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetUserMailListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestReadMailCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestDeleteMailCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAddFriendCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

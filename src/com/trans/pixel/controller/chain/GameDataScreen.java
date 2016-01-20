@@ -2,14 +2,17 @@ package com.trans.pixel.controller.chain;
 
 import javax.annotation.Resource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -17,23 +20,25 @@ import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
+import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.command.AccountCommandService;
+import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroLevelUpCommandService;
+import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LoginCommandService;
 import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
+import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 
 @Service
 public class GameDataScreen extends RequestScreen {
-	private static final Logger log = LoggerFactory.getLogger(GameDataScreen.class);
-	
 	@Resource
 	private AccountCommandService accountCommandService;
 	@Resource
@@ -50,6 +55,12 @@ public class GameDataScreen extends RequestScreen {
 	private HeroLevelUpCommandService heroLevelUpCommandService;
 	@Resource
 	private LotteryCommandService lotteryCommandService;
+	@Resource
+	private MailCommandService mailCommandService;
+	@Resource
+	private FriendCommandService friendCommandService;
+	@Resource
+	private LadderCommandService ladderCommandService;
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
 			Builder responseBuilder) {
@@ -138,6 +149,55 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestLotteryHeroCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		lotteryCommandService.lotteryHero(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetLadderRankListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderCommandService.handleGetLadderRankListCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackLadderModeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderCommandService.attackLadderMode(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetUserMailListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mailCommandService.handleGetUserMailListCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestReadMailCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mailCommandService.handleReadMailCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestDeleteMailCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mailCommandService.handleDeleteMailCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAddFriendCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		friendCommandService.handleAddFriendCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		friendCommandService.handleReceiveFriendCommand(cmd, responseBuilder, user);
 		return true;
 	}
 
