@@ -272,6 +272,10 @@ message RequestAddFriendCommand {
 	required int64 userId = 1;
 }
 
+message RequestReceiveFriendCommand {
+	repeated int32 id = 1;
+}
+
 message ResponseGetUserFriendListCommand {
 	repeated UserFriend friend = 1;	
 }
@@ -298,6 +302,7 @@ message RequestCommand {
 	optional RequestReadMailCommand readMailCommand = 19;
 	optional RequestDeleteMailCommand deleteMailCommand = 20;
 	optional RequestAddFriendCommand addFriendCommand = 21;
+	optional RequestReceiveFriendCommand receiveFriend = 22;
 }
 // response command list transfer only use it
 message ResponseCommand {
