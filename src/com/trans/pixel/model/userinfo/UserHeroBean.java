@@ -15,7 +15,7 @@ public class UserHeroBean {
 	private long id = 0;
 	private long userId = 0;
 	private int heroId = 0;
-	private String heroInfo = "";
+	private String heroInfo = "{}";
 	public long getId() {
 		return id;
 	}

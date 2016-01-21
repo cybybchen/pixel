@@ -6,13 +6,38 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 
 @Service
 public class CostService {
 
 	@Resource
 	private UserService userService;
-	public boolean cost(UserBean user, int itemId) {
+	@Resource
+	private UserEquipService userEquipService;
+	public boolean cost(UserBean user, int itemId, int count) {
+		long userId = user.getId();
+		if (itemId > RewardConst.HERO) {
+			
+		} else if (itemId > RewardConst.PROP) {
+			
+		} else if (itemId > RewardConst.PACKAGE) {
+			
+		} else if (itemId > RewardConst.CHIP) {
+			
+		} else if (itemId > RewardConst.EQUIPMENT) {
+			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
+			if (userEquip != null && userEquip.getEquipCount() >= count) {
+				userEquip.setEquipCount(userEquip.getEquipCount() - count);
+				userEquipService.updateUserEquip(userEquip);
+				return true;
+			}
+		} else {
+			switch (itemId) {
+				default:
+					break;
+			}
+		}
 		return false;
 	}
 	

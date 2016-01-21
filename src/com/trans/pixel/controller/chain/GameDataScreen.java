@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
@@ -19,6 +20,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
@@ -32,7 +34,8 @@ import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LoginCommandService;
 import com.trans.pixel.service.command.LootCommandService;
-import com.trans.pixel.service.command.LotteryCommandService;
+import com.trans.pixel.service.command.LotteryEquipCommandService;
+import com.trans.pixel.service.command.LotteryHeroCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
@@ -54,13 +57,16 @@ public class GameDataScreen extends RequestScreen {
 	@Resource
 	private HeroLevelUpCommandService heroLevelUpCommandService;
 	@Resource
-	private LotteryCommandService lotteryCommandService;
+	private LotteryHeroCommandService lotteryCommandService;
 	@Resource
 	private MailCommandService mailCommandService;
 	@Resource
 	private FriendCommandService friendCommandService;
 	@Resource
 	private LadderCommandService ladderCommandService;
+	@Resource
+	private LotteryEquipCommandService lotteryEquipCommandService;
+	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
 			Builder responseBuilder) {
@@ -198,6 +204,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		friendCommandService.handleReceiveFriendCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLotteryEquipCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		lotteryEquipCommandService.lotteryEquip(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEquipLevelUpCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		heroLevelUpCommandService.equipLevelup(cmd, responseBuilder, user);
 		return true;
 	}
 

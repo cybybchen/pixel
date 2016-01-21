@@ -27,9 +27,9 @@ public class HeroService {
 		return hero;
 	}
 	
-	public HeroEquipBean getHeroEquip(int heroId, int equipId) {
+	public HeroEquipBean getHeroEquip(int heroId) {
 		HeroBean hero = getHero(heroId);
-		return hero.getEquip(equipId);
+		return hero.getEquip(1);
 	}
 	
 	public HeroUpgradeBean getHeroUpgrade(int levelId) {

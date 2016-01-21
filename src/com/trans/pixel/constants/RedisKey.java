@@ -86,4 +86,7 @@ public class RedisKey {
 	//union
 	public static final String UNION_MAIL_PREFIX = "union_mail_";
 	public static final String UNION_PREFIX = "union_";
+	
+	//equip
+	public static final String EQUIP_KEY = "equip_key";
 }

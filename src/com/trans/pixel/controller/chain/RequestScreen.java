@@ -7,6 +7,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
@@ -15,6 +16,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
@@ -66,6 +68,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAddFriendCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestLotteryEquipCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestEquipLevelUpCommand cmd, Builder responseBuilder, UserBean user);
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
@@ -172,6 +178,16 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasReceiveFriendCommand()) {
         	RequestReceiveFriendCommand cmd = request.getReceiveFriendCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasLotteryEquipCommand()) {
+        	RequestLotteryEquipCommand cmd = request.getLotteryEquipCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasEquipLevelUpCommand()) {
+        	RequestEquipLevelUpCommand cmd = request.getEquipLevelUpCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }

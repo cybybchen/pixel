@@ -66,6 +66,6 @@ public class SkillInfoBean {
 		return skillInfoList;
 	}
 	
-	private static final String SKILL_ID = "skill_id";
-	private static final String SKILL_LEVEL = "skill_level";
+	private static final String SKILL_ID = "skillId";
+	private static final String SKILL_LEVEL = "skillLevel";
 }

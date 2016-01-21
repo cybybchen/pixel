@@ -162,7 +162,7 @@ public class RewardBean {
 		return rewardInfoList;
 	}
 	
-	private static final String LOTTERY_HERO_FILE_PREFIX = "lol_lottery_";
+	private static final String LOTTERY_HERO_FILE_PREFIX = "lol_lottery_hero_";
 	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
 	private static final String ID = "id";
 	private static final String ITEM_ID = "itemid";

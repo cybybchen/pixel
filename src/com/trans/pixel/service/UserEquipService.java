@@ -1,5 +1,7 @@
 package com.trans.pixel.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,5 +28,13 @@ public class UserEquipService {
 	public void updateUserEquip(UserEquipBean userEquip) {
 		userEquipRedisService.updateUserEquip(userEquip);
 		userEquipMapper.updateUserEquip(userEquip);
+	}
+	
+	public List<UserEquipBean> selectUserEquipList(long userId) {
+		List<UserEquipBean> userEquipList = userEquipRedisService.selectUserEquipList(userId);
+		if (userEquipList.size() == 0)
+			userEquipList = userEquipMapper.selectUserEquipList(userId);
+		
+		return userEquipList;
 	}
 }

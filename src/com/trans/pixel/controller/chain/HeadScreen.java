@@ -13,6 +13,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
@@ -20,13 +21,12 @@ import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
-import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
-import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AccountService;
@@ -210,6 +210,20 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLotteryEquipCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEquipLevelUpCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

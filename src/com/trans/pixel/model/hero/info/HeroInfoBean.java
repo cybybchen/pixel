@@ -7,7 +7,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.model.hero.HeroBean;
-import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -16,8 +15,7 @@ public class HeroInfoBean {
 	private int id = 0;
 	private int level = 1;
 	private int starLevel = 1;
-	private int equipLevel = 1;
-	private int equipInfo = 0;
+	private String equipInfo = "0|0|0|0|0|0";
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 	public int getId() {
 		return id;
@@ -37,16 +35,10 @@ public class HeroInfoBean {
 	public void setStarLevel(int starLevel) {
 		this.starLevel = starLevel;
 	}
-	public int getEquipLevel() {
-		return equipLevel;
-	}
-	public void setEquipLevel(int equipLevel) {
-		this.equipLevel = equipLevel;
-	}
-	public int getEquipInfo() {
+	public String getEquipInfo() {
 		return equipInfo;
 	}
-	public void setEquipInfo(int equipInfo) {
+	public void setEquipInfo(String equipInfo) {
 		this.equipInfo = equipInfo;
 	}
 	public List<SkillInfoBean> getSkillInfoList() {
@@ -56,15 +48,39 @@ public class HeroInfoBean {
 		this.skillInfoList = skillInfoList;
 	}
 	
-	public void levelUpEquip() {
-		equipLevel++;
-		equipInfo = 0;
+//	public void levelUpEquip() {
+//		equipLevel++;
+//		equipInfo = 0;
+//	}
+	
+	public int getEquipIdByArmId(int armId) {
+		String[] equipIds = equipInfo.split(EQUIP_SPLIT);
+		if (equipIds.length > armId)
+			return TypeTranslatedUtil.stringToInt(equipIds[armId]);
+		
+		return 0;
+	}
+	
+	public void updateEquipIdByArmId(int equipId, int armId) {
+		String[] equipIds = equipInfo.split(EQUIP_SPLIT);
+		if (equipIds.length > armId) {
+			equipIds[armId] = "" + equipId;
+			composeEquipInfo(equipIds);
+		}
+	}
+	
+	private void composeEquipInfo(String[] equipIds) {
+		equipInfo = "";
+		for (String equipId : equipIds) {
+			equipInfo = EQUIP_SPLIT + equipId;
+		}
+		
+		equipInfo = equipInfo.substring(1);
 	}
 	
 	public void copy(HeroInfoBean hero) {
 		level = hero.getLevel();
 		starLevel = hero.getStarLevel();
-		equipLevel = hero.getEquipLevel();
 		equipInfo = hero.getEquipInfo();
 		skillInfoList = hero.getSkillInfoList();
 	}
@@ -74,7 +90,6 @@ public class HeroInfoBean {
 		json.put(ID, id);
 		json.put(LEVEL, level);
 		json.put(STAR_LEVEL, starLevel);
-		json.put(EQUIP_LEVEL, equipLevel);
 		json.put(EQUIP_INFO, equipInfo);
 		json.put(SKILL_INFO_LIST, skillInfoList);
 		
@@ -89,8 +104,7 @@ public class HeroInfoBean {
 		bean.setId(json.getInt(ID));
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setStarLevel(json.getInt(STAR_LEVEL));
-		bean.setEquipLevel(json.getInt(EQUIP_LEVEL));
-		bean.setEquipInfo(json.getInt(EQUIP_INFO));
+		bean.setEquipInfo(json.getString(EQUIP_INFO));
 		
 		List<SkillInfoBean> list = new ArrayList<SkillInfoBean>();
 		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, SKILL_INFO_LIST);
@@ -105,8 +119,7 @@ public class HeroInfoBean {
 	
 	public HeroInfo buildHeroInfo() {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
-		builder.setEquipInfo(equipInfo);
-		builder.setEquipLevel(equipLevel);
+//		builder.setEquipInfo(equipInfo);
 		builder.setInfoId(id);
 		builder.setLevel(level);
 		builder.setStarLevel(starLevel);
@@ -129,8 +142,7 @@ public class HeroInfoBean {
 		heroInfo.setId(0);
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(1);
-		heroInfo.setEquipLevel(1);
-		heroInfo.setEquipInfo(0);
+		heroInfo.setEquipInfo("0|0|0|0|0|0");
 		heroInfo.setSkillInfoList(SkillInfoBean.initSkillInfo(hero.getSkillList()));
 		
 		return heroInfo;
@@ -138,8 +150,10 @@ public class HeroInfoBean {
 	
 	private static final String ID = "id";
 	private static final String LEVEL = "level";
-	private static final String STAR_LEVEL = "star_level";
-	private static final String EQUIP_LEVEL = "equip_level";
-	private static final String EQUIP_INFO = "equip_info";
-	private static final String SKILL_INFO_LIST = "skill_info_list";
+	private static final String STAR_LEVEL = "starLevel";
+	private static final String EQUIP_LEVEL = "equipLevel";
+	private static final String EQUIP_INFO = "equipInfo";
+	private static final String SKILL_INFO_LIST = "skillInfoList";
+	
+	private static final String EQUIP_SPLIT = "|";
 }

@@ -81,7 +81,7 @@ public class LootBean {
 					rewardList.add(reward);
 				}
 				loot.setRewardList(rewardList);
-
+				lootList.add(loot);
 			}
 		} catch (Exception e) {
 			logger.error("parse " + FILE_NAME + " failed");

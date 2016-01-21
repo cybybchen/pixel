@@ -176,6 +176,13 @@ message RequestAddHeroEquipCommand {
 	optional int32 armId = 3;
 }
 
+message RequestEquipLevelUpCommand {
+        required int32 heroId = 1;
+        required int32 infoId = 2;
+        required int32 armId = 3;
+	required int32 levelUpId = 4;
+}
+
 message RequestAttackRelativeCommand {
 	required int32 mapId = 1;
 	required int32 mineId = 2;
@@ -315,6 +322,7 @@ message RequestCommand {
 	optional RequestAddFriendCommand addFriendCommand = 21;
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestLotteryEquipCommand lotteryEquipCommand = 23;
+	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 }
 // response command list transfer only use it
 message ResponseCommand {
