@@ -8,11 +8,6 @@
 		<result property="friendId" column="friend_id" />
 	</resultMap>
 	
-	<select id="selectUserFriend" resultMap="long">
-		SELECT *
-		from user_friend where user_id=#{userId} and friend_id=#{friendId}
-	</select>
-	
 	<insert id="insertUserFriend">
 	    INSERT INTO user_friend(user_id, friend_id)
 	    VALUES(#{userId}, #{friendId})
@@ -21,8 +16,8 @@
 	    friend_id=#{friendId}
 	</insert>
 	
-	<select id="selectUserFriendIdList" parameterType="long" resultMap="long">
-		SELECT *
+	<select id="selectUserFriendIdList" parameterType="long" resultType="long">
+		SELECT friend_id
 		from user_friend where user_id=#{userId}
 	</select>
 	

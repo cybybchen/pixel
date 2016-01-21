@@ -4,11 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.trans.pixel.model.userinfo.UserFriendBean;
-
 public interface UserFriendMapper {
-	
-	public UserFriendBean selectUserFriend(@Param("userId") long userId, @Param("friendId") long friendId);
 	
 	public int insertUserFriend(@Param("userId") long userId, @Param("friendId") long friendId);
 	
