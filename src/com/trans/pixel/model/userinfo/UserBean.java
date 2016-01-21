@@ -157,7 +157,7 @@ public class UserBean {
 	}
 	
 	public static UserBean convertUserMapToUserBean(Map<String, String> userMap) {
-		if (userMap == null)
+		if (userMap == null || userMap.size() == 0)
 			return null;
 		
 		UserBean userBean = new UserBean();
