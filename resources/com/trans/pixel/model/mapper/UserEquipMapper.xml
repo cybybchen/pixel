@@ -15,7 +15,7 @@
 	</select>
 	
 	<insert id="updateUserEquip" parameterType="com.trans.pixel.model.userinfo.UserEquipBean">
-	    INSERT INTO user_Equip(user_id, equip_id, equip_count)
+	    INSERT INTO user_equip(user_id, equip_id, equip_count)
 	    VALUES(#{userId}, #{equipId}, #{equipCount})
 	    ON 
 	    duplicate key update

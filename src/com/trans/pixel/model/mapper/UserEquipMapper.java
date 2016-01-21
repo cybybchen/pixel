@@ -8,7 +8,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 
 public interface UserEquipMapper {
 	
-	public UserEquipBean selectUserEquip(@Param("userId") long userId, @Param("equioId") int equioId);
+	public UserEquipBean selectUserEquip(@Param("userId") long userId, @Param("equipId") int equipId);
 	
 	public int updateUserEquip(UserEquipBean userEquip);
 	

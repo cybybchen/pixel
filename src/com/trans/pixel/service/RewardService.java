@@ -22,6 +22,8 @@ public class RewardService {
 	private UserHeroService userHeroService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private UserEquipService userEquipService;
 	
 	public void doRewards(UserBean user, List<RewardBean> rewardList) {
 		int coin = user.getCoin();
@@ -46,9 +48,9 @@ public class RewardService {
 		} else if (rewardId > RewardConst.PACKAGE) {
 			
 		} else if (rewardId > RewardConst.CHIP) {
-			
+			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
-			
+			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
 		} else {
 			switch (rewardId) {
 				case RewardConst.EXP:

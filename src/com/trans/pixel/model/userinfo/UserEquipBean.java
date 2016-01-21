@@ -2,6 +2,8 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.protoc.Commands.UserEquip;
+
 public class UserEquipBean {
 	private long id = 0;
 	private long userId = 0;
@@ -53,6 +55,15 @@ public class UserEquipBean {
 		bean.setEquipCount(json.getInt(EQUIP_COUNT));
 
 		return bean;
+	}
+	
+	public UserEquip buildUserEquip() {
+		UserEquip.Builder builder = UserEquip.newBuilder();
+		
+		builder.setEquipId(equipId);
+		builder.setEquipCount(equipCount);
+		
+		return builder.build();
 	}
 	
 	private static final String ID = "id";

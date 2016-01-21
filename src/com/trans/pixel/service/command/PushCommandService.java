@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand;
@@ -23,6 +25,7 @@ import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
+import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeroService;
 
@@ -35,6 +38,8 @@ public class PushCommandService extends BaseCommandService {
 	private PvpMapService pvpMapService;
 	@Resource
 	private UserHeroService userHeroService;
+	@Resource
+	private UserEquipService userEquipService;
 	@Resource
 	private LadderService ladderService;
 	@Resource
@@ -57,6 +62,13 @@ public class PushCommandService extends BaseCommandService {
 		ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 		builder.addAllUserHero(super.buildUserHeroList(userHeroList));
 		responseBuilder.setGetUserHeroCommand(builder.build());
+	}
+	
+	public void pushUserEquipListCommand(Builder responseBuilder, UserBean user) {
+		List<UserEquipBean> userHeroList = userEquipService.selectUserEquipList(user.getId());
+		ResponseGetUserEquipCommand.Builder builder = ResponseGetUserEquipCommand.newBuilder();
+		builder.addAllUserEquip(super.buildUserEquipList(userHeroList));
+		responseBuilder.setUserEquipCommand(builder.build());
 	}
 	
 	public void pushGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {

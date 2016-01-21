@@ -46,6 +46,11 @@ message UserHero {
 	repeated HeroInfo heroInfo = 3;
 }
 
+message UserEquip {
+	required int32 equipId = 1;
+	required int32 equipCount = 2;
+}
+
 message SkillInfo {
 	required int32 skillId = 1;
 	required int32 skillLevel = 2;
@@ -234,6 +239,10 @@ message ResponseGetUserHeroCommand {
 	repeated UserHero userHero = 1;
 }
 
+message ResponseGetUserEquipCommand {
+        repeated UserEquip userEquip = 1;
+}
+
 message RequestGetLadderRankListCommand {
 
 }
@@ -347,6 +356,7 @@ message ResponseCommand {
 	optional ResponseMessageCommand messageCommand = 20;
 	optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
 	optional ResponseLotteryEquipCommand lotteryEquipCommand = 22;
+	optional ResponseGetUserEquipCommand userEquipCommand = 23;
 }
 
 

@@ -12,6 +12,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
@@ -25,6 +26,7 @@ import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
+import com.trans.pixel.protoc.Commands.UserEquip;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -86,6 +88,15 @@ public class BaseCommandService {
 		}
 		
 		return userHeroBuilderList;
+	}
+	
+	protected List<UserEquip> buildUserEquipList(List<UserEquipBean> userEquipList) {
+		List<UserEquip> userEquipBuilderList = new ArrayList<UserEquip>();
+		for (UserEquipBean userEquip : userEquipList) {
+			userEquipBuilderList.add(userEquip.buildUserEquip());
+		}
+		
+		return userEquipBuilderList;
 	}
 	
 	protected List<UserRank> buildUserRankList(List<UserRankBean> userRankList) {
