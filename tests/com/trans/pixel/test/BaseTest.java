@@ -21,7 +21,7 @@ public class BaseTest {
     protected static final String DEVICE_ID = "iphone5";
     protected static final String SESSION = "aa68d03cb47b25b797ba4e06269c3079";
     protected static final String TOKEN = "";
-    protected static final long USER_ID = 3;
+    protected static final long USER_ID = 28;
     protected static final String USER_NAME = "cyb";
     protected static final String SCORE = "100";
     protected static final String ROOM = "2";
@@ -34,7 +34,7 @@ public class BaseTest {
     protected static final String PAINTID = "5";
     protected static final String FILE = "notice_1329";
     
-    protected static final String url = "http://www.transmension.com.cn:8082/Lol450/gamedata";
+    protected static final String url = "http://118.192.77.33:8082/Lol450/gamedata";
 //    protected static final String url = "http://127.0.0.1:8080/pixel/gamedata";
     protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
 
