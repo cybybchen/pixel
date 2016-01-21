@@ -74,11 +74,16 @@ public class RedisKey {
 	public static final String PVP_XIAOGUAI_REFIX = "pvp_xiaoguai_";
 	
 	//lottery 
-	public static final String LOTTERY_KEY_PREFIX = "lorrery_";
+	public static final String LOTTERY_HERO_PREFIX = "lorrery_hero_";
+	public static final String LOTTERY_EQUIP_PREFIX = "lorrery_equip_";
 	
 	//mail
 	public static final String MAIL_PREFIX = "mail_";
 	
 	//user friend redis
 	public static final String USER_FRIEND_PREFIX = "user_friend_";
+	
+	//union
+	public static final String UNION_MAIL_PREFIX = "union_mail_";
+	public static final String UNION_PREFIX = "union_";
 }

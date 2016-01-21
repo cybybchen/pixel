@@ -19,7 +19,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RewardBean;
 
 @Service
-public class LotteryRedisService {
+public class LotteryHeroRedisService {
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
 	
@@ -29,7 +29,7 @@ public class LotteryRedisService {
 			public List<RewardBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_KEY_PREFIX + type);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_HERO_PREFIX + type);
 				
 				List<RewardBean> lotteryList = new ArrayList<RewardBean>();
 				Set<Entry<String, String>> lotterySet = bhOps.entries().entrySet();
@@ -54,10 +54,10 @@ public class LotteryRedisService {
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_KEY_PREFIX + type);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_HERO_PREFIX + type);
 				
 				for (RewardBean lottery : lotteryList) {
-					bhOps.put("" + lottery.getItemId(), lottery.toJson());
+					bhOps.put("" + lottery.getId(), lottery.toJson());
 				}
 				
 				return null;
@@ -66,15 +66,15 @@ public class LotteryRedisService {
 		});
 	}
 	
-	public RewardBean getLottery(final int itemId, final int type) {
+	public RewardBean getLottery(final int id, final int type) {
 		return redisTemplate.execute(new RedisCallback<RewardBean>() {
 			@Override
 			public RewardBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_KEY_PREFIX + type);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_HERO_PREFIX + type);
 				
-				RewardBean lottery = RewardBean.fromJson(bhOps.get("" + itemId));
+				RewardBean lottery = RewardBean.fromJson(bhOps.get("" + id));
 				return lottery;
 			}
 		

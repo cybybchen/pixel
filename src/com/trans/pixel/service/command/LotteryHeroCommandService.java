@@ -16,18 +16,18 @@ import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseLotteryHeroCommand;
 import com.trans.pixel.service.CostService;
-import com.trans.pixel.service.LotteryService;
+import com.trans.pixel.service.LotteryHeroService;
 import com.trans.pixel.service.RewardService;
 
 @Service
-public class LotteryCommandService extends BaseCommandService {
+public class LotteryHeroCommandService extends BaseCommandService {
 	
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
 	private CostService costService;
 	@Resource
-	private LotteryService lotteryService;
+	private LotteryHeroService lotteryService;
 	@Resource
 	private RewardService rewardService;
 	public void lotteryHero(RequestLotteryHeroCommand cmd, Builder responseBuilder, UserBean user) {

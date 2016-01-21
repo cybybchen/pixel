@@ -212,6 +212,17 @@ message ResponseLotteryHeroCommand {
 	repeated RewardInfo rewardList = 3;
 }
 
+message RequestLotteryEquipCommand {
+        required int32 type = 1; //1001:jinbi 1002:zuanshi
+}
+
+message ResponseLotteryEquipCommand {
+        optional int32 coin = 1;
+        optional int32 jewel = 2;
+        repeated RewardInfo rewardList = 3;
+}
+
+
 message ResponseGetUserHeroCommand {
 	repeated UserHero userHero = 1;
 }
@@ -303,6 +314,7 @@ message RequestCommand {
 	optional RequestDeleteMailCommand deleteMailCommand = 20;
 	optional RequestAddFriendCommand addFriendCommand = 21;
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
+	optional RequestLotteryEquipCommand lotteryEquipCommand = 23;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -326,6 +338,7 @@ message ResponseCommand {
 	optional ResponseSendRewardCommand sendRewardCommand = 19;
 	optional ResponseMessageCommand messageCommand = 20;
 	optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
+	optional ResponseLotteryEquipCommand lotteryEquipCommand = 22;
 }
 
 

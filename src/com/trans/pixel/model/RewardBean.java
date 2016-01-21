@@ -14,15 +14,21 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.trans.pixel.constants.DirConst;
-import com.trans.pixel.protoc.Commands.Mail;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class RewardBean {
+	private int id = 0;
 	private int itemId = 0;
 	private String name = "";
 	private int weight = 0;
 	private int count = 0;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getItemId() {
 		return itemId;
 	}
@@ -59,6 +65,7 @@ public class RewardBean {
 
 	public String toJson() {
 		JSONObject json = new JSONObject();
+		json.put(ID, id);
 		json.put(ITEM_ID, itemId);
 		json.put(NAME, name);
 		json.put(WEIGHT, weight);
@@ -72,6 +79,7 @@ public class RewardBean {
 		RewardBean bean = new RewardBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
+		bean.setId(json.getInt(ID));
 		bean.setItemId(json.getInt(ITEM_ID));
 		bean.setName(json.getString(NAME));
 		bean.setWeight(json.getInt(WEIGHT));
@@ -82,6 +90,7 @@ public class RewardBean {
 	
 	public static RewardBean xmlParse(Element e) {
 		RewardBean reward = new RewardBean();
+		reward.setId(TypeTranslatedUtil.stringToInt(e.attributeValue(ID)));
 		reward.setItemId(TypeTranslatedUtil.stringToInt(e.attributeValue(ITEM_ID)));
 		reward.setName(e.attributeValue(NAME));
 		reward.setWeight(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHT)));
@@ -90,10 +99,34 @@ public class RewardBean {
 		return reward;
 	}
 	
-	public static List<RewardBean> xmlParseLottery(int type) {
+	public static List<RewardBean> xmlParseLotteryHero(int type) {
 		Logger logger = Logger.getLogger(WinBean.class);
 		List<RewardBean> list = new ArrayList<RewardBean>();
-		String fileName = LOTTERY_FILE_PREFIX + type + ".xml";
+		String fileName = LOTTERY_HERO_FILE_PREFIX + type + ".xml";
+		try {
+			String filePath = DirConst.getConfigXmlPath(fileName);
+			SAXReader reader = new SAXReader();
+			InputStream inStream = new FileInputStream(new File(filePath));
+			Document doc = reader.read(inStream);
+			// 获取根节点
+			Element root = doc.getRootElement();
+			List<?> rootList = root.elements();
+			for (int i = 0; i < rootList.size(); i++) {
+				Element rewardElement = (Element) rootList.get(i);
+				RewardBean reward = RewardBean.xmlParse(rewardElement);
+				list.add(reward);
+			}
+		} catch (Exception e) {
+			logger.error("parse " + fileName + " failed");
+		}
+
+		return list;
+	}
+	
+	public static List<RewardBean> xmlParseLotteryEquip(int type) {
+		Logger logger = Logger.getLogger(WinBean.class);
+		List<RewardBean> list = new ArrayList<RewardBean>();
+		String fileName = LOTTERY_EQUIP_FILE_PREFIX + type + ".xml";
 		try {
 			String filePath = DirConst.getConfigXmlPath(fileName);
 			SAXReader reader = new SAXReader();
@@ -129,7 +162,9 @@ public class RewardBean {
 		return rewardInfoList;
 	}
 	
-	private static final String LOTTERY_FILE_PREFIX = "lol_lottery_";
+	private static final String LOTTERY_HERO_FILE_PREFIX = "lol_lottery_";
+	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
+	private static final String ID = "id";
 	private static final String ITEM_ID = "itemid";
 	private static final String NAME = "name";
 	private static final String WEIGHT = "weight";

@@ -8,28 +8,18 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.LotteryBean;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.service.redis.LotteryRedisService;
+import com.trans.pixel.service.redis.LotteryEquipRedisService;
 
 @Service
-public class LotteryService {
+public class LotteryEquipService {
 
 	public static final int RANDOM_COUNT = 10;
 	@Resource
-	private LotteryRedisService lotteryRedisService;
-	
-	private RewardBean getLottery(int id, int type) {
-		RewardBean lottery = lotteryRedisService.getLottery(id, type);
-        if (lottery == null) {
-        	parseAndSaveLotteryList(type);
-            lottery = lotteryRedisService.getLottery(id, type);
-        }
-        return lottery;
-    }
+	private LotteryEquipRedisService lotteryEquipRedisService;
     
     private List<RewardBean> getLotteryList(int type) {
-    	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
+    	List<RewardBean> lotteryList = lotteryEquipRedisService.getLotteryList(type);
         if (lotteryList == null || lotteryList.size() == 0) {
             lotteryList = parseAndSaveLotteryList(type);
         }
@@ -76,8 +66,8 @@ public class LotteryService {
     }
 	
 	private List<RewardBean> parseAndSaveLotteryList(int type) {
-    	List<RewardBean> lotteryList = RewardBean.xmlParseLottery(type);
-    	lotteryRedisService.setLotteryList(lotteryList, type);
+    	List<RewardBean> lotteryList = RewardBean.xmlParseLotteryEquip(type);
+    	lotteryEquipRedisService.setLotteryList(lotteryList, type);
         
         return lotteryList;
     }
