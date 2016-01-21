@@ -53,7 +53,7 @@ public class TypeTranslatedUtil {
 		} catch (JSONException e) {
 
 		}
-		return value;
+		return value != null ? value : new JSONArray();
 	}
 	
 	public static int jsonGetInt(JSONObject json, String property) {

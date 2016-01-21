@@ -1,10 +1,6 @@
 package com.trans.pixel.service.redis;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -22,8 +18,8 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.utils.DateUtil;
 
 @Repository
 public class MailRedisService {
@@ -68,7 +64,7 @@ public class MailRedisService {
 					Entry<Integer, String> entry = it.next();
 					MailBean mail = MailBean.fromJson(entry.getValue());
 					if (mail != null) {
-						if (isInvalidMail(mail.getStartDate())) {
+						if (DateUtil.isInvalidMail(mail.getStartDate())) {
 							bhOps.delete("" + mail.getId());
 						} else if (!mail.isRead())
 							mailList.add(mail);
@@ -148,7 +144,7 @@ public class MailRedisService {
 					Entry<Integer, String> entry = it.next();
 					MailBean mail = MailBean.fromJson(entry.getValue());
 					if (mail != null) {
-						if (isInvalidMail(mail.getStartDate())) {
+						if (DateUtil.isInvalidMail(mail.getStartDate())) {
 							bhOps.delete("" + mail.getId());
 						} else if (!mail.isRead() && idList.contains(mail.getId()))
 							mailList.add(mail);
@@ -210,24 +206,5 @@ public class MailRedisService {
 	
 	private String buildMailRedisKey(long userId, int type) {
 		return RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + type;
-	}
-	
-	private static boolean isInvalidMail(String time) {
-		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
-		String currentTimeStr = df.format(new Date());
-		Date currentDate = null;
-		Calendar calendar = Calendar.getInstance();   
-	    try {
-			calendar.setTime(df.parse(time));
-			currentDate = df.parse(currentTimeStr);
-		} catch (ParseException e) {
-			
-		}  
-	    calendar.set(Calendar.DAY_OF_MONTH , calendar.get(Calendar.DAY_OF_MONTH) + RedisExpiredConst.EXPIRED_USERINFO_DAYS);
-	    Date lastDate = calendar.getTime();
-		
-		if (lastDate.after(currentDate))
-			return false;
-		return true;
 	}
 }

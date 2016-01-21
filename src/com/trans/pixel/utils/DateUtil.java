@@ -8,6 +8,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.TimeConst;
 
 /**
@@ -523,5 +524,24 @@ public class DateUtil {
 //		logger.debug("date after is:"+date);
 		
 		return date;
+	}
+    
+    public static boolean isInvalidMail(String time) {
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+		String currentTimeStr = df.format(new Date());
+		Date currentDate = null;
+		Calendar calendar = Calendar.getInstance();   
+	    try {
+			calendar.setTime(df.parse(time));
+			currentDate = df.parse(currentTimeStr);
+		} catch (ParseException e) {
+			
+		}  
+	    calendar.set(Calendar.DAY_OF_MONTH , calendar.get(Calendar.DAY_OF_MONTH) + RedisExpiredConst.EXPIRED_USERINFO_DAYS);
+	    Date lastDate = calendar.getTime();
+		
+		if (lastDate.after(currentDate))
+			return false;
+		return true;
 	}
 }
