@@ -22,8 +22,11 @@ public class UserService {
 	public UserBean getUser(long userId) {
     	log.debug("The user id is: " + userId);
     	UserBean user = userRedisService.getUserByUserId(userId);
-    	if (user == null)
+    	if (user == null) {
     		user = userMapper.queryById(userId);
+    		if (user != null)
+    			userRedisService.updateUser(user);
+    	}
         
         return user;
     }
