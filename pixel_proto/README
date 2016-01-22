@@ -1,4 +1,4 @@
-安装protobuf
+1.安装protobuf
 yum install protobuf-python protobuf
 导出Commands.pb.h和.cc
 protoc -I=./ --cpp_out=./ *proto
@@ -6,3 +6,53 @@ protoc -I=./ --cpp_out=./ *proto
 protoc -I=./ --java_out=../src/ *proto
 导出Commands_pb.lua（调用protoc-gen-lua插件）
 protoc -I=./ --plugin=protoc-gen-lua=protoc-gen-lua/protoc-gen-lua --lua_out=./ *proto
+
+2.protobuf format Example
+
+For XML output, use XmlFormat
+
+Message someProto = SomeProto.getDefaultInstance();
+String xmlFormat = XmlFormat.printToString(someProto);
+
+For XML input, use XmlFormat
+
+Message.Builder builder = SomeProto.newBuilder();
+String xmlFormat = _load xml document from a source_;
+XmlFormat.merge(xmlFormat, builder);
+
+For Json output, use JsonFormat
+
+Message someProto = SomeProto.getDefaultInstance();
+String jsonFormat = JsonFormat.printToString(someProto);
+
+For Json input, use JsonFormat
+
+Message.Builder builder = SomeProto.newBuilder();
+String jsonFormat = _load json document from a source_;
+JsonFormat.merge(jsonFormat, builder);
+
+For HTML output, use HtmlFormat
+
+Message someProto = SomeProto.getDefaultInstance();
+String htmlFormat = HtmlFormat.printToString(someProto);
+
+启动http服务
+service httpd start
+配置文件夹权限
+chown apache:apache /var/www/html/
+修改php超时时间
+打开/etc/php.ini
+将session.gc_maxlifetime = 1440的值改大
+修改phpMyAdmin超时时间
+打开   phpMyAdmin/libraries/config.default.php 
+将$cfg['LoginCookieValidity'] = 1440;的值改大
+启动数据库
+mariadb:systemctl start mariadb.service
+mysql:service mysqld start
+设置密码
+mysql>use mysql;
+mysql>update user set password=password('你的密码') where user='root'; 
+mysql>flush privileges;
+启动redis
+sudo redis-server /etc/redis.conf
+

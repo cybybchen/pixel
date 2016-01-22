@@ -63,6 +63,57 @@ message UserMine {
 	optional int32 level = 5;
 }
 
+message AreaResourceMine {//区域资源开采点
+	required int32 id = 1;//开采点ID
+	optional int32 resourceId = 2;//资源点ID
+	required int32 time = 3;//开采时间
+	required int32 rewardId = 4;//开采奖励
+	///////////////////////////////////
+	optional string owner = 5;//开采玩家
+	optional int32 endtime = 6;//开采结束时间
+}
+
+message AreaResource {//区域资源点
+	required int32 id = 1;//资源点ID
+	optional int32 areaId = 2;//区域ID
+	required int32 bossid = 3;//资源点BOSS
+	repeated AreaResourceMine mines = 4;//开采点
+	///////////////////////////////////
+	optional string state = 5;//争夺状态
+	optional int32 nexttime = 6;//下次开战时间
+	optional string owner = 7;//占领玩家
+	optional int32 rewardId = 8;//占领奖励
+}
+
+message AreaBoss {//区域世界BOSS
+	required int32 id = 1;
+	optional int32 areaId = 2;//区域ID
+	repeated int32 rewards = 3;//排行奖励
+	repeated int32 rewardId = 4;//击杀奖励
+	///////////////////////////////////
+	optional string owner = 5;//击杀者
+	repeated string leaderboard = 6;//伤害排行
+}
+
+message AreaMonster {//区域怪物
+	required int32 id = 1;
+	optional int32 areaId = 2;//区域ID
+	required int32 level = 3;//等级
+	repeated int32 rewardId = 4;//击败奖励
+}
+
+message AreaInfo {//可争夺区域
+	required int32 id = 1;//区域ID
+	required int32 score = 2;//开放所需战力
+	repeated AreaResource resources = 3;//区域资源点
+	repeated AreaBoss bosses = 4;//区域BOSS
+	repeated AreaMonster monsters = 5;//区域怪物
+}
+
+message AreaMode {//区域争夺
+	repeated AreaInfo areas = 1;//区域
+}
+
 message UserRank {
 	required int64 userId = 1;
 	required string userName = 2;
@@ -306,6 +357,29 @@ message ResponseGetUserFriendListCommand {
 	repeated UserFriend friend = 1;	
 }
 
+message RequestAreaCommand {
+}
+
+message ResponseAreaCommand {
+	repeated AreaInfo areas = 1;
+}
+
+message RequestAttackMonsterCommand {
+	required int32 id = 1;
+}
+
+message RequestAttackBossCommand {
+	required int32 id = 1;
+}
+
+message RequestAttackResourceCommand {
+	required int32 id = 1;
+}
+
+message RequestAttackResourceMineCommand {
+	required int32 id = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -331,6 +405,12 @@ message RequestCommand {
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestLotteryEquipCommand lotteryEquipCommand = 23;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
+	optional RequestReceiveFriendCommand receiveFriend = 25;
+	optional RequestAreaCommand areaCommand = 26;
+	optional RequestAttackMonsterCommand attackMonsterCommand = 27;
+	optional RequestAttackBossCommand attackBossCommand = 28;
+	optional RequestAttackResourceCommand attackResourceCommand = 29;
+	optional RequestAttackResourceMineCommand attackResourceMineCommand = 30;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -356,6 +436,7 @@ message ResponseCommand {
 	optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
 	optional ResponseLotteryEquipCommand lotteryEquipCommand = 22;
 	optional ResponseGetUserEquipCommand userEquipCommand = 23;
+	optional ResponseAreaCommand areaCommand = 24;
 }
 
 

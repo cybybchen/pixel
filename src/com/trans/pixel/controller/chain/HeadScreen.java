@@ -10,7 +10,12 @@ import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
+import com.trans.pixel.protoc.Commands.RequestAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
@@ -170,62 +175,98 @@ public class HeadScreen extends RequestScreen {
 	protected boolean handleCommand(RequestGetLadderRankListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackLadderModeCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestGetUserMailListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestReadMailCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestDeleteMailCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAddFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestLotteryEquipCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestEquipLevelUpCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
+
+	@Override
+	protected boolean handleCommand(RequestAreaCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackBossCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackMonsterCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackResourceCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackResourceMineCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

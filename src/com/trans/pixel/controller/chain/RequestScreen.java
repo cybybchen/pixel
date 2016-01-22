@@ -4,7 +4,12 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
+import com.trans.pixel.protoc.Commands.RequestAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
@@ -72,6 +77,16 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestLotteryEquipCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestEquipLevelUpCommand cmd, Builder responseBuilder, UserBean user);
+
+	protected abstract boolean handleCommand(RequestAreaCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user);
+
+	protected abstract boolean handleCommand(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user);
+
+	protected abstract boolean handleCommand(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user);
+
+	protected abstract boolean handleCommand(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user);
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
@@ -188,6 +203,29 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasEquipLevelUpCommand()) {
         	RequestEquipLevelUpCommand cmd = request.getEquipLevelUpCommand();
+	}
+        if (request.hasAreaCommand()) {
+        	RequestAreaCommand cmd = request.getAreaCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasAttackMonsterCommand()) {
+        	RequestAttackMonsterCommand cmd = request.getAttackMonsterCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasAttackBossCommand()) {
+        	RequestAttackBossCommand cmd = request.getAttackBossCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasAttackResourceCommand()) {
+        	RequestAttackResourceCommand cmd = request.getAttackResourceCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasAttackResourceMineCommand()) {
+        	RequestAttackResourceMineCommand cmd = request.getAttackResourceMineCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
