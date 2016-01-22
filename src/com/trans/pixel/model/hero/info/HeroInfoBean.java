@@ -119,7 +119,7 @@ public class HeroInfoBean {
 	
 	public HeroInfo buildHeroInfo() {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
-//		builder.setEquipInfo(equipInfo);
+		builder.setEquipInfo(equipInfo);
 		builder.setInfoId(id);
 		builder.setLevel(level);
 		builder.setStarLevel(starLevel);
@@ -142,7 +142,8 @@ public class HeroInfoBean {
 		heroInfo.setId(0);
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(1);
-		heroInfo.setEquipInfo("0|0|0|0|0|0");
+//		heroInfo.setEquipInfo("0|0|0|0|0|0");
+		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		heroInfo.setSkillInfoList(SkillInfoBean.initSkillInfo(hero.getSkillList()));
 		
 		return heroInfo;
@@ -151,7 +152,6 @@ public class HeroInfoBean {
 	private static final String ID = "id";
 	private static final String LEVEL = "level";
 	private static final String STAR_LEVEL = "starLevel";
-	private static final String EQUIP_LEVEL = "equipLevel";
 	private static final String EQUIP_INFO = "equipInfo";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
 	

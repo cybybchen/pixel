@@ -35,9 +35,8 @@ message HeroInfo {
 	required int32 infoId = 1;
 	optional int32 level = 2;
 	optional int32 starLevel = 3;
-	optional int32 equipLevel = 4;
-	optional int32 equipInfo = 5;
-	repeated SkillInfo skill = 6;
+	optional string equipInfo = 4;
+	repeated SkillInfo skill = 5;
 }
 
 message UserHero {

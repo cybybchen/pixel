@@ -3243,47 +3243,42 @@ public final class Commands {
      */
     int getStarLevel();
 
-    // optional int32 equipLevel = 4;
+    // optional string equipInfo = 4;
     /**
-     * <code>optional int32 equipLevel = 4;</code>
-     */
-    boolean hasEquipLevel();
-    /**
-     * <code>optional int32 equipLevel = 4;</code>
-     */
-    int getEquipLevel();
-
-    // optional int32 equipInfo = 5;
-    /**
-     * <code>optional int32 equipInfo = 5;</code>
+     * <code>optional string equipInfo = 4;</code>
      */
     boolean hasEquipInfo();
     /**
-     * <code>optional int32 equipInfo = 5;</code>
+     * <code>optional string equipInfo = 4;</code>
      */
-    int getEquipInfo();
-
-    // repeated .com.trans.pixel.protoc.SkillInfo skill = 6;
+    java.lang.String getEquipInfo();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>optional string equipInfo = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getEquipInfoBytes();
+
+    // repeated .com.trans.pixel.protoc.SkillInfo skill = 5;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> 
         getSkillList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     com.trans.pixel.protoc.Commands.SkillInfo getSkill(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     int getSkillCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> 
         getSkillOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     com.trans.pixel.protoc.Commands.SkillInfoOrBuilder getSkillOrBuilder(
         int index);
@@ -3354,20 +3349,15 @@ public final class Commands {
               starLevel_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 34: {
               bitField0_ |= 0x00000008;
-              equipLevel_ = input.readInt32();
+              equipInfo_ = input.readBytes();
               break;
             }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              equipInfo_ = input.readInt32();
-              break;
-            }
-            case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 skill_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.SkillInfo>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000010;
               }
               skill_.add(input.readMessage(com.trans.pixel.protoc.Commands.SkillInfo.PARSER, extensionRegistry));
               break;
@@ -3380,7 +3370,7 @@ public final class Commands {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           skill_ = java.util.Collections.unmodifiableList(skill_);
         }
         this.unknownFields = unknownFields.build();
@@ -3463,68 +3453,79 @@ public final class Commands {
       return starLevel_;
     }
 
-    // optional int32 equipLevel = 4;
-    public static final int EQUIPLEVEL_FIELD_NUMBER = 4;
-    private int equipLevel_;
+    // optional string equipInfo = 4;
+    public static final int EQUIPINFO_FIELD_NUMBER = 4;
+    private java.lang.Object equipInfo_;
     /**
-     * <code>optional int32 equipLevel = 4;</code>
+     * <code>optional string equipInfo = 4;</code>
      */
-    public boolean hasEquipLevel() {
+    public boolean hasEquipInfo() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 equipLevel = 4;</code>
+     * <code>optional string equipInfo = 4;</code>
      */
-    public int getEquipLevel() {
-      return equipLevel_;
+    public java.lang.String getEquipInfo() {
+      java.lang.Object ref = equipInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          equipInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string equipInfo = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEquipInfoBytes() {
+      java.lang.Object ref = equipInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        equipInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    // optional int32 equipInfo = 5;
-    public static final int EQUIPINFO_FIELD_NUMBER = 5;
-    private int equipInfo_;
-    /**
-     * <code>optional int32 equipInfo = 5;</code>
-     */
-    public boolean hasEquipInfo() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 equipInfo = 5;</code>
-     */
-    public int getEquipInfo() {
-      return equipInfo_;
-    }
-
-    // repeated .com.trans.pixel.protoc.SkillInfo skill = 6;
-    public static final int SKILL_FIELD_NUMBER = 6;
+    // repeated .com.trans.pixel.protoc.SkillInfo skill = 5;
+    public static final int SKILL_FIELD_NUMBER = 5;
     private java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> skill_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     public java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> getSkillList() {
       return skill_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> 
         getSkillOrBuilderList() {
       return skill_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     public int getSkillCount() {
       return skill_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     public com.trans.pixel.protoc.Commands.SkillInfo getSkill(int index) {
       return skill_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
      */
     public com.trans.pixel.protoc.Commands.SkillInfoOrBuilder getSkillOrBuilder(
         int index) {
@@ -3535,8 +3536,7 @@ public final class Commands {
       infoId_ = 0;
       level_ = 0;
       starLevel_ = 0;
-      equipLevel_ = 0;
-      equipInfo_ = 0;
+      equipInfo_ = "";
       skill_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -3571,13 +3571,10 @@ public final class Commands {
         output.writeInt32(3, starLevel_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, equipLevel_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, equipInfo_);
+        output.writeBytes(4, getEquipInfoBytes());
       }
       for (int i = 0; i < skill_.size(); i++) {
-        output.writeMessage(6, skill_.get(i));
+        output.writeMessage(5, skill_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -3602,15 +3599,11 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, equipLevel_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, equipInfo_);
+          .computeBytesSize(4, getEquipInfoBytes());
       }
       for (int i = 0; i < skill_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, skill_.get(i));
+          .computeMessageSize(5, skill_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3735,13 +3728,11 @@ public final class Commands {
         bitField0_ = (bitField0_ & ~0x00000002);
         starLevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        equipLevel_ = 0;
+        equipInfo_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
-        equipInfo_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
         if (skillBuilder_ == null) {
           skill_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           skillBuilder_.clear();
         }
@@ -3788,15 +3779,11 @@ public final class Commands {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.equipLevel_ = equipLevel_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         result.equipInfo_ = equipInfo_;
         if (skillBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             skill_ = java.util.Collections.unmodifiableList(skill_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.skill_ = skill_;
         } else {
@@ -3827,17 +3814,16 @@ public final class Commands {
         if (other.hasStarLevel()) {
           setStarLevel(other.getStarLevel());
         }
-        if (other.hasEquipLevel()) {
-          setEquipLevel(other.getEquipLevel());
-        }
         if (other.hasEquipInfo()) {
-          setEquipInfo(other.getEquipInfo());
+          bitField0_ |= 0x00000008;
+          equipInfo_ = other.equipInfo_;
+          onChanged();
         }
         if (skillBuilder_ == null) {
           if (!other.skill_.isEmpty()) {
             if (skill_.isEmpty()) {
               skill_ = other.skill_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureSkillIsMutable();
               skill_.addAll(other.skill_);
@@ -3850,7 +3836,7 @@ public final class Commands {
               skillBuilder_.dispose();
               skillBuilder_ = null;
               skill_ = other.skill_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000010);
               skillBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSkillFieldBuilder() : null;
@@ -3995,79 +3981,87 @@ public final class Commands {
         return this;
       }
 
-      // optional int32 equipLevel = 4;
-      private int equipLevel_ ;
+      // optional string equipInfo = 4;
+      private java.lang.Object equipInfo_ = "";
       /**
-       * <code>optional int32 equipLevel = 4;</code>
+       * <code>optional string equipInfo = 4;</code>
        */
-      public boolean hasEquipLevel() {
+      public boolean hasEquipInfo() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 equipLevel = 4;</code>
+       * <code>optional string equipInfo = 4;</code>
        */
-      public int getEquipLevel() {
-        return equipLevel_;
+      public java.lang.String getEquipInfo() {
+        java.lang.Object ref = equipInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          equipInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>optional int32 equipLevel = 4;</code>
+       * <code>optional string equipInfo = 4;</code>
        */
-      public Builder setEquipLevel(int value) {
-        bitField0_ |= 0x00000008;
-        equipLevel_ = value;
-        onChanged();
-        return this;
+      public com.google.protobuf.ByteString
+          getEquipInfoBytes() {
+        java.lang.Object ref = equipInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          equipInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
       /**
-       * <code>optional int32 equipLevel = 4;</code>
+       * <code>optional string equipInfo = 4;</code>
        */
-      public Builder clearEquipLevel() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        equipLevel_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 equipInfo = 5;
-      private int equipInfo_ ;
-      /**
-       * <code>optional int32 equipInfo = 5;</code>
-       */
-      public boolean hasEquipInfo() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 equipInfo = 5;</code>
-       */
-      public int getEquipInfo() {
-        return equipInfo_;
-      }
-      /**
-       * <code>optional int32 equipInfo = 5;</code>
-       */
-      public Builder setEquipInfo(int value) {
-        bitField0_ |= 0x00000010;
+      public Builder setEquipInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
         equipInfo_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 equipInfo = 5;</code>
+       * <code>optional string equipInfo = 4;</code>
        */
       public Builder clearEquipInfo() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        equipInfo_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        equipInfo_ = getDefaultInstance().getEquipInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string equipInfo = 4;</code>
+       */
+      public Builder setEquipInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        equipInfo_ = value;
         onChanged();
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.SkillInfo skill = 6;
+      // repeated .com.trans.pixel.protoc.SkillInfo skill = 5;
       private java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> skill_ =
         java.util.Collections.emptyList();
       private void ensureSkillIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           skill_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.SkillInfo>(skill_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -4075,7 +4069,7 @@ public final class Commands {
           com.trans.pixel.protoc.Commands.SkillInfo, com.trans.pixel.protoc.Commands.SkillInfo.Builder, com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> skillBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.SkillInfo> getSkillList() {
         if (skillBuilder_ == null) {
@@ -4085,7 +4079,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public int getSkillCount() {
         if (skillBuilder_ == null) {
@@ -4095,7 +4089,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.SkillInfo getSkill(int index) {
         if (skillBuilder_ == null) {
@@ -4105,7 +4099,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder setSkill(
           int index, com.trans.pixel.protoc.Commands.SkillInfo value) {
@@ -4122,7 +4116,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder setSkill(
           int index, com.trans.pixel.protoc.Commands.SkillInfo.Builder builderForValue) {
@@ -4136,7 +4130,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder addSkill(com.trans.pixel.protoc.Commands.SkillInfo value) {
         if (skillBuilder_ == null) {
@@ -4152,7 +4146,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder addSkill(
           int index, com.trans.pixel.protoc.Commands.SkillInfo value) {
@@ -4169,7 +4163,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder addSkill(
           com.trans.pixel.protoc.Commands.SkillInfo.Builder builderForValue) {
@@ -4183,7 +4177,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder addSkill(
           int index, com.trans.pixel.protoc.Commands.SkillInfo.Builder builderForValue) {
@@ -4197,7 +4191,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder addAllSkill(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.SkillInfo> values) {
@@ -4211,12 +4205,12 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder clearSkill() {
         if (skillBuilder_ == null) {
           skill_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           skillBuilder_.clear();
@@ -4224,7 +4218,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public Builder removeSkill(int index) {
         if (skillBuilder_ == null) {
@@ -4237,14 +4231,14 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.SkillInfo.Builder getSkillBuilder(
           int index) {
         return getSkillFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.SkillInfoOrBuilder getSkillOrBuilder(
           int index) {
@@ -4254,7 +4248,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Commands.SkillInfoOrBuilder> 
            getSkillOrBuilderList() {
@@ -4265,14 +4259,14 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.SkillInfo.Builder addSkillBuilder() {
         return getSkillFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Commands.SkillInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.SkillInfo.Builder addSkillBuilder(
           int index) {
@@ -4280,7 +4274,7 @@ public final class Commands {
             index, com.trans.pixel.protoc.Commands.SkillInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.SkillInfo skill = 5;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.SkillInfo.Builder> 
            getSkillBuilderList() {
@@ -4293,7 +4287,7 @@ public final class Commands {
           skillBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.SkillInfo, com.trans.pixel.protoc.Commands.SkillInfo.Builder, com.trans.pixel.protoc.Commands.SkillInfoOrBuilder>(
                   skill_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           skill_ = null;
@@ -46401,197 +46395,197 @@ public final class Commands {
       "\003 \002(\005\"u\n\010HeadInfo\022\017\n\007version\030\001 \002(\005\022\020\n\010da" +
       "tetime\030\002 \002(\003\022\023\n\013gameVersion\030\003 \002(\005\022\020\n\010ser",
       "verId\030\004 \002(\005\022\017\n\007account\030\005 \002(\t\022\016\n\006userId\030\006" +
-      " \001(\003\"\225\001\n\010HeroInfo\022\016\n\006infoId\030\001 \002(\005\022\r\n\005lev" +
-      "el\030\002 \001(\005\022\021\n\tstarLevel\030\003 \001(\005\022\022\n\nequipLeve" +
-      "l\030\004 \001(\005\022\021\n\tequipInfo\030\005 \001(\005\0220\n\005skill\030\006 \003(" +
-      "\0132!.com.trans.pixel.protoc.SkillInfo\"^\n\010" +
-      "UserHero\022\016\n\006userId\030\001 \002(\003\022\016\n\006heroId\030\002 \002(\005" +
-      "\0222\n\010heroInfo\030\003 \003(\0132 .com.trans.pixel.pro" +
-      "toc.HeroInfo\"0\n\tUserEquip\022\017\n\007equipId\030\001 \002" +
-      "(\005\022\022\n\nequipCount\030\002 \002(\005\"0\n\tSkillInfo\022\017\n\007s" +
-      "killId\030\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"d\n\010User",
-      "Mine\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\025\n\rr" +
-      "elatedUserId\030\003 \001(\003\022\023\n\013preventTime\030\004 \001(\003\022" +
-      "\r\n\005level\030\005 \001(\005\"N\n\010UserRank\022\016\n\006userId\030\001 \002" +
-      "(\003\022\020\n\010userName\030\002 \002(\t\022\014\n\004rank\030\003 \002(\003\022\022\n\nte" +
-      "amRecord\030\004 \002(\t\"F\n\nUserFriend\022\020\n\010friendId" +
-      "\030\001 \002(\003\022\022\n\nfriendName\030\002 \002(\t\022\022\n\nteamRecord" +
-      "\030\003 \002(\t\"\255\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006userId\030\002 " +
-      "\002(\003\022\022\n\nfromUserId\030\003 \002(\003\022\014\n\004type\030\004 \002(\005\022\021\n" +
-      "\tstartDate\030\005 \002(\t\022\017\n\007endDate\030\006 \002(\t\022\017\n\007con" +
-      "tent\030\007 \002(\t\0222\n\006reward\030\010 \003(\0132\".com.trans.p",
-      "ixel.protoc.RewardInfo\"D\n\010MailList\022\014\n\004ty" +
-      "pe\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034.com.trans.pixel" +
-      ".protoc.Mail\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002" +
-      "(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033ResponseNeedRegis" +
-      "terCommand\"*\n\026RequestRegisterCommand\022\020\n\010" +
-      "userName\030\001 \002(\t\"\025\n\023RequestLoginCommand\"I\n" +
-      "\027ResponseUserInfoCommand\022.\n\004user\030\001 \002(\0132 " +
-      ".com.trans.pixel.protoc.UserInfo\"\201\001\n\024Res" +
-      "ponsePopupCommand\022\021\n\tpopScreen\030\001 \002(\005\022\016\n\006" +
-      "flowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading\030\004 ",
-      "\001(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoButtonID\030\006" +
-      " \001(\t\"+\n\030RequestLevelStartCommand\022\017\n\007leve" +
-      "lId\030\001 \002(\005\"Q\n\031RequestLevelResultCommand\022\017" +
-      "\n\007levelId\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\022\021\n\tfig" +
-      "htInfo\030\003 \002(\t\"P\n\032ResponseLevelResultComma" +
-      "nd\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pro" +
-      "toc.RewardInfo\"/\n\034RequestLevelLootStartC" +
-      "ommand\022\017\n\007levelId\030\001 \002(\005\"\037\n\035RequestLevelL" +
-      "ootResultCommand\"T\n\036ResponseLevelLootRes" +
-      "ultCommand\0222\n\006reward\030\001 \003(\0132\".com.trans.p",
-      "ixel.protoc.RewardInfo\":\n\030RequestUpdateT" +
-      "eamCommand\022\014\n\004mode\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002" +
-      "(\t\"P\n\031RequestHeroLevelUpCommand\022\023\n\013level" +
-      "UpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003" +
-      " \002(\005\"_\n\031ResponseHeroResultCommand\022\016\n\006her" +
-      "oId\030\001 \002(\005\0222\n\010heroInfo\030\002 \002(\0132 .com.trans." +
-      "pixel.protoc.HeroInfo\"\032\n\030RequestLootResu" +
-      "ltCommand\"L\n\031ResponseLootResultCommand\022\014" +
-      "\n\004gold\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014lastLootTim" +
-      "e\030\003 \001(\005\"K\n\032RequestAddHeroEquipCommand\022\016\n",
-      "\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003" +
-      " \001(\005\"^\n\032RequestEquipLevelUpCommand\022\016\n\006he" +
-      "roId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \002(" +
-      "\005\022\021\n\tlevelUpId\030\004 \002(\005\"=\n\034RequestAttackRel" +
-      "ativeCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 " +
-      "\002(\005\"b\n\035ResponseAttackRelativeCommand\022\r\n\005" +
-      "mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\023\n\013preventTi" +
-      "me\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n\032ResponseGetUs" +
-      "erMineCommand\0222\n\010userMine\030\001 \003(\0132 .com.tr" +
-      "ans.pixel.protoc.UserMine\"A\n RequestRefr",
-      "eshRelatedUserCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006" +
-      "mineId\030\002 \002(\005\"M\n!ResponseRefreshRelatedUs" +
-      "erCommand\022\021\n\tleftTimes\030\001 \002(\005\022\025\n\rrelatedU" +
-      "serId\030\002 \002(\003\")\n\031RequestLotteryHeroCommand" +
-      "\022\014\n\004type\030\001 \002(\005\"q\n\032ResponseLotteryHeroCom" +
-      "mand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrew" +
-      "ardList\030\003 \003(\0132\".com.trans.pixel.protoc.R" +
-      "ewardInfo\"*\n\032RequestLotteryEquipCommand\022" +
-      "\014\n\004type\030\001 \002(\005\"r\n\033ResponseLotteryEquipCom" +
-      "mand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrew",
-      "ardList\030\003 \003(\0132\".com.trans.pixel.protoc.R" +
-      "ewardInfo\"P\n\032ResponseGetUserHeroCommand\022" +
-      "2\n\010userHero\030\001 \003(\0132 .com.trans.pixel.prot" +
-      "oc.UserHero\"S\n\033ResponseGetUserEquipComma" +
-      "nd\0224\n\tuserEquip\030\001 \003(\0132!.com.trans.pixel." +
-      "protoc.UserEquip\"!\n\037RequestGetLadderRank" +
-      "ListCommand\"%\n#RequestGetUserLadderRankL" +
-      "istCommand\"V\n ResponseGetLadderRankListC" +
-      "ommand\0222\n\010userRank\030\001 \003(\0132 .com.trans.pix" +
-      "el.protoc.UserRank\"Z\n$ResponseGetUserLad",
-      "derRankListCommand\0222\n\010userRank\030\001 \003(\0132 .c" +
-      "om.trans.pixel.protoc.UserRank\".\n\036Reques" +
-      "tAttackLadderModeCommand\022\014\n\004rank\030\001 \002(\003\";" +
-      "\n\037ResponseAttackLadderModeCommand\022\013\n\003ret" +
-      "\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035RequestGetUserMai" +
-      "lListCommand\022\014\n\004type\030\001 \002(\005\"T\n\036ResponseGe" +
-      "tUserMailListCommand\0222\n\010mailList\030\001 \003(\0132 " +
-      ".com.trans.pixel.protoc.MailList\"2\n\026Requ" +
-      "estReadMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002" +
-      " \003(\005\"3\n\026ResponseMessageCommand\022\014\n\004code\030\001",
-      " \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031ResponseSendRewardC" +
-      "ommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel" +
-      ".protoc.RewardInfo\"4\n\030RequestDeleteMailC" +
-      "ommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\")\n\027Requ" +
-      "estAddFriendCommand\022\016\n\006userId\030\001 \002(\003\")\n\033R" +
-      "equestReceiveFriendCommand\022\n\n\002id\030\001 \003(\005\"V" +
-      "\n ResponseGetUserFriendListCommand\0222\n\006fr" +
-      "iend\030\001 \003(\0132\".com.trans.pixel.protoc.User" +
-      "Friend\"\223\017\n\016RequestCommand\022.\n\004head\030\001 \002(\0132" +
-      " .com.trans.pixel.protoc.HeadInfo\022G\n\017reg",
-      "isterCommand\030\002 \001(\0132..com.trans.pixel.pro" +
-      "toc.RequestRegisterCommand\022A\n\014loginComma" +
-      "nd\030\003 \001(\0132+.com.trans.pixel.protoc.Reques" +
-      "tLoginCommand\022M\n\022levelResultCommand\030\004 \001(" +
-      "\01321.com.trans.pixel.protoc.RequestLevelR" +
-      "esultCommand\022K\n\021updateTeamCommand\030\005 \001(\0132" +
-      "0.com.trans.pixel.protoc.RequestUpdateTe" +
-      "amCommand\022K\n\021levelStartCommand\030\006 \001(\01320.c" +
-      "om.trans.pixel.protoc.RequestLevelStartC" +
-      "ommand\022S\n\025levelLootStartCommand\030\007 \001(\01324.",
-      "com.trans.pixel.protoc.RequestLevelLootS" +
-      "tartCommand\022U\n\026levelLootResultCommand\030\010 " +
-      "\001(\01325.com.trans.pixel.protoc.RequestLeve" +
-      "lLootResultCommand\022M\n\022heroLevelUpCommand" +
-      "\030\t \001(\01321.com.trans.pixel.protoc.RequestH" +
-      "eroLevelUpCommand\022K\n\021lootResultCommand\030\n" +
-      " \001(\01320.com.trans.pixel.protoc.RequestLoo" +
-      "tResultCommand\022O\n\023addHeroEquipCommand\030\013 " +
-      "\001(\01322.com.trans.pixel.protoc.RequestAddH" +
-      "eroEquipCommand\022S\n\025attackRelativeCommand",
-      "\030\014 \001(\01324.com.trans.pixel.protoc.RequestA" +
-      "ttackRelativeCommand\022[\n\031refreshRelatedUs" +
-      "erCommand\030\r \001(\01328.com.trans.pixel.protoc" +
-      ".RequestRefreshRelatedUserCommand\022M\n\022lot" +
-      "teryHeroCommand\030\016 \001(\01321.com.trans.pixel." +
-      "protoc.RequestLotteryHeroCommand\022Y\n\030getL" +
-      "adderRankListCommand\030\017 \001(\01327.com.trans.p" +
-      "ixel.protoc.RequestGetLadderRankListComm" +
-      "and\022a\n\034getUserLadderRankListCommand\030\020 \001(" +
-      "\0132;.com.trans.pixel.protoc.RequestGetUse",
-      "rLadderRankListCommand\022W\n\027attackLadderMo" +
-      "deCommand\030\021 \001(\01326.com.trans.pixel.protoc" +
-      ".RequestAttackLadderModeCommand\022U\n\026getUs" +
-      "erMailListCommand\030\022 \001(\01325.com.trans.pixe" +
-      "l.protoc.RequestGetUserMailListCommand\022G" +
-      "\n\017readMailCommand\030\023 \001(\0132..com.trans.pixe" +
-      "l.protoc.RequestReadMailCommand\022K\n\021delet" +
-      "eMailCommand\030\024 \001(\01320.com.trans.pixel.pro" +
-      "toc.RequestDeleteMailCommand\022I\n\020addFrien" +
-      "dCommand\030\025 \001(\0132/.com.trans.pixel.protoc.",
-      "RequestAddFriendCommand\022Q\n\024receiveFriend" +
-      "Command\030\026 \001(\01323.com.trans.pixel.protoc.R" +
-      "equestReceiveFriendCommand\022O\n\023lotteryEqu" +
-      "ipCommand\030\027 \001(\01322.com.trans.pixel.protoc" +
-      ".RequestLotteryEquipCommand\022O\n\023equipLeve" +
-      "lUpCommand\030\030 \001(\01322.com.trans.pixel.proto" +
-      "c.RequestEquipLevelUpCommand\"\206\016\n\017Respons" +
-      "eCommand\022.\n\004head\030\001 \002(\0132 .com.trans.pixel" +
-      ".protoc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$" +
-      ".com.trans.pixel.protoc.ErrorCommand\022P\n\023",
-      "needRegisterCommand\030\003 \001(\01323.com.trans.pi" +
-      "xel.protoc.ResponseNeedRegisterCommand\022H" +
-      "\n\017userInfoCommand\030\004 \001(\0132/.com.trans.pixe" +
-      "l.protoc.ResponseUserInfoCommand\022N\n\022leve" +
-      "lResultCommand\030\006 \001(\01322.com.trans.pixel.p" +
-      "rotoc.ResponseLevelResultCommand\022V\n\026leve" +
-      "lLootResultCommand\030\007 \001(\01326.com.trans.pix" +
-      "el.protoc.ResponseLevelLootResultCommand" +
-      "\022L\n\021heroResultCommand\030\010 \001(\01321.com.trans." +
-      "pixel.protoc.ResponseHeroResultCommand\022L",
-      "\n\021lootResultCommand\030\t \001(\01321.com.trans.pi" +
-      "xel.protoc.ResponseLootResultCommand\022T\n\025" +
-      "attackRelativeCommand\030\n \001(\01325.com.trans." +
-      "pixel.protoc.ResponseAttackRelativeComma" +
-      "nd\022N\n\022getUserMineCommand\030\013 \001(\01322.com.tra" +
-      "ns.pixel.protoc.ResponseGetUserMineComma" +
-      "nd\022\\\n\031refreshRelatedUserCommand\030\014 \001(\01329." +
-      "com.trans.pixel.protoc.ResponseRefreshRe" +
-      "latedUserCommand\022N\n\022lotteryHeroCommand\030\r" +
-      " \001(\01322.com.trans.pixel.protoc.ResponseLo",
-      "tteryHeroCommand\022N\n\022getUserHeroCommand\030\016" +
-      " \001(\01322.com.trans.pixel.protoc.ResponseGe" +
-      "tUserHeroCommand\022Z\n\030getLadderRankListCom" +
-      "mand\030\017 \001(\01328.com.trans.pixel.protoc.Resp" +
-      "onseGetLadderRankListCommand\022b\n\034getUserL" +
-      "adderRankListCommand\030\020 \001(\0132<.com.trans.p" +
-      "ixel.protoc.ResponseGetUserLadderRankLis" +
-      "tCommand\022X\n\027attackLadderModeCommand\030\021 \001(" +
-      "\01327.com.trans.pixel.protoc.ResponseAttac" +
-      "kLadderModeCommand\022V\n\026getUserMailListCom",
-      "mand\030\022 \001(\01326.com.trans.pixel.protoc.Resp" +
-      "onseGetUserMailListCommand\022L\n\021sendReward" +
-      "Command\030\023 \001(\01321.com.trans.pixel.protoc.R" +
-      "esponseSendRewardCommand\022F\n\016messageComma" +
-      "nd\030\024 \001(\0132..com.trans.pixel.protoc.Respon" +
-      "seMessageCommand\022Z\n\030getUserFriendListCom" +
-      "mand\030\025 \001(\01328.com.trans.pixel.protoc.Resp" +
-      "onseGetUserFriendListCommand\022P\n\023lotteryE" +
-      "quipCommand\030\026 \001(\01323.com.trans.pixel.prot" +
-      "oc.ResponseLotteryEquipCommand\022M\n\020userEq",
-      "uipCommand\030\027 \001(\01323.com.trans.pixel.proto" +
-      "c.ResponseGetUserEquipCommand"
+      " \001(\003\"\201\001\n\010HeroInfo\022\016\n\006infoId\030\001 \002(\005\022\r\n\005lev" +
+      "el\030\002 \001(\005\022\021\n\tstarLevel\030\003 \001(\005\022\021\n\tequipInfo" +
+      "\030\004 \001(\t\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel." +
+      "protoc.SkillInfo\"^\n\010UserHero\022\016\n\006userId\030\001" +
+      " \002(\003\022\016\n\006heroId\030\002 \002(\005\0222\n\010heroInfo\030\003 \003(\0132 " +
+      ".com.trans.pixel.protoc.HeroInfo\"0\n\tUser" +
+      "Equip\022\017\n\007equipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002" +
+      "(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskil" +
+      "lLevel\030\002 \002(\005\"d\n\010UserMine\022\r\n\005mapId\030\001 \002(\005\022",
+      "\016\n\006mineId\030\002 \002(\005\022\025\n\rrelatedUserId\030\003 \001(\003\022\023" +
+      "\n\013preventTime\030\004 \001(\003\022\r\n\005level\030\005 \001(\005\"N\n\010Us" +
+      "erRank\022\016\n\006userId\030\001 \002(\003\022\020\n\010userName\030\002 \002(\t" +
+      "\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamRecord\030\004 \002(\t\"F\n\nUs" +
+      "erFriend\022\020\n\010friendId\030\001 \002(\003\022\022\n\nfriendName" +
+      "\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(\t\"\255\001\n\004Mail\022\n\n\002i" +
+      "d\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n\nfromUserId\030\003 " +
+      "\002(\003\022\014\n\004type\030\004 \002(\005\022\021\n\tstartDate\030\005 \002(\t\022\017\n\007" +
+      "endDate\030\006 \002(\t\022\017\n\007content\030\007 \002(\t\0222\n\006reward" +
+      "\030\010 \003(\0132\".com.trans.pixel.protoc.RewardIn",
+      "fo\"D\n\010MailList\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003" +
+      "(\0132\034.com.trans.pixel.protoc.Mail\"-\n\014Erro" +
+      "rCommand\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"" +
+      "\035\n\033ResponseNeedRegisterCommand\"*\n\026Reques" +
+      "tRegisterCommand\022\020\n\010userName\030\001 \002(\t\"\025\n\023Re" +
+      "questLoginCommand\"I\n\027ResponseUserInfoCom" +
+      "mand\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.pro" +
+      "toc.UserInfo\"\201\001\n\024ResponsePopupCommand\022\021\n" +
+      "\tpopScreen\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text" +
+      "\030\003 \002(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yesButtonID\030\005",
+      " \001(\t\022\022\n\nnoButtonID\030\006 \001(\t\"+\n\030RequestLevel" +
+      "StartCommand\022\017\n\007levelId\030\001 \002(\005\"Q\n\031Request" +
+      "LevelResultCommand\022\017\n\007levelId\030\001 \002(\005\022\020\n\010t" +
+      "eamInfo\030\002 \002(\t\022\021\n\tfightInfo\030\003 \002(\t\"P\n\032Resp" +
+      "onseLevelResultCommand\0222\n\006reward\030\001 \003(\0132\"" +
+      ".com.trans.pixel.protoc.RewardInfo\"/\n\034Re" +
+      "questLevelLootStartCommand\022\017\n\007levelId\030\001 " +
+      "\002(\005\"\037\n\035RequestLevelLootResultCommand\"T\n\036" +
+      "ResponseLevelLootResultCommand\0222\n\006reward" +
+      "\030\001 \003(\0132\".com.trans.pixel.protoc.RewardIn",
+      "fo\":\n\030RequestUpdateTeamCommand\022\014\n\004mode\030\001" +
+      " \002(\005\022\020\n\010teamInfo\030\002 \002(\t\"P\n\031RequestHeroLev" +
+      "elUpCommand\022\023\n\013levelUpType\030\001 \002(\005\022\016\n\006hero" +
+      "Id\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\005\"_\n\031ResponseHero" +
+      "ResultCommand\022\016\n\006heroId\030\001 \002(\005\0222\n\010heroInf" +
+      "o\030\002 \002(\0132 .com.trans.pixel.protoc.HeroInf" +
+      "o\"\032\n\030RequestLootResultCommand\"L\n\031Respons" +
+      "eLootResultCommand\022\014\n\004gold\030\001 \001(\005\022\013\n\003exp\030" +
+      "\002 \001(\005\022\024\n\014lastLootTime\030\003 \001(\005\"K\n\032RequestAd" +
+      "dHeroEquipCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006inf",
+      "oId\030\002 \002(\005\022\r\n\005armId\030\003 \001(\005\"^\n\032RequestEquip" +
+      "LevelUpCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId" +
+      "\030\002 \002(\005\022\r\n\005armId\030\003 \002(\005\022\021\n\tlevelUpId\030\004 \002(\005" +
+      "\"=\n\034RequestAttackRelativeCommand\022\r\n\005mapI" +
+      "d\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"b\n\035ResponseAttac" +
+      "kRelativeCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineI" +
+      "d\030\002 \002(\005\022\023\n\013preventTime\030\003 \002(\003\022\r\n\005level\030\004 " +
+      "\002(\005\"P\n\032ResponseGetUserMineCommand\0222\n\010use" +
+      "rMine\030\001 \003(\0132 .com.trans.pixel.protoc.Use" +
+      "rMine\"A\n RequestRefreshRelatedUserComman",
+      "d\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"M\n!Resp" +
+      "onseRefreshRelatedUserCommand\022\021\n\tleftTim" +
+      "es\030\001 \002(\005\022\025\n\rrelatedUserId\030\002 \002(\003\")\n\031Reque" +
+      "stLotteryHeroCommand\022\014\n\004type\030\001 \002(\005\"q\n\032Re" +
+      "sponseLotteryHeroCommand\022\014\n\004coin\030\001 \001(\005\022\r" +
+      "\n\005jewel\030\002 \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com." +
+      "trans.pixel.protoc.RewardInfo\"*\n\032Request" +
+      "LotteryEquipCommand\022\014\n\004type\030\001 \002(\005\"r\n\033Res" +
+      "ponseLotteryEquipCommand\022\014\n\004coin\030\001 \001(\005\022\r" +
+      "\n\005jewel\030\002 \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.",
+      "trans.pixel.protoc.RewardInfo\"P\n\032Respons" +
+      "eGetUserHeroCommand\0222\n\010userHero\030\001 \003(\0132 ." +
+      "com.trans.pixel.protoc.UserHero\"S\n\033Respo" +
+      "nseGetUserEquipCommand\0224\n\tuserEquip\030\001 \003(" +
+      "\0132!.com.trans.pixel.protoc.UserEquip\"!\n\037" +
+      "RequestGetLadderRankListCommand\"%\n#Reque" +
+      "stGetUserLadderRankListCommand\"V\n Respon" +
+      "seGetLadderRankListCommand\0222\n\010userRank\030\001" +
+      " \003(\0132 .com.trans.pixel.protoc.UserRank\"Z" +
+      "\n$ResponseGetUserLadderRankListCommand\0222",
+      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto" +
+      "c.UserRank\".\n\036RequestAttackLadderModeCom" +
+      "mand\022\014\n\004rank\030\001 \002(\003\";\n\037ResponseAttackLadd" +
+      "erModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"" +
+      "-\n\035RequestGetUserMailListCommand\022\014\n\004type" +
+      "\030\001 \002(\005\"T\n\036ResponseGetUserMailListCommand" +
+      "\0222\n\010mailList\030\001 \003(\0132 .com.trans.pixel.pro" +
+      "toc.MailList\"2\n\026RequestReadMailCommand\022\014" +
+      "\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\"3\n\026ResponseMess" +
+      "ageCommand\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n",
+      "\031ResponseSendRewardCommand\0222\n\006reward\030\001 \003" +
+      "(\0132\".com.trans.pixel.protoc.RewardInfo\"4" +
+      "\n\030RequestDeleteMailCommand\022\014\n\004type\030\001 \002(\005" +
+      "\022\n\n\002id\030\002 \003(\005\")\n\027RequestAddFriendCommand\022" +
+      "\016\n\006userId\030\001 \002(\003\")\n\033RequestReceiveFriendC" +
+      "ommand\022\n\n\002id\030\001 \003(\005\"V\n ResponseGetUserFri" +
+      "endListCommand\0222\n\006friend\030\001 \003(\0132\".com.tra" +
+      "ns.pixel.protoc.UserFriend\"\223\017\n\016RequestCo" +
+      "mmand\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.pr" +
+      "otoc.HeadInfo\022G\n\017registerCommand\030\002 \001(\0132.",
+      ".com.trans.pixel.protoc.RequestRegisterC" +
+      "ommand\022A\n\014loginCommand\030\003 \001(\0132+.com.trans" +
+      ".pixel.protoc.RequestLoginCommand\022M\n\022lev" +
+      "elResultCommand\030\004 \001(\01321.com.trans.pixel." +
+      "protoc.RequestLevelResultCommand\022K\n\021upda" +
+      "teTeamCommand\030\005 \001(\01320.com.trans.pixel.pr" +
+      "otoc.RequestUpdateTeamCommand\022K\n\021levelSt" +
+      "artCommand\030\006 \001(\01320.com.trans.pixel.proto" +
+      "c.RequestLevelStartCommand\022S\n\025levelLootS" +
+      "tartCommand\030\007 \001(\01324.com.trans.pixel.prot",
+      "oc.RequestLevelLootStartCommand\022U\n\026level" +
+      "LootResultCommand\030\010 \001(\01325.com.trans.pixe" +
+      "l.protoc.RequestLevelLootResultCommand\022M" +
+      "\n\022heroLevelUpCommand\030\t \001(\01321.com.trans.p" +
+      "ixel.protoc.RequestHeroLevelUpCommand\022K\n" +
+      "\021lootResultCommand\030\n \001(\01320.com.trans.pix" +
+      "el.protoc.RequestLootResultCommand\022O\n\023ad" +
+      "dHeroEquipCommand\030\013 \001(\01322.com.trans.pixe" +
+      "l.protoc.RequestAddHeroEquipCommand\022S\n\025a" +
+      "ttackRelativeCommand\030\014 \001(\01324.com.trans.p",
+      "ixel.protoc.RequestAttackRelativeCommand" +
+      "\022[\n\031refreshRelatedUserCommand\030\r \001(\01328.co" +
+      "m.trans.pixel.protoc.RequestRefreshRelat" +
+      "edUserCommand\022M\n\022lotteryHeroCommand\030\016 \001(" +
+      "\01321.com.trans.pixel.protoc.RequestLotter" +
+      "yHeroCommand\022Y\n\030getLadderRankListCommand" +
+      "\030\017 \001(\01327.com.trans.pixel.protoc.RequestG" +
+      "etLadderRankListCommand\022a\n\034getUserLadder" +
+      "RankListCommand\030\020 \001(\0132;.com.trans.pixel." +
+      "protoc.RequestGetUserLadderRankListComma",
+      "nd\022W\n\027attackLadderModeCommand\030\021 \001(\01326.co" +
+      "m.trans.pixel.protoc.RequestAttackLadder" +
+      "ModeCommand\022U\n\026getUserMailListCommand\030\022 " +
+      "\001(\01325.com.trans.pixel.protoc.RequestGetU" +
+      "serMailListCommand\022G\n\017readMailCommand\030\023 " +
+      "\001(\0132..com.trans.pixel.protoc.RequestRead" +
+      "MailCommand\022K\n\021deleteMailCommand\030\024 \001(\01320" +
+      ".com.trans.pixel.protoc.RequestDeleteMai" +
+      "lCommand\022I\n\020addFriendCommand\030\025 \001(\0132/.com" +
+      ".trans.pixel.protoc.RequestAddFriendComm",
+      "and\022Q\n\024receiveFriendCommand\030\026 \001(\01323.com." +
+      "trans.pixel.protoc.RequestReceiveFriendC" +
+      "ommand\022O\n\023lotteryEquipCommand\030\027 \001(\01322.co" +
+      "m.trans.pixel.protoc.RequestLotteryEquip" +
+      "Command\022O\n\023equipLevelUpCommand\030\030 \001(\01322.c" +
+      "om.trans.pixel.protoc.RequestEquipLevelU" +
+      "pCommand\"\206\016\n\017ResponseCommand\022.\n\004head\030\001 \002" +
+      "(\0132 .com.trans.pixel.protoc.HeadInfo\022:\n\014" +
+      "errorCommand\030\002 \001(\0132$.com.trans.pixel.pro" +
+      "toc.ErrorCommand\022P\n\023needRegisterCommand\030",
+      "\003 \001(\01323.com.trans.pixel.protoc.ResponseN" +
+      "eedRegisterCommand\022H\n\017userInfoCommand\030\004 " +
+      "\001(\0132/.com.trans.pixel.protoc.ResponseUse" +
+      "rInfoCommand\022N\n\022levelResultCommand\030\006 \001(\013" +
+      "22.com.trans.pixel.protoc.ResponseLevelR" +
+      "esultCommand\022V\n\026levelLootResultCommand\030\007" +
+      " \001(\01326.com.trans.pixel.protoc.ResponseLe" +
+      "velLootResultCommand\022L\n\021heroResultComman" +
+      "d\030\010 \001(\01321.com.trans.pixel.protoc.Respons" +
+      "eHeroResultCommand\022L\n\021lootResultCommand\030",
+      "\t \001(\01321.com.trans.pixel.protoc.ResponseL" +
+      "ootResultCommand\022T\n\025attackRelativeComman" +
+      "d\030\n \001(\01325.com.trans.pixel.protoc.Respons" +
+      "eAttackRelativeCommand\022N\n\022getUserMineCom" +
+      "mand\030\013 \001(\01322.com.trans.pixel.protoc.Resp" +
+      "onseGetUserMineCommand\022\\\n\031refreshRelated" +
+      "UserCommand\030\014 \001(\01329.com.trans.pixel.prot" +
+      "oc.ResponseRefreshRelatedUserCommand\022N\n\022" +
+      "lotteryHeroCommand\030\r \001(\01322.com.trans.pix" +
+      "el.protoc.ResponseLotteryHeroCommand\022N\n\022",
+      "getUserHeroCommand\030\016 \001(\01322.com.trans.pix" +
+      "el.protoc.ResponseGetUserHeroCommand\022Z\n\030" +
+      "getLadderRankListCommand\030\017 \001(\01328.com.tra" +
+      "ns.pixel.protoc.ResponseGetLadderRankLis" +
+      "tCommand\022b\n\034getUserLadderRankListCommand" +
+      "\030\020 \001(\0132<.com.trans.pixel.protoc.Response" +
+      "GetUserLadderRankListCommand\022X\n\027attackLa" +
+      "dderModeCommand\030\021 \001(\01327.com.trans.pixel." +
+      "protoc.ResponseAttackLadderModeCommand\022V" +
+      "\n\026getUserMailListCommand\030\022 \001(\01326.com.tra",
+      "ns.pixel.protoc.ResponseGetUserMailListC" +
+      "ommand\022L\n\021sendRewardCommand\030\023 \001(\01321.com." +
+      "trans.pixel.protoc.ResponseSendRewardCom" +
+      "mand\022F\n\016messageCommand\030\024 \001(\0132..com.trans" +
+      ".pixel.protoc.ResponseMessageCommand\022Z\n\030" +
+      "getUserFriendListCommand\030\025 \001(\01328.com.tra" +
+      "ns.pixel.protoc.ResponseGetUserFriendLis" +
+      "tCommand\022P\n\023lotteryEquipCommand\030\026 \001(\01323." +
+      "com.trans.pixel.protoc.ResponseLotteryEq" +
+      "uipCommand\022M\n\020userEquipCommand\030\027 \001(\01323.c",
+      "om.trans.pixel.protoc.ResponseGetUserEqu" +
+      "ipCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -46621,7 +46615,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeroInfo_descriptor,
-              new java.lang.String[] { "InfoId", "Level", "StarLevel", "EquipLevel", "EquipInfo", "Skill", });
+              new java.lang.String[] { "InfoId", "Level", "StarLevel", "EquipInfo", "Skill", });
           internal_static_com_trans_pixel_protoc_UserHero_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_UserHero_fieldAccessorTable = new
