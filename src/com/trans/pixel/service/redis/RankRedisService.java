@@ -74,8 +74,10 @@ public class RankRedisService {
 					throws DataAccessException {
 				BoundZSetOperations<String, String> bzOps = redisTemplate
 						.boundZSetOps(buildRankRedisKey(serverId, type));
-				
-				return bzOps.reverseRank(userId) + 1;
+				if (bzOps.reverseRank("" + userId) != null)
+					return bzOps.reverseRank("" + userId) + 1;
+				else
+					return (long)10000;
 			}
 		});
 	}
