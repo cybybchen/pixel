@@ -27,7 +27,7 @@ public class AccountService {
     		try {
 	    		Object object = accountMapper.queryUserId(serverId, account);
 	    		if (object != null)
-	    			userId = (Integer)object;
+	    			userId = (Long)object;
 	    		} catch (Exception e) {
 	//				logger.error("get userId from register failed");
 			}
