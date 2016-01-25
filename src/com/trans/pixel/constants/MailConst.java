@@ -6,6 +6,7 @@ public class MailConst {
 	
 	public static final int TYPE_SYSTEM_MAIL = 0;
 	public static final int TYPE_ADDFRIEND_MAIL = 1;
+	public static final int TYPE_APPLY_UNION_MAIL = 2;
 	
-	public static final int[] MAIL_TYPES = {TYPE_SYSTEM_MAIL, TYPE_ADDFRIEND_MAIL};
+	public static final int[] MAIL_TYPES = {TYPE_SYSTEM_MAIL, TYPE_ADDFRIEND_MAIL, TYPE_APPLY_UNION_MAIL};
 }
