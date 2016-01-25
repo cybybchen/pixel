@@ -36,7 +36,7 @@ import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AccountService;
 import com.trans.pixel.service.UserService;
-
+//add import here
 
 public class HeadScreen extends RequestScreen {
 	
@@ -268,5 +268,5 @@ public class HeadScreen extends RequestScreen {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	//add handleCommand here
 }

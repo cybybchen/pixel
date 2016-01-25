@@ -45,6 +45,7 @@ import com.trans.pixel.service.command.LotteryHeroCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
+//add import here
 
 @Service
 public class GameDataScreen extends RequestScreen {
@@ -261,5 +262,6 @@ public class GameDataScreen extends RequestScreen {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	//add handleCommand here
 
 }

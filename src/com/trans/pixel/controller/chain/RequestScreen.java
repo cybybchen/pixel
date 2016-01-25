@@ -29,6 +29,7 @@ import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+//add import here
 
 
 public abstract class RequestScreen implements RequestHandle {
@@ -87,6 +88,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user);
 
 	protected abstract boolean handleCommand(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user);
+    //add handleCommand here
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
@@ -229,6 +231,7 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
+        //call handleCommand here
         
         return result;
 	}
