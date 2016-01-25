@@ -15,6 +15,7 @@ public class HeroInfoBean {
 	private int id = 0;
 	private int level = 1;
 	private int starLevel = 1;
+	private int rare = 1;
 	private String equipInfo = "0|0|0|0|0|0";
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 	public int getId() {
@@ -35,6 +36,12 @@ public class HeroInfoBean {
 	public void setStarLevel(int starLevel) {
 		this.starLevel = starLevel;
 	}
+	public int getRare() {
+		return rare;
+	}
+	public void setRare(int rare) {
+		this.rare = rare;
+	}
 	public String getEquipInfo() {
 		return equipInfo;
 	}
@@ -48,10 +55,9 @@ public class HeroInfoBean {
 		this.skillInfoList = skillInfoList;
 	}
 	
-//	public void levelUpEquip() {
-//		equipLevel++;
-//		equipInfo = 0;
-//	}
+	public void levelUpRare() {
+		rare++;
+	}
 	
 	public int getEquipIdByArmId(int armId) {
 		String[] equipIds = equipInfo.split(EQUIP_SPLIT);
@@ -67,6 +73,10 @@ public class HeroInfoBean {
 			equipIds[armId] = "" + equipId;
 			composeEquipInfo(equipIds);
 		}
+	}
+	
+	public String[] getEquipIds() {
+		return equipInfo.split(EQUIP_SPLIT);
 	}
 	
 	private void composeEquipInfo(String[] equipIds) {
@@ -122,6 +132,7 @@ public class HeroInfoBean {
 		builder.setEquipInfo(equipInfo);
 		builder.setInfoId(id);
 		builder.setLevel(level);
+		builder.setRare(rare);
 		builder.setStarLevel(starLevel);
 		builder.addAllSkill(buildSkillList());
 		

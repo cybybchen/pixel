@@ -20,6 +20,7 @@ public class HeroLevelUpService {
 	
 	private static final int TYPE_HEROLEVEL = 1;
 	private static final int TYPE_STARLEVEL = 2;
+	private static final int TYPE_RARELEVEL = 3;
 	
 	private static final int HERO_MAX_LEVEL = 60;
 	
@@ -36,6 +37,8 @@ public class HeroLevelUpService {
 	private EquipService equipService;
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private HeroRareService heroRareService;
 	
 	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
@@ -45,6 +48,9 @@ public class HeroLevelUpService {
 				break;
 			case TYPE_STARLEVEL:
 				result = levelUpStar(user, heroInfo);
+				break;
+			case TYPE_RARELEVEL:
+				result = levelUpRare(user, heroInfo);
 				break;
 			default:
 				break;
@@ -112,6 +118,18 @@ public class HeroLevelUpService {
 	
 	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo) {
 		return SuccessConst.STAR_LEVELUP_SUCCESS;
+	}
+	
+	private ResultConst levelUpRare(UserBean user, HeroInfoBean heroInfo) {
+		int heroEquipLevel = equipService.calHeroEquipLevel(heroInfo);
+		int needLevel = heroRareService.getRare(heroInfo.getRare() + 1);
+		if (needLevel == 0 || needLevel > heroEquipLevel) {
+			return ErrorConst.LEVELUP_RARE_ERROR;
+		}
+		
+		heroInfo.levelUpRare();
+		
+		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}
 	
 //	private ResultConst levelUpEquip(UserBean user, HeroInfoBean heroInfo) {

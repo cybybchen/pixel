@@ -9,7 +9,8 @@ public enum SuccessConst implements ResultConst {
             "人物装备添加成功"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), EXP_NOT_ENGHOU(1006, "升级所需经验不足"),
             PVP_ATTACK_SUCCESS(1007, "挑战胜利"), PVP_ATTACK_FAIL(1008, "挑战失败"), LADDER_ATTACK_SUCCESS(1009, "天梯挑战胜利"), LADDER_ATTACK_FAIL(1010, "天梯挑战失败"),
             MAIL_READ_SUCCESS(1011, "邮件读取成功"), MAIL_DELETE_SUCCESS(1012, "邮件删除成功"), FRIEND_ADDED_SUCCESS(1013, "好友添加成功"), 
-            FRIEND_ADDED_FAILED(1014, "好友添加失败"), SEND_FRIEND_ADDED_SUCCESS(1015, "好友添加请求发送成功"), EQUIP_LEVELUP_SUCCESS(1016, "装备升级成功");
+            FRIEND_ADDED_FAILED(1014, "好友添加失败"), SEND_FRIEND_ADDED_SUCCESS(1015, "好友添加请求发送成功"), EQUIP_LEVELUP_SUCCESS(1016, "装备升级成功"),
+            LEVELUP_RARE_SUCCESS(1017, "升阶成功");
 
     private final int code;
 
