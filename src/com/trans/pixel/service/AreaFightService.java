@@ -7,10 +7,12 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.googlecode.protobuf.format.JsonFormat;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMonster;
+import com.trans.pixel.protoc.Commands.AreaResource;
+import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.service.redis.AreaRedisService;
 
 /**
@@ -29,25 +31,33 @@ public class AreaFightService {
 
 	public boolean AttackMonster(UserBean user, int id){
 		AreaMonster.Builder builder = AreaMonster.newBuilder();
-//		builder.mergeFrom(AreaRedisService.buildAreaMonster(id));
-		AreaInfo.Builder areabuilder = AreaInfo.newBuilder();
-		areabuilder.mergeFrom(redis.getArea(id));
-		builder.mergeFrom(areabuilder.getMonsters(0));
+		builder.mergeFrom(redis.getMonster(id));
 		builder.setLevel(builder.getLevel()+1);
-		areabuilder.setMonsters(0, builder);
-		redis.saveArea(id,JsonFormat.printToString(areabuilder.build()));
+		redis.saveMonster(builder.build());
 		return true;
 	}
 	
 	public boolean AttackBoss(UserBean user, int id){
+		AreaBoss.Builder builder = AreaBoss.newBuilder();
+		builder.mergeFrom(redis.getBoss(id));
+		builder.setOwner(user.account);
+		redis.saveBoss(builder.build());
 		return true;
 	}
 	
 	public boolean AttackResource(UserBean user, int id){
+		AreaResource.Builder builder = AreaResource.newBuilder();
+		builder.mergeFrom(redis.getResource(id));
+		builder.setOwner(user.account);
+		redis.saveResource(builder.build());
 		return true;
 	}
 	
 	public boolean AttackResourceMine(UserBean user, int id){
+		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
+		builder.mergeFrom(redis.getResourceMine(id));
+		builder.setOwner(user.account);
+		redis.saveResourceMine(builder.build());
 		return true;
 	}
 }

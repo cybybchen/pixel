@@ -3,7 +3,6 @@ package com.trans.pixel.service.redis;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
@@ -11,13 +10,10 @@ import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
-import com.googlecode.protobuf.format.JsonFormat;
-import com.googlecode.protobuf.format.JsonFormat.ParseException;
-import com.trans.pixel.constants.RedisExpiredConst;
+
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMonster;
@@ -60,14 +56,12 @@ public class AreaRedisService extends RedisService{
 						.boundHashOps(AREARESOURCEMINE);
 				AreaInfo area;
 				String value = areaOps.get(id+"");
-				if(value != null){
-					AreaInfo.Builder builder = AreaInfo.newBuilder();
-					parseJson(value, builder);
-					area =  builder.build();
+				AreaInfo.Builder areabuilder = AreaInfo.newBuilder();
+				if(value != null && parseJson(value, areabuilder)){
+					area =  areabuilder.build();
 				}else{
-					//debug only
 					area = buildArea(id);
-					saveArea(id, JsonFormat.printToString(area));
+					saveArea(area);
 				}
 				//更新世界BOSS
 				Map<String, String> bossMap = bossOps.entries();
@@ -75,77 +69,127 @@ public class AreaRedisService extends RedisService{
 					List<AreaBoss> bosses = area.getBossesList();
 					for (AreaBoss boss : bosses) {
 						value = bossMap.get(boss.getId()+"");
-						if(value != null){
-							AreaBoss.Builder builder = AreaBoss.newBuilder();
-							try {
-								JsonFormat.merge(value, builder);
-							} catch (ParseException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+						AreaBoss.Builder builder = AreaBoss.newBuilder();
+						if(value != null && parseJson(value, builder)){
 							boss = builder.build();
 						}else{
 							boss = buildAreaBoss(boss.getId());
-							saveBoss(boss.getId(), formatJson(boss));
+							saveBoss(boss);
 						}
 					}
 				}
-//					//更新区域怪物
-//					if (monsterOps != null) {
-//						List<AreaMonster> monsters = area.getMonstersList();
-//						Map<String, String> monsterMap = monsterOps.entries();
-//						for (AreaMonster monster : monsters) {
-//							monster = AreaMonster.parseFrom(monsterMap.get(monster.getId()+""));
-//						}
-//					}
-//					//更新资源开采点
-//					//更新资源点
-//					if (resourceOps != null) {
-//						List<AreaResource> resources = area.getResourcesList();
-//						Map<String, String> resourceMap = resourceOps.entries();
-//						Map<String, String> resourcemineMap = resourcemineOps.entries();
-//						for (AreaResource resource : resources) {
-//							resource = AreaResource.parseFrom(resourceMap.get(resource.getId()+""));
-//							for(AreaResourceMine mine : resource.getMinesList()){
-//								mine = AreaResourceMine.parseFrom(resourcemineMap.get(mine.getId()+""));
-//							}
-//						}
-//					}
+				//更新区域怪物
+				Map<String, String> monsterMap = monsterOps.entries();
+				if (monsterMap != null) {
+					List<AreaMonster> monsters = area.getMonstersList();
+					for (AreaMonster monster : monsters) {
+						value = monsterMap.get(monster.getId()+"");
+						AreaMonster.Builder builder = AreaMonster.newBuilder();
+						if(value != null && parseJson(value, builder)){
+							monster = builder.build();
+						}else{
+							monster = buildAreaMonster(monster.getId());
+							saveMonster(monster);
+						}
+					}
+				}
+				//更新资源开采点
+				//更新资源点
+				Map<String, String> resourceMap = resourceOps.entries();
+				Map<String, String> mineMap = resourcemineOps.entries();
+				if (resourceMap != null)
+				for (AreaResource resource : area.getResourcesList()) {
+					value = resourceMap.get(resource.getId()+"");
+					AreaResource.Builder builder = AreaResource.newBuilder();
+					if(value != null && parseJson(value, builder)){
+						resource = builder.build();
+					}else{
+						resource = buildAreaResource(resource.getId());
+						saveResource(resource);
+					}
+					if(mineMap != null)
+					for(AreaResourceMine mine : resource.getMinesList()){
+						value = mineMap.get(mine.getId()+"");
+						AreaResourceMine.Builder minebuilder = AreaResourceMine.newBuilder();
+						if(value != null && parseJson(value, minebuilder)){
+							mine = minebuilder.build();
+						}else{
+							mine = buildAreaResourceMine(mine.getId());
+							saveResourceMine(mine);
+						}
+					}
+				}
 				return area;
 			}
 		});
 	}
 	
-	public void saveArea(final int id, final String value) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> areaOps = redisTemplate
-						.boundHashOps(AREA);
-				
-				areaOps.put(id+"", value);
-				areaOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				
-				return null;
-			}
-		});
+	public void saveArea(AreaInfo area) {
+		this.hput(AREA, area.getId()+"", formatJson(area));
 	}
 	
-	public void saveBoss(final int id, final String value) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> areaOps = redisTemplate
-						.boundHashOps(AREABOSS);
-				
-				areaOps.put(id+"", value);
-				areaOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				
-				return null;
-			}
-		});
+	public AreaBoss getBoss(int id){
+		String value = this.hget(AREABOSS, id+"");
+		AreaBoss.Builder builder = AreaBoss.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			AreaBoss boss = buildAreaBoss(id);
+			saveBoss(boss);
+			return boss;
+		}
+	}
+	
+	public void saveBoss(AreaBoss boss) {
+		this.hput(AREABOSS, boss.getId()+"", formatJson(boss));
+	}
+	
+	public AreaMonster getMonster(int id){
+		String value = this.hget(AREAMONSTER, id+"");
+		AreaMonster.Builder builder = AreaMonster.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			AreaMonster monster = buildAreaMonster(id);
+			saveMonster(monster);
+			return monster;
+		}
+	}
+
+	public void saveMonster(AreaMonster monster) {
+		this.hput(AREAMONSTER, monster.getId()+"", formatJson(monster));
+	}
+	
+	public AreaResource getResource(int id){
+		String value = this.hget(AREARESOURCE, id+"");
+		AreaResource.Builder builder = AreaResource.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			AreaResource resource = buildAreaResource(id);
+			saveResource(resource);
+			return resource;
+		}
+	}
+
+	public void saveResource(AreaResource resource) {
+		this.hput(AREARESOURCE, resource.getId()+"", formatJson(resource));
+	}
+	
+	public AreaResourceMine getResourceMine(int id){
+		String value = this.hget(AREARESOURCEMINE, id+"");
+		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			AreaResourceMine resourcemine = buildAreaResourceMine(id);
+			saveResourceMine(resourcemine);
+			return resourcemine;
+		}
+	}
+
+	public void saveResourceMine(AreaResourceMine mine) {
+		this.hput(AREARESOURCEMINE, mine.getId()+"", formatJson(mine));
 	}
 	
 	//debug only
