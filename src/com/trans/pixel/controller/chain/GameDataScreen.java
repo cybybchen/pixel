@@ -166,6 +166,35 @@ public class GameDataScreen extends RequestScreen {
 		return true;
 	}
 
+	@Override
+	protected boolean handleCommand(RequestGetLadderRankListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderCommandService.handleGetLadderRankListCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackLadderModeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderCommandService.attackLadderMode(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetUserMailListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mailCommandService.handleGetUserMailListCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestReadMailCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mailCommandService.handleReadMailCommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
 	protected boolean handleCommand(RequestDeleteMailCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		mailCommandService.handleDeleteMailCommand(cmd, responseBuilder, user);
@@ -194,73 +223,45 @@ public class GameDataScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestGetLadderRankListCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestAttackLadderModeCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestGetUserMailListCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestReadMailCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
 	protected boolean handleCommand(RequestEquipLevelUpCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
+		heroLevelUpCommandService.equipLevelup(cmd, responseBuilder, user);
 		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAreaCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
+		areaCommandService.Area(responseBuilder, user);
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackBossCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
+		areaCommandService.AttackBoss(cmd, responseBuilder, user);
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackMonsterCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
+		areaCommandService.AttackMonster(cmd, responseBuilder, user);
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackResourceCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
+		areaCommandService.AttackResource(cmd, responseBuilder, user);
+		return false;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackResourceMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
+		areaCommandService.AttackResourceMine(cmd, responseBuilder, user);
+		return false;
 	}
 	//add handleCommand here
 

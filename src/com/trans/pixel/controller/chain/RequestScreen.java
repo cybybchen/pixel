@@ -205,7 +205,9 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasEquipLevelUpCommand()) {
         	RequestEquipLevelUpCommand cmd = request.getEquipLevelUpCommand();
-	}
+        	if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
         if (request.hasAreaCommand()) {
         	RequestAreaCommand cmd = request.getAreaCommand();
             if (result)
