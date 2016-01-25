@@ -197,70 +197,70 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestGetLadderRankListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackLadderModeCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestGetUserMailListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestReadMailCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestEquipLevelUpCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAreaCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackBossCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackMonsterCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackResourceCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackResourceMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	//add handleCommand here
 
