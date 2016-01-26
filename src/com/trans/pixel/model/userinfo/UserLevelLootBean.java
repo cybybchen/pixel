@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.protoc.Commands.UserLootLevel;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserLevelLootBean {
@@ -114,6 +115,17 @@ public class UserLevelLootBean {
 		}
 		lootRewardRecord = "";
 		return rewardRecordList;
+	}
+	
+	public UserLootLevel buildUserLootLevel() {
+		UserLootLevel.Builder builder = UserLootLevel.newBuilder();
+		builder.setLevelLootStartTime(levelLootStartTime);
+		builder.setLootLevel(lootLevel);
+		builder.setLootRewardRecord(lootRewardRecord);
+		builder.setLootTime(lootTime);
+		builder.setPackageCount(packageCount);
+		
+		return builder.build();
 	}
 	
 	private static final String ID = "id";

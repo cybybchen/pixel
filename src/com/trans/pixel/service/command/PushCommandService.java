@@ -13,6 +13,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -21,6 +23,8 @@ import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
@@ -28,6 +32,8 @@ import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeroService;
+import com.trans.pixel.service.UserLevelLootService;
+import com.trans.pixel.service.UserLevelService;
 
 @Service
 public class PushCommandService extends BaseCommandService {
@@ -46,6 +52,10 @@ public class PushCommandService extends BaseCommandService {
 	private MailService mailService;
 	@Resource
 	private UserFriendService userFriendService;
+	@Resource
+	private UserLevelService userLevelService;
+	@Resource
+	private UserLevelLootService userLevelLootService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -97,5 +107,19 @@ public class PushCommandService extends BaseCommandService {
 		List<UserFriendBean> userFriendList = userFriendService.getUserFriendList(user.getId());
 		builder.addAllFriend(super.buildUserFriendList(userFriendList));
 		responseBuilder.setGetUserFriendListCommand(builder.build());
+	}
+	
+	public void pushUserLevelCommand(Builder responseBuilder, UserBean user) {
+		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
+		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+		builder.setUserLevel(userLevel.buildUserLevel());
+		responseBuilder.setUserLevelCommand(builder.build());
+	}
+	
+	public void pushUserLootLevelCommand(Builder responseBuilder, UserBean user) {
+		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
+		UserLevelLootBean userLevelLoot = userLevelLootService.selectUserLevelLootRecord(user.getId());
+		builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
+		responseBuilder.setUserLootLevelCommand(builder.build());
 	}
 }

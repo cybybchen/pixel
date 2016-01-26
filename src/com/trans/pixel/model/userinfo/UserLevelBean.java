@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.json.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.sf.json.JSONObject;
-
 import com.trans.pixel.model.XiaoguanBean;
-import com.trans.pixel.service.LevelService;
+import com.trans.pixel.protoc.Commands.UserFriend;
+import com.trans.pixel.protoc.Commands.UserLevel;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserLevelBean {
@@ -111,6 +112,16 @@ public class UserLevelBean {
 		levelRecord.setDiyuLevel(levelRecordMap.get(DIYU_LEVEL));
 
 		return levelRecord;
+	}
+	
+	public UserLevel buildUserLevel() {
+		UserLevel.Builder builder = UserLevel.newBuilder();
+		builder.setDiyuLevel(diyuLevel);
+		builder.setKunnanLevel(kunnanLevel);
+		builder.setLastLevelResultTime(lastLevelResultTime);
+		builder.setPutongLevel(putongLevel);
+		
+		return builder.build();
 	}
 	
 	private static final String ID = "id";

@@ -64,6 +64,21 @@ message UserMine {
 	optional int32 level = 5;
 }
 
+message UserLevel {
+	required int32 lastLevelResultTime = 1; //上次关卡过关时间
+	required int32 putongLevel = 2;
+	required string kunnanLevel = 3;
+	required string diyuLevel = 4;
+}
+
+message UserLootLevel {
+	required int32 packageCount = 1; //背包大小
+	required int32 lootLevel = 2;    //当前挂机的关卡
+	required int32 levelLootStartTime = 3; //挂机开始时间
+	required string lootTime = 4;    //挂机时间记录
+	required string lootRewardRecord = 5; //领奖记录
+}
+
 message AreaResourceMine {//区域资源开采点
 	required int32 id = 1;//开采点ID
 	optional int32 resourceId = 2;//资源点ID
@@ -381,6 +396,14 @@ message RequestAttackResourceMineCommand {
 	required int32 id = 1;
 }
 
+message ResponseUserLevelCommand {
+	required UserLevel userLevel = 1;
+}
+
+message ResponseUserLootLevelCommand {
+	required UserLootLevel userLootLevel = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -438,6 +461,8 @@ message ResponseCommand {
 	optional ResponseLotteryEquipCommand lotteryEquipCommand = 22;
 	optional ResponseGetUserEquipCommand userEquipCommand = 23;
 	optional ResponseAreaCommand areaCommand = 24;
+	optional ResponseUserLevelCommand userLevelCommand = 25;
+	optional ResponseUserLootLevelCommand userLootLevelCommand = 26;
 }
 
 
