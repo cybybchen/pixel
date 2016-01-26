@@ -16436,27 +16436,54 @@ public final class Commands {
      */
     int getId();
 
-    // required int32 score = 2;
+    // required string name = 2;
     /**
-     * <code>required int32 score = 2;</code>
+     * <code>required string name = 2;</code>
      *
      * <pre>
      *开放所需战力
      * </pre>
      */
-    boolean hasScore();
+    boolean hasName();
     /**
-     * <code>required int32 score = 2;</code>
+     * <code>required string name = 2;</code>
      *
      * <pre>
      *开放所需战力
      * </pre>
      */
-    int getScore();
+    java.lang.String getName();
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *开放所需战力
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
 
-    // repeated .com.trans.pixel.protoc.AreaResource resources = 3;
+    // required int32 zhanli = 3;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>required int32 zhanli = 3;</code>
+     *
+     * <pre>
+     *开放所需战力
+     * </pre>
+     */
+    boolean hasZhanli();
+    /**
+     * <code>required int32 zhanli = 3;</code>
+     *
+     * <pre>
+     *开放所需战力
+     * </pre>
+     */
+    int getZhanli();
+
+    // repeated .com.trans.pixel.protoc.AreaResource resources = 4;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16465,7 +16492,7 @@ public final class Commands {
     java.util.List<com.trans.pixel.protoc.Commands.AreaResource> 
         getResourcesList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16473,7 +16500,7 @@ public final class Commands {
      */
     com.trans.pixel.protoc.Commands.AreaResource getResources(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16481,7 +16508,7 @@ public final class Commands {
      */
     int getResourcesCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16490,7 +16517,7 @@ public final class Commands {
     java.util.List<? extends com.trans.pixel.protoc.Commands.AreaResourceOrBuilder> 
         getResourcesOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16499,9 +16526,9 @@ public final class Commands {
     com.trans.pixel.protoc.Commands.AreaResourceOrBuilder getResourcesOrBuilder(
         int index);
 
-    // repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;
+    // repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16510,7 +16537,7 @@ public final class Commands {
     java.util.List<com.trans.pixel.protoc.Commands.AreaBoss> 
         getBossesList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16518,7 +16545,7 @@ public final class Commands {
      */
     com.trans.pixel.protoc.Commands.AreaBoss getBosses(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16526,7 +16553,7 @@ public final class Commands {
      */
     int getBossesCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16535,7 +16562,7 @@ public final class Commands {
     java.util.List<? extends com.trans.pixel.protoc.Commands.AreaBossOrBuilder> 
         getBossesOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16544,9 +16571,9 @@ public final class Commands {
     com.trans.pixel.protoc.Commands.AreaBossOrBuilder getBossesOrBuilder(
         int index);
 
-    // repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;
+    // repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16555,7 +16582,7 @@ public final class Commands {
     java.util.List<com.trans.pixel.protoc.Commands.AreaMonster> 
         getMonstersList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16563,7 +16590,7 @@ public final class Commands {
      */
     com.trans.pixel.protoc.Commands.AreaMonster getMonsters(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16571,7 +16598,7 @@ public final class Commands {
      */
     int getMonstersCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16580,7 +16607,7 @@ public final class Commands {
     java.util.List<? extends com.trans.pixel.protoc.Commands.AreaMonsterOrBuilder> 
         getMonstersOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16649,31 +16676,36 @@ public final class Commands {
               id_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              score_ = input.readInt32();
+              name_ = input.readBytes();
               break;
             }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                resources_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaResource>();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              resources_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaResource.PARSER, extensionRegistry));
+            case 24: {
+              bitField0_ |= 0x00000004;
+              zhanli_ = input.readInt32();
               break;
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                bosses_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaBoss>();
+                resources_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaResource>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              bosses_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaBoss.PARSER, extensionRegistry));
+              resources_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaResource.PARSER, extensionRegistry));
               break;
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                monsters_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaMonster>();
+                bosses_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaBoss>();
                 mutable_bitField0_ |= 0x00000010;
+              }
+              bosses_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaBoss.PARSER, extensionRegistry));
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                monsters_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaMonster>();
+                mutable_bitField0_ |= 0x00000020;
               }
               monsters_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaMonster.PARSER, extensionRegistry));
               break;
@@ -16686,13 +16718,13 @@ public final class Commands {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           resources_ = java.util.Collections.unmodifiableList(resources_);
         }
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           bosses_ = java.util.Collections.unmodifiableList(bosses_);
         }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           monsters_ = java.util.Collections.unmodifiableList(monsters_);
         }
         this.unknownFields = unknownFields.build();
@@ -16751,35 +16783,90 @@ public final class Commands {
       return id_;
     }
 
-    // required int32 score = 2;
-    public static final int SCORE_FIELD_NUMBER = 2;
-    private int score_;
+    // required string name = 2;
+    public static final int NAME_FIELD_NUMBER = 2;
+    private java.lang.Object name_;
     /**
-     * <code>required int32 score = 2;</code>
+     * <code>required string name = 2;</code>
      *
      * <pre>
      *开放所需战力
      * </pre>
      */
-    public boolean hasScore() {
+    public boolean hasName() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 score = 2;</code>
+     * <code>required string name = 2;</code>
      *
      * <pre>
      *开放所需战力
      * </pre>
      */
-    public int getScore() {
-      return score_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *开放所需战力
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    // repeated .com.trans.pixel.protoc.AreaResource resources = 3;
-    public static final int RESOURCES_FIELD_NUMBER = 3;
+    // required int32 zhanli = 3;
+    public static final int ZHANLI_FIELD_NUMBER = 3;
+    private int zhanli_;
+    /**
+     * <code>required int32 zhanli = 3;</code>
+     *
+     * <pre>
+     *开放所需战力
+     * </pre>
+     */
+    public boolean hasZhanli() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 zhanli = 3;</code>
+     *
+     * <pre>
+     *开放所需战力
+     * </pre>
+     */
+    public int getZhanli() {
+      return zhanli_;
+    }
+
+    // repeated .com.trans.pixel.protoc.AreaResource resources = 4;
+    public static final int RESOURCES_FIELD_NUMBER = 4;
     private java.util.List<com.trans.pixel.protoc.Commands.AreaResource> resources_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16789,7 +16876,7 @@ public final class Commands {
       return resources_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16800,7 +16887,7 @@ public final class Commands {
       return resources_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16810,7 +16897,7 @@ public final class Commands {
       return resources_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16820,7 +16907,7 @@ public final class Commands {
       return resources_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
      *
      * <pre>
      *区域资源点
@@ -16831,11 +16918,11 @@ public final class Commands {
       return resources_.get(index);
     }
 
-    // repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;
-    public static final int BOSSES_FIELD_NUMBER = 4;
+    // repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;
+    public static final int BOSSES_FIELD_NUMBER = 5;
     private java.util.List<com.trans.pixel.protoc.Commands.AreaBoss> bosses_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16845,7 +16932,7 @@ public final class Commands {
       return bosses_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16856,7 +16943,7 @@ public final class Commands {
       return bosses_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16866,7 +16953,7 @@ public final class Commands {
       return bosses_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16876,7 +16963,7 @@ public final class Commands {
       return bosses_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
      *
      * <pre>
      *区域BOSS
@@ -16887,11 +16974,11 @@ public final class Commands {
       return bosses_.get(index);
     }
 
-    // repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;
-    public static final int MONSTERS_FIELD_NUMBER = 5;
+    // repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;
+    public static final int MONSTERS_FIELD_NUMBER = 6;
     private java.util.List<com.trans.pixel.protoc.Commands.AreaMonster> monsters_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16901,7 +16988,7 @@ public final class Commands {
       return monsters_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16912,7 +16999,7 @@ public final class Commands {
       return monsters_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16922,7 +17009,7 @@ public final class Commands {
       return monsters_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16932,7 +17019,7 @@ public final class Commands {
       return monsters_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
      *
      * <pre>
      *区域怪物
@@ -16945,7 +17032,8 @@ public final class Commands {
 
     private void initFields() {
       id_ = 0;
-      score_ = 0;
+      name_ = "";
+      zhanli_ = 0;
       resources_ = java.util.Collections.emptyList();
       bosses_ = java.util.Collections.emptyList();
       monsters_ = java.util.Collections.emptyList();
@@ -16959,7 +17047,11 @@ public final class Commands {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasScore()) {
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasZhanli()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -16992,16 +17084,19 @@ public final class Commands {
         output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, score_);
+        output.writeBytes(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, zhanli_);
       }
       for (int i = 0; i < resources_.size(); i++) {
-        output.writeMessage(3, resources_.get(i));
+        output.writeMessage(4, resources_.get(i));
       }
       for (int i = 0; i < bosses_.size(); i++) {
-        output.writeMessage(4, bosses_.get(i));
+        output.writeMessage(5, bosses_.get(i));
       }
       for (int i = 0; i < monsters_.size(); i++) {
-        output.writeMessage(5, monsters_.get(i));
+        output.writeMessage(6, monsters_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -17018,19 +17113,23 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, score_);
+          .computeBytesSize(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, zhanli_);
       }
       for (int i = 0; i < resources_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, resources_.get(i));
+          .computeMessageSize(4, resources_.get(i));
       }
       for (int i = 0; i < bosses_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, bosses_.get(i));
+          .computeMessageSize(5, bosses_.get(i));
       }
       for (int i = 0; i < monsters_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, monsters_.get(i));
+          .computeMessageSize(6, monsters_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -17157,23 +17256,25 @@ public final class Commands {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        score_ = 0;
+        name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        zhanli_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (resourcesBuilder_ == null) {
           resources_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           resourcesBuilder_.clear();
         }
         if (bossesBuilder_ == null) {
           bosses_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           bossesBuilder_.clear();
         }
         if (monstersBuilder_ == null) {
           monsters_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           monstersBuilder_.clear();
         }
@@ -17212,29 +17313,33 @@ public final class Commands {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.score_ = score_;
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.zhanli_ = zhanli_;
         if (resourcesBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             resources_ = java.util.Collections.unmodifiableList(resources_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.resources_ = resources_;
         } else {
           result.resources_ = resourcesBuilder_.build();
         }
         if (bossesBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             bosses_ = java.util.Collections.unmodifiableList(bosses_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.bosses_ = bosses_;
         } else {
           result.bosses_ = bossesBuilder_.build();
         }
         if (monstersBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
             monsters_ = java.util.Collections.unmodifiableList(monsters_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000020);
           }
           result.monsters_ = monsters_;
         } else {
@@ -17259,14 +17364,19 @@ public final class Commands {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasScore()) {
-          setScore(other.getScore());
+        if (other.hasName()) {
+          bitField0_ |= 0x00000002;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasZhanli()) {
+          setZhanli(other.getZhanli());
         }
         if (resourcesBuilder_ == null) {
           if (!other.resources_.isEmpty()) {
             if (resources_.isEmpty()) {
               resources_ = other.resources_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureResourcesIsMutable();
               resources_.addAll(other.resources_);
@@ -17279,7 +17389,7 @@ public final class Commands {
               resourcesBuilder_.dispose();
               resourcesBuilder_ = null;
               resources_ = other.resources_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
               resourcesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getResourcesFieldBuilder() : null;
@@ -17292,7 +17402,7 @@ public final class Commands {
           if (!other.bosses_.isEmpty()) {
             if (bosses_.isEmpty()) {
               bosses_ = other.bosses_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureBossesIsMutable();
               bosses_.addAll(other.bosses_);
@@ -17305,7 +17415,7 @@ public final class Commands {
               bossesBuilder_.dispose();
               bossesBuilder_ = null;
               bosses_ = other.bosses_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
               bossesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getBossesFieldBuilder() : null;
@@ -17318,7 +17428,7 @@ public final class Commands {
           if (!other.monsters_.isEmpty()) {
             if (monsters_.isEmpty()) {
               monsters_ = other.monsters_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
             } else {
               ensureMonstersIsMutable();
               monsters_.addAll(other.monsters_);
@@ -17331,7 +17441,7 @@ public final class Commands {
               monstersBuilder_.dispose();
               monstersBuilder_ = null;
               monsters_ = other.monsters_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
               monstersBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getMonstersFieldBuilder() : null;
@@ -17349,7 +17459,11 @@ public final class Commands {
           
           return false;
         }
-        if (!hasScore()) {
+        if (!hasName()) {
+          
+          return false;
+        }
+        if (!hasZhanli()) {
           
           return false;
         }
@@ -17442,62 +17556,160 @@ public final class Commands {
         return this;
       }
 
-      // required int32 score = 2;
-      private int score_ ;
+      // required string name = 2;
+      private java.lang.Object name_ = "";
       /**
-       * <code>required int32 score = 2;</code>
+       * <code>required string name = 2;</code>
        *
        * <pre>
        *开放所需战力
        * </pre>
        */
-      public boolean hasScore() {
+      public boolean hasName() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 score = 2;</code>
+       * <code>required string name = 2;</code>
        *
        * <pre>
        *开放所需战力
        * </pre>
        */
-      public int getScore() {
-        return score_;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 score = 2;</code>
+       * <code>required string name = 2;</code>
        *
        * <pre>
        *开放所需战力
        * </pre>
        */
-      public Builder setScore(int value) {
-        bitField0_ |= 0x00000002;
-        score_ = value;
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *开放所需战力
+       * </pre>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 score = 2;</code>
+       * <code>required string name = 2;</code>
        *
        * <pre>
        *开放所需战力
        * </pre>
        */
-      public Builder clearScore() {
+      public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        score_ = 0;
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *开放所需战力
+       * </pre>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
         onChanged();
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.AreaResource resources = 3;
+      // required int32 zhanli = 3;
+      private int zhanli_ ;
+      /**
+       * <code>required int32 zhanli = 3;</code>
+       *
+       * <pre>
+       *开放所需战力
+       * </pre>
+       */
+      public boolean hasZhanli() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 zhanli = 3;</code>
+       *
+       * <pre>
+       *开放所需战力
+       * </pre>
+       */
+      public int getZhanli() {
+        return zhanli_;
+      }
+      /**
+       * <code>required int32 zhanli = 3;</code>
+       *
+       * <pre>
+       *开放所需战力
+       * </pre>
+       */
+      public Builder setZhanli(int value) {
+        bitField0_ |= 0x00000004;
+        zhanli_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 zhanli = 3;</code>
+       *
+       * <pre>
+       *开放所需战力
+       * </pre>
+       */
+      public Builder clearZhanli() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        zhanli_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.AreaResource resources = 4;
       private java.util.List<com.trans.pixel.protoc.Commands.AreaResource> resources_ =
         java.util.Collections.emptyList();
       private void ensureResourcesIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           resources_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaResource>(resources_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -17505,7 +17717,7 @@ public final class Commands {
           com.trans.pixel.protoc.Commands.AreaResource, com.trans.pixel.protoc.Commands.AreaResource.Builder, com.trans.pixel.protoc.Commands.AreaResourceOrBuilder> resourcesBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17519,7 +17731,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17533,7 +17745,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17547,7 +17759,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17568,7 +17780,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17586,7 +17798,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17606,7 +17818,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17627,7 +17839,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17645,7 +17857,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17663,7 +17875,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17681,7 +17893,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17690,7 +17902,7 @@ public final class Commands {
       public Builder clearResources() {
         if (resourcesBuilder_ == null) {
           resources_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           resourcesBuilder_.clear();
@@ -17698,7 +17910,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17715,7 +17927,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17726,7 +17938,7 @@ public final class Commands {
         return getResourcesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17740,7 +17952,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17755,7 +17967,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17766,7 +17978,7 @@ public final class Commands {
             com.trans.pixel.protoc.Commands.AreaResource.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17778,7 +17990,7 @@ public final class Commands {
             index, com.trans.pixel.protoc.Commands.AreaResource.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaResource resources = 4;</code>
        *
        * <pre>
        *区域资源点
@@ -17795,7 +18007,7 @@ public final class Commands {
           resourcesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.AreaResource, com.trans.pixel.protoc.Commands.AreaResource.Builder, com.trans.pixel.protoc.Commands.AreaResourceOrBuilder>(
                   resources_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           resources_ = null;
@@ -17803,13 +18015,13 @@ public final class Commands {
         return resourcesBuilder_;
       }
 
-      // repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;
+      // repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;
       private java.util.List<com.trans.pixel.protoc.Commands.AreaBoss> bosses_ =
         java.util.Collections.emptyList();
       private void ensureBossesIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           bosses_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaBoss>(bosses_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -17817,7 +18029,7 @@ public final class Commands {
           com.trans.pixel.protoc.Commands.AreaBoss, com.trans.pixel.protoc.Commands.AreaBoss.Builder, com.trans.pixel.protoc.Commands.AreaBossOrBuilder> bossesBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17831,7 +18043,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17845,7 +18057,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17859,7 +18071,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17880,7 +18092,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17898,7 +18110,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17918,7 +18130,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17939,7 +18151,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17957,7 +18169,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17975,7 +18187,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -17993,7 +18205,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18002,7 +18214,7 @@ public final class Commands {
       public Builder clearBosses() {
         if (bossesBuilder_ == null) {
           bosses_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           bossesBuilder_.clear();
@@ -18010,7 +18222,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18027,7 +18239,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18038,7 +18250,7 @@ public final class Commands {
         return getBossesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18052,7 +18264,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18067,7 +18279,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18078,7 +18290,7 @@ public final class Commands {
             com.trans.pixel.protoc.Commands.AreaBoss.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18090,7 +18302,7 @@ public final class Commands {
             index, com.trans.pixel.protoc.Commands.AreaBoss.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaBoss bosses = 5;</code>
        *
        * <pre>
        *区域BOSS
@@ -18107,7 +18319,7 @@ public final class Commands {
           bossesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.AreaBoss, com.trans.pixel.protoc.Commands.AreaBoss.Builder, com.trans.pixel.protoc.Commands.AreaBossOrBuilder>(
                   bosses_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           bosses_ = null;
@@ -18115,13 +18327,13 @@ public final class Commands {
         return bossesBuilder_;
       }
 
-      // repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;
+      // repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;
       private java.util.List<com.trans.pixel.protoc.Commands.AreaMonster> monsters_ =
         java.util.Collections.emptyList();
       private void ensureMonstersIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           monsters_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaMonster>(monsters_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
          }
       }
 
@@ -18129,7 +18341,7 @@ public final class Commands {
           com.trans.pixel.protoc.Commands.AreaMonster, com.trans.pixel.protoc.Commands.AreaMonster.Builder, com.trans.pixel.protoc.Commands.AreaMonsterOrBuilder> monstersBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18143,7 +18355,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18157,7 +18369,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18171,7 +18383,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18192,7 +18404,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18210,7 +18422,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18230,7 +18442,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18251,7 +18463,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18269,7 +18481,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18287,7 +18499,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18305,7 +18517,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18314,7 +18526,7 @@ public final class Commands {
       public Builder clearMonsters() {
         if (monstersBuilder_ == null) {
           monsters_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           monstersBuilder_.clear();
@@ -18322,7 +18534,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18339,7 +18551,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18350,7 +18562,7 @@ public final class Commands {
         return getMonstersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18364,7 +18576,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18379,7 +18591,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18390,7 +18602,7 @@ public final class Commands {
             com.trans.pixel.protoc.Commands.AreaMonster.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18402,7 +18614,7 @@ public final class Commands {
             index, com.trans.pixel.protoc.Commands.AreaMonster.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaMonster monsters = 6;</code>
        *
        * <pre>
        *区域怪物
@@ -18419,7 +18631,7 @@ public final class Commands {
           monstersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.AreaMonster, com.trans.pixel.protoc.Commands.AreaMonster.Builder, com.trans.pixel.protoc.Commands.AreaMonsterOrBuilder>(
                   monsters_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
                   isClean());
           monsters_ = null;
@@ -68879,244 +69091,245 @@ public final class Commands {
       "\022\020\n\010rewardId\030\004 \003(\005\022\r\n\005owner\030\005 \001(\t\022\023\n\013lea" +
       "derboard\030\006 \003(\t\"J\n\013AreaMonster\022\n\n\002id\030\001 \002(" +
       "\005\022\016\n\006areaId\030\002 \001(\005\022\r\n\005level\030\003 \002(\005\022\020\n\010rewa" +
-      "rdId\030\004 \003(\005\"\307\001\n\010AreaInfo\022\n\n\002id\030\001 \002(\005\022\r\n\005s" +
-      "core\030\002 \002(\005\0227\n\tresources\030\003 \003(\0132$.com.tran" +
-      "s.pixel.protoc.AreaResource\0220\n\006bosses\030\004 " +
-      "\003(\0132 .com.trans.pixel.protoc.AreaBoss\0225\n",
-      "\010monsters\030\005 \003(\0132#.com.trans.pixel.protoc" +
-      ".AreaMonster\";\n\010AreaMode\022/\n\005areas\030\001 \003(\0132" +
-      " .com.trans.pixel.protoc.AreaInfo\"N\n\010Use" +
-      "rRank\022\016\n\006userId\030\001 \002(\003\022\020\n\010userName\030\002 \002(\t\022" +
-      "\014\n\004rank\030\003 \002(\003\022\022\n\nteamRecord\030\004 \002(\t\"F\n\nUse" +
-      "rFriend\022\020\n\010friendId\030\001 \002(\003\022\022\n\nfriendName\030" +
-      "\002 \002(\t\022\022\n\nteamRecord\030\003 \002(\t\"\303\001\n\004Mail\022\n\n\002id" +
-      "\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n\nfromUserId\030\003 \002" +
-      "(\003\022\024\n\014fromUserName\030\004 \002(\t\022\014\n\004type\030\005 \002(\005\022\021" +
-      "\n\tstartDate\030\006 \002(\t\022\017\n\007endDate\030\007 \002(\t\022\017\n\007co",
-      "ntent\030\010 \002(\t\0222\n\006reward\030\t \003(\0132\".com.trans." +
-      "pixel.protoc.RewardInfo\"D\n\010MailList\022\014\n\004t" +
-      "ype\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034.com.trans.pixe" +
-      "l.protoc.Mail\"-\n\014ErrorCommand\022\014\n\004code\030\001 " +
-      "\002(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033ResponseNeedRegi" +
-      "sterCommand\"*\n\026RequestRegisterCommand\022\020\n" +
-      "\010userName\030\001 \002(\t\"\025\n\023RequestLoginCommand\"I" +
-      "\n\027ResponseUserInfoCommand\022.\n\004user\030\001 \002(\0132" +
-      " .com.trans.pixel.protoc.UserInfo\"\201\001\n\024Re" +
-      "sponsePopupCommand\022\021\n\tpopScreen\030\001 \002(\005\022\016\n",
-      "\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading\030\004" +
-      " \001(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoButtonID\030" +
-      "\006 \001(\t\"+\n\030RequestLevelStartCommand\022\017\n\007lev" +
-      "elId\030\001 \002(\005\"-\n\032RequestLevelPrepareCommand" +
-      "\022\017\n\007levelId\030\001 \002(\005\"\032\n\030RequestLevelPauseCo" +
-      "mmand\"Q\n\031RequestLevelResultCommand\022\017\n\007le" +
-      "velId\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\022\021\n\tfightIn" +
-      "fo\030\003 \002(\t\"P\n\032ResponseLevelResultCommand\0222" +
-      "\n\006reward\030\001 \003(\0132\".com.trans.pixel.protoc." +
-      "RewardInfo\"/\n\034RequestLevelLootStartComma",
-      "nd\022\017\n\007levelId\030\001 \002(\005\"\037\n\035RequestLevelLootR" +
-      "esultCommand\"T\n\036ResponseLevelLootResultC" +
-      "ommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel" +
-      ".protoc.RewardInfo\":\n\030RequestUpdateTeamC" +
-      "ommand\022\014\n\004mode\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\"P" +
-      "\n\031RequestHeroLevelUpCommand\022\023\n\013levelUpTy" +
-      "pe\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\005" +
-      "\"_\n\031ResponseHeroResultCommand\022\016\n\006heroId\030" +
-      "\001 \002(\005\0222\n\010heroInfo\030\002 \002(\0132 .com.trans.pixe" +
-      "l.protoc.HeroInfo\"\032\n\030RequestLootResultCo",
-      "mmand\"L\n\031ResponseLootResultCommand\022\014\n\004go" +
-      "ld\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014lastLootTime\030\003 " +
-      "\001(\005\"K\n\032RequestAddHeroEquipCommand\022\016\n\006her" +
-      "oId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \001(\005" +
-      "\"^\n\032RequestEquipLevelUpCommand\022\016\n\006heroId" +
-      "\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \002(\005\022\021\n" +
-      "\tlevelUpId\030\004 \002(\005\"=\n\034RequestAttackRelativ" +
-      "eCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"" +
-      "b\n\035ResponseAttackRelativeCommand\022\r\n\005mapI" +
-      "d\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\023\n\013preventTime\030\003",
-      " \002(\003\022\r\n\005level\030\004 \002(\005\"P\n\032ResponseGetUserMi" +
-      "neCommand\0222\n\010userMine\030\001 \003(\0132 .com.trans." +
-      "pixel.protoc.UserMine\"A\n RequestRefreshR" +
-      "elatedUserCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mine" +
-      "Id\030\002 \002(\005\"M\n!ResponseRefreshRelatedUserCo" +
-      "mmand\022\021\n\tleftTimes\030\001 \002(\005\022\025\n\rrelatedUserI" +
-      "d\030\002 \002(\003\")\n\031RequestLotteryHeroCommand\022\014\n\004" +
-      "type\030\001 \002(\005\"q\n\032ResponseLotteryHeroCommand" +
-      "\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewardL" +
-      "ist\030\003 \003(\0132\".com.trans.pixel.protoc.Rewar",
-      "dInfo\"*\n\032RequestLotteryEquipCommand\022\014\n\004t" +
-      "ype\030\001 \002(\005\"r\n\033ResponseLotteryEquipCommand" +
-      "\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewardL" +
-      "ist\030\003 \003(\0132\".com.trans.pixel.protoc.Rewar" +
-      "dInfo\"P\n\032ResponseGetUserHeroCommand\0222\n\010u" +
-      "serHero\030\001 \003(\0132 .com.trans.pixel.protoc.U" +
-      "serHero\"S\n\033ResponseGetUserEquipCommand\0224" +
-      "\n\tuserEquip\030\001 \003(\0132!.com.trans.pixel.prot" +
-      "oc.UserEquip\"!\n\037RequestGetLadderRankList" +
-      "Command\"%\n#RequestGetUserLadderRankListC",
-      "ommand\"V\n ResponseGetLadderRankListComma" +
-      "nd\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixel.p" +
-      "rotoc.UserRank\"Z\n$ResponseGetUserLadderR" +
-      "ankListCommand\0222\n\010userRank\030\001 \003(\0132 .com.t" +
-      "rans.pixel.protoc.UserRank\".\n\036RequestAtt" +
-      "ackLadderModeCommand\022\014\n\004rank\030\001 \002(\003\";\n\037Re" +
-      "sponseAttackLadderModeCommand\022\013\n\003ret\030\001 \002" +
-      "(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035RequestGetUserMailLis" +
-      "tCommand\022\014\n\004type\030\001 \002(\005\"T\n\036ResponseGetUse" +
-      "rMailListCommand\0222\n\010mailList\030\001 \003(\0132 .com",
-      ".trans.pixel.protoc.MailList\"2\n\026RequestR" +
-      "eadMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005" +
-      "\"3\n\026ResponseMessageCommand\022\014\n\004code\030\001 \002(\005" +
-      "\022\013\n\003msg\030\002 \002(\t\"O\n\031ResponseSendRewardComma" +
-      "nd\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pro" +
-      "toc.RewardInfo\"4\n\030RequestDeleteMailComma" +
-      "nd\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\")\n\027RequestA" +
-      "ddFriendCommand\022\016\n\006userId\030\001 \002(\003\")\n\033Reque" +
-      "stReceiveFriendCommand\022\n\n\002id\030\001 \003(\005\"V\n Re" +
-      "sponseGetUserFriendListCommand\0222\n\006friend",
-      "\030\001 \003(\0132\".com.trans.pixel.protoc.UserFrie" +
-      "nd\"\024\n\022RequestAreaCommand\"F\n\023ResponseArea" +
-      "Command\022/\n\005areas\030\001 \003(\0132 .com.trans.pixel" +
-      ".protoc.AreaInfo\")\n\033RequestAttackMonster" +
-      "Command\022\n\n\002id\030\001 \002(\005\"&\n\030RequestAttackBoss" +
-      "Command\022\n\n\002id\030\001 \002(\005\"*\n\034RequestAttackReso" +
-      "urceCommand\022\n\n\002id\030\001 \002(\005\".\n RequestAttack" +
-      "ResourceMineCommand\022\n\n\002id\030\001 \002(\005\"P\n\030Respo" +
-      "nseUserLevelCommand\0224\n\tuserLevel\030\001 \002(\0132!" +
-      ".com.trans.pixel.protoc.UserLevel\"\\\n\034Res",
-      "ponseUserLootLevelCommand\022<\n\ruserLootLev" +
-      "el\030\001 \002(\0132%.com.trans.pixel.protoc.UserLo" +
-      "otLevel\"+\n\030RequestApplyUnionCommand\022\017\n\007u" +
-      "nionId\030\001 \002(\005\"\033\n\031RequestCreateUnionComman" +
-      "d\" \n\036RequestHandleUnionApplyCommand\"H\n\030R" +
-      "esponseUnionInfoCommand\022,\n\005union\030\001 \002(\0132\035" +
-      ".com.trans.pixel.protoc.Union\"H\n\030Respons" +
-      "eUnionListCommand\022,\n\005union\030\001 \003(\0132\035.com.t" +
-      "rans.pixel.protoc.Union\"\205\026\n\016RequestComma" +
-      "nd\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.proto",
-      "c.HeadInfo\022G\n\017registerCommand\030\002 \001(\0132..co" +
-      "m.trans.pixel.protoc.RequestRegisterComm" +
-      "and\022A\n\014loginCommand\030\003 \001(\0132+.com.trans.pi" +
-      "xel.protoc.RequestLoginCommand\022M\n\022levelR" +
-      "esultCommand\030\004 \001(\01321.com.trans.pixel.pro" +
-      "toc.RequestLevelResultCommand\022K\n\021updateT" +
-      "eamCommand\030\005 \001(\01320.com.trans.pixel.proto" +
-      "c.RequestUpdateTeamCommand\022K\n\021levelStart" +
-      "Command\030\006 \001(\01320.com.trans.pixel.protoc.R" +
-      "equestLevelStartCommand\022S\n\025levelLootStar",
-      "tCommand\030\007 \001(\01324.com.trans.pixel.protoc." +
-      "RequestLevelLootStartCommand\022U\n\026levelLoo" +
-      "tResultCommand\030\010 \001(\01325.com.trans.pixel.p" +
-      "rotoc.RequestLevelLootResultCommand\022M\n\022h" +
-      "eroLevelUpCommand\030\t \001(\01321.com.trans.pixe" +
-      "l.protoc.RequestHeroLevelUpCommand\022K\n\021lo" +
-      "otResultCommand\030\n \001(\01320.com.trans.pixel." +
-      "protoc.RequestLootResultCommand\022O\n\023addHe" +
-      "roEquipCommand\030\013 \001(\01322.com.trans.pixel.p" +
-      "rotoc.RequestAddHeroEquipCommand\022S\n\025atta",
-      "ckRelativeCommand\030\014 \001(\01324.com.trans.pixe" +
-      "l.protoc.RequestAttackRelativeCommand\022[\n" +
-      "\031refreshRelatedUserCommand\030\r \001(\01328.com.t" +
-      "rans.pixel.protoc.RequestRefreshRelatedU" +
-      "serCommand\022M\n\022lotteryHeroCommand\030\016 \001(\01321" +
-      ".com.trans.pixel.protoc.RequestLotteryHe" +
-      "roCommand\022Y\n\030getLadderRankListCommand\030\017 " +
-      "\001(\01327.com.trans.pixel.protoc.RequestGetL" +
-      "adderRankListCommand\022a\n\034getUserLadderRan" +
-      "kListCommand\030\020 \001(\0132;.com.trans.pixel.pro",
-      "toc.RequestGetUserLadderRankListCommand\022" +
-      "W\n\027attackLadderModeCommand\030\021 \001(\01326.com.t" +
-      "rans.pixel.protoc.RequestAttackLadderMod" +
-      "eCommand\022U\n\026getUserMailListCommand\030\022 \001(\013" +
-      "25.com.trans.pixel.protoc.RequestGetUser" +
-      "MailListCommand\022G\n\017readMailCommand\030\023 \001(\013" +
-      "2..com.trans.pixel.protoc.RequestReadMai" +
-      "lCommand\022K\n\021deleteMailCommand\030\024 \001(\01320.co" +
-      "m.trans.pixel.protoc.RequestDeleteMailCo" +
-      "mmand\022I\n\020addFriendCommand\030\025 \001(\0132/.com.tr",
-      "ans.pixel.protoc.RequestAddFriendCommand" +
-      "\022Q\n\024receiveFriendCommand\030\026 \001(\01323.com.tra" +
-      "ns.pixel.protoc.RequestReceiveFriendComm" +
-      "and\022O\n\023lotteryEquipCommand\030\027 \001(\01322.com.t" +
-      "rans.pixel.protoc.RequestLotteryEquipCom" +
-      "mand\022O\n\023equipLevelUpCommand\030\030 \001(\01322.com." +
-      "trans.pixel.protoc.RequestEquipLevelUpCo" +
-      "mmand\022J\n\rreceiveFriend\030\031 \001(\01323.com.trans" +
-      ".pixel.protoc.RequestReceiveFriendComman" +
-      "d\022?\n\013areaCommand\030\032 \001(\0132*.com.trans.pixel",
-      ".protoc.RequestAreaCommand\022Q\n\024attackMons" +
-      "terCommand\030\033 \001(\01323.com.trans.pixel.proto" +
-      "c.RequestAttackMonsterCommand\022K\n\021attackB" +
-      "ossCommand\030\034 \001(\01320.com.trans.pixel.proto" +
-      "c.RequestAttackBossCommand\022S\n\025attackReso" +
-      "urceCommand\030\035 \001(\01324.com.trans.pixel.prot" +
-      "oc.RequestAttackResourceCommand\022[\n\031attac" +
-      "kResourceMineCommand\030\036 \001(\01328.com.trans.p" +
-      "ixel.protoc.RequestAttackResourceMineCom" +
-      "mand\022K\n\021applyUnionCommand\030\037 \001(\01320.com.tr",
-      "ans.pixel.protoc.RequestApplyUnionComman" +
-      "d\022M\n\022createUnionCommand\030  \001(\01321.com.tran" +
-      "s.pixel.protoc.RequestCreateUnionCommand" +
-      "\022W\n\027handleUnionApplyCommand\030! \001(\01326.com." +
-      "trans.pixel.protoc.RequestHandleUnionApp" +
-      "lyCommand\022O\n\023levelPrepareCommand\030\" \001(\01322" +
-      ".com.trans.pixel.protoc.RequestLevelPrep" +
-      "areCommand\022K\n\021levelPauseCommand\030# \001(\01320." +
-      "com.trans.pixel.protoc.RequestLevelPause" +
-      "Command\"\200\021\n\017ResponseCommand\022.\n\004head\030\001 \002(",
-      "\0132 .com.trans.pixel.protoc.HeadInfo\022:\n\014e" +
-      "rrorCommand\030\002 \001(\0132$.com.trans.pixel.prot" +
-      "oc.ErrorCommand\022P\n\023needRegisterCommand\030\003" +
-      " \001(\01323.com.trans.pixel.protoc.ResponseNe" +
-      "edRegisterCommand\022H\n\017userInfoCommand\030\004 \001" +
-      "(\0132/.com.trans.pixel.protoc.ResponseUser" +
-      "InfoCommand\022N\n\022levelResultCommand\030\006 \001(\0132" +
-      "2.com.trans.pixel.protoc.ResponseLevelRe" +
-      "sultCommand\022V\n\026levelLootResultCommand\030\007 " +
-      "\001(\01326.com.trans.pixel.protoc.ResponseLev",
-      "elLootResultCommand\022L\n\021heroResultCommand" +
-      "\030\010 \001(\01321.com.trans.pixel.protoc.Response" +
-      "HeroResultCommand\022L\n\021lootResultCommand\030\t" +
-      " \001(\01321.com.trans.pixel.protoc.ResponseLo" +
-      "otResultCommand\022T\n\025attackRelativeCommand" +
-      "\030\n \001(\01325.com.trans.pixel.protoc.Response" +
-      "AttackRelativeCommand\022N\n\022getUserMineComm" +
-      "and\030\013 \001(\01322.com.trans.pixel.protoc.Respo" +
-      "nseGetUserMineCommand\022\\\n\031refreshRelatedU" +
-      "serCommand\030\014 \001(\01329.com.trans.pixel.proto",
-      "c.ResponseRefreshRelatedUserCommand\022N\n\022l" +
-      "otteryHeroCommand\030\r \001(\01322.com.trans.pixe" +
-      "l.protoc.ResponseLotteryHeroCommand\022N\n\022g" +
-      "etUserHeroCommand\030\016 \001(\01322.com.trans.pixe" +
-      "l.protoc.ResponseGetUserHeroCommand\022Z\n\030g" +
-      "etLadderRankListCommand\030\017 \001(\01328.com.tran" +
-      "s.pixel.protoc.ResponseGetLadderRankList" +
-      "Command\022b\n\034getUserLadderRankListCommand\030" +
-      "\020 \001(\0132<.com.trans.pixel.protoc.ResponseG" +
-      "etUserLadderRankListCommand\022X\n\027attackLad",
-      "derModeCommand\030\021 \001(\01327.com.trans.pixel.p" +
-      "rotoc.ResponseAttackLadderModeCommand\022V\n" +
-      "\026getUserMailListCommand\030\022 \001(\01326.com.tran" +
-      "s.pixel.protoc.ResponseGetUserMailListCo" +
-      "mmand\022L\n\021sendRewardCommand\030\023 \001(\01321.com.t" +
-      "rans.pixel.protoc.ResponseSendRewardComm" +
-      "and\022F\n\016messageCommand\030\024 \001(\0132..com.trans." +
-      "pixel.protoc.ResponseMessageCommand\022Z\n\030g" +
-      "etUserFriendListCommand\030\025 \001(\01328.com.tran" +
-      "s.pixel.protoc.ResponseGetUserFriendList",
-      "Command\022P\n\023lotteryEquipCommand\030\026 \001(\01323.c" +
-      "om.trans.pixel.protoc.ResponseLotteryEqu" +
-      "ipCommand\022M\n\020userEquipCommand\030\027 \001(\01323.co" +
-      "m.trans.pixel.protoc.ResponseGetUserEqui" +
-      "pCommand\022@\n\013areaCommand\030\030 \001(\0132+.com.tran" +
-      "s.pixel.protoc.ResponseAreaCommand\022J\n\020us" +
-      "erLevelCommand\030\031 \001(\01320.com.trans.pixel.p" +
-      "rotoc.ResponseUserLevelCommand\022R\n\024userLo" +
-      "otLevelCommand\030\032 \001(\01324.com.trans.pixel.p" +
-      "rotoc.ResponseUserLootLevelCommand\022J\n\020un",
-      "ionInfoCommand\030\033 \001(\01320.com.trans.pixel.p" +
-      "rotoc.ResponseUnionInfoCommand\022J\n\020unionL" +
-      "istCommand\030\034 \001(\01320.com.trans.pixel.proto" +
-      "c.ResponseUnionListCommand"
+      "rdId\030\004 \003(\005\"\326\001\n\010AreaInfo\022\n\n\002id\030\001 \002(\005\022\014\n\004n" +
+      "ame\030\002 \002(\t\022\016\n\006zhanli\030\003 \002(\005\0227\n\tresources\030\004" +
+      " \003(\0132$.com.trans.pixel.protoc.AreaResour" +
+      "ce\0220\n\006bosses\030\005 \003(\0132 .com.trans.pixel.pro",
+      "toc.AreaBoss\0225\n\010monsters\030\006 \003(\0132#.com.tra" +
+      "ns.pixel.protoc.AreaMonster\";\n\010AreaMode\022" +
+      "/\n\005areas\030\001 \003(\0132 .com.trans.pixel.protoc." +
+      "AreaInfo\"N\n\010UserRank\022\016\n\006userId\030\001 \002(\003\022\020\n\010" +
+      "userName\030\002 \002(\t\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamReco" +
+      "rd\030\004 \002(\t\"F\n\nUserFriend\022\020\n\010friendId\030\001 \002(\003" +
+      "\022\022\n\nfriendName\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(\t" +
+      "\"\303\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n" +
+      "\nfromUserId\030\003 \002(\003\022\024\n\014fromUserName\030\004 \002(\t\022" +
+      "\014\n\004type\030\005 \002(\005\022\021\n\tstartDate\030\006 \002(\t\022\017\n\007endD",
+      "ate\030\007 \002(\t\022\017\n\007content\030\010 \002(\t\0222\n\006reward\030\t \003" +
+      "(\0132\".com.trans.pixel.protoc.RewardInfo\"D" +
+      "\n\010MailList\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034" +
+      ".com.trans.pixel.protoc.Mail\"-\n\014ErrorCom" +
+      "mand\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033R" +
+      "esponseNeedRegisterCommand\"*\n\026RequestReg" +
+      "isterCommand\022\020\n\010userName\030\001 \002(\t\"\025\n\023Reques" +
+      "tLoginCommand\"I\n\027ResponseUserInfoCommand" +
+      "\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.protoc." +
+      "UserInfo\"\201\001\n\024ResponsePopupCommand\022\021\n\tpop",
+      "Screen\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002" +
+      "(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(\t" +
+      "\022\022\n\nnoButtonID\030\006 \001(\t\"+\n\030RequestLevelStar" +
+      "tCommand\022\017\n\007levelId\030\001 \002(\005\"-\n\032RequestLeve" +
+      "lPrepareCommand\022\017\n\007levelId\030\001 \002(\005\"\032\n\030Requ" +
+      "estLevelPauseCommand\"Q\n\031RequestLevelResu" +
+      "ltCommand\022\017\n\007levelId\030\001 \002(\005\022\020\n\010teamInfo\030\002" +
+      " \002(\t\022\021\n\tfightInfo\030\003 \002(\t\"P\n\032ResponseLevel" +
+      "ResultCommand\0222\n\006reward\030\001 \003(\0132\".com.tran" +
+      "s.pixel.protoc.RewardInfo\"/\n\034RequestLeve",
+      "lLootStartCommand\022\017\n\007levelId\030\001 \002(\005\"\037\n\035Re" +
+      "questLevelLootResultCommand\"T\n\036ResponseL" +
+      "evelLootResultCommand\0222\n\006reward\030\001 \003(\0132\"." +
+      "com.trans.pixel.protoc.RewardInfo\":\n\030Req" +
+      "uestUpdateTeamCommand\022\014\n\004mode\030\001 \002(\005\022\020\n\010t" +
+      "eamInfo\030\002 \002(\t\"P\n\031RequestHeroLevelUpComma" +
+      "nd\022\023\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022" +
+      "\016\n\006infoId\030\003 \002(\005\"_\n\031ResponseHeroResultCom" +
+      "mand\022\016\n\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \002(\0132 " +
+      ".com.trans.pixel.protoc.HeroInfo\"\032\n\030Requ",
+      "estLootResultCommand\"L\n\031ResponseLootResu" +
+      "ltCommand\022\014\n\004gold\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014" +
+      "lastLootTime\030\003 \001(\005\"K\n\032RequestAddHeroEqui" +
+      "pCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005" +
+      "\022\r\n\005armId\030\003 \001(\005\"^\n\032RequestEquipLevelUpCo" +
+      "mmand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n" +
+      "\005armId\030\003 \002(\005\022\021\n\tlevelUpId\030\004 \002(\005\"=\n\034Reque" +
+      "stAttackRelativeCommand\022\r\n\005mapId\030\001 \002(\005\022\016" +
+      "\n\006mineId\030\002 \002(\005\"b\n\035ResponseAttackRelative" +
+      "Command\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\023",
+      "\n\013preventTime\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n\032Re" +
+      "sponseGetUserMineCommand\0222\n\010userMine\030\001 \003" +
+      "(\0132 .com.trans.pixel.protoc.UserMine\"A\n " +
+      "RequestRefreshRelatedUserCommand\022\r\n\005mapI" +
+      "d\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"M\n!ResponseRefre" +
+      "shRelatedUserCommand\022\021\n\tleftTimes\030\001 \002(\005\022" +
+      "\025\n\rrelatedUserId\030\002 \002(\003\")\n\031RequestLottery" +
+      "HeroCommand\022\014\n\004type\030\001 \002(\005\"q\n\032ResponseLot" +
+      "teryHeroCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002" +
+      " \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pix",
+      "el.protoc.RewardInfo\"*\n\032RequestLotteryEq" +
+      "uipCommand\022\014\n\004type\030\001 \002(\005\"r\n\033ResponseLott" +
+      "eryEquipCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002" +
+      " \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pix" +
+      "el.protoc.RewardInfo\"P\n\032ResponseGetUserH" +
+      "eroCommand\0222\n\010userHero\030\001 \003(\0132 .com.trans" +
+      ".pixel.protoc.UserHero\"S\n\033ResponseGetUse" +
+      "rEquipCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.t" +
+      "rans.pixel.protoc.UserEquip\"!\n\037RequestGe" +
+      "tLadderRankListCommand\"%\n#RequestGetUser",
+      "LadderRankListCommand\"V\n ResponseGetLadd" +
+      "erRankListCommand\0222\n\010userRank\030\001 \003(\0132 .co" +
+      "m.trans.pixel.protoc.UserRank\"Z\n$Respons" +
+      "eGetUserLadderRankListCommand\0222\n\010userRan" +
+      "k\030\001 \003(\0132 .com.trans.pixel.protoc.UserRan" +
+      "k\".\n\036RequestAttackLadderModeCommand\022\014\n\004r" +
+      "ank\030\001 \002(\003\";\n\037ResponseAttackLadderModeCom" +
+      "mand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035Reques" +
+      "tGetUserMailListCommand\022\014\n\004type\030\001 \002(\005\"T\n" +
+      "\036ResponseGetUserMailListCommand\0222\n\010mailL",
+      "ist\030\001 \003(\0132 .com.trans.pixel.protoc.MailL" +
+      "ist\"2\n\026RequestReadMailCommand\022\014\n\004type\030\001 " +
+      "\002(\005\022\n\n\002id\030\002 \003(\005\"3\n\026ResponseMessageComman" +
+      "d\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031Response" +
+      "SendRewardCommand\0222\n\006reward\030\001 \003(\0132\".com." +
+      "trans.pixel.protoc.RewardInfo\"4\n\030Request" +
+      "DeleteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 " +
+      "\003(\005\")\n\027RequestAddFriendCommand\022\016\n\006userId" +
+      "\030\001 \002(\003\")\n\033RequestReceiveFriendCommand\022\n\n" +
+      "\002id\030\001 \003(\005\"V\n ResponseGetUserFriendListCo",
+      "mmand\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel." +
+      "protoc.UserFriend\"\024\n\022RequestAreaCommand\"" +
+      "F\n\023ResponseAreaCommand\022/\n\005areas\030\001 \003(\0132 ." +
+      "com.trans.pixel.protoc.AreaInfo\")\n\033Reque" +
+      "stAttackMonsterCommand\022\n\n\002id\030\001 \002(\005\"&\n\030Re" +
+      "questAttackBossCommand\022\n\n\002id\030\001 \002(\005\"*\n\034Re" +
+      "questAttackResourceCommand\022\n\n\002id\030\001 \002(\005\"." +
+      "\n RequestAttackResourceMineCommand\022\n\n\002id" +
+      "\030\001 \002(\005\"P\n\030ResponseUserLevelCommand\0224\n\tus" +
+      "erLevel\030\001 \002(\0132!.com.trans.pixel.protoc.U",
+      "serLevel\"\\\n\034ResponseUserLootLevelCommand" +
+      "\022<\n\ruserLootLevel\030\001 \002(\0132%.com.trans.pixe" +
+      "l.protoc.UserLootLevel\"+\n\030RequestApplyUn" +
+      "ionCommand\022\017\n\007unionId\030\001 \002(\005\"\033\n\031RequestCr" +
+      "eateUnionCommand\" \n\036RequestHandleUnionAp" +
+      "plyCommand\"H\n\030ResponseUnionInfoCommand\022," +
+      "\n\005union\030\001 \002(\0132\035.com.trans.pixel.protoc.U" +
+      "nion\"H\n\030ResponseUnionListCommand\022,\n\005unio" +
+      "n\030\001 \003(\0132\035.com.trans.pixel.protoc.Union\"\205" +
+      "\026\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com.tr",
+      "ans.pixel.protoc.HeadInfo\022G\n\017registerCom" +
+      "mand\030\002 \001(\0132..com.trans.pixel.protoc.Requ" +
+      "estRegisterCommand\022A\n\014loginCommand\030\003 \001(\013" +
+      "2+.com.trans.pixel.protoc.RequestLoginCo" +
+      "mmand\022M\n\022levelResultCommand\030\004 \001(\01321.com." +
+      "trans.pixel.protoc.RequestLevelResultCom" +
+      "mand\022K\n\021updateTeamCommand\030\005 \001(\01320.com.tr" +
+      "ans.pixel.protoc.RequestUpdateTeamComman" +
+      "d\022K\n\021levelStartCommand\030\006 \001(\01320.com.trans" +
+      ".pixel.protoc.RequestLevelStartCommand\022S",
+      "\n\025levelLootStartCommand\030\007 \001(\01324.com.tran" +
+      "s.pixel.protoc.RequestLevelLootStartComm" +
+      "and\022U\n\026levelLootResultCommand\030\010 \001(\01325.co" +
+      "m.trans.pixel.protoc.RequestLevelLootRes" +
+      "ultCommand\022M\n\022heroLevelUpCommand\030\t \001(\01321" +
+      ".com.trans.pixel.protoc.RequestHeroLevel" +
+      "UpCommand\022K\n\021lootResultCommand\030\n \001(\01320.c" +
+      "om.trans.pixel.protoc.RequestLootResultC" +
+      "ommand\022O\n\023addHeroEquipCommand\030\013 \001(\01322.co" +
+      "m.trans.pixel.protoc.RequestAddHeroEquip",
+      "Command\022S\n\025attackRelativeCommand\030\014 \001(\01324" +
+      ".com.trans.pixel.protoc.RequestAttackRel" +
+      "ativeCommand\022[\n\031refreshRelatedUserComman" +
+      "d\030\r \001(\01328.com.trans.pixel.protoc.Request" +
+      "RefreshRelatedUserCommand\022M\n\022lotteryHero" +
+      "Command\030\016 \001(\01321.com.trans.pixel.protoc.R" +
+      "equestLotteryHeroCommand\022Y\n\030getLadderRan" +
+      "kListCommand\030\017 \001(\01327.com.trans.pixel.pro" +
+      "toc.RequestGetLadderRankListCommand\022a\n\034g" +
+      "etUserLadderRankListCommand\030\020 \001(\0132;.com.",
+      "trans.pixel.protoc.RequestGetUserLadderR" +
+      "ankListCommand\022W\n\027attackLadderModeComman" +
+      "d\030\021 \001(\01326.com.trans.pixel.protoc.Request" +
+      "AttackLadderModeCommand\022U\n\026getUserMailLi" +
+      "stCommand\030\022 \001(\01325.com.trans.pixel.protoc" +
+      ".RequestGetUserMailListCommand\022G\n\017readMa" +
+      "ilCommand\030\023 \001(\0132..com.trans.pixel.protoc" +
+      ".RequestReadMailCommand\022K\n\021deleteMailCom" +
+      "mand\030\024 \001(\01320.com.trans.pixel.protoc.Requ" +
+      "estDeleteMailCommand\022I\n\020addFriendCommand",
+      "\030\025 \001(\0132/.com.trans.pixel.protoc.RequestA" +
+      "ddFriendCommand\022Q\n\024receiveFriendCommand\030" +
+      "\026 \001(\01323.com.trans.pixel.protoc.RequestRe" +
+      "ceiveFriendCommand\022O\n\023lotteryEquipComman" +
+      "d\030\027 \001(\01322.com.trans.pixel.protoc.Request" +
+      "LotteryEquipCommand\022O\n\023equipLevelUpComma" +
+      "nd\030\030 \001(\01322.com.trans.pixel.protoc.Reques" +
+      "tEquipLevelUpCommand\022J\n\rreceiveFriend\030\031 " +
+      "\001(\01323.com.trans.pixel.protoc.RequestRece" +
+      "iveFriendCommand\022?\n\013areaCommand\030\032 \001(\0132*.",
+      "com.trans.pixel.protoc.RequestAreaComman" +
+      "d\022Q\n\024attackMonsterCommand\030\033 \001(\01323.com.tr" +
+      "ans.pixel.protoc.RequestAttackMonsterCom" +
+      "mand\022K\n\021attackBossCommand\030\034 \001(\01320.com.tr" +
+      "ans.pixel.protoc.RequestAttackBossComman" +
+      "d\022S\n\025attackResourceCommand\030\035 \001(\01324.com.t" +
+      "rans.pixel.protoc.RequestAttackResourceC" +
+      "ommand\022[\n\031attackResourceMineCommand\030\036 \001(" +
+      "\01328.com.trans.pixel.protoc.RequestAttack" +
+      "ResourceMineCommand\022K\n\021applyUnionCommand",
+      "\030\037 \001(\01320.com.trans.pixel.protoc.RequestA" +
+      "pplyUnionCommand\022M\n\022createUnionCommand\030 " +
+      " \001(\01321.com.trans.pixel.protoc.RequestCre" +
+      "ateUnionCommand\022W\n\027handleUnionApplyComma" +
+      "nd\030! \001(\01326.com.trans.pixel.protoc.Reques" +
+      "tHandleUnionApplyCommand\022O\n\023levelPrepare" +
+      "Command\030\" \001(\01322.com.trans.pixel.protoc.R" +
+      "equestLevelPrepareCommand\022K\n\021levelPauseC" +
+      "ommand\030# \001(\01320.com.trans.pixel.protoc.Re" +
+      "questLevelPauseCommand\"\200\021\n\017ResponseComma",
+      "nd\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.proto" +
+      "c.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$.com.t" +
+      "rans.pixel.protoc.ErrorCommand\022P\n\023needRe" +
+      "gisterCommand\030\003 \001(\01323.com.trans.pixel.pr" +
+      "otoc.ResponseNeedRegisterCommand\022H\n\017user" +
+      "InfoCommand\030\004 \001(\0132/.com.trans.pixel.prot" +
+      "oc.ResponseUserInfoCommand\022N\n\022levelResul" +
+      "tCommand\030\006 \001(\01322.com.trans.pixel.protoc." +
+      "ResponseLevelResultCommand\022V\n\026levelLootR" +
+      "esultCommand\030\007 \001(\01326.com.trans.pixel.pro",
+      "toc.ResponseLevelLootResultCommand\022L\n\021he" +
+      "roResultCommand\030\010 \001(\01321.com.trans.pixel." +
+      "protoc.ResponseHeroResultCommand\022L\n\021loot" +
+      "ResultCommand\030\t \001(\01321.com.trans.pixel.pr" +
+      "otoc.ResponseLootResultCommand\022T\n\025attack" +
+      "RelativeCommand\030\n \001(\01325.com.trans.pixel." +
+      "protoc.ResponseAttackRelativeCommand\022N\n\022" +
+      "getUserMineCommand\030\013 \001(\01322.com.trans.pix" +
+      "el.protoc.ResponseGetUserMineCommand\022\\\n\031" +
+      "refreshRelatedUserCommand\030\014 \001(\01329.com.tr",
+      "ans.pixel.protoc.ResponseRefreshRelatedU" +
+      "serCommand\022N\n\022lotteryHeroCommand\030\r \001(\01322" +
+      ".com.trans.pixel.protoc.ResponseLotteryH" +
+      "eroCommand\022N\n\022getUserHeroCommand\030\016 \001(\01322" +
+      ".com.trans.pixel.protoc.ResponseGetUserH" +
+      "eroCommand\022Z\n\030getLadderRankListCommand\030\017" +
+      " \001(\01328.com.trans.pixel.protoc.ResponseGe" +
+      "tLadderRankListCommand\022b\n\034getUserLadderR" +
+      "ankListCommand\030\020 \001(\0132<.com.trans.pixel.p" +
+      "rotoc.ResponseGetUserLadderRankListComma",
+      "nd\022X\n\027attackLadderModeCommand\030\021 \001(\01327.co" +
+      "m.trans.pixel.protoc.ResponseAttackLadde" +
+      "rModeCommand\022V\n\026getUserMailListCommand\030\022" +
+      " \001(\01326.com.trans.pixel.protoc.ResponseGe" +
+      "tUserMailListCommand\022L\n\021sendRewardComman" +
+      "d\030\023 \001(\01321.com.trans.pixel.protoc.Respons" +
+      "eSendRewardCommand\022F\n\016messageCommand\030\024 \001" +
+      "(\0132..com.trans.pixel.protoc.ResponseMess" +
+      "ageCommand\022Z\n\030getUserFriendListCommand\030\025" +
+      " \001(\01328.com.trans.pixel.protoc.ResponseGe",
+      "tUserFriendListCommand\022P\n\023lotteryEquipCo" +
+      "mmand\030\026 \001(\01323.com.trans.pixel.protoc.Res" +
+      "ponseLotteryEquipCommand\022M\n\020userEquipCom" +
+      "mand\030\027 \001(\01323.com.trans.pixel.protoc.Resp" +
+      "onseGetUserEquipCommand\022@\n\013areaCommand\030\030" +
+      " \001(\0132+.com.trans.pixel.protoc.ResponseAr" +
+      "eaCommand\022J\n\020userLevelCommand\030\031 \001(\01320.co" +
+      "m.trans.pixel.protoc.ResponseUserLevelCo" +
+      "mmand\022R\n\024userLootLevelCommand\030\032 \001(\01324.co" +
+      "m.trans.pixel.protoc.ResponseUserLootLev",
+      "elCommand\022J\n\020unionInfoCommand\030\033 \001(\01320.co" +
+      "m.trans.pixel.protoc.ResponseUnionInfoCo" +
+      "mmand\022J\n\020unionListCommand\030\034 \001(\01320.com.tr" +
+      "ans.pixel.protoc.ResponseUnionListComman" +
+      "d"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -69224,7 +69437,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_AreaInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaInfo_descriptor,
-              new java.lang.String[] { "Id", "Score", "Resources", "Bosses", "Monsters", });
+              new java.lang.String[] { "Id", "Name", "Zhanli", "Resources", "Bosses", "Monsters", });
           internal_static_com_trans_pixel_protoc_AreaMode_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_AreaMode_fieldAccessorTable = new

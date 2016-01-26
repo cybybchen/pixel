@@ -238,7 +238,8 @@ public class AreaRedisService extends RedisService{
 		int index = (id-1)*100;
 		AreaInfo.Builder areainfoBuilder = AreaInfo.newBuilder();
 		areainfoBuilder.setId(id);
-		areainfoBuilder.setScore(11);
+		areainfoBuilder.setName("Area"+id);
+		areainfoBuilder.setZhanli(110);
 		areainfoBuilder.addResources(buildAreaResource(index+1));
 		areainfoBuilder.addResources(buildAreaResource(index+2));
 		areainfoBuilder.addResources(buildAreaResource(index+3));

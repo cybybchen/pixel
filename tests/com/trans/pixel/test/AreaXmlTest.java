@@ -23,7 +23,7 @@ public class AreaXmlTest extends BaseTest {
 		WriteToFile(xmlFormat, "area.xml");
 		
 		String xml = ReadFromFile("area.xml");
-		AreaMode.Builder builder = AreaMode.newBuilder();
+		AreaInfo.Builder builder = AreaInfo.newBuilder();
 		try {
 			XmlFormat.merge(xml, builder);
 		} catch (ParseException e) {
