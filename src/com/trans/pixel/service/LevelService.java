@@ -94,12 +94,12 @@ public class LevelService {
 		}
 	}
 	
-	public boolean isPreparad(int lastLevelResultTime, int levelId) {
+	public boolean isPreparad(int prepareTime, int levelId) {
 		XiaoguanBean xg = getXiaoguan(levelId);
 		if (xg == null)
 			return false;
 		
-		if (System.currentTimeMillis() / 1000 >= lastLevelResultTime + xg.getPreparaTime())
+		if (prepareTime >= xg.getPreparaTime())
 			return true;
 		
 		return false;

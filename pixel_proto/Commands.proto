@@ -65,7 +65,7 @@ message UserMine {
 }
 
 message UserLevel {
-	required int32 lastLevelResultTime = 1; //上次关卡过关时间
+	required int32 prepareTime = 1; //准备时间
 	required int32 putongLevel = 2;
 	required string kunnanLevel = 3;
 	required string diyuLevel = 4;
@@ -77,6 +77,22 @@ message UserLootLevel {
 	required int32 levelLootStartTime = 3; //挂机开始时间
 	required string lootTime = 4;    //挂机时间记录
 	required string lootRewardRecord = 5; //领奖记录
+}
+
+message UnionUser {
+	required int64 userId = 1;
+	required string userName = 2;
+	required string record = 3;
+	required int32 level = 4;
+}
+
+message Union {
+	required int32 id = 1;
+	required string unionName = 2;
+	required int32 rank = 3;
+	required int32 serverId = 4;
+	repeated UnionUser unionUser = 5;
+	repeated Mail mail = 6;
 }
 
 message AreaResourceMine {//区域资源开采点
@@ -147,11 +163,12 @@ message Mail {
 	required int32 id = 1;
 	required int64 userId = 2;
 	required int64 fromUserId = 3;
-	required int32 type = 4;
-	required string startDate = 5;
-	required string endDate = 6;
-	required string content = 7;
-	repeated RewardInfo reward = 8;
+	required string fromUserName = 4;
+	required int32 type = 5;
+	required string startDate = 6;
+	required string endDate = 7;
+	required string content = 8;
+	repeated RewardInfo reward = 9;
 }
 
 message MailList {
@@ -191,6 +208,14 @@ message ResponsePopupCommand {
 
 message RequestLevelStartCommand {
 	required int32 levelId = 1;
+}
+
+message RequestLevelPrepareCommand {
+	required int32 levelId = 1;
+}
+
+message RequestLevelPauseCommand {
+	
 }
 
 message RequestLevelResultCommand {
@@ -404,6 +429,26 @@ message ResponseUserLootLevelCommand {
 	required UserLootLevel userLootLevel = 1;
 }
 
+message RequestApplyUnionCommand {
+	required int32 unionId = 1;
+}
+
+message RequestCreateUnionCommand {
+
+}
+
+message RequestHandleUnionApplyCommand {
+
+}
+
+message ResponseUnionInfoCommand {
+	required Union union = 1;
+}
+
+message ResponseUnionListCommand {
+	repeated Union union = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -435,6 +480,11 @@ message RequestCommand {
 	optional RequestAttackBossCommand attackBossCommand = 28;
 	optional RequestAttackResourceCommand attackResourceCommand = 29;
 	optional RequestAttackResourceMineCommand attackResourceMineCommand = 30;
+	optional RequestApplyUnionCommand applyUnionCommand = 31;
+	optional RequestCreateUnionCommand createUnionCommand = 32;
+	optional RequestHandleUnionApplyCommand handleUnionApplyCommand = 33;
+	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
+	optional RequestLevelPauseCommand levelPauseCommand = 35;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -463,6 +513,8 @@ message ResponseCommand {
 	optional ResponseAreaCommand areaCommand = 24;
 	optional ResponseUserLevelCommand userLevelCommand = 25;
 	optional ResponseUserLootLevelCommand userLootLevelCommand = 26;
+	optional ResponseUnionInfoCommand unionInfoCommand = 27;
+	optional ResponseUnionListCommand unionListCommand = 28;
 }
 
 

@@ -18,6 +18,7 @@ public class UserLevelBean {
 	private long id = 0;
 	private long userId = 0;
 	private int lastLevelResultTime = 0;
+	private int levelPrepareTime = 0;
 	private int putongLevel = 0;
 	private String kunnanLevel = "";
 	private String diyuLevel = "";
@@ -38,6 +39,12 @@ public class UserLevelBean {
 	}
 	public void setLastLevelResultTime(int lastLevelResultTime) {
 		this.lastLevelResultTime = lastLevelResultTime;
+	}
+	public int getLevelPrepareTime() {
+		return levelPrepareTime;
+	}
+	public void setLevelPrepareTime(int levelPrepareTime) {
+		this.levelPrepareTime = levelPrepareTime;
 	}
 	public int getPutongLevel() {
 		return putongLevel;
@@ -88,6 +95,7 @@ public class UserLevelBean {
 		levelRecordMap.put(ID, "" + id);
 		levelRecordMap.put(USER_ID, "" + userId);
 		levelRecordMap.put(LAST_LEVEL_RESULT_TIME, "" + lastLevelResultTime);
+		levelRecordMap.put(LEVEL_PREPARE_TIME, "" + levelPrepareTime);
 		levelRecordMap.put(PUTONG_LEVEL, "" + putongLevel);
 		levelRecordMap.put(KUNNAN_LEVEL, kunnanLevel);
 		levelRecordMap.put(DIYU_LEVEL, diyuLevel);
@@ -107,6 +115,7 @@ public class UserLevelBean {
 		levelRecord.setId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(ID)));
 		levelRecord.setUserId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(USER_ID)));
 		levelRecord.setLastLevelResultTime(TypeTranslatedUtil.stringToInt(levelRecordMap.get(LAST_LEVEL_RESULT_TIME)));
+		levelRecord.setLevelPrepareTime(TypeTranslatedUtil.stringToInt(levelRecordMap.get(LEVEL_PREPARE_TIME)));
 		levelRecord.setPutongLevel(TypeTranslatedUtil.stringToInt(levelRecordMap.get(PUTONG_LEVEL)));
 		levelRecord.setKunnanLevel(levelRecordMap.get(KUNNAN_LEVEL));
 		levelRecord.setDiyuLevel(levelRecordMap.get(DIYU_LEVEL));
@@ -118,7 +127,7 @@ public class UserLevelBean {
 		UserLevel.Builder builder = UserLevel.newBuilder();
 		builder.setDiyuLevel(diyuLevel);
 		builder.setKunnanLevel(kunnanLevel);
-		builder.setLastLevelResultTime(lastLevelResultTime);
+		builder.setPrepareTime(levelPrepareTime);
 		builder.setPutongLevel(putongLevel);
 		
 		return builder.build();
@@ -127,6 +136,7 @@ public class UserLevelBean {
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String LAST_LEVEL_RESULT_TIME = "last_level_result_time";
+	private static final String LEVEL_PREPARE_TIME = "level_prepare_time";
 	private static final String PUTONG_LEVEL = "putong_level";
 	private static final String KUNNAN_LEVEL = "kunnan_level";
 	private static final String DIYU_LEVEL = "diyu_level";

@@ -14,6 +14,7 @@ public class MailBean {
 	private int id = 0;
 	private long userId = 0;
 	private long fromUserId = 0;
+	private String fromUserName = "";
 	private int type = 0;
 	private String startDate = "";
 	private String endDate = "";
@@ -37,6 +38,12 @@ public class MailBean {
 	}
 	public void setFromUserId(long fromUserId) {
 		this.fromUserId = fromUserId;
+	}
+	public String getFromUserName() {
+		return fromUserName;
+	}
+	public void setFromUserName(String fromUserName) {
+		this.fromUserName = fromUserName;
 	}
 	public int getType() {
 		return type;
@@ -80,6 +87,7 @@ public class MailBean {
 		json.put(ID, id);
 		json.put(USER_ID, userId);
 		json.put(FROM_USER_ID, fromUserId);
+		json.put(FROM_USER_NAME, fromUserName);
 		json.put(TYPE, type);
 		json.put(START_DATE, startDate);
 		json.put(END_DATE, endDate);
@@ -98,6 +106,7 @@ public class MailBean {
 		bean.setId(TypeTranslatedUtil.jsonGetInt(json, ID));
 		bean.setUserId(TypeTranslatedUtil.jsonGetInt(json, USER_ID));
 		bean.setFromUserId(TypeTranslatedUtil.jsonGetInt(json, FROM_USER_ID));
+		bean.setFromUserName(TypeTranslatedUtil.jsonGetString(json, FROM_USER_NAME));
 		bean.setType(TypeTranslatedUtil.jsonGetInt(json, TYPE));
 		bean.setStartDate(TypeTranslatedUtil.jsonGetString(json, START_DATE));
 		bean.setEndDate(TypeTranslatedUtil.jsonGetString(json, END_DATE));
@@ -136,6 +145,7 @@ public class MailBean {
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String FROM_USER_ID = "from_user_id";
+	private static final String FROM_USER_NAME = "from_user_name";
 	private static final String TYPE = "type";
 	private static final String START_DATE = "start_date";
 	private static final String END_DATE = "end_date";
