@@ -29,6 +29,9 @@ import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.RequestLoginCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
 
 
@@ -88,7 +91,13 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user);
 
 	protected abstract boolean handleCommand(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user);
-    //add handleCommand here
+    
+	protected abstract boolean handleCommand(RequestRegisterCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestLoginCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user);
+	//add handleCommand here
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
@@ -230,6 +239,21 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasAttackResourceMineCommand()) {
         	RequestAttackResourceMineCommand cmd = request.getAttackResourceMineCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasRegisterCommand()) {
+            RequestRegisterCommand cmd = request.getRegisterCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasLoginCommand()) {
+            RequestLoginCommand cmd = request.getLoginCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasGetUserLadderRankListCommand()) {
+            RequestGetUserLadderRankListCommand cmd = request.getGetUserLadderRankListCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }

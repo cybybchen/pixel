@@ -36,6 +36,9 @@ import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AccountService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.RequestLoginCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -265,6 +268,24 @@ public class HeadScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestAttackResourceMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestRegisterCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestLoginCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;
 	}

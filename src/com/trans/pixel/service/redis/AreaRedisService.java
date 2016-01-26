@@ -157,6 +157,7 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveMonster(AreaMonster monster) {
+		//need DB
 		this.hput(AREAMONSTER, monster.getId()+"", formatJson(monster));
 	}
 	

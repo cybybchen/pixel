@@ -45,6 +45,9 @@ import com.trans.pixel.service.command.LotteryHeroCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
+import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.RequestLoginCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
 
 @Service
@@ -262,6 +265,24 @@ public class GameDataScreen extends RequestScreen {
 			Builder responseBuilder, UserBean user) {
 		areaCommandService.AttackResourceMine(cmd, responseBuilder, user);
 		return false;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestRegisterCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestLoginCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	//add handleCommand here
 
