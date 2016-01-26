@@ -54,42 +54,42 @@ public class AreaRedisService extends RedisService{
 						.boundHashOps(AREARESOURCE);
 				BoundHashOperations<String, String, String> resourcemineOps = redisTemplate
 						.boundHashOps(AREARESOURCEMINE);
-				AreaInfo area;
 				String value = areaOps.get(id+"");
 				AreaInfo.Builder areabuilder = AreaInfo.newBuilder();
 				if(value != null && parseJson(value, areabuilder)){
-					area =  areabuilder.build();
+					;
 				}else{
-					area = buildArea(id);
+					AreaInfo area = buildArea(id);
+					areabuilder.mergeFrom(area);
 					saveArea(area);
 				}
 				//更新世界BOSS
 				Map<String, String> bossMap = bossOps.entries();
 				if (bossMap != null) {
-					List<AreaBoss> bosses = area.getBossesList();
-					for (AreaBoss boss : bosses) {
-						value = bossMap.get(boss.getId()+"");
+					List<AreaBoss.Builder> bosses = areabuilder.getBossesBuilderList();
+					for (AreaBoss.Builder bossbuilder : bosses) {
+						value = bossMap.get(bossbuilder.getId()+"");
 						AreaBoss.Builder builder = AreaBoss.newBuilder();
 						if(value != null && parseJson(value, builder)){
-							boss = builder.build();
+							bossbuilder.mergeFrom(builder.build());
 						}else{
-							boss = buildAreaBoss(boss.getId());
-							saveBoss(boss);
+							bossbuilder.mergeFrom(buildAreaBoss(bossbuilder.getId()));
+							saveBoss(bossbuilder.build());
 						}
 					}
 				}
 				//更新区域怪物
 				Map<String, String> monsterMap = monsterOps.entries();
 				if (monsterMap != null) {
-					List<AreaMonster> monsters = area.getMonstersList();
-					for (AreaMonster monster : monsters) {
-						value = monsterMap.get(monster.getId()+"");
+					List<AreaMonster.Builder> monsters = areabuilder.getMonstersBuilderList();
+					for (AreaMonster.Builder monsterbuilder : monsters) {
+						value = monsterMap.get(monsterbuilder.getId()+"");
 						AreaMonster.Builder builder = AreaMonster.newBuilder();
 						if(value != null && parseJson(value, builder)){
-							monster = builder.build();
+							monsterbuilder.mergeFrom(builder.build());
 						}else{
-							monster = buildAreaMonster(monster.getId());
-							saveMonster(monster);
+							monsterbuilder.mergeFrom(buildAreaMonster(monsterbuilder.getId()));
+							saveMonster(monsterbuilder.build());
 						}
 					}
 				}
@@ -98,28 +98,28 @@ public class AreaRedisService extends RedisService{
 				Map<String, String> resourceMap = resourceOps.entries();
 				Map<String, String> mineMap = resourcemineOps.entries();
 				if (resourceMap != null)
-				for (AreaResource resource : area.getResourcesList()) {
-					value = resourceMap.get(resource.getId()+"");
+				for (AreaResource.Builder resourcebuilder : areabuilder.getResourcesBuilderList()) {
+					value = resourceMap.get(resourcebuilder.getId()+"");
 					AreaResource.Builder builder = AreaResource.newBuilder();
 					if(value != null && parseJson(value, builder)){
-						resource = builder.build();
+						resourcebuilder.mergeFrom(builder.build());
 					}else{
-						resource = buildAreaResource(resource.getId());
-						saveResource(resource);
+						resourcebuilder.mergeFrom(buildAreaResource(resourcebuilder.getId()));
+						saveResource(resourcebuilder.build());
 					}
 					if(mineMap != null)
-					for(AreaResourceMine mine : resource.getMinesList()){
-						value = mineMap.get(mine.getId()+"");
-						AreaResourceMine.Builder minebuilder = AreaResourceMine.newBuilder();
-						if(value != null && parseJson(value, minebuilder)){
-							mine = minebuilder.build();
+					for(AreaResourceMine.Builder minebuilder : resourcebuilder.getMinesBuilderList()){
+						value = mineMap.get(minebuilder.getId()+"");
+						AreaResourceMine.Builder builder2 = AreaResourceMine.newBuilder();
+						if(value != null && parseJson(value, builder2)){
+							minebuilder.mergeFrom(builder2.build());
 						}else{
-							mine = buildAreaResourceMine(mine.getId());
-							saveResourceMine(mine);
+							minebuilder.mergeFrom(buildAreaResourceMine(minebuilder.getId()));
+							saveResourceMine(minebuilder.build());
 						}
 					}
 				}
-				return area;
+				return areabuilder.build();
 			}
 		});
 	}

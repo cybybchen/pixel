@@ -38,6 +38,7 @@ public class RedisService {
 		try {
 			JsonFormat.merge(input, builder);
 		} catch (ParseException e) {
+			logger.warn(input);
 			logger.warn(e);
 			return false;
 		}

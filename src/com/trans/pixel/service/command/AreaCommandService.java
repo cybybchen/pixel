@@ -36,7 +36,7 @@ public class AreaCommandService {
 	}
 
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackMonster(user, cmd.getId());
+		service.AttackBoss(user, cmd.getId());
 		Area(responseBuilder, user);
 	}
 	

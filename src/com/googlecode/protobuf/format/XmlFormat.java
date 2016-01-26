@@ -38,6 +38,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.nio.CharBuffer;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.dom4j.tree.DefaultAttribute;
+
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.ExtensionRegistry;
@@ -709,26 +716,29 @@ public final class XmlFormat {
 
     /**
      * Parse a text-format message from {@code input} and merge the contents into {@code builder}.
+     * @throws DocumentException 
      */
     public static void merge(Readable input, Message.Builder builder) throws ParseException,
-                                                                     IOException {
+                                                                     IOException, DocumentException {
         XmlFormat.merge(input, ExtensionRegistry.getEmptyRegistry(), builder);
     }
 
     /**
      * Parse a text-format message from {@code input} and merge the contents into {@code builder}.
+     * @throws DocumentException 
      */
-    public static void merge(CharSequence input, Message.Builder builder) throws ParseException {
+    public static void merge(CharSequence input, Message.Builder builder) throws ParseException, DocumentException {
         merge(input, ExtensionRegistry.getEmptyRegistry(), builder);
     }
 
     /**
      * Parse a text-format message from {@code input} and merge the contents into {@code builder}.
      * Extensions will be recognized if they are registered in {@code extensionRegistry}.
+     * @throws DocumentException 
      */
     public static void merge(Readable input,
                              ExtensionRegistry extensionRegistry,
-                             Message.Builder builder) throws ParseException, IOException {
+                             Message.Builder builder) throws ParseException, IOException, DocumentException {
         // Read the entire input to a String then parse that.
 
         // If StreamTokenizer were not quite so crippled, or if there were a kind
@@ -759,22 +769,177 @@ public final class XmlFormat {
     }
 
     /**
+     * Parse a single field from {@code element} and merge it into {@code builder}. If a ',' is
+     * detected after the field ends, the next field will be parsed automatically
+     */
+   private static void mergeField(Element element,
+                                  ExtensionRegistry extensionRegistry,
+                                  Message.Builder builder) throws ParseException {
+
+     List list = element.attributes();     
+     for (int i = 0; i < list.size(); i++)     
+     {     
+    	 DefaultAttribute e = (DefaultAttribute)list.get(i);   
+       FieldDescriptor field;
+       Descriptors.Descriptor type = builder.getDescriptorForType();
+//       ExtensionRegistry.ExtensionInfo extension = null;
+               
+       
+       String name = e.getName();
+       field = type.findFieldByName(name);
+
+       // Group names are expected to be capitalized as they appear in the
+       // .proto file, which actually matches their type names, not their field
+       // names.
+       if (field == null) {
+           // Explicitly specify US locale so that this code does not break when
+           // executing in Turkey.
+           String lowerName = name.toLowerCase(Locale.US);
+           field = type.findFieldByName(lowerName);
+           // If the case-insensitive match worked but the field is NOT a group,
+           if ((field != null) && (field.getType() != FieldDescriptor.Type.GROUP)) {
+               field = null;
+           }
+       }
+       // Again, special-case group names as described above.
+       if ((field != null) && (field.getType() == FieldDescriptor.Type.GROUP)
+           && !field.getMessageType().getName().equals(name)) {
+           field = null;
+       }
+
+       if (field == null) {
+    	   Tokenizer tokenizer = new Tokenizer("");
+           throw tokenizer.parseExceptionPreviousToken("Message type \"" + type.getFullName()
+                                                       + "\" has no field named \"" + name
+                                                       + "\".");
+       }
+
+       Object value = null;
+       if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+           Message.Builder subBuilder;
+//           if (extension == null) {
+               subBuilder = builder.newBuilderForField(field);
+//           } else {
+//               subBuilder = extension.defaultInstance.newBuilderForType();
+//           }
+
+           List<?> elements = element.elements();
+           for (int j = 0; j < elements.size(); j++) {
+             Element ele = (Element) elements.get(j);
+             mergeField(ele, extensionRegistry, subBuilder);
+           }
+
+           value = subBuilder.build();
+       } else {
+    	   Tokenizer tokenizer = new Tokenizer(e.getValue());
+           value = handleZnPrimitive(tokenizer, field);
+       }
+       // Object value = handleValue(tokenizer, extensionRegistry, builder, field, extension);
+
+       if (field.isRepeated()) {
+           builder.addRepeatedField(field, value);
+       } else {
+           builder.setField(field, value);
+       }
+     }
+
+     list = element.elements();     
+     for (int i = 0; i < list.size(); i++)     
+     {     
+    	 Element el = (Element)list.get(i);   
+       FieldDescriptor field;
+       Descriptors.Descriptor type = builder.getDescriptorForType();
+//       ExtensionRegistry.ExtensionInfo extension = null;
+               
+       
+       String name = el.getName();
+       field = type.findFieldByName(name);
+
+       // Group names are expected to be capitalized as they appear in the
+       // .proto file, which actually matches their type names, not their field
+       // names.
+       if (field == null) {
+           // Explicitly specify US locale so that this code does not break when
+           // executing in Turkey.
+           String lowerName = name.toLowerCase(Locale.US);
+           field = type.findFieldByName(lowerName);
+           // If the case-insensitive match worked but the field is NOT a group,
+           if ((field != null) && (field.getType() != FieldDescriptor.Type.GROUP)) {
+               field = null;
+           }
+       }
+       // Again, special-case group names as described above.
+       if ((field != null) && (field.getType() == FieldDescriptor.Type.GROUP)
+           && !field.getMessageType().getName().equals(name)) {
+           field = null;
+       }
+
+       if (field == null) {
+         Tokenizer tokenizer = new Tokenizer("");
+           throw tokenizer.parseExceptionPreviousToken("Message type \"" + type.getFullName()
+                                                       + "\" has no field named \"" + name
+                                                       + "\".");
+       }
+
+       Object value = null;
+       if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+           Message.Builder subBuilder;
+//           if (extension == null) {
+               subBuilder = builder.newBuilderForField(field);
+//           } else {
+//               subBuilder = extension.defaultInstance.newBuilderForType();
+//           }
+
+//           List<?> elements = element.elements();
+//           for (int j = 0; j < elements.size(); j++) {
+//             Element ele = (Element) elements.get(j);
+             mergeField(el, extensionRegistry, subBuilder);
+//           }
+
+           value = subBuilder.build();
+       } else {
+         Tokenizer tokenizer = new Tokenizer(el.getStringValue());
+           value = handleZnPrimitive(tokenizer, field);
+       }
+       // Object value = handleValue(tokenizer, extensionRegistry, builder, field, extension);
+
+       if (field.isRepeated()) {
+           builder.addRepeatedField(field, value);
+       } else {
+           builder.setField(field, value);
+       }
+     }
+   }
+
+    /**
      * Parse a text-format message from {@code input} and merge the contents into {@code builder}.
      * Extensions will be recognized if they are registered in {@code extensionRegistry}.
+     * @throws DocumentException 
      */
     public static void merge(CharSequence input,
                              ExtensionRegistry extensionRegistry,
-                             Message.Builder builder) throws ParseException {
-        Tokenizer tokenizer = new Tokenizer(input);
+                             Message.Builder builder) throws ParseException, DocumentException {
+		Document doc = DocumentHelper.parseText(input.toString());
+		Element root = doc.getRootElement();
+		
 
-        // Need to first consume the outer object name element
-        consumeOpeningElement(tokenizer);
+//    List<?> elements = root.elements();
+//    for (int i = 0; i < elements.size(); i++) {
+//      Element element = (Element) elements.get(i);
+      mergeField(root, extensionRegistry, builder);
+//    }
+		
+		
+       // Tokenizer tokenizer = new Tokenizer(input);
 
-        while (!tokenizer.tryConsume("</")) { // Continue till the object is done
-            mergeField(tokenizer, extensionRegistry, builder);
-        }
+       // // Need to first consume the outer object name element
+       // consumeOpeningElement(tokenizer);
 
-        consumeClosingElement(tokenizer);
+       // while (!tokenizer.tryConsume("</")) { // Continue till the object is done
+       //     mergeField(tokenizer, extensionRegistry, builder);
+       // }
+
+       // consumeClosingElement(tokenizer);
     }
 
     private static String consumeOpeningElement(Tokenizer tokenizer) throws ParseException {
@@ -888,6 +1053,14 @@ public final class XmlFormat {
             value = handlePrimitive(tokenizer, field);
         }
 
+        return value;
+    }
+    private static Object handleZnPrimitive(Tokenizer tokenizer, FieldDescriptor field) throws ParseException {
+        Object value = null;
+        if (field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.STRING)
+            value = tokenizer.text;
+        else
+        	value = handlePrimitive(tokenizer, field);
         return value;
     }
 

@@ -236,35 +236,35 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestAreaCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		areaCommandService.Area(responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackBossCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		areaCommandService.AttackBoss(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackMonsterCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		areaCommandService.AttackMonster(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackResourceCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		areaCommandService.AttackResource(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAttackResourceMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		areaCommandService.AttackResourceMine(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 	
 	@Override

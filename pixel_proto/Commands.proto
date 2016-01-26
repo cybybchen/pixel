@@ -144,7 +144,7 @@ message AreaInfo {//可争夺区域
 }
 
 message AreaMode {//区域争夺
-	repeated AreaInfo areas = 1;//区域
+	repeated AreaInfo region = 1;//区域
 }
 
 message UserRank {

@@ -18653,49 +18653,49 @@ public final class Commands {
   public interface AreaModeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.AreaInfo areas = 1;
+    // repeated .com.trans.pixel.protoc.AreaInfo region = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
     java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> 
-        getAreasList();
+        getRegionList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
-    com.trans.pixel.protoc.Commands.AreaInfo getAreas(int index);
+    com.trans.pixel.protoc.Commands.AreaInfo getRegion(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
-    int getAreasCount();
+    int getRegionCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
     java.util.List<? extends com.trans.pixel.protoc.Commands.AreaInfoOrBuilder> 
-        getAreasOrBuilderList();
+        getRegionOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
-    com.trans.pixel.protoc.Commands.AreaInfoOrBuilder getAreasOrBuilder(
+    com.trans.pixel.protoc.Commands.AreaInfoOrBuilder getRegionOrBuilder(
         int index);
   }
   /**
@@ -18755,10 +18755,10 @@ public final class Commands {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                areas_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaInfo>();
+                region_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaInfo>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              areas_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaInfo.PARSER, extensionRegistry));
+              region_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaInfo.PARSER, extensionRegistry));
               break;
             }
           }
@@ -18770,7 +18770,7 @@ public final class Commands {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          areas_ = java.util.Collections.unmodifiableList(areas_);
+          region_ = java.util.Collections.unmodifiableList(region_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -18803,72 +18803,72 @@ public final class Commands {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.AreaInfo areas = 1;
-    public static final int AREAS_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> areas_;
+    // repeated .com.trans.pixel.protoc.AreaInfo region = 1;
+    public static final int REGION_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> region_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
-    public java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> getAreasList() {
-      return areas_;
+    public java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> getRegionList() {
+      return region_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Commands.AreaInfoOrBuilder> 
-        getAreasOrBuilderList() {
-      return areas_;
+        getRegionOrBuilderList() {
+      return region_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
-    public int getAreasCount() {
-      return areas_.size();
+    public int getRegionCount() {
+      return region_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
-    public com.trans.pixel.protoc.Commands.AreaInfo getAreas(int index) {
-      return areas_.get(index);
+    public com.trans.pixel.protoc.Commands.AreaInfo getRegion(int index) {
+      return region_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
      *
      * <pre>
      *区域
      * </pre>
      */
-    public com.trans.pixel.protoc.Commands.AreaInfoOrBuilder getAreasOrBuilder(
+    public com.trans.pixel.protoc.Commands.AreaInfoOrBuilder getRegionOrBuilder(
         int index) {
-      return areas_.get(index);
+      return region_.get(index);
     }
 
     private void initFields() {
-      areas_ = java.util.Collections.emptyList();
+      region_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getAreasCount(); i++) {
-        if (!getAreas(i).isInitialized()) {
+      for (int i = 0; i < getRegionCount(); i++) {
+        if (!getRegion(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -18880,8 +18880,8 @@ public final class Commands {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < areas_.size(); i++) {
-        output.writeMessage(1, areas_.get(i));
+      for (int i = 0; i < region_.size(); i++) {
+        output.writeMessage(1, region_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -18892,9 +18892,9 @@ public final class Commands {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < areas_.size(); i++) {
+      for (int i = 0; i < region_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, areas_.get(i));
+          .computeMessageSize(1, region_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19008,7 +19008,7 @@ public final class Commands {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getAreasFieldBuilder();
+          getRegionFieldBuilder();
         }
       }
       private static Builder create() {
@@ -19017,11 +19017,11 @@ public final class Commands {
 
       public Builder clear() {
         super.clear();
-        if (areasBuilder_ == null) {
-          areas_ = java.util.Collections.emptyList();
+        if (regionBuilder_ == null) {
+          region_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          areasBuilder_.clear();
+          regionBuilder_.clear();
         }
         return this;
       }
@@ -19050,14 +19050,14 @@ public final class Commands {
       public com.trans.pixel.protoc.Commands.AreaMode buildPartial() {
         com.trans.pixel.protoc.Commands.AreaMode result = new com.trans.pixel.protoc.Commands.AreaMode(this);
         int from_bitField0_ = bitField0_;
-        if (areasBuilder_ == null) {
+        if (regionBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            areas_ = java.util.Collections.unmodifiableList(areas_);
+            region_ = java.util.Collections.unmodifiableList(region_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.areas_ = areas_;
+          result.region_ = region_;
         } else {
-          result.areas_ = areasBuilder_.build();
+          result.region_ = regionBuilder_.build();
         }
         onBuilt();
         return result;
@@ -19074,29 +19074,29 @@ public final class Commands {
 
       public Builder mergeFrom(com.trans.pixel.protoc.Commands.AreaMode other) {
         if (other == com.trans.pixel.protoc.Commands.AreaMode.getDefaultInstance()) return this;
-        if (areasBuilder_ == null) {
-          if (!other.areas_.isEmpty()) {
-            if (areas_.isEmpty()) {
-              areas_ = other.areas_;
+        if (regionBuilder_ == null) {
+          if (!other.region_.isEmpty()) {
+            if (region_.isEmpty()) {
+              region_ = other.region_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureAreasIsMutable();
-              areas_.addAll(other.areas_);
+              ensureRegionIsMutable();
+              region_.addAll(other.region_);
             }
             onChanged();
           }
         } else {
-          if (!other.areas_.isEmpty()) {
-            if (areasBuilder_.isEmpty()) {
-              areasBuilder_.dispose();
-              areasBuilder_ = null;
-              areas_ = other.areas_;
+          if (!other.region_.isEmpty()) {
+            if (regionBuilder_.isEmpty()) {
+              regionBuilder_.dispose();
+              regionBuilder_ = null;
+              region_ = other.region_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              areasBuilder_ = 
+              regionBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getAreasFieldBuilder() : null;
+                   getRegionFieldBuilder() : null;
             } else {
-              areasBuilder_.addAllMessages(other.areas_);
+              regionBuilder_.addAllMessages(other.region_);
             }
           }
         }
@@ -19105,8 +19105,8 @@ public final class Commands {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getAreasCount(); i++) {
-          if (!getAreas(i).isInitialized()) {
+        for (int i = 0; i < getRegionCount(); i++) {
+          if (!getRegion(i).isInitialized()) {
             
             return false;
           }
@@ -19133,316 +19133,316 @@ public final class Commands {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.AreaInfo areas = 1;
-      private java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> areas_ =
+      // repeated .com.trans.pixel.protoc.AreaInfo region = 1;
+      private java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> region_ =
         java.util.Collections.emptyList();
-      private void ensureAreasIsMutable() {
+      private void ensureRegionIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          areas_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaInfo>(areas_);
+          region_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaInfo>(region_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Commands.AreaInfo, com.trans.pixel.protoc.Commands.AreaInfo.Builder, com.trans.pixel.protoc.Commands.AreaInfoOrBuilder> areasBuilder_;
+          com.trans.pixel.protoc.Commands.AreaInfo, com.trans.pixel.protoc.Commands.AreaInfo.Builder, com.trans.pixel.protoc.Commands.AreaInfoOrBuilder> regionBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> getAreasList() {
-        if (areasBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(areas_);
+      public java.util.List<com.trans.pixel.protoc.Commands.AreaInfo> getRegionList() {
+        if (regionBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(region_);
         } else {
-          return areasBuilder_.getMessageList();
+          return regionBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public int getAreasCount() {
-        if (areasBuilder_ == null) {
-          return areas_.size();
+      public int getRegionCount() {
+        if (regionBuilder_ == null) {
+          return region_.size();
         } else {
-          return areasBuilder_.getCount();
+          return regionBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public com.trans.pixel.protoc.Commands.AreaInfo getAreas(int index) {
-        if (areasBuilder_ == null) {
-          return areas_.get(index);
+      public com.trans.pixel.protoc.Commands.AreaInfo getRegion(int index) {
+        if (regionBuilder_ == null) {
+          return region_.get(index);
         } else {
-          return areasBuilder_.getMessage(index);
+          return regionBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder setAreas(
+      public Builder setRegion(
           int index, com.trans.pixel.protoc.Commands.AreaInfo value) {
-        if (areasBuilder_ == null) {
+        if (regionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAreasIsMutable();
-          areas_.set(index, value);
+          ensureRegionIsMutable();
+          region_.set(index, value);
           onChanged();
         } else {
-          areasBuilder_.setMessage(index, value);
+          regionBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder setAreas(
+      public Builder setRegion(
           int index, com.trans.pixel.protoc.Commands.AreaInfo.Builder builderForValue) {
-        if (areasBuilder_ == null) {
-          ensureAreasIsMutable();
-          areas_.set(index, builderForValue.build());
+        if (regionBuilder_ == null) {
+          ensureRegionIsMutable();
+          region_.set(index, builderForValue.build());
           onChanged();
         } else {
-          areasBuilder_.setMessage(index, builderForValue.build());
+          regionBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder addAreas(com.trans.pixel.protoc.Commands.AreaInfo value) {
-        if (areasBuilder_ == null) {
+      public Builder addRegion(com.trans.pixel.protoc.Commands.AreaInfo value) {
+        if (regionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAreasIsMutable();
-          areas_.add(value);
+          ensureRegionIsMutable();
+          region_.add(value);
           onChanged();
         } else {
-          areasBuilder_.addMessage(value);
+          regionBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder addAreas(
+      public Builder addRegion(
           int index, com.trans.pixel.protoc.Commands.AreaInfo value) {
-        if (areasBuilder_ == null) {
+        if (regionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureAreasIsMutable();
-          areas_.add(index, value);
+          ensureRegionIsMutable();
+          region_.add(index, value);
           onChanged();
         } else {
-          areasBuilder_.addMessage(index, value);
+          regionBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder addAreas(
+      public Builder addRegion(
           com.trans.pixel.protoc.Commands.AreaInfo.Builder builderForValue) {
-        if (areasBuilder_ == null) {
-          ensureAreasIsMutable();
-          areas_.add(builderForValue.build());
+        if (regionBuilder_ == null) {
+          ensureRegionIsMutable();
+          region_.add(builderForValue.build());
           onChanged();
         } else {
-          areasBuilder_.addMessage(builderForValue.build());
+          regionBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder addAreas(
+      public Builder addRegion(
           int index, com.trans.pixel.protoc.Commands.AreaInfo.Builder builderForValue) {
-        if (areasBuilder_ == null) {
-          ensureAreasIsMutable();
-          areas_.add(index, builderForValue.build());
+        if (regionBuilder_ == null) {
+          ensureRegionIsMutable();
+          region_.add(index, builderForValue.build());
           onChanged();
         } else {
-          areasBuilder_.addMessage(index, builderForValue.build());
+          regionBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder addAllAreas(
+      public Builder addAllRegion(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.AreaInfo> values) {
-        if (areasBuilder_ == null) {
-          ensureAreasIsMutable();
-          super.addAll(values, areas_);
+        if (regionBuilder_ == null) {
+          ensureRegionIsMutable();
+          super.addAll(values, region_);
           onChanged();
         } else {
-          areasBuilder_.addAllMessages(values);
+          regionBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder clearAreas() {
-        if (areasBuilder_ == null) {
-          areas_ = java.util.Collections.emptyList();
+      public Builder clearRegion() {
+        if (regionBuilder_ == null) {
+          region_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          areasBuilder_.clear();
+          regionBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public Builder removeAreas(int index) {
-        if (areasBuilder_ == null) {
-          ensureAreasIsMutable();
-          areas_.remove(index);
+      public Builder removeRegion(int index) {
+        if (regionBuilder_ == null) {
+          ensureRegionIsMutable();
+          region_.remove(index);
           onChanged();
         } else {
-          areasBuilder_.remove(index);
+          regionBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public com.trans.pixel.protoc.Commands.AreaInfo.Builder getAreasBuilder(
+      public com.trans.pixel.protoc.Commands.AreaInfo.Builder getRegionBuilder(
           int index) {
-        return getAreasFieldBuilder().getBuilder(index);
+        return getRegionFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public com.trans.pixel.protoc.Commands.AreaInfoOrBuilder getAreasOrBuilder(
+      public com.trans.pixel.protoc.Commands.AreaInfoOrBuilder getRegionOrBuilder(
           int index) {
-        if (areasBuilder_ == null) {
-          return areas_.get(index);  } else {
-          return areasBuilder_.getMessageOrBuilder(index);
+        if (regionBuilder_ == null) {
+          return region_.get(index);  } else {
+          return regionBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Commands.AreaInfoOrBuilder> 
-           getAreasOrBuilderList() {
-        if (areasBuilder_ != null) {
-          return areasBuilder_.getMessageOrBuilderList();
+           getRegionOrBuilderList() {
+        if (regionBuilder_ != null) {
+          return regionBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(areas_);
+          return java.util.Collections.unmodifiableList(region_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public com.trans.pixel.protoc.Commands.AreaInfo.Builder addAreasBuilder() {
-        return getAreasFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.Commands.AreaInfo.Builder addRegionBuilder() {
+        return getRegionFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Commands.AreaInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
-      public com.trans.pixel.protoc.Commands.AreaInfo.Builder addAreasBuilder(
+      public com.trans.pixel.protoc.Commands.AreaInfo.Builder addRegionBuilder(
           int index) {
-        return getAreasFieldBuilder().addBuilder(
+        return getRegionFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.Commands.AreaInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.AreaInfo areas = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.AreaInfo region = 1;</code>
        *
        * <pre>
        *区域
        * </pre>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.AreaInfo.Builder> 
-           getAreasBuilderList() {
-        return getAreasFieldBuilder().getBuilderList();
+           getRegionBuilderList() {
+        return getRegionFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.Commands.AreaInfo, com.trans.pixel.protoc.Commands.AreaInfo.Builder, com.trans.pixel.protoc.Commands.AreaInfoOrBuilder> 
-          getAreasFieldBuilder() {
-        if (areasBuilder_ == null) {
-          areasBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getRegionFieldBuilder() {
+        if (regionBuilder_ == null) {
+          regionBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.AreaInfo, com.trans.pixel.protoc.Commands.AreaInfo.Builder, com.trans.pixel.protoc.Commands.AreaInfoOrBuilder>(
-                  areas_,
+                  region_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          areas_ = null;
+          region_ = null;
         }
-        return areasBuilder_;
+        return regionBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.AreaMode)
@@ -69096,240 +69096,240 @@ public final class Commands {
       " \003(\0132$.com.trans.pixel.protoc.AreaResour" +
       "ce\0220\n\006bosses\030\005 \003(\0132 .com.trans.pixel.pro",
       "toc.AreaBoss\0225\n\010monsters\030\006 \003(\0132#.com.tra" +
-      "ns.pixel.protoc.AreaMonster\";\n\010AreaMode\022" +
-      "/\n\005areas\030\001 \003(\0132 .com.trans.pixel.protoc." +
-      "AreaInfo\"N\n\010UserRank\022\016\n\006userId\030\001 \002(\003\022\020\n\010" +
-      "userName\030\002 \002(\t\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamReco" +
-      "rd\030\004 \002(\t\"F\n\nUserFriend\022\020\n\010friendId\030\001 \002(\003" +
-      "\022\022\n\nfriendName\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(\t" +
-      "\"\303\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n" +
-      "\nfromUserId\030\003 \002(\003\022\024\n\014fromUserName\030\004 \002(\t\022" +
-      "\014\n\004type\030\005 \002(\005\022\021\n\tstartDate\030\006 \002(\t\022\017\n\007endD",
-      "ate\030\007 \002(\t\022\017\n\007content\030\010 \002(\t\0222\n\006reward\030\t \003" +
-      "(\0132\".com.trans.pixel.protoc.RewardInfo\"D" +
-      "\n\010MailList\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034" +
-      ".com.trans.pixel.protoc.Mail\"-\n\014ErrorCom" +
-      "mand\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033R" +
-      "esponseNeedRegisterCommand\"*\n\026RequestReg" +
-      "isterCommand\022\020\n\010userName\030\001 \002(\t\"\025\n\023Reques" +
-      "tLoginCommand\"I\n\027ResponseUserInfoCommand" +
-      "\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.protoc." +
-      "UserInfo\"\201\001\n\024ResponsePopupCommand\022\021\n\tpop",
-      "Screen\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002" +
-      "(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(\t" +
-      "\022\022\n\nnoButtonID\030\006 \001(\t\"+\n\030RequestLevelStar" +
-      "tCommand\022\017\n\007levelId\030\001 \002(\005\"-\n\032RequestLeve" +
-      "lPrepareCommand\022\017\n\007levelId\030\001 \002(\005\"\032\n\030Requ" +
-      "estLevelPauseCommand\"Q\n\031RequestLevelResu" +
-      "ltCommand\022\017\n\007levelId\030\001 \002(\005\022\020\n\010teamInfo\030\002" +
-      " \002(\t\022\021\n\tfightInfo\030\003 \002(\t\"P\n\032ResponseLevel" +
-      "ResultCommand\0222\n\006reward\030\001 \003(\0132\".com.tran" +
-      "s.pixel.protoc.RewardInfo\"/\n\034RequestLeve",
-      "lLootStartCommand\022\017\n\007levelId\030\001 \002(\005\"\037\n\035Re" +
-      "questLevelLootResultCommand\"T\n\036ResponseL" +
-      "evelLootResultCommand\0222\n\006reward\030\001 \003(\0132\"." +
-      "com.trans.pixel.protoc.RewardInfo\":\n\030Req" +
-      "uestUpdateTeamCommand\022\014\n\004mode\030\001 \002(\005\022\020\n\010t" +
-      "eamInfo\030\002 \002(\t\"P\n\031RequestHeroLevelUpComma" +
-      "nd\022\023\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022" +
-      "\016\n\006infoId\030\003 \002(\005\"_\n\031ResponseHeroResultCom" +
-      "mand\022\016\n\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \002(\0132 " +
-      ".com.trans.pixel.protoc.HeroInfo\"\032\n\030Requ",
-      "estLootResultCommand\"L\n\031ResponseLootResu" +
-      "ltCommand\022\014\n\004gold\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014" +
-      "lastLootTime\030\003 \001(\005\"K\n\032RequestAddHeroEqui" +
-      "pCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005" +
-      "\022\r\n\005armId\030\003 \001(\005\"^\n\032RequestEquipLevelUpCo" +
-      "mmand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n" +
-      "\005armId\030\003 \002(\005\022\021\n\tlevelUpId\030\004 \002(\005\"=\n\034Reque" +
-      "stAttackRelativeCommand\022\r\n\005mapId\030\001 \002(\005\022\016" +
-      "\n\006mineId\030\002 \002(\005\"b\n\035ResponseAttackRelative" +
-      "Command\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\023",
-      "\n\013preventTime\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n\032Re" +
-      "sponseGetUserMineCommand\0222\n\010userMine\030\001 \003" +
-      "(\0132 .com.trans.pixel.protoc.UserMine\"A\n " +
-      "RequestRefreshRelatedUserCommand\022\r\n\005mapI" +
-      "d\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"M\n!ResponseRefre" +
-      "shRelatedUserCommand\022\021\n\tleftTimes\030\001 \002(\005\022" +
-      "\025\n\rrelatedUserId\030\002 \002(\003\")\n\031RequestLottery" +
-      "HeroCommand\022\014\n\004type\030\001 \002(\005\"q\n\032ResponseLot" +
-      "teryHeroCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002" +
-      " \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pix",
-      "el.protoc.RewardInfo\"*\n\032RequestLotteryEq" +
-      "uipCommand\022\014\n\004type\030\001 \002(\005\"r\n\033ResponseLott" +
-      "eryEquipCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002" +
-      " \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\"P\n\032ResponseGetUserH" +
-      "eroCommand\0222\n\010userHero\030\001 \003(\0132 .com.trans" +
-      ".pixel.protoc.UserHero\"S\n\033ResponseGetUse" +
-      "rEquipCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.t" +
-      "rans.pixel.protoc.UserEquip\"!\n\037RequestGe" +
-      "tLadderRankListCommand\"%\n#RequestGetUser",
-      "LadderRankListCommand\"V\n ResponseGetLadd" +
-      "erRankListCommand\0222\n\010userRank\030\001 \003(\0132 .co" +
-      "m.trans.pixel.protoc.UserRank\"Z\n$Respons" +
-      "eGetUserLadderRankListCommand\0222\n\010userRan" +
-      "k\030\001 \003(\0132 .com.trans.pixel.protoc.UserRan" +
-      "k\".\n\036RequestAttackLadderModeCommand\022\014\n\004r" +
-      "ank\030\001 \002(\003\";\n\037ResponseAttackLadderModeCom" +
-      "mand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035Reques" +
-      "tGetUserMailListCommand\022\014\n\004type\030\001 \002(\005\"T\n" +
-      "\036ResponseGetUserMailListCommand\0222\n\010mailL",
-      "ist\030\001 \003(\0132 .com.trans.pixel.protoc.MailL" +
-      "ist\"2\n\026RequestReadMailCommand\022\014\n\004type\030\001 " +
-      "\002(\005\022\n\n\002id\030\002 \003(\005\"3\n\026ResponseMessageComman" +
-      "d\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031Response" +
-      "SendRewardCommand\0222\n\006reward\030\001 \003(\0132\".com." +
-      "trans.pixel.protoc.RewardInfo\"4\n\030Request" +
-      "DeleteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 " +
-      "\003(\005\")\n\027RequestAddFriendCommand\022\016\n\006userId" +
-      "\030\001 \002(\003\")\n\033RequestReceiveFriendCommand\022\n\n" +
-      "\002id\030\001 \003(\005\"V\n ResponseGetUserFriendListCo",
-      "mmand\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel." +
-      "protoc.UserFriend\"\024\n\022RequestAreaCommand\"" +
-      "F\n\023ResponseAreaCommand\022/\n\005areas\030\001 \003(\0132 ." +
-      "com.trans.pixel.protoc.AreaInfo\")\n\033Reque" +
-      "stAttackMonsterCommand\022\n\n\002id\030\001 \002(\005\"&\n\030Re" +
-      "questAttackBossCommand\022\n\n\002id\030\001 \002(\005\"*\n\034Re" +
-      "questAttackResourceCommand\022\n\n\002id\030\001 \002(\005\"." +
-      "\n RequestAttackResourceMineCommand\022\n\n\002id" +
-      "\030\001 \002(\005\"P\n\030ResponseUserLevelCommand\0224\n\tus" +
-      "erLevel\030\001 \002(\0132!.com.trans.pixel.protoc.U",
-      "serLevel\"\\\n\034ResponseUserLootLevelCommand" +
-      "\022<\n\ruserLootLevel\030\001 \002(\0132%.com.trans.pixe" +
-      "l.protoc.UserLootLevel\"+\n\030RequestApplyUn" +
-      "ionCommand\022\017\n\007unionId\030\001 \002(\005\"\033\n\031RequestCr" +
-      "eateUnionCommand\" \n\036RequestHandleUnionAp" +
-      "plyCommand\"H\n\030ResponseUnionInfoCommand\022," +
-      "\n\005union\030\001 \002(\0132\035.com.trans.pixel.protoc.U" +
-      "nion\"H\n\030ResponseUnionListCommand\022,\n\005unio" +
-      "n\030\001 \003(\0132\035.com.trans.pixel.protoc.Union\"\205" +
-      "\026\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com.tr",
-      "ans.pixel.protoc.HeadInfo\022G\n\017registerCom" +
-      "mand\030\002 \001(\0132..com.trans.pixel.protoc.Requ" +
-      "estRegisterCommand\022A\n\014loginCommand\030\003 \001(\013" +
-      "2+.com.trans.pixel.protoc.RequestLoginCo" +
-      "mmand\022M\n\022levelResultCommand\030\004 \001(\01321.com." +
-      "trans.pixel.protoc.RequestLevelResultCom" +
-      "mand\022K\n\021updateTeamCommand\030\005 \001(\01320.com.tr" +
-      "ans.pixel.protoc.RequestUpdateTeamComman" +
-      "d\022K\n\021levelStartCommand\030\006 \001(\01320.com.trans" +
-      ".pixel.protoc.RequestLevelStartCommand\022S",
-      "\n\025levelLootStartCommand\030\007 \001(\01324.com.tran" +
-      "s.pixel.protoc.RequestLevelLootStartComm" +
-      "and\022U\n\026levelLootResultCommand\030\010 \001(\01325.co" +
-      "m.trans.pixel.protoc.RequestLevelLootRes" +
-      "ultCommand\022M\n\022heroLevelUpCommand\030\t \001(\01321" +
-      ".com.trans.pixel.protoc.RequestHeroLevel" +
-      "UpCommand\022K\n\021lootResultCommand\030\n \001(\01320.c" +
-      "om.trans.pixel.protoc.RequestLootResultC" +
-      "ommand\022O\n\023addHeroEquipCommand\030\013 \001(\01322.co" +
-      "m.trans.pixel.protoc.RequestAddHeroEquip",
-      "Command\022S\n\025attackRelativeCommand\030\014 \001(\01324" +
-      ".com.trans.pixel.protoc.RequestAttackRel" +
-      "ativeCommand\022[\n\031refreshRelatedUserComman" +
-      "d\030\r \001(\01328.com.trans.pixel.protoc.Request" +
-      "RefreshRelatedUserCommand\022M\n\022lotteryHero" +
-      "Command\030\016 \001(\01321.com.trans.pixel.protoc.R" +
-      "equestLotteryHeroCommand\022Y\n\030getLadderRan" +
-      "kListCommand\030\017 \001(\01327.com.trans.pixel.pro" +
-      "toc.RequestGetLadderRankListCommand\022a\n\034g" +
-      "etUserLadderRankListCommand\030\020 \001(\0132;.com.",
-      "trans.pixel.protoc.RequestGetUserLadderR" +
-      "ankListCommand\022W\n\027attackLadderModeComman" +
-      "d\030\021 \001(\01326.com.trans.pixel.protoc.Request" +
-      "AttackLadderModeCommand\022U\n\026getUserMailLi" +
-      "stCommand\030\022 \001(\01325.com.trans.pixel.protoc" +
-      ".RequestGetUserMailListCommand\022G\n\017readMa" +
-      "ilCommand\030\023 \001(\0132..com.trans.pixel.protoc" +
-      ".RequestReadMailCommand\022K\n\021deleteMailCom" +
-      "mand\030\024 \001(\01320.com.trans.pixel.protoc.Requ" +
-      "estDeleteMailCommand\022I\n\020addFriendCommand",
-      "\030\025 \001(\0132/.com.trans.pixel.protoc.RequestA" +
-      "ddFriendCommand\022Q\n\024receiveFriendCommand\030" +
-      "\026 \001(\01323.com.trans.pixel.protoc.RequestRe" +
-      "ceiveFriendCommand\022O\n\023lotteryEquipComman" +
-      "d\030\027 \001(\01322.com.trans.pixel.protoc.Request" +
-      "LotteryEquipCommand\022O\n\023equipLevelUpComma" +
-      "nd\030\030 \001(\01322.com.trans.pixel.protoc.Reques" +
-      "tEquipLevelUpCommand\022J\n\rreceiveFriend\030\031 " +
-      "\001(\01323.com.trans.pixel.protoc.RequestRece" +
-      "iveFriendCommand\022?\n\013areaCommand\030\032 \001(\0132*.",
-      "com.trans.pixel.protoc.RequestAreaComman" +
-      "d\022Q\n\024attackMonsterCommand\030\033 \001(\01323.com.tr" +
-      "ans.pixel.protoc.RequestAttackMonsterCom" +
-      "mand\022K\n\021attackBossCommand\030\034 \001(\01320.com.tr" +
-      "ans.pixel.protoc.RequestAttackBossComman" +
-      "d\022S\n\025attackResourceCommand\030\035 \001(\01324.com.t" +
-      "rans.pixel.protoc.RequestAttackResourceC" +
-      "ommand\022[\n\031attackResourceMineCommand\030\036 \001(" +
-      "\01328.com.trans.pixel.protoc.RequestAttack" +
-      "ResourceMineCommand\022K\n\021applyUnionCommand",
-      "\030\037 \001(\01320.com.trans.pixel.protoc.RequestA" +
-      "pplyUnionCommand\022M\n\022createUnionCommand\030 " +
-      " \001(\01321.com.trans.pixel.protoc.RequestCre" +
-      "ateUnionCommand\022W\n\027handleUnionApplyComma" +
-      "nd\030! \001(\01326.com.trans.pixel.protoc.Reques" +
-      "tHandleUnionApplyCommand\022O\n\023levelPrepare" +
-      "Command\030\" \001(\01322.com.trans.pixel.protoc.R" +
-      "equestLevelPrepareCommand\022K\n\021levelPauseC" +
-      "ommand\030# \001(\01320.com.trans.pixel.protoc.Re" +
-      "questLevelPauseCommand\"\200\021\n\017ResponseComma",
-      "nd\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.proto" +
-      "c.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$.com.t" +
-      "rans.pixel.protoc.ErrorCommand\022P\n\023needRe" +
-      "gisterCommand\030\003 \001(\01323.com.trans.pixel.pr" +
-      "otoc.ResponseNeedRegisterCommand\022H\n\017user" +
-      "InfoCommand\030\004 \001(\0132/.com.trans.pixel.prot" +
-      "oc.ResponseUserInfoCommand\022N\n\022levelResul" +
-      "tCommand\030\006 \001(\01322.com.trans.pixel.protoc." +
-      "ResponseLevelResultCommand\022V\n\026levelLootR" +
-      "esultCommand\030\007 \001(\01326.com.trans.pixel.pro",
-      "toc.ResponseLevelLootResultCommand\022L\n\021he" +
-      "roResultCommand\030\010 \001(\01321.com.trans.pixel." +
-      "protoc.ResponseHeroResultCommand\022L\n\021loot" +
-      "ResultCommand\030\t \001(\01321.com.trans.pixel.pr" +
-      "otoc.ResponseLootResultCommand\022T\n\025attack" +
-      "RelativeCommand\030\n \001(\01325.com.trans.pixel." +
-      "protoc.ResponseAttackRelativeCommand\022N\n\022" +
-      "getUserMineCommand\030\013 \001(\01322.com.trans.pix" +
-      "el.protoc.ResponseGetUserMineCommand\022\\\n\031" +
-      "refreshRelatedUserCommand\030\014 \001(\01329.com.tr",
-      "ans.pixel.protoc.ResponseRefreshRelatedU" +
-      "serCommand\022N\n\022lotteryHeroCommand\030\r \001(\01322" +
-      ".com.trans.pixel.protoc.ResponseLotteryH" +
-      "eroCommand\022N\n\022getUserHeroCommand\030\016 \001(\01322" +
-      ".com.trans.pixel.protoc.ResponseGetUserH" +
-      "eroCommand\022Z\n\030getLadderRankListCommand\030\017" +
-      " \001(\01328.com.trans.pixel.protoc.ResponseGe" +
-      "tLadderRankListCommand\022b\n\034getUserLadderR" +
-      "ankListCommand\030\020 \001(\0132<.com.trans.pixel.p" +
-      "rotoc.ResponseGetUserLadderRankListComma",
-      "nd\022X\n\027attackLadderModeCommand\030\021 \001(\01327.co" +
-      "m.trans.pixel.protoc.ResponseAttackLadde" +
-      "rModeCommand\022V\n\026getUserMailListCommand\030\022" +
-      " \001(\01326.com.trans.pixel.protoc.ResponseGe" +
-      "tUserMailListCommand\022L\n\021sendRewardComman" +
-      "d\030\023 \001(\01321.com.trans.pixel.protoc.Respons" +
-      "eSendRewardCommand\022F\n\016messageCommand\030\024 \001" +
-      "(\0132..com.trans.pixel.protoc.ResponseMess" +
-      "ageCommand\022Z\n\030getUserFriendListCommand\030\025" +
-      " \001(\01328.com.trans.pixel.protoc.ResponseGe",
-      "tUserFriendListCommand\022P\n\023lotteryEquipCo" +
-      "mmand\030\026 \001(\01323.com.trans.pixel.protoc.Res" +
-      "ponseLotteryEquipCommand\022M\n\020userEquipCom" +
-      "mand\030\027 \001(\01323.com.trans.pixel.protoc.Resp" +
-      "onseGetUserEquipCommand\022@\n\013areaCommand\030\030" +
-      " \001(\0132+.com.trans.pixel.protoc.ResponseAr" +
-      "eaCommand\022J\n\020userLevelCommand\030\031 \001(\01320.co" +
-      "m.trans.pixel.protoc.ResponseUserLevelCo" +
-      "mmand\022R\n\024userLootLevelCommand\030\032 \001(\01324.co" +
-      "m.trans.pixel.protoc.ResponseUserLootLev",
-      "elCommand\022J\n\020unionInfoCommand\030\033 \001(\01320.co" +
-      "m.trans.pixel.protoc.ResponseUnionInfoCo" +
-      "mmand\022J\n\020unionListCommand\030\034 \001(\01320.com.tr" +
-      "ans.pixel.protoc.ResponseUnionListComman" +
-      "d"
+      "ns.pixel.protoc.AreaMonster\"<\n\010AreaMode\022" +
+      "0\n\006region\030\001 \003(\0132 .com.trans.pixel.protoc" +
+      ".AreaInfo\"N\n\010UserRank\022\016\n\006userId\030\001 \002(\003\022\020\n" +
+      "\010userName\030\002 \002(\t\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamRec" +
+      "ord\030\004 \002(\t\"F\n\nUserFriend\022\020\n\010friendId\030\001 \002(" +
+      "\003\022\022\n\nfriendName\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(" +
+      "\t\"\303\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022" +
+      "\n\nfromUserId\030\003 \002(\003\022\024\n\014fromUserName\030\004 \002(\t" +
+      "\022\014\n\004type\030\005 \002(\005\022\021\n\tstartDate\030\006 \002(\t\022\017\n\007end",
+      "Date\030\007 \002(\t\022\017\n\007content\030\010 \002(\t\0222\n\006reward\030\t " +
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"" +
+      "D\n\010MailList\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132" +
+      "\034.com.trans.pixel.protoc.Mail\"-\n\014ErrorCo" +
+      "mmand\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033" +
+      "ResponseNeedRegisterCommand\"*\n\026RequestRe" +
+      "gisterCommand\022\020\n\010userName\030\001 \002(\t\"\025\n\023Reque" +
+      "stLoginCommand\"I\n\027ResponseUserInfoComman" +
+      "d\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.protoc" +
+      ".UserInfo\"\201\001\n\024ResponsePopupCommand\022\021\n\tpo",
+      "pScreen\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 " +
+      "\002(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(" +
+      "\t\022\022\n\nnoButtonID\030\006 \001(\t\"+\n\030RequestLevelSta" +
+      "rtCommand\022\017\n\007levelId\030\001 \002(\005\"-\n\032RequestLev" +
+      "elPrepareCommand\022\017\n\007levelId\030\001 \002(\005\"\032\n\030Req" +
+      "uestLevelPauseCommand\"Q\n\031RequestLevelRes" +
+      "ultCommand\022\017\n\007levelId\030\001 \002(\005\022\020\n\010teamInfo\030" +
+      "\002 \002(\t\022\021\n\tfightInfo\030\003 \002(\t\"P\n\032ResponseLeve" +
+      "lResultCommand\0222\n\006reward\030\001 \003(\0132\".com.tra" +
+      "ns.pixel.protoc.RewardInfo\"/\n\034RequestLev",
+      "elLootStartCommand\022\017\n\007levelId\030\001 \002(\005\"\037\n\035R" +
+      "equestLevelLootResultCommand\"T\n\036Response" +
+      "LevelLootResultCommand\0222\n\006reward\030\001 \003(\0132\"" +
+      ".com.trans.pixel.protoc.RewardInfo\":\n\030Re" +
+      "questUpdateTeamCommand\022\014\n\004mode\030\001 \002(\005\022\020\n\010" +
+      "teamInfo\030\002 \002(\t\"P\n\031RequestHeroLevelUpComm" +
+      "and\022\023\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005" +
+      "\022\016\n\006infoId\030\003 \002(\005\"_\n\031ResponseHeroResultCo" +
+      "mmand\022\016\n\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \002(\0132" +
+      " .com.trans.pixel.protoc.HeroInfo\"\032\n\030Req",
+      "uestLootResultCommand\"L\n\031ResponseLootRes" +
+      "ultCommand\022\014\n\004gold\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n" +
+      "\014lastLootTime\030\003 \001(\005\"K\n\032RequestAddHeroEqu" +
+      "ipCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(" +
+      "\005\022\r\n\005armId\030\003 \001(\005\"^\n\032RequestEquipLevelUpC" +
+      "ommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r" +
+      "\n\005armId\030\003 \002(\005\022\021\n\tlevelUpId\030\004 \002(\005\"=\n\034Requ" +
+      "estAttackRelativeCommand\022\r\n\005mapId\030\001 \002(\005\022" +
+      "\016\n\006mineId\030\002 \002(\005\"b\n\035ResponseAttackRelativ" +
+      "eCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022",
+      "\023\n\013preventTime\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n\032R" +
+      "esponseGetUserMineCommand\0222\n\010userMine\030\001 " +
+      "\003(\0132 .com.trans.pixel.protoc.UserMine\"A\n" +
+      " RequestRefreshRelatedUserCommand\022\r\n\005map" +
+      "Id\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"M\n!ResponseRefr" +
+      "eshRelatedUserCommand\022\021\n\tleftTimes\030\001 \002(\005" +
+      "\022\025\n\rrelatedUserId\030\002 \002(\003\")\n\031RequestLotter" +
+      "yHeroCommand\022\014\n\004type\030\001 \002(\005\"q\n\032ResponseLo" +
+      "tteryHeroCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030" +
+      "\002 \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pi",
+      "xel.protoc.RewardInfo\"*\n\032RequestLotteryE" +
+      "quipCommand\022\014\n\004type\030\001 \002(\005\"r\n\033ResponseLot" +
+      "teryEquipCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030" +
+      "\002 \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo\"P\n\032ResponseGetUser" +
+      "HeroCommand\0222\n\010userHero\030\001 \003(\0132 .com.tran" +
+      "s.pixel.protoc.UserHero\"S\n\033ResponseGetUs" +
+      "erEquipCommand\0224\n\tuserEquip\030\001 \003(\0132!.com." +
+      "trans.pixel.protoc.UserEquip\"!\n\037RequestG" +
+      "etLadderRankListCommand\"%\n#RequestGetUse",
+      "rLadderRankListCommand\"V\n ResponseGetLad" +
+      "derRankListCommand\0222\n\010userRank\030\001 \003(\0132 .c" +
+      "om.trans.pixel.protoc.UserRank\"Z\n$Respon" +
+      "seGetUserLadderRankListCommand\0222\n\010userRa" +
+      "nk\030\001 \003(\0132 .com.trans.pixel.protoc.UserRa" +
+      "nk\".\n\036RequestAttackLadderModeCommand\022\014\n\004" +
+      "rank\030\001 \002(\003\";\n\037ResponseAttackLadderModeCo" +
+      "mmand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035Reque" +
+      "stGetUserMailListCommand\022\014\n\004type\030\001 \002(\005\"T" +
+      "\n\036ResponseGetUserMailListCommand\0222\n\010mail",
+      "List\030\001 \003(\0132 .com.trans.pixel.protoc.Mail" +
+      "List\"2\n\026RequestReadMailCommand\022\014\n\004type\030\001" +
+      " \002(\005\022\n\n\002id\030\002 \003(\005\"3\n\026ResponseMessageComma" +
+      "nd\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031Respons" +
+      "eSendRewardCommand\0222\n\006reward\030\001 \003(\0132\".com" +
+      ".trans.pixel.protoc.RewardInfo\"4\n\030Reques" +
+      "tDeleteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002" +
+      " \003(\005\")\n\027RequestAddFriendCommand\022\016\n\006userI" +
+      "d\030\001 \002(\003\")\n\033RequestReceiveFriendCommand\022\n" +
+      "\n\002id\030\001 \003(\005\"V\n ResponseGetUserFriendListC",
+      "ommand\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel" +
+      ".protoc.UserFriend\"\024\n\022RequestAreaCommand" +
+      "\"F\n\023ResponseAreaCommand\022/\n\005areas\030\001 \003(\0132 " +
+      ".com.trans.pixel.protoc.AreaInfo\")\n\033Requ" +
+      "estAttackMonsterCommand\022\n\n\002id\030\001 \002(\005\"&\n\030R" +
+      "equestAttackBossCommand\022\n\n\002id\030\001 \002(\005\"*\n\034R" +
+      "equestAttackResourceCommand\022\n\n\002id\030\001 \002(\005\"" +
+      ".\n RequestAttackResourceMineCommand\022\n\n\002i" +
+      "d\030\001 \002(\005\"P\n\030ResponseUserLevelCommand\0224\n\tu" +
+      "serLevel\030\001 \002(\0132!.com.trans.pixel.protoc.",
+      "UserLevel\"\\\n\034ResponseUserLootLevelComman" +
+      "d\022<\n\ruserLootLevel\030\001 \002(\0132%.com.trans.pix" +
+      "el.protoc.UserLootLevel\"+\n\030RequestApplyU" +
+      "nionCommand\022\017\n\007unionId\030\001 \002(\005\"\033\n\031RequestC" +
+      "reateUnionCommand\" \n\036RequestHandleUnionA" +
+      "pplyCommand\"H\n\030ResponseUnionInfoCommand\022" +
+      ",\n\005union\030\001 \002(\0132\035.com.trans.pixel.protoc." +
+      "Union\"H\n\030ResponseUnionListCommand\022,\n\005uni" +
+      "on\030\001 \003(\0132\035.com.trans.pixel.protoc.Union\"" +
+      "\205\026\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com.t",
+      "rans.pixel.protoc.HeadInfo\022G\n\017registerCo" +
+      "mmand\030\002 \001(\0132..com.trans.pixel.protoc.Req" +
+      "uestRegisterCommand\022A\n\014loginCommand\030\003 \001(" +
+      "\0132+.com.trans.pixel.protoc.RequestLoginC" +
+      "ommand\022M\n\022levelResultCommand\030\004 \001(\01321.com" +
+      ".trans.pixel.protoc.RequestLevelResultCo" +
+      "mmand\022K\n\021updateTeamCommand\030\005 \001(\01320.com.t" +
+      "rans.pixel.protoc.RequestUpdateTeamComma" +
+      "nd\022K\n\021levelStartCommand\030\006 \001(\01320.com.tran" +
+      "s.pixel.protoc.RequestLevelStartCommand\022",
+      "S\n\025levelLootStartCommand\030\007 \001(\01324.com.tra" +
+      "ns.pixel.protoc.RequestLevelLootStartCom" +
+      "mand\022U\n\026levelLootResultCommand\030\010 \001(\01325.c" +
+      "om.trans.pixel.protoc.RequestLevelLootRe" +
+      "sultCommand\022M\n\022heroLevelUpCommand\030\t \001(\0132" +
+      "1.com.trans.pixel.protoc.RequestHeroLeve" +
+      "lUpCommand\022K\n\021lootResultCommand\030\n \001(\01320." +
+      "com.trans.pixel.protoc.RequestLootResult" +
+      "Command\022O\n\023addHeroEquipCommand\030\013 \001(\01322.c" +
+      "om.trans.pixel.protoc.RequestAddHeroEqui",
+      "pCommand\022S\n\025attackRelativeCommand\030\014 \001(\0132" +
+      "4.com.trans.pixel.protoc.RequestAttackRe" +
+      "lativeCommand\022[\n\031refreshRelatedUserComma" +
+      "nd\030\r \001(\01328.com.trans.pixel.protoc.Reques" +
+      "tRefreshRelatedUserCommand\022M\n\022lotteryHer" +
+      "oCommand\030\016 \001(\01321.com.trans.pixel.protoc." +
+      "RequestLotteryHeroCommand\022Y\n\030getLadderRa" +
+      "nkListCommand\030\017 \001(\01327.com.trans.pixel.pr" +
+      "otoc.RequestGetLadderRankListCommand\022a\n\034" +
+      "getUserLadderRankListCommand\030\020 \001(\0132;.com",
+      ".trans.pixel.protoc.RequestGetUserLadder" +
+      "RankListCommand\022W\n\027attackLadderModeComma" +
+      "nd\030\021 \001(\01326.com.trans.pixel.protoc.Reques" +
+      "tAttackLadderModeCommand\022U\n\026getUserMailL" +
+      "istCommand\030\022 \001(\01325.com.trans.pixel.proto" +
+      "c.RequestGetUserMailListCommand\022G\n\017readM" +
+      "ailCommand\030\023 \001(\0132..com.trans.pixel.proto" +
+      "c.RequestReadMailCommand\022K\n\021deleteMailCo" +
+      "mmand\030\024 \001(\01320.com.trans.pixel.protoc.Req" +
+      "uestDeleteMailCommand\022I\n\020addFriendComman",
+      "d\030\025 \001(\0132/.com.trans.pixel.protoc.Request" +
+      "AddFriendCommand\022Q\n\024receiveFriendCommand" +
+      "\030\026 \001(\01323.com.trans.pixel.protoc.RequestR" +
+      "eceiveFriendCommand\022O\n\023lotteryEquipComma" +
+      "nd\030\027 \001(\01322.com.trans.pixel.protoc.Reques" +
+      "tLotteryEquipCommand\022O\n\023equipLevelUpComm" +
+      "and\030\030 \001(\01322.com.trans.pixel.protoc.Reque" +
+      "stEquipLevelUpCommand\022J\n\rreceiveFriend\030\031" +
+      " \001(\01323.com.trans.pixel.protoc.RequestRec" +
+      "eiveFriendCommand\022?\n\013areaCommand\030\032 \001(\0132*",
+      ".com.trans.pixel.protoc.RequestAreaComma" +
+      "nd\022Q\n\024attackMonsterCommand\030\033 \001(\01323.com.t" +
+      "rans.pixel.protoc.RequestAttackMonsterCo" +
+      "mmand\022K\n\021attackBossCommand\030\034 \001(\01320.com.t" +
+      "rans.pixel.protoc.RequestAttackBossComma" +
+      "nd\022S\n\025attackResourceCommand\030\035 \001(\01324.com." +
+      "trans.pixel.protoc.RequestAttackResource" +
+      "Command\022[\n\031attackResourceMineCommand\030\036 \001" +
+      "(\01328.com.trans.pixel.protoc.RequestAttac" +
+      "kResourceMineCommand\022K\n\021applyUnionComman",
+      "d\030\037 \001(\01320.com.trans.pixel.protoc.Request" +
+      "ApplyUnionCommand\022M\n\022createUnionCommand\030" +
+      "  \001(\01321.com.trans.pixel.protoc.RequestCr" +
+      "eateUnionCommand\022W\n\027handleUnionApplyComm" +
+      "and\030! \001(\01326.com.trans.pixel.protoc.Reque" +
+      "stHandleUnionApplyCommand\022O\n\023levelPrepar" +
+      "eCommand\030\" \001(\01322.com.trans.pixel.protoc." +
+      "RequestLevelPrepareCommand\022K\n\021levelPause" +
+      "Command\030# \001(\01320.com.trans.pixel.protoc.R" +
+      "equestLevelPauseCommand\"\200\021\n\017ResponseComm",
+      "and\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.prot" +
+      "oc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$.com." +
+      "trans.pixel.protoc.ErrorCommand\022P\n\023needR" +
+      "egisterCommand\030\003 \001(\01323.com.trans.pixel.p" +
+      "rotoc.ResponseNeedRegisterCommand\022H\n\017use" +
+      "rInfoCommand\030\004 \001(\0132/.com.trans.pixel.pro" +
+      "toc.ResponseUserInfoCommand\022N\n\022levelResu" +
+      "ltCommand\030\006 \001(\01322.com.trans.pixel.protoc" +
+      ".ResponseLevelResultCommand\022V\n\026levelLoot" +
+      "ResultCommand\030\007 \001(\01326.com.trans.pixel.pr",
+      "otoc.ResponseLevelLootResultCommand\022L\n\021h" +
+      "eroResultCommand\030\010 \001(\01321.com.trans.pixel" +
+      ".protoc.ResponseHeroResultCommand\022L\n\021loo" +
+      "tResultCommand\030\t \001(\01321.com.trans.pixel.p" +
+      "rotoc.ResponseLootResultCommand\022T\n\025attac" +
+      "kRelativeCommand\030\n \001(\01325.com.trans.pixel" +
+      ".protoc.ResponseAttackRelativeCommand\022N\n" +
+      "\022getUserMineCommand\030\013 \001(\01322.com.trans.pi" +
+      "xel.protoc.ResponseGetUserMineCommand\022\\\n" +
+      "\031refreshRelatedUserCommand\030\014 \001(\01329.com.t",
+      "rans.pixel.protoc.ResponseRefreshRelated" +
+      "UserCommand\022N\n\022lotteryHeroCommand\030\r \001(\0132" +
+      "2.com.trans.pixel.protoc.ResponseLottery" +
+      "HeroCommand\022N\n\022getUserHeroCommand\030\016 \001(\0132" +
+      "2.com.trans.pixel.protoc.ResponseGetUser" +
+      "HeroCommand\022Z\n\030getLadderRankListCommand\030" +
+      "\017 \001(\01328.com.trans.pixel.protoc.ResponseG" +
+      "etLadderRankListCommand\022b\n\034getUserLadder" +
+      "RankListCommand\030\020 \001(\0132<.com.trans.pixel." +
+      "protoc.ResponseGetUserLadderRankListComm",
+      "and\022X\n\027attackLadderModeCommand\030\021 \001(\01327.c" +
+      "om.trans.pixel.protoc.ResponseAttackLadd" +
+      "erModeCommand\022V\n\026getUserMailListCommand\030" +
+      "\022 \001(\01326.com.trans.pixel.protoc.ResponseG" +
+      "etUserMailListCommand\022L\n\021sendRewardComma" +
+      "nd\030\023 \001(\01321.com.trans.pixel.protoc.Respon" +
+      "seSendRewardCommand\022F\n\016messageCommand\030\024 " +
+      "\001(\0132..com.trans.pixel.protoc.ResponseMes" +
+      "sageCommand\022Z\n\030getUserFriendListCommand\030" +
+      "\025 \001(\01328.com.trans.pixel.protoc.ResponseG",
+      "etUserFriendListCommand\022P\n\023lotteryEquipC" +
+      "ommand\030\026 \001(\01323.com.trans.pixel.protoc.Re" +
+      "sponseLotteryEquipCommand\022M\n\020userEquipCo" +
+      "mmand\030\027 \001(\01323.com.trans.pixel.protoc.Res" +
+      "ponseGetUserEquipCommand\022@\n\013areaCommand\030" +
+      "\030 \001(\0132+.com.trans.pixel.protoc.ResponseA" +
+      "reaCommand\022J\n\020userLevelCommand\030\031 \001(\01320.c" +
+      "om.trans.pixel.protoc.ResponseUserLevelC" +
+      "ommand\022R\n\024userLootLevelCommand\030\032 \001(\01324.c" +
+      "om.trans.pixel.protoc.ResponseUserLootLe",
+      "velCommand\022J\n\020unionInfoCommand\030\033 \001(\01320.c" +
+      "om.trans.pixel.protoc.ResponseUnionInfoC" +
+      "ommand\022J\n\020unionListCommand\030\034 \001(\01320.com.t" +
+      "rans.pixel.protoc.ResponseUnionListComma" +
+      "nd"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -69443,7 +69443,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_AreaMode_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaMode_descriptor,
-              new java.lang.String[] { "Areas", });
+              new java.lang.String[] { "Region", });
           internal_static_com_trans_pixel_protoc_UserRank_descriptor =
             getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable = new
