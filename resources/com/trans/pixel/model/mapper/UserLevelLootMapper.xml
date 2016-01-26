@@ -19,7 +19,7 @@
 	
 	<insert id="insertUserLevelLootRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelLootBean">
 		INSERT INTO user_level_loot(user_id, package_count, loot_level, level_loot_start_time, loot_time, loot_reward_record)
-		VALUES(#{userId}, #{packageCount}, #{lootLevel}, #{levelLootStartTime}, #{lootTime}, #{loot_reward_record})
+		VALUES(#{userId}, #{packageCount}, #{lootLevel}, #{levelLootStartTime}, #{lootTime}, #{lootRewardRecord})
 	</insert>
 	
 	<update id="updateUserLevelLootRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelLootBean">
