@@ -18,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
@@ -121,5 +122,9 @@ public class PushCommandService extends BaseCommandService {
 		UserLevelLootBean userLevelLoot = userLevelLootService.selectUserLevelLootRecord(user.getId());
 		builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
 		responseBuilder.setUserLootLevelCommand(builder.build());
+	}
+	
+	public void pushLadderRankListCommand(Builder responseBuilder, UserBean user) {	
+		super.handleGetUserLadderRankListCommand(responseBuilder, user);
 	}
 }

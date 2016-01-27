@@ -90,9 +90,8 @@ message Union {
 	required int32 id = 1;
 	required string unionName = 2;
 	required int32 rank = 3;
-	required int32 serverId = 4;
-	repeated UnionUser unionUser = 5;
-	repeated Mail mail = 6;
+	repeated UnionUser unionUser = 4;
+	repeated Mail mail = 5;
 }
 
 message AreaResourceMine {//区域资源开采点
@@ -435,11 +434,13 @@ message RequestApplyUnionCommand {
 }
 
 message RequestCreateUnionCommand {
-
+	required string unionName = 1;
 }
 
 message RequestHandleUnionApplyCommand {
-
+	required int32 unionId = 1;
+	required int32 mailId = 2;
+	required bool receive = 3;
 }
 
 message ResponseUnionInfoCommand {

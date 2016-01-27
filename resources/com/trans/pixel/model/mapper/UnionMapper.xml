@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UnionMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.UnionBean">
+		<id property="id" column="id" />
+		<result property="serverId" column="server_id" />
+		<result property="name" column="name" />
+		<result property="size" column="size" />
+	</resultMap>
+
+	<select id="selectUnionById" resultMap="resultMap">
+	    SELECT * from union where id=#{id}
+	</select>
+	
+	<insert id="createUnion" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.UnionBean">
+	    INSERT INTO union(server_id, name, level, size) 
+	    VALUES(#{serverId}, #{name}, #{level}, #{size})
+	</insert>
+	
+	<select id="selectUnionByServerIdAndName" resultMap="resultMap">
+	    SELECT * from union where server_id=#{serverId} and name=#{name}
+	</select>
+	
+	<update id="updateUnionn" parameterType="com.trans.pixel.model.UnionBean">
+	    UPDATE union 
+		SET level={level},
+		size=#{size}
+	</update>
+	
+</mapper>

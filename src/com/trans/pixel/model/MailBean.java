@@ -128,6 +128,7 @@ public class MailBean {
 		Mail.Builder builder = Mail.newBuilder();
 		builder.setContent(content);
 		builder.setFromUserId(fromUserId);
+		builder.setFromUserName(fromUserName);
 		builder.setId(id);
 		builder.setStartDate(startDate);
 		builder.setType(type);

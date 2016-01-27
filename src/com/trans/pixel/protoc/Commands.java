@@ -9790,62 +9790,52 @@ public final class Commands {
      */
     int getRank();
 
-    // required int32 serverId = 4;
+    // repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;
     /**
-     * <code>required int32 serverId = 4;</code>
-     */
-    boolean hasServerId();
-    /**
-     * <code>required int32 serverId = 4;</code>
-     */
-    int getServerId();
-
-    // repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     java.util.List<com.trans.pixel.protoc.Commands.UnionUser> 
         getUnionUserList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     com.trans.pixel.protoc.Commands.UnionUser getUnionUser(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     int getUnionUserCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.Commands.UnionUserOrBuilder> 
         getUnionUserOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     com.trans.pixel.protoc.Commands.UnionUserOrBuilder getUnionUserOrBuilder(
         int index);
 
-    // repeated .com.trans.pixel.protoc.Mail mail = 6;
+    // repeated .com.trans.pixel.protoc.Mail mail = 5;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     java.util.List<com.trans.pixel.protoc.Commands.Mail> 
         getMailList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     com.trans.pixel.protoc.Commands.Mail getMail(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     int getMailCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
         getMailOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
         int index);
@@ -9916,23 +9906,18 @@ public final class Commands {
               rank_ = input.readInt32();
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              serverId_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 unionUser_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.UnionUser>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000008;
               }
               unionUser_.add(input.readMessage(com.trans.pixel.protoc.Commands.UnionUser.PARSER, extensionRegistry));
               break;
             }
-            case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 mail_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.Mail>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000010;
               }
               mail_.add(input.readMessage(com.trans.pixel.protoc.Commands.Mail.PARSER, extensionRegistry));
               break;
@@ -9945,10 +9930,10 @@ public final class Commands {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           unionUser_ = java.util.Collections.unmodifiableList(unionUser_);
         }
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           mail_ = java.util.Collections.unmodifiableList(mail_);
         }
         this.unknownFields = unknownFields.build();
@@ -10058,88 +10043,72 @@ public final class Commands {
       return rank_;
     }
 
-    // required int32 serverId = 4;
-    public static final int SERVERID_FIELD_NUMBER = 4;
-    private int serverId_;
-    /**
-     * <code>required int32 serverId = 4;</code>
-     */
-    public boolean hasServerId() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required int32 serverId = 4;</code>
-     */
-    public int getServerId() {
-      return serverId_;
-    }
-
-    // repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;
-    public static final int UNIONUSER_FIELD_NUMBER = 5;
+    // repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;
+    public static final int UNIONUSER_FIELD_NUMBER = 4;
     private java.util.List<com.trans.pixel.protoc.Commands.UnionUser> unionUser_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     public java.util.List<com.trans.pixel.protoc.Commands.UnionUser> getUnionUserList() {
       return unionUser_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Commands.UnionUserOrBuilder> 
         getUnionUserOrBuilderList() {
       return unionUser_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     public int getUnionUserCount() {
       return unionUser_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     public com.trans.pixel.protoc.Commands.UnionUser getUnionUser(int index) {
       return unionUser_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
      */
     public com.trans.pixel.protoc.Commands.UnionUserOrBuilder getUnionUserOrBuilder(
         int index) {
       return unionUser_.get(index);
     }
 
-    // repeated .com.trans.pixel.protoc.Mail mail = 6;
-    public static final int MAIL_FIELD_NUMBER = 6;
+    // repeated .com.trans.pixel.protoc.Mail mail = 5;
+    public static final int MAIL_FIELD_NUMBER = 5;
     private java.util.List<com.trans.pixel.protoc.Commands.Mail> mail_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     public java.util.List<com.trans.pixel.protoc.Commands.Mail> getMailList() {
       return mail_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
         getMailOrBuilderList() {
       return mail_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     public int getMailCount() {
       return mail_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     public com.trans.pixel.protoc.Commands.Mail getMail(int index) {
       return mail_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+     * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
      */
     public com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
         int index) {
@@ -10150,7 +10119,6 @@ public final class Commands {
       id_ = 0;
       unionName_ = "";
       rank_ = 0;
-      serverId_ = 0;
       unionUser_ = java.util.Collections.emptyList();
       mail_ = java.util.Collections.emptyList();
     }
@@ -10168,10 +10136,6 @@ public final class Commands {
         return false;
       }
       if (!hasRank()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasServerId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -10203,14 +10167,11 @@ public final class Commands {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, rank_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, serverId_);
-      }
       for (int i = 0; i < unionUser_.size(); i++) {
-        output.writeMessage(5, unionUser_.get(i));
+        output.writeMessage(4, unionUser_.get(i));
       }
       for (int i = 0; i < mail_.size(); i++) {
-        output.writeMessage(6, mail_.get(i));
+        output.writeMessage(5, mail_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -10233,17 +10194,13 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, rank_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, serverId_);
-      }
       for (int i = 0; i < unionUser_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, unionUser_.get(i));
+          .computeMessageSize(4, unionUser_.get(i));
       }
       for (int i = 0; i < mail_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, mail_.get(i));
+          .computeMessageSize(5, mail_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10369,17 +10326,15 @@ public final class Commands {
         bitField0_ = (bitField0_ & ~0x00000002);
         rank_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        serverId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         if (unionUserBuilder_ == null) {
           unionUser_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           unionUserBuilder_.clear();
         }
         if (mailBuilder_ == null) {
           mail_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           mailBuilder_.clear();
         }
@@ -10423,23 +10378,19 @@ public final class Commands {
           to_bitField0_ |= 0x00000004;
         }
         result.rank_ = rank_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.serverId_ = serverId_;
         if (unionUserBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             unionUser_ = java.util.Collections.unmodifiableList(unionUser_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.unionUser_ = unionUser_;
         } else {
           result.unionUser_ = unionUserBuilder_.build();
         }
         if (mailBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             mail_ = java.util.Collections.unmodifiableList(mail_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.mail_ = mail_;
         } else {
@@ -10472,14 +10423,11 @@ public final class Commands {
         if (other.hasRank()) {
           setRank(other.getRank());
         }
-        if (other.hasServerId()) {
-          setServerId(other.getServerId());
-        }
         if (unionUserBuilder_ == null) {
           if (!other.unionUser_.isEmpty()) {
             if (unionUser_.isEmpty()) {
               unionUser_ = other.unionUser_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureUnionUserIsMutable();
               unionUser_.addAll(other.unionUser_);
@@ -10492,7 +10440,7 @@ public final class Commands {
               unionUserBuilder_.dispose();
               unionUserBuilder_ = null;
               unionUser_ = other.unionUser_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
               unionUserBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getUnionUserFieldBuilder() : null;
@@ -10505,7 +10453,7 @@ public final class Commands {
           if (!other.mail_.isEmpty()) {
             if (mail_.isEmpty()) {
               mail_ = other.mail_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureMailIsMutable();
               mail_.addAll(other.mail_);
@@ -10518,7 +10466,7 @@ public final class Commands {
               mailBuilder_.dispose();
               mailBuilder_ = null;
               mail_ = other.mail_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000010);
               mailBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getMailFieldBuilder() : null;
@@ -10541,10 +10489,6 @@ public final class Commands {
           return false;
         }
         if (!hasRank()) {
-          
-          return false;
-        }
-        if (!hasServerId()) {
           
           return false;
         }
@@ -10722,46 +10666,13 @@ public final class Commands {
         return this;
       }
 
-      // required int32 serverId = 4;
-      private int serverId_ ;
-      /**
-       * <code>required int32 serverId = 4;</code>
-       */
-      public boolean hasServerId() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required int32 serverId = 4;</code>
-       */
-      public int getServerId() {
-        return serverId_;
-      }
-      /**
-       * <code>required int32 serverId = 4;</code>
-       */
-      public Builder setServerId(int value) {
-        bitField0_ |= 0x00000008;
-        serverId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 serverId = 4;</code>
-       */
-      public Builder clearServerId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        serverId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;
+      // repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;
       private java.util.List<com.trans.pixel.protoc.Commands.UnionUser> unionUser_ =
         java.util.Collections.emptyList();
       private void ensureUnionUserIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           unionUser_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.UnionUser>(unionUser_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -10769,7 +10680,7 @@ public final class Commands {
           com.trans.pixel.protoc.Commands.UnionUser, com.trans.pixel.protoc.Commands.UnionUser.Builder, com.trans.pixel.protoc.Commands.UnionUserOrBuilder> unionUserBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.UnionUser> getUnionUserList() {
         if (unionUserBuilder_ == null) {
@@ -10779,7 +10690,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public int getUnionUserCount() {
         if (unionUserBuilder_ == null) {
@@ -10789,7 +10700,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public com.trans.pixel.protoc.Commands.UnionUser getUnionUser(int index) {
         if (unionUserBuilder_ == null) {
@@ -10799,7 +10710,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder setUnionUser(
           int index, com.trans.pixel.protoc.Commands.UnionUser value) {
@@ -10816,7 +10727,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder setUnionUser(
           int index, com.trans.pixel.protoc.Commands.UnionUser.Builder builderForValue) {
@@ -10830,7 +10741,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder addUnionUser(com.trans.pixel.protoc.Commands.UnionUser value) {
         if (unionUserBuilder_ == null) {
@@ -10846,7 +10757,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder addUnionUser(
           int index, com.trans.pixel.protoc.Commands.UnionUser value) {
@@ -10863,7 +10774,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder addUnionUser(
           com.trans.pixel.protoc.Commands.UnionUser.Builder builderForValue) {
@@ -10877,7 +10788,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder addUnionUser(
           int index, com.trans.pixel.protoc.Commands.UnionUser.Builder builderForValue) {
@@ -10891,7 +10802,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder addAllUnionUser(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.UnionUser> values) {
@@ -10905,12 +10816,12 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder clearUnionUser() {
         if (unionUserBuilder_ == null) {
           unionUser_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           unionUserBuilder_.clear();
@@ -10918,7 +10829,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public Builder removeUnionUser(int index) {
         if (unionUserBuilder_ == null) {
@@ -10931,14 +10842,14 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public com.trans.pixel.protoc.Commands.UnionUser.Builder getUnionUserBuilder(
           int index) {
         return getUnionUserFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public com.trans.pixel.protoc.Commands.UnionUserOrBuilder getUnionUserOrBuilder(
           int index) {
@@ -10948,7 +10859,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Commands.UnionUserOrBuilder> 
            getUnionUserOrBuilderList() {
@@ -10959,14 +10870,14 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public com.trans.pixel.protoc.Commands.UnionUser.Builder addUnionUserBuilder() {
         return getUnionUserFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Commands.UnionUser.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public com.trans.pixel.protoc.Commands.UnionUser.Builder addUnionUserBuilder(
           int index) {
@@ -10974,7 +10885,7 @@ public final class Commands {
             index, com.trans.pixel.protoc.Commands.UnionUser.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionUser unionUser = 4;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.UnionUser.Builder> 
            getUnionUserBuilderList() {
@@ -10987,7 +10898,7 @@ public final class Commands {
           unionUserBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.UnionUser, com.trans.pixel.protoc.Commands.UnionUser.Builder, com.trans.pixel.protoc.Commands.UnionUserOrBuilder>(
                   unionUser_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           unionUser_ = null;
@@ -10995,13 +10906,13 @@ public final class Commands {
         return unionUserBuilder_;
       }
 
-      // repeated .com.trans.pixel.protoc.Mail mail = 6;
+      // repeated .com.trans.pixel.protoc.Mail mail = 5;
       private java.util.List<com.trans.pixel.protoc.Commands.Mail> mail_ =
         java.util.Collections.emptyList();
       private void ensureMailIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           mail_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.Mail>(mail_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -11009,7 +10920,7 @@ public final class Commands {
           com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder> mailBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.Mail> getMailList() {
         if (mailBuilder_ == null) {
@@ -11019,7 +10930,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public int getMailCount() {
         if (mailBuilder_ == null) {
@@ -11029,7 +10940,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.Mail getMail(int index) {
         if (mailBuilder_ == null) {
@@ -11039,7 +10950,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder setMail(
           int index, com.trans.pixel.protoc.Commands.Mail value) {
@@ -11056,7 +10967,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder setMail(
           int index, com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
@@ -11070,7 +10981,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder addMail(com.trans.pixel.protoc.Commands.Mail value) {
         if (mailBuilder_ == null) {
@@ -11086,7 +10997,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder addMail(
           int index, com.trans.pixel.protoc.Commands.Mail value) {
@@ -11103,7 +11014,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder addMail(
           com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
@@ -11117,7 +11028,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder addMail(
           int index, com.trans.pixel.protoc.Commands.Mail.Builder builderForValue) {
@@ -11131,7 +11042,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder addAllMail(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.Mail> values) {
@@ -11145,12 +11056,12 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder clearMail() {
         if (mailBuilder_ == null) {
           mail_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           mailBuilder_.clear();
@@ -11158,7 +11069,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public Builder removeMail(int index) {
         if (mailBuilder_ == null) {
@@ -11171,14 +11082,14 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.Mail.Builder getMailBuilder(
           int index) {
         return getMailFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.MailOrBuilder getMailOrBuilder(
           int index) {
@@ -11188,7 +11099,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Commands.MailOrBuilder> 
            getMailOrBuilderList() {
@@ -11199,14 +11110,14 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.Mail.Builder addMailBuilder() {
         return getMailFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Commands.Mail.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public com.trans.pixel.protoc.Commands.Mail.Builder addMailBuilder(
           int index) {
@@ -11214,7 +11125,7 @@ public final class Commands {
             index, com.trans.pixel.protoc.Commands.Mail.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Mail mail = 6;</code>
+       * <code>repeated .com.trans.pixel.protoc.Mail mail = 5;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.Mail.Builder> 
            getMailBuilderList() {
@@ -11227,7 +11138,7 @@ public final class Commands {
           mailBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.Mail, com.trans.pixel.protoc.Commands.Mail.Builder, com.trans.pixel.protoc.Commands.MailOrBuilder>(
                   mail_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           mail_ = null;
@@ -53647,6 +53558,21 @@ public final class Commands {
 
   public interface RequestCreateUnionCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required string unionName = 1;
+    /**
+     * <code>required string unionName = 1;</code>
+     */
+    boolean hasUnionName();
+    /**
+     * <code>required string unionName = 1;</code>
+     */
+    java.lang.String getUnionName();
+    /**
+     * <code>required string unionName = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUnionNameBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCreateUnionCommand}
@@ -53681,6 +53607,7 @@ public final class Commands {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -53696,6 +53623,11 @@ public final class Commands {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              unionName_ = input.readBytes();
               break;
             }
           }
@@ -53737,13 +53669,62 @@ public final class Commands {
       return PARSER;
     }
 
+    private int bitField0_;
+    // required string unionName = 1;
+    public static final int UNIONNAME_FIELD_NUMBER = 1;
+    private java.lang.Object unionName_;
+    /**
+     * <code>required string unionName = 1;</code>
+     */
+    public boolean hasUnionName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string unionName = 1;</code>
+     */
+    public java.lang.String getUnionName() {
+      java.lang.Object ref = unionName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          unionName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string unionName = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUnionNameBytes() {
+      java.lang.Object ref = unionName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        unionName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
+      unionName_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasUnionName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -53751,6 +53732,9 @@ public final class Commands {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getUnionNameBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -53760,6 +53744,10 @@ public final class Commands {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getUnionNameBytes());
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -53876,6 +53864,8 @@ public final class Commands {
 
       public Builder clear() {
         super.clear();
+        unionName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -53902,6 +53892,13 @@ public final class Commands {
 
       public com.trans.pixel.protoc.Commands.RequestCreateUnionCommand buildPartial() {
         com.trans.pixel.protoc.Commands.RequestCreateUnionCommand result = new com.trans.pixel.protoc.Commands.RequestCreateUnionCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.unionName_ = unionName_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -53917,11 +53914,20 @@ public final class Commands {
 
       public Builder mergeFrom(com.trans.pixel.protoc.Commands.RequestCreateUnionCommand other) {
         if (other == com.trans.pixel.protoc.Commands.RequestCreateUnionCommand.getDefaultInstance()) return this;
+        if (other.hasUnionName()) {
+          bitField0_ |= 0x00000001;
+          unionName_ = other.unionName_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasUnionName()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -53942,6 +53948,81 @@ public final class Commands {
         }
         return this;
       }
+      private int bitField0_;
+
+      // required string unionName = 1;
+      private java.lang.Object unionName_ = "";
+      /**
+       * <code>required string unionName = 1;</code>
+       */
+      public boolean hasUnionName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string unionName = 1;</code>
+       */
+      public java.lang.String getUnionName() {
+        java.lang.Object ref = unionName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          unionName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string unionName = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUnionNameBytes() {
+        java.lang.Object ref = unionName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          unionName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string unionName = 1;</code>
+       */
+      public Builder setUnionName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        unionName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string unionName = 1;</code>
+       */
+      public Builder clearUnionName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        unionName_ = getDefaultInstance().getUnionName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string unionName = 1;</code>
+       */
+      public Builder setUnionNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        unionName_ = value;
+        onChanged();
+        return this;
+      }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCreateUnionCommand)
     }
@@ -53956,6 +54037,36 @@ public final class Commands {
 
   public interface RequestHandleUnionApplyCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 unionId = 1;
+    /**
+     * <code>required int32 unionId = 1;</code>
+     */
+    boolean hasUnionId();
+    /**
+     * <code>required int32 unionId = 1;</code>
+     */
+    int getUnionId();
+
+    // required int32 mailId = 2;
+    /**
+     * <code>required int32 mailId = 2;</code>
+     */
+    boolean hasMailId();
+    /**
+     * <code>required int32 mailId = 2;</code>
+     */
+    int getMailId();
+
+    // required bool receive = 3;
+    /**
+     * <code>required bool receive = 3;</code>
+     */
+    boolean hasReceive();
+    /**
+     * <code>required bool receive = 3;</code>
+     */
+    boolean getReceive();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestHandleUnionApplyCommand}
@@ -53990,6 +54101,7 @@ public final class Commands {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -54005,6 +54117,21 @@ public final class Commands {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              unionId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              mailId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              receive_ = input.readBool();
               break;
             }
           }
@@ -54046,13 +54173,77 @@ public final class Commands {
       return PARSER;
     }
 
+    private int bitField0_;
+    // required int32 unionId = 1;
+    public static final int UNIONID_FIELD_NUMBER = 1;
+    private int unionId_;
+    /**
+     * <code>required int32 unionId = 1;</code>
+     */
+    public boolean hasUnionId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 unionId = 1;</code>
+     */
+    public int getUnionId() {
+      return unionId_;
+    }
+
+    // required int32 mailId = 2;
+    public static final int MAILID_FIELD_NUMBER = 2;
+    private int mailId_;
+    /**
+     * <code>required int32 mailId = 2;</code>
+     */
+    public boolean hasMailId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 mailId = 2;</code>
+     */
+    public int getMailId() {
+      return mailId_;
+    }
+
+    // required bool receive = 3;
+    public static final int RECEIVE_FIELD_NUMBER = 3;
+    private boolean receive_;
+    /**
+     * <code>required bool receive = 3;</code>
+     */
+    public boolean hasReceive() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required bool receive = 3;</code>
+     */
+    public boolean getReceive() {
+      return receive_;
+    }
+
     private void initFields() {
+      unionId_ = 0;
+      mailId_ = 0;
+      receive_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasUnionId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMailId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasReceive()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -54060,6 +54251,15 @@ public final class Commands {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, unionId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, mailId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(3, receive_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -54069,6 +54269,18 @@ public final class Commands {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, unionId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, mailId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, receive_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -54185,6 +54397,12 @@ public final class Commands {
 
       public Builder clear() {
         super.clear();
+        unionId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        mailId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        receive_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -54211,6 +54429,21 @@ public final class Commands {
 
       public com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand buildPartial() {
         com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand result = new com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.unionId_ = unionId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.mailId_ = mailId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.receive_ = receive_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -54226,11 +54459,32 @@ public final class Commands {
 
       public Builder mergeFrom(com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand other) {
         if (other == com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand.getDefaultInstance()) return this;
+        if (other.hasUnionId()) {
+          setUnionId(other.getUnionId());
+        }
+        if (other.hasMailId()) {
+          setMailId(other.getMailId());
+        }
+        if (other.hasReceive()) {
+          setReceive(other.getReceive());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasUnionId()) {
+          
+          return false;
+        }
+        if (!hasMailId()) {
+          
+          return false;
+        }
+        if (!hasReceive()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -54249,6 +54503,106 @@ public final class Commands {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 unionId = 1;
+      private int unionId_ ;
+      /**
+       * <code>required int32 unionId = 1;</code>
+       */
+      public boolean hasUnionId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 unionId = 1;</code>
+       */
+      public int getUnionId() {
+        return unionId_;
+      }
+      /**
+       * <code>required int32 unionId = 1;</code>
+       */
+      public Builder setUnionId(int value) {
+        bitField0_ |= 0x00000001;
+        unionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 unionId = 1;</code>
+       */
+      public Builder clearUnionId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        unionId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 mailId = 2;
+      private int mailId_ ;
+      /**
+       * <code>required int32 mailId = 2;</code>
+       */
+      public boolean hasMailId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 mailId = 2;</code>
+       */
+      public int getMailId() {
+        return mailId_;
+      }
+      /**
+       * <code>required int32 mailId = 2;</code>
+       */
+      public Builder setMailId(int value) {
+        bitField0_ |= 0x00000002;
+        mailId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 mailId = 2;</code>
+       */
+      public Builder clearMailId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        mailId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool receive = 3;
+      private boolean receive_ ;
+      /**
+       * <code>required bool receive = 3;</code>
+       */
+      public boolean hasReceive() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required bool receive = 3;</code>
+       */
+      public boolean getReceive() {
+        return receive_;
+      }
+      /**
+       * <code>required bool receive = 3;</code>
+       */
+      public Builder setReceive(boolean value) {
+        bitField0_ |= 0x00000004;
+        receive_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool receive = 3;</code>
+       */
+      public Builder clearReceive() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        receive_ = false;
+        onChanged();
         return this;
       }
 
@@ -57465,6 +57819,18 @@ public final class Commands {
           return false;
         }
       }
+      if (hasCreateUnionCommand()) {
+        if (!getCreateUnionCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasHandleUnionApplyCommand()) {
+        if (!getHandleUnionApplyCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasLevelPrepareCommand()) {
         if (!getLevelPrepareCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -58666,6 +59032,18 @@ public final class Commands {
         }
         if (hasApplyUnionCommand()) {
           if (!getApplyUnionCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasCreateUnionCommand()) {
+          if (!getCreateUnionCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasHandleUnionApplyCommand()) {
+          if (!getHandleUnionApplyCommand().isInitialized()) {
             
             return false;
           }
@@ -69074,262 +69452,263 @@ public final class Commands {
       "(\005\022\032\n\022levelLootStartTime\030\003 \002(\005\022\020\n\010lootTi" +
       "me\030\004 \002(\t\022\030\n\020lootRewardRecord\030\005 \002(\t\"L\n\tUn" +
       "ionUser\022\016\n\006userId\030\001 \002(\003\022\020\n\010userName\030\002 \002(" +
-      "\t\022\016\n\006record\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\"\250\001\n\005Uni",
+      "\t\022\016\n\006record\030\003 \002(\t\022\r\n\005level\030\004 \002(\005\"\226\001\n\005Uni",
       "on\022\n\n\002id\030\001 \002(\005\022\021\n\tunionName\030\002 \002(\t\022\014\n\004ran" +
-      "k\030\003 \002(\005\022\020\n\010serverId\030\004 \002(\005\0224\n\tunionUser\030\005" +
-      " \003(\0132!.com.trans.pixel.protoc.UnionUser\022" +
-      "*\n\004mail\030\006 \003(\0132\034.com.trans.pixel.protoc.M" +
-      "ail\"r\n\020AreaResourceMine\022\n\n\002id\030\001 \002(\005\022\022\n\nr" +
-      "esourceId\030\002 \001(\005\022\014\n\004time\030\003 \002(\005\022\020\n\010rewardI" +
-      "d\030\004 \002(\005\022\r\n\005owner\030\005 \001(\t\022\017\n\007endtime\030\006 \001(\005\"" +
-      "\265\001\n\014AreaResource\022\n\n\002id\030\001 \002(\005\022\016\n\006areaId\030\002" +
-      " \001(\005\022\016\n\006bossid\030\003 \002(\005\0227\n\005mines\030\004 \003(\0132(.co" +
-      "m.trans.pixel.protoc.AreaResourceMine\022\r\n",
-      "\005state\030\005 \001(\t\022\020\n\010nexttime\030\006 \001(\005\022\r\n\005owner\030" +
-      "\007 \001(\t\022\020\n\010rewardId\030\010 \001(\005\"m\n\010AreaBoss\022\n\n\002i" +
-      "d\030\001 \002(\005\022\016\n\006areaId\030\002 \001(\005\022\017\n\007rewards\030\003 \003(\005" +
-      "\022\020\n\010rewardId\030\004 \003(\005\022\r\n\005owner\030\005 \001(\t\022\023\n\013lea" +
-      "derboard\030\006 \003(\t\"J\n\013AreaMonster\022\n\n\002id\030\001 \002(" +
-      "\005\022\016\n\006areaId\030\002 \001(\005\022\r\n\005level\030\003 \002(\005\022\020\n\010rewa" +
-      "rdId\030\004 \003(\005\"\326\001\n\010AreaInfo\022\n\n\002id\030\001 \002(\005\022\014\n\004n" +
-      "ame\030\002 \002(\t\022\016\n\006zhanli\030\003 \002(\005\0227\n\tresources\030\004" +
-      " \003(\0132$.com.trans.pixel.protoc.AreaResour" +
-      "ce\0220\n\006bosses\030\005 \003(\0132 .com.trans.pixel.pro",
-      "toc.AreaBoss\0225\n\010monsters\030\006 \003(\0132#.com.tra" +
-      "ns.pixel.protoc.AreaMonster\"<\n\010AreaMode\022" +
-      "0\n\006region\030\001 \003(\0132 .com.trans.pixel.protoc" +
-      ".AreaInfo\"N\n\010UserRank\022\016\n\006userId\030\001 \002(\003\022\020\n" +
-      "\010userName\030\002 \002(\t\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamRec" +
-      "ord\030\004 \002(\t\"F\n\nUserFriend\022\020\n\010friendId\030\001 \002(" +
-      "\003\022\022\n\nfriendName\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(" +
-      "\t\"\303\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022" +
-      "\n\nfromUserId\030\003 \002(\003\022\024\n\014fromUserName\030\004 \002(\t" +
-      "\022\014\n\004type\030\005 \002(\005\022\021\n\tstartDate\030\006 \002(\t\022\017\n\007end",
-      "Date\030\007 \002(\t\022\017\n\007content\030\010 \002(\t\0222\n\006reward\030\t " +
-      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"" +
-      "D\n\010MailList\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132" +
-      "\034.com.trans.pixel.protoc.Mail\"-\n\014ErrorCo" +
-      "mmand\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033" +
-      "ResponseNeedRegisterCommand\"*\n\026RequestRe" +
-      "gisterCommand\022\020\n\010userName\030\001 \002(\t\"\025\n\023Reque" +
-      "stLoginCommand\"I\n\027ResponseUserInfoComman" +
-      "d\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.protoc" +
-      ".UserInfo\"\201\001\n\024ResponsePopupCommand\022\021\n\tpo",
-      "pScreen\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 " +
-      "\002(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(" +
-      "\t\022\022\n\nnoButtonID\030\006 \001(\t\"+\n\030RequestLevelSta" +
-      "rtCommand\022\017\n\007levelId\030\001 \002(\005\"-\n\032RequestLev" +
-      "elPrepareCommand\022\017\n\007levelId\030\001 \002(\005\"\032\n\030Req" +
-      "uestLevelPauseCommand\"Q\n\031RequestLevelRes" +
-      "ultCommand\022\017\n\007levelId\030\001 \002(\005\022\020\n\010teamInfo\030" +
-      "\002 \002(\t\022\021\n\tfightInfo\030\003 \002(\t\"P\n\032ResponseLeve" +
-      "lResultCommand\0222\n\006reward\030\001 \003(\0132\".com.tra" +
-      "ns.pixel.protoc.RewardInfo\"/\n\034RequestLev",
-      "elLootStartCommand\022\017\n\007levelId\030\001 \002(\005\"\037\n\035R" +
-      "equestLevelLootResultCommand\"T\n\036Response" +
-      "LevelLootResultCommand\0222\n\006reward\030\001 \003(\0132\"" +
-      ".com.trans.pixel.protoc.RewardInfo\":\n\030Re" +
-      "questUpdateTeamCommand\022\014\n\004mode\030\001 \002(\005\022\020\n\010" +
-      "teamInfo\030\002 \002(\t\"P\n\031RequestHeroLevelUpComm" +
-      "and\022\023\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005" +
-      "\022\016\n\006infoId\030\003 \002(\005\"_\n\031ResponseHeroResultCo" +
-      "mmand\022\016\n\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \002(\0132" +
-      " .com.trans.pixel.protoc.HeroInfo\"\032\n\030Req",
-      "uestLootResultCommand\"L\n\031ResponseLootRes" +
-      "ultCommand\022\014\n\004gold\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n" +
-      "\014lastLootTime\030\003 \001(\005\"K\n\032RequestAddHeroEqu" +
-      "ipCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(" +
-      "\005\022\r\n\005armId\030\003 \001(\005\"^\n\032RequestEquipLevelUpC" +
-      "ommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r" +
-      "\n\005armId\030\003 \002(\005\022\021\n\tlevelUpId\030\004 \002(\005\"=\n\034Requ" +
-      "estAttackRelativeCommand\022\r\n\005mapId\030\001 \002(\005\022" +
-      "\016\n\006mineId\030\002 \002(\005\"b\n\035ResponseAttackRelativ" +
-      "eCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022",
-      "\023\n\013preventTime\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n\032R" +
-      "esponseGetUserMineCommand\0222\n\010userMine\030\001 " +
-      "\003(\0132 .com.trans.pixel.protoc.UserMine\"A\n" +
-      " RequestRefreshRelatedUserCommand\022\r\n\005map" +
-      "Id\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"M\n!ResponseRefr" +
-      "eshRelatedUserCommand\022\021\n\tleftTimes\030\001 \002(\005" +
-      "\022\025\n\rrelatedUserId\030\002 \002(\003\")\n\031RequestLotter" +
-      "yHeroCommand\022\014\n\004type\030\001 \002(\005\"q\n\032ResponseLo" +
-      "tteryHeroCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030" +
-      "\002 \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pi",
-      "xel.protoc.RewardInfo\"*\n\032RequestLotteryE" +
-      "quipCommand\022\014\n\004type\030\001 \002(\005\"r\n\033ResponseLot" +
-      "teryEquipCommand\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030" +
-      "\002 \001(\005\0226\n\nrewardList\030\003 \003(\0132\".com.trans.pi" +
-      "xel.protoc.RewardInfo\"P\n\032ResponseGetUser" +
-      "HeroCommand\0222\n\010userHero\030\001 \003(\0132 .com.tran" +
-      "s.pixel.protoc.UserHero\"S\n\033ResponseGetUs" +
-      "erEquipCommand\0224\n\tuserEquip\030\001 \003(\0132!.com." +
-      "trans.pixel.protoc.UserEquip\"!\n\037RequestG" +
-      "etLadderRankListCommand\"%\n#RequestGetUse",
-      "rLadderRankListCommand\"V\n ResponseGetLad" +
-      "derRankListCommand\0222\n\010userRank\030\001 \003(\0132 .c" +
-      "om.trans.pixel.protoc.UserRank\"Z\n$Respon" +
-      "seGetUserLadderRankListCommand\0222\n\010userRa" +
-      "nk\030\001 \003(\0132 .com.trans.pixel.protoc.UserRa" +
-      "nk\".\n\036RequestAttackLadderModeCommand\022\014\n\004" +
-      "rank\030\001 \002(\003\";\n\037ResponseAttackLadderModeCo" +
-      "mmand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035Reque" +
-      "stGetUserMailListCommand\022\014\n\004type\030\001 \002(\005\"T" +
-      "\n\036ResponseGetUserMailListCommand\0222\n\010mail",
-      "List\030\001 \003(\0132 .com.trans.pixel.protoc.Mail" +
-      "List\"2\n\026RequestReadMailCommand\022\014\n\004type\030\001" +
-      " \002(\005\022\n\n\002id\030\002 \003(\005\"3\n\026ResponseMessageComma" +
-      "nd\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031Respons" +
-      "eSendRewardCommand\0222\n\006reward\030\001 \003(\0132\".com" +
-      ".trans.pixel.protoc.RewardInfo\"4\n\030Reques" +
-      "tDeleteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002" +
-      " \003(\005\")\n\027RequestAddFriendCommand\022\016\n\006userI" +
-      "d\030\001 \002(\003\")\n\033RequestReceiveFriendCommand\022\n" +
-      "\n\002id\030\001 \003(\005\"V\n ResponseGetUserFriendListC",
-      "ommand\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel" +
-      ".protoc.UserFriend\"\024\n\022RequestAreaCommand" +
-      "\"F\n\023ResponseAreaCommand\022/\n\005areas\030\001 \003(\0132 " +
-      ".com.trans.pixel.protoc.AreaInfo\")\n\033Requ" +
-      "estAttackMonsterCommand\022\n\n\002id\030\001 \002(\005\"&\n\030R" +
-      "equestAttackBossCommand\022\n\n\002id\030\001 \002(\005\"*\n\034R" +
-      "equestAttackResourceCommand\022\n\n\002id\030\001 \002(\005\"" +
-      ".\n RequestAttackResourceMineCommand\022\n\n\002i" +
-      "d\030\001 \002(\005\"P\n\030ResponseUserLevelCommand\0224\n\tu" +
-      "serLevel\030\001 \002(\0132!.com.trans.pixel.protoc.",
-      "UserLevel\"\\\n\034ResponseUserLootLevelComman" +
-      "d\022<\n\ruserLootLevel\030\001 \002(\0132%.com.trans.pix" +
-      "el.protoc.UserLootLevel\"+\n\030RequestApplyU" +
-      "nionCommand\022\017\n\007unionId\030\001 \002(\005\"\033\n\031RequestC" +
-      "reateUnionCommand\" \n\036RequestHandleUnionA" +
-      "pplyCommand\"H\n\030ResponseUnionInfoCommand\022" +
-      ",\n\005union\030\001 \002(\0132\035.com.trans.pixel.protoc." +
-      "Union\"H\n\030ResponseUnionListCommand\022,\n\005uni" +
-      "on\030\001 \003(\0132\035.com.trans.pixel.protoc.Union\"" +
-      "\205\026\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com.t",
-      "rans.pixel.protoc.HeadInfo\022G\n\017registerCo" +
-      "mmand\030\002 \001(\0132..com.trans.pixel.protoc.Req" +
-      "uestRegisterCommand\022A\n\014loginCommand\030\003 \001(" +
-      "\0132+.com.trans.pixel.protoc.RequestLoginC" +
-      "ommand\022M\n\022levelResultCommand\030\004 \001(\01321.com" +
-      ".trans.pixel.protoc.RequestLevelResultCo" +
-      "mmand\022K\n\021updateTeamCommand\030\005 \001(\01320.com.t" +
-      "rans.pixel.protoc.RequestUpdateTeamComma" +
-      "nd\022K\n\021levelStartCommand\030\006 \001(\01320.com.tran" +
-      "s.pixel.protoc.RequestLevelStartCommand\022",
-      "S\n\025levelLootStartCommand\030\007 \001(\01324.com.tra" +
-      "ns.pixel.protoc.RequestLevelLootStartCom" +
-      "mand\022U\n\026levelLootResultCommand\030\010 \001(\01325.c" +
-      "om.trans.pixel.protoc.RequestLevelLootRe" +
-      "sultCommand\022M\n\022heroLevelUpCommand\030\t \001(\0132" +
-      "1.com.trans.pixel.protoc.RequestHeroLeve" +
-      "lUpCommand\022K\n\021lootResultCommand\030\n \001(\01320." +
-      "com.trans.pixel.protoc.RequestLootResult" +
-      "Command\022O\n\023addHeroEquipCommand\030\013 \001(\01322.c" +
-      "om.trans.pixel.protoc.RequestAddHeroEqui",
-      "pCommand\022S\n\025attackRelativeCommand\030\014 \001(\0132" +
-      "4.com.trans.pixel.protoc.RequestAttackRe" +
-      "lativeCommand\022[\n\031refreshRelatedUserComma" +
-      "nd\030\r \001(\01328.com.trans.pixel.protoc.Reques" +
-      "tRefreshRelatedUserCommand\022M\n\022lotteryHer" +
-      "oCommand\030\016 \001(\01321.com.trans.pixel.protoc." +
-      "RequestLotteryHeroCommand\022Y\n\030getLadderRa" +
-      "nkListCommand\030\017 \001(\01327.com.trans.pixel.pr" +
-      "otoc.RequestGetLadderRankListCommand\022a\n\034" +
-      "getUserLadderRankListCommand\030\020 \001(\0132;.com",
-      ".trans.pixel.protoc.RequestGetUserLadder" +
-      "RankListCommand\022W\n\027attackLadderModeComma" +
-      "nd\030\021 \001(\01326.com.trans.pixel.protoc.Reques" +
-      "tAttackLadderModeCommand\022U\n\026getUserMailL" +
-      "istCommand\030\022 \001(\01325.com.trans.pixel.proto" +
-      "c.RequestGetUserMailListCommand\022G\n\017readM" +
-      "ailCommand\030\023 \001(\0132..com.trans.pixel.proto" +
-      "c.RequestReadMailCommand\022K\n\021deleteMailCo" +
-      "mmand\030\024 \001(\01320.com.trans.pixel.protoc.Req" +
-      "uestDeleteMailCommand\022I\n\020addFriendComman",
-      "d\030\025 \001(\0132/.com.trans.pixel.protoc.Request" +
-      "AddFriendCommand\022Q\n\024receiveFriendCommand" +
-      "\030\026 \001(\01323.com.trans.pixel.protoc.RequestR" +
-      "eceiveFriendCommand\022O\n\023lotteryEquipComma" +
-      "nd\030\027 \001(\01322.com.trans.pixel.protoc.Reques" +
-      "tLotteryEquipCommand\022O\n\023equipLevelUpComm" +
-      "and\030\030 \001(\01322.com.trans.pixel.protoc.Reque" +
-      "stEquipLevelUpCommand\022J\n\rreceiveFriend\030\031" +
-      " \001(\01323.com.trans.pixel.protoc.RequestRec" +
-      "eiveFriendCommand\022?\n\013areaCommand\030\032 \001(\0132*",
-      ".com.trans.pixel.protoc.RequestAreaComma" +
-      "nd\022Q\n\024attackMonsterCommand\030\033 \001(\01323.com.t" +
-      "rans.pixel.protoc.RequestAttackMonsterCo" +
-      "mmand\022K\n\021attackBossCommand\030\034 \001(\01320.com.t" +
-      "rans.pixel.protoc.RequestAttackBossComma" +
-      "nd\022S\n\025attackResourceCommand\030\035 \001(\01324.com." +
-      "trans.pixel.protoc.RequestAttackResource" +
-      "Command\022[\n\031attackResourceMineCommand\030\036 \001" +
-      "(\01328.com.trans.pixel.protoc.RequestAttac" +
-      "kResourceMineCommand\022K\n\021applyUnionComman",
-      "d\030\037 \001(\01320.com.trans.pixel.protoc.Request" +
-      "ApplyUnionCommand\022M\n\022createUnionCommand\030" +
-      "  \001(\01321.com.trans.pixel.protoc.RequestCr" +
-      "eateUnionCommand\022W\n\027handleUnionApplyComm" +
-      "and\030! \001(\01326.com.trans.pixel.protoc.Reque" +
-      "stHandleUnionApplyCommand\022O\n\023levelPrepar" +
-      "eCommand\030\" \001(\01322.com.trans.pixel.protoc." +
-      "RequestLevelPrepareCommand\022K\n\021levelPause" +
-      "Command\030# \001(\01320.com.trans.pixel.protoc.R" +
-      "equestLevelPauseCommand\"\200\021\n\017ResponseComm",
-      "and\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.prot" +
-      "oc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$.com." +
-      "trans.pixel.protoc.ErrorCommand\022P\n\023needR" +
-      "egisterCommand\030\003 \001(\01323.com.trans.pixel.p" +
-      "rotoc.ResponseNeedRegisterCommand\022H\n\017use" +
-      "rInfoCommand\030\004 \001(\0132/.com.trans.pixel.pro" +
-      "toc.ResponseUserInfoCommand\022N\n\022levelResu" +
-      "ltCommand\030\006 \001(\01322.com.trans.pixel.protoc" +
-      ".ResponseLevelResultCommand\022V\n\026levelLoot" +
-      "ResultCommand\030\007 \001(\01326.com.trans.pixel.pr",
-      "otoc.ResponseLevelLootResultCommand\022L\n\021h" +
-      "eroResultCommand\030\010 \001(\01321.com.trans.pixel" +
-      ".protoc.ResponseHeroResultCommand\022L\n\021loo" +
-      "tResultCommand\030\t \001(\01321.com.trans.pixel.p" +
-      "rotoc.ResponseLootResultCommand\022T\n\025attac" +
-      "kRelativeCommand\030\n \001(\01325.com.trans.pixel" +
-      ".protoc.ResponseAttackRelativeCommand\022N\n" +
-      "\022getUserMineCommand\030\013 \001(\01322.com.trans.pi" +
-      "xel.protoc.ResponseGetUserMineCommand\022\\\n" +
-      "\031refreshRelatedUserCommand\030\014 \001(\01329.com.t",
-      "rans.pixel.protoc.ResponseRefreshRelated" +
-      "UserCommand\022N\n\022lotteryHeroCommand\030\r \001(\0132" +
-      "2.com.trans.pixel.protoc.ResponseLottery" +
-      "HeroCommand\022N\n\022getUserHeroCommand\030\016 \001(\0132" +
-      "2.com.trans.pixel.protoc.ResponseGetUser" +
-      "HeroCommand\022Z\n\030getLadderRankListCommand\030" +
-      "\017 \001(\01328.com.trans.pixel.protoc.ResponseG" +
-      "etLadderRankListCommand\022b\n\034getUserLadder" +
-      "RankListCommand\030\020 \001(\0132<.com.trans.pixel." +
-      "protoc.ResponseGetUserLadderRankListComm",
-      "and\022X\n\027attackLadderModeCommand\030\021 \001(\01327.c" +
-      "om.trans.pixel.protoc.ResponseAttackLadd" +
-      "erModeCommand\022V\n\026getUserMailListCommand\030" +
-      "\022 \001(\01326.com.trans.pixel.protoc.ResponseG" +
-      "etUserMailListCommand\022L\n\021sendRewardComma" +
-      "nd\030\023 \001(\01321.com.trans.pixel.protoc.Respon" +
-      "seSendRewardCommand\022F\n\016messageCommand\030\024 " +
-      "\001(\0132..com.trans.pixel.protoc.ResponseMes" +
-      "sageCommand\022Z\n\030getUserFriendListCommand\030" +
-      "\025 \001(\01328.com.trans.pixel.protoc.ResponseG",
-      "etUserFriendListCommand\022P\n\023lotteryEquipC" +
-      "ommand\030\026 \001(\01323.com.trans.pixel.protoc.Re" +
-      "sponseLotteryEquipCommand\022M\n\020userEquipCo" +
-      "mmand\030\027 \001(\01323.com.trans.pixel.protoc.Res" +
-      "ponseGetUserEquipCommand\022@\n\013areaCommand\030" +
-      "\030 \001(\0132+.com.trans.pixel.protoc.ResponseA" +
-      "reaCommand\022J\n\020userLevelCommand\030\031 \001(\01320.c" +
-      "om.trans.pixel.protoc.ResponseUserLevelC" +
-      "ommand\022R\n\024userLootLevelCommand\030\032 \001(\01324.c" +
-      "om.trans.pixel.protoc.ResponseUserLootLe",
-      "velCommand\022J\n\020unionInfoCommand\030\033 \001(\01320.c" +
-      "om.trans.pixel.protoc.ResponseUnionInfoC" +
-      "ommand\022J\n\020unionListCommand\030\034 \001(\01320.com.t" +
-      "rans.pixel.protoc.ResponseUnionListComma" +
-      "nd"
+      "k\030\003 \002(\005\0224\n\tunionUser\030\004 \003(\0132!.com.trans.p" +
+      "ixel.protoc.UnionUser\022*\n\004mail\030\005 \003(\0132\034.co" +
+      "m.trans.pixel.protoc.Mail\"r\n\020AreaResourc" +
+      "eMine\022\n\n\002id\030\001 \002(\005\022\022\n\nresourceId\030\002 \001(\005\022\014\n" +
+      "\004time\030\003 \002(\005\022\020\n\010rewardId\030\004 \002(\005\022\r\n\005owner\030\005" +
+      " \001(\t\022\017\n\007endtime\030\006 \001(\005\"\265\001\n\014AreaResource\022\n" +
+      "\n\002id\030\001 \002(\005\022\016\n\006areaId\030\002 \001(\005\022\016\n\006bossid\030\003 \002" +
+      "(\005\0227\n\005mines\030\004 \003(\0132(.com.trans.pixel.prot" +
+      "oc.AreaResourceMine\022\r\n\005state\030\005 \001(\t\022\020\n\010ne",
+      "xttime\030\006 \001(\005\022\r\n\005owner\030\007 \001(\t\022\020\n\010rewardId\030" +
+      "\010 \001(\005\"m\n\010AreaBoss\022\n\n\002id\030\001 \002(\005\022\016\n\006areaId\030" +
+      "\002 \001(\005\022\017\n\007rewards\030\003 \003(\005\022\020\n\010rewardId\030\004 \003(\005" +
+      "\022\r\n\005owner\030\005 \001(\t\022\023\n\013leaderboard\030\006 \003(\t\"J\n\013" +
+      "AreaMonster\022\n\n\002id\030\001 \002(\005\022\016\n\006areaId\030\002 \001(\005\022" +
+      "\r\n\005level\030\003 \002(\005\022\020\n\010rewardId\030\004 \003(\005\"\326\001\n\010Are" +
+      "aInfo\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\016\n\006zhanl" +
+      "i\030\003 \002(\005\0227\n\tresources\030\004 \003(\0132$.com.trans.p" +
+      "ixel.protoc.AreaResource\0220\n\006bosses\030\005 \003(\013" +
+      "2 .com.trans.pixel.protoc.AreaBoss\0225\n\010mo",
+      "nsters\030\006 \003(\0132#.com.trans.pixel.protoc.Ar" +
+      "eaMonster\"<\n\010AreaMode\0220\n\006region\030\001 \003(\0132 ." +
+      "com.trans.pixel.protoc.AreaInfo\"N\n\010UserR" +
+      "ank\022\016\n\006userId\030\001 \002(\003\022\020\n\010userName\030\002 \002(\t\022\014\n" +
+      "\004rank\030\003 \002(\003\022\022\n\nteamRecord\030\004 \002(\t\"F\n\nUserF" +
+      "riend\022\020\n\010friendId\030\001 \002(\003\022\022\n\nfriendName\030\002 " +
+      "\002(\t\022\022\n\nteamRecord\030\003 \002(\t\"\303\001\n\004Mail\022\n\n\002id\030\001" +
+      " \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n\nfromUserId\030\003 \002(\003" +
+      "\022\024\n\014fromUserName\030\004 \002(\t\022\014\n\004type\030\005 \002(\005\022\021\n\t" +
+      "startDate\030\006 \002(\t\022\017\n\007endDate\030\007 \002(\t\022\017\n\007cont",
+      "ent\030\010 \002(\t\0222\n\006reward\030\t \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo\"D\n\010MailList\022\014\n\004typ" +
+      "e\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034.com.trans.pixel." +
+      "protoc.Mail\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(" +
+      "\t\022\017\n\007message\030\002 \002(\t\"\035\n\033ResponseNeedRegist" +
+      "erCommand\"*\n\026RequestRegisterCommand\022\020\n\010u" +
+      "serName\030\001 \002(\t\"\025\n\023RequestLoginCommand\"I\n\027" +
+      "ResponseUserInfoCommand\022.\n\004user\030\001 \002(\0132 ." +
+      "com.trans.pixel.protoc.UserInfo\"\201\001\n\024Resp" +
+      "onsePopupCommand\022\021\n\tpopScreen\030\001 \002(\005\022\016\n\006f",
+      "lowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading\030\004 \001" +
+      "(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoButtonID\030\006 " +
+      "\001(\t\"+\n\030RequestLevelStartCommand\022\017\n\007level" +
+      "Id\030\001 \002(\005\"-\n\032RequestLevelPrepareCommand\022\017" +
+      "\n\007levelId\030\001 \002(\005\"\032\n\030RequestLevelPauseComm" +
+      "and\"Q\n\031RequestLevelResultCommand\022\017\n\007leve" +
+      "lId\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\022\021\n\tfightInfo" +
+      "\030\003 \002(\t\"P\n\032ResponseLevelResultCommand\0222\n\006" +
+      "reward\030\001 \003(\0132\".com.trans.pixel.protoc.Re" +
+      "wardInfo\"/\n\034RequestLevelLootStartCommand",
+      "\022\017\n\007levelId\030\001 \002(\005\"\037\n\035RequestLevelLootRes" +
+      "ultCommand\"T\n\036ResponseLevelLootResultCom" +
+      "mand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.p" +
+      "rotoc.RewardInfo\":\n\030RequestUpdateTeamCom" +
+      "mand\022\014\n\004mode\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\"P\n\031" +
+      "RequestHeroLevelUpCommand\022\023\n\013levelUpType" +
+      "\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\005\"_" +
+      "\n\031ResponseHeroResultCommand\022\016\n\006heroId\030\001 " +
+      "\002(\005\0222\n\010heroInfo\030\002 \002(\0132 .com.trans.pixel." +
+      "protoc.HeroInfo\"\032\n\030RequestLootResultComm",
+      "and\"L\n\031ResponseLootResultCommand\022\014\n\004gold" +
+      "\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014lastLootTime\030\003 \001(" +
+      "\005\"K\n\032RequestAddHeroEquipCommand\022\016\n\006heroI" +
+      "d\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \001(\005\"^" +
+      "\n\032RequestEquipLevelUpCommand\022\016\n\006heroId\030\001" +
+      " \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \002(\005\022\021\n\tl" +
+      "evelUpId\030\004 \002(\005\"=\n\034RequestAttackRelativeC" +
+      "ommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"b\n" +
+      "\035ResponseAttackRelativeCommand\022\r\n\005mapId\030" +
+      "\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\023\n\013preventTime\030\003 \002",
+      "(\003\022\r\n\005level\030\004 \002(\005\"P\n\032ResponseGetUserMine" +
+      "Command\0222\n\010userMine\030\001 \003(\0132 .com.trans.pi" +
+      "xel.protoc.UserMine\"A\n RequestRefreshRel" +
+      "atedUserCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId" +
+      "\030\002 \002(\005\"M\n!ResponseRefreshRelatedUserComm" +
+      "and\022\021\n\tleftTimes\030\001 \002(\005\022\025\n\rrelatedUserId\030" +
+      "\002 \002(\003\")\n\031RequestLotteryHeroCommand\022\014\n\004ty" +
+      "pe\030\001 \002(\005\"q\n\032ResponseLotteryHeroCommand\022\014" +
+      "\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewardLis" +
+      "t\030\003 \003(\0132\".com.trans.pixel.protoc.RewardI",
+      "nfo\"*\n\032RequestLotteryEquipCommand\022\014\n\004typ" +
+      "e\030\001 \002(\005\"r\n\033ResponseLotteryEquipCommand\022\014" +
+      "\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewardLis" +
+      "t\030\003 \003(\0132\".com.trans.pixel.protoc.RewardI" +
+      "nfo\"P\n\032ResponseGetUserHeroCommand\0222\n\010use" +
+      "rHero\030\001 \003(\0132 .com.trans.pixel.protoc.Use" +
+      "rHero\"S\n\033ResponseGetUserEquipCommand\0224\n\t" +
+      "userEquip\030\001 \003(\0132!.com.trans.pixel.protoc" +
+      ".UserEquip\"!\n\037RequestGetLadderRankListCo" +
+      "mmand\"%\n#RequestGetUserLadderRankListCom",
+      "mand\"V\n ResponseGetLadderRankListCommand" +
+      "\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixel.pro" +
+      "toc.UserRank\"Z\n$ResponseGetUserLadderRan" +
+      "kListCommand\0222\n\010userRank\030\001 \003(\0132 .com.tra" +
+      "ns.pixel.protoc.UserRank\".\n\036RequestAttac" +
+      "kLadderModeCommand\022\014\n\004rank\030\001 \002(\003\";\n\037Resp" +
+      "onseAttackLadderModeCommand\022\013\n\003ret\030\001 \002(\010" +
+      "\022\013\n\003msg\030\002 \002(\t\"-\n\035RequestGetUserMailListC" +
+      "ommand\022\014\n\004type\030\001 \002(\005\"T\n\036ResponseGetUserM" +
+      "ailListCommand\0222\n\010mailList\030\001 \003(\0132 .com.t",
+      "rans.pixel.protoc.MailList\"2\n\026RequestRea" +
+      "dMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\"3" +
+      "\n\026ResponseMessageCommand\022\014\n\004code\030\001 \002(\005\022\013" +
+      "\n\003msg\030\002 \002(\t\"O\n\031ResponseSendRewardCommand" +
+      "\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo\"4\n\030RequestDeleteMailCommand" +
+      "\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\")\n\027RequestAdd" +
+      "FriendCommand\022\016\n\006userId\030\001 \002(\003\")\n\033Request" +
+      "ReceiveFriendCommand\022\n\n\002id\030\001 \003(\005\"V\n Resp" +
+      "onseGetUserFriendListCommand\0222\n\006friend\030\001",
+      " \003(\0132\".com.trans.pixel.protoc.UserFriend" +
+      "\"\024\n\022RequestAreaCommand\"F\n\023ResponseAreaCo" +
+      "mmand\022/\n\005areas\030\001 \003(\0132 .com.trans.pixel.p" +
+      "rotoc.AreaInfo\")\n\033RequestAttackMonsterCo" +
+      "mmand\022\n\n\002id\030\001 \002(\005\"&\n\030RequestAttackBossCo" +
+      "mmand\022\n\n\002id\030\001 \002(\005\"*\n\034RequestAttackResour" +
+      "ceCommand\022\n\n\002id\030\001 \002(\005\".\n RequestAttackRe" +
+      "sourceMineCommand\022\n\n\002id\030\001 \002(\005\"P\n\030Respons" +
+      "eUserLevelCommand\0224\n\tuserLevel\030\001 \002(\0132!.c" +
+      "om.trans.pixel.protoc.UserLevel\"\\\n\034Respo",
+      "nseUserLootLevelCommand\022<\n\ruserLootLevel" +
+      "\030\001 \002(\0132%.com.trans.pixel.protoc.UserLoot" +
+      "Level\"+\n\030RequestApplyUnionCommand\022\017\n\007uni" +
+      "onId\030\001 \002(\005\".\n\031RequestCreateUnionCommand\022" +
+      "\021\n\tunionName\030\001 \002(\t\"R\n\036RequestHandleUnion" +
+      "ApplyCommand\022\017\n\007unionId\030\001 \002(\005\022\016\n\006mailId\030" +
+      "\002 \002(\005\022\017\n\007receive\030\003 \002(\010\"H\n\030ResponseUnionI" +
+      "nfoCommand\022,\n\005union\030\001 \002(\0132\035.com.trans.pi" +
+      "xel.protoc.Union\"H\n\030ResponseUnionListCom" +
+      "mand\022,\n\005union\030\001 \003(\0132\035.com.trans.pixel.pr",
+      "otoc.Union\"\205\026\n\016RequestCommand\022.\n\004head\030\001 " +
+      "\002(\0132 .com.trans.pixel.protoc.HeadInfo\022G\n" +
+      "\017registerCommand\030\002 \001(\0132..com.trans.pixel" +
+      ".protoc.RequestRegisterCommand\022A\n\014loginC" +
+      "ommand\030\003 \001(\0132+.com.trans.pixel.protoc.Re" +
+      "questLoginCommand\022M\n\022levelResultCommand\030" +
+      "\004 \001(\01321.com.trans.pixel.protoc.RequestLe" +
+      "velResultCommand\022K\n\021updateTeamCommand\030\005 " +
+      "\001(\01320.com.trans.pixel.protoc.RequestUpda" +
+      "teTeamCommand\022K\n\021levelStartCommand\030\006 \001(\013",
+      "20.com.trans.pixel.protoc.RequestLevelSt" +
+      "artCommand\022S\n\025levelLootStartCommand\030\007 \001(" +
+      "\01324.com.trans.pixel.protoc.RequestLevelL" +
+      "ootStartCommand\022U\n\026levelLootResultComman" +
+      "d\030\010 \001(\01325.com.trans.pixel.protoc.Request" +
+      "LevelLootResultCommand\022M\n\022heroLevelUpCom" +
+      "mand\030\t \001(\01321.com.trans.pixel.protoc.Requ" +
+      "estHeroLevelUpCommand\022K\n\021lootResultComma" +
+      "nd\030\n \001(\01320.com.trans.pixel.protoc.Reques" +
+      "tLootResultCommand\022O\n\023addHeroEquipComman",
+      "d\030\013 \001(\01322.com.trans.pixel.protoc.Request" +
+      "AddHeroEquipCommand\022S\n\025attackRelativeCom" +
+      "mand\030\014 \001(\01324.com.trans.pixel.protoc.Requ" +
+      "estAttackRelativeCommand\022[\n\031refreshRelat" +
+      "edUserCommand\030\r \001(\01328.com.trans.pixel.pr" +
+      "otoc.RequestRefreshRelatedUserCommand\022M\n" +
+      "\022lotteryHeroCommand\030\016 \001(\01321.com.trans.pi" +
+      "xel.protoc.RequestLotteryHeroCommand\022Y\n\030" +
+      "getLadderRankListCommand\030\017 \001(\01327.com.tra" +
+      "ns.pixel.protoc.RequestGetLadderRankList",
+      "Command\022a\n\034getUserLadderRankListCommand\030" +
+      "\020 \001(\0132;.com.trans.pixel.protoc.RequestGe" +
+      "tUserLadderRankListCommand\022W\n\027attackLadd" +
+      "erModeCommand\030\021 \001(\01326.com.trans.pixel.pr" +
+      "otoc.RequestAttackLadderModeCommand\022U\n\026g" +
+      "etUserMailListCommand\030\022 \001(\01325.com.trans." +
+      "pixel.protoc.RequestGetUserMailListComma" +
+      "nd\022G\n\017readMailCommand\030\023 \001(\0132..com.trans." +
+      "pixel.protoc.RequestReadMailCommand\022K\n\021d" +
+      "eleteMailCommand\030\024 \001(\01320.com.trans.pixel",
+      ".protoc.RequestDeleteMailCommand\022I\n\020addF" +
+      "riendCommand\030\025 \001(\0132/.com.trans.pixel.pro" +
+      "toc.RequestAddFriendCommand\022Q\n\024receiveFr" +
+      "iendCommand\030\026 \001(\01323.com.trans.pixel.prot" +
+      "oc.RequestReceiveFriendCommand\022O\n\023lotter" +
+      "yEquipCommand\030\027 \001(\01322.com.trans.pixel.pr" +
+      "otoc.RequestLotteryEquipCommand\022O\n\023equip" +
+      "LevelUpCommand\030\030 \001(\01322.com.trans.pixel.p" +
+      "rotoc.RequestEquipLevelUpCommand\022J\n\rrece" +
+      "iveFriend\030\031 \001(\01323.com.trans.pixel.protoc",
+      ".RequestReceiveFriendCommand\022?\n\013areaComm" +
+      "and\030\032 \001(\0132*.com.trans.pixel.protoc.Reque" +
+      "stAreaCommand\022Q\n\024attackMonsterCommand\030\033 " +
+      "\001(\01323.com.trans.pixel.protoc.RequestAtta" +
+      "ckMonsterCommand\022K\n\021attackBossCommand\030\034 " +
+      "\001(\01320.com.trans.pixel.protoc.RequestAtta" +
+      "ckBossCommand\022S\n\025attackResourceCommand\030\035" +
+      " \001(\01324.com.trans.pixel.protoc.RequestAtt" +
+      "ackResourceCommand\022[\n\031attackResourceMine" +
+      "Command\030\036 \001(\01328.com.trans.pixel.protoc.R",
+      "equestAttackResourceMineCommand\022K\n\021apply" +
+      "UnionCommand\030\037 \001(\01320.com.trans.pixel.pro" +
+      "toc.RequestApplyUnionCommand\022M\n\022createUn" +
+      "ionCommand\030  \001(\01321.com.trans.pixel.proto" +
+      "c.RequestCreateUnionCommand\022W\n\027handleUni" +
+      "onApplyCommand\030! \001(\01326.com.trans.pixel.p" +
+      "rotoc.RequestHandleUnionApplyCommand\022O\n\023" +
+      "levelPrepareCommand\030\" \001(\01322.com.trans.pi" +
+      "xel.protoc.RequestLevelPrepareCommand\022K\n" +
+      "\021levelPauseCommand\030# \001(\01320.com.trans.pix",
+      "el.protoc.RequestLevelPauseCommand\"\200\021\n\017R" +
+      "esponseCommand\022.\n\004head\030\001 \002(\0132 .com.trans" +
+      ".pixel.protoc.HeadInfo\022:\n\014errorCommand\030\002" +
+      " \001(\0132$.com.trans.pixel.protoc.ErrorComma" +
+      "nd\022P\n\023needRegisterCommand\030\003 \001(\01323.com.tr" +
+      "ans.pixel.protoc.ResponseNeedRegisterCom" +
+      "mand\022H\n\017userInfoCommand\030\004 \001(\0132/.com.tran" +
+      "s.pixel.protoc.ResponseUserInfoCommand\022N" +
+      "\n\022levelResultCommand\030\006 \001(\01322.com.trans.p" +
+      "ixel.protoc.ResponseLevelResultCommand\022V",
+      "\n\026levelLootResultCommand\030\007 \001(\01326.com.tra" +
+      "ns.pixel.protoc.ResponseLevelLootResultC" +
+      "ommand\022L\n\021heroResultCommand\030\010 \001(\01321.com." +
+      "trans.pixel.protoc.ResponseHeroResultCom" +
+      "mand\022L\n\021lootResultCommand\030\t \001(\01321.com.tr" +
+      "ans.pixel.protoc.ResponseLootResultComma" +
+      "nd\022T\n\025attackRelativeCommand\030\n \001(\01325.com." +
+      "trans.pixel.protoc.ResponseAttackRelativ" +
+      "eCommand\022N\n\022getUserMineCommand\030\013 \001(\01322.c" +
+      "om.trans.pixel.protoc.ResponseGetUserMin",
+      "eCommand\022\\\n\031refreshRelatedUserCommand\030\014 " +
+      "\001(\01329.com.trans.pixel.protoc.ResponseRef" +
+      "reshRelatedUserCommand\022N\n\022lotteryHeroCom" +
+      "mand\030\r \001(\01322.com.trans.pixel.protoc.Resp" +
+      "onseLotteryHeroCommand\022N\n\022getUserHeroCom" +
+      "mand\030\016 \001(\01322.com.trans.pixel.protoc.Resp" +
+      "onseGetUserHeroCommand\022Z\n\030getLadderRankL" +
+      "istCommand\030\017 \001(\01328.com.trans.pixel.proto" +
+      "c.ResponseGetLadderRankListCommand\022b\n\034ge" +
+      "tUserLadderRankListCommand\030\020 \001(\0132<.com.t",
+      "rans.pixel.protoc.ResponseGetUserLadderR" +
+      "ankListCommand\022X\n\027attackLadderModeComman" +
+      "d\030\021 \001(\01327.com.trans.pixel.protoc.Respons" +
+      "eAttackLadderModeCommand\022V\n\026getUserMailL" +
+      "istCommand\030\022 \001(\01326.com.trans.pixel.proto" +
+      "c.ResponseGetUserMailListCommand\022L\n\021send" +
+      "RewardCommand\030\023 \001(\01321.com.trans.pixel.pr" +
+      "otoc.ResponseSendRewardCommand\022F\n\016messag" +
+      "eCommand\030\024 \001(\0132..com.trans.pixel.protoc." +
+      "ResponseMessageCommand\022Z\n\030getUserFriendL",
+      "istCommand\030\025 \001(\01328.com.trans.pixel.proto" +
+      "c.ResponseGetUserFriendListCommand\022P\n\023lo" +
+      "tteryEquipCommand\030\026 \001(\01323.com.trans.pixe" +
+      "l.protoc.ResponseLotteryEquipCommand\022M\n\020" +
+      "userEquipCommand\030\027 \001(\01323.com.trans.pixel" +
+      ".protoc.ResponseGetUserEquipCommand\022@\n\013a" +
+      "reaCommand\030\030 \001(\0132+.com.trans.pixel.proto" +
+      "c.ResponseAreaCommand\022J\n\020userLevelComman" +
+      "d\030\031 \001(\01320.com.trans.pixel.protoc.Respons" +
+      "eUserLevelCommand\022R\n\024userLootLevelComman",
+      "d\030\032 \001(\01324.com.trans.pixel.protoc.Respons" +
+      "eUserLootLevelCommand\022J\n\020unionInfoComman" +
+      "d\030\033 \001(\01320.com.trans.pixel.protoc.Respons" +
+      "eUnionInfoCommand\022J\n\020unionListCommand\030\034 " +
+      "\001(\01320.com.trans.pixel.protoc.ResponseUni" +
+      "onListCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -69407,7 +69786,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_Union_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Union_descriptor,
-              new java.lang.String[] { "Id", "UnionName", "Rank", "ServerId", "UnionUser", "Mail", });
+              new java.lang.String[] { "Id", "UnionName", "Rank", "UnionUser", "Mail", });
           internal_static_com_trans_pixel_protoc_AreaResourceMine_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_AreaResourceMine_fieldAccessorTable = new
@@ -69809,13 +70188,13 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_RequestCreateUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCreateUnionCommand_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "UnionName", });
           internal_static_com_trans_pixel_protoc_RequestHandleUnionApplyCommand_descriptor =
             getDescriptor().getMessageTypes().get(79);
           internal_static_com_trans_pixel_protoc_RequestHandleUnionApplyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHandleUnionApplyCommand_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "UnionId", "MailId", "Receive", });
           internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_descriptor =
             getDescriptor().getMessageTypes().get(80);
           internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_fieldAccessorTable = new

@@ -182,7 +182,7 @@ public class HeroLevelUpService {
 			}
 			if (userEquip3 != null) {
 				userEquip3.setEquipCount(userEquip3.getEquipCount() - equip.getCount3());
-				userEquipService.updateUserEquip(userEquip1);
+				userEquipService.updateUserEquip(userEquip3);
 			}
 		}
 		return ret;

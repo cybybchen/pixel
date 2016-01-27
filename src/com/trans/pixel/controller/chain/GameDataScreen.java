@@ -7,34 +7,43 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
+import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+//add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
+import com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
+import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
+import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
+import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
+import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AccountCommandService;
-import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
+import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroLevelUpCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
@@ -45,10 +54,7 @@ import com.trans.pixel.service.command.LotteryHeroCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
-import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
-import com.trans.pixel.protoc.Commands.RequestLoginCommand;
-import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-//add import here
+import com.trans.pixel.service.command.UnionCommandService;
 
 @Service
 public class GameDataScreen extends RequestScreen {
@@ -78,6 +84,8 @@ public class GameDataScreen extends RequestScreen {
 	private LotteryEquipCommandService lotteryEquipCommandService;
 	@Resource
 	private AreaCommandService areaCommandService;
+	@Resource
+	private UnionCommandService unionCommandService;
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
 			Builder responseBuilder) {
@@ -285,5 +293,40 @@ public class GameDataScreen extends RequestScreen {
 		return true;
 	}
 	//add handleCommand here
+
+	@Override
+	protected boolean handleCommand(RequestLevelPrepareCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		levelCommandService.levelPrepara(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLevelPauseCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		levelCommandService.levelPause(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestApplyUnionCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		unionCommandService.applyUnion(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestCreateUnionCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		unionCommandService.createUnion(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestHandleUnionApplyCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		unionCommandService.handleUnionApply(cmd, responseBuilder, user);
+		return true;
+	}
 
 }
