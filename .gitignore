@@ -2,3 +2,4 @@ build
 *.pyc
 Commands_pb.lua
 appendCommand.sh
+Properties

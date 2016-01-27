@@ -24,29 +24,37 @@ public class AreaCommandService {
 	@Resource
     private AreaFightService service;
 
-	public void Area(Builder responseBuilder, UserBean user){
-		List<AreaInfo> areas = service.Area(user);
+	public void Areas(Builder responseBuilder, UserBean user){
+		setUserNX(user);
+		List<AreaInfo> areas = service.Area();
 		ResponseAreaCommand.Builder builder = ResponseAreaCommand.newBuilder();
 		builder.addAllAreas(areas);
 		responseBuilder.setAreaCommand(builder.build());
 	}
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackMonster(user, cmd.getId());
-		Area(responseBuilder, user);
+		setUserNX(user);
+		service.AttackMonster(cmd.getId());
+		Areas(responseBuilder, user);
 	}
 
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackBoss(user, cmd.getId());
-		Area(responseBuilder, user);
+		setUserNX(user);
+		service.AttackBoss(cmd.getId());
+		Areas(responseBuilder, user);
 	}
 	
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackResource(user, cmd.getId());
-		Area(responseBuilder, user);
+		setUserNX(user);
+		service.AttackResource(cmd.getId());
+		Areas(responseBuilder, user);
 	}
 	
 	public void AttackResourceMine(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackResourceMine(user, cmd.getId());
-		Area(responseBuilder, user);
+		setUserNX(user);
+		service.AttackResourceMine(cmd.getId());
+		Areas(responseBuilder, user);
+	}
+	public void setUserNX(UserBean user) {
+		service.setUserNX(user);
 	}
 }

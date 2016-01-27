@@ -23,21 +23,21 @@ public class AreaFightService {
 	Logger logger = Logger.getLogger(AreaFightService.class);
 	@Resource
     private AreaRedisService redis;
+	private UserBean user = null;
 
-	public List<AreaInfo> Area(UserBean user){
-		List<AreaInfo> areas = redis.getAreas();
+	public List<AreaInfo> Area(){
+		List<AreaInfo> areas = redis.getAreas().getRegionList();
 		return areas;
 	}
 
-	public boolean AttackMonster(UserBean user, int id){
+	public boolean AttackMonster(int id){
 		AreaMonster.Builder builder = AreaMonster.newBuilder();
 		builder.mergeFrom(redis.getMonster(id));
-		builder.setLevel(builder.getLevel()+1);
 		redis.saveMonster(builder.build());
 		return true;
 	}
 	
-	public boolean AttackBoss(UserBean user, int id){
+	public boolean AttackBoss(int id){
 		AreaBoss.Builder builder = AreaBoss.newBuilder();
 		builder.mergeFrom(redis.getBoss(id));
 		builder.setOwner(user.account);
@@ -45,7 +45,7 @@ public class AreaFightService {
 		return true;
 	}
 	
-	public boolean AttackResource(UserBean user, int id){
+	public boolean AttackResource(int id){
 		AreaResource.Builder builder = AreaResource.newBuilder();
 		builder.mergeFrom(redis.getResource(id));
 		builder.setOwner(user.account);
@@ -53,11 +53,17 @@ public class AreaFightService {
 		return true;
 	}
 	
-	public boolean AttackResourceMine(UserBean user, int id){
+	public boolean AttackResourceMine(int id){
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
 		builder.mergeFrom(redis.getResourceMine(id));
 		builder.setOwner(user.account);
 		redis.saveResourceMine(builder.build());
 		return true;
+	}
+	public void setUserNX(UserBean user) {
+		if(this.user != null)
+			return;
+		this.user = user;
+		redis.setUser(user);
 	}
 }

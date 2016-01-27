@@ -2,11 +2,9 @@ package com.trans.pixel.test;
 
 import static org.junit.Assert.fail;
 
-import org.dom4j.DocumentException;
 import org.junit.Test;
 
 import com.googlecode.protobuf.format.XmlFormat;
-import com.googlecode.protobuf.format.XmlFormat.ParseException;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -20,13 +18,12 @@ public class AreaXmlTest extends BaseTest {
 	}
 	
 	public void buildXml() {
-		AreaInfo area = AreaRedisService.buildArea(1);
 		AreaMode.Builder areasBuilder = AreaMode.newBuilder();
-		areasBuilder.addRegion(area);
+		areasBuilder.mergeFrom(new AreaRedisService().buildAreaMode());
 		String xmlFormat = XmlFormat.printToString(areasBuilder.build());
-		WriteToFile(xmlFormat, "area1.xml");
+		RedisService.WriteProperties(xmlFormat, "area1.xml");
 		
-		String xml = ReadFromFile("area.xml");
+		String xml = RedisService.ReadProperties("area.xml");
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		try {
 			XmlFormat.merge(xml, builder);

@@ -16,8 +16,8 @@ message UserInfo {
 }
 
 message RewardInfo {
-	required int32 itemId = 1;
-	required string name = 2;
+	required int32 itemid = 1;
+	required string itemname = 2;
 	required int32 count = 3;
 }
 
@@ -98,7 +98,7 @@ message AreaResourceMine {//区域资源开采点
 	required int32 id = 1;//开采点ID
 	optional int32 resourceId = 2;//资源点ID
 	required int32 time = 3;//开采时间
-	required int32 rewardId = 4;//开采奖励
+	required int32 yield = 4;//开采产量
 	///////////////////////////////////
 	optional string owner = 5;//开采玩家
 	optional int32 endtime = 6;//开采结束时间
@@ -106,31 +106,62 @@ message AreaResourceMine {//区域资源开采点
 
 message AreaResource {//区域资源点
 	required int32 id = 1;//资源点ID
-	optional int32 areaId = 2;//区域ID
-	required int32 bossid = 3;//资源点BOSS
-	repeated AreaResourceMine mines = 4;//开采点
+	required string name = 2;
+	optional int32 belongto = 3;//区域ID
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+	required int32 yield = 6;//开采产量
+	required int32 count = 7;//开采点数量
+	required int32 bossid = 8;//资源点BOSS
+	repeated AreaResourceMine mines = 9;//开采点
 	///////////////////////////////////
-	optional string state = 5;//争夺状态
-	optional int32 nexttime = 6;//下次开战时间
-	optional string owner = 7;//占领玩家
-	optional int32 rewardId = 8;//占领奖励
+	optional string state = 10;//争夺状态
+	optional int32 nexttime = 11;//下次开战时间
+	optional string owner = 12;//占领玩家
+	optional int32 rewardId = 13;//占领奖励
+}
+
+message AreaResourceList {
+	repeated AreaResource region = 1;
 }
 
 message AreaBoss {//区域世界BOSS
 	required int32 id = 1;
-	optional int32 areaId = 2;//区域ID
-	repeated int32 rewards = 3;//排行奖励
-	repeated int32 rewardId = 4;//击杀奖励
+	required string name = 2;
+	optional int32 belongto = 3;//区域ID
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+	optional AreaMonsterReward reward = 6;//击杀奖励
+	repeated int32 rewardIds = 7;//排行奖励
 	///////////////////////////////////
-	optional string owner = 5;//击杀者
-	repeated string leaderboard = 6;//伤害排行
+	optional string owner = 8;//击杀者
+	repeated string leaderboard = 9;//伤害排行
+}
+
+message AreaBossList {
+	repeated AreaBoss region = 1;
 }
 
 message AreaMonster {//区域怪物
 	required int32 id = 1;
-	optional int32 areaId = 2;//区域ID
-	required int32 level = 3;//等级
-	repeated int32 rewardId = 4;//击败奖励
+	required string name = 2;
+	optional int32 belongto = 3;//区域ID
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+	optional AreaMonsterReward reward = 6;//击败奖励
+}
+
+message AreaMonsterList {
+	repeated AreaMonster region = 1;
+}
+
+message AreaMonsterReward {
+	repeated RewardInfo loot = 1;
+}
+
+message AreaMonsterRewardList {
+	required int32 id = 1;
+	repeated AreaMonsterReward region = 2;
 }
 
 message AreaInfo {//可争夺区域
