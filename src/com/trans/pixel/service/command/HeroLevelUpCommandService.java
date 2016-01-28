@@ -52,7 +52,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 		if (result instanceof SuccessConst) {
 			userHero.updateHeroInfo(heroInfo);
 			userHeroService.updateUserHero(userHero);
-			builder.setHeroId(infoId);
+			builder.setHeroId(heroId);
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
 		}

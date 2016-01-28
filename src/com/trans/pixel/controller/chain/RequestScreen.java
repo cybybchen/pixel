@@ -12,6 +12,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
@@ -31,10 +32,12 @@ import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -112,6 +115,12 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestHandleUnionApplyCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -294,6 +303,21 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasHandleUnionApplyCommand()) {
             RequestHandleUnionApplyCommand cmd = request.getHandleUnionApplyCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasMessageBoardListCommand()) {
+            RequestMessageBoardListCommand cmd = request.getMessageBoardListCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasCreateMessageBoardCommand()) {
+            RequestCreateMessageBoardCommand cmd = request.getCreateMessageBoardCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasReplyMessageCommand()) {
+            RequestReplyMessageCommand cmd = request.getReplyMessageCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }

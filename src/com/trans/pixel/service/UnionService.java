@@ -29,6 +29,8 @@ public class UnionService {
 	private UserTeamService userTeamService;
 	@Resource
 	private UnionMapper unionMapper;
+	@Resource
+	private UserService userService;
 	
 	public void applyToUnion(UserBean user, int unionId) {
 		MailBean mail = buildApplyUnionMail(user.getId(), unionId, user.getUserName());
@@ -42,6 +44,8 @@ public class UnionService {
 		UnionBean union = initUnion(user, unionName);
 		unionMapper.createUnion(union);
 		unionRedisService.updateUnion(union);
+		user.setUnionId(union.getId());
+		userService.updateUser(user);
 		
 		return union;
 	}
@@ -52,6 +56,7 @@ public class UnionService {
 		if (receive) {
 			UnionUserBean unionUser = initUnionUser(mail.getFromUserId(), mail.getFromUserName());
 			union.addUnionUser(unionUser);
+			userService.updateUserUnion(mail.getFromUserId(), unionId);
 		} else {
 			MailBean userMail = buildUserRefudedByUnionMail(mail.getFromUserId(), unionId);
 			mailService.addMail(userMail);

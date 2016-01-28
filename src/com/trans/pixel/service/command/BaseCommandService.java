@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
@@ -20,6 +21,7 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.Mail;
 import com.trans.pixel.protoc.Commands.MailList;
+import com.trans.pixel.protoc.Commands.MessageBoard;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
@@ -166,5 +168,14 @@ public class BaseCommandService {
 		builder.setMsg(success.getMesssage());
 		
 		return builder.build();
+	}
+	
+	protected List<MessageBoard> buildMessageBoardList(List<MessageBoardBean> messageBoardList) {
+		List<MessageBoard> messageBoardBuilderList = new ArrayList<MessageBoard>();
+		for (MessageBoardBean messageBoard : messageBoardList) {
+			messageBoardBuilderList.add(messageBoard.buildMessageBoard());
+		}
+		
+		return messageBoardBuilderList;
 	}
 }

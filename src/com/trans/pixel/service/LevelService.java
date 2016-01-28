@@ -69,7 +69,7 @@ public class LevelService {
 		int diff = getDifficulty(levelId);
 		switch (diff) {
 			case LevelConst.DIFF_PUTONG:
-				if (levelId >= userLevelRecord.getPutongLevel() + 1)
+				if (levelId > userLevelRecord.getPutongLevel() + 1)
 					return true;
 				
 				return false;
@@ -77,7 +77,7 @@ public class LevelService {
 				int unlockedKunnanDaguan = getDaguanId(userLevelRecord.getPutongLevel());
 				if (unlockedKunnanDaguan < xg.getDaguan())
 					return true;
-				if (xg.getXiaoguan() >= UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) + 1)
+				if (xg.getXiaoguan() > UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) + 1)
 					return true;
 				
 				return false;
@@ -85,7 +85,7 @@ public class LevelService {
 				boolean isUnlockedDaguan = UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) == XIAOGUAN_COUNT_EVERY_DAGUAN;
 				if (!isUnlockedDaguan)
 					return true;
-				if (xg.getXiaoguan() >= UserLevelBean.getXiaoguanRecord(userLevelRecord.getDiyuLevel(), xg.getDaguan()) + 1)
+				if (xg.getXiaoguan() > UserLevelBean.getXiaoguanRecord(userLevelRecord.getDiyuLevel(), xg.getDaguan()) + 1)
 					return true;
 				
 				return false;

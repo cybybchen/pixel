@@ -16,6 +16,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
@@ -35,10 +36,12 @@ import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AccountCommandService;
@@ -52,6 +55,7 @@ import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.LotteryHeroCommandService;
 import com.trans.pixel.service.command.MailCommandService;
+import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
@@ -86,6 +90,8 @@ public class GameDataScreen extends RequestScreen {
 	private AreaCommandService areaCommandService;
 	@Resource
 	private UnionCommandService unionCommandService;
+	@Resource
+	private MessageCommandService messageCommandService;
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
 			Builder responseBuilder) {
@@ -326,6 +332,27 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestHandleUnionApplyCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		unionCommandService.handleUnionApply(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestMessageBoardListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		messageCommandService.getMessageBoardList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestCreateMessageBoardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		messageCommandService.createUnion(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestReplyMessageCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		messageCommandService.replyMessage(cmd, responseBuilder, user);
 		return true;
 	}
 

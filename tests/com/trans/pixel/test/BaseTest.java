@@ -16,14 +16,14 @@ public class BaseTest {
     //define device user
     protected static final int GAME_VERSION = 1;
     protected static final int VERSION = 1;
-    protected static final int SERVER_ID = 5;
-    protected static final String ACCOUNT = "cyb";
+    protected static final int SERVER_ID = 1;
+    protected static final String ACCOUNT = "ybchen";
     protected static final String NICKNAME = "TESTER";
     protected static final String DEVICE_ID = "iphone5";
     protected static final String SESSION = "aa68d03cb47b25b797ba4e06269c3079";
     protected static final String TOKEN = "";
     protected static final long USER_ID = 28;
-    protected static final String USER_NAME = "cyb";
+    protected static final String USER_NAME = "hahaha";
     protected static final String SCORE = "100";
     protected static final String ROOM = "2";
     protected static final String CARID = "carid";

@@ -20,6 +20,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class LadderRedisService {
@@ -31,7 +32,7 @@ public class LadderRedisService {
 			@Override
 			public List<UserRankBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Long, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildRankRedisKey(serverId));
 				
 				List<UserRankBean> rankList = new ArrayList<UserRankBean>();
@@ -50,10 +51,10 @@ public class LadderRedisService {
 			@Override
 			public UserRankBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Long, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildRankRedisKey(serverId));
 				
-				return UserRankBean.fromJson(bhOps.get(rank));
+				return UserRankBean.fromJson(bhOps.get("" + rank));
 			}
 		});
 	}
@@ -63,10 +64,10 @@ public class LadderRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Long, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildRankRedisKey(serverId));
 				
-				bhOps.put(userRank.getRank(), userRank.toJson());
+				bhOps.put("" + userRank.getRank(), userRank.toJson());
 				return null;
 			}
 		});
@@ -77,10 +78,10 @@ public class LadderRedisService {
 			@Override
 			public UserRankBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Long, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildRankInfoRedisKey(serverId));
 				
-				return UserRankBean.fromJson(bhOps.get(userId));
+				return UserRankBean.fromJson(bhOps.get("" + userId));
 			}
 		});
 	}
@@ -90,10 +91,10 @@ public class LadderRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Long, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildRankInfoRedisKey(serverId));
 				
-				bhOps.put(userRank.getUserId(), userRank.toJson());
+				bhOps.put("" + userRank.getUserId(), userRank.toJson());
 				return null;
 			}
 		});
@@ -104,15 +105,15 @@ public class LadderRedisService {
 			@Override
 			public Map<Integer, LadderRankingBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_RANKING_CONFIG_KEY));
 				
 				Map<Integer, LadderRankingBean> ladderRankingMap = new HashMap<Integer, LadderRankingBean>();
-				Iterator<Entry<Integer, String>> it = bhOps.entries().entrySet().iterator();
+				Iterator<Entry<String, String>> it = bhOps.entries().entrySet().iterator();
 				while (it.hasNext()) {
-					Entry<Integer, String> entry = it.next();
+					Entry<String, String> entry = it.next();
 					LadderRankingBean ladderRanking = LadderRankingBean.fromJson(entry.getValue());
-					ladderRankingMap.put(entry.getKey(), ladderRanking);
+					ladderRankingMap.put(TypeTranslatedUtil.stringToInt(entry.getKey()), ladderRanking);
 				}
 				return ladderRankingMap;
 			}
@@ -124,13 +125,13 @@ public class LadderRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_RANKING_CONFIG_KEY));
 				
 				Iterator<Entry<Integer, LadderRankingBean>> it = ladderRankingMap.entrySet().iterator();
 				while (it.hasNext()) {
 					Entry<Integer, LadderRankingBean> entry = it.next();
-					bhOps.put(entry.getKey(), entry.getValue().toJson());
+					bhOps.put("" + entry.getKey(), entry.getValue().toJson());
 				}
 				
 				return null;
@@ -143,13 +144,13 @@ public class LadderRedisService {
 			@Override
 			public List<LadderDailyBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_DAILY_CONFIG_KEY));
 				
 				List<LadderDailyBean> ladderDailyList = new ArrayList<LadderDailyBean>();
-				Iterator<Entry<Integer, String>> it = bhOps.entries().entrySet().iterator();
+				Iterator<Entry<String, String>> it = bhOps.entries().entrySet().iterator();
 				while (it.hasNext()) {
-					Entry<Integer, String> entry = it.next();
+					Entry<String, String> entry = it.next();
 					LadderDailyBean ladderRanking = LadderDailyBean.fromJson(entry.getValue());
 					ladderDailyList.add(ladderRanking);
 				}
@@ -163,11 +164,11 @@ public class LadderRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_DAILY_CONFIG_KEY));
 				
 				for (LadderDailyBean ladderRanking : ladderDailyList) {
-					bhOps.put(ladderRanking.getId(), ladderRanking.toJson());
+					bhOps.put("" + ladderRanking.getId(), ladderRanking.toJson());
 				}
 				
 				return null;

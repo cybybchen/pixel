@@ -46,7 +46,7 @@ public class LadderService {
                         return -1;
                 }
         }
-};
+	};
 
 	
 	private List<Long> getRelativeRanks(long rank) {
@@ -73,9 +73,12 @@ public class LadderService {
 	}
 	
 	public List<UserRankBean> getRankListByUserId(int serverId, long userId) {
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, userId);
-		List<Long> ranks = getRelativeRanks(myRankBean.getRank());
-		List<UserRankBean> rankList = getRankList(serverId, ranks);
+		if (myRankBean != null) {
+			List<Long> ranks = getRelativeRanks(myRankBean.getRank());
+			rankList = getRankList(serverId, ranks);
+		}
 		return rankList;
 	}
 	

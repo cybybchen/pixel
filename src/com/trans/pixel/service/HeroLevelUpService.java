@@ -62,7 +62,7 @@ public class HeroLevelUpService {
 	public ResultConst addHeroEquip(UserBean user, HeroInfoBean heroInfo, int heroId, int armId) {
 		ResultConst result = ErrorConst.EQUIP_HAS_ADD;
 		int equipId = heroInfo.getEquipIdByArmId(armId);
-		if (equipId == 0) {
+		if (equipId == 0 || equipId == 1) {
 			HeroEquipBean equip = heroService.getHeroEquip(heroId);
 			if (equip != null) {
 				result = ErrorConst.NOT_ENGHOU_EQUIP;

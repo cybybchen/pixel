@@ -42,4 +42,10 @@ public class UserService {
 		
 		return userMapper.updateUser(user);
 	}
+	
+	public void updateUserUnion(long userId, int unionId) {
+		UserBean user = getUser(userId);
+		user.setUnionId(unionId);
+		updateUser(user);
+	}
 }

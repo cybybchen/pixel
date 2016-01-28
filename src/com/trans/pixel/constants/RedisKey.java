@@ -92,4 +92,7 @@ public class RedisKey {
 	
 	//equip
 	public static final String EQUIP_KEY = "equip_key";
+	
+	//message board
+	public static final String MESSAGE_BOARD_KEY = "message_board_key";
 }

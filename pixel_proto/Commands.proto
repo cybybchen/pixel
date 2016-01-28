@@ -207,6 +207,19 @@ message MailList {
 	repeated Mail mail = 2;
 }
 
+message MessageBoard {
+	required int64 timestamp = 1;
+	required int64 userId = 2;
+	required string userName = 3;
+	required string content = 4;
+	repeated Msg msg = 5;
+}
+
+message Msg {
+	required int32 id = 1;
+	required string content = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -482,6 +495,31 @@ message ResponseUnionListCommand {
 	repeated Union union = 1;
 }
 
+message RequestMessageBoardListCommand { //获取所有留言板信息
+	required int32 type = 1; //1:普通的 2:工会的
+}
+
+message ResponseMessageBoardListCommand {
+	required int32 type = 1;
+	repeated MessageBoard messageBoard = 2;
+}
+
+message RequestCreateMessageBoardCommand { //创建一个新的留言板
+	required int32 type = 1;
+	required string message = 2;
+}
+
+message RequestReplyMessageCommand { //回复留言板
+	required int32 type = 1;
+	required int64 timestamp = 2;
+	required string message = 3;
+}
+
+message ResponseMessageBoardCommand {
+	required int32 type = 1;
+	required MessageBoard messageBoard = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -518,6 +556,9 @@ message RequestCommand {
 	optional RequestHandleUnionApplyCommand handleUnionApplyCommand = 33;
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
+	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
+	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
+	optional RequestReplyMessageCommand replyMessageCommand = 38;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -548,6 +589,8 @@ message ResponseCommand {
 	optional ResponseUserLootLevelCommand userLootLevelCommand = 26;
 	optional ResponseUnionInfoCommand unionInfoCommand = 27;
 	optional ResponseUnionListCommand unionListCommand = 28;
+	optional ResponseMessageBoardListCommand messageBoardListCommand = 29;
+	optional ResponseMessageBoardCommand messageBoardCommand = 30;
 }
 
 

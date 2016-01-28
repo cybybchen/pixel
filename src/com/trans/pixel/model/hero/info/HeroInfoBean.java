@@ -153,8 +153,8 @@ public class HeroInfoBean {
 		heroInfo.setId(0);
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(1);
-//		heroInfo.setEquipInfo("0|0|0|0|0|0");
-		heroInfo.setEquipInfo("1|1|1|1|1|1");
+		heroInfo.setEquipInfo("0|0|0|0|0|0");
+//		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		heroInfo.setSkillInfoList(SkillInfoBean.initSkillInfo(hero.getSkillList()));
 		
 		return heroInfo;

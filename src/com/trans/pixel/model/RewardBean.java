@@ -165,7 +165,7 @@ public class RewardBean {
 	private static final String LOTTERY_HERO_FILE_PREFIX = "lol_lottery_hero_";
 	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
 	private static final String ID = "id";
-	private static final String ITEM_ID = "itemid";
+	private static final String ITEM_ID = "itemId";
 	private static final String NAME = "name";
 	private static final String WEIGHT = "weight";
 	private static final String COUNT = "count";
