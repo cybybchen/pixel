@@ -156,11 +156,11 @@ message AreaMonsterList {
 }
 
 message AreaMonsterReward {
-	repeated RewardInfo loot = 1;
+	required int32 id = 1;
+	repeated RewardInfo loot = 2;
 }
 
 message AreaMonsterRewardList {
-	required int32 id = 1;
 	repeated AreaMonsterReward region = 2;
 }
 

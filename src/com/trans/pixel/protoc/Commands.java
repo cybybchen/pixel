@@ -19788,27 +19788,37 @@ public final class Commands {
   public interface AreaMonsterRewardOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.RewardInfo loot = 1;
+    // required int32 id = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>required int32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int32 id = 1;</code>
+     */
+    int getId();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo loot = 2;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     java.util.List<com.trans.pixel.protoc.Commands.RewardInfo> 
         getLootList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     com.trans.pixel.protoc.Commands.RewardInfo getLoot(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     int getLootCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.Commands.RewardInfoOrBuilder> 
         getLootOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     com.trans.pixel.protoc.Commands.RewardInfoOrBuilder getLootOrBuilder(
         int index);
@@ -19864,10 +19874,15 @@ public final class Commands {
               }
               break;
             }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
                 loot_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.RewardInfo>();
-                mutable_bitField0_ |= 0x00000001;
+                mutable_bitField0_ |= 0x00000002;
               }
               loot_.add(input.readMessage(com.trans.pixel.protoc.Commands.RewardInfo.PARSER, extensionRegistry));
               break;
@@ -19880,7 +19895,7 @@ public final class Commands {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           loot_ = java.util.Collections.unmodifiableList(loot_);
         }
         this.unknownFields = unknownFields.build();
@@ -19914,36 +19929,53 @@ public final class Commands {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.RewardInfo loot = 1;
-    public static final int LOOT_FIELD_NUMBER = 1;
+    private int bitField0_;
+    // required int32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>required int32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfo loot = 2;
+    public static final int LOOT_FIELD_NUMBER = 2;
     private java.util.List<com.trans.pixel.protoc.Commands.RewardInfo> loot_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     public java.util.List<com.trans.pixel.protoc.Commands.RewardInfo> getLootList() {
       return loot_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Commands.RewardInfoOrBuilder> 
         getLootOrBuilderList() {
       return loot_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     public int getLootCount() {
       return loot_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     public com.trans.pixel.protoc.Commands.RewardInfo getLoot(int index) {
       return loot_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
      */
     public com.trans.pixel.protoc.Commands.RewardInfoOrBuilder getLootOrBuilder(
         int index) {
@@ -19951,6 +19983,7 @@ public final class Commands {
     }
 
     private void initFields() {
+      id_ = 0;
       loot_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -19958,6 +19991,10 @@ public final class Commands {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       for (int i = 0; i < getLootCount(); i++) {
         if (!getLoot(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -19971,8 +20008,11 @@ public final class Commands {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, id_);
+      }
       for (int i = 0; i < loot_.size(); i++) {
-        output.writeMessage(1, loot_.get(i));
+        output.writeMessage(2, loot_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -19983,9 +20023,13 @@ public final class Commands {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
       for (int i = 0; i < loot_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, loot_.get(i));
+          .computeMessageSize(2, loot_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -20104,9 +20148,11 @@ public final class Commands {
 
       public Builder clear() {
         super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (lootBuilder_ == null) {
           loot_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           lootBuilder_.clear();
         }
@@ -20137,15 +20183,21 @@ public final class Commands {
       public com.trans.pixel.protoc.Commands.AreaMonsterReward buildPartial() {
         com.trans.pixel.protoc.Commands.AreaMonsterReward result = new com.trans.pixel.protoc.Commands.AreaMonsterReward(this);
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
         if (lootBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
             loot_ = java.util.Collections.unmodifiableList(loot_);
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.loot_ = loot_;
         } else {
           result.loot_ = lootBuilder_.build();
         }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -20161,11 +20213,14 @@ public final class Commands {
 
       public Builder mergeFrom(com.trans.pixel.protoc.Commands.AreaMonsterReward other) {
         if (other == com.trans.pixel.protoc.Commands.AreaMonsterReward.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
         if (lootBuilder_ == null) {
           if (!other.loot_.isEmpty()) {
             if (loot_.isEmpty()) {
               loot_ = other.loot_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureLootIsMutable();
               loot_.addAll(other.loot_);
@@ -20178,7 +20233,7 @@ public final class Commands {
               lootBuilder_.dispose();
               lootBuilder_ = null;
               loot_ = other.loot_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
               lootBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getLootFieldBuilder() : null;
@@ -20192,6 +20247,10 @@ public final class Commands {
       }
 
       public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
         for (int i = 0; i < getLootCount(); i++) {
           if (!getLoot(i).isInitialized()) {
             
@@ -20220,13 +20279,46 @@ public final class Commands {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.RewardInfo loot = 1;
+      // required int32 id = 1;
+      private int id_ ;
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo loot = 2;
       private java.util.List<com.trans.pixel.protoc.Commands.RewardInfo> loot_ =
         java.util.Collections.emptyList();
       private void ensureLootIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           loot_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.RewardInfo>(loot_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -20234,7 +20326,7 @@ public final class Commands {
           com.trans.pixel.protoc.Commands.RewardInfo, com.trans.pixel.protoc.Commands.RewardInfo.Builder, com.trans.pixel.protoc.Commands.RewardInfoOrBuilder> lootBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.RewardInfo> getLootList() {
         if (lootBuilder_ == null) {
@@ -20244,7 +20336,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public int getLootCount() {
         if (lootBuilder_ == null) {
@@ -20254,7 +20346,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public com.trans.pixel.protoc.Commands.RewardInfo getLoot(int index) {
         if (lootBuilder_ == null) {
@@ -20264,7 +20356,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder setLoot(
           int index, com.trans.pixel.protoc.Commands.RewardInfo value) {
@@ -20281,7 +20373,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder setLoot(
           int index, com.trans.pixel.protoc.Commands.RewardInfo.Builder builderForValue) {
@@ -20295,7 +20387,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder addLoot(com.trans.pixel.protoc.Commands.RewardInfo value) {
         if (lootBuilder_ == null) {
@@ -20311,7 +20403,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder addLoot(
           int index, com.trans.pixel.protoc.Commands.RewardInfo value) {
@@ -20328,7 +20420,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder addLoot(
           com.trans.pixel.protoc.Commands.RewardInfo.Builder builderForValue) {
@@ -20342,7 +20434,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder addLoot(
           int index, com.trans.pixel.protoc.Commands.RewardInfo.Builder builderForValue) {
@@ -20356,7 +20448,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder addAllLoot(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Commands.RewardInfo> values) {
@@ -20370,12 +20462,12 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder clearLoot() {
         if (lootBuilder_ == null) {
           loot_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           lootBuilder_.clear();
@@ -20383,7 +20475,7 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public Builder removeLoot(int index) {
         if (lootBuilder_ == null) {
@@ -20396,14 +20488,14 @@ public final class Commands {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public com.trans.pixel.protoc.Commands.RewardInfo.Builder getLootBuilder(
           int index) {
         return getLootFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public com.trans.pixel.protoc.Commands.RewardInfoOrBuilder getLootOrBuilder(
           int index) {
@@ -20413,7 +20505,7 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Commands.RewardInfoOrBuilder> 
            getLootOrBuilderList() {
@@ -20424,14 +20516,14 @@ public final class Commands {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public com.trans.pixel.protoc.Commands.RewardInfo.Builder addLootBuilder() {
         return getLootFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Commands.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public com.trans.pixel.protoc.Commands.RewardInfo.Builder addLootBuilder(
           int index) {
@@ -20439,7 +20531,7 @@ public final class Commands {
             index, com.trans.pixel.protoc.Commands.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo loot = 2;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Commands.RewardInfo.Builder> 
            getLootBuilderList() {
@@ -20452,7 +20544,7 @@ public final class Commands {
           lootBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.RewardInfo, com.trans.pixel.protoc.Commands.RewardInfo.Builder, com.trans.pixel.protoc.Commands.RewardInfoOrBuilder>(
                   loot_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           loot_ = null;
@@ -20473,16 +20565,6 @@ public final class Commands {
 
   public interface AreaMonsterRewardListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
-    // required int32 id = 1;
-    /**
-     * <code>required int32 id = 1;</code>
-     */
-    boolean hasId();
-    /**
-     * <code>required int32 id = 1;</code>
-     */
-    int getId();
 
     // repeated .com.trans.pixel.protoc.AreaMonsterReward region = 2;
     /**
@@ -20560,15 +20642,10 @@ public final class Commands {
               }
               break;
             }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
-              break;
-            }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
                 region_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaMonsterReward>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               region_.add(input.readMessage(com.trans.pixel.protoc.Commands.AreaMonsterReward.PARSER, extensionRegistry));
               break;
@@ -20581,7 +20658,7 @@ public final class Commands {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           region_ = java.util.Collections.unmodifiableList(region_);
         }
         this.unknownFields = unknownFields.build();
@@ -20613,23 +20690,6 @@ public final class Commands {
     @java.lang.Override
     public com.google.protobuf.Parser<AreaMonsterRewardList> getParserForType() {
       return PARSER;
-    }
-
-    private int bitField0_;
-    // required int32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
-    /**
-     * <code>required int32 id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int32 id = 1;</code>
-     */
-    public int getId() {
-      return id_;
     }
 
     // repeated .com.trans.pixel.protoc.AreaMonsterReward region = 2;
@@ -20669,7 +20729,6 @@ public final class Commands {
     }
 
     private void initFields() {
-      id_ = 0;
       region_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -20677,10 +20736,6 @@ public final class Commands {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       for (int i = 0; i < getRegionCount(); i++) {
         if (!getRegion(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -20694,9 +20749,6 @@ public final class Commands {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, id_);
-      }
       for (int i = 0; i < region_.size(); i++) {
         output.writeMessage(2, region_.get(i));
       }
@@ -20709,10 +20761,6 @@ public final class Commands {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
       for (int i = 0; i < region_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, region_.get(i));
@@ -20834,11 +20882,9 @@ public final class Commands {
 
       public Builder clear() {
         super.clear();
-        id_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
         if (regionBuilder_ == null) {
           region_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           regionBuilder_.clear();
         }
@@ -20869,21 +20915,15 @@ public final class Commands {
       public com.trans.pixel.protoc.Commands.AreaMonsterRewardList buildPartial() {
         com.trans.pixel.protoc.Commands.AreaMonsterRewardList result = new com.trans.pixel.protoc.Commands.AreaMonsterRewardList(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.id_ = id_;
         if (regionBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
             region_ = java.util.Collections.unmodifiableList(region_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.region_ = region_;
         } else {
           result.region_ = regionBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -20899,14 +20939,11 @@ public final class Commands {
 
       public Builder mergeFrom(com.trans.pixel.protoc.Commands.AreaMonsterRewardList other) {
         if (other == com.trans.pixel.protoc.Commands.AreaMonsterRewardList.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
-        }
         if (regionBuilder_ == null) {
           if (!other.region_.isEmpty()) {
             if (region_.isEmpty()) {
               region_ = other.region_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureRegionIsMutable();
               region_.addAll(other.region_);
@@ -20919,7 +20956,7 @@ public final class Commands {
               regionBuilder_.dispose();
               regionBuilder_ = null;
               region_ = other.region_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               regionBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRegionFieldBuilder() : null;
@@ -20933,10 +20970,6 @@ public final class Commands {
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
-          
-          return false;
-        }
         for (int i = 0; i < getRegionCount(); i++) {
           if (!getRegion(i).isInitialized()) {
             
@@ -20965,46 +20998,13 @@ public final class Commands {
       }
       private int bitField0_;
 
-      // required int32 id = 1;
-      private int id_ ;
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
       // repeated .com.trans.pixel.protoc.AreaMonsterReward region = 2;
       private java.util.List<com.trans.pixel.protoc.Commands.AreaMonsterReward> region_ =
         java.util.Collections.emptyList();
       private void ensureRegionIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
           region_ = new java.util.ArrayList<com.trans.pixel.protoc.Commands.AreaMonsterReward>(region_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -21153,7 +21153,7 @@ public final class Commands {
       public Builder clearRegion() {
         if (regionBuilder_ == null) {
           region_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           regionBuilder_.clear();
@@ -21230,7 +21230,7 @@ public final class Commands {
           regionBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Commands.AreaMonsterReward, com.trans.pixel.protoc.Commands.AreaMonsterReward.Builder, com.trans.pixel.protoc.Commands.AreaMonsterRewardOrBuilder>(
                   region_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
           region_ = null;
@@ -74427,10 +74427,10 @@ public final class Commands {
       "\n\001y\030\005 \001(\005\0229\n\006reward\030\006 \001(\0132).com.trans.pi" +
       "xel.protoc.AreaMonsterReward\"F\n\017AreaMons" +
       "terList\0223\n\006region\030\001 \003(\0132#.com.trans.pixe" +
-      "l.protoc.AreaMonster\"E\n\021AreaMonsterRewar" +
-      "d\0220\n\004loot\030\001 \003(\0132\".com.trans.pixel.protoc" +
-      ".RewardInfo\"^\n\025AreaMonsterRewardList\022\n\n\002" +
-      "id\030\001 \002(\005\0229\n\006region\030\002 \003(\0132).com.trans.pix",
+      "l.protoc.AreaMonster\"Q\n\021AreaMonsterRewar" +
+      "d\022\n\n\002id\030\001 \002(\005\0220\n\004loot\030\002 \003(\0132\".com.trans." +
+      "pixel.protoc.RewardInfo\"R\n\025AreaMonsterRe" +
+      "wardList\0229\n\006region\030\002 \003(\0132).com.trans.pix",
       "el.protoc.AreaMonsterReward\"\326\001\n\010AreaInfo" +
       "\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\016\n\006zhanli\030\003 \002" +
       "(\005\0227\n\tresources\030\004 \003(\0132$.com.trans.pixel." +
@@ -74797,13 +74797,13 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_AreaMonsterReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaMonsterReward_descriptor,
-              new java.lang.String[] { "Loot", });
+              new java.lang.String[] { "Id", "Loot", });
           internal_static_com_trans_pixel_protoc_AreaMonsterRewardList_descriptor =
             getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_AreaMonsterRewardList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaMonsterRewardList_descriptor,
-              new java.lang.String[] { "Id", "Region", });
+              new java.lang.String[] { "Region", });
           internal_static_com_trans_pixel_protoc_AreaInfo_descriptor =
             getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_AreaInfo_fieldAccessorTable = new
