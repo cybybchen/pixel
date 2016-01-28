@@ -51,7 +51,7 @@ public class LevelCommandService extends BaseCommandService {
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
-		if (!levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
+		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -68,7 +68,7 @@ public class LevelCommandService extends BaseCommandService {
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
-		if (!levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
+		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -97,7 +97,7 @@ public class LevelCommandService extends BaseCommandService {
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
-		if (!levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
+		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -119,7 +119,7 @@ public class LevelCommandService extends BaseCommandService {
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
-		if (!levelService.isCheatLevelLoot(levelId, userLevelRecord)) {
+		if (levelService.isCheatLevelLoot(levelId, userLevelRecord)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;

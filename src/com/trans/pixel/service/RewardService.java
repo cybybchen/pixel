@@ -38,7 +38,7 @@ public class RewardService {
 	}
 	
 	public void doReward(UserBean user, RewardBean reward) {
-		int rewardId = reward.getItemId();
+		int rewardId = reward.getItemid();
 		int rewardCount = reward.getCount();
 		if (rewardId > RewardConst.HERO) {
 			int heroId = rewardId % RewardConst.HERO_STAR;

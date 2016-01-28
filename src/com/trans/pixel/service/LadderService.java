@@ -136,7 +136,7 @@ public class LadderService {
 			endRank = Math.min(nextLadderRanking.getRanking(), endRank);
 			
 			RewardBean reward = new RewardBean();
-			reward.setItemId(ladderRanking.getItemid());
+			reward.setItemid(ladderRanking.getItemid());
 			reward.setCount((int)(ladderRanking.getCount() * (endRank - startRank)));
 			updateRewardList(rewardList, reward);
 			
@@ -181,11 +181,11 @@ public class LadderService {
 	private List<RewardBean> buildRewardList(LadderDailyBean ladderDaily) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		RewardBean reward = new RewardBean();
-		reward.setItemId(ladderDaily.getItemid1());
+		reward.setItemid(ladderDaily.getItemid1());
 		reward.setCount(ladderDaily.getCount1());
 		rewardList.add(reward);
 		reward = new RewardBean();
-		reward.setItemId(ladderDaily.getItemid2());
+		reward.setItemid(ladderDaily.getItemid2());
 		reward.setCount(ladderDaily.getCount2());
 		rewardList.add(reward);
 		
@@ -203,7 +203,7 @@ public class LadderService {
 	
 	private void updateRewardList(List<RewardBean> rewardList, RewardBean reward) {
 		for (RewardBean oldReward : rewardList) {
-			if (oldReward.getItemId() == reward.getItemId()) {
+			if (oldReward.getItemid() == reward.getItemid()) {
 				oldReward.setCount(oldReward.getCount() + reward.getCount());
 				return;
 			}

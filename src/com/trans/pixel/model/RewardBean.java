@@ -19,7 +19,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class RewardBean {
 	private int id = 0;
-	private int itemId = 0;
+	private int itemid = 0;
 	private String name = "";
 	private int weight = 0;
 	private int count = 0;
@@ -29,11 +29,11 @@ public class RewardBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getItemId() {
-		return itemId;
+	public int getItemid() {
+		return itemid;
 	}
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setItemid(int itemid) {
+		this.itemid = itemid;
 	}
 	public String getName() {
 		return name;
@@ -56,7 +56,7 @@ public class RewardBean {
 	
 	public RewardInfo buildRewardInfo() {
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
-		reward.setItemid(itemId);
+		reward.setItemid(itemid);
 		reward.setItemname(name);
 		reward.setCount(count);
 		
@@ -66,7 +66,7 @@ public class RewardBean {
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
-		json.put(ITEM_ID, itemId);
+		json.put(ITEM_ID, itemid);
 		json.put(NAME, name);
 		json.put(WEIGHT, weight);
 		json.put(COUNT, count);
@@ -80,7 +80,7 @@ public class RewardBean {
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
 		bean.setId(json.getInt(ID));
-		bean.setItemId(json.getInt(ITEM_ID));
+		bean.setItemid(json.getInt(ITEM_ID));
 		bean.setName(json.getString(NAME));
 		bean.setWeight(json.getInt(WEIGHT));
 		bean.setCount(json.getInt(COUNT));
@@ -91,7 +91,7 @@ public class RewardBean {
 	public static RewardBean xmlParse(Element e) {
 		RewardBean reward = new RewardBean();
 		reward.setId(TypeTranslatedUtil.stringToInt(e.attributeValue(ID)));
-		reward.setItemId(TypeTranslatedUtil.stringToInt(e.attributeValue(ITEM_ID)));
+		reward.setItemid(TypeTranslatedUtil.stringToInt(e.attributeValue(ITEM_ID)));
 		reward.setName(e.attributeValue(NAME));
 		reward.setWeight(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHT)));
 		reward.setCount(TypeTranslatedUtil.stringToInt(e.attributeValue(COUNT)));
@@ -153,7 +153,7 @@ public class RewardBean {
 			return rewardInfoList;
 		for (RewardBean reward : rewardList) {
 			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
-			rewardInfo.setItemid(reward.getItemId());
+			rewardInfo.setItemid(reward.getItemid());
 			rewardInfo.setItemname(reward.getName());
 			rewardInfo.setCount(reward.getCount());
 			rewardInfoList.add(rewardInfo.build());
@@ -165,7 +165,7 @@ public class RewardBean {
 	private static final String LOTTERY_HERO_FILE_PREFIX = "lol_lottery_hero_";
 	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
 	private static final String ID = "id";
-	private static final String ITEM_ID = "itemId";
+	private static final String ITEM_ID = "itemid";
 	private static final String NAME = "name";
 	private static final String WEIGHT = "weight";
 	private static final String COUNT = "count";
