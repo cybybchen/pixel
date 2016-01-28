@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.HTTPProtobufResolver;
 import com.trans.pixel.utils.HttpUtil;
 
@@ -34,8 +35,8 @@ public class BaseTest {
     protected static final String PAINTID = "5";
     protected static final String FILE = "notice_1329";
     
-    protected static final String url = "http://118.192.77.33:8082/Lol450/gamedata";
-//    protected static final String url = "http://127.0.0.1:8080/pixel/gamedata";
+    protected static final String defaultUrl = "http://118.192.77.33:8082/Lol450/gamedata";
+    protected static String url;
     protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
 
     protected static void initTestData() {
@@ -43,6 +44,10 @@ public class BaseTest {
     }
     
     protected static HeadInfo head() {
+    	if(url == null)
+    		url = RedisService.ReadProperties("serverurl");
+    	if(url.length() == 0)
+    		url = defaultUrl;
         HeadInfo.Builder head = HeadInfo.newBuilder();
         head.setGameVersion(GAME_VERSION);
         head.setAccount(ACCOUNT);

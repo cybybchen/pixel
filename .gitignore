@@ -3,3 +3,4 @@ build
 Commands_pb.lua
 appendCommand.sh
 Properties
+jdbc.properties

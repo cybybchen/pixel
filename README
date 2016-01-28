@@ -1,0 +1,3 @@
+create a jdbc.properties with jdbc.properties.default
+write test server url in Properties/serverurl,For example:http://127.0.0.1:8080/pixel/gamedata
+
