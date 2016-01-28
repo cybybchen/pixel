@@ -32,6 +32,13 @@ public class HeroService {
 		return hero.getEquip(1);
 	}
 	
+	public int getLevelUpExp(int levelId) {
+		HeroUpgradeBean next = getHeroUpgrade(levelId);
+		HeroUpgradeBean current = getHeroUpgrade(levelId - 1);
+		
+		return next.getExp() - current.getExp();
+	}
+	
 	public HeroUpgradeBean getHeroUpgrade(int levelId) {
 		HeroUpgradeBean hu = heroRedisService.getHeroUpgradeByLevelId(levelId);
 		if (hu == null) {

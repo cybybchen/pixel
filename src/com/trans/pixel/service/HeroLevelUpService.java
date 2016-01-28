@@ -21,6 +21,7 @@ public class HeroLevelUpService {
 	private static final int TYPE_HEROLEVEL = 1;
 	private static final int TYPE_STARLEVEL = 2;
 	private static final int TYPE_RARELEVEL = 3;
+	private static final int TYPE_SKILLLEVEL = 4;
 	
 	private static final int HERO_MAX_LEVEL = 60;
 	
@@ -51,6 +52,9 @@ public class HeroLevelUpService {
 				break;
 			case TYPE_RARELEVEL:
 				result = levelUpRare(user, heroInfo);
+				break;
+			case TYPE_SKILLLEVEL:
+				result = levelUpSkill(user, heroInfo);
 				break;
 			default:
 				break;
@@ -104,7 +108,7 @@ public class HeroLevelUpService {
 		if (heroInfo.getLevel() == HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;
 		}
-		int useExp = heroService.getHeroUpgrade(heroInfo.getLevel() + 1).getExp();
+		int useExp = heroService.getLevelUpExp(heroInfo.getLevel() + 1);
 		if (useExp > user.getExp()) {
 			return ErrorConst.NOT_ENGHOU_EXP;
 		}
@@ -121,6 +125,18 @@ public class HeroLevelUpService {
 	}
 	
 	private ResultConst levelUpRare(UserBean user, HeroInfoBean heroInfo) {
+		int heroEquipLevel = equipService.calHeroEquipLevel(heroInfo);
+		int needLevel = heroRareService.getRare(heroInfo.getRare() + 1);
+		if (needLevel == 0 || needLevel > heroEquipLevel) {
+			return ErrorConst.LEVELUP_RARE_ERROR;
+		}
+		
+		heroInfo.levelUpRare();
+		
+		return SuccessConst.LEVELUP_RARE_SUCCESS;
+	}
+	
+	private ResultConst levelUpSkill(UserBean user, HeroInfoBean heroInfo) {
 		int heroEquipLevel = equipService.calHeroEquipLevel(heroInfo);
 		int needLevel = heroRareService.getRare(heroInfo.getRare() + 1);
 		if (needLevel == 0 || needLevel > heroEquipLevel) {
