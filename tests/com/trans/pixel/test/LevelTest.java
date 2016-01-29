@@ -8,21 +8,37 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class LevelTest extends BaseTest {
 private static Logger logger = Logger.getLogger(LevelTest.class);
 	
-	@Test
+//	@Test
 	public void levelResutlTest() {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
 		RequestLevelResultCommand.Builder b = RequestLevelResultCommand.newBuilder();
-		b.setLevelId(1001);
+		b.setLevelId(1008);
 		b.setFightInfo("");
 		b.setTeamInfo("");
 		builder.setLevelResultCommand(b.build());
+		
+		RequestCommand reqcmd = builder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+	}
+	
+	@Test
+	public void levellootStartTest() {
+		RequestCommand.Builder builder = RequestCommand.newBuilder();
+		builder.setHead(head());
+		RequestLevelLootStartCommand.Builder b = RequestLevelLootStartCommand.newBuilder();
+		b.setLevelId(1001);
+		builder.setLevelLootStartCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
 		byte[] reqData = reqcmd.toByteArray();
