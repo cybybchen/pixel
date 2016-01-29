@@ -118,6 +118,7 @@ public class LevelCommandService extends BaseCommandService {
 		
 		userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord);
 		userLevelRecord.setLevelPrepareTime(0);
+		userLevelRecord.setLastLevelResultTime(0);
 		userLevelService.updateUserLevelRecord(userLevelRecord);
 		log.debug("levelId is:" + levelId);
 		WinBean winBean = winService.getWinByLevelId(levelId);
