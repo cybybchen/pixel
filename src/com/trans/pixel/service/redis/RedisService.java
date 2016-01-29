@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.dom4j.DocumentException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -169,13 +170,13 @@ public class RedisService {
 //	/**
 //	 * 从工程导入XML
 //	 */
-//	public static String ReadXMlProperties(String fileName){
+//	public static Element ReadXMlProperties(String fileName){
 //    	return ReadFromFile(PROPERTIES + fileName);
 //    }
 //	/**
 //	 * 从配置导入XML
 //	 */
-//	public static String ReadXmlConfig(String fileName){
+//	public static Element ReadXmlConfig(String fileName){
 //    	return ReadFromFile(DirConst.getConfigXmlPath(fileName));
 //    }
 //	/**
@@ -230,7 +231,6 @@ public class RedisService {
 		});
     }
 
-
     /**
      * 更新单个值
      */
@@ -251,6 +251,37 @@ public class RedisService {
 			}
 		});
     }
+	
+	 /**
+    * 设置多个值(不超时)
+    */
+	public void mset(final Map<String, String> keyvalue) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0) throws DataAccessException {
+
+				redisTemplate.opsForValue().multiSet(keyvalue);
+
+				int expiredtime = expireTimeAndInit();
+				if (expiredtime > 0)
+					throw new RuntimeException("mset中不能设置超时时间");
+				return null;
+			}
+		});
+	}
+
+   /**
+    * 获取多个值
+    */
+   public List<String> mget(final List<String> key) {
+		return redisTemplate.execute(new RedisCallback<List<String>>() {
+			@Override
+			public List<String> doInRedis(RedisConnection arg0) throws DataAccessException {
+
+				return redisTemplate.opsForValue().multiGet(key);
+			}
+		});
+   }
 
 	 /**
     * 设置hashMap单个值
@@ -274,9 +305,9 @@ public class RedisService {
 	}
 
 	 /**
-   * 设置HashMap
+   * 设置HashMap多个值
    */
-	public void hputAll(final String key, final Map<String, String> value) {
+	public void hputAll(final String key, final Map<String, String> keyvalue) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -284,7 +315,7 @@ public class RedisService {
 				BoundHashOperations<String, String, String> Ops = redisTemplate
 						.boundHashOps(key);
 
-				Ops.putAll(value);
+				Ops.putAll(keyvalue);
 				
 				int expiredtime = expireTimeAndInit();
 				if (expiredtime > 0)
@@ -306,6 +337,22 @@ public class RedisService {
 						.boundHashOps(key);
 				
 				return Ops.get(key2);
+			}
+		});
+    }
+
+    /**
+     * 获取hashMap多个值
+     */
+    public List<String> hget(final String key, final Collection<String> key2) {
+    	return redisTemplate.execute(new RedisCallback<List<String>>() {
+			@Override
+			public List<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+				
+				return Ops.multiGet(key2);
 			}
 		});
     }

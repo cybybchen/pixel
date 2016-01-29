@@ -55,4 +55,6 @@ mysql>update user set password=password('你的密码') where user='root';
 mysql>flush privileges;
 启动redis
 sudo redis-server /etc/redis.conf
+服务器
+scp pixel.war trans@118.192.77.33:/opt/tomcat7_lol/webapps
 
