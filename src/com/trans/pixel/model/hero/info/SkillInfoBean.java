@@ -64,6 +64,8 @@ public class SkillInfoBean {
 				SkillInfoBean skillInfo = new SkillInfoBean();
 				skillInfo.setSkillId(skill.getSkillid());
 				skillInfo.setSkillLevel(0);
+				if (unlock == 1)
+					skillInfo.setSkillLevel(1);
 				skillInfo.setUnlock(skill.getUnlock());
 				return skillInfo;
 			}

@@ -79,7 +79,7 @@ public class SkillService {
 		if (skillLevel.getMaxlevel() <= skillInfo.getSkillLevel())
 			return false;
 		
-		if (skillLevel.getInilevel() + (skillInfo.getSkillLevel() + 1) * skillLevel.getLevelup() > heroInfo.getLevel())
+		if (skillLevel.getInilevel() + skillInfo.getSkillLevel() * skillLevel.getLevelup() > heroInfo.getLevel())
 			return false;
 		
 		return true;

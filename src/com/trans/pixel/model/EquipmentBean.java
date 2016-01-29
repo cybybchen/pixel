@@ -319,8 +319,8 @@ public class EquipmentBean {
 	}
 	
 	private static final String FILE_NAME = "lol_equipment.xml";
-	private static final String ITEM_ID = "item_id";
-	private static final String ITEM_NAME = "item_name";
+	private static final String ITEM_ID = "itemid";
+	private static final String ITEM_NAME = "itemname";
 	private static final String RARE = "rare";
 	private static final String LEVEL = "level";
 	private static final String IMG = "img";
@@ -337,7 +337,7 @@ public class EquipmentBean {
 	private static final String SPEED = "speed";
 	private static final String STEAL = "steal";
 	private static final String SKILL = "skill";
-	private static final String COVER_COST = "cover_cost";
+	private static final String COVER_COST = "covercost";
 	private static final String COVER = "cover";
 	private static final String COVER1 = "cover1";
 	private static final String COUNT1 = "count1";
