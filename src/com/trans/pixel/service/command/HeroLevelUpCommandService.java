@@ -29,6 +29,8 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 	private UserHeroService userHeroService;
 	@Resource
 	private SkillService skillService;
+	@Resource
+	private PushCommandService pushCommandService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
@@ -127,6 +129,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 			builder.setHeroId(heroId);
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
+			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 		}
 	}
 }
