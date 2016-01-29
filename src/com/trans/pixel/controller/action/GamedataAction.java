@@ -56,7 +56,7 @@ public class GamedataAction {
 
     private void cmdhttp(PixelResponse nfsResponse, HttpServletResponse response) throws IOException {
         ResponseCommand responseCommand = nfsResponse.command.build();
-        logger.debug("PROCESSING response={}", responseCommand);
+        logger.debug("PROCESSING response={}, bytes={}", responseCommand, responseCommand.getSerializedSize());
         OutputStream out = response.getOutputStream();
         try {
             responseCommand.writeTo(out);
