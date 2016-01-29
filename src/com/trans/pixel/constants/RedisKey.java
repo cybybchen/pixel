@@ -31,8 +31,8 @@ public class RedisKey {
 	public static final String DAGUAN_KEY = "daguan";
 	
 	//user level record redis
-	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_record_";
-	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_level_loot_record_";
+	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_";
+	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_loot_level_";
 	
 	//win redis
 	public static final String WIN_LEVEL_KEY = "win_level_key";
@@ -95,4 +95,8 @@ public class RedisKey {
 	
 	//message board
 	public static final String MESSAGE_BOARD_KEY = "message_board_key";
+	
+	//skill
+	public static final String SKILL_KEY = "skill_key";
+	public static final String SKILLLEVEL_KEY = "skilllevel_key";
 }

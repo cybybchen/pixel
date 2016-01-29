@@ -53,6 +53,9 @@ public class AccountCommandService extends BaseCommandService {
 		user.setId(userId);
 		user.setServerId(serverId);
 		user.setUserName(userName);
+		user.setCoin(1000000);
+		user.setJewel(1000000);
+		user.setExp(1000000);
 		
 		return user;
 	}

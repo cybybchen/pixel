@@ -11,7 +11,7 @@ public enum SuccessConst implements ResultConst {
             MAIL_READ_SUCCESS(1011, "邮件读取成功"), MAIL_DELETE_SUCCESS(1012, "邮件删除成功"), FRIEND_ADDED_SUCCESS(1013, "好友添加成功"), 
             FRIEND_ADDED_FAILED(1014, "好友添加失败"), SEND_FRIEND_ADDED_SUCCESS(1015, "好友添加请求发送成功"), EQUIP_LEVELUP_SUCCESS(1016, "装备升级成功"),
             LEVELUP_RARE_SUCCESS(1017, "升阶成功"), APPLY_UNION_SUCCESS(1018, "工会申请成功"), CREATE_UNION_SUCCESS(1019, "工会创建成功"), 
-            HANDLE_UNION_APPLY_SUCCESS(1020, "工会申请处理成功");
+            HANDLE_UNION_APPLY_SUCCESS(1020, "工会申请处理成功"), LEVELUP_SKILL_SUCCESS(1021, "技能升级成功");
 
     private final int code;
 

@@ -12,6 +12,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.model.hero.info.SkillInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 
@@ -40,8 +41,10 @@ public class HeroLevelUpService {
 	private UserEquipService userEquipService;
 	@Resource
 	private HeroRareService heroRareService;
+	@Resource
+	private SkillService skillService;
 	
-	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType) {
+	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
 			case TYPE_HEROLEVEL:
@@ -54,7 +57,7 @@ public class HeroLevelUpService {
 				result = levelUpRare(user, heroInfo);
 				break;
 			case TYPE_SKILLLEVEL:
-				result = levelUpSkill(user, heroInfo);
+				result = levelUpSkill(user, heroInfo, skillId);
 				break;
 			default:
 				break;
@@ -136,16 +139,23 @@ public class HeroLevelUpService {
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}
 	
-	private ResultConst levelUpSkill(UserBean user, HeroInfoBean heroInfo) {
-		int heroEquipLevel = equipService.calHeroEquipLevel(heroInfo);
-		int needLevel = heroRareService.getRare(heroInfo.getRare() + 1);
-		if (needLevel == 0 || needLevel > heroEquipLevel) {
-			return ErrorConst.LEVELUP_RARE_ERROR;
+	private ResultConst levelUpSkill(UserBean user, HeroInfoBean heroInfo, int skillId) {
+		SkillInfoBean skillInfo = heroInfo.getSKillInfo(skillId);
+		if (skillInfo == null) {
+			return ErrorConst.SKILL_NOT_EXIST;
 		}
 		
-		heroInfo.levelUpRare();
+		if (!skillService.canLevelUp(heroInfo, skillInfo)) {
+			return ErrorConst.SKILL_CAN_NOT_LEVELUP;
+		}
 		
-		return SuccessConst.LEVELUP_RARE_SUCCESS;
+		if (!skillService.hasEnoughSP(heroInfo, skillId)) {
+			return ErrorConst.SP_NOT_ENOUGH;
+		}
+		
+		heroInfo.upgradeSkill(skillId);
+		
+		return SuccessConst.LEVELUP_SKILL_SUCCESS;
 	}
 	
 //	private ResultConst levelUpEquip(UserBean user, HeroInfoBean heroInfo) {

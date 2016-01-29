@@ -39,11 +39,11 @@ public class HeroService {
 		return next.getExp() - current.getExp();
 	}
 	
-	public HeroUpgradeBean getHeroUpgrade(int levelId) {
-		HeroUpgradeBean hu = heroRedisService.getHeroUpgradeByLevelId(levelId);
+	public HeroUpgradeBean getHeroUpgrade(int level) {
+		HeroUpgradeBean hu = heroRedisService.getHeroUpgradeByLevelId(level);
 		if (hu == null) {
 			parseHeroUpgradeAndSaveConfig();
-			hu = heroRedisService.getHeroUpgradeByLevelId(levelId);
+			hu = heroRedisService.getHeroUpgradeByLevelId(level);
 		}
 		
 		return hu;

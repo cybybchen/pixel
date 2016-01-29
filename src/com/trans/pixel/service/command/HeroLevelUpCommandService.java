@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseHeroResultCommand;
 import com.trans.pixel.service.HeroLevelUpService;
+import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
 
 @Service
@@ -26,6 +27,8 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 	private HeroLevelUpService heroLevelUpService;
 	@Resource
 	private UserHeroService userHeroService;
+	@Resource
+	private SkillService skillService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
@@ -33,14 +36,20 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 		int heroId = cmd.getHeroId();
 		int infoId = cmd.getInfoId();
 		long userId = user.getId();
+		int skillId = 0;
+		if (cmd.hasSkillId())
+			skillId = cmd.getSkillId();
 		UserHeroBean userHero = userHeroService.selectUserHero(userId, heroId);
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		HeroInfoBean heroInfo = null;
 		
 		if (userHero != null) {
 			heroInfo = userHero.getHeroInfoByInfoId(infoId);
-			if (heroInfo != null) 
-				result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType);
+			if (heroInfo != null) {
+				result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId);
+				if (result instanceof SuccessConst)
+					skillService.unlockHeroSkill(heroId, heroInfo);
+			}
 		}
 		
 		if (result instanceof ErrorConst) {
@@ -83,7 +92,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 		if (result instanceof SuccessConst) {
 			userHero.updateHeroInfo(heroInfo);
 			userHeroService.updateUserHero(userHero);
-			builder.setHeroId(infoId);
+			builder.setHeroId(heroId);
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
 		}
@@ -115,7 +124,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 		if (result instanceof SuccessConst) {
 			userHero.updateHeroInfo(heroInfo);
 			userHeroService.updateUserHero(userHero);
-			builder.setHeroId(infoId);
+			builder.setHeroId(heroId);
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
 		}

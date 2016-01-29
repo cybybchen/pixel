@@ -25,7 +25,7 @@
 	<update id="updateUserLevelLootRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelLootBean">
 		UPDATE user_level_loot
 		SET package_count=#{packageCount},
-		loot_level=#{lootLevel}
+		loot_level=#{lootLevel},
 		level_loot_start_time=#{levelLootStartTime}, 
 		loot_time=#{lootTime},
 		loot_reward_record=#{lootRewardRecord}

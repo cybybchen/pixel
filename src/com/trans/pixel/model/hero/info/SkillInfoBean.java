@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Commands.SkillInfo;
 public class SkillInfoBean {
 	private int skillId = 0;
 	private int skillLevel = 0;
+	private int unlock = 0;
 	public int getSkillId() {
 		return skillId;
 	}
@@ -23,11 +24,17 @@ public class SkillInfoBean {
 	public void setSkillLevel(int skillLevel) {
 		this.skillLevel = skillLevel;
 	}
-	
+	public int getUnlock() {
+		return unlock;
+	}
+	public void setUnlock(int unlock) {
+		this.unlock = unlock;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(SKILL_ID, skillId);
 		json.put(SKILL_LEVEL, skillLevel);
+		json.put(UNLOCK, unlock);
 		
 		return json.toString();
 	}
@@ -39,6 +46,7 @@ public class SkillInfoBean {
 		
 		bean.setSkillId(json.getInt(SKILL_ID));
 		bean.setSkillLevel(json.getInt(SKILL_LEVEL));
+		bean.setUnlock(json.getInt(UNLOCK));
 
 		return bean;
 	}
@@ -51,21 +59,20 @@ public class SkillInfoBean {
 		return builder.build();
 	}
 	
-	public static List<SkillInfoBean> initSkillInfo(List<HeroSkillBean> skillList) {
-		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
+	public static SkillInfoBean initSkillInfo(List<HeroSkillBean> skillList, int unlock) {
 		for (HeroSkillBean skill : skillList) {
-			if (skill.getUnlock() == 1) {
+			if (skill.getUnlock() == unlock) {
 				SkillInfoBean skillInfo = new SkillInfoBean();
 				skillInfo.setSkillId(skill.getSkillid());
 				skillInfo.setSkillLevel(1);
-				skillInfoList.add(skillInfo);
-				break;
+				return skillInfo;
 			}
 		}
 		
-		return skillInfoList;
+		return null;
 	}
 	
 	private static final String SKILL_ID = "skillId";
 	private static final String SKILL_LEVEL = "skillLevel";
+	private static final String UNLOCK = "unlock";
 }

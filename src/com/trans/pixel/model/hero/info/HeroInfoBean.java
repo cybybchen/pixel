@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
@@ -68,21 +69,21 @@ public class HeroInfoBean {
 	}
 	
 	public void updateEquipIdByArmId(int equipId, int armId) {
-		String[] equipIds = equipInfo.split(EQUIP_SPLIT);
-		if (equipIds.length > armId) {
-			equipIds[armId] = "" + equipId;
+		String[] equipIds = getEquipIds();
+		if (equipIds.length > armId - 1) {
+			equipIds[armId - 1] = "" + equipId;
 			composeEquipInfo(equipIds);
 		}
 	}
 	
 	public String[] getEquipIds() {
-		return equipInfo.split(EQUIP_SPLIT);
+		return equipInfo.split("\\" + EQUIP_SPLIT);
 	}
 	
 	private void composeEquipInfo(String[] equipIds) {
 		equipInfo = "";
 		for (String equipId : equipIds) {
-			equipInfo = EQUIP_SPLIT + equipId;
+			equipInfo = equipInfo + EQUIP_SPLIT + equipId;
 		}
 		
 		equipInfo = equipInfo.substring(1);
@@ -155,9 +156,52 @@ public class HeroInfoBean {
 		heroInfo.setStarLevel(1);
 		heroInfo.setEquipInfo("0|0|0|0|0|0");
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
-		heroInfo.setSkillInfoList(SkillInfoBean.initSkillInfo(hero.getSkillList()));
+		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
+		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
+		if (skillInfo != null)
+			skillInfoList.add(skillInfo);
+		heroInfo.setSkillInfoList(skillInfoList);
 		
 		return heroInfo;
+	}
+	
+	public SkillInfoBean getSKillInfo(int skillId) {
+		for (SkillInfoBean skillInfo : skillInfoList) {
+			if (skillInfo.getSkillId() == skillId)
+				return skillInfo;
+		}
+		
+		return null;
+	}
+	
+	public void upgradeSkill(int skillId) {
+		for (SkillInfoBean skillInfo : skillInfoList) {
+			if (skillInfo.getSkillId() == skillId) {
+				skillInfo.setSkillLevel(skillInfo.getSkillLevel() + 1);
+				break;
+			}
+		}
+	}
+	
+	public void unlockSkill(HeroBean hero, List<SkillLevelBean> skillLevelList) {
+		for (SkillLevelBean skillLevel : skillLevelList) {
+			if (rare >= skillLevel.getUnlock() && level > skillLevel.getInilevel()) {
+				if (!contains(skillLevel)) {
+					SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), skillLevel.getUnlock());
+					if (skillInfo != null)
+						skillInfoList.add(skillInfo);
+				}
+			}
+		}
+	}
+	
+	private boolean contains(SkillLevelBean skillLevel) {
+		for (SkillInfoBean skillInfo : skillInfoList) {
+			if (skillInfo.getUnlock() == skillLevel.getUnlock()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private static final String ID = "id";
