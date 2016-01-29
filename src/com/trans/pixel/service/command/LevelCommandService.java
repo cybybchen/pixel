@@ -117,7 +117,7 @@ public class LevelCommandService extends BaseCommandService {
 		}
 		
 		userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord);
-//		userLevelRecord.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
+		userLevelRecord.setLevelPrepareTime(0);
 		userLevelService.updateUserLevelRecord(userLevelRecord);
 		log.debug("levelId is:" + levelId);
 		WinBean winBean = winService.getWinByLevelId(levelId);
@@ -125,6 +125,7 @@ public class LevelCommandService extends BaseCommandService {
 		
 		builder.addAllReward(RewardBean.buildRewardInfoList(winBean.getRewardList()));
 		responseBuilder.setLevelResultCommand(builder.build());
+		pushCommandService.pushUserLevelCommand(responseBuilder, user);
 	}
 	
 	public void levelLootStart(RequestLevelLootStartCommand cmd, Builder responseBuilder, UserBean user) {
