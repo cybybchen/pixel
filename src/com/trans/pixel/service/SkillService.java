@@ -73,6 +73,8 @@ public class SkillService {
 	
 	public boolean canLevelUp(HeroInfoBean heroInfo, SkillInfoBean skillInfo) {
 		SkillLevelBean skillLevel = getSkillLevel(skillInfo.getUnlock());
+		if (skillLevel == null)
+			return false;
 		
 		if (skillLevel.getMaxlevel() <= skillInfo.getSkillLevel())
 			return false;

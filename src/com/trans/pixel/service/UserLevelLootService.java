@@ -51,7 +51,7 @@ public class UserLevelLootService {
 			return userLevelLootRecord;
 		XiaoguanBean lastXg = levelService.getXiaoguan(userLevelLootRecord.getLootLevel());
 		if (lastXg != null) {
-			userLevelLootRecord.updateLootTime(lastXg.getId(), lastXg.getLootTime());
+			userLevelLootRecord.updateLootTime(lastXg.getXiaoguan(), lastXg.getLootTime());
 		}
 		userLevelLootRecord.setLevelLootStartTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userLevelLootRecord.setLootLevel(xg.getId());

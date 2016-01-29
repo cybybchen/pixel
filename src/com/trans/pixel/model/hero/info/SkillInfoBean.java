@@ -1,6 +1,5 @@
 package com.trans.pixel.model.hero.info;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.json.JSONObject;
@@ -65,6 +64,7 @@ public class SkillInfoBean {
 				SkillInfoBean skillInfo = new SkillInfoBean();
 				skillInfo.setSkillId(skill.getSkillid());
 				skillInfo.setSkillLevel(1);
+				skillInfo.setUnlock(skill.getUnlock());
 				return skillInfo;
 			}
 		}
