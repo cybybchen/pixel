@@ -61,7 +61,7 @@ public class HeroInfoBean {
 	}
 	
 	public int getEquipIdByArmId(int armId) {
-		String[] equipIds = equipInfo.split(EQUIP_SPLIT);
+		String[] equipIds = getEquipIds();
 		if (equipIds.length > armId)
 			return TypeTranslatedUtil.stringToInt(equipIds[armId]);
 		
