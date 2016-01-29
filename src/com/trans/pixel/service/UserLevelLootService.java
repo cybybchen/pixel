@@ -54,7 +54,8 @@ public class UserLevelLootService {
 		if (lastXg != null)
 			lootTime = lastXg.getLootTime();
 		
-		userLevelLootRecord.updateLootTime(levelId, lootTime);
+		if (lootTime > 0)
+			userLevelLootRecord.updateLootTime(levelId, lootTime);
 		userLevelLootRecord.setLevelLootStartTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userLevelLootRecord.setLootLevel(xg.getXiaoguan());
 		
