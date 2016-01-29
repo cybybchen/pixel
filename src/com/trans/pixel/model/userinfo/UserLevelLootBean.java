@@ -79,7 +79,7 @@ public class UserLevelLootBean {
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
 		bean.setId(json.getInt(ID));
-		bean.setId(json.getInt(USER_ID));
+		bean.setUserId(json.getInt(USER_ID));
 		bean.setPackageCount(json.getInt(PACKAGE_COUNT));
 		bean.setLootLevel(json.getInt(LOOT_LEVEL));
 		bean.setLevelLootStartTime(json.getInt(LEVEL_LOOT_START_TIME));
@@ -114,13 +114,17 @@ public class UserLevelLootBean {
 	}
 	
 	public List<Integer> getRewardRecordList() {
-		String[] rewardRecords = lootRewardRecord.split(LOOT_REWARD_RECORD_SEPARATOR);
+		String[] rewardRecords = splitLootReward();
 		List<Integer> rewardRecordList = new ArrayList<Integer>();
 		for (int i = 0; i < rewardRecords.length; ++i) {
 			rewardRecordList.add(TypeTranslatedUtil.stringToInt(rewardRecords[i]));
 		}
 		lootRewardRecord = "";
 		return rewardRecordList;
+	}
+	
+	private String[] splitLootReward() {
+		return lootRewardRecord.split("\\" + LOOT_REWARD_RECORD_SEPARATOR);
 	}
 	
 	public UserLootLevel buildUserLootLevel() {
