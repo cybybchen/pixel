@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -19,8 +20,9 @@ public class UnionTest extends BaseTest {
 
 	@Test
 	public void testUnion() {
-		testCreateUnion();
+//		testCreateUnion();
 		testGetUnion();
+//		testUnionApply();
 	}
 	
 	private void testCreateUnion() {
@@ -58,6 +60,18 @@ public class UnionTest extends BaseTest {
 	}
 	
 	private void testUnionApply() {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestApplyUnionCommand.Builder builder = RequestApplyUnionCommand.newBuilder();
+		builder.setUnionId(13);
+		requestBuilder.setApplyUnionCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        logger.info(response.getAllFields());
 	}
 	
 	private void testUnionReply() {

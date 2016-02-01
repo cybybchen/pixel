@@ -214,7 +214,7 @@ public class UserBean {
 		userMap.put(USERNAME, userName);
 		userMap.put(SERVER_ID, "" + serverId);
 		userMap.put(UNION_ID, "" + unionId);
-		userMap.put(UNIONJOB, "" + unionJob);
+		userMap.put(UNION_JOB, "" + unionJob);
 		userMap.put(JEWEL, "" + jewel);
 		userMap.put(COIN, "" + coin);
 		userMap.put(EXP, "" + exp);
@@ -244,7 +244,7 @@ public class UserBean {
 		userBean.setUserName(userMap.get(USERNAME));
 		userBean.setServerId(TypeTranslatedUtil.stringToInt(userMap.get(SERVER_ID)));
 		userBean.setUnionId(TypeTranslatedUtil.stringToInt(userMap.get(UNION_ID)));
-		userBean.setUnionJob(TypeTranslatedUtil.stringToInt(userMap.get(UNIONJOB)));
+		userBean.setUnionJob(TypeTranslatedUtil.stringToInt(userMap.get(UNION_JOB)));
 		userBean.setJewel(TypeTranslatedUtil.stringToInt(userMap.get(JEWEL)));
 		userBean.setCoin(TypeTranslatedUtil.stringToInt(userMap.get(COIN)));
 		userBean.setExp(TypeTranslatedUtil.stringToInt(userMap.get(EXP)));
@@ -269,7 +269,7 @@ public class UserBean {
 	private final static String USERNAME = "name";
 	private final static String SERVER_ID = "server_id";
 	private final static String UNION_ID = "union_id";
-	private final static String UNIONJOB = "unionJob";
+	private final static String UNION_JOB = "union_job";
 	private final static String JEWEL = "jewel";
 	private final static String COIN = "coin";
 	private final static String EXP = "exp";
