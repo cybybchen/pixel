@@ -7,16 +7,12 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.MailConst;
-import com.trans.pixel.constants.TeamConst;
-import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
-import com.trans.pixel.model.userinfo.UnionUserBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserTeamBean;
+import com.trans.pixel.protoc.Commands.Union;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.UnionRedisService;
-import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UnionService {
@@ -31,98 +27,130 @@ public class UnionService {
 	private UnionMapper unionMapper;
 	@Resource
 	private UserService userService;
-	
-	public void applyToUnion(UserBean user, int unionId) {
-		MailBean mail = buildApplyUnionMail(user.getId(), unionId, user.getUserName());
-		unionRedisService.addUnionApply(unionId, mail);
-		
-		mail = buildUserApplyUnionMail(user.getId(), unionId);
-		mailService.addMail(mail);
+	private UserBean user = null;
+	public void setUserNX(UserBean user) {
+		if(this.user != null)
+			return;
+		this.user = user;
+		unionRedisService.setUser(user);
 	}
 	
-	public UnionBean createUnion(UserBean user, String unionName) {
-		UnionBean union = initUnion(user, unionName);
-		unionMapper.createUnion(union);
-		unionRedisService.updateUnion(union);
-		user.setUnionId(union.getId());
-		userService.updateUser(user);
-		
+	public List<Union> getBaseUnions() {
+		return unionRedisService.getBaseUnions();
+	}
+	
+	public Union getUnion() {
+		Union union = unionRedisService.getUnion();
+		if(union == null && user.getUnionId() != 0){//load from db
+			List<UnionBean> unionbeans = unionMapper.selectUnionsByServerId(user.getServerId());
+			List<Union> unions = new ArrayList<Union>();
+			for(UnionBean bean : unionbeans){
+				unions.add(bean.build());
+			}
+			unionRedisService.saveUnions(unions);
+			union = unionRedisService.getUnion();
+			if(union != null && union.getMembersCount() == 0){//load from db
+				List<UserBean> beans = userService.getUserByUnionId(user.getUnionId());
+				List<UserInfo> members = new ArrayList<UserInfo>();
+				for(UserBean bean : beans){
+					members.add(bean.buildShort());
+				}
+				unionRedisService.saveMembers(members);
+				Union.Builder builder = Union.newBuilder(union);
+				builder.addAllMembers(members);
+				union = builder.build();
+			}
+		}
 		return union;
 	}
 	
-	public UnionBean handleUnionApply(UserBean user, int unionId, int mailId, boolean receive) {
-		UnionBean union = unionRedisService.getUnion(user.getServerId(), unionId);
-		MailBean mail = union.getMail(mailId);
-		if (receive) {
-			UnionUserBean unionUser = initUnionUser(mail.getFromUserId(), mail.getFromUserName());
-			union.addUnionUser(unionUser);
-			userService.updateUserUnion(mail.getFromUserId(), unionId);
-		} else {
-			MailBean userMail = buildUserRefudedByUnionMail(mail.getFromUserId(), unionId);
-			mailService.addMail(userMail);
+	public Union create(int icon, String unionName) {
+		if(user.getUnionId() != 0)
+			return getUnion();
+		UnionBean union = new UnionBean();
+		union.setName(unionName);
+		union.setIcon(icon);
+		union.setServerId(user.getServerId());
+		unionMapper.createUnion(union);
+		unionRedisService.saveUnion(union.build());
+		user.setUnionId(union.getId());
+		user.setUnionJob(3);//会长
+		userService.updateUser(user);
+		Union.Builder builder = Union.newBuilder(union.build());
+		List<UserInfo> members = new ArrayList<UserInfo>();
+		members.add(user.buildShort());
+		unionRedisService.saveMembers(members);
+		builder.addAllMembers(members);
+		
+		return builder.build();
+	}
+	
+	public void quit(long id) {
+		if(id == user.getId()){
+			if(user.getUnionJob() == 3)
+				return;
+			user.setUnionId(0);
+			user.setUnionJob(0);
+			userService.updateUser(user);
+			unionRedisService.quit(id);
+		}else{
+			if(user.getUnionJob() < 2)
+				return;
+			UserBean bean = userService.getUser(id);
+			if(bean.getUnionJob() != 0 && user.getUnionJob() < 3)
+				return;
+			bean.setUnionId(0);
+			bean.setUnionJob(0);
+			userService.updateUser(bean);
+			unionRedisService.quit(id);
+		}
+	}
+	
+	public void quit() {
+		quit(user.getId());
+	}
+	
+	public boolean delete() {
+		return true;
+	}
+	
+	public void apply(int unionId) {
+		if(user.getUnionId() != 0)
+			return;
+		unionRedisService.apply(unionId);
+	}
+	
+	public boolean reply(List<Long> ids, boolean receive) {
+		for(Long id : ids){
+			unionRedisService.reply(id, receive);
+			if(receive){
+				UserBean bean = userService.getUser(id);
+				if(bean != null && bean.getUnionId() == 0){
+					bean.setUnionId(user.getUnionId());
+					bean.setUnionJob(0);
+					userService.updateUser(bean);
+					unionRedisService.saveMember(bean.buildShort());
+				}
+			}
 		}
 		
-		union.deleteMail(mail);
-		
-		return union;
+		return receive;
 	}
 	
-	public void upgradeUserUnionLevel(UserBean user, long upgradeUserId) {
-		
+	public void upgrade() {
+		UnionBean bean = unionMapper.selectUnionById(user.getUnionId());
+		bean.setLevel(bean.getLevel()+1);
+		unionRedisService.saveUnion(bean.build());
 	}
 	
-	private UnionBean initUnion(UserBean user, String unionName) {
-		UnionBean union = new UnionBean();
-		union.setServerId(user.getServerId());
-		union.setUnionName(unionName);
-		List<UnionUserBean> unionUserList = new ArrayList<UnionUserBean>();
-		unionUserList.add(initUnionUser(user.getId(), user.getUserName()));
-		
-		return union;
-	}
-	
-	private UnionUserBean initUnionUser(long userId, String userName) {
-		UnionUserBean unionUser = new UnionUserBean();
-		unionUser.setUserId(userId);
-		unionUser.setUserName(userName);
-		UserTeamBean userTeam = userTeamService.selectUserTeam(userId, TeamConst.TYPE_TEAM_TYPE_NORMAL);
-		if (userTeam != null)
-			unionUser.setRecord(userTeam.getTeamRecord());
-		
-		return unionUser;
-	}
-	
-	private MailBean buildUserRefudedByUnionMail(long fromUserId, int unionId) {
-		MailBean mail = new MailBean();
-		mail.setUserId(fromUserId);
-		mail.setFromUserId(unionId);
-		mail.setContent("该工会拒绝你的申请");
-		mail.setType(MailConst.TYPE_UNION_REFUSED_MAIL);
-		mail.setStartDate(DateUtil.getCurrentDateString());
-		
-		return mail;
-	}
-	
-	private MailBean buildApplyUnionMail(long fromUserId, int unionId, String userName) {
-		MailBean mail = new MailBean();
-		mail.setUserId(unionId);
-		mail.setFromUserId(fromUserId);
-		mail.setFromUserName(userName);
-		mail.setContent("加联盟");
-		mail.setType(MailConst.TYPE_APPLY_UNION_MAIL);
-		mail.setStartDate(DateUtil.getCurrentDateString());
-		
-		return mail;
-	}
-	
-	private MailBean buildUserApplyUnionMail(long fromUserId, int unionId) {
-		MailBean mail = new MailBean();
-		mail.setUserId(fromUserId);
-		mail.setFromUserId(unionId);
-		mail.setContent("加联盟");
-		mail.setType(MailConst.TYPE_APPLY_UNION_MAIL);
-		mail.setStartDate(DateUtil.getCurrentDateString());
-		
-		return mail;
+	public void handleMember(long id, int job) {
+		if(user.getUnionJob() != 3)
+			return;
+		UserBean bean = userService.getUser(id);
+		if(bean.getUnionId() == user.getUnionId()){
+			bean.setUnionJob(job);
+			unionRedisService.saveMember(bean.buildShort());
+			userService.updateUser(bean);
+		}
 	}
 }

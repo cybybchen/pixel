@@ -19,12 +19,15 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
-import com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand;
+import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -42,7 +45,10 @@ import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
+import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AccountCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
@@ -298,6 +304,42 @@ public class GameDataScreen extends RequestScreen {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	@Override
+	protected boolean handleCommand(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.handleMember(cmd, responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.getUnion(cmd, responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.upgrade(cmd, responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.getUnions(cmd, responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.quit(cmd, responseBuilder, user);
+		return true;
+	}
 	//add handleCommand here
 
 	@Override
@@ -317,21 +359,21 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestApplyUnionCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		unionCommandService.applyUnion(cmd, responseBuilder, user);
+		unionCommandService.apply(cmd, responseBuilder, user);
 		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestCreateUnionCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		unionCommandService.createUnion(cmd, responseBuilder, user);
+		unionCommandService.create(cmd, responseBuilder, user);
 		return true;
 	}
 
 	@Override
-	protected boolean handleCommand(RequestHandleUnionApplyCommand cmd,
+	protected boolean handleCommand(RequestReplyUnionCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		unionCommandService.handleUnionApply(cmd, responseBuilder, user);
+		unionCommandService.reply(cmd, responseBuilder, user);
 		return true;
 	}
 

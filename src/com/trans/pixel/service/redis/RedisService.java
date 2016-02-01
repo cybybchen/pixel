@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,7 +42,7 @@ public class RedisService {
 	static Logger logger = Logger.getLogger(RedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
-	private int expireTime = 0;
+	private Date expireDate = null;
 
 	/**
 	 * 只有当返回true才能使用builder
@@ -207,9 +208,9 @@ public class RedisService {
 
 				Ops.set(value);
 				
-				int expiredtime = expireTimeAndInit();
-				if (expiredtime > 0)
-					Ops.expire(expiredtime, TimeUnit.SECONDS);
+				Date date = expireDateAndInit();
+				if (date != null)
+					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -262,8 +263,8 @@ public class RedisService {
 
 				redisTemplate.opsForValue().multiSet(keyvalue);
 
-				int expiredtime = expireTimeAndInit();
-				if (expiredtime > 0)
+				Date date = expireDateAndInit();
+				if (date != null)
 					throw new RuntimeException("mset中不能设置超时时间");
 				return null;
 			}
@@ -295,10 +296,10 @@ public class RedisService {
 						.boundHashOps(key);
 
 				Ops.put(key2, value);
-				
-				int expiredtime = expireTimeAndInit();
-				if (expiredtime > 0)
-					Ops.expire(expiredtime, TimeUnit.SECONDS);
+
+				Date date = expireDateAndInit();
+				if (date != null)
+					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -316,10 +317,10 @@ public class RedisService {
 						.boundHashOps(key);
 
 				Ops.putAll(keyvalue);
-				
-				int expiredtime = expireTimeAndInit();
-				if (expiredtime > 0)
-					Ops.expire(expiredtime, TimeUnit.SECONDS);
+
+				Date date = expireDateAndInit();
+				if (date != null)
+					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -372,6 +373,23 @@ public class RedisService {
 			}
 		});
     }
+    
+    /**
+     * 删除hashMap单个值
+     */
+    public void hdelete(final String key, final String key2) {
+    	redisTemplate.execute(new RedisCallback<String>() {
+			@Override
+			public String doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+				
+				Ops.delete(key2);
+				return null;
+			}
+		});
+    }
 
 	/**
 	 * 添加zset
@@ -385,10 +403,10 @@ public class RedisService {
 						.boundZSetOps(key);
 
 				Ops.add(value, score);
-				
-				int expiredtime = expireTimeAndInit();
-				if (expiredtime > 0)
-					Ops.expire(expiredtime, TimeUnit.SECONDS);
+
+				Date date = expireDateAndInit();
+				if (date != null)
+					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -484,10 +502,10 @@ public class RedisService {
 					throws DataAccessException {
 				BoundListOperations<String, String> Ops = redisTemplate
 						.boundListOps(key);
-				
-				int expiredtime = expireTimeAndInit();
-				if (expiredtime > 0)
-					Ops.expire(expiredtime, TimeUnit.SECONDS);
+
+				Date date = expireDateAndInit();
+				if (date != null)
+					Ops.expireAt(date);
 				return Ops.leftPush(value);
 			}
 		});
@@ -520,9 +538,9 @@ public class RedisService {
 				BoundListOperations<String, String> Ops = redisTemplate
 						.boundListOps(key);
 
-				int expiredtime = expireTimeAndInit();
-				if (expiredtime > 0)
-					Ops.expire(expiredtime, TimeUnit.SECONDS);
+				Date date = expireDateAndInit();
+				if (date != null)
+					Ops.expireAt(date);
 				return Ops.rightPush(value);
 			}
 		});
@@ -601,21 +619,38 @@ public class RedisService {
     /**
      * 设置超时
      */
-    public Boolean expire(final String key, final int seconds) {
-    	return redisTemplate.expire(key, seconds, TimeUnit.SECONDS);
+    public Boolean expire(final String key, final long milliseconds) {
+    	return redisTemplate.expire(key, milliseconds, TimeUnit.MILLISECONDS);
+    }
+    
+    /**
+     * 设置超时
+     */
+    public Boolean expireAt(final String key, final Date date) {
+    	return redisTemplate.expireAt(key, date);
     }
 
-	public int expireTimeAndInit() {
-		int time = expireTime;
-		expireTime = 0;
-		return time;
+	public Date expireDateAndInit() {
+		Date date = expireDate;
+		expireDate = null;
+		return date;
 	}
 
-	public int getExpireTime() {
-		return expireTime;
+//	public Date getExpireDate() {
+//		return expireDate;
+//	}
+	
+	/**
+	 * default:RedisExpiredConst.EXPIRED_USERINFO_7DAY
+	 */
+	public void setExpireTime(long milliseconds) {
+		expireDate = new Date(System.currentTimeMillis()+milliseconds);
 	}
-
-	public void setExpireTime(int expireTime) {
-		this.expireTime = expireTime;
+	
+	/**
+	 * default:RedisExpiredConst.EXPIRED_USERINFO_7DAY
+	 */
+	public void setExpireDate(Date date) {
+		this.expireDate = date;
 	}
 }

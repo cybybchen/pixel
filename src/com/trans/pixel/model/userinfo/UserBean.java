@@ -3,14 +3,17 @@ package com.trans.pixel.model.userinfo;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserBean {
 	public long id = 0;
 	public String account = "";
+	public int icon = 0;
 	public String userName = "";
 	public int serverId = 0;
 	public int unionId = 0;
+	public int unionJob = 0;
 	public int jewel = 0;
 	public int coin = 0;
 	public int exp = 0;
@@ -36,6 +39,12 @@ public class UserBean {
 	}
 	public void setAccount(String account) {
 		this.account = account;
+	}
+	public int getIcon() {
+		return icon;
+	}
+	public void setIcon(int icon) {
+		this.icon = icon;
 	}
 	public String getUserName() {
 		return userName;
@@ -139,13 +148,73 @@ public class UserBean {
 	public void setLadderModeHistoryTop(long ladderModeHistoryTop) {
 		this.ladderModeHistoryTop = ladderModeHistoryTop;
 	}
+	public int getUnionJob() {
+		return unionJob;
+	}
+	public void setUnionJob(int unionJob) {
+		this.unionJob = unionJob;
+	}
+
+	public UserInfo buildShort() {
+		UserInfo.Builder builder = UserInfo.newBuilder();
+		builder.setId(id);
+		builder.setAccount(account);
+		builder.setIcon(icon);
+		builder.setUserName(userName);
+		builder.setServerId(serverId);
+		builder.setUnionId(unionId);
+		builder.setUnionJob(unionJob);
+		builder.setPointVS(pointVS);
+		return builder.build();
+	}
+	
+//	public UserInfo buildUnionUser() {
+//		UserInfo.Builder builder = UserInfo.newBuilder();
+//		builder.setId(id);
+//		builder.setAccount(account);
+//		builder.setIcon(icon);
+//		builder.setUserName(userName);
+//		builder.setServerId(serverId);
+//		builder.setUnionId(unionId);
+//		builder.setUnionJob(unionJob);
+//		builder.setPointVS(pointVS);
+//		return builder.build();
+//	}
+
+	public UserInfo build() {
+		UserInfo.Builder builder = UserInfo.newBuilder();
+		builder.setId(id);
+		builder.setAccount(account);
+		builder.setIcon(icon);
+		builder.setUserName(userName);
+		builder.setServerId(serverId);
+		builder.setUnionId(unionId);
+		builder.setUnionJob(unionJob);
+		builder.setJewel(jewel);
+		builder.setCoin(coin);
+		builder.setExp(exp);
+		builder.setPointVS(pointVS);
+		builder.setPointLadder(pointLadder);
+		builder.setPointExpedition(pointExpedition);
+		builder.setPointUnion(pointUnion);
+		builder.setCompleteLevel(completeLevel);
+//		builder.setReceiveMessageTimeStamp(receiveMessageTimeStamp);
+//		builder.setLastLootTime(lastLootTime);
+//		builder.setRefreshLeftTimes(refreshLeftTimes);
+//		builder.setLastLoginTime(lastLoginTime);
+//		builder.setLadderModeLeftTimes(ladderModeLeftTimes);
+//		builder.setLadderModeHistoryTop(ladderModeHistoryTop);
+		return builder.build();
+	}
 	public Map<String, String> toMap() {
 		Map<String, String> userMap = new HashMap<String, String>();
 		userMap.put(ID, "" + id);
 		userMap.put(ACCOUNT, account);
+		userMap.put(ICON, ""+icon);
 		userMap.put(USERNAME, userName);
 		userMap.put(SERVER_ID, "" + serverId);
 		userMap.put(UNION_ID, "" + unionId);
+		userMap.put(UNIONJOB, "" + unionJob);
 		userMap.put(JEWEL, "" + jewel);
 		userMap.put(COIN, "" + coin);
 		userMap.put(EXP, "" + exp);
@@ -171,9 +240,11 @@ public class UserBean {
 		UserBean userBean = new UserBean();
 		userBean.setId(TypeTranslatedUtil.stringToLong(userMap.get(ID)));
 		userBean.setAccount(userMap.get(ACCOUNT));
+		userBean.setIcon(TypeTranslatedUtil.stringToInt(userMap.get(ICON)));
 		userBean.setUserName(userMap.get(USERNAME));
 		userBean.setServerId(TypeTranslatedUtil.stringToInt(userMap.get(SERVER_ID)));
 		userBean.setUnionId(TypeTranslatedUtil.stringToInt(userMap.get(UNION_ID)));
+		userBean.setUnionJob(TypeTranslatedUtil.stringToInt(userMap.get(UNIONJOB)));
 		userBean.setJewel(TypeTranslatedUtil.stringToInt(userMap.get(JEWEL)));
 		userBean.setCoin(TypeTranslatedUtil.stringToInt(userMap.get(COIN)));
 		userBean.setExp(TypeTranslatedUtil.stringToInt(userMap.get(EXP)));
@@ -193,10 +264,12 @@ public class UserBean {
 	}
 	
 	private final static String ID = "id";
+	private final static String ICON = "icon";
 	private final static String ACCOUNT = "account";
 	private final static String USERNAME = "name";
 	private final static String SERVER_ID = "server_id";
 	private final static String UNION_ID = "union_id";
+	private final static String UNIONJOB = "unionJob";
 	private final static String JEWEL = "jewel";
 	private final static String COIN = "coin";
 	private final static String EXP = "exp";

@@ -4,28 +4,34 @@
 
 	<resultMap id="resultMap" type="com.trans.pixel.model.UnionBean">
 		<id property="id" column="id" />
-		<result property="serverId" column="server_id" />
 		<result property="name" column="name" />
-		<result property="size" column="size" />
+		<result property="level" column="level" />
+		<result property="serverId" column="serverid" />
+		<result property="icon" column="icon" />
+		<result property="point" column="point" />
 	</resultMap>
 
 	<select id="selectUnionById" resultMap="resultMap">
-	    SELECT * from union where id=#{id}
+	    SELECT * from user_union where id=#{id}
+	</select>
+
+	<select id="selectUnionsByServerId" resultMap="resultMap">
+	    SELECT * from user_union where serverid=#{serverid}
 	</select>
 	
 	<insert id="createUnion" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.UnionBean">
-	    INSERT INTO union(server_id, name, level, size) 
-	    VALUES(#{serverId}, #{name}, #{level}, #{size})
+	    INSERT INTO user_union(serverid, name, level, icon, point) 
+	    VALUES(#{serverId}, #{name}, #{level}, #{icon}, #{point})
 	</insert>
 	
 	<select id="selectUnionByServerIdAndName" resultMap="resultMap">
-	    SELECT * from union where server_id=#{serverId} and name=#{name}
+	    SELECT * from union where serverid=#{serverId} and name=#{name}
 	</select>
 	
 	<update id="updateUnionn" parameterType="com.trans.pixel.model.UnionBean">
-	    UPDATE union 
+	    UPDATE user_union 
 		SET level={level},
-		size=#{size}
+		point=#{point}
 	</update>
 	
 </mapper>

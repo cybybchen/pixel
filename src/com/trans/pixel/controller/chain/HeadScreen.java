@@ -10,9 +10,9 @@ import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -21,10 +21,12 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
-import com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand;
+import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -32,6 +34,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
+import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
@@ -39,14 +42,17 @@ import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
+import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
+import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AccountService;
 import com.trans.pixel.service.UserService;
-import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
-import com.trans.pixel.protoc.Commands.RequestLoginCommand;
-import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -297,6 +303,42 @@ public class HeadScreen extends RequestScreen {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	@Override
+	protected boolean handleCommand(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	//add handleCommand here
 
 	@Override
@@ -328,7 +370,7 @@ public class HeadScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestHandleUnionApplyCommand cmd,
+	protected boolean handleCommand(RequestReplyUnionCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

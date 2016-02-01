@@ -1,5 +1,7 @@
 package com.trans.pixel.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -42,10 +44,8 @@ public class UserService {
 		
 		return userMapper.updateUser(user);
 	}
-	
-	public void updateUserUnion(long userId, int unionId) {
-		UserBean user = getUser(userId);
-		user.setUnionId(unionId);
-		updateUser(user);
-	}
+
+	public List<UserBean> getUserByUnionId(int unionId) {
+    	return userMapper.queryByUnionId(unionId);
+    }
 }

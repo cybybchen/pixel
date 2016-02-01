@@ -1,202 +1,162 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.UnionBean;
-import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.Union;
+import com.trans.pixel.protoc.Commands.UnionApply;
+import com.trans.pixel.protoc.Commands.UserInfo;
 
 @Repository
-public class UnionRedisService {
+public class UnionRedisService extends RedisService{
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
+	private UserBean user = null;
+	public void setUser(UserBean user) {
+		this.user = user;
+	}
 	
-	public void addUnionApply(final int unionId, final MailBean mail) {
-		redisTemplate.execute(new RedisCallback<MailBean>() {
-			@Override
-			public MailBean doInRedis(RedisConnection conn)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionMailRedisKey(unionId));
-				int mailId = mail.getId();
-				while (bhOps.hasKey(mailId)) {
-					mailId++;
-				}
-				if (bhOps.size() >= MailConst.MAIL_COUNT_MAX_ONTTYPE) {
-					bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-					return null;
-				}
-				mail.setId(mailId);
-				bhOps.put("" + mailId, mail.toJson());
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				return null;
+	public Union getUnion() {
+		String unionvalue = this.hget(getUnionServerKey(), user.getUnionId()+"");
+		Union.Builder unionbuilder = Union.newBuilder();
+		if(unionvalue == null)
+			return null;
+		if(!parseJson(unionvalue, unionbuilder)){
+			logger.warn("cannot build Union:"+user.getUnionId());
+			return null;
+		}
+		if (user.getUnionJob() >= 2) {
+			Map<String, String> applyMap = this.hget(this.getUnionApplyKey());
+			for (String applyvalue : applyMap.values()) {
+				UnionApply.Builder builder = UnionApply.newBuilder();
+				if (parseJson(applyvalue, builder))
+					unionbuilder.addApplies(builder);
+			}
+		}
+		Map<String, String> memberMap = this.hget(this.getUnionMemberKey());
+		for (String membervalue : memberMap.values()) {
+			UserInfo.Builder builder = UserInfo.newBuilder();
+			if (parseJson(membervalue, builder))
+				unionbuilder.addMembers(builder);
+		}
+		return unionbuilder.build();
+	}
+	
+	public List<Union> getBaseUnions() {
+		List<Union> unions = new ArrayList<Union>();
+		Map<String, String> unionMap = this.hget(getUnionServerKey());
+		for(String value : unionMap.values()){
+			Union.Builder builder = Union.newBuilder();
+			if(parseJson(value, builder))
+				unions.add(builder.build());
+		}
+		Collections.sort(unions, new Comparator<Union>() {
+			public int compare(Union union1, Union union2) {
+				int dvalue = union2.getLevel() - union1.getLevel();
+				if (dvalue == 0)
+					dvalue = union1.getId() - union2.getId();
+				return dvalue;
 			}
 		});
+		return unions;
 	}
 
+	public boolean getBaseUnion(Union.Builder unionbuilder) {
+		String unionvalue = this.hget(getUnionServerKey(), user.getUnionId()+"");
+		if(unionvalue != null)
+			return false;
+		if(!parseJson(unionvalue, unionbuilder)){
+			logger.warn("cannot build Union:"+user.getUnionId());
+			return false;
+		}
+		return true;
+	}
 	
-	public List<MailBean> getUnionApplyList(final int unionId) {
-		return redisTemplate.execute(new RedisCallback<List<MailBean>>() {
-			@Override
-			public List<MailBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				List<MailBean> mailList = new ArrayList<MailBean>();
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionMailRedisKey(unionId));
-				
-				Iterator<Entry<String, String>> it= bhOps.entries().entrySet().iterator();
-				while(it.hasNext()) {
-					Entry<String, String> entry = it.next();
-					MailBean mail = MailBean.fromJson(entry.getValue());
-					if (mail != null) {
-						if (DateUtil.isInvalidMail(mail.getStartDate())) {
-							bhOps.delete("" + mail.getId());
-						} else if (!mail.isRead())
-							mailList.add(mail);
-					}
-					
-					if (mailList.size() >= MailConst.MAIL_COUNT_MAX_ONTTYPE)
-						return mailList;
-				}
-				
-				return mailList;
-			}
-		});
+	public void apply(final int unionId) {
+		UnionApply.Builder builder = UnionApply.newBuilder();
+		builder.setId(user.getId());
+		builder.setUser(user.buildShort());
+		builder.setEndTime((System.currentTimeMillis()+RedisExpiredConst.EXPIRED_USERINFO_1DAY)/1000);
+		this.setExpireTime(RedisExpiredConst.EXPIRED_USERINFO_1DAY);
+		this.hput(getUnionApplyKey(unionId), builder.getId()+"", formatJson(builder.build()));
 	}
 
-	public void deleteMail(final int unionId, final int id) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionMailRedisKey(unionId));
-				bhOps.delete(id);
-				return null;
-			}
-		});
+	public boolean reply( final long id, final boolean receive) {
+		this.hdelete(getUnionApplyKey(), id+"");
+		return receive;
+	}
+	
+	public void quit(long id){
+		this.hdelete(getUnionMemberKey(), id+"");
+	}
+	
+//	public List<UnionApply> getApplies(final int unionId) {
+//		List<UnionApply> list = new ArrayList<UnionApply>();
+//		Map<String, String> applyMap = this.hget(getUnionApplyKey(unionId));
+//		for(Entry<String, String> value : applyMap.entrySet()){
+//			UnionApply.Builder builder = UnionApply.newBuilder();
+//			if(parseJson(value.getValue(), builder))
+//				list.add(builder.build());
+//		}
+//		return list;
+//	}
+	
+	public void saveUnion(final Union union) {
+		this.hput(getUnionServerKey(), union.getId()+"", formatJson(union));
 	}
 
-	public int getMailCountByUserIdAndType(final int unionId) {
-		return redisTemplate.execute(new RedisCallback<Integer>() {
-			@Override
-			public Integer doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionMailRedisKey(unionId));
-				
-				return bhOps.size().intValue();
-			}
-		});
-	}
-
-	public List<MailBean> getUnionApplyList(final int unionId, final List<Integer> idList) {
-		return redisTemplate.execute(new RedisCallback<List<MailBean>>() {
-			@Override
-			public List<MailBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				List<MailBean> mailList = new ArrayList<MailBean>();
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionMailRedisKey(unionId));
-				
-				Iterator<Entry<String, String>> it= bhOps.entries().entrySet().iterator();
-				while(it.hasNext()) {
-					Entry<String, String> entry = it.next();
-					MailBean mail = MailBean.fromJson(entry.getValue());
-					if (mail != null) {
-						if (DateUtil.isInvalidMail(mail.getStartDate())) {
-							bhOps.delete("" + mail.getId());
-						} else if (!mail.isRead() && idList.contains(mail.getId()))
-							mailList.add(mail);
-					}
-					
-					if (mailList.size() >= MailConst.MAIL_COUNT_MAX_ONTTYPE)
-						return mailList;
-				}
-				
-				return mailList;
-			}
-		});
+	public void saveUnions(final List<Union> unions) {
+		Map<String, String> unionMap = new HashMap<String, String>();
+		for(Union union : unions){
+			String key = union.getId()+"";
+			String value = formatJson(union);
+			unionMap.put(key, value);
+		}
+		this.hputAll(getUnionServerKey(), unionMap);
 	}
 	
-	public int deleteMail(final int unionId, final List<Integer> idList) {
-		return redisTemplate.execute(new RedisCallback<Integer>() {
-			@Override
-			public Integer doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionMailRedisKey(unionId));;
-				int deleteCount = 0;
-				for (Integer i : idList) {
-					bhOps.delete(i);
-					deleteCount++;
-				}
-
-				return deleteCount;
-			}
-		});
+	public void saveMember(final UserInfo member) {
+		this.hput(getUnionMemberKey(), member.getId()+"", formatJson(member));
 	}
 	
-	public int getNextMailIdByUserIdAndType(final int unionId) {
-		return redisTemplate.execute(new RedisCallback<Integer>() {
-			@Override
-			public Integer doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionMailRedisKey(unionId));
-
-				return (int)(bhOps.size() + 1);
-			}
-		});
+	public void saveMembers(final List<UserInfo> members) {
+		Map<String, String> memberMap = new HashMap<String, String>();
+		for(UserInfo member : members){
+			String key = member.getId()+"";
+			String value = formatJson(member);
+			memberMap.put(key, value);
+		}
+		this.hputAll(getUnionMemberKey(), memberMap);
 	}
 	
-	private String buildUnionMailRedisKey(int unionId) {
-		return RedisKey.PREFIX + RedisKey.UNION_MAIL_PREFIX + unionId;
+	private String getUnionServerKey() {
+		return RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + user.getServerId();
 	}
-	
-	public void updateUnion(final UnionBean union) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection conn)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionRedisKey(union.getServerId()));
-				bhOps.put("" + union.getId(), union.toJson());
-				return null;
-			}
-		});
+	private String getUnionRedisKey() {
+		return getUnionRedisKey(user.getUnionId());
 	}
-	
-	public UnionBean getUnion(final int serverId, final int unionId) {
-		return redisTemplate.execute(new RedisCallback<UnionBean>() {
-			@Override
-			public UnionBean doInRedis(RedisConnection conn)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUnionRedisKey(serverId));
-				
-				return UnionBean.fromJson(bhOps.get(unionId));
-			}
-		});
+	private String getUnionRedisKey(final int unionId) {
+		return RedisKey.PREFIX + RedisKey.UNION_PREFIX + unionId;
 	}
-	
-	private String buildUnionRedisKey(int serverId) {
-		return RedisKey.PREFIX + RedisKey.UNION_PREFIX + serverId;
+	private String getUnionApplyKey() {
+		return getUnionApplyKey(user.getUnionId());
+	}
+	private String getUnionApplyKey(final int unionId) {
+		return getUnionRedisKey(unionId)+"_apply";
+	}
+	private String getUnionMemberKey() {
+		return getUnionRedisKey()+"_member";
 	}
 }

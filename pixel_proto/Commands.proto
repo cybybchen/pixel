@@ -3,8 +3,11 @@ package com.trans.pixel.protoc;
 message UserInfo {
 	required int64 id = 1;
 	required string account = 2;
+	required int32 icon = 13;
 	required string userName = 3;
 	required int32 serverId = 4;
+	optional int32 unionId = 14;
+	optional int32 unionJob = 15;
 	optional int32 jewel = 5;
 	optional int32 coin = 6;
 	optional int32 exp = 7;
@@ -12,7 +15,7 @@ message UserInfo {
 	optional int32 pointLadder = 9; //天梯积分
 	optional int32 pointExpedition = 10; //远征积分
 	optional int32 pointUnion = 11; //联盟积分
-	optional int32 completeLevel = 12;
+	optional int32 completeLevel = 12;;
 }
 
 message RewardInfo {
@@ -79,19 +82,21 @@ message UserLootLevel {
 	required string lootRewardRecord = 5; //领奖记录
 }
 
-message UnionUser {
-	required int64 userId = 1;
-	required string userName = 2;
-	required string record = 3;
-	required int32 level = 4;
-}
-
 message Union {
 	required int32 id = 1;
-	required string unionName = 2;
-	required int32 rank = 3;
-	repeated UnionUser unionUser = 4;
-	repeated Mail mail = 5;
+	required string name = 2;
+	required int32 icon = 3;
+	required int32 level = 4;
+	optional int32 rank = 5;
+	optional int32 point = 6;
+	repeated UserInfo members = 7;
+	repeated UnionApply applies = 8;
+}
+
+message UnionApply {
+	required int64 id = 1;
+	required UserInfo user = 2;
+	required int64 endTime = 3;
 }
 
 message AreaResourceMine {//区域资源开采点
@@ -101,7 +106,7 @@ message AreaResourceMine {//区域资源开采点
 	required int32 yield = 4;//开采产量
 	///////////////////////////////////
 	optional string owner = 5;//开采玩家
-	optional int32 endtime = 6;//开采结束时间
+	optional int64 endTime = 6;//开采结束时间
 }
 
 message AreaResource {//区域资源点
@@ -474,22 +479,43 @@ message ResponseUserLootLevelCommand {
 	required UserLootLevel userLootLevel = 1;
 }
 
+message RequestCreateUnionCommand {
+	optional int32 icon = 1;
+	required string name = 2;
+}
+
+message RequestDeleteUnionCommand {
+}
+
 message RequestApplyUnionCommand {
 	required int32 unionId = 1;
 }
 
-message RequestCreateUnionCommand {
-	required string unionName = 1;
+message RequestReplyUnionCommand {
+	repeated int64 id = 1;
+	required bool receive = 2;
 }
 
-message RequestHandleUnionApplyCommand {
-	required int32 unionId = 1;
-	required int32 mailId = 2;
-	required bool receive = 3;
+message RequestHandleUnionMemberCommand {
+	required int64 id = 1;
+	required int32 job = 2;
+}
+
+message RequestUpgradeUnionCommand {
+}
+
+message RequestQuitUnionCommand {
+	optional int64 id = 1;
+}
+
+message RequestUnionInfoCommand {
 }
 
 message ResponseUnionInfoCommand {
-	required Union union = 1;
+	optional Union union = 1;
+}
+
+message RequestUnionListCommand {
 }
 
 message ResponseUnionListCommand {
@@ -552,9 +578,15 @@ message RequestCommand {
 	optional RequestAttackBossCommand attackBossCommand = 28;
 	optional RequestAttackResourceCommand attackResourceCommand = 29;
 	optional RequestAttackResourceMineCommand attackResourceMineCommand = 30;
-	optional RequestApplyUnionCommand applyUnionCommand = 31;
-	optional RequestCreateUnionCommand createUnionCommand = 32;
-	optional RequestHandleUnionApplyCommand handleUnionApplyCommand = 33;
+	optional RequestQuitUnionCommand quitUnionCommand = 42;
+	optional RequestUnionInfoCommand unionInfoCommand = 43;
+	optional RequestUnionListCommand unionListCommand = 44;
+	optional RequestCreateUnionCommand createUnionCommand = 31;
+	optional RequestDeleteUnionCommand deleteUnionCommand = 39;
+	optional RequestApplyUnionCommand applyUnionCommand = 32;
+	optional RequestReplyUnionCommand replyUnionCommand = 33;
+	optional RequestHandleUnionMemberCommand handleUnionCommand = 40;
+	optional RequestUpgradeUnionCommand upgradeUnionCommand = 41;
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;

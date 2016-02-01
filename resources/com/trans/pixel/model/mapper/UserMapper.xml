@@ -8,6 +8,7 @@
 		<result property="userName" column="name" />
 		<result property="serverId" column="server_id" />
 		<result property="unionId" column="union_id" />
+		<result property="unionJob" column="union_job" />
 		<result property="jewel" column="jewel" />
 		<result property="coin" column="coin" />
 		<result property="exp" column="exp" />
@@ -25,6 +26,11 @@
 	<select id="queryById" parameterType="long" resultMap="userMap">
 		SELECT *
 		from user where id = #{userId}
+	</select>
+	
+	<select id="queryByUnionId" parameterType="int" resultMap="userMap">
+		SELECT *
+		from user where union_id = #{unionId}
 	</select>
 	
 	<insert id="addNewUser" parameterType="com.trans.pixel.model.userinfo.UserBean">

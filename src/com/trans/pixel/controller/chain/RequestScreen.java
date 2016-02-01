@@ -15,12 +15,15 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
-import com.trans.pixel.protoc.Commands.RequestHandleUnionApplyCommand;
+import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -38,7 +41,10 @@ import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
+import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 
@@ -114,13 +120,25 @@ public abstract class RequestScreen implements RequestHandle {
 	
 	protected abstract boolean handleCommand(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user);
 	
-	protected abstract boolean handleCommand(RequestHandleUnionApplyCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestReplyUnionCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -301,8 +319,8 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
-        if (request.hasHandleUnionApplyCommand()) {
-            RequestHandleUnionApplyCommand cmd = request.getHandleUnionApplyCommand();
+        if (request.hasReplyUnionCommand()) {
+            RequestReplyUnionCommand cmd = request.getReplyUnionCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
@@ -318,6 +336,36 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasReplyMessageCommand()) {
             RequestReplyMessageCommand cmd = request.getReplyMessageCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasDeleteUnionCommand()) {
+            RequestDeleteUnionCommand cmd = request.getDeleteUnionCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasHandleUnionCommand()) {
+            RequestHandleUnionMemberCommand cmd = request.getHandleUnionCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasUnionInfoCommand()) {
+            RequestUnionInfoCommand cmd = request.getUnionInfoCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasUpgradeUnionCommand()) {
+            RequestUpgradeUnionCommand cmd = request.getUpgradeUnionCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasUnionListCommand()) {
+            RequestUnionListCommand cmd = request.getUnionListCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasQuitUnionCommand()) {
+            RequestQuitUnionCommand cmd = request.getQuitUnionCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
