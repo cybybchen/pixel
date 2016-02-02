@@ -24,20 +24,6 @@ public class UserTeamRedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
-	public UserTeamBean selectUserTeam(final long userId, final int mode) {
-		return redisTemplate.execute(new RedisCallback<UserTeamBean>() {
-			@Override
-			public UserTeamBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
-				
-				
-				return UserTeamBean.fromJson(bhOps.get("" + mode));
-			}
-		});
-	}
-	
 	public void updateUserTeam(final UserTeamBean userTeam) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
@@ -47,7 +33,7 @@ public class UserTeamRedisService {
 						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userTeam.getUserId());
 				
 				
-				bhOps.put("" + userTeam.getMode(), userTeam.toJson());
+				bhOps.put("" + userTeam.getId(), userTeam.toJson());
 				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				
 				return null;
@@ -64,7 +50,7 @@ public class UserTeamRedisService {
 						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
 				
 				for (UserTeamBean userTeam : userTeamList) {
-					bhOps.put("" + userTeam.getMode(), userTeam.toJson());
+					bhOps.put("" + userTeam.getId(), userTeam.toJson());
 				}
 				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				

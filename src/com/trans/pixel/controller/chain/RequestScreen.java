@@ -3,6 +3,7 @@ package com.trans.pixel.controller.chain;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
@@ -19,8 +20,6 @@ import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
-import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -36,6 +35,7 @@ import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
@@ -43,8 +43,10 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 
@@ -139,6 +141,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestUserTeamListCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -366,6 +372,16 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasQuitUnionCommand()) {
             RequestQuitUnionCommand cmd = request.getQuitUnionCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasAddTeamCommand()) {
+            RequestAddTeamCommand cmd = request.getAddTeamCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasUserTeamListCommand()) {
+            RequestUserTeamListCommand cmd = request.getUserTeamListCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }

@@ -18,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.Mail;
 import com.trans.pixel.protoc.Commands.MailList;
@@ -33,6 +34,7 @@ import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.protoc.Commands.UserMine;
 import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.protoc.Commands.UserTeam;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -170,5 +172,14 @@ public class BaseCommandService {
 		}
 		
 		return messageBoardBuilderList;
+	}
+	
+	protected List<UserTeam> buildUserTeamList(List<UserTeamBean> userTeamList) {
+		List<UserTeam> userTeamBuilderList = new ArrayList<UserTeam>();
+		for (UserTeamBean userTeam : userTeamList) {
+			userTeamBuilderList.add(userTeam.buildUserTeam());
+		}
+		
+		return userTeamBuilderList;
 	}
 }

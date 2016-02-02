@@ -5,7 +5,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserTeamService;
 
@@ -13,10 +15,24 @@ import com.trans.pixel.service.UserTeamService;
 public class TeamCommandService extends BaseCommandService {
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private PushCommandService pushCommandService;
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
-		int mode = cmd.getMode();
+		int id = cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
-		userTeamService.updateUserTeam(userId, mode, teamInfo);
+		userTeamService.updateUserTeam(userId, id, teamInfo);
+		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
+	}
+	
+	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
+		long userId = user.getId();
+		String teamInfo = cmd.getTeamInfo();
+		userTeamService.addUserTeam(userId, teamInfo);
+		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
+	}
+	
+	public void getUserTeamList(RequestUserTeamListCommand cmd, Builder responseBuilder, UserBean user) {
+		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 }

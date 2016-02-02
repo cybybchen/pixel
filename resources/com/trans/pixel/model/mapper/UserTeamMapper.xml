@@ -5,22 +5,19 @@
 	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserTeamBean">
 		<id property="id" column="id" />
 		<result property="userId" column="user_id" />
-		<result property="mode" column="mode" />
 		<result property="record" column="record" />
 	</resultMap>
 	
-	<select id="selectUserTeam" resultMap="resultMap">
-		SELECT *
-		from user_team where user_id=#{userId} and mode=#{mode}
-	</select>
-	
-	<insert id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
-	    INSERT INTO user_team(user_id, mode, record)
-	    VALUES(#{userId}, #{mode}, #{record})
-	    ON 
-	    duplicate key update
-	    record=#{record}
+	<insert id="addUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
+	    INSERT INTO user_team(user_id, record)
+	    VALUES(#{userId}, #{record})
 	</insert>
+	
+	<update id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
+	    UPDATE user_team
+	    SET record=#{record}
+		WHERE id=#{id}
+	</update>
 	
 	<select id="selectUserTeamList" parameterType="long" resultMap="resultMap">
 		SELECT *

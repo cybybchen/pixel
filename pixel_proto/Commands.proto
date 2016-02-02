@@ -43,6 +43,11 @@ message HeroInfo {
 	repeated SkillInfo skill = 6;
 }
 
+message UserTeam {
+	required int64 id = 1;
+	required string teaminfo = 2;
+}
+
 message UserHero {
 	required int64 userId = 1;
 	required int32 heroId = 2;
@@ -290,9 +295,22 @@ message ResponseLevelLootResultCommand {
 }
 
 message RequestUpdateTeamCommand {
-	required int32 mode = 1;
+	required int32 id = 1;
 	required string teamInfo = 2;
 }
+
+message RequestAddTeamCommand {
+	required string teamInfo = 1;
+}
+
+message RequestUserTeamListCommand {
+
+}
+
+message ResponseUserTeamListCommand {
+	repeated UserTeam userTeam = 1;
+}
+
 
 message RequestHeroLevelUpCommand {
 	required int32 levelUpType = 1; //1:level 2:star 3:rare 4:skill
@@ -592,6 +610,8 @@ message RequestCommand {
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
 	optional RequestReplyMessageCommand replyMessageCommand = 38;
+	optional RequestAddTeamCommand addTeamCommand = 45;
+	optional RequestUserTeamListCommand userTeamListCommand = 46;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -624,6 +644,7 @@ message ResponseCommand {
 	optional ResponseUnionListCommand unionListCommand = 28;
 	optional ResponseMessageBoardListCommand messageBoardListCommand = 29;
 	optional ResponseMessageBoardCommand messageBoardCommand = 30;
+	optional ResponseUserTeamListCommand userTeamListCommand = 31;
 }
 
 

@@ -17,19 +17,18 @@ public class UserTeamService {
 	@Resource
 	private UserTeamMapper userTeamMapper;
 	
-	public UserTeamBean selectUserTeam(long userId, int mode) {
-		UserTeamBean userTeam = userTeamRedisService.selectUserTeam(userId, mode);
-		if (userTeam == null) {
-			userTeam = userTeamMapper.selectUserTeam(userId, mode);
-		}
-		
-		return userTeam;
-	}
-	
-	public void updateUserTeam(long userId, int mode, String record) {
+	public void addUserTeam(long userId, String record) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setUserId(userId);
-		userTeam.setMode(mode);
+		userTeam.setTeamRecord(record);
+		userTeamMapper.addUserTeam(userTeam);
+		userTeamRedisService.updateUserTeam(userTeam);
+	}
+	
+	public void updateUserTeam(long userId, long id,  String record) {
+		UserTeamBean userTeam = new UserTeamBean();
+		userTeam.setId(id);
+		userTeam.setUserId(userId);
 		userTeam.setTeamRecord(record);
 		userTeamRedisService.updateUserTeam(userTeam);
 		userTeamMapper.updateUserTeam(userTeam);

@@ -18,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
@@ -28,6 +29,7 @@ import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserTeamListCommand;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
@@ -38,6 +40,7 @@ import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
+import com.trans.pixel.service.UserTeamService;
 
 @Service
 public class PushCommandService extends BaseCommandService {
@@ -62,6 +65,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserLevelLootService userLevelLootService;
 	@Resource
 	private MessageService messageService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -145,5 +150,13 @@ public class PushCommandService extends BaseCommandService {
 		builder.addAllMessageBoard(super.buildMessageBoardList(messageBoardList));
 		builder.setType(type);
 		responseBuilder.setMessageBoardListCommand(builder.build());
+	}
+	
+	public void pushUserTeamListCommand(Builder responseBuilder, UserBean user) {
+		List<UserTeamBean> userTeamList = userTeamService.selectUserTeamList(user.getId());
+		ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
+		builder.addAllUserTeam(buildUserTeamList(userTeamList));
+		
+		responseBuilder.setUserTeamListCommand(builder.build());
 	}
 }

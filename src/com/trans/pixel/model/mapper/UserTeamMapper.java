@@ -2,13 +2,11 @@ package com.trans.pixel.model.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.trans.pixel.model.userinfo.UserTeamBean;
 
 public interface UserTeamMapper {
 	
-	public UserTeamBean selectUserTeam(@Param("userId") long userId, @Param("mode") int mode);
+	public int addUserTeam(UserTeamBean userTeam);
 	
 	public int updateUserTeam(UserTeamBean userTeam);
 	
