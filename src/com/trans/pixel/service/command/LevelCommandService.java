@@ -97,9 +97,8 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		
-		userLevelRecord.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		if (userLevelRecord.getLastLevelResultTime() != 0)
-			userLevelRecord.setLevelPrepareTime((int)(System.currentTimeMillis() / 1000) - userLevelRecord.getLastLevelResultTime());
+			userLevelRecord.setLevelPrepareTime(userLevelRecord.getLevelPrepareTime() + (int)(System.currentTimeMillis() / 1000) - userLevelRecord.getLastLevelResultTime());
 		userLevelRecord.setLastLevelResultTime(0);
 		userLevelService.updateUserLevelRecord(userLevelRecord);
 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
