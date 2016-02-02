@@ -61,6 +61,7 @@ public class LoginCommandService extends BaseCommandService {
 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
 		pushCommandService.pushUserLootLevelCommand(responseBuilder, user);
 		pushCommandService.pushLadderRankListCommand(responseBuilder, user);
+		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {
