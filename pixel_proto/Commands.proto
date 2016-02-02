@@ -15,7 +15,8 @@ message UserInfo {
 	optional int32 pointLadder = 9; //天梯积分
 	optional int32 pointExpedition = 10; //远征积分
 	optional int32 pointUnion = 11; //联盟积分
-	optional int32 completeLevel = 12;;
+	optional int32 completeLevel = 12;
+	optional int64 areaEnergyTime = 16;//疲劳回满时间
 }
 
 message RewardInfo {
@@ -126,10 +127,13 @@ message AreaResource {//区域资源点
 	required int32 bossid = 8;//资源点BOSS
 	repeated AreaResourceMine mines = 9;//开采点
 	///////////////////////////////////
-	optional string state = 10;//争夺状态
-	optional int32 nexttime = 11;//下次开战时间
-	optional string owner = 12;//占领玩家
-	optional int32 rewardId = 13;//占领奖励
+	optional int32 state = 10;//争夺状态:0正常，1准备战斗
+	optional int64 endtime = 11;//该阶段结束时间
+	optional int32 unionId = 12;//占领工会
+	optional int32 attackerId = 13;//进攻工会
+	optional int32 warDefended = 14;//抵挡波数
+	repeated UserInfo attacks = 15;//进攻方
+	repeated UserInfo defenses = 16;//防守方
 }
 
 message AreaResourceList {

@@ -648,9 +648,16 @@ public class RedisService {
 	}
 	
 	/**
-	 * default:RedisExpiredConst.EXPIRED_USERINFO_7DAY
+	 * default:nextDay()
 	 */
 	public void setExpireDate(Date date) {
 		this.expireDate = date;
+	}
+	/**
+	 * 第二天零点
+	 */
+	public Date nextDay(){
+		Date date = new Date((System.currentTimeMillis()/24/3600L/1000L+1)*24*3600L*1000L);
+		return date;
 	}
 }

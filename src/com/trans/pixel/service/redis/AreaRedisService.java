@@ -1,5 +1,6 @@
 package com.trans.pixel.service.redis;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,6 +94,7 @@ public class AreaRedisService extends RedisService{
 						} else {
 							AreaBoss newboss = buildAreaBoss(bossbuilder.getId());
 							bossbuilder.mergeFrom(newboss);
+							setExpireDate(nextDay());
 							saveBoss(bossbuilder.build());
 						}
 						bossbuilder.setReward(getAreaMonsterReward(bossbuilder.getId()));
@@ -108,6 +110,7 @@ public class AreaRedisService extends RedisService{
 						} else {
 							AreaMonster newmonster = buildAreaMonster(monsterbuilder.getId());
 							monsterbuilder.mergeFrom(newmonster);
+							setExpireDate(nextDay());
 							saveMonster(monsterbuilder.build());
 						}
 						monsterbuilder.setReward(getAreaMonsterReward(monsterbuilder.getId()));

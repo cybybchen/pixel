@@ -25,7 +25,7 @@
 	</insert>
 	
 	<select id="selectUnionByServerIdAndName" resultMap="resultMap">
-	    SELECT * from union where serverid=#{serverId} and name=#{name}
+	    SELECT * from union where serverid=#{serverid} and name=#{name}
 	</select>
 	
 	<update id="updateUnionn" parameterType="com.trans.pixel.model.UnionBean">

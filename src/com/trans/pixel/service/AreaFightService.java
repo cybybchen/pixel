@@ -46,10 +46,22 @@ public class AreaFightService {
 	}
 	
 	public boolean AttackResource(int id){
-		AreaResource.Builder builder = AreaResource.newBuilder();
-		builder.mergeFrom(redis.getResource(id));
-		builder.setOwner(user.account);
-		redis.saveResource(builder.build());
+		AreaResource resource = redis.getResource(id);
+		if(resource == null)
+			return false;
+		AreaResource.Builder builder = AreaResource.newBuilder(resource);
+		if (builder.getState() == 0) {//刺杀
+			builder.setState(1);
+			builder.setEndtime(System.currentTimeMillis()/1000+24*3600L);
+			builder.setAttackerId(user.getUnionId());
+			redis.saveResource(builder.build());
+		}else{
+			if(user.unionId == builder.getUnionId()){
+				builder.addDefenses(user.buildShort());
+			}else{
+				builder.addAttacks(user.buildShort());
+			}
+		}
 		return true;
 	}
 	
