@@ -17,13 +17,13 @@ public class BaseTest {
     protected static final int GAME_VERSION = 1;
     protected static final int VERSION = 1;
     protected static final int SERVER_ID = 1;
-    protected static final String ACCOUNT = "ybchen";
+    protected static final String ACCOUNT = "chli";
     protected static final String NICKNAME = "TESTER";
     protected static final String DEVICE_ID = "iphone5";
     protected static final String SESSION = "aa68d03cb47b25b797ba4e06269c3079";
     protected static final String TOKEN = "";
-    protected static final long USER_ID = 32;
-    protected static final String USER_NAME = "hahaha";
+    protected static final long USER_ID = 38;
+    protected static final String USER_NAME = "chli";
     protected static final String SCORE = "100";
     protected static final String ROOM = "2";
     protected static final String CARID = "carid";
