@@ -295,7 +295,7 @@ message RequestUpdateTeamCommand {
 }
 
 message RequestHeroLevelUpCommand {
-	required int32 levelUpType = 1; //1:level 2:star 3:equip 4:skill
+	required int32 levelUpType = 1; //1:level 2:star 3:rare 4:skill
 	required int32 heroId = 2;
 	required int32 infoId = 3;
 	optional int32 skillId = 4;
