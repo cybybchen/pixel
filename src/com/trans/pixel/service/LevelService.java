@@ -36,6 +36,9 @@ public class LevelService {
 		int diff = getDifficulty(levelId);
 		switch (diff) {
 			case LevelConst.DIFF_PUTONG:
+				if (levelId == 1001)
+					return false;
+				
 				if (levelId != userLevelRecord.getPutongLevel() + 1)
 					return true;
 				
@@ -69,6 +72,9 @@ public class LevelService {
 		int diff = getDifficulty(levelId);
 		switch (diff) {
 			case LevelConst.DIFF_PUTONG:
+				if (levelId == 1001)
+					return false;
+				
 				if (levelId > userLevelRecord.getPutongLevel() + 1)
 					return true;
 				

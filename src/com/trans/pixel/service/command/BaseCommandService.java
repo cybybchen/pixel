@@ -31,7 +31,6 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserEquip;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHero;
-import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserMine;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.LadderService;
@@ -43,13 +42,7 @@ public class BaseCommandService {
 	private LadderService ladderService;
 	
 	protected void buildUserInfo(ResponseUserInfoCommand.Builder builder, UserBean user) {
-		UserInfo.Builder userBuilder = UserInfo.newBuilder();
-		userBuilder.setAccount(user.getAccount());
-		userBuilder.setId(user.getId());
-		userBuilder.setServerId(user.getServerId());
-		userBuilder.setUserName(user.getUserName());
-		
-		builder.setUser(userBuilder.build());
+		builder.setUser(user.build());
 	}
 	
 	protected ErrorCommand buildErrorCommand(ErrorConst errorConst) {
