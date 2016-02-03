@@ -93,8 +93,11 @@
 		proxy-target-class="true" />
 	<!-- 定时任务注解启动 -->
 	<task:annotation-driven />
-		
-	<!-- redis 配置 -->
+	
+    <!-- quartz 配置 -->		
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
+    
+    <!-- redis 配置 -->
 	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<property name="maxIdle" value="${redis.maxIdle}" />
 		<property name="maxActive" value="${redis.maxActive}" />

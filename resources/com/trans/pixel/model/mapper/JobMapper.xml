@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.JobMapper">
+
+	<resultMap id="JobMap" type="com.trans.pixel.model.JobBean">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="group" column="job_group" />
+		<result property="status" column="status" />
+		<result property="cronExpression" column="cron_expression" />
+		<result property="desc" column="job_desc" />
+		<result property="createTime" column="create_time" />
+	</resultMap>
+
+	<select id="queryById" parameterType="int" resultMap="JobMap">
+		SELECT *
+		from qrtz_job where id = #{id}
+	</select>
+	
+	<select id="queryAll" resultMap="JobMap">
+		SELECT *
+		from qrtz_job where status = 1
+	</select>
+	
+	<insert id="addNewJob" parameterType="com.trans.pixel.model.JobBean">
+		INSERT INTO qrtz_job(id, name, job_group, status, cron_expression, job_desc, create_time)
+		VALUES(#{id}, #{name}, #{group}, #{status}, #{cronExpression}, #{desc}, #{createTime})
+	</insert>
+	
+	<update id="updateJob" parameterType="com.trans.pixel.model.JobBean">
+		UPDATE qrtz_job SET id=#{id}, name=#{name}, job_group=#{group}, status=#{status}, cron_expression=#{cronExpression}, job_desc=#{desc}, create_time=#{createTime}
+		WHERE id=#{id}
+	</update>
+
+</mapper>
