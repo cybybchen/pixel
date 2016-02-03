@@ -41,6 +41,7 @@ message HeroInfo {
 	optional int32 rare = 4;
 	optional string equipInfo = 5;
 	repeated SkillInfo skill = 6;
+	optional int32 value = 7;
 }
 
 message UserTeam {
