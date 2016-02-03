@@ -89,12 +89,12 @@ public class UserLevelLootBean {
 		return bean;
 	}
 	
-	public void updateLootTime(int levelId, int levelLootTime) {
+	public void updateLootTime(int xiaoguanId, int levelLootTime, int levelId) {
 		int lastLootTime = 0;
 		JSONObject json = new JSONObject();
 		try {
 			json = JSONObject.fromObject(lootTime);
-			lastLootTime = json.getInt("" + levelId) + (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - levelLootStartTime;
+			lastLootTime = json.getInt("" + xiaoguanId) + (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - levelLootStartTime;
 			while (lastLootTime - levelLootTime >= 0) {
 				updateLootRewardRecord(levelId);
 				lastLootTime -= levelLootTime;
@@ -102,7 +102,7 @@ public class UserLevelLootBean {
 		} catch (Exception e) {
 			
 		}
-		json.put(levelId, lastLootTime);
+		json.put(xiaoguanId, lastLootTime);
 		lootTime = json.toString();
 	}
 	

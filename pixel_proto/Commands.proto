@@ -317,6 +317,7 @@ message RequestHeroLevelUpCommand {
 	required int32 heroId = 2;
 	required int32 infoId = 3;
 	optional int32 skillId = 4;
+	repeated int32 costInfoId = 5;
 }
 
 message ResponseHeroResultCommand {

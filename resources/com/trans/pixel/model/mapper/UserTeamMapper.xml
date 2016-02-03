@@ -5,17 +5,17 @@
 	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserTeamBean">
 		<id property="id" column="id" />
 		<result property="userId" column="user_id" />
-		<result property="record" column="record" />
+		<result property="teamRecord" column="record" />
 	</resultMap>
 	
-	<insert id="addUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
+	<insert id="addUserTeam" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
 	    INSERT INTO user_team(user_id, record)
-	    VALUES(#{userId}, #{record})
+	    VALUES(#{userId}, #{teamRecord})
 	</insert>
 	
 	<update id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
 	    UPDATE user_team
-	    SET record=#{record}
+	    SET record=#{teamRecord}
 		WHERE id=#{id}
 	</update>
 	
