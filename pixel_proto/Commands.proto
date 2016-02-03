@@ -25,6 +25,15 @@ message RewardInfo {
 	required int32 count = 3;
 }
 
+message MultiReward {
+	required int32 id = 1;
+	repeated RewardInfo loot = 2;
+}
+
+message MultiRewardList {
+	repeated MultiReward region = 2;
+}
+
 message HeadInfo 
 {
 	required int32 version = 1;		//  0: version1.1.1 1: version1.2.0 2013-3-28
@@ -112,7 +121,7 @@ message AreaResourceMine {//区域资源开采点
 	required int32 time = 3;//开采时间
 	required int32 yield = 4;//开采产量
 	///////////////////////////////////
-	optional string owner = 5;//开采玩家
+	optional int64 userId = 5;//开采玩家
 	optional int64 endTime = 6;//开采结束时间
 }
 
@@ -129,7 +138,7 @@ message AreaResource {//区域资源点
 	///////////////////////////////////
 	optional int32 state = 10;//争夺状态:0正常，1准备战斗
 	optional int64 endtime = 11;//该阶段结束时间
-	optional int32 unionId = 12;//占领工会
+	optional UserInfo owner = 12;//占领玩家
 	optional int32 attackerId = 13;//进攻工会
 	optional int32 warDefended = 14;//抵挡波数
 	repeated UserInfo attacks = 15;//进攻方
@@ -146,7 +155,7 @@ message AreaBoss {//区域世界BOSS
 	optional int32 belongto = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	optional AreaMonsterReward reward = 6;//击杀奖励
+	optional MultiReward reward = 6;//击杀奖励
 	repeated int32 rewardIds = 7;//排行奖励
 	///////////////////////////////////
 	optional string owner = 8;//击杀者
@@ -163,20 +172,11 @@ message AreaMonster {//区域怪物
 	optional int32 belongto = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	optional AreaMonsterReward reward = 6;//击败奖励
+	optional MultiReward reward = 6;//击败奖励
 }
 
 message AreaMonsterList {
 	repeated AreaMonster region = 1;
-}
-
-message AreaMonsterReward {
-	required int32 id = 1;
-	repeated RewardInfo loot = 2;
-}
-
-message AreaMonsterRewardList {
-	repeated AreaMonsterReward region = 2;
 }
 
 message AreaInfo {//可争夺区域
