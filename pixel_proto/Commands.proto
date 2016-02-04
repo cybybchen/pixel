@@ -130,7 +130,7 @@ message AreaResourceMine {//区域资源开采点
 	required int32 time = 3;//开采时间
 	required int32 yield = 4;//开采产量
 	///////////////////////////////////
-	optional int64 userId = 5;//开采玩家
+	optional UserInfo user = 5;//开采玩家
 	optional int64 endTime = 6;//开采结束时间
 }
 

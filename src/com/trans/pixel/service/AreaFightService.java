@@ -83,20 +83,31 @@ public class AreaFightService extends FightService{
 	}
 	
 	public boolean AttackResourceMine(int id){
-		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
-		builder.mergeFrom(redis.getResourceMine(id));
-		builder.setUserId(user.getId());
+		AreaResourceMine mine = redis.getResourceMine(id);
+		if(mine == null)
+			return false;
+		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(mine);
+		gainMine(builder);
+		builder.setUser(user.buildShort());
+		builder.setEndTime(System.currentTimeMillis()/1000+12*3600);
 		redis.saveResourceMine(builder.build());
 		return true;
 	}
 	
-	public void gainMine(AreaResourceMine.Builder builder){
-		if(builder.getUserId() == 0)
-			return;
-		UserBean bean = userService.getUser(builder.getUserId());
-//		bean.set
-		builder.getYield();
-		builder.setUserId(0);
+	public boolean gainMine(AreaResourceMine.Builder builder){
+		if(!builder.hasUser())
+			return false;
+		int yield = builder.getYield();
+		if (System.currentTimeMillis() / 1000 < builder.getEndTime())
+			yield = (int)((System.currentTimeMillis() / 1000 + builder.getTime()*3600 - builder.getEndTime())*yield/builder.getTime()/3600);
+		if(yield > 0){
+			UserBean bean = userService.getUser(builder.getUser().getId());
+			bean.setCoin(bean.getCoin()+yield);
+			userService.updateUser(bean);
+		}
+		builder.clearUser();
+		builder.clearEndTime();
+		return true;
 	}
 	
 	public void resourceFight(AreaResource.Builder builder){
@@ -177,8 +188,9 @@ public class AreaFightService extends FightService{
 					AreaResourceMine mine = mineMap.get(minebuilder.getId() + "");
 					if (mine != null) {
 						AreaResourceMine.Builder builder2 = AreaResourceMine.newBuilder(mine);
-						if (System.currentTimeMillis() / 1000 >= builder2.getEndTime())// 收获
-							gainMine(builder2);
+						if (System.currentTimeMillis() / 1000 >= builder2.getEndTime()// 收获
+							&& gainMine(builder2))
+							redis.saveResourceMine(builder2.build());
 						minebuilder.mergeFrom(builder2.build());
 					} else {
 						minebuilder.mergeFrom(redis.buildAreaResourceMine(resourcebuilder.build(), minebuilder.getId()));

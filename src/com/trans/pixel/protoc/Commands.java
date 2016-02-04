@@ -15243,23 +15243,31 @@ public final class Commands {
      */
     int getYield();
 
-    // optional int64 userId = 5;
+    // optional .com.trans.pixel.protoc.UserInfo user = 5;
     /**
-     * <code>optional int64 userId = 5;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
      *
      * <pre>
      *&#47;////////////////////////////////
      * </pre>
      */
-    boolean hasUserId();
+    boolean hasUser();
     /**
-     * <code>optional int64 userId = 5;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
      *
      * <pre>
      *&#47;////////////////////////////////
      * </pre>
      */
-    long getUserId();
+    com.trans.pixel.protoc.Commands.UserInfo getUser();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     *
+     * <pre>
+     *&#47;////////////////////////////////
+     * </pre>
+     */
+    com.trans.pixel.protoc.Commands.UserInfoOrBuilder getUserOrBuilder();
 
     // optional int64 endTime = 6;
     /**
@@ -15354,9 +15362,17 @@ public final class Commands {
               yield_ = input.readInt32();
               break;
             }
-            case 40: {
+            case 42: {
+              com.trans.pixel.protoc.Commands.UserInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.trans.pixel.protoc.Commands.UserInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000010;
-              userId_ = input.readInt64();
               break;
             }
             case 48: {
@@ -15500,28 +15516,38 @@ public final class Commands {
       return yield_;
     }
 
-    // optional int64 userId = 5;
-    public static final int USERID_FIELD_NUMBER = 5;
-    private long userId_;
+    // optional .com.trans.pixel.protoc.UserInfo user = 5;
+    public static final int USER_FIELD_NUMBER = 5;
+    private com.trans.pixel.protoc.Commands.UserInfo user_;
     /**
-     * <code>optional int64 userId = 5;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
      *
      * <pre>
      *&#47;////////////////////////////////
      * </pre>
      */
-    public boolean hasUserId() {
+    public boolean hasUser() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional int64 userId = 5;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
      *
      * <pre>
      *&#47;////////////////////////////////
      * </pre>
      */
-    public long getUserId() {
-      return userId_;
+    public com.trans.pixel.protoc.Commands.UserInfo getUser() {
+      return user_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     *
+     * <pre>
+     *&#47;////////////////////////////////
+     * </pre>
+     */
+    public com.trans.pixel.protoc.Commands.UserInfoOrBuilder getUserOrBuilder() {
+      return user_;
     }
 
     // optional int64 endTime = 6;
@@ -15553,7 +15579,7 @@ public final class Commands {
       resourceId_ = 0;
       time_ = 0;
       yield_ = 0;
-      userId_ = 0L;
+      user_ = com.trans.pixel.protoc.Commands.UserInfo.getDefaultInstance();
       endTime_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
@@ -15572,6 +15598,12 @@ public final class Commands {
       if (!hasYield()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasUser()) {
+        if (!getUser().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -15593,7 +15625,7 @@ public final class Commands {
         output.writeInt32(4, yield_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt64(5, userId_);
+        output.writeMessage(5, user_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt64(6, endTime_);
@@ -15625,7 +15657,7 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(5, userId_);
+          .computeMessageSize(5, user_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -15743,6 +15775,7 @@ public final class Commands {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -15759,7 +15792,11 @@ public final class Commands {
         bitField0_ = (bitField0_ & ~0x00000004);
         yield_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        userId_ = 0L;
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Commands.UserInfo.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000010);
         endTime_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -15810,7 +15847,11 @@ public final class Commands {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.userId_ = userId_;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
@@ -15843,8 +15884,8 @@ public final class Commands {
         if (other.hasYield()) {
           setYield(other.getYield());
         }
-        if (other.hasUserId()) {
-          setUserId(other.getUserId());
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
         }
         if (other.hasEndTime()) {
           setEndTime(other.getEndTime());
@@ -15865,6 +15906,12 @@ public final class Commands {
         if (!hasYield()) {
           
           return false;
+        }
+        if (hasUser()) {
+          if (!getUser().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -16084,53 +16131,157 @@ public final class Commands {
         return this;
       }
 
-      // optional int64 userId = 5;
-      private long userId_ ;
+      // optional .com.trans.pixel.protoc.UserInfo user = 5;
+      private com.trans.pixel.protoc.Commands.UserInfo user_ = com.trans.pixel.protoc.Commands.UserInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.UserInfo, com.trans.pixel.protoc.Commands.UserInfo.Builder, com.trans.pixel.protoc.Commands.UserInfoOrBuilder> userBuilder_;
       /**
-       * <code>optional int64 userId = 5;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
        *
        * <pre>
        *&#47;////////////////////////////////
        * </pre>
        */
-      public boolean hasUserId() {
+      public boolean hasUser() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional int64 userId = 5;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
        *
        * <pre>
        *&#47;////////////////////////////////
        * </pre>
        */
-      public long getUserId() {
-        return userId_;
+      public com.trans.pixel.protoc.Commands.UserInfo getUser() {
+        if (userBuilder_ == null) {
+          return user_;
+        } else {
+          return userBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional int64 userId = 5;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
        *
        * <pre>
        *&#47;////////////////////////////////
        * </pre>
        */
-      public Builder setUserId(long value) {
+      public Builder setUser(com.trans.pixel.protoc.Commands.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
+        } else {
+          userBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000010;
-        userId_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional int64 userId = 5;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
        *
        * <pre>
        *&#47;////////////////////////////////
        * </pre>
        */
-      public Builder clearUserId() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        userId_ = 0L;
-        onChanged();
+      public Builder setUser(
+          com.trans.pixel.protoc.Commands.UserInfo.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
         return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       *
+       * <pre>
+       *&#47;////////////////////////////////
+       * </pre>
+       */
+      public Builder mergeUser(com.trans.pixel.protoc.Commands.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              user_ != com.trans.pixel.protoc.Commands.UserInfo.getDefaultInstance()) {
+            user_ =
+              com.trans.pixel.protoc.Commands.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       *
+       * <pre>
+       *&#47;////////////////////////////////
+       * </pre>
+       */
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Commands.UserInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       *
+       * <pre>
+       *&#47;////////////////////////////////
+       * </pre>
+       */
+      public com.trans.pixel.protoc.Commands.UserInfo.Builder getUserBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       *
+       * <pre>
+       *&#47;////////////////////////////////
+       * </pre>
+       */
+      public com.trans.pixel.protoc.Commands.UserInfoOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       *
+       * <pre>
+       *&#47;////////////////////////////////
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Commands.UserInfo, com.trans.pixel.protoc.Commands.UserInfo.Builder, com.trans.pixel.protoc.Commands.UserInfoOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Commands.UserInfo, com.trans.pixel.protoc.Commands.UserInfo.Builder, com.trans.pixel.protoc.Commands.UserInfoOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // optional int64 endTime = 6;
@@ -90924,333 +91075,334 @@ public final class Commands {
       "(\003\"\226\001\n\nUnionFight\022\020\n\010attackId\030\001 \002(\005\022\020\n\010d" +
       "efendId\030\002 \002(\005\0221\n\007attacks\030\003 \003(\0132 .com.tra" +
       "ns.pixel.protoc.UserInfo\0221\n\007defends\030\004 \003(" +
-      "\0132 .com.trans.pixel.protoc.UserInfo\"p\n\020A" +
-      "reaResourceMine\022\n\n\002id\030\001 \002(\005\022\022\n\nresourceI" +
-      "d\030\002 \001(\005\022\014\n\004time\030\003 \002(\005\022\r\n\005yield\030\004 \002(\005\022\016\n\006" +
-      "userId\030\005 \001(\003\022\017\n\007endTime\030\006 \001(\003\"\230\003\n\014AreaRe",
-      "source\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010belo" +
-      "ngto\030\003 \001(\005\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005\022\r\n\005yiel" +
-      "d\030\006 \002(\005\022\r\n\005count\030\007 \002(\005\022\016\n\006bossid\030\010 \002(\005\0227" +
-      "\n\005mines\030\t \003(\0132(.com.trans.pixel.protoc.A" +
-      "reaResourceMine\022\r\n\005state\030\n \001(\005\022\017\n\007endtim" +
-      "e\030\013 \001(\003\022/\n\005owner\030\014 \001(\0132 .com.trans.pixel" +
-      ".protoc.UserInfo\022\022\n\nattackerId\030\r \001(\005\022\023\n\013" +
-      "warDefended\030\016 \001(\005\0221\n\007attacks\030\017 \003(\0132 .com" +
-      ".trans.pixel.protoc.UserInfo\0222\n\010defenses" +
-      "\030\020 \003(\0132 .com.trans.pixel.protoc.UserInfo",
-      "\"H\n\020AreaResourceList\0224\n\006region\030\001 \003(\0132$.c" +
-      "om.trans.pixel.protoc.AreaResource\"\374\001\n\010A" +
-      "reaBoss\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010bel" +
-      "ongto\030\003 \001(\005\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005\0223\n\006rew" +
-      "ard\030\006 \001(\0132#.com.trans.pixel.protoc.Multi" +
-      "Reward\022\021\n\trewardIds\030\007 \003(\005\022/\n\005owner\030\010 \001(\013" +
-      "2 .com.trans.pixel.protoc.UserInfo\0225\n\013le" +
-      "aderboard\030\t \003(\0132 .com.trans.pixel.protoc" +
-      ".UserInfo\"@\n\014AreaBossList\0220\n\006region\030\001 \003(" +
-      "\0132 .com.trans.pixel.protoc.AreaBoss\"\204\001\n\013",
-      "AreaMonster\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n" +
-      "\010belongto\030\003 \001(\005\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005\0223\n" +
-      "\006reward\030\006 \001(\0132#.com.trans.pixel.protoc.M" +
-      "ultiReward\"F\n\017AreaMonsterList\0223\n\006region\030" +
-      "\001 \003(\0132#.com.trans.pixel.protoc.AreaMonst" +
-      "er\"\326\001\n\010AreaInfo\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(" +
-      "\t\022\016\n\006zhanli\030\003 \002(\005\0227\n\tresources\030\004 \003(\0132$.c" +
-      "om.trans.pixel.protoc.AreaResource\0220\n\006bo" +
-      "sses\030\005 \003(\0132 .com.trans.pixel.protoc.Area" +
-      "Boss\0225\n\010monsters\030\006 \003(\0132#.com.trans.pixel",
-      ".protoc.AreaMonster\"<\n\010AreaMode\0220\n\006regio" +
-      "n\030\001 \003(\0132 .com.trans.pixel.protoc.AreaInf" +
-      "o\"N\n\010UserRank\022\016\n\006userId\030\001 \002(\003\022\020\n\010userNam" +
-      "e\030\002 \002(\t\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamRecord\030\004 \002(" +
-      "\t\"F\n\nUserFriend\022\020\n\010friendId\030\001 \002(\003\022\022\n\nfri" +
-      "endName\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(\t\"\303\001\n\004Ma" +
-      "il\022\n\n\002id\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n\nfromUs" +
-      "erId\030\003 \002(\003\022\024\n\014fromUserName\030\004 \002(\t\022\014\n\004type" +
-      "\030\005 \002(\005\022\021\n\tstartDate\030\006 \002(\t\022\017\n\007endDate\030\007 \002" +
-      "(\t\022\017\n\007content\030\010 \002(\t\0222\n\006reward\030\t \003(\0132\".co",
-      "m.trans.pixel.protoc.RewardInfo\"D\n\010MailL" +
-      "ist\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034.com.tr" +
-      "ans.pixel.protoc.Mail\"~\n\014MessageBoard\022\021\n" +
-      "\ttimestamp\030\001 \002(\003\022\016\n\006userId\030\002 \002(\003\022\020\n\010user" +
-      "Name\030\003 \002(\t\022\017\n\007content\030\004 \002(\t\022(\n\003msg\030\005 \003(\013" +
-      "2\033.com.trans.pixel.protoc.Msg\"\"\n\003Msg\022\n\n\002" +
-      "id\030\001 \002(\005\022\017\n\007content\030\002 \002(\t\"-\n\014ErrorComman" +
-      "d\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033Resp" +
-      "onseNeedRegisterCommand\"*\n\026RequestRegist" +
-      "erCommand\022\020\n\010userName\030\001 \002(\t\"\025\n\023RequestLo",
-      "ginCommand\"I\n\027ResponseUserInfoCommand\022.\n" +
-      "\004user\030\001 \002(\0132 .com.trans.pixel.protoc.Use" +
-      "rInfo\"\201\001\n\024ResponsePopupCommand\022\021\n\tpopScr" +
-      "een\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022" +
-      "\017\n\007heading\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n" +
-      "\nnoButtonID\030\006 \001(\t\"+\n\030RequestLevelStartCo" +
-      "mmand\022\017\n\007levelId\030\001 \002(\005\"-\n\032RequestLevelPr" +
-      "epareCommand\022\017\n\007levelId\030\001 \002(\005\"\032\n\030Request" +
-      "LevelPauseCommand\"Q\n\031RequestLevelResultC" +
-      "ommand\022\017\n\007levelId\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(",
-      "\t\022\021\n\tfightInfo\030\003 \002(\t\"P\n\032ResponseLevelRes" +
-      "ultCommand\0222\n\006reward\030\001 \003(\0132\".com.trans.p" +
-      "ixel.protoc.RewardInfo\"/\n\034RequestLevelLo" +
-      "otStartCommand\022\017\n\007levelId\030\001 \002(\005\"\037\n\035Reque" +
-      "stLevelLootResultCommand\"T\n\036ResponseLeve" +
-      "lLootResultCommand\0222\n\006reward\030\001 \003(\0132\".com" +
-      ".trans.pixel.protoc.RewardInfo\"8\n\030Reques" +
-      "tUpdateTeamCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010teamIn" +
-      "fo\030\002 \002(\t\")\n\025RequestAddTeamCommand\022\020\n\010tea" +
-      "mInfo\030\001 \002(\t\"\034\n\032RequestUserTeamListComman",
-      "d\"Q\n\033ResponseUserTeamListCommand\0222\n\010user" +
-      "Team\030\001 \003(\0132 .com.trans.pixel.protoc.User" +
-      "Team\"u\n\031RequestHeroLevelUpCommand\022\023\n\013lev" +
-      "elUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId" +
-      "\030\003 \002(\005\022\017\n\007skillId\030\004 \001(\005\022\022\n\ncostInfoId\030\005 " +
-      "\003(\005\"_\n\031ResponseHeroResultCommand\022\016\n\006hero" +
-      "Id\030\001 \002(\005\0222\n\010heroInfo\030\002 \002(\0132 .com.trans.p" +
-      "ixel.protoc.HeroInfo\"\032\n\030RequestLootResul" +
-      "tCommand\"L\n\031ResponseLootResultCommand\022\014\n" +
-      "\004gold\030\001 \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014lastLootTime",
-      "\030\003 \001(\005\"K\n\032RequestAddHeroEquipCommand\022\016\n\006" +
-      "heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 " +
-      "\001(\005\"^\n\032RequestEquipLevelUpCommand\022\016\n\006her" +
-      "oId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \002(\005" +
-      "\022\021\n\tlevelUpId\030\004 \002(\005\"=\n\034RequestAttackRela" +
-      "tiveCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002" +
-      "(\005\"b\n\035ResponseAttackRelativeCommand\022\r\n\005m" +
-      "apId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\022\023\n\013preventTim" +
-      "e\030\003 \002(\003\022\r\n\005level\030\004 \002(\005\"P\n\032ResponseGetUse" +
-      "rMineCommand\0222\n\010userMine\030\001 \003(\0132 .com.tra",
-      "ns.pixel.protoc.UserMine\"A\n RequestRefre" +
-      "shRelatedUserCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006m" +
-      "ineId\030\002 \002(\005\"M\n!ResponseRefreshRelatedUse" +
-      "rCommand\022\021\n\tleftTimes\030\001 \002(\005\022\025\n\rrelatedUs" +
-      "erId\030\002 \002(\003\")\n\031RequestLotteryHeroCommand\022" +
-      "\014\n\004type\030\001 \002(\005\"q\n\032ResponseLotteryHeroComm" +
-      "and\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewa" +
-      "rdList\030\003 \003(\0132\".com.trans.pixel.protoc.Re" +
-      "wardInfo\"*\n\032RequestLotteryEquipCommand\022\014" +
-      "\n\004type\030\001 \002(\005\"r\n\033ResponseLotteryEquipComm",
-      "and\022\014\n\004coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewa" +
-      "rdList\030\003 \003(\0132\".com.trans.pixel.protoc.Re" +
-      "wardInfo\"P\n\032ResponseGetUserHeroCommand\0222" +
-      "\n\010userHero\030\001 \003(\0132 .com.trans.pixel.proto" +
-      "c.UserHero\"S\n\033ResponseGetUserEquipComman" +
-      "d\0224\n\tuserEquip\030\001 \003(\0132!.com.trans.pixel.p" +
-      "rotoc.UserEquip\"!\n\037RequestGetLadderRankL" +
-      "istCommand\"%\n#RequestGetUserLadderRankLi" +
-      "stCommand\"V\n ResponseGetLadderRankListCo" +
-      "mmand\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixe",
-      "l.protoc.UserRank\"Z\n$ResponseGetUserLadd" +
-      "erRankListCommand\0222\n\010userRank\030\001 \003(\0132 .co" +
-      "m.trans.pixel.protoc.UserRank\".\n\036Request" +
-      "AttackLadderModeCommand\022\014\n\004rank\030\001 \002(\003\";\n" +
-      "\037ResponseAttackLadderModeCommand\022\013\n\003ret\030" +
-      "\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"-\n\035RequestGetUserMail" +
-      "ListCommand\022\014\n\004type\030\001 \002(\005\"T\n\036ResponseGet" +
-      "UserMailListCommand\0222\n\010mailList\030\001 \003(\0132 ." +
-      "com.trans.pixel.protoc.MailList\"2\n\026Reque" +
-      "stReadMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 ",
-      "\003(\005\"3\n\026ResponseMessageCommand\022\014\n\004code\030\001 " +
-      "\002(\005\022\013\n\003msg\030\002 \002(\t\"O\n\031ResponseSendRewardCo" +
-      "mmand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel." +
-      "protoc.RewardInfo\"4\n\030RequestDeleteMailCo" +
-      "mmand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\")\n\027Reque" +
-      "stAddFriendCommand\022\016\n\006userId\030\001 \002(\003\")\n\033Re" +
-      "questReceiveFriendCommand\022\n\n\002id\030\001 \003(\005\"V\n" +
-      " ResponseGetUserFriendListCommand\0222\n\006fri" +
-      "end\030\001 \003(\0132\".com.trans.pixel.protoc.UserF" +
-      "riend\"\024\n\022RequestAreaCommand\"F\n\023ResponseA",
-      "reaCommand\022/\n\005areas\030\001 \003(\0132 .com.trans.pi" +
-      "xel.protoc.AreaInfo\")\n\033RequestAttackMons" +
-      "terCommand\022\n\n\002id\030\001 \002(\005\"&\n\030RequestAttackB" +
-      "ossCommand\022\n\n\002id\030\001 \002(\005\"*\n\034RequestAttackR" +
-      "esourceCommand\022\n\n\002id\030\001 \002(\005\".\n RequestAtt" +
-      "ackResourceMineCommand\022\n\n\002id\030\001 \002(\005\"P\n\030Re" +
-      "sponseUserLevelCommand\0224\n\tuserLevel\030\001 \002(" +
-      "\0132!.com.trans.pixel.protoc.UserLevel\"\\\n\034" +
-      "ResponseUserLootLevelCommand\022<\n\ruserLoot" +
-      "Level\030\001 \002(\0132%.com.trans.pixel.protoc.Use",
-      "rLootLevel\"7\n\031RequestCreateUnionCommand\022" +
-      "\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"\033\n\031RequestDe" +
-      "leteUnionCommand\"+\n\030RequestApplyUnionCom" +
-      "mand\022\017\n\007unionId\030\001 \002(\005\"7\n\030RequestReplyUni" +
-      "onCommand\022\n\n\002id\030\001 \003(\003\022\017\n\007receive\030\002 \002(\010\":" +
-      "\n\037RequestHandleUnionMemberCommand\022\n\n\002id\030" +
-      "\001 \002(\003\022\013\n\003job\030\002 \002(\005\"\034\n\032RequestUpgradeUnio" +
-      "nCommand\"%\n\027RequestQuitUnionCommand\022\n\n\002i" +
-      "d\030\001 \001(\003\"\031\n\027RequestUnionInfoCommand\",\n\031Re" +
-      "questAttackUnionCommand\022\017\n\007unionId\030\001 \001(\005",
-      "\"\033\n\031RequestDefendUnionCommand\"H\n\030Respons" +
-      "eUnionInfoCommand\022,\n\005union\030\001 \001(\0132\035.com.t" +
-      "rans.pixel.protoc.Union\"\031\n\027RequestUnionL" +
-      "istCommand\"H\n\030ResponseUnionListCommand\022," +
-      "\n\005union\030\001 \003(\0132\035.com.trans.pixel.protoc.U" +
-      "nion\".\n\036RequestMessageBoardListCommand\022\014" +
-      "\n\004type\030\001 \002(\005\"k\n\037ResponseMessageBoardList" +
-      "Command\022\014\n\004type\030\001 \002(\005\022:\n\014messageBoard\030\002 " +
-      "\003(\0132$.com.trans.pixel.protoc.MessageBoar" +
-      "d\"A\n RequestCreateMessageBoardCommand\022\014\n",
-      "\004type\030\001 \002(\005\022\017\n\007message\030\002 \002(\t\"N\n\032RequestR" +
-      "eplyMessageCommand\022\014\n\004type\030\001 \002(\005\022\021\n\ttime" +
-      "stamp\030\002 \002(\003\022\017\n\007message\030\003 \002(\t\"g\n\033Response" +
-      "MessageBoardCommand\022\014\n\004type\030\001 \002(\005\022:\n\014mes" +
-      "sageBoard\030\002 \002(\0132$.com.trans.pixel.protoc" +
-      ".MessageBoard\"\214\036\n\016RequestCommand\022.\n\004head" +
-      "\030\001 \002(\0132 .com.trans.pixel.protoc.HeadInfo" +
-      "\022G\n\017registerCommand\030\002 \001(\0132..com.trans.pi" +
-      "xel.protoc.RequestRegisterCommand\022A\n\014log" +
-      "inCommand\030\003 \001(\0132+.com.trans.pixel.protoc",
-      ".RequestLoginCommand\022M\n\022levelResultComma" +
-      "nd\030\004 \001(\01321.com.trans.pixel.protoc.Reques" +
-      "tLevelResultCommand\022K\n\021updateTeamCommand" +
-      "\030\005 \001(\01320.com.trans.pixel.protoc.RequestU" +
-      "pdateTeamCommand\022K\n\021levelStartCommand\030\006 " +
-      "\001(\01320.com.trans.pixel.protoc.RequestLeve" +
-      "lStartCommand\022S\n\025levelLootStartCommand\030\007" +
-      " \001(\01324.com.trans.pixel.protoc.RequestLev" +
-      "elLootStartCommand\022U\n\026levelLootResultCom" +
-      "mand\030\010 \001(\01325.com.trans.pixel.protoc.Requ",
-      "estLevelLootResultCommand\022M\n\022heroLevelUp" +
-      "Command\030\t \001(\01321.com.trans.pixel.protoc.R" +
-      "equestHeroLevelUpCommand\022K\n\021lootResultCo" +
-      "mmand\030\n \001(\01320.com.trans.pixel.protoc.Req" +
-      "uestLootResultCommand\022O\n\023addHeroEquipCom" +
-      "mand\030\013 \001(\01322.com.trans.pixel.protoc.Requ" +
-      "estAddHeroEquipCommand\022S\n\025attackRelative" +
-      "Command\030\014 \001(\01324.com.trans.pixel.protoc.R" +
-      "equestAttackRelativeCommand\022[\n\031refreshRe" +
-      "latedUserCommand\030\r \001(\01328.com.trans.pixel",
-      ".protoc.RequestRefreshRelatedUserCommand" +
-      "\022M\n\022lotteryHeroCommand\030\016 \001(\01321.com.trans" +
-      ".pixel.protoc.RequestLotteryHeroCommand\022" +
-      "Y\n\030getLadderRankListCommand\030\017 \001(\01327.com." +
-      "trans.pixel.protoc.RequestGetLadderRankL" +
-      "istCommand\022a\n\034getUserLadderRankListComma" +
-      "nd\030\020 \001(\0132;.com.trans.pixel.protoc.Reques" +
-      "tGetUserLadderRankListCommand\022W\n\027attackL" +
-      "adderModeCommand\030\021 \001(\01326.com.trans.pixel" +
-      ".protoc.RequestAttackLadderModeCommand\022U",
-      "\n\026getUserMailListCommand\030\022 \001(\01325.com.tra" +
-      "ns.pixel.protoc.RequestGetUserMailListCo" +
-      "mmand\022G\n\017readMailCommand\030\023 \001(\0132..com.tra" +
-      "ns.pixel.protoc.RequestReadMailCommand\022K" +
-      "\n\021deleteMailCommand\030\024 \001(\01320.com.trans.pi" +
-      "xel.protoc.RequestDeleteMailCommand\022I\n\020a" +
-      "ddFriendCommand\030\025 \001(\0132/.com.trans.pixel." +
-      "protoc.RequestAddFriendCommand\022Q\n\024receiv" +
-      "eFriendCommand\030\026 \001(\01323.com.trans.pixel.p" +
-      "rotoc.RequestReceiveFriendCommand\022O\n\023lot",
-      "teryEquipCommand\030\027 \001(\01322.com.trans.pixel" +
-      ".protoc.RequestLotteryEquipCommand\022O\n\023eq" +
-      "uipLevelUpCommand\030\030 \001(\01322.com.trans.pixe" +
-      "l.protoc.RequestEquipLevelUpCommand\022J\n\rr" +
-      "eceiveFriend\030\031 \001(\01323.com.trans.pixel.pro" +
-      "toc.RequestReceiveFriendCommand\022?\n\013areaC" +
-      "ommand\030\032 \001(\0132*.com.trans.pixel.protoc.Re" +
-      "questAreaCommand\022Q\n\024attackMonsterCommand" +
-      "\030\033 \001(\01323.com.trans.pixel.protoc.RequestA" +
-      "ttackMonsterCommand\022K\n\021attackBossCommand",
-      "\030\034 \001(\01320.com.trans.pixel.protoc.RequestA" +
-      "ttackBossCommand\022S\n\025attackResourceComman" +
-      "d\030\035 \001(\01324.com.trans.pixel.protoc.Request" +
-      "AttackResourceCommand\022[\n\031attackResourceM" +
-      "ineCommand\030\036 \001(\01328.com.trans.pixel.proto" +
-      "c.RequestAttackResourceMineCommand\022I\n\020qu" +
-      "itUnionCommand\030* \001(\0132/.com.trans.pixel.p" +
-      "rotoc.RequestQuitUnionCommand\022I\n\020unionIn" +
-      "foCommand\030+ \001(\0132/.com.trans.pixel.protoc" +
-      ".RequestUnionInfoCommand\022I\n\020unionListCom",
-      "mand\030, \001(\0132/.com.trans.pixel.protoc.Requ" +
-      "estUnionListCommand\022M\n\022createUnionComman" +
-      "d\030\037 \001(\01321.com.trans.pixel.protoc.Request" +
-      "CreateUnionCommand\022M\n\022deleteUnionCommand" +
-      "\030\' \001(\01321.com.trans.pixel.protoc.RequestD" +
-      "eleteUnionCommand\022K\n\021applyUnionCommand\030 " +
-      " \001(\01320.com.trans.pixel.protoc.RequestApp" +
-      "lyUnionCommand\022K\n\021replyUnionCommand\030! \001(" +
-      "\01320.com.trans.pixel.protoc.RequestReplyU" +
-      "nionCommand\022S\n\022handleUnionCommand\030( \001(\0132",
-      "7.com.trans.pixel.protoc.RequestHandleUn" +
-      "ionMemberCommand\022O\n\023upgradeUnionCommand\030" +
-      ") \001(\01322.com.trans.pixel.protoc.RequestUp" +
-      "gradeUnionCommand\022M\n\022attackUnionCommand\030" +
-      "d \001(\01321.com.trans.pixel.protoc.RequestAt" +
-      "tackUnionCommand\022M\n\022defendUnionCommand\030e" +
-      " \001(\01321.com.trans.pixel.protoc.RequestDef" +
-      "endUnionCommand\022O\n\023levelPrepareCommand\030\"" +
-      " \001(\01322.com.trans.pixel.protoc.RequestLev" +
-      "elPrepareCommand\022K\n\021levelPauseCommand\030# ",
-      "\001(\01320.com.trans.pixel.protoc.RequestLeve" +
-      "lPauseCommand\022W\n\027messageBoardListCommand" +
-      "\030$ \001(\01326.com.trans.pixel.protoc.RequestM" +
-      "essageBoardListCommand\022[\n\031createMessageB" +
-      "oardCommand\030% \001(\01328.com.trans.pixel.prot" +
-      "oc.RequestCreateMessageBoardCommand\022O\n\023r" +
-      "eplyMessageCommand\030& \001(\01322.com.trans.pix" +
-      "el.protoc.RequestReplyMessageCommand\022E\n\016" +
-      "addTeamCommand\030- \001(\0132-.com.trans.pixel.p" +
-      "rotoc.RequestAddTeamCommand\022O\n\023userTeamL",
-      "istCommand\030. \001(\01322.com.trans.pixel.proto" +
-      "c.RequestUserTeamListCommand\"\376\022\n\017Respons" +
-      "eCommand\022.\n\004head\030\001 \002(\0132 .com.trans.pixel" +
-      ".protoc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$" +
-      ".com.trans.pixel.protoc.ErrorCommand\022P\n\023" +
-      "needRegisterCommand\030\003 \001(\01323.com.trans.pi" +
-      "xel.protoc.ResponseNeedRegisterCommand\022H" +
-      "\n\017userInfoCommand\030\004 \001(\0132/.com.trans.pixe" +
-      "l.protoc.ResponseUserInfoCommand\022N\n\022leve" +
-      "lResultCommand\030\006 \001(\01322.com.trans.pixel.p",
-      "rotoc.ResponseLevelResultCommand\022V\n\026leve" +
-      "lLootResultCommand\030\007 \001(\01326.com.trans.pix" +
-      "el.protoc.ResponseLevelLootResultCommand" +
-      "\022L\n\021heroResultCommand\030\010 \001(\01321.com.trans." +
-      "pixel.protoc.ResponseHeroResultCommand\022L" +
-      "\n\021lootResultCommand\030\t \001(\01321.com.trans.pi" +
-      "xel.protoc.ResponseLootResultCommand\022T\n\025" +
-      "attackRelativeCommand\030\n \001(\01325.com.trans." +
-      "pixel.protoc.ResponseAttackRelativeComma" +
-      "nd\022N\n\022getUserMineCommand\030\013 \001(\01322.com.tra",
-      "ns.pixel.protoc.ResponseGetUserMineComma" +
-      "nd\022\\\n\031refreshRelatedUserCommand\030\014 \001(\01329." +
-      "com.trans.pixel.protoc.ResponseRefreshRe" +
-      "latedUserCommand\022N\n\022lotteryHeroCommand\030\r" +
-      " \001(\01322.com.trans.pixel.protoc.ResponseLo" +
-      "tteryHeroCommand\022N\n\022getUserHeroCommand\030\016" +
-      " \001(\01322.com.trans.pixel.protoc.ResponseGe" +
-      "tUserHeroCommand\022Z\n\030getLadderRankListCom" +
-      "mand\030\017 \001(\01328.com.trans.pixel.protoc.Resp" +
-      "onseGetLadderRankListCommand\022b\n\034getUserL",
-      "adderRankListCommand\030\020 \001(\0132<.com.trans.p" +
-      "ixel.protoc.ResponseGetUserLadderRankLis" +
-      "tCommand\022X\n\027attackLadderModeCommand\030\021 \001(" +
-      "\01327.com.trans.pixel.protoc.ResponseAttac" +
-      "kLadderModeCommand\022V\n\026getUserMailListCom" +
-      "mand\030\022 \001(\01326.com.trans.pixel.protoc.Resp" +
-      "onseGetUserMailListCommand\022L\n\021sendReward" +
-      "Command\030\023 \001(\01321.com.trans.pixel.protoc.R" +
-      "esponseSendRewardCommand\022F\n\016messageComma" +
-      "nd\030\024 \001(\0132..com.trans.pixel.protoc.Respon",
-      "seMessageCommand\022Z\n\030getUserFriendListCom" +
-      "mand\030\025 \001(\01328.com.trans.pixel.protoc.Resp" +
-      "onseGetUserFriendListCommand\022P\n\023lotteryE" +
-      "quipCommand\030\026 \001(\01323.com.trans.pixel.prot" +
-      "oc.ResponseLotteryEquipCommand\022M\n\020userEq" +
-      "uipCommand\030\027 \001(\01323.com.trans.pixel.proto" +
-      "c.ResponseGetUserEquipCommand\022@\n\013areaCom" +
-      "mand\030\030 \001(\0132+.com.trans.pixel.protoc.Resp" +
-      "onseAreaCommand\022J\n\020userLevelCommand\030\031 \001(" +
-      "\01320.com.trans.pixel.protoc.ResponseUserL",
-      "evelCommand\022R\n\024userLootLevelCommand\030\032 \001(" +
-      "\01324.com.trans.pixel.protoc.ResponseUserL" +
-      "ootLevelCommand\022J\n\020unionInfoCommand\030\033 \001(" +
-      "\01320.com.trans.pixel.protoc.ResponseUnion" +
-      "InfoCommand\022J\n\020unionListCommand\030\034 \001(\01320." +
-      "com.trans.pixel.protoc.ResponseUnionList" +
-      "Command\022X\n\027messageBoardListCommand\030\035 \001(\013" +
-      "27.com.trans.pixel.protoc.ResponseMessag" +
-      "eBoardListCommand\022P\n\023messageBoardCommand" +
-      "\030\036 \001(\01323.com.trans.pixel.protoc.Response",
-      "MessageBoardCommand\022P\n\023userTeamListComma" +
-      "nd\030\037 \001(\01323.com.trans.pixel.protoc.Respon" +
-      "seUserTeamListCommand"
+      "\0132 .com.trans.pixel.protoc.UserInfo\"\220\001\n\020" +
+      "AreaResourceMine\022\n\n\002id\030\001 \002(\005\022\022\n\nresource" +
+      "Id\030\002 \001(\005\022\014\n\004time\030\003 \002(\005\022\r\n\005yield\030\004 \002(\005\022.\n" +
+      "\004user\030\005 \001(\0132 .com.trans.pixel.protoc.Use",
+      "rInfo\022\017\n\007endTime\030\006 \001(\003\"\230\003\n\014AreaResource\022" +
+      "\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010belongto\030\003 " +
+      "\001(\005\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005\022\r\n\005yield\030\006 \002(\005" +
+      "\022\r\n\005count\030\007 \002(\005\022\016\n\006bossid\030\010 \002(\005\0227\n\005mines" +
+      "\030\t \003(\0132(.com.trans.pixel.protoc.AreaReso" +
+      "urceMine\022\r\n\005state\030\n \001(\005\022\017\n\007endtime\030\013 \001(\003" +
+      "\022/\n\005owner\030\014 \001(\0132 .com.trans.pixel.protoc" +
+      ".UserInfo\022\022\n\nattackerId\030\r \001(\005\022\023\n\013warDefe" +
+      "nded\030\016 \001(\005\0221\n\007attacks\030\017 \003(\0132 .com.trans." +
+      "pixel.protoc.UserInfo\0222\n\010defenses\030\020 \003(\0132",
+      " .com.trans.pixel.protoc.UserInfo\"H\n\020Are" +
+      "aResourceList\0224\n\006region\030\001 \003(\0132$.com.tran" +
+      "s.pixel.protoc.AreaResource\"\374\001\n\010AreaBoss" +
+      "\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010belongto\030\003" +
+      " \001(\005\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005\0223\n\006reward\030\006 \001" +
+      "(\0132#.com.trans.pixel.protoc.MultiReward\022" +
+      "\021\n\trewardIds\030\007 \003(\005\022/\n\005owner\030\010 \001(\0132 .com." +
+      "trans.pixel.protoc.UserInfo\0225\n\013leaderboa" +
+      "rd\030\t \003(\0132 .com.trans.pixel.protoc.UserIn" +
+      "fo\"@\n\014AreaBossList\0220\n\006region\030\001 \003(\0132 .com",
+      ".trans.pixel.protoc.AreaBoss\"\204\001\n\013AreaMon" +
+      "ster\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010belong" +
+      "to\030\003 \001(\005\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005\0223\n\006reward" +
+      "\030\006 \001(\0132#.com.trans.pixel.protoc.MultiRew" +
+      "ard\"F\n\017AreaMonsterList\0223\n\006region\030\001 \003(\0132#" +
+      ".com.trans.pixel.protoc.AreaMonster\"\326\001\n\010" +
+      "AreaInfo\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\016\n\006zh" +
+      "anli\030\003 \002(\005\0227\n\tresources\030\004 \003(\0132$.com.tran" +
+      "s.pixel.protoc.AreaResource\0220\n\006bosses\030\005 " +
+      "\003(\0132 .com.trans.pixel.protoc.AreaBoss\0225\n",
+      "\010monsters\030\006 \003(\0132#.com.trans.pixel.protoc" +
+      ".AreaMonster\"<\n\010AreaMode\0220\n\006region\030\001 \003(\013" +
+      "2 .com.trans.pixel.protoc.AreaInfo\"N\n\010Us" +
+      "erRank\022\016\n\006userId\030\001 \002(\003\022\020\n\010userName\030\002 \002(\t" +
+      "\022\014\n\004rank\030\003 \002(\003\022\022\n\nteamRecord\030\004 \002(\t\"F\n\nUs" +
+      "erFriend\022\020\n\010friendId\030\001 \002(\003\022\022\n\nfriendName" +
+      "\030\002 \002(\t\022\022\n\nteamRecord\030\003 \002(\t\"\303\001\n\004Mail\022\n\n\002i" +
+      "d\030\001 \002(\005\022\016\n\006userId\030\002 \002(\003\022\022\n\nfromUserId\030\003 " +
+      "\002(\003\022\024\n\014fromUserName\030\004 \002(\t\022\014\n\004type\030\005 \002(\005\022" +
+      "\021\n\tstartDate\030\006 \002(\t\022\017\n\007endDate\030\007 \002(\t\022\017\n\007c",
+      "ontent\030\010 \002(\t\0222\n\006reward\030\t \003(\0132\".com.trans" +
+      ".pixel.protoc.RewardInfo\"D\n\010MailList\022\014\n\004" +
+      "type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034.com.trans.pix" +
+      "el.protoc.Mail\"~\n\014MessageBoard\022\021\n\ttimest" +
+      "amp\030\001 \002(\003\022\016\n\006userId\030\002 \002(\003\022\020\n\010userName\030\003 " +
+      "\002(\t\022\017\n\007content\030\004 \002(\t\022(\n\003msg\030\005 \003(\0132\033.com." +
+      "trans.pixel.protoc.Msg\"\"\n\003Msg\022\n\n\002id\030\001 \002(" +
+      "\005\022\017\n\007content\030\002 \002(\t\"-\n\014ErrorCommand\022\014\n\004co" +
+      "de\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"\035\n\033ResponseNee" +
+      "dRegisterCommand\"*\n\026RequestRegisterComma",
+      "nd\022\020\n\010userName\030\001 \002(\t\"\025\n\023RequestLoginComm" +
+      "and\"I\n\027ResponseUserInfoCommand\022.\n\004user\030\001" +
+      " \002(\0132 .com.trans.pixel.protoc.UserInfo\"\201" +
+      "\001\n\024ResponsePopupCommand\022\021\n\tpopScreen\030\001 \002" +
+      "(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007head" +
+      "ing\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoButt" +
+      "onID\030\006 \001(\t\"+\n\030RequestLevelStartCommand\022\017" +
+      "\n\007levelId\030\001 \002(\005\"-\n\032RequestLevelPrepareCo" +
+      "mmand\022\017\n\007levelId\030\001 \002(\005\"\032\n\030RequestLevelPa" +
+      "useCommand\"Q\n\031RequestLevelResultCommand\022",
+      "\017\n\007levelId\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(\t\022\021\n\tfi" +
+      "ghtInfo\030\003 \002(\t\"P\n\032ResponseLevelResultComm" +
+      "and\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.RewardInfo\"/\n\034RequestLevelLootStart" +
+      "Command\022\017\n\007levelId\030\001 \002(\005\"\037\n\035RequestLevel" +
+      "LootResultCommand\"T\n\036ResponseLevelLootRe" +
+      "sultCommand\0222\n\006reward\030\001 \003(\0132\".com.trans." +
+      "pixel.protoc.RewardInfo\"8\n\030RequestUpdate" +
+      "TeamCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010teamInfo\030\002 \002(" +
+      "\t\")\n\025RequestAddTeamCommand\022\020\n\010teamInfo\030\001",
+      " \002(\t\"\034\n\032RequestUserTeamListCommand\"Q\n\033Re" +
+      "sponseUserTeamListCommand\0222\n\010userTeam\030\001 " +
+      "\003(\0132 .com.trans.pixel.protoc.UserTeam\"u\n" +
+      "\031RequestHeroLevelUpCommand\022\023\n\013levelUpTyp" +
+      "e\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\005\022" +
+      "\017\n\007skillId\030\004 \001(\005\022\022\n\ncostInfoId\030\005 \003(\005\"_\n\031" +
+      "ResponseHeroResultCommand\022\016\n\006heroId\030\001 \002(" +
+      "\005\0222\n\010heroInfo\030\002 \002(\0132 .com.trans.pixel.pr" +
+      "otoc.HeroInfo\"\032\n\030RequestLootResultComman" +
+      "d\"L\n\031ResponseLootResultCommand\022\014\n\004gold\030\001",
+      " \001(\005\022\013\n\003exp\030\002 \001(\005\022\024\n\014lastLootTime\030\003 \001(\005\"" +
+      "K\n\032RequestAddHeroEquipCommand\022\016\n\006heroId\030" +
+      "\001 \002(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \001(\005\"^\n\032" +
+      "RequestEquipLevelUpCommand\022\016\n\006heroId\030\001 \002" +
+      "(\005\022\016\n\006infoId\030\002 \002(\005\022\r\n\005armId\030\003 \002(\005\022\021\n\tlev" +
+      "elUpId\030\004 \002(\005\"=\n\034RequestAttackRelativeCom" +
+      "mand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002 \002(\005\"b\n\035R" +
+      "esponseAttackRelativeCommand\022\r\n\005mapId\030\001 " +
+      "\002(\005\022\016\n\006mineId\030\002 \002(\005\022\023\n\013preventTime\030\003 \002(\003" +
+      "\022\r\n\005level\030\004 \002(\005\"P\n\032ResponseGetUserMineCo",
+      "mmand\0222\n\010userMine\030\001 \003(\0132 .com.trans.pixe" +
+      "l.protoc.UserMine\"A\n RequestRefreshRelat" +
+      "edUserCommand\022\r\n\005mapId\030\001 \002(\005\022\016\n\006mineId\030\002" +
+      " \002(\005\"M\n!ResponseRefreshRelatedUserComman" +
+      "d\022\021\n\tleftTimes\030\001 \002(\005\022\025\n\rrelatedUserId\030\002 " +
+      "\002(\003\")\n\031RequestLotteryHeroCommand\022\014\n\004type" +
+      "\030\001 \002(\005\"q\n\032ResponseLotteryHeroCommand\022\014\n\004" +
+      "coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewardList\030" +
+      "\003 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
+      "o\"*\n\032RequestLotteryEquipCommand\022\014\n\004type\030",
+      "\001 \002(\005\"r\n\033ResponseLotteryEquipCommand\022\014\n\004" +
+      "coin\030\001 \001(\005\022\r\n\005jewel\030\002 \001(\005\0226\n\nrewardList\030" +
+      "\003 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
+      "o\"P\n\032ResponseGetUserHeroCommand\0222\n\010userH" +
+      "ero\030\001 \003(\0132 .com.trans.pixel.protoc.UserH" +
+      "ero\"S\n\033ResponseGetUserEquipCommand\0224\n\tus" +
+      "erEquip\030\001 \003(\0132!.com.trans.pixel.protoc.U" +
+      "serEquip\"!\n\037RequestGetLadderRankListComm" +
+      "and\"%\n#RequestGetUserLadderRankListComma" +
+      "nd\"V\n ResponseGetLadderRankListCommand\0222",
+      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto" +
+      "c.UserRank\"Z\n$ResponseGetUserLadderRankL" +
+      "istCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans" +
+      ".pixel.protoc.UserRank\".\n\036RequestAttackL" +
+      "adderModeCommand\022\014\n\004rank\030\001 \002(\003\";\n\037Respon" +
+      "seAttackLadderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013" +
+      "\n\003msg\030\002 \002(\t\"-\n\035RequestGetUserMailListCom" +
+      "mand\022\014\n\004type\030\001 \002(\005\"T\n\036ResponseGetUserMai" +
+      "lListCommand\0222\n\010mailList\030\001 \003(\0132 .com.tra" +
+      "ns.pixel.protoc.MailList\"2\n\026RequestReadM",
+      "ailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\"3\n\026" +
+      "ResponseMessageCommand\022\014\n\004code\030\001 \002(\005\022\013\n\003" +
+      "msg\030\002 \002(\t\"O\n\031ResponseSendRewardCommand\0222" +
+      "\n\006reward\030\001 \003(\0132\".com.trans.pixel.protoc." +
+      "RewardInfo\"4\n\030RequestDeleteMailCommand\022\014" +
+      "\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\")\n\027RequestAddFr" +
+      "iendCommand\022\016\n\006userId\030\001 \002(\003\")\n\033RequestRe" +
+      "ceiveFriendCommand\022\n\n\002id\030\001 \003(\005\"V\n Respon" +
+      "seGetUserFriendListCommand\0222\n\006friend\030\001 \003" +
+      "(\0132\".com.trans.pixel.protoc.UserFriend\"\024",
+      "\n\022RequestAreaCommand\"F\n\023ResponseAreaComm" +
+      "and\022/\n\005areas\030\001 \003(\0132 .com.trans.pixel.pro" +
+      "toc.AreaInfo\")\n\033RequestAttackMonsterComm" +
+      "and\022\n\n\002id\030\001 \002(\005\"&\n\030RequestAttackBossComm" +
+      "and\022\n\n\002id\030\001 \002(\005\"*\n\034RequestAttackResource" +
+      "Command\022\n\n\002id\030\001 \002(\005\".\n RequestAttackReso" +
+      "urceMineCommand\022\n\n\002id\030\001 \002(\005\"P\n\030ResponseU" +
+      "serLevelCommand\0224\n\tuserLevel\030\001 \002(\0132!.com" +
+      ".trans.pixel.protoc.UserLevel\"\\\n\034Respons" +
+      "eUserLootLevelCommand\022<\n\ruserLootLevel\030\001",
+      " \002(\0132%.com.trans.pixel.protoc.UserLootLe" +
+      "vel\"7\n\031RequestCreateUnionCommand\022\014\n\004icon" +
+      "\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"\033\n\031RequestDeleteUni" +
+      "onCommand\"+\n\030RequestApplyUnionCommand\022\017\n" +
+      "\007unionId\030\001 \002(\005\"7\n\030RequestReplyUnionComma" +
+      "nd\022\n\n\002id\030\001 \003(\003\022\017\n\007receive\030\002 \002(\010\":\n\037Reque" +
+      "stHandleUnionMemberCommand\022\n\n\002id\030\001 \002(\003\022\013" +
+      "\n\003job\030\002 \002(\005\"\034\n\032RequestUpgradeUnionComman" +
+      "d\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001(\003" +
+      "\"\031\n\027RequestUnionInfoCommand\",\n\031RequestAt",
+      "tackUnionCommand\022\017\n\007unionId\030\001 \001(\005\"\033\n\031Req" +
+      "uestDefendUnionCommand\"H\n\030ResponseUnionI" +
+      "nfoCommand\022,\n\005union\030\001 \001(\0132\035.com.trans.pi" +
+      "xel.protoc.Union\"\031\n\027RequestUnionListComm" +
+      "and\"H\n\030ResponseUnionListCommand\022,\n\005union" +
+      "\030\001 \003(\0132\035.com.trans.pixel.protoc.Union\".\n" +
+      "\036RequestMessageBoardListCommand\022\014\n\004type\030" +
+      "\001 \002(\005\"k\n\037ResponseMessageBoardListCommand" +
+      "\022\014\n\004type\030\001 \002(\005\022:\n\014messageBoard\030\002 \003(\0132$.c" +
+      "om.trans.pixel.protoc.MessageBoard\"A\n Re",
+      "questCreateMessageBoardCommand\022\014\n\004type\030\001" +
+      " \002(\005\022\017\n\007message\030\002 \002(\t\"N\n\032RequestReplyMes" +
+      "sageCommand\022\014\n\004type\030\001 \002(\005\022\021\n\ttimestamp\030\002" +
+      " \002(\003\022\017\n\007message\030\003 \002(\t\"g\n\033ResponseMessage" +
+      "BoardCommand\022\014\n\004type\030\001 \002(\005\022:\n\014messageBoa" +
+      "rd\030\002 \002(\0132$.com.trans.pixel.protoc.Messag" +
+      "eBoard\"\214\036\n\016RequestCommand\022.\n\004head\030\001 \002(\0132" +
+      " .com.trans.pixel.protoc.HeadInfo\022G\n\017reg" +
+      "isterCommand\030\002 \001(\0132..com.trans.pixel.pro" +
+      "toc.RequestRegisterCommand\022A\n\014loginComma",
+      "nd\030\003 \001(\0132+.com.trans.pixel.protoc.Reques" +
+      "tLoginCommand\022M\n\022levelResultCommand\030\004 \001(" +
+      "\01321.com.trans.pixel.protoc.RequestLevelR" +
+      "esultCommand\022K\n\021updateTeamCommand\030\005 \001(\0132" +
+      "0.com.trans.pixel.protoc.RequestUpdateTe" +
+      "amCommand\022K\n\021levelStartCommand\030\006 \001(\01320.c" +
+      "om.trans.pixel.protoc.RequestLevelStartC" +
+      "ommand\022S\n\025levelLootStartCommand\030\007 \001(\01324." +
+      "com.trans.pixel.protoc.RequestLevelLootS" +
+      "tartCommand\022U\n\026levelLootResultCommand\030\010 ",
+      "\001(\01325.com.trans.pixel.protoc.RequestLeve" +
+      "lLootResultCommand\022M\n\022heroLevelUpCommand" +
+      "\030\t \001(\01321.com.trans.pixel.protoc.RequestH" +
+      "eroLevelUpCommand\022K\n\021lootResultCommand\030\n" +
+      " \001(\01320.com.trans.pixel.protoc.RequestLoo" +
+      "tResultCommand\022O\n\023addHeroEquipCommand\030\013 " +
+      "\001(\01322.com.trans.pixel.protoc.RequestAddH" +
+      "eroEquipCommand\022S\n\025attackRelativeCommand" +
+      "\030\014 \001(\01324.com.trans.pixel.protoc.RequestA" +
+      "ttackRelativeCommand\022[\n\031refreshRelatedUs",
+      "erCommand\030\r \001(\01328.com.trans.pixel.protoc" +
+      ".RequestRefreshRelatedUserCommand\022M\n\022lot" +
+      "teryHeroCommand\030\016 \001(\01321.com.trans.pixel." +
+      "protoc.RequestLotteryHeroCommand\022Y\n\030getL" +
+      "adderRankListCommand\030\017 \001(\01327.com.trans.p" +
+      "ixel.protoc.RequestGetLadderRankListComm" +
+      "and\022a\n\034getUserLadderRankListCommand\030\020 \001(" +
+      "\0132;.com.trans.pixel.protoc.RequestGetUse" +
+      "rLadderRankListCommand\022W\n\027attackLadderMo" +
+      "deCommand\030\021 \001(\01326.com.trans.pixel.protoc",
+      ".RequestAttackLadderModeCommand\022U\n\026getUs" +
+      "erMailListCommand\030\022 \001(\01325.com.trans.pixe" +
+      "l.protoc.RequestGetUserMailListCommand\022G" +
+      "\n\017readMailCommand\030\023 \001(\0132..com.trans.pixe" +
+      "l.protoc.RequestReadMailCommand\022K\n\021delet" +
+      "eMailCommand\030\024 \001(\01320.com.trans.pixel.pro" +
+      "toc.RequestDeleteMailCommand\022I\n\020addFrien" +
+      "dCommand\030\025 \001(\0132/.com.trans.pixel.protoc." +
+      "RequestAddFriendCommand\022Q\n\024receiveFriend" +
+      "Command\030\026 \001(\01323.com.trans.pixel.protoc.R",
+      "equestReceiveFriendCommand\022O\n\023lotteryEqu" +
+      "ipCommand\030\027 \001(\01322.com.trans.pixel.protoc" +
+      ".RequestLotteryEquipCommand\022O\n\023equipLeve" +
+      "lUpCommand\030\030 \001(\01322.com.trans.pixel.proto" +
+      "c.RequestEquipLevelUpCommand\022J\n\rreceiveF" +
+      "riend\030\031 \001(\01323.com.trans.pixel.protoc.Req" +
+      "uestReceiveFriendCommand\022?\n\013areaCommand\030" +
+      "\032 \001(\0132*.com.trans.pixel.protoc.RequestAr" +
+      "eaCommand\022Q\n\024attackMonsterCommand\030\033 \001(\0132" +
+      "3.com.trans.pixel.protoc.RequestAttackMo",
+      "nsterCommand\022K\n\021attackBossCommand\030\034 \001(\0132" +
+      "0.com.trans.pixel.protoc.RequestAttackBo" +
+      "ssCommand\022S\n\025attackResourceCommand\030\035 \001(\013" +
+      "24.com.trans.pixel.protoc.RequestAttackR" +
+      "esourceCommand\022[\n\031attackResourceMineComm" +
+      "and\030\036 \001(\01328.com.trans.pixel.protoc.Reque" +
+      "stAttackResourceMineCommand\022I\n\020quitUnion" +
+      "Command\030* \001(\0132/.com.trans.pixel.protoc.R" +
+      "equestQuitUnionCommand\022I\n\020unionInfoComma" +
+      "nd\030+ \001(\0132/.com.trans.pixel.protoc.Reques",
+      "tUnionInfoCommand\022I\n\020unionListCommand\030, " +
+      "\001(\0132/.com.trans.pixel.protoc.RequestUnio" +
+      "nListCommand\022M\n\022createUnionCommand\030\037 \001(\013" +
+      "21.com.trans.pixel.protoc.RequestCreateU" +
+      "nionCommand\022M\n\022deleteUnionCommand\030\' \001(\0132" +
+      "1.com.trans.pixel.protoc.RequestDeleteUn" +
+      "ionCommand\022K\n\021applyUnionCommand\030  \001(\01320." +
+      "com.trans.pixel.protoc.RequestApplyUnion" +
+      "Command\022K\n\021replyUnionCommand\030! \001(\01320.com" +
+      ".trans.pixel.protoc.RequestReplyUnionCom",
+      "mand\022S\n\022handleUnionCommand\030( \001(\01327.com.t" +
+      "rans.pixel.protoc.RequestHandleUnionMemb" +
+      "erCommand\022O\n\023upgradeUnionCommand\030) \001(\01322" +
+      ".com.trans.pixel.protoc.RequestUpgradeUn" +
+      "ionCommand\022M\n\022attackUnionCommand\030d \001(\01321" +
+      ".com.trans.pixel.protoc.RequestAttackUni" +
+      "onCommand\022M\n\022defendUnionCommand\030e \001(\01321." +
+      "com.trans.pixel.protoc.RequestDefendUnio" +
+      "nCommand\022O\n\023levelPrepareCommand\030\" \001(\01322." +
+      "com.trans.pixel.protoc.RequestLevelPrepa",
+      "reCommand\022K\n\021levelPauseCommand\030# \001(\01320.c" +
+      "om.trans.pixel.protoc.RequestLevelPauseC" +
+      "ommand\022W\n\027messageBoardListCommand\030$ \001(\0132" +
+      "6.com.trans.pixel.protoc.RequestMessageB" +
+      "oardListCommand\022[\n\031createMessageBoardCom" +
+      "mand\030% \001(\01328.com.trans.pixel.protoc.Requ" +
+      "estCreateMessageBoardCommand\022O\n\023replyMes" +
+      "sageCommand\030& \001(\01322.com.trans.pixel.prot" +
+      "oc.RequestReplyMessageCommand\022E\n\016addTeam" +
+      "Command\030- \001(\0132-.com.trans.pixel.protoc.R",
+      "equestAddTeamCommand\022O\n\023userTeamListComm" +
+      "and\030. \001(\01322.com.trans.pixel.protoc.Reque" +
+      "stUserTeamListCommand\"\376\022\n\017ResponseComman" +
+      "d\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.protoc" +
+      ".HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$.com.tr" +
+      "ans.pixel.protoc.ErrorCommand\022P\n\023needReg" +
+      "isterCommand\030\003 \001(\01323.com.trans.pixel.pro" +
+      "toc.ResponseNeedRegisterCommand\022H\n\017userI" +
+      "nfoCommand\030\004 \001(\0132/.com.trans.pixel.proto" +
+      "c.ResponseUserInfoCommand\022N\n\022levelResult",
+      "Command\030\006 \001(\01322.com.trans.pixel.protoc.R" +
+      "esponseLevelResultCommand\022V\n\026levelLootRe" +
+      "sultCommand\030\007 \001(\01326.com.trans.pixel.prot" +
+      "oc.ResponseLevelLootResultCommand\022L\n\021her" +
+      "oResultCommand\030\010 \001(\01321.com.trans.pixel.p" +
+      "rotoc.ResponseHeroResultCommand\022L\n\021lootR" +
+      "esultCommand\030\t \001(\01321.com.trans.pixel.pro" +
+      "toc.ResponseLootResultCommand\022T\n\025attackR" +
+      "elativeCommand\030\n \001(\01325.com.trans.pixel.p" +
+      "rotoc.ResponseAttackRelativeCommand\022N\n\022g",
+      "etUserMineCommand\030\013 \001(\01322.com.trans.pixe" +
+      "l.protoc.ResponseGetUserMineCommand\022\\\n\031r" +
+      "efreshRelatedUserCommand\030\014 \001(\01329.com.tra" +
+      "ns.pixel.protoc.ResponseRefreshRelatedUs" +
+      "erCommand\022N\n\022lotteryHeroCommand\030\r \001(\01322." +
+      "com.trans.pixel.protoc.ResponseLotteryHe" +
+      "roCommand\022N\n\022getUserHeroCommand\030\016 \001(\01322." +
+      "com.trans.pixel.protoc.ResponseGetUserHe" +
+      "roCommand\022Z\n\030getLadderRankListCommand\030\017 " +
+      "\001(\01328.com.trans.pixel.protoc.ResponseGet",
+      "LadderRankListCommand\022b\n\034getUserLadderRa" +
+      "nkListCommand\030\020 \001(\0132<.com.trans.pixel.pr" +
+      "otoc.ResponseGetUserLadderRankListComman" +
+      "d\022X\n\027attackLadderModeCommand\030\021 \001(\01327.com" +
+      ".trans.pixel.protoc.ResponseAttackLadder" +
+      "ModeCommand\022V\n\026getUserMailListCommand\030\022 " +
+      "\001(\01326.com.trans.pixel.protoc.ResponseGet" +
+      "UserMailListCommand\022L\n\021sendRewardCommand" +
+      "\030\023 \001(\01321.com.trans.pixel.protoc.Response" +
+      "SendRewardCommand\022F\n\016messageCommand\030\024 \001(",
+      "\0132..com.trans.pixel.protoc.ResponseMessa" +
+      "geCommand\022Z\n\030getUserFriendListCommand\030\025 " +
+      "\001(\01328.com.trans.pixel.protoc.ResponseGet" +
+      "UserFriendListCommand\022P\n\023lotteryEquipCom" +
+      "mand\030\026 \001(\01323.com.trans.pixel.protoc.Resp" +
+      "onseLotteryEquipCommand\022M\n\020userEquipComm" +
+      "and\030\027 \001(\01323.com.trans.pixel.protoc.Respo" +
+      "nseGetUserEquipCommand\022@\n\013areaCommand\030\030 " +
+      "\001(\0132+.com.trans.pixel.protoc.ResponseAre" +
+      "aCommand\022J\n\020userLevelCommand\030\031 \001(\01320.com",
+      ".trans.pixel.protoc.ResponseUserLevelCom" +
+      "mand\022R\n\024userLootLevelCommand\030\032 \001(\01324.com" +
+      ".trans.pixel.protoc.ResponseUserLootLeve" +
+      "lCommand\022J\n\020unionInfoCommand\030\033 \001(\01320.com" +
+      ".trans.pixel.protoc.ResponseUnionInfoCom" +
+      "mand\022J\n\020unionListCommand\030\034 \001(\01320.com.tra" +
+      "ns.pixel.protoc.ResponseUnionListCommand" +
+      "\022X\n\027messageBoardListCommand\030\035 \001(\01327.com." +
+      "trans.pixel.protoc.ResponseMessageBoardL" +
+      "istCommand\022P\n\023messageBoardCommand\030\036 \001(\0132",
+      "3.com.trans.pixel.protoc.ResponseMessage" +
+      "BoardCommand\022P\n\023userTeamListCommand\030\037 \001(" +
+      "\01323.com.trans.pixel.protoc.ResponseUserT" +
+      "eamListCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -91358,7 +91510,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_AreaResourceMine_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaResourceMine_descriptor,
-              new java.lang.String[] { "Id", "ResourceId", "Time", "Yield", "UserId", "EndTime", });
+              new java.lang.String[] { "Id", "ResourceId", "Time", "Yield", "User", "EndTime", });
           internal_static_com_trans_pixel_protoc_AreaResource_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_AreaResource_fieldAccessorTable = new
