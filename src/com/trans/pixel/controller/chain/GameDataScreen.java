@@ -24,6 +24,10 @@ import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -331,19 +335,6 @@ public class GameDataScreen extends RequestScreen {
 		unionCommandService.upgrade(cmd, responseBuilder, user);
 		return true;
 	}
-	
-	@Override
-	protected boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
-		unionCommandService.getUnions(cmd, responseBuilder, user);
-		return true;
-	}
-	
-	@Override
-	protected boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionCommandService.quit(cmd, responseBuilder, user);
-		return true;
-	}
-	//add handleCommand here
 
 	@Override
 	protected boolean handleCommand(RequestLevelPrepareCommand cmd,
@@ -400,6 +391,31 @@ public class GameDataScreen extends RequestScreen {
 		messageCommandService.replyMessage(cmd, responseBuilder, user);
 		return true;
 	}
+	
+	@Override
+	protected boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.getUnions(cmd, responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.quit(cmd, responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.attack(cmd, responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.defend(cmd, responseBuilder, user);
+		return true;
+	}
+	//add handleCommand here
 
 	@Override
 	protected boolean handleCommand(RequestAddTeamCommand cmd,

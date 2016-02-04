@@ -218,6 +218,10 @@ public class AreaRedisService extends RedisService{
 		this.hput(AREAMONSTER+user.id, monster.getId()+"", formatJson(monster));
 	}
 	
+	public void deleteMonster(int monsterId) {
+		this.hdelete(AREAMONSTER+user.id, monsterId+"");
+	}
+	
 	public AreaMonster createMonster(int id){
 		AreaMonster monster = buildAreaMonster(id);
 		if(monster != null){

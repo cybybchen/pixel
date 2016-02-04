@@ -107,12 +107,21 @@ message Union {
 	optional int32 point = 6;
 	repeated UserInfo members = 7;
 	repeated UnionApply applies = 8;
+	optional int32 attackId = 9;
+	optional int32 defendId = 10;
 }
 
 message UnionApply {
 	required int64 id = 1;
 	required UserInfo user = 2;
 	required int64 endTime = 3;
+}
+
+message UnionFight {
+	required int32 attackId = 1;
+	required int32 defendId = 2;
+	repeated UserInfo attacks = 3;
+	repeated UserInfo defends = 4;
 }
 
 message AreaResourceMine {//区域资源开采点
@@ -158,8 +167,8 @@ message AreaBoss {//区域世界BOSS
 	optional MultiReward reward = 6;//击杀奖励
 	repeated int32 rewardIds = 7;//排行奖励
 	///////////////////////////////////
-	optional string owner = 8;//击杀者
-	repeated string leaderboard = 9;//伤害排行
+	optional UserInfo owner = 8;//击杀者
+	repeated UserInfo leaderboard = 9;//伤害排行
 }
 
 message AreaBossList {
@@ -535,6 +544,13 @@ message RequestQuitUnionCommand {
 message RequestUnionInfoCommand {
 }
 
+message RequestAttackUnionCommand {
+	optional int32 unionId = 1;
+}
+
+message RequestDefendUnionCommand {
+}
+
 message ResponseUnionInfoCommand {
 	optional Union union = 1;
 }
@@ -611,6 +627,8 @@ message RequestCommand {
 	optional RequestReplyUnionCommand replyUnionCommand = 33;
 	optional RequestHandleUnionMemberCommand handleUnionCommand = 40;
 	optional RequestUpgradeUnionCommand upgradeUnionCommand = 41;
+	optional RequestAttackUnionCommand attackUnionCommand = 100;
+	optional RequestDefendUnionCommand defendUnionCommand = 101;
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;

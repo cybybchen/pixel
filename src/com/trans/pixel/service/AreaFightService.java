@@ -16,13 +16,14 @@ import com.trans.pixel.protoc.Commands.AreaMonster;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
 
 /**
  * 1.1.3.6区域争夺战
  */
 @Service
-public class AreaFightService {
+public class AreaFightService extends FightService{
 	Logger logger = Logger.getLogger(AreaFightService.class);
 	@Resource
     private AreaRedisService redis;
@@ -38,9 +39,13 @@ public class AreaFightService {
 	}
 
 	public boolean AttackMonster(int id){
-		AreaMonster.Builder builder = AreaMonster.newBuilder();
-		builder.mergeFrom(redis.getMonster(id));
-		redis.saveMonster(builder.build());
+		AreaMonster monster = redis.getMonster(id);
+		if(monster == null)
+			return false;
+		AreaMonster.Builder builder = AreaMonster.newBuilder(monster);
+		redis.deleteMonster(builder.getId());
+		user.setCoin(user.getCoin()+100);
+		userService.updateUser(user);
 		return true;
 	}
 	
@@ -49,8 +54,8 @@ public class AreaFightService {
 		if(boss == null)
 			return false;
 		AreaBoss.Builder builder = AreaBoss.newBuilder(boss);
-		// builder.mergeFrom(redis.getBoss(id));
-		builder.setOwner(user.account);
+		builder.setOwner(user.buildShort());
+		builder.addLeaderboard(user.buildShort());
 		redis.saveBoss(builder.build());
 		rewardService.doRewards(user, boss.getReward());
 		return true;
@@ -96,9 +101,11 @@ public class AreaFightService {
 	
 	public void resourceFight(AreaResource.Builder builder){
 		//防守玩家最后一个加入战斗
-		if(builder.getAttacksCount() > builder.getDefensesCount()){
+		List<UserInfo> attacks = builder.getAttacksList();
+		List<UserInfo> defenses = builder.getDefensesList();
+		if(queueFight(attacks, defenses)){
 			builder.setWarDefended(0);
-			builder.setOwner(builder.getAttacks(0));
+			builder.setOwner(attacks.get(0));
 		}else{
 			builder.setWarDefended(builder.getWarDefended()+1);
 		}

@@ -55,6 +55,8 @@ import com.trans.pixel.service.AccountService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -338,6 +340,18 @@ public class HeadScreen extends RequestScreen {
 	
 	@Override
 	protected boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;
 	}

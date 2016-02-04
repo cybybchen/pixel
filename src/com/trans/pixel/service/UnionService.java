@@ -15,7 +15,7 @@ import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.UnionRedisService;
 
 @Service
-public class UnionService {
+public class UnionService extends FightService{
 
 	@Resource
 	private UnionRedisService unionRedisService;
@@ -40,8 +40,10 @@ public class UnionService {
 	}
 	
 	public Union getUnion() {
+		if(user.getUnionId() == 0)
+			return null;
 		Union union = unionRedisService.getUnion();
-		if(union == null && user.getUnionId() != 0){//load from db
+		if(union == null && user.getUnionId() != 0){//load union from db
 			List<UnionBean> unionbeans = unionMapper.selectUnionsByServerId(user.getServerId());
 			List<Union> unions = new ArrayList<Union>();
 			for(UnionBean bean : unionbeans){
@@ -49,7 +51,7 @@ public class UnionService {
 			}
 			unionRedisService.saveUnions(unions);
 			union = unionRedisService.getUnion();
-			if(union != null && union.getMembersCount() == 0){//load from db
+			if(union != null && union.getMembersCount() == 0){//load members from db
 				List<UserBean> beans = userService.getUserByUnionId(user.getUnionId());
 				List<UserInfo> members = new ArrayList<UserInfo>();
 				for(UserBean bean : beans){
@@ -61,7 +63,47 @@ public class UnionService {
 				union = builder.build();
 			}
 		}
+		if(union != null && System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//工会血战
+			if(union.hasAttackId()){//进攻结算
+				bloodFight(union.getId(), union.getAttackId());
+			}
+			if(union.hasDefendId()){//防守结算
+				bloodFight(union.getDefendId(), union.getId());
+			}
+		}
 		return union;
+	}
+	
+	/**
+	 * 血战
+	 */
+	public void bloodFight(int attackUnionId, int defendUnionId){
+		Union.Builder attackUnion = Union.newBuilder();
+		Union.Builder defendUnion = Union.newBuilder();
+		if(unionRedisService.getBaseUnion(attackUnion, attackUnionId)){
+			attackUnion.clearAttackId();
+		}
+		if(unionRedisService.getBaseUnion(defendUnion, defendUnionId)){
+			defendUnion.clearDefendId();
+		}
+		List<UserInfo> users = unionRedisService.getFightQueue(attackUnionId, defendUnionId);
+		List<UserInfo> attacks = new ArrayList<UserInfo>();
+		List<UserInfo> defends = new ArrayList<UserInfo>();
+		for(UserInfo user : users){
+			if(user.getUnionId() == defendUnionId){
+				defends.add(user);
+			}else{
+				attacks.add(user);
+			}
+		}
+		if(queueFight(attacks, defends)){
+			attackUnion.setPoint(attackUnion.getPoint()+defendUnion.getPoint()/5);
+			defendUnion.setPoint(defendUnion.getPoint()*4/5);
+		}
+		unionRedisService.saveUnion(attackUnion.build());
+		unionRedisService.saveUnion(defendUnion.build());
+		unionMapper.updateUnion(new UnionBean(attackUnion.build()));
+		unionMapper.updateUnion(new UnionBean(defendUnion.build()));
 	}
 	
 	public Union create(int icon, String unionName) {
@@ -138,19 +180,43 @@ public class UnionService {
 	}
 	
 	public void upgrade() {
-		UnionBean bean = unionMapper.selectUnionById(user.getUnionId());
-		bean.setLevel(bean.getLevel()+1);
-		unionRedisService.saveUnion(bean.build());
+		Union.Builder builder = Union.newBuilder();
+		unionRedisService.getBaseUnion(builder);
+		builder.setLevel(builder.getLevel()+1);
+		unionRedisService.saveUnion(builder.build());
+		unionMapper.updateUnion(new UnionBean(builder.build()));
 	}
 	
 	public void handleMember(long id, int job) {
-		if(user.getUnionJob() != 3)
+		if(user.getUnionJob() < 2)
 			return;
 		UserBean bean = userService.getUser(id);
 		if(bean.getUnionId() == user.getUnionId()){
 			bean.setUnionJob(job);
 			unionRedisService.saveMember(bean.buildShort());
 			userService.updateUser(bean);
+		}
+	}
+	
+	public void attack(int attackId){
+		Union.Builder builder = Union.newBuilder();
+		unionRedisService.getBaseUnion(builder);
+		if(builder.hasAttackId()){
+			unionRedisService.attack(builder.getAttackId());
+		}else if(user.unionJob >= 2){
+			Union.Builder defendUnion = Union.newBuilder();
+			unionRedisService.getBaseUnion(defendUnion, builder.getAttackId());
+			builder.setAttackId(attackId);
+			defendUnion.setDefendId(builder.getId());
+			unionRedisService.saveUnion(builder.build());
+			unionRedisService.saveUnion(defendUnion.build());
+		}
+	}
+	
+	public void defend(){
+		Union union = unionRedisService.getUnion();
+		if(union.hasDefendId()){
+			unionRedisService.defend(union.getDefendId());
 		}
 	}
 }

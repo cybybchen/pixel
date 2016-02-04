@@ -74,11 +74,15 @@ public class UnionRedisService extends RedisService{
 	}
 
 	public boolean getBaseUnion(Union.Builder unionbuilder) {
-		String unionvalue = this.hget(getUnionServerKey(), user.getUnionId()+"");
+		return getBaseUnion(unionbuilder, user.getUnionId());
+	}
+	
+	public boolean getBaseUnion(Union.Builder unionbuilder, final int unionId) {
+		String unionvalue = this.hget(getUnionServerKey(), unionId+"");
 		if(unionvalue != null)
 			return false;
 		if(!parseJson(unionvalue, unionbuilder)){
-			logger.warn("cannot build Union:"+user.getUnionId());
+			logger.warn("cannot build Union:"+unionId);
 			return false;
 		}
 		return true;
@@ -141,6 +145,34 @@ public class UnionRedisService extends RedisService{
 		this.hputAll(getUnionMemberKey(), memberMap);
 	}
 	
+	public void attack(int unionId){
+		this.hput(getUnionAttackKey(unionId), user.getId()+"", formatJson(user.build()));
+	}
+	
+	public void defend(int unionId){
+		this.hput(getUnionDefendKey(unionId), user.getId()+"", formatJson(user.build()));
+	}
+	
+	public List<UserInfo> getFightQueue(int attackUnionId, int defendUnionId){
+		Map<String, String> userMap = hget(getUnionFightKey(attackUnionId, defendUnionId));
+		List<UserInfo> users= new ArrayList<UserInfo>();
+		for(String value : userMap.values()){
+			UserInfo.Builder builder = UserInfo.newBuilder();
+			if(parseJson(value, builder))
+				users.add(builder.build());
+		}
+		return users;
+	}
+
+	private String getUnionAttackKey(int attackId) {
+		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + attackId + "_" + user.getUnionId();
+	}
+	private String getUnionDefendKey(int defendId) {
+		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + user.getUnionId()+"_"+defendId;
+	}
+	private String getUnionFightKey(int attackId, int defendId) {
+		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + attackId + "_" + defendId;
+	}
 	private String getUnionServerKey() {
 		return RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + user.getServerId();
 	}

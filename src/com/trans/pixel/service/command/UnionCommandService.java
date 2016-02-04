@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
@@ -111,5 +113,14 @@ public class UnionCommandService extends BaseCommandService {
 		unionService.setUserNX(user);
 		unionService.upgrade();
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.UPGRADE_UNION_SUCCESS));
+	}
+
+	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionService.setUserNX(user);
+		unionService.attack(cmd.getUnionId());
+	}
+	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionService.setUserNX(user);
+		unionService.defend();
 	}
 }

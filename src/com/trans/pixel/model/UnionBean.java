@@ -12,6 +12,15 @@ public class UnionBean {
 	private int rank = 0;
 //	private List<UnionUserBean> unionUserList = new ArrayList<UnionUserBean>();
 //	private List<MailBean> mailList = new ArrayList<MailBean>();
+	public UnionBean(){
+		
+	}
+	public UnionBean(Union union){
+		setId(union.getId());
+		setName(union.getName());
+		setLevel(union.getLevel());
+		setPoint(union.getPoint());
+	}
 	public int getId() {
 		return id;
 	}

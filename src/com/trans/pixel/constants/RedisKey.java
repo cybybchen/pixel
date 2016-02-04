@@ -90,6 +90,7 @@ public class RedisKey {
 	public static final String UNION_MAIL_PREFIX = "union_mail_";
 	public static final String UNION_SERVER_PREFIX = "unions_";
 	public static final String UNION_PREFIX = "union_";
+	public static final String UNION_FIGHT_PREFIX = "union_fight_";
 	
 	//equip
 	public static final String EQUIP_KEY = "key:equip";
