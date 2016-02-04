@@ -20,19 +20,19 @@ function AddCommands()
 
 				append1="import com.trans.pixel.protoc.Commands.$class;"
 				sed -i "s/$tag1/$append1\n$tag1/g" src/com/trans/pixel/controller/chain/RequestScreen.java
-				append2="\n	protected abstract boolean handleCommand($class cmd, Builder responseBuilder, UserBean user);"
+				append2="protected abstract boolean handleCommand($class cmd, Builder responseBuilder, UserBean user);"
 				sed -i "s/$tag2/$append2\n	$tag2/g" src/com/trans/pixel/controller/chain/RequestScreen.java
-				append3="if (request.has$name()) {\n            $class cmd = request.get$name();\n            if (result)\n                result = handleCommand(cmd, responseBuilder, user);\n        }"
+				append3="if (request.has$name()) {\n            $class cmd = request.get$name();\n            if (result)\/\/$name\n                result = handleCommand(cmd, responseBuilder, user);\/\/$name\n        }\/\/$name"
 				sed -i "s/$tag3/$append3\n        $tag3/g" src/com/trans/pixel/controller/chain/RequestScreen.java
 
 				append1="import com.trans.pixel.protoc.Commands.$class;"
 				sed -i "s/$tag1/$append1\n$tag1/g" src/com/trans/pixel/controller/chain/GameDataScreen.java
-				append2="\n	\@Override\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO Auto-generated method stub\n		return true;\n	}"
+				append2="\/\/$name\n	\@Override\/\/$name\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO Auto-generated method $name\n		return true;\/\/$name\n	}\/\/$name"
 				sed -i "s/$tag2/$append2\n	$tag2/g" src/com/trans/pixel/controller/chain/GameDataScreen.java
 
 				append1="import com.trans.pixel.protoc.Commands.$class;"
 				sed -i "s/$tag1/$append1\n$tag1/g" src/com/trans/pixel/controller/chain/HeadScreen.java
-				append2="\n	\@Override\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO Auto-generated method stub\n		return true;\n	}"
+				append2="\/\/$name\n	\@Override\/\/$name\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO Auto-generated method $name\n		return true;\/\/$name\n	}\/\/$name"
 				sed -i "s/$tag2/$append2\n	$tag2/g" src/com/trans/pixel/controller/chain/HeadScreen.java
 			fi
 		fi
