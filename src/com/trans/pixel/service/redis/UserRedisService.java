@@ -1,5 +1,7 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -16,9 +18,10 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.UserInfo;
 
 @Repository
-public class UserRedisService {
+public class UserRedisService extends RedisService{
 	Logger log = LoggerFactory.getLogger(UserRedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
@@ -52,6 +55,40 @@ public class UserRedisService {
 				return null;
 			}
 		});
+	}
+	
+	public void cache(UserInfo user){
+		hput(RedisKey.PREFIX+"UserCache", user.getId()+"", formatJson(user));
+	}
+	
+	/**
+	 * get other user(can be null)
+	 */
+	public <T> UserInfo getCache(int serverId, T userId){
+		String value = hget(RedisKey.PREFIX+"UserCache", userId+"");
+		UserInfo.Builder builder = UserInfo.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		else
+			return null;
+	}
+	
+	/**
+	 * get other user
+	 */
+	public <T> List<UserInfo> getCaches(int serverId, List<T> userIds){
+		List<String> keys = new ArrayList<String>();
+		for(T userId : userIds){
+			keys.add(userId+"");
+		}
+		List<String> values  = hget(RedisKey.PREFIX+"UserCache", keys);
+		List<UserInfo> users = new ArrayList<UserInfo>();
+		for(String value : values){
+			UserInfo.Builder builder = UserInfo.newBuilder();
+			if(value != null && parseJson(value, builder))
+				users.add(builder.build());
+		}
+		return users;
 	}
 
 }

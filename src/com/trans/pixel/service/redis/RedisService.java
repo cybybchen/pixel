@@ -412,6 +412,27 @@ public class RedisService {
 		});
 	}
 
+	/**
+	 * 添加zset
+	 */
+	public void zincrby(final String key, final double score, final String value) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> Ops = redisTemplate
+						.boundZSetOps(key);
+
+				Ops.incrementScore(value, score);
+
+				Date date = expireDateAndInit();
+				if (date != null)
+					Ops.expireAt(date);
+				return null;
+			}
+		});
+	}
+
     /**
      * 获取zset(倒序)
      */

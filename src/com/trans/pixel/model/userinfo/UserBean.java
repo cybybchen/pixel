@@ -158,13 +158,13 @@ public class UserBean {
 	public UserInfo buildShort() {
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		builder.setId(id);
-		builder.setAccount(account);
+//		builder.setAccount(account);
 		builder.setIcon(icon);
 		builder.setUserName(userName);
-		builder.setServerId(serverId);
-		builder.setUnionId(unionId);
-		builder.setUnionJob(unionJob);
-		builder.setPointVS(pointVS);
+//		builder.setServerId(serverId);
+//		builder.setUnionId(unionId);
+//		builder.setUnionJob(unionJob);
+//		builder.setPointVS(pointVS);
 		return builder.build();
 	}
 	

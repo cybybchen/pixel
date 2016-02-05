@@ -14,10 +14,10 @@ public class FightService {
 	
 	public boolean queueFight(List<UserInfo> attacks, List<UserInfo> defends){
 		if(attacks.size() > defends.size()){//攻方胜
-			defends.clear();
+//			defends.clear();
 			return true;
 		}else{//守方胜
-			attacks.clear();
+//			attacks.clear();
 			return false;
 		}
 	}

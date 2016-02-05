@@ -41,17 +41,19 @@ public class RewardService {
 		int coin = user.getCoin();
 		int jewel = user.getJewel();
 		for (RewardBean reward : rewardList) {
-			doReward(user, reward);
+			doReward(user, reward.getItemid(), reward.getCount());
 		}
 		
 		if (coin != user.getCoin() || jewel != user.getJewel()) {
 			userService.updateUser(user);
 		}
 	}
-	
+
 	public void doReward(UserBean user, RewardBean reward) {
-		int rewardId = reward.getItemid();
-		int rewardCount = reward.getCount();
+		doReward(user, reward.getItemid(), reward.getCount());
+		userService.updateUser(user);
+	}
+	public void doReward(UserBean user, int rewardId, int rewardCount) {
 		if (rewardId > RewardConst.HERO) {
 			int heroId = rewardId % RewardConst.HERO_STAR;
 			userHeroService.addUserHero(user.getId(), heroId);
@@ -114,6 +116,16 @@ public class RewardService {
 		return null;
 	}
 	
+	public void doRewards(long userId, MultiReward rewards) {
+		UserBean bean = userService.getUser(userId);
+		doRewards(bean, rewards);
+	}
+	
+	public void doReward(long userId, RewardInfo reward) {
+		UserBean bean = userService.getUser(userId);
+		doReward(bean, reward);
+	}
+	
 	public void doRewards(UserBean user, MultiReward rewards) {
 		int coin = user.getCoin();
 		int jewel = user.getJewel();
@@ -127,35 +139,7 @@ public class RewardService {
 	}
 	
 	public void doReward(UserBean user, RewardInfo reward) {
-		int rewardId = reward.getItemid();
-		int rewardCount = reward.getCount();
-		if (rewardId > RewardConst.HERO) {
-			int heroId = rewardId % RewardConst.HERO_STAR;
-			userHeroService.addUserHero(user.getId(), heroId);
-		} else if (rewardId > RewardConst.PROP) {
-			
-		} else if (rewardId > RewardConst.PACKAGE) {
-			
-		} else if (rewardId > RewardConst.CHIP) {
-			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
-		} else if (rewardId > RewardConst.EQUIPMENT) {
-			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
-		} else {
-			switch (rewardId) {
-				case RewardConst.EXP:
-					user.setExp(user.getExp() + rewardCount);
-					break;
-				case RewardConst.COIN:
-					user.setCoin(user.getCoin() + rewardCount);
-					break;
-				case RewardConst.JEWEL:
-					user.setJewel(user.getJewel() + rewardCount);
-					break;
-				case RewardConst.MAGICCOIN:
-					break;
-				default:
-					break;
-			}
-		}
+		doReward(user, reward.getItemid(), reward.getCount());
+		userService.updateUser(user);
 	}
 }

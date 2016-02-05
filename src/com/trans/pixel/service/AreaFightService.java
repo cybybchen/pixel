@@ -2,10 +2,12 @@ package com.trans.pixel.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
@@ -16,6 +18,7 @@ import com.trans.pixel.protoc.Commands.AreaMonster;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
 
@@ -43,21 +46,30 @@ public class AreaFightService extends FightService{
 		if(monster == null)
 			return false;
 		AreaMonster.Builder builder = AreaMonster.newBuilder(monster);
-		redis.deleteMonster(builder.getId());
-		user.setCoin(user.getCoin()+100);
-		userService.updateUser(user);
+		if(builder.hasKilled())
+			return false;
+//		redis.deleteMonster(builder.getId());
+		builder.setKilled(true);
+		redis.saveMonster(builder.build());
+		rewardService.doRewards(user, builder.getReward());
 		return true;
 	}
 	
-	public boolean AttackBoss(int id){
+	public boolean AttackBoss(int id, int score){
 		AreaBoss boss = redis.getBoss(id);
-		if(boss == null)
+		if(boss == null || boss.getHp() <= 0)
 			return false;
+		redis.addBossRank(id, score);
 		AreaBoss.Builder builder = AreaBoss.newBuilder(boss);
-		builder.setOwner(user.buildShort());
-		builder.addLeaderboard(user.buildShort());
+		builder.setHp(builder.getHp()-score);
+		if(builder.getHp() <= 0){//结算
+			builder.setOwner(user.buildShort());
+			Set<TypedTuple<String>> ranks = redis.getBossRank(id);
+			for(TypedTuple<String> rank : ranks){
+				rewardService.doRewards(Long.parseLong(rank.getValue()), boss.getReward());
+			}
+		}
 		redis.saveBoss(builder.build());
-		rewardService.doRewards(user, boss.getReward());
 		return true;
 	}
 	
@@ -130,6 +142,26 @@ public class AreaFightService extends FightService{
 		builder.clearAttacks();
 		redis.saveResource(builder.build());
 	}
+	
+	private void getBossRank(AreaBoss.Builder bossbuilder){
+		if(bossbuilder.getHp() >= bossbuilder.getHpMax())
+			return;
+		Set<TypedTuple<String>> ranks = redis.getBossRank(bossbuilder.getId());
+		if(ranks.isEmpty())
+			return;
+		List<UserInfo> users = userService.getCaches(user.getServerId(), ranks);
+		int i = 0;
+		for(TypedTuple<String> rank : ranks){
+			if(i >= users.size())
+				break;
+			Rank.Builder builder = Rank.newBuilder();
+			builder.setRank(i+1);
+			builder.setScore(rank.getScore().intValue());
+			builder.setUser(users.get(i));
+			bossbuilder.addRanks(builder.build());
+			i++;
+		}
+	}
 
 	private AreaMode getAreas() {
 		AreaMode.Builder areamodebuilder = AreaMode.newBuilder(redis.getAreaMode());
@@ -146,6 +178,7 @@ public class AreaFightService extends FightService{
 				AreaBoss boss = bossMap.get(bossbuilder.getId() + "");
 				if (boss != null) {
 					bossbuilder.mergeFrom(boss);
+					getBossRank(bossbuilder);
 				} else {
 					AreaBoss newboss = redis.createBoss(bossbuilder.getId());
 					bossbuilder.mergeFrom(newboss);
@@ -174,7 +207,7 @@ public class AreaFightService extends FightService{
 				AreaResource resource = resourceMap.get(resourcebuilder.getId() + "");
 				if (resource != null) {
 					AreaResource.Builder builder = AreaResource.newBuilder(resource);
-					if (System.currentTimeMillis() / 1000 >= builder.getEndtime()) {// 攻城开始
+					if (builder.hasEndtime() && System.currentTimeMillis() / 1000 >= builder.getEndtime()) {// 攻城开始
 						resourceFight(builder);
 					}
 					resourcebuilder.mergeFrom(builder.build());

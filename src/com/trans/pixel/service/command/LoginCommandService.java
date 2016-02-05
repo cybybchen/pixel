@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RefreshConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -21,6 +22,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.AccountService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -45,6 +47,7 @@ public class LoginCommandService extends BaseCommandService {
             return;
 		}
 		UserBean user = userService.getUser(userId);
+		userService.cache(user.buildShort());
 		refreshUserLogin(user);
 		super.buildUserInfo(userInfoBuilder, user);
 		

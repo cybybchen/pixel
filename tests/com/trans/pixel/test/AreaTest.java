@@ -21,15 +21,16 @@ public class AreaTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(AreaTest.class);
 
 	@Test
-	public void test() {
-		testArea();
+	public void testArea() {
+//		new LoginTest().testLogin();
+		testGetArea();
 		testAreaBoss();
 		testAreaMonster();
 		testAreaResource();
 		testAreaResourceMine();
 	}
 	
-	private void testArea() {
+	private void testGetArea() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestAreaCommand.Builder builder = RequestAreaCommand.newBuilder();
@@ -50,6 +51,7 @@ public class AreaTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestAttackBossCommand.Builder builder = RequestAttackBossCommand.newBuilder();
 		builder.setId(2001);
+		builder.setScore(55);
 		requestBuilder.setAttackBossCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();

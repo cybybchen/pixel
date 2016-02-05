@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LoginTest.class);
 	
 	@Test
-	public void registerTest() {
+	public void testLogin() {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
 		RequestLoginCommand.Builder b = RequestLoginCommand.newBuilder();

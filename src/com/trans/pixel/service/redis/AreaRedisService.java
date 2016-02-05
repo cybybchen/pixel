@@ -3,11 +3,13 @@ package com.trans.pixel.service.redis;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
@@ -189,6 +191,15 @@ public class AreaRedisService extends RedisService{
 		this.hput(AREABOSS+user.serverId, boss.getId()+"", formatJson(boss));
 	}
 	
+	public void addBossRank(final int bossId, final int score) {
+		this.setExpireDate(nextDay());
+		this.zincrby(AREABOSS+user.serverId+"_Rank_"+bossId, score, user.getId()+"");
+	}
+	
+	public Set<TypedTuple<String>> getBossRank(final int bossId) {
+		return zrangewithscore(AREABOSS+user.serverId+"_Rank_"+bossId, 0, 9);
+	}
+	
 	public Map<String, AreaMonster> getMonsters(){
 		Map<String, AreaMonster> monsters= new HashMap<String, AreaMonster>();
 		Map<String, String> valueMap = this.hget(AREAMONSTER+user.id);
@@ -365,6 +376,8 @@ public class AreaRedisService extends RedisService{
 		parseXml(xml, builder);
 		for(AreaBoss.Builder bossbuilder : builder.getRegionBuilderList()){
 			// bossbuilder.setReward(buildAreaMonsterReward(id));
+			bossbuilder.setHpMax(100);
+			bossbuilder.setHp(100);
 			m_BossMap.put(bossbuilder.getId(), bossbuilder.build());
 		}
 		boss = m_BossMap.get(id);

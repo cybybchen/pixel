@@ -39,7 +39,7 @@ public class AreaCommandService {
 
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
-		service.AttackBoss(cmd.getId());
+		service.AttackBoss(cmd.getId(), cmd.getScore());
 		Areas(responseBuilder, user);
 	}
 	
