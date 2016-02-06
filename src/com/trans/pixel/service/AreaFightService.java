@@ -84,7 +84,7 @@ public class AreaFightService extends FightService{
 			builder.setAttackerId(user.getUnionId());
 			redis.saveResource(builder.build());
 		}else{
-			if(user.unionId == builder.getOwner().getUnionId()){//防守
+			if(user.getUnionId() == builder.getOwner().getUnionId()){//防守
 				builder.addDefenses(user.buildShort());
 			}else{//进攻
 				builder.addAttacks(user.buildShort());

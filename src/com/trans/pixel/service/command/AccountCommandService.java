@@ -19,7 +19,7 @@ import com.trans.pixel.service.UserService;
 
 @Service
 public class AccountCommandService extends BaseCommandService {
-	private static final Logger log = LoggerFactory.getLogger(AccountCommandService.class);
+//	private static final Logger log = LoggerFactory.getLogger(AccountCommandService.class);
 	
 	@Resource
     private AccountService accountService;

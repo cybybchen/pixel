@@ -148,7 +148,7 @@ public class AreaRedisService extends RedisService{
 //	}
 	
 	public AreaMode getAreaMode() {
-		String value = this.get(AREA+user.serverId);
+		String value = this.get(AREA+user.getServerId());
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -160,12 +160,12 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public void saveAreaMode(AreaMode area) {
-		this.set(AREA+user.serverId, formatJson(area));
+		this.set(AREA+user.getServerId(), formatJson(area));
 	}
 	
 	public Map<String, AreaBoss> getBosses(){
 		Map<String, AreaBoss> bosses= new HashMap<String, AreaBoss>();
-		Map<String, String> valueMap = this.hget(AREABOSS+user.serverId);
+		Map<String, String> valueMap = this.hget(AREABOSS+user.getServerId());
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaBoss.Builder builder = AreaBoss.newBuilder();
 			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
@@ -176,7 +176,7 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public AreaBoss getBoss(int id){
-		String value = this.hget(AREABOSS+user.serverId, id+"");
+		String value = this.hget(AREABOSS+user.getServerId(), id+"");
 		AreaBoss.Builder builder = AreaBoss.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -188,21 +188,21 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public void saveBoss(AreaBoss boss) {
-		this.hput(AREABOSS+user.serverId, boss.getId()+"", formatJson(boss));
+		this.hput(AREABOSS+user.getServerId(), boss.getId()+"", formatJson(boss));
 	}
 	
 	public void addBossRank(final int bossId, final int score) {
 		this.setExpireDate(nextDay());
-		this.zincrby(AREABOSS+user.serverId+"_Rank_"+bossId, score, user.getId()+"");
+		this.zincrby(AREABOSS+user.getServerId()+"_Rank_"+bossId, score, user.getId()+"");
 	}
 	
 	public Set<TypedTuple<String>> getBossRank(final int bossId) {
-		return zrangewithscore(AREABOSS+user.serverId+"_Rank_"+bossId, 0, 9);
+		return zrangewithscore(AREABOSS+user.getServerId()+"_Rank_"+bossId, 0, 9);
 	}
 	
 	public Map<String, AreaMonster> getMonsters(){
 		Map<String, AreaMonster> monsters= new HashMap<String, AreaMonster>();
-		Map<String, String> valueMap = this.hget(AREAMONSTER+user.id);
+		Map<String, String> valueMap = this.hget(AREAMONSTER+user.getId());
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaMonster.Builder builder = AreaMonster.newBuilder();
 			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
@@ -213,7 +213,7 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public AreaMonster getMonster(int id){
-		String value = this.hget(AREAMONSTER+user.id, id+"");
+		String value = this.hget(AREAMONSTER+user.getId(), id+"");
 		AreaMonster.Builder builder = AreaMonster.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -226,11 +226,11 @@ public class AreaRedisService extends RedisService{
 
 	public void saveMonster(AreaMonster monster) {
 		this.setExpireDate(nextDay());
-		this.hput(AREAMONSTER+user.id, monster.getId()+"", formatJson(monster));
+		this.hput(AREAMONSTER+user.getId(), monster.getId()+"", formatJson(monster));
 	}
 	
 	public void deleteMonster(int monsterId) {
-		this.hdelete(AREAMONSTER+user.id, monsterId+"");
+		this.hdelete(AREAMONSTER+user.getId(), monsterId+"");
 	}
 	
 	public AreaMonster createMonster(int id){
@@ -275,7 +275,7 @@ public class AreaRedisService extends RedisService{
 
 	public Map<String, AreaResource> getResources(){
 		Map<String, AreaResource> resources= new HashMap<String, AreaResource>();
-		Map<String, String> valueMap = this.hget(AREARESOURCE+user.serverId);
+		Map<String, String> valueMap = this.hget(AREARESOURCE+user.getServerId());
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaResource.Builder builder = AreaResource.newBuilder();
 			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
@@ -286,7 +286,7 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public AreaResource getResource(int id){
-		String value = this.hget(AREARESOURCE+user.serverId, id+"");
+		String value = this.hget(AREARESOURCE+user.getServerId(), id+"");
 		AreaResource.Builder builder = AreaResource.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -298,12 +298,12 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveResource(AreaResource resource) {
-		this.hput(AREARESOURCE+user.serverId, resource.getId()+"", formatJson(resource));
+		this.hput(AREARESOURCE+user.getServerId(), resource.getId()+"", formatJson(resource));
 	}
 	
 	public Map<String, AreaResourceMine> getResourceMines(){
 		Map<String, AreaResourceMine> resourcemines= new HashMap<String, AreaResourceMine>();
-		Map<String, String> valueMap = this.hget(AREARESOURCEMINE+user.serverId);
+		Map<String, String> valueMap = this.hget(AREARESOURCEMINE+user.getServerId());
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
 			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
@@ -314,7 +314,7 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public AreaResourceMine getResourceMine(int id){
-		String value = this.hget(AREARESOURCEMINE+user.serverId, id+"");
+		String value = this.hget(AREARESOURCEMINE+user.getServerId(), id+"");
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -326,7 +326,7 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveResourceMine(AreaResourceMine mine) {
-		this.hput(AREARESOURCEMINE+user.serverId, mine.getId()+"", formatJson(mine));
+		this.hput(AREARESOURCEMINE+user.getServerId(), mine.getId()+"", formatJson(mine));
 	}
 	
 	public AreaBoss createBoss(final int id){

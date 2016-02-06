@@ -50,10 +50,13 @@ public class RewardService {
 	}
 
 	public void doReward(UserBean user, RewardBean reward) {
-		doReward(user, reward.getItemid(), reward.getCount());
-		userService.updateUser(user);
+		if(doReward(user, reward.getItemid(), reward.getCount()))
+			userService.updateUser(user);
 	}
-	public void doReward(UserBean user, int rewardId, int rewardCount) {
+	/**
+	 * need updateuser when return true
+	 */
+	public boolean doReward(UserBean user, int rewardId, int rewardCount) {
 		if (rewardId > RewardConst.HERO) {
 			int heroId = rewardId % RewardConst.HERO_STAR;
 			userHeroService.addUserHero(user.getId(), heroId);
@@ -81,7 +84,9 @@ public class RewardService {
 				default:
 					break;
 			}
+			return true;
 		}
+		return false;
 	}
 	
 	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord) {
@@ -130,7 +135,7 @@ public class RewardService {
 		int coin = user.getCoin();
 		int jewel = user.getJewel();
 		for (RewardInfo reward : rewards.getLootList()) {
-			doReward(user, reward);
+			doReward(user, reward.getItemid(), reward.getCount());
 		}
 		
 		if (coin != user.getCoin() || jewel != user.getJewel()) {
@@ -139,7 +144,7 @@ public class RewardService {
 	}
 	
 	public void doReward(UserBean user, RewardInfo reward) {
-		doReward(user, reward.getItemid(), reward.getCount());
-		userService.updateUser(user);
+		if(doReward(user, reward.getItemid(), reward.getCount()))
+			userService.updateUser(user);
 	}
 }

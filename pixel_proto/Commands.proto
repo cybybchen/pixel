@@ -4,7 +4,7 @@ message UserInfo {
 	required int64 id = 1;
 	optional string account = 2;
 	required int32 icon = 13;
-	required string userName = 3;
+	required string name = 3;
 	optional int32 serverId = 4;
 	optional int32 unionId = 14;
 	optional int32 unionJob = 15;

@@ -203,7 +203,7 @@ public class UnionService extends FightService{
 		unionRedisService.getBaseUnion(builder);
 		if(builder.hasAttackId()){
 			unionRedisService.attack(builder.getAttackId());
-		}else if(user.unionJob >= 2){
+		}else if(user.getUnionJob() >= 2){
 			Union.Builder defendUnion = Union.newBuilder();
 			unionRedisService.getBaseUnion(defendUnion, builder.getAttackId());
 			builder.setAttackId(attackId);

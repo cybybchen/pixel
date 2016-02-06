@@ -7,27 +7,27 @@ import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserBean {
-	public long id = 0;
-	public String account = "";
-	public int icon = 0;
-	public String userName = "";
-	public int serverId = 0;
-	public int unionId = 0;
-	public int unionJob = 0;
-	public int jewel = 0;
-	public int coin = 0;
-	public int exp = 0;
-	public int pointVS = 0;
-	public int pointLadder = 0;
-	public int pointExpedition = 0;
-	public int pointUnion = 0;
-	public int completeLevel = 0;
-	public long receiveMessageTimeStamp = 0;
-	public int lastLootTime = 0;
-	public int refreshLeftTimes = 0;
-	public String lastLoginTime = "";
-	public int ladderModeLeftTimes = 0;
-	public long ladderModeHistoryTop = 10000;
+	private long id = 0;
+	private String account = "";
+	private int icon = 0;
+	private String name = "";
+	private int serverId = 0;
+	private int unionId = 0;
+	private int unionJob = 0;
+	private int jewel = 0;
+	private int coin = 0;
+	private int exp = 0;
+	private int pointVS = 0;
+	private int pointLadder = 0;
+	private int pointExpedition = 0;
+	private int pointUnion = 0;
+	private int completeLevel = 0;
+	private long receiveMessageTimeStamp = 0;
+	private int lastLootTime = 0;
+	private int refreshLeftTimes = 0;
+	private String lastLoginTime = "";
+	private int ladderModeLeftTimes = 0;
+	private long ladderModeHistoryTop = 10000;
 	public long getId() {
 		return id;
 	}
@@ -47,10 +47,10 @@ public class UserBean {
 		this.icon = icon;
 	}
 	public String getUserName() {
-		return userName;
+		return name;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.name = userName;
 	}
 	public int getServerId() {
 		return serverId;
@@ -160,7 +160,7 @@ public class UserBean {
 		builder.setId(id);
 //		builder.setAccount(account);
 		builder.setIcon(icon);
-		builder.setUserName(userName);
+		builder.setName(name);
 //		builder.setServerId(serverId);
 //		builder.setUnionId(unionId);
 //		builder.setUnionJob(unionJob);
@@ -186,7 +186,7 @@ public class UserBean {
 		builder.setId(id);
 		builder.setAccount(account);
 		builder.setIcon(icon);
-		builder.setUserName(userName);
+		builder.setName(name);
 		builder.setServerId(serverId);
 		builder.setUnionId(unionId);
 		builder.setUnionJob(unionJob);
@@ -211,7 +211,7 @@ public class UserBean {
 		userMap.put(ID, "" + id);
 		userMap.put(ACCOUNT, account);
 		userMap.put(ICON, ""+icon);
-		userMap.put(USERNAME, userName);
+		userMap.put(USERNAME, name);
 		userMap.put(SERVER_ID, "" + serverId);
 		userMap.put(UNION_ID, "" + unionId);
 		userMap.put(UNION_JOB, "" + unionJob);
