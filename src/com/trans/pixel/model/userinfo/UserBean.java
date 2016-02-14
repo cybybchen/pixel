@@ -154,6 +154,16 @@ public class UserBean {
 	public void setUnionJob(int unionJob) {
 		this.unionJob = unionJob;
 	}
+	
+	public void init(int serverId, String account, String userName) {
+		setAccount(account);
+		setId(0);
+		setServerId(serverId);
+		setUserName(userName);
+		setCoin(1000000);
+		setJewel(1000000);
+		setExp(1000000);
+	}
 
 	public UserInfo buildShort() {
 		UserInfo.Builder builder = UserInfo.newBuilder();

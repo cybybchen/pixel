@@ -16,18 +16,16 @@ import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
-import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
-import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -56,13 +54,11 @@ import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.service.command.AccountCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroLevelUpCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
-import com.trans.pixel.service.command.LoginCommandService;
 import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.LotteryHeroCommandService;
@@ -71,13 +67,14 @@ import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
+import com.trans.pixel.service.command.UserCommandService;
 
 @Service
 public class GameDataScreen extends RequestScreen {
+//	@Resource
+//	private AccountCommandService accountCommandService;
 	@Resource
-	private AccountCommandService accountCommandService;
-	@Resource
-	private LoginCommandService loginCommandService;
+	private UserCommandService userCommandService;
 	@Resource
 	private LevelCommandService levelCommandService;
 	@Resource
@@ -108,14 +105,14 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
 			Builder responseBuilder) {
-		accountCommandService.register(cmd, responseBuilder);
+		userCommandService.register(cmd, responseBuilder);
 		return true;
 	}
 
 	@Override
 	protected boolean handleLoginCommand(RequestCommand cmd,
 			Builder responseBuilder) {	
-		loginCommandService.login(cmd, responseBuilder);
+		userCommandService.login(cmd, responseBuilder);
 		return true;
 	}
 

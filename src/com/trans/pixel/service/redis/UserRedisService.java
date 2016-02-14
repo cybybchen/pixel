@@ -22,7 +22,7 @@ import com.trans.pixel.protoc.Commands.UserInfo;
 
 @Repository
 public class UserRedisService extends RedisService{
-	Logger log = LoggerFactory.getLogger(UserRedisService.class);
+	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -47,14 +47,23 @@ public class UserRedisService extends RedisService{
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_PREFIX + user.getId());
 				
-				
-				log.debug("user is:" + user.toMap());
+				if(user.getId() == 0)
+					logger.error("empty user date");
+				logger.debug("user is:" + user.toMap());
 				bhOps.putAll(user.toMap());
 				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				
 				return null;
 			}
 		});
+	}
+
+	public String getUserId(final int serverId, final String account) {
+		return hget(RedisKey.PREFIX+"Account_"+serverId, account);
+	}
+	
+	public <T> void setUserId(final int serverId, final String account, final T userId) {
+		hput(RedisKey.PREFIX+"Account_"+serverId, account, userId+"");
 	}
 	
 	public void cache(UserInfo user){

@@ -1,17 +1,16 @@
 package com.trans.pixel.test;
 
+import java.io.InputStream;
 import java.util.Date;
-
-import org.apache.log4j.Logger;
+import java.util.Properties;
 
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.HTTPProtobufResolver;
 import com.trans.pixel.utils.HttpUtil;
 
 public class BaseTest {
-	private static Logger logger = Logger.getLogger(BaseTest.class);
+//	private static Logger logger = Logger.getLogger(BaseTest.class);
   
     //define device user
     protected static final int GAME_VERSION = 1;
@@ -43,9 +42,20 @@ public class BaseTest {
         
     }
     
-    protected static HeadInfo head() {
-    	if(url == null)
-    		url = RedisService.ReadProperties("serverurl");
+    protected HeadInfo head() {
+    	Properties props = new Properties();
+        try {
+         InputStream in = getClass().getResourceAsStream("/config/common.properties");
+         props.load(in);
+         if(url == null){
+        	 url = props.getProperty ("serverurl");
+        	 System.out.println("test server:"+url);
+         }
+        } catch (Exception e) {
+         e.printStackTrace();
+        }
+//    	if(url == null)
+//    		url = RedisService.ReadProperties("serverurl");
     	if(url.length() == 0)
     		url = defaultUrl;
         HeadInfo.Builder head = HeadInfo.newBuilder();

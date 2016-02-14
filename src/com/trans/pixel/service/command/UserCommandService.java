@@ -11,49 +11,64 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RefreshConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
-import com.trans.pixel.service.AccountService;
 import com.trans.pixel.service.UserService;
-import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
-public class LoginCommandService extends BaseCommandService {
-	private static final Logger log = LoggerFactory.getLogger(LoginCommandService.class);
+public class UserCommandService extends BaseCommandService {
+	private static final Logger logger = LoggerFactory.getLogger(UserCommandService.class);
 	
-	@Resource
-    private AccountService accountService;
+//	@Resource
+//    private AccountService accountService;
 	@Resource
     private UserService userService;
 	@Resource
 	private PushCommandService pushCommandService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
-		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		HeadInfo head = request.getHead();
-		
-		long userId = accountService.getUserId(head.getServerId(), head.getAccount());
-		if (userId == 0) {
+		UserBean user = userService.getUser(head.getServerId(), head.getAccount());
+		if (user == null) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
-            responseBuilder.setErrorCommand(errorCommand);
-            return;
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
 		}
-		UserBean user = userService.getUser(userId);
 		userService.cache(user.buildShort());
 		refreshUserLogin(user);
-		super.buildUserInfo(userInfoBuilder, user);
-		
-		pushCommand(responseBuilder, user);
-		
+		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
+		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
+
+		pushCommand(responseBuilder, user);
+	}
+
+	public void register(RequestCommand request, Builder responseBuilder) {
+		RequestRegisterCommand registerCommand = request.getRegisterCommand();
+		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
+		HeadInfo head = request.getHead();
+		UserBean user = new UserBean();
+		user.init(head.getServerId(), head.getAccount(), registerCommand.getUserName());
+		try{
+			userService.addNewUser(user);
+		}catch(Exception e){
+			logger.error(e.getMessage());
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_HAS_REGISTER);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		userInfoBuilder.setUser(user.build());
+		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
+
+		pushCommand(responseBuilder, user);
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {

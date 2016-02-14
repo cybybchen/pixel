@@ -11,14 +11,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.HeadInfo;
+import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.redis.UserRedisService;
 
 @Service
 public class UserService {
-	Logger log = LoggerFactory.getLogger(UserService.class);
+	Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	@Resource
     private UserRedisService userRedisService;
@@ -26,7 +33,7 @@ public class UserService {
     private UserMapper userMapper;
 	
 	public UserBean getUser(long userId) {
-    	log.debug("The user id is: " + userId);
+    	logger.debug("The user id is: " + userId);
     	UserBean user = userRedisService.getUserByUserId(userId);
     	if (user == null) {
     		user = userMapper.queryById(userId);
@@ -37,10 +44,32 @@ public class UserService {
         return user;
     }
 	
+	public UserBean getUser(int serverId, String account) {
+		logger.debug("serverId={},The account={}", serverId, account);
+		String userId = userRedisService.getUserId(serverId, account);
+		UserBean user = null;
+
+		if (userId == null) {
+			try {
+				user = userMapper.queryByServerAndAccount(serverId, account);
+			} catch (Exception e) {
+				 logger.error("login failed:"+e.getMessage());
+			}
+			if (user != null) {
+				userRedisService.setUserId(serverId, account, user.getId());
+				userRedisService.updateUser(user);
+			}
+		} else {
+			return getUser(Long.parseLong(userId));
+		}
+
+		return user;
+    }
+	
 	public int addNewUser(UserBean user) {
+		int result = userMapper.addNewUser(user);
 		userRedisService.updateUser(user);
-		
-		return userMapper.addNewUser(user);
+		return result;
 	}
 	
 	public int updateUser(UserBean user) {

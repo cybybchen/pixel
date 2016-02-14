@@ -22,7 +22,7 @@ public class AreaTest extends BaseTest {
 
 	@Test
 	public void testArea() {
-//		new LoginTest().testLogin();
+		new LoginTest().testLogin();
 		testGetArea();
 		testAreaBoss();
 		testAreaMonster();
