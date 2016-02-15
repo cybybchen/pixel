@@ -1,5 +1,7 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -41,6 +43,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 		int skillId = 0;
 		if (cmd.hasSkillId())
 			skillId = cmd.getSkillId();
+		List<Integer> costInfoIds = cmd.getCostInfoIdList();
 		UserHeroBean userHero = userHeroService.selectUserHero(userId, heroId);
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		HeroInfoBean heroInfo = null;
@@ -48,7 +51,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 		if (userHero != null) {
 			heroInfo = userHero.getHeroInfoByInfoId(infoId);
 			if (heroInfo != null) {
-				result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId);
+				result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds);
 				if (result instanceof SuccessConst)
 					skillService.unlockHeroSkill(heroId, heroInfo);
 			}

@@ -44,14 +44,14 @@ public class HeroLevelUpService {
 	@Resource
 	private SkillService skillService;
 	
-	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId) {
+	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Integer> costInfoIds) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
 			case TYPE_HEROLEVEL:
 				result = levelUpHero(user, heroInfo);
 				break;
 			case TYPE_STARLEVEL:
-				result = levelUpStar(user, heroInfo);
+				result = levelUpStar(user, heroInfo, costInfoIds);
 				break;
 			case TYPE_RARELEVEL:
 				result = levelUpRare(user, heroInfo);
@@ -123,7 +123,7 @@ public class HeroLevelUpService {
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
 	
-	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo) {
+	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Integer> costInfoIds) {
 		return SuccessConst.STAR_LEVELUP_SUCCESS;
 	}
 	
