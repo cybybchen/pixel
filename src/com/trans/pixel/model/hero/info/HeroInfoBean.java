@@ -16,6 +16,7 @@ public class HeroInfoBean {
 	private int id = 0;
 	private int level = 1;
 	private int starLevel = 1;
+	private int value = 1;
 	private int rare = 1;
 	private String equipInfo = "0|0|0|0|0|0";
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -36,6 +37,12 @@ public class HeroInfoBean {
 	}
 	public void setStarLevel(int starLevel) {
 		this.starLevel = starLevel;
+	}
+	public int getValue() {
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
 	}
 	public int getRare() {
 		return rare;
@@ -101,6 +108,7 @@ public class HeroInfoBean {
 		json.put(ID, id);
 		json.put(LEVEL, level);
 		json.put(STAR_LEVEL, starLevel);
+		json.put(VALUE, value);
 		json.put(EQUIP_INFO, equipInfo);
 		json.put(SKILL_INFO_LIST, skillInfoList);
 		
@@ -115,6 +123,7 @@ public class HeroInfoBean {
 		bean.setId(json.getInt(ID));
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setStarLevel(json.getInt(STAR_LEVEL));
+		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
 		bean.setEquipInfo(json.getString(EQUIP_INFO));
 		
 		List<SkillInfoBean> list = new ArrayList<SkillInfoBean>();
@@ -135,6 +144,7 @@ public class HeroInfoBean {
 		builder.setLevel(level);
 		builder.setRare(rare);
 		builder.setStarLevel(starLevel);
+		builder.setValue(value);
 		builder.addAllSkill(buildSkillList());
 		
 		return builder.build();
@@ -154,6 +164,7 @@ public class HeroInfoBean {
 		heroInfo.setId(0);
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(1);
+		heroInfo.setValue(1);
 		heroInfo.setEquipInfo("0|0|0|0|0|0");
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -207,6 +218,7 @@ public class HeroInfoBean {
 	private static final String ID = "id";
 	private static final String LEVEL = "level";
 	private static final String STAR_LEVEL = "starLevel";
+	private static final String VALUE = "value";
 	private static final String EQUIP_INFO = "equipInfo";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
 	

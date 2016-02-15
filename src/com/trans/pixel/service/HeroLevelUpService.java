@@ -10,11 +10,13 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
+import com.trans.pixel.model.StarBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserHeroBean;
 
 @Service
 public class HeroLevelUpService {
@@ -43,15 +45,17 @@ public class HeroLevelUpService {
 	private HeroRareService heroRareService;
 	@Resource
 	private SkillService skillService;
+	@Resource
+	private StarService starService;
 	
-	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Integer> costInfoIds) {
+	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Integer> costInfoIds, UserHeroBean userHero) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
 			case TYPE_HEROLEVEL:
 				result = levelUpHero(user, heroInfo);
 				break;
 			case TYPE_STARLEVEL:
-				result = levelUpStar(user, heroInfo, costInfoIds);
+				result = levelUpStar(user, heroInfo, costInfoIds, userHero);
 				break;
 			case TYPE_RARELEVEL:
 				result = levelUpRare(user, heroInfo);
@@ -123,8 +127,24 @@ public class HeroLevelUpService {
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
 	
-	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Integer> costInfoIds) {
-		return SuccessConst.STAR_LEVELUP_SUCCESS;
+	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Integer> costInfoIds, UserHeroBean userHero) {
+		if (heroInfo.getStarLevel() == 5)
+			return ErrorConst.HERO_STAR_NOT_LEVELUP;
+		
+		ResultConst result = ErrorConst.HERO_STAR_NOT_LEVELUP;
+		
+		int addValue = userHero.calValues(costInfoIds);
+		
+		StarBean star = starService.getStarBean(heroInfo.getStarLevel() + 1);
+		int needValue = star.getValue() - heroInfo.getValue();
+		if (needValue <= addValue) {
+			userHero.delHeros(costInfoIds);
+			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
+			heroInfo.setValue(heroInfo.getValue() + addValue);
+			result = SuccessConst.STAR_LEVELUP_SUCCESS;
+		} 
+		
+		return result;
 	}
 	
 	private ResultConst levelUpRare(UserBean user, HeroInfoBean heroInfo) {

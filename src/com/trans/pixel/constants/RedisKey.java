@@ -55,6 +55,9 @@ public class RedisKey {
 	//hero rare
 	public static final String HERO_RARE_KEY = "key:hero_rare";
 	
+	//hero star
+	public static final String HERO_STAR_KEY = "key:hero_star";
+	
 	//user equip redis
 	public static final String USER_EQUIP_PREFIX = "user_equip_";
 	

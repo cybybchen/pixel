@@ -41,6 +41,30 @@ public class UserHeroBean {
 		this.heroInfo = heroInfo;
 	}
 	
+	public int calValues(List<Integer> costInfoIds) {
+		int addValue = 0;
+		for (int infoId : costInfoIds) {
+			HeroInfoBean heroInfo = getHeroInfoByInfoId(infoId);
+			if (heroInfo != null)
+				addValue += heroInfo.getValue();
+		}
+		
+		return addValue;
+	}
+	
+	public void delHeros(List<Integer> infoIds) {
+		List<HeroInfoBean> heroInfoList = toHeroInfoList();
+		for (int i = 0; i < heroInfoList.size(); ++ i) {
+			HeroInfoBean heroInfo = heroInfoList.get(i);
+			if (infoIds.contains(heroInfo.getId())) {
+				heroInfoList.remove(i);
+				--i;
+			}	
+		}
+		
+		updateHeroInfo(heroInfoList);
+	}
+	
 	public HeroInfoBean getHeroInfoByInfoId(int infoId) {
 		List<HeroInfoBean> heroInfoList = toHeroInfoList();
 		for (HeroInfoBean heroInfo : heroInfoList) {
