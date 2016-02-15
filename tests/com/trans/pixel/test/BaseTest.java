@@ -45,7 +45,7 @@ public class BaseTest {
     protected HeadInfo head() {
     	Properties props = new Properties();
         try {
-         InputStream in = getClass().getResourceAsStream("/config/common.properties");
+         InputStream in = getClass().getResourceAsStream("/config/advancer.properties");
          props.load(in);
          if(url == null){
         	 url = props.getProperty ("serverurl");
@@ -56,7 +56,7 @@ public class BaseTest {
         }
 //    	if(url == null)
 //    		url = RedisService.ReadProperties("serverurl");
-    	if(url.length() == 0)
+    	if(url == null)
     		url = defaultUrl;
         HeadInfo.Builder head = HeadInfo.newBuilder();
         head.setGameVersion(GAME_VERSION);
