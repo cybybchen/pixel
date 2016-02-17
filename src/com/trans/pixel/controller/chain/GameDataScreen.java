@@ -77,7 +77,7 @@ import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
-import com.trans.pixel.service.command.LotteryHeroCommandService;
+import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
@@ -103,7 +103,7 @@ public class GameDataScreen extends RequestScreen {
 	@Resource
 	private HeroLevelUpCommandService heroLevelUpCommandService;
 	@Resource
-	private LotteryHeroCommandService lotteryCommandService;
+	private LotteryCommandService lotteryCommandService;
 	@Resource
 	private MailCommandService mailCommandService;
 	@Resource

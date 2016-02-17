@@ -99,10 +99,10 @@ public class RewardBean {
 		return reward;
 	}
 	
-	public static List<RewardBean> xmlParseLotteryHero(int type) {
+	public static List<RewardBean> xmlParseLottery(int type) {
 		Logger logger = Logger.getLogger(WinBean.class);
 		List<RewardBean> list = new ArrayList<RewardBean>();
-		String fileName = LOTTERY_HERO_FILE_PREFIX + type + ".xml";
+		String fileName = LOTTERY_FILE_PREFIX + type + ".xml";
 		try {
 			String filePath = DirConst.getConfigXmlPath(fileName);
 			SAXReader reader = new SAXReader();
@@ -162,7 +162,7 @@ public class RewardBean {
 		return rewardInfoList;
 	}
 	
-	private static final String LOTTERY_HERO_FILE_PREFIX = "lol_lottery_hero_";
+	private static final String LOTTERY_FILE_PREFIX = "lol_lottery_";
 	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
 	private static final String ID = "id";
 	private static final String ITEM_ID = "itemid";

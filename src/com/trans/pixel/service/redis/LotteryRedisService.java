@@ -19,7 +19,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RewardBean;
 
 @Service
-public class LotteryHeroRedisService {
+public class LotteryRedisService {
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
 	

@@ -9,14 +9,14 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.service.redis.LotteryHeroRedisService;
+import com.trans.pixel.service.redis.LotteryRedisService;
 
 @Service
-public class LotteryHeroService {
+public class LotteryService {
 
 	public static final int RANDOM_COUNT = 10;
 	@Resource
-	private LotteryHeroRedisService lotteryRedisService;
+	private LotteryRedisService lotteryRedisService;
     
     private List<RewardBean> getLotteryList(int type) {
     	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
@@ -66,7 +66,7 @@ public class LotteryHeroService {
     }
 	
 	private List<RewardBean> parseAndSaveLotteryList(int type) {
-    	List<RewardBean> lotteryList = RewardBean.xmlParseLotteryHero(type);
+    	List<RewardBean> lotteryList = RewardBean.xmlParseLottery(type);
     	lotteryRedisService.setLotteryList(lotteryList, type);
         
         return lotteryList;

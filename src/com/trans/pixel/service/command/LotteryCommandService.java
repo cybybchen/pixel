@@ -17,19 +17,19 @@ import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseLotteryCommand;
 import com.trans.pixel.service.CostService;
-import com.trans.pixel.service.LotteryHeroService;
+import com.trans.pixel.service.LotteryService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserService;
 
 @Service
-public class LotteryHeroCommandService extends BaseCommandService {
+public class LotteryCommandService extends BaseCommandService {
 	
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
 	private CostService costService;
 	@Resource
-	private LotteryHeroService lotteryService;
+	private LotteryService lotteryService;
 	@Resource
 	private RewardService rewardService;
 	@Resource
