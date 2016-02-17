@@ -40,6 +40,12 @@ import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -50,9 +56,6 @@ import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
@@ -418,21 +421,6 @@ public class HeadScreen extends RequestScreen {
 		// TODO UnionShopRefreshCommand method
 		return true;//UnionShopRefreshCommand
 	}//UnionShopRefreshCommand
-	@Override//MagicShopCommand
-	protected boolean handleCommand(RequestMagicShopCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO MagicShopCommand method
-		return true;//MagicShopCommand
-	}//MagicShopCommand
-	@Override//MagicShopPurchaseCommand
-	protected boolean handleCommand(RequestMagicShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO MagicShopPurchaseCommand method
-		return true;//MagicShopPurchaseCommand
-	}//MagicShopPurchaseCommand
-	@Override//MagicShopRefreshCommand
-	protected boolean handleCommand(RequestMagicShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO MagicShopRefreshCommand method
-		return true;//MagicShopRefreshCommand
-	}//MagicShopRefreshCommand
 	@Override//LadderShopCommand
 	protected boolean handleCommand(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user) {
 		// TODO LadderShopCommand method
@@ -448,6 +436,36 @@ public class HeadScreen extends RequestScreen {
 		// TODO LadderShopRefreshCommand method
 		return true;//LadderShopRefreshCommand
 	}//LadderShopRefreshCommand
+	@Override//PVPShopCommand
+	protected boolean handleCommand(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PVPShopCommand method
+		return true;//PVPShopCommand
+	}//PVPShopCommand
+	@Override//PVPShopPurchaseCommand
+	protected boolean handleCommand(RequestPVPShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PVPShopPurchaseCommand method
+		return true;//PVPShopPurchaseCommand
+	}//PVPShopPurchaseCommand
+	@Override//PVPShopRefreshCommand
+	protected boolean handleCommand(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PVPShopRefreshCommand method
+		return true;//PVPShopRefreshCommand
+	}//PVPShopRefreshCommand
+	@Override//ExpeditionShopCommand
+	protected boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO ExpeditionShopCommand method
+		return true;//ExpeditionShopCommand
+	}//ExpeditionShopCommand
+	@Override//ExpeditionShopPurchaseCommand
+	protected boolean handleCommand(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO ExpeditionShopPurchaseCommand method
+		return true;//ExpeditionShopPurchaseCommand
+	}//ExpeditionShopPurchaseCommand
+	@Override//ExpeditionShopRefreshCommand
+	protected boolean handleCommand(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO ExpeditionShopRefreshCommand method
+		return true;//ExpeditionShopRefreshCommand
+	}//ExpeditionShopRefreshCommand
 	//add handleCommand here
 
 	@Override

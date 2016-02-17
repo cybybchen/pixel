@@ -90,26 +90,48 @@ public class ShopService {
 		redis.saveUnionShopRefreshTime(time);
 	}
 
-	public ShopList getMagicShop(){
-		return redis.getMagicShop();
+	public ShopList getPVPShop(){
+		return redis.getPVPShop();
 	}
 	
-	public void saveMagicShop(ShopList shoplist){
-		redis.saveMagicShop(shoplist);
+	public void savePVPShop(ShopList shoplist){
+		redis.savePVPShop(shoplist);
 	}
 	
-	public ShopList refreshMagicShop(){
-		ShopList shoplist = redis.buildMagicShop();
-		redis.saveMagicShop(shoplist);
+	public ShopList refreshPVPShop(){
+		ShopList shoplist = redis.buildPVPShop();
+		redis.savePVPShop(shoplist);
 		return shoplist;
 	}
 
-	public int getMagicShopRefreshTime(){
-		return redis.getMagicShopRefreshTime();
+	public int getPVPShopRefreshTime(){
+		return redis.getPVPShopRefreshTime();
 	}
 
-	public void saveMagicShopRefreshTime(int time){
-		redis.saveMagicShopRefreshTime(time);
+	public void savePVPShopRefreshTime(int time){
+		redis.savePVPShopRefreshTime(time);
+	}
+
+	public ShopList getExpeditionShop(){
+		return redis.getExpeditionShop();
+	}
+	
+	public void saveExpeditionShop(ShopList shoplist){
+		redis.saveExpeditionShop(shoplist);
+	}
+	
+	public ShopList refreshExpeditionShop(){
+		ShopList shoplist = redis.buildExpeditionShop();
+		redis.saveExpeditionShop(shoplist);
+		return shoplist;
+	}
+
+	public int getExpeditionShopRefreshTime(){
+		return redis.getExpeditionShopRefreshTime();
+	}
+
+	public void saveExpeditionShopRefreshTime(int time){
+		redis.saveExpeditionShopRefreshTime(time);
 	}
 
 	public ShopList getLadderShop(){

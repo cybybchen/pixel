@@ -3,6 +3,6 @@ build
 Commands_pb.lua
 appendCommand.sh
 Properties
-jdbc.properties
-common.properties
 resources/config
+dist
+build.properties

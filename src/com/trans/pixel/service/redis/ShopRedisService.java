@@ -28,7 +28,8 @@ public class ShopRedisService extends RedisService{
 	public final static String SHOP = RedisKey.PREFIX+"Shop";
 	public final static String BLACKSHOP = RedisKey.PREFIX+"BlackShop";
 	public final static String UNIONSHOP = RedisKey.PREFIX+"UnionShop";
-	public final static String MAGICSHOP = RedisKey.PREFIX+"MagicShop";
+	public final static String PVPSHOP = RedisKey.PREFIX+"PVPShop";
+	public final static String EXPEDITIONSHOP = RedisKey.PREFIX+"ExpeditionShop";
 	public final static String LADDERSHOP = RedisKey.PREFIX+"LadderShop";
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
@@ -293,7 +294,7 @@ public class ShopRedisService extends RedisService{
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		parseXml(xml, willsbuilder);
 		
-		ShopList.Builder builder = buildComms(willsbuilder, getMagicShopComms());
+		ShopList.Builder builder = buildComms(willsbuilder, getUnionShopComms());
 		builder.setEndTime(getUnionShopEndTime());
 		return builder.build();
 	}
@@ -323,7 +324,7 @@ public class ShopRedisService extends RedisService{
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
 		Map<String, String> keyvalue = this.hget(UNIONSHOP);
 		if(keyvalue.isEmpty()){
-			return readMagicShopComms();
+			return readUnionShopComms();
 		}else{
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				CommodityList.Builder builder = CommodityList.newBuilder();
@@ -340,7 +341,7 @@ public class ShopRedisService extends RedisService{
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			Map<Integer, CommodityList.Builder> map = readMagicShopComms();
+			Map<Integer, CommodityList.Builder> map = readUnionShopComms();
 			return map.get(will).build();
 		}
 	}
@@ -359,24 +360,24 @@ public class ShopRedisService extends RedisService{
 	}
 
 	//魔化商店
-	public ShopList getMagicShop() {
-		String value = this.hget(USERDATA+user.getId(), MAGICSHOP);
+	public ShopList getPVPShop() {
+		String value = this.hget(USERDATA+user.getId(), PVPSHOP);
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			ShopList shoplist = buildMagicShop();
-			saveMagicShop(shoplist);
+			ShopList shoplist = buildPVPShop();
+			savePVPShop(shoplist);
 			return shoplist;
 		}
 	}
 	
-	public void saveMagicShop(ShopList shoplist) {
+	public void savePVPShop(ShopList shoplist) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), MAGICSHOP, formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), PVPSHOP, formatJson(shoplist));
 	}
 	
-	public long getMagicShopEndTime(){
+	public long getPVPShopEndTime(){
 		long time = System.currentTimeMillis()/1000;
 		long day = time/24/3600;
 		long hour = (time/3600)%24;
@@ -387,17 +388,17 @@ public class ShopRedisService extends RedisService{
 		return day*24*3600+hour*3600;
 	}
 	
-	public ShopList buildMagicShop(){
+	public ShopList buildPVPShop(){
 		String xml = ReadConfig("lol_shopmohuamohua.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		parseXml(xml, willsbuilder);
 		
-		ShopList.Builder builder = buildComms(willsbuilder, getMagicShopComms());
-		builder.setEndTime(getMagicShopEndTime());
+		ShopList.Builder builder = buildComms(willsbuilder, getPVPShopComms());
+		builder.setEndTime(getPVPShopEndTime());
 		return builder.build();
 	}
 
-	public Map<Integer, CommodityList.Builder> readMagicShopComms(){
+	public Map<Integer, CommodityList.Builder> readPVPShopComms(){
 		String xml = ReadConfig("lol_shopmohua.xml");
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
@@ -414,15 +415,15 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(MAGICSHOP, resultmap);
+		this.hputAll(PVPSHOP, resultmap);
 		return map;
 	}
 	
-	public Map<Integer, CommodityList.Builder> getMagicShopComms(){
+	public Map<Integer, CommodityList.Builder> getPVPShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(MAGICSHOP);
+		Map<String, String> keyvalue = this.hget(PVPSHOP);
 		if(keyvalue.isEmpty()){
-			return readMagicShopComms();
+			return readPVPShopComms();
 		}else{
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				CommodityList.Builder builder = CommodityList.newBuilder();
@@ -433,28 +434,127 @@ public class ShopRedisService extends RedisService{
 		}
 	}
 	
-	public CommodityList getMagicShopComms(int will){
-		String value = this.hget(MAGICSHOP, will+"");
+	public CommodityList getPVPShopComms(int will){
+		String value = this.hget(PVPSHOP, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			Map<Integer, CommodityList.Builder> map = readMagicShopComms();
+			Map<Integer, CommodityList.Builder> map = readPVPShopComms();
 			return map.get(will).build();
 		}
 	}
 
-	public int getMagicShopRefreshTime(){
-		String value = this.hget(USERDAILYDATA+user.getId(), "MagicShopRefreshTime");
+	public int getPVPShopRefreshTime(){
+		String value = this.hget(USERDAILYDATA+user.getId(), "PVPShopRefreshTime");
 		if(value != null)
 			return Integer.parseInt(value);
 		else
 			return 0;
 	}
 
-	public void saveMagicShopRefreshTime(int time){
+	public void savePVPShopRefreshTime(int time){
 		this.setExpireDate(nextDay());
-		hput(USERDAILYDATA+user.getId(), "MagicShopRefreshTime", time+"");
+		hput(USERDAILYDATA+user.getId(), "PVPShopRefreshTime", time+"");
+	}
+
+	//魔化商店
+	public ShopList getExpeditionShop() {
+		String value = this.hget(USERDATA+user.getId(), EXPEDITIONSHOP);
+		ShopList.Builder builder = ShopList.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			ShopList shoplist = buildExpeditionShop();
+			saveExpeditionShop(shoplist);
+			return shoplist;
+		}
+	}
+	
+	public void saveExpeditionShop(ShopList shoplist) {
+		if(shoplist.getItemsCount() > 0)
+			this.hput(USERDATA+user.getId(), EXPEDITIONSHOP, formatJson(shoplist));
+	}
+	
+	public long getExpeditionShopEndTime(){
+		long time = System.currentTimeMillis()/1000;
+		long day = time/24/3600;
+		long hour = (time/3600)%24;
+		if(hour < 21)
+			hour = 21;
+		else//第二天21点
+			hour = 45;
+		return day*24*3600+hour*3600;
+	}
+	
+	public ShopList buildExpeditionShop(){
+		String xml = ReadConfig("lol_shopmohuamohua.xml");
+		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
+		parseXml(xml, willsbuilder);
+		
+		ShopList.Builder builder = buildComms(willsbuilder, getExpeditionShopComms());
+		builder.setEndTime(getExpeditionShopEndTime());
+		return builder.build();
+	}
+
+	public Map<Integer, CommodityList.Builder> readExpeditionShopComms(){
+		String xml = ReadConfig("lol_shopmohua.xml");
+		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
+		parseXml(xml, commsbuilder);
+		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
+		for(Commodity comm : commsbuilder.getItemList()){
+			CommodityList.Builder comms = map.get(comm.getWill());
+			if(comms == null){
+				comms = CommodityList.newBuilder();
+			}
+			comms.addItem(comm);
+			map.put(comm.getWill(), comms);
+		}
+		Map<String, String> resultmap = new HashMap<String, String>();
+		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
+			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
+		}
+		this.hputAll(EXPEDITIONSHOP, resultmap);
+		return map;
+	}
+	
+	public Map<Integer, CommodityList.Builder> getExpeditionShopComms(){
+		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
+		Map<String, String> keyvalue = this.hget(EXPEDITIONSHOP);
+		if(keyvalue.isEmpty()){
+			return readExpeditionShopComms();
+		}else{
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				CommodityList.Builder builder = CommodityList.newBuilder();
+				parseJson(entry.getValue(), builder);
+				map.put(Integer.parseInt(entry.getKey()), builder);
+			}
+			return map;
+		}
+	}
+	
+	public CommodityList getExpeditionShopComms(int will){
+		String value = this.hget(EXPEDITIONSHOP, will+"");
+		CommodityList.Builder builder = CommodityList.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			Map<Integer, CommodityList.Builder> map = readExpeditionShopComms();
+			return map.get(will).build();
+		}
+	}
+
+	public int getExpeditionShopRefreshTime(){
+		String value = this.hget(USERDAILYDATA+user.getId(), "ExpeditionShopRefreshTime");
+		if(value != null)
+			return Integer.parseInt(value);
+		else
+			return 0;
+	}
+
+	public void saveExpeditionShopRefreshTime(int time){
+		this.setExpireDate(nextDay());
+		hput(USERDAILYDATA+user.getId(), "ExpeditionShopRefreshTime", time+"");
 	}
 
 	//天梯商店

@@ -14,12 +14,15 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -28,8 +31,9 @@ import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.ResponseBlackShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseDailyShopCommand;
+import com.trans.pixel.protoc.Commands.ResponseExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseLadderShopCommand;
-import com.trans.pixel.protoc.Commands.ResponseMagicShopCommand;
+import com.trans.pixel.protoc.Commands.ResponsePVPShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionShopCommand;
 import com.trans.pixel.protoc.Commands.ShopList;
@@ -325,7 +329,7 @@ public class ShopCommandService extends BaseCommandService{
 		responseBuilder.setUnionShopCommand(shop);
 	}
 
-	public int getMagicShopRefreshCost(int time){
+	public int getPVPShopRefreshCost(int time){
 		final int factor = 1;
 		if(time < 1){
 			return 10*factor;
@@ -345,25 +349,25 @@ public class ShopCommandService extends BaseCommandService{
 		return 500*factor;
 	}
 	
-	public void MagicShop(RequestMagicShopCommand cmd, Builder responseBuilder, UserBean user){
+	public void PVPShop(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
-		ShopList shoplist = service.getMagicShop();
-		int refreshtime = service.getMagicShopRefreshTime();
+		ShopList shoplist = service.getPVPShop();
+		int refreshtime = service.getPVPShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-			shoplist = service.refreshMagicShop();
+			shoplist = service.refreshPVPShop();
 		}
 
-		ResponseMagicShopCommand.Builder shop = ResponseMagicShopCommand.newBuilder();
+		ResponsePVPShopCommand.Builder shop = ResponsePVPShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getItemsList());
 		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(getMagicShopRefreshCost(refreshtime));
-		responseBuilder.setMagicShopCommand(shop);
+		shop.setRefreshCost(getPVPShopRefreshCost(refreshtime));
+		responseBuilder.setPVPShopCommand(shop);
 	}
 
-	public void MagicShopPurchase(RequestMagicShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
+	public void PVPShopPurchase(RequestPVPShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
-		ShopList.Builder shoplist = ShopList.newBuilder(service.getMagicShop());
-		int refreshtime = service.getMagicShopRefreshTime();
+		ShopList.Builder shoplist = ShopList.newBuilder(service.getPVPShop());
+		int refreshtime = service.getPVPShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -374,28 +378,28 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.doReward(user, commbuilder.getItemid(), commbuilder.getCount());
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
-            service.saveMagicShop(shoplist.build());
+            service.savePVPShop(shoplist.build());
 		}
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-			shoplist = ShopList.newBuilder(service.refreshMagicShop());
+			shoplist = ShopList.newBuilder(service.refreshPVPShop());
 		}
 		
-		ResponseMagicShopCommand.Builder shop = ResponseMagicShopCommand.newBuilder();
+		ResponsePVPShopCommand.Builder shop = ResponsePVPShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getItemsList());
 		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(getMagicShopRefreshCost(refreshtime));
-		responseBuilder.setMagicShopCommand(shop);
+		shop.setRefreshCost(getPVPShopRefreshCost(refreshtime));
+		responseBuilder.setPVPShopCommand(shop);
 	}
 
-	public void MagicShopRefresh(RequestMagicShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
+	public void PVPShopRefresh(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
-		ShopList shoplist = service.getMagicShop();
-		int refreshtime = service.getMagicShopRefreshTime();
-		int jewel = user.getJewel() - getMagicShopRefreshCost(refreshtime);
+		ShopList shoplist = service.getPVPShop();
+		int refreshtime = service.getPVPShopRefreshTime();
+		int jewel = user.getJewel() - getPVPShopRefreshCost(refreshtime);
 		if(jewel >= 0){
 			user.setJewel(jewel);
 			rewardService.updateUser(user);
-			shoplist = service.refreshMagicShop();
+			shoplist = service.refreshPVPShop();
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
 			service.saveDailyShopRefreshTime(refreshtime);
@@ -403,14 +407,102 @@ public class ShopCommandService extends BaseCommandService{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-			shoplist = service.refreshMagicShop();
+			shoplist = service.refreshPVPShop();
 		}
 
-		ResponseMagicShopCommand.Builder shop = ResponseMagicShopCommand.newBuilder();
+		ResponsePVPShopCommand.Builder shop = ResponsePVPShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getItemsList());
 		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(getMagicShopRefreshCost(refreshtime));
-		responseBuilder.setMagicShopCommand(shop);
+		shop.setRefreshCost(getPVPShopRefreshCost(refreshtime));
+		responseBuilder.setPVPShopCommand(shop);
+	}
+
+	public int getExpeditionShopRefreshCost(int time){
+		final int factor = 1;
+		if(time < 1){
+			return 10*factor;
+		}
+		if(time < 3){
+			return 20*factor;
+		}
+		if(time < 6){
+			return 50*factor;
+		}
+		if(time < 10){
+			return 100*factor;
+		}
+		if(time < 20){
+			return 200*factor;
+		}
+		return 500*factor;
+	}
+	
+	public void ExpeditionShop(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user){
+		setUserNX(user);
+		ShopList shoplist = service.getExpeditionShop();
+		int refreshtime = service.getExpeditionShopRefreshTime();
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = service.refreshExpeditionShop();
+		}
+
+		ResponseExpeditionShopCommand.Builder shop = ResponseExpeditionShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getExpeditionShopRefreshCost(refreshtime));
+		responseBuilder.setExpeditionShopCommand(shop);
+	}
+
+	public void ExpeditionShopPurchase(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
+		setUserNX(user);
+		ShopList.Builder shoplist = ShopList.newBuilder(service.getExpeditionShop());
+		int refreshtime = service.getExpeditionShopRefreshTime();
+		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
+		if(commbuilder.getIsOut()){
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+		}else if(!rewardService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+           responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
+		}else{
+			commbuilder.setIsOut(true);
+			rewardService.doReward(user, commbuilder.getItemid(), commbuilder.getCount());
+			rewardService.updateUser(user);
+            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
+            service.saveExpeditionShop(shoplist.build());
+		}
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = ShopList.newBuilder(service.refreshExpeditionShop());
+		}
+		
+		ResponseExpeditionShopCommand.Builder shop = ResponseExpeditionShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getExpeditionShopRefreshCost(refreshtime));
+		responseBuilder.setExpeditionShopCommand(shop);
+	}
+
+	public void ExpeditionShopRefresh(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
+		setUserNX(user);
+		ShopList shoplist = service.getExpeditionShop();
+		int refreshtime = service.getExpeditionShopRefreshTime();
+		int jewel = user.getJewel() - getExpeditionShopRefreshCost(refreshtime);
+		if(jewel >= 0){
+			user.setJewel(jewel);
+			rewardService.updateUser(user);
+			shoplist = service.refreshExpeditionShop();
+            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
+			refreshtime++;
+			service.saveDailyShopRefreshTime(refreshtime);
+		}else{
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+		}
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = service.refreshExpeditionShop();
+		}
+
+		ResponseExpeditionShopCommand.Builder shop = ResponseExpeditionShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getExpeditionShopRefreshCost(refreshtime));
+		responseBuilder.setExpeditionShopCommand(shop);
 	}
 
 	public int getLadderShopRefreshCost(int time){

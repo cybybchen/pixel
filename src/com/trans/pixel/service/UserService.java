@@ -11,16 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.HeadInfo;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
-import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserInfo;
-import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.redis.UserRedisService;
 
 @Service

@@ -14,10 +14,12 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -36,8 +38,10 @@ public class ShopTest extends BaseTest {
 		BlackShopPurchase(0);
 		getUnionShop();
 		UnionShopPurchase(0);
-		getMagicShop();
-		MagicShopPurchase(0);
+		getPVPShop();
+		PVPShopPurchase(0);
+		getExpeditionShop();
+		ExpeditionShopPurchase(0);
 		getLadderShop();
 		LadderShopPurchase(0);
 		getShop();
@@ -112,35 +116,35 @@ public class ShopTest extends BaseTest {
 	}
 
 	
-	private void getMagicShop() {
+	private void getPVPShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
-		RequestMagicShopCommand.Builder builder = RequestMagicShopCommand.newBuilder();
-		requestBuilder.setMagicShopCommand(builder.build());
+		RequestPVPShopCommand.Builder builder = RequestPVPShopCommand.newBuilder();
+		requestBuilder.setPVPShopCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
 		byte[] reqData = reqcmd.toByteArray();
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
-        if(!response.hasMagicShopCommand())
+        if(!response.hasPVPShopCommand())
         	fail("testShop Not yet implemented");
         logger.info(response.getAllFields());
 	}
 	
-	private void MagicShopPurchase(int index) {
+	private void PVPShopPurchase(int index) {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
-		RequestMagicShopPurchaseCommand.Builder builder = RequestMagicShopPurchaseCommand.newBuilder();
+		RequestPVPShopPurchaseCommand.Builder builder = RequestPVPShopPurchaseCommand.newBuilder();
 		builder.setIndex(index);
-		requestBuilder.setMagicShopPurchaseCommand(builder.build());
+		requestBuilder.setPVPShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
 		byte[] reqData = reqcmd.toByteArray();
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
-        if(!response.hasMagicShopCommand())
+        if(!response.hasPVPShopCommand())
         	fail("testShop Not yet implemented");
         logger.info(response.getAllFields());
 	}
@@ -175,6 +179,40 @@ public class ShopTest extends BaseTest {
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
         if(!response.hasUnionShopCommand())
+        	fail("testShop Not yet implemented");
+        logger.info(response.getAllFields());
+	}
+
+	
+	private void getExpeditionShop() {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestExpeditionShopCommand.Builder builder = RequestExpeditionShopCommand.newBuilder();
+		requestBuilder.setExpeditionShopCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        if(!response.hasExpeditionShopCommand())
+        	fail("testShop Not yet implemented");
+        logger.info(response.getAllFields());
+	}
+	
+	private void ExpeditionShopPurchase(int index) {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestExpeditionShopPurchaseCommand.Builder builder = RequestExpeditionShopPurchaseCommand.newBuilder();
+		builder.setIndex(index);
+		requestBuilder.setExpeditionShopPurchaseCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        if(!response.hasExpeditionShopCommand())
         	fail("testShop Not yet implemented");
         logger.info(response.getAllFields());
 	}

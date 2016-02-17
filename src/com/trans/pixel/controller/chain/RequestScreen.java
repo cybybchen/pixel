@@ -28,6 +28,12 @@ import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -44,9 +50,6 @@ import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
@@ -176,12 +179,15 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestMagicShopCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestMagicShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestMagicShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPVPShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -482,21 +488,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//UnionShopRefreshCommand
                 result = handleCommand(cmd, responseBuilder, user);//UnionShopRefreshCommand
         }//UnionShopRefreshCommand
-        if (request.hasMagicShopCommand()) {
-            RequestMagicShopCommand cmd = request.getMagicShopCommand();
-            if (result)//MagicShopCommand
-                result = handleCommand(cmd, responseBuilder, user);//MagicShopCommand
-        }//MagicShopCommand
-        if (request.hasMagicShopPurchaseCommand()) {
-            RequestMagicShopPurchaseCommand cmd = request.getMagicShopPurchaseCommand();
-            if (result)//MagicShopPurchaseCommand
-                result = handleCommand(cmd, responseBuilder, user);//MagicShopPurchaseCommand
-        }//MagicShopPurchaseCommand
-        if (request.hasMagicShopRefreshCommand()) {
-            RequestMagicShopRefreshCommand cmd = request.getMagicShopRefreshCommand();
-            if (result)//MagicShopRefreshCommand
-                result = handleCommand(cmd, responseBuilder, user);//MagicShopRefreshCommand
-        }//MagicShopRefreshCommand
         if (request.hasLadderShopCommand()) {
             RequestLadderShopCommand cmd = request.getLadderShopCommand();
             if (result)//LadderShopCommand
@@ -512,6 +503,36 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//LadderShopRefreshCommand
                 result = handleCommand(cmd, responseBuilder, user);//LadderShopRefreshCommand
         }//LadderShopRefreshCommand
+        if (request.hasPVPShopCommand()) {
+            RequestPVPShopCommand cmd = request.getPVPShopCommand();
+            if (result)//PVPShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//PVPShopCommand
+        }//PVPShopCommand
+        if (request.hasPVPShopPurchaseCommand()) {
+            RequestPVPShopPurchaseCommand cmd = request.getPVPShopPurchaseCommand();
+            if (result)//PVPShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//PVPShopPurchaseCommand
+        }//PVPShopPurchaseCommand
+        if (request.hasPVPShopRefreshCommand()) {
+            RequestPVPShopRefreshCommand cmd = request.getPVPShopRefreshCommand();
+            if (result)//PVPShopRefreshCommand
+                result = handleCommand(cmd, responseBuilder, user);//PVPShopRefreshCommand
+        }//PVPShopRefreshCommand
+        if (request.hasExpeditionShopCommand()) {
+            RequestExpeditionShopCommand cmd = request.getExpeditionShopCommand();
+            if (result)//ExpeditionShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//ExpeditionShopCommand
+        }//ExpeditionShopCommand
+        if (request.hasExpeditionShopPurchaseCommand()) {
+            RequestExpeditionShopPurchaseCommand cmd = request.getExpeditionShopPurchaseCommand();
+            if (result)//ExpeditionShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//ExpeditionShopPurchaseCommand
+        }//ExpeditionShopPurchaseCommand
+        if (request.hasExpeditionShopRefreshCommand()) {
+            RequestExpeditionShopRefreshCommand cmd = request.getExpeditionShopRefreshCommand();
+            if (result)//ExpeditionShopRefreshCommand
+                result = handleCommand(cmd, responseBuilder, user);//ExpeditionShopRefreshCommand
+        }//ExpeditionShopRefreshCommand
         //call handleCommand here
         
         return result;

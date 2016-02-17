@@ -18,7 +18,7 @@ public class UserBean {
 	private int jewel = 0;
 	private int coin = 0;
 	private int exp = 0;
-	private int pointMagic = 0;
+	private int pointPVP = 0;
 	private int pointLadder = 0;
 	private int pointExpedition = 0;
 	private int pointUnion = 0;
@@ -142,14 +142,14 @@ public class UserBean {
 	/**
 	 * 拥有魔晶
 	 */
-	public int getPointMagic() {
-		return pointMagic;
+	public int getPointPVP() {
+		return pointPVP;
 	}
 	/**
 	 * 拥有魔晶
 	 */
-	public void setPointMagic(int point) {
-		this.pointMagic = point;
+	public void setPointPVP(int point) {
+		this.pointPVP = point;
 	}
 	/**
 	 * 拥有天梯币
@@ -309,7 +309,6 @@ public class UserBean {
 //		builder.setServerId(serverId);
 //		builder.setUnionId(unionId);
 //		builder.setUnionJob(unionJob);
-//		builder.setPointVS(pointVS);
 		return builder.build();
 	}
 	
@@ -322,7 +321,6 @@ public class UserBean {
 //		builder.setServerId(serverId);
 //		builder.setUnionId(unionId);
 //		builder.setUnionJob(unionJob);
-//		builder.setPointVS(pointVS);
 //		return builder.build();
 //	}
 
@@ -338,7 +336,7 @@ public class UserBean {
 		builder.setJewel(jewel);
 		builder.setCoin(coin);
 		builder.setExp(exp);
-		builder.setPointVS(pointMagic);
+		builder.setPointPVP(pointPVP);
 		builder.setPointLadder(pointLadder);
 		builder.setPointExpedition(pointExpedition);
 		builder.setPointUnion(pointUnion);
@@ -364,7 +362,7 @@ public class UserBean {
 		userMap.put(JEWEL, "" + jewel);
 		userMap.put(COIN, "" + coin);
 		userMap.put(EXP, "" + exp);
-		userMap.put(POINT_MAGIC, "" + pointMagic);
+		userMap.put(POINT_PVP, "" + pointPVP);
 		userMap.put(POINT_LADDER, "" + pointLadder);
 		userMap.put(POINT_EXPEDITION, "" + pointExpedition);
 		userMap.put(POINT_UNION, "" + pointUnion);
@@ -395,7 +393,7 @@ public class UserBean {
 		userBean.setJewel(TypeTranslatedUtil.stringToInt(userMap.get(JEWEL)));
 		userBean.setCoin(TypeTranslatedUtil.stringToInt(userMap.get(COIN)));
 		userBean.setExp(TypeTranslatedUtil.stringToInt(userMap.get(EXP)));
-		userBean.setPointMagic(TypeTranslatedUtil.stringToInt(userMap.get(POINT_MAGIC)));
+		userBean.setPointPVP(TypeTranslatedUtil.stringToInt(userMap.get(POINT_PVP)));
 		userBean.setPointLadder(TypeTranslatedUtil.stringToInt(userMap.get(POINT_LADDER)));
 		userBean.setPointExpedition(TypeTranslatedUtil.stringToInt(userMap.get(POINT_EXPEDITION)));
 		userBean.setPointUnion(TypeTranslatedUtil.stringToInt(userMap.get(POINT_UNION)));
@@ -421,7 +419,7 @@ public class UserBean {
 	private final static String JEWEL = "jewel";
 	private final static String COIN = "coin";
 	private final static String EXP = "exp";
-	private final static String POINT_MAGIC = "point_magic";
+	private final static String POINT_PVP = "point_pvp";
 	private final static String POINT_LADDER = "point_ladder";
 	private final static String POINT_EXPEDITION = "point_expedition";
 	private final static String POINT_UNION = "point_union";

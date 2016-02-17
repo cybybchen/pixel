@@ -79,8 +79,8 @@ public class RewardService {
 				case RewardConst.JEWEL:
 					user.setJewel(user.getJewel() + rewardCount);
 					return true;
-				case RewardConst.MAGICCOIN:
-					user.setPointMagic(user.getPointMagic() + rewardCount);
+				case RewardConst.PVPCOIN:
+					user.setPointPVP(user.getPointPVP() + rewardCount);
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
 					user.setPointExpedition(user.getPointExpedition() + rewardCount);
@@ -187,9 +187,9 @@ public class RewardService {
 					if(rewardCount < user.getJewel()) return false;
 					user.setJewel(user.getJewel() - rewardCount);
 					return true;
-				case RewardConst.MAGICCOIN:
-					if(rewardCount < user.getPointMagic()) return false;
-					user.setPointMagic(user.getPointMagic() - rewardCount);
+				case RewardConst.PVPCOIN:
+					if(rewardCount < user.getPointPVP()) return false;
+					user.setPointPVP(user.getPointPVP() - rewardCount);
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
 					if(rewardCount < user.getPointExpedition()) return false;

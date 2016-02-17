@@ -4,7 +4,7 @@ public class RewardConst {
 	public static final int EXP = 1000;
 	public static final int COIN = 1001;
 	public static final int JEWEL = 1002;
-	public static final int MAGICCOIN = 1003;
+	public static final int PVPCOIN = 1003;
 	public static final int EXPEDITIONCOIN = 1004;
 	public static final int LADDERCOIN = 1005;
 	public static final int UNIONCOIN = 1006;

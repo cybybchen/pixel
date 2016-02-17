@@ -77,7 +77,7 @@ public class BaseCommandService {
 				case RewardConst.JEWEL:
 					errorConst = ErrorConst.NOT_ENOUGH_JEWEL;
 					break;
-				case RewardConst.MAGICCOIN:
+				case RewardConst.PVPCOIN:
 					errorConst = ErrorConst.NOT_ENOUGH_MAGICCOIN;
 					break;
 				case RewardConst.EXPEDITIONCOIN:
