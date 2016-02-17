@@ -111,6 +111,7 @@ public class HeroInfoBean {
 		json.put(LEVEL, level);
 		json.put(STAR_LEVEL, starLevel);
 		json.put(VALUE, value);
+		json.put(RARE, rare);
 		json.put(EQUIP_INFO, equipInfo);
 		json.put(SKILL_INFO_LIST, skillInfoList);
 		
@@ -127,6 +128,7 @@ public class HeroInfoBean {
 		bean.setStarLevel(json.getInt(STAR_LEVEL));
 		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
 		bean.setEquipInfo(json.getString(EQUIP_INFO));
+		bean.setRare(json.getInt(RARE));
 		
 		List<SkillInfoBean> list = new ArrayList<SkillInfoBean>();
 		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, SKILL_INFO_LIST);
@@ -167,6 +169,7 @@ public class HeroInfoBean {
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(1);
 		heroInfo.setValue(1);
+		heroInfo.setRare(1);
 		heroInfo.setEquipInfo("0|0|0|0|0|0");
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -221,6 +224,7 @@ public class HeroInfoBean {
 	private static final String LEVEL = "level";
 	private static final String STAR_LEVEL = "starLevel";
 	private static final String VALUE = "value";
+	private static final String RARE = "rare";
 	private static final String EQUIP_INFO = "equipInfo";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
 	
