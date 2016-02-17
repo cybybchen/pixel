@@ -18,11 +18,11 @@ public class UserBean {
 	private int jewel = 0;
 	private int coin = 0;
 	private int exp = 0;
-	private int pointVS = 0;
+	private int pointMagic = 0;
 	private int pointLadder = 0;
 	private int pointExpedition = 0;
 	private int pointUnion = 0;
-	private int completeLevel = 0;
+	////////////////////////////////
 	private long receiveMessageTimeStamp = 0;
 	private int lastLootTime = 0;
 	private int refreshLeftTimes = 0;
@@ -31,129 +31,243 @@ public class UserBean {
 	private long ladderModeHistoryTop = 10000;
 	private long freeLotteryCoinTime = 0;
 	private long freeLotteryJewelTime = 0;
+	/**
+	 * 用户ID
+	 */
 	public long getId() {
 		return id;
 	}
+	/**
+	 * 用户ID
+	 */
 	public void setId(long id) {
 		this.id = id;
 	}
+	/**
+	 * 用户帐号
+	 */
 	public String getAccount() {
 		return account;
 	}
+	/**
+	 * 用户帐号
+	 */
 	public void setAccount(String account) {
 		this.account = account;
 	}
+	/**
+	 * 用户头像
+	 */
 	public int getIcon() {
 		return icon;
 	}
+	/**
+	 * 用户头像
+	 */
 	public void setIcon(int icon) {
 		this.icon = icon;
 	}
+	/**
+	 * 用户昵称
+	 */
 	public String getUserName() {
 		return name;
 	}
+	/**
+	 * 用户昵称
+	 */
 	public void setUserName(String userName) {
 		this.name = userName;
 	}
+	/**
+	 * 所属服务器ID
+	 */
 	public int getServerId() {
 		return serverId;
 	}
+	/**
+	 * 所属服务器ID
+	 */
 	public void setServerId(int serverId) {
 		this.serverId = serverId;
 	}
+	/**
+	 * 所属工会ID
+	 */
 	public int getUnionId() {
 		return unionId;
 	}
+	/**
+	 * 所属工会ID
+	 */
 	public void setUnionId(int unionId) {
 		this.unionId = unionId;
 	}
+	/**
+	 * 拥有钻石
+	 */
 	public int getJewel() {
 		return jewel;
 	}
+	/**
+	 * 拥有钻石
+	 */
 	public void setJewel(int jewel) {
 		this.jewel = jewel;
 	}
+	/**
+	 * 拥有金币
+	 */
 	public int getCoin() {
 		return coin;
 	}
+	/**
+	 * 拥有金币
+	 */
 	public void setCoin(int coin) {
 		this.coin = coin;
 	}
+	/**
+	 * 拥有经验
+	 */
 	public int getExp() {
 		return exp;
 	}
+	/**
+	 * 拥有经验
+	 */
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
-	public int getPointVS() {
-		return pointVS;
+	/**
+	 * 拥有魔晶
+	 */
+	public int getPointMagic() {
+		return pointMagic;
 	}
-	public void setPointVS(int pointVS) {
-		this.pointVS = pointVS;
+	/**
+	 * 拥有魔晶
+	 */
+	public void setPointMagic(int point) {
+		this.pointMagic = point;
 	}
+	/**
+	 * 拥有天梯币
+	 */
 	public int getPointLadder() {
 		return pointLadder;
 	}
+	/**
+	 * 拥有天梯币
+	 */
 	public void setPointLadder(int pointLadder) {
 		this.pointLadder = pointLadder;
 	}
+	/**
+	 * 拥有远征币
+	 */
 	public int getPointExpedition() {
 		return pointExpedition;
 	}
+	/**
+	 * 拥有远征币
+	 */
 	public void setPointExpedition(int pointExpedition) {
 		this.pointExpedition = pointExpedition;
 	}
+	/**
+	 * 拥有工会币
+	 */
 	public int getPointUnion() {
 		return pointUnion;
 	}
+	/**
+	 * 拥有工会币
+	 */
 	public void setPointUnion(int pointUnion) {
 		this.pointUnion = pointUnion;
 	}
-	public int getCompleteLevel() {
-		return completeLevel;
-	}
-	public void setCompleteLevel(int completeLevel) {
-		this.completeLevel = completeLevel;
-	}
+	/**
+	 * 留言板时间戳
+	 */
 	public long getReceiveMessageTimeStamp() {
 		return receiveMessageTimeStamp;
 	}
+	/**
+	 * 留言板时间戳
+	 */
 	public void setReceiveMessageTimeStamp(long receiveMessageTimeStamp) {
 		this.receiveMessageTimeStamp = receiveMessageTimeStamp;
 	}
+	/**
+	 * 挂机时间点
+	 */
 	public int getLastLootTime() {
 		return lastLootTime;
 	}
+	/**
+	 * 挂机时间点
+	 */
 	public void setLastLootTime(int lastLootTime) {
 		this.lastLootTime = lastLootTime;
 	}
+	/**
+	 * 挂机PVP刷新次数
+	 */
 	public int getRefreshLeftTimes() {
 		return refreshLeftTimes;
 	}
+	/**
+	 * 挂机PVP刷新次数
+	 */
 	public void setRefreshLeftTimes(int refreshLeftTimes) {
 		this.refreshLeftTimes = refreshLeftTimes;
 	}
+	/**
+	 * 登陆时间
+	 */
 	public String getLastLoginTime() {
 		return lastLoginTime;
 	}
+	/**
+	 * 登陆时间
+	 */
 	public void setLastLoginTime(String lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
+	/**
+	 * 剩余天梯次数
+	 */
 	public int getLadderModeLeftTimes() {
 		return ladderModeLeftTimes;
 	}
+	/**
+	 * 剩余天梯次数
+	 */
 	public void setLadderModeLeftTimes(int ladderModeLeftTimes) {
 		this.ladderModeLeftTimes = ladderModeLeftTimes;
 	}
+	/**
+	 * 天梯历史最高排名
+	 */
 	public long getLadderModeHistoryTop() {
 		return ladderModeHistoryTop;
 	}
+	/**
+	 * 天梯历史最高排名
+	 */
 	public void setLadderModeHistoryTop(long ladderModeHistoryTop) {
 		this.ladderModeHistoryTop = ladderModeHistoryTop;
 	}
+	/**
+	 * 工会职务
+	 */
 	public int getUnionJob() {
 		return unionJob;
 	}
+	/**
+	 * 工会职务
+	 */
 	public void setUnionJob(int unionJob) {
 		this.unionJob = unionJob;
 	}
@@ -224,11 +338,10 @@ public class UserBean {
 		builder.setJewel(jewel);
 		builder.setCoin(coin);
 		builder.setExp(exp);
-		builder.setPointVS(pointVS);
+		builder.setPointVS(pointMagic);
 		builder.setPointLadder(pointLadder);
 		builder.setPointExpedition(pointExpedition);
 		builder.setPointUnion(pointUnion);
-		builder.setCompleteLevel(completeLevel);
 //		builder.setReceiveMessageTimeStamp(receiveMessageTimeStamp);
 //		builder.setLastLootTime(lastLootTime);
 //		builder.setRefreshLeftTimes(refreshLeftTimes);
@@ -251,11 +364,10 @@ public class UserBean {
 		userMap.put(JEWEL, "" + jewel);
 		userMap.put(COIN, "" + coin);
 		userMap.put(EXP, "" + exp);
-		userMap.put(POINT_VS, "" + pointVS);
+		userMap.put(POINT_MAGIC, "" + pointMagic);
 		userMap.put(POINT_LADDER, "" + pointLadder);
 		userMap.put(POINT_EXPEDITION, "" + pointExpedition);
 		userMap.put(POINT_UNION, "" + pointUnion);
-		userMap.put(COMPLETE_LEVEL, "" + completeLevel);
 		userMap.put(RECEIVE_MESSAGE_TIMESTAMP, "" + receiveMessageTimeStamp);
 		userMap.put(LAST_LOOT_TIME, "" + lastLootTime);
 		userMap.put(REFRESH_LEFT_TIMES, "" + refreshLeftTimes);
@@ -283,11 +395,10 @@ public class UserBean {
 		userBean.setJewel(TypeTranslatedUtil.stringToInt(userMap.get(JEWEL)));
 		userBean.setCoin(TypeTranslatedUtil.stringToInt(userMap.get(COIN)));
 		userBean.setExp(TypeTranslatedUtil.stringToInt(userMap.get(EXP)));
-		userBean.setPointVS(TypeTranslatedUtil.stringToInt(userMap.get(POINT_VS)));
+		userBean.setPointMagic(TypeTranslatedUtil.stringToInt(userMap.get(POINT_MAGIC)));
 		userBean.setPointLadder(TypeTranslatedUtil.stringToInt(userMap.get(POINT_LADDER)));
 		userBean.setPointExpedition(TypeTranslatedUtil.stringToInt(userMap.get(POINT_EXPEDITION)));
 		userBean.setPointUnion(TypeTranslatedUtil.stringToInt(userMap.get(POINT_UNION)));
-		userBean.setCompleteLevel(TypeTranslatedUtil.stringToInt(userMap.get(COMPLETE_LEVEL)));
 		userBean.setReceiveMessageTimeStamp(TypeTranslatedUtil.stringToInt(userMap.get(RECEIVE_MESSAGE_TIMESTAMP)));
 		userBean.setLastLootTime(TypeTranslatedUtil.stringToInt(userMap.get(LAST_LOOT_TIME)));
 		userBean.setRefreshLeftTimes(TypeTranslatedUtil.stringToInt(userMap.get(REFRESH_LEFT_TIMES)));
@@ -310,11 +421,10 @@ public class UserBean {
 	private final static String JEWEL = "jewel";
 	private final static String COIN = "coin";
 	private final static String EXP = "exp";
-	private final static String POINT_VS = "point_vs";
+	private final static String POINT_MAGIC = "point_magic";
 	private final static String POINT_LADDER = "point_ladder";
 	private final static String POINT_EXPEDITION = "point_expedition";
 	private final static String POINT_UNION = "point_union";
-	private final static String COMPLETE_LEVEL = "complete_level";
 	private final static String RECEIVE_MESSAGE_TIMESTAMP = "receive_message_timestamp";
 	private final static String LAST_LOOT_TIME = "last_loot_time";
 	private final static String REFRESH_LEFT_TIMES = "refresh_left_times";

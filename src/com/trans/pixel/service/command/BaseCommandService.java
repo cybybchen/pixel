@@ -80,8 +80,8 @@ public class BaseCommandService {
 				case RewardConst.MAGICCOIN:
 					errorConst = ErrorConst.NOT_ENOUGH_MAGICCOIN;
 					break;
-				case RewardConst.YUANZHENGCOIN:
-					errorConst = ErrorConst.NOT_ENOUGH_YUANZHENGCOIN;
+				case RewardConst.EXPEDITIONCOIN:
+					errorConst = ErrorConst.NOT_ENOUGH_EXPEDITIONCOIN;
 					break;
 				case RewardConst.LADDERCOIN:
 					errorConst = ErrorConst.NOT_ENOUGH_LADDERCOIN;

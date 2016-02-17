@@ -72,19 +72,28 @@ public class RewardService {
 			switch (rewardId) {
 				case RewardConst.EXP:
 					user.setExp(user.getExp() + rewardCount);
-					break;
+					return true;
 				case RewardConst.COIN:
 					user.setCoin(user.getCoin() + rewardCount);
-					break;
+					return true;
 				case RewardConst.JEWEL:
 					user.setJewel(user.getJewel() + rewardCount);
-					break;
+					return true;
 				case RewardConst.MAGICCOIN:
-					break;
+					user.setPointMagic(user.getPointMagic() + rewardCount);
+					return true;
+				case RewardConst.EXPEDITIONCOIN:
+					user.setPointExpedition(user.getPointExpedition() + rewardCount);
+					return true;
+				case RewardConst.LADDERCOIN:
+					user.setPointLadder(user.getPointLadder() + rewardCount);
+					return true;
+				case RewardConst.UNIONCOIN:
+					user.setPointUnion(user.getPointUnion() + rewardCount);
+					return true;
 				default:
 					break;
 			}
-			return true;
 		}
 		return false;
 	}
@@ -179,10 +188,10 @@ public class RewardService {
 					user.setJewel(user.getJewel() - rewardCount);
 					return true;
 				case RewardConst.MAGICCOIN:
-					if(rewardCount < user.getPointVS()) return false;
-					user.setPointVS(user.getPointVS() - rewardCount);
+					if(rewardCount < user.getPointMagic()) return false;
+					user.setPointMagic(user.getPointMagic() - rewardCount);
 					return true;
-				case RewardConst.YUANZHENGCOIN:
+				case RewardConst.EXPEDITIONCOIN:
 					if(rewardCount < user.getPointExpedition()) return false;
 					user.setPointExpedition(user.getPointExpedition() - rewardCount);
 					return true;

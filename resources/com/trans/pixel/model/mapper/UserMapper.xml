@@ -12,11 +12,10 @@
 		<result property="jewel" column="jewel" />
 		<result property="coin" column="coin" />
 		<result property="exp" column="exp" />
-		<result property="pointVS" column="point_vs" />
+		<result property="pointMagic" column="point_magic" />
 		<result property="pointLadder" column="point_ladder" />
 		<result property="pointExpedition" column="point_expedition" />
 		<result property="pointUnion" column="point_union" />
-		<result property="completeLevel" column="complete_level" />
 		<result property="receiveMessageTimeStamp" column="receive_message_timestamp" />
 		<result property="lastLootTime" column="last_loot_time" />
 		<result property="lastLoginTime" column="last_login_time" />
@@ -39,16 +38,16 @@
 	</select>
 	
 	<insert id="addNewUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserBean">
-		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_vs, point_ladder, point_expedition, 
-		point_union, complete_level, receive_message_timestamp, last_loot_time, last_login_time)
-		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointVS}, #{pointLadder},
-		#{pointExpedition}, #{pointUnion}, #{completeLevel}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime})
+		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_magic, point_ladder, point_expedition, 
+		point_union, receive_message_timestamp, last_loot_time, last_login_time)
+		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointMagic}, #{pointLadder},
+		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
 		UPDATE user SET account=#{account}, name=#{userName}, server_id=#{serverId}, union_id=#{unionId}, union_job=#{unionJob}, jewel=#{jewel}, coin=#{coin},
-		exp=#{exp}, point_vs=#{pointVS}, point_ladder=#{pointLadder}, point_expedition=#{pointExpedition},
-		point_union=#{pointUnion}, complete_level=#{completeLevel}, receive_message_timestamp=#{receiveMessageTimeStamp},
+		exp=#{exp}, point_magic=#{pointMagic}, point_ladder=#{pointLadder}, point_expedition=#{pointExpedition},
+		point_union=#{pointUnion}, receive_message_timestamp=#{receiveMessageTimeStamp},
 		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}, ladder_mode_history_top=#{ladderModeHistoryTop}
 		WHERE id=#{id}
 	</update>
