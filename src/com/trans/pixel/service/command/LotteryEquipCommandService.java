@@ -12,9 +12,9 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseLotteryEquipCommand;
+import com.trans.pixel.protoc.Commands.ResponseLotteryCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LotteryEquipService;
 import com.trans.pixel.service.RewardService;
@@ -30,7 +30,7 @@ public class LotteryEquipCommandService extends BaseCommandService {
 	private LotteryEquipService lotteryEquipService;
 	@Resource
 	private RewardService rewardService;
-	public void lotteryEquip(RequestLotteryEquipCommand cmd, Builder responseBuilder, UserBean user) {
+	public void lotteryEquip(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
 		int count = 10;
 		if (cmd.hasCount())
@@ -46,13 +46,13 @@ public class LotteryEquipCommandService extends BaseCommandService {
 			
 		}
 		
-		ResponseLotteryEquipCommand.Builder builder = ResponseLotteryEquipCommand.newBuilder();
+		ResponseLotteryCommand.Builder builder = ResponseLotteryCommand.newBuilder();
 		List<RewardBean> lotteryList = lotteryEquipService.randomLotteryList(type, count);
 		rewardService.doRewards(user, lotteryList);
 		builder.setCoin(user.getCoin());
 		builder.setJewel(user.getJewel());
 		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
-		responseBuilder.setLotteryEquipCommand(builder.build());
+		responseBuilder.setLotteryCommand(builder.build());
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 		
 	}

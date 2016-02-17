@@ -19,9 +19,15 @@ import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
@@ -31,6 +37,10 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
+//add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
@@ -39,8 +49,10 @@ import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
@@ -49,31 +61,18 @@ import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestShopCommand;
+import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
-import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
-import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestShopCommand;
-import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
-import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
-import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
-//add import here
 
 public class HeadScreen extends RequestScreen {
 	
@@ -202,7 +201,7 @@ public class HeadScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestLotteryHeroCommand cmd,
+	protected boolean handleCommand(RequestLotteryCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;
@@ -252,13 +251,6 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestLotteryEquipCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

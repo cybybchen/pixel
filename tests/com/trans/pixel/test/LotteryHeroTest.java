@@ -8,19 +8,19 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class LotteryHeroTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LotteryHeroTest.class);
 	
 	@Test
-	public void registerTest() {
+	public void lotteryTest() {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
-		RequestLotteryHeroCommand.Builder b = RequestLotteryHeroCommand.newBuilder();
+		RequestLotteryCommand.Builder b = RequestLotteryCommand.newBuilder();
 		b.setType(1001);
-		builder.setLotteryHeroCommand(b.build());
+		builder.setLotteryCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
 		byte[] reqData = reqcmd.toByteArray();

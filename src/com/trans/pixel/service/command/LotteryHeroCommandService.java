@@ -13,9 +13,9 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.ResponseLotteryCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LotteryHeroService;
 import com.trans.pixel.service.RewardService;
@@ -35,7 +35,7 @@ public class LotteryHeroCommandService extends BaseCommandService {
 	@Resource
 	private UserService userService;
 	
-	public void lotteryHero(RequestLotteryHeroCommand cmd, Builder responseBuilder, UserBean user) {
+	public void lottery(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
 		int count = 10;
 		if (cmd.hasCount())
@@ -53,14 +53,15 @@ public class LotteryHeroCommandService extends BaseCommandService {
 			}
 		}
 		
-		ResponseLotteryHeroCommand.Builder builder = ResponseLotteryHeroCommand.newBuilder();
+		ResponseLotteryCommand.Builder builder = ResponseLotteryCommand.newBuilder();
 		List<RewardBean> lotteryList = lotteryService.randomLotteryList(type, count);
 		rewardService.doRewards(user, lotteryList);
 		builder.setCoin(user.getCoin());
 		builder.setJewel(user.getJewel());
 		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
-		responseBuilder.setLotteryHeroCommand(builder.build());
+		responseBuilder.setLotteryCommand(builder.build());
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
+		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 	}
 	
 	private boolean isFreeLotteryTime(UserBean user, int type, int count) {

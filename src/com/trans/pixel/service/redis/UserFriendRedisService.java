@@ -16,22 +16,23 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class UserFriendRedisService {
 	@Resource
-	private RedisTemplate<String, Long> redisTemplate;
+	private RedisTemplate<String, String> redisTemplate;
 	
 	public boolean isUserFriend(final long userId, final long friendId) {
 		return redisTemplate.execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, Long> bsOps = redisTemplate
+				BoundSetOperations<String, String> bsOps = redisTemplate
 						.boundSetOps(buildRedisKey(userId));
 				
 				bsOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				return bsOps.isMember(friendId);
+				return bsOps.isMember("" + friendId);
 			}
 		});
 	}
@@ -41,10 +42,10 @@ public class UserFriendRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, Long> bsOps = redisTemplate
+				BoundSetOperations<String, String> bsOps = redisTemplate
 						.boundSetOps(buildRedisKey(userId));
 				
-				bsOps.add(friendId);
+				bsOps.add("" + friendId);
 				bsOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				
 				return null;
@@ -57,11 +58,11 @@ public class UserFriendRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, Long> bsOps = redisTemplate
+				BoundSetOperations<String, String> bsOps = redisTemplate
 						.boundSetOps(buildRedisKey(userId));
 				
 				for (Long friendId : friendIdList) {
-					bsOps.add(friendId);
+					bsOps.add("" + friendId);
 				}
 				
 				bsOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
@@ -76,11 +77,11 @@ public class UserFriendRedisService {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, Long> bsOps = redisTemplate
+				BoundSetOperations<String, String> bsOps = redisTemplate
 						.boundSetOps(buildRedisKey(userId));
 				
 				bsOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				return bsOps.remove(friendId);
+				return bsOps.remove("" + friendId);
 			}
 		});
 	}
@@ -90,13 +91,13 @@ public class UserFriendRedisService {
 			@Override
 			public List<Long> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, Long> bsOps = redisTemplate
+				BoundSetOperations<String, String> bsOps = redisTemplate
 						.boundSetOps(buildRedisKey(userId));
 				
 				List<Long> friendIdList = new ArrayList<Long>();
-				Set<Long> friendIdSet = bsOps.members();
-				for (Long friendId : friendIdSet) {
-					friendIdList.add(friendId);
+				Set<String> friendIdSet = bsOps.members();
+				for (String friendId : friendIdSet) {
+					friendIdList.add(TypeTranslatedUtil.stringToLong(friendId));
 				}
 				
 				return friendIdList;

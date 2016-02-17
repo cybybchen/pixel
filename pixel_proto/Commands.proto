@@ -428,28 +428,16 @@ message ResponseRefreshRelatedUserCommand {
 	required int64 relatedUserId = 2;
 }
 
-message RequestLotteryHeroCommand {
+message RequestLotteryCommand {
 	required int32 type = 1; //1001:jinbi 1002:zuanshi
 	optional int32 count = 2; //默认是10
 }
 
-message ResponseLotteryHeroCommand {
+message ResponseLotteryCommand {
 	optional int32 coin = 1;
 	optional int32 jewel = 2;
 	repeated RewardInfo rewardList = 3;
 }
-
-message RequestLotteryEquipCommand {
-        required int32 type = 1; //1001:jinbi 1002:zuanshi
-	optional int32 count = 2; //默认是10
-}
-
-message ResponseLotteryEquipCommand {
-        optional int32 coin = 1;
-        optional int32 jewel = 2;
-        repeated RewardInfo rewardList = 3;
-}
-
 
 message ResponseGetUserHeroCommand {
 	repeated UserHero userHero = 1;
@@ -718,7 +706,7 @@ message RequestCommand {
 	optional RequestAddHeroEquipCommand addHeroEquipCommand = 11;
 	optional RequestAttackRelativeCommand attackRelativeCommand = 12;
 	optional RequestRefreshRelatedUserCommand refreshRelatedUserCommand = 13;
-	optional RequestLotteryHeroCommand lotteryHeroCommand = 14;
+	optional RequestLotteryCommand lotteryCommand = 14;
 	optional RequestGetLadderRankListCommand getLadderRankListCommand = 15;
 	optional RequestGetUserLadderRankListCommand getUserLadderRankListCommand = 16;
 	optional RequestAttackLadderModeCommand attackLadderModeCommand = 17;
@@ -727,7 +715,6 @@ message RequestCommand {
 	optional RequestDeleteMailCommand deleteMailCommand = 20;
 	optional RequestAddFriendCommand addFriendCommand = 21;
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
-	optional RequestLotteryEquipCommand lotteryEquipCommand = 23;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestReceiveFriendCommand receiveFriend = 25;
 	optional RequestAreaCommand areaCommand = 26;
@@ -792,7 +779,7 @@ message ResponseCommand {
 	optional ResponseAttackRelativeCommand attackRelativeCommand = 10;
 	optional ResponseGetUserMineCommand getUserMineCommand = 11;
 	optional ResponseRefreshRelatedUserCommand refreshRelatedUserCommand = 12;
-	optional ResponseLotteryHeroCommand lotteryHeroCommand = 13;
+	optional ResponseLotteryCommand lotteryCommand = 13;
 	optional ResponseGetUserHeroCommand getUserHeroCommand = 14;
 	optional ResponseGetLadderRankListCommand getLadderRankListCommand = 15;
 	optional ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;
@@ -801,7 +788,6 @@ message ResponseCommand {
 	optional ResponseSendRewardCommand sendRewardCommand = 19;
 	optional ResponseMessageCommand messageCommand = 20;
 	optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
-	optional ResponseLotteryEquipCommand lotteryEquipCommand = 22;
 	optional ResponseGetUserEquipCommand userEquipCommand = 23;
 	optional ResponseAreaCommand areaCommand = 24;
 	optional ResponseUserLevelCommand userLevelCommand = 25;

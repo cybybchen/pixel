@@ -47,8 +47,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
 import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
@@ -207,9 +206,9 @@ public class GameDataScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestLotteryHeroCommand cmd,
+	protected boolean handleCommand(RequestLotteryCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		lotteryCommandService.lotteryHero(cmd, responseBuilder, user);
+		lotteryCommandService.lottery(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -259,13 +258,6 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		friendCommandService.handleReceiveFriendCommand(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestLotteryEquipCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		lotteryEquipCommandService.lotteryEquip(cmd, responseBuilder, user);
 		return true;
 	}
 

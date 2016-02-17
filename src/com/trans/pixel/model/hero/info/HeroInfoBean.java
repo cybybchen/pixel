@@ -146,6 +146,7 @@ public class HeroInfoBean {
 		builder.setLevel(level);
 		builder.setRare(rare);
 		builder.setValue(value);
+		builder.setStar(starLevel);
 		builder.addAllSkill(buildSkillList());
 		
 		return builder.build();
