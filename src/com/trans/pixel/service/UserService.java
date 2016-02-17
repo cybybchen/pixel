@@ -33,7 +33,8 @@ public class UserService {
     		if (user != null)
     			userRedisService.updateUser(user);
     	}
-        
+        if(user != null)
+        	user.setUserDailyData(userRedisService.getUserDailyData(userId));
         return user;
     }
 	
@@ -56,13 +57,20 @@ public class UserService {
 			return getUser(Long.parseLong(userId));
 		}
 
+        if(user != null)
+        	user.setUserDailyData(userRedisService.getUserDailyData(user.getId()));
 		return user;
     }
 	
 	public int addNewUser(UserBean user) {
 		int result = userMapper.addNewUser(user);
 		userRedisService.updateUser(user);
+        user.setUserDailyData(userRedisService.getUserDailyData(user.getId()));
 		return result;
+	}
+
+	public void updateUserDailyData(UserBean user) {
+		userRedisService.saveUserDailyData(user.getId(), user.getUserDailyData());
 	}
 	
 	public int updateUser(UserBean user) {
@@ -82,25 +90,28 @@ public class UserService {
 	/**
 	 * get other user(can be null)
 	 */
-	public <T> UserInfo getCache(int serverId, T userId){
-		return userRedisService.getCache(serverId, userId);
+	public <T> UserInfo getCache(T userId){
+		UserInfo userifno =  userRedisService.getCache(userId);
+//		if(userifno == null){
+//		}
+		return userifno;
 	}
 	
 	/**
 	 * get other user
 	 */
-	public <T> List<UserInfo> getCaches(int serverId, List<T> userIds){
-		return userRedisService.getCaches(serverId, userIds);
+	public <T> List<UserInfo> getCaches(List<T> userIds){
+		return userRedisService.getCaches(userIds);
 	}
 	
 	/**
 	 * get other user
 	 */
-	public List<UserInfo> getCaches(int serverId, Set<TypedTuple<String>> ranks){
+	public List<UserInfo> getCaches(Set<TypedTuple<String>> ranks){
 		List<String> userIds = new ArrayList<String>();
 		for(TypedTuple<String> rank : ranks){
 			userIds.add(rank.getValue());
 		}
-		return userRedisService.getCaches(serverId, userIds);
+		return userRedisService.getCaches(userIds);
 	}
 }

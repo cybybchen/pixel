@@ -148,19 +148,6 @@ public class ShopRedisService extends RedisService{
 		}
 	}
 
-	public int getDailyShopRefreshTime(){
-		String value = this.hget(USERDAILYDATA+user.getId(), "DailyShopRefreshTime");
-		if(value != null)
-			return Integer.parseInt(value);
-		else
-			return 0;
-	}
-
-	public void saveDailyShopRefreshTime(int time){
-		this.setExpireDate(nextDay());
-		hput(USERDAILYDATA+user.getId(), "DailyShopRefreshTime", time+"");
-	}
-
 	//黑市
 	public ShopList getBlackShop() {
 		String value = this.hget(USERDATA+user.getId(), BLACKSHOP);
@@ -191,7 +178,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildBlackShop(){
-		String xml = ReadConfig("lol_shopblackblack.xml");
+		String xml = ReadConfig("lol_shopblackshopblack.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		parseXml(xml, willsbuilder);
 		
@@ -247,19 +234,6 @@ public class ShopRedisService extends RedisService{
 		}
 	}
 
-	public int getBlackShopRefreshTime(){
-		String value = this.hget(USERDAILYDATA+user.getId(), "BlackShopRefreshTime");
-		if(value != null)
-			return Integer.parseInt(value);
-		else
-			return 0;
-	}
-
-	public void saveBlackShopRefreshTime(int time){
-		this.setExpireDate(nextDay());
-		hput(USERDAILYDATA+user.getId(), "BlackShopRefreshTime", time+"");
-	}
-
 	//工会商店
 	public ShopList getUnionShop() {
 		String value = this.hget(USERDATA+user.getId(), UNIONSHOP);
@@ -290,7 +264,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildUnionShop(){
-		String xml = ReadConfig("lol_shopgonghuigonghui.xml");
+		String xml = ReadConfig("lol_shopgonghuishopgonghui.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		parseXml(xml, willsbuilder);
 		
@@ -346,20 +320,7 @@ public class ShopRedisService extends RedisService{
 		}
 	}
 
-	public int getUnionShopRefreshTime(){
-		String value = this.hget(USERDAILYDATA+user.getId(), "UnionShopRefreshTime");
-		if(value != null)
-			return Integer.parseInt(value);
-		else
-			return 0;
-	}
-
-	public void saveUnionShopRefreshTime(int time){
-		this.setExpireDate(nextDay());
-		hput(USERDAILYDATA+user.getId(), "UnionShopRefreshTime", time+"");
-	}
-
-	//魔化商店
+	//挂机PVP商店
 	public ShopList getPVPShop() {
 		String value = this.hget(USERDATA+user.getId(), PVPSHOP);
 		ShopList.Builder builder = ShopList.newBuilder();
@@ -389,7 +350,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildPVPShop(){
-		String xml = ReadConfig("lol_shopmohuamohua.xml");
+		String xml = ReadConfig("lol_shopmojingshopmojing.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		parseXml(xml, willsbuilder);
 		
@@ -399,7 +360,7 @@ public class ShopRedisService extends RedisService{
 	}
 
 	public Map<Integer, CommodityList.Builder> readPVPShopComms(){
-		String xml = ReadConfig("lol_shopmohua.xml");
+		String xml = ReadConfig("lol_shopmojing.xml");
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
@@ -445,20 +406,7 @@ public class ShopRedisService extends RedisService{
 		}
 	}
 
-	public int getPVPShopRefreshTime(){
-		String value = this.hget(USERDAILYDATA+user.getId(), "PVPShopRefreshTime");
-		if(value != null)
-			return Integer.parseInt(value);
-		else
-			return 0;
-	}
-
-	public void savePVPShopRefreshTime(int time){
-		this.setExpireDate(nextDay());
-		hput(USERDAILYDATA+user.getId(), "PVPShopRefreshTime", time+"");
-	}
-
-	//魔化商店
+	//远征商店
 	public ShopList getExpeditionShop() {
 		String value = this.hget(USERDATA+user.getId(), EXPEDITIONSHOP);
 		ShopList.Builder builder = ShopList.newBuilder();
@@ -488,7 +436,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildExpeditionShop(){
-		String xml = ReadConfig("lol_shopmohuamohua.xml");
+		String xml = ReadConfig("lol_shopyuanzhengshopyuanzheng.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		parseXml(xml, willsbuilder);
 		
@@ -498,7 +446,7 @@ public class ShopRedisService extends RedisService{
 	}
 
 	public Map<Integer, CommodityList.Builder> readExpeditionShopComms(){
-		String xml = ReadConfig("lol_shopmohua.xml");
+		String xml = ReadConfig("lol_shopyuanzheng.xml");
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
@@ -544,19 +492,6 @@ public class ShopRedisService extends RedisService{
 		}
 	}
 
-	public int getExpeditionShopRefreshTime(){
-		String value = this.hget(USERDAILYDATA+user.getId(), "ExpeditionShopRefreshTime");
-		if(value != null)
-			return Integer.parseInt(value);
-		else
-			return 0;
-	}
-
-	public void saveExpeditionShopRefreshTime(int time){
-		this.setExpireDate(nextDay());
-		hput(USERDAILYDATA+user.getId(), "ExpeditionShopRefreshTime", time+"");
-	}
-
 	//天梯商店
 	public ShopList getLadderShop() {
 		String value = this.hget(USERDATA+user.getId(), LADDERSHOP);
@@ -587,7 +522,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildLadderShop(){
-		String xml = ReadConfig("lol_shoptiantitianti.xml");
+		String xml = ReadConfig("lol_shoptiantishoptianti.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		parseXml(xml, willsbuilder);
 		
@@ -641,19 +576,6 @@ public class ShopRedisService extends RedisService{
 			Map<Integer, CommodityList.Builder> map = readLadderShopComms();
 			return map.get(will).build();
 		}
-	}
-
-	public int getLadderShopRefreshTime(){
-		String value = this.hget(USERDAILYDATA+user.getId(), "LadderShopRefreshTime");
-		if(value != null)
-			return Integer.parseInt(value);
-		else
-			return 0;
-	}
-
-	public void saveLadderShopRefreshTime(int time){
-		this.setExpireDate(nextDay());
-		hput(USERDAILYDATA+user.getId(), "LadderShopRefreshTime", time+"");
 	}
 
 	//商城

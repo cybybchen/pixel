@@ -499,32 +499,32 @@ public class GameDataScreen extends RequestScreen {
 	}//LadderShopRefreshCommand
 	@Override//PVPShopCommand
 	protected boolean handleCommand(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO PVPShopCommand method
+		shopCommandService.PVPShop(cmd, responseBuilder, user);
 		return true;//PVPShopCommand
 	}//PVPShopCommand
 	@Override//PVPShopPurchaseCommand
 	protected boolean handleCommand(RequestPVPShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO PVPShopPurchaseCommand method
+		shopCommandService.PVPShopPurchase(cmd, responseBuilder, user);
 		return true;//PVPShopPurchaseCommand
 	}//PVPShopPurchaseCommand
 	@Override//PVPShopRefreshCommand
 	protected boolean handleCommand(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO PVPShopRefreshCommand method
+		shopCommandService.PVPShopRefresh(cmd, responseBuilder, user);
 		return true;//PVPShopRefreshCommand
 	}//PVPShopRefreshCommand
 	@Override//ExpeditionShopCommand
 	protected boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO ExpeditionShopCommand method
+		shopCommandService.ExpeditionShop(cmd, responseBuilder, user);
 		return true;//ExpeditionShopCommand
 	}//ExpeditionShopCommand
 	@Override//ExpeditionShopPurchaseCommand
 	protected boolean handleCommand(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO ExpeditionShopPurchaseCommand method
+		shopCommandService.ExpeditionShopPurchase(cmd, responseBuilder, user);
 		return true;//ExpeditionShopPurchaseCommand
 	}//ExpeditionShopPurchaseCommand
 	@Override//ExpeditionShopRefreshCommand
 	protected boolean handleCommand(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO ExpeditionShopRefreshCommand method
+		shopCommandService.ExpeditionShopRefresh(cmd, responseBuilder, user);
 		return true;//ExpeditionShopRefreshCommand
 	}//ExpeditionShopRefreshCommand
 	//add handleCommand here

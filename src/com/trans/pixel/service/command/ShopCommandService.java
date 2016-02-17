@@ -62,7 +62,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void DailyShop(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getDailyShop();
-		int refreshtime = service.getDailyShopRefreshTime();
+		int refreshtime = user.getDailyShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshDailyShop();
 		}
@@ -77,7 +77,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void DailyShopPurchase(RequestDailyShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getDailyShop());
-		int refreshtime = service.getDailyShopRefreshTime();
+		int refreshtime = user.getDailyShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -104,15 +104,15 @@ public class ShopCommandService extends BaseCommandService{
 	public void DailyShopRefresh(RequestDailyShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getDailyShop();
-		int refreshtime = service.getDailyShopRefreshTime();
+		int refreshtime = user.getDailyShopRefreshTime();
 		int jewel = user.getJewel() - getDailyShopRefreshCost(refreshtime);
 		if(jewel >= 0){
 			user.setJewel(jewel);
-			rewardService.updateUser(user);
 			shoplist = service.refreshDailyShop();
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
-			service.saveDailyShopRefreshTime(refreshtime);
+			user.setDailyShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -176,7 +176,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShop(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getBlackShop();
-		int refreshtime = service.getBlackShopRefreshTime();
+		int refreshtime = user.getBlackShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshBlackShop();
 		}
@@ -191,7 +191,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShopPurchase(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getBlackShop());
-		int refreshtime = service.getBlackShopRefreshTime();
+		int refreshtime = user.getBlackShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -218,15 +218,15 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShopRefresh(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getBlackShop();
-		int refreshtime = service.getBlackShopRefreshTime();
+		int refreshtime = user.getBlackShopRefreshTime();
 		int jewel = user.getJewel() - getBlackShopRefreshCost(refreshtime);
 		if(jewel >= 0){
 			user.setJewel(jewel);
-			rewardService.updateUser(user);
 			shoplist = service.refreshBlackShop();
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
-			service.saveBlackShopRefreshTime(refreshtime);
+			user.setBlackShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -264,7 +264,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void UnionShop(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getUnionShop();
-		int refreshtime = service.getUnionShopRefreshTime();
+		int refreshtime = user.getUnionShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshUnionShop();
 		}
@@ -279,7 +279,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void UnionShopPurchase(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getUnionShop());
-		int refreshtime = service.getUnionShopRefreshTime();
+		int refreshtime = user.getUnionShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -306,15 +306,15 @@ public class ShopCommandService extends BaseCommandService{
 	public void UnionShopRefresh(RequestUnionShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getUnionShop();
-		int refreshtime = service.getUnionShopRefreshTime();
+		int refreshtime = user.getUnionShopRefreshTime();
 		int jewel = user.getJewel() - getUnionShopRefreshCost(refreshtime);
 		if(jewel >= 0){
 			user.setJewel(jewel);
-			rewardService.updateUser(user);
 			shoplist = service.refreshUnionShop();
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
-			service.saveDailyShopRefreshTime(refreshtime);
+			user.setDailyShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -352,7 +352,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void PVPShop(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getPVPShop();
-		int refreshtime = service.getPVPShopRefreshTime();
+		int refreshtime = user.getPVPShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshPVPShop();
 		}
@@ -367,7 +367,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void PVPShopPurchase(RequestPVPShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getPVPShop());
-		int refreshtime = service.getPVPShopRefreshTime();
+		int refreshtime = user.getPVPShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -394,15 +394,15 @@ public class ShopCommandService extends BaseCommandService{
 	public void PVPShopRefresh(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getPVPShop();
-		int refreshtime = service.getPVPShopRefreshTime();
+		int refreshtime = user.getPVPShopRefreshTime();
 		int jewel = user.getJewel() - getPVPShopRefreshCost(refreshtime);
 		if(jewel >= 0){
 			user.setJewel(jewel);
-			rewardService.updateUser(user);
 			shoplist = service.refreshPVPShop();
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
-			service.saveDailyShopRefreshTime(refreshtime);
+			user.setDailyShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -440,7 +440,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void ExpeditionShop(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getExpeditionShop();
-		int refreshtime = service.getExpeditionShopRefreshTime();
+		int refreshtime = user.getExpeditionShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshExpeditionShop();
 		}
@@ -455,7 +455,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void ExpeditionShopPurchase(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getExpeditionShop());
-		int refreshtime = service.getExpeditionShopRefreshTime();
+		int refreshtime = user.getExpeditionShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -482,15 +482,15 @@ public class ShopCommandService extends BaseCommandService{
 	public void ExpeditionShopRefresh(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getExpeditionShop();
-		int refreshtime = service.getExpeditionShopRefreshTime();
+		int refreshtime = user.getExpeditionShopRefreshTime();
 		int jewel = user.getJewel() - getExpeditionShopRefreshCost(refreshtime);
 		if(jewel >= 0){
 			user.setJewel(jewel);
-			rewardService.updateUser(user);
 			shoplist = service.refreshExpeditionShop();
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
-			service.saveDailyShopRefreshTime(refreshtime);
+			user.setDailyShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -528,7 +528,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void LadderShop(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getLadderShop();
-		int refreshtime = service.getLadderShopRefreshTime();
+		int refreshtime = user.getLadderShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshLadderShop();
 		}
@@ -543,7 +543,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void LadderShopPurchase(RequestLadderShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getLadderShop());
-		int refreshtime = service.getLadderShopRefreshTime();
+		int refreshtime = user.getLadderShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -570,15 +570,15 @@ public class ShopCommandService extends BaseCommandService{
 	public void LadderShopRefresh(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		setUserNX(user);
 		ShopList shoplist = service.getLadderShop();
-		int refreshtime = service.getLadderShopRefreshTime();
+		int refreshtime = user.getLadderShopRefreshTime();
 		int jewel = user.getJewel() - getLadderShopRefreshCost(refreshtime);
 		if(jewel >= 0){
 			user.setJewel(jewel);
-			rewardService.updateUser(user);
 			shoplist = service.refreshLadderShop();
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
-			service.saveDailyShopRefreshTime(refreshtime);
+			user.setDailyShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}

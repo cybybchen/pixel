@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.protoc.Commands.UserDailyData;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -31,6 +32,7 @@ public class UserBean {
 	private long ladderModeHistoryTop = 10000;
 	private long freeLotteryCoinTime = 0;
 	private long freeLotteryJewelTime = 0;
+	private UserDailyData.Builder userDailyData = null;
 	/**
 	 * 用户ID
 	 */
@@ -271,11 +273,83 @@ public class UserBean {
 	public void setUnionJob(int unionJob) {
 		this.unionJob = unionJob;
 	}
-	public String getName() {
-		return name;
+	public UserDailyData.Builder getUserDailyData() {
+		return userDailyData;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserDailyData(UserDailyData.Builder builder) {
+		userDailyData = builder;
+	}
+	/**
+	 * 普通商店刷新次数
+	 */
+	public int getDailyShopRefreshTime() {
+		return userDailyData.getDailyShopRefreshTime();
+	}
+	/**
+	 * 普通商店刷新次数
+	 */
+	public void setDailyShopRefreshTime(int refreshTime) {
+		userDailyData.setDailyShopRefreshTime(refreshTime);
+	}
+	/**
+	 * 黑市刷新次数
+	 */
+	public int getBlackShopRefreshTime() {
+		return userDailyData.getBlackShopRefreshTime();
+	}
+	/**
+	 * 黑市刷新次数
+	 */
+	public void setBlackShopRefreshTime(int refreshTime) {
+		userDailyData.setBlackShopRefreshTime(refreshTime);
+	}
+	/**
+	 * 工会商店刷新次数
+	 */
+	public int getUnionShopRefreshTime() {
+		return userDailyData.getUnionShopRefreshTime();
+	}
+	/**
+	 * 工会商店刷新次数
+	 */
+	public void setUnionShopRefreshTime(int refreshTime) {
+		userDailyData.setUnionShopRefreshTime(refreshTime);
+	}
+	/**
+	 * 挂机PVP商店刷新次数
+	 */
+	public int getPVPShopRefreshTime() {
+		return userDailyData.getPVPShopRefreshTime();
+	}
+	/**
+	 * 挂机PVP商店刷新次数
+	 */
+	public void setPVPShopRefreshTime(int refreshTime) {
+		userDailyData.setPVPShopRefreshTime(refreshTime);
+	}
+	/**
+	 * 天梯商店刷新次数
+	 */
+	public int getLadderShopRefreshTime() {
+		return userDailyData.getLadderShopRefreshTime();
+	}
+	/**
+	 * 天梯商店刷新次数
+	 */
+	public void setLadderShopRefreshTime(int refreshTime) {
+		userDailyData.setLadderShopRefreshTime(refreshTime);
+	}
+	/**
+	 * 远征商店刷新次数
+	 */
+	public int getExpeditionShopRefreshTime() {
+		return userDailyData.getExpeditionShopRefreshTime();
+	}
+	/**
+	 * 远征商店刷新次数
+	 */
+	public void setExpeditionShopRefreshTime(int refreshTime) {
+		userDailyData.setExpeditionShopRefreshTime(refreshTime);
 	}
 	public long getFreeLotteryCoinTime() {
 		return freeLotteryCoinTime;

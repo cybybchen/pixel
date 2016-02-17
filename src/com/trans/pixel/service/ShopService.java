@@ -38,14 +38,6 @@ public class ShopService {
 		return shoplist;
 	}
 
-	public int getDailyShopRefreshTime(){
-		return redis.getDailyShopRefreshTime();
-	}
-
-	public void saveDailyShopRefreshTime(int time){
-		redis.saveDailyShopRefreshTime(time);
-	}
-
 	public ShopList getBlackShop(){
 		return redis.getBlackShop();
 	}
@@ -58,14 +50,6 @@ public class ShopService {
 		ShopList shoplist = redis.buildBlackShop();
 		redis.saveBlackShop(shoplist);
 		return shoplist;
-	}
-
-	public int getBlackShopRefreshTime(){
-		return redis.getBlackShopRefreshTime();
-	}
-
-	public void saveBlackShopRefreshTime(int time){
-		redis.saveBlackShopRefreshTime(time);
 	}
 
 	public ShopList getUnionShop(){
@@ -82,14 +66,6 @@ public class ShopService {
 		return shoplist;
 	}
 
-	public int getUnionShopRefreshTime(){
-		return redis.getUnionShopRefreshTime();
-	}
-
-	public void saveUnionShopRefreshTime(int time){
-		redis.saveUnionShopRefreshTime(time);
-	}
-
 	public ShopList getPVPShop(){
 		return redis.getPVPShop();
 	}
@@ -102,14 +78,6 @@ public class ShopService {
 		ShopList shoplist = redis.buildPVPShop();
 		redis.savePVPShop(shoplist);
 		return shoplist;
-	}
-
-	public int getPVPShopRefreshTime(){
-		return redis.getPVPShopRefreshTime();
-	}
-
-	public void savePVPShopRefreshTime(int time){
-		redis.savePVPShopRefreshTime(time);
 	}
 
 	public ShopList getExpeditionShop(){
@@ -126,14 +94,6 @@ public class ShopService {
 		return shoplist;
 	}
 
-	public int getExpeditionShopRefreshTime(){
-		return redis.getExpeditionShopRefreshTime();
-	}
-
-	public void saveExpeditionShopRefreshTime(int time){
-		redis.saveExpeditionShopRefreshTime(time);
-	}
-
 	public ShopList getLadderShop(){
 		return redis.getLadderShop();
 	}
@@ -146,14 +106,6 @@ public class ShopService {
 		ShopList shoplist = redis.buildLadderShop();
 		redis.saveLadderShop(shoplist);
 		return shoplist;
-	}
-
-	public int getLadderShopRefreshTime(){
-		return redis.getLadderShopRefreshTime();
-	}
-
-	public void saveLadderShopRefreshTime(int time){
-		redis.saveLadderShopRefreshTime(time);
 	}
 
 	public ShopList getShop(){

@@ -213,4 +213,8 @@ public class RewardService {
 	public void updateUser(UserBean user){
 		userService.updateUser(user);
 	}
+
+	public void updateUserDailyData(UserBean user) {
+		userService.updateUserDailyData(user);
+	}
 }

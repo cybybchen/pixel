@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.UserDailyData;
 import com.trans.pixel.protoc.Commands.UserInfo;
 
 @Repository
@@ -25,6 +26,7 @@ public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
+	public final static String USERDAILYDATA = RedisKey.PREFIX+RedisKey.USERDAILYDATA_PREFIX;
 	
 	public UserBean getUserByUserId(final long userId) {
 		return redisTemplate.execute(new RedisCallback<UserBean>() {
@@ -38,8 +40,23 @@ public class UserRedisService extends RedisService{
 			}
 		});
 	}
+
+	public UserDailyData.Builder getUserDailyData(final long userId) {
+		UserDailyData.Builder builder = UserDailyData.newBuilder();
+		String value = hget(USERDAILYDATA+userId, "UserDailyData");
+		if(value != null && parseJson(value, builder))
+			return builder;
+		return builder;
+	}
+
+	public void saveUserDailyData(final long userId, UserDailyData.Builder builder) {
+		if(builder == null)
+			return;
+		hput(USERDAILYDATA+userId, "UserDailyData", formatJson(builder.build()));
+	}
 	
 	public void updateUser(final UserBean user) {
+		saveUserDailyData(user.getId(), user.getUserDailyData());
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -73,7 +90,7 @@ public class UserRedisService extends RedisService{
 	/**
 	 * get other user(can be null)
 	 */
-	public <T> UserInfo getCache(int serverId, T userId){
+	public <T> UserInfo getCache(T userId){
 		String value = hget(RedisKey.PREFIX+"UserCache", userId+"");
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		if(value != null && parseJson(value, builder))
@@ -85,7 +102,7 @@ public class UserRedisService extends RedisService{
 	/**
 	 * get other user
 	 */
-	public <T> List<UserInfo> getCaches(int serverId, List<T> userIds){
+	public <T> List<UserInfo> getCaches(List<T> userIds){
 		List<String> keys = new ArrayList<String>();
 		for(T userId : userIds){
 			keys.add(userId+"");
