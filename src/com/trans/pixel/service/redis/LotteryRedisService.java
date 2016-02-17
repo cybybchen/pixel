@@ -29,7 +29,7 @@ public class LotteryRedisService {
 			public List<RewardBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_HERO_PREFIX + type);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
 				
 				List<RewardBean> lotteryList = new ArrayList<RewardBean>();
 				Set<Entry<String, String>> lotterySet = bhOps.entries().entrySet();
@@ -54,7 +54,7 @@ public class LotteryRedisService {
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_HERO_PREFIX + type);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
 				
 				for (RewardBean lottery : lotteryList) {
 					bhOps.put("" + lottery.getId(), lottery.toJson());
@@ -72,7 +72,7 @@ public class LotteryRedisService {
 			public RewardBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_HERO_PREFIX + type);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
 				
 				RewardBean lottery = RewardBean.fromJson(bhOps.get("" + id));
 				return lottery;
