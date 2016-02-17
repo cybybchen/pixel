@@ -45,8 +45,12 @@ public class UserHeroBean {
 		int addValue = 0;
 		for (int infoId : costInfoIds) {
 			HeroInfoBean heroInfo = getHeroInfoByInfoId(infoId);
-			if (heroInfo != null)
-				addValue += heroInfo.getValue();
+			if (heroInfo != null) {
+				if (heroInfo.getValue() == 0)
+					addValue += 1;
+				else
+					addValue += heroInfo.getValue();
+			}
 		}
 		
 		return addValue;

@@ -57,7 +57,7 @@ public class HeroRareBean {
 		return list;
 	}
 	
-	private static final String FILE_NAME = "lol_herorare.xml	";
+	private static final String FILE_NAME = "lol_herorare.xml";
 	private static final String RARE = "rare";
 	private static final String LEVEL = "level";
 }

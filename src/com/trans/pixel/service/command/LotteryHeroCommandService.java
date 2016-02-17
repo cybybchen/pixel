@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -18,6 +19,7 @@ import com.trans.pixel.protoc.Commands.ResponseLotteryHeroCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LotteryHeroService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.UserService;
 
 @Service
 public class LotteryHeroCommandService extends BaseCommandService {
@@ -30,38 +32,67 @@ public class LotteryHeroCommandService extends BaseCommandService {
 	private LotteryHeroService lotteryService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private UserService userService;
+	
 	public void lotteryHero(RequestLotteryHeroCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
-		int cost = getLotteryCost(type);
-		if (!costService.costResult(user, type, cost)) {
-			ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
-			if (type == RewardConst.JEWEL)
-				error = ErrorConst.NOT_ENOUGH_JEWEL;
-			ErrorCommand errorCommand = buildErrorCommand(error);
-            responseBuilder.setErrorCommand(errorCommand);
-			return;
-			
+		int count = 10;
+		if (cmd.hasCount())
+			count = cmd.getCount();
+		int cost = getLotteryCost(type, count);
+		boolean free = isFreeLotteryTime(user, type, count);
+		if (!free) {
+			if (!costService.costResult(user, type, cost)) {
+				ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
+				if (type == RewardConst.JEWEL)
+					error = ErrorConst.NOT_ENOUGH_JEWEL;
+				ErrorCommand errorCommand = buildErrorCommand(error);
+	            responseBuilder.setErrorCommand(errorCommand);
+				return;	
+			}
 		}
 		
 		ResponseLotteryHeroCommand.Builder builder = ResponseLotteryHeroCommand.newBuilder();
-		List<RewardBean> lotteryList = lotteryService.randomLotteryList(type);
+		List<RewardBean> lotteryList = lotteryService.randomLotteryList(type, count);
 		rewardService.doRewards(user, lotteryList);
 		builder.setCoin(user.getCoin());
 		builder.setJewel(user.getJewel());
 		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
 		responseBuilder.setLotteryHeroCommand(builder.build());
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
-		
 	}
 	
-	private int getLotteryCost(int type) {
-		int cost = LotteryConst.COST_LOTTERY_HERO_COIN;
+	private boolean isFreeLotteryTime(UserBean user, int type, int count) {
+		if (count == 10)
+			return false;
+		
+		long lastFreeTime = user.getFreeLotteryCoinTime();
+		if (type == RewardConst.JEWEL)
+			lastFreeTime = user.getFreeLotteryJewelTime();
+		
+		long delTime = System.currentTimeMillis() - lastFreeTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR;
+		if (delTime > 0) {
+			if (type == RewardConst.JEWEL)
+				user.setFreeLotteryJewelTime(System.currentTimeMillis());
+			else
+				user.setFreeLotteryCoinTime(System.currentTimeMillis());
+			
+			userService.updateUser(user);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private int getLotteryCost(int type, int count) {
+		int cost = LotteryConst.COST_LOTTERY_HERO_COIN * count;
 		switch (type) {
 			case RewardConst.COIN:
-				cost = LotteryConst.COST_LOTTERY_HERO_COIN;
+				cost = LotteryConst.COST_LOTTERY_HERO_COIN * count;
 				break;
 			case RewardConst.JEWEL:
-				cost = LotteryConst.COST_LOTTERY_HERO_JEWEL;
+				cost = LotteryConst.COST_LOTTERY_HERO_JEWEL * count;
 				break;
 			default:
 				break;

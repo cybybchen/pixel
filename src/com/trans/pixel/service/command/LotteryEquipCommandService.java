@@ -32,7 +32,10 @@ public class LotteryEquipCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	public void lotteryEquip(RequestLotteryEquipCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
-		int cost = getLotteryCost(type);
+		int count = 10;
+		if (cmd.hasCount())
+			count = cmd.getCount();
+		int cost = getLotteryCost(type, count);
 		if (!costService.costResult(user, type, cost)) {
 			ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
 			if (type == RewardConst.JEWEL)
@@ -44,7 +47,7 @@ public class LotteryEquipCommandService extends BaseCommandService {
 		}
 		
 		ResponseLotteryEquipCommand.Builder builder = ResponseLotteryEquipCommand.newBuilder();
-		List<RewardBean> lotteryList = lotteryEquipService.randomLotteryList(type);
+		List<RewardBean> lotteryList = lotteryEquipService.randomLotteryList(type, count);
 		rewardService.doRewards(user, lotteryList);
 		builder.setCoin(user.getCoin());
 		builder.setJewel(user.getJewel());
@@ -54,14 +57,14 @@ public class LotteryEquipCommandService extends BaseCommandService {
 		
 	}
 	
-	private int getLotteryCost(int type) {
-		int cost = LotteryConst.COST_LOTTERY_HERO_COIN;
+	private int getLotteryCost(int type, int count) {
+		int cost = LotteryConst.COST_LOTTERY_EQUIP_COIN * count;
 		switch (type) {
 			case RewardConst.COIN:
-				cost = LotteryConst.COST_LOTTERY_HERO_COIN;
+				cost = LotteryConst.COST_LOTTERY_EQUIP_COIN * count;
 				break;
 			case RewardConst.JEWEL:
-				cost = LotteryConst.COST_LOTTERY_HERO_JEWEL;
+				cost = LotteryConst.COST_LOTTERY_EQUIP_JEWEL * count;
 				break;
 			default:
 				break;

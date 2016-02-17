@@ -17,6 +17,8 @@ message UserInfo {
 	optional int32 pointUnion = 11; //联盟积分
 	optional int32 completeLevel = 12;
 	optional int64 areaEnergyTime = 16;//疲劳回满时间
+	optional int64 freeLotteryCoinTime = 17; //免费金币抽取倒计时
+	optional int64 freeLotteryJewelTime = 18; //免费钻石抽取倒计时
 }
 
 message Commodity {
@@ -77,11 +79,11 @@ message HeadInfo
 message HeroInfo {
 	required int32 infoId = 1;
 	optional int32 level = 2;
-	optional int32 starLevel = 3;
-	optional int32 rare = 4;
-	optional string equipInfo = 5;
-	repeated SkillInfo skill = 6;
-	optional int32 value = 7;
+	optional int32 rare = 3;
+	optional string equipInfo = 4;
+	repeated SkillInfo skill = 5;
+	optional int32 value = 6;
+	optional int32 star = 7;
 }
 
 message UserTeam {
@@ -422,6 +424,7 @@ message ResponseRefreshRelatedUserCommand {
 
 message RequestLotteryHeroCommand {
 	required int32 type = 1; //1001:jinbi 1002:zuanshi
+	optional int32 count = 2; //默认是10
 }
 
 message ResponseLotteryHeroCommand {
@@ -432,6 +435,7 @@ message ResponseLotteryHeroCommand {
 
 message RequestLotteryEquipCommand {
         required int32 type = 1; //1001:jinbi 1002:zuanshi
+	optional int32 count = 2; //默认是10
 }
 
 message ResponseLotteryEquipCommand {

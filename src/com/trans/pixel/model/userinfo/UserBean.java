@@ -3,6 +3,7 @@ package com.trans.pixel.model.userinfo;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -28,6 +29,8 @@ public class UserBean {
 	private String lastLoginTime = "";
 	private int ladderModeLeftTimes = 0;
 	private long ladderModeHistoryTop = 10000;
+	private long freeLotteryCoinTime = 0;
+	private long freeLotteryJewelTime = 0;
 	public long getId() {
 		return id;
 	}
@@ -154,6 +157,24 @@ public class UserBean {
 	public void setUnionJob(int unionJob) {
 		this.unionJob = unionJob;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public long getFreeLotteryCoinTime() {
+		return freeLotteryCoinTime;
+	}
+	public void setFreeLotteryCoinTime(long freeLotteryCoinTime) {
+		this.freeLotteryCoinTime = freeLotteryCoinTime;
+	}
+	public long getFreeLotteryJewelTime() {
+		return freeLotteryJewelTime;
+	}
+	public void setFreeLotteryJewelTime(long freeLotteryJewelTime) {
+		this.freeLotteryJewelTime = freeLotteryJewelTime;
+	}
 	
 	public void init(int serverId, String account, String userName) {
 		setAccount(account);
@@ -214,6 +235,8 @@ public class UserBean {
 //		builder.setLastLoginTime(lastLoginTime);
 //		builder.setLadderModeLeftTimes(ladderModeLeftTimes);
 //		builder.setLadderModeHistoryTop(ladderModeHistoryTop);
+		builder.setFreeLotteryCoinTime(Math.max(0, freeLotteryCoinTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()));
+		builder.setFreeLotteryJewelTime(Math.max(0, freeLotteryJewelTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()));
 		return builder.build();
 	}
 	public Map<String, String> toMap() {
@@ -239,6 +262,8 @@ public class UserBean {
 		userMap.put(LAST_LOGIN_TIME, "" + lastLoginTime);
 		userMap.put(LADDER_MODE_LEFT_TIMES, "" + ladderModeLeftTimes);
 		userMap.put(LADDER_MODE_HISTORY_TOP, "" + ladderModeHistoryTop);
+		userMap.put(FREE_LOTTERY_COIN_TIME, "" + freeLotteryCoinTime);
+		userMap.put(FREE_LOTTERY_JEWEL_TIME, "" + freeLotteryJewelTime);
 		
 		return userMap;
 	}
@@ -269,6 +294,8 @@ public class UserBean {
 		userBean.setLastLoginTime(userMap.get(LAST_LOGIN_TIME));
 		userBean.setLadderModeLeftTimes(TypeTranslatedUtil.stringToInt(userMap.get(LADDER_MODE_LEFT_TIMES)));
 		userBean.setLadderModeHistoryTop(TypeTranslatedUtil.stringToLong(userMap.get(LADDER_MODE_HISTORY_TOP)));
+		userBean.setFreeLotteryCoinTime(TypeTranslatedUtil.stringToLong(userMap.get(FREE_LOTTERY_COIN_TIME)));
+		userBean.setFreeLotteryJewelTime(TypeTranslatedUtil.stringToLong(userMap.get(FREE_LOTTERY_JEWEL_TIME)));
 		
 		return userBean;
 	}
@@ -294,4 +321,6 @@ public class UserBean {
 	private final static String LAST_LOGIN_TIME = "last_login_time";
 	private final static String LADDER_MODE_LEFT_TIMES = "ladder_mode_left_times";
 	private final static String LADDER_MODE_HISTORY_TOP = "ladder_mode_history_mode";
+	private final static String FREE_LOTTERY_COIN_TIME = "free_lottery_coin_time";
+	private final static String FREE_LOTTERY_JEWEL_TIME = "free_lottery_jewel_time";
 }

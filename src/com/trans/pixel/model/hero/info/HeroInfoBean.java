@@ -100,6 +100,8 @@ public class HeroInfoBean {
 		level = hero.getLevel();
 		starLevel = hero.getStarLevel();
 		equipInfo = hero.getEquipInfo();
+		rare = hero.getRare();
+		value = hero.getValue();
 		skillInfoList = hero.getSkillInfoList();
 	}
 	
@@ -143,7 +145,6 @@ public class HeroInfoBean {
 		builder.setInfoId(id);
 		builder.setLevel(level);
 		builder.setRare(rare);
-		builder.setStarLevel(starLevel);
 		builder.setValue(value);
 		builder.addAllSkill(buildSkillList());
 		

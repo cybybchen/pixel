@@ -45,7 +45,7 @@ public class LotteryEquipService {
 		return lottery;
     }
 	
-	public List<RewardBean> randomLotteryList(int type) {
+	public List<RewardBean> randomLotteryList(int type, int count) {
     	List<RewardBean> lotteryList = getLotteryList(type);
     	int totalWeight = 0;
     	for (RewardBean lottery : lotteryList) {
@@ -53,7 +53,7 @@ public class LotteryEquipService {
     	}
     	Random rand = new Random();
     	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
-    	int randomCount = RANDOM_COUNT;
+    	int randomCount = count;
 
     	while (randomLotteryList.size() < randomCount) {
     		int randNum = rand.nextInt(lotteryList.size());
