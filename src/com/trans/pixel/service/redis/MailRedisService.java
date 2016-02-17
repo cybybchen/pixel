@@ -31,10 +31,10 @@ public class MailRedisService {
 			@Override
 			public MailBean doInRedis(RedisConnection conn)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(mail.getUserId(), mail.getType()));
 				int mailId = mail.getId();
-				while (bhOps.hasKey(mailId)) {
+				while (bhOps.hasKey("" + mailId)) {
 					mailId++;
 				}
 				if (bhOps.size() >= MailConst.MAIL_COUNT_MAX_ONTTYPE) {
@@ -42,7 +42,7 @@ public class MailRedisService {
 					return null;
 				}
 				mail.setId(mailId);
-				bhOps.put(mailId, mail.toJson());
+				bhOps.put("" + mailId, mail.toJson());
 				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				return null;
 			}
@@ -56,12 +56,12 @@ public class MailRedisService {
 			public List<MailBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				List<MailBean> mailList = new ArrayList<MailBean>();
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(userId, type));
 				
-				Iterator<Entry<Integer, String>> it= bhOps.entries().entrySet().iterator();
+				Iterator<Entry<String, String>> it= bhOps.entries().entrySet().iterator();
 				while(it.hasNext()) {
-					Entry<Integer, String> entry = it.next();
+					Entry<String, String> entry = it.next();
 					MailBean mail = MailBean.fromJson(entry.getValue());
 					if (mail != null) {
 						if (DateUtil.isInvalidMail(mail.getStartDate())) {
@@ -84,9 +84,9 @@ public class MailRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(userId, type));
-				bhOps.delete(id);
+				bhOps.delete("" + id);
 				return null;
 			}
 		});
@@ -97,9 +97,9 @@ public class MailRedisService {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(mail.getUserId(), mail.getType()));
-				bhOps.put(mail.getId(), mail.toJson());
+				bhOps.put("" + mail.getId(), mail.toJson());
 				return null;
 			}
 		});
@@ -110,9 +110,9 @@ public class MailRedisService {
 			@Override
 			public MailBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(userId, type));
-				return MailBean.fromJson(bhOps.get(id));
+				return MailBean.fromJson(bhOps.get("" + id));
 			}
 		});
 	}
@@ -122,7 +122,7 @@ public class MailRedisService {
 			@Override
 			public Integer doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(userId, type));
 				
 				return bhOps.size().intValue();
@@ -136,12 +136,12 @@ public class MailRedisService {
 			public List<MailBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				List<MailBean> mailList = new ArrayList<MailBean>();
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(userId, type));
 				
-				Iterator<Entry<Integer, String>> it= bhOps.entries().entrySet().iterator();
+				Iterator<Entry<String, String>> it= bhOps.entries().entrySet().iterator();
 				while(it.hasNext()) {
-					Entry<Integer, String> entry = it.next();
+					Entry<String, String> entry = it.next();
 					MailBean mail = MailBean.fromJson(entry.getValue());
 					if (mail != null) {
 						if (DateUtil.isInvalidMail(mail.getStartDate())) {
@@ -164,11 +164,11 @@ public class MailRedisService {
 			@Override
 			public Integer doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, Integer, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(buildMailRedisKey(userId, type));;
 				int deleteCount = 0;
 				for (Integer i : idList) {
-					bhOps.delete(i);
+					bhOps.delete("" + i);
 					deleteCount++;
 				}
 
