@@ -17,9 +17,15 @@ import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
@@ -30,6 +36,9 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
@@ -40,6 +49,9 @@ import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
@@ -48,8 +60,13 @@ import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestShopCommand;
+import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
@@ -65,6 +82,7 @@ import com.trans.pixel.service.command.LotteryHeroCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
+import com.trans.pixel.service.command.ShopCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
 import com.trans.pixel.service.command.UserCommandService;
@@ -99,6 +117,8 @@ public class GameDataScreen extends RequestScreen {
 	private AreaCommandService areaCommandService;
 	@Resource
 	private UnionCommandService unionCommandService;
+	@Resource
+	private ShopCommandService shopCommandService;
 	@Resource
 	private MessageCommandService messageCommandService;
 	
@@ -412,6 +432,91 @@ public class GameDataScreen extends RequestScreen {
 		unionCommandService.defend(cmd, responseBuilder, user);
 		return true;
 	}
+	@Override//DailyShopCommand
+	protected boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.DailyShop(cmd, responseBuilder, user);
+		return true;//DailyShopCommand
+	}//DailyShopCommand
+	@Override//DailyShopPurchaseCommand
+	protected boolean handleCommand(RequestDailyShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.DailyShopPurchase(cmd, responseBuilder, user);
+		return true;//DailyShopPurchaseCommand
+	}//DailyShopPurchaseCommand
+	@Override//DailyShopRefreshCommand
+	protected boolean handleCommand(RequestDailyShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.DailyShopRefresh(cmd, responseBuilder, user);
+		return true;//DailyShopRefreshCommand
+	}//DailyShopRefreshCommand
+	@Override//ShopCommand
+	protected boolean handleCommand(RequestShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.Shop(cmd, responseBuilder, user);
+		return true;//ShopCommand
+	}//ShopCommand
+	@Override//ShopPurchaseCommand
+	protected boolean handleCommand(RequestShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.ShopPurchase(cmd, responseBuilder, user);
+		return true;//ShopPurchaseCommand
+	}//ShopPurchaseCommand
+	@Override//BlackShopCommand
+	protected boolean handleCommand(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.BlackShop(cmd, responseBuilder, user);
+		return true;//BlackShopCommand
+	}//BlackShopCommand
+	@Override//BlackShopPurchaseCommand
+	protected boolean handleCommand(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.BlackShopPurchase(cmd, responseBuilder, user);
+		return true;//BlackShopPurchaseCommand
+	}//BlackShopPurchaseCommand
+	@Override//BlackShopRefreshCommand
+	protected boolean handleCommand(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.BlackShopRefresh(cmd, responseBuilder, user);
+		return true;//BlackShopRefreshCommand
+	}//BlackShopRefreshCommand
+	@Override//UnionShopCommand
+	protected boolean handleCommand(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.UnionShop(cmd, responseBuilder, user);
+		return true;//UnionShopCommand
+	}//UnionShopCommand
+	@Override//UnionShopPurchaseCommand
+	protected boolean handleCommand(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.UnionShopPurchase(cmd, responseBuilder, user);
+		return true;//UnionShopPurchaseCommand
+	}//UnionShopPurchaseCommand
+	@Override//UnionShopRefreshCommand
+	protected boolean handleCommand(RequestUnionShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.UnionShopRefresh(cmd, responseBuilder, user);
+		return true;//UnionShopRefreshCommand
+	}//UnionShopRefreshCommand
+	@Override//MagicShopCommand
+	protected boolean handleCommand(RequestMagicShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.MagicShop(cmd, responseBuilder, user);
+		return true;//MagicShopCommand
+	}//MagicShopCommand
+	@Override//MagicShopPurchaseCommand
+	protected boolean handleCommand(RequestMagicShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.MagicShopPurchase(cmd, responseBuilder, user);
+		return true;//MagicShopPurchaseCommand
+	}//MagicShopPurchaseCommand
+	@Override//MagicShopRefreshCommand
+	protected boolean handleCommand(RequestMagicShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.MagicShopRefresh(cmd, responseBuilder, user);
+		return true;//MagicShopRefreshCommand
+	}//MagicShopRefreshCommand
+	@Override//LadderShopCommand
+	protected boolean handleCommand(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.LadderShop(cmd, responseBuilder, user);
+		return true;//LadderShopCommand
+	}//LadderShopCommand
+	@Override//LadderShopPurchaseCommand
+	protected boolean handleCommand(RequestLadderShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.LadderShopPurchase(cmd, responseBuilder, user);
+		return true;//LadderShopPurchaseCommand
+	}//LadderShopPurchaseCommand
+	@Override//LadderShopRefreshCommand
+	protected boolean handleCommand(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.LadderShopRefresh(cmd, responseBuilder, user);
+		return true;//LadderShopRefreshCommand
+	}//LadderShopRefreshCommand
 	//add handleCommand here
 
 	@Override

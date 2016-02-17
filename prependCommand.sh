@@ -27,12 +27,12 @@ function AddCommands()
 
 				append1="import com.trans.pixel.protoc.Commands.$class;"
 				sed -i "s/$tag1/$append1\n$tag1/g" src/com/trans/pixel/controller/chain/GameDataScreen.java
-				append2="\/\/$name\n	\@Override\/\/$name\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO Auto-generated method $name\n		return true;\/\/$name\n	}\/\/$name"
+				append2="\@Override\/\/$name\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO $name method\n		return true;\/\/$name\n	}\/\/$name"
 				sed -i "s/$tag2/$append2\n	$tag2/g" src/com/trans/pixel/controller/chain/GameDataScreen.java
 
 				append1="import com.trans.pixel.protoc.Commands.$class;"
 				sed -i "s/$tag1/$append1\n$tag1/g" src/com/trans/pixel/controller/chain/HeadScreen.java
-				append2="\/\/$name\n	\@Override\/\/$name\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO Auto-generated method $name\n		return true;\/\/$name\n	}\/\/$name"
+				append2="\@Override\/\/$name\n	protected boolean handleCommand($class cmd, Builder responseBuilder, UserBean user) {\n		\/\/ TODO $name method\n		return true;\/\/$name\n	}\/\/$name"
 				sed -i "s/$tag2/$append2\n	$tag2/g" src/com/trans/pixel/controller/chain/HeadScreen.java
 			fi
 		fi

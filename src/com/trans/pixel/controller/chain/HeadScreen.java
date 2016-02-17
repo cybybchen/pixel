@@ -56,6 +56,23 @@ import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestShopCommand;
+import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -354,6 +371,91 @@ public class HeadScreen extends RequestScreen {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	@Override//DailyShopCommand
+	protected boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO DailyShopCommand method
+		return true;//DailyShopCommand
+	}//DailyShopCommand
+	@Override//DailyShopPurchaseCommand
+	protected boolean handleCommand(RequestDailyShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO DailyShopPurchaseCommand method
+		return true;//DailyShopPurchaseCommand
+	}//DailyShopPurchaseCommand
+	@Override//DailyShopRefreshCommand
+	protected boolean handleCommand(RequestDailyShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO DailyShopRefreshCommand method
+		return true;//DailyShopRefreshCommand
+	}//DailyShopRefreshCommand
+	@Override//ShopCommand
+	protected boolean handleCommand(RequestShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO ShopCommand method
+		return true;//ShopCommand
+	}//ShopCommand
+	@Override//ShopPurchaseCommand
+	protected boolean handleCommand(RequestShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO ShopPurchaseCommand method
+		return true;//ShopPurchaseCommand
+	}//ShopPurchaseCommand
+	@Override//BlackShopCommand
+	protected boolean handleCommand(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BlackShopCommand method
+		return true;//BlackShopCommand
+	}//BlackShopCommand
+	@Override//BlackShopPurchaseCommand
+	protected boolean handleCommand(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BlackShopPurchaseCommand method
+		return true;//BlackShopPurchaseCommand
+	}//BlackShopPurchaseCommand
+	@Override//BlackShopRefreshCommand
+	protected boolean handleCommand(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BlackShopRefreshCommand method
+		return true;//BlackShopRefreshCommand
+	}//BlackShopRefreshCommand
+	@Override//UnionShopCommand
+	protected boolean handleCommand(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UnionShopCommand method
+		return true;//UnionShopCommand
+	}//UnionShopCommand
+	@Override//UnionShopPurchaseCommand
+	protected boolean handleCommand(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UnionShopPurchaseCommand method
+		return true;//UnionShopPurchaseCommand
+	}//UnionShopPurchaseCommand
+	@Override//UnionShopRefreshCommand
+	protected boolean handleCommand(RequestUnionShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UnionShopRefreshCommand method
+		return true;//UnionShopRefreshCommand
+	}//UnionShopRefreshCommand
+	@Override//MagicShopCommand
+	protected boolean handleCommand(RequestMagicShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO MagicShopCommand method
+		return true;//MagicShopCommand
+	}//MagicShopCommand
+	@Override//MagicShopPurchaseCommand
+	protected boolean handleCommand(RequestMagicShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO MagicShopPurchaseCommand method
+		return true;//MagicShopPurchaseCommand
+	}//MagicShopPurchaseCommand
+	@Override//MagicShopRefreshCommand
+	protected boolean handleCommand(RequestMagicShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO MagicShopRefreshCommand method
+		return true;//MagicShopRefreshCommand
+	}//MagicShopRefreshCommand
+	@Override//LadderShopCommand
+	protected boolean handleCommand(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO LadderShopCommand method
+		return true;//LadderShopCommand
+	}//LadderShopCommand
+	@Override//LadderShopPurchaseCommand
+	protected boolean handleCommand(RequestLadderShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO LadderShopPurchaseCommand method
+		return true;//LadderShopPurchaseCommand
+	}//LadderShopPurchaseCommand
+	@Override//LadderShopRefreshCommand
+	protected boolean handleCommand(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO LadderShopRefreshCommand method
+		return true;//LadderShopRefreshCommand
+	}//LadderShopRefreshCommand
 	//add handleCommand here
 
 	@Override

@@ -19,6 +19,8 @@ public class RedisKey {
 	
 	//user redis
 	public final static String USER_PREFIX = "user_";
+	public final static String USERDATA_PREFIX = "UserData_";
+	public final static String USERDAILYDATA_PREFIX = "UserDailyData_";
 	
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "key:mysql_update";

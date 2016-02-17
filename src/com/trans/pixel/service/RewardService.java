@@ -147,4 +147,61 @@ public class RewardService {
 		if(doReward(user, reward.getItemid(), reward.getCount()))
 			userService.updateUser(user);
 	}
+
+	/**
+	 * need updateuser when return true
+	 */
+	public boolean cost(UserBean user, int rewardId, int rewardCount) {
+//		return true;
+		if (rewardId > RewardConst.HERO) {
+//			int heroId = rewardId % RewardConst.HERO_STAR;
+//			userHeroService.addUserHero(user.getId(), heroId);
+		} else if (rewardId > RewardConst.PROP) {
+			
+		} else if (rewardId > RewardConst.PACKAGE) {
+			
+		} else if (rewardId > RewardConst.CHIP) {
+//			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
+		} else if (rewardId > RewardConst.EQUIPMENT) {
+//			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
+		} else {
+			switch (rewardId) {
+				case RewardConst.EXP:
+					if(rewardCount < user.getExp()) return false;
+					user.setExp(user.getExp() - rewardCount);
+					return true;
+				case RewardConst.COIN:
+					if(rewardCount < user.getCoin()) return false;
+					user.setCoin(user.getCoin() - rewardCount);
+					return true;
+				case RewardConst.JEWEL:
+					if(rewardCount < user.getJewel()) return false;
+					user.setJewel(user.getJewel() - rewardCount);
+					return true;
+				case RewardConst.MAGICCOIN:
+					if(rewardCount < user.getPointVS()) return false;
+					user.setPointVS(user.getPointVS() - rewardCount);
+					return true;
+				case RewardConst.YUANZHENGCOIN:
+					if(rewardCount < user.getPointExpedition()) return false;
+					user.setPointExpedition(user.getPointExpedition() - rewardCount);
+					return true;
+				case RewardConst.LADDERCOIN:
+					if(rewardCount < user.getPointLadder()) return false;
+					user.setPointLadder(user.getPointLadder() - rewardCount);
+					return true;
+				case RewardConst.UNIONCOIN:
+					if(rewardCount < user.getPointUnion()) return false;
+					user.setPointUnion(user.getPointUnion() - rewardCount);
+					return true;
+				default:
+					break;
+			}
+		}
+		return false;
+	}
+	
+	public void updateUser(UserBean user){
+		userService.updateUser(user);
+	}
 }

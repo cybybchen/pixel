@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
@@ -48,6 +49,50 @@ public class BaseCommandService {
 	}
 	
 	protected ErrorCommand buildErrorCommand(ErrorConst errorConst) {
+        ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+        erBuilder.setCode(String.valueOf(errorConst.getCode()));
+        erBuilder.setMessage(errorConst.getMesssage());
+        return erBuilder.build();
+    }
+	
+	protected ErrorCommand buildNotEnoughErrorCommand(int rewardId) {
+		ErrorConst errorConst = ErrorConst.NOT_ENOUGH;
+		if (rewardId > RewardConst.HERO) {
+			errorConst = ErrorConst.NOT_ENOUGH_HERO;
+		} else if (rewardId > RewardConst.PROP) {
+			errorConst = ErrorConst.NOT_ENOUGH_PROP;
+		} else if (rewardId > RewardConst.PACKAGE) {
+			
+		} else if (rewardId > RewardConst.CHIP) {
+			errorConst = ErrorConst.NOT_ENOUGH_CHIP;
+		} else if (rewardId > RewardConst.EQUIPMENT) {
+			errorConst = ErrorConst.NOT_ENOUGH_EQUIP;
+		} else {
+			switch (rewardId) {
+				case RewardConst.EXP:
+					break;
+				case RewardConst.COIN:
+					errorConst = ErrorConst.NOT_ENOUGH_COIN;
+					break;
+				case RewardConst.JEWEL:
+					errorConst = ErrorConst.NOT_ENOUGH_JEWEL;
+					break;
+				case RewardConst.MAGICCOIN:
+					errorConst = ErrorConst.NOT_ENOUGH_MAGICCOIN;
+					break;
+				case RewardConst.YUANZHENGCOIN:
+					errorConst = ErrorConst.NOT_ENOUGH_YUANZHENGCOIN;
+					break;
+				case RewardConst.LADDERCOIN:
+					errorConst = ErrorConst.NOT_ENOUGH_LADDERCOIN;
+					break;
+				case RewardConst.UNIONCOIN:
+					errorConst = ErrorConst.NOT_ENOUGH_UNIONCOIN;
+					break;
+				default:
+					break;
+			}
+		}
         ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
         erBuilder.setCode(String.valueOf(errorConst.getCode()));
         erBuilder.setMessage(errorConst.getMesssage());

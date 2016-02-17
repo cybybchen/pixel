@@ -76,7 +76,7 @@ public class HeroLevelUpService {
 		if (equipId == 0 || equipId == 1) {
 			HeroEquipBean equip = heroService.getHeroEquip(heroId);
 			if (equip != null) {
-				result = ErrorConst.NOT_ENGHOU_EQUIP;
+				result = ErrorConst.NOT_ENOUGH_EQUIP;
 				int userEquipmentId = equip.getArmValue(armId);
 				if (costService.cost(user, userEquipmentId, 1)) {
 					result = SuccessConst.ADD_EQUIP_SUCCESS;
@@ -98,7 +98,7 @@ public class HeroLevelUpService {
 				result = ErrorConst.EQUIP_LEVELUP_ERROR;
 			} else {
 				if (equipId == equip.getCover()) {
-					result = ErrorConst.NOT_ENGHOU_EQUIP;
+					result = ErrorConst.NOT_ENOUGH_EQUIP;
 					boolean equipLevelUpRet = equipLevelUp(user.getId(), equip);
 					if (equipLevelUpRet) {
 						heroInfo.updateEquipIdByArmId(levelUpId, armId);
@@ -117,7 +117,7 @@ public class HeroLevelUpService {
 		}
 		int useExp = heroService.getLevelUpExp(heroInfo.getLevel() + 1);
 		if (useExp > user.getExp()) {
-			return ErrorConst.NOT_ENGHOU_EXP;
+			return ErrorConst.NOT_ENOUGH_EXP;
 		}
 		
 		heroInfo.setLevel(heroInfo.getLevel() + 1);
@@ -137,12 +137,14 @@ public class HeroLevelUpService {
 		
 		StarBean star = starService.getStarBean(heroInfo.getStarLevel() + 1);
 		int needValue = star.getValue() - heroInfo.getValue();
-		if (needValue <= addValue) {
+		if(addValue > 0){
 			userHero.delHeros(costInfoIds);
-			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
 			heroInfo.setValue(heroInfo.getValue() + addValue);
 			result = SuccessConst.STAR_LEVELUP_SUCCESS;
-		} 
+		}
+		if (needValue <= addValue) {
+			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
+		}
 		
 		return result;
 	}

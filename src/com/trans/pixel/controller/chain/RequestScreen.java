@@ -24,6 +24,23 @@ import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestShopCommand;
+import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestMagicShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -153,6 +170,23 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestDailyShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestDailyShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUnionShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestMagicShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestMagicShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestMagicShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLadderShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -403,6 +437,91 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
+        if (request.hasDailyShopCommand()) {
+            RequestDailyShopCommand cmd = request.getDailyShopCommand();
+            if (result)//DailyShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//DailyShopCommand
+        }//DailyShopCommand
+        if (request.hasDailyShopPurchaseCommand()) {
+            RequestDailyShopPurchaseCommand cmd = request.getDailyShopPurchaseCommand();
+            if (result)//DailyShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//DailyShopPurchaseCommand
+        }//DailyShopPurchaseCommand
+        if (request.hasDailyShopRefreshCommand()) {
+            RequestDailyShopRefreshCommand cmd = request.getDailyShopRefreshCommand();
+            if (result)//DailyShopRefreshCommand
+                result = handleCommand(cmd, responseBuilder, user);//DailyShopRefreshCommand
+        }//DailyShopRefreshCommand
+        if (request.hasShopCommand()) {
+            RequestShopCommand cmd = request.getShopCommand();
+            if (result)//ShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//ShopCommand
+        }//ShopCommand
+        if (request.hasShopPurchaseCommand()) {
+            RequestShopPurchaseCommand cmd = request.getShopPurchaseCommand();
+            if (result)//ShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//ShopPurchaseCommand
+        }//ShopPurchaseCommand
+        if (request.hasBlackShopCommand()) {
+            RequestBlackShopCommand cmd = request.getBlackShopCommand();
+            if (result)//BlackShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//BlackShopCommand
+        }//BlackShopCommand
+        if (request.hasBlackShopPurchaseCommand()) {
+            RequestBlackShopPurchaseCommand cmd = request.getBlackShopPurchaseCommand();
+            if (result)//BlackShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//BlackShopPurchaseCommand
+        }//BlackShopPurchaseCommand
+        if (request.hasBlackShopRefreshCommand()) {
+            RequestBlackShopRefreshCommand cmd = request.getBlackShopRefreshCommand();
+            if (result)//BlackShopRefreshCommand
+                result = handleCommand(cmd, responseBuilder, user);//BlackShopRefreshCommand
+        }//BlackShopRefreshCommand
+        if (request.hasUnionShopCommand()) {
+            RequestUnionShopCommand cmd = request.getUnionShopCommand();
+            if (result)//UnionShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//UnionShopCommand
+        }//UnionShopCommand
+        if (request.hasUnionShopPurchaseCommand()) {
+            RequestUnionShopPurchaseCommand cmd = request.getUnionShopPurchaseCommand();
+            if (result)//UnionShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//UnionShopPurchaseCommand
+        }//UnionShopPurchaseCommand
+        if (request.hasUnionShopRefreshCommand()) {
+            RequestUnionShopRefreshCommand cmd = request.getUnionShopRefreshCommand();
+            if (result)//UnionShopRefreshCommand
+                result = handleCommand(cmd, responseBuilder, user);//UnionShopRefreshCommand
+        }//UnionShopRefreshCommand
+        if (request.hasMagicShopCommand()) {
+            RequestMagicShopCommand cmd = request.getMagicShopCommand();
+            if (result)//MagicShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//MagicShopCommand
+        }//MagicShopCommand
+        if (request.hasMagicShopPurchaseCommand()) {
+            RequestMagicShopPurchaseCommand cmd = request.getMagicShopPurchaseCommand();
+            if (result)//MagicShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//MagicShopPurchaseCommand
+        }//MagicShopPurchaseCommand
+        if (request.hasMagicShopRefreshCommand()) {
+            RequestMagicShopRefreshCommand cmd = request.getMagicShopRefreshCommand();
+            if (result)//MagicShopRefreshCommand
+                result = handleCommand(cmd, responseBuilder, user);//MagicShopRefreshCommand
+        }//MagicShopRefreshCommand
+        if (request.hasLadderShopCommand()) {
+            RequestLadderShopCommand cmd = request.getLadderShopCommand();
+            if (result)//LadderShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//LadderShopCommand
+        }//LadderShopCommand
+        if (request.hasLadderShopPurchaseCommand()) {
+            RequestLadderShopPurchaseCommand cmd = request.getLadderShopPurchaseCommand();
+            if (result)//LadderShopPurchaseCommand
+                result = handleCommand(cmd, responseBuilder, user);//LadderShopPurchaseCommand
+        }//LadderShopPurchaseCommand
+        if (request.hasLadderShopRefreshCommand()) {
+            RequestLadderShopRefreshCommand cmd = request.getLadderShopRefreshCommand();
+            if (result)//LadderShopRefreshCommand
+                result = handleCommand(cmd, responseBuilder, user);//LadderShopRefreshCommand
+        }//LadderShopRefreshCommand
         //call handleCommand here
         
         return result;

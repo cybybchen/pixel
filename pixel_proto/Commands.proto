@@ -19,6 +19,36 @@ message UserInfo {
 	optional int64 areaEnergyTime = 16;//疲劳回满时间
 }
 
+message Commodity {
+	required int32 itemid = 1;
+	required string name = 2;
+	required int32 count = 3;
+	required int32 currency = 4;
+	required int32 cost = 5;
+	optional int32 will = 6;
+	optional bool isOut = 7;
+	optional int32 id = 8;
+}
+message CommodityList {
+	repeated Commodity item = 1;
+}
+message ShopList {
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshTime = 3;//刷新
+}
+message Will {
+	required int32 will = 1;
+	required int32 weight = 2;
+}
+message ShopWill {
+	required int32 id = 1;
+	repeated Will loot = 2;
+}
+message ShopWillList {
+	repeated ShopWill shop = 1;
+}
+
 message RewardInfo {
 	required int32 itemid = 1;
 	required string itemname = 2;
@@ -590,6 +620,80 @@ message ResponseMessageBoardCommand {
 	required MessageBoard messageBoard = 2;
 }
 
+message RequestDailyShopCommand{//普通商店
+}
+message RequestDailyShopPurchaseCommand{//普通商店购买
+	required int32 index = 1;//第几个商品(1~8)
+}
+message RequestDailyShopRefreshCommand{//普通商店刷新
+}
+message ResponseDailyShopCommand{
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshCost = 3;//刷新消耗
+}
+
+message RequestShopCommand {//商城
+}
+message RequestShopPurchaseCommand {//商城购买
+	required int32 id = 1;//商品ID
+}
+message ResponseShopCommand {
+	repeated Commodity items = 1;//商品列表
+}
+
+message RequestBlackShopCommand {//黑市
+}
+message RequestBlackShopPurchaseCommand {//黑市购买
+	required int32 index = 1;//第几个商品(1~8)
+}
+message RequestBlackShopRefreshCommand {//黑市刷新
+}
+message ResponseBlackShopCommand {
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshCost = 3;//刷新消耗
+}
+
+message RequestUnionShopCommand {//工会商店
+}
+message RequestUnionShopPurchaseCommand {//工会商店购买
+	required int32 index = 1;//第几个商品(1~8)
+}
+message RequestUnionShopRefreshCommand {//工会商店刷新
+}
+message ResponseUnionShopCommand {
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshCost = 3;//刷新消耗
+}
+
+message RequestMagicShopCommand {//魔化商店
+}
+message RequestMagicShopPurchaseCommand {//魔化商店购买
+	required int32 index = 1;//第几个商品(1~8)
+}
+message RequestMagicShopRefreshCommand {//魔化商店刷新
+}
+message ResponseMagicShopCommand {
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshCost = 3;//刷新消耗
+}
+
+message RequestLadderShopCommand {//天梯商店
+}
+message RequestLadderShopPurchaseCommand {//天梯商店购买
+	required int32 index = 1;//第几个商品(1~8)
+}
+message RequestLadderShopRefreshCommand {//天梯商店刷新
+}
+message ResponseLadderShopCommand {
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshCost = 3;//刷新消耗
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -632,6 +736,24 @@ message RequestCommand {
 	optional RequestUpgradeUnionCommand upgradeUnionCommand = 41;
 	optional RequestAttackUnionCommand attackUnionCommand = 100;
 	optional RequestDefendUnionCommand defendUnionCommand = 101;
+	optional RequestDailyShopCommand dailyShopCommand = 102;
+	optional RequestDailyShopPurchaseCommand dailyShopPurchaseCommand = 103;
+	optional RequestDailyShopRefreshCommand dailyShopRefreshCommand = 104;
+	optional RequestShopCommand shopCommand = 105;
+	optional RequestShopPurchaseCommand shopPurchaseCommand = 106;
+	optional RequestBlackShopCommand blackShopCommand = 107;
+	optional RequestBlackShopPurchaseCommand blackShopPurchaseCommand = 108;
+	optional RequestBlackShopRefreshCommand blackShopRefreshCommand = 109;
+	optional RequestUnionShopCommand unionShopCommand = 110;
+	optional RequestUnionShopPurchaseCommand unionShopPurchaseCommand = 111;
+	optional RequestUnionShopRefreshCommand unionShopRefreshCommand = 112;
+	optional RequestMagicShopCommand magicShopCommand = 113;
+	optional RequestMagicShopPurchaseCommand magicShopPurchaseCommand = 114;
+	optional RequestMagicShopRefreshCommand magicShopRefreshCommand = 115;
+	optional RequestLadderShopCommand ladderShopCommand = 116;
+	optional RequestLadderShopPurchaseCommand ladderShopPurchaseCommand = 117;
+	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 118;
+	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
@@ -644,6 +766,13 @@ message RequestCommand {
 message ResponseCommand {
 	required HeadInfo head = 1;
 	optional ErrorCommand errorCommand = 2;
+	optional ResponseDailyShopCommand dailyShopCommand = 102;
+	optional ResponseShopCommand shopCommand = 103;
+	optional ResponseBlackShopCommand blackShopCommand = 104;
+	optional ResponseUnionShopCommand unionShopCommand = 105;
+	optional ResponseMagicShopCommand magicShopCommand = 106;
+	optional ResponseLadderShopCommand ladderShopCommand = 107;
+	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;
 	optional ResponseLevelResultCommand levelResultCommand = 6;
