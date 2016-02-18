@@ -131,6 +131,7 @@ public class MailBean {
 		builder.setFromUserName(fromUserName);
 		builder.setId(id);
 		builder.setStartDate(startDate);
+		builder.setEndDate(endDate);
 		builder.setType(type);
 		builder.setUserId(userId);
 		
