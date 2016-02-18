@@ -49,6 +49,8 @@ public class ShopCommandService extends BaseCommandService{
     private ShopService service;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private PushCommandService pusher;
 
 	public int getDailyShopRefreshCost(int time){
 		if(time < 2){
@@ -92,6 +94,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveDailyShop(shoplist.build());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid());
 		}
 		
 		ResponseDailyShopCommand.Builder shop = ResponseDailyShopCommand.newBuilder();
@@ -113,6 +116,7 @@ public class ShopCommandService extends BaseCommandService{
 			refreshtime++;
 			user.setDailyShopRefreshTime(refreshtime);
 			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -150,6 +154,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.doReward(user, comm.getItemid(), comm.getCount());
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
+            pusher.pushRewardCommand(responseBuilder, user, comm.getItemid());
 		}
 	}
 
@@ -206,6 +211,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveBlackShop(shoplist.build());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid());
 		}
 		
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
@@ -227,6 +233,7 @@ public class ShopCommandService extends BaseCommandService{
 			refreshtime++;
 			user.setBlackShopRefreshTime(refreshtime);
 			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -294,6 +301,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveUnionShop(shoplist.build());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid());
 		}
 		
 		ResponseUnionShopCommand.Builder shop = ResponseUnionShopCommand.newBuilder();
@@ -315,6 +323,7 @@ public class ShopCommandService extends BaseCommandService{
 			refreshtime++;
 			user.setDailyShopRefreshTime(refreshtime);
 			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -382,6 +391,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.savePVPShop(shoplist.build());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid());
 		}
 		
 		ResponsePVPShopCommand.Builder shop = ResponsePVPShopCommand.newBuilder();
@@ -403,6 +413,7 @@ public class ShopCommandService extends BaseCommandService{
 			refreshtime++;
 			user.setDailyShopRefreshTime(refreshtime);
 			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -470,6 +481,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveExpeditionShop(shoplist.build());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid());
 		}
 		
 		ResponseExpeditionShopCommand.Builder shop = ResponseExpeditionShopCommand.newBuilder();
@@ -491,6 +503,7 @@ public class ShopCommandService extends BaseCommandService{
 			refreshtime++;
 			user.setDailyShopRefreshTime(refreshtime);
 			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -558,6 +571,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveLadderShop(shoplist.build());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid());
 		}
 		
 		ResponseLadderShopCommand.Builder shop = ResponseLadderShopCommand.newBuilder();
@@ -579,6 +593,7 @@ public class ShopCommandService extends BaseCommandService{
 			refreshtime++;
 			user.setDailyShopRefreshTime(refreshtime);
 			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}

@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Resource;
-
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
-
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;

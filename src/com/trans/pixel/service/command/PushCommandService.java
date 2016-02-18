@@ -8,9 +8,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
@@ -20,6 +22,7 @@ import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.MailList;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
@@ -37,6 +40,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserTeamListCommand;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
@@ -202,5 +206,85 @@ public class PushCommandService extends BaseCommandService {
 	public void pushLadderShopCommand(Builder responseBuilder, UserBean user) {
 		RequestLadderShopCommand.Builder cmd = RequestLadderShopCommand.newBuilder();
 		shopCommandService.LadderShop(cmd.build(), responseBuilder, user);
+	}
+	
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId) {
+		if (rewardId > RewardConst.HERO) {
+			this.pushUserHeroListCommand(responseBuilder, user);
+		} else if (rewardId > RewardConst.PROP) {
+			
+		} else if (rewardId > RewardConst.PACKAGE) {
+			
+		} else if (rewardId > RewardConst.CHIP) {
+			this.pushUserEquipListCommand(responseBuilder, user);
+		} else if (rewardId > RewardConst.EQUIPMENT) {
+			this.pushUserEquipListCommand(responseBuilder, user);
+		} else {
+			this.pushUserInfoCommand(responseBuilder, user);
+		}
+	}
+
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards) {
+		boolean isHeroUpdated = false;
+		boolean isPropUpdated = false;
+		boolean isPackageUpdated = false;
+		boolean isEquipUpdated = false;
+		boolean isUserUpdated = false;
+		for(RewardInfo reward : rewards.getLootList()){
+			int rewardId = reward.getItemid();
+			if (rewardId > RewardConst.HERO) {
+				isHeroUpdated = true;
+			} else if (rewardId > RewardConst.PROP) {
+				isPropUpdated = true;
+			} else if (rewardId > RewardConst.PACKAGE) {
+				isPackageUpdated = true;
+			} else if (rewardId > RewardConst.EQUIPMENT || rewardId > RewardConst.CHIP) {
+				isEquipUpdated = true;
+			} else {
+				isUserUpdated = true;
+			}
+		}
+		if(isHeroUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.HERO+1);
+		if(isPropUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.PROP+1);
+		if(isPackageUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.PACKAGE+1);
+		if(isEquipUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.EQUIPMENT+1);
+		if(isUserUpdated)
+			this.pushRewardCommand(responseBuilder, user, 1001);
+	}
+	
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, List<RewardBean> rewards) {
+		boolean isHeroUpdated = false;
+		boolean isPropUpdated = false;
+		boolean isPackageUpdated = false;
+		boolean isEquipUpdated = false;
+		boolean isUserUpdated = false;
+		for(RewardBean reward : rewards){
+			int rewardId = reward.getItemid();
+			if (rewardId > RewardConst.HERO) {
+				isHeroUpdated = true;
+			} else if (rewardId > RewardConst.PROP) {
+				isPropUpdated = true;
+			} else if (rewardId > RewardConst.PACKAGE) {
+				isPackageUpdated = true;
+			} else if (rewardId > RewardConst.EQUIPMENT || rewardId > RewardConst.CHIP) {
+				isEquipUpdated = true;
+			} else {
+				isUserUpdated = true;
+			}
+		}
+		if(isHeroUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.HERO+1);
+		if(isPropUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.PROP+1);
+		if(isPackageUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.PACKAGE+1);
+		if(isEquipUpdated)
+			this.pushRewardCommand(responseBuilder, user, RewardConst.EQUIPMENT+1);
+		if(isUserUpdated)
+			this.pushRewardCommand(responseBuilder, user, 1001);
 	}
 }

@@ -66,8 +66,9 @@ message RewardInfo {
 }
 
 message MultiReward {
-	required int32 id = 1;
-	repeated RewardInfo loot = 2;
+	optional int32 id = 1;
+	optional string name = 2;
+	repeated RewardInfo loot = 3;
 }
 
 message MultiRewardList {
@@ -289,6 +290,12 @@ message Msg {
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
+}
+
+message RewardCommand {
+	optional int32 id = 1;
+	optional string name = 2;
+	repeated RewardInfo loot = 3;
 }
 
 message ResponseNeedRegisterCommand {
@@ -787,6 +794,7 @@ message RequestCommand {
 message ResponseCommand {
 	required HeadInfo head = 1;
 	optional ErrorCommand errorCommand = 2;
+	optional RewardCommand rewardCommand = 101;
 	optional ResponseDailyShopCommand dailyShopCommand = 102;
 	optional ResponseShopCommand shopCommand = 103;
 	optional ResponseBlackShopCommand blackShopCommand = 104;
