@@ -43,7 +43,6 @@ public class RedisService {
 	static Logger logger = Logger.getLogger(RedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
-	private Date expireDate = null;
 
 	/**
 	 * 只有当返回true才能使用builder
@@ -242,9 +241,9 @@ public class RedisService {
 
 				Ops.set(value);
 				
-				Date date = expireDateAndInit();
-				if (date != null)
-					Ops.expireAt(date);
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -297,9 +296,9 @@ public class RedisService {
 
 				redisTemplate.opsForValue().multiSet(keyvalue);
 
-				Date date = expireDateAndInit();
-				if (date != null)
-					throw new RuntimeException("mset中不能设置超时时间");
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					throw new RuntimeException("mset中不能设置超时时间");
 				return null;
 			}
 		});
@@ -331,9 +330,9 @@ public class RedisService {
 
 				Ops.put(key2, value);
 
-				Date date = expireDateAndInit();
-				if (date != null)
-					Ops.expireAt(date);
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -352,9 +351,9 @@ public class RedisService {
 
 				Ops.putAll(keyvalue);
 
-				Date date = expireDateAndInit();
-				if (date != null)
-					Ops.expireAt(date);
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -438,9 +437,9 @@ public class RedisService {
 
 				Ops.add(value, score);
 
-				Date date = expireDateAndInit();
-				if (date != null)
-					Ops.expireAt(date);
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -459,9 +458,9 @@ public class RedisService {
 
 				Ops.incrementScore(value, score);
 
-				Date date = expireDateAndInit();
-				if (date != null)
-					Ops.expireAt(date);
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					Ops.expireAt(date);
 				return null;
 			}
 		});
@@ -558,9 +557,9 @@ public class RedisService {
 				BoundListOperations<String, String> Ops = redisTemplate
 						.boundListOps(key);
 
-				Date date = expireDateAndInit();
-				if (date != null)
-					Ops.expireAt(date);
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					Ops.expireAt(date);
 				return Ops.leftPush(value);
 			}
 		});
@@ -593,9 +592,9 @@ public class RedisService {
 				BoundListOperations<String, String> Ops = redisTemplate
 						.boundListOps(key);
 
-				Date date = expireDateAndInit();
-				if (date != null)
-					Ops.expireAt(date);
+//				Date date = expireDateAndInit();
+//				if (date != null)
+//					Ops.expireAt(date);
 				return Ops.rightPush(value);
 			}
 		});
@@ -672,42 +671,32 @@ public class RedisService {
     }
     
     /**
-     * 设置超时
+     * 设置超时default:RedisExpiredConst.EXPIRED_USERINFO_7DAY
      */
     public Boolean expire(final String key, final long milliseconds) {
     	return redisTemplate.expire(key, milliseconds, TimeUnit.MILLISECONDS);
     }
     
     /**
-     * 设置超时
+     * 设置超时default:nextDay()
      */
     public Boolean expireAt(final String key, final Date date) {
     	return redisTemplate.expireAt(key, date);
     }
 
-	public Date expireDateAndInit() {
-		Date date = expireDate;
-		expireDate = null;
-		return date;
-	}
-
-//	public Date getExpireDate() {
-//		return expireDate;
+//	/**
+//	 * default:RedisExpiredConst.EXPIRED_USERINFO_7DAY
+//	 */
+//	public Date ExpireTime(long milliseconds) {
+//		expireDate = new Date(System.currentTimeMillis()+milliseconds);
 //	}
-	
-	/**
-	 * default:RedisExpiredConst.EXPIRED_USERINFO_7DAY
-	 */
-	public void setExpireTime(long milliseconds) {
-		expireDate = new Date(System.currentTimeMillis()+milliseconds);
-	}
-	
-	/**
-	 * default:nextDay()
-	 */
-	public void setExpireDate(Date date) {
-		this.expireDate = date;
-	}
+//	
+//	/**
+//	 * default:nextDay()
+//	 */
+//	public void setExpireDate(Date date) {
+//		this.expireDate = date;
+//	}
 	/**
 	 * 第二天6点
 	 */

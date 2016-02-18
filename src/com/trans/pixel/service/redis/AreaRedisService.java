@@ -188,12 +188,15 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public void saveBoss(AreaBoss boss) {
-		this.hput(AREABOSS+user.getServerId(), boss.getId()+"", formatJson(boss));
+		String key = AREABOSS+user.getServerId();
+		this.hput(key, boss.getId()+"", formatJson(boss));
+		this.expireAt(key, nextDay());
 	}
 	
 	public void addBossRank(final int bossId, final int score) {
-		this.setExpireDate(nextDay());
-		this.zincrby(AREABOSS+user.getServerId()+"_Rank_"+bossId, score, user.getId()+"");
+		String key = AREABOSS+user.getServerId()+"_Rank_"+bossId;
+		this.zincrby(key, score, user.getId()+"");
+		this.expireAt(key, nextDay());
 	}
 	
 	public Set<TypedTuple<String>> getBossRank(final int bossId) {
@@ -225,8 +228,9 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveMonster(AreaMonster monster) {
-		this.setExpireDate(nextDay());
-		this.hput(AREAMONSTER+user.getId(), monster.getId()+"", formatJson(monster));
+		String key = AREAMONSTER+user.getId();
+		this.hput(key, monster.getId()+"", formatJson(monster));
+		this.expireAt(key, nextDay());
 	}
 	
 	public void deleteMonster(int monsterId) {
@@ -235,10 +239,8 @@ public class AreaRedisService extends RedisService{
 	
 	public AreaMonster createMonster(int id){
 		AreaMonster monster = buildAreaMonster(id);
-		if(monster != null){
-			setExpireDate(nextDay());
+		if(monster != null)
 			saveMonster(monster);
-		}
 		return monster;
 	}
 
@@ -331,10 +333,8 @@ public class AreaRedisService extends RedisService{
 	
 	public AreaBoss createBoss(final int id){
 		AreaBoss boss = buildAreaBoss(id);
-		if(boss != null){
-			setExpireDate(nextDay());
+		if(boss != null)
 			saveBoss(boss);
-		}
 		return boss;
 	}
 	

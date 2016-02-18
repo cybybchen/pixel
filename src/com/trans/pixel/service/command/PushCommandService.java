@@ -40,6 +40,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserTeamListCommand;
+import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
@@ -207,7 +208,26 @@ public class PushCommandService extends BaseCommandService {
 		RequestLadderShopCommand.Builder cmd = RequestLadderShopCommand.newBuilder();
 		shopCommandService.LadderShop(cmd.build(), responseBuilder, user);
 	}
+
 	
+	/**
+	 * Include RewardCommand
+	 */
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId, String rewardName, int rewardCount) {
+		RewardCommand.Builder reward = RewardCommand.newBuilder();
+		RewardInfo.Builder builder = RewardInfo.newBuilder();
+		builder.setItemid(rewardId);
+		builder.setItemname(rewardName);
+		builder.setCount(rewardCount);
+		reward.addLoot(builder);
+		reward.setName("恭喜获得");
+		responseBuilder.setRewardCommand(reward);
+		pushRewardCommand(responseBuilder, user, rewardId);
+	}
+	
+	/**
+	 * No RewardCommand include
+	 */
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId) {
 		if (rewardId > RewardConst.HERO) {
 			this.pushUserHeroListCommand(responseBuilder, user);
@@ -244,6 +264,10 @@ public class PushCommandService extends BaseCommandService {
 				isUserUpdated = true;
 			}
 		}
+		RewardCommand.Builder reward = RewardCommand.newBuilder();
+		reward.setName(rewards.getName());
+		reward.addAllLoot(rewards.getLootList());
+		responseBuilder.setRewardCommand(reward);
 		if(isHeroUpdated)
 			this.pushRewardCommand(responseBuilder, user, RewardConst.HERO+1);
 		if(isPropUpdated)
@@ -262,7 +286,9 @@ public class PushCommandService extends BaseCommandService {
 		boolean isPackageUpdated = false;
 		boolean isEquipUpdated = false;
 		boolean isUserUpdated = false;
+		RewardCommand.Builder rewardbuilder = RewardCommand.newBuilder();
 		for(RewardBean reward : rewards){
+			rewardbuilder.addLoot(reward.buildRewardInfo());
 			int rewardId = reward.getItemid();
 			if (rewardId > RewardConst.HERO) {
 				isHeroUpdated = true;
@@ -276,6 +302,8 @@ public class PushCommandService extends BaseCommandService {
 				isUserUpdated = true;
 			}
 		}
+		rewardbuilder.setName("恭喜获得");
+		responseBuilder.setRewardCommand(rewardbuilder);
 		if(isHeroUpdated)
 			this.pushRewardCommand(responseBuilder, user, RewardConst.HERO+1);
 		if(isPropUpdated)
