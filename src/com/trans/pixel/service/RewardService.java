@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
@@ -176,31 +177,31 @@ public class RewardService {
 		} else {
 			switch (rewardId) {
 				case RewardConst.EXP:
-					if(rewardCount < user.getExp()) return false;
+					if(rewardCount > user.getExp()) return false;
 					user.setExp(user.getExp() - rewardCount);
 					return true;
 				case RewardConst.COIN:
-					if(rewardCount < user.getCoin()) return false;
+					if(rewardCount > user.getCoin()) return false;
 					user.setCoin(user.getCoin() - rewardCount);
 					return true;
 				case RewardConst.JEWEL:
-					if(rewardCount < user.getJewel()) return false;
+					if(rewardCount > user.getJewel()) return false;
 					user.setJewel(user.getJewel() - rewardCount);
 					return true;
 				case RewardConst.PVPCOIN:
-					if(rewardCount < user.getPointPVP()) return false;
+					if(rewardCount > user.getPointPVP()) return false;
 					user.setPointPVP(user.getPointPVP() - rewardCount);
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
-					if(rewardCount < user.getPointExpedition()) return false;
+					if(rewardCount > user.getPointExpedition()) return false;
 					user.setPointExpedition(user.getPointExpedition() - rewardCount);
 					return true;
 				case RewardConst.LADDERCOIN:
-					if(rewardCount < user.getPointLadder()) return false;
+					if(rewardCount > user.getPointLadder()) return false;
 					user.setPointLadder(user.getPointLadder() - rewardCount);
 					return true;
 				case RewardConst.UNIONCOIN:
-					if(rewardCount < user.getPointUnion()) return false;
+					if(rewardCount > user.getPointUnion()) return false;
 					user.setPointUnion(user.getPointUnion() - rewardCount);
 					return true;
 				default:

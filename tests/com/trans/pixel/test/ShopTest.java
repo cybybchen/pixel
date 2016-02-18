@@ -24,13 +24,20 @@ import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.ResponseBlackShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Commands.ResponseDailyShopCommand;
+import com.trans.pixel.protoc.Commands.ResponseExpeditionShopCommand;
+import com.trans.pixel.protoc.Commands.ResponseLadderShopCommand;
+import com.trans.pixel.protoc.Commands.ResponsePVPShopCommand;
+import com.trans.pixel.protoc.Commands.ResponseUnionShopCommand;
 
 public class ShopTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(ShopTest.class);
 
 	@Test
 	public void testShop() {
+		head();
 		new LoginTest().testLogin();
 		getDailyShop();
 		DailyShopPurchase(0);
@@ -47,7 +54,7 @@ public class ShopTest extends BaseTest {
 		getShop();
 		ShopPurchase(1);
 	}
-	
+	private ResponseDailyShopCommand dailyshop = null;
 	private void getDailyShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -61,6 +68,7 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasDailyShopCommand())
         	fail("testShop Not yet implemented");
+        dailyshop = response.getDailyShopCommand();
         logger.info(response.getAllFields());
 	}
 	
@@ -69,6 +77,7 @@ public class ShopTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestDailyShopPurchaseCommand.Builder builder = RequestDailyShopPurchaseCommand.newBuilder();
 		builder.setIndex(index);
+		builder.setId(dailyshop.getItems(index).getId());
 		requestBuilder.setDailyShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -78,10 +87,12 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasDailyShopCommand())
         	fail("testShop Not yet implemented");
+        dailyshop = response.getDailyShopCommand();
         logger.info(response.getAllFields());
 	}
 
-	
+
+	private ResponseBlackShopCommand blackshop = null;
 	private void getBlackShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -95,6 +106,7 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasBlackShopCommand())
         	fail("testShop Not yet implemented");
+        blackshop = response.getBlackShopCommand();
         logger.info(response.getAllFields());
 	}
 	
@@ -103,6 +115,7 @@ public class ShopTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestBlackShopPurchaseCommand.Builder builder = RequestBlackShopPurchaseCommand.newBuilder();
 		builder.setIndex(index);
+		builder.setId(blackshop.getItems(index).getId());
 		requestBuilder.setBlackShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -112,10 +125,12 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasBlackShopCommand())
         	fail("testShop Not yet implemented");
+        blackshop = response.getBlackShopCommand();
         logger.info(response.getAllFields());
 	}
 
-	
+
+	private ResponsePVPShopCommand pvpshop = null;
 	private void getPVPShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -129,6 +144,7 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasPVPShopCommand())
         	fail("testShop Not yet implemented");
+        pvpshop = response.getPVPShopCommand();
         logger.info(response.getAllFields());
 	}
 	
@@ -137,6 +153,7 @@ public class ShopTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestPVPShopPurchaseCommand.Builder builder = RequestPVPShopPurchaseCommand.newBuilder();
 		builder.setIndex(index);
+		builder.setId(pvpshop.getItems(index).getId());
 		requestBuilder.setPVPShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -146,10 +163,12 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasPVPShopCommand())
         	fail("testShop Not yet implemented");
+        pvpshop = response.getPVPShopCommand();
         logger.info(response.getAllFields());
 	}
 
-	
+
+	private ResponseUnionShopCommand unionshop = null;
 	private void getUnionShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -163,6 +182,7 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasUnionShopCommand())
         	fail("testShop Not yet implemented");
+        unionshop = response.getUnionShopCommand();
         logger.info(response.getAllFields());
 	}
 	
@@ -171,6 +191,7 @@ public class ShopTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestUnionShopPurchaseCommand.Builder builder = RequestUnionShopPurchaseCommand.newBuilder();
 		builder.setIndex(index);
+		builder.setId(unionshop.getItems(index).getId());
 		requestBuilder.setUnionShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -180,10 +201,12 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasUnionShopCommand())
         	fail("testShop Not yet implemented");
+        unionshop = response.getUnionShopCommand();
         logger.info(response.getAllFields());
 	}
 
-	
+
+	private ResponseExpeditionShopCommand expeditionshop = null;
 	private void getExpeditionShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -197,6 +220,7 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasExpeditionShopCommand())
         	fail("testShop Not yet implemented");
+        expeditionshop = response.getExpeditionShopCommand();
         logger.info(response.getAllFields());
 	}
 	
@@ -205,6 +229,7 @@ public class ShopTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestExpeditionShopPurchaseCommand.Builder builder = RequestExpeditionShopPurchaseCommand.newBuilder();
 		builder.setIndex(index);
+		builder.setId(expeditionshop.getItems(index).getId());
 		requestBuilder.setExpeditionShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -214,10 +239,12 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasExpeditionShopCommand())
         	fail("testShop Not yet implemented");
+        expeditionshop = response.getExpeditionShopCommand();
         logger.info(response.getAllFields());
 	}
 
-	
+
+	private ResponseLadderShopCommand laddershop = null;
 	private void getLadderShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -231,6 +258,7 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasLadderShopCommand())
         	fail("testShop Not yet implemented");
+        laddershop = response.getLadderShopCommand();
         logger.info(response.getAllFields());
 	}
 	
@@ -239,6 +267,7 @@ public class ShopTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestLadderShopPurchaseCommand.Builder builder = RequestLadderShopPurchaseCommand.newBuilder();
 		builder.setIndex(index);
+		builder.setId(laddershop.getItems(index).getId());
 		requestBuilder.setLadderShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -248,6 +277,7 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasLadderShopCommand())
         	fail("testShop Not yet implemented");
+        laddershop = response.getLadderShopCommand();
         logger.info(response.getAllFields());
 	}
 
