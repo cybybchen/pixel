@@ -101,6 +101,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 			builder.setHeroId(heroId);
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
+			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 		}
 	}
@@ -134,6 +135,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 			builder.setHeroId(heroId);
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
+			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 		}
 	}
