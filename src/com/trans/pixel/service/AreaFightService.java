@@ -109,6 +109,8 @@ public class AreaFightService extends FightService{
 	public boolean gainMine(AreaResourceMine.Builder builder){
 		if(!builder.hasUser())
 			return false;
+		if(!redis.setLock("AreaResourceMine_"+builder.getId(), System.currentTimeMillis()))
+			return false;
 		int yield = builder.getYield();
 		if (System.currentTimeMillis() / 1000 < builder.getEndTime())
 			yield = (int)((System.currentTimeMillis() / 1000 + builder.getTime()*3600 - builder.getEndTime())*yield/builder.getTime()/3600);

@@ -80,6 +80,13 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserLootLevelCommand(responseBuilder, user);
 		pushCommandService.pushLadderRankListCommand(responseBuilder, user);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
+		pushCommandService.pushShopCommand(responseBuilder, user);
+		pushCommandService.pushDailyShopCommand(responseBuilder, user);
+		pushCommandService.pushBlackShopCommand(responseBuilder, user);
+		pushCommandService.pushUnionShopCommand(responseBuilder, user);
+		pushCommandService.pushPVPShopCommand(responseBuilder, user);
+		pushCommandService.pushExpeditionShopCommand(responseBuilder, user);
+		pushCommandService.pushLadderShopCommand(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {

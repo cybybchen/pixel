@@ -20,6 +20,13 @@ import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.MailList;
+import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
+import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
+import com.trans.pixel.protoc.Commands.RequestShopCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
@@ -67,6 +74,8 @@ public class PushCommandService extends BaseCommandService {
 	private MessageService messageService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private ShopCommandService shopCommandService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -158,5 +167,40 @@ public class PushCommandService extends BaseCommandService {
 		builder.addAllUserTeam(buildUserTeamList(userTeamList));
 		
 		responseBuilder.setUserTeamListCommand(builder.build());
+	}
+	
+	public void pushShopCommand(Builder responseBuilder, UserBean user) {
+		RequestShopCommand.Builder cmd = RequestShopCommand.newBuilder();
+		shopCommandService.Shop(cmd.build(), responseBuilder, user);
+	}
+	
+	public void pushDailyShopCommand(Builder responseBuilder, UserBean user) {
+		RequestDailyShopCommand.Builder cmd = RequestDailyShopCommand.newBuilder();
+		shopCommandService.DailyShop(cmd.build(), responseBuilder, user);
+	}
+	
+	public void pushBlackShopCommand(Builder responseBuilder, UserBean user) {
+		RequestBlackShopCommand.Builder cmd = RequestBlackShopCommand.newBuilder();
+		shopCommandService.BlackShop(cmd.build(), responseBuilder, user);
+	}
+	
+	public void pushUnionShopCommand(Builder responseBuilder, UserBean user) {
+		RequestUnionShopCommand.Builder cmd = RequestUnionShopCommand.newBuilder();
+		shopCommandService.UnionShop(cmd.build(), responseBuilder, user);
+	}
+	
+	public void pushPVPShopCommand(Builder responseBuilder, UserBean user) {
+		RequestPVPShopCommand.Builder cmd = RequestPVPShopCommand.newBuilder();
+		shopCommandService.PVPShop(cmd.build(), responseBuilder, user);
+	}
+	
+	public void pushExpeditionShopCommand(Builder responseBuilder, UserBean user) {
+		RequestExpeditionShopCommand.Builder cmd = RequestExpeditionShopCommand.newBuilder();
+		shopCommandService.ExpeditionShop(cmd.build(), responseBuilder, user);
+	}
+	
+	public void pushLadderShopCommand(Builder responseBuilder, UserBean user) {
+		RequestLadderShopCommand.Builder cmd = RequestLadderShopCommand.newBuilder();
+		shopCommandService.LadderShop(cmd.build(), responseBuilder, user);
 	}
 }

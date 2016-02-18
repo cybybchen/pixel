@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -194,10 +195,43 @@ public class RedisService {
 //			return null;
 //		}
 //    }
+
+	private static ConcurrentHashMap<String, Long> lockMap = new ConcurrentHashMap<String, Long>(); 
+	/**
+	 * 设置同步锁，返回true才能进行操作
+	 */
+	public /*synchronized*/ boolean setLock(final String key, final long lock) {
+		Long oldLock = lockMap.get(key);
+		if (oldLock == null || lock - oldLock >= 4000) {
+			lockMap.put(key, lock);
+			logger.debug(key + " : " + oldLock + "-->" + lock + " succeed to setLock");
+			return true;
+		}
+		logger.debug(key + " : " + oldLock + "-->" + lock + " fail to setLock");
+		return false;
+	}
+
+	/**
+	 * 读取同步锁
+	 */
+//	public long getLock(final String key) {
+//		Long value = lockMap.get(key);
+//		if (value == null)
+//			return 0;
+//		else
+//			return value;
+//	}
+
+	/**
+	 * 清除同步锁
+	 */
+	public void clearLock(final String key) {
+		lockMap.remove(key);
+	}
 	
-	 /**
-     * 设置单个值
-     */
+	/**
+	 * 设置单个值
+	 */
 	public void set(final String key, final String value) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
