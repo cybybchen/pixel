@@ -119,6 +119,8 @@ public class AreaFightService extends FightService{
 	}
 	
 	public void resourceFight(AreaResource.Builder builder, UserBean user){
+		if(!redis.setLock("AreaResourceFight_"+builder.getId(), System.currentTimeMillis()))
+			return;
 		//防守玩家最后一个加入战斗
 		List<UserInfo> attacks = builder.getAttacksList();
 		List<UserInfo> defenses = builder.getDefensesList();
