@@ -22,89 +22,88 @@ public class ShopService {
     private UserService userService;
 	@Resource
     private RewardService rewardService;
-	private UserBean user = null;
 	
-	public ShopList getDailyShop(){
-		return redis.getDailyShop();
+	public ShopList getDailyShop(UserBean user){
+		return redis.getDailyShop(user);
 	}
 	
-	public void saveDailyShop(ShopList shoplist){
-		redis.saveDailyShop(shoplist);
+	public void saveDailyShop(ShopList shoplist, UserBean user){
+		redis.saveDailyShop(shoplist, user);
 	}
 	
-	public ShopList refreshDailyShop(){
+	public ShopList refreshDailyShop(UserBean user){
 		ShopList shoplist = redis.buildDailyShop();
-		redis.saveDailyShop(shoplist);
+		redis.saveDailyShop(shoplist, user);
 		return shoplist;
 	}
 
-	public ShopList getBlackShop(){
-		return redis.getBlackShop();
+	public ShopList getBlackShop(UserBean user){
+		return redis.getBlackShop(user);
 	}
 	
-	public void saveBlackShop(ShopList shoplist){
-		redis.saveBlackShop(shoplist);
+	public void saveBlackShop(ShopList shoplist, UserBean user){
+		redis.saveBlackShop(shoplist, user);
 	}
 	
-	public ShopList refreshBlackShop(){
+	public ShopList refreshBlackShop(UserBean user){
 		ShopList shoplist = redis.buildBlackShop();
-		redis.saveBlackShop(shoplist);
+		redis.saveBlackShop(shoplist, user);
 		return shoplist;
 	}
 
-	public ShopList getUnionShop(){
-		return redis.getUnionShop();
+	public ShopList getUnionShop(UserBean user){
+		return redis.getUnionShop(user);
 	}
 	
-	public void saveUnionShop(ShopList shoplist){
-		redis.saveUnionShop(shoplist);
+	public void saveUnionShop(ShopList shoplist, UserBean user){
+		redis.saveUnionShop(shoplist, user);
 	}
 	
-	public ShopList refreshUnionShop(){
+	public ShopList refreshUnionShop(UserBean user){
 		ShopList shoplist = redis.buildUnionShop();
-		redis.saveUnionShop(shoplist);
+		redis.saveUnionShop(shoplist, user);
 		return shoplist;
 	}
 
-	public ShopList getPVPShop(){
-		return redis.getPVPShop();
+	public ShopList getPVPShop(UserBean user){
+		return redis.getPVPShop(user);
 	}
 	
-	public void savePVPShop(ShopList shoplist){
-		redis.savePVPShop(shoplist);
+	public void savePVPShop(ShopList shoplist, UserBean user){
+		redis.savePVPShop(shoplist, user);
 	}
 	
-	public ShopList refreshPVPShop(){
+	public ShopList refreshPVPShop(UserBean user){
 		ShopList shoplist = redis.buildPVPShop();
-		redis.savePVPShop(shoplist);
+		redis.savePVPShop(shoplist, user);
 		return shoplist;
 	}
 
-	public ShopList getExpeditionShop(){
-		return redis.getExpeditionShop();
+	public ShopList getExpeditionShop(UserBean user){
+		return redis.getExpeditionShop(user);
 	}
 	
-	public void saveExpeditionShop(ShopList shoplist){
-		redis.saveExpeditionShop(shoplist);
+	public void saveExpeditionShop(ShopList shoplist, UserBean user){
+		redis.saveExpeditionShop(shoplist, user);
 	}
 	
-	public ShopList refreshExpeditionShop(){
+	public ShopList refreshExpeditionShop(UserBean user){
 		ShopList shoplist = redis.buildExpeditionShop();
-		redis.saveExpeditionShop(shoplist);
+		redis.saveExpeditionShop(shoplist, user);
 		return shoplist;
 	}
 
-	public ShopList getLadderShop(){
-		return redis.getLadderShop();
+	public ShopList getLadderShop(UserBean user){
+		return redis.getLadderShop(user);
 	}
 	
-	public void saveLadderShop(ShopList shoplist){
-		redis.saveLadderShop(shoplist);
+	public void saveLadderShop(ShopList shoplist, UserBean user){
+		redis.saveLadderShop(shoplist, user);
 	}
 	
-	public ShopList refreshLadderShop(){
+	public ShopList refreshLadderShop(UserBean user){
 		ShopList shoplist = redis.buildLadderShop();
-		redis.saveLadderShop(shoplist);
+		redis.saveLadderShop(shoplist, user);
 		return shoplist;
 	}
 
@@ -114,12 +113,5 @@ public class ShopService {
 
 	public Commodity getShop(int id){
 		return redis.getShop(id);
-	}
-
-	public void setUserNX(UserBean user) {
-		if(this.user != null)
-			return;
-		this.user = user;
-		redis.setUser(user);
 	}
 }

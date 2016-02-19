@@ -35,16 +35,14 @@ public class UnionCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		List<Union> unions = unionService.getBaseUnions();
+		List<Union> unions = unionService.getBaseUnions(user.getServerId());
 		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
 		builder.addAllUnion(unions);
 		responseBuilder.setUnionListCommand(builder.build());
 	}
 	
 	public void getUnion(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		Union union = unionService.getUnion();
+		Union union = unionService.getUnion(user);
 		if(union == null)
 			return;
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
@@ -53,8 +51,7 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void create(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		Union union = unionService.create(cmd.getIcon(), cmd.getName());
+		Union union = unionService.create(cmd.getIcon(), cmd.getName(), user);
 		if(union == null)
 			return;
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
@@ -64,14 +61,13 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void quit(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
 		if(cmd.hasId())
-			unionService.quit(cmd.getId());
+			unionService.quit(cmd.getId(), user);
 		else
-			unionService.quit();
+			unionService.quit(user);
 
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		Union union = unionService.getUnion();
+		Union union = unionService.getUnion(user);
 		if (union != null) {
 			builder.setUnion(union);
 			responseBuilder.setUnionInfoCommand(builder.build());
@@ -80,47 +76,40 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void delete(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		unionService.delete();
+		unionService.delete(user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DELETE_UNION_SUCCESS));
 	}
 	
 	public void apply(RequestApplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
 		int unionId = cmd.getUnionId();
-		unionService.apply(unionId);
+		unionService.apply(unionId, user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.APPLY_UNION_SUCCESS));
 	}
 	
 	public void reply(RequestReplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		unionService.reply(cmd.getIdList(), cmd.getReceive());
+		unionService.reply(cmd.getIdList(), cmd.getReceive(), user);
 		if(cmd.getReceive()){
 			ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-			builder.setUnion(unionService.getUnion());
+			builder.setUnion(unionService.getUnion(user));
 			responseBuilder.setUnionInfoCommand(builder.build());
 		}
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_APPLY_SUCCESS));
 	}
 	
 	public void handleMember(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		unionService.handleMember(cmd.getId(), cmd.getJob());
+		unionService.handleMember(cmd.getId(), cmd.getJob(), user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_MEMBER_SUCCESS));
 	}
 	
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		unionService.upgrade();
+		unionService.upgrade(user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.UPGRADE_UNION_SUCCESS));
 	}
 
 	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		unionService.attack(cmd.getUnionId());
+		unionService.attack(cmd.getUnionId(), user);
 	}
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.setUserNX(user);
-		unionService.defend();
+		unionService.defend(user);
 	}
 }

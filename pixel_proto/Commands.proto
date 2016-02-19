@@ -630,7 +630,7 @@ message ResponseMessageBoardCommand {
 message RequestDailyShopCommand{//普通商店
 }
 message RequestDailyShopPurchaseCommand{//普通商店购买
-	required int32 index = 1;//第几个商品(1~8)
+	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
 message RequestDailyShopRefreshCommand{//普通商店刷新
@@ -653,7 +653,7 @@ message ResponseShopCommand {
 message RequestBlackShopCommand {//黑市
 }
 message RequestBlackShopPurchaseCommand {//黑市购买
-	required int32 index = 1;//第几个商品(1~8)
+	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
 message RequestBlackShopRefreshCommand {//黑市刷新
@@ -667,7 +667,7 @@ message ResponseBlackShopCommand {
 message RequestUnionShopCommand {//工会商店
 }
 message RequestUnionShopPurchaseCommand {//工会商店购买
-	required int32 index = 1;//第几个商品(1~8)
+	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
 message RequestUnionShopRefreshCommand {//工会商店刷新
@@ -681,7 +681,7 @@ message ResponseUnionShopCommand {
 message RequestPVPShopCommand {//挂机PVP商店
 }
 message RequestPVPShopPurchaseCommand {//挂机PVP商店购买
-	required int32 index = 1;//第几个商品(1~8)
+	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
 message RequestPVPShopRefreshCommand {//挂机PVP商店刷新
@@ -695,7 +695,7 @@ message ResponsePVPShopCommand {
 message RequestExpeditionShopCommand {//远征商店
 }
 message RequestExpeditionShopPurchaseCommand {//远征商店购买
-	required int32 index = 1;//第几个商品(1~8)
+	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
 message RequestExpeditionShopRefreshCommand {//远征商店刷新
@@ -709,7 +709,7 @@ message ResponseExpeditionShopCommand {
 message RequestLadderShopCommand {//天梯商店
 }
 message RequestLadderShopPurchaseCommand {//天梯商店购买
-	required int32 index = 1;//第几个商品(1~8)
+	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
 message RequestLadderShopRefreshCommand {//天梯商店刷新
