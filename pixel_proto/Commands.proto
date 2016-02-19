@@ -515,6 +515,7 @@ message RequestAddFriendCommand {
 
 message RequestReceiveFriendCommand {
 	repeated int32 id = 1;
+	required bool receive = 2;
 }
 
 message ResponseGetUserFriendListCommand {

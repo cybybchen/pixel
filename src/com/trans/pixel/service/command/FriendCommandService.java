@@ -46,10 +46,13 @@ public class FriendCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		doAddFriends(user.getId(), mailList);
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.FRIEND_ADDED_SUCCESS));
-		
-		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		boolean receive = cmd.getReceive();
+		if (receive) {
+			doAddFriends(user.getId(), mailList);
+			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.FRIEND_ADDED_SUCCESS));
+		} else
+			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.FRIEND_ADDED_FAILED));
+//		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	private void doAddFriends(long userId, List<MailBean> mailList) {

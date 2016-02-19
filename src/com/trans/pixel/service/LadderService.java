@@ -69,8 +69,10 @@ public class LadderService {
 			UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, rank);
 			if (userRank == null) {
 				createLadderData(serverId);
-			} else
-				rankList.add(userRank);
+				userRank = ladderRedisService.getUserRankByRank(serverId, rank);
+			}
+			
+			rankList.add(userRank);
 		}
 		return rankList;
 	}
