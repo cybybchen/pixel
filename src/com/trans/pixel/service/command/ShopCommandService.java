@@ -596,13 +596,17 @@ public class ShopCommandService extends BaseCommandService{
 	}
 	
 	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getPurchaseCoinTime() >= 5)
+		if(user.getPurchaseCoinTime() >= 5){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
-		if(user.getJewel() < 50)
+			return;
+		}
+		if(user.getJewel() < 50){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+			return;
+		}
 		user.setCoin(user.getCoin()+500);
 		user.setExp(user.getExp()+500);
-		user.setJewel(user.getJewel());
+		user.setJewel(user.getJewel()-50);
 		user.setPurchaseCoinTime(user.getPurchaseCoinTime()+1);
 		rewardService.updateUser(user);
 		getPurchaseCoinTime(responseBuilder, user);
