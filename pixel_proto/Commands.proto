@@ -755,7 +755,6 @@ message RequestCommand {
 	optional RequestAddFriendCommand addFriendCommand = 21;
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
-	optional RequestReceiveFriendCommand receiveFriend = 25;
 	optional RequestAreaCommand areaCommand = 26;
 	optional RequestAttackMonsterCommand attackMonsterCommand = 27;
 	optional RequestAttackBossCommand attackBossCommand = 28;

@@ -67,7 +67,10 @@ public class LadderService {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		for (Long rank : ranks) {
 			UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, rank);
-			rankList.add(userRank);
+			if (userRank == null) {
+				createLadderData(serverId);
+			} else
+				rankList.add(userRank);
 		}
 		return rankList;
 	}
@@ -93,6 +96,8 @@ public class LadderService {
 			return ret;
 		
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
+		if (myRankBean == null)
+			myRankBean = initUserRank(user.getId(), user.getUserName());
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
 		if (attackResult(myRankBean, attackRankBean)) {
 			attackRankBean.setRank(myRankBean.getRank());
@@ -165,6 +170,27 @@ public class LadderService {
 				}
 			}
 		}
+	}
+	
+	private void createLadderData(int serverId) {
+		for (int i = 0; i < 10000; ++i) {
+			UserRankBean userRank = initUserRank(i, "haha", i);
+			ladderRedisService.updateUserRank(serverId, userRank);
+		}
+	}
+	
+	private UserRankBean initUserRank(long userId, String userName){
+		return initUserRank(userId, userName, 10001);
+	}
+	
+	private UserRankBean initUserRank(long userId, String userName, long rank) {
+		UserRankBean myRank = new UserRankBean();
+		myRank.setUserId(userId);
+		myRank.setUserName(userName);
+		myRank.setRank(rank);
+		myRank.setTeamRecord("1,1|");
+		
+		return myRank;
 	}
 	
 	private MailBean buildLadderDailyMail(long userId, LadderDailyBean ladderDaily) {
