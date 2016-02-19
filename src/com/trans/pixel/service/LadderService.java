@@ -21,6 +21,7 @@ import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.service.redis.LadderRedisService;
@@ -37,6 +38,8 @@ public class LadderService {
 	private UserService userService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private HeroService heroService;
 	
 	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
         public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -51,9 +54,9 @@ public class LadderService {
 	
 	private List<Long> getRelativeRanks(long rank) {
 		List<Long> rankList = new ArrayList<Long>();
-		rankList.add(rank);
+//		rankList.add(rank);
 		while (rankList.size() < LadderRankConst.RANK_SIZE) {
-			long addRank = rank - rankList.size();
+			long addRank = rank - rankList.size() - 1;
 			if (addRank > 0)
 				rankList.add(addRank);
 			else
@@ -71,19 +74,21 @@ public class LadderService {
 				createLadderData(serverId);
 				userRank = ladderRedisService.getUserRankByRank(serverId, rank);
 			}
-			
-			rankList.add(userRank);
+//			if (userRank != null)
+				rankList.add(userRank);
 		}
 		return rankList;
 	}
 	
-	public List<UserRankBean> getRankListByUserId(int serverId, long userId) {
+	public List<UserRankBean> getRankListByUserId(int serverId, UserBean user) {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
-		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, userId);
-		if (myRankBean != null) {
-			List<Long> ranks = getRelativeRanks(myRankBean.getRank());
-			rankList = getRankList(serverId, ranks);
+		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
+		if (myRankBean == null) {
+			myRankBean = initUserRank(user.getId(), user.getUserName());
 		}
+		
+		List<Long> ranks = getRelativeRanks(myRankBean.getRank());
+		rankList = getRankList(serverId, ranks);
 		return rankList;
 	}
 	
@@ -175,7 +180,7 @@ public class LadderService {
 	}
 	
 	private void createLadderData(int serverId) {
-		for (int i = 0; i < 10000; ++i) {
+		for (int i = 1; i < 10001; ++i) {
 			UserRankBean userRank = initUserRank(i, "haha", i);
 			ladderRedisService.updateUserRank(serverId, userRank);
 		}
@@ -190,7 +195,10 @@ public class LadderService {
 		myRank.setUserId(userId);
 		myRank.setUserName(userName);
 		myRank.setRank(rank);
-		myRank.setTeamRecord("1,1|");
+		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
+		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
+		heroInfo.setPosition(heroList.size() + 1);
+		myRank.setHeroList(heroList);
 		
 		return myRank;
 	}

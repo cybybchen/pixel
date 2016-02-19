@@ -53,6 +53,8 @@ public class FriendCommandService extends BaseCommandService {
 		} else
 			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.FRIEND_ADDED_FAILED));
 //		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		
+		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 	}
 	
 	private void doAddFriends(long userId, List<MailBean> mailList) {

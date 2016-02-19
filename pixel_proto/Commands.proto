@@ -249,7 +249,6 @@ message UserRank {
 	required int64 userId = 1;
 	required string userName = 2;
 	required int64 rank = 3;
-	required string teamRecord = 4;
 }
 
 message UserFriend {

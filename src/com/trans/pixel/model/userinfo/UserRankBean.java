@@ -1,8 +1,14 @@
 package com.trans.pixel.model.userinfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserRankBean {
 	private int id = 0;
@@ -11,7 +17,7 @@ public class UserRankBean {
 	private int level = 0;
 	private int zhanli = 0;
 	private long rank = 0;
-	private String teamRecord = "";
+	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 	public int getId() {
 		return id;
 	}
@@ -48,11 +54,11 @@ public class UserRankBean {
 	public void setRank(long rank) {
 		this.rank = rank;
 	}
-	public String getTeamRecord() {
-		return teamRecord;
+	public List<HeroInfoBean> getHeroList() {
+		return heroList;
 	}
-	public void setTeamRecord(String teamRecord) {
-		this.teamRecord = teamRecord;
+	public void setHeroList(List<HeroInfoBean> heroList) {
+		this.heroList = heroList;
 	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
@@ -62,7 +68,7 @@ public class UserRankBean {
 		json.put(LEVEL, level);
 		json.put(ZHANLI, zhanli);
 		json.put(RANK, rank);
-		json.put(TEAM_RECORD, teamRecord);
+		json.put(HERO_LIST, heroList);
 		
 		return json.toString();
 	}
@@ -78,7 +84,14 @@ public class UserRankBean {
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setZhanli(json.getInt(ZHANLI));
 		bean.setRank(json.getInt(RANK));
-		bean.setTeamRecord(json.getString(TEAM_RECORD));
+		
+		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
+		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, HERO_LIST);
+		for (int i = 0;i < array.size(); ++i) {
+			HeroInfoBean hero = HeroInfoBean.fromJson(array.getString(i));
+			list.add(hero);
+		}
+		bean.setHeroList(list);
 		
 		return bean;
 	}
@@ -86,8 +99,8 @@ public class UserRankBean {
 	public UserRank buildUserRank() {
 		UserRank.Builder builder = UserRank.newBuilder();
 		builder.setUserId(userId);
+		builder.setUserName(userName);
 		builder.setRank(rank);
-		builder.setTeamRecord(teamRecord);
 		
 		return builder.build();
 	}
@@ -98,5 +111,5 @@ public class UserRankBean {
 	private static final String LEVEL = "level";
 	private static final String ZHANLI = "zhanli";
 	private static final String RANK = "rank";
-	private static final String TEAM_RECORD = "team_record";
+	private static final String HERO_LIST = "hero_list";
 }

@@ -47,7 +47,7 @@ public class LadderRedisService {
 	}
 	
 	public UserRankBean getUserRankByRank(final int serverId, final long rank) {
-		return redisTemplate.execute(new RedisCallback<UserRankBean>() {
+		UserRankBean bean = redisTemplate.execute(new RedisCallback<UserRankBean>() {
 			@Override
 			public UserRankBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
@@ -57,6 +57,7 @@ public class LadderRedisService {
 				return UserRankBean.fromJson(bhOps.get("" + rank));
 			}
 		});
+		return bean;
 	}
 	
 	public void updateUserRank(final int serverId, final UserRankBean userRank) {

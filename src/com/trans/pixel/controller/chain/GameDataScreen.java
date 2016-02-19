@@ -321,7 +321,7 @@ public class GameDataScreen extends RequestScreen {
 	
 	@Override
 	protected boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
+		ladderCommandService.handleGetUserLadderRankListCommand(cmd, responseBuilder, user);
 		return true;
 	}
 	

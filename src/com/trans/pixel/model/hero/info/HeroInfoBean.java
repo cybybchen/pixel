@@ -14,6 +14,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroInfoBean {
 	private int id = 0;
+	private int position = 0;
+	private int heroId = 0;
 	private int level = 1;
 	private int starLevel = 1;
 	private int value = 1;
@@ -25,6 +27,18 @@ public class HeroInfoBean {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getPosition() {
+		return position;
+	}
+	public void setPosition(int position) {
+		this.position = position;
+	}
+	public int getHeroId() {
+		return heroId;
+	}
+	public void setHeroId(int heroId) {
+		this.heroId = heroId;
 	}
 	public int getLevel() {
 		return level;
@@ -129,6 +143,8 @@ public class HeroInfoBean {
 		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
 		bean.setEquipInfo(json.getString(EQUIP_INFO));
 		bean.setRare(json.getInt(RARE));
+		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
+		bean.setPosition(TypeTranslatedUtil.jsonGetInt(json, POSITION));
 		
 		List<SkillInfoBean> list = new ArrayList<SkillInfoBean>();
 		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, SKILL_INFO_LIST);
@@ -166,6 +182,7 @@ public class HeroInfoBean {
 	public static HeroInfoBean initHeroInfo(HeroBean hero) {
 		HeroInfoBean heroInfo = new HeroInfoBean();
 		heroInfo.setId(0);
+		heroInfo.setHeroId(hero.getId());
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(1);
 		heroInfo.setValue(1);
@@ -227,6 +244,8 @@ public class HeroInfoBean {
 	private static final String RARE = "rare";
 	private static final String EQUIP_INFO = "equipInfo";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
+	private static final String HERO_ID = "heroId";
+	private static final String POSITION = "position";
 	
 	private static final String EQUIP_SPLIT = "|";
 }

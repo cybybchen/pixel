@@ -51,6 +51,7 @@ public class MailCommandService extends BaseCommandService {
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 	}
 	
 	public void handleDeleteMailCommand(RequestDeleteMailCommand cmd, Builder responseBuilder, UserBean user) {	
@@ -64,5 +65,6 @@ public class MailCommandService extends BaseCommandService {
 		}
 		
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.MAIL_DELETE_SUCCESS));
+		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 	}
 }
