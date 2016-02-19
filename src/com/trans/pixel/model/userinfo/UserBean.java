@@ -351,6 +351,18 @@ public class UserBean {
 	public void setExpeditionShopRefreshTime(int refreshTime) {
 		userDailyData.setExpeditionShopRefreshTime(refreshTime);
 	}
+	/**
+	 * 点石成金次数
+	 */
+	public int getPurchaseCoinTime() {
+		return userDailyData.getPurchaseCoinTime();
+	}
+	/**
+	 * 点石成金次数
+	 */
+	public void setPurchaseCoinTime(int time) {
+		userDailyData.setPurchaseCoinTime(time);
+	}
 	public long getFreeLotteryCoinTime() {
 		return freeLotteryCoinTime;
 	}

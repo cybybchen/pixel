@@ -222,13 +222,13 @@ public class PushCommandService extends BaseCommandService {
 		reward.addLoot(builder);
 		reward.setName("恭喜获得");
 		responseBuilder.setRewardCommand(reward);
-		pushRewardCommand(responseBuilder, user, rewardId);
+		pushUserDataByRewardId(responseBuilder, user, rewardId);
 	}
 	
 	/**
 	 * No RewardCommand include
 	 */
-	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId) {
+	public void pushUserDataByRewardId(Builder responseBuilder, UserBean user, int rewardId) {
 		if (rewardId > RewardConst.HERO) {
 			this.pushUserHeroListCommand(responseBuilder, user);
 		} else if (rewardId > RewardConst.PROP) {
@@ -269,15 +269,15 @@ public class PushCommandService extends BaseCommandService {
 		reward.addAllLoot(rewards.getLootList());
 		responseBuilder.setRewardCommand(reward);
 		if(isHeroUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.HERO+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.HERO+1);
 		if(isPropUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.PROP+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PROP+1);
 		if(isPackageUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.PACKAGE+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PACKAGE+1);
 		if(isEquipUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.EQUIPMENT+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.EQUIPMENT+1);
 		if(isUserUpdated)
-			this.pushRewardCommand(responseBuilder, user, 1001);
+			this.pushUserDataByRewardId(responseBuilder, user, 1001);
 	}
 	
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, List<RewardBean> rewards) {
@@ -305,14 +305,18 @@ public class PushCommandService extends BaseCommandService {
 		rewardbuilder.setName("恭喜获得");
 		responseBuilder.setRewardCommand(rewardbuilder);
 		if(isHeroUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.HERO+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.HERO+1);
 		if(isPropUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.PROP+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PROP+1);
 		if(isPackageUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.PACKAGE+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PACKAGE+1);
 		if(isEquipUpdated)
-			this.pushRewardCommand(responseBuilder, user, RewardConst.EQUIPMENT+1);
+			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.EQUIPMENT+1);
 		if(isUserUpdated)
-			this.pushRewardCommand(responseBuilder, user, 1001);
+			this.pushUserDataByRewardId(responseBuilder, user, 1001);
+	}
+
+	public void pushPurchaseCoinCommand(Builder responseBuilder, UserBean user) {
+		shopCommandService.getPurchaseCoinTime(responseBuilder, user);
 	}
 }

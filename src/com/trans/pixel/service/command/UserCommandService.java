@@ -88,6 +88,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushExpeditionShopCommand(responseBuilder, user);
 		pushCommandService.pushLadderShopCommand(responseBuilder, user);
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
+		pushCommandService.pushPurchaseCoinCommand(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {

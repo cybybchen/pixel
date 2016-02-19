@@ -38,6 +38,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -527,6 +528,11 @@ public class GameDataScreen extends RequestScreen {
 		shopCommandService.ExpeditionShopRefresh(cmd, responseBuilder, user);
 		return true;//ExpeditionShopRefreshCommand
 	}//ExpeditionShopRefreshCommand
+	@Override//PurchaseCoinCommand
+	protected boolean handleCommand(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.PurchaseCoin(cmd, responseBuilder, user);
+		return true;//PurchaseCoinCommand
+	}//PurchaseCoinCommand
 	//add handleCommand here
 
 	@Override

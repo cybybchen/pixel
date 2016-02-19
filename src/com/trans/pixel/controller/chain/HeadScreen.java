@@ -46,6 +46,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -466,6 +467,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO ExpeditionShopRefreshCommand method
 		return true;//ExpeditionShopRefreshCommand
 	}//ExpeditionShopRefreshCommand
+	@Override//PurchaseCoinCommand
+	protected boolean handleCommand(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PurchaseCoinCommand method
+		return true;//PurchaseCoinCommand
+	}//PurchaseCoinCommand
 	//add handleCommand here
 
 	@Override

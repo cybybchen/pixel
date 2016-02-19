@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -188,6 +189,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -533,6 +535,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//ExpeditionShopRefreshCommand
                 result = handleCommand(cmd, responseBuilder, user);//ExpeditionShopRefreshCommand
         }//ExpeditionShopRefreshCommand
+        if (request.hasPurchaseCoinCommand()) {
+            RequestPurchaseCoinCommand cmd = request.getPurchaseCoinCommand();
+            if (result)//PurchaseCoinCommand
+                result = handleCommand(cmd, responseBuilder, user);//PurchaseCoinCommand
+        }//PurchaseCoinCommand
         //call handleCommand here
         
         return result;

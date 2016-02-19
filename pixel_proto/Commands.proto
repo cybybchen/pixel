@@ -26,6 +26,7 @@ message UserDailyData {
 	optional int32 PVPShopRefreshTime = 4;//当日挂机PVP商店累计刷新次数
 	optional int32 LadderShopRefreshTime = 5;//当日天梯商店累计刷新次数
 	optional int32 ExpeditionShopRefreshTime = 6;//当日远征商店累计刷新次数
+	optional int32 PurchaseCoinTime = 7;//当日点石成金次数
 }
 
 message Commodity {
@@ -720,6 +721,16 @@ message ResponseLadderShopCommand {
 	optional int32 refreshCost = 3;//刷新消耗
 }
 
+message RequestPurchaseCoinCommand {//点石成金(获得金币和经验)
+}
+
+message ResponsePurchaseCoinCommand {
+	optional int32 coin = 1;//可以获得的金币
+	optional int32 exp = 2;//可以获得的经验
+	optional int32 jewel = 3;//价格
+	optional int32 leftTime = 4;//当日剩余次数
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -781,6 +792,7 @@ message RequestCommand {
 	optional RequestLadderShopCommand ladderShopCommand = 119;
 	optional RequestLadderShopPurchaseCommand ladderShopPurchaseCommand = 120;
 	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
+	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
@@ -802,6 +814,7 @@ message ResponseCommand {
 	optional ResponsePVPShopCommand PVPShopCommand = 106;
 	optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
 	optional ResponseLadderShopCommand ladderShopCommand = 108;
+	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

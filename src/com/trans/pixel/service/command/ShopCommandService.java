@@ -1,11 +1,16 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
@@ -23,6 +28,7 @@ import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -34,6 +40,7 @@ import com.trans.pixel.protoc.Commands.ResponseDailyShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseLadderShopCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPShopCommand;
+import com.trans.pixel.protoc.Commands.ResponsePurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.ResponseShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionShopCommand;
 import com.trans.pixel.protoc.Commands.ShopList;
@@ -586,5 +593,38 @@ public class ShopCommandService extends BaseCommandService{
 		shop.setEndTime(shoplist.getEndTime());
 		shop.setRefreshCost(getLadderShopRefreshCost(refreshtime));
 		responseBuilder.setLadderShopCommand(shop);
+	}
+	
+	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getPurchaseCoinTime() >= 5)
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
+		if(user.getJewel() < 50)
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+		user.setCoin(user.getCoin()+500);
+		user.setExp(user.getExp()+500);
+		user.setJewel(user.getJewel());
+		user.setPurchaseCoinTime(user.getPurchaseCoinTime()+1);
+		rewardService.updateUser(user);
+		getPurchaseCoinTime(responseBuilder, user);
+		List<RewardBean> rewards = new ArrayList<RewardBean>();
+		RewardBean coinbean = new RewardBean();
+		coinbean.setItemid(RewardConst.COIN);
+		coinbean.setCount(500);
+		rewards.add(coinbean);
+		RewardBean expbean = new RewardBean();
+		expbean.setItemid(RewardConst.EXP);
+		expbean.setCount(500);
+		rewards.add(expbean);
+		pusher.pushRewardCommand(responseBuilder, user, rewards);
+	}
+	
+	public void getPurchaseCoinTime(Builder responseBuilder, UserBean user){
+		int time = 5 - user.getPurchaseCoinTime();
+		ResponsePurchaseCoinCommand.Builder builder = ResponsePurchaseCoinCommand.newBuilder();
+		builder.setCoin(500);
+		builder.setExp(500);
+		builder.setJewel(50);
+		builder.setLeftTime(time);
+		responseBuilder.setPurchaseCoinCommand(builder);
 	}
 }
