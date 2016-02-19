@@ -19,6 +19,7 @@ import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
+import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
 
@@ -35,7 +36,7 @@ public class AreaFightService extends FightService{
 	@Resource
     private RewardService rewardService;
 
-	public boolean AttackMonster(int id, UserBean user){
+	public boolean AttackMonster(int id, UserBean user, MultiReward rewards){
 		AreaMonster monster = redis.getMonster(id, user);
 		if(monster == null)
 			return false;
@@ -45,6 +46,7 @@ public class AreaFightService extends FightService{
 //		redis.deleteMonster(builder.getId());
 		builder.setKilled(true);
 		redis.saveMonster(builder.build(), user);
+		rewards = builder.getReward();
 		rewardService.doRewards(user, builder.getReward());
 		return true;
 	}

@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaInfo;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -20,9 +22,11 @@ import com.trans.pixel.service.AreaFightService;
  * 1.1.3.6区域争夺战
  */
 @Service
-public class AreaCommandService {
+public class AreaCommandService extends BaseCommandService{
 	@Resource
     private AreaFightService service;
+	@Resource
+    private PushCommandService pusher;
 
 	public void Areas(Builder responseBuilder, UserBean user){
 		List<AreaInfo> areas = service.getAreas(user).getRegionList();
@@ -31,7 +35,11 @@ public class AreaCommandService {
 		responseBuilder.setAreaCommand(builder.build());
 	}
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackMonster(cmd.getId(), user);
+		MultiReward rewards = null;
+		if(!service.AttackMonster(cmd.getId(), user, rewards))
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+		else
+			pusher.pushRewardCommand(responseBuilder, user, rewards);
 		Areas(responseBuilder, user);
 	}
 
