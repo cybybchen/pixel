@@ -144,7 +144,8 @@ public class BaseCommandService {
 	protected List<UserRank> buildUserRankList(List<UserRankBean> userRankList) {
 		List<UserRank> userRankBuilderList = new ArrayList<UserRank>();
 		for (UserRankBean userRank : userRankList) {
-			userRankBuilderList.add(userRank.buildUserRank());
+			if(userRank != null)
+				userRankBuilderList.add(userRank.buildUserRank());
 		}
 		
 		return userRankBuilderList;

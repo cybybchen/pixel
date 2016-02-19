@@ -57,4 +57,5 @@ mysql>flush privileges;
 sudo redis-server /etc/redis.conf
 服务器
 scp pixel.war trans@118.192.77.33:/opt/tomcat7_lol/webapps
+scp -r build/com trans@118.192.77.33:/opt/tomcat7_lol/webapps/Lol450/WEB-INF/classes/com
 
