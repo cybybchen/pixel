@@ -99,7 +99,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveDailyShop(shoplist.build(), user);
-            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid()/*, commbuilder.getName(), commbuilder.getCount()*/);
 		}
 		
 		ResponseDailyShopCommand.Builder shop = ResponseDailyShopCommand.newBuilder();
@@ -156,7 +156,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.doReward(user, comm.getItemid(), comm.getCount());
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
-            pusher.pushRewardCommand(responseBuilder, user, comm.getItemid(), comm.getName(), comm.getCount());
+            pusher.pushRewardCommand(responseBuilder, user, comm.getItemid()/*, comm.getName(), comm.getCount()*/);
 		}
 	}
 
@@ -211,7 +211,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveBlackShop(shoplist.build(), user);
-            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid()/*, commbuilder.getName(), commbuilder.getCount()*/);
 		}
 		
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
@@ -298,7 +298,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveUnionShop(shoplist.build(), user);
-            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid()/*, commbuilder.getName(), commbuilder.getCount()*/);
 		}
 		
 		ResponseUnionShopCommand.Builder shop = ResponseUnionShopCommand.newBuilder();
@@ -385,7 +385,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.savePVPShop(shoplist.build(), user);
-            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid()/*, commbuilder.getName(), commbuilder.getCount()*/);
 		}
 		
 		ResponsePVPShopCommand.Builder shop = ResponsePVPShopCommand.newBuilder();
@@ -472,7 +472,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveExpeditionShop(shoplist.build(), user);
-            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid()/*, commbuilder.getName(), commbuilder.getCount()*/);
 		}
 		
 		ResponseExpeditionShopCommand.Builder shop = ResponseExpeditionShopCommand.newBuilder();
@@ -559,7 +559,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             service.saveLadderShop(shoplist.build(), user);
-            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid()/*, commbuilder.getName(), commbuilder.getCount()*/);
 		}
 		
 		ResponseLadderShopCommand.Builder shop = ResponseLadderShopCommand.newBuilder();
@@ -606,16 +606,17 @@ public class ShopCommandService extends BaseCommandService{
 		user.setPurchaseCoinTime(user.getPurchaseCoinTime()+1);
 		rewardService.updateUser(user);
 		getPurchaseCoinTime(responseBuilder, user);
-		List<RewardBean> rewards = new ArrayList<RewardBean>();
-		RewardBean coinbean = new RewardBean();
-		coinbean.setItemid(RewardConst.COIN);
-		coinbean.setCount(500);
-		rewards.add(coinbean);
-		RewardBean expbean = new RewardBean();
-		expbean.setItemid(RewardConst.EXP);
-		expbean.setCount(500);
-		rewards.add(expbean);
-		pusher.pushRewardCommand(responseBuilder, user, rewards);
+		pusher.pushUserInfoCommand(responseBuilder, user);
+//		List<RewardBean> rewards = new ArrayList<RewardBean>();
+//		RewardBean coinbean = new RewardBean();
+//		coinbean.setItemid(RewardConst.COIN);
+//		coinbean.setCount(500);
+//		rewards.add(coinbean);
+//		RewardBean expbean = new RewardBean();
+//		expbean.setItemid(RewardConst.EXP);
+//		expbean.setCount(500);
+//		rewards.add(expbean);
+//		pusher.pushRewardCommand(responseBuilder, user, rewards);
 	}
 	
 	public void getPurchaseCoinTime(Builder responseBuilder, UserBean user){
