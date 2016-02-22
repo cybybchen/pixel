@@ -96,6 +96,7 @@ public class UserCommandService extends BaseCommandService {
 	private void refreshUserLogin(UserBean user) {
 		if (isNextDay(user.getLastLoginTime())) {
 			user.setRefreshLeftTimes(RefreshConst.REFRESH_PVP_TIMES);	
+			user.setLadderModeLeftTimes(5);
 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
