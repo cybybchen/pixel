@@ -20,11 +20,11 @@ import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
 import com.trans.pixel.protoc.Commands.AreaMonster;
 import com.trans.pixel.protoc.Commands.AreaMonsterList;
+import com.trans.pixel.protoc.Commands.AreaMonsterReward;
+import com.trans.pixel.protoc.Commands.AreaMonsterRewardList;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceList;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.MultiRewardList;
 
 @Repository
 public class AreaRedisService extends RedisService{
@@ -238,20 +238,30 @@ public class AreaRedisService extends RedisService{
 		return monster;
 	}
 
-	public Map<String, MultiReward> getAreaMonsterRewards(){
-		Map<String, MultiReward> rewards= new HashMap<String, MultiReward>();
-		Map<String, String> valueMap = this.hget(AREAMONSTERREWARD);
-		for(Entry<String, String> entry : valueMap.entrySet()){
-			MultiReward.Builder builder = MultiReward.newBuilder();
-			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
-				rewards.put(entry.getKey(), builder.build());
-			}
-		}
-		return rewards;
-	}
+//	public Map<String, MultiReward> getAreaMonsterRewards(){
+//		Map<String, MultiReward> rewards= new HashMap<String, MultiReward>();
+//		Map<String, String> valueMap = this.hget(AREAMONSTERREWARD);
+//		for(Entry<String, String> entry : valueMap.entrySet()){
+//			MultiReward.Builder builder = MultiReward.newBuilder();
+//			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
+//				rewards.put(entry.getKey(), builder.build());
+//			}
+//		}
+//		return rewards;
+//	}
 
-	public void saveMonsterReward(MultiReward monsterreward) {
-		this.hput(AREAMONSTERREWARD, monsterreward.getId()+"", formatJson(monsterreward));
+//	public void saveMonsterReward(MultiReward monsterreward) {
+//		this.hput(AREAMONSTERREWARD, monsterreward.getId()+"", formatJson(monsterreward));
+//	}
+
+	public AreaMonsterReward getAreaMonsterReward(int id){
+		AreaMonsterReward.Builder builder = AreaMonsterReward.newBuilder();
+		String value = this.hget(AREAMONSTERREWARD, id+"");
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			return buildAreaMonsterReward(id);
+		}
 	}
 
 	public Map<String, AreaResource> getResources(UserBean user){
@@ -397,19 +407,22 @@ public class AreaRedisService extends RedisService{
 		logger.warn("cannot build AreaMonster:"+id);
 		return null;
 	}
-	public Map<Integer, MultiReward> readAreaMonsterReward(){
-		Map<Integer, MultiReward> m_MonsterRewardMap = new HashMap<Integer, MultiReward>();
+	public Map<Integer, AreaMonsterReward> readAreaMonsterReward(){
+		Map<Integer, AreaMonsterReward> m_MonsterRewardMap = new HashMap<Integer, AreaMonsterReward>();
+		Map<String, String> keyvalue = new HashMap<String, String>();
 		String xml = ReadConfig("lol_regionloot.xml");
-		MultiRewardList.Builder builder = MultiRewardList.newBuilder();
+		AreaMonsterRewardList.Builder builder = AreaMonsterRewardList.newBuilder();
 		parseXml(xml, builder);
-		for(MultiReward reward : builder.getRegionList()){
+		for(AreaMonsterReward reward : builder.getRegionList()){
 			m_MonsterRewardMap.put(reward.getId(), reward);
+			keyvalue.put(reward.getId()+"", formatJson(reward));
 		}
+		hputAll(AREAMONSTERREWARD, keyvalue);
 		return m_MonsterRewardMap;
 	}
-	public MultiReward buildAreaMonsterReward(final int id){
-		Map<Integer, MultiReward> m_MonsterRewardMap = readAreaMonsterReward();
-		MultiReward monsterreward = m_MonsterRewardMap.get(id);
+	public AreaMonsterReward buildAreaMonsterReward(final int id){
+		Map<Integer, AreaMonsterReward> m_MonsterRewardMap = readAreaMonsterReward();
+		AreaMonsterReward monsterreward = m_MonsterRewardMap.get(id);
 		if(monsterreward != null)
 			return monsterreward;
 		logger.warn("cannot build AreaMonsterReward:"+id);

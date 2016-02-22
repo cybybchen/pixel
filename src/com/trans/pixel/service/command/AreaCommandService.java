@@ -35,16 +35,22 @@ public class AreaCommandService extends BaseCommandService{
 		responseBuilder.setAreaCommand(builder.build());
 	}
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
-		MultiReward rewards = null;
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		rewards.setName("攻击你击杀了怪物");
 		if(!service.AttackMonster(cmd.getId(), user, rewards))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		else
-			pusher.pushRewardCommand(responseBuilder, user, rewards);
+			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		Areas(responseBuilder, user);
 	}
 
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackBoss(cmd.getId(), cmd.getScore(), user);
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		rewards.setName("攻击你击杀了怪物");
+		if(!service.AttackBoss(cmd.getId(), cmd.getScore(), user, rewards))
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+		else if(rewards.getLootCount() > 0)
+			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		Areas(responseBuilder, user);
 	}
 	

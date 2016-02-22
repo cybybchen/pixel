@@ -62,7 +62,7 @@ message ShopWillList {
 
 message RewardInfo {
 	required int32 itemid = 1;
-	required string itemname = 2;
+	optional string itemname = 2;
 	required int32 count = 3;
 }
 
@@ -226,6 +226,29 @@ message AreaMonster {//区域怪物
 
 message AreaMonsterList {
 	repeated AreaMonster region = 1;
+}
+
+message WeightReward {
+	optional int32 itemcount = 1;
+	optional int32 weightall = 2;
+	optional int32 itemid1 = 3;
+	optional int32 count1 = 4;
+	optional int32 weight1 = 5;
+	optional int32 itemid2 = 6;
+	optional int32 count2 = 7;
+	optional int32 weight2 = 8;
+	optional int32 itemid3 = 9;
+	optional int32 count3 = 10;
+	optional int32 weight3 = 11;
+}
+
+message AreaMonsterReward {
+	required int32 id = 1;
+	repeated WeightReward loot = 2;
+}
+
+message AreaMonsterRewardList {
+	repeated AreaMonsterReward region = 1;
 }
 
 message AreaInfo {//可争夺区域

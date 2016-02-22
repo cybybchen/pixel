@@ -519,7 +519,8 @@ public final class XmlFormat {
                 nextToken();
                 return result;
             } catch (NumberFormatException e) {
-                throw integerParseException(e);
+                // throw integerParseException(e);
+                return 0;
             }
         }
 
@@ -533,7 +534,8 @@ public final class XmlFormat {
                 nextToken();
                 return result;
             } catch (NumberFormatException e) {
-                throw integerParseException(e);
+                // throw integerParseException(e);
+                return 0;
             }
         }
 
@@ -547,7 +549,8 @@ public final class XmlFormat {
                 nextToken();
                 return result;
             } catch (NumberFormatException e) {
-                throw integerParseException(e);
+                // throw integerParseException(e);
+                return 0;
             }
         }
 
@@ -561,7 +564,8 @@ public final class XmlFormat {
                 nextToken();
                 return result;
             } catch (NumberFormatException e) {
-                throw integerParseException(e);
+                // throw integerParseException(e);
+                return 0;
             }
         }
 
