@@ -11,10 +11,13 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserFriendService;
 
@@ -55,6 +58,13 @@ public class FriendCommandService extends BaseCommandService {
 //		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
+	}
+	
+	public void getUserFriendList(RequestGetUserFriendListCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseGetUserFriendListCommand.Builder builder = ResponseGetUserFriendListCommand.newBuilder();
+		List<UserFriendBean> userFriendList = userFriendService.getUserFriendList(user.getId());
+		builder.addAllFriend(buildUserFriendList(userFriendList));
+		responseBuilder.setGetUserFriendListCommand(builder.build());
 	}
 	
 	private void doAddFriends(long userId, List<MailBean> mailList) {

@@ -80,6 +80,10 @@ public class LadderService {
 		return rankList;
 	}
 	
+	public UserRankBean getUserRankByRank(int serverId, long rank) {
+		return ladderRedisService.getUserRankByRank(serverId, rank);
+	}
+	
 	public List<UserRankBean> getRankListByUserId(int serverId, UserBean user) {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());

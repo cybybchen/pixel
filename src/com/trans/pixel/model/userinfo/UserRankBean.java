@@ -7,6 +7,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -101,6 +102,17 @@ public class UserRankBean {
 		builder.setUserId(userId);
 		builder.setUserName(userName);
 		builder.setRank(rank);
+		
+		return builder.build();
+	}
+	
+	public UserRank buildUserRankInfo() {
+		UserRank.Builder builder = UserRank.newBuilder();
+		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
+		for (HeroInfoBean heroInfo : heroList) {
+			heroInfoBuilderList.add(heroInfo.buildRankHeroInfo());
+		}
+		builder.addAllHeroInfo(heroInfoBuilderList);
 		
 		return builder.build();
 	}

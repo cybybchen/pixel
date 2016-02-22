@@ -17,7 +17,9 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.ResponseGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
@@ -69,6 +71,14 @@ public class LadderCommandService extends BaseCommandService {
 		builder.setCode(result.getCode());
 		builder.setMsg(result.getMesssage());
 		responseBuilder.setMessageCommand(builder.build());
+	}
+	
+	public void getLadderUserInfo(RequestGetLadderUserInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseGetLadderUserInfoCommand.Builder builder = ResponseGetLadderUserInfoCommand.newBuilder();
+		long rank = cmd.getRank();
+		UserRankBean userRank = ladderService.getUserRankByRank(user.getServerId(), rank);
+		builder.setUserRank(userRank.buildUserRankInfo());
+		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}
 	
 	private void updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {

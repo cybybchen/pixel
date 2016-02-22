@@ -31,6 +31,8 @@ import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
@@ -546,6 +548,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestUserTeamListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		teamCommandService.getUserTeamList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetLadderUserInfoCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderCommandService.getLadderUserInfo(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetUserFriendListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		friendCommandService.getUserFriendList(cmd, responseBuilder, user);
 		return true;
 	}
 

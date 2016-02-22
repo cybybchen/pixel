@@ -94,6 +94,8 @@ message HeroInfo {
 	repeated SkillInfo skill = 5;
 	optional int32 value = 6;
 	optional int32 star = 7;
+	optional int32 heroId = 8;
+	optional int32 position = 9;
 }
 
 message UserTeam {
@@ -249,6 +251,7 @@ message UserRank {
 	required int64 userId = 1;
 	required string userName = 2;
 	required int64 rank = 3;
+	repeated HeroInfo heroInfo = 4;
 }
 
 message UserFriend {
@@ -481,6 +484,14 @@ message ResponseAttackLadderModeCommand {
 	required string msg = 2;
 }
 
+message RequestGetLadderUserInfoCommand {
+	required uint64 rank = 1;
+}
+
+message ResponseGetLadderUserInfoCommand {
+	required UserRank userRank = 1;
+}
+
 message RequestGetUserMailListCommand {
 	required int32 type = 1;
 }
@@ -515,6 +526,10 @@ message RequestAddFriendCommand {
 message RequestReceiveFriendCommand {
 	repeated int32 id = 1;
 	required bool receive = 2;
+}
+
+message RequestGetUserFriendListCommand {
+
 }
 
 message ResponseGetUserFriendListCommand {
@@ -800,6 +815,8 @@ message RequestCommand {
 	optional RequestReplyMessageCommand replyMessageCommand = 38;
 	optional RequestAddTeamCommand addTeamCommand = 45;
 	optional RequestUserTeamListCommand userTeamListCommand = 46;
+	optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
+	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -842,6 +859,7 @@ message ResponseCommand {
 	optional ResponseMessageBoardListCommand messageBoardListCommand = 29;
 	optional ResponseMessageBoardCommand messageBoardCommand = 30;
 	optional ResponseUserTeamListCommand userTeamListCommand = 31;
+	optional ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;
 }
 
 
