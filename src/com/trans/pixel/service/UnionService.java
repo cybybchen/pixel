@@ -71,6 +71,8 @@ public class UnionService extends FightService{
 	 * 血战
 	 */
 	public void bloodFight(int attackUnionId, int defendUnionId, int serverId){
+		if(!unionRedisService.setLock(unionRedisService.getUnionFightKey(attackUnionId, defendUnionId), System.currentTimeMillis()))
+			return;
 		Union.Builder attackUnion = Union.newBuilder();
 		Union.Builder defendUnion = Union.newBuilder();
 		if(unionRedisService.getBaseUnion(attackUnion, attackUnionId, serverId)){
@@ -146,7 +148,16 @@ public class UnionService extends FightService{
 	}
 	
 	public boolean delete(UserBean user) {
-		return true;
+		if(user.getUnionJob() == 3 && unionRedisService.getNumOfMembers(user) <= 1){
+			unionRedisService.deleteMembers(user);
+			unionRedisService.deleteUnion(user);
+			unionMapper.deleteUnion(user.getUnionId());
+			user.setUnionId(0);
+			user.setUnionJob(0);
+			userService.updateUser(user);
+			return true;
+		}
+		return false;
 	}
 	
 	public void apply(int unionId, UserBean user) {
@@ -180,15 +191,21 @@ public class UnionService extends FightService{
 		unionMapper.updateUnion(new UnionBean(builder.build()));
 	}
 	
-	public void handleMember(long id, int job, UserBean user) {
-		if(user.getUnionJob() < 2)
-			return;
+	public boolean handleMember(long id, int job, UserBean user) {
+		if(user.getUnionJob() < 2 || id == user.getId())
+			return false;
+		if(user.getUnionJob() == 3 && job == 3){
+			user.setUnionJob(0);
+			unionRedisService.saveMember(user.buildShort(), user);
+			userService.updateUser(user);
+		}
 		UserBean bean = userService.getUser(id);
 		if(bean.getUnionId() == user.getUnionId()){
 			bean.setUnionJob(job);
 			unionRedisService.saveMember(bean.buildShort(), user);
 			userService.updateUser(bean);
 		}
+		return true;
 	}
 	
 	public void attack(int attackId, UserBean user){
@@ -207,7 +224,8 @@ public class UnionService extends FightService{
 	}
 	
 	public void defend(UserBean user){
-		Union union = unionRedisService.getUnion(user);
+		Union.Builder union = Union.newBuilder();
+		unionRedisService.getBaseUnion(union, user.getUnionId(), user.getServerId());
 		if(union.hasDefendId()){
 			unionRedisService.defend(union.getDefendId(), user);
 		}

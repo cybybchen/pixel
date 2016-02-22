@@ -110,6 +110,10 @@ public class UnionRedisService extends RedisService{
 //		return list;
 //	}
 	
+	public void deleteUnion(UserBean user){
+		this.hdelete(getUnionServerKey(user.getServerId()), user.getUnionId()+"");
+	}
+	
 	public void saveUnion(final Union union, int serverId) {
 		this.hput(getUnionServerKey(serverId), union.getId()+"", formatJson(union));
 	}
@@ -126,6 +130,15 @@ public class UnionRedisService extends RedisService{
 			unionMap.put(key, value);
 		}
 		this.hputAll(getUnionServerKey(user.getServerId()), unionMap);
+	}
+	
+	public int getNumOfMembers(final UserBean user){
+		Map<String, String> memberMap = this.hget(this.getUnionMemberKey(user));
+		return memberMap.size();
+	}
+	
+	public void deleteMembers(final UserBean user){
+		this.delete(getUnionMemberKey(user));
 	}
 	
 	public void saveMember(final UserInfo member, UserBean user) {
@@ -167,7 +180,7 @@ public class UnionRedisService extends RedisService{
 	private String getUnionDefendKey(int defendId,UserBean user) {
 		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + user.getUnionId()+"_"+defendId;
 	}
-	private String getUnionFightKey(int attackId, int defendId) {
+	public String getUnionFightKey(int attackId, int defendId) {
 		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + attackId + "_" + defendId;
 	}
 	private String getUnionServerKey(int serverId) {

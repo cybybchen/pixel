@@ -6,7 +6,8 @@ import java.util.Map;
 public enum ErrorConst implements ResultConst {
 	SHOP_OVERTIME(2000, "商店信息异常"),NOT_ENOUGH(2001, "物品不足"),NOT_ENOUGH_HERO(2002, "英雄不足"),NOT_ENOUGH_PROP(2003, "道具不足"),
 	NOT_ENOUGH_CHIP(2004, "碎片不足"),NOT_ENOUGH_MAGICCOIN(2005, "魔晶不足"),NOT_ENOUGH_EXPEDITIONCOIN(2006, "远征币不足"),NOT_ENOUGH_LADDERCOIN(2007, "天梯币不足"),NOT_ENOUGH_UNIONCOIN(2008, "公会币不足"),
-	NOT_MONSTER(2009, "怪物已经逃跑了"),NOT_PURCHASE_TIME(2010, "购买次数已达上限"),
+	NOT_MONSTER(2009, "怪物已经逃跑了"),NOT_PURCHASE_TIME(2010, "购买次数已达上限"),UNION_ERROR(2011, "工会信息错误"),PERMISSION_DENIED(2012, "权限不足"),
+	UNIONLEADER_QUIT(2013, "会长不能退出自己的工会"),
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), NOT_ENOUGH_EXP(1006, "升级所需经验不足"),

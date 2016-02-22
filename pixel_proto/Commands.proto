@@ -201,8 +201,8 @@ message AreaBoss {//区域世界BOSS
 	optional int32 belongto = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	optional MultiReward reward = 6;//击杀奖励
-	repeated int32 rewardIds = 7;//排行奖励
+	//optional MultiReward reward = 6;//击杀奖励
+	//repeated int32 rewardIds = 7;//排行奖励
 	///////////////////////////////////
 	optional int32 hpMax = 10;//血量
 	optional int32 hp = 11;//血量
@@ -220,7 +220,7 @@ message AreaMonster {//区域怪物
 	optional int32 belongto = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	optional MultiReward reward = 6;//击败奖励
+	//optional MultiReward reward = 6;//击败奖励
 	optional bool killed = 7;//已击杀
 }
 

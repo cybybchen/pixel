@@ -329,7 +329,7 @@ public class GameDataScreen extends RequestScreen {
 	
 	@Override
 	protected boolean handleCommand(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
+		unionCommandService.delete(cmd, responseBuilder, user);
 		return true;
 	}
 	

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
@@ -61,12 +62,21 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void quit(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		if(cmd.hasId())
-			unionService.quit(cmd.getId(), user);
-		else
-			unionService.quit(user);
-
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		if(cmd.hasId()){
+			if(user.getUnionJob() < 2){
+				responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
+				return;
+			}
+			unionService.quit(cmd.getId(), user);
+		}else{
+			if(user.getUnionJob() == 3){
+				responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.UNIONLEADER_QUIT));
+				return;
+			}
+			unionService.quit(user);
+		}
+
 		Union union = unionService.getUnion(user);
 		if (union != null) {
 			builder.setUnion(union);
@@ -76,8 +86,10 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void delete(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.delete(user);
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DELETE_UNION_SUCCESS));
+		if(unionService.delete(user)){
+			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DELETE_UNION_SUCCESS));
+		}else
+			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.UNION_ERROR));
 	}
 	
 	public void apply(RequestApplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
@@ -97,8 +109,10 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void handleMember(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.handleMember(cmd.getId(), cmd.getJob(), user);
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_MEMBER_SUCCESS));
+		if(unionService.handleMember(cmd.getId(), cmd.getJob(), user))
+			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_MEMBER_SUCCESS));
+		else
+			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
 	}
 	
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {

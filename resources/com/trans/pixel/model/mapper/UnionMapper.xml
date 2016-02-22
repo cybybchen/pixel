@@ -15,6 +15,10 @@
 	    SELECT * from user_union where id=#{id}
 	</select>
 
+	<select id="deleteUnion" resultMap="resultMap">
+	    DELETE from user_union where id=#{id}
+	</select>
+	
 	<select id="selectUnionsByServerId" resultMap="resultMap">
 	    SELECT * from user_union where serverid=#{serverid}
 	</select>

@@ -15,5 +15,7 @@ public interface UnionMapper {
 	
 	public void createUnion(UnionBean unionBean);
 	
+	public void deleteUnion(@Param("id") int id);
+	
 	public void updateUnion(UnionBean unionBean);
 }
