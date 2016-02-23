@@ -231,6 +231,21 @@ message AreaMonsterList {
 	repeated AreaMonster region = 1;
 }
 
+message Position {
+	optional int32 position = 1;
+	optional int32 x = 2;
+	optional int32 y = 3;
+}
+
+message AreaPosition {
+	required int32 id = 1;
+	repeated Position position = 2;
+}
+
+message AreaPositionList {
+	repeated AreaPosition region = 1;
+}
+
 message WeightReward {
 	optional int32 itemcount = 1;
 	optional int32 weightall = 2;

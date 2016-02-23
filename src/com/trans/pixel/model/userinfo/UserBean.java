@@ -389,7 +389,7 @@ public class UserBean {
 		this.freeLotteryJewelTime = freeLotteryJewelTime;
 	}
 	
-	public void init(int serverId, String account, String userName) {
+	public UserBean init(int serverId, String account, String userName) {
 		setAccount(account);
 		setId(0);
 		setServerId(serverId);
@@ -397,6 +397,7 @@ public class UserBean {
 		setCoin(1000000);
 		setJewel(1000000);
 		setExp(1000000);
+		return this;
 	}
 
 	public UserInfo buildShort() {

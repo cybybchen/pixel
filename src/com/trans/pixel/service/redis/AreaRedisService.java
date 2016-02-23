@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -22,9 +23,12 @@ import com.trans.pixel.protoc.Commands.AreaMonster;
 import com.trans.pixel.protoc.Commands.AreaMonsterList;
 import com.trans.pixel.protoc.Commands.AreaMonsterReward;
 import com.trans.pixel.protoc.Commands.AreaMonsterRewardList;
+import com.trans.pixel.protoc.Commands.AreaPosition;
+import com.trans.pixel.protoc.Commands.AreaPositionList;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceList;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
+import com.trans.pixel.protoc.Commands.Position;
 
 @Repository
 public class AreaRedisService extends RedisService{
@@ -206,7 +210,26 @@ public class AreaRedisService extends RedisService{
 				monsters.put(entry.getKey(), builder.build());
 			}
 		}
+		if(monsters.isEmpty()){
+			Map<String, AreaMonster> monsterMap = readAreaMonster();
+			Map<String, AreaPosition> positionMap = readAreaPosition();
+			for(AreaMonster monster : monsterMap.values()){
+				AreaMonster.Builder builder = AreaMonster.newBuilder();
+				builder.mergeFrom(monster);
+				Position position = randPosition(positionMap.get(monster.getBelongto()+"").getPositionList());
+				builder.setX(position.getX());
+				builder.setY(position.getY());
+				monsters.put(builder.getId()+"", builder.build());
+				valueMap.put(builder.getId()+"", formatJson(builder.build()));
+			}
+			hputAll(AREAMONSTER+user.getId(), valueMap);
+		}
 		return monsters;
+	}
+	
+	private Position randPosition(List<Position> positions){
+		int index = (int)(positions.size()*Math.random());
+		return positions.get(index);
 	}
 	
 	public AreaMonster getMonster(int id,UserBean user){
@@ -231,12 +254,12 @@ public class AreaRedisService extends RedisService{
 		this.hdelete(AREAMONSTER+user.getId(), monsterId+"");
 	}
 	
-	public AreaMonster createMonster(int id,UserBean user){
-		AreaMonster monster = buildAreaMonster(id);
-		if(monster != null)
-			saveMonster(monster,user);
-		return monster;
-	}
+//	public AreaMonster createMonster(int id,UserBean user){
+//		AreaMonster monster = buildAreaMonster(id);
+//		if(monster != null)
+//			saveMonster(monster,user);
+//		return monster;
+//	}
 
 //	public Map<String, MultiReward> getAreaMonsterRewards(){
 //		Map<String, MultiReward> rewards= new HashMap<String, MultiReward>();
@@ -378,35 +401,36 @@ public class AreaRedisService extends RedisService{
 		logger.warn("cannot build AreaBoss:"+id);
 		return null;
 	}
-	public Map<Integer, AreaMonster> readAreaMonster(){
-		Map<Integer, AreaMonster> m_MonsterMap = new HashMap<Integer, AreaMonster>();
+	public Map<String, AreaPosition> readAreaPosition(){
+		Map<String, AreaPosition> m_PositionMap = new HashMap<String, AreaPosition>();
+		String xml = ReadConfig("lol_regionposition.xml");
+		AreaPositionList.Builder builder = AreaPositionList.newBuilder();
+		parseXml(xml, builder);
+		for(AreaPosition.Builder positionbuilder : builder.getRegionBuilderList()){
+			// positionbuilder.setReward(buildAreaPositionReward(id));
+			m_PositionMap.put(positionbuilder.getId()+"", positionbuilder.build());
+		}
+		return m_PositionMap;
+	}
+	public Map<String, AreaMonster> readAreaMonster(){
+		Map<String, AreaMonster> m_MonsterMap = new HashMap<String, AreaMonster>();
 		String xml = ReadConfig("lol_regionpve.xml");
 		AreaMonsterList.Builder builder = AreaMonsterList.newBuilder();
 		parseXml(xml, builder);
 		for(AreaMonster.Builder monsterbuilder : builder.getRegionBuilderList()){
 			// monsterbuilder.setReward(buildAreaMonsterReward(id));
-			m_MonsterMap.put(monsterbuilder.getId(), monsterbuilder.build());
+			m_MonsterMap.put(monsterbuilder.getId()+"", monsterbuilder.build());
 		}
 		return m_MonsterMap;
 	}
-	public AreaMonster buildAreaMonster(final int id){
-		Map<Integer, AreaMonster> m_MonsterMap = new HashMap<Integer, AreaMonster>();
-		AreaMonster monster = m_MonsterMap.get(id);
-		if(monster != null)
-			return monster;
-		String xml = ReadConfig("lol_regionpve.xml");
-		AreaMonsterList.Builder builder = AreaMonsterList.newBuilder();
-		parseXml(xml, builder);
-		for(AreaMonster.Builder monsterbuilder : builder.getRegionBuilderList()){
-			// monsterbuilder.setReward(buildAreaMonsterReward(id));
-			m_MonsterMap.put(monsterbuilder.getId(), monsterbuilder.build());
-		}
-		monster = m_MonsterMap.get(id);
-		if(monster != null)
-			return monster;
-		logger.warn("cannot build AreaMonster:"+id);
-		return null;
-	}
+//	public AreaMonster buildAreaMonster(final int id){
+//		Map<String, AreaMonster> m_MonsterMap = readAreaMonster();
+//		AreaMonster monster = m_MonsterMap.get(id+"");
+//		if(monster != null)
+//			return monster;
+//		logger.warn("cannot build AreaMonster:"+id);
+//		return null;
+//	}
 	public Map<Integer, AreaMonsterReward> readAreaMonsterReward(){
 		Map<Integer, AreaMonsterReward> m_MonsterRewardMap = new HashMap<Integer, AreaMonsterReward>();
 		Map<String, String> keyvalue = new HashMap<String, String>();
@@ -436,7 +460,7 @@ public class AreaRedisService extends RedisService{
 			return null;
 		}
 		Map<Integer, AreaBoss> m_BossMap = readAreaBoss();
-		Map<Integer, AreaMonster> m_MonsterMap = readAreaMonster();
+//		Map<Integer, AreaMonster> m_MonsterMap = readAreaMonster();
 		Map<Integer, AreaResource> m_ResourceMap = readAreaResource();
 		for(AreaBoss boss : m_BossMap.values()){
 			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
@@ -445,13 +469,13 @@ public class AreaRedisService extends RedisService{
 				}
 			}
 		}
-		for(AreaMonster monster : m_MonsterMap.values()){
-			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
-				if(areabuilder.getId() == monster.getBelongto()){
-					areabuilder.addMonsters(monster);
-				}
-			}
-		}
+//		for(AreaMonster monster : m_MonsterMap.values()){
+//			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
+//				if(areabuilder.getId() == monster.getBelongto()){
+//					areabuilder.addMonsters(monster);
+//				}
+//			}
+//		}
 		for(AreaResource resource : m_ResourceMap.values()){
 			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
 				if(areabuilder.getId() == resource.getBelongto()){

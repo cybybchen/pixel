@@ -216,18 +216,13 @@ public class AreaFightService extends FightService{
 //					bossbuilder.setReward(reward);
 			}
 			// 更新区域怪物
-			List<AreaMonster.Builder> monsters = areabuilder.getMonstersBuilderList();
-			for (AreaMonster.Builder monsterbuilder : monsters) {
-				AreaMonster monster = monsterMap.get(monsterbuilder.getId() + "");
-				if (monster != null) {
-					monsterbuilder.mergeFrom(monster);
-				} else {
-					AreaMonster newmonster = redis.createMonster(monsterbuilder.getId(), user);
-					monsterbuilder.mergeFrom(newmonster);
+			for (AreaMonster monster : monsterMap.values()) {
+				if(monster.getBelongto() == areabuilder.getId()){
+					areabuilder.addMonsters(monster);
+	//				MultiReward reward = monsterrewardMap.get(monsterbuilder.getId() + "");
+	//				if (reward != null)
+	//					monsterbuilder.setReward(reward);
 				}
-//				MultiReward reward = monsterrewardMap.get(monsterbuilder.getId() + "");
-//				if (reward != null)
-//					monsterbuilder.setReward(reward);
 			}
 			// 更新资源开采点
 			// 更新资源点
