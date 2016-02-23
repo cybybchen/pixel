@@ -26,7 +26,7 @@ public class AreaTest extends BaseTest {
 
 	@Test
 	public void testArea() {
-		new LoginTest().testLogin();
+		login();
 		testGetArea();
 		testAreaBoss();
 		testAreaMonster();
@@ -58,7 +58,7 @@ public class AreaTest extends BaseTest {
 		RequestAttackBossCommand.Builder builder = RequestAttackBossCommand.newBuilder();
 		AreaBoss boss = area.getAreas(0).getBosses(0);
 		builder.setId(boss.getId());
-		builder.setScore(boss.getHp()/2+1);
+		builder.setScore(boss.getHp());
 		requestBuilder.setAttackBossCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();

@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -202,8 +203,9 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public Map<String, AreaMonster> getMonsters(UserBean user){
+		String key = AREAMONSTER+user.getId();
 		Map<String, AreaMonster> monsters= new HashMap<String, AreaMonster>();
-		Map<String, String> valueMap = this.hget(AREAMONSTER+user.getId());
+		Map<String, String> valueMap = this.hget(key);
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaMonster.Builder builder = AreaMonster.newBuilder();
 			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
@@ -217,12 +219,21 @@ public class AreaRedisService extends RedisService{
 				AreaMonster.Builder builder = AreaMonster.newBuilder();
 				builder.mergeFrom(monster);
 				Position position = randPosition(positionMap.get(monster.getBelongto()+"").getPositionList());
+				Iterator<AreaMonster> iter = monsters.values().iterator();
+				while (iter.hasNext()) {
+					AreaMonster monster2 = iter.next();
+					if(monster2.getBelongto() == monster.getBelongto() && monster2.getX() == position.getX() && monster2.getY() == position.getY()){
+						position = randPosition(positionMap.get(monster.getBelongto()+"").getPositionList());
+						iter = monsters.values().iterator();
+					}
+				}
 				builder.setX(position.getX());
 				builder.setY(position.getY());
 				monsters.put(builder.getId()+"", builder.build());
 				valueMap.put(builder.getId()+"", formatJson(builder.build()));
 			}
-			hputAll(AREAMONSTER+user.getId(), valueMap);
+			hputAll(key, valueMap);
+			this.expireAt(key, nextDay());
 		}
 		return monsters;
 	}
