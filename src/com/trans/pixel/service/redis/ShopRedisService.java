@@ -23,7 +23,6 @@ import com.trans.pixel.protoc.Commands.Will;
 public class ShopRedisService extends RedisService{
 	Logger logger = Logger.getLogger(ShopRedisService.class);
 	public final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
-	public final static String USERDAILYDATA = RedisKey.PREFIX+RedisKey.USERDAILYDATA_PREFIX;
 	public final static String DAILYSHOP = RedisKey.PREFIX+"DailyShop";
 	public final static String SHOP = RedisKey.PREFIX+"Shop";
 	public final static String BLACKSHOP = RedisKey.PREFIX+"BlackShop";

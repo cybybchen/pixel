@@ -265,27 +265,6 @@ public class RedisService {
 		});
     }
 
-    /**
-     * 更新单个值
-     */
-    public String update(final String key, final DataHandler<String> handler) {
-    	return redisTemplate.execute(new SessionCallback<String>() {
-			@Override
-			public <K, V> String execute(RedisOperations<K, V> arg0)
-					throws DataAccessException {
-				BoundValueOperations<String, String> Ops = redisTemplate
-				.boundValueOps(key);
-				redisTemplate.multi();
-				
-				String result =  handler.doInRedis(Ops.get());
-				Ops.set(result);
-				
-				redisTemplate.exec();
-				return result;
-			}
-		});
-    }
-	
 	 /**
     * 设置多个值(不超时)
     */

@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
+import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -86,17 +87,21 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushPVPShopCommand(responseBuilder, user);
 		pushCommandService.pushExpeditionShopCommand(responseBuilder, user);
 		pushCommandService.pushLadderShopCommand(responseBuilder, user);
-		if(user.getUnionId() != 0){
-			pushCommandService.pushUnionShopCommand(responseBuilder, user);
-		}
+		pushCommandService.pushUnionShopCommand(responseBuilder, user);
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 		pushCommandService.pushPurchaseCoinCommand(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {
 		if (isNextDay(user.getLastLoginTime())) {
+			//每日首次登陆
 			user.setRefreshLeftTimes(RefreshConst.REFRESH_PVP_TIMES);	
 			user.setLadderModeLeftTimes(5);
+			// builder.setPurchaseCoinLeft(1);
+			VipInfo vip = userService.getVip(user.getVip());
+			if(vip != null){
+			// builder.setPurchaseCoinLeft(builder.getPurchaseCoinLeft() + vip.getDianjin());
+			}
 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));

@@ -30,6 +30,7 @@ import com.trans.pixel.protoc.Commands.ResponseDailyShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseLadderShopCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPShopCommand;
+import com.trans.pixel.protoc.Commands.ResponseShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionShopCommand;
 
 public class ShopTest extends BaseTest {
@@ -37,8 +38,7 @@ public class ShopTest extends BaseTest {
 
 	@Test
 	public void testShop() {
-		head();
-		new LoginTest().testLogin();
+		login();
 		getDailyShop();
 		DailyShopPurchase(0);
 		getBlackShop();
@@ -52,7 +52,7 @@ public class ShopTest extends BaseTest {
 		getLadderShop();
 		LadderShopPurchase(0);
 		getShop();
-		ShopPurchase(1);
+		ShopPurchase();
 	}
 	private ResponseDailyShopCommand dailyshop = null;
 	private void getDailyShop() {
@@ -104,13 +104,16 @@ public class ShopTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
-        if(!response.hasBlackShopCommand())
+        if(response.hasBlackShopCommand()){
+            blackshop = response.getBlackShopCommand();
+            logger.info(response.getAllFields());
+        }else if(user.getVip() >= 8)
         	fail("testShop Not yet implemented");
-        blackshop = response.getBlackShopCommand();
-        logger.info(response.getAllFields());
 	}
 	
 	private void BlackShopPurchase(int index) {
+		if(blackshop == null)
+			return;
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestBlackShopPurchaseCommand.Builder builder = RequestBlackShopPurchaseCommand.newBuilder();
@@ -180,13 +183,17 @@ public class ShopTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
-        if(!response.hasUnionShopCommand())
-        	fail("testShop Not yet implemented");
-        unionshop = response.getUnionShopCommand();
+        if(!response.hasUnionShopCommand()){
+        	if(user.getUnionId() != 0)
+        		fail("testShop Not yet implemented");
+        }else
+        	unionshop = response.getUnionShopCommand();
         logger.info(response.getAllFields());
 	}
 	
 	private void UnionShopPurchase(int index) {
+		if(unionshop == null)
+			return;
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestUnionShopPurchaseCommand.Builder builder = RequestUnionShopPurchaseCommand.newBuilder();
@@ -281,7 +288,8 @@ public class ShopTest extends BaseTest {
         logger.info(response.getAllFields());
 	}
 
-	
+
+	private ResponseShopCommand shop = null;
 	private void getShop() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -295,14 +303,16 @@ public class ShopTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasShopCommand())
         	fail("testShop Not yet implemented");
+        else
+        	shop = response.getShopCommand();
         logger.info(response.getAllFields());
 	}
 	
-	private void ShopPurchase(int id) {
+	private void ShopPurchase() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestShopPurchaseCommand.Builder builder = RequestShopPurchaseCommand.newBuilder();
-		builder.setId(id);
+		builder.setId(shop.getItems(0).getId());
 		requestBuilder.setShopPurchaseCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -310,8 +320,6 @@ public class ShopTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
-        if(!response.hasShopCommand())
-        	fail("testShop Not yet implemented");
         logger.info(response.getAllFields());
 	}
 

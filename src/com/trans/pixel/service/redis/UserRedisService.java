@@ -1,7 +1,9 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -20,6 +22,8 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserDailyData;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Commands.VipInfo;
+import com.trans.pixel.protoc.Commands.VipList;
 
 @Repository
 public class UserRedisService extends RedisService{
@@ -27,6 +31,7 @@ public class UserRedisService extends RedisService{
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	public final static String USERDAILYDATA = RedisKey.PREFIX+RedisKey.USERDAILYDATA_PREFIX;
+	public final static String VIP = RedisKey.PREFIX+"Vip";
 	
 	public UserBean getUserByUserId(final long userId) {
 		return redisTemplate.execute(new RedisCallback<UserBean>() {
@@ -41,11 +46,19 @@ public class UserRedisService extends RedisService{
 		});
 	}
 
-	public UserDailyData.Builder getUserDailyData(final long userId) {
+	public UserDailyData.Builder getUserDailyData(UserBean user) {
 		UserDailyData.Builder builder = UserDailyData.newBuilder();
-		String value = hget(USERDAILYDATA+userId, "UserDailyData");
+		String value = hget(USERDAILYDATA+user.getId(), "UserDailyData");
 		if(value != null && parseJson(value, builder))
 			return builder;
+		else{//每日首次登陆
+			builder.setPurchaseCoinLeft(1);
+			VipInfo vip = getVip(user.getVip());
+			if(vip != null){
+				builder.setPurchaseCoinLeft(builder.getPurchaseCoinLeft() + vip.getDianjin());
+			}
+			saveUserDailyData(user.getId(), builder);
+		}
 		return builder;
 	}
 
@@ -117,4 +130,32 @@ public class UserRedisService extends RedisService{
 		return users;
 	}
 
+	public VipInfo getVip(int id){
+		if(id <= 0)
+			id = 1;
+//			return null;
+		VipInfo.Builder builder = VipInfo.newBuilder();
+		String value = hget(VIP, id+"");
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			return buildVip(id);
+		}
+	}
+	
+	public VipInfo buildVip(int id){
+		String xml = ReadConfig("lol_vip.xml");
+		VipList.Builder builder = VipList.newBuilder();
+		parseXml(xml, builder);
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		for(VipInfo vip : builder.getVipList()){
+			keyvalue.put(vip.getVip()+"", formatJson(vip));
+		}
+		hputAll(VIP, keyvalue);
+		for(VipInfo vip : builder.getVipList()){
+			if(id == vip.getVip())
+				return vip;
+		}
+		return null;
+	}
 }

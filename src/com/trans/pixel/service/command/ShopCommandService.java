@@ -1,16 +1,9 @@
 package com.trans.pixel.service.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
@@ -181,6 +174,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 	
 	public void BlackShop(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getVip() < 8)
+			return;
 		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
@@ -195,6 +190,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void BlackShopPurchase(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getVip() < 8)
+			return;
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getBlackShop(user));
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = ShopList.newBuilder(service.refreshBlackShop(user));
@@ -222,6 +219,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void BlackShopRefresh(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getVip() < 8)
+			return;
 		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();
 		int jewel = user.getJewel() - getBlackShopRefreshCost(refreshtime);
@@ -268,6 +267,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 	
 	public void UnionShop(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getUnionId() == 0)
+			return;
 		ShopList shoplist = service.getUnionShop(user);
 		int refreshtime = user.getUnionShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
@@ -282,6 +283,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void UnionShopPurchase(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getUnionId() == 0)
+			return;
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getUnionShop(user));
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = ShopList.newBuilder(service.refreshUnionShop(user));
@@ -309,6 +312,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void UnionShopRefresh(RequestUnionShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getUnionId() == 0)
+			return;
 		ShopList shoplist = service.getUnionShop(user);
 		int refreshtime = user.getUnionShopRefreshTime();
 		int jewel = user.getJewel() - getUnionShopRefreshCost(refreshtime);
@@ -596,7 +601,7 @@ public class ShopCommandService extends BaseCommandService{
 	}
 	
 	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getPurchaseCoinTime() >= 5){
+		if(user.getPurchaseCoinLeft() <= 0){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
 			return;
 		}
@@ -608,6 +613,7 @@ public class ShopCommandService extends BaseCommandService{
 		user.setExp(user.getExp()+500);
 		user.setJewel(user.getJewel()-50);
 		user.setPurchaseCoinTime(user.getPurchaseCoinTime()+1);
+		user.setPurchaseCoinLeft(user.getPurchaseCoinLeft()-1);
 		rewardService.updateUser(user);
 		getPurchaseCoinTime(responseBuilder, user);
 		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -624,12 +630,11 @@ public class ShopCommandService extends BaseCommandService{
 	}
 	
 	public void getPurchaseCoinTime(Builder responseBuilder, UserBean user){
-		int time = 5 - user.getPurchaseCoinTime();
 		ResponsePurchaseCoinCommand.Builder builder = ResponsePurchaseCoinCommand.newBuilder();
 		builder.setCoin(500);
 		builder.setExp(500);
 		builder.setJewel(50);
-		builder.setLeftTime(time);
+		builder.setLeftTime(user.getPurchaseCoinLeft());
 		responseBuilder.setPurchaseCoinCommand(builder);
 	}
 }

@@ -10,6 +10,7 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Commands.UserInfo;
 
 public class LoginTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LoginTest.class);
@@ -37,11 +38,12 @@ public class LoginTest extends BaseTest {
             response = http.post(url, input);
         }
         if(response.hasUserInfoCommand()){
+        	user = response.getUserInfoCommand().getUser();
         	logger.warn(response.getUserInfoCommand().getUser().getName()+"登陆成功");
         }else if(response.hasErrorCommand()){
         	logger.error(response.getErrorCommand().getMessage());
         }else{
-        	logger.error("服务器错误");
+        	logger.error("登陆错误");
         }
 	}
 }

@@ -8,6 +8,7 @@ message UserInfo {
 	optional int32 serverId = 4;
 	optional int32 unionId = 14;
 	optional int32 unionJob = 15;
+	optional int32 vip = 19;
 	optional int32 jewel = 5;
 	optional int32 coin = 6;
 	optional int32 exp = 7;
@@ -28,6 +29,7 @@ message UserDailyData {
 	optional int32 LadderShopRefreshTime = 5;//当日天梯商店累计刷新次数
 	optional int32 ExpeditionShopRefreshTime = 6;//当日远征商店累计刷新次数
 	optional int32 PurchaseCoinTime = 7;//当日点石成金次数
+	optional int32 PurchaseCoinLeft = 8;//当日点石成金剩余次数
 }
 
 message Commodity {
@@ -250,6 +252,23 @@ message AreaMonsterReward {
 
 message AreaMonsterRewardList {
 	repeated AreaMonsterReward region = 1;
+}
+
+message VipInfo {
+	required int32 vip = 1;
+	required int32 rmb = 2;
+	optional int32 effect = 3;
+	optional int32 dianjin = 4;
+	optional int32 tianti = 5;
+	optional int32 pvp = 6;
+	optional int32 quyu = 7;
+	optional int32 mohua = 8;
+	optional int32 baoxiang = 9;
+	optional int32 zhibao = 10;
+}
+
+message VipList {
+	repeated VipInfo vip = 1;
 }
 
 message AreaInfo {//可争夺区域

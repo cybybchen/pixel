@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.service.redis.UserRedisService;
 
 @Service
@@ -34,7 +35,7 @@ public class UserService {
     			userRedisService.updateUser(user);
     	}
         if(user != null)
-        	user.setUserDailyData(userRedisService.getUserDailyData(userId));
+        	user.setUserDailyData(userRedisService.getUserDailyData(user));
         return user;
     }
 	
@@ -58,14 +59,14 @@ public class UserService {
 		}
 
         if(user != null)
-        	user.setUserDailyData(userRedisService.getUserDailyData(user.getId()));
+        	user.setUserDailyData(userRedisService.getUserDailyData(user));
 		return user;
     }
 	
 	public int addNewUser(UserBean user) {
 		int result = userMapper.addNewUser(user);
 		userRedisService.updateUser(user);
-        user.setUserDailyData(userRedisService.getUserDailyData(user.getId()));
+        user.setUserDailyData(userRedisService.getUserDailyData(user));
 		return result;
 	}
 
@@ -113,5 +114,9 @@ public class UserService {
 			userIds.add(rank.getValue());
 		}
 		return userRedisService.getCaches(userIds);
+	}
+	
+	public VipInfo getVip(int id){
+		return userRedisService.getVip(id);
 	}
 }
