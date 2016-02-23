@@ -355,7 +355,7 @@ message ErrorCommand{
 
 message RewardCommand {
 	optional int32 id = 1;//用于区分获得来源
-	optional string name = 2;//弹窗标题
+	optional string title = 2;//弹窗标题
 	repeated RewardInfo loot = 3;//奖励列表
 }
 

@@ -220,7 +220,7 @@ public class PushCommandService extends BaseCommandService {
 		builder.setItemname(rewardName);
 		builder.setCount(rewardCount);
 		reward.addLoot(builder);
-		reward.setName("恭喜获得");
+		reward.setTitle("恭喜获得");
 		responseBuilder.setRewardCommand(reward);
 		pushUserDataByRewardId(responseBuilder, user, rewardId);
 	}
@@ -269,7 +269,7 @@ public class PushCommandService extends BaseCommandService {
 			}
 		}
 		RewardCommand.Builder reward = RewardCommand.newBuilder();
-		reward.setName(rewards.getName());
+		reward.setTitle(rewards.getName());
 		reward.addAllLoot(rewards.getLootList());
 		responseBuilder.setRewardCommand(reward);
 		if(isHeroUpdated)
@@ -306,7 +306,7 @@ public class PushCommandService extends BaseCommandService {
 				isUserUpdated = true;
 			}
 		}
-		rewardbuilder.setName("恭喜获得");
+		rewardbuilder.setTitle("恭喜获得");
 		responseBuilder.setRewardCommand(rewardbuilder);
 		if(isHeroUpdated)
 			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.HERO+1);
