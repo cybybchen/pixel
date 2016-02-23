@@ -132,8 +132,7 @@ public class UserRedisService extends RedisService{
 
 	public VipInfo getVip(int id){
 		if(id <= 0)
-			id = 1;
-//			return null;
+			return null;
 		VipInfo.Builder builder = VipInfo.newBuilder();
 		String value = hget(VIP, id+"");
 		if(value != null && parseJson(value, builder)){
