@@ -90,7 +90,7 @@ message HeadInfo
 }
 
 message HeroInfo {
-	required int32 infoId = 1;
+	optional int32 infoId = 1;
 	optional int32 level = 2;
 	optional int32 rare = 3;
 	optional string equipInfo = 4;
