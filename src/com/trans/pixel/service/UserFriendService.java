@@ -58,7 +58,7 @@ public class UserFriendService {
 		List<Long> userFriendIdList = selectUserFriendIdList(userId);
 		
 		for (Long friendId : userFriendIdList) {
-			UserBean user = userService.getUser(userId);
+			UserBean user = userService.getUser(friendId);
 			UserFriendBean userFriend = buildUserFriend(userId, friendId, user);
 			userFriendList.add(userFriend);
 		}

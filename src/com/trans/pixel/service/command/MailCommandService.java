@@ -1,6 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,12 +11,10 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand;
 import com.trans.pixel.service.MailService;
 
 @Service
@@ -27,15 +24,8 @@ public class MailCommandService extends BaseCommandService {
 	@Resource
 	private PushCommandService pushCommandService;
 	
-	public void handleGetUserMailListCommand(RequestGetUserMailListCommand cmd, Builder responseBuilder, UserBean user) {	
-		ResponseGetUserMailListCommand.Builder builder = ResponseGetUserMailListCommand.newBuilder();
-		int type = cmd.getType();
-		List<MailBean> mailList = mailService.getMailList(user.getId(), type);
-		List<MailList> mailBuilderList = new ArrayList<MailList>();
-		mailBuilderList.add(super.buildMailList(type, mailList));
-		builder.addAllMailList(mailBuilderList);
-		
-		responseBuilder.setGetUserMailListCommand(builder.build());
+	public void handleGetUserMailListCommand(RequestGetUserMailListCommand cmd, Builder responseBuilder, UserBean user) {
+		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 	}
 	
 	public void handleReadMailCommand(RequestReadMailCommand cmd, Builder responseBuilder, UserBean user) {	
