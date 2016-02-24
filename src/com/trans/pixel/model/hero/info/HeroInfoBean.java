@@ -231,7 +231,7 @@ public class HeroInfoBean {
 	
 	public void unlockSkill(HeroBean hero, List<SkillLevelBean> skillLevelList) {
 		for (SkillLevelBean skillLevel : skillLevelList) {
-			if (rare >= skillLevel.getUnlock() && level > skillLevel.getInilevel()) {
+			if (rare >= skillLevel.getUnlock()) {
 				if (!contains(skillLevel)) {
 					SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), skillLevel.getUnlock());
 					if (skillInfo != null)

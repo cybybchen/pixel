@@ -1,18 +1,13 @@
 package com.trans.pixel.controller.action;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +23,7 @@ import com.trans.pixel.controller.chain.PixelResponse;
 import com.trans.pixel.controller.chain.RequestHandle;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.service.ManagerService;
 
 
 @Controller
@@ -35,6 +31,8 @@ import com.trans.pixel.protoc.Commands.ResponseCommand;
 public class GamedataAction {
 	private static final Logger logger = LoggerFactory.getLogger(GamedataAction.class);
 	private static final String CONTENT_TYPE = "application/octet-stream";
+	@Resource
+	private ManagerService managerService;
 	
 	private static long lastTime = System.currentTimeMillis();
 	private static long actions = 0;
@@ -75,7 +73,7 @@ public class GamedataAction {
     @ResponseBody
     public void exec(HttpServletRequest request, HttpServletResponse response) {
     	long startTime = System.currentTimeMillis();
-		long actionStartTime = System.currentTimeMillis();
+//		long actionStartTime = System.currentTimeMillis();
         try {
             response.setContentType(CONTENT_TYPE);
             PixelRequest req = null;
@@ -107,7 +105,7 @@ public class GamedataAction {
         
         logger.debug("ybchen pixel test" + (System.currentTimeMillis() - startTime));
 		
-		actionCost += (System.currentTimeMillis()-actionStartTime);
+		actionCost += (System.currentTimeMillis()-startTime);
 		actions++;
 		long now = System.currentTimeMillis();
 		if(now - lastTime > 5000)
@@ -122,6 +120,7 @@ public class GamedataAction {
 //    @RequestMapping("/gamemanager")
 //    @ResponseBody
 //    public void getData(HttpServletRequest request, HttpServletResponse response) {
+//        response.setContentType("application/json");
 //        try {
 //        	JSONObject result = new JSONObject();
 //        	String msg = "";
@@ -135,18 +134,11 @@ public class GamedataAction {
 //    			isr.close();
 //    		} catch (Exception e) {
 //    			result.put("error", "ERROR Request Format!");
+//    			result.write(response.getWriter());
+//    			return;
 //    		}finally{
 //    		}
-//    		OutputStream out = response.getOutputStream();
-//            try {
-//                responseCommand.writeTo(out);
-//                out.flush();
-//            } finally {
-//                out.close();
-//            }
-//            response.setContentType("application/json");
-//            PixelRequest req = null;
-//            PixelResponse rep = new PixelResponse();
+//			JSONObject req = JSONObject.fromObject(msg);
 //            try {
 //                req = httpcmd(request);
 //            } catch (Exception e) {

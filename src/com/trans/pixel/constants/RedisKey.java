@@ -82,8 +82,8 @@ public class RedisKey {
 	public static final String PVP_XIAOGUAI_REFIX = "pvp_xiaoguai_";
 	
 	//lottery 
-	public static final String LOTTERY_PREFIX = "lorrery_";
-	public static final String LOTTERY_EQUIP_PREFIX = "lorrery_equip_";
+	public static final String LOTTERY_PREFIX = "lottery_";
+	public static final String LOTTERY_EQUIP_PREFIX = "lottery_equip_";
 	
 	//mail
 	public static final String MAIL_PREFIX = "mail_";

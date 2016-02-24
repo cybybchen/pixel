@@ -63,8 +63,10 @@ public class BaseTest {
         }
 //    	if(url == null)
 //    		url = RedisService.ReadProperties("serverurl");
-    	if(url == null)
-    		url = defaultUrl;
+		if (url == null) {
+			url = defaultUrl;
+			System.out.println("test server:" + url);
+		}
         HeadInfo.Builder head = HeadInfo.newBuilder();
         head.setGameVersion(GAME_VERSION);
         head.setAccount(ACCOUNT);

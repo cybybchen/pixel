@@ -56,7 +56,7 @@ public class LadderCommandService extends BaseCommandService {
 		ResponseMessageCommand.Builder builder = ResponseMessageCommand.newBuilder();
 		long attackRank = cmd.getRank();
 		
-		ResultConst result = ladderService.attack(user, attackRank, cmd.getRet());
+		ResultConst result = ladderService.attack(user, attackRank, cmd.getRet(), cmd.getTeamId());
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);

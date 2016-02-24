@@ -536,6 +536,7 @@ message ResponseGetUserLadderRankListCommand {
 message RequestAttackLadderModeCommand {
 	required int64 rank = 1;
 	required bool ret = 2;
+	required int32 teamId = 3;
 }
 
 message ResponseAttackLadderModeCommand {
