@@ -100,29 +100,24 @@ public class LadderService {
 		return ladderRedisService.getRankList(serverId, LadderRankConst.RANK_LIST_START, LadderRankConst.RANK_LIST_END);
 	}
 	
-	public ResultConst attack(UserBean user, long attackRank) {
+	public ResultConst attack(UserBean user, long attackRank, boolean result) {
 		int serverId = user.getServerId();
-		ResultConst ret = ErrorConst.NOT_ENOUGH_LADDER_MODE_TIMES;
 		if (user.getLadderModeLeftTimes() <= 0)
-			return ret;
+			return ErrorConst.NOT_ENOUGH_LADDER_MODE_TIMES;
 		
+		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
+		userService.updateUser(user);
+		if(!result)
+			return SuccessConst.LADDER_ATTACK_FAIL;
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
 		if (myRankBean == null)
 			myRankBean = initUserRank(user.getId(), user.getUserName());
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
-		if (attackResult(myRankBean, attackRankBean)) {
-			attackRankBean.setRank(myRankBean.getRank());
-			myRankBean.setRank(attackRank);
-			updateUserRank(serverId, myRankBean);
-			updateUserRank(serverId, attackRankBean);
-			ret = SuccessConst.LADDER_ATTACK_SUCCESS;
-		} else
-			ret = SuccessConst.LADDER_ATTACK_FAIL;
-		
-		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
-		userService.updateUser(user);
-		
-		return ret;
+		attackRankBean.setRank(myRankBean.getRank());
+		myRankBean.setRank(attackRank);
+		updateUserRank(serverId, myRankBean);
+		updateUserRank(serverId, attackRankBean);
+		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
 	
 	public List<RewardBean> getRankChangeReward(long newRank, long oldRank) {
@@ -238,9 +233,9 @@ public class LadderService {
 		ladderRedisService.updateUserRankInfo(serverId, userRank);
 	}
 	
-	private boolean attackResult(UserRankBean myRankBean, UserRankBean attackRankBean) {
-		return true;
-	}
+//	private boolean attackResult(UserRankBean myRankBean, UserRankBean attackRankBean) {
+//		return true;
+//	}
 	
 	private void updateRewardList(List<RewardBean> rewardList, RewardBean reward) {
 		for (RewardBean oldReward : rewardList) {
