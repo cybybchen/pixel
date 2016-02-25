@@ -57,15 +57,27 @@ public class UnionService extends FightService{
 				union = builder.build();
 			}
 		}
-		if(union != null && System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//工会血战
-			if(union.hasAttackId()){//进攻结算
+		if(union == null)
+			return null;
+		Union.Builder builder = Union.newBuilder(union);
+		
+		if(union.hasAttackId()){
+			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//进攻结算
 				bloodFight(union.getId(), union.getAttackId(), user.getServerId());
-			}
-			if(union.hasDefendId()){//防守结算
-				bloodFight(union.getDefendId(), union.getId(), user.getServerId());
+			}else{
+				List<UserInfo> users = unionRedisService.getFightQueue(union.getId(), union.getAttackId());
+				builder.addAllAttacks(users);
 			}
 		}
-		return union;
+		if(union.hasDefendId()){
+			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//防守结算
+				bloodFight(union.getDefendId(), union.getId(), user.getServerId());
+			}else{
+				List<UserInfo> users = unionRedisService.getFightQueue(union.getDefendId(), union.getId());
+				builder.addAllAttacks(users);
+			}
+		}
+		return builder.build();
 	}
 	
 	/**

@@ -155,6 +155,8 @@ message Union {
 	repeated UnionApply applies = 8;
 	optional int32 attackId = 9;
 	optional int32 defendId = 10;
+	repeated UserInfo attacks = 11;
+	repeated UserInfo defends = 12;
 }
 
 message UnionApply {
