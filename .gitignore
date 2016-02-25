@@ -1,4 +1,5 @@
 build
+antbuild
 *.pyc
 Commands_pb.lua
 appendCommand.sh

@@ -17,7 +17,7 @@
     <!-- 生成在此目录中 -->
     <property name="dist.dir" value="${basedir}/dist" />
     <!-- 编译文件生成的目录 -->
-    <property name="build.dir" value="${basedir}/build" />
+    <property name="build.dir" value="${basedir}/dist/build" />
     <!-- test 代码路径-->
     <property name="test.dir" value="${basedir}/test"/>
     <!-- test 测试报告目录-->

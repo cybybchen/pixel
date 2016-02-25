@@ -123,7 +123,7 @@ public class LadderService {
 		for(UserTeamBean team : userTeamList){
 			if(teamid == team.getId()){
 				List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
-				String[] herosstr = team.getTeamRecord().split("|");
+				String[] herosstr = team.getTeamRecord().split("\\|");
 				for(String herostr : herosstr){
 					String[] str = herostr.split(",");
 					if(str.length == 2){

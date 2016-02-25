@@ -201,10 +201,10 @@ public class RedisService {
 		Long oldLock = lockMap.get(key);
 		if (oldLock == null || lock - oldLock >= 4000) {
 			lockMap.put(key, lock);
-			logger.debug(key + " : " + oldLock + "-->" + lock + " succeed to setLock");
+			logger.debug(key + " : " + oldLock + " succeed to setLock "+ lock);
 			return true;
 		}
-		logger.debug(key + " : " + oldLock + "-->" + lock + " fail to setLock");
+		logger.debug(key + " : " + oldLock + " fail to setLock "+ lock);
 		return false;
 	}
 
