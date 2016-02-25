@@ -23,9 +23,7 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
-import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -44,8 +42,6 @@ public class LadderService {
 	private HeroService heroService;
 	@Resource
 	private UserTeamService userTeamService;
-	@Resource
-	private UserHeroService userHeroService;
 	
 	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
         public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -113,41 +109,21 @@ public class LadderService {
 		
 		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 		userService.updateUser(user);
-		if(!result)
+		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
 		if (myRankBean == null)
 			myRankBean = initUserRank(user.getId(), user.getUserName());
-		List<UserTeamBean> userTeamList = userTeamService.selectUserTeamList(user.getId());
-		List<HeroInfoBean> heroinfoList = new ArrayList<HeroInfoBean>();
-		for(UserTeamBean team : userTeamList){
-			if(teamid == team.getId()){
-				List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
-				String[] herosstr = team.getTeamRecord().split("\\|");
-				for(String herostr : herosstr){
-					String[] str = herostr.split(",");
-					if(str.length == 2){
-						int heroId = Integer.parseInt(str[0]);
-						int infoId = Integer.parseInt(str[1]);
-						for(UserHeroBean herobean : userHeroList){
-							if(herobean.getId() == heroId){
-								HeroInfoBean heroinfo = herobean.getHeroInfoByInfoId(infoId);
-								heroinfoList.add(heroinfo);
-								break;
-							}
-						}
-					}
-				}
-				break;
-			}
-		}
+		if (attackRank == myRankBean.getRank())
+			return ErrorConst.ATTACK_SELF;
+		List<HeroInfoBean> heroinfoList = userTeamService.getTeam(user, teamid);
 		if(!heroinfoList.isEmpty())
 			myRankBean.setHeroList(heroinfoList);
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
 		attackRankBean.setRank(myRankBean.getRank());
 		myRankBean.setRank(attackRank);
-		updateUserRank(serverId, myRankBean);
 		updateUserRank(serverId, attackRankBean);
+		updateUserRank(serverId, myRankBean);
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
 	

@@ -1,12 +1,16 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
+import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
@@ -16,6 +20,8 @@ public class UserTeamService {
 	private UserTeamRedisService userTeamRedisService;
 	@Resource
 	private UserTeamMapper userTeamMapper;
+	@Resource
+	private UserHeroService userHeroService;
 	
 	public void addUserTeam(long userId, String record) {
 		UserTeamBean userTeam = new UserTeamBean();
@@ -43,5 +49,32 @@ public class UserTeamService {
 		}
 		
 		return userTeamList;
+	}
+	
+	public List<HeroInfoBean> getTeam(UserBean user, int teamid){
+		List<UserTeamBean> userTeamList = selectUserTeamList(user.getId());
+		List<HeroInfoBean> heroinfoList = new ArrayList<HeroInfoBean>();
+		for(UserTeamBean team : userTeamList){
+			if(teamid == team.getId()){
+				List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+				String[] herosstr = team.getTeamRecord().split("\\|");
+				for(String herostr : herosstr){
+					String[] str = herostr.split(",");
+					if(str.length == 2){
+						int heroId = Integer.parseInt(str[0]);
+						int infoId = Integer.parseInt(str[1]);
+						for(UserHeroBean herobean : userHeroList){
+							if(herobean.getHeroId() == heroId){
+								HeroInfoBean heroinfo = herobean.getHeroInfoByInfoId(infoId);
+								heroinfoList.add(heroinfo);
+								break;
+							}
+						}
+					}
+				}
+				break;
+			}
+		}
+		return heroinfoList;
 	}
 }
