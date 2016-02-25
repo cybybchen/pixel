@@ -71,7 +71,7 @@ public class UnionRedisService extends RedisService{
 	
 	public boolean getBaseUnion(Union.Builder unionbuilder, final int unionId, final int serverId) {
 		String unionvalue = this.hget(getUnionServerKey(serverId), unionId+"");
-		if(unionvalue != null)
+		if(unionvalue == null)
 			return false;
 		if(!parseJson(unionvalue, unionbuilder)){
 			logger.warn("cannot build Union:"+unionId);

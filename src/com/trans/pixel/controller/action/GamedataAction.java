@@ -2,12 +2,15 @@ package com.trans.pixel.controller.action;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -117,52 +120,32 @@ public class GamedataAction {
 		}
     }
 
-//    @RequestMapping("/gamemanager")
-//    @ResponseBody
-//    public void getData(HttpServletRequest request, HttpServletResponse response) {
-//        response.setContentType("application/json");
-//        try {
-//        	JSONObject result = new JSONObject();
-//        	String msg = "";
-//    		try {
-//    			InputStream out = request.getInputStream();
-//    			InputStreamReader isr = new InputStreamReader(out);
-//    			int ch = 0;
-//    			while ((ch = isr.read()) != -1) {
-//    				msg += (char) ch;
-//    			}
-//    			isr.close();
-//    		} catch (Exception e) {
-//    			result.put("error", "ERROR Request Format!");
-//    			result.write(response.getWriter());
-//    			return;
-//    		}finally{
-//    		}
-//			JSONObject req = JSONObject.fromObject(msg);
-//            try {
-//                req = httpcmd(request);
-//            } catch (Exception e) {
-//                logger.error("PIXEL_REQUEST_ERROR", e);
-//            }
-//            try {
-//                boolean result = true;
-//                for (RequestHandle handle : chainOfScreens) {
-//                    result = handle.handleRequest(req, rep);
-//                    if (!result) {
-//                        break;
-//                    }
-//                } 
-//            } catch (Exception e) {
-//                genericErrorHandle.handleRequest(req, rep);
-//                logger.error("PIXEL_RESPONSE_ERROR", e);
-//            } finally {
-//                
-//            }
-//            
-//            cmdhttp(rep, response);
-//        } catch (Throwable e) {
-//            logger.error("PIXEL_ERRO", e);
-//        }
-//    }
+    @RequestMapping("/gamemanager")
+    @ResponseBody
+    public void getData(HttpServletRequest request, HttpServletResponse response) {
+        response.setContentType("application/json");
+        try {
+        	JSONObject result = new JSONObject();
+        	String msg = "";
+    		try {
+    			InputStream out = request.getInputStream();
+    			InputStreamReader isr = new InputStreamReader(out);
+    			int ch = 0;
+    			while ((ch = isr.read()) != -1) {
+    				msg += (char) ch;
+    			}
+    			isr.close();
+    		} catch (Exception e) {
+    			result.put("error", "ERROR Request Format!");
+    			result.write(response.getWriter());
+    			return;
+    		}finally{
+    		}
+			JSONObject req = JSONObject.fromObject(msg);
+			managerService.getData(req, response);
+        } catch (Throwable e) {
+        	logger.error("PIXEL_MANAGER_ERRO", e);
+        }
+    }
 
 }
