@@ -63,7 +63,7 @@ public class LadderCommandService extends BaseCommandService {
             return;
 		}
 		
-		if (result == SuccessConst.LADDER_ATTACK_SUCCESS) {
+		if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
 			pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
 			updateUserLadderHistoryTop(user, attackRank, responseBuilder);
 		} 
