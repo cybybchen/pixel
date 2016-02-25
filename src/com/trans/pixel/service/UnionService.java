@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.UnionBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Union;
@@ -208,10 +209,12 @@ public class UnionService extends FightService{
 		return true;
 	}
 	
-	public void attack(int attackId, UserBean user){
+	public void attack(int attackId, int teamid, UserBean user){
 		Union.Builder builder = Union.newBuilder();
 		unionRedisService.getBaseUnion(builder, user.getUnionId(), user.getServerId());
 		if(builder.hasAttackId()){
+			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
+			userTeamService.saveTeamCache(user.getId(), herolist);
 			unionRedisService.attack(builder.getAttackId(), user);
 		}else if(user.getUnionJob() >= 2){
 			Union.Builder defendUnion = Union.newBuilder();
@@ -223,10 +226,12 @@ public class UnionService extends FightService{
 		}
 	}
 	
-	public void defend(UserBean user){
+	public void defend(int teamid, UserBean user){
 		Union.Builder union = Union.newBuilder();
 		unionRedisService.getBaseUnion(union, user.getUnionId(), user.getServerId());
 		if(union.hasDefendId()){
+			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
+			userTeamService.saveTeamCache(user.getId(), herolist);
 			unionRedisService.defend(union.getDefendId(), user);
 		}
 	}

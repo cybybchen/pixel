@@ -616,6 +616,16 @@ message RequestAttackResourceCommand {//区域争夺刺杀领主/争夺领主
 
 message RequestAttackResourceMineCommand {//区域争夺占领矿区
 	required int32 id = 1;
+	required int32 teamid = 2;
+	required bool ret = 3;
+}
+
+message RequestAttackResourceMineInfoCommand {//区域争夺矿区队伍信息
+	required int32 id = 1;
+}
+
+message ResponseAttackResourceMineInfoCommand {
+	repeated HeroInfo heroInfo = 1;
 }
 
 message ResponseUserLevelCommand {
@@ -660,9 +670,11 @@ message RequestUnionInfoCommand {//工会
 
 message RequestAttackUnionCommand {//进攻其他工会
 	optional int32 unionId = 1;
+	required int32 teamid = 2;
 }
 
 message RequestDefendUnionCommand {//防守其他工会
+	required int32 teamid = 2;
 }
 
 message ResponseUnionInfoCommand {
@@ -833,6 +845,7 @@ message RequestCommand {
 	optional RequestAttackBossCommand attackBossCommand = 28;
 	optional RequestAttackResourceCommand attackResourceCommand = 29;
 	optional RequestAttackResourceMineCommand attackResourceMineCommand = 30;
+	optional RequestAttackResourceMineInfoCommand attackResourceMineInfoCommand = 124;
 	optional RequestQuitUnionCommand quitUnionCommand = 42;
 	optional RequestUnionInfoCommand unionInfoCommand = 43;
 	optional RequestUnionListCommand unionListCommand = 44;
@@ -910,6 +923,7 @@ message ResponseCommand {
 	optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
 	optional ResponseGetUserEquipCommand userEquipCommand = 23;
 	optional ResponseAreaCommand areaCommand = 24;
+	optional ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;
 	optional ResponseUserLevelCommand userLevelCommand = 25;
 	optional ResponseUserLootLevelCommand userLootLevelCommand = 26;
 	optional ResponseUnionInfoCommand unionInfoCommand = 27;

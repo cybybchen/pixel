@@ -86,6 +86,10 @@ public class LadderService {
 		return ladderRedisService.getUserRankByRank(serverId, rank);
 	}
 	
+	public List<HeroInfoBean> getTeamCache(int userid){
+		return userTeamService.getTeamCache(userid);
+	}
+	
 	public List<UserRankBean> getRankListByUserId(int serverId, UserBean user) {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
@@ -116,9 +120,8 @@ public class LadderService {
 		userService.updateUser(user);
 		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
-		List<HeroInfoBean> heroinfoList = userTeamService.getTeam(user, teamid);
-		if(!heroinfoList.isEmpty())
-			myRankBean.setHeroList(heroinfoList);
+		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user.getId(), heroList);
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
 		attackRankBean.setRank(myRankBean.getRank());
 		myRankBean.setRank(attackRank);
@@ -205,7 +208,7 @@ public class LadderService {
 		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 		heroInfo.setPosition(heroList.size() + 1);
 		heroList.add(heroInfo);
-		myRank.setHeroList(heroList);
+//		myRank.setHeroList(heroList);
 		
 		return myRank;
 	}

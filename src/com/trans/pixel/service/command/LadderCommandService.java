@@ -12,6 +12,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -19,9 +20,9 @@ import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.ResponseGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.ResponseGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.LadderService;
@@ -77,7 +78,12 @@ public class LadderCommandService extends BaseCommandService {
 		ResponseGetLadderUserInfoCommand.Builder builder = ResponseGetLadderUserInfoCommand.newBuilder();
 		long rank = cmd.getRank();
 		UserRankBean userRank = ladderService.getUserRankByRank(user.getServerId(), rank);
-		builder.setUserRank(userRank.buildUserRankInfo());
+		UserRank.Builder userrank = UserRank.newBuilder(userRank.buildUserRank());
+		List<HeroInfoBean> heroList = ladderService.getTeamCache(userRank.getId());
+		for (HeroInfoBean heroInfo : heroList) {
+			userrank.addHeroInfo(heroInfo.buildRankHeroInfo());
+		}
+		builder.setUserRank(userrank);
 		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}
 	

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -14,7 +15,9 @@ import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
+import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AreaFightService;
 
@@ -60,7 +63,20 @@ public class AreaCommandService extends BaseCommandService{
 	}
 	
 	public void AttackResourceMine(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackResourceMine(cmd.getId(), user);
+		service.AttackResourceMine(cmd.getId(), cmd.getTeamid(), cmd.getRet(), user, responseBuilder);
 		Areas(responseBuilder, user);
+	}
+	
+	public void AttackResourceMineInfo(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user){
+		ResponseAttackResourceMineInfoCommand.Builder builder = ResponseAttackResourceMineInfoCommand.newBuilder();
+		List<HeroInfoBean> heroList = service.AttackResourceMineInfo(cmd.getId(), user);
+//		if(heroList.isEmpty()){
+//			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+//			return;
+//		}
+		for (HeroInfoBean heroInfo : heroList) {
+			builder.addHeroInfo(heroInfo.buildRankHeroInfo());
+		}
+		responseBuilder.setResourceMineInfoCommand(builder);
 	}
 }

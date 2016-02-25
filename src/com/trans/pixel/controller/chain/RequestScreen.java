@@ -12,6 +12,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
@@ -196,6 +197,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -556,6 +558,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//PurchaseCoinCommand
                 result = handleCommand(cmd, responseBuilder, user);//PurchaseCoinCommand
         }//PurchaseCoinCommand
+        if (request.hasAttackResourceMineInfoCommand()) {
+            RequestAttackResourceMineInfoCommand cmd = request.getAttackResourceMineInfoCommand();
+            if (result)//AttackResourceMineInfoCommand
+                result = handleCommand(cmd, responseBuilder, user);//AttackResourceMineInfoCommand
+        }//AttackResourceMineInfoCommand
         //call handleCommand here
         
         return result;

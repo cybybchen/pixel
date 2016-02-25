@@ -18,7 +18,7 @@ public class UserRankBean {
 	private int level = 0;
 	private int zhanli = 0;
 	private long rank = 0;
-	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
+//	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 	public int getId() {
 		return id;
 	}
@@ -55,12 +55,12 @@ public class UserRankBean {
 	public void setRank(long rank) {
 		this.rank = rank;
 	}
-	public List<HeroInfoBean> getHeroList() {
-		return heroList;
-	}
-	public void setHeroList(List<HeroInfoBean> heroList) {
-		this.heroList = heroList;
-	}
+//	public List<HeroInfoBean> getHeroList() {
+//		return heroList;
+//	}
+//	public void setHeroList(List<HeroInfoBean> heroList) {
+//		this.heroList = heroList;
+//	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -69,7 +69,7 @@ public class UserRankBean {
 		json.put(LEVEL, level);
 		json.put(ZHANLI, zhanli);
 		json.put(RANK, rank);
-		json.put(HERO_LIST, heroList);
+//		json.put(HERO_LIST, heroList);
 		
 		return json.toString();
 	}
@@ -86,13 +86,17 @@ public class UserRankBean {
 		bean.setZhanli(json.getInt(ZHANLI));
 		bean.setRank(json.getInt(RANK));
 		
-		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
-		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, HERO_LIST);
-		for (int i = 0;i < array.size(); ++i) {
-			HeroInfoBean hero = HeroInfoBean.fromJson(array.getString(i));
-			list.add(hero);
-		}
-		bean.setHeroList(list);
+//		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
+//		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, HERO_LIST);
+//		for (int i = 0;i < array.size(); ++i) {
+//			try{
+//				HeroInfoBean hero = HeroInfoBean.fromJson(array.getString(i));
+//				list.add(hero);
+//			}catch(Exception e){
+//				
+//			}
+//		}
+//		bean.setHeroList(list);
 		
 		return bean;
 	}
@@ -106,16 +110,16 @@ public class UserRankBean {
 		return builder.build();
 	}
 	
-	public UserRank buildUserRankInfo() {
-		UserRank.Builder builder = UserRank.newBuilder();
-		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
-		for (HeroInfoBean heroInfo : heroList) {
-			heroInfoBuilderList.add(heroInfo.buildRankHeroInfo());
-		}
-		builder.addAllHeroInfo(heroInfoBuilderList);
-		
-		return builder.build();
-	}
+//	public UserRank buildUserRankInfo() {
+//		UserRank.Builder builder = UserRank.newBuilder();
+//		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
+//		for (HeroInfoBean heroInfo : heroList) {
+//			heroInfoBuilderList.add(heroInfo.buildRankHeroInfo());
+//		}
+//		builder.addAllHeroInfo(heroInfoBuilderList);
+//		
+//		return builder.build();
+//	}
 	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";

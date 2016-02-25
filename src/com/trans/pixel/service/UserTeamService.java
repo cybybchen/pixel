@@ -50,6 +50,14 @@ public class UserTeamService {
 		
 		return userTeamList;
 	}
+
+	public List<HeroInfoBean> getTeamCache(long userid){
+		return userTeamRedisService.getTeamCache(userid);
+	}
+
+	public void saveTeamCache(long userid, List<HeroInfoBean> list){
+		userTeamRedisService.saveTeamCache(userid, list);
+	}
 	
 	public List<HeroInfoBean> getTeam(UserBean user, int teamid){
 		List<UserTeamBean> userTeamList = selectUserTeamList(user.getId());
@@ -66,7 +74,8 @@ public class UserTeamService {
 						for(UserHeroBean herobean : userHeroList){
 							if(herobean.getHeroId() == heroId){
 								HeroInfoBean heroinfo = herobean.getHeroInfoByInfoId(infoId);
-								heroinfoList.add(heroinfo);
+								if(heroinfo != null)
+									heroinfoList.add(heroinfo);
 								break;
 							}
 						}

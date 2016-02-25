@@ -16,6 +16,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
@@ -30,17 +31,13 @@ import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
-import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
-import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -58,6 +55,10 @@ import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
@@ -82,8 +83,8 @@ import com.trans.pixel.service.command.HeroLevelUpCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LootCommandService;
-import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
+import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
@@ -535,6 +536,11 @@ public class GameDataScreen extends RequestScreen {
 		shopCommandService.PurchaseCoin(cmd, responseBuilder, user);
 		return true;//PurchaseCoinCommand
 	}//PurchaseCoinCommand
+	@Override//AttackResourceMineInfoCommand
+	protected boolean handleCommand(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		areaCommandService.AttackResourceMineInfo(cmd, responseBuilder, user);
+		return true;//AttackResourceMineInfoCommand
+	}//AttackResourceMineInfoCommand
 	//add handleCommand here
 
 	@Override

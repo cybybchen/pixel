@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,6 +11,10 @@ import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaInfo;
@@ -20,6 +25,7 @@ import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
+import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.WeightReward;
@@ -37,6 +43,8 @@ public class AreaFightService extends FightService{
     private UserService userService;
 	@Resource
     private RewardService rewardService;
+	@Resource
+	UserTeamService userTeamService;
 	
 	private RewardInfo randReward(WeightReward weightreward){
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
@@ -118,16 +126,27 @@ public class AreaFightService extends FightService{
 		return true;
 	}
 	
-	public boolean AttackResourceMine(int id, UserBean user){
+	public ResultConst AttackResourceMine(int id, int teamid, boolean ret, UserBean user, ResponseCommand.Builder responseBuilder){
 		AreaResourceMine mine = redis.getResourceMine(id, user);
 		if(mine == null)
-			return false;
+			return ErrorConst.MAPINFO_ERROR;
+		if(!ret)
+			return SuccessConst.PVP_ATTACK_FAIL;
+		List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user.getId(), herolist);
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(mine);
 		gainMine(builder, user);
 		builder.setUser(user.buildShort());
 		builder.setEndTime(System.currentTimeMillis()/1000+12*3600);
 		redis.saveResourceMine(builder.build(), user);
-		return true;
+		return SuccessConst.PVP_ATTACK_SUCCESS;
+	}
+	
+	public List<HeroInfoBean> AttackResourceMineInfo(int id, UserBean user){
+		AreaResourceMine mine = redis.getResourceMine(id, user);
+		if(mine == null || !mine.hasUser())
+			return new ArrayList<HeroInfoBean>();
+		return userTeamService.getTeamCache(mine.getUser().getId());
 	}
 	
 	public boolean gainMine(AreaResourceMine.Builder builder, UserBean user){

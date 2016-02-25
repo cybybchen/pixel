@@ -23,7 +23,7 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
-public class LadderRedisService {
+public class LadderRedisService extends RedisService{
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -47,17 +47,11 @@ public class LadderRedisService {
 	}
 	
 	public UserRankBean getUserRankByRank(final int serverId, final long rank) {
-		UserRankBean bean = redisTemplate.execute(new RedisCallback<UserRankBean>() {
-			@Override
-			public UserRankBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildRankRedisKey(serverId));
-				
-				return UserRankBean.fromJson(bhOps.get("" + rank));
-			}
-		});
-		return bean;
+		String value = hget(buildRankRedisKey(serverId), rank+"");
+		if(value == null)
+			return null;
+		logger.debug(value);
+		return UserRankBean.fromJson(value);
 	}
 	
 	public void updateUserRank(final int serverId, final UserRankBean userRank) {
@@ -75,16 +69,11 @@ public class LadderRedisService {
 	}
 	
 	public UserRankBean getUserRankByUserId(final int serverId, final long userId) {
-		return redisTemplate.execute(new RedisCallback<UserRankBean>() {
-			@Override
-			public UserRankBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildRankInfoRedisKey(serverId));
-				
-				return UserRankBean.fromJson(bhOps.get("" + userId));
-			}
-		});
+		String value = hget(buildRankInfoRedisKey(serverId), userId+"");
+		if(value == null)
+			return null;
+		logger.debug(value);
+		return UserRankBean.fromJson(value);
 	}
 	
 	public void updateUserRankInfo(final int serverId, final UserRankBean userRank) {

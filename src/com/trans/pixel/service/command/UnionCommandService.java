@@ -121,9 +121,9 @@ public class UnionCommandService extends BaseCommandService {
 	}
 
 	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.attack(cmd.getUnionId(), user);
+		unionService.attack(cmd.getUnionId(), cmd.getTeamid(), user);
 	}
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.defend(user);
+		unionService.defend(cmd.getTeamid(), user);
 	}
 }
