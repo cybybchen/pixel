@@ -137,6 +137,10 @@ public class UserLevelLootBean {
 		return builder.build();
 	}
 	
+	public void clearRewardRecord() {
+		lootRewardRecord = "";
+	}
+	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String PACKAGE_COUNT = "package_count";

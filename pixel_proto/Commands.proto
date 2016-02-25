@@ -483,6 +483,10 @@ message ResponseAttackRelativeCommand {
 	required int32 level = 4;
 }
 
+message RequestGetUserMineCommand {
+
+}
+
 message ResponseGetUserMineCommand {
 	repeated UserMine userMine = 1;
 }
@@ -888,6 +892,7 @@ message RequestCommand {
 	optional RequestUserTeamListCommand userTeamListCommand = 46;
 	optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
 	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
+	optional RequestGetUserMineCommand userMineCommand = 49; 
 }
 // response command list transfer only use it
 message ResponseCommand {

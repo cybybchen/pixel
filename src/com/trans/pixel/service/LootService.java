@@ -26,7 +26,7 @@ public class LootService {
 	
 	public LootBean getLootByLevelId(int levelId) {
 		LootBean loot = lootRedisService.getLootByLevelId(levelId);
-		if (loot == null) {
+		if (loot == null && levelId > 1000) {
 			parseAndSaveConfig();
 			loot = lootRedisService.getLootByLevelId(levelId);
 		}

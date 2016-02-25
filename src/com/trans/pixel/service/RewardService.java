@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
@@ -16,6 +20,7 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 
 @Service
 public class RewardService {
+	private static final Logger log = LoggerFactory.getLogger(RewardService.class);
 	@Resource
 	private LootService lootService;
 	@Resource
@@ -100,13 +105,17 @@ public class RewardService {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
 		for (int lootLevel : rewardRecordList) {
+			long startTime = System.currentTimeMillis();
 			LootBean loot = lootService.getLootByLevelId(lootLevel);
 			if (loot != null)
 				rewardList.add(randomLootReward(loot.getRewardList()));
-			if (rewardList.size() == userLevelLootRecord.getPackageCount())
+			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
 				break;
+			long endTime = System.currentTimeMillis();
+			log.debug("del time is:" + (endTime - startTime) + " || levelId is:" + lootLevel);
 		}
 		
+		userLevelLootRecord.clearRewardRecord();
 		return rewardList;
 	}
 	

@@ -66,7 +66,10 @@ public class UserLevelLootService {
 		if (userLevelLootRecord == null)
 			return null;
 		
-		return rewardService.getLootRewards(userLevelLootRecord);
+		List<RewardBean> rewardList = rewardService.getLootRewards(userLevelLootRecord);
+		updateUserLevelLootRecord(userLevelLootRecord);
+		
+		return rewardList;
 	} 
 	
 	private UserLevelLootBean initUserLevelLootRecord(long userId) {
