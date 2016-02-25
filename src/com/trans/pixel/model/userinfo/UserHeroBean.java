@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.model.StarBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.UserHero;
@@ -39,21 +40,6 @@ public class UserHeroBean {
 	}
 	public void setHeroInfo(String heroInfo) {
 		this.heroInfo = heroInfo;
-	}
-	
-	public int calValues(List<Integer> costInfoIds) {
-		int addValue = 0;
-		for (int infoId : costInfoIds) {
-			HeroInfoBean heroInfo = getHeroInfoByInfoId(infoId);
-			if (heroInfo != null) {
-				if (heroInfo.getValue() == 0)
-					addValue += 1;
-				else
-					addValue += heroInfo.getValue();
-			}
-		}
-		
-		return addValue;
 	}
 	
 	public void delHeros(List<Integer> infoIds) {
