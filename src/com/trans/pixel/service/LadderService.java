@@ -106,16 +106,16 @@ public class LadderService {
 		int serverId = user.getServerId();
 		if (user.getLadderModeLeftTimes() <= 0)
 			return ErrorConst.NOT_ENOUGH_LADDER_MODE_TIMES;
-		
-		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
-		userService.updateUser(user);
-		if (!result)
-			return SuccessConst.LADDER_ATTACK_FAIL;
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
 		if (myRankBean == null)
 			myRankBean = initUserRank(user.getId(), user.getUserName());
 		if (attackRank == myRankBean.getRank())
 			return ErrorConst.ATTACK_SELF;
+		
+		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
+		userService.updateUser(user);
+		if (!result)
+			return SuccessConst.LADDER_ATTACK_FAIL;
 		List<HeroInfoBean> heroinfoList = userTeamService.getTeam(user, teamid);
 		if(!heroinfoList.isEmpty())
 			myRankBean.setHeroList(heroinfoList);
