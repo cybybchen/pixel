@@ -139,7 +139,7 @@ public class HeroLevelUpService {
 		int needValue = star.getUpvalue() - heroInfo.getValue();
 		if(addValue > 0){
 			userHero.delHeros(costInfoIds);
-			heroInfo.setValue(heroInfo.getValue() + addValue);
+			heroInfo.setValue(0);
 			result = SuccessConst.STAR_LEVELUP_SUCCESS;
 		}
 		if (needValue <= addValue) {
