@@ -21,16 +21,6 @@ message UserInfo {
 	optional int32 freeLotteryJewelTime = 18; //免费钻石抽取倒计时
 	optional int32 ladderModeLeftTimes = 12;//每日天梯挑战剩余次数
 }
-message UserDailyData {
-	optional int32 DailyShopRefreshTime = 1;//当日商店累计刷新次数
-	optional int32 BlackShopRefreshTime = 2;//当日黑市累计刷新次数
-	optional int32 UnionShopRefreshTime = 3;//当日工会商店累计刷新次数
-	optional int32 PVPShopRefreshTime = 4;//当日挂机PVP商店累计刷新次数
-	optional int32 LadderShopRefreshTime = 5;//当日天梯商店累计刷新次数
-	optional int32 ExpeditionShopRefreshTime = 6;//当日远征商店累计刷新次数
-	optional int32 PurchaseCoinTime = 7;//当日点石成金次数
-	optional int32 PurchaseCoinLeft = 8;//当日点石成金剩余次数
-}
 
 message Commodity {
 	required int32 itemid = 1;
