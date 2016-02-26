@@ -193,24 +193,43 @@ public class RedisService {
 //		}
 //    }
 
-	private static ConcurrentHashMap<String, Long> lockMap = new ConcurrentHashMap<String, Long>(); 
+//	private static ConcurrentHashMap<String, Long> lockMap = new ConcurrentHashMap<String, Long>(); 
+//	public /*synchronized*/ boolean setLock(final String key, final long lock) {
+//		Long oldLock = lockMap.get(key);
+//		if (oldLock == null || lock - oldLock >= 4000) {
+//			lockMap.put(key, lock);
+//			logger.debug(key + " : " + oldLock + " succeed to setLock "+ lock);
+//			return true;
+//		}
+//		logger.debug(key + " : " + oldLock + " fail to setLock "+ lock);
+//		return false;
+//	}
 	/**
 	 * 设置同步锁，返回true才能进行操作
 	 */
-	public /*synchronized*/ boolean setLock(final String key, final long lock) {
-		Long oldLock = lockMap.get(key);
-		if (oldLock == null || lock - oldLock >= 4000) {
-			lockMap.put(key, lock);
-			logger.debug(key + " : " + oldLock + " succeed to setLock "+ lock);
-			return true;
-		}
-		logger.debug(key + " : " + oldLock + " fail to setLock "+ lock);
-		return false;
+	public boolean setLock(final String key, final long lock) {
+		return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundValueOperations<String, String> Ops = redisTemplate
+						.boundValueOps(key);
+
+				if(Ops.setIfAbsent(lock+"")){
+					Ops.expire(4, TimeUnit.SECONDS);
+					logger.debug(key + " : succeed to setLock "+ lock);
+					return true;
+				}else{
+					logger.debug(key + " : fail to setLock "+ lock);
+					return false;
+				}
+			}
+		});
 	}
 
-	/**
-	 * 读取同步锁
-	 */
+//	/**
+//	 * 读取同步锁
+//	 */
 //	public long getLock(final String key) {
 //		Long value = lockMap.get(key);
 //		if (value == null)
@@ -223,7 +242,7 @@ public class RedisService {
 	 * 清除同步锁
 	 */
 	public void clearLock(final String key) {
-		lockMap.remove(key);
+		delete(key);
 	}
 	
 	/**

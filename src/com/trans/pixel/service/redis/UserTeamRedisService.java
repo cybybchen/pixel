@@ -31,7 +31,7 @@ public class UserTeamRedisService extends RedisService {
 	private HeroService heroService;
 
 	public List<HeroInfoBean> getTeamCache(final long userid) {
-		String value = get(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userid);
+		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid);
 		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
 		JSONArray array = JSONArray.fromObject(value);
 		for (int i = 0; i < array.size(); ++i) {
@@ -52,7 +52,7 @@ public class UserTeamRedisService extends RedisService {
 
 	public void saveTeamCache(final long userid, List<HeroInfoBean> list) {
 		JSONArray array = JSONArray.fromObject(list);
-		set(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userid, array.toString());
+		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid, array.toString());
 	}
 
 	public void updateUserTeam(final UserTeamBean userTeam) {
