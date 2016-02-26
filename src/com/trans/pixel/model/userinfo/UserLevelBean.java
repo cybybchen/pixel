@@ -89,39 +89,39 @@ public class UserLevelBean {
 		return json.toString();
 	}
 	
-	public Map<String, String> toMap() {
-		Logger log = LoggerFactory.getLogger(UserLevelBean.class);
-		Map<String, String> levelRecordMap = new HashMap<String, String>();
-		levelRecordMap.put(ID, "" + id);
-		levelRecordMap.put(USER_ID, "" + userId);
-		levelRecordMap.put(LAST_LEVEL_RESULT_TIME, "" + lastLevelResultTime);
-		levelRecordMap.put(LEVEL_PREPARE_TIME, "" + levelPrepareTime);
-		levelRecordMap.put(PUTONG_LEVEL, "" + putongLevel);
-		levelRecordMap.put(KUNNAN_LEVEL, kunnanLevel);
-		levelRecordMap.put(DIYU_LEVEL, diyuLevel);
-		
-		log.debug("111: " + levelRecordMap);
-		
-		return levelRecordMap;
-	}
-	public static UserLevelBean convertLevelRecordMapToUserLevelRecordBean(Map<String, String> levelRecordMap) {
-		Logger log = LoggerFactory.getLogger(UserLevelBean.class);
-		log.debug("11122222222222: " + levelRecordMap);
-		if (levelRecordMap == null || levelRecordMap.size() == 0)
-			return null;
-		log.debug("11122222222222333333333333333333: ");
-		UserLevelBean levelRecord = new UserLevelBean();
-		
-		levelRecord.setId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(ID)));
-		levelRecord.setUserId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(USER_ID)));
-		levelRecord.setLastLevelResultTime(TypeTranslatedUtil.stringToInt(levelRecordMap.get(LAST_LEVEL_RESULT_TIME)));
-		levelRecord.setLevelPrepareTime(TypeTranslatedUtil.stringToInt(levelRecordMap.get(LEVEL_PREPARE_TIME)));
-		levelRecord.setPutongLevel(TypeTranslatedUtil.stringToInt(levelRecordMap.get(PUTONG_LEVEL)));
-		levelRecord.setKunnanLevel(levelRecordMap.get(KUNNAN_LEVEL));
-		levelRecord.setDiyuLevel(levelRecordMap.get(DIYU_LEVEL));
-
-		return levelRecord;
-	}
+//	public Map<String, String> toMap() {
+//		Logger log = LoggerFactory.getLogger(UserLevelBean.class);
+//		Map<String, String> levelRecordMap = new HashMap<String, String>();
+//		levelRecordMap.put(ID, "" + id);
+//		levelRecordMap.put(USER_ID, "" + userId);
+//		levelRecordMap.put(LAST_LEVEL_RESULT_TIME, "" + lastLevelResultTime);
+//		levelRecordMap.put(LEVEL_PREPARE_TIME, "" + levelPrepareTime);
+//		levelRecordMap.put(PUTONG_LEVEL, "" + putongLevel);
+//		levelRecordMap.put(KUNNAN_LEVEL, kunnanLevel);
+//		levelRecordMap.put(DIYU_LEVEL, diyuLevel);
+//		
+//		log.debug("111: " + levelRecordMap);
+//		
+//		return levelRecordMap;
+//	}
+//	public static UserLevelBean convertLevelRecordMapToUserLevelRecordBean(Map<String, String> levelRecordMap) {
+//		Logger log = LoggerFactory.getLogger(UserLevelBean.class);
+//		log.debug("11122222222222: " + levelRecordMap);
+//		if (levelRecordMap == null || levelRecordMap.size() == 0)
+//			return null;
+//		log.debug("11122222222222333333333333333333: ");
+//		UserLevelBean levelRecord = new UserLevelBean();
+//		
+//		levelRecord.setId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(ID)));
+//		levelRecord.setUserId(TypeTranslatedUtil.stringToLong(levelRecordMap.get(USER_ID)));
+//		levelRecord.setLastLevelResultTime(TypeTranslatedUtil.stringToInt(levelRecordMap.get(LAST_LEVEL_RESULT_TIME)));
+//		levelRecord.setLevelPrepareTime(TypeTranslatedUtil.stringToInt(levelRecordMap.get(LEVEL_PREPARE_TIME)));
+//		levelRecord.setPutongLevel(TypeTranslatedUtil.stringToInt(levelRecordMap.get(PUTONG_LEVEL)));
+//		levelRecord.setKunnanLevel(levelRecordMap.get(KUNNAN_LEVEL));
+//		levelRecord.setDiyuLevel(levelRecordMap.get(DIYU_LEVEL));
+//
+//		return levelRecord;
+//	}
 	
 	public UserLevel buildUserLevel() {
 		UserLevel.Builder builder = UserLevel.newBuilder();
@@ -133,11 +133,11 @@ public class UserLevelBean {
 		return builder.build();
 	}
 	
-	private static final String ID = "id";
-	private static final String USER_ID = "user_id";
-	private static final String LAST_LEVEL_RESULT_TIME = "last_level_result_time";
-	private static final String LEVEL_PREPARE_TIME = "level_prepare_time";
-	private static final String PUTONG_LEVEL = "putong_level";
-	private static final String KUNNAN_LEVEL = "kunnan_level";
-	private static final String DIYU_LEVEL = "diyu_level";
+//	private static final String ID = "id";
+//	private static final String USER_ID = "user_id";
+//	private static final String LAST_LEVEL_RESULT_TIME = "last_level_result_time";
+//	private static final String LEVEL_PREPARE_TIME = "level_prepare_time";
+//	private static final String PUTONG_LEVEL = "putong_level";
+//	private static final String KUNNAN_LEVEL = "kunnan_level";
+//	private static final String DIYU_LEVEL = "diyu_level";
 }

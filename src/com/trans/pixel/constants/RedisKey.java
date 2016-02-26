@@ -20,6 +20,8 @@ public class RedisKey {
 //	public final static String USER_PREFIX = "user_";
 	public final static String USERDATA_PREFIX = "UserData_";
 	public final static String USERDAILYDATA_PREFIX = "UserDailyData_";
+	public final static String USERDATA = PREFIX+USERDATA_PREFIX;
+	public final static String USERDAILYDATA = PREFIX+USERDAILYDATA_PREFIX;
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "key:mysql_update";
@@ -32,8 +34,8 @@ public class RedisKey {
 	public static final String DAGUAN_KEY = "key:daguan";
 	
 	//user level record redis
-	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_";
-	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_loot_level_";
+//	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_";
+//	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_loot_level_";
 	
 	//win redis
 	public static final String WIN_LEVEL_KEY = "key:win_level";

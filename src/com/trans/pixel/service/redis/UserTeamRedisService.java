@@ -53,6 +53,7 @@ public class UserTeamRedisService extends RedisService {
 	public void saveTeamCache(final long userid, List<HeroInfoBean> list) {
 		JSONArray array = JSONArray.fromObject(list);
 		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid, array.toString());
+		//todo expire
 	}
 
 	public void updateUserTeam(final UserTeamBean userTeam) {
