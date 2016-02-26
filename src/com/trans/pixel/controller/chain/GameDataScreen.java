@@ -40,6 +40,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
@@ -568,6 +569,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestGetUserFriendListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		friendCommandService.getUserFriendList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetUserMineCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		pvpCommandService.getUserMine(cmd, responseBuilder, user);
 		return true;
 	}
 

@@ -1,5 +1,7 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -9,9 +11,11 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
+import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseRefreshRelatedUserCommand;
 import com.trans.pixel.service.PvpMapService;
 
@@ -48,5 +52,10 @@ public class PvpCommandService extends BaseCommandService {
 		builder.setRelatedUserId(refreshUserId);
 		
 		responseBuilder.setRefreshRelatedUserCommand(builder.build());
+	}
+	
+	public void getUserMine(RequestGetUserMineCommand cmd, Builder responseBuilder, UserBean user) {
+		List<UserMineBean> userMineList = pvpMapService.relateUser(user);
+		responseBuilder.setGetUserMineCommand(super.buildGetUserMineCommand(userMineList));
 	}
 }
