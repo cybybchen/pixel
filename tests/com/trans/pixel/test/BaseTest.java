@@ -14,6 +14,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.utils.HTTPProtobufResolver;
+import com.trans.pixel.utils.HTTPStringResolver;
 import com.trans.pixel.utils.HttpUtil;
 
 public class BaseTest {
@@ -44,27 +45,36 @@ public class BaseTest {
     protected static final String defaultUrl = "http://118.192.77.33:8082/Lol450/gamedata";
     protected static String url;
     protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
+    protected static final HttpUtil<String> strhttp = new HttpUtil<String>(new HTTPStringResolver());
 
     protected static void initTestData() {
         
     }
-    
-    protected HeadInfo head() {
+
+    protected String headurl() {
+    	String serverurl = null;
     	Properties props = new Properties();
         try {
          InputStream in = getClass().getResourceAsStream("/config/advancer.properties");
          props.load(in);
-         if(url == null){
-        	 url = props.getProperty ("serverurl");
-        	 System.out.println("test server:"+url);
-         }
+         serverurl = props.getProperty ("serverurl");
         } catch (Exception e) {
          e.printStackTrace();
         }
-//    	if(url == null)
-//    		url = RedisService.ReadProperties("serverurl");
+		if (serverurl == null) 
+			serverurl = defaultUrl;
+		return serverurl;
+    }
+    
+    protected String manageurl() {
+    	String serverurl = headurl();
+    	url = serverurl.replace("/gamedata", "/gamemanager");
+    	return url;
+    }
+    
+    protected HeadInfo head() {
 		if (url == null) {
-			url = defaultUrl;
+			url = headurl();
 			System.out.println("test server:" + url);
 		}
         HeadInfo.Builder head = HeadInfo.newBuilder();

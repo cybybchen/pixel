@@ -9,16 +9,15 @@ public class RedisKey {
 	
 	public static final String CONFIG_PREFIX = "config:";
 	
-	public static final String SERVER_PREFIX = "server_";
 	
-	//server
+	//server key prefix
 	public static final String SERVER_KEY = "server";
+	public static final String SERVER_PREFIX = "S";
+	public final static String ACCOUNT_PREFIX = "Account_S";
+	public final static String USERCACHE_PREFIX = "UserCache";
 	
-	//account redis
-	public final static String ACCOUNT_PREFIX = "account_";
-	
-	//user redis
-	public final static String USER_PREFIX = "user_";
+	//user key prefix
+//	public final static String USER_PREFIX = "user_";
 	public final static String USERDATA_PREFIX = "UserData_";
 	public final static String USERDAILYDATA_PREFIX = "UserDailyData_";
 

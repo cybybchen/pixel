@@ -98,10 +98,10 @@ public class UserCommandService extends BaseCommandService {
 			//每日首次登陆
 			user.setRefreshLeftTimes(RefreshConst.REFRESH_PVP_TIMES);	
 			user.setLadderModeLeftTimes(5);
-			// builder.setPurchaseCoinLeft(1);
+			user.setPurchaseCoinLeft(1);
 			VipInfo vip = userService.getVip(user.getVip());
 			if(vip != null){
-			// builder.setPurchaseCoinLeft(builder.getPurchaseCoinLeft() + vip.getDianjin());
+				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
 			}
 		}
 		
