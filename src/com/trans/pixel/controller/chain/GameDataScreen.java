@@ -30,6 +30,7 @@ import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
@@ -79,6 +80,7 @@ import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AreaCommandService;
+import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroLevelUpCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
@@ -128,6 +130,8 @@ public class GameDataScreen extends RequestScreen {
 	private ShopCommandService shopCommandService;
 	@Resource
 	private MessageCommandService messageCommandService;
+	@Resource
+	private EquipCommandService equipCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -576,6 +580,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestGetUserMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		pvpCommandService.getUserMine(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEquipComposeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		equipCommandService.equipLevelup(cmd, responseBuilder, user);
 		return true;
 	}
 

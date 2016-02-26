@@ -473,6 +473,15 @@ message RequestEquipLevelUpCommand {
 	required int32 levelUpId = 4;
 }
 
+message RequestEquipComposeCommand {
+        required int32 originalId = 1;
+	required int32 levelUpId = 2;
+}
+
+message ResponseEquipComposeCommand {
+	required int32 equipId = 1;
+}
+
 message RequestAttackRelativeCommand {
 	required int32 mapId = 1;
 	required int32 mineId = 2;
@@ -895,6 +904,7 @@ message RequestCommand {
 	optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
 	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
 	optional RequestGetUserMineCommand userMineCommand = 49; 
+	optional RequestEquipComposeCommand equipComposeCommand = 50;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -939,6 +949,7 @@ message ResponseCommand {
 	optional ResponseMessageBoardCommand messageBoardCommand = 30;
 	optional ResponseUserTeamListCommand userTeamListCommand = 31;
 	optional ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;
+	optional ResponseEquipComposeCommand equipComposeCommand = 33;
 }
 
 
