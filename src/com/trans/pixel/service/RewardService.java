@@ -29,6 +29,8 @@ public class RewardService {
 	private UserService userService;
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getUser(userId);
@@ -63,10 +65,8 @@ public class RewardService {
 		if (rewardId > RewardConst.HERO) {
 			int heroId = rewardId % RewardConst.HERO_STAR;
 			userHeroService.addUserHero(user.getId(), heroId);
-		} else if (rewardId > RewardConst.PROP) {
-			
 		} else if (rewardId > RewardConst.PACKAGE) {
-			
+			userPropService.addUserProp(user.getId(), rewardId, rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {
 			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
 		} else if (rewardId > RewardConst.EQUIPMENT) {

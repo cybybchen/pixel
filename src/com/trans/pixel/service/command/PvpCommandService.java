@@ -15,7 +15,6 @@ import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseRefreshRelatedUserCommand;
 import com.trans.pixel.service.PvpMapService;
 

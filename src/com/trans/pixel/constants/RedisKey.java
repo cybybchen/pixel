@@ -64,6 +64,9 @@ public class RedisKey {
 	//user equip redis
 	public static final String USER_EQUIP_PREFIX = "user_equip_";
 	
+	//user prop redis
+	public static final String USER_PROP_PREFIX = "user_prop_";
+	
 	//user pvp map redis
 	public static final String USER_PVP_MAP_PREFIX = "user_pvp_map_";
 	

@@ -18,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -34,6 +35,7 @@ import com.trans.pixel.protoc.Commands.UserEquip;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.protoc.Commands.UserMine;
+import com.trans.pixel.protoc.Commands.UserProp;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.protoc.Commands.UserTeam;
 import com.trans.pixel.service.LadderService;
@@ -139,6 +141,15 @@ public class BaseCommandService {
 		}
 		
 		return userEquipBuilderList;
+	}
+	
+	protected List<UserProp> buildUserPropList(List<UserPropBean> userPropList) {
+		List<UserProp> userPropBuilderList = new ArrayList<UserProp>();
+		for (UserPropBean userProp : userPropList) {
+			userPropBuilderList.add(userProp.buildUserProp());
+		}
+		
+		return userPropBuilderList;
 	}
 	
 	protected List<UserRank> buildUserRankList(List<UserRankBean> userRankList) {

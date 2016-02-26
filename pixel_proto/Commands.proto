@@ -117,6 +117,11 @@ message UserEquip {
 	required int32 equipCount = 2;
 }
 
+message UserProp {
+	required int32 propId = 1;
+	required int32 propCount = 2;
+}
+
 message SkillInfo {
 	required int32 skillId = 1;
 	required int32 skillLevel = 2;
@@ -831,6 +836,10 @@ message ResponsePurchaseCoinCommand {
 	optional int32 leftTime = 4;//当日剩余次数
 }
 
+message ResponseUserPropCommand { //玩家道具列表
+	repeated UserProp userProp = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -950,6 +959,7 @@ message ResponseCommand {
 	optional ResponseUserTeamListCommand userTeamListCommand = 31;
 	optional ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;
 	optional ResponseEquipComposeCommand equipComposeCommand = 33;
+	optional ResponseUserPropCommand userPropCommand = 34;
 }
 
 

@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserMineBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -39,6 +40,7 @@ import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserPropCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -52,6 +54,7 @@ import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
+import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserTeamService;
 
 @Service
@@ -81,6 +84,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserTeamService userTeamService;
 	@Resource
 	private ShopCommandService shopCommandService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -100,10 +105,17 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserEquipListCommand(Builder responseBuilder, UserBean user) {
-		List<UserEquipBean> userHeroList = userEquipService.selectUserEquipList(user.getId());
+		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(user.getId());
 		ResponseGetUserEquipCommand.Builder builder = ResponseGetUserEquipCommand.newBuilder();
-		builder.addAllUserEquip(super.buildUserEquipList(userHeroList));
+		builder.addAllUserEquip(super.buildUserEquipList(userEquipList));
 		responseBuilder.setUserEquipCommand(builder.build());
+	}
+	
+	public void pushUserPropListCommand(Builder responseBuilder, UserBean user) {
+		List<UserPropBean> userPropList = userPropService.selectUserPropList(user.getId());
+		ResponseUserPropCommand.Builder builder = ResponseUserPropCommand.newBuilder();
+		builder.addAllUserProp(super.buildUserPropList(userPropList));
+		responseBuilder.setUserPropCommand(builder.build());
 	}
 	
 	public void pushGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {
