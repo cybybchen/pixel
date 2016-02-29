@@ -105,14 +105,11 @@ public class RewardService {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
 		for (int lootLevel : rewardRecordList) {
-			long startTime = System.currentTimeMillis();
 			LootBean loot = lootService.getLootByLevelId(lootLevel);
 			if (loot != null)
 				rewardList.add(randomLootReward(loot.getRewardList()));
 			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
 				break;
-			long endTime = System.currentTimeMillis();
-			log.debug("del time is:" + (endTime - startTime) + " || levelId is:" + lootLevel);
 		}
 		
 		userLevelLootRecord.clearRewardRecord();

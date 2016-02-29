@@ -121,9 +121,9 @@ public class PackageBean {
 				List<?> itemNodeList = element.elements();
 				for (int j = 0; j < itemNodeList.size(); ++ j) {
 					Element itemElement = (Element)itemNodeList.get(j);
-					ItemBean reward = ItemBean.xmlParse(itemElement);
-					if (reward != null)
-						itemList.add(reward);
+					ItemBean item = ItemBean.xmlParse(itemElement);
+					if (item != null)
+						itemList.add(item);
 				}
 				bean.setItemList(itemList);
 				
@@ -141,7 +141,7 @@ public class PackageBean {
 		int randWeight = rand.nextInt(weightall);
 		for (int i = 0; i < itemList.size(); ++i) {
 			ItemBean item = itemList.get(i);
-			if (randWeight <= item.getWeight())
+			if (randWeight < item.getWeight())
 				return item;
 			
 			randWeight -= item.getWeight();

@@ -10,6 +10,8 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
+import com.trans.pixel.model.FenjieLevelBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
@@ -23,6 +25,8 @@ public class EquipService {
 	private UserEquipService userEquipService;
 	@Resource
 	private EquipRedisService equipRedisService;
+	@Resource
+	private FenjieService fenjieService;
 	
 	public EquipmentBean getEquip(int itemId) {
 		EquipmentBean equip = equipRedisService.getEquip(itemId);
@@ -65,6 +69,19 @@ public class EquipService {
 		}
 			
 		return result;
+	}
+	
+	public List<RewardBean> fenjieEquip(UserBean user, int equipId, int fenjieCount) {
+		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), equipId);
+		if (userEquip.getEquipCount() < fenjieCount)
+			return null;
+		
+		userEquip.setEquipCount(userEquip.getEquipCount() - fenjieCount);
+		userEquipService.updateUserEquip(userEquip);
+		
+		EquipmentBean equip = getEquip(equipId);
+		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
+		return fenjie.randomReward(fenjieCount);
 	}
 	
 	public boolean equipLevelUp(long userId, EquipmentBean equip) {

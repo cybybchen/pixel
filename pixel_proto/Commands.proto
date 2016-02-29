@@ -847,6 +847,15 @@ message ResponseUsePropCommand {
 	required RewardInfo reward = 1;
 }
 
+message RequestFenjieEquipCommand {
+	required int32 equipId = 1;
+	required int32 equipCount = 2;
+}
+
+message ResponseFenjieEquipCommand {
+	repeated RewardInfo reward = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -923,6 +932,7 @@ message RequestCommand {
 	optional RequestGetUserMineCommand userMineCommand = 49; 
 	optional RequestEquipComposeCommand equipComposeCommand = 50;
 	optional RequestUsePropCommand usePropCommand = 51;
+	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -971,6 +981,7 @@ message ResponseCommand {
 	optional ResponseEquipComposeCommand equipComposeCommand = 33;
 	optional ResponseUserPropCommand userPropCommand = 34;
 	optional ResponseUsePropCommand usePropCommand = 35;
+	optional ResponseFenjieEquipCommand fenjieEquipCommand = 36;
 }
 
 

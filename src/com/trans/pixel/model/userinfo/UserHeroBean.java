@@ -75,9 +75,30 @@ public class UserHeroBean {
 			}
 		}
 		
-		hero.setId(heroInfoList.size() + 1);
+		hero.setId(calInfoId());
 		heroInfoList.add(hero);
 		updateHeroInfo(heroInfoList);
+	}
+	
+	private int calInfoId() {
+		List<HeroInfoBean> heroInfoList = toHeroInfoList();
+		int infoId = 1;
+		while (true) {
+			int calId = infoId;
+			for (HeroInfoBean hero : heroInfoList) {
+				if (hero.getId() == infoId) {
+					++calId;
+					break;
+				}
+			}
+			
+			if (calId > infoId) 
+				infoId = calId;
+			else 
+				break;
+		}
+		
+		return infoId;
 	}
 	
 	private void updateHeroInfo(List<HeroInfoBean> heroInfoList) {

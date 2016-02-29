@@ -114,4 +114,7 @@ public class RedisKey {
 	
 	//prop
 	public static final String PROP_KEY = "key:prop";
+	
+	//fenjie
+	public static final String FENJIE_KEY = "key:fenjie";
 }
