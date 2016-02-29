@@ -50,21 +50,16 @@ public class EquipService {
 		return level;
 	}
 	
-	public ResultConst equipCompose(UserBean user, int originalId, int levelUpId) {
-		ResultConst result = ErrorConst.EQUIP_HAS_NOT_ADD;
-		if (originalId != 0) {
-			EquipmentBean equip = getEquip(levelUpId);
-			if (equip == null) {
-				result = ErrorConst.EQUIP_LEVELUP_ERROR;
-			} else {
-				if (originalId == equip.getCover()) {
-					result = ErrorConst.NOT_ENOUGH_EQUIP;
-					boolean equipLevelUpRet = equipLevelUp(user.getId(), equip);
-					if (equipLevelUpRet) {
-						userEquipService.addUserEquip(user.getId(), equip.getItemid(), 1);
-						result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
-					}
-				}
+	public ResultConst equipCompose(UserBean user, int levelUpId) {
+		ResultConst result = ErrorConst.NOT_ENOUGH_EQUIP;
+		EquipmentBean equip = getEquip(levelUpId);
+		if (equip == null) {
+			result = ErrorConst.EQUIP_LEVELUP_ERROR;
+		} else {
+			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip);
+			if (equipLevelUpRet) {
+				userEquipService.addUserEquip(user.getId(), equip.getItemid(), 1);
+				result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
 			}
 		}
 			

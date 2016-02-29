@@ -32,10 +32,9 @@ public class EquipCommandService extends BaseCommandService {
 	
 	public void equipLevelup(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseEquipComposeCommand.Builder builder = ResponseEquipComposeCommand.newBuilder();
-		int originalId = cmd.getOriginalId();
 		int levelUpId = cmd.getLevelUpId();
 		
-		ResultConst result = equipService.equipCompose(user, originalId, levelUpId);
+		ResultConst result = equipService.equipCompose(user, levelUpId);
 		
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);

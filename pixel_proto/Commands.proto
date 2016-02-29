@@ -469,8 +469,7 @@ message RequestEquipLevelUpCommand {
 }
 
 message RequestEquipComposeCommand {
-        required int32 originalId = 1;
-	required int32 levelUpId = 2;
+	required int32 levelUpId = 1;
 }
 
 message ResponseEquipComposeCommand {
