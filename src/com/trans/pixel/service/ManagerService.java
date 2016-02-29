@@ -71,11 +71,31 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
 			result.put("hero", map);
 		}
+		if(req.containsKey("equip")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+			result.put("equip", map);
+		}
+		if(req.containsKey("pvpMap")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_PVP_MAP_PREFIX + userId);
+			result.put("pvpMap", map);
+		}
+		if(req.containsKey("userMine")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_MINE_PREFIX + userId);
+			result.put("userMine", map);
+		}
+		if(req.containsKey("userMine")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_MINE_PREFIX + userId);
+			result.put("userMine", map);
+		}
 		
 		///////////////////////////////////////////
 		if(req.containsKey("ladderRank")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK_KEY);
 			result.put("ladderRank", map);
+		}
+		if(req.containsKey("ladderRankInfo")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK_INFO_KEY);
+			result.put("ladderRankInfo", map);
 		}
 		if(req.containsKey("areaBoss")){
 			Map<String, String> map = hget(AREABOSS);
@@ -173,6 +193,10 @@ public class ManagerService extends RedisService{
 		if(req.containsKey("heroStarConfig")){
 			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY);
 			result.put("heroStarConfig", map);
+		}
+		if(req.containsKey("pvpXiaoguanConfig")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.PVP_XIAOGUAI_REFIX);
+			result.put("pvpXiaoguanConfig", map);
 		}
 		
 

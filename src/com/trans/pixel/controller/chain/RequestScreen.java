@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
@@ -204,6 +205,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -579,6 +581,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//AttackResourceMineInfoCommand
                 result = handleCommand(cmd, responseBuilder, user);//AttackResourceMineInfoCommand
         }//AttackResourceMineInfoCommand
+        if (request.hasTeamCommand()) {
+            RequestGetTeamCommand cmd = request.getTeamCommand();
+            if (result)//UserMineTeamCommand
+                result = handleCommand(cmd, responseBuilder, user);//UserMineTeamCommand
+        }//UserMineTeamCommand
         //call handleCommand here
         
         return result;

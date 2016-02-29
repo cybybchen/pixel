@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
@@ -546,6 +547,11 @@ public class GameDataScreen extends RequestScreen {
 		areaCommandService.AttackResourceMineInfo(cmd, responseBuilder, user);
 		return true;//AttackResourceMineInfoCommand
 	}//AttackResourceMineInfoCommand
+	@Override//UserMineTeamCommand
+	protected boolean handleCommand(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user) {
+		teamCommandService.getTeamCache(cmd, responseBuilder, user);
+		return true;//UserMineTeamCommand
+	}//UserMineTeamCommand
 	//add handleCommand here
 
 	@Override

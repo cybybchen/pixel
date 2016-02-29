@@ -487,6 +487,7 @@ message ResponseAttackRelativeCommand {
 	required int32 mineId = 2;
 	required int64 preventTime = 3;
 	required int32 level = 4;
+	required int32 teamid = 5;
 }
 
 message RequestGetUserMineCommand {
@@ -495,6 +496,14 @@ message RequestGetUserMineCommand {
 
 message ResponseGetUserMineCommand {
 	repeated UserMine userMine = 1;
+}
+
+message RequestGetTeamCommand {
+	required int64 userId = 1;
+}
+
+message ResponseGetTeamCommand {
+	repeated HeroInfo heroInfo = 1;
 }
 
 message RequestRefreshRelatedUserCommand {
@@ -892,6 +901,7 @@ message RequestCommand {
 	optional RequestLadderShopPurchaseCommand ladderShopPurchaseCommand = 120;
 	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
 	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
+	optional RequestGetTeamCommand teamCommand = 123;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
@@ -918,6 +928,7 @@ message ResponseCommand {
 	optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
 	optional ResponseLadderShopCommand ladderShopCommand = 108;
 	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
+	optional ResponseGetTeamCommand teamCommand = 123;
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

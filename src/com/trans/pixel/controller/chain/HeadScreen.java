@@ -39,6 +39,7 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
@@ -482,6 +483,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO AttackResourceMineInfoCommand method
 		return true;//AttackResourceMineInfoCommand
 	}//AttackResourceMineInfoCommand
+	@Override//UserMineTeamCommand
+	protected boolean handleCommand(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UserMineTeamCommand method
+		return true;//UserMineTeamCommand
+	}//UserMineTeamCommand
 	//add handleCommand here
 
 	@Override

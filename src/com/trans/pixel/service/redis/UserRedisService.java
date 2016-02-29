@@ -27,12 +27,10 @@ public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
-	public final static String USERDAILYDATA = RedisKey.PREFIX+RedisKey.USERDAILYDATA_PREFIX;
-	public final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
 	public final static String VIP = RedisKey.PREFIX+"Vip";
 	
 	public UserBean getUser(final long userId) {
-		String value = hget(USERDATA+userId, "UserData");
+		String value = hget(RedisKey.USERDATA+userId, "UserData");
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserBean) JSONObject.toBean(json, UserBean.class);
 	}
@@ -57,7 +55,7 @@ public class UserRedisService extends RedisService{
 	public void updateUser(final UserBean user) {
 		if(user.getId() == 0)
 			return;
-		String key = USERDATA+user.getId();
+		String key = RedisKey.USERDATA+user.getId();
 		hput(key, "UserData", JSONObject.fromObject(user).toString());
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
