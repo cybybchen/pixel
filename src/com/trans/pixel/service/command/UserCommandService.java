@@ -37,7 +37,7 @@ public class UserCommandService extends BaseCommandService {
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
-		UserBean user = userService.getUser(head.getServerId(), head.getAccount());
+		UserBean user = userService.getUserByAccount(head.getServerId(), head.getAccount());
 		if (user == null) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);

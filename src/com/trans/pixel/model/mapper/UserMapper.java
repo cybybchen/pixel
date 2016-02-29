@@ -11,6 +11,8 @@ public interface UserMapper {
 	public UserBean queryById(long userId);
 	
 	public UserBean queryByServerAndAccount(@Param("serverId")int serverId, @Param("account")String account);
+
+	public UserBean queryByServerAndName(@Param("serverId")int serverId, @Param("userName")String userName);
 	
 	public List<UserBean> queryByUnionId(int unionId);
 	

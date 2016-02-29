@@ -33,6 +33,11 @@
 		from user where server_id = #{serverId} and account = #{account}
 	</select>
 	
+	<select id="queryByServerAndName" resultMap="userMap">
+		SELECT *
+		from user where server_id = #{serverId} and name = #{userName}
+	</select>
+	
 	<select id="queryByUnionId" parameterType="int" resultMap="userMap">
 		SELECT *
 		from user where union_id = #{unionId}

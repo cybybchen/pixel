@@ -14,6 +14,7 @@ public class RedisKey {
 	public static final String SERVER_KEY = "server";
 	public static final String SERVER_PREFIX = "S";
 	public final static String ACCOUNT_PREFIX = "Account_S";
+	public final static String USERNAME_PREFIX = "UserName_S";
 	public final static String USERCACHE_PREFIX = "UserCache";
 	
 	//user key prefix

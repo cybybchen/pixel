@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -43,10 +44,34 @@ public class ManagerService extends RedisService{
 	@Resource
     private RewardService rewardService;
 	
-	public void getData(JSONObject req, HttpServletResponse response) {
-		int serverId = TypeTranslatedUtil.jsonGetInt(req, "serverId");
-		Long userId = TypeTranslatedUtil.jsonGetLong(req, "userId");
+	public JSONObject getData(JSONObject req) {
 		JSONObject result = new JSONObject();
+		Long userId = TypeTranslatedUtil.jsonGetLong(req, "userId");
+		String userName = TypeTranslatedUtil.jsonGetString(req, "userName");
+		int serverId = TypeTranslatedUtil.jsonGetInt(req, "serverId");
+		if (userId == 0 && serverId == 0) {
+			result.put("error", "Empty userId and serverId!");
+			return result;
+		}
+		if(userId != 0 && (serverId == 0 || userName.isEmpty())){
+			UserBean user = userService.getUser(userId);
+			if(user == null){
+				result.put("error", "Cannot find user!");
+				return result;
+			}
+			userName = user.getUserName();
+			serverId = user.getServerId();
+		}else if(userId == 0 && serverId != 0 && !userName.isEmpty()){
+			UserBean user = userService.getUserByName(serverId, userName);
+			if(user == null){
+				result.put("error", "Cannot find user!");
+				return result;
+			}
+			userId = user.getId();
+		}
+		result.put("userId", userId);
+		result.put("userName", userName);
+		result.put("serverId", serverId);
 		if(req.containsKey("userData")){
 			Map<String, String> map = hget(USERDATA+userId);
 			result.putAll(map);
@@ -242,11 +267,11 @@ public class ManagerService extends RedisService{
 			result.put("skillLevelConfig", map);
 		}
 		
-
-		try {
-			result.write(response.getWriter());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		return result;
+//		try {
+//			result.write(response.getWriter());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 }

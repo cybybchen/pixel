@@ -60,12 +60,20 @@ public class UserRedisService extends RedisService{
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
-	public String getUserId(final int serverId, final String account) {
+	public String getUserIdByAccount(final int serverId, final String account) {
 		return hget(RedisKey.PREFIX+RedisKey.ACCOUNT_PREFIX+serverId, account);
 	}
 	
-	public <T> void setUserId(final int serverId, final String account, final T userId) {
+	public <T> void setUserIdByAccount(final int serverId, final String account, final T userId) {
 		hput(RedisKey.PREFIX+RedisKey.ACCOUNT_PREFIX+serverId, account, userId+"");
+	}
+
+	public String getUserIdByName(final int serverId, final String userName) {
+		return hget(RedisKey.PREFIX+RedisKey.USERNAME_PREFIX+serverId, userName);
+	}
+	
+	public <T> void setUserIdByName(final int serverId, final String userName, final T userId) {
+		hput(RedisKey.PREFIX+RedisKey.USERNAME_PREFIX+serverId, userName, userId+"");
 	}
 	
 	public void cache(UserInfo user){

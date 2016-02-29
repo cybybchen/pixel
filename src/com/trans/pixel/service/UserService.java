@@ -41,9 +41,9 @@ public class UserService {
         return user;
     }
 	
-	public UserBean getUser(int serverId, String account) {
+	public UserBean getUserByAccount(int serverId, String account) {
 		logger.debug("serverId={},The account={}", serverId, account);
-		String userId = userRedisService.getUserId(serverId, account);
+		String userId = userRedisService.getUserIdByAccount(serverId, account);
 		UserBean user = null;
 
 		if (userId == null) {
@@ -53,7 +53,32 @@ public class UserService {
 				 logger.error("login failed:"+e.getMessage());
 			}
 			if (user != null) {
-				userRedisService.setUserId(serverId, account, user.getId());
+				userRedisService.setUserIdByAccount(serverId, account, user.getId());
+				userRedisService.updateUser(user);
+			}
+		} else {
+			return getUser(Long.parseLong(userId));
+		}
+
+        if(user != null && userRedisService.updateUserDailyData(user)){
+        	userRedisService.updateUser(user);
+        }
+		return user;
+    }
+	
+	public UserBean getUserByName(int serverId, String userName) {
+		logger.debug("serverId={},The userName={}", serverId, userName);
+		String userId = userRedisService.getUserIdByName(serverId, userName);
+		UserBean user = null;
+
+		if (userId == null) {
+			try {
+				user = userMapper.queryByServerAndName(serverId, userName);
+			} catch (Exception e) {
+				 logger.error("login failed:"+e.getMessage());
+			}
+			if (user != null) {
+				userRedisService.setUserIdByName(serverId, userName, user.getId());
 				userRedisService.updateUser(user);
 			}
 		} else {

@@ -123,7 +123,7 @@ public class GamedataAction {
     @RequestMapping("/datamanager")
     @ResponseBody
     public void getData(HttpServletRequest request, HttpServletResponse response) {
-        response.setContentType("application/json");
+        response.setContentType("application/json; charset=utf-8");
         try {
         	JSONObject result = new JSONObject();
         	String msg = "";
@@ -142,7 +142,13 @@ public class GamedataAction {
     		}finally{
     		}
 			JSONObject req = JSONObject.fromObject(msg);
-			managerService.getData(req, response);
+			result = managerService.getData(req);
+
+			try {
+				response.getWriter().write(result.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         } catch (Throwable e) {
         	logger.error("PIXEL_MANAGER_ERRO", e);
         }

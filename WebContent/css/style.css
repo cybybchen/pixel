@@ -1,0 +1,90 @@
+.new-tab {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+    background: none;
+    border: 0;
+    top: 50%;
+    margin: 0 5px;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+   /* opacity: .4;
+    filter: Alpha(Opacity=40);*/
+}
+.jqm-demos .jqm-footer.ui-footer {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 0;
+}
+#config-controlgroup,#server-controlgroup,#user-controlgroup {
+  margin: 0;
+  white-space:nowrap;
+}
+.ui-controlgroup-controls .nav-btn {
+  margin: -1px;
+  margin-right: -8px;
+  border-bottom-width: 1px;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.ui-controlgroup-controls .nav-btn-active{
+  background-color: #38c;
+  border-color: #38c;
+  color: #fff;
+  text-shadow: 0 1px 0 #059;
+  border-bottom-width: 0;
+}
+.jqm-demos .jqm-list .ui-btn:hover, .jqm-demos .jqm-list .ui-btn:active {
+    color: #3388cc;
+}
+.jqm-demos .jqm-list .ui-btn, .jqm-demos .jqm-list .ui-btn:visited, .jqm-demos .jqm-list .ui-li-divider {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    text-shadow: none !important;
+}
+  .json-editor .property {
+      width: 150px;
+      border-radius: 0px;
+  }
+  .jqm-demos .jqm-navmenu-panel {
+  float:left;
+  left: 0px;
+  position: relative;
+  width:25%;
+  transform: none !important;
+  transition: none 0s ease 0s !important;
+  box-shadow: none;
+  max-height: 100%;
+  overflow: hidden;
+}
+.jqm-demos .jqm-content {
+    /*width: 75%;*/
+    padding: 0;
+    /*float: right;*/
+}
+.json-editor-title {
+  margin: 5px 10px;
+  padding:0 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.json-editor{
+  padding-top: 0;
+}
+.editor-btn{
+  margin:0;
+  margin-left: 10px;
+  margin-right: -24px;
+}
+jsoneditor .json{
+  margin:0 20px;
+}
+@media screen and (min-width: 68em) {
+  .menu-panel{
+    width:25%;
+  }
+}
