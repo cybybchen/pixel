@@ -16,7 +16,7 @@
 	<update id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
 	    UPDATE user_team
 	    SET record=#{teamRecord}
-		WHERE id=#{id}
+		WHERE id=#{id} and user_id=#{userId}
 	</update>
 	
 	<select id="selectUserTeamList" parameterType="long" resultMap="resultMap">
