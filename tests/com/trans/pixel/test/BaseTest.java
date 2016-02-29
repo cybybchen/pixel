@@ -27,7 +27,7 @@ public class BaseTest {
     protected static final int SERVER_ID = 1;
     protected static final String ACCOUNT = "chli4";
     protected static final String USER_NAME = ACCOUNT;
-    protected static long USER_ID = 38;
+    protected static long USER_ID = 37;
 //    protected static final String DEVICE_ID = "iphone5";
 //    protected static final String SESSION = "aa68d03cb47b25b797ba4e06269c3079";
 //    protected static final String TOKEN = "";

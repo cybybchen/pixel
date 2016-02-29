@@ -71,11 +71,12 @@ public class EquipService {
 		if (userEquip.getEquipCount() < fenjieCount)
 			return null;
 		
+		EquipmentBean equip = getEquip(equipId);
+		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
+		
 		userEquip.setEquipCount(userEquip.getEquipCount() - fenjieCount);
 		userEquipService.updateUserEquip(userEquip);
 		
-		EquipmentBean equip = getEquip(equipId);
-		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
 		return fenjie.randomReward(fenjieCount);
 	}
 	

@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
@@ -42,9 +43,18 @@ public class FenjieLevelBean {
 		if (jsonString == null)
 			return null;
 		
+		FenjieLevelBean bean = new FenjieLevelBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
-		return (FenjieLevelBean) JSONObject.toBean(json ,FenjieLevelBean.class);
+		bean.setLevel(json.getInt(LEVEL));
+		List<FenjieBean> list = new ArrayList<FenjieBean>();
+		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, FENJIELIST);
+		for (int i = 0;i < array.size(); ++i) {
+			FenjieBean fenjie = FenjieBean.fromJson(array.getString(i));
+			list.add(fenjie);
+		}
+		bean.setFenjieList(list);
+		return bean;
 	}
 	
 	public static Map<String, String> xmlParse() {
@@ -92,6 +102,7 @@ public class FenjieLevelBean {
 					resetRewardList(rewardList, reward);
 				}
 			}
+			++circleCount;
 		}
 		
 		return rewardList;
@@ -109,4 +120,5 @@ public class FenjieLevelBean {
 	
 	private static final String FILE_NAME = "lol_fenjie.xml";
 	private static final String LEVEL= "level";
+	private static final String FENJIELIST = "fenjieList";
 }

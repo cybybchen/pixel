@@ -2,6 +2,8 @@ package com.trans.pixel.model;
 
 import java.util.Random;
 
+import net.sf.json.JSONObject;
+
 import org.dom4j.Element;
 
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -69,6 +71,15 @@ public class FenjieBean {
 		reward.setItemid(itemid);
 		
 		return reward;
+	}
+	
+	public static FenjieBean fromJson(String jsonString) {
+		if (jsonString == null)
+			return null;
+		
+		JSONObject json = JSONObject.fromObject(jsonString);
+		
+		return (FenjieBean) JSONObject.toBean(json, FenjieBean.class);
 	}
 	
 	private static final String WEIGHTALL = "weightall";

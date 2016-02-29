@@ -35,6 +35,7 @@ import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
@@ -604,6 +605,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestUsePropCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		propCommandService.useProp(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestFenjieEquipCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		equipCommandService.fenjie(cmd, responseBuilder, user);
 		return true;
 	}
 

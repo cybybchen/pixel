@@ -63,6 +63,7 @@ public class EquipCommandService extends BaseCommandService {
 		rewardService.doRewards(user.getId(), rewardList);
 		
 		builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
+		responseBuilder.setFenjieEquipCommand(builder.build());
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 	}
 }
