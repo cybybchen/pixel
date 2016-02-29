@@ -31,8 +31,11 @@ public class UserHeroService {
 	
 	public List<UserHeroBean> selectUserHeroList(long userId) {
 		List<UserHeroBean> userHeroList = userHeroRedisService.selectUserHeroList(userId);
-		if (userHeroList == null || userHeroList.size() == 0)
+		if (userHeroList == null || userHeroList.size() == 0) {
 			userHeroList = userHeroMapper.selectUserHeroList(userId);
+			if (userHeroList != null && userHeroList.size() > 0)
+				userHeroRedisService.updateUserHeroList(userHeroList, userId);
+		}
 		
 		return userHeroList;
 	}

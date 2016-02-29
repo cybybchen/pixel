@@ -22,6 +22,8 @@ public class UserMineService {
 		List<UserMineBean> userMineList = userMineRedisService.selectUserMineList(userId);
 		if (userMineList == null || userMineList.size() == 0) {
 			userMineList = userMineMapper.selectUserMineList(userId);
+			if (userMineList != null && userMineList.size() > 0)
+				userMineRedisService.updateUserMineList(userMineList, userId);
 		}
 		
 		return userMineList;

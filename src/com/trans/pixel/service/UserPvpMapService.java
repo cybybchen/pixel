@@ -22,6 +22,8 @@ public class UserPvpMapService {
 		List<UserPvpMapBean> userPvpMapList = userPvpMapRedisService.selectUserPvpMapList(userId);
 		if (userPvpMapList == null || userPvpMapList.size() == 0) {
 			userPvpMapList = userPvpMapMapper.selectUserPvpMapList(userId);
+			if (userPvpMapList != null && userPvpMapList.size() > 0)
+				userPvpMapRedisService.updateUserPvpMapList(userPvpMapList, userId);
 		}
 		
 		return userPvpMapList;

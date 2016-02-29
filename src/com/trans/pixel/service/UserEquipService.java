@@ -32,8 +32,11 @@ public class UserEquipService {
 	
 	public List<UserEquipBean> selectUserEquipList(long userId) {
 		List<UserEquipBean> userEquipList = userEquipRedisService.selectUserEquipList(userId);
-		if (userEquipList.size() == 0)
+		if (userEquipList.size() == 0) {
 			userEquipList = userEquipMapper.selectUserEquipList(userId);
+			if (userEquipList != null && userEquipList.size() > 0)
+				userEquipRedisService.updateUserEquipList(userEquipList, userId);
+		}
 		
 		return userEquipList;
 	}

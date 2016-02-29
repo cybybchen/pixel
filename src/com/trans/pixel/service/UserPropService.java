@@ -32,8 +32,11 @@ public class UserPropService {
 	
 	public List<UserPropBean> selectUserPropList(long userId) {
 		List<UserPropBean> userPropList = userPropRedisService.selectUserPropList(userId);
-		if (userPropList.size() == 0)
+		if (userPropList.size() == 0) {
 			userPropList = userPropMapper.selectUserPropList(userId);
+			if (userPropList != null && userPropList.size() > 0)
+				userPropRedisService.updateUserPropList(userPropList, userId);
+		}
 		
 		return userPropList;
 	}
