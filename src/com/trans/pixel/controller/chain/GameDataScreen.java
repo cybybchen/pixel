@@ -78,6 +78,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AreaCommandService;
@@ -91,6 +92,7 @@ import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
+import com.trans.pixel.service.command.PropCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
@@ -133,6 +135,8 @@ public class GameDataScreen extends RequestScreen {
 	private MessageCommandService messageCommandService;
 	@Resource
 	private EquipCommandService equipCommandService;
+	@Resource
+	private PropCommandService propCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -593,6 +597,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestEquipComposeCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		equipCommandService.equipLevelup(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUsePropCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		propCommandService.useProp(cmd, responseBuilder, user);
 		return true;
 	}
 

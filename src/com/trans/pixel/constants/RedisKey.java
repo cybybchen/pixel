@@ -111,4 +111,7 @@ public class RedisKey {
 	//skill
 	public static final String SKILL_KEY = "key:skill";
 	public static final String SKILLLEVEL_KEY = "key:skilllevel";
+	
+	//prop
+	public static final String PROP_KEY = "key:prop";
 }

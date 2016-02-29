@@ -839,6 +839,14 @@ message ResponseUserPropCommand { //玩家道具列表
 	repeated UserProp userProp = 1;
 }
 
+message RequestUsePropCommand { //打开道具包
+	required int32 propId = 1;
+}
+
+message ResponseUsePropCommand {
+	required RewardInfo reward = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -914,6 +922,7 @@ message RequestCommand {
 	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
 	optional RequestGetUserMineCommand userMineCommand = 49; 
 	optional RequestEquipComposeCommand equipComposeCommand = 50;
+	optional RequestUsePropCommand usePropCommand = 51;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -961,6 +970,7 @@ message ResponseCommand {
 	optional ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;
 	optional ResponseEquipComposeCommand equipComposeCommand = 33;
 	optional ResponseUserPropCommand userPropCommand = 34;
+	optional ResponseUsePropCommand usePropCommand = 35;
 }
 
 
