@@ -83,10 +83,24 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_MINE_PREFIX + userId);
 			result.put("userMine", map);
 		}
-		if(req.containsKey("userMine")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_MINE_PREFIX + userId);
-			result.put("userMine", map);
+		if(req.containsKey("mailList")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0);
+			result.put("mailList0", map);
+			Map<String, String> map1 = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 1);
+			result.put("mailList1", map1);
+			Map<String, String> map2 = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 2);
+			result.put("mailList2", map2);
+			Map<String, String> map3 = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 3);
+			result.put("mailList3", map3);
 		}
+		if(req.containsKey("friendList")){
+			Set<String> map = smember(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
+			result.put("friendList", map);
+		}
+
+		///////////////////////////////////////////
+		//UNION_PREFIX
+		//UNION_FIGHT_PREFIX
 		
 		///////////////////////////////////////////
 		if(req.containsKey("ladderRank")){
@@ -119,7 +133,12 @@ public class ManagerService extends RedisService{
 				result.put("rankList"+type, map);
 			}
 		}
-		
+		if(req.containsKey("messageBoard")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY);
+			result.put("messageBoard", map);
+		}
+
+
 		//////////////////////////////////////////
 		if(req.containsKey("dailyShop")){
 			Map<String, String> map = hget(DAILYSHOP);
@@ -197,6 +216,30 @@ public class ManagerService extends RedisService{
 		if(req.containsKey("pvpXiaoguanConfig")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.PVP_XIAOGUAI_REFIX);
 			result.put("pvpXiaoguanConfig", map);
+		}
+		if(req.containsKey("lotteryConfig")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1001);
+			result.put("lotteryConfig1001", map);
+			Map<String, String> map2 = hget(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1002);
+			result.put("lotteryConfig1002", map2);
+		}
+		if(req.containsKey("lotteryEquipConfig")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1001);
+			result.put("lotteryEquipConfig1001", map);
+			Map<String, String> map2 = hget(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1002);
+			result.put("lotteryEquipConfig1002", map2);
+		}
+		if(req.containsKey("equipConfig")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.EQUIP_KEY);
+			result.put("equipConfig", map);
+		}
+		if(req.containsKey("skillConfig")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SKILL_KEY);
+			result.put("skillConfig", map);
+		}
+		if(req.containsKey("skillLevelConfig")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
+			result.put("skillLevelConfig", map);
 		}
 		
 

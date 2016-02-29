@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -22,6 +21,7 @@ import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.BoundListOperations;
+import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisCallback;
@@ -416,6 +416,39 @@ public class RedisService {
 				
 				Ops.delete(key2);
 				return null;
+			}
+		});
+    }
+
+	/**
+	 * 添加set
+	 */
+	public void sadd(final String key, final String value) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundSetOperations<String, String> Ops = redisTemplate
+						.boundSetOps(key);
+
+				Ops.add(value);
+				return null;
+			}
+		});
+	}
+	
+    /**
+     * 获取set
+     */
+    public Set<String> smember(final String key) {
+    	return redisTemplate.execute(new RedisCallback<Set<String>>() {
+			@Override
+			public Set<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundSetOperations<String, String> Ops = redisTemplate
+						.boundSetOps(key);
+				
+				return Ops.members();
 			}
 		});
     }

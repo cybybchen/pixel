@@ -97,7 +97,6 @@ public class RedisKey {
 	public static final String USER_FRIEND_PREFIX = "user_friend_";
 	
 	//union
-	public static final String UNION_MAIL_PREFIX = "union_mail_";
 	public static final String UNION_SERVER_PREFIX = "unions_";
 	public static final String UNION_PREFIX = "union_";
 	public static final String UNION_FIGHT_PREFIX = "union_fight_";
