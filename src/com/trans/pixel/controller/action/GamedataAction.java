@@ -120,7 +120,7 @@ public class GamedataAction {
 		}
     }
 
-    @RequestMapping("/gamemanager")
+    @RequestMapping("/datamanager")
     @ResponseBody
     public void getData(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json");

@@ -68,7 +68,7 @@ public class BaseTest {
     
     protected String manageurl() {
     	String serverurl = headurl();
-    	url = serverurl.replace("/gamedata", "/gamemanager");
+    	url = serverurl.replace("/gamedata", "/datamanager");
     	return url;
     }
     

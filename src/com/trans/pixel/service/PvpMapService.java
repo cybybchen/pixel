@@ -90,9 +90,9 @@ public class PvpMapService {
 		UserMineBean userMine = userMineService.selectUserMine(userId, mapId, mineId);
 		if (userMine == null)
 			return null;
-		if (userMine.getRelativeUserId() == 0) {
-			return null;
-		}
+//		if (userMine.getRelativeUserId() == 0) {
+//			return null;
+//		}
 		if (attackSuccess(userId, userMine.getRelativeUserId())) {
 			relative(userMine.getRelativeUserId(), userId, mapId, mineId);
 		}
