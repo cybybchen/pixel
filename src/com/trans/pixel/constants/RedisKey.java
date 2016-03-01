@@ -15,7 +15,8 @@ public class RedisKey {
 	public static final String SERVER_PREFIX = "S";
 	public final static String ACCOUNT_PREFIX = "Account_S";
 	public final static String USERNAME_PREFIX = "UserName_S";
-	public final static String USERCACHE_PREFIX = "UserCache";
+	public final static String USERCACHE_PREFIX = "UserCache_S";
+	public final static String PVPMAP = PREFIX+"PVPMap";
 	
 	//user key prefix
 //	public final static String USER_PREFIX = "user_";
@@ -23,6 +24,13 @@ public class RedisKey {
 	public final static String USERDAILYDATA_PREFIX = "UserDailyData_";
 	public final static String USERDATA = PREFIX+USERDATA_PREFIX;
 	public final static String USERDAILYDATA = PREFIX+USERDAILYDATA_PREFIX;
+	public final static String PVPMONSTER_PREFIX = USERDATA+"PVPMonster_";
+	public final static String PVPBOSS_PREFIX = USERDATA+"PVPBoss_";
+	public final static String PVPMINE_PREFIX = USERDATA+"PVPMine_";
+	public final static String PVPMAP_PREFIX = USERDATA+"PVPMap_";
+	
+	public final static String PVPMONSTER_CONFIG = PREFIX+"PVPMonster";
+	public final static String PVPBOSS_CONFIG = PREFIX+"PVPBoss";
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "key:mysql_update";

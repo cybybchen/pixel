@@ -13,6 +13,7 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
@@ -41,6 +42,11 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
@@ -184,7 +190,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestAttackRelativeCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		pvpCommandService.attackRelatedUser(cmd, responseBuilder, user);
+//		pvpCommandService.attackRelatedUser(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -219,7 +225,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestRefreshRelatedUserCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		pvpCommandService.refreshRelatedUser(cmd, responseBuilder, user);
+//		pvpCommandService.refreshRelatedUser(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -557,6 +563,36 @@ public class GameDataScreen extends RequestScreen {
 		teamCommandService.getTeamCache(cmd, responseBuilder, user);
 		return true;//UserMineTeamCommand
 	}//UserMineTeamCommand
+	@Override//AttackPVPMonstersCommand
+	protected boolean handleCommand(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.attackMonster(cmd, responseBuilder, user);
+		return true;//AttackPVPMonstersCommand
+	}//AttackPVPMonstersCommand
+	@Override//PvpMapListCommand
+	protected boolean handleCommand(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.getMapList(cmd, responseBuilder, user);
+		return true;//PvpMapListCommand
+	}//PvpMapListCommand
+	@Override//AttackPVPBossCommand
+	protected boolean handleCommand(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.attackBoss(cmd, responseBuilder, user);
+		return true;//AttackPVPBossCommand
+	}//AttackPVPBossCommand
+	@Override//PvpMineInfoCommand
+	protected boolean handleCommand(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.getMineInfo(cmd, responseBuilder, user);
+		return true;//PvpMineInfoCommand
+	}//PvpMineInfoCommand
+	@Override//AttackPVPMineCommand
+	protected boolean handleCommand(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.attackMine(cmd, responseBuilder, user);
+		return true;//AttackPVPMineCommand
+	}//AttackPVPMineCommand
+	@Override//RefreshPVPMineCommand
+	protected boolean handleCommand(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.refreshMine(cmd, responseBuilder, user);
+		return true;//RefreshPVPMineCommand
+	}//RefreshPVPMineCommand
 	//add handleCommand here
 
 	@Override
@@ -590,7 +626,6 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestGetUserMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		pvpCommandService.getUserMine(cmd, responseBuilder, user);
 		return true;
 	}
 

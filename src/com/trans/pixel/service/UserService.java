@@ -112,6 +112,10 @@ public class UserService {
     	return userMapper.queryByUnionId(unionId);
     }
 	
+	public UserInfo getRandUser(int serverId){
+		return userRedisService.getRandUser(serverId);
+	}
+	
 	public void cache(UserInfo user){
 		userRedisService.cache(user);
 	}
@@ -119,8 +123,8 @@ public class UserService {
 	/**
 	 * get other user(can be null)
 	 */
-	public <T> UserInfo getCache(T userId){
-		UserInfo userifno =  userRedisService.getCache(userId);
+	public <T> UserInfo getCache(int serverId, T userId){
+		UserInfo userifno =  userRedisService.getCache(serverId, userId);
 //		if(userifno == null){
 //		}
 		return userifno;
@@ -129,19 +133,19 @@ public class UserService {
 	/**
 	 * get other user
 	 */
-	public <T> List<UserInfo> getCaches(List<T> userIds){
-		return userRedisService.getCaches(userIds);
+	public <T> List<UserInfo> getCaches(int serverId, List<T> userIds){
+		return userRedisService.getCaches(serverId, userIds);
 	}
 	
 	/**
 	 * get other user
 	 */
-	public List<UserInfo> getCaches(Set<TypedTuple<String>> ranks){
+	public List<UserInfo> getCaches(int serverId, Set<TypedTuple<String>> ranks){
 		List<String> userIds = new ArrayList<String>();
 		for(TypedTuple<String> rank : ranks){
 			userIds.add(rank.getValue());
 		}
-		return userRedisService.getCaches(userIds);
+		return userRedisService.getCaches(serverId, userIds);
 	}
 	
 	public VipInfo getVip(int id){

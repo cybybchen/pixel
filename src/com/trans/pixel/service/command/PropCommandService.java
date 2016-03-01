@@ -19,7 +19,7 @@ public class PropCommandService extends BaseCommandService {
 	@Resource
 	private PropService propService;
 	@Resource
-	private PushCommandService pushCommandService;
+	private PushCommandService pusher;
 	
 	public void useProp(RequestUsePropCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUsePropCommand.Builder builder = ResponseUsePropCommand.newBuilder();
@@ -35,6 +35,7 @@ public class PropCommandService extends BaseCommandService {
 		
 		builder.setReward(reward.buildRewardInfo());
 		responseBuilder.setUsePropCommand(builder.build());
-		pushCommandService.pushUserPropListCommand(responseBuilder, user);
+		pusher.pushRewardCommand(responseBuilder, user, reward.getItemid());
+		pusher.pushUserPropListCommand(responseBuilder, user);
 	}
 }

@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -35,6 +36,9 @@ public class UserRedisService extends RedisService{
 		return (UserBean) JSONObject.toBean(json, UserBean.class);
 	}
 
+	/**
+	 * update daily data, never save
+	 */
 	public boolean updateUserDailyData(UserBean user){
 		if(user.getRedisTime() >= System.currentTimeMillis()/24/3600L/1000L*24*3600L*1000L+6*3600L*1000L){
 			user.setRedisTime(System.currentTimeMillis());
@@ -45,6 +49,7 @@ public class UserRedisService extends RedisService{
 		user.setRefreshLeftTimes(RefreshConst.REFRESH_PVP_TIMES);	
 		user.setLadderModeLeftTimes(5);
 		user.setPurchaseCoinLeft(1);
+		user.setPvpMineLeftTime(5);
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
 			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
@@ -76,15 +81,24 @@ public class UserRedisService extends RedisService{
 		hput(RedisKey.PREFIX+RedisKey.USERNAME_PREFIX+serverId, userName, userId+"");
 	}
 	
+	public UserInfo getRandUser(int serverId){
+		Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId);
+		Object[] keys = map.keySet().toArray();
+		String value = map.get(keys[RandomUtils.nextInt(keys.length)]);
+		UserInfo.Builder builder = UserInfo.newBuilder();
+		parseJson(value, builder);
+		return builder.build();
+	}
+	
 	public void cache(UserInfo user){
-		hput(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX, user.getId()+"", formatJson(user));
+		hput(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+user.getServerId(), user.getId()+"", formatJson(user));
 	}
 	
 	/**
 	 * get other user(can be null)
 	 */
-	public <T> UserInfo getCache(T userId){
-		String value = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX, userId+"");
+	public <T> UserInfo getCache(int serverId, T userId){
+		String value = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, userId+"");
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -95,12 +109,12 @@ public class UserRedisService extends RedisService{
 	/**
 	 * get other user
 	 */
-	public <T> List<UserInfo> getCaches(List<T> userIds){
+	public <T> List<UserInfo> getCaches(int serverId, List<T> userIds){
 		List<String> keys = new ArrayList<String>();
 		for(T userId : userIds){
 			keys.add(userId+"");
 		}
-		List<String> values  = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX, keys);
+		List<String> values  = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, keys);
 		List<UserInfo> users = new ArrayList<UserInfo>();
 		for(String value : values){
 			UserInfo.Builder builder = UserInfo.newBuilder();

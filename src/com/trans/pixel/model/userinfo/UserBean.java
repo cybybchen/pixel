@@ -37,6 +37,58 @@ public class UserBean {
 	private int expeditionShopRefreshTime = 0;
 	private int purchaseCoinTime = 0;
 	private int purchaseCoinLeft = 0;
+	private int pvpMonsterRefreshTime = 0;
+	private int pvpBossRefreshTime = 0;
+	private int pvpMineRefreshTime = 0;
+	private int pvpMineLeftTime = 0;
+	/**
+	 * pvp矿点对手剩余刷新次数
+	 */
+	public int getPvpMineLeftTime() {
+		return pvpMineLeftTime;
+	}
+	/**
+	 * pvp矿点对手剩余刷新次数
+	 */
+	public void setPvpMineLeftTime(int time) {
+		this.pvpMineLeftTime = time;
+	}
+	/**
+	 * pvp矿点对手刷新时间
+	 */
+	public int getPvpMineRefreshTime() {
+		return pvpMineRefreshTime;
+	}
+	/**
+	 * pvp矿点对手刷新时间
+	 */
+	public void setPvpMineRefreshTime(int pvpMineRefreshTime) {
+		this.pvpMineRefreshTime = pvpMineRefreshTime;
+	}
+	/**
+	 * pvp怪物刷新时间
+	 */
+	public int getPvpMonsterRefreshTime() {
+		return pvpMonsterRefreshTime;
+	}
+	/**
+	 * pvp怪物刷新时间
+	 */
+	public void setPvpMonsterRefreshTime(int pvpMonsterRefreshTime) {
+		this.pvpMonsterRefreshTime = pvpMonsterRefreshTime;
+	}
+	/**
+	 * pvpBOSS刷新时间
+	 */
+	public int getPvpBossRefreshTime() {
+		return pvpBossRefreshTime;
+	}
+	/**
+	 * pvpBOSS刷新时间
+	 */
+	public void setPvpBossRefreshTime(int pvpBossRefreshTime) {
+		this.pvpBossRefreshTime = pvpBossRefreshTime;
+	}
 	/**
 	 * 用户ID
 	 */
@@ -465,6 +517,7 @@ public class UserBean {
 //		builder.setLadderModeHistoryTop(ladderModeHistoryTop);
 		builder.setFreeLotteryCoinTime(Math.max(0, (int)((freeLotteryCoinTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setFreeLotteryJewelTime(Math.max(0, (int)((freeLotteryJewelTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
+		builder.setPVPMineLeftTime(pvpMineLeftTime);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {

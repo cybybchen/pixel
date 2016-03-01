@@ -7,10 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
@@ -40,8 +37,8 @@ public class AreaRedisService extends RedisService{
 	public final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	public final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
 	public final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
+//	@Resource
+//	private RedisTemplate<String, String> redisTemplate;
 
 //	public AreaMode getAreas() {
 //		return redisTemplate.execute(new RedisCallback<AreaMode>() {

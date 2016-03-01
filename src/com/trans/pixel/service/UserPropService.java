@@ -21,7 +21,10 @@ public class UserPropService {
 		UserPropBean userProp = userPropRedisService.selectUserProp(userId, propId);
 		if (userProp == null)
 			userProp = userPropMapper.selectUserProp(userId, propId);
-		
+//		userProp  = new UserPropBean();
+//		userProp.setPropId(propId);//for test
+//		userProp.setPropCount(2);
+//		userProp.setUserId(userId);
 		return userProp;
 	}
 	

@@ -9,6 +9,7 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
@@ -37,6 +38,11 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
@@ -212,6 +218,12 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -602,6 +614,36 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//UserMineTeamCommand
                 result = handleCommand(cmd, responseBuilder, user);//UserMineTeamCommand
         }//UserMineTeamCommand
+        if (request.hasAttackPVPMonsterCommand()) {
+            RequestAttackPVPMonsterCommand cmd = request.getAttackPVPMonsterCommand();
+            if (result)//AttackPVPMonstersCommand
+                result = handleCommand(cmd, responseBuilder, user);//AttackPVPMonstersCommand
+        }//AttackPVPMonstersCommand
+        if (request.hasPvpMapListCommand()) {
+            RequestPVPMapListCommand cmd = request.getPvpMapListCommand();
+            if (result)//PvpMapListCommand
+                result = handleCommand(cmd, responseBuilder, user);//PvpMapListCommand
+        }//PvpMapListCommand
+        if (request.hasAttackPVPBossCommand()) {
+            RequestAttackPVPBossCommand cmd = request.getAttackPVPBossCommand();
+            if (result)//AttackPVPBossCommand
+                result = handleCommand(cmd, responseBuilder, user);//AttackPVPBossCommand
+        }//AttackPVPBossCommand
+        if (request.hasPvpMineInfoCommand()) {
+            RequestPVPMineInfoCommand cmd = request.getPvpMineInfoCommand();
+            if (result)//PvpMineInfoCommand
+                result = handleCommand(cmd, responseBuilder, user);//PvpMineInfoCommand
+        }//PvpMineInfoCommand
+        if (request.hasAttackPVPMineCommand()) {
+            RequestAttackPVPMineCommand cmd = request.getAttackPVPMineCommand();
+            if (result)//AttackPVPMineCommand
+                result = handleCommand(cmd, responseBuilder, user);//AttackPVPMineCommand
+        }//AttackPVPMineCommand
+        if (request.hasRefreshPVPMineCommand()) {
+            RequestRefreshPVPMineCommand cmd = request.getRefreshPVPMineCommand();
+            if (result)//RefreshPVPMineCommand
+                result = handleCommand(cmd, responseBuilder, user);//RefreshPVPMineCommand
+        }//RefreshPVPMineCommand
         //call handleCommand here
         
         return result;

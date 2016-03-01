@@ -15,6 +15,7 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
@@ -50,6 +51,11 @@ import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -490,6 +496,36 @@ public class HeadScreen extends RequestScreen {
 		// TODO UserMineTeamCommand method
 		return true;//UserMineTeamCommand
 	}//UserMineTeamCommand
+	@Override//AttackPVPMonstersCommand
+	protected boolean handleCommand(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO AttackPVPMonstersCommand method
+		return true;//AttackPVPMonstersCommand
+	}//AttackPVPMonstersCommand
+	@Override//PvpMapListCommand
+	protected boolean handleCommand(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PvpMapListCommand method
+		return true;//PvpMapListCommand
+	}//PvpMapListCommand
+	@Override//AttackPVPBossCommand
+	protected boolean handleCommand(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO AttackPVPBossCommand method
+		return true;//AttackPVPBossCommand
+	}//AttackPVPBossCommand
+	@Override//PvpMineInfoCommand
+	protected boolean handleCommand(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PvpMineInfoCommand method
+		return true;//PvpMineInfoCommand
+	}//PvpMineInfoCommand
+	@Override//AttackPVPMineCommand
+	protected boolean handleCommand(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO AttackPVPMineCommand method
+		return true;//AttackPVPMineCommand
+	}//AttackPVPMineCommand
+	@Override//RefreshPVPMineCommand
+	protected boolean handleCommand(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO RefreshPVPMineCommand method
+		return true;//RefreshPVPMineCommand
+	}//RefreshPVPMineCommand
 	//add handleCommand here
 
 	@Override

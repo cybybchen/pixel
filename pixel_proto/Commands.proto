@@ -20,6 +20,7 @@ message UserInfo {
 	optional int32 freeLotteryCoinTime = 17; //免费金币抽取倒计时
 	optional int32 freeLotteryJewelTime = 18; //免费钻石抽取倒计时
 	optional int32 ladderModeLeftTimes = 12;//每日天梯挑战剩余次数
+	optional int32 PVPMineLeftTime = 20;//pvp矿点对手免费刷新次数
 }
 
 message Commodity {
@@ -240,6 +241,55 @@ message AreaPosition {
 
 message AreaPositionList {
 	repeated AreaPosition region = 1;
+}
+
+message PVPMonster {//pvp怪物
+	required int32 id = 1;
+	optional int32 belongto = 3;//区域ID
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+}
+
+message PVPBoss {//pvpBoss
+	required int32 id = 1;
+	optional int32 belongto = 3;//区域ID
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+	optional MultiReward reward = 6;//击败奖励
+}
+
+message PVPMonsterList{
+	optional int32 fieldid = 1;
+	optional int32 name = 2;
+	repeated PVPMonster xiaoguai = 3;
+}
+
+message PVPMonsterLists{
+	repeated PVPMonsterList field = 1;
+}
+
+message PVPMine{//pvp矿点
+	required int32 id = 1;
+	optional int32 x = 2;
+	optional int32 y = 3;
+	optional int32 type = 4;
+	optional int32 yield = 5;
+	optional int32 enemyid = 6;
+	optional UserInfo owner = 8;//占领者
+	optional int64 endTime = 9;
+}
+
+message PVPMap{
+	optional int32 fieldid = 1;
+	optional string name = 2;
+	optional int32 buff = 6;
+	repeated PVPMine kuangdian = 3;
+	repeated PVPMonster monster = 4;
+	repeated PVPBoss boss = 5;
+}
+
+message PVPMapList{
+	repeated PVPMap field = 1;
 }
 
 message WeightReward {
@@ -855,6 +905,36 @@ message ResponseFenjieEquipCommand {
 	repeated RewardInfo reward = 1;
 }
 
+message RequestPVPMapListCommand {
+}
+
+message RequestAttackPVPMonsterCommand {
+	required int32 id = 1;
+	optional bool ret = 2;
+}
+
+message RequestAttackPVPBossCommand {
+	required int32 id = 1;
+	optional bool ret = 2;
+}
+
+message RequestPVPMineInfoCommand {
+	required int32 id = 1;
+}
+
+message RequestAttackPVPMineCommand {
+	required int32 id = 1;
+	optional bool ret = 2;
+}
+
+message RequestRefreshPVPMineCommand {
+	required int32 id = 1;
+}
+
+message ResponsePVPMapListCommand {
+	repeated PVPMap field = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -918,6 +998,12 @@ message RequestCommand {
 	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
 	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
 	optional RequestGetTeamCommand teamCommand = 123;
+	optional RequestPVPMapListCommand pvpMapListCommand = 125;
+	optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;
+	optional RequestAttackPVPBossCommand attackPVPBossCommand = 127;
+	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
+	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
+	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
@@ -928,7 +1014,7 @@ message RequestCommand {
 	optional RequestUserTeamListCommand userTeamListCommand = 46;
 	optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
 	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
-	optional RequestGetUserMineCommand userMineCommand = 49; 
+	optional RequestGetUserMineCommand userMineCommand = 49;
 	optional RequestEquipComposeCommand equipComposeCommand = 50;
 	optional RequestUsePropCommand usePropCommand = 51;
 	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
@@ -947,6 +1033,7 @@ message ResponseCommand {
 	optional ResponseLadderShopCommand ladderShopCommand = 108;
 	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
 	optional ResponseGetTeamCommand teamCommand = 123;
+	optional ResponsePVPMapListCommand pvpMapListCommand = 125;
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

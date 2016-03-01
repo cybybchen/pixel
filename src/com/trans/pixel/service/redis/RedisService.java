@@ -733,4 +733,16 @@ public class RedisService {
 		Date date = new Date((System.currentTimeMillis()/24/3600L/1000L+1)*24*3600L*1000L+6*3600L*1000L);
 		return date;
 	}
+	/**
+	 * 第二天几点
+	 */
+	public long nextDay(int hour){
+		return (System.currentTimeMillis()/24/3600L/1000L+1)*24*3600L*1000L+hour*3600L/**1000L*/;
+	}
+	/**
+	 * 今天几点
+	 */
+	public long today(int hour){
+		return System.currentTimeMillis()/24/3600L/1000L*24*3600L*1000L+hour*3600L/**1000L*/;
+	}
 }
