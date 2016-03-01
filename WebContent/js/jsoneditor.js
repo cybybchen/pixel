@@ -39,8 +39,9 @@ function requestUserJson(userid, username, serverid) {
              for (var i =navs.length - 1; i >= 0; i--) {
                  if($(navs[i]).attr("userid") == userid){
                      checked = true;
-                     if(!$(navs[i]).hasClass("")){
-                         $(navs[i]).click();
+                     if(!$(navs[i]).hasClass("nav-btn-active")){
+                         navs.removeClass("nav-btn-active");
+                         $(navs[i]).addClass("nav-btn-active");
                      }
                      break;
                  }
@@ -55,9 +56,13 @@ function requestUserJson(userid, username, serverid) {
                  $($(".nav-userbtn")[0]).addClass("nav-btn-active");
                  // $($(".nav-userbtn")[0]).click()
              }
-             json = message;
-             printJSON();
-             $('#editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
+             for(var key in message){
+                if(typeof(message[key]) != "object")
+                    continue;
+                 json = message[key];
+                 printJSON();
+                 $('#editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
+             }
             ////
 //            if (message > 0) {
                 alert(message);

@@ -56,7 +56,7 @@ public class AreaTest extends BaseTest {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestAttackBossCommand.Builder builder = RequestAttackBossCommand.newBuilder();
-		AreaBoss boss = area.getAreas(0).getBosses(0);
+		AreaBoss boss = area.getAreas(4).getBosses(0);
 		builder.setId(boss.getId());
 		builder.setScore(boss.getHp());
 		requestBuilder.setAttackBossCommand(builder.build());

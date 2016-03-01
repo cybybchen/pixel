@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 			<!-- <a href="#" class="nav-btn ui-btn ui-btn-inline" userid="2">Anchor</a> -->
 		</div>
-		<jsoneditor>
+		<jsoneditor style="display:none;">
 			<div class="json-editor-title"><span>Introduction</span>
 				<a href="#"  class="editor-btn ui-btn ui-btn-inline">加载</a>
 				<div style="right:0;float:right;"><a href="#"  class="editor-btn ui-btn ui-btn-inline">删除</a>
