@@ -24,14 +24,13 @@ public class UserLevelService {
 	private UserLevelMapper userLevelMapper;
 	
 	public UserLevelBean selectUserLevelRecord(long userId) {
-		log.debug("222222222222222");
 		UserLevelBean userLevelRecordBean = userLevelRedisService.selectUserLevelRecord(userId);
 		if (userLevelRecordBean == null) {
-			log.debug("33333333333");
 			userLevelRecordBean = userLevelMapper.selectUserLevelRecord(userId);
+			if (userLevelRecordBean != null) 
+				userLevelRedisService.updateUserLevelRecord(userLevelRecordBean);
 		}
 		if (userLevelRecordBean == null) {
-			log.debug("4444444444");
 			userLevelRecordBean = initUserLevelRecord(userId);
 			userLevelMapper.insertUserLevelRecord(userLevelRecordBean);
 		}

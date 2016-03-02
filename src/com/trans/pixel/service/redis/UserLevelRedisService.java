@@ -14,13 +14,13 @@ public class UserLevelRedisService extends RedisService{
 	private RedisTemplate<String, String> redisTemplate;
 	
 	public UserLevelBean selectUserLevelRecord(final long userId) {
-		String value = hget(RedisKey.USERDATA, "LevelRecord");
+		String value = hget(RedisKey.USERDATA + userId, "LevelRecord");
 		JSONObject object = JSONObject.fromObject(value);
 		return (UserLevelBean) JSONObject.toBean(object, UserLevelBean.class);
 	}
 	
 	public void updateUserLevelRecord(final UserLevelBean userLevelRecordBean) {
 		JSONObject object = JSONObject.fromObject(userLevelRecordBean);
-		hput(RedisKey.USERDATA, "LevelRecord", object.toString());
+		hput(RedisKey.USERDATA + userLevelRecordBean.getUserId(), "LevelRecord", object.toString());
 	}
 }

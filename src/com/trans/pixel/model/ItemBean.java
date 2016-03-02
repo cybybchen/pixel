@@ -76,6 +76,9 @@ public class ItemBean {
 	
 	public int randomCount() {
 		Random rand = new Random();
+		if (counta == countb)
+			return counta;
+		
 		return counta + rand.nextInt(countb - counta);
 	}
 	
