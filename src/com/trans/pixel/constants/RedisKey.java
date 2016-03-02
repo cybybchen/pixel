@@ -27,7 +27,7 @@ public class RedisKey {
 	public final static String PVPMONSTER_PREFIX = USERDATA+"PVPMonster_";
 	public final static String PVPBOSS_PREFIX = USERDATA+"PVPBoss_";
 	public final static String PVPMINE_PREFIX = USERDATA+"PVPMine_";
-	public final static String PVPMAP_PREFIX = USERDATA+"PVPMap_";
+	public final static String PVPMAPBUFF_PREFIX = USERDATA+"PVPMapBuff_";
 	
 	public final static String PVPMONSTER_CONFIG = PREFIX+"PVPMonster";
 	public final static String PVPBOSS_CONFIG = PREFIX+"PVPBoss";

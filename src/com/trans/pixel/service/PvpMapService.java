@@ -32,7 +32,7 @@ public class PvpMapService {
 	
 	public PVPMapList getMapList(UserBean user){
 		PVPMapList.Builder maplist = PVPMapList.newBuilder(redis.getMapList());
-		Map<String, PVPMap> pvpMap = redis.getUserMaps(user);
+		Map<String, String> pvpMap = redis.getUserBuffs(user);
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
 		List<PVPBoss> bosses = redis.getBosses(user);
@@ -64,9 +64,9 @@ public class PvpMapService {
 			}}
 		}
 		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
-			PVPMap map = pvpMap.get(mapBuilder.getFieldid()+"");
-			if(map != null)
-				mapBuilder.mergeFrom(map);
+			String buff = pvpMap.get(mapBuilder.getFieldid()+"");
+			if(buff != null)
+				mapBuilder.setBuff(Integer.parseInt(buff));
 			for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
 				PVPMine mine = mineMap.get(mineBuilder.getId()+"");
 				if(mine != null)
@@ -90,12 +90,8 @@ public class PvpMapService {
 			return false;
 		if(ret){
 			redis.deleteMonster(user, positionid);
-			PVPMap map = redis.getUserMap(user, monster.getFieldid());
-			if(map == null)
-				return true;
-			PVPMap.Builder builder = PVPMap.newBuilder(map);
-			builder.setBuff(builder.getBuff());
-			redis.saveUserMap(user, builder.build());
+			int buff = redis.getUserBuff(user, monster.getFieldid());
+			redis.saveUserBuff(user, monster.getFieldid(), buff+1);
 		}
 		return true;
 	}
@@ -106,9 +102,7 @@ public class PvpMapService {
 			return false;
 		if(ret){
 			redis.deleteBoss(user, id);
-			PVPMap map = redis.getUserMap(user, boss.getFieldid());
-			if(map == null)
-				return true;
+			int buff = redis.getUserBuff(user, boss.getFieldid());
 			// PVPMap.Builder builder = PVPMap.newBuilder(map);
 			// builder.setBuff(builder.getBuff());
 			// redis.saveUserMap(user, builder.build());
