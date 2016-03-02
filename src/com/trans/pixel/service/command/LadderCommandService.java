@@ -79,7 +79,7 @@ public class LadderCommandService extends BaseCommandService {
 		long rank = cmd.getRank();
 		UserRankBean userRank = ladderService.getUserRankByRank(user.getServerId(), rank);
 		UserRank.Builder userrank = UserRank.newBuilder(userRank.buildUserRank());
-		List<HeroInfoBean> heroList = ladderService.getTeamCache(userRank.getId());
+		List<HeroInfoBean> heroList = ladderService.getTeamCache(userRank.getUserId());
 		for (HeroInfoBean heroInfo : heroList) {
 			userrank.addHeroInfo(heroInfo.buildRankHeroInfo());
 		}

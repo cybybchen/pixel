@@ -86,7 +86,7 @@ public class LadderService {
 		return ladderRedisService.getUserRankByRank(serverId, rank);
 	}
 	
-	public List<HeroInfoBean> getTeamCache(int userid){
+	public List<HeroInfoBean> getTeamCache(long userid){
 		return userTeamService.getTeamCache(userid);
 	}
 	
