@@ -39,7 +39,7 @@ public class UserRedisService extends RedisService{
 	/**
 	 * update daily data, never save
 	 */
-	public boolean updateUserDailyData(UserBean user){
+	public boolean refreshUserDailyData(UserBean user){
 		if(user.getRedisTime() >= System.currentTimeMillis()/24/3600L/1000L*24*3600L*1000L+6*3600L*1000L){
 			user.setRedisTime(System.currentTimeMillis());
 			return false;

@@ -35,7 +35,7 @@ public class UserService {
     			userRedisService.updateUser(user);
     	}
 
-        if(user != null && userRedisService.updateUserDailyData(user)){
+        if(user != null && userRedisService.refreshUserDailyData(user)){
         	userRedisService.updateUser(user);
         }
         return user;
@@ -60,7 +60,7 @@ public class UserService {
 			return getUser(Long.parseLong(userId));
 		}
 
-        if(user != null && userRedisService.updateUserDailyData(user)){
+        if(user != null && userRedisService.refreshUserDailyData(user)){
         	userRedisService.updateUser(user);
         }
 		return user;
@@ -85,7 +85,7 @@ public class UserService {
 			return getUser(Long.parseLong(userId));
 		}
 
-        if(user != null && userRedisService.updateUserDailyData(user)){
+        if(user != null && userRedisService.refreshUserDailyData(user)){
         	userRedisService.updateUser(user);
         }
 		return user;
@@ -93,7 +93,7 @@ public class UserService {
 	
 	public int addNewUser(UserBean user) {
 		int result = userMapper.addNewUser(user);
-		userRedisService.updateUserDailyData(user);
+		userRedisService.refreshUserDailyData(user);
 		userRedisService.updateUser(user);
 		return result;
 	}

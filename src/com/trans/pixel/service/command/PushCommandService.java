@@ -92,10 +92,10 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setLootResultCommand(super.builderLootResultCommand(user));
 	}
 	
-	public void pushUserMineListCommand(Builder responseBuilder, UserBean user) {
-		List<UserMineBean> userMineList = pvpMapService.relateUser(user);
-		responseBuilder.setGetUserMineCommand(super.buildGetUserMineCommand(userMineList));
-	}
+//	public void pushUserMineListCommand(Builder responseBuilder, UserBean user) {
+//		List<UserMineBean> userMineList = pvpMapService.relateUser(user);
+//		responseBuilder.setGetUserMineCommand(super.buildGetUserMineCommand(userMineList));
+//	}
 	
 	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user) {
 		List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());

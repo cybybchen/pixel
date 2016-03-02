@@ -196,7 +196,7 @@ public class AreaFightService extends FightService{
 		Set<TypedTuple<String>> ranks = redis.getBossRank(bossbuilder.getId(), user);
 		if(ranks.isEmpty())
 			return;
-		List<UserInfo> users = userService.getCaches(ranks);
+		List<UserInfo> users = userService.getCaches(user.getServerId(), ranks);
 		int i = 0;
 		for(TypedTuple<String> rank : ranks){
 			if(i >= users.size())

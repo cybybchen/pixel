@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
@@ -35,14 +36,41 @@ public class PvpMapService {
 		Map<String, PVPMine> mineMap = redis.getUserMines(user);
 		List<PVPMonster> monsters = redis.getMonsters(user);
 		List<PVPBoss> bosses = redis.getBosses(user);
+		int mineCount = 0, enemyCount = 0;
+		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
+			mineCount += mapBuilder.getKuangdianCount();
+		}
+		enemyCount = mineMap.size();
+		int time = (int)redis.today(6);
+		if(user.getPvpMineRefreshTime() < time){//刷新对手
+			int count = (time - user.getPvpMineRefreshTime())/24/3600+RandomUtils.nextInt((time - user.getPvpMineRefreshTime())/12/3600);
+			user.setPvpMineRefreshTime(time);
+			userService.updateUserDailyData(user);
+			while(mineCount/enemyCount < 5 && count > 0){
+				PVPMap map = maplist.getField(RandomUtils.nextInt(maplist.getFieldCount()));
+				PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(RandomUtils.nextInt(map.getKuangdianCount())));
+				PVPMine mine = mineMap.get(builder.getId()+"");
+				if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
+					continue;
+				builder.setOwner(userService.getRandUser(user.getServerId()));
+				redis.saveMine(user, builder.build());
+				mineMap.put(builder.getId()+"", builder.build());
+				enemyCount++;
+				count--;
+			}
+		}
 		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
 			PVPMap map = pvpMap.get(mapBuilder.getFieldid()+"");
 			if(map != null)
 				mapBuilder.mergeFrom(map);
 			for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
+				mineCount++;
 				PVPMine mine = mineMap.get(mineBuilder.getId());
-				if(mine != null)
+				if(mine != null){
 					mineBuilder.mergeFrom(mine);
+					if(mine.hasOwner() && mine.getEndTime() > System.currentTimeMillis()/1000)
+						enemyCount++;
+				}
 			}
 			for(PVPMonster monster : monsters){
 				if(monster.getBelongto() == mapBuilder.getFieldid())
@@ -103,7 +131,7 @@ public class PvpMapService {
 	
 	public boolean refreshMine(UserBean user, int id){
 		PVPMine mine = redis.getMine(user, id);
-		if(mine == null)
+		if(mine == null || !mine.hasOwner())
 			return false;
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
