@@ -277,6 +277,7 @@ message PVPMine{//pvp矿点
 	optional int32 enemyid = 6;
 	optional UserInfo owner = 8;//占领者
 	optional int64 endTime = 9;
+	optional int32 level = 10;//每一级提升防守方战斗力5%
 }
 
 message PVPMap{
@@ -905,33 +906,33 @@ message ResponseFenjieEquipCommand {
 	repeated RewardInfo reward = 1;
 }
 
-message RequestPVPMapListCommand {
+message RequestPVPMapListCommand {//挂机PVP列表
 }
 
-message RequestAttackPVPMonsterCommand {
+message RequestAttackPVPMonsterCommand {//pvp攻击怪物
 	required int32 id = 1;
 	optional bool ret = 2;
 }
 
-message RequestAttackPVPBossCommand {
+message RequestAttackPVPBossCommand {//pvp攻击BOSS
 	required int32 id = 1;
 	optional bool ret = 2;
 }
 
-message RequestPVPMineInfoCommand {
+message RequestPVPMineInfoCommand {//pvp矿点对手信息
 	required int32 id = 1;
 }
 
-message RequestAttackPVPMineCommand {
+message RequestAttackPVPMineCommand {//攻击pvp矿点对手
 	required int32 id = 1;
 	optional bool ret = 2;
 }
 
-message RequestRefreshPVPMineCommand {
+message RequestRefreshPVPMineCommand {//刷新pvp矿点对手
 	required int32 id = 1;
 }
 
-message ResponsePVPMapListCommand {
+message ResponsePVPMapListCommand {//挂机PVP列表
 	repeated PVPMap field = 1;
 }
 

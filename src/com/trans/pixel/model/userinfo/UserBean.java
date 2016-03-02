@@ -37,9 +37,9 @@ public class UserBean {
 	private int expeditionShopRefreshTime = 0;
 	private int purchaseCoinTime = 0;
 	private int purchaseCoinLeft = 0;
-	private int pvpMonsterRefreshTime = 0;
-	private int pvpBossRefreshTime = 0;
-	private int pvpMineRefreshTime = 0;
+	private long pvpMonsterRefreshTime = 0;
+	private long pvpBossRefreshTime = 0;
+	private long pvpMineRefreshTime = 0;
 	private int pvpMineLeftTime = 0;
 	/**
 	 * pvp矿点对手剩余刷新次数
@@ -56,37 +56,37 @@ public class UserBean {
 	/**
 	 * pvp矿点对手刷新时间
 	 */
-	public int getPvpMineRefreshTime() {
+	public long getPvpMineRefreshTime() {
 		return pvpMineRefreshTime;
 	}
 	/**
 	 * pvp矿点对手刷新时间
 	 */
-	public void setPvpMineRefreshTime(int pvpMineRefreshTime) {
+	public void setPvpMineRefreshTime(long pvpMineRefreshTime) {
 		this.pvpMineRefreshTime = pvpMineRefreshTime;
 	}
 	/**
 	 * pvp怪物刷新时间
 	 */
-	public int getPvpMonsterRefreshTime() {
+	public long getPvpMonsterRefreshTime() {
 		return pvpMonsterRefreshTime;
 	}
 	/**
 	 * pvp怪物刷新时间
 	 */
-	public void setPvpMonsterRefreshTime(int pvpMonsterRefreshTime) {
+	public void setPvpMonsterRefreshTime(long pvpMonsterRefreshTime) {
 		this.pvpMonsterRefreshTime = pvpMonsterRefreshTime;
 	}
 	/**
 	 * pvpBOSS刷新时间
 	 */
-	public int getPvpBossRefreshTime() {
+	public long getPvpBossRefreshTime() {
 		return pvpBossRefreshTime;
 	}
 	/**
 	 * pvpBOSS刷新时间
 	 */
-	public void setPvpBossRefreshTime(int pvpBossRefreshTime) {
+	public void setPvpBossRefreshTime(long pvpBossRefreshTime) {
 		this.pvpBossRefreshTime = pvpBossRefreshTime;
 	}
 	/**

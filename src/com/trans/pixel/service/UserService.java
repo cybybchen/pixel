@@ -93,6 +93,7 @@ public class UserService {
 	
 	public int addNewUser(UserBean user) {
 		int result = userMapper.addNewUser(user);
+		user.setPvpMineRefreshTime((int)userRedisService.today(6));
 		userRedisService.refreshUserDailyData(user);
 		userRedisService.updateUser(user);
 		return result;

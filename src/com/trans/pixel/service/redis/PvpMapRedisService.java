@@ -73,9 +73,9 @@ public class PvpMapRedisService extends RedisService{
 		hput(RedisKey.PVPMAP_PREFIX+user.getId(), map.getFieldid()+"", formatJson(map));
 	}
 
-	public Map<String, PVPMine> getUserMines(UserBean user) {
+	public Map<String, PVPMine> getUserMines(long userId) {
 		Map<String, PVPMine> map = new HashMap<String, PVPMine>();
-		Map<String, String> keyvalue = hget(RedisKey.PVPMINE_PREFIX+user.getId());
+		Map<String, String> keyvalue = hget(RedisKey.PVPMINE_PREFIX+userId);
 		for(Entry<String, String> entry : keyvalue.entrySet()){
 			PVPMine.Builder builder = PVPMine.newBuilder();
 			if(parseJson(entry.getValue(), builder))
@@ -110,21 +110,29 @@ public class PvpMapRedisService extends RedisService{
 		hdelete(RedisKey.PVPBOSS_PREFIX+user.getId(), id+"");
 	}
 
-	public PVPMine getMine(UserBean user, int id) {
+	public PVPMine getMine(long userId, int id) {
 		PVPMine.Builder builder = PVPMine.newBuilder();
-		String value = hget(RedisKey.PVPMINE_PREFIX+user.getId(), id+"");
+		String value = hget(RedisKey.PVPMINE_PREFIX+userId, id+"");
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}
 		return null;
 	}
 
-	public void saveMine(UserBean user, PVPMine mine) {
-		hput(RedisKey.PVPMINE_PREFIX+user.getId(), mine.getId()+"", formatJson(mine));
+	public void saveMine(long userId, PVPMine mine) {
+		hput(RedisKey.PVPMINE_PREFIX+userId, mine.getId()+"", formatJson(mine));
 	}
 
-	public void deleteMine(UserBean user, int id) {
-		hdelete(RedisKey.PVPMINE_PREFIX+user.getId(), id+"");
+	public void saveMines(long userId, Map<String, PVPMine> mines) {
+		Map<String, String> map = new HashMap<String, String>();
+		for(Entry<String, PVPMine> entry : mines.entrySet()){
+			map.put(entry.getKey(), formatJson(entry.getValue()));
+		}
+		hputAll(RedisKey.PVPMINE_PREFIX+userId, map);
+	}
+
+	public void deleteMine(long userId, int id) {
+		hdelete(RedisKey.PVPMINE_PREFIX+userId, id+"");
 	}
 	
 	public List<PVPMonster> getMonsters(UserBean user) {
@@ -190,7 +198,7 @@ public class PvpMapRedisService extends RedisService{
 		long times[] = {today(18), today(12), today(0)};
 		for(long time : times){
 			if(time > user.getPvpMonsterRefreshTime() && time < System.currentTimeMillis()/1000L){
-				user.setPvpMonsterRefreshTime((int)time);
+				user.setPvpMonsterRefreshTime(time);
 				userRedisService.updateUser(user);
 				return true;
 			}

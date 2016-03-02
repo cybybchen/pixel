@@ -33,44 +33,44 @@ public class PvpMapService {
 	public PVPMapList getMapList(UserBean user){
 		PVPMapList.Builder maplist = PVPMapList.newBuilder(redis.getMapList());
 		Map<String, PVPMap> pvpMap = redis.getUserMaps(user);
-		Map<String, PVPMine> mineMap = redis.getUserMines(user);
+		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 		List<PVPMonster> monsters = redis.getMonsters(user);
 		List<PVPBoss> bosses = redis.getBosses(user);
-		int mineCount = 0, enemyCount = 0;
-		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
-			mineCount += mapBuilder.getKuangdianCount();
-		}
-		enemyCount = mineMap.size();
-		int time = (int)redis.today(6);
+		long time = redis.today(6);
 		if(user.getPvpMineRefreshTime() < time){//刷新对手
-			int count = (time - user.getPvpMineRefreshTime())/24/3600+RandomUtils.nextInt((time - user.getPvpMineRefreshTime())/12/3600);
+			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600+RandomUtils.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600);
 			user.setPvpMineRefreshTime(time);
 			userService.updateUserDailyData(user);
-			while(mineCount/enemyCount < 5 && count > 0){
+			if(count >= 20){
+				for(PVPMap map : maplist.getFieldList()){
+					for(PVPMine mine : map.getKuangdianList()){
+						PVPMine.Builder builder = PVPMine.newBuilder(mine);
+						builder.setOwner(userService.getRandUser(user.getServerId()));
+						mineMap.put(builder.getId()+"", builder.build());
+					}
+				}
+				redis.saveMines(user.getId(), mineMap);
+			}else{
+			while(count > 0){
 				PVPMap map = maplist.getField(RandomUtils.nextInt(maplist.getFieldCount()));
 				PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(RandomUtils.nextInt(map.getKuangdianCount())));
 				PVPMine mine = mineMap.get(builder.getId()+"");
 				if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
 					continue;
 				builder.setOwner(userService.getRandUser(user.getServerId()));
-				redis.saveMine(user, builder.build());
+				redis.saveMine(user.getId(), builder.build());
 				mineMap.put(builder.getId()+"", builder.build());
-				enemyCount++;
 				count--;
-			}
+			}}
 		}
 		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
 			PVPMap map = pvpMap.get(mapBuilder.getFieldid()+"");
 			if(map != null)
 				mapBuilder.mergeFrom(map);
 			for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
-				mineCount++;
 				PVPMine mine = mineMap.get(mineBuilder.getId());
-				if(mine != null){
+				if(mine != null)
 					mineBuilder.mergeFrom(mine);
-					if(mine.hasOwner() && mine.getEndTime() > System.currentTimeMillis()/1000)
-						enemyCount++;
-				}
 			}
 			for(PVPMonster monster : monsters){
 				if(monster.getBelongto() == mapBuilder.getFieldid())
@@ -117,33 +117,48 @@ public class PvpMapService {
 	}
 	
 	public boolean attackMine(UserBean user, int id, boolean ret){
-		PVPMine mine = redis.getMine(user, id);
+		PVPMine mine = redis.getMine(user.getId(), id);
 		if(mine == null)
 			return false;
 		if(ret){
-			PVPMine.Builder builder = PVPMine.newBuilder(mine);
-			builder.clearOwner();
-			builder.setEndTime(System.currentTimeMillis()/1000+3600*12);
-			redis.saveMine(user, builder.build());
+			if(mine.hasOwner()){
+				long userId = mine.getOwner().getId();
+				PVPMapList.Builder maplist = PVPMapList.newBuilder(redis.getMapList());
+				Map<String, PVPMine> mineMap = redis.getUserMines(userId);
+				int mineCount = 0;
+				for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
+					mineCount += mapBuilder.getKuangdianCount();
+				}
+				int enemyCount = mineMap.size();
+				if(mineCount/enemyCount >= 5){
+					PVPMine.Builder builder = PVPMine.newBuilder(mine);
+					builder.setOwner(user.buildShort());
+					builder.setEndTime(System.currentTimeMillis()/1000+12*3600);
+					builder.setLevel(builder.getLevel()+1);
+					redis.saveMine(userId, builder.build());
+				}
+			}
+			
+			redis.deleteMine(user.getId(), id);
 		}
 		return true;
 	}
 	
 	public boolean refreshMine(UserBean user, int id){
-		PVPMine mine = redis.getMine(user, id);
+		PVPMine mine = redis.getMine(user.getId(), id);
 		if(mine == null || !mine.hasOwner())
 			return false;
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			PVPMine.Builder builder = PVPMine.newBuilder(mine);
 			builder.setOwner(userService.getRandUser(user.getServerId()));
-			redis.saveMine(user, builder.build());
+			redis.saveMine(user.getId(), builder.build());
 		}
 		return true;
 	}
 	
 	public PVPMine getUserMine(UserBean user, int id){
-		return redis.getMine(user, id);
+		return redis.getMine(user.getId(), id);
 	}
 	
 //	public List<UserMineBean> relateUser(UserBean user) {
