@@ -480,17 +480,17 @@ public class UserBean {
 		return builder.build();
 	}
 	
-//	public UserInfo buildUnionUser() {
-//		UserInfo.Builder builder = UserInfo.newBuilder();
-//		builder.setId(id);
+	public UserInfo buildUnionUser() {
+		UserInfo.Builder builder = UserInfo.newBuilder();
+		builder.setId(id);
 //		builder.setAccount(account);
-//		builder.setIcon(icon);
-//		builder.setUserName(userName);
+		builder.setIcon(icon);
+		builder.setName(name);
 //		builder.setServerId(serverId);
-//		builder.setUnionId(unionId);
+		builder.setUnionId(unionId);
 //		builder.setUnionJob(unionJob);
-//		return builder.build();
-//	}
+		return builder.build();
+	}
 
 	public UserInfo build() {
 		UserInfo.Builder builder = UserInfo.newBuilder();

@@ -157,13 +157,13 @@ public class UnionRedisService extends RedisService{
 	
 	public void attack(int unionId,UserBean user){
 		String key = getUnionAttackKey(unionId, user);
-		this.hput(key, user.getId()+"", formatJson(user.build()));
+		this.hput(key, user.getId()+"", formatJson(user.buildUnionUser()));
 		this.expireAt(key, nextDay());
 	}
 	
 	public void defend(int unionId,UserBean user){
 		String key = getUnionDefendKey(unionId, user);
-		this.hput(key, user.getId()+"", formatJson(user.build()));
+		this.hput(key, user.getId()+"", formatJson(user.buildUnionUser()));
 		this.expireAt(key, nextDay());
 	}
 	

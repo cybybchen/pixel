@@ -74,7 +74,7 @@ public class UnionService extends FightService{
 				bloodFight(union.getDefendId(), union.getId(), user.getServerId());
 			}else{
 				List<UserInfo> users = unionRedisService.getFightQueue(union.getDefendId(), union.getId());
-				builder.addAllAttacks(users);
+				builder.addAllDefends(users);
 			}
 		}
 		return builder.build();
