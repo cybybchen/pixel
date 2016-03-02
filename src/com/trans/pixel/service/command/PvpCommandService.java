@@ -67,13 +67,13 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMonster(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user) {
-		if(!pvpMapService.attackMonster(user, cmd.getId(), cmd.getRet()))
+		if(!pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
 	public void attackBoss(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user) {
-		if(!pvpMapService.attackBoss(user, cmd.getId(), cmd.getRet()))
+		if(!pvpMapService.attackBoss(user, cmd.getPositionid(), cmd.getRet()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
@@ -86,16 +86,16 @@ public class PvpCommandService extends BaseCommandService {
 	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.getUserMine(user, cmd.getId());
-		if(mine.hasOwner()){
+		if(mine == null || !mine.hasOwner()){
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
+		}else{
 			List<HeroInfoBean> heroList = userTeamService.getTeamCache(mine.getOwner().getId());
 			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 			for (HeroInfoBean heroInfo : heroList) {
 				builder.addHeroInfo(heroInfo.buildRankHeroInfo());
 			}
 			responseBuilder.setTeamCommand(builder);
-		}else{
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
-			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 		}
 	}
 

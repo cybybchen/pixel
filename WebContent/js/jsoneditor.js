@@ -57,6 +57,7 @@ function requestUserJson(userid, username, serverid) {
                  // $($(".nav-userbtn")[0]).click()
              }
              json = message;
+             $("#user-editor").empty();
              for(var key in message){
                 if(typeof(message[key]) != "object")
                     continue;
@@ -67,7 +68,7 @@ function requestUserJson(userid, username, serverid) {
                 editor.find(".json-editor-title").attr("key", key);
                 editor.find(".json-editor").jsonEditor(value, { change: updateJSON, propertyclick: showPath });
                 editor.find(".json").val(JSON.stringify(value));
-             }null
+             }
             ////
 //            if (message > 0) {
                 alert(message);
@@ -77,6 +78,11 @@ function requestUserJson(userid, username, serverid) {
             alert("提交数据失败！\n"+message);
         }
     });
+}
+
+function formatJsonEditor(key){
+	return "" +
+			"";
 }
 
 function buildUserJson(){
@@ -162,8 +168,8 @@ $(document).ready(function() {
     //     $(this).text(editor.hasClass('expanded') ? 'Collapse' : 'Expand all');
     // });
     
-    // printJSON();
-    // $('#editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
+    // $('.json').val(JSON.stringify(json));
+    //  $('.json-editor :first').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
 });
 
 

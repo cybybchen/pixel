@@ -90,8 +90,8 @@ public class UserRedisService extends RedisService{
 		return builder.build();
 	}
 	
-	public void cache(UserInfo user){
-		hput(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+user.getServerId(), user.getId()+"", formatJson(user));
+	public void cache(int serverId, UserInfo user){
+		hput(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, user.getId()+"", formatJson(user));
 	}
 	
 	/**

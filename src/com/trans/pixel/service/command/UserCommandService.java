@@ -43,7 +43,7 @@ public class UserCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		userService.cache(user.buildShort());
+		userService.cache(user.getServerId(), user.buildShort());
 		refreshUserLogin(user);
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		userInfoBuilder.setUser(user.build());

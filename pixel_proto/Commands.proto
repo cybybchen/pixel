@@ -243,29 +243,46 @@ message AreaPositionList {
 	repeated AreaPosition region = 1;
 }
 
-message PVPMonster {//pvp怪物
+message PVPMonster {//pvp怪物Config
 	required int32 id = 1;
-	optional int32 belongto = 3;//区域ID
-	optional int32 x = 4;//坐标x
-	optional int32 y = 5;//坐标y
+	optional string name = 2;
+	optional int32 boss = 3;//站立
+	optional int32 fieldid = 4;//区域ID
+	optional int32 count = 5;
+	optional int32 a = 6;
+	optional int32 b = 7;
+	optional int32 x = 8;//坐标x
+	optional int32 y = 9;//坐标y
+	optional int32 positionid = 10;
+}
+
+message PVPMonsterList {
+	repeated PVPMonster enemy = 1;
+}
+
+message PVPPosition {//pvp位置
+	required int32 id = 1;
+	optional int32 x = 2;//坐标x
+	optional int32 y = 3;//坐标y
+}
+
+message PVPPositionList{
+	optional int32 fieldid = 1;
+	optional int32 name = 2;
+	repeated PVPPosition xiaoguai = 3;
+}
+
+message PVPPositionLists{
+	repeated PVPPositionList field = 1;
 }
 
 message PVPBoss {//pvpBoss
 	required int32 id = 1;
-	optional int32 belongto = 3;//区域ID
+	optional string name = 2;
+	optional int32 fieldid = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
 	optional MultiReward reward = 6;//击败奖励
-}
-
-message PVPMonsterList{
-	optional int32 fieldid = 1;
-	optional int32 name = 2;
-	repeated PVPMonster xiaoguai = 3;
-}
-
-message PVPMonsterLists{
-	repeated PVPMonsterList field = 1;
 }
 
 message PVPMine{//pvp矿点
@@ -910,12 +927,12 @@ message RequestPVPMapListCommand {//挂机PVP列表
 }
 
 message RequestAttackPVPMonsterCommand {//pvp攻击怪物
-	required int32 id = 1;
+	required int32 positionid = 1;
 	optional bool ret = 2;
 }
 
 message RequestAttackPVPBossCommand {//pvp攻击BOSS
-	required int32 id = 1;
+	required int32 positionid = 1;
 	optional bool ret = 2;
 }
 

@@ -2,6 +2,7 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,13 +14,17 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.AreaMonster;
 import com.trans.pixel.protoc.Commands.PVPBoss;
 import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
 import com.trans.pixel.protoc.Commands.PVPMonsterList;
-import com.trans.pixel.protoc.Commands.PVPMonsterLists;
+import com.trans.pixel.protoc.Commands.PVPPosition;
+import com.trans.pixel.protoc.Commands.PVPPositionList;
+import com.trans.pixel.protoc.Commands.PVPPositionLists;
+import com.trans.pixel.protoc.Commands.Position;
 
 @Repository
 public class PvpMapRedisService extends RedisService{
@@ -84,17 +89,17 @@ public class PvpMapRedisService extends RedisService{
 		return map;
 	}
 
-	public PVPMonster getMonster(UserBean user, int id) {
+	public PVPMonster getMonster(UserBean user, int positionid) {
 		PVPMonster.Builder builder = PVPMonster.newBuilder();
-		String value = hget(RedisKey.PVPMONSTER_PREFIX+user.getId(), id+"");
+		String value = hget(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}
 		return null;
 	}
 
-	public void deleteMonster(UserBean user, int id) {
-		hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), id+"");
+	public void deleteMonster(UserBean user, int positionid) {
+		hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
 	}
 
 	public PVPBoss getBoss(UserBean user, int id) {
@@ -137,32 +142,40 @@ public class PvpMapRedisService extends RedisService{
 	
 	public List<PVPMonster> getMonsters(UserBean user) {
 		boolean canRefresh = canRefreshMonster(user);
-		List<Integer> monsterIds = new ArrayList<Integer>();
 		List<PVPMonster> monsters = new ArrayList<PVPMonster>();
 		Map<String, String> keyvalue = this.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
 		for(String value : keyvalue.values()){
 			PVPMonster.Builder builder = PVPMonster.newBuilder();
-			if(parseJson(value, builder)){
+			if(parseJson(value, builder))
 				monsters.add(builder.build());
-				monsterIds.add(builder.getId());
-			}
 		}
 		if(canRefresh){
-			Map<String, PVPMonsterList> map = getMonsterConfig();
-			for(PVPMonsterList list : map.values()){
-				int count = 0;
-				for(PVPMonster monster : list.getXiaoguaiList()){
-					if(monsterIds.contains(monster.getId()))
-						count++;
-				}
-				while(count < 5){
-					PVPMonster monster = list.getXiaoguai(RandomUtils.nextInt(list.getXiaoguaiCount()));
-					if(!monsterIds.contains(monster.getId())){
-						monsters.add(monster);
-						keyvalue.put(monster.getId()+"", formatJson(monster));
-						monsterIds.add(monster.getId());
-						count++;
+			Map<String, PVPMonsterList> monstermap = getMonsterConfig();
+			Map<String, PVPPositionList> positionMap = getPositionConfig();
+			for(PVPMonsterList list : monstermap.values()){
+				List<Integer> positionValues = new ArrayList<Integer>();
+				List<PVPMonster> monsterlist = new ArrayList<PVPMonster>();
+				for(PVPMonster monster : monsters){
+					if(monster.getFieldid() == list.getEnemy(0).getFieldid()){
+						monsterlist.add(monster);
+						positionValues.add(monster.getPositionid());
 					}
+				}
+				int count = monsterlist.size();
+				while(count < 5){
+					PVPMonster.Builder monster = PVPMonster.newBuilder(list.getEnemy(RandomUtils.nextInt(list.getEnemyCount())));
+					PVPPositionList positions = positionMap.get(monster.getFieldid()+"");
+					PVPPosition position = positions.getXiaoguai(RandomUtils.nextInt(positions.getXiaoguaiCount()));
+					while(positionValues.contains(position.getId())){
+						position = positions.getXiaoguai(RandomUtils.nextInt(positions.getXiaoguaiCount()));
+					}
+					positionValues.add(position.getId());
+					monster.setPositionid(position.getId());
+					monster.setX(position.getX());
+					monster.setY(position.getY());
+					monsters.add(monster.build());
+					keyvalue.put(monster.getPositionid()+"", formatJson(monster.build()));
+					count++;
 				}
 			}
 			hputAll(RedisKey.PVPMONSTER_PREFIX+user.getId(), keyvalue);
@@ -196,6 +209,27 @@ public class PvpMapRedisService extends RedisService{
 		}
 	}
 	
+	public Map<String, PVPPositionList> getPositionConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.PVPPOSITION_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, PVPPositionList> map = buildPositionConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, PVPPositionList> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.PVPPOSITION_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, PVPPositionList> map = new HashMap<String, PVPPositionList>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				PVPPositionList.Builder builder = PVPPositionList.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
 	public boolean canRefreshMonster(UserBean user){
 		long times[] = {today(18), today(12), today(0)};
 		for(long time : times){
@@ -219,18 +253,33 @@ public class PvpMapRedisService extends RedisService{
 	}
 
 	public Map<String, PVPMonsterList> buildMonsterConfig(){
-		String xml = ReadConfig("lol_pvpxiaoguai.xml");
-		PVPMonsterLists.Builder builder = PVPMonsterLists.newBuilder();
+		String xml = ReadConfig("lol_pvptrash.xml");
+		PVPMonsterList.Builder builder = PVPMonsterList.newBuilder();
 		if(!parseXml(xml, builder)){
 			logger.warn("cannot build PVPMonsterLists");
 			return null;
 		}
 		Map<String, PVPMonsterList> map = new HashMap<String, PVPMonsterList>();
-		for(PVPMonsterList.Builder monsterlist : builder.getFieldBuilderList()){
-			for(PVPMonster.Builder monster : monsterlist.getXiaoguaiBuilderList()){
-				monster.setBelongto(monsterlist.getFieldid());
-			}
-			map.put(monsterlist.getFieldid()+"", monsterlist.build());
+		for(PVPMonster.Builder monster : builder.getEnemyBuilderList()){
+			PVPMonsterList.Builder nbuilder = PVPMonsterList.newBuilder();
+			if(map.containsKey(monster.getFieldid()+""))
+				nbuilder = PVPMonsterList.newBuilder(map.get(monster.getFieldid()+""));
+			nbuilder.addEnemy(monster);
+			map.put(monster.getFieldid()+"", nbuilder.build());
+		}
+		return map;
+	}
+
+	public Map<String, PVPPositionList> buildPositionConfig(){
+		String xml = ReadConfig("lol_pvpxiaoguai.xml");
+		PVPPositionLists.Builder builder = PVPPositionLists.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build PVPPositionLists");
+			return null;
+		}
+		Map<String, PVPPositionList> map = new HashMap<String, PVPPositionList>();
+		for(PVPPositionList.Builder positionlist : builder.getFieldBuilderList()){
+			map.put(positionlist.getFieldid()+"", positionlist.build());
 		}
 		return map;
 	}

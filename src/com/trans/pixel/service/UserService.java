@@ -117,8 +117,8 @@ public class UserService {
 		return userRedisService.getRandUser(serverId);
 	}
 	
-	public void cache(UserInfo user){
-		userRedisService.cache(user);
+	public void cache(int serverId, UserInfo user){
+		userRedisService.cache(serverId, user);
 	}
 	
 	/**

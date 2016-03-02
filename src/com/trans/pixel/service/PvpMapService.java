@@ -68,29 +68,29 @@ public class PvpMapService {
 			if(map != null)
 				mapBuilder.mergeFrom(map);
 			for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
-				PVPMine mine = mineMap.get(mineBuilder.getId());
+				PVPMine mine = mineMap.get(mineBuilder.getId()+"");
 				if(mine != null)
 					mineBuilder.mergeFrom(mine);
 			}
 			for(PVPMonster monster : monsters){
-				if(monster.getBelongto() == mapBuilder.getFieldid())
+				if(monster.getFieldid() == mapBuilder.getFieldid())
 					mapBuilder.addMonster(monster);
 			}
 			for(PVPBoss boss : bosses){
-				if(boss.getBelongto() == mapBuilder.getFieldid())
+				if(boss.getFieldid() == mapBuilder.getFieldid())
 					mapBuilder.addBoss(boss);
 			}
 		}
 		return maplist.build();
 	}
 	
-	public boolean attackMonster(UserBean user, int id, boolean ret){
-		PVPMonster monster = redis.getMonster(user, id);
+	public boolean attackMonster(UserBean user, int positionid, boolean ret){
+		PVPMonster monster = redis.getMonster(user, positionid);
 		if(monster == null)
 			return false;
 		if(ret){
-			redis.deleteMonster(user, id);
-			PVPMap map = redis.getUserMap(user, monster.getBelongto());
+			redis.deleteMonster(user, positionid);
+			PVPMap map = redis.getUserMap(user, monster.getFieldid());
 			if(map == null)
 				return true;
 			PVPMap.Builder builder = PVPMap.newBuilder(map);
@@ -106,7 +106,7 @@ public class PvpMapService {
 			return false;
 		if(ret){
 			redis.deleteBoss(user, id);
-			PVPMap map = redis.getUserMap(user, boss.getBelongto());
+			PVPMap map = redis.getUserMap(user, boss.getFieldid());
 			if(map == null)
 				return true;
 			// PVPMap.Builder builder = PVPMap.newBuilder(map);
@@ -130,7 +130,7 @@ public class PvpMapService {
 					mineCount += mapBuilder.getKuangdianCount();
 				}
 				int enemyCount = mineMap.size();
-				if(mineCount/enemyCount >= 5){
+				if(mineCount/5 >= enemyCount){
 					PVPMine.Builder builder = PVPMine.newBuilder(mine);
 					builder.setOwner(user.buildShort());
 					builder.setEndTime(System.currentTimeMillis()/1000+12*3600);
