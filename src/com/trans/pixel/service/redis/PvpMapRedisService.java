@@ -140,7 +140,7 @@ public class PvpMapRedisService extends RedisService{
 		hdelete(RedisKey.PVPMINE_PREFIX+userId, id+"");
 	}
 	
-	public List<PVPMonster> getMonsters(UserBean user) {
+	public List<PVPMonster> getMonsters(UserBean user, Map<String, PVPMap> pvpMap) {
 		boolean canRefresh = canRefreshMonster(user);
 		List<PVPMonster> monsters = new ArrayList<PVPMonster>();
 		Map<String, String> keyvalue = this.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
@@ -162,7 +162,7 @@ public class PvpMapRedisService extends RedisService{
 					}
 				}
 				int count = monsterlist.size();
-				while(count < 5){
+				while(count < 5){//添加怪物
 					PVPMonster.Builder monster = PVPMonster.newBuilder(list.getEnemy(RandomUtils.nextInt(list.getEnemyCount())));
 					PVPPositionList positions = positionMap.get(monster.getFieldid()+"");
 					PVPPosition position = positions.getXiaoguai(RandomUtils.nextInt(positions.getXiaoguaiCount()));
@@ -173,6 +173,11 @@ public class PvpMapRedisService extends RedisService{
 					monster.setPositionid(position.getId());
 					monster.setX(position.getX());
 					monster.setY(position.getY());
+					PVPMap map = pvpMap.get(monster.getFieldid()+"");
+					int level = RandomUtils.nextInt(11)-5;
+					if(map != null)
+						level += map.getBuff();
+					monster.setLevel(Math.max(0, level));
 					monsters.add(monster.build());
 					keyvalue.put(monster.getPositionid()+"", formatJson(monster.build()));
 					count++;

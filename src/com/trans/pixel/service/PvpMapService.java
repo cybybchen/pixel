@@ -34,7 +34,7 @@ public class PvpMapService {
 		PVPMapList.Builder maplist = PVPMapList.newBuilder(redis.getMapList());
 		Map<String, PVPMap> pvpMap = redis.getUserMaps(user);
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
-		List<PVPMonster> monsters = redis.getMonsters(user);
+		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
 		List<PVPBoss> bosses = redis.getBosses(user);
 		long time = redis.today(6);
 		if(user.getPvpMineRefreshTime() < time){//刷新对手

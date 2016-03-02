@@ -254,6 +254,7 @@ message PVPMonster {//pvp怪物Config
 	optional int32 x = 8;//坐标x
 	optional int32 y = 9;//坐标y
 	optional int32 positionid = 10;
+	optional int32 level = 11;
 }
 
 message PVPMonsterList {
