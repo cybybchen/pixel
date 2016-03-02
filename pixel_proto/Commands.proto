@@ -10,8 +10,8 @@ message UserInfo {
 	optional int32 unionJob = 15;
 	optional int32 vip = 19;
 	optional int32 jewel = 5;
-	optional int32 coin = 6;
-	optional int32 exp = 7;
+	optional int64 coin = 6;
+	optional int64 exp = 7;
 	optional int32 pointPVP = 8; //挂机PVP积分
 	optional int32 pointLadder = 9; //天梯积分
 	optional int32 pointExpedition = 10; //远征积分
@@ -501,8 +501,8 @@ message RequestLootResultCommand {
 }
 
 message ResponseLootResultCommand {
-	optional int32 gold = 1;
-	optional int32 exp = 2;
+	optional int64 gold = 1;
+	optional int64 exp = 2;
 	optional int32 lastLootTime = 3;
 }
 
@@ -572,7 +572,7 @@ message RequestLotteryCommand {
 }
 
 message ResponseLotteryCommand {
-	optional int32 coin = 1;
+	optional int64 coin = 1;
 	optional int32 jewel = 2;
 	repeated RewardInfo rewardList = 3;
 }

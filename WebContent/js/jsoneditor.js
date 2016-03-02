@@ -18,7 +18,7 @@ function addUserTab() {
     userid = $('input[name="userid"]:visible').val();
     username = $('input[name="username"]:visible').val();
     serverid = $('input[name="serverid"]:visible').val();
-    requestUserJson(userid, username, serverid)
+    requestUserJson(userid, username, serverid);
 }
 
 function requestUserJson(userid, username, serverid) {
@@ -56,13 +56,18 @@ function requestUserJson(userid, username, serverid) {
                  $($(".nav-userbtn")[0]).addClass("nav-btn-active");
                  // $($(".nav-userbtn")[0]).click()
              }
+             json = message;
              for(var key in message){
                 if(typeof(message[key]) != "object")
                     continue;
-                 json = message[key];
-                 printJSON();
-                 $('#editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
-             }
+                var value = message[key];
+                var editor = $("#jsoneditor jsoneditor").clone();
+                editor.appendTo("#user-editor");
+                editor.find(".json-editor-title span").text(key);
+                editor.find(".json-editor-title").attr("key", key);
+                editor.find(".json-editor").jsonEditor(value, { change: updateJSON, propertyclick: showPath });
+                editor.find(".json").val(JSON.stringify(value));
+             }null
             ////
 //            if (message > 0) {
                 alert(message);
@@ -93,14 +98,16 @@ function buildUserJson(){
     return json;
 }
 
-function printJSON() {
-    $('#json').val(JSON.stringify(json));
+// function printJSON() {
+//     $('#json').val(JSON.stringify(json));
 
-}
+// }
 
 function updateJSON(data) {
-    json = data;
-    printJSON();
+	var dom = $(this).next();
+    dom.val(JSON.stringify(data));
+    // json = data;
+    // printJSON();
 }
 
 function showPath(path) {
@@ -136,8 +143,8 @@ $(document).ready(function() {
     //     });
     // });
 
-    $('#json').change(function() {
-        var val = $('#json').val();
+    $('.json').change(function() {
+        var val = $(this).val();
 
         if (val) {
             try { json = JSON.parse(val); }
@@ -146,17 +153,17 @@ $(document).ready(function() {
             json = {};
         }
         
-        $('#editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
+        $(this).prev().jsonEditor(json, { change: updateJSON, propertyclick: showPath });
     });
 
-    $('#expander').click(function() {
-        var editor = $('#editor');
-        editor.toggleClass('expanded');
-        $(this).text(editor.hasClass('expanded') ? 'Collapse' : 'Expand all');
-    });
+    // $('#expander').click(function() {
+    //     var editor = $('#editor');
+    //     editor.toggleClass('expanded');
+    //     $(this).text(editor.hasClass('expanded') ? 'Collapse' : 'Expand all');
+    // });
     
-    printJSON();
-    $('#editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
+    // printJSON();
+    // $('#editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
 });
 
 

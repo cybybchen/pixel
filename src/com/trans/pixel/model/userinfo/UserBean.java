@@ -13,8 +13,8 @@ public class UserBean {
 	private int unionJob = 0;
 	private int vip = 0;
 	private int jewel = 0;
-	private int coin = 0;
-	private int exp = 0;
+	private long coin = 0;
+	private long exp = 0;
 	private int pointPVP = 0;
 	private int pointLadder = 0;
 	private int pointExpedition = 0;
@@ -188,25 +188,25 @@ public class UserBean {
 	/**
 	 * 拥有金币
 	 */
-	public int getCoin() {
+	public long getCoin() {
 		return coin;
 	}
 	/**
 	 * 拥有金币
 	 */
-	public void setCoin(int coin) {
+	public void setCoin(long coin) {
 		this.coin = coin;
 	}
 	/**
 	 * 拥有经验
 	 */
-	public int getExp() {
+	public long getExp() {
 		return exp;
 	}
 	/**
 	 * 拥有经验
 	 */
-	public void setExp(int exp) {
+	public void setExp(long exp) {
 		this.exp = exp;
 	}
 	/**

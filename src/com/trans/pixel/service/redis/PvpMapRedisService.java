@@ -159,11 +159,13 @@ public class PvpMapRedisService extends RedisService{
 					PVPMonster monster = list.getXiaoguai(RandomUtils.nextInt(list.getXiaoguaiCount()));
 					if(!monsterIds.contains(monster.getId())){
 						monsters.add(monster);
+						keyvalue.put(monster.getId()+"", formatJson(monster));
 						monsterIds.add(monster.getId());
 						count++;
 					}
 				}
 			}
+			hputAll(RedisKey.PVPMONSTER_PREFIX+user.getId(), keyvalue);
 		}
 		return monsters;
 	}

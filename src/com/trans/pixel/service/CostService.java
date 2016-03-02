@@ -42,7 +42,7 @@ public class CostService {
 	}
 	
 	public boolean costResult(UserBean user, int type, int cost) {
-		int coin = user.getCoin();
+		long coin = user.getCoin();
 		int jewel = user.getJewel();
 		switch (type) {
 			case RewardConst.COIN:

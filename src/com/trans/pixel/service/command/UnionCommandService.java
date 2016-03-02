@@ -100,11 +100,9 @@ public class UnionCommandService extends BaseCommandService {
 	
 	public void reply(RequestReplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		unionService.reply(cmd.getIdList(), cmd.getReceive(), user);
-		if(cmd.getReceive()){
-			ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-			builder.setUnion(unionService.getUnion(user));
-			responseBuilder.setUnionInfoCommand(builder.build());
-		}
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		builder.setUnion(unionService.getUnion(user));
+		responseBuilder.setUnionInfoCommand(builder.build());
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_APPLY_SUCCESS));
 	}
 	

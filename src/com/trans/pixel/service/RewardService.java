@@ -43,7 +43,7 @@ public class RewardService {
 	}
 	
 	public void doRewards(UserBean user, List<RewardBean> rewardList) {
-		int coin = user.getCoin();
+		long coin = user.getCoin();
 		int jewel = user.getJewel();
 		for (RewardBean reward : rewardList) {
 			doReward(user, reward.getItemid(), reward.getCount());
@@ -145,7 +145,7 @@ public class RewardService {
 	}
 	
 	public void doRewards(UserBean user, MultiReward rewards) {
-		int coin = user.getCoin();
+		long coin = user.getCoin();
 		int jewel = user.getJewel();
 		for (RewardInfo reward : rewards.getLootList()) {
 			doReward(user, reward.getItemid(), reward.getCount());
