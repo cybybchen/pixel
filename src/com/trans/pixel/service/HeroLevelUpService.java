@@ -133,19 +133,21 @@ public class HeroLevelUpService {
 		ResultConst result = ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
 		int addValue = calValues(userHero, costInfoIds);
-		
-		StarBean star = starService.getStarBean(heroInfo.getStarLevel() + 1);
-		int needValue = star.getUpvalue() - heroInfo.getValue();
-		if(addValue > 0){
-			userHero.delHeros(costInfoIds);
-			heroInfo.setValue(0);
-			result = SuccessConst.STAR_LEVELUP_SUCCESS;
-		}
-		if (needValue <= addValue) {
-			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
-		}
+		userHero.delHeros(costInfoIds);
+		heroInfo.setValue(heroInfo.getValue() + addValue);
+		calHeroStar(heroInfo);
+		result = SuccessConst.STAR_LEVELUP_SUCCESS;
 		
 		return result;
+	}
+	
+	private void calHeroStar(HeroInfoBean heroInfo) {
+		StarBean star = starService.getStarBean(heroInfo.getStarLevel() + 1);
+		while (heroInfo.getValue() >= star.getUpvalue()) {
+			heroInfo.setValue(heroInfo.getValue() - star.getUpvalue());
+			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
+			star = starService.getStarBean(heroInfo.getStarLevel() + 1);
+		}
 	}
 	
 	private int calValues(UserHeroBean userHero, List<Integer> costInfoIds) {
