@@ -943,7 +943,8 @@ message RequestPVPMineInfoCommand {//pvp矿点对手信息
 
 message RequestAttackPVPMineCommand {//攻击pvp矿点对手
 	required int32 id = 1;
-	optional bool ret = 2;
+	required int32 teamid = 2;
+	optional bool ret = 3;
 }
 
 message RequestRefreshPVPMineCommand {//刷新pvp矿点对手

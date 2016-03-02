@@ -79,6 +79,9 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMine(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
+		int teamid = cmd.getTeamid();
+		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user.getId(), heroList);
 		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
