@@ -247,10 +247,8 @@ public class PushCommandService extends BaseCommandService {
 	public void pushUserDataByRewardId(Builder responseBuilder, UserBean user, int rewardId) {
 		if (rewardId > RewardConst.HERO) {
 			this.pushUserHeroListCommand(responseBuilder, user);
-		} else if (rewardId > RewardConst.PROP) {
-			
-		} else if (rewardId > RewardConst.PACKAGE) {
-			
+		} if (rewardId > RewardConst.PACKAGE) {
+			this.pushUserPropListCommand(responseBuilder, user);
 		} else if (rewardId > RewardConst.CHIP) {
 			this.pushUserEquipListCommand(responseBuilder, user);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
