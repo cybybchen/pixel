@@ -103,6 +103,8 @@ public class UserCommandService extends BaseCommandService {
 			if(vip != null){
 				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
 			}
+			user.setLoginDays(user.getLoginDays() + 1);
+			user.setHasSign(false);
 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));

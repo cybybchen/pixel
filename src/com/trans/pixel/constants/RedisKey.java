@@ -126,4 +126,7 @@ public class RedisKey {
 	
 	//fenjie
 	public static final String FENJIE_KEY = "key:fenjie";
+	
+	//sign
+	public static final String SIGN_KEY = PREFIX + "key:sign";
 }

@@ -37,7 +37,7 @@ public class MessageService {
 			case MessageConst.TYPE_MESSAGE_UNION:
 				createUnionMessageBoard(user, message);
 			default:
-				createMessageBoard(user, message);
+				break;
 		}
 	}
 	

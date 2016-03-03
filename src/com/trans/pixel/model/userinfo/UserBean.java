@@ -41,6 +41,9 @@ public class UserBean {
 	private long pvpBossRefreshTime = 0;
 	private long pvpMineRefreshTime = 0;
 	private int pvpMineLeftTime = 0;
+	private boolean hasSign = false;
+	private int signDays = 0;
+	private int loginDays = 0;
 	/**
 	 * pvp矿点对手剩余刷新次数
 	 */
@@ -455,7 +458,33 @@ public class UserBean {
 	public void setFreeLotteryJewelTime(long freeLotteryJewelTime) {
 		this.freeLotteryJewelTime = freeLotteryJewelTime;
 	}
-	
+	/**
+	 * 当天有没有签过到
+	 */
+	public boolean isHasSign() {
+		return hasSign;
+	}
+	public void setHasSign(boolean hasSign) {
+		this.hasSign = hasSign;
+	}
+	/**
+	 * 签到天数
+	 */
+	public int getSignDays() {
+		return signDays;
+	}
+	public void setSignDays(int signDays) {
+		this.signDays = signDays;
+	}
+	/**
+	 * 登录天数
+	 */
+	public int getLoginDays() {
+		return loginDays;
+	}
+	public void setLoginDays(int loginDays) {
+		this.loginDays = loginDays;
+	}
 	public UserBean init(int serverId, String account, String userName) {
 		setAccount(account);
 		setId(0);

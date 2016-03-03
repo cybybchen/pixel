@@ -311,6 +311,26 @@ message PVPMapList{
 	repeated PVPMap field = 1;
 }
 
+message Qiandao {
+	repeated Sign order = 1;
+	required int32 id = 2;
+	required string activity = 3;
+}
+
+message SignList {
+	repeated Qiandao qiandao = 1;
+}
+
+message Sign {
+	required int32 order = 1;
+	required string description = 2;
+	required int32 targetid = 3;
+	required int32 targetcount = 4;
+	required int32 rewardid = 5;
+	required string rewardname = 6;
+	required int32 rewardcount = 7;
+}
+
 message WeightReward {
 	optional int32 itemcount = 1;
 	optional int32 weightall = 2;
@@ -955,6 +975,14 @@ message ResponsePVPMapListCommand {//挂机PVP列表
 	repeated PVPMap field = 1;
 }
 
+message RequestSignCommand {
+	
+}
+
+message ResponseSignCommand {
+	required RewardInfo reward = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1038,6 +1066,7 @@ message RequestCommand {
 	optional RequestEquipComposeCommand equipComposeCommand = 50;
 	optional RequestUsePropCommand usePropCommand = 51;
 	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
+	optional RequestSignCommand signCommand = 53;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1088,6 +1117,7 @@ message ResponseCommand {
 	optional ResponseUserPropCommand userPropCommand = 34;
 	optional ResponseUsePropCommand usePropCommand = 35;
 	optional ResponseFenjieEquipCommand fenjieEquipCommand = 36;
+	optional ResponseSignCommand signCommand = 37;
 }
 
 
