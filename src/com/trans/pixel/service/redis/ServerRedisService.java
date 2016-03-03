@@ -15,9 +15,10 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+import com.trans.pixel.protoc.Commands.ServerData;
 
 @Repository
-public class ServerRedisService {
+public class ServerRedisService extends RedisService{
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -50,5 +51,24 @@ public class ServerRedisService {
 				return serverIds;
 			}
 		});
+	}
+	
+	public int canRefreshAreaBoss(int serverId){
+		String data = get(RedisKey.SERVERDATA+serverId);
+		ServerData.Builder serverdata = ServerData.newBuilder();
+		if(data != null)
+			parseJson(data, serverdata);
+		int values[] = {21, 18, 12, 6};
+		for(int value : values){
+			long time = today(value);
+			if(time > serverdata.getAreaBossRefreshTime() && time < System.currentTimeMillis()/1000L){
+				if(!setLock(RedisKey.SERVERDATA+serverId, System.currentTimeMillis()))
+					return -1;
+				serverdata.setAreaBossRefreshTime(time);
+				set(RedisKey.SERVERDATA+serverId, formatJson(serverdata.build()));
+				return value;
+			}
+		}
+		return -1;
 	}
 }

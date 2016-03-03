@@ -26,6 +26,10 @@ message UserInfo {
 	optional bool hasSign = 23;//当天有没有签到
 }
 
+message ServerData {
+	optional int64 AreaBossRefreshTime = 1;
+}
+
 message Commodity {
 	required int32 itemid = 1;
 	required string name = 2;
@@ -204,39 +208,39 @@ message AreaBoss {//区域世界BOSS
 	optional int32 belongto = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	//optional MultiReward reward = 6;//击杀奖励
-	//repeated int32 rewardIds = 7;//排行奖励
+	optional int32 group = 6;
+	optional int32 hpMax = 8;//最大血量
+	optional int32 turn = 9;//回合限制
 	///////////////////////////////////
-	optional int32 hpMax = 10;//血量
-	optional int32 hp = 11;//血量
-	optional UserInfo owner = 8;//击杀者
-	repeated Rank ranks = 9;//伤害排行
+	optional int32 hp = 10;//当前血量
+	optional UserInfo owner = 11;//击杀者
+	repeated Rank ranks = 12;//伤害排行
 }
 
 message AreaBossList {
 	repeated AreaBoss region = 1;
 }
 
-message AreaMonsterWeight {
+message AreaWeight {
 	required int32 enemyid = 1;
 	required int32 weight = 2;
 }
 
-message AreaMonsterTime {
+message AreaTime {
 	required int32 time = 1;
 	required int32 group = 2;
 	required int32 count = 3;
 	required int32 condition = 4;
-	repeated AreaMonsterWeight enemy = 5;
+	repeated AreaWeight enemy = 5;
 }
 
-message AreaMonsterFieldTime {
+message AreaTimeList {
 	required int32 id = 1;
-	repeated AreaMonsterTime time = 2;
+	repeated AreaTime time = 2;
 }
 
-message AreaMonsterFieldTimeList {
-	repeated AreaMonsterFieldTime region = 1;
+message AreaFieldTimeList {
+	repeated AreaTimeList region = 1;
 }
 
 message AreaMonster {//区域怪物

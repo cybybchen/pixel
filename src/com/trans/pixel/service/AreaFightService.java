@@ -12,8 +12,10 @@ import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
@@ -32,6 +34,8 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.WeightReward;
 import com.trans.pixel.service.redis.AreaRedisService;
+import com.trans.pixel.service.redis.MailRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 /**
  * 1.1.3.6区域争夺战
@@ -47,6 +51,8 @@ public class AreaFightService extends FightService{
     private RewardService rewardService;
 	@Resource
 	UserTeamService userTeamService;
+	@Resource
+	MailRedisService mailRedisService;
 	
 	private RewardInfo randReward(WeightReward weightreward){
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
@@ -90,6 +96,8 @@ public class AreaFightService extends FightService{
 		AreaBoss.Builder builder = AreaBoss.newBuilder(boss);
 		builder.setHp(builder.getHp()-score);
 		if(builder.getHp() <= 0){//结算
+			if(!redis.setLock("S"+user.getServerId()+"_AreaBoss_"+builder.getId(), System.currentTimeMillis()))
+				return false;
 			builder.setOwner(user.buildShort());
 			//击杀奖励
 			AreaMonsterReward monsterreward = redis.getAreaMonsterReward(id);
@@ -110,7 +118,15 @@ public class AreaFightService extends FightService{
 					break;
 				MultiReward.Builder multireward = MultiReward.newBuilder();
 				multireward.addAllLoot(rankrewards.get(index).getRewardList());
-				rewardService.doRewards(Long.parseLong(rank.getValue()), multireward.build());
+//				rewardService.doRewards(Long.parseLong(rank.getValue()), multireward.build());
+				MailBean mail = new MailBean();
+				mail.setContent("");
+//				mail.setRewardList(buildRewardList(ladderDaily));
+				mail.setStartDate(DateUtil.getCurrentDateString());
+				mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+				mail.setUserId(Long.parseLong(rank.getValue()));
+				mail.parseRewardList(multireward.getLootList());
+				mailRedisService.addMail(mail);
 			}
 		}
 		redis.saveBoss(builder.build(), user);
@@ -147,7 +163,8 @@ public class AreaFightService extends FightService{
 		List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user.getId(), herolist);
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(mine);
-		gainMine(builder, user);
+		if(!gainMine(builder, user))
+			return ErrorConst.AREAMINE_HURRY;
 		builder.setUser(user.buildShort());
 		builder.setEndTime(System.currentTimeMillis()/1000+12*3600);
 		redis.saveResourceMine(builder.build(), user);
@@ -223,36 +240,25 @@ public class AreaFightService extends FightService{
 	}
 
 	public AreaMode getAreas(UserBean user) {
-		AreaMode.Builder areamodebuilder = AreaMode.newBuilder(redis.getAreaMode(user));
+		AreaMode.Builder areamodebuilder = AreaMode.newBuilder(redis.getAreaMode());
 //		Map<String, MultiReward> monsterrewardMap = redis.getAreaMonsterRewards();
 		Map<String, AreaMonster> monsterMap = redis.getMonsters(user);
-		Map<String, AreaBoss> bossMap = redis.getBosses(user);
+		Map<String, AreaBoss.Builder> bossMap = redis.getBosses(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
 			// 更新世界BOSS
-			List<AreaBoss.Builder> bosses = areabuilder.getBossesBuilderList();
-			for (AreaBoss.Builder bossbuilder : bosses) {
-				AreaBoss boss = bossMap.get(bossbuilder.getId() + "");
-				if (boss != null) {
-					bossbuilder.mergeFrom(boss);
+			for (AreaBoss.Builder bossbuilder : bossMap.values()) {
+				if(bossbuilder.getBelongto() == areabuilder.getId()){
 					getBossRank(bossbuilder, user);
-				} else {
-					AreaBoss newboss = redis.createBoss(bossbuilder.getId(), user);
-					bossbuilder.mergeFrom(newboss);
+					areabuilder.addBosses(bossbuilder);
 				}
-//				MultiReward reward = monsterrewardMap.get(bossbuilder.getId() + "");
-//				if (reward != null)
-//					bossbuilder.setReward(reward);
 			}
 			// 更新区域怪物
 			for (AreaMonster monster : monsterMap.values()) {
 				if(monster.getBelongto() == areabuilder.getId()){
 					areabuilder.addMonsters(monster);
-	//				MultiReward reward = monsterrewardMap.get(monsterbuilder.getId() + "");
-	//				if (reward != null)
-	//					monsterbuilder.setReward(reward);
 				}
 			}
 			// 更新资源开采点
@@ -265,12 +271,9 @@ public class AreaFightService extends FightService{
 						resourceFight(builder, user);
 					}
 					resourcebuilder.mergeFrom(builder.build());
-				} else {
-					resourcebuilder.mergeFrom(redis.buildAreaResource(resourcebuilder.getId()));
-					redis.saveResource(resourcebuilder.build(), user);
 				}
-				for (int i = 1; i <= resourcebuilder.getCount(); i++)
-					resourcebuilder.addMines(redis.buildAreaResourceMine(resourcebuilder.build(), (resourcebuilder.getId() - 1) * 20 + i));
+//				for (int i = 1; i <= resourcebuilder.getCount(); i++)
+//					resourcebuilder.addMines(redis.buildAreaResourceMine(resourcebuilder.build(), (resourcebuilder.getId() - 1) * 20 + i));
 				for (AreaResourceMine.Builder minebuilder : resourcebuilder.getMinesBuilderList()) {
 					AreaResourceMine mine = mineMap.get(minebuilder.getId() + "");
 					if (mine != null) {

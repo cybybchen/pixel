@@ -213,15 +213,16 @@ public class RedisService {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
+				String lockey = "LOCK_"+key;
 				BoundValueOperations<String, String> Ops = redisTemplate
-						.boundValueOps(key);
+						.boundValueOps(lockey);
 
 				if(Ops.setIfAbsent(lock+"")){
 					Ops.expire(4, TimeUnit.SECONDS);
-					logger.debug(key + " : succeed to setLock "+ lock);
+					logger.debug(lockey + " : succeed to setLock "+ lock);
 					return true;
 				}else{
-					logger.debug(key + " : fail to setLock "+ lock);
+					logger.debug(lockey + " : fail to setLock "+ lock);
 					return false;
 				}
 			}
@@ -731,20 +732,20 @@ public class RedisService {
 	 * 第二天6点
 	 */
 	public Date nextDay(){
-		Date date = new Date((System.currentTimeMillis()/24/3600L/1000L+1)*24*3600L*1000L+6*3600L*1000L);
+		Date date = new Date(System.currentTimeMillis()/24/3600L/1000L*24*3600L*1000L+(6+16)*3600L*1000L);
 		return date;
 	}
 	/**
 	 * 第二天几点
 	 */
 	public long nextDay(int hour){
-		return (System.currentTimeMillis()/24/3600L/1000L+1)*24*3600L+hour*3600L;
+		return System.currentTimeMillis()/24/3600L/1000L*24*3600L+(hour+16)*3600L;
 	}
 	/**
 	 * 今天几点
 	 */
 	public long today(int hour){
-		return System.currentTimeMillis()/24/3600L/1000L*24*3600L+hour*3600L;
+		return System.currentTimeMillis()/24/3600L/1000L*24*3600L+(hour-8)*3600L;
 	}
 
 	public int nextInt(int value){

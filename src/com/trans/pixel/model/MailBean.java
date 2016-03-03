@@ -76,6 +76,17 @@ public class MailBean {
 	public void setRewardList(List<RewardBean> rewardList) {
 		this.rewardList = rewardList;
 	}
+	public void parseRewardList(List<RewardInfo> rewardList) {
+		List<RewardBean> list = new ArrayList<RewardBean>();
+		for(RewardInfo rewardinfo : rewardList){
+			RewardBean reward = new RewardBean();
+			reward.setItemid(rewardinfo.getItemid());
+			reward.setName(rewardinfo.getItemname());
+			reward.setCount(rewardinfo.getCount());
+			list.add(reward);
+		}
+		this.rewardList = list;
+	}
 	public boolean isRead() {
 		return isRead;
 	}

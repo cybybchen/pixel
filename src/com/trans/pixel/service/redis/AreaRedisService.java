@@ -9,7 +9,6 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
@@ -20,29 +19,28 @@ import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossList;
 import com.trans.pixel.protoc.Commands.AreaBossReward;
 import com.trans.pixel.protoc.Commands.AreaBossRewardList;
+import com.trans.pixel.protoc.Commands.AreaFieldTimeList;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
 import com.trans.pixel.protoc.Commands.AreaMonster;
-import com.trans.pixel.protoc.Commands.AreaMonsterFieldTime;
-import com.trans.pixel.protoc.Commands.AreaMonsterFieldTimeList;
 import com.trans.pixel.protoc.Commands.AreaMonsterList;
 import com.trans.pixel.protoc.Commands.AreaMonsterReward;
 import com.trans.pixel.protoc.Commands.AreaMonsterRewardList;
-import com.trans.pixel.protoc.Commands.AreaMonsterTime;
-import com.trans.pixel.protoc.Commands.AreaMonsterWeight;
 import com.trans.pixel.protoc.Commands.AreaPosition;
 import com.trans.pixel.protoc.Commands.AreaPositionList;
 import com.trans.pixel.protoc.Commands.AreaRankReward;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceList;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
+import com.trans.pixel.protoc.Commands.AreaTime;
+import com.trans.pixel.protoc.Commands.AreaTimeList;
+import com.trans.pixel.protoc.Commands.AreaWeight;
 import com.trans.pixel.protoc.Commands.Position;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 
 @Repository
 public class AreaRedisService extends RedisService{
 	Logger logger = Logger.getLogger(AreaRedisService.class);
-	public final static String AREA = RedisKey.PREFIX+"Area_";
 	public final static String AREABOSS = RedisKey.PREFIX+"AreaBoss_";
 	public final static String AREAMONSTERREWARD = RedisKey.PREFIX+"AreaMonsterReward";
 	public final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
@@ -50,135 +48,78 @@ public class AreaRedisService extends RedisService{
 	public final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
 	@Resource
 	private UserRedisService userRedisService;
-//	@Resource
-//	private RedisTemplate<String, String> redisTemplate;
-
-//	public AreaMode getAreas() {
-//		return redisTemplate.execute(new RedisCallback<AreaMode>() {
-//			@Override
-//			public AreaMode doInRedis(RedisConnection arg0)
-//					throws DataAccessException {
-//				BoundValueOperations<String, String> areaOps = redisTemplate
-//						.boundValueOps(AREA+user.serverId);
-//				BoundHashOperations<String, String, String> bossOps = redisTemplate
-//						.boundHashOps(AREABOSS+user.serverId);
-//				BoundHashOperations<String, String, String> monsterOps = redisTemplate
-//						.boundHashOps(AREAMONSTER+user.serverId);
-//				BoundHashOperations<String, String, String> monsterrewardOps = redisTemplate
-//						.boundHashOps(AREAMONSTERREWARD);
-//				BoundHashOperations<String, String, String> resourceOps = redisTemplate
-//						.boundHashOps(AREARESOURCE+user.serverId);
-//				BoundHashOperations<String, String, String> resourcemineOps = redisTemplate
-//						.boundHashOps(AREARESOURCEMINE+user.serverId);
-//				String value = areaOps.get();
-//				AreaMode.Builder areamodebuilder = AreaMode.newBuilder();
-//				if(value != null && parseJson(value, areamodebuilder)){
-//					;
-//				}else{
-//					AreaMode areamode = buildAreaMode();
-//					areamodebuilder.mergeFrom(areamode);
-//					saveAreaMode(areamode);
-//				}
-//				Map<String, String> monsterrewardMap = monsterrewardOps.entries();
-//				for (String rewardvalue : monsterrewardMap.values()) {
-//					AreaMonsterReward.Builder builder = AreaMonsterReward.newBuilder();
-//					if (parseJson(rewardvalue, builder))
-//						m_MonsterRewardMap.put(builder.getId(), builder.build());
-//				}
-//				List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
-//				for (AreaInfo.Builder areabuilder : areas) {
-//					// 更新世界BOSS
-//					Map<String, String> bossMap = bossOps.entries();
-//					List<AreaBoss.Builder> bosses = areabuilder.getBossesBuilderList();
-//					for (AreaBoss.Builder bossbuilder : bosses) {
-//						value = bossMap.get(bossbuilder.getId() + "");
-//						AreaBoss.Builder builder = AreaBoss.newBuilder();
-//						if (value != null && parseJson(value, builder)) {
-//							bossbuilder.mergeFrom(builder.build());
-//						} else {
-//							AreaBoss newboss = buildAreaBoss(bossbuilder.getId());
-//							bossbuilder.mergeFrom(newboss);
-//							setExpireDate(nextDay());
-//							saveBoss(bossbuilder.build());
-//						}
-//						bossbuilder.setReward(getAreaMonsterReward(bossbuilder.getId()));
-//					}
-//					// 更新区域怪物
-//					Map<String, String> monsterMap = monsterOps.entries();
-//					List<AreaMonster.Builder> monsters = areabuilder.getMonstersBuilderList();
-//					for (AreaMonster.Builder monsterbuilder : monsters) {
-//						value = monsterMap.get(monsterbuilder.getId() + "");
-//						AreaMonster.Builder builder = AreaMonster.newBuilder();
-//						if (value != null && parseJson(value, builder)) {
-//							monsterbuilder.mergeFrom(builder.build());
-//						} else {
-//							AreaMonster newmonster = buildAreaMonster(monsterbuilder.getId());
-//							monsterbuilder.mergeFrom(newmonster);
-//							setExpireDate(nextDay());
-//							saveMonster(monsterbuilder.build());
-//						}
-//						monsterbuilder.setReward(getAreaMonsterReward(monsterbuilder.getId()));
-//					}
-//					// 更新资源开采点
-//					// 更新资源点
-//					Map<String, String> resourceMap = resourceOps.entries();
-//					Map<String, String> mineMap = resourcemineOps.entries();
-//					for (AreaResource.Builder resourcebuilder : areabuilder.getResourcesBuilderList()) {
-//						value = resourceMap.get(resourcebuilder.getId() + "");
-//						AreaResource.Builder builder = AreaResource.newBuilder();
-//						if (value != null && parseJson(value, builder)) {
-//							if(System.currentTimeMillis()/1000 >= builder.getEndtime()){//攻城开始
-//								resourceFight(builder);
-//							}
-//							resourcebuilder.mergeFrom(builder.build());
-//						} else {
-//							resourcebuilder.mergeFrom(buildAreaResource(resourcebuilder.getId()));
-//							saveResource(resourcebuilder.build());
-//						}
-//						for(int i = 1; i <= resourcebuilder.getCount(); i++)
-//							resourcebuilder.addMines(buildAreaResourceMine(resourcebuilder.build(), (resourcebuilder.getId()-1)*20+i));
-//						for (AreaResourceMine.Builder minebuilder : resourcebuilder.getMinesBuilderList()) {
-//							value = mineMap.get(minebuilder.getId() + "");
-//							AreaResourceMine.Builder builder2 = AreaResourceMine.newBuilder();
-//							if (value != null && parseJson(value, builder2)) {
-//								if(System.currentTimeMillis()/1000 >= builder2.getEndTime())//收获
-//									gainMine(builder2);
-//								minebuilder.mergeFrom(builder2.build());
-//							} else {
-//								minebuilder.mergeFrom(buildAreaResourceMine(resourcebuilder.build(), minebuilder.getId()));
-//								saveResourceMine(minebuilder.build());
-//							}
-//						}
-//					}
-//				}
-//				return areamodebuilder.build();
-//			}
-//		});
-//	}
+	@Resource
+	private ServerRedisService serverRedisService;
 	
-	public AreaMode getAreaMode(UserBean user) {
-		String value = this.get(AREA+user.getServerId());
+	public AreaMode getAreaMode() {
+		String value = this.get(RedisKey.AREACONFIG);
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
 			AreaMode areamode = buildAreaMode();
-			saveAreaMode(areamode, user);
+			set(RedisKey.AREACONFIG, formatJson(areamode));
 			return areamode;
 		}
 	}
 	
-	public void saveAreaMode(AreaMode area, UserBean user) {
-		this.set(AREA+user.getServerId(), formatJson(area));
-	}
-	
-	public Map<String, AreaBoss> getBosses(UserBean user){
-		Map<String, AreaBoss> bosses= new HashMap<String, AreaBoss>();
+	public Map<String, AreaBoss.Builder> getBosses(UserBean user){
+		Map<String, AreaBoss.Builder> bosses= new HashMap<String, AreaBoss.Builder>();
 		Map<String, String> valueMap = this.hget(AREABOSS+user.getServerId());
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaBoss.Builder builder = AreaBoss.newBuilder();
 			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
-				bosses.put(entry.getKey(), builder.build());
+				bosses.put(entry.getKey(), builder);
+			}
+		}
+		int timekey = serverRedisService.canRefreshAreaBoss(user.getServerId());
+		if(timekey >= 0){//刷新Boss
+			AreaFieldTimeList timelist = getBossRandConfig();
+			Map<String, AreaBoss> bossMap = getAreaBossConfig();
+			for(AreaTimeList fieldtime : timelist.getRegionList()){
+				Map<Integer, AreaTime> timeMap = new HashMap<Integer, AreaTime>();
+				for(AreaTime areatime : fieldtime.getTimeList()){
+					if(timekey >= areatime.getTime())
+						timeMap.put(areatime.getGroup(), areatime);
+				}
+				for(AreaTime time : timeMap.values()){
+					int count = 0;
+					for(Entry<String, AreaBoss.Builder> entry : bosses.entrySet()){
+						AreaBoss.Builder Boss = entry.getValue();
+						if(Boss.getBelongto() == fieldtime.getId() && Boss.getGroup() == time.getGroup()){
+							if(time.getCondition() == 0){
+								bosses.remove(entry.getKey());
+								deleteBoss(Boss.getId(), user);
+							}else
+								count++;
+						}
+					}
+					while(count < time.getCount()){
+						int allweight = 0;
+						AreaWeight areaweight = null;
+						if(time.getEnemyCount() == 1){
+							areaweight = time.getEnemy(0);
+						}else{
+							for(AreaWeight weight : time.getEnemyList())
+								allweight += weight.getWeight();
+							for(AreaWeight weight : time.getEnemyList()){
+								if(allweight * Math.random() < weight.getWeight()){
+									areaweight = weight;
+									break;
+								}else
+									allweight -= weight.getWeight();
+							}
+							if(areaweight == null)
+								break;
+						}
+						AreaBoss Boss = bossMap.get(areaweight.getEnemyid()+"");
+						AreaBoss.Builder builder = AreaBoss.newBuilder(Boss);
+						builder.setGroup(time.getGroup());
+						saveBoss(builder.build(), user);
+						bosses.put(builder.getId()+"", builder);
+						count++;
+					}
+				}
 			}
 		}
 		return bosses;
@@ -194,6 +135,10 @@ public class AreaRedisService extends RedisService{
 //			saveBoss(boss);
 			return null;
 		}
+	}
+	
+	public void deleteBoss(int id,UserBean user){
+		this.hdelete(AREABOSS+user.getServerId(), id+"");
 	}
 	
 	public void saveBoss(AreaBoss boss,UserBean user) {
@@ -216,8 +161,8 @@ public class AreaRedisService extends RedisService{
 		int values[] = {21, 18, 12, 6};
 		for(int value : values){
 			long time = today(value);
-			if(time > user.getPvpMonsterRefreshTime() && time < System.currentTimeMillis()/1000L){
-				user.setPvpMonsterRefreshTime(time);
+			if(time > user.getAreaMonsterRefreshTime() && time < System.currentTimeMillis()/1000L){
+				user.setAreaMonsterRefreshTime(time);
 				userRedisService.updateUser(user);
 				return value;
 			}
@@ -237,52 +182,59 @@ public class AreaRedisService extends RedisService{
 		}
 		int timekey = canRefreshMonster(user);
 		if(timekey >= 0){//刷新怪物
-			AreaMonsterFieldTimeList timelist = getMonsterRandConfig();
-			Map<String, AreaMonster> monsterMap = readAreaMonster();
-			Map<String, AreaPosition> positionMap = readAreaPosition();
-			for(AreaMonsterFieldTime fieldtime : timelist.getRegionList()){
-				for(AreaMonsterTime time : fieldtime.getTimeList()){
-					if(timekey == time.getTime()){
-						int count = 0;
-						for(Entry<String, AreaMonster> entry : monsters.entrySet()){
-							AreaMonster monster = entry.getValue();
-							if(monster.getBelongto() == fieldtime.getId() && monster.getGroup() == time.getGroup()){
-								if(time.getCondition() == 0){
-									monsters.remove(entry.getKey());
-									deleteMonster(monster.getId(), user);
-								}else
-									count++;
+			AreaFieldTimeList timelist = getMonsterRandConfig();
+			Map<String, AreaMonster> monsterMap = getAreaMonsterConfig();
+			Map<String, AreaPosition> positionMap = getAreaPosition();
+			for(AreaTimeList fieldtime : timelist.getRegionList()){
+				Map<Integer, AreaTime> timeMap = new HashMap<Integer, AreaTime>();
+				for(AreaTime areatime : fieldtime.getTimeList()){
+					if(timekey >= areatime.getTime())
+						timeMap.put(areatime.getGroup(), areatime);
+				}
+				for(AreaTime time : timeMap.values()){
+					int count = 0;
+					for(Entry<String, AreaMonster> entry : monsters.entrySet()){
+						AreaMonster monster = entry.getValue();
+						if(monster.getBelongto() == fieldtime.getId() && monster.getGroup() == time.getGroup()){
+							if(time.getCondition() == 0){
+								monsters.remove(entry.getKey());
+								deleteMonster(monster.getId(), user);
+							}else
+								count++;
+						}
+					}
+					while(count < time.getCount()){
+						int allweight = 0;
+						for(AreaWeight weight : time.getEnemyList())
+							allweight += weight.getWeight();
+						AreaWeight areaweight = null;
+						for(AreaWeight weight : time.getEnemyList()){
+							if(allweight * Math.random() < weight.getWeight()){
+								areaweight = weight;
+								break;
+							}else
+								allweight -= weight.getWeight();
+						}
+						if(areaweight == null)
+							break;
+						AreaMonster monster = monsterMap.get(areaweight.getEnemyid()+"");
+						AreaMonster.Builder builder = AreaMonster.newBuilder(monster);
+						builder.setGroup(time.getGroup());
+						//add position
+						Position position = randPosition(positionMap.get(monster.getBelongto()+"").getPositionList());
+						Iterator<AreaMonster> iter = monsters.values().iterator();
+						while (iter.hasNext()) {
+							AreaMonster monster2 = iter.next();
+							if(monster2.getBelongto() == monster.getBelongto() && monster2.getX() == position.getX() && monster2.getY() == position.getY()){
+								position = randPosition(positionMap.get(monster.getBelongto()+"").getPositionList());
+								iter = monsters.values().iterator();
 							}
 						}
-						if(count < 3){
-							int allweight = 0;
-							for(AreaMonsterWeight weight : time.getEnemyList())
-								allweight += weight.getWeight();
-							AreaMonsterWeight monsterweight = null;
-							for(AreaMonsterWeight weight : time.getEnemyList()){
-								if(allweight * Math.random() < weight.getWeight())
-									monsterweight = weight;
-								else
-									allweight -= weight.getWeight();
-							}
-							AreaMonster monster = monsterMap.get(monsterweight.getEnemyid()+"");
-							AreaMonster.Builder builder = AreaMonster.newBuilder(monster);
-							builder.setGroup(time.getGroup());
-							//add position
-							Position position = randPosition(positionMap.get(monster.getBelongto()+"").getPositionList());
-							Iterator<AreaMonster> iter = monsters.values().iterator();
-							while (iter.hasNext()) {
-								AreaMonster monster2 = iter.next();
-								if(monster2.getBelongto() == monster.getBelongto() && monster2.getX() == position.getX() && monster2.getY() == position.getY()){
-									position = randPosition(positionMap.get(monster.getBelongto()+"").getPositionList());
-									iter = monsters.values().iterator();
-								}
-							}
-							builder.setX(position.getX());
-							builder.setY(position.getY());
-							saveMonster(builder.build(), user);
-							monsters.put(builder.getId()+"", builder.build());
-						}
+						builder.setX(position.getX());
+						builder.setY(position.getY());
+						saveMonster(builder.build(), user);
+						monsters.put(builder.getId()+"", builder.build());
+						count++;
 					}
 				}
 			}
@@ -316,50 +268,27 @@ public class AreaRedisService extends RedisService{
 	public void deleteMonster(int monsterId,UserBean user) {
 		this.hdelete(AREAMONSTER+user.getId(), monsterId+"");
 	}
-	
-//	public AreaMonster createMonster(int id,UserBean user){
-//		AreaMonster monster = buildAreaMonster(id);
-//		if(monster != null)
-//			saveMonster(monster,user);
-//		return monster;
-//	}
-
-//	public Map<String, MultiReward> getAreaMonsterRewards(){
-//		Map<String, MultiReward> rewards= new HashMap<String, MultiReward>();
-//		Map<String, String> valueMap = this.hget(AREAMONSTERREWARD);
-//		for(Entry<String, String> entry : valueMap.entrySet()){
-//			MultiReward.Builder builder = MultiReward.newBuilder();
-//			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
-//				rewards.put(entry.getKey(), builder.build());
-//			}
-//		}
-//		return rewards;
-//	}
-
-//	public void saveMonsterReward(MultiReward monsterreward) {
-//		this.hput(AREAMONSTERREWARD, monsterreward.getId()+"", formatJson(monsterreward));
-//	}
-
-	public AreaMonsterReward getAreaMonsterReward(int id){
-		AreaMonsterReward.Builder builder = AreaMonsterReward.newBuilder();
-		String value = this.hget(AREAMONSTERREWARD, id+"");
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}else{
-			return buildAreaMonsterReward(id);
-		}
-	}
 
 	public Map<String, AreaResource> getResources(UserBean user){
 		Map<String, AreaResource> resources= new HashMap<String, AreaResource>();
 		Map<String, String> valueMap = this.hget(AREARESOURCE+user.getServerId());
-		for(Entry<String, String> entry : valueMap.entrySet()){
-			AreaResource.Builder builder = AreaResource.newBuilder();
-			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
-				resources.put(entry.getKey(), builder.build());
+		if(!valueMap.isEmpty()){
+			for(Entry<String, String> entry : valueMap.entrySet()){
+				AreaResource.Builder builder = AreaResource.newBuilder();
+				if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
+					resources.put(entry.getKey(), builder.build());
+				}
 			}
+			return resources;
+		}else{
+			resources = getAreaResourceConfig();
+			Map<String, String> keyvalue = new HashMap<String, String>();
+			for(Entry<String, AreaResource> entry : resources.entrySet()){
+				keyvalue.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(AREARESOURCE+user.getServerId(), keyvalue);
+			return resources;
 		}
-		return resources;
 	}
 	
 	public AreaResource getResource(int id,UserBean user){
@@ -406,13 +335,6 @@ public class AreaRedisService extends RedisService{
 		this.hput(AREARESOURCEMINE+user.getServerId(), mine.getId()+"", formatJson(mine));
 	}
 	
-	public AreaBoss createBoss(final int id,UserBean user){
-		AreaBoss boss = buildAreaBoss(id);
-		if(boss != null)
-			saveBoss(boss,user);
-		return boss;
-	}
-	
 	public AreaResourceMine buildAreaResourceMine(final AreaResource resource, final int id){
 		AreaResourceMine.Builder mineBuilder = AreaResourceMine.newBuilder();
 		mineBuilder.setId(id);
@@ -423,38 +345,50 @@ public class AreaRedisService extends RedisService{
 		// mineBuilder.setEndtime(12222);
 		return mineBuilder.build();
 	}
-	public Map<Integer, AreaResource> readAreaResource(){
-		Map<Integer, AreaResource> m_ResourceMap = new HashMap<Integer, AreaResource>();
-		String xml = ReadConfig("lol_region2.xml");
-		AreaResourceList.Builder builder = AreaResourceList.newBuilder();
-		parseXml(xml, builder);
-		for(AreaResource.Builder resourcebuilder : builder.getRegionBuilderList()){
-			// for(int i = 1; i <= resourcebuilder.getCount(); i++)
-			// 	resourcebuilder.addMines(buildAreaResourceMine(resourcebuilder.build(), (resourcebuilder.getId()-1)*20+i));
-			m_ResourceMap.put(resourcebuilder.getId(), resourcebuilder.build());
+
+	public Map<String, AreaResource> getAreaResourceConfig(){
+		Map<String, String> keyvalue = hget(RedisKey.AREARESOURCECONFIG);
+		Map<String, AreaResource> map = new HashMap<String, AreaResource>();
+		if(!keyvalue.isEmpty()){
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				AreaResource.Builder builder = AreaResource.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}else{
+			String xml = ReadConfig("lol_region2.xml");
+			AreaResourceList.Builder builder = AreaResourceList.newBuilder();
+			parseXml(xml, builder);
+			for(AreaResource resource : builder.getRegionList()){
+				map.put(resource.getId()+"", resource);
+				keyvalue.put(resource.getId()+"", formatJson(resource));
+			}
+			hputAll(RedisKey.AREARESOURCECONFIG, keyvalue);
+			return map;
 		}
-		return m_ResourceMap;
 	}
-	public AreaResource buildAreaResource(final int id){
-		Map<Integer, AreaResource> m_ResourceMap = readAreaResource();
-		AreaResource resource = m_ResourceMap.get(id);
-		if(resource != null)
-			return resource;
-		logger.warn("cannot build AreaResource:"+id);
-		return null;
-	}
-	public AreaMonsterFieldTimeList readMonsterRandConfig(){
-		AreaMonsterFieldTimeList.Builder builder = AreaMonsterFieldTimeList.newBuilder();
-		String xml = ReadConfig("lol_regionrefresh.xml");
-		parseXml(xml, builder);
-		return builder.build();
-	}
-	public AreaMonsterFieldTimeList getMonsterRandConfig(){
-		AreaMonsterFieldTimeList.Builder builder = AreaMonsterFieldTimeList.newBuilder();
+
+	public AreaFieldTimeList getMonsterRandConfig(){
+		AreaFieldTimeList.Builder builder = AreaFieldTimeList.newBuilder();
 		String value = get(RedisKey.AREAMONSTERRANDCONFIG);
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		builder = AreaMonsterFieldTimeList.newBuilder(readMonsterRandConfig());
+
+		String xml = ReadConfig("lol_regionrefresh.xml");
+		parseXml(xml, builder);
+		set(RedisKey.AREAMONSTERRANDCONFIG, formatJson(builder.build()));
+		return builder.build();
+	}
+	public AreaFieldTimeList getBossRandConfig(){
+		AreaFieldTimeList.Builder builder = AreaFieldTimeList.newBuilder();
+		String value = get(RedisKey.AREABOSSRANDCONFIG);
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+
+		String xml = ReadConfig("lol_regionrefresh2.xml");
+		parseXml(xml, builder);
+		set(RedisKey.AREABOSSRANDCONFIG, formatJson(builder.build()));
 		return builder.build();
 	}
 	public AreaBossRewardList readBossRewardConfig(){
@@ -508,77 +442,95 @@ public class AreaRedisService extends RedisService{
 			return builder.build();
 		}
 	}
-	public Map<Integer, AreaBoss> readAreaBoss(){
-		Map<Integer, AreaBoss> m_BossMap = new HashMap<Integer, AreaBoss>();
-		String xml = ReadConfig("lol_regiongve.xml");
-		AreaBossList.Builder builder = AreaBossList.newBuilder();
-		parseXml(xml, builder);
-		for(AreaBoss.Builder bossbuilder : builder.getRegionBuilderList()){
-			// bossbuilder.setReward(buildAreaMonsterReward(id));
-			bossbuilder.setHpMax(100);
-			bossbuilder.setHp(100);
-			m_BossMap.put(bossbuilder.getId(), bossbuilder.build());
+
+	public Map<String, AreaBoss> getAreaBossConfig(){
+		Map<String, String> keyvalue = hget(RedisKey.AREABOSS_CONFIG);
+		Map<String, AreaBoss> map = new HashMap<String, AreaBoss>();
+		if(!keyvalue.isEmpty()){
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				AreaBoss.Builder builder = AreaBoss.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}else{
+			String xml = ReadConfig("lol_regiongve.xml");
+			AreaBossList.Builder builder = AreaBossList.newBuilder();
+			parseXml(xml, builder);
+			for(AreaBoss.Builder bossbuilder : builder.getRegionBuilderList()){
+				bossbuilder.setHpMax(bossbuilder.getHp());
+				map.put(bossbuilder.getId()+"", bossbuilder.build());
+				keyvalue.put(bossbuilder.getId()+"", formatJson(bossbuilder.build()));
+			}
+			hputAll(RedisKey.AREABOSS_CONFIG, keyvalue);
+			return map;
 		}
-		return m_BossMap;
 	}
-	public AreaBoss buildAreaBoss(final int id){
-		Map<Integer, AreaBoss> m_BossMap = readAreaBoss();
-		AreaBoss boss = m_BossMap.get(id);
-		if(boss != null)
-			return boss;
-		logger.warn("cannot build AreaBoss:"+id);
-		return null;
-	}
-	public Map<String, AreaPosition> readAreaPosition(){
-		Map<String, AreaPosition> m_PositionMap = new HashMap<String, AreaPosition>();
-		String xml = ReadConfig("lol_regionposition.xml");
-		AreaPositionList.Builder builder = AreaPositionList.newBuilder();
-		parseXml(xml, builder);
-		for(AreaPosition.Builder positionbuilder : builder.getRegionBuilderList()){
-			// positionbuilder.setReward(buildAreaPositionReward(id));
-			m_PositionMap.put(positionbuilder.getId()+"", positionbuilder.build());
+	
+	public Map<String, AreaPosition> getAreaPosition(){
+		Map<String, String> keyvalue = hget(RedisKey.AREAPOSITION_CONFIG);
+		Map<String, AreaPosition> map = new HashMap<String, AreaPosition>();
+		if(!keyvalue.isEmpty()){
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				AreaPosition.Builder builder = AreaPosition.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}else{
+			String xml = ReadConfig("lol_regionposition.xml");
+			AreaPositionList.Builder builder = AreaPositionList.newBuilder();
+			parseXml(xml, builder);
+			for(AreaPosition position : builder.getRegionList()){
+				map.put(position.getId()+"", position);
+				keyvalue.put(position.getId()+"", formatJson(position));
+			}
+			hputAll(RedisKey.AREAPOSITION_CONFIG, keyvalue);
+			return map;
 		}
-		return m_PositionMap;
 	}
-	public Map<String, AreaMonster> readAreaMonster(){
-		Map<String, AreaMonster> m_MonsterMap = new HashMap<String, AreaMonster>();
-		String xml = ReadConfig("lol_regionpve.xml");
-		AreaMonsterList.Builder builder = AreaMonsterList.newBuilder();
-		parseXml(xml, builder);
-		for(AreaMonster.Builder monsterbuilder : builder.getRegionBuilderList()){
-			// monsterbuilder.setReward(buildAreaMonsterReward(id));
-			m_MonsterMap.put(monsterbuilder.getId()+"", monsterbuilder.build());
+	
+	public Map<String, AreaMonster> getAreaMonsterConfig(){
+		Map<String, String> keyvalue = hget(RedisKey.AREAMONSTER_CONFIG);
+			Map<String, AreaMonster> map = new HashMap<String, AreaMonster>();
+		if(!keyvalue.isEmpty()){
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				AreaMonster.Builder builder = AreaMonster.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}else{
+			String xml = ReadConfig("lol_regionpve.xml");
+			AreaMonsterList.Builder builder = AreaMonsterList.newBuilder();
+			parseXml(xml, builder);
+			for(AreaMonster monster : builder.getRegionList()){
+				map.put(monster.getId()+"", monster);
+				keyvalue.put(monster.getId()+"", formatJson(monster));
+			}
+			hputAll(RedisKey.AREAMONSTER_CONFIG, keyvalue);
+			return map;
 		}
-		return m_MonsterMap;
 	}
-//	public AreaMonster buildAreaMonster(final int id){
-//		Map<String, AreaMonster> m_MonsterMap = readAreaMonster();
-//		AreaMonster monster = m_MonsterMap.get(id+"");
-//		if(monster != null)
-//			return monster;
-//		logger.warn("cannot build AreaMonster:"+id);
-//		return null;
-//	}
-	public Map<Integer, AreaMonsterReward> readAreaMonsterReward(){
-		Map<Integer, AreaMonsterReward> m_MonsterRewardMap = new HashMap<Integer, AreaMonsterReward>();
-		Map<String, String> keyvalue = new HashMap<String, String>();
-		String xml = ReadConfig("lol_regionloot.xml");
-		AreaMonsterRewardList.Builder builder = AreaMonsterRewardList.newBuilder();
-		parseXml(xml, builder);
-		for(AreaMonsterReward reward : builder.getRegionList()){
-			m_MonsterRewardMap.put(reward.getId(), reward);
-			keyvalue.put(reward.getId()+"", formatJson(reward));
+
+	public AreaMonsterReward getAreaMonsterReward(int id){
+		AreaMonsterReward.Builder builder = AreaMonsterReward.newBuilder();
+		String value = this.hget(AREAMONSTERREWARD, id+"");
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			Map<Integer, AreaMonsterReward> map = new HashMap<Integer, AreaMonsterReward>();
+			Map<String, String> keyvalue = new HashMap<String, String>();
+			String xml = ReadConfig("lol_regionloot.xml");
+			AreaMonsterRewardList.Builder list = AreaMonsterRewardList.newBuilder();
+			parseXml(xml, list);
+			for(AreaMonsterReward reward : list.getRegionList()){
+				map.put(reward.getId(), reward);
+				keyvalue.put(reward.getId()+"", formatJson(reward));
+			}
+			hputAll(AREAMONSTERREWARD, keyvalue);
+			return map.get(id);
 		}
-		hputAll(AREAMONSTERREWARD, keyvalue);
-		return m_MonsterRewardMap;
-	}
-	public AreaMonsterReward buildAreaMonsterReward(final int id){
-		Map<Integer, AreaMonsterReward> m_MonsterRewardMap = readAreaMonsterReward();
-		AreaMonsterReward monsterreward = m_MonsterRewardMap.get(id);
-		if(monsterreward != null)
-			return monsterreward;
-		logger.warn("cannot build AreaMonsterReward:"+id);
-		return null;
 	}
 	public AreaMode buildAreaMode(){
 		String xml = ReadConfig("lol_region1.xml");
@@ -587,16 +539,16 @@ public class AreaRedisService extends RedisService{
 			logger.warn("cannot build AreaMode");
 			return null;
 		}
-		Map<Integer, AreaBoss> m_BossMap = readAreaBoss();
+//		Map<Integer, AreaBoss> m_BossMap = readAreaBoss();
 //		Map<Integer, AreaMonster> m_MonsterMap = readAreaMonster();
-		Map<Integer, AreaResource> m_ResourceMap = readAreaResource();
-		for(AreaBoss boss : m_BossMap.values()){
-			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
-				if(areabuilder.getId() == boss.getBelongto()){
-					areabuilder.addBosses(boss);
-				}
-			}
-		}
+		Map<String, AreaResource> m_ResourceMap = getAreaResourceConfig();
+//		for(AreaBoss boss : m_BossMap.values()){
+//			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
+//				if(areabuilder.getId() == boss.getBelongto()){
+//					areabuilder.addBosses(boss);
+//				}
+//			}
+//		}
 //		for(AreaMonster monster : m_MonsterMap.values()){
 //			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
 //				if(areabuilder.getId() == monster.getBelongto()){
@@ -607,7 +559,10 @@ public class AreaRedisService extends RedisService{
 		for(AreaResource resource : m_ResourceMap.values()){
 			for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
 				if(areabuilder.getId() == resource.getBelongto()){
-					areabuilder.addResources(resource);
+					AreaResource.Builder resourcebuilder = AreaResource.newBuilder(resource);
+					for (int i = 1; i <= resourcebuilder.getCount(); i++)
+						resourcebuilder.addMines(buildAreaResourceMine(resourcebuilder.build(), (resourcebuilder.getId() - 1) * 20 + i));
+					areabuilder.addResources(resourcebuilder);
 				}
 			}
 		}
