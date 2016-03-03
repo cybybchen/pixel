@@ -12,7 +12,6 @@ import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
@@ -43,7 +42,6 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
-import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
@@ -70,7 +68,6 @@ import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
@@ -105,8 +102,6 @@ public abstract class RequestScreen implements RequestHandle {
 	
 	protected abstract boolean handleCommand(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user);
 	
-	protected abstract boolean handleCommand(RequestAttackRelativeCommand cmd, Builder responseBuilder, UserBean user);
-	
 	protected abstract boolean handleCommand(RequestLootResultCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user);
@@ -114,8 +109,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAddHeroEquipCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestRefreshRelatedUserCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -189,8 +182,6 @@ public abstract class RequestScreen implements RequestHandle {
 	
 	protected abstract boolean handleCommand(RequestGetUserFriendListCommand cmd, Builder responseBuilder, UserBean user);
 	
-	protected abstract boolean handleCommand(RequestGetUserMineCommand cmd, Builder responseBuilder, UserBean user);
-	
 	protected abstract boolean handleCommand(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestUsePropCommand cmd, Builder responseBuilder, UserBean user);
@@ -263,11 +254,6 @@ public abstract class RequestScreen implements RequestHandle {
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }
-        if (request.hasAttackRelativeCommand()) {
-        	RequestAttackRelativeCommand cmd = request.getAttackRelativeCommand();
-        	if (result)
-        		result = handleCommand(cmd, responseBuilder, user);
-        }
         if (request.hasHeroLevelUpCommand()) {
         	RequestHeroLevelUpCommand cmd = request.getHeroLevelUpCommand();
             if (result)
@@ -290,11 +276,6 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasLootResultCommand()) {
         	RequestLootResultCommand cmd = request.getLootResultCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasRefreshRelatedUserCommand()) {
-        	RequestRefreshRelatedUserCommand cmd = request.getRefreshRelatedUserCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
@@ -485,11 +466,6 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasUserFriendListCommand()) {
         	RequestGetUserFriendListCommand cmd = request.getUserFriendListCommand();
-        	if (result)
-        		result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasUserMineCommand()) {
-        	RequestGetUserMineCommand cmd = request.getUserMineCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

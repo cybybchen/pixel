@@ -39,35 +39,6 @@ public class PvpCommandService extends BaseCommandService {
 	@Resource
 	private MailService mailService;
 	
-//	public void attackRelatedUser(RequestAttackRelativeCommand cmd, Builder responseBuilder, UserBean user) {	
-//		ResponseAttackRelativeCommand.Builder builder = ResponseAttackRelativeCommand.newBuilder();
-//		long userId = user.getId();
-//		int mapId = cmd.getMapId();
-//		int mineId = cmd.getMineId();
-//		UserMineBean userMine = pvpMapService.attackRelativeUser(userId, mapId, mineId);
-//		if (userMine == null) {
-//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PVP_MAP_ERROR);
-//            responseBuilder.setErrorCommand(errorCommand);
-//			return;
-//		}
-//		
-//		builder.setMapId(userMine.getMapId());
-//		builder.setMineId(userMine.getMineId());
-//		builder.setPreventTime(userMine.getPreventTime());
-//		builder.setLevel(userMine.getLevel());
-//		
-//		responseBuilder.setAttackRelativeCommand(builder);
-//	}
-//	
-//	public void refreshRelatedUser(RequestRefreshRelatedUserCommand cmd, Builder responseBuilder, UserBean user) {	
-//		ResponseRefreshRelatedUserCommand.Builder builder = ResponseRefreshRelatedUserCommand.newBuilder();
-//		long refreshUserId = pvpMapService.refreshRelatedUser(user, cmd.getMapId(), cmd.getMineId());
-//		builder.setLeftTimes(user.getRefreshLeftTimes());
-//		builder.setRelatedUserId(refreshUserId);
-//		
-//		responseBuilder.setRefreshRelatedUserCommand(builder.build());
-//	}
-	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(user);
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();

@@ -16,7 +16,6 @@ import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
@@ -47,7 +46,6 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
-import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
@@ -74,7 +72,6 @@ import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
@@ -194,13 +191,6 @@ public class GameDataScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestAttackRelativeCommand cmd,
-			Builder responseBuilder, UserBean user) {
-//		pvpCommandService.attackRelatedUser(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
 	protected boolean handleCommand(RequestLootResultCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		lootCommandService.lootResult(cmd, responseBuilder, user);
@@ -225,13 +215,6 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		teamCommandService.updateUserTeam(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestRefreshRelatedUserCommand cmd,
-			Builder responseBuilder, UserBean user) {
-//		pvpCommandService.refreshRelatedUser(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -626,12 +609,6 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestGetUserFriendListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		friendCommandService.getUserFriendList(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestGetUserMineCommand cmd,
-			Builder responseBuilder, UserBean user) {
 		return true;
 	}
 

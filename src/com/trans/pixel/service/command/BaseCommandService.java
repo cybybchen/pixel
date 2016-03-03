@@ -17,7 +17,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
-import com.trans.pixel.model.userinfo.UserMineBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
@@ -27,14 +26,12 @@ import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.MessageBoard;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.ResponseGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserEquip;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHero;
-import com.trans.pixel.protoc.Commands.UserMine;
 import com.trans.pixel.protoc.Commands.UserProp;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.protoc.Commands.UserTeam;
@@ -110,17 +107,6 @@ public class BaseCommandService {
 		builder.setExp(user.getExp());
 		builder.setGold(user.getCoin());
 		builder.setLastLootTime(user.getLastLootTime());
-		
-		return builder.build();
-	}
-	
-	protected ResponseGetUserMineCommand buildGetUserMineCommand(List<UserMineBean> userMineList) {
-		ResponseGetUserMineCommand.Builder builder = ResponseGetUserMineCommand.newBuilder();
-		List<UserMine> userMineBuilderList = new ArrayList<UserMine>();
-		for (UserMineBean userMine : userMineList) {
-			userMineBuilderList.add(userMine.buildUserMine());
-		}
-		builder.addAllUserMine(userMineBuilderList);
 		
 		return builder.build();
 	}

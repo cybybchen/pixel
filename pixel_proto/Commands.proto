@@ -615,43 +615,12 @@ message ResponseEquipComposeCommand {
 	required int32 equipId = 1;
 }
 
-message RequestAttackRelativeCommand {
-	required int32 mapId = 1;
-	required int32 mineId = 2;
-}
-
-message ResponseAttackRelativeCommand {
-	required int32 mapId = 1;
-	required int32 mineId = 2;
-	required int64 preventTime = 3;
-	required int32 level = 4;
-	required int32 teamid = 5;
-}
-
-message RequestGetUserMineCommand {
-
-}
-
-message ResponseGetUserMineCommand {
-	repeated UserMine userMine = 1;
-}
-
 message RequestGetTeamCommand {
 	required int64 userId = 1;
 }
 
 message ResponseGetTeamCommand {
 	repeated HeroInfo heroInfo = 1;
-}
-
-message RequestRefreshRelatedUserCommand {
-	required int32 mapId = 1;
-	required int32 mineId = 2;
-}
-
-message ResponseRefreshRelatedUserCommand {
-	required int32 leftTimes = 1;
-	required int64 relatedUserId = 2;
 }
 
 message RequestLotteryCommand {
@@ -1058,8 +1027,6 @@ message RequestCommand {
 	optional RequestHeroLevelUpCommand heroLevelUpCommand = 9;
 	optional RequestLootResultCommand lootResultCommand = 10;
 	optional RequestAddHeroEquipCommand addHeroEquipCommand = 11;
-	optional RequestAttackRelativeCommand attackRelativeCommand = 12;
-	optional RequestRefreshRelatedUserCommand refreshRelatedUserCommand = 13;
 	optional RequestLotteryCommand lotteryCommand = 14;
 	optional RequestGetLadderRankListCommand getLadderRankListCommand = 15;
 	optional RequestGetUserLadderRankListCommand getUserLadderRankListCommand = 16;
@@ -1125,7 +1092,6 @@ message RequestCommand {
 	optional RequestUserTeamListCommand userTeamListCommand = 46;
 	optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
 	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
-	optional RequestGetUserMineCommand userMineCommand = 49;
 	optional RequestEquipComposeCommand equipComposeCommand = 50;
 	optional RequestUsePropCommand usePropCommand = 51;
 	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
@@ -1155,9 +1121,6 @@ message ResponseCommand {
 	optional ResponseLevelLootResultCommand levelLootResultCommand = 7;
 	optional ResponseHeroResultCommand heroResultCommand = 8;
 	optional ResponseLootResultCommand lootResultCommand = 9;
-	optional ResponseAttackRelativeCommand attackRelativeCommand = 10;
-	optional ResponseGetUserMineCommand getUserMineCommand = 11;
-	optional ResponseRefreshRelatedUserCommand refreshRelatedUserCommand = 12;
 	optional ResponseLotteryCommand lotteryCommand = 13;
 	optional ResponseGetUserHeroCommand getUserHeroCommand = 14;
 	optional ResponseGetLadderRankListCommand getLadderRankListCommand = 15;
