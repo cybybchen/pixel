@@ -88,6 +88,13 @@ public class HeroLevelUpService {
 		return result;
 	}
 	
+	public int delHeroEquip(HeroInfoBean heroInfo, int armId) {
+		int equipId = heroInfo.getEquipIdByArmId(armId);
+		heroInfo.updateEquipIdByArmId(0, armId);
+		
+		return equipId;
+	}
+	
 	public ResultConst equipLevelUp(UserBean user, HeroInfoBean heroInfo, int armId, int levelUpId) {
 		ResultConst result = ErrorConst.EQUIP_HAS_NOT_ADD;
 		int equipId = heroInfo.getEquipIdByArmId(armId);

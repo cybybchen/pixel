@@ -983,6 +983,12 @@ message ResponseSignCommand {
 	required RewardInfo reward = 1;
 }
 
+message RequestFenjieHeroEquipCommand {
+	required int32 heroId = 1;
+	required int32 infoId = 2;
+	required int32 armId = 3;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1067,6 +1073,7 @@ message RequestCommand {
 	optional RequestUsePropCommand usePropCommand = 51;
 	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
 	optional RequestSignCommand signCommand = 53;
+	optional RequestFenjieHeroEquipCommand fenjieHeroEquipCommand = 54;
 }
 // response command list transfer only use it
 message ResponseCommand {

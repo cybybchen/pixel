@@ -13,6 +13,8 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackRelativeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -37,16 +39,12 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
-import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
@@ -65,6 +63,8 @@ import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
+import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
@@ -72,12 +72,14 @@ import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshRelatedUserCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -102,6 +104,7 @@ import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.PropCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
+import com.trans.pixel.service.command.SignCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
 import com.trans.pixel.service.command.UserCommandService;
@@ -144,6 +147,8 @@ public class GameDataScreen extends RequestScreen {
 	private EquipCommandService equipCommandService;
 	@Resource
 	private PropCommandService propCommandService;
+	@Resource
+	private SignCommandService signCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -647,6 +652,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestFenjieEquipCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		equipCommandService.fenjie(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestFenjieHeroEquipCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		heroLevelUpCommandService.fenjieHeroEquip(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSignCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		signCommandService.sign(cmd, responseBuilder, user);
 		return true;
 	}
 

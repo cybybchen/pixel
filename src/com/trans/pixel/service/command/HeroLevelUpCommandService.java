@@ -9,16 +9,21 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseHeroResultCommand;
+import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
+import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
 
@@ -33,6 +38,10 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 	private SkillService skillService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private EquipService equipService;
+	@Resource
+	private RewardService rewardService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
@@ -104,6 +113,54 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 		}
+	}
+	
+	public void fenjieHeroEquip(RequestFenjieHeroEquipCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		int heroId = cmd.getHeroId();
+		int infoId = cmd.getInfoId();
+		int armId = cmd.getArmId();
+		long userId = user.getId();
+		UserHeroBean userHero = userHeroService.selectUserHero(userId, heroId);
+		HeroInfoBean heroInfo = null;
+		
+		int equipId = 0;
+		if (userHero != null) {
+			heroInfo = userHero.getHeroInfoByInfoId(infoId);
+			if (heroInfo != null) 
+				equipId = heroLevelUpService.delHeroEquip(heroInfo, armId);
+		}
+		
+		if (equipId == 0) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		if (equipId > 0) {
+			userHero.updateHeroInfo(heroInfo);
+			userHeroService.updateUserHero(userHero);
+			builder.setHeroId(heroId);
+			builder.setHeroInfo(heroInfo.buildHeroInfo());
+			responseBuilder.setHeroResultCommand(builder.build());
+			
+			ResponseFenjieEquipCommand.Builder fenjieBuilder = ResponseFenjieEquipCommand.newBuilder();
+			List<RewardBean> rewardList = equipService.fenjieEquip(user, equipId, 1);
+			if (rewardList == null || rewardList.size() == 0) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+			
+			rewardService.doRewards(user.getId(), rewardList);
+			
+			fenjieBuilder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
+			responseBuilder.setFenjieEquipCommand(fenjieBuilder.build());
+			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
+		}
+		
+		
 	}
 	
 	public void equipLevelup(RequestEquipLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
