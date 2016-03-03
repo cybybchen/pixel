@@ -547,6 +547,9 @@ public class UserBean {
 		builder.setFreeLotteryCoinTime(Math.max(0, (int)((freeLotteryCoinTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setFreeLotteryJewelTime(Math.max(0, (int)((freeLotteryJewelTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setPVPMineLeftTime(pvpMineLeftTime);
+		builder.setSignDays(signDays);
+		builder.setLoginDays(loginDays);
+		builder.setHasSign(hasSign);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {
