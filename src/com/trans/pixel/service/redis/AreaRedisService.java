@@ -15,6 +15,8 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossList;
+import com.trans.pixel.protoc.Commands.AreaBossReward;
+import com.trans.pixel.protoc.Commands.AreaBossRewardList;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
 import com.trans.pixel.protoc.Commands.AreaMonster;
@@ -23,10 +25,12 @@ import com.trans.pixel.protoc.Commands.AreaMonsterReward;
 import com.trans.pixel.protoc.Commands.AreaMonsterRewardList;
 import com.trans.pixel.protoc.Commands.AreaPosition;
 import com.trans.pixel.protoc.Commands.AreaPositionList;
+import com.trans.pixel.protoc.Commands.AreaRankReward;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceList;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.Position;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 
 @Repository
 public class AreaRedisService extends RedisService{
@@ -196,7 +200,7 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public Set<TypedTuple<String>> getBossRank(final int bossId,UserBean user) {
-		return zrangewithscore(AREABOSS+user.getServerId()+"_Rank_"+bossId, 0, 9);
+		return zrangewithscore(AREABOSS+user.getServerId()+"_Rank_"+bossId, 0, -1);
 	}
 	
 	public Map<String, AreaMonster> getMonsters(UserBean user){
@@ -387,6 +391,57 @@ public class AreaRedisService extends RedisService{
 			return resource;
 		logger.warn("cannot build AreaResource:"+id);
 		return null;
+	}
+	public AreaBossRewardList readBossRewardConfig(){
+		AreaBossRewardList.Builder builder = AreaBossRewardList.newBuilder();
+		String xml = ReadConfig("lol_regionrankingreward.xml");
+		parseXml(xml, builder);
+		for(AreaBossReward.Builder bossbuilder : builder.getBossBuilderList()){
+			for(AreaRankReward.Builder rewardbuilder : bossbuilder.getRankingBuilderList()){
+				if(rewardbuilder.getItemid1() != 0){
+					RewardInfo.Builder reward = RewardInfo.newBuilder();
+					reward.setItemid(rewardbuilder.getItemid1());
+					reward.setCount(rewardbuilder.getCount1());
+					rewardbuilder.addReward(reward);
+					rewardbuilder.clearItemid1();
+					rewardbuilder.clearCount1();
+				}
+				if(rewardbuilder.getItemid2() != 0){
+					RewardInfo.Builder reward = RewardInfo.newBuilder();
+					reward.setItemid(rewardbuilder.getItemid2());
+					reward.setCount(rewardbuilder.getCount2());
+					rewardbuilder.addReward(reward);
+					rewardbuilder.clearItemid2();
+					rewardbuilder.clearCount2();
+				}
+				if(rewardbuilder.getItemid3() != 0){
+					RewardInfo.Builder reward = RewardInfo.newBuilder();
+					reward.setItemid(rewardbuilder.getItemid3());
+					reward.setCount(rewardbuilder.getCount3());
+					rewardbuilder.addReward(reward);
+					rewardbuilder.clearItemid3();
+					rewardbuilder.clearCount3();
+				}
+			}
+		}
+		return builder.build();
+	}
+	public AreaBossReward getBossReward(int id){
+		AreaBossReward.Builder builder = AreaBossReward.newBuilder();
+		String value = hget(RedisKey.AREABOSSREWARD, id+"");
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		else{
+			AreaBossRewardList list = readBossRewardConfig();
+			Map<String, String> map = new HashMap<String, String>();
+			for(AreaBossReward reward : list.getBossList()){
+				map.put(reward.getId()+"", formatJson(reward));
+				if(reward.getId() == id)
+					builder = AreaBossReward.newBuilder(reward);
+			}
+			hputAll(RedisKey.AREABOSSREWARD, map);
+			return builder.build();
+		}
 	}
 	public Map<Integer, AreaBoss> readAreaBoss(){
 		Map<Integer, AreaBoss> m_BossMap = new HashMap<Integer, AreaBoss>();

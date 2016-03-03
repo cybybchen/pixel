@@ -178,7 +178,7 @@ public class PvpMapRedisService extends RedisService{
 					int level = RandomUtils.nextInt(11)-5;
 					if(buff != null)
 						level += Integer.parseInt(buff);
-					monster.setLevel(Math.max(0, level));
+					monster.setLevel(Math.max(1, level));
 					monsters.add(monster.build());
 					keyvalue.put(monster.getPositionid()+"", formatJson(monster.build()));
 					count++;

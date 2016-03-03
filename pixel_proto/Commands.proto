@@ -357,6 +357,27 @@ message AreaMonsterRewardList {
 	repeated AreaMonsterReward region = 1;
 }
 
+message AreaRankReward {
+	required int32 ranking = 1;
+	optional int32 itemid1 = 2;
+	optional int32 count1 = 3;
+	optional int32 itemid2 = 4;
+	optional int32 count2 = 5;
+	optional int32 itemid3 = 6;
+	optional int32 count3 = 7;
+	repeated RewardInfo reward = 8;
+}
+
+message AreaBossReward {
+	required int32 id = 1;
+	optional string name = 2;
+	repeated AreaRankReward ranking = 3;
+}
+
+message AreaBossRewardList {
+	repeated AreaBossReward boss = 1;
+}
+
 message VipInfo {
 	required int32 vip = 1;
 	required int32 rmb = 2;

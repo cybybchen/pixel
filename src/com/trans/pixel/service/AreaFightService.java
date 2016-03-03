@@ -17,10 +17,12 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
+import com.trans.pixel.protoc.Commands.AreaBossReward;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
 import com.trans.pixel.protoc.Commands.AreaMonster;
 import com.trans.pixel.protoc.Commands.AreaMonsterReward;
+import com.trans.pixel.protoc.Commands.AreaRankReward;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -97,8 +99,18 @@ public class AreaFightService extends FightService{
 			rewardService.doRewards(user, rewards.build());
 			//排行奖励
 			Set<TypedTuple<String>> ranks = redis.getBossRank(id, user);
+			AreaBossReward bossreward = redis.getBossReward(id);
+			List<AreaRankReward> rankrewards = bossreward.getRankingList();
+			int index = 0;
+			int myrank = 1;
 			for(TypedTuple<String> rank : ranks){
-				rewardService.doRewards(Long.parseLong(rank.getValue()), rewards.build()/*debug only*/);
+				if(rankrewards.get(index).getRanking() < myrank && rankrewards.get(index).getRanking() >= 0)
+					index++;
+				if(index >= rankrewards.size())
+					break;
+				MultiReward.Builder multireward = MultiReward.newBuilder();
+				multireward.addAllLoot(rankrewards.get(index).getRewardList());
+				rewardService.doRewards(Long.parseLong(rank.getValue()), multireward.build());
 			}
 		}
 		redis.saveBoss(builder.build(), user);
