@@ -38,6 +38,7 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
@@ -651,6 +652,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestHelpAttackPVPMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		pvpCommandService.attackMine(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestFenjieHeroCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		heroLevelUpCommandService.fenjieHero(cmd, responseBuilder, user);
 		return true;
 	}
 

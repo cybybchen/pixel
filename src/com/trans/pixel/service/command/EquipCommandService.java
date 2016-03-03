@@ -53,14 +53,14 @@ public class EquipCommandService extends BaseCommandService {
 		ResponseFenjieEquipCommand.Builder builder = ResponseFenjieEquipCommand.newBuilder();
 		int equipId = cmd.getEquipId();
 		int equipCount = cmd.getEquipCount();
-		List<RewardBean> rewardList = equipService.fenjieEquip(user, equipId, equipCount);
+		List<RewardBean> rewardList = equipService.fenjieUserEquip(user, equipId, equipCount);
 		if (rewardList == null || rewardList.size() == 0) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		
-		rewardService.doRewards(user.getId(), rewardList);
+		rewardService.doRewards(user, rewardList);
 		
 		builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
 		responseBuilder.setFenjieEquipCommand(builder.build());

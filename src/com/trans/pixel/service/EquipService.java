@@ -66,7 +66,7 @@ public class EquipService {
 		return result;
 	}
 	
-	public List<RewardBean> fenjieEquip(UserBean user, int equipId, int fenjieCount) {
+	public List<RewardBean> fenjieUserEquip(UserBean user, int equipId, int fenjieCount) {
 		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), equipId);
 		if (userEquip.getEquipCount() < fenjieCount)
 			return null;
@@ -76,6 +76,13 @@ public class EquipService {
 		
 		userEquip.setEquipCount(userEquip.getEquipCount() - fenjieCount);
 		userEquipService.updateUserEquip(userEquip);
+		
+		return fenjie.randomReward(fenjieCount);
+	}
+	
+	public List<RewardBean> fenjieHeroEquip(UserBean user, int equipId, int fenjieCount) {
+		EquipmentBean equip = getEquip(equipId);
+		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
 		
 		return fenjie.randomReward(fenjieCount);
 	}

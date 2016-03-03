@@ -1015,6 +1015,11 @@ message RequestFenjieHeroEquipCommand {
 	required int32 armId = 3;
 }
 
+message RequestFenjieHeroCommand {
+	required int32 heroId = 1;
+	required int32 infoId = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1098,6 +1103,7 @@ message RequestCommand {
 	optional RequestSignCommand signCommand = 53;
 	optional RequestFenjieHeroEquipCommand fenjieHeroEquipCommand = 54;
 	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
+	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
 }
 // response command list transfer only use it
 message ResponseCommand {

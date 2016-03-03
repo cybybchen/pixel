@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
@@ -193,6 +194,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestSignCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -498,6 +501,11 @@ public abstract class RequestScreen implements RequestHandle {
         	RequestHelpAttackPVPMineCommand cmd = request.getHelpAttackPVPMineCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasFenjieHeroCommand()) {
+        	RequestFenjieHeroCommand cmd = request.getFenjieHeroCommand();
+        	if (result)
+        		result = handleCommand(cmd,responseBuilder, user);
         }
         if (request.hasDailyShopCommand()) {
             RequestDailyShopCommand cmd = request.getDailyShopCommand();
