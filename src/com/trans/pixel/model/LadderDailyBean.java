@@ -106,7 +106,7 @@ public class LadderDailyBean {
 				bean.setRanking(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(RANKING)));
 				bean.setItemid1(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ITEMID1)));
 				bean.setCount1(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(COUNT1)));
-				bean.setItemid2(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ITEMID1)));
+				bean.setItemid2(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ITEMID2)));
 				bean.setCount2(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(COUNT2)));
 				
 				list.add(bean);

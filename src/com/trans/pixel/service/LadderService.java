@@ -45,10 +45,14 @@ public class LadderService {
 	
 	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
         public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
+        			 if (bean1.getRanking() == -1)
+        				 return 1;
+        			 if (bean2.getRanking() == -1)
+        				 return -1;
                 if (bean1.getRanking() < bean2.getRanking()) {
-                        return 1;
-                } else {
                         return -1;
+                } else {
+                        return 1;
                 }
         }
 	};

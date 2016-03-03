@@ -14,18 +14,19 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class ServerRedisService {
 	@Resource
-	private RedisTemplate<String, Integer> redisTemplate;
+	private RedisTemplate<String, String> redisTemplate;
 	
 	public boolean isInvalidServer(final int serverId) {
 		return redisTemplate.execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, Integer> bsOps = redisTemplate
+				BoundSetOperations<String, String> bsOps = redisTemplate
 						.boundSetOps(RedisKey.PREFIX + RedisKey.SERVER_KEY);
 				
 				return bsOps.isMember(serverId);
@@ -38,13 +39,13 @@ public class ServerRedisService {
 			@Override
 			public List<Integer> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, Integer> bsOps = redisTemplate
+				BoundSetOperations<String, String> bsOps = redisTemplate
 						.boundSetOps(RedisKey.PREFIX + RedisKey.SERVER_KEY);
 				
 				List<Integer> serverIds = new ArrayList<Integer>();
-				Set<Integer> serverIdSet = bsOps.members();
-				for (Integer serverId : serverIdSet) {
-					serverIds.add(serverId);
+				Set<String> serverIdSet = bsOps.members();
+				for (String serverId : serverIdSet) {
+					serverIds.add(TypeTranslatedUtil.stringToInt(serverId));
 				}
 				return serverIds;
 			}
