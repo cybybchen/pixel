@@ -48,6 +48,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
@@ -651,6 +652,13 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestSignCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestHelpAttackPVPMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

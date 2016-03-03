@@ -8,6 +8,7 @@ public class MailConst {
 	public static final int TYPE_ADDFRIEND_MAIL = 1;
 	public static final int TYPE_APPLY_UNION_MAIL = 2;
 	public static final int TYPE_UNION_REFUSED_MAIL = 3;
+	public static final int TYPE_HELP_ATTACK_PVP_MAIL = 4; //帮助赶走矿场的敌人
 	
 	public static final int[] MAIL_TYPES = {TYPE_SYSTEM_MAIL, TYPE_ADDFRIEND_MAIL, TYPE_APPLY_UNION_MAIL};
 }

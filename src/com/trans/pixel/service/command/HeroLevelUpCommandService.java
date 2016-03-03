@@ -159,8 +159,6 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		}
-		
-		
 	}
 	
 	public void equipLevelup(RequestEquipLevelUpCommand cmd, Builder responseBuilder, UserBean user) {

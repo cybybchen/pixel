@@ -970,6 +970,13 @@ message RequestAttackPVPMineCommand {//攻击pvp矿点对手
 	optional bool ret = 3;
 }
 
+message RequestHelpAttackPVPMineCommand {//攻击pvp矿点对手
+	required int32 id = 1;
+	required int32 teamid = 2;
+	optional bool ret = 3;
+	required int64 userId = 4;
+}
+
 message RequestRefreshPVPMineCommand {//刷新pvp矿点对手
 	required int32 id = 1;
 }
@@ -1077,6 +1084,7 @@ message RequestCommand {
 	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
 	optional RequestSignCommand signCommand = 53;
 	optional RequestFenjieHeroEquipCommand fenjieHeroEquipCommand = 54;
+	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
 }
 // response command list transfer only use it
 message ResponseCommand {

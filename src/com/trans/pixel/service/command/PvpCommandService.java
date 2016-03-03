@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.PVPMapList;
@@ -14,13 +16,16 @@ import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
+import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 
 @Service
@@ -29,6 +34,10 @@ public class PvpCommandService extends BaseCommandService {
 	private UserTeamService userTeamService;
 	@Resource
 	private PvpMapService pvpMapService;
+	@Resource
+	private UserService userService;
+	@Resource
+	private MailService mailService;
 	
 //	public void attackRelatedUser(RequestAttackRelativeCommand cmd, Builder responseBuilder, UserBean user) {	
 //		ResponseAttackRelativeCommand.Builder builder = ResponseAttackRelativeCommand.newBuilder();
@@ -87,6 +96,18 @@ public class PvpCommandService extends BaseCommandService {
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
+	public void attackMine(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
+		int teamid = cmd.getTeamid();
+		long friendUserId = cmd.getUserId();
+		UserBean friend = userService.getUser(friendUserId);
+		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user.getId(), heroList);
+		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet()))
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+//		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, friend);
+		sendHelpMail(friend, user);
+	}
+	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.getUserMine(user, cmd.getId());
 		if(mine == null || !mine.hasOwner()){
@@ -106,5 +127,11 @@ public class PvpCommandService extends BaseCommandService {
 		if(!pvpMapService.refreshMine(user, cmd.getId()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);		
+	}
+	
+	private void sendHelpMail(UserBean friend, UserBean user) {
+		String content = "玩家" + friend.getUserName() + "帮助你赶走了矿场的敌人"; 
+		MailBean mail = buildMail(user.getId(), friend.getId(), content, MailConst.TYPE_HELP_ATTACK_PVP_MAIL);
+		mailService.addMail(mail);
 	}
 }

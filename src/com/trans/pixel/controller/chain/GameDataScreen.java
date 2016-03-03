@@ -49,6 +49,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
@@ -666,6 +667,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestSignCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		signCommandService.sign(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestHelpAttackPVPMineCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		pvpCommandService.attackMine(cmd, responseBuilder, user);
 		return true;
 	}
 

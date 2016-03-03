@@ -45,6 +45,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
@@ -199,6 +200,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestFenjieHeroEquipCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestSignCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -512,6 +515,11 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasSignCommand()) {
         	RequestSignCommand cmd = request.getSignCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasHelpAttackPVPMineCommand()) {
+        	RequestHelpAttackPVPMineCommand cmd = request.getHelpAttackPVPMineCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }
