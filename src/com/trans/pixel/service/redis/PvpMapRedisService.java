@@ -2,7 +2,6 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,9 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.AreaMonster;
 import com.trans.pixel.protoc.Commands.PVPBoss;
-import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
@@ -24,7 +21,6 @@ import com.trans.pixel.protoc.Commands.PVPMonsterList;
 import com.trans.pixel.protoc.Commands.PVPPosition;
 import com.trans.pixel.protoc.Commands.PVPPositionList;
 import com.trans.pixel.protoc.Commands.PVPPositionLists;
-import com.trans.pixel.protoc.Commands.Position;
 
 @Repository
 public class PvpMapRedisService extends RedisService{
@@ -164,18 +160,18 @@ public class PvpMapRedisService extends RedisService{
 				}
 				int count = monsterlist.size();
 				while(count < 5){//添加怪物
-					PVPMonster.Builder monster = PVPMonster.newBuilder(list.getEnemy(RandomUtils.nextInt(list.getEnemyCount())));
+					PVPMonster.Builder monster = PVPMonster.newBuilder(list.getEnemy(nextInt(list.getEnemyCount())));
 					PVPPositionList positions = positionMap.get(monster.getFieldid()+"");
-					PVPPosition position = positions.getXiaoguai(RandomUtils.nextInt(positions.getXiaoguaiCount()));
+					PVPPosition position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
 					while(positionValues.contains(position.getId())){
-						position = positions.getXiaoguai(RandomUtils.nextInt(positions.getXiaoguaiCount()));
+						position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
 					}
 					positionValues.add(position.getId());
 					monster.setPositionid(position.getId());
 					monster.setX(position.getX());
 					monster.setY(position.getY());
 					String buff = pvpMap.get(monster.getFieldid()+"");
-					int level = RandomUtils.nextInt(11)-5;
+					int level = nextInt(11)-5;
 					if(buff != null)
 						level += Integer.parseInt(buff);
 					monster.setLevel(Math.max(1, level));

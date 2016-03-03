@@ -33,6 +33,7 @@ public class RedisKey {
 	public final static String PVPBOSS_CONFIG = PREFIX+"PVPBoss";
 	public final static String PVPPOSITION_CONFIG = PREFIX+"PVPPosition";
 	public final static String AREABOSSREWARD = PREFIX+"AreaBossReward";
+	public final static String AREAMONSTERRANDCONFIG = PREFIX+"AreaMonsterRandConfig";
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "key:mysql_update";

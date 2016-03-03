@@ -73,7 +73,7 @@ public class AreaFightService extends FightService{
 			return false;
 //		redis.deleteMonster(builder.getId());
 		builder.setKilled(true);
-		redis.saveMonster(builder.build(), user);
+		redis.deleteMonster(builder.getId(), user);
 		AreaMonsterReward monsterreward = redis.getAreaMonsterReward(id);
 		for(WeightReward weightreward : monsterreward.getLootList()){
 			rewards.addLoot(randReward(weightreward));

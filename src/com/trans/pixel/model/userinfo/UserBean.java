@@ -44,6 +44,19 @@ public class UserBean {
 	private boolean hasSign = false;
 	private int signDays = 0;
 	private int loginDays = 0;
+	private long areaMonsterRefreshTime = 0;
+	/**
+	 * 区域怪物刷新时间
+	 */
+	public long getAreaMonsterRefreshTime() {
+		return areaMonsterRefreshTime;
+	}
+	/**
+	 * 区域怪物刷新时间
+	 */
+	public void setAreaMonsterRefreshTime(long areaMonsterRefreshTime) {
+		this.areaMonsterRefreshTime = areaMonsterRefreshTime;
+	}
 	/**
 	 * pvp矿点对手剩余刷新次数
 	 */

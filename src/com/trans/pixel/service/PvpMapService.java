@@ -38,7 +38,7 @@ public class PvpMapService {
 		List<PVPBoss> bosses = redis.getBosses(user);
 		long time = redis.today(6);
 		if(user.getPvpMineRefreshTime() < time){//刷新对手
-			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600+RandomUtils.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600);
+			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600+redis.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600);
 			user.setPvpMineRefreshTime(time);
 			userService.updateUserDailyData(user);
 			if(count >= 20){
@@ -52,8 +52,8 @@ public class PvpMapService {
 				redis.saveMines(user.getId(), mineMap);
 			}else{
 			while(count > 0){
-				PVPMap map = maplist.getField(RandomUtils.nextInt(maplist.getFieldCount()));
-				PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(RandomUtils.nextInt(map.getKuangdianCount())));
+				PVPMap map = maplist.getField(redis.nextInt(maplist.getFieldCount()));
+				PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
 				PVPMine mine = mineMap.get(builder.getId()+"");
 				if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
 					continue;

@@ -113,6 +113,7 @@ public class AreaTest extends BaseTest {
 		RequestAttackResourceMineCommand.Builder builder = RequestAttackResourceMineCommand.newBuilder();
 		AreaResource resource = area.getAreas(0).getResources(0);
 		builder.setId(resource.getMines(0).getId());
+		builder.setTeamid(1);
 		requestBuilder.setAttackResourceMineCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();

@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.DataType;
@@ -744,5 +745,12 @@ public class RedisService {
 	 */
 	public long today(int hour){
 		return System.currentTimeMillis()/24/3600L/1000L*24*3600L+hour*3600L;
+	}
+
+	public int nextInt(int value){
+		if(value <= 0)
+			return 0;
+		else
+			return RandomUtils.nextInt(value);
 	}
 }

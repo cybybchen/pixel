@@ -107,9 +107,12 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void handleMember(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
-		if(unionService.handleMember(cmd.getId(), cmd.getJob(), user))
+		if(unionService.handleMember(cmd.getId(), cmd.getJob(), user)){
+			ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+			builder.setUnion(unionService.getUnion(user));
+			responseBuilder.setUnionInfoCommand(builder.build());
 			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_MEMBER_SUCCESS));
-		else
+		}else
 			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
 	}
 	
@@ -120,8 +123,14 @@ public class UnionCommandService extends BaseCommandService {
 
 	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		unionService.attack(cmd.getUnionId(), cmd.getTeamid(), user);
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		builder.setUnion(unionService.getUnion(user));
+		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		unionService.defend(cmd.getTeamid(), user);
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		builder.setUnion(unionService.getUnion(user));
+		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 }
