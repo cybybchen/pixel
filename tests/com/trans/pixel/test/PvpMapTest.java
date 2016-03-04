@@ -18,9 +18,9 @@ public class PvpMapTest extends BaseTest {
 
 	@Test
 	public void testArea() {
-		login();
-		testPvpMap();
-		testGetMineInfo();
+//		login();
+//		testPvpMap();
+//		testGetMineInfo();
 		attackMine();
 	}
 	
@@ -58,6 +58,7 @@ public class PvpMapTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestAttackPVPMineCommand.Builder builder = RequestAttackPVPMineCommand.newBuilder();
 		builder.setId(10501);
+		builder.setTeamid(47);
 		builder.setRet(true);
 		requestBuilder.setAttackPVPMineCommand(builder.build());
 		

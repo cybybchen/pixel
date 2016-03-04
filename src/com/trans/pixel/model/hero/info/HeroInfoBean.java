@@ -152,7 +152,7 @@ public class HeroInfoBean {
 		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
 		bean.setEquipInfo(json.getString(EQUIP_INFO));
 		bean.setRare(json.getInt(RARE));
-		bean.setLock(json.getBoolean(LOCK));
+		bean.setLock(TypeTranslatedUtil.jsonGetBoolean(json, LOCK));
 		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
 		bean.setPosition(TypeTranslatedUtil.jsonGetInt(json, POSITION));
 		

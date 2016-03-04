@@ -1,11 +1,16 @@
 package com.trans.pixel.service.command;
 
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
+
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Commands.Commodity;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
@@ -36,9 +41,12 @@ import com.trans.pixel.protoc.Commands.ResponsePVPShopCommand;
 import com.trans.pixel.protoc.Commands.ResponsePurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.ResponseShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionShopCommand;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
+import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
+import com.trans.pixel.service.UserLevelService;
 
 /**
  * 1.1.3.11商店
@@ -50,7 +58,11 @@ public class ShopCommandService extends BaseCommandService{
 	@Resource
 	private RewardService rewardService;
 	@Resource
+	private UserLevelService userLevelService;
+	@Resource
 	private PushCommandService pusher;
+	@Resource
+	private LevelService levelService;
 
 	public int getDailyShopRefreshCost(int time){
 		if(time < 2){
@@ -605,35 +617,31 @@ public class ShopCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
 			return;
 		}
-		if(user.getJewel() < 50){
+		int cost = service.getPurchaseCoinCost(user.getPurchaseCoinTime());
+		if(user.getJewel() < cost){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 			return;
 		}
-		user.setCoin(user.getCoin()+500);
-		user.setExp(user.getExp()+500);
-		user.setJewel(user.getJewel()-50);
+		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+		XiaoguanBean xiaoguan = levelService.getXiaoguan(userLevel.getPutongLevel());
+		MultiReward rewards = service.getPurchaseCoinReward(xiaoguan.getDaguan());
+		for(RewardInfo reward : rewards.getLootList())
+			rewardService.doReward(user, reward.getItemid(), reward.getCount());
+		user.setJewel(user.getJewel()-cost);
 		user.setPurchaseCoinTime(user.getPurchaseCoinTime()+1);
 		user.setPurchaseCoinLeft(user.getPurchaseCoinLeft()-1);
 		rewardService.updateUser(user);
 		getPurchaseCoinTime(responseBuilder, user);
 		pusher.pushUserInfoCommand(responseBuilder, user);
-//		List<RewardBean> rewards = new ArrayList<RewardBean>();
-//		RewardBean coinbean = new RewardBean();
-//		coinbean.setItemid(RewardConst.COIN);
-//		coinbean.setCount(500);
-//		rewards.add(coinbean);
-//		RewardBean expbean = new RewardBean();
-//		expbean.setItemid(RewardConst.EXP);
-//		expbean.setCount(500);
-//		rewards.add(expbean);
-//		pusher.pushRewardCommand(responseBuilder, user, rewards);
+		pusher.pushRewardCommand(responseBuilder, user, rewards);
 	}
 	
 	public void getPurchaseCoinTime(Builder responseBuilder, UserBean user){
 		ResponsePurchaseCoinCommand.Builder builder = ResponsePurchaseCoinCommand.newBuilder();
+		int cost = service.getPurchaseCoinCost(user.getPurchaseCoinTime());
 //		builder.setCoin(500);
 //		builder.setExp(500);
-		builder.setJewel(50);
+		builder.setJewel(cost);
 		builder.setLeftTime(user.getPurchaseCoinLeft());
 		responseBuilder.setPurchaseCoinCommand(builder);
 	}

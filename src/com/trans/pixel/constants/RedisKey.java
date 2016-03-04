@@ -42,6 +42,8 @@ public class RedisKey {
 	public final static String AREABOSSRANDCONFIG = PREFIX+"AreaBossRandConfig";
 	public final static String AREACONFIG = RedisKey.PREFIX+"AreaConfig";
 	public final static String AREARESOURCECONFIG = PREFIX+"AreaResource";
+	public final static String PURCHASECOINCONFIG = PREFIX+"PurchaseCoinConfig";
+	public final static String PURCHASECOINREWARD = PREFIX+"PurchaseCoinReward";
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "key:mysql_update";

@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
+import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.PurchaseCoinCost;
+import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
+import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
 import com.trans.pixel.service.redis.ShopRedisService;
 
@@ -113,5 +118,27 @@ public class ShopService {
 
 	public Commodity getShop(int id){
 		return redis.getShop(id);
+	}
+	
+	public int getPurchaseCoinCost(int time){
+		PurchaseCoinCostList list = redis.getPurchaseCoinCostList();
+		for(PurchaseCoinCost cost : list.getGoldList()){
+			if(time < cost.getCount())
+				return cost.getCost();
+		}
+		return 500;
+	}
+	
+	public MultiReward getPurchaseCoinReward(int daguan){
+		MultiReward.Builder builder = MultiReward.newBuilder();
+		PurchaseCoinReward reward = redis.getPurchaseCoinReward(daguan);
+		RewardInfo.Builder rewardbuilder = RewardInfo.newBuilder();
+		rewardbuilder.setItemid(reward.getRewardid1());
+		rewardbuilder.setCount(reward.getCount11()+redis.nextInt(reward.getCount12()-reward.getCount11()));
+		builder.addLoot(rewardbuilder);
+		rewardbuilder.setItemid(reward.getRewardid2());
+		rewardbuilder.setCount(reward.getCount21()+redis.nextInt(reward.getCount22()-reward.getCount21()));
+		builder.addLoot(rewardbuilder);
+		return builder.build();
 	}
 }

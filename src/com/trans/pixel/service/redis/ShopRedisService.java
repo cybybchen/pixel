@@ -14,6 +14,9 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.CommodityList;
+import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
+import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
+import com.trans.pixel.protoc.Commands.PurchaseCoinRewardList;
 import com.trans.pixel.protoc.Commands.ShopList;
 import com.trans.pixel.protoc.Commands.ShopWill;
 import com.trans.pixel.protoc.Commands.ShopWillList;
@@ -618,5 +621,34 @@ public class ShopRedisService extends RedisService{
 		shoplist.addAllItems(commsbuilder.getItemList());
 		saveShop(shoplist.build());
 		return shoplist.build();
+	}
+	
+	public PurchaseCoinCostList getPurchaseCoinCostList(){
+		PurchaseCoinCostList.Builder builder = PurchaseCoinCostList.newBuilder();
+		String value = get(RedisKey.PURCHASECOINCONFIG);
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		String xml = ReadConfig("lol_goldcost.xml");
+		parseXml(xml, builder);
+		set(RedisKey.PURCHASECOINCONFIG, formatJson(builder.build()));
+		return builder.build();
+	}
+	
+	public PurchaseCoinReward getPurchaseCoinReward(int daguan){
+		PurchaseCoinReward.Builder builder = PurchaseCoinReward.newBuilder();
+		String value = hget(RedisKey.PURCHASECOINREWARD, daguan+"");
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		String xml = ReadConfig("lol_goldreward.xml");
+		PurchaseCoinRewardList.Builder list = PurchaseCoinRewardList.newBuilder();
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		parseXml(xml, list);
+		for(PurchaseCoinReward reward : list.getGoldList()){
+			keyvalue.put(reward.getDaguan()+"", formatJson(reward));
+			if(reward.getDaguan() == daguan)
+				builder = PurchaseCoinReward.newBuilder(reward);
+		}
+		hputAll(RedisKey.PURCHASECOINREWARD, keyvalue);
+		return builder.build();
 	}
 }
