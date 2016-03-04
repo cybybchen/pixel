@@ -14,6 +14,7 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
+import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.MailService;
 
@@ -42,6 +43,18 @@ public class MailCommandService extends BaseCommandService {
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
+	}
+	
+	public void sendMail(RequestSendMailCommand cmd, Builder responseBuilder, UserBean user) {
+		long toUserId = cmd.getToUserId();
+		String content = cmd.getContent();
+		int relatedId = 0;
+		int type = cmd.getType();
+		if (cmd.hasRelatedId())
+			relatedId = cmd.getRelatedId();
+		MailBean mail = super.buildMail(toUserId, user.getId(), content, type, relatedId);
+		mailService.addMail(mail);
+		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
 	}
 	
 	public void handleDeleteMailCommand(RequestDeleteMailCommand cmd, Builder responseBuilder, UserBean user) {	

@@ -19,6 +19,7 @@ public class MailBean {
 	private String startDate = "";
 	private String endDate = "";
 	private String content = "";
+	private int relatedId = 0;
 	List<RewardBean> rewardList = new ArrayList<RewardBean>();
 	boolean isRead = false;
 	public int getId() {
@@ -69,7 +70,12 @@ public class MailBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+	public int getRelatedId() {
+		return relatedId;
+	}
+	public void setRelatedId(int relatedId) {
+		this.relatedId = relatedId;
+	}
 	public List<RewardBean> getRewardList() {
 		return rewardList;
 	}
@@ -105,6 +111,7 @@ public class MailBean {
 		json.put(CONTENT, content);
 		json.put(REWARD_LIST, rewardList);
 		json.put(IS_READ, isRead);
+		json.put(RELATED_ID, relatedId);
 		
 		return json.toString();
 	}
@@ -131,6 +138,7 @@ public class MailBean {
 		}
 		bean.setRewardList(list);
 		bean.setRead(TypeTranslatedUtil.jsonGetBoolean(json, IS_READ));
+		bean.setRelatedId(TypeTranslatedUtil.jsonGetInt(json, RELATED_ID));
 
 		return bean;
 	}
@@ -165,4 +173,5 @@ public class MailBean {
 	private static final String CONTENT = "content";
 	private static final String REWARD_LIST = "reward_list";
 	private static final String IS_READ = "is_read";
+	private static final String RELATED_ID = "related_id";
 }

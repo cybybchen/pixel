@@ -16,6 +16,7 @@ import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
+import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
@@ -94,6 +95,21 @@ public class PvpCommandService extends BaseCommandService {
 		}
 	}
 
+	public void getBrotherMineInfo(RequestBrotherMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		UserBean brother = userService.getUser(cmd.getBrotherId());
+		PVPMine mine = pvpMapService.getUserMine(brother, cmd.getId());
+		if(mine == null || !mine.hasOwner()){
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+		}else{
+			List<HeroInfoBean> heroList = userTeamService.getTeamCache(mine.getOwner().getId());
+			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
+			for (HeroInfoBean heroInfo : heroList) {
+				builder.addHeroInfo(heroInfo.buildRankHeroInfo());
+			}
+			responseBuilder.setTeamCommand(builder);
+		}
+	}
+	
 	public void refreshMine(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		if(!pvpMapService.refreshMine(user, cmd.getId()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));

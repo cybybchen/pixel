@@ -462,6 +462,7 @@ message Mail {
 	required string startDate = 6;
 	required string endDate = 7;
 	required string content = 8;
+	required int32 relatedId = 10;
 	repeated RewardInfo reward = 9;
 }
 
@@ -998,6 +999,18 @@ message RequestHelpAttackPVPMineCommand {//攻击pvp矿点对手
 	required int64 userId = 4;
 }
 
+message RequestSendMailCommand {
+	required int64 toUserId = 1;
+	required string content = 2;
+	optional int32 relatedId = 3;
+	required int32 type = 4; //5:call brother	
+}
+
+message RequestBrotherMineInfoCommand {
+	required int32 id = 1;
+	required int64 brotherId = 2;
+}	
+
 message RequestRefreshPVPMineCommand {//刷新pvp矿点对手
 	required int32 id = 1;
 }
@@ -1110,6 +1123,8 @@ message RequestCommand {
 	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
 	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
 	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
+	optional RequestSendMailCommand sendMailCommand = 58;
+	optional RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;
 }
 // response command list transfer only use it
 message ResponseCommand {

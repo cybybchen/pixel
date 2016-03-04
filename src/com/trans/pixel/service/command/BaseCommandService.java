@@ -200,6 +200,18 @@ public class BaseCommandService {
 		return mail;
 	}
 	
+	protected MailBean buildMail(long userId, long friendId, String content, int type, int relatedId) {
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setFromUserId(friendId);
+		mail.setContent(content);
+		mail.setType(type);
+		mail.setRelatedId(relatedId);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
+	}
+	
 	protected ResponseMessageCommand buildMessageCommand(SuccessConst success) {
 		ResponseMessageCommand.Builder builder = ResponseMessageCommand.newBuilder();
 		builder.setCode(success.getCode());

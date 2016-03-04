@@ -212,7 +212,9 @@ public class HeroInfoBean {
 	}
 	
 	public void resetHeroSkill() {
-		skillInfoList.clear();
+		for (SkillInfoBean skillInfo : skillInfoList) {
+			skillInfo.setSkillLevel(0);
+		}
 	}
 	
 	public SkillInfoBean getSKillInfo(int skillId) {
