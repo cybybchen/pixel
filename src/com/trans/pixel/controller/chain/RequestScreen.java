@@ -19,6 +19,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
@@ -73,6 +74,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
@@ -199,6 +201,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestResetHeroSkillCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestSendMailCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestBrotherMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -512,6 +518,16 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasResetHeroSkillCommand()) {
         	RequestResetHeroSkillCommand cmd = request.getResetHeroSkillCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasSendMailCommand()) {
+        	RequestSendMailCommand cmd = request.getSendMailCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasBrotherMineInfoCommand()) {
+        	RequestBrotherMineInfoCommand cmd = request.getBrotherMineInfoCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
@@ -77,6 +78,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
@@ -667,6 +669,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestResetHeroSkillCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		heroLevelUpCommandService.resetHeroSkill(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSendMailCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mailCommandService.sendMail(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestBrotherMineInfoCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		pvpCommandService.getBrotherMineInfo(cmd, responseBuilder, user);
 		return true;
 	}
 
