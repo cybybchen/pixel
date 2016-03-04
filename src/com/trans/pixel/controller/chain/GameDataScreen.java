@@ -76,6 +76,7 @@ import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
@@ -659,6 +660,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestFenjieHeroCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		heroLevelUpCommandService.fenjieHero(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestResetHeroSkillCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		heroLevelUpCommandService.resetHeroSkill(cmd, responseBuilder, user);
 		return true;
 	}
 

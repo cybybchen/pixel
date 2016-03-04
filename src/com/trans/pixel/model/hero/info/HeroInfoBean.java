@@ -211,6 +211,10 @@ public class HeroInfoBean {
 		return heroInfo;
 	}
 	
+	public void resetHeroSkill() {
+		skillInfoList.clear();
+	}
+	
 	public SkillInfoBean getSKillInfo(int skillId) {
 		for (SkillInfoBean skillInfo : skillInfoList) {
 			if (skillInfo.getSkillId() == skillId)

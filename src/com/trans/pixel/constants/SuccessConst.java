@@ -13,7 +13,10 @@ public enum SuccessConst implements ResultConst {
     LEVELUP_RARE_SUCCESS(1017, "升阶成功"), APPLY_UNION_SUCCESS(1018, "工会申请成功"), CREATE_UNION_SUCCESS(1019, "工会创建成功"),
     HANDLE_UNION_APPLY_SUCCESS(1020, "工会申请处理了"), UPGRADE_UNION_SUCCESS(1021, "工会升级成功"), QUIT_UNION_SUCCESS(1022, "已经离开了工会"),
     DELETE_UNION_SUCCESS(1023, "工会被解散了"), HANDLE_UNION_MEMBER_SUCCESS(1024, "工会权限变更"), 
-    LEVELUP_SKILL_SUCCESS(1025, "技能升级成功");
+    LEVELUP_SKILL_SUCCESS(1025, "技能升级成功"),
+    
+    
+    RESET_SKILL_SUCCESS(1101, "技能重置成功");
 
     private final int code;
 

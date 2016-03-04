@@ -584,6 +584,11 @@ message ResponseHeroResultCommand {
 	required HeroInfo heroInfo = 2;
 }
 
+message RequestResetHeroSkillCommand {
+	required int32 heroId = 1;
+	required int32 infoId = 2;
+}
+
 message RequestLootResultCommand {
 
 }
@@ -1104,6 +1109,7 @@ message RequestCommand {
 	optional RequestFenjieHeroEquipCommand fenjieHeroEquipCommand = 54;
 	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
 	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
+	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
 }
 // response command list transfer only use it
 message ResponseCommand {

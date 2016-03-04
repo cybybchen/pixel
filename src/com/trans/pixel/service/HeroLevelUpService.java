@@ -117,6 +117,12 @@ public class HeroLevelUpService {
 		return result;
 	}
 	
+	public ResultConst resetHeroSkill(UserBean user, HeroInfoBean heroInfo) {
+		heroInfo.resetHeroSkill();
+		
+		return SuccessConst.RESET_SKILL_SUCCESS;
+	}
+	
 	private ResultConst levelUpHero(UserBean user, HeroInfoBean heroInfo) {
 		if (heroInfo.getLevel() == HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;
