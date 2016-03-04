@@ -63,7 +63,7 @@ public class RewardService {
 	 */
 	public boolean doReward(UserBean user, int rewardId, int rewardCount) {
 		if (rewardId > RewardConst.HERO) {
-			int star = rewardId % RewardConst.HERO;
+			int star = (rewardId % RewardConst.HERO) / RewardConst.HERO_STAR;
 			int heroId = rewardId % RewardConst.HERO_STAR;
 			userHeroService.addUserHero(user.getId(), heroId, star);
 		} else if (rewardId > RewardConst.PACKAGE) {
