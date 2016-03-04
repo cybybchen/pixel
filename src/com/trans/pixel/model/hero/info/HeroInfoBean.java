@@ -192,12 +192,12 @@ public class HeroInfoBean {
 		return builderList;
 	}
 	
-	public static HeroInfoBean initHeroInfo(HeroBean hero) {
+	public static HeroInfoBean initHeroInfo(HeroBean hero, int star) {
 		HeroInfoBean heroInfo = new HeroInfoBean();
 		heroInfo.setId(0);
 		heroInfo.setHeroId(hero.getId());
 		heroInfo.setLevel(1);
-		heroInfo.setStarLevel(1);
+		heroInfo.setStarLevel(star);
 		heroInfo.setValue(0);
 		heroInfo.setRare(1);
 		heroInfo.setEquipInfo("0|0|0|0|0|0");
@@ -209,6 +209,10 @@ public class HeroInfoBean {
 		heroInfo.setSkillInfoList(skillInfoList);
 		
 		return heroInfo;
+	}
+	
+	public static HeroInfoBean initHeroInfo(HeroBean hero) {
+		return initHeroInfo(hero, 1);
 	}
 	
 	public void resetHeroSkill() {

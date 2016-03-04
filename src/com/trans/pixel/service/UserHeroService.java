@@ -45,12 +45,12 @@ public class UserHeroService {
 		userHeroMapper.updateUserHero(userHero);
 	}
 	
-	public void addUserHero(long userId, int heroId) {
+	public void addUserHero(long userId, int heroId, int star) {
 		UserHeroBean userHero = selectUserHero(userId, heroId);
 		if (userHero == null) {
 			userHero = initUserHero(userId, heroId);
 		} 
-		userHero.updateHeroInfo(HeroInfoBean.initHeroInfo(heroService.getHero(heroId)));
+		userHero.updateHeroInfo(HeroInfoBean.initHeroInfo(heroService.getHero(heroId), star));
 		
 		updateUserHero(userHero);
 	}
