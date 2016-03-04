@@ -153,6 +153,7 @@ public class MailBean {
 		builder.setEndDate(endDate);
 		builder.setType(type);
 		builder.setUserId(userId);
+		builder.setRelatedId(relatedId);
 		
 		List<RewardInfo> rewardInfoBuilderList = new ArrayList<RewardInfo>();
 		for (RewardBean reward : rewardList) {
