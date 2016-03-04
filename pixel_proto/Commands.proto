@@ -97,6 +97,31 @@ message HeroInfo {
 	optional int32 star = 7;
 	optional int32 heroId = 8;
 	optional int32 position = 9;
+	optional bool isLock = 10;
+}
+
+message PurchaseCoinReward {
+	optional int32 daguan = 1;
+	optional int32 rewardid1 = 2;
+	optional int32 count11 = 3;
+	optional int32 count12 = 4;
+	optional int32 rewardid2 = 5;
+	optional int32 count21 = 6;
+	optional int32 count22 = 7;
+}
+
+message PurchaseCoinRewardList {
+	repeated PurchaseCoinReward gold = 1;
+}
+
+message PurchaseCoinCost {
+	optional int32 count = 1;
+	optional int32 currency = 2;
+	optional int32 cost = 3;
+}
+
+message PurchaseCoinCostList {
+	repeated PurchaseCoinCost gold = 1;
 }
 
 message UserTeam {
@@ -625,6 +650,11 @@ message ResponseUserTeamListCommand {
 	repeated UserTeam userTeam = 1;
 }
 
+message RequestLockHeroCommand {
+	required int32 heroId = 2;
+	required int32 infoId = 3;
+	optional bool isLock = 4;
+}
 
 message RequestHeroLevelUpCommand {
 	required int32 levelUpType = 1; //1:level 2:star 3:rare 4:skill
@@ -996,8 +1026,8 @@ message RequestPurchaseCoinCommand {//点石成金(获得金币和经验)
 }
 
 message ResponsePurchaseCoinCommand {
-	optional int32 coin = 1;//可以获得的金币
-	optional int32 exp = 2;//可以获得的经验
+	//optional int32 coin = 1;//获得的金币
+	//optional int32 exp = 2;//获得的经验
 	optional int32 jewel = 3;//价格
 	optional int32 leftTime = 4;//当日剩余次数
 }
@@ -1118,6 +1148,7 @@ message RequestCommand {
 	optional RequestLevelLootStartCommand levelLootStartCommand = 7;
 	optional RequestLevelLootResultCommand levelLootResultCommand = 8;
 	optional RequestHeroLevelUpCommand heroLevelUpCommand = 9;
+	optional RequestLockHeroCommand lockHeroCommand = 131;
 	optional RequestLootResultCommand lootResultCommand = 10;
 	optional RequestAddHeroEquipCommand addHeroEquipCommand = 11;
 	optional RequestLotteryCommand lotteryCommand = 14;

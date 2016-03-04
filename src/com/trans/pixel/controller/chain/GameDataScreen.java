@@ -47,6 +47,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -592,6 +593,11 @@ public class GameDataScreen extends RequestScreen {
 		pvpCommandService.refreshMine(cmd, responseBuilder, user);
 		return true;//RefreshPVPMineCommand
 	}//RefreshPVPMineCommand
+	@Override//LockHeroCommand
+	protected boolean handleCommand(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO LockHeroCommand method
+		return true;//LockHeroCommand
+	}//LockHeroCommand
 	//add handleCommand here
 
 	@Override

@@ -138,17 +138,17 @@ public class PvpMapService {
 		return true;
 	}
 	
-	public boolean refreshMine(UserBean user, int id){
+	public PVPMine refreshMine(UserBean user, int id){
 		PVPMine mine = redis.getMine(user.getId(), id);
 		if(mine == null || !mine.hasOwner())
-			return false;
+			return null;
+		PVPMine.Builder builder = PVPMine.newBuilder(mine);
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
-			PVPMine.Builder builder = PVPMine.newBuilder(mine);
 			builder.setOwner(userService.getRandUser(user.getServerId()));
 			redis.saveMine(user.getId(), builder.build());
 		}
-		return true;
+		return builder.build();
 	}
 	
 	public PVPMine getUserMine(UserBean user, int id){

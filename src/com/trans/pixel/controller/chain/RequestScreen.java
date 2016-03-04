@@ -43,6 +43,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -245,6 +246,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -700,6 +702,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//RefreshPVPMineCommand
                 result = handleCommand(cmd, responseBuilder, user);//RefreshPVPMineCommand
         }//RefreshPVPMineCommand
+        if (request.hasLockHeroCommand()) {
+            RequestLockHeroCommand cmd = request.getLockHeroCommand();
+            if (result)//LockHeroCommand
+                result = handleCommand(cmd, responseBuilder, user);//LockHeroCommand
+        }//LockHeroCommand
         //call handleCommand here
         
         return result;

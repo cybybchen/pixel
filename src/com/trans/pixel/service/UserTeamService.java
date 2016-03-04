@@ -74,6 +74,7 @@ public class UserTeamService {
 						for(UserHeroBean herobean : userHeroList){
 							if(herobean.getHeroId() == heroId){
 								HeroInfoBean heroinfo = herobean.getHeroInfoByInfoId(infoId);
+								heroinfo.setHeroId(herobean.getHeroId());
 								if(heroinfo != null)
 									heroinfoList.add(heroinfo);
 								break;

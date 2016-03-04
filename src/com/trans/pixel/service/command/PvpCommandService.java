@@ -114,8 +114,15 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void refreshMine(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
-		if(!pvpMapService.refreshMine(user, cmd.getId()))
+		PVPMine mine = pvpMapService.refreshMine(user, cmd.getId());
+		if(mine == null || !mine.hasOwner())
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+		List<HeroInfoBean> heroList = userTeamService.getTeamCache(mine.getOwner().getId());
+		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
+		for (HeroInfoBean heroInfo : heroList) {
+			builder.addHeroInfo(heroInfo.buildRankHeroInfo());
+		}
+		responseBuilder.setTeamCommand(builder);
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);		
 	}
 	

@@ -631,8 +631,8 @@ public class ShopCommandService extends BaseCommandService{
 	
 	public void getPurchaseCoinTime(Builder responseBuilder, UserBean user){
 		ResponsePurchaseCoinCommand.Builder builder = ResponsePurchaseCoinCommand.newBuilder();
-		builder.setCoin(500);
-		builder.setExp(500);
+//		builder.setCoin(500);
+//		builder.setExp(500);
 		builder.setJewel(50);
 		builder.setLeftTime(user.getPurchaseCoinLeft());
 		responseBuilder.setPurchaseCoinCommand(builder);

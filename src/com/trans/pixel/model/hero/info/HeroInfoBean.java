@@ -20,8 +20,15 @@ public class HeroInfoBean {
 	private int starLevel = 1;
 	private int value = 1;
 	private int rare = 1;
+	private boolean isLock = false;
 	private String equipInfo = "0|0|0|0|0|0";
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
+	public boolean isLock() {
+		return isLock;
+	}
+	public void setLock(boolean isLock) {
+		this.isLock = isLock;
+	}
 	public int getId() {
 		return id;
 	}
@@ -116,6 +123,7 @@ public class HeroInfoBean {
 		equipInfo = hero.getEquipInfo();
 		rare = hero.getRare();
 		value = hero.getValue();
+		isLock = hero.isLock();
 		skillInfoList = hero.getSkillInfoList();
 	}
 	
@@ -126,6 +134,7 @@ public class HeroInfoBean {
 		json.put(STAR_LEVEL, starLevel);
 		json.put(VALUE, value);
 		json.put(RARE, rare);
+		json.put(LOCK, isLock);
 		json.put(EQUIP_INFO, equipInfo);
 		json.put(SKILL_INFO_LIST, skillInfoList);
 		
@@ -143,6 +152,7 @@ public class HeroInfoBean {
 		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
 		bean.setEquipInfo(json.getString(EQUIP_INFO));
 		bean.setRare(json.getInt(RARE));
+		bean.setLock(json.getBoolean(LOCK));
 		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
 		bean.setPosition(TypeTranslatedUtil.jsonGetInt(json, POSITION));
 		
@@ -165,6 +175,7 @@ public class HeroInfoBean {
 		builder.setRare(rare);
 		builder.setValue(value);
 		builder.setStar(starLevel);
+		builder.setIsLock(isLock);
 		builder.addAllSkill(buildSkillList());
 		
 		return builder.build();
@@ -200,6 +211,7 @@ public class HeroInfoBean {
 		heroInfo.setStarLevel(star);
 		heroInfo.setValue(0);
 		heroInfo.setRare(1);
+		heroInfo.setLock(false);
 		heroInfo.setEquipInfo("0|0|0|0|0|0");
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -265,6 +277,7 @@ public class HeroInfoBean {
 	private static final String STAR_LEVEL = "starLevel";
 	private static final String VALUE = "value";
 	private static final String RARE = "rare";
+	private static final String LOCK = "lock";
 	private static final String EQUIP_INFO = "equipInfo";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
 	private static final String HERO_ID = "heroId";

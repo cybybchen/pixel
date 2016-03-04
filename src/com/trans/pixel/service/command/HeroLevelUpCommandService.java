@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseHeroResultCommand;
@@ -275,6 +276,24 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 			builder.setHeroId(heroId);
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
+			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
+		}
+	}
+
+	public void lockHero(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		UserHeroBean userHero = userHeroService.selectUserHero(user.getId(), cmd.getHeroId());
+		HeroInfoBean heroInfo = null;
+		
+		if (userHero != null) {
+			heroInfo = userHero.getHeroInfoByInfoId(cmd.getInfoId());
+			if (heroInfo != null)
+				heroInfo.setLock(cmd.getIsLock());
+		}
+		if(heroInfo == null)
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_NOT_EXIST));
+		else{
+			userHero.updateHeroInfo(heroInfo);
+			userHeroService.updateUserHero(userHero);
 			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		}
 	}

@@ -56,6 +56,7 @@ import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -519,6 +520,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO RefreshPVPMineCommand method
 		return true;//RefreshPVPMineCommand
 	}//RefreshPVPMineCommand
+	@Override//LockHeroCommand
+	protected boolean handleCommand(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO LockHeroCommand method
+		return true;//LockHeroCommand
+	}//LockHeroCommand
 	//add handleCommand here
 
 	@Override
