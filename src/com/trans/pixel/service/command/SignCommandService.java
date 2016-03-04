@@ -42,7 +42,7 @@ public class SignCommandService extends BaseCommandService {
 		user.setHasSign(true);
 		userService.updateUser(user);
 		
-		rewardService.doReward(user.getId(), reward);
+		rewardService.doReward(user, reward);
 		builder.addReward(reward.buildRewardInfo());
 		responseBuilder.setSignCommand(builder.build());
 		pushCommandService.pushUserDataByRewardId(responseBuilder, user, reward.getItemid());
