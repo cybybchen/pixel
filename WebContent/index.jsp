@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0"> 
 	<link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> -->
 	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" href="css/jsoneditor.css"/>
     <link rel="stylesheet" href="css/style.css"/>
@@ -42,16 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 	<script>
 		( function( $, undefined ) {
-			// var counter = 0;
-			// function addUserTab(user) {
-			// 	var userid = $('input[name="userid"]').val();
-			// 	var username = $('input[name="username"]').val();
-			// 	var serverid = $('input[name="serverid"]').val();
-			// 	var $el = $( '<a href="#" onclick="updateUser(\''+user+'\')" class="nav-btn ui-btn ui-btn-inline">user ' + counter + "</a>" );
-			// 	$("#new-tab").after($el);
-			// 	$el.buttonMarkup();
-			// 	$( "#user-controlgroup" ).controlgroup( "refresh" );
-			// }
 			$( document ).bind( "pagecreate", function( e ) {
 				// $("#adduser").click(function() {
 				// 	addUserTab();
@@ -86,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <label for="serverid" class="ui-hidden-accessible">serverId:</label>
 	        <input type="text" name="serverid" value="" placeholder="serverId">
 
-	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="addUserTab()">Sign in</a>
+	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="addNewUserTab()">Sign in</a>
 		</div>
 	</div>
     <div class="jqm-navmenu-panel" data-position="left" data-display="overlay">
@@ -122,6 +112,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</jsoneditor>
 </div>
 		<div id="user-editor">
+	<jsoneditor>
+		<div class="json-editor-title"><span>Introduction</span>
+			<a href="#"  class="reload-btn editor-btn ui-btn ui-btn-inline">加载</a>
+			<div style="right:0;float:right;"><a href="#"  class="del-btn editor-btn ui-btn ui-btn-inline">删除</a>
+			<a href="#"  class="update-btn editor-btn ui-btn ui-btn-inline">更新</a></div>
+		</div>
+	    <div class="json-editor"></div>
+	    <!-- <p class="json-note">Note.</p> -->
+	    <textarea class="json" onchange="updateJSON(this);"></textarea><br/>
+	</jsoneditor>
 		</div>
 	</div><!-- /content -->
 

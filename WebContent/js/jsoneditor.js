@@ -35,6 +35,14 @@ var json = {
 var userid = 0;
 var username = "";
 var serverid = 0;
+function addNewUserTab() {
+    userid = $('input[name="userid"]:visible').val();
+    username = $('input[name="username"]:visible').val();
+    serverid = $('input[name="serverid"]:visible').val();
+    requestUserJson(userid, username, serverid);
+}
+
+/*set global userid before called*/
 function addUserTab(){
     var checked = false;
     var navs =  $(".nav-userbtn");
@@ -50,7 +58,7 @@ function addUserTab(){
     }
     if(!checked){
         var text = "S"+serverid+"."+username;
-        var $el = $( '<a href="#" userid="'+userid+'" onclick="requestUserJson(this, '+userid+', '+username+', '+serverid+')" class="nav-userbtn nav-btn ui-btn ui-btn-inline">' + text + "</a>" );
+        var $el = $( '<a href="#" userid="'+userid+'" onclick="requestUserJson('+userid+', \''+username+'\', '+serverid+')" class="nav-userbtn nav-btn ui-btn ui-btn-inline">' + text + "</a>" );
         $("#new-usertab").after($el);
         $el.buttonMarkup();
         $( "#user-controlgroup" ).controlgroup( "refresh" );
@@ -61,10 +69,13 @@ function addUserTab(){
 }
 
 function appendUserData(key, value){
-    var editor = $("#jsoneditor jsoneditor").clone();
-    if($(".json-editor-title[key="+key+"]").length > 0)
+    var editor;
+    if($(".json-editor-title[key="+key+"]").length > 0){
         editor = $(".json-editor-title[key="+key+"]").parent();
-    editor.appendTo("#user-editor");
+    }else{
+        editor = $("#jsoneditor jsoneditor").clone();
+        editor.appendTo("#user-editor");
+    }
     editor.find(".json-editor-title span").text(key);
     editor.find(".json-editor-title").attr("key", key);
     editor.find(".json-editor").jsonEditor(value, { change: updateJSON, propertyclick: showPath });
@@ -72,6 +83,10 @@ function appendUserData(key, value){
 }
 
 function appendUserDatas(message){
+    if(message["error"]!=null){
+        alert("ERROR:"+message["error"]);
+        return;
+    }
     userid = message["userId"];
     username = message["userName"];
     serverid = message["serverId"];
@@ -131,7 +146,10 @@ function deleteUserJson(jsondata) {
     updateUserJson(jsondata);
 }
 
-function requestUserJson(userid, username, serverid) {
+function requestUserJson(myuserid, myusername, myserverid) {
+    userid = myuserid;
+    username = myusername;
+    serverid = myserverid;
     $.ajax({
         type: "POST",
         url: "datamanager",
@@ -157,13 +175,16 @@ function requestUserJson(userid, username, serverid) {
     });
 }
 
-function buildUserJson(key){
+function buildUserJson(key, value){
 	var json = {};
 	json["userId"] = userid;
 	json["userName"] = username;
     json["serverId"] = serverid;
     if(key != null){
-        json[key] = 1;
+        if(value != null)
+            json[key] = value;
+        else
+            json[key] = 1;
     }else{
         json["userData"] = 1;
         json["userDailyData"] = 1;
@@ -186,8 +207,9 @@ function buildUserJson(key){
 // }
 
 function updateJSON(dom, data) {
+    var val;
     if(data == null){//update json view
-        var val = $(dom).val();
+        val = $(dom).val();
         if (val) {
             try { json = JSON.parse(val); }
             catch (e) { alert('Error in parsing json. ' + e); }
@@ -196,12 +218,13 @@ function updateJSON(dom, data) {
         }
         $(dom).prev().jsonEditor(json, { change: updateJSON, propertyclick: showPath });
     }else{//update json text
-        var div = $(dom).parent();
+        var div = $(dom);
         while(!div.hasClass("json-editor")){
             div = $(div).parent();
         }
         div = div.next();
-        div.val(JSON.stringify(data));
+        val = JSON.stringify(data);
+        div.val(val);
     }
 }
 
@@ -219,18 +242,27 @@ $(document).ready(function() {
     $( "#menu-panel" ).panel({
       animate: false
     });
-    $(".reload-btn").on('click', function() {
-        var data = buildUserJson("reload-"+$( this ).parent().attr(key));
-        // date["reload-"+key] = 1;
+    $("#user-editor").on('click', ".reload-btn", function() {
+        var data = buildUserJson($( this ).parent().attr("key"));
+        // date[key] = 1;
         reloadUserJson(data);
     });
-    $(".update-btn").on('click', function() {
-        var data = buildUserJson("update-"+$( this ).parent().attr(key));
+    $("#user-editor").on('click', ".update-btn", function() {
+        var dom = $( this ).parent().parent();
+        var val = dom.parent().find(".json").val();
+        if(val.length < 5){ 
+            alert('Error in updating empty json. ');return;
+        }
+        try { json = JSON.parse(val); }
+        catch (e) { alert('Error in parsing json. ' + e);return; }
+        var data = buildUserJson("update-"+dom.attr("key"), val);
         // date["update-"+key] = 1;
         updateUserJson(data);
     });
-    $(".del-btn").on('click', function() {
-        var data = buildUserJson("del-"+$( this ).parent().attr(key));
+    $("#user-editor").on('click', ".del-btn", function() {
+        var dom = $( this ).parent().parent();
+        dom.parent().find(".json").val("{}");
+        var data = buildUserJson("del-"+dom.attr("key"));
         // date["del-"+key] = 1;
         deleteUserJson(data);
     });
@@ -272,8 +304,8 @@ $(document).ready(function() {
     //     $(this).text(editor.hasClass('expanded') ? 'Collapse' : 'Expand all');
     // });
 
-    // $('.json').val(JSON.stringify(json));
-    // $('.json-editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
+    $('.json').val(JSON.stringify(json));
+    $('.json-editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
 });
 
     function isObject(o) { return Object.prototype.toString.call(o) == '[object Object]'; }
