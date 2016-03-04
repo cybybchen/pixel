@@ -1,20 +1,15 @@
 package com.trans.pixel.service.command;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseSignCommand;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SignService;
@@ -48,7 +43,7 @@ public class SignCommandService extends BaseCommandService {
 		userService.updateUser(user);
 		
 		rewardService.doReward(user.getId(), reward);
-		builder.setReward(reward.buildRewardInfo());
+		builder.addReward(reward.buildRewardInfo());
 		responseBuilder.setSignCommand(builder.build());
 		pushCommandService.pushUserDataByRewardId(responseBuilder, user, reward.getItemid());
 	}

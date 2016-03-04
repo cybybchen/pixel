@@ -1006,7 +1006,7 @@ message RequestSignCommand {
 }
 
 message ResponseSignCommand {
-	required RewardInfo reward = 1;
+	repeated RewardInfo reward = 1;
 }
 
 message RequestFenjieHeroEquipCommand {
