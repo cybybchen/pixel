@@ -142,6 +142,8 @@
 	    <fileset dir="${webapp.dir}" >
 		<include name="**/*.jsp" />
 		<include name="**/*.html" />
+		<include name="**/js/" />
+		<include name="**/css/" />
 	    </fileset>
             <lib dir="${lib.dir}" />
             <classes dir="${build.dir}" >
