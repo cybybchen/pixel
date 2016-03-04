@@ -69,8 +69,10 @@ public class FriendCommandService extends BaseCommandService {
 	
 	private void doAddFriends(long userId, List<MailBean> mailList) {
 		for (MailBean mail : mailList) {
-			if (!userFriendService.isFriend(userId, mail.getFromUserId()))
+			if (!userFriendService.isFriend(userId, mail.getFromUserId())) {
 				userFriendService.insertUserFriend(userId, mail.getFromUserId());
+				userFriendService.insertUserFriend(mail.getFromUserId(), userId);
+			}
 			
 			mailService.delMail(userId, MailConst.TYPE_ADDFRIEND_MAIL, mail.getId());
 		}
