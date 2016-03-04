@@ -46,5 +46,6 @@ public class SignCommandService extends BaseCommandService {
 		builder.addReward(reward.buildRewardInfo());
 		responseBuilder.setSignCommand(builder.build());
 		pushCommandService.pushUserDataByRewardId(responseBuilder, user, reward.getItemid());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 }
