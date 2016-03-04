@@ -81,6 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
     <div class="jqm-navmenu-panel" data-position="left" data-display="overlay">
     	<ul data-role="listview" class="jqm-list ui-alt-icon ui-nodisc-icon">
+			<li  id="nav-locate" data-icon="home" data-theme="b">用户</li>
 			<li  data-icon="home"><a href="#menu-panel">导航</a></li>
 			<li ><a href="#menu-panel" data-ajax="false">Introduction</a></li>
 			<li ><a href="#menu-panel" data-ajax="false">Buttons</a></li>
@@ -112,16 +113,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</jsoneditor>
 </div>
 		<div id="user-editor">
-	<jsoneditor>
-		<div class="json-editor-title"><span>Introduction</span>
-			<a href="#"  class="reload-btn editor-btn ui-btn ui-btn-inline">加载</a>
-			<div style="right:0;float:right;"><a href="#"  class="del-btn editor-btn ui-btn ui-btn-inline">删除</a>
-			<a href="#"  class="update-btn editor-btn ui-btn ui-btn-inline">更新</a></div>
-		</div>
-	    <div class="json-editor"></div>
-	    <!-- <p class="json-note">Note.</p> -->
-	    <textarea class="json" onchange="updateJSON(this);"></textarea><br/>
-	</jsoneditor>
 		</div>
 	</div><!-- /content -->
 
