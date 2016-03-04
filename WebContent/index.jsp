@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-	<base href="<%=basePath%>">
+	<!-- <base href="<%=basePath%>"> -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Demos</title>
@@ -67,8 +67,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body onload="time()">
 <%@ include file="jsp/menu-panel.jsp" %>
-<div id="jsoneditor" style="display:none;">
-</div>
 <div data-role="page" id="user-page" class="jqm-demos" data-quicklinks="true">
 
 	<!-- <div data-role="header" class="jqm-header">
@@ -111,6 +109,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 			<!-- <a href="#" class="nav-btn ui-btn ui-btn-inline" userid="2">Anchor</a> -->
 		</div>
+<div id="jsoneditor" style="display:none;">
+	<jsoneditor>
+		<div class="json-editor-title"><span>Introduction</span>
+			<a href="#"  class="reload-btn editor-btn ui-btn ui-btn-inline">加载</a>
+			<div style="right:0;float:right;"><a href="#"  class="del-btn editor-btn ui-btn ui-btn-inline">删除</a>
+			<a href="#"  class="update-btn editor-btn ui-btn ui-btn-inline">更新</a></div>
+		</div>
+	    <div class="json-editor"></div>
+	    <!-- <p class="json-note">Note.</p> -->
+	    <textarea class="json" onchange="updateJSON(this);"></textarea><br/>
+	</jsoneditor>
+</div>
 		<div id="user-editor">
 		</div>
 	</div><!-- /content -->

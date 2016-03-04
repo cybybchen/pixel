@@ -72,7 +72,74 @@ public class ManagerService extends RedisService{
 		result.put("userId", userId);
 		result.put("userName", userName);
 		result.put("serverId", serverId);
-		if(req.containsKey("userData")){
+		if(req.containsKey("update-UserData")){
+			hput(USERDATA+userId, "UserData", req.get("update-UserData").toString());
+			String value = hget(USERDATA+userId, "UserData");
+			result.put("UserData", value);
+		}else if(req.containsKey("del-UserData")){
+			hdelete(USERDATA+userId, "UserData");
+			String value = hget(USERDATA+userId, "UserData");
+			result.put("UserData", value);
+		}else if(req.containsKey("UserData")){
+			String value = hget(USERDATA+userId, "UserData");
+			result.put("UserData", value);
+		}else if(req.containsKey("update-LevelRecord")){
+			hput(USERDATA+userId, "LevelRecord", req.get("update-LevelRecord").toString());
+		}else if(req.containsKey("del-LevelRecord")){
+			hdelete(USERDATA+userId, "LevelRecord");
+		}else if(req.containsKey("LevelRecord")){
+			String value = hget(USERDATA+userId, "LevelRecord");
+			result.put("LevelRecord", value);
+		}else if(req.containsKey("update-LootLevel")){
+			hput(USERDATA+userId, "LootLevel", req.get("update-LootLevel").toString());
+		}else if(req.containsKey("del-LootLevel")){
+			hdelete(USERDATA+userId, "LootLevel");
+		}else if(req.containsKey("LootLevel")){
+			String value = hget(USERDATA+userId, "LootLevel");
+			result.put("LootLevel", value);
+		}else if(req.containsKey("update-DAILYSHOP")){
+			hput(USERDATA+userId, "DAILYSHOP", req.get("update-DAILYSHOP").toString());
+		}else if(req.containsKey("del-DAILYSHOP")){
+			hdelete(USERDATA+userId, "DAILYSHOP");
+		}else if(req.containsKey("DAILYSHOP")){
+			String value = hget(USERDATA+userId, "DAILYSHOP");
+			result.put("DAILYSHOP", value);
+		}else if(req.containsKey("update-BLACKSHOP")){
+			hput(USERDATA+userId, "BLACKSHOP", req.get("update-BLACKSHOP").toString());
+		}else if(req.containsKey("del-BLACKSHOP")){
+			hdelete(USERDATA+userId, "BLACKSHOP");
+		}else if(req.containsKey("BLACKSHOP")){
+			String value = hget(USERDATA+userId, "BLACKSHOP");
+			result.put("BLACKSHOP", value);
+		}else if(req.containsKey("update-UNIONSHOP")){
+			hput(USERDATA+userId, "UNIONSHOP", req.get("update-UNIONSHOP").toString());
+		}else if(req.containsKey("del-UNIONSHOP")){
+			hdelete(USERDATA+userId, "UNIONSHOP");
+		}else if(req.containsKey("UNIONSHOP")){
+			String value = hget(USERDATA+userId, "UNIONSHOP");
+			result.put("UNIONSHOP", value);
+		}else if(req.containsKey("update-PVPSHOP")){
+			hput(USERDATA+userId, "PVPSHOP", req.get("update-PVPSHOP").toString());
+		}else if(req.containsKey("del-PVPSHOP")){
+			hdelete(USERDATA+userId, "PVPSHOP");
+		}else if(req.containsKey("PVPSHOP")){
+			String value = hget(USERDATA+userId, "PVPSHOP");
+			result.put("PVPSHOP", value);
+		}else if(req.containsKey("update-EXPEDITIONSHOP")){
+			hput(USERDATA+userId, "EXPEDITIONSHOP", req.get("update-EXPEDITIONSHOP").toString());
+		}else if(req.containsKey("del-EXPEDITIONSHOP")){
+			hdelete(USERDATA+userId, "EXPEDITIONSHOP");
+		}else if(req.containsKey("EXPEDITIONSHOP")){
+			String value = hget(USERDATA+userId, "EXPEDITIONSHOP");
+			result.put("EXPEDITIONSHOP", value);
+		}else if(req.containsKey("update-LADDERSHOP")){
+			hput(USERDATA+userId, "LADDERSHOP", req.get("update-LADDERSHOP").toString());
+		}else if(req.containsKey("del-LADDERSHOP")){
+			hdelete(USERDATA+userId, "LADDERSHOP");
+		}else if(req.containsKey("LADDERSHOP")){
+			String value = hget(USERDATA+userId, "LADDERSHOP");
+			result.put("LADDERSHOP", value);
+		}else if(req.containsKey("userData")){
 			Map<String, String> map = hget(USERDATA+userId);
 			result.putAll(map);
 		}

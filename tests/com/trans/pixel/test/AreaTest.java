@@ -22,15 +22,13 @@ import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class AreaTest extends BaseTest {
-	private static Logger logger = Logger.getLogger(AreaTest.class);
-
 	@Test
 	public void testArea() {
 		login();
 		testGetArea();
-		testAreaBoss();
-		testAreaMonster();
-		testAreaResource();
+//		testAreaBoss();
+//		testAreaMonster();
+//		testAreaResource();
 		testAreaResourceMine();
 	}
 	
@@ -49,7 +47,7 @@ public class AreaTest extends BaseTest {
         if(!response.hasAreaCommand())
         	fail("testArea Not yet implemented");
         area = response.getAreaCommand();
-        logger.info(response.getAllFields());
+        System.out.println(response.getAllFields());
 	}
 	
 	private void testAreaBoss() {
@@ -68,7 +66,7 @@ public class AreaTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasAreaCommand())
         	fail("testAreaBoss Not yet implemented");
-        logger.info(response.getAllFields());
+        System.out.println(response.getAllFields());
 	}
 	
 	private void testAreaMonster() {
@@ -86,7 +84,7 @@ public class AreaTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasAreaCommand())
         	fail("testAreaMonster Not yet implemented");
-        logger.info(response.getAllFields());
+        System.out.println(response.getAllFields());
 	}
 	
 	private void testAreaResource() {
@@ -104,7 +102,7 @@ public class AreaTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasAreaCommand())
         	fail("testAreaResource Not yet implemented");
-        logger.info(response.getAllFields());
+        System.out.println(response.getAllFields());
 	}
 	
 	private void testAreaResourceMine() {
@@ -114,6 +112,7 @@ public class AreaTest extends BaseTest {
 		AreaResource resource = area.getAreas(0).getResources(0);
 		builder.setId(resource.getMines(0).getId());
 		builder.setTeamid(1);
+		builder.setRet(true);
 		requestBuilder.setAttackResourceMineCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
@@ -123,7 +122,7 @@ public class AreaTest extends BaseTest {
         Assert.assertNotNull(response);
         if(!response.hasAreaCommand())
         	fail("testAreaResourceMine Not yet implemented");
-        logger.info(response.getAllFields());
+        System.out.println(response.getAllFields());
 	}
 
 }

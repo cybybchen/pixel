@@ -158,10 +158,10 @@ public class AreaFightService extends FightService{
 		AreaResourceMine mine = redis.getResourceMine(id, user);
 		if(mine == null)
 			return ErrorConst.MAPINFO_ERROR;
-		if(!ret)
-			return SuccessConst.PVP_ATTACK_FAIL;
 		List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user.getId(), herolist);
+		if(!ret)
+			return SuccessConst.PVP_ATTACK_FAIL;
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(mine);
 		if(!gainMine(builder, user))
 			return ErrorConst.AREAMINE_HURRY;
@@ -180,7 +180,7 @@ public class AreaFightService extends FightService{
 	
 	public boolean gainMine(AreaResourceMine.Builder builder, UserBean user){
 		if(!builder.hasUser())
-			return false;
+			return true;
 		if(!redis.setLock("S"+user.getServerId()+"_Mine_"+builder.getId(), System.currentTimeMillis()))
 			return false;
 		int yield = builder.getYield();

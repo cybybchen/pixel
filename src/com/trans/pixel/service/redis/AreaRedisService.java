@@ -84,12 +84,14 @@ public class AreaRedisService extends RedisService{
 				}
 				for(AreaTime time : timeMap.values()){
 					int count = 0;
-					for(Entry<String, AreaBoss.Builder> entry : bosses.entrySet()){
+					Iterator<Entry<String, AreaBoss.Builder>> it = bosses.entrySet().iterator(); 
+					while(it.hasNext()){
+						Entry<String, AreaBoss.Builder> entry = it.next();
 						AreaBoss.Builder Boss = entry.getValue();
 						if(Boss.getBelongto() == fieldtime.getId() && Boss.getGroup() == time.getGroup()){
 							if(time.getCondition() == 0){
-								bosses.remove(entry.getKey());
 								deleteBoss(Boss.getId(), user);
+								it.remove();
 							}else
 								count++;
 						}
@@ -193,12 +195,14 @@ public class AreaRedisService extends RedisService{
 				}
 				for(AreaTime time : timeMap.values()){
 					int count = 0;
-					for(Entry<String, AreaMonster> entry : monsters.entrySet()){
+					Iterator<Entry<String, AreaMonster>> it = monsters.entrySet().iterator(); 
+					while(it.hasNext()){
+						Entry<String, AreaMonster> entry = it.next();
 						AreaMonster monster = entry.getValue();
 						if(monster.getBelongto() == fieldtime.getId() && monster.getGroup() == time.getGroup()){
 							if(time.getCondition() == 0){
-								monsters.remove(entry.getKey());
 								deleteMonster(monster.getId(), user);
+								it.remove();
 							}else
 								count++;
 						}

@@ -45,7 +45,7 @@
             valueElement: valueElement
         };
         construct(opt, json, opt.target);
-        $('.property, .value', opt.target).live('blur focus', function() {
+        $('.property, .value', opt.target).on('blur focus', function() {
             $(this).toggleClass('editing');
         });
     }
@@ -193,7 +193,7 @@
             addListAppender(root, function () {
                 addNewValue(json);
                 construct(opt, json, root, path);
-                opt.onchange(parse(stringify(opt.original)));
+                opt.onchange(this, parse(stringify(opt.original)));
             })
         }
     }
@@ -234,7 +234,7 @@
 
             if (!newKey) $(this).parent().remove();
             
-            opt.onchange(parse(stringify(opt.original)));
+            opt.onchange(this, parse(stringify(opt.original)));
         };
     }
 
@@ -257,7 +257,7 @@
 
             updateParents(this, opt);
             
-            opt.onchange(parse(stringify(opt.original)));
+            opt.onchange(this, parse(stringify(opt.original)));
         };
     }
     

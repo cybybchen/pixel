@@ -122,10 +122,10 @@ public class LadderService {
 		
 		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 		userService.updateUser(user);
-		if (!result)
-			return SuccessConst.LADDER_ATTACK_FAIL;
 		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user.getId(), heroList);
+		if (!result)
+			return SuccessConst.LADDER_ATTACK_FAIL;
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
 		attackRankBean.setRank(myRankBean.getRank());
 		myRankBean.setRank(attackRank);
