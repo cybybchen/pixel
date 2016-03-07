@@ -62,17 +62,8 @@ public class UserTeamService {
 	}
 
 	public List<HeroInfo> getProtoTeamCache(long userId) {
-		List<HeroInfoBean> heroInfoList = getTeamCache(userId);
-		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
-		for (HeroInfoBean heroInfo : heroInfoList) {
-			heroInfoBuilderList.add(heroInfo.buildTeamHeroInfo());
-		}
-		
-		return heroInfoBuilderList;
-	}
-	
-	public void saveTeamCache(long userid, List<HeroInfoBean> list){
-		userTeamRedisService.saveTeamCache(userid, list);
+		Team userTeam = getTeamCache(userId);
+		return userTeam.getHeroInfoList();
 	}
 	
 	public List<HeroInfoBean> getTeam(UserBean user, int teamid){

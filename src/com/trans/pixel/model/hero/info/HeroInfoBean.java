@@ -204,7 +204,6 @@ public class HeroInfoBean {
 		builder.setStar(starLevel);
 		builder.addAllSkill(buildSkillList());
 		builder.setHeroId(heroId);
-		builder.setPosition(position);
 		
 		return builder.build();
 	}
