@@ -20,7 +20,10 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
+import com.trans.pixel.protoc.Commands.HeroInfo;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.HeroService;
 
 @Repository
@@ -30,29 +33,26 @@ public class UserTeamRedisService extends RedisService {
 	@Resource
 	private HeroService heroService;
 
-	public List<HeroInfoBean> getTeamCache(final long userid) {
+	public Team getTeamCache(final long userid) {
 		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid);
-		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
-		JSONArray array = JSONArray.fromObject(value);
-		for (int i = 0; i < array.size(); ++i) {
-			try {
-				HeroInfoBean hero = HeroInfoBean.fromJson(array.getString(i));
-				list.add(hero);
-			} catch (Exception e) {
-
-			}
-		}
-		if (list.isEmpty()) {
+		Team.Builder team = Team.newBuilder();
+		if(value != null && parseJson(value, team))
+			return team.build();
+		else{
 			HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
-//			heroInfo.setPosition(list.size() + 1);
-			list.add(heroInfo);
+			team.addHeroInfo(heroInfo.buildRankHeroInfo());
+			return team.build();
 		}
-		return list;
 	}
 
-	public void saveTeamCache(final long userid, List<HeroInfoBean> list) {
-		JSONArray array = JSONArray.fromObject(list);
-		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid, array.toString());
+	public void saveTeamCache(final UserBean user, List<HeroInfoBean> list) {
+//		JSONArray array = JSONArray.fromObject(list);
+		Team.Builder teambuilder = Team.newBuilder();
+		teambuilder.setUser(user.buildShort());
+		for(HeroInfoBean hero : list){
+			teambuilder.addHeroInfo(hero.buildRankHeroInfo());
+		}
+		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), formatJson(teambuilder.build()));
 		//todo expire
 	}
 

@@ -32,6 +32,7 @@ import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.WeightReward;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -160,7 +161,7 @@ public class AreaFightService extends FightService{
 		if(mine == null)
 			return ErrorConst.MAPINFO_ERROR;
 		List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user.getId(), herolist);
+		userTeamService.saveTeamCache(user, herolist);
 		if(!ret)
 			return SuccessConst.PVP_ATTACK_FAIL;
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(mine);
@@ -172,10 +173,10 @@ public class AreaFightService extends FightService{
 		return SuccessConst.PVP_ATTACK_SUCCESS;
 	}
 	
-	public List<HeroInfoBean> AttackResourceMineInfo(int id, UserBean user){
+	public Team AttackResourceMineInfo(int id, UserBean user){
 		AreaResourceMine mine = redis.getResourceMine(id, user);
 		if(mine == null || !mine.hasUser())
-			return new ArrayList<HeroInfoBean>();
+			return null;
 		return userTeamService.getTeamCache(mine.getUser().getId());
 	}
 	

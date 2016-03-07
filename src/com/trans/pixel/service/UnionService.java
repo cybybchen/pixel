@@ -226,7 +226,7 @@ public class UnionService extends FightService{
 		unionRedisService.getBaseUnion(builder, user.getUnionId(), user.getServerId());
 		if(builder.hasAttackId()){
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
-			userTeamService.saveTeamCache(user.getId(), herolist);
+			userTeamService.saveTeamCache(user, herolist);
 			unionRedisService.attack(builder.getAttackId(), user);
 		}else if(user.getUnionJob() >= 2){
 			Union.Builder defendUnion = Union.newBuilder();
@@ -250,7 +250,7 @@ public class UnionService extends FightService{
 		unionRedisService.getBaseUnion(union, user.getUnionId(), user.getServerId());
 		if(union.hasDefendId()){
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
-			userTeamService.saveTeamCache(user.getId(), herolist);
+			userTeamService.saveTeamCache(user, herolist);
 			unionRedisService.defend(union.getDefendId(), user);
 		}
 	}

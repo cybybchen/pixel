@@ -135,6 +135,11 @@ message UserHero {
 	repeated HeroInfo heroInfo = 3;
 }
 
+message Team {
+	optional UserInfo user = 1;
+	repeated HeroInfo heroInfo = 2;
+}
+
 message UserEquip {
 	required int32 equipId = 1;
 	required int32 equipCount = 2;
@@ -864,6 +869,7 @@ message RequestAttackResourceMineInfoCommand {//区域争夺矿区队伍信息
 
 message ResponseAttackResourceMineInfoCommand {
 	repeated HeroInfo heroInfo = 1;
+	optional UserInfo user = 2;
 }
 
 message ResponseUserLevelCommand {

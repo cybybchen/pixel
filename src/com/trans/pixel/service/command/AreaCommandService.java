@@ -19,6 +19,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.AreaFightService;
 
 /**
@@ -69,14 +70,14 @@ public class AreaCommandService extends BaseCommandService{
 	
 	public void AttackResourceMineInfo(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user){
 		ResponseAttackResourceMineInfoCommand.Builder builder = ResponseAttackResourceMineInfoCommand.newBuilder();
-		List<HeroInfoBean> heroList = service.AttackResourceMineInfo(cmd.getId(), user);
-//		if(heroList.isEmpty()){
-//			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
-//			return;
-//		}
-		for (HeroInfoBean heroInfo : heroList) {
-			builder.addHeroInfo(heroInfo.buildRankHeroInfo());
+		Team team = service.AttackResourceMineInfo(cmd.getId(), user);
+		if(team == null){
+			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+			Areas(responseBuilder, user);
+		}else{
+			builder.setUser(team.getUser());
+			builder.addAllHeroInfo(team.getHeroInfoList());
+			responseBuilder.setResourceMineInfoCommand(builder);
 		}
-		responseBuilder.setResourceMineInfoCommand(builder);
 	}
 }

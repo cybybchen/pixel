@@ -69,7 +69,7 @@ public class PvpCommandService extends BaseCommandService {
 	public void attackMine(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		int teamid = cmd.getTeamid();
 		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user.getId(), heroList);
+		userTeamService.saveTeamCache(user, heroList);
 		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
@@ -80,7 +80,7 @@ public class PvpCommandService extends BaseCommandService {
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getUser(friendUserId);
 		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user.getId(), heroList);
+		userTeamService.saveTeamCache(user, heroList);
 		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 //		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, friend);

@@ -12,6 +12,7 @@ import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
 @Service
@@ -51,12 +52,12 @@ public class UserTeamService {
 		return userTeamList;
 	}
 
-	public List<HeroInfoBean> getTeamCache(long userid){
+	public Team getTeamCache(long userid){
 		return userTeamRedisService.getTeamCache(userid);
 	}
 
-	public void saveTeamCache(long userid, List<HeroInfoBean> list){
-		userTeamRedisService.saveTeamCache(userid, list);
+	public void saveTeamCache(UserBean user, List<HeroInfoBean> list){
+		userTeamRedisService.saveTeamCache(user, list);
 	}
 	
 	public List<HeroInfoBean> getTeam(UserBean user, int teamid){
