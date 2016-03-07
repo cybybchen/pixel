@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -78,6 +79,8 @@ public class PvpCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 //		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, friend);
 		sendHelpMail(friend, user);
+		
+		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
 	}
 	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
