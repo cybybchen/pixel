@@ -54,13 +54,19 @@ public class UnionRedisService extends RedisService{
 	
 	public List<Union> getBaseUnions(UserBean user) {
 		List<Union> unions = new ArrayList<Union>();
-		Map<String, String> applyMap = this.hget(RedisKey.USERDATA+"Apply_"+user.getId());
-		Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
-		while(it.hasNext()){
-			Entry<String, String> entry = it.next();
-			if(Long.parseLong(entry.getValue()) < System.currentTimeMillis()){
-				hdelete(RedisKey.USERDATA+"Apply_"+user.getId(), entry.getKey());
-				it.remove();
+		Map<String, String> applyMap;
+		if(user.getUnionId() != 0)
+			applyMap = new HashMap<String, String>();
+		else
+		{
+			applyMap = this.hget(RedisKey.USERDATA+"Apply_"+user.getId());
+			Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
+			while(it.hasNext()){
+				Entry<String, String> entry = it.next();
+				if(Long.parseLong(entry.getValue()) < System.currentTimeMillis()){
+					hdelete(RedisKey.USERDATA+"Apply_"+user.getId(), entry.getKey());
+					it.remove();
+				}
 			}
 		}
 		Map<String, String> unionMap = this.hget(getUnionServerKey(user.getServerId()));

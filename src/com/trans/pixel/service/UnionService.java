@@ -221,7 +221,7 @@ public class UnionService extends FightService{
 		return true;
 	}
 	
-	public void attack(int attackId, int teamid, UserBean user){
+	public boolean attack(int attackId, int teamid, UserBean user){
 		Union.Builder builder = Union.newBuilder();
 		unionRedisService.getBaseUnion(builder, user.getUnionId(), user.getServerId());
 		if(builder.hasAttackId()){
@@ -233,9 +233,16 @@ public class UnionService extends FightService{
 			unionRedisService.getBaseUnion(defendUnion, builder.getAttackId(), user.getServerId());
 			builder.setAttackId(attackId);
 			defendUnion.setDefendId(builder.getId());
-			unionRedisService.saveUnion(builder.build(), user);
-			unionRedisService.saveUnion(defendUnion.build(), user);
+			if(unionRedisService.setLock("Union_"+builder.getId(), System.currentTimeMillis()) 
+				&& unionRedisService.setLock("Union_"+defendUnion.getId(), System.currentTimeMillis()))
+			{
+				unionRedisService.saveUnion(builder.build(), user);
+				unionRedisService.saveUnion(defendUnion.build(), user);
+			}else{
+				return false;
+			}
 		}
+		return true;
 	}
 	
 	public void defend(int teamid, UserBean user){
