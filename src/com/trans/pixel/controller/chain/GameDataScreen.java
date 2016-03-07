@@ -595,7 +595,7 @@ public class GameDataScreen extends RequestScreen {
 	}//RefreshPVPMineCommand
 	@Override//LockHeroCommand
 	protected boolean handleCommand(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO LockHeroCommand method
+		heroLevelUpCommandService.lockHero(cmd, responseBuilder, user);
 		return true;//LockHeroCommand
 	}//LockHeroCommand
 	//add handleCommand here

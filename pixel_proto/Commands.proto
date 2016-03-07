@@ -96,7 +96,7 @@ message HeroInfo {
 	optional int32 value = 6;
 	optional int32 star = 7;
 	optional int32 heroId = 8;
-	optional int32 position = 9;
+	optional int32 position = 9;//useless
 	optional bool isLock = 10;
 }
 

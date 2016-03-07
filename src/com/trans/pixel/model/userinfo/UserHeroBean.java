@@ -5,8 +5,6 @@ import java.util.List;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
-import com.trans.pixel.model.StarBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.UserHero;

@@ -180,6 +180,10 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 		if (userHero != null) {
 			heroInfo = userHero.getHeroInfoByInfoId(infoId);
 			if (heroInfo != null) {
+				if(heroInfo.isLock()){
+					responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_LOCKED));
+					return;
+				}
 				equipIds = heroInfo.getEquipIds();
 				addCoin = 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
 			}

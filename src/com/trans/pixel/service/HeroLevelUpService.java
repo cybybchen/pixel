@@ -146,6 +146,8 @@ public class HeroLevelUpService {
 		ResultConst result = ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
 		int addValue = calValues(userHero, costInfoIds);
+		if(addValue < 0)
+			return ErrorConst.HERO_LOCKED; 
 		userHero.delHeros(costInfoIds);
 		heroInfo.setValue(heroInfo.getValue() + addValue);
 		calHeroStar(heroInfo);
@@ -168,6 +170,8 @@ public class HeroLevelUpService {
 		for (int infoId : costInfoIds) {
 			HeroInfoBean heroInfo = userHero.getHeroInfoByInfoId(infoId);
 			if (heroInfo != null) {
+				if(heroInfo.isLock())//不能分解
+					return -1;
 				StarBean star = starService.getStarBean(heroInfo.getStarLevel());
 				addValue += star.getValue();
 			}

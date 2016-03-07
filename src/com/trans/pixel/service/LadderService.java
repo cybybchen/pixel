@@ -211,7 +211,7 @@ public class LadderService {
 		myRank.setRank(rank);
 		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
-		heroInfo.setPosition(heroList.size() + 1);
+//		heroInfo.setPosition(heroList.size() + 1);
 		heroList.add(heroInfo);
 //		myRank.setHeroList(heroList);
 		
