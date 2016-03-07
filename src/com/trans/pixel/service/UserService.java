@@ -113,8 +113,11 @@ public class UserService {
     	return userMapper.queryByUnionId(unionId);
     }
 	
-	public UserInfo getRandUser(int serverId){
-		return userRedisService.getRandUser(serverId);
+	public UserInfo getRandUser(UserBean user){
+		UserInfo userinfo = userRedisService.getRandUser(user.getServerId());
+		while(userinfo.getId() == user.getId())
+			userinfo = userRedisService.getRandUser(user.getServerId());
+		return userinfo;
 	}
 	
 	public void cache(int serverId, UserInfo user){

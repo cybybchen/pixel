@@ -51,7 +51,7 @@ public class PvpMapService {
 				for(PVPMap map : maplist.getFieldList()){
 					for(PVPMine mine : map.getKuangdianList()){
 						PVPMine.Builder builder = PVPMine.newBuilder(mine);
-						builder.setOwner(userService.getRandUser(user.getServerId()));
+						builder.setOwner(userService.getRandUser(user));
 						mineMap.put(builder.getId()+"", builder.build());
 					}
 				}
@@ -63,7 +63,7 @@ public class PvpMapService {
 				PVPMine mine = mineMap.get(builder.getId()+"");
 				if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
 					continue;
-				builder.setOwner(userService.getRandUser(user.getServerId()));
+				builder.setOwner(userService.getRandUser(user));
 				redis.saveMine(user.getId(), builder.build());
 				mineMap.put(builder.getId()+"", builder.build());
 				count--;
@@ -167,7 +167,7 @@ public class PvpMapService {
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			userService.updateUserDailyData(user);
-			builder.setOwner(userService.getRandUser(user.getServerId()));
+			builder.setOwner(userService.getRandUser(user));
 			redis.saveMine(user.getId(), builder.build());
 		}
 		return builder.build();
