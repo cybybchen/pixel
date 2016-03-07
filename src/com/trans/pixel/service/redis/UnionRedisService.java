@@ -63,7 +63,7 @@ public class UnionRedisService extends RedisService{
 			Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
 			while(it.hasNext()){
 				Entry<String, String> entry = it.next();
-				if(Long.parseLong(entry.getValue()) < System.currentTimeMillis()){
+				if(Long.parseLong(entry.getValue()) < System.currentTimeMillis()/1000){
 					hdelete(RedisKey.USERDATA+"Apply_"+user.getId(), entry.getKey());
 					it.remove();
 				}
@@ -111,7 +111,7 @@ public class UnionRedisService extends RedisService{
 		while(it.hasNext()){
 			Entry<String, String> entry = it.next();
 			UnionApply.Builder builder = UnionApply.newBuilder();
-			if(!parseJson(entry.getValue(), builder) || builder.getEndTime() < System.currentTimeMillis()){
+			if(!parseJson(entry.getValue(), builder) || builder.getEndTime() < System.currentTimeMillis()/1000){
 				hdelete(key, entry.getKey());
 				it.remove();
 			}
@@ -123,7 +123,7 @@ public class UnionRedisService extends RedisService{
 		this.hput(key, builder.getId()+"", formatJson(builder.build()));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 		key = RedisKey.USERDATA+"Apply_"+user.getId();
-		hput(key, builder.getId()+"", builder.getEndTime()+"");
+		hput(key, unionId+"", builder.getEndTime()+"");
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 	}
 

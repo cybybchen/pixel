@@ -169,6 +169,8 @@ public class PvpMapService {
 			userService.updateUserDailyData(user);
 			builder.setOwner(userService.getRandUser(user));
 			redis.saveMine(user.getId(), builder.build());
+		}else{
+			builder.clearOwner();
 		}
 		return builder.build();
 	}

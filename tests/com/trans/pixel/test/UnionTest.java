@@ -13,6 +13,7 @@ import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class UnionTest extends BaseTest {
@@ -20,9 +21,11 @@ public class UnionTest extends BaseTest {
 
 	@Test
 	public void testUnion() {
+//		login();
 //		testCreateUnion();
-		testGetUnion();
-//		testUnionApply();
+//		testGetUnion();
+		testUnionApply();
+		testGetUnionList();
 	}
 	
 	private void testCreateUnion() {
@@ -59,11 +62,25 @@ public class UnionTest extends BaseTest {
         logger.info(response.getAllFields());
 	}
 	
+	private void testGetUnionList() {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestUnionListCommand.Builder builder = RequestUnionListCommand.newBuilder();
+		requestBuilder.setUnionListCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        logger.info(response.getAllFields());
+	}
+	
 	private void testUnionApply() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestApplyUnionCommand.Builder builder = RequestApplyUnionCommand.newBuilder();
-		builder.setUnionId(13);
+		builder.setUnionId(17);
 		requestBuilder.setApplyUnionCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();

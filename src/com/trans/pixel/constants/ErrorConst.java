@@ -8,7 +8,7 @@ public enum ErrorConst implements ResultConst {
 	NOT_ENOUGH_CHIP(2004, "碎片不足"),NOT_ENOUGH_MAGICCOIN(2005, "魔晶不足"),NOT_ENOUGH_EXPEDITIONCOIN(2006, "远征币不足"),NOT_ENOUGH_LADDERCOIN(2007, "天梯币不足"),NOT_ENOUGH_UNIONCOIN(2008, "公会币不足"),
 	NOT_MONSTER(2009, "怪物已经逃跑了"),NOT_PURCHASE_TIME(2010, "购买次数已达上限"),UNION_ERROR(2011, "工会信息错误"),PERMISSION_DENIED(2012, "权限不足"),
 	UNIONLEADER_QUIT(2013, "会长不能退出自己的工会"),ATTACK_SELF(2014, "不能挑战自己"),MAPINFO_ERROR(2015, "地图信息错误"),AREAMINE_HURRY(2016, "其他玩家正在进攻"),
-	UNION_LOCK(2017, "请稍后再试"),HERO_LOCKED(2018, "包含一个或多个锁定的英雄"),NOT_ENEMY(2019, "敌人已经逃跑了"),
+	UNION_LOCK(2017, "请稍后再试"),HERO_LOCKED(2018, "包含一个或多个锁定的英雄"),NOT_ENEMY(2019, "敌人已经逃跑了"),NOT_ENOUGH_TIMES(2020, "今日剩余次数不足"),
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), NOT_ENOUGH_EXP(1006, "升级所需经验不足"),
