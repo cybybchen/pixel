@@ -484,6 +484,60 @@ message Msg {
 	required string content = 2;
 }
 
+message MohuaCard {
+	required int32 cardId = 1;
+	required int32 cardCount = 2;
+}
+
+message MohuaUserData { //魔化之地模式的用户存档
+	required int32 mapid = 1; //地图ID
+	required int32 crystal = 2; //用户的水晶数
+	required int32 stage = 3;//当前阶段
+	repeated MohuaCard card = 4;//用户的卡片存储
+	required int32 rewardStage = 5;//奖励领取的阶段
+	required int32 consumehp = 6;//BOSS血量百分比
+	required int32 rewardHp = 7;//血量领取的阶段	
+}
+
+message MohuaMapStage { //魔化之地的每一阶段信息
+	required int32 stage = 1;//阶段数
+	required int32 turn = 2;//回合数
+	required int32 crystal = 3;//进入当前回合领取的水晶数
+	required int32 randomcard = 4;//该回合可以随机的卡片数量
+}
+
+message MohuaMapStageList { //魔化之地地图信息
+	required int32 mapid = 1;//地图ID
+	required string mapname = 2;//地图名字
+	required int32 maxcrystal = 3;//用户可以达到的最大水晶数
+	repeated MohuaMapStage stage = 4;//魔化之地所有的阶段信息
+}
+
+message MohuaMap {//魔化之地
+	repeated MohuaMapStageList mohua = 1;
+}
+
+message MohuaCardRoot {
+	repeated MohuaCardMap mohua = 1;
+}
+
+message MohuaCardMap {
+	required int32 mapid = 1;
+	required string mapname = 2;
+	repeated MohuaCardSkill skill = 3;
+	repeated MohuaCardStage stage = 4;
+}
+
+message MohuaCardSkill {
+	required int32 card = 1;
+	required int32 weight = 2;
+}
+
+message MohuaCardStage {
+	required int32 stage = 1;
+	required int32 specialcard = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1038,6 +1092,18 @@ message RequestFenjieHeroCommand {
 	required int32 infoId = 2;
 }
 
+message RequestEnterMohuaMapCommand {//进入魔化之地
+
+}
+
+message RequestResetMohuaMapCommand {//重置魔化之地
+
+}
+
+message ResponseMohuaUserDataCommand {
+	required MohuaUserData user = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1125,6 +1191,8 @@ message RequestCommand {
 	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
 	optional RequestSendMailCommand sendMailCommand = 58;
 	optional RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;
+	optional RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;
+	optional RequestResetMohuaMapCommand resetMohuaMapCommand = 61;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1173,6 +1241,7 @@ message ResponseCommand {
 	optional ResponseUsePropCommand usePropCommand = 35;
 	optional ResponseFenjieEquipCommand fenjieEquipCommand = 36;
 	optional ResponseSignCommand signCommand = 37;
+	optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
 }
 
 

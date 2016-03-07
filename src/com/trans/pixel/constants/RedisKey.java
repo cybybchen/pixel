@@ -29,6 +29,7 @@ public class RedisKey {
 	public final static String PVPBOSS_PREFIX = USERDATA+"PVPBoss_";
 	public final static String PVPMINE_PREFIX = USERDATA+"PVPMine_";
 	public final static String PVPMAPBUFF_PREFIX = USERDATA+"PVPMapBuff_";
+	public final static String MOHUA_USERDATA = "mohua_userdata";
 
 	public final static String AREAMONSTER_CONFIG = PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+"AreaBoss";
@@ -138,4 +139,8 @@ public class RedisKey {
 	
 	//sign
 	public static final String SIGN_KEY = PREFIX + "key:sign";
+	
+	//mohua
+	public static final String MOHUA_MAP_KEY = PREFIX + "key:mohua_map";
+	public static final String MOHUA_CARD_KEY = PREFIX + "key:mohua_card";
 }

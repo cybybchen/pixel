@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
@@ -78,6 +79,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestResetMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
@@ -103,6 +105,7 @@ import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
+import com.trans.pixel.service.command.MohuaCommandService;
 import com.trans.pixel.service.command.PropCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
@@ -151,6 +154,8 @@ public class GameDataScreen extends RequestScreen {
 	private PropCommandService propCommandService;
 	@Resource
 	private SignCommandService signCommandService;
+	@Resource
+	private MohuaCommandService mohuaCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -683,6 +688,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestBrotherMineInfoCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		pvpCommandService.getBrotherMineInfo(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEnterMohuaMapCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mohuaCommandService.enterMohuaMap(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestResetMohuaMapCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mohuaCommandService.resetMohuaUserData(cmd, responseBuilder, user);
 		return true;
 	}
 
