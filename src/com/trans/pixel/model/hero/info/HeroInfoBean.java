@@ -194,6 +194,21 @@ public class HeroInfoBean {
 		return builder.build();
 	}
 	
+	public HeroInfo buildTeamHeroInfo() {
+		HeroInfo.Builder builder = HeroInfo.newBuilder();
+		builder.setEquipInfo(equipInfo);
+		builder.setHeroId(heroId);
+		builder.setLevel(level);
+		builder.setRare(rare);
+		builder.setValue(value);
+		builder.setStar(starLevel);
+		builder.addAllSkill(buildSkillList());
+		builder.setHeroId(heroId);
+		builder.setPosition(position);
+		
+		return builder.build();
+	}
+	
 	private List<SkillInfo> buildSkillList() {
 		List<SkillInfo> builderList = new ArrayList<SkillInfo>();
 		for (SkillInfoBean skill : skillInfoList) {

@@ -14,9 +14,11 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.protoc.Commands.MohuaCard;
 import com.trans.pixel.protoc.Commands.MohuaCardMap;
 import com.trans.pixel.protoc.Commands.MohuaCardSkill;
+import com.trans.pixel.protoc.Commands.MohuaItem;
 import com.trans.pixel.protoc.Commands.MohuaMapStage;
 import com.trans.pixel.protoc.Commands.MohuaMapStageList;
 import com.trans.pixel.protoc.Commands.MohuaUserData;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.redis.MohuaRedisService;
 
 @Service
@@ -24,34 +26,96 @@ public class MohuaService {
 
 	@Resource
 	private MohuaRedisService redis;
+	@Resource
+	private UserTeamService userTeamService;
 	
-	public MohuaUserData getUserData(long userId) {
+	public MohuaUserData.Builder getUserData(long userId) {
 		MohuaUserData user = redis.getMohuaUserData(userId);
 		if (user == null) {
 			user = resetUserData(userId);
 		}
 		
-		return user;
+		return MohuaUserData.newBuilder(user);
 	}
 	
 	public MohuaUserData resetUserData(long userId) {
 		MohuaMapStageList mohuaMap = randomMohuaMap();
-		MohuaUserData user = initMohuaUserData(mohuaMap);
+		MohuaUserData user = initMohuaUserData(mohuaMap, userId);
 		redis.updateMohuaUserData(user, userId);
 		
 		return user;
 	}
 	
 	public ResultConst useMohuaCard(long userId, List<MohuaCard> useCardList) {
-		MohuaUserData user = getUserData(userId);
+		MohuaUserData.Builder user = getUserData(userId);
 		if (canUseMohuaCard(user.getCardList(), useCardList)) {
 			useMohuaCard(user.getCardList(), useCardList);
-			redis.updateMohuaUserData(user, userId);
+			redis.updateMohuaUserData(user.build(), userId);
 			
 			return SuccessConst.MOHUACARD_USE_SUCCESS;
 		}
 		
 		return ErrorConst.MOHUACARD_USE_ERROR;
+	}
+	
+	public List<RewardInfo> stageReward(long userId, int stage) {
+		MohuaUserData.Builder user = getUserData(userId);
+		List<Integer> rewardStageList = user.getRewardStageList();
+		if (rewardStageList.contains(stage))
+			return null;
+		
+		if (user.getStage() < stage)
+			return null;
+		
+		user.addRewardStage(stage);
+		List<MohuaItem> itemList = redis.getMohuaJieduanMap(user.getMapid()).getStage(stage).getItemList();
+		
+		return buildRewardList(itemList);
+	}
+	
+	public List<RewardInfo> hpReward(long userId, int hp) {
+		MohuaUserData.Builder user = getUserData(userId);
+		List<Integer> rewardHpList = user.getRewardHpList();
+		if (rewardHpList.contains(hp))
+			return null;
+		
+		if (user.getConsumehp() < hp)
+			return null;
+		
+		user.addRewardHp(hp);
+		List<MohuaItem> itemList = redis.getMohuaLootMap(user.getMapid()).getHp(hp).getCarduseList();
+		
+		return buildRewardList(itemList);
+	}
+	
+	public ResultConst submitStage(long userId, int stage, int hp) {
+		MohuaUserData.Builder user = getUserData(userId);
+		if (stage <= user.getStage())
+			return ErrorConst.MOHUA_HAS_SUBMIT_ERROR;
+		
+		if (user.getConsumehp() == 100 || hp < user.getConsumehp())
+			return ErrorConst.MOHUA_HAS_FINISH_ERROR;
+		
+		user.setStage(stage);
+		user.setConsumehp(hp);
+		if (user.getConsumehp() == 100)
+			user.setStage(10);
+		
+		redis.updateMohuaUserData(user.build(), userId);
+		
+		return SuccessConst.MOHUA_SUBMIT_SUCCESS;
+	}
+	
+	private List<RewardInfo> buildRewardList(List<MohuaItem> itemList) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		for (MohuaItem item : itemList) {
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(item.getItem());
+			reward.setCount(item.getItemcount());
+			rewardList.add(reward.build());
+		}
+		
+		return rewardList;
 	}
 	
 	private boolean canUseMohuaCard(List<MohuaCard> userCardList, List<MohuaCard> useCardList) {
@@ -139,12 +203,10 @@ public class MohuaService {
 		return mohuaCard.build();
 	}
 	
-	private MohuaUserData initMohuaUserData(MohuaMapStageList mohuaMap) {
+	private MohuaUserData initMohuaUserData(MohuaMapStageList mohuaMap, long userId) {
 		MohuaUserData.Builder userData = MohuaUserData.newBuilder();
 		userData.setConsumehp(0);
 		userData.setMapid(mohuaMap.getMapid());
-		userData.setRewardHp(0);
-		userData.setRewardStage(0);
 		userData.setStage(1);
 		
 		List<MohuaMapStage> stageList = mohuaMap.getStageList();
@@ -152,6 +214,7 @@ public class MohuaService {
 		
 		userData.setCrystal(stage.getCrystal());
 		userData.addAllCard(randomMohuaCard(mohuaMap.getMapid(), stage.getRandomcard()));
+		userData.addAllHero(userTeamService.getProtoTeamCache(userId));
 		
 		return userData.build();
 	}

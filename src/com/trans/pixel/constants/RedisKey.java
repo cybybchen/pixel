@@ -146,4 +146,6 @@ public class RedisKey {
 	//mohua
 	public static final String MOHUA_MAP_KEY = PREFIX + "key:mohua_map";
 	public static final String MOHUA_CARD_KEY = PREFIX + "key:mohua_card";
+	public static final String MOHUA_JIEDUAN_KEY = PREFIX + "key:mohua_jieduan";
+	public static final String MOHUA_LOOT_KEY = PREFIX + "key:mohua_loot";
 }

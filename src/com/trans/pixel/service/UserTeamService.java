@@ -13,6 +13,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
 @Service
@@ -58,6 +59,20 @@ public class UserTeamService {
 
 	public void saveTeamCache(UserBean user, List<HeroInfoBean> list){
 		userTeamRedisService.saveTeamCache(user, list);
+	}
+
+	public List<HeroInfo> getProtoTeamCache(long userId) {
+		List<HeroInfoBean> heroInfoList = getTeamCache(userId);
+		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
+		for (HeroInfoBean heroInfo : heroInfoList) {
+			heroInfoBuilderList.add(heroInfo.buildTeamHeroInfo());
+		}
+		
+		return heroInfoBuilderList;
+	}
+	
+	public void saveTeamCache(long userid, List<HeroInfoBean> list){
+		userTeamRedisService.saveTeamCache(userid, list);
 	}
 	
 	public List<HeroInfoBean> getTeam(UserBean user, int teamid){

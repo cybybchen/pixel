@@ -43,7 +43,6 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -58,10 +57,13 @@ import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
+import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
@@ -215,6 +217,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestResetMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestUseMohuaCardCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestMohuaStageRewardCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestMohuaHpRewardCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -554,6 +560,16 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasUseMohuaCardCommand()) {
         	RequestUseMohuaCardCommand cmd = request.getUseMohuaCardCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasMohuaStageRewardCommand()) {
+        	RequestMohuaStageRewardCommand cmd = request.getMohuaStageRewardCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasMohuaHpRewardCommand()) {
+        	RequestMohuaHpRewardCommand cmd = request.getMohuaHpRewardCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

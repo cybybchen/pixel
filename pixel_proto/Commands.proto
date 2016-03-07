@@ -545,9 +545,10 @@ message MohuaUserData { //魔化之地模式的用户存档
 	required int32 crystal = 2; //用户的水晶数
 	required int32 stage = 3;//当前阶段
 	repeated MohuaCard card = 4;//用户的卡片存储
-	required int32 rewardStage = 5;//奖励领取的阶段
+	repeated int32 rewardStage = 5;//阶段奖励领取的记录
 	required int32 consumehp = 6;//BOSS血量百分比
-	required int32 rewardHp = 7;//血量领取的阶段	
+	repeated int32 rewardHp = 7;//血量奖励领取的阶段
+	repeated HeroInfo hero = 8;//队伍信息	
 }
 
 message MohuaMapStage { //魔化之地的每一阶段信息
@@ -587,6 +588,41 @@ message MohuaCardSkill {
 message MohuaCardStage {
 	required int32 stage = 1;
 	required int32 specialcard = 2;
+}
+
+message MohuaJieduan {
+	repeated MohuaJieduanMap mohua = 1;
+}
+
+message MohuaJieduanMap {
+	required int32 mapid = 1;
+	required string mapname = 2;
+	repeated MohuaJieduanStage stage = 3;
+}
+
+message MohuaJieduanStage {
+	required int32 stage = 1;
+	repeated MohuaItem item = 2;
+}
+
+message MohuaItem {
+	required int32 item = 1;
+	required int32 itemcount = 2;
+}
+
+message MohuaLootHp {
+	required int32 consumehp = 1;
+	repeated MohuaItem carduse = 2;
+}
+
+message MohuaLootMap {
+	required int32 mapid = 1;
+	required string mapname = 2;
+	repeated MohuaLootHp hp = 3;
+}
+
+message MohuaLoot {
+	repeated MohuaLootMap mohua = 1;
 }
 
 message ErrorCommand{
@@ -1162,6 +1198,19 @@ message RequestUseMohuaCardCommand {//魔化之地模式中使用卡片
 	repeated MohuaCard card = 1;
 }
 
+message RequestMohuaStageRewardCommand {//魔化之地stage奖励领取
+	required int32 stage = 1;
+}
+
+message RequestMohuaHpRewardCommand {//魔化之地HP奖励领取
+	required int32 consumehp = 1;
+}
+
+message RequestMohuaSubmitStageCommand {//魔化之地提交记录
+	required int32 stage = 1;
+	required int32 hp = 2;
+}
+
 message ResponseMohuaUserDataCommand {
 	required MohuaUserData user = 1;
 }
@@ -1257,6 +1306,9 @@ message RequestCommand {
 	optional RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;
 	optional RequestResetMohuaMapCommand resetMohuaMapCommand = 61;
 	optional RequestUseMohuaCardCommand useMohuaCardCommand = 62;
+	optional RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;
+	optional RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;
+	optional RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;
 }
 // response command list transfer only use it
 message ResponseCommand {

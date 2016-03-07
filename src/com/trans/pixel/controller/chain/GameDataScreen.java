@@ -66,6 +66,8 @@ import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
@@ -716,6 +718,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestUseMohuaCardCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		mohuaCommandService.useMohuaCard(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestMohuaStageRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mohuaCommandService.rewardStage(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestMohuaHpRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mohuaCommandService.rewardHp(cmd, responseBuilder, user);
 		return true;
 	}
 

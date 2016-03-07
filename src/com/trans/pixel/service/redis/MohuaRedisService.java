@@ -14,15 +14,20 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.Commands.MohuaCardMap;
 import com.trans.pixel.protoc.Commands.MohuaCardRoot;
+import com.trans.pixel.protoc.Commands.MohuaJieduan;
+import com.trans.pixel.protoc.Commands.MohuaJieduanMap;
+import com.trans.pixel.protoc.Commands.MohuaLoot;
+import com.trans.pixel.protoc.Commands.MohuaLootMap;
 import com.trans.pixel.protoc.Commands.MohuaMap;
 import com.trans.pixel.protoc.Commands.MohuaMapStageList;
 import com.trans.pixel.protoc.Commands.MohuaUserData;
-import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class MohuaRedisService extends RedisService {
 	private static final String MAP_FILE_NAME = "lol_mohuamap.xml";
 	private static final String CARDLOOT_FILE_NAME = "lol_mohuacardloot.xml";
+	private static final String JIEDUAN_FILE_NAME = "lol_mohuajieduan.xml";
+	private static final String LOOT_FILE_NAME = "lol_mohualoot.xml";
 	
 	public MohuaMapStageList getMohuaMap(int mapid) {
 		String value = hget(RedisKey.MOHUA_MAP_KEY, "" + mapid);
@@ -150,14 +155,114 @@ public class MohuaRedisService extends RedisService {
 		return map;
 	}
 	
+	public MohuaJieduanMap getMohuaJieduanMap(int mapid) {
+		String value = hget(RedisKey.MOHUA_JIEDUAN_KEY, "" + mapid);
+		if (value == null) {
+			Map<String, MohuaJieduanMap> mohuaJieduanMapConfig = getMohuaJieduanConfig();
+			return mohuaJieduanMapConfig.get("" + mapid);
+		} else {
+			MohuaJieduanMap.Builder builder = MohuaJieduanMap.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, MohuaJieduanMap> getMohuaJieduanConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.MOHUA_JIEDUAN_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, MohuaJieduanMap> map = buildMohuaJieduanConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, MohuaJieduanMap> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.MOHUA_JIEDUAN_KEY, redismap);
+			return map;
+		}else{
+			Map<String, MohuaJieduanMap> map = new HashMap<String, MohuaJieduanMap>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				MohuaJieduanMap.Builder builder = MohuaJieduanMap.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, MohuaJieduanMap> buildMohuaJieduanConfig(){
+		String xml = ReadConfig(JIEDUAN_FILE_NAME);
+		MohuaJieduan.Builder builder = MohuaJieduan.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + JIEDUAN_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, MohuaJieduanMap> map = new HashMap<String, MohuaJieduanMap>();
+		for(MohuaJieduanMap.Builder mohuaJieduanMap : builder.getMohuaBuilderList()){
+			map.put("" + mohuaJieduanMap.getMapid(), mohuaJieduanMap.build());
+		}
+		return map;
+	}
+	
+	public MohuaLootMap getMohuaLootMap(int mapid) {
+		String value = hget(RedisKey.MOHUA_LOOT_KEY, "" + mapid);
+		if (value == null) {
+			Map<String, MohuaLootMap> mohuaLootMapConfig = getMohuaLootConfig();
+			return mohuaLootMapConfig.get("" + mapid);
+		} else {
+			MohuaLootMap.Builder builder = MohuaLootMap.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, MohuaLootMap> getMohuaLootConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.MOHUA_LOOT_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, MohuaLootMap> map = buildMohuaLootConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, MohuaLootMap> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.MOHUA_LOOT_KEY, redismap);
+			return map;
+		}else{
+			Map<String, MohuaLootMap> map = new HashMap<String, MohuaLootMap>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				MohuaLootMap.Builder builder = MohuaLootMap.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, MohuaLootMap> buildMohuaLootConfig(){
+		String xml = ReadConfig(LOOT_FILE_NAME);
+		MohuaLoot.Builder builder = MohuaLoot.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + JIEDUAN_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, MohuaLootMap> map = new HashMap<String, MohuaLootMap>();
+		for(MohuaLootMap.Builder mohuaLootMap : builder.getMohuaBuilderList()){
+			map.put("" + mohuaLootMap.getMapid(), mohuaLootMap.build());
+		}
+		return map;
+	}
+	
 	public void updateMohuaUserData(final MohuaUserData user, final long userId) {
-		String key = RedisKey.MOHUA_USERDATA;
-		hput(key, "" + userId, JSONObject.fromObject(user).toString());
-		expireAt(key, this.nextDay());
+		String key = RedisKey.USERDATA + userId;
+		hput(key, RedisKey.MOHUA_USERDATA, JSONObject.fromObject(user).toString());
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public MohuaUserData getMohuaUserData(final long userId) {
-		String value = hget(RedisKey.MOHUA_USERDATA, "" + userId);
+		String value = hget(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA);
 		JSONObject json = JSONObject.fromObject(value);
 		return (MohuaUserData) JSONObject.toBean(json, MohuaUserData.class);
 	}
