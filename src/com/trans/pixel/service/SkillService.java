@@ -90,7 +90,7 @@ public class SkillService {
 		int needSP = getSkill(levelupSkillId).getSp();
 		for (SkillInfoBean skillInfo : heroInfo.getSkillInfoList()) {
 			SkillBean skill = getSkill(skillInfo.getSkillId());
-			needSP += skill.getSp() * (skillInfo.getSkillLevel() - 1);
+			needSP += skill.getSp() * skillInfo.getSkillLevel();
 		}
 		
 		if (needSP <= upgrade.getSp())
