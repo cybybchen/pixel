@@ -8,16 +8,18 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.PVPBoss;
+import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
 import com.trans.pixel.protoc.Commands.PVPMonsterList;
+import com.trans.pixel.protoc.Commands.PVPMonsterReward;
+import com.trans.pixel.protoc.Commands.PVPMonsterRewardList;
 import com.trans.pixel.protoc.Commands.PVPPosition;
 import com.trans.pixel.protoc.Commands.PVPPositionList;
 import com.trans.pixel.protoc.Commands.PVPPositionLists;
@@ -64,10 +66,27 @@ public class PvpMapRedisService extends RedisService{
 //		}
 	}
 
-	public int getUserBuff(UserBean user, int id) {
+//	public int getUserBuff(UserBean user, int id) {
+//		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), id+"");
+//		if(value != null)
+//			return Integer.parseInt(value);
+//		return 0;
+//	}
+
+	public int addUserBuff(UserBean user, int id) {
 		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), id+"");
-		if(value != null)
-			return Integer.parseInt(value);
+		if(value != null){
+			int buff = Integer.parseInt(value);
+			PVPMapList maplist = getMapList();
+			for(PVPMap map : maplist.getFieldList()){
+				if(map.getFieldid() == id){
+					if(buff >= map.getBufflimit())
+						return buff;
+					saveUserBuff(user, id, buff+1);
+					return buff+1;
+				}
+			}
+		}
 		return 0;
 	}
 
@@ -188,6 +207,26 @@ public class PvpMapRedisService extends RedisService{
 	public List<PVPBoss> getBosses(UserBean user) {
 		List<PVPBoss> bosslist = new ArrayList<PVPBoss>();
 		return bosslist;
+	}
+	
+	public PVPMonsterReward getMonsterReward(int id) {
+		PVPMonsterReward.Builder builder = PVPMonsterReward.newBuilder();
+		String value = hget(RedisKey.PVPMONSTERREWARD, id+"");
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			Map<String, String> keyvalue = new HashMap<String, String>();
+			PVPMonsterRewardList.Builder list = PVPMonsterRewardList.newBuilder();
+			String xml = ReadConfig("lol_pvpenemyloot.xml");
+			parseXml(xml, list);
+			for(PVPMonsterReward reward : list.getEnemyList()){
+				keyvalue.put(reward.getId()+"", formatJson(reward));
+				if(reward.getId() == id)
+					builder = PVPMonsterReward.newBuilder(reward);
+			}
+			hputAll(RedisKey.PVPMONSTERREWARD, keyvalue);
+			return builder.build();
+		}
 	}
 	
 	public Map<String, PVPMonsterList> getMonsterConfig() {

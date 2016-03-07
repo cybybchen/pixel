@@ -297,6 +297,24 @@ message AreaPositionList {
 	repeated AreaPosition region = 1;
 }
 
+message PVPMonsterReward {//pvp怪物奖励
+	required int32 id = 1;
+	optional string name = 2;
+	optional int32 a = 3;//奖励魔金a+b*level
+	optional int32 b = 4;
+	optional int32 itemcount = 5;
+	optional int32 weightall = 6;
+	optional int32 itemid1 = 7;
+	optional int32 count1 = 8;
+	optional int32 weight1 = 9;
+	optional int32 itemid2 = 10;
+	optional int32 count2 = 11;
+	optional int32 weight2 = 12;
+}
+message PVPMonsterRewardList {
+	repeated PVPMonsterReward enemy = 1;
+}
+
 message PVPMonster {//pvp怪物Config
 	required int32 id = 1;
 	optional string name = 2;
@@ -355,7 +373,9 @@ message PVPMine{//pvp矿点
 message PVPMap{
 	optional int32 fieldid = 1;
 	optional string name = 2;
-	optional int32 buff = 6;
+	optional int32 bufflimit = 6;
+	optional int32 yield = 7;
+	optional int32 buff = 8;
 	repeated PVPMine kuangdian = 3;
 	repeated PVPMonster monster = 4;
 	repeated PVPBoss boss = 5;

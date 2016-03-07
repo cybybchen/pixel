@@ -12,6 +12,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
@@ -40,6 +41,8 @@ public class PvpCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private PushCommandService pusher;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(user);
@@ -49,8 +52,11 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMonster(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user) {
-		if(!pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet()))
+		MultiReward rewards = pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet());
+		if(rewards == null)
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+		if(rewards.getLootCount() > 0)
+			pusher.pushRewardCommand(responseBuilder, user, rewards);
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	

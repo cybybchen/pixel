@@ -30,13 +30,14 @@ public class RedisKey {
 	public final static String PVPMINE_PREFIX = USERDATA+"PVPMine_";
 	public final static String PVPMAPBUFF_PREFIX = USERDATA+"PVPMapBuff_";
 	public final static String MOHUA_USERDATA = "mohua_userdata";
+	public final static String PVPMONSTER_CONFIG = PREFIX+"PVPMonster";
+	public final static String PVPBOSS_CONFIG = PREFIX+"PVPBoss";
+	public final static String PVPPOSITION_CONFIG = PREFIX+"PVPPosition";
+	public final static String PVPMONSTERREWARD = USERDATA+"PVPMonsterReward";
 
 	public final static String AREAMONSTER_CONFIG = PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+"AreaBoss";
 	public final static String AREAPOSITION_CONFIG = PREFIX+"AreaPosition";
-	public final static String PVPMONSTER_CONFIG = PREFIX+"PVPMonster";
-	public final static String PVPBOSS_CONFIG = PREFIX+"PVPBoss";
-	public final static String PVPPOSITION_CONFIG = PREFIX+"PVPPosition";
 	public final static String AREABOSSREWARD = PREFIX+"AreaBossReward";
 	public final static String AREAMONSTERRANDCONFIG = PREFIX+"AreaMonsterRandConfig";
 	public final static String AREABOSSRANDCONFIG = PREFIX+"AreaBossRandConfig";

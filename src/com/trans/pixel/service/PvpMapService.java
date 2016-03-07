@@ -5,15 +5,19 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPBoss;
 import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
+import com.trans.pixel.protoc.Commands.PVPMonsterReward;
+import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 
 @Service
@@ -23,6 +27,8 @@ public class PvpMapService {
 	private PvpMapRedisService redis;
 	@Resource
 	private UserService userService;
+	@Resource
+	private RewardService rewardService;
 //	@Resource
 //	private RankRedisService rankRedisService;
 //	@Resource
@@ -84,16 +90,31 @@ public class PvpMapService {
 		return maplist.build();
 	}
 	
-	public boolean attackMonster(UserBean user, int positionid, boolean ret){
+	public MultiReward attackMonster(UserBean user, int positionid, boolean ret){
 		PVPMonster monster = redis.getMonster(user, positionid);
 		if(monster == null)
-			return false;
+			return null;
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(ret){
 			redis.deleteMonster(user, positionid);
-			int buff = redis.getUserBuff(user, monster.getFieldid());
-			redis.saveUserBuff(user, monster.getFieldid(), buff+1);
+			PVPMonsterReward reward = redis.getMonsterReward(monster.getId());
+			RewardInfo.Builder rewardinfo = RewardInfo.newBuilder();
+			rewardinfo.setItemid(RewardConst.PVPCOIN);
+			rewardinfo.setCount(reward.getA()+reward.getB()*monster.getLevel());
+			rewards.addLoot(rewardinfo);
+			if(redis.nextInt(reward.getWeightall()) < reward.getWeight1()){
+				rewardinfo.setItemid(reward.getItemid1());
+				rewardinfo.setCount(reward.getCount1());
+				rewards.addLoot(rewardinfo);
+			}else{
+				rewardinfo.setItemid(reward.getItemid2());
+				rewardinfo.setCount(reward.getCount2());
+				rewards.addLoot(rewardinfo);
+			}
+			rewardService.doRewards(user, rewards.build());
+			int buff = redis.addUserBuff(user, monster.getFieldid());
 		}
-		return true;
+		return rewards.build();
 	}
 	
 	public boolean attackBoss(UserBean user, int id, boolean ret){
@@ -102,7 +123,7 @@ public class PvpMapService {
 			return false;
 		if(ret){
 			redis.deleteBoss(user, id);
-			int buff = redis.getUserBuff(user, boss.getFieldid());
+			int buff = redis.addUserBuff(user, boss.getFieldid());
 			// PVPMap.Builder builder = PVPMap.newBuilder(map);
 			// builder.setBuff(builder.getBuff());
 			// redis.saveUserMap(user, builder.build());
