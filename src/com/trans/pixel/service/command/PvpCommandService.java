@@ -121,7 +121,7 @@ public class PvpCommandService extends BaseCommandService {
 	public void refreshMine(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.refreshMine(user, cmd.getId());
 		if(mine == null || !mine.hasOwner())
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 		builder.addAllHeroInfo(team.getHeroInfoList());
