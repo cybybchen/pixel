@@ -29,8 +29,8 @@ public class UnionService extends FightService{
 	@Resource
 	private UserService userService;
 	
-	public List<Union> getBaseUnions(int serverId) {
-		return unionRedisService.getBaseUnions(serverId);
+	public List<Union> getBaseUnions(UserBean user) {
+		return unionRedisService.getBaseUnions(user);
 	}
 	
 	public Union getUnion(UserBean user) {

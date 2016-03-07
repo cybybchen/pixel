@@ -185,6 +185,7 @@ message Union {
 	optional int32 defendId = 10;
 	repeated UserInfo attacks = 11;
 	repeated UserInfo defends = 12;
+	optional bool isApply = 13;
 }
 
 message UnionApply {

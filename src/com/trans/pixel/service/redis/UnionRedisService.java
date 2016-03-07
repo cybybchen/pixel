@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -50,16 +52,32 @@ public class UnionRedisService extends RedisService{
 		return unionbuilder.build();
 	}
 	
-	public List<Union> getBaseUnions(int serverId) {
+	public List<Union> getBaseUnions(UserBean user) {
 		List<Union> unions = new ArrayList<Union>();
-		Map<String, String> unionMap = this.hget(getUnionServerKey(serverId));
+		Map<String, String> applyMap = this.hget(RedisKey.USERDATA+"Apply_"+user.getId());
+		Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
+		while(it.hasNext()){
+			Entry<String, String> entry = it.next();
+			if(Long.parseLong(entry.getValue()) < System.currentTimeMillis()){
+				hdelete(RedisKey.USERDATA+"Apply_"+user.getId(), entry.getKey());
+				it.remove();
+			}
+		}
+		Map<String, String> unionMap = this.hget(getUnionServerKey(user.getServerId()));
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
-			if(parseJson(value, builder))
+			if(parseJson(value, builder)){
+				if(applyMap.containsKey(builder.getId()))
+					builder.setIsApply(true);
 				unions.add(builder.build());
+			}
 		}
 		Collections.sort(unions, new Comparator<Union>() {
 			public int compare(Union union1, Union union2) {
+				if(union1.getIsApply() && !union2.getIsApply())
+					return -1;
+				else if(union2.getIsApply() && !union1.getIsApply())
+					return 1;
 				int dvalue = union2.getLevel() - union1.getLevel();
 				if (dvalue == 0)
 					dvalue = union1.getId() - union2.getId();
@@ -81,12 +99,25 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public void apply(final int unionId,UserBean user) {
+		String key = getUnionApplyKey(unionId);
+		Map<String, String> applyMap = this.hget(key);
+		Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
+		while(it.hasNext()){
+			Entry<String, String> entry = it.next();
+			UnionApply.Builder builder = UnionApply.newBuilder();
+			if(!parseJson(entry.getValue(), builder) || builder.getEndTime() < System.currentTimeMillis()){
+				hdelete(key, entry.getKey());
+				it.remove();
+			}
+		}
 		UnionApply.Builder builder = UnionApply.newBuilder();
 		builder.setId(user.getId());
 		builder.setUser(user.buildShort());
 		builder.setEndTime((System.currentTimeMillis()+RedisExpiredConst.EXPIRED_USERINFO_1DAY)/1000);
-		String key = getUnionApplyKey(unionId);
 		this.hput(key, builder.getId()+"", formatJson(builder.build()));
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
+		key = RedisKey.USERDATA+"Apply_"+user.getId();
+		hput(key, builder.getId()+"", builder.getEndTime()+"");
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 	}
 
