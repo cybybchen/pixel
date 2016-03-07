@@ -344,7 +344,7 @@ public class AreaRedisService extends RedisService{
 		mineBuilder.setId(id);
 		mineBuilder.setResourceId(resource.getId());
 		mineBuilder.setYield(resource.getYield());
-		mineBuilder.setTime(100);
+		mineBuilder.setTime(12*3600);
 		// mineBuilder.setOwner("owner");
 		// mineBuilder.setEndtime(12222);
 		return mineBuilder.build();

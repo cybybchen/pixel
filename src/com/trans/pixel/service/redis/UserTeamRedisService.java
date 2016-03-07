@@ -44,7 +44,7 @@ public class UserTeamRedisService extends RedisService {
 		}
 		if (list.isEmpty()) {
 			HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
-			heroInfo.setPosition(list.size() + 1);
+//			heroInfo.setPosition(list.size() + 1);
 			list.add(heroInfo);
 		}
 		return list;

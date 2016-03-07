@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
@@ -166,7 +167,7 @@ public class AreaFightService extends FightService{
 		if(!gainMine(builder, user))
 			return ErrorConst.AREAMINE_HURRY;
 		builder.setUser(user.buildShort());
-		builder.setEndTime(System.currentTimeMillis()/1000+12*3600);
+		builder.setEndTime(System.currentTimeMillis()/1000+mine.getTime());
 		redis.saveResourceMine(builder.build(), user);
 		return SuccessConst.PVP_ATTACK_SUCCESS;
 	}
@@ -185,11 +186,21 @@ public class AreaFightService extends FightService{
 			return false;
 		int yield = builder.getYield();
 		if (System.currentTimeMillis() / 1000 < builder.getEndTime())
-			yield = (int)((System.currentTimeMillis() / 1000 + builder.getTime()*3600 - builder.getEndTime())*yield/builder.getTime()/3600);
+			yield = (int)((System.currentTimeMillis() / 1000 + builder.getTime() - builder.getEndTime())*yield/builder.getTime());
 		if(yield > 0){
-			UserBean bean = userService.getUser(builder.getUser().getId());
-			bean.setCoin(bean.getCoin()+yield);
-			userService.updateUser(bean);
+			MultiReward.Builder multireward = MultiReward.newBuilder();
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(RewardConst.UNIONCOIN);
+			reward.setCount(yield);
+			multireward.addLoot(reward);
+//			rewardService.doRewards(Long.parseLong(rank.getValue()), multireward.build());
+			MailBean mail = new MailBean();
+			mail.setContent("区域争夺矿点占领奖励");
+			mail.setStartDate(DateUtil.getCurrentDateString());
+			mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+			mail.setUserId(builder.getUser().getId());
+			mail.parseRewardList(multireward.getLootList());
+			mailRedisService.addMail(mail);
 		}
 		builder.clearUser();
 		builder.clearEndTime();
