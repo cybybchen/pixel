@@ -73,7 +73,7 @@ public class UnionRedisService extends RedisService{
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
 			if(parseJson(value, builder)){
-				if(applyMap.containsKey(builder.getId()))
+				if(applyMap.containsKey(builder.getId()+""))
 					builder.setIsApply(true);
 				unions.add(builder.build());
 			}

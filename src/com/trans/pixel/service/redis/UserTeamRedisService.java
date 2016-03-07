@@ -8,8 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONArray;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -22,9 +20,10 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
-import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.HeroService;
+import com.trans.pixel.service.UserService;
 
 @Repository
 public class UserTeamRedisService extends RedisService {
@@ -32,6 +31,8 @@ public class UserTeamRedisService extends RedisService {
 	private RedisTemplate<String, String> redisTemplate;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private UserService userService;
 
 	public Team getTeamCache(final long userid) {
 		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid);
@@ -41,6 +42,8 @@ public class UserTeamRedisService extends RedisService {
 		else{
 			HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 			team.addHeroInfo(heroInfo.buildRankHeroInfo());
+			UserBean user = userService.getUser(userid);
+			team.setUser(user.buildShort());
 			return team.build();
 		}
 	}

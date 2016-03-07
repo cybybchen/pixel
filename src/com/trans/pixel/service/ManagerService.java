@@ -1,12 +1,12 @@
 package com.trans.pixel.service;
 
-import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
@@ -147,47 +147,185 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(USERDAILYDATA+userId);
 			result.putAll(map);
 		}
+		if(req.containsKey("update-areaMonster")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-areaMonster"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(AREAMONSTER+userId, map);
+			req.put("areaMonster", 1);
+		}else if(req.containsKey("del-areaMonster")){
+			delete(AREAMONSTER+userId);
+			req.put("areaMonster", 1);
+		}
 		if(req.containsKey("areaMonster")){
 			Map<String, String> map = hget(AREAMONSTER+userId);
-			result.put("areaMonster", map);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("areaMonster", object);
+		}
+		if(req.containsKey("update-team")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-team"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId, map);
+			req.put("team", 1);
+		}else if(req.containsKey("del-team")){
+			delete(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
+			req.put("team", 1);
 		}
 		if(req.containsKey("team")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
-			result.put("team", map);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("team", object);
+		}
+		if(req.containsKey("update-teamCache")){
+			set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId, req.get("update-teamCache").toString());
+			req.put("teamCache", 1);
+		}else if(req.containsKey("del-teamCache")){
+			delete(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
+			req.put("teamCache", 1);
 		}
 		if(req.containsKey("teamCache")){
 			String map = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
 			result.put("teamCache", map);
 		}
+		if(req.containsKey("update-hero")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-hero"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId, map);
+			req.put("hero", 1);
+		}else if(req.containsKey("del-hero")){
+			delete(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
+			req.put("hero", 1);
+		}
 		if(req.containsKey("hero")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
-			result.put("hero", map);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("hero", object);
+		}
+		if(req.containsKey("update-equip")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-equip"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId, map);
+			req.put("equip", 1);
+		}else if(req.containsKey("del-equip")){
+			delete(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+			req.put("equip", 1);
 		}
 		if(req.containsKey("equip")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
-			result.put("equip", map);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("equip", object);
 		}
 		if(req.containsKey("pvpMap")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_PVP_MAP_PREFIX + userId);
-			result.put("pvpMap", map);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("pvpMap", object);
 		}
 		if(req.containsKey("userMine")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_MINE_PREFIX + userId);
-			result.put("userMine", map);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("userMine", object);
+		}
+		if(req.containsKey("update-mailList0")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-mailList0"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0, map);
+			req.put("mailList", 1);
+		}else if(req.containsKey("del-mailList0")){
+			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0);
+			req.put("mailList", 1);
+		}
+		if(req.containsKey("update-mailList1")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-mailList1"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 1, map);
+			req.put("mailList", 1);
+		}else if(req.containsKey("del-mailList1")){
+			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 1);
+			req.put("mailList", 1);
+		}
+		if(req.containsKey("update-mailList2")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-mailList2"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 2, map);
+			req.put("mailList", 1);
+		}else if(req.containsKey("del-mailList2")){
+			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 2);
+			req.put("mailList", 1);
+		}
+		if(req.containsKey("update-mailList3")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-mailList3"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 3, map);
+			req.put("mailList", 1);
+		}else if(req.containsKey("del-mailList3")){
+			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 3);
+			req.put("mailList", 1);
 		}
 		if(req.containsKey("mailList")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0);
-			result.put("mailList0", map);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("mailList0", object);
 			Map<String, String> map1 = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 1);
-			result.put("mailList1", map1);
+			JSONObject object1 = new JSONObject();
+			object1.putAll(map);
+			result.put("mailList1", object1);
 			Map<String, String> map2 = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 2);
-			result.put("mailList2", map2);
+			JSONObject object2 = new JSONObject();
+			object2.putAll(map);
+			result.put("mailList2", object2);
 			Map<String, String> map3 = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 3);
-			result.put("mailList3", map3);
+			JSONObject object3 = new JSONObject();
+			object3.putAll(map);
+			result.put("mailList3", object3);
+		}
+		if(req.containsKey("update-friendList")){
+			Map<String, String> map = new HashMap<String, String>();
+			JSONObject object = JSONObject.fromObject(req.get("update-friendList"));
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId, map);
+			
+			req.put("friendList", 1);
+		}else if(req.containsKey("del-friendList")){
+			delete(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
+			req.put("friendList", 1);
 		}
 		if(req.containsKey("friendList")){
 			Set<String> map = smember(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
-			result.put("friendList", map);
+			JSONArray object = new JSONArray();
+			object.addAll(map);
+			result.put("friendList", object);
 		}
 
 		///////////////////////////////////////////

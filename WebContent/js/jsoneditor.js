@@ -94,11 +94,26 @@ function appendUserDatas(message){
     if(message["UserData"]!=null){
         appendUserData("UserData", message["UserData"]);
     }
+    if(message["hero"]!=null){
+        appendUserData("hero", message["hero"]);
+    }
+    if(message["equip"]!=null){
+        appendUserData("equip", message["equip"]);
+    }
     if(message["LevelRecord"]!=null){
         appendUserData("LevelRecord", message["LevelRecord"]);
     }
     if(message["LootLevel"]!=null){
         appendUserData("LootLevel", message["LootLevel"]);
+    }
+    if(message["teamCache"]!=null){
+        appendUserData("teamCache", message["teamCache"]);
+    }
+    if(message["areaMonster"]!=null){
+        appendUserData("areaMonster", message["areaMonster"]);
+    }
+    if(message["team"]!=null){
+        appendUserData("team", message["team"]);
     }
     if(message["DAILYSHOP"]!=null){
         appendUserData("DAILYSHOP", message["DAILYSHOP"]);
