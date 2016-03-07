@@ -91,6 +91,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -702,6 +703,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestResetMohuaMapCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		mohuaCommandService.resetMohuaUserData(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUseMohuaCardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		mohuaCommandService.useMohuaCard(cmd, responseBuilder, user);
 		return true;
 	}
 

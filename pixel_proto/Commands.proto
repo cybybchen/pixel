@@ -1100,6 +1100,10 @@ message RequestResetMohuaMapCommand {//重置魔化之地
 
 }
 
+message RequestUseMohuaCardCommand {//魔化之地模式中使用卡片
+	repeated MohuaCard card = 1;
+}
+
 message ResponseMohuaUserDataCommand {
 	required MohuaUserData user = 1;
 }
@@ -1193,6 +1197,7 @@ message RequestCommand {
 	optional RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;
 	optional RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;
 	optional RequestResetMohuaMapCommand resetMohuaMapCommand = 61;
+	optional RequestUseMohuaCardCommand useMohuaCardCommand = 62;
 }
 // response command list transfer only use it
 message ResponseCommand {

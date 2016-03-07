@@ -8,6 +8,9 @@ import javax.annotation.Resource;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.protoc.Commands.MohuaCard;
 import com.trans.pixel.protoc.Commands.MohuaCardMap;
 import com.trans.pixel.protoc.Commands.MohuaCardSkill;
@@ -39,14 +42,61 @@ public class MohuaService {
 		return user;
 	}
 	
-	public MohuaMapStageList randomMohuaMap() {
+	public ResultConst useMohuaCard(long userId, List<MohuaCard> useCardList) {
+		MohuaUserData user = getUserData(userId);
+		if (canUseMohuaCard(user.getCardList(), useCardList)) {
+			useMohuaCard(user.getCardList(), useCardList);
+			redis.updateMohuaUserData(user, userId);
+			
+			return SuccessConst.MOHUACARD_USE_SUCCESS;
+		}
+		
+		return ErrorConst.MOHUACARD_USE_ERROR;
+	}
+	
+	private boolean canUseMohuaCard(List<MohuaCard> userCardList, List<MohuaCard> useCardList) {
+		boolean hasEnoughCard = false;
+		for (MohuaCard useCard : useCardList) {
+			hasEnoughCard = false;
+			for (MohuaCard userCard : userCardList) {
+				if (userCard.getCardId() == useCard.getCardId()) {
+					if (userCard.getCardCount() >= useCard.getCardCount())
+						hasEnoughCard = true;
+					
+					break;
+				}
+			}
+			
+			if (!hasEnoughCard)
+				break;
+		}
+		
+		return hasEnoughCard;
+	}
+	
+	private void useMohuaCard(List<MohuaCard> userCardList, List<MohuaCard> useCardList) {
+		for (MohuaCard useCard : useCardList) {
+			for (MohuaCard userCard : userCardList) {
+				if (userCard.getCardId() == useCard.getCardId()) {
+					if (userCard.getCardCount() >= useCard.getCardCount()) {
+						MohuaCard.Builder nMohuaCard = MohuaCard.newBuilder();
+						nMohuaCard.setCardId(userCard.getCardId());
+						nMohuaCard.setCardCount(userCard.getCardCount() - useCard.getCardCount());
+						userCard = nMohuaCard.build();
+					}
+				}
+			}
+		}
+	}
+	
+	private MohuaMapStageList randomMohuaMap() {
 		List<MohuaMapStageList> mohuaMapList = redis.getMohuaMapList();
 		int index = RandomUtils.nextInt(mohuaMapList.size());
 		
 		return mohuaMapList.get(index);
 	}
 	
-	public List<MohuaCard> randomMohuaCard(int mapid, int randomcard) {
+	private List<MohuaCard> randomMohuaCard(int mapid, int randomcard) {
 		MohuaCardMap mohuaCardMap = redis.getMohuaCardMap(mapid);
 		List<MohuaCardSkill> mohuaCardSkillList = mohuaCardMap.getSkillList();
 		

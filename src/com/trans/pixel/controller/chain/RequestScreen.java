@@ -87,6 +87,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
@@ -211,6 +212,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestEnterMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestResetMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestUseMohuaCardCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -544,6 +547,11 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasResetMohuaMapCommand()) {
         	RequestResetMohuaMapCommand cmd = request.getResetMohuaMapCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasUseMohuaCardCommand()) {
+        	RequestUseMohuaCardCommand cmd = request.getUseMohuaCardCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

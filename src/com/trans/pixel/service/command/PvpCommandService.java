@@ -80,7 +80,7 @@ public class PvpCommandService extends BaseCommandService {
 //		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, friend);
 		sendHelpMail(friend, user);
 		
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
+		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
 	}
 	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {

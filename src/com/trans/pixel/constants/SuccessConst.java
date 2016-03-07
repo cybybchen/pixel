@@ -16,7 +16,7 @@ public enum SuccessConst implements ResultConst {
     LEVELUP_SKILL_SUCCESS(1025, "技能升级成功"),
     
     
-    RESET_SKILL_SUCCESS(1101, "技能重置成功"), MAIL_SEND_SUCCESS(1102, "邮件发送成功"), HELP_ATTACK_SUCCESS(1103, "帮助小弟成功");
+    RESET_SKILL_SUCCESS(1101, "技能重置成功"), MAIL_SEND_SUCCESS(1102, "邮件发送成功"), HELP_ATTACK_SUCCESS(1103, "帮助小弟成功"), MOHUACARD_USE_SUCCESS(1104, "魔化卡片使用成功");
 
     private final int code;
 
