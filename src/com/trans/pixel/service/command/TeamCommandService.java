@@ -14,6 +14,7 @@ import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.UserTeamService;
 
 @Service
@@ -42,11 +43,10 @@ public class TeamCommandService extends BaseCommandService {
 	}
 	
 	public void getTeamCache(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user) {
-		List<HeroInfoBean> heroList = userTeamService.getTeamCache(cmd.getUserId());
+		Team team = userTeamService.getTeamCache(cmd.getUserId());
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
-		for (HeroInfoBean heroInfo : heroList) {
-			builder.addHeroInfo(heroInfo.buildRankHeroInfo());
-		}
+		builder.addAllHeroInfo(team.getHeroInfoList());
+		builder.setUser(team.getUser());
 		responseBuilder.setTeamCommand(builder);
 	}
 }

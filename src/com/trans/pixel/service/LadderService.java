@@ -24,6 +24,7 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -90,7 +91,7 @@ public class LadderService {
 		return ladderRedisService.getUserRankByRank(serverId, rank);
 	}
 	
-	public List<HeroInfoBean> getTeamCache(long userid){
+	public Team getTeamCache(long userid){
 		return userTeamService.getTeamCache(userid);
 	}
 	

@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.UserService;
@@ -95,11 +96,10 @@ public class PvpCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 		}else{
-			List<HeroInfoBean> heroList = userTeamService.getTeamCache(mine.getOwner().getId());
+			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
-			for (HeroInfoBean heroInfo : heroList) {
-				builder.addHeroInfo(heroInfo.buildRankHeroInfo());
-			}
+			builder.addAllHeroInfo(team.getHeroInfoList());
+			builder.setUser(team.getUser());
 			responseBuilder.setTeamCommand(builder);
 		}
 	}
@@ -110,11 +110,10 @@ public class PvpCommandService extends BaseCommandService {
 		if(mine == null || !mine.hasOwner()){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 		}else{
-			List<HeroInfoBean> heroList = userTeamService.getTeamCache(mine.getOwner().getId());
+			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
-			for (HeroInfoBean heroInfo : heroList) {
-				builder.addHeroInfo(heroInfo.buildRankHeroInfo());
-			}
+			builder.addAllHeroInfo(team.getHeroInfoList());
+			builder.setUser(team.getUser());
 			responseBuilder.setTeamCommand(builder);
 		}
 	}
@@ -123,11 +122,10 @@ public class PvpCommandService extends BaseCommandService {
 		PVPMine mine = pvpMapService.refreshMine(user, cmd.getId());
 		if(mine == null || !mine.hasOwner())
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
-		List<HeroInfoBean> heroList = userTeamService.getTeamCache(mine.getOwner().getId());
+		Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
-		for (HeroInfoBean heroInfo : heroList) {
-			builder.addHeroInfo(heroInfo.buildRankHeroInfo());
-		}
+		builder.addAllHeroInfo(team.getHeroInfoList());
+		builder.setUser(team.getUser());
 		responseBuilder.setTeamCommand(builder);
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);		
 	}

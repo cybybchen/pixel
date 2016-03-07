@@ -24,6 +24,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.MailService;
@@ -79,10 +80,8 @@ public class LadderCommandService extends BaseCommandService {
 		long rank = cmd.getRank();
 		UserRankBean userRank = ladderService.getUserRankByRank(user.getServerId(), rank);
 		UserRank.Builder userrank = UserRank.newBuilder(userRank.buildUserRank());
-		List<HeroInfoBean> heroList = ladderService.getTeamCache(userRank.getUserId());
-		for (HeroInfoBean heroInfo : heroList) {
-			userrank.addHeroInfo(heroInfo.buildRankHeroInfo());
-		}
+		Team team = ladderService.getTeamCache(userRank.getUserId());
+		userrank.addAllHeroInfo(team.getHeroInfoList());
 		builder.setUserRank(userrank);
 		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}
