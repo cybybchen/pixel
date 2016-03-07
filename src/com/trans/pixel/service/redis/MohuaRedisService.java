@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.Commands.MohuaCardRoot;
 import com.trans.pixel.protoc.Commands.MohuaMap;
 import com.trans.pixel.protoc.Commands.MohuaMapStageList;
 import com.trans.pixel.protoc.Commands.MohuaUserData;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class MohuaRedisService extends RedisService {
@@ -150,13 +151,13 @@ public class MohuaRedisService extends RedisService {
 	}
 	
 	public void updateMohuaUserData(final MohuaUserData user, final long userId) {
-		String key = RedisKey.USERDATA + userId;
-		hput(key, RedisKey.MOHUA_USERDATA, JSONObject.fromObject(user).toString());
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		String key = RedisKey.MOHUA_USERDATA;
+		hput(key, "" + userId, JSONObject.fromObject(user).toString());
+		expireAt(key, this.nextDay());
 	}
 	
 	public MohuaUserData getMohuaUserData(final long userId) {
-		String value = hget(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA);
+		String value = hget(RedisKey.MOHUA_USERDATA, "" + userId);
 		JSONObject json = JSONObject.fromObject(value);
 		return (MohuaUserData) JSONObject.toBean(json, MohuaUserData.class);
 	}
