@@ -96,12 +96,9 @@ public class UserCommandService extends BaseCommandService {
 	private void refreshUserLogin(UserBean user) {
 		if (isNextDay(user.getLastLoginTime())) {
 			//每日首次登陆
-			user.setRefreshLeftTimes(RefreshConst.REFRESH_PVP_TIMES);	
-			user.setLadderModeLeftTimes(5);
-			user.setPurchaseCoinLeft(1);
 			VipInfo vip = userService.getVip(user.getVip());
 			if(vip != null){
-				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
+//				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
 			}
 			user.setLoginDays(user.getLoginDays() + 1);
 			user.setHasSign(false);

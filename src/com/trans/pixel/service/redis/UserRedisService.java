@@ -46,13 +46,18 @@ public class UserRedisService extends RedisService{
 		}
 		//每日首次登陆
 		user.setRedisTime(System.currentTimeMillis());
-		user.setRefreshLeftTimes(RefreshConst.REFRESH_PVP_TIMES);	
 		user.setLadderModeLeftTimes(5);
 		user.setPurchaseCoinLeft(1);
 		user.setPvpMineLeftTime(5);
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
 			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
+			user.setPvpMineLeftTime(user.getPvpMineLeftTime()+vip.getPvp());
+			user.setPurchaseTireLeftTime(vip.getQuyu());
+			user.setRefreshExpeditionLeftTime(vip.getMohua());
+			user.setBaoxiangLeftTime(vip.getBaoxiang());
+			user.setZhibaoLeftTime(vip.getZhibao());
 		}
 		return true;
 	}

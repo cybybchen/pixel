@@ -22,7 +22,7 @@ public class UserBean {
 	////////////////////////////////
 	private long receiveMessageTimeStamp = 0;
 	private int lastLootTime = 0;
-	private int refreshLeftTimes = 0;
+//	private int refreshLeftTimes = 0;
 	private String lastLoginTime = "";
 	private long redisTime = 0;
 	private int ladderModeLeftTimes = 0;
@@ -41,10 +41,62 @@ public class UserBean {
 	private long pvpBossRefreshTime = 0;
 	private long pvpMineRefreshTime = 0;
 	private int pvpMineLeftTime = 0;
+	private long purchaseTireLeftTime = 0;
+	private long refreshExpeditionLeftTime = 0;
+	private long baoxiangLeftTime = 0;
+	private long zhibaoLeftTime = 0;
 	private boolean hasSign = false;
 	private int signDays = 0;
 	private int loginDays = 0;
 	private long areaMonsterRefreshTime = 0;
+	/**
+	 * 魄罗宝箱剩余购买次数
+	 */
+	public long getBaoxiangLeftTime() {
+		return baoxiangLeftTime;
+	}
+	/**
+	 * 魄罗宝箱剩余购买次数
+	 */
+	public void setBaoxiangLeftTime(long baoxiangLeftTime) {
+		this.baoxiangLeftTime = baoxiangLeftTime;
+	}
+	/**
+	 * 魄罗至宝剩余购买次数
+	 */
+	public long getZhibaoLeftTime() {
+		return zhibaoLeftTime;
+	}
+	/**
+	 * 魄罗至宝剩余购买次数
+	 */
+	public void setZhibaoLeftTime(long zhibaoLeftTime) {
+		this.zhibaoLeftTime = zhibaoLeftTime;
+	}
+	/**
+	 * 区域争夺疲劳购买次数
+	 */
+	public long getPurchaseTireLeftTime() {
+		return purchaseTireLeftTime;
+	}
+	/**
+	 * 区域争夺疲劳购买次数
+	 */
+	public void setPurchaseTireLeftTime(long purchaseTireLeftTime) {
+		this.purchaseTireLeftTime = purchaseTireLeftTime;
+	}
+	/**
+	 * 远征重置次数
+	 */
+	public long getRefreshExpeditionLeftTime() {
+		return refreshExpeditionLeftTime;
+	}
+	/**
+	 * 远征重置次数
+	 */
+	public void setRefreshExpeditionLeftTime(long refreshExpeditionLeftTime) {
+		this.refreshExpeditionLeftTime = refreshExpeditionLeftTime;
+	}
 	/**
 	 * 区域怪物刷新时间
 	 */
@@ -297,18 +349,18 @@ public class UserBean {
 	public void setLastLootTime(int lastLootTime) {
 		this.lastLootTime = lastLootTime;
 	}
-	/**
-	 * 挂机PVP刷新次数
-	 */
-	public int getRefreshLeftTimes() {
-		return refreshLeftTimes;
-	}
-	/**
-	 * 挂机PVP刷新次数
-	 */
-	public void setRefreshLeftTimes(int refreshLeftTimes) {
-		this.refreshLeftTimes = refreshLeftTimes;
-	}
+//	/**
+//	 * 挂机PVP刷新次数
+//	 */
+//	public int getRefreshLeftTimes() {
+//		return refreshLeftTimes;
+//	}
+//	/**
+//	 * 挂机PVP刷新次数
+//	 */
+//	public void setRefreshLeftTimes(int refreshLeftTimes) {
+//		this.refreshLeftTimes = refreshLeftTimes;
+//	}
 	/**
 	 * 登陆时间
 	 */

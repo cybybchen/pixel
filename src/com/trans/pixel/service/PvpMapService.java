@@ -166,6 +166,7 @@ public class PvpMapService {
 		PVPMine.Builder builder = PVPMine.newBuilder(mine);
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
+			userService.updateUserDailyData(user);
 			builder.setOwner(userService.getRandUser(user.getServerId()));
 			redis.saveMine(user.getId(), builder.build());
 		}

@@ -453,7 +453,7 @@ message AreaBossRewardList {
 message VipInfo {
 	required int32 vip = 1;
 	required int32 rmb = 2;
-	optional int32 effect = 3;
+	optional string effect = 3;
 	optional int32 dianjin = 4;
 	optional int32 tianti = 5;
 	optional int32 pvp = 6;
