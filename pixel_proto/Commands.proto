@@ -1196,7 +1196,11 @@ message RequestEnterMohuaMapCommand {//进入魔化之地
 
 }
 
-message RequestResetMohuaMapCommand {//重置魔化之地
+message RequestEndMohuaMapCommand {//结束魔化之地
+
+}
+
+message RequestStartMohuaMapCommand {//开始魔化之地
 
 }
 
@@ -1310,11 +1314,12 @@ message RequestCommand {
 	optional RequestSendMailCommand sendMailCommand = 58;
 	optional RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;
 	optional RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;
-	optional RequestResetMohuaMapCommand resetMohuaMapCommand = 61;
+	optional RequestStartMohuaMapCommand startMohuaMapCommand = 61;
 	optional RequestUseMohuaCardCommand useMohuaCardCommand = 62;
 	optional RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;
 	optional RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;
 	optional RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;
+	optional RequestEndMohuaMapCommand endMohuaMapCommand = 66;
 }
 // response command list transfer only use it
 message ResponseCommand {

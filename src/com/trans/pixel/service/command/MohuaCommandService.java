@@ -12,11 +12,13 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MohuaCard;
+import com.trans.pixel.protoc.Commands.MohuaUserData;
+import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
-import com.trans.pixel.protoc.Commands.RequestResetMohuaMapCommand;
+import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseMohuaUserDataCommand;
@@ -31,14 +33,23 @@ public class MohuaCommandService extends BaseCommandService {
 	
 	public void enterMohuaMap(RequestEnterMohuaMapCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseMohuaUserDataCommand.Builder builder = ResponseMohuaUserDataCommand.newBuilder();
+		MohuaUserData.Builder mohuaUserData = mohuaService.enterUserData(user.getId());
+		if (mohuaUserData != null)
+			builder.setUser(mohuaUserData.build());
+		
+		responseBuilder.setMohuaUserDataCommand(builder.build());
+	}
+	
+	public void startMohuaUserData(RequestStartMohuaMapCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseMohuaUserDataCommand.Builder builder = ResponseMohuaUserDataCommand.newBuilder();
 		builder.setUser(mohuaService.getUserData(user.getId()));
 		responseBuilder.setMohuaUserDataCommand(builder.build());
 	}
 	
-	public void resetMohuaUserData(RequestResetMohuaMapCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseMohuaUserDataCommand.Builder builder = ResponseMohuaUserDataCommand.newBuilder();
-		builder.setUser(mohuaService.resetUserData(user.getId()));
-		responseBuilder.setMohuaUserDataCommand(builder.build());
+	public void endMohuaUserData(RequestEndMohuaMapCommand cmd, Builder responseBuilder, UserBean user) {
+		mohuaService.delUserData(user.getId());
+		
+		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MOHUA_END_SUCCESS));
 	}
 	
 	public void useMohuaCard(RequestUseMohuaCardCommand cmd, Builder responseBuilder, UserBean user) {

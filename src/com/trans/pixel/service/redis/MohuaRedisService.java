@@ -266,4 +266,8 @@ public class MohuaRedisService extends RedisService {
 		JSONObject json = JSONObject.fromObject(value);
 		return (MohuaUserData) JSONObject.toBean(json, MohuaUserData.class);
 	}
+	
+	public void delMohuaUserData(long userId) {
+		hdelete(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA);
+	}
 }

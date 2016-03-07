@@ -29,21 +29,24 @@ public class MohuaService {
 	@Resource
 	private UserTeamService userTeamService;
 	
-	public MohuaUserData.Builder getUserData(long userId) {
+	public MohuaUserData.Builder enterUserData(long userId) {
 		MohuaUserData user = redis.getMohuaUserData(userId);
-		if (user == null) {
-			user = resetUserData(userId);
-		}
-		
 		return MohuaUserData.newBuilder(user);
 	}
 	
-	public MohuaUserData resetUserData(long userId) {
-		MohuaMapStageList mohuaMap = randomMohuaMap();
-		MohuaUserData user = initMohuaUserData(mohuaMap, userId);
-		redis.updateMohuaUserData(user, userId);
+	public void delUserData(long userId) {
+		redis.delMohuaUserData(userId);
+	}
+	
+	public MohuaUserData.Builder getUserData(long userId) {
+		MohuaUserData user = redis.getMohuaUserData(userId);
+		if (user == null) {
+			MohuaMapStageList mohuaMap = randomMohuaMap();
+			user = initMohuaUserData(mohuaMap, userId);
+			redis.updateMohuaUserData(user, userId);
+		}
 		
-		return user;
+		return MohuaUserData.newBuilder(user);
 	}
 	
 	public ResultConst useMohuaCard(long userId, List<MohuaCard> useCardList) {
