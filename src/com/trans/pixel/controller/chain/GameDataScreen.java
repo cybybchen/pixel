@@ -82,6 +82,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
@@ -735,6 +736,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestMohuaHpRewardCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		mohuaCommandService.rewardHp(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSaleEquipCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		equipCommandService.saleEquip(cmd, responseBuilder, user);
 		return true;
 	}
 

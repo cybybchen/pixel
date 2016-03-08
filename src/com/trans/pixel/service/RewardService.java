@@ -215,6 +215,21 @@ public class RewardService {
 		return false;
 	}
 	
+	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {
+		List<RewardInfo> nRewardList = new ArrayList<RewardInfo>();
+		for (RewardInfo reward : rewardList) {
+			RewardInfo.Builder nReward = RewardInfo.newBuilder();
+			nReward.setItemid(reward.getItemid());
+			nReward.setCount(reward.getCount());
+			if (reward.getItemid() == mergeReward.getItemid())
+				nReward.setCount(nReward.getCount() + mergeReward.getCount());
+			
+			nRewardList.add(nReward.build());
+		}
+		
+		return nRewardList;
+	}
+	
 	public void updateUser(UserBean user){
 		userService.updateUser(user);
 	}

@@ -78,6 +78,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
@@ -223,6 +224,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestMohuaStageRewardCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestMohuaHpRewardCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -576,6 +579,11 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasMohuaHpRewardCommand()) {
         	RequestMohuaHpRewardCommand cmd = request.getMohuaHpRewardCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasSaleEquipCommand()) {
+        	RequestSaleEquipCommand cmd = request.getSaleEquipCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

@@ -69,6 +69,11 @@ message RewardInfo {
 	required int32 count = 3;
 }
 
+message Item {
+	required int32 itemId = 1;
+	required int32 itemCount = 2;
+}
+
 message MultiReward {
 	optional int32 id = 1;
 	optional string name = 2;
@@ -624,6 +629,19 @@ message MohuaLootMap {
 
 message MohuaLoot {
 	repeated MohuaLootMap mohua = 1;
+}
+
+message ChipList {
+	repeated Chip chip = 1;
+}
+
+message Chip {
+	required int32 itemid = 1;
+	required string itemname = 2;
+	required int32 img = 3;
+	required int32 rare = 4;
+	required int32 cost = 5;
+	required int32 mojing = 6;
 }
 
 message ErrorCommand{
@@ -1217,6 +1235,10 @@ message ResponseMohuaUserDataCommand {
 	required MohuaUserData user = 1;
 }
 
+message RequestSaleEquipCommand {
+	repeated Item item = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1311,6 +1333,7 @@ message RequestCommand {
 	optional RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;
 	optional RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;
 	optional RequestEndMohuaMapCommand endMohuaMapCommand = 66;
+	optional RequestSaleEquipCommand saleEquipCommand = 67;
 }
 // response command list transfer only use it
 message ResponseCommand {

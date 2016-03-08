@@ -84,6 +84,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
@@ -715,6 +716,13 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestEndMohuaMapCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSaleEquipCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.FenjieLevelBean;
@@ -15,6 +17,9 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.protoc.Commands.Chip;
+import com.trans.pixel.protoc.Commands.Item;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -27,6 +32,8 @@ public class EquipService {
 	private EquipRedisService equipRedisService;
 	@Resource
 	private FenjieService fenjieService;
+	@Resource
+	private RewardService rewardService;
 	
 	public EquipmentBean getEquip(int itemId) {
 		EquipmentBean equip = equipRedisService.getEquip(itemId);
@@ -130,6 +137,34 @@ public class EquipService {
 		}
 		return ret;
 	}
+	
+	public List<RewardInfo> saleEquip(List<Item> itemList) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		for (Item item : itemList) {
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(RewardConst.COIN);
+			int itemId = item.getItemId();
+			switch (itemId) {
+				case RewardConst.EQUIPMENT:
+					EquipmentBean equip = getEquip(itemId);
+					reward.setCount(TypeTranslatedUtil.stringToInt(equip.getCost()));
+					break;
+				case RewardConst.CHIP:
+					Chip chip = equipRedisService.getChip(itemId);
+					reward.setCount(chip.getCost());
+					break;
+				default:
+					reward.setCount(0);
+					break;
+			}
+			
+			rewardList = rewardService.mergeReward(rewardList, reward.build());
+		}
+		
+		return rewardList;
+	}
+	
+	
 	
 	private void parseAndSaveEquipConfig() {
 		List<EquipmentBean> list = EquipmentBean.xmlParse();

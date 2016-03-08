@@ -12,11 +12,15 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.Item;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
+import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.RewardService;
 
@@ -65,5 +69,13 @@ public class EquipCommandService extends BaseCommandService {
 		builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
 		responseBuilder.setFenjieEquipCommand(builder.build());
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+	}
+	
+	public void saleEquip(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user) {
+		List<Item> itemList = cmd.getItemList();
+		List<RewardInfo> rewardList = equipService.saleEquip(itemList);
+		RewardCommand.Builder builder = RewardCommand.newBuilder();
+		builder.addAllLoot(rewardList);
+		responseBuilder.setRewardCommand(builder.build());
 	}
 }
