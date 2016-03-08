@@ -125,6 +125,7 @@ public class GamedataAction {
     public void getData(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json; charset=utf-8");
         try {
+        	long time = System.currentTimeMillis();
         	JSONObject result = new JSONObject();
         	String msg = "";
     		try {
@@ -143,6 +144,7 @@ public class GamedataAction {
     		}
 			JSONObject req = JSONObject.fromObject(msg);
 			result = managerService.getData(req);
+			logger.debug("Manager Data:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time));
 
 			try {
 				response.getWriter().write(result.toString());
