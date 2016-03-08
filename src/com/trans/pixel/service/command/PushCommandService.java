@@ -15,7 +15,6 @@ import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
@@ -43,6 +42,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserPropCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
@@ -140,8 +140,8 @@ public class PushCommandService extends BaseCommandService {
 	
 	public void pushUserFriendListCommand(Builder responseBuilder, UserBean user) {
 		ResponseGetUserFriendListCommand.Builder builder = ResponseGetUserFriendListCommand.newBuilder();
-		List<UserFriendBean> userFriendList = userFriendService.getUserFriendList(user.getId());
-		builder.addAllFriend(super.buildUserFriendList(userFriendList));
+		List<UserFriend> userFriendList = userFriendService.getUserFriendList(user);
+		builder.addAllFriend(userFriendList);
 		responseBuilder.setGetUserFriendListCommand(builder.build());
 	}
 	

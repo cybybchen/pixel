@@ -7,7 +7,9 @@ public class UserFriendBean {
 	private long userId = 0;
 	private long friendId = 0;
 	private String friendName = "";
-	private String teamRecord = "";
+	private int vip = 0;
+	private int zhanli = 0;
+	private String lastLoginTime = "";
 	public long getId() {
 		return id;
 	}
@@ -32,25 +34,29 @@ public class UserFriendBean {
 	public void setFriendName(String friendName) {
 		this.friendName = friendName;
 	}
-	public String getTeamRecord() {
-		return teamRecord;
+	public int getVip() {
+		return vip;
 	}
-	public void setTeamRecord(String teamRecord) {
-		this.teamRecord = teamRecord;
+	public void setVip(int vip) {
+		this.vip = vip;
 	}
-	
+	public int getZhanli() {
+		return zhanli;
+	}
+	public void setZhanli(int zhanli) {
+		this.zhanli = zhanli;
+	}
+	public String getLastLoginTime() {
+		return lastLoginTime;
+	}
+	public void setLastLoginTime(String lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
 	public UserFriend buildUserFriend() {
 		UserFriend.Builder builder = UserFriend.newBuilder();
 		builder.setFriendId(friendId);
 		builder.setFriendName(friendName);
-		builder.setTeamRecord(TEAM_RECORD);
 		
 		return builder.build();
 	}
-	
-	private static final String ID = "id";
-	private static final String USER_ID = "user_id";
-	private static final String FRIEND_ID = "friend_id";
-	private static final String FRIEND_NAME = "friend_name";
-	private static final String TEAM_RECORD = "team_record";
 }

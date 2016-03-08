@@ -48,8 +48,8 @@ public class UserCommandService extends BaseCommandService {
 			user.setZhanli(cmd.getZhanli());
 			userService.updateUserDailyData(user);
 		}
-		userService.cache(user.getServerId(), user.buildShort());
 		refreshUserLogin(user);
+		userService.cache(user.getServerId(), user.buildShort());
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());

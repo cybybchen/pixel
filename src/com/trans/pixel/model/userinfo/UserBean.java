@@ -585,6 +585,7 @@ public class UserBean {
 		builder.setZhanli(zhanli);
 //		builder.setUnionId(unionId);
 //		builder.setUnionJob(unionJob);
+		builder.setLastLoginTime(lastLoginTime);
 		return builder.build();
 	}
 	

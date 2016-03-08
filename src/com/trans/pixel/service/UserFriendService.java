@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.UserFriendMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
+import com.trans.pixel.protoc.Commands.UserFriend;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.UserFriendRedisService;
 
 @Service
@@ -53,25 +55,33 @@ public class UserFriendService {
 			userFriendMapper.deleteUserFriend(userId, friendId);
 	}
 	
-	public List<UserFriendBean> getUserFriendList(long userId) {
-		List<UserFriendBean> userFriendList = new ArrayList<UserFriendBean>();
-		List<Long> userFriendIdList = selectUserFriendIdList(userId);
+	public List<UserFriend> getUserFriendList(UserBean user) {
+		List<UserFriend> userFriendList = new ArrayList<UserFriend>();
+		List<Long> userFriendIdList = selectUserFriendIdList(user.getId());
 		
 		for (Long friendId : userFriendIdList) {
-			UserBean user = userService.getUser(friendId);
-			UserFriendBean userFriend = buildUserFriend(userId, friendId, user);
+//			UserBean user = userService.getUser(friendId);
+			UserInfo userCache = userService.getCache(user.getServerId(), friendId);
+			UserFriend userFriend = buildUserFriend(user.getId(), friendId, userCache);
+			
 			userFriendList.add(userFriend);
 		}
 		
 		return userFriendList;
 	}
 	
-	private UserFriendBean buildUserFriend(long userId, long friendId, UserBean user) {
-		UserFriendBean userFriend = new UserFriendBean();
+	private UserFriend buildUserFriend(long userId, long friendId, UserInfo userCache) {
+		UserFriend.Builder userFriend = UserFriend.newBuilder();
 		userFriend.setFriendId(friendId);
-		userFriend.setFriendName(user.getUserName());
-		userFriend.setUserId(userId);
+		userFriend.setFriendName(userCache.getName());
+		if (userCache.hasVip())
+			userFriend.setVip(userCache.getVip());
+		if (userCache.hasZhanli())
+			userFriend.setZhanli(userCache.getZhanli());
+		if (userCache.hasLastLoginTime())
+			userFriend.setLastLoginTime(userCache.getLastLoginTime());
 		
-		return userFriend;
+		
+		return userFriend.build();
 	}
 }

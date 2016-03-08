@@ -25,6 +25,7 @@ message UserInfo {
 	optional int32 loginDays = 22;//累积登录天数
 	optional bool hasSign = 23;//当天有没有签到
 	optional int32 zhanli = 24;
+	optional string lastLoginTime = 25;//上次登录时间
 }
 
 message ServerData {
@@ -505,7 +506,9 @@ message UserRank {
 message UserFriend {
 	required int64 friendId = 1;
 	required string friendName = 2;
-	required string teamRecord = 3;
+	optional int32 vip = 3;
+	optional int32 zhanli = 4;
+	optional string lastLoginTime = 5;
 }
 
 message Mail {
