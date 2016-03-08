@@ -7,10 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -21,6 +21,7 @@ import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.AreaFightService;
+import com.trans.pixel.service.UserService;
 
 /**
  * 1.1.3.6区域争夺战
@@ -31,12 +32,21 @@ public class AreaCommandService extends BaseCommandService{
     private AreaFightService service;
 	@Resource
     private PushCommandService pusher;
+	@Resource
+    private UserService userService;
 
-	public void Areas(Builder responseBuilder, UserBean user){
+	public void Areas(RequestAreaCommand cmd, Builder responseBuilder, UserBean user){
+		if(cmd.getZhanli() > user.getZhanli()){
+			user.setZhanli(cmd.getZhanli());
+			userService.updateUserDailyData(user);
+		}
+		responseBuilder.setAreaCommand(getAreas(user));
+	}
+	private ResponseAreaCommand getAreas(UserBean user){
 		List<AreaInfo> areas = service.getAreas(user).getRegionList();
 		ResponseAreaCommand.Builder builder = ResponseAreaCommand.newBuilder();
 		builder.addAllAreas(areas);
-		responseBuilder.setAreaCommand(builder.build());
+		return builder.build();
 	}
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
 		MultiReward.Builder rewards = MultiReward.newBuilder();
@@ -45,7 +55,7 @@ public class AreaCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		else
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
-		Areas(responseBuilder, user);
+		responseBuilder.setAreaCommand(getAreas(user));
 	}
 
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
@@ -55,17 +65,17 @@ public class AreaCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
-		Areas(responseBuilder, user);
+		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){
 		service.AttackResource(cmd.getId(), user);
-		Areas(responseBuilder, user);
+		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
 	public void AttackResourceMine(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user){
 		service.AttackResourceMine(cmd.getId(), cmd.getTeamid(), cmd.getRet(), user, responseBuilder);
-		Areas(responseBuilder, user);
+		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
 	public void AttackResourceMineInfo(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user){
@@ -73,7 +83,7 @@ public class AreaCommandService extends BaseCommandService{
 		Team team = service.AttackResourceMineInfo(cmd.getId(), user);
 		if(team == null){
 			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
-			Areas(responseBuilder, user);
+			responseBuilder.setAreaCommand(getAreas(user));
 		}else{
 			builder.setUser(team.getUser());
 			builder.addAllHeroInfo(team.getHeroInfoList());

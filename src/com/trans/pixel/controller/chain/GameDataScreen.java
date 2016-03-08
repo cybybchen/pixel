@@ -297,7 +297,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestAreaCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		areaCommandService.Areas(responseBuilder, user);
+		areaCommandService.Areas(cmd, responseBuilder, user);
 		return true;
 	}
 

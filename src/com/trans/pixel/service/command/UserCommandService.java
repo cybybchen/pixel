@@ -11,12 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.RefreshConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
@@ -42,6 +42,11 @@ public class UserCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
+		}
+		RequestLoginCommand cmd = request.getLoginCommand();
+		if(cmd.getZhanli() > user.getZhanli()){
+			user.setZhanli(cmd.getZhanli());
+			userService.updateUserDailyData(user);
 		}
 		userService.cache(user.getServerId(), user.buildShort());
 		refreshUserLogin(user);

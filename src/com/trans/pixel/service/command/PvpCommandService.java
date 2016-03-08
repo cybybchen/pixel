@@ -46,6 +46,10 @@ public class PvpCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
+		if(cmd.getZhanli() > user.getZhanli()){
+			user.setZhanli(cmd.getZhanli());
+			userService.updateUserDailyData(user);
+		}
 		PVPMapList maplist = pvpMapService.getMapList(user);
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
 		builder.addAllField(maplist.getFieldList());

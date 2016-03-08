@@ -19,6 +19,7 @@ public class UserBean {
 	private int pointLadder = 0;
 	private int pointExpedition = 0;
 	private int pointUnion = 0;
+	private int zhanli = 0;
 	////////////////////////////////
 	private long receiveMessageTimeStamp = 0;
 	private int lastLootTime = 0;
@@ -49,6 +50,18 @@ public class UserBean {
 	private int signDays = 0;
 	private int loginDays = 0;
 	private long areaMonsterRefreshTime = 0;
+	/**
+	 * 战力
+	 */
+	public int getZhanli() {
+		return zhanli;
+	}
+	/**
+	 * 战力
+	 */
+	public void setZhanli(int zhanli) {
+		this.zhanli = zhanli;
+	}
 	/**
 	 * 魄罗宝箱剩余购买次数
 	 */
@@ -603,6 +616,7 @@ public class UserBean {
 		builder.setPointLadder(pointLadder);
 		builder.setPointExpedition(pointExpedition);
 		builder.setPointUnion(pointUnion);
+		builder.setZhanli(zhanli);
 //		builder.setReceiveMessageTimeStamp(receiveMessageTimeStamp);
 //		builder.setLastLootTime(lastLootTime);
 //		builder.setRefreshLeftTimes(refreshLeftTimes);
