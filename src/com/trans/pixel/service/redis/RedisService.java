@@ -37,8 +37,6 @@ import com.googlecode.protobuf.format.JsonFormat;
 import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.googlecode.protobuf.format.XmlFormat;
 import com.trans.pixel.constants.DirConst;
-import com.trans.pixel.model.FenjieBean;
-import com.trans.pixel.model.FenjieLevelBean;
 
 @Repository
 public class RedisService {

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -17,11 +18,14 @@ import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.UserFriendService;
 
 @Service
 public class MailCommandService extends BaseCommandService {
 	@Resource
 	private MailService mailService;
+	@Resource
+	private UserFriendService userFriendService;
 	@Resource
 	private PushCommandService pushCommandService;
 	
@@ -55,6 +59,10 @@ public class MailCommandService extends BaseCommandService {
 		MailBean mail = super.buildMail(toUserId, user.getId(), content, type, relatedId);
 		mailService.addMail(mail);
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
+		
+		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
+			userFriendService.updateFriendCallTime(user.getId(), toUserId);
+		}
 	}
 	
 	public void handleDeleteMailCommand(RequestDeleteMailCommand cmd, Builder responseBuilder, UserBean user) {	

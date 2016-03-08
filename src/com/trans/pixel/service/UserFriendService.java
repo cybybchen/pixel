@@ -54,8 +54,16 @@ public class UserFriendService {
 	}
 	
 	public void deleteUserFriend(long userId, long friendId) {
-		if (userFriendRedisService.deleteUserFriend(userId, friendId))
-			userFriendMapper.deleteUserFriend(userId, friendId);
+		userFriendRedisService.deleteUserFriend(userId, friendId);
+		userFriendMapper.deleteUserFriend(userId, friendId);
+	}
+	
+	public UserFriendBean updateFriendCallTime(long userId, long friendId) {
+		UserFriendBean userFriend = userFriendRedisService.selectUserFriend(userId, friendId);
+		userFriend.setLastCallTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
+		userFriendRedisService.insertUserFriend(userId, userFriend);
+		
+		return userFriend;
 	}
 	
 	public List<UserFriend> getUserFriendList(UserBean user) {
@@ -63,7 +71,6 @@ public class UserFriendService {
 		List<UserFriendBean> userFriendBeanList = selectUserFriendList(user.getId());
 		
 		for (UserFriendBean friend : userFriendBeanList) {
-//			UserBean user = userService.getUser(friendId);
 			UserInfo userCache = userService.getCache(user.getServerId(), friend.getFriendId());
 			UserFriend userFriend = buildUserFriend(user.getId(), friend, userCache);
 			
