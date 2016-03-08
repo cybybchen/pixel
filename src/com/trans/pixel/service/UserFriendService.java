@@ -60,6 +60,9 @@ public class UserFriendService {
 	
 	public UserFriendBean updateFriendCallTime(long userId, long friendId) {
 		UserFriendBean userFriend = userFriendRedisService.selectUserFriend(userId, friendId);
+		if (userFriend.getLastCallTime() + 12 * TimeConst.SECONDS_PER_HOUR > (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND)) {
+			return null;
+		}
 		userFriend.setLastCallTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userFriendRedisService.insertUserFriend(userId, userFriend);
 		

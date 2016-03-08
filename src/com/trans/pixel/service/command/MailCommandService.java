@@ -11,6 +11,7 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
@@ -54,15 +55,23 @@ public class MailCommandService extends BaseCommandService {
 		String content = cmd.getContent();
 		int relatedId = 0;
 		int type = cmd.getType();
+		
+		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
+			UserFriendBean userFriend = userFriendService.updateFriendCallTime(user.getId(), toUserId);
+			if (userFriend == null) {
+				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.SEND_MAIL_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+			pushCommandService.pushUserFriendListCommand(responseBuilder, user);
+		}
+		
 		if (cmd.hasRelatedId())
 			relatedId = cmd.getRelatedId();
 		MailBean mail = super.buildMail(toUserId, user.getId(), content, type, relatedId);
 		mailService.addMail(mail);
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
 		
-		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
-			userFriendService.updateFriendCallTime(user.getId(), toUserId);
-		}
 	}
 	
 	public void handleDeleteMailCommand(RequestDeleteMailCommand cmd, Builder responseBuilder, UserBean user) {	
