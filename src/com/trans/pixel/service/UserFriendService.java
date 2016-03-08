@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.mapper.UserFriendMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
@@ -36,18 +37,20 @@ public class UserFriendService {
 		return insertRet > 0;
 	}
 	
-	public List<Long> selectUserFriendIdList(long userId) {
-		List<Long> userFriendIdList = userFriendRedisService.selectUserFriendIdList(userId);
-		if (userFriendIdList.size() == 0) {
-			userFriendIdList = userFriendMapper.selectUserFriendIdList(userId);
-			if (userFriendIdList != null && userFriendIdList.size() > 0)
-				userFriendRedisService.insertUserFriendList(userId, userFriendIdList);
+	public List<UserFriendBean> selectUserFriendList(long userId) {
+		List<UserFriendBean> userFriendList = userFriendRedisService.selectUserFriendList(userId);
+		if (userFriendList.size() == 0) {
+			List<Long> userFriendIdList = userFriendMapper.selectUserFriendIdList(userId);
+			if (userFriendIdList != null && userFriendIdList.size() > 0) {
+				for (Long friendId : userFriendIdList) {
+					UserFriendBean userFriend = new UserFriendBean(friendId);
+					userFriendList.add(userFriend);
+				}
+				userFriendRedisService.insertUserFriendList(userId, userFriendList);
+			}
 		}
 		
-		if (userFriendIdList == null)
-			userFriendIdList = new ArrayList<Long>();
-		
-		return userFriendIdList;
+		return userFriendList;
 	}
 	
 	public void deleteUserFriend(long userId, long friendId) {
@@ -57,12 +60,12 @@ public class UserFriendService {
 	
 	public List<UserFriend> getUserFriendList(UserBean user) {
 		List<UserFriend> userFriendList = new ArrayList<UserFriend>();
-		List<Long> userFriendIdList = selectUserFriendIdList(user.getId());
+		List<UserFriendBean> userFriendBeanList = selectUserFriendList(user.getId());
 		
-		for (Long friendId : userFriendIdList) {
+		for (UserFriendBean friend : userFriendBeanList) {
 //			UserBean user = userService.getUser(friendId);
-			UserInfo userCache = userService.getCache(user.getServerId(), friendId);
-			UserFriend userFriend = buildUserFriend(user.getId(), friendId, userCache);
+			UserInfo userCache = userService.getCache(user.getServerId(), friend.getFriendId());
+			UserFriend userFriend = buildUserFriend(user.getId(), friend, userCache);
 			
 			userFriendList.add(userFriend);
 		}
@@ -70,9 +73,9 @@ public class UserFriendService {
 		return userFriendList;
 	}
 	
-	private UserFriend buildUserFriend(long userId, long friendId, UserInfo userCache) {
+	private UserFriend buildUserFriend(long userId, UserFriendBean userFriendBean, UserInfo userCache) {
 		UserFriend.Builder userFriend = UserFriend.newBuilder();
-		userFriend.setFriendId(friendId);
+		userFriend.setFriendId(userFriendBean.getFriendId());
 		userFriend.setFriendName(userCache.getName());
 		if (userCache.hasVip())
 			userFriend.setVip(userCache.getVip());
@@ -80,7 +83,7 @@ public class UserFriendService {
 			userFriend.setZhanli(userCache.getZhanli());
 		if (userCache.hasLastLoginTime())
 			userFriend.setLastLoginTime(userCache.getLastLoginTime());
-		
+		userFriend.setCountDown((int)(userFriendBean.getLastCallTime() + 12 * TimeConst.SECONDS_PER_HOUR - System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		
 		return userFriend.build();
 	}

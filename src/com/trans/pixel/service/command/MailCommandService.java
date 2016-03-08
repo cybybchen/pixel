@@ -54,7 +54,7 @@ public class MailCommandService extends BaseCommandService {
 			relatedId = cmd.getRelatedId();
 		MailBean mail = super.buildMail(toUserId, user.getId(), content, type, relatedId);
 		mailService.addMail(mail);
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
+		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
 	}
 	
 	public void handleDeleteMailCommand(RequestDeleteMailCommand cmd, Builder responseBuilder, UserBean user) {	
@@ -62,12 +62,12 @@ public class MailCommandService extends BaseCommandService {
 		List<Integer> ids = cmd.getIdList();
 		int count = mailService.deleteMail(user, type, ids);
 		if (count == 0) {
-			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.MAIL_DELETE_SUCCESS));
+		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_DELETE_SUCCESS));
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 	}
 }

@@ -509,6 +509,7 @@ message UserFriend {
 	optional int32 vip = 3;
 	optional int32 zhanli = 4;
 	optional string lastLoginTime = 5;
+	optional int32 countDown = 6;
 }
 
 message Mail {

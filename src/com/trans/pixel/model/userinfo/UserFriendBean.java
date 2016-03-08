@@ -1,26 +1,21 @@
 package com.trans.pixel.model.userinfo;
 
+import net.sf.json.JSONObject;
+
 import com.trans.pixel.protoc.Commands.UserFriend;
 
 public class UserFriendBean {
 	private long id = 0;
-	private long userId = 0;
 	private long friendId = 0;
-	private String friendName = "";
-	private int vip = 0;
-	private int zhanli = 0;
-	private String lastLoginTime = "";
+	private int lastCallTime = 0;
+	public UserFriendBean(long friendId) {
+		this.friendId = friendId;
+	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public long getUserId() {
-		return userId;
-	}
-	public void setUserId(long userId) {
-		this.userId = userId;
 	}
 	public long getFriendId() {
 		return friendId;
@@ -28,35 +23,25 @@ public class UserFriendBean {
 	public void setFriendId(long friendId) {
 		this.friendId = friendId;
 	}
-	public String getFriendName() {
-		return friendName;
+	public int getLastCallTime() {
+		return lastCallTime;
 	}
-	public void setFriendName(String friendName) {
-		this.friendName = friendName;
-	}
-	public int getVip() {
-		return vip;
-	}
-	public void setVip(int vip) {
-		this.vip = vip;
-	}
-	public int getZhanli() {
-		return zhanli;
-	}
-	public void setZhanli(int zhanli) {
-		this.zhanli = zhanli;
-	}
-	public String getLastLoginTime() {
-		return lastLoginTime;
-	}
-	public void setLastLoginTime(String lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
+	public void setLastCallTime(int lastCallTime) {
+		this.lastCallTime = lastCallTime;
 	}
 	public UserFriend buildUserFriend() {
 		UserFriend.Builder builder = UserFriend.newBuilder();
 		builder.setFriendId(friendId);
-		builder.setFriendName(friendName);
 		
 		return builder.build();
+	}
+	
+	public static UserFriendBean fromJson(String jsonString) {
+		if (jsonString == null)
+			return null;
+		
+		JSONObject json = JSONObject.fromObject(jsonString);
+		
+		return (UserFriendBean) JSONObject.toBean(json, UserFriendBean.class);
 	}
 }

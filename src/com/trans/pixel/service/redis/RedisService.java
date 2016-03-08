@@ -15,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -35,6 +37,8 @@ import com.googlecode.protobuf.format.JsonFormat;
 import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.googlecode.protobuf.format.XmlFormat;
 import com.trans.pixel.constants.DirConst;
+import com.trans.pixel.model.FenjieBean;
+import com.trans.pixel.model.FenjieLevelBean;
 
 @Repository
 public class RedisService {
@@ -42,7 +46,7 @@ public class RedisService {
 	static Logger logger = Logger.getLogger(RedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
-
+	
 	/**
 	 * 只有当返回true才能使用builder
 	 */
@@ -753,5 +757,11 @@ public class RedisService {
 			return 0;
 		else
 			return RandomUtils.nextInt(value);
+	}
+	
+	public String toJson(Object object) {
+		JSONObject json = JSONObject.fromObject(object);
+		
+		return json.toString();
 	}
 }
