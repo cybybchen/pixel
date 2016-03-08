@@ -42,6 +42,7 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 public class AreaRedisService extends RedisService{
 	Logger logger = Logger.getLogger(AreaRedisService.class);
 	public final static String AREABOSS = RedisKey.PREFIX+"AreaBoss_";
+	public final static String AREABOSSTIME = RedisKey.PREFIX+"AreaBossTime_";
 	public final static String AREAMONSTERREWARD = RedisKey.PREFIX+"AreaMonsterReward";
 	public final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	public final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
@@ -125,6 +126,19 @@ public class AreaRedisService extends RedisService{
 			}
 		}
 		return bosses;
+	}
+
+	public int getBossTime(int id,UserBean user){
+		String value = hget(AREABOSSTIME+user.getId(), id+"");
+		if(value == null)
+			return 0;
+		else
+			return Integer.parseInt(value);
+	}
+
+	public void saveBossTime(int id, int time, UserBean user){
+		hput(AREABOSSTIME+user.getId(), id+"", time+"");
+		this.expireAt(AREABOSSTIME+user.getId(), nextDay());
 	}
 	
 	public AreaBoss getBoss(int id,UserBean user){

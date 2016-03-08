@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.PVPBoss;
 import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
@@ -73,17 +72,18 @@ public class PvpMapRedisService extends RedisService{
 //		return 0;
 //	}
 
-	public int addUserBuff(UserBean user, int id) {
+	public int addUserBuff(UserBean user, int id, int buffcount) {
 		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), id+"");
 		if(value != null){
 			int buff = Integer.parseInt(value);
 			PVPMapList maplist = getMapList();
 			for(PVPMap map : maplist.getFieldList()){
 				if(map.getFieldid() == id){
+					buff += buffcount;
 					if(buff >= map.getBufflimit())
-						return buff;
-					saveUserBuff(user, id, buff+1);
-					return buff+1;
+						buff = map.getBufflimit();
+					saveUserBuff(user, id, buff);
+					return buff;
 				}
 			}
 		}
@@ -116,15 +116,6 @@ public class PvpMapRedisService extends RedisService{
 
 	public void deleteMonster(UserBean user, int positionid) {
 		hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
-	}
-
-	public PVPBoss getBoss(UserBean user, int id) {
-		PVPBoss.Builder builder = PVPBoss.newBuilder();
-		String value = hget(RedisKey.PVPBOSS_PREFIX+user.getId(), id+"");
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}
-		return null;
 	}
 
 	public void deleteBoss(UserBean user, int id) {
@@ -170,32 +161,44 @@ public class PvpMapRedisService extends RedisService{
 			Map<String, PVPPositionList> positionMap = getPositionConfig();
 			for(PVPMonsterList list : monstermap.values()){
 				List<Integer> positionValues = new ArrayList<Integer>();
-				List<PVPMonster> monsterlist = new ArrayList<PVPMonster>();
+				int count = 0;
 				for(PVPMonster monster : monsters){
 					if(monster.getFieldid() == list.getEnemy(0).getFieldid()){
-						monsterlist.add(monster);
 						positionValues.add(monster.getPositionid());
+						count++;
 					}
 				}
-				int count = monsterlist.size();
 				while(count < 5){//添加怪物
-					PVPMonster.Builder monster = PVPMonster.newBuilder(list.getEnemy(nextInt(list.getEnemyCount())));
-					PVPPositionList positions = positionMap.get(monster.getFieldid()+"");
+					int weight = 0;
+					for(PVPMonster monster : list.getEnemyList()){
+						weight += monster.getWeight();
+					}
+					weight = nextInt(weight);
+					PVPMonster.Builder monsterbuilder = null;
+					for(PVPMonster monster : list.getEnemyList()){
+						if(weight < monster.getWeight()){
+							monsterbuilder = PVPMonster.newBuilder(monster);
+							break;
+						}else{
+							weight -= monster.getWeight();
+						}
+					}
+					PVPPositionList positions = positionMap.get(monsterbuilder.getFieldid()+"");
 					PVPPosition position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
 					while(positionValues.contains(position.getId())){
 						position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
 					}
 					positionValues.add(position.getId());
-					monster.setPositionid(position.getId());
-					monster.setX(position.getX());
-					monster.setY(position.getY());
-					String buff = pvpMap.get(monster.getFieldid()+"");
+					monsterbuilder.setPositionid(position.getId());
+					monsterbuilder.setX(position.getX());
+					monsterbuilder.setY(position.getY());
+					String buff = pvpMap.get(monsterbuilder.getFieldid()+"");
 					int level = nextInt(11)-5;
 					if(buff != null)
 						level += Integer.parseInt(buff);
-					monster.setLevel(Math.max(1, level));
-					monsters.add(monster.build());
-					keyvalue.put(monster.getPositionid()+"", formatJson(monster.build()));
+					monsterbuilder.setLevel(Math.max(1, level));
+					monsters.add(monsterbuilder.build());
+					keyvalue.put(monsterbuilder.getPositionid()+"", formatJson(monsterbuilder.build()));
 					count++;
 				}
 			}
@@ -204,11 +207,6 @@ public class PvpMapRedisService extends RedisService{
 		return monsters;
 	}
 
-	public List<PVPBoss> getBosses(UserBean user) {
-		List<PVPBoss> bosslist = new ArrayList<PVPBoss>();
-		return bosslist;
-	}
-	
 	public PVPMonsterReward getMonsterReward(int id) {
 		PVPMonsterReward.Builder builder = PVPMonsterReward.newBuilder();
 		String value = hget(RedisKey.PVPMONSTERREWARD, id+"");

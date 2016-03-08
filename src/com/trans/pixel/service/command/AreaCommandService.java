@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -61,15 +62,17 @@ public class AreaCommandService extends BaseCommandService{
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.setName("恭喜你击杀了怪物");
-		if(!service.AttackBoss(cmd.getId(), cmd.getScore(), user, rewards))
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+		ResultConst result = service.AttackBoss(cmd.getId(), cmd.getScore(), user, rewards);
+		if(result instanceof ErrorConst)
+			responseBuilder.setErrorCommand(buildErrorCommand((ErrorConst)result));
 		else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackResource(cmd.getId(), user);
+		if(!service.AttackResource(cmd.getId(), user))
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.ERROR_LOCKED));
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	

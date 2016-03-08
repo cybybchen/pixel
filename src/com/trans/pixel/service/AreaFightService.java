@@ -1,16 +1,12 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
-
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
@@ -89,17 +85,21 @@ public class AreaFightService extends FightService{
 		rewardService.doRewards(user, rewards.build());
 		return true;
 	}
-	
-	public boolean AttackBoss(int id, int score, UserBean user, MultiReward.Builder rewards){
+
+	public ResultConst AttackBoss(int id, int score, UserBean user, MultiReward.Builder rewards){
 		AreaBoss boss = redis.getBoss(id, user);
 		if(boss == null || boss.getHp() <= 0)
-			return false;
+			return ErrorConst.NOT_MONSTER;
+		int time = redis.getBossTime(id,user);
+		if(time >= boss.getCount())
+			return ErrorConst.NOT_ENOUGH_TIMES;
+		redis.saveBossTime(id, time+1, user);
 		redis.addBossRank(id, score, user);
 		AreaBoss.Builder builder = AreaBoss.newBuilder(boss);
 		builder.setHp(builder.getHp()-score);
 		if(builder.getHp() <= 0){//结算
-			if(!redis.setLock("S"+user.getServerId()+"_AreaBoss_"+builder.getId(), System.currentTimeMillis()))
-				return false;
+			if(!redis.setLock("S"+user.getServerId()+"_AreaBoss_"+builder.getId()))
+				return ErrorConst.NOT_MONSTER;
 			builder.setOwner(user.buildShort());
 			//击杀奖励
 			AreaMonsterReward monsterreward = redis.getAreaMonsterReward(id);
@@ -132,12 +132,14 @@ public class AreaFightService extends FightService{
 			}
 		}
 		redis.saveBoss(builder.build(), user);
-		return true;
+		return SuccessConst.PVP_ATTACK_SUCCESS;
 	}
 	
 	public boolean AttackResource(int id, UserBean user){
 		AreaResource resource = redis.getResource(id, user);
 		if(resource == null)
+			return false;
+		if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 			return false;
 		AreaResource.Builder builder = AreaResource.newBuilder(resource);
 		if (builder.getState() == 0) {//刺杀
@@ -183,7 +185,7 @@ public class AreaFightService extends FightService{
 	public boolean gainMine(AreaResourceMine.Builder builder, UserBean user){
 		if(!builder.hasUser())
 			return true;
-		if(!redis.setLock("S"+user.getServerId()+"_Mine_"+builder.getId(), System.currentTimeMillis()))
+		if(!redis.setLock("S"+user.getServerId()+"_Mine_"+builder.getId()))
 			return false;
 		int yield = builder.getYield();
 		if (System.currentTimeMillis() / 1000 < builder.getEndTime())
@@ -209,7 +211,7 @@ public class AreaFightService extends FightService{
 	}
 	
 	public void resourceFight(AreaResource.Builder builder, UserBean user){
-		if(!redis.setLock("S"+user.getServerId()+"_AreaFight_"+builder.getId(), System.currentTimeMillis()))
+		if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+builder.getId()))
 			return;
 		//防守玩家最后一个加入战斗
 		List<UserInfo> attacks = builder.getAttacksList();

@@ -62,7 +62,7 @@ public class ServerRedisService extends RedisService{
 		for(int value : values){
 			long time = today(value);
 			if(time > serverdata.getAreaBossRefreshTime() && time < System.currentTimeMillis()/1000L){
-				if(!setLock(RedisKey.SERVERDATA+serverId, System.currentTimeMillis()))
+				if(!setLock(RedisKey.SERVERDATA+serverId))
 					return -1;
 				serverdata.setAreaBossRefreshTime(time);
 				set(RedisKey.SERVERDATA+serverId, formatJson(serverdata.build()));

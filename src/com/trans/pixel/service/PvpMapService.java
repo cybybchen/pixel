@@ -10,14 +10,12 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.PVPBoss;
 import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
 import com.trans.pixel.protoc.Commands.PVPMonsterReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
-import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 
 @Service
@@ -41,7 +39,6 @@ public class PvpMapService {
 		Map<String, String> pvpMap = redis.getUserBuffs(user);
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
-		List<PVPBoss> bosses = redis.getBosses(user);
 		long time = redis.today(6);
 		if(user.getPvpMineRefreshTime() < time){//刷新对手
 			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600+redis.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600);
@@ -82,10 +79,6 @@ public class PvpMapService {
 				if(monster.getFieldid() == mapBuilder.getFieldid())
 					mapBuilder.addMonster(monster);
 			}
-			for(PVPBoss boss : bosses){
-				if(boss.getFieldid() == mapBuilder.getFieldid())
-					mapBuilder.addBoss(boss);
-			}
 		}
 		return maplist.build();
 	}
@@ -112,23 +105,9 @@ public class PvpMapService {
 				rewards.addLoot(rewardinfo);
 			}
 			rewardService.doRewards(user, rewards.build());
-			int buff = redis.addUserBuff(user, monster.getFieldid());
+			redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
 		}
 		return rewards.build();
-	}
-	
-	public boolean attackBoss(UserBean user, int id, boolean ret){
-		PVPBoss boss = redis.getBoss(user, id);
-		if(boss == null)
-			return false;
-		if(ret){
-			redis.deleteBoss(user, id);
-			int buff = redis.addUserBuff(user, boss.getFieldid());
-			// PVPMap.Builder builder = PVPMap.newBuilder(map);
-			// builder.setBuff(builder.getBuff());
-			// redis.saveUserMap(user, builder.build());
-		}
-		return true;
 	}
 	
 	public boolean attackMine(UserBean user, int id, boolean ret){

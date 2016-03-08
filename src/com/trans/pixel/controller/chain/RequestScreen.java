@@ -9,7 +9,6 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -251,7 +250,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user);
@@ -706,11 +704,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//PvpMapListCommand
                 result = handleCommand(cmd, responseBuilder, user);//PvpMapListCommand
         }//PvpMapListCommand
-        if (request.hasAttackPVPBossCommand()) {
-            RequestAttackPVPBossCommand cmd = request.getAttackPVPBossCommand();
-            if (result)//AttackPVPBossCommand
-                result = handleCommand(cmd, responseBuilder, user);//AttackPVPBossCommand
-        }//AttackPVPBossCommand
         if (request.hasPvpMineInfoCommand()) {
             RequestPVPMineInfoCommand cmd = request.getPvpMineInfoCommand();
             if (result)//PvpMineInfoCommand

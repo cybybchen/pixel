@@ -13,7 +13,6 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -576,11 +575,6 @@ public class GameDataScreen extends RequestScreen {
 		pvpCommandService.getMapList(cmd, responseBuilder, user);
 		return true;//PvpMapListCommand
 	}//PvpMapListCommand
-	@Override//AttackPVPBossCommand
-	protected boolean handleCommand(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user) {
-		pvpCommandService.attackBoss(cmd, responseBuilder, user);
-		return true;//AttackPVPBossCommand
-	}//AttackPVPBossCommand
 	@Override//PvpMineInfoCommand
 	protected boolean handleCommand(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		pvpCommandService.getMineInfo(cmd, responseBuilder, user);

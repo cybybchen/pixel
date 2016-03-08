@@ -15,7 +15,6 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -503,11 +502,6 @@ public class HeadScreen extends RequestScreen {
 		// TODO PvpMapListCommand method
 		return true;//PvpMapListCommand
 	}//PvpMapListCommand
-	@Override//AttackPVPBossCommand
-	protected boolean handleCommand(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO AttackPVPBossCommand method
-		return true;//AttackPVPBossCommand
-	}//AttackPVPBossCommand
 	@Override//PvpMineInfoCommand
 	protected boolean handleCommand(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		// TODO PvpMineInfoCommand method

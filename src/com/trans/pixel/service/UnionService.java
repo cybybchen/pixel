@@ -84,7 +84,7 @@ public class UnionService extends FightService{
 	 * 血战
 	 */
 	public void bloodFight(int attackUnionId, int defendUnionId, int serverId){
-		if(!unionRedisService.setLock(unionRedisService.getUnionFightKey(attackUnionId, defendUnionId), System.currentTimeMillis()))
+		if(!unionRedisService.setLock(unionRedisService.getUnionFightKey(attackUnionId, defendUnionId)))
 			return;
 		Union.Builder attackUnion = Union.newBuilder();
 		Union.Builder defendUnion = Union.newBuilder();
@@ -233,8 +233,8 @@ public class UnionService extends FightService{
 			unionRedisService.getBaseUnion(defendUnion, builder.getAttackId(), user.getServerId());
 			builder.setAttackId(attackId);
 			defendUnion.setDefendId(builder.getId());
-			if(unionRedisService.setLock("Union_"+builder.getId(), System.currentTimeMillis()) 
-				&& unionRedisService.setLock("Union_"+defendUnion.getId(), System.currentTimeMillis()))
+			if(unionRedisService.setLock("Union_"+builder.getId()) 
+				&& unionRedisService.setLock("Union_"+defendUnion.getId()))
 			{
 				unionRedisService.saveUnion(builder.build(), user);
 				unionRedisService.saveUnion(defendUnion.build(), user);

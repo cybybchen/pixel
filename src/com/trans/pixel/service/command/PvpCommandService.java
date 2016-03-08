@@ -15,7 +15,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
@@ -62,12 +61,6 @@ public class PvpCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards);
-		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
-	}
-	
-	public void attackBoss(RequestAttackPVPBossCommand cmd, Builder responseBuilder, UserBean user) {
-		if(!pvpMapService.attackBoss(user, cmd.getPositionid(), cmd.getRet()))
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
@@ -123,17 +116,22 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void refreshMine(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
-		PVPMine mine = pvpMapService.refreshMine(user, cmd.getId());
-		if(mine == null)
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
-		else if(!mine.hasOwner())
+		if(user.getPvpMineLeftTime() <= 0){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES));
-		else{
-			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
-			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
-			builder.addAllHeroInfo(team.getHeroInfoList());
-			builder.setUser(team.getUser());
-			responseBuilder.setTeamCommand(builder);
+		}else{
+			PVPMine mine = pvpMapService.refreshMine(user, cmd.getId());
+			if(mine == null || !mine.hasOwner())
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
+			else{
+				user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
+				userService.updateUserDailyData(user);
+				Team team = userTeamService.getTeamCache(mine.getOwner().getId());
+				ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
+				builder.addAllHeroInfo(team.getHeroInfoList());
+				builder.setUser(team.getUser());
+				responseBuilder.setTeamCommand(builder);
+				pusher.pushUserInfoCommand(responseBuilder, user);
+			}
 		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);		
 	}

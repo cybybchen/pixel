@@ -53,6 +53,12 @@ public class UserTeamService {
 		return userTeamList;
 	}
 
+	public String luaTeam(Team team){
+		String str = "local list={";
+		
+		return str;
+	}
+
 	public Team getTeamCache(long userid){
 		return userTeamRedisService.getTeamCache(userid);
 	}

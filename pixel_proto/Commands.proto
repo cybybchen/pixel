@@ -242,8 +242,9 @@ message AreaBoss {//区域世界BOSS
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
 	optional int32 group = 6;
-	optional int32 hpMax = 8;//最大血量
-	optional int32 turn = 9;//回合限制
+	optional int32 hpMax = 7;//最大血量
+	optional int32 turn = 8;//回合限制
+	optional int32 count = 9;//次数限制
 	///////////////////////////////////
 	optional int32 hp = 10;//当前血量
 	optional UserInfo owner = 11;//击杀者
@@ -328,7 +329,8 @@ message PVPMonster {//pvp怪物Config
 	optional string name = 2;
 	optional int32 boss = 3;//站立
 	optional int32 fieldid = 4;//区域ID
-	optional int32 count = 5;
+	optional int32 buffcount = 5;//增加的buff层数
+	optional int32 weight = 12;//出现几率
 	optional int32 a = 6;
 	optional int32 b = 7;
 	optional int32 x = 8;//坐标x
@@ -357,21 +359,12 @@ message PVPPositionLists{
 	repeated PVPPositionList field = 1;
 }
 
-message PVPBoss {//pvpBoss
-	required int32 id = 1;
-	optional string name = 2;
-	optional int32 fieldid = 3;//区域ID
-	optional int32 x = 4;//坐标x
-	optional int32 y = 5;//坐标y
-	optional MultiReward reward = 6;//击败奖励
-}
-
 message PVPMine{//pvp矿点
 	required int32 id = 1;
 	optional int32 x = 2;
 	optional int32 y = 3;
 	optional int32 type = 4;
-	optional int32 yield = 5;
+	optional int32 yield = 5;//产量
 	optional int32 enemyid = 6;
 	optional UserInfo owner = 8;//占领者
 	optional int64 endTime = 9;
@@ -381,14 +374,14 @@ message PVPMine{//pvp矿点
 message PVPMap{
 	optional int32 fieldid = 1;
 	optional string name = 2;
-	optional int32 bufflimit = 6;
-	optional int32 yield = 7;
-	optional int32 zhanli = 8;
-	optional int32 buff = 9;
-	optional bool opened = 10;
+	optional int32 bufflimit = 6;//buff层数上限
+	optional int32 yield = 7;//基础产量
+	optional int32 zhanli = 8;//开放战力
+	optional int32 buffid = 9;//buffid
+	optional int32 buff = 10;//buff层数
+	optional bool opened = 11;//是否开放
 	repeated PVPMine kuangdian = 3;
 	repeated PVPMonster monster = 4;
-	repeated PVPBoss boss = 5;
 }
 
 message PVPMapList{
@@ -480,7 +473,7 @@ message AreaInfo {//可争夺区域
 	required int32 id = 1;//区域ID
 	required string name = 2;//开放所需战力
 	required int32 zhanli = 3;//开放所需战力
-	optional bool opened = 7;
+	optional bool opened = 7;//是否开放
 	repeated AreaResource resources = 4;//区域资源点
 	repeated AreaBoss bosses = 5;//区域BOSS
 	repeated AreaMonster monsters = 6;//区域怪物
@@ -1135,11 +1128,6 @@ message RequestAttackPVPMonsterCommand {//pvp攻击怪物
 	optional bool ret = 2;
 }
 
-message RequestAttackPVPBossCommand {//pvp攻击BOSS
-	required int32 positionid = 1;
-	optional bool ret = 2;
-}
-
 message RequestPVPMineInfoCommand {//pvp矿点对手信息
 	required int32 id = 1;
 }
@@ -1293,7 +1281,6 @@ message RequestCommand {
 	optional RequestGetTeamCommand teamCommand = 123;
 	optional RequestPVPMapListCommand pvpMapListCommand = 125;
 	optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;
-	optional RequestAttackPVPBossCommand attackPVPBossCommand = 127;
 	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
 	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
 	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;

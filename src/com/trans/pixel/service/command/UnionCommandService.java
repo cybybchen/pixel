@@ -123,7 +123,7 @@ public class UnionCommandService extends BaseCommandService {
 
 	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		if(!unionService.attack(cmd.getUnionId(), cmd.getTeamid(), user))
-			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.UNION_LOCK));
+			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.ERROR_LOCKED));
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());
