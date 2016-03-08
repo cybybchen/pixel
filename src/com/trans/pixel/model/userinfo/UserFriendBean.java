@@ -41,7 +41,10 @@ public class UserFriendBean {
 			return null;
 		
 		JSONObject json = JSONObject.fromObject(jsonString);
+		UserFriendBean userFriend = new UserFriendBean(json.getLong("friendId"));
+		userFriend.setLastCallTime(json.getInt("lastCallTime"));
 		
-		return (UserFriendBean) JSONObject.toBean(json, UserFriendBean.class);
+		return userFriend;
+//		return (UserFriendBean) JSONObject.toBean(json, UserFriendBean.class);
 	}
 }
