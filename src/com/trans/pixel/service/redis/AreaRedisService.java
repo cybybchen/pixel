@@ -64,6 +64,21 @@ public class AreaRedisService extends RedisService{
 		}
 	}
 	
+	public void costEnergy(UserBean user) {
+		long time = System.currentTimeMillis()/1000/300*300;
+		if(user.getAreaEnergy() >= 150){
+			user.setAreaEnergy(user.getAreaEnergy()-1);
+			user.setAreaEnergyTime(time);
+		}else if(time - user.getAreaEnergyTime() >= 300){
+			user.setAreaEnergy((int)(user.getAreaEnergy()-1+(time - user.getAreaEnergyTime()/300)));
+			if(user.getAreaEnergy() >= 150)
+				user.setAreaEnergy(149);
+			user.setAreaEnergyTime(time);
+		}else if(user.getAreaEnergy() > 0)
+			user.setAreaEnergy(user.getAreaEnergy()-1);
+		userRedisService.updateUser(user);
+	}
+	
 	public Map<String, AreaBoss.Builder> getBosses(UserBean user){
 		Map<String, AreaBoss.Builder> bosses= new HashMap<String, AreaBoss.Builder>();
 		Map<String, String> valueMap = this.hget(AREABOSS+user.getServerId());

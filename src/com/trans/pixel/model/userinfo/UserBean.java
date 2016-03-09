@@ -50,6 +50,33 @@ public class UserBean {
 	private int signDays = 0;
 	private int loginDays = 0;
 	private long areaMonsterRefreshTime = 0;
+	private int areaEnergy = 0;
+	/**
+	 * 疲劳值
+	 */
+	public int getAreaEnergy() {
+		return areaEnergy;
+	}
+	/**
+	 * 疲劳值
+	 */
+	public void setAreaEnergy(int areaEnergy) {
+		this.areaEnergy = areaEnergy;
+	}
+	/**
+	 * 疲劳回满时间
+	 */
+	public long getAreaEnergyTime() {
+		return areaEnergyTime;
+	}
+	/**
+	 * 疲劳回满时间
+	 */
+	public void setAreaEnergyTime(long areaEnergyTime) {
+		this.areaEnergyTime = areaEnergyTime;
+	}
+
+	private long areaEnergyTime = 0;
 	/**
 	 * 战力
 	 */
@@ -631,6 +658,8 @@ public class UserBean {
 		builder.setSignDays(signDays);
 		builder.setLoginDays(loginDays);
 		builder.setHasSign(hasSign);
+		builder.setAreaEnergy(areaEnergy);
+		builder.setAreaEnergyTime(areaEnergyTime);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {

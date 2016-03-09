@@ -73,6 +73,10 @@ public class AreaFightService extends FightService{
 		}
 		return reward.build();
 	}
+	
+	public void costEnergy(UserBean user){
+		redis.costEnergy(user);
+	}
 
 	public boolean AttackMonster(int id, UserBean user, MultiReward.Builder rewards){
 		AreaMonster monster = redis.getMonster(id, user);
@@ -154,6 +158,7 @@ public class AreaFightService extends FightService{
 			builder.setAttackerId(user.getUnionId());
 			redis.saveResource(builder.build(), user);
 		}else{
+			costEnergy(user);
 			if(user.getUnionId() == builder.getOwner().getUnionId()){//防守
 				builder.addDefenses(user.buildShort());
 			}else{//进攻
@@ -170,6 +175,8 @@ public class AreaFightService extends FightService{
 			return ErrorConst.MAPINFO_ERROR;
 		List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, herolist);
+		if(mine.hasUser())
+			costEnergy(user);
 		if(!ret)
 			return SuccessConst.PVP_ATTACK_FAIL;
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(mine);
