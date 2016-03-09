@@ -22,7 +22,7 @@
 	</select>
 	
 	<delete id="deleteUserFriend">
-		DELETE *
+		DELETE 
 		from user_friend where user_id=#{userId} and friend_id=#{friendId}
 	</delete>
 	

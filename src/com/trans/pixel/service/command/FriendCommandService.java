@@ -49,6 +49,8 @@ public class FriendCommandService extends BaseCommandService {
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
+			
+			friendId = friend.getId();
 		}
 		if (userFriendService.isFriend(user.getId(), friendId)) {
 			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.FRIEND_HAS_ADDED);
