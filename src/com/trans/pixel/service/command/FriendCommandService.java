@@ -37,6 +37,11 @@ public class FriendCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
+		if (friendId == user.getId()) {
+			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.NOT_ADD_SELF_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		buildAddFriendMail(friendId, user.getId());
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.SEND_FRIEND_ADDED_SUCCESS));
 	}
