@@ -46,7 +46,7 @@ public class EquipService {
 	}
 	
 	public int calHeroEquipLevel(HeroInfoBean heroInfo) {
-		String[] equipIds = heroInfo.getEquipIds();
+		String[] equipIds = heroInfo.equipIds();
 		int level = 0;
 		for (String equipId : equipIds) {
 			EquipmentBean equip = getEquip(TypeTranslatedUtil.stringToInt(equipId));

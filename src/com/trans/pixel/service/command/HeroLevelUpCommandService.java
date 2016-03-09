@@ -184,7 +184,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 					responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_LOCKED));
 					return;
 				}
-				equipIds = heroInfo.getEquipIds();
+				equipIds = heroInfo.equipIds();
 				addCoin = 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
 			}
 		}

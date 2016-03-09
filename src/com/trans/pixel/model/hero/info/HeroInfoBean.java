@@ -89,7 +89,7 @@ public class HeroInfoBean {
 	}
 	
 	public int getEquipIdByArmId(int armId) {
-		String[] equipIds = getEquipIds();
+		String[] equipIds = equipIds();
 		if (equipIds.length >= armId - 1)
 			return TypeTranslatedUtil.stringToInt(equipIds[armId - 1]);
 		
@@ -97,14 +97,14 @@ public class HeroInfoBean {
 	}
 	
 	public void updateEquipIdByArmId(int equipId, int armId) {
-		String[] equipIds = getEquipIds();
+		String[] equipIds = equipIds();
 		if (equipIds.length > armId - 1) {
 			equipIds[armId - 1] = "" + equipId;
 			composeEquipInfo(equipIds);
 		}
 	}
 	
-	public String[] getEquipIds() {
+	public String[] equipIds() {
 		return equipInfo.split("\\" + EQUIP_SPLIT);
 	}
 	
