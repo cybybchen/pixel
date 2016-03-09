@@ -189,10 +189,11 @@ public class BaseCommandService {
 		return mail;
 	}
 	
-	protected MailBean buildMail(long userId, long friendId, String content, int type) {
+	protected MailBean buildMail(long userId, long friendId, String friendName, String content, int type) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
 		mail.setFromUserId(friendId);
+		mail.setFromUserName(friendName);
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setStartDate(DateUtil.getCurrentDateString());

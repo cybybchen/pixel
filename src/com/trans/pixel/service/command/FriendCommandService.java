@@ -62,7 +62,7 @@ public class FriendCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		buildAddFriendMail(friendId, user.getId());
+		buildAddFriendMail(friendId, user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.SEND_FRIEND_ADDED_SUCCESS));
 	}
 	
@@ -108,9 +108,9 @@ public class FriendCommandService extends BaseCommandService {
 		}
 	}
 	
-	private void buildAddFriendMail(long userId, long friendId) {
+	private void buildAddFriendMail(long userId, UserBean user) {
 		String content = "添加你为好友";
-		MailBean mail = super.buildMail(userId, friendId, content, MailConst.TYPE_ADDFRIEND_MAIL);
+		MailBean mail = super.buildMail(userId, user.getId(), user.getUserName(), content, MailConst.TYPE_ADDFRIEND_MAIL);
 		mailService.addMail(mail);
 	}
 }
