@@ -1127,10 +1127,11 @@ message ResponseUserPropCommand { //玩家道具列表
 
 message RequestUsePropCommand { //打开道具包
 	required int32 propId = 1;
+	required int32 propCount = 2;
 }
 
 message ResponseUsePropCommand {
-	required RewardInfo reward = 1;
+	required MultiReward multiReward = 1;
 }
 
 message RequestFenjieEquipCommand {

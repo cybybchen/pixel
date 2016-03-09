@@ -16,6 +16,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.trans.pixel.constants.DirConst;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class PackageBean {
@@ -150,15 +151,14 @@ public class PackageBean {
 		return null;
 	}
 	
-	public RewardBean randomReward() {
+	public RewardInfo randomReward() {
 		ItemBean item = randomItem();
 		if (item != null) {
-			RewardBean reward = new RewardBean();
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(item.getItemid());
-			reward.setName(item.getItem());
 			reward.setCount(item.randomCount());
 			
-			return reward;
+			return reward.build();
 		}
 		
 		return null;

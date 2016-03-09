@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,9 +8,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.PackageBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
@@ -32,22 +34,27 @@ public class PropService {
 		return prop;
 	}
 	
-	public RewardBean useProp(UserBean user, int propId) {
+	public MultiReward useProp(UserBean user, int propId, int propCount) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
-		if (userProp == null || userProp.getPropCount() == 0)
+		if (userProp == null || userProp.getPropCount() >= propCount)
 			return null;
 		
 		PackageBean prop = getProp(userProp.getPropId());
 		if (prop == null)
 			return null;
 		
-		RewardBean reward = prop.randomReward();
-		if (reward != null) {
-			rewardService.doReward(user, reward);
-			userProp.setPropCount(userProp.getPropCount() - 1);
+		MultiReward.Builder multiReward = MultiReward.newBuilder();
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		for (int i = 0; i < propCount; ++i) {
+			RewardInfo reward = prop.randomReward();
+			rewardService.mergeReward(rewardList, reward);
+		}
+		if (!rewardList.isEmpty()) {
+			multiReward.addAllLoot(rewardList);
+			userProp.setPropCount(userProp.getPropCount() - propCount);
 			userPropService.updateUserProp(userProp);
 			
-			return reward;
+			return multiReward.build();
 		}
 		
 		return null;
