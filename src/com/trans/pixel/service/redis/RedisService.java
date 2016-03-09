@@ -211,6 +211,9 @@ public class RedisService {
 	 * 设置同步锁，返回true才能进行操作
 	 */
 	public boolean setLock(final String key) {
+		return setLock(key, 4);
+	}
+	public boolean setLock(final String key, final int seconds) {
 		return redisTemplate.execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
@@ -219,8 +222,8 @@ public class RedisService {
 				BoundValueOperations<String, String> Ops = redisTemplate
 						.boundValueOps(lockey);
 
-				if(Ops.setIfAbsent("4")){
-					Ops.expire(4, TimeUnit.SECONDS);
+				if(Ops.setIfAbsent(""+seconds)){
+					Ops.expire(seconds, TimeUnit.SECONDS);
 					logger.debug(lockey + " : succeed to setLock ");
 					return true;
 				}else{
@@ -748,6 +751,9 @@ public class RedisService {
 	 */
 	public long today(int hour){
 		return System.currentTimeMillis()/24/3600L/1000L*24*3600L+(hour-8)*3600L;
+	}
+	public long now(){
+		return System.currentTimeMillis()/1000L;
 	}
 
 	public int nextInt(int value){

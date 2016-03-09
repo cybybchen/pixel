@@ -156,6 +156,18 @@ public class UnionRedisService extends RedisService{
 		this.hput(getUnionServerKey(serverId), union.getId()+"", formatJson(union));
 	}
 	
+	public void saveFightKey(final int attackid, final int defendid, final int serverId) {
+		this.hput(RedisKey.PREFIX+"UnionFightKey_"+serverId, attackid+"", defendid+"");
+	}
+	
+	public void deleteFightKey(final int attackid, final int serverId) {
+		this.hdelete(RedisKey.PREFIX+"UnionFightKey_"+serverId, attackid+"");
+	}
+	
+	public Map<String, String> getFightKeys(final int serverId) {
+		return this.hget(RedisKey.PREFIX+"UnionFightKey_"+serverId);
+	}
+	
 	public void saveFight(final int attackid, final int defendid, FightResultList resultlist) {
 		String key = getUnionFightResultKey(attackid, defendid);
 		this.set(key, formatJson(resultlist));

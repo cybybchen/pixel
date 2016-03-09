@@ -127,6 +127,8 @@ public class LevelService {
 	}
 	
 	public XiaoguanBean getXiaoguan(int levelId) {
+		if(levelId == 0)
+			levelId = 1001;
 		XiaoguanBean xiaoguan = levelRedisService.getXiaoguanByLevelId(levelId);
 		if (xiaoguan == null) {
 			parseAndSaveConfig(getDifficulty(levelId));

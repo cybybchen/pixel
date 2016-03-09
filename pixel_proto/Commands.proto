@@ -194,7 +194,9 @@ message Union {
 	repeated UserInfo members = 7;
 	repeated UnionApply applies = 8;
 	optional int32 attackId = 9;
+	optional int64 attackEndTime = 14;
 	optional int32 defendId = 10;
+	optional int64 defendEndTime = 15;
 	repeated UserInfo attacks = 11;
 	repeated UserInfo defends = 12;
 	optional bool isApply = 13;

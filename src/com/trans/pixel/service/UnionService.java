@@ -2,6 +2,8 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -18,6 +20,7 @@ import com.trans.pixel.protoc.Commands.FightResult;
 import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 
 @Service
@@ -33,6 +36,8 @@ public class UnionService extends FightService{
 	private UnionMapper unionMapper;
 	@Resource
 	private UserService userService;
+	@Resource
+	private ServerRedisService serverRedisService;
 	
 	public List<Union> getBaseUnions(UserBean user) {
 		return unionRedisService.getBaseUnions(user);
@@ -66,22 +71,32 @@ public class UnionService extends FightService{
 			return null;
 		Union.Builder builder = Union.newBuilder(union);
 		
-//		if(union.hasAttackId()){
+		if(union.hasAttackId()){
+			if(builder.getAttackEndTime() < unionRedisService.now()){
+				builder.clearAttackId();
+				builder.clearAttackEndTime();
+				if(unionRedisService.setLock("Union_"+builder.getId()))
+					unionRedisService.saveUnion(builder.build(), user);
 //			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//进攻结算
-				bloodFight(union.getId(), union.getAttackId(), user.getServerId());
-//			}else{
-//				List<UserInfo> users = unionRedisService.getFightQueue(union.getId(), union.getAttackId());
-//				builder.addAllAttacks(users);
-//			}
-//		}
-		if(union.hasDefendId()){
-			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//防守结算
-				bloodFight(union.getDefendId(), union.getId(), user.getServerId());
+//				 bloodFight(union.getId(), union.getAttackId(), user.getServerId());
 			}else{
-				List<UserInfo> users = unionRedisService.getFightQueue(union.getDefendId(), union.getId());
-				builder.addAllDefends(users);
+				List<UserInfo> users = unionRedisService.getFightQueue(union.getId(), union.getAttackId());
+				builder.addAllAttacks(users);
 			}
 		}
+		 if(union.hasDefendId()){
+			if(builder.getDefendEndTime() < unionRedisService.now()){
+				builder.clearDefendId();
+				builder.clearDefendEndTime();
+				if(unionRedisService.setLock("Union_"+builder.getId()))
+					unionRedisService.saveUnion(builder.build(), user);
+//		 	if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//防守结算
+//		 		bloodFight(union.getDefendId(), union.getId(), user.getServerId());
+		 	}else{
+		 		List<UserInfo> users = unionRedisService.getFightQueue(union.getDefendId(), union.getId());
+		 		builder.addAllDefends(users);
+		 	}
+		 }
 		return builder.build();
 	}
 	
@@ -89,16 +104,24 @@ public class UnionService extends FightService{
 	 * 血战
 	 */
 	public void bloodFight(int attackUnionId, int defendUnionId, int serverId){
-		if(!unionRedisService.setLock("Union_"+attackUnionId) || !unionRedisService.setLock("Union_"+defendUnionId))
-			return;
 		Union.Builder attackUnion = Union.newBuilder();
 		Union.Builder defendUnion = Union.newBuilder();
-		if(unionRedisService.getBaseUnion(attackUnion, attackUnionId, serverId)){
+		boolean hasattack = unionRedisService.getBaseUnion(attackUnion, attackUnionId, serverId);
+		boolean hasdefend = unionRedisService.getBaseUnion(defendUnion, defendUnionId, serverId);
+		
+		if(hasattack && !hasdefend){
 			attackUnion.clearAttackId();
-		}
-		if(unionRedisService.getBaseUnion(defendUnion, defendUnionId, serverId)){
+			unionRedisService.saveUnion(attackUnion.build(), serverId);
+			return;
+		}else if(!hasattack && hasdefend){
 			defendUnion.clearDefendId();
+			unionRedisService.saveUnion(defendUnion.build(), serverId);
+			return;
+		}else if(!hasattack && !hasdefend){
+			return;
 		}
+		attackUnion.clearAttackId();
+		defendUnion.clearDefendId();
 		List<UserInfo> users = unionRedisService.getFightQueue(attackUnionId, defendUnionId);
 		List<UserInfo> attacks = new ArrayList<UserInfo>();
 		List<UserInfo> defends = new ArrayList<UserInfo>();
@@ -148,8 +171,6 @@ public class UnionService extends FightService{
 		}
 		unionRedisService.saveUnion(attackUnion.build(), serverId);
 		unionRedisService.saveUnion(defendUnion.build(), serverId);
-		unionRedisService.clearLock("Union_"+attackUnionId);
-		unionRedisService.clearLock("Union_"+defendUnionId);
 	}
 	
 	public Union create(int icon, String unionName, UserBean user) {
@@ -273,12 +294,15 @@ public class UnionService extends FightService{
 			Union.Builder defendUnion = Union.newBuilder();
 			unionRedisService.getBaseUnion(defendUnion, builder.getAttackId(), user.getServerId());
 			builder.setAttackId(attackId);
+			builder.setAttackEndTime(unionRedisService.today(24));
 			defendUnion.setDefendId(builder.getId());
+			defendUnion.setDefendEndTime(unionRedisService.today(24));
 			if(unionRedisService.setLock("Union_"+builder.getId()) 
 				&& unionRedisService.setLock("Union_"+defendUnion.getId()))
 			{
 				unionRedisService.saveUnion(builder.build(), user);
 				unionRedisService.saveUnion(defendUnion.build(), user);
+				unionRedisService.saveFightKey(builder.getId(), defendUnion.getId(), user.getServerId());
 			}else{
 				return ErrorConst.ERROR_LOCKED;
 			}
@@ -298,6 +322,30 @@ public class UnionService extends FightService{
 			return true;
 		}else{
 			return false;
+		}
+	}
+
+	public void unionFightTask(){
+		List<Integer> servers = serverRedisService.getServerIdList();
+		for(Integer serverId : servers){
+			Map<String, String> map = unionRedisService.getFightKeys(serverId);
+			for(Entry<String, String> entry : map.entrySet()){
+				int attackUnionId = Integer.parseInt(entry.getKey());
+				int defendUnionId = Integer.parseInt(entry.getValue());
+				try {
+					while(!unionRedisService.setLock("Union_"+attackUnionId, 60))
+							Thread.sleep(1);
+					while(!unionRedisService.setLock("Union_"+defendUnionId, 60))
+							Thread.sleep(1);
+				} catch (InterruptedException e) {
+					logger.debug(e);
+					return;
+				}
+				bloodFight(attackUnionId, defendUnionId, serverId);
+				unionRedisService.deleteFightKey(attackUnionId, serverId);
+				unionRedisService.clearLock("Union_"+attackUnionId);
+				unionRedisService.clearLock("Union_"+defendUnionId);
+			}
 		}
 	}
 }
