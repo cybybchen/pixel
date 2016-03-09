@@ -28,9 +28,9 @@ public class LuaJTest {
 		LuaValue defend = LuaValue.valueOf(userTeamService.luaTeamList(attackteams));
 		Globals globals = JsePlatform.standardGlobals();
 		LuaValue fun = globals.get("require");
-		fun.call("/var/www/html/sss/init");
+		fun.call("/var/www/html/lua/init");
 		LuaValue f_set_path = globals.get("set_file_path");
-		f_set_path.call(LuaValue.valueOf("/var/www/html/sss"));
+		f_set_path.call(LuaValue.valueOf("/var/www/html/lua"));
 		fun = fun.call("main");
 		LuaValue chunk = globals.get("startFighting");
 		LuaValue luaresult = chunk.call(attack, defend);
