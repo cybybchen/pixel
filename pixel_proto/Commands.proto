@@ -546,11 +546,12 @@ message MailList {
 }
 
 message MessageBoard {
-	required int64 timestamp = 1;
-	required int64 userId = 2;
-	required string userName = 3;
-	required string content = 4;
-	repeated Msg msg = 5;
+	required int64 id = 1;
+	required int64 timestamp = 2;
+	required int64 userId = 3;
+	required string userName = 4;
+	required string content = 5;
+	repeated Msg msg = 6;
 }
 
 message Msg {
@@ -1027,7 +1028,7 @@ message RequestCreateMessageBoardCommand { //创建一个新的留言板
 
 message RequestReplyMessageCommand { //回复留言板
 	required int32 type = 1;
-	required int64 timestamp = 2;
+	required string id = 2;
 	required string message = 3;
 }
 

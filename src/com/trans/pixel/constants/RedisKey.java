@@ -130,7 +130,8 @@ public class RedisKey {
 	public static final String CHIP_KEY = PREFIX + "key:chip";
 	
 	//message board
-	public static final String MESSAGE_BOARD_KEY = "key:message_board";
+	public static final String MESSAGE_BOARD_KEY = "key:message_key";
+	public static final String MESSAGE_BOARD_VALUE_KEY = "key:message_value";
 	
 	//skill
 	public static final String SKILL_KEY = "key:skill";

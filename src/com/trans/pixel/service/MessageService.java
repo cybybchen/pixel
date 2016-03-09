@@ -43,14 +43,25 @@ public class MessageService {
 		}
 	}
 	
-	public MessageBoardBean replyMessage(int type, UserBean user, long timeStamp, String message) {
+	public MessageBoardBean getMessage(int type, String id, UserBean user) {
+		switch (type) {
+		case MessageConst.TYPE_MESSAGE_NORMAL:
+			return messageRedisService.getMessageBoardById(user.getServerId(), id);
+		case MessageConst.TYPE_MESSAGE_UNION:
+			return messageRedisService.getUnionMessageBoardById(user.getUnionId(), id);
+		default:
+			return messageRedisService.getMessageBoardById(user.getServerId(), id);
+	}
+	}
+	
+	public MessageBoardBean replyMessage(int type, UserBean user, String id, String message) {
 		switch (type) {
 			case MessageConst.TYPE_MESSAGE_NORMAL:
-				return replyMessage(user.getServerId(), timeStamp, message);
+				return replyMessage(user.getServerId(), id, message);
 			case MessageConst.TYPE_MESSAGE_UNION:
-				return replyUnionMessage(user.getUnionId(), timeStamp, message);
+				return replyUnionMessage(user.getUnionId(), id, message);
 			default:
-				return replyMessage(user.getUnionId(), timeStamp, message);
+				return replyMessage(user.getUnionId(), id, message);
 		}
 	}
 	
@@ -68,12 +79,14 @@ public class MessageService {
 		messageRedisService.addMessageBoard(user.getServerId(), messageBoard);
 	}
 	
-	private MessageBoardBean replyMessage(int serverId, long timeStamp, String message) {
-		MessageBoardBean messageBoard = messageRedisService.getMessageBoard(serverId, timeStamp);
+	private MessageBoardBean replyMessage(int serverId, String id, String message) {
+		MessageBoardBean messageBoard = messageRedisService.getMessageBoardById(serverId, id);
 		if (messageBoard != null) {
-			messageRedisService.deleteMessageBoard(serverId, messageBoard);
+//			messageRedisService.deleteMessageBoard(serverId, messageBoard);
 			messageBoard.addReplyMessage(message);
+			messageBoard.setTimeStamp(System.currentTimeMillis());
 			messageRedisService.addMessageBoard(serverId, messageBoard);
+			messageRedisService.addMessageBoardValue(serverId, messageBoard);
 			
 			return messageBoard;
 		}
@@ -95,12 +108,14 @@ public class MessageService {
 		messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 	}
 	
-	private MessageBoardBean replyUnionMessage(int unionId, long timeStamp, String message) {
-		MessageBoardBean messageBoard = messageRedisService.getMessageBoardOfUnion(unionId, timeStamp);
+	private MessageBoardBean replyUnionMessage(int unionId, String id, String message) {
+		MessageBoardBean messageBoard = messageRedisService.getUnionMessageBoardById(unionId, id);
 		if (messageBoard != null) {
-			messageRedisService.deleteMessageBoardOfUnion(unionId, messageBoard);
+//			messageRedisService.deleteMessageBoardOfUnion(unionId, messageBoard);
 			messageBoard.addReplyMessage(message);
+			messageBoard.setTimeStamp(System.currentTimeMillis());
 			messageRedisService.addMessageBoardOfUnion(unionId, messageBoard);
+			messageRedisService.addUnionMessageBoardValue(unionId, messageBoard);
 			
 			return messageBoard;
 		}
@@ -114,6 +129,7 @@ public class MessageService {
 		messageBoard.setUserId(userId);
 		messageBoard.setUserName(userName);
 		messageBoard.setTimeStamp(System.currentTimeMillis());
+		messageBoard.setId(System.currentTimeMillis());
 		
 		return messageBoard;
 	}

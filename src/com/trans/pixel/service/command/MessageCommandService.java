@@ -45,9 +45,9 @@ public class MessageCommandService extends BaseCommandService {
 	public void replyMessage(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseMessageBoardCommand.Builder builder = ResponseMessageBoardCommand.newBuilder();
 		int type = cmd.getType();
-		long timeStamp = cmd.getTimestamp();
+		String id = cmd.getId();
 		String message = cmd.getMessage();
-		MessageBoardBean messageBoardBean = messageService.replyMessage(type, user, timeStamp, message);
+		MessageBoardBean messageBoardBean = messageService.replyMessage(type, user, id, message);
 		if (messageBoardBean == null) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MESSAGE_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);

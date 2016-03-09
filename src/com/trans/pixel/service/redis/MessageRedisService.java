@@ -19,7 +19,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.MessageBoardBean;
 
 @Repository
-public class MessageRedisService {
+public class MessageRedisService extends RedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -29,17 +29,22 @@ public class MessageRedisService {
 			public List<MessageBoardBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildMessageBoardRedisKey(serverId));
+						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
 				
 				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
 				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					messageBoardList.add(MessageBoardBean.fromJson(messageBoard.getValue()));
+					messageBoardList.add(getMessageBoard(serverId, messageBoard.getValue()));
 				}
 				
 				return messageBoardList;
 			}
 		});
+	}
+	
+	private MessageBoardBean getMessageBoard(int serverId, String id) {
+		String value = this.hget(buildMessageBoardValueRedisKey(serverId), id);
+		return MessageBoardBean.fromJson(value);
 	}
 	
 	public MessageBoardBean getMessageBoard(final int serverId, final long timeStamp) {
@@ -48,16 +53,20 @@ public class MessageRedisService {
 			public MessageBoardBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildMessageBoardRedisKey(serverId));
+						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
 				
 				Set<String> messageBoardSet = bzOps.rangeByScore(timeStamp, timeStamp);
 				for (String messageBoard : messageBoardSet) {
-					return MessageBoardBean.fromJson(messageBoard);
+					return getMessageBoard(serverId, messageBoard);
 				}
 				
 				return null;
 			}
 		});
+	}
+	
+	public MessageBoardBean getMessageBoardById(final int serverId, final String id) {
+		return MessageBoardBean.fromJson(this.hget(buildMessageBoardValueRedisKey(serverId), id));
 	}
 	
 	public boolean addMessageBoard(final int serverId, final MessageBoardBean messageBoard) {
@@ -66,33 +75,40 @@ public class MessageRedisService {
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildMessageBoardRedisKey(serverId));
+						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
 				
-				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX)
+				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX) {
+					Set<String> ids = bzOps.range(bzOps.size() - 1, bzOps.size() - 1);
 					bzOps.removeRange(bzOps.size() - 1, bzOps.size() - 1);
+					for (String id : ids)
+						deleteMessageBoard(serverId, id);
+				}
 				
-				return bzOps.add(messageBoard.toJson(), messageBoard.getTimeStamp());
+				return bzOps.add("" + messageBoard.getId(), messageBoard.getTimeStamp());
 			}
 		});
 	}
 	
-	public boolean deleteMessageBoard(final int serverId, final MessageBoardBean messageBoard) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
-			@Override
-			public Boolean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildMessageBoardRedisKey(serverId));
-				
-				return bzOps.remove(messageBoard.toJson());
-			}
-		});
+	public void addMessageBoardValue(final int serverId, final MessageBoardBean messageBoard) {
+		String key = buildMessageBoardValueRedisKey(serverId);
+		this.hput(key, "" + messageBoard.getId(), messageBoard.toJson());
 	}
 	
-	private String buildMessageBoardRedisKey(int serverId) {
+	public void deleteMessageBoard(final int serverId, final String id) {
+		String key = buildMessageBoardValueRedisKey(serverId);
+		this.hdelete(key, id);
+	}
+	
+	private String buildMessageBoardKeyRedisKey(int serverId) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY;
 	}
 	
+	private String buildMessageBoardValueRedisKey(int serverId) {
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_VALUE_KEY;
+	}
+	
+	
+	//union message
 	public List<MessageBoardBean> getMessageBoardListOfUnion(final int unionId, final long userTimeStamp) {
 		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
 			@Override
@@ -104,12 +120,17 @@ public class MessageRedisService {
 				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
 				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					messageBoardList.add(MessageBoardBean.fromJson(messageBoard.getValue()));
+					messageBoardList.add(getUnionMessageBoard(unionId, messageBoard.getValue()));
 				}
 				
 				return messageBoardList;
 			}
 		});
+	}
+	
+	private MessageBoardBean getUnionMessageBoard(int unionId, String id) {
+		String value = this.hget(buildUnionMessageBoardValueRedisKey(unionId), id);
+		return MessageBoardBean.fromJson(value);
 	}
 	
 	public MessageBoardBean getMessageBoardOfUnion(final int unionId, final long timeStamp) {
@@ -122,7 +143,7 @@ public class MessageRedisService {
 				
 				Set<String> messageBoardSet = bzOps.rangeByScore(timeStamp, timeStamp);
 				for (String messageBoard : messageBoardSet) {
-					return MessageBoardBean.fromJson(messageBoard);
+					return getUnionMessageBoard(unionId, messageBoard);
 				}
 				
 				return null;
@@ -138,28 +159,37 @@ public class MessageRedisService {
 				BoundZSetOperations<String, String> bzOps = redisTemplate
 						.boundZSetOps(buildUnionMessageBoardRedisKey(unionId));
 				
-				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX)
+				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX) {
+					Set<String> ids = bzOps.range(bzOps.size() - 1, bzOps.size() - 1);
 					bzOps.removeRange(bzOps.size() - 1, bzOps.size() - 1);
+					for (String id : ids)
+						deleteUnionMessageBoard(unionId, id);
+				}
 				
-				return bzOps.add(messageBoard.toJson(), messageBoard.getTimeStamp());
+				return bzOps.add("" + messageBoard.getId(), messageBoard.getTimeStamp());
 			}
 		});
 	}
 	
-	public boolean deleteMessageBoardOfUnion(final int unionId, final MessageBoardBean messageBoard) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
-			@Override
-			public Boolean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildUnionMessageBoardRedisKey(unionId));
-				
-				return bzOps.remove(messageBoard.toJson());
-			}
-		});
+	public MessageBoardBean getUnionMessageBoardById(final int unionId, final String id) {
+		return MessageBoardBean.fromJson(this.hget(buildUnionMessageBoardValueRedisKey(unionId), id));
+	}
+	
+	public void addUnionMessageBoardValue(final int unionId, final MessageBoardBean messageBoard) {
+		String key = buildUnionMessageBoardValueRedisKey(unionId);
+		this.hput(key, "" + messageBoard.getId(), messageBoard.toJson());
+	}
+	
+	public void deleteUnionMessageBoard(final int unionId, final String id) {
+		String key = buildUnionMessageBoardValueRedisKey(unionId);
+		this.hdelete(key, id);
 	}
 	
 	private String buildUnionMessageBoardRedisKey(int unionId) {
+		return RedisKey.PREFIX + RedisKey.UNION_PREFIX + unionId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY;
+	}
+	
+	private String buildUnionMessageBoardValueRedisKey(int unionId) {
 		return RedisKey.PREFIX + RedisKey.UNION_PREFIX + unionId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY;
 	}
 }

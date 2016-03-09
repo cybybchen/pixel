@@ -14,6 +14,7 @@ import com.trans.pixel.protoc.Commands.Msg;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class MessageBoardBean {
+	private long id = 0;
 	private long timeStamp = 0;
 	private long userId = 0;
 	private String userName = "";
@@ -49,9 +50,15 @@ public class MessageBoardBean {
 	public void setMessageList(List<MessageBean> messageList) {
 		this.messageList = messageList;
 	}
-	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();
+		builder.setId(id);
 		builder.setContent(message);
 		builder.setTimestamp(timeStamp);
 		builder.setUserId(userId);
@@ -67,6 +74,7 @@ public class MessageBoardBean {
 	
 	public String toJson() {
 		JSONObject json = new JSONObject();
+		json.put(ID, id);
 		json.put(TIMESTAMP, timeStamp);
 		json.put(USER_ID, userId);
 		json.put(USER_NAME, userName);
@@ -81,6 +89,7 @@ public class MessageBoardBean {
 		MessageBoardBean bean = new MessageBoardBean();
 		JSONObject json = JSONObject.fromObject(str);
 		
+		bean.setId(TypeTranslatedUtil.jsonGetLong(json, ID));
 		bean.setTimeStamp(TypeTranslatedUtil.jsonGetLong(json, TIMESTAMP));
 		bean.setUserId(TypeTranslatedUtil.jsonGetLong(json, USER_ID));
 		bean.setUserName(TypeTranslatedUtil.jsonGetString(json, USER_NAME));
@@ -130,6 +139,7 @@ public class MessageBoardBean {
         }
 	};
 	
+	private static final String ID = "id";
 	private static final String TIMESTAMP = "timestamp";
 	private static final String USER_ID = "user_id";
 	private static final String USER_NAME = "user_name";
