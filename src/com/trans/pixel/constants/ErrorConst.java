@@ -20,6 +20,7 @@ public enum ErrorConst implements ResultConst {
     EQUIP_FENJIE_ERROR(1025, "装备分解异常"), SIGN_ERROR(1026, "签到异常"), MOHUACARD_USE_ERROR(1027, "魔化卡片使用异常"), 
     MOHUA_STAGE_REWARD_ERROR(1028, "魔化阶段奖励领取使用异常"), MOHUA_HP_REWARD_ERROR(1029, "魔化HP奖励领取使用异常"), MOHUA_HAS_SUBMIT_ERROR(1030, "该阶段已提交过"),
     MOHUA_HAS_FINISH_ERROR(1031, "已经全部完成，无法再次提交"), SEND_MAIL_ERROR(1031, "邮件发送异常"), NOT_ADD_SELF_ERROR(1032, "无法添加自己为好友"),
+    FRIEND_NOT_EXIST(1033, "该玩家不存在"), 
     
     SERVER_ERROR(1100, "服务器异常错误");
 

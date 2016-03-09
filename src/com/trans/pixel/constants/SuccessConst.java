@@ -17,7 +17,7 @@ public enum SuccessConst implements ResultConst {
     
     
     RESET_SKILL_SUCCESS(1101, "技能重置成功"), MAIL_SEND_SUCCESS(1102, "邮件发送成功"), HELP_ATTACK_SUCCESS(1103, "帮助小弟成功"), MOHUACARD_USE_SUCCESS(1104, "魔化卡片使用成功"),
-    MOHUA_SUBMIT_SUCCESS(1105, "魔化之地成绩提交成功"), MOHUA_END_SUCCESS(1106, "退出魔化之地");
+    MOHUA_SUBMIT_SUCCESS(1105, "魔化之地成绩提交成功"), MOHUA_END_SUCCESS(1106, "退出魔化之地"), DEL_FRIEND_SUCCESS(1107, "成功删除好友");
 
     private final int code;
 

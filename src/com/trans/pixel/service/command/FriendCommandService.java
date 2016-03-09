@@ -13,6 +13,7 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
+import com.trans.pixel.protoc.Commands.RequestDelFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -20,18 +21,35 @@ import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserFriendService;
+import com.trans.pixel.service.UserService;
 
 @Service
 public class FriendCommandService extends BaseCommandService {
 	@Resource
 	private MailService mailService;
 	@Resource
+	private UserService userService;
+	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
 	private UserFriendService userFriendService;
 	
 	public void handleAddFriendCommand(RequestAddFriendCommand cmd, Builder responseBuilder, UserBean user) {	
-		long friendId = cmd.getUserId();
+		long friendId = 0;
+		String friendName = "";
+		if (cmd.hasUserId())
+			friendId = cmd.getUserId();
+		if (cmd.hasUserName())
+			friendName = cmd.getUserName();
+		UserBean friend = new UserBean();
+		if (friendId == 0) {
+			friend = userService.getUserByName(user.getServerId(), friendName);
+			if (friend == null) {
+				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+		}
 		if (userFriendService.isFriend(user.getId(), friendId)) {
 			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.FRIEND_HAS_ADDED);
             responseBuilder.setErrorCommand(errorCommand);
@@ -70,6 +88,11 @@ public class FriendCommandService extends BaseCommandService {
 		List<UserFriend> userFriendList = userFriendService.getUserFriendList(user);
 		builder.addAllFriend(userFriendList);
 		responseBuilder.setGetUserFriendListCommand(builder.build());
+	}
+	
+	public void delUserFriend(RequestDelFriendCommand cmd, Builder responseBuilder, UserBean user) {
+		userFriendService.deleteUserFriend(user.getId(), cmd.getUserId());
+		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DEL_FRIEND_SUCCESS));
 	}
 	
 	private void doAddFriends(long userId, List<MailBean> mailList) {

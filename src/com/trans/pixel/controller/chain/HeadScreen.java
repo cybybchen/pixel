@@ -32,6 +32,7 @@ import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDelFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
@@ -723,6 +724,13 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestSaleEquipCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestDelFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

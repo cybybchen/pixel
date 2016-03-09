@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestDelFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
@@ -226,6 +227,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestMohuaHpRewardCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestDelFriendCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -584,6 +587,11 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasSaleEquipCommand()) {
         	RequestSaleEquipCommand cmd = request.getSaleEquipCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasDelFriendCommand()) {
+        	RequestDelFriendCommand cmd = request.getDelFriendCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

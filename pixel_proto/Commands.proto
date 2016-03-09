@@ -876,12 +876,17 @@ message RequestDeleteMailCommand {
 }
 
 message RequestAddFriendCommand {
-	required int64 userId = 1;
+	optional int64 userId = 1;
+	optional string userName = 2;
 }
 
 message RequestReceiveFriendCommand {
 	repeated int32 id = 1;
 	required bool receive = 2;
+}
+
+message RequestDelFriendCommand {
+	required int64 userId = 1;
 }
 
 message RequestGetUserFriendListCommand {
@@ -1334,6 +1339,7 @@ message RequestCommand {
 	optional RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;
 	optional RequestEndMohuaMapCommand endMohuaMapCommand = 66;
 	optional RequestSaleEquipCommand saleEquipCommand = 67;
+	optional RequestDelFriendCommand delFriendCommand = 68;
 }
 // response command list transfer only use it
 message ResponseCommand {
