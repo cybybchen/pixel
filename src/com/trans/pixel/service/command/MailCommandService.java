@@ -11,22 +11,26 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserFriendService;
+import com.trans.pixel.service.UserService;
 
 @Service
 public class MailCommandService extends BaseCommandService {
+	private static final int LIMIT_VIP_LEVEL = 1;
 	@Resource
 	private MailService mailService;
 	@Resource
 	private UserFriendService userFriendService;
+	@Resource
+	private UserService userService;
 	@Resource
 	private PushCommandService pushCommandService;
 	
@@ -57,8 +61,14 @@ public class MailCommandService extends BaseCommandService {
 		int type = cmd.getType();
 		
 		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
-			UserFriendBean userFriend = userFriendService.updateFriendCallTime(user.getId(), toUserId);
-			if (userFriend == null) {
+//			UserFriendBean userFriend = userFriendService.updateFriendCallTime(user.getId(), toUserId);
+//			if (userFriend == null) {
+//				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.SEND_MAIL_ERROR);
+//	            responseBuilder.setErrorCommand(errorCommand);
+//	            return;
+//			}
+			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
+			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
 				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.SEND_MAIL_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
