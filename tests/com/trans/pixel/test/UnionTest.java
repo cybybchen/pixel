@@ -23,9 +23,9 @@ public class UnionTest extends BaseTest {
 	public void testUnion() {
 //		login();
 //		testCreateUnion();
-//		testGetUnion();
-		testUnionApply();
-		testGetUnionList();
+		testGetUnion();
+//		testUnionApply();
+//		testGetUnionList();
 	}
 	
 	private void testCreateUnion() {

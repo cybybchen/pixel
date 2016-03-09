@@ -12,8 +12,9 @@ import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
-import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.HeroInfo;
+import com.trans.pixel.protoc.Commands.SkillInfo;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
 @Service
@@ -53,9 +54,34 @@ public class UserTeamService {
 		return userTeamList;
 	}
 
+	public String luaSkillInfo(SkillInfo skill){
+		return "{skillId="+skill.getSkillId()+",skillLevel="+skill.getSkillLevel()+"},";
+	}
+
+	public String luaHeroInfo(HeroInfo hero){
+		String str = "{heroId="+hero.getHeroId()+",heroLv="+hero.getLevel()+",star="+hero.getStar()+",rare="+hero.getRare()+",equips={"+hero.getEquipInfo().replace("|", ",")+"},skills={";
+		for(SkillInfo skill : hero.getSkillList()){
+			str += luaSkillInfo(skill);
+		}
+		str += "},},";
+		return str;
+	}
+
 	public String luaTeam(Team team){
-		String str = "local list={";
-		
+		String str = "{userId="+team.getUser().getId()+",team={";
+		for(HeroInfo hero : team.getHeroInfoList()){
+			str+=luaHeroInfo(hero);
+		}
+		str+="}},";
+		return str;
+	}
+
+	public String luaTeamList(List<Team> teamlist){
+		String str = "local atter={";
+		for(Team team : teamlist){
+			str+=luaTeam(team);
+		}
+		str+="} return atter";
 		return str;
 	}
 

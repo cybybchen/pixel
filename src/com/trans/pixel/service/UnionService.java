@@ -7,10 +7,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.FightResult;
+import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.UnionRedisService;
@@ -61,14 +66,14 @@ public class UnionService extends FightService{
 			return null;
 		Union.Builder builder = Union.newBuilder(union);
 		
-		if(union.hasAttackId()){
-			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//进攻结算
+//		if(union.hasAttackId()){
+//			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//进攻结算
 				bloodFight(union.getId(), union.getAttackId(), user.getServerId());
-			}else{
-				List<UserInfo> users = unionRedisService.getFightQueue(union.getId(), union.getAttackId());
-				builder.addAllAttacks(users);
-			}
-		}
+//			}else{
+//				List<UserInfo> users = unionRedisService.getFightQueue(union.getId(), union.getAttackId());
+//				builder.addAllAttacks(users);
+//			}
+//		}
 		if(union.hasDefendId()){
 			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//防守结算
 				bloodFight(union.getDefendId(), union.getId(), user.getServerId());
@@ -84,7 +89,7 @@ public class UnionService extends FightService{
 	 * 血战
 	 */
 	public void bloodFight(int attackUnionId, int defendUnionId, int serverId){
-		if(!unionRedisService.setLock(unionRedisService.getUnionFightKey(attackUnionId, defendUnionId)))
+		if(!unionRedisService.setLock("Union_"+attackUnionId) || !unionRedisService.setLock("Union_"+defendUnionId))
 			return;
 		Union.Builder attackUnion = Union.newBuilder();
 		Union.Builder defendUnion = Union.newBuilder();
@@ -97,6 +102,16 @@ public class UnionService extends FightService{
 		List<UserInfo> users = unionRedisService.getFightQueue(attackUnionId, defendUnionId);
 		List<UserInfo> attacks = new ArrayList<UserInfo>();
 		List<UserInfo> defends = new ArrayList<UserInfo>();
+		
+//		UserInfo.Builder newuser = UserInfo.newBuilder();
+//		newuser.setId(58);
+//		newuser.setIcon(0);
+//		newuser.setName("ss");
+//		for(int i = 0;i < 100; i++){
+//		attacks.add(newuser.build());
+//		defends.add(newuser.build());
+//		}
+		
 		for(UserInfo user : users){
 			if(user.getUnionId() == defendUnionId){
 				defends.add(user);
@@ -104,14 +119,37 @@ public class UnionService extends FightService{
 				attacks.add(user);
 			}
 		}
-		if(queueFight(attacks, defends)){
+		boolean attacksuccess = false;
+		if(attacks.size() == 0){
+			attacksuccess = false;
+		}else if(defends.size() == 0){
+			attacksuccess = true;
+		}else{
+			FightResultList.Builder resultlist = queueFight(attacks, defends);
+			if(resultlist.getListCount() > 0){
+				FightResult winresult = resultlist.getList(resultlist.getListCount()-1);
+				if( winresult.getResult() == 1 ){//攻破
+					attacksuccess = true;
+				}else{
+					attacksuccess = false;
+				}
+				unionRedisService.saveFight(attackUnionId, defendUnionId, resultlist.build());
+//				for(FightResult result : resultlist.getListList()){//发奖
+//					
+//				}
+			}
+		}
+		
+		if(attacksuccess){
 			attackUnion.setPoint(attackUnion.getPoint()+defendUnion.getPoint()/5);
 			defendUnion.setPoint(defendUnion.getPoint()*4/5);
+			unionMapper.updateUnion(new UnionBean(attackUnion.build()));
+			unionMapper.updateUnion(new UnionBean(defendUnion.build()));
 		}
 		unionRedisService.saveUnion(attackUnion.build(), serverId);
 		unionRedisService.saveUnion(defendUnion.build(), serverId);
-		unionMapper.updateUnion(new UnionBean(attackUnion.build()));
-		unionMapper.updateUnion(new UnionBean(defendUnion.build()));
+		unionRedisService.clearLock("Union_"+attackUnionId);
+		unionRedisService.clearLock("Union_"+defendUnionId);
 	}
 	
 	public Union create(int icon, String unionName, UserBean user) {
@@ -196,12 +234,15 @@ public class UnionService extends FightService{
 		return receive;
 	}
 	
-	public void upgrade(UserBean user) {
+	public ResultConst upgrade(UserBean user) {
 		Union.Builder builder = Union.newBuilder();
 		unionRedisService.getBaseUnion(builder, user.getUnionId(), user.getServerId());
+		if(!unionRedisService.setLock("Union_"+user.getUnionId()))
+			return ErrorConst.ERROR_LOCKED;
 		builder.setLevel(builder.getLevel()+1);
 		unionRedisService.saveUnion(builder.build(), user);
 		unionMapper.updateUnion(new UnionBean(builder.build()));
+		return SuccessConst.UPGRADE_UNION_SUCCESS;
 	}
 	
 	public boolean handleMember(long id, int job, UserBean user) {
@@ -221,7 +262,7 @@ public class UnionService extends FightService{
 		return true;
 	}
 	
-	public boolean attack(int attackId, int teamid, UserBean user){
+	public ResultConst attack(int attackId, int teamid, UserBean user){
 		Union.Builder builder = Union.newBuilder();
 		unionRedisService.getBaseUnion(builder, user.getUnionId(), user.getServerId());
 		if(builder.hasAttackId()){
@@ -239,19 +280,24 @@ public class UnionService extends FightService{
 				unionRedisService.saveUnion(builder.build(), user);
 				unionRedisService.saveUnion(defendUnion.build(), user);
 			}else{
-				return false;
+				return ErrorConst.ERROR_LOCKED;
 			}
+		}else{
+			return ErrorConst.UNION_NOT_FIGHT;
 		}
-		return true;
+		return SuccessConst.UNION_FIGHT_SUCCESS;
 	}
 	
-	public void defend(int teamid, UserBean user){
+	public boolean defend(int teamid, UserBean user){
 		Union.Builder union = Union.newBuilder();
 		unionRedisService.getBaseUnion(union, user.getUnionId(), user.getServerId());
 		if(union.hasDefendId()){
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, herolist);
 			unionRedisService.defend(union.getDefendId(), user);
+			return true;
+		}else{
+			return false;
 		}
 	}
 }

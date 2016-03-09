@@ -3,10 +3,12 @@ package com.trans.pixel.service.command;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.naming.spi.DirStateFactory.Result;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
@@ -117,19 +119,30 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.upgrade(user);
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.UPGRADE_UNION_SUCCESS));
+		ResultConst result = unionService.upgrade(user);
+		if(result instanceof ErrorConst)
+			responseBuilder.setErrorCommand(super.buildErrorCommand(result));
+		else
+			responseBuilder.setMessageCommand(super.buildMessageCommand(result));
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		builder.setUnion(unionService.getUnion(user));
+		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 
 	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		if(!unionService.attack(cmd.getUnionId(), cmd.getTeamid(), user))
-			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.ERROR_LOCKED));
+		ResultConst result = unionService.attack(cmd.getUnionId(), cmd.getTeamid(), user);
+		if(result instanceof ErrorConst)
+			responseBuilder.setErrorCommand(this.buildErrorCommand(result));
+		else
+			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionService.defend(cmd.getTeamid(), user);
+		if(!unionService.defend(cmd.getTeamid(), user))
+			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.UNION_NOT_FIGHT));
+			
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());

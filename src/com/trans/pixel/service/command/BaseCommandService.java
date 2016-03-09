@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
@@ -47,7 +47,7 @@ public class BaseCommandService {
 		builder.setUser(user.build());
 	}
 	
-	protected ErrorCommand buildErrorCommand(ErrorConst errorConst) {
+	protected ErrorCommand buildErrorCommand(ResultConst errorConst) {
         ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
         erBuilder.setCode(String.valueOf(errorConst.getCode()));
         erBuilder.setMessage(errorConst.getMesssage());
@@ -213,7 +213,7 @@ public class BaseCommandService {
 		return mail;
 	}
 	
-	protected ResponseMessageCommand buildMessageCommand(SuccessConst success) {
+	protected ResponseMessageCommand buildMessageCommand(ResultConst success) {
 		ResponseMessageCommand.Builder builder = ResponseMessageCommand.newBuilder();
 		builder.setCode(success.getCode());
 		builder.setMsg(success.getMesssage());

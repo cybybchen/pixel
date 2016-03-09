@@ -50,6 +50,8 @@ public class AreaCommandService extends BaseCommandService{
 		return builder.build();
 	}
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
+		if(!cmd.getRet())
+			return;
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.setName("恭喜你击杀了怪物");
 		if(!service.AttackMonster(cmd.getId(), user, rewards))

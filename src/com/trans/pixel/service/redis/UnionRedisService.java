@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UnionApply;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -155,6 +156,12 @@ public class UnionRedisService extends RedisService{
 		this.hput(getUnionServerKey(serverId), union.getId()+"", formatJson(union));
 	}
 	
+	public void saveFight(final int attackid, final int defendid, FightResultList resultlist) {
+		String key = getUnionFightResultKey(attackid, defendid);
+		this.set(key, formatJson(resultlist));
+		expireAt(key, nextDay());
+	}
+	
 	public void saveUnion(final Union union, UserBean user) {
 		saveUnion(union, user.getServerId());
 	}
@@ -223,6 +230,9 @@ public class UnionRedisService extends RedisService{
 	}
 	public String getUnionFightKey(int attackId, int defendId) {
 		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + attackId + "_" + defendId;
+	}
+	public String getUnionFightResultKey(int attackId, int defendId) {
+		return RedisKey.PREFIX + RedisKey.UNION_FIGHTRESULT_PREFIX + attackId + "_" + defendId;
 	}
 	private String getUnionServerKey(int serverId) {
 		return RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + serverId;

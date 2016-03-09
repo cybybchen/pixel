@@ -123,6 +123,7 @@ public class RedisKey {
 	public static final String UNION_SERVER_PREFIX = "unions_";
 	public static final String UNION_PREFIX = "union_";
 	public static final String UNION_FIGHT_PREFIX = "union_fight_";
+	public static final String UNION_FIGHTRESULT_PREFIX = "union_fightresult_";
 	
 	//equip
 	public static final String EQUIP_KEY = "key:equip";

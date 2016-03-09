@@ -1,12 +1,16 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
+
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
@@ -24,6 +28,8 @@ import com.trans.pixel.protoc.Commands.AreaMonsterReward;
 import com.trans.pixel.protoc.Commands.AreaRankReward;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceMine;
+import com.trans.pixel.protoc.Commands.FightResult;
+import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
@@ -215,12 +221,35 @@ public class AreaFightService extends FightService{
 			return;
 		//防守玩家最后一个加入战斗
 		List<UserInfo> attacks = builder.getAttacksList();
-		List<UserInfo> defenses = builder.getDefensesList();
-		if(queueFight(attacks, defenses)){
-			builder.setWarDefended(0);
-			builder.setOwner(attacks.get(0));
-		}else{
+		List<UserInfo> defends = builder.getDefensesList();
+		if(builder.hasOwner())
+			defends.add(builder.getOwner());
+		if(attacks.size() == 0){
 			builder.setWarDefended(builder.getWarDefended()+1);
+		}else if(defends.size() == 0){
+			builder.setWarDefended(0);
+			builder.setOwner(attacks.get(attacks.size()-1));
+		}else{
+			FightResultList.Builder resultlist = queueFight(attacks, defends);
+			if(resultlist.getListCount() > 0){
+				FightResult winresult = resultlist.getList(resultlist.getListCount()-1);
+				if( winresult.getResult() == 1 ){//攻破
+					UserInfo defendUser = null;
+					for(UserInfo userinfo : attacks){
+						if(userinfo.getId() == winresult.getWin().getUserId())
+							defendUser = userinfo;
+					}
+
+					builder.setWarDefended(0);
+					if(defendUser != null)
+						builder.setOwner(defendUser);
+				}else{
+					builder.setWarDefended(builder.getWarDefended()+1);
+				}
+//				for(FightResult result : resultlist.getListList()){//发奖
+//					
+//				}
+			}
 		}
 		if(builder.getWarDefended() >= 3){//防守结束
 			builder.setState(0);
@@ -258,6 +287,7 @@ public class AreaFightService extends FightService{
 //		Map<String, MultiReward> monsterrewardMap = redis.getAreaMonsterRewards();
 		Map<String, AreaMonster> monsterMap = redis.getMonsters(user);
 		Map<String, AreaBoss.Builder> bossMap = redis.getBosses(user);
+		Map<String, String> bosstimeMap = redis.getBossTimes(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
@@ -265,6 +295,8 @@ public class AreaFightService extends FightService{
 			// 更新世界BOSS
 			for (AreaBoss.Builder bossbuilder : bossMap.values()) {
 				if(bossbuilder.getBelongto() == areabuilder.getId()){
+					if(bosstimeMap.containsKey(bossbuilder.getId()+""))
+						bossbuilder.setCount(bossbuilder.getCount() - Integer.parseInt(bosstimeMap.get(bossbuilder.getId()+"")));
 					getBossRank(bossbuilder, user);
 					areabuilder.addBosses(bossbuilder);
 				}

@@ -128,6 +128,10 @@ public class AreaRedisService extends RedisService{
 		return bosses;
 	}
 
+	public Map<String, String> getBossTimes(UserBean user){
+		return hget(AREABOSSTIME+user.getId());
+	}
+
 	public int getBossTime(int id,UserBean user){
 		String value = hget(AREABOSSTIME+user.getId(), id+"");
 		if(value == null)

@@ -311,6 +311,21 @@ message AreaPositionList {
 	repeated AreaPosition region = 1;
 }
 
+message FightDamage {
+	required int64 userId = 1;
+	required int32 damage = 2;
+}
+
+message FightResult {
+	required int32 result = 1;
+	optional FightDamage win = 2;
+	optional FightDamage lose = 3;
+}
+
+message FightResultList {
+	repeated FightResult list = 1;
+}
+
 message PVPMonsterReward {//pvp怪物奖励
 	required int32 id = 1;
 	optional string name = 2;
@@ -905,8 +920,9 @@ message ResponseAreaCommand {
 	repeated AreaInfo areas = 1;
 }
 
-message RequestAttackMonsterCommand {//区域争夺打死怪物
+message RequestAttackMonsterCommand {//区域争夺打怪物
 	required int32 id = 1;
+	optional bool ret = 2;
 }
 
 message RequestAttackBossCommand {//区域争夺攻击世界BOSS
