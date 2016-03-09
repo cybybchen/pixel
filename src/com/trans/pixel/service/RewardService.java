@@ -216,16 +216,22 @@ public class RewardService {
 	}
 	
 	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {
+		boolean newReward = true;
 		List<RewardInfo> nRewardList = new ArrayList<RewardInfo>();
 		for (RewardInfo reward : rewardList) {
 			RewardInfo.Builder nReward = RewardInfo.newBuilder();
 			nReward.setItemid(reward.getItemid());
 			nReward.setCount(reward.getCount());
-			if (reward.getItemid() == mergeReward.getItemid())
+			if (reward.getItemid() == mergeReward.getItemid()) {
 				nReward.setCount(nReward.getCount() + mergeReward.getCount());
+				newReward = false;
+			}
 			
 			nRewardList.add(nReward.build());
 		}
+		
+		if (newReward)
+			nRewardList.add(mergeReward);
 		
 		return nRewardList;
 	}

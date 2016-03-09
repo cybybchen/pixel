@@ -47,7 +47,7 @@ public class PropService {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		for (int i = 0; i < propCount; ++i) {
 			RewardInfo reward = prop.randomReward();
-			rewardService.mergeReward(rewardList, reward);
+			rewardList = rewardService.mergeReward(rewardList, reward);
 		}
 		if (!rewardList.isEmpty()) {
 			multiReward.addAllLoot(rewardList);

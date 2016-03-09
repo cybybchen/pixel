@@ -201,7 +201,7 @@ public class BaseCommandService {
 		return mail;
 	}
 	
-	protected MailBean buildMail(long userId, long friendId, String content, int type, int relatedId) {
+	protected MailBean buildMail(long userId, long friendId, String usreName, String content, int type, int relatedId) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
 		mail.setFromUserId(friendId);

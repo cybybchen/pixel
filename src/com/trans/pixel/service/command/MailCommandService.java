@@ -68,7 +68,7 @@ public class MailCommandService extends BaseCommandService {
 		
 		if (cmd.hasRelatedId())
 			relatedId = cmd.getRelatedId();
-		MailBean mail = super.buildMail(toUserId, user.getId(), content, type, relatedId);
+		MailBean mail = super.buildMail(toUserId, user.getId(), user.getUserName(), content, type, relatedId);
 		mailService.addMail(mail);
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
 		

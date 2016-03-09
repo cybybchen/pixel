@@ -35,7 +35,7 @@ public class MessageCommandService extends BaseCommandService {
 		responseBuilder.setMessageBoardListCommand(builder.build());
 	}
 	
-	public void createUnion(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
+	public void createMessage(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
 		String message = cmd.getMessage();
 		messageService.createMessageBoard(type, user, message);
