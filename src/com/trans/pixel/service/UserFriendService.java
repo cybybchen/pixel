@@ -56,6 +56,9 @@ public class UserFriendService {
 	public void deleteUserFriend(long userId, long friendId) {
 		userFriendRedisService.deleteUserFriend(userId, friendId);
 		userFriendMapper.deleteUserFriend(userId, friendId);
+		
+		userFriendRedisService.deleteUserFriend(friendId, userId);
+		userFriendMapper.deleteUserFriend(friendId, userId);
 	}
 	
 	public UserFriendBean updateFriendCallTime(long userId, long friendId) {
