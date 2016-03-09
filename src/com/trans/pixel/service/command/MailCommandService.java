@@ -69,7 +69,7 @@ public class MailCommandService extends BaseCommandService {
 //			}
 			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
 			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
-				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.SEND_MAIL_ERROR);
+				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
