@@ -36,7 +36,7 @@ public class PropService {
 	
 	public MultiReward useProp(UserBean user, int propId, int propCount) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
-		if (userProp == null || userProp.getPropCount() >= propCount)
+		if (userProp == null || userProp.getPropCount() < propCount)
 			return null;
 		
 		PackageBean prop = getProp(userProp.getPropId());
@@ -56,9 +56,7 @@ public class PropService {
 			
 			return multiReward.build();
 		}
-		
 		return null;
-		
 	}
 	
 	private void parseAndSaveEquipConfig() {
