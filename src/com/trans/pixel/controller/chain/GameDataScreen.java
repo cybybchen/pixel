@@ -418,7 +418,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestCreateMessageBoardCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		messageCommandService.createUnion(cmd, responseBuilder, user);
+		messageCommandService.createMessage(cmd, responseBuilder, user);
 		return true;
 	}
 

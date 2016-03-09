@@ -34,8 +34,10 @@ public class MessageService {
 		switch (type) {
 			case MessageConst.TYPE_MESSAGE_NORMAL:
 				createMessageBoard(user, message);
+				break;
 			case MessageConst.TYPE_MESSAGE_UNION:
 				createUnionMessageBoard(user, message);
+				break;
 			default:
 				break;
 		}

@@ -81,8 +81,8 @@ public class MessageBoardBean {
 		MessageBoardBean bean = new MessageBoardBean();
 		JSONObject json = JSONObject.fromObject(str);
 		
-		bean.setTimeStamp(TypeTranslatedUtil.jsonGetInt(json, TIMESTAMP));
-		bean.setUserId(TypeTranslatedUtil.jsonGetInt(json, USER_ID));
+		bean.setTimeStamp(TypeTranslatedUtil.jsonGetLong(json, TIMESTAMP));
+		bean.setUserId(TypeTranslatedUtil.jsonGetLong(json, USER_ID));
 		bean.setUserName(TypeTranslatedUtil.jsonGetString(json, USER_NAME));
 		bean.setMessage(TypeTranslatedUtil.jsonGetString(json, MESSAGE));
 		
