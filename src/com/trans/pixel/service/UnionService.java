@@ -84,7 +84,7 @@ public class UnionService extends FightService{
 				builder.addAllAttacks(users);
 			}
 		}
-		 if(union.hasDefendId()){
+		if(union.hasDefendId()){
 			if(builder.getDefendEndTime() < unionRedisService.now()){
 				builder.clearDefendId();
 				builder.clearDefendEndTime();
@@ -96,7 +96,7 @@ public class UnionService extends FightService{
 		 		List<UserInfo> users = unionRedisService.getFightQueue(union.getDefendId(), union.getId());
 		 		builder.addAllDefends(users);
 		 	}
-		 }
+		}
 		return builder.build();
 	}
 	

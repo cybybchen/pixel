@@ -24,7 +24,7 @@ public class FightService {
 	private UserTeamService userTeamService;
 	private static LuaValue chunk = null;
 	
-	public FightResultList.Builder queueFight(List<UserInfo> attackusers, List<UserInfo> defendusers){
+	public synchronized FightResultList.Builder queueFight(List<UserInfo> attackusers, List<UserInfo> defendusers){
 		long time = System.currentTimeMillis();
 		List<Team> attackteams = new ArrayList<Team>();
 		for(UserInfo user : attackusers){

@@ -322,9 +322,9 @@ public class ManagerService extends RedisService{
 			req.put("friendList", 1);
 		}
 		if(req.containsKey("friendList")){
-			Set<String> map = smember(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
-			JSONArray object = new JSONArray();
-			object.addAll(map);
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
 			result.put("friendList", object);
 		}
 

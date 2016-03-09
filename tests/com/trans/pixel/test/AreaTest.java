@@ -5,7 +5,6 @@ import static org.junit.Assert.fail;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,7 +23,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand;
 public class AreaTest extends BaseTest {
 	@Test
 	public void testArea() {
-		login();
+//		login();
 		testGetArea();
 //		testAreaBoss();
 //		testAreaMonster();
@@ -111,7 +110,7 @@ public class AreaTest extends BaseTest {
 		RequestAttackResourceMineCommand.Builder builder = RequestAttackResourceMineCommand.newBuilder();
 		AreaResource resource = area.getAreas(0).getResources(0);
 		builder.setId(resource.getMines(0).getId());
-		builder.setTeamid(1);
+		builder.setTeamid(22);
 		builder.setRet(true);
 		requestBuilder.setAttackResourceMineCommand(builder.build());
 		
