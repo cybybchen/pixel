@@ -36,7 +36,7 @@ public class LotteryEquipCommandService extends BaseCommandService {
 		if (cmd.hasCount())
 			count = cmd.getCount();
 		int cost = getLotteryCost(type, count);
-		if (!costService.costResult(user, type, cost)) {
+		if (!costService.cost(user, type, cost)) {
 			ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
 			if (type == RewardConst.JEWEL)
 				error = ErrorConst.NOT_ENOUGH_JEWEL;

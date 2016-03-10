@@ -43,6 +43,7 @@ import com.trans.pixel.protoc.Commands.ResponseShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionShopCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
+import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
@@ -63,6 +64,8 @@ public class ShopCommandService extends BaseCommandService{
 	private PushCommandService pusher;
 	@Resource
 	private LevelService levelService;
+	@Resource
+	private CostService costService;
 
 	public int getDailyShopRefreshCost(int time){
 		if(time < 2){
@@ -96,7 +99,7 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!rewardService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -155,7 +158,7 @@ public class ShopCommandService extends BaseCommandService{
 	   		ResponseShopCommand.Builder shop = ResponseShopCommand.newBuilder();
 	   		shop.addAllItems(shoplist.getItemsList());
 	   		responseBuilder.setShopCommand(shop);
-		}else if(!rewardService.cost(user, comm.getCurrency(), comm.getCost())){
+		}else if(!costService.cost(user, comm.getCurrency(), comm.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(comm.getCurrency()));
 		}else{
 			rewardService.doReward(user, comm.getItemid(), comm.getCount());
@@ -212,7 +215,7 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!rewardService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -305,7 +308,7 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!rewardService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -394,7 +397,7 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!rewardService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -481,7 +484,7 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!rewardService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -568,7 +571,7 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!rewardService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);

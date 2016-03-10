@@ -15,53 +15,70 @@ public class CostService {
 	private UserService userService;
 	@Resource
 	private UserEquipService userEquipService;
-	public boolean cost(UserBean user, int itemId, int count) {
+	
+	public boolean costAndUpdate(UserBean user, int itemId, int itemCount) {
+		boolean needUpdateUser = cost(user, itemId, itemCount);
+		if (needUpdateUser)
+			userService.updateUser(user);
+		
+		return needUpdateUser;
+	}
+	
+	/**
+	 * need updateuser when return true
+	 */
+	public boolean cost(UserBean user, int itemId, int itemCount) {
 		long userId = user.getId();
 		if (itemId > RewardConst.HERO) {
-			
+//			int heroId = rewardId % RewardConst.HERO_STAR;
+//			userHeroService.addUserHero(user.getId(), heroId);
 		} else if (itemId > RewardConst.PROP) {
 			
 		} else if (itemId > RewardConst.PACKAGE) {
 			
 		} else if (itemId > RewardConst.CHIP) {
-			
+//			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
 		} else if (itemId > RewardConst.EQUIPMENT) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
-			if (userEquip != null && userEquip.getEquipCount() >= count) {
-				userEquip.setEquipCount(userEquip.getEquipCount() - count);
+			if (userEquip != null && userEquip.getEquipCount() >= itemCount) {
+				userEquip.setEquipCount(userEquip.getEquipCount() - itemCount);
 				userEquipService.updateUserEquip(userEquip);
 				return true;
 			}
 		} else {
 			switch (itemId) {
+				case RewardConst.EXP:
+					if(itemCount > user.getExp()) return false;
+					user.setExp(user.getExp() - itemCount);
+					return true;
+				case RewardConst.COIN:
+					if(itemCount > user.getCoin()) return false;
+					user.setCoin(user.getCoin() - itemCount);
+					return true;
+				case RewardConst.JEWEL:
+					if(itemCount > user.getJewel()) return false;
+					user.setJewel(user.getJewel() - itemCount);
+					return true;
+				case RewardConst.PVPCOIN:
+					if(itemCount > user.getPointPVP()) return false;
+					user.setPointPVP(user.getPointPVP() - itemCount);
+					return true;
+				case RewardConst.EXPEDITIONCOIN:
+					if(itemCount > user.getPointExpedition()) return false;
+					user.setPointExpedition(user.getPointExpedition() - itemCount);
+					return true;
+				case RewardConst.LADDERCOIN:
+					if(itemCount > user.getPointLadder()) return false;
+					user.setPointLadder(user.getPointLadder() - itemCount);
+					return true;
+				case RewardConst.UNIONCOIN:
+					if(itemCount > user.getPointUnion()) return false;
+					user.setPointUnion(user.getPointUnion() - itemCount);
+					return true;
 				default:
 					break;
 			}
 		}
 		return false;
-	}
-	
-	public boolean costResult(UserBean user, int type, int cost) {
-		long coin = user.getCoin();
-		int jewel = user.getJewel();
-		switch (type) {
-			case RewardConst.COIN:
-				coin -= cost;
-				break;
-			case RewardConst.JEWEL:
-				jewel -= cost;
-				break;
-			default:
-				break;
-		}
-		
-		if (coin < 0 || jewel < 0)
-			return false;
-		
-		user.setCoin(coin);
-		user.setJewel(jewel);
-		
-		userService.updateUser(user);
-		return true;
 	}
 }

@@ -43,7 +43,7 @@ public class LotteryCommandService extends BaseCommandService {
 		int cost = getLotteryCost(type, count);
 		boolean free = isFreeLotteryTime(user, type, count);
 		if (!free) {
-			if (!costService.costResult(user, type, cost)) {
+			if (!costService.cost(user, type, cost)) {
 				ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
 				if (type == RewardConst.JEWEL)
 					error = ErrorConst.NOT_ENOUGH_JEWEL;
