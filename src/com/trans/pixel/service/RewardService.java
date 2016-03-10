@@ -43,13 +43,14 @@ public class RewardService {
 	}
 	
 	public void doRewards(UserBean user, List<RewardBean> rewardList) {
-		long coin = user.getCoin();
-		int jewel = user.getJewel();
+		boolean needUpdateUser = false;
 		for (RewardBean reward : rewardList) {
-			doReward(user, reward.getItemid(), reward.getCount());
+			boolean ret = doReward(user, reward.getItemid(), reward.getCount());
+			if (ret)
+				needUpdateUser = ret;
 		}
 		
-		if (coin != user.getCoin() || jewel != user.getJewel()) {
+		if (needUpdateUser) {
 			userService.updateUser(user);
 		}
 	}
@@ -146,13 +147,14 @@ public class RewardService {
 	}
 	
 	public void doRewards(UserBean user, MultiReward rewards) {
-		long coin = user.getCoin();
-		int jewel = user.getJewel();
+		boolean needUpdateUser = false;
 		for (RewardInfo reward : rewards.getLootList()) {
-			doReward(user, reward.getItemid(), reward.getCount());
+			boolean ret = doReward(user, reward.getItemid(), reward.getCount());
+			if (ret)
+				needUpdateUser = ret;
 		}
 		
-		if (coin != user.getCoin() || jewel != user.getJewel()) {
+		if (needUpdateUser) {
 			userService.updateUser(user);
 		}
 	}
