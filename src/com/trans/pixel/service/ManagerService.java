@@ -357,12 +357,12 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + serverId);
 			result.put("unionList", map);
 		}
-		if(req.containsKey("rankList")){
-			for(int type = 1; type < 10; type++){
-				Set<String> map = zrange(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.RANK_PREFIX + type, 0, 20);
-				result.put("rankList"+type, map);
-			}
-		}
+		// if(req.containsKey("rankList")){
+		// 	for(int type = 1; type < 10; type++){
+		// 		Set<String> map = zrange(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.RANK_PREFIX + type, 0, 20);
+		// 		result.put("rankList"+type, map);
+		// 	}
+		// }
 		if(req.containsKey("messageBoard")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY);
 			result.put("messageBoard", map);
