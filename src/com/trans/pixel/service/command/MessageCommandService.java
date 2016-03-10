@@ -53,6 +53,7 @@ public class MessageCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
+		builder.setType(type);
 		builder.setMessageBoard(messageBoardBean.buildMessageBoard());
 		responseBuilder.setMessageBoardCommand(builder.build());
 	}
