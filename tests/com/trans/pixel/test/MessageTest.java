@@ -16,12 +16,12 @@ public class MessageTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(MessageTest.class);
 
 	@Test
-	public void testArea() {
+	public void test() {
 		login();
-		testPackage();
+		testCreateMessage();
 	}
 	
-	private void testPackage() {
+	private void testCreateMessage() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestCreateMessageBoardCommand.Builder builder = RequestCreateMessageBoardCommand.newBuilder();

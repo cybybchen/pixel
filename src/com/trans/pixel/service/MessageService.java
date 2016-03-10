@@ -77,6 +77,7 @@ public class MessageService {
 	private void createMessageBoard(UserBean user, String message) {
 		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message);
 		messageRedisService.addMessageBoard(user.getServerId(), messageBoard);
+		messageRedisService.addMessageBoardValue(user.getServerId(), messageBoard);
 	}
 	
 	private MessageBoardBean replyMessage(int serverId, String id, String message) {
@@ -106,6 +107,7 @@ public class MessageService {
 	private void createUnionMessageBoard(UserBean user, String message) {
 		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message);
 		messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
+		messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 	}
 	
 	private MessageBoardBean replyUnionMessage(int unionId, String id, String message) {
