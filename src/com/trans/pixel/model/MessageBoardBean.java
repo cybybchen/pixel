@@ -107,10 +107,10 @@ public class MessageBoardBean {
 	}
 	
 	public void addReplyMessage(String message) {
-		int nextId = 0;
+		int nextId = 1;
 		for (MessageBean messageBean : messageList) {
 			if (messageBean.getId() > nextId)
-				nextId = messageBean.getId();
+				nextId = messageBean.getId() + 1;
 		}
 		
 		MessageBean messageBean = initMessageBean(nextId, message);
