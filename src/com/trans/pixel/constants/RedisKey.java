@@ -152,4 +152,7 @@ public class RedisKey {
 	public static final String MOHUA_CARD_KEY = PREFIX + "key:mohua_card";
 	public static final String MOHUA_JIEDUAN_KEY = PREFIX + "key:mohua_jieduan";
 	public static final String MOHUA_LOOT_KEY = PREFIX + "key:mohua_loot";
+	
+	//user achieve redis
+	public static final String USER_ACHIEVE_PREFIX = "user_achieve_";
 }
