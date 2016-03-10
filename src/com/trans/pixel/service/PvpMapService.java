@@ -1,5 +1,9 @@
 package com.trans.pixel.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +11,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMap;
@@ -16,7 +22,9 @@ import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
 import com.trans.pixel.protoc.Commands.PVPMonsterReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.PvpMapRedisService;
+import com.trans.pixel.service.redis.RankRedisService;
 
 @Service
 public class PvpMapService {
@@ -27,6 +35,8 @@ public class PvpMapService {
 	private UserService userService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private RankRedisService rankService;
 //	@Resource
 //	private RankRedisService rankRedisService;
 //	@Resource
@@ -48,38 +58,75 @@ public class PvpMapService {
 		return false;
 	}
 	
-	public PVPMapList getMapList(UserBean user){
-		PVPMapList.Builder maplist = redis.getMapList(user);
-		Map<String, String> pvpMap = redis.getUserBuffs(user);
-		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
-		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
+	public void refreshMine(PVPMapList.Builder maplist, Map<String, PVPMine> mineMap, UserBean user){
 		long time = redis.today(6);
 		if(user.getPvpMineRefreshTime() < time){//刷新对手
 			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600+redis.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600);
 			user.setPvpMineRefreshTime(time);
 			userService.updateUserDailyData(user);
+			if(count >= 20)
+				count = 20;
+			long myrank = rankService.getMyZhanliRank(user);
+			List<UserInfo> ranks = null;
+			if(myrank - count <= 0)
+				ranks = rankService.getZhanliRanks(user, 0, myrank+count);
+			else
+				ranks = rankService.getZhanliRanks(user, myrank - count, myrank+count);
+			Iterator<UserInfo> it = ranks.iterator();
+			while(it.hasNext()){
+				UserInfo rank = it.next();
+				if(rank.getId() == user.getId()){
+					it.remove();
+					continue;
+				}
+				boolean timeout = true;
+				if (rank.hasLastLoginTime()) {
+					try {
+						Date date = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(rank.getLastLoginTime());
+						if(new Date().getTime() - date.getTime() < RedisExpiredConst.EXPIRED_USERINFO_7DAY)
+							timeout = false;
+					} catch (ParseException e) {
+					}
+				}
+				if(timeout){
+					rankService.delZhanliRank(user.getServerId(), rank.getId());
+					if(ranks.size() > count+1)
+						it.remove();
+				}
+			}
+			if(ranks.size() == 0)
+				return;
 			if(count >= 20){
 				for(PVPMap map : maplist.getFieldList()){
 					for(PVPMine mine : map.getKuangdianList()){
 						PVPMine.Builder builder = PVPMine.newBuilder(mine);
-						builder.setOwner(userService.getRandUser(user));
+						builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
 						mineMap.put(builder.getId()+"", builder.build());
 					}
 				}
 				redis.saveMines(user.getId(), mineMap);
 			}else{
-			while(count > 0){
-				PVPMap map = maplist.getField(redis.nextInt(maplist.getFieldCount()));
-				PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
-				PVPMine mine = mineMap.get(builder.getId()+"");
-				if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
-					continue;
-				builder.setOwner(userService.getRandUser(user));
-				redis.saveMine(user.getId(), builder.build());
-				mineMap.put(builder.getId()+"", builder.build());
-				count--;
-			}}
+				while(count > 0){
+					PVPMap map = maplist.getField(redis.nextInt(maplist.getFieldCount()));
+					PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
+					PVPMine mine = mineMap.get(builder.getId()+"");
+					if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
+						continue;
+					builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
+					redis.saveMine(user.getId(), builder.build());
+					mineMap.put(builder.getId()+"", builder.build());
+					count--;
+				}
+			}
 		}
+	}
+	
+	public PVPMapList getMapList(UserBean user){
+		PVPMapList.Builder maplist = redis.getMapList(user);
+		Map<String, String> pvpMap = redis.getUserBuffs(user);
+		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
+		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
+		refreshMine(maplist, mineMap, user);
 		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
 			String buff = pvpMap.get(mapBuilder.getFieldid()+"");
 			if(buff != null)
@@ -125,7 +172,7 @@ public class PvpMapService {
 	}
 	
 	public boolean attackMine(UserBean user, int id, boolean ret){
-		PVPMine mine = redis.getMine(user.getId(), id);
+		PVPMine.Builder mine = PVPMine.newBuilder(redis.getMine(user.getId(), id));
 		if(mine == null)
 			return false;
 		if(ret){
@@ -139,15 +186,14 @@ public class PvpMapService {
 				}
 				int enemyCount = mineMap.size();
 				if(mineCount/5 >= enemyCount){
-					PVPMine.Builder builder = PVPMine.newBuilder(mine);
-					builder.setOwner(user.buildShort());
-					builder.setEndTime(System.currentTimeMillis()/1000+12*3600);
-					builder.setLevel(builder.getLevel()+1);
-					redis.saveMine(userId, builder.build());
+					mine.setOwner(user.buildShort());
+					mine.setEndTime(System.currentTimeMillis()/1000+24*3600);
+					mine.setLevel(mine.getLevel()+1);
+					redis.saveMine(userId, mine.build());
 				}
+				mine.clearOwner();
+				redis.saveMine(user.getId(), mine.build());
 			}
-			
-			redis.deleteMine(user.getId(), id);
 		}
 		return true;
 	}

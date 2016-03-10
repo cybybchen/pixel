@@ -98,7 +98,7 @@ public class RedisKey {
 	public static final String USER_MINE_PREFIX = "user_mine_";
 	
 	//zhanli rank redis
-	public static final String RANK_PREFIX = "rank_";
+	public static final String ZHANLI_RANK = PREFIX+"ZhanliRank_"+SERVER_PREFIX;
 	
 	//ladder rank redis
 	public static final String LADDER_RANK_KEY = "key:ladder_rank";

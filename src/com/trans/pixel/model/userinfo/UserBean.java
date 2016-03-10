@@ -20,6 +20,7 @@ public class UserBean {
 	private int pointExpedition = 0;
 	private int pointUnion = 0;
 	private int zhanli = 0;
+	private int zhanliMax = 0;
 	////////////////////////////////
 	private long receiveMessageTimeStamp = 0;
 	private int lastLootTime = 0;
@@ -88,6 +89,18 @@ public class UserBean {
 	 */
 	public void setZhanli(int zhanli) {
 		this.zhanli = zhanli;
+	}
+	/**
+	 * 最高战力
+	 */
+	public int getZhanliMax() {
+		return zhanliMax;
+	}
+	/**
+	 * 最高战力
+	 */
+	public void setZhanliMax(int zhanli) {
+		this.zhanliMax = zhanli;
 	}
 	/**
 	 * 魄罗宝箱剩余购买次数

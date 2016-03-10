@@ -460,6 +460,22 @@ public class RedisService {
 		});
     }
 
+    /**
+     * 删除zset排名
+     */
+    public boolean zremove(final String key, final String value) {
+    	return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> Ops = redisTemplate
+						.boundZSetOps(key);
+				
+				return Ops.remove(value);
+			}
+		});
+    }
+
 	/**
 	 * 添加zset
 	 */
@@ -505,7 +521,7 @@ public class RedisService {
     /**
      * 获取zset(倒序)
      */
-    public Set<TypedTuple<String>> zrangewithscore(final String key, final int start, final int end) {
+    public Set<TypedTuple<String>> zrangewithscore(final String key, final long start, final long end) {
     	return redisTemplate.execute(new RedisCallback<Set<TypedTuple<String>>>() {
 			@Override
 			public Set<TypedTuple<String>> doInRedis(RedisConnection arg0)
@@ -521,7 +537,7 @@ public class RedisService {
     /**
      * 获取zset(倒序)
      */
-    public Set<String> zrange(final String key, final int start, final int end) {
+    public Set<String> zrange(final String key, final long start, final long end) {
     	return redisTemplate.execute(new RedisCallback<Set<String>>() {
 			@Override
 			public Set<String> doInRedis(RedisConnection arg0)
