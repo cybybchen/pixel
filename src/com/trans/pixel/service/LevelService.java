@@ -123,7 +123,12 @@ public class LevelService {
 	}
 	
 	private int getDaguanId(int levelId) {
-		return Math.max(getXiaoguan(levelId).getDaguan() - 1, getXiaoguan(levelId + 1).getDaguan() - 1);
+		XiaoguanBean currentXiaoguan = getXiaoguan(levelId);
+		XiaoguanBean nextXiaoguan = getXiaoguan(levelId + 1);
+		if (nextXiaoguan == null)
+			return getXiaoguan(levelId).getDaguan();
+		
+		return Math.max(currentXiaoguan.getDaguan() - 1, nextXiaoguan.getDaguan() - 1);
 	}
 	
 	public XiaoguanBean getXiaoguan(int levelId) {
