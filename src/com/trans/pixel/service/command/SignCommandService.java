@@ -33,7 +33,7 @@ public class SignCommandService extends BaseCommandService {
 		RewardBean reward = signService.sign(user);
 		
 		if (reward == null) {
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SKILL_CAN_NOT_LEVELUP);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
