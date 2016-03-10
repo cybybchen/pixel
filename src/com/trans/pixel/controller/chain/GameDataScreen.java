@@ -89,6 +89,7 @@ import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -119,6 +120,7 @@ import com.trans.pixel.service.command.SignCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
 import com.trans.pixel.service.command.UserCommandService;
+import com.trans.pixel.service.command.ZhanliCommandService;
 
 @Service
 public class GameDataScreen extends RequestScreen {
@@ -162,6 +164,8 @@ public class GameDataScreen extends RequestScreen {
 	private SignCommandService signCommandService;
 	@Resource
 	private MohuaCommandService mohuaCommandService;
+	@Resource
+	private ZhanliCommandService zhanliCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -751,6 +755,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestDelFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		friendCommandService.delUserFriend(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSubmitZhanliCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		zhanliCommandService.submitZhanli(cmd, responseBuilder, user);
 		return true;
 	}
 
