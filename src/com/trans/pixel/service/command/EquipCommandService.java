@@ -73,9 +73,15 @@ public class EquipCommandService extends BaseCommandService {
 	
 	public void saleEquip(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Item> itemList = cmd.getItemList();
-		List<RewardInfo> rewardList = equipService.saleEquip(itemList);
+		List<RewardInfo> rewardList = equipService.saleEquip(user, itemList);
+		if (rewardList == null || rewardList.isEmpty()) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_SALE_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		RewardCommand.Builder builder = RewardCommand.newBuilder();
 		builder.addAllLoot(rewardList);
 		responseBuilder.setRewardCommand(builder.build());
+		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 	}
 }

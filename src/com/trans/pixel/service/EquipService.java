@@ -138,33 +138,41 @@ public class EquipService {
 		return ret;
 	}
 	
-	public List<RewardInfo> saleEquip(List<Item> itemList) {
+	public List<RewardInfo> saleEquip(UserBean user, List<Item> itemList) {
+		boolean canSale = canSaleEquip(user.getId(), itemList);
+		if (!canSale)
+			return null;
+		
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		for (Item item : itemList) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(RewardConst.COIN);
+			reward.setCount(0);
 			int itemId = item.getItemId();
-			switch (itemId) {
-				case RewardConst.EQUIPMENT:
-					EquipmentBean equip = getEquip(itemId);
-					reward.setCount(TypeTranslatedUtil.stringToInt(equip.getCost()));
-					break;
-				case RewardConst.CHIP:
-					Chip chip = equipRedisService.getChip(itemId);
-					reward.setCount(chip.getCost());
-					break;
-				default:
-					reward.setCount(0);
-					break;
-			}
+			int itemCount = item.getItemCount();
+			if(itemId > RewardConst.CHIP) {
+				Chip chip = equipRedisService.getChip(itemId);
+				reward.setCount(chip.getCost() * itemCount);	
+			} else if (itemId > RewardConst.EQUIPMENT) {
+				EquipmentBean equip = getEquip(itemId);
+				reward.setCount(TypeTranslatedUtil.stringToInt(equip.getCost()) * itemCount);
+			} 
 			
 			rewardList = rewardService.mergeReward(rewardList, reward.build());
+			userEquipService.useUserEquip(user.getId(), itemId, itemCount);
 		}
-		
 		return rewardList;
 	}
 	
-	
+	private boolean canSaleEquip(long userId, List<Item> itemList) {
+		for (Item item : itemList) {
+			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, item.getItemId());
+			if (userEquip.getEquipCount() < item.getItemCount())
+				return false;
+		}
+		
+		return true;
+	}
 	
 	private void parseAndSaveEquipConfig() {
 		List<EquipmentBean> list = EquipmentBean.xmlParse();

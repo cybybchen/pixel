@@ -41,6 +41,16 @@ public class UserEquipService {
 		return userEquipList;
 	}
 	
+	public void useUserEquip(long userId, int equipId, int equipCount) {
+		UserEquipBean userEquip = selectUserEquip(userId, equipId);
+		if (userEquip == null) {
+			userEquip = initUserEquip(userId, equipId);
+		}
+		
+		userEquip.setEquipCount(userEquip.getEquipCount() - equipCount);
+		updateUserEquip(userEquip);
+	}
+	
 	public void addUserEquip(long userId, int equipId, int equipCount) {
 		UserEquipBean userEquip = selectUserEquip(userId, equipId);
 		if (userEquip == null) {
