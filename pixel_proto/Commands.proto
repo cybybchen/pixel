@@ -683,7 +683,6 @@ message RequestRegisterCommand {
 }
 
 message RequestLoginCommand {
-	optional int32 zhanli = 1;
 }
 
 message ResponseUserInfoCommand {
@@ -917,7 +916,11 @@ message ResponseGetUserFriendListCommand {
 }
 
 message RequestAreaCommand {//区域争夺
-	optional int32 zhanli = 1;
+}
+
+message RequestUnlockAreaCommand {//解锁区域
+	required int32 id = 1;
+	required int32 zhanli = 2;
 }
 
 message ResponseAreaCommand {
@@ -1163,8 +1166,12 @@ message ResponseFenjieEquipCommand {
 	repeated RewardInfo reward = 1;
 }
 
+message RequestUnlockPVPMapCommand {//解锁PVP区域
+	required int32 fieldid = 1;
+	required int32 zhanli = 2;
+}
+
 message RequestPVPMapListCommand {//挂机PVP列表
-	optional int32 zhanli = 1;
 }
 
 message RequestAttackPVPMonsterCommand {//pvp攻击怪物
@@ -1293,6 +1300,7 @@ message RequestCommand {
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestAreaCommand areaCommand = 26;
+	optional RequestUnlockAreaCommand unlcokAreaCommand = 133;
 	optional RequestAttackMonsterCommand attackMonsterCommand = 27;
 	optional RequestAttackBossCommand attackBossCommand = 28;
 	optional RequestAttackResourceCommand attackResourceCommand = 29;
@@ -1332,6 +1340,7 @@ message RequestCommand {
 	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
 	optional RequestGetTeamCommand teamCommand = 123;
 	optional RequestPVPMapListCommand pvpMapListCommand = 125;
+	optional RequestUnlockPVPMapCommand unlcokPvpMapCommand = 132;
 	optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;
 	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
 	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;

@@ -16,7 +16,7 @@ public class RedisKey {
 	public final static String ACCOUNT_PREFIX = "Account_S";
 	public final static String USERNAME_PREFIX = "UserName_S";
 	public final static String USERCACHE_PREFIX = "UserCache_S";
-	public final static String PVPMAP = PREFIX+"PVPMap";
+	public final static String PVPMAP = PREFIX+"PVPMap_";
 	public static final String SERVERDATA = PREFIX+"ServerData_";
 	
 	//user key prefix

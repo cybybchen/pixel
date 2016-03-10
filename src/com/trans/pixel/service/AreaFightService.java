@@ -288,9 +288,23 @@ public class AreaFightService extends FightService{
 			i++;
 		}
 	}
+	
+	public boolean unlockArea(int id, int zhanli, UserBean user){
+		AreaMode.Builder areamode = redis.getAreaMode(user);
+		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
+			if(id == areainfo.getId()){
+				if(zhanli >= areainfo.getZhanli()){
+					areainfo.setOpened(true);
+					redis.saveAreaMode(areamode.build(), user);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	public AreaMode getAreas(UserBean user) {
-		AreaMode.Builder areamodebuilder = AreaMode.newBuilder(redis.getAreaMode());
+		AreaMode.Builder areamodebuilder = redis.getAreaMode(user);
 //		Map<String, MultiReward> monsterrewardMap = redis.getAreaMonsterRewards();
 		Map<String, AreaMonster> monsterMap = redis.getMonsters(user);
 		Map<String, AreaBoss.Builder> bossMap = redis.getBosses(user);
@@ -299,6 +313,8 @@ public class AreaFightService extends FightService{
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
+			if(!areabuilder.getOpened())
+				continue;
 			// 更新世界BOSS
 			for (AreaBoss.Builder bossbuilder : bossMap.values()) {
 				if(bossbuilder.getBelongto() == areabuilder.getId()){

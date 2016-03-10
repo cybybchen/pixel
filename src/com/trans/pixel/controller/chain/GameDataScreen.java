@@ -48,6 +48,9 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -601,6 +604,21 @@ public class GameDataScreen extends RequestScreen {
 		heroLevelUpCommandService.lockHero(cmd, responseBuilder, user);
 		return true;//LockHeroCommand
 	}//LockHeroCommand
+	@Override//MohuaSubmitStageCommand
+	protected boolean handleCommand(RequestMohuaSubmitStageCommand cmd, Builder responseBuilder, UserBean user) {
+		mohuaCommandService.submitStage(cmd, responseBuilder, user);
+		return true;//MohuaSubmitStageCommand
+	}//MohuaSubmitStageCommand
+	@Override//UnlcokAreaCommand
+	protected boolean handleCommand(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user) {
+		areaCommandService.unlockArea(cmd, responseBuilder, user);
+		return true;//UnlcokAreaCommand
+	}//UnlcokAreaCommand
+	@Override//UnlcokPvpMapCommand
+	protected boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.unlockMap(cmd, responseBuilder, user);
+		return true;//UnlcokPvpMapCommand
+	}//UnlcokPvpMapCommand
 	//add handleCommand here
 
 	@Override

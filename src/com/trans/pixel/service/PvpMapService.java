@@ -33,9 +33,23 @@ public class PvpMapService {
 //	private UserMineService userMineService;
 //	@Resource
 //	private PvpXiaoguaiService pvpXiaoguaiService;
+
+	public boolean unlockMap(int fieldid, int zhanli, UserBean user){
+		PVPMapList.Builder maplist = redis.getMapList(user);
+		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
+			if(fieldid == map.getFieldid()){
+				if(zhanli >= map.getZhanli()){
+					map.setOpened(true);
+					redis.saveMapList(maplist.build(), user);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 	public PVPMapList getMapList(UserBean user){
-		PVPMapList.Builder maplist = PVPMapList.newBuilder(redis.getMapList());
+		PVPMapList.Builder maplist = redis.getMapList(user);
 		Map<String, String> pvpMap = redis.getUserBuffs(user);
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
@@ -117,7 +131,7 @@ public class PvpMapService {
 		if(ret){
 			if(mine.hasOwner()){
 				long userId = mine.getOwner().getId();
-				PVPMapList.Builder maplist = PVPMapList.newBuilder(redis.getMapList());
+				PVPMapList.Builder maplist = redis.getMapList(user);
 				Map<String, PVPMine> mineMap = redis.getUserMines(userId);
 				int mineCount = 0;
 				for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){

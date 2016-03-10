@@ -43,11 +43,11 @@ public class UserCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		RequestLoginCommand cmd = request.getLoginCommand();
-		if(cmd.getZhanli() > user.getZhanli()){
-			user.setZhanli(cmd.getZhanli());
-			userService.updateUserDailyData(user);
-		}
+//		RequestLoginCommand cmd = request.getLoginCommand();
+//		if(cmd.getZhanli() > user.getZhanli()){
+//			user.setZhanli(cmd.getZhanli());
+//			userService.updateUserDailyData(user);
+//		}
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();

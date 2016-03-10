@@ -1,5 +1,6 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -41,6 +42,7 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 @Repository
 public class AreaRedisService extends RedisService{
 	Logger logger = Logger.getLogger(AreaRedisService.class);
+	public final static String MYAREA = RedisKey.PREFIX+"AreaInfo_";
 	public final static String AREABOSS = RedisKey.PREFIX+"AreaBoss_";
 	public final static String AREABOSSTIME = RedisKey.PREFIX+"AreaBossTime_";
 	public final static String AREAMONSTERREWARD = RedisKey.PREFIX+"AreaMonsterReward";
@@ -52,16 +54,20 @@ public class AreaRedisService extends RedisService{
 	@Resource
 	private ServerRedisService serverRedisService;
 	
-	public AreaMode getAreaMode() {
-		String value = this.get(RedisKey.AREACONFIG);
+	public AreaMode.Builder getAreaMode(UserBean user) {
+		String value = this.get(MYAREA+user.getId());
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(value != null && parseJson(value, builder)){
-			return builder.build();
+			return builder;
 		}else{
-			AreaMode areamode = buildAreaMode();
-			set(RedisKey.AREACONFIG, formatJson(areamode));
+			AreaMode.Builder areamode = buildAreaMode();
+			saveAreaMode(areamode.build(), user);
 			return areamode;
 		}
+	}
+
+	public void saveAreaMode(AreaMode areamode, UserBean user){
+		set(MYAREA+user.getId(), formatJson(areamode));
 	}
 	
 	public void costEnergy(UserBean user) {
@@ -569,7 +575,7 @@ public class AreaRedisService extends RedisService{
 			return map.get(id);
 		}
 	}
-	public AreaMode buildAreaMode(){
+	public AreaMode.Builder buildAreaMode(){
 		String xml = ReadConfig("lol_region1.xml");
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -603,6 +609,6 @@ public class AreaRedisService extends RedisService{
 				}
 			}
 		}
-		return builder.build();
+		return builder;
 	}
 }

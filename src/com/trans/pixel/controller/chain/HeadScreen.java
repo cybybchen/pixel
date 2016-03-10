@@ -57,6 +57,9 @@ import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -525,6 +528,21 @@ public class HeadScreen extends RequestScreen {
 		// TODO LockHeroCommand method
 		return true;//LockHeroCommand
 	}//LockHeroCommand
+	@Override//MohuaSubmitStageCommand
+	protected boolean handleCommand(RequestMohuaSubmitStageCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO MohuaSubmitStageCommand method
+		return true;//MohuaSubmitStageCommand
+	}//MohuaSubmitStageCommand
+	@Override//UnlcokAreaCommand
+	protected boolean handleCommand(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UnlcokAreaCommand method
+		return true;//UnlcokAreaCommand
+	}//UnlcokAreaCommand
+	@Override//UnlcokPvpMapCommand
+	protected boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UnlcokPvpMapCommand method
+		return true;//UnlcokPvpMapCommand
+	}//UnlcokPvpMapCommand
 	//add handleCommand here
 
 	@Override

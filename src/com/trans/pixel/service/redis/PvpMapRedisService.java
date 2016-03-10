@@ -28,16 +28,19 @@ public class PvpMapRedisService extends RedisService{
 	@Resource
 	private UserRedisService userRedisService;
 	
-	public PVPMapList getMapList() {
-		String value = get(RedisKey.PVPMAP);
+	public PVPMapList.Builder getMapList(UserBean user) {
+		String value = get(RedisKey.PVPMAP+user.getId());
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		if(value != null && parseJson(value, builder)){
-			return builder.build();
+			return builder;
 		}
-		PVPMapList maplist = buildPvpMapList();
-		value = formatJson(maplist);
-		set(RedisKey.PVPMAP, value);
+		PVPMapList.Builder maplist = buildPvpMapList();
+		saveMapList(maplist.build(), user);
 		return maplist;
+	}
+	
+	public void saveMapList(PVPMapList maplist, UserBean user) {
+		set(RedisKey.PVPMAP+user.getId(), formatJson(maplist));
 	}
 
 	public Map<String, String> getUserBuffs(UserBean user) {
@@ -76,7 +79,7 @@ public class PvpMapRedisService extends RedisService{
 		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), id+"");
 		if(value != null){
 			int buff = Integer.parseInt(value);
-			PVPMapList maplist = getMapList();
+			PVPMapList.Builder maplist = getMapList(user);
 			for(PVPMap map : maplist.getFieldList()){
 				if(map.getFieldid() == id){
 					buff += buffcount;
@@ -281,14 +284,14 @@ public class PvpMapRedisService extends RedisService{
 		return false;
 	}
 
-	public PVPMapList buildPvpMapList(){
+	public PVPMapList.Builder buildPvpMapList(){
 		String xml = ReadConfig("lol_pvpkuangdian.xml");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		if(!parseXml(xml, builder)){
 			logger.warn("cannot build PVPMapList");
 			return null;
 		}
-		return builder.build();
+		return builder;
 	}
 
 	public Map<String, PVPMonsterList> buildMonsterConfig(){

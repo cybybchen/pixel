@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -36,11 +37,12 @@ public class AreaCommandService extends BaseCommandService{
 	@Resource
     private UserService userService;
 
+	public void unlockArea(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user){
+		service.unlockArea(cmd.getId(), cmd.getZhanli(), user);
+		responseBuilder.setAreaCommand(getAreas(user));
+	}
+	
 	public void Areas(RequestAreaCommand cmd, Builder responseBuilder, UserBean user){
-		if(cmd.getZhanli() > user.getZhanli()){
-			user.setZhanli(cmd.getZhanli());
-			userService.updateUserDailyData(user);
-		}
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	private ResponseAreaCommand getAreas(UserBean user){

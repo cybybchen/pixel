@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
@@ -45,6 +46,13 @@ public class PvpCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
+		PVPMapList maplist = pvpMapService.getMapList(user);
+		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
+		builder.addAllField(maplist.getFieldList());
+		responseBuilder.setPvpMapListCommand(builder);
+	}
+
+	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
 		if(cmd.getZhanli() > user.getZhanli()){
 			user.setZhanli(cmd.getZhanli());
 			userService.updateUserDailyData(user);
