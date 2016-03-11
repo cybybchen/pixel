@@ -22,7 +22,9 @@ public class LadderDailyBean {
 	private int itemid1 = 0;
 	private int count1 = 0;
 	private int itemid2 = 0;
-	private int count2 = 0 ;
+	private int count2 = 0;
+	private int itemid3 = 0;
+	private int count3 = 0;
 	public int getId() {
 		return id;
 	}
@@ -59,6 +61,18 @@ public class LadderDailyBean {
 	public void setCount2(int count2) {
 		this.count2 = count2;
 	}
+	public int getItemid3() {
+		return itemid3;
+	}
+	public void setItemid3(int itemid3) {
+		this.itemid3 = itemid3;
+	}
+	public int getCount3() {
+		return count3;
+	}
+	public void setCount3(int count3) {
+		this.count3 = count3;
+	}
 	
 	public String toJson() {
 		JSONObject json = new JSONObject();
@@ -68,6 +82,8 @@ public class LadderDailyBean {
 		json.put(COUNT1, count1);
 		json.put(ITEMID2, itemid2);
 		json.put(COUNT2, count2);
+		json.put(ITEMID3, itemid3);
+		json.put(COUNT3, count3);
 		
 		return json.toString();
 	}
@@ -83,7 +99,9 @@ public class LadderDailyBean {
 		bean.setCount1(json.getInt(COUNT1));
 		bean.setItemid2(json.getInt(ITEMID2));
 		bean.setCount2(json.getInt(COUNT2));
-
+		bean.setItemid3(json.getInt(ITEMID3));
+		bean.setCount3(json.getInt(COUNT3));
+		
 		return bean;
 	}
 	
@@ -108,6 +126,8 @@ public class LadderDailyBean {
 				bean.setCount1(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(COUNT1)));
 				bean.setItemid2(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ITEMID2)));
 				bean.setCount2(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(COUNT2)));
+				bean.setItemid3(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ITEMID3)));
+				bean.setCount3(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(COUNT3)));
 				
 				list.add(bean);
 			}
@@ -125,4 +145,6 @@ public class LadderDailyBean {
 	private static final String COUNT1 = "count1";
 	private static final String ITEMID2 = "itemid2";
 	private static final String COUNT2 = "count2";
+	private static final String ITEMID3 = "itemid3";
+	private static final String COUNT3 = "count3";
 }

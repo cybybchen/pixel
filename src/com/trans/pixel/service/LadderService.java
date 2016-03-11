@@ -239,6 +239,10 @@ public class LadderService {
 		reward.setItemid(ladderDaily.getItemid2());
 		reward.setCount(ladderDaily.getCount2());
 		rewardList.add(reward);
+		reward = new RewardBean();
+		reward.setItemid(ladderDaily.getItemid3());
+		reward.setCount(ladderDaily.getCount3());
+		rewardList.add(reward);
 		
 		return rewardList;
 	}
