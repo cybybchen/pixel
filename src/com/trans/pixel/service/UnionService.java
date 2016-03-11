@@ -49,6 +49,7 @@ public class UnionService extends FightService{
 	public Union getUnion(UserBean user) {
 		if(user.getUnionId() == 0)
 			return null;
+		unionRedisService.saveMember(user.buildUnionUser(), user);
 		Union union = unionRedisService.getUnion(user);
 		if(union == null && user.getUnionId() != 0){//load union from db
 			List<UnionBean> unionbeans = unionMapper.selectUnionsByServerId(user.getServerId());
@@ -62,7 +63,7 @@ public class UnionService extends FightService{
 				List<UserBean> beans = userService.getUserByUnionId(user.getUnionId());
 				List<UserInfo> members = new ArrayList<UserInfo>();
 				for(UserBean bean : beans){
-					members.add(bean.buildShort());
+					members.add(bean.buildUnionUser());
 				}
 				unionRedisService.saveMembers(members, user);
 				Union.Builder builder = Union.newBuilder(union);
@@ -190,7 +191,7 @@ public class UnionService extends FightService{
 		userService.updateUser(user);
 		Union.Builder builder = Union.newBuilder(union.build());
 		List<UserInfo> members = new ArrayList<UserInfo>();
-		members.add(user.buildShort());
+		members.add(user.buildUnionUser());
 		unionRedisService.saveMembers(members, user);
 		builder.addAllMembers(members);
 		
@@ -201,20 +202,20 @@ public class UnionService extends FightService{
 		if(id == user.getId()){
 			if(user.getUnionJob() == 3)
 				return;
+			unionRedisService.quit(id, user);
 			user.setUnionId(0);
 			user.setUnionJob(0);
 			userService.updateUser(user);
-			unionRedisService.quit(id, user);
 		}else{
 			if(user.getUnionJob() < 2)
 				return;
 			UserBean bean = userService.getUser(id);
 			if(bean.getUnionJob() != 0 && user.getUnionJob() < 3)
 				return;
+			unionRedisService.quit(id, user);
 			bean.setUnionId(0);
 			bean.setUnionJob(0);
 			userService.updateUser(bean);
-			unionRedisService.quit(id, user);
 		}
 	}
 	
@@ -250,7 +251,7 @@ public class UnionService extends FightService{
 					bean.setUnionId(user.getUnionId());
 					bean.setUnionJob(0);
 					userService.updateUser(bean);
-					unionRedisService.saveMember(bean.buildShort(), user);
+					unionRedisService.saveMember(bean.buildUnionUser(), user);
 				}
 			}
 		}
@@ -274,13 +275,13 @@ public class UnionService extends FightService{
 			return false;
 		if(user.getUnionJob() == 3 && job == 3){
 			user.setUnionJob(0);
-			unionRedisService.saveMember(user.buildShort(), user);
+			unionRedisService.saveMember(user.buildUnionUser(), user);
 			userService.updateUser(user);
 		}
 		UserBean bean = userService.getUser(id);
 		if(bean.getUnionId() == user.getUnionId()){
 			bean.setUnionJob(job);
-			unionRedisService.saveMember(bean.buildShort(), user);
+			unionRedisService.saveMember(bean.buildUnionUser(), user);
 			userService.updateUser(bean);
 		}
 		return true;

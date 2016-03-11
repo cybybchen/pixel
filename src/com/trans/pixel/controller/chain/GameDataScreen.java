@@ -627,7 +627,7 @@ public class GameDataScreen extends RequestScreen {
 	}//UnlockPvpMapCommand
 	@Override//CollectResourceMineCommand
 	protected boolean handleCommand(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO CollectResourceMineCommand method
+		areaCommandService.collectMine(cmd, responseBuilder, user);
 		return true;//CollectResourceMineCommand
 	}//CollectResourceMineCommand
 	//add handleCommand here

@@ -61,6 +61,7 @@ public class UnionCommandService extends BaseCommandService {
 		builder.setUnion(union);
 		responseBuilder.setUnionInfoCommand(builder.build());
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.CREATE_UNION_SUCCESS));
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void quit(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
@@ -85,6 +86,7 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setUnionInfoCommand(builder.build());
 		}
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.QUIT_UNION_SUCCESS));
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void delete(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
@@ -92,6 +94,7 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DELETE_UNION_SUCCESS));
 		}else
 			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.UNION_ERROR));
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void apply(RequestApplyUnionCommand cmd, Builder responseBuilder, UserBean user) {

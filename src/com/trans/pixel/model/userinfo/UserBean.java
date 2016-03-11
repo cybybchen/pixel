@@ -650,7 +650,9 @@ public class UserBean {
 		builder.setName(name);
 //		builder.setServerId(serverId);
 		builder.setUnionId(unionId);
-//		builder.setUnionJob(unionJob);
+		builder.setUnionJob(unionJob);
+		builder.setZhanli(zhanli);
+		builder.setLastLoginTime(lastLoginTime);
 		return builder.build();
 	}
 

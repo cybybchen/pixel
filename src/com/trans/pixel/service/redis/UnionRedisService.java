@@ -193,6 +193,15 @@ public class UnionRedisService extends RedisService{
 		return memberMap.size();
 	}
 	
+	public List<Long> getMemberIds(final UserBean user){
+		Map<String, String> memberMap = this.hget(this.getUnionMemberKey(user));
+		List<Long> memberids = new ArrayList<Long>();
+		for(String id : memberMap.keySet()){
+			memberids.add(Long.parseLong(id));
+		}
+		return memberids;
+	}
+	
 	public void deleteMembers(final UserBean user){
 		this.delete(getUnionMemberKey(user));
 	}

@@ -238,6 +238,7 @@ message AreaResource {//区域资源点
 	optional int32 warDefended = 14;//抵挡波数
 	repeated UserInfo attacks = 15;//进攻方
 	repeated UserInfo defenses = 16;//防守方
+	optional string message = 17;//进攻信息
 }
 
 message AreaResourceList {
@@ -986,6 +987,7 @@ message RequestAttackResourceMineCommand {//区域争夺占领矿点
 }
 
 message RequestCollectResourceMineCommand {//区域争夺收取矿点
+	optional int32 mineId = 1;
 }
 
 message RequestAttackResourceMineInfoCommand {//区域争夺矿区队伍信息

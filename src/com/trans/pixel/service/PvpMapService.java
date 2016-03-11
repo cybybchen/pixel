@@ -22,12 +22,14 @@ import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
 import com.trans.pixel.protoc.Commands.PVPMonsterReward;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserInfo;
-import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
+import com.trans.pixel.service.redis.UnionRedisService;
+import com.trans.pixel.service.redis.UserFriendRedisService;
 
 @Service
 public class PvpMapService {
@@ -40,6 +42,10 @@ public class PvpMapService {
 	private RewardService rewardService;
 	@Resource
 	private RankRedisService rankService;
+	@Resource
+	private UserFriendRedisService userFriendRedisService;
+	@Resource
+	private UnionRedisService unionRedisService;
 //	@Resource
 //	private RankRedisService rankRedisService;
 //	@Resource
@@ -77,10 +83,12 @@ public class PvpMapService {
 				ranks = rankService.getZhanliRanks(user, 0, myrank+count);
 			else
 				ranks = rankService.getZhanliRanks(user, myrank - count, myrank+count);
+			List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
+			List<Long> members = unionRedisService.getMemberIds(user);
 			Iterator<UserInfo> it = ranks.iterator();
 			while(it.hasNext()){
 				UserInfo rank = it.next();
-				if(rank.getId() == user.getId()){
+				if(rank.getId() == user.getId() || friends.contains(rank.getId()) || members.contains(rank.getId())){
 					it.remove();
 					continue;
 				}
@@ -99,8 +107,8 @@ public class PvpMapService {
 						it.remove();
 				}
 			}
-			if(ranks.size() == 0)
-				return;
+			if(ranks.size() < count)
+				count = ranks.size();
 			if(count >= 20){
 				for(PVPMap map : maplist.getFieldList()){
 					for(PVPMine mine : map.getKuangdianList()){
@@ -147,12 +155,15 @@ public class PvpMapService {
 			}
 		}
 		long time = System.currentTimeMillis()/1000/3600*3600;
-		if(time >= user.getPvpMineGainTime()){//收取资源
+		if(time >= user.getPvpMineGainTime()+3600){//收取资源
+			int hour = (int)((time - user.getPvpMineGainTime())/3600);
+			if(hour > 7*24)
+				hour = 7*24;
 			int resource = user.getPointPVP();
 			for(PVPMap map : maplist.getFieldList()){
-				resource += map.getYield();
+				resource += map.getYield()*hour;
 				for(PVPMine mine : map.getKuangdianList()){
-					resource += mine.getYield();
+					resource += mine.getYield()*hour;
 				}
 			}
 			user.setPointPVP(resource);
@@ -248,120 +259,4 @@ public class PvpMapService {
 	public PVPMine getUserMine(UserBean user, int id){
 		return redis.getMine(user.getId(), id);
 	}
-	
-//	public List<UserMineBean> relateUser(UserBean user) {
-//		long userId = user.getId();
-//		long userRank = rankRedisService.getUserRank(user.getServerId(), RankConst.TYPE_ZHANLI, userId);
-//		List<UserMineBean> userMineList = userMineService.selectUserMineList(userId);
-//		int count = 0;
-//		for(UserMineBean userMine : userMineList) {
-//			if (randomRelative()) {
-//				if (userMine.getRelativeUserId() == 0) {
-//					long relativeUserRank = getRelativeUserRank(userRank);
-//					userMine.setRelativeUserId(rankRedisService.getUserIdByRank(user.getServerId(), relativeUserRank, RankConst.TYPE_ZHANLI));
-//					userMine.setPreventTime(calUserMinePreventTime());
-//					userMineService.updateUserMine(userMine);
-//					count++;
-//					if (count * 1.f / userMineList.size() > RELATIVE_PERCENT)
-//						break;
-//				}
-//			}
-//		}
-//		
-//		return userMineList;
-//	}
-//	
-//	public long refreshRelatedUser(UserBean user, int mapId, int mineId) {
-//		long userId = user.getId();
-//		long userRank = rankRedisService.getUserRank(user.getServerId(), RankConst.TYPE_ZHANLI, userId);
-//		return getRelatedUserId(user.getServerId(), userRank);
-//	}
-//	
-//	public UserPvpMapBean getXiaoguai(UserBean user, int mapId) {
-//		UserPvpMapBean userPvpMap = userPvpMapService.selectUserPvpMap(user.getId(), mapId);
-//		if (userPvpMap == null) {
-//			return null;
-//		}
-//		if (isRefreshXiaoguai(userPvpMap.getLastRefreshTime())) {
-//			userPvpMap.emptyField();
-//			userPvpMap.setFieldList(pvpXiaoguaiService.refreshXiaoguai(userPvpMap.getMapId()));
-//		}
-//		
-//		return userPvpMap;
-//	}
-//	
-//	private long getRelatedUserId(int serverId, long myRank) {
-//		long relatedRank = getRelativeUserRank(myRank);
-//		return rankRedisService.getUserIdByRank(serverId, relatedRank, RankConst.TYPE_ZHANLI);
-//	}
-//	
-//	private void relative(long userId, long relativeUserId, int mapId, int mineId) {
-//		UserMineBean userMine = userMineService.selectUserMine(userId, mapId, mineId);
-//		if (userMine == null) {
-//			return;
-//		}
-//		userMine.setRelativeUserId(relativeUserId);
-//		userMine.setPreventTime(calUserMinePreventTime());
-//		userMineService.updateUserMine(userMine);
-//	}
-//	
-//	public UserMineBean attackRelativeUser(long userId, int mapId, int mineId) {
-//		UserMineBean userMine = userMineService.selectUserMine(userId, mapId, mineId);
-//		if (userMine == null)
-//			return null;
-////		if (userMine.getRelativeUserId() == 0) {
-////			return null;
-////		}
-//		if (attackSuccess(userId, userMine.getRelativeUserId())) {
-//			relative(userMine.getRelativeUserId(), userId, mapId, mineId);
-//		}
-//		
-//		userMine.setPreventTime(0);
-//		userMine.setLevel(userMine.getLevel() + 1);
-//		userMineService.updateUserMine(userMine);
-//		
-//		return userMine;
-//	}
-//	
-//	public long getRelativeUserRank(long rank) {
-//		return rank - 1;
-//	}
-//	
-//	private boolean randomRelative() {
-//		Random rand = new Random();
-//		return rand.nextBoolean();
-//	}
-//	
-//	private long calUserMinePreventTime() {
-//		return PvpMapConst.PREVENT_TIME + System.currentTimeMillis();
-//	}
-//	
-//	private boolean attackSuccess(long attackUserId, long relativeUserId) {
-//		return true;
-//	}
-//	
-//	private boolean isRefreshXiaoguai(String lastRefreshTime) {
-//		if (lastRefreshTime == null || lastRefreshTime.isEmpty())
-//			return true;
-//		
-//		Date last = DateUtil.getDate(lastRefreshTime, TimeConst.DEFAULT_DATETIME_FORMAT, null);
-//		Date time1 = DateUtil.getCurrentDayDate(TimeConst.PVP_REFRESH_XIAOGUAI_TIME_1);
-//		Date time2 = DateUtil.getCurrentDayDate(TimeConst.PVP_REFRESH_XIAOGUAI_TIME_2);
-//		Date time3 = DateUtil.getCurrentDayDate(TimeConst.PVP_REFRESH_XIAOGUAI_TIME_3);
-//		
-//		Calendar calendar = Calendar.getInstance();
-//		Date now = calendar.getTime();
-//		if (last.before(time1)) {
-//			if (now.after(time1))
-//				return true;
-//		} else if (last.before(time2)) {
-//			if (now.after(time2))
-//				return true;
-//		} else if (last.before(time3)) {
-//			if (now.after(time3))
-//				return true;
-//		}
-//		
-//		return false;
-//	}
 }

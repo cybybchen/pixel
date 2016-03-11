@@ -49,6 +49,7 @@ public class AreaRedisService extends RedisService{
 	public final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	public final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
 	public final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
+	public final static String MINEGAIN = RedisKey.PREFIX+"AreaResourceMineGain_";
 	@Resource
 	private UserRedisService userRedisService;
 	@Resource
@@ -344,6 +345,26 @@ public class AreaRedisService extends RedisService{
 //			saveResource(resource);
 			return null;
 		}
+	}
+
+	public void saveMineGain(int key, int value, UserBean user) {
+		this.hput(MINEGAIN+user.getId(), key+"", value+"");
+	}
+
+	public void delMineGains(UserBean user) {
+		delete(MINEGAIN+user.getId());
+	}
+	
+	public Map<String, String> getMineGains(UserBean user){
+		return this.hget(MINEGAIN+user.getId());
+	}
+	
+	public int getMineGain(int id, UserBean user){
+		String value = this.hget(MINEGAIN+user.getId(), id+"");
+		if(value == null)
+			return 0;
+		else
+			return Integer.parseInt(value);
 	}
 
 	public void saveResource(AreaResource resource,UserBean user) {
