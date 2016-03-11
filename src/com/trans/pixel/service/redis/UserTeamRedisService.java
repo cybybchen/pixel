@@ -37,19 +37,20 @@ public class UserTeamRedisService extends RedisService {
 	public Team getTeamCache(final long userid) {
 		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid);
 		Team.Builder team = Team.newBuilder();
-		if(value != null && parseJson(value, team))
-			return team.build();
-		else{
+		if(value != null)
+			parseJson(value, team);
+		if(team.getHeroInfoCount() == 0){
 			HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 			team.addHeroInfo(heroInfo.buildRankHeroInfo());
 			UserBean user = userService.getUser(userid);
 			team.setUser(user.buildShort());
-			return team.build();
 		}
+		return team.build();
 	}
 
 	public void saveTeamCache(final UserBean user, List<HeroInfoBean> list) {
-//		JSONArray array = JSONArray.fromObject(list);
+		if(list.isEmpty())
+			return;
 		Team.Builder teambuilder = Team.newBuilder();
 		teambuilder.setUser(user.buildShort());
 		for(HeroInfoBean hero : list){

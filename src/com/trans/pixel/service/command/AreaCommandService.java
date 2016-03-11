@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -38,7 +39,8 @@ public class AreaCommandService extends BaseCommandService{
     private UserService userService;
 
 	public void unlockArea(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user){
-		service.unlockArea(cmd.getId(), cmd.getZhanli(), user);
+		if(service.unlockArea(cmd.getId(), cmd.getZhanli(), user))
+			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.UNLOCK_AREA));
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
@@ -70,15 +72,15 @@ public class AreaCommandService extends BaseCommandService{
 		rewards.setName("恭喜你击杀了怪物");
 		ResultConst result = service.AttackBoss(cmd.getId(), cmd.getScore(), user, rewards);
 		if(result instanceof ErrorConst)
-			responseBuilder.setErrorCommand(buildErrorCommand((ErrorConst)result));
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){
-		if(!service.AttackResource(cmd.getId(), user))
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.ERROR_LOCKED));
+		ResultConst result = service.AttackResource(cmd.getId(), cmd.getRet(), user);
+		buildMessageOrErrorCommand(responseBuilder, result);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
@@ -94,7 +96,8 @@ public class AreaCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			responseBuilder.setAreaCommand(getAreas(user));
 		}else{
-			builder.setUser(team.getUser());
+			if(team.hasUser())
+				builder.setUser(team.getUser());
 			builder.addAllHeroInfo(team.getHeroInfoList());
 			responseBuilder.setResourceMineInfoCommand(builder);
 		}

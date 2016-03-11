@@ -46,21 +46,16 @@ public class PvpCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
-		PVPMapList maplist = pvpMapService.getMapList(user);
+		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
 		builder.addAllField(maplist.getFieldList());
 		responseBuilder.setPvpMapListCommand(builder);
 	}
 
 	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
-		if(cmd.getZhanli() > user.getZhanli()){
-			user.setZhanli(cmd.getZhanli());
-			userService.updateUserDailyData(user);
-		}
-		PVPMapList maplist = pvpMapService.getMapList(user);
-		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
-		builder.addAllField(maplist.getFieldList());
-		responseBuilder.setPvpMapListCommand(builder);
+		if(pvpMapService.unlockMap(cmd.getFieldid(), cmd.getZhanli(), user))
+			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.UNLOCK_AREA));
+		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
 	public void attackMonster(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user) {
@@ -97,14 +92,19 @@ public class PvpCommandService extends BaseCommandService {
 	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.getUserMine(user, cmd.getId());
-		if(mine == null || !mine.hasOwner()){
+		if(mine == null){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 		}else{
-			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
+			Team team = null;
+			if(!mine.hasOwner())
+				team = Team.newBuilder().build();
+			else
+				team = userTeamService.getTeamCache(mine.getOwner().getId());
 			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 			builder.addAllHeroInfo(team.getHeroInfoList());
-			builder.setUser(team.getUser());
+			if(team.hasUser())
+				builder.setUser(team.getUser());
 			responseBuilder.setTeamCommand(builder);
 		}
 	}

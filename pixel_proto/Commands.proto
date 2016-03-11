@@ -3,8 +3,8 @@ package com.trans.pixel.protoc;
 message UserInfo {
 	required int64 id = 1;
 	optional string account = 2;
-	required int32 icon = 13;
-	required string name = 3;
+	optional int32 icon = 13;
+	optional string name = 3;
 	optional int32 serverId = 4;
 	optional int32 unionId = 14;
 	optional int32 unionJob = 15;
@@ -216,7 +216,8 @@ message AreaResourceMine {//区域资源开采点
 	required int32 yield = 4;//开采产量
 	///////////////////////////////////
 	optional UserInfo user = 5;//开采玩家
-	optional int64 endTime = 6;//开采结束时间
+	optional int64 collectTime = 6;//上次收取时间
+	optional int64 endTime = 7;//开采结束时间
 }
 
 message AreaResource {//区域资源点
@@ -925,6 +926,7 @@ message RequestUnlockAreaCommand {//解锁区域
 
 message ResponseAreaCommand {
 	repeated AreaInfo areas = 1;
+	repeated RewardInfo rewards = 2;
 }
 
 message RequestAttackMonsterCommand {//区域争夺打怪物
@@ -939,12 +941,16 @@ message RequestAttackBossCommand {//区域争夺攻击世界BOSS
 
 message RequestAttackResourceCommand {//区域争夺刺杀领主/争夺领主
 	required int32 id = 1;
+	required bool ret = 2;
 }
 
-message RequestAttackResourceMineCommand {//区域争夺占领矿区
+message RequestAttackResourceMineCommand {//区域争夺占领矿点
 	required int32 id = 1;
 	required int32 teamid = 2;
 	required bool ret = 3;
+}
+
+message RequestCollectResourceMineCommand {//区域争夺收取矿点
 }
 
 message RequestAttackResourceMineInfoCommand {//区域争夺矿区队伍信息
@@ -1300,12 +1306,13 @@ message RequestCommand {
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestAreaCommand areaCommand = 26;
-	optional RequestUnlockAreaCommand unlcokAreaCommand = 133;
+	optional RequestUnlockAreaCommand unlockAreaCommand = 133;
 	optional RequestAttackMonsterCommand attackMonsterCommand = 27;
 	optional RequestAttackBossCommand attackBossCommand = 28;
 	optional RequestAttackResourceCommand attackResourceCommand = 29;
 	optional RequestAttackResourceMineCommand attackResourceMineCommand = 30;
 	optional RequestAttackResourceMineInfoCommand attackResourceMineInfoCommand = 124;
+	optional RequestCollectResourceMineCommand collectResourceMineCommand = 134;
 	optional RequestQuitUnionCommand quitUnionCommand = 42;
 	optional RequestUnionInfoCommand unionInfoCommand = 43;
 	optional RequestUnionListCommand unionListCommand = 44;
@@ -1340,7 +1347,7 @@ message RequestCommand {
 	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
 	optional RequestGetTeamCommand teamCommand = 123;
 	optional RequestPVPMapListCommand pvpMapListCommand = 125;
-	optional RequestUnlockPVPMapCommand unlcokPvpMapCommand = 132;
+	optional RequestUnlockPVPMapCommand unlockPvpMapCommand = 132;
 	optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;
 	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
 	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;

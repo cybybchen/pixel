@@ -51,6 +51,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
+import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -609,16 +610,21 @@ public class GameDataScreen extends RequestScreen {
 		mohuaCommandService.submitStage(cmd, responseBuilder, user);
 		return true;//MohuaSubmitStageCommand
 	}//MohuaSubmitStageCommand
-	@Override//UnlcokAreaCommand
+	@Override//UnlockAreaCommand
 	protected boolean handleCommand(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user) {
 		areaCommandService.unlockArea(cmd, responseBuilder, user);
-		return true;//UnlcokAreaCommand
-	}//UnlcokAreaCommand
-	@Override//UnlcokPvpMapCommand
+		return true;//UnlockAreaCommand
+	}//UnlockAreaCommand
+	@Override//UnlockPvpMapCommand
 	protected boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
 		pvpCommandService.unlockMap(cmd, responseBuilder, user);
-		return true;//UnlcokPvpMapCommand
-	}//UnlcokPvpMapCommand
+		return true;//UnlockPvpMapCommand
+	}//UnlockPvpMapCommand
+	@Override//CollectResourceMineCommand
+	protected boolean handleCommand(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO CollectResourceMineCommand method
+		return true;//CollectResourceMineCommand
+	}//CollectResourceMineCommand
 	//add handleCommand here
 
 	@Override

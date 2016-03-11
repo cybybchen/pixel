@@ -21,8 +21,10 @@ import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
 import com.trans.pixel.protoc.Commands.PVPMonsterReward;
+import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 
@@ -121,7 +123,7 @@ public class PvpMapService {
 		}
 	}
 	
-	public PVPMapList getMapList(UserBean user){
+	public PVPMapList getMapList(Builder responseBuilder, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user);
 		Map<String, String> pvpMap = redis.getUserBuffs(user);
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
@@ -140,6 +142,22 @@ public class PvpMapService {
 				if(monster.getFieldid() == mapBuilder.getFieldid())
 					mapBuilder.addMonster(monster);
 			}
+		}
+		long time = System.currentTimeMillis()/1000/3600*3600;
+		if(time >= user.getPvpMineGainTime()){//收取资源
+			int resource = user.getPointPVP();
+			for(PVPMap map : maplist.getFieldList()){
+				resource += map.getYield();
+				for(PVPMine mine : map.getKuangdianList()){
+					resource += mine.getYield();
+				}
+			}
+			user.setPointPVP(resource);
+			user.setPvpMineGainTime(time);
+			userService.updateUserDailyData(user);
+			ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
+			builder.setUser(user.build());
+			responseBuilder.setUserInfoCommand(builder.build());
 		}
 		return maplist.build();
 	}

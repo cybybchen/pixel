@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class PvpMapTest extends BaseTest {
@@ -19,9 +20,25 @@ public class PvpMapTest extends BaseTest {
 	@Test
 	public void testArea() {
 //		login();
-//		testPvpMap();
+		testPvpMap();
+		unlockMap();
 //		testGetMineInfo();
-		attackMine();
+//		attackMine();
+	}
+	
+	private void unlockMap() {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestUnlockPVPMapCommand.Builder builder = RequestUnlockPVPMapCommand	.newBuilder();
+		builder.setFieldid(101);
+		requestBuilder.setUnlockPvpMapCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        logger.info(response.getAllFields());
 	}
 	
 	private void testPvpMap() {

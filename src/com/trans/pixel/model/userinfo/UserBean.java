@@ -42,6 +42,7 @@ public class UserBean {
 	private long pvpMonsterRefreshTime = 0;
 	private long pvpBossRefreshTime = 0;
 	private long pvpMineRefreshTime = 0;
+	private long pvpMineGainTime = 0;
 	private int pvpMineLeftTime = 0;
 	private long purchaseTireLeftTime = 0;
 	private long refreshExpeditionLeftTime = 0;
@@ -185,6 +186,18 @@ public class UserBean {
 	 */
 	public void setPvpMineRefreshTime(long pvpMineRefreshTime) {
 		this.pvpMineRefreshTime = pvpMineRefreshTime;
+	}
+	/**
+	 * pvp矿点收获时间
+	 */
+	public long getPvpMineGainTime() {
+		return pvpMineGainTime;
+	}
+	/**
+	 * pvp矿点收获时间
+	 */
+	public void setPvpMineGainTime(long pvpMineGainTime) {
+		this.pvpMineGainTime = pvpMineGainTime;
 	}
 	/**
 	 * pvp怪物刷新时间

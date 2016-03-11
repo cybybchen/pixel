@@ -750,6 +750,13 @@ public class RedisService {
 //		this.expireDate = date;
 //	}
 	/**
+	 * 下个星期0点
+	 */
+	public Date nextWeek(){
+		Date date = new Date(System.currentTimeMillis()/7/24/3600L/1000L*7*24*3600L*1000L+(24*7-8)*3600L*1000L);
+		return date;
+	}
+	/**
 	 * 第二天0点
 	 */
 	public Date nextDay(){

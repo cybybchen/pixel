@@ -47,6 +47,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
+import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -269,6 +270,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestMohuaSubmitStageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -759,16 +761,21 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//MohuaSubmitStageCommand
                 result = handleCommand(cmd, responseBuilder, user);//MohuaSubmitStageCommand
         }//MohuaSubmitStageCommand
-        if (request.hasUnlcokAreaCommand()) {
-            RequestUnlockAreaCommand cmd = request.getUnlcokAreaCommand();
-            if (result)//UnlcokAreaCommand
-                result = handleCommand(cmd, responseBuilder, user);//UnlcokAreaCommand
-        }//UnlcokAreaCommand
-        if (request.hasUnlcokPvpMapCommand()) {
-            RequestUnlockPVPMapCommand cmd = request.getUnlcokPvpMapCommand();
-            if (result)//UnlcokPvpMapCommand
-                result = handleCommand(cmd, responseBuilder, user);//UnlcokPvpMapCommand
-        }//UnlcokPvpMapCommand
+        if (request.hasUnlockAreaCommand()) {
+            RequestUnlockAreaCommand cmd = request.getUnlockAreaCommand();
+            if (result)//UnlockAreaCommand
+                result = handleCommand(cmd, responseBuilder, user);//UnlockAreaCommand
+        }//UnlockAreaCommand
+        if (request.hasUnlockPvpMapCommand()) {
+            RequestUnlockPVPMapCommand cmd = request.getUnlockPvpMapCommand();
+            if (result)//UnlockPvpMapCommand
+                result = handleCommand(cmd, responseBuilder, user);//UnlockPvpMapCommand
+        }//UnlockPvpMapCommand
+        if (request.hasCollectResourceMineCommand()) {
+            RequestCollectResourceMineCommand cmd = request.getCollectResourceMineCommand();
+            if (result)//CollectResourceMineCommand
+                result = handleCommand(cmd, responseBuilder, user);//CollectResourceMineCommand
+        }//CollectResourceMineCommand
         //call handleCommand here
         
         return result;

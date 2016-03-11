@@ -27,8 +27,8 @@ public class AreaTest extends BaseTest {
 		testGetArea();
 //		testAreaBoss();
 //		testAreaMonster();
-//		testAreaResource();
-		testAreaResourceMine();
+		testAreaResource();
+//		testAreaResourceMine();
 	}
 	
 	ResponseAreaCommand area = null;
@@ -91,7 +91,7 @@ public class AreaTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestAttackResourceCommand.Builder builder = RequestAttackResourceCommand.newBuilder();
 		AreaResource resource = area.getAreas(0).getResources(0);
-		builder.setId(resource.getId());
+		builder.setId(/*resource.getId()*/101);
 		requestBuilder.setAttackResourceCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();

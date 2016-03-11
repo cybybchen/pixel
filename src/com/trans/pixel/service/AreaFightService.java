@@ -145,43 +145,76 @@ public class AreaFightService extends FightService{
 		return SuccessConst.PVP_ATTACK_SUCCESS;
 	}
 	
-	public boolean AttackResource(int id, UserBean user){
+	public ResultConst AttackResource(int id, boolean ret, UserBean user){
 		AreaResource resource = redis.getResource(id, user);
 		if(resource == null)
-			return false;
-		if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
-			return false;
+			return ErrorConst.MAPINFO_ERROR;
 		AreaResource.Builder builder = AreaResource.newBuilder(resource);
 		if (builder.getState() == 0) {//刺杀
+			if(!ret){
+				costEnergy(user);
+				return SuccessConst.AREA_ATTACK_FAIL;
+			}
 			builder.setState(1);
-			builder.setEndtime(System.currentTimeMillis()/1000+24*3600L);
-			builder.setAttackerId(user.getUnionId());
+			builder.setEndtime(System.currentTimeMillis()/1000+/*24*3600L*/600);
+			if(builder.hasOwner())
+				builder.setAttackerId(user.getUnionId());
+			else
+				builder.setOwner(user.buildUnionUser());
+			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
+				return ErrorConst.ERROR_LOCKED;
+			costEnergy(user);
 			redis.saveResource(builder.build(), user);
 		}else{
-			costEnergy(user);
 			if(user.getUnionId() == builder.getOwner().getUnionId()){//防守
+				for(UserInfo userinfo : builder.getDefensesList()){
+					if(user.getId() == userinfo.getId())
+						return ErrorConst.JOIN_AGAIN;
+				}
 				builder.addDefenses(user.buildShort());
 			}else{//进攻
+				for(UserInfo userinfo : builder.getAttacksList()){
+					if(user.getId() == userinfo.getId())
+						return ErrorConst.JOIN_AGAIN;
+				}
 				builder.addAttacks(user.buildShort());
 			}
+			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
+				return ErrorConst.ERROR_LOCKED;
+			costEnergy(user);
 			redis.saveResource(builder.build(), user);
 		}
-		return true;
+		return SuccessConst.Add_AREA_FIGHT;
 	}
 	
 	public ResultConst AttackResourceMine(int id, int teamid, boolean ret, UserBean user, ResponseCommand.Builder responseBuilder){
-		AreaResourceMine mine = redis.getResourceMine(id, user);
+		Map<String, AreaResourceMine> mines = redis.getResourceMines(user);
+		AreaResourceMine mine = null;
+		for(AreaResourceMine resourcemine : mines.values()){
+			if(resourcemine.getId() == id)
+				mine = resourcemine;
+			else if(resourcemine.getUser().getId() == user.getId()){
+				AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(resourcemine);
+				gainMine(builder, user);
+//				builder.clearEndTime();
+//				builder.clearUser();
+			}
+		}
+		
+//		AreaResourceMine mine = redis.getResourceMine(id, user);
 		if(mine == null)
 			return ErrorConst.MAPINFO_ERROR;
 		List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, herolist);
-		if(mine.hasUser())
+		if(!ret){
 			costEnergy(user);
-		if(!ret)
 			return SuccessConst.PVP_ATTACK_FAIL;
+		}
 		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder(mine);
 		if(!gainMine(builder, user))
 			return ErrorConst.AREAMINE_HURRY;
+		if(mine.hasUser())
+			costEnergy(user);
 		builder.setUser(user.buildShort());
 		builder.setEndTime(System.currentTimeMillis()/1000+mine.getTime());
 		redis.saveResourceMine(builder.build(), user);
@@ -190,8 +223,10 @@ public class AreaFightService extends FightService{
 	
 	public Team AttackResourceMineInfo(int id, UserBean user){
 		AreaResourceMine mine = redis.getResourceMine(id, user);
-		if(mine == null || !mine.hasUser())
+		if(mine == null)
 			return null;
+		else if(!mine.hasUser())
+			return Team.newBuilder().build();
 		return userTeamService.getTeamCache(mine.getUser().getId());
 	}
 	
@@ -227,8 +262,10 @@ public class AreaFightService extends FightService{
 		if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+builder.getId()))
 			return;
 		//防守玩家最后一个加入战斗
-		List<UserInfo> attacks = builder.getAttacksList();
-		List<UserInfo> defends = builder.getDefensesList();
+		List<UserInfo> attacks = new ArrayList<UserInfo>();
+		attacks.addAll(builder.getAttacksList());
+		List<UserInfo> defends = new ArrayList<UserInfo>();
+		defends.addAll(builder.getDefensesList());
 		if(builder.hasOwner())
 			defends.add(builder.getOwner());
 		if(attacks.size() == 0){
@@ -241,15 +278,15 @@ public class AreaFightService extends FightService{
 			if(resultlist.getListCount() > 0){
 				FightResult winresult = resultlist.getList(resultlist.getListCount()-1);
 				if( winresult.getResult() == 1 ){//攻破
-					UserInfo defendUser = null;
+					UserInfo owner = null;
 					for(UserInfo userinfo : attacks){
 						if(userinfo.getId() == winresult.getWin().getUserId())
-							defendUser = userinfo;
+							owner = userinfo;
 					}
 
 					builder.setWarDefended(0);
-					if(defendUser != null)
-						builder.setOwner(defendUser);
+					if(owner != null)
+						builder.setOwner(owner);
 				}else{
 					builder.setWarDefended(builder.getWarDefended()+1);
 				}
@@ -262,10 +299,11 @@ public class AreaFightService extends FightService{
 			builder.setState(0);
 			builder.setWarDefended(0);
 		}else{
-			builder.setEndtime(System.currentTimeMillis()/1000+10*60);
+			builder.setEndtime(System.currentTimeMillis()/1000+600);
 		}
 		builder.clearDefenses();
 		builder.clearAttacks();
+		builder.clearAttackerId();
 		redis.saveResource(builder.build(), user);
 	}
 	
@@ -313,8 +351,8 @@ public class AreaFightService extends FightService{
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
-			if(!areabuilder.getOpened())
-				continue;
+//			if(!areabuilder.getOpened())
+//				continue;
 			// 更新世界BOSS
 			for (AreaBoss.Builder bossbuilder : bossMap.values()) {
 				if(bossbuilder.getBelongto() == areabuilder.getId()){
