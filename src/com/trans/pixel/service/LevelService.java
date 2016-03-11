@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.LevelConst;
 import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.XiaoguanBean;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
@@ -20,6 +22,8 @@ public class LevelService {
 	
 	@Resource
 	private LevelRedisService levelRedisService;
+	@Resource
+	private UserService userService;
 	
 	private static final int DIFF_DELTA = 1000;
 	private static final int XIAOGUAN_COUNT_EVERY_DAGUAN = 5;
@@ -36,6 +40,9 @@ public class LevelService {
 		int diff = getDifficulty(levelId);
 		switch (diff) {
 			case LevelConst.DIFF_PUTONG:
+				if (levelId != userLevelRecord.getUnlockedLevel())
+					return true;
+				
 				if (levelId == 1001 && userLevelRecord.getPutongLevel() < 1001)
 					return false;
 				
@@ -94,6 +101,35 @@ public class LevelService {
 				if (xg.getXiaoguan() > UserLevelBean.getXiaoguanRecord(userLevelRecord.getDiyuLevel(), xg.getDaguan()) + 1)
 					return true;
 				
+				return false;
+			default:
+				return true;
+		}
+	}
+	
+	public boolean isCheatLevelUnlock(int levelId, UserLevelBean userLevelRecord, UserBean user) {
+		XiaoguanBean xg = getXiaoguan(levelId);
+		if (xg == null)
+			return true;
+		
+		int diff = getDifficulty(levelId);
+		switch (diff) {
+			case LevelConst.DIFF_PUTONG:
+				DaguanBean daguan = this.getDaguan(levelId);
+				UserInfo userCache = userService.getCache(user.getServerId(), user.getId());
+				if (daguan == null || userCache == null)
+					return true;
+				
+				if (daguan.getZhanli() > userCache.getZhanli())
+					return true;
+				
+				if (levelId == 1001 && userLevelRecord.getPutongLevel() < 1001)
+					return false;
+				
+				if (levelId != userLevelRecord.getPutongLevel() + 1)
+					return true;
+				
+				userLevelRecord.setUnlockedLevel(levelId);
 				return false;
 			default:
 				return true;

@@ -10,6 +10,7 @@
 		<result property="putongLevel" column="putong_level" />
 		<result property="kunnanLevel" column="kunnan_level" />
 		<result property="diyuLevel" column="diyu_level" />
+		<result property="unlockedLevel" column="unlock_level" />
 	</resultMap>
 
 	<select id="selectUserLevelRecord" parameterType="long" resultMap="resultMap">
@@ -18,8 +19,8 @@
 	</select>
 	
 	<insert id="insertUserLevelRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
-		INSERT INTO user_level(user_id, last_level_result_time, level_prepare_time, putong_level, kunnan_level, diyu_level)
-		VALUES(#{userId}, #{lastLevelResultTime}, #{levelPrepareTime}, #{putongLevel}, #{kunnanLevel}, #{diyuLevel})
+		INSERT INTO user_level(user_id, last_level_result_time, level_prepare_time, putong_level, kunnan_level, diyu_level, unlock_level)
+		VALUES(#{userId}, #{lastLevelResultTime}, #{levelPrepareTime}, #{putongLevel}, #{kunnanLevel}, #{diyuLevel}, #{unlockedLevel})
 	</insert>
 	
 	<update id="updateUserLevelRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
@@ -28,7 +29,8 @@
 		level_prepare_time=#{levelPrepareTime}, 
 		putong_level=#{putongLevel},
 		kunnan_level=#{kunnanLevel},
-		diyu_level=#{diyuLevel}
+		diyu_level=#{diyuLevel},
+		unlock_level=#{unlockedLevel}
 		WHERE user_id=#{userId}
 	</update>
 

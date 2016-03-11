@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseLevelResultCommand;
@@ -153,5 +154,20 @@ public class LevelCommandService extends BaseCommandService {
 		rewardService.doRewards(user, lootRewardList);
 		builder.addAllReward(RewardBean.buildRewardInfoList(lootRewardList));
 		responseBuilder.setLevelLootResultCommand(builder.build());
+	}
+	
+	public void levelUnlock(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
+		int levelId = cmd.getLevelId();
+		long userId = user.getId();
+		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
+		if (levelService.isCheatLevelUnlock(levelId, userLevel, user)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		builder.setUserLevel(userLevel.buildUserLevel());
+		responseBuilder.setUserLevelCommand(builder.build());
 	}
 }

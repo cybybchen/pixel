@@ -1,8 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import net.sf.json.JSONObject;
 
@@ -10,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.trans.pixel.model.XiaoguanBean;
-import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserLevel;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -22,6 +19,7 @@ public class UserLevelBean {
 	private int putongLevel = 0;
 	private String kunnanLevel = "";
 	private String diyuLevel = "";
+	private int unlockedLevel = 0;
 	public long getId() {
 		return id;
 	}
@@ -63,6 +61,12 @@ public class UserLevelBean {
 	}
 	public void setDiyuLevel(String diyuLevel) {
 		this.diyuLevel = diyuLevel;
+	}
+	public int getUnlockedLevel() {
+		return unlockedLevel;
+	}
+	public void setUnlockedLevel(int unlockedLevel) {
+		this.unlockedLevel = unlockedLevel;
 	}
 	
 	public static String initLevelRecord(List<XiaoguanBean> xiaoguanList) {
@@ -129,6 +133,7 @@ public class UserLevelBean {
 		builder.setKunnanLevel(kunnanLevel);
 		builder.setPrepareTime(levelPrepareTime);
 		builder.setPutongLevel(putongLevel);
+		builder.setUnlockedLevel(unlockedLevel);
 		
 		return builder.build();
 	}

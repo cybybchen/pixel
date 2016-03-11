@@ -176,6 +176,7 @@ message UserLevel {
 	required int32 putongLevel = 2;
 	required string kunnanLevel = 3;
 	required string diyuLevel = 4;
+	required int32 unlockedLevel = 5;//解锁的关卡
 }
 
 message UserLootLevel {
@@ -1337,6 +1338,10 @@ message ResponseAchieveListCommand {
 	repeated UserAchieve userAchieve = 1;
 }
 
+message RequestUnlockLevelCommand {
+	required int32 levelId = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1439,6 +1444,7 @@ message RequestCommand {
 	optional RequestSubmitZhanliCommand submitZhanliCommand = 69;
 	optional RequestAchieveRewardCommand achieveRewardCommand = 70;
 	optional RequestAchieveListCommand achieveListCommand = 71;
+	optional RequestUnlockLevelCommand unlockLevelCommand = 72;
 }
 // response command list transfer only use it
 message ResponseCommand {
