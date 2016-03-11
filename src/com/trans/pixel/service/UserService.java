@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -137,7 +138,7 @@ public class UserService {
 	/**
 	 * get other user
 	 */
-	public <T> List<UserInfo> getCaches(int serverId, List<T> userIds){
+	public <T> List<UserInfo> getCaches(int serverId, Collection<T> userIds){
 		return userRedisService.getCaches(serverId, userIds);
 	}
 	

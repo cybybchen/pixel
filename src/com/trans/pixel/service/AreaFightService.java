@@ -175,18 +175,18 @@ public class AreaFightService extends FightService{
 			costEnergy(user);
 			redis.saveResource(builder.build(), user);
 		}else{
-			if(user.getUnionId() == builder.getOwner().getUnionId()){//防守
+			if(user.getUnionId() == builder.getOwner().getUnionId() && user.getUnionId() != 0){//防守
 				for(UserInfo userinfo : builder.getDefensesList()){
 					if(user.getId() == userinfo.getId())
 						return ErrorConst.JOIN_AGAIN;
 				}
-				builder.addDefenses(user.buildShort());
+				builder.addDefenses(user.buildUnionUser());
 			}else{//进攻
 				for(UserInfo userinfo : builder.getAttacksList()){
 					if(user.getId() == userinfo.getId())
 						return ErrorConst.JOIN_AGAIN;
 				}
-				builder.addAttacks(user.buildShort());
+				builder.addAttacks(user.buildUnionUser());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;

@@ -104,6 +104,10 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void reply(RequestReplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		if(user.getUnionJob() == 0){
+			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
+			return;
+		}
 		unionService.reply(cmd.getIdList(), cmd.getReceive(), user);
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));

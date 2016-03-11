@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ import javax.annotation.Resource;
 
 import net.sf.json.JSONObject;
 
-import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.constants.RefreshConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
@@ -114,7 +113,7 @@ public class UserRedisService extends RedisService{
 	/**
 	 * get other user
 	 */
-	public <T> List<UserInfo> getCaches(int serverId, List<T> userIds){
+	public <T> List<UserInfo> getCaches(int serverId, Collection<T> userIds){
 		List<String> keys = new ArrayList<String>();
 		for(T userId : userIds){
 			keys.add(userId+"");

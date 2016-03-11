@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -84,11 +85,11 @@ public class PvpMapService {
 			else
 				ranks = rankService.getZhanliRanks(user, myrank - count, myrank+count);
 			List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
-			List<Long> members = unionRedisService.getMemberIds(user);
+			Set<String> members = unionRedisService.getMemberIds(user);
 			Iterator<UserInfo> it = ranks.iterator();
 			while(it.hasNext()){
 				UserInfo rank = it.next();
-				if(rank.getId() == user.getId() || friends.contains(rank.getId()) || members.contains(rank.getId())){
+				if(rank.getId() == user.getId() || friends.contains(rank.getId()) || members.contains(rank.getId()+"")){
 					it.remove();
 					continue;
 				}

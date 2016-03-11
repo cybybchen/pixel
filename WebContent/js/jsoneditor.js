@@ -148,7 +148,7 @@ function updateUserJson(jsondata) {
             appendUserDatas(message);
         },
         error: function (message) {
-            alert("提交数据失败！\n"+message);
+            alert("提交数据失败！");
         }
     });
 }

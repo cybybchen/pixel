@@ -8,10 +8,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -25,7 +25,7 @@ import com.trans.pixel.protoc.Commands.UserInfo;
 @Repository
 public class UnionRedisService extends RedisService{
 	@Resource
-	public RedisTemplate<String, String> redisTemplate;
+	public UserRedisService userRedisService;
 	
 	public Union getUnion(UserBean user) {
 		String unionvalue = this.hget(getUnionServerKey(user.getServerId()), user.getUnionId()+"");
@@ -44,12 +44,8 @@ public class UnionRedisService extends RedisService{
 					unionbuilder.addApplies(builder);
 			}
 		}
-		Map<String, String> memberMap = this.hget(this.getUnionMemberKey(user));
-		for (String membervalue : memberMap.values()) {
-			UserInfo.Builder builder = UserInfo.newBuilder();
-			if (parseJson(membervalue, builder))
-				unionbuilder.addMembers(builder);
-		}
+		List<UserInfo> members = getMembers(user);
+		unionbuilder.addAllMembers(members);
 		return unionbuilder.build();
 	}
 	
@@ -189,46 +185,41 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public int getNumOfMembers(final UserBean user){
-		Map<String, String> memberMap = this.hget(this.getUnionMemberKey(user));
+		Set<String> memberMap = this.smember(this.getUnionMemberKey(user));
 		return memberMap.size();
 	}
 	
-	public List<Long> getMemberIds(final UserBean user){
-		Map<String, String> memberMap = this.hget(this.getUnionMemberKey(user));
-		List<Long> memberids = new ArrayList<Long>();
-		for(String id : memberMap.keySet()){
-			memberids.add(Long.parseLong(id));
-		}
-		return memberids;
+	public Set<String> getMemberIds(final UserBean user){
+		return this.smember(this.getUnionMemberKey(user));
+	}
+	
+	public List<UserInfo> getMembers(final UserBean user){
+		return userRedisService.getCaches(user.getServerId(), getMemberIds(user));
 	}
 	
 	public void deleteMembers(final UserBean user){
 		this.delete(getUnionMemberKey(user));
 	}
 	
-	public void saveMember(final UserInfo member, UserBean user) {
-		this.hput(getUnionMemberKey(user), member.getId()+"", formatJson(member));
+	public void saveMember(final long memberId, UserBean user) {
+		this.sadd(getUnionMemberKey(user), memberId+"");
 	}
 	
-	public void saveMembers(final List<UserInfo> members, UserBean user) {
-		Map<String, String> memberMap = new HashMap<String, String>();
-		for(UserInfo member : members){
-			String key = member.getId()+"";
-			String value = formatJson(member);
-			memberMap.put(key, value);
+	public void saveMembers(final List<Long> members, UserBean user) {
+		for(Long memberId : members){
+			this.sadd(getUnionMemberKey(user), memberId+"");
 		}
-		this.hputAll(getUnionMemberKey(user), memberMap);
 	}
 	
 	public void attack(int unionId,UserBean user){
-		String key = getUnionAttackKey(unionId, user);
-		this.hput(key, user.getId()+"", formatJson(user.buildUnionUser()));
+		String key = getUnionFightKey(user.getUnionId(), unionId);
+		this.hput(key, user.getId()+"", formatJson(user.buildShort()));
 		this.expireAt(key, nextDay());
 	}
 	
 	public void defend(int unionId,UserBean user){
-		String key = getUnionDefendKey(unionId, user);
-		this.hput(key, user.getId()+"", formatJson(user.buildUnionUser()));
+		String key = getUnionFightKey(unionId, user.getUnionId());
+		this.hput(key, user.getId()+"", formatJson(user.buildShort()));
 		this.expireAt(key, nextDay());
 	}
 	
@@ -243,12 +234,12 @@ public class UnionRedisService extends RedisService{
 		return users;
 	}
 
-	private String getUnionAttackKey(int attackId,UserBean user) {
-		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + attackId + "_" + user.getUnionId();
-	}
-	private String getUnionDefendKey(int defendId,UserBean user) {
-		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + user.getUnionId()+"_"+defendId;
-	}
+//	private String getUnionAttackKey(int attackId,UserBean user) {
+//		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + user.getUnionId() + "_" + attackId;
+//	}
+//	private String getUnionDefendKey(int defendId,UserBean user) {
+//		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + defendId+"_"+user.getUnionId();
+//	}
 	public String getUnionFightKey(int attackId, int defendId) {
 		return RedisKey.PREFIX + RedisKey.UNION_FIGHT_PREFIX + attackId + "_" + defendId;
 	}
