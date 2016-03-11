@@ -69,7 +69,12 @@ public class MailCommandService extends BaseCommandService {
 //			}
 			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
 			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
-				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+			if (!userFriendService.canCallBrother(user.getId(), toUserId)) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.CALL_BROTHER_TIME_NOT_ENOUGH_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}

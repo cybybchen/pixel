@@ -61,6 +61,15 @@ public class UserFriendService {
 		userFriendMapper.deleteUserFriend(friendId, userId);
 	}
 	
+	public boolean canCallBrother(long userId, long friendId) {
+		UserFriendBean userFriend = userFriendRedisService.selectUserFriend(userId, friendId);
+		if (userFriend.getLastCallTime() + 12 * TimeConst.SECONDS_PER_HOUR > (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public UserFriendBean updateFriendCallTime(long userId, long friendId) {
 		UserFriendBean userFriend = userFriendRedisService.selectUserFriend(userId, friendId);
 		if (userFriend.getLastCallTime() + 12 * TimeConst.SECONDS_PER_HOUR > (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND)) {
