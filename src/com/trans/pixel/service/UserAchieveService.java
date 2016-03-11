@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserAchieveMapper;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
-import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.service.redis.UserAchieveRedisService;
 
 @Service
@@ -22,6 +21,9 @@ public class UserAchieveService {
 		UserAchieveBean userAchieve = userAchieveRedisService.selectUserAchieve(userId, type);
 		if (userAchieve == null)
 			userAchieve = userAchieveMapper.selectUserAchieve(userId, type);
+		
+		if (userAchieve == null)
+			userAchieve = initUserAchieve(userId, type);
 		
 		return userAchieve;
 	}
@@ -52,11 +54,11 @@ public class UserAchieveService {
 //		updateUserEquip(userEquip);
 //	}
 //	
-//	private UserEquipBean initUserEquip(long userId, int equipId) {
-//		UserEquipBean userEquip = new UserEquipBean();
-//		userEquip.setUserId(userId);
-//		userEquip.setEquipId(equipId);
-//		
-//		return userEquip;
-//	}
+	private UserAchieveBean initUserAchieve(long userId, int achieveId) {
+		UserAchieveBean userAchieve = new UserAchieveBean();
+		userAchieve.setUserId(userId);
+		userAchieve.setType(achieveId);
+		
+		return userAchieve;
+	}
 }

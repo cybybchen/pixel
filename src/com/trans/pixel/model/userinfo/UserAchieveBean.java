@@ -1,5 +1,7 @@
 package com.trans.pixel.model.userinfo;
 
+import com.trans.pixel.protoc.Commands.UserAchieve;
+
 import net.sf.json.JSONObject;
 
 public class UserAchieveBean {
@@ -44,6 +46,15 @@ public class UserAchieveBean {
 	}
 	public void setRewardId(int rewardId) {
 		this.rewardId = rewardId;
+	}
+	
+	public UserAchieve buildUserAchieve() {
+		UserAchieve.Builder builder = UserAchieve.newBuilder();
+		builder.setCompleteCount(completeCount);
+		builder.setCompleteId(completeId);
+		builder.setType(type);
+		
+		return builder.build();
 	}
 	
 	public static String toJson(UserAchieveBean userAchieve) {

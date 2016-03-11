@@ -14,6 +14,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
@@ -30,6 +31,7 @@ import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
+import com.trans.pixel.protoc.Commands.UserAchieve;
 import com.trans.pixel.protoc.Commands.UserEquip;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHero;
@@ -245,5 +247,14 @@ public class BaseCommandService {
 		}
 		
 		return userTeamBuilderList;
+	}
+	
+	protected List<UserAchieve> buildUserAchieveList(List<UserAchieveBean> userAchieveList) {
+		List<UserAchieve> userAchieveBuilderList = new ArrayList<UserAchieve>();
+		for (UserAchieveBean userAchieve : userAchieveList) {
+			userAchieveBuilderList.add(userAchieve.buildUserAchieve());
+		}
+		
+		return userAchieveBuilderList;
 	}
 }

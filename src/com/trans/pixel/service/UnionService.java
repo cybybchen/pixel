@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -38,6 +39,8 @@ public class UnionService extends FightService{
 	private UserService userService;
 	@Resource
 	private ServerRedisService serverRedisService;
+	@Resource
+	private AchieveService achieveService;
 	
 	public List<Union> getBaseUnions(UserBean user) {
 		return unionRedisService.getBaseUnions(user);
@@ -309,6 +312,12 @@ public class UnionService extends FightService{
 		}else{
 			return ErrorConst.UNION_NOT_FIGHT;
 		}
+		
+		/**
+		 * achieve type 114
+		 */
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
+		
 		return SuccessConst.UNION_FIGHT_SUCCESS;
 	}
 	

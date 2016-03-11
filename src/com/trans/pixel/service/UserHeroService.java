@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserHeroMapper;
 import com.trans.pixel.model.userinfo.UserHeroBean;
@@ -20,6 +21,8 @@ public class UserHeroService {
 	private UserHeroMapper userHeroMapper;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private AchieveService achieveService;
 	
 	public UserHeroBean selectUserHero(long userId, int heroId) {
 		UserHeroBean userHero = userHeroRedisService.selectUserHero(userId, heroId);
@@ -49,6 +52,11 @@ public class UserHeroService {
 		UserHeroBean userHero = selectUserHero(userId, heroId);
 		if (userHero == null) {
 			userHero = initUserHero(userId, heroId);
+			/**
+			 * achieve type 105
+			 */
+			
+			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_GET);
 		} 
 		
 		for (int i = 0; i < count; ++i) {

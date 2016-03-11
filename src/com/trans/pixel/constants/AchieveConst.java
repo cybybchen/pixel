@@ -14,7 +14,7 @@ public class AchieveConst {
 	public static final int TYPE_LOOTPVP_KILLBOSS = 111;//boss杀手
 	public static final int TYPE_GET_MOJING = 112;//魔晶爱好者
 	public static final int TYPE_HUANGCHENG_FIGHT = 113;//皇城霸主
-	public static final int TYPE_UNION_ATTACK = 114;//公会先锋
+	public static final int TYPE_UNION_ATTACK_SUCCESS = 114;//公会先锋
 	public static final int TYPE_HERO_RARE_2 = 115;//英雄培养-绿
 	public static final int TYPE_HERO_RARE_4 = 116;//英雄培养-蓝
 	public static final int TYPE_HERO_RARE_7 = 117;//英雄培养-紫

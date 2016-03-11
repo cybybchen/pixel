@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
@@ -45,6 +46,8 @@ public class PvpMapService {
 //	private UserMineService userMineService;
 //	@Resource
 //	private PvpXiaoguaiService pvpXiaoguaiService;
+	@Resource
+	private AchieveService achieveService;
 
 	public boolean unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user);
@@ -185,6 +188,12 @@ public class PvpMapService {
 			}
 			rewardService.doRewards(user, rewards.build());
 			redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
+			if (monster.getId() > 2000) {
+				/**
+				 * achieve type 111
+				 */
+				achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_KILLBOSS);
+			}
 		}
 		return rewards.build();
 	}
@@ -213,6 +222,10 @@ public class PvpMapService {
 				redis.saveMine(user.getId(), mine.build());
 			}
 		}
+		/**
+		 * achieve type 110
+		 */
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_ATTACK);
 		return true;
 	}
 	

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
@@ -31,6 +32,8 @@ public class RewardService {
 	private UserEquipService userEquipService;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private AchieveService achieveService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getUser(userId);
@@ -86,6 +89,10 @@ public class RewardService {
 					return true;
 				case RewardConst.PVPCOIN:
 					user.setPointPVP(user.getPointPVP() + rewardCount);
+					/**
+					 * achieve type 112
+					 */
+					achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_GET_MOJING, rewardCount);
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
 					user.setPointExpedition(user.getPointExpedition() + rewardCount);

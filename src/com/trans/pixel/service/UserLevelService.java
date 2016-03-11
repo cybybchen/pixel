@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.LevelConst;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.mapper.UserLevelMapper;
@@ -22,6 +23,8 @@ public class UserLevelService {
 	private UserLevelRedisService userLevelRedisService;
 	@Resource
 	private UserLevelMapper userLevelMapper;
+	@Resource
+	private AchieveService achieveService;
 	
 	public UserLevelBean selectUserLevelRecord(long userId) {
 		UserLevelBean userLevelRecordBean = userLevelRedisService.selectUserLevelRecord(userId);
@@ -52,6 +55,10 @@ public class UserLevelService {
 		switch (diff) {
 			case LevelConst.DIFF_PUTONG:
 				userLevelRecord.setPutongLevel(levelId);
+				/**
+				 * achieve type 107
+				 */
+				achieveService.sendAchieveScore(userLevelRecord.getUserId(), AchieveConst.TYPE_LEVEL);
 				break;
 			case LevelConst.DIFF_KUNNAN:
 				userLevelRecord.setKunnanLevel(UserLevelBean.updateXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg));

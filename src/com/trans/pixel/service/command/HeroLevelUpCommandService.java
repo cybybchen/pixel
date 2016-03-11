@@ -85,6 +85,7 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 			builder.setHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
 			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}
 	}
 	

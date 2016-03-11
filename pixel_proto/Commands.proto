@@ -664,6 +664,41 @@ message Chip {
 	required int32 mojing = 6;
 }
 
+message AchieveList {
+	repeated Achieve chengjiu = 1; 
+}
+
+message Achieve {
+	required int32 id = 1;
+	required string achievement = 2;
+	repeated ActivityOrder order = 3;
+}
+
+message ActivityOrder {
+	required int32 order = 1;
+	required string description = 2;
+	required int32 targetid = 3;
+	required int32 targetcount = 4;
+	required int32 rewardid0 = 5;
+	required string rewardname0 = 6;
+	required int32 rewardcount0 = 7;
+	required int32 rewardid1 = 8;
+	required string rewardname1 = 9;
+	required int32 rewardcount1 = 10;
+	required int32 rewardid2 = 11;
+	required string rewardname2 = 12;
+	required int32 rewardcount2 = 13;
+	required int32 rewardid3 = 14;
+	required string rewardname3 = 15;
+	required int32 rewardcount3 = 16;
+}
+
+message UserAchieve {
+	required int32 type = 1;
+	required int32 completeId = 2;
+	required int32 completeCount = 3;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1282,6 +1317,24 @@ message RequestSubmitZhanliCommand {
 	required int32 zhanli = 1;
 }
 
+message RequestAchieveRewardCommand {
+	required int32 type = 1;
+	required int32 id = 2;
+}
+
+message ResponseAchieveRewardCommand {
+	required UserAchieve userAchieve = 1;
+	required MultiReward rewards = 2;
+}
+
+message RequestAchieveListCommand {
+
+}
+
+message ResponseAchieveListCommand {
+	repeated UserAchieve userAchieve = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1382,6 +1435,8 @@ message RequestCommand {
 	optional RequestSaleEquipCommand saleEquipCommand = 67;
 	optional RequestDelFriendCommand delFriendCommand = 68;
 	optional RequestSubmitZhanliCommand submitZhanliCommand = 69;
+	optional RequestAchieveRewardCommand achieveRewardCommand = 70;
+	optional RequestAchieveListCommand achieveListCommand = 71;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1431,6 +1486,8 @@ message ResponseCommand {
 	optional ResponseFenjieEquipCommand fenjieEquipCommand = 36;
 	optional ResponseSignCommand signCommand = 37;
 	optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
+	optional ResponseAchieveRewardCommand achieveRewardCommand = 39;
+	optional ResponseAchieveListCommand achieveListCommand = 40;
 }
 
 

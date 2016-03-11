@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.RewardConst;
@@ -16,6 +17,7 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseLotteryCommand;
+import com.trans.pixel.service.AchieveService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LotteryService;
 import com.trans.pixel.service.RewardService;
@@ -34,6 +36,8 @@ public class LotteryCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private AchieveService achieveService;
 	
 	public void lottery(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
@@ -52,6 +56,11 @@ public class LotteryCommandService extends BaseCommandService {
 				return;	
 			}
 		}
+		
+		/**
+		 * achieve type 
+		 */
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOTTERY, count);
 		
 		ResponseLotteryCommand.Builder builder = ResponseLotteryCommand.newBuilder();
 		List<RewardBean> lotteryList = lotteryService.randomLotteryList(type, count);

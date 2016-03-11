@@ -5,6 +5,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.RequestAchieveListCommand;
+import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
@@ -23,6 +25,7 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
@@ -48,10 +51,6 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
-import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
-import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
-import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -73,6 +72,7 @@ import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
@@ -99,12 +99,15 @@ import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.service.command.AchieveCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
@@ -170,6 +173,8 @@ public class GameDataScreen extends RequestScreen {
 	private MohuaCommandService mohuaCommandService;
 	@Resource
 	private ZhanliCommandService zhanliCommandService;
+	@Resource
+	private AchieveCommandService AchieveCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -786,6 +791,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestSubmitZhanliCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		zhanliCommandService.submitZhanli(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAchieveRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		AchieveCommandService.achieveReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAchieveListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		AchieveCommandService.achieveList(cmd, responseBuilder, user);
 		return true;
 	}
 
