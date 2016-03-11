@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
@@ -15,6 +16,8 @@ public class CostService {
 	private UserService userService;
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private AchieveService achieveService;
 	
 	public boolean costAndUpdate(UserBean user, int itemId, int itemCount) {
 		boolean needUpdateUser = cost(user, itemId, itemCount);
@@ -58,6 +61,10 @@ public class CostService {
 				case RewardConst.JEWEL:
 					if(itemCount > user.getJewel()) return false;
 					user.setJewel(user.getJewel() - itemCount);
+					/**
+					 * 消耗钻石的成就
+					 */
+					achieveService.sendAchieveScore(userId, AchieveConst.TYPE_COST_JEWEL, itemCount);
 					return true;
 				case RewardConst.PVPCOIN:
 					if(itemCount > user.getPointPVP()) return false;

@@ -17,8 +17,10 @@ public class AchieveService {
 	}
 	public void sendAchieveScore(long userId, int type, int count) {
 		UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, type);
+		if (ua != null) {
 		ua.setCompleteCount(ua.getCompleteCount() + count);
 		
 		userAchieveService.updateUserAchieve(ua);
+		}
 	}
 }
