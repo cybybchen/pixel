@@ -87,7 +87,7 @@ public class UserFriendRedisService extends RedisService {
 	
 	public List<Long> getFriendIds(final long userId) {
 			List<Long> friendList = new ArrayList<Long>();
-			Iterator<String> it = this.hget(buildRedisKey(userId)).values().iterator();
+			Iterator<String> it = this.hget(buildRedisKey(userId)).keySet().iterator();
 			while (it.hasNext()) {
 				friendList.add(Long.parseLong(it.next()));
 			}
