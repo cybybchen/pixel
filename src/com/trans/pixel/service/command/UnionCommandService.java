@@ -3,7 +3,6 @@ package com.trans.pixel.service.command;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.naming.spi.DirStateFactory.Result;
 
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,6 @@ import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
-import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
@@ -83,13 +81,13 @@ public class UnionCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
-	public void delete(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		if(unionService.delete(user)){
-			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DELETE_UNION_SUCCESS));
-		}else
-			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.UNION_ERROR));
-		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-	}
+//	public void delete(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
+//		if(unionService.delete(user)){
+//			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DELETE_UNION_SUCCESS));
+//		}else
+//			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.UNION_ERROR));
+//		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+//	}
 	
 	public void apply(RequestApplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		int unionId = cmd.getUnionId();
@@ -102,11 +100,11 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
 			return;
 		}
-		unionService.reply(cmd.getIdList(), cmd.getReceive(), user);
+		ResultConst result = unionService.reply(cmd.getId(), cmd.getReceive(), user);
+		buildMessageOrErrorCommand(responseBuilder, result);
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_APPLY_SUCCESS));
 	}
 	
 	public void handleMember(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {

@@ -1021,15 +1021,12 @@ message RequestCreateUnionCommand {//创建工会
 	required string name = 2;
 }
 
-message RequestDeleteUnionCommand {
-}
-
 message RequestApplyUnionCommand {//提交工会申请
 	required int32 unionId = 1;
 }
 
 message RequestReplyUnionCommand {//回复公会申请
-	repeated int64 id = 1;
+	required int64 id = 1;
 	required bool receive = 2;
 }
 
@@ -1386,7 +1383,6 @@ message RequestCommand {
 	optional RequestUnionInfoCommand unionInfoCommand = 43;
 	optional RequestUnionListCommand unionListCommand = 44;
 	optional RequestCreateUnionCommand createUnionCommand = 31;
-	optional RequestDeleteUnionCommand deleteUnionCommand = 39;
 	optional RequestApplyUnionCommand applyUnionCommand = 32;
 	optional RequestReplyUnionCommand replyUnionCommand = 33;
 	optional RequestHandleUnionMemberCommand handleUnionCommand = 40;

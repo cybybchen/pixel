@@ -12,6 +12,7 @@ import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
@@ -35,7 +36,6 @@ import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDelFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
-import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
@@ -51,8 +51,6 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
-import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -102,6 +100,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
@@ -361,12 +360,6 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {
 		ladderCommandService.handleGetUserLadderRankListCommand(cmd, responseBuilder, user);
-		return true;
-	}
-	
-	@Override
-	protected boolean handleCommand(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		unionCommandService.delete(cmd, responseBuilder, user);
 		return true;
 	}
 	

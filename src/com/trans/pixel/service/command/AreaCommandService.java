@@ -67,6 +67,7 @@ public class AreaCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		else
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 
@@ -79,6 +80,7 @@ public class AreaCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
@@ -96,6 +98,7 @@ public class AreaCommandService extends BaseCommandService{
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){
 		ResultConst result = service.AttackResource(cmd.getId(), cmd.getRet(), user);
 		buildMessageOrErrorCommand(responseBuilder, result);
+		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
@@ -106,6 +109,7 @@ public class AreaCommandService extends BaseCommandService{
 	
 	public void AttackResourceMine(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user){
 		service.AttackResourceMine(cmd.getId(), cmd.getTeamid(), cmd.getRet(), user, responseBuilder);
+		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	

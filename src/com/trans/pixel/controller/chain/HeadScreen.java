@@ -14,6 +14,7 @@ import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
@@ -27,6 +28,7 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
@@ -36,7 +38,6 @@ import com.trans.pixel.protoc.Commands.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDelFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
-import com.trans.pixel.protoc.Commands.RequestDeleteUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
@@ -59,12 +60,6 @@ import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
-import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
-import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
-import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
-import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
-import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -79,6 +74,7 @@ import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
@@ -105,6 +101,9 @@ import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
@@ -337,12 +336,6 @@ public class HeadScreen extends RequestScreen {
 	
 	@Override
 	protected boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	@Override
-	protected boolean handleCommand(RequestDeleteUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;
 	}

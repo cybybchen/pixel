@@ -76,14 +76,13 @@ public class AreaRedisService extends RedisService{
 		long time = System.currentTimeMillis()/1000/300*300;
 		if(user.getAreaEnergy() >= 150){
 			user.setAreaEnergy(user.getAreaEnergy()-1);
-			user.setAreaEnergyTime(time);
 		}else if(time - user.getAreaEnergyTime() >= 300){
 			user.setAreaEnergy((int)(user.getAreaEnergy()-1+(time - user.getAreaEnergyTime()/300)));
 			if(user.getAreaEnergy() >= 150)
 				user.setAreaEnergy(149);
-			user.setAreaEnergyTime(time);
 		}else if(user.getAreaEnergy() > 0)
 			user.setAreaEnergy(user.getAreaEnergy()-1);
+		user.setAreaEnergyTime(time);
 		userRedisService.updateUser(user);
 	}
 	

@@ -17,11 +17,13 @@ import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.FightResult;
 import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 
@@ -30,6 +32,8 @@ public class UnionService extends FightService{
 
 	@Resource
 	private UnionRedisService unionRedisService;
+	@Resource
+	private AreaRedisService areaRedisService;
 	@Resource
 	private MailService mailService;
 	@Resource
@@ -195,6 +199,10 @@ public class UnionService extends FightService{
 	}
 	
 	public ResultConst quit(long id, Builder responseBuilder, UserBean user) {
+		if(isAreaFighting(id, user))
+			return ErrorConst.AREA_FIGHT_BUSY;
+		if(isBloodFighting(id, user))
+			return ErrorConst.BLOOD_FIGHT_BUSY;
 		if(id == user.getId()){
 			if(user.getUnionJob() == 3){
 				if(delete(user))
@@ -206,6 +214,7 @@ public class UnionService extends FightService{
 			user.setUnionId(0);
 			user.setUnionJob(0);
 			userService.updateUser(user);
+			userService.cache(user.getServerId(), user.buildShort());
 			return SuccessConst.QUIT_UNION_SUCCESS;
 		}else{
 			if(user.getUnionJob() < 2)
@@ -242,21 +251,60 @@ public class UnionService extends FightService{
 		unionRedisService.apply(unionId, user);
 	}
 	
-	public boolean reply(List<Long> ids, boolean receive, UserBean user) {
-		for(Long id : ids){
-			unionRedisService.reply(id, receive, user);
-			if(receive){
-				UserBean bean = userService.getUser(id);
-				if(bean != null && bean.getUnionId() == 0){
-					bean.setUnionId(user.getUnionId());
-					bean.setUnionJob(0);
-					userService.updateUser(bean);
-					unionRedisService.saveMember(bean.getId(), user);
-				}
+	public boolean isAreaFighting(long userId, UserBean user){
+		Map<String, AreaResource> resources = areaRedisService.getResources(user);
+		for(AreaResource resource : resources.values()){
+			if(resource.getState() != 0 && resource.hasOwner() && resource.getOwner().getId() == userId)
+				return true;
+			for(UserInfo userinfo : resource.getAttacksList()){
+				if(userinfo.getId() == userId)
+					return true;
+			}
+			for(UserInfo userinfo : resource.getDefensesList()){
+				if(userinfo.getId() == userId)
+					return true;
 			}
 		}
+		return false;
+	}
+	
+	public boolean isBloodFighting(long userId, UserBean user){
+		if(user.getUnionId() == 0)
+			return false;
+		Union.Builder builder = Union.newBuilder();
+		unionRedisService.getBaseUnion(builder, user.getUnionId(), user.getServerId());
+		if(builder.hasAttackId()){
+			List<UserInfo> users = unionRedisService.getFightQueue(builder.getId(), builder.getAttackId());
+			for(UserInfo userinfo : users){
+				if(userinfo.getId() == userId)
+					return true;
+			}
+		}
+		if(builder.hasDefendId()){
+			List<UserInfo> users = unionRedisService.getFightQueue(builder.getDefendId(), builder.getId());
+	 		for(UserInfo userinfo : users){
+				if(userinfo.getId() == userId)
+					return true;
+			}
+		}
+		return false;
+	}
+	
+	public ResultConst reply(Long userId, boolean receive, UserBean user) {
+		if(receive){
+			UserBean bean = userService.getUser(userId);
+			if(bean != null && bean.getUnionId() == 0){
+				if(isAreaFighting(userId, user))
+					return ErrorConst.AREA_FIGHT_BUSY;
+				bean.setUnionId(user.getUnionId());
+				bean.setUnionJob(0);
+				userService.updateUser(bean);
+				unionRedisService.saveMember(bean.getId(), user);
+			}
+		}
+		unionRedisService.reply(userId, receive, user);
 		
-		return receive;
+		return SuccessConst.HANDLE_UNION_APPLY_SUCCESS;
 	}
 	
 	public ResultConst upgrade(UserBean user) {

@@ -152,10 +152,24 @@ public class AreaFightService extends FightService{
 	}
 	
 	public ResultConst AttackResource(int id, boolean ret, UserBean user){
-		AreaResource resource = redis.getResource(id, user);
-		if(resource == null)
+		Map<String, AreaResource> resources = redis.getResources(user);
+		AreaResource.Builder builder = null;
+		for(AreaResource resource : resources.values()){
+			if(resource.getId() == id)
+				builder = AreaResource.newBuilder(resource);
+			if(resource.hasOwner() && resource.getOwner().getId() == user.getId())
+				return ErrorConst.RESOURCE_LAIRD;
+			for(UserInfo userinfo : resource.getAttacksList()){
+				if(userinfo.getId() == user.getId())
+					return ErrorConst.JOIN_AGAIN;
+			}
+			for(UserInfo userinfo : resource.getDefensesList()){
+				if(userinfo.getId() == user.getId())
+					return ErrorConst.JOIN_AGAIN;
+			}
+		}
+		if(builder == null)
 			return ErrorConst.MAPINFO_ERROR;
-		AreaResource.Builder builder = AreaResource.newBuilder(resource);
 		if (builder.getState() == 0) {//刺杀
 			if(!ret){
 				costEnergy(user);

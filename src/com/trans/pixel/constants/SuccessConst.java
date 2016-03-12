@@ -6,6 +6,7 @@ import java.util.Map;
 public enum SuccessConst implements ResultConst {
 	PURCHASE_SUCCESS(2001, "购买成功"),SHOP_REFRESH_SUCCESS(2001, "商店刷新成功"),UNION_FIGHT_SUCCESS(2002, "加入工会血战"),
 	UNLOCK_AREA(2003, "解锁了新的区域"),Add_AREA_FIGHT(2004, "你加入了这场战争，请等待号角吹响"),AREA_ATTACK_FAIL(2005, "刺杀失败"),
+//	AREA_ATTACK_FAIL(2005, "刺杀失败"),
 	
 	HERO_LEVELUP_SUCCESS(1, "人物升级成功"), STAR_LEVELUP_SUCCESS(2, "人物升星成功"), EQUIP_LEVELUP_SUCECESS(3, "人物装备升级成功"), ADD_EQUIP_SUCCESS(4,
     "人物装备添加成功"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), EXP_NOT_ENGHOU(1006, "升级所需经验不足"),
