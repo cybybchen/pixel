@@ -85,7 +85,7 @@ public class DateUtil {
      * @see #getDate(String, String, Date)
      */
     public static Date getDate(String date) {
-        return getDate(date, TimeConst.DEFAULT_DATE_FORMAT, null);
+        return getDate(date, TimeConst.DEFAULT_DATETIME_FORMAT, null);
     }
 
     /**

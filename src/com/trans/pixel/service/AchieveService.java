@@ -40,19 +40,19 @@ public class AchieveService {
 	
 	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int type, int rewardId) {
 		if (ua.getCompleteId() >= rewardId) {
-			return ErrorConst.ACHIEVE_REWARD_HAS_GET_ERROR;
+			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		}
 		
 		ActivityOrder order = getAchieveOrder(type, rewardId);
 		if (ua.getCompleteCount() < order.getTargetcount()) {
-			return ErrorConst.ACHIEVE_HAS_NOT_COMPLETE_ERROR;
+			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		}
 
 		multiReward = getMultiReward(order);	
 			
 		updateNextAchieve(ua);
 		
-		return SuccessConst.ACHIEVE_REWARD_SUCCESS;
+		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
 	private MultiReward.Builder getMultiReward(ActivityOrder order) {

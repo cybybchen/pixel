@@ -6,27 +6,28 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.StarBean;
-import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.service.redis.StarRedisService;
 
 @Service
 public class StarService {
 
 	@Resource
-	private RedisService redisService;
+	private StarRedisService starRedisService;
 	
 	public StarBean getStarBean(int star) {
-		String value = redisService.hget(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY, "" + star);
-		if (value == null) {
+		StarBean starBean = starRedisService.getStar(star);
+		if (starBean == null) {
 			return StarBean.fromJson(parseAndSaveConfig(star));
 		}
-		return StarBean.fromJson(value);
+		
+		return starBean;
 	}
 	
 	public String parseAndSaveConfig(int star) {
 		Map<String, String> starMap = StarBean.xmlParseToMap();
-		redisService.hputAll(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY, starMap);
-		return starMap.get(star+"");
+		starRedisService.putAllstar(starMap);
+		
+		return starMap.get(star + "");
 	}
 }

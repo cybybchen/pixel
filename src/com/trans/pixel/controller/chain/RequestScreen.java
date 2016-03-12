@@ -83,6 +83,8 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestRichangListCommand;
+import com.trans.pixel.protoc.Commands.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
@@ -241,6 +243,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestAchieveListCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestRichangListCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -620,6 +626,16 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasAchieveListCommand()) {
         	RequestAchieveListCommand cmd = request.getAchieveListCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasRichangRewardCommand()) {
+        	RequestRichangRewardCommand cmd = request.getRichangRewardCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasRichangListCommand()) {
+        	RequestRichangListCommand cmd = request.getRichangListCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

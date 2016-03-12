@@ -6,9 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.FenjieLevelBean;
-import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.service.redis.FenjieRedisService;
 
 @Service
 public class FenjieService {
@@ -16,13 +15,13 @@ public class FenjieService {
 	@Resource
 	private UserEquipService userEquipService;
 	@Resource
-	private RedisService redisService;
+	private FenjieRedisService fenjieRedisService;
 	
 	public FenjieLevelBean getFenjie(int level) {
-		FenjieLevelBean fenjie = FenjieLevelBean.fromJson(redisService.hget(buildRedisKey(), "" + level));
+		FenjieLevelBean fenjie = fenjieRedisService.getFenjie(level);
 		if (fenjie == null) {
 			parseAndSaveConfig();
-			fenjie = FenjieLevelBean.fromJson(redisService.hget(buildRedisKey(), "" + level));
+			fenjie = fenjieRedisService.getFenjie(level);
 		}
 		
 		return fenjie;
@@ -31,10 +30,8 @@ public class FenjieService {
 	
 	private void parseAndSaveConfig() {
 		Map<String, String> map = FenjieLevelBean.xmlParse();
-		redisService.hputAll(buildRedisKey(), map);
+		fenjieRedisService.putAll(map);
 	}
 	
-	private String buildRedisKey() {
-		return RedisKey.PREFIX + RedisKey.FENJIE_KEY;
-	}
+	
 }

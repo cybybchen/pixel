@@ -13,7 +13,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
@@ -55,7 +54,7 @@ public class PvpMapService {
 //	@Resource
 //	private PvpXiaoguaiService pvpXiaoguaiService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 
 	public boolean unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user);
@@ -235,9 +234,9 @@ public class PvpMapService {
 			redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
 			if (monster.getId() > 2000) {
 				/**
-				 * achieve type 111
+				 * PVP攻击BOSS的活动
 				 */
-				achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_KILLBOSS);
+				activityService.pvpAttackBossSuccessActivity(user.getId());
 			}
 		}
 		return rewards.build();
@@ -268,9 +267,9 @@ public class PvpMapService {
 			}
 		}
 		/**
-		 * achieve type 110
+		 * PVP攻击玩家的活动
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_ATTACK);
+		activityService.pvpAttackEnemyActivity(user.getId(), ret);
 		return true;
 	}
 	

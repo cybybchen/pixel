@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
@@ -26,7 +25,7 @@ import com.trans.pixel.protoc.Commands.ResponseGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserRank;
-import com.trans.pixel.service.AchieveService;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserService;
@@ -42,7 +41,7 @@ public class LadderCommandService extends BaseCommandService {
 	@Resource
 	private MailService mailService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public void handleGetLadderRankListCommand(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
 		ResponseGetLadderRankListCommand.Builder builder = ResponseGetLadderRankListCommand.newBuilder();
@@ -71,11 +70,12 @@ public class LadderCommandService extends BaseCommandService {
 		if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
 			pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
 			updateUserLadderHistoryTop(user, attackRank, responseBuilder);
-			/**
-			 * achieve type 109
-			 */
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LADDER);
 		} 
+		
+		/**
+		 * 天梯活动
+		 */
+		activityService.ladderAttackActivity(user.getId(), result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode());
 		
 		builder.setCode(result.getCode());
 		builder.setMsg(result.getMesssage());

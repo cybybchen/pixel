@@ -87,6 +87,8 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestRichangListCommand;
+import com.trans.pixel.protoc.Commands.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
@@ -109,6 +111,7 @@ import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AchieveCommandService;
+import com.trans.pixel.service.command.ActivityCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
@@ -176,6 +179,8 @@ public class GameDataScreen extends RequestScreen {
 	private ZhanliCommandService zhanliCommandService;
 	@Resource
 	private AchieveCommandService AchieveCommandService;
+	@Resource
+	private ActivityCommandService activityCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -810,6 +815,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestAchieveListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		AchieveCommandService.achieveList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRichangRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		activityCommandService.richangReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRichangListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		activityCommandService.richangList(cmd, responseBuilder, user);
 		return true;
 	}
 

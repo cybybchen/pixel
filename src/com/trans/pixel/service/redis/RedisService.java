@@ -255,7 +255,7 @@ public class RedisService {
 	/**
 	 * 设置单个值
 	 */
-	public void set(final String key, final String value) {
+	protected void set(final String key, final String value) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -276,7 +276,7 @@ public class RedisService {
     /**
      * 获取单个值
      */
-    public String get(final String key) {
+    protected String get(final String key) {
     	return redisTemplate.execute(new RedisCallback<String>() {
 			@Override
 			public String doInRedis(RedisConnection arg0)
@@ -292,7 +292,7 @@ public class RedisService {
 	 /**
     * 设置多个值(不超时)
     */
-	public void mset(final Map<String, String> keyvalue) {
+	protected void mset(final Map<String, String> keyvalue) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0) throws DataAccessException {
@@ -310,7 +310,7 @@ public class RedisService {
    /**
     * 获取多个值
     */
-   public List<String> mget(final List<String> key) {
+   protected List<String> mget(final List<String> key) {
 		return redisTemplate.execute(new RedisCallback<List<String>>() {
 			@Override
 			public List<String> doInRedis(RedisConnection arg0) throws DataAccessException {
@@ -323,7 +323,7 @@ public class RedisService {
 	 /**
     * 设置hashMap单个值
     */
-	public void hput(final String key, final String key2, final String value) {
+	protected void hput(final String key, final String key2, final String value) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -344,7 +344,7 @@ public class RedisService {
 	 /**
    * 设置HashMap多个值
    */
-	public void hputAll(final String key, final Map<String, String> keyvalue) {
+	protected void hputAll(final String key, final Map<String, String> keyvalue) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -365,7 +365,7 @@ public class RedisService {
     /**
      * 获取hashMap单个值
      */
-    public String hget(final String key, final String key2) {
+    protected String hget(final String key, final String key2) {
     	return redisTemplate.execute(new RedisCallback<String>() {
 			@Override
 			public String doInRedis(RedisConnection arg0)
@@ -381,7 +381,7 @@ public class RedisService {
     /**
      * 获取hashMap多个值
      */
-    public List<String> hget(final String key, final Collection<String> key2) {
+    protected List<String> hget(final String key, final Collection<String> key2) {
     	return redisTemplate.execute(new RedisCallback<List<String>>() {
 			@Override
 			public List<String> doInRedis(RedisConnection arg0)
@@ -397,7 +397,7 @@ public class RedisService {
     /**
      * 获取hashMap
      */
-    public Map<String, String> hget(final String key) {
+    protected Map<String, String> hget(final String key) {
     	return redisTemplate.execute(new RedisCallback<Map<String, String>>() {
 			@Override
 			public Map<String, String> doInRedis(RedisConnection arg0)
@@ -413,7 +413,7 @@ public class RedisService {
     /**
      * 删除hashMap单个值
      */
-    public void hdelete(final String key, final String key2) {
+    protected void hdelete(final String key, final String key2) {
     	redisTemplate.execute(new RedisCallback<String>() {
 			@Override
 			public String doInRedis(RedisConnection arg0)
@@ -430,7 +430,7 @@ public class RedisService {
 	/**
 	 * 添加set
 	 */
-	public void sadd(final String key, final String value) {
+	protected void sadd(final String key, final String value) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -447,7 +447,7 @@ public class RedisService {
     /**
      * 获取set
      */
-    public Set<String> smember(final String key) {
+    protected Set<String> smember(final String key) {
     	return redisTemplate.execute(new RedisCallback<Set<String>>() {
 			@Override
 			public Set<String> doInRedis(RedisConnection arg0)
@@ -495,7 +495,7 @@ public class RedisService {
 	/**
 	 * 添加zset
 	 */
-	public void zadd(final String key, final double score, final String value) {
+	protected void zadd(final String key, final double score, final String value) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -516,7 +516,7 @@ public class RedisService {
 	/**
 	 * 添加zset
 	 */
-	public void zincrby(final String key, final double score, final String value) {
+	protected void zincrby(final String key, final double score, final String value) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
@@ -537,7 +537,7 @@ public class RedisService {
     /**
      * 获取zset(倒序)
      */
-    public Set<TypedTuple<String>> zrangewithscore(final String key, final long start, final long end) {
+    protected Set<TypedTuple<String>> zrangewithscore(final String key, final long start, final long end) {
     	return redisTemplate.execute(new RedisCallback<Set<TypedTuple<String>>>() {
 			@Override
 			public Set<TypedTuple<String>> doInRedis(RedisConnection arg0)
@@ -553,7 +553,7 @@ public class RedisService {
     /**
      * 获取zset(倒序)
      */
-    public Set<String> zrange(final String key, final long start, final long end) {
+    protected Set<String> zrange(final String key, final long start, final long end) {
     	return redisTemplate.execute(new RedisCallback<Set<String>>() {
 			@Override
 			public Set<String> doInRedis(RedisConnection arg0)
@@ -569,7 +569,7 @@ public class RedisService {
     /**
      * 获取zset排名(倒序)
      */
-    public Long zrank(final String key, final String value) {
+    protected Long zrank(final String key, final String value) {
     	return redisTemplate.execute(new RedisCallback<Long>() {
 			@Override
 			public Long doInRedis(RedisConnection arg0)
@@ -585,7 +585,7 @@ public class RedisService {
     /**
      * 获取zset分数
      */
-    public Double zscore(final String key, final String value) {
+    protected Double zscore(final String key, final String value) {
     	return redisTemplate.execute(new RedisCallback<Double>() {
 			@Override
 			public Double doInRedis(RedisConnection arg0)
@@ -601,7 +601,7 @@ public class RedisService {
     /**
      * 获取list
      */
-    public String lindex(final String key, final int index) {
+    protected String lindex(final String key, final int index) {
     	return redisTemplate.execute(new RedisCallback<String>() {
 			@Override
 			public String doInRedis(RedisConnection arg0)
@@ -617,7 +617,7 @@ public class RedisService {
     /**
      * 设置list
      */
-    public Long lpush(final String key, final String value) {
+    protected Long lpush(final String key, final String value) {
     	return redisTemplate.execute(new RedisCallback<Long>() {
 			@Override
 			public Long doInRedis(RedisConnection arg0)
@@ -636,7 +636,7 @@ public class RedisService {
     /**
      * 获取list
      */
-    public String lpop(final String key) {
+    protected String lpop(final String key) {
     	return redisTemplate.execute(new RedisCallback<String>() {
 			@Override
 			public String doInRedis(RedisConnection arg0)
@@ -652,7 +652,7 @@ public class RedisService {
     /**
      * 设置list
      */
-    public Long rpush(final String key, final String value) {
+    protected Long rpush(final String key, final String value) {
     	return redisTemplate.execute(new RedisCallback<Long>() {
 			@Override
 			public Long doInRedis(RedisConnection arg0)
@@ -671,7 +671,7 @@ public class RedisService {
     /**
      * 获取list
      */
-    public String rpop(final String key) {
+    protected String rpop(final String key) {
     	return redisTemplate.execute(new RedisCallback<String>() {
 			@Override
 			public String doInRedis(RedisConnection arg0)
@@ -687,7 +687,7 @@ public class RedisService {
     /**
      * 检查key是否存在
      */
-    public Boolean exists(final String key) {
+    protected Boolean exists(final String key) {
     	return redisTemplate.execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)

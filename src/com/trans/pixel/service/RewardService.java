@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
@@ -33,7 +32,7 @@ public class RewardService {
 	@Resource
 	private UserPropService userPropService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getUser(userId);
@@ -90,9 +89,9 @@ public class RewardService {
 				case RewardConst.PVPCOIN:
 					user.setPointPVP(user.getPointPVP() + rewardCount);
 					/**
-					 * achieve type 112
+					 * 收集魔晶的活动
 					 */
-					achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_GET_MOJING, rewardCount);
+					activityService.storeMojingActivity(user.getId(), rewardCount);
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
 					user.setPointExpedition(user.getPointExpedition() + rewardCount);

@@ -23,7 +23,7 @@ public enum ErrorConst implements ResultConst {
     MOHUA_STAGE_REWARD_ERROR(1028, "魔化阶段奖励领取使用异常"), MOHUA_HP_REWARD_ERROR(1029, "魔化HP奖励领取使用异常"), MOHUA_HAS_SUBMIT_ERROR(1030, "该阶段已提交过"),
     MOHUA_HAS_FINISH_ERROR(1031, "已经全部完成，无法再次提交"), SEND_MAIL_ERROR(1031, "邮件发送异常"), NOT_ADD_SELF_ERROR(1032, "无法添加自己为好友"),
     FRIEND_NOT_EXIST(1033, "该玩家不存在"), VIP_IS_NOT_ENOUGH(1033, "玩家VIP等级不足"), EQUIP_SALE_ERROR(1034, "装备出售异常"),
-    ACHIEVE_REWARD_HAS_GET_ERROR(1035, "已领取过该成就奖励"), ACHIEVE_HAS_NOT_COMPLETE_ERROR(1036, "该成就未达到领取条件"), CALL_BROTHER_TIME_NOT_ENOUGH_ERROR(1037, "叫大哥时间未到"),
+    ACTIVITY_REWARD_HAS_GET_ERROR(1035, "该奖励已领取"), ACTIVITY_HAS_NOT_COMPLETE_ERROR(1036, "未达到领取条件"), CALL_BROTHER_TIME_NOT_ENOUGH_ERROR(1037, "叫大哥时间未到"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

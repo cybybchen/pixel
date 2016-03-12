@@ -20,7 +20,7 @@ public class RedisKey {
 	public static final String SERVERDATA = PREFIX+"ServerData_";
 	
 	//user key prefix
-//	public final static String USER_PREFIX = "user_";
+	public final static String USER_PREFIX = "user_";
 	public final static String USERDATA_PREFIX = "UserData_";
 	public final static String USERDAILYDATA_PREFIX = "UserDailyData_";
 	public final static String USERDATA = PREFIX+USERDATA_PREFIX;
@@ -155,6 +155,7 @@ public class RedisKey {
 	
 	//user achieve redis
 	public static final String USER_ACHIEVE_PREFIX = "user_achieve_";
+	public static final String USER_ACTIVITY_RICHANG_PREFIX = PREFIX + "RC_";
 	
 	//activity config redis
 	public static final String ACHIEVE_KEY = PREFIX + "key:achieve";

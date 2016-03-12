@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -45,7 +44,7 @@ public class UnionService extends FightService{
 	@Resource
 	private ServerRedisService serverRedisService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public List<Union> getBaseUnions(UserBean user) {
 		return unionRedisService.getBaseUnions(user);
@@ -175,6 +174,13 @@ public class UnionService extends FightService{
 		}
 		unionRedisService.saveUnion(attackUnion.build(), serverId);
 		unionRedisService.saveUnion(defendUnion.build(), serverId);
+		
+		/**
+		 * 工会血战的活动
+		 */
+		for (UserInfo user : attacks) {
+			activityService.unionAttack(user.getId(), attacksuccess);
+		}
 	}
 	
 	public Union create(int icon, String unionName, UserBean user) {
@@ -346,11 +352,6 @@ public class UnionService extends FightService{
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, herolist);
 			unionRedisService.attack(builder.getAttackId(), user);
-			
-			/**
-			 * achieve type 114
-			 */
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
 		}else if(user.getUnionJob() >= 2){
 			Union.Builder defendUnion = Union.newBuilder();
 			builder.setAttackId(attackId);

@@ -12,7 +12,7 @@ import com.trans.pixel.protoc.Commands.RichangList;
 
 @Service
 public class ActivityRedisService extends RedisService {
-	private static final String ACTIVITY_FILE_NAME = "lol_taskrichang.xml";
+	private static final String ACTIVITY_FILE_NAME = "task/lol_taskrichang.xml";
 	
 	public Richang getRichang(int id) {
 		String value = hget(RedisKey.ACTIVITY_RICHANG_KEY, "" + id);
@@ -28,7 +28,7 @@ public class ActivityRedisService extends RedisService {
 		return null;
 	}
 	
-	public Map<String, Richang> getRichangConfig() {
+	private Map<String, Richang> getRichangConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_RICHANG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Richang> map = buildRichangConfig();

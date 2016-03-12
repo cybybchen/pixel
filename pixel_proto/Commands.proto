@@ -708,9 +708,9 @@ message Richang {
 	repeated ActivityOrder order = 5;
 }
 
-message UserRichangInfo {
+message UserRichang {
 	required int32 type = 1;
-	required int32 targetcount = 2;
+	required int32 completeCount = 2;
 	repeated int32 rewardOrder = 3;
 }
 
@@ -1366,6 +1366,24 @@ message RequestUnlockLevelCommand {
 	required int32 levelId = 1;
 }
 
+message RequestRichangRewardCommand {
+	required int32 type = 1;
+	required int32 id = 2;
+}
+
+message ResponseRichangRewardCommand {
+	required UserRichang userRichang = 1;
+	required MultiReward rewards = 2;
+}
+
+message RequestRichangListCommand {
+
+}
+
+message ResponseRichangListCommand {
+	repeated UserRichang userRichang = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1469,6 +1487,8 @@ message RequestCommand {
 	optional RequestAchieveRewardCommand achieveRewardCommand = 70;
 	optional RequestAchieveListCommand achieveListCommand = 71;
 	optional RequestUnlockLevelCommand unlockLevelCommand = 72;
+	optional RequestRichangRewardCommand richangRewardCommand = 73;
+	optional RequestRichangListCommand richangListCommand = 74;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1521,6 +1541,8 @@ message ResponseCommand {
 	optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
 	optional ResponseAchieveRewardCommand achieveRewardCommand = 39;
 	optional ResponseAchieveListCommand achieveListCommand = 40;
+	optional ResponseRichangRewardCommand richangRewardCommand = 41;
+	optional ResponseRichangListCommand richangListCommand = 42;
 }
 
 
