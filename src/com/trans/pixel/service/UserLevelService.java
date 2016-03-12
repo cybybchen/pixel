@@ -77,6 +77,7 @@ public class UserLevelService {
 		UserLevelBean userLevelRecordBean = new UserLevelBean();
 		userLevelRecordBean.setUserId(userId);
 		userLevelRecordBean.setPutongLevel(0);
+		userLevelRecordBean.setUnlockedLevel(1);
 		log.debug("**********************************");
 		log.debug("111:" + LevelConst.DIFF_KUNNAN);
 		userLevelRecordBean.setKunnanLevel(UserLevelBean.initLevelRecord(levelService.getXiaoguanListByDiff(LevelConst.DIFF_KUNNAN)));
