@@ -77,17 +77,17 @@ public class PvpMapRedisService extends RedisService{
 
 	public int addUserBuff(UserBean user, int id, int buffcount) {
 		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), id+"");
-		if(value != null){
-			int buff = Integer.parseInt(value);
-			PVPMapList.Builder maplist = getMapList(user);
-			for(PVPMap map : maplist.getFieldList()){
-				if(map.getFieldid() == id){
-					buff += buffcount;
-					if(buff >= map.getBufflimit())
-						buff = map.getBufflimit();
-					saveUserBuff(user, id, buff);
-					return buff;
-				}
+		int buff = 0;
+		if(value != null)
+			buff = Integer.parseInt(value);
+		PVPMapList.Builder maplist = getMapList(user);
+		for(PVPMap map : maplist.getFieldList()){
+			if(map.getFieldid() == id){
+				buff += buffcount;
+				if(buff >= map.getBufflimit())
+					buff = map.getBufflimit();
+				saveUserBuff(user, id, buff);
+				return buff;
 			}
 		}
 		return 0;
