@@ -156,6 +156,7 @@ public class RedisKey {
 	//user achieve redis
 	public static final String USER_ACHIEVE_PREFIX = "user_achieve_";
 	
-	//achieve config redis
+	//activity config redis
 	public static final String ACHIEVE_KEY = PREFIX + "key:achieve";
+	public static final String ACTIVITY_RICHANG_KEY = PREFIX + "key:richang";
 }

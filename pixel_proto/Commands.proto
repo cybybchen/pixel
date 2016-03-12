@@ -695,6 +695,24 @@ message ActivityOrder {
 	required int32 rewardcount3 = 16;
 }
 
+message RichangList {
+	repeated Richang richang = 1;
+}
+
+message Richang {
+	required int32 id = 1;
+	required string activity = 2;
+	required string starttime = 3;
+	required string endtime = 4;
+	repeated ActivityOrder order = 5;
+}
+
+message UserRichangInfo {
+	required int32 type = 1;
+	required int32 targetcount = 2;
+	repeated int32 rewardOrder = 3;
+}
+
 message UserAchieve {
 	required int32 type = 1;
 	required int32 completeId = 2;

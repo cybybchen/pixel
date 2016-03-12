@@ -129,7 +129,6 @@ public class LevelService {
 				if (levelId != userLevelRecord.getPutongLevel() + 1)
 					return true;
 				
-				userLevelRecord.setUnlockedLevel(levelId);
 				return false;
 			default:
 				return true;
