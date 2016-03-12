@@ -11,6 +11,7 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
@@ -61,12 +62,6 @@ public class MailCommandService extends BaseCommandService {
 		int type = cmd.getType();
 		
 		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
-//			UserFriendBean userFriend = userFriendService.updateFriendCallTime(user.getId(), toUserId);
-//			if (userFriend == null) {
-//				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.SEND_MAIL_ERROR);
-//	            responseBuilder.setErrorCommand(errorCommand);
-//	            return;
-//			}
 			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
 			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
@@ -75,6 +70,12 @@ public class MailCommandService extends BaseCommandService {
 			}
 			if (!userFriendService.canCallBrother(user.getId(), toUserId)) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.CALL_BROTHER_TIME_NOT_ENOUGH_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+			UserFriendBean userFriend = userFriendService.updateFriendCallTime(user.getId(), toUserId);
+			if (userFriend == null) {
+				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.SEND_MAIL_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
