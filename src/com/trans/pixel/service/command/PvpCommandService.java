@@ -62,7 +62,7 @@ public class PvpCommandService extends BaseCommandService {
 		MultiReward rewards = pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet());
 		if(rewards == null)
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
-		if(rewards.getLootCount() > 0)
+		else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards);
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}

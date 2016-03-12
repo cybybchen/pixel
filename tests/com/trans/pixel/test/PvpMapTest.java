@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
+import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
@@ -19,9 +20,10 @@ public class PvpMapTest extends BaseTest {
 
 	@Test
 	public void testArea() {
-//		login();
+		login();
 		testPvpMap();
-		unlockMap();
+		attackMonster();
+//		unlockMap();
 //		testGetMineInfo();
 //		attackMine();
 	}
@@ -61,6 +63,22 @@ public class PvpMapTest extends BaseTest {
 		RequestPVPMineInfoCommand.Builder builder = RequestPVPMineInfoCommand.newBuilder();
 		builder.setId(10501);
 		requestBuilder.setPvpMineInfoCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        logger.info(response.getAllFields());
+	}
+	
+	private void attackMonster() {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestAttackPVPMonsterCommand.Builder builder = RequestAttackPVPMonsterCommand.newBuilder();
+		builder.setPositionid(20306);
+		builder.setRet(true);
+		requestBuilder.setAttackPVPMonsterCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
 		byte[] reqData = reqcmd.toByteArray();

@@ -23,6 +23,8 @@
 		<result property="ladderModeHistoryTop" column="ladder_mode_history_top" />
 		<result property="loginDays" column="login_days" />
 		<result property="signDays" column="sign_days" />
+		<result property="pvpUnlock" column="pvp_unlock" />
+		<result property="areaUnlock" column="area_unlock" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -58,7 +60,7 @@
 		exp=#{exp}, point_pvp=#{pointPVP}, point_ladder=#{pointLadder}, point_expedition=#{pointExpedition},
 		point_union=#{pointUnion}, receive_message_timestamp=#{receiveMessageTimeStamp},vip=#{vip},
 		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}, ladder_mode_history_top=#{ladderModeHistoryTop},
-		login_days=#{loginDays}, sign_days=#{signDays}
+		login_days=#{loginDays}, sign_days=#{signDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock}
 		WHERE id=#{id}
 	</update>
 

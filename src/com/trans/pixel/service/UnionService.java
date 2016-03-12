@@ -329,6 +329,7 @@ public class UnionService extends FightService{
 				user.setUnionJob(0);
 				unionRedisService.saveMember(user.getId(), user);
 				userService.updateUser(user);
+				userService.cache(user.getServerId(), user.buildShort());
 			}
 			bean.setUnionJob(job);
 			unionRedisService.saveMember(bean.getId(), user);
