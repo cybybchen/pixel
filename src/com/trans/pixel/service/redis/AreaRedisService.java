@@ -63,6 +63,10 @@ public class AreaRedisService extends RedisService{
 			return builder;
 		}else{
 			AreaMode.Builder areamode = buildAreaMode();
+			for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
+				if(areainfo.getId() <= user.getAreaUnlock())
+					areainfo.setOpened(true);
+			}
 			saveAreaMode(areamode.build(), user);
 			return areamode;
 		}

@@ -412,6 +412,8 @@ public class AreaFightService extends FightService{
 			if(id == areainfo.getId()){
 				if(zhanli >= areainfo.getZhanli()){
 					areainfo.setOpened(true);
+					user.setAreaUnlock(id);
+					userService.updateUserDailyData(user);
 					redis.saveAreaMode(areamode.build(), user);
 					return true;
 				}
@@ -434,8 +436,8 @@ public class AreaFightService extends FightService{
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
-//			if(!areabuilder.getOpened())
-//				continue;
+			if(!areabuilder.getOpened())
+				continue;
 			// 更新世界BOSS
 			for (AreaBoss.Builder bossbuilder : bossMap.values()) {
 				if(bossbuilder.getBelongto() == areabuilder.getId()){

@@ -62,6 +62,8 @@ public class PvpMapService {
 			if(fieldid == map.getFieldid()){
 				if(zhanli >= map.getZhanli()){
 					map.setOpened(true);
+					user.setPvpUnlock(fieldid);
+					userService.updateUserDailyData(user);
 					redis.saveMapList(maplist.build(), user);
 					return true;
 				}

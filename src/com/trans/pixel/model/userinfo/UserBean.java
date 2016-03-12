@@ -53,6 +53,32 @@ public class UserBean {
 	private int loginDays = 0;
 	private long areaMonsterRefreshTime = 0;
 	private int areaEnergy = 0;
+	private int areaUnlock = 0;
+	private int pvpUnlock = 0;
+	/**
+	 * 区域解锁进度
+	 */
+	public int getAreaUnlock() {
+		return areaUnlock;
+	}
+	/**
+	 * 区域解锁进度
+	 */
+	public void setAreaUnlock(int areaUnlock) {
+		this.areaUnlock = areaUnlock;
+	}
+	/**
+	 * 挂机pvp解锁进度
+	 */
+	public int getPvpUnlock() {
+		return pvpUnlock;
+	}
+	/**
+	 * 挂机pvp解锁进度
+	 */
+	public void setPvpUnlock(int pvpUnlock) {
+		this.pvpUnlock = pvpUnlock;
+	}
 	/**
 	 * 疲劳值
 	 */
