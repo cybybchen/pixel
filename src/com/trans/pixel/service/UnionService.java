@@ -226,6 +226,7 @@ public class UnionService extends FightService{
 			bean.setUnionId(0);
 			bean.setUnionJob(0);
 			userService.updateUser(bean);
+			userService.cache(user.getServerId(), bean.buildShort());
 			return SuccessConst.QUIT_UNION_MEMBER_SUCCESS;
 		}
 		
@@ -299,6 +300,7 @@ public class UnionService extends FightService{
 				bean.setUnionId(user.getUnionId());
 				bean.setUnionJob(0);
 				userService.updateUser(bean);
+				userService.cache(user.getServerId(), bean.buildShort());
 				unionRedisService.saveMember(bean.getId(), user);
 			}
 		}
@@ -331,6 +333,7 @@ public class UnionService extends FightService{
 			bean.setUnionJob(job);
 			unionRedisService.saveMember(bean.getId(), user);
 			userService.updateUser(bean);
+			userService.cache(user.getServerId(), bean.buildShort());
 		}
 		return true;
 	}
