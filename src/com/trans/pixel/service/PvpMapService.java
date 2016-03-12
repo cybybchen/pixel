@@ -79,6 +79,8 @@ public class PvpMapService {
 			if(count >= 20)
 				count = 20;
 			long myrank = rankService.getMyZhanliRank(user);
+			if(myrank < 0)
+				myrank -= count;
 			List<UserInfo> ranks = null;
 			if(myrank - count <= 0)
 				ranks = rankService.getZhanliRanks(user, 0, myrank+count);

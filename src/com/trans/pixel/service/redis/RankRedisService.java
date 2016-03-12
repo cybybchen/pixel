@@ -26,8 +26,14 @@ public class RankRedisService extends RedisService{
 		this.zremove(RedisKey.ZHANLI_RANK+serverId, userId+"");
 	}
 	
+	/**
+	 * return -1 when cannot find in rank
+	 */
 	public long getMyZhanliRank(final UserBean user) {
-		return this.zrank(RedisKey.ZHANLI_RANK+user.getServerId(), user.getId()+"");
+		Long rank = this.zrank(RedisKey.ZHANLI_RANK+user.getServerId(), user.getId()+"");
+		if(rank == null)
+			rank = -1L;
+		return rank;
 	}
 	
 	public List<UserInfo> getZhanliRanks(final UserBean user) {
