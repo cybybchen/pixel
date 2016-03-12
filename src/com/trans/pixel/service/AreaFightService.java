@@ -168,7 +168,7 @@ public class AreaFightService extends FightService{
 				builder.setAttackerId(user.getUnionId());
 			}else{
 				builder.setMessage("领主已经被"+user.getUserName()+"刺杀");
-				builder.setOwner(user.buildUnionUser());
+				builder.setOwner(user.buildUnionShort());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
@@ -180,13 +180,13 @@ public class AreaFightService extends FightService{
 					if(user.getId() == userinfo.getId())
 						return ErrorConst.JOIN_AGAIN;
 				}
-				builder.addDefenses(user.buildUnionUser());
+				builder.addDefenses(user.buildUnionShort());
 			}else{//进攻
 				for(UserInfo userinfo : builder.getAttacksList()){
 					if(user.getId() == userinfo.getId())
 						return ErrorConst.JOIN_AGAIN;
 				}
-				builder.addAttacks(user.buildUnionUser());
+				builder.addAttacks(user.buildUnionShort());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;

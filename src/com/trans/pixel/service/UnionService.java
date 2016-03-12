@@ -19,6 +19,7 @@ import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.FightResult;
 import com.trans.pixel.protoc.Commands.FightResultList;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.ServerRedisService;
@@ -51,12 +52,8 @@ public class UnionService extends FightService{
 			return null;
 		Union union = unionRedisService.getUnion(user);
 		if(union == null && user.getUnionId() != 0){//load union from db
-			List<UnionBean> unionbeans = unionMapper.selectUnionsByServerId(user.getServerId());
-			List<Union> unions = new ArrayList<Union>();
-			for(UnionBean bean : unionbeans){
-				unions.add(bean.build());
-			}
-			unionRedisService.saveUnions(unions, user);
+			UnionBean unionbean = unionMapper.selectUnionById(user.getUnionId());
+			unionRedisService.saveUnion(unionbean.build(), user);
 			union = unionRedisService.getUnion(user);
 			if(union != null && union.getMembersCount() == 0){//load members from db
 				List<UserBean> beans = userService.getUserByUnionId(user.getUnionId());
@@ -190,36 +187,40 @@ public class UnionService extends FightService{
 		userService.updateUser(user);
 		Union.Builder builder = Union.newBuilder(union.build());
 		List<UserInfo> members = new ArrayList<UserInfo>();
-		members.add(user.buildUnionUser());
+		members.add(user.buildShort());
 		unionRedisService.saveMember(user.getId(), user);
 		builder.addAllMembers(members);
 		
 		return builder.build();
 	}
 	
-	public void quit(long id, UserBean user) {
+	public ResultConst quit(long id, Builder responseBuilder, UserBean user) {
 		if(id == user.getId()){
-			if(user.getUnionJob() == 3)
-				return;
+			if(user.getUnionJob() == 3){
+				if(delete(user))
+					return SuccessConst.DELETE_UNION_SUCCESS;
+				else
+					return ErrorConst.UNIONLEADER_QUIT;
+			}
 			unionRedisService.quit(id, user);
 			user.setUnionId(0);
 			user.setUnionJob(0);
 			userService.updateUser(user);
+			return SuccessConst.QUIT_UNION_SUCCESS;
 		}else{
 			if(user.getUnionJob() < 2)
-				return;
+				return ErrorConst.PERMISSION_DENIED;
 			UserBean bean = userService.getUser(id);
-			if(bean.getUnionJob() >= 2)
-				return;
+			if(bean.getUnionJob() >= 1 && user.getUnionJob() < 3)
+				return ErrorConst.PERMISSION_DENIED;
 			unionRedisService.quit(id, user);
 			bean.setUnionId(0);
 			bean.setUnionJob(0);
 			userService.updateUser(bean);
+			return SuccessConst.QUIT_UNION_MEMBER_SUCCESS;
 		}
-	}
-	
-	public void quit(UserBean user) {
-		quit(user.getId(), user);
+		
+		
 	}
 	
 	public boolean delete(UserBean user) {
@@ -270,15 +271,15 @@ public class UnionService extends FightService{
 	}
 	
 	public boolean handleMember(long id, int job, UserBean user) {
-		if(user.getUnionJob() < 2 || id == user.getId())
+		if(user.getUnionJob() < 3)
 			return false;
-		if(user.getUnionJob() == 3 && job == 3){
-			user.setUnionJob(0);
-			unionRedisService.saveMember(user.getId(), user);
-			userService.updateUser(user);
-		}
 		UserBean bean = userService.getUser(id);
 		if(bean.getUnionId() == user.getUnionId()){
+			if(job == 3){//会长转让
+				user.setUnionJob(0);
+				unionRedisService.saveMember(user.getId(), user);
+				userService.updateUser(user);
+			}
 			bean.setUnionJob(job);
 			unionRedisService.saveMember(bean.getId(), user);
 			userService.updateUser(bean);

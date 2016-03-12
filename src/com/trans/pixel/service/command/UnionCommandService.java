@@ -65,27 +65,21 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void quit(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		if(cmd.hasId()){
-			if(user.getUnionJob() < 2){
-				responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
-				return;
-			}
-			unionService.quit(cmd.getId(), user);
-		}else{
-			if(user.getUnionJob() == 3){
-				responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.UNIONLEADER_QUIT));
-				return;
-			}
-			unionService.quit(user);
-		}
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand
+				.newBuilder();
+		long id = user.getId();
+		if (cmd.hasId())
+			id = cmd.getId();
+
+		unionService.quit(id, responseBuilder, user);
 
 		Union union = unionService.getUnion(user);
 		if (union != null) {
 			builder.setUnion(union);
 			responseBuilder.setUnionInfoCommand(builder.build());
 		}
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.QUIT_UNION_SUCCESS));
+		responseBuilder.setMessageCommand(super
+				.buildMessageCommand(SuccessConst.QUIT_UNION_SUCCESS));
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	

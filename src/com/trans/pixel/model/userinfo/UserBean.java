@@ -635,10 +635,24 @@ public class UserBean {
 		builder.setName(name);
 //		builder.setServerId(serverId);
 		builder.setVip(vip);
-		builder.setZhanli(zhanli);
+		builder.setZhanli(zhanliMax);
 		builder.setUnionId(unionId);
 		builder.setUnionJob(unionJob);
 		builder.setLastLoginTime(lastLoginTime);
+		return builder.build();
+	}
+	
+	public UserInfo buildUnionShort() {
+		UserInfo.Builder builder = UserInfo.newBuilder();
+		builder.setId(id);
+//		builder.setAccount(account);
+//		builder.setIcon(icon);
+//		builder.setName(name);
+//		builder.setServerId(serverId);
+		builder.setUnionId(unionId);
+//		builder.setUnionJob(unionJob);
+//		builder.setZhanli(zhanliMax);
+//		builder.setLastLoginTime(lastLoginTime);
 		return builder.build();
 	}
 	
@@ -651,7 +665,7 @@ public class UserBean {
 //		builder.setServerId(serverId);
 		builder.setUnionId(unionId);
 		builder.setUnionJob(unionJob);
-		builder.setZhanli(zhanli);
+		builder.setZhanli(zhanliMax);
 		builder.setLastLoginTime(lastLoginTime);
 		return builder.build();
 	}
