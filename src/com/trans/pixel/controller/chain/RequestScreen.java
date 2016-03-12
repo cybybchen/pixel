@@ -47,6 +47,8 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -277,6 +279,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -792,6 +796,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//CollectResourceMineCommand
                 result = handleCommand(cmd, responseBuilder, user);//CollectResourceMineCommand
         }//CollectResourceMineCommand
+        if (request.hasAreaResourceCommand()) {
+            RequestAreaResourceCommand cmd = request.getAreaResourceCommand();
+            if (result)//AreaResourceCommand
+                result = handleCommand(cmd, responseBuilder, user);//AreaResourceCommand
+        }//AreaResourceCommand
+        if (request.hasUnlockLevelCommand()) {
+            RequestUnlockLevelCommand cmd = request.getUnlockLevelCommand();
+            if (result)//UnlockLevelCommand
+                result = handleCommand(cmd, responseBuilder, user);//UnlockLevelCommand
+        }//UnlockLevelCommand
         //call handleCommand here
         
         return result;

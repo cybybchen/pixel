@@ -11,8 +11,10 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaInfo;
+import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
@@ -21,6 +23,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
+import com.trans.pixel.protoc.Commands.ResponseAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.Team;
@@ -77,6 +80,17 @@ public class AreaCommandService extends BaseCommandService{
 		else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		responseBuilder.setAreaCommand(getAreas(user));
+	}
+	
+	public void resourceInfo(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user){
+		AreaResource resource = service.getResource(cmd.getResourceId(), user);
+		if(resource == null){
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+			return;
+		}
+		ResponseAreaResourceCommand.Builder arearesource = ResponseAreaResourceCommand.newBuilder();
+		arearesource.setResource(resource);
+		responseBuilder.setAreaResourceCommand(arearesource);
 	}
 	
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){

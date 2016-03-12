@@ -63,6 +63,8 @@ import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
+import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
+import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
@@ -551,6 +553,16 @@ public class HeadScreen extends RequestScreen {
 		// TODO CollectResourceMineCommand method
 		return true;//CollectResourceMineCommand
 	}//CollectResourceMineCommand
+	@Override//AreaResourceCommand
+	protected boolean handleCommand(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO AreaResourceCommand method
+		return true;//AreaResourceCommand
+	}//AreaResourceCommand
+	@Override//UnlockLevelCommand
+	protected boolean handleCommand(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UnlockLevelCommand method
+		return true;//UnlockLevelCommand
+	}//UnlockLevelCommand
 	//add handleCommand here
 
 	@Override

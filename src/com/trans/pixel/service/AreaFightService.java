@@ -406,6 +406,10 @@ public class AreaFightService extends FightService{
 		return false;
 	}
 
+	public AreaResource getResource(int id, UserBean user) {
+		return redis.getResource(id,user);
+	}
+
 	public AreaMode getAreas(UserBean user) {
 		AreaMode.Builder areamodebuilder = redis.getAreaMode(user);
 //		Map<String, MultiReward> monsterrewardMap = redis.getAreaMonsterRewards();
