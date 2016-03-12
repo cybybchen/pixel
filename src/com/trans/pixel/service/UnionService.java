@@ -364,11 +364,6 @@ public class UnionService extends FightService{
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, herolist);
 			unionRedisService.attack(builder.getAttackId(), user);
-			
-			/**
-			 * achieve type 114
-			 */
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
 		}else if(user.getUnionJob() >= 2 && attackId != 0 && unionRedisService.now() > builder.getAttackEndTime()){
 			Union.Builder defendUnion = Union.newBuilder();
 			builder.setAttackId(attackId);

@@ -60,7 +60,7 @@ public class AreaCommandService extends BaseCommandService{
 		return builder.build();
 	}
 
-	private void useAreaEquips(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user){
+	public void useAreaEquips(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user){
 		ResultConst result = service.useAreaEquips(cmd.getEquipId(), responseBuilder, user);
 		if(result instanceof ErrorConst)
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
