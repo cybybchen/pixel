@@ -74,32 +74,32 @@ public class UnionService extends FightService{
 		if(union == null)
 			return null;
 		Union.Builder builder = Union.newBuilder(union);
-		
+
 		if(union.hasAttackId()){
-			if(builder.getAttackEndTime() < unionRedisService.now()){
-				builder.clearAttackId();
-				builder.clearAttackEndTime();
-				if(unionRedisService.setLock("Union_"+builder.getId()))
-					unionRedisService.saveUnion(builder.build(), user);
+//			if(builder.getAttackEndTime() < unionRedisService.now()){
+//				builder.clearAttackId();
+//				builder.clearAttackEndTime();
+//				if(unionRedisService.setLock("Union_"+builder.getId()))
+//					unionRedisService.saveUnion(builder.build(), user);
 //			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//进攻结算
 //				 bloodFight(union.getId(), union.getAttackId(), user.getServerId());
-			}else{
+//			}else{
 				List<UserInfo> users = unionRedisService.getFightQueue(union.getId(), union.getAttackId());
 				builder.addAllAttacks(users);
-			}
+//			}
 		}
 		if(union.hasDefendId()){
-			if(builder.getDefendEndTime() < unionRedisService.now()){
-				builder.clearDefendId();
-				builder.clearDefendEndTime();
-				if(unionRedisService.setLock("Union_"+builder.getId()))
-					unionRedisService.saveUnion(builder.build(), user);
+//			if(builder.getDefendEndTime() < unionRedisService.now()){
+//				builder.clearDefendId();
+//				builder.clearDefendEndTime();
+//				if(unionRedisService.setLock("Union_"+builder.getId()))
+//					unionRedisService.saveUnion(builder.build(), user);
 //		 	if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//防守结算
 //		 		bloodFight(union.getDefendId(), union.getId(), user.getServerId());
-		 	}else{
+//		 	}else{
 		 		List<UserInfo> users = unionRedisService.getFightQueue(union.getDefendId(), union.getId());
 		 		builder.addAllDefends(users);
-		 	}
+//		 	}
 		}
 		return builder.build();
 	}

@@ -191,6 +191,7 @@ message Union {
 	required string name = 2;
 	required int32 icon = 3;
 	required int32 level = 4;
+	optional int32 zhanli = 16;
 	optional int32 rank = 5;
 	optional int32 point = 6;
 	repeated UserInfo members = 7;

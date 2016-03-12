@@ -459,11 +459,27 @@ public class RedisService {
 			}
 		});
     }
-
+	
+    /**
+     * 删除set
+     */
+    public boolean sremove(final String key, final String value) {
+    	return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundSetOperations<String, String> Ops = redisTemplate
+						.boundSetOps(key);
+				
+				return Ops.remove(value);
+			}
+		});
+    }
+    
     /**
      * 删除zset排名
      */
-    public boolean zremove(final String key, final String value) {
+    protected boolean zremove(final String key, final String value) {
     	return redisTemplate.execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)

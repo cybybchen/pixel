@@ -45,6 +45,27 @@ public class UnionRedisService extends RedisService{
 			}
 		}
 		List<UserInfo> members = getMembers(user);
+		Collections.sort(members, new Comparator<UserInfo>() {
+			public int compare(UserInfo userinfo1, UserInfo userinfo2) {
+				return userinfo2.getZhanli() - userinfo1.getZhanli();
+			}
+		});
+		int index = 0;
+		int zhanli = 0;
+		for(UserInfo member : members){
+			if(index < 10)
+				zhanli += member.getZhanli()*6/10;
+			else if(index < 20)
+				zhanli += member.getZhanli()*3/10;
+			else if(index < 30)
+				zhanli += member.getZhanli()/10;
+			index++;
+		}
+		if(zhanli != unionbuilder.getZhanli()){
+			unionbuilder.setZhanli(zhanli);
+			if(setLock("Union_"+unionbuilder.getId()))
+				saveUnion(unionbuilder.build(), user);
+		}
 		unionbuilder.addAllMembers(members);
 		return unionbuilder.build();
 	}
@@ -130,7 +151,7 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public void quit(long id, UserBean user){
-		this.hdelete(getUnionMemberKey(user), id+"");
+		this.sremove(getUnionMemberKey(user), id+"");
 	}
 	
 //	public List<UnionApply> getApplies(final int unionId) {
