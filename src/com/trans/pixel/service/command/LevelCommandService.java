@@ -158,16 +158,16 @@ public class LevelCommandService extends BaseCommandService {
 	
 	public void levelUnlock(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
-		int levelId = cmd.getLevelId();
+		int daguanId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
-		if (levelService.isCheatLevelUnlock(levelId, userLevel, user)) {
+		if (levelService.isCheatLevelUnlock(daguanId, userLevel, user)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 		
-		userLevel.setUnlockedLevel(levelId);
+		userLevel.setUnlockedLevel(daguanId);
 		userLevelService.updateUserLevelRecord(userLevel);
 		
 		builder.setUserLevel(userLevel.buildUserLevel());

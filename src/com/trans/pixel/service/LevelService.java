@@ -107,32 +107,29 @@ public class LevelService {
 		}
 	}
 	
-	public boolean isCheatLevelUnlock(int levelId, UserLevelBean userLevelRecord, UserBean user) {
-		XiaoguanBean xg = getXiaoguan(levelId);
-		if (xg == null)
+	public boolean isCheatLevelUnlock(int daguanId, UserLevelBean userLevelRecord, UserBean user) {
+		DaguanBean dg = this.getDaguanByDaguanId(daguanId);
+		if (dg == null)
 			return true;
 		
-		int diff = getDifficulty(levelId);
-		switch (diff) {
-			case LevelConst.DIFF_PUTONG:
-				DaguanBean daguan = this.getDaguan(levelId);
-				UserInfo userCache = userService.getCache(user.getServerId(), user.getId());
-				if (daguan == null || userCache == null)
-					return true;
-				
-				if (daguan.getZhanli() > userCache.getZhanli())
-					return true;
-				
-				if (levelId == 1001 && userLevelRecord.getPutongLevel() < 1001)
-					return false;
-				
-				if (levelId != userLevelRecord.getPutongLevel() + 1)
-					return true;
-				
-				return false;
-			default:
-				return true;
+		UserInfo userCache = userService.getCache(user.getServerId(), user.getId());
+		if (userCache == null)
+			return true;
+		
+		if (dg.getId() == 1) {
+			return false;
 		}
+		
+		if (dg.getZhanli() > userCache.getZhanli())
+			return true;
+		
+		if (dg.getId() == userLevelRecord.getUnlockedLevel())
+			return true;
+		
+		if (dg.getId() == 2 && userLevelRecord.getUnlockedLevel() == 0)
+			return false;
+		
+		return false;
 	}
 	
 	public boolean isPreparad(int prepareTime, int levelId) {
@@ -183,10 +180,14 @@ public class LevelService {
 		if (xg == null)
 			return null;
 		
-		DaguanBean dg = levelRedisService.getDaguanById(xg.getDaguan());
+		return getDaguanByDaguanId(xg.getDaguan());
+	}
+	
+	private DaguanBean getDaguanByDaguanId(int daguanId) {
+		DaguanBean dg = levelRedisService.getDaguanById(daguanId);
 		if (dg == null) {
 			parseDaguanAndSave();
-			dg = levelRedisService.getDaguanById(xg.getDaguan());
+			dg = levelRedisService.getDaguanById(daguanId);
 		}
 		
 		return dg;
