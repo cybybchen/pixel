@@ -168,6 +168,8 @@ public class LevelCommandService extends BaseCommandService {
 		}
 		
 		userLevel.setUnlockedLevel(levelId);
+		userLevelService.updateUserLevelRecord(userLevel);
+		
 		builder.setUserLevel(userLevel.buildUserLevel());
 		responseBuilder.setUserLevelCommand(builder.build());
 	}
