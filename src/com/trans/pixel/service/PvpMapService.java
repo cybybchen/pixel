@@ -3,6 +3,7 @@ package com.trans.pixel.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -62,14 +63,62 @@ public class PvpMapService {
 			if(fieldid == map.getFieldid()){
 				if(zhanli >= map.getZhanli()){
 					map.setOpened(true);
+					redis.saveMapList(maplist.build(), user);
 					user.setPvpUnlock(fieldid);
 					userService.updateUserDailyData(user);
-					redis.saveMapList(maplist.build(), user);
+					
+					List<UserInfo> ranks = getRandUser(map.getKuangdianCount(), user);
+					if(ranks.size() > 0){
+						Map<String, PVPMine> mineMap = new HashMap<String, PVPMine>();
+						for(PVPMine mine : map.getKuangdianList()){
+							PVPMine.Builder builder = PVPMine.newBuilder(mine);
+							builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
+							mineMap.put(builder.getId()+"", builder.build());
+						}
+						redis.saveMines(user.getId(), mineMap);
+					}
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+	
+	public List<UserInfo> getRandUser(int count, UserBean user){
+		long myrank = rankService.getMyZhanliRank(user);
+		List<UserInfo> ranks = null;
+		final int halfcount = 20;
+		if(myrank < 0)
+			ranks = rankService.getZhanliRanks(user, myrank - halfcount, -1);
+		else if(myrank - halfcount <= 0)
+			ranks = rankService.getZhanliRanks(user, 0, myrank+halfcount);
+		else
+			ranks = rankService.getZhanliRanks(user, myrank - halfcount, myrank+halfcount);
+		List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
+		Set<String> members = unionRedisService.getMemberIds(user);
+		Iterator<UserInfo> it = ranks.iterator();
+		while(it.hasNext()){
+			UserInfo rank = it.next();
+			if(rank.getId() == user.getId() || friends.contains(rank.getId()) || members.contains(rank.getId()+"")){
+				it.remove();
+				continue;
+			}
+			boolean timeout = true;
+			if (rank.hasLastLoginTime()) {
+				try {
+					Date date = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(rank.getLastLoginTime());
+					if(new Date().getTime() - date.getTime() < RedisExpiredConst.EXPIRED_USERINFO_7DAY)
+						timeout = false;
+				} catch (ParseException e) {
+				}
+			}
+			if(timeout){
+				rankService.delZhanliRank(user.getServerId(), rank.getId());
+				if(ranks.size() > count+1)
+					it.remove();
+			}
+		}
+		return ranks;
 	}
 	
 	public void refreshMine(PVPMapList.Builder maplist, Map<String, PVPMine> mineMap, UserBean user){
@@ -80,38 +129,7 @@ public class PvpMapService {
 			userService.updateUserDailyData(user);
 			if(count >= 20)
 				count = 20;
-			long myrank = rankService.getMyZhanliRank(user);
-			if(myrank < 0)
-				myrank -= count;
-			List<UserInfo> ranks = null;
-			if(myrank - count <= 0)
-				ranks = rankService.getZhanliRanks(user, 0, myrank+count);
-			else
-				ranks = rankService.getZhanliRanks(user, myrank - count, myrank+count);
-			List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
-			Set<String> members = unionRedisService.getMemberIds(user);
-			Iterator<UserInfo> it = ranks.iterator();
-			while(it.hasNext()){
-				UserInfo rank = it.next();
-				if(rank.getId() == user.getId() || friends.contains(rank.getId()) || members.contains(rank.getId()+"")){
-					it.remove();
-					continue;
-				}
-				boolean timeout = true;
-				if (rank.hasLastLoginTime()) {
-					try {
-						Date date = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(rank.getLastLoginTime());
-						if(new Date().getTime() - date.getTime() < RedisExpiredConst.EXPIRED_USERINFO_7DAY)
-							timeout = false;
-					} catch (ParseException e) {
-					}
-				}
-				if(timeout){
-					rankService.delZhanliRank(user.getServerId(), rank.getId());
-					if(ranks.size() > count+1)
-						it.remove();
-				}
-			}
+			List<UserInfo> ranks = getRandUser(count, user);
 			if(ranks.size() < count)
 				count = ranks.size();
 			if(count >= 20){
@@ -124,8 +142,15 @@ public class PvpMapService {
 				}
 				redis.saveMines(user.getId(), mineMap);
 			}else{
-				while(count > 0){
-					PVPMap map = maplist.getField(redis.nextInt(maplist.getFieldCount()));
+				int maxcount = 0;
+				for(PVPMap map : maplist.getFieldList()){
+					if(map.getOpened())
+						maxcount++;
+				}
+				if(maxcount == 0)
+					return;
+				for(int i = 0;i < 100 && count > 0; i++){
+					PVPMap map = maplist.getField(redis.nextInt(maxcount));
 					PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
 					PVPMine mine = mineMap.get(builder.getId()+"");
 					if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
@@ -146,6 +171,8 @@ public class PvpMapService {
 		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
 		refreshMine(maplist, mineMap, user);
 		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
+			if(!mapBuilder.getOpened())
+				continue;
 			String buff = pvpMap.get(mapBuilder.getFieldid()+"");
 			if(buff != null)
 				mapBuilder.setBuff(Integer.parseInt(buff));
@@ -166,6 +193,8 @@ public class PvpMapService {
 				hour = 7*24;
 			int resource = user.getPointPVP();
 			for(PVPMap map : maplist.getFieldList()){
+				if(!map.getOpened())
+					continue;
 				resource += map.getYield()*hour;
 				for(PVPMine mine : map.getKuangdianList()){
 					resource += mine.getYield()*hour;
