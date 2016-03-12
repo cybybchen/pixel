@@ -40,7 +40,7 @@ public class LevelService {
 		int diff = getDifficulty(levelId);
 		switch (diff) {
 			case LevelConst.DIFF_PUTONG:
-				if (levelId != userLevelRecord.getUnlockedLevel())
+				if (xg.getDaguan() != userLevelRecord.getUnlockedLevel())
 					return true;
 				
 				if (levelId == 1001 && userLevelRecord.getPutongLevel() < 1001)
