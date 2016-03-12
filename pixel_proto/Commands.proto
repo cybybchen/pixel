@@ -966,6 +966,14 @@ message ResponseAreaCommand {
 	repeated RewardInfo rewards = 2;
 }
 
+message RequestAreaResourceCommand {//区域info
+	required int32 resourceId = 1;
+}
+
+message ResponseAreaResourceCommand {
+	required AreaResource resource = 1;
+}
+
 message RequestAttackMonsterCommand {//区域争夺打怪物
 	required int32 id = 1;
 	optional bool ret = 2;
@@ -1366,6 +1374,7 @@ message RequestCommand {
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestAreaCommand areaCommand = 26;
+	optional RequestAreaResourceCommand areaResourceCommand = 136;
 	optional RequestUnlockAreaCommand unlockAreaCommand = 133;
 	optional RequestAttackMonsterCommand attackMonsterCommand = 27;
 	optional RequestAttackBossCommand attackBossCommand = 28;
@@ -1479,6 +1488,7 @@ message ResponseCommand {
 	optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
 	optional ResponseGetUserEquipCommand userEquipCommand = 23;
 	optional ResponseAreaCommand areaCommand = 24;
+	optional ResponseAreaResourceCommand areaResourceCommand = 136;
 	optional ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;
 	optional ResponseUserLevelCommand userLevelCommand = 25;
 	optional ResponseUserLootLevelCommand userLootLevelCommand = 26;

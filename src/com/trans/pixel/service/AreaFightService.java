@@ -335,6 +335,7 @@ public class AreaFightService extends FightService{
 			builder.setMessage(builder.getOwner().getName()+"成功拿下了据点！");
 		}else{
 			FightResultList.Builder resultlist = queueFight(attacks, defends);
+			redis.saveFight(builder.getId(), resultlist.build());
 			if(resultlist.getListCount() > 0){
 				FightResult winresult = resultlist.getList(resultlist.getListCount()-1);
 				if( winresult.getResult() == 1 ){//攻破

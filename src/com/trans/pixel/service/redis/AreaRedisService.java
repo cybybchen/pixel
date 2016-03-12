@@ -36,6 +36,7 @@ import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.AreaTime;
 import com.trans.pixel.protoc.Commands.AreaTimeList;
 import com.trans.pixel.protoc.Commands.AreaWeight;
+import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.Position;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 
@@ -631,5 +632,9 @@ public class AreaRedisService extends RedisService{
 			}
 		}
 		return builder;
+	}
+
+	public void saveFight(int id, FightResultList build) {
+		set(RedisKey.PREFIX+"AreaResourceFight_"+id, formatJson(build));
 	}
 }
