@@ -22,6 +22,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossReward;
+import com.trans.pixel.protoc.Commands.AreaEquip;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
 import com.trans.pixel.protoc.Commands.AreaMonster;
@@ -33,9 +34,9 @@ import com.trans.pixel.protoc.Commands.FightResult;
 import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
+import com.trans.pixel.protoc.Commands.ResponseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -63,6 +64,12 @@ public class AreaFightService extends FightService{
 	MailRedisService mailRedisService;
 	@Resource
 	PushCommandService pusher;
+	
+	public void addAreaEquip(UserBean user, int rewardId, int rewardCount){
+		AreaEquip.Builder builder = redis.getMyAreaEquip(rewardId, user);
+		builder.setCount(builder.getCount()+rewardCount);
+		redis.saveMyAreaEquip(user, builder.build());
+	}
 	
 	private RewardInfo randReward(WeightReward weightreward){
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
@@ -425,7 +432,40 @@ public class AreaFightService extends FightService{
 	public AreaResource getResource(int id, UserBean user) {
 		return redis.getResource(id,user);
 	}
+	
+	public boolean hasReward(UserBean user){
+		if(redis.getMineGains(user).isEmpty())
+			return false;
+		else
+			return true;
+	}
 
+	public ResultConst useAreaEquips(int id, Builder responseBuilder, UserBean user) {
+		ResultConst result = SuccessConst.USE_PROP;
+		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
+		for(AreaEquip equip : equipMap.values()){
+			if(equip.getId() == id){
+				AreaEquip.Builder builder = AreaEquip.newBuilder();
+				if(builder.getCount() > 0){
+					builder.setCount(builder.getCount()-1);
+					builder.setEndTime(redis.now()+builder.getTime()*60);
+					builder.setLevel(builder.getLevel()+1);
+					if(builder.getLevel() > builder.getLayer() && builder.getLayer() > 0)
+						builder.setLevel(builder.getLayer());
+					redis.saveMyAreaEquip(user, builder.build());
+					equipMap.put(builder.getId()+"", builder.build());
+				}else{
+					result = ErrorConst.NOT_ENOUGH;
+				}
+				break;
+			}
+		}
+		ResponseAreaEquipCommand.Builder builder = ResponseAreaEquipCommand.newBuilder();
+		builder.addAllEquips(equipMap.values());
+		responseBuilder.setAreaEquipCommand(builder.build());
+		return result;
+	}
+	
 	public AreaMode getAreas(UserBean user) {
 		AreaMode.Builder areamodebuilder = redis.getAreaMode(user);
 //		Map<String, MultiReward> monsterrewardMap = redis.getAreaMonsterRewards();
@@ -434,6 +474,8 @@ public class AreaFightService extends FightService{
 		Map<String, String> bosstimeMap = redis.getBossTimes(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
+		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
+		areamodebuilder.addAllEquips(equipMap.values());
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
 			if(!areabuilder.getOpened())

@@ -19,5 +19,7 @@ public class RewardConst {
 	
 	public static final int HERO = 50000;
 	
+	public static final int AREAEQUIPMENT = 80000;
+	
 	public static final int HERO_STAR = 1000;
 }

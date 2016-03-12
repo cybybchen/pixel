@@ -214,12 +214,15 @@ message UnionApply {
 message AreaEquip {//区域道具
 	required int32 id = 1;//道具ID
 	optional string name = 2;//名称
-	required int32 img = 3;//形象ID
-	required string description = 4;//描述
-	required int32 type = 5;//适用区域
-	optional int32 layer = 6;//层数
-	optional int64 time = 7;//持续时间
-	optional int64 skill = 8;//对应技能
+	optional int32 img = 3;//形象ID
+	optional string description = 4;//描述
+	optional int32 type = 5;//适用区域
+	optional int32 layer = 6;//限制层数
+	optional int32 time = 7;//持续时间
+	optional int32 skill = 8;//对应技能
+	optional int32 level = 9;//当前层数
+	optional int32 count = 10;//拥有数量
+	optional int64 endTime = 11;//结束时间
 }
 
 message AreaEquipList {
@@ -523,6 +526,7 @@ message AreaInfo {//可争夺区域
 
 message AreaMode {//区域争夺
 	repeated AreaInfo region = 1;//区域
+	repeated AreaEquip equips = 2;
 }
 
 message Rank {
@@ -997,7 +1001,8 @@ message RequestUnlockAreaCommand {//解锁区域
 
 message ResponseAreaCommand {
 	repeated AreaInfo areas = 1;
-	repeated RewardInfo rewards = 2;
+	repeated AreaEquip equips = 2;
+	optional bool hasreward = 3;
 }
 
 message RequestAreaResourceCommand {//区域info
@@ -1229,6 +1234,14 @@ message ResponsePurchaseCoinCommand {
 
 message ResponseUserPropCommand { //玩家道具列表
 	repeated UserProp userProp = 1;
+}
+
+message RequestUseAreaEquipCommand {
+	required int32 equipId = 1;
+}
+
+message ResponseAreaEquipCommand {
+	repeated AreaEquip equips = 1;
 }
 
 message RequestUsePropCommand { //打开道具包
@@ -1469,6 +1482,7 @@ message RequestCommand {
 	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
 	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
 	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
+	optional RequestUseAreaEquipCommand useAreaEquipCommand = 137;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
@@ -1520,6 +1534,7 @@ message ResponseCommand {
 	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
 	optional ResponseGetTeamCommand teamCommand = 123;
 	optional ResponsePVPMapListCommand pvpMapListCommand = 125;
+	optional ResponseAreaEquipCommand areaEquipCommand = 137;
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

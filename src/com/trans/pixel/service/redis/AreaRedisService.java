@@ -1,6 +1,5 @@
 package com.trans.pixel.service.redis;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +19,8 @@ import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossList;
 import com.trans.pixel.protoc.Commands.AreaBossReward;
 import com.trans.pixel.protoc.Commands.AreaBossRewardList;
+import com.trans.pixel.protoc.Commands.AreaEquip;
+import com.trans.pixel.protoc.Commands.AreaEquipList;
 import com.trans.pixel.protoc.Commands.AreaFieldTimeList;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
@@ -47,6 +48,8 @@ public class AreaRedisService extends RedisService{
 	public final static String AREABOSS = RedisKey.PREFIX+"AreaBoss_";
 	public final static String AREABOSSTIME = RedisKey.PREFIX+"AreaBossTime_";
 	public final static String AREAMONSTERREWARD = RedisKey.PREFIX+"AreaMonsterReward";
+	public final static String AREAEQUIP = RedisKey.PREFIX+"AreaEquip";
+	public final static String MYAREAEQUIP = RedisKey.PREFIX+"AreaEquip_";
 	public final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	public final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
 	public final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
@@ -598,6 +601,56 @@ public class AreaRedisService extends RedisService{
 			}
 			hputAll(AREAMONSTERREWARD, keyvalue);
 			return map.get(id);
+		}
+	}
+
+	public void saveMyAreaEquip(UserBean user, AreaEquip equip){
+		hput(MYAREAEQUIP+user.getId(), equip.getId()+"", formatJson(equip));
+	}
+
+	public void saveMyAreaEquips(UserBean user, List<AreaEquip> equips){
+		Map<String, String> map = new HashMap<String, String>();
+		for(AreaEquip equip : equips){
+			map.put(equip.getId()+"", formatJson(equip));
+		}
+		hputAll(MYAREAEQUIP+user.getId(), map);
+	}
+	public AreaEquip.Builder getMyAreaEquip(int id, UserBean user){
+		String value = hget(MYAREAEQUIP+user.getId(), id+"");
+		AreaEquip.Builder builder = AreaEquip.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder;
+		else{
+			return AreaEquip.newBuilder(getAreaEquip(id));
+		}
+	}
+	public Map<String, AreaEquip> getMyAreaEquips(UserBean user){
+		Map<String, String> keyvalue = hget(MYAREAEQUIP+user.getId());
+		Map<String, AreaEquip> map = new HashMap<String, AreaEquip>();
+		for(Entry<String, String> entry : keyvalue.entrySet()){
+			AreaEquip.Builder builder = AreaEquip.newBuilder();
+			if(parseJson(entry.getValue(), builder))
+				map.put(entry.getKey(),builder.build());
+		}
+		return map;
+	}
+	public AreaEquip getAreaEquip(int id){
+		AreaEquip.Builder builder = AreaEquip.newBuilder();
+		String value = hget(AREAEQUIP, id+"");
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			Map<String, String> keyvalue = new HashMap<String, String>();
+			String xml = ReadConfig("lol_regionequip.xml");
+			AreaEquipList.Builder list = AreaEquipList.newBuilder();
+			parseXml(xml, list);
+			for(AreaEquip equip : list.getEquipList()){
+				if(equip.getId() == id)
+					builder = AreaEquip.newBuilder(equip);
+				keyvalue.put(equip.getId()+"", formatJson(equip));
+			}
+			hputAll(AREAEQUIP, keyvalue);
+			return builder.build();
 		}
 	}
 	public AreaMode.Builder buildAreaMode(){

@@ -32,7 +32,9 @@ public class RewardService {
 	@Resource
 	private UserPropService userPropService;
 	@Resource
-	private ActivityService activityService;
+	private AchieveService achieveService;
+	@Resource
+	private AreaFightService areaService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getUser(userId);
@@ -65,7 +67,9 @@ public class RewardService {
 	 * need updateuser when return true
 	 */
 	public boolean doReward(UserBean user, int rewardId, int rewardCount) {
-		if (rewardId > RewardConst.HERO) {
+		if (rewardId > RewardConst.AREAEQUIPMENT) {
+			areaService.addAreaEquip(user, rewardId, rewardCount);
+		} else if (rewardId > RewardConst.HERO) {
 			int star = (rewardId % RewardConst.HERO) / RewardConst.HERO_STAR;
 			int heroId = rewardId % RewardConst.HERO_STAR;
 			userHeroService.addUserHero(user.getId(), heroId, star, rewardCount);

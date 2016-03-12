@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
+import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
@@ -55,8 +56,16 @@ public class AreaCommandService extends BaseCommandService{
 		List<AreaInfo> areas = service.getAreas(user).getRegionList();
 		ResponseAreaCommand.Builder builder = ResponseAreaCommand.newBuilder();
 		builder.addAllAreas(areas);
+		builder.setHasreward(service.hasReward(user));
 		return builder.build();
 	}
+
+	private void useAreaEquips(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user){
+		ResultConst result = service.useAreaEquips(cmd.getEquipId(), responseBuilder, user);
+		if(result instanceof ErrorConst)
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+	}
+	
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
 		service.costEnergy(user);
 		if(!cmd.getRet())

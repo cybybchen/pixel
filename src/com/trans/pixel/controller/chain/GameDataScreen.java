@@ -51,6 +51,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -640,6 +641,11 @@ public class GameDataScreen extends RequestScreen {
 		levelCommandService.levelUnlock(cmd, responseBuilder, user);
 		return true;//UnlockLevelCommand
 	}//UnlockLevelCommand
+	@Override//UseAreaEquipCommand
+	protected boolean handleCommand(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user) {
+		areaCommandService.useAreaEquips(cmd, responseBuilder, user);
+		return true;//UseAreaEquipCommand
+	}//UseAreaEquipCommand
 	//add handleCommand here
 
 	@Override

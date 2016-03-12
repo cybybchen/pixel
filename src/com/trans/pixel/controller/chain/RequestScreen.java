@@ -47,6 +47,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -284,6 +285,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -814,6 +816,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//UnlockLevelCommand
                 result = handleCommand(cmd, responseBuilder, user);//UnlockLevelCommand
         }//UnlockLevelCommand
+        if (request.hasUseAreaEquipCommand()) {
+            RequestUseAreaEquipCommand cmd = request.getUseAreaEquipCommand();
+            if (result)//UseAreaEquipCommand
+                result = handleCommand(cmd, responseBuilder, user);//UseAreaEquipCommand
+        }//UseAreaEquipCommand
         //call handleCommand here
         
         return result;
