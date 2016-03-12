@@ -73,33 +73,45 @@ public class UnionService extends FightService{
 		if(union == null)
 			return null;
 		Union.Builder builder = Union.newBuilder(union);
+		boolean needupdate = false;
 
+		int index = 0;
+		int zhanli = 0;
+		for(UserInfo member : builder.getMembersList()){
+			if(index < 10)
+				zhanli += member.getZhanli()*6/10;
+			else if(index < 20)
+				zhanli += member.getZhanli()*3/10;
+			else if(index < 30)
+				zhanli += member.getZhanli()/10;
+			index++;
+		}
+		if(zhanli != builder.getZhanli()){
+			builder.setZhanli(zhanli);
+			needupdate = true;
+		}
 		if(union.hasAttackId()){
-//			if(builder.getAttackEndTime() < unionRedisService.now()){
-//				builder.clearAttackId();
-//				builder.clearAttackEndTime();
-//				if(unionRedisService.setLock("Union_"+builder.getId()))
-//					unionRedisService.saveUnion(builder.build(), user);
-//			if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//进攻结算
-//				 bloodFight(union.getId(), union.getAttackId(), user.getServerId());
-//			}else{
+			if(builder.getAttackEndTime() < unionRedisService.now()){
+				builder.clearAttackId();
+				builder.clearAttackEndTime();
+				needupdate = true;
+			}else{
 				List<UserInfo> users = unionRedisService.getFightQueue(union.getId(), union.getAttackId());
 				builder.addAllAttacks(users);
-//			}
+			}
 		}
 		if(union.hasDefendId()){
-//			if(builder.getDefendEndTime() < unionRedisService.now()){
-//				builder.clearDefendId();
-//				builder.clearDefendEndTime();
-//				if(unionRedisService.setLock("Union_"+builder.getId()))
-//					unionRedisService.saveUnion(builder.build(), user);
-//		 	if(System.currentTimeMillis()%(24*3600L*1000L) >= 20.5*3600L*1000L){//防守结算
-//		 		bloodFight(union.getDefendId(), union.getId(), user.getServerId());
-//		 	}else{
+			if(builder.getDefendEndTime() < unionRedisService.now()){
+				builder.clearDefendId();
+				builder.clearDefendEndTime();
+				needupdate = true;
+		 	}else{
 		 		List<UserInfo> users = unionRedisService.getFightQueue(union.getDefendId(), union.getId());
 		 		builder.addAllDefends(users);
-//		 	}
+		 	}
 		}
+		if(needupdate && unionRedisService.setLock("Union_"+builder.getId()))
+			unionRedisService.saveUnion(builder.build(), user);
 		return builder.build();
 	}
 	
@@ -352,7 +364,12 @@ public class UnionService extends FightService{
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, herolist);
 			unionRedisService.attack(builder.getAttackId(), user);
-		}else if(user.getUnionJob() >= 2){
+			
+			/**
+			 * achieve type 114
+			 */
+			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
+		}else if(user.getUnionJob() >= 2 && attackId != 0 && unionRedisService.now() > builder.getAttackEndTime()){
 			Union.Builder defendUnion = Union.newBuilder();
 			builder.setAttackId(attackId);
 			builder.setAttackEndTime(unionRedisService.today(24));

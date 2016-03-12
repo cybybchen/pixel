@@ -50,22 +50,6 @@ public class UnionRedisService extends RedisService{
 				return userinfo2.getZhanli() - userinfo1.getZhanli();
 			}
 		});
-		int index = 0;
-		int zhanli = 0;
-		for(UserInfo member : members){
-			if(index < 10)
-				zhanli += member.getZhanli()*6/10;
-			else if(index < 20)
-				zhanli += member.getZhanli()*3/10;
-			else if(index < 30)
-				zhanli += member.getZhanli()/10;
-			index++;
-		}
-		if(zhanli != unionbuilder.getZhanli()){
-			unionbuilder.setZhanli(zhanli);
-			if(setLock("Union_"+unionbuilder.getId()))
-				saveUnion(unionbuilder.build(), user);
-		}
 		unionbuilder.addAllMembers(members);
 		return unionbuilder.build();
 	}

@@ -211,6 +211,21 @@ message UnionApply {
 	required int64 endTime = 3;
 }
 
+message AreaEquip {//区域道具
+	required int32 id = 1;//道具ID
+	optional string name = 2;//名称
+	required int32 img = 3;//形象ID
+	required string description = 4;//描述
+	required int32 type = 5;//适用区域
+	optional int32 layer = 6;//层数
+	optional int64 time = 7;//持续时间
+	optional int64 skill = 8;//对应技能
+}
+
+message AreaEquipList {
+	repeated AreaEquip equip = 1;
+}
+
 message AreaResourceMine {//区域资源开采点
 	required int32 id = 1;//开采点ID
 	optional int32 resourceId = 2;//资源点ID
