@@ -107,6 +107,8 @@ public class UserLevelLootBean {
 	}
 	
 	public void updateLootRewardRecord(int levelId) {
+		if (splitLootReward().length >= packageCount)
+			return;
 		if (lootRewardRecord.equals(""))
 			lootRewardRecord = "" + levelId;
 		else
