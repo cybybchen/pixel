@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserAreaPropMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserAreaPropBean">
+		<id property="primaryid" column="primary_id" />
+		<result property="userId" column="user_id" />
+		<result property="id" column="id" />
+		<result property="count" column="count" />
+	</resultMap>
+	
+	<select id="selectUserAreaProp" resultMap="resultMap">
+		SELECT *
+		from user_areaprop where primary_id=#{primaryid}
+	</select>
+	
+	<select id="addUserAreaProp" resultMap="resultMap">
+		INSERT INTO user_areaprop(user_id, id, count)
+		VALUES(#{userId}, #{id}, #{count})
+	</select>
+	
+	<insert id="updateUserAreaProp" parameterType="com.trans.pixel.model.userinfo.UserAreaPropBean">
+	    UPDATE user_areaprop SET count=#{count} WHERE primary_id=#{primaryid}
+	</insert>
+	
+	<select id="selectUserAreaPropList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_areaprop where user_id=#{userId}
+	</select>
+	
+</mapper>

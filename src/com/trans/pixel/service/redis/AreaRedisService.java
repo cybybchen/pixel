@@ -621,7 +621,7 @@ public class AreaRedisService extends RedisService{
 		if(value != null && parseJson(value, builder))
 			return builder;
 		else{
-			return AreaEquip.newBuilder(getAreaEquip(id));
+			return null;
 		}
 	}
 	public Map<String, AreaEquip> getMyAreaEquips(UserBean user){

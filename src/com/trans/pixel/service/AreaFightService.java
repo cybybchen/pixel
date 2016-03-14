@@ -19,6 +19,8 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.model.mapper.UserAreaPropMapper;
+import com.trans.pixel.model.userinfo.UserAreaPropBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossReward;
@@ -53,6 +55,8 @@ import com.trans.pixel.utils.DateUtil;
 public class AreaFightService extends FightService{
 	Logger logger = Logger.getLogger(AreaFightService.class);
 	@Resource
+	UserAreaPropMapper mapper;
+	@Resource
     private AreaRedisService redis;
 	@Resource
     private UserService userService;
@@ -67,8 +71,16 @@ public class AreaFightService extends FightService{
 	
 	public void addAreaEquip(UserBean user, int rewardId, int rewardCount){
 		AreaEquip.Builder builder = redis.getMyAreaEquip(rewardId, user);
-		builder.setCount(builder.getCount()+rewardCount);
-		redis.saveMyAreaEquip(user, builder.build());
+		if(builder == null){
+			builder = AreaEquip.newBuilder(redis.getAreaEquip(rewardId));
+			builder.setCount(builder.getCount()+rewardCount);
+			redis.saveMyAreaEquip(user, builder.build());
+			mapper.addUserAreaProp(user.getId(), rewardId, rewardCount);
+		}else{
+			builder.setCount(builder.getCount()+rewardCount);
+			redis.saveMyAreaEquip(user, builder.build());
+			mapper.updateUserAreaProp(new UserAreaPropBean().parse(builder.build(), user));
+		}
 	}
 	
 	private RewardInfo randReward(WeightReward weightreward){
@@ -453,6 +465,7 @@ public class AreaFightService extends FightService{
 					if(builder.getLevel() > builder.getLayer() && builder.getLayer() > 0)
 						builder.setLevel(builder.getLayer());
 					redis.saveMyAreaEquip(user, builder.build());
+					mapper.updateUserAreaProp(new UserAreaPropBean().parse(builder.build(), user));
 					equipMap.put(builder.getId()+"", builder.build());
 				}else{
 					result = ErrorConst.NOT_ENOUGH;
@@ -475,6 +488,14 @@ public class AreaFightService extends FightService{
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
 		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
+		if(equipMap.isEmpty()){
+			List<UserAreaPropBean> beans = mapper.selectUserAreaPropList(user.getId());
+			for(UserAreaPropBean bean : beans){
+				AreaEquip.Builder builder = bean.build();
+				builder.mergeFrom(redis.getAreaEquip(bean.getId()));
+				equipMap.put(builder.getId()+"", builder.build());
+			}
+		}
 		areamodebuilder.addAllEquips(equipMap.values());
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
