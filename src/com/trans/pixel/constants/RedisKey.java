@@ -157,11 +157,13 @@ public class RedisKey {
 	//user achieve redis
 	public static final String USER_ACHIEVE_PREFIX = "user_achieve_";
 	public static final String USER_ACTIVITY_RICHANG_PREFIX = PREFIX + "RC_";
+	public static final String USER_ACTIVITY_KAIFU_PREFIX = PREFIX + "KF_";
 	
 	//activity config redis
 	public static final String ACHIEVE_KEY = PREFIX + "key:achieve";
 	public static final String ACTIVITY_RICHANG_KEY = PREFIX + "key:richang";
 	public static final String ACTIVITY_KAIFU2_KEY = PREFIX + "key:kaifu2";
+	public static final String ACTIVITY_KAIFU_KEY = PREFIX + "key:kaifu";
 	public static final String ACTIVTYY_KAIFU2_RANK_PREFIX = "kaifu2_rank_";
 	public static final String ACTIVITY_KAIFU2_REWARD_RECORD_PREFIX = "kaifu2_reward_record_";
 	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "key:kaifu2_send_record";

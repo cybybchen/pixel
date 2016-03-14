@@ -12,8 +12,10 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Kaifu2;
 import com.trans.pixel.protoc.Commands.Kaifu2List;
+import com.trans.pixel.protoc.Commands.KaifuList;
 import com.trans.pixel.protoc.Commands.Richang;
 import com.trans.pixel.protoc.Commands.RichangList;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -22,6 +24,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class ActivityRedisService extends RedisService {
 	private static final String ACTIVITY_RICHANG_FILE_NAME = "task/lol_taskrichang.xml";
 	private static final String ACTIVITY_KAIFU2_FILE_NAME = "task/lol_taskkaifu2.xml";
+	private static final String ACTIVITY_KAIFU_FILE_NAME = "task/lol_taskkaifu.xml";
 	
 	//richang activity
 	public Richang getRichang(int id) {
@@ -120,8 +123,59 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Kaifu2> map = new HashMap<String, Kaifu2>();
-		for(Kaifu2.Builder richang : builder.getKaifuBuilderList()){
-			map.put("" + richang.getId(), richang.build());
+		for(Kaifu2.Builder kaifu : builder.getKaifuBuilderList()){
+			map.put("" + kaifu.getId(), kaifu.build());
+		}
+		return map;
+	}
+	
+	//kaifu activity
+	public Kaifu getKaifu(int id) {
+		String value = hget(RedisKey.ACTIVITY_KAIFU_KEY, "" + id);
+		if (value == null) {
+			Map<String, Kaifu> config = getKaifuConfig();
+			return config.get("" + id);
+		} else {
+			Kaifu.Builder builder = Kaifu.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	private Map<String, Kaifu> getKaifuConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_KAIFU_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Kaifu> map = buildKaifuConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Kaifu> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.ACTIVITY_KAIFU_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Kaifu> map = new HashMap<String, Kaifu>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Kaifu.Builder builder = Kaifu.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Kaifu> buildKaifuConfig(){
+		String xml = ReadConfig(ACTIVITY_KAIFU_FILE_NAME);
+		KaifuList.Builder builder = KaifuList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + ACTIVITY_KAIFU_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Kaifu> map = new HashMap<String, Kaifu>();
+		for(Kaifu.Builder kaifu : builder.getKaifuBuilderList()){
+			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;
 	}

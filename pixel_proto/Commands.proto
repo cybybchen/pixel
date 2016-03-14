@@ -766,6 +766,23 @@ message Kaifu2Rank {
 	required int64 myRank = 3;
 }
 
+message KaifuList {
+	repeated Kaifu kaifu = 1;
+}
+
+message Kaifu {
+	required int32 id = 1;
+	required string activity = 2;
+	required int32 whichday = 3;
+	repeated ActivityOrder order = 4;
+}
+
+message UserKaifu {
+        required int32 type = 1;
+        required int32 completeCount = 2;
+        repeated int32 rewardOrder = 3;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

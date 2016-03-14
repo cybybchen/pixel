@@ -72,4 +72,60 @@ public class ActivityConst {
 	public static final int[] KAIFU2_TYPES = {KAIFU2_ZHANLI, KAIFU2_LEVEL, KAIFU2_RECHARGE};
 	
 	public static final int KAIFU2_RANK_SIZE = 20;
+	
+	/**
+	 * 首充礼包
+	 */
+	public static final int KAIFU_FIRST_RECHARGE = 201;
+	
+	/**
+	 * 七日登录
+	 */
+	public static final int KAIFU_LOGIN = 202;
+	
+	/**
+	 * 七日充值
+	 */
+	public static final int KAIFU_RECHARGE = 203;
+	
+	/**
+	 * 七日活动第一天
+	 */
+	public static final int KAIFU_DAY_1 = 204;
+	
+	/**
+	 * 七日活动第二天
+	 */
+	public static final int KAIFU_DAY_2 = 205;
+	
+	/**
+	 * 七日活动第三天
+	 */
+	public static final int KAIFU_DAY_3 = 206;
+	
+	/**
+	 * 七日活动第四天
+	 */
+	public static final int KAIFU_DAY_4 = 207;
+	
+	/**
+	 * 七日活动第五天
+	 */
+	public static final int KAIFU_DAY_5 = 208;
+	
+	/**
+	 * 七日活动第六天
+	 */
+	public static final int KAIFU_DAY_6 = 209;
+	
+	/**
+	 * 七日活动第七天
+	 */
+	public static final int KAIFU_DAY_7 = 210;
+	
+	/**
+	 * 所有kaifu活动的类型
+	 */
+	public static final int[] KAIFU_TYPES = {KAIFU_FIRST_RECHARGE, KAIFU_LOGIN, KAIFU_RECHARGE, KAIFU_DAY_1, KAIFU_DAY_2,
+		KAIFU_DAY_3, KAIFU_DAY_4, KAIFU_DAY_5, KAIFU_DAY_6, KAIFU_DAY_7};
 }

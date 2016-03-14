@@ -31,7 +31,10 @@ public class MohuaService {
 	
 	public MohuaUserData.Builder enterUserData(long userId) {
 		MohuaUserData user = redis.getMohuaUserData(userId);
-		return MohuaUserData.newBuilder(user);
+		if (user != null)
+			return MohuaUserData.newBuilder(user);
+		else 
+			return null;
 	}
 	
 	public void delUserData(long userId) {

@@ -12,14 +12,13 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ActivityOrder;
+import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Kaifu2;
 import com.trans.pixel.protoc.Commands.Kaifu2Rank;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -27,6 +26,7 @@ import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Richang;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
@@ -324,5 +324,36 @@ public class ActivityService {
 		int kaifuDays = DateUtil.intervalDays(DateUtil.getDate(DateUtil.getCurrentDateString()), DateUtil.getDate(kaifuTime));
 		
 		return kaifuDays <= 7;
+	}
+	
+	
+	/***********************************************************************************/
+	/** kaifu activity **/
+	/***********************************************************************************/
+	public void sendKaifuScore(long userId, int type) {
+		sendKaifuScore(userId, type, 1);
+	}
+	
+	public void sendKaifuScore(long userId, int type, int count) {
+		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(userId, type));
+		uk.setCompleteCount(uk.getCompleteCount() + count);
+		Kaifu kaifu = activityRedisService.getKaifu(type);
+		userActivityService.updateUserKaifu(userId, uk.build());
+	}
+	
+	public ResultConst handleKaifuReward(MultiReward.Builder rewards, UserRichang.Builder ur, long userId, int type, int id) {
+		if (ur.getRewardOrderList().contains(id))
+			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
+		
+		Richang richang = activityRedisService.getRichang(type);
+		ActivityOrder order = richang.getOrder(id);
+		if (order.getTargetcount() > ur.getCompleteCount())
+			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+		
+		ur.addRewardOrder(id);
+		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
+		rewards.addAllLoot(getRewardList(order));
+		
+		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 }
