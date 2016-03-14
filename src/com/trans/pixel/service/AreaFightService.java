@@ -203,7 +203,9 @@ public class AreaFightService extends FightService{
 				return SuccessConst.AREA_ATTACK_FAIL;
 			}
 			builder.setState(1);
-			builder.setClosetime(System.currentTimeMillis()/1000+/*24*3600L*/600);
+			long time = redis.now();
+			builder.setStarttime(time);
+			builder.setClosetime(time+/*24*3600L*/600);
 			builder.setEndtime(builder.getClosetime()+300);
 			if(builder.hasOwner()){
 				builder.setMessage("领主"+builder.getOwner().getName()+"已经被"+user.getUserName()+"刺杀");
@@ -217,17 +219,13 @@ public class AreaFightService extends FightService{
 			costEnergy(user);
 			redis.saveResource(builder.build(), user);
 		}else{
+			if(builder.getStarttime() > redis.now())
+				return ErrorConst.JOIN_NOT_START;
+			if(builder.getClosetime() < redis.now())
+				return ErrorConst.JOIN_END;
 			if(user.getUnionId() == builder.getOwner().getUnionId() && user.getUnionId() != 0){//防守
-				for(UserInfo userinfo : builder.getDefensesList()){
-					if(user.getId() == userinfo.getId())
-						return ErrorConst.JOIN_AGAIN;
-				}
 				builder.addDefenses(user.buildUnionShort());
 			}else{//进攻
-				for(UserInfo userinfo : builder.getAttacksList()){
-					if(user.getId() == userinfo.getId())
-						return ErrorConst.JOIN_AGAIN;
-				}
 				builder.addAttacks(user.buildUnionShort());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
@@ -402,8 +400,9 @@ public class AreaFightService extends FightService{
 			builder.setWarDefended(0);
 			builder.clearMessage();
 		}else{
-			long time = redis.now();
-			builder.setClosetime(Math.max(time, builder.getEndtime())+600);
+			long time = Math.max(redis.now(), builder.getEndtime());
+			builder.setStarttime(time);
+			builder.setClosetime(time+600);
 			builder.setEndtime(builder.getClosetime()+300);
 		}
 		builder.clearDefenses();
@@ -477,7 +476,7 @@ public class AreaFightService extends FightService{
 		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
 		for(AreaEquip equip : equipMap.values()){
 			if(equip.getId() == id){
-				AreaEquip.Builder builder = AreaEquip.newBuilder();
+				AreaEquip.Builder builder = AreaEquip.newBuilder(equip);
 				if(builder.getCount() > 0){
 					builder.setCount(builder.getCount()-1);
 					builder.setEndTime(redis.now()+builder.getTime()*60);

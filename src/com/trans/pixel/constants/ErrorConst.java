@@ -10,7 +10,7 @@ public enum ErrorConst implements ResultConst {
 	UNIONLEADER_QUIT(2013, "会长不能退出自己的工会"),ATTACK_SELF(2014, "不能挑战自己"),MAPINFO_ERROR(2015, "地图信息错误"),AREAMINE_HURRY(2016, "其他玩家正在进攻"),
 	ERROR_LOCKED(2017, "请稍后再试"),HERO_LOCKED(2018, "包含一个或多个锁定的英雄"),NOT_ENEMY(2019, "敌人已经逃跑了"),NOT_ENOUGH_TIMES(2020, "剩余次数不足"),
 	UNION_NOT_FIGHT(2021, "工会血战已结束"),JOIN_AGAIN(2022, "请不要重复参加"),RESOURCE_LAIRD(2023, "领主不能参加区域争夺"),AREA_FIGHT_BUSY(2024, "该玩家正在参加区域争夺"),
-	BLOOD_FIGHT_BUSY(2025, "该玩家正在参加工会血战"),UNION_FULL(2026, "该工会人数已满"),JOIN_END(2027, "报名已结束"),
+	BLOOD_FIGHT_BUSY(2025, "该玩家正在参加工会血战"),UNION_FULL(2026, "该工会人数已满"),JOIN_END(2027, "报名已结束"),JOIN_NOT_START(2027, "报名尚未开始"),
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), NOT_ENOUGH_EXP(1006, "升级所需经验不足"),

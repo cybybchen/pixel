@@ -69,15 +69,14 @@ public class UnionCommandService extends BaseCommandService {
 		if (cmd.hasId())
 			id = cmd.getId();
 
-		unionService.quit(id, responseBuilder, user);
+		ResultConst result = unionService.quit(id, responseBuilder, user);
+		buildMessageOrErrorCommand(responseBuilder, result);
 
 		Union union = unionService.getUnion(user);
 		if (union != null) {
 			builder.setUnion(union);
 			responseBuilder.setUnionInfoCommand(builder.build());
 		}
-		responseBuilder.setMessageCommand(super
-				.buildMessageCommand(SuccessConst.QUIT_UNION_SUCCESS));
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	

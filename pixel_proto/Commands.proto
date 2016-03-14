@@ -258,7 +258,8 @@ message AreaResource {//区域资源点
 	///////////////////////////////////
 	optional int32 state = 10;//争夺状态:0正常，1准备战斗
 	optional int64 endtime = 11;//该阶段结束时间
-	optional int64 closetime = 18;//该阶段close时间
+	optional int64 starttime = 18;//该阶段开始报名时间
+	optional int64 closetime = 19;//该阶段结束报名时间
 	optional UserInfo owner = 12;//占领玩家
 	optional int32 attackerId = 13;//进攻工会
 	optional int32 warDefended = 14;//抵挡波数
