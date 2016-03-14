@@ -44,13 +44,13 @@ public class UnionRedisService extends RedisService{
 					unionbuilder.addApplies(builder);
 			}
 		}
-		List<UserInfo> members = getMembers(user);
-		Collections.sort(members, new Comparator<UserInfo>() {
-			public int compare(UserInfo userinfo1, UserInfo userinfo2) {
-				return userinfo2.getZhanli() - userinfo1.getZhanli();
-			}
-		});
-		unionbuilder.addAllMembers(members);
+//		List<UserInfo> members = getMembers(user);
+//		Collections.sort(members, new Comparator<UserInfo>() {
+//			public int compare(UserInfo userinfo1, UserInfo userinfo2) {
+//				return userinfo2.getZhanli() - userinfo1.getZhanli();
+//			}
+//		});
+//		unionbuilder.addAllMembers(members);
 		return unionbuilder.build();
 	}
 	
