@@ -1,5 +1,6 @@
 package com.trans.pixel.service.redis;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -608,7 +609,7 @@ public class AreaRedisService extends RedisService{
 		hput(MYAREAEQUIP+user.getId(), equip.getId()+"", formatJson(equip));
 	}
 
-	public void saveMyAreaEquips(UserBean user, List<AreaEquip> equips){
+	public void saveMyAreaEquips(UserBean user, Collection<AreaEquip> equips){
 		Map<String, String> map = new HashMap<String, String>();
 		for(AreaEquip equip : equips){
 			map.put(equip.getId()+"", formatJson(equip));

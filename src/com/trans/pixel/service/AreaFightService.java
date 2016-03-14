@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -47,6 +48,7 @@ import com.trans.pixel.protoc.Commands.WeightReward;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.MailRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 
 /**
@@ -71,17 +73,22 @@ public class AreaFightService extends FightService{
 	PushCommandService pusher;
 	
 	public void addAreaEquip(UserBean user, int rewardId, int rewardCount){
-		AreaEquip.Builder builder = redis.getMyAreaEquip(rewardId, user);
-		if(builder == null){
-			builder = AreaEquip.newBuilder(redis.getAreaEquip(rewardId));
-			builder.setCount(builder.getCount()+rewardCount);
-			redis.saveMyAreaEquip(user, builder.build());
-			mapper.addUserAreaProp(user.getId(), rewardId, rewardCount);
-		}else{
-			builder.setCount(builder.getCount()+rewardCount);
-			redis.saveMyAreaEquip(user, builder.build());
-			mapper.updateUserAreaProp(new UserAreaPropBean().parse(builder.build(), user));
+		Collection<AreaEquip> equips = AreaEquips(user);
+		for(AreaEquip equip : equips){
+			if(equip.getId() == rewardId){
+				AreaEquip.Builder builder = AreaEquip.newBuilder(equip);
+				builder.setCount(builder.getCount()+rewardCount);
+				redis.saveMyAreaEquip(user, builder.build());
+				mapper.updateUserAreaProp(new UserAreaPropBean().parse(builder.build(), user));
+				return;
+			}
 		}
+		AreaEquip.Builder builder = AreaEquip.newBuilder(redis.getAreaEquip(rewardId));
+		builder.setCount(builder.getCount()+rewardCount);
+		UserAreaPropBean bean = new UserAreaPropBean().parse(builder.build(), user);
+		mapper.addUserAreaProp(bean);
+		builder.setPrimaryId(bean.getPrimaryid());
+		redis.saveMyAreaEquip(user, builder.build());
 	}
 	
 	private RewardInfo randReward(WeightReward weightreward){
@@ -461,6 +468,7 @@ public class AreaFightService extends FightService{
 				builder.mergeFrom(redis.getAreaEquip(bean.getId()));
 				equipMap.put(builder.getId()+"", builder.build());
 			}
+			redis.saveMyAreaEquips(user, equipMap.values());
 		}
 		return equipMap.values();
 	}

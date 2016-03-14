@@ -12,7 +12,7 @@ public interface UserAreaPropMapper {
 	
 	public int updateUserAreaProp(UserAreaPropBean userAreaProp);
 	
-	public int addUserAreaProp(@Param("userId")long userId, @Param("id")int id, @Param("count")int count);
+	public int addUserAreaProp(UserAreaPropBean userAreaProp);
 	
 	public List<UserAreaPropBean> selectUserAreaPropList(long userId);
 }

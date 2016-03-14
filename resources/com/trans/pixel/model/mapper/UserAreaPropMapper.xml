@@ -14,10 +14,10 @@
 		from user_areaprop where primary_id=#{primaryid}
 	</select>
 	
-	<select id="addUserAreaProp" resultMap="resultMap">
+	<insert id="addUserAreaProp" useGeneratedKeys="true" keyProperty="primaryid" parameterType="com.trans.pixel.model.userinfo.UserAreaPropBean">
 		INSERT INTO user_areaprop(user_id, id, count)
 		VALUES(#{userId}, #{id}, #{count})
-	</select>
+	</insert>
 	
 	<insert id="updateUserAreaProp" parameterType="com.trans.pixel.model.userinfo.UserAreaPropBean">
 	    UPDATE user_areaprop SET count=#{count} WHERE primary_id=#{primaryid}

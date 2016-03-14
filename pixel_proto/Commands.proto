@@ -227,7 +227,7 @@ message AreaEquip {//区域道具
 	optional int32 level = 9;//当前层数
 	optional int32 count = 10;//拥有数量
 	optional int64 endTime = 11;//结束时间
-	required int64 primaryId = 12;
+	optional int64 primaryId = 12;
 }
 
 message AreaEquipList {
