@@ -56,6 +56,7 @@ public class AreaCommandService extends BaseCommandService{
 		Collection<AreaEquip> equips = service.AreaEquips(user);
 		ResponseAreaEquipCommand.Builder builder2 = ResponseAreaEquipCommand.newBuilder();
 		builder2.addAllEquips(equips);
+		builder2.addAllBuffs(service.AreaBuffs(user));
 		responseBuilder.setAreaEquipCommand(builder2);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
@@ -89,6 +90,7 @@ public class AreaCommandService extends BaseCommandService{
 		Collection<AreaEquip> equips = service.AreaEquips(user);
 		ResponseAreaEquipCommand.Builder builder2 = ResponseAreaEquipCommand.newBuilder();
 		builder2.addAllEquips(equips);
+		builder2.addAllBuffs(service.AreaBuffs(user));
 		responseBuilder.setAreaEquipCommand(builder2);
 	}
 
@@ -106,6 +108,7 @@ public class AreaCommandService extends BaseCommandService{
 		Collection<AreaEquip> equips = service.AreaEquips(user);
 		ResponseAreaEquipCommand.Builder builder2 = ResponseAreaEquipCommand.newBuilder();
 		builder2.addAllEquips(equips);
+		builder2.addAllBuffs(service.AreaBuffs(user));
 		responseBuilder.setAreaEquipCommand(builder2);
 	}
 	

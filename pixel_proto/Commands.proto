@@ -224,10 +224,14 @@ message AreaEquip {//区域道具
 	optional int32 layer = 6;//限制层数
 	optional int32 time = 7;//持续时间
 	optional int32 skill = 8;//对应技能
-	optional int32 level = 9;//当前层数
 	optional int32 count = 10;//拥有数量
-	optional int64 endTime = 11;//结束时间
 	optional int64 primaryId = 12;
+}
+
+message AreaBuff {//区域BUFF
+	optional int32 skill = 8;//对应技能
+	optional int32 level = 9;//当前层数
+	optional int64 endTime = 11;//结束时间
 }
 
 message AreaEquipList {
@@ -1264,6 +1268,7 @@ message RequestUseAreaEquipCommand {
 
 message ResponseAreaEquipCommand {
 	repeated AreaEquip equips = 1;
+	repeated AreaBuff buffs = 2;
 }
 
 message RequestUsePropCommand { //打开道具包

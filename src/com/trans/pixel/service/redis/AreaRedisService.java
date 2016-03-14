@@ -1,5 +1,6 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,12 +15,14 @@ import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossList;
 import com.trans.pixel.protoc.Commands.AreaBossReward;
 import com.trans.pixel.protoc.Commands.AreaBossRewardList;
+import com.trans.pixel.protoc.Commands.AreaBuff;
 import com.trans.pixel.protoc.Commands.AreaEquip;
 import com.trans.pixel.protoc.Commands.AreaEquipList;
 import com.trans.pixel.protoc.Commands.AreaFieldTimeList;
@@ -51,6 +54,7 @@ public class AreaRedisService extends RedisService{
 	public final static String AREAMONSTERREWARD = RedisKey.PREFIX+"AreaMonsterReward";
 	public final static String AREAEQUIP = RedisKey.PREFIX+"AreaEquip";
 	public final static String MYAREAEQUIP = RedisKey.PREFIX+"AreaEquip_";
+	public final static String MYAREABUFF = RedisKey.PREFIX+"AreaBuff_";
 	public final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	public final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
 	public final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
@@ -603,6 +607,31 @@ public class AreaRedisService extends RedisService{
 			hputAll(AREAMONSTERREWARD, keyvalue);
 			return map.get(id);
 		}
+	}
+
+	public void saveMyAreaBuff(UserBean user, AreaBuff buff){
+		hput(MYAREABUFF+user.getId(), buff.getSkill()+"", formatJson(buff));
+		expire(MYAREABUFF+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+
+	public AreaBuff.Builder getMyAreaBuff(UserBean user, int skill){
+		String value = hget(MYAREABUFF+user.getId(), skill+"");
+		AreaBuff.Builder builder = AreaBuff.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder;
+		builder.setSkill(skill);
+		return builder;
+	}
+
+	public Collection<AreaBuff> getMyAreaBuffs(UserBean user){
+		List<AreaBuff> list = new ArrayList<AreaBuff>();
+		Map<String,String> keyvalue = hget(MYAREABUFF+user.getId());
+		for(String value : keyvalue.values()){
+			AreaBuff.Builder builder = AreaBuff.newBuilder();
+			if(parseJson(value, builder))
+				list.add(builder.build());
+		}
+		return list;
 	}
 
 	public void saveMyAreaEquip(UserBean user, AreaEquip equip){

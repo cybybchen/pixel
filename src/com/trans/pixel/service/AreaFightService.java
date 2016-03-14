@@ -2,7 +2,6 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,6 +25,7 @@ import com.trans.pixel.model.userinfo.UserAreaPropBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossReward;
+import com.trans.pixel.protoc.Commands.AreaBuff;
 import com.trans.pixel.protoc.Commands.AreaEquip;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaMode;
@@ -48,7 +48,6 @@ import com.trans.pixel.protoc.Commands.WeightReward;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.MailRedisService;
-import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 
 /**
@@ -467,6 +466,10 @@ public class AreaFightService extends FightService{
 			return true;
 	}
 
+	public Collection<AreaBuff> AreaBuffs(UserBean user) {
+		return redis.getMyAreaBuffs(user);
+	}
+
 	public Collection<AreaEquip> AreaEquips(UserBean user) {
 		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
 		if(equipMap.isEmpty()){
@@ -488,11 +491,17 @@ public class AreaFightService extends FightService{
 				AreaEquip.Builder builder = AreaEquip.newBuilder(equip);
 				if(builder.getCount() > 0){
 					builder.setCount(builder.getCount()-1);
-					builder.setEndTime(redis.now()+builder.getTime()*60);
-					builder.setLevel(builder.getLevel()+1);
-					if(builder.getLevel() > builder.getLayer() && builder.getLayer() > 0)
-						builder.setLevel(builder.getLayer());
+					// builder.setEndTime(redis.now()+builder.getTime()*60);
+					// builder.setLevel(builder.getLevel()+1);
+					// if(builder.getLevel() > builder.getLayer() && builder.getLayer() > 0)
+					// 	builder.setLevel(builder.getLayer());
 					redis.saveMyAreaEquip(user, builder.build());
+					AreaBuff.Builder buff = redis.getMyAreaBuff(user, builder.getSkill());
+					buff.setLevel(buff.getLevel());
+					buff.setEndTime(redis.now()+builder.getTime()*60);
+					if(buff.getLevel() > builder.getLayer() && builder.getLayer() > 0)
+						buff.setLevel(builder.getLayer());
+					redis.saveMyAreaBuff(user, buff.build());
 					mapper.updateUserAreaProp(new UserAreaPropBean().parse(builder.build(), user));
 					equipMap.put(builder.getId()+"", builder.build());
 				}else{
@@ -503,6 +512,7 @@ public class AreaFightService extends FightService{
 		}
 		ResponseAreaEquipCommand.Builder builder = ResponseAreaEquipCommand.newBuilder();
 		builder.addAllEquips(equipMap.values());
+		builder.addAllBuffs(redis.getMyAreaBuffs(user));
 		responseBuilder.setAreaEquipCommand(builder.build());
 		return result;
 	}
