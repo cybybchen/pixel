@@ -71,6 +71,8 @@ public class AreaFightService extends FightService{
 	MailRedisService mailRedisService;
 	@Resource
 	PushCommandService pusher;
+	final int WARTIME = 60;
+	final int PROTECTTIME = 30;
 	
 	public void addAreaEquip(UserBean user, int rewardId, int rewardCount){
 		Collection<AreaEquip> equips = AreaEquips(user);
@@ -205,8 +207,8 @@ public class AreaFightService extends FightService{
 			builder.setState(1);
 			long time = redis.now();
 			builder.setStarttime(time);
-			builder.setClosetime(time+/*24*3600L*/600);
-			builder.setEndtime(builder.getClosetime()+300);
+			builder.setClosetime(time+/*24*3600L*/WARTIME);
+			builder.setEndtime(builder.getClosetime()+PROTECTTIME);
 			if(builder.hasOwner()){
 				builder.setMessage("领主"+builder.getOwner().getName()+"已经被"+user.getUserName()+"刺杀");
 				builder.setAttackerId(user.getUnionId());
@@ -402,8 +404,8 @@ public class AreaFightService extends FightService{
 		}else{
 			long time = Math.max(redis.now(), builder.getEndtime());
 			builder.setStarttime(time);
-			builder.setClosetime(time+600);
-			builder.setEndtime(builder.getClosetime()+300);
+			builder.setClosetime(time+WARTIME);
+			builder.setEndtime(builder.getClosetime()+PROTECTTIME);
 		}
 		builder.clearDefenses();
 		builder.clearAttacks();
