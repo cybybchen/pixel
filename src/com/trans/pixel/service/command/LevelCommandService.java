@@ -116,7 +116,7 @@ public class LevelCommandService extends BaseCommandService {
 			return;
 		}
 		
-		userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord);
+		userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, user);
 		userLevelRecord.setLevelPrepareTime(0);
 		userLevelRecord.setLastLevelResultTime(0);
 		userLevelService.updateUserLevelRecord(userLevelRecord);

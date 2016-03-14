@@ -200,7 +200,7 @@ public class UnionService extends FightService{
 		 * 工会血战的活动
 		 */
 		for (UserInfo user : attacks) {
-			activityService.unionAttack(user.getId(), attacksuccess);
+			activityService.unionAttackActivity(user.getId(), attacksuccess);
 		}
 	}
 	

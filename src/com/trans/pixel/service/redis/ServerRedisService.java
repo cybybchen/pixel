@@ -71,4 +71,9 @@ public class ServerRedisService extends RedisService{
 		}
 		return -1;
 	}
+	
+	public String getKaifuTime(int serverId) {
+		String value = hget(RedisKey.SERVER_KAIFU_TIME, "" + serverId);
+		return value;
+	}
 }

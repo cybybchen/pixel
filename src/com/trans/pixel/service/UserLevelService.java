@@ -6,10 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.LevelConst;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.mapper.UserLevelMapper;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.service.redis.UserLevelRedisService;
 
@@ -24,7 +24,7 @@ public class UserLevelService {
 	@Resource
 	private UserLevelMapper userLevelMapper;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public UserLevelBean selectUserLevelRecord(long userId) {
 		UserLevelBean userLevelRecordBean = userLevelRedisService.selectUserLevelRecord(userId);
@@ -46,7 +46,7 @@ public class UserLevelService {
 		userLevelMapper.updateUserLevelRecord(userLevelRecord);
 	}
 	
-	public UserLevelBean updateUserLevelRecord(int levelId, UserLevelBean userLevelRecord) {
+	public UserLevelBean updateUserLevelRecord(int levelId, UserLevelBean userLevelRecord, UserBean user) {
 		XiaoguanBean xg = levelService.getXiaoguan(levelId);
 		if (xg == null)
 			return userLevelRecord;
@@ -56,9 +56,9 @@ public class UserLevelService {
 			case LevelConst.DIFF_PUTONG:
 				userLevelRecord.setPutongLevel(levelId);
 				/**
-				 * achieve type 107
+				 * 推图的活动
 				 */
-				achieveService.sendAchieveScore(userLevelRecord.getUserId(), AchieveConst.TYPE_LEVEL);
+				activityService.levelActivity(user);
 				break;
 			case LevelConst.DIFF_KUNNAN:
 				userLevelRecord.setKunnanLevel(UserLevelBean.updateXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg));

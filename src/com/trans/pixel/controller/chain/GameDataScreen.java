@@ -51,6 +51,8 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifu2RewardCommand;
 import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
@@ -835,6 +837,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestRichangListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		activityCommandService.richangList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestKaifu2ActivityCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		activityCommandService.kaifu2Activity(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestKaifu2RewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		activityCommandService.kaifu2Reward(cmd, responseBuilder, user);
 		return true;
 	}
 

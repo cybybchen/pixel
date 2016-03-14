@@ -707,6 +707,7 @@ message ActivityOrder {
 	required string description = 2;
 	required int32 targetid = 3;
 	required int32 targetcount = 4;
+	required int32 targetcount1 = 17;
 	required int32 rewardid0 = 5;
 	required string rewardname0 = 6;
 	required int32 rewardcount0 = 7;
@@ -743,6 +744,22 @@ message UserAchieve {
 	required int32 type = 1;
 	required int32 completeId = 2;
 	required int32 completeCount = 3;
+}
+
+message Kaifu2List {
+	repeated Kaifu2 kaifu = 1;
+}
+
+message Kaifu2 {
+	required int32 id = 1;
+	required string activity = 2;
+	repeated ActivityOrder order = 3;	
+}
+
+message Kaifu2Rank {
+	required int32 type = 1;
+	repeated Rank rank = 2;
+	required int64 myRank = 3;
 }
 
 message ErrorCommand{
@@ -1418,6 +1435,26 @@ message ResponseRichangListCommand {
 	repeated UserRichang userRichang = 1;
 }
 
+message RequestKaifu2ActivityCommand {
+
+}
+
+message ResponseKaifu2ActivityCommand {
+	repeated Kaifu2Rank rank = 1;
+	required int32 accRcPs = 2;//累计充值人数
+	required int32 accRcPsRwRc = 3;//全民福利的领取记录
+}
+
+message RequestKaifu2RewardCommand {//全民福利的奖励
+	required int32 type = 1;
+	required int32 id = 2;
+}
+
+message ResponseKaifu2RewardCommand {
+	required int32 accRcPsRwRc = 1;
+	required MultiReward rewards = 2;	
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1524,6 +1561,8 @@ message RequestCommand {
 	optional RequestUnlockLevelCommand unlockLevelCommand = 72;
 	optional RequestRichangRewardCommand richangRewardCommand = 73;
 	optional RequestRichangListCommand richangListCommand = 74;
+	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
+	optional RequestKaifu2RewardCommand kaifu2RewardCommand = 76;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1579,6 +1618,8 @@ message ResponseCommand {
 	optional ResponseAchieveListCommand achieveListCommand = 40;
 	optional ResponseRichangRewardCommand richangRewardCommand = 41;
 	optional ResponseRichangListCommand richangListCommand = 42;
+	optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
+	optional ResponseKaifu2RewardCommand kaifu2RewardCommand = 44;
 }
 
 

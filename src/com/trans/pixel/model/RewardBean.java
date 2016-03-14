@@ -54,6 +54,18 @@ public class RewardBean {
 		this.count = count;
 	}
 	
+	public static List<RewardBean> buildRewardBeanList(List<RewardInfo> rewardList) {
+		List<RewardBean> rewardBeanList = new ArrayList<RewardBean>();
+		for (RewardInfo reward : rewardList) {
+			RewardBean rewardBean = new RewardBean();
+			rewardBean.setItemid(reward.getItemid());
+			rewardBean.setCount(reward.getCount());
+			rewardBeanList.add(rewardBean);
+		}
+		
+		return rewardBeanList;
+	}
+	
 	public RewardInfo buildRewardInfo() {
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(itemid);

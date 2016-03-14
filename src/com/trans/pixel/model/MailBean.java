@@ -6,8 +6,10 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.protoc.Commands.Mail;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class MailBean {
@@ -162,6 +164,18 @@ public class MailBean {
 		builder.addAllReward(rewardInfoBuilderList);
 		
 		return builder.build();
+	}
+	
+	public static MailBean buildMail(long userId, String content, List<RewardInfo> rewardList) {
+		List<RewardBean> rewardBeanList = RewardBean.buildRewardBeanList(rewardList);
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setContent("");
+		mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+		mail.setRewardList(rewardBeanList);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
 	}
 	
 	private static final String ID = "id";

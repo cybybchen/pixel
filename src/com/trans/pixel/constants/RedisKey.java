@@ -18,6 +18,7 @@ public class RedisKey {
 	public final static String USERCACHE_PREFIX = "UserCache_S";
 	public final static String PVPMAP = PREFIX+"PVPMap_";
 	public static final String SERVERDATA = PREFIX+"ServerData_";
+	public static final String SERVER_KAIFU_TIME = PREFIX + "server_kaifu_time";
 	
 	//user key prefix
 	public final static String USER_PREFIX = "user_";
@@ -160,4 +161,8 @@ public class RedisKey {
 	//activity config redis
 	public static final String ACHIEVE_KEY = PREFIX + "key:achieve";
 	public static final String ACTIVITY_RICHANG_KEY = PREFIX + "key:richang";
+	public static final String ACTIVITY_KAIFU2_KEY = PREFIX + "key:kaifu2";
+	public static final String ACTIVTYY_KAIFU2_RANK_PREFIX = "kaifu2_rank_";
+	public static final String ACTIVITY_KAIFU2_REWARD_RECORD_PREFIX = "kaifu2_reward_record_";
+	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "key:kaifu2_send_record";
 }

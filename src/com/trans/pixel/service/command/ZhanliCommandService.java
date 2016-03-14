@@ -4,11 +4,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.service.AchieveService;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RankRedisService;
 
@@ -19,7 +18,7 @@ public class ZhanliCommandService extends BaseCommandService {
 	@Resource
 	private RankRedisService rankRedisService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
 		int zhanli = cmd.getZhanli();
@@ -27,10 +26,11 @@ public class ZhanliCommandService extends BaseCommandService {
 		if(user.getZhanliMax() < zhanli){
 			user.setZhanliMax(zhanli);
 			rankRedisService.updateZhanliRank(user);
+			
 			/**
-			 * achieve type 108
+			 * zhanli activity
 			 */
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_ZHANLI, zhanli);
+			activityService.zhanliActivity(user, zhanli);
 		}
 		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUserDailyData(user);

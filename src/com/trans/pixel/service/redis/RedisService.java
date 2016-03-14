@@ -459,6 +459,22 @@ public class RedisService {
 			}
 		});
     }
+    
+    /**
+     * 判断set中是否已添加
+     */
+    protected boolean sismember(final String key, final String member) {
+    	return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundSetOperations<String, String> Ops = redisTemplate
+						.boundSetOps(key);
+				
+				return Ops.isMember(member);
+			}
+		});
+    }
 	
     /**
      * 删除set
@@ -495,20 +511,19 @@ public class RedisService {
 	/**
 	 * 添加zset
 	 */
-	protected void zadd(final String key, final double score, final String value) {
-		redisTemplate.execute(new RedisCallback<Object>() {
+	protected boolean zadd(final String key, final double score, final String value) {
+		return redisTemplate.execute(new RedisCallback<Boolean>() {
 			@Override
-			public Object doInRedis(RedisConnection arg0)
+			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundZSetOperations<String, String> Ops = redisTemplate
 						.boundZSetOps(key);
 
-				Ops.add(value, score);
+				return Ops.add(value, score);
 
 //				Date date = expireDateAndInit();
 //				if (date != null)
 //					Ops.expireAt(date);
-				return null;
 			}
 		});
 	}
@@ -598,6 +613,22 @@ public class RedisService {
 		});
     }
 
+    /**
+     * 获取zset大小
+     */
+    protected int zcard(final String key) {
+    	return redisTemplate.execute(new RedisCallback<Integer>() {
+			@Override
+			public Integer doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> ops = redisTemplate
+						.boundZSetOps(key);
+				
+				return ops.size().intValue();
+			}
+		});
+    }
+    
     /**
      * 获取list
      */

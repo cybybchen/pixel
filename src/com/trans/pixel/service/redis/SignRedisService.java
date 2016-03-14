@@ -13,7 +13,7 @@ import com.trans.pixel.protoc.Commands.SignList;
 
 @Repository
 public class SignRedisService extends RedisService{
-	private static final String FILE_NAME = "lol_taskqiandao.xml";
+	private static final String FILE_NAME = "task/lol_taskqiandao.xml";
 	
 	public Sign getSign(int day) {
 		String value = hget(RedisKey.SIGN_KEY, "" + day);

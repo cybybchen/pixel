@@ -45,4 +45,31 @@ public class ActivityConst {
 		RICHANG_LEIJI_LOTTERY_JEWEL, RICHANG_LADDER_ATTACK, RICHANG_PVP_ATTACK_ENEMY, RICHANG_PVP_ATTACK_BOSS_SUCCESS, 
 		RICHANG_MOJING_STORE, RICHANG_UNION_ATTACK}; 
 	
+	
+	/**
+	 * 全民福利
+	 */
+	public static final int KAIFU2_LEIJI_RECHARGE_PERSON_COUNT = 211;
+	
+	/**
+	 * 开服战力榜
+	 */
+	public static final int KAIFU2_ZHANLI = 212;
+	
+	/**
+	 * 开服推图榜
+	 */
+	public static final int KAIFU2_LEVEL = 213;
+	
+	/**
+	 * 开服充值榜
+	 */
+	public static final int KAIFU2_RECHARGE = 214;
+	
+	/**
+	 * 所有kaifu2的活动类型 
+	 */
+	public static final int[] KAIFU2_TYPES = {KAIFU2_ZHANLI, KAIFU2_LEVEL, KAIFU2_RECHARGE};
+	
+	public static final int KAIFU2_RANK_SIZE = 20;
 }
