@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.AreaEquip;
 import com.trans.pixel.protoc.Commands.AreaInfo;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -24,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
+import com.trans.pixel.protoc.Commands.ResponseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -50,8 +53,13 @@ public class AreaCommandService extends BaseCommandService{
 	}
 	
 	public void Areas(RequestAreaCommand cmd, Builder responseBuilder, UserBean user){
+		Collection<AreaEquip> equips = service.AreaEquips(user);
+		ResponseAreaEquipCommand.Builder builder2 = ResponseAreaEquipCommand.newBuilder();
+		builder2.addAllEquips(equips);
+		responseBuilder.setAreaEquipCommand(builder2);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
+	
 	private ResponseAreaCommand getAreas(UserBean user){
 		List<AreaInfo> areas = service.getAreas(user).getRegionList();
 		ResponseAreaCommand.Builder builder = ResponseAreaCommand.newBuilder();
@@ -78,6 +86,10 @@ public class AreaCommandService extends BaseCommandService{
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
+		Collection<AreaEquip> equips = service.AreaEquips(user);
+		ResponseAreaEquipCommand.Builder builder2 = ResponseAreaEquipCommand.newBuilder();
+		builder2.addAllEquips(equips);
+		responseBuilder.setAreaEquipCommand(builder2);
 	}
 
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
@@ -91,6 +103,10 @@ public class AreaCommandService extends BaseCommandService{
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
+		Collection<AreaEquip> equips = service.AreaEquips(user);
+		ResponseAreaEquipCommand.Builder builder2 = ResponseAreaEquipCommand.newBuilder();
+		builder2.addAllEquips(equips);
+		responseBuilder.setAreaEquipCommand(builder2);
 	}
 	
 	public void resourceInfo(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user){

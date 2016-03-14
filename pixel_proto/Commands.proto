@@ -532,7 +532,6 @@ message AreaInfo {//可争夺区域
 
 message AreaMode {//区域争夺
 	repeated AreaInfo region = 1;//区域
-	repeated AreaEquip equips = 2;
 }
 
 message Rank {
@@ -1024,8 +1023,7 @@ message RequestUnlockAreaCommand {//解锁区域
 
 message ResponseAreaCommand {
 	repeated AreaInfo areas = 1;
-	repeated AreaEquip equips = 2;
-	optional bool hasreward = 3;
+	optional bool hasreward = 2;
 }
 
 message RequestAreaResourceCommand {//区域info
@@ -1479,6 +1477,7 @@ message RequestCommand {
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestAreaCommand areaCommand = 26;
+	optional RequestUseAreaEquipCommand useAreaEquipCommand = 137;
 	optional RequestAreaResourceCommand areaResourceCommand = 136;
 	optional RequestUnlockAreaCommand unlockAreaCommand = 133;
 	optional RequestAttackMonsterCommand attackMonsterCommand = 27;
@@ -1525,7 +1524,6 @@ message RequestCommand {
 	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
 	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
 	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
-	optional RequestUseAreaEquipCommand useAreaEquipCommand = 137;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;

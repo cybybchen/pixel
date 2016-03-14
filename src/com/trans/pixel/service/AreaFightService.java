@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -202,7 +203,7 @@ public class AreaFightService extends FightService{
 				builder.setAttackerId(user.getUnionId());
 			}else{
 				builder.setMessage("领主已经被"+user.getUserName()+"刺杀");
-				builder.setOwner(user.buildUnionShort());
+				builder.setOwner(user.buildShort());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
@@ -363,10 +364,6 @@ public class AreaFightService extends FightService{
 		if(attacks.size() == 0){
 			builder.setWarDefended(builder.getWarDefended()+1);
 			builder.setMessage("当前已成功防守"+builder.getWarDefended()+"波敌人！");
-		}else if(defends.size() == 0){
-			builder.setWarDefended(0);
-			builder.setOwner(attacks.get(attacks.size()-1));
-			builder.setMessage(builder.getOwner().getName()+"成功拿下了据点！");
 		}else{
 			FightResultList.Builder resultlist = queueFight(attacks, defends);
 			redis.saveFight(builder.getId(), resultlist.build());
@@ -376,7 +373,7 @@ public class AreaFightService extends FightService{
 					UserInfo owner = null;
 					for(UserInfo userinfo : attacks){
 						if(userinfo.getId() == winresult.getWin().getUserId())
-							owner = userinfo;
+							owner = userService.getCache(user.getServerId(), userinfo.getId());
 					}
 
 					builder.setWarDefended(0);
@@ -455,6 +452,18 @@ public class AreaFightService extends FightService{
 			return true;
 	}
 
+	public Collection<AreaEquip> AreaEquips(UserBean user) {
+		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
+		if(equipMap.isEmpty()){
+			List<UserAreaPropBean> beans = mapper.selectUserAreaPropList(user.getId());
+			for(UserAreaPropBean bean : beans){
+				AreaEquip.Builder builder = bean.build();
+				builder.mergeFrom(redis.getAreaEquip(bean.getId()));
+				equipMap.put(builder.getId()+"", builder.build());
+			}
+		}
+		return equipMap.values();
+	}
 	public ResultConst useAreaEquips(int id, Builder responseBuilder, UserBean user) {
 		ResultConst result = SuccessConst.USE_PROP;
 		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
@@ -490,16 +499,6 @@ public class AreaFightService extends FightService{
 		Map<String, String> bosstimeMap = redis.getBossTimes(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
-		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
-		if(equipMap.isEmpty()){
-			List<UserAreaPropBean> beans = mapper.selectUserAreaPropList(user.getId());
-			for(UserAreaPropBean bean : beans){
-				AreaEquip.Builder builder = bean.build();
-				builder.mergeFrom(redis.getAreaEquip(bean.getId()));
-				equipMap.put(builder.getId()+"", builder.build());
-			}
-		}
-		areamodebuilder.addAllEquips(equipMap.values());
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
 			if(!areabuilder.getOpened())

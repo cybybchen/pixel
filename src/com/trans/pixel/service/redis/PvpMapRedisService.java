@@ -125,10 +125,6 @@ public class PvpMapRedisService extends RedisService{
 		hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
 	}
 
-	public void deleteBoss(UserBean user, int id) {
-		hdelete(RedisKey.PVPBOSS_PREFIX+user.getId(), id+"");
-	}
-
 	public PVPMine getMine(long userId, int id) {
 		PVPMine.Builder builder = PVPMine.newBuilder();
 		String value = hget(RedisKey.PVPMINE_PREFIX+userId, id+"");

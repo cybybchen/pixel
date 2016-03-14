@@ -27,7 +27,7 @@ public class AreaTest extends BaseTest {
 		testGetArea();
 //		testAreaBoss();
 //		testAreaMonster();
-//		testAreaResource();
+		testAreaResource();
 //		testAreaResourceMine();
 	}
 	
