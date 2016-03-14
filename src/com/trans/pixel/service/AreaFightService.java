@@ -448,7 +448,14 @@ public class AreaFightService extends FightService{
 	}
 
 	public AreaResource getResource(int id, UserBean user) {
-		return redis.getResource(id,user);
+		AreaResource resource = redis.getResource(id,user);
+		if(resource == null)
+			return null;
+		AreaResource.Builder builder = AreaResource.newBuilder(resource);
+		if (builder.hasClosetime() && System.currentTimeMillis() / 1000 >= builder.getClosetime()) {// 攻城开始
+			resourceFight(builder, user);
+		}
+		return builder.build();
 	}
 	
 	public boolean hasReward(UserBean user){
