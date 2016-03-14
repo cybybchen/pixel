@@ -121,6 +121,9 @@ public class UnionService extends FightService{
 		if(needupdate && redis.setLock("Union_"+builder.getId()))
 			redis.saveUnion(builder.build(), user);
 		builder.addAllMembers(members);
+		if(user.getUnionJob() > 0){
+			builder.addAllApplies(redis.getApplies(user.getUnionId()));
+		}
 		return builder.build();
 	}
 	

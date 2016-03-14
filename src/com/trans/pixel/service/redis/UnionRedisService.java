@@ -36,14 +36,14 @@ public class UnionRedisService extends RedisService{
 			logger.warn("cannot build Union:"+user.getUnionId());
 			return null;
 		}
-		if (user.getUnionJob() >= 2) {
-			Map<String, String> applyMap = this.hget(this.getUnionApplyKey(user.getUnionId()));
-			for (String applyvalue : applyMap.values()) {
-				UnionApply.Builder builder = UnionApply.newBuilder();
-				if (parseJson(applyvalue, builder))
-					unionbuilder.addApplies(builder);
-			}
-		}
+//		if (user.getUnionJob() >= 2) {
+//			Map<String, String> applyMap = this.hget(this.getUnionApplyKey(user.getUnionId()));
+//			for (String applyvalue : applyMap.values()) {
+//				UnionApply.Builder builder = UnionApply.newBuilder();
+//				if (parseJson(applyvalue, builder))
+//					unionbuilder.addApplies(builder);
+//			}
+//		}
 //		List<UserInfo> members = getMembers(user);
 //		Collections.sort(members, new Comparator<UserInfo>() {
 //			public int compare(UserInfo userinfo1, UserInfo userinfo2) {
@@ -138,16 +138,16 @@ public class UnionRedisService extends RedisService{
 		this.sremove(getUnionMemberKey(user), id+"");
 	}
 	
-//	public List<UnionApply> getApplies(final int unionId) {
-//		List<UnionApply> list = new ArrayList<UnionApply>();
-//		Map<String, String> applyMap = this.hget(getUnionApplyKey(unionId));
-//		for(Entry<String, String> value : applyMap.entrySet()){
-//			UnionApply.Builder builder = UnionApply.newBuilder();
-//			if(parseJson(value.getValue(), builder))
-//				list.add(builder.build());
-//		}
-//		return list;
-//	}
+	public List<UnionApply> getApplies(final int unionId) {
+		List<UnionApply> list = new ArrayList<UnionApply>();
+		Map<String, String> applyMap = this.hget(getUnionApplyKey(unionId));
+		for(Entry<String, String> value : applyMap.entrySet()){
+			UnionApply.Builder builder = UnionApply.newBuilder();
+			if(parseJson(value.getValue(), builder))
+				list.add(builder.build());
+		}
+		return list;
+	}
 	
 	public void deleteUnion(UserBean user){
 		this.hdelete(getUnionServerKey(user.getServerId()), user.getUnionId()+"");
