@@ -195,7 +195,8 @@ public class AreaFightService extends FightService{
 				return SuccessConst.AREA_ATTACK_FAIL;
 			}
 			builder.setState(1);
-			builder.setEndtime(System.currentTimeMillis()/1000+/*24*3600L*/600);
+			builder.setClosetime(System.currentTimeMillis()/1000+/*24*3600L*/600);
+			builder.setEndtime(builder.getClosetime()+300);
 			if(builder.hasOwner()){
 				builder.setMessage("领主"+builder.getOwner().getName()+"已经被"+user.getUserName()+"刺杀");
 				builder.setAttackerId(user.getUnionId());
@@ -397,7 +398,9 @@ public class AreaFightService extends FightService{
 			builder.setWarDefended(0);
 			builder.clearMessage();
 		}else{
-			builder.setEndtime(System.currentTimeMillis()/1000+600);
+			long time = redis.now();
+			builder.setClosetime(Math.max(time, builder.getEndtime())+600);
+			builder.setEndtime(builder.getClosetime()+300);
 		}
 		builder.clearDefenses();
 		builder.clearAttacks();
@@ -522,7 +525,7 @@ public class AreaFightService extends FightService{
 				AreaResource resource = resourceMap.get(resourcebuilder.getId() + "");
 				if (resource != null) {
 					AreaResource.Builder builder = AreaResource.newBuilder(resource);
-					if (builder.hasEndtime() && System.currentTimeMillis() / 1000 >= builder.getEndtime()) {// 攻城开始
+					if (builder.hasClosetime() && System.currentTimeMillis() / 1000 >= builder.getClosetime()) {// 攻城开始
 						resourceFight(builder, user);
 					}
 					resourcebuilder.mergeFrom(builder.build());

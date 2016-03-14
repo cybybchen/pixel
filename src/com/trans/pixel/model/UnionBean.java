@@ -60,6 +60,8 @@ public class UnionBean {
 		union.setIcon(icon);
 		union.setLevel(level);
 		union.setPoint(point);
+		union.setCount(1);
+		union.setMaxCount(30);
 		
 		return union.build();
 	}

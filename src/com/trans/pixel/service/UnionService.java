@@ -92,10 +92,15 @@ public class UnionService extends FightService{
 			builder.setZhanli(zhanli);
 			needupdate = true;
 		}
+		if(builder.getCount() != members.size()){
+			builder.setCount(members.size());
+			needupdate = true;
+		}
 		if(union.hasAttackId()){
-			if(builder.getAttackEndTime() < redis.now()){
+			if(builder.getAttackCloseTime() < redis.now()){
 				builder.clearAttackId();
 				builder.clearAttackEndTime();
+				builder.clearAttackCloseTime();
 				needupdate = true;
 			}else{
 				List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
@@ -103,8 +108,9 @@ public class UnionService extends FightService{
 			}
 		}
 		if(union.hasDefendId()){
-			if(builder.getDefendEndTime() < redis.now()){
+			if(builder.getDefendCloseTime() < redis.now()){
 				builder.clearDefendId();
+				builder.clearDefendCloseTime();
 				builder.clearDefendEndTime();
 				needupdate = true;
 		 	}else{
@@ -318,6 +324,10 @@ public class UnionService extends FightService{
 			if(bean != null && bean.getUnionId() == 0){
 				if(isAreaFighting(userId, user))
 					return ErrorConst.AREA_FIGHT_BUSY;
+				Union.Builder builder = Union.newBuilder();
+				redis.getBaseUnion(builder, user.getUnionId(), user.getServerId());
+				if(builder.getCount() >= builder.getMaxCount())
+					return ErrorConst.UNION_FULL;
 				bean.setUnionId(user.getUnionId());
 				bean.setUnionJob(0);
 				userService.updateUser(bean);
@@ -367,13 +377,15 @@ public class UnionService extends FightService{
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, herolist);
 			redis.attack(builder.getAttackId(), user);
-		}else if(user.getUnionJob() >= 2 && attackId != 0 && redis.now() > builder.getAttackEndTime()){
+		}else if(user.getUnionJob() >= 2 && attackId != 0 && redis.now() > builder.getAttackCloseTime()){
 			Union.Builder defendUnion = Union.newBuilder();
 			builder.setAttackId(attackId);
-			builder.setAttackEndTime(redis.today(24));
+			builder.setAttackCloseTime(redis.today(24));
+			builder.setAttackEndTime(builder.getAttackCloseTime()+300);
 			redis.getBaseUnion(defendUnion, builder.getAttackId(), user.getServerId());
 			defendUnion.setDefendId(builder.getId());
-			defendUnion.setDefendEndTime(redis.today(24));
+			defendUnion.setDefendCloseTime(redis.today(24));
+			builder.setDefendEndTime(builder.getDefendCloseTime()+300);
 			if(redis.setLock("Union_"+builder.getId()) 
 				&& redis.setLock("Union_"+defendUnion.getId()))
 			{

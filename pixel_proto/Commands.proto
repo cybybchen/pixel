@@ -191,18 +191,22 @@ message Union {
 	required string name = 2;
 	required int32 icon = 3;
 	required int32 level = 4;
-	optional int32 zhanli = 16;
-	optional int32 rank = 5;
-	optional int32 point = 6;
-	repeated UserInfo members = 7;
-	repeated UnionApply applies = 8;
-	optional int32 attackId = 9;
-	optional int64 attackEndTime = 14;
-	optional int32 defendId = 10;
-	optional int64 defendEndTime = 15;
-	repeated UserInfo attacks = 11;
-	repeated UserInfo defends = 12;
-	optional bool isApply = 13;
+	optional int32 zhanli = 5;
+	optional int32 rank = 6;
+	optional int32 point = 7;
+	optional int32 count = 8;
+	optional int32 maxCount = 9;
+	repeated UserInfo members = 10;
+	repeated UnionApply applies = 11;
+	optional int32 attackId = 12;
+	optional int64 attackEndTime = 13;
+	optional int64 attackCloseTime = 14;
+	optional int32 defendId = 15;
+	optional int64 defendEndTime = 16;
+	optional int64 defendCloseTime = 17;
+	repeated UserInfo attacks = 18;
+	repeated UserInfo defends = 19;
+	optional bool isApply = 20;
 }
 
 message UnionApply {
@@ -254,6 +258,7 @@ message AreaResource {//区域资源点
 	///////////////////////////////////
 	optional int32 state = 10;//争夺状态:0正常，1准备战斗
 	optional int64 endtime = 11;//该阶段结束时间
+	optional int64 closetime = 18;//该阶段close时间
 	optional UserInfo owner = 12;//占领玩家
 	optional int32 attackerId = 13;//进攻工会
 	optional int32 warDefended = 14;//抵挡波数
