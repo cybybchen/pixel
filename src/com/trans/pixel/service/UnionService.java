@@ -374,6 +374,9 @@ public class UnionService extends FightService{
 		Union.Builder builder = Union.newBuilder();
 		redis.getBaseUnion(builder, user.getUnionId(), user.getServerId());
 		if(builder.hasAttackId()){
+			if(redis.now() > builder.getAttackCloseTime()){
+				return ErrorConst.JOIN_END;
+			}
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, herolist);
 			redis.attack(builder.getAttackId(), user);
@@ -402,16 +405,19 @@ public class UnionService extends FightService{
 		return SuccessConst.UNION_FIGHT_SUCCESS;
 	}
 	
-	public boolean defend(int teamid, UserBean user){
+	public ResultConst defend(int teamid, UserBean user){
 		Union.Builder union = Union.newBuilder();
 		redis.getBaseUnion(union, user.getUnionId(), user.getServerId());
 		if(union.hasDefendId()){
+			if(redis.now() > union.getDefendCloseTime()){
+				return ErrorConst.JOIN_END;
+			}
 			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, herolist);
 			redis.defend(union.getDefendId(), user);
-			return true;
+			return SuccessConst.UNION_FIGHT_SUCCESS;
 		}else{
-			return false;
+			return ErrorConst.UNION_NOT_FIGHT;
 		}
 	}
 

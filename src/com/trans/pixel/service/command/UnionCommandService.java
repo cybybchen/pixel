@@ -139,8 +139,9 @@ public class UnionCommandService extends BaseCommandService {
 		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		if(!unionService.defend(cmd.getTeamid(), user))
-			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.UNION_NOT_FIGHT));
+		ResultConst result = unionService.defend(cmd.getTeamid(), user);
+		if(result instanceof ErrorConst)
+			responseBuilder.setErrorCommand(super.buildErrorCommand(result));
 			
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
