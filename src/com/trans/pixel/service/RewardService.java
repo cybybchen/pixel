@@ -32,7 +32,7 @@ public class RewardService {
 	@Resource
 	private UserPropService userPropService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	@Resource
 	private AreaFightService areaService;
 	
