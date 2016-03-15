@@ -608,6 +608,9 @@ message MohuaUserData { //魔化之地模式的用户存档
 	required int32 consumehp = 6;//BOSS血量百分比
 	repeated int32 rewardHp = 7;//血量奖励领取的阶段
 	repeated HeroInfo hero = 8;//队伍信息	
+	required string enemyName = 9;//对手名字
+	repeated HeroInfo enemyHero = 10;//对手的队伍信息
+	required int32 selfhp = 11;//自己的血量百分比
 }
 
 message MohuaMapStage { //魔化之地的每一阶段信息
@@ -1403,10 +1406,11 @@ message RequestMohuaHpRewardCommand {//魔化之地HP奖励领取
 message RequestMohuaSubmitStageCommand {//魔化之地提交记录
 	required int32 stage = 1;
 	required int32 hp = 2;
+	required int32 selfhp = 3;
 }
 
 message ResponseMohuaUserDataCommand {
-	required MohuaUserData user = 1;
+	optional MohuaUserData user = 1;
 }
 
 message RequestSaleEquipCommand {

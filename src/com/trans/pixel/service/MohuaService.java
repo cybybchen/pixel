@@ -19,7 +19,9 @@ import com.trans.pixel.protoc.Commands.MohuaMapStage;
 import com.trans.pixel.protoc.Commands.MohuaMapStageList;
 import com.trans.pixel.protoc.Commands.MohuaUserData;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.MohuaRedisService;
+import com.trans.pixel.service.redis.UserRedisService;
 
 @Service
 public class MohuaService {
@@ -28,6 +30,8 @@ public class MohuaService {
 	private MohuaRedisService redis;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private UserRedisService userRedisService;
 	
 	public MohuaUserData.Builder enterUserData(long userId) {
 		MohuaUserData user = redis.getMohuaUserData(userId);
@@ -42,10 +46,14 @@ public class MohuaService {
 	}
 	
 	public MohuaUserData.Builder getUserData(long userId) {
+		return getUserData(userId, 0);
+	}
+	
+	public MohuaUserData.Builder getUserData(long userId, int serverId) {
 		MohuaUserData user = redis.getMohuaUserData(userId);
 		if (user == null) {
 			MohuaMapStageList mohuaMap = randomMohuaMap();
-			user = initMohuaUserData(mohuaMap, userId);
+			user = initMohuaUserData(mohuaMap, userId, serverId);
 			redis.updateMohuaUserData(user, userId);
 		}
 		
@@ -94,7 +102,7 @@ public class MohuaService {
 		return buildRewardList(itemList);
 	}
 	
-	public ResultConst submitStage(long userId, int stage, int hp) {
+	public ResultConst submitStage(long userId, int stage, int hp, int selfhp) {
 		MohuaUserData.Builder user = getUserData(userId);
 		if (stage <= user.getStage())
 			return ErrorConst.MOHUA_HAS_SUBMIT_ERROR;
@@ -209,11 +217,12 @@ public class MohuaService {
 		return mohuaCard.build();
 	}
 	
-	private MohuaUserData initMohuaUserData(MohuaMapStageList mohuaMap, long userId) {
+	private MohuaUserData initMohuaUserData(MohuaMapStageList mohuaMap, long userId, int serverId) {
 		MohuaUserData.Builder userData = MohuaUserData.newBuilder();
 		userData.setConsumehp(0);
 		userData.setMapid(mohuaMap.getMapid());
 		userData.setStage(1);
+		userData.setSelfhp(0);
 		
 		List<MohuaMapStage> stageList = mohuaMap.getStageList();
 		MohuaMapStage stage = getStage(stageList, userData.getStage());
@@ -221,6 +230,10 @@ public class MohuaService {
 		userData.setCrystal(stage.getCrystal());
 		userData.addAllCard(randomMohuaCard(mohuaMap.getMapid(), stage.getRandomcard()));
 		userData.addAllHero(userTeamService.getProtoTeamCache(userId));
+		
+		UserInfo enemyUser = userRedisService.getRandUser(serverId);
+		userData.setEnemyName(enemyUser.getName());
+		userData.addAllEnemyHero(userTeamService.getProtoTeamCache(enemyUser.getId()));
 		
 		return userData.build();
 	}

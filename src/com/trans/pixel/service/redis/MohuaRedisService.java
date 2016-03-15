@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import net.sf.json.JSONObject;
-
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -24,10 +22,10 @@ import com.trans.pixel.protoc.Commands.MohuaUserData;
 
 @Service
 public class MohuaRedisService extends RedisService {
-	private static final String MAP_FILE_NAME = "lol_mohuamap.xml";
-	private static final String CARDLOOT_FILE_NAME = "lol_mohuacardloot.xml";
-	private static final String JIEDUAN_FILE_NAME = "lol_mohuajieduan.xml";
-	private static final String LOOT_FILE_NAME = "lol_mohualoot.xml";
+	private static final String MAP_FILE_NAME = "mohua/lol_mohuamap.xml";
+	private static final String CARDLOOT_FILE_NAME = "mohua/lol_mohuacardloot.xml";
+	private static final String JIEDUAN_FILE_NAME = "mohua/lol_mohuajieduan.xml";
+	private static final String LOOT_FILE_NAME = "mohua/lol_mohualoot.xml";
 	
 	public MohuaMapStageList getMohuaMap(int mapid) {
 		String value = hget(RedisKey.MOHUA_MAP_KEY, "" + mapid);
@@ -257,14 +255,17 @@ public class MohuaRedisService extends RedisService {
 	
 	public void updateMohuaUserData(final MohuaUserData user, final long userId) {
 		String key = RedisKey.USERDATA + userId;
-		hput(key, RedisKey.MOHUA_USERDATA, JSONObject.fromObject(user).toString());
+		hput(key, RedisKey.MOHUA_USERDATA, formatJson(user));
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public MohuaUserData getMohuaUserData(final long userId) {
 		String value = hget(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA);
-		JSONObject json = JSONObject.fromObject(value);
-		return (MohuaUserData) JSONObject.toBean(json, MohuaUserData.class);
+		MohuaUserData.Builder builder = MohuaUserData.newBuilder();
+		if (value != null && parseJson(value, builder))
+			return builder.build();
+		
+		return null;
 	}
 	
 	public void delMohuaUserData(long userId) {
