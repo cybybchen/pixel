@@ -630,7 +630,7 @@ public class AreaRedisService extends RedisService{
 			AreaBuff.Builder builder = AreaBuff.newBuilder();
 			if(parseJson(value, builder)){
 				if(now() > builder.getEndTime())
-					hdelete(MYAREABUFF+user.getId(), builder.getId()+"");
+					hdelete(MYAREABUFF+user.getId(), builder.getSkill()+"");
 				else
 					list.add(builder.build());
 			}
