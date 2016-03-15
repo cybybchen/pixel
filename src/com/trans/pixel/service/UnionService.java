@@ -96,30 +96,29 @@ public class UnionService extends FightService{
 			builder.setCount(members.size());
 			needupdate = true;
 		}
-		if(union.hasAttackId()){
-			if(builder.getAttackCloseTime() < redis.now()){
+		if(union.hasAttackId() && builder.getAttackCloseTime() < redis.now()){
 				builder.clearAttackId();
 				builder.clearAttackEndTime();
 				builder.clearAttackCloseTime();
 				needupdate = true;
-			}else{
-				List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
-				builder.addAllAttacks(users);
-			}
 		}
-		if(union.hasDefendId()){
-			if(builder.getDefendCloseTime() < redis.now()){
+		if(union.hasDefendId() && builder.getDefendCloseTime() < redis.now()){
 				builder.clearDefendId();
 				builder.clearDefendCloseTime();
 				builder.clearDefendEndTime();
 				needupdate = true;
-		 	}else{
-		 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
-		 		builder.addAllDefends(users);
-		 	}
 		}
 		if(needupdate && redis.setLock("Union_"+builder.getId()))
 			redis.saveUnion(builder.build(), user);
+
+		if(union.hasAttackId()){
+			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
+			builder.addAllAttacks(users);
+		}
+		if(union.hasDefendId()){
+	 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
+	 		builder.addAllDefends(users);
+		}
 		builder.addAllMembers(members);
 		if(user.getUnionJob() > 0){
 			builder.addAllApplies(redis.getApplies(user.getUnionId()));
