@@ -201,6 +201,8 @@ public class AreaFightService extends FightService{
 		if(builder.getStarttime() > redis.now())
 			return ErrorConst.JOIN_NOT_START;
 		if (builder.getState() == 0) {//刺杀
+			if(user.getUnionId() != 0 && builder.hasOwner() && builder.getOwner().getUnionId() == user.getUnionId())
+				return ErrorConst.SAVE_UNION;
 			if(!ret){
 				costEnergy(user);
 				return SuccessConst.AREA_ATTACK_FAIL;
