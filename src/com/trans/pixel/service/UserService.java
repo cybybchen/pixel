@@ -55,6 +55,7 @@ public class UserService {
 			}
 			if (user != null) {
 				userRedisService.setUserIdByAccount(serverId, account, user.getId());
+				userRedisService.cache(serverId, user.buildShort());
 				userRedisService.updateUser(user);
 			}
 		} else {
@@ -97,6 +98,8 @@ public class UserService {
 		user.setPvpMineRefreshTime((int)userRedisService.today(6));
 		userRedisService.refreshUserDailyData(user);
 		userRedisService.updateUser(user);
+		userRedisService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
+		userRedisService.cache(user.getServerId(), user.buildShort());
 		return result;
 	}
 

@@ -97,16 +97,16 @@ public class UnionService extends FightService{
 			needupdate = true;
 		}
 		if(union.hasAttackId() && builder.getAttackCloseTime() < redis.now()){
-				builder.clearAttackId();
-				builder.clearAttackEndTime();
-				builder.clearAttackCloseTime();
-				needupdate = true;
+			builder.clearAttackId();
+			builder.clearAttackEndTime();
+			builder.clearAttackCloseTime();
+			needupdate = true;
 		}
 		if(union.hasDefendId() && builder.getDefendCloseTime() < redis.now()){
-				builder.clearDefendId();
-				builder.clearDefendCloseTime();
-				builder.clearDefendEndTime();
-				needupdate = true;
+			builder.clearDefendId();
+			builder.clearDefendCloseTime();
+			builder.clearDefendEndTime();
+			needupdate = true;
 		}
 		if(needupdate && redis.setLock("Union_"+builder.getId()))
 			redis.saveUnion(builder.build(), user);
