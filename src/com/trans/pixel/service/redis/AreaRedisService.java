@@ -628,8 +628,12 @@ public class AreaRedisService extends RedisService{
 		Map<String,String> keyvalue = hget(MYAREABUFF+user.getId());
 		for(String value : keyvalue.values()){
 			AreaBuff.Builder builder = AreaBuff.newBuilder();
-			if(parseJson(value, builder))
-				list.add(builder.build());
+			if(parseJson(value, builder)){
+				if(now() > builder.getEndTime())
+					hdelete(MYAREABUFF+user.getId(), builder.getId()+"");
+				else
+					list.add(builder.build());
+			}
 		}
 		return list;
 	}

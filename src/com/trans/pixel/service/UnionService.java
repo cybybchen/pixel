@@ -219,6 +219,7 @@ public class UnionService extends FightService{
 		user.setUnionId(union.getId());
 		user.setUnionJob(3);//会长
 		userService.updateUser(user);
+		userService.cache(user.getServerId(), user.buildShort());
 		Union.Builder builder = Union.newBuilder(union.build());
 		List<UserInfo> members = new ArrayList<UserInfo>();
 		members.add(user.buildShort());
@@ -356,6 +357,8 @@ public class UnionService extends FightService{
 	
 	public boolean handleMember(long id, int job, UserBean user) {
 		if(user.getUnionJob() < 3)
+			return false;
+		if(user.getId() == id)
 			return false;
 		UserBean bean = userService.getUser(id);
 		if(bean.getUnionId() == user.getUnionId()){
