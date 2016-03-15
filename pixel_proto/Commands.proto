@@ -229,6 +229,7 @@ message AreaEquip {//区域道具
 }
 
 message AreaBuff {//区域BUFF
+	optional int32 type = 5;//适用区域
 	optional int32 skill = 8;//对应技能
 	optional int32 level = 9;//当前层数
 	optional int64 endTime = 11;//结束时间
@@ -509,8 +510,8 @@ message AreaBossRewardList {
 }
 
 message VipInfo {
-	required int32 vip = 1;
-	required int32 rmb = 2;
+	optional int32 vip = 1;
+	optional int32 rmb = 2;
 	optional string effect = 3;
 	optional int32 dianjin = 4;
 	optional int32 tianti = 5;

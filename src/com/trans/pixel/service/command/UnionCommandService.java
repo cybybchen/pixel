@@ -107,13 +107,14 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void handleMember(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
-		if(unionService.handleMember(cmd.getId(), cmd.getJob(), user)){
+		ResultConst result = unionService.handleMember(cmd.getId(), cmd.getJob(), user);
+		if(result instanceof SuccessConst){
 			ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 			builder.setUnion(unionService.getUnion(user));
 			responseBuilder.setUnionInfoCommand(builder.build());
-			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.HANDLE_UNION_MEMBER_SUCCESS));
+			responseBuilder.setMessageCommand(super.buildMessageCommand(result));
 		}else
-			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
+			responseBuilder.setErrorCommand(super.buildErrorCommand(result));
 	}
 	
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {

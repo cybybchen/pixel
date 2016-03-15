@@ -619,8 +619,9 @@ public class AreaRedisService extends RedisService{
 		AreaBuff.Builder builder = AreaBuff.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
-		builder.setSkill(skill);
-		return builder;
+		// builder.setSkill(skill);
+		// return builder;
+		return null;
 	}
 
 	public Collection<AreaBuff> getMyAreaBuffs(UserBean user){
@@ -678,10 +679,13 @@ public class AreaRedisService extends RedisService{
 			String xml = ReadConfig("lol_regionequip.xml");
 			AreaEquipList.Builder list = AreaEquipList.newBuilder();
 			parseXml(xml, list);
-			for(AreaEquip equip : list.getEquipList()){
+			for(AreaEquip.Builder equip : list.getEquipBuilderList()){
+//				equip.clearImg();
+				equip.clearDescription();
+//				equip.clearName();
 				if(equip.getId() == id)
-					builder = AreaEquip.newBuilder(equip);
-				keyvalue.put(equip.getId()+"", formatJson(equip));
+					builder = equip;
+				keyvalue.put(equip.getId()+"", formatJson(equip.build()));
 			}
 			hputAll(AREAEQUIP, keyvalue);
 			return builder.build();

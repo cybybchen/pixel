@@ -355,11 +355,26 @@ public class UnionService extends FightService{
 		return SuccessConst.UPGRADE_UNION_SUCCESS;
 	}
 	
-	public boolean handleMember(long id, int job, UserBean user) {
+	public ResultConst handleMember(long id, int job, UserBean user) {
 		if(user.getUnionJob() < 3)
-			return false;
+			return ErrorConst.PERMISSION_DENIED;
 		if(user.getId() == id)
-			return false;
+			return ErrorConst.PERMISSION_DENIED;
+		int vicecount = 0;
+		int eldercount = 0;
+		if(job == 2 || job == 1){
+			List<UserInfo> members = redis.getMembers(user);
+			for(UserInfo member : members){
+				if(member.getUnionJob() == 2)
+					vicecount++;
+				else if(member.getUnionJob() == 1)
+					eldercount++;
+			}
+			if(job == 2 && vicecount >= 1)
+				return ErrorConst.UNION_VICE_FULL;
+			if(job == 1 && eldercount >= 4)
+				return ErrorConst.UNION_ELDER_FULL;
+		}
 		UserBean bean = userService.getUser(id);
 		if(bean.getUnionId() == user.getUnionId()){
 			if(job == 3){//会长转让
@@ -373,7 +388,7 @@ public class UnionService extends FightService{
 			userService.updateUser(bean);
 			userService.cache(user.getServerId(), bean.buildShort());
 		}
-		return true;
+		return SuccessConst.HANDLE_UNION_MEMBER_SUCCESS;
 	}
 	
 	public ResultConst attack(int attackId, int teamid, UserBean user){
