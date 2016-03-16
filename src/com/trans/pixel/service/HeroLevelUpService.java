@@ -148,7 +148,7 @@ public class HeroLevelUpService {
 	}
 	
 	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Integer> costInfoIds, UserHeroBean userHero) {
-		if (heroInfo.getStarLevel() == 5)
+		if (heroInfo.getStarLevel() == 7)
 			return ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
 		ResultConst result = ErrorConst.HERO_STAR_NOT_LEVELUP;
