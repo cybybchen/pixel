@@ -54,6 +54,8 @@ import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2RewardCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
@@ -254,6 +256,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestKaifu2ActivityCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestKaifu2RewardCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestKaifuRewardCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -649,6 +655,16 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasKaifu2ActivityCommand()) {
         	RequestKaifu2ActivityCommand cmd = request.getKaifu2ActivityCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasKaifuRewardCommand()) {
+        	RequestKaifuRewardCommand cmd = request.getKaifuRewardCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasKaifuListCommand()) {
+        	RequestKaifuListCommand cmd = request.getKaifuListCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

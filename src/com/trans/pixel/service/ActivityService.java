@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.HeroConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -59,7 +60,10 @@ public class ActivityService {
 	
 	public void sendRichangScore(long userId, int type, int count) {
 		UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(userId, type));
-		ur.setCompleteCount(ur.getCompleteCount() + count);
+		if (type == ActivityConst.RICHANG_DANBI_RECHARGE)
+			ur.setCompleteCount(Math.max(count, ur.getCompleteCount()));
+		else
+			ur.setCompleteCount(ur.getCompleteCount() + count);
 		Richang richang = activityRedisService.getRichang(type);
 		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
 	}
@@ -114,17 +118,22 @@ public class ActivityService {
 		sendRichangScore(userId, ActivityConst.RICHANG_LEIJI_COST_JEWEL, count);
 	}
 	
-	public void lotteryActivity(long userId, int count, int costType) {
+	public void lotteryActivity(UserBean user, int count, int costType) {
 		/**
 		 * achieve type 106
 		 */
-		achieveService.sendAchieveScore(userId, AchieveConst.TYPE_LOTTERY, count);
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOTTERY, count);
 		
 		/**
 		 * 钻石抽奖的活动
 		 */
 		if (costType == RewardConst.JEWEL)
-			sendRichangScore(userId, ActivityConst.RICHANG_LEIJI_LOTTERY_JEWEL, count);
+			sendRichangScore(user.getId(), ActivityConst.RICHANG_LEIJI_LOTTERY_JEWEL, count);
+		
+		/**
+		 * 累计抽奖的开服活动
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_DAY_2, count);
 	}
 	
 	public void ladderAttackActivity(long userId, boolean ret) {
@@ -241,6 +250,11 @@ public class ActivityService {
 		 * kaifu2 的zhanli排行
 		 */
 		sendKaifu2Score(user, ActivityConst.KAIFU2_ZHANLI, zhanli);
+		
+		/**
+		 * 开服活动第六天
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_DAY_6, zhanli);
 	}
 	
 	/**
@@ -256,6 +270,11 @@ public class ActivityService {
 		 * kaifu2 的过关排行
 		 */
 		sendKaifu2Score(user, ActivityConst.KAIFU2_LEVEL);
+		
+		/**
+		 * 开服活动第五天
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_DAY_5);
 	}
 	
 	public int getKaifu2AccRcPs(int serverId, int type) {//获取kaifu2累计充值人数
@@ -320,40 +339,147 @@ public class ActivityService {
 	}
 	
 	private boolean isInKaifuActivityTime(int serverId) {
-		String kaifuTime = serverRedisService.getKaifuTime(serverId);
-		int kaifuDays = DateUtil.intervalDays(DateUtil.getDate(DateUtil.getCurrentDateString()), DateUtil.getDate(kaifuTime));
-		
-		return kaifuDays <= 7;
+		return getKaifuDays(serverId) <= 7;
 	}
 	
+	private int getKaifuDays(int serverId) {
+		String kaifuTime = serverRedisService.getKaifuTime(serverId);
+		return DateUtil.intervalDays(DateUtil.getDate(DateUtil.getCurrentDateString()), DateUtil.getDate(kaifuTime));
+	}
 	
 	/***********************************************************************************/
 	/** kaifu activity **/
 	/***********************************************************************************/
-	public void sendKaifuScore(long userId, int type) {
-		sendKaifuScore(userId, type, 1);
+	public void sendKaifuScore(UserBean user, int type) {
+		sendKaifuScore(user, type, 1);
 	}
 	
-	public void sendKaifuScore(long userId, int type, int count) {
-		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(userId, type));
-		uk.setCompleteCount(uk.getCompleteCount() + count);
+	public void sendKaifuScore(UserBean user, int type, int count) {
+		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), type));
+		if (type == ActivityConst.KAIFU_DAY_6)
+			uk.setCompleteCount(count);
+		else
+			uk.setCompleteCount(uk.getCompleteCount() + count);
+		
+		/**
+		 * 判断活动有没有过期
+		 */
 		Kaifu kaifu = activityRedisService.getKaifu(type);
-		userActivityService.updateUserKaifu(userId, uk.build());
+		if (kaifu.getWhichday() == 0 || kaifu.getWhichday() >= getKaifuDays(user.getServerId()))
+			userActivityService.updateUserKaifu(user.getId(), uk.build());
 	}
 	
-	public ResultConst handleKaifuReward(MultiReward.Builder rewards, UserRichang.Builder ur, long userId, int type, int id) {
-		if (ur.getRewardOrderList().contains(id))
+	public ResultConst handleKaifuReward(MultiReward.Builder rewards, UserKaifu.Builder uk, long userId, int type, int id) {
+		if (uk.getRewardOrderList().contains(id))
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
-		Richang richang = activityRedisService.getRichang(type);
-		ActivityOrder order = richang.getOrder(id);
-		if (order.getTargetcount() > ur.getCompleteCount())
+		Kaifu kaifu = activityRedisService.getKaifu(type);
+		ActivityOrder order = kaifu.getOrder(id);
+		if (order.getTargetcount() > uk.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
-		ur.addRewardOrder(id);
-		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
+		uk.addRewardOrder(id);
+		userActivityService.updateUserKaifu(userId, uk.build());
 		rewards.addAllLoot(getRewardList(order));
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
+	}
+	
+	public void loginActivity(UserBean user) {
+		/**
+		 * 累计登录的成就
+		 */
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOGIN);
+		/**
+		 * 累计登录的开服活动
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_LOGIN);
+	}
+	
+	public void rechargeActivity(UserBean user, int count) {
+		/**
+		 * 累计登录的成就
+		 */
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_RECHARGE_JEWEL, count);
+		/**
+		 * 首次充值的开服活动
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_FIRST_RECHARGE, count);
+		/**
+		 * 累计充值的开服活动
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_RECHARGE, count);
+		/**
+		 * 累计充值的日常
+		 */
+		sendRichangScore(user.getId(), ActivityConst.RICHANG_LEIJI_RECHARGE, count);
+		/**
+		 * 单笔充值的日常
+		 */
+		sendRichangScore(user.getId(), ActivityConst.RICHANG_DANBI_RECHARGE, count);
+		/**
+		 * 开服2的充值活动
+		 */
+		sendKaifu2Score(user, ActivityConst.KAIFU2_RECHARGE, count);
+	}
+	
+	public void heroStoreActivity(UserBean user) {
+		/**
+		 * 收集英雄的成就
+		 */
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_HERO_GET);
+		
+		/**
+		 * 收集英雄的开服活动
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_DAY_1);
+	}
+	
+	public void heroLevelupRareActivity(UserBean user, int rare) {
+		/**
+		 * achieve type 115,116,117,118
+		 *  开服活动第三天
+		 */
+		long userId = user.getId();
+		switch (rare) {
+		case HeroConst.RARE_GREEN:
+			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_2);
+			sendKaifuScore(user, ActivityConst.KAIFU_DAY_3);
+			break;
+		case HeroConst.RARE_BLUE:
+			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_4);
+			break;
+		case HeroConst.RARE_PURPLE:
+			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_7);
+			break;
+		case HeroConst.RARE_ORANGE:
+			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_10);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void heroLevelupActivity(UserBean user, int level) {
+		/**
+		 * achieve type 119
+		 */
+		if (level == HeroConst.ACHIEVE_HERO_LEVEL) {
+			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_HERO_LEVELUP);
+		}
+		
+		/**
+		 * 开服活动第四天
+		 */
+		if (level == HeroConst.ACTIVITY_KAIFU_HERO_LEVEL)
+			sendKaifuScore(user, ActivityConst.KAIFU_DAY_4);
+	}
+	
+	public void heroLevelupStarActivity(UserBean user, int star) {
+		/**
+		 * 开服活动第七天
+		 */
+		if (star == HeroConst.ACTIVITY_KAIFU_HERO_STAR)
+			sendKaifuScore(user, ActivityConst.KAIFU_DAY_7);
 	}
 }

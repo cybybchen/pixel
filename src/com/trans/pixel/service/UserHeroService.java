@@ -6,9 +6,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserHeroMapper;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.service.redis.UserHeroRedisService;
 
@@ -22,7 +22,7 @@ public class UserHeroService {
 	@Resource
 	private HeroService heroService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public UserHeroBean selectUserHero(long userId, int heroId) {
 		UserHeroBean userHero = userHeroRedisService.selectUserHero(userId, heroId);
@@ -48,15 +48,16 @@ public class UserHeroService {
 		userHeroMapper.updateUserHero(userHero);
 	}
 	
-	public void addUserHero(long userId, int heroId, int star, int count) {
+	public void addUserHero(UserBean user, int heroId, int star, int count) {
+		long userId = user.getId();
 		UserHeroBean userHero = selectUserHero(userId, heroId);
 		if (userHero == null) {
 			userHero = initUserHero(userId, heroId);
 			/**
-			 * achieve type 105
+			 * 收集不同英雄的活动
 			 */
 			
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_GET);
+			activityService.heroStoreActivity(user);
 		} 
 		
 		for (int i = 0; i < count; ++i) {

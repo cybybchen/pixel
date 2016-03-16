@@ -59,7 +59,7 @@ public class LotteryCommandService extends BaseCommandService {
 		/**
 		 * 抽奖活动
 		 */
-		activityService.lotteryActivity(user.getId(), count, type);
+		activityService.lotteryActivity(user, count, type);
 		
 		ResponseLotteryCommand.Builder builder = ResponseLotteryCommand.newBuilder();
 		List<RewardBean> lotteryList = lotteryService.randomLotteryList(type, count);

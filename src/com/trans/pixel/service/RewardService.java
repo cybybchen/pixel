@@ -72,7 +72,7 @@ public class RewardService {
 		} else if (rewardId > RewardConst.HERO) {
 			int star = (rewardId % RewardConst.HERO) / RewardConst.HERO_STAR;
 			int heroId = rewardId % RewardConst.HERO_STAR;
-			userHeroService.addUserHero(user.getId(), heroId, star, rewardCount);
+			userHeroService.addUserHero(user, heroId, star, rewardCount);
 		} else if (rewardId > RewardConst.PACKAGE) {
 			userPropService.addUserProp(user.getId(), rewardId, rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {

@@ -6,9 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.HeroConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
@@ -49,7 +47,7 @@ public class HeroLevelUpService {
 	@Resource
 	private StarService starService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Integer> costInfoIds, UserHeroBean userHero) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
@@ -139,11 +137,9 @@ public class HeroLevelUpService {
 		heroInfo.setLevel(heroInfo.getLevel() + 1);
 		
 		/**
-		 * achieve type 119
+		 * 英雄升级的活动
 		 */
-		if (heroInfo.getLevel() == HeroConst.ACHIEVE_HERO_LEVEL) {
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_HERO_LEVELUP);
-		}
+		activityService.heroLevelupActivity(user, heroInfo.getLevel());
 		
 		user.setExp(user.getExp() - useExp);
 		userService.updateUser(user);
@@ -164,6 +160,11 @@ public class HeroLevelUpService {
 		heroInfo.setValue(heroInfo.getValue() + addValue);
 		calHeroStar(heroInfo);
 		result = SuccessConst.STAR_LEVELUP_SUCCESS;
+		
+		/**
+		 * 英雄升星的活动
+		 */
+		activityService.heroLevelupStarActivity(user, heroInfo.getStarLevel());
 		
 		return result;
 	}
@@ -202,26 +203,9 @@ public class HeroLevelUpService {
 		heroInfo.levelUpRare();
 		
 		/**
-		 * achieve type 115,116,117,118
+		 * 培养英雄的活动
 		 */
-		long userId = user.getId();
-		switch (heroInfo.getRare()) {
-			case HeroConst.RARE_GREEN:
-				achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_2);
-				break;
-			case HeroConst.RARE_BLUE:
-				achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_4);
-				break;
-			case HeroConst.RARE_PURPLE:
-				achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_7);
-				break;
-			case HeroConst.RARE_ORANGE:
-				achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_10);
-				break;
-			default:
-				break;
-		
-		}
+		activityService.heroLevelupRareActivity(user, heroInfo.getRare());
 		
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}

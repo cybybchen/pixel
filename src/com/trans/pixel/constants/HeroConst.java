@@ -7,4 +7,6 @@ public class HeroConst {
 	public static final int RARE_ORANGE = 10;
 	
 	public static final int ACHIEVE_HERO_LEVEL = 50;
+	public static final int ACTIVITY_KAIFU_HERO_LEVEL = 20;
+	public static final int ACTIVITY_KAIFU_HERO_STAR = 3;	
 }

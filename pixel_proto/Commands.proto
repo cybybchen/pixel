@@ -1480,6 +1480,24 @@ message ResponseKaifu2RewardCommand {
 	required MultiReward rewards = 2;	
 }
 
+message RequestKaifuRewardCommand {
+        required int32 type = 1;
+        required int32 id = 2;
+}
+
+message ResponseKaifuRewardCommand {
+        required UserKaifu userKaifu = 1;
+        required MultiReward rewards = 2;
+}
+
+message RequestKaifuListCommand {
+
+}
+
+message ResponseKaifuListCommand {
+        repeated UserKaifu userKaifu = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1588,6 +1606,8 @@ message RequestCommand {
 	optional RequestRichangListCommand richangListCommand = 74;
 	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
 	optional RequestKaifu2RewardCommand kaifu2RewardCommand = 76;
+	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
+        optional RequestKaifuListCommand kaifuListCommand = 78;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1645,6 +1665,8 @@ message ResponseCommand {
 	optional ResponseRichangListCommand richangListCommand = 42;
 	optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
 	optional ResponseKaifu2RewardCommand kaifu2RewardCommand = 44;
+	optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
+        optional ResponseKaifuListCommand kaifuListCommand = 46;
 }
 
 

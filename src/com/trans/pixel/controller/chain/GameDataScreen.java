@@ -53,6 +53,8 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2RewardCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
@@ -851,6 +853,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestKaifu2RewardCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		activityCommandService.kaifu2Reward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestKaifuRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		activityCommandService.kaifuReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestKaifuListCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		activityCommandService.kaifuList(cmd, responseBuilder, user);
 		return true;
 	}
 

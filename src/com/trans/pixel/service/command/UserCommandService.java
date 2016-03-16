@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -21,7 +20,7 @@ import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.VipInfo;
-import com.trans.pixel.service.AchieveService;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -36,7 +35,7 @@ public class UserCommandService extends BaseCommandService {
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
-	private AchieveService achieveService;
+	private ActivityService activityService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -112,10 +111,10 @@ public class UserCommandService extends BaseCommandService {
 			user.setLoginDays(user.getLoginDays() + 1);
 			user.setHasSign(false);
 			
-			/**achieve
-			 * 
+			/**
+			 * 累计登录的活动
 			 */
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOGIN);
+			activityService.loginActivity(user);
 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
