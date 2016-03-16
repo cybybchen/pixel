@@ -1404,7 +1404,6 @@ message RequestMohuaHpRewardCommand {//魔化之地HP奖励领取
 }
 
 message RequestMohuaSubmitStageCommand {//魔化之地提交记录
-	required int32 stage = 1;
 	required int32 hp = 2;
 	required int32 selfhp = 3;
 }

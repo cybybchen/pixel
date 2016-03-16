@@ -97,10 +97,9 @@ public class MohuaCommandService extends BaseCommandService {
 	}
 	
 	public void submitStage(RequestMohuaSubmitStageCommand cmd, Builder responseBuilder, UserBean user) {
-		int stage = cmd.getStage();
 		int hp = cmd.getHp();
 		int selfhp = cmd.getSelfhp();
-		ResultConst result = mohuaService.submitStage(user.getId(), stage, hp, selfhp);
+		ResultConst result = mohuaService.submitStage(user.getId(), hp, selfhp);
 		
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);

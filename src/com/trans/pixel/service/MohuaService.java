@@ -102,18 +102,16 @@ public class MohuaService {
 		return buildRewardList(itemList);
 	}
 	
-	public ResultConst submitStage(long userId, int stage, int hp, int selfhp) {
+	public ResultConst submitStage(long userId, int hp, int selfhp) {
 		MohuaUserData.Builder user = getUserData(userId);
-		if (stage <= user.getStage())
-			return ErrorConst.MOHUA_HAS_SUBMIT_ERROR;
 		
 		if (user.getConsumehp() == 100 || hp < user.getConsumehp())
 			return ErrorConst.MOHUA_HAS_FINISH_ERROR;
 		
-		user.setStage(stage);
+		user.setStage(user.getStage() + 1);
 		user.setConsumehp(hp);
 		if (user.getConsumehp() == 100)
-			user.setStage(10);
+			user.setStage(11);
 		
 		redis.updateMohuaUserData(user.build(), userId);
 		
