@@ -73,7 +73,7 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
 		Richang richang = activityRedisService.getRichang(type);
-		ActivityOrder order = richang.getOrder(id);
+		ActivityOrder order = richang.getOrder(id - 1);
 		if (order.getTargetcount() > ur.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
@@ -326,7 +326,7 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
 		Kaifu2 kaifu2 = activityRedisService.getKaifu2(type);
-		ActivityOrder order= kaifu2.getOrder(id);
+		ActivityOrder order= kaifu2.getOrder(id - 1);
 		if (order.getTargetcount() > getKaifu2AccRcPs(user.getServerId(), type))
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
@@ -374,7 +374,7 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
 		Kaifu kaifu = activityRedisService.getKaifu(type);
-		ActivityOrder order = kaifu.getOrder(id);
+		ActivityOrder order = kaifu.getOrder(id - 1);
 		if (order.getTargetcount() > uk.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		

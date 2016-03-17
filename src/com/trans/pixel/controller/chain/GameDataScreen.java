@@ -122,7 +122,7 @@ import com.trans.pixel.service.command.AreaCommandService;
 import com.trans.pixel.service.command.CheatRechargeCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
-import com.trans.pixel.service.command.HeroLevelUpCommandService;
+import com.trans.pixel.service.command.HeroCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LootCommandService;
@@ -155,7 +155,7 @@ public class GameDataScreen extends RequestScreen {
 	@Resource
 	private LootCommandService lootCommandService;
 	@Resource
-	private HeroLevelUpCommandService heroLevelUpCommandService;
+	private HeroCommandService heroCommandService;
 	@Resource
 	private LotteryCommandService lotteryCommandService;
 	@Resource
@@ -243,14 +243,14 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestHeroLevelUpCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		heroLevelUpCommandService.heroLevelUp(cmd, responseBuilder, user);
+		heroCommandService.heroLevelUp(cmd, responseBuilder, user);
 		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestAddHeroEquipCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		heroLevelUpCommandService.heroAddEquip(cmd, responseBuilder, user);
+		heroCommandService.heroAddEquip(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -320,7 +320,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestEquipLevelUpCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		heroLevelUpCommandService.equipLevelup(cmd, responseBuilder, user);
+		heroCommandService.equipLevelup(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -616,7 +616,7 @@ public class GameDataScreen extends RequestScreen {
 	}//RefreshPVPMineCommand
 	@Override//LockHeroCommand
 	protected boolean handleCommand(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user) {
-		heroLevelUpCommandService.lockHero(cmd, responseBuilder, user);
+		heroCommandService.lockHero(cmd, responseBuilder, user);
 		return true;//LockHeroCommand
 	}//LockHeroCommand
 	@Override//MohuaSubmitStageCommand
@@ -708,7 +708,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestFenjieHeroEquipCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		heroLevelUpCommandService.fenjieHeroEquip(cmd, responseBuilder, user);
+		heroCommandService.fenjieHeroEquip(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -729,14 +729,14 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestFenjieHeroCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		heroLevelUpCommandService.fenjieHero(cmd, responseBuilder, user);
+		heroCommandService.fenjieHero(cmd, responseBuilder, user);
 		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestResetHeroSkillCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		heroLevelUpCommandService.resetHeroSkill(cmd, responseBuilder, user);
+		heroCommandService.resetHeroSkill(cmd, responseBuilder, user);
 		return true;
 	}
 

@@ -24,7 +24,6 @@ import com.trans.pixel.protoc.Commands.ResponseKaifu2RewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseKaifuListCommand;
 import com.trans.pixel.protoc.Commands.ResponseKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseRichangListCommand;
-import com.trans.pixel.protoc.Commands.ResponseRichangRewardCommand;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.ActivityService;
@@ -44,7 +43,6 @@ public class ActivityCommandService extends BaseCommandService {
 	private UserActivityService userActivityService;
 	
 	public void richangReward(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseRichangRewardCommand.Builder builder = ResponseRichangRewardCommand.newBuilder();
 		int type = cmd.getType();
 		int id = cmd.getId();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
@@ -58,8 +56,13 @@ public class ActivityCommandService extends BaseCommandService {
 		}
 		
 		rewardService.doRewards(user.getId(), multiReward.build());
-		builder.setUserRichang(ur.build());
-		responseBuilder.setRichangRewardCommand(builder.build());
+		
+		ResponseRichangListCommand.Builder builder = ResponseRichangListCommand.newBuilder();
+		
+		List<UserRichang> uaList = userActivityService.selectUserRichangList(user.getId());
+		builder.addAllUserRichang(uaList);
+		
+		responseBuilder.setRichangListCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
 	}
 	

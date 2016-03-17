@@ -16,13 +16,14 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.FenjieHeroInfo;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
-import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseHeroResultCommand;
@@ -34,7 +35,7 @@ import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
-public class HeroLevelUpCommandService extends BaseCommandService {
+public class HeroCommandService extends BaseCommandService {
 
 	@Resource
 	private HeroLevelUpService heroLevelUpService;
@@ -169,50 +170,53 @@ public class HeroLevelUpCommandService extends BaseCommandService {
 	}
 	
 	public void fenjieHero(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user) {
-		int heroId = cmd.getHeroId();
-		int infoId = cmd.getInfoId();
+		List<FenjieHeroInfo> fenjieList = cmd.getFenjieHeroList();
 		
 		long userId = user.getId();
-		UserHeroBean userHero = userHeroService.selectUserHero(userId, heroId);
-		HeroInfoBean heroInfo = null;
-		
-		String[] equipIds = null;
 		int addCoin = 0;
-		if (userHero != null) {
-			heroInfo = userHero.getHeroInfoByInfoId(infoId);
-			if (heroInfo != null) {
-				if(heroInfo.isLock()){
-					responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_LOCKED));
-					return;
-				}
-				equipIds = heroInfo.equipIds();
-				addCoin = 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
-			}
-		}
-		
-		if (addCoin == 0) {
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		ResponseFenjieEquipCommand.Builder fenjieBuilder = ResponseFenjieEquipCommand.newBuilder();
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		for (String equipIdStr : equipIds) {
-			int equipId = TypeTranslatedUtil.stringToInt(equipIdStr);
-			if (equipId > 0)
-				rewardList = equipService.fenjieHeroEquip(user, equipId, 1);
+		for (FenjieHeroInfo hero : fenjieList) {
+			int heroId = hero.getHeroId();
+			int infoId = hero.getInfoId();
+			UserHeroBean userHero = userHeroService.selectUserHero(userId, heroId);
+			HeroInfoBean heroInfo = null;
+			
+			String[] equipIds = null;
+			if (userHero != null) {
+				heroInfo = userHero.getHeroInfoByInfoId(infoId);
+				if (heroInfo != null) {
+					if(heroInfo.isLock()){
+						responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_LOCKED));
+						return;
+					}
+					equipIds = heroInfo.equipIds();
+					addCoin += 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
+				}
+			}
+			
+			if (addCoin == 0) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+			
+			
+			for (String equipIdStr : equipIds) {
+				int equipId = TypeTranslatedUtil.stringToInt(equipIdStr);
+				if (equipId > 0)
+					rewardList = equipService.fenjieHeroEquip(user, equipId, 1);
+			}
+			
+			List<Integer> costInfoIds = new ArrayList<Integer>();
+			costInfoIds.add(infoId);
+			userHero.delHeros(costInfoIds);
+			userHeroService.updateUserHero(userHero);
 		}
+		ResponseFenjieEquipCommand.Builder fenjieBuilder = ResponseFenjieEquipCommand.newBuilder();
 		if (rewardList != null && rewardList.size() > 0) {
 			rewardService.doRewards(user, rewardList);
 			fenjieBuilder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
 		}
-		
-		List<Integer> costInfoIds = new ArrayList<Integer>();
-		costInfoIds.add(infoId);
-		userHero.delHeros(costInfoIds);
-		userHeroService.updateUserHero(userHero);
-		
 		rewardService.doReward(user, RewardConst.COIN, addCoin);
 		
 		responseBuilder.setFenjieEquipCommand(fenjieBuilder.build());

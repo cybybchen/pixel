@@ -789,6 +789,11 @@ message UserKaifu {
         repeated int32 rewardOrder = 3;
 }
 
+message FenjieHeroInfo {
+	required int32 heroId = 1;
+	required int32 infoId = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1376,8 +1381,7 @@ message RequestFenjieHeroEquipCommand {
 }
 
 message RequestFenjieHeroCommand {
-	required int32 heroId = 1;
-	required int32 infoId = 2;
+	repeated FenjieHeroInfo fenjieHero = 1;
 }
 
 message RequestEnterMohuaMapCommand {//进入魔化之地
@@ -1440,10 +1444,6 @@ message RequestUnlockLevelCommand {
 message RequestRichangRewardCommand {
 	required int32 type = 1;
 	required int32 id = 2;
-}
-
-message ResponseRichangRewardCommand {
-	required UserRichang userRichang = 1;
 }
 
 message RequestRichangListCommand {
@@ -1658,7 +1658,6 @@ message ResponseCommand {
 	optional ResponseSignCommand signCommand = 37;
 	optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
 	optional ResponseAchieveListCommand achieveListCommand = 40;
-	optional ResponseRichangRewardCommand richangRewardCommand = 41;
 	optional ResponseRichangListCommand richangListCommand = 42;
 	optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
 	optional ResponseKaifu2RewardCommand kaifu2RewardCommand = 44;
