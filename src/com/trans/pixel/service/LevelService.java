@@ -112,15 +112,11 @@ public class LevelService {
 		if (dg == null)
 			return true;
 		
-		UserInfo userCache = userService.getCache(user.getServerId(), user.getId());
-		if (userCache == null)
-			return true;
-		
 		if (dg.getId() == 1) {
 			return false;
 		}
 		
-		if (dg.getZhanli() > userCache.getZhanli())
+		if (dg.getZhanli() > user.getZhanli())
 			return true;
 		
 		if (dg.getId() == userLevelRecord.getUnlockedLevel())

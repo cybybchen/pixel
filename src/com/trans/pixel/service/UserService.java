@@ -129,13 +129,18 @@ public class UserService {
 	}
 	
 	/**
-	 * get other user(can be null)
+	 * get other user
 	 */
-	public <T> UserInfo getCache(int serverId, T userId){
-		UserInfo userifno =  userRedisService.getCache(serverId, userId);
-//		if(userifno == null){
-//		}
-		return userifno;
+	public UserInfo getCache(int serverId, long userId){
+		UserInfo userinfo =  userRedisService.getCache(serverId, userId);
+		if(userinfo == null){
+			UserInfo.Builder builder = UserInfo.newBuilder();
+			builder.setId(userId);
+			builder.setIcon(1);
+			builder.setName("7天离线玩家");
+			userinfo = builder.build();
+		}
+		return userinfo;
 	}
 	
 	/**
