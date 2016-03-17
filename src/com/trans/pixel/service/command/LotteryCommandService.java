@@ -46,7 +46,7 @@ public class LotteryCommandService extends BaseCommandService {
 		int cost = getLotteryCost(type, count);
 		boolean free = isFreeLotteryTime(user, type, count);
 		if (!free) {
-			if (!costService.cost(user, type, cost)) {
+			if (!costService.costAndUpdate(user, type, cost)) {
 				ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
 				if (type == RewardConst.JEWEL)
 					error = ErrorConst.NOT_ENOUGH_JEWEL;
@@ -67,7 +67,7 @@ public class LotteryCommandService extends BaseCommandService {
 		builder.setCoin(user.getCoin());
 		builder.setJewel(user.getJewel());
 		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
-		responseBuilder.setLotteryCommand(builder.build());
+		responseBuilder.setLotteryCommand(builder.build());	
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 	}

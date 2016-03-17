@@ -46,7 +46,7 @@ public class CheatRechargeCommandService extends BaseCommandService {
 		
 		activityService.rechargeActivity(user, jewel);
 		
-		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), rmb, 0, 0, 0, "test", "1111", 1);
+		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb, 0, 0, 0, "test", "1111", 1);
 		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
 	}
 }

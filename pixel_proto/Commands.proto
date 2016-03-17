@@ -1300,7 +1300,6 @@ message RequestUsePropCommand { //打开道具包
 }
 
 message ResponseUsePropCommand {
-	required MultiReward multiReward = 1;
 }
 
 message RequestFenjieEquipCommand {
@@ -1432,7 +1431,6 @@ message RequestAchieveListCommand {
 
 message ResponseAchieveListCommand {
 	repeated UserAchieve userAchieve = 1;
-	optional MultiReward rewards = 2;
 }
 
 message RequestUnlockLevelCommand {
@@ -1446,7 +1444,6 @@ message RequestRichangRewardCommand {
 
 message ResponseRichangRewardCommand {
 	required UserRichang userRichang = 1;
-	required MultiReward rewards = 2;
 }
 
 message RequestRichangListCommand {
@@ -1474,7 +1471,6 @@ message RequestKaifu2RewardCommand {//全民福利的奖励
 
 message ResponseKaifu2RewardCommand {
 	required int32 accRcPsRwRc = 1;
-	required MultiReward rewards = 2;	
 }
 
 message RequestKaifuRewardCommand {
@@ -1484,7 +1480,6 @@ message RequestKaifuRewardCommand {
 
 message ResponseKaifuRewardCommand {
         required UserKaifu userKaifu = 1;
-        required MultiReward rewards = 2;
 }
 
 message RequestKaifuListCommand {

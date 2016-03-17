@@ -7,8 +7,7 @@
 		<result property="userId" column="user_id" />
 		<result property="type" column="type" />
 		<result property="completeId" column="complete_id" />
-		<result property="completeCount" column="completeCount" />
-		<result property="rewardId" column="reward_id" />
+		<result property="completeCount" column="complete_count" />
 	</resultMap>
 
 	<select id="selectUserAchieve" resultMap="resultMap">
@@ -17,13 +16,12 @@
 	</select>
 	
 	<insert id="updateUserAchieve" parameterType="com.trans.pixel.model.userinfo.UserAchieveBean">
-	    INSERT INTO user_achieve(user_id, type, complete_id, complete_count, reward_id)
-	    VALUES(#{userId}, #{type}, #{completeId}, #{completeCount}, #{rewardId})
+	    INSERT INTO user_achieve(user_id, type, complete_id, complete_count)
+	    VALUES(#{userId}, #{type}, #{completeId}, #{completeCount})
 	    ON 
 	    duplicate key update
 	    complete_id=#{completeId},
-	    complete_count=#{completeCount},
-	    reward_id=#{rewardId}
+	    complete_count=#{completeCount}
 	</insert>
 	
 	<select id="selectUserAchieveList" parameterType="long" resultMap="resultMap">

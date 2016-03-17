@@ -58,7 +58,6 @@ public class ActivityCommandService extends BaseCommandService {
 		}
 		
 		rewardService.doRewards(user.getId(), multiReward.build());
-		builder.setRewards(multiReward.build());
 		builder.setUserRichang(ur.build());
 		responseBuilder.setRichangRewardCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
@@ -98,7 +97,6 @@ public class ActivityCommandService extends BaseCommandService {
 		}
 		
 		rewardService.doRewards(user.getId(), multiReward.build());
-		builder.setRewards(multiReward.build());
 		builder.setAccRcPsRwRc(activityService.getKaifu2RwRc(user, ActivityConst.KAIFU2_LEIJI_RECHARGE_PERSON_COUNT));
 		
 		responseBuilder.setKaifu2RewardCommand(builder.build());
@@ -119,7 +117,6 @@ public class ActivityCommandService extends BaseCommandService {
 		}
 		
 		rewardService.doRewards(user.getId(), multiReward.build());
-		builder.setRewards(multiReward.build());
 		builder.setUserKaifu(uk.build());
 		responseBuilder.setKaifuRewardCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());

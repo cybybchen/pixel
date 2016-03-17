@@ -44,14 +44,14 @@ public class AchieveService {
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		}
 
-		multiReward = getMultiReward(order);	
+		multiReward.mergeFrom(getMultiReward(order));	
 			
 		updateNextAchieve(ua);
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
-	private MultiReward.Builder getMultiReward(ActivityOrder order) {
+	private MultiReward getMultiReward(ActivityOrder order) {
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(order.getRewardid0());
@@ -67,7 +67,7 @@ public class AchieveService {
 		reward.setCount(order.getRewardcount3());
 		multiReward.addLoot(reward.build());
 		
-		return multiReward;
+		return multiReward.build();
 	}
 	
 	private ActivityOrder getAchieveOrder(int type, int achieveId) {

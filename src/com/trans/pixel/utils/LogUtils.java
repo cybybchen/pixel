@@ -6,10 +6,11 @@ import java.util.Map;
 import com.trans.pixel.constants.LogString;
 
 public class LogUtils {
-	public static final Map<String, String> buildRechargeMap(long userId, int currencyAmount, int stage, int itemid, int action, String version,
+	public static final Map<String, String> buildRechargeMap(long userId, int serverId, int currencyAmount, int stage, int itemid, int action, String version,
 			String channel, int rechargeType) {
 		Map<String, String> params = new HashMap<String, String>();	
 		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.CURRENCY, "0");
 		params.put(LogString.CURRENCYAMOUNT, "" + currencyAmount);
 		params.put(LogString.STAGE, "" + stage);

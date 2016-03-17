@@ -83,7 +83,7 @@ public class LadderService {
 				userRank = ladderRedisService.getUserRankByRank(serverId, rank);
 			}
 			if (userRank != null) {
-				UserInfo userInfo = userService.getCache(serverId, "" + userRank.getUserId());
+				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
 				if (userInfo != null)
 					userRank.setZhanli(userInfo.getZhanli());
 				
