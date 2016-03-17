@@ -113,7 +113,7 @@ public class GamedataAction {
 		long now = System.currentTimeMillis();
 		if(now - lastTime > 5000)
 		{
-			logger.error("ybchen pixel Time: " + (now - lastTime) + " actions: " + actions + "average cost: " + actionCost / actions);
+			logger.warn("ybchen pixel Time: " + (now - lastTime) + " actions: " + actions + "average cost: " + actionCost / actions);
 			actionCost = 0;
 			actions = 0;
 			lastTime = now;

@@ -89,7 +89,7 @@ public class UserEquipRedisService {
 					if (userEquip != null)
 						userEquipList.add(userEquip);
 				}
-				
+				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				return userEquipList;
 			}
 		});

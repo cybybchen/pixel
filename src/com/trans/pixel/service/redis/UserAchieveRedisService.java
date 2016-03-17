@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
@@ -49,6 +50,7 @@ public class UserAchieveRedisService extends RedisService {
 			if (userAchieve != null)
 				userAchieveList.add(userAchieve);
 		}
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);;
 		
 		return userAchieveList;
 	}

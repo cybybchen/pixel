@@ -89,7 +89,7 @@ public class UserPropRedisService {
 					if (userProp != null)
 						userPropList.add(userProp);
 				}
-				
+				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				return userPropList;
 			}
 		});

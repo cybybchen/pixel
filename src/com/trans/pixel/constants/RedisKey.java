@@ -25,9 +25,9 @@ public class RedisKey {
 	public final static String USERDAILYDATA_PREFIX = "UserDailyData_";
 	public final static String USERDATA = PREFIX+USERDATA_PREFIX;
 	public final static String USERDAILYDATA = PREFIX+USERDAILYDATA_PREFIX;
-	public final static String PVPMONSTER_PREFIX = "PVPMonster_";
-	public final static String PVPMINE_PREFIX = "PVPMine_";
-	public final static String PVPMAPBUFF_PREFIX = "PVPMapBuff_";
+	public final static String PVPMONSTER_PREFIX = PREFIX+"PVPMonster_";
+	public final static String PVPMINE_PREFIX = PREFIX+"PVPMine_";
+	public final static String PVPMAPBUFF_PREFIX = PREFIX+"PVPMapBuff_";
 	public final static String MOHUA_USERDATA = "mohua_userdata";
 	public final static String PVPMAP_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMap";
 	public final static String PVPMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonster";

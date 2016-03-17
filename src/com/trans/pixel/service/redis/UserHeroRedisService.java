@@ -90,6 +90,7 @@ public class UserHeroRedisService {
 						userHeroList.add(userHero);
 				}
 				
+				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				return userHeroList;
 			}
 		});
