@@ -1,0 +1,182 @@
+package com.trans.pixel.service;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.TimeConst;
+
+@Service
+public class LogService {
+	private Logger utilLogger = Logger.getLogger(LogService.class);
+
+	public boolean sendLog(Map<String, String> params, int logType) {
+		final StringBuffer sb = new StringBuffer();
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+		String now = df.format(new Date());
+
+		try {
+			switch (logType) {
+			case LogString.LOGTYPE_LOGIN:
+				sb.append(LogString.LOGTYPE_LOGIN_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.STATE));
+				sb.append(LogString.SPLITER);
+				break;
+			
+			case LogString.LOGTYPE_LADDER:
+				sb.append(LogString.LOGTYPE_LADDER_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ATTACK_TEAM_LIST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.DEFENSE_TAAM_LIST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RANK));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_LOOTPVP:
+				sb.append(LogString.LOGTYPE_LOOTPVP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.OPERATION));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TEAM_LIST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ENEMYID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_LOTTERY:
+				sb.append(LogString.LOGTYPE_LOTTERY_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_MISSION:
+				sb.append(LogString.LOGTYPE_MISSION_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.MISSION_TYPE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.MISSIONID));
+				sb.append(LogString.SPLITER);
+				break;
+			
+			case LogString.LOGTYPE_RECHARGE:
+				sb.append(LogString.LOGTYPE_RECHARGE_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CURRENCY));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CURRENCYAMOUNT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.STAGE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ACTION));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VERSION));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CHANNEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RECHARGE_TYPE));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			default:
+				break;
+			}
+
+		} catch (Exception e) {
+			utilLogger.error("get log params error, log type " + logType);
+			return false;
+		}
+
+		if (!sb.toString().trim().equals("")) {
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					send(sb.toString());					
+				}
+			}).start();
+		}
+		
+		return true;
+	}
+
+	private void send(String str) {
+		Socket socket = null;
+		str = str + "\n";
+		try {
+			socket = new Socket(LogString.SERVER, LogString.PORT);
+			OutputStream netOut = socket.getOutputStream();
+			DataOutputStream doc = new DataOutputStream(netOut);
+			utilLogger.debug("send to log server " + str);
+			doc.writeBytes(str);
+			doc.flush();
+
+			netOut.close();
+			doc.close();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (socket != null) {
+				try {
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+}
