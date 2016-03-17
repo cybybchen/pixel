@@ -93,7 +93,7 @@ public class PvpCommandService extends BaseCommandService {
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.getUserMine(user, cmd.getId());
 		if(mine == null){
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 		}else{
 			Team team = null;
@@ -113,7 +113,7 @@ public class PvpCommandService extends BaseCommandService {
 		UserBean brother = userService.getUser(cmd.getBrotherId());
 		PVPMine mine = pvpMapService.getUserMine(brother, cmd.getId());
 		if(mine == null || !mine.hasOwner()){
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		}else{
 			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();

@@ -96,7 +96,7 @@ public class LadderRedisService extends RedisService{
 			public Map<Integer, LadderRankingBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_RANKING_CONFIG_KEY));
+						.boundHashOps(RedisKey.LADDER_RANKING_CONFIG_KEY);
 				
 				Map<Integer, LadderRankingBean> ladderRankingMap = new HashMap<Integer, LadderRankingBean>();
 				Iterator<Entry<String, String>> it = bhOps.entries().entrySet().iterator();
@@ -116,7 +116,7 @@ public class LadderRedisService extends RedisService{
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_RANKING_CONFIG_KEY));
+						.boundHashOps(RedisKey.LADDER_RANKING_CONFIG_KEY);
 				
 				Iterator<Entry<Integer, LadderRankingBean>> it = ladderRankingMap.entrySet().iterator();
 				while (it.hasNext()) {
@@ -135,7 +135,7 @@ public class LadderRedisService extends RedisService{
 			public List<LadderDailyBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_DAILY_CONFIG_KEY));
+						.boundHashOps(RedisKey.LADDER_DAILY_CONFIG_KEY);
 				
 				List<LadderDailyBean> ladderDailyList = new ArrayList<LadderDailyBean>();
 				Iterator<Entry<String, String>> it = bhOps.entries().entrySet().iterator();
@@ -155,7 +155,7 @@ public class LadderRedisService extends RedisService{
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.buildConfigKey(RedisKey.LADDER_DAILY_CONFIG_KEY));
+						.boundHashOps(RedisKey.LADDER_DAILY_CONFIG_KEY);
 				
 				for (LadderDailyBean ladderRanking : ladderDailyList) {
 					bhOps.put("" + ladderRanking.getId(), ladderRanking.toJson());
@@ -167,10 +167,10 @@ public class LadderRedisService extends RedisService{
 	}
 	
 	private String buildRankRedisKey(int serverId) {
-		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK_KEY;
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK;
 	}
 	
 	private String buildRankInfoRedisKey(int serverId) {
-		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK_INFO_KEY;
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK_INFO;
 	}
 }

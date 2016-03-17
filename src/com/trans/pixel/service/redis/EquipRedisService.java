@@ -34,7 +34,7 @@ public class EquipRedisService extends RedisService {
 			public List<EquipmentBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_KEY);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
 				
 				List<EquipmentBean> list = new ArrayList<EquipmentBean>();
 				Set<Entry<String, String>> set = bhOps.entries().entrySet();
@@ -59,7 +59,7 @@ public class EquipRedisService extends RedisService {
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_KEY);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
 				
 				for (EquipmentBean bean : list) {
 					bhOps.put("" + bean.getItemid(), bean.toJson());
@@ -77,7 +77,7 @@ public class EquipRedisService extends RedisService {
 			public EquipmentBean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_KEY);
+						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
 				
 				EquipmentBean bean = EquipmentBean.fromJson(bhOps.get("" + id));
 				return bean;
@@ -87,7 +87,7 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	public Chip getChip(int itemId) {
-		String value = hget(RedisKey.CHIP_KEY, "" + itemId);
+		String value = hget(RedisKey.CHIP_CONFIG, "" + itemId);
 		if (value == null) {
 			Map<String, Chip> chipConfig = getChipConfig();
 			return chipConfig.get("" + itemId);
@@ -101,14 +101,14 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	public Map<String, Chip> getChipConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.CHIP_KEY);
+		Map<String, String> keyvalue = hget(RedisKey.CHIP_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Chip> map = buildChipConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Chip> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.CHIP_KEY, redismap);
+			hputAll(RedisKey.CHIP_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Chip> map = new HashMap<String, Chip>();

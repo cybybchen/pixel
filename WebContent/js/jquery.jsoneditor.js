@@ -231,10 +231,13 @@
             if (newKey) feed(opt.original, (path ? path + '.' : '') + newKey, val);
 
             updateParents(this, opt);
-
-            if (!newKey) $(this).parent().remove();
+            var dom = $(this);
+            if (!newKey){
+                dom = $(this).parent().parent();
+                $(this).parent().remove();
+            }
             
-            opt.onchange(this, parse(stringify(opt.original)));
+            opt.onchange(dom, parse(stringify(opt.original)));
         };
     }
 

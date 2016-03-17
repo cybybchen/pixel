@@ -20,7 +20,7 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 
 @Service
 public class RewardService {
-	private static final Logger log = LoggerFactory.getLogger(RewardService.class);
+//	private static final Logger log = LoggerFactory.getLogger(RewardService.class);
 	@Resource
 	private LootService lootService;
 	@Resource
@@ -44,6 +44,12 @@ public class RewardService {
 	public void doReward(long userId, RewardBean reward) {
 		UserBean bean = userService.getUser(userId);
 		doReward(bean, reward);
+	}
+	
+	public void doReward(long userId, int rewardId, int rewardCount) {
+		UserBean bean = userService.getUser(userId);
+		if(doReward(bean, rewardId, rewardCount))
+			userService.updateUser(bean);
 	}
 	
 	public void doRewards(UserBean user, List<RewardBean> rewardList) {

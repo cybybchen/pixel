@@ -31,7 +31,7 @@
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.ui-controlgroup-controls .nav-btn-active{
+.jqm-list .nav-btn-active, .ui-controlgroup-controls .nav-btn-active{
   background-color: #38c;
   border-color: #38c;
   color: #fff;
@@ -47,7 +47,7 @@
     text-shadow: none !important;
 }
   .json-editor .property {
-      width: 150px;
+      width: 170px;
       border-radius: 0px;
   }
   .jqm-demos .jqm-navmenu-panel {
@@ -81,7 +81,8 @@
   margin-right: -24px;
 }
 jsoneditor .json{
-  margin:0 20px;
+  margin-top:0;
+  margin-bottom:0;
 }
 @media screen and (min-width: 68em) {
   .menu-panel{

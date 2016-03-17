@@ -25,14 +25,14 @@ import com.trans.pixel.protoc.Commands.Will;
 @Repository
 public class ShopRedisService extends RedisService{
 	Logger logger = Logger.getLogger(ShopRedisService.class);
-	public final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
-	public final static String DAILYSHOP = RedisKey.PREFIX+"DailyShop";
-	public final static String SHOP = RedisKey.PREFIX+"Shop";
-	public final static String BLACKSHOP = RedisKey.PREFIX+"BlackShop";
-	public final static String UNIONSHOP = RedisKey.PREFIX+"UnionShop";
-	public final static String PVPSHOP = RedisKey.PREFIX+"PVPShop";
-	public final static String EXPEDITIONSHOP = RedisKey.PREFIX+"ExpeditionShop";
-	public final static String LADDERSHOP = RedisKey.PREFIX+"LadderShop";
+	private final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
+	private final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
+	private final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
+	private final static String BLACKSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShop";
+	private final static String UNIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"UnionShop";
+	private final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
+	private final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
+	private final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -119,13 +119,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(DAILYSHOP, resultmap);
+		this.hputAll(DAILYSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getDailyShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(DAILYSHOP);
+		Map<String, String> keyvalue = this.hget(DAILYSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readDailyShopComms();
 		}else{
@@ -139,7 +139,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getDailyShopComms(int will){
-		String value = this.hget(DAILYSHOP, will+"");
+		String value = this.hget(DAILYSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -205,13 +205,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(BLACKSHOP, resultmap);
+		this.hputAll(BLACKSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getBlackShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(BLACKSHOP);
+		Map<String, String> keyvalue = this.hget(BLACKSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readBlackShopComms();
 		}else{
@@ -225,7 +225,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getBlackShopComms(int will){
-		String value = this.hget(BLACKSHOP, will+"");
+		String value = this.hget(BLACKSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -291,13 +291,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(UNIONSHOP, resultmap);
+		this.hputAll(UNIONSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getUnionShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(UNIONSHOP);
+		Map<String, String> keyvalue = this.hget(UNIONSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readUnionShopComms();
 		}else{
@@ -311,7 +311,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getUnionShopComms(int will){
-		String value = this.hget(UNIONSHOP, will+"");
+		String value = this.hget(UNIONSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -377,13 +377,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(PVPSHOP, resultmap);
+		this.hputAll(PVPSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getPVPShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(PVPSHOP);
+		Map<String, String> keyvalue = this.hget(PVPSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readPVPShopComms();
 		}else{
@@ -397,7 +397,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getPVPShopComms(int will){
-		String value = this.hget(PVPSHOP, will+"");
+		String value = this.hget(PVPSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -463,13 +463,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(EXPEDITIONSHOP, resultmap);
+		this.hputAll(EXPEDITIONSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getExpeditionShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(EXPEDITIONSHOP);
+		Map<String, String> keyvalue = this.hget(EXPEDITIONSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readExpeditionShopComms();
 		}else{
@@ -483,7 +483,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getExpeditionShopComms(int will){
-		String value = this.hget(EXPEDITIONSHOP, will+"");
+		String value = this.hget(EXPEDITIONSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -549,13 +549,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(LADDERSHOP, resultmap);
+		this.hputAll(LADDERSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getLadderShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(LADDERSHOP);
+		Map<String, String> keyvalue = this.hget(LADDERSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readLadderShopComms();
 		}else{
@@ -569,7 +569,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getLadderShopComms(int will){
-		String value = this.hget(LADDERSHOP, will+"");
+		String value = this.hget(LADDERSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -581,7 +581,7 @@ public class ShopRedisService extends RedisService{
 
 	//商城
 	public Commodity getShop(int id) {
-		String value = this.hget(SHOP, id+"");
+		String value = this.hget(SHOP_CONFIG, id+"");
 		Commodity.Builder builder = Commodity.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -590,7 +590,7 @@ public class ShopRedisService extends RedisService{
 	}
 
 	public ShopList getShop() {
-		Map<String, String> keyvalue = this.hget(SHOP);
+		Map<String, String> keyvalue = this.hget(SHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return buildShop();
 		}
@@ -609,7 +609,7 @@ public class ShopRedisService extends RedisService{
 			Map<String, String> map = new HashMap<String, String>();
 			for(Commodity comm : shoplist.getItemsList())
 				map.put(comm.getId()+"", formatJson(comm));
-			this.hputAll(SHOP, map);
+			this.hputAll(SHOP_CONFIG, map);
 		}
 	}
 	
@@ -625,18 +625,18 @@ public class ShopRedisService extends RedisService{
 	
 	public PurchaseCoinCostList getPurchaseCoinCostList(){
 		PurchaseCoinCostList.Builder builder = PurchaseCoinCostList.newBuilder();
-		String value = get(RedisKey.PURCHASECOINCONFIG);
+		String value = get(RedisKey.PURCHASECOIN_CONFIG);
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		String xml = ReadConfig("lol_goldcost.xml");
 		parseXml(xml, builder);
-		set(RedisKey.PURCHASECOINCONFIG, formatJson(builder.build()));
+		set(RedisKey.PURCHASECOIN_CONFIG, formatJson(builder.build()));
 		return builder.build();
 	}
 	
 	public PurchaseCoinReward getPurchaseCoinReward(int daguan){
 		PurchaseCoinReward.Builder builder = PurchaseCoinReward.newBuilder();
-		String value = hget(RedisKey.PURCHASECOINREWARD, daguan+"");
+		String value = hget(RedisKey.PURCHASECOINREWARD_CONFIG, daguan+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		String xml = ReadConfig("lol_goldreward.xml");
@@ -648,7 +648,7 @@ public class ShopRedisService extends RedisService{
 			if(reward.getDaguan() == daguan)
 				builder = PurchaseCoinReward.newBuilder(reward);
 		}
-		hputAll(RedisKey.PURCHASECOINREWARD, keyvalue);
+		hputAll(RedisKey.PURCHASECOINREWARD_CONFIG, keyvalue);
 		return builder.build();
 	}
 }

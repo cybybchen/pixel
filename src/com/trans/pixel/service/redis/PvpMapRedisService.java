@@ -29,12 +29,12 @@ public class PvpMapRedisService extends RedisService{
 	private UserRedisService userRedisService;
 	
 	public PVPMapList.Builder getMapList(UserBean user) {
-		String value = get(RedisKey.PVPMAP+user.getId());
+		String value = hget(RedisKey.USERDATA+user.getId(), "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder;
 		}
-		PVPMapList.Builder maplist = buildPvpMapList();
+		PVPMapList.Builder maplist = getBasePvpMapList();
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() <= user.getPvpUnlock())
 				map.setOpened(true);
@@ -44,7 +44,7 @@ public class PvpMapRedisService extends RedisService{
 	}
 	
 	public void saveMapList(PVPMapList maplist, UserBean user) {
-		set(RedisKey.PVPMAP+user.getId(), formatJson(maplist));
+		hput(RedisKey.USERDATA+user.getId(), "PvpMap", formatJson(maplist));
 	}
 
 	public Map<String, String> getUserBuffs(UserBean user) {
@@ -212,7 +212,7 @@ public class PvpMapRedisService extends RedisService{
 
 	public PVPMonsterReward getMonsterReward(int id) {
 		PVPMonsterReward.Builder builder = PVPMonsterReward.newBuilder();
-		String value = hget(RedisKey.PVPMONSTERREWARD, id+"");
+		String value = hget(RedisKey.PVPMONSTERREWARD_CONFIG, id+"");
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
@@ -225,7 +225,7 @@ public class PvpMapRedisService extends RedisService{
 				if(reward.getId() == id)
 					builder = PVPMonsterReward.newBuilder(reward);
 			}
-			hputAll(RedisKey.PVPMONSTERREWARD, keyvalue);
+			hputAll(RedisKey.PVPMONSTERREWARD_CONFIG, keyvalue);
 			return builder.build();
 		}
 	}
@@ -284,14 +284,19 @@ public class PvpMapRedisService extends RedisService{
 		return false;
 	}
 
-	public PVPMapList.Builder buildPvpMapList(){
-		String xml = ReadConfig("lol_pvpkuangdian.xml");
+	public PVPMapList.Builder getBasePvpMapList(){
+		String value = get(RedisKey.PVPMAP_CONFIG);
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
-		if(!parseXml(xml, builder)){
-			logger.warn("cannot build PVPMapList");
-			return null;
+		if(value != null && parseJson(value, builder)){
+			return builder;
+		}else{
+			String xml = ReadConfig("lol_pvpkuangdian.xml");
+			if(!parseXml(xml, builder)){
+				logger.warn("cannot build PVPMapList");
+				return null;
+			}
+			return builder;
 		}
-		return builder;
 	}
 
 	public Map<String, PVPMonsterList> buildMonsterConfig(){

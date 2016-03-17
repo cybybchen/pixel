@@ -1,9 +1,9 @@
 package com.trans.pixel.constants;
 
 public class RedisKey {
-	public static String buildConfigKey(String configKey) {
-		return PREFIX + CONFIG_PREFIX + configKey;
-	}
+//	public static String buildConfigKey(String configKey) {
+//		return PREFIX + CONFIG_PREFIX + configKey;
+//	}
 	public final static String PREFIX = "pixel:";
 	public final static String SPLIT = ":";
 	
@@ -16,7 +16,6 @@ public class RedisKey {
 	public final static String ACCOUNT_PREFIX = "Account_S";
 	public final static String USERNAME_PREFIX = "UserName_S";
 	public final static String USERCACHE_PREFIX = "UserCache_S";
-	public final static String PVPMAP = PREFIX+"PVPMap_";
 	public static final String SERVERDATA = PREFIX+"ServerData_";
 	public static final String SERVER_KAIFU_TIME = PREFIX + "server_kaifu_time";
 	
@@ -26,65 +25,66 @@ public class RedisKey {
 	public final static String USERDAILYDATA_PREFIX = "UserDailyData_";
 	public final static String USERDATA = PREFIX+USERDATA_PREFIX;
 	public final static String USERDAILYDATA = PREFIX+USERDAILYDATA_PREFIX;
-	public final static String PVPMONSTER_PREFIX = USERDATA+"PVPMonster_";
-	public final static String PVPBOSS_PREFIX = USERDATA+"PVPBoss_";
-	public final static String PVPMINE_PREFIX = USERDATA+"PVPMine_";
-	public final static String PVPMAPBUFF_PREFIX = USERDATA+"PVPMapBuff_";
+	public final static String PVPMONSTER_PREFIX = "PVPMonster_";
+	public final static String PVPMINE_PREFIX = "PVPMine_";
+	public final static String PVPMAPBUFF_PREFIX = "PVPMapBuff_";
 	public final static String MOHUA_USERDATA = "mohua_userdata";
-	public final static String PVPMONSTER_CONFIG = PREFIX+"PVPMonster";
-	public final static String PVPBOSS_CONFIG = PREFIX+"PVPBoss";
-	public final static String PVPPOSITION_CONFIG = PREFIX+"PVPPosition";
-	public final static String PVPMONSTERREWARD = PREFIX+"PVPMonsterReward";
+	public final static String PVPMAP_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMap";
+	public final static String PVPMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonster";
+	public final static String PVPPOSITION_CONFIG = PREFIX+CONFIG_PREFIX+"PVPPosition";
+	public final static String PVPMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonsterReward";
 
-	public final static String AREAMONSTER_CONFIG = PREFIX+"AreaMonster";
-	public final static String AREABOSS_CONFIG = PREFIX+"AreaBoss";
-	public final static String AREAPOSITION_CONFIG = PREFIX+"AreaPosition";
-	public final static String AREABOSSREWARD = PREFIX+"AreaBossReward";
-	public final static String AREAMONSTERRANDCONFIG = PREFIX+"AreaMonsterRandConfig";
-	public final static String AREABOSSRANDCONFIG = PREFIX+"AreaBossRandConfig";
-	public final static String AREACONFIG = RedisKey.PREFIX+"AreaConfig";
-	public final static String AREARESOURCECONFIG = PREFIX+"AreaResource";
-	public final static String PURCHASECOINCONFIG = PREFIX+"PurchaseCoinConfig";
-	public final static String PURCHASECOINREWARD = PREFIX+"PurchaseCoinReward";
+	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
+	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";
+	public final static String AREAPOSITION_CONFIG = PREFIX+CONFIG_PREFIX+"AreaPosition";
+	public final static String AREABOSSREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBossReward";
+	public final static String AREAMONSTERRAND_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonsterRand";
+	public final static String AREABOSSRAND_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBossRand";
+	public final static String AREA_CONFIG = PREFIX+CONFIG_PREFIX+"AreaConfig";
+	public final static String AREARESOURCE_CONFIG = PREFIX+CONFIG_PREFIX+"AreaResource";
+	public final static String AREAMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonsterReward";
+	public final static String AREAEQUIP_CONFIG = PREFIX+CONFIG_PREFIX+"AreaEquip";
+	public final static String PURCHASECOIN_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoin";
+	public final static String PURCHASECOINREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoinReward";
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "key:mysql_update";
 	
 	//xiaoguan redis
-	public final static String LEVEL_KEY = "key:level";
-	public static final String LEVEL_DIFF_PREDIX = "level_diff_"; 
+	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";
+	public static final String LEVEL_DIFF_PREDIX = CONFIG_PREFIX+"level_diff_"; 
 	
 	//daguan redis
-	public static final String DAGUAN_KEY = "key:daguan";
+	public static final String DAGUAN_KEY = CONFIG_PREFIX+"daguan";
 	
 	//user level record redis
 //	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_";
 //	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_loot_level_";
 	
 	//win redis
-	public static final String WIN_LEVEL_KEY = "key:win_level";
+	public static final String WIN_LEVEL_KEY = CONFIG_PREFIX+"win_level";
 	
 	//user team redis
 	public static final String USER_TEAM_PREFIX = "user_team_";
 	public static final String TEAM_CACHE_PREFIX = "user_team_cache_";
 	
 	//loot redis
-	public static final String LOOT_LEVEL_KEY = "loot_level_key";
+	public static final String LOOT_LEVEL_KEY = CONFIG_PREFIX+"loot_level_key";
 	
 	//user hero redis
 	public static final String USER_HERO_PREFIX = "user_hero_";
 	
 	//hero upgrade redis
-	public static final String HERO_UPGRADE_LEVEL_key = "key:hero_upgrade_level";
+	public static final String HERO_UPGRADE_LEVEL_key = CONFIG_PREFIX+"hero_upgrade_level";
 	
 	//hero redis
-	public static final String HERO_KEY = "key:hero";
+	public static final String HERO_KEY = CONFIG_PREFIX+"hero";
 	
 	//hero rare
-	public static final String HERO_RARE_KEY = "key:hero_rare";
+	public static final String HERO_RARE_KEY = CONFIG_PREFIX+"hero_rare";
 	
 	//hero star
-	public static final String HERO_STAR_KEY = "key:hero_star";
+	public static final String HERO_STAR_KEY = CONFIG_PREFIX+"hero_star";
 	
 	//user equip redis
 	public static final String USER_EQUIP_PREFIX = "user_equip_";
@@ -92,28 +92,19 @@ public class RedisKey {
 	//user prop redis
 	public static final String USER_PROP_PREFIX = "user_prop_";
 	
-	//user pvp map redis
-	public static final String USER_PVP_MAP_PREFIX = "user_pvp_map_";
-	
-	//user mine redis
-	public static final String USER_MINE_PREFIX = "user_mine_";
-	
 	//zhanli rank redis
 	public static final String RANK_PREFIX = PREFIX+"Rank_"+SERVER_PREFIX;
 	public static final String ZHANLI_RANK = PREFIX+"ZhanliRank_"+SERVER_PREFIX;
 	
 	//ladder rank redis
-	public static final String LADDER_RANK_KEY = "key:ladder_rank";
-	public static final String LADDER_RANK_INFO_KEY = "key:ladder_rank_info";
-	public static final String LADDER_RANKING_CONFIG_KEY = "key:ladder_ranking_config";
-	public static final String LADDER_DAILY_CONFIG_KEY = "key:ladder_daily_config";
-	
-	//pvp xiaoguai
-	public static final String PVP_XIAOGUAI_REFIX = "pvp_xiaoguai_";
+	public static final String LADDER_RANK = "ladder_rank";
+	public static final String LADDER_RANK_INFO = "ladder_rank_info";
+	public static final String LADDER_RANKING_CONFIG_KEY = PREFIX+CONFIG_PREFIX+"ladder_ranking";
+	public static final String LADDER_DAILY_CONFIG_KEY = PREFIX+CONFIG_PREFIX+"ladder_daily";
 	
 	//lottery 
-	public static final String LOTTERY_PREFIX = "lottery_";
-	public static final String LOTTERY_EQUIP_PREFIX = "lottery_equip_";
+	public static final String LOTTERY_PREFIX = CONFIG_PREFIX+"lottery_";
+	public static final String LOTTERY_EQUIP_PREFIX = CONFIG_PREFIX+"lottery_equip_";
 	
 	//mail
 	public static final String MAIL_PREFIX = "mail_";
@@ -128,31 +119,31 @@ public class RedisKey {
 	public static final String UNION_FIGHTRESULT_PREFIX = "union_fightresult_";
 	
 	//equip
-	public static final String EQUIP_KEY = "key:equip";
-	public static final String CHIP_KEY = PREFIX + "key:chip";
+	public static final String EQUIP_CONFIG = CONFIG_PREFIX+"equip";
+	public static final String CHIP_CONFIG = PREFIX + CONFIG_PREFIX+"key:chip";
 	
 	//message board
 	public static final String MESSAGE_BOARD_KEY = "key:message_key";
 	public static final String MESSAGE_BOARD_VALUE_KEY = "key:message_value";
 	
 	//skill
-	public static final String SKILL_KEY = "key:skill";
-	public static final String SKILLLEVEL_KEY = "key:skilllevel";
+	public static final String SKILL_KEY = CONFIG_PREFIX+"skill";
+	public static final String SKILLLEVEL_KEY = CONFIG_PREFIX+"skilllevel";
 	
 	//prop
-	public static final String PROP_KEY = "key:prop";
+	public static final String PROP_KEY = CONFIG_PREFIX+"prop";
 	
 	//fenjie
-	public static final String FENJIE_KEY = "key:fenjie";
+	public static final String FENJIE_KEY = CONFIG_PREFIX+"fenjie";
 	
 	//sign
-	public static final String SIGN_KEY = PREFIX + "key:sign";
+	public static final String SIGN_KEY = PREFIX + CONFIG_PREFIX+"sign";
 	
 	//mohua
-	public static final String MOHUA_MAP_KEY = PREFIX + "key:mohua_map";
-	public static final String MOHUA_CARD_KEY = PREFIX + "key:mohua_card";
-	public static final String MOHUA_JIEDUAN_KEY = PREFIX + "key:mohua_jieduan";
-	public static final String MOHUA_LOOT_KEY = PREFIX + "key:mohua_loot";
+	public static final String MOHUA_MAP_KEY = PREFIX + CONFIG_PREFIX+"mohua_map";
+	public static final String MOHUA_CARD_KEY = PREFIX + CONFIG_PREFIX+"mohua_card";
+	public static final String MOHUA_JIEDUAN_KEY = PREFIX + CONFIG_PREFIX+"mohua_jieduan";
+	public static final String MOHUA_LOOT_KEY = PREFIX + CONFIG_PREFIX+"mohua_loot";
 	
 	//user achieve redis
 	public static final String USER_ACHIEVE_PREFIX = "user_achieve_";
@@ -160,11 +151,11 @@ public class RedisKey {
 	public static final String USER_ACTIVITY_KAIFU_PREFIX = PREFIX + "KF_";
 	
 	//activity config redis
-	public static final String ACHIEVE_KEY = PREFIX + "key:achieve";
-	public static final String ACTIVITY_RICHANG_KEY = PREFIX + "key:richang";
-	public static final String ACTIVITY_KAIFU2_KEY = PREFIX + "key:kaifu2";
-	public static final String ACTIVITY_KAIFU_KEY = PREFIX + "key:kaifu";
+	public static final String ACHIEVE_KEY = PREFIX + CONFIG_PREFIX+"achieve";
+	public static final String ACTIVITY_RICHANG_KEY = PREFIX + CONFIG_PREFIX+"richang";
+	public static final String ACTIVITY_KAIFU2_KEY = PREFIX + CONFIG_PREFIX+"kaifu2";
+	public static final String ACTIVITY_KAIFU_KEY = PREFIX + CONFIG_PREFIX+"kaifu";
 	public static final String ACTIVTYY_KAIFU2_RANK_PREFIX = "kaifu2_rank_";
 	public static final String ACTIVITY_KAIFU2_REWARD_RECORD_PREFIX = "kaifu2_reward_record_";
-	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "key:kaifu2_send_record";
+	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "kaifu2_send_record";
 }
