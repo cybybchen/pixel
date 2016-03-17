@@ -10,7 +10,6 @@ public class UserAchieveBean {
 	private int type = 0;
 	private int completeId = 0;
 	private int completeCount = 0;
-	private int rewardId = 0;
 	public long getId() {
 		return id;
 	}
@@ -40,12 +39,6 @@ public class UserAchieveBean {
 	}
 	public void setCompleteCount(int completeCount) {
 		this.completeCount = completeCount;
-	}
-	public int getRewardId() {
-		return rewardId;
-	}
-	public void setRewardId(int rewardId) {
-		this.rewardId = rewardId;
 	}
 	
 	public UserAchieve buildUserAchieve() {

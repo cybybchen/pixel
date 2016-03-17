@@ -21,7 +21,6 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.Team;
-import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.HeroService;
 import com.trans.pixel.service.UserService;
 
@@ -43,6 +42,11 @@ public class UserTeamRedisService extends RedisService {
 			HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 			team.addHeroInfo(heroInfo.buildRankHeroInfo());
 			UserBean user = userService.getUser(userid);
+			if (user == null) {
+				user = new UserBean();
+				user.init(1, "haha", "haha");
+			}
+				
 			team.setUser(user.buildShort());
 		}
 		return team.build();

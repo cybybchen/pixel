@@ -25,6 +25,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -61,7 +62,6 @@ public class LadderService {
 	
 	private List<Long> getRelativeRanks(long rank) {
 		List<Long> rankList = new ArrayList<Long>();
-//		rankList.add(rank);
 		while (rankList.size() < LadderRankConst.RANK_SIZE) {
 			long addRank = rank - rankList.size() - 1;
 			if (addRank > 0)
@@ -69,6 +69,7 @@ public class LadderService {
 			else
 				break;
 		}
+		rankList.add(rank);
 		
 		return rankList;
 	}
@@ -81,8 +82,13 @@ public class LadderService {
 				createLadderData(serverId);
 				userRank = ladderRedisService.getUserRankByRank(serverId, rank);
 			}
-//			if (userRank != null)
+			if (userRank != null) {
+				UserInfo userInfo = userService.getCache(serverId, "" + userRank.getUserId());
+				if (userInfo != null)
+					userRank.setZhanli(userInfo.getZhanli());
+				
 				rankList.add(userRank);
+			}
 		}
 		return rankList;
 	}
@@ -195,18 +201,32 @@ public class LadderService {
 	
 	private void createLadderData(int serverId) {
 		for (int i = 1; i < 11; ++i) {
-			UserRankBean userRank = initUserRank(i, "haha", i);
+			UserRankBean userRank = initRobotRank(i, "haha", i);
 			ladderRedisService.updateUserRank(serverId, userRank);
 		}
 	}
 	
 	private UserRankBean initUserRank(long userId, String userName){
-		return initUserRank(userId, userName, 11);
+		return initUserRank(userId, userName, 15);
 	}
 	
 	private UserRankBean initUserRank(long userId, String userName, long rank) {
 		UserRankBean myRank = new UserRankBean();
 		myRank.setUserId(userId);
+		myRank.setUserName(userName);
+		myRank.setRank(rank);
+		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
+		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
+//		heroInfo.setPosition(heroList.size() + 1);
+		heroList.add(heroInfo);
+//		myRank.setHeroList(heroList);
+		
+		return myRank;
+	}
+	
+	private UserRankBean initRobotRank(long userId, String userName, long rank) {
+		UserRankBean myRank = new UserRankBean();
+		myRank.setUserId(userId + 10000);
 		myRank.setUserName(userName);
 		myRank.setRank(rank);
 		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();

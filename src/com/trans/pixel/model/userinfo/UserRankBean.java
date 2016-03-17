@@ -1,15 +1,8 @@
 package com.trans.pixel.model.userinfo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.model.hero.info.HeroInfoBean;
-import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.UserRank;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserRankBean {
 	private int id = 0;
@@ -106,6 +99,7 @@ public class UserRankBean {
 		builder.setUserId(userId);
 		builder.setUserName(userName);
 		builder.setRank(rank);
+		builder.setZhanli(zhanli);
 		
 		return builder.build();
 	}
@@ -127,5 +121,4 @@ public class UserRankBean {
 	private static final String LEVEL = "level";
 	private static final String ZHANLI = "zhanli";
 	private static final String RANK = "rank";
-	private static final String HERO_LIST = "hero_list";
 }

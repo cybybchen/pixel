@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
@@ -51,16 +52,15 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
-import com.trans.pixel.protoc.Commands.RequestKaifu2RewardCommand;
-import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
-import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
-import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifu2RewardCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
+import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
@@ -111,6 +111,7 @@ import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
@@ -118,6 +119,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AchieveCommandService;
 import com.trans.pixel.service.command.ActivityCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
+import com.trans.pixel.service.command.CheatRechargeCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroLevelUpCommandService;
@@ -186,6 +188,8 @@ public class GameDataScreen extends RequestScreen {
 	private AchieveCommandService AchieveCommandService;
 	@Resource
 	private ActivityCommandService activityCommandService;
+	@Resource
+	private CheatRechargeCommandService cheatRechargeCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -867,6 +871,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestKaifuListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		activityCommandService.kaifuList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestCheatRechargeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		cheatRechargeCommandService.cheatRecharge(cmd, responseBuilder, user);
 		return true;
 	}
 

@@ -55,6 +55,7 @@ public class UserBean {
 	private int areaEnergy = 0;
 	private int areaUnlock = 0;
 	private int pvpUnlock = 0;
+	private int heroLimit = 0;
 	/**
 	 * 区域解锁进度
 	 */
@@ -441,7 +442,18 @@ public class UserBean {
 	public void setLastLootTime(int lastLootTime) {
 		this.lastLootTime = lastLootTime;
 	}
-//	/**
+	/**
+	 * hero上限
+	 */
+	public int getHeroLimit() {
+		return heroLimit;
+	}
+	public void setHeroLimit(int heroLimit) {
+		this.heroLimit = heroLimit;
+		if (heroLimit == 0)
+			this.heroLimit = 200;
+	}
+	//	/**
 //	 * 挂机PVP刷新次数
 //	 */
 //	public int getRefreshLeftTimes() {
@@ -650,6 +662,7 @@ public class UserBean {
 		setCoin(1000000);
 		setJewel(1000000);
 		setExp(1000000);
+		setHeroLimit(200);
 		return this;
 	}
 	
@@ -728,6 +741,7 @@ public class UserBean {
 		builder.setHasSign(hasSign);
 		builder.setAreaEnergy(areaEnergy);
 		builder.setAreaEnergyTime(areaEnergyTime);
+		builder.setHeroLimit(heroLimit);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {

@@ -27,6 +27,7 @@ message UserInfo {
 	optional bool hasSign = 23;//当天有没有签到
 	optional int32 zhanli = 24;
 	optional string lastLoginTime = 25;//上次登录时间
+	optional int32 heroLimit = 31;//英雄上限
 }
 
 message ServerData {
@@ -551,6 +552,7 @@ message UserRank {
 	optional string userName = 2;
 	optional int64 rank = 3;
 	repeated HeroInfo heroInfo = 4;
+	optional int32 zhanli = 5;
 }
 
 message UserFriend {
@@ -1422,12 +1424,6 @@ message RequestSubmitZhanliCommand {
 
 message RequestAchieveRewardCommand {
 	required int32 type = 1;
-	required int32 id = 2;
-}
-
-message ResponseAchieveRewardCommand {
-	required UserAchieve userAchieve = 1;
-	required MultiReward rewards = 2;
 }
 
 message RequestAchieveListCommand {
@@ -1436,6 +1432,7 @@ message RequestAchieveListCommand {
 
 message ResponseAchieveListCommand {
 	repeated UserAchieve userAchieve = 1;
+	optional MultiReward rewards = 2;
 }
 
 message RequestUnlockLevelCommand {
@@ -1496,6 +1493,11 @@ message RequestKaifuListCommand {
 
 message ResponseKaifuListCommand {
         repeated UserKaifu userKaifu = 1;
+}
+
+message RequestCheatRechargeCommand {
+	required int32 rmb = 1;
+	required int32 jewel = 2;
 }
 
 message RequestCommand {
@@ -1608,6 +1610,7 @@ message RequestCommand {
 	optional RequestKaifu2RewardCommand kaifu2RewardCommand = 76;
 	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
         optional RequestKaifuListCommand kaifuListCommand = 78;
+	optional RequestCheatRechargeCommand cheatRechargeCommand = 79;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1659,7 +1662,6 @@ message ResponseCommand {
 	optional ResponseFenjieEquipCommand fenjieEquipCommand = 36;
 	optional ResponseSignCommand signCommand = 37;
 	optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
-	optional ResponseAchieveRewardCommand achieveRewardCommand = 39;
 	optional ResponseAchieveListCommand achieveListCommand = 40;
 	optional ResponseRichangRewardCommand richangRewardCommand = 41;
 	optional ResponseRichangListCommand richangListCommand = 42;

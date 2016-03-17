@@ -38,12 +38,8 @@ public class AchieveService {
 		userAchieveService.updateUserAchieve(ua);
 	}
 	
-	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int type, int rewardId) {
-		if (ua.getCompleteId() >= rewardId) {
-			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
-		}
-		
-		ActivityOrder order = getAchieveOrder(type, rewardId);
+	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int type) {
+		ActivityOrder order = getAchieveOrder(type, ua.getCompleteId() + 1);
 		if (ua.getCompleteCount() < order.getTargetcount()) {
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		}
