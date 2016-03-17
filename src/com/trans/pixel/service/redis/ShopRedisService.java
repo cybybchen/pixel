@@ -93,9 +93,12 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildDailyShop(){
-		String xml = ReadConfig("lol_shop1shop1.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		parseXml(xml, willsbuilder);
+		String value = get(DAILYSHOP_CONFIG+"Type");
+		if(value == null || !parseJson(value, willsbuilder)){
+			String xml = ReadConfig("lol_shop1shop1.xml");
+			parseXml(xml, willsbuilder);
+		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getDailyShopComms());
 		builder.setEndTime(getDailyShopEndTime());
@@ -179,9 +182,12 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildBlackShop(){
-		String xml = ReadConfig("lol_shopblackshopblack.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		parseXml(xml, willsbuilder);
+		String value = get(BLACKSHOP_CONFIG+"Type");
+		if(value == null || !parseJson(value, willsbuilder)){
+			String xml = ReadConfig("lol_shopblackshopblack.xml");
+			parseXml(xml, willsbuilder);
+		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getBlackShopComms());
 		builder.setEndTime(getBlackShopEndTime());
@@ -265,9 +271,12 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildUnionShop(){
-		String xml = ReadConfig("lol_shopgonghuishopgonghui.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		parseXml(xml, willsbuilder);
+		String value = get(UNIONSHOP_CONFIG+"Type");
+		if(value == null || !parseJson(value, willsbuilder)){
+			String xml = ReadConfig("lol_shopgonghuishopgonghui.xml");
+			parseXml(xml, willsbuilder);
+		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getUnionShopComms());
 		builder.setEndTime(getUnionShopEndTime());
@@ -351,9 +360,12 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildPVPShop(){
-		String xml = ReadConfig("lol_shopmojingshopmojing.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		parseXml(xml, willsbuilder);
+		String value = get(PVPSHOP_CONFIG+"Type");
+		if(value == null || !parseJson(value, willsbuilder)){
+			String xml = ReadConfig("lol_shopmojingshopmojing.xml");
+			parseXml(xml, willsbuilder);
+		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getPVPShopComms());
 		builder.setEndTime(getPVPShopEndTime());
@@ -437,9 +449,12 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildExpeditionShop(){
-		String xml = ReadConfig("lol_shopyuanzhengshopyuanzheng.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		parseXml(xml, willsbuilder);
+		String value = get(EXPEDITIONSHOP_CONFIG+"Type");
+		if(value == null || !parseJson(value, willsbuilder)){
+			String xml = ReadConfig("lol_shopyuanzhengshopyuanzheng.xml");
+			parseXml(xml, willsbuilder);
+		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getExpeditionShopComms());
 		builder.setEndTime(getExpeditionShopEndTime());
@@ -523,9 +538,12 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public ShopList buildLadderShop(){
-		String xml = ReadConfig("lol_shoptiantishoptianti.xml");
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		parseXml(xml, willsbuilder);
+		String value = get(LADDERSHOP_CONFIG+"Type");
+		if(value == null || !parseJson(value, willsbuilder)){
+			String xml = ReadConfig("lol_shoptiantishoptianti.xml");
+			parseXml(xml, willsbuilder);
+		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getLadderShopComms());
 		builder.setEndTime(getLadderShopEndTime());
