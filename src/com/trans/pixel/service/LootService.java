@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.LootBean;
@@ -23,6 +24,8 @@ public class LootService {
 	private LevelService levelService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private RewardService rewardService;
 	
 	public LootBean getLootByLevelId(int levelId) {
 		LootBean loot = lootRedisService.getLootByLevelId(levelId);
@@ -46,8 +49,8 @@ public class LootService {
 			addExp = deltaTime * dg.getExperience();
 		}
 		
-		user.setCoin(user.getCoin() + addGold);
-		user.setExp(user.getExp() + addExp);
+		rewardService.doReward(user, RewardConst.COIN, addGold);
+		rewardService.doReward(user, RewardConst.EXP, addExp);
 		user.setLastLootTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userService.updateUser(user);
 		

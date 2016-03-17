@@ -258,7 +258,7 @@ public class AreaFightService extends FightService{
 			collect += gainMine(mine, user, false);
 		}
 		if(collect > 0){
-			user.setPointUnion(user.getPointUnion()+collect);
+			rewardService.doReward(user, RewardConst.UNIONCOIN, collect);
 			userService.updateUser(user);
 			pusher.pushRewardCommand(responseBuilder, user, RewardConst.UNIONCOIN, "", collect);
 			pusher.pushUserInfoCommand(responseBuilder, user);
