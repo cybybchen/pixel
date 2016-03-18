@@ -158,4 +158,7 @@ public class RedisKey {
 	public static final String ACTIVTYY_KAIFU2_RANK_PREFIX = "kaifu2_rank_";
 	public static final String ACTIVITY_KAIFU2_REWARD_RECORD_PREFIX = "kaifu2_reward_record_";
 	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "kaifu2_send_record";
+	
+	//log redis
+	public static final String LOG_KEY = PREFIX + CONFIG_PREFIX + "log";
 }

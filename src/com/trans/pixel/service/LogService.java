@@ -9,16 +9,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.service.redis.LogRedisService;
 
 @Service
 public class LogService {
 	private Logger utilLogger = Logger.getLogger(LogService.class);
 
+	@Resource
+	private LogRedisService logRedisService;
 	public boolean sendLog(Map<String, String> params, int logType) {
 		final StringBuffer sb = new StringBuffer();
 		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
@@ -140,13 +145,14 @@ public class LogService {
 		}
 
 		if (!sb.toString().trim().equals("")) {
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					send(sb.toString());					
-				}
-			}).start();
+			logRedisService.addLogData(sb.toString());
+//			new Thread(new Runnable() {
+//				
+//				@Override
+//				public void run() {
+//					send(sb.toString());					
+//				}
+//			}).start();
 		}
 		
 		return true;

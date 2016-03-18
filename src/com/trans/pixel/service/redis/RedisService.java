@@ -444,6 +444,22 @@ public class RedisService {
 		});
 	}
 	
+	/**
+	 * pop set
+	 */
+	protected String spop(final String key) {
+		return redisTemplate.execute(new RedisCallback<String>() {
+			@Override
+			public String doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundSetOperations<String, String> Ops = redisTemplate
+						.boundSetOps(key);
+
+				return Ops.pop();
+			}
+		});
+	}
+	
     /**
      * 获取set
      */
