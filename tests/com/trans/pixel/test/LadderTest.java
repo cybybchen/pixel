@@ -18,10 +18,10 @@ public class LadderTest extends BaseTest {
 
 	@Test
 	public void testLadder() {
-		login();
+//		login();
 //		attackLadder();
-//		getUserLadder();
-		getLadderUserInfo();
+		getUserLadder();
+//		getLadderUserInfo();
 	}
 	private void attackLadder() {
 		int teamid = 6;

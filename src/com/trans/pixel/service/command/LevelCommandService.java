@@ -154,6 +154,8 @@ public class LevelCommandService extends BaseCommandService {
 		rewardService.doRewards(user, lootRewardList);
 		builder.addAllReward(RewardBean.buildRewardInfoList(lootRewardList));
 		responseBuilder.setLevelLootResultCommand(builder.build());
+		pushCommandService.pushUserPropListCommand(responseBuilder, user);
+		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 	}
 	
 	public void levelUnlock(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {

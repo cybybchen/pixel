@@ -3,6 +3,7 @@ package com.trans.pixel.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,9 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -21,9 +25,11 @@ import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.LadderEnemy;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LadderRedisService;
@@ -32,6 +38,7 @@ import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class LadderService {	
+	private static final Logger log = LoggerFactory.getLogger(LadderService.class);
 	@Resource
 	private LadderRedisService ladderRedisService;
 	@Resource
@@ -69,7 +76,8 @@ public class LadderService {
 			else
 				break;
 		}
-		rankList.add(rank);
+		if (rank <= 10000)
+			rankList.add(rank);
 		
 		return rankList;
 	}
@@ -82,13 +90,12 @@ public class LadderService {
 				createLadderData(serverId);
 				userRank = ladderRedisService.getUserRankByRank(serverId, rank);
 			}
-			if (userRank != null) {
+			if (userRank.getUserId() > 0) {	
 				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
 				if (userInfo != null)
 					userRank.setZhanli(userInfo.getZhanli());
-				
-				rankList.add(userRank);
 			}
+			rankList.add(userRank);
 		}
 		return rankList;
 	}
@@ -200,14 +207,56 @@ public class LadderService {
 	}
 	
 	private void createLadderData(int serverId) {
-		for (int i = 1; i < 11; ++i) {
-			UserRankBean userRank = initRobotRank(i, "haha", i);
-			ladderRedisService.updateUserRank(serverId, userRank);
+		//lock the redis when create ladder data
+		if (!ladderRedisService.lockRankRedis(serverId))
+			return;
+		
+		long startTime = System.currentTimeMillis();
+		List<LadderEnemy> enemyList = ladderRedisService.getLadderEnemy();
+		List<String> nameList = ladderRedisService.getLadderNames();
+		List<String> name2List = ladderRedisService.getLadderNames2();
+		List<HeroBean> heroList = heroService.getHeroList();
+		for (LadderEnemy ladderEnemy : enemyList) {
+			for (int i = ladderEnemy.getRanking(); i <= ladderEnemy.getRanking1(); ++i) {
+				String robotName = randomRobotName(name2List, nameList);
+				UserBean robot = new UserBean();
+				robot.init(serverId, robotName, robotName);
+				robot.setId(-i);
+				List<HeroInfoBean> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
+				userTeamService.saveTeamCache(robot, heroInfoList);
+				UserRankBean robotRank = initRobotRank(robot.getId(), robot.getUserName(), i);
+				int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
+				robotRank.setZhanli(zhanli);
+				updateUserRank(serverId, robotRank);
+			}
 		}
+		long endTime = System.currentTimeMillis();
+		log.debug("deltime :" + (endTime - startTime));
+	}
+	
+	private String randomRobotName(List<String> name1List, List<String> name2List) {
+		return name1List.get(RandomUtils.nextInt(name1List.size())) + name2List.get(RandomUtils.nextInt(name2List.size()));
+	}
+	
+	private List<HeroInfoBean> getHeroInfoList(List<HeroBean> heroList, LadderEnemy ladderEnemy) {
+		List<HeroInfoBean> heroInfoList = new ArrayList<HeroInfoBean>();
+		Map<Integer, Integer> heroInfoMap = new HashMap<Integer, Integer>();
+		while (heroInfoList.size() < ladderEnemy.getHerocount()) {
+			HeroBean randomHero = heroList.get(RandomUtils.nextInt(heroList.size()));
+			Integer originalCount = heroInfoMap.get(randomHero.getId());
+			if (originalCount == null)
+				originalCount = 0;
+			if (originalCount < 3) {
+				heroInfoList.add(HeroInfoBean.initHeroInfo(randomHero, ladderEnemy.getStar(), ladderEnemy.getRare(), ladderEnemy.getLv()));
+				heroInfoMap.put(randomHero.getId(), originalCount + 1);
+			}
+		}
+		
+		return heroInfoList;
 	}
 	
 	private UserRankBean initUserRank(long userId, String userName){
-		return initUserRank(userId, userName, 15);
+		return initUserRank(userId, userName, 10001);
 	}
 	
 	private UserRankBean initUserRank(long userId, String userName, long rank) {
@@ -226,13 +275,13 @@ public class LadderService {
 	
 	private UserRankBean initRobotRank(long userId, String userName, long rank) {
 		UserRankBean myRank = new UserRankBean();
-		myRank.setUserId(userId + 10000);
+		myRank.setUserId(userId);
 		myRank.setUserName(userName);
 		myRank.setRank(rank);
-		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
-		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
+//		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
+//		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 //		heroInfo.setPosition(heroList.size() + 1);
-		heroList.add(heroInfo);
+//		heroList.add(heroInfo);
 //		myRank.setHeroList(heroList);
 		
 		return myRank;

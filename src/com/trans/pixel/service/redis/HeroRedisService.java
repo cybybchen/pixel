@@ -1,6 +1,9 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -16,7 +19,7 @@ import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
 
 @Repository
-public class HeroRedisService {
+public class HeroRedisService extends RedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -80,5 +83,18 @@ public class HeroRedisService {
 				return null;
 			}
 		});
+	}
+	
+	public List<HeroBean> getHeroList() {
+		List<HeroBean> heroList = new ArrayList<HeroBean>();
+		Iterator<Entry<String, String>> it = this.hget(RedisKey.PREFIX + RedisKey.HERO_KEY).entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, String> entry = it.next();
+			HeroBean hero = HeroBean.fromJson(entry.getValue());
+			if (hero != null)
+				heroList.add(hero);
+		}
+		
+		return heroList;
 	}
 }

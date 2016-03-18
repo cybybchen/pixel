@@ -161,4 +161,9 @@ public class RedisKey {
 	
 	//log redis
 	public static final String LOG_KEY = PREFIX + CONFIG_PREFIX + "log";
+	
+	//ladder mode name
+	public static final String LADDER_NAME_KEY = PREFIX + CONFIG_PREFIX + "ladder_name";
+	public static final String LADDER_NAME2_KEY = PREFIX + CONFIG_PREFIX + "ladder_name2";
+	public static final String LADDER_ENEMY_KEY = PREFIX + CONFIG_PREFIX + "ladder_enemy";
 }

@@ -40,5 +40,6 @@ public class PropCommandService extends BaseCommandService {
 		rewardService.doRewards(user, multiReward);
 		responseBuilder.setUsePropCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward);
+		pusher.pushUserPropListCommand(responseBuilder, user);
 	}
 }

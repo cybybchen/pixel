@@ -13,7 +13,6 @@ import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
-import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service

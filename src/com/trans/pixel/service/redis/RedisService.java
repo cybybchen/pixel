@@ -732,6 +732,22 @@ public class RedisService {
     }
     
     /**
+     * 获取list
+     */
+    protected List<String> lrange(final String key) {
+    	return redisTemplate.execute(new RedisCallback<List<String>>() {
+			@Override
+			public List<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundListOperations<String, String> Ops = redisTemplate
+						.boundListOps(key);
+				
+				return Ops.range(0, -1);
+			}
+		});
+    }
+    
+    /**
      * 检查key是否存在
      */
     protected Boolean exists(final String key) {

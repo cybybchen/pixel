@@ -20,10 +20,18 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.LadderEnemy;
+import com.trans.pixel.protoc.Commands.LadderEnemyList;
+import com.trans.pixel.protoc.Commands.LadderName;
+import com.trans.pixel.protoc.Commands.LadderNameList;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class LadderRedisService extends RedisService{
+	private static final String LADDER_RANKING_FILE_NAME = "lol_ladderenemy.xml";
+	private static final String LADDER_NAME_FILE_NAME = "lol_laddername.xml";
+	private static final String LADDER_NAME_FILE_NAME2 = "lol_laddername2.xml";
+	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -166,11 +174,105 @@ public class LadderRedisService extends RedisService{
 		});
 	}
 	
+	public boolean lockRankRedis(int serverId) {
+		return this.setLock(buildRankRedisKey(serverId), 20);
+	}
+	
 	private String buildRankRedisKey(int serverId) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK;
 	}
 	
 	private String buildRankInfoRedisKey(int serverId) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK_INFO;
+	}
+	
+	public List<String> getLadderNames() {
+		List<String> values = this.lrange((RedisKey.LADDER_NAME_KEY));
+		if(values.isEmpty()){
+			List<String> list = buildLadderNameConfig();
+			for(String name : list){
+				this.lpush(RedisKey.LADDER_NAME_KEY, name);
+			}
+			return list;
+		}else{
+			return values;
+		}
+	}
+	
+	private List<String> buildLadderNameConfig(){
+		String xml = ReadConfig(LADDER_NAME_FILE_NAME);
+		LadderNameList.Builder builder = LadderNameList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + LADDER_NAME_FILE_NAME);
+			return null;
+		}
+		
+		List<String> list = new ArrayList<String>();
+		for(LadderName.Builder ladderName : builder.getNameBuilderList()){
+			list.add(ladderName.getName());
+		}
+		return list;
+	}
+	
+	public List<String> getLadderNames2() {
+		List<String> values = this.lrange((RedisKey.LADDER_NAME2_KEY));
+		if(values.isEmpty()){
+			List<String> list = buildLadderNameConfig2();
+			for(String name : list){
+				this.lpush(RedisKey.LADDER_NAME2_KEY, name);
+			}
+			return list;
+		}else{
+			return values;
+		}
+	}
+	
+	private List<String> buildLadderNameConfig2(){
+		String xml = ReadConfig(LADDER_NAME_FILE_NAME2);
+		LadderNameList.Builder builder = LadderNameList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + LADDER_NAME_FILE_NAME2);
+			return null;
+		}
+		
+		List<String> list = new ArrayList<String>();
+		for(LadderName.Builder ladderName : builder.getNameBuilderList()){
+			list.add(ladderName.getName());
+		}
+		return list;
+	}
+	
+	public List<LadderEnemy> getLadderEnemy() {
+		List<String> values = this.lrange((RedisKey.LADDER_ENEMY_KEY));
+		if(values.isEmpty()){
+			List<LadderEnemy> list = buildLadderEnemyConfig();
+			for(LadderEnemy enemy : list){
+				this.lpush(RedisKey.LADDER_ENEMY_KEY, formatJson(enemy));
+			}
+			return list;
+		}else{
+			List<LadderEnemy> list = new ArrayList<LadderEnemy>();
+			for (String value : values) {
+				LadderEnemy.Builder builder = LadderEnemy.newBuilder();
+				if(parseJson(value, builder))
+					list.add(builder.build());
+			}
+			return list;
+		}
+	}
+	
+	private List<LadderEnemy> buildLadderEnemyConfig(){
+		String xml = ReadConfig(LADDER_RANKING_FILE_NAME);
+		LadderEnemyList.Builder builder = LadderEnemyList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + LADDER_RANKING_FILE_NAME);
+			return null;
+		}
+		
+		List<LadderEnemy> list = new ArrayList<LadderEnemy>();
+		for(LadderEnemy.Builder ladderEnemy : builder.getRankingBuilderList()){
+			list.add(ladderEnemy.build());
+		}
+		return list;
 	}
 }

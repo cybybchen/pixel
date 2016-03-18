@@ -794,6 +794,42 @@ message FenjieHeroInfo {
 	required int32 infoId = 2;
 }
 
+message LadderRankingList {
+	repeated LadderRanking ranking = 1;
+}
+
+message LadderRanking {
+	required int32 rankink = 1;
+	required int32 star = 2;
+	required int32 lv = 3;
+	required int32 rare = 4;
+	required int32 herocount = 5;
+}
+
+message LadderNameList {
+	repeated LadderName name = 1;
+}
+
+message LadderName {
+	required int32 type = 1;
+	required string name = 2;
+}
+
+message LadderEnemyList {
+	repeated LadderEnemy ranking = 1;
+}
+
+message LadderEnemy {
+	required int32 ranking = 1;
+	required int32 ranking1 = 2;
+	required int32 star = 3;
+	required int32 lv = 4;
+	required int32 rare = 5;
+	required int32 herocount = 6;
+	required int32 zhanli = 7;
+	required int32 zhanli1 = 8;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

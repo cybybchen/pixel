@@ -27,6 +27,15 @@ public class HeroService {
 		return hero;
 	}
 	
+	public List<HeroBean> getHeroList() {
+		List<HeroBean> heroList = heroRedisService.getHeroList();
+		if (heroList.isEmpty()) {
+			heroList = parseHeroAndSaveConfig();
+		}
+		
+		return heroList;
+	}
+	
 	public HeroEquipBean getHeroEquip(int heroId) {
 		HeroBean hero = getHero(heroId);
 		return hero.getEquip(1);
@@ -56,10 +65,12 @@ public class HeroService {
 		}
 	}
 	
-	private void parseHeroAndSaveConfig() {
+	private List<HeroBean> parseHeroAndSaveConfig() {
 		List<HeroBean> heroList = HeroBean.xmlParse();
 		if (heroList != null && heroList.size() != 0) {
 			heroRedisService.setHeroList(heroList);
 		}
+		
+		return heroList;
 	}
 }

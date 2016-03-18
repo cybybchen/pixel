@@ -237,6 +237,25 @@ public class HeroInfoBean {
 		return heroInfo;
 	}
 	
+	public static HeroInfoBean initHeroInfo(HeroBean hero, int star, int rare, int level) {
+		HeroInfoBean heroInfo = new HeroInfoBean();
+		heroInfo.setId(0);
+		heroInfo.setHeroId(hero.getId());
+		heroInfo.setLevel(level);
+		heroInfo.setStarLevel(star);
+		heroInfo.setValue(0);
+		heroInfo.setRare(rare);
+		heroInfo.setLock(false);
+		heroInfo.setEquipInfo("0|0|0|0|0|0");
+		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
+		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
+		if (skillInfo != null)
+			skillInfoList.add(skillInfo);
+		heroInfo.setSkillInfoList(skillInfoList);
+		
+		return heroInfo;
+	}
+	
 	public static HeroInfoBean initHeroInfo(HeroBean hero) {
 		return initHeroInfo(hero, 1);
 	}
