@@ -76,20 +76,18 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getDailyShopEndTime(){
-		long time = System.currentTimeMillis()/1000;
-		long day = time/24/3600;
-		long hour = (time/3600)%24;
-		if(hour < 9)
-			hour = 9;
-		else if(hour <12)
-			hour = 12;
-		else if(hour < 18)
-			hour = 18;
-		else if(hour < 21)
-			hour = 21;
+		long time[] = {today(9), today(12), today(18), today(21)};
+		long now = System.currentTimeMillis()/1000;
+		if(now < time[0])
+			return time[0];
+		else if(now < time[1])
+			return time[1];
+		else if(now < time[2])
+			return time[2];
+		else if(now < time[3])
+			return time[3];
 		else//第二天9点
-			hour = 33;
-		return day*24*3600+hour*3600;
+			return time[0]+24*3600;
 	}
 	
 	public ShopList buildDailyShop(){
@@ -172,14 +170,11 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getBlackShopEndTime(){
-		long time = System.currentTimeMillis()/1000;
-		long day = time/24/3600;
-		long hour = (time/3600)%24;
-		if(hour < 21)
-			hour = 21;
+		long time = today(21);
+		if(System.currentTimeMillis()/1000 < time)
+			return time;
 		else//第二天21点
-			hour = 45;
-		return day*24*3600+hour*3600;
+			return time+24*3600;
 	}
 	
 	public ShopList buildBlackShop(){
@@ -262,14 +257,11 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getUnionShopEndTime(){
-		long time = System.currentTimeMillis()/1000;
-		long day = time/24/3600;
-		long hour = (time/3600)%24;
-		if(hour < 21)
-			hour = 21;
+		long time = today(21);
+		if(System.currentTimeMillis()/1000 < time)
+			return time;
 		else//第二天21点
-			hour = 45;
-		return day*24*3600+hour*3600;
+			return time+24*3600;
 	}
 	
 	public ShopList buildUnionShop(){
@@ -352,14 +344,11 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getPVPShopEndTime(){
-		long time = System.currentTimeMillis()/1000;
-		long day = time/24/3600;
-		long hour = (time/3600)%24;
-		if(hour < 21)
-			hour = 21;
+		long time = today(21);
+		if(System.currentTimeMillis()/1000 < time)
+			return time;
 		else//第二天21点
-			hour = 45;
-		return day*24*3600+hour*3600;
+			return time+24*3600;
 	}
 	
 	public ShopList buildPVPShop(){
@@ -442,14 +431,11 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getExpeditionShopEndTime(){
-		long time = System.currentTimeMillis()/1000;
-		long day = time/24/3600;
-		long hour = (time/3600)%24;
-		if(hour < 21)
-			hour = 21;
+		long time = today(21);
+		if(System.currentTimeMillis()/1000 < time)
+			return time;
 		else//第二天21点
-			hour = 45;
-		return day*24*3600+hour*3600;
+			return time+24*3600;
 	}
 	
 	public ShopList buildExpeditionShop(){
@@ -532,14 +518,11 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getLadderShopEndTime(){
-		long time = System.currentTimeMillis()/1000;
-		long day = time/24/3600;
-		long hour = (time/3600)%24;
-		if(hour < 21)
-			hour = 21;
+		long time = today(21);
+		if(System.currentTimeMillis()/1000 < time)
+			return time;
 		else//第二天21点
-			hour = 45;
-		return day*24*3600+hour*3600;
+			return time+24*3600;
 	}
 	
 	public ShopList buildLadderShop(){

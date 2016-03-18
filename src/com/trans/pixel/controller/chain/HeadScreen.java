@@ -5,7 +5,9 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestAchieveListCommand;
 import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
@@ -65,8 +67,6 @@ import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
-//add import here
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
@@ -114,53 +114,44 @@ import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
+//add import here
 
 public class HeadScreen extends RequestScreen {
 	
 	private static final Logger log = LoggerFactory.getLogger(HeadScreen.class);
 	
-//	@Resource
-//    private AccountService accountService;
 	@Resource
     private UserService userService;
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
         RequestCommand request = req.command;
-        HeadInfo head = request.getHead();
-        HeadInfo.Builder headBuilder = buildHeadInfo(head);
-        HeadInfo responseHead = headBuilder.build();
-        rep.command.setHead(responseHead);
+        HeadInfo.Builder head = HeadInfo.newBuilder(request.getHead());
+        head.setDatetime(System.currentTimeMillis() / 1000);
+        rep.command.setHead(head.build());
         if (request.hasRegisterCommand() || request.hasLoginCommand()) {
             return true;
         }
         long userId = head.getUserId();
         req.user = userService.getUser(userId);
         
-        if (req.user != null) {
-           
-        } else {
-            log.error("cmd user err : " + req);
+        if (req.user == null || !req.user.getSession().equals(head.getSession())) {
+        	ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+            erBuilder.setCode(String.valueOf(ErrorConst.USER_NEED_LOGIN.getCode()));
+            erBuilder.setMessage(ErrorConst.USER_NEED_LOGIN.getMesssage());
+        	rep.command.setErrorCommand(erBuilder.build());
+            log.info("cmd user need login:" + req);
+            return false;
         }
         
         return true;
-    }
-
-    private HeadInfo.Builder buildHeadInfo(HeadInfo head) {
-        HeadInfo.Builder headBuilder = HeadInfo.newBuilder();
-        headBuilder.setGameVersion(head.getGameVersion());
-        headBuilder.setVersion(head.getVersion());
-        headBuilder.setAccount(head.getAccount());
-        headBuilder.setServerId(head.getServerId());
-        headBuilder.setUserId(head.getUserId());
-        headBuilder.setDatetime(System.currentTimeMillis() / 1000);
-        return headBuilder;
     }
 
 	@Override

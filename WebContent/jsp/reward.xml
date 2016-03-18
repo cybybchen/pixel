@@ -1,4 +1,5 @@
 <data>
+<reward itemid="999" name="充值" auto="cz" />
 <reward itemid="1000" name="经验" auto="jy_exp" />
 <reward itemid="1001" name="金币" auto="jb_coin" />
 <reward itemid="1002" name="钻石" auto="zs_jewel" />

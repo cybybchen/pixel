@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,6 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
-import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.DateUtil;
@@ -28,8 +28,6 @@ import com.trans.pixel.utils.DateUtil;
 public class UserCommandService extends BaseCommandService {
 	private static final Logger logger = LoggerFactory.getLogger(UserCommandService.class);
 	
-//	@Resource
-//    private AccountService accountService;
 	@Resource
     private UserService userService;
 	@Resource
@@ -73,6 +71,8 @@ public class UserCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
+		refreshUserLogin(user);
+		userService.cache(user.getServerId(), user.buildShort());
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
 
@@ -103,10 +103,10 @@ public class UserCommandService extends BaseCommandService {
 	private void refreshUserLogin(UserBean user) {
 		if (isNextDay(user.getLastLoginTime())) {
 			//每日首次登陆
-			VipInfo vip = userService.getVip(user.getVip());
-			if(vip != null){
-//				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
-			}
+//			VipInfo vip = userService.getVip(user.getVip());
+//			if(vip != null){
+////				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
+//			}
 			user.setLoginDays(user.getLoginDays() + 1);
 			user.setHasSign(false);
 			
@@ -117,6 +117,7 @@ public class UserCommandService extends BaseCommandService {
 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
+		user.setSession(DigestUtils.md5Hex(user.getAccount() + System.currentTimeMillis()));
 		userService.updateUser(user);
 	}
 	

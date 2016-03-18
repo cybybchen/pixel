@@ -6,6 +6,7 @@ import com.trans.pixel.protoc.Commands.UserInfo;
 public class UserBean {
 	private long id = 0;
 	private String account = "";
+	private String session = "";
 	private int icon = 0;
 	private String name = "";
 	private int serverId = 0;
@@ -56,6 +57,18 @@ public class UserBean {
 	private int areaUnlock = 0;
 	private int pvpUnlock = 0;
 	private int heroLimit = 0;
+	/**
+	 * Session
+	 */
+	public String getSession() {
+		return session;
+	}
+	/**
+	 * Session
+	 */
+	public void setSession(String session) {
+		this.session = session;
+	}
 	/**
 	 * 区域解锁进度
 	 */
@@ -713,6 +726,7 @@ public class UserBean {
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		builder.setId(id);
 		builder.setAccount(account);
+		builder.setSession(session);
 		builder.setIcon(icon);
 		builder.setName(name);
 		builder.setServerId(serverId);

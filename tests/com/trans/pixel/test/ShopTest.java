@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopPurchaseCommand;
@@ -39,8 +40,10 @@ public class ShopTest extends BaseTest {
 	@Test
 	public void testShop() {
 		login();
-		getDailyShop();
-		DailyShopPurchase(0);
+//		getDailyShop();
+//		DailyShopPurchase(0);
+		getBlackShop();
+		BlackShopRefresh();
 		getBlackShop();
 		BlackShopPurchase(0);
 		getUnionShop();
@@ -120,6 +123,25 @@ public class ShopTest extends BaseTest {
 		builder.setIndex(index);
 		builder.setId(blackshop.getItems(index).getId());
 		requestBuilder.setBlackShopPurchaseCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        if(!response.hasBlackShopCommand())
+        	fail("testShop Not yet implemented");
+        blackshop = response.getBlackShopCommand();
+        logger.info(response.getAllFields());
+	}
+	
+	private void BlackShopRefresh() {
+		if(blackshop == null)
+			return;
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestBlackShopRefreshCommand.Builder builder = RequestBlackShopRefreshCommand.newBuilder();
+		requestBuilder.setBlackShopRefreshCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
 		byte[] reqData = reqcmd.toByteArray();

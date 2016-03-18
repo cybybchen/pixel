@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf8"%>
+<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="999 充值 cz" itemid="999">充值</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1000 经验 jy_exp" itemid="1000">经验</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1001 金币 jb_coin" itemid="1001">金币</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1002 钻石 zs_jewel" itemid="1002">钻石</a>

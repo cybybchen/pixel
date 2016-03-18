@@ -105,12 +105,12 @@ public class GamedataAction {
         } catch (Throwable e) {
             logger.error("PIXEL_ERRO", e);
         }
-        
-        logger.debug("ybchen pixel test" + (System.currentTimeMillis() - startTime));
-		
-		actionCost += (System.currentTimeMillis()-startTime);
-		actions++;
+
 		long now = System.currentTimeMillis();
+        logger.debug("ybchen pixel test" + (now - startTime));
+		
+		actionCost += (now-startTime);
+		actions++;
 		if(now - lastTime > 5000)
 		{
 			logger.warn("ybchen pixel Time: " + (now - lastTime) + " actions: " + actions + "average cost: " + actionCost / actions);

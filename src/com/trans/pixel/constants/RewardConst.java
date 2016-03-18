@@ -1,6 +1,7 @@
 package com.trans.pixel.constants;
 
 public class RewardConst {
+	public static final int RECHARGE = 999;
 	public static final int EXP = 1000;
 	public static final int COIN = 1001;
 	public static final int JEWEL = 1002;

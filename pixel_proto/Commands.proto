@@ -3,6 +3,7 @@ package com.trans.pixel.protoc;
 message UserInfo {
 	required int64 id = 1;
 	optional string account = 2;
+	optional string session = 32;
 	optional int32 icon = 13;
 	optional string name = 3;
 	optional int32 serverId = 4;
@@ -94,6 +95,7 @@ message HeadInfo
 	required int32 serverId = 4;
 	required string account = 5;
 	optional int64 userId = 6;
+	optional string session = 7;
 }
 
 message HeroInfo {

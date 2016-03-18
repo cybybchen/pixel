@@ -22,12 +22,10 @@ public class RechargeService {
 	@Resource
     private ActivityService activityService;
 	
-	public void recharge(long userId, int count) {
-    	UserBean user = userService.getUser(userId);
-    	if(user == null)
-    		return;
+	public void recharge(UserBean user, int count) {
+//    	UserBean user = userService.getUser(userId);
     	user.setJewel(user.getJewel()+count);
-    	UserAchieveBean bean = userAchieveService.selectUserAchieve(userId, AchieveConst.TYPE_RECHARGE_JEWEL);
+    	UserAchieveBean bean = userAchieveService.selectUserAchieve(user.getId(), AchieveConst.TYPE_RECHARGE_JEWEL);
     	int base = bean.getCompleteCount();
     	int complete = base+count;
     	while(true){
@@ -47,7 +45,7 @@ public class RechargeService {
 				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());
 				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
 			}
-			userService.updateUser(user);
+//			userService.updateUser(user);
 	    }
     	bean.setCompleteCount(complete);
     	userAchieveService.updateUserAchieve(bean);

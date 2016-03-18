@@ -35,6 +35,8 @@ public class RewardService {
 	private ActivityService activityService;
 	@Resource
 	private AreaFightService areaService;
+	@Resource
+	private RechargeService rechargeService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getUser(userId);
@@ -87,6 +89,9 @@ public class RewardService {
 			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
 		} else {
 			switch (rewardId) {
+				case RewardConst.RECHARGE:
+					rechargeService.recharge(user, rewardCount);;
+					return true;
 				case RewardConst.EXP:
 					user.setExp(user.getExp() + rewardCount);
 					return true;

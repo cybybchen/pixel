@@ -25,11 +25,11 @@ public class BaseTest {
     protected static final int GAME_VERSION = 1;
     protected static final int VERSION = 1;
     protected static final int SERVER_ID = 1;
-    protected static final String ACCOUNT = "chli4";
+    protected static final String ACCOUNT = "chli";
     protected static final String USER_NAME = ACCOUNT;
     protected static long USER_ID = 57;
-//    protected static final String DEVICE_ID = "iphone5";
-//    protected static final String SESSION = "aa68d03cb47b25b797ba4e06269c3079";
+    protected static String DEVICE_ID = "iphone5";
+    protected static String SESSION = "";
 //    protected static final String TOKEN = "";
 //    protected static final String SCORE = "100";
 //    protected static final String ROOM = "2";
@@ -42,7 +42,7 @@ public class BaseTest {
 //    protected static final String PAINTID = "5";
 //    protected static final String FILE = "notice_1329";
     
-    protected static final String defaultUrl = "http://118.192.77.33:8082/Lol450/gamedata";
+    protected static final String defaultUrl = "http://123.59.144.200:8082/Lol450/gamedata";
     protected static String url;
     protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
     protected static final HttpUtil<String> strhttp = new HttpUtil<String>(new HTTPStringResolver());
@@ -83,6 +83,7 @@ public class BaseTest {
         head.setServerId(SERVER_ID);
         head.setUserId(USER_ID);
         head.setVersion(VERSION);
+        head.setSession(SESSION);
         head.setDatetime((new Date()).getTime());
         return head.build();
     }
@@ -111,6 +112,7 @@ public class BaseTest {
         if(response.hasUserInfoCommand()){
         	user = response.getUserInfoCommand().getUser();
         	USER_ID = user.getId();
+        	SESSION = user.getSession();
         	logger.warn(response.getUserInfoCommand().getUser().getName()+"登陆成功");
         }else if(response.hasErrorCommand()){
         	logger.error(response.getErrorCommand().getMessage());
