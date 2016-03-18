@@ -81,7 +81,6 @@ public class UserCommandService extends BaseCommandService {
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {
 		pushCommandService.pushLootResultCommand(responseBuilder, user);
-//		pushCommandService.pushUserMineListCommand(responseBuilder, user);
 		pushCommandService.pushUserFriendListCommand(responseBuilder, user);
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);

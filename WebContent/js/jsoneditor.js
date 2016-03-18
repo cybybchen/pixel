@@ -143,11 +143,19 @@ function updateUserJson(jsondata) {
     });
 }
 
+function fillRewardId(item){
+    $("#rewardid-input").val($(item).attr("itemid"));
+}
+
 function doReward(){
 	var rewardId = $('input[name="rewardid"]:visible').val();
 	var rewardCount = $('input[name="rewardcount"]:visible').val();
 	var data = buildUserJson("rewardId", rewardId);
 	data["rewardCount"] = rewardCount;
+	var datatype = $("#user-nav .nav-btn-active").attr("data-type");
+    if(datatype == "base"){
+    	data["UserData"] = 1;
+    }
     updateUserJson(data);
 }
 
@@ -165,8 +173,8 @@ function requestUserJson(myuserid, myusername, myserverid) {
         username = myusername;
         serverid = myserverid;
     }
-    if(userid == 0 && serverid == 0)
-        return;
+    // if(userid == 0 && serverid == 0)
+    //     return;
     $.ajax({
         type: "POST",
         url: "datamanager",
@@ -190,6 +198,10 @@ function appendUserDatas(message){
         alert("ERROR:"+message["error"]);
         return;
     }
+    if(message["success"]!=null){
+    	$("#msg-popup").html(message["success"]);
+	    $("#msg-popup").popup('open');
+	}
     userid = message["userId"];
     username = message["userName"];
     serverid = message["serverId"];
@@ -238,6 +250,21 @@ function appendUserDatas(message){
     }
     if(message["pvpBuff"]!=null){
         appendUserData("pvpBuff", message["pvpBuff"]);
+    }
+    if(message["mailList0"]!=null){
+        appendUserData("mailList0", message["mailList0"]);
+    }
+    if(message["mailList1"]!=null){
+        appendUserData("mailList1", message["mailList1"]);
+    }
+    if(message["mailList2"]!=null){
+        appendUserData("mailList2", message["mailList2"]);
+    }
+    if(message["mailList3"]!=null){
+        appendUserData("mailList3", message["mailList3"]);
+    }
+    if(message["friendList"]!=null){
+        appendUserData("friendList", message["friendList"]);
     }
     // if(message["DAILYSHOP"]!=null){
     //     appendUserData("DAILYSHOP", message["DAILYSHOP"]);
@@ -372,8 +399,6 @@ function deleteServerJson(jsondata) {
 function requestServerJson(myserverid) {
     if(myserverid != null)
         serverid = myserverid;
-    if(serverid == 0)
-        return;
     $.ajax({
         type: "POST",
         url: "datamanager",
@@ -397,6 +422,10 @@ function appendServerDatas(message){
         alert("ERROR:"+message["error"]);
         return;
     }
+    if(message["success"]!=null){
+    	$("#msg-popup").html(message["success"]);
+	    $("#msg-popup").popup('open');
+	}
     serverid = message["serverId"];
     addServerTab();
     if(message["areaBoss"]!=null){
@@ -514,6 +543,10 @@ function appendConfigDatas(message, visible){
         alert("ERROR:"+message["error"]);
         return;
     }
+    if(message["success"]!=null){
+    	$("#msg-popup").html(message["success"]);
+	    $("#msg-popup").popup('open');
+	}
     if(message["DailyShopConfig"]!=null){
         appendConfigData("DailyShopConfig", message["DailyShopConfig"], visible);
     }
@@ -761,6 +794,7 @@ $(document).ready(function() {
     $( "#menu-panel" ).panel({
       animate: false
     });
+    $( "#msg-popup" ).enhanceWithin().popup();
     //////////////user///////////////////
     $("#user-editor").on('click', ".reload-btn", function() {
         var data = buildUserJson($( this ).parent().attr("key"));
@@ -794,6 +828,8 @@ $(document).ready(function() {
     $("#user-navmenu-panel a[data-type]").on('click', function() {
         $(this).parent().parent().find(".nav-btn-active").removeClass("nav-btn-active");
         $(this).addClass("nav-btn-active");
+        if(userid == 0 && serverid == 0)
+        	return;
         requestUserJson();
     });
     ///////////////server///////////////
@@ -829,6 +865,8 @@ $(document).ready(function() {
     $("#server-navmenu-panel a[data-type]").on('click', function() {
         $(this).parent().parent().find(".nav-btn-active").removeClass("nav-btn-active");
         $(this).addClass("nav-btn-active");
+        if(serverid == 0)
+            return;
         requestServerJson();
     });
     /////////////config////////////////////

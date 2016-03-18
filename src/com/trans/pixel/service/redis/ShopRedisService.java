@@ -98,6 +98,7 @@ public class ShopRedisService extends RedisService{
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shop1shop1.xml");
 			parseXml(xml, willsbuilder);
+			set(DAILYSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getDailyShopComms());
@@ -187,6 +188,7 @@ public class ShopRedisService extends RedisService{
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopblackshopblack.xml");
 			parseXml(xml, willsbuilder);
+			set(BLACKSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getBlackShopComms());
@@ -276,6 +278,7 @@ public class ShopRedisService extends RedisService{
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopgonghuishopgonghui.xml");
 			parseXml(xml, willsbuilder);
+			set(UNIONSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getUnionShopComms());
@@ -365,6 +368,7 @@ public class ShopRedisService extends RedisService{
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopmojingshopmojing.xml");
 			parseXml(xml, willsbuilder);
+			set(PVPSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getPVPShopComms());
@@ -454,6 +458,7 @@ public class ShopRedisService extends RedisService{
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopyuanzhengshopyuanzheng.xml");
 			parseXml(xml, willsbuilder);
+			set(EXPEDITIONSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getExpeditionShopComms());
@@ -543,6 +548,7 @@ public class ShopRedisService extends RedisService{
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shoptiantishoptianti.xml");
 			parseXml(xml, willsbuilder);
+			set(LADDERSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getLadderShopComms());

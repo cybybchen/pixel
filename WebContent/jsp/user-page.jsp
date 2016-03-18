@@ -20,7 +20,7 @@
 	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="addNewUserTab()">Sign in</a>
 		</div>
 	</div>
-	<div data-role="popup" id="popupReward" data-theme="a" class="ui-corner-all">
+	<!-- <div data-role="popup" id="popupReward" data-theme="a" class="ui-corner-all">
 		<div style="padding:10px 20px;">
 			<h3>Please send reward</h3>
 	        <label for="rewardid" class="ui-hidden-accessible">rewardId:</label>
@@ -31,12 +31,12 @@
 
 	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="doReward()">send reward</a>
 		</div>
-	</div>
+	</div> -->
     <div id="user-navmenu-panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay">
     	<ul data-role="listview" id="user-nav" class="jqm-list ui-alt-icon ui-nodisc-icon">
-			<li id="nav-locate" data-icon="home">添加用户&nbsp;&nbsp;&rArr;</li>
+			<li id="nav-locate" style="background-color: #F6F6F6;">添加用户&nbsp;&nbsp;&rArr;</li>
 			<li data-theme="b" data-icon="home"><a href="#menu-panel">导航</a></li>
-			<li ><a href="#popupReward" data-rel="popup" data-position-to="window" data-transition="pop">发奖</a></li>
+			<li ><a href="#" onclick='$("#rewardForm").toggle();'>发奖</a></li>
 			<li ><a href="#" class="nav-btn-active" data-type="base">基本</a></li>
 			<li ><a href="#" data-type="hero">英雄</a></li>
 			<li ><a href="#" data-type="equip">装备</a></li>
@@ -50,7 +50,24 @@
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 			<!-- <a href="#" class="nav-btn ui-btn ui-btn-inline" userid="2">Anchor</a> -->
 		</div>
-		<div id="user-editor">
+		<form id="rewardForm" class="ui-grid-a" style="display:none;">
+			<div class="ui-block-a">
+		    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
+		        <input name="rewardid" data-type="search" data-enhanced="true" data-inset="false" id="rewardid-input" placeholder="rewardId">
+		    </div>
+		    <div data-role="controlgroup" data-enhanced="true" data-filter="true" data-filter-reveal="true" data-input="#rewardid-input" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+		        <div class="ui-controlgroup-controls">
+		        	<%@ include file="reward.jsp" %>
+		        </div>
+		    </div>
+		    </div>
+	        <div class="ui-block-b">
+	        <input type="text" name="rewardcount" value="" placeholder="rewardCount">
+
+    		<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doReward();">send reward</a>
+    		</div>
+		</form>
+		<div id="user-editor" style="float:clear;">
 		</div>
 	</div><!-- /content -->
 

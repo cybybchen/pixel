@@ -8,3 +8,6 @@
 
 	     </ul>
 	</div><!-- /panel -->
+	<div data-role="popup" id="msg-popup" data-theme="a" style="padding:10px;border-color: #F00;">
+		<p>I'm a simple popup.</p>
+	</div>

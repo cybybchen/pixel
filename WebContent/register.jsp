@@ -9,7 +9,7 @@
 	<div data-role="page">
 	<form action="register.jsp" method="post" data-ajax="false">
 	<div style="padding:10px 20px;margin:0 auto;max-width: 300px;">
-		<h3>Please register</h3>
+		<h3>Please register<a href="login.jsp" data-ajax="false" class="ui-btn ui-corner-all ui-btn-inline" style="margin:-10px 0;right:0;float:right;">Login</a></h3>
 
 		<label for="account" class="ui-hidden-accessible">account:</label>
 		<input type="text" name="account" id="account" value="" placeholder="account">

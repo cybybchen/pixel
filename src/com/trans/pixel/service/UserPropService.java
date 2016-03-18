@@ -33,6 +33,12 @@ public class UserPropService {
 		userPropMapper.updateUserProp(userProp);
 	}
 	
+	public void delUserProp(UserPropBean userProp) {
+		userProp.setPropCount(0);
+		userPropRedisService.updateUserProp(userProp);
+		userPropMapper.updateUserProp(userProp);
+	}
+	
 	public List<UserPropBean> selectUserPropList(long userId) {
 		List<UserPropBean> userPropList = userPropRedisService.selectUserPropList(userId);
 		if (userPropList.size() == 0) {

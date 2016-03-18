@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf8"%>
-<%
+<%-- <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+//<base href="<%=basePath%>">
+ --%>
 <%
 	javax.servlet.http.HttpSession session_comm = request
 			.getSession(true);
@@ -21,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- <base href="<%=basePath%>"> -->
 	<%@ include file="jsp/header.jsp" %>
     <link rel="stylesheet" href="css/jsoneditor.css"/>
     <link rel="stylesheet" href="css/style.css"/>

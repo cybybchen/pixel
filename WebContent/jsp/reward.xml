@@ -1,0 +1,1206 @@
+<data>
+<reward itemid="1000" name="经验" auto="jy_exp" />
+<reward itemid="1001" name="金币" auto="jb_coin" />
+<reward itemid="1002" name="钻石" auto="zs_jewel" />
+<reward itemid="1003" name="魔晶_PVP" auto="mj" />
+<reward itemid="1004" name="远征币" auto="yzb" />
+<reward itemid="1005" name="天梯币" auto="ttb" />
+<reward itemid="1006" name="公会币" auto="ghb" />
+<reward itemid="10001" name="红水晶" auto="jjjjj"/>
+<reward itemid="10002" name="布甲" auto="jjjjj"/>
+<reward itemid="10003" name="长剑" auto="jjjjj"/>
+<reward itemid="10004" name="魔法宝典" auto="jjjjj"/>
+<reward itemid="10005" name="短剑" auto="jjjjj"/>
+<reward itemid="10006" name="打野刀" auto="jjjjj"/>
+<reward itemid="10007" name="鞋子" auto="jjjjj"/>
+<reward itemid="11001" name="晶体护腕" auto="jjjjj"/>
+<reward itemid="11002" name="晶体护腕lv2" auto="jjjjj"/>
+<reward itemid="12001" name="军团圣盾" auto="jjjjj"/>
+<reward itemid="12002" name="军团圣盾lv2" auto="jjjjj"/>
+<reward itemid="12003" name="军团圣盾lv3" auto="jjjjj"/>
+<reward itemid="13001" name="钢铁烈阳之匣" auto="jjjjj"/>
+<reward itemid="13002" name="钢铁烈阳之匣lv2" auto="jjjjj"/>
+<reward itemid="13003" name="号令军旗" auto="jjjjj"/>
+<reward itemid="13004" name="号令军旗lv2" auto="jjjjj"/>
+<reward itemid="14001" name="赤焰屏障" auto="jjjjj"/>
+<reward itemid="14002" name="号令军旗lv3" auto="jjjjj"/>
+<reward itemid="12004" name="狂徒铠甲" auto="jjjjj"/>
+<reward itemid="12005" name="狂徒铠甲lv2" auto="jjjjj"/>
+<reward itemid="12006" name="狂徒铠甲lv3" auto="jjjjj"/>
+<reward itemid="13005" name="祈求者" auto="jjjjj"/>
+<reward itemid="13006" name="祈求者lv2" auto="jjjjj"/>
+<reward itemid="13007" name="祈求者lv3" auto="jjjjj"/>
+<reward itemid="14003" name="生命天平" auto="jjjjj"/>
+<reward itemid="12007" name="女妖面纱" auto="jjjjj"/>
+<reward itemid="12008" name="女妖面纱lv2" auto="jjjjj"/>
+<reward itemid="12009" name="女妖面纱lv3" auto="jjjjj"/>
+<reward itemid="13008" name="救世者" auto="jjjjj"/>
+<reward itemid="13009" name="救世者lv2" auto="jjjjj"/>
+<reward itemid="13010" name="救世者lv3" auto="jjjjj"/>
+<reward itemid="13011" name="救世者lv4" auto="jjjjj"/>
+<reward itemid="14115" name="救世主" auto="jjjjj"/>
+<reward itemid="11003" name="燃烧宝石" auto="jjjjj"/>
+<reward itemid="11004" name="燃烧宝石lv2" auto="jjjjj"/>
+<reward itemid="12010" name="振奋盔甲" auto="jjjjj"/>
+<reward itemid="12011" name="振奋盔甲lv2" auto="jjjjj"/>
+<reward itemid="12012" name="振奋盔甲lv3" auto="jjjjj"/>
+<reward itemid="13012" name="振奋盔甲lv4" auto="jjjjj"/>
+<reward itemid="13013" name="振奋盔甲lv5" auto="jjjjj"/>
+<reward itemid="13014" name="振奋盔甲lv6" auto="jjjjj"/>
+<reward itemid="14004" name="纳鲁之光" auto="jjjjj"/>
+<reward itemid="11005" name="催化神石" auto="jjjjj"/>
+<reward itemid="11006" name="催化神石lv2" auto="jjjjj"/>
+<reward itemid="12013" name="时光之杖" auto="jjjjj"/>
+<reward itemid="12014" name="时光之杖lv2" auto="jjjjj"/>
+<reward itemid="12015" name="时光之杖lv3" auto="jjjjj"/>
+<reward itemid="13015" name="时光之杖lv4" auto="jjjjj"/>
+<reward itemid="13016" name="时光之杖lv5" auto="jjjjj"/>
+<reward itemid="14005" name="时光之杖lv6" auto="jjjjj"/>
+<reward itemid="11007" name="紫雨林之拳" auto="jjjjj"/>
+<reward itemid="11008" name="紫雨林之拳lv2" auto="jjjjj"/>
+<reward itemid="12016" name="紫雨林之拳lv3" auto="jjjjj"/>
+<reward itemid="12017" name="紫雨林之拳lv4" auto="jjjjj"/>
+<reward itemid="13017" name="冰锤" auto="jjjjj"/>
+<reward itemid="13018" name="冰锤lv2" auto="jjjjj"/>
+<reward itemid="13019" name="冰锤lv3" auto="jjjjj"/>
+<reward itemid="14006" name="巨型九头蛇" auto="jjjjj"/>
+<reward itemid="13020" name="血手" auto="jjjjj"/>
+<reward itemid="13021" name="血手lv2" auto="jjjjj"/>
+<reward itemid="13022" name="血手lv3" auto="jjjjj"/>
+<reward itemid="14007" name="血手lv4" auto="jjjjj"/>
+<reward itemid="11009" name="魔法宝典lv2" auto="jjjjj"/>
+<reward itemid="11010" name="魔法宝典lv3" auto="jjjjj"/>
+<reward itemid="12018" name="恶魔法典" auto="jjjjj"/>
+<reward itemid="12019" name="恶魔法典lv2" auto="jjjjj"/>
+<reward itemid="12020" name="恶魔法典lv3" auto="jjjjj"/>
+<reward itemid="13023" name="远古意志" auto="jjjjj"/>
+<reward itemid="13024" name="远古意志lv2" auto="jjjjj"/>
+<reward itemid="13025" name="远古意志lv3" auto="jjjjj"/>
+<reward itemid="14008" name="鸡腿杖" auto="jjjjj"/>
+<reward itemid="13026" name="莫雷洛的秘典" auto="jjjjj"/>
+<reward itemid="13027" name="莫雷洛的秘典lv2" auto="jjjjj"/>
+<reward itemid="13028" name="莫雷洛的秘典lv3" auto="jjjjj"/>
+<reward itemid="14009" name="巨龙之怒" auto="jjjjj"/>
+<reward itemid="13029" name="大圣杯" auto="jjjjj"/>
+<reward itemid="13030" name="大圣杯lv2" auto="jjjjj"/>
+<reward itemid="14010" name="灾变之刃" auto="jjjjj"/>
+<reward itemid="13031" name="闪光之刃" auto="jjjjj"/>
+<reward itemid="13032" name="闪光之刃lv2" auto="jjjjj"/>
+<reward itemid="13033" name="闪光之刃lv3" auto="jjjjj"/>
+<reward itemid="14011" name="宇宙灌注者" auto="jjjjj"/>
+<reward itemid="12021" name="勘探者护臂" auto="jjjjj"/>
+<reward itemid="12022" name="勘探者护臂lv2" auto="jjjjj"/>
+<reward itemid="12023" name="勘探者护臂lv3" auto="jjjjj"/>
+<reward itemid="13034" name="沙漏" auto="jjjjj"/>
+<reward itemid="13035" name="沙漏lv2" auto="jjjjj"/>
+<reward itemid="13036" name="沙漏lv3" auto="jjjjj"/>
+<reward itemid="14012" name="电磁拉杆" auto="jjjjj"/>
+<reward itemid="12024" name="苦痛假面" auto="jjjjj"/>
+<reward itemid="12025" name="苦痛假面lv2" auto="jjjjj"/>
+<reward itemid="12026" name="苦痛假面lv3" auto="jjjjj"/>
+<reward itemid="13037" name="折磨" auto="jjjjj"/>
+<reward itemid="13038" name="折磨lv2" auto="jjjjj"/>
+<reward itemid="13039" name="折磨lv3" auto="jjjjj"/>
+<reward itemid="14013" name="瓦解法杖" auto="jjjjj"/>
+<reward itemid="14014" name="瓦解法杖lv2" auto="jjjjj"/>
+<reward itemid="12027" name="魔法宝典lv4" auto="jjjjj"/>
+<reward itemid="12028" name="魔法宝典lv5" auto="jjjjj"/>
+<reward itemid="12029" name="魔法宝典lv6" auto="jjjjj"/>
+<reward itemid="13040" name="帽子" auto="jjjjj"/>
+<reward itemid="13041" name="帽子lv2" auto="jjjjj"/>
+<reward itemid="13042" name="帽子lv3" auto="jjjjj"/>
+<reward itemid="14015" name="守护者之杖" auto="jjjjj"/>
+<reward itemid="13043" name="冰杖" auto="jjjjj"/>
+<reward itemid="13044" name="冰杖lv2" auto="jjjjj"/>
+<reward itemid="13045" name="冰杖lv3" auto="jjjjj"/>
+<reward itemid="14016" name="冰霜之镰" auto="jjjjj"/>
+<reward itemid="13046" name="神秘之杖" auto="jjjjj"/>
+<reward itemid="13047" name="神秘之杖lv2" auto="jjjjj"/>
+<reward itemid="13048" name="神秘之杖lv3" auto="jjjjj"/>
+<reward itemid="14017" name="太古方杖" auto="jjjjj"/>
+<reward itemid="12030" name="黑暗精魂" auto="jjjjj"/>
+<reward itemid="12031" name="黑暗精魂lv2" auto="jjjjj"/>
+<reward itemid="12032" name="黑暗精魂lv3" auto="jjjjj"/>
+<reward itemid="13049" name="卢登的回声" auto="jjjjj"/>
+<reward itemid="13050" name="卢登的回声lv2" auto="jjjjj"/>
+<reward itemid="14018" name="卢登的回声lv3" auto="jjjjj"/>
+<reward itemid="13051" name="巫妖之祸" auto="jjjjj"/>
+<reward itemid="13052" name="巫妖之祸lv2" auto="jjjjj"/>
+<reward itemid="13053" name="巫妖之祸lv3" auto="jjjjj"/>
+<reward itemid="14019" name="巫妖之祸lv4" auto="jjjjj"/>
+<reward itemid="12034" name="深渊之魂" auto="jjjjj"/>
+<reward itemid="12035" name="深渊之魂lv2" auto="jjjjj"/>
+<reward itemid="12036" name="深渊之魂lv3" auto="jjjjj"/>
+<reward itemid="13054" name="深渊权杖" auto="jjjjj"/>
+<reward itemid="13055" name="深渊权杖lv2" auto="jjjjj"/>
+<reward itemid="13056" name="深渊权杖lv3" auto="jjjjj"/>
+<reward itemid="14020" name="深渊权杖lv4" auto="jjjjj"/>
+<reward itemid="14021" name="深渊权杖lv5" auto="jjjjj"/>
+<reward itemid="11011" name="斗士之靴" auto="jjjjj"/>
+<reward itemid="11012" name="斗士之靴lv2" auto="jjjjj"/>
+<reward itemid="12037" name="霸王之靴" auto="jjjjj"/>
+<reward itemid="12038" name="霸王之靴lv2" auto="jjjjj"/>
+<reward itemid="12039" name="霸王之靴lv3" auto="jjjjj"/>
+<reward itemid="13057" name="碎甲靴" auto="jjjjj"/>
+<reward itemid="13058" name="碎甲靴lv2" auto="jjjjj"/>
+<reward itemid="13059" name="碎甲靴lv3" auto="jjjjj"/>
+<reward itemid="14022" name="碎甲靴：喧哗" auto="jjjjj"/>
+<reward itemid="14023" name="碎甲靴：欢欣" auto="jjjjj"/>
+<reward itemid="14024" name="碎甲靴：统帅" auto="jjjjj"/>
+<reward itemid="14025" name="碎甲靴：失真" auto="jjjjj"/>
+<reward itemid="11013" name="法师之靴" auto="jjjjj"/>
+<reward itemid="11014" name="法师之靴lv2" auto="jjjjj"/>
+<reward itemid="12040" name="无用之靴" auto="jjjjj"/>
+<reward itemid="12041" name="无用之靴lv2" auto="jjjjj"/>
+<reward itemid="12042" name="无用之靴lv3" auto="jjjjj"/>
+<reward itemid="13060" name="奥术靴" auto="jjjjj"/>
+<reward itemid="13061" name="奥术靴lv2" auto="jjjjj"/>
+<reward itemid="13062" name="奥术靴lv3" auto="jjjjj"/>
+<reward itemid="14026" name="奥术靴：喧哗" auto="jjjjj"/>
+<reward itemid="14027" name="奥术靴：欢欣" auto="jjjjj"/>
+<reward itemid="14028" name="奥术靴：统帅" auto="jjjjj"/>
+<reward itemid="14029" name="奥术靴：失真" auto="jjjjj"/>
+<reward itemid="11015" name="狂战士胫甲" auto="jjjjj"/>
+<reward itemid="11016" name="狂战士胫甲lv2" auto="jjjjj"/>
+<reward itemid="12043" name="暴风胫甲" auto="jjjjj"/>
+<reward itemid="12044" name="暴风胫甲lv2" auto="jjjjj"/>
+<reward itemid="12045" name="暴风胫甲lv3" auto="jjjjj"/>
+<reward itemid="13063" name="假腿" auto="jjjjj"/>
+<reward itemid="13064" name="假腿lv2" auto="jjjjj"/>
+<reward itemid="13065" name="假腿lv3" auto="jjjjj"/>
+<reward itemid="14030" name="假腿：喧哗" auto="jjjjj"/>
+<reward itemid="14031" name="假腿：欢欣" auto="jjjjj"/>
+<reward itemid="14032" name="假腿：统帅" auto="jjjjj"/>
+<reward itemid="14033" name="假腿：失真" auto="jjjjj"/>
+<reward itemid="11017" name="忍者足具" auto="jjjjj"/>
+<reward itemid="11018" name="忍者足具lv2" auto="jjjjj"/>
+<reward itemid="12046" name="火影足具" auto="jjjjj"/>
+<reward itemid="12047" name="火影足具lv2" auto="jjjjj"/>
+<reward itemid="12048" name="火影足具lv3" auto="jjjjj"/>
+<reward itemid="13066" name="相位靴" auto="jjjjj"/>
+<reward itemid="13067" name="相位靴lv2" auto="jjjjj"/>
+<reward itemid="13068" name="相位靴lv3" auto="jjjjj"/>
+<reward itemid="14034" name="相位靴：喧哗" auto="jjjjj"/>
+<reward itemid="14035" name="相位靴：欢欣" auto="jjjjj"/>
+<reward itemid="14036" name="相位靴：统帅" auto="jjjjj"/>
+<reward itemid="14037" name="相位靴：失真" auto="jjjjj"/>
+<reward itemid="11019" name="水银之靴" auto="jjjjj"/>
+<reward itemid="11020" name="水银之靴lv2" auto="jjjjj"/>
+<reward itemid="12049" name="大法师之靴" auto="jjjjj"/>
+<reward itemid="12050" name="大法师之靴lv2" auto="jjjjj"/>
+<reward itemid="12051" name="大法师之靴lv3" auto="jjjjj"/>
+<reward itemid="13069" name="水银靴" auto="jjjjj"/>
+<reward itemid="13070" name="水银靴lv2" auto="jjjjj"/>
+<reward itemid="13071" name="水银靴lv3" auto="jjjjj"/>
+<reward itemid="14038" name="水银靴：喧哗" auto="jjjjj"/>
+<reward itemid="14039" name="水银靴：欢欣" auto="jjjjj"/>
+<reward itemid="14040" name="水银靴：统帅" auto="jjjjj"/>
+<reward itemid="14041" name="水银靴：失真" auto="jjjjj"/>
+<reward itemid="11021" name="布甲lv2" auto="jjjjj"/>
+<reward itemid="11022" name="守望者板甲" auto="jjjjj"/>
+<reward itemid="12052" name="亡者的板甲" auto="jjjjj"/>
+<reward itemid="12053" name="亡者的板甲lv2" auto="jjjjj"/>
+<reward itemid="12054" name="亡者的板甲lv3" auto="jjjjj"/>
+<reward itemid="13072" name="亡者的板甲lv4" auto="jjjjj"/>
+<reward itemid="13073" name="亡者的板甲lv5" auto="jjjjj"/>
+<reward itemid="14042" name="亡者的板甲lv6" auto="jjjjj"/>
+<reward itemid="13074" name="裁决者" auto="jjjjj"/>
+<reward itemid="13075" name="裁决者lv2" auto="jjjjj"/>
+<reward itemid="13076" name="裁决者lv3" auto="jjjjj"/>
+<reward itemid="14043" name="杀马特战锤" auto="jjjjj"/>
+<reward itemid="12056" name="荆棘之甲" auto="jjjjj"/>
+<reward itemid="12057" name="荆棘之甲lv2" auto="jjjjj"/>
+<reward itemid="13078" name="荆棘之甲lv3" auto="jjjjj"/>
+<reward itemid="13079" name="荆棘之甲lv4" auto="jjjjj"/>
+<reward itemid="14044" name="龙血战甲" auto="jjjjj"/>
+<reward itemid="12058" name="冰心" auto="jjjjj"/>
+<reward itemid="12059" name="冰心lv2" auto="jjjjj"/>
+<reward itemid="13080" name="寒霜之心" auto="jjjjj"/>
+<reward itemid="13081" name="寒霜之心lv2" auto="jjjjj"/>
+<reward itemid="13082" name="寒霜之心lv3" auto="jjjjj"/>
+<reward itemid="14045" name="寒霜之心lv4" auto="jjjjj"/>
+<reward itemid="12060" name="神圣光盾" auto="jjjjj"/>
+<reward itemid="12061" name="神圣光盾lv2" auto="jjjjj"/>
+<reward itemid="12062" name="神圣光盾lv3" auto="jjjjj"/>
+<reward itemid="13083" name="冷酷者" auto="jjjjj"/>
+<reward itemid="14046" name="盾" auto="jjjjj"/>
+<reward itemid="11023" name="民工锤" auto="jjjjj"/>
+<reward itemid="11024" name="民工锤lv2" auto="jjjjj"/>
+<reward itemid="12063" name="幽灵之梦" auto="jjjjj"/>
+<reward itemid="12064" name="幽灵之梦lv2" auto="jjjjj"/>
+<reward itemid="12065" name="幽灵之梦lv3" auto="jjjjj"/>
+<reward itemid="13084" name="燃烧之刃lv1" auto="jjjjj"/>
+<reward itemid="13085" name="燃烧之刃lv2" auto="jjjjj"/>
+<reward itemid="13086" name="燃烧之刃lv3" auto="jjjjj"/>
+<reward itemid="14047" name="埃斯之焰" auto="jjjjj"/>
+<reward itemid="13087" name="黑切" auto="jjjjj"/>
+<reward itemid="13088" name="黑切lv2" auto="jjjjj"/>
+<reward itemid="14048" name="远古噩梦" auto="jjjjj"/>
+<reward itemid="14049" name="远古噩梦lv2" auto="jjjjj"/>
+<reward itemid="11025" name="饮魔刀" auto="jjjjj"/>
+<reward itemid="11026" name="饮魔刀lv2" auto="jjjjj"/>
+<reward itemid="12066" name="饮魔刀lv3" auto="jjjjj"/>
+<reward itemid="12067" name="饮魔刀lv4" auto="jjjjj"/>
+<reward itemid="13089" name="大饮魔刀" auto="jjjjj"/>
+<reward itemid="13090" name="大饮魔刀lv2" auto="jjjjj"/>
+<reward itemid="14050" name="大饮魔刀lv3" auto="jjjjj"/>
+<reward itemid="11027" name="吸血刀" auto="jjjjj"/>
+<reward itemid="11028" name="吸血刀lv2" auto="jjjjj"/>
+<reward itemid="12068" name="吸血刀lv3" auto="jjjjj"/>
+<reward itemid="12069" name="吸血刀lv4" auto="jjjjj"/>
+<reward itemid="13901" name="贪欲九头蛇" auto="jjjjj"/>
+<reward itemid="13092" name="贪欲九头蛇lv2" auto="jjjjj"/>
+<reward itemid="14051" name="贪欲九头蛇lv3" auto="jjjjj"/>
+<reward itemid="13093" name="饮血剑" auto="jjjjj"/>
+<reward itemid="13094" name="饮血剑lv2" auto="jjjjj"/>
+<reward itemid="13095" name="饮血剑lv3" auto="jjjjj"/>
+<reward itemid="14052" name="嗜血剑" auto="jjjjj"/>
+<reward itemid="14053" name="嗜血剑lv2" auto="jjjjj"/>
+<reward itemid="12070" name="小弯刀" auto="jjjjj"/>
+<reward itemid="12071" name="小弯刀lv2" auto="jjjjj"/>
+<reward itemid="12072" name="小弯刀lv3" auto="jjjjj"/>
+<reward itemid="13096" name="科技枪刃" auto="jjjjj"/>
+<reward itemid="13097" name="科技枪刃lv2" auto="jjjjj"/>
+<reward itemid="14054" name="狮子吼" auto="jjjjj"/>
+<reward itemid="13098" name="破败" auto="jjjjj"/>
+<reward itemid="13099" name="破败lv2" auto="jjjjj"/>
+<reward itemid="13100" name="破败lv3" auto="jjjjj"/>
+<reward itemid="14055" name="复仇" auto="jjjjj"/>
+<reward itemid="11029" name="长剑lv2" auto="jjjjj"/>
+<reward itemid="11030" name="长剑lv3" auto="jjjjj"/>
+<reward itemid="12073" name="轻语" auto="jjjjj"/>
+<reward itemid="12074" name="轻语lv2" auto="jjjjj"/>
+<reward itemid="12075" name="轻语lv3" auto="jjjjj"/>
+<reward itemid="13101" name="复仇者" auto="jjjjj"/>
+<reward itemid="13102" name="复仇者lv2" auto="jjjjj"/>
+<reward itemid="14056" name="兄弟会之剑" auto="jjjjj"/>
+<reward itemid="13103" name="掠夺者" auto="jjjjj"/>
+<reward itemid="13104" name="掠夺者lv2" auto="jjjjj"/>
+<reward itemid="14057" name="劫掠" auto="jjjjj"/>
+<reward itemid="12076" name="长剑lv4" auto="jjjjj"/>
+<reward itemid="12077" name="长剑lv5" auto="jjjjj"/>
+<reward itemid="12078" name="长剑lv6" auto="jjjjj"/>
+<reward itemid="13105" name="无尽" auto="jjjjj"/>
+<reward itemid="13106" name="无尽lv2" auto="jjjjj"/>
+<reward itemid="13107" name="无尽lv3" auto="jjjjj"/>
+<reward itemid="14058" name="傲慢" auto="jjjjj"/>
+<reward itemid="11031" name="狂热" auto="jjjjj"/>
+<reward itemid="11032" name="狂热lv2" auto="jjjjj"/>
+<reward itemid="12079" name="狂热lv3" auto="jjjjj"/>
+<reward itemid="12080" name="狂热lv4" auto="jjjjj"/>
+<reward itemid="12081" name="狂热lv5" auto="jjjjj"/>
+<reward itemid="13108" name="三相之力" auto="jjjjj"/>
+<reward itemid="13109" name="三相之力lv2" auto="jjjjj"/>
+<reward itemid="13110" name="三相之力lv3" auto="jjjjj"/>
+<reward itemid="14059" name="群星之怒" auto="jjjjj"/>
+<reward itemid="14060" name="群星之怒lv2" auto="jjjjj"/>
+<reward itemid="13111" name="绿叉" auto="jjjjj"/>
+<reward itemid="13112" name="绿叉lv2" auto="jjjjj"/>
+<reward itemid="13113" name="绿叉lv3" auto="jjjjj"/>
+<reward itemid="14061" name="雷霆之怒" auto="jjjjj"/>
+<reward itemid="13114" name="电刀" auto="jjjjj"/>
+<reward itemid="13115" name="电刀lv2" auto="jjjjj"/>
+<reward itemid="13116" name="电刀lv3" auto="jjjjj"/>
+<reward itemid="14062" name="电刀lv4" auto="jjjjj"/>
+<reward itemid="13117" name="火花" auto="jjjjj"/>
+<reward itemid="13118" name="火花lv2" auto="jjjjj"/>
+<reward itemid="13119" name="火花lv3" auto="jjjjj"/>
+<reward itemid="14063" name="火花lv4" auto="jjjjj"/>
+<reward itemid="11033" name="打野刀lv2" auto="jjjjj"/>
+<reward itemid="11034" name="打野刀lv3" auto="jjjjj"/>
+<reward itemid="12082" name="打野刀lv4" auto="jjjjj"/>
+<reward itemid="12083" name="打野刀lv5" auto="jjjjj"/>
+<reward itemid="12084" name="打野刀lv6" auto="jjjjj"/>
+<reward itemid="13120" name="刀锋" auto="jjjjj"/>
+<reward itemid="13121" name="刀锋lv2" auto="jjjjj"/>
+<reward itemid="13122" name="刀锋lv3" auto="jjjjj"/>
+<reward itemid="14064" name="刀锋：吞噬者" auto="jjjjj"/>
+<reward itemid="14065" name="刀锋：战士" auto="jjjjj"/>
+<reward itemid="14066" name="刀锋：熔渣巨人" auto="jjjjj"/>
+<reward itemid="14067" name="刀锋：符文阔剑" auto="jjjjj"/>
+<reward itemid="13123" name="匕首" auto="jjjjj"/>
+<reward itemid="13124" name="匕首lv2" auto="jjjjj"/>
+<reward itemid="13125" name="匕首lv3" auto="jjjjj"/>
+<reward itemid="14068" name="匕首：吞噬者" auto="jjjjj"/>
+<reward itemid="14069" name="匕首：战士" auto="jjjjj"/>
+<reward itemid="14070" name="匕首：熔渣巨人" auto="jjjjj"/>
+<reward itemid="14071" name="匕首：符文阔剑" auto="jjjjj"/>
+<reward itemid="13126" name="军刀" auto="jjjjj"/>
+<reward itemid="13127" name="军刀lv2" auto="jjjjj"/>
+<reward itemid="13128" name="军刀lv3" auto="jjjjj"/>
+<reward itemid="14072" name="军刀：吞噬者" auto="jjjjj"/>
+<reward itemid="14073" name="军刀：战士" auto="jjjjj"/>
+<reward itemid="14074" name="军刀：熔渣巨人" auto="jjjjj"/>
+<reward itemid="14075" name="军刀：符文阔剑" auto="jjjjj"/>
+<reward itemid="15001" name="治疗宝珠" auto="jjjjj"/>
+<reward itemid="15002" name="抗魔斗篷" auto="jjjjj"/>
+<reward itemid="15003" name="仙女护符" auto="jjjjj"/>
+<reward itemid="15004" name="格斗手套" auto="jjjjj"/>
+<reward itemid="15005" name="蓝水晶" auto="jjjjj"/>
+<reward itemid="16001" name="负极斗篷" auto="jjjjj"/>
+<reward itemid="16002" name="锁子甲" auto="jjjjj"/>
+<reward itemid="16003" name="爆裂魔杖" auto="jjjjj"/>
+<reward itemid="16004" name="十字镐" auto="jjjjj"/>
+<reward itemid="16005" name="灵巧披风" auto="jjjjj"/>
+<reward itemid="16006" name="残暴之力" auto="jjjjj"/>
+<reward itemid="16007" name="冰川护甲" auto="jjjjj"/>
+<reward itemid="16008" name="幽魂斗篷" auto="jjjjj"/>
+<reward itemid="16009" name="耀光" auto="jjjjj"/>
+<reward itemid="16010" name="净蚀" auto="jjjjj"/>
+<reward itemid="16011" name="反曲之弓" auto="jjjjj"/>
+<reward itemid="17001" name="巨人腰带" auto="jjjjj"/>
+<reward itemid="17002" name="和谐圣杯" auto="jjjjj"/>
+<reward itemid="17003" name="吸血枪" auto="jjjjj"/>
+<reward itemid="17004" name="暴风大剑" auto="jjjjj"/>
+<reward itemid="17005" name="无用大棒" auto="jjjjj"/>
+<reward itemid="17006" name="九头蛇" auto="jjjjj"/>
+<reward itemid="17007" name="虚空之杖" auto="jjjjj"/>
+<reward itemid="17008" name="火影斗篷" auto="jjjjj"/>
+<reward itemid="17009" name="大法师斗篷" auto="jjjjj"/>
+<reward itemid="17010" name="霸王血铠" auto="jjjjj"/>
+<reward itemid="17011" name="酒吧凶器" auto="jjjjj"/>
+<reward itemid="17012" name="蜂刺" auto="jjjjj"/>
+<reward itemid="18001" name="魔王板甲" auto="jjjjj"/>
+<reward itemid="18002" name="飓风大剑" auto="jjjjj"/>
+<reward itemid="18003" name="无用巨棒" auto="jjjjj"/>
+<reward itemid="18004" name="黄金龟壳" auto="jjjjj"/>
+<reward itemid="18005" name="利维坦之甲" auto="jjjjj"/>
+<reward itemid="18006" name="预言之刃" auto="jjjjj"/>
+<reward itemid="18007" name="冥火" auto="jjjjj"/>
+<reward itemid="18008" name="凯奇的幸运手" auto="jjjjj"/>
+<reward itemid="18009" name="狂想曲" auto="jjjjj"/>
+<reward itemid="18010" name="兴奋坠饰" auto="jjjjj"/>
+<reward itemid="19001" name="辛多雷血袍" auto="jjjjj"/>
+<reward itemid="19002" name="碎梦斧" auto="jjjjj"/>
+<reward itemid="19003" name="烈日能量" auto="jjjjj"/>
+<reward itemid="19004" name="战争使者" auto="jjjjj"/>
+<reward itemid="19005" name="静谧波浪" auto="jjjjj"/>
+<reward itemid="19006" name="彗星" auto="jjjjj"/>
+<reward itemid="19007" name="虚空" auto="jjjjj"/>
+<reward itemid="19008" name="泰坦之握" auto="jjjjj"/>
+<reward itemid="19009" name="迅捷" auto="jjjjj"/>
+<reward itemid="19010" name="嗜血" auto="jjjjj"/>
+<reward itemid="19011" name="喧哗卷轴" auto="jjjjj"/>
+<reward itemid="19012" name="欢欣卷轴" auto="jjjjj"/>
+<reward itemid="19013" name="统帅卷轴" auto="jjjjj"/>
+<reward itemid="19014" name="失真卷轴" auto="jjjjj"/>
+<reward itemid="10000" name="木桩武器" auto="jjjjj"/>
+<reward itemid="13129" name="魔法宝典lv7" auto="jjjjj"/>
+<reward itemid="13130" name="魔法宝典lv8" auto="jjjjj"/>
+<reward itemid="13131" name="魔法宝典lv9" auto="jjjjj"/>
+<reward itemid="14076" name="魔法宝典lv10" auto="jjjjj"/>
+<reward itemid="13132" name="风暴骑士之力lv1" auto="jjjjj"/>
+<reward itemid="13133" name="风暴骑士之力lv2" auto="jjjjj"/>
+<reward itemid="13134" name="风暴骑士之力lv3" auto="jjjjj"/>
+<reward itemid="14077" name="风暴骑士之力lv4" auto="jjjjj"/>
+<reward itemid="14078" name="风暴领主之力" auto="jjjjj"/>
+<reward itemid="13135" name="雷霆骑士之力lv1" auto="jjjjj"/>
+<reward itemid="13136" name="雷霆骑士之力lv2" auto="jjjjj"/>
+<reward itemid="13137" name="雷霆骑士之力lv3" auto="jjjjj"/>
+<reward itemid="14079" name="雷霆骑士之力lv4" auto="jjjjj"/>
+<reward itemid="14080" name="雷霆领主之力" auto="jjjjj"/>
+<reward itemid="13138" name="风语者之力lv1" auto="jjjjj"/>
+<reward itemid="13139" name="风语者之力lv2" auto="jjjjj"/>
+<reward itemid="13140" name="风语者之力lv3" auto="jjjjj"/>
+<reward itemid="14081" name="风语者之力lv4" auto="jjjjj"/>
+<reward itemid="14082" name="风语者的狂怒" auto="jjjjj"/>
+<reward itemid="11035" name="布甲lv3" auto="jjjjj"/>
+<reward itemid="12085" name="晶体武装lv1" auto="jjjjj"/>
+<reward itemid="12086" name="晶体武装lv2" auto="jjjjj"/>
+<reward itemid="12087" name="晶体武装lv3" auto="jjjjj"/>
+<reward itemid="13141" name="天使武装" auto="jjjjj"/>
+<reward itemid="13142" name="天使武装lv2" auto="jjjjj"/>
+<reward itemid="14083" name="天使武装lv3" auto="jjjjj"/>
+<reward itemid="14084" name="天使武装lv4" auto="jjjjj"/>
+<reward itemid="13143" name="恶魔武装" auto="jjjjj"/>
+<reward itemid="13144" name="恶魔武装lv2" auto="jjjjj"/>
+<reward itemid="14085" name="恶魔武装lv3" auto="jjjjj"/>
+<reward itemid="14086" name="恶魔武装lv4" auto="jjjjj"/>
+<reward itemid="12088" name="布甲lv4" auto="jjjjj"/>
+<reward itemid="12089" name="布甲lv5" auto="jjjjj"/>
+<reward itemid="12090" name="布甲lv6" auto="jjjjj"/>
+<reward itemid="13145" name="布甲lv7" auto="jjjjj"/>
+<reward itemid="13146" name="布甲lv8" auto="jjjjj"/>
+<reward itemid="13147" name="布甲lv9" auto="jjjjj"/>
+<reward itemid="14087" name="布甲lv10" auto="jjjjj"/>
+<reward itemid="13148" name="德玛西亚君王甲" auto="jjjjj"/>
+<reward itemid="13149" name="德玛西亚君王甲lv2" auto="jjjjj"/>
+<reward itemid="14088" name="德玛西亚君王甲lv3" auto="jjjjj"/>
+<reward itemid="14089" name="德玛西亚至尊君王" auto="jjjjj"/>
+<reward itemid="13150" name="诺克萨斯魔王甲" auto="jjjjj"/>
+<reward itemid="13151" name="诺克萨斯魔王甲lv2" auto="jjjjj"/>
+<reward itemid="14090" name="诺克萨斯魔王甲lv3" auto="jjjjj"/>
+<reward itemid="14091" name="诺克萨斯魔王降临" auto="jjjjj"/>
+<reward itemid="11036" name="铁皮甲" auto="jjjjj"/>
+<reward itemid="11049" name="铁皮甲lv2" auto="jjjjj"/>
+<reward itemid="12091" name="铁皮甲lv3" auto="jjjjj"/>
+<reward itemid="12092" name="铁皮甲lv4" auto="jjjjj"/>
+<reward itemid="13152" name="铁皮甲lv5" auto="jjjjj"/>
+<reward itemid="13153" name="铁皮甲lv6" auto="jjjjj"/>
+<reward itemid="14092" name="钢纹甲" auto="jjjjj"/>
+<reward itemid="13154" name="先锋之刃" auto="jjjjj"/>
+<reward itemid="13155" name="先锋之刃lv2" auto="jjjjj"/>
+<reward itemid="13156" name="先锋之刃lv3" auto="jjjjj"/>
+<reward itemid="14093" name="先锋之刃lv4" auto="jjjjj"/>
+<reward itemid="14094" name="王者之锋" auto="jjjjj"/>
+<reward itemid="13157" name="长剑lv7" auto="jjjjj"/>
+<reward itemid="13158" name="长剑lv8" auto="jjjjj"/>
+<reward itemid="13159" name="长剑lv9" auto="jjjjj"/>
+<reward itemid="14095" name="长剑lv10" auto="jjjjj"/>
+<reward itemid="12093" name="却魔之剑" auto="jjjjj"/>
+<reward itemid="12094" name="却魔之剑lv2" auto="jjjjj"/>
+<reward itemid="12095" name="却魔之剑lv3" auto="jjjjj"/>
+<reward itemid="13160" name="却魔之剑lv4" auto="jjjjj"/>
+<reward itemid="13161" name="却魔之剑lv5" auto="jjjjj"/>
+<reward itemid="14096" name="却魔暴风刃" auto="jjjjj"/>
+<reward itemid="11037" name="蛇纹长剑" auto="jjjjj"/>
+<reward itemid="11038" name="蛇纹长剑lv2" auto="jjjjj"/>
+<reward itemid="12096" name="蛇纹长剑lv3" auto="jjjjj"/>
+<reward itemid="12097" name="蛇纹长剑lv4" auto="jjjjj"/>
+<reward itemid="13162" name="蛇纹长剑lv5" auto="jjjjj"/>
+<reward itemid="13163" name="蛇纹长剑lv6" auto="jjjjj"/>
+<reward itemid="14097" name="蛇王剑" auto="jjjjj"/>
+<reward itemid="11039" name="杀戮之刃" auto="jjjjj"/>
+<reward itemid="11040" name="杀戮之刃lv2" auto="jjjjj"/>
+<reward itemid="12098" name="杀戮之刃lv3" auto="jjjjj"/>
+<reward itemid="12099" name="杀戮之刃lv4" auto="jjjjj"/>
+<reward itemid="13164" name="杀戮之刃lv5" auto="jjjjj"/>
+<reward itemid="13165" name="杀戮之刃lv6" auto="jjjjj"/>
+<reward itemid="14098" name="杀戮之刃lv7" auto="jjjjj"/>
+<reward itemid="14099" name="杀戮王者之刃" auto="jjjjj"/>
+<reward itemid="11041" name="鞋子lv2" auto="jjjjj"/>
+<reward itemid="11042" name="鞋子lv3" auto="jjjjj"/>
+<reward itemid="12100" name="鞋子lv4" auto="jjjjj"/>
+<reward itemid="12101" name="鞋子lv5" auto="jjjjj"/>
+<reward itemid="12102" name="鞋子lv6" auto="jjjjj"/>
+<reward itemid="13166" name="鞋子lv7" auto="jjjjj"/>
+<reward itemid="13167" name="鞋子lv8" auto="jjjjj"/>
+<reward itemid="13168" name="鞋子lv9" auto="jjjjj"/>
+<reward itemid="14100" name="鞋子lv10" auto="jjjjj"/>
+<reward itemid="13169" name="恶魔卫士lv1" auto="jjjjj"/>
+<reward itemid="13170" name="恶魔卫士lv2" auto="jjjjj"/>
+<reward itemid="13171" name="恶魔卫士lv3" auto="jjjjj"/>
+<reward itemid="14101" name="恶魔卫士lv4" auto="jjjjj"/>
+<reward itemid="11043" name="红水晶lv2" auto="jjjjj"/>
+<reward itemid="11044" name="红水晶lv3" auto="jjjjj"/>
+<reward itemid="12103" name="红水晶lv4" auto="jjjjj"/>
+<reward itemid="12104" name="红水晶lv5" auto="jjjjj"/>
+<reward itemid="12105" name="红水晶lv6" auto="jjjjj"/>
+<reward itemid="13172" name="红水晶lv7" auto="jjjjj"/>
+<reward itemid="13173" name="红水晶lv8" auto="jjjjj"/>
+<reward itemid="13174" name="红水晶lv9" auto="jjjjj"/>
+<reward itemid="14102" name="红水晶lv10" auto="jjjjj"/>
+<reward itemid="13175" name="源水晶" auto="jjjjj"/>
+<reward itemid="13176" name="源水晶lv2" auto="jjjjj"/>
+<reward itemid="13177" name="源水晶lv3" auto="jjjjj"/>
+<reward itemid="14103" name="源水晶lv4" auto="jjjjj"/>
+<reward itemid="14104" name="源水晶lv5" auto="jjjjj"/>
+<reward itemid="14105" name="源水晶lv6" auto="jjjjj"/>
+<reward itemid="11045" name="短剑lv2" auto="jjjjj"/>
+<reward itemid="11046" name="短剑lv3" auto="jjjjj"/>
+<reward itemid="12106" name="短剑lv4" auto="jjjjj"/>
+<reward itemid="12107" name="短剑lv5" auto="jjjjj"/>
+<reward itemid="12108" name="短剑lv6" auto="jjjjj"/>
+<reward itemid="13178" name="短剑lv7" auto="jjjjj"/>
+<reward itemid="13179" name="短剑lv8" auto="jjjjj"/>
+<reward itemid="13180" name="短剑lv9" auto="jjjjj"/>
+<reward itemid="14106" name="短剑lv10" auto="jjjjj"/>
+<reward itemid="13181" name="裂刃lv1" auto="jjjjj"/>
+<reward itemid="13182" name="裂刃lv2" auto="jjjjj"/>
+<reward itemid="13183" name="裂刃lv3" auto="jjjjj"/>
+<reward itemid="14107" name="裂刃lv4" auto="jjjjj"/>
+<reward itemid="14108" name="深渊裂刃" auto="jjjjj"/>
+<reward itemid="13184" name="暗影匕首lv1" auto="jjjjj"/>
+<reward itemid="13185" name="暗影匕首lv2" auto="jjjjj"/>
+<reward itemid="13186" name="暗影匕首lv3" auto="jjjjj"/>
+<reward itemid="14109" name="暗影匕首lv4" auto="jjjjj"/>
+<reward itemid="14110" name="暗影之王" auto="jjjjj"/>
+<reward itemid="11047" name="魔沼刃" auto="jjjjj"/>
+<reward itemid="11048" name="魔沼刃lv2" auto="jjjjj"/>
+<reward itemid="12109" name="魔沼刃v3" auto="jjjjj"/>
+<reward itemid="12110" name="魔沼刃lv4" auto="jjjjj"/>
+<reward itemid="13187" name="魔沼刃lv5" auto="jjjjj"/>
+<reward itemid="13188" name="魔沼刃lv6" auto="jjjjj"/>
+<reward itemid="14111" name="魔沼利刃" auto="jjjjj"/>
+<reward itemid="13189" name="打野刀lv7" auto="jjjjj"/>
+<reward itemid="13190" name="打野刀lv8" auto="jjjjj"/>
+<reward itemid="13191" name="打野刀lv9" auto="jjjjj"/>
+<reward itemid="14112" name="打野刀lv10" auto="jjjjj"/>
+<reward itemid="13192" name="列王守护lv1" auto="jjjjj"/>
+<reward itemid="13193" name="列王守护lv2" auto="jjjjj"/>
+<reward itemid="13194" name="列王守护lv3" auto="jjjjj"/>
+<reward itemid="14113" name="列王守护lv4" auto="jjjjj"/>
+<reward itemid="14114" name="远古列王守护" auto="jjjjj"/>
+<reward itemid="12111" name="法之书" auto="jjjjj"/>
+<reward itemid="12112" name="法之书lv2" auto="jjjjj"/>
+<reward itemid="12113" name="法之书lv3" auto="jjjjj"/>
+<reward itemid="13195" name="王法之书" auto="jjjjj"/>
+<reward itemid="13196" name="王法之书lv2" auto="jjjjj"/>
+<reward itemid="14119" name="法王之书" auto="jjjjj"/>
+<reward itemid="12114" name="先锋水晶" auto="jjjjj"/>
+<reward itemid="12115" name="先锋水晶lv2" auto="jjjjj"/>
+<reward itemid="12116" name="先锋水晶lv3" auto="jjjjj"/>
+<reward itemid="13197" name="蝎子琥珀" auto="jjjjj"/>
+<reward itemid="13198" name="蝎子琥珀lv2" auto="jjjjj"/>
+<reward itemid="13199" name="蝎子琥珀lv3" auto="jjjjj"/>
+<reward itemid="14116" name="铁蝎子琥珀" auto="jjjjj"/>
+<reward itemid="14117" name="铁蝎子琥珀lv2" auto="jjjjj"/>
+<reward itemid="13200" name="破鞋" auto="jjjjj"/>
+<reward itemid="13201" name="破鞋lv2" auto="jjjjj"/>
+<reward itemid="13202" name="破鞋lv3" auto="jjjjj"/>
+<reward itemid="14118" name="赤脚" auto="jjjjj"/>
+<reward itemid="13203" name="篮球鞋_打篮球" auto="jjjjj"/>
+<reward itemid="13204" name="牛头板甲_NTR" auto="jjjjj"/>
+<reward itemid="13205" name="极速投射火枪_20投" auto="jjjjj"/>
+<reward itemid="12117" name="狗杖_DOG" auto="jjjjj"/>
+<reward itemid="13206" name="屠夫刀_世界" auto="jjjjj"/>
+<reward itemid="14120" name="喧嚣水晶_喧嚣" auto="jjjjj"/>
+<reward itemid="14121" name="德鲁弗林加_战五渣" auto="jjjjj"/>
+<reward itemid="14122" name="真理之剑_真相" auto="jjjjj"/>
+<reward itemid="12118" name="真视宝石_看穿" auto="jjjjj"/>
+<reward itemid="13207" name="时光沙漏_时光机" auto="jjjjj"/>
+<reward itemid="12119" name="新手光环石_ABC" auto="jjjjj"/>
+<reward itemid="14123" name="良辰剑_叶良辰" auto="jjjjj"/>
+<reward itemid="14124" name="日天剑_赵日天" auto="jjjjj"/>
+<reward itemid="13208" name="傲天剑_龙傲天" auto="jjjjj"/>
+<reward itemid="12120" name="毙福剑_BFJ" auto="jjjjj"/>
+<reward itemid="14125" name="无形装逼刃_装逼者" auto="jjjjj"/>
+<reward itemid="12121" name="烈焰法典_FFF" auto="jjjjj"/>
+<reward itemid="14126" name="虫群之甲_F91" auto="jjjjj"/>
+<reward itemid="14127" name="水晶_毒奶" auto="jjjjj"/>
+<reward itemid="14128" name="王者蟹甲_王者蟹" auto="jjjjj"/>
+<reward itemid="14129" name="洗澡水晶_洗澡" auto="jjjjj"/>
+<reward itemid="14130" name="踩眼鞋_摸眼下楼" auto="jjjjj"/>
+<reward itemid="14131" name="杀猪刀_养猪场" auto="jjjjj"/>
+<reward itemid="12122" name="DJ曲谱_打碟" auto="jjjjj"/>
+<reward itemid="13209" name="三重面具_三丑" auto="jjjjj"/>
+<reward itemid="13210" name="无用大剑_然并卵" auto="jjjjj"/>
+<reward itemid="12123" name="经验书_经拿滚" auto="jjjjj"/>
+<reward itemid="14132" name="去年的假腿_腿玩年" auto="jjjjj"/>
+<reward itemid="12124" name="火书残卷_火钳留" auto="jjjjj"/>
+<reward itemid="14133" name="WTF布甲_WTF" auto="jjjjj"/>
+<reward itemid="14134" name="父亲之靴_喜当爹" auto="jjjjj"/>
+<reward itemid="14135" name="悲伤圣剑_三丑？" auto="jjjjj"/>
+<reward itemid="13211" name="自杀刀_三丑？？" auto="jjjjj"/>
+<reward itemid="14136" name="黄金甲_壕做友" auto="jjjjj"/>
+<reward itemid="14137" name="独行鞋_注孤生" auto="jjjjj"/>
+<reward itemid="12125" name="饭盒_领便当" auto="jjjjj"/>
+<reward itemid="14138" name="城里的石头_三？丑" auto="jjjjj"/>
+<reward itemid="12126" name="木工斧_？？三丑" auto="jjjjj"/>
+<reward itemid="12127" name="壁咚锤_壁咚" auto="jjjjj"/>
+<reward itemid="12128" name="B狗短剑_bi了狗" auto="jjjjj"/>
+<reward itemid="13212" name="回音壁砖_说三遍" auto="jjjjj"/>
+<reward itemid="14140" name="黑锅_怪我喽" auto="jjjjj"/>
+<reward itemid="12129" name="死亡之刃_狗带" auto="jjjjj"/>
+<reward itemid="14139" name="公主水晶鞋小公举" auto="jjjjj"/>
+<reward itemid="13213" name="鬼魂阔刃_什么龟" auto="jjjjj"/>
+<reward itemid="13214" name="秘典_猴赛雷" auto="jjjjj"/>
+<reward itemid="13215" name="翻天鞋_起来嗨起来嗨" auto="jjjjj"/>
+<reward itemid="13216" name="古化石_上交郭嘉" auto="jjjjj"/>
+<reward itemid="12130" name="吐槽鞋子" auto="jjjjj"/>
+<reward itemid="12131" name="吐槽布甲" auto="jjjjj"/>
+<reward itemid="12132" name="吐槽短剑" auto="jjjjj"/>
+<reward itemid="12133" name="吐槽魔典" auto="jjjjj"/>
+<reward itemid="12134" name="吐槽长剑" auto="jjjjj"/>
+<reward itemid="12135" name="吐槽水晶" auto="jjjjj"/>
+<reward itemid="12136" name="吐槽打野刀" auto="jjjjj"/>
+<reward itemid="27001" name="pts" auto="jjjjj"/>
+<reward itemid="27002" name="hpts" auto="jjjjj"/>
+<reward itemid="27003" name="tpts" auto="jjjjj"/>
+<reward itemid="27004" name="暴风大剑碎片" auto="jjjjj"/>
+<reward itemid="27005" name="无用大棒碎片" auto="jjjjj"/>
+<reward itemid="27008" name="火影斗篷碎片" auto="jjjjj"/>
+<reward itemid="27009" name="大法师斗篷碎片" auto="jjjjj"/>
+<reward itemid="27010" name="霸王血铠碎片" auto="jjjjj"/>
+<reward itemid="27011" name="酒吧凶器碎片" auto="jjjjj"/>
+<reward itemid="27012" name="蜂刺碎片" auto="jjjjj"/>
+<reward itemid="28001" name="魔王板甲碎片" auto="jjjjj"/>
+<reward itemid="28002" name="飓风大剑碎片" auto="jjjjj"/>
+<reward itemid="28003" name="无用巨棒碎片" auto="jjjjj"/>
+<reward itemid="28004" name="黄金龟壳碎片" auto="jjjjj"/>
+<reward itemid="28005" name="利维坦之甲碎片" auto="jjjjj"/>
+<reward itemid="28006" name="预言之刃碎片" auto="jjjjj"/>
+<reward itemid="28007" name="冥火碎片" auto="jjjjj"/>
+<reward itemid="28008" name="凯奇的幸运手碎片" auto="jjjjj"/>
+<reward itemid="28009" name="狂想曲碎片" auto="jjjjj"/>
+<reward itemid="28010" name="兴奋坠饰碎片" auto="jjjjj"/>
+<reward itemid="29001" name="辛多雷血袍碎片" auto="jjjjj"/>
+<reward itemid="29002" name="碎梦斧碎片" auto="jjjjj"/>
+<reward itemid="29003" name="烈日能量碎片" auto="jjjjj"/>
+<reward itemid="29004" name="战争使者碎片" auto="jjjjj"/>
+<reward itemid="29005" name="静谧波浪碎片" auto="jjjjj"/>
+<reward itemid="29006" name="彗星碎片" auto="jjjjj"/>
+<reward itemid="29007" name="虚空碎片" auto="jjjjj"/>
+<reward itemid="29008" name="泰坦之握碎片" auto="jjjjj"/>
+<reward itemid="29009" name="迅捷碎片" auto="jjjjj"/>
+<reward itemid="29010" name="嗜血碎片" auto="jjjjj"/>
+<reward itemid="29012" name="喧哗卷轴碎片" auto="jjjjj"/>
+<reward itemid="29013" name="欢欣卷轴碎片" auto="jjjjj"/>
+<reward itemid="29014" name="统帅卷轴碎片" auto="jjjjj"/>
+<reward itemid="29015" name="失真卷轴碎片" auto="jjjjj"/>
+<reward itemid="29016" name="风暴骑士之证" auto="jjjjj"/>
+<reward itemid="29017" name="雷霆骑士之证" auto="jjjjj"/>
+<reward itemid="29018" name="风语者之证" auto="jjjjj"/>
+<reward itemid="29019" name="武装晶石" auto="jjjjj"/>
+<reward itemid="29020" name="天使之翼" auto="jjjjj"/>
+<reward itemid="29021" name="恶魔之心" auto="jjjjj"/>
+<reward itemid="29022" name="蟹爪" auto="jjjjj"/>
+<reward itemid="29023" name="铁蟹爪" auto="jjjjj"/>
+<reward itemid="29024" name="铁龟皮" auto="jjjjj"/>
+<reward itemid="29025" name="诺克萨斯魔王令" auto="jjjjj"/>
+<reward itemid="29026" name="王者之证" auto="jjjjj"/>
+<reward itemid="29027" name="却魔符" auto="jjjjj"/>
+<reward itemid="29028" name="毒液" auto="jjjjj"/>
+<reward itemid="29029" name="剧毒液" auto="jjjjj"/>
+<reward itemid="29030" name="剧毒晶体" auto="jjjjj"/>
+<reward itemid="29031" name="怨灵" auto="jjjjj"/>
+<reward itemid="29032" name="大怨灵" auto="jjjjj"/>
+<reward itemid="29033" name="杀戮石" auto="jjjjj"/>
+<reward itemid="29034" name="精炼石" auto="jjjjj"/>
+<reward itemid="29035" name="破碎的刀锋" auto="jjjjj"/>
+<reward itemid="29036" name="幽灵晶" auto="jjjjj"/>
+<reward itemid="29037" name="魔沼蛙皮" auto="jjjjj"/>
+<reward itemid="29038" name="魔沼巨蛙皮" auto="jjjjj"/>
+<reward itemid="29039" name="完整的蛙皮" auto="jjjjj"/>
+<reward itemid="29040" name="列王之证" auto="jjjjj"/>
+<reward itemid="29041" name="王者印记" auto="jjjjj"/>
+<reward itemid="20042" name="A" auto="jjjjj"/>
+<reward itemid="20043" name="B" auto="jjjjj"/>
+<reward itemid="20044" name="C" auto="jjjjj"/>
+<reward itemid="20045" name="D" auto="jjjjj"/>
+<reward itemid="20046" name="E" auto="jjjjj"/>
+<reward itemid="20047" name="F" auto="jjjjj"/>
+<reward itemid="20048" name="G" auto="jjjjj"/>
+<reward itemid="20049" name="H" auto="jjjjj"/>
+<reward itemid="20050" name="I" auto="jjjjj"/>
+<reward itemid="20051" name="J" auto="jjjjj"/>
+<reward itemid="20052" name="K" auto="jjjjj"/>
+<reward itemid="20053" name="L" auto="jjjjj"/>
+<reward itemid="20054" name="M" auto="jjjjj"/>
+<reward itemid="20055" name="N" auto="jjjjj"/>
+<reward itemid="20056" name="O" auto="jjjjj"/>
+<reward itemid="20057" name="P" auto="jjjjj"/>
+<reward itemid="20058" name="Q" auto="jjjjj"/>
+<reward itemid="20059" name="R" auto="jjjjj"/>
+<reward itemid="20060" name="S" auto="jjjjj"/>
+<reward itemid="20061" name="T" auto="jjjjj"/>
+<reward itemid="20062" name="U" auto="jjjjj"/>
+<reward itemid="20063" name="V" auto="jjjjj"/>
+<reward itemid="20064" name="W" auto="jjjjj"/>
+<reward itemid="20065" name="X" auto="jjjjj"/>
+<reward itemid="20066" name="Y" auto="jjjjj"/>
+<reward itemid="20067" name="Z" auto="jjjjj"/>
+<reward itemid="29068" name="吐槽补丁" auto="jjjjj"/>
+<reward itemid="30001" name="金币包1" auto="jbb1" />
+<reward itemid="30002" name="金币包2" auto="jbb2" />
+<reward itemid="30003" name="金币包3" auto="jbb3" />
+<reward itemid="30004" name="金币包4" auto="jbb4" />
+<reward itemid="30005" name="金币包5" auto="jbb5" />
+<reward itemid="30006" name="金币包6" auto="jbb6" />
+<reward itemid="30007" name="金币包7" auto="jbb7" />
+<reward itemid="30008" name="金币包8" auto="jbb8" />
+<reward itemid="30009" name="金币包9" auto="jbb9" />
+<reward itemid="30010" name="金币包10" auto="jbb10" />
+<reward itemid="30011" name="金币包11" auto="jbb11" />
+<reward itemid="30012" name="金币包12" auto="jbb12" />
+<reward itemid="30013" name="金币包13" auto="jbb13" />
+<reward itemid="30014" name="金币包14" auto="jbb14" />
+<reward itemid="30015" name="金币包15" auto="jbb15" />
+<reward itemid="30016" name="金币包16" auto="jbb16" />
+<reward itemid="30017" name="金币包17" auto="jbb17" />
+<reward itemid="30018" name="金币包18" auto="jbb18" />
+<reward itemid="30019" name="金币包19" auto="jbb19" />
+<reward itemid="30020" name="金币包20" auto="jbb20" />
+<reward itemid="30021" name="金币包21" auto="jbb21" />
+<reward itemid="30022" name="金币包22" auto="jbb22" />
+<reward itemid="30023" name="金币包23" auto="jbb23" />
+<reward itemid="30024" name="金币包24" auto="jbb24" />
+<reward itemid="30025" name="金币包25" auto="jbb25" />
+<reward itemid="30026" name="金币包26" auto="jbb26" />
+<reward itemid="30027" name="金币包27" auto="jbb27" />
+<reward itemid="30028" name="金币包28" auto="jbb28" />
+<reward itemid="30029" name="金币包29" auto="jbb29" />
+<reward itemid="30030" name="金币包30" auto="jbb30" />
+<reward itemid="30031" name="金币包31" auto="jbb31" />
+<reward itemid="31001" name="经验包1" auto="jyb1" />
+<reward itemid="31002" name="经验包2" auto="jyb2" />
+<reward itemid="31003" name="经验包3" auto="jyb3" />
+<reward itemid="31004" name="经验包4" auto="jyb4" />
+<reward itemid="31005" name="经验包5" auto="jyb5" />
+<reward itemid="31006" name="经验包6" auto="jyb6" />
+<reward itemid="31007" name="经验包7" auto="jyb7" />
+<reward itemid="31008" name="经验包8" auto="jyb8" />
+<reward itemid="31009" name="经验包9" auto="jyb9" />
+<reward itemid="31010" name="经验包10" auto="jyb10" />
+<reward itemid="31011" name="经验包11" auto="jyb11" />
+<reward itemid="31012" name="经验包12" auto="jyb12" />
+<reward itemid="31013" name="经验包13" auto="jyb13" />
+<reward itemid="31014" name="经验包14" auto="jyb14" />
+<reward itemid="31015" name="经验包15" auto="jyb15" />
+<reward itemid="31016" name="经验包16" auto="jyb16" />
+<reward itemid="31017" name="经验包17" auto="jyb17" />
+<reward itemid="31018" name="经验包18" auto="jyb18" />
+<reward itemid="31019" name="经验包19" auto="jyb19" />
+<reward itemid="31020" name="经验包20" auto="jyb20" />
+<reward itemid="31021" name="经验包21" auto="jyb21" />
+<reward itemid="31022" name="经验包22" auto="jyb22" />
+<reward itemid="31023" name="经验包23" auto="jyb23" />
+<reward itemid="31024" name="经验包24" auto="jyb24" />
+<reward itemid="31025" name="经验包25" auto="jyb25" />
+<reward itemid="31026" name="经验包26" auto="jyb26" />
+<reward itemid="31027" name="经验包27" auto="jyb27" />
+<reward itemid="31028" name="经验包28" auto="jyb28" />
+<reward itemid="31029" name="经验包29" auto="jyb29" />
+<reward itemid="31030" name="经验包30" auto="jyb30" />
+<reward itemid="31031" name="经验包31" auto="jyb31" />
+<reward itemid="32001" name="德玛西亚英雄包1" auto="dmxyyxb1" />
+<reward itemid="32002" name="德玛西亚英雄包2" auto="dmxyyxb2" />
+<reward itemid="32003" name="艾欧尼亚英雄包1" auto="aonyyxb1" />
+<reward itemid="32004" name="艾欧尼亚英雄包2" auto="aonyyxb2" />
+<reward itemid="32005" name="祖安英雄包" auto="zayxb" />
+<reward itemid="32006" name="约德尔英雄包" auto="ydeyxb" />
+<reward itemid="32007" name="暗影岛英雄包" auto="aydyxb" />
+<reward itemid="32008" name="提亚马特英雄包1" auto="tymtyxb1" />
+<reward itemid="32009" name="提亚马特英雄包2" auto="tymtyxb2" />
+<reward itemid="32010" name="西南地区英雄包" auto="xndqyxb" />
+<reward itemid="40001" name="小型经验药水" auto="xxjyys" />
+<reward itemid="40002" name="中型经验药水" auto="zxjyys" />
+<reward itemid="40003" name="大型经验药水" auto="dxjyys" />
+<reward itemid="40004" name="超级经验药水" auto="cjjyys" />
+<reward itemid="40005" name="小包金币" auto="xbjb" />
+<reward itemid="40006" name="大包金币" auto="dbjb" />
+<reward itemid="40007" name="小箱金币" auto="xxjb" />
+<reward itemid="40008" name="大箱金币" auto="dxjb" />
+<reward itemid="40009" name="小包魔晶" auto="xbmj" />
+<reward itemid="40010" name="大包魔晶" auto="dbmj" />
+<reward itemid="40011" name="小包远征币" auto="xbyzb" />
+<reward itemid="40012" name="大包远征币" auto="dbyzb" />
+<reward itemid="40013" name="小包天梯币" auto="jjjjj" />
+<reward itemid="40014" name="大包天梯币" auto="jjjjj" />
+<reward itemid="40015" name="小包公会币" auto="jjjjj" />
+<reward itemid="40016" name="大包公会币" auto="jjjjj" />
+<reward itemid="40018" name="神器雕纹" auto="jjjjj" />
+<reward itemid="40019" name="神器符印" auto="jjjjj" />
+<reward itemid="40020" name="神器印记" auto="jjjjj" />
+<reward itemid="40021" name="神器精华" auto="jjjjj" />
+<reward itemid="51001" name="1星厄运小姐" auto="jjjjj" />
+<reward itemid="52001" name="2星厄运小姐" auto="jjjjj" />
+<reward itemid="53001" name="3星厄运小姐" auto="jjjjj" />
+<reward itemid="54001" name="4星厄运小姐" auto="jjjjj" />
+<reward itemid="55001" name="5星厄运小姐" auto="jjjjj" />
+<reward itemid="56001" name="6星厄运小姐" auto="jjjjj" />
+<reward itemid="57001" name="7星厄运小姐" auto="jjjjj" />
+<reward itemid="51005" name="1星赵信" auto="jjjjj" />
+<reward itemid="52005" name="2星赵信" auto="jjjjj" />
+<reward itemid="53005" name="3星赵信" auto="jjjjj" />
+<reward itemid="54005" name="4星赵信" auto="jjjjj" />
+<reward itemid="55005" name="5星赵信" auto="jjjjj" />
+<reward itemid="56005" name="6星赵信" auto="jjjjj" />
+<reward itemid="57005" name="7星赵信" auto="jjjjj" />
+<reward itemid="51008" name="1星潘森" auto="jjjjj" />
+<reward itemid="52008" name="2星潘森" auto="jjjjj" />
+<reward itemid="53008" name="3星潘森" auto="jjjjj" />
+<reward itemid="54008" name="4星潘森" auto="jjjjj" />
+<reward itemid="55008" name="5星潘森" auto="jjjjj" />
+<reward itemid="56008" name="6星潘森" auto="jjjjj" />
+<reward itemid="57008" name="7星潘森" auto="jjjjj" />
+<reward itemid="51009" name="1星奥拉夫" auto="jjjjj" />
+<reward itemid="52009" name="2星奥拉夫" auto="jjjjj" />
+<reward itemid="53009" name="3星奥拉夫" auto="jjjjj" />
+<reward itemid="54009" name="4星奥拉夫" auto="jjjjj" />
+<reward itemid="55009" name="5星奥拉夫" auto="jjjjj" />
+<reward itemid="56009" name="6星奥拉夫" auto="jjjjj" />
+<reward itemid="57009" name="7星奥拉夫" auto="jjjjj" />
+<reward itemid="51011" name="1星伊泽瑞尔" auto="jjjjj" />
+<reward itemid="52011" name="2星伊泽瑞尔" auto="jjjjj" />
+<reward itemid="53011" name="3星伊泽瑞尔" auto="jjjjj" />
+<reward itemid="54011" name="4星伊泽瑞尔" auto="jjjjj" />
+<reward itemid="55011" name="5星伊泽瑞尔" auto="jjjjj" />
+<reward itemid="56011" name="6星伊泽瑞尔" auto="jjjjj" />
+<reward itemid="57011" name="7星伊泽瑞尔" auto="jjjjj" />
+<reward itemid="51013" name="1星莫德凯撒" auto="jjjjj" />
+<reward itemid="52013" name="2星莫德凯撒" auto="jjjjj" />
+<reward itemid="53013" name="3星莫德凯撒" auto="jjjjj" />
+<reward itemid="54013" name="4星莫德凯撒" auto="jjjjj" />
+<reward itemid="55013" name="5星莫德凯撒" auto="jjjjj" />
+<reward itemid="56013" name="6星莫德凯撒" auto="jjjjj" />
+<reward itemid="57013" name="7星莫德凯撒" auto="jjjjj" />
+<reward itemid="51017" name="1星盖伦" auto="jjjjj" />
+<reward itemid="52017" name="2星盖伦" auto="jjjjj" />
+<reward itemid="53017" name="3星盖伦" auto="jjjjj" />
+<reward itemid="54017" name="4星盖伦" auto="jjjjj" />
+<reward itemid="55017" name="5星盖伦" auto="jjjjj" />
+<reward itemid="56017" name="6星盖伦" auto="jjjjj" />
+<reward itemid="57017" name="7星盖伦" auto="jjjjj" />
+<reward itemid="51027" name="1星塔里克" auto="jjjjj" />
+<reward itemid="52027" name="2星塔里克" auto="jjjjj" />
+<reward itemid="53027" name="3星塔里克" auto="jjjjj" />
+<reward itemid="54027" name="4星塔里克" auto="jjjjj" />
+<reward itemid="55027" name="5星塔里克" auto="jjjjj" />
+<reward itemid="56027" name="6星塔里克" auto="jjjjj" />
+<reward itemid="57027" name="7星塔里克" auto="jjjjj" />
+<reward itemid="51032" name="1星沃里克" auto="jjjjj" />
+<reward itemid="52032" name="2星沃里克" auto="jjjjj" />
+<reward itemid="53032" name="3星沃里克" auto="jjjjj" />
+<reward itemid="54032" name="4星沃里克" auto="jjjjj" />
+<reward itemid="55032" name="5星沃里克" auto="jjjjj" />
+<reward itemid="56032" name="6星沃里克" auto="jjjjj" />
+<reward itemid="57032" name="7星沃里克" auto="jjjjj" />
+<reward itemid="51035" name="1星布里茨" auto="jjjjj" />
+<reward itemid="52035" name="2星布里茨" auto="jjjjj" />
+<reward itemid="53035" name="3星布里茨" auto="jjjjj" />
+<reward itemid="54035" name="4星布里茨" auto="jjjjj" />
+<reward itemid="55035" name="5星布里茨" auto="jjjjj" />
+<reward itemid="56035" name="6星布里茨" auto="jjjjj" />
+<reward itemid="57035" name="7星布里茨" auto="jjjjj" />
+<reward itemid="51036" name="1星阿利斯塔" auto="jjjjj" />
+<reward itemid="52036" name="2星阿利斯塔" auto="jjjjj" />
+<reward itemid="53036" name="3星阿利斯塔" auto="jjjjj" />
+<reward itemid="54036" name="4星阿利斯塔" auto="jjjjj" />
+<reward itemid="55036" name="5星阿利斯塔" auto="jjjjj" />
+<reward itemid="56036" name="6星阿利斯塔" auto="jjjjj" />
+<reward itemid="57036" name="7星阿利斯塔" auto="jjjjj" />
+<reward itemid="51038" name="1星易" auto="jjjjj" />
+<reward itemid="52038" name="2星易" auto="jjjjj" />
+<reward itemid="53038" name="3星易" auto="jjjjj" />
+<reward itemid="54038" name="4星易" auto="jjjjj" />
+<reward itemid="55038" name="5星易" auto="jjjjj" />
+<reward itemid="56038" name="6星易" auto="jjjjj" />
+<reward itemid="57038" name="7星易" auto="jjjjj" />
+<reward itemid="51039" name="1星贾克斯" auto="jjjjj" />
+<reward itemid="52039" name="2星贾克斯" auto="jjjjj" />
+<reward itemid="53039" name="3星贾克斯" auto="jjjjj" />
+<reward itemid="54039" name="4星贾克斯" auto="jjjjj" />
+<reward itemid="55039" name="5星贾克斯" auto="jjjjj" />
+<reward itemid="56039" name="6星贾克斯" auto="jjjjj" />
+<reward itemid="57039" name="7星贾克斯" auto="jjjjj" />
+<reward itemid="51040" name="1星崔斯塔娜" auto="jjjjj" />
+<reward itemid="52040" name="2星崔斯塔娜" auto="jjjjj" />
+<reward itemid="53040" name="3星崔斯塔娜" auto="jjjjj" />
+<reward itemid="54040" name="4星崔斯塔娜" auto="jjjjj" />
+<reward itemid="55040" name="5星崔斯塔娜" auto="jjjjj" />
+<reward itemid="56040" name="6星崔斯塔娜" auto="jjjjj" />
+<reward itemid="57040" name="7星崔斯塔娜" auto="jjjjj" />
+<reward itemid="51041" name="1星安妮" auto="jjjjj" />
+<reward itemid="52041" name="2星安妮" auto="jjjjj" />
+<reward itemid="53041" name="3星安妮" auto="jjjjj" />
+<reward itemid="54041" name="4星安妮" auto="jjjjj" />
+<reward itemid="55041" name="5星安妮" auto="jjjjj" />
+<reward itemid="56041" name="6星安妮" auto="jjjjj" />
+<reward itemid="57041" name="7星安妮" auto="jjjjj" />
+<reward itemid="51042" name="1星艾希" auto="jjjjj" />
+<reward itemid="52042" name="2星艾希" auto="jjjjj" />
+<reward itemid="53042" name="3星艾希" auto="jjjjj" />
+<reward itemid="54042" name="4星艾希" auto="jjjjj" />
+<reward itemid="55042" name="5星艾希" auto="jjjjj" />
+<reward itemid="56042" name="6星艾希" auto="jjjjj" />
+<reward itemid="57042" name="7星艾希" auto="jjjjj" />
+<reward itemid="51043" name="1星提莫" auto="jjjjj" />
+<reward itemid="52043" name="2星提莫" auto="jjjjj" />
+<reward itemid="53043" name="3星提莫" auto="jjjjj" />
+<reward itemid="54043" name="4星提莫" auto="jjjjj" />
+<reward itemid="55043" name="5星提莫" auto="jjjjj" />
+<reward itemid="56043" name="6星提莫" auto="jjjjj" />
+<reward itemid="57043" name="7星提莫" auto="jjjjj" />
+<reward itemid="51048" name="1星墨菲特" auto="jjjjj" />
+<reward itemid="52048" name="2星墨菲特" auto="jjjjj" />
+<reward itemid="53048" name="3星墨菲特" auto="jjjjj" />
+<reward itemid="54048" name="4星墨菲特" auto="jjjjj" />
+<reward itemid="55048" name="5星墨菲特" auto="jjjjj" />
+<reward itemid="56048" name="6星墨菲特" auto="jjjjj" />
+<reward itemid="57048" name="7星墨菲特" auto="jjjjj" />
+<reward itemid="51050" name="1星蒙多医生" auto="jjjjj" />
+<reward itemid="52050" name="2星蒙多医生" auto="jjjjj" />
+<reward itemid="53050" name="3星蒙多医生" auto="jjjjj" />
+<reward itemid="54050" name="4星蒙多医生" auto="jjjjj" />
+<reward itemid="55050" name="5星蒙多医生" auto="jjjjj" />
+<reward itemid="56050" name="6星蒙多医生" auto="jjjjj" />
+<reward itemid="57050" name="7星蒙多医生" auto="jjjjj" />
+<reward itemid="51051" name="1星泰达米尔" auto="jjjjj" />
+<reward itemid="52051" name="2星泰达米尔" auto="jjjjj" />
+<reward itemid="53051" name="3星泰达米尔" auto="jjjjj" />
+<reward itemid="54051" name="4星泰达米尔" auto="jjjjj" />
+<reward itemid="55051" name="5星泰达米尔" auto="jjjjj" />
+<reward itemid="56051" name="6星泰达米尔" auto="jjjjj" />
+<reward itemid="57051" name="7星泰达米尔" auto="jjjjj" />
+<reward itemid="51052" name="1星辛吉德" auto="jjjjj" />
+<reward itemid="52052" name="2星辛吉德" auto="jjjjj" />
+<reward itemid="53052" name="3星辛吉德" auto="jjjjj" />
+<reward itemid="54052" name="4星辛吉德" auto="jjjjj" />
+<reward itemid="55052" name="5星辛吉德" auto="jjjjj" />
+<reward itemid="56052" name="6星辛吉德" auto="jjjjj" />
+<reward itemid="57052" name="7星辛吉德" auto="jjjjj" />
+<reward itemid="51055" name="1星努努" auto="jjjjj" />
+<reward itemid="52055" name="2星努努" auto="jjjjj" />
+<reward itemid="53055" name="3星努努" auto="jjjjj" />
+<reward itemid="54055" name="4星努努" auto="jjjjj" />
+<reward itemid="55055" name="5星努努" auto="jjjjj" />
+<reward itemid="56055" name="6星努努" auto="jjjjj" />
+<reward itemid="57055" name="7星努努" auto="jjjjj" />
+<reward itemid="51058" name="1星薇恩" auto="jjjjj" />
+<reward itemid="52058" name="2星薇恩" auto="jjjjj" />
+<reward itemid="53058" name="3星薇恩" auto="jjjjj" />
+<reward itemid="54058" name="4星薇恩" auto="jjjjj" />
+<reward itemid="55058" name="5星薇恩" auto="jjjjj" />
+<reward itemid="56058" name="6星薇恩" auto="jjjjj" />
+<reward itemid="57058" name="7星薇恩" auto="jjjjj" />
+<reward itemid="51059" name="1星兰博" auto="jjjjj" />
+<reward itemid="52059" name="2星兰博" auto="jjjjj" />
+<reward itemid="53059" name="3星兰博" auto="jjjjj" />
+<reward itemid="54059" name="4星兰博" auto="jjjjj" />
+<reward itemid="55059" name="5星兰博" auto="jjjjj" />
+<reward itemid="56059" name="6星兰博" auto="jjjjj" />
+<reward itemid="57059" name="7星兰博" auto="jjjjj" />
+<reward itemid="51061" name="1星李青" auto="jjjjj" />
+<reward itemid="52061" name="2星李青" auto="jjjjj" />
+<reward itemid="53061" name="3星李青" auto="jjjjj" />
+<reward itemid="54061" name="4星李青" auto="jjjjj" />
+<reward itemid="55061" name="5星李青" auto="jjjjj" />
+<reward itemid="56061" name="6星李青" auto="jjjjj" />
+<reward itemid="57061" name="7星李青" auto="jjjjj" />
+<reward itemid="51063" name="1星嘉文四世" auto="jjjjj" />
+<reward itemid="52063" name="2星嘉文四世" auto="jjjjj" />
+<reward itemid="53063" name="3星嘉文四世" auto="jjjjj" />
+<reward itemid="54063" name="4星嘉文四世" auto="jjjjj" />
+<reward itemid="55063" name="5星嘉文四世" auto="jjjjj" />
+<reward itemid="56063" name="6星嘉文四世" auto="jjjjj" />
+<reward itemid="57063" name="7星嘉文四世" auto="jjjjj" />
+<reward itemid="51070" name="1星艾瑞莉娅" auto="jjjjj" />
+<reward itemid="52070" name="2星艾瑞莉娅" auto="jjjjj" />
+<reward itemid="53070" name="3星艾瑞莉娅" auto="jjjjj" />
+<reward itemid="54070" name="4星艾瑞莉娅" auto="jjjjj" />
+<reward itemid="55070" name="5星艾瑞莉娅" auto="jjjjj" />
+<reward itemid="56070" name="6星艾瑞莉娅" auto="jjjjj" />
+<reward itemid="57070" name="7星艾瑞莉娅" auto="jjjjj" />
+<reward itemid="51072" name="1星拉克丝" auto="jjjjj" />
+<reward itemid="52072" name="2星拉克丝" auto="jjjjj" />
+<reward itemid="53072" name="3星拉克丝" auto="jjjjj" />
+<reward itemid="54072" name="4星拉克丝" auto="jjjjj" />
+<reward itemid="55072" name="5星拉克丝" auto="jjjjj" />
+<reward itemid="56072" name="6星拉克丝" auto="jjjjj" />
+<reward itemid="57072" name="7星拉克丝" auto="jjjjj" />
+<reward itemid="51074" name="1星娑娜" auto="jjjjj" />
+<reward itemid="52074" name="2星娑娜" auto="jjjjj" />
+<reward itemid="53074" name="3星娑娜" auto="jjjjj" />
+<reward itemid="54074" name="4星娑娜" auto="jjjjj" />
+<reward itemid="55074" name="5星娑娜" auto="jjjjj" />
+<reward itemid="56074" name="6星娑娜" auto="jjjjj" />
+<reward itemid="57074" name="7星娑娜" auto="jjjjj" />
+<reward itemid="51075" name="1星卡特琳娜" auto="jjjjj" />
+<reward itemid="52075" name="2星卡特琳娜" auto="jjjjj" />
+<reward itemid="53075" name="3星卡特琳娜" auto="jjjjj" />
+<reward itemid="54075" name="4星卡特琳娜" auto="jjjjj" />
+<reward itemid="55075" name="5星卡特琳娜" auto="jjjjj" />
+<reward itemid="56075" name="6星卡特琳娜" auto="jjjjj" />
+<reward itemid="57075" name="7星卡特琳娜" auto="jjjjj" />
+<reward itemid="51076" name="1星瑞兹" auto="jjjjj" />
+<reward itemid="52076" name="2星瑞兹" auto="jjjjj" />
+<reward itemid="53076" name="3星瑞兹" auto="jjjjj" />
+<reward itemid="54076" name="4星瑞兹" auto="jjjjj" />
+<reward itemid="55076" name="5星瑞兹" auto="jjjjj" />
+<reward itemid="56076" name="6星瑞兹" auto="jjjjj" />
+<reward itemid="57076" name="7星瑞兹" auto="jjjjj" />
+<reward itemid="51078" name="1星蕾欧娜" auto="jjjjj" />
+<reward itemid="52078" name="2星蕾欧娜" auto="jjjjj" />
+<reward itemid="53078" name="3星蕾欧娜" auto="jjjjj" />
+<reward itemid="54078" name="4星蕾欧娜" auto="jjjjj" />
+<reward itemid="55078" name="5星蕾欧娜" auto="jjjjj" />
+<reward itemid="56078" name="6星蕾欧娜" auto="jjjjj" />
+<reward itemid="57078" name="7星蕾欧娜" auto="jjjjj" />
+<reward itemid="51079" name="1星孙悟空" auto="jjjjj" />
+<reward itemid="52079" name="2星孙悟空" auto="jjjjj" />
+<reward itemid="53079" name="3星孙悟空" auto="jjjjj" />
+<reward itemid="54079" name="4星孙悟空" auto="jjjjj" />
+<reward itemid="55079" name="5星孙悟空" auto="jjjjj" />
+<reward itemid="56079" name="6星孙悟空" auto="jjjjj" />
+<reward itemid="57079" name="7星孙悟空" auto="jjjjj" />
+<reward itemid="51082" name="1星瑞文" auto="jjjjj" />
+<reward itemid="52082" name="2星瑞文" auto="jjjjj" />
+<reward itemid="53082" name="3星瑞文" auto="jjjjj" />
+<reward itemid="54082" name="4星瑞文" auto="jjjjj" />
+<reward itemid="55082" name="5星瑞文" auto="jjjjj" />
+<reward itemid="56082" name="6星瑞文" auto="jjjjj" />
+<reward itemid="57082" name="7星瑞文" auto="jjjjj" />
+<reward itemid="51084" name="1星希瓦娜" auto="jjjjj" />
+<reward itemid="52084" name="2星希瓦娜" auto="jjjjj" />
+<reward itemid="53084" name="3星希瓦娜" auto="jjjjj" />
+<reward itemid="54084" name="4星希瓦娜" auto="jjjjj" />
+<reward itemid="55084" name="5星希瓦娜" auto="jjjjj" />
+<reward itemid="56084" name="6星希瓦娜" auto="jjjjj" />
+<reward itemid="57084" name="7星希瓦娜" auto="jjjjj" />
+<reward itemid="51086" name="1星菲兹" auto="jjjjj" />
+<reward itemid="52086" name="2星菲兹" auto="jjjjj" />
+<reward itemid="53086" name="3星菲兹" auto="jjjjj" />
+<reward itemid="54086" name="4星菲兹" auto="jjjjj" />
+<reward itemid="55086" name="5星菲兹" auto="jjjjj" />
+<reward itemid="56086" name="6星菲兹" auto="jjjjj" />
+<reward itemid="57086" name="7星菲兹" auto="jjjjj" />
+<reward itemid="51088" name="1星阿狸" auto="jjjjj" />
+<reward itemid="52088" name="2星阿狸" auto="jjjjj" />
+<reward itemid="53088" name="3星阿狸" auto="jjjjj" />
+<reward itemid="54088" name="4星阿狸" auto="jjjjj" />
+<reward itemid="55088" name="5星阿狸" auto="jjjjj" />
+<reward itemid="56088" name="6星阿狸" auto="jjjjj" />
+<reward itemid="57088" name="7星阿狸" auto="jjjjj" />
+<reward itemid="51096" name="1星韦鲁斯" auto="jjjjj" />
+<reward itemid="52096" name="2星韦鲁斯" auto="jjjjj" />
+<reward itemid="53096" name="3星韦鲁斯" auto="jjjjj" />
+<reward itemid="54096" name="4星韦鲁斯" auto="jjjjj" />
+<reward itemid="55096" name="5星韦鲁斯" auto="jjjjj" />
+<reward itemid="56096" name="6星韦鲁斯" auto="jjjjj" />
+<reward itemid="57096" name="7星韦鲁斯" auto="jjjjj" />
+<reward itemid="51097" name="1星德莱厄斯" auto="jjjjj" />
+<reward itemid="52097" name="2星德莱厄斯" auto="jjjjj" />
+<reward itemid="53097" name="3星德莱厄斯" auto="jjjjj" />
+<reward itemid="54097" name="4星德莱厄斯" auto="jjjjj" />
+<reward itemid="55097" name="5星德莱厄斯" auto="jjjjj" />
+<reward itemid="56097" name="6星德莱厄斯" auto="jjjjj" />
+<reward itemid="57097" name="7星德莱厄斯" auto="jjjjj" />
+<reward itemid="51105" name="1星伊丽丝" auto="jjjjj" />
+<reward itemid="52105" name="2星伊丽丝" auto="jjjjj" />
+<reward itemid="53105" name="3星伊丽丝" auto="jjjjj" />
+<reward itemid="54105" name="4星伊丽丝" auto="jjjjj" />
+<reward itemid="55105" name="5星伊丽丝" auto="jjjjj" />
+<reward itemid="56105" name="6星伊丽丝" auto="jjjjj" />
+<reward itemid="57105" name="7星伊丽丝" auto="jjjjj" />
+<reward itemid="51108" name="1星锤石" auto="jjjjj" />
+<reward itemid="52108" name="2星锤石" auto="jjjjj" />
+<reward itemid="53108" name="3星锤石" auto="jjjjj" />
+<reward itemid="54108" name="4星锤石" auto="jjjjj" />
+<reward itemid="55108" name="5星锤石" auto="jjjjj" />
+<reward itemid="56108" name="6星锤石" auto="jjjjj" />
+<reward itemid="57108" name="7星锤石" auto="jjjjj" />
+<reward itemid="51117" name="1星亚索" auto="jjjjj" />
+<reward itemid="52117" name="2星亚索" auto="jjjjj" />
+<reward itemid="53117" name="3星亚索" auto="jjjjj" />
+<reward itemid="54117" name="4星亚索" auto="jjjjj" />
+<reward itemid="55117" name="5星亚索" auto="jjjjj" />
+<reward itemid="56117" name="6星亚索" auto="jjjjj" />
+<reward itemid="57117" name="7星亚索" auto="jjjjj" />
+<reward itemid="51121" name="1星阿兹尔" auto="jjjjj" />
+<reward itemid="52121" name="2星阿兹尔" auto="jjjjj" />
+<reward itemid="53121" name="3星阿兹尔" auto="jjjjj" />
+<reward itemid="54121" name="4星阿兹尔" auto="jjjjj" />
+<reward itemid="55121" name="5星阿兹尔" auto="jjjjj" />
+<reward itemid="56121" name="6星阿兹尔" auto="jjjjj" />
+<reward itemid="57121" name="7星阿兹尔" auto="jjjjj" />
+<reward itemid="51010" name="1星古拉加斯" auto="jjjjj" />
+<reward itemid="52010" name="2星古拉加斯" auto="jjjjj" />
+<reward itemid="53010" name="3星古拉加斯" auto="jjjjj" />
+<reward itemid="54010" name="4星古拉加斯" auto="jjjjj" />
+<reward itemid="55010" name="5星古拉加斯" auto="jjjjj" />
+<reward itemid="56010" name="6星古拉加斯" auto="jjjjj" />
+<reward itemid="57010" name="7星古拉加斯" auto="jjjjj" />
+<reward itemid="51012" name="1星奈德丽" auto="jjjjj" />
+<reward itemid="52012" name="2星奈德丽" auto="jjjjj" />
+<reward itemid="53012" name="3星奈德丽" auto="jjjjj" />
+<reward itemid="54012" name="4星奈德丽" auto="jjjjj" />
+<reward itemid="55012" name="5星奈德丽" auto="jjjjj" />
+<reward itemid="56012" name="6星奈德丽" auto="jjjjj" />
+<reward itemid="57012" name="7星奈德丽" auto="jjjjj" />
+<reward itemid="51024" name="1星崔斯特" auto="jjjjj" />
+<reward itemid="52024" name="2星崔斯特" auto="jjjjj" />
+<reward itemid="53024" name="3星崔斯特" auto="jjjjj" />
+<reward itemid="54024" name="4星崔斯特" auto="jjjjj" />
+<reward itemid="55024" name="5星崔斯特" auto="jjjjj" />
+<reward itemid="56024" name="6星崔斯特" auto="jjjjj" />
+<reward itemid="57024" name="7星崔斯特" auto="jjjjj" />
+<reward itemid="51060" name="1星布兰德" auto="jjjjj" />
+<reward itemid="52060" name="2星布兰德" auto="jjjjj" />
+<reward itemid="53060" name="3星布兰德" auto="jjjjj" />
+<reward itemid="54060" name="4星布兰德" auto="jjjjj" />
+<reward itemid="55060" name="5星布兰德" auto="jjjjj" />
+<reward itemid="56060" name="6星布兰德" auto="jjjjj" />
+<reward itemid="57060" name="7星布兰德" auto="jjjjj" />
+<reward itemid="51094" name="1星璐璐" auto="jjjjj" />
+<reward itemid="52094" name="2星璐璐" auto="jjjjj" />
+<reward itemid="53094" name="3星璐璐" auto="jjjjj" />
+<reward itemid="54094" name="4星璐璐" auto="jjjjj" />
+<reward itemid="55094" name="5星璐璐" auto="jjjjj" />
+<reward itemid="56094" name="6星璐璐" auto="jjjjj" />
+<reward itemid="57094" name="7星璐璐" auto="jjjjj" />
+<reward itemid="51102" name="1星雷恩加尔" auto="jjjjj" />
+<reward itemid="52102" name="2星雷恩加尔" auto="jjjjj" />
+<reward itemid="53102" name="3星雷恩加尔" auto="jjjjj" />
+<reward itemid="54102" name="4星雷恩加尔" auto="jjjjj" />
+<reward itemid="55102" name="5星雷恩加尔" auto="jjjjj" />
+<reward itemid="56102" name="6星雷恩加尔" auto="jjjjj" />
+<reward itemid="57102" name="7星雷恩加尔" auto="jjjjj" />
+<reward itemid="51104" name="1星卡兹克" auto="jjjjj" />
+<reward itemid="52104" name="2星卡兹克" auto="jjjjj" />
+<reward itemid="53104" name="3星卡兹克" auto="jjjjj" />
+<reward itemid="54104" name="4星卡兹克" auto="jjjjj" />
+<reward itemid="55104" name="5星卡兹克" auto="jjjjj" />
+<reward itemid="56104" name="6星卡兹克" auto="jjjjj" />
+<reward itemid="57104" name="7星卡兹克" auto="jjjjj" />
+<reward itemid="51116" name="1星金克斯" auto="jjjjj" />
+<reward itemid="52116" name="2星金克斯" auto="jjjjj" />
+<reward itemid="53116" name="3星金克斯" auto="jjjjj" />
+<reward itemid="54116" name="4星金克斯" auto="jjjjj" />
+<reward itemid="55116" name="5星金克斯" auto="jjjjj" />
+<reward itemid="56116" name="6星金克斯" auto="jjjjj" />
+<reward itemid="57116" name="7星金克斯" auto="jjjjj" />
+<reward itemid="51122" name="1星卡莉斯塔" auto="jjjjj" />
+<reward itemid="52122" name="2星卡莉斯塔" auto="jjjjj" />
+<reward itemid="53122" name="3星卡莉斯塔" auto="jjjjj" />
+<reward itemid="54122" name="4星卡莉斯塔" auto="jjjjj" />
+<reward itemid="55122" name="5星卡莉斯塔" auto="jjjjj" />
+<reward itemid="56122" name="6星卡莉斯塔" auto="jjjjj" />
+<reward itemid="57122" name="7星卡莉斯塔" auto="jjjjj" />
+<reward itemid="84101" name="正义雄鹰徽章" auto="jjjjj"/>
+<reward itemid="84102" name="仲裁者印记" auto="jjjjj"/>
+<reward itemid="84103" name="血手" auto="jjjjj"/>
+<reward itemid="84201" name="巨人boss印记" auto="jjjjj"/>
+<reward itemid="84202" name="巨人精英" auto="jjjjj"/>
+<reward itemid="84203" name="巨人花粉" auto="jjjjj"/>
+<reward itemid="84204" name="剧毒蜂刺" auto="jjjjj"/>
+<reward itemid="84205" name="火化后的飞蛾" auto="jjjjj"/>
+<reward itemid="84206" name="香菇酱" auto="jjjjj"/>
+<reward itemid="84207" name="有点绿的帽子" auto="jjjjj"/>
+<reward itemid="84208" name="特别绿的帽子" auto="jjjjj"/>
+<reward itemid="84301" name="金色药剂" auto="jjjjj"/>
+<reward itemid="84302" name="红色药剂" auto="jjjjj"/>
+<reward itemid="84303" name="蓝色药剂" auto="jjjjj"/>
+<reward itemid="84401" name="海克斯科技改装拳套" auto="jjjjj"/>
+<reward itemid="84402" name="海克斯科技核心" auto="jjjjj"/>
+<reward itemid="84403" name="海克斯科技榴弹" auto="jjjjj"/>
+<reward itemid="84404" name="海克斯科技电容" auto="jjjjj"/>
+<reward itemid="84405" name="约德尔诱捕器" auto="jjjjj"/>
+<reward itemid="84406" name="海克斯科技枪炮" auto="jjjjj"/>
+<reward itemid="84407" name="海克斯科技微型火箭" auto="jjjjj"/>
+<reward itemid="84501" name="一袋香瓜子" auto="jjjjj"/>
+<reward itemid="84502" name="葵花籽油" auto="jjjjj"/>
+<reward itemid="84503" name="太阳能热水器" auto="jjjjj"/>
+<reward itemid="84504" name="甜鸭蛋" auto="jjjjj"/>
+<reward itemid="84505" name="曙光之盾" auto="jjjjj"/>
+<reward itemid="84506" name="烤蜘蛛腿" auto="jjjjj"/>
+<reward itemid="84507" name="牙膏" auto="jjjjj"/>
+<reward itemid="84508" name="面罩" auto="jjjjj"/>
+<reward itemid="84509" name="黑色岩炮" auto="jjjjj"/>
+<reward itemid="84515" name="旋转机枪" auto="jjjjj"/>
+<reward itemid="84510" name="新月之刃" auto="jjjjj"/>
+<reward itemid="84511" name="王者权杖" auto="jjjjj"/>
+<reward itemid="84512" name="荣耀之火" auto="jjjjj"/>
+<reward itemid="84513" name="圣令" auto="jjjjj"/>
+<reward itemid="84514" name="白加黑" auto="jjjjj"/>
+<reward itemid="84601" name="鳄鱼皮" auto="jjjjj"/>
+<reward itemid="84602" name="僵尸肉块" auto="jjjjj"/>
+<reward itemid="84603" name="闪亮的砖头" auto="jjjjj"/>
+<reward itemid="84604" name="小皮鞭" auto="jjjjj"/>
+<reward itemid="84605" name="电磁炮" auto="jjjjj"/>
+<reward itemid="84606" name="远古之力" auto="jjjjj"/>
+<reward itemid="84607" name="黄金圆盘" auto="jjjjj"/>
+<reward itemid="84608" name="泽拉斯的遗产" auto="jjjjj"/>
+<reward itemid="84701" name="大炮弹" auto="jjjjj"/>
+<reward itemid="84702" name="大斧头" auto="jjjjj"/>
+<reward itemid="84703" name="鸦王之羽" auto="jjjjj"/>
+<reward itemid="84704" name="死灵精华" auto="jjjjj"/>
+<reward itemid="84705" name="上位始祖之血" auto="jjjjj"/>
+<reward itemid="84706" name="印有再来一瓶的瓶盖" auto="jjjjj"/>
+<reward itemid="84707" name="勇者奖章" auto="jjjjj"/>
+<reward itemid="84708" name="五菱之光漂移王" auto="jjjjj"/>
+<reward itemid="84709" name="染血的徽记" auto="jjjjj"/>
+<reward itemid="84710" name="苦痛香炉" auto="jjjjj"/>
+<reward itemid="84711" name="灭世者的头颅" auto="jjjjj"/>
+<reward itemid="84712" name="开山斧" auto="jjjjj"/>
+</data>

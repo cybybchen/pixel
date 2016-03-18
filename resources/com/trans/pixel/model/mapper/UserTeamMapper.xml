@@ -13,6 +13,11 @@
 	    VALUES(#{userId}, #{teamRecord})
 	</insert>
 	
+	<insert id="delUserTeam" parameterType="long">
+	    DELETE
+		from user_team where id=#{id}
+	</insert>
+	
 	<update id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
 	    UPDATE user_team
 	    SET record=#{teamRecord}

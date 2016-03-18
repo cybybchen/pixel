@@ -78,6 +78,19 @@ public class UserTeamRedisService extends RedisService {
 		});
 	}
 
+	public void delUserTeam(final long userId, final long id) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0) throws DataAccessException {
+				BoundHashOperations<String, String, String> bhOps = redisTemplate.boundHashOps(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
+
+				bhOps.delete("" + id);
+
+				return null;
+			}
+		});
+	}
+
 	public void updateUserTeamList(final List<UserTeamBean> userTeamList, final long userId) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override

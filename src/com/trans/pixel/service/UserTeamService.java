@@ -34,6 +34,11 @@ public class UserTeamService {
 		userTeamRedisService.updateUserTeam(userTeam);
 	}
 	
+	public void delUserTeam(long userId, long id) {
+		userTeamMapper.delUserTeam(id);
+		userTeamRedisService.delUserTeam(userId, id);
+	}
+	
 	public void updateUserTeam(long userId, long id,  String record) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setId(id);

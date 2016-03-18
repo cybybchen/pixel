@@ -8,6 +8,8 @@ public interface UserTeamMapper {
 	
 	public int addUserTeam(UserTeamBean userTeam);
 	
+	public int delUserTeam(long id);
+	
 	public int updateUserTeam(UserTeamBean userTeam);
 	
 	public List<UserTeamBean> selectUserTeamList(long userId);

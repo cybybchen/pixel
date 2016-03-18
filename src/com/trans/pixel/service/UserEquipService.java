@@ -25,6 +25,12 @@ public class UserEquipService {
 		return userEquip;
 	}
 	
+	public void delUserEquip(UserEquipBean userEquip) {
+		userEquip.setEquipCount(0);
+		userEquipRedisService.updateUserEquip(userEquip);
+		userEquipMapper.updateUserEquip(userEquip);
+	}
+	
 	public void updateUserEquip(UserEquipBean userEquip) {
 		userEquipRedisService.updateUserEquip(userEquip);
 		userEquipMapper.updateUserEquip(userEquip);

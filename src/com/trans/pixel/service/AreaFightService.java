@@ -73,6 +73,17 @@ public class AreaFightService extends FightService{
 	final int WARTIME = 60;
 	final int PROTECTTIME = 30;
 	
+	public void delAreaEquip(long userId, int rewardId){
+		UserBean user = new UserBean();
+		user.setId(userId);
+		AreaEquip.Builder builder = redis.getMyAreaEquip(rewardId, user);
+		if(builder == null)
+			return;
+		builder.setCount(0);
+		redis.saveMyAreaEquip(user, builder.build());
+		mapper.updateUserAreaProp(new UserAreaPropBean().parse(builder.build(), user));
+	}
+	
 	public void addAreaEquip(UserBean user, int rewardId, int rewardCount){
 		Collection<AreaEquip> equips = AreaEquips(user);
 		for(AreaEquip equip : equips){

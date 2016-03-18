@@ -45,6 +45,12 @@ public class UserHeroService {
 		return userHeroList;
 	}
 	
+	public void delUserHero(UserHeroBean userHero) {
+		userHero.setHeroInfo("{}");
+		userHeroRedisService.updateUserHero(userHero);
+		userHeroMapper.updateUserHero(userHero);
+	}
+	
 	public void updateUserHero(UserHeroBean userHero) {
 		userHeroRedisService.updateUserHero(userHero);
 		userHeroMapper.updateUserHero(userHero);

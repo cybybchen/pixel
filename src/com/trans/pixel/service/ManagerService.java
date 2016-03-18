@@ -2,12 +2,19 @@ package com.trans.pixel.service;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.annotation.Resource;
+
 import net.sf.json.JSONObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserHeroBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -40,6 +47,16 @@ public class ManagerService extends RedisService{
     private UserService userService;
 	@Resource
     private RewardService rewardService;
+	@Resource
+	private UserTeamService userTeamService;
+	@Resource
+	private UserHeroService userHeroService;
+	@Resource
+	private UserEquipService userEquipService;
+	@Resource
+	private UserPropService userPropService;
+	@Resource
+	private AreaFightService areaFightService;
 	
 	public JSONObject getData(JSONObject req) {
 		JSONObject result = new JSONObject();
@@ -70,7 +87,7 @@ public class ManagerService extends RedisService{
 		int rewardCount = TypeTranslatedUtil.jsonGetInt(req, "rewardCount");
 		if(rewardId > 0 && rewardCount > 0){
 			rewardService.doReward(userId, rewardId, rewardCount);
-			req.put("UserData", 1);
+			result.put("success", "奖励发放成功");
 		}
 		result.put("userId", userId);
 		result.put("userName", userName);
@@ -199,8 +216,10 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-team"));
 			for(String key : map.keySet()){
-				if(!object.keySet().contains(key))
-					hdelete(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId, key);
+				if(!object.keySet().contains(key)){
+					userTeamService.delUserTeam(userId, Long.parseLong(key));
+//					hdelete(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId, key);
+				}
 			}
 			map = new HashMap<String, String>();
 			for(Object key : object.keySet()){
@@ -234,8 +253,11 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-hero"));
 			for(String key : map.keySet()){
-				if(!object.keySet().contains(key))
-					hdelete(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId, key);
+				if(!object.keySet().contains(key)){
+					UserHeroBean bean = UserHeroBean.fromJson(map.get(key));
+					userHeroService.delUserHero(bean);
+//					hdelete(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId, key);
+				}
 			}
 			map = new HashMap<String, String>();
 			for(Object key : object.keySet()){
@@ -258,8 +280,11 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-equip"));
 			for(String key : map.keySet()){
-				if(!object.keySet().contains(key))
-					hdelete(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId, key);
+				if(!object.keySet().contains(key)){
+					UserEquipBean bean = UserEquipBean.fromJson(map.get(key));
+					userEquipService.delUserEquip(bean);
+//					hdelete(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId, key);
+				}
 			}
 			map = new HashMap<String, String>();
 			for(Object key : object.keySet()){
@@ -282,8 +307,11 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_PROP_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-prop"));
 			for(String key : map.keySet()){
-				if(!object.keySet().contains(key))
-					hdelete(RedisKey.PREFIX + RedisKey.USER_PROP_PREFIX + userId, key);
+				if(!object.keySet().contains(key)){
+					UserPropBean userProp = UserPropBean.fromJson(map.get(key));
+					userPropService.delUserProp(userProp);
+//					hdelete(RedisKey.PREFIX + RedisKey.USER_PROP_PREFIX + userId, key);
+				}
 			}
 			map = new HashMap<String, String>();
 			for(Object key : object.keySet()){
@@ -425,8 +453,10 @@ public class ManagerService extends RedisService{
 			Map<String, String> map = hget(MYAREAEQUIP + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-areaEquip"));
 			for(String key : map.keySet()){
-				if(!object.keySet().contains(key))
-					hdelete(MYAREAEQUIP + userId, key);
+				if(!object.keySet().contains(key)){
+					areaFightService.delAreaEquip(userId, Integer.parseInt(key));
+//					hdelete(MYAREAEQUIP + userId, key);
+				}
 			}
 			map = new HashMap<String, String>();
 			for(Object key : object.keySet()){

@@ -84,8 +84,14 @@ jsoneditor .json{
   margin-top:0;
   margin-bottom:0;
 }
-@media screen and (min-width: 68em) {
-  .menu-panel{
-    width:25%;
-  }
+#rewardForm{
+	background: rgba(0, 0, 0, 0.05);
+}
+@media screen and (min-width: 48em) {
+	.menu-panel{
+		width:25%;
+	}
+	#rewardForm .ui-block-a, #rewardForm .ui-block-b{
+		padding: 10px;
+	}
 }
