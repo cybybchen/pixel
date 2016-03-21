@@ -839,7 +839,7 @@ public class RedisService {
 	 * 第二天0点
 	 */
 	public Date nextDay(){
-		Date date = new Date(System.currentTimeMillis()/24/3600L/1000L*24*3600L*1000L+16*3600L*1000L);
+		Date date = new Date(nextDay(0));
 		return date;
 	}
 	/**
