@@ -20,6 +20,7 @@
 		<result property="receiveMessageTimeStamp" column="receive_message_timestamp" />
 		<result property="lastLootTime" column="last_loot_time" />
 		<result property="lastLoginTime" column="last_login_time" />
+		<result property="registerTime" column="register_time"/>
 		<result property="ladderModeHistoryTop" column="ladder_mode_history_top" />
 		<result property="loginDays" column="login_days" />
 		<result property="signDays" column="sign_days" />
@@ -49,10 +50,10 @@
 	
 	<insert id="addNewUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserBean">
 		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
-		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, sign_days)
+		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, sign_days, register_time)
 		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
-		#{ladderModeHistoryTop}, #{loginDays}, #{signDays})
+		#{ladderModeHistoryTop}, #{loginDays}, #{signDays}, #{registerTime})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">

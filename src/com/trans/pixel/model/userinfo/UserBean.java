@@ -27,6 +27,7 @@ public class UserBean {
 	private int lastLootTime = 0;
 //	private int refreshLeftTimes = 0;
 	private String lastLoginTime = "";
+	private String registerTime = "";
 	private long redisTime = 0;
 	private int ladderModeLeftTimes = 0;
 	private long ladderModeHistoryTop = 10000;
@@ -57,6 +58,18 @@ public class UserBean {
 	private int areaUnlock = 0;
 	private int pvpUnlock = 0;
 	private int heroLimit = 0;
+	/**
+	 * 注册时间
+	 */
+	public String getRegisterTime() {
+		return registerTime;
+	}
+	/**
+	 * 注册时间
+	 */
+	public void setRegisterTime(String registerTime) {
+		this.registerTime = registerTime;
+	}
 	/**
 	 * Session
 	 */
