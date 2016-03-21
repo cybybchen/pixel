@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserHeroMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserPokedeBean">
+		<result property="heroId" column="hero_id" />
+		<result property="rare" column="rare" />
+	</resultMap>
+	
+	<select id="selectUserPokede" resultMap="resultMap">
+		SELECT *
+		from user_pokede where user_id=#{userId} and hero_id=#{heroId}
+	</select>
+	
+	<insert id="updateUserPokede" parameterType="com.trans.pixel.model.userinfo.UserPokedeBean">
+	    INSERT INTO user_pokede(user_id, hero_id, rare)
+	    VALUES(#{userId}, #{heroId}, #{rare})
+	    ON 
+	    duplicate key update
+	    rare=#{rare}
+	</insert>
+	
+	<select id="selectUserPokedeList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_pokede where user_id=#{userId}
+	</select>
+	
+</mapper>

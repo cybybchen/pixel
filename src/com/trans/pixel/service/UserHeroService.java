@@ -23,6 +23,8 @@ public class UserHeroService {
 	private HeroService heroService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private UserPokedeService userPokedeService;
 	
 	public UserHeroBean selectUserHero(long userId, int heroId) {
 		UserHeroBean userHero = userHeroRedisService.selectUserHero(userId, heroId);
@@ -58,6 +60,13 @@ public class UserHeroService {
 			 */
 			
 			activityService.heroStoreActivity(user);
+			
+			/**
+			 * 更新图鉴
+			 */
+			HeroInfoBean heroInfo = new HeroInfoBean();
+			heroInfo.setHeroId(heroId);
+			userPokedeService.updateUserPokede(heroInfo, userId);
 		} 
 		
 		for (int i = 0; i < count; ++i) {

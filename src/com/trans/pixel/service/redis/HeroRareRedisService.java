@@ -12,9 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroRareBean;
-import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository

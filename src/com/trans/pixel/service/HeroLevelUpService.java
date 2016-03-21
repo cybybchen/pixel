@@ -48,7 +48,8 @@ public class HeroLevelUpService {
 	private StarService starService;
 	@Resource
 	private ActivityService activityService;
-	
+	@Resource
+	private UserPokedeService userPokedeService;
 	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Integer> costInfoIds, UserHeroBean userHero) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
@@ -201,6 +202,11 @@ public class HeroLevelUpService {
 		}
 		
 		heroInfo.levelUpRare();
+		
+		/**
+		 * 更新图鉴
+		 */
+		userPokedeService.updateUserPokede(heroInfo, user.getId());
 		
 		/**
 		 * 培养英雄的活动

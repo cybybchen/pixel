@@ -1531,6 +1531,14 @@ message RequestCheatRechargeCommand {
 	required int32 jewel = 2;
 }
 
+message RequestUserPokedeCommand {
+
+}
+
+message ResponseUserPokedeCommand {
+	repeated HeroInfo pokede = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1642,6 +1650,7 @@ message RequestCommand {
 	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
         optional RequestKaifuListCommand kaifuListCommand = 78;
 	optional RequestCheatRechargeCommand cheatRechargeCommand = 79;
+	optional RequestUserPokedeCommand userPokedeCommand = 80;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1699,6 +1708,7 @@ message ResponseCommand {
 	optional ResponseKaifu2RewardCommand kaifu2RewardCommand = 44;
 	optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
         optional ResponseKaifuListCommand kaifuListCommand = 46;
+	optional ResponseUserPokedeCommand userPokedeCommand = 47;
 }
 
 
