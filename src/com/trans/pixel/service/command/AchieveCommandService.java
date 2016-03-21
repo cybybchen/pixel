@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
@@ -17,6 +18,7 @@ import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AchieveService;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserAchieveService;
 
@@ -31,6 +33,8 @@ public class AchieveCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private UserAchieveService userAchieveService;
+	@Resource
+	private ActivityService activityService;
 	
 	public void achieveReward(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseAchieveListCommand.Builder builder = ResponseAchieveListCommand.newBuilder();
@@ -51,6 +55,11 @@ public class AchieveCommandService extends BaseCommandService {
 		builder.addAllUserAchieve(buildUserAchieveList(uaList));
 		responseBuilder.setAchieveListCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+		
+		/**
+		 * send log
+		 */
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACHIEVE, type);
 	}
 	
 	public void achieveList(RequestAchieveListCommand cmd, Builder responseBuilder, UserBean user) {

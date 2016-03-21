@@ -64,6 +64,11 @@ public class ActivityCommandService extends BaseCommandService {
 		
 		responseBuilder.setRichangListCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+		
+		/**
+		 * send log
+		 */
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_RICHANG, type);
 	}
 	
 	public void richangList(RequestRichangListCommand cmd, Builder responseBuilder, UserBean user) {
@@ -103,6 +108,11 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.setAccRcPsRwRc(activityService.getKaifu2RwRc(user, ActivityConst.KAIFU2_LEIJI_RECHARGE_PERSON_COUNT));
 		
 		responseBuilder.setKaifu2RewardCommand(builder.build());
+		
+		/**
+		 * send log
+		 */
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_KAIFU, type);
 	}
 	
 	public void kaifuReward(RequestKaifuRewardCommand cmd, Builder responseBuilder, UserBean user) {
@@ -123,6 +133,11 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.setUserKaifu(uk.build());
 		responseBuilder.setKaifuRewardCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+		
+		/**
+		 * send log
+		 */
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_KAIFU, type);
 	}
 	
 	public void kaifuList(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user) {

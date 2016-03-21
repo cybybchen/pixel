@@ -1,7 +1,9 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -13,6 +15,7 @@ import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.HeroConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -49,6 +52,8 @@ public class ActivityService {
 	private UserService userService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private LogService logService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -481,5 +486,18 @@ public class ActivityService {
 		 */
 		if (star == HeroConst.ACTIVITY_KAIFU_HERO_STAR)
 			sendKaifuScore(user, ActivityConst.KAIFU_DAY_7);
+	}
+	
+	/**
+	 * activity and achieve log
+	 */
+	public void sendLog(long userId, int serverId, int type, int id) {
+		Map<String, String> logMap = new HashMap<String, String>();
+		logMap.put(LogString.USERID, "" + userId);
+		logMap.put(LogString.SERVERID, "" + serverId);
+		logMap.put(LogString.MISSION_TYPE, "" + type);
+		logMap.put(LogString.MISSIONID, "" + id);
+		
+		logService.sendLog(logMap, LogString.LOGTYPE_MISSION);
 	}
 }

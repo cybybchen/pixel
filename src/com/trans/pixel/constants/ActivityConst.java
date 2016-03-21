@@ -128,4 +128,13 @@ public class ActivityConst {
 	 */
 	public static final int[] KAIFU_TYPES = {KAIFU_FIRST_RECHARGE, KAIFU_LOGIN, KAIFU_RECHARGE, KAIFU_DAY_1, KAIFU_DAY_2,
 		KAIFU_DAY_3, KAIFU_DAY_4, KAIFU_DAY_5, KAIFU_DAY_6, KAIFU_DAY_7};
+	
+	/**
+	 * log type
+	 */
+	public static final int LOG_TYPE_ACHIEVE = 3;
+	
+	public static final int LOG_TYPE_RICHANG = 2;
+	
+	public static final int LOG_TYPE_KAIFU = 1;
 }

@@ -53,7 +53,7 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ATTACK_TEAM_LIST));
 				sb.append(LogString.SPLITER);
-				sb.append(params.get(LogString.DEFENSE_TAAM_LIST));
+				sb.append(params.get(LogString.DEFENSE_TEAM_LIST));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.RESULT));
 				sb.append(LogString.SPLITER);

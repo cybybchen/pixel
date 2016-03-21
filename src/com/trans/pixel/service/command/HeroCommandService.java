@@ -67,6 +67,7 @@ public class HeroCommandService extends BaseCommandService {
 		if (userHero != null) {
 			heroInfo = userHero.getHeroInfoByInfoId(infoId);
 			if (heroInfo != null) {
+				heroInfo.setHeroId(heroId);
 				result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds, userHero);
 				if (result instanceof SuccessConst)
 					skillService.unlockHeroSkill(heroId, heroInfo);

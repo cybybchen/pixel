@@ -12,7 +12,7 @@ public class LogString {
 	public static final String USERID = "userid";
 	public static final String SERVERID = "serverid";
 	public static final String ATTACK_TEAM_LIST = "attackteamlist";
-	public static final String DEFENSE_TAAM_LIST = "defenseteamlist";
+	public static final String DEFENSE_TEAM_LIST = "defenseteamlist";
 	public static final String RESULT = "result";
 	public static final String RANK = "rank";
 	public static final String OPERATION = "operation";

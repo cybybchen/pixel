@@ -52,6 +52,14 @@ public class UserTeamRedisService extends RedisService {
 		return team.build();
 	}
 
+	public String getTeamCacheString(final long userId) {
+		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
+		if (value == null)
+			return "";
+		
+		return value;
+	}
+	
 	public void saveTeamCache(final UserBean user, List<HeroInfoBean> list) {
 		if(list.isEmpty())
 			return;

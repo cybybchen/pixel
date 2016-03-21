@@ -1,12 +1,15 @@
 package com.trans.pixel.service.command;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
@@ -18,6 +21,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseLotteryCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LotteryService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserService;
@@ -37,6 +41,8 @@ public class LotteryCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private LogService logService;
 	
 	public void lottery(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
@@ -70,6 +76,11 @@ public class LotteryCommandService extends BaseCommandService {
 		responseBuilder.setLotteryCommand(builder.build());	
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+		
+		/**
+		 * send log
+		 */
+		sendLog(user.getId(), user.getServerId(), type, count);
 	}
 	
 	private boolean isFreeLotteryTime(UserBean user, int type, int count) {
@@ -108,5 +119,31 @@ public class LotteryCommandService extends BaseCommandService {
 		}
 		
 		return cost;
+	}
+	
+	private void sendLog(long userId, int serverId, int lotteryType, int count) {
+		Map<String, String> logMap = new HashMap<String, String>();
+		logMap.put(LogString.USERID, "" + userId);
+		logMap.put(LogString.SERVERID, "" + serverId);
+		logMap.put(LogString.TYPE, "" + getLogTypeOfLottery(lotteryType, count));
+		
+		logService.sendLog(logMap, LogString.LOGTYPE_LOTTERY);
+	}
+	
+	private int getLogTypeOfLottery(int lotteryType, int count) {
+		switch (lotteryType) {
+			case RewardConst.COIN:
+				if (count == 1)
+					return 0;
+				
+				return 1;
+			case RewardConst.JEWEL:
+				if (count == 1)
+					return 2;
+				
+				return 3;
+			default:
+				return 0;
+		}
 	}
 }

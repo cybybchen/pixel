@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LadderRankConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -34,6 +35,7 @@ import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
+import com.trans.pixel.service.redis.UserTeamRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -51,6 +53,10 @@ public class LadderService {
 	private HeroService heroService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private UserTeamRedisService userTeamRedisService;
+	@Resource
+	private LogService logService;
 	
 	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
         public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -145,7 +151,26 @@ public class LadderService {
 		myRankBean.setRank(attackRank);
 		updateUserRank(serverId, attackRankBean);
 		updateUserRank(serverId, myRankBean);
+		
+		/**
+		 * send log
+		 */
+		sendLog(user.getId(), user.getServerId(), userTeamRedisService.getTeamCacheString(user.getId()),
+				userTeamRedisService.getTeamCacheString(attackRankBean.getUserId()), result ? 1 : 0, attackRank);
+		
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
+	}
+	
+	private void sendLog(long userId, int serverId, String attackTeam, String defenseTeam, int result, long rank) {
+		Map<String, String> logMap = new HashMap<String, String>();
+		logMap.put(LogString.USERID, "" + userId);
+		logMap.put(LogString.SERVERID, "" + serverId);
+		logMap.put(LogString.ATTACK_TEAM_LIST, attackTeam);
+		logMap.put(LogString.DEFENSE_TEAM_LIST, defenseTeam);
+		logMap.put(LogString.RESULT, "" + result);
+		logMap.put(LogString.RANK, "" + rank);
+		
+		logService.sendLog(logMap, LogString.LOGTYPE_LADDER);
 	}
 	
 	public List<RewardBean> getRankChangeReward(long newRank, long oldRank) {
