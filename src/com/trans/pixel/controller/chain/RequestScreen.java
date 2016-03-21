@@ -434,16 +434,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
-        if (request.hasRegisterCommand()) {
-            RequestRegisterCommand cmd = request.getRegisterCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasLoginCommand()) {
-            RequestLoginCommand cmd = request.getLoginCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
+//        if (request.hasRegisterCommand()) {
+//            RequestRegisterCommand cmd = request.getRegisterCommand();
+//            if (result)
+//                result = handleCommand(cmd, responseBuilder, user);
+//        }
+//        if (request.hasLoginCommand()) {
+//            RequestLoginCommand cmd = request.getLoginCommand();
+//            if (result)
+//                result = handleCommand(cmd, responseBuilder, user);
+//        }
         if (request.hasGetUserLadderRankListCommand()) {
             RequestGetUserLadderRankListCommand cmd = request.getGetUserLadderRankListCommand();
             if (result)

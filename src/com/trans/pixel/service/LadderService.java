@@ -139,6 +139,10 @@ public class LadderService {
 			myRankBean = initUserRank(user.getId(), user.getUserName());
 		if (attackRank == myRankBean.getRank())
 			return ErrorConst.ATTACK_SELF;
+		if(!ladderRedisService.setLock("LadderRank_"+myRankBean.getRank()))
+			return ErrorConst.YOU_ARE_ATTACKING;
+		if(!ladderRedisService.setLock("LadderRank_"+attackRank))
+			return ErrorConst.HE_IS_ATTACKING;
 		
 		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 		userService.updateUser(user);

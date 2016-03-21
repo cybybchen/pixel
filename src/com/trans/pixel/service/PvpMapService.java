@@ -281,7 +281,8 @@ public class PvpMapService {
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			userService.updateUserDailyData(user);
-			builder.setOwner(userService.getRandUser(user));
+			List<UserInfo> ranks = getRandUser(10, user);
+			builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
 			redis.saveMine(user.getId(), builder.build());
 		}else{
 			builder.clearOwner();

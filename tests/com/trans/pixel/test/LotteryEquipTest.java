@@ -16,6 +16,7 @@ public class LotteryEquipTest extends BaseTest {
 	
 	@Test
 	public void registerTest() {
+		login();
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
 		RequestLotteryCommand.Builder b = RequestLotteryCommand.newBuilder();

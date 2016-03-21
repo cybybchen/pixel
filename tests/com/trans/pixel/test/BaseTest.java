@@ -22,11 +22,11 @@ public class BaseTest {
 	public UserInfo user = null;
   
     //define device user
-    protected static final int GAME_VERSION = 1;
-    protected static final int VERSION = 1;
-    protected static final int SERVER_ID = 1;
-    protected static final String ACCOUNT = "chli";
-    protected static final String USER_NAME = ACCOUNT;
+    protected static int GAME_VERSION = 1;
+    protected static int VERSION = 1;
+    protected static int SERVER_ID = 1;
+    protected static String ACCOUNT = "chli";
+    protected static String USER_NAME = ACCOUNT;
     protected static long USER_ID = 57;
     protected static String DEVICE_ID = "iphone5";
     protected static String SESSION = "";
