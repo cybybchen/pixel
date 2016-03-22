@@ -14,7 +14,7 @@ public class UnionFightCrontabService {
 	private UnionService unionService;
 	
 	@Scheduled(cron = "0 0 21 * * ? ")
-	@Transactional(rollbackFor=Exception.class)
+//	@Transactional(rollbackFor=Exception.class)
 	public void unionFight() {
 		unionService.unionFightTask();
 	}

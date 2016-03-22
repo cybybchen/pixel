@@ -24,7 +24,7 @@ public class LogCrontabService {
 	private LogRedisService logRedisService;
 	
 	@Scheduled(cron = "0 0/30 * * * ? ")
-	@Transactional(rollbackFor=Exception.class)
+//	@Transactional(rollbackFor=Exception.class)
 	public void sendLog() {
 		Socket socket = null;
 		try {

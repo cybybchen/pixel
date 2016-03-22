@@ -43,7 +43,17 @@ public class UserLevelService {
 	
 	public void updateUserLevelRecord(UserLevelBean userLevelRecord) {
 		userLevelRedisService.updateUserLevelRecord(userLevelRecord);
-		userLevelMapper.updateUserLevelRecord(userLevelRecord);
+//		userLevelMapper.updateUserLevelRecord(userLevelRecord);
+	}
+	
+	public void updateToDB(long userId) {
+		UserLevelBean userLevel = userLevelRedisService.selectUserLevelRecord(userId);
+		if(userLevel != null)
+			userLevelMapper.updateUserLevelRecord(userLevel);
+	}
+	
+	public String popDBKey(){
+		return userLevelRedisService.popDBKey();
 	}
 	
 	public UserLevelBean updateUserLevelRecord(int levelId, UserLevelBean userLevelRecord, UserBean user) {

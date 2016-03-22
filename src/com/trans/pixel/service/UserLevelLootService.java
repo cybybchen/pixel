@@ -41,7 +41,17 @@ public class UserLevelLootService {
 	
 	public void updateUserLevelLootRecord(UserLevelLootBean userLevelLootRecord) {
 		userLevelLootRecordRedisService.updateUserLevelLootRecord(userLevelLootRecord);
-		userLevelLootRecordMapper.updateUserLevelLootRecord(userLevelLootRecord);
+		// userLevelLootRecordMapper.updateUserLevelLootRecord(userLevelLootRecord);
+	}
+	
+	public void updateToDB(long userId) {
+		UserLevelLootBean userLevelLoot = userLevelLootRecordRedisService.selectUserLevelLootRecord(userId);
+		if(userLevelLoot != null)
+			userLevelLootRecordMapper.updateUserLevelLootRecord(userLevelLoot);
+	}
+	
+	public String popDBKey(){
+		return userLevelLootRecordRedisService.popDBKey();
 	}
 	
 	public UserLevelLootBean switchLootLevel(int levelId, long userId) {

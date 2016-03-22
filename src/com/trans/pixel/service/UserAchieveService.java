@@ -30,7 +30,17 @@ public class UserAchieveService {
 	
 	public void updateUserAchieve(UserAchieveBean userAchieve) {
 		userAchieveRedisService.updateUserAchieve(userAchieve);
-		userAchieveMapper.updateUserAchieve(userAchieve);
+		// userAchieveMapper.updateUserAchieve(userAchieve);
+	}
+	
+	public void updateToDB(long userId, int type) {
+		UserAchieveBean userAchieve = userAchieveRedisService.selectUserAchieve(userId, type);
+		if(userAchieve != null)
+			userAchieveMapper.updateUserAchieve(userAchieve);
+	}
+	
+	public String popDBKey(){
+		return userAchieveRedisService.popDBKey();
 	}
 	
 	public List<UserAchieveBean> selectUserAchieveList(long userId) {
@@ -44,16 +54,6 @@ public class UserAchieveService {
 		return userAchieveList;
 	}
 	
-//	public void addUserEquip(long userId, int equipId, int equipCount) {
-//		UserEquipBean userEquip = selectUserEquip(userId, equipId);
-//		if (userEquip == null) {
-//			userEquip = initUserEquip(userId, equipId);
-//		}
-//		
-//		userEquip.setEquipCount(userEquip.getEquipCount() + equipCount);
-//		updateUserEquip(userEquip);
-//	}
-//	
 	private UserAchieveBean initUserAchieve(long userId, int achieveId) {
 		UserAchieveBean userAchieve = new UserAchieveBean();
 		userAchieve.setUserId(userId);

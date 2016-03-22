@@ -14,7 +14,7 @@ public class LadderCrontabService {
 	private LadderService ladderService;
 	
 	@Scheduled(cron = "0 0 21 * * ? ")
-	@Transactional(rollbackFor=Exception.class)
+//	@Transactional(rollbackFor=Exception.class)
 	public void sendLadderDailyReward() {
 		ladderService.sendLadderDailyReward();
 	}

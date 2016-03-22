@@ -19,5 +19,11 @@ public class UserLevelLootRedisService extends RedisService{
 	
 	public void updateUserLevelLootRecord(final UserLevelLootBean userLevelLootRecordBean) {
 		hput(RedisKey.USERDATA + userLevelLootRecordBean.getUserId(), "LootLevel", userLevelLootRecordBean.toJson());
+		
+		sadd(RedisKey.PUSH_MYSQL_KEY+"LootLevel", userLevelLootRecordBean.getUserId()+"");
+	}
+	
+	public String popDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY+"LootLevel");
 	}
 }
