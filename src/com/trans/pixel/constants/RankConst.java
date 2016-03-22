@@ -7,6 +7,10 @@ public class RankConst {
 	
 	public static final int RANK_SIZE = 10;
 	
+	public static final int RANK_DEL = 50;
+	
+	public static final int RANK_MOST = 2500;
+	
 	public static final int RANK_LIST_START = 1;
 	public static final int RANK_LIST_END = 50;
 }

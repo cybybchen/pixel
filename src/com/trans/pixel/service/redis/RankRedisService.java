@@ -6,14 +6,14 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.UserService;
 
-@Repository
+@Service
 public class RankRedisService extends RedisService{
 	@Resource
 	private UserService userService;

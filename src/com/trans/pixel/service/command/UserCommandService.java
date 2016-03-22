@@ -29,7 +29,7 @@ public class UserCommandService extends BaseCommandService {
 	private static final Logger logger = LoggerFactory.getLogger(UserCommandService.class);
 	
 	@Resource
-    private UserService userService;
+	private UserService userService;
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource

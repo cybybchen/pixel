@@ -75,15 +75,24 @@ public class LadderService {
 	
 	private List<Long> getRelativeRanks(long rank) {
 		List<Long> rankList = new ArrayList<Long>();
+		if (rank <= RankConst.RANK_MOST)
+			rankList.add(rank);
+		
+		int delRank = Math.max((int)(rank / RankConst.RANK_DEL), 1);
+		long addRank = rank + RandomUtils.nextInt(delRank);
 		while (rankList.size() < RankConst.RANK_SIZE) {
-			long addRank = rank - rankList.size() - 1;
+			addRank = addRank - delRank;
 			if (addRank > 0)
 				rankList.add(addRank);
 			else
 				break;
 		}
-		if (rank <= 10000)
-			rankList.add(rank);
+		
+		addRank = rank + 1;
+		while (rankList.size() < RankConst.RANK_SIZE && addRank <= RankConst.RANK_MOST) {
+			rankList.add(addRank);
+			addRank++;
+		}
 		
 		return rankList;
 	}
@@ -154,8 +163,11 @@ public class LadderService {
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
 		attackRankBean.setRank(myRankBean.getRank());
 		myRankBean.setRank(attackRank);
-		updateUserRank(serverId, attackRankBean);
-		updateUserRank(serverId, myRankBean);
+		
+		if (attackRank < myRankBean.getRank()) {
+			updateUserRank(serverId, attackRankBean);
+			updateUserRank(serverId, myRankBean);
+		}
 		
 		/**
 		 * send log
@@ -287,7 +299,7 @@ public class LadderService {
 	}
 	
 	private UserRankBean initUserRank(long userId, String userName){
-		return initUserRank(userId, userName, 10001);
+		return initUserRank(userId, userName, RankConst.RANK_MOST + 1);
 	}
 	
 	private UserRankBean initUserRank(long userId, String userName, long rank) {

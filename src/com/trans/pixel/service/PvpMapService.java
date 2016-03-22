@@ -42,7 +42,7 @@ public class PvpMapService {
 	@Resource
 	private RewardService rewardService;
 	@Resource
-	private RankRedisService rankService;
+	private RankRedisService rankRedisService;
 	@Resource
 	private UserFriendRedisService userFriendRedisService;
 	@Resource
@@ -84,15 +84,15 @@ public class PvpMapService {
 	}
 	
 	public List<UserInfo> getRandUser(int count, UserBean user){
-		long myrank = rankService.getMyZhanliRank(user);
+		long myrank = rankRedisService.getMyZhanliRank(user);
 		List<UserInfo> ranks = null;
 		final int halfcount = 20;
 		if(myrank < 0)
-			ranks = rankService.getZhanliRanks(user, myrank - halfcount, -1);
+			ranks = rankRedisService.getZhanliRanks(user, myrank - halfcount, -1);
 		else if(myrank - halfcount <= 0)
-			ranks = rankService.getZhanliRanks(user, 0, myrank+halfcount);
+			ranks = rankRedisService.getZhanliRanks(user, 0, myrank+halfcount);
 		else
-			ranks = rankService.getZhanliRanks(user, myrank - halfcount, myrank+halfcount);
+			ranks = rankRedisService.getZhanliRanks(user, myrank - halfcount, myrank+halfcount);
 		List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
 		Set<String> members = unionRedisService.getMemberIds(user);
 		Iterator<UserInfo> it = ranks.iterator();
@@ -112,7 +112,7 @@ public class PvpMapService {
 				}
 			}
 			if(timeout){
-				rankService.delZhanliRank(user.getServerId(), rank.getId());
+				rankRedisService.delZhanliRank(user.getServerId(), rank.getId());
 				if(ranks.size() > count+1)
 					it.remove();
 			}
