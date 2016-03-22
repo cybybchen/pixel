@@ -88,6 +88,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
@@ -845,6 +846,13 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestUserPokedeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRankCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

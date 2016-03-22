@@ -85,6 +85,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
@@ -135,6 +136,7 @@ import com.trans.pixel.service.command.MohuaCommandService;
 import com.trans.pixel.service.command.PokedeCommandService;
 import com.trans.pixel.service.command.PropCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
+import com.trans.pixel.service.command.RankCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
 import com.trans.pixel.service.command.SignCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
@@ -194,6 +196,8 @@ public class GameDataScreen extends RequestScreen {
 	private CheatRechargeCommandService cheatRechargeCommandService;
 	@Resource
 	private PokedeCommandService pokedeCommandService;
+	@Resource
+	private RankCommandService rankCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -889,6 +893,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestUserPokedeCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		pokedeCommandService.getUserPokedeList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRankCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		rankCommandService.getRankList(cmd, responseBuilder, user);
 		return true;
 	}
 

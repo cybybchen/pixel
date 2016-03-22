@@ -1542,6 +1542,14 @@ message ResponseUserPokedeCommand {
 	repeated HeroInfo pokede = 1;
 }
 
+message RequestRankCommand {
+	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge
+}
+
+message ResponseRankCommand {
+	repeated UserRank userRank = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1654,6 +1662,7 @@ message RequestCommand {
         optional RequestKaifuListCommand kaifuListCommand = 78;
 	optional RequestCheatRechargeCommand cheatRechargeCommand = 79;
 	optional RequestUserPokedeCommand userPokedeCommand = 80;
+	optional RequestRankCommand rankCommand = 81;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1712,6 +1721,7 @@ message ResponseCommand {
 	optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
         optional ResponseKaifuListCommand kaifuListCommand = 46;
 	optional ResponseUserPokedeCommand userPokedeCommand = 47;
+	optional ResponseRankCommand rankCommand = 48;
 }
 
 

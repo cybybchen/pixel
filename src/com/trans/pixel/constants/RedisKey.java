@@ -96,6 +96,7 @@ public class RedisKey {
 	//zhanli rank redis
 	public static final String RANK_PREFIX = PREFIX+"Rank_"+SERVER_PREFIX;
 	public static final String ZHANLI_RANK = PREFIX+"ZhanliRank_"+SERVER_PREFIX;
+	public static final String ZHANLI_RANK_NODELETE = PREFIX + "NoDeleteZhanliRank_" + SERVER_PREFIX; //不会删除不活跃用户
 	
 	//ladder rank redis
 	public static final String LADDER_RANK = "ladder_rank";

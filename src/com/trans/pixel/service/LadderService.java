@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.LadderRankConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.LadderDailyBean;
@@ -75,7 +75,7 @@ public class LadderService {
 	
 	private List<Long> getRelativeRanks(long rank) {
 		List<Long> rankList = new ArrayList<Long>();
-		while (rankList.size() < LadderRankConst.RANK_SIZE) {
+		while (rankList.size() < RankConst.RANK_SIZE) {
 			long addRank = rank - rankList.size() - 1;
 			if (addRank > 0)
 				rankList.add(addRank);
@@ -127,7 +127,7 @@ public class LadderService {
 	}
 	
 	public List<UserRankBean> getRankList(int serverId) {
-		return ladderRedisService.getRankList(serverId, LadderRankConst.RANK_LIST_START, LadderRankConst.RANK_LIST_END);
+		return ladderRedisService.getRankList(serverId, RankConst.RANK_LIST_START, RankConst.RANK_LIST_END);
 	}
 	
 	public ResultConst attack(UserBean user, long attackRank, boolean result, int teamid) {

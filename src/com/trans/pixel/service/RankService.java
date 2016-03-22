@@ -1,0 +1,97 @@
+package com.trans.pixel.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
+import org.springframework.stereotype.Service;
+
+import com.trans.pixel.constants.ActivityConst;
+import com.trans.pixel.constants.RankConst;
+import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.Rank;
+import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.service.redis.ActivityRedisService;
+import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.RankRedisService;
+
+@Service
+public class RankService {
+
+	@Resource
+	private RankRedisService rankRedisService;
+	@Resource
+	private LadderRedisService ladderRedisService;
+	@Resource
+	private ActivityRedisService activityRedisService;
+	@Resource
+	private UserService userService;
+	
+	public List<UserRankBean> getRankList(int serverId, int type) {
+		switch (type) {
+			case RankConst.TYPE_LADDER:
+				return getLadderRankList(serverId);
+			case RankConst.TYPE_ZHANLI:
+				return getZhanliRankList(serverId);
+			case RankConst.TYPE_RECHARGE:
+				return getRechargeRankList(serverId);
+			default:
+				break;
+		}
+		
+		return null;
+	}
+	
+	private List<UserRankBean> getLadderRankList(int serverId) {
+		List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, RankConst.RANK_LIST_START, RankConst.RANK_LIST_END);
+		for (UserRankBean userRank : rankList) {
+			UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
+			userRank.setZhanli(userInfo.getZhanli());
+		}
+		
+		return rankList;
+	}
+	
+	private List<UserRankBean> getZhanliRankList(int serverId) {
+		List<UserInfo> userInfoList = rankRedisService.getZhanliRanks(serverId, RankConst.RANK_LIST_START - 1, RankConst.RANK_LIST_END - 1);
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
+		for (int i = 0; 0 < userInfoList.size(); ++i) {
+			UserInfo userInfo = userInfoList.get(i);
+			UserRankBean userRank = new UserRankBean();
+			userRank.setRank(i + 1);
+			userRank.setUserId(userInfo.getId());
+			userRank.setUserName(userInfo.getName());
+			userRank.setZhanli(userInfo.getZhanli());
+			
+			rankList.add(userRank);
+		}
+		
+		return rankList;
+	}
+	
+	private List<UserRankBean> getRechargeRankList(int serverId) {
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
+		Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, ActivityConst.KAIFU2_RECHARGE);
+		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
+		int rankInit = values.size() + 1;
+		for (TypedTuple<String> value : values) {
+			UserRankBean rank = new UserRankBean();
+			for (UserInfo userInfo : userInfoList) {
+				if (value.getValue().equals("" + userInfo.getId())) {
+					rank.setRank(rankInit);
+					rank.setZhanli(value.getScore().intValue());
+					rank.setUserId(userInfo.getId());
+					rank.setUserName(userInfo.getName());
+					rankInit--;
+					rankList.add(rank);
+					break;
+				}
+			}
+		}
+		
+		return rankList;
+	}
+}

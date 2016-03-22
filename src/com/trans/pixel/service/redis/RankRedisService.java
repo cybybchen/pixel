@@ -20,6 +20,7 @@ public class RankRedisService extends RedisService{
 	
 	public void updateZhanliRank(final UserBean user) {
 		zadd(RedisKey.ZHANLI_RANK+user.getServerId(), user.getZhanli(), user.getId()+"");
+		zadd(RedisKey.ZHANLI_RANK_NODELETE+user.getServerId(), user.getZhanli(), user.getId()+"");
 	}
 	
 	public void delZhanliRank(final int serverId, final long userId) {
@@ -43,5 +44,10 @@ public class RankRedisService extends RedisService{
 	public List<UserInfo> getZhanliRanks(final UserBean user, long start, long end) {
 		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK+user.getServerId(), start, end);
 		return userService.getCaches(user.getServerId(), ranks);
+	}
+	
+	public List<UserInfo> getZhanliRanks(final int serverId, long start, long end) {
+		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE + serverId, start, end);
+		return userService.getCaches(serverId, ranks);
 	}
 }

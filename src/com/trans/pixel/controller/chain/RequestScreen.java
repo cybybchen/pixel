@@ -81,6 +81,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
@@ -266,6 +267,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestUserPokedeCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestRankCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -686,6 +689,11 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasUserPokedeCommand()) {
         	RequestUserPokedeCommand cmd = request.getUserPokedeCommand();
+        	if (result)
+        		result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasRankCommand()) {
+        	RequestRankCommand cmd = request.getRankCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }
