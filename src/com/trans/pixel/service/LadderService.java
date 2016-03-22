@@ -139,7 +139,8 @@ public class LadderService {
 			myRankBean = initUserRank(user.getId(), user.getUserName());
 		if (attackRank == myRankBean.getRank())
 			return ErrorConst.ATTACK_SELF;
-		if(!ladderRedisService.setLock("LadderRank_"+myRankBean.getRank()))
+		long myRank = myRankBean.getRank();
+		if(!ladderRedisService.setLock("LadderRank_"+myRank))
 			return ErrorConst.YOU_ARE_ATTACKING;
 		if(!ladderRedisService.setLock("LadderRank_"+attackRank))
 			return ErrorConst.HE_IS_ATTACKING;
@@ -161,7 +162,8 @@ public class LadderService {
 		 */
 		sendLog(user.getId(), user.getServerId(), userTeamRedisService.getTeamCacheString(user.getId()),
 				userTeamRedisService.getTeamCacheString(attackRankBean.getUserId()), result ? 1 : 0, attackRank);
-		
+		ladderRedisService.clearLock("LadderRank_"+myRank);
+		ladderRedisService.clearLock("LadderRank_"+attackRank);
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
 	
