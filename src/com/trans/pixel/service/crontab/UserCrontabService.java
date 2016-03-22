@@ -6,17 +6,20 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.trans.pixel.service.PvpMapService;
+import com.trans.pixel.service.UserService;
 
 @Service
-public class PvpCrontabService {
+public class UserCrontabService {
 
 	@Resource
-	private PvpMapService pvpMapService;
+	private UserService userService;
 	
-	@Scheduled(cron = "0 0 0 * * ? ")
+	@Scheduled(cron = "0 0/5 * * * ? ")
 	@Transactional(rollbackFor=Exception.class)
-	public void fleshPvpRelativeUser() {
-		
+	public void updateUserToDB() {
+		String userId = null;
+		while((userId=userService.popDBKey()) != null){
+			userService.updateToDB(userId);
+		}
 	}
 }

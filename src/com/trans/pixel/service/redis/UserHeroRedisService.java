@@ -20,7 +20,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 
 @Repository
-public class UserHeroRedisService {
+public class UserHeroRedisService extends RedisService{
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -53,6 +53,11 @@ public class UserHeroRedisService {
 				return null;
 			}
 		});
+		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, userHero.getUserId()+"#"+userHero.getHeroId());
+	}
+	
+	public String popDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX);
 	}
 	
 	public void updateUserHeroList(final List<UserHeroBean> userHeroList, final long userId) {

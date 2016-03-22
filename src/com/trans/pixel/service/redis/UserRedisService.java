@@ -23,7 +23,7 @@ public class UserRedisService extends RedisService{
 
 	public final static String VIP = RedisKey.PREFIX+"Vip";
 	
-	public UserBean getUser(final long userId) {
+	public <T> UserBean getUser(T userId) {
 		String value = hget(RedisKey.USERDATA+userId, "UserData");
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserBean) JSONObject.toBean(json, UserBean.class);
@@ -61,6 +61,11 @@ public class UserRedisService extends RedisService{
 		String key = RedisKey.USERDATA+user.getId();
 		hput(key, "UserData", JSONObject.fromObject(user).toString());
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX, user.getId()+"");
+	}
+	
+	public String popDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX);
 	}
 
 	public String getUserIdByAccount(final int serverId, final String account) {

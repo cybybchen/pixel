@@ -10,6 +10,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserHeroMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
+import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.service.redis.UserHeroRedisService;
 
 @Service
@@ -48,12 +49,22 @@ public class UserHeroService {
 	public void delUserHero(UserHeroBean userHero) {
 		userHero.setHeroInfo("{}");
 		userHeroRedisService.updateUserHero(userHero);
-		userHeroMapper.updateUserHero(userHero);
+//		userHeroMapper.updateUserHero(userHero);
 	}
 	
 	public void updateUserHero(UserHeroBean userHero) {
 		userHeroRedisService.updateUserHero(userHero);
-		userHeroMapper.updateUserHero(userHero);
+//		userHeroMapper.updateUserHero(userHero);
+	}
+	
+	public void updateToDB(long userId, int heroId) {
+		UserHeroBean userHero = userHeroRedisService.selectUserHero(userId, heroId);
+		if(userHero != null)
+			userHeroMapper.updateUserHero(userHero);
+	}
+	
+	public String popDBKey(){
+		return userHeroRedisService.popDBKey();
 	}
 	
 	public void addUserHero(UserBean user, int heroId, int star, int count) {

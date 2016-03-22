@@ -20,7 +20,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserPropBean;
 
 @Repository
-public class UserPropRedisService {
+public class UserPropRedisService extends RedisService{
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -53,6 +53,11 @@ public class UserPropRedisService {
 				return null;
 			}
 		});
+		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_PROP_PREFIX, userProp.getUserId()+"#"+userProp.getPropId());
+	}
+	
+	public String popDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_PROP_PREFIX);
 	}
 	
 	public void updateUserPropList(final List<UserPropBean> userPropList, final long userId) {

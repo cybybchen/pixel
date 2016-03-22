@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -107,10 +108,19 @@ public class UserService {
 		userRedisService.updateUser(user);
 	}
 	
-	public int updateUser(UserBean user) {
+	public void updateUser(UserBean user) {
 		userRedisService.updateUser(user);
-		
-		return userMapper.updateUser(user);
+//		userMapper.updateUser(user);
+	}
+	
+	public <T> void updateToDB(T userId) {
+		UserBean user = userRedisService.getUser(userId);
+		if(user != null)
+			userMapper.updateUser(user);
+	}
+	
+	public String popDBKey(){
+		return userRedisService.popDBKey();
 	}
 
 	public List<UserBean> getUserByUnionId(int unionId) {

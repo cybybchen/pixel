@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserPropMapper;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.service.redis.UserPropRedisService;
 
@@ -30,13 +31,23 @@ public class UserPropService {
 	
 	public void updateUserProp(UserPropBean userProp) {
 		userPropRedisService.updateUserProp(userProp);
-		userPropMapper.updateUserProp(userProp);
+//		userPropMapper.updateUserProp(userProp);
 	}
 	
 	public void delUserProp(UserPropBean userProp) {
 		userProp.setPropCount(0);
 		userPropRedisService.updateUserProp(userProp);
-		userPropMapper.updateUserProp(userProp);
+//		userPropMapper.updateUserProp(userProp);
+	}
+	
+	public void updateToDB(long userId, int propId) {
+		UserPropBean userProp = userPropRedisService.selectUserProp(userId, propId);
+		if(userProp != null)
+			userPropMapper.updateUserProp(userProp);
+	}
+	
+	public String popDBKey(){
+		return userPropRedisService.popDBKey();
 	}
 	
 	public List<UserPropBean> selectUserPropList(long userId) {

@@ -28,12 +28,22 @@ public class UserEquipService {
 	public void delUserEquip(UserEquipBean userEquip) {
 		userEquip.setEquipCount(0);
 		userEquipRedisService.updateUserEquip(userEquip);
-		userEquipMapper.updateUserEquip(userEquip);
+//		userEquipMapper.updateUserEquip(userEquip);
 	}
 	
 	public void updateUserEquip(UserEquipBean userEquip) {
 		userEquipRedisService.updateUserEquip(userEquip);
-		userEquipMapper.updateUserEquip(userEquip);
+//		userEquipMapper.updateUserEquip(userEquip);
+	}
+	
+	public void updateToDB(long userId, int equipId) {
+		UserEquipBean userEquip = userEquipRedisService.selectUserEquip(userId, equipId);
+		if(userEquip != null)
+			userEquipMapper.updateUserEquip(userEquip);
+	}
+	
+	public String popDBKey(){
+		return userEquipRedisService.popDBKey();
 	}
 	
 	public List<UserEquipBean> selectUserEquipList(long userId) {
