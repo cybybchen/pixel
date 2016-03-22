@@ -32,9 +32,9 @@ if (request.getParameter("account")!=null && request.getParameter("password")!=n
    String account = request.getParameter("account");
    String password = request.getParameter("password");
    System.out.println(account+":"+password);
-   session_comm.setAttribute("account", account);
-   session_comm.setAttribute("password", password);
-   session_comm.setMaxInactiveInterval(3600*3);//单位：秒（实际经常到20秒以后才超时）
+   //session_comm.setAttribute("account", account);
+   //session_comm.setAttribute("password", password);
+   //session_comm.setMaxInactiveInterval(3600*3);//单位：秒（实际经常到20秒以后才超时）
    out.print("<script>alert(\"请求已提交！我们会尽快与您取得联系\");</script>");
    //response.sendRedirect("index.jsp");
 }

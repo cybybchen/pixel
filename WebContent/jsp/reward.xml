@@ -7,22 +7,22 @@
 <reward itemid="1004" name="远征币" auto="yzb" />
 <reward itemid="1005" name="天梯币" auto="ttb" />
 <reward itemid="1006" name="公会币" auto="ghb" />
-<reward itemid="10001" name="红水晶" auto="jjjjj"/>
-<reward itemid="10002" name="布甲" auto="jjjjj"/>
-<reward itemid="10003" name="长剑" auto="jjjjj"/>
-<reward itemid="10004" name="魔法宝典" auto="jjjjj"/>
-<reward itemid="10005" name="短剑" auto="jjjjj"/>
-<reward itemid="10006" name="打野刀" auto="jjjjj"/>
-<reward itemid="10007" name="鞋子" auto="jjjjj"/>
-<reward itemid="11001" name="晶体护腕" auto="jjjjj"/>
-<reward itemid="11002" name="晶体护腕lv2" auto="jjjjj"/>
-<reward itemid="12001" name="军团圣盾" auto="jjjjj"/>
-<reward itemid="12002" name="军团圣盾lv2" auto="jjjjj"/>
-<reward itemid="12003" name="军团圣盾lv3" auto="jjjjj"/>
-<reward itemid="13001" name="钢铁烈阳之匣" auto="jjjjj"/>
-<reward itemid="13002" name="钢铁烈阳之匣lv2" auto="jjjjj"/>
-<reward itemid="13003" name="号令军旗" auto="jjjjj"/>
-<reward itemid="13004" name="号令军旗lv2" auto="jjjjj"/>
+<reward itemid="10001" name="红水晶" auto="hsj"/>
+<reward itemid="10002" name="布甲" auto="bj"/>
+<reward itemid="10003" name="长剑" auto="cj"/>
+<reward itemid="10004" name="魔法宝典" auto="mfbd"/>
+<reward itemid="10005" name="短剑" auto="dj"/>
+<reward itemid="10006" name="打野刀" auto="dyd"/>
+<reward itemid="10007" name="鞋子" auto="xz"/>
+<reward itemid="11001" name="晶体护腕" auto="jthw"/>
+<reward itemid="11002" name="晶体护腕lv2" auto="jthw2"/>
+<reward itemid="12001" name="军团圣盾" auto="jtsd"/>
+<reward itemid="12002" name="军团圣盾lv2" auto="jtsd2"/>
+<reward itemid="12003" name="军团圣盾lv3" auto="jtsd3"/>
+<reward itemid="13001" name="钢铁烈阳之匣" auto="gtlyzx"/>
+<reward itemid="13002" name="钢铁烈阳之匣lv2" auto="gtlyzx2"/>
+<reward itemid="13003" name="号令军旗" auto="hlqz"/>
+<reward itemid="13004" name="号令军旗lv2" auto="hlqz2"/>
 <reward itemid="14001" name="赤焰屏障" auto="jjjjj"/>
 <reward itemid="14002" name="号令军旗lv3" auto="jjjjj"/>
 <reward itemid="12004" name="狂徒铠甲" auto="jjjjj"/>
@@ -776,432 +776,432 @@
 <reward itemid="40010" name="大包魔晶" auto="dbmj" />
 <reward itemid="40011" name="小包远征币" auto="xbyzb" />
 <reward itemid="40012" name="大包远征币" auto="dbyzb" />
-<reward itemid="40013" name="小包天梯币" auto="jjjjj" />
-<reward itemid="40014" name="大包天梯币" auto="jjjjj" />
-<reward itemid="40015" name="小包公会币" auto="jjjjj" />
-<reward itemid="40016" name="大包公会币" auto="jjjjj" />
-<reward itemid="40018" name="神器雕纹" auto="jjjjj" />
-<reward itemid="40019" name="神器符印" auto="jjjjj" />
-<reward itemid="40020" name="神器印记" auto="jjjjj" />
-<reward itemid="40021" name="神器精华" auto="jjjjj" />
-<reward itemid="51001" name="1星厄运小姐" auto="jjjjj" />
-<reward itemid="52001" name="2星厄运小姐" auto="jjjjj" />
-<reward itemid="53001" name="3星厄运小姐" auto="jjjjj" />
-<reward itemid="54001" name="4星厄运小姐" auto="jjjjj" />
-<reward itemid="55001" name="5星厄运小姐" auto="jjjjj" />
-<reward itemid="56001" name="6星厄运小姐" auto="jjjjj" />
-<reward itemid="57001" name="7星厄运小姐" auto="jjjjj" />
-<reward itemid="51005" name="1星赵信" auto="jjjjj" />
-<reward itemid="52005" name="2星赵信" auto="jjjjj" />
-<reward itemid="53005" name="3星赵信" auto="jjjjj" />
-<reward itemid="54005" name="4星赵信" auto="jjjjj" />
-<reward itemid="55005" name="5星赵信" auto="jjjjj" />
-<reward itemid="56005" name="6星赵信" auto="jjjjj" />
-<reward itemid="57005" name="7星赵信" auto="jjjjj" />
-<reward itemid="51008" name="1星潘森" auto="jjjjj" />
-<reward itemid="52008" name="2星潘森" auto="jjjjj" />
-<reward itemid="53008" name="3星潘森" auto="jjjjj" />
-<reward itemid="54008" name="4星潘森" auto="jjjjj" />
-<reward itemid="55008" name="5星潘森" auto="jjjjj" />
-<reward itemid="56008" name="6星潘森" auto="jjjjj" />
-<reward itemid="57008" name="7星潘森" auto="jjjjj" />
-<reward itemid="51009" name="1星奥拉夫" auto="jjjjj" />
-<reward itemid="52009" name="2星奥拉夫" auto="jjjjj" />
-<reward itemid="53009" name="3星奥拉夫" auto="jjjjj" />
-<reward itemid="54009" name="4星奥拉夫" auto="jjjjj" />
-<reward itemid="55009" name="5星奥拉夫" auto="jjjjj" />
-<reward itemid="56009" name="6星奥拉夫" auto="jjjjj" />
-<reward itemid="57009" name="7星奥拉夫" auto="jjjjj" />
-<reward itemid="51011" name="1星伊泽瑞尔" auto="jjjjj" />
-<reward itemid="52011" name="2星伊泽瑞尔" auto="jjjjj" />
-<reward itemid="53011" name="3星伊泽瑞尔" auto="jjjjj" />
-<reward itemid="54011" name="4星伊泽瑞尔" auto="jjjjj" />
-<reward itemid="55011" name="5星伊泽瑞尔" auto="jjjjj" />
-<reward itemid="56011" name="6星伊泽瑞尔" auto="jjjjj" />
-<reward itemid="57011" name="7星伊泽瑞尔" auto="jjjjj" />
-<reward itemid="51013" name="1星莫德凯撒" auto="jjjjj" />
-<reward itemid="52013" name="2星莫德凯撒" auto="jjjjj" />
-<reward itemid="53013" name="3星莫德凯撒" auto="jjjjj" />
-<reward itemid="54013" name="4星莫德凯撒" auto="jjjjj" />
-<reward itemid="55013" name="5星莫德凯撒" auto="jjjjj" />
-<reward itemid="56013" name="6星莫德凯撒" auto="jjjjj" />
-<reward itemid="57013" name="7星莫德凯撒" auto="jjjjj" />
-<reward itemid="51017" name="1星盖伦" auto="jjjjj" />
-<reward itemid="52017" name="2星盖伦" auto="jjjjj" />
-<reward itemid="53017" name="3星盖伦" auto="jjjjj" />
-<reward itemid="54017" name="4星盖伦" auto="jjjjj" />
-<reward itemid="55017" name="5星盖伦" auto="jjjjj" />
-<reward itemid="56017" name="6星盖伦" auto="jjjjj" />
-<reward itemid="57017" name="7星盖伦" auto="jjjjj" />
-<reward itemid="51027" name="1星塔里克" auto="jjjjj" />
-<reward itemid="52027" name="2星塔里克" auto="jjjjj" />
-<reward itemid="53027" name="3星塔里克" auto="jjjjj" />
-<reward itemid="54027" name="4星塔里克" auto="jjjjj" />
-<reward itemid="55027" name="5星塔里克" auto="jjjjj" />
-<reward itemid="56027" name="6星塔里克" auto="jjjjj" />
-<reward itemid="57027" name="7星塔里克" auto="jjjjj" />
-<reward itemid="51032" name="1星沃里克" auto="jjjjj" />
-<reward itemid="52032" name="2星沃里克" auto="jjjjj" />
-<reward itemid="53032" name="3星沃里克" auto="jjjjj" />
-<reward itemid="54032" name="4星沃里克" auto="jjjjj" />
-<reward itemid="55032" name="5星沃里克" auto="jjjjj" />
-<reward itemid="56032" name="6星沃里克" auto="jjjjj" />
-<reward itemid="57032" name="7星沃里克" auto="jjjjj" />
-<reward itemid="51035" name="1星布里茨" auto="jjjjj" />
-<reward itemid="52035" name="2星布里茨" auto="jjjjj" />
-<reward itemid="53035" name="3星布里茨" auto="jjjjj" />
-<reward itemid="54035" name="4星布里茨" auto="jjjjj" />
-<reward itemid="55035" name="5星布里茨" auto="jjjjj" />
-<reward itemid="56035" name="6星布里茨" auto="jjjjj" />
-<reward itemid="57035" name="7星布里茨" auto="jjjjj" />
-<reward itemid="51036" name="1星阿利斯塔" auto="jjjjj" />
-<reward itemid="52036" name="2星阿利斯塔" auto="jjjjj" />
-<reward itemid="53036" name="3星阿利斯塔" auto="jjjjj" />
-<reward itemid="54036" name="4星阿利斯塔" auto="jjjjj" />
-<reward itemid="55036" name="5星阿利斯塔" auto="jjjjj" />
-<reward itemid="56036" name="6星阿利斯塔" auto="jjjjj" />
-<reward itemid="57036" name="7星阿利斯塔" auto="jjjjj" />
-<reward itemid="51038" name="1星易" auto="jjjjj" />
-<reward itemid="52038" name="2星易" auto="jjjjj" />
-<reward itemid="53038" name="3星易" auto="jjjjj" />
-<reward itemid="54038" name="4星易" auto="jjjjj" />
-<reward itemid="55038" name="5星易" auto="jjjjj" />
-<reward itemid="56038" name="6星易" auto="jjjjj" />
-<reward itemid="57038" name="7星易" auto="jjjjj" />
-<reward itemid="51039" name="1星贾克斯" auto="jjjjj" />
-<reward itemid="52039" name="2星贾克斯" auto="jjjjj" />
-<reward itemid="53039" name="3星贾克斯" auto="jjjjj" />
-<reward itemid="54039" name="4星贾克斯" auto="jjjjj" />
-<reward itemid="55039" name="5星贾克斯" auto="jjjjj" />
-<reward itemid="56039" name="6星贾克斯" auto="jjjjj" />
-<reward itemid="57039" name="7星贾克斯" auto="jjjjj" />
-<reward itemid="51040" name="1星崔斯塔娜" auto="jjjjj" />
-<reward itemid="52040" name="2星崔斯塔娜" auto="jjjjj" />
-<reward itemid="53040" name="3星崔斯塔娜" auto="jjjjj" />
-<reward itemid="54040" name="4星崔斯塔娜" auto="jjjjj" />
-<reward itemid="55040" name="5星崔斯塔娜" auto="jjjjj" />
-<reward itemid="56040" name="6星崔斯塔娜" auto="jjjjj" />
-<reward itemid="57040" name="7星崔斯塔娜" auto="jjjjj" />
-<reward itemid="51041" name="1星安妮" auto="jjjjj" />
-<reward itemid="52041" name="2星安妮" auto="jjjjj" />
-<reward itemid="53041" name="3星安妮" auto="jjjjj" />
-<reward itemid="54041" name="4星安妮" auto="jjjjj" />
-<reward itemid="55041" name="5星安妮" auto="jjjjj" />
-<reward itemid="56041" name="6星安妮" auto="jjjjj" />
-<reward itemid="57041" name="7星安妮" auto="jjjjj" />
-<reward itemid="51042" name="1星艾希" auto="jjjjj" />
-<reward itemid="52042" name="2星艾希" auto="jjjjj" />
-<reward itemid="53042" name="3星艾希" auto="jjjjj" />
-<reward itemid="54042" name="4星艾希" auto="jjjjj" />
-<reward itemid="55042" name="5星艾希" auto="jjjjj" />
-<reward itemid="56042" name="6星艾希" auto="jjjjj" />
-<reward itemid="57042" name="7星艾希" auto="jjjjj" />
-<reward itemid="51043" name="1星提莫" auto="jjjjj" />
-<reward itemid="52043" name="2星提莫" auto="jjjjj" />
-<reward itemid="53043" name="3星提莫" auto="jjjjj" />
-<reward itemid="54043" name="4星提莫" auto="jjjjj" />
-<reward itemid="55043" name="5星提莫" auto="jjjjj" />
-<reward itemid="56043" name="6星提莫" auto="jjjjj" />
-<reward itemid="57043" name="7星提莫" auto="jjjjj" />
-<reward itemid="51048" name="1星墨菲特" auto="jjjjj" />
-<reward itemid="52048" name="2星墨菲特" auto="jjjjj" />
-<reward itemid="53048" name="3星墨菲特" auto="jjjjj" />
-<reward itemid="54048" name="4星墨菲特" auto="jjjjj" />
-<reward itemid="55048" name="5星墨菲特" auto="jjjjj" />
-<reward itemid="56048" name="6星墨菲特" auto="jjjjj" />
-<reward itemid="57048" name="7星墨菲特" auto="jjjjj" />
-<reward itemid="51050" name="1星蒙多医生" auto="jjjjj" />
-<reward itemid="52050" name="2星蒙多医生" auto="jjjjj" />
-<reward itemid="53050" name="3星蒙多医生" auto="jjjjj" />
-<reward itemid="54050" name="4星蒙多医生" auto="jjjjj" />
-<reward itemid="55050" name="5星蒙多医生" auto="jjjjj" />
-<reward itemid="56050" name="6星蒙多医生" auto="jjjjj" />
-<reward itemid="57050" name="7星蒙多医生" auto="jjjjj" />
-<reward itemid="51051" name="1星泰达米尔" auto="jjjjj" />
-<reward itemid="52051" name="2星泰达米尔" auto="jjjjj" />
-<reward itemid="53051" name="3星泰达米尔" auto="jjjjj" />
-<reward itemid="54051" name="4星泰达米尔" auto="jjjjj" />
-<reward itemid="55051" name="5星泰达米尔" auto="jjjjj" />
-<reward itemid="56051" name="6星泰达米尔" auto="jjjjj" />
-<reward itemid="57051" name="7星泰达米尔" auto="jjjjj" />
-<reward itemid="51052" name="1星辛吉德" auto="jjjjj" />
-<reward itemid="52052" name="2星辛吉德" auto="jjjjj" />
-<reward itemid="53052" name="3星辛吉德" auto="jjjjj" />
-<reward itemid="54052" name="4星辛吉德" auto="jjjjj" />
-<reward itemid="55052" name="5星辛吉德" auto="jjjjj" />
-<reward itemid="56052" name="6星辛吉德" auto="jjjjj" />
-<reward itemid="57052" name="7星辛吉德" auto="jjjjj" />
-<reward itemid="51055" name="1星努努" auto="jjjjj" />
-<reward itemid="52055" name="2星努努" auto="jjjjj" />
-<reward itemid="53055" name="3星努努" auto="jjjjj" />
-<reward itemid="54055" name="4星努努" auto="jjjjj" />
-<reward itemid="55055" name="5星努努" auto="jjjjj" />
-<reward itemid="56055" name="6星努努" auto="jjjjj" />
-<reward itemid="57055" name="7星努努" auto="jjjjj" />
-<reward itemid="51058" name="1星薇恩" auto="jjjjj" />
-<reward itemid="52058" name="2星薇恩" auto="jjjjj" />
-<reward itemid="53058" name="3星薇恩" auto="jjjjj" />
-<reward itemid="54058" name="4星薇恩" auto="jjjjj" />
-<reward itemid="55058" name="5星薇恩" auto="jjjjj" />
-<reward itemid="56058" name="6星薇恩" auto="jjjjj" />
-<reward itemid="57058" name="7星薇恩" auto="jjjjj" />
-<reward itemid="51059" name="1星兰博" auto="jjjjj" />
-<reward itemid="52059" name="2星兰博" auto="jjjjj" />
-<reward itemid="53059" name="3星兰博" auto="jjjjj" />
-<reward itemid="54059" name="4星兰博" auto="jjjjj" />
-<reward itemid="55059" name="5星兰博" auto="jjjjj" />
-<reward itemid="56059" name="6星兰博" auto="jjjjj" />
-<reward itemid="57059" name="7星兰博" auto="jjjjj" />
-<reward itemid="51061" name="1星李青" auto="jjjjj" />
-<reward itemid="52061" name="2星李青" auto="jjjjj" />
-<reward itemid="53061" name="3星李青" auto="jjjjj" />
-<reward itemid="54061" name="4星李青" auto="jjjjj" />
-<reward itemid="55061" name="5星李青" auto="jjjjj" />
-<reward itemid="56061" name="6星李青" auto="jjjjj" />
-<reward itemid="57061" name="7星李青" auto="jjjjj" />
-<reward itemid="51063" name="1星嘉文四世" auto="jjjjj" />
-<reward itemid="52063" name="2星嘉文四世" auto="jjjjj" />
-<reward itemid="53063" name="3星嘉文四世" auto="jjjjj" />
-<reward itemid="54063" name="4星嘉文四世" auto="jjjjj" />
-<reward itemid="55063" name="5星嘉文四世" auto="jjjjj" />
-<reward itemid="56063" name="6星嘉文四世" auto="jjjjj" />
-<reward itemid="57063" name="7星嘉文四世" auto="jjjjj" />
-<reward itemid="51070" name="1星艾瑞莉娅" auto="jjjjj" />
-<reward itemid="52070" name="2星艾瑞莉娅" auto="jjjjj" />
-<reward itemid="53070" name="3星艾瑞莉娅" auto="jjjjj" />
-<reward itemid="54070" name="4星艾瑞莉娅" auto="jjjjj" />
-<reward itemid="55070" name="5星艾瑞莉娅" auto="jjjjj" />
-<reward itemid="56070" name="6星艾瑞莉娅" auto="jjjjj" />
-<reward itemid="57070" name="7星艾瑞莉娅" auto="jjjjj" />
-<reward itemid="51072" name="1星拉克丝" auto="jjjjj" />
-<reward itemid="52072" name="2星拉克丝" auto="jjjjj" />
-<reward itemid="53072" name="3星拉克丝" auto="jjjjj" />
-<reward itemid="54072" name="4星拉克丝" auto="jjjjj" />
-<reward itemid="55072" name="5星拉克丝" auto="jjjjj" />
-<reward itemid="56072" name="6星拉克丝" auto="jjjjj" />
-<reward itemid="57072" name="7星拉克丝" auto="jjjjj" />
-<reward itemid="51074" name="1星娑娜" auto="jjjjj" />
-<reward itemid="52074" name="2星娑娜" auto="jjjjj" />
-<reward itemid="53074" name="3星娑娜" auto="jjjjj" />
-<reward itemid="54074" name="4星娑娜" auto="jjjjj" />
-<reward itemid="55074" name="5星娑娜" auto="jjjjj" />
-<reward itemid="56074" name="6星娑娜" auto="jjjjj" />
-<reward itemid="57074" name="7星娑娜" auto="jjjjj" />
-<reward itemid="51075" name="1星卡特琳娜" auto="jjjjj" />
-<reward itemid="52075" name="2星卡特琳娜" auto="jjjjj" />
-<reward itemid="53075" name="3星卡特琳娜" auto="jjjjj" />
-<reward itemid="54075" name="4星卡特琳娜" auto="jjjjj" />
-<reward itemid="55075" name="5星卡特琳娜" auto="jjjjj" />
-<reward itemid="56075" name="6星卡特琳娜" auto="jjjjj" />
-<reward itemid="57075" name="7星卡特琳娜" auto="jjjjj" />
-<reward itemid="51076" name="1星瑞兹" auto="jjjjj" />
-<reward itemid="52076" name="2星瑞兹" auto="jjjjj" />
-<reward itemid="53076" name="3星瑞兹" auto="jjjjj" />
-<reward itemid="54076" name="4星瑞兹" auto="jjjjj" />
-<reward itemid="55076" name="5星瑞兹" auto="jjjjj" />
-<reward itemid="56076" name="6星瑞兹" auto="jjjjj" />
-<reward itemid="57076" name="7星瑞兹" auto="jjjjj" />
-<reward itemid="51078" name="1星蕾欧娜" auto="jjjjj" />
-<reward itemid="52078" name="2星蕾欧娜" auto="jjjjj" />
-<reward itemid="53078" name="3星蕾欧娜" auto="jjjjj" />
-<reward itemid="54078" name="4星蕾欧娜" auto="jjjjj" />
-<reward itemid="55078" name="5星蕾欧娜" auto="jjjjj" />
-<reward itemid="56078" name="6星蕾欧娜" auto="jjjjj" />
-<reward itemid="57078" name="7星蕾欧娜" auto="jjjjj" />
-<reward itemid="51079" name="1星孙悟空" auto="jjjjj" />
-<reward itemid="52079" name="2星孙悟空" auto="jjjjj" />
-<reward itemid="53079" name="3星孙悟空" auto="jjjjj" />
-<reward itemid="54079" name="4星孙悟空" auto="jjjjj" />
-<reward itemid="55079" name="5星孙悟空" auto="jjjjj" />
-<reward itemid="56079" name="6星孙悟空" auto="jjjjj" />
-<reward itemid="57079" name="7星孙悟空" auto="jjjjj" />
-<reward itemid="51082" name="1星瑞文" auto="jjjjj" />
-<reward itemid="52082" name="2星瑞文" auto="jjjjj" />
-<reward itemid="53082" name="3星瑞文" auto="jjjjj" />
-<reward itemid="54082" name="4星瑞文" auto="jjjjj" />
-<reward itemid="55082" name="5星瑞文" auto="jjjjj" />
-<reward itemid="56082" name="6星瑞文" auto="jjjjj" />
-<reward itemid="57082" name="7星瑞文" auto="jjjjj" />
-<reward itemid="51084" name="1星希瓦娜" auto="jjjjj" />
-<reward itemid="52084" name="2星希瓦娜" auto="jjjjj" />
-<reward itemid="53084" name="3星希瓦娜" auto="jjjjj" />
-<reward itemid="54084" name="4星希瓦娜" auto="jjjjj" />
-<reward itemid="55084" name="5星希瓦娜" auto="jjjjj" />
-<reward itemid="56084" name="6星希瓦娜" auto="jjjjj" />
-<reward itemid="57084" name="7星希瓦娜" auto="jjjjj" />
-<reward itemid="51086" name="1星菲兹" auto="jjjjj" />
-<reward itemid="52086" name="2星菲兹" auto="jjjjj" />
-<reward itemid="53086" name="3星菲兹" auto="jjjjj" />
-<reward itemid="54086" name="4星菲兹" auto="jjjjj" />
-<reward itemid="55086" name="5星菲兹" auto="jjjjj" />
-<reward itemid="56086" name="6星菲兹" auto="jjjjj" />
-<reward itemid="57086" name="7星菲兹" auto="jjjjj" />
-<reward itemid="51088" name="1星阿狸" auto="jjjjj" />
-<reward itemid="52088" name="2星阿狸" auto="jjjjj" />
-<reward itemid="53088" name="3星阿狸" auto="jjjjj" />
-<reward itemid="54088" name="4星阿狸" auto="jjjjj" />
-<reward itemid="55088" name="5星阿狸" auto="jjjjj" />
-<reward itemid="56088" name="6星阿狸" auto="jjjjj" />
-<reward itemid="57088" name="7星阿狸" auto="jjjjj" />
-<reward itemid="51096" name="1星韦鲁斯" auto="jjjjj" />
-<reward itemid="52096" name="2星韦鲁斯" auto="jjjjj" />
-<reward itemid="53096" name="3星韦鲁斯" auto="jjjjj" />
-<reward itemid="54096" name="4星韦鲁斯" auto="jjjjj" />
-<reward itemid="55096" name="5星韦鲁斯" auto="jjjjj" />
-<reward itemid="56096" name="6星韦鲁斯" auto="jjjjj" />
-<reward itemid="57096" name="7星韦鲁斯" auto="jjjjj" />
-<reward itemid="51097" name="1星德莱厄斯" auto="jjjjj" />
-<reward itemid="52097" name="2星德莱厄斯" auto="jjjjj" />
-<reward itemid="53097" name="3星德莱厄斯" auto="jjjjj" />
-<reward itemid="54097" name="4星德莱厄斯" auto="jjjjj" />
-<reward itemid="55097" name="5星德莱厄斯" auto="jjjjj" />
-<reward itemid="56097" name="6星德莱厄斯" auto="jjjjj" />
-<reward itemid="57097" name="7星德莱厄斯" auto="jjjjj" />
-<reward itemid="51105" name="1星伊丽丝" auto="jjjjj" />
-<reward itemid="52105" name="2星伊丽丝" auto="jjjjj" />
-<reward itemid="53105" name="3星伊丽丝" auto="jjjjj" />
-<reward itemid="54105" name="4星伊丽丝" auto="jjjjj" />
-<reward itemid="55105" name="5星伊丽丝" auto="jjjjj" />
-<reward itemid="56105" name="6星伊丽丝" auto="jjjjj" />
-<reward itemid="57105" name="7星伊丽丝" auto="jjjjj" />
-<reward itemid="51108" name="1星锤石" auto="jjjjj" />
-<reward itemid="52108" name="2星锤石" auto="jjjjj" />
-<reward itemid="53108" name="3星锤石" auto="jjjjj" />
-<reward itemid="54108" name="4星锤石" auto="jjjjj" />
-<reward itemid="55108" name="5星锤石" auto="jjjjj" />
-<reward itemid="56108" name="6星锤石" auto="jjjjj" />
-<reward itemid="57108" name="7星锤石" auto="jjjjj" />
-<reward itemid="51117" name="1星亚索" auto="jjjjj" />
-<reward itemid="52117" name="2星亚索" auto="jjjjj" />
-<reward itemid="53117" name="3星亚索" auto="jjjjj" />
-<reward itemid="54117" name="4星亚索" auto="jjjjj" />
-<reward itemid="55117" name="5星亚索" auto="jjjjj" />
-<reward itemid="56117" name="6星亚索" auto="jjjjj" />
-<reward itemid="57117" name="7星亚索" auto="jjjjj" />
-<reward itemid="51121" name="1星阿兹尔" auto="jjjjj" />
-<reward itemid="52121" name="2星阿兹尔" auto="jjjjj" />
-<reward itemid="53121" name="3星阿兹尔" auto="jjjjj" />
-<reward itemid="54121" name="4星阿兹尔" auto="jjjjj" />
-<reward itemid="55121" name="5星阿兹尔" auto="jjjjj" />
-<reward itemid="56121" name="6星阿兹尔" auto="jjjjj" />
-<reward itemid="57121" name="7星阿兹尔" auto="jjjjj" />
-<reward itemid="51010" name="1星古拉加斯" auto="jjjjj" />
-<reward itemid="52010" name="2星古拉加斯" auto="jjjjj" />
-<reward itemid="53010" name="3星古拉加斯" auto="jjjjj" />
-<reward itemid="54010" name="4星古拉加斯" auto="jjjjj" />
-<reward itemid="55010" name="5星古拉加斯" auto="jjjjj" />
-<reward itemid="56010" name="6星古拉加斯" auto="jjjjj" />
-<reward itemid="57010" name="7星古拉加斯" auto="jjjjj" />
-<reward itemid="51012" name="1星奈德丽" auto="jjjjj" />
-<reward itemid="52012" name="2星奈德丽" auto="jjjjj" />
-<reward itemid="53012" name="3星奈德丽" auto="jjjjj" />
-<reward itemid="54012" name="4星奈德丽" auto="jjjjj" />
-<reward itemid="55012" name="5星奈德丽" auto="jjjjj" />
-<reward itemid="56012" name="6星奈德丽" auto="jjjjj" />
-<reward itemid="57012" name="7星奈德丽" auto="jjjjj" />
-<reward itemid="51024" name="1星崔斯特" auto="jjjjj" />
-<reward itemid="52024" name="2星崔斯特" auto="jjjjj" />
-<reward itemid="53024" name="3星崔斯特" auto="jjjjj" />
-<reward itemid="54024" name="4星崔斯特" auto="jjjjj" />
-<reward itemid="55024" name="5星崔斯特" auto="jjjjj" />
-<reward itemid="56024" name="6星崔斯特" auto="jjjjj" />
-<reward itemid="57024" name="7星崔斯特" auto="jjjjj" />
-<reward itemid="51060" name="1星布兰德" auto="jjjjj" />
-<reward itemid="52060" name="2星布兰德" auto="jjjjj" />
-<reward itemid="53060" name="3星布兰德" auto="jjjjj" />
-<reward itemid="54060" name="4星布兰德" auto="jjjjj" />
-<reward itemid="55060" name="5星布兰德" auto="jjjjj" />
-<reward itemid="56060" name="6星布兰德" auto="jjjjj" />
-<reward itemid="57060" name="7星布兰德" auto="jjjjj" />
-<reward itemid="51094" name="1星璐璐" auto="jjjjj" />
-<reward itemid="52094" name="2星璐璐" auto="jjjjj" />
-<reward itemid="53094" name="3星璐璐" auto="jjjjj" />
-<reward itemid="54094" name="4星璐璐" auto="jjjjj" />
-<reward itemid="55094" name="5星璐璐" auto="jjjjj" />
-<reward itemid="56094" name="6星璐璐" auto="jjjjj" />
-<reward itemid="57094" name="7星璐璐" auto="jjjjj" />
-<reward itemid="51102" name="1星雷恩加尔" auto="jjjjj" />
-<reward itemid="52102" name="2星雷恩加尔" auto="jjjjj" />
-<reward itemid="53102" name="3星雷恩加尔" auto="jjjjj" />
-<reward itemid="54102" name="4星雷恩加尔" auto="jjjjj" />
-<reward itemid="55102" name="5星雷恩加尔" auto="jjjjj" />
-<reward itemid="56102" name="6星雷恩加尔" auto="jjjjj" />
-<reward itemid="57102" name="7星雷恩加尔" auto="jjjjj" />
-<reward itemid="51104" name="1星卡兹克" auto="jjjjj" />
-<reward itemid="52104" name="2星卡兹克" auto="jjjjj" />
-<reward itemid="53104" name="3星卡兹克" auto="jjjjj" />
-<reward itemid="54104" name="4星卡兹克" auto="jjjjj" />
-<reward itemid="55104" name="5星卡兹克" auto="jjjjj" />
-<reward itemid="56104" name="6星卡兹克" auto="jjjjj" />
-<reward itemid="57104" name="7星卡兹克" auto="jjjjj" />
-<reward itemid="51116" name="1星金克斯" auto="jjjjj" />
-<reward itemid="52116" name="2星金克斯" auto="jjjjj" />
-<reward itemid="53116" name="3星金克斯" auto="jjjjj" />
-<reward itemid="54116" name="4星金克斯" auto="jjjjj" />
-<reward itemid="55116" name="5星金克斯" auto="jjjjj" />
-<reward itemid="56116" name="6星金克斯" auto="jjjjj" />
-<reward itemid="57116" name="7星金克斯" auto="jjjjj" />
-<reward itemid="51122" name="1星卡莉斯塔" auto="jjjjj" />
-<reward itemid="52122" name="2星卡莉斯塔" auto="jjjjj" />
-<reward itemid="53122" name="3星卡莉斯塔" auto="jjjjj" />
-<reward itemid="54122" name="4星卡莉斯塔" auto="jjjjj" />
-<reward itemid="55122" name="5星卡莉斯塔" auto="jjjjj" />
-<reward itemid="56122" name="6星卡莉斯塔" auto="jjjjj" />
-<reward itemid="57122" name="7星卡莉斯塔" auto="jjjjj" />
-<reward itemid="84101" name="正义雄鹰徽章" auto="jjjjj"/>
-<reward itemid="84102" name="仲裁者印记" auto="jjjjj"/>
-<reward itemid="84103" name="血手" auto="jjjjj"/>
-<reward itemid="84201" name="巨人boss印记" auto="jjjjj"/>
-<reward itemid="84202" name="巨人精英" auto="jjjjj"/>
-<reward itemid="84203" name="巨人花粉" auto="jjjjj"/>
-<reward itemid="84204" name="剧毒蜂刺" auto="jjjjj"/>
-<reward itemid="84205" name="火化后的飞蛾" auto="jjjjj"/>
-<reward itemid="84206" name="香菇酱" auto="jjjjj"/>
-<reward itemid="84207" name="有点绿的帽子" auto="jjjjj"/>
-<reward itemid="84208" name="特别绿的帽子" auto="jjjjj"/>
-<reward itemid="84301" name="金色药剂" auto="jjjjj"/>
-<reward itemid="84302" name="红色药剂" auto="jjjjj"/>
-<reward itemid="84303" name="蓝色药剂" auto="jjjjj"/>
-<reward itemid="84401" name="海克斯科技改装拳套" auto="jjjjj"/>
-<reward itemid="84402" name="海克斯科技核心" auto="jjjjj"/>
-<reward itemid="84403" name="海克斯科技榴弹" auto="jjjjj"/>
-<reward itemid="84404" name="海克斯科技电容" auto="jjjjj"/>
-<reward itemid="84405" name="约德尔诱捕器" auto="jjjjj"/>
-<reward itemid="84406" name="海克斯科技枪炮" auto="jjjjj"/>
-<reward itemid="84407" name="海克斯科技微型火箭" auto="jjjjj"/>
-<reward itemid="84501" name="一袋香瓜子" auto="jjjjj"/>
-<reward itemid="84502" name="葵花籽油" auto="jjjjj"/>
-<reward itemid="84503" name="太阳能热水器" auto="jjjjj"/>
-<reward itemid="84504" name="甜鸭蛋" auto="jjjjj"/>
-<reward itemid="84505" name="曙光之盾" auto="jjjjj"/>
-<reward itemid="84506" name="烤蜘蛛腿" auto="jjjjj"/>
-<reward itemid="84507" name="牙膏" auto="jjjjj"/>
-<reward itemid="84508" name="面罩" auto="jjjjj"/>
-<reward itemid="84509" name="黑色岩炮" auto="jjjjj"/>
-<reward itemid="84515" name="旋转机枪" auto="jjjjj"/>
-<reward itemid="84510" name="新月之刃" auto="jjjjj"/>
-<reward itemid="84511" name="王者权杖" auto="jjjjj"/>
-<reward itemid="84512" name="荣耀之火" auto="jjjjj"/>
-<reward itemid="84513" name="圣令" auto="jjjjj"/>
-<reward itemid="84514" name="白加黑" auto="jjjjj"/>
-<reward itemid="84601" name="鳄鱼皮" auto="jjjjj"/>
-<reward itemid="84602" name="僵尸肉块" auto="jjjjj"/>
-<reward itemid="84603" name="闪亮的砖头" auto="jjjjj"/>
-<reward itemid="84604" name="小皮鞭" auto="jjjjj"/>
-<reward itemid="84605" name="电磁炮" auto="jjjjj"/>
-<reward itemid="84606" name="远古之力" auto="jjjjj"/>
-<reward itemid="84607" name="黄金圆盘" auto="jjjjj"/>
-<reward itemid="84608" name="泽拉斯的遗产" auto="jjjjj"/>
-<reward itemid="84701" name="大炮弹" auto="jjjjj"/>
-<reward itemid="84702" name="大斧头" auto="jjjjj"/>
-<reward itemid="84703" name="鸦王之羽" auto="jjjjj"/>
-<reward itemid="84704" name="死灵精华" auto="jjjjj"/>
-<reward itemid="84705" name="上位始祖之血" auto="jjjjj"/>
-<reward itemid="84706" name="印有再来一瓶的瓶盖" auto="jjjjj"/>
-<reward itemid="84707" name="勇者奖章" auto="jjjjj"/>
-<reward itemid="84708" name="五菱之光漂移王" auto="jjjjj"/>
-<reward itemid="84709" name="染血的徽记" auto="jjjjj"/>
-<reward itemid="84710" name="苦痛香炉" auto="jjjjj"/>
-<reward itemid="84711" name="灭世者的头颅" auto="jjjjj"/>
-<reward itemid="84712" name="开山斧" auto="jjjjj"/>
+<reward itemid="40013" name="小包天梯币" auto="xbttb" />
+<reward itemid="40014" name="大包天梯币" auto="dbttb" />
+<reward itemid="40015" name="小包公会币" auto="xbghb" />
+<reward itemid="40016" name="大包公会币" auto="dbghb" />
+<reward itemid="40018" name="神器雕纹" auto="sqdw" />
+<reward itemid="40019" name="神器符印" auto="sqfy" />
+<reward itemid="40020" name="神器印记" auto="sqyj" />
+<reward itemid="40021" name="神器精华" auto="sqjh" />
+<reward itemid="51001" name="1星厄运小姐" auto="eyxj1" />
+<reward itemid="52001" name="2星厄运小姐" auto="eyxj2" />
+<reward itemid="53001" name="3星厄运小姐" auto="eyxj3" />
+<reward itemid="54001" name="4星厄运小姐" auto="eyxj4" />
+<reward itemid="55001" name="5星厄运小姐" auto="eyxj5" />
+<reward itemid="56001" name="6星厄运小姐" auto="eyxj6" />
+<reward itemid="57001" name="7星厄运小姐" auto="eyxj7" />
+<reward itemid="51005" name="1星赵信" auto="zx1" />
+<reward itemid="52005" name="2星赵信" auto="zx2" />
+<reward itemid="53005" name="3星赵信" auto="zx3" />
+<reward itemid="54005" name="4星赵信" auto="zx4" />
+<reward itemid="55005" name="5星赵信" auto="zx5" />
+<reward itemid="56005" name="6星赵信" auto="zx6" />
+<reward itemid="57005" name="7星赵信" auto="zx7" />
+<reward itemid="51008" name="1星潘森" auto="ps1" />
+<reward itemid="52008" name="2星潘森" auto="ps2" />
+<reward itemid="53008" name="3星潘森" auto="ps3" />
+<reward itemid="54008" name="4星潘森" auto="ps4" />
+<reward itemid="55008" name="5星潘森" auto="ps5" />
+<reward itemid="56008" name="6星潘森" auto="ps6" />
+<reward itemid="57008" name="7星潘森" auto="ps7" />
+<reward itemid="51009" name="1星奥拉夫" auto="alf1" />
+<reward itemid="52009" name="2星奥拉夫" auto="alf2" />
+<reward itemid="53009" name="3星奥拉夫" auto="alf3" />
+<reward itemid="54009" name="4星奥拉夫" auto="alf4" />
+<reward itemid="55009" name="5星奥拉夫" auto="alf5" />
+<reward itemid="56009" name="6星奥拉夫" auto="alf6" />
+<reward itemid="57009" name="7星奥拉夫" auto="alf7" />
+<reward itemid="51011" name="1星伊泽瑞尔" auto="yzre1" />
+<reward itemid="52011" name="2星伊泽瑞尔" auto="yzre2" />
+<reward itemid="53011" name="3星伊泽瑞尔" auto="yzre3" />
+<reward itemid="54011" name="4星伊泽瑞尔" auto="yzre4" />
+<reward itemid="55011" name="5星伊泽瑞尔" auto="yzre5" />
+<reward itemid="56011" name="6星伊泽瑞尔" auto="yzre6" />
+<reward itemid="57011" name="7星伊泽瑞尔" auto="yzre7" />
+<reward itemid="51013" name="1星莫德凯撒" auto="mdks1" />
+<reward itemid="52013" name="2星莫德凯撒" auto="mdks2" />
+<reward itemid="53013" name="3星莫德凯撒" auto="mdks3" />
+<reward itemid="54013" name="4星莫德凯撒" auto="mdks4" />
+<reward itemid="55013" name="5星莫德凯撒" auto="mdks5" />
+<reward itemid="56013" name="6星莫德凯撒" auto="mdks6" />
+<reward itemid="57013" name="7星莫德凯撒" auto="mdks7" />
+<reward itemid="51017" name="1星盖伦" auto="gl1" />
+<reward itemid="52017" name="2星盖伦" auto="gl2" />
+<reward itemid="53017" name="3星盖伦" auto="gl3" />
+<reward itemid="54017" name="4星盖伦" auto="gl4" />
+<reward itemid="55017" name="5星盖伦" auto="gl5" />
+<reward itemid="56017" name="6星盖伦" auto="gl6" />
+<reward itemid="57017" name="7星盖伦" auto="gl7" />
+<reward itemid="51027" name="1星塔里克" auto="tlk1" />
+<reward itemid="52027" name="2星塔里克" auto="tlk2" />
+<reward itemid="53027" name="3星塔里克" auto="tlk3" />
+<reward itemid="54027" name="4星塔里克" auto="tlk4" />
+<reward itemid="55027" name="5星塔里克" auto="tlk5" />
+<reward itemid="56027" name="6星塔里克" auto="tlk6" />
+<reward itemid="57027" name="7星塔里克" auto="tlk7" />
+<reward itemid="51032" name="1星沃里克" auto="wlk1" />
+<reward itemid="52032" name="2星沃里克" auto="wlk2" />
+<reward itemid="53032" name="3星沃里克" auto="wlk3" />
+<reward itemid="54032" name="4星沃里克" auto="wlk4" />
+<reward itemid="55032" name="5星沃里克" auto="wlk5" />
+<reward itemid="56032" name="6星沃里克" auto="wlk6" />
+<reward itemid="57032" name="7星沃里克" auto="wlk7" />
+<reward itemid="51035" name="1星布里茨" auto="blc1" />
+<reward itemid="52035" name="2星布里茨" auto="blc2" />
+<reward itemid="53035" name="3星布里茨" auto="blc3" />
+<reward itemid="54035" name="4星布里茨" auto="blc4" />
+<reward itemid="55035" name="5星布里茨" auto="blc5" />
+<reward itemid="56035" name="6星布里茨" auto="blc6" />
+<reward itemid="57035" name="7星布里茨" auto="blc7" />
+<reward itemid="51036" name="1星阿利斯塔" auto="alst1" />
+<reward itemid="52036" name="2星阿利斯塔" auto="alst2" />
+<reward itemid="53036" name="3星阿利斯塔" auto="alst3" />
+<reward itemid="54036" name="4星阿利斯塔" auto="alst4" />
+<reward itemid="55036" name="5星阿利斯塔" auto="alst5" />
+<reward itemid="56036" name="6星阿利斯塔" auto="alst6" />
+<reward itemid="57036" name="7星阿利斯塔" auto="alst7" />
+<reward itemid="51038" name="1星易" auto="y1" />
+<reward itemid="52038" name="2星易" auto="y2" />
+<reward itemid="53038" name="3星易" auto="y3" />
+<reward itemid="54038" name="4星易" auto="y4" />
+<reward itemid="55038" name="5星易" auto="y5" />
+<reward itemid="56038" name="6星易" auto="y6" />
+<reward itemid="57038" name="7星易" auto="y7" />
+<reward itemid="51039" name="1星贾克斯" auto="jks1" />
+<reward itemid="52039" name="2星贾克斯" auto="jks2" />
+<reward itemid="53039" name="3星贾克斯" auto="jks3" />
+<reward itemid="54039" name="4星贾克斯" auto="jks4" />
+<reward itemid="55039" name="5星贾克斯" auto="jks5" />
+<reward itemid="56039" name="6星贾克斯" auto="jks6" />
+<reward itemid="57039" name="7星贾克斯" auto="jks7" />
+<reward itemid="51040" name="1星崔斯塔娜" auto="cstn1" />
+<reward itemid="52040" name="2星崔斯塔娜" auto="cstn2" />
+<reward itemid="53040" name="3星崔斯塔娜" auto="cstn3" />
+<reward itemid="54040" name="4星崔斯塔娜" auto="cstn4" />
+<reward itemid="55040" name="5星崔斯塔娜" auto="cstn5" />
+<reward itemid="56040" name="6星崔斯塔娜" auto="cstn6" />
+<reward itemid="57040" name="7星崔斯塔娜" auto="cstn7" />
+<reward itemid="51041" name="1星安妮" auto="an1" />
+<reward itemid="52041" name="2星安妮" auto="an2" />
+<reward itemid="53041" name="3星安妮" auto="an3" />
+<reward itemid="54041" name="4星安妮" auto="an4" />
+<reward itemid="55041" name="5星安妮" auto="an5" />
+<reward itemid="56041" name="6星安妮" auto="an6" />
+<reward itemid="57041" name="7星安妮" auto="an7" />
+<reward itemid="51042" name="1星艾希" auto="ax1" />
+<reward itemid="52042" name="2星艾希" auto="ax2" />
+<reward itemid="53042" name="3星艾希" auto="ax3" />
+<reward itemid="54042" name="4星艾希" auto="ax4" />
+<reward itemid="55042" name="5星艾希" auto="ax5" />
+<reward itemid="56042" name="6星艾希" auto="ax6" />
+<reward itemid="57042" name="7星艾希" auto="ax7" />
+<reward itemid="51043" name="1星提莫" auto="tm1" />
+<reward itemid="52043" name="2星提莫" auto="tm2" />
+<reward itemid="53043" name="3星提莫" auto="tm3" />
+<reward itemid="54043" name="4星提莫" auto="tm4" />
+<reward itemid="55043" name="5星提莫" auto="tm5" />
+<reward itemid="56043" name="6星提莫" auto="tm6" />
+<reward itemid="57043" name="7星提莫" auto="tm7" />
+<reward itemid="51048" name="1星墨菲特" auto="mft1" />
+<reward itemid="52048" name="2星墨菲特" auto="mft2" />
+<reward itemid="53048" name="3星墨菲特" auto="mft3" />
+<reward itemid="54048" name="4星墨菲特" auto="mft4" />
+<reward itemid="55048" name="5星墨菲特" auto="mft5" />
+<reward itemid="56048" name="6星墨菲特" auto="mft6" />
+<reward itemid="57048" name="7星墨菲特" auto="mft7" />
+<reward itemid="51050" name="1星蒙多医生" auto="mdys1" />
+<reward itemid="52050" name="2星蒙多医生" auto="mdys2" />
+<reward itemid="53050" name="3星蒙多医生" auto="mdys3" />
+<reward itemid="54050" name="4星蒙多医生" auto="mdys4" />
+<reward itemid="55050" name="5星蒙多医生" auto="mdys5" />
+<reward itemid="56050" name="6星蒙多医生" auto="mdys6" />
+<reward itemid="57050" name="7星蒙多医生" auto="mdys7" />
+<reward itemid="51051" name="1星泰达米尔" auto="tdme1" />
+<reward itemid="52051" name="2星泰达米尔" auto="tdme2" />
+<reward itemid="53051" name="3星泰达米尔" auto="tdme3" />
+<reward itemid="54051" name="4星泰达米尔" auto="tdme4" />
+<reward itemid="55051" name="5星泰达米尔" auto="tdme5" />
+<reward itemid="56051" name="6星泰达米尔" auto="tdme6" />
+<reward itemid="57051" name="7星泰达米尔" auto="tdme7" />
+<reward itemid="51052" name="1星辛吉德" auto="xjd1" />
+<reward itemid="52052" name="2星辛吉德" auto="xjd2" />
+<reward itemid="53052" name="3星辛吉德" auto="xjd3" />
+<reward itemid="54052" name="4星辛吉德" auto="xjd4" />
+<reward itemid="55052" name="5星辛吉德" auto="xjd5" />
+<reward itemid="56052" name="6星辛吉德" auto="xjd6" />
+<reward itemid="57052" name="7星辛吉德" auto="xjd7" />
+<reward itemid="51055" name="1星努努" auto="nn1" />
+<reward itemid="52055" name="2星努努" auto="nn2" />
+<reward itemid="53055" name="3星努努" auto="nn3" />
+<reward itemid="54055" name="4星努努" auto="nn4" />
+<reward itemid="55055" name="5星努努" auto="nn5" />
+<reward itemid="56055" name="6星努努" auto="nn6" />
+<reward itemid="57055" name="7星努努" auto="nn7" />
+<reward itemid="51058" name="1星薇恩" auto="we1" />
+<reward itemid="52058" name="2星薇恩" auto="we2" />
+<reward itemid="53058" name="3星薇恩" auto="we3" />
+<reward itemid="54058" name="4星薇恩" auto="we4" />
+<reward itemid="55058" name="5星薇恩" auto="we5" />
+<reward itemid="56058" name="6星薇恩" auto="we6" />
+<reward itemid="57058" name="7星薇恩" auto="we7" />
+<reward itemid="51059" name="1星兰博" auto="lb1" />
+<reward itemid="52059" name="2星兰博" auto="lb2" />
+<reward itemid="53059" name="3星兰博" auto="lb3" />
+<reward itemid="54059" name="4星兰博" auto="lb4" />
+<reward itemid="55059" name="5星兰博" auto="lb5" />
+<reward itemid="56059" name="6星兰博" auto="lb6" />
+<reward itemid="57059" name="7星兰博" auto="lb7" />
+<reward itemid="51061" name="1星李青" auto="lq1" />
+<reward itemid="52061" name="2星李青" auto="lq2" />
+<reward itemid="53061" name="3星李青" auto="lq3" />
+<reward itemid="54061" name="4星李青" auto="lq4" />
+<reward itemid="55061" name="5星李青" auto="lq5" />
+<reward itemid="56061" name="6星李青" auto="lq6" />
+<reward itemid="57061" name="7星李青" auto="lq7" />
+<reward itemid="51063" name="1星嘉文四世" auto="jwss1" />
+<reward itemid="52063" name="2星嘉文四世" auto="jwss2" />
+<reward itemid="53063" name="3星嘉文四世" auto="jwss3" />
+<reward itemid="54063" name="4星嘉文四世" auto="jwss4" />
+<reward itemid="55063" name="5星嘉文四世" auto="jwss5" />
+<reward itemid="56063" name="6星嘉文四世" auto="jwss6" />
+<reward itemid="57063" name="7星嘉文四世" auto="jwss7" />
+<reward itemid="51070" name="1星艾瑞莉娅" auto="arly1" />
+<reward itemid="52070" name="2星艾瑞莉娅" auto="arly2" />
+<reward itemid="53070" name="3星艾瑞莉娅" auto="arly3" />
+<reward itemid="54070" name="4星艾瑞莉娅" auto="arly4" />
+<reward itemid="55070" name="5星艾瑞莉娅" auto="arly5" />
+<reward itemid="56070" name="6星艾瑞莉娅" auto="arly6" />
+<reward itemid="57070" name="7星艾瑞莉娅" auto="arly7" />
+<reward itemid="51072" name="1星拉克丝" auto="lks1" />
+<reward itemid="52072" name="2星拉克丝" auto="lks2" />
+<reward itemid="53072" name="3星拉克丝" auto="lks3" />
+<reward itemid="54072" name="4星拉克丝" auto="lks4" />
+<reward itemid="55072" name="5星拉克丝" auto="lks5" />
+<reward itemid="56072" name="6星拉克丝" auto="lks6" />
+<reward itemid="57072" name="7星拉克丝" auto="lks7" />
+<reward itemid="51074" name="1星娑娜" auto="sn1" />
+<reward itemid="52074" name="2星娑娜" auto="sn2" />
+<reward itemid="53074" name="3星娑娜" auto="sn3" />
+<reward itemid="54074" name="4星娑娜" auto="sn4" />
+<reward itemid="55074" name="5星娑娜" auto="sn5" />
+<reward itemid="56074" name="6星娑娜" auto="sn6" />
+<reward itemid="57074" name="7星娑娜" auto="sn7" />
+<reward itemid="51075" name="1星卡特琳娜" auto="ktln1" />
+<reward itemid="52075" name="2星卡特琳娜" auto="ktln2" />
+<reward itemid="53075" name="3星卡特琳娜" auto="ktln3" />
+<reward itemid="54075" name="4星卡特琳娜" auto="ktln4" />
+<reward itemid="55075" name="5星卡特琳娜" auto="ktln5" />
+<reward itemid="56075" name="6星卡特琳娜" auto="ktln6" />
+<reward itemid="57075" name="7星卡特琳娜" auto="ktln7" />
+<reward itemid="51076" name="1星瑞兹" auto="rz1" />
+<reward itemid="52076" name="2星瑞兹" auto="rz2" />
+<reward itemid="53076" name="3星瑞兹" auto="rz3" />
+<reward itemid="54076" name="4星瑞兹" auto="rz4" />
+<reward itemid="55076" name="5星瑞兹" auto="rz5" />
+<reward itemid="56076" name="6星瑞兹" auto="rz6" />
+<reward itemid="57076" name="7星瑞兹" auto="rz7" />
+<reward itemid="51078" name="1星蕾欧娜" auto="lon1" />
+<reward itemid="52078" name="2星蕾欧娜" auto="lon2" />
+<reward itemid="53078" name="3星蕾欧娜" auto="lon3" />
+<reward itemid="54078" name="4星蕾欧娜" auto="lon4" />
+<reward itemid="55078" name="5星蕾欧娜" auto="lon5" />
+<reward itemid="56078" name="6星蕾欧娜" auto="lon6" />
+<reward itemid="57078" name="7星蕾欧娜" auto="lon7" />
+<reward itemid="51079" name="1星孙悟空" auto="swk1" />
+<reward itemid="52079" name="2星孙悟空" auto="swk2" />
+<reward itemid="53079" name="3星孙悟空" auto="swk3" />
+<reward itemid="54079" name="4星孙悟空" auto="swk4" />
+<reward itemid="55079" name="5星孙悟空" auto="swk5" />
+<reward itemid="56079" name="6星孙悟空" auto="swk6" />
+<reward itemid="57079" name="7星孙悟空" auto="swk7" />
+<reward itemid="51082" name="1星瑞文" auto="rw1" />
+<reward itemid="52082" name="2星瑞文" auto="rw2" />
+<reward itemid="53082" name="3星瑞文" auto="rw3" />
+<reward itemid="54082" name="4星瑞文" auto="rw4" />
+<reward itemid="55082" name="5星瑞文" auto="rw5" />
+<reward itemid="56082" name="6星瑞文" auto="rw6" />
+<reward itemid="57082" name="7星瑞文" auto="rw7" />
+<reward itemid="51084" name="1星希瓦娜" auto="xwn1" />
+<reward itemid="52084" name="2星希瓦娜" auto="xwn2" />
+<reward itemid="53084" name="3星希瓦娜" auto="xwn3" />
+<reward itemid="54084" name="4星希瓦娜" auto="xwn4" />
+<reward itemid="55084" name="5星希瓦娜" auto="xwn5" />
+<reward itemid="56084" name="6星希瓦娜" auto="xwn6" />
+<reward itemid="57084" name="7星希瓦娜" auto="xwn7" />
+<reward itemid="51086" name="1星菲兹" auto="fz1" />
+<reward itemid="52086" name="2星菲兹" auto="fz2" />
+<reward itemid="53086" name="3星菲兹" auto="fz3" />
+<reward itemid="54086" name="4星菲兹" auto="fz4" />
+<reward itemid="55086" name="5星菲兹" auto="fz5" />
+<reward itemid="56086" name="6星菲兹" auto="fz6" />
+<reward itemid="57086" name="7星菲兹" auto="fz7" />
+<reward itemid="51088" name="1星阿狸" auto="al1" />
+<reward itemid="52088" name="2星阿狸" auto="al2" />
+<reward itemid="53088" name="3星阿狸" auto="al3" />
+<reward itemid="54088" name="4星阿狸" auto="al4" />
+<reward itemid="55088" name="5星阿狸" auto="al5" />
+<reward itemid="56088" name="6星阿狸" auto="al6" />
+<reward itemid="57088" name="7星阿狸" auto="al7" />
+<reward itemid="51096" name="1星韦鲁斯" auto="wls1" />
+<reward itemid="52096" name="2星韦鲁斯" auto="wls2" />
+<reward itemid="53096" name="3星韦鲁斯" auto="wls3" />
+<reward itemid="54096" name="4星韦鲁斯" auto="wls4" />
+<reward itemid="55096" name="5星韦鲁斯" auto="wls5" />
+<reward itemid="56096" name="6星韦鲁斯" auto="wls6" />
+<reward itemid="57096" name="7星韦鲁斯" auto="wls7" />
+<reward itemid="51097" name="1星德莱厄斯" auto="dles1" />
+<reward itemid="52097" name="2星德莱厄斯" auto="dles2" />
+<reward itemid="53097" name="3星德莱厄斯" auto="dles3" />
+<reward itemid="54097" name="4星德莱厄斯" auto="dles4" />
+<reward itemid="55097" name="5星德莱厄斯" auto="dles5" />
+<reward itemid="56097" name="6星德莱厄斯" auto="dles6" />
+<reward itemid="57097" name="7星德莱厄斯" auto="dles7" />
+<reward itemid="51105" name="1星伊丽丝" auto="yls1" />
+<reward itemid="52105" name="2星伊丽丝" auto="yls2" />
+<reward itemid="53105" name="3星伊丽丝" auto="yls3" />
+<reward itemid="54105" name="4星伊丽丝" auto="yls4" />
+<reward itemid="55105" name="5星伊丽丝" auto="yls5" />
+<reward itemid="56105" name="6星伊丽丝" auto="yls6" />
+<reward itemid="57105" name="7星伊丽丝" auto="yls7" />
+<reward itemid="51108" name="1星锤石" auto="cs1" />
+<reward itemid="52108" name="2星锤石" auto="cs2" />
+<reward itemid="53108" name="3星锤石" auto="cs3" />
+<reward itemid="54108" name="4星锤石" auto="cs4" />
+<reward itemid="55108" name="5星锤石" auto="cs5" />
+<reward itemid="56108" name="6星锤石" auto="cs6" />
+<reward itemid="57108" name="7星锤石" auto="cs7" />
+<reward itemid="51117" name="1星亚索" auto="ys1" />
+<reward itemid="52117" name="2星亚索" auto="ys2" />
+<reward itemid="53117" name="3星亚索" auto="ys3" />
+<reward itemid="54117" name="4星亚索" auto="ys4" />
+<reward itemid="55117" name="5星亚索" auto="ys5" />
+<reward itemid="56117" name="6星亚索" auto="ys6" />
+<reward itemid="57117" name="7星亚索" auto="ys7" />
+<reward itemid="51121" name="1星阿兹尔" auto="aze1" />
+<reward itemid="52121" name="2星阿兹尔" auto="aze2" />
+<reward itemid="53121" name="3星阿兹尔" auto="aze3" />
+<reward itemid="54121" name="4星阿兹尔" auto="aze4" />
+<reward itemid="55121" name="5星阿兹尔" auto="aze5" />
+<reward itemid="56121" name="6星阿兹尔" auto="aze6" />
+<reward itemid="57121" name="7星阿兹尔" auto="aze7" />
+<reward itemid="51010" name="1星古拉加斯" auto="gljs1" />
+<reward itemid="52010" name="2星古拉加斯" auto="gljs2" />
+<reward itemid="53010" name="3星古拉加斯" auto="gljs3" />
+<reward itemid="54010" name="4星古拉加斯" auto="gljs4" />
+<reward itemid="55010" name="5星古拉加斯" auto="gljs5" />
+<reward itemid="56010" name="6星古拉加斯" auto="gljs6" />
+<reward itemid="57010" name="7星古拉加斯" auto="gljs7" />
+<reward itemid="51012" name="1星奈德丽" auto="ndl1" />
+<reward itemid="52012" name="2星奈德丽" auto="ndl2" />
+<reward itemid="53012" name="3星奈德丽" auto="ndl3" />
+<reward itemid="54012" name="4星奈德丽" auto="ndl4" />
+<reward itemid="55012" name="5星奈德丽" auto="ndl5" />
+<reward itemid="56012" name="6星奈德丽" auto="ndl6" />
+<reward itemid="57012" name="7星奈德丽" auto="ndl7" />
+<reward itemid="51024" name="1星崔斯特" auto="cst1" />
+<reward itemid="52024" name="2星崔斯特" auto="cst2" />
+<reward itemid="53024" name="3星崔斯特" auto="cst3" />
+<reward itemid="54024" name="4星崔斯特" auto="cst4" />
+<reward itemid="55024" name="5星崔斯特" auto="cst5" />
+<reward itemid="56024" name="6星崔斯特" auto="cst6" />
+<reward itemid="57024" name="7星崔斯特" auto="cst7" />
+<reward itemid="51060" name="1星布兰德" auto="bld1" />
+<reward itemid="52060" name="2星布兰德" auto="bld2" />
+<reward itemid="53060" name="3星布兰德" auto="bld3" />
+<reward itemid="54060" name="4星布兰德" auto="bld4" />
+<reward itemid="55060" name="5星布兰德" auto="bld5" />
+<reward itemid="56060" name="6星布兰德" auto="bld6" />
+<reward itemid="57060" name="7星布兰德" auto="bld7" />
+<reward itemid="51094" name="1星璐璐" auto="ll1" />
+<reward itemid="52094" name="2星璐璐" auto="ll2" />
+<reward itemid="53094" name="3星璐璐" auto="ll3" />
+<reward itemid="54094" name="4星璐璐" auto="ll4" />
+<reward itemid="55094" name="5星璐璐" auto="ll5" />
+<reward itemid="56094" name="6星璐璐" auto="ll6" />
+<reward itemid="57094" name="7星璐璐" auto="ll7" />
+<reward itemid="51102" name="1星雷恩加尔" auto="leje1" />
+<reward itemid="52102" name="2星雷恩加尔" auto="leje2" />
+<reward itemid="53102" name="3星雷恩加尔" auto="leje3" />
+<reward itemid="54102" name="4星雷恩加尔" auto="leje4" />
+<reward itemid="55102" name="5星雷恩加尔" auto="leje5" />
+<reward itemid="56102" name="6星雷恩加尔" auto="leje6" />
+<reward itemid="57102" name="7星雷恩加尔" auto="leje7" />
+<reward itemid="51104" name="1星卡兹克" auto="kzk1" />
+<reward itemid="52104" name="2星卡兹克" auto="kzk2" />
+<reward itemid="53104" name="3星卡兹克" auto="kzk3" />
+<reward itemid="54104" name="4星卡兹克" auto="kzk4" />
+<reward itemid="55104" name="5星卡兹克" auto="kzk5" />
+<reward itemid="56104" name="6星卡兹克" auto="kzk6" />
+<reward itemid="57104" name="7星卡兹克" auto="kzk7" />
+<reward itemid="51116" name="1星金克斯" auto="jks1" />
+<reward itemid="52116" name="2星金克斯" auto="jks2" />
+<reward itemid="53116" name="3星金克斯" auto="jks3" />
+<reward itemid="54116" name="4星金克斯" auto="jks4" />
+<reward itemid="55116" name="5星金克斯" auto="jks5" />
+<reward itemid="56116" name="6星金克斯" auto="jks6" />
+<reward itemid="57116" name="7星金克斯" auto="jks7" />
+<reward itemid="51122" name="1星卡莉斯塔" auto="klst1" />
+<reward itemid="52122" name="2星卡莉斯塔" auto="klst2" />
+<reward itemid="53122" name="3星卡莉斯塔" auto="klst3" />
+<reward itemid="54122" name="4星卡莉斯塔" auto="klst4" />
+<reward itemid="55122" name="5星卡莉斯塔" auto="klst5" />
+<reward itemid="56122" name="6星卡莉斯塔" auto="klst6" />
+<reward itemid="57122" name="7星卡莉斯塔" auto="klst7" />
+<reward itemid="84101" name="正义雄鹰徽章" auto="zyxyhz" />
+<reward itemid="84102" name="仲裁者印记" auto="zczyj" />
+<reward itemid="84103" name="血手" auto="xs" />
+<reward itemid="84201" name="巨人boss印记" auto="jrbossyj" />
+<reward itemid="84202" name="巨人精英" auto="jrjy" />
+<reward itemid="84203" name="巨人花粉" auto="jrhf" />
+<reward itemid="84204" name="剧毒蜂刺" auto="jdfc" />
+<reward itemid="84205" name="火化后的飞蛾" auto="hhhdfe" />
+<reward itemid="84206" name="香菇酱" auto="xgj" />
+<reward itemid="84207" name="有点绿的帽子" auto="ydldmz" />
+<reward itemid="84208" name="特别绿的帽子" auto="tbldmz" />
+<reward itemid="84301" name="金色药剂" auto="jsyj" />
+<reward itemid="84302" name="红色药剂" auto="hsyj" />
+<reward itemid="84303" name="蓝色药剂" auto="lsyj" />
+<reward itemid="84401" name="海克斯科技改装拳套" auto="hkskjgzqt" />
+<reward itemid="84402" name="海克斯科技核心" auto="hkskjhx" />
+<reward itemid="84403" name="海克斯科技榴弹" auto="hkskjld" />
+<reward itemid="84404" name="海克斯科技电容" auto="hkskjdr" />
+<reward itemid="84405" name="约德尔诱捕器" auto="ydeybq" />
+<reward itemid="84406" name="海克斯科技枪炮" auto="hkskjqp" />
+<reward itemid="84407" name="海克斯科技微型火箭" auto="hkskjwxhj" />
+<reward itemid="84501" name="一袋香瓜子" auto="ydxgz" />
+<reward itemid="84502" name="葵花籽油" auto="khzy" />
+<reward itemid="84503" name="太阳能热水器" auto="tynrsq" />
+<reward itemid="84504" name="甜鸭蛋" auto="tyd" />
+<reward itemid="84505" name="曙光之盾" auto="sgzd" />
+<reward itemid="84506" name="烤蜘蛛腿" auto="kzzt" />
+<reward itemid="84507" name="牙膏" auto="yg" />
+<reward itemid="84508" name="面罩" auto="mz" />
+<reward itemid="84509" name="黑色岩炮" auto="hsyp" />
+<reward itemid="84515" name="旋转机枪" auto="xzjq" />
+<reward itemid="84510" name="新月之刃" auto="xyzr" />
+<reward itemid="84511" name="王者权杖" auto="wzqz" />
+<reward itemid="84512" name="荣耀之火" auto="ryzh" />
+<reward itemid="84513" name="圣令" auto="sl" />
+<reward itemid="84514" name="白加黑" auto="bjh" />
+<reward itemid="84601" name="鳄鱼皮" auto="eyp" />
+<reward itemid="84602" name="僵尸肉块" auto="jsrk" />
+<reward itemid="84603" name="闪亮的砖头" auto="sldzt" />
+<reward itemid="84604" name="小皮鞭" auto="xpb" />
+<reward itemid="84605" name="电磁炮" auto="dcp" />
+<reward itemid="84606" name="远古之力" auto="ygzl" />
+<reward itemid="84607" name="黄金圆盘" auto="hjyp" />
+<reward itemid="84608" name="泽拉斯的遗产" auto="zlsdyc" />
+<reward itemid="84701" name="大炮弹" auto="dpd" />
+<reward itemid="84702" name="大斧头" auto="dft" />
+<reward itemid="84703" name="鸦王之羽" auto="ywzy" />
+<reward itemid="84704" name="死灵精华" auto="sljh" />
+<reward itemid="84705" name="上位始祖之血" auto="swszzx" />
+<reward itemid="84706" name="印有再来一瓶的瓶盖" auto="yyzlypdpg" />
+<reward itemid="84707" name="勇者奖章" auto="yzjz" />
+<reward itemid="84708" name="五菱之光漂移王" auto="wlzgpyw" />
+<reward itemid="84709" name="染血的徽记" auto="rxdhj" />
+<reward itemid="84710" name="苦痛香炉" auto="ktxl" />
+<reward itemid="84711" name="灭世者的头颅" auto="mszdtl" />
+<reward itemid="84712" name="开山斧" auto="ksf" />
 </data>

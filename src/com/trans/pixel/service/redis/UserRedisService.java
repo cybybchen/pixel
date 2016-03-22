@@ -6,15 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import net.sf.json.JSONObject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -25,8 +20,7 @@ import com.trans.pixel.protoc.Commands.VipList;
 @Repository
 public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
+
 	public final static String VIP = RedisKey.PREFIX+"Vip";
 	
 	public UserBean getUser(final long userId) {
