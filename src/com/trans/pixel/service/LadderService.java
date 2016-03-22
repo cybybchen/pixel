@@ -161,10 +161,9 @@ public class LadderService {
 		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
-		attackRankBean.setRank(myRankBean.getRank());
-		myRankBean.setRank(attackRank);
-		
 		if (attackRank < myRankBean.getRank()) {
+			attackRankBean.setRank(myRankBean.getRank());
+			myRankBean.setRank(attackRank);
 			updateUserRank(serverId, attackRankBean);
 			updateUserRank(serverId, myRankBean);
 		}
@@ -174,8 +173,10 @@ public class LadderService {
 		 */
 		sendLog(user.getId(), user.getServerId(), userTeamRedisService.getTeamCacheString(user.getId()),
 				userTeamRedisService.getTeamCacheString(attackRankBean.getUserId()), result ? 1 : 0, attackRank);
+		
 		ladderRedisService.clearLock("LadderRank_"+myRank);
 		ladderRedisService.clearLock("LadderRank_"+attackRank);
+		
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
 	
