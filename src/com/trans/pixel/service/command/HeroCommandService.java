@@ -18,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.FenjieHeroInfo;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
@@ -27,16 +28,20 @@ import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseHeroResultCommand;
+import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class HeroCommandService extends BaseCommandService {
 
+	private static final int BUY_HERO_PACKAGE_COST = 50;
+	private static final int BUY_HERO_PACKAGE_COUNT = 10;
 	@Resource
 	private HeroLevelUpService heroLevelUpService;
 	@Resource
@@ -49,6 +54,10 @@ public class HeroCommandService extends BaseCommandService {
 	private EquipService equipService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private CostService costService;
+	@Resource
+	private UserService userService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
@@ -306,5 +315,18 @@ public class HeroCommandService extends BaseCommandService {
 			userHeroService.updateUserHero(userHero);
 			pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		}
+	}
+	
+	public void buyHeroPackage(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user) {
+		if (!costService.cost(user, RewardConst.JEWEL, BUY_HERO_PACKAGE_COST)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		user.setHeroLimit(user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT);
+		userService.updateUser(user);
+		
+		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 	}
 }

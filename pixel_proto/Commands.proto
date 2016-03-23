@@ -1550,6 +1550,10 @@ message ResponseRankCommand {
 	repeated UserRank userRank = 1;
 }
 
+message RequestBuyHeroPackageCommand {
+	
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1663,6 +1667,7 @@ message RequestCommand {
 	optional RequestCheatRechargeCommand cheatRechargeCommand = 79;
 	optional RequestUserPokedeCommand userPokedeCommand = 80;
 	optional RequestRankCommand rankCommand = 81;
+	optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;
 }
 // response command list transfer only use it
 message ResponseCommand {
