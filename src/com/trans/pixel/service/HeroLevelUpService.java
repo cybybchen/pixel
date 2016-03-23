@@ -172,7 +172,7 @@ public class HeroLevelUpService {
 	
 	private void calHeroStar(HeroInfoBean heroInfo) {
 		StarBean star = starService.getStarBean(heroInfo.getStarLevel() + 1);
-		while (heroInfo.getValue() >= star.getUpvalue()) {
+		while (heroInfo.getValue() >= star.getUpvalue() && heroInfo.getStarLevel() < 7) {
 			heroInfo.setValue(heroInfo.getValue() - star.getUpvalue());
 			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
 			star = starService.getStarBean(heroInfo.getStarLevel() + 1);
