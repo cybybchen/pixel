@@ -30,11 +30,13 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
+import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
@@ -91,10 +93,12 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setLootResultCommand(super.builderLootResultCommand(user));
 	}
 	
-//	public void pushUserMineListCommand(Builder responseBuilder, UserBean user) {
-//		List<UserMineBean> userMineList = pvpMapService.relateUser(user);
-//		responseBuilder.setGetUserMineCommand(super.buildGetUserMineCommand(userMineList));
-//	}
+	public void pushPvpMapListCommand(Builder responseBuilder, UserBean user) {
+		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
+		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
+		builder.addAllField(maplist.getFieldList());
+		responseBuilder.setPvpMapListCommand(builder);
+	}
 	
 	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user) {
 		List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
