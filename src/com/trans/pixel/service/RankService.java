@@ -57,7 +57,7 @@ public class RankService {
 	private List<UserRankBean> getZhanliRankList(int serverId) {
 		List<UserInfo> userInfoList = rankRedisService.getZhanliRanks(serverId, RankConst.RANK_LIST_START - 1, RankConst.RANK_LIST_END - 1);
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
-		for (int i = 0; 0 < userInfoList.size(); ++i) {
+		for (int i = 0; i < userInfoList.size(); ++i) {
 			UserInfo userInfo = userInfoList.get(i);
 			UserRankBean userRank = new UserRankBean();
 			userRank.setRank(i + 1);
