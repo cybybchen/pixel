@@ -49,7 +49,7 @@ public class RedisKey {
 	public final static String PURCHASECOINREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoinReward";
 
 	//pushmysql redis
-	public final static String PUSH_MYSQL_KEY = "key:mysql_update";
+	public final static String PUSH_MYSQL_KEY = "key:mysql_update:";
 	
 	//xiaoguan redis
 	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";

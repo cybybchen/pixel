@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.service.redis.LogRedisService;
