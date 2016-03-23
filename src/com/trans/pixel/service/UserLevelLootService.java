@@ -34,6 +34,8 @@ public class UserLevelLootService {
 		if (userLevelLootRecordBean == null) {
 			userLevelLootRecordBean = initUserLevelLootRecord(userId);
 			userLevelLootRecordMapper.insertUserLevelLootRecord(userLevelLootRecordBean);
+			userLevelLootRecordRedisService.updateUserLevelLootRecord(userLevelLootRecordBean);
+			userLevelLootRecordBean = switchLootLevel(1001, userId);
 		}
 		
 		return userLevelLootRecordBean;

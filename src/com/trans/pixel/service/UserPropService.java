@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserPropMapper;
-import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.service.redis.UserPropRedisService;
 

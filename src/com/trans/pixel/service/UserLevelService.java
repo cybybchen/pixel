@@ -36,6 +36,7 @@ public class UserLevelService {
 		if (userLevelRecordBean == null) {
 			userLevelRecordBean = initUserLevelRecord(userId);
 			userLevelMapper.insertUserLevelRecord(userLevelRecordBean);
+			userLevelRedisService.updateUserLevelRecord(userLevelRecordBean);
 		}
 		
 		return userLevelRecordBean;
