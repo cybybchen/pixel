@@ -99,6 +99,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 		pushCommandService.pushPurchaseCoinCommand(responseBuilder, user);
 		pushCommandService.pushUserPropListCommand(responseBuilder, user);
+		pushCommandService.pushPvpMapListCommand(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {
