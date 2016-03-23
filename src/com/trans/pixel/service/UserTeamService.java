@@ -94,6 +94,10 @@ public class UserTeamService {
 		return userTeamRedisService.getTeamCache(userid);
 	}
 
+	public void saveTeamCacheWithoutExpire(UserBean user, List<HeroInfoBean> list){
+		userTeamRedisService.saveTeamCacheWithoutExpire(user, list);
+	}
+
 	public void saveTeamCache(UserBean user, List<HeroInfoBean> list){
 		userTeamRedisService.saveTeamCache(user, list);
 	}

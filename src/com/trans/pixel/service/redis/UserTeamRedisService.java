@@ -60,7 +60,7 @@ public class UserTeamRedisService extends RedisService {
 		return value;
 	}
 	
-	public void saveTeamCache(final UserBean user, List<HeroInfoBean> list) {
+	public void saveTeamCacheWithoutExpire(final UserBean user, List<HeroInfoBean> list) {
 		if(list.isEmpty())
 			return;
 		Team.Builder teambuilder = Team.newBuilder();
@@ -69,7 +69,11 @@ public class UserTeamRedisService extends RedisService {
 			teambuilder.addHeroInfo(hero.buildRankHeroInfo());
 		}
 		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), formatJson(teambuilder.build()));
-		//todo expire
+	}
+	
+	public void saveTeamCache(final UserBean user, List<HeroInfoBean> list) {
+		saveTeamCacheWithoutExpire(user, list);
+		expire(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}
 
 	public void updateUserTeam(final UserTeamBean userTeam) {

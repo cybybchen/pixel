@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.PVPMap;
@@ -99,6 +100,7 @@ public class PvpMapRedisService extends RedisService{
 
 	public void saveUserBuff(UserBean user, int mapid, int buff) {
 		hput(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), mapid+"", buff+"");
+		expire(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public Map<String, PVPMine> getUserMines(long userId) {
@@ -136,6 +138,7 @@ public class PvpMapRedisService extends RedisService{
 
 	public void saveMine(long userId, PVPMine mine) {
 		hput(RedisKey.PVPMINE_PREFIX+userId, mine.getId()+"", formatJson(mine));
+		expire(RedisKey.PVPMINE_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public void saveMines(long userId, Map<String, PVPMine> mines) {
@@ -144,6 +147,7 @@ public class PvpMapRedisService extends RedisService{
 			map.put(entry.getKey(), formatJson(entry.getValue()));
 		}
 		hputAll(RedisKey.PVPMINE_PREFIX+userId, map);
+		expire(RedisKey.PVPMINE_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public void deleteMine(long userId, int id) {
@@ -206,6 +210,7 @@ public class PvpMapRedisService extends RedisService{
 				}
 			}
 			hputAll(RedisKey.PVPMONSTER_PREFIX+user.getId(), keyvalue);
+			expire(RedisKey.PVPMONSTER_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		}
 		return monsters;
 	}

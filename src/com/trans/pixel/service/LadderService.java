@@ -267,7 +267,7 @@ public class LadderService {
 				robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(4));
 				robot.setId(-i);
 				List<HeroInfoBean> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
-				userTeamService.saveTeamCache(robot, heroInfoList);
+				userTeamService.saveTeamCacheWithoutExpire(robot, heroInfoList);
 				UserRankBean robotRank = initRobotRank(robot.getId(), robot.getUserName(), i);
 				int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
 				robotRank.setZhanli(zhanli);
