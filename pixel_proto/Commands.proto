@@ -29,6 +29,7 @@ message UserInfo {
 	optional int32 zhanli = 24;
 	optional string lastLoginTime = 25;//上次登录时间
 	optional int32 heroLimit = 31;//英雄上限
+	optional string composeSkill = 33;//组合技
 }
 
 message ServerData {
@@ -1554,6 +1555,10 @@ message RequestBuyHeroPackageCommand {
 	
 }
 
+message RequestSubmitComposeSkillCommand {
+	required string composeSkill = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1668,6 +1673,7 @@ message RequestCommand {
 	optional RequestUserPokedeCommand userPokedeCommand = 80;
 	optional RequestRankCommand rankCommand = 81;
 	optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;
+	optional RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;
 }
 // response command list transfer only use it
 message ResponseCommand {

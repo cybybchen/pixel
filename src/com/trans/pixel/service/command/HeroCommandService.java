@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseHeroResultCommand;
@@ -328,5 +329,12 @@ public class HeroCommandService extends BaseCommandService {
 		userService.updateUser(user);
 		
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
+	}
+	
+	public void submitComposeSkill(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user) {
+		user.setComposeSkill(cmd.getComposeSkill());
+		userService.updateUser(user);
+		
+		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
 	}
 }

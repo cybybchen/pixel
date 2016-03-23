@@ -52,6 +52,8 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -662,6 +664,16 @@ public class GameDataScreen extends RequestScreen {
 		areaCommandService.useAreaEquips(cmd, responseBuilder, user);
 		return true;//UseAreaEquipCommand
 	}//UseAreaEquipCommand
+	@Override//BuyHeroPackageCommand
+	protected boolean handleCommand(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user) {
+		heroCommandService.buyHeroPackage(cmd, responseBuilder, user);
+		return true;//BuyHeroPackageCommand
+	}//BuyHeroPackageCommand
+	@Override//SubmitComposeSkillCommand
+	protected boolean handleCommand(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user) {
+		heroCommandService.submitComposeSkill(cmd, responseBuilder, user);
+		return true;//SubmitComposeSkillCommand
+	}//SubmitComposeSkillCommand
 	//add handleCommand here
 
 	@Override

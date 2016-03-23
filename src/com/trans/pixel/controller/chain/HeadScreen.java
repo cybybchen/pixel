@@ -122,6 +122,8 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -562,6 +564,16 @@ public class HeadScreen extends RequestScreen {
 		// TODO UseAreaEquipCommand method
 		return true;//UseAreaEquipCommand
 	}//UseAreaEquipCommand
+	@Override//BuyHeroPackageCommand
+	protected boolean handleCommand(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BuyHeroPackageCommand method
+		return true;//BuyHeroPackageCommand
+	}//BuyHeroPackageCommand
+	@Override//SubmitComposeSkillCommand
+	protected boolean handleCommand(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO SubmitComposeSkillCommand method
+		return true;//SubmitComposeSkillCommand
+	}//SubmitComposeSkillCommand
 	//add handleCommand here
 
 	@Override

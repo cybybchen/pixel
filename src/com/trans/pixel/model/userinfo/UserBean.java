@@ -58,6 +58,7 @@ public class UserBean {
 	private int areaUnlock = 0;
 	private int pvpUnlock = 0;
 	private int heroLimit = 0;
+	private String composeSkill = "";
 	/**
 	 * 注册时间
 	 */
@@ -680,6 +681,16 @@ public class UserBean {
 	public void setLoginDays(int loginDays) {
 		this.loginDays = loginDays;
 	}
+	/**
+	 * 组合技
+	 */
+	public String getComposeSkill() {
+		return composeSkill;
+	}
+	public void setComposeSkill(String composeSkill) {
+		this.composeSkill = composeSkill;
+	}
+	
 	public UserBean init(int serverId, String account, String userName) {
 		setAccount(account);
 		setId(0);
@@ -691,7 +702,6 @@ public class UserBean {
 		setHeroLimit(200);
 		return this;
 	}
-	
 	public UserInfo buildShort() {
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		builder.setId(id);
@@ -769,6 +779,7 @@ public class UserBean {
 		builder.setAreaEnergy(areaEnergy);
 		builder.setAreaEnergyTime(areaEnergyTime);
 		builder.setHeroLimit(heroLimit);
+		builder.setComposeSkill(composeSkill);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {
