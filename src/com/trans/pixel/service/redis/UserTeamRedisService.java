@@ -44,7 +44,7 @@ public class UserTeamRedisService extends RedisService {
 			UserBean user = userService.getUser(userid);
 			if (user == null) {
 				user = new UserBean();
-				user.init(1, "haha", "haha");
+				user.init(1, "haha", "haha", 0);
 			}
 				
 			team.setUser(user.buildShort());

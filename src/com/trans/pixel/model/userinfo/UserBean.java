@@ -691,11 +691,12 @@ public class UserBean {
 		this.composeSkill = composeSkill;
 	}
 	
-	public UserBean init(int serverId, String account, String userName) {
+	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
 		setServerId(serverId);
 		setUserName(userName);
+		setIcon(icon);
 		setCoin(1000000);
 		setJewel(1000000);
 		setExp(1000000);

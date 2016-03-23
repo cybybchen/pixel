@@ -851,6 +851,7 @@ message ResponseNeedRegisterCommand {
 
 message RequestRegisterCommand {
 	required string userName = 1;
+	optional int32 icon = 2;
 }
 
 message RequestLoginCommand {

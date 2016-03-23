@@ -264,7 +264,7 @@ public class LadderService {
 			for (int i = ladderEnemy.getRanking(); i <= ladderEnemy.getRanking1(); ++i) {
 				String robotName = randomRobotName(name2List, nameList);
 				UserBean robot = new UserBean();
-				robot.init(serverId, robotName, robotName);
+				robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(4));
 				robot.setId(-i);
 				List<HeroInfoBean> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
 				userTeamService.saveTeamCache(robot, heroInfoList);
