@@ -49,7 +49,7 @@ public class RedisKey {
 	public final static String PURCHASECOINREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoinReward";
 
 	//pushmysql redis
-	public final static String PUSH_MYSQL_KEY = "key:mysql_update:";
+	public final static String PUSH_MYSQL_KEY = "mysql_update:";
 	
 	//xiaoguan redis
 	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";
@@ -122,11 +122,11 @@ public class RedisKey {
 	
 	//equip
 	public static final String EQUIP_CONFIG = CONFIG_PREFIX+"equip";
-	public static final String CHIP_CONFIG = PREFIX + CONFIG_PREFIX+"key:chip";
+	public static final String CHIP_CONFIG = PREFIX + CONFIG_PREFIX+"chip";
 	
 	//message board
-	public static final String MESSAGE_BOARD_KEY = "key:message_key";
-	public static final String MESSAGE_BOARD_VALUE_KEY = "key:message_value";
+	public static final String MESSAGE_BOARD_KEY = "message_key";
+	public static final String MESSAGE_BOARD_VALUE_KEY = "message_value";
 	
 	//skill
 	public static final String SKILL_KEY = CONFIG_PREFIX+"skill";
