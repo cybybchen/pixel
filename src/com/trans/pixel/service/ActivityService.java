@@ -299,7 +299,7 @@ public class ActivityService {
 			kaifu2Rank.setMyRank(activityRedisService.getKaifu2MyRank(user, kaifu2Type));
 			Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, kaifu2Type);
 			List<UserInfo> userInfoList = userService.getCaches(serverId, values);
-			int rankInit = values.size() + 1;
+			int rankInit = 1;
 			for (TypedTuple<String> value : values) {
 				Rank.Builder rank = Rank.newBuilder();
 				for (UserInfo userInfo : userInfoList) {
@@ -307,7 +307,7 @@ public class ActivityService {
 						rank.setRank(rankInit);
 						rank.setScore(value.getScore().intValue());
 						rank.setUser(userInfo);
-						rankInit--;
+						rankInit++;
 						kaifu2Rank.addRank(rank.build());
 						break;
 					}
