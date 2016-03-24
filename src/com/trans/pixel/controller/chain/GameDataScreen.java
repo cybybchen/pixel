@@ -26,6 +26,8 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -52,8 +54,6 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -103,6 +103,7 @@ import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
@@ -674,6 +675,11 @@ public class GameDataScreen extends RequestScreen {
 		heroCommandService.submitComposeSkill(cmd, responseBuilder, user);
 		return true;//SubmitComposeSkillCommand
 	}//SubmitComposeSkillCommand
+	@Override//BuyLootPackageCommand
+	protected boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user) {
+		levelCommandService.buyLootPackage(cmd, responseBuilder, user);
+		return true;//BuyLootPackageCommand
+	}//BuyLootPackageCommand
 	//add handleCommand here
 
 	@Override

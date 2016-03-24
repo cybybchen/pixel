@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.WinBean;
@@ -16,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
@@ -28,6 +31,7 @@ import com.trans.pixel.protoc.Commands.ResponseLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseLevelResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
+import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserLevelLootService;
@@ -37,6 +41,9 @@ import com.trans.pixel.service.WinService;
 @Service
 public class LevelCommandService extends BaseCommandService {
 	private static final Logger log = LoggerFactory.getLogger(LevelCommandService.class);
+	
+	private static final int BUY_LOOT_PACKAGE_COST = 50;
+	private static final int BUY_LOOT_PACKAGE_COUNT = 10;
 	
 	@Resource
 	private LevelService levelService;
@@ -50,6 +57,8 @@ public class LevelCommandService extends BaseCommandService {
 	private UserLevelLootService userLevelLootRecordService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private CostService costService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
@@ -174,5 +183,21 @@ public class LevelCommandService extends BaseCommandService {
 		
 		builder.setUserLevel(userLevel.buildUserLevel());
 		responseBuilder.setUserLevelCommand(builder.build());
+	}
+	
+	public void buyLootPackage(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user) {
+		if (!costService.costAndUpdate(user, RewardConst.JEWEL, BUY_LOOT_PACKAGE_COST)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
+		UserLevelLootBean userLevelLoot = userLevelLootRecordService.selectUserLevelLootRecord(user.getId());
+		userLevelLoot.setPackageCount(userLevelLoot.getPackageCount() + BUY_LOOT_PACKAGE_COUNT);
+		userLevelLootRecordService.updateUserLevelLootRecord(userLevelLoot);
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
+		responseBuilder.setUserLootLevelCommand(builder.build());
 	}
 }

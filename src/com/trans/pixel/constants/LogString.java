@@ -4,7 +4,7 @@ public class LogString {
 //	public static final String SERVER = "117.135.134.144";
 //	public static final String SERVER = "log.kalazhu.com.cn";
 //	public static final String SERVER = "www.transmension.com";
-	public static final String SERVER = "localhost";
+	public static final String SERVER = "127.0.0.1";
 	public static final int PORT = 4346;
 	public static final String SPLITER = "|";
 	

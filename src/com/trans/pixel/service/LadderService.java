@@ -30,12 +30,12 @@ import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.LadderEnemy;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
-import com.trans.pixel.service.redis.UserTeamRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -53,8 +53,6 @@ public class LadderService {
 	private HeroService heroService;
 	@Resource
 	private UserTeamService userTeamService;
-	@Resource
-	private UserTeamRedisService userTeamRedisService;
 	@Resource
 	private LogService logService;
 	
@@ -171,8 +169,8 @@ public class LadderService {
 		/**
 		 * send log
 		 */
-		sendLog(user.getId(), user.getServerId(), userTeamRedisService.getTeamCacheString(user.getId()),
-				userTeamRedisService.getTeamCacheString(attackRankBean.getUserId()), result ? 1 : 0, attackRank);
+		sendLog(user.getId(), user.getServerId(), userTeamService.getTeamCache(user.getId()).getHeroInfoList(),
+				userTeamService.getTeamCache(attackRankBean.getUserId()).getHeroInfoList(), result ? 1 : 0, attackRank);
 		
 		ladderRedisService.clearLock("LadderRank_"+myRank);
 		ladderRedisService.clearLock("LadderRank_"+attackRank);
@@ -180,12 +178,12 @@ public class LadderService {
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
 	
-	private void sendLog(long userId, int serverId, String attackTeam, String defenseTeam, int result, long rank) {
+	private void sendLog(long userId, int serverId, List<HeroInfo> attackHeroList, List<HeroInfo> defenseHeroList, int result, long rank) {
 		Map<String, String> logMap = new HashMap<String, String>();
 		logMap.put(LogString.USERID, "" + userId);
 		logMap.put(LogString.SERVERID, "" + serverId);
-		logMap.put(LogString.ATTACK_TEAM_LIST, attackTeam);
-		logMap.put(LogString.DEFENSE_TEAM_LIST, defenseTeam);
+		logMap.put(LogString.ATTACK_TEAM_LIST, userTeamService.getTeamString(attackHeroList));
+		logMap.put(LogString.DEFENSE_TEAM_LIST, userTeamService.getTeamString(defenseHeroList));
 		logMap.put(LogString.RESULT, "" + result);
 		logMap.put(LogString.RANK, "" + rank);
 		

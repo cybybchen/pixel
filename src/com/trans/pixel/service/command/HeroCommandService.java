@@ -327,14 +327,14 @@ public class HeroCommandService extends BaseCommandService {
 		
 		user.setHeroLimit(user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT);
 		userService.updateUser(user);
-		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 	}
 	
 	public void submitComposeSkill(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user) {
 		user.setComposeSkill(cmd.getComposeSkill());
 		userService.updateUser(user);
-		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
 	}
 }

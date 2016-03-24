@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -134,5 +135,15 @@ public class UserTeamService {
 			}
 		}
 		return heroinfoList;
+	}
+	
+	public String getTeamString(List<HeroInfo> heroList) {
+		String team = "";
+		for (HeroInfo heroInfo : heroList) 
+			team = team + LogString.SPLITER + heroInfo.getHeroId();
+		
+		team = team.substring(1);
+		
+		return team;
 	}
 }

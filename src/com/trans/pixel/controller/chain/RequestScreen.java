@@ -50,6 +50,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -311,6 +312,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -891,6 +893,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//SubmitComposeSkillCommand
                 result = handleCommand(cmd, responseBuilder, user);//SubmitComposeSkillCommand
         }//SubmitComposeSkillCommand
+        if (request.hasBuyLootPackageCommand()) {
+            RequestBuyLootPackageCommand cmd = request.getBuyLootPackageCommand();
+            if (result)//BuyLootPackageCommand
+                result = handleCommand(cmd, responseBuilder, user);//BuyLootPackageCommand
+        }//BuyLootPackageCommand
         //call handleCommand here
         
         return result;

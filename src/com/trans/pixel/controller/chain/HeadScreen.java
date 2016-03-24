@@ -124,6 +124,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -574,6 +575,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO SubmitComposeSkillCommand method
 		return true;//SubmitComposeSkillCommand
 	}//SubmitComposeSkillCommand
+	@Override//BuyLootPackageCommand
+	protected boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BuyLootPackageCommand method
+		return true;//BuyLootPackageCommand
+	}//BuyLootPackageCommand
 	//add handleCommand here
 
 	@Override

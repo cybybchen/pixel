@@ -1560,6 +1560,10 @@ message RequestSubmitComposeSkillCommand {
 	required string composeSkill = 1;
 }
 
+message RequestBuyLootPackageCommand {
+	
+}	
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1675,6 +1679,7 @@ message RequestCommand {
 	optional RequestRankCommand rankCommand = 81;
 	optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;
 	optional RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;
+	optional RequestBuyLootPackageCommand buyLootPackageCommand = 84;
 }
 // response command list transfer only use it
 message ResponseCommand {
