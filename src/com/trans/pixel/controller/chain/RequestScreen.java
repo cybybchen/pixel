@@ -49,6 +49,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -310,6 +311,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -890,6 +892,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//BuyLootPackageCommand
                 result = handleCommand(cmd, responseBuilder, user);//BuyLootPackageCommand
         }//BuyLootPackageCommand
+        if (request.hasCdkeyCommand()) {
+            RequestCdkeyCommand cmd = request.getCdkeyCommand();
+            if (result)//CdkeyCommand
+                result = handleCommand(cmd, responseBuilder, user);//CdkeyCommand
+        }//CdkeyCommand
         //call handleCommand here
         
         return result;

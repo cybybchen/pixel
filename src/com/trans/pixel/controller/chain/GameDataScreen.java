@@ -53,6 +53,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -676,6 +677,11 @@ public class GameDataScreen extends RequestScreen {
 		levelCommandService.buyLootPackage(cmd, responseBuilder, user);
 		return true;//BuyLootPackageCommand
 	}//BuyLootPackageCommand
+	@Override//CdkeyCommand
+	protected boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO CdkeyCommand method
+		return true;//CdkeyCommand
+	}//CdkeyCommand
 	//add handleCommand here
 
 	@Override

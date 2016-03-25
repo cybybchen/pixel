@@ -32,6 +32,7 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -107,6 +108,7 @@ import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -580,6 +582,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO BuyLootPackageCommand method
 		return true;//BuyLootPackageCommand
 	}//BuyLootPackageCommand
+	@Override//CdkeyCommand
+	protected boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO CdkeyCommand method
+		return true;//CdkeyCommand
+	}//CdkeyCommand
 	//add handleCommand here
 
 	@Override

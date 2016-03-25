@@ -1561,6 +1561,10 @@ message RequestBuyLootPackageCommand {
 	
 }	
 
+message RequestCdkeyCommand {
+	required string key = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1632,6 +1636,7 @@ message RequestCommand {
 	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
 	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
 	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
+	optional RequestCdkeyCommand cdkeyCommand = 138;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
