@@ -12,12 +12,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
@@ -78,6 +80,16 @@ public class UserCommandService extends BaseCommandService {
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
 
 		pushCommand(responseBuilder, user);
+	}
+	
+	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
+		int icon = cmd.getIcon();
+		user.setIcon(icon);
+
+		userService.cache(user.getServerId(), user.buildShort());
+		userService.updateUser(user);
+		
+		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {

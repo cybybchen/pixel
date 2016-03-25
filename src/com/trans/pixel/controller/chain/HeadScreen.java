@@ -128,6 +128,11 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
+//add import here
 
 public class HeadScreen extends RequestScreen {
 	
@@ -587,6 +592,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO CdkeyCommand method
 		return true;//CdkeyCommand
 	}//CdkeyCommand
+	@Override//SubmitIconCommand
+	protected boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO SubmitIconCommand method
+		return true;//SubmitIconCommand
+	}//SubmitIconCommand
 	//add handleCommand here
 
 	@Override

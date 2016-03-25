@@ -54,6 +54,7 @@ import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -682,6 +683,11 @@ public class GameDataScreen extends RequestScreen {
 		// TODO CdkeyCommand method
 		return true;//CdkeyCommand
 	}//CdkeyCommand
+	@Override//SubmitIconCommand
+	protected boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
+		userCommandService.submitIcon(cmd, responseBuilder, user);
+		return true;//SubmitIconCommand
+	}//SubmitIconCommand
 	//add handleCommand here
 
 	@Override

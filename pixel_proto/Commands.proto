@@ -1565,6 +1565,10 @@ message RequestCdkeyCommand {
 	required string key = 1;
 }
 
+message RequestSubmitIconCommand {
+	required int32 icon = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1681,6 +1685,7 @@ message RequestCommand {
 	optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;
 	optional RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;
 	optional RequestBuyLootPackageCommand buyLootPackageCommand = 84;
+	optional RequestSubmitIconCommand submitIconCommand = 85;
 }
 // response command list transfer only use it
 message ResponseCommand {

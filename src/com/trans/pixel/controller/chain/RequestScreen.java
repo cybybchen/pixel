@@ -50,6 +50,10 @@ import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -312,6 +316,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -897,6 +902,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//CdkeyCommand
                 result = handleCommand(cmd, responseBuilder, user);//CdkeyCommand
         }//CdkeyCommand
+        if (request.hasSubmitIconCommand()) {
+            RequestSubmitIconCommand cmd = request.getSubmitIconCommand();
+            if (result)//SubmitIconCommand
+                result = handleCommand(cmd, responseBuilder, user);//SubmitIconCommand
+        }//SubmitIconCommand
         //call handleCommand here
         
         return result;
