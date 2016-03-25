@@ -26,7 +26,7 @@
 </html>
 <%
 
-javax.servlet.http.HttpSession session_comm = request.getSession(true);
+//javax.servlet.http.HttpSession session_comm = request.getSession(true);
 
 if (request.getParameter("account")!=null && request.getParameter("password")!=null){
    String account = request.getParameter("account");

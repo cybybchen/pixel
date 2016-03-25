@@ -13,10 +13,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	String account = (String) session_comm.getAttribute("account");
 	if (account == null || account == "") {
-		out.println("<SCRIPT language=JavaScript>");
-		//out.println("alert(\"登录超时，请重新登录！\");");
-		out.println("window.top.location='login.jsp'");
-		out.println("</script>");
+%>
+<jsp:forward page="login.jsp"/>
+<%
 	}
 %>
 
