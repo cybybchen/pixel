@@ -140,7 +140,7 @@ public class UserTeamService {
 	public String getTeamString(List<HeroInfo> heroList) {
 		String team = "";
 		for (HeroInfo heroInfo : heroList) 
-			team = team + LogString.SPLITER + heroInfo.getHeroId();
+			team = team + "," + heroInfo.getHeroId();
 		
 		team = team.substring(1);
 		
