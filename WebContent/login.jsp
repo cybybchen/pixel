@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +16,9 @@
 
 javax.servlet.http.HttpSession session_comm = request.getSession(true);
 
-if (request.getParameter("account")!=null && request.getParameter("password")!=null){
-   String account = request.getParameter("account");
-   String password = request.getParameter("password");
+String account = request.getParameter("account");
+String password = request.getParameter("password");
+if (account!=null && account!="" && password!=null){
    Map<String, String> map = redis.getGmAccounts();
    boolean loginsuccess = false;
    for(Map.Entry<String, String> entry : map.entrySet()){
