@@ -1533,11 +1533,6 @@ message ResponseKaifuListCommand {
         repeated UserKaifu userKaifu = 1;
 }
 
-message RequestCheatRechargeCommand {
-	required int32 rmb = 1;
-	required int32 jewel = 2;
-}
-
 message RequestUserPokedeCommand {
 
 }
@@ -1675,8 +1670,7 @@ message RequestCommand {
 	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
 	optional RequestKaifu2RewardCommand kaifu2RewardCommand = 76;
 	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
-        optional RequestKaifuListCommand kaifuListCommand = 78;
-	optional RequestCheatRechargeCommand cheatRechargeCommand = 79;
+	optional RequestKaifuListCommand kaifuListCommand = 78;
 	optional RequestUserPokedeCommand userPokedeCommand = 80;
 	optional RequestRankCommand rankCommand = 81;
 	optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;

@@ -911,5 +911,6 @@ $(document).ready(function() {
 });
 
     function isObject(o) { return Object.prototype.toString.call(o) == '[object Object]'; }
+    function relogin(){ document.location.href='login.jsp'; }
 
 

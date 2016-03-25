@@ -28,24 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery.jsoneditor.js"></script>
     <script src="js/jsoneditor.js"></script>
-	<style type="text/css">
-	
-	</style>
-	<script>
-		( function( $, undefined ) {
-			$( document ).bind( "pagecreate", function( e ) {
-				// $("#adduser").click(function() {
-				// 	addUserTab();
-				// });
-			});
-		})( jQuery );
-		
-		function time(){
-			setTimeout(1000*3600*3,"document.location.href='login.jsp';");
-		}
-	</script>
 </head>
-<body onload="time()">
+
+<body>
 <%@ include file="jsp/menu-panel.jsp" %>
 <%@ include file="jsp/jsoneditor.jsp" %>
 

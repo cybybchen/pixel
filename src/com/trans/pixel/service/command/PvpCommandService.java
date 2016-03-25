@@ -131,8 +131,6 @@ public class PvpCommandService extends BaseCommandService {
 			if(mine == null || !mine.hasOwner())
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			else{
-				user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
-				userService.updateUserDailyData(user);
 				Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 				ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 				builder.addAllHeroInfo(team.getHeroInfoList());

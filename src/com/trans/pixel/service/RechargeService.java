@@ -1,5 +1,7 @@
 package com.trans.pixel.service;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -7,9 +9,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.AchieveConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.VipInfo;
+import com.trans.pixel.utils.LogUtils;
 
 @Service
 public class RechargeService {
@@ -21,13 +25,17 @@ public class RechargeService {
 	private UserAchieveService userAchieveService;
 	@Resource
     private ActivityService activityService;
+	@Resource
+	private LogService logService;
 	
 	public void recharge(UserBean user, int count) {
 //    	UserBean user = userService.getUser(userId);
-    	user.setJewel(user.getJewel()+count);
-    	UserAchieveBean bean = userAchieveService.selectUserAchieve(user.getId(), AchieveConst.TYPE_RECHARGE_JEWEL);
+		int rmb = count;
+		int jewel = count;
+    	user.setJewel(user.getJewel()+jewel);
+    	UserAchieveBean bean = userAchieveService.selectUserAchieve(user.getId(), AchieveConst.TYPE_RECHARGE_RMB);
     	int base = bean.getCompleteCount();
-    	int complete = base+count;
+    	int complete = base+rmb;
     	while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
 	    	if(vip == null || complete < vip.getRmb())
@@ -49,6 +57,11 @@ public class RechargeService {
 	    }
     	bean.setCompleteCount(complete);
     	userAchieveService.updateUserAchieve(bean);
+		
+		activityService.rechargeActivity(user, jewel);
+		
+		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb, 0, 0, 0, "test", "1111", 1);
+		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
     }
 	
 }

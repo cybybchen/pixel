@@ -1,8 +1,9 @@
 package com.trans.pixel.constants;
 
 public class AchieveConst {
+	public static final int TYPE_RECHARGE_RMB = 100;//累计充值金额
 	public static final int TYPE_LOGIN = 101;//累计登录
-	public static final int TYPE_RECHARGE_JEWEL = 102;//累计充值
+	public static final int TYPE_RECHARGE_JEWEL = 102;//累计充值钻石
 	public static final int TYPE_COST_JEWEL = 103;//累计消费
 	public static final int TYPE_VIP = 104;//成为vip
 	public static final int TYPE_HERO_GET = 105;//收藏家

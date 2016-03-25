@@ -28,7 +28,6 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
-import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
@@ -124,7 +123,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AchieveCommandService;
 import com.trans.pixel.service.command.ActivityCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
-import com.trans.pixel.service.command.CheatRechargeCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroCommandService;
@@ -195,8 +193,6 @@ public class GameDataScreen extends RequestScreen {
 	private AchieveCommandService AchieveCommandService;
 	@Resource
 	private ActivityCommandService activityCommandService;
-	@Resource
-	private CheatRechargeCommandService cheatRechargeCommandService;
 	@Resource
 	private PokedeCommandService pokedeCommandService;
 	@Resource
@@ -897,13 +893,6 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestKaifuListCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		activityCommandService.kaifuList(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestCheatRechargeCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		cheatRechargeCommandService.cheatRecharge(cmd, responseBuilder, user);
 		return true;
 	}
 
