@@ -105,7 +105,11 @@ public class UserFriendService {
 			userFriend.setZhanli(userCache.getZhanli());
 		if (userCache.hasLastLoginTime())
 			userFriend.setLastLoginTime(userCache.getLastLoginTime());
+		
 		userFriend.setCountDown((int)(userFriendBean.getLastCallTime() + 12 * TimeConst.SECONDS_PER_HOUR - System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
+		
+		if (userCache.hasIcon())
+			userFriend.setIcon(userCache.getIcon());
 		
 		return userFriend.build();
 	}

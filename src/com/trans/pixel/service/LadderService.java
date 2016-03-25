@@ -105,8 +105,7 @@ public class LadderService {
 			}
 			if (userRank.getUserId() > 0) {	
 				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
-				if (userInfo != null)
-					userRank.setZhanli(userInfo.getZhanli());
+				userRank.initByUserCache(userInfo);
 			}
 			rankList.add(userRank);
 		}

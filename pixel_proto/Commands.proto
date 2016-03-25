@@ -556,6 +556,7 @@ message UserRank {
 	optional int64 rank = 3;
 	repeated HeroInfo heroInfo = 4;
 	optional int32 zhanli = 5;
+	optional int32 icon = 6;
 }
 
 message UserFriend {
@@ -565,6 +566,7 @@ message UserFriend {
 	optional int32 zhanli = 4;
 	optional string lastLoginTime = 5;
 	optional int32 countDown = 6;
+	optional int32 icon = 7;
 }
 
 message Mail {

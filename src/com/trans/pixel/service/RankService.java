@@ -49,7 +49,7 @@ public class RankService {
 		List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, RankConst.RANK_LIST_START, RankConst.RANK_LIST_END);
 		for (UserRankBean userRank : rankList) {
 			UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
-			userRank.setZhanli(userInfo.getZhanli());
+			userRank.initByUserCache(userInfo);
 		}
 		
 		return rankList;
@@ -61,13 +61,11 @@ public class RankService {
 		int rankInit = 1;
 		for (TypedTuple<String> rank : ranks) {
 			UserRankBean userRank = new UserRankBean();
-			userRank.setZhanli(rank.getScore().intValue());
 			UserInfo userInfo = userService.getCache(serverId, TypeTranslatedUtil.stringToLong(rank.getValue()));
 			
 			userRank.setRank(rankInit);
-			userRank.setUserId(userInfo.getId());
-			userRank.setUserName(userInfo.getName());
-//			userRank.setZhanli(userInfo.getZhanli());	
+			userRank.initByUserCache(userInfo);
+			userRank.setZhanli(rank.getScore().intValue());
 			
 			rankList.add(userRank);
 			rankInit++;
@@ -86,9 +84,8 @@ public class RankService {
 			for (UserInfo userInfo : userInfoList) {
 				if (value.getValue().equals("" + userInfo.getId())) {
 					rank.setRank(rankInit);
+					rank.initByUserCache(userInfo);
 					rank.setZhanli(value.getScore().intValue());
-					rank.setUserId(userInfo.getId());
-					rank.setUserName(userInfo.getName());
 					rankInit--;
 					rankList.add(rank);
 					break;

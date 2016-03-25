@@ -2,6 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserRank;
 
 public class UserRankBean {
@@ -11,6 +12,7 @@ public class UserRankBean {
 	private int level = 0;
 	private int zhanli = 0;
 	private long rank = 0;
+	private int icon = 0;
 //	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 	public int getId() {
 		return id;
@@ -66,6 +68,12 @@ public class UserRankBean {
 		
 		return json.toString();
 	}
+	public int getIcon() {
+		return icon;
+	}
+	public void setIcon(int icon) {
+		this.icon = icon;
+	}
 	public static UserRankBean fromJson(String jsonString) {
 		if (jsonString == null)
 			return null;
@@ -100,20 +108,20 @@ public class UserRankBean {
 		builder.setUserName(userName);
 		builder.setRank(rank);
 		builder.setZhanli(zhanli);
+		builder.setIcon(icon);
 		
 		return builder.build();
 	}
 	
-//	public UserRank buildUserRankInfo() {
-//		UserRank.Builder builder = UserRank.newBuilder();
-//		List<HeroInfo> heroInfoBuilderList = new ArrayList<HeroInfo>();
-//		for (HeroInfoBean heroInfo : heroList) {
-//			heroInfoBuilderList.add(heroInfo.buildRankHeroInfo());
-//		}
-//		builder.addAllHeroInfo(heroInfoBuilderList);
-//		
-//		return builder.build();
-//	}
+	public void initByUserCache(UserInfo userInfo) {
+		if (userInfo == null)
+			return;
+		
+		userId = userInfo.getId();
+		userName = userInfo.getName();
+		icon = userInfo.getIcon();
+		zhanli = userInfo.getZhanli();
+	}
 	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
