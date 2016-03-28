@@ -22,7 +22,8 @@ public class MailBean {
 	private String endDate = "";
 	private String content = "";
 	private int relatedId = 0;
-	List<RewardBean> rewardList = new ArrayList<RewardBean>();
+	private int icon = 0;
+	private List<RewardBean> rewardList = new ArrayList<RewardBean>();
 	boolean isRead = false;
 	public int getId() {
 		return id;
@@ -84,6 +85,12 @@ public class MailBean {
 	public void setRewardList(List<RewardBean> rewardList) {
 		this.rewardList = rewardList;
 	}
+	public int getIcon() {
+		return icon;
+	}
+	public void setIcon(int icon) {
+		this.icon = icon;
+	}
 	public void parseRewardList(List<RewardInfo> rewardList) {
 		List<RewardBean> list = new ArrayList<RewardBean>();
 		for(RewardInfo rewardinfo : rewardList){
@@ -114,6 +121,7 @@ public class MailBean {
 		json.put(REWARD_LIST, rewardList);
 		json.put(IS_READ, isRead);
 		json.put(RELATED_ID, relatedId);
+		json.put(ICON, icon);
 		
 		return json.toString();
 	}
@@ -141,6 +149,7 @@ public class MailBean {
 		bean.setRewardList(list);
 		bean.setRead(TypeTranslatedUtil.jsonGetBoolean(json, IS_READ));
 		bean.setRelatedId(TypeTranslatedUtil.jsonGetInt(json, RELATED_ID));
+		bean.setIcon(TypeTranslatedUtil.jsonGetInt(json, ICON));
 
 		return bean;
 	}
@@ -156,6 +165,8 @@ public class MailBean {
 		builder.setType(type);
 		builder.setUserId(userId);
 		builder.setRelatedId(relatedId);
+		if (icon != 0)
+			builder.setIcon(icon);
 		
 		List<RewardInfo> rewardInfoBuilderList = new ArrayList<RewardInfo>();
 		for (RewardBean reward : rewardList) {
@@ -189,4 +200,5 @@ public class MailBean {
 	private static final String REWARD_LIST = "reward_list";
 	private static final String IS_READ = "is_read";
 	private static final String RELATED_ID = "related_id";
+	private static final String ICON = "icon";
 }

@@ -580,6 +580,7 @@ message Mail {
 	required string content = 8;
 	required int32 relatedId = 10;
 	repeated RewardInfo reward = 9;
+	optional int32 icon = 11;
 }
 
 message MailList {

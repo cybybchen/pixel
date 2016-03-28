@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -89,7 +88,8 @@ public class UserCommandService extends BaseCommandService {
 		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUser(user);
 		
-		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+//		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {
