@@ -89,6 +89,13 @@ public class DateUtil {
     }
 
     /**
+     * 获取当前的日期对象
+     */
+    public static Date getDate() {
+    	return getDate(getCurrentDateString(), TimeConst.DEFAULT_DATETIME_FORMAT);
+    }
+    
+    /**
      * 将yyyy-MM-dd HH:mm:ss格式的字符串转换为日期对象
      * 
      * @param date

@@ -50,8 +50,8 @@ public class UserBean {
 	private long refreshExpeditionLeftTime = 0;
 	private long baoxiangLeftTime = 0;
 	private long zhibaoLeftTime = 0;
-	private boolean hasSign = false;
-	private int signDays = 0;
+	private int signCount = 0;
+	private String lastSignTime = "";
 	private int loginDays = 0;
 	private long areaMonsterRefreshTime = 0;
 	private int areaEnergy = 0;
@@ -655,22 +655,22 @@ public class UserBean {
 		this.freeLotteryJewelTime = freeLotteryJewelTime;
 	}
 	/**
-	 * 当天有没有签过到
+	 * 上次签到时间
 	 */
-	public boolean isHasSign() {
-		return hasSign;
+	public String getLastSignTime() {
+		return lastSignTime;
 	}
-	public void setHasSign(boolean hasSign) {
-		this.hasSign = hasSign;
+	public void setLastSignTime(String lastSignTime) {
+		this.lastSignTime = lastSignTime;
 	}
 	/**
-	 * 签到天数
+	 * 签到次数
 	 */
-	public int getSignDays() {
-		return signDays;
+	public int getSignCount() {
+		return signCount;
 	}
-	public void setSignDays(int signDays) {
-		this.signDays = signDays;
+	public void setSignCount(int signCount) {
+		this.signCount = signCount;
 	}
 	/**
 	 * 登录天数
@@ -774,9 +774,9 @@ public class UserBean {
 		builder.setFreeLotteryCoinTime(Math.max(0, (int)((freeLotteryCoinTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setFreeLotteryJewelTime(Math.max(0, (int)((freeLotteryJewelTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setPVPMineLeftTime(pvpMineLeftTime);
-		builder.setSignDays(signDays);
+		builder.setSignCount(signCount);
 		builder.setLoginDays(loginDays);
-		builder.setHasSign(hasSign);
+		builder.setLastSignTime(lastSignTime);
 		builder.setAreaEnergy(areaEnergy);
 		builder.setAreaEnergyTime(areaEnergyTime);
 		builder.setHeroLimit(heroLimit);

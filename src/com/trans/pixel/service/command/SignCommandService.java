@@ -38,10 +38,6 @@ public class SignCommandService extends BaseCommandService {
 			return;
 		}
 		
-		user.setSignDays(user.getSignDays() + 1);
-		user.setHasSign(true);
-		userService.updateUser(user);
-		
 		rewardService.doReward(user, reward);
 		builder.addReward(reward.buildRewardInfo());
 		responseBuilder.setSignCommand(builder.build());

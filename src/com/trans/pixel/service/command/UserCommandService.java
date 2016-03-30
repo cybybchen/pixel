@@ -2,6 +2,7 @@ package com.trans.pixel.service.command;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -122,12 +123,15 @@ public class UserCommandService extends BaseCommandService {
 ////				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
 //			}
 			user.setLoginDays(user.getLoginDays() + 1);
-			user.setHasSign(false);
 			
 			/**
 			 * 累计登录的活动
 			 */
 			activityService.loginActivity(user);
+			
+			if (isNextWeek(user.getLastLoginTime())) {
+				user.setSignCount(0);
+			}
 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
@@ -154,5 +158,25 @@ public class UserCommandService extends BaseCommandService {
 		}
 		
 		return nextDay;
+	}
+	
+	private boolean isNextWeek(String lastLoginTime) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date());
+		int now = c.get(Calendar.DAY_OF_YEAR);
+		logger.debug("now is:" + now);
+		
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT);
+		try {
+			c.setTime(df.parse(lastLoginTime));
+		} catch (ParseException e) {
+			return false;
+		}
+		int last = c.get(Calendar.DAY_OF_YEAR);
+		
+		if (now - last > 7)
+			return true;
+		
+		return false;
 	}
 }
