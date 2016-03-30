@@ -21,6 +21,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ActivityOrder;
 import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Kaifu2;
@@ -33,6 +34,7 @@ import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
+import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -54,6 +56,8 @@ public class ActivityService {
 	private MailService mailService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private LadderRedisService ladderRedisService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -64,12 +68,16 @@ public class ActivityService {
 	}
 	
 	public void sendRichangScore(long userId, int type, int count) {
+		Richang richang = activityRedisService.getRichang(type);
+		if (richang == null)
+			return;
+		
 		UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(userId, type));
 		if (type == ActivityConst.RICHANG_DANBI_RECHARGE)
 			ur.setCompleteCount(Math.max(count, ur.getCompleteCount()));
 		else
 			ur.setCompleteCount(ur.getCompleteCount() + count);
-		Richang richang = activityRedisService.getRichang(type);
+		
 		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
 	}
 	
@@ -218,7 +226,9 @@ public class ActivityService {
 		}
 	}
 	
-	private void sendKaifu2ActivitiesReward(int serverId) {
+	public void sendKaifu2ActivitiesReward(int serverId) {
+		if (!isInKaifuActivityTime(serverId)) 
+			return;
 		
 		for (int type : ActivityConst.KAIFU2_TYPES) {
 			if (!activityRedisService.hasKaifu2RewardSend(serverId, type)) {
@@ -233,11 +243,21 @@ public class ActivityService {
 		List<ActivityOrder> orderList = kaifu2.getOrderList();
 		for (ActivityOrder order : orderList) {
 			List<RewardInfo> rewardList = getRewardList(order);
-			Set<TypedTuple<String>> userInfoRankList = activityRedisService.getUserIdList(serverId, type, order.getTargetcount() - 1, order.getTargetcount1());
-			for (TypedTuple<String> userinfo : userInfoRankList) {
-				long userId = TypeTranslatedUtil.stringToLong(userinfo.getValue());
-				MailBean mail = MailBean.buildMail(userId, order.getDescription(), rewardList);
-				mailService.addMail(mail);
+			if (type == ActivityConst.KAIFU2_LADDER) {
+				List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, order.getTargetcount(), order.getTargetcount1());
+				for (UserRankBean userRank : rankList) {
+					if (userRank.getUserId() > 0) {
+						MailBean mail = MailBean.buildMail(userRank.getUserId(), order.getDescription(), rewardList);
+						mailService.addMail(mail);
+					}
+				}
+			} else {
+				Set<TypedTuple<String>> userInfoRankList = activityRedisService.getUserIdList(serverId, type, order.getTargetcount() - 1, order.getTargetcount1());
+				for (TypedTuple<String> userinfo : userInfoRankList) {
+					long userId = TypeTranslatedUtil.stringToLong(userinfo.getValue());
+					MailBean mail = MailBean.buildMail(userId, order.getDescription(), rewardList);
+					mailService.addMail(mail);
+				}
 			}
 		}
 	}
@@ -288,9 +308,8 @@ public class ActivityService {
 	
 	public List<Kaifu2Rank> getKaifu2RankList(UserBean user) {
 		int serverId = user.getServerId();
-		
-		if (isInKaifuActivityTime(serverId)) 
-			sendKaifu2ActivitiesReward(serverId);
+		 
+		sendKaifu2ActivitiesReward(serverId);
 		
 		List<Kaifu2Rank> rankList = new ArrayList<Kaifu2Rank>();
 		for (int kaifu2Type : ActivityConst.KAIFU2_TYPES) {
@@ -361,7 +380,7 @@ public class ActivityService {
 	
 	public void sendKaifuScore(UserBean user, int type, int count) {
 		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), type));
-		if (type == ActivityConst.KAIFU_DAY_6)
+		if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.KAIFU_FIRST_RECHARGE)
 			uk.setCompleteCount(count);
 		else
 			uk.setCompleteCount(uk.getCompleteCount() + count);
@@ -369,8 +388,7 @@ public class ActivityService {
 		/**
 		 * 判断活动有没有过期
 		 */
-		Kaifu kaifu = activityRedisService.getKaifu(type);
-		if (kaifu.getWhichday() == 0 || kaifu.getWhichday() >= getKaifuDays(user.getServerId()))
+		if (7 >= getKaifuDays(user.getServerId()))
 			userActivityService.updateUserKaifu(user.getId(), uk.build());
 	}
 	

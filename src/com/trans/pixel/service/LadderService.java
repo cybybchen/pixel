@@ -55,6 +55,8 @@ public class LadderService {
 	private UserTeamService userTeamService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ActivityService activityService;
 	
 	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
         public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -137,6 +139,8 @@ public class LadderService {
 	}
 	
 	public ResultConst attack(UserBean user, long attackRank, boolean result, int teamid) {
+		activityService.sendKaifu2ActivitiesReward(user.getServerId());
+		
 		int serverId = user.getServerId();
 		if (user.getLadderModeLeftTimes() <= 0)
 			return ErrorConst.NOT_ENOUGH_LADDER_MODE_TIMES;

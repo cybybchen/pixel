@@ -786,7 +786,6 @@ message KaifuList {
 message Kaifu {
 	required int32 id = 1;
 	required string activity = 2;
-	required int32 whichday = 3;
 	repeated ActivityOrder order = 4;
 }
 

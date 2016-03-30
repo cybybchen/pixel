@@ -52,9 +52,14 @@ public class ActivityConst {
 	public static final int KAIFU2_LEIJI_RECHARGE_PERSON_COUNT = 211;
 	
 	/**
+	 * 开服竞技榜
+	 */
+	public static final int KAIFU2_LADDER = 204;
+	
+	/**
 	 * 开服战力榜
 	 */
-	public static final int KAIFU2_ZHANLI = 212;
+	public static final int KAIFU2_ZHANLI = 205;
 	
 	/**
 	 * 开服推图榜
@@ -69,7 +74,7 @@ public class ActivityConst {
 	/**
 	 * 所有kaifu2的活动类型 
 	 */
-	public static final int[] KAIFU2_TYPES = {KAIFU2_ZHANLI, KAIFU2_LEVEL, KAIFU2_RECHARGE};
+	public static final int[] KAIFU2_TYPES = {KAIFU2_LADDER, KAIFU2_ZHANLI};
 	
 	public static final int KAIFU2_RANK_SIZE = 20;
 	

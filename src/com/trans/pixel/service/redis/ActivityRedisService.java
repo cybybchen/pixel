@@ -24,7 +24,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class ActivityRedisService extends RedisService {
 	private static final String ACTIVITY_RICHANG_FILE_NAME = "task/lol_taskrichang.xml";
 	private static final String ACTIVITY_KAIFU2_FILE_NAME = "task/lol_taskkaifu2.xml";
-	private static final String ACTIVITY_KAIFU_FILE_NAME = "task/lol_taskkaifu.xml";
+	private static final String ACTIVITY_KAIFU_FILE_NAME = "task/lol_taskkaifu1.xml";
 	
 	//richang activity
 	public Richang getRichang(int id) {
