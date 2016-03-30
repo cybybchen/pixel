@@ -240,8 +240,10 @@ public class LadderService {
 				long endRank = endRanking.getRanking();
 				for (long i = startRank; i < endRank; ++i) {
 					UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
-					MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
-					mailService.addMail(mail);
+					if (userRank.getUserId() > 0) {
+						MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
+						mailService.addMail(mail);
+					}
 				}
 			}
 		}
@@ -330,7 +332,7 @@ public class LadderService {
 	
 	private MailBean buildLadderDailyMail(long userId, LadderDailyBean ladderDaily) {
 		MailBean mail = new MailBean();
-		mail.setContent("");
+		mail.setContent("天梯每日奖励");
 		mail.setRewardList(buildRewardList(ladderDaily));
 		mail.setStartDate(DateUtil.getCurrentDateString());
 		mail.setType(MailConst.TYPE_SYSTEM_MAIL);

@@ -218,6 +218,7 @@ public class BaseCommandService {
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setRelatedId(relatedId);
+		mail.setFromUserName(usreName);
 		mail.setStartDate(DateUtil.getCurrentDateString());
 		
 		return mail;
