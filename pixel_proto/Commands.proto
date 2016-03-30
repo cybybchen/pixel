@@ -456,7 +456,7 @@ message Qiandao {
 }
 
 message SignList {
-	repeated Qiandao qiandao = 1;
+	repeated Qiandao sanqian = 1;
 }
 
 message Sign {

@@ -59,7 +59,7 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for(Qiandao.Builder qiandao : builder.getQiandaoBuilderList()){
+		for(Qiandao.Builder qiandao : builder.getSanqianBuilderList()){
 			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
 				map.put("" + sign.getOrder(), sign.build());
 			}
