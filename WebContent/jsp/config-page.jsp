@@ -15,6 +15,7 @@
 	<div role="main" class="ui-content jqm-content">
 		<div id="config-cdkey" style="display:none;">
 		<form id="cdkey-form" action='cdkey.txt' method="post" target="_blank" style="margin:0 5px;">
+				<input name="session" id="cdkey-session" value="" type="hidden">
 			<div class="ui-field-contain">
 			    <label for="cdkey-id">ID:</label>
 			    <input name="id" id="cdkey-id" value="" type="text" onchange="updateCdkeyUrl(this)">

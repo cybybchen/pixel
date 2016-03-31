@@ -28,7 +28,7 @@ public class CdkeyCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	
 	public void useCdkey(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user) {
-		String key = cmd.getKey();
+		String key = cmd.getKey().toLowerCase();
 		String value = service.getCdkey(key);
 		if(value == null){
 			value = service.getCdkeyOld(key);

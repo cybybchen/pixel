@@ -176,6 +176,8 @@ function requestUserJson(myuserid, myusername, myserverid) {
 function appendUserDatas(message){
     if(message["error"]!=null){
         alert("ERROR:"+message["error"]);
+        if(message["error"].match("Please login") != null)
+        	document.location.href='login.jsp';
         return;
     }
     if(message["success"]!=null){
@@ -401,6 +403,8 @@ function requestServerJson(myserverid) {
 function appendServerDatas(message){
     if(message["error"]!=null){
         alert("ERROR:"+message["error"]);
+        if(message["error"].match("Please login") != null)
+        	document.location.href='login.jsp';
         return;
     }
     if(message["success"]!=null){
@@ -524,6 +528,8 @@ function appendConfigDatas(message, visible){
         visible = true;
     if(message["error"]!=null){
         alert("ERROR:"+message["error"]);
+        if(message["error"].match("Please login") != null)
+        	document.location.href='login.jsp';
         return;
     }
     if(message["success"]!=null){
@@ -987,6 +993,7 @@ $(document).ready(function() {
     	var json = buildConfigJson("del-Cdkey", cdkeyid);
     	updateConfigJson(json);
     });
+    $("#cdkey-session").val(session);
 //    $('.json').val(JSON.stringify(json));
 //    $('.json-editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
 });

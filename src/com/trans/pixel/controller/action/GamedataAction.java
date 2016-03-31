@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -135,12 +134,18 @@ public class GamedataAction {
         	object.put("length", Integer.parseInt(request.getParameter("length")));
 			JSONObject req = new JSONObject();
 			req.put("serverId", 1);
+			req.put("session", request.getParameter("session"));
 			req.put("add-Cdkey", object);
 			JSONObject result = managerService.getData(req);
 			logger.debug("Add Cdkey:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time));
 
 			try {
-				response.getWriter().write(result.getString("addCdkey").toString());
+				if(result.containsKey("addCdkey"))
+					response.getWriter().write(result.getString("addCdkey").toString());
+				else if(result.containsKey("error")){
+					response.setContentType("text/html; charset=utf-8");
+					response.getWriter().write("<script>alert(\""+result.getString("error")+"\");document.location.href='login.jsp';</script>");
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
