@@ -7,15 +7,16 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.protoc.Commands.TeamUnlock;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
 @Service
@@ -26,6 +27,8 @@ public class UserTeamService {
 	private UserTeamMapper userTeamMapper;
 	@Resource
 	private UserHeroService userHeroService;
+	@Resource
+	private UserLevelService userLevelService;
 	
 	public void addUserTeam(long userId, String record) {
 		UserTeamBean userTeam = new UserTeamBean();
@@ -145,5 +148,23 @@ public class UserTeamService {
 		team = team.substring(1);
 		
 		return team;
+	}
+	
+	public boolean canUpdateTeam(UserBean user, String teamInfo) {
+		String[] teamList = teamInfo.split("\\|");
+		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+		List<TeamUnlock> teamUnlockList = userTeamRedisService.getTeamUnlockConfig();
+		int count = 0;
+		for (TeamUnlock teamUnlock : teamUnlockList) {
+			if (teamUnlock.getId() <= userLevel.getPutongLevel()) {
+				count = teamUnlock.getCount();
+				continue;
+			}
+			
+			if (teamList.length <= count)
+				return true;
+		}
+		
+		return false;
 	}
 }

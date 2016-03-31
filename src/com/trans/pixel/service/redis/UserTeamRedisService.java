@@ -21,11 +21,14 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.protoc.Commands.TeamUnlock;
+import com.trans.pixel.protoc.Commands.TeamUnlockList;
 import com.trans.pixel.service.HeroService;
 import com.trans.pixel.service.UserService;
 
 @Repository
 public class UserTeamRedisService extends RedisService {
+	private static final String TEAM_UNLOCK_FILE_NAME = "lol_renshu.xml";
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	@Resource
@@ -129,5 +132,39 @@ public class UserTeamRedisService extends RedisService {
 				return userTeamList;
 			}
 		});
+	}
+	
+	public List<TeamUnlock> getTeamUnlockConfig() {
+		List<String> values = lrange(RedisKey.TEAM_UNLOCK_KEY);
+		if(values.isEmpty()){
+			List<TeamUnlock> list = buildTeamUnlockConfig();
+			for (TeamUnlock unlock : list)
+				this.rpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
+	
+			return list;
+		}else{
+			List<TeamUnlock> list = new ArrayList<TeamUnlock>();
+			for (String value : values) {
+				TeamUnlock.Builder builder = TeamUnlock.newBuilder();
+				if(parseJson(value, builder))
+					list.add(builder.build());
+			}
+			return list;
+		}
+	}
+	
+	private List<TeamUnlock> buildTeamUnlockConfig(){
+		String xml = ReadConfig(TEAM_UNLOCK_FILE_NAME);
+		TeamUnlockList.Builder builder = TeamUnlockList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + TEAM_UNLOCK_FILE_NAME);
+			return null;
+		}
+		
+		List<TeamUnlock> list = new ArrayList<TeamUnlock>();
+		for(TeamUnlock.Builder teamunlock : builder.getXiaoguanBuilderList()){
+			list.add(teamunlock.build());
+		}
+		return list;
 	}
 }

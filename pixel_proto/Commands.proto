@@ -855,6 +855,15 @@ message LadderEnemy {
 	required int32 zhanli1 = 8;
 }
 
+message TeamUnlockList {
+	repeated TeamUnlock xiaoguan = 1;
+}
+
+message TeamUnlock {//出战人数解锁
+	required int32 id = 1;//普通关卡id
+	required int32 count = 2;//出战人数
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

@@ -4,7 +4,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
@@ -24,6 +26,11 @@ public class TeamCommandService extends BaseCommandService {
 		long userId = user.getId();
 		int id = cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
+		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		userTeamService.updateUserTeam(userId, id, teamInfo);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
@@ -31,6 +38,11 @@ public class TeamCommandService extends BaseCommandService {
 	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
 		String teamInfo = cmd.getTeamInfo();
+		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		userTeamService.addUserTeam(userId, teamInfo);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}

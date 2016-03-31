@@ -177,4 +177,7 @@ public class RedisKey {
 	public static final String LADDER_NAME_KEY = PREFIX + CONFIG_PREFIX + "ladder_name";
 	public static final String LADDER_NAME2_KEY = PREFIX + CONFIG_PREFIX + "ladder_name2";
 	public static final String LADDER_ENEMY_KEY = PREFIX + CONFIG_PREFIX + "ladder_enemy";
+	
+	//team unlock redis
+	public static final String TEAM_UNLOCK_KEY = PREFIX + CONFIG_PREFIX + "team_unlock";
 }
