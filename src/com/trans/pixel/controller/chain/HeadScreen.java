@@ -108,7 +108,8 @@ import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
-import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
+//add import here
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -128,11 +129,6 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
-import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
-import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
-//add import here
 
 public class HeadScreen extends RequestScreen {
 	
@@ -153,7 +149,7 @@ public class HeadScreen extends RequestScreen {
         long userId = head.getUserId();
         req.user = userService.getUser(userId);
         
-        if (req.user == null/* || !req.user.getSession().equals(head.getSession())*/) {
+        if (req.user == null || !req.user.getSession().equals(head.getSession())) {
         	ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
             erBuilder.setCode(String.valueOf(ErrorConst.USER_NEED_LOGIN.getCode()));
             erBuilder.setMessage(ErrorConst.USER_NEED_LOGIN.getMesssage());
