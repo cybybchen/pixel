@@ -2,8 +2,10 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -230,12 +232,21 @@ public class ActivityService {
 		if (!isInKaifuActivityTime(serverId)) 
 			return;
 		
-		for (int type : ActivityConst.KAIFU2_TYPES) {
+		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
+		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			int type = TypeTranslatedUtil.stringToInt(it.next().getKey());
 			if (!activityRedisService.hasKaifu2RewardSend(serverId, type)) {
 				activityRedisService.setKaifu2SendRewardRecord(serverId, type);
 				sendKaifu2ActivityReward(serverId, type);
 			}
 		}
+//		for (int type : ActivityConst.KAIFU2_TYPES) {
+//			if (!activityRedisService.hasKaifu2RewardSend(serverId, type)) {
+//				activityRedisService.setKaifu2SendRewardRecord(serverId, type);
+//				sendKaifu2ActivityReward(serverId, type);
+//			}
+//		}
 	}
 	
 	private void sendKaifu2ActivityReward(int serverId, int type) {

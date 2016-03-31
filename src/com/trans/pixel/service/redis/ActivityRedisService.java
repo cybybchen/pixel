@@ -41,7 +41,7 @@ public class ActivityRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, Richang> getRichangConfig() {
+	public Map<String, Richang> getRichangConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_RICHANG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Richang> map = buildRichangConfig();
@@ -93,7 +93,7 @@ public class ActivityRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, Kaifu2> getKaifu2Config() {
+	public Map<String, Kaifu2> getKaifu2Config() {
 		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_KAIFU2_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Kaifu2> map = buildKaifu2Config();
@@ -144,7 +144,7 @@ public class ActivityRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, Kaifu> getKaifuConfig() {
+	public Map<String, Kaifu> getKaifuConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_KAIFU_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Kaifu> map = buildKaifuConfig();
