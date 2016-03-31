@@ -23,7 +23,6 @@
 		<result property="registerTime" column="register_time"/>
 		<result property="ladderModeHistoryTop" column="ladder_mode_history_top" />
 		<result property="loginDays" column="login_days" />
-		<result property="signDays" column="sign_days" />
 		<result property="pvpUnlock" column="pvp_unlock" />
 		<result property="areaUnlock" column="area_unlock" />
 		<result property="heroLimit" column="hero_limit" />
@@ -52,11 +51,11 @@
 	
 	<insert id="addNewUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserBean">
 		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
-		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, sign_days, 
+		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, 
 		register_time, hero_limit, compose_skill)
 		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
-		#{ladderModeHistoryTop}, #{loginDays}, #{signDays}, #{registerTime}, #{heroLimit}, #{composeSkill})
+		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
@@ -64,7 +63,7 @@
 		exp=#{exp}, point_pvp=#{pointPVP}, point_ladder=#{pointLadder}, point_expedition=#{pointExpedition},
 		point_union=#{pointUnion}, receive_message_timestamp=#{receiveMessageTimeStamp},vip=#{vip},
 		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}, ladder_mode_history_top=#{ladderModeHistoryTop},
-		login_days=#{loginDays}, sign_days=#{signDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock},
+		login_days=#{loginDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock},
 		hero_limit=#{heroLimit}, compose_skill=#{composeSkill}
 		WHERE id=#{id}
 	</update>
