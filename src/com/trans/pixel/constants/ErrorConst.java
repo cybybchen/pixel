@@ -12,7 +12,8 @@ public enum ErrorConst implements ResultConst {
 	UNION_NOT_FIGHT(2021, "工会血战已结束"),JOIN_AGAIN(2022, "请不要重复参加"),RESOURCE_LAIRD(2023, "领主不能参加区域争夺"),AREA_FIGHT_BUSY(2024, "该玩家正在参加区域争夺"),
 	BLOOD_FIGHT_BUSY(2025, "该玩家正在参加工会血战"),UNION_FULL(2026, "该工会人数已满"),JOIN_END(2027, "报名已结束"),JOIN_NOT_START(2027, "报名尚未开始"),
 	UNION_VICE_FULL(2028, "副会长人数已满"),UNION_ELDER_FULL(2029, "长老人数已满"),SAVE_UNION(2030, "不能攻击自己工会的成员"),
-	YOU_ARE_ATTACKING(2031, "你正在被其他玩家挑战"),HE_IS_ATTACKING(2032, "该玩家正在被其他玩家挑战"),
+	YOU_ARE_ATTACKING(2031, "你正在被其他玩家挑战"),HE_IS_ATTACKING(2032, "该玩家正在被其他玩家挑战"),CDKEY_USED(2033, "CDKEY已被使用"),CDKEY_INVALID(2034, "无效的CDKEY"),
+	CDKEY_REWARDED(2035, "已领取过相同类型的CDKEY"),
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), USER_NEED_LOGIN(2031, "该用户在其他地方登陆"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), NOT_ENOUGH_EXP(1006, "升级所需经验不足"),

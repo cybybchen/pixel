@@ -32,7 +32,7 @@
 	    SELECT * from union where serverid=#{serverid} and name=#{name}
 	</select>
 	
-	<update id="updateUnionn" parameterType="com.trans.pixel.model.UnionBean">
+	<update id="updateUnion" parameterType="com.trans.pixel.model.UnionBean">
 	    UPDATE user_union SET level={level}, point=#{point}
 		WHERE id=#{id}
 	</update>

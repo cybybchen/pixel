@@ -80,6 +80,9 @@
   margin-left: 10px;
   margin-right: -24px;
 }
+.table-btn{
+	margin: -8px 0;
+}
 jsoneditor .json{
   margin-top:0;
   margin-bottom:0;

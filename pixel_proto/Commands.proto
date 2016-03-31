@@ -67,6 +67,24 @@ message ShopWillList {
 	repeated ShopWill shop = 1;
 }
 
+message Cdkey {
+	required int32 id = 1;
+	optional string name = 2;
+	optional int32 itemid1 = 3;
+	optional int32 count1 = 4;
+	optional int32 itemid2 = 5;
+	optional int32 count2 = 6;
+	optional int32 itemid3 = 7;
+	optional int32 count3 = 8;
+	repeated RewardInfo reward = 9;
+	optional int32 currentCount = 10;
+	optional int32 count = 11;
+	optional int32 length = 12;
+}
+message CdkeyList {
+	repeated Cdkey cdkey = 1;
+}
+
 message RewardInfo {
 	required int32 itemid = 1;
 	optional string itemname = 2;
@@ -441,6 +459,7 @@ message PVPMap{
 	optional int32 buffid = 9;//buffid
 	optional int32 buff = 10;//buff层数
 	optional bool opened = 11;//是否开放
+	optional int32 img = 112;
 	repeated PVPMine kuangdian = 3;
 	repeated PVPMonster monster = 4;
 }

@@ -58,6 +58,12 @@ public class RedisKey {
 	//daguan redis
 	public static final String DAGUAN_KEY = CONFIG_PREFIX+"daguan";
 	
+	//cdkey
+	public static final String CDKEY_CONFIG = PREFIX+CONFIG_PREFIX+"cdkey";
+	public static final String CDKEY = PREFIX+"cdkey";
+	public static final String CDKEY_OLD = PREFIX+"cdkey_old";
+	public static final String CDKEY_EXCHANGE = PREFIX+"cdkey_exchange";
+	
 	//user level record redis
 //	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_";
 //	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_loot_level_";

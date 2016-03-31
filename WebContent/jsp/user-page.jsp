@@ -52,19 +52,21 @@
 		</div>
 		<form id="rewardForm" class="ui-grid-a" style="display:none;">
 			<div class="ui-block-a">
-		    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
-		        <input name="rewardid" data-type="search" data-enhanced="true" data-inset="false" id="rewardid-input" placeholder="rewardId">
-		    </div>
-		    <div data-role="controlgroup" data-enhanced="true" data-filter="true" data-filter-reveal="true" data-input="#rewardid-input" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
-		        <div class="ui-controlgroup-controls">
-		        	<%@ include file="reward.jsp" %>
-		        </div>
-		    </div>
+	        	<label>RewardId:</label>
+			    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
+			        <input name="rewardid" data-type="search" data-enhanced="true" data-inset="false" id="rewardid-input" placeholder="rewardId">
+			    </div>
+			    <div data-role="controlgroup" data-enhanced="true" data-filter="true" data-filter-reveal="true" data-input="#rewardid-input" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+			        <div class="ui-controlgroup-controls">
+			        	<%@ include file="reward.jsp" %>
+			        </div>
+			    </div>
 		    </div>
 	        <div class="ui-block-b">
-	        <input type="text" name="rewardcount" value="" placeholder="rewardCount">
-
-    		<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doReward();">send reward</a>
+		        <label>RewardCount:</label>
+		        <input type="text" name="rewardcount" value="" placeholder="rewardCount">
+	
+	    		<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doReward();">send reward</a>
     		</div>
 		</form>
 		<div id="user-editor" style="float:clear;">

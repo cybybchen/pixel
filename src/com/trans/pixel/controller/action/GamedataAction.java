@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -120,6 +121,34 @@ public class GamedataAction {
 		}
     }
 
+    @RequestMapping(value="/cdkey*.txt")
+    @ResponseBody
+    public void addCdkey(HttpServletRequest request, HttpServletResponse response) {
+        response.setContentType("application/octet-stream; charset=utf-8");
+        try {
+        	long time = System.currentTimeMillis();
+			JSONObject object = new JSONObject();
+        	object.put("id", Integer.parseInt(request.getParameter("id")));
+        	object.put("name", request.getParameter("name"));
+        	object.put("reward", request.getParameter("reward"));
+        	object.put("count", Integer.parseInt(request.getParameter("count")));
+        	object.put("length", Integer.parseInt(request.getParameter("length")));
+			JSONObject req = new JSONObject();
+			req.put("serverId", 1);
+			req.put("add-Cdkey", object);
+			JSONObject result = managerService.getData(req);
+			logger.debug("Add Cdkey:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time));
+
+			try {
+				response.getWriter().write(result.getString("addCdkey").toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        } catch (Throwable e) {
+        	logger.error("PIXEL_MANAGER_ERRO", e);
+        }
+    }
+    
     @RequestMapping("/datamanager")
     @ResponseBody
     public void getData(HttpServletRequest request, HttpServletResponse response) {
@@ -147,6 +176,10 @@ public class GamedataAction {
 			logger.debug("Manager Data:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time));
 
 			try {
+//				if(result.containsKey("addCdkey")){
+//					response.setContentType(CONTENT_TYPE);
+//					response.getWriter().write(result.getString("addCdkey").toString());
+//				}else
 				response.getWriter().write(result.toString());
 			} catch (IOException e) {
 				e.printStackTrace();

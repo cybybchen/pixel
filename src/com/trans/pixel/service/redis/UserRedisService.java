@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -85,9 +87,10 @@ public class UserRedisService extends RedisService{
 	}
 	
 	public UserInfo getRandUser(int serverId){
-		Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId);
-		Object[] keys = map.keySet().toArray();
-		String value = map.get(keys[nextInt(keys.length)]);
+		String key = RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId;
+		Collection<String> set = hkeys(key);
+		String[] keys = (String[]) set.toArray();
+		String value = hget(key, keys[nextInt(keys.length)]);
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		parseJson(value, builder);
 		return builder.build();

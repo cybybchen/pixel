@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,6 +16,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Commands.Cdkey;
+import com.trans.pixel.service.redis.CdkeyRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -57,6 +60,8 @@ public class ManagerService extends RedisService{
 	private UserPropService userPropService;
 	@Resource
 	private AreaFightService areaFightService;
+	@Resource
+	private CdkeyRedisService cdkeyRedisService;
 	
 	public JSONObject getData(JSONObject req) {
 		JSONObject result = new JSONObject();
@@ -83,15 +88,52 @@ public class ManagerService extends RedisService{
 			}
 			userId = user.getId();
 		}
+		result.put("userId", userId);
+		result.put("userName", userName);
+		result.put("serverId", serverId);
 		int rewardId = TypeTranslatedUtil.jsonGetInt(req, "rewardId");
 		int rewardCount = TypeTranslatedUtil.jsonGetInt(req, "rewardCount");
 		if(rewardId > 0 && rewardCount > 0){
 			rewardService.doReward(userId, rewardId, rewardCount);
 			result.put("success", "奖励发放成功");
 		}
-		result.put("userId", userId);
-		result.put("userName", userName);
-		result.put("serverId", serverId);
+		
+		if(req.containsKey("del-Cdkey")){
+			String key = req.getString("del-Cdkey");
+			cdkeyRedisService.delCdkeyConfig(key);
+			result.put("success", "cdkey已删除");
+			req.put("Cdkey", 1);
+		}else if(req.containsKey("add-Cdkey")){
+			String value = req.getString("add-Cdkey");
+			Cdkey.Builder builder = Cdkey.newBuilder();
+			parseJson(value, builder);
+			int length = builder.getLength();
+			builder.clearLength();
+			List<String> cdkeys = null;
+			if(builder.getCount() == -1)
+				cdkeys = cdkeyRedisService.getAvaiCdkeys(builder.getId()+"");
+			else
+				cdkeys = cdkeyRedisService.addCdkeyConfig(builder, length);
+			value = hget(RedisKey.CDKEY_CONFIG, builder.getId()+"");
+			if(value != null){
+				builder.clearReward();
+				parseJson(value, builder);
+				value = hget(RedisKey.CDKEY_EXCHANGE, builder.getId()+"");
+				if(value != null)
+					builder.setCurrentCount(Integer.parseInt(value));
+			}
+			value = String.join("\r\n", cdkeys);
+			value = formatJson(builder.build())+"\r\n"+value;
+			result.put("addCdkey", value);
+//			req.put("Cdkey", 1);
+		}
+		if(req.containsKey("Cdkey")){
+			Map<Integer, String> map = cdkeyRedisService.getCdkeyConfigs();
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("Cdkey", object);
+		}
+		
 		if(req.containsKey("update-UserData")){
 			hput(USERDATA+userId, "UserData", req.get("update-UserData").toString());
 			req.put("UserData", 1);

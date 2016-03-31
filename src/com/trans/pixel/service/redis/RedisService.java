@@ -321,6 +321,22 @@ public class RedisService {
    }
 
 	 /**
+  * 设置hashMap单个值
+  */
+	protected Boolean hputnx(final String key, final String key2, final String value) {
+		return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+
+				return Ops.putIfAbsent(key2, value);
+			}
+		});
+	}
+	
+	 /**
     * 设置hashMap单个值
     */
 	protected void hput(final String key, final String key2, final String value) {
@@ -406,6 +422,38 @@ public class RedisService {
 						.boundHashOps(key);
 				
 				return Ops.entries();
+			}
+		});
+    }
+
+    /**
+     * 获取hashMap多个值
+     */
+    protected List<String> hmget(final String key, final Collection<String> keys) {
+    	return redisTemplate.execute(new RedisCallback<List<String>>() {
+			@Override
+			public List<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+				
+				return Ops.multiGet(keys);
+			}
+		});
+    }
+
+    /**
+     * 获取hashMap所有Key
+     */
+    protected Set<String> hkeys(final String key) {
+    	return redisTemplate.execute(new RedisCallback<Set<String>>() {
+			@Override
+			public Set<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+				
+				return Ops.keys();
 			}
 		});
     }

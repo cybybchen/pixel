@@ -9,28 +9,8 @@ var json = {
             "arr": ["foo", "ha"],
             "numero": 1
         }
-    }},"data2":{
-    "string": "foo",
-    "number": 5,
-    "array": [1, 2, 3],
-    "object": {
-        "property": "value",
-        "subobj": {
-            "arr": ["foo", "ha"],
-            "numero": 1
-        }
-    }},"data3":{
-    "string": "foo",
-    "number": 5,
-    "array": [1, 2, 3],
-    "object": {
-        "property": "value",
-        "subobj": {
-            "arr": ["foo", "ha"],
-            "numero": 1
-        }
-    }
-}};
+    }}
+};
 
 function showReloadBtn(){
     dom = $(".reload-btn:hidden");
@@ -503,7 +483,8 @@ function updateConfigJson(jsondata) {
             showReloadBtn();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("提交数据失败："+XMLHttpRequest.status);
+        	//XMLHttpRequest.responseText
+            alert("提交数据失败"+XMLHttpRequest.status+":"+textStatus);
             showReloadBtn();
         }
     });
@@ -715,6 +696,92 @@ function appendConfigDatas(message, visible){
     if(message["PurchaseCoinRewardConfig"]!=null){
         appendConfigData("PurchaseCoinRewardConfig", message["PurchaseCoinRewardConfig"], visible);
     }
+    if(message["Cdkey"]!=null){
+    	$("#config-editor").empty();
+    	$("#config-cdkey").show();
+        showCdkeyTable(message["Cdkey"]);
+        
+        $("#table-cdkey-popup-popup :checkbox").on('click', function() {
+        	toggleCdkeyTable(this);
+        });
+    }else{
+    	$("#config-cdkey").hide();
+    }
+}
+function showCdkeyTable(json){
+	var table = $("#table-cdkey tbody");
+    var dom = table.find("tr");
+    var jsonlength = Object.keys(json).length;
+    for (var i = dom.length - 1; i > 0; i--) {
+        dom[i].remove();
+    };
+    for (var i = 1; i < jsonlength; i++) {
+        table.append($(dom[0]).clone());
+    };
+    dom = table.find("tr");
+    var index = jsonlength-1;
+    $.each(json, function (key, value) {
+        var children = $(dom[index]).children();
+        $(children[0]).html(key);
+        $(children[1]).html(value["name"]);
+        $(children[2]).html(JSON.stringify(value["reward"]));
+        $(children[3]).html(value["currentCount"]+"/"+value["count"]);
+        if(index == 0){
+        	$("#cdkey-form input[name='id']").val(Number(key)+1);
+        	$("#cdkey-form input[name='id']").change();
+        }
+        index--;
+	});
+}
+
+function toggleCdkeyTable(checkbox){
+	var name = $(checkbox).prev().text();
+	var tr = $("#table-cdkey thead tr th");
+	var th = 3;
+	var ischecked = $(checkbox).is(":checked");
+	for(var i = 0; i < tr.length; i++){
+		if($(tr[i]).text() == name)
+			th = i;
+	}
+    $.each($("#table-cdkey tbody tr"), function () {
+        var children = $(this).children();
+        if(ischecked){
+        	$(children[th]).removeClass("ui-table-cell-hidden");
+        	$(children[th]).addClass("ui-table-cell-visible");
+        }else{
+        	$(children[th]).removeClass("ui-table-cell-visible");
+        	$(children[th]).addClass("ui-table-cell-hidden");
+        }
+	});
+}
+
+//function addCdkey(){
+//	var json = {};
+//	json["id"] = Number($("#cdkey-form input[name='id']").val());
+//	json["name"] = $("#cdkey-form input[name='name']").val();
+//	json["reward"] = $("#cdkey-form input[name='reward']").val();
+//	json["count"] = Number($("#cdkey-form input[name='count']").val());
+//	updateConfigJson(buildConfigJson("add-Cdkey", json));
+//}
+
+//function delCdkey(dom){
+//	var key = $(dom).parent().parent().find("th:first").text();
+//	updateConfigJson(buildConfigJson("del-Cdkey", key));
+//}
+
+function configCdkey(dom){
+	var children = $(dom).children();
+	$("#cdkey-form input[name='id']").val($(children[0]).text());
+	$("#cdkey-form input[name='name']").val($(children[1]).text());
+	$("#cdkey-form input[name='reward']").val($(children[2]).text());
+	$("#cdkey-form input[name='count']").val("-1");
+	$("#cdkey-form input[name='id']").change();
+}
+
+function updateCdkeyUrl(dom){
+	var value = $(dom).val();
+	var form = $(dom).parent().parent().parent();
+	form.attr("action", "cdkey"+value+".txt");
 }
 
 function buildConfigJson(key, value){
@@ -748,6 +815,8 @@ function buildConfigJson(key, value){
             json["HeroUpgradeConfig"] = "{}";
             json["HeroConfig"] = "{}";
             json["HeroRareConfig"] = "{}";
+        }else if(datatype == "cdkey"){
+            json["Cdkey"] = "{}";
         }else{
             json["HeroStarConfig"] = "{}";
             json["LotteryConfig1001"] = "{}";
@@ -904,7 +973,16 @@ $(document).ready(function() {
         $(this).addClass("nav-btn-active");
         $("#config-editor").empty();
         var json = buildConfigJson();
-        appendConfigDatas(json, false);
+        if(json.hasOwnProperty("Cdkey")){
+        	json["serverId"] = 1;
+        	updateConfigJson(json);
+        }else
+        	appendConfigDatas(json, false);
+    });
+    $("#table-cdkey").on('click', ".del-btn", function() {
+    	var cdkeyid = $(this).parent().parent().find("th:first").text();
+    	var json = buildConfigJson("del-Cdkey", cdkeyid);
+    	updateConfigJson(json);
     });
 //    $('.json').val(JSON.stringify(json));
 //    $('.json-editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
