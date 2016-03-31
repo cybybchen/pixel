@@ -45,8 +45,13 @@ public class SignService {
 	}
 	
 	private boolean canSign(UserBean user) {
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 		Date last = DateUtil.getDate(user.getLastSignTime());
 		Date current = DateUtil.getDate();
+		if (last == null) {
+			user.setLastSignTime(df.format(current));
+			return true;
+		}
 		Date time1 = DateUtil.getCurrentDayDate(SIGN_TIME_1);
 		Date time2 = DateUtil.getCurrentDayDate(SIGN_TIME_2);
 		Date time3 = DateUtil.getCurrentDayDate(SIGN_TIME_3);
@@ -54,7 +59,6 @@ public class SignService {
 		if (time1.after(last) && time1.before(current) 
 				|| time2.after(last) && time2.before(current)
 				|| time3.after(last) && time3.before(current)) {
-			SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 			user.setLastSignTime(df.format(current));
 			return true;
 		}
