@@ -129,8 +129,10 @@ public class ManagerService extends RedisService{
 				if(value != null)
 					builder.setCurrentCount(Integer.parseInt(value));
 			}
-			value = String.join("\r\n", cdkeys);
-			value = formatJson(builder.build())+"\r\n"+value;
+			value = formatJson(builder.build());
+			for(String key : cdkeys){
+				value += "\r\n"+key;
+			}
 			result.put("addCdkey", value);
 //			req.put("Cdkey", 1);
 		}
