@@ -18,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
+import com.trans.pixel.service.redis.GmAccountRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -62,9 +63,15 @@ public class ManagerService extends RedisService{
 	private AreaFightService areaFightService;
 	@Resource
 	private CdkeyRedisService cdkeyRedisService;
+	@Resource
+	private GmAccountRedisService gmAccountRedisService;
 	
 	public JSONObject getData(JSONObject req) {
 		JSONObject result = new JSONObject();
+		if(gmAccountRedisService.getSession(TypeTranslatedUtil.jsonGetString(req, "session")) == null){
+			result.put("error", "Session timeout! Please login.");
+			return result;
+		}
 		Long userId = TypeTranslatedUtil.jsonGetLong(req, "userId");
 		String userName = TypeTranslatedUtil.jsonGetString(req, "userName");
 		int serverId = TypeTranslatedUtil.jsonGetInt(req, "serverId");

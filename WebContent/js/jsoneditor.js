@@ -271,6 +271,7 @@ function buildUserJson(key, value){
 	json["userId"] = userid;
 	json["userName"] = username;
     json["serverId"] = serverid;
+    json["session"] = session;
     if(key != null){
         if(value != null)
             json[key] = value;
@@ -428,6 +429,7 @@ function appendServerDatas(message){
 function buildServerJson(key, value){
     var json = {};
     json["serverId"] = serverid;
+    json["session"] = session;
     if(key != null){
         if(value != null)
             json[key] = value;
@@ -788,6 +790,7 @@ function buildConfigJson(key, value){
     var json = {};
     if(key != null){
         json["serverId"] = 1;
+        json["session"] = session;
         if(value != null)
             json[key] = value;
         else
@@ -974,7 +977,7 @@ $(document).ready(function() {
         $("#config-editor").empty();
         var json = buildConfigJson();
         if(json.hasOwnProperty("Cdkey")){
-        	json["serverId"] = 1;
+        	json = buildConfigJson("Cdkey", "{}");
         	updateConfigJson(json);
         }else
         	appendConfigDatas(json, false);

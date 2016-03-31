@@ -64,6 +64,9 @@ public class RedisKey {
 	public static final String CDKEY_OLD = PREFIX+"cdkey_old";
 	public static final String CDKEY_EXCHANGE = PREFIX+"cdkey_exchange";
 	
+	//gm account
+	public static final String GM_SESSION_PREFIX = PREFIX+"GmSession_";
+	
 	//user level record redis
 //	public static final String USER_LEVEL_RECORD_PREFIX = "user_level_";
 //	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_loot_level_";

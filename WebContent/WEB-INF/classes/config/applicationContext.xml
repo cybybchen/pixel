@@ -132,6 +132,8 @@
 			<bean
 				class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 		</property>
-	</bean> 
+	</bean>
+	<bean id="gmAccountRedisService" class="com.trans.pixel.service.redis.GmAccountRedisService">
+	</bean>
     
 </beans>  

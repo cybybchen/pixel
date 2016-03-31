@@ -41,7 +41,7 @@ import com.trans.pixel.constants.DirConst;
 @Repository
 public class RedisService {
 	final public static String PROPERTIES = "resources/config/";
-	static Logger logger = Logger.getLogger(RedisService.class);
+	protected static Logger logger = Logger.getLogger(RedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	

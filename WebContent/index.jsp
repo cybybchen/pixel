@@ -5,19 +5,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 //<base href="<%=basePath%>">
  --%>
-<%
-	javax.servlet.http.HttpSession session_comm = request
-			.getSession(true);
-
-	//out.println(session_comm.getMaxInactiveInterval());//显示当前超时时间
-
-	String account = (String) session_comm.getAttribute("account");
-	if (account == null || account == "") {
-%>
-<jsp:forward page="login.jsp"/>
-<%
-	}
-%>
 
 <!DOCTYPE html>
 <html>
@@ -27,6 +14,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery.jsoneditor.js"></script>
     <script src="js/jsoneditor.js"></script>
+<%
+	javax.servlet.http.HttpSession session_comm = request
+			.getSession(true);
+
+	//out.println(session_comm.getMaxInactiveInterval());//显示当前超时时间
+
+	String mysession = (String) session_comm.getAttribute("session");
+	if (mysession == null || mysession == "") {
+%>
+<jsp:forward page="login.jsp"/>
+<%
+	}else{
+		out.print("<script>var session = \""+mysession+"\";</script>");
+	}
+%>
 </head>
 
 <body>

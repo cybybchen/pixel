@@ -43,7 +43,7 @@
 					<th>ID</th>
 					<th data-priority="2">礼包名称</th>
 					<th data-priority="5">奖励</th>
-					<th data-priority="3">兑换数量</th>
+					<th data-priority="3">已兑换</th>
 					<th>操作</th>
 				</tr>
 			</thead>
