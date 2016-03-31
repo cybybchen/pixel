@@ -308,8 +308,6 @@ public class ActivityService {
 	
 	public List<Kaifu2Rank> getKaifu2RankList(UserBean user) {
 		int serverId = user.getServerId();
-		 
-		sendKaifu2ActivitiesReward(serverId);
 		
 		List<Kaifu2Rank> rankList = new ArrayList<Kaifu2Rank>();
 		for (int kaifu2Type : ActivityConst.KAIFU2_TYPES) {

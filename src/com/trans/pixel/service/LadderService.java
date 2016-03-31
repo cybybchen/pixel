@@ -139,8 +139,6 @@ public class LadderService {
 	}
 	
 	public ResultConst attack(UserBean user, long attackRank, boolean result, int teamid) {
-		activityService.sendKaifu2ActivitiesReward(user.getServerId());
-		
 		int serverId = user.getServerId();
 		if (user.getLadderModeLeftTimes() <= 0)
 			return ErrorConst.NOT_ENOUGH_LADDER_MODE_TIMES;
