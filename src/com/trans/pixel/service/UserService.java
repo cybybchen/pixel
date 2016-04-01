@@ -112,6 +112,10 @@ public class UserService {
 //		userMapper.updateUser(user);
 	}
 	
+	public void updateRobotUser(UserBean user) {
+		userRedisService.updateRobotUser(user);
+	}
+	
 	public <T> void updateToDB(T userId) {
 		UserBean user = userRedisService.getUser(userId);
 		if(user != null)

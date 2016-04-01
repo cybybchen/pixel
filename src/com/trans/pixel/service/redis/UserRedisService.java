@@ -66,6 +66,13 @@ public class UserRedisService extends RedisService{
 		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX, user.getId()+"");
 	}
 	
+	public void updateRobotUser(final UserBean user) {
+		if(user.getId() == 0)
+			return;
+		String key = RedisKey.USERDATA+user.getId();
+		hput(key, "UserData", JSONObject.fromObject(user).toString());
+	}
+	
 	public String popDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX);
 	}

@@ -273,6 +273,9 @@ public class LadderService {
 				int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
 				robotRank.setZhanli(zhanli);
 				updateUserRank(serverId, robotRank);
+				
+				robot.setZhanli(zhanli);
+				userService.updateRobotUser(robot);
 			}
 		}
 		long endTime = System.currentTimeMillis();
