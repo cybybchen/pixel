@@ -161,7 +161,7 @@ public class UserTeamService {
 				continue;
 			}
 			
-			if (teamList.length <= count)
+			if (teamList.length-1 <= count)
 				return true;
 		}
 		
