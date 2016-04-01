@@ -3,12 +3,14 @@ package com.trans.pixel.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
@@ -709,9 +711,13 @@ public class ManagerService extends RedisService{
 		// 	}
 		// }
 		if(req.containsKey("messageBoard")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY);
+			long end = System.currentTimeMillis();
+			long start = end - 3600*1000;
 			JSONObject object = new JSONObject();
-			object.putAll(map);
+			Set<TypedTuple<String>> set = zrangewithscore(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY, start, end);
+			for(TypedTuple<String> message : set){
+				object.put(message.getScore()+"", message.getValue());
+			}
 			result.put("messageBoard", object);
 		}
 		//SERVERDATA
