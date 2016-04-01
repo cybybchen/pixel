@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.FriendConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
@@ -62,6 +63,17 @@ public class FriendCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
+		if (userFriendService.getFriendCount(user.getId()) >= FriendConst.FRIEND_COUNT_MAX) {
+			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.YOUR_FRIEND_MAX_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		if (userFriendService.getFriendCount(friendId) >= FriendConst.FRIEND_COUNT_MAX) {
+			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
 		buildAddFriendMail(friendId, user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.SEND_FRIEND_ADDED_SUCCESS));
 	}
@@ -76,7 +88,16 @@ public class FriendCommandService extends BaseCommandService {
 		}
 		boolean receive = cmd.getReceive();
 		if (receive) {
-			doAddFriends(user.getId(), mailList);
+			if (userFriendService.getFriendCount(user.getId()) >= FriendConst.FRIEND_COUNT_MAX) {
+				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.YOUR_FRIEND_MAX_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+			if (!doAddFriends(user.getId(), mailList)) {
+				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
 			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.FRIEND_ADDED_SUCCESS));
 		} else
 			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.FRIEND_ADDED_FAILED));
@@ -97,15 +118,20 @@ public class FriendCommandService extends BaseCommandService {
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.DEL_FRIEND_SUCCESS));
 	}
 	
-	private void doAddFriends(long userId, List<MailBean> mailList) {
+	private boolean doAddFriends(long userId, List<MailBean> mailList) {
 		for (MailBean mail : mailList) {
 			if (!userFriendService.isFriend(userId, mail.getFromUserId())) {
+				if (userFriendService.getFriendCount(mail.getFromUserId()) >= FriendConst.FRIEND_COUNT_MAX) {
+		            return false;
+				}
 				userFriendService.insertUserFriend(userId, mail.getFromUserId());
 				userFriendService.insertUserFriend(mail.getFromUserId(), userId);
 			}
 			
 			mailService.delMail(userId, MailConst.TYPE_ADDFRIEND_MAIL, mail.getId());
 		}
+		
+		return true;
 	}
 	
 	private void buildAddFriendMail(long userId, UserBean user) {

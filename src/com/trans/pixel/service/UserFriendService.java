@@ -81,6 +81,10 @@ public class UserFriendService {
 		return userFriend;
 	}
 	
+	public int getFriendCount(long userId) {
+		return selectUserFriendList(userId).size();
+	}
+	
 	public List<UserFriend> getUserFriendList(UserBean user) {
 		List<UserFriend> userFriendList = new ArrayList<UserFriend>();
 		List<UserFriendBean> userFriendBeanList = selectUserFriendList(user.getId());
