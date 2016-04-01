@@ -154,15 +154,11 @@ public class UserTeamService {
 		String[] teamList = teamInfo.split("\\|");
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
 		List<TeamUnlock> teamUnlockList = userTeamRedisService.getTeamUnlockConfig();
-		int count = 0;
 		for (TeamUnlock teamUnlock : teamUnlockList) {
 			if (teamUnlock.getId() <= userLevel.getPutongLevel()) {
-				count = teamUnlock.getCount();
-				continue;
+				if (teamList.length <= teamUnlock.getCount())				
+					return true;
 			}
-			
-			if (teamList.length-1 <= count)
-				return true;
 		}
 		
 		return false;
