@@ -1560,6 +1560,7 @@ message RequestKaifuListCommand {
 
 message ResponseKaifuListCommand {
         repeated UserKaifu userKaifu = 1;
+	repeated Kaifu2Rank rank = 2;
 }
 
 message RequestUserPokedeCommand {

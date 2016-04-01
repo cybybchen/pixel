@@ -145,6 +145,7 @@ public class ActivityCommandService extends BaseCommandService {
 		
 		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(user.getId());
 		builder.addAllUserKaifu(ukList);
+		builder.addAllRank(activityService.getKaifu2RankList(user));
 		
 		responseBuilder.setKaifuListCommand(builder.build());
 	}

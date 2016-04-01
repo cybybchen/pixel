@@ -321,11 +321,16 @@ public class ActivityService {
 		int serverId = user.getServerId();
 		
 		List<Kaifu2Rank> rankList = new ArrayList<Kaifu2Rank>();
-		for (int kaifu2Type : ActivityConst.KAIFU2_TYPES) {
+		Map<String, Kaifu> map = activityRedisService.getKaifuConfig();
+		if (map == null)
+			return rankList;
+		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			int type = TypeTranslatedUtil.stringToInt(it.next().getKey());
 			Kaifu2Rank.Builder kaifu2Rank = Kaifu2Rank.newBuilder();
-			kaifu2Rank.setType(kaifu2Type);
-			kaifu2Rank.setMyRank(activityRedisService.getKaifu2MyRank(user, kaifu2Type));
-			Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, kaifu2Type);
+			kaifu2Rank.setType(type);
+			kaifu2Rank.setMyRank(activityRedisService.getKaifu2MyRank(user, type));
+			Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, type);
 			List<UserInfo> userInfoList = userService.getCaches(serverId, values);
 			int rankInit = 1;
 			for (TypedTuple<String> value : values) {
