@@ -43,6 +43,7 @@ public class HeroCommandService extends BaseCommandService {
 
 	private static final int BUY_HERO_PACKAGE_COST = 50;
 	private static final int BUY_HERO_PACKAGE_COUNT = 10;
+	private static final int HERO_PACKAGE_LIMIT = 500;
 	@Resource
 	private HeroLevelUpService heroLevelUpService;
 	@Resource
@@ -321,6 +322,12 @@ public class HeroCommandService extends BaseCommandService {
 	public void buyHeroPackage(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user) {
 		if (!costService.cost(user, RewardConst.JEWEL, BUY_HERO_PACKAGE_COST)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT >= HERO_PACKAGE_LIMIT) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HERO_LIMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
