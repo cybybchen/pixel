@@ -41,16 +41,17 @@ public class UserTeamRedisService extends RedisService {
 		Team.Builder team = Team.newBuilder();
 		if(value != null)
 			parseJson(value, team);
+		UserBean user = userService.getUser(userid);
+		if (user == null) {
+			user = new UserBean();
+			user.init(1, "someone", "someone", 0);
+		}
+		if(!team.hasUser() || user.getZhanli() > team.getUser().getZhanli()){
+			team.setUser(user.buildShort());
+		}
 		if(team.getHeroInfoCount() == 0){
 			HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 			team.addHeroInfo(heroInfo.buildRankHeroInfo());
-			UserBean user = userService.getUser(userid);
-			if (user == null) {
-				user = new UserBean();
-				user.init(1, "haha", "haha", 0);
-			}
-				
-			team.setUser(user.buildShort());
 		}
 		return team.build();
 	}
