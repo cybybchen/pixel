@@ -448,6 +448,7 @@ message PVPMine{//pvp矿点
 	optional UserInfo owner = 8;//占领者
 	optional int64 endTime = 9;
 	optional int32 level = 10;//每一级提升防守方战斗力5%
+	optional string img = 11;
 }
 
 message PVPMap{
