@@ -264,18 +264,22 @@ public class LadderService {
 		for (LadderEnemy ladderEnemy : enemyList) {
 			for (int i = ladderEnemy.getRanking(); i <= ladderEnemy.getRanking1(); ++i) {
 				String robotName = randomRobotName(name2List, nameList);
-				UserBean robot = new UserBean();
-				robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(4));
-				robot.setId(-i);
+				int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
+				long userId = -i;
+				UserBean robot = userService.getRobotUser(userId);
+				if (robot == null) {
+					robot = new UserBean();
+					robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(4));
+					robot.setId(userId);
+					robot.setZhanli(zhanli);
+					userService.updateRobotUser(robot);
+				}
 				List<HeroInfoBean> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
 				userTeamService.saveTeamCacheWithoutExpire(robot, heroInfoList);
 				UserRankBean robotRank = initRobotRank(robot.getId(), robot.getUserName(), i);
-				int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
+				
 				robotRank.setZhanli(zhanli);
 				updateUserRank(serverId, robotRank);
-				
-				robot.setZhanli(zhanli);
-				userService.updateRobotUser(robot);
 			}
 		}
 		long endTime = System.currentTimeMillis();

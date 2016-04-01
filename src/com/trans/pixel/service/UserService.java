@@ -42,6 +42,13 @@ public class UserService {
         return user;
     }
 	
+	public UserBean getRobotUser(long userId) {
+    	logger.debug("The user id is: " + userId);
+    	UserBean user = userRedisService.getUser(userId);
+    
+    	return user;
+    }
+	
 	public UserBean getUserByAccount(int serverId, String account) {
 		logger.debug("serverId={},The account={}", serverId, account);
 		String userId = userRedisService.getUserIdByAccount(serverId, account);
