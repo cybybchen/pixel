@@ -42,7 +42,7 @@ public class MohuaCommandService extends BaseCommandService {
 	
 	public void startMohuaUserData(RequestStartMohuaMapCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseMohuaUserDataCommand.Builder builder = ResponseMohuaUserDataCommand.newBuilder();
-		builder.setUser(mohuaService.getUserData(user.getId()));
+		builder.setUser(mohuaService.getUserData(user));
 		responseBuilder.setMohuaUserDataCommand(builder.build());
 	}
 	
@@ -54,7 +54,7 @@ public class MohuaCommandService extends BaseCommandService {
 	
 	public void useMohuaCard(RequestUseMohuaCardCommand cmd, Builder responseBuilder, UserBean user) {
 		List<MohuaCard> useCardList = cmd.getCardList();
-		ResultConst result = mohuaService.useMohuaCard(user.getId(), useCardList);
+		ResultConst result = mohuaService.useMohuaCard(user, useCardList);
 		if (result instanceof Error) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
 	        responseBuilder.setErrorCommand(errorCommand);
@@ -62,7 +62,7 @@ public class MohuaCommandService extends BaseCommandService {
 		}
 		
 		ResponseMohuaUserDataCommand.Builder builder = ResponseMohuaUserDataCommand.newBuilder();
-		builder.setUser(mohuaService.getUserData(user.getId()));
+		builder.setUser(mohuaService.getUserData(user));
 		responseBuilder.setMohuaUserDataCommand(builder.build());
 		
 		responseBuilder.setMessageCommand(buildMessageCommand((SuccessConst)result));
@@ -70,7 +70,7 @@ public class MohuaCommandService extends BaseCommandService {
 	
 	public void rewardStage(RequestMohuaStageRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int rewardStage = cmd.getStage();
-		List<RewardInfo> rewardList = mohuaService.stageReward(user.getId(), rewardStage);
+		List<RewardInfo> rewardList = mohuaService.stageReward(user, rewardStage);
 		if (rewardList == null || rewardList.size() == 0) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MOHUA_STAGE_REWARD_ERROR);
 	        responseBuilder.setErrorCommand(errorCommand);
@@ -84,7 +84,7 @@ public class MohuaCommandService extends BaseCommandService {
 	
 	public void rewardHp(RequestMohuaHpRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int rewardHp = cmd.getConsumehp();
-		List<RewardInfo> rewardList = mohuaService.hpReward(user.getId(), rewardHp);
+		List<RewardInfo> rewardList = mohuaService.hpReward(user, rewardHp);
 		if (rewardList == null || rewardList.size() == 0) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MOHUA_HP_REWARD_ERROR);
 	        responseBuilder.setErrorCommand(errorCommand);
@@ -99,7 +99,7 @@ public class MohuaCommandService extends BaseCommandService {
 	public void submitStage(RequestMohuaSubmitStageCommand cmd, Builder responseBuilder, UserBean user) {
 		int hp = cmd.getHp();
 		int selfhp = cmd.getSelfhp();
-		ResultConst result = mohuaService.submitStage(user.getId(), hp, selfhp);
+		ResultConst result = mohuaService.submitStage(user, hp, selfhp);
 		
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
@@ -108,7 +108,7 @@ public class MohuaCommandService extends BaseCommandService {
 		}
 		
 		ResponseMohuaUserDataCommand.Builder builder = ResponseMohuaUserDataCommand.newBuilder();
-		builder.setUser(mohuaService.getUserData(user.getId()));
+		builder.setUser(mohuaService.getUserData(user));
 		responseBuilder.setMohuaUserDataCommand(builder.build());
 		
 		responseBuilder.setMessageCommand(buildMessageCommand((SuccessConst)result));

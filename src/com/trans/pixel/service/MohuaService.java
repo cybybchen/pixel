@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MohuaCard;
 import com.trans.pixel.protoc.Commands.MohuaCardMap;
 import com.trans.pixel.protoc.Commands.MohuaCardSkill;
@@ -45,26 +46,27 @@ public class MohuaService {
 		redis.delMohuaUserData(userId);
 	}
 	
-	public MohuaUserData.Builder getUserData(long userId) {
-		return getUserData(userId, 0);
-	}
+//	public MohuaUserData.Builder getUserData(long userId) {
+//		return getUserData(userId, 0);
+//	}
 	
-	public MohuaUserData.Builder getUserData(long userId, int serverId) {
+	public MohuaUserData.Builder getUserData(UserBean userBean) {
+		long userId = userBean.getId();
 		MohuaUserData user = redis.getMohuaUserData(userId);
 		if (user == null) {
 			MohuaMapStageList mohuaMap = randomMohuaMap();
-			user = initMohuaUserData(mohuaMap, userId, serverId);
+			user = initMohuaUserData(mohuaMap, userId, userBean.getServerId());
 			redis.updateMohuaUserData(user, userId);
 		}
 		
 		return MohuaUserData.newBuilder(user);
 	}
 	
-	public ResultConst useMohuaCard(long userId, List<MohuaCard> useCardList) {
-		MohuaUserData.Builder user = getUserData(userId);
+	public ResultConst useMohuaCard(UserBean userBean, List<MohuaCard> useCardList) {
+		MohuaUserData.Builder user = getUserData(userBean);
 		if (canUseMohuaCard(user.getCardList(), useCardList)) {
 			useMohuaCard(user.getCardList(), useCardList);
-			redis.updateMohuaUserData(user.build(), userId);
+			redis.updateMohuaUserData(user.build(), userBean.getId());
 			
 			return SuccessConst.MOHUACARD_USE_SUCCESS;
 		}
@@ -72,8 +74,8 @@ public class MohuaService {
 		return ErrorConst.MOHUACARD_USE_ERROR;
 	}
 	
-	public List<RewardInfo> stageReward(long userId, int stage) {
-		MohuaUserData.Builder user = getUserData(userId);
+	public List<RewardInfo> stageReward(UserBean userBean, int stage) {
+		MohuaUserData.Builder user = getUserData(userBean);
 		List<Integer> rewardStageList = user.getRewardStageList();
 		if (rewardStageList.contains(stage))
 			return null;
@@ -87,8 +89,8 @@ public class MohuaService {
 		return buildRewardList(itemList);
 	}
 	
-	public List<RewardInfo> hpReward(long userId, int hp) {
-		MohuaUserData.Builder user = getUserData(userId);
+	public List<RewardInfo> hpReward(UserBean userBean, int hp) {
+		MohuaUserData.Builder user = getUserData(userBean);
 		List<Integer> rewardHpList = user.getRewardHpList();
 		if (rewardHpList.contains(hp))
 			return null;
@@ -102,8 +104,8 @@ public class MohuaService {
 		return buildRewardList(itemList);
 	}
 	
-	public ResultConst submitStage(long userId, int hp, int selfhp) {
-		MohuaUserData.Builder user = getUserData(userId);
+	public ResultConst submitStage(UserBean userBean, int hp, int selfhp) {
+		MohuaUserData.Builder user = getUserData(userBean);
 		
 		if (user.getConsumehp() == 100 || hp < user.getConsumehp())
 			return ErrorConst.MOHUA_HAS_FINISH_ERROR;
@@ -113,7 +115,7 @@ public class MohuaService {
 		if (user.getConsumehp() == 100)
 			user.setStage(11);
 		
-		redis.updateMohuaUserData(user.build(), userId);
+		redis.updateMohuaUserData(user.build(), userBean.getId());
 		
 		return SuccessConst.MOHUA_SUBMIT_SUCCESS;
 	}
