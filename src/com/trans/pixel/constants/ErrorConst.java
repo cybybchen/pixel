@@ -28,6 +28,7 @@ public enum ErrorConst implements ResultConst {
     FRIEND_NOT_EXIST(1033, "该玩家不存在"), VIP_IS_NOT_ENOUGH(1033, "玩家VIP等级不足"), EQUIP_SALE_ERROR(1034, "装备出售异常"),
     ACTIVITY_REWARD_HAS_GET_ERROR(1035, "该奖励已领取"), ACTIVITY_HAS_NOT_COMPLETE_ERROR(1036, "未达到领取条件"), CALL_BROTHER_TIME_NOT_ENOUGH_ERROR(1037, "叫大哥时间未到"),
     UPDATE_TEAM_ERROR(1038, "更新队伍信息异常"), HERO_LIMIT_ERROR(1039, "人物数量已达上限"), YOUR_FRIEND_MAX_ERROR(1040, "你的好友数已达上限"), THE_PERSON_FRIEND_MAX_ERROR(1041, "该玩家好友数已达上限"),
+    LOOT_PACKAGE_LIMIT_ERROR(1042, "挂机背包数量已达上限"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

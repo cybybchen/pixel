@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.WinBean;
@@ -44,6 +43,7 @@ public class LevelCommandService extends BaseCommandService {
 	
 	private static final int BUY_LOOT_PACKAGE_COST = 50;
 	private static final int BUY_LOOT_PACKAGE_COUNT = 10;
+	private static final int LOOT_PACKAGE_LIMIT = 50;
 	
 	@Resource
 	private LevelService levelService;
@@ -192,8 +192,14 @@ public class LevelCommandService extends BaseCommandService {
             return;
 		}
 		
-		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
 		UserLevelLootBean userLevelLoot = userLevelLootRecordService.selectUserLevelLootRecord(user.getId());
+		if (userLevelLoot.getPackageCount() + BUY_LOOT_PACKAGE_COUNT >= LOOT_PACKAGE_LIMIT) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOOT_PACKAGE_LIMIT_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
 		userLevelLoot.setPackageCount(userLevelLoot.getPackageCount() + BUY_LOOT_PACKAGE_COUNT);
 		userLevelLootRecordService.updateUserLevelLootRecord(userLevelLoot);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
