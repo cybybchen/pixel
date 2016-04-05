@@ -727,6 +727,14 @@ message Chip {
 	required int32 cost = 5;
 	required int32 mojing = 6;
 	optional string description = 7;
+	optional int32 cover1 = 8;
+	optional int32 count1 = 9;
+	optional int32 lootid1 = 10;
+	optional int32 loot1 = 11;
+	optional int32 lootid2 = 12;
+	optional int32 loot2 = 13;
+	optional int32 lootid3 = 14;
+	optional int32 loot3 = 15;
 }
 
 message AchieveList {
@@ -800,7 +808,7 @@ message Kaifu2Rank {
 }
 
 message KaifuList {
-	repeated Kaifu kaifu = 1;
+	repeated Kaifu kaifu1 = 1;
 }
 
 message Kaifu {
