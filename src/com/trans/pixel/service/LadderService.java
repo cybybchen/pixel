@@ -272,11 +272,12 @@ public class LadderService {
 					robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(4));
 					robot.setId(userId);
 					robot.setZhanli(zhanli);
+					robot.setZhanliMax(zhanli);
 					userService.updateRobotUser(robot);
 				}
 				List<HeroInfoBean> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
 				userTeamService.saveTeamCacheWithoutExpire(robot, heroInfoList);
-				UserRankBean robotRank = initRobotRank(robot.getId(), robot.getUserName(), i);
+				UserRankBean robotRank = initRobotRank(robot.getId(), robot.getUserName(), robot.getIcon(), i);
 				
 				robotRank.setZhanli(zhanli);
 				updateUserRank(serverId, robotRank);
@@ -325,10 +326,11 @@ public class LadderService {
 		return myRank;
 	}
 	
-	private UserRankBean initRobotRank(long userId, String userName, long rank) {
+	private UserRankBean initRobotRank(long userId, String userName, int icon, long rank) {
 		UserRankBean myRank = new UserRankBean();
 		myRank.setUserId(userId);
 		myRank.setUserName(userName);
+		myRank.setIcon(icon);
 		myRank.setRank(rank);
 //		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 //		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));

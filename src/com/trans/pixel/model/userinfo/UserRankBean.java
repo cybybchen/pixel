@@ -63,6 +63,7 @@ public class UserRankBean {
 		json.put(USER_NAME, userName);
 		json.put(LEVEL, level);
 		json.put(ZHANLI, zhanli);
+		json.put(ICON, icon);
 		json.put(RANK, rank);
 //		json.put(HERO_LIST, heroList);
 		
@@ -85,6 +86,7 @@ public class UserRankBean {
 		bean.setUserName(json.getString(USER_NAME));
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setZhanli(json.getInt(ZHANLI));
+		bean.setIcon(json.getInt(ICON));
 		bean.setRank(json.getInt(RANK));
 		
 //		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
@@ -128,5 +130,6 @@ public class UserRankBean {
 	private static final String USER_NAME = "user_name";
 	private static final String LEVEL = "level";
 	private static final String ZHANLI = "zhanli";
+	private static final String ICON = "icon";
 	private static final String RANK = "rank";
 }

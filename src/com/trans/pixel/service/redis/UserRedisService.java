@@ -105,7 +105,7 @@ public class UserRedisService extends RedisService{
 	
 	public void cache(int serverId, UserInfo user){
 		UserInfo cache = getCache(serverId, user.getId());
-		if(cache.getZhanli() > user.getZhanli()){
+		if(cache != null && cache.getZhanli() > user.getZhanli()){
 			UserInfo.Builder builder = UserInfo.newBuilder(user);
 			builder.setZhanli(cache.getZhanli());
 			user = builder.build();
