@@ -28,11 +28,13 @@ public class SignService {
 		if (!canSign(user))
 			return null;
 		
-		user.setSignCount(user.getSignCount() + 1);
-		userService.updateUser(user);
 		
 		Sign sign = signRedisService.getSign(user.getSignCount());
 		RewardBean reward = buildRewardBySign(sign);
+		
+		user.setSignCount(user.getSignCount() + 1);
+		userService.updateUser(user);
+		
 		return reward;
 	}
 	
