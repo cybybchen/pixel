@@ -46,9 +46,7 @@ public class UserTeamRedisService extends RedisService {
 			user = new UserBean();
 			user.init(1, "someone", "someone", 0);
 		}
-		if(!team.hasUser() || user.getZhanli() > team.getUser().getZhanli()){
-			team.setUser(user.buildShort());
-		}
+		team.setUser(user.buildShort());
 		if(team.getHeroInfoCount() == 0){
 			HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 			team.addHeroInfo(heroInfo.buildRankHeroInfo());
@@ -60,7 +58,6 @@ public class UserTeamRedisService extends RedisService {
 		if(list.isEmpty())
 			return;
 		Team.Builder teambuilder = Team.newBuilder();
-		teambuilder.setUser(user.buildShort());
 		for(HeroInfoBean hero : list){
 			teambuilder.addHeroInfo(hero.buildRankHeroInfo());
 		}
