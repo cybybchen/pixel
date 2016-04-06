@@ -5,14 +5,16 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.Random;
 
-import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Commands.UserLevel;
+import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.test.BaseTest;
 
 public class PressureTest extends BaseTest {
@@ -45,30 +47,96 @@ public class PressureTest extends BaseTest {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		String account = randomAccount();
 		builder.setHead(buildHead(account, 0));
-		ResponseCommand response = login(builder);
-		int randomNum = RandomUtils.nextInt(10);
-		switch (randomNum) {
-			case 0:
-				levelTest(builder, response);
-				break;
+		ResponseCommand response = login(builder);//登录
+		builder.setHead(response.getHead());
 				
-			default:
-				break;
-		}
+		levelTest(builder, response);//挂机
+		
+		lotteryTest(builder, response);//抽奖
+		
+		long teamId = teamTest(builder, response);//更新队伍
+		
+		ladderTest(builder, response, teamId);//天梯
+		
+		messageBoardTest(builder, response);//留言板
+		
+		response = login(builder);
+		
+		heroTest(builder, response);//英雄
+		
+		packageTest(builder, response);//道具
+		
+		equipTest(builder, response);//装备
 	}
 	
 	private void levelTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
 		LevelTest levelTest = new LevelTest();
+		
 		levelTest.levelPauseTest(builder, loginResponse);
-		levelTest.levellootStartTest(builder, loginResponse);
-		levelTest.levelPauseTest(builder, loginResponse);
+		
+		UserLevel userLevel = levelTest.levelPauseTest(builder, loginResponse);
+		sleep(userLevel.getPrepareTime() * 1000);
+		
 		levelTest.levelStartTest(builder, loginResponse);
+		
 		levelTest.levelResutlTest(builder, loginResponse);
+		
+		levelTest.levellootStartTest(builder, loginResponse);
+		
 		levelTest.levellootResultTest(builder, loginResponse);
 	}
 	
-	private void LotteryTest() {
+	private void lotteryTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+		LotteryTest lottery = new LotteryTest();
+		lottery.lotteryTest(builder, loginResponse, RewardConst.COIN, 1);
+		lottery.lotteryTest(builder, loginResponse, RewardConst.COIN, 10);
+		lottery.lotteryTest(builder, loginResponse, RewardConst.JEWEL, 1);
+		lottery.lotteryTest(builder, loginResponse, RewardConst.JEWEL, 1);
+	}
+	
+	private long teamTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+		TeamTest teamTest = new TeamTest();
+		long teamId = teamTest.teamAddTest(builder, loginResponse);
 		
+		teamTest.teamUpdateTest(builder, loginResponse, teamId);
+		
+		return teamId;
+	}
+	
+	private void ladderTest(RequestCommand.Builder builder, ResponseCommand loginResponse, long teamId) {
+		LadderTest ladderTest = new LadderTest();
+		UserRank userRank = ladderTest.getUserLadder(builder, loginResponse);
+		
+		TeamTest teamTest = new TeamTest();
+		teamTest.gettTeamCacheTest(builder, loginResponse, userRank.getUserId());
+		
+		ladderTest.attackLadder(builder, loginResponse, userRank.getRank(), teamId);
+	}
+	
+	private void messageBoardTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+		MessageTest messageTest = new MessageTest();
+		messageTest.testGetMessageList(builder, loginResponse);
+		
+		messageTest.testCreateMessage(builder, loginResponse);
+	}
+	
+	private void heroTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+		HeroTest heroTest = new HeroTest();
+		heroTest.testHeroLevelUpTest(builder, loginResponse, 1);
+		
+		heroTest.testHeroLevelUpTest(builder, loginResponse, 3);
+		
+		heroTest.testFenjieHeroTest(builder, loginResponse);
+	}
+	
+	private void packageTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+		PackageTest packageTest = new PackageTest();
+		packageTest.testPackage(builder, loginResponse);
+	}
+	
+	private void equipTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+		EquipTest equipTest = new EquipTest();
+		equipTest.testFenjieEquip(builder, loginResponse);
 	}
 	
 	private String randomAccount() {

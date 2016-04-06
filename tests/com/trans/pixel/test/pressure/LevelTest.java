@@ -35,8 +35,7 @@ public class LevelTest extends BaseTest {
 	
 	public void levelPrepareTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
 		RequestLevelPrepareCommand.Builder b = RequestLevelPrepareCommand.newBuilder();
-		UserLevel userLevel = loginResponse.getUserLevelCommand().getUserLevel();
-		b.setLevelId(userLevel.getPutongLevel() + 1);
+		b.setLevelId(1001);
 		builder.setLevelPrepareCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
@@ -46,7 +45,7 @@ public class LevelTest extends BaseTest {
         Assert.assertNotNull(response);
 	}
 	
-	public void levelPauseTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public UserLevel levelPauseTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
 		RequestLevelPauseCommand.Builder b = RequestLevelPauseCommand.newBuilder();
 		builder.setLevelPauseCommand(b.build());
 		
@@ -55,12 +54,13 @@ public class LevelTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
+        
+        return response.getUserLevelCommand().getUserLevel();
 	}
 	
 	public void levelStartTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
 		RequestLevelStartCommand.Builder b = RequestLevelStartCommand.newBuilder();
-		UserLevel userLevel = loginResponse.getUserLevelCommand().getUserLevel();
-		b.setLevelId(userLevel.getPutongLevel() + 1);
+		b.setLevelId(1001);
 		builder.setLevelStartCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
