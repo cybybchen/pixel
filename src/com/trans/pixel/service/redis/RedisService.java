@@ -822,6 +822,19 @@ public class RedisService {
     }
 
     /**
+     * 获取匹配的key列表
+     */
+    public Set<String> keys(final String pattern) {
+    	return redisTemplate.execute(new RedisCallback<Set<String>>() {
+			@Override
+			public Set<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				return redisTemplate.keys(pattern);
+			}
+		});
+    }
+    
+    /**
      * 删除key
      */
     public Boolean delete(final String key) {

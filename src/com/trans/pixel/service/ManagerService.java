@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
@@ -143,6 +144,24 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("Cdkey", object);
+		}
+		
+		if(req.containsKey("del-RedisDatas")){
+			JSONArray keys = req.getJSONArray("del-RedisDatas");
+			for(Object key : keys.toArray())
+				delete((String)key);
+			result.put("success", "redis数据已删除");
+		}else if(req.containsKey("del-RedisData")){
+			String value = req.getString("del-RedisData");
+			Set<String> keys = keys(value);
+			for(String key : keys)
+				delete(key);
+			result.put("success", "redis数据已删除");
+			req.put("RedisData", value);
+		}
+		if(req.containsKey("RedisData")){
+			Set<String> keys = keys(req.getString("RedisData"));
+			result.put("RedisData", keys);
 		}
 		
 		if(req.containsKey("update-UserData")){

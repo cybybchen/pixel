@@ -705,7 +705,6 @@ function appendConfigDatas(message, visible){
         appendConfigData("PurchaseCoinRewardConfig", message["PurchaseCoinRewardConfig"], visible);
     }
     if(message["Cdkey"]!=null){
-    	$("#config-editor").empty();
     	$("#config-cdkey").show();
         showCdkeyTable(message["Cdkey"]);
         
@@ -715,7 +714,30 @@ function appendConfigDatas(message, visible){
     }else{
     	$("#config-cdkey").hide();
     }
+    if(message["RedisData"]!=null){
+    	$("#config-redisdata").show();
+    	addRedisDatas(message["RedisData"]);
+    }else{
+    	$("#config-redisdata").hide();
+    }
 }
+
+function addRedisDatas(json){
+	json.sort();
+	$("#data-controlgroup").empty();
+	$.each(json, function (key, value) {
+		var $el = $( "<label for='data-" + value + "'>" + value + "</label><input type='checkbox' id='data-" + value + "' name='" + value + "'></input>" );
+		$("#data-controlgroup").append($el);
+		$( $el[ 1 ] ).checkboxradio();
+	});
+    $( "#data-controlgroup" ).controlgroup( "refresh" );
+}
+
+function selectAllData(dom){
+	var checked = $(dom).is(':checked');
+	$("#data-controlgroup input").attr("checked", checked).checkboxradio("refresh");
+}
+
 function showCdkeyTable(json){
 	var table = $("#table-cdkey tbody");
     var dom = table.find("tr");
@@ -826,6 +848,8 @@ function buildConfigJson(key, value){
             json["HeroRareConfig"] = "{}";
         }else if(datatype == "cdkey"){
             json["Cdkey"] = "{}";
+        }else if(datatype == "delete"){
+        	json["DeleteData"] = "{}";
         }else{
             json["HeroStarConfig"] = "{}";
             json["LotteryConfig1001"] = "{}";
@@ -866,6 +890,30 @@ function buildConfigJson(key, value){
         }
     }
     return json;
+}
+
+function getRedisData(){
+	var value = $("#redisdata-keys").val();
+	var json = buildConfigJson("RedisData", value);
+	updateConfigJson(json);
+}
+
+function delRedisData(){
+	var value = $("#redisdata-keys").val();
+	var json = buildConfigJson("del-RedisData", value);
+	updateConfigJson(json);
+}
+
+function delRedisDatas(){
+	var keys = [];
+	$.each($("#data-controlgroup input:checked"), function () {
+		keys[keys.length]=$(this).attr("name");
+	});
+	var json = buildConfigJson("del-RedisDatas", keys);
+	var value = $("#redisdata-keys").val();
+	json["RedisData"] = value;
+	if(keys.length > 0)
+		updateConfigJson(json);
 }
 
 $(document).ready(function() {
@@ -984,6 +1032,11 @@ $(document).ready(function() {
         var json = buildConfigJson();
         if(json.hasOwnProperty("Cdkey")){
         	json = buildConfigJson("Cdkey", "{}");
+        	updateConfigJson(json);
+        }else if(json.hasOwnProperty("DeleteData")){
+        	$("#selectAllData").attr("checked",false).checkboxradio("refresh");
+        	$("#redisdata-keys").val("*config*");
+        	json = buildConfigJson("RedisData", "*config*");
         	updateConfigJson(json);
         }else
         	appendConfigDatas(json, false);
