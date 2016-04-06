@@ -63,7 +63,7 @@ public class CostService {
 					/**
 					 * 消耗钻石的活动
 					 */
-					activityService.costJewelActivity(userId, itemCount);
+					activityService.costJewelActivity(user, itemCount);
 					
 					return true;
 				case RewardConst.PVPCOIN:

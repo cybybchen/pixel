@@ -84,9 +84,9 @@ public class ActivityConst {
 	public static final int KAIFU_FIRST_RECHARGE = 201;
 	
 	/**
-	 * 七日登录
+	 * 消耗钻石的开服活动
 	 */
-	public static final int KAIFU_LOGIN = 202;
+	public static final int KAIFU_COSE_JEWEL = 202;
 	
 	/**
 	 * 七日充值
@@ -131,7 +131,7 @@ public class ActivityConst {
 	/**
 	 * 所有kaifu活动的类型
 	 */
-	public static final int[] KAIFU_TYPES = {KAIFU_FIRST_RECHARGE, KAIFU_LOGIN, KAIFU_RECHARGE, KAIFU_DAY_1, KAIFU_DAY_2,
+	public static final int[] KAIFU_TYPES = {KAIFU_FIRST_RECHARGE, KAIFU_COSE_JEWEL, KAIFU_RECHARGE, KAIFU_DAY_1, KAIFU_DAY_2,
 		KAIFU_DAY_3, KAIFU_DAY_4, KAIFU_DAY_5, KAIFU_DAY_6, KAIFU_DAY_7};
 	
 	/**

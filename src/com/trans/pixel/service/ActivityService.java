@@ -122,15 +122,19 @@ public class ActivityService {
 		return rewardList;
 	}
 	
-	public void costJewelActivity(long userId, int count) {
+	public void costJewelActivity(UserBean user, int count) {
 		/**
 		 * 消耗钻石的成就
 		 */
-		achieveService.sendAchieveScore(userId, AchieveConst.TYPE_COST_JEWEL, count);
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_COST_JEWEL, count);
 		/**
 		 * 消耗钻石的日常
 		 */
-		sendRichangScore(userId, ActivityConst.RICHANG_LEIJI_COST_JEWEL, count);
+		sendRichangScore(user.getId(), ActivityConst.RICHANG_LEIJI_COST_JEWEL, count);
+		/**
+		 * 消耗钻石的开服活动
+		 */
+		sendKaifuScore(user, ActivityConst.KAIFU_COSE_JEWEL, count);
 	}
 	
 	public void lotteryActivity(UserBean user, int count, int costType) {
@@ -427,10 +431,10 @@ public class ActivityService {
 		 * 累计登录的成就
 		 */
 		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOGIN);
-		/**
-		 * 累计登录的开服活动
-		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_LOGIN);
+//		/**
+//		 * 累计登录的开服活动
+//		 */
+//		sendKaifuScore(user, ActivityConst.KAIFU_LOGIN);
 	}
 	
 	public void rechargeActivity(UserBean user, int count) {
