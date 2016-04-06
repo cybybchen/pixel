@@ -174,7 +174,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Kaifu> map = new HashMap<String, Kaifu>();
-		for(Kaifu.Builder kaifu : builder.getKaifuBuilderList()){
+		for(Kaifu.Builder kaifu : builder.getKaifu1BuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;
