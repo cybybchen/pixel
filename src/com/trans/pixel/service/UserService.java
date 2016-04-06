@@ -32,8 +32,14 @@ public class UserService {
     	UserBean user = userRedisService.getUser(userId);
     	if (user == null) {
     		user = userMapper.queryById(userId);
-    		if (user != null)
+    		if (user != null){
+    			UserInfo cache = getCache(user.getServerId(), user.getId());
+    			if(cache != null && cache.getZhanli() > user.getZhanli()){
+    				user.setZhanli(cache.getZhanli());
+    				user.setZhanliMax(cache.getZhanli());
+    			}
     			userRedisService.updateUser(user);
+    		}
     	}
 
         if(user != null && userRedisService.refreshUserDailyData(user)){
@@ -62,7 +68,13 @@ public class UserService {
 			}
 			if (user != null) {
 				userRedisService.setUserIdByAccount(serverId, account, user.getId());
-				userRedisService.cache(serverId, user.buildShort());
+				UserInfo cache = getCache(user.getServerId(), user.getId());
+    			if(cache != null && cache.getZhanli() > user.getZhanli()){
+    				user.setZhanli(cache.getZhanli());
+    				user.setZhanliMax(cache.getZhanli());
+    			}else{
+    				userRedisService.cache(serverId, user.buildShort());
+    			}
 				userRedisService.updateUser(user);
 			}
 		} else {
@@ -88,6 +100,13 @@ public class UserService {
 			}
 			if (user != null) {
 				userRedisService.setUserIdByName(serverId, userName, user.getId());
+				UserInfo cache = getCache(user.getServerId(), user.getId());
+    			if(cache != null && cache.getZhanli() > user.getZhanli()){
+    				user.setZhanli(cache.getZhanli());
+    				user.setZhanliMax(cache.getZhanli());
+    			}else{
+    				userRedisService.cache(serverId, user.buildShort());
+    			}
 				userRedisService.updateUser(user);
 			}
 		} else {
