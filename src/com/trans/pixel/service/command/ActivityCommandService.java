@@ -130,7 +130,9 @@ public class ActivityCommandService extends BaseCommandService {
 		}
 		
 		rewardService.doRewards(user.getId(), multiReward.build());
-		builder.setUserKaifu(uk.build());
+		
+		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(user.getId());
+		builder.addAllUserKaifu(ukList);
 		responseBuilder.setKaifuRewardCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
 		

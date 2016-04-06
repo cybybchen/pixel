@@ -111,7 +111,7 @@ public class UserTeamService {
 		return userTeam.getHeroInfoList();
 	}
 	
-	public List<HeroInfoBean> getTeam(UserBean user, int teamid){
+	public List<HeroInfoBean> getTeam(UserBean user, long teamid){
 		List<UserTeamBean> userTeamList = selectUserTeamList(user.getId());
 		List<HeroInfoBean> heroinfoList = new ArrayList<HeroInfoBean>();
 		for(UserTeamBean team : userTeamList){

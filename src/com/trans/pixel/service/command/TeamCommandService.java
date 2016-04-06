@@ -24,7 +24,7 @@ public class TeamCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
-		int id = cmd.getId();
+		long id = cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
 		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
