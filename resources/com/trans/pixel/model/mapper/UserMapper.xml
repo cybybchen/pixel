@@ -59,7 +59,7 @@
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
-		UPDATE user SET account=#{account}, name=#{userName}, server_id=#{serverId}, union_id=#{unionId}, union_job=#{unionJob}, jewel=#{jewel}, coin=#{coin},
+		UPDATE user SET name=#{userName}, server_id=#{serverId}, union_id=#{unionId}, union_job=#{unionJob}, jewel=#{jewel}, coin=#{coin},
 		exp=#{exp}, point_pvp=#{pointPVP}, point_ladder=#{pointLadder}, point_expedition=#{pointExpedition},
 		point_union=#{pointUnion}, receive_message_timestamp=#{receiveMessageTimeStamp},vip=#{vip},
 		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}, ladder_mode_history_top=#{ladderModeHistoryTop},

@@ -85,6 +85,8 @@ public class PvpMapService {
 	
 	public List<UserInfo> getRandUser(int count, UserBean user){
 		long myrank = rankRedisService.getMyZhanliRank(user);
+		if(myrank > 200)
+			myrank += 50-rankRedisService.nextInt(100);
 		List<UserInfo> ranks = null;
 		final int halfcount = 20;
 		if(myrank < 0)
@@ -123,43 +125,45 @@ public class PvpMapService {
 	public void refreshMine(PVPMapList.Builder maplist, Map<String, PVPMine> mineMap, UserBean user){
 		long time = redis.today(6);
 		if(user.getPvpMineRefreshTime() < time){//刷新对手
-			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600+redis.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600);
+			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600/*+redis.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600)*/;
 			user.setPvpMineRefreshTime(time);
 			userService.updateUserDailyData(user);
-			if(count >= 20)
-				count = 20;
-			List<UserInfo> ranks = getRandUser(count, user);
-			if(ranks.size() < count)
-				count = ranks.size();
-			if(count >= 20){
-				for(PVPMap map : maplist.getFieldList()){
-					for(PVPMine mine : map.getKuangdianList()){
-						PVPMine.Builder builder = PVPMine.newBuilder(mine);
+			int maxcount = 0;
+			for(PVPMap map : maplist.getFieldList()){
+				if(map.getOpened())
+					maxcount++;
+			}
+			if(maxcount == 0)
+				return;
+//			if(count >= 10)
+//				count = 10;
+			List<UserInfo> ranks = getRandUser(Math.min(25, count*maplist.getFieldCount()), user);//每张地图刷新一个对手
+//			if(ranks.size() < count)
+//				count = ranks.size();
+//			if(count >= 20){
+//				for(PVPMap map : maplist.getFieldList()){
+//					for(PVPMine mine : map.getKuangdianList()){
+//						PVPMine.Builder builder = PVPMine.newBuilder(mine);
+//						builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
+//						mineMap.put(builder.getId()+"", builder.build());
+//					}
+//				}
+//				redis.saveMines(user.getId(), mineMap);
+//			}else{
+				for(int j = 0; j < maxcount; j++){
+					PVPMap map = maplist.getField(j);
+					for(int i = 0, index = 0;i < 10 && index < Math.min(count, map.getKuangdianCount()); i++){
+						PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
+						PVPMine mine = mineMap.get(builder.getId()+"");
+						if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
+							continue;
 						builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
+						redis.saveMine(user.getId(), builder.build());
 						mineMap.put(builder.getId()+"", builder.build());
+						index++;
 					}
 				}
-				redis.saveMines(user.getId(), mineMap);
-			}else{
-				int maxcount = 0;
-				for(PVPMap map : maplist.getFieldList()){
-					if(map.getOpened())
-						maxcount++;
-				}
-				if(maxcount == 0)
-					return;
-				for(int i = 0;i < 100 && count > 0; i++){
-					PVPMap map = maplist.getField(redis.nextInt(maxcount));
-					PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
-					PVPMine mine = mineMap.get(builder.getId()+"");
-					if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
-						continue;
-					builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
-					redis.saveMine(user.getId(), builder.build());
-					mineMap.put(builder.getId()+"", builder.build());
-					count--;
-				}
-			}
+//			}
 		}
 	}
 	
