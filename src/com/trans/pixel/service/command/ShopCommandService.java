@@ -403,7 +403,7 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(pvpMapRedisService.isMapOpen(user, commbuilder.getJudge())){
+		}else if(!pvpMapRedisService.isMapOpen(user, commbuilder.getJudge())){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_PVPCONDITION));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
