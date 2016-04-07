@@ -22,7 +22,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.ResponseKaifu2RewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseKaifuListCommand;
-import com.trans.pixel.protoc.Commands.ResponseKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseRichangListCommand;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
@@ -116,7 +115,7 @@ public class ActivityCommandService extends BaseCommandService {
 	}
 	
 	public void kaifuReward(RequestKaifuRewardCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseKaifuRewardCommand.Builder builder = ResponseKaifuRewardCommand.newBuilder();
+		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
 		int type = cmd.getType();
 		int id = cmd.getId();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
@@ -133,7 +132,8 @@ public class ActivityCommandService extends BaseCommandService {
 		
 		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(user.getId());
 		builder.addAllUserKaifu(ukList);
-		responseBuilder.setKaifuRewardCommand(builder.build());
+		builder.addAllRank(activityService.getKaifu2RankList(user));
+		responseBuilder.setKaifuListCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
 		
 		/**
