@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
@@ -12,6 +13,7 @@ import com.trans.pixel.protoc.Commands.AchieveList;
 
 @Service
 public class AchieveRedisService extends RedisService {
+	private static Logger logger = Logger.getLogger(AchieveRedisService.class);
 	private static final String ACHIEVE_FILE_NAME = "task/lol_taskchengjiu.xml";
 	
 	public Achieve getAchieve(int id) {

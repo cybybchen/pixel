@@ -12,6 +12,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -24,6 +25,7 @@ import com.trans.pixel.protoc.Commands.UserInfo;
 
 @Repository
 public class UnionRedisService extends RedisService{
+	private static Logger logger = Logger.getLogger(UnionRedisService.class);
 	@Resource
 	public UserRedisService userRedisService;
 	

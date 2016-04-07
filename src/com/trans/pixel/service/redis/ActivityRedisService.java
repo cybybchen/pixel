@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class ActivityRedisService extends RedisService {
+	private static Logger logger = Logger.getLogger(ActivityRedisService.class);
 	private static final String ACTIVITY_RICHANG_FILE_NAME = "task/lol_taskrichang.xml";
 	private static final String ACTIVITY_KAIFU2_FILE_NAME = "task/lol_taskkaifu2.xml";
 	private static final String ACTIVITY_KAIFU_FILE_NAME = "task/lol_taskkaifu1.xml";

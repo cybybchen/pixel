@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
@@ -13,6 +14,7 @@ import com.trans.pixel.protoc.Commands.SignList;
 
 @Repository
 public class SignRedisService extends RedisService{
+	private static Logger logger = Logger.getLogger(SignRedisService.class);
 	private static final String FILE_NAME = "task/lol_tasksanqian.xml";
 	
 	public Sign getSign(int day) {

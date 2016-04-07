@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -18,6 +19,7 @@ import com.trans.pixel.constants.RedisKey;
 
 @Repository
 public class GmAccountRedisService extends RedisService{
+	private static Logger logger = Logger.getLogger(GmAccountRedisService.class);
 	
 	public Map<String, String> getGmAccounts() {
 		Map<String, String> map = new HashMap<String, String>();

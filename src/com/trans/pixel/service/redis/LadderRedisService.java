@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -28,6 +29,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class LadderRedisService extends RedisService{
+	private static Logger logger = Logger.getLogger(LadderRedisService.class);
 	private static final String LADDER_RANKING_FILE_NAME = "lol_ladderenemy.xml";
 	private static final String LADDER_NAME_FILE_NAME = "lol_laddername.xml";
 	private static final String LADDER_NAME_FILE_NAME2 = "lol_laddername2.xml";

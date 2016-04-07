@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -26,6 +27,7 @@ import com.trans.pixel.protoc.Commands.PVPPositionLists;
 
 @Repository
 public class PvpMapRedisService extends RedisService{
+	private static Logger logger = Logger.getLogger(PvpMapRedisService.class);
 	@Resource
 	private UserRedisService userRedisService;
 	

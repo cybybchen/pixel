@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -22,6 +23,7 @@ import com.trans.pixel.protoc.Commands.MohuaUserData;
 
 @Service
 public class MohuaRedisService extends RedisService {
+	private static Logger logger = Logger.getLogger(MohuaRedisService.class);
 	private static final String MAP_FILE_NAME = "mohua/lol_mohuamap.xml";
 	private static final String CARDLOOT_FILE_NAME = "mohua/lol_mohuacardloot.xml";
 	private static final String JIEDUAN_FILE_NAME = "mohua/lol_mohuajieduan.xml";

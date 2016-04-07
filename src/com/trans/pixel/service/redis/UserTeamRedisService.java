@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -28,6 +29,7 @@ import com.trans.pixel.service.UserService;
 
 @Repository
 public class UserTeamRedisService extends RedisService {
+	private static Logger logger = Logger.getLogger(UserTeamRedisService.class);
 	private static final String TEAM_UNLOCK_FILE_NAME = "lol_renshu.xml";
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;

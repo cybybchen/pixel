@@ -10,6 +10,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -24,6 +25,7 @@ import com.trans.pixel.protoc.Commands.ChipList;
 
 @Service
 public class EquipRedisService extends RedisService {
+	private static Logger logger = Logger.getLogger(EquipRedisService.class);
 	private static final String CHIP_FILE_NAME = "lol_chip.xml";
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
