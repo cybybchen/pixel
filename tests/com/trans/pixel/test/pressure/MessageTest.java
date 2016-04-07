@@ -16,7 +16,8 @@ import com.trans.pixel.test.BaseTest;
 public class MessageTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(MessageTest.class);
 	
-	public void testCreateMessage(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void testCreateMessage(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestCreateMessageBoardCommand.Builder b = RequestCreateMessageBoardCommand.newBuilder();
 		b.setMessage("hahaha");
 		b.setType(MessageConst.TYPE_MESSAGE_NORMAL);
@@ -30,7 +31,8 @@ public class MessageTest extends BaseTest {
         logger.info(response.getAllFields());
 	}
 	
-	public void testGetMessageList(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void testGetMessageList(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestMessageBoardListCommand.Builder b = RequestMessageBoardListCommand.newBuilder();
 		b.setType(MessageConst.TYPE_MESSAGE_NORMAL);
 		builder.setMessageBoardListCommand(b.build());

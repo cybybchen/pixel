@@ -15,7 +15,8 @@ import com.trans.pixel.test.BaseTest;
 public class EquipTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(EquipTest.class);
 	
-	public void testFenjieEquip(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void testFenjieEquip(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestFenjieEquipCommand.Builder b = RequestFenjieEquipCommand.newBuilder();
 		UserEquip userEquip = loginResponse.getUserEquipCommand().getUserEquip(0);
 		b.setEquipId(userEquip.getEquipId());

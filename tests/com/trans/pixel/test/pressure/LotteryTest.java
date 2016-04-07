@@ -5,7 +5,6 @@ import java.io.InputStream;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.junit.Test;
 
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
@@ -15,7 +14,8 @@ import com.trans.pixel.test.BaseTest;
 public class LotteryTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LotteryTest.class);
 	
-	public void lotteryTest(RequestCommand.Builder builder, ResponseCommand loginResponse, int type, int count) {
+	public void lotteryTest(RequestCommand.Builder req, ResponseCommand loginResponse, int type, int count) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLotteryCommand.Builder b = RequestLotteryCommand.newBuilder();
 		b.setType(type);
 		b.setCount(count);

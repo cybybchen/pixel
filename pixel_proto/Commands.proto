@@ -792,7 +792,7 @@ message UserAchieve {
 }
 
 message Kaifu2List {
-	repeated Kaifu2 kaifu = 1;
+	repeated Kaifu2 kaifu2 = 1;
 }
 
 message Kaifu2 {

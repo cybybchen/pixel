@@ -17,7 +17,8 @@ import com.trans.pixel.test.BaseTest;
 public class HeroTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(HeroTest.class);
 	
-	public long testHeroLevelUpTest(RequestCommand.Builder builder, ResponseCommand loginResponse, int type) {
+	public long testHeroLevelUpTest(RequestCommand.Builder req, ResponseCommand loginResponse, int type) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestHeroLevelUpCommand.Builder b = RequestHeroLevelUpCommand.newBuilder();
 		UserHero userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
 		b.setHeroId(userHero.getHeroId());
@@ -34,7 +35,8 @@ public class HeroTest extends BaseTest {
         return response.getUserTeamListCommand().getUserTeam(0).getId();
 	}
 	
-	public long testFenjieHeroTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public long testFenjieHeroTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestFenjieHeroCommand.Builder b = RequestFenjieHeroCommand.newBuilder();
 		UserHero userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
 		FenjieHeroInfo.Builder fenjieHero = FenjieHeroInfo.newBuilder();

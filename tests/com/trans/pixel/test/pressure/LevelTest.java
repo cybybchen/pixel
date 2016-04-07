@@ -18,7 +18,8 @@ import com.trans.pixel.test.BaseTest;
 
 public class LevelTest extends BaseTest {
 	
-	public void levelResutlTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void levelResutlTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLevelResultCommand.Builder b = RequestLevelResultCommand.newBuilder();
 		UserLevel userLevel = loginResponse.getUserLevelCommand().getUserLevel();
 		b.setLevelId(userLevel.getPutongLevel() + 1);
@@ -31,9 +32,12 @@ public class LevelTest extends BaseTest {
 		InputStream input = new ByteArrayInputStream(reqData);
 		ResponseCommand response = http.post(url, input);
 		Assert.assertNotNull(response);
+		
+		builder.clearLevelResultCommand();
 	}
 	
-	public void levelPrepareTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void levelPrepareTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLevelPrepareCommand.Builder b = RequestLevelPrepareCommand.newBuilder();
 		b.setLevelId(1001);
 		builder.setLevelPrepareCommand(b.build());
@@ -43,9 +47,12 @@ public class LevelTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
+        
+        builder.clearLevelPrepareCommand();
 	}
 	
-	public UserLevel levelPauseTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public UserLevel levelPauseTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLevelPauseCommand.Builder b = RequestLevelPauseCommand.newBuilder();
 		builder.setLevelPauseCommand(b.build());
 		
@@ -58,7 +65,8 @@ public class LevelTest extends BaseTest {
         return response.getUserLevelCommand().getUserLevel();
 	}
 	
-	public void levelStartTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void levelStartTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLevelStartCommand.Builder b = RequestLevelStartCommand.newBuilder();
 		b.setLevelId(1001);
 		builder.setLevelStartCommand(b.build());
@@ -70,7 +78,8 @@ public class LevelTest extends BaseTest {
 		Assert.assertNotNull(response);
 	}
 	
-	public void levellootStartTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void levellootStartTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLevelLootStartCommand.Builder b = RequestLevelLootStartCommand.newBuilder();
 		b.setLevelId(1001);
 		builder.setLevelLootStartCommand(b.build());
@@ -82,7 +91,8 @@ public class LevelTest extends BaseTest {
         Assert.assertNotNull(response);
 	}
 	
-	public void levellootResultTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	public void levellootResultTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLevelLootResultCommand.Builder b = RequestLevelLootResultCommand.newBuilder();
 		builder.setLevelLootResultCommand(b.build());
 		
