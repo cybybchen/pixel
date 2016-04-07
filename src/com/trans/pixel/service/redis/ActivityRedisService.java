@@ -123,7 +123,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Kaifu2> map = new HashMap<String, Kaifu2>();
-		for(Kaifu2.Builder kaifu : builder.getKaifuBuilderList()){
+		for(Kaifu2.Builder kaifu : builder.getKaifu2BuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;
