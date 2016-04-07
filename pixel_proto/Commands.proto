@@ -1015,6 +1015,7 @@ message RequestEquipLevelUpCommand {
 
 message RequestEquipComposeCommand {
 	required int32 levelUpId = 1;
+	optional int32 count = 2;
 }
 
 message ResponseEquipComposeCommand {

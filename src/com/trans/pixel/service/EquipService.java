@@ -57,7 +57,7 @@ public class EquipService {
 		return level;
 	}
 	
-	public ResultConst equipCompose(UserBean user, int levelUpId) {
+	public ResultConst equipCompose(UserBean user, int levelUpId, int count) {
 		ResultConst result = ErrorConst.NOT_ENOUGH_EQUIP;
 		EquipmentBean equip = getEquip(levelUpId);
 		if (equip != null) {//合成装备
@@ -70,10 +70,10 @@ public class EquipService {
 			Chip chip = equipRedisService.getChip(levelUpId);
 			if (chip != null) {
 				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), chip.getCover1());
-				if (userEquip.getEquipCount() >= chip.getCount1()) {
-					userEquip.setEquipCount(userEquip.getEquipCount() - chip.getCount1());
+				if (userEquip != null && userEquip.getEquipCount() >= chip.getCount1() * count) {
+					userEquip.setEquipCount(userEquip.getEquipCount() - chip.getCount1() * count);
 					userEquipService.updateUserEquip(userEquip);
-					userEquipService.addUserEquip(user.getId(), chip.getItemid(), 1);
+					userEquipService.addUserEquip(user.getId(), chip.getItemid(), count);
 					result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
 				}
 			}
