@@ -10,6 +10,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
@@ -49,6 +50,8 @@ import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserLevelService;
+import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.PvpMapRedisService;
 
 /**
  * 1.1.3.11商店
@@ -67,6 +70,10 @@ public class ShopCommandService extends BaseCommandService{
 	private LevelService levelService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private LadderRedisService ladderRedisService;
+	@Resource
+	private PvpMapRedisService pvpMapRedisService;
 
 	public int getDailyShopRefreshCost(int time){
 		if(time < 2){
@@ -396,6 +403,8 @@ public class ShopCommandService extends BaseCommandService{
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+		}else if(pvpMapRedisService.isMapOpen(user, commbuilder.getJudge())){
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_PVPCONDITION));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
@@ -564,10 +573,13 @@ public class ShopCommandService extends BaseCommandService{
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = ShopList.newBuilder(service.refreshLadderShop(user));
 		}
+		UserRankBean myrank = ladderRedisService.getUserRankByUserId(user.getServerId(), user.getId());
 		int refreshtime = user.getLadderShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+		}else if(myrank == null || myrank.getRank() > commbuilder.getJudge()){
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_LADDERCONDITION));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{

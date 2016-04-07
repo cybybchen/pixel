@@ -44,6 +44,15 @@ public class PvpMapRedisService extends RedisService{
 		return maplist;
 	}
 	
+	public boolean isMapOpen(UserBean user, int mapId){
+		PVPMapList.Builder maplist = getMapList(user);
+		for(PVPMap map : maplist.getFieldList()){
+			if(map.getFieldid() == mapId && map.getOpened())
+				return true;
+		}
+		return false;
+	}
+	
 	public void saveMapList(PVPMapList maplist, UserBean user) {
 		hput(RedisKey.USERDATA+user.getId(), "PvpMap", formatJson(maplist));
 	}

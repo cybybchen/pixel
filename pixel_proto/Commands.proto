@@ -46,6 +46,7 @@ message Commodity {
 	optional bool isOut = 7;
 	optional int32 id = 8;
 	optional int32 sortid = 9;
+	optional int32 judge = 10;
 }
 message CommodityList {
 	repeated Commodity item = 1;
@@ -62,6 +63,8 @@ message Will {
 message ShopWill {
 	required int32 id = 1;
 	repeated Will loot = 2;
+	optional int32 judge = 3;
+	optional int32 judge1 = 4;
 }
 message ShopWillList {
 	repeated ShopWill shop = 1;
@@ -391,13 +394,16 @@ message PVPMonsterReward {//pvp怪物奖励
 	optional int32 a = 3;//奖励魔金a+b*level
 	optional int32 b = 4;
 	optional int32 itemcount = 5;
-	optional int32 weightall = 6;
 	optional int32 itemid1 = 7;
 	optional int32 count1 = 8;
 	optional int32 weight1 = 9;
 	optional int32 itemid2 = 10;
 	optional int32 count2 = 11;
 	optional int32 weight2 = 12;
+	optional int32 itemid3 = 13;
+	optional int32 count3 = 14;
+	optional int32 weight3a = 15;
+	optional float weight3b = 16;
 }
 message PVPMonsterRewardList {
 	repeated PVPMonsterReward enemy = 1;

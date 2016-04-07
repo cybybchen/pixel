@@ -225,13 +225,23 @@ public class PvpMapService {
 			rewardinfo.setItemid(RewardConst.PVPCOIN);
 			rewardinfo.setCount(reward.getA()+reward.getB()*monster.getLevel());
 			rewards.addLoot(rewardinfo);
-			if(redis.nextInt(reward.getWeightall()) < reward.getWeight1()){
+			int weight = 0;
+			weight += reward.getWeight1();
+			weight += reward.getWeight2();
+			int weight3 = (int)(reward.getWeight3A()+reward.getWeight3B()*monster.getLevel());
+			weight += weight3;
+			weight = redis.nextInt(weight);
+			if(weight < reward.getWeight1()){
 				rewardinfo.setItemid(reward.getItemid1());
 				rewardinfo.setCount(reward.getCount1());
 				rewards.addLoot(rewardinfo);
-			}else{
+			}else if(weight < reward.getWeight2()){
 				rewardinfo.setItemid(reward.getItemid2());
 				rewardinfo.setCount(reward.getCount2());
+				rewards.addLoot(rewardinfo);
+			}else{
+				rewardinfo.setItemid(reward.getItemid3());
+				rewardinfo.setCount(reward.getCount3());
 				rewards.addLoot(rewardinfo);
 			}
 			rewardService.doRewards(user, rewards.build());

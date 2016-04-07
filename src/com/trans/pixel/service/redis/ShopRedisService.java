@@ -69,8 +69,11 @@ public class ShopRedisService extends RedisService{
 					willnum = will.getWill();
 			}
 			CommodityList.Builder commsbuilder = commsmap.get(willnum);
-			int index = (int)(commsbuilder.getItemCount()*Math.random());
-			builder.addItems(commsbuilder.getItem(index));
+			int index = nextInt(commsbuilder.getItemCount());
+			Commodity.Builder comm = commsbuilder.getItemBuilder(index);
+			if(shopwill.hasJudge1())
+				comm.setJudge(shopwill.getJudge1());
+			builder.addItems(comm);
 		}
 		return builder;
 	}
@@ -525,6 +528,11 @@ public class ShopRedisService extends RedisService{
 			return time+24*3600;
 	}
 	
+//	class CommCreater {
+//		public void available(int value) {
+//		}
+//	}
+	 
 	public ShopList buildLadderShop(){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		String value = get(LADDERSHOP_CONFIG+"Type");
