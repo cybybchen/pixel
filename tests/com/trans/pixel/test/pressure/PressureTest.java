@@ -23,7 +23,7 @@ public class PressureTest extends BaseTest {
 	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
 	
 	public static void main(String[] args) {
-		while (true) {
+//		while (true) {
 //			sleep(1000);
 			new Thread() {
 				public void run() {
@@ -31,7 +31,7 @@ public class PressureTest extends BaseTest {
 					test.randomCommand();
 				}
 			}.start();
-		}
+//		}
 	}
 	
 	private static void sleep(int sleepTime) {
@@ -48,7 +48,7 @@ public class PressureTest extends BaseTest {
 		String account = randomAccount();
 		builder.setHead(buildHead(account, 0));
 		ResponseCommand response = login(builder);//登录
-		builder.setHead(response.getHead());
+		builder.setHead(buildHead(account, response.getUserInfoCommand().getUser().getId()));
 				
 		levelTest(builder, response);//挂机
 		
@@ -151,7 +151,11 @@ public class PressureTest extends BaseTest {
 		return str;
 	}
 	
-	private HeadInfo buildHead(String account, int userId) {
+	private HeadInfo buildHead(String account, long userId) {
+		if (url == null) {
+			url = headurl();
+			System.out.println("test server:" + url);
+		}
         HeadInfo.Builder head = HeadInfo.newBuilder();
         head.setGameVersion(GAME_VERSION);
         head.setAccount(account);
@@ -163,7 +167,8 @@ public class PressureTest extends BaseTest {
         return head.build();
     }
 	
-	private ResponseCommand login(RequestCommand.Builder builder) {
+	private ResponseCommand login(RequestCommand.Builder req) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLoginCommand.Builder b = RequestLoginCommand.newBuilder();
 		builder.setLoginCommand(b.build());
 		
@@ -174,7 +179,7 @@ public class PressureTest extends BaseTest {
         if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
         	logger.warn(response.getErrorCommand().getMessage()+"，重新注册");
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
-    		registerbuilder.setUserName(head().getAccount());
+    		registerbuilder.setUserName(builder.getHead().getAccount());
     		builder.clearLoginCommand().setRegisterCommand(registerbuilder.build());
     		
     		reqcmd = builder.build();

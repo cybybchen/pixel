@@ -20,6 +20,7 @@ public class PackageTest extends BaseTest {
 		RequestUsePropCommand.Builder b = RequestUsePropCommand.newBuilder();
 		UserProp userProp = loginResponse.getUserPropCommand().getUserProp(0);
 		b.setPropId(userProp.getPropId());
+		b.setPropCount(userProp.getPropCount());
 		builder.setUsePropCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();

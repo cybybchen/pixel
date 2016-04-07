@@ -21,8 +21,7 @@ public class LevelTest extends BaseTest {
 	public void levelResutlTest(RequestCommand.Builder req, ResponseCommand loginResponse) {
 		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
 		RequestLevelResultCommand.Builder b = RequestLevelResultCommand.newBuilder();
-		UserLevel userLevel = loginResponse.getUserLevelCommand().getUserLevel();
-		b.setLevelId(userLevel.getPutongLevel() + 1);
+		b.setLevelId(1001);
 		b.setFightInfo("");
 		b.setTeamInfo("");
 		builder.setLevelResultCommand(b.build());
