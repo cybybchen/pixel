@@ -40,8 +40,8 @@ public class ShopTest extends BaseTest {
 	@Test
 	public void testShop() {
 		login();
-//		getDailyShop();
-//		DailyShopPurchase(0);
+		getDailyShop();
+		DailyShopPurchase(0);
 		getBlackShop();
 		BlackShopRefresh();
 		getBlackShop();

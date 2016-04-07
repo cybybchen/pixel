@@ -96,8 +96,8 @@ public class UserRedisService extends RedisService{
 	public UserInfo getRandUser(int serverId){
 		String key = RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId;
 		Collection<String> set = hkeys(key);
-		String[] keys = (String[]) set.toArray();
-		String value = hget(key, keys[nextInt(keys.length)]);
+		Object[] keys = set.toArray();
+		String value = hget(key, (String)keys[nextInt(keys.length)]);
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		parseJson(value, builder);
 		return builder.build();

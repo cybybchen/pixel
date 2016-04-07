@@ -23,10 +23,10 @@ public class PvpMapTest extends BaseTest {
 	public void testArea() {
 		login();
 		testPvpMap();
-//		attackMonster();
-//		unlockMap();
-//		testGetMineInfo();
-//		attackMine();
+		attackMonster();
+		unlockMap();
+		testGetMineInfo();
+		attackMine();
 		testRefreshMine();
 	}
 	

@@ -417,7 +417,7 @@ message PVPMonster {//pvp怪物Config
 	optional int32 buffcount = 5;//增加的buff层数
 	optional int32 weight = 12;//出现几率
 	optional int32 a = 6;
-	optional int32 b = 7;
+	optional float b = 7;
 	optional int32 x = 8;//坐标x
 	optional int32 y = 9;//坐标y
 	optional int32 positionid = 10;

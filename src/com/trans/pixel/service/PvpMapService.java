@@ -88,7 +88,7 @@ public class PvpMapService {
 		if(myrank > 200)
 			myrank += 50-rankRedisService.nextInt(100);
 		List<UserInfo> ranks = null;
-		final int halfcount = 20;
+		final int halfcount = (count+11)/2;
 		if(myrank < 0)
 			ranks = rankRedisService.getZhanliRanks(user, myrank - halfcount, -1);
 		else if(myrank - halfcount <= 0)
