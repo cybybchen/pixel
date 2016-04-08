@@ -811,10 +811,11 @@ public final class XmlFormat {
        }
 
        if (field == null) {
-    	   Tokenizer tokenizer = new Tokenizer("");
-           throw tokenizer.parseExceptionPreviousToken("Message type \"" + type.getFullName()
-                                                       + "\" has no field named \"" + name
-                                                       + "\".");
+         continue;
+    	   // Tokenizer tokenizer = new Tokenizer("");
+        //    throw tokenizer.parseExceptionPreviousToken("Message type \"" + type.getFullName()
+//                                                       + "\" has no field named \"" + name
+//                                                       + "\".");
        }
 
        Object value = null;

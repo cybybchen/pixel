@@ -178,7 +178,7 @@ public class GamedataAction {
     		}
 			JSONObject req = JSONObject.fromObject(msg);
 			result = managerService.getData(req);
-			logger.debug("Manager Data:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time));
+			logger.debug("Manager Data:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time)+" msec");
 
 			try {
 //				if(result.containsKey("addCdkey")){

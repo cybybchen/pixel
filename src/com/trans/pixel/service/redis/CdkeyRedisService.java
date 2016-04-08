@@ -99,6 +99,10 @@ public class CdkeyRedisService extends RedisService{
 	public Map<Integer, String> getCdkeyConfigs(){
 		Map<Integer, String> cdkeymap = new TreeMap<Integer, String>();
 		Map<String, String> map = hget(RedisKey.CDKEY_CONFIG);
+		if(map.isEmpty()){
+			getCdkeyConfig("1001");
+			map = hget(RedisKey.CDKEY_CONFIG);
+		}
 		Map<String, String> exchange = hget(RedisKey.CDKEY_EXCHANGE);
 		for(Entry<String, String> entry : map.entrySet()){
 			Cdkey.Builder builder = Cdkey.newBuilder();
@@ -153,11 +157,11 @@ public class CdkeyRedisService extends RedisService{
 			cdkey.clearCount3();
 			map.put(cdkey.getId()+"", formatJson(cdkey.build()));
 		}
-		hputAll(RedisKey.CDKEY_CONFIG, map);
 		value = map.get(id);
-		if(value != null && parseJson(value, builder))
+		if(value != null && parseJson(value, builder)){
+			hputAll(RedisKey.CDKEY_CONFIG, map);
 			return builder.build();
-		else
+		}else
 			return null;
 	}
 }

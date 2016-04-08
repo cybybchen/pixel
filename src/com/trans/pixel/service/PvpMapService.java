@@ -11,6 +11,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -34,7 +35,7 @@ import com.trans.pixel.service.redis.UserFriendRedisService;
 
 @Service
 public class PvpMapService {
-//	private static final float RELATIVE_PERCENT = 0.2f;
+	private static Logger logger = Logger.getLogger(PvpMapService.class);
 	@Resource
 	private PvpMapRedisService redis;
 	@Resource
@@ -90,7 +91,7 @@ public class PvpMapService {
 		List<UserInfo> ranks = null;
 		final int halfcount = (count+11)/2;
 		if(myrank < 0)
-			ranks = rankRedisService.getZhanliRanks(user, myrank - halfcount, -1);
+			ranks = rankRedisService.getZhanliRanks(user, myrank - halfcount*2, -1);
 		else if(myrank - halfcount <= 0)
 			ranks = rankRedisService.getZhanliRanks(user, 0, myrank+halfcount);
 		else
@@ -138,6 +139,8 @@ public class PvpMapService {
 //			if(count >= 10)
 //				count = 10;
 			List<UserInfo> ranks = getRandUser(Math.min(25, count*maplist.getFieldCount()), user);//每张地图刷新一个对手
+			if(ranks.isEmpty())
+				return;
 //			if(ranks.size() < count)
 //				count = ranks.size();
 //			if(count >= 20){
@@ -218,6 +221,7 @@ public class PvpMapService {
 		if(monster == null)
 			return null;
 		MultiReward.Builder rewards = MultiReward.newBuilder();
+		int buff = -1;
 		if(ret){
 			redis.deleteMonster(user, positionid);
 			PVPMonsterReward reward = redis.getMonsterReward(monster.getId());
@@ -245,7 +249,7 @@ public class PvpMapService {
 				rewards.addLoot(rewardinfo);
 			}
 			rewardService.doRewards(user, rewards.build());
-			redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
+			buff = redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
 			if (monster.getId() > 2000) {
 				/**
 				 * PVP攻击BOSS的活动
@@ -253,6 +257,7 @@ public class PvpMapService {
 				activityService.pvpAttackBossSuccessActivity(user.getId());
 			}
 		}
+		logger.warn(monster.getFieldid()+":+"+monster.getName()+ret+":"+monster.getBuffcount()+"->"+buff);
 		return rewards.build();
 	}
 	

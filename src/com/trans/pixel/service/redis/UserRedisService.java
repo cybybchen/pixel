@@ -35,12 +35,12 @@ public class UserRedisService extends RedisService{
 	 * update daily data, never save
 	 */
 	public boolean refreshUserDailyData(UserBean user){
-		if(user.getRedisTime() >= System.currentTimeMillis()/24/3600L/1000L*24*3600L*1000L+6*3600L*1000L){
-			user.setRedisTime(System.currentTimeMillis());
+		if(user.getRedisTime() >= today(0)){
+			user.setRedisTime(now());
 			return false;
 		}
 		//每日首次登陆
-		user.setRedisTime(System.currentTimeMillis());
+		user.setRedisTime(now());
 		user.setLadderModeLeftTimes(5);
 		user.setPurchaseCoinLeft(1);
 		user.setPvpMineLeftTime(5);
