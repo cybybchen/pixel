@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.PackageBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
@@ -34,6 +35,16 @@ public class PropService {
 		return prop;
 	}
 	
+	private void randomReward(List<RewardInfo> rewardList, PackageBean prop, int propCount){
+		for (int i = 0; i < propCount; ++i) {
+			RewardInfo reward = prop.randomReward();
+			if(reward.getItemid()%10000 == RewardConst.PACKAGE%10000)
+				randomReward(rewardList, prop, propCount);
+			else
+				rewardService.mergeReward(rewardList, reward);
+		}
+	}
+	
 	public MultiReward useProp(UserBean user, int propId, int propCount) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
 		if (userProp == null || userProp.getPropCount() < propCount)
@@ -45,10 +56,8 @@ public class PropService {
 		
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		for (int i = 0; i < propCount; ++i) {
-			RewardInfo reward = prop.randomReward();
-			rewardList = rewardService.mergeReward(rewardList, reward);
-		}
+		randomReward(rewardList, prop, propCount);
+		
 		if (!rewardList.isEmpty()) {
 			multiReward.addAllLoot(rewardList);
 			userProp.setPropCount(userProp.getPropCount() - propCount);

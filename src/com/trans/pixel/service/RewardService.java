@@ -184,24 +184,21 @@ public class RewardService {
 	}
 	
 	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {
-		boolean newReward = true;
-		List<RewardInfo> nRewardList = new ArrayList<RewardInfo>();
-		for (RewardInfo reward : rewardList) {
-			RewardInfo.Builder nReward = RewardInfo.newBuilder();
+		for (int i = 0; i < rewardList.size(); i++) {
+			RewardInfo reward = rewardList.get(i);
+			RewardInfo.Builder nReward = RewardInfo.newBuilder(reward);
 			nReward.setItemid(reward.getItemid());
 			nReward.setCount(reward.getCount());
 			if (reward.getItemid() == mergeReward.getItemid()) {
 				nReward.setCount(nReward.getCount() + mergeReward.getCount());
-				newReward = false;
+				rewardList.set(i, nReward.build());
+				return rewardList;
 			}
-			
-			nRewardList.add(nReward.build());
 		}
 		
-		if (newReward)
-			nRewardList.add(mergeReward);
+		rewardList.add(mergeReward);
 		
-		return nRewardList;
+		return rewardList;
 	}
 	
 	public void updateUser(UserBean user){
