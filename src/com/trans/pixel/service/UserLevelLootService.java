@@ -56,6 +56,12 @@ public class UserLevelLootService {
 		return userLevelLootRecordRedisService.popDBKey();
 	}
 	
+	public UserLevelLootBean calLootReward(long userId) {
+		UserLevelLootBean userLevelLootRecord = selectUserLevelLootRecord(userId);
+		
+		return switchLootLevel(userLevelLootRecord.getLootLevel(), userId);
+	}
+	
 	public UserLevelLootBean switchLootLevel(int levelId, long userId) {
 		UserLevelLootBean userLevelLootRecord = selectUserLevelLootRecord(userId);
 		XiaoguanBean xg = levelService.getXiaoguan(levelId);

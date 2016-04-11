@@ -158,6 +158,7 @@ public class LevelCommandService extends BaseCommandService {
 	
 	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseLevelLootResultCommand.Builder builder = ResponseLevelLootResultCommand.newBuilder();
+		userLevelLootRecordService.calLootReward(user.getId());
 		long userId = user.getId();
 		List<RewardBean> lootRewardList = userLevelLootRecordService.getLootRewards(userId);
 		rewardService.doRewards(user, lootRewardList);
