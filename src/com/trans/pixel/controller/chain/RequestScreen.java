@@ -50,6 +50,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -314,6 +315,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -904,6 +906,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//SubmitIconCommand
                 result = handleCommand(cmd, responseBuilder, user);//SubmitIconCommand
         }//SubmitIconCommand
+        if (request.hasRechargeCommand()) {
+            RequestCheatRechargeCommand cmd = request.getRechargeCommand();
+            if (result)//RechargeCommand
+                result = handleCommand(cmd, responseBuilder, user);//RechargeCommand
+        }//RechargeCommand
         //call handleCommand here
         
         return result;

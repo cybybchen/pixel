@@ -54,6 +54,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -691,6 +692,11 @@ public class GameDataScreen extends RequestScreen {
 		userCommandService.submitIcon(cmd, responseBuilder, user);
 		return true;//SubmitIconCommand
 	}//SubmitIconCommand
+	@Override//RechargeCommand
+	protected boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO RechargeCommand method
+		return true;//RechargeCommand
+	}//RechargeCommand
 	//add handleCommand here
 
 	@Override

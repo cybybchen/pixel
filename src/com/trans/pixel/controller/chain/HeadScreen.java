@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
+import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -109,6 +110,7 @@ import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
+import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -132,6 +134,7 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
+import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -597,6 +600,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO SubmitIconCommand method
 		return true;//SubmitIconCommand
 	}//SubmitIconCommand
+	@Override//RechargeCommand
+	protected boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO RechargeCommand method
+		return true;//RechargeCommand
+	}//RechargeCommand
 	//add handleCommand here
 
 	@Override
