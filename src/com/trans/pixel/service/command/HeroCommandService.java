@@ -326,7 +326,7 @@ public class HeroCommandService extends BaseCommandService {
             return;
 		}
 		
-		if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT >= HERO_PACKAGE_LIMIT) {
+		if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT > HERO_PACKAGE_LIMIT) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HERO_LIMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;

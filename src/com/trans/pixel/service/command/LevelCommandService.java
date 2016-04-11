@@ -195,7 +195,7 @@ public class LevelCommandService extends BaseCommandService {
 		}
 		
 		UserLevelLootBean userLevelLoot = userLevelLootRecordService.selectUserLevelLootRecord(user.getId());
-		if (userLevelLoot.getPackageCount() + BUY_LOOT_PACKAGE_COUNT >= LOOT_PACKAGE_LIMIT) {
+		if (userLevelLoot.getPackageCount() + BUY_LOOT_PACKAGE_COUNT > LOOT_PACKAGE_LIMIT) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOOT_PACKAGE_LIMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
