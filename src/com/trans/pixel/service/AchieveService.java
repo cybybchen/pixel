@@ -54,18 +54,29 @@ public class AchieveService {
 	private MultiReward getMultiReward(ActivityOrder order) {
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
-		reward.setItemid(order.getRewardid0());
-		reward.setCount(order.getRewardcount0());
-		multiReward.addLoot(reward.build());
-		reward.setItemid(order.getRewardid1());
-		reward.setCount(order.getRewardcount1());
-		multiReward.addLoot(reward.build());
-		reward.setItemid(order.getRewardid2());
-		reward.setCount(order.getRewardcount2());
-		multiReward.addLoot(reward.build());
-		reward.setItemid(order.getRewardid3());
-		reward.setCount(order.getRewardcount3());
-		multiReward.addLoot(reward.build());
+		if (order.getRewardid0() > 0) {
+			reward.setItemid(order.getRewardid0());
+			reward.setCount(order.getRewardcount0());
+			multiReward.addLoot(reward.build());
+		}
+		
+		if (order.getRewardid1() > 0) {
+			reward.setItemid(order.getRewardid1());
+			reward.setCount(order.getRewardcount1());
+			multiReward.addLoot(reward.build());
+		}
+		
+		if (order.getRewardid2() > 0) {
+			reward.setItemid(order.getRewardid2());
+			reward.setCount(order.getRewardcount2());
+			multiReward.addLoot(reward.build());
+		}
+		
+		if (order.getRewardid3() > 0) {
+			reward.setItemid(order.getRewardid3());
+			reward.setCount(order.getRewardcount3());
+			multiReward.addLoot(reward.build());
+		}
 		
 		return multiReward.build();
 	}

@@ -103,21 +103,29 @@ public class ActivityService {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		
-		reward.setItemid(order.getRewardid0());
-		reward.setCount(order.getRewardcount0());
-		rewardList.add(reward.build());
+		if (order.getRewardid0() > 0) {
+			reward.setItemid(order.getRewardid0());
+			reward.setCount(order.getRewardcount0());
+			rewardList.add(reward.build());
+		}
 		
-		reward.setItemid(order.getRewardid1());
-		reward.setCount(order.getRewardcount1());
-		rewardList.add(reward.build());
+		if (order.getRewardid1() > 0) {
+			reward.setItemid(order.getRewardid1());
+			reward.setCount(order.getRewardcount1());
+			rewardList.add(reward.build());
+		}
 		
-		reward.setItemid(order.getRewardid2());
-		reward.setCount(order.getRewardcount2());
-		rewardList.add(reward.build());
+		if (order.getRewardid2() > 0) {
+			reward.setItemid(order.getRewardid2());
+			reward.setCount(order.getRewardcount2());
+			rewardList.add(reward.build());
+		}
 		
-		reward.setItemid(order.getRewardid3());
-		reward.setCount(order.getRewardcount3());
-		rewardList.add(reward.build());
+		if (order.getRewardid3() > 0) {
+			reward.setItemid(order.getRewardid3());
+			reward.setCount(order.getRewardcount3());
+			rewardList.add(reward.build());
+		}
 		
 		return rewardList;
 	}
