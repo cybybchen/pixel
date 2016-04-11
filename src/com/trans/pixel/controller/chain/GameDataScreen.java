@@ -29,6 +29,7 @@ import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
+import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
@@ -54,7 +55,6 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -127,6 +127,7 @@ import com.trans.pixel.service.command.AchieveCommandService;
 import com.trans.pixel.service.command.ActivityCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
 import com.trans.pixel.service.command.CdkeyCommandService;
+import com.trans.pixel.service.command.CheatRechargeCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroCommandService;
@@ -203,6 +204,8 @@ public class GameDataScreen extends RequestScreen {
 	private RankCommandService rankCommandService;
 	@Resource
 	private CdkeyCommandService cdkeyCommandService;
+	@Resource
+	private CheatRechargeCommandService cheatRechargeCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -694,7 +697,7 @@ public class GameDataScreen extends RequestScreen {
 	}//SubmitIconCommand
 	@Override//RechargeCommand
 	protected boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO RechargeCommand method
+		cheatRechargeCommandService.cheatRecharge(cmd, responseBuilder, user);
 		return true;//RechargeCommand
 	}//RechargeCommand
 	//add handleCommand here
