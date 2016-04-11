@@ -8,6 +8,7 @@ import net.sf.json.JSONObject;
 
 import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.hero.HeroBean;
+import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -246,7 +247,7 @@ public class HeroInfoBean {
 		heroInfo.setValue(0);
 		heroInfo.setRare(rare);
 		heroInfo.setLock(false);
-		heroInfo.setEquipInfo("0|0|0|0|0|0");
+		heroInfo.setEquipInfo(initEquipInfo(hero));
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
 		if (skillInfo != null)
@@ -254,6 +255,12 @@ public class HeroInfoBean {
 		heroInfo.setSkillInfoList(skillInfoList);
 		
 		return heroInfo;
+	}
+	
+	private static String initEquipInfo(HeroBean hero) {
+		HeroEquipBean heroEquip = hero.getEquip(1);
+		return heroEquip.getArm1() + EQUIP_SPLIT + heroEquip.getArm2() + EQUIP_SPLIT + heroEquip.getArm3() +
+				EQUIP_SPLIT + heroEquip.getArm4() + EQUIP_SPLIT + heroEquip.getArm5() + EQUIP_SPLIT + heroEquip.getArm6();
 	}
 	
 	public static HeroInfoBean initHeroInfo(HeroBean hero) {

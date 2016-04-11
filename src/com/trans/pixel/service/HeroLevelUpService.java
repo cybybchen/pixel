@@ -11,6 +11,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.StarBean;
+import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
@@ -91,9 +92,11 @@ public class HeroLevelUpService {
 		return result;
 	}
 	
-	public int delHeroEquip(HeroInfoBean heroInfo, int armId) {
+	public int delHeroEquip(HeroInfoBean heroInfo, int armId, int heroId) {
+		HeroBean hero = heroService.getHero(heroId);
+		HeroEquipBean heroEquip = hero.getEquip(1);
 		int equipId = heroInfo.getEquipIdByArmId(armId);
-		heroInfo.updateEquipIdByArmId(0, armId);
+		heroInfo.updateEquipIdByArmId(heroEquip.getArmValue(armId), armId);
 		
 		return equipId;
 	}

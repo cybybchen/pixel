@@ -148,7 +148,7 @@ public class HeroCommandService extends BaseCommandService {
 		if (userHero != null) {
 			heroInfo = userHero.getHeroInfoByInfoId(infoId);
 			if (heroInfo != null) 
-				equipId = heroLevelUpService.delHeroEquip(heroInfo, armId);
+				equipId = heroLevelUpService.delHeroEquip(heroInfo, armId, heroId);
 		}
 		
 		if (equipId == 0) {
