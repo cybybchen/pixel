@@ -165,6 +165,7 @@ public class LevelCommandService extends BaseCommandService {
 		responseBuilder.setLevelLootResultCommand(builder.build());
 		pushCommandService.pushUserPropListCommand(responseBuilder, user);
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+		pushCommandService.pushUserLootLevelCommand(responseBuilder, user);
 	}
 	
 	public void levelUnlock(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {
