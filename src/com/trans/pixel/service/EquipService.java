@@ -68,12 +68,12 @@ public class EquipService {
 			}
 		} else { //合成碎片
 			Chip chip = equipRedisService.getChip(levelUpId);
-			if (chip != null) {
-				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), chip.getCover1());
-				if (userEquip != null && userEquip.getEquipCount() >= chip.getCount1() * count) {
-					userEquip.setEquipCount(userEquip.getEquipCount() - chip.getCount1() * count);
+			if (chip != null && chip.getAim() > 0) {
+				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), levelUpId);
+				if (userEquip != null && userEquip.getEquipCount() >= chip.getCount() * count) {
+					userEquip.setEquipCount(userEquip.getEquipCount() - chip.getCount() * count);
 					userEquipService.updateUserEquip(userEquip);
-					userEquipService.addUserEquip(user.getId(), chip.getItemid(), count);
+					userEquipService.addUserEquip(user.getId(), chip.getAim(), count);
 					result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
 				}
 			}

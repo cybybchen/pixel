@@ -737,8 +737,8 @@ message Chip {
 	required int32 cost = 5;
 	required int32 mojing = 6;
 	optional string description = 7;
-	optional int32 cover1 = 8;
-	optional int32 count1 = 9;
+	optional int32 aim = 8;
+	optional int32 count = 9;
 	optional int32 lootid1 = 10;
 	optional int32 loot1 = 11;
 	optional int32 lootid2 = 12;
