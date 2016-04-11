@@ -227,7 +227,7 @@ public class HeroInfoBean {
 		heroInfo.setValue(0);
 		heroInfo.setRare(1);
 		heroInfo.setLock(false);
-		heroInfo.setEquipInfo("0|0|0|0|0|0");
+		heroInfo.setEquipInfo(initEquipInfo(hero));
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
