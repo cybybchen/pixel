@@ -59,6 +59,7 @@ public class UserBean {
 	private int pvpUnlock = 0;
 	private int heroLimit = 0;
 	private String composeSkill = "";
+	private int rechargeRecord = 0;
 	/**
 	 * 注册时间
 	 */
@@ -690,7 +691,15 @@ public class UserBean {
 	public void setComposeSkill(String composeSkill) {
 		this.composeSkill = composeSkill;
 	}
-	
+	/**
+	 * 充值的总金额
+	 */
+	public int getRechargeRecord() {
+		return rechargeRecord;
+	}
+	public void setRechargeRecord(int rechargeRecord) {
+		this.rechargeRecord = rechargeRecord;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -781,6 +790,8 @@ public class UserBean {
 		builder.setAreaEnergyTime(areaEnergyTime);
 		builder.setHeroLimit(heroLimit);
 		builder.setComposeSkill(composeSkill);
+		builder.setRechargeRecord(rechargeRecord);
+		
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {

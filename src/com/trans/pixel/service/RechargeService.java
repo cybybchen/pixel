@@ -64,6 +64,13 @@ public class RechargeService {
     	userAchieveService.updateUserAchieve(bean);
 		
 		activityService.rechargeActivity(user, jewel);
+		
+		/**
+		 * 记录用户的累计充值金额
+		 */
+		user.setRechargeRecord(user.getRechargeRecord() + rmb);
+		userService.updateUser(user);
+		
 		return rmb;
 	}
 	

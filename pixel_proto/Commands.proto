@@ -30,6 +30,7 @@ message UserInfo {
 	optional string lastLoginTime = 25;//上次登录时间
 	optional int32 heroLimit = 31;//英雄上限
 	optional string composeSkill = 33;//组合技
+	optional int32 rechargeRecord = 34;
 }
 
 message ServerData {
