@@ -164,7 +164,7 @@ public class UserCommandService extends BaseCommandService {
 	private boolean isNextWeek(String lastLoginTime) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date());
-		int now = c.get(Calendar.DAY_OF_YEAR);
+		int now = c.get(Calendar.WEEK_OF_YEAR);
 		logger.debug("now is:" + now);
 		
 		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT);
@@ -173,9 +173,9 @@ public class UserCommandService extends BaseCommandService {
 		} catch (ParseException e) {
 			return false;
 		}
-		int last = c.get(Calendar.DAY_OF_YEAR);
+		int last = c.get(Calendar.WEEK_OF_YEAR);
 		
-		if (now - last > 7)
+		if (now != last)
 			return true;
 		
 		return false;
