@@ -135,6 +135,7 @@ public class UserLevelLootBean {
 		builder.setLootLevel(lootLevel);
 		builder.setLootTime(lootTime);
 		builder.setPackageCount(packageCount);
+		builder.setLootRewardRecord(lootRewardRecord);
 		
 		return builder.build();
 	}

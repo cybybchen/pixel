@@ -209,6 +209,7 @@ message UserLootLevel {
 	required int32 lootLevel = 2;    //当前挂机的关卡
 	required int32 levelLootStartTime = 3; //挂机开始时间
 	required string lootTime = 4;    //挂机时间记录
+	optional string lootRewardRecord = 5;//挂机领奖记录
 }
 
 message Union {
