@@ -90,6 +90,8 @@ public class EquipService {
 		
 		EquipmentBean equip = getEquip(equipId);
 		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
+		if (fenjie == null)
+			return null;
 		
 		userEquip.setEquipCount(userEquip.getEquipCount() - fenjieCount);
 		userEquipService.updateUserEquip(userEquip);
@@ -100,6 +102,9 @@ public class EquipService {
 	public List<RewardBean> fenjieHeroEquip(UserBean user, int equipId, int fenjieCount) {
 		EquipmentBean equip = getEquip(equipId);
 		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
+		
+		if (fenjie == null)
+			return null;
 		
 		return fenjie.randomReward(fenjieCount);
 	}
