@@ -27,11 +27,16 @@ public class RechargeService {
     private ActivityService activityService;
 	@Resource
 	private LogService logService;
-	
+
 	public int recharge(UserBean user, int id) {
-//    	UserBean user = userService.getUser(userId);
 		int rmb = id;
 		int jewel = id;
+		return recharge(user, rmb, jewel);
+	}
+	public int recharge(UserBean user, int rmb, int jewel) {
+//    	UserBean user = userService.getUser(userId);
+//		int rmb = id;
+//		int jewel = id;
     	user.setJewel(user.getJewel()+jewel);
     	UserAchieveBean bean = userAchieveService.selectUserAchieve(user.getId(), AchieveConst.TYPE_RECHARGE_RMB);
     	int base = bean.getCompleteCount();
@@ -64,6 +69,7 @@ public class RechargeService {
 	
 	public void doRecharge(UserBean user, int id){
 		int rmb = recharge(user, id);
+		userService.updateUser(user);
 		
 		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb, 0, 0, 0, "test", "1111", 1);
 		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);

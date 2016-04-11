@@ -7,6 +7,9 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+import com.google.protobuf.Message;
+import com.googlecode.protobuf.format.JsonFormat;
+import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
@@ -119,5 +122,13 @@ public class BaseTest {
         }else{
         	logger.error("登陆错误");
         }
+	}
+	
+	public static void setField(String name, Object value, Message.Builder builder) {
+		try {
+			JsonFormat.setField(name, value, builder);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 }
