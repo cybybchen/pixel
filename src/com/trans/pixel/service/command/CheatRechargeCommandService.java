@@ -47,6 +47,7 @@ public class CheatRechargeCommandService extends BaseCommandService {
 //		rewardService.doRewards(user.getId(), multiReward.build());
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.RECHARGE_SUCCESS));
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+		pusher.pushUserInfoCommand(responseBuilder, user);
 		
 		activityService.rechargeActivity(user, jewel);
 		
