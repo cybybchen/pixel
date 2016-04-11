@@ -155,8 +155,8 @@ public class LadderService {
 		
 		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 		userService.updateUser(user);
-		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, heroList);
+		Team team = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user, team);
 		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
@@ -275,8 +275,10 @@ public class LadderService {
 					robot.setZhanliMax(zhanli);
 					userService.updateRobotUser(robot);
 				}
-				List<HeroInfoBean> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
-				userTeamService.saveTeamCacheWithoutExpire(robot, heroInfoList);
+				Team.Builder team = Team.newBuilder();
+				List<HeroInfo> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
+				team.addAllHeroInfo(heroInfoList);
+				userTeamService.saveTeamCacheWithoutExpire(robot, team.build());
 				UserRankBean robotRank = initRobotRank(robot.getId(), robot.getUserName(), robot.getIcon(), i);
 				
 				robotRank.setZhanli(zhanli);
@@ -291,8 +293,8 @@ public class LadderService {
 		return name1List.get(RandomUtils.nextInt(name1List.size())) + name2List.get(RandomUtils.nextInt(name2List.size()));
 	}
 	
-	private List<HeroInfoBean> getHeroInfoList(List<HeroBean> heroList, LadderEnemy ladderEnemy) {
-		List<HeroInfoBean> heroInfoList = new ArrayList<HeroInfoBean>();
+	private List<HeroInfo> getHeroInfoList(List<HeroBean> heroList, LadderEnemy ladderEnemy) {
+		List<HeroInfo> heroInfoList = new ArrayList<HeroInfo>();
 		Map<Integer, Integer> heroInfoMap = new HashMap<Integer, Integer>();
 		while (heroInfoList.size() < ladderEnemy.getHerocount()) {
 			HeroBean randomHero = heroList.get(RandomUtils.nextInt(heroList.size()));
@@ -300,7 +302,7 @@ public class LadderService {
 			if (originalCount == null)
 				originalCount = 0;
 			if (originalCount < 3) {
-				heroInfoList.add(HeroInfoBean.initHeroInfo(randomHero, ladderEnemy.getStar(), ladderEnemy.getRare(), ladderEnemy.getLv()));
+				heroInfoList.add(HeroInfoBean.initHeroInfo(randomHero, ladderEnemy.getStar(), ladderEnemy.getRare(), ladderEnemy.getLv()).buildTeamHeroInfo());
 				heroInfoMap.put(randomHero.getId(), originalCount + 1);
 			}
 		}

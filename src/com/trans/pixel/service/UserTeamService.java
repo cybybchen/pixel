@@ -1,6 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -30,10 +29,11 @@ public class UserTeamService {
 	@Resource
 	private UserLevelService userLevelService;
 	
-	public void addUserTeam(long userId, String record) {
+	public void addUserTeam(long userId, String record, String composeSkill) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setUserId(userId);
 		userTeam.setTeamRecord(record);
+		userTeam.setComposeSkill(composeSkill);
 		userTeamMapper.addUserTeam(userTeam);
 		userTeamRedisService.updateUserTeam(userTeam);
 	}
@@ -43,11 +43,12 @@ public class UserTeamService {
 		userTeamRedisService.delUserTeam(userId, id);
 	}
 	
-	public void updateUserTeam(long userId, long id,  String record) {
+	public void updateUserTeam(long userId, long id,  String record, String composeSkill) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setId(id);
 		userTeam.setUserId(userId);
 		userTeam.setTeamRecord(record);
+		userTeam.setComposeSkill(composeSkill);
 		userTeamRedisService.updateUserTeam(userTeam);
 		userTeamMapper.updateUserTeam(userTeam);
 	}
@@ -98,12 +99,12 @@ public class UserTeamService {
 		return userTeamRedisService.getTeamCache(userid);
 	}
 
-	public void saveTeamCacheWithoutExpire(UserBean user, List<HeroInfoBean> list){
-		userTeamRedisService.saveTeamCacheWithoutExpire(user, list);
+	public void saveTeamCacheWithoutExpire(UserBean user, Team team){
+		userTeamRedisService.saveTeamCacheWithoutExpire(user, team);
 	}
 
-	public void saveTeamCache(UserBean user, List<HeroInfoBean> list){
-		userTeamRedisService.saveTeamCache(user, list);
+	public void saveTeamCache(UserBean user, Team team){
+		userTeamRedisService.saveTeamCache(user, team);
 	}
 
 	public List<HeroInfo> getProtoTeamCache(long userId) {
@@ -111,13 +112,14 @@ public class UserTeamService {
 		return userTeam.getHeroInfoList();
 	}
 	
-	public List<HeroInfoBean> getTeam(UserBean user, long teamid){
+	public Team getTeam(UserBean user, long teamid){
+		Team.Builder team = Team.newBuilder();
 		List<UserTeamBean> userTeamList = selectUserTeamList(user.getId());
-		List<HeroInfoBean> heroinfoList = new ArrayList<HeroInfoBean>();
-		for(UserTeamBean team : userTeamList){
-			if(teamid == team.getId()){
+		for(UserTeamBean userTeam : userTeamList){
+			if(teamid == userTeam.getId()){
+				team.setComposeSkill(userTeam.getComposeSkill());
 				List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
-				String[] herosstr = team.getTeamRecord().split("\\|");
+				String[] herosstr = userTeam.getTeamRecord().split("\\|");
 				for(String herostr : herosstr){
 					String[] str = herostr.split(",");
 					if(str.length == 2){
@@ -128,7 +130,7 @@ public class UserTeamService {
 								HeroInfoBean heroinfo = herobean.getHeroInfoByInfoId(infoId);
 								heroinfo.setHeroId(herobean.getHeroId());
 								if(heroinfo != null)
-									heroinfoList.add(heroinfo);
+									team.addHeroInfo(heroinfo.buildTeamHeroInfo());
 								break;
 							}
 						}
@@ -137,7 +139,7 @@ public class UserTeamService {
 				break;
 			}
 		}
-		return heroinfoList;
+		return team.build();
 	}
 	
 	public String getTeamString(List<HeroInfo> heroList) {

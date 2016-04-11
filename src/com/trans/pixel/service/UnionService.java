@@ -13,13 +13,13 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.UnionBean;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.FightResult;
 import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -397,8 +397,8 @@ public class UnionService extends FightService{
 			if(redis.now() > builder.getAttackCloseTime()){
 				return ErrorConst.JOIN_END;
 			}
-			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
-			userTeamService.saveTeamCache(user, herolist);
+			Team team = userTeamService.getTeam(user, teamid);
+			userTeamService.saveTeamCache(user, team);
 			redis.attack(builder.getAttackId(), user);
 		}else if(user.getUnionJob() >= 2 && attackId != 0 && redis.now() > builder.getAttackCloseTime()){
 			Union.Builder defendUnion = Union.newBuilder();
@@ -432,8 +432,8 @@ public class UnionService extends FightService{
 			if(redis.now() > union.getDefendCloseTime()){
 				return ErrorConst.JOIN_END;
 			}
-			List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
-			userTeamService.saveTeamCache(user, herolist);
+			Team team = userTeamService.getTeam(user, teamid);
+			userTeamService.saveTeamCache(user, team);
 			redis.defend(union.getDefendId(), user);
 			return SuccessConst.UNION_FIGHT_SUCCESS;
 		}else{

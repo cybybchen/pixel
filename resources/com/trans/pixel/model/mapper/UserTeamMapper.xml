@@ -6,11 +6,12 @@
 		<id property="id" column="id" />
 		<result property="userId" column="user_id" />
 		<result property="teamRecord" column="record" />
+		<result property="composeSkill" column="compose_skill" />
 	</resultMap>
 	
 	<insert id="addUserTeam" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
-	    INSERT INTO user_team(user_id, record)
-	    VALUES(#{userId}, #{teamRecord})
+	    INSERT INTO user_team(user_id, record, compose_skill)
+	    VALUES(#{userId}, #{teamRecord}, #{composeSkill})
 	</insert>
 	
 	<insert id="delUserTeam" parameterType="long">
@@ -20,7 +21,7 @@
 	
 	<update id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
 	    UPDATE user_team
-	    SET record=#{teamRecord}
+	    SET record=#{teamRecord}, compose_skill=#{composeSkill}
 		WHERE id=#{id} and user_id=#{userId}
 	</update>
 	

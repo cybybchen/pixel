@@ -160,6 +160,7 @@ message PurchaseCoinCostList {
 message UserTeam {
 	required int64 id = 1;
 	required string teaminfo = 2;
+	optional string composeSkill = 3;
 }
 
 message UserHero {
@@ -171,6 +172,7 @@ message UserHero {
 message Team {
 	optional UserInfo user = 1;
 	repeated HeroInfo heroInfo = 2;
+	optional string composeSkill = 3;
 }
 
 message UserEquip {
@@ -953,10 +955,12 @@ message ResponseLevelLootResultCommand {
 message RequestUpdateTeamCommand {
 	required int64 id = 1;
 	required string teamInfo = 2;
+	optional string composeSkill = 3;
 }
 
 message RequestAddTeamCommand {
 	required string teamInfo = 1;
+	optional string composeSkill = 2;
 }
 
 message RequestUserTeamListCommand {

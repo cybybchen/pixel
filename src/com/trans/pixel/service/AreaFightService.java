@@ -19,7 +19,6 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserAreaPropMapper;
 import com.trans.pixel.model.userinfo.UserAreaPropBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -291,8 +290,8 @@ public class AreaFightService extends FightService{
 		
 		if(mine == null)
 			return ErrorConst.MAPINFO_ERROR;
-		List<HeroInfoBean> herolist = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, herolist);
+		Team team = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user, team);
 		if(!ret){
 			costEnergy(user);
 			return SuccessConst.PVP_ATTACK_FAIL;

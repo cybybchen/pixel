@@ -1,7 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -10,7 +8,6 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMapList;
@@ -69,8 +66,8 @@ public class PvpCommandService extends BaseCommandService {
 	
 	public void attackMine(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		int teamid = cmd.getTeamid();
-		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, heroList);
+		Team team = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user, team);
 		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
@@ -80,8 +77,8 @@ public class PvpCommandService extends BaseCommandService {
 		int teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getUser(friendUserId);
-		List<HeroInfoBean> heroList = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, heroList);
+		Team team = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user, team);
 		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet()))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 //		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, friend);

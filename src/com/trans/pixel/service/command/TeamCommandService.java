@@ -26,24 +26,30 @@ public class TeamCommandService extends BaseCommandService {
 		long userId = user.getId();
 		long id = cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
+		String composeSkill = "";
+		if (cmd.hasComposeSkill())
+			composeSkill = cmd.getComposeSkill();
 		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		userTeamService.updateUserTeam(userId, id, teamInfo);
+		userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 	
 	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
 		String teamInfo = cmd.getTeamInfo();
+		String composeSkill = "";
+		if (cmd.hasComposeSkill())
+			composeSkill = cmd.getComposeSkill();
 		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		userTeamService.addUserTeam(userId, teamInfo);
+		userTeamService.addUserTeam(userId, teamInfo, composeSkill);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 	
