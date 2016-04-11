@@ -13,6 +13,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
@@ -22,6 +23,7 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
@@ -29,8 +31,8 @@ import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
+import com.trans.pixel.protoc.Commands.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
@@ -50,6 +52,7 @@ import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.PvpMapService;
+import com.trans.pixel.service.UserAchieveService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeroService;
@@ -87,6 +90,8 @@ public class PushCommandService extends BaseCommandService {
 	private ShopCommandService shopCommandService;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private UserAchieveService userAchieveService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -335,5 +340,14 @@ public class PushCommandService extends BaseCommandService {
 
 	public void pushPurchaseCoinCommand(Builder responseBuilder, UserBean user) {
 		shopCommandService.getPurchaseCoinTime(responseBuilder, user);
+	}
+	
+	public void pushUserAchieveCommand(Builder responseBuilder, UserBean user) {
+		ResponseAchieveListCommand.Builder builder = ResponseAchieveListCommand.newBuilder();
+		
+		List<UserAchieveBean> uaList = userAchieveService.selectUserAchieveList(user.getId());
+		builder.addAllUserAchieve(buildUserAchieveList(uaList));
+		
+		responseBuilder.setAchieveListCommand(builder.build());
 	}
 }

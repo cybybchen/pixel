@@ -113,6 +113,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushPurchaseCoinCommand(responseBuilder, user);
 		pushCommandService.pushUserPropListCommand(responseBuilder, user);
 		pushCommandService.pushPvpMapListCommand(responseBuilder, user);
+		pushCommandService.pushUserAchieveCommand(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {
