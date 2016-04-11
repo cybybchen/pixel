@@ -652,7 +652,7 @@ public class ShopCommandService extends BaseCommandService{
 //		builder.setExp(500);
 		builder.setJewel(cost);
 		builder.setLeftTime(user.getPurchaseCoinLeft());
-		builder.setTotalTime(user.getPurchaseCoinTime());
+		builder.setTotalTime(user.getPurchaseCoinLeft()+user.getPurchaseCoinTime());
 		responseBuilder.setPurchaseCoinCommand(builder);
 	}
 }
