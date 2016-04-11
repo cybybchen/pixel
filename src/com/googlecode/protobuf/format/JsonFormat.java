@@ -959,6 +959,67 @@ public class JsonFormat {
         }
     }
 
+    public static void setField(String name,
+                                   Object value,
+                                   Message.Builder builder) throws ParseException {
+		FieldDescriptor field;
+		Descriptor type = builder.getDescriptorForType();
+		// ExtensionRegistry extensionRegistry =
+		// ExtensionRegistry.getEmptyRegistry();
+		// ExtensionRegistry.ExtensionInfo extension = null;
+		boolean unknown = false;
+
+		// String name = tokenizer.consumeIdentifier();
+		field = type.findFieldByName(name);
+
+		// Group names are expected to be capitalized as they appear in the
+		// .proto file, which actually matches their type names, not their field
+		// names.
+		if (field == null) {
+			// Explicitly specify US locale so that this code does not break
+			// when
+			// executing in Turkey.
+			String lowerName = name.toLowerCase(Locale.US);
+			field = type.findFieldByName(lowerName);
+			// If the case-insensitive match worked but the field is NOT a
+			// group,
+			if ((field != null)
+					&& (field.getType() != FieldDescriptor.Type.GROUP)) {
+				field = null;
+			}
+		}
+		// Again, special-case group names as described above.
+		if ((field != null) && (field.getType() == FieldDescriptor.Type.GROUP)
+				&& !field.getMessageType().getName().equals(name)) {
+			field = null;
+		}
+
+		// Last try to lookup by field-index if 'name' is numeric,
+		// which indicates a possible unknown field
+		if (field == null && DIGITS.matcher(name).matches()) {
+			field = type.findFieldByNumber(Integer.parseInt(name));
+			unknown = true;
+		}
+
+		// Disabled throwing exception if field not found, since it could be a
+		// different version.
+		if (field == null) {
+			// handleMissingField(tokenizer, extensionRegistry, builder);
+			throw new Tokenizer(name)
+					.parseExceptionPreviousToken("Message type \""
+							+ type.getFullName() + "\" has no field named \""
+							+ name + "\".");
+		}
+
+		if (field != null) {
+			if (field.isRepeated()) {
+				builder.addRepeatedField(field, value);
+			} else {
+				builder.setField(field, value);
+			}
+		}
+    }
+
     private static void handleMissingField(Tokenizer tokenizer,
                                            ExtensionRegistry extensionRegistry,
                                            Message.Builder builder) throws ParseException {

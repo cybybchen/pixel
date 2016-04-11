@@ -38,6 +38,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -51,6 +52,7 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.Message;
 import com.google.protobuf.UnknownFieldSet;
+import com.trans.pixel.service.redis.AreaRedisService;
 
 /**
  * Provide ascii text parsing and formatting support for proto2 instances. The implementation
@@ -66,6 +68,7 @@ import com.google.protobuf.UnknownFieldSet;
  * @author kenton@google.com Kenton Varda
  */
 public final class XmlFormat {
+	private static Logger logger = Logger.getLogger(XmlFormat.class);
 
     /**
      * Outputs a textual representation of the Protocol Message supplied into the parameter output.
@@ -811,11 +814,10 @@ public final class XmlFormat {
        }
 
        if (field == null) {
+    	   logger.error("Message type \"" + type.getFullName() + "\" has no field named \"" + name + "\".");
          continue;
     	   // Tokenizer tokenizer = new Tokenizer("");
-        //    throw tokenizer.parseExceptionPreviousToken("Message type \"" + type.getFullName()
-//                                                       + "\" has no field named \"" + name
-//                                                       + "\".");
+        //    throw tokenizer.parseExceptionPreviousToken("Message type \"" + type.getFullName() + "\" has no field named \"" + name + "\".");
        }
 
        Object value = null;

@@ -1372,6 +1372,7 @@ message ResponsePurchaseCoinCommand {
 	//optional int32 exp = 2;//获得的经验
 	optional int32 jewel = 3;//价格
 	optional int32 leftTime = 4;//当日剩余次数
+	optional int32 totalTime = 5;//次数
 }
 
 message ResponseUserPropCommand { //玩家道具列表

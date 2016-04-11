@@ -18,8 +18,6 @@ import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.test.BaseTest;
 
 public class PressureTest extends BaseTest {
-	private static Logger logger = Logger.getLogger(PressureTest.class);
-	
 	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
 	
 	public static void main(String[] args) {
@@ -38,7 +36,6 @@ public class PressureTest extends BaseTest {
 		try {
 			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -48,7 +45,7 @@ public class PressureTest extends BaseTest {
 		String account = randomAccount();
 		builder.setHead(buildHead(account, 0));
 		ResponseCommand response = login(builder);//登录
-		builder.setHead(buildHead(account, response.getUserInfoCommand().getUser().getId()));
+		builder.setHead(response.getHead());
 				
 		levelTest(builder, response);//挂机
 		
@@ -177,7 +174,7 @@ public class PressureTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
-        	logger.warn(response.getErrorCommand().getMessage()+"，重新注册");
+        	System.out.println(response.getErrorCommand().getMessage()+"，重新注册");
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
     		registerbuilder.setUserName(builder.getHead().getAccount());
     		builder.clearLoginCommand().setRegisterCommand(registerbuilder.build());
@@ -186,9 +183,6 @@ public class PressureTest extends BaseTest {
     		reqData = reqcmd.toByteArray();
             input = new ByteArrayInputStream(reqData);
             response = http.post(url, input);
-        }
-        if(response.hasUserInfoCommand()){
-        	user = response.getUserInfoCommand().getUser();
         }
         
         return response;
