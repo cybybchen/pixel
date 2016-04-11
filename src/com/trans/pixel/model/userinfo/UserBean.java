@@ -479,7 +479,7 @@ public class UserBean {
 	public void setHeroLimit(int heroLimit) {
 		this.heroLimit = heroLimit;
 		if (heroLimit == 0)
-			this.heroLimit = 200;
+			this.heroLimit = 30;
 	}
 	//	/**
 //	 * 挂机PVP刷新次数
@@ -709,7 +709,7 @@ public class UserBean {
 		setCoin(1000000);
 		setJewel(1000000);
 		setExp(1000000);
-		setHeroLimit(200);
+		setHeroLimit(30);
 		return this;
 	}
 	public UserInfo buildShort() {

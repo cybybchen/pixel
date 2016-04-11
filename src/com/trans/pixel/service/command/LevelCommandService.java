@@ -41,8 +41,8 @@ import com.trans.pixel.service.WinService;
 public class LevelCommandService extends BaseCommandService {
 	private static final Logger log = LoggerFactory.getLogger(LevelCommandService.class);
 	
-	private static final int BUY_LOOT_PACKAGE_COST = 50;
-	private static final int BUY_LOOT_PACKAGE_COUNT = 10;
+	private static final int BUY_LOOT_PACKAGE_COST = 30;
+	private static final int BUY_LOOT_PACKAGE_COUNT = 1;
 	private static final int LOOT_PACKAGE_LIMIT = 50;
 	
 	@Resource

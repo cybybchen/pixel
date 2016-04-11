@@ -42,7 +42,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class HeroCommandService extends BaseCommandService {
 
 	private static final int BUY_HERO_PACKAGE_COST = 50;
-	private static final int BUY_HERO_PACKAGE_COUNT = 10;
+	private static final int BUY_HERO_PACKAGE_COUNT = 5;
 	private static final int HERO_PACKAGE_LIMIT = 500;
 	@Resource
 	private HeroLevelUpService heroLevelUpService;
