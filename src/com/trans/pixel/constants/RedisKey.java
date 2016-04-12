@@ -180,4 +180,7 @@ public class RedisKey {
 	
 	//team unlock redis
 	public static final String TEAM_UNLOCK_KEY = PREFIX + CONFIG_PREFIX + "team_unlock";
+	
+	//loot time
+	public static final String LOOTTIME_CONFIG = PREFIX + CONFIG_PREFIX + "loottime";
 }

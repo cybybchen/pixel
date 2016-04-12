@@ -11,6 +11,8 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.mapper.UserLevelLootMapper;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
+import com.trans.pixel.protoc.Commands.LootTime;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.UserLevelLootRedisService;
 
 @Service
@@ -25,6 +27,8 @@ public class UserLevelLootService {
 	private LootService lootService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private LevelRedisService levelRedisService;
 	
 	public UserLevelLootBean selectUserLevelLootRecord(long userId) {
 		UserLevelLootBean userLevelLootRecordBean = userLevelLootRecordRedisService.selectUserLevelLootRecord(userId);
@@ -69,7 +73,8 @@ public class UserLevelLootService {
 			return userLevelLootRecord;
 		XiaoguanBean lastXg = levelService.getXiaoguan(userLevelLootRecord.getLootLevel());
 		if (lastXg != null) {
-			userLevelLootRecord.updateLootTime(lastXg.getXiaoguan(), lastXg.getLootTime(), lastXg.getId());
+			LootTime lootTime = levelRedisService.getLootTime(lastXg.getXiaoguan());
+			userLevelLootRecord.updateLootTime(lastXg.getXiaoguan(), lootTime.getLoottime(), lastXg.getId());
 		}
 		userLevelLootRecord.setLevelLootStartTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userLevelLootRecord.setLootLevel(xg.getId());

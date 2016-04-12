@@ -883,6 +883,15 @@ message TeamUnlock {//出战人数解锁
 	required int32 count = 2;//出战人数
 }
 
+message LootTimeList {
+	repeated LootTime xiaoguan = 1;
+}
+
+message LootTime {
+	required int32 xiaoguan = 1;
+	required int32 loottime = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
