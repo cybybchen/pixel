@@ -9,6 +9,8 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
@@ -26,11 +28,13 @@ import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
+import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 
 @Service
 public class PvpCommandService extends BaseCommandService {
+	private static final int HELP_ATTACK_PROP_ID = 40022;
 	@Resource
 	private UserTeamService userTeamService;
 	@Resource
@@ -41,6 +45,8 @@ public class PvpCommandService extends BaseCommandService {
 	private MailService mailService;
 	@Resource
 	private PushCommandService pusher;
+	@Resource
+	private UserPropService userPropService;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
@@ -74,13 +80,23 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMine(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
+		UserPropBean userProp = userPropService.selectUserProp(user.getId(), HELP_ATTACK_PROP_ID);
+		if (userProp.getPropCount() < 1) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		int teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getUser(friendUserId);
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, team);
-		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet()))
+		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet())) {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+			return;
+		}
+		userProp.setPropCount(userProp.getPropCount() - 1);
+		userPropService.updateUserProp(userProp);
 //		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, friend);
 		sendHelpMail(friend, user);
 		
