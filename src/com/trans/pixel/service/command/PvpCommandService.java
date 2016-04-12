@@ -101,6 +101,7 @@ public class PvpCommandService extends BaseCommandService {
 		sendHelpMail(friend, user);
 		
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
+		pusher.pushUserPropListCommand(responseBuilder, user);
 	}
 	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
