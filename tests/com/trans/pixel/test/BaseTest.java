@@ -3,9 +3,9 @@ package com.trans.pixel.test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.Map;
 import java.util.Properties;
-
-import org.apache.log4j.Logger;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
@@ -16,12 +16,12 @@ import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.test.pressure.TimeBean;
 import com.trans.pixel.utils.HTTPProtobufResolver;
 import com.trans.pixel.utils.HTTPStringResolver;
 import com.trans.pixel.utils.HttpUtil;
 
 public class BaseTest {
-	private static Logger logger = Logger.getLogger(BaseTest.class);
 	public UserInfo user = null;
   
     //define device user
@@ -47,6 +47,8 @@ public class BaseTest {
     
     protected static final String defaultUrl = "http://123.59.144.200:8082/Lol450/gamedata";
     protected static String url;
+    protected HeadInfo head = null;
+//    protected RequestCommand request = null;
     protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
     protected static final HttpUtil<String> strhttp = new HttpUtil<String>(new HTTPStringResolver());
 
@@ -76,59 +78,99 @@ public class BaseTest {
     }
     
     protected HeadInfo head() {
+    	if(head != null)
+    		return head;
 		if (url == null) {
 			url = headurl();
 			System.out.println("test server:" + url);
 		}
-        HeadInfo.Builder head = HeadInfo.newBuilder();
-        head.setGameVersion(GAME_VERSION);
-        head.setAccount(ACCOUNT);
-        head.setServerId(SERVER_ID);
-        head.setUserId(USER_ID);
-        head.setVersion(VERSION);
-        head.setSession(SESSION);
-        head.setDatetime((new Date()).getTime());
-        return head.build();
+        HeadInfo.Builder builder = HeadInfo.newBuilder();
+        builder.setGameVersion(GAME_VERSION);
+        builder.setAccount(ACCOUNT);
+        builder.setServerId(SERVER_ID);
+        builder.setUserId(USER_ID);
+        builder.setVersion(VERSION);
+        builder.setSession(SESSION);
+        builder.setDatetime((new Date()).getTime());
+        head = builder.build();
+        return head;
+    }
+    
+    public RequestCommand getRequestCommand(){
+    	RequestCommand.Builder builder = RequestCommand.newBuilder();
+		builder.setHead(head());
+		return builder.build();
     }
 
-	public void login() {
-		RequestCommand.Builder builder = RequestCommand.newBuilder();
-		builder.setHead(head());
+	public ResponseCommand login() {
 		RequestLoginCommand.Builder b = RequestLoginCommand.newBuilder();
-		builder.setLoginCommand(b.build());
+        ResponseCommand response = request("loginCommand", b.build(), getRequestCommand());
+        if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
+        	System.out.println(response.getErrorCommand().getMessage()+"，重新注册");
+    		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
+    		registerbuilder.setUserName(head().getAccount());
+    		response = request("registerCommand", registerbuilder.build(), getRequestCommand());
+        }
+        if(response.hasUserInfoCommand()){
+//        	ResponseCommand.Builder responsebuilder = ResponseCommand.newBuilder(response);
+        	HeadInfo.Builder headbuilder  = HeadInfo.newBuilder(response.getHead());
+        	user = response.getUserInfoCommand().getUser();
+        	headbuilder.setUserId(USER_ID = user.getId());
+        	headbuilder.setSession(SESSION = user.getSession());
+        	head = headbuilder.build();
+//        	responsebuilder.setHead(headbuilder);
+//        	response = responsebuilder.build();
+        	System.out.println(response.getUserInfoCommand().getUser().getName()+"登陆成功");
+        }else if(response.hasErrorCommand()){
+        	System.out.println(response.getErrorCommand().getMessage());
+        }else{
+        	System.out.println("登陆错误");
+        }
+        return response;
+	}
+	
+	public static Map<String, TimeBean> timemap = new ConcurrentHashMap<String, TimeBean>();
+	public void addRequestTime(String key, long msec){
+		TimeBean bean = timemap.get(key);
+		if(bean == null){
+			bean = new TimeBean();
+			bean.setKey(key);
+		}
+		bean.setTime(bean.getTime()+1);
+		if(msec > 0){
+			bean.setSuccess(bean.getSuccess()+1);
+			bean.setMsec(bean.getMsec()+msec);
+		}
+		timemap.put(key, bean);
+	}
+	
+	public ResponseCommand request(String name, Object value, RequestCommand request) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(request);
+		setField(name, value, builder);
 		
+		long time = System.currentTimeMillis();
 		RequestCommand reqcmd = builder.build();
 		byte[] reqData = reqcmd.toByteArray();
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
-        if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
-        	logger.warn(response.getErrorCommand().getMessage()+"，重新注册");
-    		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
-    		registerbuilder.setUserName(head().getAccount());
-    		builder.clearLoginCommand().setRegisterCommand(registerbuilder.build());
-    		
-    		reqcmd = builder.build();
-    		reqData = reqcmd.toByteArray();
-            input = new ByteArrayInputStream(reqData);
-            response = http.post(url, input);
-        }
-        if(response.hasUserInfoCommand()){
-        	user = response.getUserInfoCommand().getUser();
-        	USER_ID = user.getId();
-        	SESSION = user.getSession();
-        	logger.warn(response.getUserInfoCommand().getUser().getName()+"登陆成功");
-        }else if(response.hasErrorCommand()){
-        	logger.error(response.getErrorCommand().getMessage());
-        }else{
-        	logger.error("登陆错误");
-        }
+        if(response == null)
+        	addRequestTime(name, 0);
+        else if(response.hasErrorCommand()){
+        	addRequestTime(name, 0);
+        	System.out.println(name+":"+response.getErrorCommand().getMessage());
+        }else
+        	addRequestTime(name, System.currentTimeMillis()-time);
+        
+        return response;
 	}
 	
-	public static void setField(String name, Object value, Message.Builder builder) {
+	public static boolean setField(String name, Object value, Message.Builder builder) {
 		try {
 			JsonFormat.setField(name, value, builder);
+			return true;
 		} catch (ParseException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 }

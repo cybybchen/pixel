@@ -25,10 +25,10 @@ public class AreaTest extends BaseTest {
 	public void testArea() {
 		login();
 		testGetArea();
-//		testAreaBoss();
-//		testAreaMonster();
-//		testAreaResource();
-//		testAreaResourceMine();
+		testAreaBoss();
+		testAreaMonster();
+		testAreaResource();
+		testAreaResourceMine();
 	}
 	
 	ResponseAreaCommand area = null;

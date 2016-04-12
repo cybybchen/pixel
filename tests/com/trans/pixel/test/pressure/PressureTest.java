@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
-
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;

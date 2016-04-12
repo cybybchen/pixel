@@ -65,6 +65,14 @@ public class UserPropBean {
 		
 		return builder.build();
 	}
+
+	public static UserPropBean initUserProp(long userId, int propId) {
+		UserPropBean userProp = new UserPropBean();
+		userProp.setUserId(userId);
+		userProp.setPropId(propId);
+		
+		return userProp;
+	}
 	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";

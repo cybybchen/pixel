@@ -63,18 +63,10 @@ public class UserPropService {
 	public void addUserProp(long userId, int propId, int propCount) {
 		UserPropBean userProp = selectUserProp(userId, propId);
 		if (userProp == null) {
-			userProp = initUserProp(userId, propId);
+			userProp = UserPropBean.initUserProp(userId, propId);
 		}
 		
 		userProp.setPropCount(userProp.getPropCount() + propCount);
 		updateUserProp(userProp);
-	}
-	
-	private UserPropBean initUserProp(long userId, int propId) {
-		UserPropBean userProp = new UserPropBean();
-		userProp.setUserId(userId);
-		userProp.setPropId(propId);
-		
-		return userProp;
 	}
 }

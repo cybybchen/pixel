@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
@@ -15,13 +17,17 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipList;
+import com.trans.pixel.service.UserPropService;
 
 @Repository
 public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
+	@Resource
+	private UserPropService userPropService;
 
 	public final static String VIP = RedisKey.PREFIX+"Vip";
 	
@@ -54,6 +60,13 @@ public class UserRedisService extends RedisService{
 			user.setRefreshExpeditionLeftTime(vip.getMohua());
 			user.setBaoxiangLeftTime(vip.getBaoxiang());
 			user.setZhibaoLeftTime(vip.getZhibao());
+			UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
+			if (userProp == null)
+				userProp = UserPropBean.initUserProp(user.getId(), 40022);
+			if(userProp.getPropCount() < vip.getBaohu()){
+				userProp.setPropCount(vip.getBaohu());
+				userPropService.updateUserProp(userProp);
+			}
 		}
 		return true;
 	}

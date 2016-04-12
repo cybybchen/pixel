@@ -554,6 +554,7 @@ message VipInfo {
 	optional int32 mohua = 8;
 	optional int32 baoxiang = 9;
 	optional int32 zhibao = 10;
+	optional int32 baohu = 11;
 }
 
 message VipList {
