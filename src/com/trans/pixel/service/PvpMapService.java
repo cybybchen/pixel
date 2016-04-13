@@ -275,7 +275,7 @@ public class PvpMapService {
 					mineCount += mapBuilder.getKuangdianCount();
 				}
 				int enemyCount = mineMap.size();
-				if(mineCount/5 >= enemyCount){
+				/*if(mineCount/5 >= enemyCount)*/{
 					mine.setOwner(user.buildShort());
 					mine.setEndTime(System.currentTimeMillis()/1000+24*3600);
 					mine.setLevel(mine.getLevel()+1);
@@ -288,7 +288,8 @@ public class PvpMapService {
 		/**
 		 * PVP攻击玩家的活动
 		 */
-		activityService.pvpAttackEnemyActivity(user.getId(), ret);
+		if(mine.hasOwner())
+			activityService.pvpAttackEnemyActivity(user.getId(), ret);
 		return true;
 	}
 	
@@ -301,7 +302,7 @@ public class PvpMapService {
 		redis.deleteUserBuff(user);
 		redis.getMonsters(user, new HashMap<String, String>(), true);
 
-		user.setRefreshPvpMapTime(now);
+		user.setRefreshPvpMapTime(now+48*3600);
 		userService.updateUserDailyData(user);
 		return true;
 	}
