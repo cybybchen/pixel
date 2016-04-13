@@ -22,7 +22,6 @@ import com.trans.pixel.utils.HTTPStringResolver;
 import com.trans.pixel.utils.HttpUtil;
 
 public class BaseTest {
-	public UserInfo user = null;
   
     //define device user
     protected static int GAME_VERSION = 1;
@@ -48,7 +47,7 @@ public class BaseTest {
     protected static final String defaultUrl = "http://123.59.144.200:8082/Lol450/gamedata";
     protected static String url;
     protected HeadInfo head = null;
-//    protected RequestCommand request = null;
+    protected UserInfo user = null;
     protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
     protected static final HttpUtil<String> strhttp = new HttpUtil<String>(new HTTPStringResolver());
 
@@ -80,36 +79,49 @@ public class BaseTest {
     protected HeadInfo head() {
     	if(head != null)
     		return head;
+    	else
+    		return head(ACCOUNT, SERVER_ID);
+    }
+
+    protected HeadInfo head(String account, int serverId) {
 		if (url == null) {
 			url = headurl();
 			System.out.println("test server:" + url);
 		}
         HeadInfo.Builder builder = HeadInfo.newBuilder();
         builder.setGameVersion(GAME_VERSION);
-        builder.setAccount(ACCOUNT);
-        builder.setServerId(SERVER_ID);
+        builder.setAccount(account);
+        builder.setServerId(serverId);
         builder.setUserId(USER_ID);
         builder.setVersion(VERSION);
         builder.setSession(SESSION);
-        builder.setDatetime((new Date()).getTime());
+        builder.setDatetime(new Date().getTime());
         head = builder.build();
         return head;
     }
-    
+
     public RequestCommand getRequestCommand(){
+    	return getRequestCommand(head());
+    }
+    
+    public RequestCommand getRequestCommand(HeadInfo head){
     	RequestCommand.Builder builder = RequestCommand.newBuilder();
-		builder.setHead(head());
+		builder.setHead(head);
 		return builder.build();
     }
-
+    
 	public ResponseCommand login() {
+		return login(getRequestCommand());
+	}
+
+	public ResponseCommand login(RequestCommand request) {
 		RequestLoginCommand.Builder b = RequestLoginCommand.newBuilder();
-        ResponseCommand response = request("loginCommand", b.build(), getRequestCommand());
+        ResponseCommand response = request("loginCommand", b.build(), request);
         if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
-        	System.out.println(response.getErrorCommand().getMessage()+"，重新注册");
+        	System.out.println(request.getHead().getAccount()+":"+response.getErrorCommand().getMessage()+"，重新注册");
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
     		registerbuilder.setUserName(head().getAccount());
-    		response = request("registerCommand", registerbuilder.build(), getRequestCommand());
+    		response = request("registerCommand", registerbuilder.build(), request);
         }
         if(response.hasUserInfoCommand()){
 //        	ResponseCommand.Builder responsebuilder = ResponseCommand.newBuilder(response);
@@ -143,6 +155,10 @@ public class BaseTest {
 		}
 		timemap.put(key, bean);
 	}
+
+	public ResponseCommand request(String name, Object value) {
+		return request(name, value, getRequestCommand());
+	}
 	
 	public ResponseCommand request(String name, Object value, RequestCommand request) {
 		RequestCommand.Builder builder = RequestCommand.newBuilder(request);
@@ -158,8 +174,10 @@ public class BaseTest {
         else if(response.hasErrorCommand()){
         	addRequestTime(name, 0);
         	System.out.println(name+":"+response.getErrorCommand().getMessage());
-        }else
+        }else{
         	addRequestTime(name, System.currentTimeMillis()-time);
+//        	System.out.println(response.getAllFields());
+        }
         
         return response;
 	}
@@ -167,10 +185,10 @@ public class BaseTest {
 	public static boolean setField(String name, Object value, Message.Builder builder) {
 		try {
 			JsonFormat.setField(name, value, builder);
-			return true;
 		} catch (ParseException e) {
 			e.printStackTrace();
 			return false;
 		}
+		return true;
 	}
 }

@@ -16,8 +16,8 @@ import com.trans.pixel.test.BaseTest;
 public class LadderTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LadderTest.class);
 
-	public void attackLadder(RequestCommand.Builder req, ResponseCommand loginResponse, long rank, long teamId) {
-		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
+	public void attackLadder(RequestCommand req, ResponseCommand loginResponse, long rank, long teamId) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req);
 		RequestAttackLadderModeCommand.Builder b = RequestAttackLadderModeCommand.newBuilder();
 		b.setRank(rank);
 		b.setRet(true);
@@ -32,8 +32,8 @@ public class LadderTest extends BaseTest {
         logger.info(response.getAllFields());
 	}
 	
-	public UserRank getUserLadder(RequestCommand.Builder req, ResponseCommand loginResponse) {
-		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
+	public UserRank getUserLadder(RequestCommand req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req);
 		RequestGetUserLadderRankListCommand.Builder b = RequestGetUserLadderRankListCommand.newBuilder();
 		builder.setGetUserLadderRankListCommand(b.build());
 		

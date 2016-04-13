@@ -1,19 +1,14 @@
 package com.trans.pixel.test.pressure;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Date;
 import java.util.Random;
 
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestLoginCommand;
-import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.UserLevel;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.test.BaseTest;
+import com.trans.pixel.test.ShopTest;
 
 public class PressureTest extends BaseTest {
 	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
@@ -39,99 +34,100 @@ public class PressureTest extends BaseTest {
 	}
 	
 	private void randomCommand() {
-		RequestCommand.Builder builder = RequestCommand.newBuilder();
-		String account = randomAccount();
-		builder.setHead(buildHead(account, 0));
-		ResponseCommand response = login(builder);//登录
-		builder.setHead(response.getHead());
+		head(randomAccount(), SERVER_ID);
+		RequestCommand request = getRequestCommand(head);
+		ResponseCommand response = login(request);//登录
+		request = getRequestCommand(head);
 				
-		levelTest(builder, response);//挂机
+		levelTest(request, response);//挂机
 		
-		lotteryTest(builder, response);//抽奖
+		lotteryTest(request, response);//抽奖
 		
-		long teamId = teamTest(builder, response);//更新队伍
+		long teamId = teamTest(request, response);//更新队伍
 		
-		ladderTest(builder, response, teamId);//天梯
+		ladderTest(request, response, teamId);//天梯
 		
-		messageBoardTest(builder, response);//留言板
+		messageBoardTest(request, response);//留言板
 		
-		response = login(builder);
+		response = login(request);
 		
-		heroTest(builder, response);//英雄
+		heroTest(request, response);//英雄
 		
-		packageTest(builder, response);//道具
+		packageTest(request, response);//道具
 		
-		equipTest(builder, response);//装备
+		equipTest(request, response);//装备
+		
+		new ShopTest().testShop(request);
 	}
 	
-	private void levelTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	private void levelTest(RequestCommand request, ResponseCommand loginResponse) {
 		LevelTest levelTest = new LevelTest();
 		
-		levelTest.levelPauseTest(builder, loginResponse);
+		levelTest.levelPauseTest(request, loginResponse);
 		
-		UserLevel userLevel = levelTest.levelPauseTest(builder, loginResponse);
+		UserLevel userLevel = levelTest.levelPauseTest(request, loginResponse);
 		sleep(userLevel.getPrepareTime() * 1000);
 		
-		levelTest.levelStartTest(builder, loginResponse);
+		levelTest.levelStartTest(request, loginResponse);
 		
-		levelTest.levelResutlTest(builder, loginResponse);
+		levelTest.levelResutlTest(request, loginResponse);
 		
-		levelTest.levellootStartTest(builder, loginResponse);
+		levelTest.levellootStartTest(request, loginResponse);
 		
-		levelTest.levellootResultTest(builder, loginResponse);
+		levelTest.levellootResultTest(request, loginResponse);
 	}
 	
-	private void lotteryTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	private void lotteryTest(RequestCommand request, ResponseCommand loginResponse) {
 		LotteryTest lottery = new LotteryTest();
-		lottery.lotteryTest(builder, loginResponse, RewardConst.COIN, 1);
-		lottery.lotteryTest(builder, loginResponse, RewardConst.COIN, 10);
-		lottery.lotteryTest(builder, loginResponse, RewardConst.JEWEL, 1);
-		lottery.lotteryTest(builder, loginResponse, RewardConst.JEWEL, 1);
+		lottery.lotteryTest(request, loginResponse, RewardConst.COIN, 1);
+		lottery.lotteryTest(request, loginResponse, RewardConst.COIN, 10);
+		lottery.lotteryTest(request, loginResponse, RewardConst.JEWEL, 1);
+		lottery.lotteryTest(request, loginResponse, RewardConst.JEWEL, 1);
 	}
 	
-	private long teamTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	private long teamTest(RequestCommand request, ResponseCommand loginResponse) {
 		TeamTest teamTest = new TeamTest();
-		long teamId = teamTest.teamAddTest(builder, loginResponse);
+		long teamId = teamTest.teamAddTest(request, loginResponse);
 		
-		teamTest.teamUpdateTest(builder, loginResponse, teamId);
+		teamTest.teamUpdateTest(request, loginResponse, teamId);
 		
 		return teamId;
 	}
 	
-	private void ladderTest(RequestCommand.Builder builder, ResponseCommand loginResponse, long teamId) {
+	private void ladderTest(RequestCommand request, ResponseCommand loginResponse, long teamId) {
 		LadderTest ladderTest = new LadderTest();
-		UserRank userRank = ladderTest.getUserLadder(builder, loginResponse);
+		UserRank userRank = ladderTest.getUserLadder(request, loginResponse);
 		
 		TeamTest teamTest = new TeamTest();
-		teamTest.gettTeamCacheTest(builder, loginResponse, userRank.getUserId());
+		teamTest.gettTeamCacheTest(request, loginResponse, userRank.getUserId());
 		
-		ladderTest.attackLadder(builder, loginResponse, userRank.getRank(), teamId);
+		ladderTest.attackLadder(request, loginResponse, userRank.getRank(), teamId);
 	}
 	
-	private void messageBoardTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	private void messageBoardTest(RequestCommand request, ResponseCommand loginResponse) {
 		MessageTest messageTest = new MessageTest();
-		messageTest.testGetMessageList(builder, loginResponse);
+		messageTest.testGetMessageList(request, loginResponse);
 		
-		messageTest.testCreateMessage(builder, loginResponse);
+		messageTest.testCreateMessage(request, loginResponse);
 	}
 	
-	private void heroTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	private void heroTest(RequestCommand request, ResponseCommand loginResponse) {
 		HeroTest heroTest = new HeroTest();
-		heroTest.testHeroLevelUpTest(builder, loginResponse, 1);
+		heroTest.testHeroLevelUpTest(request, loginResponse, 1);
 		
-		heroTest.testHeroLevelUpTest(builder, loginResponse, 3);
+		heroTest.testHeroLevelUpTest(request, loginResponse, 3);
 		
-		heroTest.testFenjieHeroTest(builder, loginResponse);
+		heroTest.testFenjieHeroTest(request, loginResponse);
 	}
 	
-	private void packageTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	private void packageTest(RequestCommand request, ResponseCommand loginResponse) {
 		PackageTest packageTest = new PackageTest();
-		packageTest.testPackage(builder, loginResponse);
+		packageTest.testPackage(request, loginResponse);
 	}
 	
-	private void equipTest(RequestCommand.Builder builder, ResponseCommand loginResponse) {
+	private void equipTest(RequestCommand request, ResponseCommand loginResponse) {
 		EquipTest equipTest = new EquipTest();
-		equipTest.testFenjieEquip(builder, loginResponse);
+		equipTest.testFenjieEquip(request, loginResponse);
 	}
 	
 	private String randomAccount() {
@@ -144,45 +140,5 @@ public class PressureTest extends BaseTest {
 		}
 		
 		return str;
-	}
-	
-	private HeadInfo buildHead(String account, long userId) {
-		if (url == null) {
-			url = headurl();
-			System.out.println("test server:" + url);
-		}
-        HeadInfo.Builder head = HeadInfo.newBuilder();
-        head.setGameVersion(GAME_VERSION);
-        head.setAccount(account);
-        head.setServerId(SERVER_ID);
-        head.setUserId(userId);
-        head.setVersion(VERSION);
-        head.setSession(SESSION);
-        head.setDatetime((new Date()).getTime());
-        return head.build();
-    }
-	
-	private ResponseCommand login(RequestCommand.Builder req) {
-		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
-		RequestLoginCommand.Builder b = RequestLoginCommand.newBuilder();
-		builder.setLoginCommand(b.build());
-		
-		RequestCommand reqcmd = builder.build();
-		byte[] reqData = reqcmd.toByteArray();
-        InputStream input = new ByteArrayInputStream(reqData);
-        ResponseCommand response = http.post(url, input);
-        if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
-        	System.out.println(response.getErrorCommand().getMessage()+"，重新注册");
-    		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
-    		registerbuilder.setUserName(builder.getHead().getAccount());
-    		builder.clearLoginCommand().setRegisterCommand(registerbuilder.build());
-    		
-    		reqcmd = builder.build();
-    		reqData = reqcmd.toByteArray();
-            input = new ByteArrayInputStream(reqData);
-            response = http.post(url, input);
-        }
-        
-        return response;
 	}
 }

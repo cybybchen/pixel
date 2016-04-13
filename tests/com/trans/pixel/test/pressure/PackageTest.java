@@ -15,8 +15,8 @@ import com.trans.pixel.test.BaseTest;
 public class PackageTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(PackageTest.class);
 	
-	public void testPackage(RequestCommand.Builder req, ResponseCommand loginResponse) {
-		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
+	public void testPackage(RequestCommand req, ResponseCommand loginResponse) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req);
 		RequestUsePropCommand.Builder b = RequestUsePropCommand.newBuilder();
 		UserProp userProp = loginResponse.getUserPropCommand().getUserProp(0);
 		b.setPropId(userProp.getPropId());

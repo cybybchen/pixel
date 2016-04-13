@@ -206,7 +206,7 @@ public class PvpMapService {
 					resource += mine.getYield()*hour;
 				}
 			}
-			rewardService.doReward(user, RewardConst.COIN, resource);
+			rewardService.doReward(user, RewardConst.PVPCOIN, resource);
 			user.setPvpMineGainTime(time);
 			userService.updateUserDailyData(user);
 			ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();

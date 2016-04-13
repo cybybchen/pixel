@@ -14,8 +14,8 @@ import com.trans.pixel.test.BaseTest;
 public class LotteryTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LotteryTest.class);
 	
-	public void lotteryTest(RequestCommand.Builder req, ResponseCommand loginResponse, int type, int count) {
-		RequestCommand.Builder builder = RequestCommand.newBuilder(req.build());
+	public void lotteryTest(RequestCommand req, ResponseCommand loginResponse, int type, int count) {
+		RequestCommand.Builder builder = RequestCommand.newBuilder(req);
 		RequestLotteryCommand.Builder b = RequestLotteryCommand.newBuilder();
 		b.setType(type);
 		b.setCount(count);
