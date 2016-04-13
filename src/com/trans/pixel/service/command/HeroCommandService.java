@@ -223,7 +223,7 @@ public class HeroCommandService extends BaseCommandService {
 			for (String equipIdStr : equipIds) {
 				int equipId = TypeTranslatedUtil.stringToInt(equipIdStr);
 				if (equipId > 0)
-					rewardList = equipService.fenjieHeroEquip(user, equipId, 1);
+					rewardList = rewardService.mergeReward(rewardList, equipService.fenjieHeroEquip(user, equipId, 1));
 			}
 			
 			List<Integer> costInfoIds = new ArrayList<Integer>();

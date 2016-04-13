@@ -201,6 +201,27 @@ public class RewardService {
 		return rewardList;
 	}
 	
+	public List<RewardBean> mergeReward(List<RewardBean> rewardList, List<RewardBean> mergeRewardList) {
+		if (mergeRewardList == null || mergeRewardList.size() == 0)
+			return rewardList;
+		
+		for (RewardBean mergeReward : mergeRewardList) {
+			boolean hasMerge = false;
+			for (RewardBean reward : rewardList) {
+				if (reward.getItemid() == mergeReward.getItemid()) {
+					reward.setCount(reward.getCount() + mergeReward.getCount());
+					hasMerge = true;
+					break;
+				}
+			}
+			
+			if (!hasMerge)
+				rewardList.add(mergeReward);
+		}
+		
+		return rewardList;
+	}
+	
 	public void updateUser(UserBean user){
 		userService.updateUser(user);
 	}
