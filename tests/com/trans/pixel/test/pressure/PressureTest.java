@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.UserLevel;
 import com.trans.pixel.protoc.Commands.UserRank;
@@ -38,7 +39,9 @@ public class PressureTest extends BaseTest {
 		RequestCommand request = getRequestCommand(head);
 		ResponseCommand response = login(request);//登录
 		request = getRequestCommand(head);
-				
+		
+		submitZhanliTest(request);
+		
 		levelTest(request, response);//挂机
 		
 		lotteryTest(request, response);//抽奖
@@ -58,6 +61,13 @@ public class PressureTest extends BaseTest {
 		equipTest(request, response);//装备
 		
 		new ShopTest().testShop(request);
+	}
+
+	private void submitZhanliTest(RequestCommand request){
+		RequestSubmitZhanliCommand.Builder builder = RequestSubmitZhanliCommand.newBuilder();
+		builder.setZhanli(50000);
+
+		ResponseCommand response = request("submitZhanliCommand", builder.build(), request);
 	}
 	
 	private void levelTest(RequestCommand request, ResponseCommand loginResponse) {

@@ -53,12 +53,15 @@ public class PvpCommandService extends BaseCommandService {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
 		builder.addAllField(maplist.getFieldList());
+		builder.setEndTime(user.getRefreshPvpMapTime());
 		responseBuilder.setPvpMapListCommand(builder);
 	}
 
 	public void refreshMap(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
 		if(pvpMapService.refreshMap(user))
 			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.REFRESH_PVP));
+		else
+			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.TIME_RETRY));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 
