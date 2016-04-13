@@ -48,7 +48,7 @@ public class EquipCommandService extends BaseCommandService {
 		}
 		
 		if (composeEquipId > 0) {
-			builder.setEquipId(levelUpId);
+			builder.setEquipId(composeEquipId);
 			builder.setCount(count);
 			responseBuilder.setEquipComposeCommand(builder.build());
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
