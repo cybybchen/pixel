@@ -7,10 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.FenjieLevelBean;
 import com.trans.pixel.model.RewardBean;
@@ -57,14 +54,14 @@ public class EquipService {
 		return level;
 	}
 	
-	public ResultConst equipCompose(UserBean user, int levelUpId, int count) {
-		ResultConst result = ErrorConst.NOT_ENOUGH_EQUIP;
+	public int equipCompose(UserBean user, int levelUpId, int count) {
+		int composeEquipId = 0;;
 		EquipmentBean equip = getEquip(levelUpId);
 		if (equip != null) {//合成装备
 			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip);
 			if (equipLevelUpRet) {
 				userEquipService.addUserEquip(user.getId(), equip.getItemid(), 1);
-				result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
+				composeEquipId = levelUpId;
 			}
 		} else { //合成碎片
 			Chip chip = equipRedisService.getChip(levelUpId);
@@ -74,13 +71,13 @@ public class EquipService {
 					userEquip.setEquipCount(userEquip.getEquipCount() - chip.getCount() * count);
 					userEquipService.updateUserEquip(userEquip);
 					userEquipService.addUserEquip(user.getId(), chip.getAim(), count);
-					result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
+					composeEquipId = chip.getAim();
 				}
 			}
 				
 		}
 			
-		return result;
+		return composeEquipId;
 	}
 	
 	public List<RewardBean> fenjieUserEquip(UserBean user, int equipId, int fenjieCount) {

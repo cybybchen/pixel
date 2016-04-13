@@ -1036,6 +1036,7 @@ message RequestEquipComposeCommand {
 
 message ResponseEquipComposeCommand {
 	required int32 equipId = 1;
+	required int32 count = 2;
 }
 
 message RequestGetTeamCommand {

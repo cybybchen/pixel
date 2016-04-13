@@ -7,8 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.ResultConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -16,10 +14,10 @@ import com.trans.pixel.protoc.Commands.Item;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
-import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
+import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.RewardService;
@@ -41,16 +39,17 @@ public class EquipCommandService extends BaseCommandService {
 		if (cmd.hasCount())
 			count = cmd.getCount();
 		
-		ResultConst result = equipService.equipCompose(user, levelUpId, count);
+		int composeEquipId = equipService.equipCompose(user, levelUpId, count);
 		
-		if (result instanceof ErrorConst) {
-			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
+		if (composeEquipId == 0) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_EQUIP);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		
-		if (result instanceof SuccessConst) {
+		if (composeEquipId > 0) {
 			builder.setEquipId(levelUpId);
+			builder.setCount(count);
 			responseBuilder.setEquipComposeCommand(builder.build());
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 		}
