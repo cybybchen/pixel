@@ -60,6 +60,19 @@ public class UserBean {
 	private int heroLimit = 0;
 	private String composeSkill = "";
 	private int rechargeRecord = 0;
+	private long refreshPvpMapTime = 0;
+	/**
+	 * 下次pvp刷新时间
+	 */
+	public long getRefreshPvpMapTime() {
+		return refreshPvpMapTime;
+	}
+	/**
+	 * 下次pvp刷新时间
+	 */
+	public void setRefreshPvpMapTime(long refreshPvpMapTime) {
+		this.refreshPvpMapTime = refreshPvpMapTime;
+	}
 	/**
 	 * 注册时间
 	 */

@@ -292,6 +292,20 @@ public class PvpMapService {
 		return true;
 	}
 	
+	public boolean refreshMap(UserBean user){
+		long now = redis.now();
+		if(user.getRefreshPvpMapTime() > now)
+			return false;
+		
+		redis.deleteMonsters(user);
+		redis.deleteUserBuff(user);
+		redis.getMonsters(user, new HashMap<String, String>(), true);
+
+		user.setRefreshPvpMapTime(now);
+		userService.updateUserDailyData(user);
+		return true;
+	}
+	
 	public PVPMine refreshMine(UserBean user, int id){
 		PVPMine mine = redis.getMine(user.getId(), id);
 		if(mine == null || !mine.hasOwner())

@@ -1426,6 +1426,10 @@ message RequestUnlockPVPMapCommand {//解锁PVP区域
 	required int32 zhanli = 2;
 }
 
+message RequestRefreshPVPMapCommand {
+	
+}
+
 message RequestPVPMapListCommand {//挂机PVP列表
 }
 
@@ -1469,6 +1473,7 @@ message RequestRefreshPVPMineCommand {//刷新pvp矿点对手
 
 message ResponsePVPMapListCommand {//挂机PVP列表
 	repeated PVPMap field = 1;
+	optional int64 endTime = 2;
 }
 
 message RequestSignCommand {
@@ -1702,6 +1707,7 @@ message RequestCommand {
 	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
 	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
 	optional RequestGetTeamCommand teamCommand = 123;
+	optional RequestRefreshPVPMapCommand refreshPvpMapCommand = 140;
 	optional RequestPVPMapListCommand pvpMapListCommand = 125;
 	optional RequestUnlockPVPMapCommand unlockPvpMapCommand = 132;
 	optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;

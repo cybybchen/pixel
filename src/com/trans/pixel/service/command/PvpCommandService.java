@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -53,6 +54,12 @@ public class PvpCommandService extends BaseCommandService {
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
 		builder.addAllField(maplist.getFieldList());
 		responseBuilder.setPvpMapListCommand(builder);
+	}
+
+	public void refreshMap(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
+		if(pvpMapService.refreshMap(user))
+			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.REFRESH_PVP));
+		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 
 	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {

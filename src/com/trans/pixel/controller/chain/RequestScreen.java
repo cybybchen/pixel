@@ -51,6 +51,7 @@ import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -316,6 +317,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -911,6 +913,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//RechargeCommand
                 result = handleCommand(cmd, responseBuilder, user);//RechargeCommand
         }//RechargeCommand
+        if (request.hasRefreshPvpMapCommand()) {
+            RequestRefreshPVPMapCommand cmd = request.getRefreshPvpMapCommand();
+            if (result)//RefreshPvpMapCommand
+                result = handleCommand(cmd, responseBuilder, user);//RefreshPvpMapCommand
+        }//RefreshPvpMapCommand
         //call handleCommand here
         
         return result;

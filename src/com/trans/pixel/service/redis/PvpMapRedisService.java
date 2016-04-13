@@ -61,27 +61,6 @@ public class PvpMapRedisService extends RedisService{
 
 	public Map<String, String> getUserBuffs(UserBean user) {
 		return hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
-//		if(keyvalue.isEmpty()){
-//			PVPMapList maplist = getMapList();
-//			Map<String, PVPMap> map = new HashMap<String, PVPMap>();
-//			Map<String, String> keyvalue2 = new HashMap<String, String>();
-//			for(PVPMap pvpMap : maplist.getFieldList()){
-//				PVPMap.Builder builder = PVPMap.newBuilder(pvpMap);
-//				builder.clearKuangdian();
-//				map.put(pvpMap.getFieldid()+"", builder.build());
-//				keyvalue2.put(pvpMap.getFieldid()+"", formatJson(builder.build()));
-//			}
-//			hputAll(RedisKey.PVPMAP_PREFIX+user.getId(), keyvalue2);
-//			return map;
-//		}else{
-//			Map<String, PVPMap> map = new HashMap<String, PVPMap>();
-//			for(Entry<String, String> entry : keyvalue.entrySet()){
-//				PVPMap.Builder builder = PVPMap.newBuilder();
-//				if(parseJson(entry.getValue(), builder))
-//					map.put(entry.getKey(), builder.build());
-//			}
-//			return map;
-//		}
 	}
 
 //	public int getUserBuff(UserBean user, int id) {
@@ -109,6 +88,10 @@ public class PvpMapRedisService extends RedisService{
 		return 0;
 	}
 
+	public void deleteUserBuff(UserBean user) {
+		delete(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+	}
+	
 	public void saveUserBuff(UserBean user, int mapid, int buff) {
 		hput(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), mapid+"", buff+"");
 		expire(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
@@ -164,9 +147,17 @@ public class PvpMapRedisService extends RedisService{
 	public void deleteMine(long userId, int id) {
 		hdelete(RedisKey.PVPMINE_PREFIX+userId, id+"");
 	}
-	
+
+	public void deleteMonsters(UserBean user) {
+		delete(RedisKey.PVPMONSTER_PREFIX+user.getId());
+	}
+
 	public List<PVPMonster> getMonsters(UserBean user, Map<String, String> pvpMap) {
 		boolean canRefresh = canRefreshMonster(user);
+		return getMonsters(user, pvpMap, canRefresh);
+	}
+	
+	public List<PVPMonster> getMonsters(UserBean user, Map<String, String> pvpMap, boolean canRefresh) {
 		List<PVPMonster> monsters = new ArrayList<PVPMonster>();
 		Map<String, String> keyvalue = this.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
 		for(String value : keyvalue.values()){
