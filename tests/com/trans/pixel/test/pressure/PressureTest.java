@@ -1,6 +1,10 @@
 package com.trans.pixel.test.pressure;
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Queue;
 import java.util.Random;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -9,21 +13,59 @@ import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.UserLevel;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.test.BaseTest;
+import com.trans.pixel.test.PvpMapTest;
 import com.trans.pixel.test.ShopTest;
 
 public class PressureTest extends BaseTest {
 	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+	public static final int THREAD_COUNT = 5;//最大并发数量
+	public static final int TEST_TIME = 30;//脚本执行秒数
 	
 	public static void main(String[] args) {
-//		while (true) {
+		extraLog = false;
+		Queue<Thread> queue = new ConcurrentLinkedQueue<Thread>();
+		long time = System.currentTimeMillis();
+		while (true) {
 //			sleep(1000);
-			new Thread() {
+			Thread thread = new Thread() {
 				public void run() {
 					PressureTest test = new PressureTest();
 					test.randomCommand();
 				}
-			}.start();
-//		}
+			};
+			thread.start();
+			queue.add(thread);
+			if(queue.size() >= THREAD_COUNT){
+				waitThread(queue);
+			}
+			if((System.currentTimeMillis() - time)/1000 > TEST_TIME){
+				while(!queue.isEmpty()){
+					waitThread(queue);
+				}
+				System.out.println("成功次数\t总次数\t平均时间\t发送请求");
+				for(Entry<String, TimeBean> entry : timemap.entrySet()){
+					if(entry.getValue().getSuccess() == 0)
+						System.out.println(entry.getValue().getSuccess() + "\t"
+								+ entry.getValue().getTime() + "\t0\t"
+								+entry.getKey());
+					else
+						System.out.println(entry.getValue().getSuccess() + "\t"
+								+ entry.getValue().getTime() + "\t"
+								+entry.getValue().getMsec()/entry.getValue().getSuccess()+"\t"
+								+entry.getKey());
+				}
+				break;
+			}
+		}
+	}
+	
+	private static void waitThread(Queue<Thread> queue){
+		Thread th = queue.remove();
+		try {
+			th.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private static void sleep(int sleepTime) {
@@ -59,6 +101,11 @@ public class PressureTest extends BaseTest {
 		packageTest(request, response);//道具
 		
 		equipTest(request, response);//装备
+		
+		new PvpMapTest().testPvp(request);
+		
+		//area
+		//union
 		
 		new ShopTest().testShop(request);
 	}

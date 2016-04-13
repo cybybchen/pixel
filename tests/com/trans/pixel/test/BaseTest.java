@@ -46,6 +46,7 @@ public class BaseTest {
     
     protected static final String defaultUrl = "http://123.59.144.200:8082/Lol450/gamedata";
     protected static String url;
+    protected static boolean extraLog = true;
     protected HeadInfo head = null;
     protected UserInfo user = null;
     protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
@@ -118,7 +119,7 @@ public class BaseTest {
 		RequestLoginCommand.Builder b = RequestLoginCommand.newBuilder();
         ResponseCommand response = request("loginCommand", b.build(), request);
         if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
-        	System.out.println(request.getHead().getAccount()+":"+response.getErrorCommand().getMessage()+"，重新注册");
+        	if(extraLog)	System.out.println(request.getHead().getAccount()+":"+response.getErrorCommand().getMessage()+"，重新注册");
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
     		registerbuilder.setUserName(head().getAccount());
     		response = request("registerCommand", registerbuilder.build(), request);
@@ -132,7 +133,7 @@ public class BaseTest {
         	head = headbuilder.build();
 //        	responsebuilder.setHead(headbuilder);
 //        	response = responsebuilder.build();
-        	System.out.println(response.getUserInfoCommand().getUser().getName()+"登陆成功");
+        	if(extraLog)	System.out.println(response.getUserInfoCommand().getUser().getName()+"登陆成功");
         }else if(response.hasErrorCommand()){
         	System.out.println(response.getErrorCommand().getMessage());
         }else{
@@ -172,8 +173,10 @@ public class BaseTest {
         if(response == null)
         	addRequestTime(name, 0);
         else if(response.hasErrorCommand()){
-        	addRequestTime(name, 0);
-        	System.out.println(name+":"+response.getErrorCommand().getMessage());
+        	if(!response.getErrorCommand().getCode().equals("1000")){
+	        	addRequestTime(name, 0);
+	        	System.out.println(name+":"+response.getErrorCommand().getMessage());
+	        }
         }else{
         	addRequestTime(name, System.currentTimeMillis()-time);
 //        	System.out.println(response.getAllFields());
