@@ -32,6 +32,7 @@ import com.trans.pixel.protoc.Commands.ResponseHeroResultCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
+import com.trans.pixel.service.HeroService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
@@ -62,6 +63,8 @@ public class HeroCommandService extends BaseCommandService {
 	private CostService costService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private HeroService heroService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
@@ -188,6 +191,7 @@ public class HeroCommandService extends BaseCommandService {
 		
 		long userId = user.getId();
 		int addCoin = 0;
+		int addExp = 0;
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		for (FenjieHeroInfo hero : fenjieList) {
 			int heroId = hero.getHeroId();
@@ -205,6 +209,7 @@ public class HeroCommandService extends BaseCommandService {
 					}
 					equipIds = heroInfo.equipIds();
 					addCoin += 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
+					addExp += heroService.getHeroUpgrade(heroInfo.getLevel()).getExp();
 				}
 			}
 			
@@ -226,12 +231,18 @@ public class HeroCommandService extends BaseCommandService {
 			userHero.delHeros(costInfoIds);
 			userHeroService.updateUserHero(userHero);
 		}
+		
+		if (addCoin > 0)
+			rewardList.add(RewardBean.init(RewardConst.COIN, addCoin));
+		
+		if (addExp > 0)
+			rewardList.add(RewardBean.init(RewardConst.EXP, addExp));
+		
 		ResponseFenjieEquipCommand.Builder fenjieBuilder = ResponseFenjieEquipCommand.newBuilder();
 		if (rewardList != null && rewardList.size() > 0) {
 			rewardService.doRewards(user, rewardList);
 			fenjieBuilder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
 		}
-		rewardService.doReward(user, RewardConst.COIN, addCoin);
 		
 		responseBuilder.setFenjieEquipCommand(fenjieBuilder.build());
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);

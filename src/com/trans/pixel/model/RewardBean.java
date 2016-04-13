@@ -174,6 +174,14 @@ public class RewardBean {
 		return rewardInfoList;
 	}
 	
+	public static RewardBean init(int type, int count) {
+		RewardBean reward = new RewardBean();
+		reward.setItemid(type);
+		reward.setCount(count);
+		
+		return reward;
+	}
+	
 	private static final String LOTTERY_FILE_PREFIX = "lol_lottery_";
 	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
 	private static final String ID = "id";
