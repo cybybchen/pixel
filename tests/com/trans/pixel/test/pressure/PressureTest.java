@@ -1,6 +1,5 @@
 package com.trans.pixel.test.pressure;
 
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.Random;
@@ -112,7 +111,7 @@ public class PressureTest extends BaseTest {
 
 	private void submitZhanliTest(RequestCommand request){
 		RequestSubmitZhanliCommand.Builder builder = RequestSubmitZhanliCommand.newBuilder();
-		builder.setZhanli(50000);
+		builder.setZhanli(20000+(int)(System.currentTimeMillis()%30000));
 
 		ResponseCommand response = request("submitZhanliCommand", builder.build(), request);
 	}
