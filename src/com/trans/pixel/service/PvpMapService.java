@@ -60,14 +60,14 @@ public class PvpMapService {
 	public boolean unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
-			if(fieldid == map.getFieldid()){
+			if(map.getFieldid() > user.getPvpUnlock() && map.getFieldid() <= fieldid){
 				if(zhanli >= map.getZhanli()){
-					map.setOpened(true);
-					redis.saveMapList(maplist.build(), user);
-					user.setPvpUnlock(fieldid);
+//					map.setOpened(true);
+//					redis.saveMapList(maplist.build(), user);
+					user.setPvpUnlock(map.getFieldid());
 					userService.updateUserDailyData(user);
 					
-					List<UserInfo> ranks = getRandUser(map.getKuangdianCount(), user);
+					List<UserInfo> ranks = getRandUser(20, user);
 					if(ranks.size() > 0){
 						Map<String, PVPMine> mineMap = new HashMap<String, PVPMine>();
 						for(PVPMine mine : map.getKuangdianList()){
@@ -77,11 +77,11 @@ public class PvpMapService {
 						}
 						redis.saveMines(user.getId(), mineMap);
 					}
-					return true;
-				}
+				}else
+					return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	public List<UserInfo> getRandUser(int count, UserBean user){
@@ -89,7 +89,7 @@ public class PvpMapService {
 		if(myrank > 200)
 			myrank += 50-rankRedisService.nextInt(100);
 		List<UserInfo> ranks = null;
-		final int halfcount = (count+11)/2;
+		final int halfcount = Math.max(20, (count+1)/2);
 		if(myrank < 0)
 			ranks = rankRedisService.getZhanliRanks(user, myrank - halfcount*2, -1);
 		else if(myrank - halfcount <= 0)
@@ -300,7 +300,7 @@ public class PvpMapService {
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			userService.updateUserDailyData(user);
-			List<UserInfo> ranks = getRandUser(10, user);
+			List<UserInfo> ranks = getRandUser(20, user);
 			builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
 			redis.saveMine(user.getId(), builder.build());
 		}else{
