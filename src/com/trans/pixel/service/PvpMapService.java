@@ -267,18 +267,24 @@ public class PvpMapService {
 			return false;
 		if(ret){
 			if(mine.hasOwner()){
+				mine.setOwner(user.buildShort());
+				mine.setEndTime(System.currentTimeMillis()/1000+24*3600);
+				mine.setLevel(mine.getLevel()+1);
 				long userId = mine.getOwner().getId();
-				PVPMapList.Builder maplist = redis.getMapList(user);
-				Map<String, PVPMine> mineMap = redis.getUserMines(userId);
-				int mineCount = 0;
-				for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
-					mineCount += mapBuilder.getKuangdianCount();
-				}
-				int enemyCount = mineMap.size();
+//				UserBean bean = userService.getUser(userId);
+//				PVPMapList.Builder maplist = redis.getBasePvpMapList();
+//				Map<String, PVPMine> mineMap = redis.getUserMines(userId);
+//				int mineCount = 0;
+//				for(PVPMap map : maplist.getFieldList()){
+//					if(bean.getPvpUnlock() >= map.getFieldid())
+//						mineCount += map.getKuangdianCount();
+//				}
+//				int enemyCount = 0;
+//				for(PVPMine pvpmine : mineMap.values()){
+//					if(pvpmine.hasOwner() && bean.getPvpUnlock() >= pvpmine.getId()/100)
+//						enemyCount++;
+//				}
 				/*if(mineCount/5 >= enemyCount)*/{
-					mine.setOwner(user.buildShort());
-					mine.setEndTime(System.currentTimeMillis()/1000+24*3600);
-					mine.setLevel(mine.getLevel()+1);
 					redis.saveMine(userId, mine.build());
 				}
 				mine.clearOwner();
