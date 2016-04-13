@@ -44,6 +44,8 @@ public class HeroCommandService extends BaseCommandService {
 	private static final int BUY_HERO_PACKAGE_COST = 50;
 	private static final int BUY_HERO_PACKAGE_COUNT = 5;
 	private static final int HERO_PACKAGE_LIMIT = 500;
+	
+	private static final int RESET_HERO_SKILL_COST = 10000;
 	@Resource
 	private HeroLevelUpService heroLevelUpService;
 	@Resource
@@ -271,6 +273,13 @@ public class HeroCommandService extends BaseCommandService {
 	}
 	
 	public void resetHeroSkill(RequestResetHeroSkillCommand cmd, Builder responseBuilder, UserBean user) {
+		if (!costService.costAndUpdate(user, RewardConst.COIN, RESET_HERO_SKILL_COST)) {
+			ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
+			ErrorCommand errorCommand = buildErrorCommand(error);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;	
+		}
+		
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int heroId = cmd.getHeroId();
 		int infoId = cmd.getInfoId();
