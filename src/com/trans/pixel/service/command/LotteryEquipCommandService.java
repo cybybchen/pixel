@@ -1,7 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -9,12 +7,10 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseLotteryCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LotteryEquipService;
 import com.trans.pixel.service.RewardService;
@@ -46,14 +42,14 @@ public class LotteryEquipCommandService extends BaseCommandService {
 			
 		}
 		
-		ResponseLotteryCommand.Builder builder = ResponseLotteryCommand.newBuilder();
-		List<RewardBean> lotteryList = lotteryEquipService.randomLotteryList(type, count);
-		rewardService.doRewards(user, lotteryList);
-		builder.setCoin(user.getCoin());
-		builder.setJewel(user.getJewel());
-		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
-		responseBuilder.setLotteryCommand(builder.build());
-		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+//		ResponseLotteryCommand.Builder builder = ResponseLotteryCommand.newBuilder();
+//		List<RewardBean> lotteryList = lotteryEquipService.randomLotteryList(type, count);
+//		rewardService.doRewards(user, lotteryList);
+//		builder.setCoin(user.getCoin());
+//		builder.setJewel(user.getJewel());
+//		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
+//		responseBuilder.setLotteryCommand(builder.build());
+//		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
 		
 	}
 	

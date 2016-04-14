@@ -40,6 +40,34 @@ public class UserHeroBean {
 		this.heroInfo = heroInfo;
 	}
 	
+	public List<Integer> refreshNewHeroInfo() {
+		List<Integer> newHeroInfoIdList = new ArrayList<Integer>();
+		List<HeroInfoBean> heroInfoList = toHeroInfoList();
+		for (HeroInfoBean heroInfo : heroInfoList) {
+			if (heroInfo.isNew()) {
+				heroInfo.setNew(false);
+				newHeroInfoIdList.add(heroInfo.getId());
+			}
+		}
+		
+		updateHeroInfo(heroInfoList);
+		
+		return newHeroInfoIdList;
+	}
+	
+	public void clearOld(List<Integer> infoIds) {
+		List<HeroInfoBean> heroInfoList = toHeroInfoList();
+		for (int i = 0; i < heroInfoList.size(); ++ i) {
+			HeroInfoBean heroInfo = heroInfoList.get(i);
+			if (!infoIds.contains(heroInfo.getId())) {
+				heroInfoList.remove(i);
+				--i;
+			}	
+		}
+		
+		updateHeroInfo(heroInfoList);
+	}
+	
 	public void delHeros(List<Integer> infoIds) {
 		List<HeroInfoBean> heroInfoList = toHeroInfoList();
 		for (int i = 0; i < heroInfoList.size(); ++ i) {

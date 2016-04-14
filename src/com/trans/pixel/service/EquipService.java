@@ -153,7 +153,7 @@ public class EquipService {
 		return ret;
 	}
 	
-	public List<RewardInfo> saleEquip(UserBean user, List<Item> itemList) {
+	public List<RewardInfo> saleEquip(UserBean user, List<Item> itemList, List<UserEquipBean> userEquipList) {
 		boolean canSale = canSaleEquip(user.getId(), itemList);
 		if (!canSale)
 			return null;
@@ -174,7 +174,7 @@ public class EquipService {
 			} 
 			
 			rewardList = rewardService.mergeReward(rewardList, reward.build());
-			userEquipService.useUserEquip(user.getId(), itemId, itemCount);
+			userEquipList.add(userEquipService.useUserEquip(user.getId(), itemId, itemCount));
 		}
 		return rewardList;
 	}

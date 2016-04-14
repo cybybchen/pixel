@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,18 +10,20 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.Item;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseEquipComposeCommand;
-import com.trans.pixel.protoc.Commands.ResponseFenjieEquipCommand;
-import com.trans.pixel.protoc.Commands.RewardCommand;
+import com.trans.pixel.protoc.Commands.ResponseEquipResultCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.UserEquipService;
 
 @Service
 public class EquipCommandService extends BaseCommandService {
@@ -31,6 +34,8 @@ public class EquipCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private UserEquipService userEquipService;
 	
 	public void equipLevelup(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseEquipComposeCommand.Builder builder = ResponseEquipComposeCommand.newBuilder();
@@ -51,12 +56,16 @@ public class EquipCommandService extends BaseCommandService {
 			builder.setEquipId(composeEquipId);
 			builder.setCount(count);
 			responseBuilder.setEquipComposeCommand(builder.build());
-			pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+			
+			List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
+			userEquipList.add(userEquipService.selectUserEquip(user.getId(), levelUpId));
+			userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
+			pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 		}
 	}
 	
 	public void fenjie(RequestFenjieEquipCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseFenjieEquipCommand.Builder builder = ResponseFenjieEquipCommand.newBuilder();
+		ResponseEquipResultCommand.Builder builder = ResponseEquipResultCommand.newBuilder();
 		int equipId = cmd.getEquipId();
 		int equipCount = cmd.getEquipCount();
 		List<RewardBean> rewardList = equipService.fenjieUserEquip(user, equipId, equipCount);
@@ -68,22 +77,27 @@ public class EquipCommandService extends BaseCommandService {
 		
 		rewardService.doRewards(user, rewardList);
 		
-		builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
-		responseBuilder.setFenjieEquipCommand(builder.build());
-		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), equipId);
+		if (userEquip != null)
+			builder.addUserEquip(userEquip.buildUserEquip());
+		responseBuilder.setEquipResultCommand(builder.build());
+		
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 	}
 	
 	public void saleEquip(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Item> itemList = cmd.getItemList();
-		List<RewardInfo> rewardList = equipService.saleEquip(user, itemList);
+		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
+		List<RewardInfo> rewardList = equipService.saleEquip(user, itemList, userEquipList);
 		if (rewardList == null || rewardList.isEmpty()) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_SALE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		RewardCommand.Builder builder = RewardCommand.newBuilder();
-		builder.addAllLoot(rewardList);
-		responseBuilder.setRewardCommand(builder.build());
-		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		rewards.addAllLoot(rewardList);
+		rewards.setName("恭喜获得");
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+		pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 	}
 }

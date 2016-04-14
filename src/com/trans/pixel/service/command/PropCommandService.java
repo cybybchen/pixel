@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
@@ -13,6 +14,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUsePropCommand;
 import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.UserPropService;
 
 @Service
 public class PropCommandService extends BaseCommandService {
@@ -23,6 +25,8 @@ public class PropCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public void useProp(RequestUsePropCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUsePropCommand.Builder builder = ResponseUsePropCommand.newBuilder();
@@ -38,6 +42,10 @@ public class PropCommandService extends BaseCommandService {
 		}
 		
 		rewardService.doRewards(user, multiReward);
+		
+		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
+		if (userProp != null)
+			builder.addUserProp(userProp.buildUserProp());
 		responseBuilder.setUsePropCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward);
 		pusher.pushUserPropListCommand(responseBuilder, user);

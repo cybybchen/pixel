@@ -37,11 +37,13 @@ public class PropService {
 	
 	private void randomReward(List<RewardInfo> rewardList, PackageBean prop, int propCount){
 		for (int i = 0; i < propCount; ++i) {
-			RewardInfo reward = prop.randomReward();
-			if(reward.getItemid()/10000 == RewardConst.PACKAGE/10000){
-				randomReward(rewardList, getProp(reward.getItemid()), reward.getCount());
-			}else
-				rewardService.mergeReward(rewardList, reward);
+			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
+				RewardInfo reward = prop.randomReward();
+				if(reward.getItemid()/10000 == RewardConst.PACKAGE/10000){
+					randomReward(rewardList, getProp(reward.getItemid()), reward.getCount());
+				}else
+					rewardService.mergeReward(rewardList, reward);
+			}
 		}
 	}
 	

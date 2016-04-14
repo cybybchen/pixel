@@ -24,6 +24,13 @@ public class HeroInfoBean {
 	private boolean isLock = false;
 	private String equipInfo = "0|0|0|0|0|0";
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
+	private boolean isNew = false;
+	public boolean isNew() {
+		return isNew;
+	}
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
 	public boolean isLock() {
 		return isLock;
 	}
@@ -136,6 +143,7 @@ public class HeroInfoBean {
 		json.put(VALUE, value);
 		json.put(RARE, rare);
 		json.put(LOCK, isLock);
+		json.put(NEW, isNew);
 		json.put(EQUIP_INFO, equipInfo);
 		json.put(SKILL_INFO_LIST, skillInfoList);
 		
@@ -154,6 +162,7 @@ public class HeroInfoBean {
 		bean.setEquipInfo(json.getString(EQUIP_INFO));
 		bean.setRare(json.getInt(RARE));
 		bean.setLock(TypeTranslatedUtil.jsonGetBoolean(json, LOCK));
+		bean.setNew(TypeTranslatedUtil.jsonGetBoolean(json, NEW));
 		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
 //		bean.setPosition(TypeTranslatedUtil.jsonGetInt(json, POSITION));
 		
@@ -227,6 +236,7 @@ public class HeroInfoBean {
 		heroInfo.setValue(0);
 		heroInfo.setRare(1);
 		heroInfo.setLock(false);
+		heroInfo.setNew(true);
 		heroInfo.setEquipInfo(initEquipInfo(hero));
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -247,6 +257,7 @@ public class HeroInfoBean {
 		heroInfo.setValue(0);
 		heroInfo.setRare(rare);
 		heroInfo.setLock(false);
+		heroInfo.setNew(true);
 		heroInfo.setEquipInfo(initEquipInfo(hero));
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
@@ -318,6 +329,7 @@ public class HeroInfoBean {
 	private static final String VALUE = "value";
 	private static final String RARE = "rare";
 	private static final String LOCK = "lock";
+	private static final String NEW = "new";
 	private static final String EQUIP_INFO = "equipInfo";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
 	private static final String HERO_ID = "heroId";

@@ -16,6 +16,7 @@ import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
 
 @Service
@@ -73,7 +74,7 @@ public class HeroLevelUpService {
 		return result;
 	}
 	
-	public ResultConst addHeroEquip(UserBean user, HeroInfoBean heroInfo, int heroId, int armId) {
+	public ResultConst addHeroEquip(UserBean user, HeroInfoBean heroInfo, int heroId, int armId, List<UserEquipBean> userEquipList) {
 		ResultConst result = ErrorConst.EQUIP_HAS_ADD;
 		int equipId = heroInfo.getEquipIdByArmId(armId);
 		if (equipId == 0 || equipId == 1) {
@@ -85,6 +86,7 @@ public class HeroLevelUpService {
 					result = SuccessConst.ADD_EQUIP_SUCCESS;
 					equipId = userEquipmentId;
 					heroInfo.updateEquipIdByArmId(equipId, armId);
+					userEquipList.add(userEquipService.selectUserEquip(user.getId(), userEquipmentId));
 				}
 			}
 		}
@@ -101,7 +103,7 @@ public class HeroLevelUpService {
 		return equipId;
 	}
 	
-	public ResultConst equipLevelUp(UserBean user, HeroInfoBean heroInfo, int armId, int levelUpId) {
+	public ResultConst equipLevelUp(UserBean user, HeroInfoBean heroInfo, int armId, int levelUpId, List<UserEquipBean> userEquipList) {
 		ResultConst result = ErrorConst.EQUIP_HAS_NOT_ADD;
 		int equipId = heroInfo.getEquipIdByArmId(armId);
 		if (equipId != 0) {
@@ -115,6 +117,12 @@ public class HeroLevelUpService {
 					if (equipLevelUpRet) {
 						heroInfo.updateEquipIdByArmId(levelUpId, armId);
 						result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
+						if (equip.getCover1() > 0)
+							userEquipList.add(userEquipService.selectUserEquip(user.getId(), equip.getCover1()));
+						if (equip.getCover2() > 0)
+							userEquipList.add(userEquipService.selectUserEquip(user.getId(), equip.getCover2()));
+						if (equip.getCover3() > 0)
+							userEquipList.add(userEquipService.selectUserEquip(user.getId(), equip.getCover3()));
 					}
 				}
 			}

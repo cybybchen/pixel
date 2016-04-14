@@ -10,7 +10,6 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserHeroMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeroBean;
-import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.service.redis.UserHeroRedisService;
 
 @Service
@@ -91,6 +90,15 @@ public class UserHeroService {
 		}
 		
 		updateUserHero(userHero);
+	}
+	
+	public UserHeroBean refreshNew(UserHeroBean userHero) {
+		List<Integer> newInfoIds = userHero.refreshNewHeroInfo();
+		updateUserHero(userHero);
+		
+		userHero.clearOld(newInfoIds); 
+		
+		return userHero;
 	}
 	
 	private UserHeroBean initUserHero(long userId, int heroId) {

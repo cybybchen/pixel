@@ -57,7 +57,7 @@ public class UserEquipService {
 		return userEquipList;
 	}
 	
-	public void useUserEquip(long userId, int equipId, int equipCount) {
+	public UserEquipBean useUserEquip(long userId, int equipId, int equipCount) {
 		UserEquipBean userEquip = selectUserEquip(userId, equipId);
 		if (userEquip == null) {
 			userEquip = initUserEquip(userId, equipId);
@@ -65,6 +65,8 @@ public class UserEquipService {
 		
 		userEquip.setEquipCount(userEquip.getEquipCount() - equipCount);
 		updateUserEquip(userEquip);
+		
+		return userEquip;
 	}
 	
 	public void addUserEquip(long userId, int equipId, int equipCount) {

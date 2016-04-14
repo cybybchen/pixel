@@ -18,7 +18,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseLotteryCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
@@ -67,14 +66,10 @@ public class LotteryCommandService extends BaseCommandService {
 		 */
 		activityService.lotteryActivity(user, count, type);
 		
-		ResponseLotteryCommand.Builder builder = ResponseLotteryCommand.newBuilder();
 		List<RewardBean> lotteryList = lotteryService.randomLotteryList(type, count);
 		rewardService.doRewards(user, lotteryList);
-		builder.setCoin(user.getCoin());
-		builder.setJewel(user.getJewel());
-//		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
-		responseBuilder.setLotteryCommand(builder.build());	
 		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		/**
 		 * send log

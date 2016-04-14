@@ -998,7 +998,11 @@ message RequestHeroLevelUpCommand {
 
 message ResponseHeroResultCommand {
 	required int32 heroId = 1;
-	required HeroInfo heroInfo = 2;
+	repeated HeroInfo heroInfo = 2;
+}
+
+message ResponseDeleteHeroCommand {
+	repeated FenjieHeroInfo heroInfo = 1;
 }
 
 message RequestResetHeroSkillCommand {
@@ -1051,12 +1055,6 @@ message ResponseGetTeamCommand {
 message RequestLotteryCommand {
 	required int32 type = 1; //1001:jinbi 1002:zuanshi
 	optional int32 count = 2; //默认是10
-}
-
-message ResponseLotteryCommand {
-	optional int64 coin = 1;
-	optional int32 jewel = 2;
-	repeated RewardInfo rewardList = 3;
 }
 
 message ResponseGetUserHeroCommand {
@@ -1410,6 +1408,7 @@ message RequestUsePropCommand { //打开道具包
 }
 
 message ResponseUsePropCommand {
+	repeated UserProp userProp = 1;
 }
 
 message RequestFenjieEquipCommand {
@@ -1417,8 +1416,8 @@ message RequestFenjieEquipCommand {
 	required int32 equipCount = 2;
 }
 
-message ResponseFenjieEquipCommand {
-	repeated RewardInfo reward = 1;
+message ResponseEquipResultCommand {
+	repeated UserEquip userEquip = 1;
 }
 
 message RequestUnlockPVPMapCommand {//解锁PVP区域
@@ -1785,7 +1784,6 @@ message ResponseCommand {
 	optional ResponseLevelLootResultCommand levelLootResultCommand = 7;
 	optional ResponseHeroResultCommand heroResultCommand = 8;
 	optional ResponseLootResultCommand lootResultCommand = 9;
-	optional ResponseLotteryCommand lotteryCommand = 13;
 	optional ResponseGetUserHeroCommand getUserHeroCommand = 14;
 	optional ResponseGetLadderRankListCommand getLadderRankListCommand = 15;
 	optional ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;
@@ -1809,7 +1807,6 @@ message ResponseCommand {
 	optional ResponseEquipComposeCommand equipComposeCommand = 33;
 	optional ResponseUserPropCommand userPropCommand = 34;
 	optional ResponseUsePropCommand usePropCommand = 35;
-	optional ResponseFenjieEquipCommand fenjieEquipCommand = 36;
 	optional ResponseSignCommand signCommand = 37;
 	optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
 	optional ResponseAchieveListCommand achieveListCommand = 40;
@@ -1820,6 +1817,8 @@ message ResponseCommand {
     optional ResponseKaifuListCommand kaifuListCommand = 46;
 	optional ResponseUserPokedeCommand userPokedeCommand = 47;
 	optional ResponseRankCommand rankCommand = 48;
+	optional ResponseEquipResultCommand equipResultCommand = 49;
+	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
 }
 
 

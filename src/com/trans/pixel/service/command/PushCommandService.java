@@ -112,6 +112,21 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setGetUserHeroCommand(builder.build());
 	}
 	
+	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user, UserHeroBean userHero) {
+		List<UserHeroBean> userHeroList = new ArrayList<UserHeroBean>();
+		userHeroList.add(userHero);
+		pushUserHeroListCommand(responseBuilder, user, userHeroList);
+	}
+	
+	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user, List<UserHeroBean> userHeroList) {
+		for (UserHeroBean userHero : userHeroList) {
+			userHero = userHeroService.refreshNew(userHero);
+		}
+		ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
+		builder.addAllUserHero(super.buildUserHeroList(userHeroList));
+		responseBuilder.setGetUserHeroCommand(builder.build());
+	}
+	
 	public void pushUserEquipListCommand(Builder responseBuilder, UserBean user) {
 		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(user.getId());
 		ResponseGetUserEquipCommand.Builder builder = ResponseGetUserEquipCommand.newBuilder();
@@ -119,8 +134,20 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setUserEquipCommand(builder.build());
 	}
 	
+	public void pushUserEquipListCommand(Builder responseBuilder, UserBean user, List<UserEquipBean> userEquipList) {
+		ResponseGetUserEquipCommand.Builder builder = ResponseGetUserEquipCommand.newBuilder();
+		builder.addAllUserEquip(super.buildUserEquipList(userEquipList));
+		responseBuilder.setUserEquipCommand(builder.build());
+	}
+	
 	public void pushUserPropListCommand(Builder responseBuilder, UserBean user) {
 		List<UserPropBean> userPropList = userPropService.selectUserPropList(user.getId());
+		ResponseUserPropCommand.Builder builder = ResponseUserPropCommand.newBuilder();
+		builder.addAllUserProp(super.buildUserPropList(userPropList));
+		responseBuilder.setUserPropCommand(builder.build());
+	}
+	
+	public void pushUserPropListCommand(Builder responseBuilder, UserBean user, List<UserPropBean> userPropList) {
 		ResponseUserPropCommand.Builder builder = ResponseUserPropCommand.newBuilder();
 		builder.addAllUserProp(super.buildUserPropList(userPropList));
 		responseBuilder.setUserPropCommand(builder.build());
@@ -253,35 +280,38 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserDataByRewardId(Builder responseBuilder, UserBean user, int rewardId) {
+		List<UserHeroBean> heroList = new ArrayList<UserHeroBean>();
+		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
+		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
+		long userId = user.getId();
 		if (rewardId > RewardConst.HERO) {
-			this.pushUserHeroListCommand(responseBuilder, user);
+			heroList.add(userHeroService.selectUserHero(userId, rewardId % RewardConst.HERO_STAR));
+			this.pushUserHeroListCommand(responseBuilder, user, heroList);
 		} else if (rewardId > RewardConst.PACKAGE) {
-			this.pushUserPropListCommand(responseBuilder, user);
-		} else if (rewardId > RewardConst.CHIP) {
-			this.pushUserEquipListCommand(responseBuilder, user);
+			propList.add(userPropService.selectUserProp(userId, rewardId));
+			this.pushUserPropListCommand(responseBuilder, user, propList);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
-			this.pushUserEquipListCommand(responseBuilder, user);
+			equipList.add(userEquipService.selectUserEquip(userId, rewardId));
+			this.pushUserEquipListCommand(responseBuilder, user, equipList);
 		} else {
 			this.pushUserInfoCommand(responseBuilder, user);
 		}
 	}
 
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards) {
-		boolean isHeroUpdated = false;
-		boolean isPropUpdated = false;
-		boolean isPackageUpdated = false;
-		boolean isEquipUpdated = false;
+		List<UserHeroBean> heroList = new ArrayList<UserHeroBean>();
+		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
+		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		boolean isUserUpdated = false;
+		long userId = user.getId();
 		for(RewardInfo reward : rewards.getLootList()){
 			int rewardId = reward.getItemid();
 			if (rewardId > RewardConst.HERO) {
-				isHeroUpdated = true;
-			} else if (rewardId > RewardConst.PROP) {
-				isPropUpdated = true;
+				heroList.add(userHeroService.selectUserHero(userId, rewardId % RewardConst.HERO_STAR));
 			} else if (rewardId > RewardConst.PACKAGE) {
-				isPackageUpdated = true;
-			} else if (rewardId > RewardConst.EQUIPMENT || rewardId > RewardConst.CHIP) {
-				isEquipUpdated = true;
+				propList.add(userPropService.selectUserProp(userId, rewardId));
+			} else if (rewardId > RewardConst.EQUIPMENT) {
+				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
 			} else {
 				isUserUpdated = true;
 			}
@@ -290,54 +320,52 @@ public class PushCommandService extends BaseCommandService {
 		reward.setTitle(rewards.getName());
 		reward.addAllLoot(rewards.getLootList());
 		responseBuilder.setRewardCommand(reward);
-		if(isHeroUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.HERO+1);
-		if(isPropUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PROP+1);
-		if(isPackageUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PACKAGE+1);
-		if(isEquipUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.EQUIPMENT+1);
+		if(heroList.size() > 0)
+			this.pushUserHeroListCommand(responseBuilder, user, heroList);
+		if(propList.size() > 0)
+			this.pushUserPropListCommand(responseBuilder, user, propList);
+		if(equipList.size() > 0)
+			this.pushUserEquipListCommand(responseBuilder, user, equipList);
 		if(isUserUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, 1001);
+			this.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, List<RewardBean> rewards) {
-		boolean isHeroUpdated = false;
-		boolean isPropUpdated = false;
-		boolean isPackageUpdated = false;
-		boolean isEquipUpdated = false;
+		pushRewardCommand(responseBuilder, user, rewards, "恭喜获得");
+	}
+	
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, List<RewardBean> rewards, String title) {
+		List<UserHeroBean> heroList = new ArrayList<UserHeroBean>();
+		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
+		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		boolean isUserUpdated = false;
+		long userId = user.getId();
 		RewardCommand.Builder rewardbuilder = RewardCommand.newBuilder();
 		for(RewardBean reward : rewards){
 			rewardbuilder.addLoot(reward.buildRewardInfo());
 			int rewardId = reward.getItemid();
 			if (rewardId > RewardConst.HERO) {
-				isHeroUpdated = true;
-			} else if (rewardId > RewardConst.PROP) {
-				isPropUpdated = true;
+				heroList.add(userHeroService.selectUserHero(userId, rewardId % RewardConst.HERO_STAR));
 			} else if (rewardId > RewardConst.PACKAGE) {
-				isPackageUpdated = true;
-			} else if (rewardId > RewardConst.EQUIPMENT || rewardId > RewardConst.CHIP) {
-				isEquipUpdated = true;
+				propList.add(userPropService.selectUserProp(userId, rewardId));
+			} else if (rewardId > RewardConst.EQUIPMENT) {
+				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
 			} else {
 				isUserUpdated = true;
 			}
 		}
-		rewardbuilder.setTitle("恭喜获得");
+		rewardbuilder.setTitle(title);
 		responseBuilder.setRewardCommand(rewardbuilder);
-		if(isHeroUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.HERO+1);
-		if(isPropUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PROP+1);
-		if(isPackageUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.PACKAGE+1);
-		if(isEquipUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, RewardConst.EQUIPMENT+1);
+		if(heroList.size() > 0)
+			this.pushUserHeroListCommand(responseBuilder, user, heroList);
+		if(propList.size() > 0)
+			this.pushUserPropListCommand(responseBuilder, user, propList);
+		if(equipList.size() > 0)
+			this.pushUserEquipListCommand(responseBuilder, user, equipList);
 		if(isUserUpdated)
-			this.pushUserDataByRewardId(responseBuilder, user, 1001);
+			this.pushUserInfoCommand(responseBuilder, user);
 	}
-
+	
 	public void pushPurchaseCoinCommand(Builder responseBuilder, UserBean user) {
 		shopCommandService.getPurchaseCoinTime(responseBuilder, user);
 	}
