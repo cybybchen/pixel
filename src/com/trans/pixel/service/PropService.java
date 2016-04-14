@@ -53,7 +53,7 @@ public class PropService {
 			return null;
 		
 		PackageBean prop = getProp(userProp.getPropId());
-		if (prop == null)
+		if (prop == null || prop.getCyb() == 1)
 			return null;
 		
 		MultiReward.Builder multiReward = MultiReward.newBuilder();

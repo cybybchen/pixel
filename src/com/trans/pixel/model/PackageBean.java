@@ -25,6 +25,7 @@ public class PackageBean {
 	private int judge = 0;
 	private int itemcount = 0;
 	private int weightall = 0;
+	private int cyb = 0;
 	private List<ItemBean> itemList = new ArrayList<ItemBean>();
 	
 	public int getItemid() {
@@ -64,6 +65,12 @@ public class PackageBean {
 	public void setItemList(List<ItemBean> itemList) {
 		this.itemList = itemList;
 	}
+	public int getCyb() {
+		return cyb;
+	}
+	public void setCyb(int cyb) {
+		this.cyb = cyb;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ITEMID, itemid);
@@ -72,6 +79,7 @@ public class PackageBean {
 		json.put(ITEMCOUNT, itemcount);
 		json.put(WEIGHTALL, weightall);
 		json.put(ITEM, itemList);
+		json.put(CYB, cyb);
 		
 		return json.toString();
 	}
@@ -86,6 +94,7 @@ public class PackageBean {
 		bean.setJudge(json.getInt(JUDGE));
 		bean.setItemcount(json.getInt(ITEMCOUNT));
 		bean.setWeightall(json.getInt(WEIGHTALL));
+		bean.setCyb(json.getInt(CYB));
 		
 		List<ItemBean> list = new ArrayList<ItemBean>();
 		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, ITEM);
@@ -117,6 +126,7 @@ public class PackageBean {
 				bean.setJudge(TypeTranslatedUtil.stringToInt(element.attributeValue(JUDGE)));
 				bean.setItemcount(TypeTranslatedUtil.stringToInt(element.attributeValue(ITEMCOUNT)));
 				bean.setWeightall(TypeTranslatedUtil.stringToInt(element.attributeValue(WEIGHTALL)));
+				bean.setCyb(TypeTranslatedUtil.stringToInt(element.attributeValue(CYB)));
 				
 				List<ItemBean> itemList = new ArrayList<ItemBean>();
 				List<?> itemNodeList = element.elements();
@@ -171,4 +181,5 @@ public class PackageBean {
 	private static final String ITEMCOUNT = "itemcount";
 	private static final String WEIGHTALL = "weightall";
 	private static final String ITEM = "item";
+	private static final String CYB = "cyb";
 }
