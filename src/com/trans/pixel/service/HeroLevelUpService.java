@@ -113,16 +113,10 @@ public class HeroLevelUpService {
 			} else {
 				if (equipId == equip.getCover()) {
 					result = ErrorConst.NOT_ENOUGH_EQUIP;
-					boolean equipLevelUpRet = equipService.equipLevelUp(user.getId(), equip);
+					boolean equipLevelUpRet = equipService.equipLevelUp(user.getId(), equip, userEquipList);
 					if (equipLevelUpRet) {
 						heroInfo.updateEquipIdByArmId(levelUpId, armId);
 						result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
-						if (equip.getCover1() > 0)
-							userEquipList.add(userEquipService.selectUserEquip(user.getId(), equip.getCover1()));
-						if (equip.getCover2() > 0)
-							userEquipList.add(userEquipService.selectUserEquip(user.getId(), equip.getCover2()));
-						if (equip.getCover3() > 0)
-							userEquipList.add(userEquipService.selectUserEquip(user.getId(), equip.getCover3()));
 					}
 				}
 			}

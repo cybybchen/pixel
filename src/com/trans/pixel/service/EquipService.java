@@ -54,14 +54,15 @@ public class EquipService {
 		return level;
 	}
 	
-	public int equipCompose(UserBean user, int levelUpId, int count) {
+	public int equipCompose(UserBean user, int levelUpId, int count, List<UserEquipBean> userEquipList) {
 		int composeEquipId = 0;;
 		EquipmentBean equip = getEquip(levelUpId);
 		if (equip != null) {//合成装备
-			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip);
+			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip, userEquipList);
 			if (equipLevelUpRet) {
 				userEquipService.addUserEquip(user.getId(), equip.getItemid(), 1);
 				composeEquipId = levelUpId;
+				userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
 			}
 		} else { //合成碎片
 			Chip chip = equipRedisService.getChip(levelUpId);
@@ -72,6 +73,8 @@ public class EquipService {
 					userEquipService.updateUserEquip(userEquip);
 					userEquipService.addUserEquip(user.getId(), chip.getAim(), count);
 					composeEquipId = chip.getAim();
+					userEquipList.add(userEquip);
+					userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
 				}
 			}
 				
@@ -109,7 +112,7 @@ public class EquipService {
 		return fenjie.randomReward(fenjieCount);
 	}
 	
-	public boolean equipLevelUp(long userId, EquipmentBean equip) {
+	public boolean equipLevelUp(long userId, EquipmentBean equip, List<UserEquipBean> costUserEquipList) {
 		UserEquipBean userEquip1 = null;
 		UserEquipBean userEquip2 = null;
 		UserEquipBean userEquip3 = null;
@@ -140,14 +143,17 @@ public class EquipService {
 			if (userEquip1 != null) {
 				userEquip1.setEquipCount(userEquip1.getEquipCount() - equip.getCount1());
 				userEquipService.updateUserEquip(userEquip1);
+				costUserEquipList.add(userEquip1);
 			}
 			if (userEquip2 != null) {
 				userEquip2.setEquipCount(userEquip2.getEquipCount() - equip.getCount2());
 				userEquipService.updateUserEquip(userEquip2);
+				costUserEquipList.add(userEquip2);
 			}
 			if (userEquip3 != null) {
 				userEquip3.setEquipCount(userEquip3.getEquipCount() - equip.getCount3());
 				userEquipService.updateUserEquip(userEquip3);
+				costUserEquipList.add(userEquip3);
 			}
 		}
 		return ret;

@@ -44,7 +44,9 @@ public class EquipCommandService extends BaseCommandService {
 		if (cmd.hasCount())
 			count = cmd.getCount();
 		
-		int composeEquipId = equipService.equipCompose(user, levelUpId, count);
+		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
+		
+		int composeEquipId = equipService.equipCompose(user, levelUpId, count, userEquipList);
 		
 		if (composeEquipId == 0) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_EQUIP);
@@ -57,9 +59,6 @@ public class EquipCommandService extends BaseCommandService {
 			builder.setCount(count);
 			responseBuilder.setEquipComposeCommand(builder.build());
 			
-			List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
-			userEquipList.add(userEquipService.selectUserEquip(user.getId(), levelUpId));
-			userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 		}
 	}
