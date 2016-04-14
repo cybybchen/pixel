@@ -60,7 +60,7 @@ public class LadderRedisService extends RedisService{
 		String value = hget(buildRankRedisKey(serverId), rank+"");
 		if(value == null)
 			return null;
-		logger.debug(value);
+//		logger.debug(value);
 		return UserRankBean.fromJson(value);
 	}
 	
@@ -82,7 +82,7 @@ public class LadderRedisService extends RedisService{
 		String value = hget(buildRankInfoRedisKey(serverId), userId+"");
 		if(value == null)
 			return null;
-		logger.debug(value);
+//		logger.debug(value);
 		return UserRankBean.fromJson(value);
 	}
 	
