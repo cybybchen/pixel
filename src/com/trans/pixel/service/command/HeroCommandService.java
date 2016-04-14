@@ -257,6 +257,7 @@ public class HeroCommandService extends BaseCommandService {
 		}
 		
 		if(isError){
+			responseBuilder.setDeleteHeroCommand(errorHeroBuilder.build());
 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}else{
 			for(UserHeroBean userHero : heroList)
@@ -273,8 +274,8 @@ public class HeroCommandService extends BaseCommandService {
 				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 			}
 //			pushCommandService.pushUserHeroListCommand(responseBuilder, user, heroList);
+			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 		}
-		responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 	}
 	
 	public void equipLevelup(RequestEquipLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
