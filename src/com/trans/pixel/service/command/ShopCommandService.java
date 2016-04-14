@@ -195,8 +195,14 @@ public class ShopCommandService extends BaseCommandService{
 		}
 		return 500*factor;
 	}
-	
+
 	public void BlackShop(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getVip() < 8)
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NEED_VIP8));
+		else
+			BlackShop(responseBuilder, user);
+	}
+	public void BlackShop(Builder responseBuilder, UserBean user){
 		if(user.getVip() < 8)
 			return;
 		ShopList shoplist = service.getBlackShop(user);
