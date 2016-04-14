@@ -194,19 +194,18 @@ public class PvpMapService {
 		}
 		long time = System.currentTimeMillis()/1000/3600*3600;
 		if(time >= user.getPvpMineGainTime()+3600){//收取资源
-			int hour = (int)((time - user.getPvpMineGainTime())/3600);
-			if(hour > 7*24)
-				hour = 7*24;
-			int resource = user.getPointPVP();
+			int hour = Math.min(7*24, (int)((time - user.getPvpMineGainTime())/3600));
+			int resource = 0;
 			for(PVPMap map : maplist.getFieldList()){
 				if(!map.getOpened())
 					continue;
-				resource += map.getYield()*hour;
+				resource += map.getYield();
 				for(PVPMine mine : map.getKuangdianList()){
-					resource += mine.getYield()*hour;
+					if(!mine.hasOwner())
+						resource += mine.getYield();
 				}
 			}
-			rewardService.doReward(user, RewardConst.PVPCOIN, resource);
+			user.setPointPVP(user.getPointPVP()+resource*hour);
 			user.setPvpMineGainTime(time);
 			userService.updateUserDailyData(user);
 			ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
