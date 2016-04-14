@@ -62,7 +62,10 @@ public class GamedataAction {
 
     private void cmdhttp(PixelResponse nfsResponse, HttpServletResponse response) throws IOException {
         ResponseCommand responseCommand = nfsResponse.command.build();
-        logger.debug("PROCESSING response={}, bytes={}", responseCommand, responseCommand.getSerializedSize());
+        if(responseCommand.getSerializedSize() < 10000)
+        	logger.debug("PROCESSING response={}, bytes={}", responseCommand, responseCommand.getSerializedSize());
+        else
+        	logger.debug("PROCESSING response={}, bytes={}", "......", responseCommand.getSerializedSize());
         OutputStream out = response.getOutputStream();
         try {
             responseCommand.writeTo(out);
@@ -76,44 +79,48 @@ public class GamedataAction {
     @ResponseBody
     public void exec(HttpServletRequest request, HttpServletResponse response) {
     	long startTime = System.currentTimeMillis();
-//		long actionStartTime = System.currentTimeMillis();
-        try {
-            response.setContentType(CONTENT_TYPE);
-            PixelRequest req = null;
-            PixelResponse rep = new PixelResponse();
-            try {
-                req = httpcmd(request);
-            } catch (Exception e) {
-                logger.error("PIXEL_REQUEST_ERROR", e);
-            }
-            try {
-                boolean result = true;
-                for (RequestHandle handle : chainOfScreens) {
-                    result = handle.handleRequest(req, rep);
-                    if (!result) {
-                        break;
-                    }
-                } 
-            } catch (Exception e) {
-                genericErrorHandle.handleRequest(req, rep);
-                logger.error("PIXEL_RESPONSE_ERROR", e);
-            } finally {
-                
-            }
-            
-            cmdhttp(rep, response);
-        } catch (Throwable e) {
-            logger.error("PIXEL_ERRO", e);
-        }
+        
+		response.setContentType(CONTENT_TYPE);
+		PixelRequest req = null;
+		PixelResponse rep = new PixelResponse();
+		try {
+			req = httpcmd(request);
+		} catch (Exception e) {
+			genericErrorHandle.handleRequest(req, rep);
+			logger.error("PIXEL_REQUEST_ERROR", e);
+		}
+		
+		if(req != null)
+		try {
+			boolean result = true;
+			for (RequestHandle handle : chainOfScreens) {
+				result = handle.handleRequest(req, rep);
+				if (!result) {
+					break;
+				}
+			}
+		} catch (Exception e) {
+			genericErrorHandle.handleRequest(req, rep);
+			logger.error("PIXEL_RESPONSE_ERROR", e);
+		}
+		
+		try {
+			cmdhttp(rep, response);
+		} catch (Exception e) {
+			logger.error("PIXEL_RESPONSE_ERROR", e);
+		}
 
 		long now = System.currentTimeMillis();
-        logger.debug("ybchen pixel test" + (now - startTime));
+		if(now - startTime > 100)
+			logger.warn("response time:{},request={}", now - startTime, req.toString().replaceAll("\n", ""));
+		else
+			logger.info("response time:{}", now - startTime);
 		
 		actionCost += (now-startTime);
 		actions++;
-		if(now - lastTime > 5000)
+		if(now - lastTime > 5000 && actions >= 10)
 		{
-			logger.warn("ybchen pixel Time: " + (now - lastTime) + " actions: " + actions + "average cost: " + actionCost / actions);
+			logger.info("actions "+actions+" with average response time: " + actionCost / actions);
 			actionCost = 0;
 			actions = 0;
 			lastTime = now;

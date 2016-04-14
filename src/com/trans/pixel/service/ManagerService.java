@@ -32,7 +32,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class ManagerService extends RedisService{
 	Logger logger = Logger.getLogger(ManagerService.class);
 	private final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
-	private final static String USERDAILYDATA = RedisKey.PREFIX+RedisKey.USERDAILYDATA_PREFIX;
+//	private final static String USERDAILYDATA = RedisKey.PREFIX+RedisKey.USERDAILYDATA_PREFIX;
 	//shop
 	private final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
 	private final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
@@ -49,7 +49,7 @@ public class ManagerService extends RedisService{
 	private final static String AREABOSSTIME = RedisKey.PREFIX+"AreaBossTime_";
 	private final static String MYAREAEQUIP = RedisKey.PREFIX+"AreaEquip_";
 	private final static String MYAREABUFF = RedisKey.PREFIX+"AreaBuff_";
-	private final static String MINEGAIN = RedisKey.PREFIX+"AreaResourceMineGain_";
+//	private final static String MINEGAIN = RedisKey.PREFIX+"AreaResourceMineGain_";
 	@Resource
     private UserService userService;
 	@Resource
