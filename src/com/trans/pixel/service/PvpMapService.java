@@ -267,10 +267,10 @@ public class PvpMapService {
 			return false;
 		if(ret){
 			if(mine.hasOwner()){
+				long userId = mine.getOwner().getId();
 				mine.setOwner(user.buildShort());
 				mine.setEndTime(System.currentTimeMillis()/1000+24*3600);
 				mine.setLevel(mine.getLevel()+1);
-				long userId = mine.getOwner().getId();
 //				UserBean bean = userService.getUser(userId);
 //				PVPMapList.Builder maplist = redis.getBasePvpMapList();
 //				Map<String, PVPMine> mineMap = redis.getUserMines(userId);

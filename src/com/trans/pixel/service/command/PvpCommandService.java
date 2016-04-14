@@ -85,7 +85,7 @@ public class PvpCommandService extends BaseCommandService {
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, team);
 		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet()))
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
@@ -102,7 +102,7 @@ public class PvpCommandService extends BaseCommandService {
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, team);
 		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet())) {
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			return;
 		}
 		userProp.setPropCount(userProp.getPropCount() - 1);
