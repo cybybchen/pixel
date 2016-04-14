@@ -107,8 +107,17 @@ public class HeroCommandService extends BaseCommandService {
 			builder.addHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
 			
-			if (costInfoIds.size() > 0)
-				pushCommandService.pushUserHeroListCommand(responseBuilder, user, userHero);
+			if (costInfoIds.size() > 0){
+//				pushCommandService.pushUserHeroListCommand(responseBuilder, user, userHero);
+				ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+				for(Integer costId : costInfoIds){
+					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
+					herobuilder.setHeroId(heroId);
+					herobuilder.setInfoId(costId);
+					deleteHeroBuilder.addHeroInfo(herobuilder.build());
+				}
+				responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
+			}
 			
 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}
