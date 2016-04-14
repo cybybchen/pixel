@@ -86,6 +86,9 @@ public class EquipService {
 			return null;
 		
 		EquipmentBean equip = getEquip(equipId);
+		if (equip == null)
+			return null;
+		
 		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
 		if (fenjie == null)
 			return null;
