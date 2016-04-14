@@ -69,7 +69,7 @@ public class RewardBean {
 	public RewardInfo buildRewardInfo() {
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(itemid);
-		reward.setItemname(name);
+//		reward.setItemname(name);
 		reward.setCount(count);
 		
 		return reward.build();
@@ -166,7 +166,6 @@ public class RewardBean {
 		for (RewardBean reward : rewardList) {
 			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
 			rewardInfo.setItemid(reward.getItemid());
-			rewardInfo.setItemname(reward.getName());
 			rewardInfo.setCount(reward.getCount());
 			rewardInfoList.add(rewardInfo.build());
 		}

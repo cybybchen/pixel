@@ -72,7 +72,7 @@ public class LotteryCommandService extends BaseCommandService {
 		rewardService.doRewards(user, lotteryList);
 		builder.setCoin(user.getCoin());
 		builder.setJewel(user.getJewel());
-		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
+//		builder.addAllRewardList(RewardBean.buildRewardInfoList(lotteryList));
 		responseBuilder.setLotteryCommand(builder.build());	
 		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
 		
