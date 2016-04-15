@@ -626,6 +626,7 @@ message MessageBoard {
 	required string userName = 4;
 	required string content = 5;
 	repeated Msg msg = 6;
+	required int32 icon = 7;
 }
 
 message Msg {

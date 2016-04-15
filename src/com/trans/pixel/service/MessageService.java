@@ -75,7 +75,7 @@ public class MessageService {
 	}
 	
 	private void createMessageBoard(UserBean user, String message) {
-		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message);
+		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message, user.getIcon());
 		messageRedisService.addMessageBoard(user.getServerId(), messageBoard);
 		messageRedisService.addMessageBoardValue(user.getServerId(), messageBoard);
 	}
@@ -105,7 +105,7 @@ public class MessageService {
 	}
 	
 	private void createUnionMessageBoard(UserBean user, String message) {
-		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message);
+		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message, user.getIcon());
 		messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 		messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 	}
@@ -125,11 +125,12 @@ public class MessageService {
 		return null;
 	}
 	
-	private MessageBoardBean initMessageBoard(long userId, String userName, String message) {
+	private MessageBoardBean initMessageBoard(long userId, String userName, String message, int icon) {
 		MessageBoardBean messageBoard = new MessageBoardBean();
 		messageBoard.setMessage(message);
 		messageBoard.setUserId(userId);
 		messageBoard.setUserName(userName);
+		messageBoard.setIcon(icon);
 		messageBoard.setTimeStamp(System.currentTimeMillis());
 		messageBoard.setId(System.currentTimeMillis());
 		

@@ -19,6 +19,7 @@ public class MessageBoardBean {
 	private long userId = 0;
 	private String userName = "";
 	private String message = "";
+	private int icon = 0;
 	private List<MessageBean> messageList = new ArrayList<MessageBean>();
 	public long getTimeStamp() {
 		return timeStamp;
@@ -56,6 +57,12 @@ public class MessageBoardBean {
 	public void setId(long id) {
 		this.id = id;
 	}
+	public int getIcon() {
+		return icon;
+	}
+	public void setIcon(int icon) {
+		this.icon = icon;
+	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();
 		builder.setId(id);
@@ -63,6 +70,7 @@ public class MessageBoardBean {
 		builder.setTimestamp(timeStamp);
 		builder.setUserId(userId);
 		builder.setUserName(userName);
+		builder.setIcon(icon);
 		List<Msg> msgBuilderList = new ArrayList<Msg>();
 		for (MessageBean message : messageList) {
 			msgBuilderList.add(message.buildMsg());
@@ -80,6 +88,7 @@ public class MessageBoardBean {
 		json.put(USER_NAME, userName);
 		json.put(MESSAGE, message);
 		json.put(MESSAGE_LIST, messageList);
+		json.put(ICON, icon);
 		
 		return json.toString();
 	}
@@ -102,6 +111,7 @@ public class MessageBoardBean {
 			list.add(message);
 		}
 		bean.setMessageList(list);
+		bean.setIcon(TypeTranslatedUtil.jsonGetInt(json, ICON));
 
 		return bean;
 	}
@@ -145,4 +155,5 @@ public class MessageBoardBean {
 	private static final String USER_NAME = "user_name";
 	private static final String MESSAGE = "message";
 	private static final String MESSAGE_LIST = "message_list";
+	private static final String ICON = "icon";
 }
