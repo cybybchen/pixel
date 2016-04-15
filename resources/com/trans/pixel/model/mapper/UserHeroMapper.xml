@@ -2,29 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trans.pixel.model.mapper.UserHeroMapper">
 
-	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserHeroBean">
+	<resultMap id="resultMap" type="com.trans.pixel.model.hero.info.HeroInfoBean">
 		<id property="id" column="id" />
 		<result property="userId" column="user_id" />
 		<result property="heroId" column="hero_id" />
-		<result property="heroInfo" column="hero_info" />
+		<result property="level" column="level" />
+		<result property="starLevel" column="star_level" />
+		<result property="value" column="value" />
+		<result property="rare" column="rare" />
+		<result property="isLock" column="is_lock" />
+		<result property="equipInfo" column="equip_info" />
+		<result property="skillInfo" column="skill_info" />
 	</resultMap>
 	
 	<select id="selectUserHero" resultMap="resultMap">
 		SELECT *
-		from user_hero where user_id=#{userId} and hero_id=#{heroId}
+		from user_hero where user_id=#{userId} and hero_id=#{heroId} limit 1
 	</select>
 	
-	<insert id="updateUserHero" parameterType="com.trans.pixel.model.userinfo.UserHeroBean">
-	    INSERT INTO user_hero(user_id, hero_id, hero_info)
-	    VALUES(#{userId}, #{heroId}, #{heroInfo})
-	    ON 
-	    duplicate key update
-	    hero_info=#{heroInfo}
+	<select id="selectUserHeroByHeroId" resultMap="resultMap">
+		SELECT *
+		from user_hero where user_id=#{userId} and hero_id=#{heroId} limit 1
+	</select>
+	
+	<insert id="addUserHero" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.hero.info.HeroInfoBean">
+	    INSERT INTO user_hero(user_id, hero_id, level, star_level, value, rare, is_lock, equip_info, skill_info)
+	    VALUES(#{userId}, #{heroId}, #{level}, #{starLevel}, #{value}, #{rare}, #{isLock}, #{equipInfo}, #{skillInfo})
 	</insert>
+	
+	<update id="updateUserHero" parameterType="com.trans.pixel.model.hero.info.HeroInfoBean">
+	    update INTO user_hero set user_id=#{userId}, hero_id=#{heroId}, level=#{level}, star_level=#{starLevel},
+	    value#{value}, rare#{rare}, is_lock#{isLock}, equip_info#{equipInfo}, skill_info#{skillInfo}
+	</update>
 	
 	<select id="selectUserHeroList" parameterType="long" resultMap="resultMap">
 		SELECT *
 		from user_hero where user_id=#{userId}
 	</select>
+	
+	<delete id="deleteUserHero" parameterType="long">
+		DELETE *
+		from user_hero where id=#{id}
+	</delete>
 	
 </mapper>

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
@@ -118,19 +117,16 @@ public class UserTeamService {
 		for(UserTeamBean userTeam : userTeamList){
 			if(teamid == userTeam.getId()){
 				team.setComposeSkill(userTeam.getComposeSkill());
-				List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
 				String[] herosstr = userTeam.getTeamRecord().split("\\|");
 				for(String herostr : herosstr){
 					String[] str = herostr.split(",");
 					if(str.length == 2){
 						int heroId = Integer.parseInt(str[0]);
 						int infoId = Integer.parseInt(str[1]);
-						for(UserHeroBean herobean : userHeroList){
-							if(herobean.getHeroId() == heroId){
-								HeroInfoBean heroinfo = herobean.getHeroInfoByInfoId(infoId);
-								heroinfo.setHeroId(herobean.getHeroId());
-								if(heroinfo != null)
-									team.addHeroInfo(heroinfo.buildTeamHeroInfo());
+						for(HeroInfoBean herobean : userHeroList){
+							if(herobean.getId() == infoId){
+									team.addHeroInfo(herobean.buildTeamHeroInfo());
 								break;
 							}
 						}

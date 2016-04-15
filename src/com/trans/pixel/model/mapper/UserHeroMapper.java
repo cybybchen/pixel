@@ -4,13 +4,19 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.trans.pixel.model.userinfo.UserHeroBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 
 public interface UserHeroMapper {
 	
-	public UserHeroBean selectUserHero(@Param("userId") long userId, @Param("heroId") int heroId);
+	public HeroInfoBean selectUserHero(long id);
 	
-	public int updateUserHero(UserHeroBean userHero);
+	public HeroInfoBean selectUserHeroByHeroId(@Param("userId") long userId, @Param("heroId") int heroId);
 	
-	public List<UserHeroBean> selectUserHeroList(long userId);
+	public int updateUserHero(HeroInfoBean heroInfo);
+	
+	public int addUserHero(HeroInfoBean heroInfo);
+	
+	public List<HeroInfoBean> selectUserHeroList(long userId);
+	
+	public int deleteUserHero(long id);
 }

@@ -3,15 +3,14 @@ package com.trans.pixel.test.pressure;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 
 import com.trans.pixel.protoc.Commands.FenjieHeroInfo;
+import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.test.BaseTest;
 
 public class HeroTest extends BaseTest {
@@ -21,9 +20,9 @@ public class HeroTest extends BaseTest {
 		RequestHeroLevelUpCommand.Builder b = RequestHeroLevelUpCommand.newBuilder();
 		if(loginResponse.getGetUserHeroCommand().getUserHeroCount() == 0)
 			return;
-		UserHero userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
+		HeroInfo userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
 		b.setHeroId(userHero.getHeroId());
-		b.setInfoId(userHero.getHeroInfo(0).getInfoId());
+		b.setInfoId(userHero.getInfoId());
 		b.setLevelUpType(type);
 		builder.setHeroLevelUpCommand(b.build());
 		
@@ -39,10 +38,10 @@ public class HeroTest extends BaseTest {
 		RequestFenjieHeroCommand.Builder b = RequestFenjieHeroCommand.newBuilder();
 		if(loginResponse.getGetUserHeroCommand().getUserHeroCount() == 0)
 			return;
-		UserHero userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
+		HeroInfo userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
 		FenjieHeroInfo.Builder fenjieHero = FenjieHeroInfo.newBuilder();
 		fenjieHero.setHeroId(userHero.getHeroId());
-		fenjieHero.setInfoId(userHero.getHeroInfo(0).getInfoId());
+		fenjieHero.setInfoId(userHero.getInfoId());
 		b.addFenjieHero(fenjieHero.build());
 		builder.setFenjieHeroCommand(b.build());
 		

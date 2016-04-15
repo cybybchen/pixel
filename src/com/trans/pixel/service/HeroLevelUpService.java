@@ -17,7 +17,6 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.model.userinfo.UserHeroBean;
 
 @Service
 public class HeroLevelUpService {
@@ -52,14 +51,14 @@ public class HeroLevelUpService {
 	private ActivityService activityService;
 	@Resource
 	private UserPokedeService userPokedeService;
-	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Integer> costInfoIds, UserHeroBean userHero) {
+	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
 			case TYPE_HEROLEVEL:
 				result = levelUpHero(user, heroInfo);
 				break;
 			case TYPE_STARLEVEL:
-				result = levelUpStar(user, heroInfo, costInfoIds, userHero);
+				result = levelUpStar(user, heroInfo, costInfoIds);
 				break;
 			case TYPE_RARELEVEL:
 				result = levelUpRare(user, heroInfo);
@@ -153,16 +152,16 @@ public class HeroLevelUpService {
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
 	
-	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Integer> costInfoIds, UserHeroBean userHero) {
+	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Long> costInfoIds) {
 		if (heroInfo.getStarLevel() == 7)
 			return ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
 		ResultConst result = ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
-		int addValue = calValues(userHero, costInfoIds);
+		int addValue = calValues(user, costInfoIds);
 		if(addValue < 0)
 			return ErrorConst.HERO_LOCKED; 
-		userHero.delHeros(costInfoIds);
+		userHeroService.delUserHero(user.getId(), costInfoIds);
 		heroInfo.setValue(heroInfo.getValue() + addValue);
 		calHeroStar(heroInfo);
 		result = SuccessConst.STAR_LEVELUP_SUCCESS;
@@ -184,10 +183,10 @@ public class HeroLevelUpService {
 		}
 	}
 	
-	private int calValues(UserHeroBean userHero, List<Integer> costInfoIds) {
+	private int calValues(UserBean user, List<Long> costInfoIds) {
 		int addValue = 0;
-		for (int infoId : costInfoIds) {
-			HeroInfoBean heroInfo = userHero.getHeroInfoByInfoId(infoId);
+		for (long infoId : costInfoIds) {
+			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
 			if (heroInfo != null) {
 				if(heroInfo.isLock())//不能分解
 					return -1;

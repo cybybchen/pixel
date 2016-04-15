@@ -14,15 +14,16 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
-import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.Mail;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.MessageBoard;
@@ -34,7 +35,6 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserAchieve;
 import com.trans.pixel.protoc.Commands.UserEquip;
 import com.trans.pixel.protoc.Commands.UserFriend;
-import com.trans.pixel.protoc.Commands.UserHero;
 import com.trans.pixel.protoc.Commands.UserProp;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.protoc.Commands.UserTeam;
@@ -121,10 +121,10 @@ public class BaseCommandService {
 		return builder.build();
 	}
 	
-	protected List<UserHero> buildUserHeroList(List<UserHeroBean> userHeroList) {
-		List<UserHero> userHeroBuilderList = new ArrayList<UserHero>();
-		for (UserHeroBean userHero : userHeroList) {
-			userHeroBuilderList.add(userHero.buildUserHero());
+	protected List<HeroInfo> buildUserHeroList(List<HeroInfoBean> userHeroList) {
+		List<HeroInfo> userHeroBuilderList = new ArrayList<HeroInfo>();
+		for (HeroInfoBean userHero : userHeroList) {
+			userHeroBuilderList.add(userHero.buildHeroInfo());
 		}
 		
 		return userHeroBuilderList;

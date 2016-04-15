@@ -122,7 +122,7 @@ message HeadInfo
 }
 
 message HeroInfo {
-	optional int32 infoId = 1;
+	optional int64 infoId = 1;
 	optional int32 level = 2;
 	optional int32 rare = 3;
 	optional string equipInfo = 4;
@@ -837,7 +837,7 @@ message UserKaifu {
 
 message FenjieHeroInfo {
 	required int32 heroId = 1;
-	required int32 infoId = 2;
+	required int64 infoId = 2;
 }
 
 message LadderRankingList {
@@ -985,16 +985,16 @@ message ResponseUserTeamListCommand {
 
 message RequestLockHeroCommand {
 	required int32 heroId = 2;
-	required int32 infoId = 3;
+	required int64 infoId = 3;
 	optional bool isLock = 4;
 }
 
 message RequestHeroLevelUpCommand {
 	required int32 levelUpType = 1; //1:level 2:star 3:rare 4:skill
 	required int32 heroId = 2;
-	required int32 infoId = 3;
+	required int64 infoId = 3;
 	optional int32 skillId = 4;
-	repeated int32 costInfoId = 5;
+	repeated int64 costInfoId = 5;
 }
 
 message ResponseHeroResultCommand {
@@ -1008,7 +1008,7 @@ message ResponseDeleteHeroCommand {
 
 message RequestResetHeroSkillCommand {
 	required int32 heroId = 1;
-	required int32 infoId = 2;
+	required int64 infoId = 2;
 }
 
 message RequestLootResultCommand {
@@ -1023,13 +1023,13 @@ message ResponseLootResultCommand {
 
 message RequestAddHeroEquipCommand {
 	required int32 heroId = 1;
-	required int32 infoId = 2;
+	required int64 infoId = 2;
 	optional int32 armId = 3;
 }
 
 message RequestEquipLevelUpCommand {
         required int32 heroId = 1;
-        required int32 infoId = 2;
+        required int64 infoId = 2;
         required int32 armId = 3;
 	required int32 levelUpId = 4;
 }
@@ -1059,7 +1059,7 @@ message RequestLotteryCommand {
 }
 
 message ResponseGetUserHeroCommand {
-	repeated UserHero userHero = 1;
+	repeated HeroInfo userHero = 1;
 }
 
 message ResponseGetUserEquipCommand {
@@ -1486,7 +1486,7 @@ message ResponseSignCommand {
 
 message RequestFenjieHeroEquipCommand {
 	required int32 heroId = 1;
-	required int32 infoId = 2;
+	required int64 infoId = 2;
 	required int32 armId = 3;
 }
 

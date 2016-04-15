@@ -14,7 +14,7 @@ import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroInfoBean {
-	private int id = 0;
+	private long id = 0;
 //	private int position = 0;
 	private int heroId = 0;
 	private int level = 1;
@@ -24,12 +24,19 @@ public class HeroInfoBean {
 	private boolean isLock = false;
 	private String equipInfo = "0|0|0|0|0|0";
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
-	private boolean isNew = false;
-	public boolean isNew() {
-		return isNew;
+	private long userId = 0;
+	private String skillInfo = "";
+	public String getSkillInfo() {
+		return skillInfo;
 	}
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
+	public void setSkillInfo(String skillInfo) {
+		this.skillInfo = skillInfo;
+	}
+	public long getUserId() {
+		return userId;
+	}
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 	public boolean isLock() {
 		return isLock;
@@ -37,10 +44,10 @@ public class HeroInfoBean {
 	public void setLock(boolean isLock) {
 		this.isLock = isLock;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 //	public int getPosition() {
@@ -133,6 +140,7 @@ public class HeroInfoBean {
 		value = hero.getValue();
 		isLock = hero.isLock();
 		skillInfoList = hero.getSkillInfoList();
+		userId = hero.getUserId();
 	}
 	
 	public String toJson() {
@@ -143,9 +151,10 @@ public class HeroInfoBean {
 		json.put(VALUE, value);
 		json.put(RARE, rare);
 		json.put(LOCK, isLock);
-		json.put(NEW, isNew);
 		json.put(EQUIP_INFO, equipInfo);
 		json.put(SKILL_INFO_LIST, skillInfoList);
+		json.put(HERO_ID, heroId);
+		json.put(USER_ID, userId);
 		
 		return json.toString();
 	}
@@ -155,15 +164,15 @@ public class HeroInfoBean {
 		HeroInfoBean bean = new HeroInfoBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
-		bean.setId(json.getInt(ID));
+		bean.setId(json.getLong(ID));
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setStarLevel(json.getInt(STAR_LEVEL));
 		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
 		bean.setEquipInfo(json.getString(EQUIP_INFO));
 		bean.setRare(json.getInt(RARE));
 		bean.setLock(TypeTranslatedUtil.jsonGetBoolean(json, LOCK));
-		bean.setNew(TypeTranslatedUtil.jsonGetBoolean(json, NEW));
 		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
+		bean.setUserId(TypeTranslatedUtil.jsonGetInt(json, USER_ID));
 //		bean.setPosition(TypeTranslatedUtil.jsonGetInt(json, POSITION));
 		
 		List<SkillInfoBean> list = new ArrayList<SkillInfoBean>();
@@ -186,6 +195,7 @@ public class HeroInfoBean {
 		builder.setValue(value);
 		builder.setStar(starLevel);
 		builder.setIsLock(isLock);
+		builder.setHeroId(heroId);
 		builder.addAllSkill(buildSkillList());
 		
 		return builder.build();
@@ -213,7 +223,7 @@ public class HeroInfoBean {
 		builder.setValue(value);
 		builder.setStar(starLevel);
 		builder.addAllSkill(buildSkillList());
-		builder.setHeroId(heroId);
+		builder.setInfoId(id);
 		
 		return builder.build();
 	}
@@ -236,7 +246,6 @@ public class HeroInfoBean {
 		heroInfo.setValue(0);
 		heroInfo.setRare(1);
 		heroInfo.setLock(false);
-		heroInfo.setNew(true);
 		heroInfo.setEquipInfo(initEquipInfo(hero));
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -257,7 +266,6 @@ public class HeroInfoBean {
 		heroInfo.setValue(0);
 		heroInfo.setRare(rare);
 		heroInfo.setLock(false);
-		heroInfo.setNew(true);
 		heroInfo.setEquipInfo(initEquipInfo(hero));
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
@@ -266,6 +274,23 @@ public class HeroInfoBean {
 		heroInfo.setSkillInfoList(skillInfoList);
 		
 		return heroInfo;
+	}
+	
+	public void buildSkillInfo() {
+		JSONObject json = new JSONObject();
+		json.put(SKILL_INFO_LIST, skillInfoList);
+		
+		setSkillInfo(json.getString(SKILL_INFO_LIST));
+	}
+	
+	public void buildSkillInfoList() {
+		JSONArray array = JSONArray.fromObject(skillInfo);
+		List<SkillInfoBean> list = new ArrayList<SkillInfoBean>();
+		for (int i = 0;i < array.size(); ++i) {
+			SkillInfoBean skillInfo = SkillInfoBean.fromJson(array.getString(i));
+			list.add(skillInfo);
+		}
+		setSkillInfoList(list);
 	}
 	
 	private static String initEquipInfo(HeroBean hero) {
@@ -329,11 +354,11 @@ public class HeroInfoBean {
 	private static final String VALUE = "value";
 	private static final String RARE = "rare";
 	private static final String LOCK = "lock";
-	private static final String NEW = "new";
 	private static final String EQUIP_INFO = "equipInfo";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
 	private static final String HERO_ID = "heroId";
 //	private static final String POSITION = "position";
 	
 	private static final String EQUIP_SPLIT = "|";
+	private static final String USER_ID = "user_id";
 }

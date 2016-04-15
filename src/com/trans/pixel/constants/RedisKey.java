@@ -83,6 +83,7 @@ public class RedisKey {
 	
 	//user hero redis
 	public static final String USER_HERO_PREFIX = "user_hero_";
+	public static final String USER_NEW_HERO_PREFIX = "user_new_hero_";
 	
 	//hero upgrade redis
 	public static final String HERO_UPGRADE_LEVEL_key = CONFIG_PREFIX+"hero_upgrade_level";

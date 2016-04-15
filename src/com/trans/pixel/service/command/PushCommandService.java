@@ -13,10 +13,10 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
@@ -24,7 +24,6 @@ import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMapList;
-import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
@@ -106,22 +105,19 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user) {
-		List<UserHeroBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
 		ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 		builder.addAllUserHero(super.buildUserHeroList(userHeroList));
 		responseBuilder.setGetUserHeroCommand(builder.build());
 	}
 	
-	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user, UserHeroBean userHero) {
-		List<UserHeroBean> userHeroList = new ArrayList<UserHeroBean>();
+	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user, HeroInfoBean userHero) {
+		List<HeroInfoBean> userHeroList = new ArrayList<HeroInfoBean>();
 		userHeroList.add(userHero);
 		pushUserHeroListCommand(responseBuilder, user, userHeroList);
 	}
 	
-	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user, List<UserHeroBean> userHeroList) {
-		for (UserHeroBean userHero : userHeroList) {
-			userHero = userHeroService.refreshNew(userHero);
-		}
+	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user, List<HeroInfoBean> userHeroList) {
 		ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 		builder.addAllUserHero(super.buildUserHeroList(userHeroList));
 		responseBuilder.setGetUserHeroCommand(builder.build());
@@ -279,12 +275,12 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserDataByRewardId(Builder responseBuilder, UserBean user, int rewardId) {
-		List<UserHeroBean> heroList = new ArrayList<UserHeroBean>();
+		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		long userId = user.getId();
 		if (rewardId > RewardConst.HERO) {
-			heroList.add(userHeroService.selectUserHero(userId, rewardId % RewardConst.HERO_STAR));
+			heroList.addAll(userHeroService.selectUserNewHero(userId));
 			this.pushUserHeroListCommand(responseBuilder, user, heroList);
 		} else if (rewardId > RewardConst.PACKAGE) {
 			propList.add(userPropService.selectUserProp(userId, rewardId));
@@ -298,7 +294,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards) {
-		List<UserHeroBean> heroList = new ArrayList<UserHeroBean>();
+		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		boolean isUserUpdated = false;
@@ -306,7 +302,7 @@ public class PushCommandService extends BaseCommandService {
 		for(RewardInfo reward : rewards.getLootList()){
 			int rewardId = reward.getItemid();
 			if (rewardId > RewardConst.HERO) {
-				heroList.add(userHeroService.selectUserHero(userId, rewardId % RewardConst.HERO_STAR));
+				heroList.addAll(userHeroService.selectUserNewHero(userId));
 			} else if (rewardId > RewardConst.PACKAGE) {
 				propList.add(userPropService.selectUserProp(userId, rewardId));
 			} else if (rewardId > RewardConst.EQUIPMENT) {
@@ -334,7 +330,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, List<RewardBean> rewards, String title) {
-		List<UserHeroBean> heroList = new ArrayList<UserHeroBean>();
+		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		boolean isUserUpdated = false;
@@ -344,7 +340,7 @@ public class PushCommandService extends BaseCommandService {
 			rewardbuilder.addLoot(reward.buildRewardInfo());
 			int rewardId = reward.getItemid();
 			if (rewardId > RewardConst.HERO) {
-				heroList.add(userHeroService.selectUserHero(userId, rewardId % RewardConst.HERO_STAR));
+				heroList.addAll(userHeroService.selectUserNewHero(userId));
 			} else if (rewardId > RewardConst.PACKAGE) {
 				propList.add(userPropService.selectUserProp(userId, rewardId));
 			} else if (rewardId > RewardConst.EQUIPMENT) {

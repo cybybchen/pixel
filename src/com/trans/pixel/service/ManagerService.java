@@ -15,9 +15,9 @@ import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.model.userinfo.UserHeroBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
@@ -326,7 +326,7 @@ public class ManagerService extends RedisService{
 			JSONObject object = JSONObject.fromObject(req.get("update-hero"));
 			for(String key : map.keySet()){
 				if(!object.keySet().contains(key)){
-					UserHeroBean bean = UserHeroBean.fromJson(map.get(key));
+					HeroInfoBean bean = HeroInfoBean.fromJson(map.get(key));
 					userHeroService.delUserHero(bean);
 //					hdelete(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId, key);
 				}
