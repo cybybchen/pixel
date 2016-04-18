@@ -19,6 +19,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderUserInfoCommand;
@@ -54,6 +55,18 @@ public class LadderCommandService extends BaseCommandService {
 	
 	public void handleGetUserLadderRankListCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
 		super.handleGetUserLadderRankListCommand(responseBuilder, user);
+	}
+	
+	public void readyAttackLadder(RequestReadyAttackLadderCommand cmd, Builder responseBuilder, UserBean user) {
+		ResultConst result = ladderService.readyAttack(user);
+		if (result instanceof ErrorConst) {
+			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		responseBuilder.setMessageCommand(this.buildMessageCommand(result));
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void attackLadderMode(RequestAttackLadderModeCommand cmd, Builder responseBuilder, UserBean user) {	

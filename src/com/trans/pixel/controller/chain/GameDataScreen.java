@@ -56,6 +56,7 @@ import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
+import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -704,6 +705,11 @@ public class GameDataScreen extends RequestScreen {
 		pvpCommandService.refreshMap(cmd, responseBuilder, user);
 		return true;//RefreshPvpMapCommand
 	}//RefreshPvpMapCommand
+	@Override//ReadyAttackLadderCommand
+	protected boolean handleCommand(RequestReadyAttackLadderCommand cmd, Builder responseBuilder, UserBean user) {
+		ladderCommandService.readyAttackLadder(cmd, responseBuilder, user);
+		return true;//ReadyAttackLadderCommand
+	}//ReadyAttackLadderCommand
 	//add handleCommand here
 
 	@Override

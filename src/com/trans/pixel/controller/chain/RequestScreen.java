@@ -52,6 +52,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
+import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -318,6 +319,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestReadyAttackLadderCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -918,6 +920,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//RefreshPvpMapCommand
                 result = handleCommand(cmd, responseBuilder, user);//RefreshPvpMapCommand
         }//RefreshPvpMapCommand
+        if (request.hasReadyAttackLadderCommand()) {
+            RequestReadyAttackLadderCommand cmd = request.getReadyAttackLadderCommand();
+            if (result)//ReadyAttackLadderCommand
+                result = handleCommand(cmd, responseBuilder, user);//ReadyAttackLadderCommand
+        }//ReadyAttackLadderCommand
         //call handleCommand here
         
         return result;

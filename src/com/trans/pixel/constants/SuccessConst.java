@@ -22,7 +22,7 @@ public enum SuccessConst implements ResultConst {
     RESET_SKILL_SUCCESS(1101, "技能重置成功"), MAIL_SEND_SUCCESS(1102, "邮件发送成功"), HELP_ATTACK_SUCCESS(1103, "帮助小弟成功"), MOHUACARD_USE_SUCCESS(1104, "魔化卡片使用成功"),
     MOHUA_SUBMIT_SUCCESS(1105, "魔化之地成绩提交成功"), MOHUA_END_SUCCESS(1106, "退出魔化之地"), DEL_FRIEND_SUCCESS(1107, "成功删除好友"), 
     SUBMIT_ZHANLI_SUCCESS(1108, "战力提交成功"), ACTIVITY_REWARD_SUCCESS(1109, "奖励领取成功"), RECHARGE_SUCCESS(1110, "充值成功（cheat）"),
-    SUBMIT_SUCCESS(1111, "上传成功");
+    SUBMIT_SUCCESS(1111, "上传成功"), READY_ATTACK_LADDER_SUCCESS(1112, "天梯准备成功");
 
     private final int code;
 

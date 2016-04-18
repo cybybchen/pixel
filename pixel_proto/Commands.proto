@@ -1093,6 +1093,10 @@ message ResponseAttackLadderModeCommand {
 	required string msg = 2;
 }
 
+message RequestReadyAttackLadderCommand {
+
+}
+
 message RequestGetLadderUserInfoCommand {
 	required uint64 rank = 1;
 }
@@ -1761,6 +1765,7 @@ message RequestCommand {
 	optional RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;
 	optional RequestBuyLootPackageCommand buyLootPackageCommand = 84;
 	optional RequestSubmitIconCommand submitIconCommand = 85;
+	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
 }
 // response command list transfer only use it
 message ResponseCommand {

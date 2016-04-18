@@ -138,6 +138,16 @@ public class LadderService {
 		return ladderRedisService.getRankList(serverId, RankConst.RANK_LIST_START, RankConst.RANK_LIST_END);
 	}
 	
+	public ResultConst readyAttack(UserBean user) {
+		if (user.getLadderModeLeftTimes() <= 0)
+			return ErrorConst.NOT_ENOUGH_LADDER_MODE_TIMES;
+		
+		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
+		userService.updateUser(user);
+		
+		return SuccessConst.READY_ATTACK_LADDER_SUCCESS;
+	}
+	
 	public ResultConst attack(UserBean user, long attackRank, boolean result, long teamid) {
 		int serverId = user.getServerId();
 		if (user.getLadderModeLeftTimes() <= 0)
