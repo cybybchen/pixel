@@ -50,6 +50,7 @@ public class RedisKey {
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "mysql_update:";
+	public final static String DELETE_MYSQL_KEY = "mysql_delete:";
 	
 	//xiaoguan redis
 	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";

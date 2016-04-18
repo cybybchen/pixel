@@ -40,9 +40,9 @@
 		from user_hero where user_id=#{userId}
 	</select>
 	
-	<delete id="deleteUserHero" parameterType="long">
+	<delete id="deleteUserHero">
 		DELETE *
-		from user_hero where user_id=#{userId} and id=#{infoId}
+		from user_hero where user_id=#{userId} and info_id=#{infoId}
 	</delete>
 	
 </mapper>

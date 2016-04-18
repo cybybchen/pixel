@@ -48,6 +48,6 @@ public class PropCommandService extends BaseCommandService {
 			builder.addUserProp(userProp.buildUserProp());
 		responseBuilder.setUsePropCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward);
-		pusher.pushUserPropListCommand(responseBuilder, user);
+//		pusher.pushUserPropListCommand(responseBuilder, user);
 	}
 }

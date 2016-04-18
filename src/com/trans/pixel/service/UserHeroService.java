@@ -84,8 +84,6 @@ public class UserHeroService {
 	}
 	
 	public void addUserHero(HeroInfoBean userHero) {
-		userHero.buildSkillInfo();
-		userHeroMapper.addUserHero(userHero);
 		userHeroRedisService.addUserHero(userHero);
 	}
 	
@@ -93,7 +91,11 @@ public class UserHeroService {
 		HeroInfoBean userHero = userHeroRedisService.selectUserHero(userId, id);
 		if(userHero != null) {
 			userHero.buildSkillInfo();
-			userHeroMapper.updateUserHero(userHero);
+			HeroInfoBean dbUserHero = userHeroMapper.selectUserHero(userId, id);
+			if (dbUserHero == null)
+				userHeroMapper.addUserHero(userHero);
+			else
+				userHeroMapper.updateUserHero(userHero);
 		}
 	}
 	
@@ -101,8 +103,12 @@ public class UserHeroService {
 		userHeroMapper.deleteUserHero(userId, infoId);
 	}
 	
-	public String popDBKey(){
-		return userHeroRedisService.popDBKey();
+	public String popUpdateDBKey(){
+		return userHeroRedisService.popUpdateDBKey();
+	}
+	
+	public String popDeleteDBKey(){
+		return userHeroRedisService.popDeleteDBKey();
 	}
 	
 	public void addUserHero(UserBean user, int heroId, int star, int count) {

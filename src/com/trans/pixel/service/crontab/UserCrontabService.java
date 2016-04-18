@@ -38,15 +38,19 @@ public class UserCrontabService {
 		while((key=userService.popDBKey()) != null){
 			userService.updateToDB(key);
 		}
-		while((key=userHeroService.popDBKey()) != null){
+		while((key=userHeroService.popUpdateDBKey()) != null){
 			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[1]);
-			int infoId = Integer.parseInt(keys[2]);
-			String key0 = keys[0];
-			if (key0.equals("delete"))
-				userHeroService.deleteToDB(userId, infoId);
-			else
-				userHeroService.updateToDB(userId, infoId);
+			long userId = Long.parseLong(keys[0]);
+			int infoId = Integer.parseInt(keys[1]);
+			
+			userHeroService.updateToDB(userId, infoId);
+		}
+		while((key=userHeroService.popDeleteDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int infoId = Integer.parseInt(keys[1]);
+			
+			userHeroService.deleteToDB(userId, infoId);
 		}
 		while((key=userEquipService.popDBKey()) != null){
 			String keys[] = key.split("#");

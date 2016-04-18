@@ -7,14 +7,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
@@ -82,7 +81,10 @@ public class LadderCommandService extends BaseCommandService {
 		
 		if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
 			pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
-			updateUserLadderHistoryTop(user, attackRank, responseBuilder);
+			MultiReward rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
+			if (rewards.getLootList().size() > 0) {
+				pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
+			}
 		} 
 		
 		/**
@@ -106,15 +108,32 @@ public class LadderCommandService extends BaseCommandService {
 		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}
 	
-	private void updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
+//	private void updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
+//		long oldRank = user.getLadderModeHistoryTop();
+//		if (oldRank > newRank) {
+//			user.setLadderModeHistoryTop(newRank);
+//			userService.updateUser(user);
+//			String content = "天梯奖励";
+//			List<RewardBean> rewardList = ladderService.getRankChangeReward(newRank, oldRank);
+//			MailBean mail = super.buildMail(user.getId(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
+//			mailService.addMail(mail);
+//		}
+//	}
+	
+	private MultiReward updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 		long oldRank = user.getLadderModeHistoryTop();
 		if (oldRank > newRank) {
 			user.setLadderModeHistoryTop(newRank);
 			userService.updateUser(user);
-			String content = "天梯奖励";
+			String content = "恭喜您天梯历史最高排名进步了" + (oldRank - newRank) + "名";
 			List<RewardBean> rewardList = ladderService.getRankChangeReward(newRank, oldRank);
-			MailBean mail = super.buildMail(user.getId(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
-			mailService.addMail(mail);
+			rewards.addAllLoot(RewardBean.buildRewardInfoList(rewardList));
+			rewards.setName(content);
+//			MailBean mail = super.buildMail(user.getId(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
+//			mailService.addMail(mail);
 		}
+		
+		return rewards.build();
 	}
 }

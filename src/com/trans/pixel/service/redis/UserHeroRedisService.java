@@ -68,7 +68,7 @@ public class UserHeroRedisService extends RedisService{
 		this.hput(key, "" + userHero.getId(), userHero.toJson());	
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	
-		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, "update#" + userHero.getUserId()+"#"+userHero.getId());
+		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, userHero.getUserId()+"#"+userHero.getId());
 	}
 	
 	public void addUserHero(final HeroInfoBean userHero) {
@@ -76,6 +76,8 @@ public class UserHeroRedisService extends RedisService{
 		
 		this.hput(key, "" + userHero.getId(), userHero.toJson());	
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		
+		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, userHero.getUserId()+"#"+userHero.getId());
 	}
 	
 	public void deleteUserHero(final long userId, final long id) {
@@ -93,11 +95,15 @@ public class UserHeroRedisService extends RedisService{
 				return null;
 			}
 		});
-		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, "delete#" + userId+"#" + id);
+		sadd(RedisKey.DELETE_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, userId+"#" + id);
 	}
 	
-	public String popDBKey(){
+	public String popUpdateDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX);
+	}
+	
+	public String popDeleteDBKey(){
+		return spop(RedisKey.DELETE_MYSQL_KEY+RedisKey.USER_HERO_PREFIX);
 	}
 	
 	public void updateUserHeroList(final List<HeroInfoBean> userHeroList, final long userId) {
