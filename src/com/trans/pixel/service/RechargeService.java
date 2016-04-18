@@ -8,9 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.LogString;
-import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.utils.LogUtils;

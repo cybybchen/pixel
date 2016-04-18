@@ -25,7 +25,7 @@ public class UserPokedeRedisService extends RedisService {
 	}
 	
 	public UserPokedeBean selectUserPokede(final long userId, final int heroId) {
-		String value = hget(RedisKey.USER_POKEDE_PREFIX + userId, "" + userId);
+		String value = hget(RedisKey.USER_POKEDE_PREFIX + userId, "" + heroId);
 		if (value == null)
 			return null;
 		
