@@ -38,9 +38,10 @@ public class RechargeService {
 //		int rmb = id;
 //		int jewel = id;
     	user.setJewel(user.getJewel()+jewel);
-    	UserAchieveBean bean = userAchieveService.selectUserAchieve(user.getId(), AchieveConst.TYPE_RECHARGE_RMB);
-    	int base = bean.getCompleteCount();
-    	int complete = base+rmb;
+//    	UserAchieveBean bean = userAchieveService.selectUserAchieve(user.getId(), AchieveConst.TYPE_RECHARGE_RMB);
+//    	int base = bean.getCompleteCount();
+//    	int complete = base+rmb;
+    	int complete = user.getRechargeRecord()+rmb;
     	while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
 	    	if(vip == null || complete < vip.getRmb())
@@ -58,10 +59,9 @@ public class RechargeService {
 				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());
 				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
 			}
-//			userService.updateUser(user);
 	    }
-    	bean.setCompleteCount(complete);
-    	userAchieveService.updateUserAchieve(bean);
+//    	bean.setCompleteCount(complete);
+//    	userAchieveService.updateUserAchieve(bean);
 		
 		activityService.rechargeActivity(user, jewel);
 		
