@@ -50,6 +50,7 @@
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 			<!-- <a href="#" class="nav-btn ui-btn ui-btn-inline" userid="2">Anchor</a> -->
 		</div>
+		<small id="current-userid" style="display:block;margin-top:8px;margin-left:50px;font-size: 0.8em;"></small>
 		<form id="rewardForm" class="ui-grid-a" style="display:none;">
 			<div class="ui-block-a">
 	        	<label>RewardId:</label>

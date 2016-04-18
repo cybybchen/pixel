@@ -407,7 +407,7 @@ public class ManagerService extends RedisService{
 		}
 		
 		if(req.containsKey("update-pokede")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId);
+			Map<String, String> map = hget(RedisKey.USER_POKEDE_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pokede"));
 			for(String key : map.keySet()){
 				if(!object.keySet().contains(key)){
@@ -420,14 +420,14 @@ public class ManagerService extends RedisService{
 			for(Object key : object.keySet()){
 				map.put(key.toString(), object.get(key).toString());
 			}
-			hputAll(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId, map);
+			hputAll(RedisKey.USER_POKEDE_PREFIX + userId, map);
 			req.put("pokede", 1);
 		}else if(req.containsKey("del-pokede")){
-			delete(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId);
+			delete(RedisKey.USER_POKEDE_PREFIX + userId);
 			req.put("pokede", 1);
 		}
 		if(req.containsKey("pokede")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId);
+			Map<String, String> map = hget(RedisKey.USER_POKEDE_PREFIX + userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("pokede", object);

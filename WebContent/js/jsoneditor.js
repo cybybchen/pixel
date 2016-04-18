@@ -87,6 +87,8 @@ function addUserTab(){
         $(".nav-userbtn").removeClass("nav-btn-active");
         $($(".nav-userbtn")[0]).addClass("nav-btn-active");
     }
+
+    $("#current-userid").text("UserId: "+userid);
 }
 
 function appendUserData(key, value){
@@ -98,7 +100,6 @@ function appendUserData(key, value){
         editor.appendTo("#user-editor");
     }
     editor.find(".json-editor-title span").text(key);
-    if(key == "UserData") editor.find(".json-editor-title small").text("UserId: "+value["id"]);
     editor.find(".json-editor-title").attr("key", key);
     editor.find(".json-editor").jsonEditor(value, { change: updateJSON, propertyclick: showPath });
     editor.find(".json").val(JSON.stringify(value));
