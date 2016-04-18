@@ -31,8 +31,9 @@
 	</insert>
 	
 	<update id="updateUserHero" parameterType="com.trans.pixel.model.hero.info.HeroInfoBean">
-	    update INTO user_hero set user_id=#{userId}, hero_id=#{heroId}, info_id=#{id}, level=#{level}, star_level=#{starLevel},
+	    update user_hero set level=#{level}, star_level=#{starLevel},
 	    value#{value}, rare#{rare}, is_lock#{isLock}, equip_info#{equipInfo}, skill_info#{skillInfo}
+	    where user_id=#{userId} and info_id=#{id}
 	</update>
 	
 	<select id="selectUserHeroList" parameterType="long" resultMap="resultMap">
