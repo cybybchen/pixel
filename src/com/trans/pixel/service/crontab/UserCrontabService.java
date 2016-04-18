@@ -44,7 +44,7 @@ public class UserCrontabService {
 			int infoId = Integer.parseInt(keys[2]);
 			String key0 = keys[0];
 			if (key0.equals("delete"))
-				userHeroService.deleteToDB(infoId);
+				userHeroService.deleteToDB(userId, infoId);
 			else
 				userHeroService.updateToDB(userId, infoId);
 		}

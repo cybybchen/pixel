@@ -24,11 +24,13 @@ public class UserHeroService {
 	private ActivityService activityService;
 	@Resource
 	private UserPokedeService userPokedeService;
+	@Resource
+	private UserService userService;
 	
 	public HeroInfoBean selectUserHero(long userId, long infoId) {
 		HeroInfoBean userHero = userHeroRedisService.selectUserHero(userId, infoId);
 		if (userHero == null) {
-			userHero = userHeroMapper.selectUserHero(infoId);
+			userHero = userHeroMapper.selectUserHero(userId, (int)infoId);
 			if (userHero != null)
 				userHero.buildSkillInfoList();
 		}
@@ -95,8 +97,8 @@ public class UserHeroService {
 		}
 	}
 	
-	public void deleteToDB(int id) {
-		userHeroMapper.deleteUserHero(id);
+	public void deleteToDB(long userId, int infoId) {
+		userHeroMapper.deleteUserHero(userId, infoId);
 	}
 	
 	public String popDBKey(){
@@ -122,9 +124,12 @@ public class UserHeroService {
 		
 		int addCount = 0;
 		while (addCount < count) {
+			newHero.setId(user.updateHeroInfoId());
 			addUserHero(newHero);
 			++addCount;
 		}
+		
+		userService.updateUser(user);
 	}
 	
 	private HeroInfoBean initUserHero(long userId, int heroId, int star) {

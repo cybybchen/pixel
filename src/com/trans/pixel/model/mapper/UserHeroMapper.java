@@ -8,7 +8,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 
 public interface UserHeroMapper {
 	
-	public HeroInfoBean selectUserHero(long id);
+	public HeroInfoBean selectUserHero(@Param("userId") long userId, @Param("infoId") int infoId);
 	
 	public HeroInfoBean selectUserHeroByHeroId(@Param("userId") long userId, @Param("heroId") int heroId);
 	
@@ -18,5 +18,5 @@ public interface UserHeroMapper {
 	
 	public List<HeroInfoBean> selectUserHeroList(long userId);
 	
-	public int deleteUserHero(long id);
+	public int deleteUserHero(@Param("userId") long userId, @Param("infoId") int infoId);
 }

@@ -61,6 +61,7 @@ public class UserBean {
 	private String composeSkill = "";
 	private int rechargeRecord = 0;
 	private long refreshPvpMapTime = 0;
+	private int heroInfoId = 0;
 	/**
 	 * 下次pvp刷新时间
 	 */
@@ -712,6 +713,19 @@ public class UserBean {
 	}
 	public void setRechargeRecord(int rechargeRecord) {
 		this.rechargeRecord = rechargeRecord;
+	}
+	/**
+	 * 英雄的infoId，递增
+	 */
+	public int getHeroInfoId() {
+		return heroInfoId;
+	}
+	public void setHeroInfoId(int heroInfoId) {
+		this.heroInfoId = heroInfoId;
+	}
+	public int updateHeroInfoId() {
+		heroInfoId++;
+		return heroInfoId;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
