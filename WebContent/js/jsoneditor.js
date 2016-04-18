@@ -195,6 +195,9 @@ function appendUserDatas(message){
     if(message["hero"]!=null){
         appendUserData("hero", message["hero"]);
     }
+    if(message["pokede"]!=null){
+        appendUserData("pokede", message["pokede"]);
+    }
     if(message["equip"]!=null){
         appendUserData("equip", message["equip"]);
     }
@@ -288,6 +291,7 @@ function buildUserJson(key, value){
             json["teamCache"] = 1;
         }else if(datatype == "hero"){
             json["hero"] = 1;
+            json["pokede"] = 1;
         }else if(datatype == "equip"){
             json["equip"] = 1;
             json["prop"] = 1;

@@ -29,8 +29,7 @@ public class UserPokedeRedisService extends RedisService {
 		if (value == null)
 			return null;
 		
-		JSONObject json = JSONObject.fromObject(value);
-		return (UserPokedeBean) JSONObject.toBean(json, UserPokedeBean.class);
+		return UserPokedeBean.fromJson(value);
 	}
 	
 	public List<UserPokedeBean> selectUserPokedeList(final long userId) {

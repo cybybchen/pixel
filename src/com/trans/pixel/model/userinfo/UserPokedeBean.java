@@ -1,5 +1,7 @@
 package com.trans.pixel.model.userinfo;
 
+import net.sf.json.JSONObject;
+
 import com.trans.pixel.protoc.Commands.HeroInfo;
 
 public class UserPokedeBean {
@@ -32,5 +34,12 @@ public class UserPokedeBean {
 		builder.setRare(rare);
 		
 		return builder.build();
+	}
+	
+	public static UserPokedeBean fromJson(String value) {
+		if (value == null)
+			return null;
+		JSONObject json = JSONObject.fromObject(value);
+		return (UserPokedeBean) JSONObject.toBean(json, UserPokedeBean.class);
 	}
 }

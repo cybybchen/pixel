@@ -18,6 +18,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
@@ -56,6 +57,8 @@ public class ManagerService extends RedisService{
     private RewardService rewardService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private UserPokedeService userPokedeService;
 	@Resource
 	private UserHeroService userHeroService;
 	@Resource
@@ -105,6 +108,7 @@ public class ManagerService extends RedisService{
 		int rewardCount = TypeTranslatedUtil.jsonGetInt(req, "rewardCount");
 		if(rewardId > 0 && rewardCount > 0){
 			rewardService.doReward(userId, rewardId, rewardCount);
+			userHeroService.selectUserNewHero(userId);
 			result.put("success", "奖励发放成功");
 		}
 		
@@ -400,6 +404,33 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("prop", object);
+		}
+		
+		if(req.containsKey("update-pokede")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-pokede"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					UserPokedeBean userPokede = UserPokedeBean.fromJson(map.get(key));
+					userPokedeService.delUserPokede(userPokede, userId);
+//					hdelete(RedisKey.PREFIX + RedisKey.USER_Pokede_PREFIX + userId, key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId, map);
+			req.put("pokede", 1);
+		}else if(req.containsKey("del-pokede")){
+			delete(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId);
+			req.put("pokede", 1);
+		}
+		if(req.containsKey("pokede")){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_POKEDE_PREFIX + userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("pokede", object);
 		}
 
 		if(req.containsKey("update-areaMonster")){

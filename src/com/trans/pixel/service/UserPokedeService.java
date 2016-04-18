@@ -54,6 +54,11 @@ public class UserPokedeService {
 		}
 	}
 	
+	public void delUserPokede(UserPokedeBean userPokede, long userId){
+		userPokede.setRare(0);
+		updateUserPokede(userPokede, userId);
+	}
+	
 	private UserPokedeBean initUserPokede(long userId, int heroId) {
 		UserPokedeBean UserPokede = new UserPokedeBean();
 		UserPokede.setHeroId(heroId);
