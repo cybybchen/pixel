@@ -154,6 +154,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserPropListCommand(responseBuilder, user);
 		pushCommandService.pushPvpMapListCommand(responseBuilder, user);
 		pushCommandService.pushUserAchieveCommand(responseBuilder, user);
+		pushCommandService.pushUserHeadCommand(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {
