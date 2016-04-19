@@ -87,10 +87,10 @@ public class UserCommandService extends BaseCommandService {
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
 
-		pushCommand(responseBuilder, user);
-		
 		addRegisterHero(user);
 		addRegisterTeam(user);
+		
+		pushCommand(responseBuilder, user);
 	}
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
