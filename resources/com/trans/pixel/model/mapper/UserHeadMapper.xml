@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserPropMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserHeadBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="headId" column="head_id" />
+	</resultMap>
+	
+	<select id="selectUserHead" resultMap="resultMap">
+		SELECT *
+		from user_head where user_id=#{userId} and head_id=#{HeadId} limit 1
+	</select>
+	
+	<insert id="insertHeadProp" parameterType="com.trans.pixel.model.userinfo.UserHeadBean">
+	    INSERT INTO user_head(user_id, head_id)
+	    VALUES(#{userId}, #{headId})
+	</insert>
+	
+	<select id="selectUserHeadList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_head where user_id=#{userId}
+	</select>
+	
+</mapper>

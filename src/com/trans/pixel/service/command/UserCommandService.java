@@ -17,6 +17,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -25,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
@@ -44,6 +46,8 @@ public class UserCommandService extends BaseCommandService {
 	private UserHeroService userHeroService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private UserHeadService userHeadService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -95,6 +99,14 @@ public class UserCommandService extends BaseCommandService {
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
 		int icon = cmd.getIcon();
+		if (icon < 61000) {
+			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), icon);
+			if (userHead == null) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
+				responseBuilder.setErrorCommand(errorCommand);
+				return;
+			}
+		}
 		user.setIcon(icon);
 
 		userService.cache(user.getServerId(), user.buildShort());

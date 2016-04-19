@@ -185,4 +185,7 @@ public class RedisKey {
 	
 	//loot time
 	public static final String LOOTTIME_CONFIG = PREFIX + CONFIG_PREFIX + "loottime";
+	
+	//user head
+	public static final String USER_HEAD_PREFIX = PREFIX + "user_head_";
 }

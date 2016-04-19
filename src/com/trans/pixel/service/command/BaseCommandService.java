@@ -19,6 +19,7 @@ import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
+import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
@@ -35,6 +36,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserAchieve;
 import com.trans.pixel.protoc.Commands.UserEquip;
 import com.trans.pixel.protoc.Commands.UserFriend;
+import com.trans.pixel.protoc.Commands.UserHead;
 import com.trans.pixel.protoc.Commands.UserProp;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.protoc.Commands.UserTeam;
@@ -257,5 +259,14 @@ public class BaseCommandService {
 		}
 		
 		return userAchieveBuilderList;
+	}
+	
+	protected List<UserHead> buildUserHeadList(List<UserHeadBean> userHeadList) {
+		List<UserHead> builderList = new ArrayList<UserHead>();
+		for (UserHeadBean userHead : userHeadList) {
+			builderList.add(userHead.buildUserHead());
+		}
+		
+		return builderList;
 	}
 }

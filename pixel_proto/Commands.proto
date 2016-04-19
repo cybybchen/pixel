@@ -894,6 +894,10 @@ message LootTime {
 	required int32 loottime = 2;
 }
 
+message UserHead {
+	required int32 headId = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1652,6 +1656,10 @@ message RequestCheatRechargeCommand{
 	optional int32 jewel = 2;
 }
 
+message ResponseUserHeadCommand {
+	repeated UserHead userHead = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1832,6 +1840,7 @@ message ResponseCommand {
 	optional ResponseRankCommand rankCommand = 48;
 	optional ResponseEquipResultCommand equipResultCommand = 49;
 	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
+	optional ResponseUserHeadCommand userHeadCommand = 51;
 }
 
 
