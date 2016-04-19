@@ -112,11 +112,12 @@ public class ShopRedisService extends RedisService{
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity comm : commsbuilder.getItemList()){
+		for(Commodity.Builder comm : commsbuilder.getItemBuilderList()){
 			CommodityList.Builder comms = map.get(comm.getWill());
 			if(comms == null){
 				comms = CommodityList.newBuilder();
 			}
+			comm.clearName();
 			comms.addItem(comm);
 			map.put(comm.getWill(), comms);
 		}
@@ -199,11 +200,12 @@ public class ShopRedisService extends RedisService{
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity comm : commsbuilder.getItemList()){
+		for(Commodity.Builder comm : commsbuilder.getItemBuilderList()){
 			CommodityList.Builder comms = map.get(comm.getWill());
 			if(comms == null){
 				comms = CommodityList.newBuilder();
 			}
+			comm.clearName();
 			comms.addItem(comm);
 			map.put(comm.getWill(), comms);
 		}
@@ -286,11 +288,12 @@ public class ShopRedisService extends RedisService{
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity comm : commsbuilder.getItemList()){
+		for(Commodity.Builder comm : commsbuilder.getItemBuilderList()){
 			CommodityList.Builder comms = map.get(comm.getWill());
 			if(comms == null){
 				comms = CommodityList.newBuilder();
 			}
+			comm.clearName();
 			comms.addItem(comm);
 			map.put(comm.getWill(), comms);
 		}
@@ -373,11 +376,12 @@ public class ShopRedisService extends RedisService{
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity comm : commsbuilder.getItemList()){
+		for(Commodity.Builder comm : commsbuilder.getItemBuilderList()){
 			CommodityList.Builder comms = map.get(comm.getWill());
 			if(comms == null){
 				comms = CommodityList.newBuilder();
 			}
+			comm.clearName();
 			comms.addItem(comm);
 			map.put(comm.getWill(), comms);
 		}
@@ -460,11 +464,12 @@ public class ShopRedisService extends RedisService{
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity comm : commsbuilder.getItemList()){
+		for(Commodity.Builder comm : commsbuilder.getItemBuilderList()){
 			CommodityList.Builder comms = map.get(comm.getWill());
 			if(comms == null){
 				comms = CommodityList.newBuilder();
 			}
+			comm.clearName();
 			comms.addItem(comm);
 			map.put(comm.getWill(), comms);
 		}
@@ -552,11 +557,12 @@ public class ShopRedisService extends RedisService{
 		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
 		parseXml(xml, commsbuilder);
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity comm : commsbuilder.getItemList()){
+		for(Commodity.Builder comm : commsbuilder.getItemBuilderList()){
 			CommodityList.Builder comms = map.get(comm.getWill());
 			if(comms == null){
 				comms = CommodityList.newBuilder();
 			}
+			comm.clearName();
 			comms.addItem(comm);
 			map.put(comm.getWill(), comms);
 		}
@@ -633,7 +639,10 @@ public class ShopRedisService extends RedisService{
 		String xml = ReadConfig("lol_shop2.xml");
 		parseXml(xml, commsbuilder);
 		ShopList.Builder shoplist = ShopList.newBuilder();
-		shoplist.addAllItems(commsbuilder.getItemList());
+		for(Commodity.Builder comm : commsbuilder.getItemBuilderList()){
+			comm.clearName();
+			shoplist.addItems(comm);
+		}
 		saveShop(shoplist.build());
 		return shoplist.build();
 	}
