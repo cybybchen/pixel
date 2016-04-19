@@ -284,7 +284,9 @@ public class PvpMapService {
 //						enemyCount++;
 //				}
 				/*if(mineCount/5 >= enemyCount)*/{
-					redis.saveMine(userId, mine.build());
+					PVPMine othermine = redis.getMine(userId, id);
+					if(othermine.getEndTime() <= redis.now())
+						redis.saveMine(userId, mine.build());
 				}
 				mine.clearOwner();
 				redis.saveMine(user.getId(), mine.build());
