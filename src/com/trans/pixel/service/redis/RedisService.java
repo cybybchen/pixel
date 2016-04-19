@@ -249,6 +249,7 @@ public class RedisService {
 	 * 清除同步锁
 	 */
 	public void clearLock(final String key) {
+		logger.debug("clear lock key:" + key);
 		delete(key);
 	}
 	
