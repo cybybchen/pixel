@@ -76,7 +76,7 @@ public class HeroLevelUpService {
 	public ResultConst addHeroEquip(UserBean user, HeroInfoBean heroInfo, int heroId, int armId, List<UserEquipBean> userEquipList) {
 		ResultConst result = ErrorConst.EQUIP_HAS_ADD;
 		int equipId = heroInfo.getEquipIdByArmId(armId);
-		if (equipId == 0 || equipId == 1) {
+		if (equipId == 0) {
 			HeroEquipBean equip = heroService.getHeroEquip(heroId);
 			if (equip != null) {
 				result = ErrorConst.NOT_ENOUGH_EQUIP;
@@ -117,7 +117,8 @@ public class HeroLevelUpService {
 						heroInfo.updateEquipIdByArmId(levelUpId, armId);
 						result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
 					}
-				}
+				} else
+					result = ErrorConst.EQUIP_LEVELUP_ERROR;
 			}
 		}
 			

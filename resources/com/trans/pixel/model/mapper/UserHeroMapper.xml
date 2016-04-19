@@ -32,7 +32,7 @@
 	
 	<update id="updateUserHero" parameterType="com.trans.pixel.model.hero.info.HeroInfoBean">
 	    update user_hero set level=#{level}, star_level=#{starLevel},
-	    value#{value}, rare#{rare}, is_lock#{isLock}, equip_info#{equipInfo}, skill_info#{skillInfo}
+	    value=#{value}, rare=#{rare}, is_lock=#{isLock}, equip_info=#{equipInfo}, skill_info=#{skillInfo}
 	    where user_id=#{userId} and info_id=#{id}
 	</update>
 	
@@ -42,7 +42,7 @@
 	</select>
 	
 	<delete id="deleteUserHero">
-		DELETE *
+		DELETE 
 		from user_hero where user_id=#{userId} and info_id=#{infoId}
 	</delete>
 	
