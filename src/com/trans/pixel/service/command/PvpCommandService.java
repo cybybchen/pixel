@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
+import com.trans.pixel.protoc.Commands.ResponsePVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
@@ -125,11 +126,12 @@ public class PvpCommandService extends BaseCommandService {
 				team = Team.newBuilder().build();
 			else
 				team = userTeamService.getTeamCache(mine.getOwner().getId());
-			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
+			ResponsePVPMineInfoCommand.Builder builder= ResponsePVPMineInfoCommand.newBuilder();
 			builder.addAllHeroInfo(team.getHeroInfoList());
 			if(team.hasUser())
 				builder.setUser(team.getUser());
-			responseBuilder.setTeamCommand(builder);
+			builder.setMineInfo(mine);
+			responseBuilder.setPvpMineInfoCommand(builder);
 		}
 	}
 

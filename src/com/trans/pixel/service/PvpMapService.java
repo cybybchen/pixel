@@ -285,10 +285,11 @@ public class PvpMapService {
 //				}
 				/*if(mineCount/5 >= enemyCount)*/{
 					PVPMine othermine = redis.getMine(userId, id);
-					if(othermine.getEndTime() <= redis.now())
+					if(othermine == null || othermine.getEndTime() <= redis.now() || othermine.getEnemyid() == user.getId())
 						redis.saveMine(userId, mine.build());
 				}
 				mine.clearOwner();
+				mine.setEnemyid(userId);
 				redis.saveMine(user.getId(), mine.build());
 			}
 		}

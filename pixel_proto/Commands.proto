@@ -454,7 +454,7 @@ message PVPMine{//pvp矿点
 	optional int32 y = 3;
 	optional int32 type = 4;
 	optional int32 yield = 5;//产量
-	optional int32 enemyid = 6;
+	optional int64 enemyid = 6;
 	optional UserInfo owner = 8;//占领者
 	optional int64 endTime = 9;
 	optional int32 level = 10;//每一级提升防守方战斗力5%
@@ -1446,6 +1446,12 @@ message RequestPVPMineInfoCommand {//pvp矿点对手信息
 	required int32 id = 1;
 }
 
+message ResponsePVPMineInfoCommand {
+	repeated HeroInfo heroInfo = 1;
+	optional UserInfo user = 2;
+	optional PVPMine mineInfo = 3;
+}
+
 message RequestAttackPVPMineCommand {//攻击pvp矿点对手
 	required int32 id = 1;
 	required int32 teamid = 2;
@@ -1783,6 +1789,7 @@ message ResponseCommand {
 	optional ResponseGetTeamCommand teamCommand = 123;
 	optional ResponsePVPMapListCommand pvpMapListCommand = 125;
 	optional ResponseAreaEquipCommand areaEquipCommand = 137;
+	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;
