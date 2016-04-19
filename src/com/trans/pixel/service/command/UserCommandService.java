@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
@@ -23,7 +25,9 @@ import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -36,6 +40,10 @@ public class UserCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private UserHeroService userHeroService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -80,6 +88,9 @@ public class UserCommandService extends BaseCommandService {
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
 
 		pushCommand(responseBuilder, user);
+		
+		addRegisterHero(user);
+		addRegisterTeam(user);
 	}
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
@@ -91,6 +102,23 @@ public class UserCommandService extends BaseCommandService {
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 //		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
+	}
+	
+	private void addRegisterHero(UserBean user) {
+		userHeroService.addUserHero(user, 42, 1, 1);
+		userHeroService.selectUserNewHero(user.getId());
+	}
+	
+	private void addRegisterTeam(UserBean user) {
+		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+		String teamRecord = "";
+		for (HeroInfoBean hero : userHeroList) {
+			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
+			break;
+		}
+		
+		if (!teamRecord.isEmpty())
+			userTeamService.addUserTeam(user.getId(), teamRecord, "");
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {
