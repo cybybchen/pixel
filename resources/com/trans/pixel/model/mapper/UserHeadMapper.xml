@@ -13,7 +13,7 @@
 		from user_head where user_id=#{userId} and head_id=#{headId} limit 1
 	</select>
 	
-	<insert id="insertHeadProp" parameterType="com.trans.pixel.model.userinfo.UserHeadBean">
+	<insert id="insertUserHead" parameterType="com.trans.pixel.model.userinfo.UserHeadBean">
 	    INSERT INTO user_head(user_id, head_id)
 	    VALUES(#{userId}, #{headId})
 	</insert>
