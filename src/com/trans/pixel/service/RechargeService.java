@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.VipInfo;
@@ -23,6 +24,8 @@ public class RechargeService {
 	private UserAchieveService userAchieveService;
 	@Resource
     private ActivityService activityService;
+	@Resource
+	private AchieveService achieveService;
 	@Resource
 	private LogService logService;
 
@@ -48,6 +51,7 @@ public class RechargeService {
 	    	if(oldvip == null)
 	    		oldvip = VipInfo.newBuilder().build();
 	    	user.setVip(user.getVip()+1);
+	    	achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_VIP, user.getVip());
 			if(vip != null){
 				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin() - oldvip.getDianjin());
 				user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti() - oldvip.getTianti());

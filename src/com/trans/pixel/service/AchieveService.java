@@ -30,7 +30,7 @@ public class AchieveService {
 	}
 	public void sendAchieveScore(long userId, int type, int count) {
 		UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, type);
-		if (type == AchieveConst.TYPE_ZHANLI)
+		if (type == AchieveConst.TYPE_ZHANLI || type == AchieveConst.TYPE_VIP)
 			ua.setCompleteCount(count);
 		else
 			ua.setCompleteCount(ua.getCompleteCount() + count);

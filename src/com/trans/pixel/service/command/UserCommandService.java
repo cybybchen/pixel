@@ -99,7 +99,7 @@ public class UserCommandService extends BaseCommandService {
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
 		int icon = cmd.getIcon();
-		if (icon < 61000) {
+		if (icon > 62000) {
 			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), icon);
 			if (userHead == null) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
