@@ -223,6 +223,8 @@ public class LadderService {
 		while (id < upRanking.getId() && startRank < endRank) {
 			LadderRankingBean ladderRanking = ladderRankingMap.get(id);
 			LadderRankingBean nextLadderRanking = ladderRankingMap.get(id + 1);
+			log.debug("last ladderRanking is:" + ladderRanking.toJson());
+			log.debug("next ladderRanking is:" + nextLadderRanking.toJson());
 			endRank = Math.min(nextLadderRanking.getRanking(), endRank);
 			
 			RewardBean reward = new RewardBean();
@@ -234,8 +236,6 @@ public class LadderService {
 			endRank = oldRank;
 			id++;
 		}
-		
-		log.debug("88");
 		
 		return rewardList;
 	}

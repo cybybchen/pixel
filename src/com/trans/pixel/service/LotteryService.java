@@ -6,10 +6,15 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.LotteryActivity;
+import com.trans.pixel.protoc.Commands.LotteryItem;
 import com.trans.pixel.service.redis.LotteryRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class LotteryService {
@@ -17,6 +22,8 @@ public class LotteryService {
 	public static final int RANDOM_COUNT = 10;
 	@Resource
 	private LotteryRedisService lotteryRedisService;
+	@Resource
+	private CostService costService;
     
     private List<RewardBean> getLotteryList(int type) {
     	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
@@ -64,6 +71,35 @@ public class LotteryService {
     	
     	return randomLotteryList;
     }
+	
+	public boolean isLotteryActivityAvailable(int type) {
+		LotteryActivity lotteryActivity = lotteryRedisService.getLotteryActivity(type);
+		if (lotteryActivity == null || !DateUtil.timeIsAvailable(lotteryActivity.getStarttime(), lotteryActivity.getEndtime()))
+				return false;
+		
+		return true;
+	}
+	
+	public List<RewardBean> randomLotteryActivity(UserBean user, int type) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		LotteryActivity lotteryActivity = lotteryRedisService.getLotteryActivity(type);
+		
+		if (costService.costAndUpdate(user, lotteryActivity.getCost(), lotteryActivity.getCount())) {
+			int totalWeight = 0;
+			List<LotteryItem> itemList = lotteryActivity.getItemList();
+			for (LotteryItem item : itemList) {
+				totalWeight += item.getWeight();
+			}
+			while (rewardList.size() < lotteryActivity.getJudge()) {
+				int randNum = RandomUtils.nextInt(itemList.size());
+				LotteryItem item = itemList.get(randNum);
+				if (RandomUtils.nextInt(totalWeight) <= item.getWeight())
+					rewardList.add(RewardBean.init(item.getId(), item.getCount()));
+			}
+		}
+		
+		return rewardList;
+	}
 	
 	private List<RewardBean> parseAndSaveLotteryList(int type) {
     	List<RewardBean> lotteryList = RewardBean.xmlParseLottery(type);

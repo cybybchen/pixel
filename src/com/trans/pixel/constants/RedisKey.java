@@ -188,4 +188,7 @@ public class RedisKey {
 	
 	//user head
 	public static final String USER_HEAD_PREFIX = PREFIX + "user_head_";
+	
+	//lottery activity
+	public static final String LOTTERY_ACTIVITY_KEY = PREFIX + CONFIG_PREFIX +"lottery_activity";
 }

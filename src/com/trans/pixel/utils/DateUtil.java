@@ -551,4 +551,28 @@ public class DateUtil {
 			return false;
 		return true;
 	}
+    
+    public static boolean timeIsAvailable(String startTimeStr, String endTimeStr) {
+		return timeIsAvailable(startTimeStr, endTimeStr, TimeConst.DEFAULT_DATETIME_FORMAT);
+	}
+	
+	public static boolean timeIsAvailable(String startTimeStr, String endTimeStr, String simpleDate) {
+		SimpleDateFormat df = new SimpleDateFormat(simpleDate);
+		Date startDate = null;
+		Date endDate = null;
+		Date currentDate = null;
+		String currentTimeStr = df.format(new Date());
+		try {
+			startDate= df.parse(startTimeStr);
+			endDate = df.parse(endTimeStr);
+			currentDate = df.parse(currentTimeStr);
+		} catch (ParseException e) {
+			
+		}  
+		
+		if (currentDate.after(startDate) && currentDate.before(endDate))
+			return true;
+		
+		return false;
+	}
 }

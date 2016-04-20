@@ -898,6 +898,28 @@ message UserHead {
 	required int32 headId = 2;
 }
 
+message LotteryActivityList {
+	repeated LotteryActivity lottery = 1;
+}
+
+message LotteryActivity {
+	required int32 type = 1;
+	required int32 cost = 2;
+	required int32 count = 3;
+	required int32 judge = 4;
+	required string starttime = 5;
+	required string endtime = 6;
+	repeated LotteryItem item = 7;		
+}
+
+message LotteryItem {
+	required int32 id = 1;
+	required int32 itemid = 2;
+	required int32 count = 3;
+	required int32 weight = 4;
+	required int32 will = 5;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

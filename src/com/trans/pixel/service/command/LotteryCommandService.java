@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,21 +45,40 @@ public class LotteryCommandService extends BaseCommandService {
 	private LogService logService;
 	
 	public void lottery(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
+		List<RewardBean> lotteryList = new ArrayList<RewardBean>();
 		int type = cmd.getType();
 		int count = 10;
 		if (cmd.hasCount())
 			count = cmd.getCount();
-		int cost = getLotteryCost(type, count);
-		boolean free = isFreeLotteryTime(user, type, count);
-		if (!free) {
-			if (!costService.costAndUpdate(user, type, cost)) {
-				ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
-				if (type == RewardConst.JEWEL)
-					error = ErrorConst.NOT_ENOUGH_JEWEL;
-				ErrorCommand errorCommand = buildErrorCommand(error);
+		
+		if (type == 1 || type == 2) {
+			if (lotteryService.isLotteryActivityAvailable(type)) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 				return;	
 			}
+			
+			lotteryList = lotteryService.randomLotteryActivity(user, type);
+			if (lotteryList.size() == 0) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP);
+	            responseBuilder.setErrorCommand(errorCommand);
+				return;	
+			}
+		} else {
+			int cost = getLotteryCost(type, count);
+			boolean free = isFreeLotteryTime(user, type, count);
+			if (!free) {
+				if (!costService.costAndUpdate(user, type, cost)) {
+					ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
+					if (type == RewardConst.JEWEL)
+						error = ErrorConst.NOT_ENOUGH_JEWEL;
+					ErrorCommand errorCommand = buildErrorCommand(error);
+		            responseBuilder.setErrorCommand(errorCommand);
+					return;	
+				}
+			}
+			
+			lotteryList = lotteryService.randomLotteryList(type, count);
 		}
 		
 		/**
@@ -66,7 +86,6 @@ public class LotteryCommandService extends BaseCommandService {
 		 */
 		activityService.lotteryActivity(user, count, type);
 		
-		List<RewardBean> lotteryList = lotteryService.randomLotteryList(type, count);
 		rewardService.doRewards(user, lotteryList);
 		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
