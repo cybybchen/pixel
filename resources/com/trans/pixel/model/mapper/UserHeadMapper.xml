@@ -10,7 +10,7 @@
 	
 	<select id="selectUserHead" resultMap="resultMap">
 		SELECT *
-		from user_head where user_id=#{userId} and head_id=#{HeadId} limit 1
+		from user_head where user_id=#{userId} and head_id=#{headId} limit 1
 	</select>
 	
 	<insert id="insertHeadProp" parameterType="com.trans.pixel.model.userinfo.UserHeadBean">
