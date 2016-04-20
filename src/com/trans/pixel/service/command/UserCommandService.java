@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
@@ -114,6 +115,19 @@ public class UserCommandService extends BaseCommandService {
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 //		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
+	}
+	
+	public void bindAccount(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user) {
+		if (!user.getAccount().equals(cmd.getOldAccount())) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		user.setAccount(cmd.getNewAccount());
+		userService.updateUser(user);
+		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	private void addRegisterHero(UserBean user) {

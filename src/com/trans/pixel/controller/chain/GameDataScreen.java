@@ -57,6 +57,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -710,6 +711,11 @@ public class GameDataScreen extends RequestScreen {
 		ladderCommandService.readyAttackLadder(cmd, responseBuilder, user);
 		return true;//ReadyAttackLadderCommand
 	}//ReadyAttackLadderCommand
+	@Override//BindAccountCommand
+	protected boolean handleCommand(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user) {
+		userCommandService.bindAccount(cmd, responseBuilder, user);
+		return true;//BindAccountCommand
+	}//BindAccountCommand
 	//add handleCommand here
 
 	@Override

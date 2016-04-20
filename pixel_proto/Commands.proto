@@ -1682,6 +1682,11 @@ message ResponseUserHeadCommand {
 	repeated UserHead userHead = 1;
 }
 
+message RequestBindAccountCommand {
+	required string oldAccount = 1;
+	required string newAccount = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1802,6 +1807,7 @@ message RequestCommand {
 	optional RequestBuyLootPackageCommand buyLootPackageCommand = 84;
 	optional RequestSubmitIconCommand submitIconCommand = 85;
 	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
+	optional RequestBindAccountCommand bindAccountCommand = 87;
 }
 // response command list transfer only use it
 message ResponseCommand {

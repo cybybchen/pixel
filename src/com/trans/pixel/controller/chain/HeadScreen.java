@@ -36,6 +36,7 @@ import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -115,6 +116,7 @@ import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -141,6 +143,7 @@ import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -621,6 +624,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO ReadyAttackLadderCommand method
 		return true;//ReadyAttackLadderCommand
 	}//ReadyAttackLadderCommand
+	@Override//BindAccountCommand
+	protected boolean handleCommand(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BindAccountCommand method
+		return true;//BindAccountCommand
+	}//BindAccountCommand
 	//add handleCommand here
 
 	@Override
