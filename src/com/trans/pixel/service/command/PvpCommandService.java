@@ -158,10 +158,11 @@ public class PvpCommandService extends BaseCommandService {
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			else{
 				Team team = userTeamService.getTeamCache(mine.getOwner().getId());
-				ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
+				ResponsePVPMineInfoCommand.Builder builder= ResponsePVPMineInfoCommand.newBuilder();
 				builder.addAllHeroInfo(team.getHeroInfoList());
 				builder.setUser(team.getUser());
-				responseBuilder.setTeamCommand(builder);
+				builder.setMineInfo(mine);
+				responseBuilder.setPvpMineInfoCommand(builder);
 				pusher.pushUserInfoCommand(responseBuilder, user);
 			}
 		}
