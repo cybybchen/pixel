@@ -54,7 +54,7 @@ public class SkillRedisService {
 		});
 	}
 	
-	public SkillLevelBean getSkillLevelByUnlock(final int unlock) {
+	public SkillLevelBean getSkillLevelByUnlock(final int unlocktype) {
 		return redisTemplate.execute(new RedisCallback<SkillLevelBean>() {
 			@Override
 			public SkillLevelBean doInRedis(RedisConnection arg0)
@@ -63,7 +63,7 @@ public class SkillRedisService {
 						.boundHashOps(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
 				
 				
-				return SkillLevelBean.fromJson(bhOps.get("" + unlock));
+				return SkillLevelBean.fromJson(bhOps.get("" + unlocktype));
 			}
 		});
 	}
@@ -99,7 +99,7 @@ public class SkillRedisService {
 						.boundHashOps(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
 				
 				for (SkillLevelBean skillLevel : skillLevelList) {
-					bhOps.put("" + skillLevel.getUnlock(), skillLevel.toJson());
+					bhOps.put("" + skillLevel.getUnlocktype(), skillLevel.toJson());
 				}
 				
 				return null;

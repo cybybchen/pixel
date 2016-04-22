@@ -231,7 +231,7 @@ public class HeroLevelUpService {
 			return ErrorConst.SKILL_CAN_NOT_LEVELUP;
 		}
 		
-		if (!skillService.hasEnoughSP(heroInfo, skillId)) {
+		if (!skillService.hasEnoughSP(heroInfo, skillInfo.getUnlock())) {
 			return ErrorConst.SP_NOT_ENOUGH;
 		}
 		
