@@ -48,8 +48,10 @@ public class RankService {
 	private List<UserRankBean> getLadderRankList(int serverId) {
 		List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, RankConst.RANK_LIST_START, RankConst.RANK_LIST_END);
 		for (UserRankBean userRank : rankList) {
-			UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
-			userRank.initByUserCache(userInfo);
+			if (userRank.getUserId() > 0) {
+				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
+				userRank.initByUserCache(userInfo);
+			}
 		}
 		
 		return rankList;

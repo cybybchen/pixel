@@ -17,6 +17,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.LotteryActivity;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.ActivityService;
@@ -51,8 +52,11 @@ public class LotteryCommandService extends BaseCommandService {
 		if (cmd.hasCount())
 			count = cmd.getCount();
 		
+		if (count > 10)
+			count = 10;
+		
 		if (type == 1 || type == 2) {
-			if (lotteryService.isLotteryActivityAvailable(type)) {
+			if (!lotteryService.isLotteryActivityAvailable(type)) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 				return;	
@@ -88,7 +92,12 @@ public class LotteryCommandService extends BaseCommandService {
 		
 		rewardService.doRewards(user, lotteryList);
 		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
-		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		
+		if (type == 1 || type == 2) {
+			LotteryActivity lotteryActivity = lotteryService.getLotteryActivity(type);
+			pushCommandService.pushUserDataByRewardId(responseBuilder, user, lotteryActivity.getCost());
+		} else
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		/**
 		 * send log

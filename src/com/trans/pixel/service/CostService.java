@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 
 @Service
 public class CostService {
@@ -17,6 +18,8 @@ public class CostService {
 	private UserEquipService userEquipService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public boolean costAndUpdate(UserBean user, int itemId, int itemCount) {
 		boolean needUpdateUser = cost(user, itemId, itemCount);
@@ -34,12 +37,13 @@ public class CostService {
 		if (itemId > RewardConst.HERO) {
 //			int heroId = rewardId % RewardConst.HERO_STAR;
 //			userHeroService.addUserHero(user.getId(), heroId);
-		} else if (itemId > RewardConst.PROP) {
-			
 		} else if (itemId > RewardConst.PACKAGE) {
-			
-		} else if (itemId > RewardConst.CHIP) {
-//			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
+			UserPropBean userProp = userPropService.selectUserProp(user.getId(), itemId);
+			if (userProp != null && userProp.getPropCount() >= itemCount) {
+				userProp.setPropCount(userProp.getPropCount() - itemCount);
+				userPropService.updateUserProp(userProp);
+				return true;
+			}
 		} else if (itemId > RewardConst.EQUIPMENT) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip != null && userEquip.getEquipCount() >= itemCount) {

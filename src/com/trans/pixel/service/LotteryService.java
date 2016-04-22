@@ -94,11 +94,15 @@ public class LotteryService {
 				int randNum = RandomUtils.nextInt(itemList.size());
 				LotteryItem item = itemList.get(randNum);
 				if (RandomUtils.nextInt(totalWeight) <= item.getWeight())
-					rewardList.add(RewardBean.init(item.getId(), item.getCount()));
+					rewardList.add(RewardBean.init(item.getItemid(), item.getCount()));
 			}
 		}
 		
 		return rewardList;
+	}
+	
+	public LotteryActivity getLotteryActivity(int type) {
+		return lotteryRedisService.getLotteryActivity(type);
 	}
 	
 	private List<RewardBean> parseAndSaveLotteryList(int type) {

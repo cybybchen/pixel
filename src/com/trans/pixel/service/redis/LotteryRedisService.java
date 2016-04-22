@@ -25,7 +25,7 @@ import com.trans.pixel.protoc.Commands.LotteryActivityList;
 
 @Service
 public class LotteryRedisService extends RedisService {
-	private static final String LOTTERYACTIVITY_FILE_NAME = "lol_lotteryactivity.xml";
+	private static final String LOTTERYACTIVITY_FILE_NAME = "lol_lotteryhuodong.xml";
 	
 	private static Logger logger = Logger.getLogger(LotteryRedisService.class);
 	
