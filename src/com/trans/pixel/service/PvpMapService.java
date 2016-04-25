@@ -14,10 +14,13 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.PvpMapConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
@@ -56,6 +59,10 @@ public class PvpMapService {
 //	private PvpXiaoguaiService pvpXiaoguaiService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private UserTeamService userTeamService;
+	@Resource
+	private LogService logService;
 
 	public boolean unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user);
@@ -215,10 +222,16 @@ public class PvpMapService {
 		return maplist.build();
 	}
 	
-	public MultiReward attackMonster(UserBean user, int positionid, boolean ret){
+	public MultiReward attackMonster(UserBean user, int positionid, boolean ret, int time){
+		int logType = PvpMapConst.TYPE_MONSTER;
 		PVPMonster monster = redis.getMonster(user, positionid);
 		if(monster == null)
 			return null;
+		
+		if (monster.getId() > 2000) {
+			logType = PvpMapConst.TYPE_BOSS;
+		}
+		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		int buff = -1;
 		if(ret){
@@ -256,16 +269,27 @@ public class PvpMapService {
 				activityService.pvpAttackBossSuccessActivity(user.getId());
 			}
 		}
+		
+		/**
+		 * send log
+		 */
+		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), monster.getId());
+		
 		logger.warn(monster.getFieldid()+":+"+monster.getName()+ret+":"+monster.getBuffcount()+"->"+buff);
 		return rewards.build();
 	}
 	
-	public boolean attackMine(UserBean user, int id, boolean ret){
+	public boolean attackMine(UserBean user, int id, boolean ret, int time){
+		long enemyId = 0;
+		int logType = PvpMapConst.TYPE_ATTACK;
 		PVPMine.Builder mine = PVPMine.newBuilder(redis.getMine(user.getId(), id));
 		if(mine == null)
 			return false;
+		if (mine.getLevel() > 0)
+			logType = PvpMapConst.TYPE_DEFEND;
 		if(ret){
 			if(mine.hasOwner()){
+				enemyId = mine.getOwner().getId();
 				long userId = mine.getOwner().getId();
 				mine.setOwner(user.buildShort());
 				mine.setEndTime(System.currentTimeMillis()/1000+24*3600);
@@ -293,6 +317,11 @@ public class PvpMapService {
 				redis.saveMine(user.getId(), mine.build());
 			}
 		}
+		/**
+		 * send log
+		 */
+		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), enemyId);
+		
 		/**
 		 * PVP攻击玩家的活动
 		 */
@@ -334,5 +363,18 @@ public class PvpMapService {
 	
 	public PVPMine getUserMine(UserBean user, int id){
 		return redis.getMine(user.getId(), id);
+	}
+	
+	private void sendLog(UserBean user, int time, int type, boolean ret, List<HeroInfo> heroList, long enemyId) {
+		Map<String, String> logMap = new HashMap<String, String>();
+		logMap.put(LogString.USERID, "" + user.getId());
+		logMap.put(LogString.SERVERID, "" + user.getServerId());
+		logMap.put(LogString.ATTACK_TIME, "" + time);
+		logMap.put(LogString.OPERATION, "" + type);
+		logMap.put(LogString.RESULT, "" + ret);
+		logMap.put(LogString.TEAM_LIST, userTeamService.getTeamString(heroList));
+		logMap.put(LogString.ENEMYID, "" + enemyId);
+		
+		logService.sendLog(logMap, LogString.LOGTYPE_LOOTPVP);
 	}
 }

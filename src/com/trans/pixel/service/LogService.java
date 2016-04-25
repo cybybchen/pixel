@@ -68,7 +68,7 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.SERVERID));
 				sb.append(LogString.SPLITER);
-				sb.append(now);
+				sb.append(params.get(LogString.ATTACK_TIME));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.OPERATION));
 				sb.append(LogString.SPLITER);
@@ -77,6 +77,8 @@ public class LogService {
 				sb.append(params.get(LogString.ENEMYID));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
 				sb.append(LogString.SPLITER);
 				break;
 				

@@ -73,7 +73,10 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMonster(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user) {
-		MultiReward rewards = pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet());
+		int time = 0;
+		if (cmd.hasTime())
+			time = cmd.getTime();
+		MultiReward rewards = pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet(), time);
 		if(rewards == null)
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		else if(rewards.getLootCount() > 0)
@@ -85,7 +88,11 @@ public class PvpCommandService extends BaseCommandService {
 		int teamid = cmd.getTeamid();
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, team);
-		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet()))
+		
+		int time = 0;
+		if (cmd.hasTime())
+			time = cmd.getTime();
+		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time))
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
@@ -102,7 +109,11 @@ public class PvpCommandService extends BaseCommandService {
 		UserBean friend = userService.getUser(friendUserId);
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, team);
-		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet())) {
+		
+		int time = 0;
+		if (cmd.hasTime())
+			time = cmd.getTime();
+		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time)) {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			return;
 		}

@@ -15,6 +15,7 @@ public class LogString {
 	public static final String DEFENSE_TEAM_LIST = "defenseteamlist";
 	public static final String RESULT = "result";
 	public static final String RANK = "rank";
+	public static final String ATTACK_TIME = "attackTime";
 	public static final String OPERATION = "operation";
 	public static final String TEAM_LIST = "teamlist";
 	public static final String ENEMYID = "enemyid";

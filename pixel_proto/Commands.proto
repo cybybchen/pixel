@@ -1466,6 +1466,7 @@ message RequestPVPMapListCommand {//挂机PVP列表
 message RequestAttackPVPMonsterCommand {//pvp攻击怪物
 	required int32 positionid = 1;
 	optional bool ret = 2;
+	optional int32 time = 3;
 }
 
 message RequestPVPMineInfoCommand {//pvp矿点对手信息
@@ -1482,6 +1483,7 @@ message RequestAttackPVPMineCommand {//攻击pvp矿点对手
 	required int32 id = 1;
 	required int32 teamid = 2;
 	optional bool ret = 3;
+	optional int32 time = 4;
 }
 
 message RequestHelpAttackPVPMineCommand {//攻击pvp矿点对手
@@ -1489,6 +1491,7 @@ message RequestHelpAttackPVPMineCommand {//攻击pvp矿点对手
 	required int32 teamid = 2;
 	optional bool ret = 3;
 	required int64 userId = 4;
+	optional int32 time = 5;
 }
 
 message RequestSendMailCommand {
