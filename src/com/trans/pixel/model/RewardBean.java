@@ -104,7 +104,7 @@ public class RewardBean {
 		RewardBean reward = new RewardBean();
 		reward.setId(TypeTranslatedUtil.stringToInt(e.attributeValue(ID)));
 		reward.setItemid(TypeTranslatedUtil.stringToInt(e.attributeValue(ITEM_ID)));
-		reward.setName(e.attributeValue(NAME));
+//		reward.setName(e.attributeValue(NAME));
 		reward.setWeight(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHT)));
 		reward.setCount(TypeTranslatedUtil.stringToInt(e.attributeValue(COUNT)));
 		

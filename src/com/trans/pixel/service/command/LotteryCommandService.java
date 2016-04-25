@@ -55,6 +55,14 @@ public class LotteryCommandService extends BaseCommandService {
 		if (count > 10)
 			count = 10;
 		
+		if (type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
+			if (user.getVip() < LotteryConst.LOOTERY_SPECIAL_VIP_LIMIT) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
+	            responseBuilder.setErrorCommand(errorCommand);
+				return;
+			}
+		}
+		
 		if (type == 1 || type == 2) {
 			if (!lotteryService.isLotteryActivityAvailable(type)) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
@@ -135,6 +143,9 @@ public class LotteryCommandService extends BaseCommandService {
 				break;
 			case RewardConst.JEWEL:
 				cost = LotteryConst.COST_LOTTERY_HERO_JEWEL * count;
+				break;
+			case LotteryConst.LOOTERY_SPECIAL_TYPE:
+				cost = LotteryConst.COST_LOOTERY_HERO_HUNJIA * count;
 				break;
 			default:
 				break;
