@@ -40,6 +40,9 @@ body{
 	width: 318px;
 	position: relative;
 }
+.ul-wapper .ui-detailview {
+    width: 303px;
+}
 .ul-wapper {
 	overflow-y: hidden;
 	overflow-x: hidden;
@@ -70,6 +73,9 @@ body{
 	display: block;
     position: relative;
 }
+.ui-ratelist>li a {
+    height: 60px;
+}
 .ui-listview>li a {
 	width: 234px;
 }
@@ -82,7 +88,7 @@ body{
     padding: 5px 7px;
 }
 .ui-listview li a, .ui-field {
-	padding: .3em;
+	padding: 5px;
 	padding-left: 69px;
 }
 .ui-listview li a {
@@ -212,14 +218,30 @@ li.ui-block-a a, li.ui-block-b a, li.ui-block-c a, li.ui-block-d a, li.ui-block-
     margin-top: 10px;
 }
 .ui-progress {
-    display: block;
+    width: 234px;
+    position: relative;
 }
-.ui-progress-r, .ui-progress-b {
-    height: 15px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
+.ui-progress-r, .ui-progress-b, .ui-progress {
+    height: 18px;
+    float: left;
+    margin-right: 4px;
+}
+.ui-progress-r {
+    background-color: #F00;
+}
+.ui-progress-b {
+    background-color: #00F;
+}
+.ui-rate, .ui-hot {
+    border:1px solid #F00;
+    background-color: #FFF;
+    color: #666;
+    padding: 3px 5px;
+    text-decoration: none!important;
+}
+.ui-rate-active {
+    background-color: #F00;
+    color: #FFF;
 }
 @media screen and (min-width: 48em) {
 	

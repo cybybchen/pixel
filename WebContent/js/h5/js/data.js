@@ -133,7 +133,7 @@ function updateListData(action, json){
 			content = '<h2>'+value["name"]+'</h2><div class="ui-field"><img src="css/images/'+value["id"]+'.png"><p>'+content
 					+'</p></div><div>可合成物品</div><div class="ui-navbar"><ul class="ui-grid-e">';
 			article = value["target"] == null ? "" : value["target"];
-			var equip = article.split(",");
+			var equip = $.trim(article).split(",");
 			content += (equip[0] != null && equip[0] != ""?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+equip[0]+'"><img src="css/images/'+equip[0]+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
 			content += (equip[1] != null && equip[1] != ""?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+equip[1]+'"><img src="css/images/'+equip[1]+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
 			content += (equip[2] != null && equip[2] != ""?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+equip[2]+'"><img src="css/images/'+equip[2]+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
@@ -142,7 +142,7 @@ function updateListData(action, json){
 			content += (equip[5] != null && equip[5] != ""?'<li class="ui-block-f"><a href="#" action="'+action+'&id='+equip[5]+'"><img src="css/images/'+equip[5]+'.png"></a></li>':'<li class="ui-block-f"><a></a></li>');
 			content += '</ul></div><div>合成所需</div><div class="ui-navbar"><ul class="ui-grid-e">';
 			article = value["origin"] == null ? "" : value["origin"];
-			equip = article.split(",");
+			equip = $.trim(article).split(",");
 			content += (equip[0] != null && equip[0] != ""?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+equip[0]+'"><img src="css/images/'+equip[0]+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
 			content += (equip[1] != null && equip[1] != ""?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+equip[1]+'"><img src="css/images/'+equip[1]+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
 			content += (equip[2] != null && equip[2] != ""?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+equip[2]+'"><img src="css/images/'+equip[2]+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
@@ -165,24 +165,44 @@ function updateListData(action, json){
 		});
 	}else if(action.startsWith("action=A1009")){
 		showPage("#detailview-page");
-		action = "action=A1006";
-		$("#detailview-page .ul-wapper .ui-detailview").empty();
-		var content = '<h2>'+ranktitle+'</h2><span class="date">2016.1.1</span><div>出场率</div><div>胜率</div><div style="float:right;right:0;"><div>出场率</div><div>胜率</div></div><ul class="ui-listview">';
-		$.each(json, function (key, value) {
-			content += '<li><a href="#" action="'+action+'&id='+value["heroid"]+'"><img src="css/images/'+value["heroid"]+'.png"></a><div class="ui-progress"><div class="ui-progress-r">40%</div></div></li>';
-		});
-		content += '</ul>';
-		var $el = $( content );
-		$("#detailview-page .ul-wapper .ui-detailview").append($el);
-// 		[
-//     {
-//         "id": "1",
-//         "heroid": "1",
-//         "herorate": "1",
-//         "herohot": "1"
-//     }
-// ]
+		raterank = json;
+		rankRate("herohot");
 	}
+}
+
+
+var raterank = [];
+function switchRate(){
+	if($(".ui-rate-active").hasClass("ui-hot")){
+		$(".ui-rate-active").removeClass("ui-rate-active");
+		$(".ui-rate").addClass("ui-rate-active");
+		rankRate("herorate");
+	}else{
+		$(".ui-rate-active").removeClass("ui-rate-active");
+		$(".ui-hot").addClass("ui-rate-active");
+		rankRate("herohot");
+	}
+}
+
+function rankRate(rate) {
+	if(rate == "herorate")
+		raterank.sort(function(a, b){return b["herorate"]-a["herorate"];});
+	else
+		raterank.sort(function(a, b){return b["herohot"]-a["herohot"];});
+	var action = "action=A1006";
+	$("#detailview-page .ul-wapper .ui-detailview").empty();
+	var content = '<h2>'+ranktitle+'</h2><span class="date">2016.1.1</span><div style="margin:12px 8px;font-size: 14px;">'
+			+'<span style="margin-left:30px;">出场率<span style="display:inline-block;margin-left:5px;width:10px;height:10px;background-color: #F00;"></span></span>'
+			+'<span style="margin-left: 20px;">胜率<span style="display:inline-block;margin-left:5px;width:10px;height:10px;background-color: #00F;"></span></span>'
+			+'<div style="float:right;right:4px;"><a href="#" onclick="switchRate();" class="ui-hot ui-rate-active">出场率</a><a href="#" onclick="switchRate();" class="ui-rate">胜率</a></div></div><ul class="ui-ratelist ui-listview">';
+	$.each(raterank, function (key, value) {
+		content += '<li style="background-image:none;"><a href="#" action="'+action+'&id='+value["heroid"]+'"><img src="css/images/'+value["heroid"]
+		+'.png"><div class="ui-progress" style="margin-top:10px;"><div class="ui-progress-r" style="width:'+(value["herohot"]*2)+'%;"></div><span>'+value["herohot"]
+		+'%</span></div><div class="ui-progress"><div class="ui-progress-b" style="width:'+(value["herorate"]*0.75)+'%;"></div><span>'+value["herorate"]+'%</span></div></a></li>';
+	});
+	content += '</ul>';
+	var $el = $( content );
+	$("#detailview-page .ul-wapper .ui-detailview").append($el);
 }
 
 function formatScore(score) {
@@ -223,6 +243,10 @@ function goBack(){
 	updateListJson(backurls.pop(), true);
 }
 
+function share(){
+	
+}
+
 function showLoading(){
     $(".loading:hidden").show();
 }
@@ -231,10 +255,10 @@ function hideLoading(){
     $(".loading").hide();
 }
 
-var ranktitle = "";
+var ranktitle = "热度排行";
 $(document).ready(function() {
 	resizeContent();
-	updateListJson("action=A1007&id=11003");
+	updateListJson("action=A1009&id=1");
 	$(".ui-content, .ui-footer").on('click', "a", function() {
 		var action = $(this).attr("action");
 		if(action != null){
