@@ -1,0 +1,226 @@
+body{
+    margin: 0;
+	padding: 52px 0 86px;
+	background-image: url(images/main_bg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed
+}
+.ui-page {
+	display: none;
+}
+.ui-page-active {
+	display: block;
+}
+.ui-header-fixed, .ui-footer-fixed {
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+.ui-header-fixed {
+	height:42px;
+	top: -1px;
+    padding-top: 1px;
+	/*background-image: url(images/banner.png)*/
+}
+.ui-header h1 {
+	padding: 3px 0;
+	text-align: center;
+    margin: 0 30%;
+    white-space: nowrap;
+}
+.ui-content {
+	padding: 0;
+	overflow: hidden;
+}
+.ul-wapper .ui-listview, .ul-wapper .ui-detailview {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 318px;
+	position: relative;
+}
+.ul-wapper {
+	overflow-y: hidden;
+	overflow-x: hidden;
+	width: 303px;
+	margin: 0 auto;
+	border:27px solid transparent;
+    -webkit-border-image: url("images/bottoms.png") 27 fill stretch;
+	border-image:url(images/bottoms.png) 27 fill stretch;
+}
+::-webkit-scrollbar {
+	width: 0;
+}
+.ui-listview, .ui-listview>li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.ui-listview>li {
+	margin: 7px 0;
+	background-image: url(images/data.png);
+}
+.ui-listview>li:first-child {
+	margin-top: 0;
+}
+.ui-listview>li, .ui-listview>li a, .ui-field {
+	width: 303px;
+	height: 68px;
+	display: block;
+    position: relative;
+}
+.ui-listview>li a {
+	width: 234px;
+}
+.ui-listview li a>img:first-child, .ui-field>img:first-child {
+	position: absolute;
+    left: 0;
+    top: 0;
+    height: 55px;
+    width: 55px;
+    padding: 5px 7px;
+}
+.ui-listview li a, .ui-field {
+	padding: .3em;
+	padding-left: 69px;
+}
+.ui-listview li a {
+	text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #333;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.3;
+    font-family: sans-serif;
+    text-decoration: none!important;
+}
+.ui-detailview h1, .ui-detailview h2, .ui-detailview h3{
+	font-size: 1.2em;
+    display: block;
+    margin: 0.1em;
+    padding: 0.2em;
+    padding-top: 0;
+    margin-bottom: .4em;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.ui-detailview h1, .ui-detailview h2{
+    border-bottom:1px solid #333;
+}
+.ui-detailview p {
+	text-indent: 2em;
+	margin: .2em auto;
+	padding-right: 16px;
+	width: 18em;
+}
+.ui-field, .ui-field p {
+	width: 14em;
+	text-indent: 0;
+}
+.ul-wapper .date{
+	position: absolute;
+	margin-top: -23px;
+	font-size: .4em;
+	font-weight:bold;
+	padding: 3px;
+	display: block;
+}
+.ui-listview>li h1, .ui-listview>li h2{
+	font-size: 1em;
+    font-weight: 700;
+    display: block;
+    margin: .15em 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.ui-listview>li p {
+    font-size: .75em;
+    font-weight: 400;
+    display: block;
+    margin: .3em 0;
+    height: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+}
+.ui-footer-fixed {
+    bottom: 0;
+}
+.ui-navbar {
+    max-width: 100%;
+}
+.ui-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: block;
+    border: 0;
+    max-width: 100%;
+    overflow: visible;
+	content: "";
+	display: table;
+	clear: both;
+}
+.ui-grid-c>.ui-block-a, .ui-grid-c>.ui-block-b, .ui-grid-c>.ui-block-c, .ui-grid-c>.ui-block-d {
+    width: 25%;
+}
+.ui-grid-d>.ui-block-a, .ui-grid-d>.ui-block-b, .ui-grid-d>.ui-block-c, .ui-grid-d>.ui-block-d, .ui-grid-d>.ui-block-e {
+    width: 20%;
+}
+.ui-grid-e>.ui-block-a, .ui-grid-e>.ui-block-b, .ui-grid-e>.ui-block-c, .ui-grid-e>.ui-block-d, .ui-grid-e>.ui-block-e, .ui-grid-e>.ui-block-f {
+    width: 16%;
+}
+.ui-detailview .ui-grid-d, .ui-detailview .ui-grid-e {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 55px;
+}
+ul.ui-grid-a, ul.ui-grid-b, ul.ui-grid-c, ul.ui-grid-d, ul.ui-grid-e, ul.ui-grid-solo, li.ui-block-a, li.ui-block-b, li.ui-block-c, li.ui-block-d, li.ui-block-e, li.ui-block-f {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+.ui-block-a, .ui-block-b, .ui-block-c, .ui-block-d, .ui-block-e, .ui-block-f {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: left;
+}
+.ui-block-a {
+    clear: left;
+}
+.ui-footer a {
+    height: 78px;
+}
+li.ui-block-a a, li.ui-block-b a, li.ui-block-c a, li.ui-block-d a, li.ui-block-e a, li.ui-block-f a {
+    display: block;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.ui-footer a img{
+    margin-top: 10px;
+}
+.ui-progress {
+    display: block;
+}
+.ui-progress-r, .ui-progress-b {
+    height: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+@media screen and (min-width: 48em) {
+	
+}

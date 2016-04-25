@@ -396,7 +396,7 @@ message PVPMonsterReward {//pvp怪物奖励
 	required int32 id = 1;
 	optional string name = 2;
 	optional int32 a = 3;//奖励魔金a+b*level
-	optional int32 b = 4;
+	optional float b = 4;
 	optional int32 itemcount = 5;
 	optional int32 itemid1 = 7;
 	optional int32 count1 = 8;

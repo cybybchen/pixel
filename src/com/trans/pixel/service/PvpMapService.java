@@ -239,7 +239,7 @@ public class PvpMapService {
 			PVPMonsterReward reward = redis.getMonsterReward(monster.getId());
 			RewardInfo.Builder rewardinfo = RewardInfo.newBuilder();
 			rewardinfo.setItemid(RewardConst.PVPCOIN);
-			rewardinfo.setCount(reward.getA()+reward.getB()*monster.getLevel());
+			rewardinfo.setCount(reward.getA()+(int)(reward.getB()*monster.getLevel()));
 			rewards.addLoot(rewardinfo);
 			int weight = 0;
 			weight += reward.getWeight1();

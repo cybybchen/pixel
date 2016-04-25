@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>攻略</title>
+	<link rel="shortcut icon" href="css/favicon.ico">
+	<script src="js/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/guide.css"/>
+	<script src="js/data.js"></script>
+	<script type="text/javascript">
+	// $(document).ready(function() {
+	// 	resizeContent();
+	// });
+	// $(window).resize(function() {
+	// 	resizeContent();
+	// });
+	// function resizeContent() {
+	// 	var height = $(window).height() - 186;
+	// 	//alert(height);
+	// 	$(".ul-wapper").height(height);
+	// 	$(".ul-wapper .ui-listview").height(height);
+	// }
+	</script>
+</head>
+
+<body>
+<div id="listview-page" class="ui-page ui-page-active">
+	<div class="ui-header ui-header-fixed">
+		<img src="css/images/banner.png" style="z-index:-1;width:100%;height:100%;position:absolute;">
+	        <h1><img src="css/images/title_guide.png"></h1>
+	</div>
+
+	<div class="ui-content">
+		<div class="ul-wapper" style="height:454px;">
+		<ul class="ui-listview" style="height:454px;">
+		</ul>
+		</div>
+	</div><!-- /content -->
+
+	<div class="ui-footer ui-footer-fixed">
+		<div class="ui-navbar">
+			<ul class="ui-grid-c">
+			<li class="ui-block-a"><a href="#" action="action=A1001">
+				<img src="css/images/icon_guide.png"></a></li>
+			<li class="ui-block-b"><a href="#" action="action=A1003">
+				<img src="css/images/icon_team.png"></a></li>
+			<li class="ui-block-c"><a href="#" action="action=A1005">
+				<img src="css/images/icon_hero.png"></a></li>
+			<li class="ui-block-d"><a href="#" action="action=A1008">
+				<img src="css/images/icon_data.png" style="margin-top:4px;"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="detailview-page" class="ui-page">
+	<div class="ui-header ui-header-fixed">
+	<a href="#" style="float:left;padding:7px;" onclick="goBack();"><img src="css/images/btn_back.png"></a>
+	<a href="#" style="float:right;padding:7px;" onclick="share();"><img src="css/images/btn_share.png"></a>
+	</div>
+
+	<div class="ui-content">
+		<div class="ul-wapper" style="height:454px;">
+		<div class="ui-detailview" style="height:454px;">
+		</div>
+		</div>
+	</div><!-- /content -->
+</div>
+</body>
+</html>
