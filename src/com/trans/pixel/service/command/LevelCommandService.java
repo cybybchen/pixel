@@ -26,8 +26,6 @@ import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseLevelLootResultCommand;
-import com.trans.pixel.protoc.Commands.ResponseLevelResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.service.CostService;
@@ -115,7 +113,7 @@ public class LevelCommandService extends BaseCommandService {
 	}
 	
 	public void levelResultFirstTime(RequestLevelResultCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
+//		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
@@ -133,14 +131,14 @@ public class LevelCommandService extends BaseCommandService {
 		WinBean winBean = winService.getWinByLevelId(levelId);
 		rewardService.doRewards(user, winBean.getRewardList());
 		
-		builder.addAllReward(RewardBean.buildRewardInfoList(winBean.getRewardList()));
-		responseBuilder.setLevelResultCommand(builder.build());
+//		builder.addAllReward(RewardBean.buildRewardInfoList(winBean.getRewardList()));
+//		responseBuilder.setLevelResultCommand(builder.build());
 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
+		pushCommandService.pushRewardCommand(responseBuilder, user, winBean.getRewardList());
 	}
 	
 	public void levelLootStart(RequestLevelLootStartCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
-		log.debug("111111");
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
@@ -157,15 +155,11 @@ public class LevelCommandService extends BaseCommandService {
 	}
 	
 	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseLevelLootResultCommand.Builder builder = ResponseLevelLootResultCommand.newBuilder();
 		userLevelLootRecordService.calLootReward(user.getId());
 		long userId = user.getId();
 		List<RewardBean> lootRewardList = userLevelLootRecordService.getLootRewards(userId);
 		rewardService.doRewards(user, lootRewardList);
-		builder.addAllReward(RewardBean.buildRewardInfoList(lootRewardList));
-		responseBuilder.setLevelLootResultCommand(builder.build());
-		pushCommandService.pushUserPropListCommand(responseBuilder, user);
-		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
+		pushCommandService.pushRewardCommand(responseBuilder, user, lootRewardList);
 		pushCommandService.pushUserLootLevelCommand(responseBuilder, user);
 	}
 	
