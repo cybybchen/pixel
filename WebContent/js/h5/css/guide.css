@@ -185,6 +185,10 @@ body{
 	margin-bottom: 20px;
 	height: 55px;
 }
+.ui-detailview .ui-grid-e img {
+    width: 50px;
+    height: 50px;
+}
 ul.ui-grid-a, ul.ui-grid-b, ul.ui-grid-c, ul.ui-grid-d, ul.ui-grid-e, ul.ui-grid-solo, li.ui-block-a, li.ui-block-b, li.ui-block-c, li.ui-block-d, li.ui-block-e, li.ui-block-f {
     margin-left: 0;
     margin-right: 0;

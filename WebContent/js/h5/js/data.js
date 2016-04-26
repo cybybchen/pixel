@@ -142,8 +142,6 @@ function updateListData(action, json){
 			content += (equip[5] != null && equip[5] != ""?'<li class="ui-block-f"><a href="#" action="'+action+'&id='+equip[5]+'"><img src="css/images/equipment/'+getIcon(equip[5])+'.png"></a></li>':'<li class="ui-block-f"><a></a></li>');
 			if(equip.length > 6){
 			content += '</ul></div><div class="ui-navbar"><ul class="ui-grid-e">';
-			article = value["target"] == null ? "" : value["target"];
-			var equip = $.trim(article).split(",");
 			content += (equip[6] != null && equip[6] != ""?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+equip[6]+'"><img src="css/images/equipment/'+getIcon(equip[6])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
 			content += (equip[7] != null && equip[7] != ""?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+equip[7]+'"><img src="css/images/equipment/'+getIcon(equip[7])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
 			content += (equip[8] != null && equip[8] != ""?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+equip[8]+'"><img src="css/images/equipment/'+getIcon(equip[8])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
