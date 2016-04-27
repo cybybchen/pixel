@@ -63,10 +63,8 @@ public class UserRedisService extends RedisService{
 			UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
 			if (userProp == null)
 				userProp = UserPropBean.initUserProp(user.getId(), 40022);
-			if(userProp.getPropCount() < vip.getBaohu()){
-				userProp.setPropCount(vip.getBaohu());
-				userPropService.updateUserProp(userProp);
-			}
+			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
+			userPropService.updateUserProp(userProp);
 		}
 		return true;
 	}

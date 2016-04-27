@@ -119,7 +119,7 @@ public class RedisService {
 		try {
 			FileOutputStream in = new FileOutputStream(file);
 			try {
-				in.write(msg.getBytes(), 0, msg.length());
+				in.write(msg.getBytes());
 				in.close();
 				// System.out.println("写入文件成功");
 			} catch (IOException e) {

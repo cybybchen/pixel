@@ -78,11 +78,18 @@ public class LotteryCommandService extends BaseCommandService {
 			}
 		} else {
 			int cost = getLotteryCost(type, count);
-			boolean free = isFreeLotteryTime(user, type, count);
+			boolean free = false;
+			int costtype = RewardConst.COIN;
+			if(type == LotteryConst.LOOTERY_SPECIAL_TYPE)
+				costtype = RewardConst.JEWEL;
+			else{
+				free = isFreeLotteryTime(user, type, count);
+				costtype = type;
+			}
 			if (!free) {
-				if (!costService.costAndUpdate(user, type, cost)) {
+				if (!costService.costAndUpdate(user, costtype, cost)) {
 					ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
-					if (type == RewardConst.JEWEL)
+					if (costtype == RewardConst.JEWEL)
 						error = ErrorConst.NOT_ENOUGH_JEWEL;
 					ErrorCommand errorCommand = buildErrorCommand(error);
 		            responseBuilder.setErrorCommand(errorCommand);

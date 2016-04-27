@@ -22,7 +22,6 @@ body{
 	height:42px;
 	top: -1px;
     padding-top: 1px;
-	/*background-image: url(images/banner.png)*/
 }
 .ui-header h1 {
 	padding: 3px 0;
@@ -70,6 +69,9 @@ body{
 	display: block;
     position: relative;
 }
+.ui-field {
+    height: 60px;
+}
 .ui-ratelist>li a {
     height: 60px;
 }
@@ -88,6 +90,14 @@ body{
 	padding: 5px;
 	padding-left: 69px;
 }
+.ui-score {
+    width: 112px;
+    float: left;
+    margin: 6px;
+    margin-left: 15px;
+    margin-right: -25px;
+    font-size: 13px;
+}
 .ui-listview li a {
 	text-align: left;
     text-overflow: ellipsis;
@@ -97,6 +107,8 @@ body{
     font-weight: 700;
     font-size: 16px;
     line-height: 1.3;
+}
+.ui-page a {
     font-family: sans-serif;
     text-decoration: none!important;
 }
@@ -175,14 +187,14 @@ body{
     width: 25%;
 }
 .ui-grid-d>.ui-block-a, .ui-grid-d>.ui-block-b, .ui-grid-d>.ui-block-c, .ui-grid-d>.ui-block-d, .ui-grid-d>.ui-block-e {
-    width: 20%;
+    width: 19%;
 }
 .ui-grid-e>.ui-block-a, .ui-grid-e>.ui-block-b, .ui-grid-e>.ui-block-c, .ui-grid-e>.ui-block-d, .ui-grid-e>.ui-block-e, .ui-grid-e>.ui-block-f {
     width: 16%;
 }
 .ui-detailview .ui-grid-d, .ui-detailview .ui-grid-e {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 8px;
+	margin-bottom: 8px;
 	height: 55px;
 }
 .ui-detailview .ui-grid-e img {

@@ -47,38 +47,38 @@ function updateListData(action, json){
 			var article = value["content"] == null ? "" : value["content"];
 			var content = article.split("\n").join("</p><p>");
 			content = '<h2>'+value["title"]+'</h2><span class="date">2016.1.1</span><p>'+content
-					+'</p><h3 style="margin-top: 15px;"><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;"/>核心英雄<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;"/></h3>'
+					+'</p><h3 style="margin-top: 15px;"><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/>核心英雄<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3>'
 					+'<div class="ui-navbar"><ul class="ui-grid-d">';
-			content += (value["core1"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["core1"]+'"><img src="css/images/'+value["core1"]+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
-			content += (value["core2"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["core2"]+'"><img src="css/images/'+value["core2"]+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
-			content += (value["core3"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["core3"]+'"><img src="css/images/'+value["core3"]+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
-			content += (value["core4"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["core4"]+'"><img src="css/images/'+value["core4"]+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
-			content += (value["core5"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["core5"]+'"><img src="css/images/'+value["core5"]+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
-			content += '</ul></div><h3><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;"/>推荐阵容<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;"/></h3>'
+			content += (value["core1"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["core1"]+'"><img src="css/images/char'+getHeroIcon(value["core1"])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
+			content += (value["core2"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["core2"]+'"><img src="css/images/char'+getHeroIcon(value["core2"])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
+			content += (value["core3"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["core3"]+'"><img src="css/images/char'+getHeroIcon(value["core3"])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
+			content += (value["core4"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["core4"]+'"><img src="css/images/char'+getHeroIcon(value["core4"])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
+			content += (value["core5"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["core5"]+'"><img src="css/images/char'+getHeroIcon(value["core5"])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
+			content += '</ul></div><h3><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/>推荐阵容<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3>'
 					+'<div class="ui-navbar"><ul class="ui-grid-d">';
-			content += (value["hero1"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero1"]+'"><img src="css/images/'+value["hero1"]+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
-			content += (value["hero2"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero2"]+'"><img src="css/images/'+value["hero2"]+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
-			content += (value["hero3"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero3"]+'"><img src="css/images/'+value["hero3"]+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
-			content += (value["hero4"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero4"]+'"><img src="css/images/'+value["hero4"]+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
-			content += (value["hero5"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero5"]+'"><img src="css/images/'+value["hero5"]+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
+			content += (value["hero1"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero1"]+'"><img src="css/images/char'+getHeroIcon(value["hero1"])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
+			content += (value["hero2"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero2"]+'"><img src="css/images/char'+getHeroIcon(value["hero2"])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
+			content += (value["hero3"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero3"]+'"><img src="css/images/char'+getHeroIcon(value["hero3"])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
+			content += (value["hero4"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero4"]+'"><img src="css/images/char'+getHeroIcon(value["hero4"])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
+			content += (value["hero5"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero5"]+'"><img src="css/images/char'+getHeroIcon(value["hero5"])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
 			content += '</ul></div><div class="ui-navbar"><ul class="ui-grid-d">';
-			content += (value["hero6"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero6"]+'"><img src="css/images/'+value["hero6"]+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
-			content += (value["hero7"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero7"]+'"><img src="css/images/'+value["hero7"]+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
-			content += (value["hero8"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero8"]+'"><img src="css/images/'+value["hero8"]+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
-			content += (value["hero9"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero9"]+'"><img src="css/images/'+value["hero9"]+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
-			content += (value["hero10"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero10"]+'"><img src="css/images/'+value["hero10"]+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
+			content += (value["hero6"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero6"]+'"><img src="css/images/char'+getHeroIcon(value["hero6"])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
+			content += (value["hero7"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero7"]+'"><img src="css/images/char'+getHeroIcon(value["hero7"])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
+			content += (value["hero8"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero8"]+'"><img src="css/images/char'+getHeroIcon(value["hero8"])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
+			content += (value["hero9"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero9"]+'"><img src="css/images/char'+getHeroIcon(value["hero9"])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
+			content += (value["hero10"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero10"]+'"><img src="css/images/char'+getHeroIcon(value["hero10"])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
 			content += '</ul></div><div class="ui-navbar"><ul class="ui-grid-d">';
-			content += (value["hero11"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero11"]+'"><img src="css/images/'+value["hero11"]+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
-			content += (value["hero12"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero12"]+'"><img src="css/images/'+value["hero12"]+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
-			content += (value["hero13"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero13"]+'"><img src="css/images/'+value["hero13"]+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
-			content += (value["hero14"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero14"]+'"><img src="css/images/'+value["hero14"]+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
-			content += (value["hero15"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero15"]+'"><img src="css/images/'+value["hero15"]+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
+			content += (value["hero11"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero11"]+'"><img src="css/images/char'+getHeroIcon(value["hero11"])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
+			content += (value["hero12"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero12"]+'"><img src="css/images/char'+getHeroIcon(value["hero12"])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
+			content += (value["hero13"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero13"]+'"><img src="css/images/char'+getHeroIcon(value["hero13"])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
+			content += (value["hero14"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero14"]+'"><img src="css/images/char'+getHeroIcon(value["hero14"])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
+			content += (value["hero15"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero15"]+'"><img src="css/images/char'+getHeroIcon(value["hero15"])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
 			content += '</ul></div><div class="ui-navbar"><ul class="ui-grid-d">';
-			content += (value["hero16"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero16"]+'"><img src="css/images/'+value["hero16"]+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
-			content += (value["hero17"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero17"]+'"><img src="css/images/'+value["hero17"]+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
-			content += (value["hero18"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero18"]+'"><img src="css/images/'+value["hero18"]+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
-			content += (value["hero19"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero19"]+'"><img src="css/images/'+value["hero19"]+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
-			content += (value["hero20"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero20"]+'"><img src="css/images/'+value["hero20"]+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
+			content += (value["hero16"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["hero16"]+'"><img src="css/images/char'+getHeroIcon(value["hero16"])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
+			content += (value["hero17"] != "0"?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+value["hero17"]+'"><img src="css/images/char'+getHeroIcon(value["hero17"])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
+			content += (value["hero18"] != "0"?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+value["hero18"]+'"><img src="css/images/char'+getHeroIcon(value["hero18"])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
+			content += (value["hero19"] != "0"?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+value["hero19"]+'"><img src="css/images/char'+getHeroIcon(value["hero19"])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
+			content += (value["hero20"] != "0"?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+value["hero20"]+'"><img src="css/images/char'+getHeroIcon(value["hero20"])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
 			content += '</ul></div>';
 			var $el = $( content );
 			$("#detailview-page .ul-wapper .ui-detailview").append($el);
@@ -90,7 +90,7 @@ function updateListData(action, json){
 		$("#listview-page .ui-header h1>img").attr("src", "css/images/title_hero.png");
 		$("#listview-page .ul-wapper .ui-listview").empty();
 		$.each(json, function (key, value) {
-			var $el = $( '<li><a href="#" action="'+action+'&id='+value["id"]+'"><img src="css/images/'+value["id"]+'.png"  alt="'+value["id"]+'"><h2>'+value["name"]+'</h2><p>'+value["position"]+'</p></a></li>' );
+			var $el = $( '<li><a href="#" action="'+action+'&id='+value["id"]+'"><img src="css/images/char'+getHeroIcon(value["id"])+'.png"  alt="'+value["id"]+'"><h2>'+value["name"]+'</h2><p>'+value["position"]+'</p></a></li>' );
 			$("#listview-page .ul-wapper .ui-listview").append($el);
 		});
 	}else if(action.startsWith("action=A1006")){
@@ -100,9 +100,12 @@ function updateListData(action, json){
 		var hero_detail = json["hero_detail"][0];
 		var article = hero_detail["intro"] == null ? "" : hero_detail["intro"];
 		var content = article.split("\n").join("</p><p>");
-		content = '<h2 style="border-bottom:0px">'+hero_detail["name"]+'</h2><h3><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;"/><span>'+hero_detail["position"]+'</span><hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;"/></h3>'
-				+'<div><img src="css/images/'+hero_detail["id"]+'.png"><div>攻：'+formatScore(hero_detail["ad"])+'</div><div>法：'+formatScore(hero_detail["ap"])+'</div><div>防：'+formatScore(hero_detail["def"])+'</div><div>上手：'+formatScore(hero_detail["handle"])
-				+'</div></div><p>'+content+'</p><h3 style="margin-top: 15px;"><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;"/>出装思路<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;"/></h3><p>';
+		content = '<h2 style="border-bottom:0px">'+hero_detail["name"]+'</h2><h3><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/><span>'
+				+hero_detail["position"]+'</span><hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3>'
+				+'<div class="ui-field"><img src="css/images/char'+getHeroIcon(hero_detail["id"])
+				+'.png"><div class="ui-score">攻：'+formatScore(hero_detail["ad"])+'</div><div class="ui-score">法：'+formatScore(hero_detail["ap"])
+				+'</div><div class="ui-score">防：'+formatScore(hero_detail["def"])+'</div><div class="ui-score">上手：'+formatScore(hero_detail["handle"])
+				+'</div></div><p>'+content+'</p><h3 style="margin-top: 15px;"><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/>出装思路<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3><p>';
 		var equip_detail = json["equip_detail"][0];
 		article = equip_detail["content"] == null ? "" : equip_detail["content"];
 		content += article.split("\n").join("</p><p>")+'</p>'
@@ -140,14 +143,16 @@ function updateListData(action, json){
 			content += (equip[3] != null && equip[3] != ""?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+equip[3]+'"><img src="css/images/equipment/'+getIcon(equip[3])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
 			content += (equip[4] != null && equip[4] != ""?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+equip[4]+'"><img src="css/images/equipment/'+getIcon(equip[4])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
 			content += (equip[5] != null && equip[5] != ""?'<li class="ui-block-f"><a href="#" action="'+action+'&id='+equip[5]+'"><img src="css/images/equipment/'+getIcon(equip[5])+'.png"></a></li>':'<li class="ui-block-f"><a></a></li>');
-			if(equip.length > 6){
-			content += '</ul></div><div class="ui-navbar"><ul class="ui-grid-e">';
-			content += (equip[6] != null && equip[6] != ""?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+equip[6]+'"><img src="css/images/equipment/'+getIcon(equip[6])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
-			content += (equip[7] != null && equip[7] != ""?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+equip[7]+'"><img src="css/images/equipment/'+getIcon(equip[7])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
-			content += (equip[8] != null && equip[8] != ""?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+equip[8]+'"><img src="css/images/equipment/'+getIcon(equip[8])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
-			content += (equip[9] != null && equip[9] != ""?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+equip[9]+'"><img src="css/images/equipment/'+getIcon(equip[9])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
-			content += (equip[10] != null && equip[10] != ""?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+equip[10]+'"><img src="css/images/equipment/'+getIcon(equip[10])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
-			content += (equip[11] != null && equip[11] != ""?'<li class="ui-block-f"><a href="#" action="'+action+'&id='+equip[11]+'"><img src="css/images/equipment/'+getIcon(equip[11])+'.png"></a></li>':'<li class="ui-block-f"><a></a></li>');
+			var i = 6;
+			while(equip.length > i){
+				content += '</ul></div><div class="ui-navbar"><ul class="ui-grid-e">';
+				content += (equip[i+0] != null && equip[i+0] != ""?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+equip[i+0]+'"><img src="css/images/equipment/'+getIcon(equip[i+0])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
+				content += (equip[i+1] != null && equip[i+1] != ""?'<li class="ui-block-b"><a href="#" action="'+action+'&id='+equip[i+1]+'"><img src="css/images/equipment/'+getIcon(equip[i+1])+'.png"></a></li>':'<li class="ui-block-b"><a></a></li>');
+				content += (equip[i+2] != null && equip[i+2] != ""?'<li class="ui-block-c"><a href="#" action="'+action+'&id='+equip[i+2]+'"><img src="css/images/equipment/'+getIcon(equip[i+2])+'.png"></a></li>':'<li class="ui-block-c"><a></a></li>');
+				content += (equip[i+3] != null && equip[i+3] != ""?'<li class="ui-block-d"><a href="#" action="'+action+'&id='+equip[i+3]+'"><img src="css/images/equipment/'+getIcon(equip[i+3])+'.png"></a></li>':'<li class="ui-block-d"><a></a></li>');
+				content += (equip[i+4] != null && equip[i+4] != ""?'<li class="ui-block-e"><a href="#" action="'+action+'&id='+equip[i+4]+'"><img src="css/images/equipment/'+getIcon(equip[i+4])+'.png"></a></li>':'<li class="ui-block-e"><a></a></li>');
+				content += (equip[i+5] != null && equip[i+5] != ""?'<li class="ui-block-f"><a href="#" action="'+action+'&id='+equip[i+5]+'"><img src="css/images/equipment/'+getIcon(equip[i+5])+'.png"></a></li>':'<li class="ui-block-f"><a></a></li>');
+				i += 6;
 			}
 			content += '</ul></div><div>合成所需</div><div class="ui-navbar"><ul class="ui-grid-e">';
 			article = value["origin"] == null ? "" : value["origin"];
@@ -182,32 +187,31 @@ function updateListData(action, json){
 
 var raterank = [];
 function switchRate(){
-	if($(".ui-rate-active").hasClass("ui-hot")){
-		$(".ui-rate-active").removeClass("ui-rate-active");
-		$(".ui-rate").addClass("ui-rate-active");
+	if(rankrate == "herohot")
 		rankRate("herorate");
-	}else{
-		$(".ui-rate-active").removeClass("ui-rate-active");
-		$(".ui-hot").addClass("ui-rate-active");
+	else
 		rankRate("herohot");
-	}
 }
 
 var rankrate = "herohot";
 function rankRate(rate) {
 	rankrate = rate;
-	if(rate == "herorate")
-		raterank.sort(function(a, b){return b["herorate"]-a["herorate"];});
-	else
-		raterank.sort(function(a, b){return b["herohot"]-a["herohot"];});
 	var action = "action=A1006";
 	$("#detailview-page .ul-wapper .ui-detailview").empty();
 	var content = '<h2>'+ranktitle+'</h2><span class="date">2016.1.1</span><div style="margin:12px 8px;font-size: 14px;">'
 			+'<span style="margin-left:30px;">出场率<span style="display:inline-block;margin-left:5px;width:10px;height:10px;background-color: #F00;"></span></span>'
 			+'<span style="margin-left: 20px;">胜率<span style="display:inline-block;margin-left:5px;width:10px;height:10px;background-color: #00F;"></span></span>'
-			+'<a href="#" onclick="switchRate();" style="float:right;margin-right:10px;"><span class="ui-hot ui-rate-active">出场率</span><span class="ui-rate">胜率</span></a></div><ul class="ui-ratelist ui-listview">';
+			+'<a href="#" onclick="switchRate();" style="float:right;margin-right:10px;">';
+	if(rate == "herorate"){
+		raterank.sort(function(a, b){return b["herorate"]-a["herorate"];});
+		content += '<span class="ui-hot">出场率</span><span class="ui-rate ui-rate-active">胜率</span></a></div><ul class="ui-ratelist ui-listview">';
+	}else{
+		raterank.sort(function(a, b){return b["herohot"]-a["herohot"];});
+		content += '<span class="ui-hot ui-rate-active">出场率</span><span class="ui-rate">胜率</span></a></div><ul class="ui-ratelist ui-listview">';
+	}
+	
 	$.each(raterank, function (key, value) {
-		content += '<li style="background-image:none;"><a href="#" action="'+action+'&id='+value["heroid"]+'"><img src="css/images/'+value["heroid"]
+		content += '<li style="background-image:none;"><a href="#" action="'+action+'&id='+value["heroid"]+'"><img src="css/images/char'+getHeroIcon(value["heroid"])
 		+'.png"><div class="ui-progress" style="margin-top:10px;"><div class="ui-progress-r" style="width:'+(value["herohot"]*2)+'%;"></div><span>'+value["herohot"]
 		+'%</span></div><div class="ui-progress"><div class="ui-progress-b" style="width:'+(value["herorate"]*0.75)+'%;"></div><span>'+value["herorate"]+'%</span></div></a></li>';
 	});
@@ -278,7 +282,7 @@ $(document).ready(function() {
 	updateListJson("action=A1001");
 	$(".ui-content, .ui-footer").on('click', "a", function() {
 		var action = $(this).attr("action");
-		if(action != null){
+		if(action != null && !action.startsWith("action=A1007&id=2")){
 			if(action.startsWith("action=A1009"))
 				ranktitle = $(this).find("h2").text();
 			updateListJson(action);
@@ -295,6 +299,68 @@ function resizeContent() {
 	$(".ul-wapper").height(height);
 	$(".ul-wapper .ui-listview, .ul-wapper .ui-detailview").height(height);
 }
+
+String.prototype.startsWith = function(str) {
+	if (this.substr(0, str.length) == str)
+		return true;
+	return false;
+};
+
+function getHeroIcon(id){
+	return heroicons[id];
+}
+var heroicons = {"1":46,
+"5":9,
+"8":47,
+"9":28,
+"11":1,
+"13":2,
+"17":29,
+"27":38,
+"32":48,
+"35":19,
+"36":20,
+"38":12,
+"39":11,
+"40":30,
+"41":39,
+"42":31,
+"43":4,
+"48":40,
+"50":41,
+"51":13,
+"52":42,
+"55":21,
+"58":14,
+"59":22,
+"61":15,
+"63":16,
+"70":32,
+"72":5,
+"74":6,
+"75":44,
+"76":7,
+"78":45,
+"79":33,
+"82":17,
+"84":49,
+"86":23,
+"88":24,
+"96":50,
+"97":34,
+"105":26,
+"108":8,
+"117":36,
+"121":27,
+"10":18,
+"12":10,
+"24":3,
+"60":43,
+"94":25,
+"102":51,
+"104":52,
+"116":35,
+"122":37}
 
 function getIcon(id){
 	return icons[id];
