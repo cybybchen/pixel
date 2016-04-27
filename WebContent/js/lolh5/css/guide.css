@@ -78,6 +78,14 @@ body{
 .ui-listview>li a {
 	width: 234px;
 }
+.ui-field>img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 59px;
+    width: 59px;
+    padding: 3px 5px;
+}
 .ui-listview li a>img:first-child, .ui-field>img:first-child {
 	position: absolute;
     left: 0;
@@ -190,16 +198,18 @@ body{
     width: 19%;
 }
 .ui-grid-e>.ui-block-a, .ui-grid-e>.ui-block-b, .ui-grid-e>.ui-block-c, .ui-grid-e>.ui-block-d, .ui-grid-e>.ui-block-e, .ui-grid-e>.ui-block-f {
-    width: 16%;
+    width: 15.9%;
 }
 .ui-detailview .ui-grid-d, .ui-detailview .ui-grid-e {
 	margin-top: 8px;
 	margin-bottom: 8px;
 	height: 55px;
 }
-.ui-detailview .ui-grid-e img {
-    width: 50px;
-    height: 50px;
+.ui-detailview .ui-grid-e img:first-child {
+    width: 44px;
+    height: 44px;
+    margin:2px;
+    margin-right: -46px;
 }
 ul.ui-grid-a, ul.ui-grid-b, ul.ui-grid-c, ul.ui-grid-d, ul.ui-grid-e, ul.ui-grid-solo, li.ui-block-a, li.ui-block-b, li.ui-block-c, li.ui-block-d, li.ui-block-e, li.ui-block-f {
     margin-left: 0;
