@@ -132,7 +132,7 @@ public class RewardService {
 		for (int lootLevel : rewardRecordList) {
 			LootBean loot = lootService.getLootByLevelId(lootLevel);
 			if (loot != null)
-				rewardList.add(randomLootReward(loot.getRewardList()));
+				rewardList.add(randomReward(loot.getRewardList()));
 			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
 				break;
 		}
@@ -141,7 +141,7 @@ public class RewardService {
 		return rewardList;
 	}
 	
-	private RewardBean randomLootReward(List<RewardBean> rewardList) {
+	public RewardBean randomReward(List<RewardBean> rewardList) {
 		int totalWeight = 0;
 		for (RewardBean reward : rewardList) {
 			totalWeight += reward.getWeight();
@@ -157,6 +157,25 @@ public class RewardService {
 		}
 		
 		return null;
+	}
+	
+	public List<RewardBean> randomRewardList(List<RewardBean> rewardList, int count) {
+		int totalWeight = 0;
+    	for (RewardBean lottery : rewardList) {
+    		totalWeight += lottery.getWeight();
+    	}
+    	
+    	Random rand = new Random();
+    	List<RewardBean> randomRewardList = new ArrayList<RewardBean>();
+
+    	while (randomRewardList.size() < count) {
+    		int randNum = rand.nextInt(rewardList.size());
+    		RewardBean reward = rewardList.get(randNum);
+    		if (rand.nextInt(totalWeight) <= reward.getWeight())
+    			randomRewardList.add(reward);
+    	}
+    	
+    	return randomRewardList;
 	}
 	
 	public void doRewards(long userId, MultiReward rewards) {

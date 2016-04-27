@@ -24,6 +24,8 @@ public class LotteryService {
 	private LotteryRedisService lotteryRedisService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private RewardService rewardService;
     
     private List<RewardBean> getLotteryList(int type) {
     	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
@@ -54,20 +56,19 @@ public class LotteryService {
 	
 	public List<RewardBean> randomLotteryList(int type, int count) {
     	List<RewardBean> lotteryList = getLotteryList(type);
-    	int totalWeight = 0;
-    	for (RewardBean lottery : lotteryList) {
-    		totalWeight += lottery.getWeight();
-    	}
-    	Random rand = new Random();
-    	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
-    	int randomCount = count;
+    	List<RewardBean> willLotteryList = new ArrayList<RewardBean>();
 
-    	while (randomLotteryList.size() < randomCount) {
-    		int randNum = rand.nextInt(lotteryList.size());
-    		RewardBean lottery = lotteryList.get(randNum);
-    		if (rand.nextInt(totalWeight) <= lottery.getWeight())
-    			randomLotteryList.add(lottery);
+    	for (RewardBean lottery : lotteryList) {
+    		if (lottery.getWill() == 1)
+    			willLotteryList.add(lottery);
     	}
+   
+    	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
+    	RewardBean willReward = rewardService.randomReward(willLotteryList);
+    	if (willReward != null)
+    		randomLotteryList.add(willReward);
+    		
+    	randomLotteryList.addAll(rewardService.randomRewardList(lotteryList, count - randomLotteryList.size()));
     	
     	return randomLotteryList;
     }

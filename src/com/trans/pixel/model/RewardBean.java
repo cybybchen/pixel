@@ -23,6 +23,7 @@ public class RewardBean {
 	private String name = "";
 	private int weight = 0;
 	private int count = 0;
+	private int will = 0;
 	public int getId() {
 		return id;
 	}
@@ -53,7 +54,12 @@ public class RewardBean {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+	public int getWill() {
+		return will;
+	}
+	public void setWill(int will) {
+		this.will = will;
+	}
 	public static List<RewardBean> buildRewardBeanList(List<RewardInfo> rewardList) {
 		List<RewardBean> rewardBeanList = new ArrayList<RewardBean>();
 		for (RewardInfo reward : rewardList) {
@@ -82,6 +88,7 @@ public class RewardBean {
 		json.put(NAME, name);
 		json.put(WEIGHT, weight);
 		json.put(COUNT, count);
+		json.put(WILL, will);
 		
 		return json.toString();
 	}
@@ -96,6 +103,7 @@ public class RewardBean {
 		bean.setName(json.getString(NAME));
 		bean.setWeight(json.getInt(WEIGHT));
 		bean.setCount(json.getInt(COUNT));
+		bean.setWill(TypeTranslatedUtil.jsonGetInt(json, WILL));
 
 		return bean;
 	}
@@ -107,6 +115,7 @@ public class RewardBean {
 //		reward.setName(e.attributeValue(NAME));
 		reward.setWeight(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHT)));
 		reward.setCount(TypeTranslatedUtil.stringToInt(e.attributeValue(COUNT)));
+		reward.setWill(TypeTranslatedUtil.stringToInt(e.attributeValue(WILL)));
 		
 		return reward;
 	}
@@ -188,4 +197,5 @@ public class RewardBean {
 	private static final String NAME = "name";
 	private static final String WEIGHT = "weight";
 	private static final String COUNT = "count";
+	private static final String WILL = "will";
 }
