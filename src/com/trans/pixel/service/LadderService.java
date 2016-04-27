@@ -280,7 +280,7 @@ public class LadderService {
 				UserBean robot = userService.getRobotUser(userId);
 				if (robot == null) {
 					robot = new UserBean();
-					robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(4));
+					robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(5) + 61001);
 					robot.setId(userId);
 					robot.setZhanli(zhanli);
 					robot.setZhanliMax(zhanli);
