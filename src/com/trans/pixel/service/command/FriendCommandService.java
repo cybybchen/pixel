@@ -80,7 +80,7 @@ public class FriendCommandService extends BaseCommandService {
 	
 	public void handleReceiveFriendCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Integer> ids = cmd.getIdList();
-		List<MailBean> mailList = mailService.readMail(user, MailConst.TYPE_ADDFRIEND_MAIL, ids);
+		List<MailBean> mailList = mailService.readMail(user, MailConst.TYPE_ADDFRIEND_MAIL, ids, null);
 		if (mailList.size() == 0) {
 			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);

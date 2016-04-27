@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -20,6 +22,7 @@ import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserService;
 
@@ -34,6 +37,8 @@ public class MailCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private RewardService rewardService;
 	
 	public void handleGetUserMailListCommand(RequestGetUserMailListCommand cmd, Builder responseBuilder, UserBean user) {
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
@@ -42,7 +47,8 @@ public class MailCommandService extends BaseCommandService {
 	public void handleReadMailCommand(RequestReadMailCommand cmd, Builder responseBuilder, UserBean user) {	
 		int type = cmd.getType();
 		List<Integer> ids = cmd.getIdList();
-		List<MailBean> mailList = mailService.readMail(user, type, ids);
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		List<MailBean> mailList = mailService.readMail(user, type, ids, rewardList);
 		if (mailList.size() == 0) {
 			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
@@ -51,7 +57,9 @@ public class MailCommandService extends BaseCommandService {
 		
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
 		
-		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		rewardService.doRewards(user, rewardList);
+		
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 	}
 	
