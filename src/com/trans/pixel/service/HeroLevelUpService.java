@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.EquipmentBean;
+import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.StarBean;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
@@ -235,6 +237,10 @@ public class HeroLevelUpService {
 			return ErrorConst.SP_NOT_ENOUGH;
 		}
 		
+		SkillLevelBean skillLevel = skillService.getSkillLevel(skillInfo.getUnlock());
+		if (!costService.cost(user, RewardConst.COIN, skillLevel.getGold() + skillLevel.getGoldlv() * skillInfo.getSkillLevel()))
+				return ErrorConst.NOT_ENOUGH_COIN;
+				
 		heroInfo.upgradeSkill(skillId);
 		
 		return SuccessConst.LEVELUP_SKILL_SUCCESS;

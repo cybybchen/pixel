@@ -24,6 +24,8 @@ public class SkillLevelBean {
 	private int levelup = 0;
 	private int maxlevel = 0;
 	private int sp = 0;
+	private int gold = 0;
+	private int goldlv = 0;
 	public int getId() {
 		return id;
 	}
@@ -66,6 +68,18 @@ public class SkillLevelBean {
 	public void setUnlocktype(int unlocktype) {
 		this.unlocktype = unlocktype;
 	}
+	public int getGold() {
+		return gold;
+	}
+	public void setGold(int gold) {
+		this.gold = gold;
+	}
+	public int getGoldlv() {
+		return goldlv;
+	}
+	public void setGoldlv(int goldlv) {
+		this.goldlv = goldlv;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -75,6 +89,8 @@ public class SkillLevelBean {
 		json.put(LEVELUP, levelup);
 		json.put(MAXLEVEL, maxlevel);
 		json.put(SP, sp);
+		json.put(GOLD, gold);
+		json.put(GOLDLV, goldlv);
 		
 		return json.toString();
 	}
@@ -91,6 +107,8 @@ public class SkillLevelBean {
 		bean.setLevelup(json.getInt(LEVELUP));
 		bean.setMaxlevel(json.getInt(MAXLEVEL));
 		bean.setSp(json.getInt(SP));
+		bean.setGold(json.getInt(GOLD));
+		bean.setGoldlv(json.getInt(GOLDLV));
 		
 		return bean;
 	}
@@ -117,6 +135,8 @@ public class SkillLevelBean {
 				bean.setLevelup(TypeTranslatedUtil.stringToInt(element.attributeValue(LEVELUP)));
 				bean.setMaxlevel(TypeTranslatedUtil.stringToInt(element.attributeValue(MAXLEVEL)));
 				bean.setSp(TypeTranslatedUtil.stringToInt(element.attributeValue(SP)));
+				bean.setGold(TypeTranslatedUtil.stringToInt(element.attributeValue(GOLD)));
+				bean.setGoldlv(TypeTranslatedUtil.stringToInt(element.attributeValue(GOLDLV)));
 				
 				list.add(bean);
 			}
@@ -135,4 +155,6 @@ public class SkillLevelBean {
 	private static final String LEVELUP = "levelup";
 	private static final String MAXLEVEL = "maxlevel";
 	private static final String SP = "sp";
+	private static final String GOLD = "gold";
+	private static final String GOLDLV = "goldlv";
 }
