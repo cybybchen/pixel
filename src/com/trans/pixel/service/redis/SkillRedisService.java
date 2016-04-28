@@ -99,7 +99,7 @@ public class SkillRedisService {
 						.boundHashOps(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
 				
 				for (SkillLevelBean skillLevel : skillLevelList) {
-					bhOps.put("" + skillLevel.getUnlocktype(), skillLevel.toJson());
+					bhOps.put("" + skillLevel.getUnlock(), skillLevel.toJson());
 				}
 				
 				return null;

@@ -288,12 +288,12 @@ public class HeroCommandService extends BaseCommandService {
 	}
 	
 	public void resetHeroSkill(RequestResetHeroSkillCommand cmd, Builder responseBuilder, UserBean user) {
-		if (!costService.costAndUpdate(user, RewardConst.COIN, RESET_HERO_SKILL_COST)) {
-			ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
-			ErrorCommand errorCommand = buildErrorCommand(error);
-            responseBuilder.setErrorCommand(errorCommand);
-			return;	
-		}
+//		if (!costService.costAndUpdate(user, RewardConst.COIN, RESET_HERO_SKILL_COST)) {
+//			ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
+//			ErrorCommand errorCommand = buildErrorCommand(error);
+//            responseBuilder.setErrorCommand(errorCommand);
+//			return;	
+//		}
 		
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int heroId = cmd.getHeroId();
@@ -312,12 +312,16 @@ public class HeroCommandService extends BaseCommandService {
 		}
 		
 		if (result instanceof SuccessConst) {
+			int resetCoin = skillService.getResetCoin(heroInfo.getSkillInfoList());
+			heroInfo.resetHeroSkill();
 			userHeroService.updateUserHero(heroInfo);
 			builder.setHeroId(heroId);
 			builder.addHeroInfo(heroInfo.buildHeroInfo());
 			responseBuilder.setHeroResultCommand(builder.build());
 			
-			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			List<RewardBean> rewardList = RewardBean.initRewardList(RewardConst.COIN, resetCoin);
+			rewardService.doRewards(user, rewardList);
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		}
 	}
 

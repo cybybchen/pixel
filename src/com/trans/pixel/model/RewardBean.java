@@ -190,6 +190,16 @@ public class RewardBean {
 		return reward;
 	}
 	
+	public static List<RewardBean> initRewardList(int type, int count) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		RewardBean reward = new RewardBean();
+		reward.setItemid(type);
+		reward.setCount(count);
+		rewardList.add(reward);
+		
+		return rewardList;
+	}
+	
 	private static final String LOTTERY_FILE_PREFIX = "lol_lottery_";
 	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
 	private static final String ID = "id";

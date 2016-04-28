@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -22,6 +24,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 
 @Service
 public class HeroLevelUpService {
+	private static final Logger log = LoggerFactory.getLogger(HeroLevelUpService.class);
 	
 	private static final int TYPE_HEROLEVEL = 1;
 	private static final int TYPE_STARLEVEL = 2;
@@ -30,6 +33,7 @@ public class HeroLevelUpService {
 	
 	private static final int HERO_MAX_LEVEL = 60;
 	
+	private static final int RESET_SKILL_COST_JEWEL = 400;
 	
 	@Resource
 	private UserService userService;
@@ -128,7 +132,8 @@ public class HeroLevelUpService {
 	}
 	
 	public ResultConst resetHeroSkill(UserBean user, HeroInfoBean heroInfo) {
-		heroInfo.resetHeroSkill();
+		if (!costService.cost(user, RewardConst.JEWEL, RESET_SKILL_COST_JEWEL))
+			return ErrorConst.NOT_ENOUGH_JEWEL;
 		
 		return SuccessConst.RESET_SKILL_SUCCESS;
 	}
@@ -238,7 +243,10 @@ public class HeroLevelUpService {
 		}
 		
 		SkillLevelBean skillLevel = skillService.getSkillLevel(skillInfo.getUnlock());
-		if (!costService.cost(user, RewardConst.COIN, skillLevel.getGold() + skillLevel.getGoldlv() * skillInfo.getSkillLevel()))
+		int costCoin = skillLevel.getGold() + skillLevel.getGoldlv() * skillInfo.getSkillLevel();
+		log.debug("levelup skill level is:" + skillInfo.getSkillLevel());
+		log.debug("skill level up cost is:" + costCoin);
+		if (!costService.costAndUpdate(user, RewardConst.COIN, costCoin))
 				return ErrorConst.NOT_ENOUGH_COIN;
 				
 		heroInfo.upgradeSkill(skillId);
