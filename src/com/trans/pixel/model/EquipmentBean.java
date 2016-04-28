@@ -43,6 +43,7 @@ public class EquipmentBean {
 	private int count2 = 0;
 	private int cover3 = 0;
 	private int count3 = 0;
+	private int isequipment = 0;
 	
 	public int getItemid() {
 		return itemid;
@@ -200,6 +201,12 @@ public class EquipmentBean {
 	public void setCount3(int count3) {
 		this.count3 = count3;
 	}
+	public int getIsequipment() {
+		return isequipment;
+	}
+	public void setIsequipment(int isequipment) {
+		this.isequipment = isequipment;
+	}
 	
 	public String toJson() {
 		JSONObject json = new JSONObject();
@@ -229,6 +236,7 @@ public class EquipmentBean {
 		json.put(COUNT2, count2);
 		json.put(COVER3, cover3);
 		json.put(COUNT3, count3);
+		json.put(ISEQUIPMENT, isequipment);
 		
 		return json.toString();
 	}
@@ -264,6 +272,7 @@ public class EquipmentBean {
 		bean.setCount2(json.getInt(COUNT2));
 		bean.setCover3(json.getInt(COVER3));
 		bean.setCount3(json.getInt(COUNT3));
+		bean.setIsequipment(json.getInt(ISEQUIPMENT));
 
 		return bean;
 	}
@@ -308,6 +317,7 @@ public class EquipmentBean {
 				bean.setCount2(TypeTranslatedUtil.stringToInt(element.attributeValue(COUNT2)));
 				bean.setCover3(TypeTranslatedUtil.stringToInt(element.attributeValue(COVER3)));
 				bean.setCount3(TypeTranslatedUtil.stringToInt(element.attributeValue(COUNT3)));
+				bean.setIsequipment(TypeTranslatedUtil.stringToInt(element.attributeValue(ISEQUIPMENT)));
 				
 				list.add(bean);
 			}
@@ -345,4 +355,5 @@ public class EquipmentBean {
 	private static final String COUNT2 = "count2";
 	private static final String COVER3 = "cover3";
 	private static final String COUNT3 = "count3";
+	private static final String ISEQUIPMENT = "isequipment";
 }

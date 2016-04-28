@@ -11,9 +11,9 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class FenjieBean {
 	private int weightall = 0;
 	private int itemid = 0;
-	private String itemname = "";
 	private int count = 0;
 	private int weight = 0;
+	private int isequipment = 0;
 	public int getWeightall() {
 		return weightall;
 	}
@@ -25,12 +25,6 @@ public class FenjieBean {
 	}
 	public void setItemid(int itemid) {
 		this.itemid = itemid;
-	}
-	public String getItemname() {
-		return itemname;
-	}
-	public void setItemname(String itemname) {
-		this.itemname = itemname;
 	}
 	public int getCount() {
 		return count;
@@ -44,15 +38,20 @@ public class FenjieBean {
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	
+	public int getIsequipment() {
+		return isequipment;
+	}
+	public void setIsequipment(int isequipment) {
+		this.isequipment = isequipment;
+	}
 	public static FenjieBean xmlParse(Element e) {
 		FenjieBean bean = new FenjieBean();
 		
 		bean.setWeightall(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHTALL)));
 		bean.setItemid(TypeTranslatedUtil.stringToInt(e.attributeValue(ITEMID)));
-		bean.setItemname(e.attributeValue(ITEMNAME));
 		bean.setCount(TypeTranslatedUtil.stringToInt(e.attributeValue(COUNT)));
 		bean.setWeight(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHT)));
+		bean.setIsequipment(TypeTranslatedUtil.stringToInt(e.attributeValue(ISEQUIPMENT)));
 		
 		return bean;
 	}
@@ -84,7 +83,7 @@ public class FenjieBean {
 	
 	private static final String WEIGHTALL = "weightall";
 	private static final String ITEMID = "itemid";
-	private static final String ITEMNAME = "itemname";
 	private static final String COUNT = "count";
 	private static final String WEIGHT = "weight";
+	private static final String ISEQUIPMENT = "isequipment";
 }

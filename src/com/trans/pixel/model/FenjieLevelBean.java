@@ -92,11 +92,13 @@ public class FenjieLevelBean {
 		return map;
 	}
 	
-	public List<RewardBean> randomReward(int count) {
+	public List<RewardBean> randomReward(int count, int isequipment) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		int circleCount = 0;
 		while (circleCount < count) {
 			for (FenjieBean fenjie : fenjieList) {
+				if (fenjie.getIsequipment() == 1 && isequipment == 0)
+					continue;
 				if (fenjie.hasByFenjie()) {
 					RewardBean reward = fenjie.buildReward();
 					resetRewardList(rewardList, reward);

@@ -99,7 +99,7 @@ public class EquipService {
 		userEquip.setEquipCount(userEquip.getEquipCount() - fenjieCount);
 		userEquipService.updateUserEquip(userEquip);
 		
-		return fenjie.randomReward(fenjieCount);
+		return fenjie.randomReward(fenjieCount, equip.getIsequipment());
 	}
 	
 	public List<RewardBean> fenjieHeroEquip(UserBean user, int equipId, int fenjieCount) {
@@ -109,7 +109,7 @@ public class EquipService {
 		if (fenjie == null)
 			return null;
 		
-		return fenjie.randomReward(fenjieCount);
+		return fenjie.randomReward(fenjieCount, equip.getIsequipment());
 	}
 	
 	public boolean equipLevelUp(long userId, EquipmentBean equip, List<UserEquipBean> costUserEquipList) {
