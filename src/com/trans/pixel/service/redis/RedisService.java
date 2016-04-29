@@ -919,6 +919,11 @@ public class RedisService {
 	public long now(){
 		return System.currentTimeMillis()/1000L;
 	}
+	/**
+	*/
+	public int weekday(){
+		return (int)(System.currentTimeMillis()/24/3600L/1000L)%7;
+	}
 
 	public int nextInt(int value){
 		if(value <= 0)

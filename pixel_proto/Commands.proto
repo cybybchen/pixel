@@ -432,6 +432,15 @@ message PVPMonsterList {
 	repeated PVPMonster enemy = 1;
 }
 
+message PVPBoss {
+	required int32 id = 1;
+	optional int32 day = 2;
+}
+
+message PVPBossList {
+	repeated PVPBoss boss = 1;
+}
+
 message PVPPosition {//pvp位置
 	required int32 id = 1;
 	optional int32 x = 2;//坐标x

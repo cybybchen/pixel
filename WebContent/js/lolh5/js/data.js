@@ -296,8 +296,11 @@ $(window).resize(function() {
 function resizeContent() {
 	var height = $(window).height() - 192;
 	//alert(height);
-	$(".ul-wapper").height(height);
-	$(".ul-wapper .ui-listview, .ul-wapper .ui-detailview").height(height);
+	$("#listview-page .ul-wapper").height(height);
+	$("#listview-page  .ul-wapper .ui-listview").height(height);
+	height += 55;
+	$("#detailview-page .ul-wapper").height(height);
+	$("#detailview-page .ul-wapper .ui-detailview").height(height);
 }
 
 String.prototype.startsWith = function(str) {

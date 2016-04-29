@@ -10,6 +10,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.mapper.UserLevelLootMapper;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.protoc.Commands.LootTime;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -84,12 +85,12 @@ public class UserLevelLootService {
 		return userLevelLootRecord;
 	}
 	
-	public List<RewardBean> getLootRewards(long userId) {
-		UserLevelLootBean userLevelLootRecord = selectUserLevelLootRecord(userId);
+	public List<RewardBean> getLootRewards(UserBean user) {
+		UserLevelLootBean userLevelLootRecord = selectUserLevelLootRecord(user.getId());
 		if (userLevelLootRecord == null)
 			return null;
 		
-		List<RewardBean> rewardList = rewardService.getLootRewards(userLevelLootRecord);
+		List<RewardBean> rewardList = rewardService.getLootRewards(userLevelLootRecord, user);
 		updateUserLevelLootRecord(userLevelLootRecord);
 		
 		return rewardList;

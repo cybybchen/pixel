@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
@@ -126,13 +127,17 @@ public class RewardService {
 		return false;
 	}
 	
-	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord) {
+	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord, UserBean user) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
 		for (int lootLevel : rewardRecordList) {
 			LootBean loot = lootService.getLootByLevelId(lootLevel);
 			if (loot != null)
 				rewardList.add(randomReward(loot.getRewardList()));
+			if(user.getVip() >= 4 && RandomUtils.nextInt(100) < 10)
+				for(RewardBean reward : rewardList){
+					reward.setCount(reward.getCount()*2);
+				}
 			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
 				break;
 		}

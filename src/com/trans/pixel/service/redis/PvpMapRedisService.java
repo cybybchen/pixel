@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.PVPBoss;
+import com.trans.pixel.protoc.Commands.PVPBossList;
 import com.trans.pixel.protoc.Commands.PVPMap;
 import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
@@ -152,22 +154,42 @@ public class PvpMapRedisService extends RedisService{
 		delete(RedisKey.PVPMONSTER_PREFIX+user.getId());
 	}
 
-	public List<PVPMonster> getMonsters(UserBean user, Map<String, String> pvpMap) {
-		boolean canRefresh = canRefreshMonster(user);
-		return getMonsters(user, pvpMap, canRefresh);
+	public List<PVPMonster> getMonsters(UserBean user, Map<String, String> pvpMap){
+		return getMonsters(user, pvpMap, false);
 	}
-	
-	public List<PVPMonster> getMonsters(UserBean user, Map<String, String> pvpMap, boolean canRefresh) {
+
+	public List<PVPMonster> getMonsters(UserBean user, Map<String, String> pvpMap, boolean forceRefresh) {
+		boolean refreshBoss = today(0) > user.getPvpMonsterRefreshTime();
+		boolean refreshMonster = canRefreshMonster(user);
+		if(forceRefresh){
+			refreshBoss = refreshMonster = true;
+		}
 		List<PVPMonster> monsters = new ArrayList<PVPMonster>();
 		Map<String, String> keyvalue = this.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
-		for(String value : keyvalue.values()){
+		for(String value : keyvalue.values()) {
 			PVPMonster.Builder builder = PVPMonster.newBuilder();
 			if(parseJson(value, builder))
 				monsters.add(builder.build());
 		}
-		if(canRefresh){
+		PVPMonsterList.Builder bosses = PVPMonsterList.newBuilder();
+		String value = get(RedisKey.PVPBOSS_PREFIX+user.getId());
+		if(value != null)
+			parseJson(value, bosses);
+		if(refreshMonster){
 			Map<String, PVPMonsterList> monstermap = getMonsterConfig();
 			Map<String, PVPPositionList> positionMap = getPositionConfig();
+			if(refreshBoss){
+				bosses.clearEnemy();
+				for(PVPBoss boss : getBossConfig().getBossList()) {
+					if(boss.getDay() == weekday()){
+						PVPMonster.Builder builder = PVPMonster.newBuilder();
+						builder.setId(boss.getId());
+						Object[] fields = positionMap.keySet().toArray();
+						builder.setFieldid(Integer.parseInt((String)fields[nextInt(fields.length)]));
+						bosses.addEnemy(builder);
+					}
+				}
+			}
 			for(PVPMonsterList list : monstermap.values()){
 				List<Integer> positionValues = new ArrayList<Integer>();
 				int count = 0;
@@ -177,6 +199,30 @@ public class PvpMapRedisService extends RedisService{
 						count++;
 					}
 				}
+				for(PVPMonster.Builder bossbuilder : bosses.getEnemyBuilderList()){
+					if(bossbuilder.getFieldid() == list.getEnemy(0).getFieldid()){
+						if(!bossbuilder.hasPositionid()) {//随机boss位置
+							PVPPositionList positions = positionMap.get(bossbuilder.getFieldid()+"");
+							PVPPosition position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
+							while(positionValues.contains(position.getId())){
+								position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
+							}
+							bossbuilder.setPositionid(position.getId());
+							bossbuilder.setX(position.getX());
+							bossbuilder.setY(position.getY());
+							String buff = pvpMap.get(bossbuilder.getFieldid()+"");
+							int level = nextInt(11)-5;
+							if(buff != null)
+								level += Integer.parseInt(buff);
+							bossbuilder.setLevel(Math.max(1, level));
+							set(RedisKey.PVPBOSS_PREFIX+user.getId(), formatJson(bosses.build()));
+						}
+						monsters.add(bossbuilder.build());
+						positionValues.add(bossbuilder.getPositionid());
+					}
+				}
+				
+				
 				while(count < 5){//添加怪物
 					int weight = 0;
 					for(PVPMonster monster : list.getEnemyList()){
@@ -282,13 +328,29 @@ public class PvpMapRedisService extends RedisService{
 	public boolean canRefreshMonster(UserBean user){
 		long times[] = {today(18), today(12), today(0)};
 		for(long time : times){
-			if(time > user.getPvpMonsterRefreshTime() && time < System.currentTimeMillis()/1000L){
+			if(time > user.getPvpMonsterRefreshTime() && time < now()){
 				user.setPvpMonsterRefreshTime(time);
 				userRedisService.updateUser(user);
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public PVPBossList getBossConfig() {
+		PVPBossList.Builder builder = PVPBossList.newBuilder(); 
+		String value = get(RedisKey.PVPBOSS_CONFIG);
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			String xml = ReadConfig("lol_pvpboss.xml");
+			if(!parseXml(xml, builder)){
+				logger.warn("cannot build PVPBossLists");
+				return builder.build();
+			}
+			set(RedisKey.PVPBOSS_CONFIG, formatJson(builder.build()));
+			return builder.build();
+		}
 	}
 
 	public PVPMapList.Builder getBasePvpMapList(){

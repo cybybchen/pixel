@@ -240,7 +240,8 @@ public class PvpMapService {
 			RewardInfo.Builder rewardinfo = RewardInfo.newBuilder();
 			rewardinfo.setItemid(RewardConst.PVPCOIN);
 			rewardinfo.setCount(reward.getA()+(int)(reward.getB()*monster.getLevel()));
-			rewards.addLoot(rewardinfo);
+			if(rewardinfo.getCount() > 0)
+				rewards.addLoot(rewardinfo);
 			int weight = 0;
 			weight += reward.getWeight1();
 			weight += reward.getWeight2();

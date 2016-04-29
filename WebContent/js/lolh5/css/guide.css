@@ -49,7 +49,7 @@ body{
 	border-image:url(images/bottoms.png) 27 fill stretch;
 }
 ::-webkit-scrollbar {
-	width: 0;
+	width: 15px;
 }
 .ui-listview, .ui-listview>li {
 	margin: 0;
@@ -195,10 +195,10 @@ body{
     width: 25%;
 }
 .ui-grid-d>.ui-block-a, .ui-grid-d>.ui-block-b, .ui-grid-d>.ui-block-c, .ui-grid-d>.ui-block-d, .ui-grid-d>.ui-block-e {
-    width: 19%;
+    width: 20%;
 }
 .ui-grid-e>.ui-block-a, .ui-grid-e>.ui-block-b, .ui-grid-e>.ui-block-c, .ui-grid-e>.ui-block-d, .ui-grid-e>.ui-block-e, .ui-grid-e>.ui-block-f {
-    width: 15.9%;
+    width: 16.6%;
 }
 .ui-detailview .ui-grid-d, .ui-detailview .ui-grid-e {
 	margin-top: 8px;
