@@ -55,12 +55,10 @@ public class LotteryCommandService extends BaseCommandService {
 		if (count > 10)
 			count = 10;
 		
-		if (type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
-			if (user.getVip() < LotteryConst.LOOTERY_SPECIAL_VIP_LIMIT) {
+		if (type == LotteryConst.LOOTERY_SPECIAL_TYPE && user.getVip() < LotteryConst.LOOTERY_SPECIAL_VIP_LIMIT) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
 	            responseBuilder.setErrorCommand(errorCommand);
 				return;
-			}
 		}
 		
 		if (type == 1 || type == 2) {

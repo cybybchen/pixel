@@ -147,6 +147,8 @@ public class RewardService {
 	}
 	
 	public RewardBean randomReward(List<RewardBean> rewardList) {
+		if(rewardList.isEmpty())
+			return null;
 		int totalWeight = 0;
 		for (RewardBean reward : rewardList) {
 			totalWeight += reward.getWeight();
