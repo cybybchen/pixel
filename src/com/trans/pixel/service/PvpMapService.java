@@ -212,7 +212,10 @@ public class PvpMapService {
 						resource += mine.getYield();
 				}
 			}
-			user.setPointPVP(user.getPointPVP()+resource*hour);
+			resource *= hour;
+			if(user.getVip() >= 11)
+				resource = (int)(resource * 1.1);
+			user.setPointPVP(user.getPointPVP()+resource);
 			user.setPvpMineGainTime(time);
 			userService.updateUserDailyData(user);
 			ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
