@@ -277,7 +277,7 @@ function hideLoading(){
 }
 
 var ranktitle = "热度排行";
-$(document).ready(function() {
+$(function() {
 	resizeContent();
 	updateListJson("action=A1001");
 	$(".ui-content, .ui-footer").on('click', "a", function() {
@@ -298,7 +298,7 @@ function resizeContent() {
 	//alert(height);
 	$("#listview-page .ul-wapper").height(height);
 	$("#listview-page  .ul-wapper .ui-listview").height(height);
-	height += 55;
+	height += 56;
 	$("#detailview-page .ul-wapper").height(height);
 	$("#detailview-page .ul-wapper .ui-detailview").height(height);
 }

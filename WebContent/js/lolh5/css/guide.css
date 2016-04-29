@@ -1,9 +1,15 @@
 body{
     margin: 0;
-	padding: 52px 0 86px;
+	padding: 0;
 	background-image: url(images/main_bg.jpg);
 	background-repeat: no-repeat;
 	background-attachment: fixed
+}
+#listview-page {
+    padding: 52px 0 86px;
+}
+#detailview-page{
+    padding: 52px 0 30px;
 }
 .ui-page {
 	display: none;
