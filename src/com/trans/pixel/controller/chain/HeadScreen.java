@@ -168,7 +168,7 @@ public class HeadScreen extends RequestScreen {
         long userId = head.getUserId();
         req.user = userService.getUser(userId);
         
-        if (req.user == null/* || !req.user.getSession().equals(head.getSession())*/) {
+        if (req.user == null || !req.user.getSession().equals(head.getSession())) {
         	ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
             erBuilder.setCode(String.valueOf(ErrorConst.USER_NEED_LOGIN.getCode()));
             erBuilder.setMessage(ErrorConst.USER_NEED_LOGIN.getMesssage());
