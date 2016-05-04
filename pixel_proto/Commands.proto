@@ -48,6 +48,7 @@ message Commodity {
 	optional int32 id = 8;
 	optional int32 sortid = 9;
 	optional int32 judge = 10;
+	optional int32 discount = 11;
 }
 message CommodityList {
 	repeated Commodity item = 1;

@@ -43,7 +43,7 @@ public class ShopRedisService extends RedisService{
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			ShopList shoplist = buildDailyShop();
+			ShopList shoplist = buildDailyShop(user);
 			saveDailyShop(shoplist, user);
 			return shoplist;
 		}
@@ -93,7 +93,7 @@ public class ShopRedisService extends RedisService{
 			return time[0]+24*3600;
 	}
 	
-	public ShopList buildDailyShop(){
+	public ShopList buildDailyShop(UserBean user){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		String value = get(DAILYSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
@@ -103,6 +103,11 @@ public class ShopRedisService extends RedisService{
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getDailyShopComms());
+		if(user.getVip() >= 6){
+			int index = nextInt(builder.getItemsCount()/2);
+			builder.getItemsBuilderList().get(index*2).setDiscount(90);
+			builder.getItemsBuilderList().get(index*2+1).setDiscount(90);
+		}
 		builder.setEndTime(getDailyShopEndTime());
 		return builder.build();
 	}
@@ -162,7 +167,7 @@ public class ShopRedisService extends RedisService{
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			ShopList shoplist = buildBlackShop();
+			ShopList shoplist = buildBlackShop(user);
 			saveBlackShop(shoplist, user);
 			return shoplist;
 		}
@@ -181,7 +186,7 @@ public class ShopRedisService extends RedisService{
 			return time+24*3600;
 	}
 	
-	public ShopList buildBlackShop(){
+	public ShopList buildBlackShop(UserBean user){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		String value = get(BLACKSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
@@ -191,6 +196,11 @@ public class ShopRedisService extends RedisService{
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getBlackShopComms());
+		if(user.getVip() >= 13){
+			int index = nextInt(builder.getItemsCount()/2);
+			builder.getItemsBuilderList().get(index*2).setDiscount(90);
+			builder.getItemsBuilderList().get(index*2+1).setDiscount(90);
+		}
 		builder.setEndTime(getBlackShopEndTime());
 		return builder.build();
 	}

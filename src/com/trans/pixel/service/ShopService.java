@@ -37,7 +37,7 @@ public class ShopService {
 	}
 	
 	public ShopList refreshDailyShop(UserBean user){
-		ShopList shoplist = redis.buildDailyShop();
+		ShopList shoplist = redis.buildDailyShop(user);
 		redis.saveDailyShop(shoplist, user);
 		return shoplist;
 	}
@@ -51,7 +51,7 @@ public class ShopService {
 	}
 	
 	public ShopList refreshBlackShop(UserBean user){
-		ShopList shoplist = redis.buildBlackShop();
+		ShopList shoplist = redis.buildBlackShop(user);
 		redis.saveBlackShop(shoplist, user);
 		return shoplist;
 	}

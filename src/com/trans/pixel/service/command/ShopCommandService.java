@@ -105,9 +105,12 @@ public class ShopCommandService extends BaseCommandService{
 		}
 		int refreshtime = user.getDailyShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
+		int cost = commbuilder.getCost();
+		if(commbuilder.hasDiscount())
+			cost = cost*commbuilder.getDiscount()/100;
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), cost)){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -227,9 +230,12 @@ public class ShopCommandService extends BaseCommandService{
 		}
 		int refreshtime = user.getBlackShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
+		int cost = commbuilder.getCost();
+		if(commbuilder.hasDiscount())
+			cost = cost*commbuilder.getDiscount()/100;
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else if(!costService.cost(user, commbuilder.getCurrency(), cost)){
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
