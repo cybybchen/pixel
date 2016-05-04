@@ -331,7 +331,7 @@ public class HeroInfoBean {
 		for (SkillLevelBean skillLevel : skillLevelList) {
 			if (rare >= skillLevel.getUnlock()) {
 				if (!contains(skillLevel)) {
-					SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), skillLevel.getUnlock(), skillInfoList.size());
+					SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), skillLevel.getUnlock());
 					if (skillInfo != null)
 						skillInfoList.add(skillInfo);
 				}
