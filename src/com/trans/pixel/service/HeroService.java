@@ -43,9 +43,9 @@ public class HeroService {
 	
 	public int getLevelUpExp(int levelId) {
 		HeroUpgradeBean next = getHeroUpgrade(levelId);
-		HeroUpgradeBean current = getHeroUpgrade(levelId - 1);
+//		HeroUpgradeBean current = getHeroUpgrade(levelId - 1);
 		
-		return next.getExp() - current.getExp();
+		return next.getExp();
 	}
 	
 	public HeroUpgradeBean getHeroUpgrade(int level) {

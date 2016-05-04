@@ -10,6 +10,8 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class ActivityService {
+	
+	private static final Logger log = LoggerFactory.getLogger(ActivityService.class);
 	
 	@Resource
 	private UserActivityService userActivityService;
@@ -241,7 +245,7 @@ public class ActivityService {
 	}
 	
 	public void sendKaifu2ActivitiesReward(int serverId) {
-		if (!isInKaifuActivityTime(serverId)) 
+		if (isInKaifuActivityTime(serverId)) 
 			return;
 		
 		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
@@ -271,6 +275,7 @@ public class ActivityService {
 				for (UserRankBean userRank : rankList) {
 					if (userRank.getUserId() > 0) {
 						MailBean mail = MailBean.buildMail(userRank.getUserId(), order.getDescription(), rewardList);
+						log.debug("ladder activity mail is:" + mail.toJson());
 						mailService.addMail(mail);
 					}
 				}
@@ -279,6 +284,7 @@ public class ActivityService {
 				for (TypedTuple<String> userinfo : userInfoRankList) {
 					long userId = TypeTranslatedUtil.stringToLong(userinfo.getValue());
 					MailBean mail = MailBean.buildMail(userId, order.getDescription(), rewardList);
+					log.debug("zhanji activity mail is:" + mail.toJson());
 					mailService.addMail(mail);
 				}
 			}

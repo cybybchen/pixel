@@ -181,7 +181,7 @@ public class MailBean {
 		List<RewardBean> rewardBeanList = RewardBean.buildRewardBeanList(rewardList);
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
-		mail.setContent("");
+		mail.setContent(content);
 		mail.setType(MailConst.TYPE_SYSTEM_MAIL);
 		mail.setRewardList(rewardBeanList);
 		mail.setStartDate(DateUtil.getCurrentDateString());
