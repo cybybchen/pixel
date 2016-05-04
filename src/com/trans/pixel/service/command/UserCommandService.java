@@ -77,7 +77,7 @@ public class UserCommandService extends BaseCommandService {
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		HeadInfo head = request.getHead();
 		UserBean user = new UserBean();
-		user.init(head.getServerId(), head.getAccount(), registerCommand.getUserName(), registerCommand.getIcon());
+		user.init(head.getServerId(), head.getAccount(), userService.handleUserName(head.getServerId(), registerCommand.getUserName()), registerCommand.getIcon());
 		user.setRegisterTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		try{
 			userService.addNewUser(user);

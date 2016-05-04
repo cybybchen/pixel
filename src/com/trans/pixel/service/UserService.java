@@ -3,6 +3,7 @@ package com.trans.pixel.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.service.redis.UserRedisService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserService {
@@ -127,6 +129,7 @@ public class UserService {
 		userRedisService.refreshUserDailyData(user);
 		userRedisService.updateUser(user);
 		userRedisService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
+		userRedisService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
 		userRedisService.cache(user.getServerId(), user.buildShort());
 		return result;
 	}
@@ -204,5 +207,57 @@ public class UserService {
 	
 	public VipInfo getVip(int id){
 		return userRedisService.getVip(id);
+	}
+	
+	public String handleUserName(int serverId, String userName) {
+		long userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, userName));
+		if (userId == 0)
+			return userName;
+		
+		Random rand = new Random();
+		int createCount = 0;
+		while (createCount < 5) {
+			int randNum = rand.nextInt(8999) + 1000;
+			String newUserName = userName + "_" + randNum;
+			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
+			if (userId == 0)
+				return newUserName;
+			
+			++createCount;
+		}
+		
+		createCount = 0;
+		
+		while (createCount < 5) {
+			int randNum = rand.nextInt(89999) + 10000;
+			String newUserName = userName + "_" + randNum;
+			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
+			if (userId == 0)
+				return newUserName;
+			
+			++createCount;
+		}
+		
+		while (createCount < 5) {
+			int randNum = rand.nextInt(899999) + 100000;
+			String newUserName = userName + "_" + randNum;
+			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
+			if (userId == 0)
+				return newUserName;
+			
+			++createCount;
+		}
+		
+		while (createCount < 5) {
+			int randNum = rand.nextInt(8999999) + 1000000;
+			String newUserName = userName + "_" + randNum;
+			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
+			if (userId == 0)
+				return newUserName;
+			
+			++createCount;
+		}
+		
+		return "";
 	}
 }
