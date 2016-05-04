@@ -3,7 +3,6 @@ package com.trans.pixel.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -18,7 +17,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.service.redis.UserRedisService;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserService {
@@ -94,10 +92,10 @@ public class UserService {
 	
 	public UserBean getUserByName(int serverId, String userName) {
 		logger.debug("serverId={},The userName={}", serverId, userName);
-		String userId = userRedisService.getUserIdByName(serverId, userName);
+		long userId = userRedisService.getUserIdByName(serverId, userName);
 		UserBean user = null;
 
-		if (userId == null) {
+		if (userId == 0) {
 			try {
 				user = userMapper.queryByServerAndName(serverId, userName);
 			} catch (Exception e) {
@@ -116,7 +114,7 @@ public class UserService {
 				userRedisService.updateUser(user);
 			}
 		} else {
-			return getUser(Long.parseLong(userId));
+			return getUser(userId);
 		}
 
         if(user != null && userRedisService.refreshUserDailyData(user)){
@@ -211,34 +209,31 @@ public class UserService {
 		return userRedisService.getVip(id);
 	}
 	
-	public String queryUserName(int serverId, String userName) {
-		long userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, userName));
+	public long queryUserIdByUserName(int serverId, String userName) {
+		long userId = userRedisService.getUserIdByName(serverId, userName);
 		if (userId == 0)
-			return userName;
 		try {
 			UserBean user = userMapper.queryByServerAndName(serverId, userName);
-			if(user == null)
-				return userName;
+			return user != null ? user.getId() : 0;
 		} catch (Exception e) {
 			 logger.error("getUserByName failed:"+e.getMessage());
 		}
-		return null;
+		return userId;
 	}
 	
 	public String randUserName(int serverId, String userName, int range, int randCount){
 		for (int i = 0; i < randCount; i++) {
 			int randNum = userRedisService.nextInt(range*9/10) + range/10;
-			String newUserName = queryUserName(serverId, userName + "#" + randNum);
-			if(newUserName != null)
+			String newUserName = userName + "#" + randNum;
+			if(queryUserIdByUserName(serverId, newUserName) == 0)
 				return newUserName;
 		}
 		return null;
 	}
 	public String handleUserName(int serverId, String userName) {		
-		String newUserName = queryUserName(serverId, userName);
-		if(newUserName != null)
-			return newUserName;
-		newUserName = randUserName(serverId, userName, 10000, 5);
+		if(queryUserIdByUserName(serverId, userName) == 0)
+			return userName;
+		String newUserName = randUserName(serverId, userName, 10000, 5);
 		if(newUserName != null)
 			return newUserName;
 		newUserName = randUserName(serverId, userName, 100000, 5);

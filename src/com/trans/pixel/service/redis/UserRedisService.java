@@ -97,8 +97,12 @@ public class UserRedisService extends RedisService{
 		hput(RedisKey.PREFIX+RedisKey.ACCOUNT_PREFIX+serverId, account, userId+"");
 	}
 
-	public String getUserIdByName(final int serverId, final String userName) {
-		return hget(RedisKey.PREFIX+RedisKey.USERNAME_PREFIX+serverId, userName);
+	public long getUserIdByName(final int serverId, final String userName) {
+		String value = hget(RedisKey.PREFIX+RedisKey.USERNAME_PREFIX+serverId, userName);
+		if(value == null)
+			return 0;
+		else
+			return Long.parseLong(value);
 	}
 	
 	public <T> void setUserIdByName(final int serverId, final String userName, final T userId) {

@@ -42,16 +42,13 @@ public class FriendCommandService extends BaseCommandService {
 			friendId = cmd.getUserId();
 		if (cmd.hasUserName())
 			friendName = cmd.getUserName();
-		UserBean friend = new UserBean();
 		if (friendId == 0) {
-			friend = userService.getUserByName(user.getServerId(), friendName);
-			if (friend == null) {
+			friendId = userService.queryUserIdByUserName(user.getServerId(), friendName);
+			if (friendId == 0) {
 				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
-			
-			friendId = friend.getId();
 		}
 		if (userFriendService.isFriend(user.getId(), friendId)) {
 			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.FRIEND_HAS_ADDED);
