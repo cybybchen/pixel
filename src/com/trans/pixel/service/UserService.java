@@ -72,6 +72,7 @@ public class UserService {
 			}
 			if (user != null) {
 				userRedisService.setUserIdByAccount(serverId, account, user.getId());
+				userRedisService.setUserIdByName(serverId, user.getUserName(), user.getId());
 				UserInfo cache = getCache(user.getServerId(), user.getId());
     			if(cache != null && cache.getZhanli() > user.getZhanli()){
     				user.setZhanli(cache.getZhanli());
@@ -100,9 +101,10 @@ public class UserService {
 			try {
 				user = userMapper.queryByServerAndName(serverId, userName);
 			} catch (Exception e) {
-				 logger.error("login failed:"+e.getMessage());
+				 logger.error("getUserByName failed:"+e.getMessage());
 			}
 			if (user != null) {
+				userRedisService.setUserIdByAccount(serverId, user.getAccount(), user.getId());
 				userRedisService.setUserIdByName(serverId, userName, user.getId());
 				UserInfo cache = getCache(user.getServerId(), user.getId());
     			if(cache != null && cache.getZhanli() > user.getZhanli()){
@@ -209,54 +211,45 @@ public class UserService {
 		return userRedisService.getVip(id);
 	}
 	
-	public String handleUserName(int serverId, String userName) {
+	public String queryUserName(int serverId, String userName) {
 		long userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, userName));
 		if (userId == 0)
 			return userName;
-		
-		Random rand = new Random();
-		int createCount = 0;
-		while (createCount < 5) {
-			int randNum = rand.nextInt(8999) + 1000;
-			String newUserName = userName + "_" + randNum;
-			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
-			if (userId == 0)
-				return newUserName;
-			
-			++createCount;
+		try {
+			UserBean user = userMapper.queryByServerAndName(serverId, userName);
+			if(user == null)
+				return userName;
+		} catch (Exception e) {
+			 logger.error("getUserByName failed:"+e.getMessage());
 		}
-		
-		createCount = 0;
-		
-		while (createCount < 5) {
-			int randNum = rand.nextInt(89999) + 10000;
-			String newUserName = userName + "_" + randNum;
-			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
-			if (userId == 0)
+		return null;
+	}
+	
+	public String randUserName(int serverId, String userName, int range, int randCount){
+		for (int i = 0; i < randCount; i++) {
+			int randNum = userRedisService.nextInt(range*9/10) + range/10;
+			String newUserName = queryUserName(serverId, userName + "#" + randNum);
+			if(newUserName != null)
 				return newUserName;
-			
-			++createCount;
 		}
-		
-		while (createCount < 5) {
-			int randNum = rand.nextInt(899999) + 100000;
-			String newUserName = userName + "_" + randNum;
-			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
-			if (userId == 0)
-				return newUserName;
-			
-			++createCount;
-		}
-		
-		while (createCount < 5) {
-			int randNum = rand.nextInt(8999999) + 1000000;
-			String newUserName = userName + "_" + randNum;
-			userId = TypeTranslatedUtil.stringToLong(userRedisService.getUserIdByName(serverId, newUserName));
-			if (userId == 0)
-				return newUserName;
-			
-			++createCount;
-		}
+		return null;
+	}
+	public String handleUserName(int serverId, String userName) {		
+		String newUserName = queryUserName(serverId, userName);
+		if(newUserName != null)
+			return newUserName;
+		newUserName = randUserName(serverId, userName, 10000, 5);
+		if(newUserName != null)
+			return newUserName;
+		newUserName = randUserName(serverId, userName, 100000, 5);
+		if(newUserName != null)
+			return newUserName;
+		newUserName = randUserName(serverId, userName, 1000000, 5);
+		if(newUserName != null)
+			return newUserName;
+		newUserName = randUserName(serverId, userName, 10000000, 5);
+		if(newUserName != null)
+			return newUserName;
 		
 		return "";
 	}
