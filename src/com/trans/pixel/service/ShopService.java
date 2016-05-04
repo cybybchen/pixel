@@ -13,6 +13,7 @@ import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
+import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.service.redis.ShopRedisService;
 
 /**
@@ -140,5 +141,9 @@ public class ShopService {
 		rewardbuilder.setCount(reward.getCount21()+redis.nextInt(reward.getCount22()-reward.getCount21()));
 		builder.addLoot(rewardbuilder);
 		return builder.build();
+	}
+	
+	public VipLibao getVipLibao(int id){
+		return redis.getVipLibao(id);
 	}
 }

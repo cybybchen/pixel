@@ -22,6 +22,8 @@ public class UserBean {
 	private int pointUnion = 0;
 	private int zhanli = 0;
 	private int zhanliMax = 0;
+	private int viplibao1 = 0;
+	private int viplibao2 = 0;
 	////////////////////////////////
 	private long receiveMessageTimeStamp = 0;
 	private int lastLootTime = 0;
@@ -62,6 +64,30 @@ public class UserBean {
 	private int rechargeRecord = 0;
 	private long refreshPvpMapTime = 0;
 	private int heroInfoId = 0;
+	/**
+	 * vip免费礼包领取状态
+	 */
+	public int getViplibao1() {
+		return viplibao1;
+	}
+	/**
+	 * vip免费礼包领取状态
+	 */
+	public void setViplibao1(int viplibao1) {
+		this.viplibao1 = viplibao1;
+	}
+	/**
+	 * vip折扣礼包购买状态
+	 */
+	public int getViplibao2() {
+		return viplibao2;
+	}
+	/**
+	 * vip折扣礼包购买状态
+	 */
+	public void setViplibao2(int viplibao2) {
+		this.viplibao2 = viplibao2;
+	}
 	/**
 	 * 下次pvp刷新时间
 	 */
@@ -818,6 +844,8 @@ public class UserBean {
 		builder.setHeroLimit(heroLimit);
 		builder.setComposeSkill(composeSkill);
 		builder.setRechargeRecord(rechargeRecord);
+		builder.setVipLibao1(viplibao1);
+		builder.setVipLibao2(viplibao2);
 		
 		return builder.build();
 	}

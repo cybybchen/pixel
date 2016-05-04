@@ -31,6 +31,8 @@ message UserInfo {
 	optional int32 heroLimit = 31;//英雄上限
 	optional string composeSkill = 33;//组合技
 	optional int32 rechargeRecord = 34;
+	optional int32 vipLibao1 = 35;
+	optional int32 vipLibao2 = 36;
 }
 
 message ServerData {
@@ -553,6 +555,21 @@ message AreaBossRewardList {
 	repeated AreaBossReward boss = 1;
 }
 
+message VipLibao {
+	optional int32 itemid = 1;
+	optional string name = 2;
+	optional string img = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 value = 6;
+	optional int32 cost = 7;
+	repeated RewardInfo item = 8;
+}
+
+message VipLibaoList {
+	repeated VipLibao libao = 1;
+}
+
 message VipInfo {
 	optional int32 vip = 1;
 	optional int32 rmb = 2;
@@ -565,6 +582,8 @@ message VipInfo {
 	optional int32 baoxiang = 9;
 	optional int32 zhibao = 10;
 	optional int32 baohu = 11;
+	optional int32 libao1 = 12;
+	optional int32 libao2 = 13;
 }
 
 message VipList {
@@ -1700,6 +1719,11 @@ message RequestBindAccountCommand {
 	required string newAccount = 2;
 }
 
+message RequestPurchaseVipLibaoCommand {
+	required int32 vip = 1;
+	required int32 type = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1774,6 +1798,7 @@ message RequestCommand {
 	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
 	optional RequestCdkeyCommand cdkeyCommand = 138;
 	optional RequestCheatRechargeCommand rechargeCommand = 139;
+	optional RequestPurchaseVipLibaoCommand purchaseVipLibaoCommand = 141;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;

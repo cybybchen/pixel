@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -117,6 +118,7 @@ import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -144,6 +146,7 @@ import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -629,6 +632,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO BindAccountCommand method
 		return true;//BindAccountCommand
 	}//BindAccountCommand
+	@Override//PurchaseVipLibaoCommand
+	protected boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PurchaseVipLibaoCommand method
+		return true;//PurchaseVipLibaoCommand
+	}//PurchaseVipLibaoCommand
 	//add handleCommand here
 
 	@Override

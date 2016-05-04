@@ -54,6 +54,7 @@ import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -322,6 +323,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestReadyAttackLadderCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -932,6 +934,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//BindAccountCommand
                 result = handleCommand(cmd, responseBuilder, user);//BindAccountCommand
         }//BindAccountCommand
+        if (request.hasPurchaseVipLibaoCommand()) {
+            RequestPurchaseVipLibaoCommand cmd = request.getPurchaseVipLibaoCommand();
+            if (result)//PurchaseVipLibaoCommand
+                result = handleCommand(cmd, responseBuilder, user);//PurchaseVipLibaoCommand
+        }//PurchaseVipLibaoCommand
         //call handleCommand here
         
         return result;

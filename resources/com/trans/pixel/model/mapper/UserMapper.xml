@@ -29,6 +29,8 @@
 		<result property="composeSkill" column="compose_skill" />
 		<result property="rechargeRecord" column="recharge_record" />
 		<result property="heroInfoId" column="hero_info_id" />
+		<result property="viplibao1" column="viplibao1" />
+		<result property="viplibao2" column="viplibao2" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -67,6 +69,7 @@
 		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}, ladder_mode_history_top=#{ladderModeHistoryTop},
 		login_days=#{loginDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock},
 		hero_limit=#{heroLimit}, compose_skill=#{composeSkill}, recharge_record=#{rechargeRecord}, hero_info_id=#{heroInfoId}
+		, viplibao1=#{viplibao1}, viplibao2=#{viplibao2}
 		WHERE id=#{id}
 	</update>
 

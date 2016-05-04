@@ -58,6 +58,7 @@ import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -716,6 +717,11 @@ public class GameDataScreen extends RequestScreen {
 		userCommandService.bindAccount(cmd, responseBuilder, user);
 		return true;//BindAccountCommand
 	}//BindAccountCommand
+	@Override//PurchaseVipLibaoCommand
+	protected boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.VipLibaoPurchase(cmd, responseBuilder, user);
+		return true;//PurchaseVipLibaoCommand
+	}//PurchaseVipLibaoCommand
 	//add handleCommand here
 
 	@Override

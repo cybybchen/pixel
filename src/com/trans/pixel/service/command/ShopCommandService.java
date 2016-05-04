@@ -29,6 +29,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -45,11 +46,14 @@ import com.trans.pixel.protoc.Commands.ResponseShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionShopCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
+import com.trans.pixel.protoc.Commands.VipInfo;
+import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserLevelService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 
@@ -74,6 +78,8 @@ public class ShopCommandService extends BaseCommandService{
 	private LadderRedisService ladderRedisService;
 	@Resource
 	private PvpMapRedisService pvpMapRedisService;
+	@Resource
+	private UserService userService;
 
 	public int getDailyShopRefreshCost(int time){
 		if(time < 2){
@@ -666,5 +672,45 @@ public class ShopCommandService extends BaseCommandService{
 		builder.setLeftTime(user.getPurchaseCoinLeft());
 		builder.setTotalTime(user.getPurchaseCoinLeft()+user.getPurchaseCoinTime());
 		responseBuilder.setPurchaseCoinCommand(builder);
+	}
+	
+	public void VipLibaoPurchase(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getVip() < cmd.getVip()){
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH));
+			return;
+		}
+
+		VipInfo vip = userService.getVip(cmd.getVip());
+		int state = 1;
+		for(int i = 1; i < cmd.getVip(); i++)
+			state *= 2;
+		VipLibao libao;
+		if(cmd.getType() == 2){
+			if((user.getViplibao2() & state) != 0){
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.PURCHASE_VIPLIBAO_AGAIN));
+				return;
+			}
+			user.setViplibao2(user.getViplibao2() | state);
+			libao = service.getVipLibao(vip.getLibao2());
+		}else{
+			if((user.getViplibao1() & state) != 0){
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.PURCHASE_VIPLIBAO_AGAIN));
+				return;
+			}
+			user.setViplibao1(user.getViplibao1() | state);
+			libao = service.getVipLibao(vip.getLibao1());
+		}
+		if(libao.getCost() > 0 && !costService.cost(user, RewardConst.JEWEL, libao.getCost())) {
+			responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(RewardConst.JEWEL));
+			return;
+		}
+		MultiReward.Builder builder = MultiReward.newBuilder();
+		for(RewardInfo reward : libao.getItemList()){
+			builder.addLoot(reward);
+		}
+		MultiReward rewards = builder.build();
+		rewardService.doRewards(user, rewards);
+		userService.updateUser(user);
+		pusher.pushRewardCommand(responseBuilder, user, rewards);
 	}
 }

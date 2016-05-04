@@ -20,6 +20,8 @@ import com.trans.pixel.protoc.Commands.PurchaseCoinRewardList;
 import com.trans.pixel.protoc.Commands.ShopList;
 import com.trans.pixel.protoc.Commands.ShopWill;
 import com.trans.pixel.protoc.Commands.ShopWillList;
+import com.trans.pixel.protoc.Commands.VipLibao;
+import com.trans.pixel.protoc.Commands.VipLibaoList;
 import com.trans.pixel.protoc.Commands.Will;
 
 @Repository
@@ -683,6 +685,24 @@ public class ShopRedisService extends RedisService{
 				builder = PurchaseCoinReward.newBuilder(reward);
 		}
 		hputAll(RedisKey.PURCHASECOINREWARD_CONFIG, keyvalue);
+		return builder.build();
+	}
+	
+	public VipLibao getVipLibao(int id){
+		VipLibao.Builder builder = VipLibao.newBuilder();
+		String value = hget(RedisKey.VIPLIBAO_CONFIG, id+"");
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		String xml = ReadConfig("lol_libao.xml");
+		VipLibaoList.Builder list = VipLibaoList.newBuilder();
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		parseXml(xml, list);
+		for(VipLibao libao : list.getLibaoList()){
+			keyvalue.put(libao.getItemid()+"", formatJson(libao));
+			if(libao.getItemid() == id)
+				builder = VipLibao.newBuilder(libao);
+		}
+		hputAll(RedisKey.VIPLIBAO_CONFIG, keyvalue);
 		return builder.build();
 	}
 }
