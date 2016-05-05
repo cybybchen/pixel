@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
@@ -55,10 +56,6 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
-import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
-import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -91,10 +88,14 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
+import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
@@ -147,6 +148,7 @@ import com.trans.pixel.service.command.PokedeCommandService;
 import com.trans.pixel.service.command.PropCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.RankCommandService;
+import com.trans.pixel.service.command.RechargeCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
 import com.trans.pixel.service.command.SignCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
@@ -210,6 +212,8 @@ public class GameDataScreen extends RequestScreen {
 	private CdkeyCommandService cdkeyCommandService;
 	@Resource
 	private CheatRechargeCommandService cheatRechargeCommandService;
+	@Resource
+	private RechargeCommandService rechargeCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -722,6 +726,11 @@ public class GameDataScreen extends RequestScreen {
 		shopCommandService.VipLibaoPurchase(cmd, responseBuilder, user);
 		return true;//PurchaseVipLibaoCommand
 	}//PurchaseVipLibaoCommand
+	@Override//QueryRechargeCommand
+	protected boolean handleCommand(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user) {
+		rechargeCommandService.recharge(cmd, responseBuilder, user);
+		return true;//QueryRechargeCommand
+	}//QueryRechargeCommand
 	//add handleCommand here
 
 	@Override

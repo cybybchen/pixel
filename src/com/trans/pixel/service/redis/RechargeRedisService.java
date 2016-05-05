@@ -4,10 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import net.sf.json.JSONObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.RechargeBean;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rmb;
 import com.trans.pixel.protoc.Commands.RmbList;
 
@@ -64,5 +69,30 @@ public class RechargeRedisService extends RedisService {
 			map.put("" + rmb.getId(), rmb.build());
 		}
 		return map;
+	}
+	
+	public void addRechargeRecord(RechargeBean recharge) {
+		String key = RedisKey.PUSH_MYSQL_KEY + RedisKey.RECHARGE_KEY;
+		sadd(key, JSONObject.fromObject(recharge).toString());
+	}
+	
+	public String popDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.RECHARGE_KEY);
+	}
+	
+	public void addUserRecharge(long userId, MultiReward rewards) {
+		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
+		this.set(key, formatJson(rewards));
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1HOUR);
+	}
+	
+	public MultiReward getUserRecharge(long userId) {
+		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
+		String value = get(key);
+		MultiReward.Builder builder = MultiReward.newBuilder();
+		if(parseJson(value, builder))
+			return builder.build();
+		
+		return null;
 	}
 }

@@ -197,4 +197,10 @@ public class RedisKey {
 	
 	//rmb
 	public static final String RMB_KEY = PREFIX + CONFIG_PREFIX + "rmb";
+	
+	//recharge set
+	public static final String RECHARGE_KEY = "recharge";
+	
+	//user push recharge
+	public static final String USER_RECHARGE_PREFIX = PREFIX + "user_recharge_";
 }

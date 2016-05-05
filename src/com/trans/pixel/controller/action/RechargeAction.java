@@ -29,6 +29,8 @@ public class RechargeAction {
     public void rechrage(HttpServletRequest request, HttpServletResponse response) {
     	Map<String, String> params = getParamsMap(request);
 		logger.warn("recall params is:" + params);
+		
+		rechargeService.doRecharge(params);
     }
     
     private Map<String, String> getParamsMap(HttpServletRequest request) {

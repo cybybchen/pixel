@@ -453,7 +453,7 @@ public class ActivityService {
 	
 	public void rechargeActivity(UserBean user, int count) {
 		/**
-		 * 累计登录的成就
+		 * 累计充值钻石的成就
 		 */
 		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_RECHARGE_JEWEL, count);
 		/**
