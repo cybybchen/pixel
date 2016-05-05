@@ -100,12 +100,12 @@ function updateListData(action, json){
 		var hero_detail = json["hero_detail"][0];
 		var article = hero_detail["intro"] == null ? "" : hero_detail["intro"];
 		var content = article.split("\n").join("</p><p>");
-		content = '<h2 style="border-bottom:0px">'+hero_detail["name"]+'</h2><h3><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/><span>'
-				+hero_detail["position"]+'</span><hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3>'
+		content = '<h2 style="border-bottom:0px">'+hero_detail["name"]+'</h2><h3><hr width="90px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/><span>'
+				+hero_detail["position"]+'</span><hr width="90px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3>'
 				+'<div class="ui-field"><img src="css/images/char'+getHeroIcon(hero_detail["id"])
 				+'.png"><div class="ui-score">攻：'+formatScore(hero_detail["ad"])+'</div><div class="ui-score">法：'+formatScore(hero_detail["ap"])
 				+'</div><div class="ui-score">防：'+formatScore(hero_detail["def"])+'</div><div class="ui-score">上手：'+formatScore(hero_detail["handle"])
-				+'</div></div><p>'+content+'</p><h3 style="margin-top: 15px;"><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/>出装思路<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3><p>';
+				+'</div></div><p>'+content+'</p><h3 style="margin-top: 15px;"><hr width="90px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/>出装思路<hr width="90px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3><p>';
 		var equip_detail = json["equip_detail"][0];
 		article = equip_detail["content"] == null ? "" : equip_detail["content"];
 		content += article.split("\n").join("</p><p>")+'</p>'
@@ -286,6 +286,10 @@ $(function() {
 			if(action.startsWith("action=A1009"))
 				ranktitle = $(this).find("h2").text();
 			updateListJson(action);
+			if($(this).hasClass("btn-navbar")){
+				$(".btn-open").removeClass("btn-open");
+				$(this).addClass("btn-open");
+			}
 		}
 	});
 });
@@ -294,13 +298,13 @@ $(window).resize(function() {
 });
 
 function resizeContent() {
-	var height = $(window).height() - 192;
+	var height = $(window).height() - 156;
 	//alert(height);
 	$("#listview-page .ul-wapper").height(height);
 	$("#listview-page  .ul-wapper .ui-listview").height(height);
-	height += 56;
+	height += 82-24;
 	$("#detailview-page .ul-wapper").height(height);
-	$("#detailview-page .ul-wapper .ui-detailview").height(height);
+	$("#detailview-page .ul-wapper .ui-detailview").height(height-16);
 }
 
 String.prototype.startsWith = function(str) {

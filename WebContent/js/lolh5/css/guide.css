@@ -2,20 +2,24 @@ body{
     margin: 0;
 	padding: 0;
 	background-image: url(images/main_bg.jpg);
-	background-repeat: no-repeat;
 	background-attachment: fixed
 }
 #listview-page {
-    padding: 52px 0 86px;
+    padding: 16px 0 16px;
 }
 #detailview-page{
-    padding: 52px 0 30px;
+    padding: 16px 0 16px;
 }
 .ui-page {
 	display: none;
 }
 .ui-page-active {
 	display: block;
+}
+.ui-header {
+    width: 100%;
+    position: absolute;
+    margin-top: 23px;
 }
 .ui-header-fixed, .ui-footer-fixed {
     left: 0;
@@ -27,13 +31,16 @@ body{
 .ui-header-fixed {
 	height:42px;
 	top: -1px;
-    padding-top: 1px;
+    padding-top: 4px;
 }
 .ui-header h1 {
 	padding: 3px 0;
 	text-align: center;
     margin: 0 30%;
     white-space: nowrap;
+}
+.ui-header h1>img {
+    height: 25px;
 }
 .ui-content {
 	padding: 0;
@@ -42,17 +49,31 @@ body{
 .ul-wapper .ui-listview, .ul-wapper .ui-detailview {
 	overflow-y: scroll;
 	overflow-x: hidden;
-	width: 318px;
+	width: 344px;
 	position: relative;
+}
+.ul-wapper2 .ui-detailview {
+    width: 318px;
+    margin-top: -12px;
+    z-index: 100;
+    position: absolute;
 }
 .ul-wapper {
 	overflow-y: hidden;
 	overflow-x: hidden;
-	width: 303px;
+	width: 329px;
 	margin: 0 auto;
-	border:27px solid transparent;
-    -webkit-border-image: url("images/bottoms.png") 27 fill stretch;
-	border-image:url(images/bottoms.png) 27 fill stretch;
+}
+.ul-wapper1 {
+    border-width: 50px 8px 74px;
+    border-style: solid;
+	border-image:url(images/border1.png) 50 8 74 stretch;
+}
+.ul-wapper2 {
+    width: 303px;
+    border-width: 33px 21px;
+    border-style: solid;
+    border-image:url(images/border2.png) 33 21 fill stretch;
 }
 ::-webkit-scrollbar {
 	width: 15px;
@@ -63,20 +84,26 @@ body{
 	list-style: none;
 }
 .ui-listview>li {
-	margin: 7px 0;
+	margin: -4px;
 	background-image: url(images/data.png);
 }
 .ui-listview>li:first-child {
-	margin-top: 0;
+    margin-top: 0;
 }
 .ui-listview>li, .ui-listview>li a, .ui-field {
-	width: 303px;
-	height: 68px;
+	width: 337px;
+	height: 84px;
 	display: block;
     position: relative;
 }
 .ui-field {
+    width: 216px;
     height: 60px;
+}
+.ui-ratelist>li {
+    width: 303px;
+    height: 70px;
+    margin: 0;
 }
 .ui-ratelist>li a {
     height: 60px;
@@ -90,7 +117,7 @@ body{
     top: 0;
     height: 59px;
     width: 59px;
-    padding: 3px 5px;
+    padding: 4px 13px;
 }
 .ui-listview li a>img:first-child, .ui-field>img:first-child {
 	position: absolute;
@@ -98,11 +125,20 @@ body{
     top: 0;
     height: 55px;
     width: 55px;
+    padding: 14px 20px;
+}
+/*.ui-ratelist {
+    margin: 15px 0;
+}*/
+.ui-ratelist li a>img:first-child {
     padding: 5px 7px;
+}
+.ui-field>img:first-child {
+    padding: 6px 15px;
 }
 .ui-listview li a, .ui-field {
 	padding: 5px;
-	padding-left: 69px;
+	padding-left: 82px;
 }
 .ui-score {
     width: 112px;
@@ -118,12 +154,12 @@ body{
     overflow: hidden;
     white-space: nowrap;
     color: #333;
-    font-weight: 700;
+    /*font-weight: 700;*/
     font-size: 16px;
     line-height: 1.3;
 }
 .ui-page a {
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
     text-decoration: none!important;
 }
 .ui-detailview h1, .ui-detailview h2, .ui-detailview h3{
@@ -138,17 +174,20 @@ body{
     overflow: hidden;
     white-space: nowrap;
 }
+.ui-detailview h3{
+    font-size: 1em;
+}
 .ui-detailview h1, .ui-detailview h2{
     border-bottom:1px solid #333;
 }
 .ui-detailview p {
 	text-indent: 2em;
 	margin: .2em auto;
-	padding-right: 16px;
-	width: 18em;
+	width: 21em;
+    font-size: 14px;
 }
-.ui-field, .ui-field p {
-	width: 14em;
+.ui-field p {
+	width: 15em;
 	text-indent: 0;
 }
 .ul-wapper .date{
@@ -161,16 +200,23 @@ body{
 }
 .ui-listview>li h1, .ui-listview>li h2{
 	font-size: 1em;
-    font-weight: 700;
+    /*font-weight: 700;*/
     display: block;
     margin: .15em 0;
+    margin-top: 13px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
+h1, h2, h3 {
+    font-weight: 500;
+}
+.ui-progress span{
+    font-weight: bold;
+}
 .ui-listview>li p {
     font-size: .75em;
-    font-weight: 400;
+    /*font-weight: 400;*/
     display: block;
     margin: .3em 0;
     height: 30px;
@@ -182,7 +228,9 @@ body{
     bottom: 0;
 }
 .ui-navbar {
-    max-width: 100%;
+    max-width: 328px;
+    display: block;
+    margin:0 auto;
 }
 .ui-navbar ul {
     list-style: none;
@@ -207,9 +255,12 @@ body{
     width: 16.6%;
 }
 .ui-detailview .ui-grid-d, .ui-detailview .ui-grid-e {
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 	height: 55px;
+}
+.ui-detailview .ui-grid-d img{
+    max-width: 60px;
 }
 .ui-detailview .ui-grid-e img:first-child {
     width: 44px;
@@ -233,9 +284,6 @@ ul.ui-grid-a, ul.ui-grid-b, ul.ui-grid-c, ul.ui-grid-d, ul.ui-grid-e, ul.ui-grid
 .ui-block-a {
     clear: left;
 }
-.ui-footer a {
-    height: 78px;
-}
 li.ui-block-a a, li.ui-block-b a, li.ui-block-c a, li.ui-block-d a, li.ui-block-e a, li.ui-block-f a {
     display: block;
     text-align: center;
@@ -243,8 +291,19 @@ li.ui-block-a a, li.ui-block-b a, li.ui-block-c a, li.ui-block-d a, li.ui-block-
     overflow: hidden;
     white-space: nowrap;
 }
-.ui-footer a img{
-    margin-top: 10px;
+.ui-footer>.ui-navbar a>img:first-child{
+    width: 39px;
+    margin-top: 22px;
+}
+.ui-footer>.ui-navbar a {
+    height: 64px;
+    background-image: url(images/btn_off.png);
+    background-repeat: no-repeat;
+    background-position:center center;
+    margin-bottom: 23px;
+}
+.ui-footer>.ui-navbar .btn-open{
+    background-image: url(images/btn_on.png);
 }
 .ui-progress {
     width: 234px;
@@ -272,6 +331,6 @@ li.ui-block-a a, li.ui-block-b a, li.ui-block-c a, li.ui-block-d a, li.ui-block-
     background-color: #F00;
     color: #FFF;
 }
-@media screen and (min-width: 48em) {
+/*@media screen and (min-width: 48em) {
 	
-}
+}*/
