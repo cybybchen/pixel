@@ -203,4 +203,7 @@ public class RedisKey {
 	
 	//user push recharge
 	public static final String USER_RECHARGE_PREFIX = PREFIX + "user_recharge_";
+	
+	//hero choice config
+	public static final String HERO_CHOICE_CONFIG = PREFIX + CONFIG_PREFIX + "hero_choice";
 }

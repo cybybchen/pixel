@@ -90,9 +90,6 @@ public class UserCommandService extends BaseCommandService {
 		userService.cache(user.getServerId(), user.buildShort());
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
-
-		addRegisterHero(user);
-		addRegisterTeam(user);
 		
 		pushCommand(responseBuilder, user);
 	}
@@ -127,23 +124,6 @@ public class UserCommandService extends BaseCommandService {
 		userService.updateUser(user);
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-	}
-	
-	private void addRegisterHero(UserBean user) {
-		userHeroService.addUserHero(user, 42, 1, 1);
-		userHeroService.selectUserNewHero(user.getId());
-	}
-	
-	private void addRegisterTeam(UserBean user) {
-		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
-		String teamRecord = "";
-		for (HeroInfoBean hero : userHeroList) {
-			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
-			break;
-		}
-		
-		if (!teamRecord.isEmpty())
-			userTeamService.addUserTeam(user.getId(), teamRecord, "");
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {

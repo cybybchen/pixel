@@ -39,6 +39,7 @@ import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -121,6 +122,7 @@ import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -150,6 +152,7 @@ import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -645,6 +648,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO QueryRechargeCommand method
 		return true;//QueryRechargeCommand
 	}//QueryRechargeCommand
+	@Override//FirstGetHeroCommand
+	protected boolean handleCommand(RequestFirstGetHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO FirstGetHeroCommand method
+		return true;//FirstGetHeroCommand
+	}//FirstGetHeroCommand
 	//add handleCommand here
 
 	@Override

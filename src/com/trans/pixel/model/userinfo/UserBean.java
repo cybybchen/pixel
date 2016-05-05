@@ -64,6 +64,7 @@ public class UserBean {
 	private int rechargeRecord = 0;
 	private long refreshPvpMapTime = 0;
 	private int heroInfoId = 0;
+	private int firstGetHeroId = 0;
 	/**
 	 * vip免费礼包领取状态
 	 */
@@ -752,6 +753,15 @@ public class UserBean {
 	public int updateHeroInfoId() {
 		heroInfoId++;
 		return heroInfoId;
+	}
+	/**
+	 * 首选英雄ID
+	 */
+	public int getFirstGetHeroId() {
+		return firstGetHeroId;
+	}
+	public void setFirstGetHeroId(int firstGetHeroId) {
+		this.firstGetHeroId = firstGetHeroId;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

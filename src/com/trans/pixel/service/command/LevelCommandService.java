@@ -129,12 +129,14 @@ public class LevelCommandService extends BaseCommandService {
 		userLevelService.updateUserLevelRecord(userLevelRecord);
 		log.debug("levelId is:" + levelId);
 		WinBean winBean = winService.getWinByLevelId(levelId);
-		rewardService.doRewards(user, winBean.getRewardList());
+		List<RewardBean> rewardList = winBean.getRewardList();
 		
-//		builder.addAllReward(RewardBean.buildRewardInfoList(winBean.getRewardList()));
-//		responseBuilder.setLevelResultCommand(builder.build());
+		rewardList.addAll(levelService.getNewplayReward(user, levelId));
+		
+		rewardService.doRewards(user, rewardList);
+		
 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
-		pushCommandService.pushRewardCommand(responseBuilder, user, winBean.getRewardList());
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 	}
 	
 	public void levelLootStart(RequestLevelLootStartCommand cmd, Builder responseBuilder, UserBean user) {

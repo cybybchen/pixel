@@ -56,6 +56,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -731,6 +732,11 @@ public class GameDataScreen extends RequestScreen {
 		rechargeCommandService.recharge(cmd, responseBuilder, user);
 		return true;//QueryRechargeCommand
 	}//QueryRechargeCommand
+	@Override//FirstGetHeroCommand
+	protected boolean handleCommand(RequestFirstGetHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		heroCommandService.firstGetHero(cmd, responseBuilder, user);
+		return true;//FirstGetHeroCommand
+	}//FirstGetHeroCommand
 	//add handleCommand here
 
 	@Override

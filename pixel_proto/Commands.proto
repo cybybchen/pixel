@@ -962,6 +962,22 @@ message Rmb {
 	required string description = 6;
 }
 
+message HeroChoiceList {
+	repeated HeroChoice id = 1;
+}
+
+message HeroChoice {
+	required int32 id = 1;
+	required int32 heroid = 2;
+	required string description = 3;
+	required int32 level1_1 = 4;
+	required int32 level1_2 = 5;
+	required int32 level2_1 = 6;
+	required int32 level2_2 = 7;
+	required int32 level3_1 = 8;
+	required int32 level3_2 = 9;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1741,6 +1757,10 @@ message RequestQueryRechargeCommand {
 	
 }
 
+message RequestFirstGetHeroCommand {
+	required int32 heroId = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1864,6 +1884,7 @@ message RequestCommand {
 	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
 	optional RequestBindAccountCommand bindAccountCommand = 87;
 	optional RequestQueryRechargeCommand queryRechargeCommand = 88;
+	optional RequestFirstGetHeroCommand firstGetHeroCommand = 89;
 }
 // response command list transfer only use it
 message ResponseCommand {

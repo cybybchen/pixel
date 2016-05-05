@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,9 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LevelConst;
 import com.trans.pixel.model.DaguanBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.protoc.Commands.HeroChoice;
+import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
@@ -23,9 +27,15 @@ public class LevelService {
 	private LevelRedisService levelRedisService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private HeroRedisService heroRedisService;
 	
 	private static final int DIFF_DELTA = 1000;
 	private static final int XIAOGUAN_COUNT_EVERY_DAGUAN = 5;
+	
+	private static final int NEWPLAY_LEVEL_1= 1006;
+	private static final int NEWPLAY_LEVEL_2= 1009;
+	private static final int NEWPLAY_LEVEL_3= 1011;
 	
 	public int getDifficulty(int levelId) {
 		return levelId / DIFF_DELTA;
@@ -202,5 +212,29 @@ public class LevelService {
 		if (dgList != null && dgList.size() != 0) {
 			levelRedisService.setDaguanList(dgList);
 		}
+	}
+	
+	public List<RewardBean> getNewplayReward(UserBean user, int levelId) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		
+		HeroChoice heroChoice = heroRedisService.getHerochoice(user.getFirstGetHeroId());
+		switch (levelId) {
+		case NEWPLAY_LEVEL_1:
+			rewardList.add(RewardBean.init(heroChoice.getLevel11(), 1));
+			rewardList.add(RewardBean.init(heroChoice.getLevel12(), 1));
+			break;
+		case NEWPLAY_LEVEL_2:
+			rewardList.add(RewardBean.init(heroChoice.getLevel21(), 1));
+			rewardList.add(RewardBean.init(heroChoice.getLevel22(), 1));
+			break;
+		case NEWPLAY_LEVEL_3:
+			rewardList.add(RewardBean.init(heroChoice.getLevel31(), 1));
+			rewardList.add(RewardBean.init(heroChoice.getLevel32(), 1));
+			break;
+		default:
+			break;
+		}
+		
+		return rewardList;
 	}
 }

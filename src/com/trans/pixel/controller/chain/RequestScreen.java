@@ -56,6 +56,7 @@ import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -326,6 +327,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestFirstGetHeroCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -946,6 +948,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//QueryRechargeCommand
                 result = handleCommand(cmd, responseBuilder, user);//QueryRechargeCommand
         }//QueryRechargeCommand
+        if (request.hasFirstGetHeroCommand()) {
+            RequestFirstGetHeroCommand cmd = request.getFirstGetHeroCommand();
+            if (result)//FirstGetHeroCommand
+                result = handleCommand(cmd, responseBuilder, user);//FirstGetHeroCommand
+        }//FirstGetHeroCommand
         //call handleCommand here
         
         return result;

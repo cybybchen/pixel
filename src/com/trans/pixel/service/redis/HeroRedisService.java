@@ -1,12 +1,15 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -17,9 +20,13 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
+import com.trans.pixel.protoc.Commands.HeroChoice;
+import com.trans.pixel.protoc.Commands.HeroChoiceList;
 
 @Repository
 public class HeroRedisService extends RedisService {
+	private static Logger logger = Logger.getLogger(HeroRedisService.class);
+	private static final String HEROCHOICE_FILE_NAME = "lol_herochoice.xml";
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -96,5 +103,55 @@ public class HeroRedisService extends RedisService {
 		}
 		
 		return heroList;
+	}
+	
+	public HeroChoice getHerochoice(int heroId) {
+		String value = hget(RedisKey.HERO_CHOICE_CONFIG, "" + heroId);
+		if (value == null) {
+			Map<String, HeroChoice> herochoiceConfig = getHerochoiceConfig();
+			return herochoiceConfig.get("" + heroId);
+		} else {
+			HeroChoice.Builder builder = HeroChoice.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	private Map<String, HeroChoice> getHerochoiceConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.HERO_CHOICE_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, HeroChoice> map = buildHerochoiceConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, HeroChoice> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.HERO_CHOICE_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, HeroChoice> map = new HashMap<String, HeroChoice>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				HeroChoice.Builder builder = HeroChoice.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, HeroChoice> buildHerochoiceConfig(){
+		String xml = ReadConfig(HEROCHOICE_FILE_NAME);
+		HeroChoiceList.Builder builder = HeroChoiceList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + HEROCHOICE_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, HeroChoice> map = new HashMap<String, HeroChoice>();
+		for(HeroChoice.Builder herochoice : builder.getIdBuilderList()){
+			map.put("" + herochoice.getHeroid(), herochoice.build());
+		}
+		return map;
 	}
 }

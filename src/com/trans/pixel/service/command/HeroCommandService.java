@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
@@ -40,6 +41,7 @@ import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -68,6 +70,8 @@ public class HeroCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
@@ -370,5 +374,34 @@ public class HeroCommandService extends BaseCommandService {
 		userService.updateUser(user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
+	}
+	
+	public void firstGetHero(RequestFirstGetHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		int addHeroId = cmd.getHeroId();
+		addRegisterHero(user, addHeroId);
+		addRegisterTeam(user);
+		
+		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
+		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
+		
+		user.setFirstGetHeroId(addHeroId);
+		userService.updateUser(user);
+	}
+	
+	private void addRegisterHero(UserBean user, int heroId) {
+		userHeroService.addUserHero(user, heroId, 1, 1);
+		userHeroService.selectUserNewHero(user.getId());
+	}
+	
+	private void addRegisterTeam(UserBean user) {
+		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+		String teamRecord = "";
+		for (HeroInfoBean hero : userHeroList) {
+			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
+			break;
+		}
+		
+		if (!teamRecord.isEmpty())
+			userTeamService.addUserTeam(user.getId(), teamRecord, "");
 	}
 }
