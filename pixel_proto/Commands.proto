@@ -949,6 +949,19 @@ message LotteryItem {
 	required int32 will = 5;
 }
 
+message RmbList {
+	repeated Rmb rmb = 1;
+}
+
+message Rmb {
+	required int32 id = 1;
+	required int32 rmb = 2;
+	required int32 itemid = 3;
+	required int32 zuanshi = 4;
+	required string name = 5;
+	required string description = 6;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1724,6 +1737,10 @@ message RequestPurchaseVipLibaoCommand {
 	required int32 type = 2;
 }
 
+message RequestQueryRechargeCommand {
+	
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1846,6 +1863,7 @@ message RequestCommand {
 	optional RequestSubmitIconCommand submitIconCommand = 85;
 	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
 	optional RequestBindAccountCommand bindAccountCommand = 87;
+	optional RequestQueryRechargeCommand queryRechargeCommand = 88;
 }
 // response command list transfer only use it
 message ResponseCommand {

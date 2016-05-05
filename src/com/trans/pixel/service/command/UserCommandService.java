@@ -65,11 +65,10 @@ public class UserCommandService extends BaseCommandService {
 //		}
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
+		pushCommand(responseBuilder, user);
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
-
-		pushCommand(responseBuilder, user);
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {

@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.Rmb;
 import com.trans.pixel.protoc.Commands.VipInfo;
+import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.utils.LogUtils;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class RechargeService {
@@ -28,6 +31,8 @@ public class RechargeService {
 	private AchieveService achieveService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private RechargeRedisService rechargeRedisService;
 
 	public int recharge(UserBean user, int id) {
 		int rmb = id;
@@ -83,5 +88,12 @@ public class RechargeService {
 		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb, 0, 0, 0, "test", "1111", 1);
 		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
     }
+	
+	public void doRecharge(Map<String, String> params) {
+		long userId = TypeTranslatedUtil.stringToLong(params.get("user_id"));
+		UserBean user = userService.getUser(userId);
+		int productId = TypeTranslatedUtil.stringToInt(params.get("product_id"));
+		Rmb rmb = rechargeRedisService.getRmb(productId);
+	}
 	
 }
