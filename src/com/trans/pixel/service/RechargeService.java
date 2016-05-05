@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.ShopRedisService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.LogUtils;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -150,8 +151,8 @@ public class RechargeService {
 		
 		recharge.setCompany(params.get("company"));
 		recharge.setOrderId(params.get("order_id"));
-		recharge.setOrderTime(params.get("order_time_u"));
-		recharge.setProductId(TypeTranslatedUtil.stringToInt(params.get("product_id")));
+		recharge.setOrderTime(DateUtil.getCurrentDateString());
+		recharge.setProductId(TypeTranslatedUtil.stringToInt(params.get("itemid")));
 		recharge.setUserId(TypeTranslatedUtil.stringToLong(params.get("playerid")));
 		recharge.setServerId(TypeTranslatedUtil.stringToInt(params.get("zone_id")));
 		

@@ -26,11 +26,13 @@ public class RechargeAction {
 	private RechargeService rechargeService;
     @RequestMapping("/recharge")
     @ResponseBody
-    public void rechrage(HttpServletRequest request, HttpServletResponse response) {
+    public String rechrage(HttpServletRequest request, HttpServletResponse response) {
     	Map<String, String> params = getParamsMap(request);
 		logger.warn("recall params is:" + params);
 		
 		rechargeService.doRecharge(params);
+		
+		return "EXCHANGE_SUCCESS";
     }
     
     private Map<String, String> getParamsMap(HttpServletRequest request) {
