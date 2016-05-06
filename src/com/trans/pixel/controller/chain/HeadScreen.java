@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
@@ -34,12 +35,6 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
-import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
-import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -97,10 +92,14 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
+import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
@@ -115,14 +114,7 @@ import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
-import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
-import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
-import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
-import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -142,17 +134,6 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
-import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
-import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
-import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
-import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
-import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestFirstGetHeroCommand;
 //add import here
 
 public class HeadScreen extends RequestScreen {
@@ -648,11 +629,6 @@ public class HeadScreen extends RequestScreen {
 		// TODO QueryRechargeCommand method
 		return true;//QueryRechargeCommand
 	}//QueryRechargeCommand
-	@Override//FirstGetHeroCommand
-	protected boolean handleCommand(RequestFirstGetHeroCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO FirstGetHeroCommand method
-		return true;//FirstGetHeroCommand
-	}//FirstGetHeroCommand
 	//add handleCommand here
 
 	@Override

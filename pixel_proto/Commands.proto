@@ -996,6 +996,7 @@ message ResponseNeedRegisterCommand {
 message RequestRegisterCommand {
 	required string userName = 1;
 	optional int32 icon = 2;
+	required int32 heroId = 3;
 }
 
 message RequestLoginCommand {
@@ -1757,10 +1758,6 @@ message RequestQueryRechargeCommand {
 	
 }
 
-message RequestFirstGetHeroCommand {
-	required int32 heroId = 1;
-}
-
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1884,7 +1881,6 @@ message RequestCommand {
 	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
 	optional RequestBindAccountCommand bindAccountCommand = 87;
 	optional RequestQueryRechargeCommand queryRechargeCommand = 88;
-	optional RequestFirstGetHeroCommand firstGetHeroCommand = 89;
 }
 // response command list transfer only use it
 message ResponseCommand {

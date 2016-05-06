@@ -86,12 +86,39 @@ public class UserCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
+		
+		int addHeroId = registerCommand.getHeroId();
+		addRegisterHero(user, addHeroId);
+		addRegisterTeam(user);
+		
+		user.setFirstGetHeroId(addHeroId);
+		userService.updateUser(user);
+		
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
 		
+		
+		
 		pushCommand(responseBuilder, user);
+	}
+	
+	private void addRegisterHero(UserBean user, int heroId) {
+		userHeroService.addUserHero(user, heroId, 1, 1);
+		userHeroService.selectUserNewHero(user.getId());
+	}
+	
+	private void addRegisterTeam(UserBean user) {
+		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+		String teamRecord = "";
+		for (HeroInfoBean hero : userHeroList) {
+			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
+			break;
+		}
+		
+		if (!teamRecord.isEmpty())
+			userTeamService.addUserTeam(user.getId(), teamRecord, "");
 	}
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {

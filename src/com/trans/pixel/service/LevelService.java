@@ -217,20 +217,22 @@ public class LevelService {
 	public List<RewardBean> getNewplayReward(UserBean user, int levelId) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		
+		if (user.getFirstGetHeroId() == 0)
+			return rewardList;
 		HeroChoice heroChoice = heroRedisService.getHerochoice(user.getFirstGetHeroId());
 		switch (levelId) {
-		case NEWPLAY_LEVEL_1:
-			rewardList.add(RewardBean.init(heroChoice.getLevel11(), 1));
-			rewardList.add(RewardBean.init(heroChoice.getLevel12(), 1));
-			break;
-		case NEWPLAY_LEVEL_2:
-			rewardList.add(RewardBean.init(heroChoice.getLevel21(), 1));
-			rewardList.add(RewardBean.init(heroChoice.getLevel22(), 1));
-			break;
-		case NEWPLAY_LEVEL_3:
-			rewardList.add(RewardBean.init(heroChoice.getLevel31(), 1));
-			rewardList.add(RewardBean.init(heroChoice.getLevel32(), 1));
-			break;
+			case NEWPLAY_LEVEL_1:
+				rewardList.add(RewardBean.init(heroChoice.getLevel11(), 1));
+				rewardList.add(RewardBean.init(heroChoice.getLevel12(), 1));
+				break;
+			case NEWPLAY_LEVEL_2:
+				rewardList.add(RewardBean.init(heroChoice.getLevel21(), 1));
+				rewardList.add(RewardBean.init(heroChoice.getLevel22(), 1));
+				break;
+			case NEWPLAY_LEVEL_3:
+				rewardList.add(RewardBean.init(heroChoice.getLevel31(), 1));
+				rewardList.add(RewardBean.init(heroChoice.getLevel32(), 1));
+				break;
 		default:
 			break;
 		}
