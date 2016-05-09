@@ -32,7 +32,8 @@ public class MessageRedisService extends RedisService {
 						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
 				
 				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
-				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
+//				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
+				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
 					messageBoardList.add(getMessageBoard(serverId, messageBoard.getValue()));
 				}
@@ -118,7 +119,8 @@ public class MessageRedisService extends RedisService {
 						.boundZSetOps(buildUnionMessageBoardRedisKey(unionId));
 				
 				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
-				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
+//				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
+				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
 					messageBoardList.add(getUnionMessageBoard(unionId, messageBoard.getValue()));
 				}
