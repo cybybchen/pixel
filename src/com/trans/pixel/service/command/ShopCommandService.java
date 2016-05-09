@@ -712,5 +712,6 @@ public class ShopCommandService extends BaseCommandService{
 		rewardService.doRewards(user, rewards);
 		userService.updateUser(user);
 		pusher.pushRewardCommand(responseBuilder, user, rewards);
+		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 }
