@@ -15,6 +15,7 @@ public enum ErrorConst implements ResultConst {
 	YOU_ARE_ATTACKING(2031, "你正在被其他玩家挑战"),HE_IS_ATTACKING(2032, "该玩家正在被其他玩家挑战"),CDKEY_USED(2033, "CDKEY已被使用"),CDKEY_INVALID(2034, "无效的CDKEY"),
 	CDKEY_REWARDED(2035, "已领取过相同类型的CDKEY"),SHOP_LADDERCONDITION(2036, "购买条件不足，请先提升天梯排名"),SHOP_PVPCONDITION(2037, "购买条件不足，请先解锁相应区域"),
 	TIME_RETRY(2038, "时间未到,请稍后在试"),NEED_VIP8(2039, "尚未开启,vip8后开放"),HERO_HAS_FENJIE(2040, "请勿重复分解英雄"),PURCHASE_VIPLIBAO_AGAIN(2041, "请勿重复领取Vip礼包"),
+	UNLOCK_ORDER_ERROR(2042, "请按顺序解锁"),NOT_ENOUGH_ZHANLI(2043, "需要更高的战力"),
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_HAS_REGISTER(1001, "该帐号已注册"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "人物等级已达上限"), NOT_ENOUGH_EXP(1006, "升级所需经验不足"),

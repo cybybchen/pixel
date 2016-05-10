@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -67,8 +68,8 @@ public class PvpCommandService extends BaseCommandService {
 	}
 
 	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
-		if(pvpMapService.unlockMap(cmd.getFieldid(), cmd.getZhanli(), user))
-			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.UNLOCK_AREA));
+		ResultConst result = pvpMapService.unlockMap(cmd.getFieldid(), cmd.getZhanli(), user);
+		buildMessageOrErrorCommand(responseBuilder, result);
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	

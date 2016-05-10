@@ -14,10 +14,13 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.PvpMapConst;
 import com.trans.pixel.constants.RedisExpiredConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
@@ -64,11 +67,13 @@ public class PvpMapService {
 	@Resource
 	private LogService logService;
 
-	public boolean unlockMap(int fieldid, int zhanli, UserBean user){
+	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
-			if(map.getFieldid() > user.getPvpUnlock() && map.getFieldid() == fieldid){
-				if(zhanli >= map.getZhanli()){
+			if(map.getFieldid() > user.getPvpUnlock()){
+				if(map.getFieldid() != fieldid){
+					return ErrorConst.UNLOCK_ORDER_ERROR;
+				}else if(zhanli >= map.getZhanli()){
 //					map.setOpened(true);
 //					redis.saveMapList(maplist.build(), user);
 					user.setPvpUnlock(map.getFieldid());
@@ -84,11 +89,12 @@ public class PvpMapService {
 						}
 						redis.saveMines(user.getId(), mineMap);
 					}
+					return SuccessConst.UNLOCK_AREA;
 				}else
-					return false;
+					return ErrorConst.NOT_ENOUGH_ZHANLI;
 			}
 		}
-		return true;
+		return ErrorConst.UNLOCK_ORDER_ERROR;
 	}
 	
 	public List<UserInfo> getRandUser(int count, UserBean user){
