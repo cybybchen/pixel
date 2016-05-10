@@ -70,14 +70,16 @@ public class PvpMapService {
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
-			if(map.getFieldid() > user.getPvpUnlock()){
-				if(map.getFieldid() != fieldid){
+			if(map.getFieldid() == fieldid){
+				/*if(map.getFieldid() != fieldid){
 					return ErrorConst.UNLOCK_ORDER_ERROR;
-				}else if(zhanli >= map.getZhanli()){
-//					map.setOpened(true);
-//					redis.saveMapList(maplist.build(), user);
-					user.setPvpUnlock(map.getFieldid());
-					userService.updateUserDailyData(user);
+				}else */if(zhanli >= map.getZhanli()){
+					map.setOpened(true);
+					redis.saveMapList(maplist.build(), user);
+					if(map.getFieldid() > user.getPvpUnlock()){
+						user.setPvpUnlock(map.getFieldid());
+						userService.updateUserDailyData(user);
+					}
 					
 					List<UserInfo> ranks = getRandUser(20, user);
 					if(ranks.size() > 0){
