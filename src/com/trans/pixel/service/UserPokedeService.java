@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserPokedeMapper;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.service.redis.UserPokedeRedisService;
 
@@ -18,14 +19,23 @@ public class UserPokedeService {
 	private UserPokedeRedisService userPokedeRedisService;
 	@Resource
 	private UserPokedeMapper userPokedeMapper;
+	@Resource
+	private ActivityService activityService;
 	
-	public UserPokedeBean selectUserPokede(long userId, int heroId) {
+	public UserPokedeBean selectUserPokede(UserBean user, int heroId) {
+		long userId = user.getId();
 		UserPokedeBean userPokede = userPokedeRedisService.selectUserPokede(userId, heroId);
 		if (userPokede == null)
 			userPokede = userPokedeMapper.selectUserPokede(userId, heroId);
 		
-		if (userPokede == null)
+		if (userPokede == null) {
 			userPokede = initUserPokede(userId, heroId);
+			/**
+			 * 收集不同英雄的活动
+			 */
+			
+			activityService.heroStoreActivity(user);
+		}
 		
 		return userPokede;
 	}
@@ -41,22 +51,22 @@ public class UserPokedeService {
 		return userPokedeList;
 	}
 	
-	private void updateUserPokede(UserPokedeBean userPokede, long userId) {
-		userPokedeRedisService.updateUserPokede(userPokede, userId);
-		userPokedeMapper.updateUserPokede(userId, userPokede.getHeroId(), userPokede.getRare());
+	private void updateUserPokede(UserPokedeBean userPokede, UserBean user) {
+		userPokedeRedisService.updateUserPokede(userPokede, user.getId());
+		userPokedeMapper.updateUserPokede(user.getId(), userPokede.getHeroId(), userPokede.getRare());
 	}
 	
-	public void updateUserPokede(HeroInfoBean heroInfo, long userId) {
-		UserPokedeBean userPokede = selectUserPokede(userId, heroInfo.getHeroId());
+	public void updateUserPokede(HeroInfoBean heroInfo, UserBean user) {
+		UserPokedeBean userPokede = selectUserPokede(user, heroInfo.getHeroId());
 		if (userPokede.getRare() < heroInfo.getRare()) {
 			userPokede.setRare(heroInfo.getRare());
-			updateUserPokede(userPokede, userId);
+			updateUserPokede(userPokede, user);
 		}
 	}
 	
-	public void delUserPokede(UserPokedeBean userPokede, long userId){
+	public void delUserPokede(UserPokedeBean userPokede, UserBean user){
 		userPokede.setRare(0);
-		updateUserPokede(userPokede, userId);
+		updateUserPokede(userPokede, user);
 	}
 	
 	private UserPokedeBean initUserPokede(long userId, int heroId) {

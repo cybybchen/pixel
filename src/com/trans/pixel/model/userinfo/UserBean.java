@@ -65,6 +65,7 @@ public class UserBean {
 	private long refreshPvpMapTime = 0;
 	private int heroInfoId = 0;
 	private int firstGetHeroId = 0;
+	private int totalSignCount = 0;
 	/**
 	 * vip免费礼包领取状态
 	 */
@@ -762,6 +763,16 @@ public class UserBean {
 	}
 	public void setFirstGetHeroId(int firstGetHeroId) {
 		this.firstGetHeroId = firstGetHeroId;
+	}
+	/**
+	 * 总签到次数，不清0
+	 * @return
+	 */
+	public int getTotalSignCount() {
+		return totalSignCount;
+	}
+	public void setTotalSignCount(int totalSignCount) {
+		this.totalSignCount = totalSignCount;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

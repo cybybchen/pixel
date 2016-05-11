@@ -412,7 +412,7 @@ public class ManagerService extends RedisService{
 			for(String key : map.keySet()){
 				if(!object.keySet().contains(key)){
 					UserPokedeBean userPokede = UserPokedeBean.fromJson(map.get(key));
-					userPokedeService.delUserPokede(userPokede, userId);
+					userPokedeService.delUserPokede(userPokede, userService.getUser(userId));
 //					hdelete(RedisKey.PREFIX + RedisKey.USER_Pokede_PREFIX + userId, key);
 				}
 			}

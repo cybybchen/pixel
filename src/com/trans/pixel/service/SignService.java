@@ -1,7 +1,9 @@
 package com.trans.pixel.service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -24,18 +26,24 @@ public class SignService {
 	@Resource
 	private UserService userService;
 	
-	public RewardBean sign(UserBean user) {
+	public List<RewardBean> sign(UserBean user) {
 		if (!canSign(user))
 			return null;
 		
 
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		user.setSignCount(user.getSignCount() + 1);
+		user.setTotalSignCount(user.getTotalSignCount() + 1);
 		Sign sign = signRedisService.getSign(user.getSignCount());
 		RewardBean reward = buildRewardBySign(sign);
+		rewardList.add(reward);
+		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
+		if (totalSign != null) 
+			rewardList.add(buildRewardBySign(totalSign));
 		
 		userService.updateUser(user);
 		
-		return reward;
+		return rewardList;
 	}
 	
 	private RewardBean buildRewardBySign(Sign sign) {

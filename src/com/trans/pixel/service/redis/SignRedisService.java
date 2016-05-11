@@ -16,6 +16,7 @@ import com.trans.pixel.protoc.Commands.SignList;
 public class SignRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(SignRedisService.class);
 	private static final String FILE_NAME = "task/lol_tasksanqian.xml";
+	private static final String TOTAL_SIGN_FILE_NAME = "task/lol_taskleijiqiandao.xml";
 	
 	public Sign getSign(int day) {
 		String value = hget(RedisKey.SIGN_KEY, "" + day);
@@ -64,6 +65,58 @@ public class SignRedisService extends RedisService{
 		for(Qiandao.Builder qiandao : builder.getSanqianBuilderList()){
 			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
 				map.put("" + sign.getOrder(), sign.build());
+			}
+		}
+		return map;
+	}
+	
+	public Sign getTotalSign(int count) {
+		String value = hget(RedisKey.TOTAL_SIGN_KEY, "" + count);
+		if (value == null) {
+			Map<String, Sign> signConfig = getTotalSignConfig();
+			return signConfig.get("" + count);
+		} else {
+			Sign.Builder builder = Sign.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Sign> getTotalSignConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.TOTAL_SIGN_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Sign> map = buildTotalSignConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Sign> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.TOTAL_SIGN_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Sign> map = new HashMap<String, Sign>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Sign.Builder builder = Sign.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Sign> buildTotalSignConfig(){
+		String xml = ReadConfig(TOTAL_SIGN_FILE_NAME);
+		SignList.Builder builder = SignList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + TOTAL_SIGN_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Sign> map = new HashMap<String, Sign>();
+		for(Qiandao.Builder qiandao : builder.getSanqianBuilderList()){
+			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
+				map.put("" + sign.getTargetcount(), sign.build());
 			}
 		}
 		return map;

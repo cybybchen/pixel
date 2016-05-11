@@ -117,15 +117,9 @@ public class UserHeroService {
 		HeroInfoBean oldHero = selectUserHeroByHeroId(userId, heroId);
 		if (oldHero == null) {
 			/**
-			 * 收集不同英雄的活动
-			 */
-			
-			activityService.heroStoreActivity(user);
-			
-			/**
 			 * 更新图鉴
 			 */
-			userPokedeService.updateUserPokede(newHero, userId);
+			userPokedeService.updateUserPokede(newHero, user);
 		} 
 		
 		int addCount = 0;

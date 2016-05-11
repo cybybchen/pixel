@@ -218,7 +218,7 @@ public class HeroLevelUpService {
 		/**
 		 * 更新图鉴
 		 */
-		userPokedeService.updateUserPokede(heroInfo, user.getId());
+		userPokedeService.updateUserPokede(heroInfo, user);
 		
 		/**
 		 * 培养英雄的活动

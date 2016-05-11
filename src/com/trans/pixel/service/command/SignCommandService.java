@@ -1,5 +1,7 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -30,18 +32,19 @@ public class SignCommandService extends BaseCommandService {
 	public void sign(RequestSignCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseSignCommand.Builder builder = ResponseSignCommand.newBuilder();
 		
-		RewardBean reward = signService.sign(user);
+		List<RewardBean> rewardList = signService.sign(user);
 		
-		if (reward == null) {
+		if (rewardList == null || rewardList.size() == 0) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 		
-		rewardService.doReward(user, reward);
-		builder.addReward(reward.buildRewardInfo());
+		rewardService.doRewards(user, rewardList);
+		builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
 		responseBuilder.setSignCommand(builder.build());
-		pushCommandService.pushUserDataByRewardId(responseBuilder, user, reward.getItemid());
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 }
