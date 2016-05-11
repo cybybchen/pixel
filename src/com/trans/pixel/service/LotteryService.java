@@ -64,9 +64,11 @@ public class LotteryService {
     	}
    
     	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
-    	RewardBean willReward = rewardService.randomReward(willLotteryList);
-    	if (willReward != null)
-    		randomLotteryList.add(willReward);
+    	if(count > 1){
+	    	RewardBean willReward = rewardService.randomReward(willLotteryList);
+	    	if (willReward != null)
+	    		randomLotteryList.add(willReward);
+    	}
     		
     	randomLotteryList.addAll(rewardService.randomRewardList(lotteryList, count - randomLotteryList.size()));
     	
