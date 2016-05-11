@@ -64,10 +64,10 @@ public class RechargeService {
 		if (cheat)
 			user.setJewel(user.getJewel()+jewel);
 
-    	int complete = user.getRechargeRecord()+rmb;
+    	int complete = user.getRechargeRecord()+jewel;
     	while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
-	    	if(vip == null || complete < vip.getRmb())
+	    	if(vip == null || complete < vip.getZuanshi())
 	    		break;
 	    	VipInfo oldvip = userService.getVip(user.getVip());
 	    	if(oldvip == null)
@@ -92,7 +92,7 @@ public class RechargeService {
 		/**
 		 * 记录用户的累计充值金额
 		 */
-		user.setRechargeRecord(user.getRechargeRecord() + rmb);
+		user.setRechargeRecord(user.getRechargeRecord() + jewel);
 		userService.updateUser(user);
 		
 		return rmb;

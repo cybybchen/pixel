@@ -584,6 +584,7 @@ message VipInfo {
 	optional int32 baohu = 11;
 	optional int32 libao1 = 12;
 	optional int32 libao2 = 13;
+	optional int32 zuanshi = 14;
 }
 
 message VipList {
