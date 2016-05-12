@@ -16,6 +16,9 @@
 			<li  id="nav-locate" style="background-color: #F6F6F6;">添加ServerId&nbsp;&nbsp;&rArr;</li>
 			<li data-theme="b" data-icon="home"><a href="#menu-panel">导航【服务器】</a></li>
 			<li ><a href="#" class="nav-btn-active" data-type="base">基本</a></li>
+			<li ><a href="#" data-type="blacknosay">禁言黑名单</a></li>
+			<li ><a href="#" data-type="blackuser">角色黑名单</a></li>
+			<li ><a href="#" data-type="blackaccount">帐号黑名单</a></li>
 			<li ><a href="#" data-type="0">其他</a></li>
 			<li data-theme="b"><a href="#user-page">用户</a></li>
 			<li data-theme="b"><a href="#config-page">配置</a></li>
@@ -27,6 +30,31 @@
 		<div data-role="controlgroup" id="server-controlgroup" class="ui-btn-inline">
 			<a href="#popupNewServer" data-rel="popup" data-position-to="window" data-transition="pop" id="new-servertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 		</div>
+		
+		<form id="setBlackForm" class="ui-grid-a" style="display;">
+			<div class="ui-block-a">
+	        	<label>UserId:</label>
+			    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
+			        <input name="userid" data-enhanced="true" data-inset="false" id="rewardid-input" placeholder="userid">
+			    </div>
+			    <div data-role="controlgroup" data-enhanced="true" data-filter="true" data-filter-reveal="true" data-input="#rewardid-input" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+			        <div class="ui-controlgroup-controls">
+<%-- 			        	<%@ include file="reward.jsp" %> --%>
+			        </div>
+			    </div>
+		    </div>
+	      <div class="ui-block-b">
+		        <label>UserName:</label>
+		        <input type="text" name="username" value="" placeholder="username">
+    		</div>
+    		<div class="ui-block-b">
+		        <label>LastTime(小时):</label>
+		        <input type="text" name="lasttime" value="" placeholder="lasttime">
+	
+	    		<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doBlack();">send black</a>
+    		</div>
+		</form>
+		
 		<div id="server-editor">
 		</div>
 	</div><!-- /content -->

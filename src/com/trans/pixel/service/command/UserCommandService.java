@@ -27,6 +27,7 @@ import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.BlackService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
@@ -49,13 +50,25 @@ public class UserCommandService extends BaseCommandService {
 	private UserTeamService userTeamService;
 	@Resource
 	private UserHeadService userHeadService;
+	@Resource
+	private BlackService blackService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
+		if (blackService.isBlackAccount(head.getAccount())) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		UserBean user = userService.getUserByAccount(head.getServerId(), head.getAccount());
 		if (user == null) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		if (blackService.isBlackUser(user)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_USER_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 //		RequestLoginCommand cmd = request.getLoginCommand();
@@ -75,6 +88,11 @@ public class UserCommandService extends BaseCommandService {
 		RequestRegisterCommand registerCommand = request.getRegisterCommand();
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		HeadInfo head = request.getHead();
+		if (blackService.isBlackAccount(head.getAccount())) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		UserBean user = new UserBean();
 		user.init(head.getServerId(), head.getAccount(), userService.handleUserName(head.getServerId(), registerCommand.getUserName()), registerCommand.getIcon());
 		user.setRegisterTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));

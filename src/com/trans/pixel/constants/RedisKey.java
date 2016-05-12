@@ -133,6 +133,9 @@ public class RedisKey {
 	public static final String UNION_PREFIX = "union_";
 	public static final String UNION_FIGHT_PREFIX = "union_fight_";
 	public static final String UNION_FIGHTRESULT_PREFIX = "union_fightresult_";
+	public static final String BLACK_NOSAY_LIST_PREFIX = PREFIX + "nosayblack_";
+	public static final String BLACK_USER_LIST_PREFIX = PREFIX + "userblack_";
+	public static final String BLACK_ACCOUNT_LIST = PREFIX + "accountblack";
 	
 	//equip
 	public static final String EQUIP_CONFIG = CONFIG_PREFIX+"equip";
@@ -207,4 +210,6 @@ public class RedisKey {
 	
 	//hero choice config
 	public static final String HERO_CHOICE_CONFIG = PREFIX + CONFIG_PREFIX + "hero_choice";
+	
+	
 }

@@ -434,6 +434,15 @@ function appendServerDatas(message){
     if(message["messageBoard"]!=null){
         appendServerData("messageBoard", message["messageBoard"]);
     }
+    if (message["blacknosay"] != null) {
+    	appendServerData("blacknosay", message["blacknosay"]);
+    }
+    if (message["blackuser"] != null) {
+    	appendServerData("blackuser", message["blackuser"]);
+    }
+    if (message["blackaccount"] != null) {
+    	appendServerData("blackaccount", message["blackaccount"]);
+    }
 }
 
 function buildServerJson(key, value){
@@ -452,7 +461,13 @@ function buildServerJson(key, value){
             json["areaResource"] = 1;
             json["areaResourceMine"] = 1;
             json["unionList"] = 1;
-        }else{
+          } else if (datatype == "blacknosay") {
+        	  	json["blacknosay"] = 1;
+          } else if (datatype == "blackuser") {
+      	  	json["blackuser"] = 1;
+          } else if (datatype == "blackaccount") {
+      	  	json["blackaccount"] = 1;
+          } else{
             json["messageBoard"] = 1;
         }
     }
@@ -1059,5 +1074,21 @@ $(document).ready(function() {
 
     function isObject(o) { return Object.prototype.toString.call(o) == '[object Object]'; }
     function relogin(){ document.location.href='login.jsp'; }
+    
+	function doBlack(){
+		var userId = $('input[name="userid"]:visible').val();
+		var userName = $('input[name="username"]:visible').val();
+		var lastTime = $('input[name="lasttime"]:visible').val();
+//		var data = buildUserJson("rewardId", rewardId);
+		var data={};
+		data["session"] = session;
+		data["serverId"] = serverid;
+		data["userId"] = userId;
+		data["userName"] = userName;
+		data["lastTime"] = lastTime;
+		var datatype = $("#server-nav .nav-btn-active").attr("data-type");
+    	data["blackType"] = datatype;
+    	updateServerJson(data);
+	}
 
 

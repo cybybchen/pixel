@@ -575,4 +575,26 @@ public class DateUtil {
 		
 		return false;
 	}
+	
+	public static boolean timeIsOver(String endTimeStr) {
+		return timeIsOver(endTimeStr, TimeConst.DEFAULT_DATETIME_FORMAT);
+	}
+	
+	public static boolean timeIsOver(String endTimeStr, String simpleDate) {
+		SimpleDateFormat df = new SimpleDateFormat(simpleDate);
+		Date endDate = null;
+		Date currentDate = null;
+		String currentTimeStr = df.format(new Date());
+		try {
+			endDate = df.parse(endTimeStr);
+			currentDate = df.parse(currentTimeStr);
+		} catch (ParseException e) {
+			
+		}  
+		
+		if (currentDate.before(endDate))
+			return false;
+		
+		return true;
+	}
 }

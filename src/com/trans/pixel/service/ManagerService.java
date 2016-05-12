@@ -1,8 +1,11 @@
 package com.trans.pixel.service;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -24,6 +27,7 @@ import com.trans.pixel.protoc.Commands.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
 import com.trans.pixel.service.redis.GmAccountRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 /**
@@ -760,6 +764,54 @@ public class ManagerService extends RedisService{
 		// 		result.put("rankList"+type, map);
 		// 	}
 		// }
+		if (req.containsKey("blacknosay")) {
+			Map<String, String> blackmap = hget(RedisKey.BLACK_NOSAY_LIST_PREFIX + serverId);
+			Map<String, String> map = new HashMap<String, String>();
+			Iterator<Entry<String, String>> it = blackmap.entrySet().iterator();
+			while (it.hasNext()) {
+				Entry<String, String> entry = it.next();
+				if (DateUtil.timeIsOver(entry.getValue())) {
+					hdelete(RedisKey.BLACK_NOSAY_LIST_PREFIX + serverId, entry.getKey());
+				} else
+					map.put(entry.getKey(), userService.getUser(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
+			}
+			
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("blacknosay", object);
+		}
+		if (req.containsKey("blackuser")) {
+			Map<String, String> blackmap = hget(RedisKey.BLACK_USER_LIST_PREFIX + serverId);
+			Map<String, String> map = new HashMap<String, String>();
+			Iterator<Entry<String, String>> it = blackmap.entrySet().iterator();
+			while (it.hasNext()) {
+				Entry<String, String> entry = it.next();
+				if (DateUtil.timeIsOver(entry.getValue())) {
+					hdelete(RedisKey.BLACK_USER_LIST_PREFIX + serverId, entry.getKey());
+				} else
+					map.put(entry.getKey(), userService.getUser(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
+			}
+			
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("blackuser", object);
+		}
+		if (req.containsKey("blackaccount")) {
+			Map<String, String> blackmap = hget(RedisKey.BLACK_ACCOUNT_LIST);
+			Map<String, String> map = new HashMap<String, String>();
+			Iterator<Entry<String, String>> it = blackmap.entrySet().iterator();
+			while (it.hasNext()) {
+				Entry<String, String> entry = it.next();
+				if (DateUtil.timeIsOver(entry.getValue())) {
+					hdelete(RedisKey.BLACK_ACCOUNT_LIST, entry.getKey());
+				} else
+					map.put(entry.getKey(), entry.getKey());
+			}
+			
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("blackaccount", object);
+		}
 		if(req.containsKey("messageBoard")){
 			long end = System.currentTimeMillis();
 			long start = end - 3600*1000;
@@ -1329,6 +1381,27 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("PurchaseCoinRewardConfig", object);
+		}
+		
+		if (req.containsKey("blackType")) {
+			String blackUserId = req.getString("userId");
+			String blackUserName = req.getString("userName");
+			String lastTime = req.getString("lastTime");
+			String blackType = req.getString("blackType");
+			Date endDate = DateUtil.changeDate(DateUtil.getDate(), 60 * TypeTranslatedUtil.stringToInt(lastTime));
+			String endTime = DateUtil.forDatetime(endDate);
+			long setUserId = TypeTranslatedUtil.stringToLong(blackUserId);
+			if (setUserId == 0)
+				setUserId = userService.queryUserIdByUserName(serverId, blackUserName);
+			
+			if (blackType.equals("blacknosay"))
+				hput(RedisKey.BLACK_NOSAY_LIST_PREFIX + serverId, "" + setUserId, endTime);
+			else if (blackType.equals("blackuser"))
+				hput(RedisKey.BLACK_USER_LIST_PREFIX + serverId, "" + setUserId, endTime);
+			else {
+				UserBean user = userService.getUser(setUserId);
+				hput(RedisKey.BLACK_ACCOUNT_LIST, user.getAccount(), endTime);
+			}
 		}
 		
 		return result;

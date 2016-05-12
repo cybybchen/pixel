@@ -16,6 +16,7 @@ import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
+import com.trans.pixel.service.BlackService;
 import com.trans.pixel.service.MessageService;
 
 @Service
@@ -25,6 +26,8 @@ public class MessageCommandService extends BaseCommandService {
 	private MessageService messageService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private BlackService blackService;
 	
 	public void getMessageBoardList(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
@@ -36,6 +39,11 @@ public class MessageCommandService extends BaseCommandService {
 	}
 	
 	public void createMessage(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
+		if (blackService.isBlackNosay(user)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		int type = cmd.getType();
 		String message = cmd.getMessage();
 		messageService.createMessageBoard(type, user, message);
@@ -43,6 +51,11 @@ public class MessageCommandService extends BaseCommandService {
 	}
 	
 	public void replyMessage(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user) {
+		if (blackService.isBlackNosay(user)) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		ResponseMessageBoardCommand.Builder builder = ResponseMessageBoardCommand.newBuilder();
 		int type = cmd.getType();
 		String id = cmd.getId();
