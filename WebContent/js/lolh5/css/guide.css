@@ -2,7 +2,7 @@ body{
     margin: 0;
 	padding: 0;
 	background-image: url(images/main_bg.jpg);
-	background-attachment: fixed
+	background-attachment: fixed;
 }
 #listview-page {
     padding: 16px 0 16px;

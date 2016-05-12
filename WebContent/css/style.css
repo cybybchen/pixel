@@ -22,7 +22,7 @@
   margin: 0;
   white-space:nowrap;
 }
-.ui-controlgroup-controls .nav-btn {
+.ui-controlgroup-controls .nav-btn.ui-btn, .ui-controlgroup-controls .nav-btn.ui-last-child {
   margin: -1px;
   margin-right: -8px;
   border-bottom-width: 1px;
@@ -31,12 +31,14 @@
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.jqm-list .nav-btn-active, .ui-controlgroup-controls .nav-btn-active{
+.jqm-list .ui-btn:hover {
+  background-color: #555;
+}
+.jqm-list .nav-btn-active, .ui-controlgroup-controls .nav-btn-active {
   background-color: #38c;
   border-color: #38c;
   color: #fff;
   text-shadow: 0 1px 0 #059;
-  border-bottom-width: 0;
 }
 .jqm-demos .jqm-list .ui-btn:hover, .jqm-demos .jqm-list .ui-btn:active {
     color: #3388cc;
@@ -44,7 +46,7 @@
 .jqm-demos .jqm-list .ui-btn, .jqm-demos .jqm-list .ui-btn:visited, .jqm-demos .jqm-list .ui-li-divider {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    text-shadow: none !important;
+    text-shadow: none;
 }
   .json-editor .property {
       width: 170px;
