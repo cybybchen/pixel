@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -45,7 +46,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class HeroCommandService extends BaseCommandService {
-
+	private Logger logger = Logger.getLogger(HeroCommandService.class);
+	
 	private static final int BUY_HERO_PACKAGE_COST = 50;
 	private static final int BUY_HERO_PACKAGE_COUNT = 5;
 	private static final int HERO_PACKAGE_LIMIT = 500;
@@ -110,12 +112,7 @@ public class HeroCommandService extends BaseCommandService {
 				HeroInfoBean bean = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), 1);
 				for(long costId : costInfoIds){
 					HeroInfoBean delHeroInfo = userHeroService.selectUserHero(userId, costId);
-					if (delHeroInfo != null) {
-						if(delHeroInfo.isLock()){
-							responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_LOCKED));
-							return;
-						}
-						
+					if (delHeroInfo != null) {				
 						if(!bean.getEquipInfo().equals(delHeroInfo.getEquipInfo())){
 							for (String equipIdStr : delHeroInfo.equipIds()) {
 								int equipId = TypeTranslatedUtil.stringToInt(equipIdStr);
@@ -123,8 +120,8 @@ public class HeroCommandService extends BaseCommandService {
 									rewardList = rewardService.mergeReward(rewardList, equipService.fenjieHeroEquip(user, equipId, 1));
 							}
 						}
-						if(heroInfo.getLevel() > 1)
-							addExp += heroService.getDeleteExp(heroInfo.getLevel());
+						if(delHeroInfo.getLevel() > 1)
+							addExp += heroService.getDeleteExp(delHeroInfo.getLevel());
 					}
 					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
 					herobuilder.setHeroId(heroId);
