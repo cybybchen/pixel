@@ -780,9 +780,9 @@ public class UserBean {
 		setServerId(serverId);
 		setUserName(userName);
 		setIcon(icon);
-		setCoin(1000000);
-		setJewel(1000000);
-		setExp(1000000);
+		setCoin(0);
+		setJewel(0);
+		setExp(0);
 		setHeroLimit(30);
 		return this;
 	}
