@@ -124,7 +124,7 @@ public class RechargeService {
 			VipLibao libao = shopRedisService.getVipLibao(itemId);
 			rewardList = libao.getItemList();
 		}
-		
+
 		UserBean user = userService.getUser(recharge.getUserId());
 		recharge(user, rmb.getRmb(), jewel, false);
 		
@@ -133,6 +133,7 @@ public class RechargeService {
 		rewardService.doRewards(recharge.getUserId(), rewards.build());
 		
 		rechargeRedisService.addUserRecharge(recharge.getUserId(), rewards.build());
+		shopRedisService.addLibaoCount(user, recharge.getProductId());
 		
 		Map<String, String> logMap = LogUtils.buildRechargeMap(recharge.getUserId(), recharge.getServerId(), rmb.getRmb(), 0, recharge.getProductId(), 2, "", recharge.getCompany(), 1);
 		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);

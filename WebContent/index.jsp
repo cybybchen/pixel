@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="css/jsoneditor.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery.jsoneditor.js"></script>
-    <script src="js/jsoneditor.js"></script>
+    <script src="js/jsoneditor.js?v=1"></script>
 <%
 	javax.servlet.http.HttpSession session_comm = request
 			.getSession(true);

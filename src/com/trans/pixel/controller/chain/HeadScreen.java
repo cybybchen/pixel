@@ -78,6 +78,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
+import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
@@ -639,6 +640,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO QueryRechargeCommand method
 		return true;//QueryRechargeCommand
 	}//QueryRechargeCommand
+	@Override//LibaoShopCommand
+	protected boolean handleCommand(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO LibaoShopCommand method
+		return true;//LibaoShopCommand
+	}//LibaoShopCommand
 	//add handleCommand here
 
 	@Override

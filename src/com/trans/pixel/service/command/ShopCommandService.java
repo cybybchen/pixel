@@ -12,6 +12,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Commodity;
+import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
@@ -25,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
@@ -40,6 +42,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseDailyShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseLadderShopCommand;
+import com.trans.pixel.protoc.Commands.ResponseLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPShopCommand;
 import com.trans.pixel.protoc.Commands.ResponsePurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.ResponseShopCommand;
@@ -641,6 +644,15 @@ public class ShopCommandService extends BaseCommandService{
 		responseBuilder.setLadderShopCommand(shop);
 	}
 	
+	public void LibaoShop(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user){
+		LibaoList shoplist = service.getLibaoShop(user);
+
+		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getLibaoList());
+		shop.setEndTime(shoplist.getLibao(0).getEndtime());
+		responseBuilder.setLibaoShopCommand(shop);
+	}
+
 	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){
 		if(user.getPurchaseCoinLeft() <= 0){
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));

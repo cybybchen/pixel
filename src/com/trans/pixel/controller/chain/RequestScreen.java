@@ -70,6 +70,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
+import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
@@ -326,6 +327,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -948,6 +950,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//QueryRechargeCommand
                 result = handleCommand(cmd, responseBuilder, user);//QueryRechargeCommand
         }//QueryRechargeCommand
+        if (request.hasLibaoShopCommand()) {
+            RequestLibaoShopCommand cmd = request.getLibaoShopCommand();
+            if (result)//LibaoShopCommand
+                result = handleCommand(cmd, responseBuilder, user);//LibaoShopCommand
+        }//LibaoShopCommand
         //call handleCommand here
         
         return result;

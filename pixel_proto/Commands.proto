@@ -1495,6 +1495,25 @@ message ResponseLadderShopCommand {
 	optional int32 refreshCost = 3;//刷新消耗
 }
 
+message Libao {
+	required int32 id = 1;
+	optional int32 rechargeid = 2;
+	optional int32 purchase = 3;
+	optional int64 starttime = 4;
+	optional int64 endtime = 5;
+}
+message LibaoList {
+	optional string starttime = 1;
+	optional string endtime = 2;
+	repeated Libao libao = 3;
+}
+message RequestLibaoShopCommand {//vip礼包商店
+}
+message ResponseLibaoShopCommand {
+	repeated Libao items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+}
+
 message RequestPurchaseCoinCommand {//点石成金(获得金币和经验)
 }
 
@@ -1857,6 +1876,7 @@ message RequestCommand {
 	optional RequestLadderShopCommand ladderShopCommand = 119;
 	optional RequestLadderShopPurchaseCommand ladderShopPurchaseCommand = 120;
 	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
+	optional RequestLibaoShopCommand libaoShopCommand = 142;
 	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
 	optional RequestGetTeamCommand teamCommand = 123;
 	optional RequestRefreshPVPMapCommand refreshPvpMapCommand = 140;
@@ -1931,6 +1951,7 @@ message ResponseCommand {
 	optional ResponsePVPShopCommand PVPShopCommand = 106;
 	optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
 	optional ResponseLadderShopCommand ladderShopCommand = 108;
+	optional ResponseLibaoShopCommand libaoShopCommand = 142;
 	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
 	optional ResponseGetTeamCommand teamCommand = 123;
 	optional ResponsePVPMapListCommand pvpMapListCommand = 125;

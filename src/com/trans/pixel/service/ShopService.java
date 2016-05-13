@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
+import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCost;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
@@ -111,6 +112,10 @@ public class ShopService {
 		ShopList shoplist = redis.buildLadderShop();
 		redis.saveLadderShop(shoplist, user);
 		return shoplist;
+	}
+
+	public LibaoList getLibaoShop(UserBean user){
+		return redis.getLibaoShop(user);
 	}
 
 	public ShopList getShop(){

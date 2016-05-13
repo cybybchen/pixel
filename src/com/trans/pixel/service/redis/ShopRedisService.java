@@ -1,5 +1,8 @@
 package com.trans.pixel.service.redis;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -11,9 +14,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.CommodityList;
+import com.trans.pixel.protoc.Commands.Libao;
+import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinRewardList;
@@ -30,6 +36,7 @@ public class ShopRedisService extends RedisService{
 	private final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
 	private final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
 	private final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
+	private final static String LIBAOSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LibaoShop";
 	private final static String BLACKSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShop";
 	private final static String UNIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"UnionShop";
 	private final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
@@ -610,6 +617,76 @@ public class ShopRedisService extends RedisService{
 			Map<Integer, CommodityList.Builder> map = readLadderShopComms();
 			return map.get(will).build();
 		}
+	}
+
+	//libao
+	public Libao getLibaoShop(UserBean user, int rechargeid) {
+		String value = this.hget(LIBAOSHOP_CONFIG, rechargeid+"");
+		int count = getLibaoCount(user, rechargeid);
+		Libao.Builder builder = Libao.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			builder.setPurchase(Math.max(0, builder.getPurchase() - count));
+			return builder.build();
+		}
+		return null;
+	}
+
+	public LibaoList getLibaoShop(UserBean user) {
+		Map<String, String> keyvalue = this.hget(LIBAOSHOP_CONFIG);
+		Map<String, String> libaoMap = this.hget(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId());
+		LibaoList.Builder shopbuilder = LibaoList.newBuilder();
+		if(keyvalue.isEmpty()){
+			shopbuilder = LibaoList.newBuilder(buildLibaoShop());
+		}
+		for(String value : keyvalue.values()){
+			Libao.Builder builder = Libao.newBuilder();
+			if(parseJson(value, builder)){
+				int count = 0;
+				String countvalue = libaoMap.get(builder.getId()+"");
+				if(value != null)
+					count = Integer.parseInt(countvalue);
+				builder.setPurchase(Math.max(0, builder.getPurchase() - count));
+				shopbuilder.addLibao(builder);
+			}
+		}
+		return shopbuilder.build();
+	}
+	
+	public int getLibaoCount(UserBean user, int rechargeid) {
+		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), rechargeid+"");
+		int count = 0;
+		if(value != null)
+			count = Integer.parseInt(value);
+		return count;
+	}
+	
+	public void addLibaoCount(UserBean user, int rechargeid) {
+		Libao libao = getLibaoShop(user, rechargeid);
+		int count = getLibaoCount(user, rechargeid);
+		count++;
+		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), rechargeid+"", count+"");
+		this.expireAt(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), new Date(libao.getEndtime()));
+	}
+	
+	private LibaoList buildLibaoShop(){
+		LibaoList.Builder itemsbuilder = LibaoList.newBuilder();
+		String xml = ReadConfig("lol_shoplibao.xml");
+		parseXml(xml, itemsbuilder);
+		long starttime = 0, endtime = 0;
+		try {
+			starttime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getStarttime()).getTime();
+			endtime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getEndtime()).getTime();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		for(Libao.Builder libao : itemsbuilder.getLibaoBuilderList()){
+			libao.setStarttime(starttime);
+			libao.setEndtime(endtime);
+			keyvalue.put(libao.getId()+"", formatJson(libao.build()));
+		}
+		hputAll(LIBAOSHOP_CONFIG, keyvalue);
+		return itemsbuilder.build();
 	}
 
 	//商城
