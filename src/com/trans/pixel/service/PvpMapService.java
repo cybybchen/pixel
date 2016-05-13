@@ -383,7 +383,7 @@ public class PvpMapService {
 		logMap.put(LogString.SERVERID, "" + user.getServerId());
 		logMap.put(LogString.ATTACK_TIME, "" + time);
 		logMap.put(LogString.OPERATION, "" + type);
-		logMap.put(LogString.RESULT, "" + ret);
+		logMap.put(LogString.RESULT, "" + (ret ? 1 : 0));
 		logMap.put(LogString.TEAM_LIST, userTeamService.getTeamString(heroList));
 		logMap.put(LogString.ENEMYID, "" + enemyId);
 		
