@@ -16,6 +16,9 @@
 	<insert id="insertUserHead" parameterType="com.trans.pixel.model.userinfo.UserHeadBean">
 	    INSERT INTO user_head(user_id, head_id)
 	    VALUES(#{userId}, #{headId})
+	    ON 
+	    duplicate key update
+	    head_id=#{headId}
 	</insert>
 	
 	<select id="selectUserHeadList" parameterType="long" resultMap="resultMap">
