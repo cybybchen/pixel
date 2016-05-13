@@ -304,6 +304,7 @@ function resizeContent() {
 	$("#listview-page  .ul-wapper .ui-listview").height(height);
 	height += 82-24;
 	$("#detailview-page .ul-wapper").height(height);
+	$("#detailview-page .ul-wapper .ui-detailview-wapper").height(height-16);
 	$("#detailview-page .ul-wapper .ui-detailview").height(height-16);
 }
 

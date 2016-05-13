@@ -2,7 +2,14 @@ body{
     margin: 0;
 	padding: 0;
 	background-image: url(images/main_bg.jpg);
-	background-attachment: fixed;
+	/*background-attachment: fixed;*/
+}
+*{
+  /* 禁止用户选中文字 for iOS */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  /*很多Android 浏览器的 a 链接有边框，这里取消它*/
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 #listview-page {
     padding: 16px 0 16px;
@@ -54,6 +61,11 @@ body{
 }
 .ul-wapper2 .ui-detailview {
     width: 318px;
+}
+.ul-wapper2 .ui-detailview-wapper {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 303px;
     margin-top: -12px;
     z-index: 100;
     position: absolute;
@@ -160,7 +172,7 @@ body{
 }
 .ui-page a {
     /*font-family: sans-serif;*/
-    text-decoration: none!important;
+    text-decoration: none;
 }
 .ui-detailview h1, .ui-detailview h2, .ui-detailview h3{
 	font-size: 1.2em;
