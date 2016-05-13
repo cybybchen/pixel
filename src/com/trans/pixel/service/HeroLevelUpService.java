@@ -169,7 +169,7 @@ public class HeroLevelUpService {
 		int addValue = calValues(user, costInfoIds);
 		if(addValue < 0)
 			return ErrorConst.HERO_LOCKED; 
-		userHeroService.delUserHero(user.getId(), costInfoIds);
+
 		heroInfo.setValue(heroInfo.getValue() + addValue);
 		calHeroStar(heroInfo);
 		result = SuccessConst.STAR_LEVELUP_SUCCESS;

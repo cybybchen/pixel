@@ -131,6 +131,8 @@ public class HeroCommandService extends BaseCommandService {
 				if (addExp > 0)
 					rewardList.add(RewardBean.init(RewardConst.EXP, addExp));
 				
+				userHeroService.delUserHero(user.getId(), costInfoIds);
+				
 				if (rewardList.size() > 0) {
 					rewardService.doRewards(user, rewardList);
 					pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
