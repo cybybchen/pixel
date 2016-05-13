@@ -104,12 +104,39 @@ public class HeroCommandService extends BaseCommandService {
 			responseBuilder.setHeroResultCommand(builder.build());
 			
 			if (costInfoIds.size() > 0){
+				int addExp = 0;
+				List<RewardBean> rewardList = new ArrayList<RewardBean>();
 				ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+				HeroInfoBean bean = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), 1);
 				for(long costId : costInfoIds){
+					HeroInfoBean delHeroInfo = userHeroService.selectUserHero(userId, costId);
+					if (delHeroInfo != null) {
+						if(delHeroInfo.isLock()){
+							responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_LOCKED));
+							return;
+						}
+						
+						if(!bean.getEquipInfo().equals(delHeroInfo.getEquipInfo())){
+							for (String equipIdStr : delHeroInfo.equipIds()) {
+								int equipId = TypeTranslatedUtil.stringToInt(equipIdStr);
+								if (equipId > 0)
+									rewardList = rewardService.mergeReward(rewardList, equipService.fenjieHeroEquip(user, equipId, 1));
+							}
+						}
+						if(heroInfo.getLevel() > 1)
+							addExp += heroService.getDeleteExp(heroInfo.getLevel());
+					}
 					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
 					herobuilder.setHeroId(heroId);
 					herobuilder.setInfoId(costId);
 					deleteHeroBuilder.addHeroInfo(herobuilder.build());
+				}
+				if (addExp > 0)
+					rewardList.add(RewardBean.init(RewardConst.EXP, addExp));
+				
+				if (rewardList.size() > 0) {
+					rewardService.doRewards(user, rewardList);
+					pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 				}
 				responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 			}
@@ -226,7 +253,7 @@ public class HeroCommandService extends BaseCommandService {
 					}
 					addCoin += 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
 					if(heroInfo.getLevel() > 1)
-						addExp += heroService.getHeroUpgrade(heroInfo.getLevel()).getExp();
+						addExp += heroService.getDeleteExp(heroInfo.getLevel());
 				}else{
 					isError = true;
 					responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_HAS_FENJIE));

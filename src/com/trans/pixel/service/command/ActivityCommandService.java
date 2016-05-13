@@ -42,11 +42,11 @@ public class ActivityCommandService extends BaseCommandService {
 	private UserActivityService userActivityService;
 	
 	public void richangReward(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user) {
-		int type = cmd.getType();
 		int id = cmd.getId();
+		int order = cmd.getOrder();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
-		UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(user.getId(), type));
-		ResultConst result = activityService.handleRichangReward(multiReward, ur, user.getId(), type, id);
+		UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(user.getId(), id));
+		ResultConst result = activityService.handleRichangReward(multiReward, ur, user.getId(), id, order);
 		
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
@@ -67,7 +67,7 @@ public class ActivityCommandService extends BaseCommandService {
 		/**
 		 * send log
 		 */
-		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_RICHANG, type);
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_RICHANG, id);
 	}
 	
 	public void richangList(RequestRichangListCommand cmd, Builder responseBuilder, UserBean user) {
@@ -91,11 +91,11 @@ public class ActivityCommandService extends BaseCommandService {
 	
 	public void kaifu2Reward(RequestKaifu2RewardCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseKaifu2RewardCommand.Builder builder = ResponseKaifu2RewardCommand.newBuilder();
-		int type = cmd.getType();
 		int id = cmd.getId();
+		int order = cmd.getOrder();
 		
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
-		ResultConst result = activityService.doKaifu2Reward(multiReward, user, type, id);
+		ResultConst result = activityService.doKaifu2Reward(multiReward, user, id, order);
 		
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
@@ -111,16 +111,16 @@ public class ActivityCommandService extends BaseCommandService {
 		/**
 		 * send log
 		 */
-		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_KAIFU, type);
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_KAIFU, id);
 	}
 	
 	public void kaifuReward(RequestKaifuRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
-		int type = cmd.getType();
 		int id = cmd.getId();
+		int order = cmd.getOrder();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
-		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), type));
-		ResultConst result = activityService.handleKaifuReward(multiReward, uk, user.getId(), type, id);
+		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), id));
+		ResultConst result = activityService.handleKaifuReward(multiReward, uk, user.getId(), id, order);
 		
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
@@ -139,7 +139,7 @@ public class ActivityCommandService extends BaseCommandService {
 		/**
 		 * send log
 		 */
-		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_KAIFU, type);
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_KAIFU, id);
 	}
 	
 	public void kaifuList(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user) {
@@ -148,6 +148,7 @@ public class ActivityCommandService extends BaseCommandService {
 		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(user.getId());
 		builder.addAllUserKaifu(ukList);
 		builder.addAllRank(activityService.getKaifu2RankList(user));
+		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		
 		responseBuilder.setKaifuListCommand(builder.build());
 	}

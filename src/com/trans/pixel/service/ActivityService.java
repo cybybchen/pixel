@@ -74,31 +74,35 @@ public class ActivityService {
 	}
 	
 	public void sendRichangScore(long userId, int type, int count) {
-		Richang richang = activityRedisService.getRichang(type);
-		if (richang == null)
-			return;
-		
-		UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(userId, type));
-		if (type == ActivityConst.RICHANG_DANBI_RECHARGE)
-			ur.setCompleteCount(Math.max(count, ur.getCompleteCount()));
-		else
-			ur.setCompleteCount(ur.getCompleteCount() + count);
-		
-		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
+		Map<String, Richang> map = activityRedisService.getRichangConfig();
+		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Richang> entry = it.next();
+			Richang richang = entry.getValue();
+			if (richang.getTargetid() == type) {
+				UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(userId, richang.getId()));
+				if (type == ActivityConst.DANBI_RECHARGE)
+					ur.setCompleteCount(Math.max(count, ur.getCompleteCount()));
+				else
+					ur.setCompleteCount(ur.getCompleteCount() + count);
+				
+				userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
+			}
+		}
 	}
 	
-	public ResultConst handleRichangReward(MultiReward.Builder rewards, UserRichang.Builder ur, long userId, int type, int id) {
-		if (ur.getRewardOrderList().contains(id))
+	public ResultConst handleRichangReward(MultiReward.Builder rewards, UserRichang.Builder ur, long userId, int id, int order) {
+		if (ur.getRewardOrderList().contains(order))
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
-		Richang richang = activityRedisService.getRichang(type);
-		ActivityOrder order = richang.getOrder(id - 1);
-		if (order.getTargetcount() > ur.getCompleteCount())
+		Richang richang = activityRedisService.getRichang(id);
+		ActivityOrder activityorder = richang.getOrder(order - 1);
+		if (activityorder.getTargetcount() > ur.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
-		ur.addRewardOrder(id);
+		ur.addRewardOrder(order);
 		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
-		rewards.addAllLoot(getRewardList(order));
+		rewards.addAllLoot(getRewardList(activityorder));
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
@@ -142,7 +146,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的日常
 		 */
-		sendRichangScore(user.getId(), ActivityConst.RICHANG_LEIJI_COST_JEWEL, count);
+		sendRichangScore(user.getId(), ActivityConst.LEIJI_COST_JEWEL, count);
 		/**
 		 * 消耗钻石的开服活动
 		 */
@@ -239,22 +243,28 @@ public class ActivityService {
 	}
 	
 	public void sendKaifu2Score(UserBean user, int type, int score) {
-		if (isInKaifuActivityTime(user.getServerId())) {
-			activityRedisService.addKaifu2Score(user.getId(), user.getServerId(), type, score);
+		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
+		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Kaifu2> entry = it.next();
+			Kaifu2 kaifu2 = entry.getValue();
+			if (isInKaifuActivityTime(kaifu2.getLasttime(), user.getServerId()) && kaifu2.getTargetid() == type) {
+				activityRedisService.addKaifu2Score(user.getId(), user.getServerId(), kaifu2.getId(), score);
+			}
 		}
 	}
 	
 	public void sendKaifu2ActivitiesReward(int serverId) {
-		if (isInKaifuActivityTime(serverId)) 
-			return;
-		
 		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
 		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			int type = TypeTranslatedUtil.stringToInt(it.next().getKey());
-			if (!activityRedisService.hasKaifu2RewardSend(serverId, type)) {
-				activityRedisService.setKaifu2SendRewardRecord(serverId, type);
-				sendKaifu2ActivityReward(serverId, type);
+			Kaifu2 kaifu2 = it.next().getValue();
+			if (isInKaifuActivityTime(kaifu2.getLasttime(), serverId)) 
+				return;
+			int id = kaifu2.getId();
+			if (!activityRedisService.hasKaifu2RewardSend(serverId, id)) {
+				activityRedisService.setKaifu2SendRewardRecord(serverId, id);
+				sendKaifu2ActivityReward(serverId, id);
 			}
 		}
 //		for (int type : ActivityConst.KAIFU2_TYPES) {
@@ -265,12 +275,12 @@ public class ActivityService {
 //		}
 	}
 	
-	private void sendKaifu2ActivityReward(int serverId, int type) {
-		Kaifu2 kaifu2 = activityRedisService.getKaifu2(type);
+	private void sendKaifu2ActivityReward(int serverId, int id) {
+		Kaifu2 kaifu2 = activityRedisService.getKaifu2(id);
 		List<ActivityOrder> orderList = kaifu2.getOrderList();
 		for (ActivityOrder order : orderList) {
 			List<RewardInfo> rewardList = getRewardList(order);
-			if (type == ActivityConst.KAIFU2_LADDER) {
+			if (kaifu2.getTargetid() == ActivityConst.KAIFU2_LADDER) {
 				List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, order.getTargetcount(), order.getTargetcount1());
 				for (UserRankBean userRank : rankList) {
 					if (userRank.getUserId() > 0) {
@@ -280,7 +290,7 @@ public class ActivityService {
 					}
 				}
 			} else {
-				Set<TypedTuple<String>> userInfoRankList = activityRedisService.getUserIdList(serverId, type, order.getTargetcount() - 1, order.getTargetcount1());
+				Set<TypedTuple<String>> userInfoRankList = activityRedisService.getUserIdList(serverId, id, order.getTargetcount() - 1, order.getTargetcount1());
 				for (TypedTuple<String> userinfo : userInfoRankList) {
 					long userId = TypeTranslatedUtil.stringToLong(userinfo.getValue());
 					MailBean mail = MailBean.buildMail(userId, order.getDescription(), rewardList);
@@ -375,27 +385,27 @@ public class ActivityService {
 		return activityRedisService.getKaifu2RwRc(user, ActivityConst.KAIFU2_LEIJI_RECHARGE_PERSON_COUNT);
 	}
 	
-	public ResultConst doKaifu2Reward(MultiReward.Builder rewards, UserBean user, int type, int id) {
-		int record = activityRedisService.getKaifu2RwRc(user, type);
+	public ResultConst doKaifu2Reward(MultiReward.Builder rewards, UserBean user, int id, int order) {
+		int record = activityRedisService.getKaifu2RwRc(user, id);
 		
-		if ((record >> (id - 1) & 1) == 1) 
+		if ((record >> (order - 1) & 1) == 1) 
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
-		Kaifu2 kaifu2 = activityRedisService.getKaifu2(type);
-		ActivityOrder order= kaifu2.getOrder(id - 1);
-		if (order.getTargetcount() > getKaifu2AccRcPs(user.getServerId(), type))
+		Kaifu2 kaifu2 = activityRedisService.getKaifu2(id);
+		ActivityOrder activityorder= kaifu2.getOrder(order - 1);
+		if (activityorder.getTargetcount() > getKaifu2AccRcPs(user.getServerId(), id))
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
-		record += (0 << (id - 1));
-		activityRedisService.setKaifu2RwRc(user, type, record);
+		record += (0 << (order - 1));
+		activityRedisService.setKaifu2RwRc(user, id, record);
 		
-		rewards.addAllLoot(getRewardList(order));
+		rewards.addAllLoot(getRewardList(activityorder));
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
-	private boolean isInKaifuActivityTime(int serverId) {
-		return getKaifuDays(serverId) <= 7;
+	private boolean isInKaifuActivityTime(int lastTime, int serverId) {
+		return getKaifuDays(serverId) <= lastTime;
 	}
 	
 	private int getKaifuDays(int serverId) {
@@ -411,31 +421,39 @@ public class ActivityService {
 	}
 	
 	public void sendKaifuScore(UserBean user, int type, int count) {
-		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), type));
-		if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.KAIFU_FIRST_RECHARGE)
-			uk.setCompleteCount(count);
-		else
-			uk.setCompleteCount(uk.getCompleteCount() + count);
-		
-		/**
-		 * 判断活动有没有过期
-		 */
-		if (7 >= getKaifuDays(user.getServerId()))
-			userActivityService.updateUserKaifu(user.getId(), uk.build());
+		Map<String, Kaifu> map = activityRedisService.getKaifuConfig();
+		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Kaifu> entry = it.next();
+			Kaifu kaifu = entry.getValue();
+			if (kaifu.getTargetid() == type) {
+				UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), kaifu.getTargetid()));
+				if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.DANBI_RECHARGE)
+					uk.setCompleteCount(count);
+				else
+					uk.setCompleteCount(uk.getCompleteCount() + count);
+				
+				/**
+				 * 判断活动有没有过期
+				 */
+				if (kaifu.getLasttime() >= getKaifuDays(user.getServerId()))
+					userActivityService.updateUserKaifu(user.getId(), uk.build());
+			}
+		}
 	}
 	
-	public ResultConst handleKaifuReward(MultiReward.Builder rewards, UserKaifu.Builder uk, long userId, int type, int id) {
-		if (uk.getRewardOrderList().contains(id))
+	public ResultConst handleKaifuReward(MultiReward.Builder rewards, UserKaifu.Builder uk, long userId, int id, int order) {
+		if (uk.getRewardOrderList().contains(order))
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
-		Kaifu kaifu = activityRedisService.getKaifu(type);
-		ActivityOrder order = kaifu.getOrder(id - 1);
-		if (order.getTargetcount() > uk.getCompleteCount())
+		Kaifu kaifu = activityRedisService.getKaifu(id);
+		ActivityOrder activityorder = kaifu.getOrder(order - 1);
+		if (activityorder.getTargetcount() > uk.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
-		uk.addRewardOrder(id);
+		uk.addRewardOrder(order);
 		userActivityService.updateUserKaifu(userId, uk.build());
-		rewards.addAllLoot(getRewardList(order));
+		rewards.addAllLoot(getRewardList(activityorder));
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
@@ -459,19 +477,19 @@ public class ActivityService {
 		/**
 		 * 首次充值的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_FIRST_RECHARGE, count);
+		sendKaifuScore(user, ActivityConst.DANBI_RECHARGE, count);
 		/**
 		 * 累计充值的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_RECHARGE, count);
+		sendKaifuScore(user, ActivityConst.LEIJI_RECHARGE, count);
 		/**
 		 * 累计充值的日常
 		 */
-		sendRichangScore(user.getId(), ActivityConst.RICHANG_LEIJI_RECHARGE, count);
+		sendRichangScore(user.getId(), ActivityConst.LEIJI_RECHARGE, count);
 		/**
 		 * 单笔充值的日常
 		 */
-		sendRichangScore(user.getId(), ActivityConst.RICHANG_DANBI_RECHARGE, count);
+		sendRichangScore(user.getId(), ActivityConst.DANBI_RECHARGE, count);
 		/**
 		 * 开服2的充值活动
 		 */

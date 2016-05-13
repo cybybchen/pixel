@@ -58,6 +58,21 @@ public class HeroService {
 		return hu;
 	}
 	
+	public int getDeleteExp(int level) {
+		int addExp = 0;
+		while (level > 0) {
+			HeroUpgradeBean hu = heroRedisService.getHeroUpgradeByLevelId(level);
+			if (hu == null) {
+				parseHeroUpgradeAndSaveConfig();
+				hu = heroRedisService.getHeroUpgradeByLevelId(level);
+			}
+			addExp += hu.getExp();
+			level--;
+		}
+		
+		return addExp;
+	}
+	
 	private void parseHeroUpgradeAndSaveConfig() {
 		List<HeroUpgradeBean> huList = HeroUpgradeBean.xmlParse();
 		if (huList != null && huList.size() != 0) {

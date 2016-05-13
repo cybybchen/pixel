@@ -122,6 +122,7 @@ message HeadInfo
 	required string account = 5;
 	optional int64 userId = 6;
 	optional string session = 7;
+	optional string serverstarttime = 8;
 }
 
 message HeroInfo {
@@ -791,7 +792,6 @@ message Achieve {
 message ActivityOrder {
 	required int32 order = 1;
 	required string description = 2;
-	required int32 targetid = 3;
 	required int32 targetcount = 4;
 	required int32 targetcount1 = 17;
 	required int32 rewardid0 = 5;
@@ -815,6 +815,7 @@ message RichangList {
 message Richang {
 	required int32 id = 1;
 	required string activity = 2;
+	required int32 targetid = 6;
 	required string starttime = 3;
 	required string endtime = 4;
 	repeated ActivityOrder order = 5;
@@ -839,7 +840,9 @@ message Kaifu2List {
 message Kaifu2 {
 	required int32 id = 1;
 	required string activity = 2;
-	repeated ActivityOrder order = 3;	
+	required int32 targetid = 3;
+	required int32 lasttime = 4;	
+	repeated ActivityOrder order = 5;	
 }
 
 message Kaifu2Rank {
@@ -855,7 +858,9 @@ message KaifuList {
 message Kaifu {
 	required int32 id = 1;
 	required string activity = 2;
-	repeated ActivityOrder order = 4;
+	required int32 targetid = 3;
+	required int32 lasttime = 4;
+	repeated ActivityOrder order = 5;
 }
 
 message UserKaifu {
@@ -1650,8 +1655,8 @@ message RequestUnlockLevelCommand {
 }
 
 message RequestRichangRewardCommand {
-	required int32 type = 1;
-	required int32 id = 2;
+	required int32 id = 1;
+	required int32 order = 2;
 }
 
 message RequestRichangListCommand {
@@ -1673,8 +1678,8 @@ message ResponseKaifu2ActivityCommand {
 }
 
 message RequestKaifu2RewardCommand {//全民福利的奖励
-	required int32 type = 1;
-	required int32 id = 2;
+	required int32 id = 1;
+	required int32 order = 2;
 }
 
 message ResponseKaifu2RewardCommand {
@@ -1682,8 +1687,8 @@ message ResponseKaifu2RewardCommand {
 }
 
 message RequestKaifuRewardCommand {
-        required int32 type = 1;
-        required int32 id = 2;
+        required int32 id = 1;
+        required int32 order = 2;
 }
 
 message ResponseKaifuRewardCommand {
@@ -1697,6 +1702,7 @@ message RequestKaifuListCommand {
 message ResponseKaifuListCommand {
         repeated UserKaifu userKaifu = 1;
 	repeated Kaifu2Rank rank = 2;
+	repeated UserRichang userRichang = 3;
 }
 
 message RequestUserPokedeCommand {

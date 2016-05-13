@@ -337,8 +337,10 @@ public abstract class RequestScreen implements RequestHandle {
         
         if (request.hasRegisterCommand()) {
         	handleRegisterCommand(request, responseBuilder);
+        	return false;
         } else if (request.hasLoginCommand()) {
         	handleLoginCommand(request, responseBuilder);
+        	return false;
         } else {
         	if (user == null) {
                 nullUserErrorHandle.handleRequest(req, rep);

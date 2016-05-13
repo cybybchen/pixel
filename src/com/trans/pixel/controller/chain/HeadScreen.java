@@ -135,6 +135,7 @@ import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
 //add import here
+import com.trans.pixel.service.redis.ServerRedisService;
 
 public class HeadScreen extends RequestScreen {
 	
@@ -142,13 +143,14 @@ public class HeadScreen extends RequestScreen {
 	
 	@Resource
     private UserService userService;
+	@Resource
+	private ServerRedisService serverRedisService;
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
         RequestCommand request = req.command;
-        HeadInfo.Builder head = HeadInfo.newBuilder(request.getHead());
-        head.setDatetime(System.currentTimeMillis() / 1000);
-        rep.command.setHead(head.build());
+        HeadInfo head = buildHeadInfo(request.getHead());
+        rep.command.setHead(head);
         if (request.hasRegisterCommand() || request.hasLoginCommand()) {
             return true;
         }
@@ -167,6 +169,14 @@ public class HeadScreen extends RequestScreen {
         return true;
     }
 
+	private HeadInfo buildHeadInfo(HeadInfo head) {
+		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
+		nHead.setServerstarttime(serverRedisService.getKaifuTime(head.getServerId()));
+		nHead.setDatetime(System.currentTimeMillis() / 1000);
+		
+		return nHead.build();
+	}
+	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
 			Builder responseBuilder) {

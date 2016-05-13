@@ -233,8 +233,10 @@ public class LevelService {
 				rewardList.add(RewardBean.init(heroChoice.getLevel31(), 1));
 				rewardList.add(RewardBean.init(heroChoice.getLevel32(), 1));
 				break;
-		default:
-			break;
+			default:
+				rewardList.add(RewardBean.init(heroChoice.getLevel11(), 1));
+				rewardList.add(RewardBean.init(heroChoice.getLevel12(), 1));
+				break;
 		}
 		
 		return rewardList;

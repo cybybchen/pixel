@@ -209,13 +209,13 @@ public class ActivityRedisService extends RedisService {
 		return getUserIdList(serverId, type, 0, ActivityConst.KAIFU2_RANK_SIZE - 1);
 	}
 	
-	public int getKaifu2RwRc(UserBean user, int type) {
-		String key = buildKaifu2RewardRecordRedisKey(user.getServerId(), type);
+	public int getKaifu2RwRc(UserBean user, int activityId) {
+		String key = buildKaifu2RewardRecordRedisKey(user.getServerId(), activityId);
 		return TypeTranslatedUtil.stringToInt(hget(key, "" + user.getId()));
 	}
 	
-	public void setKaifu2RwRc(UserBean user, int type, int record) {
-		String key = buildKaifu2RewardRecordRedisKey(user.getServerId(), type);
+	public void setKaifu2RwRc(UserBean user, int activityId, int record) {
+		String key = buildKaifu2RewardRecordRedisKey(user.getServerId(), activityId);
 		this.hput(key, "" + user.getId(), "" + record);
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}

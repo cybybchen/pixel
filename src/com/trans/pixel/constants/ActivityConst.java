@@ -4,15 +4,15 @@ public class ActivityConst {
 	/**
 	 * 单笔充值
 	 */
-	public static final int RICHANG_DANBI_RECHARGE = 302;
+	public static final int DANBI_RECHARGE = 27;
 	/**
 	 * 累计充值
 	 */
-	public static final int RICHANG_LEIJI_RECHARGE = 304;
+	public static final int LEIJI_RECHARGE = 2;
 	/**
 	 * 累计消费
 	 */
-	public static final int RICHANG_LEIJI_COST_JEWEL = 303;
+	public static final int LEIJI_COST_JEWEL = 3;
 	/**
 	 * 累计钻石抽奖
 	 */
@@ -41,7 +41,7 @@ public class ActivityConst {
 	/**
 	 * 所有日常活动
 	 */
-	public static final int[] RICHANG_TYPES = {RICHANG_DANBI_RECHARGE, RICHANG_LEIJI_COST_JEWEL, RICHANG_LEIJI_RECHARGE,
+	public static final int[] RICHANG_TYPES = {DANBI_RECHARGE, LEIJI_COST_JEWEL, LEIJI_RECHARGE,
 		RICHANG_LEIJI_LOTTERY_JEWEL, RICHANG_LADDER_ATTACK, RICHANG_PVP_ATTACK_ENEMY, RICHANG_PVP_ATTACK_BOSS_SUCCESS, 
 		RICHANG_MOJING_STORE, RICHANG_UNION_ATTACK}; 
 	
@@ -54,12 +54,12 @@ public class ActivityConst {
 	/**
 	 * 开服竞技榜
 	 */
-	public static final int KAIFU2_LADDER = 204;
+	public static final int KAIFU2_LADDER = 31;
 	
 	/**
 	 * 开服战力榜
 	 */
-	public static final int KAIFU2_ZHANLI = 205;
+	public static final int KAIFU2_ZHANLI = 24;
 	
 	/**
 	 * 开服推图榜
