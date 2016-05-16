@@ -643,7 +643,7 @@ public class ShopRedisService extends RedisService{
 			if(parseJson(value, builder)){
 				int count = 0;
 				String countvalue = libaoMap.get(builder.getId()+"");
-				if(value != null)
+				if(countvalue != null)
 					count = Integer.parseInt(countvalue);
 				builder.setPurchase(Math.max(0, builder.getPurchase() - count));
 				shopbuilder.addLibao(builder);
