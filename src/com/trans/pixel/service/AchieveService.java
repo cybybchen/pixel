@@ -109,6 +109,8 @@ public class AchieveService {
 	
 	private boolean isCompleteNew(UserAchieveBean ua) {
 		ActivityOrder order = getAchieveOrder(ua.getType(), ua.getCompleteId() + 1);
+		if (order == null)
+			return false;
 		if (ua.getCompleteCount() < order.getTargetcount()) {
 			return false;
 		}
