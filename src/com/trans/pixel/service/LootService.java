@@ -47,8 +47,10 @@ public class LootService {
 			int deltaTime = (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - user.getLastLootTime();
 			addGold = deltaTime * dg.getGold();
 			addExp = deltaTime * dg.getExperience();			
-			rewardService.doReward(user, RewardConst.COIN, addGold);
-			rewardService.doReward(user, RewardConst.EXP, addExp);
+			user.setExp(user.getExp() + addExp);
+			user.setCoin(user.getCoin() + addGold);
+//			rewardService.doReward(user, RewardConst.COIN, addGold);
+//			rewardService.doReward(user, RewardConst.EXP, addExp);
 		}
 		user.setLastLootTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userService.updateUser(user);
