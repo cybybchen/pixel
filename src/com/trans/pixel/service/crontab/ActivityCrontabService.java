@@ -17,8 +17,8 @@ public class ActivityCrontabService {
 	private ActivityService activityService;
 	@Resource
 	private ServerRedisService serverRedisService;
-//	@Scheduled(cron = "0 0 0 * * ? ")
-	@Scheduled(cron = "0 0/5 * * * ? ")
+	@Scheduled(cron = "0 0 0 * * ? ")
+//	@Scheduled(cron = "0 0/5 * * * ? ")
 	public void sendActivityReward() {
 		List<Integer> serverList = serverRedisService.getServerIdList();
 		for (int serverId : serverList) {

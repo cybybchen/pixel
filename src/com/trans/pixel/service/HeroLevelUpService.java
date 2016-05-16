@@ -57,6 +57,7 @@ public class HeroLevelUpService {
 	private ActivityService activityService;
 	@Resource
 	private UserPokedeService userPokedeService;
+	
 	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
@@ -143,7 +144,7 @@ public class HeroLevelUpService {
 			return ErrorConst.HERO_LEVEL_MAX;
 		}
 		int useExp = heroService.getLevelUpExp(heroInfo.getLevel() + 1);
-		if (useExp > user.getExp()) {
+		if (!costService.costAndUpdate(user, RewardConst.EXP, useExp)) {
 			return ErrorConst.NOT_ENOUGH_EXP;
 		}
 		
@@ -153,9 +154,6 @@ public class HeroLevelUpService {
 		 * 英雄升级的活动
 		 */
 		activityService.heroLevelupActivity(user, heroInfo.getLevel());
-		
-		user.setExp(user.getExp() - useExp);
-		userService.updateUser(user);
 		
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
