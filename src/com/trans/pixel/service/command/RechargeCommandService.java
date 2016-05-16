@@ -5,13 +5,16 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseLibaoShopCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.service.redis.ShopRedisService;
 
 @Service
 public class RechargeCommandService extends BaseCommandService {
@@ -28,10 +31,18 @@ public class RechargeCommandService extends BaseCommandService {
 	private RechargeRedisService rechargeRedisService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private ShopRedisService shopRedisService;
 	
 	public void recharge(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward rewards = rechargeRedisService.getUserRecharge(user.getId());
 		
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
+		
+		LibaoList shoplist = shopRedisService.getLibaoShop(user);
+		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getLibaoList());
+		shop.setEndTime(shoplist.getLibao(0).getEndtime());
+		responseBuilder.setLibaoShopCommand(shop);
 	}
 }
