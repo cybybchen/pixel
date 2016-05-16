@@ -70,7 +70,7 @@ public class LevelCommandService extends BaseCommandService {
 			return;
 		}
 		
-		if (!levelService.isPreparad(userLevel.getLevelPrepareTime(), levelId)) {
+		if (!levelService.isPreparad(userLevel, levelId)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_PREPARA_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;

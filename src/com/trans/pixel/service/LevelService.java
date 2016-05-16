@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LevelConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.XiaoguanBean;
@@ -137,11 +138,13 @@ public class LevelService {
 		return false;
 	}
 	
-	public boolean isPreparad(int prepareTime, int levelId) {
+	public boolean isPreparad(UserLevelBean userLevel, int levelId) {
 		XiaoguanBean xg = getXiaoguan(levelId);
 		if (xg == null)
 			return false;
 		
+		int prepareTime = userLevel.getLevelPrepareTime() + 
+				(int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - userLevel.getLastLevelResultTime();
 		if (prepareTime >= xg.getPreparaTime())
 			return true;
 		
