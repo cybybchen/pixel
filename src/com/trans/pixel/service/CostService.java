@@ -20,6 +20,8 @@ public class CostService {
 	private ActivityService activityService;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private LootService lootService;
 	
 	public boolean costAndUpdate(UserBean user, int itemId, int itemCount) {
 		boolean needUpdateUser = cost(user, itemId, itemCount);
@@ -54,10 +56,12 @@ public class CostService {
 		} else {
 			switch (itemId) {
 				case RewardConst.EXP:
+					lootService.updateLootResult(user);
 					if(itemCount > user.getExp()) return false;
 					user.setExp(user.getExp() - itemCount);
 					return true;
 				case RewardConst.COIN:
+					lootService.updateLootResult(user);
 					if(itemCount > user.getCoin()) return false;
 					user.setCoin(user.getCoin() - itemCount);
 					return true;
