@@ -129,9 +129,9 @@ public class LotteryCommandService extends BaseCommandService {
 		
 		long delTime = 0;
 		if (type == RewardConst.JEWEL)
-			delTime = System.currentTimeMillis() - lastFreeTime + 72 * TimeConst.MILLIONSECONDS_PER_HOUR;
+			delTime = System.currentTimeMillis() - (lastFreeTime + 72 * TimeConst.MILLIONSECONDS_PER_HOUR);
 		else
-			delTime = System.currentTimeMillis() - lastFreeTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR;
+			delTime = System.currentTimeMillis() - (lastFreeTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR);
 		if (delTime > 0) {
 			if (type == RewardConst.JEWEL)
 				user.setFreeLotteryJewelTime(System.currentTimeMillis());
