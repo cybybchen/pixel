@@ -153,7 +153,7 @@ public class ActivityService {
 		sendKaifuScore(user, ActivityConst.KAIFU_COSE_JEWEL, count);
 	}
 	
-	public void lotteryActivity(UserBean user, int count, int costType) {
+	public void lotteryActivity(UserBean user, int count, int costType, int cost) {
 		/**
 		 * achieve type 106
 		 */
@@ -163,7 +163,7 @@ public class ActivityService {
 		 * 钻石抽奖的活动
 		 */
 		if (costType == RewardConst.JEWEL)
-			sendRichangScore(user.getId(), ActivityConst.RICHANG_LEIJI_LOTTERY_JEWEL, count);
+			sendRichangScore(user.getId(), ActivityConst.LEIJI_COST_JEWEL, cost);
 		
 		/**
 		 * 累计抽奖的开服活动

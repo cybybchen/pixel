@@ -56,12 +56,13 @@ public class ActivityCommandService extends BaseCommandService {
 		
 		rewardService.doRewards(user.getId(), multiReward.build());
 		
-		ResponseRichangListCommand.Builder builder = ResponseRichangListCommand.newBuilder();
+		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
 		
-		List<UserRichang> uaList = userActivityService.selectUserRichangList(user.getId());
-		builder.addAllUserRichang(uaList);
+		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
+		builder.addAllRank(activityService.getKaifu2RankList(user));
+		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		
-		responseBuilder.setRichangListCommand(builder.build());
+		responseBuilder.setKaifuListCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
 		
 		/**
@@ -130,9 +131,9 @@ public class ActivityCommandService extends BaseCommandService {
 		
 		rewardService.doRewards(user.getId(), multiReward.build());
 		
-		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(user.getId());
-		builder.addAllUserKaifu(ukList);
+		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
 		builder.addAllRank(activityService.getKaifu2RankList(user));
+		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		responseBuilder.setKaifuListCommand(builder.build());
 		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
 		
@@ -145,8 +146,7 @@ public class ActivityCommandService extends BaseCommandService {
 	public void kaifuList(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
 		
-		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(user.getId());
-		builder.addAllUserKaifu(ukList);
+		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
 		builder.addAllRank(activityService.getKaifu2RankList(user));
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		

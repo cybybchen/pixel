@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -129,7 +130,9 @@ public class LevelCommandService extends BaseCommandService {
 		userLevelService.updateUserLevelRecord(userLevelRecord);
 		log.debug("levelId is:" + levelId);
 		WinBean winBean = winService.getWinByLevelId(levelId);
-		List<RewardBean> rewardList = winBean.getRewardList();
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		if (winBean != null)
+			rewardList = winBean.getRewardList();
 		
 		rewardList.addAll(levelService.getNewplayReward(user, levelId));
 		

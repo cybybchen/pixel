@@ -983,6 +983,28 @@ message HeroChoice {
 	required int32 level3_2 = 9;
 }
 
+message ShouchongList {
+	repeated Shouchong task = 1;
+}
+
+message Shouchong {
+	required int32 id = 1;
+	required string activity = 2;
+	required int32 targetid = 3;
+	required int32 targetcount = 4;	
+	repeated ShouchongReward reward = 5;
+}
+
+message ShouchongReward {
+	required int32 rewardid = 1;
+	required int32 count = 2;
+}
+
+message UserShouchong {
+	required int32 isComplete = 1; //0:未完成 1:完成
+        required int32 isGetReward = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1764,6 +1786,14 @@ message RequestQueryRechargeCommand {
 	
 }
 
+message RequestShouchongRewardCommand {
+
+}
+
+message ResponseShouchongStatusCommand {
+	required UserShouchong userShouchong = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1887,6 +1917,7 @@ message RequestCommand {
 	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
 	optional RequestBindAccountCommand bindAccountCommand = 87;
 	optional RequestQueryRechargeCommand queryRechargeCommand = 88;
+	optional RequestShouchongRewardCommand shouchongRewardCommand = 89;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -1948,6 +1979,7 @@ message ResponseCommand {
 	optional ResponseEquipResultCommand equipResultCommand = 49;
 	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
 	optional ResponseUserHeadCommand userHeadCommand = 51;
+	optional ResponseShouchongStatusCommand shouChongStatusCommand = 52;
 }
 
 

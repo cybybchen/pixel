@@ -61,6 +61,7 @@ public class LotteryCommandService extends BaseCommandService {
 				return;
 		}
 		
+		int cost = 0;
 		if (type == 1 || type == 2) {
 			if (!lotteryService.isLotteryActivityAvailable(type)) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
@@ -75,7 +76,7 @@ public class LotteryCommandService extends BaseCommandService {
 				return;	
 			}
 		} else {
-			int cost = getLotteryCost(type, count);
+			cost = getLotteryCost(type, count);
 			boolean free = false;
 			int costtype = RewardConst.COIN;
 			if(type == LotteryConst.LOOTERY_SPECIAL_TYPE)
@@ -101,7 +102,7 @@ public class LotteryCommandService extends BaseCommandService {
 		/**
 		 * 抽奖活动
 		 */
-		activityService.lotteryActivity(user, count, type);
+		activityService.lotteryActivity(user, count, type, cost);
 		
 		rewardService.doRewards(user, lotteryList);
 		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
@@ -126,7 +127,11 @@ public class LotteryCommandService extends BaseCommandService {
 		if (type == RewardConst.JEWEL)
 			lastFreeTime = user.getFreeLotteryJewelTime();
 		
-		long delTime = System.currentTimeMillis() - lastFreeTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR;
+		long delTime = 0;
+		if (type == RewardConst.JEWEL)
+			delTime = System.currentTimeMillis() - lastFreeTime + 72 * TimeConst.MILLIONSECONDS_PER_HOUR;
+		else
+			delTime = System.currentTimeMillis() - lastFreeTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR;
 		if (delTime > 0) {
 			if (type == RewardConst.JEWEL)
 				user.setFreeLotteryJewelTime(System.currentTimeMillis());
