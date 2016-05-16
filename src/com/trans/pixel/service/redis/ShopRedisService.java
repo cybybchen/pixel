@@ -637,17 +637,20 @@ public class ShopRedisService extends RedisService{
 		LibaoList.Builder shopbuilder = LibaoList.newBuilder();
 		if(keyvalue.isEmpty()){
 			shopbuilder = LibaoList.newBuilder(buildLibaoShop());
-		}
-		for(String value : keyvalue.values()){
-			Libao.Builder builder = Libao.newBuilder();
-			if(parseJson(value, builder)){
-				int count = 0;
-				String countvalue = libaoMap.get(builder.getId()+"");
-				if(countvalue != null)
-					count = Integer.parseInt(countvalue);
-				builder.setPurchase(Math.max(0, builder.getPurchase() - count));
-				shopbuilder.addLibao(builder);
+		}else{
+			for(String value : keyvalue.values()){
+				Libao.Builder builder = Libao.newBuilder();
+				if(parseJson(value, builder)){
+					shopbuilder.addLibao(builder);
+				}
 			}
+		}
+		for(Libao.Builder builder : shopbuilder.getLibaoBuilderList()){
+			int count = 0;
+			String countvalue = libaoMap.get(builder.getId()+"");
+			if(countvalue != null)
+				count = Integer.parseInt(countvalue);
+			builder.setPurchase(Math.max(0, builder.getPurchase() - count));
 		}
 		return shopbuilder.build();
 	}
