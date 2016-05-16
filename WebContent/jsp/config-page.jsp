@@ -9,6 +9,7 @@
 			<li ><a href="#" data-type="0">其他</a></li>
 			<li ><a href="#" data-type="cdkey">cdkey</a></li>
 			<li ><a href="#" data-type="delete">删除数据(慎用)</a></li>
+			<li ><a href="#" data-type="gmright">管理GM账号</a></li>
 			<li data-theme="b"><a href="#user-page">用户</a></li>
 			<li data-theme="b"><a href="#server-page">服务器</a></li>
 

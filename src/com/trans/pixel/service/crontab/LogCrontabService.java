@@ -43,9 +43,9 @@ public class LogCrontabService {
 			netOut.close();
 			doc.close();
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+			utilLogger.error(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			utilLogger.error(e);
 		} finally {
 			if (socket != null) {
 				try {

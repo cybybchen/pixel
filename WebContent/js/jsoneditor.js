@@ -487,6 +487,7 @@ function appendConfigData(key, value, visible){
     editor.find(".update-btn").hide();
     if(visible){
         editor.find(".json-editor").show();
+        if(key == "GmRight") editor.find(".update-btn").show();
         editor.find(".json").show();
         editor.find(".json-editor").jsonEditor(value, { change: updateJSON, propertyclick: showPath });
         editor.find(".json").val(JSON.stringify(value));
@@ -725,6 +726,9 @@ function appendConfigDatas(message, visible){
     if(message["PurchaseCoinRewardConfig"]!=null){
         appendConfigData("PurchaseCoinRewardConfig", message["PurchaseCoinRewardConfig"], visible);
     }
+    if(message["GmRight"]!=null){
+        appendConfigData("GmRight", message["GmRight"], visible);
+    }
     if(message["Cdkey"]!=null){
     	$("#config-cdkey").show();
         showCdkeyTable(message["Cdkey"]);
@@ -871,6 +875,8 @@ function buildConfigJson(key, value){
             json["Cdkey"] = "{}";
         }else if(datatype == "delete"){
         	json["DeleteData"] = "{}";
+        }else if(datatype == "gmright"){
+            json["GmRight"] = "{}";
         }else{
             json["HeroStarConfig"] = "{}";
             json["LotteryConfig1001"] = "{}";
@@ -1059,6 +1065,9 @@ $(document).ready(function() {
         	$("#redisdata-keys").val("*config*");
         	json = buildConfigJson("RedisData", "*config*");
         	updateConfigJson(json);
+        }else if(json.hasOwnProperty("GmRight")){
+            json = buildConfigJson("GmRight", "1");
+            updateConfigJson(json);
         }else
         	appendConfigDatas(json, false);
     });

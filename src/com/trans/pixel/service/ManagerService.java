@@ -1,11 +1,13 @@
 package com.trans.pixel.service;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -18,6 +20,7 @@ import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.GmAccountBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
@@ -25,9 +28,9 @@ import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
-import com.trans.pixel.service.redis.GmAccountRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.HttpUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 /**
@@ -74,14 +77,57 @@ public class ManagerService extends RedisService{
 	@Resource
 	private CdkeyRedisService cdkeyRedisService;
 	@Resource
-	private GmAccountRedisService gmAccountRedisService;
+	private GmAccountService gmAccountService;
 	
 	public JSONObject getData(JSONObject req) {
 		JSONObject result = new JSONObject();
-		if(gmAccountRedisService.getSession(TypeTranslatedUtil.jsonGetString(req, "session")) == null){
+		if (req.containsKey("update-GmRight-slave")) {
+			JSONObject object = req.getJSONObject("update-GmRight-slave");
+			for(Object key : object.keySet()){
+				JSONObject value = object.getJSONObject((String)key);
+				GmAccountBean bean = (GmAccountBean) JSONObject.toBean(value, GmAccountBean.class);
+				gmAccountService.updateGmAccount(bean);
+			}
+			result.put("success", "GM权限设置成功");
+			return result;
+		}
+		
+		String account = gmAccountService.getSession(TypeTranslatedUtil.jsonGetString(req, "session"));
+		if(account == null){
 			result.put("error", "Session timeout! Please login.");
 			return result;
 		}
+		GmAccountBean accountBean = gmAccountService.getAccount(account);
+		
+		if (req.containsKey("update-GmRight")) {
+			if(accountBean.getMaster() != 1){
+				result.put("error", "权限不足.");
+				return result;
+			}
+			Properties props = new Properties();
+			try {
+				InputStream in = getClass().getResourceAsStream("/config/advancer.properties");
+				props.load(in);
+				String slaves[] = props.getProperty("slaveserver").split(",");
+				for(String slaveserver : slaves){
+					Map<String, String> parameters = new HashMap<String, String>();
+//					parameters.put("session", session);
+					parameters.put("update-GmRight-slave", req.getString("update-GmRight"));
+					String message = HttpUtil.post(slaveserver, parameters);
+					logger.info(slaveserver+" : "+message);
+				}
+				result.put("success", "GM权限设置成功");
+				return result;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(req.containsKey("GmRight") && accountBean.getMaster() == 1) {
+			Map<String, GmAccountBean> map = gmAccountService.getGmAccounts();
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("GmRight", object);
+		}
+		
 		Long userId = TypeTranslatedUtil.jsonGetLong(req, "userId");
 		String userName = TypeTranslatedUtil.jsonGetString(req, "userName");
 		int serverId = TypeTranslatedUtil.jsonGetInt(req, "serverId");
@@ -110,11 +156,14 @@ public class ManagerService extends RedisService{
 		result.put("serverId", serverId);
 		int rewardId = TypeTranslatedUtil.jsonGetInt(req, "rewardId");
 		int rewardCount = TypeTranslatedUtil.jsonGetInt(req, "rewardCount");
-		if(rewardId > 0 && rewardCount > 0){
+		if(rewardId > 0 && rewardCount > 0 && accountBean.getCanreward() == 1){
 			rewardService.doReward(userId, rewardId, rewardCount);
 			userHeroService.selectUserNewHero(userId);
 			result.put("success", "奖励发放成功");
 		}
+		
+		if(accountBean.getCanwrite() != 1)//没有修改权限
+			return result;
 		
 		if(req.containsKey("del-Cdkey")){
 			String key = req.getString("del-Cdkey");

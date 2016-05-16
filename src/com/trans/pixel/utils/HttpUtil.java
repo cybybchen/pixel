@@ -10,6 +10,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -108,7 +110,10 @@ public class HttpUtil<T> {
         Protocol.registerProtocol("https", easyhttps);
         HttpURLConnection conn = null;
         try {
-            String params = generatorParamString(parameters);
+//            String params = generatorParamString(parameters);
+        	JSONObject object = new JSONObject();
+        	object.putAll(parameters);
+        	String params = object.toString();
             URL url = new URL(reqUrl);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");

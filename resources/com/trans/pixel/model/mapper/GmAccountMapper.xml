@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.GmAccountMapper">
+	<resultMap id="resultMap" type="com.trans.pixel.model.GmAccountBean">
+		<id property="account" column="account" />
+		<result property="canreward" column="canreward" />
+		<result property="canview" column="canview" />
+		<result property="canwrite" column="canwrite" />
+		<result property="master" column="master" />
+	</resultMap>
+	
+	<select id="queryGmAccount" parameterType="string" resultMap="resultMap">
+	    SELECT * from gm_account WHERE account=#{account}
+	</select>
+	
+	<insert id="updateGmAccount" parameterType="com.trans.pixel.model.GmAccountBean">
+	    INSERT INTO gm_account(account, canreward, canview, canwrite)
+	    VALUES(#{account}, #{canreward}, #{canview}, #{canwrite})
+	    ON 
+	    duplicate key update
+	    canreward=#{canreward}, canview=#{canview}, canwrite=#{canwrite}
+	</insert>
+	
+</mapper>
