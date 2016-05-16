@@ -677,8 +677,8 @@ public class ShopRedisService extends RedisService{
 		parseXml(xml, itemsbuilder);
 		long starttime = 0, endtime = 0;
 		try {
-			starttime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getStarttime()).getTime();
-			endtime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getEndtime()).getTime();
+			starttime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getStarttime()).getTime()/1000;
+			endtime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getEndtime()).getTime()/1000;
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
