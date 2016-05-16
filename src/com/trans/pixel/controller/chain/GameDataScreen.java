@@ -145,6 +145,7 @@ import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.MohuaCommandService;
+import com.trans.pixel.service.command.NoticeCommandService;
 import com.trans.pixel.service.command.PokedeCommandService;
 import com.trans.pixel.service.command.PropCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
@@ -215,6 +216,8 @@ public class GameDataScreen extends RequestScreen {
 	private CheatRechargeCommandService cheatRechargeCommandService;
 	@Resource
 	private RechargeCommandService rechargeCommandService;
+	@Resource
+	private NoticeCommandService noticeCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -968,6 +971,12 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestRankCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		rankCommandService.getRankList(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean pushNoticeCommand(Builder responseBuilder, UserBean user) {
+		noticeCommandService.pushNotices(responseBuilder, user);
 		return true;
 	}
 

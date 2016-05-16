@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -21,9 +23,15 @@ public class MailService {
 	private UserService userService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private NoticeService noticeService;
 	
 	public void addMail(MailBean mail) {
 		mailRedisService.addMail(mail);
+		if (mail.getType() == MailConst.TYPE_ADDFRIEND_MAIL)
+			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_FRIEND);
+		else
+			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_MAIL);
 	}
 	
 	public List<MailBean> getMailList(long userId, int type) {

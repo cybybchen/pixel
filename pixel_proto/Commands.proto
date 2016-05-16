@@ -1005,6 +1005,10 @@ message UserShouchong {
         required int32 isGetReward = 2;
 }
 
+message Notice {
+	required int32 type = 1;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1813,6 +1817,10 @@ message ResponseShouchongStatusCommand {
 	required UserShouchong userShouchong = 1;
 }
 
+message ResponseNoticeCommand {
+	repeated Notice notice = 1;	
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2001,6 +2009,7 @@ message ResponseCommand {
 	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
 	optional ResponseUserHeadCommand userHeadCommand = 51;
 	optional ResponseShouchongStatusCommand shouChongStatusCommand = 52;
+	optional ResponseNoticeCommand noticeCommand = 53;
 }
 
 

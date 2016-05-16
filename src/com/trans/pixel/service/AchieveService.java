@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
@@ -24,6 +25,8 @@ public class AchieveService {
 	private UserAchieveService userAchieveService;
 	@Resource
 	private AchieveRedisService achieveRedidService;
+	@Resource
+	private NoticeService noticeService;
 	
 	public void sendAchieveScore(long userId, int type) {
 		sendAchieveScore(userId, type, 1);
@@ -36,6 +39,10 @@ public class AchieveService {
 			ua.setCompleteCount(ua.getCompleteCount() + count);
 		
 		userAchieveService.updateUserAchieve(ua);
+		
+		if (isCompleteNew(ua)) {
+			noticeService.pushNotice(userId, NoticeConst.TYPE_ACHIEVE);
+		}
 	}
 	
 	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int type) {
@@ -98,5 +105,14 @@ public class AchieveService {
 		userAchieveService.updateUserAchieve(ua);
 		
 		return ua;
+	}
+	
+	private boolean isCompleteNew(UserAchieveBean ua) {
+		ActivityOrder order = getAchieveOrder(ua.getType(), ua.getCompleteId() + 1);
+		if (ua.getCompleteCount() < order.getTargetcount()) {
+			return false;
+		}
+		
+		return true;
 	}
 }

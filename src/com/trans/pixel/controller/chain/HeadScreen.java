@@ -933,4 +933,10 @@ public class HeadScreen extends RequestScreen {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	@Override
+	protected boolean pushNoticeCommand(Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

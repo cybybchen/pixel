@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.LootBean;

@@ -279,6 +279,8 @@ public abstract class RequestScreen implements RequestHandle {
 	
 	protected abstract boolean handleCommand(RequestRankCommand cmd, Builder responseBuilder, UserBean user);
 	
+	protected abstract boolean pushNoticeCommand(Builder responseBuilder, UserBean user);
+	
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
@@ -956,6 +958,13 @@ public abstract class RequestScreen implements RequestHandle {
                 result = handleCommand(cmd, responseBuilder, user);//LibaoShopCommand
         }//LibaoShopCommand
         //call handleCommand here
+        
+        	
+        	/**
+        	 * push notice
+        	 */
+        	if (result)
+        		pushNoticeCommand(responseBuilder, user);
         
         return result;
 	}

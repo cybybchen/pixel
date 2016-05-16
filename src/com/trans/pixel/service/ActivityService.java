@@ -20,6 +20,7 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.HeroConst;
 import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
@@ -63,6 +64,8 @@ public class ActivityService {
 	private LogService logService;
 	@Resource
 	private LadderRedisService ladderRedisService;
+	@Resource
+	private NoticeService noticeService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -86,6 +89,9 @@ public class ActivityService {
 					ur.setCompleteCount(ur.getCompleteCount() + count);
 				
 				userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
+				
+				if (isCompleteNewRichang(ur.build(), userId))
+					noticeService.pushNotice(userId, NoticeConst.TYPE_ACTIVITY);
 			}
 		}
 	}
@@ -104,6 +110,20 @@ public class ActivityService {
 		rewards.addAllLoot(getRewardList(activityorder));
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
+	}
+	
+	private boolean isCompleteNewRichang(UserRichang ur, long userId) {
+		Richang richang = activityRedisService.getRichang(ur.getType());
+		List<ActivityOrder> orderList = richang.getOrderList();
+		for (ActivityOrder order : orderList) {
+			if (ur.getRewardOrderList().contains(order.getOrder()))
+				continue;
+			
+			if (ur.getCompleteCount() > order.getTargetcount())
+				return true;
+		}
+		
+		return false;
 	}
 	
 	private List<RewardInfo> getRewardList(ActivityOrder order) {
@@ -420,7 +440,7 @@ public class ActivityService {
 			Entry<String, Kaifu> entry = it.next();
 			Kaifu kaifu = entry.getValue();
 			if (kaifu.getTargetid() == type) {
-				UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), kaifu.getTargetid()));
+				UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), kaifu.getId()));
 				if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.DANBI_RECHARGE)
 					uk.setCompleteCount(count);
 				else
@@ -429,8 +449,12 @@ public class ActivityService {
 				/**
 				 * 判断活动有没有过期
 				 */
-				if (kaifu.getLasttime() >= getKaifuDays(user.getServerId()))
+				if (kaifu.getLasttime() >= getKaifuDays(user.getServerId())) {
 					userActivityService.updateUserKaifu(user.getId(), uk.build());
+					
+					if (isCompleteNewKaifu(uk.build(), user.getId()))
+						noticeService.pushNotice(user.getId(), NoticeConst.TYPE_ACTIVITY);
+				}
 			}
 		}
 	}
@@ -449,6 +473,20 @@ public class ActivityService {
 		rewards.addAllLoot(getRewardList(activityorder));
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
+	}
+	
+	private boolean isCompleteNewKaifu(UserKaifu uk, long userId) {
+		Kaifu kaifu = activityRedisService.getKaifu(uk.getType());
+		List<ActivityOrder> orderList = kaifu.getOrderList();
+		for (ActivityOrder order : orderList) {
+			if (uk.getRewardOrderList().contains(order.getOrder()))
+				continue;
+			
+			if (uk.getCompleteCount() > order.getTargetcount())
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public void loginActivity(UserBean user) {
