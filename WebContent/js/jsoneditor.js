@@ -361,11 +361,23 @@ function addBlackDatas(json){
 //	json.sort();
 	$("#blackdata-controlgroup").empty();
 	$.each(json, function (key, value) {
-		var $el = $( "<label for='data-" + value + "'>" + key + ":" + value + "</label><input type='checkbox' id='data-" + value + "' name='" + value + "'></input>" );
+		var $el = $( "<label for='data-" + value + "'>" + key + ":" + value + "</label><input type='checkbox' id='data-" + value + "' name='" + key + "'></input>" );
 		$("#blackdata-controlgroup").append($el);
 		$( $el[ 1 ] ).checkboxradio();
 	});
     $( "#blackdata-controlgroup" ).controlgroup( "refresh" );
+}
+
+function delBlackDatas(){
+	var keys = [];
+	$.each($("#blackdata-controlgroup input:checked"), function () {
+		keys[keys.length]=$(this).attr("name");
+	});
+	var json = buildServerJson("del-blackDatas", keys);
+	var datatype = $("#server-nav .nav-btn-active").attr("data-type");
+	json["blackType"] = datatype;
+	if(keys.length > 0)
+		updateServerJson(json);
 }
 
 function updateServerJson(jsondata) {
