@@ -182,7 +182,7 @@ public class RedisKey {
 	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "kaifu2_send_record";
 	
 	//log redis
-	public static final String LOG_KEY = PREFIX + CONFIG_PREFIX + "log";
+	public static final String LOG_KEY = PREFIX + "update:log";
 	
 	//ladder mode name
 	public static final String LADDER_NAME_KEY = PREFIX + CONFIG_PREFIX + "ladder_name";

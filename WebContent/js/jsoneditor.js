@@ -199,6 +199,9 @@ function appendUserDatas(message){
     if(message["pokede"]!=null){
         appendUserData("pokede", message["pokede"]);
     }
+    if(message["achieve"]!=null){
+        appendUserData("achieve", message["achieve"]);
+    }
     if(message["equip"]!=null){
         appendUserData("equip", message["equip"]);
     }
@@ -290,6 +293,7 @@ function buildUserJson(key, value){
             json["userData"] = 1;
             json["team"] = 1;
             json["teamCache"] = 1;
+            json["achieve"] = 1;
         }else if(datatype == "hero"){
             json["hero"] = 1;
             json["pokede"] = 1;
@@ -675,8 +679,17 @@ function appendConfigDatas(message, visible){
     if(message["FenJieConfig"]!=null){
         appendConfigData("FenJieConfig", message["FenJieConfig"], visible);
     }
+    if(message["TotalSignConfig"]!=null){
+        appendConfigData("TotalSignConfig", message["TotalSignConfig"], visible);
+    }
     if(message["SignConfig"]!=null){
         appendConfigData("SignConfig", message["SignConfig"], visible);
+    }
+    if(message["Sign2Config"]!=null){
+        appendConfigData("Sign2Config", message["Sign2Config"], visible);
+    }
+    if(message["VipLibaoConfig"]!=null){
+        appendConfigData("VipLibaoConfig", message["VipLibaoConfig"], visible);
     }
     if(message["MoHuaConfig"]!=null){
         appendConfigData("MoHuaConfig", message["MoHuaConfig"], visible);
@@ -737,6 +750,9 @@ function appendConfigDatas(message, visible){
     }
     if(message["PvpMonsterConfig"]!=null){
         appendConfigData("PvpMonsterConfig", message["PvpMonsterConfig"], visible);
+    }
+    if(message["PvpBossConfig"]!=null){
+        appendConfigData("PvpBossConfig", message["PvpBossConfig"], visible);
     }
     if(message["PvpPositionConfig"]!=null){
         appendConfigData("PvpPositionConfig", message["PvpPositionConfig"], visible);
@@ -913,7 +929,10 @@ function buildConfigJson(key, value){
             json["SkillLevelConfig"] = "{}";
             json["PropConfig"] = "{}";
             json["FenJieConfig"] = "{}";
+            json["TotalSignConfig"] = "{}";
             json["SignConfig"] = "{}";
+            json["Sign2Config"] = "{}";
+            json["VipLibaoConfig"] = "{}";
             json["MoHuaConfig"] = "{}";
             json["MoHuaCardConfig"] = "{}";
             json["MoHuaJieDuanConfig"] = "{}";
@@ -934,6 +953,7 @@ function buildConfigJson(key, value){
             json["AreaResourceConfig"] = "{}";
             json["PvpMonsterRewardConfig"] = "{}";
             json["PvpMonsterConfig"] = "{}";
+            json["PvpBossConfig"] = "{}";
             json["PvpPositionConfig"] = "{}";
             json["PvpMapConfig"] = "{}";
             json["PurchaseCoinConfig"] = "{}";

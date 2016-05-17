@@ -163,15 +163,15 @@ public class ManagerService extends RedisService{
 			result.put("success", "奖励发放成功");
 		}
 		
-		if(accountBean.getCanwrite() != 1)//没有修改权限
-			return result;
+//		if(accountBean.getCanwrite() != 1)//没有修改权限
+//			return result;
 		
-		if(req.containsKey("del-Cdkey")){
+		if(req.containsKey("del-Cdkey") && accountBean.getCanwrite() == 1){
 			String key = req.getString("del-Cdkey");
 			cdkeyRedisService.delCdkeyConfig(key);
 			result.put("success", "cdkey已删除");
 			req.put("Cdkey", 1);
-		}else if(req.containsKey("add-Cdkey")){
+		}else if(req.containsKey("add-Cdkey") && accountBean.getCanwrite() == 1){
 			String value = req.getString("add-Cdkey");
 			Cdkey.Builder builder = Cdkey.newBuilder();
 			parseJson(value, builder);
@@ -197,19 +197,19 @@ public class ManagerService extends RedisService{
 			result.put("addCdkey", value);
 //			req.put("Cdkey", 1);
 		}
-		if(req.containsKey("Cdkey")){
+		if(req.containsKey("Cdkey") && accountBean.getCanview() == 1){
 			Map<Integer, String> map = cdkeyRedisService.getCdkeyConfigs();
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("Cdkey", object);
 		}
 		
-		if(req.containsKey("del-RedisDatas")){
+		if(req.containsKey("del-RedisDatas") && accountBean.getCanwrite() == 1){
 			JSONArray keys = req.getJSONArray("del-RedisDatas");
 			for(Object key : keys.toArray())
 				delete((String)key);
 			result.put("success", "redis数据已删除");
-		}else if(req.containsKey("del-RedisData")){
+		}else if(req.containsKey("del-RedisData") && accountBean.getCanwrite() == 1){
 			String value = req.getString("del-RedisData");
 			Set<String> keys = keys(value);
 			for(String key : keys)
@@ -217,132 +217,149 @@ public class ManagerService extends RedisService{
 			result.put("success", "redis数据已删除");
 			req.put("RedisData", value);
 		}
-		if(req.containsKey("RedisData")){
+		if(req.containsKey("RedisData") && accountBean.getCanview() == 1){
 			Set<String> keys = keys(req.getString("RedisData"));
 			result.put("RedisData", keys);
 		}
 		
-		if(req.containsKey("update-UserData")){
+		if(req.containsKey("update-UserData") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "UserData", req.get("update-UserData").toString());
 			req.put("UserData", 1);
-		}else if(req.containsKey("del-UserData")){
+		}else if(req.containsKey("del-UserData") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "UserData");
 			req.put("UserData", 1);
-		}else if(req.containsKey("UserData")){
+		}
+		if(req.containsKey("UserData") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "UserData");
 			result.put("UserData", value);
-			req.put("UserData", 1);
-		}else if(req.containsKey("update-LevelRecord")){
+		}
+		if(req.containsKey("update-LevelRecord") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "LevelRecord", req.get("update-LevelRecord").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-LevelRecord")){
+			req.put("LevelRecord", 1);
+		}else if(req.containsKey("del-LevelRecord") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "LevelRecord");
-			req.put("UserData", 1);
-		}else if(req.containsKey("LevelRecord")){
+			req.put("LevelRecord", 1);
+		}
+		if(req.containsKey("LevelRecord") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "LevelRecord");
 			result.put("LevelRecord", value);
-		}else if(req.containsKey("update-LootLevel")){
+		}
+		if(req.containsKey("update-LootLevel") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "LootLevel", req.get("update-LootLevel").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-LootLevel")){
+			req.put("LootLevel", 1);
+		}else if(req.containsKey("del-LootLevel") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "LootLevel");
-			req.put("UserData", 1);
-		}else if(req.containsKey("LootLevel")){
+			req.put("LootLevel", 1);
+		}
+		if(req.containsKey("LootLevel") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "LootLevel");
 			result.put("LootLevel", value);
-		}else if(req.containsKey("update-DAILYSHOP")){
+		}
+		if(req.containsKey("update-DAILYSHOP") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "DAILYSHOP", req.get("update-DAILYSHOP").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-DAILYSHOP")){
+			req.put("DAILYSHOP", 1);
+		}else if(req.containsKey("del-DAILYSHOP") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "DAILYSHOP");
-			req.put("UserData", 1);
-		}else if(req.containsKey("DAILYSHOP")){
+			req.put("DAILYSHOP", 1);
+		}
+		if(req.containsKey("DAILYSHOP") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "DAILYSHOP");
 			result.put("DAILYSHOP", value);
-		}else if(req.containsKey("update-BLACKSHOP")){
+		}
+		if(req.containsKey("update-BLACKSHOP") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "BLACKSHOP", req.get("update-BLACKSHOP").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-BLACKSHOP")){
+			req.put("BLACKSHOP", 1);
+		}else if(req.containsKey("del-BLACKSHOP") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "BLACKSHOP");
-			req.put("UserData", 1);
-		}else if(req.containsKey("BLACKSHOP")){
+			req.put("BLACKSHOP", 1);
+		}
+		if(req.containsKey("BLACKSHOP") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "BLACKSHOP");
 			result.put("BLACKSHOP", value);
-		}else if(req.containsKey("update-UNIONSHOP")){
+		}
+		if(req.containsKey("update-UNIONSHOP") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "UNIONSHOP", req.get("update-UNIONSHOP").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-UNIONSHOP")){
+			req.put("UNIONSHOP", 1);
+		}else if(req.containsKey("del-UNIONSHOP") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "UNIONSHOP");
-			req.put("UserData", 1);
-		}else if(req.containsKey("UNIONSHOP")){
+			req.put("UNIONSHOP", 1);
+		}
+		if(req.containsKey("UNIONSHOP") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "UNIONSHOP");
 			result.put("UNIONSHOP", value);
-		}else if(req.containsKey("update-PVPSHOP")){
+		}
+		if(req.containsKey("update-PVPSHOP") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "PVPSHOP", req.get("update-PVPSHOP").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-PVPSHOP")){
+			req.put("PVPSHOP", 1);
+		}else if(req.containsKey("del-PVPSHOP") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "PVPSHOP");
-			req.put("UserData", 1);
-		}else if(req.containsKey("PVPSHOP")){
+			req.put("PVPSHOP", 1);
+		}
+		if(req.containsKey("PVPSHOP") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "PVPSHOP");
 			result.put("PVPSHOP", value);
-		}else if(req.containsKey("update-EXPEDITIONSHOP")){
+		}
+		if(req.containsKey("update-EXPEDITIONSHOP") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "EXPEDITIONSHOP", req.get("update-EXPEDITIONSHOP").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-EXPEDITIONSHOP")){
+			req.put("EXPEDITIONSHOP", 1);
+		}else if(req.containsKey("del-EXPEDITIONSHOP") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "EXPEDITIONSHOP");
-			req.put("UserData", 1);
-		}else if(req.containsKey("EXPEDITIONSHOP")){
+			req.put("EXPEDITIONSHOP", 1);
+		}
+		if(req.containsKey("EXPEDITIONSHOP") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "EXPEDITIONSHOP");
 			result.put("EXPEDITIONSHOP", value);
-		}else if(req.containsKey("update-LADDERSHOP")){
+		}
+		if(req.containsKey("update-LADDERSHOP") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "LADDERSHOP", req.get("update-LADDERSHOP").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-LADDERSHOP")){
+			req.put("LADDERSHOP", 1);
+		}else if(req.containsKey("del-LADDERSHOP") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "LADDERSHOP");
-			req.put("UserData", 1);
-		}else if(req.containsKey("LADDERSHOP")){
+			req.put("LADDERSHOP", 1);
+		}
+		if(req.containsKey("LADDERSHOP") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "LADDERSHOP");
 			result.put("LADDERSHOP", value);
-		}else if(req.containsKey("update-MoHua")){
+		}
+		if(req.containsKey("update-MoHua") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, RedisKey.MOHUA_USERDATA, req.get("update-MoHua").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-MoHua")){
+			req.put("MoHua", 1);
+		}else if(req.containsKey("del-MoHua") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, RedisKey.MOHUA_USERDATA);
-			req.put("UserData", 1);
-		}else if(req.containsKey("MoHua")){
+			req.put("MoHua", 1);
+		}
+		if(req.containsKey("MoHua") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, RedisKey.MOHUA_USERDATA);
 			result.put("MoHua", value);
-		}else if(req.containsKey("update-PvpMap")){
+		}
+		if(req.containsKey("update-PvpMap") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "PvpMap", req.get("update-PvpMap").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-PvpMap")){
+			req.put("PvpMap", 1);
+		}else if(req.containsKey("del-PvpMap") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "PvpMap");
-			req.put("UserData", 1);
-		}else if(req.containsKey("PvpMap")){
+			req.put("PvpMap", 1);
+		}
+		if(req.containsKey("PvpMap") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "PvpMap");
 			result.put("PvpMap", value);
-		}else if(req.containsKey("update-Area")){
+		}
+		if(req.containsKey("update-Area") && accountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "Area", req.get("update-Area").toString());
-			req.put("UserData", 1);
-		}else if(req.containsKey("del-Area")){
+			req.put("Area", 1);
+		}else if(req.containsKey("del-Area") && accountBean.getCanwrite() == 1){
 			hdelete(USERDATA+userId, "Area");
-			req.put("UserData", 1);
-		}else if(req.containsKey("Area")){
+			req.put("Area", 1);
+		}
+		if(req.containsKey("Area") && accountBean.getCanview() == 1){
 			String value = hget(USERDATA+userId, "Area");
 			result.put("Area", value);
 		}
-		if(req.containsKey("userData")){
-			Map<String, String> map = hget(USERDATA+userId);
-			result.putAll(map);
-		}
-
-		// if(req.containsKey("userDailyData")){
-		// 	Map<String, String> map = hget(USERDAILYDATA+userId);
+		// if(req.containsKey("userData")){
+		// 	Map<String, String> map = hget(USERDATA+userId);
 		// 	result.putAll(map);
 		// }
 
-		if(req.containsKey("update-team")){
+		if(req.containsKey("update-team") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-team"));
 			for(String key : map.keySet()){
@@ -357,29 +374,29 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId, map);
 			req.put("team", 1);
-		}else if(req.containsKey("del-team")){
+		}else if(req.containsKey("del-team") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
 			req.put("team", 1);
 		}
-		if(req.containsKey("team")){
+		if(req.containsKey("team") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("team", object);
 		}
-		if(req.containsKey("update-teamCache")){
+		if(req.containsKey("update-teamCache") && accountBean.getCanwrite() == 1){
 			set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId, req.get("update-teamCache").toString());
 			req.put("teamCache", 1);
-		}else if(req.containsKey("del-teamCache")){
+		}else if(req.containsKey("del-teamCache") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
 			req.put("teamCache", 1);
 		}
-		if(req.containsKey("teamCache")){
+		if(req.containsKey("teamCache") && accountBean.getCanview() == 1){
 			String map = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
 			result.put("teamCache", map);
 		}
 
-		if(req.containsKey("update-hero")){
+		if(req.containsKey("update-hero") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-hero"));
 			for(String key : map.keySet()){
@@ -395,18 +412,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId, map);
 			req.put("hero", 1);
-		}else if(req.containsKey("del-hero")){
+		}else if(req.containsKey("del-hero") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
 			req.put("hero", 1);
 		}
-		if(req.containsKey("hero")){
+		if(req.containsKey("hero") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("hero", object);
 		}
 
-		if(req.containsKey("update-equip")){
+		if(req.containsKey("update-equip") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-equip"));
 			for(String key : map.keySet()){
@@ -422,18 +439,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId, map);
 			req.put("equip", 1);
-		}else if(req.containsKey("del-equip")){
+		}else if(req.containsKey("del-equip") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
 			req.put("equip", 1);
 		}
-		if(req.containsKey("equip")){
+		if(req.containsKey("equip") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("equip", object);
 		}
 
-		if(req.containsKey("update-prop")){
+		if(req.containsKey("update-prop") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_PROP_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-prop"));
 			for(String key : map.keySet()){
@@ -449,18 +466,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.USER_PROP_PREFIX + userId, map);
 			req.put("prop", 1);
-		}else if(req.containsKey("del-prop")){
+		}else if(req.containsKey("del-prop") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.USER_PROP_PREFIX + userId);
 			req.put("prop", 1);
 		}
-		if(req.containsKey("prop")){
+		if(req.containsKey("prop") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_PROP_PREFIX + userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("prop", object);
 		}
 		
-		if(req.containsKey("update-pokede")){
+		if(req.containsKey("update-pokede") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.USER_POKEDE_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pokede"));
 			for(String key : map.keySet()){
@@ -476,18 +493,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.USER_POKEDE_PREFIX + userId, map);
 			req.put("pokede", 1);
-		}else if(req.containsKey("del-pokede")){
+		}else if(req.containsKey("del-pokede") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.USER_POKEDE_PREFIX + userId);
 			req.put("pokede", 1);
 		}
-		if(req.containsKey("pokede")){
+		if(req.containsKey("pokede") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.USER_POKEDE_PREFIX + userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("pokede", object);
 		}
 
-		if(req.containsKey("update-areaMonster")){
+		if(req.containsKey("update-areaMonster") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(AREAMONSTER+userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-areaMonster"));
 			for(String key : map.keySet()){
@@ -500,18 +517,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(AREAMONSTER+userId, map);
 			req.put("areaMonster", 1);
-		}else if(req.containsKey("del-areaMonster")){
+		}else if(req.containsKey("del-areaMonster") && accountBean.getCanwrite() == 1){
 			delete(AREAMONSTER+userId);
 			req.put("areaMonster", 1);
 		}
-		if(req.containsKey("areaMonster")){
+		if(req.containsKey("areaMonster") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(AREAMONSTER+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("areaMonster", object);
 		}
 
-		if(req.containsKey("update-pvpMonster")){
+		if(req.containsKey("update-pvpMonster") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMONSTER_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pvpMonster"));
 			for(String key : map.keySet()){
@@ -524,17 +541,28 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PVPMONSTER_PREFIX + userId, map);
 			req.put("pvpMonster", 1);
-		}else if(req.containsKey("del-pvpMonster")){
+		}else if(req.containsKey("del-pvpMonster") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PVPMONSTER_PREFIX + userId);
 			req.put("pvpMonster", 1);
 		}
-		if(req.containsKey("pvpMonster")){
+		if(req.containsKey("pvpMonster") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMONSTER_PREFIX+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("pvpMonster", object);
 		}
-		if(req.containsKey("update-pvpMine")){
+		if(req.containsKey("update-pvpBoss") && accountBean.getCanwrite() == 1){
+			set(RedisKey.PVPBOSS_PREFIX + userId, req.getString("update-pvpBoss"));
+			req.put("pvpBoss", 1);
+		}else if(req.containsKey("del-pvpBoss") && accountBean.getCanwrite() == 1){
+			delete(RedisKey.PVPBOSS_PREFIX + userId);
+			req.put("pvpBoss", 1);
+		}
+		if(req.containsKey("pvpBoss") && accountBean.getCanview() == 1){
+			String object = get(RedisKey.PVPBOSS_PREFIX+userId);
+			result.put("pvpBoss", object);
+		}
+		if(req.containsKey("update-pvpMine") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMINE_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pvpMine"));
 			for(String key : map.keySet()){
@@ -547,18 +575,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PVPMINE_PREFIX + userId, map);
 			req.put("pvpMine", 1);
-		}else if(req.containsKey("del-pvpMine")){
+		}else if(req.containsKey("del-pvpMine") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PVPMINE_PREFIX + userId);
 			req.put("pvpMine", 1);
 		}
-		if(req.containsKey("pvpMine")){
+		if(req.containsKey("pvpMine") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMINE_PREFIX+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("pvpMine", object);
 		}
 
-		if(req.containsKey("update-pvpBuff")){
+		if(req.containsKey("update-pvpBuff") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMAPBUFF_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pvpBuff"));
 			for(String key : map.keySet()){
@@ -571,18 +599,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PVPMAPBUFF_PREFIX + userId, map);
 			req.put("pvpBuff", 1);
-		}else if(req.containsKey("del-pvpBuff")){
+		}else if(req.containsKey("del-pvpBuff") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PVPMAPBUFF_PREFIX + userId);
 			req.put("pvpBuff", 1);
 		}
-		if(req.containsKey("pvpBuff")){
+		if(req.containsKey("pvpBuff") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMAPBUFF_PREFIX+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("pvpBuff", object);
 		}
 
-		if(req.containsKey("update-areaBossTime")){
+		if(req.containsKey("update-areaBossTime") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(AREABOSSTIME + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-areaBossTime"));
 			for(String key : map.keySet()){
@@ -595,18 +623,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(AREABOSSTIME + userId, map);
 			req.put("areaBossTime", 1);
-		}else if(req.containsKey("del-areaBossTime")){
+		}else if(req.containsKey("del-areaBossTime") && accountBean.getCanwrite() == 1){
 			delete(AREABOSSTIME + userId);
 			req.put("areaBossTime", 1);
 		}
-		if(req.containsKey("areaBossTime")){
+		if(req.containsKey("areaBossTime") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(AREABOSSTIME+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("areaBossTime", object);
 		}
 
-		if(req.containsKey("update-areaEquip")){
+		if(req.containsKey("update-areaEquip") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(MYAREAEQUIP + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-areaEquip"));
 			for(String key : map.keySet()){
@@ -621,18 +649,18 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(MYAREAEQUIP + userId, map);
 			req.put("areaEquip", 1);
-		}else if(req.containsKey("del-areaEquip")){
+		}else if(req.containsKey("del-areaEquip") && accountBean.getCanwrite() == 1){
 			delete(MYAREAEQUIP + userId);
 			req.put("areaEquip", 1);
 		}
-		if(req.containsKey("areaEquip")){
+		if(req.containsKey("areaEquip") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(MYAREAEQUIP+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("areaEquip", object);
 		}
 
-		if(req.containsKey("update-areaBuff")){
+		if(req.containsKey("update-areaBuff") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(MYAREABUFF + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-areaBuff"));
 			for(String key : map.keySet()){
@@ -645,11 +673,11 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(MYAREABUFF + userId, map);
 			req.put("areaBuff", 1);
-		}else if(req.containsKey("del-areaBuff")){
+		}else if(req.containsKey("del-areaBuff") && accountBean.getCanwrite() == 1){
 			delete(MYAREABUFF + userId);
 			req.put("areaBuff", 1);
 		}
-		if(req.containsKey("areaBuff")){
+		if(req.containsKey("areaBuff") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(MYAREABUFF+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
@@ -657,7 +685,7 @@ public class ManagerService extends RedisService{
 		}
 		//MINEGAIN
 		
-		if(req.containsKey("update-mailList0")){
+		if(req.containsKey("update-mailList0") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0);
 			JSONObject object = JSONObject.fromObject(req.get("update-mailList0"));
 			for(String key : map.keySet()){
@@ -670,11 +698,11 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0, map);
 			req.put("mailList", 1);
-		}else if(req.containsKey("del-mailList0")){
+		}else if(req.containsKey("del-mailList0") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0);
 			req.put("mailList", 1);
 		}
-		if(req.containsKey("update-mailList1")){
+		if(req.containsKey("update-mailList1") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 1);
 			JSONObject object = JSONObject.fromObject(req.get("update-mailList1"));
 			for(String key : map.keySet()){
@@ -687,11 +715,11 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 1, map);
 			req.put("mailList", 1);
-		}else if(req.containsKey("del-mailList1")){
+		}else if(req.containsKey("del-mailList1") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 1);
 			req.put("mailList", 1);
 		}
-		if(req.containsKey("update-mailList2")){
+		if(req.containsKey("update-mailList2") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 2);
 			JSONObject object = JSONObject.fromObject(req.get("update-mailList2"));
 			for(String key : map.keySet()){
@@ -704,11 +732,11 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 2, map);
 			req.put("mailList", 1);
-		}else if(req.containsKey("del-mailList2")){
+		}else if(req.containsKey("del-mailList2") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 2);
 			req.put("mailList", 1);
 		}
-		if(req.containsKey("update-mailList3")){
+		if(req.containsKey("update-mailList3") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 3);
 			JSONObject object = JSONObject.fromObject(req.get("update-mailList3"));
 			for(String key : map.keySet()){
@@ -721,11 +749,11 @@ public class ManagerService extends RedisService{
 			}
 			hputAll(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 3, map);
 			req.put("mailList", 1);
-		}else if(req.containsKey("del-mailList3")){
+		}else if(req.containsKey("del-mailList3") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 3);
 			req.put("mailList", 1);
 		}
-		if(req.containsKey("mailList")){
+		if(req.containsKey("mailList") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + 0);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
@@ -743,7 +771,7 @@ public class ManagerService extends RedisService{
 			object3.putAll(map);
 			result.put("mailList3", object3);
 		}
-		if(req.containsKey("update-friendList")){
+		if(req.containsKey("update-friendList") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-friendList"));
 			for(String key : map.keySet()){
@@ -757,17 +785,41 @@ public class ManagerService extends RedisService{
 			hputAll(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId, map);
 			
 			req.put("friendList", 1);
-		}else if(req.containsKey("del-friendList")){
+		}else if(req.containsKey("del-friendList") && accountBean.getCanwrite() == 1){
 			delete(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
 			req.put("friendList", 1);
 		}
-		if(req.containsKey("friendList")){
+		if(req.containsKey("friendList") && accountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_FRIEND_PREFIX + userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("friendList", object);
 		}
-		hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+		 hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+		if(req.containsKey("update-achieve") && accountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-achieve"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key))
+					hdelete(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId, key);
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId, map);
+			
+			req.put("achieve", 1);
+		}else if(req.containsKey("del-achieve") && accountBean.getCanwrite() == 1){
+			delete(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+			req.put("achieve", 1);
+		}
+		if(req.containsKey("achieve") && accountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("achieve", object);
+		}
 		//RedisKey.USER_ACTIVITY_RICHANG_PREFIX + type + RedisKey.SPLIT + RedisKey.USER_PREFIX + userId
 		//RedisKey.USER_ACTIVITY_KAIFU_PREFIX + type + RedisKey.SPLIT + RedisKey.USER_PREFIX + userId);
 
@@ -1141,6 +1193,16 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("FenJieConfig", object);
 		}
+		if(req.containsKey("del-TotalSignConfig")){
+			delete(RedisKey.TOTAL_SIGN_KEY);
+			req.put("TotalSignConfig", 1);
+		}
+		if(req.containsKey("TotalSignConfig")){
+			Map<String, String> map = hget(RedisKey.TOTAL_SIGN_KEY);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("TotalSignConfig", object);
+		}
 		if(req.containsKey("del-SignConfig")){
 			delete(RedisKey.SIGN_KEY);
 			req.put("SignConfig", 1);
@@ -1150,6 +1212,16 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("SignConfig", object);
+		}
+		if(req.containsKey("del-Sign2Config")){
+			delete(RedisKey.SIGN2_KEY);
+			req.put("Sign2Config", 1);
+		}
+		if(req.containsKey("Sign2Config")){
+			Map<String, String> map = hget(RedisKey.SIGN2_KEY);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("Sign2Config", object);
 		}
 		if(req.containsKey("del-MoHuaConfig")){
 			delete(RedisKey.MOHUA_MAP_KEY);
@@ -1348,6 +1420,16 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("PvpMonsterConfig", object);
 		}
+		if(req.containsKey("del-PvpBossConfig")){
+			delete(RedisKey.PVPBOSS_CONFIG);
+			req.put("PvpBossConfig", 1);
+		}
+		if(req.containsKey("PvpBossConfig")){
+			Map<String, String> map = hget(RedisKey.PVPBOSS_CONFIG);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("PvpBossConfig", object);
+		}
 		if(req.containsKey("del-PvpPositionConfig")){
 			delete(RedisKey.PVPPOSITION_CONFIG);
 			req.put("PvpPositionConfig", 1);
@@ -1384,6 +1466,16 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("PurchaseCoinRewardConfig", object);
+		}
+		if(req.containsKey("del-VipLibaoConfig")){
+			delete(RedisKey.VIPLIBAO_CONFIG);
+			req.put("VipLibaoConfig", 1);
+		}
+		if(req.containsKey("VipLibaoConfig")){
+			Map<String, String> map = hget(RedisKey.VIPLIBAO_CONFIG);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("VipLibaoConfig", object);
 		}
 		
 		if (req.containsKey("del-blackDatas")) {
