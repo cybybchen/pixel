@@ -620,30 +620,14 @@ public class ShopRedisService extends RedisService{
 	}
 
 	//libao
-	public Libao getLibaoShop(UserBean user, int rechargeid) {
-		String value = this.hget(LIBAOSHOP_CONFIG, rechargeid+"");
-		int count = getLibaoCount(user, rechargeid);
-		Libao.Builder builder = Libao.newBuilder();
-		if(value != null && parseJson(value, builder)){
-			builder.setPurchase(Math.max(0, builder.getPurchase() - count));
-			return builder.build();
-		}
-		return null;
-	}
-
 	public LibaoList getLibaoShop(UserBean user) {
-		Map<String, String> keyvalue = this.hget(LIBAOSHOP_CONFIG);
+		String value = this.get(LIBAOSHOP_CONFIG);
 		Map<String, String> libaoMap = this.hget(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId());
 		LibaoList.Builder shopbuilder = LibaoList.newBuilder();
-		if(keyvalue.isEmpty()){
+		if(value == null){
 			shopbuilder = LibaoList.newBuilder(buildLibaoShop());
 		}else{
-			for(String value : keyvalue.values()){
-				Libao.Builder builder = Libao.newBuilder();
-				if(parseJson(value, builder)){
-					shopbuilder.addLibao(builder);
-				}
-			}
+			parseJson(value, shopbuilder);
 		}
 		for(Libao.Builder builder : shopbuilder.getLibaoBuilderList()){
 			int count = 0;
@@ -664,11 +648,15 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public void addLibaoCount(UserBean user, int rechargeid) {
-		Libao libao = getLibaoShop(user, rechargeid);
+		LibaoList libaos = getLibaoShop(user);
 		int count = getLibaoCount(user, rechargeid);
 		count++;
 		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), rechargeid+"", count+"");
-		this.expireAt(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), new Date(libao.getEndtime()));
+		for(Libao libao : libaos.getLibaoList()){
+			if(libao.getRechargeid() == rechargeid){
+				this.expireAt(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), new Date(libao.getEndtime()));
+			}
+		}
 	}
 	
 	private LibaoList buildLibaoShop(){
@@ -682,13 +670,11 @@ public class ShopRedisService extends RedisService{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		Map<String, String> keyvalue = new HashMap<String, String>();
 		for(Libao.Builder libao : itemsbuilder.getLibaoBuilderList()){
 			libao.setStarttime(starttime);
 			libao.setEndtime(endtime);
-			keyvalue.put(libao.getId()+"", formatJson(libao.build()));
 		}
-		hputAll(LIBAOSHOP_CONFIG, keyvalue);
+		set(LIBAOSHOP_CONFIG, formatJson(itemsbuilder.build()));
 		return itemsbuilder.build();
 	}
 
