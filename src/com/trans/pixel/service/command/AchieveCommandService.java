@@ -49,7 +49,7 @@ public class AchieveCommandService extends BaseCommandService {
             return;
 		}
 		
-		rewardService.doRewards(user.getId(), multiReward.build());
+		rewardService.doRewards(user, multiReward.build());
 		
 		List<UserAchieveBean> uaList = userAchieveService.selectUserAchieveList(user.getId());
 		builder.addAllUserAchieve(buildUserAchieveList(uaList));
