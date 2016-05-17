@@ -116,11 +116,24 @@ public class PvpMapRedisService extends RedisService{
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}
+		PVPMonsterList.Builder bosses = PVPMonsterList.newBuilder();
+		value = get(RedisKey.PVPBOSS_PREFIX+user.getId());
+		if(value != null){
+			parseJson(value, bosses);
+			for(PVPMonster boss : bosses.getEnemyList()){
+				if(boss.getPositionid() == positionid)
+					return boss;
+			}
+		}
 		return null;
 	}
 
 	public void deleteMonster(UserBean user, int positionid) {
 		hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
+	}
+
+	public void deleteBoss(UserBean user, int positionid) {
+		delete(RedisKey.PVPBOSS_PREFIX+user.getId());
 	}
 
 	public PVPMine getMine(long userId, int id) {

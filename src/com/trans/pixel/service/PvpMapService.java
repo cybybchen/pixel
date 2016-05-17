@@ -246,7 +246,10 @@ public class PvpMapService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		int buff = -1;
 		if(ret){
-			redis.deleteMonster(user, positionid);
+			if(monster.getId() > 2000)
+				redis.deleteBoss(user, positionid);
+			else
+				redis.deleteMonster(user, positionid);
 			PVPMonsterReward reward = redis.getMonsterReward(monster.getId());
 			RewardInfo.Builder rewardinfo = RewardInfo.newBuilder();
 			rewardinfo.setItemid(RewardConst.PVPCOIN);
