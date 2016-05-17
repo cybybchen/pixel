@@ -357,6 +357,17 @@ function appendServerData(key, value){
     editor.find(".json").val(JSON.stringify(value));
 }
 
+function addBlackDatas(json){
+//	json.sort();
+	$("#blackdata-controlgroup").empty();
+	$.each(json, function (key, value) {
+		var $el = $( "<label for='data-" + value + "'>" + key + ":" + value + "</label><input type='checkbox' id='data-" + value + "' name='" + value + "'></input>" );
+		$("#blackdata-controlgroup").append($el);
+		$( $el[ 1 ] ).checkboxradio();
+	});
+    $( "#blackdata-controlgroup" ).controlgroup( "refresh" );
+}
+
 function updateServerJson(jsondata) {
     $.ajax({
         type: "POST",
@@ -434,14 +445,15 @@ function appendServerDatas(message){
     if(message["messageBoard"]!=null){
         appendServerData("messageBoard", message["messageBoard"]);
     }
+    $("#black-data").show();
     if (message["blacknosay"] != null) {
-    	appendServerData("blacknosay", message["blacknosay"]);
-    }
-    if (message["blackuser"] != null) {
-    	appendServerData("blackuser", message["blackuser"]);
-    }
-    if (message["blackaccount"] != null) {
-    	appendServerData("blackaccount", message["blackaccount"]);
+    	addBlackDatas(message["blacknosay"]);
+    } else if (message["blackuser"] != null) {
+    	addBlackDatas(message["blackuser"]);
+    } else if (message["blackaccount"] != null) {
+    	addBlackDatas(message["blackaccount"]);
+    } else{
+    	$("#black-data").hide();
     }
 }
 

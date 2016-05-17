@@ -31,32 +31,33 @@
 			<a href="#popupNewServer" data-rel="popup" data-position-to="window" data-transition="pop" id="new-servertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 		</div>
 		
-		<form id="setBlackForm" class="ui-grid-a" style="display;">
-			<div class="ui-block-a">
-	        	<label>UserId:</label>
-			    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
-			        <input name="userid" data-enhanced="true" data-inset="false" id="rewardid-input" placeholder="userid">
-			    </div>
-			    <div data-role="controlgroup" data-enhanced="true" data-filter="true" data-filter-reveal="true" data-input="#rewardid-input" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
-			        <div class="ui-controlgroup-controls">
-<%-- 			        	<%@ include file="reward.jsp" %> --%>
-			        </div>
-			    </div>
+		<div id="black-data" style="display:none;" >
+			<div class="ui-field-contain">
+			    <label for="user-id">UserId:</label>
+			    <input name="userid" type="text">
+			</div>
+      	<div class="ui-field-contain">
+	        <label>UserName:</label>
+	        <input type="text" name="username">
+   		</div>
+   		<div class="ui-field-contain">
+	        <label>LastTime(小时):</label>
+	        <input type="text" name="lasttime" value="" placeholder="lasttime">
+			</div>
+			<div class="ui-grid-a ui-responsive">
+    			<div class="ui-block-a"><a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doBlack();">send black</a></div>
+   		</div>
+   		<div data-role="controlgroup" data-type="horizontal">
+		    	<label><input type="checkbox" id="selectAllData" onchange="selectAllData(this)">所有匹配的Key</label>
+				<a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" onclick="delBlackDatas()">删除选中</a>
+			</div>
+		    <div data-role="controlgroup" id="blackdata-controlgroup"><!-- items will be injected here --></div>
 		    </div>
-	      <div class="ui-block-b">
-		        <label>UserName:</label>
-		        <input type="text" name="username" value="" placeholder="username">
-    		</div>
-    		<div class="ui-block-b">
-		        <label>LastTime(小时):</label>
-		        <input type="text" name="lasttime" value="" placeholder="lasttime">
-	
-	    		<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doBlack();">send black</a>
-    		</div>
-		</form>
+		    
+		    <div id="server-editor">
+			</div>
+		</div>	
 		
-		<div id="server-editor">
-		</div>
 	</div><!-- /content -->
 
 	<%@ include file="footer.jsp" %>

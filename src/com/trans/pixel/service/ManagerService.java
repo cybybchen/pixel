@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.annotation.Resource;
 
@@ -815,7 +816,7 @@ public class ManagerService extends RedisService{
 		// }
 		if (req.containsKey("blacknosay")) {
 			Map<String, String> blackmap = hget(RedisKey.BLACK_NOSAY_LIST_PREFIX + serverId);
-			Map<String, String> map = new HashMap<String, String>();
+			Map<String, String> map = new TreeMap<String, String>();
 			Iterator<Entry<String, String>> it = blackmap.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<String, String> entry = it.next();
@@ -831,7 +832,7 @@ public class ManagerService extends RedisService{
 		}
 		if (req.containsKey("blackuser")) {
 			Map<String, String> blackmap = hget(RedisKey.BLACK_USER_LIST_PREFIX + serverId);
-			Map<String, String> map = new HashMap<String, String>();
+			Map<String, String> map = new TreeMap<String, String>();
 			Iterator<Entry<String, String>> it = blackmap.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<String, String> entry = it.next();
@@ -847,7 +848,7 @@ public class ManagerService extends RedisService{
 		}
 		if (req.containsKey("blackaccount")) {
 			Map<String, String> blackmap = hget(RedisKey.BLACK_ACCOUNT_LIST);
-			Map<String, String> map = new HashMap<String, String>();
+			Map<String, String> map = new TreeMap<String, String>();
 			Iterator<Entry<String, String>> it = blackmap.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<String, String> entry = it.next();
