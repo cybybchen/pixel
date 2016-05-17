@@ -597,4 +597,15 @@ public class DateUtil {
 		
 		return true;
 	}
+	
+	public static int getWeekDay() {
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date());
+		int day = c.get(Calendar.DAY_OF_WEEK) - 1;
+		if (day == 0) {
+			day = 7;
+		}
+		
+		return day;
+	}
 }

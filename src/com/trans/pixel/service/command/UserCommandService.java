@@ -209,9 +209,7 @@ public class UserCommandService extends BaseCommandService {
 			 */
 			activityService.loginActivity(user);
 			
-			if (isNextWeek(user.getLastLoginTime())) {
-				user.setSignCount(0);
-			}
+			user.setSignCount(0);
 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));

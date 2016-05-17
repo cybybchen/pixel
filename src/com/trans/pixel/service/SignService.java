@@ -30,11 +30,10 @@ public class SignService {
 		if (!canSign(user))
 			return null;
 		
-
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		user.setSignCount(user.getSignCount() + 1);
 		user.setTotalSignCount(user.getTotalSignCount() + 1);
-		Sign sign = signRedisService.getSign(user.getSignCount());
+		Sign sign = getSign(user);
 		RewardBean reward = buildRewardBySign(sign);
 		rewardList.add(reward);
 		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
@@ -44,6 +43,17 @@ public class SignService {
 		userService.updateUser(user);
 		
 		return rewardList;
+	}
+	
+	private Sign getSign(UserBean user) {
+		int existDays = DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(user.getRegisterTime()));
+		Sign sign = signRedisService.getSign(3 * (existDays + 1) + user.getSignCount());
+		if (sign == null) {
+			int weekDay = DateUtil.getWeekDay();
+			sign = signRedisService.getSign2(3 * (weekDay - 1) + user.getSignCount());
+		}
+		
+		return sign;
 	}
 	
 	private RewardBean buildRewardBySign(Sign sign) {

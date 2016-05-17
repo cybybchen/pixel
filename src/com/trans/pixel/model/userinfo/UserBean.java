@@ -867,6 +867,7 @@ public class UserBean {
 		builder.setRechargeRecord(rechargeRecord);
 		builder.setVipLibao1(viplibao1);
 		builder.setVipLibao2(viplibao2);
+		builder.setRegisterTime(registerTime);
 		
 		return builder.build();
 	}

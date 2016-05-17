@@ -33,6 +33,7 @@ message UserInfo {
 	optional int32 rechargeRecord = 34;
 	optional int32 vipLibao1 = 35;
 	optional int32 vipLibao2 = 36;
+	optional string registerTime = 37;
 }
 
 message ServerData {
