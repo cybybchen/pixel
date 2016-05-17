@@ -259,6 +259,9 @@ public class PvpMapRedisService extends RedisService{
 			}
 			hputAll(RedisKey.PVPMONSTER_PREFIX+user.getId(), keyvalue);
 			expire(RedisKey.PVPMONSTER_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		}else{
+			for(PVPMonster.Builder bossbuilder : bosses.getEnemyBuilderList())
+				monsters.add(bossbuilder.build());
 		}
 		return monsters;
 	}

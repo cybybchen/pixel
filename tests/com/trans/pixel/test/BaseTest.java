@@ -27,7 +27,7 @@ public class BaseTest {
     protected static int GAME_VERSION = 1;
     protected static int VERSION = 1;
     protected static int SERVER_ID = 1;
-    protected static String ACCOUNT = "huang";
+    protected static String ACCOUNT = "chli4";
     protected static String USER_NAME = ACCOUNT;
     protected static long USER_ID = 57;
     protected static String DEVICE_ID = "iphone5";
@@ -122,6 +122,7 @@ public class BaseTest {
         	if(extraLog)	System.out.println(request.getHead().getAccount()+":"+response.getErrorCommand().getMessage()+"，重新注册");
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
     		registerbuilder.setUserName(head().getAccount());
+    		registerbuilder.setHeroId(42);
     		response = request("registerCommand", registerbuilder.build(), request);
         }
         if(response.hasUserInfoCommand()){
