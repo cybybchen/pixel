@@ -61,8 +61,8 @@
 		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count)
 		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
-		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId}),
-		#{totalSignCount}
+		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId},
+		#{totalSignCount})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
