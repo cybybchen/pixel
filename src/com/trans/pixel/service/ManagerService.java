@@ -93,6 +93,45 @@ public class ManagerService extends RedisService{
 			return result;
 		}
 		
+		if(req.containsKey("del-Cdkey-master")){
+			String key = req.getString("del-Cdkey-master");
+			cdkeyRedisService.delCdkeyConfig(key);
+			result.put("success", "cdkey已删除");
+			req.put("Cdkey-master", 1);
+		}else if(req.containsKey("add-Cdkey-master")){
+			String value = req.getString("add-Cdkey-master");
+			Cdkey.Builder builder = Cdkey.newBuilder();
+			parseJson(value, builder);
+			int length = builder.getLength();
+			builder.clearLength();
+			List<String> cdkeys = null;
+			if(builder.getCount() == -1)
+				cdkeys = cdkeyRedisService.getAvaiCdkeys(builder.getId()+"");
+			else
+				cdkeys = cdkeyRedisService.addCdkeyConfig(builder, length);
+			value = hget(RedisKey.CDKEY_CONFIG, builder.getId()+"");
+			if(value != null){
+				builder.clearReward();
+				parseJson(value, builder);
+				value = hget(RedisKey.CDKEY_EXCHANGE, builder.getId()+"");
+				if(value != null)
+					builder.setCurrentCount(Integer.parseInt(value));
+			}
+			value = formatJson(builder.build());
+			for(String key : cdkeys){
+				value += "\r\n"+key;
+			}
+			result.put("addCdkey", value);
+			return result;
+		}
+		if(req.containsKey("Cdkey-master")){
+			Map<Integer, String> map = cdkeyRedisService.getCdkeyConfigs();
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("Cdkey", object);
+			return result;
+		}
+		
 		String account = gmAccountService.getSession(TypeTranslatedUtil.jsonGetString(req, "session"));
 		if(account == null){
 			result.put("error", "Session timeout! Please login.");
@@ -167,41 +206,51 @@ public class ManagerService extends RedisService{
 //			return result;
 		
 		if(req.containsKey("del-Cdkey") && accountBean.getCanwrite() == 1){
-			String key = req.getString("del-Cdkey");
-			cdkeyRedisService.delCdkeyConfig(key);
-			result.put("success", "cdkey已删除");
-			req.put("Cdkey", 1);
+			Properties props = new Properties();
+			try {
+				InputStream in = getClass().getResourceAsStream("/config/advancer.properties");
+				props.load(in);
+				String masterserver = props.getProperty("masterserver");
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters.put("del-Cdkey-master", req.getString("del-Cdkey"));
+				String message = HttpUtil.post(masterserver, parameters);
+				logger.info(masterserver+" : "+message);
+				result = JSONObject.fromObject(message);
+				return result;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(req.containsKey("add-Cdkey") && accountBean.getCanwrite() == 1){
-			String value = req.getString("add-Cdkey");
-			Cdkey.Builder builder = Cdkey.newBuilder();
-			parseJson(value, builder);
-			int length = builder.getLength();
-			builder.clearLength();
-			List<String> cdkeys = null;
-			if(builder.getCount() == -1)
-				cdkeys = cdkeyRedisService.getAvaiCdkeys(builder.getId()+"");
-			else
-				cdkeys = cdkeyRedisService.addCdkeyConfig(builder, length);
-			value = hget(RedisKey.CDKEY_CONFIG, builder.getId()+"");
-			if(value != null){
-				builder.clearReward();
-				parseJson(value, builder);
-				value = hget(RedisKey.CDKEY_EXCHANGE, builder.getId()+"");
-				if(value != null)
-					builder.setCurrentCount(Integer.parseInt(value));
+			Properties props = new Properties();
+			try {
+				InputStream in = getClass().getResourceAsStream("/config/advancer.properties");
+				props.load(in);
+				String masterserver = props.getProperty("masterserver");
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters.put("add-Cdkey-master", req.getString("add-Cdkey"));
+				String message = HttpUtil.post(masterserver, parameters);
+				logger.info(masterserver+" : "+message);
+				result = JSONObject.fromObject(message);
+				return result;
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			value = formatJson(builder.build());
-			for(String key : cdkeys){
-				value += "\r\n"+key;
-			}
-			result.put("addCdkey", value);
-//			req.put("Cdkey", 1);
 		}
 		if(req.containsKey("Cdkey") && accountBean.getCanview() == 1){
-			Map<Integer, String> map = cdkeyRedisService.getCdkeyConfigs();
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("Cdkey", object);
+			Properties props = new Properties();
+			try {
+				InputStream in = getClass().getResourceAsStream("/config/advancer.properties");
+				props.load(in);
+				String masterserver = props.getProperty("masterserver");
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters.put("Cdkey-master", req.getString("Cdkey"));
+				String message = HttpUtil.post(masterserver, parameters);
+				logger.info(masterserver+" : "+message);
+				result = JSONObject.fromObject(message);
+				return result;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		if(req.containsKey("del-RedisDatas") && accountBean.getCanwrite() == 1){
