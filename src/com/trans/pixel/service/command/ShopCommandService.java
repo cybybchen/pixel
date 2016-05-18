@@ -210,7 +210,7 @@ public class ShopCommandService extends BaseCommandService{
 
 	public void BlackShop(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user){
 		if(user.getVip() < 6)
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NEED_VIP8));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NEED_VIP6));
 		else
 			BlackShop(responseBuilder, user);
 	}
