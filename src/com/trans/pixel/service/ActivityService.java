@@ -454,7 +454,7 @@ public class ActivityService {
 				/**
 				 * 判断活动有没有过期
 				 */
-				if (kaifu.getLasttime() >= getKaifuDays(user.getServerId())) {
+				if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= getKaifuDays(user.getServerId())) {
 					userActivityService.updateUserKaifu(user.getId(), uk.build());
 					
 					if (isCompleteNewKaifu(uk.build(), user.getId()))
