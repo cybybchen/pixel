@@ -40,6 +40,7 @@ public class PvpMapRedisService extends RedisService{
 			return builder;
 		}
 		PVPMapList.Builder maplist = getBasePvpMapList();
+		maplist.getFieldBuilder(0).setOpened(true);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() <= user.getPvpUnlock())
 				map.setOpened(true);
@@ -192,13 +193,21 @@ public class PvpMapRedisService extends RedisService{
 			Map<String, PVPMonsterList> monstermap = getMonsterConfig();
 			Map<String, PVPPositionList> positionMap = getPositionConfig();
 			if(refreshBoss){
+				PVPMapList.Builder pvpmap = getMapList(user);
+				List<Integer> fieldids = new ArrayList<Integer>();
+				for(PVPMap map : pvpmap.getFieldList()){
+					if(map.getOpened())
+						fieldids.add(map.getFieldid());
+				}
+				if(fieldids.isEmpty())
+					fieldids.add(pvpmap.getField(0).getFieldid());
 				bosses.clearEnemy();
 				for(PVPBoss boss : getBossConfig().getBossList()) {
 					if(boss.getDay() == weekday()){
 						PVPMonster.Builder builder = PVPMonster.newBuilder();
 						builder.setId(boss.getId());
-						Object[] fields = positionMap.keySet().toArray();
-						builder.setFieldid(Integer.parseInt((String)fields[nextInt(fields.length)]));
+//						Object[] fields = positionMap.keySet().toArray();
+						builder.setFieldid(fieldids.get(nextInt(fieldids.size())));
 						bosses.addEnemy(builder);
 					}
 				}
