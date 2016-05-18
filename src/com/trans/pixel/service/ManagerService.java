@@ -403,10 +403,10 @@ public class ManagerService extends RedisService{
 			String value = hget(USERDATA+userId, "Area");
 			result.put("Area", value);
 		}
-		// if(req.containsKey("userData")){
-		// 	Map<String, String> map = hget(USERDATA+userId);
-		// 	result.putAll(map);
-		// }
+		if (req.containsKey("userData")) {
+			Map<String, String> map = hget(USERDATA + userId);
+			result.putAll(map);
+		}
 
 		if(req.containsKey("update-team") && accountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
@@ -443,6 +443,30 @@ public class ManagerService extends RedisService{
 		if(req.containsKey("teamCache") && accountBean.getCanview() == 1){
 			String map = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
 			result.put("teamCache", map);
+		}
+		if(req.containsKey("update-achieve") && accountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-achieve"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key))
+					hdelete(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId, key);
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId, map);
+			
+			req.put("achieve", 1);
+		}else if(req.containsKey("del-achieve") && accountBean.getCanwrite() == 1){
+			delete(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+			req.put("achieve", 1);
+		}
+		if(req.containsKey("achieve") && accountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("achieve", object);
 		}
 
 		if(req.containsKey("update-hero") && accountBean.getCanwrite() == 1){
@@ -843,31 +867,6 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("friendList", object);
-		}
-		 hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
-		if(req.containsKey("update-achieve") && accountBean.getCanwrite() == 1){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
-			JSONObject object = JSONObject.fromObject(req.get("update-achieve"));
-			for(String key : map.keySet()){
-				if(!object.keySet().contains(key))
-					hdelete(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId, key);
-			}
-			map = new HashMap<String, String>();
-			for(Object key : object.keySet()){
-				map.put(key.toString(), object.get(key).toString());
-			}
-			hputAll(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId, map);
-			
-			req.put("achieve", 1);
-		}else if(req.containsKey("del-achieve") && accountBean.getCanwrite() == 1){
-			delete(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
-			req.put("achieve", 1);
-		}
-		if(req.containsKey("achieve") && accountBean.getCanview() == 1){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_ACHIEVE_PREFIX + userId);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("achieve", object);
 		}
 		//RedisKey.USER_ACTIVITY_RICHANG_PREFIX + type + RedisKey.SPLIT + RedisKey.USER_PREFIX + userId
 		//RedisKey.USER_ACTIVITY_KAIFU_PREFIX + type + RedisKey.SPLIT + RedisKey.USER_PREFIX + userId);

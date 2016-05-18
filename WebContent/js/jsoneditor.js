@@ -199,9 +199,6 @@ function appendUserDatas(message){
     if(message["pokede"]!=null){
         appendUserData("pokede", message["pokede"]);
     }
-    if(message["achieve"]!=null){
-        appendUserData("achieve", message["achieve"]);
-    }
     if(message["equip"]!=null){
         appendUserData("equip", message["equip"]);
     }
@@ -219,6 +216,9 @@ function appendUserDatas(message){
     }
     if(message["team"]!=null){
         appendUserData("team", message["team"]);
+    }
+    if(message["achieve"]!=null){
+        appendUserData("achieve", message["achieve"]);
     }
     if(message["areaMonster"]!=null){
         appendUserData("areaMonster", message["areaMonster"]);
@@ -290,7 +290,7 @@ function buildUserJson(key, value){
     }else{
         var datatype = $("#user-nav .nav-btn-active").attr("data-type");
         if(datatype == "base"){
-            json["userData"] = 1;
+            json["UserData"] = 1;
             json["team"] = 1;
             json["teamCache"] = 1;
             json["achieve"] = 1;
