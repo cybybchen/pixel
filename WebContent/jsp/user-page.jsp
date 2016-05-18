@@ -34,7 +34,7 @@
 	</div> -->
     <div id="user-navmenu-panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay">
     	<ul data-role="listview" id="user-nav" class="jqm-list ui-alt-icon ui-nodisc-icon">
-			<li id="nav-locate" style="background-color: #F6F6F6;">添加用户&nbsp;&nbsp;&rArr;</li>
+			<li class="nav-locate" style="background-color: #F6F6F6;">添加用户&nbsp;&nbsp;&rArr;</li>
 			<li data-theme="b" data-icon="home"><a href="#menu-panel">导航【用户】</a></li>
 			<li ><a href="#" onclick='$("#rewardForm").toggle();'>发奖</a></li>
 			<li ><a href="#" class="nav-btn-active" data-type="base">基本</a></li>
