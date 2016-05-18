@@ -51,6 +51,10 @@ public class UserPokedeRedisService extends RedisService {
 		this.hputAll(RedisKey.USER_POKEDE_PREFIX + userId, map);
 	}
 	
+	public boolean isExistPokedeKey(final long userId) {
+		return exists(RedisKey.USER_POKEDE_PREFIX + userId);
+	}
+	
 	private Map<String, String> convertUserPokedeListToMap(List<UserPokedeBean> userPokedeList) {
 		Map<String, String> map = new HashMap<String, String>();
 		for (UserPokedeBean userPokede : userPokedeList) {

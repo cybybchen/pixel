@@ -25,8 +25,15 @@ public class UserPokedeService {
 	public UserPokedeBean selectUserPokede(UserBean user, int heroId) {
 		long userId = user.getId();
 		UserPokedeBean userPokede = userPokedeRedisService.selectUserPokede(userId, heroId);
-		if (userPokede == null)
-			userPokede = userPokedeMapper.selectUserPokede(userId, heroId);
+		if (userPokede == null) {
+			if (!userPokedeRedisService.isExistPokedeKey(userId)) {
+				List<UserPokedeBean> userPokedeList = userPokedeMapper.selectUserPokedeList(userId);
+				if (userPokedeList != null && userPokedeList.size() > 0)
+					userPokedeRedisService.updateUserPokedeList(userPokedeList, userId);
+				
+				userPokede = userPokedeRedisService.selectUserPokede(userId, heroId);
+			}
+		}
 		
 		if (userPokede == null) {
 			userPokede = initUserPokede(userId, heroId);
