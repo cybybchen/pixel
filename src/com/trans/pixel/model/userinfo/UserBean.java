@@ -32,7 +32,7 @@ public class UserBean {
 	private String registerTime = "";
 	private long redisTime = 0;
 	private int ladderModeLeftTimes = 0;
-	private long ladderModeHistoryTop = 10000;
+	private long ladderModeHistoryTop = 2501;
 	private long freeLotteryCoinTime = 0;
 	private long freeLotteryJewelTime = 0;
 	private int dailyShopRefreshTime = 0;

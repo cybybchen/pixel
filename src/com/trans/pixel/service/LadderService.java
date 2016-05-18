@@ -202,8 +202,6 @@ public class LadderService {
 	}
 	
 	public List<RewardBean> getRankChangeReward(long newRank, long oldRank) {
-		if (oldRank > 2500)
-			oldRank = 2500;
 		Map<Integer, LadderRankingBean> ladderRankingMap = getLadderRankingMap();
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		LadderRankingBean upRanking = new LadderRankingBean();
@@ -219,8 +217,10 @@ public class LadderService {
 				downRanking = ladderRanking;
 			}
 			
-			if (oldRank > 2500 && rank == 2500)
+			if (oldRank > 2500 && rank == 2500) {
 				rewardList.add(RewardBean.init(ladderRanking.getItemid(), (int)ladderRanking.getCount()));
+				upRanking = ladderRanking;
+			}
 		}
 		int id = downRanking.getId();
 		long startRank = newRank;

@@ -130,7 +130,8 @@ public class LadderCommandService extends BaseCommandService {
 		if (oldRank > newRank) {
 			user.setLadderModeHistoryTop(newRank);
 			userService.updateUser(user);
-			String content = "恭喜您天梯历史最高排名进步了" + (oldRank - newRank) + "名";
+			long delRank = oldRank - newRank;
+			String content = "恭喜您天梯历史最高排名进步了" + delRank + "名";
 			List<RewardBean> rewardList = ladderService.getRankChangeReward(newRank, oldRank);
 			rewards.addAllLoot(RewardBean.buildRewardInfoList(rewardList));
 			rewards.setName(content);
