@@ -19,8 +19,15 @@ public class UserAchieveService {
 	
 	public UserAchieveBean selectUserAchieve(long userId, int type) {
 		UserAchieveBean userAchieve = userAchieveRedisService.selectUserAchieve(userId, type);
-		if (userAchieve == null)
-			userAchieve = userAchieveMapper.selectUserAchieve(userId, type);
+		if (userAchieve == null) {
+			if (!userAchieveRedisService.isExistAchieveKey(userId)) {
+				List<UserAchieveBean> userAchieveList = userAchieveMapper.selectUserAchieveList(userId);
+				if (userAchieveList != null && userAchieveList.size() > 0)
+					userAchieveRedisService.updateUserAchieveList(userAchieveList, userId);
+				
+				userAchieve = userAchieveRedisService.selectUserAchieve(userId, type);
+			}
+		}
 		
 		if (userAchieve == null)
 			userAchieve = initUserAchieve(userId, type);

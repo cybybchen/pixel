@@ -60,6 +60,12 @@ public class UserAchieveRedisService extends RedisService {
 		return userAchieveList;
 	}
 	
+	public boolean isExistAchieveKey(final long userId) {
+		String key = buildRedisKey(userId);
+		
+		return exists(key);
+	}
+	
 	private Map<String, String> buildAchieveMap(List<UserAchieveBean> userAchieveList) {
 		Map<String, String> map = new HashMap<String, String>();
 		for (UserAchieveBean userAchieve : userAchieveList) {
