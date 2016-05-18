@@ -800,7 +800,7 @@ function addRedisDatas(json){
 
 function selectAllData(dom){
 	var checked = $(dom).is(':checked');
-	$("#data-controlgroup input").attr("checked", checked).checkboxradio("refresh");
+	$(dom).parent().parent().next().find("input").attr("checked", checked).checkboxradio("refresh");
 }
 
 function showCdkeyTable(json){

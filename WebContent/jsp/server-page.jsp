@@ -48,7 +48,7 @@
     			<div class="ui-block-a"><a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doBlack();">send black</a></div>
    		</div>
    		<div data-role="controlgroup" data-type="horizontal">
-		    	<label><input type="checkbox" id="selectAllData" onchange="selectAllData(this)">所有匹配的Key</label>
+		    	<label><input type="checkbox" onchange="selectAllData(this)">所有匹配的Key</label>
 				<a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" onclick="delBlackDatas()">删除选中</a>
 			</div>
 		    <div data-role="controlgroup" id="blackdata-controlgroup"><!-- items will be injected here --></div>
