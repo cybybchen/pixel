@@ -81,7 +81,7 @@ public class ActivityService {
 		while (it.hasNext()) {
 			Entry<String, Richang> entry = it.next();
 			Richang richang = entry.getValue();
-			if (richang.getTargetid() == type) {
+			if (richang.getTargetid() == type && DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime())) {
 				UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(userId, richang.getId()));
 				if (type == ActivityConst.DANBI_RECHARGE)
 					ur.setCompleteCount(Math.max(count, ur.getCompleteCount()));
@@ -101,6 +101,9 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
 		Richang richang = activityRedisService.getRichang(id);
+		if (!DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime()))
+			return ErrorConst.ACTIVITY_IS_OVER_ERROR;
+		
 		ActivityOrder activityorder = richang.getOrder(order - 1);
 		if (activityorder.getTargetcount() > ur.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
@@ -461,17 +464,20 @@ public class ActivityService {
 		}
 	}
 	
-	public ResultConst handleKaifuReward(MultiReward.Builder rewards, UserKaifu.Builder uk, long userId, int id, int order) {
+	public ResultConst handleKaifuReward(MultiReward.Builder rewards, UserKaifu.Builder uk, UserBean user, int id, int order) {
 		if (uk.getRewardOrderList().contains(order))
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
 		Kaifu kaifu = activityRedisService.getKaifu(id);
+		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
+			return ErrorConst.ACTIVITY_IS_OVER_ERROR;
+		
 		ActivityOrder activityorder = kaifu.getOrder(order - 1);
 		if (activityorder.getTargetcount() > uk.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
 		uk.addRewardOrder(order);
-		userActivityService.updateUserKaifu(userId, uk.build());
+		userActivityService.updateUserKaifu(user.getId(), uk.build());
 		rewards.addAllLoot(getRewardList(activityorder));
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;

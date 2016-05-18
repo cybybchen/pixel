@@ -54,7 +54,7 @@ public class ActivityCommandService extends BaseCommandService {
             return;
 		}
 		
-		rewardService.doRewards(user.getId(), multiReward.build());
+		rewardService.doRewards(user, multiReward.build());
 		
 		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
 		
@@ -104,7 +104,7 @@ public class ActivityCommandService extends BaseCommandService {
             return;
 		}
 		
-		rewardService.doRewards(user.getId(), multiReward.build());
+		rewardService.doRewards(user, multiReward.build());
 		builder.setAccRcPsRwRc(activityService.getKaifu2RwRc(user, ActivityConst.KAIFU2_LEIJI_RECHARGE_PERSON_COUNT));
 		
 		responseBuilder.setKaifu2RewardCommand(builder.build());
@@ -121,7 +121,7 @@ public class ActivityCommandService extends BaseCommandService {
 		int order = cmd.getOrder();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
 		UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), id));
-		ResultConst result = activityService.handleKaifuReward(multiReward, uk, user.getId(), id, order);
+		ResultConst result = activityService.handleKaifuReward(multiReward, uk, user, id, order);
 		
 		if (result instanceof ErrorConst) {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
@@ -129,7 +129,7 @@ public class ActivityCommandService extends BaseCommandService {
             return;
 		}
 		
-		rewardService.doRewards(user.getId(), multiReward.build());
+		rewardService.doRewards(user, multiReward.build());
 		
 		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
 		builder.addAllRank(activityService.getKaifu2RankList(user));
