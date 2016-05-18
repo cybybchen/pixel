@@ -209,13 +209,13 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void BlackShop(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getVip() < 8)
+		if(user.getVip() < 6)
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NEED_VIP8));
 		else
 			BlackShop(responseBuilder, user);
 	}
 	public void BlackShop(Builder responseBuilder, UserBean user){
-		if(user.getVip() < 8)
+		if(user.getVip() < 6)
 			return;
 		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();
@@ -231,7 +231,7 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void BlackShopPurchase(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getVip() < 8)
+		if(user.getVip() < 6)
 			return;
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getBlackShop(user));
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
@@ -264,7 +264,7 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void BlackShopRefresh(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getVip() < 8)
+		if(user.getVip() < 6)
 			return;
 		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();

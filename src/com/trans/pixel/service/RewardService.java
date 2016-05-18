@@ -134,7 +134,7 @@ public class RewardService {
 			LootBean loot = lootService.getLootByLevelId(lootLevel);
 			if (loot != null){
 				RewardBean reward = randomReward(loot.getRewardList());
-				if(user.getVip() >= 4 && RandomUtils.nextInt(100) < 10)
+				if(user.getVip() >= 3 && RandomUtils.nextInt(100) < 10)
 					reward.setCount(reward.getCount()*2);
 				rewardList.add(reward);
 			}

@@ -227,7 +227,7 @@ public class PvpMapService {
 				}
 			}
 			resource *= hour;
-			if(user.getVip() >= 11)
+			if(user.getVip() >= 10)
 				resource = (int)(resource * 1.1);
 			rewardService.doReward(user, RewardConst.PVPCOIN, resource);
 			user.setPvpMineGainTime(time);

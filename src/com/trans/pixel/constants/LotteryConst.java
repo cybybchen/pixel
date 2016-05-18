@@ -12,6 +12,6 @@ public class LotteryConst {
 	
 	public static final int COST_LOOTERY_HERO_HUNJIA = 400;
 	
-	public static final int LOOTERY_SPECIAL_VIP_LIMIT = 10;
+	public static final int LOOTERY_SPECIAL_VIP_LIMIT = 8;
 	public static final int LOOTERY_SPECIAL_TYPE = 100001;
 }
