@@ -868,6 +868,7 @@ public class UserBean {
 		builder.setVipLibao1(viplibao1);
 		builder.setVipLibao2(viplibao2);
 		builder.setRegisterTime(registerTime);
+		builder.setTotalSignCount(totalSignCount);
 		
 		return builder.build();
 	}
