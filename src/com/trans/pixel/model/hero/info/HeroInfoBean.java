@@ -311,7 +311,7 @@ public class HeroInfoBean {
 	
 	public SkillInfoBean getSKillInfo(int skillId) {
 		for (SkillInfoBean skillInfo : skillInfoList) {
-			if (skillInfo.getSkillId() == skillId)
+			if (skillInfo.getId() == skillId)
 				return skillInfo;
 		}
 		
@@ -320,7 +320,7 @@ public class HeroInfoBean {
 	
 	public void upgradeSkill(int skillId) {
 		for (SkillInfoBean skillInfo : skillInfoList) {
-			if (skillInfo.getSkillId() == skillId) {
+			if (skillInfo.getId() == skillId) {
 				skillInfo.setSkillLevel(skillInfo.getSkillLevel() + 1);
 				break;
 			}
