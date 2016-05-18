@@ -506,8 +506,8 @@ message SignList {
 message Sign {
 	required int32 order = 1;
 	required string description = 2;
-	required int32 targetid = 3;
-	required int32 targetcount = 4;
+	optional int32 targetid = 3;
+	optional int32 targetcount = 4;
 	required int32 rewardid = 5;
 	required int32 rewardcount = 7;
 }
