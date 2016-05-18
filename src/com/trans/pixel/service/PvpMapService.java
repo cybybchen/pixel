@@ -308,6 +308,11 @@ public class PvpMapService {
 			return false;
 		if (mine.getLevel() > 0)
 			logType = PvpMapConst.TYPE_DEFEND;
+		/**
+		 * PVP攻击玩家的活动
+		 */
+		if(mine.hasOwner())
+			activityService.pvpAttackEnemyActivity(user.getId(), ret);
 		if(ret){
 			if(mine.hasOwner()){
 				enemyId = mine.getOwner().getId();
@@ -343,11 +348,6 @@ public class PvpMapService {
 		 */
 		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), enemyId);
 		
-		/**
-		 * PVP攻击玩家的活动
-		 */
-		if(mine.hasOwner())
-			activityService.pvpAttackEnemyActivity(user.getId(), ret);
 		return true;
 	}
 	
