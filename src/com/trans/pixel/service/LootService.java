@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.LootBean;
@@ -46,10 +47,8 @@ public class LootService {
 			int deltaTime = (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - user.getLastLootTime();
 			addGold = deltaTime * dg.getGold();
 			addExp = deltaTime * dg.getExperience();			
-			user.setExp(user.getExp() + addExp);
-			user.setCoin(user.getCoin() + addGold);
-//			rewardService.doReward(user, RewardConst.COIN, addGold);
-//			rewardService.doReward(user, RewardConst.EXP, addExp);
+			rewardService.doReward(user, RewardConst.COIN, addGold);
+			rewardService.doReward(user, RewardConst.EXP, addExp);
 		}
 		user.setLastLootTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		userService.updateUser(user);

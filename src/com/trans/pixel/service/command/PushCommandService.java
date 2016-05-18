@@ -159,6 +159,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserInfoCommand(Builder responseBuilder, UserBean user) {
+		lootService.updateLootResult(user);
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 		super.buildUserInfo(builder, user);
 		responseBuilder.setUserInfoCommand(builder.build());

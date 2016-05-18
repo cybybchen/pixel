@@ -96,11 +96,9 @@ public class RewardService {
 					rechargeService.recharge(user, rewardCount);;
 					return true;
 				case RewardConst.EXP:
-					lootService.updateLootResult(user);
 					user.setExp(user.getExp() + rewardCount);
 					return true;
 				case RewardConst.COIN:
-					lootService.updateLootResult(user);
 					user.setCoin(user.getCoin() + rewardCount);
 					return true;
 				case RewardConst.JEWEL:
