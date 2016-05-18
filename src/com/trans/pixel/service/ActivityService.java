@@ -169,7 +169,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_COSE_JEWEL, count);
+		sendKaifuScore(user, ActivityConst.LEIJI_COST_JEWEL, count);
 	}
 	
 	public void lotteryActivity(UserBean user, int count, int costType, int cost) {
