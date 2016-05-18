@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserService;
 
 @Service
@@ -42,6 +43,8 @@ public class LadderCommandService extends BaseCommandService {
 	private MailService mailService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private RewardService rewardService;
 	
 	public void handleGetLadderRankListCommand(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
 		ResponseGetLadderRankListCommand.Builder builder = ResponseGetLadderRankListCommand.newBuilder();
@@ -83,6 +86,7 @@ public class LadderCommandService extends BaseCommandService {
 			pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
 			MultiReward rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
 			if (rewards.getLootList().size() > 0) {
+				rewardService.doRewards(user, rewards);
 				pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
 			}
 		} 
