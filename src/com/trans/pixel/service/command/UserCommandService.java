@@ -96,21 +96,26 @@ public class UserCommandService extends BaseCommandService {
 		UserBean user = new UserBean();
 		user.init(head.getServerId(), head.getAccount(), userService.handleUserName(head.getServerId(), registerCommand.getUserName()), registerCommand.getIcon());
 		user.setRegisterTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
+		boolean hasRegistered = false;
 		try{
 			userService.addNewUser(user);
 		}catch(Exception e){
 			logger.error(e.getMessage());
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_HAS_REGISTER);
-			responseBuilder.setErrorCommand(errorCommand);
-			return;
+			hasRegistered = true;
 		}
-		
-		int addHeroId = registerCommand.getHeroId();
-		addRegisterHero(user, addHeroId);
-		addRegisterTeam(user);
-		
-		user.setFirstGetHeroId(addHeroId);
-		userService.updateUser(user);
+		if(hasRegistered){
+			user = userService.getUserByAccount(head.getServerId(), head.getAccount());
+			if (user == null) {
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_REGISTER_FAIL);
+				responseBuilder.setErrorCommand(errorCommand);
+				return;
+			}
+		}else{
+			int addHeroId = registerCommand.getHeroId();
+			addRegisterHero(user, addHeroId);
+			addRegisterTeam(user);
+			user.setFirstGetHeroId(addHeroId);
+		}
 		
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
