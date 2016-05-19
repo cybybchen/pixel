@@ -608,4 +608,44 @@ public class DateUtil {
 		
 		return day;
 	}
+	
+	public static boolean isNextDay(String lastLoginTime) {
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT);
+		boolean nextDay = false;
+		if (lastLoginTime == null || lastLoginTime.trim().equals("")) {
+			return true;
+		}
+		try {
+			String now = df.format(new Date());
+			String last = df.format(df.parse(lastLoginTime));
+			if (now.equals(last)) {
+				nextDay = false;
+			} else {
+				nextDay = true;
+			}
+		} catch (ParseException e) {
+			nextDay = false;
+		}
+		
+		return nextDay;
+	}
+	
+	public static boolean isNextWeek(String lastLoginTime) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date());
+		int now = c.get(Calendar.WEEK_OF_YEAR);
+		
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT);
+		try {
+			c.setTime(df.parse(lastLoginTime));
+		} catch (ParseException e) {
+			return false;
+		}
+		int last = c.get(Calendar.WEEK_OF_YEAR);
+		
+		if (now != last)
+			return true;
+		
+		return false;
+	}
 }

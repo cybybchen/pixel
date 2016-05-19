@@ -1,9 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -201,7 +197,7 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	private void refreshUserLogin(UserBean user) {
-		if (isNextDay(user.getLastLoginTime())) {
+		if (DateUtil.isNextDay(user.getLastLoginTime())) {
 			//每日首次登陆
 //			VipInfo vip = userService.getVip(user.getVip());
 //			if(vip != null){
@@ -220,46 +216,5 @@ public class UserCommandService extends BaseCommandService {
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		user.setSession(DigestUtils.md5Hex(user.getAccount() + System.currentTimeMillis()));
 		userService.updateUser(user);
-	}
-	
-	private boolean isNextDay(String lastLoginTime) {
-		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT);
-		boolean nextDay = false;
-		if (lastLoginTime == null || lastLoginTime.trim().equals("")) {
-			return true;
-		}
-		try {
-			String now = df.format(new Date());
-			String last = df.format(df.parse(lastLoginTime));
-			if (now.equals(last)) {
-				nextDay = false;
-			} else {
-				nextDay = true;
-			}
-		} catch (ParseException e) {
-			nextDay = false;
-		}
-		
-		return nextDay;
-	}
-	
-	private boolean isNextWeek(String lastLoginTime) {
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date());
-		int now = c.get(Calendar.WEEK_OF_YEAR);
-		logger.debug("now is:" + now);
-		
-		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT);
-		try {
-			c.setTime(df.parse(lastLoginTime));
-		} catch (ParseException e) {
-			return false;
-		}
-		int last = c.get(Calendar.WEEK_OF_YEAR);
-		
-		if (now != last)
-			return true;
-		
-		return false;
 	}
 }

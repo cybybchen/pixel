@@ -12,11 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.service.redis.UserRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UserService {
@@ -26,6 +28,8 @@ public class UserService {
     private UserRedisService userRedisService;
 	@Resource
     private UserMapper userMapper;
+	@Resource
+	private ActivityService activityService;
 	
 	public UserBean getUser(long userId) {
     	logger.debug("The user id is: " + userId);
@@ -47,6 +51,10 @@ public class UserService {
         if(user != null && userRedisService.refreshUserDailyData(user)){
         	userRedisService.updateUser(user);
         }
+        
+        if (user != null)
+        		refreshIsNextDay(user);
+        
         return user;
     }
 	
@@ -247,5 +255,22 @@ public class UserService {
 			return newUserName;
 		
 		return "";
+	}
+	
+	private void refreshIsNextDay(UserBean user) {
+		if (DateUtil.isNextDay(user.getLastLoginTime())) {
+			user.setLoginDays(user.getLoginDays() + 1);
+			
+			/**
+			 * 累计登录的活动
+			 */
+			activityService.loginActivity(user);
+			
+			user.setSignCount(0);
+			
+			user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
+			
+			updateUser(user);
+		}
 	}
 }
