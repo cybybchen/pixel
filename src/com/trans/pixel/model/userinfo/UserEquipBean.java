@@ -66,6 +66,14 @@ public class UserEquipBean {
 		return builder.build();
 	}
 	
+	public static UserEquipBean initUserEquip(int equipId, int equipCount) {
+		UserEquipBean userEquip = new UserEquipBean();
+		userEquip.setEquipId(equipId);
+		userEquip.setEquipCount(equipCount);
+		
+		return userEquip;
+	}
+	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String EQUIP_ID = "equip_id";

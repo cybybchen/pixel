@@ -1,7 +1,11 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -112,48 +116,73 @@ public class EquipService {
 		return fenjie.randomReward(fenjieCount, equip.getIsequipment());
 	}
 	
-	public boolean equipLevelUp(long userId, EquipmentBean equip, List<UserEquipBean> costUserEquipList) {
-		UserEquipBean userEquip1 = null;
-		UserEquipBean userEquip2 = null;
-		UserEquipBean userEquip3 = null;
-		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(userId);
-		for (UserEquipBean userEquip : userEquipList) {
-			if (userEquip.getEquipId() == equip.getCover1()) {
-				userEquip1 = userEquip;
-			}
-			if (userEquip.getEquipId() == equip.getCover2()) {
-				userEquip2 = userEquip;
-			}
-			if (userEquip.getEquipId() == equip.getCover3()) {
-				userEquip3 = userEquip;
+	private List<UserEquipBean> getCostEquipList(EquipmentBean equip) {
+		List<UserEquipBean> costEquipList = new ArrayList<UserEquipBean>();
+		UserEquipBean costEquip = UserEquipBean.initUserEquip(equip.getCover1(), equip.getCount1());
+		costEquipList = mergeEquipList(costEquipList, costEquip);
+		
+		costEquip = UserEquipBean.initUserEquip(equip.getCover2(), equip.getCount2());
+		costEquipList = mergeEquipList(costEquipList, costEquip);
+		
+		costEquip = UserEquipBean.initUserEquip(equip.getCover3(), equip.getCount3());
+		costEquipList = mergeEquipList(costEquipList, costEquip);
+		
+		return costEquipList;
+		
+	}
+	
+	private List<UserEquipBean> mergeEquipList(List<UserEquipBean> costEquipList, UserEquipBean costEquip) {
+		if (costEquip.getEquipId() == 0 || costEquip.getEquipCount() == 0)
+			return costEquipList;
+		
+		for (UserEquipBean userEquip : costEquipList) {
+			if (costEquip.getEquipId() == userEquip.getEquipId()) {
+				userEquip.setEquipCount(userEquip.getEquipCount() + costEquip.getEquipCount());
+				return costEquipList;
 			}
 		}
 		
+		costEquipList.add(costEquip);
+		return costEquipList;
+	}
+	
+	private Map<Integer, Integer> getCostEquipMap(List<UserEquipBean> costEquipList) {
+		Map<Integer, Integer> costEquipMap = new HashMap<Integer, Integer>();
+		for (UserEquipBean costEquip : costEquipList) {
+			costEquipMap.put(costEquip.getEquipId(), -costEquip.getEquipCount());
+		}
 		
-		boolean ret = false;
-		if ((userEquip1 != null || equip.getCover1() == 0) 
-				&& (userEquip2 != null || equip.getCover2() == 0) 
-				&& (userEquip3 != null || equip.getCover3() == 0)) {
-			ret = (userEquip1 == null || userEquip1.getEquipCount() >= equip.getCount1()) 
-					&& (userEquip2 == null || userEquip2.getEquipCount() >= equip.getCount2()) 
-					&& (userEquip3 == null || userEquip3.getEquipCount() >= equip.getCount3());
+		return costEquipMap;
+	}
+	
+	public boolean equipLevelUp(long userId, EquipmentBean equip, List<UserEquipBean> costUserEquipList) {
+		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(userId);
+		costUserEquipList = getCostEquipList(equip);
+		
+		Map<Integer, Integer> updateEquipMap = getCostEquipMap(costUserEquipList);
+		
+		for (UserEquipBean userEquip : userEquipList) {
+			int equipId = userEquip.getEquipId();
+			if (updateEquipMap.get(equipId) != null && updateEquipMap.get(equipId) != 0)
+				updateEquipMap.put(equipId, updateEquipMap.get(equipId) + userEquip.getEquipCount());
+		}
+		
+		boolean ret = true;
+		Iterator<Entry<Integer, Integer>> it = updateEquipMap.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<Integer, Integer> entry = it.next();
+			if (entry.getValue() < 0) {
+				ret = false;
+				break;
+			}
 		}
 		
 		if (ret) {
-			if (userEquip1 != null) {
-				userEquip1.setEquipCount(userEquip1.getEquipCount() - equip.getCount1());
-				userEquipService.updateUserEquip(userEquip1);
-				costUserEquipList.add(userEquip1);
-			}
-			if (userEquip2 != null) {
-				userEquip2.setEquipCount(userEquip2.getEquipCount() - equip.getCount2());
-				userEquipService.updateUserEquip(userEquip2);
-				costUserEquipList.add(userEquip2);
-			}
-			if (userEquip3 != null) {
-				userEquip3.setEquipCount(userEquip3.getEquipCount() - equip.getCount3());
-				userEquipService.updateUserEquip(userEquip3);
-				costUserEquipList.add(userEquip3);
+			it = updateEquipMap.entrySet().iterator();
+			while (it.hasNext()) {
+				Entry<Integer, Integer> entry = it.next();
+				UserEquipBean userEquip = UserEquipBean.initUserEquip(entry.getKey(), entry.getValue());
+				userEquipService.updateUserEquip(userEquip);
 			}
 		}
 		return ret;
