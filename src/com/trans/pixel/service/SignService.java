@@ -47,7 +47,7 @@ public class SignService {
 	
 	private Sign getSign(UserBean user) {
 		int existDays = DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(user.getRegisterTime()));
-		Sign sign = signRedisService.getSign(3 * (existDays + 1) + user.getSignCount());
+		Sign sign = signRedisService.getSign(3 * existDays + user.getSignCount());
 		if (sign == null) {
 			int weekDay = DateUtil.getWeekDay();
 			sign = signRedisService.getSign2(3 * (weekDay - 1) + user.getSignCount());
