@@ -35,7 +35,6 @@ import com.trans.pixel.protoc.Commands.LadderEnemy;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LadderRedisService;
-import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -44,7 +43,7 @@ public class LadderService {
 	@Resource
 	private LadderRedisService ladderRedisService;
 	@Resource
-	private ServerRedisService serverRedisService;
+	private ServerService serverService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -248,7 +247,7 @@ public class LadderService {
 	public void sendLadderDailyReward() {
 		List<LadderDailyBean> ladderDailyList = getLadderDailyList();
 		Collections.sort(ladderDailyList, comparator);
-		List<Integer> serverIds = serverRedisService.getServerIdList();
+		List<Integer> serverIds = serverService.getServerIdList();
 		for (Integer serverId : serverIds) {
 			int index = 0;
 			while (index < ladderDailyList.size()) {

@@ -23,7 +23,6 @@ import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
-import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 
 @Service
@@ -42,7 +41,7 @@ public class UnionService extends FightService{
 	@Resource
 	private UserService userService;
 	@Resource
-	private ServerRedisService serverRedisService;
+	private ServerService serverService;
 	@Resource
 	private ActivityService activityService;
 	
@@ -442,7 +441,7 @@ public class UnionService extends FightService{
 	}
 
 	public void unionFightTask(){
-		List<Integer> servers = serverRedisService.getServerIdList();
+		List<Integer> servers = serverService.getServerIdList();
 		for(Integer serverId : servers){
 			Map<String, String> map = redis.getFightKeys(serverId);
 			for(Entry<String, String> entry : map.entrySet()){

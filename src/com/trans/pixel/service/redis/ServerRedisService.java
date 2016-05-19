@@ -54,6 +54,12 @@ public class ServerRedisService extends RedisService{
 		});
 	}
 	
+	public void setServerIdList(final List<Integer> serverIds) {
+		String key = RedisKey.PREFIX + RedisKey.SERVER_KEY;
+		for (int serverId : serverIds)
+			this.sadd(key, "" + serverId);
+	}
+	
 	public int canRefreshAreaBoss(int serverId){
 		String data = get(RedisKey.SERVERDATA+serverId);
 		ServerData.Builder serverdata = ServerData.newBuilder();

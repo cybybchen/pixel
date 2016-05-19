@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.service.ActivityService;
-import com.trans.pixel.service.redis.ServerRedisService;
+import com.trans.pixel.service.ServerService;
 
 @Service
 public class ActivityCrontabService {
@@ -16,11 +16,11 @@ public class ActivityCrontabService {
 	@Resource
 	private ActivityService activityService;
 	@Resource
-	private ServerRedisService serverRedisService;
+	private ServerService serverService;
 	@Scheduled(cron = "0 0 0 * * ? ")
 //	@Scheduled(cron = "0 0/5 * * * ? ")
 	public void sendActivityReward() {
-		List<Integer> serverList = serverRedisService.getServerIdList();
+		List<Integer> serverList = serverService.getServerIdList();
 		for (int serverId : serverList) {
 			activityService.sendKaifu2ActivitiesReward(serverId);
 		}
