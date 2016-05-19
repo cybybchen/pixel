@@ -155,9 +155,9 @@ public class EquipService {
 		return costEquipMap;
 	}
 	
-	public boolean equipLevelUp(long userId, EquipmentBean equip, List<UserEquipBean> costUserEquipList) {
+	public boolean equipLevelUp(long userId, EquipmentBean equip, List<UserEquipBean> returnUserEquipList) {
 		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(userId);
-		costUserEquipList = getCostEquipList(equip);
+		List<UserEquipBean> costUserEquipList = getCostEquipList(equip);
 		
 		Map<Integer, Integer> updateEquipMap = getCostEquipMap(costUserEquipList);
 		
@@ -178,13 +178,13 @@ public class EquipService {
 		}
 		
 		if (ret) {
-			costUserEquipList = new ArrayList<UserEquipBean>();
 			it = updateEquipMap.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<Integer, Integer> entry = it.next();
 				UserEquipBean userEquip = UserEquipBean.initUserEquip(entry.getKey(), entry.getValue());
+				userEquip.setUserId(userId);
 				userEquipService.updateUserEquip(userEquip);
-				costUserEquipList.add(userEquip);
+				returnUserEquipList.add(userEquip);
 			}
 		}
 		return ret;
