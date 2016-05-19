@@ -100,7 +100,7 @@ public class FriendCommandService extends BaseCommandService {
 			responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.FRIEND_ADDED_FAILED));
 //		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
-		pushCommandService.pushUserMailListCommand(responseBuilder, user);
+		pushCommandService.pushUserMailListCommand(responseBuilder, user, MailConst.TYPE_ADDFRIEND_MAIL);
 	}
 	
 	public void getUserFriendList(RequestGetUserFriendListCommand cmd, Builder responseBuilder, UserBean user) {

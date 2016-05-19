@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
@@ -268,5 +269,14 @@ public class BaseCommandService {
 		}
 		
 		return builderList;
+	}
+	
+	protected List<HeroInfo> buildHeroInfo(List<UserPokedeBean> userPokedeList) {
+		List<HeroInfo> heroInfoList = new ArrayList<HeroInfo>();
+		for (UserPokedeBean userPokede : userPokedeList) {
+			heroInfoList.add(userPokede.buildUserPokede());
+		}
+		
+		return heroInfoList;
 	}
 }
