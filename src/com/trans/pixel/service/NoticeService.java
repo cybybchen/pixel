@@ -23,4 +23,8 @@ public class NoticeService {
 	public List<Notice> getNoticeList(long userId) {
 		return noticeRedisService.selectUserNoticeList(userId);
 	}
+	
+	public void deleteNotice(long userId, int type) {
+		noticeRedisService.deleteNotice(userId, type);
+	}
 }

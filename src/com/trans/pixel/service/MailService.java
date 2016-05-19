@@ -28,13 +28,18 @@ public class MailService {
 	
 	public void addMail(MailBean mail) {
 		mailRedisService.addMail(mail);
-		if (mail.getType() == MailConst.TYPE_ADDFRIEND_MAIL)
-			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_FRIEND);
+		if (mail.getType() == MailConst.TYPE_SYSTEM_MAIL)
+			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_SYSTEM_MAIL);
 		else
-			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_MAIL);
+			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_FRIEND);
 	}
 	
 	public List<MailBean> getMailList(long userId, int type) {
+		if (type == MailConst.TYPE_SYSTEM_MAIL)
+			noticeService.deleteNotice(userId, NoticeConst.TYPE_SYSTEM_MAIL);
+		else
+			noticeService.deleteNotice(userId, NoticeConst.TYPE_FRIEND);
+		
 		return mailRedisService.getMailListByUserIdAndType(userId, type);
 	}
 	

@@ -30,9 +30,14 @@ public class NoticeRedisService extends RedisService {
 			if (parseJson(entry.getValue(), builder))
 				userNoticeList.add(builder.build());
 		}
-		delete(key);
 		
 		return userNoticeList;
+	}
+	
+	public void deleteNotice(final long userId, final int type) {
+		String key = buildRedisKey(userId);
+		this.hdelete(key, "" + type);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	private String buildRedisKey(long userId) {

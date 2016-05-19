@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -26,6 +27,7 @@ import com.trans.pixel.protoc.Commands.ResponseRichangListCommand;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.NoticeService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserActivityService;
 
@@ -40,6 +42,8 @@ public class ActivityCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private UserActivityService userActivityService;
+	@Resource
+	private NoticeService noticeService;
 	
 	public void richangReward(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int id = cmd.getId();
@@ -151,5 +155,7 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		
 		responseBuilder.setKaifuListCommand(builder.build());
+		
+		noticeService.deleteNotice(user.getId(), NoticeConst.TYPE_ACTIVITY);
 	}
 }

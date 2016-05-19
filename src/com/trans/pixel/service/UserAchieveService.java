@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.mapper.UserAchieveMapper;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.service.redis.UserAchieveRedisService;
@@ -16,6 +17,8 @@ public class UserAchieveService {
 	private UserAchieveRedisService userAchieveRedisService;
 	@Resource
 	private UserAchieveMapper userAchieveMapper;
+	@Resource
+	private NoticeService noticeService;
 	
 	public UserAchieveBean selectUserAchieve(long userId, int type) {
 		UserAchieveBean userAchieve = userAchieveRedisService.selectUserAchieve(userId, type);
@@ -51,6 +54,7 @@ public class UserAchieveService {
 	}
 	
 	public List<UserAchieveBean> selectUserAchieveList(long userId) {
+		noticeService.deleteNotice(userId, NoticeConst.TYPE_ACHIEVE);
 		List<UserAchieveBean> userAchieveList = userAchieveRedisService.selectUserAchieveList(userId);
 		if (userAchieveList.size() == 0) {
 			userAchieveList = userAchieveMapper.selectUserAchieveList(userId);

@@ -41,7 +41,10 @@ public class MailCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	
 	public void handleGetUserMailListCommand(RequestGetUserMailListCommand cmd, Builder responseBuilder, UserBean user) {
-		pushCommandService.pushUserMailListCommand(responseBuilder, user);
+		int type = 0;
+		if (cmd.hasType())
+			type = cmd.getType();
+		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);
 	}
 	
 	public void handleReadMailCommand(RequestReadMailCommand cmd, Builder responseBuilder, UserBean user) {	
@@ -60,7 +63,7 @@ public class MailCommandService extends BaseCommandService {
 		rewardService.doRewards(user, rewardList);
 		
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
-		pushCommandService.pushUserMailListCommand(responseBuilder, user);
+		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);
 	}
 	
 	public void sendMail(RequestSendMailCommand cmd, Builder responseBuilder, UserBean user) {
@@ -110,6 +113,6 @@ public class MailCommandService extends BaseCommandService {
 		}
 		
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_DELETE_SUCCESS));
-		pushCommandService.pushUserMailListCommand(responseBuilder, user);
+		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);
 	}
 }

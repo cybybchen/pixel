@@ -1224,6 +1224,7 @@ message ResponseGetLadderUserInfoCommand {
 }
 
 message RequestGetUserMailListCommand {
+	optional int32 type = 1;
 }
 
 message ResponseGetUserMailListCommand {

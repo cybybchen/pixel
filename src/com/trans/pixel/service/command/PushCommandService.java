@@ -165,13 +165,19 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setUserInfoCommand(builder.build());
 	}
 	
-	public void pushUserMailListCommand(Builder responseBuilder, UserBean user) {
+	public void pushUserMailListCommand(Builder responseBuilder, UserBean user, int type) {
 		ResponseGetUserMailListCommand.Builder builder = ResponseGetUserMailListCommand.newBuilder();
 		List<MailList> mailBuilderList = new ArrayList<MailList>();
-		for (Integer type : MailConst.MAIL_TYPES) {
+		if (type == MailConst.TYPE_SYSTEM_MAIL) {
 			List<MailBean> mailList = mailService.getMailList(user.getId(), type);
-			mailBuilderList.add(super.buildMailList(type, mailList));
+			mailBuilderList.add(buildMailList(type, mailList));
+		} else {
+			for (Integer friendMailType : MailConst.FRIEND_MAIL_TYPES) {
+				List<MailBean> mailList = mailService.getMailList(user.getId(), friendMailType);
+				mailBuilderList.add(buildMailList(type, mailList));
+			}
 		}
+		
 		builder.addAllMailList(mailBuilderList);
 		responseBuilder.setGetUserMailListCommand(builder.build());
 	}
