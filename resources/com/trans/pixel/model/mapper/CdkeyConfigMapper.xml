@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.CdkeyConfigMapper">
+
+	<select id="selectById" resultType="string">
+	    SELECT cdkey from cdkey_config where id=#{id}
+	</select>
+	
+	<select id="selectAll" resultType="string">
+	    SELECT cdkey from cdkey_config
+	</select>
+	
+	<update id="update">
+	    INSERT INTO cdkey_config(id, cdkey)
+	    VALUES(#{id}, #{cdkey})
+	    ON 
+	    duplicate key update
+	    cdkey=#{cdkey}
+	</update>
+
+	<insert id="delete" parameterType="int">
+	    DELETE
+		from cdkey_config where id=#{id}
+	</insert>
+	
+</mapper>

@@ -50,7 +50,7 @@ public class UserRedisService extends RedisService{
 		user.setLadderModeLeftTimes(5);
 		user.setPurchaseCoinLeft(1);
 		user.setPurchaseCoinTime(0);
-		user.setPvpMineLeftTime(5);
+		user.setPvpMineLeftTime(3);
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
 			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());

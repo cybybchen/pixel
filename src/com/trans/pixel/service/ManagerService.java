@@ -93,8 +93,6 @@ public class ManagerService extends RedisService{
 			return result;
 		}
 		
-		
-		
 		if(req.containsKey("use-Cdkey-master")){
 			String key = req.getString("use-Cdkey-master");
 			String rewardedstr = req.getString("rewarded");

@@ -8,23 +8,27 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.mapper.CdkeyConfigMapper;
 import com.trans.pixel.model.mapper.CdkeyMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class CdkeyService {
 	@Resource
 	private CdkeyRedisService redis;
 	@Resource
-	private CdkeyMapper mapper;
+	private CdkeyMapper cdkeyMapper;
+	@Resource
+	private CdkeyConfigMapper configMapper;
 	
 	public List<String> getCdkeyRewarded(UserBean user){
 		String value =  redis.getCdkeyRewarded(user);
 		List<String> rewarded =  new ArrayList<String>();
 		if(value == null){
-			value = mapper.selectById(user.getId());
+			value = cdkeyMapper.selectById(user.getId());
 		}
 		if(value != null)
 		for(String key : value.split(",")){
@@ -36,7 +40,7 @@ public class CdkeyService {
 	public String getCdkeyRewardedStr(UserBean user){
 		String value =  redis.getCdkeyRewarded(user);
 		if(value == null)
-			value = mapper.selectById(user.getId());
+			value = cdkeyMapper.selectById(user.getId());
 		if(value == null)
 			value = "";
 		return value;
@@ -44,21 +48,21 @@ public class CdkeyService {
 	
 	public void saveCdkeyRewarded(UserBean user, List<String> rewarded){
 		String value = String.join(",", rewarded);
-		mapper.update(user.getId(), value);
+		cdkeyMapper.update(user.getId(), value);
 		redis.saveCdkeyRewarded(user, value);
 	}
 	
-	/*on master server*/
 	public void updateToDB(long userId) {
 		String value = redis.getCdkeyRewarded(userId);
 		if(value != null)
-			mapper.update(userId, value);
+			cdkeyMapper.update(userId, value);
 	}
 	
 	public String popDBKey(){
 		return redis.popDBKey();
 	}
 	
+	/*on master server*/
 	public String getCdkey(String key){
 		return redis.getCdkey(key);
 	}
@@ -77,6 +81,7 @@ public class CdkeyService {
 	
 	public void delCdkeyConfig(String id){
 		redis.delCdkeyConfig(id);
+		configMapper.delete(Integer.parseInt(id));
 	}
 	
 	List<String> getAvaiCdkeys(String id){
@@ -84,10 +89,17 @@ public class CdkeyService {
 	}
 	
 	List<String> addCdkeyConfig(Cdkey.Builder cdkey, int length){
-		return redis.addCdkeyConfig(cdkey, length);
+		List<String> keys = redis.addCdkeyConfig(cdkey, length);
+		configMapper.update(cdkey.getId(), RedisService.formatJson(cdkey.build()));
+		return keys;
 	}
 	
 	Map<Integer, String> getCdkeyConfigs(){
-		return redis.getCdkeyConfigs();
+		Map<String, String> map = redis.getCdkeyConfigs();
+		if(map.isEmpty()){
+			List<String> cdkeys = configMapper.selectAll();
+			return redis.getCdkeyConfigs(cdkeys);
+		}else
+			return redis.getCdkeyConfigs(map.values());
 	}
 }

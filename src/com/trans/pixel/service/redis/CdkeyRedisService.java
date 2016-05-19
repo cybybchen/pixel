@@ -1,7 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,8 +13,6 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Cdkey;
-import com.trans.pixel.protoc.Commands.CdkeyList;
-import com.trans.pixel.protoc.Commands.RewardInfo;
 
 @Repository
 public class CdkeyRedisService extends RedisService{
@@ -81,6 +79,7 @@ public class CdkeyRedisService extends RedisService{
 			parseJson(value, builder);
 			builder.setCount(builder.getCount()+cdkey.getCount());
 			hput(RedisKey.CDKEY_CONFIG, type, formatJson(builder.build()));
+			cdkey.mergeFrom(builder.build());
 		}else
 			hput(RedisKey.CDKEY_CONFIG, type, formatJson(cdkey.build()));
 		String str = cdkey.toString()+"" + System.currentTimeMillis();
@@ -105,23 +104,22 @@ public class CdkeyRedisService extends RedisService{
 		}
 	}
 
-	public Map<Integer, String> getCdkeyConfigs(){
+	public Map<String, String> getCdkeyConfigs(){
+		return hget(RedisKey.CDKEY_CONFIG);
+	}
+
+	public Map<Integer, String> getCdkeyConfigs(Collection<String> cdkeys){
 		Map<Integer, String> cdkeymap = new TreeMap<Integer, String>();
-		Map<String, String> map = hget(RedisKey.CDKEY_CONFIG);
-		if(map.isEmpty()){
-			getCdkeyConfig("1001");
-			map = hget(RedisKey.CDKEY_CONFIG);
-		}
 		Map<String, String> exchange = hget(RedisKey.CDKEY_EXCHANGE);
-		for(Entry<String, String> entry : map.entrySet()){
+		for(String value : cdkeys){
 			Cdkey.Builder builder = Cdkey.newBuilder();
-			parseJson(entry.getValue(), builder);
+			parseJson(value, builder);
 			String count = exchange.get(builder.getId()+"");
 			if(count != null)
 				builder.setCurrentCount(Integer.parseInt(count));
 			else
 				builder.setCurrentCount(0);
-			cdkeymap.put(Integer.parseInt(entry.getKey()), formatJson(builder.build()));
+			cdkeymap.put(builder.getId(), formatJson(builder.build()));
 		}
 		return cdkeymap;
 //		Collections.sort(list, new Comparator<Cdkey>() {
@@ -139,38 +137,38 @@ public class CdkeyRedisService extends RedisService{
 		String value = hget(RedisKey.CDKEY_CONFIG, id);
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		CdkeyList.Builder listbuilder = CdkeyList.newBuilder();
-		Map<String, String> map = new HashMap<String, String>();
-		String xml = ReadConfig("lol_cdkey.xml");
-		parseXml(xml, listbuilder);
-		for(Cdkey.Builder cdkey : listbuilder.getCdkeyBuilderList()){
-			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(cdkey.getItemid1());
-			reward.setCount(cdkey.getCount1());
-			cdkey.addReward(reward);
-			if(cdkey.getCount2() > 0){
-				reward.setItemid(cdkey.getItemid2());
-				reward.setCount(cdkey.getCount2());
-				cdkey.addReward(reward);
-			}
-			if(cdkey.getCount3() > 0){
-				reward.setItemid(cdkey.getItemid3());
-				reward.setCount(cdkey.getCount3());
-				cdkey.addReward(reward);
-			}
-			cdkey.clearItemid1();
-			cdkey.clearCount1();
-			cdkey.clearItemid2();
-			cdkey.clearCount2();
-			cdkey.clearItemid3();
-			cdkey.clearCount3();
-			map.put(cdkey.getId()+"", formatJson(cdkey.build()));
-		}
-		value = map.get(id);
-		if(value != null && parseJson(value, builder)){
-			hputAll(RedisKey.CDKEY_CONFIG, map);
-			return builder.build();
-		}else
+//		CdkeyList.Builder listbuilder = CdkeyList.newBuilder();
+//		Map<String, String> map = new HashMap<String, String>();
+//		String xml = ReadConfig("lol_cdkey.xml");
+//		parseXml(xml, listbuilder);
+//		for(Cdkey.Builder cdkey : listbuilder.getCdkeyBuilderList()){
+//			RewardInfo.Builder reward = RewardInfo.newBuilder();
+//			reward.setItemid(cdkey.getItemid1());
+//			reward.setCount(cdkey.getCount1());
+//			cdkey.addReward(reward);
+//			if(cdkey.getCount2() > 0){
+//				reward.setItemid(cdkey.getItemid2());
+//				reward.setCount(cdkey.getCount2());
+//				cdkey.addReward(reward);
+//			}
+//			if(cdkey.getCount3() > 0){
+//				reward.setItemid(cdkey.getItemid3());
+//				reward.setCount(cdkey.getCount3());
+//				cdkey.addReward(reward);
+//			}
+//			cdkey.clearItemid1();
+//			cdkey.clearCount1();
+//			cdkey.clearItemid2();
+//			cdkey.clearCount2();
+//			cdkey.clearItemid3();
+//			cdkey.clearCount3();
+//			map.put(cdkey.getId()+"", formatJson(cdkey.build()));
+//		}
+//		value = map.get(id);
+//		if(value != null && parseJson(value, builder)){
+//			hputAll(RedisKey.CDKEY_CONFIG, map);
+//			return builder.build();
+//		}else
 			return null;
 	}
 }
