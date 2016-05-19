@@ -1,6 +1,11 @@
 package com.trans.pixel.service.command;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 import javax.annotation.Resource;
 
@@ -16,6 +21,8 @@ import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.CdkeyService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.HttpUtil;
 
 @Service
 public class CdkeyCommandService extends BaseCommandService {
@@ -28,33 +35,42 @@ public class CdkeyCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	
 	public void useCdkey(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user) {
+		Cdkey.Builder cdkey = Cdkey.newBuilder();
+		String rewardedstr = service.getCdkeyRewardedStr(user);
 		String key = cmd.getKey().toLowerCase();
-		String value = service.getCdkey(key);
-		if(value == null){
-			value = service.getCdkeyOld(key);
-			if(value == null)
+		Properties props = new Properties();
+		try {
+			InputStream in = getClass().getResourceAsStream("/config/advancer.properties");
+			props.load(in);
+			String masterserver = props.getProperty("masterserver");
+			Map<String, String> parameters = new HashMap<String, String>();
+			parameters.put("use-Cdkey-master", key);
+			parameters.put("rewarded", rewardedstr);
+			String message = HttpUtil.post(masterserver, parameters);
+			log.info(masterserver+" : "+message);
+			if(!RedisService.parseJson(message, cdkey)){
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_INVALID));
-			else
-				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_USED));
+				return;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_INVALID));
+			return;
+		}
+		if(cdkey.getUsed() == 1){
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_USED));
+		}else if(cdkey.getUsed() == 2){
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_REWARDED));
 		}else{
-			Cdkey cdkey = service.getCdkeyConfig(value);
-			if(cdkey == null){
-				log.error("unknown cdkey type:"+value);
-				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_INVALID));
-				return;
-			}
-			List<String> rewarded = service.getCdkeyRewarded(user);
-			if(rewarded.contains(cdkey.getId()+"")){
-				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_REWARDED));
-				return;
-			}
+			List<String> rewarded = new ArrayList<String>();
+			for(String str : rewardedstr.split(","))
+				rewarded.add(str);
 			rewarded.add(cdkey.getId()+"");
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			rewards.setId(cdkey.getId());
 			rewards.setName(cdkey.getName());
 			rewards.addAllLoot(cdkey.getRewardList());
 			rewardService.doRewards(user, rewards.build());
-			service.delCdkey(key, value);
 			service.saveCdkeyRewarded(user, rewarded);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.CDKEY_SUCCESS));

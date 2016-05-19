@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -76,7 +77,7 @@ public class ManagerService extends RedisService{
 	@Resource
 	private AreaFightService areaFightService;
 	@Resource
-	private CdkeyRedisService cdkeyRedisService;
+	private CdkeyService cdkeyService;
 	@Resource
 	private GmAccountService gmAccountService;
 	
@@ -93,9 +94,42 @@ public class ManagerService extends RedisService{
 			return result;
 		}
 		
-		if(req.containsKey("del-Cdkey-master")){
+		
+		
+		if(req.containsKey("use-Cdkey-master")){
+			String key = req.getString("use-Cdkey-master");
+			String rewardedstr = req.getString("rewarded");
+			List<String> rewarded = new ArrayList<String>();
+			for (String str : rewardedstr.split(","))
+				rewarded.add(str);
+			String value = cdkeyService.getCdkey(key);
+			boolean isused = false;
+			if (value == null) {
+				value = cdkeyService.getCdkeyOld(key);
+				if (value == null) {
+					result.put("error", "cdkey invalid.");
+					return result;
+				} else
+					isused = true;
+			}
+			Cdkey cdkey = cdkeyService.getCdkeyConfig(value);
+			if (cdkey == null) {
+				result.put("error", "cdkey invalid.");
+				return result;
+			}
+			Cdkey.Builder cdkeybuilder = Cdkey.newBuilder(cdkey);
+			if(isused)// cdkey已使用
+				cdkeybuilder.setUsed(1);
+			if (rewarded.contains(cdkeybuilder.getId() + ""))//已领过同类礼包
+				cdkeybuilder.setUsed(2);
+			else 
+				cdkeyService.delCdkey(key, value);
+			
+			result = JSONObject.fromObject(RedisService.formatJson(cdkeybuilder.build()));
+			return result;
+		}else if(req.containsKey("del-Cdkey-master")){
 			String key = req.getString("del-Cdkey-master");
-			cdkeyRedisService.delCdkeyConfig(key);
+			cdkeyService.delCdkeyConfig(key);
 			result.put("success", "cdkey已删除");
 			req.put("Cdkey-master", 1);
 		}else if(req.containsKey("add-Cdkey-master")){
@@ -106,9 +140,9 @@ public class ManagerService extends RedisService{
 			builder.clearLength();
 			List<String> cdkeys = null;
 			if(builder.getCount() == -1)
-				cdkeys = cdkeyRedisService.getAvaiCdkeys(builder.getId()+"");
+				cdkeys = cdkeyService.getAvaiCdkeys(builder.getId()+"");
 			else
-				cdkeys = cdkeyRedisService.addCdkeyConfig(builder, length);
+				cdkeys = cdkeyService.addCdkeyConfig(builder, length);
 			value = hget(RedisKey.CDKEY_CONFIG, builder.getId()+"");
 			if(value != null){
 				builder.clearReward();
@@ -125,7 +159,7 @@ public class ManagerService extends RedisService{
 			return result;
 		}
 		if(req.containsKey("Cdkey-master")){
-			Map<Integer, String> map = cdkeyRedisService.getCdkeyConfigs();
+			Map<Integer, String> map = cdkeyService.getCdkeyConfigs();
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("Cdkey", object);

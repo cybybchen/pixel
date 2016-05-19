@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -31,6 +32,15 @@ public class CdkeyService {
 		}
 		return rewarded;
 	}
+
+	public String getCdkeyRewardedStr(UserBean user){
+		String value =  redis.getCdkeyRewarded(user);
+		if(value == null)
+			value = mapper.selectById(user.getId());
+		if(value == null)
+			value = "";
+		return value;
+	}
 	
 	public void saveCdkeyRewarded(UserBean user, List<String> rewarded){
 		String value = String.join(",", rewarded);
@@ -38,6 +48,7 @@ public class CdkeyService {
 		redis.saveCdkeyRewarded(user, value);
 	}
 	
+	/*on master server*/
 	public String getCdkey(String key){
 		return redis.getCdkey(key);
 	}
@@ -52,5 +63,21 @@ public class CdkeyService {
 	
 	public Cdkey getCdkeyConfig(String id){
 		return redis.getCdkeyConfig(id);
+	}
+	
+	public void delCdkeyConfig(String id){
+		redis.delCdkeyConfig(id);
+	}
+	
+	List<String> getAvaiCdkeys(String id){
+		return redis.getAvaiCdkeys(id);
+	}
+	
+	List<String> addCdkeyConfig(Cdkey.Builder cdkey, int length){
+		return redis.addCdkeyConfig(cdkey, length);
+	}
+	
+	Map<Integer, String> getCdkeyConfigs(){
+		return redis.getCdkeyConfigs();
 	}
 }
