@@ -272,7 +272,7 @@ public class PvpMapService {
 				rewardinfo.setItemid(reward.getItemid1());
 				rewardinfo.setCount(reward.getCount1());
 				rewards.addLoot(rewardinfo);
-			}else if(weight < reward.getWeight2()){
+			}else if(weight < reward.getWeight1()+reward.getWeight2()){
 				rewardinfo.setItemid(reward.getItemid2());
 				rewardinfo.setCount(reward.getCount2());
 				rewards.addLoot(rewardinfo);
