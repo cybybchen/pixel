@@ -1008,7 +1008,7 @@ message UserShouchong {
 }
 
 message Notice {
-	required int32 type = 1;
+	required int32 type = 1;//1:system mail 2:friend 3:achieve 4:activity
 }
 
 message ErrorCommand{
@@ -1224,7 +1224,7 @@ message ResponseGetLadderUserInfoCommand {
 }
 
 message RequestGetUserMailListCommand {
-	optional int32 type = 1;
+	optional int32 type = 1; //0:system mail 1:friend
 }
 
 message ResponseGetUserMailListCommand {
