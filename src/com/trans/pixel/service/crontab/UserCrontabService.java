@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.RechargeBean;
+import com.trans.pixel.service.CdkeyService;
 import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.UserAchieveService;
 import com.trans.pixel.service.UserEquipService;
@@ -39,6 +40,8 @@ public class UserCrontabService {
 	private RechargeRedisService rechargeRedisService;
 	@Resource
 	private RechargeService rechargeService;
+	@Resource
+	private CdkeyService cdkeyService;
 	
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
@@ -91,6 +94,10 @@ public class UserCrontabService {
 			JSONObject json = JSONObject.fromObject(key);
 			RechargeBean recharge = (RechargeBean) JSONObject.toBean(json, RechargeBean.class);
 			rechargeService.updateToDB(recharge);
+		}
+		while((key=cdkeyService.popDBKey()) != null){
+			long userId = Long.parseLong(key);
+			cdkeyService.updateToDB(userId);
 		}
 	}
 }

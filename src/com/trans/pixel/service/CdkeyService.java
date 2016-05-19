@@ -49,6 +49,16 @@ public class CdkeyService {
 	}
 	
 	/*on master server*/
+	public void updateToDB(long userId) {
+		String value = redis.getCdkeyRewarded(userId);
+		if(value != null)
+			mapper.update(userId, value);
+	}
+	
+	public String popDBKey(){
+		return redis.popDBKey();
+	}
+	
 	public String getCdkey(String key){
 		return redis.getCdkey(key);
 	}

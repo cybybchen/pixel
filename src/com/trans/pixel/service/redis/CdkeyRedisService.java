@@ -19,12 +19,21 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 @Repository
 public class CdkeyRedisService extends RedisService{
 	
+	public String getCdkeyRewarded(long userId){
+		return hget(RedisKey.USERDATA+userId, "CdkeyRecord");
+	}
+	
 	public String getCdkeyRewarded(UserBean user){
-		return hget(RedisKey.USERDATA, "Cdkey");
+		return hget(RedisKey.USERDATA+user.getId(), "CdkeyRecord");
 	}
 	
 	public void saveCdkeyRewarded(UserBean user, String value){
-		hput(RedisKey.USERDATA+user.getId(), "Cdkey", value);
+		hput(RedisKey.USERDATA+user.getId(), "CdkeyRecord", value);
+		sadd(RedisKey.PUSH_MYSQL_KEY+"CdkeyRecord", user.getId()+"");
+	}
+	
+	public String popDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY+"CdkeyRecord");
 	}
 	
 	public String getCdkey(String key){
