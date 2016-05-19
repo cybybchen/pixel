@@ -178,11 +178,13 @@ public class EquipService {
 		}
 		
 		if (ret) {
+			costUserEquipList = new ArrayList<UserEquipBean>();
 			it = updateEquipMap.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<Integer, Integer> entry = it.next();
 				UserEquipBean userEquip = UserEquipBean.initUserEquip(entry.getKey(), entry.getValue());
 				userEquipService.updateUserEquip(userEquip);
+				costUserEquipList.add(userEquip);
 			}
 		}
 		return ret;
