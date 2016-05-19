@@ -922,7 +922,7 @@ public class RedisService {
 	/**
 	*/
 	public int weekday(){
-		return (int)(System.currentTimeMillis()/24/3600L/1000L)%7;
+		return (int)(System.currentTimeMillis()/24/3600L/1000L+3)%7+1;
 	}
 
 	public int nextInt(int value){
