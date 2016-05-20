@@ -106,7 +106,7 @@ public class RechargeService {
 		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
     }
 	
-	public void doRecharge(Map<String, String> params) {
+	public void doRecharge(Map<String, String> params, boolean isCheat) {
 		RechargeBean recharge = initRechargeBean(params);
 		rechargeRedisService.addRechargeRecord(recharge);
 		
@@ -126,7 +126,7 @@ public class RechargeService {
 		}
 
 		UserBean user = userService.getUser(recharge.getUserId());
-		recharge(user, rmb.getRmb(), jewel, false);
+		recharge(user, rmb.getRmb(), jewel, isCheat);
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.addAllLoot(rewardList);

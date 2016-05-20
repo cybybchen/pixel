@@ -1790,8 +1790,7 @@ message RequestSubmitIconCommand {
 }
 
 message RequestCheatRechargeCommand{
-	optional int32 rmb = 1;
-	optional int32 jewel = 2;
+	optional int32 itemid = 1;
 }
 
 message ResponseUserHeadCommand {
