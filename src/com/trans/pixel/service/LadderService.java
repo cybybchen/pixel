@@ -248,7 +248,7 @@ public class LadderService {
 		List<LadderDailyBean> ladderDailyList = getLadderDailyList();
 		Collections.sort(ladderDailyList, comparator);
 		int index = 0;
-		while (index < ladderDailyList.size()) {
+		while (index < ladderDailyList.size() - 1) {
 			LadderDailyBean startRanking = ladderDailyList.get(index);
 			LadderDailyBean endRanking = ladderDailyList.get(++index);
 			long startRank = startRanking.getRanking();
