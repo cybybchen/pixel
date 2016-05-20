@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -155,7 +154,5 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		
 		responseBuilder.setKaifuListCommand(builder.build());
-		
-		noticeService.deleteNotice(user.getId(), NoticeConst.TYPE_ACTIVITY);
 	}
 }

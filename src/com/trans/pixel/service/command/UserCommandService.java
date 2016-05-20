@@ -39,6 +39,8 @@ public class UserCommandService extends BaseCommandService {
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
+	private NoticeCommandService noticeCommandService;
+	@Resource
 	private ActivityService activityService;
 	@Resource
 	private UserHeroService userHeroService;
@@ -78,6 +80,8 @@ public class UserCommandService extends BaseCommandService {
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
+		
+		noticeCommandService.pushNotices(responseBuilder, user);
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {

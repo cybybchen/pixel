@@ -35,12 +35,29 @@ public class MailService {
 	}
 	
 	public List<MailBean> getMailList(long userId, int type) {
-		if (type == MailConst.TYPE_SYSTEM_MAIL)
-			noticeService.deleteNotice(userId, NoticeConst.TYPE_SYSTEM_MAIL);
-		else
-			noticeService.deleteNotice(userId, NoticeConst.TYPE_FRIEND);
-		
 		return mailRedisService.getMailListByUserIdAndType(userId, type);
+	}
+	
+	private void isDeleteNotice(long userId, int type) {
+		if (type == MailConst.TYPE_SYSTEM_MAIL) {
+			List<MailBean> mailList = getMailList(userId, type);
+			for (MailBean mail : mailList) {
+				if (!mail.isRead())
+					return;
+			}
+			
+			noticeService.deleteNotice(userId, NoticeConst.TYPE_SYSTEM_MAIL);
+		} else {
+			for (Integer friendMailType : MailConst.FRIEND_MAIL_TYPES) {
+				List<MailBean> mailList = getMailList(userId, friendMailType);
+				for (MailBean mail : mailList) {
+					if (!mail.isRead())
+						return;
+				}
+			}
+			
+			noticeService.deleteNotice(userId, NoticeConst.TYPE_FRIEND);
+		}
 	}
 	
 	public void delMail(long userId, int type, int id) {
@@ -60,6 +77,8 @@ public class MailService {
 			if (rewardList != null)
 				rewardList.addAll(mail.getRewardList());
 		}
+		
+		isDeleteNotice(user.getId(), type);
 		
 		return mailList;
 	}

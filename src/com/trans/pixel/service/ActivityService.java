@@ -112,6 +112,8 @@ public class ActivityService {
 		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
 		rewards.addAllLoot(getRewardList(activityorder));
 		
+		isDeleteNotice(userId);
+		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
@@ -480,7 +482,25 @@ public class ActivityService {
 		userActivityService.updateUserKaifu(user.getId(), uk.build());
 		rewards.addAllLoot(getRewardList(activityorder));
 		
+		isDeleteNotice(user.getId());
+		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
+	}
+	
+	private void isDeleteNotice(long userId) {
+		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(userId);
+		for (UserKaifu uk : ukList) {
+			if (isCompleteNewKaifu(uk, userId))
+				return;
+		}
+		
+		List<UserRichang> urList = userActivityService.selectUserRichangList(userId);
+		for (UserRichang ur : urList) {
+			if (isCompleteNewRichang(ur, userId))
+				return;
+		}
+		
+		noticeService.deleteNotice(userId, NoticeConst.TYPE_ACTIVITY);
 	}
 	
 	private boolean isCompleteNewKaifu(UserKaifu uk, long userId) {

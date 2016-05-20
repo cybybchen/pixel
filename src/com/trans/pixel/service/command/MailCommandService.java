@@ -53,12 +53,12 @@ public class MailCommandService extends BaseCommandService {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		List<MailBean> mailList = mailService.readMail(user, type, ids, rewardList);
 		if (mailList.size() == 0) {
-			ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		
-		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
+		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
 		
 		rewardService.doRewards(user, rewardList);
 		
