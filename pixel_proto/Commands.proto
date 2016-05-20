@@ -1824,6 +1824,10 @@ message ResponseNoticeCommand {
 	repeated Notice notice = 1;	
 }
 
+message RequestHeartBeatCommand {
+
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1949,6 +1953,7 @@ message RequestCommand {
 	optional RequestBindAccountCommand bindAccountCommand = 87;
 	optional RequestQueryRechargeCommand queryRechargeCommand = 88;
 	optional RequestShouchongRewardCommand shouchongRewardCommand = 89;
+	optional RequestHeartBeatCommand heartBeatCommand = 90;
 }
 // response command list transfer only use it
 message ResponseCommand {
