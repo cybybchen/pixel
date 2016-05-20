@@ -61,8 +61,8 @@ public class RechargeService {
 	}
 	
 	public int recharge(UserBean user, int rmb, int jewel, boolean cheat) {
-		if (cheat)
-			user.setJewel(user.getJewel()+jewel);
+//		if (cheat)
+//			user.setJewel(user.getJewel()+jewel);
 
     	int complete = user.getRechargeRecord()+jewel;
     	while(true){
