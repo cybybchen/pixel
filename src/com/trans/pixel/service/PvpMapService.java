@@ -135,7 +135,7 @@ public class PvpMapService {
 					it.remove();
 			}
 		}
-		logger.info(ranks);
+		logger.error(ranks);
 		return ranks;
 	}
 	
