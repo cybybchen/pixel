@@ -290,7 +290,7 @@ function buildUserJson(key, value){
     }else{
         var datatype = $("#user-nav .nav-btn-active").attr("data-type");
         if(datatype == "base"){
-            json["UserData"] = 1;
+            json["userData"] = 1;
             json["team"] = 1;
             json["teamCache"] = 1;
             json["achieve"] = 1;
