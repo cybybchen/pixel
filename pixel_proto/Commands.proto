@@ -35,6 +35,7 @@ message UserInfo {
 	optional int32 vipLibao2 = 36;
 	optional string registerTime = 37;
 	optional int32 totalSignCount = 38;
+	optional int32 firstGetHeroId = 39;
 }
 
 message ServerData {
