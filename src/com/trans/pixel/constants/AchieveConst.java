@@ -7,7 +7,7 @@ public class AchieveConst {
 	public static final int TYPE_COST_JEWEL = 103;//累计消费
 	public static final int TYPE_VIP = 104;//成为vip
 	public static final int TYPE_HERO_GET = 105;//收藏家
-	public static final int TYPE_LOTTERY = 106;//收藏家
+	public static final int TYPE_LOTTERY = 106;//抽奖者
 	public static final int TYPE_LEVEL = 107;//推图高手
 	public static final int TYPE_ZHANLI = 108;//战力达人
 	public static final int TYPE_LADDER = 109;//竞技王者

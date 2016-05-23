@@ -22,6 +22,7 @@ import com.trans.pixel.constants.HeroConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -181,7 +182,8 @@ public class ActivityService {
 		/**
 		 * achieve type 106
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOTTERY, count);
+		if (costType == RewardConst.JEWEL)
+			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOTTERY, count);
 		
 		/**
 		 * 累计抽奖的开服活动
