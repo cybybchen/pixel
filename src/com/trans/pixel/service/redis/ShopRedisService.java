@@ -114,14 +114,22 @@ public class ShopRedisService extends RedisService{
 		ShopList.Builder builder = buildComms(willsbuilder, getDailyShopComms());
 		if(user.getVip() >= 5){
 			int index = nextInt(builder.getItemsCount()/2);
-			builder.getItemsBuilderList().get(index*2).setDiscount(90);
-			builder.getItemsBuilderList().get(index*2+1).setDiscount(90);
+			Commodity.Builder comm = builder.getItemsBuilderList().get(index*2);
+			comm.setDiscount(90);
+			comm.setDiscost(comm.getCost()*90/100);
+			comm = builder.getItemsBuilderList().get(index*2+1);
+			comm.setDiscount(90);
+			comm.setDiscost(comm.getCost()*90/100);
 			if(user.getVip() >= 14){
 				int index2 = index;
 				while(index2 == index)
 					index2 = nextInt(builder.getItemsCount()/2);
-				builder.getItemsBuilderList().get(index2*2).setDiscount(70);
-				builder.getItemsBuilderList().get(index2*2+1).setDiscount(70);
+				comm = builder.getItemsBuilderList().get(index2*2);
+				comm.setDiscount(70);
+				comm.setDiscost(comm.getCost()*70/100);
+				comm = builder.getItemsBuilderList().get(index2*2+1);
+				comm.setDiscount(70);
+				comm.setDiscost(comm.getCost()*70/100);
 			}
 		}
 		builder.setEndTime(getDailyShopEndTime());
@@ -214,8 +222,12 @@ public class ShopRedisService extends RedisService{
 		ShopList.Builder builder = buildComms(willsbuilder, getBlackShopComms());
 		if(user.getVip() >= 12){
 			int index = nextInt(builder.getItemsCount()/2);
-			builder.getItemsBuilderList().get(index*2).setDiscount(90);
-			builder.getItemsBuilderList().get(index*2+1).setDiscount(90);
+			Commodity.Builder comm = builder.getItemsBuilderList().get(index*2);
+			comm.setDiscount(90);
+			comm.setDiscost(comm.getCost()*90/100);
+			comm = builder.getItemsBuilderList().get(index*2+1);
+			comm.setDiscount(90);
+			comm.setDiscost(comm.getCost()*90/100);
 		}
 		builder.setEndTime(getBlackShopEndTime());
 		return builder.build();
