@@ -18,6 +18,10 @@ body{
     padding: 16px 0 16px;
 }
 .ui-page {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left: -173px;
 	display: none;
 }
 .ui-page-active {

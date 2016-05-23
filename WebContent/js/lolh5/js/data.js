@@ -298,8 +298,11 @@ $(window).resize(function() {
 });
 
 function resizeContent() {
-	var height = $(window).height() - 156;
-	//alert(height);
+	var scale = window.innerWidth/360.0;
+	var height = Math.round($(window).height()/scale);
+	// $(".ui-header-fixed h1").html(window.innerWidth+"x"+height);
+	$(".ui-page").css({ "transform": "scale("+scale+")", "margin-top": -height/2 });
+	height = height - 156;
 	$("#listview-page .ul-wapper").height(height);
 	$("#listview-page  .ul-wapper .ui-listview").height(height);
 	height += 82-24;
