@@ -30,6 +30,9 @@ public class LogString {
 	public static final String VERSION = "version";
 	public static final String CHANNEL = "channel";
 	public static final String RECHARGE_TYPE = "rechargetype";
+	public static final String COMMAND = "command";
+	public static final String ERRORID = "errorid";
+	public static final String REQUEST = "request";
 	
 	public static final String MODE = "mode";
 	public static final String ROLEID = "roleId";
@@ -57,7 +60,6 @@ public class LogString {
 	public static final String CLIENTTIME = "clientTime";
 	public static final String BASE64_DATA = "base64_data";
 	public static final String BASE64_LOG = "base64_log";
-	public static final String SYSVER = "sysver";
 	public static final String FRIEND_USERID = "friendUserId";
 	
 	// 日志类型
@@ -67,6 +69,7 @@ public class LogString {
 	public static final int LOGTYPE_LOTTERY = 3;
 	public static final int LOGTYPE_MISSION = 4;
 	public static final int LOGTYPE_RECHARGE = 5;
+	public static final int LOGTYPE_ERROR = 6;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -74,4 +77,5 @@ public class LogString {
 	public static final String LOGTYPE_LOTTERY_STR = "Lottery";
 	public static final String LOGTYPE_MISSION_STR = "Mission";
 	public static final String LOGTYPE_RECHARGE_STR = "Recharge";
+	public static final String LOGTYPE_ERROR_STR = "Error";
 }

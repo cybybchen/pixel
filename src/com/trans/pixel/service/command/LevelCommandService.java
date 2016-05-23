@@ -31,10 +31,12 @@ import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.WinService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class LevelCommandService extends BaseCommandService {
@@ -58,6 +60,8 @@ public class LevelCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private LogService logService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
@@ -65,12 +69,16 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelFirstTime(levelId, userLevel)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 		
 		if (!levelService.isPreparad(userLevel, levelId)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_PREPARA_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_PREPARA_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -91,6 +99,8 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -119,6 +129,8 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -148,6 +160,8 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelLoot(levelId, userLevelRecord)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -173,6 +187,8 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelUnlock(daguanId, userLevel, user)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;

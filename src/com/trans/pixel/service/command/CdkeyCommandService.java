@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.CdkeyService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.HttpUtil;
@@ -33,6 +34,8 @@ public class CdkeyCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private PushCommandService pusher;
+	@Resource
+	private LogService logService;
 	
 	public void useCdkey(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user) {
 		Cdkey.Builder cdkey = Cdkey.newBuilder();
@@ -49,17 +52,25 @@ public class CdkeyCommandService extends BaseCommandService {
 			String message = HttpUtil.post(masterserver, parameters);
 			log.info(masterserver+" : "+message);
 			if(!RedisService.parseJson(message, cdkey)){
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_INVALID.getCode());
+				
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_INVALID));
 				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_INVALID.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_INVALID));
 			return;
 		}
 		if(cdkey.getUsed() == 1){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_USED.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_USED));
 		}else if(cdkey.getUsed() == 2){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_REWARDED.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_REWARDED));
 		}else{
 			List<String> rewarded = new ArrayList<String>();

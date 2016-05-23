@@ -12,9 +12,11 @@ import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUsePropCommand;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserPropService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class PropCommandService extends BaseCommandService {
@@ -27,6 +29,8 @@ public class PropCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private LogService logService;
 	
 	public void useProp(RequestUsePropCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUsePropCommand.Builder builder = ResponseUsePropCommand.newBuilder();
@@ -36,6 +40,8 @@ public class PropCommandService extends BaseCommandService {
 		MultiReward multiReward = propService.useProp(user, propId, propCount);
 		
 		if (multiReward == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;

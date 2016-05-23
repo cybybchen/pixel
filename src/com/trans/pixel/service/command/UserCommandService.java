@@ -24,10 +24,12 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -50,6 +52,8 @@ public class UserCommandService extends BaseCommandService {
 	private UserHeadService userHeadService;
 	@Resource
 	private BlackService blackService;
+	@Resource
+	private LogService logService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -149,6 +153,8 @@ public class UserCommandService extends BaseCommandService {
 		if (icon > 62000) {
 			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), icon);
 			if (userHead == null) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HEAD_NOT_EXIST.getCode());
+				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
 				responseBuilder.setErrorCommand(errorCommand);
 				return;
@@ -165,6 +171,8 @@ public class UserCommandService extends BaseCommandService {
 	
 	public void bindAccount(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user) {
 		if (!user.getAccount().equals(cmd.getOldAccount())) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.USER_NOT_EXIST.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;

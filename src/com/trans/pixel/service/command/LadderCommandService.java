@@ -27,9 +27,11 @@ import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LadderService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class LadderCommandService extends BaseCommandService {
@@ -45,6 +47,8 @@ public class LadderCommandService extends BaseCommandService {
 	private ActivityService activityService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private LogService logService;
 	
 	public void handleGetLadderRankListCommand(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
 		ResponseGetLadderRankListCommand.Builder builder = ResponseGetLadderRankListCommand.newBuilder();
@@ -62,6 +66,8 @@ public class LadderCommandService extends BaseCommandService {
 	public void readyAttackLadder(RequestReadyAttackLadderCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = ladderService.readyAttack(user);
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -77,6 +83,8 @@ public class LadderCommandService extends BaseCommandService {
 		
 		ResultConst result = ladderService.attack(user, attackRank, cmd.getRet(), cmd.getTeamId());
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;

@@ -29,11 +29,13 @@ import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class PvpCommandService extends BaseCommandService {
@@ -50,6 +52,8 @@ public class PvpCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private LogService logService;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
@@ -62,8 +66,11 @@ public class PvpCommandService extends BaseCommandService {
 	public void refreshMap(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
 		if(pvpMapService.refreshMap(user))
 			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.REFRESH_PVP));
-		else
+		else {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.TIME_RETRY.getCode());
+			
 			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.TIME_RETRY));
+		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 
@@ -78,9 +85,11 @@ public class PvpCommandService extends BaseCommandService {
 		if (cmd.hasTime())
 			time = cmd.getTime();
 		MultiReward rewards = pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet(), time);
-		if(rewards == null)
+		if(rewards == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
-		else if(rewards.getLootCount() > 0)
+		} else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards);
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
@@ -93,14 +102,19 @@ public class PvpCommandService extends BaseCommandService {
 		int time = 0;
 		if (cmd.hasTime())
 			time = cmd.getTime();
-		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time))
+		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
+		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
 	public void attackMine(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), HELP_ATTACK_PROP_ID);
 		if (userProp.getPropCount() < 1) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -115,6 +129,8 @@ public class PvpCommandService extends BaseCommandService {
 		if (cmd.hasTime())
 			time = cmd.getTime();
 		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			return;
 		}
@@ -130,6 +146,8 @@ public class PvpCommandService extends BaseCommandService {
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.getUserMine(user, cmd.getId());
 		if(mine == null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 		}else{
@@ -151,6 +169,8 @@ public class PvpCommandService extends BaseCommandService {
 		UserBean brother = userService.getUser(cmd.getBrotherId());
 		PVPMine mine = pvpMapService.getUserMine(brother, cmd.getId());
 		if(mine == null || !mine.hasOwner()){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		}else{
 			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
@@ -163,12 +183,16 @@ public class PvpCommandService extends BaseCommandService {
 	
 	public void refreshMine(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		if(user.getPvpMineLeftTime() <= 0){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_TIMES.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES));
 		}else{
 			PVPMine mine = pvpMapService.refreshMine(user, cmd.getId());
-			if(mine == null || !mine.hasOwner())
+			if(mine == null || !mine.hasOwner()) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
-			else{
+			} else{
 				Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 				ResponsePVPMineInfoCommand.Builder builder= ResponsePVPMineInfoCommand.newBuilder();
 				builder.addAllHeroInfo(team.getHeroInfoList());

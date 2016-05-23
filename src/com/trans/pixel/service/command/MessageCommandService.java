@@ -17,7 +17,9 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
 import com.trans.pixel.service.BlackService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MessageService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class MessageCommandService extends BaseCommandService {
@@ -28,6 +30,8 @@ public class MessageCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private BlackService blackService;
+	@Resource
+	private LogService logService;
 	
 	public void getMessageBoardList(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
@@ -40,6 +44,8 @@ public class MessageCommandService extends BaseCommandService {
 	
 	public void createMessage(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
 		if (blackService.isBlackNosay(user)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -52,6 +58,8 @@ public class MessageCommandService extends BaseCommandService {
 	
 	public void replyMessage(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user) {
 		if (blackService.isBlackNosay(user)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
@@ -62,6 +70,8 @@ public class MessageCommandService extends BaseCommandService {
 		String message = cmd.getMessage();
 		MessageBoardBean messageBoardBean = messageService.replyMessage(type, user, id, message);
 		if (messageBoardBean == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MESSAGE_NOT_EXIST.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MESSAGE_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
 			return;

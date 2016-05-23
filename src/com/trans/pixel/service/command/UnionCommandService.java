@@ -24,7 +24,9 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionListCommand;
 import com.trans.pixel.protoc.Commands.Union;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UnionService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class UnionCommandService extends BaseCommandService {
@@ -34,6 +36,8 @@ public class UnionCommandService extends BaseCommandService {
 	private UnionService unionService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private LogService logService;
 
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Union> unions = unionService.getBaseUnions(user);
@@ -113,16 +117,21 @@ public class UnionCommandService extends BaseCommandService {
 			builder.setUnion(unionService.getUnion(user));
 			responseBuilder.setUnionInfoCommand(builder.build());
 			responseBuilder.setMessageCommand(super.buildMessageCommand(result));
-		}else
-			responseBuilder.setErrorCommand(super.buildErrorCommand(result));
+		}else {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}
 	}
 	
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = unionService.upgrade(user);
-		if(result instanceof ErrorConst)
-			responseBuilder.setErrorCommand(super.buildErrorCommand(result));
-		else
-			responseBuilder.setMessageCommand(super.buildMessageCommand(result));
+		if(result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		} else
+			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());
@@ -130,9 +139,11 @@ public class UnionCommandService extends BaseCommandService {
 
 	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = unionService.attack(cmd.getUnionId(), cmd.getTeamid(), user);
-		if(result instanceof ErrorConst)
+		if(result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			responseBuilder.setErrorCommand(this.buildErrorCommand(result));
-		else
+		} else
 			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
@@ -140,8 +151,11 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = unionService.defend(cmd.getTeamid(), user);
-		if(result instanceof ErrorConst)
+		if(result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			responseBuilder.setErrorCommand(super.buildErrorCommand(result));
+		}
 			
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));

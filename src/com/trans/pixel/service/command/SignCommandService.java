@@ -13,9 +13,11 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseSignCommand;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SignService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class SignCommandService extends BaseCommandService {
@@ -28,6 +30,8 @@ public class SignCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private LogService logService;
 	
 	public void sign(RequestSignCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseSignCommand.Builder builder = ResponseSignCommand.newBuilder();
@@ -35,6 +39,7 @@ public class SignCommandService extends BaseCommandService {
 		List<RewardBean> rewardList = signService.sign(user);
 		
 		if (rewardList == null || rewardList.size() == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR.getCode());
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;

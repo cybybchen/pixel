@@ -37,11 +37,13 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
 import com.trans.pixel.service.HeroService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -73,6 +75,8 @@ public class HeroCommandService extends BaseCommandService {
 	private HeroService heroService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private LogService logService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
@@ -94,6 +98,8 @@ public class HeroCommandService extends BaseCommandService {
 		}
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -159,6 +165,8 @@ public class HeroCommandService extends BaseCommandService {
 			result = heroLevelUpService.addHeroEquip(user, heroInfo, heroId, armId, userEquipList);
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -188,6 +196,8 @@ public class HeroCommandService extends BaseCommandService {
 			equipId = heroLevelUpService.delHeroEquip(heroInfo, armId, heroId);
 		
 		if (equipId == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -201,6 +211,8 @@ public class HeroCommandService extends BaseCommandService {
 			
 			List<RewardBean> rewardList = equipService.fenjieHeroEquip(user, equipId, 1);
 			if (rewardList == null || rewardList.size() == 0) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR.getCode());
+				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
@@ -239,7 +251,9 @@ public class HeroCommandService extends BaseCommandService {
 				HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, hero.getInfoId());
 				if (heroInfo != null) {
 					if(heroInfo.isLock()){
-						responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_LOCKED));
+						logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HERO_LOCKED.getCode());
+						
+						responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_LOCKED));
 						return;
 					}
 					
@@ -301,6 +315,8 @@ public class HeroCommandService extends BaseCommandService {
 			result = heroLevelUpService.equipLevelUp(user, heroInfo, armId, levelUpId, userEquipList);
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -335,6 +351,8 @@ public class HeroCommandService extends BaseCommandService {
 			result = heroLevelUpService.resetHeroSkill(user, heroInfo);
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -364,9 +382,11 @@ public class HeroCommandService extends BaseCommandService {
 		if (heroInfo != null)
 			heroInfo.setLock(cmd.getIsLock());
 		
-		if(heroInfo == null)
+		if(heroInfo == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HERO_NOT_EXIST.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_NOT_EXIST));
-		else{
+		} else{
 			userHeroService.updateUserHero(heroInfo);
 			
 			builder.setHeroId(heroId);
@@ -377,12 +397,16 @@ public class HeroCommandService extends BaseCommandService {
 	
 	public void buyHeroPackage(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user) {
 		if (!costService.cost(user, RewardConst.JEWEL, BUY_HERO_PACKAGE_COST)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		
 		if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT > HERO_PACKAGE_LIMIT) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HERO_LIMIT_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HERO_LIMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;

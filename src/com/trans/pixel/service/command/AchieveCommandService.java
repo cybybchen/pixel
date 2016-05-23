@@ -19,8 +19,10 @@ import com.trans.pixel.protoc.Commands.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AchieveService;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserAchieveService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class AchieveCommandService extends BaseCommandService {
@@ -35,6 +37,8 @@ public class AchieveCommandService extends BaseCommandService {
 	private UserAchieveService userAchieveService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private LogService logService;
 	
 	public void achieveReward(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseAchieveListCommand.Builder builder = ResponseAchieveListCommand.newBuilder();
@@ -44,6 +48,7 @@ public class AchieveCommandService extends BaseCommandService {
 		ResultConst result = achieveService.getAchieveReward(multiReward, ua, type);
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;

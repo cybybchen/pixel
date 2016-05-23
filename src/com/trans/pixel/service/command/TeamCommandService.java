@@ -14,7 +14,9 @@ import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class TeamCommandService extends BaseCommandService {
@@ -22,6 +24,9 @@ public class TeamCommandService extends BaseCommandService {
 	private UserTeamService userTeamService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private LogService logService;
+	
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
 		long id = cmd.getId();
@@ -30,6 +35,8 @@ public class TeamCommandService extends BaseCommandService {
 		if (cmd.hasComposeSkill())
 			composeSkill = cmd.getComposeSkill();
 		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -45,6 +52,8 @@ public class TeamCommandService extends BaseCommandService {
 		if (cmd.hasComposeSkill())
 			composeSkill = cmd.getComposeSkill();
 		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;

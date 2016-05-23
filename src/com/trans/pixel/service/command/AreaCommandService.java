@@ -32,7 +32,9 @@ import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.AreaFightService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.RedisService;
 
 /**
  * 1.1.3.6区域争夺战
@@ -45,6 +47,8 @@ public class AreaCommandService extends BaseCommandService{
     private PushCommandService pusher;
 	@Resource
     private UserService userService;
+	@Resource
+	private LogService logService;
 
 	public void unlockArea(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user){
 		if(service.unlockArea(cmd.getId(), cmd.getZhanli(), user))
@@ -71,8 +75,11 @@ public class AreaCommandService extends BaseCommandService{
 
 	public void useAreaEquips(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user){
 		ResultConst result = service.useAreaEquips(cmd.getEquipId(), responseBuilder, user);
-		if(result instanceof ErrorConst)
+		if(result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}
 	}
 	
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
@@ -81,9 +88,11 @@ public class AreaCommandService extends BaseCommandService{
 			return;
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.setName("恭喜你击杀了怪物");
-		if(!service.AttackMonster(cmd.getId(), user, rewards))
+		if(!service.AttackMonster(cmd.getId(), user, rewards)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
-		else
+		} else
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
@@ -99,9 +108,11 @@ public class AreaCommandService extends BaseCommandService{
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.setName("恭喜你击杀了怪物");
 		ResultConst result = service.AttackBoss(cmd.getId(), cmd.getScore(), user, rewards);
-		if(result instanceof ErrorConst)
+		if(result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
-		else if(rewards.getLootCount() > 0)
+		} else if(rewards.getLootCount() > 0)
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
@@ -115,6 +126,8 @@ public class AreaCommandService extends BaseCommandService{
 	public void resourceInfo(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user){
 		AreaResource resource = service.getResource(cmd.getResourceId(), user);
 		if(resource == null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR.getCode());
+			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			return;
 		}
@@ -145,6 +158,8 @@ public class AreaCommandService extends BaseCommandService{
 		ResponseAttackResourceMineInfoCommand.Builder builder = ResponseAttackResourceMineInfoCommand.newBuilder();
 		Team team = service.AttackResourceMineInfo(cmd.getId(), user);
 		if(team == null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR.getCode());
+			
 			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			responseBuilder.setAreaCommand(getAreas(user));
 		}else{

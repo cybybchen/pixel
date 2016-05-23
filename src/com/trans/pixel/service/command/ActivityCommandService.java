@@ -26,9 +26,11 @@ import com.trans.pixel.protoc.Commands.ResponseRichangListCommand;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.NoticeService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserActivityService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class ActivityCommandService extends BaseCommandService {
@@ -43,6 +45,8 @@ public class ActivityCommandService extends BaseCommandService {
 	private UserActivityService userActivityService;
 	@Resource
 	private NoticeService noticeService;
+	@Resource
+	private LogService logService;
 	
 	public void richangReward(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int id = cmd.getId();
@@ -52,6 +56,7 @@ public class ActivityCommandService extends BaseCommandService {
 		ResultConst result = activityService.handleRichangReward(multiReward, ur, user.getId(), id, order);
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -102,6 +107,8 @@ public class ActivityCommandService extends BaseCommandService {
 		ResultConst result = activityService.doKaifu2Reward(multiReward, user, id, order);
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -127,6 +134,8 @@ public class ActivityCommandService extends BaseCommandService {
 		ResultConst result = activityService.handleKaifuReward(multiReward, uk, user, id, order);
 		
 		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
             return;

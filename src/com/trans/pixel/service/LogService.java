@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -137,6 +138,23 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_ERROR:
+				sb.append(LogString.LOGTYPE_ERROR_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.COMMAND));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.REQUEST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ERRORID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -160,6 +178,17 @@ public class LogService {
 		return true;
 	}
 
+	public void sendErrorLog(long userId, int serverId, String commandStr, String request, int errorId) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.COMMAND, "" + commandStr);
+		params.put(LogString.ERRORID, "" + errorId);
+		params.put(LogString.REQUEST, "" + request);
+		
+		sendLog(params, LogString.LOGTYPE_ERROR);
+	}
+	
 	private void send(String str) {
 		Socket socket = null;
 		str = str + "\n";

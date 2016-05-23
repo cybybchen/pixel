@@ -21,10 +21,12 @@ import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class MailCommandService extends BaseCommandService {
@@ -39,6 +41,8 @@ public class MailCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private LogService logService;
 	
 	public void handleGetUserMailListCommand(RequestGetUserMailListCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = 0;
@@ -53,6 +57,7 @@ public class MailCommandService extends BaseCommandService {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		List<MailBean> mailList = mailService.readMail(user, type, ids, rewardList);
 		if (mailList.size() == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST.getCode());
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -75,17 +80,23 @@ public class MailCommandService extends BaseCommandService {
 		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
 			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
 			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH.getCode());
+				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
 			if (!userFriendService.canCallBrother(user.getId(), toUserId)) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.CALL_BROTHER_TIME_NOT_ENOUGH_ERROR.getCode());
+				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.CALL_BROTHER_TIME_NOT_ENOUGH_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
 			UserFriendBean userFriend = userFriendService.updateFriendCallTime(user.getId(), toUserId);
 			if (userFriend == null) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SEND_MAIL_ERROR.getCode());
+				
 				ErrorCommand errorCommand = super.buildErrorCommand(ErrorConst.SEND_MAIL_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
@@ -107,6 +118,8 @@ public class MailCommandService extends BaseCommandService {
 		List<Integer> ids = cmd.getIdList();
 		int count = mailService.deleteMail(user, type, ids);
 		if (count == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
             return;

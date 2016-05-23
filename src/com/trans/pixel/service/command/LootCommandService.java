@@ -17,6 +17,6 @@ public class LootCommandService extends BaseCommandService {
 	public void lootResult(RequestLootResultCommand cmd, Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
 		
-		responseBuilder.setLootResultCommand(super.builderLootResultCommand(user));
+		responseBuilder.setLootResultCommand(builderLootResultCommand(user));
 	}
 }

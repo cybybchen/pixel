@@ -22,8 +22,10 @@ import com.trans.pixel.protoc.Commands.ResponseEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.ResponseEquipResultCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.EquipService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserEquipService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class EquipCommandService extends BaseCommandService {
@@ -36,6 +38,8 @@ public class EquipCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private LogService logService;
 	
 	public void equipLevelup(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseEquipComposeCommand.Builder builder = ResponseEquipComposeCommand.newBuilder();
@@ -49,6 +53,8 @@ public class EquipCommandService extends BaseCommandService {
 		int composeEquipId = equipService.equipCompose(user, levelUpId, count, userEquipList);
 		
 		if (composeEquipId == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_EQUIP.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_EQUIP);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -69,6 +75,8 @@ public class EquipCommandService extends BaseCommandService {
 		int equipCount = cmd.getEquipCount();
 		List<RewardBean> rewardList = equipService.fenjieUserEquip(user, equipId, equipCount);
 		if (rewardList == null || rewardList.size() == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
@@ -89,6 +97,8 @@ public class EquipCommandService extends BaseCommandService {
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
 		List<RewardInfo> rewardList = equipService.saleEquip(user, itemList, userEquipList);
 		if (rewardList == null || rewardList.isEmpty()) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.EQUIP_SALE_ERROR.getCode());
+			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_SALE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
