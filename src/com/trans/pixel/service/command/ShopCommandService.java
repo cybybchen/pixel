@@ -122,12 +122,10 @@ public class ShopCommandService extends BaseCommandService{
 		if(commbuilder.hasDiscount())
 			cost = cost*commbuilder.getDiscount()/100;
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), cost)){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), commbuilder.getCurrency());
-			
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -157,7 +155,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -182,7 +180,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void ShopPurchase(RequestShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		Commodity comm = service.getShop(cmd.getId());
 		if(comm == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
 	        responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 	   		ShopList shoplist = service.getShop();
@@ -190,8 +188,6 @@ public class ShopCommandService extends BaseCommandService{
 	   		shop.addAllItems(shoplist.getItemsList());
 	   		responseBuilder.setShopCommand(shop);
 		}else if(!costService.cost(user, comm.getCurrency(), comm.getCost())){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), comm.getCurrency());
-			
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(comm.getCurrency()));
 		}else{
 			rewardService.doReward(user, comm.getItemid(), comm.getCount());
@@ -257,12 +253,10 @@ public class ShopCommandService extends BaseCommandService{
 		if(commbuilder.hasDiscount())
 			cost = cost*commbuilder.getDiscount()/100;
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), cost)){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), commbuilder.getCurrency());
-			
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -294,9 +288,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
-			
-            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+			  responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshBlackShop(user);
@@ -355,13 +347,11 @@ public class ShopCommandService extends BaseCommandService{
 		int refreshtime = user.getUnionShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), commbuilder.getCurrency());
-			
-           responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
+			responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
 			rewardService.doReward(user, commbuilder.getItemid(), commbuilder.getCount());
@@ -392,7 +382,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
@@ -449,16 +439,14 @@ public class ShopCommandService extends BaseCommandService{
 		int refreshtime = user.getPVPShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 		}else if(!pvpMapRedisService.isMapOpen(user, commbuilder.getJudge())){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_PVPCONDITION.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_PVPCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_PVPCONDITION));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), commbuilder.getCurrency());
-			
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -488,8 +476,6 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
-			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
@@ -545,12 +531,10 @@ public class ShopCommandService extends BaseCommandService{
 		int refreshtime = user.getExpeditionShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), commbuilder.getCurrency());
-			
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -580,8 +564,6 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
-			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
@@ -638,16 +620,14 @@ public class ShopCommandService extends BaseCommandService{
 		int refreshtime = user.getLadderShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 		}else if(myrank == null || myrank.getRank() > commbuilder.getJudge()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_LADDERCONDITION.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SHOP_LADDERCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_LADDERCONDITION));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), commbuilder.getCurrency());
-			
            responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(commbuilder.getCurrency()));
 		}else{
 			commbuilder.setIsOut(true);
@@ -677,9 +657,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
-			
-            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 		}
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = service.refreshLadderShop(user);
@@ -703,14 +681,12 @@ public class ShopCommandService extends BaseCommandService{
 
 	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){
 		if(user.getPurchaseCoinLeft() <= 0){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_PURCHASE_TIME.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_PURCHASE_TIME);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
 			return;
 		}
 		if(!costService.cost(user, RewardConst.JEWEL, service.getPurchaseCoinCost(user.getPurchaseCoinTime()))) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL.getCode());
-			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 			return;
 		}
@@ -740,7 +716,7 @@ public class ShopCommandService extends BaseCommandService{
 	
 	public void VipLibaoPurchase(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user){
 		if(user.getVip() < cmd.getVip()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH));
 			return;
@@ -753,7 +729,7 @@ public class ShopCommandService extends BaseCommandService{
 		VipLibao libao;
 		if(cmd.getType() == 2){
 			if((user.getViplibao2() & state) != 0){
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PURCHASE_VIPLIBAO_AGAIN.getCode());
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PURCHASE_VIPLIBAO_AGAIN);
 				
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.PURCHASE_VIPLIBAO_AGAIN));
 				return;
@@ -762,7 +738,7 @@ public class ShopCommandService extends BaseCommandService{
 			libao = service.getVipLibao(vip.getLibao2());
 		}else{
 			if((user.getViplibao1() & state) != 0){
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PURCHASE_VIPLIBAO_AGAIN.getCode());
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PURCHASE_VIPLIBAO_AGAIN);
 				
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.PURCHASE_VIPLIBAO_AGAIN));
 				return;
@@ -771,8 +747,6 @@ public class ShopCommandService extends BaseCommandService{
 			libao = service.getVipLibao(vip.getLibao1());
 		}
 		if(libao.getCost() > 0 && !costService.cost(user, RewardConst.JEWEL, libao.getCost())) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), RewardConst.JEWEL);
-			
 			responseBuilder.setErrorCommand(buildNotEnoughErrorCommand(RewardConst.JEWEL));
 			return;
 		}

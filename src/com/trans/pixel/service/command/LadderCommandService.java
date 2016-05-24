@@ -66,7 +66,7 @@ public class LadderCommandService extends BaseCommandService {
 	public void readyAttackLadder(RequestReadyAttackLadderCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = ladderService.readyAttack(user);
 		if (result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
@@ -83,7 +83,7 @@ public class LadderCommandService extends BaseCommandService {
 		
 		ResultConst result = ladderService.attack(user, attackRank, cmd.getRet(), cmd.getTeamId());
 		if (result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);

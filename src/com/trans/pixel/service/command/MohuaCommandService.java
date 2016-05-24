@@ -60,7 +60,7 @@ public class MohuaCommandService extends BaseCommandService {
 		List<MohuaCard> useCardList = cmd.getCardList();
 		ResultConst result = mohuaService.useMohuaCard(user, useCardList);
 		if (result instanceof Error) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
 	        responseBuilder.setErrorCommand(errorCommand);
 	        return;
@@ -77,7 +77,7 @@ public class MohuaCommandService extends BaseCommandService {
 		int rewardStage = cmd.getStage();
 		List<RewardInfo> rewardList = mohuaService.stageReward(user, rewardStage);
 		if (rewardList == null || rewardList.size() == 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MOHUA_STAGE_REWARD_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MOHUA_STAGE_REWARD_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MOHUA_STAGE_REWARD_ERROR);
 	        responseBuilder.setErrorCommand(errorCommand);
@@ -93,7 +93,7 @@ public class MohuaCommandService extends BaseCommandService {
 		int rewardHp = cmd.getConsumehp();
 		List<RewardInfo> rewardList = mohuaService.hpReward(user, rewardHp);
 		if (rewardList == null || rewardList.size() == 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MOHUA_HP_REWARD_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MOHUA_HP_REWARD_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MOHUA_HP_REWARD_ERROR);
 	        responseBuilder.setErrorCommand(errorCommand);
@@ -111,7 +111,7 @@ public class MohuaCommandService extends BaseCommandService {
 		ResultConst result = mohuaService.submitStage(user, hp, selfhp);
 		
 		if (result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
 	        responseBuilder.setErrorCommand(errorCommand);

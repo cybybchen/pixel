@@ -33,6 +33,7 @@ public class LogString {
 	public static final String COMMAND = "command";
 	public static final String ERRORID = "errorid";
 	public static final String REQUEST = "request";
+	public static final String ERRORMSG = "errormsg";
 	
 	public static final String MODE = "mode";
 	public static final String ROLEID = "roleId";

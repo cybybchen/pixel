@@ -35,7 +35,7 @@ public class TeamCommandService extends BaseCommandService {
 		if (cmd.hasComposeSkill())
 			composeSkill = cmd.getComposeSkill();
 		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -52,7 +52,7 @@ public class TeamCommandService extends BaseCommandService {
 		if (cmd.hasComposeSkill())
 			composeSkill = cmd.getComposeSkill();
 		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);

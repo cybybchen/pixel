@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.service.redis.LogRedisService;
 
@@ -151,6 +152,8 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ERRORID));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ERRORMSG));
+				sb.append(LogString.SPLITER);
 				sb.append(now);
 				sb.append(LogString.SPLITER);
 				break;
@@ -178,12 +181,13 @@ public class LogService {
 		return true;
 	}
 
-	public void sendErrorLog(long userId, int serverId, String commandStr, String request, int errorId) {
+	public void sendErrorLog(long userId, int serverId, String commandStr, String request, ResultConst error) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + userId);
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.COMMAND, "" + commandStr);
-		params.put(LogString.ERRORID, "" + errorId);
+		params.put(LogString.ERRORID, "" + error.getCode());
+		params.put(LogString.ERRORMSG, "" + error.getMesssage());
 		params.put(LogString.REQUEST, "" + request);
 		
 		sendLog(params, LogString.LOGTYPE_ERROR);

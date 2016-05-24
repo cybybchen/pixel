@@ -118,7 +118,7 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setUnionInfoCommand(builder.build());
 			responseBuilder.setMessageCommand(super.buildMessageCommand(result));
 		}else {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
@@ -127,7 +127,7 @@ public class UnionCommandService extends BaseCommandService {
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = unionService.upgrade(user);
 		if(result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		} else
@@ -140,7 +140,7 @@ public class UnionCommandService extends BaseCommandService {
 	public void attack(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = unionService.attack(cmd.getUnionId(), cmd.getTeamid(), user);
 		if(result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			responseBuilder.setErrorCommand(this.buildErrorCommand(result));
 		} else
@@ -152,7 +152,7 @@ public class UnionCommandService extends BaseCommandService {
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = unionService.defend(cmd.getTeamid(), user);
 		if(result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			responseBuilder.setErrorCommand(super.buildErrorCommand(result));
 		}

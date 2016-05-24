@@ -49,7 +49,7 @@ public class FriendCommandService extends BaseCommandService {
 		if (friendId == 0) {
 			friendId = userService.queryUserIdByUserName(user.getServerId(), friendName);
 			if (friendId == 0) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST.getCode());
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
 	            responseBuilder.setErrorCommand(errorCommand);
@@ -57,28 +57,28 @@ public class FriendCommandService extends BaseCommandService {
 			}
 		}
 		if (userFriendService.isFriend(user.getId(), friendId)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.FRIEND_HAS_ADDED.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.FRIEND_HAS_ADDED);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_HAS_ADDED);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		if (friendId == user.getId()) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ADD_SELF_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ADD_SELF_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ADD_SELF_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		if (userFriendService.getFriendCount(user.getId()) >= FriendConst.FRIEND_COUNT_MAX) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.YOUR_FRIEND_MAX_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.YOUR_FRIEND_MAX_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.YOUR_FRIEND_MAX_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		if (userFriendService.getFriendCount(friendId) >= FriendConst.FRIEND_COUNT_MAX) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.THE_PERSON_FRIEND_MAX_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -93,7 +93,7 @@ public class FriendCommandService extends BaseCommandService {
 		List<Integer> ids = cmd.getIdList();
 		List<MailBean> mailList = mailService.readMail(user, MailConst.TYPE_ADDFRIEND_MAIL, ids, null);
 		if (mailList.size() == 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
@@ -102,14 +102,14 @@ public class FriendCommandService extends BaseCommandService {
 		boolean receive = cmd.getReceive();
 		if (receive) {
 			if (userFriendService.getFriendCount(user.getId()) >= FriendConst.FRIEND_COUNT_MAX) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.YOUR_FRIEND_MAX_ERROR.getCode());
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.YOUR_FRIEND_MAX_ERROR);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.YOUR_FRIEND_MAX_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
 			if (!doAddFriends(user.getId(), mailList)) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.THE_PERSON_FRIEND_MAX_ERROR.getCode());
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);

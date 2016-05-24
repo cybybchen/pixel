@@ -67,7 +67,7 @@ public class PvpCommandService extends BaseCommandService {
 		if(pvpMapService.refreshMap(user))
 			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.REFRESH_PVP));
 		else {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.TIME_RETRY.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.TIME_RETRY);
 			
 			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.TIME_RETRY));
 		}
@@ -86,7 +86,7 @@ public class PvpCommandService extends BaseCommandService {
 			time = cmd.getTime();
 		MultiReward rewards = pvpMapService.attackMonster(user, cmd.getPositionid(), cmd.getRet(), time);
 		if(rewards == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		} else if(rewards.getLootCount() > 0)
@@ -103,7 +103,7 @@ public class PvpCommandService extends BaseCommandService {
 		if (cmd.hasTime())
 			time = cmd.getTime();
 		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		}
@@ -113,7 +113,7 @@ public class PvpCommandService extends BaseCommandService {
 	public void attackMine(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), HELP_ATTACK_PROP_ID);
 		if (userProp.getPropCount() < 1) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -129,7 +129,7 @@ public class PvpCommandService extends BaseCommandService {
 		if (cmd.hasTime())
 			time = cmd.getTime();
 		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			return;
@@ -146,7 +146,7 @@ public class PvpCommandService extends BaseCommandService {
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.getUserMine(user, cmd.getId());
 		if(mine == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
@@ -169,7 +169,7 @@ public class PvpCommandService extends BaseCommandService {
 		UserBean brother = userService.getUser(cmd.getBrotherId());
 		PVPMine mine = pvpMapService.getUserMine(brother, cmd.getId());
 		if(mine == null || !mine.hasOwner()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		}else{
@@ -183,13 +183,13 @@ public class PvpCommandService extends BaseCommandService {
 	
 	public void refreshMine(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
 		if(user.getPvpMineLeftTime() <= 0){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_TIMES.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_TIMES);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES));
 		}else{
 			PVPMine mine = pvpMapService.refreshMine(user, cmd.getId());
 			if(mine == null || !mine.hasOwner()) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY.getCode());
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			} else{

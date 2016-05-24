@@ -152,7 +152,7 @@ public class UserCommandService extends BaseCommandService {
 		if (icon > 62000) {
 			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), icon);
 			if (userHead == null) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HEAD_NOT_EXIST.getCode());
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HEAD_NOT_EXIST);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
 				responseBuilder.setErrorCommand(errorCommand);
@@ -170,7 +170,7 @@ public class UserCommandService extends BaseCommandService {
 	
 	public void bindAccount(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user) {
 		if (!user.getAccount().equals(cmd.getOldAccount())) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.USER_NOT_EXIST.getCode());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.USER_NOT_EXIST);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
