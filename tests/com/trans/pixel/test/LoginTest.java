@@ -10,7 +10,6 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.UserInfo;
 
 public class LoginTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LoginTest.class);

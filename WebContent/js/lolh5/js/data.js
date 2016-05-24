@@ -104,7 +104,7 @@ function updateListData(action, json){
 				+hero_detail["position"]+'</span><hr width="90px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3>'
 				+'<div class="ui-field"><img src="css/images/char'+getHeroIcon(hero_detail["id"])
 				+'.png"><div class="ui-score">攻：'+formatScore(hero_detail["ad"])+'</div><div class="ui-score">法：'+formatScore(hero_detail["ap"])
-				+'</div><div class="ui-score">防：'+formatScore(hero_detail["def"])+'</div><div class="ui-score">上手：'+formatScore(hero_detail["handle"])
+				+'</div><div class="ui-score">防：'+formatScore(hero_detail["def"])+'</div><div class="ui-score">技：'+formatScore(hero_detail["handle"])
 				+'</div></div><p>'+content+'</p><h3 style="margin-top: 15px;"><hr width="90px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/>出装思路<hr width="90px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3><p>';
 		var equip_detail = json["equip_detail"][0];
 		article = equip_detail["content"] == null ? "" : equip_detail["content"];

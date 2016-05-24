@@ -21,6 +21,7 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipList;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.UserPropService;
 
 @Repository
@@ -28,6 +29,8 @@ public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private ActivityService activityService;
 
 	public final static String VIP = RedisKey.PREFIX+"Vip";
 	
@@ -41,12 +44,15 @@ public class UserRedisService extends RedisService{
 	 * update daily data, never save
 	 */
 	public boolean refreshUserDailyData(UserBean user){
-		if(user.getRedisTime() >= today(0)){
-			user.setRedisTime(now());
+		long time = now();
+		if(user.getRedisTime() >= time/24/3600*24*3600L){
+			user.setRedisTime(time);
 			return false;
 		}
 		//每日首次登陆
-		user.setRedisTime(now());
+		user.setRedisTime(time);
+		user.setLoginDays(user.getLoginDays() + 1);
+		user.setSignCount(0);
 		user.setLadderModeLeftTimes(5);
 		user.setPurchaseCoinLeft(1);
 		user.setPurchaseCoinTime(0);
@@ -66,6 +72,9 @@ public class UserRedisService extends RedisService{
 			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
 			userPropService.updateUserProp(userProp);
 		}
+			
+		//累计登录的活动
+		activityService.loginActivity(user);
 		return true;
 	}
 

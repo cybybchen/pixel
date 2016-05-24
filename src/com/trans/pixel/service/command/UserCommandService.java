@@ -223,21 +223,21 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	private void refreshUserLogin(UserBean user) {
-		if (DateUtil.isNextDay(user.getLastLoginTime())) {
-			//每日首次登陆
-//			VipInfo vip = userService.getVip(user.getVip());
-//			if(vip != null){
-////				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
-//			}
-			user.setLoginDays(user.getLoginDays() + 1);
+// 		if (DateUtil.isNextDay(user.getLastLoginTime())) {
+// 			//每日首次登陆
+// //			VipInfo vip = userService.getVip(user.getVip());
+// //			if(vip != null){
+// ////				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
+// //			}
+// 			user.setLoginDays(user.getLoginDays() + 1);
 			
-			/**
-			 * 累计登录的活动
-			 */
-			activityService.loginActivity(user);
+// 			/**
+// 			 * 累计登录的活动
+// 			 */
+// 			activityService.loginActivity(user);
 			
-			user.setSignCount(0);
-		}
+// 			user.setSignCount(0);
+// 		}
 		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		user.setSession(DigestUtils.md5Hex(user.getAccount() + System.currentTimeMillis()));

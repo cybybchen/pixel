@@ -193,6 +193,17 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_ERROR);
 	}
 	
+	public void sendGmLog(long userId, int serverId, String gm, String commandStr, String request) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.GM, "" + gm);
+		params.put(LogString.COMMAND, "" + commandStr);
+		params.put(LogString.REQUEST, "" + request);
+		
+		sendLog(params, LogString.LOGTYPE_ERROR);
+	}
+	
 	private void send(String str) {
 		Socket socket = null;
 		str = str + "\n";
