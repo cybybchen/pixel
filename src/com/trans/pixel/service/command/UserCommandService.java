@@ -84,8 +84,6 @@ public class UserCommandService extends BaseCommandService {
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
-		
-		noticeCommandService.pushNotices(responseBuilder, user);
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {
@@ -207,6 +205,8 @@ public class UserCommandService extends BaseCommandService {
 //		pushCommandService.pushUserAchieveCommand(responseBuilder, user);
 		pushCommandService.pushUserHeadCommand(responseBuilder, user);
 		pushCommandService.pushUserPokedeList(responseBuilder, user);
+		
+		noticeCommandService.pushNotices(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {

@@ -338,12 +338,6 @@ public abstract class RequestScreen implements RequestHandle {
         RequestCommand request = req.command;
         ResponseCommand.Builder responseBuilder = rep.command;
         UserBean user = req.user;
-        
-	        /**
-	    	 * push notice
-	    	 */
-	    	if (result && user != null)
-	    		pushNoticeCommand(responseBuilder, user);
     	
         if (request.hasRegisterCommand()) {
         	handleRegisterCommand(request, responseBuilder);
@@ -965,6 +959,11 @@ public abstract class RequestScreen implements RequestHandle {
         }//LibaoShopCommand
         //call handleCommand here
         
+	        /**
+	    	 * push notice
+	    	 */
+	    	if (result && user != null)
+	    		pushNoticeCommand(responseBuilder, user);
         
         return result;
 	}
