@@ -33,6 +33,8 @@
 		<result property="viplibao2" column="viplibao2" />
 		<result property="firstGetHeroId" column="first_get_hero_id" />
 		<result property="totalSignCount" column="total_sign_count" />
+		<result property="greenhand" column="greenhand" />
+		<result property="advance" column="advance" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -58,11 +60,11 @@
 	<insert id="addNewUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserBean">
 		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
 		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, 
-		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count)
+		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count, greenhand, advance)
 		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
 		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId},
-		#{totalSignCount})
+		#{totalSignCount}, #{greenhand}, #{advance})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
@@ -72,7 +74,8 @@
 		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}, ladder_mode_history_top=#{ladderModeHistoryTop},
 		login_days=#{loginDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock},
 		hero_limit=#{heroLimit}, compose_skill=#{composeSkill}, recharge_record=#{rechargeRecord}, hero_info_id=#{heroInfoId}
-		, viplibao1=#{viplibao1}, viplibao2=#{viplibao2}, first_get_hero_id=#{firstGetHeroId}, total_sign_count=#{totalSignCount}
+		, viplibao1=#{viplibao1}, viplibao2=#{viplibao2}, first_get_hero_id=#{firstGetHeroId}, total_sign_count=#{totalSignCount},
+		greenhand=#{greenhand}, advance=#{advance}
 		WHERE id=#{id}
 	</update>
 

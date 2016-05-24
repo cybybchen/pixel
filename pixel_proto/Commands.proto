@@ -36,6 +36,8 @@ message UserInfo {
 	optional string registerTime = 37;
 	optional int32 totalSignCount = 38;
 	optional int32 firstGetHeroId = 39;
+	optional int32 greenhand = 40;
+	optional int32 advance = 41;
 }
 
 message ServerData {
@@ -1832,6 +1834,11 @@ message RequestHeartBeatCommand {
 
 }
 
+message RequestGreenhandCommand {
+	required int32 greenhand = 1;
+	required int32 advance = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1958,6 +1965,7 @@ message RequestCommand {
 	optional RequestQueryRechargeCommand queryRechargeCommand = 88;
 	optional RequestShouchongRewardCommand shouchongRewardCommand = 89;
 	optional RequestHeartBeatCommand heartBeatCommand = 90;
+	optional RequestGreenhandCommand greenhandCommand = 91;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2014,7 +2022,7 @@ message ResponseCommand {
 	optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
 	optional ResponseKaifu2RewardCommand kaifu2RewardCommand = 44;
 	optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
-    optional ResponseKaifuListCommand kaifuListCommand = 46;
+    	optional ResponseKaifuListCommand kaifuListCommand = 46;
 	optional ResponseUserPokedeCommand userPokedeCommand = 47;
 	optional ResponseRankCommand rankCommand = 48;
 	optional ResponseEquipResultCommand equipResultCommand = 49;

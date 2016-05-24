@@ -18,6 +18,7 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -177,6 +178,18 @@ public class UserCommandService extends BaseCommandService {
 		}
 		
 		user.setAccount(cmd.getNewAccount());
+		userService.updateUser(user);
+		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void submitGreenhand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user) {
+		int greenhand = cmd.getGreenhand();
+		int advance = cmd.getAdvance();
+		
+		user.setGreenhand(greenhand);
+		user.setAdvance(advance);
+		
 		userService.updateUser(user);
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);

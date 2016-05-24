@@ -56,6 +56,9 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
+import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -740,6 +743,21 @@ public class GameDataScreen extends RequestScreen {
 		shopCommandService.LibaoShop(cmd, responseBuilder, user);
 		return true;//LibaoShopCommand
 	}//LibaoShopCommand
+	@Override//ShouchongRewardCommand
+	protected boolean handleCommand(RequestShouchongRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO ShouchongRewardCommand method
+		return true;//ShouchongRewardCommand
+	}//ShouchongRewardCommand
+	@Override//HeartBeatCommand
+	protected boolean handleCommand(RequestHeartBeatCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO HeartBeatCommand method
+		return true;//HeartBeatCommand
+	}//HeartBeatCommand
+	@Override//GreenhandCommand
+	protected boolean handleCommand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user) {
+		userCommandService.submitGreenhand(cmd, responseBuilder, user);
+		return true;//GreenhandCommand
+	}//GreenhandCommand
 	//add handleCommand here
 
 	@Override

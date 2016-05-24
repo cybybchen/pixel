@@ -52,6 +52,9 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
+import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -330,6 +333,9 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestShouchongRewardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestHeartBeatCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -957,6 +963,21 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//LibaoShopCommand
                 result = handleCommand(cmd, responseBuilder, user);//LibaoShopCommand
         }//LibaoShopCommand
+        if (request.hasShouchongRewardCommand()) {
+            RequestShouchongRewardCommand cmd = request.getShouchongRewardCommand();
+            if (result)//ShouchongRewardCommand
+                result = handleCommand(cmd, responseBuilder, user);//ShouchongRewardCommand
+        }//ShouchongRewardCommand
+        if (request.hasHeartBeatCommand()) {
+            RequestHeartBeatCommand cmd = request.getHeartBeatCommand();
+            if (result)//HeartBeatCommand
+                result = handleCommand(cmd, responseBuilder, user);//HeartBeatCommand
+        }//HeartBeatCommand
+        if (request.hasGreenhandCommand()) {
+            RequestGreenhandCommand cmd = request.getGreenhandCommand();
+            if (result)//GreenhandCommand
+                result = handleCommand(cmd, responseBuilder, user);//GreenhandCommand
+        }//GreenhandCommand
         //call handleCommand here
         
 	        /**

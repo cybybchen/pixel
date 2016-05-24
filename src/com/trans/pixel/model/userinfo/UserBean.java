@@ -66,6 +66,8 @@ public class UserBean {
 	private int heroInfoId = 0;
 	private int firstGetHeroId = 0;
 	private int totalSignCount = 0;
+	private int greenhand = 0;
+	private int advance = 0;
 	/**
 	 * vip免费礼包领取状态
 	 */
@@ -774,6 +776,18 @@ public class UserBean {
 	public void setTotalSignCount(int totalSignCount) {
 		this.totalSignCount = totalSignCount;
 	}
+	public int getGreenhand() {
+		return greenhand;
+	}
+	public void setGreenhand(int greenhand) {
+		this.greenhand = greenhand;
+	}
+	public int getAdvance() {
+		return advance;
+	}
+	public void setAdvance(int advance) {
+		this.advance = advance;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -870,6 +884,8 @@ public class UserBean {
 		builder.setRegisterTime(registerTime);
 		builder.setTotalSignCount(totalSignCount);
 		builder.setFirstGetHeroId(firstGetHeroId);
+		builder.setGreenhand(greenhand);
+		builder.setAdvance(advance);
 		
 		return builder.build();
 	}
