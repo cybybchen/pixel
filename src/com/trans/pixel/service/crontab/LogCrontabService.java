@@ -29,19 +29,21 @@ public class LogCrontabService {
 		try {
 			socket = new Socket(LogString.SERVER, LogString.PORT);
 			OutputStream netOut = socket.getOutputStream();
-			DataOutputStream doc = new DataOutputStream(netOut);
+//			DataOutputStream doc = new DataOutputStream(netOut);
 			while (true) {
 				String log = logRedisService.popLog();
 				if (log == null)
 					break;
 				log += "\n";
 				utilLogger.debug("send to log server " + log);
-				doc.writeBytes(log);
-				doc.flush();
+//				doc.writeChars(log);
+				netOut.write(log.getBytes());
+				netOut.flush();
+//				doc.flush();
 			}
 
 			netOut.close();
-			doc.close();
+//			doc.close();
 		} catch (UnknownHostException e) {
 			utilLogger.error(e);
 		} catch (IOException e) {
