@@ -27,6 +27,9 @@ public class MailService {
 	private NoticeService noticeService;
 	
 	public void addMail(MailBean mail) {
+		if (hasSend(mail.getUserId(), mail.getType(), mail.getFromUserId()))//好友邮件已发送
+			return;
+		
 		mailRedisService.addMail(mail);
 		if (mail.getType() == MailConst.TYPE_SYSTEM_MAIL)
 			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_SYSTEM_MAIL);
@@ -85,5 +88,17 @@ public class MailService {
 	
 	public int deleteMail(UserBean user, int type, List<Integer> ids) {
 		return mailRedisService.deleteMail(user.getId(), type, ids);
+	}
+	
+	private boolean hasSend(long userId, int type, long friendId) {
+		if (type == MailConst.TYPE_ADDFRIEND_MAIL) {
+			List<MailBean> mailList = getMailList(userId, type);
+			for (MailBean mail : mailList) {
+				if (mail.getFromUserId() == friendId)
+					return true;
+			}
+		}
+		
+		return false;
 	}
 }

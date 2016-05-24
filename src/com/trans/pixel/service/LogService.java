@@ -22,7 +22,7 @@ import com.trans.pixel.service.redis.LogRedisService;
 
 @Service
 public class LogService {
-	private Logger utilLogger = Logger.getLogger(LogService.class);
+	private Logger log = Logger.getLogger(LogService.class);
 
 	@Resource
 	private LogRedisService logRedisService;
@@ -163,11 +163,12 @@ public class LogService {
 			}
 
 		} catch (Exception e) {
-			utilLogger.error("get log params error, log type " + logType);
+			log.error("get log params error, log type " + logType);
 			return false;
 		}
 
 		if (!sb.toString().trim().equals("")) {
+			log.debug("log is:" + sb.toString());
 			logRedisService.addLogData(sb.toString());
 //			new Thread(new Runnable() {
 //				
@@ -190,6 +191,8 @@ public class LogService {
 		params.put(LogString.ERRORMSG, "" + error.getMesssage());
 		params.put(LogString.REQUEST, "" + request);
 		
+		log.debug("error params is:" + params);
+		
 		sendLog(params, LogString.LOGTYPE_ERROR);
 	}
 	
@@ -211,7 +214,7 @@ public class LogService {
 			socket = new Socket(LogString.SERVER, LogString.PORT);
 			OutputStream netOut = socket.getOutputStream();
 			DataOutputStream doc = new DataOutputStream(netOut);
-			utilLogger.debug("send to log server " + str);
+			log.debug("send to log server " + str);
 			doc.writeBytes(str);
 			doc.flush();
 
