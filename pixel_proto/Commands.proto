@@ -622,6 +622,7 @@ message UserRank {
 	repeated HeroInfo heroInfo = 4;
 	optional int32 zhanli = 5;
 	optional int32 icon = 6;
+	optional int32 vip = 7;
 }
 
 message UserFriend {
@@ -646,6 +647,7 @@ message Mail {
 	required int32 relatedId = 10;
 	repeated RewardInfo reward = 9;
 	optional int32 icon = 11;
+	optional int32 vip = 12;
 }
 
 message MailList {
@@ -661,6 +663,7 @@ message MessageBoard {
 	required string content = 5;
 	repeated Msg msg = 6;
 	required int32 icon = 7;
+	optional int32 vip = 8;
 }
 
 message Msg {

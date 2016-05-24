@@ -17,11 +17,14 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.MessageConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.MessageBoardBean;
+import com.trans.pixel.protoc.Commands.UserInfo;
 
 @Repository
 public class MessageRedisService extends RedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
+	@Resource
+	private UserRedisService userRedisService;
 	
 	public List<MessageBoardBean> getMessageBoardList(final int serverId, final long userTimeStamp) {
 		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
@@ -32,10 +35,12 @@ public class MessageRedisService extends RedisService {
 						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
 				
 				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
-//				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
 				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					messageBoardList.add(getMessageBoard(serverId, messageBoard.getValue()));
+					MessageBoardBean messageBoardBean = getMessageBoard(serverId, messageBoard.getValue());
+					UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
+					messageBoardBean.setVip(userInfo.getVip());
+					messageBoardList.add(messageBoardBean);
 				}
 				
 				return messageBoardList;

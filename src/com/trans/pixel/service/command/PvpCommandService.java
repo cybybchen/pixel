@@ -207,7 +207,7 @@ public class PvpCommandService extends BaseCommandService {
 	
 	private void sendHelpMail(UserBean friend, UserBean user) {
 		String content = "玩家" + friend.getUserName() + "帮助你赶走了矿场的敌人"; 
-		MailBean mail = buildMail(user.getId(), friend.getId(), friend.getUserName(), content, MailConst.TYPE_HELP_ATTACK_PVP_MAIL);
+		MailBean mail = buildMail(user.getId(), friend.getId(), friend.getVip(), friend.getUserName(), content, MailConst.TYPE_HELP_ATTACK_PVP_MAIL);
 		mailService.addMail(mail);
 	}
 }

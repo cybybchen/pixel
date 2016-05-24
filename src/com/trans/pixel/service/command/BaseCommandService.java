@@ -202,7 +202,7 @@ public class BaseCommandService {
 		return mail;
 	}
 	
-	protected MailBean buildMail(long userId, long friendId, String friendName, String content, int type) {
+	protected MailBean buildMail(long userId, long friendId, int vip, String friendName, String content, int type) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
 		mail.setFromUserId(friendId);
@@ -210,11 +210,12 @@ public class BaseCommandService {
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setStartDate(DateUtil.getCurrentDateString());
+		mail.setVip(vip);
 		
 		return mail;
 	}
 	
-	protected MailBean buildMail(long userId, long friendId, String usreName, String content, int type, int relatedId) {
+	protected MailBean buildMail(long userId, long friendId, int vip, String usreName, String content, int type, int relatedId) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
 		mail.setFromUserId(friendId);
@@ -223,6 +224,7 @@ public class BaseCommandService {
 		mail.setRelatedId(relatedId);
 		mail.setFromUserName(usreName);
 		mail.setStartDate(DateUtil.getCurrentDateString());
+		mail.setVip(vip);
 		
 		return mail;
 	}

@@ -21,6 +21,7 @@ public class MessageBoardBean {
 	private String message = "";
 	private int icon = 0;
 	private List<MessageBean> messageList = new ArrayList<MessageBean>();
+	private int vip = 0;
 	public long getTimeStamp() {
 		return timeStamp;
 	}
@@ -62,6 +63,12 @@ public class MessageBoardBean {
 	}
 	public void setIcon(int icon) {
 		this.icon = icon;
+	}
+	public int getVip() {
+		return vip;
+	}
+	public void setVip(int vip) {
+		this.vip = vip;
 	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();

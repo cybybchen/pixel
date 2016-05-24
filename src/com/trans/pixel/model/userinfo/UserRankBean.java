@@ -13,6 +13,7 @@ public class UserRankBean {
 	private int zhanli = 0;
 	private long rank = 0;
 	private int icon = 0;
+	private int vip = 0;
 //	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 	public int getId() {
 		return id;
@@ -50,7 +51,13 @@ public class UserRankBean {
 	public void setRank(long rank) {
 		this.rank = rank;
 	}
-//	public List<HeroInfoBean> getHeroList() {
+	public int getVip() {
+		return vip;
+	}
+	public void setVip(int vip) {
+		this.vip = vip;
+	}
+	//	public List<HeroInfoBean> getHeroList() {
 //		return heroList;
 //	}
 //	public void setHeroList(List<HeroInfoBean> heroList) {
@@ -111,6 +118,7 @@ public class UserRankBean {
 		builder.setRank(rank);
 		builder.setZhanli(zhanli);
 		builder.setIcon(icon);
+		builder.setVip(vip);
 		
 		return builder.build();
 	}
@@ -123,6 +131,7 @@ public class UserRankBean {
 		userName = userInfo.getName();
 		icon = userInfo.getIcon();
 		zhanli = userInfo.getZhanli();
+		vip = userInfo.getVip();
 	}
 	
 	private static final String ID = "id";
