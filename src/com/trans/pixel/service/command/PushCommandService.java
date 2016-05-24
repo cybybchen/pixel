@@ -179,7 +179,7 @@ public class PushCommandService extends BaseCommandService {
 		} else {
 			for (Integer friendMailType : MailConst.FRIEND_MAIL_TYPES) {
 				List<MailBean> mailList = mailService.getMailList(user.getId(), friendMailType);
-				mailBuilderList.add(buildMailList(type, mailList));
+				mailBuilderList.add(buildMailList(friendMailType, mailList));
 			}
 		}
 		

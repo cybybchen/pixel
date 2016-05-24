@@ -1,5 +1,8 @@
 package com.trans.pixel.controller.chain;
 
+import javax.annotation.Resource;
+
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestAchieveListCommand;
 import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
@@ -52,12 +55,11 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
-import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
-import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
+import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
+import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
@@ -107,6 +109,7 @@ import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
@@ -129,9 +132,14 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.service.command.PushCommandService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 
 public abstract class RequestScreen implements RequestHandle {
+	@Resource
+	private PushCommandService pushCommandService;
+	
 	private RequestHandle nullUserErrorHandle = new NullUserErrorHandle();
 	
 	protected abstract boolean handleRegisterCommand(RequestCommand cmd, Builder responseBuilder);
@@ -979,6 +987,13 @@ public abstract class RequestScreen implements RequestHandle {
                 result = handleCommand(cmd, responseBuilder, user);//GreenhandCommand
         }//GreenhandCommand
         //call handleCommand here
+        
+        	if (responseBuilder.hasErrorCommand()) {
+        		int errorCode = TypeTranslatedUtil.stringToInt(responseBuilder.getErrorCommand().getCode());
+        		if (errorCode == ErrorConst.NOT_ENOUGH_COIN.getCode() || errorCode == ErrorConst.NOT_ENOUGH_EXP.getCode()
+        				|| errorCode == ErrorConst.NOT_ENOUGH_JEWEL.getCode())
+        			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+        	}
         
 	        /**
 	    	 * push notice
