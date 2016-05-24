@@ -140,6 +140,20 @@ public class PvpMapService {
 	
 	public void refreshMine(PVPMapList.Builder maplist, Map<String, PVPMine> mineMap, UserBean user){
 		long time = redis.today(6);
+		Iterator<Map.Entry<String, PVPMine>> it = mineMap.entrySet().iterator();
+		while(it.hasNext()){  
+            Map.Entry<String, PVPMine> entry=it.next();
+			PVPMine mine = entry.getValue();
+			if(mine.hasOwner()){
+				UserInfo owner = userService.getCache(user.getServerId(), mine.getOwner().getId());
+				PVPMine.Builder builder = PVPMine.newBuilder(mine);
+				builder.setOwner(owner);
+				entry.setValue(builder.build());
+			}else if(redis.now() > mine.getEndTime()){
+				it.remove();
+				redis.deleteMine(user.getId(), mine.getId());
+			}
+		}
 		if(user.getPvpMineRefreshTime() < time){//刷新对手
 			int count = (int)(time - user.getPvpMineRefreshTime())/24/3600/*+redis.nextInt((int)(time - user.getPvpMineRefreshTime())/12/3600)*/;
 			user.setPvpMineRefreshTime(time);
