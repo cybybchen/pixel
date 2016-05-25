@@ -417,6 +417,7 @@ message PVPMonsterRewardLoot {
 	optional float countb = 4;
 	optional int32 weighta = 5;
 	optional float weightb = 6;
+	optional int32 order = 7;
 }
 message PVPMonsterRewardList {
 	repeated PVPMonsterReward enemy = 1;
