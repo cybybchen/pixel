@@ -414,7 +414,7 @@ message PVPMonsterRewardLoot {
 	optional int32 weightall = 1;
 	optional int32 itemid = 2;
 	optional int32 counta = 3;
-	optional int32 countb = 4;
+	optional float countb = 4;
 	optional int32 weighta = 5;
 	optional float weightb = 6;
 }

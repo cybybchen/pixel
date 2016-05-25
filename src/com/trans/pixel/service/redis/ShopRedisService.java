@@ -2,8 +2,10 @@ package com.trans.pixel.service.redis;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -113,21 +115,29 @@ public class ShopRedisService extends RedisService{
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getDailyShopComms());
 		if(user.getVip() >= 5){
-			int index = nextInt(builder.getItemsCount()/2);
-			Commodity.Builder comm = builder.getItemsBuilderList().get(index*2);
+			List<Integer> list = new ArrayList<Integer>();
+			int index = nextInt(builder.getItemsCount());
+			list.add(index);
+			Commodity.Builder comm = builder.getItemsBuilderList().get(index);
 			comm.setDiscount(90);
 			comm.setDiscost(comm.getCost()*90/100);
-			comm = builder.getItemsBuilderList().get(index*2+1);
+			while(list.contains(index))
+				index = nextInt(builder.getItemsCount());
+			list.add(index);
+			comm = builder.getItemsBuilderList().get(index);
 			comm.setDiscount(90);
 			comm.setDiscost(comm.getCost()*90/100);
 			if(user.getVip() >= 14){
-				int index2 = index;
-				while(index2 == index)
-					index2 = nextInt(builder.getItemsCount()/2);
-				comm = builder.getItemsBuilderList().get(index2*2);
+				while(list.contains(index))
+					index = nextInt(builder.getItemsCount());
+				list.add(index);
+				comm = builder.getItemsBuilderList().get(index);
 				comm.setDiscount(70);
 				comm.setDiscost(comm.getCost()*70/100);
-				comm = builder.getItemsBuilderList().get(index2*2+1);
+				while(list.contains(index))
+					index = nextInt(builder.getItemsCount());
+				list.add(index);
+				comm = builder.getItemsBuilderList().get(index);
 				comm.setDiscount(70);
 				comm.setDiscost(comm.getCost()*70/100);
 			}
@@ -221,11 +231,15 @@ public class ShopRedisService extends RedisService{
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getBlackShopComms());
 		if(user.getVip() >= 12){
-			int index = nextInt(builder.getItemsCount()/2);
-			Commodity.Builder comm = builder.getItemsBuilderList().get(index*2);
+			List<Integer> list = new ArrayList<Integer>();
+			int index = nextInt(builder.getItemsCount());
+			Commodity.Builder comm = builder.getItemsBuilderList().get(index);
 			comm.setDiscount(90);
 			comm.setDiscost(comm.getCost()*90/100);
-			comm = builder.getItemsBuilderList().get(index*2+1);
+			while(list.contains(index))
+				index = nextInt(builder.getItemsCount());
+			list.add(index);
+			comm = builder.getItemsBuilderList().get(index);
 			comm.setDiscount(90);
 			comm.setDiscost(comm.getCost()*90/100);
 		}
