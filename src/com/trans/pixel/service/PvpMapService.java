@@ -55,12 +55,6 @@ public class PvpMapService {
 	private UserFriendRedisService userFriendRedisService;
 	@Resource
 	private UnionRedisService unionRedisService;
-//	@Resource
-//	private RankRedisService rankRedisService;
-//	@Resource
-//	private UserMineService userMineService;
-//	@Resource
-//	private PvpXiaoguaiService pvpXiaoguaiService;
 	@Resource
 	private ActivityService activityService;
 	@Resource
@@ -229,8 +223,7 @@ public class PvpMapService {
 			}
 		}
 		long time = System.currentTimeMillis()/1000/3600*3600;
-		if(time >= user.getPvpMineGainTime()+3600){//收取资源
-			int hour = Math.min(7*24, (int)((time - user.getPvpMineGainTime())/3600));
+		if(time > user.getPvpMineGainTime()){//收取资源
 			int resource = 0;
 			for(PVPMap map : maplist.getFieldList()){
 				if(!map.getOpened())
@@ -241,7 +234,7 @@ public class PvpMapService {
 						resource += mine.getYield();
 				}
 			}
-			resource *= hour;
+			resource = Math.min(resource*7*24, (int)(resource*(time - user.getPvpMineGainTime())/3600));
 			if(user.getVip() >= 10)
 				resource = (int)(resource * 1.1);
 			rewardService.doReward(user, RewardConst.PVPCOIN, resource);

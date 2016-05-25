@@ -140,6 +140,7 @@ public class UserService {
 	public int addNewUser(UserBean user) {
 		int result = userMapper.addNewUser(user);
 		user.setPvpMineRefreshTime((int)userRedisService.today(6));
+		user.setPvpMineGainTime(userRedisService.now());
 		userRedisService.refreshUserDailyData(user);
 		userRedisService.updateUser(user);
 		userRedisService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
