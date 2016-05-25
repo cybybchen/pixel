@@ -35,6 +35,8 @@ import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Richang;
+import com.trans.pixel.protoc.Commands.Shouchong;
+import com.trans.pixel.protoc.Commands.ShouchongReward;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
@@ -130,6 +132,19 @@ public class ActivityService {
 		}
 		
 		return false;
+	}
+	
+	private List<RewardInfo> getShouchongRewardList(List<ShouchongReward> shouchongRewardList) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		
+		for (ShouchongReward shouchongReward : shouchongRewardList) {
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(shouchongReward.getRewardid());
+			reward.setCount(shouchongReward.getCount());
+			rewardList.add(reward.build());
+		}
+		
+		return rewardList;
 	}
 	
 	private List<RewardInfo> getRewardList(ActivityOrder order) {
@@ -536,7 +551,7 @@ public class ActivityService {
 		 */
 		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_RECHARGE_JEWEL, count);
 		/**
-		 * 首次充值的开服活动
+		 * 首次单笔充值的开服活动
 		 */
 		sendKaifuScore(user, ActivityConst.DANBI_RECHARGE, count);
 		/**
@@ -555,6 +570,10 @@ public class ActivityService {
 		 * 开服2的充值活动
 		 */
 		sendKaifu2Score(user, ActivityConst.KAIFU2_RECHARGE, count);
+		/**
+		 * 首次充值的活动
+		 */
+		sendKaifuScore(user, ActivityConst.DANBI_RECHARGE, count);
 	}
 	
 	public void heroStoreActivity(UserBean user) {
@@ -628,5 +647,37 @@ public class ActivityService {
 		logMap.put(LogString.MISSIONID, "" + id);
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_MISSION);
+	}
+	
+	public void sendShouchongScore(UserBean user) {
+		if (user.getShouchongIsComplete() == 0) {
+			user.setShouchongIsComplete(1);
+			userService.updateUser(user);
+		}
+	}
+	
+	public ResultConst handleShouchongReward(MultiReward.Builder rewards, UserBean user) {
+		if (user.getShouchongIsComplete() == 0)
+			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+		
+		if (user.getShouchongIsGetReward() == 1)
+			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
+		
+		Map<String, Shouchong> shouchongMap = activityRedisService.getShouchongConfig();
+		Iterator<Entry<String, Shouchong>> it = shouchongMap.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Shouchong> entry = it.next();
+			Shouchong shouchong = entry.getValue();
+			
+			rewards.addAllLoot(getShouchongRewardList(shouchong.getRewardList()));
+			user.setShouchongIsGetReward(1);
+			userService.updateUser(user);
+			
+			return SuccessConst.ACTIVITY_REWARD_SUCCESS;
+		}
+		
+//		isDeleteNotice(user.getId());
+		
+		return ErrorConst.ACTIVITY_IS_OVER_ERROR;
 	}
 }

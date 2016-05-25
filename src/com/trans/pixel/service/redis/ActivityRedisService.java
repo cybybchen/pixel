@@ -19,6 +19,8 @@ import com.trans.pixel.protoc.Commands.Kaifu2List;
 import com.trans.pixel.protoc.Commands.KaifuList;
 import com.trans.pixel.protoc.Commands.Richang;
 import com.trans.pixel.protoc.Commands.RichangList;
+import com.trans.pixel.protoc.Commands.Shouchong;
+import com.trans.pixel.protoc.Commands.ShouchongList;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -27,6 +29,7 @@ public class ActivityRedisService extends RedisService {
 	private static final String ACTIVITY_RICHANG_FILE_NAME = "task/lol_taskrichang.xml";
 	private static final String ACTIVITY_KAIFU2_FILE_NAME = "task/lol_taskkaifu2.xml";
 	private static final String ACTIVITY_KAIFU_FILE_NAME = "task/lol_taskkaifu1.xml";
+	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "task/lol_taskshouchong.xml";
 	
 	//richang activity
 	public Richang getRichang(int id) {
@@ -251,5 +254,56 @@ public class ActivityRedisService extends RedisService {
 	
 	private String buildKaifu2SendRewardRedisKey(int serverId) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY; 
+	}
+	
+	//shouchong activity
+	public Shouchong getShouchong(int id) {
+		String value = hget(RedisKey.ACTIVITY_SHOUCHONG_KEY, "" + id);
+		if (value == null) {
+			Map<String, Shouchong> config = getShouchongConfig();
+			return config.get("" + id);
+		} else {
+			Shouchong.Builder builder = Shouchong.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Shouchong> getShouchongConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_SHOUCHONG_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Shouchong> map = buildShouchongConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Shouchong> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.ACTIVITY_SHOUCHONG_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Shouchong> map = new HashMap<String, Shouchong>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Shouchong.Builder builder = Shouchong.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Shouchong> buildShouchongConfig(){
+		String xml = ReadConfig(ACTIVITY_SHOUCHONG_FILE_NAME);
+		ShouchongList.Builder builder = ShouchongList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + ACTIVITY_SHOUCHONG_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Shouchong> map = new HashMap<String, Shouchong>();
+		for(Shouchong.Builder kaifu : builder.getTaskBuilderList()){
+			map.put("" + kaifu.getId(), kaifu.build());
+		}
+		return map;
 	}
 }

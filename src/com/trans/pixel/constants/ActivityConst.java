@@ -142,4 +142,6 @@ public class ActivityConst {
 	public static final int LOG_TYPE_RICHANG = 2;
 	
 	public static final int LOG_TYPE_KAIFU = 1;
+	
+	public static final int LOG_TYPE_SHOUCHONG = 4;
 }

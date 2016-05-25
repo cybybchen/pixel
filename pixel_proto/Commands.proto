@@ -38,6 +38,8 @@ message UserInfo {
 	optional int32 firstGetHeroId = 39;
 	optional int32 greenhand = 40;
 	optional int32 advance = 41;
+	optional int32 shouchongIsComplete = 42;
+	optional int32 shouchongIsGetReward = 43;
 }
 
 message ServerData {
@@ -1009,11 +1011,6 @@ message ShouchongReward {
 	required int32 count = 2;
 }
 
-message UserShouchong {
-	required int32 isComplete = 1; //0:未完成 1:完成
-        required int32 isGetReward = 2;
-}
-
 message Notice {
 	required int32 type = 1;//1:system mail 2:friend 3:achieve 4:activity
 }
@@ -1822,10 +1819,6 @@ message RequestShouchongRewardCommand {
 
 }
 
-message ResponseShouchongStatusCommand {
-	required UserShouchong userShouchong = 1;
-}
-
 message ResponseNoticeCommand {
 	repeated Notice notice = 1;	
 }
@@ -2028,7 +2021,6 @@ message ResponseCommand {
 	optional ResponseEquipResultCommand equipResultCommand = 49;
 	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
 	optional ResponseUserHeadCommand userHeadCommand = 51;
-	optional ResponseShouchongStatusCommand shouChongStatusCommand = 52;
 	optional ResponseNoticeCommand noticeCommand = 53;
 }
 

@@ -745,7 +745,7 @@ public class GameDataScreen extends RequestScreen {
 	}//LibaoShopCommand
 	@Override//ShouchongRewardCommand
 	protected boolean handleCommand(RequestShouchongRewardCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO ShouchongRewardCommand method
+		activityCommandService.shouchongReward(cmd, responseBuilder, user);
 		return true;//ShouchongRewardCommand
 	}//ShouchongRewardCommand
 	@Override//HeartBeatCommand

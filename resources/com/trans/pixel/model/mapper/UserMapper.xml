@@ -35,6 +35,8 @@
 		<result property="totalSignCount" column="total_sign_count" />
 		<result property="greenhand" column="greenhand" />
 		<result property="advance" column="advance" />
+		<result property="shouchongIsComplete" column="shouchong_is_complete" />
+		<result property="shouchongIsGetReward" column="shouchong_is_get_reward" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -60,11 +62,12 @@
 	<insert id="addNewUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserBean">
 		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
 		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, 
-		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count, greenhand, advance)
+		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count, greenhand, advance,
+		shouchong_is_complete, shouchong_is_get_reward)
 		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
 		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId},
-		#{totalSignCount}, #{greenhand}, #{advance})
+		#{totalSignCount}, #{greenhand}, #{advance}, #{shouchongIsComplete}, #{shouchongIsGetReward})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
@@ -75,7 +78,7 @@
 		login_days=#{loginDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock},
 		hero_limit=#{heroLimit}, compose_skill=#{composeSkill}, recharge_record=#{rechargeRecord}, hero_info_id=#{heroInfoId}
 		, viplibao1=#{viplibao1}, viplibao2=#{viplibao2}, first_get_hero_id=#{firstGetHeroId}, total_sign_count=#{totalSignCount},
-		greenhand=#{greenhand}, advance=#{advance}
+		greenhand=#{greenhand}, advance=#{advance}, shouchong_is_complete=#{shouchongIsComplete}, shouchong_is_get_reward=#{shouchongIsGetReward}
 		WHERE id=#{id}
 	</update>
 

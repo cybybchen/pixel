@@ -18,6 +18,7 @@ import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangListCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.ResponseKaifu2RewardCommand;
@@ -163,5 +164,27 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		
 		responseBuilder.setKaifuListCommand(builder.build());
+	}
+	
+	public void shouchongReward(RequestShouchongRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		MultiReward.Builder multiReward = MultiReward.newBuilder();
+		ResultConst result = activityService.handleShouchongReward(multiReward, user);
+		
+		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		rewardService.doRewards(user, multiReward.build());
+		
+		pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+		pusher.pushUserInfoCommand(responseBuilder, user);
+		
+		/**
+		 * send log
+		 */
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SHOUCHONG, 0);
 	}
 }

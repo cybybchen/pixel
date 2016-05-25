@@ -68,6 +68,8 @@ public class UserBean {
 	private int totalSignCount = 0;
 	private int greenhand = 0;
 	private int advance = 0;
+	private int shouchongIsComplete = 0;
+	private int shouchongIsGetReward = 0;
 	/**
 	 * vip免费礼包领取状态
 	 */
@@ -787,6 +789,18 @@ public class UserBean {
 	}
 	public void setAdvance(int advance) {
 		this.advance = advance;
+	}
+	public int getShouchongIsComplete() {
+		return shouchongIsComplete;
+	}
+	public void setShouchongIsComplete(int shouchongIsComplete) {
+		this.shouchongIsComplete = shouchongIsComplete;
+	}
+	public int getShouchongIsGetReward() {
+		return shouchongIsGetReward;
+	}
+	public void setShouchongIsGetReward(int shouchongIsGetReward) {
+		this.shouchongIsGetReward = shouchongIsGetReward;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
