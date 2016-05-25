@@ -902,6 +902,8 @@ public class UserBean {
 		builder.setFirstGetHeroId(firstGetHeroId);
 		builder.setGreenhand(greenhand);
 		builder.setAdvance(advance);
+		builder.setShouchongIsComplete(shouchongIsComplete);
+		builder.setShouchongIsGetReward(shouchongIsGetReward);
 		
 		return builder.build();
 	}
