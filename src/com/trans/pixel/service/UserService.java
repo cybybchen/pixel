@@ -78,7 +78,7 @@ public class UserService {
     			if(cache != null && cache.getZhanli() > user.getZhanli()){
     				user.setZhanli(cache.getZhanli());
     				user.setZhanliMax(cache.getZhanli());
-    			}else{
+    			} else{
     				userRedisService.cache(serverId, user.buildShort());
     			}
 				userRedisService.updateUser(user);
@@ -87,8 +87,8 @@ public class UserService {
 			return getUser(Long.parseLong(userId));
 		}
 
-        if(user != null && userRedisService.refreshUserDailyData(user)){
-        	userRedisService.updateUser(user);
+	    if(user != null && userRedisService.refreshUserDailyData(user)){
+	    	userRedisService.updateUser(user);
         }
 		return user;
     }
