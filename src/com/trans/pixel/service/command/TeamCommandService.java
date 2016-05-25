@@ -46,7 +46,6 @@ public class TeamCommandService extends BaseCommandService {
 	}
 	
 	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
-		long userId = user.getId();
 		String teamInfo = cmd.getTeamInfo();
 		String composeSkill = "";
 		if (cmd.hasComposeSkill())
@@ -58,7 +57,7 @@ public class TeamCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		userTeamService.addUserTeam(userId, teamInfo, composeSkill);
+		userTeamService.addUserTeam(user, teamInfo, composeSkill);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 	

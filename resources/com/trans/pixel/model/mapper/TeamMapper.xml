@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.TeamMapper">
+
+	<update id="updateTeam">
+	    INSERT INTO team_cache(user_id, cache)
+	    VALUES(#{userId}, #{cache})
+	    ON 
+	    duplicate key update
+	    cache=#{cache}
+	</update>
+	
+	<select id="selectTeam" parameterType="long" resultType="string">
+		SELECT cache
+		from team_cache where user_id=#{userId}
+	</select>
+	
+</mapper>

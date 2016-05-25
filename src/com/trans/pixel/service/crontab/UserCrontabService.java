@@ -17,6 +17,7 @@ import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 
 @Service
@@ -42,6 +43,8 @@ public class UserCrontabService {
 	private RechargeService rechargeService;
 	@Resource
 	private CdkeyService cdkeyService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
@@ -98,6 +101,16 @@ public class UserCrontabService {
 		while((key=cdkeyService.popDBKey()) != null){
 			long userId = Long.parseLong(key);
 			cdkeyService.updateToDB(userId);
+		}
+		while((key=userTeamService.popDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int teamId = Integer.parseInt(keys[1]);
+			userTeamService.updateToDB(userId, teamId);
+		}
+		while((key=userTeamService.popTeamCacheDBKey()) != null){
+			long userId = Long.parseLong(key);
+			userTeamService.updateTeamCacheToDB(userId);
 		}
 	}
 }

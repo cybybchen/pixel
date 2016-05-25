@@ -45,10 +45,13 @@ public class UserService {
     			userRedisService.updateUser(user);
     		}
     	}
-
+    	
         if(user != null && userRedisService.refreshUserDailyData(user)){
         	userRedisService.updateUser(user);
-        }
+
+    		logger.warn(user.getId()+":"+user.getPurchaseCoinLeft()+" updateuser!");
+        }else
+        	logger.warn(user.getId()+":"+":"+user.getPurchaseCoinLeft());
         
         return user;
     }
@@ -81,16 +84,14 @@ public class UserService {
     			} else{
     				userRedisService.cache(serverId, user.buildShort());
     			}
+    			userRedisService.refreshUserDailyData(user);
 				userRedisService.updateUser(user);
 			}
+
+			return user;
 		} else {
 			return getUser(Long.parseLong(userId));
 		}
-
-	    if(user != null && userRedisService.refreshUserDailyData(user)){
-	    	userRedisService.updateUser(user);
-        }
-		return user;
     }
 	
 	public UserBean getUserByName(int serverId, String userName) {
@@ -114,16 +115,14 @@ public class UserService {
     			}else{
     				userRedisService.cache(serverId, user.buildShort());
     			}
+    			userRedisService.refreshUserDailyData(user);
 				userRedisService.updateUser(user);
 			}
+
+			return user;
 		} else {
 			return getUser(userId);
 		}
-
-        if(user != null && userRedisService.refreshUserDailyData(user)){
-        	userRedisService.updateUser(user);
-        }
-		return user;
     }
 	
 	public int addNewUser(UserBean user) {

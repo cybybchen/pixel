@@ -70,6 +70,19 @@ public class UserBean {
 	private int advance = 0;
 	private int shouchongIsComplete = 0;
 	private int shouchongIsGetReward = 0;
+	private long currentTeamid = 0;
+	/**
+	 * 上阵队伍id
+	 */
+	public long getCurrentTeamid() {
+		return currentTeamid;
+	}
+	/**
+	 * 上阵队伍id
+	 */
+	public void setCurrentTeamid(long currentTeamid) {
+		this.currentTeamid = currentTeamid;
+	}
 	/**
 	 * vip免费礼包领取状态
 	 */

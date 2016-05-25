@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.model.mapper.TeamMapper;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
@@ -15,6 +16,7 @@ import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.TeamUnlock;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
 @Service
@@ -24,17 +26,25 @@ public class UserTeamService {
 	@Resource
 	private UserTeamMapper userTeamMapper;
 	@Resource
+	private TeamMapper teamMapper;
+	@Resource
 	private UserHeroService userHeroService;
 	@Resource
 	private UserLevelService userLevelService;
+	@Resource
+	private UserService userService;
+	@Resource
+	private HeroService heroService;
 	
-	public void addUserTeam(long userId, String record, String composeSkill) {
+	public void addUserTeam(UserBean user, String record, String composeSkill) {
 		UserTeamBean userTeam = new UserTeamBean();
-		userTeam.setUserId(userId);
+		userTeam.setUserId(user.getId());
 		userTeam.setTeamRecord(record);
 		userTeam.setComposeSkill(composeSkill);
 		userTeamMapper.addUserTeam(userTeam);
 		userTeamRedisService.updateUserTeam(userTeam);
+		user.setCurrentTeamid(userTeam.getId());
+		userService.updateUser(user);
 	}
 	
 	public void delUserTeam(long userId, long id) {
@@ -49,7 +59,27 @@ public class UserTeamService {
 		userTeam.setTeamRecord(record);
 		userTeam.setComposeSkill(composeSkill);
 		userTeamRedisService.updateUserTeam(userTeam);
-		userTeamMapper.updateUserTeam(userTeam);
+//		userTeamMapper.updateUserTeam(userTeam);
+	}
+
+	public void updateToDB(long userId, long id) {
+		UserTeamBean team = userTeamRedisService.getUserTeam(userId, id);
+		if(team != null)
+			userTeamMapper.updateUserTeam(team);
+	}
+	
+	public String popDBKey(){
+		return userTeamRedisService.popDBKey();
+	}
+	
+	public void updateTeamCacheToDB(long userId) {
+		Team.Builder team = userTeamRedisService.getTeamCache(userId);
+		if(team.getHeroInfoCount() > 0)
+			teamMapper.updateTeam(userId, RedisService.formatJson(team.build()));
+	}
+	
+	public String popTeamCacheDBKey(){
+		return userTeamRedisService.popDBKey();
 	}
 	
 	public List<UserTeamBean> selectUserTeamList(long userId) {
@@ -95,7 +125,24 @@ public class UserTeamService {
 	}
 
 	public Team getTeamCache(long userid){
-		return userTeamRedisService.getTeamCache(userid);
+		Team.Builder team = userTeamRedisService.getTeamCache(userid);
+
+		UserBean user = userService.getUser(userid);
+		if (user == null) {
+			user = new UserBean();
+			user.init(1, "someone", "someone", 0);
+		}
+		team.setUser(user.buildShort());
+		if(team.getHeroInfoCount() == 0){
+			Team currentTeam = getTeam(user, user.getCurrentTeamid());
+			team.mergeFrom(currentTeam);
+			if(team.getHeroInfoCount() == 0){
+				HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
+				team.addHeroInfo(heroInfo.buildRankHeroInfo());
+			}
+			saveTeamCache(user, team.build());
+		}
+		return team.build();
 	}
 
 	public void saveTeamCacheWithoutExpire(UserBean user, Team team){
