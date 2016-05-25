@@ -65,6 +65,7 @@ public class MailService {
 	
 	public void delMail(long userId, int type, int id) {
 		mailRedisService.deleteMail(userId, type, id);
+		isDeleteNotice(userId, type);
 	}
 	
 	public int getMailCount(long userId, int type) {
