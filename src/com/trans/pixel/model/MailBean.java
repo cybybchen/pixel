@@ -104,7 +104,7 @@ public class MailBean {
 			RewardBean reward = new RewardBean();
 			reward.setItemid(rewardinfo.getItemid());
 			reward.setName(rewardinfo.getItemname());
-			reward.setCount(rewardinfo.getCount());
+			reward.setCount((int)rewardinfo.getCount());
 			list.add(reward);
 		}
 		this.rewardList = list;

@@ -75,25 +75,25 @@ public class RewardService {
 	/**
 	 * need updateuser when return true
 	 */
-	public boolean doReward(UserBean user, int rewardId, int rewardCount) {
+	public boolean doReward(UserBean user, int rewardId, long rewardCount) {
 		if (rewardId > RewardConst.AREAEQUIPMENT) {
-			areaService.addAreaEquip(user, rewardId, rewardCount);
+			areaService.addAreaEquip(user, rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.HEAD) {
 			userHeadService.addUserHead(user, rewardId);
 		} else if (rewardId > RewardConst.HERO) {
 			int star = (rewardId % RewardConst.HERO) / RewardConst.HERO_STAR;
 			int heroId = rewardId % RewardConst.HERO_STAR;
-			userHeroService.addUserHero(user, heroId, star, rewardCount);
+			userHeroService.addUserHero(user, heroId, star, (int)rewardCount);
 		} else if (rewardId > RewardConst.PACKAGE) {
-			userPropService.addUserProp(user.getId(), rewardId, rewardCount);
+			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {
-			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
+			userEquipService.addUserEquip(user.getId(), rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
-			userEquipService.addUserEquip(user.getId(), rewardId, rewardCount);
+			userEquipService.addUserEquip(user.getId(), rewardId, (int)rewardCount);
 		} else {
 			switch (rewardId) {
 				case RewardConst.RECHARGE:
-					rechargeService.recharge(user, rewardCount);;
+					rechargeService.recharge(user, (int)rewardCount);;
 					return true;
 				case RewardConst.EXP:
 					user.setExp(user.getExp() + rewardCount);
@@ -102,23 +102,23 @@ public class RewardService {
 					user.setCoin(user.getCoin() + rewardCount);
 					return true;
 				case RewardConst.JEWEL:
-					user.setJewel(user.getJewel() + rewardCount);
+					user.setJewel(user.getJewel() + (int)rewardCount);
 					return true;
 				case RewardConst.PVPCOIN:
-					user.setPointPVP(user.getPointPVP() + rewardCount);
+					user.setPointPVP(user.getPointPVP() + (int)rewardCount);
 					/**
 					 * 收集魔晶的活动
 					 */
-					activityService.storeMojingActivity(user.getId(), rewardCount);
+					activityService.storeMojingActivity(user.getId(), (int)rewardCount);
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
-					user.setPointExpedition(user.getPointExpedition() + rewardCount);
+					user.setPointExpedition(user.getPointExpedition() + (int)rewardCount);
 					return true;
 				case RewardConst.LADDERCOIN:
-					user.setPointLadder(user.getPointLadder() + rewardCount);
+					user.setPointLadder(user.getPointLadder() + (int)rewardCount);
 					return true;
 				case RewardConst.UNIONCOIN:
-					user.setPointUnion(user.getPointUnion() + rewardCount);
+					user.setPointUnion(user.getPointUnion() + (int)rewardCount);
 					return true;
 				default:
 					break;
