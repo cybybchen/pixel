@@ -252,19 +252,20 @@ public class LadderService {
 			LadderDailyBean startRanking = ladderDailyList.get(index);
 			LadderDailyBean endRanking = ladderDailyList.get(++index);
 			long startRank = startRanking.getRanking();
-			if (startRank == 1) {
-				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, startRank);
+			long endRank = endRanking.getRanking();
+			if (endRank >= 2500) {
+				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, endRank);
 				if (userRank != null && userRank.getUserId() > 0) {
-					MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
+					MailBean mail = buildLadderDailyMail(userRank.getUserId(), endRanking);
 					mailService.addMail(mail);
 				}
 				continue;
 			}
-			long endRank = endRanking.getRanking();
-			for (long i = startRank + 1; i <= endRank; ++i) {
+			
+			for (long i = startRank; i < endRank; ++i) {
 				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
 				if (userRank != null && userRank.getUserId() > 0) {
-					MailBean mail = buildLadderDailyMail(userRank.getUserId(), endRanking);
+					MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
 					mailService.addMail(mail);
 				}
 			}
