@@ -88,7 +88,9 @@ public class MailService {
 	}
 	
 	public int deleteMail(UserBean user, int type, List<Integer> ids) {
-		return mailRedisService.deleteMail(user.getId(), type, ids);
+		int count = mailRedisService.deleteMail(user.getId(), type, ids);
+		isDeleteNotice(user.getId(), type);
+		return count;
 	}
 	
 	private boolean hasSend(long userId, int type, long friendId) {
