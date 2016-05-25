@@ -408,19 +408,15 @@ message FightResultList {
 message PVPMonsterReward {//pvp怪物奖励
 	required int32 id = 1;
 	optional string name = 2;
-	optional int32 a = 3;//奖励魔金a+b*level
-	optional float b = 4;
-	optional int32 itemcount = 5;
-	optional int32 itemid1 = 7;
-	optional int32 count1 = 8;
-	optional int32 weight1 = 9;
-	optional int32 itemid2 = 10;
-	optional int32 count2 = 11;
-	optional int32 weight2 = 12;
-	optional int32 itemid3 = 13;
-	optional int32 count3 = 14;
-	optional int32 weight3a = 15;
-	optional float weight3b = 16;
+	repeated PVPMonsterRewardLoot loot = 3;
+}
+message PVPMonsterRewardLoot {
+	optional int32 weightall = 1;
+	optional int32 itemid = 2;
+	optional int32 counta = 3;
+	optional int32 countb = 4;
+	optional int32 weighta = 5;
+	optional float weightb = 6;
 }
 message PVPMonsterRewardList {
 	repeated PVPMonsterReward enemy = 1;

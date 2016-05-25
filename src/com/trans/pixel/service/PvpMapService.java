@@ -30,6 +30,7 @@ import com.trans.pixel.protoc.Commands.PVPMapList;
 import com.trans.pixel.protoc.Commands.PVPMine;
 import com.trans.pixel.protoc.Commands.PVPMonster;
 import com.trans.pixel.protoc.Commands.PVPMonsterReward;
+import com.trans.pixel.protoc.Commands.PVPMonsterRewardLoot;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -272,28 +273,13 @@ public class PvpMapService {
 				redis.deleteMonster(user, positionid);
 			PVPMonsterReward reward = redis.getMonsterReward(monster.getId());
 			RewardInfo.Builder rewardinfo = RewardInfo.newBuilder();
-			rewardinfo.setItemid(RewardConst.PVPCOIN);
-			rewardinfo.setCount(reward.getA()+(int)(reward.getB()*monster.getLevel()));
-			if(rewardinfo.getCount() > 0)
-				rewards.addLoot(rewardinfo);
-			int weight = 0;
-			weight += reward.getWeight1();
-			weight += reward.getWeight2();
-			int weight3 = (int)(reward.getWeight3A()+reward.getWeight3B()*monster.getLevel());
-			weight += weight3;
-			weight = redis.nextInt(weight);
-			if(weight < reward.getWeight1()){
-				rewardinfo.setItemid(reward.getItemid1());
-				rewardinfo.setCount(reward.getCount1());
-				rewards.addLoot(rewardinfo);
-			}else if(weight < reward.getWeight1()+reward.getWeight2()){
-				rewardinfo.setItemid(reward.getItemid2());
-				rewardinfo.setCount(reward.getCount2());
-				rewards.addLoot(rewardinfo);
-			}else{
-				rewardinfo.setItemid(reward.getItemid3());
-				rewardinfo.setCount(reward.getCount3());
-				rewards.addLoot(rewardinfo);
+			for(PVPMonsterRewardLoot loot : reward.getLootList()){
+				if(loot.getWeighta()+(int)(loot.getWeightb()*monster.getLevel()) > redis.nextInt(loot.getWeightall())){
+					rewardinfo.setItemid(loot.getItemid());
+					rewardinfo.setCount(loot.getCounta()+(int)(loot.getCountb()*monster.getLevel()));
+					if(rewardinfo.getCount() > 0)
+						rewards.addLoot(rewardinfo);
+				}
 			}
 			rewardService.doRewards(user, rewards.build());
 			buff = redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
