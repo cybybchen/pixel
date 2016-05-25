@@ -203,17 +203,17 @@ function rankRate(rate) {
 			+'<span style="margin-left: 20px;">胜率<span style="display:inline-block;margin-left:5px;width:10px;height:10px;background-color: #00F;"></span></span>'
 			+'<a href="#" onclick="switchRate();" style="float:right;margin-right:10px;">';
 	if(rate == "herorate"){
-		raterank.sort(function(a, b){return b["herorate"]-a["herorate"];});
+		raterank.sort(function(a, b){return b["herorate"]-a["herorate"]+(b["heroid"]-a["heroid"])*0.001;});
 		content += '<span class="ui-hot">出场率</span><span class="ui-rate ui-rate-active">胜率</span></a></div><ul class="ui-ratelist ui-listview">';
 	}else{
-		raterank.sort(function(a, b){return b["herohot"]-a["herohot"];});
+		raterank.sort(function(a, b){return b["herohot"]-a["herohot"]+(b["heroid"]-a["heroid"])*0.001;});
 		content += '<span class="ui-hot ui-rate-active">出场率</span><span class="ui-rate">胜率</span></a></div><ul class="ui-ratelist ui-listview">';
 	}
 	
 	$.each(raterank, function (key, value) {
 		content += '<li style="background-image:none;"><a href="#" action="'+action+'&id='+value["heroid"]+'"><img src="css/images/char'+getHeroIcon(value["heroid"])
 		+'.png"><div class="ui-progress" style="margin-top:10px;"><div class="ui-progress-r" style="width:'+(value["herohot"]*2)+'%;"></div><span>'+value["herohot"]
-		+'%</span></div><div class="ui-progress"><div class="ui-progress-b" style="width:'+(value["herorate"]*0.75)+'%;"></div><span>'+value["herorate"]+'%</span></div></a></li>';
+		+'%</span></div><div class="ui-progress"><div class="ui-progress-b" style="width:'+(value["herorate"]*0.7)+'%;"></div><span>'+value["herorate"]+'%</span></div></a></li>';
 	});
 	content += '</ul>';
 	var $el = $( content );
