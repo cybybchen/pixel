@@ -125,7 +125,7 @@ public class RechargeService {
 			rewardList = libao.getItemList();
 		}
 
-		UserBean user = userService.getUser(recharge.getUserId());
+		UserBean user = userService.getOther(recharge.getUserId());
 		recharge(user, rmb.getRmb(), jewel, isCheat);
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();

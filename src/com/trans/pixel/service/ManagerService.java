@@ -214,7 +214,7 @@ public class ManagerService extends RedisService{
 			return result;
 		}
 		if(userId != 0 && (serverId == 0 || userName.isEmpty())){
-			UserBean user = userService.getUser(userId);
+			UserBean user = userService.getOther(userId);
 			if(user == null){
 				result.put("error", "Cannot find user!");
 				return result;
@@ -665,7 +665,7 @@ public class ManagerService extends RedisService{
 				String key = entry.getKey();
 				if(!object.keySet().contains(key)){
 					UserPokedeBean userPokede = UserPokedeBean.fromJson(map.get(key));
-					userPokedeService.delUserPokede(userPokede, userService.getUser(userId));
+					userPokedeService.delUserPokede(userPokede, userService.getOther(userId));
 //					hdelete(RedisKey.PREFIX + RedisKey.USER_Pokede_PREFIX + userId, key);
 					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-pokede", map.get(key));
 				}else if(entry.getValue().equals(object.getString(key))){
@@ -1775,7 +1775,7 @@ public class ManagerService extends RedisService{
 				hput(RedisKey.BLACK_USER_LIST_PREFIX + serverId, "" + userId, endTime);
 				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "add-blackuser", ""+userId);
 			}else {
-//				UserBean user = userService.getUser(blackUserId);
+//				UserBean user = userService.getOther(blackUserId);
 				hput(RedisKey.BLACK_ACCOUNT_LIST, userAccount, endTime);
 				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "add-blackaccount", userAccount);
 			}
@@ -1790,7 +1790,7 @@ public class ManagerService extends RedisService{
 				if (DateUtil.timeIsOver(entry.getValue())) {
 					hdelete(RedisKey.BLACK_NOSAY_LIST_PREFIX + serverId, entry.getKey());
 				} else
-					map.put(entry.getKey(), userService.getUser(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
+					map.put(entry.getKey(), userService.getOther(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
 			}
 			
 			JSONObject object = new JSONObject();
@@ -1806,7 +1806,7 @@ public class ManagerService extends RedisService{
 				if (DateUtil.timeIsOver(entry.getValue())) {
 					hdelete(RedisKey.BLACK_USER_LIST_PREFIX + serverId, entry.getKey());
 				} else
-					map.put(entry.getKey(), userService.getUser(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
+					map.put(entry.getKey(), userService.getOther(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
 			}
 			
 			JSONObject object = new JSONObject();

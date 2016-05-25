@@ -40,17 +40,17 @@ public class RewardService {
 	private UserHeadService userHeadService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
-		UserBean bean = userService.getUser(userId);
+		UserBean bean = userService.getOther(userId);
 		doRewards(bean, rewardList);
 	}
 	
 	public void doReward(long userId, RewardBean reward) {
-		UserBean bean = userService.getUser(userId);
+		UserBean bean = userService.getOther(userId);
 		doReward(bean, reward);
 	}
 	
 	public void doReward(long userId, int rewardId, int rewardCount) {
-		UserBean bean = userService.getUser(userId);
+		UserBean bean = userService.getOther(userId);
 		if(doReward(bean, rewardId, rewardCount))
 			userService.updateUser(bean);
 	}
@@ -186,12 +186,12 @@ public class RewardService {
 	}
 	
 	public void doRewards(long userId, MultiReward rewards) {
-		UserBean bean = userService.getUser(userId);
+		UserBean bean = userService.getOther(userId);
 		doRewards(bean, rewards);
 	}
 	
 	public void doReward(long userId, RewardInfo reward) {
-		UserBean bean = userService.getUser(userId);
+		UserBean bean = userService.getOther(userId);
 		doReward(bean, reward);
 	}
 	

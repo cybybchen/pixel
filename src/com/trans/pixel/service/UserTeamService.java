@@ -113,7 +113,7 @@ public class UserTeamService {
 	public Team getTeamCache(long userid){
 		Team.Builder team = userTeamRedisService.getTeamCache(userid);
 
-		UserBean user = userService.getUser(userid);
+		UserBean user = userService.getOther(userid);
 		if (user == null) {
 			user = new UserBean();
 			user.init(1, "someone", "someone", 0);

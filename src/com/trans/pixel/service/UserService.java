@@ -27,7 +27,21 @@ public class UserService {
 	@Resource
     private UserMapper userMapper;
 	
+	/**
+	 * 只能自己调用，不要调用其他用户
+	 */
 	public UserBean getUser(long userId) {
+		return getUser(userId, true);
+	}
+
+	/**
+	 * 调用其他用户
+	 */
+	public UserBean getOther(long userId) {
+		return getUser(userId, false);
+	}
+	
+	private UserBean getUser(long userId, boolean isme) {
     	logger.debug("The user id is: " + userId);
     	UserBean user = userRedisService.getUser(userId);
     	if(userId < 0)
@@ -44,7 +58,7 @@ public class UserService {
     		}
     	}
     	
-        if(user != null && userRedisService.refreshUserDailyData(user)){
+        if(isme && user != null && userRedisService.refreshUserDailyData(user)){
         	userRedisService.updateUser(user);
 
     		logger.warn(user.getId()+":"+user.getPurchaseCoinLeft()+" updateuser!");
@@ -113,13 +127,13 @@ public class UserService {
     			}else{
     				userRedisService.cache(serverId, user.buildShort());
     			}
-    			userRedisService.refreshUserDailyData(user);
+//    			userRedisService.refreshUserDailyData(user);
 				userRedisService.updateUser(user);
 			}
 
 			return user;
 		} else {
-			return getUser(userId);
+			return getOther(userId);
 		}
     }
 	

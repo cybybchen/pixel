@@ -248,7 +248,7 @@ public class UnionService extends FightService{
 		}else{
 			if(user.getUnionJob() < 2)
 				return ErrorConst.PERMISSION_DENIED;
-			UserBean bean = userService.getUser(id);
+			UserBean bean = userService.getOther(id);
 			if(bean.getUnionJob() >= 1 && user.getUnionJob() < 3)
 				return ErrorConst.PERMISSION_DENIED;
 			redis.quit(id, user);
@@ -322,7 +322,7 @@ public class UnionService extends FightService{
 	
 	public ResultConst reply(Long userId, boolean receive, UserBean user) {
 		if(receive){
-			UserBean bean = userService.getUser(userId);
+			UserBean bean = userService.getOther(userId);
 			if(bean != null && bean.getUnionId() == 0){
 				if(isAreaFighting(userId, user))
 					return ErrorConst.AREA_FIGHT_BUSY;
@@ -335,6 +335,9 @@ public class UnionService extends FightService{
 				userService.updateUser(bean);
 				userService.cache(user.getServerId(), bean.buildShort());
 				redis.saveMember(bean.getId(), user);
+			}else{
+				redis.reply(userId, receive, user);
+				return ErrorConst.USER_HAS_UNION;
 			}
 		}
 		redis.reply(userId, receive, user);
@@ -373,7 +376,7 @@ public class UnionService extends FightService{
 			if(job == 1 && eldercount >= 4)
 				return ErrorConst.UNION_ELDER_FULL;
 		}
-		UserBean bean = userService.getUser(id);
+		UserBean bean = userService.getOther(id);
 		if(bean.getUnionId() == user.getUnionId()){
 			if(job == 3){//会长转让
 				user.setUnionJob(0);
