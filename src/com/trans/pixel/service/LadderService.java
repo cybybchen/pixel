@@ -165,7 +165,7 @@ public class LadderService {
 //		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 //		userService.updateUser(user);
 		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, team);
+		userTeamService.saveTeamCache(user, teamid, team);
 		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
 		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);

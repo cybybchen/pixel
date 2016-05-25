@@ -12,13 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.service.redis.UserRedisService;
-import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UserService {
@@ -50,8 +48,8 @@ public class UserService {
         	userRedisService.updateUser(user);
 
     		logger.warn(user.getId()+":"+user.getPurchaseCoinLeft()+" updateuser!");
-        }else
-        	logger.warn(user.getId()+":"+":"+user.getPurchaseCoinLeft());
+        }
+//        	logger.warn(user.getId()+":"+":"+user.getPurchaseCoinLeft());
         
         return user;
     }

@@ -44,7 +44,6 @@ public class UserTeamRedisService extends RedisService {
 			return;
 	
 		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), formatJson(team));
-		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.TEAM_CACHE_PREFIX, user.getId()+"");
 	}
 	
 	public void saveTeamCache(final UserBean user, Team team) {

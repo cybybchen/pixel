@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.hero.info.HeroInfoBean;
-import com.trans.pixel.model.mapper.TeamMapper;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
@@ -16,7 +15,6 @@ import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.TeamUnlock;
-import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
 @Service
@@ -25,8 +23,6 @@ public class UserTeamService {
 	private UserTeamRedisService userTeamRedisService;
 	@Resource
 	private UserTeamMapper userTeamMapper;
-	@Resource
-	private TeamMapper teamMapper;
 	@Resource
 	private UserHeroService userHeroService;
 	@Resource
@@ -69,16 +65,6 @@ public class UserTeamService {
 	}
 	
 	public String popDBKey(){
-		return userTeamRedisService.popDBKey();
-	}
-	
-	public void updateTeamCacheToDB(long userId) {
-		Team.Builder team = userTeamRedisService.getTeamCache(userId);
-		if(team.getHeroInfoCount() > 0)
-			teamMapper.updateTeam(userId, RedisService.formatJson(team.build()));
-	}
-	
-	public String popTeamCacheDBKey(){
 		return userTeamRedisService.popDBKey();
 	}
 	
@@ -140,7 +126,7 @@ public class UserTeamService {
 				HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 				team.addHeroInfo(heroInfo.buildRankHeroInfo());
 			}
-			saveTeamCache(user, team.build());
+			saveTeamCache(user, 0, team.build());
 		}
 		return team.build();
 	}
@@ -149,7 +135,11 @@ public class UserTeamService {
 		userTeamRedisService.saveTeamCacheWithoutExpire(user, team);
 	}
 
-	public void saveTeamCache(UserBean user, Team team){
+	public void saveTeamCache(UserBean user, long teamid, Team team){
+		if(teamid > 0){
+			user.setCurrentTeamid(teamid);
+			userService.updateUser(user);
+		}
 		userTeamRedisService.saveTeamCache(user, team);
 	}
 

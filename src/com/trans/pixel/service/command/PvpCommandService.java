@@ -95,9 +95,9 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMine(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
-		int teamid = cmd.getTeamid();
+		long teamid = cmd.getTeamid();
 		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, team);
+		userTeamService.saveTeamCache(user, teamid, team);
 		
 		int time = 0;
 		if (cmd.hasTime())
@@ -119,11 +119,11 @@ public class PvpCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		int teamid = cmd.getTeamid();
+		long teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getUser(friendUserId);
 		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, team);
+		userTeamService.saveTeamCache(user, teamid, team);
 		
 		int time = 0;
 		if (cmd.hasTime())

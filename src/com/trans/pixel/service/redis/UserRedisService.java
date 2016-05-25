@@ -45,12 +45,12 @@ public class UserRedisService extends RedisService{
 	 */
 	public boolean refreshUserDailyData(UserBean user){
 		long time = now();
-		if(user.getRedisTime() >= time/600*600/*/24/3600*24*3600L*/){
-			logger.warn(user.getId()+":"+user.getRedisTime() +">="+ time/600*600);
+		if(user.getRedisTime() >= time/24/3600*24*3600L){
+//			logger.warn(user.getId()+":"+user.getRedisTime() +">="+ time/24/3600*24*3600L);
 			user.setRedisTime(time);
 			return false;
 		}
-		logger.warn(user.getId()+":"+user.getRedisTime() +"<"+ time/600*600+" init data!");
+		logger.warn(user.getId()+":"+user.getRedisTime() +"<"+ time/24/3600*24*3600L+" init data!");
 		//每日首次登陆
 		user.setRedisTime(time);
 		user.setLoginDays(user.getLoginDays() + 1);

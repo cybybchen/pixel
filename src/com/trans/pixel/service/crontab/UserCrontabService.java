@@ -108,9 +108,5 @@ public class UserCrontabService {
 			int teamId = Integer.parseInt(keys[1]);
 			userTeamService.updateToDB(userId, teamId);
 		}
-		while((key=userTeamService.popTeamCacheDBKey()) != null){
-			long userId = Long.parseLong(key);
-			userTeamService.updateTeamCacheToDB(userId);
-		}
 	}
 }

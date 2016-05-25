@@ -276,7 +276,7 @@ public class AreaFightService extends FightService{
 		return result;
 	}
 	
-	public ResultConst AttackResourceMine(int id, int teamid, boolean ret, UserBean user, ResponseCommand.Builder responseBuilder){
+	public ResultConst AttackResourceMine(int id, long teamid, boolean ret, UserBean user, ResponseCommand.Builder responseBuilder){
 		Map<String, AreaResourceMine> mines = redis.getResourceMines(user);
 		AreaResourceMine mine = null;
 		AreaResourceMine.Builder gainmine = null;
@@ -291,7 +291,7 @@ public class AreaFightService extends FightService{
 		if(mine == null)
 			return ErrorConst.MAPINFO_ERROR;
 		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, team);
+		userTeamService.saveTeamCache(user, teamid, team);
 		if(!ret){
 			costEnergy(user);
 			return SuccessConst.PVP_ATTACK_FAIL;
