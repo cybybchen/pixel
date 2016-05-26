@@ -1170,6 +1170,7 @@ message RequestGetTeamCommand {
 message ResponseGetTeamCommand {
 	repeated HeroInfo heroInfo = 1;
 	optional UserInfo user = 2;
+	optional string composeSkill = 3;
 }
 
 message RequestLotteryCommand {

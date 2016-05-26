@@ -70,6 +70,7 @@ public class TeamCommandService extends BaseCommandService {
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 		builder.addAllHeroInfo(team.getHeroInfoList());
 		builder.setUser(team.getUser());
+		builder.setComposeSkill(team.getComposeSkill());
 		responseBuilder.setTeamCommand(builder);
 	}
 }
