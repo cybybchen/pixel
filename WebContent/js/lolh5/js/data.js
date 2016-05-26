@@ -174,7 +174,7 @@ function updateListData(action, json){
 		$("#listview-page .ui-header h1>img").attr("src", "css/images/title_data.png");
 		$("#listview-page .ul-wapper .ui-listview").empty();
 		$.each(json, function (key, value) {
-			var $el = $( '<li><a href="#" action="'+action+'&id='+value["id"]+'"><img src="css/images/'+value["id"]+'.png"><h2>'+value["title"]+'</h2><p>'+value["summary"]+'</p></a></li>' );
+			var $el = $( '<li><a href="#" action="'+action+'&id='+value["id"]+'"><img src="css/images/'+value["icon"]+'.png"><h2>'+value["title"]+'</h2><p>'+value["summary"]+'</p></a></li>' );
 			$("#listview-page .ul-wapper .ui-listview").append($el);
 		});
 	}else if(action.startsWith("action=A1009")){
