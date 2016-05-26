@@ -116,6 +116,8 @@ public class LadderCommandService extends BaseCommandService {
 		UserRank.Builder userrank = UserRank.newBuilder(userRank.buildUserRank());
 		Team team = ladderService.getTeamCache(userRank.getUserId());
 		userrank.addAllHeroInfo(team.getHeroInfoList());
+		if (team.hasComposeSkill())
+			userrank.setComposeSkill(team.getComposeSkill());
 		builder.setUserRank(userrank);
 		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}

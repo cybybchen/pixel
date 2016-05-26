@@ -624,6 +624,7 @@ message UserRank {
 	optional int32 zhanli = 5;
 	optional int32 icon = 6;
 	optional int32 vip = 7;
+	optional string composeSkill = 8;
 }
 
 message UserFriend {
@@ -1591,6 +1592,7 @@ message ResponsePVPMineInfoCommand {
 	repeated HeroInfo heroInfo = 1;
 	optional UserInfo user = 2;
 	optional PVPMine mineInfo = 3;
+	optional string composeSkill = 4;
 }
 
 message RequestAttackPVPMineCommand {//攻击pvp矿点对手

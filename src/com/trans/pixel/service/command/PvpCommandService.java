@@ -164,6 +164,9 @@ public class PvpCommandService extends BaseCommandService {
 			if(team.hasUser())
 				builder.setUser(team.getUser());
 			builder.setMineInfo(mine);
+			if (team.hasComposeSkill())
+				builder.setComposeSkill(team.getComposeSkill());
+			
 			responseBuilder.setPvpMineInfoCommand(builder);
 		}
 	}
