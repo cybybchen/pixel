@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
@@ -26,7 +28,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class EquipService {
-
+	private static final Logger log = LoggerFactory.getLogger(EquipService.class);
+	
 	@Resource
 	private UserEquipService userEquipService;
 	@Resource
@@ -60,8 +63,8 @@ public class EquipService {
 	
 	public int equipCompose(UserBean user, int levelUpId, int count, List<UserEquipBean> userEquipList) {
 		int composeEquipId = 0;;
-		EquipmentBean equip = getEquip(levelUpId);
-		if (equip != null) {//合成装备
+		if (levelUpId < RewardConst.CHIP) {//合成装备
+			EquipmentBean equip = getEquip(levelUpId);
 			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip, userEquipList);
 			if (equipLevelUpRet) {
 				userEquipService.addUserEquip(user.getId(), equip.getItemid(), 1);
