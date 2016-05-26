@@ -183,6 +183,8 @@ public class PvpCommandService extends BaseCommandService {
 			ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 			builder.addAllHeroInfo(team.getHeroInfoList());
 			builder.setUser(team.getUser());
+			if (team.hasComposeSkill())
+				builder.setComposeSkill(team.getComposeSkill());
 			responseBuilder.setTeamCommand(builder);
 		}
 	}
