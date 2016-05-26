@@ -80,9 +80,9 @@ public class MailCommandService extends BaseCommandService {
 		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
 			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
 			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.BROTHER_VIP_IS_NOT_ENOUGH);
 				
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BROTHER_VIP_IS_NOT_ENOUGH);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
