@@ -37,10 +37,6 @@ public class RankRedisService extends RedisService{
 		return rank;
 	}
 	
-	public List<UserInfo> getZhanliRanks(final UserBean user) {
-		return getZhanliRanks(user, 0, 19);
-	}
-	
 	public List<UserInfo> getZhanliRanks(final UserBean user, long start, long end) {
 		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK+user.getServerId(), start, end);
 		return userService.getCaches(user.getServerId(), ranks);
