@@ -70,7 +70,7 @@ public class ServerRedisService extends RedisService{
 		ServerData.Builder serverdata = ServerData.newBuilder();
 		if(data != null)
 			parseJson(data, serverdata);
-		int values[] = {21, 18, 12, 6};
+		int values[] = {21, 18, 12, 0};
 		for(int value : values){
 			long time = today(value);
 			if(time > serverdata.getAreaBossRefreshTime() && time < System.currentTimeMillis()/1000L){

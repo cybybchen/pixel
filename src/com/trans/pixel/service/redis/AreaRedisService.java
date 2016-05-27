@@ -252,7 +252,7 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public int canRefreshMonster(UserBean user){
-		int values[] = {21, 18, 12, 6};
+		int values[] = {21, 18, 12, 0};
 		for(int value : values){
 			long time = today(value);
 			if(time > user.getAreaMonsterRefreshTime() && time < now()){
