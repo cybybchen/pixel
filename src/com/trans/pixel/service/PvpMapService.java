@@ -17,12 +17,14 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.PvpMapConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -62,16 +64,18 @@ public class PvpMapService {
 	private UserTeamService userTeamService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private MailService mailService;
 
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user){
-		PVPMapList.Builder maplist = redis.getMapList(user);
+		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() == fieldid){
 				/*if(map.getFieldid() != fieldid){
 					return ErrorConst.UNLOCK_ORDER_ERROR;
 				}else */if(zhanli >= map.getZhanli()){
 					map.setOpened(true);
-					redis.saveMapList(maplist.build(), user);
+					redis.saveMapList(maplist.build(), user.getId());
 					if(map.getFieldid() > user.getPvpUnlock()){
 						user.setPvpUnlock(map.getFieldid());
 						userService.updateUserDailyData(user);
@@ -198,7 +202,7 @@ public class PvpMapService {
 	}
 	
 	public PVPMapList getMapList(Builder responseBuilder, UserBean user){
-		PVPMapList.Builder maplist = redis.getMapList(user);
+		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		if(user.getPvpUnlock() == 0){
 			int fieldid = maplist.getField(0).getFieldid();
 			user.setPvpUnlock(fieldid);
@@ -336,7 +340,18 @@ public class PvpMapService {
 				}
 				mine.clearOwner();
 				mine.setEnemyid(userId);
-				redis.saveMine(user.getId(), mine.build());
+				
+				PVPMapList.Builder maplist = redis.getMapList(userId, 0);
+				for (PVPMap map : maplist.getFieldList()) {
+					if (map.getFieldid() == id) {
+						String content = "玩家" + user.getUserName() + "占领了你的矿点";
+						
+						sendMineAttackedMail(userId, user, content, id);
+						redis.saveMine(user.getId(), mine.build());
+						break;
+					}
+				}
+				
 			}
 		}
 		/**
@@ -393,5 +408,10 @@ public class PvpMapService {
 		logMap.put(LogString.ENEMYID, "" + enemyId);
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_LOOTPVP);
+	}
+	
+	private void sendMineAttackedMail(long userId, UserBean enemy, String content, int id) {
+		MailBean mail = MailBean.buildMail(userId, enemy.getId(), enemy.getVip(), enemy.getIcon(), enemy.getUserName(), content, MailConst.TYPE_MINE_ATTACKED_MAIL, id);
+		mailService.addMail(mail);
 	}
 }

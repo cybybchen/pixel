@@ -65,9 +65,10 @@ public class MailCommandService extends BaseCommandService {
 		
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
 		
-		rewardService.doRewards(user, rewardList);
-		
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+		if (rewardList.size() > 0) {
+			rewardService.doRewards(user, rewardList);
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+		}
 		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);
 	}
 	
@@ -107,7 +108,6 @@ public class MailCommandService extends BaseCommandService {
 		if (cmd.hasRelatedId())
 			relatedId = cmd.getRelatedId();
 		MailBean mail = buildMail(toUserId, user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, type, relatedId);
-		mail.setIcon(user.getIcon());
 		mailService.addMail(mail);
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
 		

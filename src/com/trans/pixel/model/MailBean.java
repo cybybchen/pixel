@@ -177,6 +177,7 @@ public class MailBean {
 		if (icon != 0)
 			builder.setIcon(icon);
 		builder.setVip(vip);
+		builder.setIsRead(isRead);
 		
 		List<RewardInfo> rewardInfoBuilderList = new ArrayList<RewardInfo>();
 		for (RewardBean reward : rewardList) {
@@ -195,6 +196,21 @@ public class MailBean {
 		mail.setType(MailConst.TYPE_SYSTEM_MAIL);
 		mail.setRewardList(rewardBeanList);
 		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
+	}
+	
+	public static MailBean buildMail(long userId, long friendId, int vip, int icon, String usreName, String content, int type, int relatedId) {
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setFromUserId(friendId);
+		mail.setContent(content);
+		mail.setType(type);
+		mail.setRelatedId(relatedId);
+		mail.setFromUserName(usreName);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		mail.setVip(vip);
+		mail.setIcon(icon);
 		
 		return mail;
 	}

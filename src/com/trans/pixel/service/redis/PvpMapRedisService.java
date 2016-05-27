@@ -33,8 +33,8 @@ public class PvpMapRedisService extends RedisService{
 	@Resource
 	private UserRedisService userRedisService;
 	
-	public PVPMapList.Builder getMapList(UserBean user) {
-		String value = hget(RedisKey.USERDATA+user.getId(), "PvpMap");
+	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
+		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder;
@@ -42,15 +42,15 @@ public class PvpMapRedisService extends RedisService{
 		PVPMapList.Builder maplist = getBasePvpMapList();
 		maplist.getFieldBuilder(0).setOpened(true);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
-			if(map.getFieldid() <= user.getPvpUnlock())
+			if(map.getFieldid() <= pvpUnlock)
 				map.setOpened(true);
 		}
-		saveMapList(maplist.build(), user);
+		saveMapList(maplist.build(), userId);
 		return maplist;
 	}
 	
 	public boolean isMapOpen(UserBean user, int mapId){
-		PVPMapList.Builder maplist = getMapList(user);
+		PVPMapList.Builder maplist = getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap map : maplist.getFieldList()){
 			if(map.getFieldid() == mapId && map.getOpened())
 				return true;
@@ -58,8 +58,8 @@ public class PvpMapRedisService extends RedisService{
 		return false;
 	}
 	
-	public void saveMapList(PVPMapList maplist, UserBean user) {
-		hput(RedisKey.USERDATA+user.getId(), "PvpMap", formatJson(maplist));
+	public void saveMapList(PVPMapList maplist, long userId) {
+		hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(maplist));
 	}
 
 	public Map<String, String> getUserBuffs(UserBean user) {
@@ -78,7 +78,7 @@ public class PvpMapRedisService extends RedisService{
 		int buff = 0;
 		if(value != null)
 			buff = Integer.parseInt(value);
-		PVPMapList.Builder maplist = getMapList(user);
+		PVPMapList.Builder maplist = getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap map : maplist.getFieldList()){
 			if(map.getFieldid() == id){
 				buff += buffcount;
@@ -193,7 +193,7 @@ public class PvpMapRedisService extends RedisService{
 			Map<String, PVPMonsterList> monstermap = getMonsterConfig();
 			Map<String, PVPPositionList> positionMap = getPositionConfig();
 			if(refreshBoss){
-				PVPMapList.Builder pvpmap = getMapList(user);
+				PVPMapList.Builder pvpmap = getMapList(user.getId(), user.getPvpUnlock());
 				List<Integer> fieldids = new ArrayList<Integer>();
 				for(PVPMap map : pvpmap.getFieldList()){
 					if(map.getOpened())

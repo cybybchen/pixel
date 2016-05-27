@@ -650,6 +650,7 @@ message Mail {
 	repeated RewardInfo reward = 9;
 	optional int32 icon = 11;
 	optional int32 vip = 12;
+	optional bool isRead = 13;
 }
 
 message MailList {

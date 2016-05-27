@@ -66,7 +66,7 @@ public class MailRedisService {
 					if (mail != null) {
 						if (DateUtil.isInvalidMail(mail.getStartDate())) {
 							bhOps.delete("" + mail.getId());
-						} else if (!mail.isRead())
+						} else if (mail.getType() == MailConst.TYPE_MINE_ATTACKED_MAIL || !mail.isRead())
 							mailList.add(mail);
 					}
 					

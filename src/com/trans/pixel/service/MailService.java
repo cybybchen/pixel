@@ -31,7 +31,7 @@ public class MailService {
 			return;
 		
 		mailRedisService.addMail(mail);
-		if (mail.getType() == MailConst.TYPE_SYSTEM_MAIL)
+		if (mail.getType() == MailConst.TYPE_SYSTEM_MAIL || mail.getType() == MailConst.TYPE_MINE_ATTACKED_MAIL)
 			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_SYSTEM_MAIL);
 		else
 			noticeService.pushNotice(mail.getUserId(), NoticeConst.TYPE_FRIEND);
@@ -42,13 +42,14 @@ public class MailService {
 	}
 	
 	private void isDeleteNotice(long userId, int type) {
-		if (type == MailConst.TYPE_SYSTEM_MAIL) {
-			List<MailBean> mailList = getMailList(userId, type);
-			for (MailBean mail : mailList) {
-				if (!mail.isRead())
-					return;
+		if (type == MailConst.TYPE_SYSTEM_MAIL || type == MailConst.TYPE_MINE_ATTACKED_MAIL) {
+			for (Integer friendMailType : MailConst.SYSTEM_MAIL_TYPES) {
+				List<MailBean> mailList = getMailList(userId, friendMailType);
+				for (MailBean mail : mailList) {
+					if (!mail.isRead())
+						return;
+				}
 			}
-			
 			noticeService.deleteNotice(userId, NoticeConst.TYPE_SYSTEM_MAIL);
 		} else {
 			for (Integer friendMailType : MailConst.FRIEND_MAIL_TYPES) {
