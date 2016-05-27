@@ -19,6 +19,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class LadderDailyBean {
 	private int id = 0;
 	private long ranking = 0;
+	private long ranking1 = 0;
 	private int itemid1 = 0;
 	private int count1 = 0;
 	private int itemid2 = 0;
@@ -36,6 +37,12 @@ public class LadderDailyBean {
 	}
 	public void setRanking(long ranking) {
 		this.ranking = ranking;
+	}
+	public long getRanking1() {
+		return ranking1;
+	}
+	public void setRanking1(long ranking1) {
+		this.ranking1 = ranking1;
 	}
 	public int getItemid1() {
 		return itemid1;
@@ -78,6 +85,7 @@ public class LadderDailyBean {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
 		json.put(RANKING, ranking);
+		json.put(RANKING1, ranking1);
 		json.put(ITEMID1, itemid1);
 		json.put(COUNT1, count1);
 		json.put(ITEMID2, itemid2);
@@ -95,6 +103,7 @@ public class LadderDailyBean {
 		
 		bean.setId(json.getInt(ID));
 		bean.setRanking(json.getLong(RANKING));
+		bean.setRanking1(json.getLong(RANKING1));
 		bean.setItemid1(json.getInt(ITEMID1));
 		bean.setCount1(json.getInt(COUNT1));
 		bean.setItemid2(json.getInt(ITEMID2));
@@ -122,6 +131,7 @@ public class LadderDailyBean {
 				Element rankingElement = (Element) rootList.get(i);
 				bean.setId(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ID)));
 				bean.setRanking(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(RANKING)));
+				bean.setRanking1(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(RANKING1)));
 				bean.setItemid1(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ITEMID1)));
 				bean.setCount1(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(COUNT1)));
 				bean.setItemid2(TypeTranslatedUtil.stringToInt(rankingElement.attributeValue(ITEMID2)));
@@ -141,6 +151,7 @@ public class LadderDailyBean {
 	private final static String FILE_NAME = "lol_ladderdaily.xml";
 	private static final String ID = "id";
 	private static final String RANKING = "ranking";
+	private static final String RANKING1 = "ranking1";
 	private static final String ITEMID1 = "itemid1";
 	private static final String COUNT1 = "count1";
 	private static final String ITEMID2 = "itemid2";

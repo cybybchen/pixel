@@ -1,7 +1,6 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -249,30 +248,40 @@ public class LadderService {
 	
 	public void sendLadderDailyReward(int serverId) {
 		List<LadderDailyBean> ladderDailyList = getLadderDailyList();
-		Collections.sort(ladderDailyList, comparator);
-		int index = 0;
-		while (index < ladderDailyList.size() - 1) {
-			LadderDailyBean startRanking = ladderDailyList.get(index);
-			LadderDailyBean endRanking = ladderDailyList.get(++index);
-			long startRank = startRanking.getRanking();
-			long endRank = endRanking.getRanking();
-			if (endRank >= 2500) {
-				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, endRank);
-				if (userRank != null && userRank.getUserId() > 0) {
-					MailBean mail = buildLadderDailyMail(userRank.getUserId(), endRanking);
-					mailService.addMail(mail);
-				}
-				continue;
-			}
-			
-			for (long i = startRank; i < endRank; ++i) {
+		for (LadderDailyBean ladderDaily : ladderDailyList) {
+			for (long i = ladderDaily.getRanking(); i <= ladderDaily.getRanking1(); ++ i) {
 				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
 				if (userRank != null && userRank.getUserId() > 0) {
-					MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
+					MailBean mail = buildLadderDailyMail(userRank.getUserId(), ladderDaily);
 					mailService.addMail(mail);
 				}
 			}
 		}
+		
+//		Collections.sort(ladderDailyList, comparator);
+//		int index = 0;
+//		while (index < ladderDailyList.size() - 1) {
+//			LadderDailyBean startRanking = ladderDailyList.get(index);
+//			LadderDailyBean endRanking = ladderDailyList.get(++index);
+//			long startRank = startRanking.getRanking();
+//			long endRank = endRanking.getRanking();
+//			if (endRank >= 2500) {
+//				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, endRank);
+//				if (userRank != null && userRank.getUserId() > 0) {
+//					MailBean mail = buildLadderDailyMail(userRank.getUserId(), endRanking);
+//					mailService.addMail(mail);
+//				}
+//				continue;
+//			}
+//			
+//			for (long i = startRank; i < endRank; ++i) {
+//				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
+//				if (userRank != null && userRank.getUserId() > 0) {
+//					MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
+//					mailService.addMail(mail);
+//				}
+//			}
+//		}
 	}
 	
 	private void createLadderData(int serverId) {
