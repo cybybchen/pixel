@@ -35,6 +35,7 @@ import com.trans.pixel.protoc.Commands.LadderEnemy;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -44,6 +45,8 @@ public class LadderService {
 	private LadderRedisService ladderRedisService;
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private ServerRedisService serverRedisService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -276,6 +279,8 @@ public class LadderService {
 		//lock the redis when create ladder data
 		if (!ladderRedisService.lockRankRedis(serverId))
 			return;
+		
+		serverRedisService.setServerId(serverId);
 		
 		long startTime = System.currentTimeMillis();
 		List<LadderEnemy> enemyList = ladderRedisService.getLadderEnemy();

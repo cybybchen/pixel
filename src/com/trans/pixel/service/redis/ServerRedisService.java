@@ -54,6 +54,11 @@ public class ServerRedisService extends RedisService{
 		});
 	}
 	
+	public void setServerId(final Integer serverId) {
+		String key = RedisKey.PREFIX + RedisKey.SERVER_KEY;
+		this.sadd(key, "" + serverId);
+	}
+	
 	public void setServerIdList(final List<Integer> serverIds) {
 		String key = RedisKey.PREFIX + RedisKey.SERVER_KEY;
 		for (int serverId : serverIds)
