@@ -338,21 +338,23 @@ public class PvpMapService {
 				mine.setEnemyid(userId);
 				redis.saveMine(user.getId(), mine.build());
 				
-				PVPMapList.Builder maplist = redis.getMapList(userId, 0);
-				for (PVPMap map : maplist.getFieldList()) {
-					if (map.getFieldid() == id) {
-						String content = "玩家" + user.getUserName() + "占领了你的矿点";
-						
-						sendMineAttackedMail(userId, user, content, id);
-						/*if(mineCount/5 >= enemyCount)*/{
-							PVPMine othermine = redis.getMine(userId, id);
-							if(othermine == null || othermine.getEndTime() <= redis.now() || othermine.getEnemyid() == user.getId())
+				/*if(mineCount/5 >= enemyCount)*/{
+					PVPMine othermine = redis.getMine(userId, id);
+					if(othermine == null || othermine.getEndTime() <= redis.now() || othermine.getEnemyid() == user.getId()) {
+						PVPMapList.Builder maplist = redis.getMapList(userId, 0);
+						for (PVPMap map : maplist.getFieldList()) {
+							if (map.getFieldid() == id / 100 && map.getOpened()) {
 								redis.saveMine(userId, mine.build());
+								String content = "霸占了你的矿点(" + map.getName() + ")";
+								
+								sendMineAttackedMail(userId, user, content, id);
+								
+								break;
+							}
 						}
-						break;
 					}
+					
 				}
-				
 			}
 		}
 		/**
