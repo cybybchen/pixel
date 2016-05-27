@@ -312,7 +312,7 @@ public class AreaFightService extends FightService{
 		if(mine.hasUser())
 			costEnergy(user);
 		builder.setUser(user.buildShort());
-		long time = System.currentTimeMillis()/1000;
+		long time = redis.now();
 		builder.setEndTime(time+mine.getTime());
 		builder.setCollectTime(time);
 		redis.saveResourceMine(builder.build(), user);
@@ -334,16 +334,17 @@ public class AreaFightService extends FightService{
 //		if(!redis.setLock("S"+user.getServerId()+"_Mine_"+builder.getId()))
 //			return false;
 		int yield = (int)((builder.getEndTime() - builder.getCollectTime())/3600*builder.getYield());
+		long time = redis.now();
 		if(release){
-			if (System.currentTimeMillis() / 1000 < builder.getEndTime()){
-				yield = (int)((System.currentTimeMillis() / 1000 + builder.getTime() - builder.getEndTime())*builder.getYield()/3600);
+			if (time < builder.getEndTime()){
+				yield = (int)((time + builder.getTime() - builder.getEndTime())*builder.getYield()/3600);
 			}
 			builder.clearUser();
 			builder.clearEndTime();
 			builder.clearCollectTime();
 		}else{
-			if (System.currentTimeMillis() / 1000 < builder.getEndTime()){
-				int hour = (int)((System.currentTimeMillis() / 1000 - builder.getCollectTime())/3600);
+			if (time < builder.getEndTime()){
+				int hour = (int)((time - builder.getCollectTime())/3600);
 				yield = hour * builder.getYield();
 				builder.setCollectTime(builder.getCollectTime()+hour*3600);
 			}else{
@@ -471,7 +472,7 @@ public class AreaFightService extends FightService{
 		if(resource == null)
 			return null;
 		AreaResource.Builder builder = AreaResource.newBuilder(resource);
-		if (builder.getState() == 1 && System.currentTimeMillis() / 1000 >= builder.getClosetime()) {// 攻城开始
+		if (builder.getState() == 1 && redis.now() >= builder.getClosetime()) {// 攻城开始
 			resourceFight(builder, user);
 		}
 		return builder.build();
@@ -572,11 +573,12 @@ public class AreaFightService extends FightService{
 			}
 			// 更新资源开采点
 			// 更新资源点
+			long time = redis.now();
 			for (AreaResource.Builder resourcebuilder : areabuilder.getResourcesBuilderList()) {
 				AreaResource resource = resourceMap.get(resourcebuilder.getId() + "");
 				if (resource != null) {
 					AreaResource.Builder builder = AreaResource.newBuilder(resource);
-					if (builder.getState() == 1 && System.currentTimeMillis() / 1000 >= builder.getClosetime()) {// 攻城开始
+					if (builder.getState() == 1 && time >= builder.getClosetime()) {// 攻城开始
 						resourceFight(builder, user);
 					}
 					resourcebuilder.mergeFrom(builder.build());
@@ -587,7 +589,7 @@ public class AreaFightService extends FightService{
 					AreaResourceMine mine = mineMap.get(minebuilder.getId() + "");
 					if (mine != null) {
 						AreaResourceMine.Builder builder2 = AreaResourceMine.newBuilder(mine);
-						if (System.currentTimeMillis() / 1000 >= builder2.getEndTime()// 收获
+						if (time >= builder2.getEndTime()// 收获
 							&& builder2.hasUser()){
 							int yield = gainMine(builder2, user, true);
 							yield += redis.getMineGain(builder2.getId(), user);

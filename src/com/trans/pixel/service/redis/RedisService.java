@@ -894,7 +894,7 @@ public class RedisService {
 	 * 下个星期0点
 	 */
 	public Date nextWeek(){
-		Date date = new Date(System.currentTimeMillis()/7/24/3600L/1000L*7*24*3600L*1000L+(24*7-8)*3600L*1000L);
+		Date date = new Date((System.currentTimeMillis()/1000L+(8+3*24)*3600)/7/24/3600L*7*24*3600L*1000L+(24*4-8)*3600L*1000L);
 		return date;
 	}
 	/**
@@ -904,25 +904,32 @@ public class RedisService {
 		Date date = new Date(nextDay(0));
 		return date;
 	}
-	/**
-	 * 第二天几点
-	 */
-	public long nextDay(int hour){
-		return System.currentTimeMillis()/24/3600L/1000L*24*3600L+(hour+16)*3600L;
+	public long caltoday(long time, int hour){
+		return (time+8*3600)/24/3600L*24*3600L+(hour-8)*3600L;
 	}
 	/**
 	 * 今天几点
 	 */
 	public long today(int hour){
-		return System.currentTimeMillis()/24/3600L/1000L*24*3600L+(hour-8)*3600L;
+		return caltoday(now(), hour);
 	}
+	/**
+	 * 第二天几点
+	 */
+	public long nextDay(int hour){
+		return caltoday(now(), hour+24);
+	}
+	/**
+	 * 当前秒数
+	 */
 	public long now(){
 		return System.currentTimeMillis()/1000L;
 	}
 	/**
+	 * 当前周几
 	*/
 	public int weekday(){
-		return (int)(System.currentTimeMillis()/24/3600L/1000L+3)%7+1;
+		return (int)((System.currentTimeMillis()/1000L+8*3600)/24/3600L+3)%7+1;
 	}
 
 	public int nextInt(int value){

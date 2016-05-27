@@ -140,7 +140,7 @@ public class PvpMapService {
 		long now = redis.now();
 		int count = 0;
 		if(now - user.getPvpMineRefreshTime() >= 24*3600){
-			count = (int)(now - user.getPvpMineRefreshTime())/24/3600;
+			count = (int)((now - user.getPvpMineRefreshTime())/24/3600);
 			user.setPvpMineRefreshTime(user.getPvpMineRefreshTime()+count*24*3600);
 			count*=3;
 		}
@@ -186,7 +186,7 @@ public class PvpMapService {
 					for(int i = 0, enemy = count;i < 10 && enemy > 0; i++){
 						PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
 						PVPMine mine = mineMap.get(builder.getId()+"");
-						if(mine != null && mine.getEndTime() > System.currentTimeMillis()/1000 )
+						if(mine != null && mine.getEndTime() > redis.now() )
 							continue;
 
 						if(redis.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
@@ -229,7 +229,7 @@ public class PvpMapService {
 					mapBuilder.addMonster(monster);
 			}
 		}
-		long time = System.currentTimeMillis()/1000/3600*3600;
+		long time = redis.now()/3600*3600;
 		if(time > user.getPvpMineGainTime()){//收取资源
 			int resource = 0;
 			for(PVPMap map : maplist.getFieldList()){
@@ -318,7 +318,7 @@ public class PvpMapService {
 				enemyId = mine.getOwner().getId();
 				long userId = mine.getOwner().getId();
 				mine.setOwner(user.buildShort());
-				mine.setEndTime(System.currentTimeMillis()/1000+24*3600);
+				mine.setEndTime(redis.now()+24*3600);
 				mine.setLevel(mine.getLevel()+1);
 //				UserBean bean = userService.getUser(userId);
 //				PVPMapList.Builder maplist = redis.getBasePvpMapList();

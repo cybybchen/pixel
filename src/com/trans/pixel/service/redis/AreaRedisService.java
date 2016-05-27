@@ -125,7 +125,7 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public void costEnergy(UserBean user) {
-		long time = System.currentTimeMillis()/1000/300*300;
+		long time = now()/300*300;
 		if(user.getAreaEnergy() >= 150){
 			user.setAreaEnergy(user.getAreaEnergy()-1);
 		}else if(time - user.getAreaEnergyTime() >= 300){
@@ -255,7 +255,7 @@ public class AreaRedisService extends RedisService{
 		int values[] = {21, 18, 12, 6};
 		for(int value : values){
 			long time = today(value);
-			if(time > user.getAreaMonsterRefreshTime() && time < System.currentTimeMillis()/1000L){
+			if(time > user.getAreaMonsterRefreshTime() && time < now()){
 				user.setAreaMonsterRefreshTime(time);
 				userRedisService.updateUser(user);
 				return value;
