@@ -333,13 +333,10 @@ public class PvpMapService {
 //					if(pvpmine.hasOwner() && bean.getPvpUnlock() >= pvpmine.getId()/100)
 //						enemyCount++;
 //				}
-				/*if(mineCount/5 >= enemyCount)*/{
-					PVPMine othermine = redis.getMine(userId, id);
-					if(othermine == null || othermine.getEndTime() <= redis.now() || othermine.getEnemyid() == user.getId())
-						redis.saveMine(userId, mine.build());
-				}
+				
 				mine.clearOwner();
 				mine.setEnemyid(userId);
+				redis.saveMine(user.getId(), mine.build());
 				
 				PVPMapList.Builder maplist = redis.getMapList(userId, 0);
 				for (PVPMap map : maplist.getFieldList()) {
@@ -347,7 +344,11 @@ public class PvpMapService {
 						String content = "玩家" + user.getUserName() + "占领了你的矿点";
 						
 						sendMineAttackedMail(userId, user, content, id);
-						redis.saveMine(user.getId(), mine.build());
+						/*if(mineCount/5 >= enemyCount)*/{
+							PVPMine othermine = redis.getMine(userId, id);
+							if(othermine == null || othermine.getEndTime() <= redis.now() || othermine.getEnemyid() == user.getId())
+								redis.saveMine(userId, mine.build());
+						}
 						break;
 					}
 				}
