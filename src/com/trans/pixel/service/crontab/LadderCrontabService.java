@@ -20,7 +20,7 @@ public class LadderCrontabService {
 	@Resource
 	private ServerService serverService;
 	
-	@Scheduled(cron = "0 35 11 * * ? ")
+	@Scheduled(cron = "0 0 21 * * ? ")
 //	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 //	@Scheduled(cron = "0 55 10 * * ? ")
