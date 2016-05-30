@@ -176,7 +176,7 @@ public class RedisKey {
 	public static final String USER_ACTIVITY_KAIFU_PREFIX = PREFIX + "KF_";
 	
 	//activity config redis
-	public static final String ACTIVITY_PREFIX = "acivity_";
+	public static final String ACTIVITY_PREFIX = "activity_";
 	public static final String ACHIEVE_KEY = PREFIX + CONFIG_PREFIX+"achieve";
 	public static final String ACTIVITY_RICHANG_KEY = PREFIX + CONFIG_PREFIX+"richang";
 	public static final String ACTIVITY_KAIFU2_KEY = PREFIX + CONFIG_PREFIX+"kaifu2";
@@ -188,6 +188,7 @@ public class RedisKey {
 	public static final String ACTIVITY_CONFIG_PREFIX = PREFIX + CONFIG_PREFIX + ACTIVITY_PREFIX;
 	public static final String ACTIVITY_REWARD_STATUS_PREFIX = PREFIX + "reward" + SPLIT;
 	public static final String ACTIVITY_COMPLETE_COUNT_PREFIX = PREFIX + "count" + SPLIT + ACTIVITY_PREFIX;
+	public static final String ACTIVITY_FILE_PREFIX = PREFIX + CONFIG_PREFIX + ACTIVITY_PREFIX;
 	
 	//log redis
 	public static final String LOG_KEY = PREFIX + "update:log";
