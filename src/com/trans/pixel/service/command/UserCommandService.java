@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
@@ -83,6 +84,12 @@ public class UserCommandService extends BaseCommandService {
 //			userService.updateUserDailyData(user);
 //		}
 		refreshUserLogin(user);
+		
+		/**
+		 * login activity
+		 */
+		activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_LOGIN);
+		
 		userService.cache(user.getServerId(), user.buildShort());
 		pushCommand(responseBuilder, user);
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();

@@ -688,6 +688,10 @@ public class ActivityService {
 	/**
 	 * activity new by type
 	 */
+	public void handleActivity(UserBean user, int type) {
+		handleActivity(user, type, 1);
+	}
+	
 	public void handleActivity(UserBean user, int type, int count) {
 		Map<String, Activity> map = activityRedisService.getActivityConfig(type);
 		if (map == null || map.size() == 0) {
