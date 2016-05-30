@@ -40,6 +40,14 @@ message UserInfo {
 	optional int32 advance = 41;
 	optional int32 shouchongIsComplete = 42;
 	optional int32 shouchongIsGetReward = 43;
+	optional bool monthJewel = 44;//初级钻石月卡可领
+	optional bool monthJewel2 = 45;//高级钻石月卡可领
+	optional bool poluoLibao = 46;//双周魄罗礼包可领
+	optional bool superPoluoLibao = 47;//双周超级魄罗礼包可领
+	optional bool blueEquipLibao = 48;//双周蓝色装备礼包可领
+	optional bool purpleEquipLibao = 49;//双周紫色装备礼包可领
+	repeated JewelPool growJewelCount = 50;//成长钻石基金可领
+	repeated JewelPool growExpCount = 51;//成长经验基金可领
 }
 
 message ServerData {
@@ -169,6 +177,20 @@ message PurchaseCoinCost {
 
 message PurchaseCoinCostList {
 	repeated PurchaseCoinCost gold = 1;
+}
+
+message JewelPool {
+	optional int32 order = 1;
+	optional int32 zhanli = 2;
+	optional string description = 3;
+	optional int32 rewardid = 4;
+	optional int32 rewardcount = 5;
+	optional int32 rewarded = 6;
+	optional int32 recharged = 7;
+}
+
+message JewelPoolList {
+	repeated JewelPool order = 1;
 }
 
 message UserTeam {
@@ -1506,6 +1528,16 @@ message ResponseLadderShopCommand {
 	optional int32 refreshCost = 3;//刷新消耗
 }
 
+message YueKa {
+	required int32 itemid = 1;
+	optional int32 rewardid = 2;
+	optional int32 rewardcount = 3;
+	optional int32 count = 4;
+}
+message YueKaList {
+	repeated YueKa item = 1;
+}
+
 message Libao {
 	required int32 id = 1;
 	optional int32 rechargeid = 2;
@@ -1850,6 +1882,31 @@ message RequestLogCommand {
 	optional int32 rechargetype = 15;
 }
 
+message RequestGetMonthJewelCommand {
+	
+}
+message RequestGetMonthJewel2Command {
+	
+}
+message RequestGetPoluoLibaoCommand {
+	
+}
+message RequestGetSuperPoluoLibaoCommand {
+	
+}
+message RequestGetBlueEquipLibaoCommand {
+	
+}
+message RequestGetPurpleEquipLibaoCommand {
+	
+}
+message RequestGetGrowJewelCommand {
+	required int32 order = 1;
+}
+message RequestGetGrowExpCommand {
+	required int32 order = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -1926,6 +1983,14 @@ message RequestCommand {
 	optional RequestCdkeyCommand cdkeyCommand = 138;
 	optional RequestCheatRechargeCommand rechargeCommand = 139;
 	optional RequestPurchaseVipLibaoCommand purchaseVipLibaoCommand = 141;
+	optional RequestGetMonthJewelCommand getMonthJewelCommand = 143;
+	optional RequestGetMonthJewel2Command getMonthJewel2Command = 144;
+	optional RequestGetPoluoLibaoCommand getPoluoLibaoCommand = 145;
+	optional RequestGetSuperPoluoLibaoCommand getSuperPoluoLibaoCommand = 146;
+	optional RequestGetBlueEquipLibaoCommand getBlueEquipLibaoCommand = 147;
+	optional RequestGetPurpleEquipLibaoCommand getPurpleEquipLibaoCommand = 148;
+	optional RequestGetGrowJewelCommand getGrowJewelCommand = 149;
+	optional RequestGetGrowExpCommand getGrowExpCommand = 150;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;

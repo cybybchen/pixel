@@ -15,6 +15,9 @@ public class AchieveTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(AchieveTest.class);
 	
 	@Test
+	public void test(){
+		System.out.println(System.currentTimeMillis()/1000);
+	}
 	public void achieveRewardTest() {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());

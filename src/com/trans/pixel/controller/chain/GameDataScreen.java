@@ -51,8 +51,16 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
@@ -144,6 +152,7 @@ import com.trans.pixel.service.command.HeroCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LogCommandService;
+import com.trans.pixel.service.command.LibaoCommandService;
 import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
@@ -225,6 +234,8 @@ public class GameDataScreen extends RequestScreen {
 	private NoticeCommandService noticeCommandService;
 	@Resource
 	private LogCommandService logCommandService;
+	@Resource
+	private LibaoCommandService libaoCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -767,6 +778,46 @@ public class GameDataScreen extends RequestScreen {
 		logCommandService.log(cmd, responseBuilder, user);
 		return true;//LogCommand
 	}//LogCommand
+	@Override//GetMonthJewelCommand
+	protected boolean handleCommand(RequestGetMonthJewelCommand cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getMonthJewel(cmd, responseBuilder, user);
+		return true;//GetMonthJewelCommand
+	}//GetMonthJewelCommand
+	@Override//GetMonthJewel2Command
+	protected boolean handleCommand(RequestGetMonthJewel2Command cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getMonthJewel2(cmd, responseBuilder, user);
+		return true;//GetMonthJewel2Command
+	}//GetMonthJewel2Command
+	@Override//GetPoluoLibaoCommand
+	protected boolean handleCommand(RequestGetPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getPoluoLibao(cmd, responseBuilder, user);
+		return true;//GetPoluoLibaoCommand
+	}//GetPoluoLibaoCommand
+	@Override//GetSuperPoluoLibaoCommand
+	protected boolean handleCommand(RequestGetSuperPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getSuperPoluoLibao(cmd, responseBuilder, user);
+		return true;//GetSuperPoluoLibaoCommand
+	}//GetSuperPoluoLibaoCommand
+	@Override//GetBlueEquipLibaoCommand
+	protected boolean handleCommand(RequestGetBlueEquipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getBlueEquipLibao(cmd, responseBuilder, user);
+		return true;//GetBlueEquipLibaoCommand
+	}//GetBlueEquipLibaoCommand
+	@Override//GetPurpleEquipLibaoCommand
+	protected boolean handleCommand(RequestGetPurpleEquipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getPurpleEquipLibao(cmd, responseBuilder, user);
+		return true;//GetPurpleEquipLibaoCommand
+	}//GetPurpleEquipLibaoCommand
+	@Override//GetGrowJewelCommand
+	protected boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getGrowJewel(cmd, responseBuilder, user);
+		return true;//GetGrowJewelCommand
+	}//GetGrowJewelCommand
+	@Override//GetGrowExpCommand
+	protected boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user) {
+		libaoCommandService.getGrowExp(cmd, responseBuilder, user);
+		return true;//GetGrowExpCommand
+	}//GetGrowExpCommand
 	//add handleCommand here
 
 	@Override

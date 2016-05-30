@@ -50,20 +50,7 @@ public class RechargeService {
 	@Resource
 	private RewardService rewardService;
 
-	public int recharge(UserBean user, int id) {
-		int rmb = id;
-		int jewel = id;
-		return recharge(user, rmb, jewel);
-	}
-	
-	public int recharge(UserBean user, int rmb, int jewel) {
-		return recharge(user, rmb, jewel, true);
-	}
-	
-	public int recharge(UserBean user, int rmb, int jewel, boolean cheat) {
-//		if (cheat)
-//			user.setJewel(user.getJewel()+jewel);
-
+	public int rechargeVip(UserBean user, int rmb, int jewel) {
     	int complete = user.getRechargeRecord()+jewel;
     	while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
@@ -98,45 +85,75 @@ public class RechargeService {
 		return rmb;
 	}
 	
-	public void doRecharge(UserBean user, int id){
-		int rmb = recharge(user, id);
-		userService.updateUser(user);
-		
-		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb, 0, 0, 0, "test", "1111", 1);
-		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
-    }
-	
-	public void doRecharge(Map<String, String> params, boolean isCheat) {
-		RechargeBean recharge = initRechargeBean(params);
-		rechargeRedisService.addRechargeRecord(recharge);
-		
+	public void recharge(UserBean user, int productid, String company, boolean isCheat){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		Rmb rmb = rechargeRedisService.getRmb(recharge.getProductId());
+		Rmb rmb = rechargeRedisService.getRmb(productid);
 		int itemId = rmb.getItemid();
-		int jewel = 0;
+		int jewel = rmb.getZuanshi();
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
 			reward.setCount(rmb.getZuanshi());
 			rewardList.add(reward.build());
-			jewel = rmb.getZuanshi();
-		} else {
+		}else if(itemId == 43001){//初级钻石月卡:每天登陆游戏可以领取60钻石
+			if(user.getMonthJewel() > rechargeRedisService.now())
+				user.setMonthJewel(user.getMonthJewel()+30*24*3600);
+			else
+				user.setMonthJewel(rechargeRedisService.now()+30*24*3600);
+		}else if(itemId == 43002){//高级钻石月卡:每天登陆游戏获得300钻石
+			if(user.getMonthJewel2() > rechargeRedisService.now())
+				user.setMonthJewel2(user.getMonthJewel2()+30*24*3600);
+			else
+				user.setMonthJewel2(rechargeRedisService.now()+30*24*3600);
+		}else if(itemId == 43003){//双周魄罗礼包:连续14天每天领取1个魄罗礼包
+			if(user.getPoluoLibao() > rechargeRedisService.now())
+				user.setPoluoLibao(user.getPoluoLibao()+14*24*3600);
+			else
+				user.setPoluoLibao(rechargeRedisService.now()+14*24*3600);
+		}else if(itemId == 43004){//双周超级魄罗礼包:连续14天每天领取1个超级魄罗礼包
+			if(user.getSuperPoluoLibao() > rechargeRedisService.now())
+				user.setSuperPoluoLibao(user.getSuperPoluoLibao()+14*24*3600);
+			else
+				user.setSuperPoluoLibao(rechargeRedisService.now()+14*24*3600);
+		}else if(itemId == 43005){//双周蓝色装备礼包:连续14天每天领取1个蓝色装备宝箱
+			if(user.getBlueEquipLibao() > rechargeRedisService.now())
+				user.setBlueEquipLibao(user.getBlueEquipLibao()+14*24*3600);
+			else
+				user.setBlueEquipLibao(rechargeRedisService.now()+14*24*3600);
+		}else if(itemId == 43006){//双周紫色装备礼包:连续14天每天领取1个紫色装备宝箱
+			if(user.getPurpleEquipLibao() > rechargeRedisService.now())
+				user.setPurpleEquipLibao(user.getPurpleEquipLibao()+14*24*3600);
+			else
+				user.setPurpleEquipLibao(rechargeRedisService.now()+14*24*3600);
+		}else if(itemId == 43007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
+			user.setGrowJewelCount(user.getGrowJewelCount()+1);
+		}else if(itemId == 43008){//成长经验基金:按照玩家总战力领取不同阶段的钻石
+			user.setGrowExpCount(user.getGrowExpCount()+1);
+		}else {
 			VipLibao libao = shopRedisService.getVipLibao(itemId);
 			rewardList = libao.getItemList();
 		}
 
-		UserBean user = userService.getOther(recharge.getUserId());
-		recharge(user, rmb.getRmb(), jewel, isCheat);
+		rechargeVip(user, rmb.getRmb(), jewel);
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.addAllLoot(rewardList);
-		rewardService.doRewards(recharge.getUserId(), rewards.build());
+		rewardService.doRewards(user.getId(), rewards.build());
+		userService.updateUser(user);
 		
-		rechargeRedisService.addUserRecharge(recharge.getUserId(), rewards.build());
-		shopRedisService.addLibaoCount(user, recharge.getProductId());
+		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
+		shopRedisService.addLibaoCount(user, productid);
 		
-		Map<String, String> logMap = LogUtils.buildRechargeMap(recharge.getUserId(), recharge.getServerId(), rmb.getRmb(), 0, recharge.getProductId(), 2, "", recharge.getCompany(), 1);
+		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb(), 0, productid, 2, "", company, 1);
 		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
+	}
+	
+	public void doRecharge(Map<String, String> params, boolean isCheat) {
+		RechargeBean recharge = initRechargeBean(params);
+		rechargeRedisService.addRechargeRecord(recharge);
+
+		UserBean user = userService.getOther(recharge.getUserId());
+		recharge(user, recharge.getProductId(), recharge.getCompany(), isCheat);
 	}
 	
 	/**

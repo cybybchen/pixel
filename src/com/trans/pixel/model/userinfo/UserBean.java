@@ -1,7 +1,9 @@
 package com.trans.pixel.model.userinfo;
 
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.protoc.Commands.JewelPool;
 import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.service.LibaoService;
 
 public class UserBean {
 	private long id = 0;
@@ -71,6 +73,214 @@ public class UserBean {
 	private int shouchongIsComplete = 0;
 	private int shouchongIsGetReward = 0;
 	private long currentTeamid = 0;
+	private long monthJewel = 0;
+	private long monthJewelStatus = 0;
+	private long monthJewel2 = 0;
+	private long monthJewel2Status = 0;
+	private long poluoLibao = 0;
+	private long poluoLibaoStatus = 0;
+	private long superPoluoLibao = 0;
+	private long superPoluoLibaoStatus = 0;
+	private long blueEquipLibao = 0;
+	private long blueEquipLibaoStatus = 0;
+	private long purpleEquipLibao = 0;
+	private long purpleEquipLibaoStatus = 0;
+	private int growJewelCount = 0;
+	private int growJewelCountStatus = 0;
+	private int growExpCount = 0;
+	private int growExpCountStatus = 0;
+	/**
+	 * 初级钻石月卡
+	 */
+	public long getMonthJewel() {
+		return monthJewel;
+	}
+	/**
+	 * 初级钻石月卡
+	 */
+	public void setMonthJewel(long monthJewel) {
+		this.monthJewel = monthJewel;
+	}
+	/**
+	 * 初级钻石月卡
+	 */
+	public long getMonthJewelStatus() {
+		return monthJewelStatus;
+	}
+	/**
+	 * 初级钻石月卡
+	 */
+	public void setMonthJewelStatus(long monthJewelStatus) {
+		this.monthJewelStatus = monthJewelStatus;
+	}
+	/**
+	 * 高级钻石月卡
+	 */
+	public long getMonthJewel2() {
+		return monthJewel2;
+	}
+	/**
+	 * 高级钻石月卡
+	 */
+	public void setMonthJewel2(long monthJewel2) {
+		this.monthJewel2 = monthJewel2;
+	}
+	/**
+	 * 高级钻石月卡
+	 */
+	public long getMonthJewel2Status() {
+		return monthJewel2Status;
+	}
+	/**
+	 * 高级钻石月卡
+	 */
+	public void setMonthJewel2Status(long monthJewel2Status) {
+		this.monthJewel2Status = monthJewel2Status;
+	}
+	/**
+	 * 双周魄罗礼包
+	 */
+	public long getPoluoLibao() {
+		return poluoLibao;
+	}
+	/**
+	 * 双周魄罗礼包
+	 */
+	public void setPoluoLibao(long poluoLibao) {
+		this.poluoLibao = poluoLibao;
+	}
+	/**
+	 * 双周魄罗礼包
+	 */
+	public long getPoluoLibaoStatus() {
+		return poluoLibaoStatus;
+	}
+	/**
+	 * 双周魄罗礼包
+	 */
+	public void setPoluoLibaoStatus(long poluoLibaoStatus) {
+		this.poluoLibaoStatus = poluoLibaoStatus;
+	}
+	/**
+	 * 双周超级魄罗礼包
+	 */
+	public long getSuperPoluoLibao() {
+		return superPoluoLibao;
+	}
+	/**
+	 * 双周超级魄罗礼包
+	 */
+	public void setSuperPoluoLibao(long superPoluoLibao) {
+		this.superPoluoLibao = superPoluoLibao;
+	}
+	/**
+	 * 双周超级魄罗礼包
+	 */
+	public long getSuperPoluoLibaoStatus() {
+		return superPoluoLibaoStatus;
+	}
+	/**
+	 * 双周超级魄罗礼包
+	 */
+	public void setSuperPoluoLibaoStatus(long superPoluoLibaoStatus) {
+		this.superPoluoLibaoStatus = superPoluoLibaoStatus;
+	}
+	/**
+	 * 双周蓝色装备礼包
+	 */
+	public long getBlueEquipLibao() {
+		return blueEquipLibao;
+	}
+	/**
+	 * 双周蓝色装备礼包
+	 */
+	public void setBlueEquipLibao(long blueEquipLibao) {
+		this.blueEquipLibao = blueEquipLibao;
+	}
+	/**
+	 * 双周蓝色装备礼包
+	 */
+	public long getBlueEquipLibaoStatus() {
+		return blueEquipLibaoStatus;
+	}
+	/**
+	 * 双周蓝色装备礼包
+	 */
+	public void setBlueEquipLibaoStatus(long blueEquipLibaoStatus) {
+		this.blueEquipLibaoStatus = blueEquipLibaoStatus;
+	}
+	/**
+	 * 双周紫色装备礼包
+	 */
+	public long getPurpleEquipLibao() {
+		return purpleEquipLibao;
+	}
+	/**
+	 * 双周紫色装备礼包
+	 */
+	public void setPurpleEquipLibao(long purpleEquipLibao) {
+		this.purpleEquipLibao = purpleEquipLibao;
+	}
+	/**
+	 * 双周紫色装备礼包
+	 */
+	public long getPurpleEquipLibaoStatus() {
+		return purpleEquipLibaoStatus;
+	}
+	/**
+	 * 双周紫色装备礼包
+	 */
+	public void setPurpleEquipLibaoStatus(long purpleEquipLibaoStatus) {
+		this.purpleEquipLibaoStatus = purpleEquipLibaoStatus;
+	}
+	/**
+	 * 成长钻石基金
+	 */
+	public int getGrowJewelCount() {
+		return growJewelCount;
+	}
+	/**
+	 * 成长钻石基金
+	 */
+	public void setGrowJewelCount(int growJewelCount) {
+		this.growJewelCount = growJewelCount;
+	}
+	/**
+	 * 成长钻石基金
+	 */
+	public int getGrowJewelCountStatus() {
+		return growJewelCountStatus;
+	}
+	/**
+	 * 成长钻石基金
+	 */
+	public void setGrowJewelCountStatus(int growJewelCountStatus) {
+		this.growJewelCountStatus = growJewelCountStatus;
+	}
+	/**
+	 * 成长经验基金
+	 */
+	public int getGrowExpCount() {
+		return growExpCount;
+	}
+	/**
+	 * 成长经验基金
+	 */
+	public void setGrowExpCount(int growExpCount) {
+		this.growExpCount = growExpCount;
+	}
+	/**
+	 * 成长经验基金
+	 */
+	public int getGrowExpCountStatus() {
+		return growExpCountStatus;
+	}
+	/**
+	 * 成长经验基金
+	 */
+	public void setGrowExpCountStatus(int growExpCountStatus) {
+		this.growExpCountStatus = growExpCountStatus;
+	}
 	/**
 	 * 上阵队伍id
 	 */
@@ -917,6 +1127,24 @@ public class UserBean {
 		builder.setAdvance(advance);
 		builder.setShouchongIsComplete(shouchongIsComplete);
 		builder.setShouchongIsGetReward(shouchongIsGetReward);
+		builder.setMonthJewel(monthJewelStatus < monthJewel);
+		builder.setMonthJewel2(monthJewel2Status < monthJewel2);
+		builder.setPoluoLibao(poluoLibaoStatus < poluoLibao);
+		builder.setSuperPoluoLibao(superPoluoLibaoStatus < superPoluoLibao);
+		builder.setBlueEquipLibao(blueEquipLibaoStatus < blueEquipLibao);
+		builder.setPurpleEquipLibao(purpleEquipLibaoStatus < purpleEquipLibao);
+		for(int i = 1; i <= 6; i++){
+			JewelPool.Builder pool = JewelPool.newBuilder();
+			pool.setOrder(i);
+			pool.setRecharged(growJewelCount);
+			LibaoService.calJewelPoolRewarded(pool, growJewelCountStatus);
+			builder.addGrowJewelCount(pool);
+
+			pool.setOrder(i);
+			pool.setRecharged(growExpCount);
+			LibaoService.calJewelPoolRewarded(pool, growExpCountStatus);
+			builder.addGrowJewelCount(pool);
+		}
 		
 		return builder.build();
 	}

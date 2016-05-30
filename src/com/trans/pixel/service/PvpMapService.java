@@ -156,6 +156,8 @@ public class PvpMapService {
 			count++;
 			user.setPvpMineRefreshTime(time[2]);
 		}
+		if(count > 18)
+			count = 18;
 		if(count > 0)
 			userService.updateUserDailyData(user);
 		return count;

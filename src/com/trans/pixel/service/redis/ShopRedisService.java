@@ -12,7 +12,6 @@ import java.util.Map.Entry;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
@@ -44,8 +43,6 @@ public class ShopRedisService extends RedisService{
 	private final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
 	private final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
 	private final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
 	
 	//普通商店
 	public ShopList getDailyShop(UserBean user) {

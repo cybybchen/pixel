@@ -128,9 +128,11 @@ public class ShopService {
 	
 	public int getPurchaseCoinCost(int time){
 		PurchaseCoinCostList list = redis.getPurchaseCoinCostList();
+		PurchaseCoinCost last = null;
 		for(PurchaseCoinCost cost : list.getGoldList()){
-			if(time < cost.getCount())
-				return cost.getCost();
+			if(time+1 < cost.getCount())
+				return last.getCost();
+			last = cost;
 		}
 		return 500;
 	}

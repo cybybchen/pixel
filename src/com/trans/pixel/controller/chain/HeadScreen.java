@@ -36,6 +36,14 @@ import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
+import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -121,6 +129,14 @@ import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
+import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -141,6 +157,14 @@ import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
+import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 //add import here
 import com.trans.pixel.service.redis.ServerRedisService;
 
@@ -671,6 +695,46 @@ public class HeadScreen extends RequestScreen {
 		// TODO LogCommand method
 		return true;//LogCommand
 	}//LogCommand
+	@Override//GetMonthJewelCommand
+	protected boolean handleCommand(RequestGetMonthJewelCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetMonthJewelCommand method
+		return true;//GetMonthJewelCommand
+	}//GetMonthJewelCommand
+	@Override//GetMonthJewel2Command
+	protected boolean handleCommand(RequestGetMonthJewel2Command cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetMonthJewel2Command method
+		return true;//GetMonthJewel2Command
+	}//GetMonthJewel2Command
+	@Override//GetPoluoLibaoCommand
+	protected boolean handleCommand(RequestGetPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetPoluoLibaoCommand method
+		return true;//GetPoluoLibaoCommand
+	}//GetPoluoLibaoCommand
+	@Override//GetSuperPoluoLibaoCommand
+	protected boolean handleCommand(RequestGetSuperPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetSuperPoluoLibaoCommand method
+		return true;//GetSuperPoluoLibaoCommand
+	}//GetSuperPoluoLibaoCommand
+	@Override//GetBlueEquipLibaoCommand
+	protected boolean handleCommand(RequestGetBlueEquipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetBlueEquipLibaoCommand method
+		return true;//GetBlueEquipLibaoCommand
+	}//GetBlueEquipLibaoCommand
+	@Override//GetPurpleEquipLibaoCommand
+	protected boolean handleCommand(RequestGetPurpleEquipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetPurpleEquipLibaoCommand method
+		return true;//GetPurpleEquipLibaoCommand
+	}//GetPurpleEquipLibaoCommand
+	@Override//GetGrowJewelCommand
+	protected boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetGrowJewelCommand method
+		return true;//GetGrowJewelCommand
+	}//GetGrowJewelCommand
+	@Override//GetGrowExpCommand
+	protected boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO GetGrowExpCommand method
+		return true;//GetGrowExpCommand
+	}//GetGrowExpCommand
 	//add handleCommand here
 
 	@Override
