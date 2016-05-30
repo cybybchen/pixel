@@ -84,9 +84,9 @@ public class LibaoCommandService extends BaseCommandService{
 	public void getGrowJewel(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user){
 		JewelPool pool = service.getJewelPool(user, cmd.getOrder());
 		if (pool.getRewarded() < pool.getRecharged()) {
-			int index = 7;
+			int index = 1;
 			index = index<<(3*pool.getOrder()-3);
-			user.setGrowJewelCountStatus(index & user.getGrowJewelCountStatus());
+			user.setGrowJewelCountStatus(index + user.getGrowJewelCountStatus());
 			rewardService.doReward(user, pool.getRewardid(), pool.getRewardcount());
 			userService.updateUser(user);
 			// RewardInfo.Builder reward = RewardInfo.newBuilder();
@@ -105,9 +105,9 @@ public class LibaoCommandService extends BaseCommandService{
 	public void getGrowExp(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user){
 		JewelPool pool = service.getExpPool(user, cmd.getOrder());
 		if (pool.getRewarded() < pool.getRecharged()) {
-			int index = 7;
+			int index = 1;
 			index = index<<(3*pool.getOrder()-3);
-			user.setGrowExpCountStatus(index & user.getGrowExpCountStatus());
+			user.setGrowExpCountStatus(index + user.getGrowExpCountStatus());
 			rewardService.doReward(user, pool.getRewardid(), pool.getRewardcount());
 			userService.updateUser(user);
 			// RewardInfo.Builder reward = RewardInfo.newBuilder();
