@@ -1,6 +1,5 @@
 package com.trans.pixel.service.crontab;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;

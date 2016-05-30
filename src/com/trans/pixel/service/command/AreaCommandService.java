@@ -138,7 +138,12 @@ public class AreaCommandService extends BaseCommandService{
 	
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){
 		ResultConst result = service.AttackResource(cmd.getId(), cmd.getRet(), user);
-		buildMessageOrErrorCommand(responseBuilder, result);
+		if(result instanceof SuccessConst)
+			responseBuilder.setMessageCommand(buildMessageCommand(result));
+		else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
 	}

@@ -76,7 +76,12 @@ public class PvpCommandService extends BaseCommandService {
 
 	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = pvpMapService.unlockMap(cmd.getFieldid(), cmd.getZhanli(), user);
-		buildMessageOrErrorCommand(responseBuilder, result);
+		if(result instanceof SuccessConst)
+			responseBuilder.setMessageCommand(buildMessageCommand(result));
+		else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	

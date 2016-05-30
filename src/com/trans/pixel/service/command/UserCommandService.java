@@ -60,17 +60,20 @@ public class UserCommandService extends BaseCommandService {
 		HeadInfo head = request.getHead();
 		if (blackService.isBlackAccount(head.getAccount())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
+			logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), "loginCommand", RedisService.formatJson(head), ErrorConst.BLACK_ACCOUNT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 		UserBean user = userService.getUserByAccount(head.getServerId(), head.getAccount());
 		if (user == null) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
-			responseBuilder.setErrorCommand(errorCommand);
+			logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), "loginCommand", RedisService.formatJson(head), ErrorConst.USER_NOT_EXIST);
+            responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 		if (blackService.isBlackUser(user)) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_USER_ERROR);
+            logService.sendErrorLog(user.getId(), user.getServerId(), "loginCommand", RedisService.formatJson(head), ErrorConst.BLACK_USER_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
@@ -93,6 +96,7 @@ public class UserCommandService extends BaseCommandService {
 		HeadInfo head = request.getHead();
 		if (blackService.isBlackAccount(head.getAccount())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
+            logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), "registerCommand", RedisService.formatJson(head), ErrorConst.BLACK_ACCOUNT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
@@ -110,7 +114,8 @@ public class UserCommandService extends BaseCommandService {
 			user = userService.getUserByAccount(head.getServerId(), head.getAccount());
 			if (user == null) {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_REGISTER_FAIL);
-				responseBuilder.setErrorCommand(errorCommand);
+				logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), "registerCommand", RedisService.formatJson(head), ErrorConst.ACCOUNT_REGISTER_FAIL);
+            	responseBuilder.setErrorCommand(errorCommand);
 				return;
 			}
 		}else{

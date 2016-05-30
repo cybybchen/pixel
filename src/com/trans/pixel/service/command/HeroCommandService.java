@@ -269,6 +269,7 @@ public class HeroCommandService extends BaseCommandService {
 						addExp += heroService.getDeleteExp(heroInfo.getLevel());
 				}else{
 					isError = true;
+					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HERO_HAS_FENJIE);
 					responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_HAS_FENJIE));
 					errorHeroBuilder.addHeroInfo(hero);
 				}

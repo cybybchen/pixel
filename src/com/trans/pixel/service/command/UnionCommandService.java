@@ -74,7 +74,12 @@ public class UnionCommandService extends BaseCommandService {
 			id = cmd.getId();
 
 		ResultConst result = unionService.quit(id, responseBuilder, user);
-		buildMessageOrErrorCommand(responseBuilder, result);
+		if(result instanceof SuccessConst)
+			responseBuilder.setMessageCommand(buildMessageCommand(result));
+		else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}
 
 		Union union = unionService.getUnion(user);
 		if (union != null) {
@@ -100,11 +105,17 @@ public class UnionCommandService extends BaseCommandService {
 	
 	public void reply(RequestReplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		if(user.getUnionJob() == 0){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PERMISSION_DENIED);
 			responseBuilder.setErrorCommand(super.buildErrorCommand(ErrorConst.PERMISSION_DENIED));
 			return;
 		}
 		ResultConst result = unionService.reply(cmd.getId(), cmd.getReceive(), user);
-		buildMessageOrErrorCommand(responseBuilder, result);
+		if(result instanceof SuccessConst)
+			responseBuilder.setMessageCommand(buildMessageCommand(result));
+		else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());

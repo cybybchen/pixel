@@ -12,8 +12,10 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.CostService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LotteryEquipService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class LotteryEquipCommandService extends BaseCommandService {
@@ -26,6 +28,9 @@ public class LotteryEquipCommandService extends BaseCommandService {
 	private LotteryEquipService lotteryEquipService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private LogService logService;
+	
 	public void lotteryEquip(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
 		int count = 10;
@@ -37,6 +42,7 @@ public class LotteryEquipCommandService extends BaseCommandService {
 			if (type == RewardConst.JEWEL)
 				error = ErrorConst.NOT_ENOUGH_JEWEL;
 			ErrorCommand errorCommand = buildErrorCommand(error);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), error);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 			
