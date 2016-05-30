@@ -168,6 +168,7 @@ public class UserCommandService extends BaseCommandService {
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
 				responseBuilder.setErrorCommand(errorCommand);
+				pushCommandService.pushUserInfoCommand(responseBuilder, user);
 				return;
 			}
 		}
@@ -186,6 +187,7 @@ public class UserCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 			return;
 		}
 		

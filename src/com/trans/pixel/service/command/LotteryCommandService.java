@@ -61,6 +61,7 @@ public class LotteryCommandService extends BaseCommandService {
 			
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
 	            responseBuilder.setErrorCommand(errorCommand);
+	            pushUserData(responseBuilder, user, type);
 				return;
 		}
 		
@@ -71,6 +72,7 @@ public class LotteryCommandService extends BaseCommandService {
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
+	            pushUserData(responseBuilder, user, type);
 				return;	
 			}
 			
@@ -80,6 +82,7 @@ public class LotteryCommandService extends BaseCommandService {
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP);
 	            responseBuilder.setErrorCommand(errorCommand);
+	            pushUserData(responseBuilder, user, type);
 				return;	
 			}
 		} else {
@@ -101,7 +104,7 @@ public class LotteryCommandService extends BaseCommandService {
 		            responseBuilder.setErrorCommand(errorCommand);
 		            
 		            logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), error);
-		            
+		            pushUserData(responseBuilder, user, type);
 					return;	
 				}
 			}
@@ -117,16 +120,20 @@ public class LotteryCommandService extends BaseCommandService {
 		rewardService.doRewards(user, lotteryList);
 		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
 		
-		if (type == 1 || type == 2) {
-			LotteryActivity lotteryActivity = lotteryService.getLotteryActivity(type);
-			pushCommandService.pushUserDataByRewardId(responseBuilder, user, lotteryActivity.getCost());
-		} else
-			pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		
+		pushUserData(responseBuilder, user, type);
 		/**
 		 * send log
 		 */
 		sendLog(user.getId(), user.getServerId(), type, count);
+	}
+
+	private void pushUserData(Builder responseBuilder, UserBean user, int type){
+		if (type == 1 || type == 2) {
+			LotteryActivity lotteryActivity = lotteryService.getLotteryActivity(type);
+			if(lotteryActivity != null)
+				pushCommandService.pushUserDataByRewardId(responseBuilder, user, lotteryActivity.getCost());
+		} else
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	private boolean isFreeLotteryTime(UserBean user, int type, int count) {

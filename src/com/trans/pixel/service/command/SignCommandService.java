@@ -42,13 +42,12 @@ public class SignCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
-			return;
+		}else{
+			rewardService.doRewards(user, rewardList);
+			builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
+			responseBuilder.setSignCommand(builder.build());
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		}
-		
-		rewardService.doRewards(user, rewardList);
-		builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
-		responseBuilder.setSignCommand(builder.build());
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}

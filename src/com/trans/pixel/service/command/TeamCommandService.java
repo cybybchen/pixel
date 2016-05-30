@@ -39,9 +39,8 @@ public class TeamCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill);
+		}else
+			userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 	
@@ -55,9 +54,8 @@ public class TeamCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		userTeamService.addUserTeam(user, teamInfo, composeSkill);
+		}else
+			userTeamService.addUserTeam(user, teamInfo, composeSkill);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 	

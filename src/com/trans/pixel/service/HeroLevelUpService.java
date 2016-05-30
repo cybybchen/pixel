@@ -194,8 +194,10 @@ public class HeroLevelUpService {
 		for (long infoId : costInfoIds) {
 			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
 			if (heroInfo != null) {
-				if(heroInfo.isLock())//不能分解
+				if(heroInfo.isLock()){//不能分解
+					costInfoIds.clear();
 					return -1;
+				}
 				StarBean star = starService.getStarBean(heroInfo.getStarLevel());
 				addValue += star.getValue();
 			}

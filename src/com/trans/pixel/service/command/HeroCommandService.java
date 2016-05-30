@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -48,13 +47,13 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class HeroCommandService extends BaseCommandService {
-	private Logger logger = Logger.getLogger(HeroCommandService.class);
+//	private Logger logger = Logger.getLogger(HeroCommandService.class);
 	
 	private static final int BUY_HERO_PACKAGE_COST = 50;
 	private static final int BUY_HERO_PACKAGE_COUNT = 5;
 	private static final int HERO_PACKAGE_LIMIT = 500;
 	
-	private static final int RESET_HERO_SKILL_COST = 10000;
+//	private static final int RESET_HERO_SKILL_COST = 10000;
 	@Resource
 	private HeroLevelUpService heroLevelUpService;
 	@Resource
@@ -79,7 +78,6 @@ public class HeroCommandService extends BaseCommandService {
 	private LogService logService;
 	
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int levelUpType = cmd.getLevelUpType();
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
@@ -87,7 +85,8 @@ public class HeroCommandService extends BaseCommandService {
 		int skillId = 0;
 		if (cmd.hasSkillId())
 			skillId = cmd.getSkillId();
-		List<Long> costInfoIds = cmd.getCostInfoIdList();
+		List<Long> costInfoIds = new ArrayList<Long>();
+		costInfoIds.addAll(cmd.getCostInfoIdList());
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, infoId);
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		
@@ -102,14 +101,8 @@ public class HeroCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		if (result instanceof SuccessConst) {
+		}else if (result instanceof SuccessConst) {
 			userHeroService.updateUserHero(heroInfo);
-			builder.setHeroId(heroId);
-			builder.addHeroInfo(heroInfo.buildHeroInfo());
-			responseBuilder.setHeroResultCommand(builder.build());
 			
 			if (costInfoIds.size() > 0){
 				int addExp = 0;
@@ -145,13 +138,17 @@ public class HeroCommandService extends BaseCommandService {
 				}
 				responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 			}
-			
-			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		builder.setHeroId(heroId);
+		builder.addHeroInfo(heroInfo.buildHeroInfo());
+		responseBuilder.setHeroResultCommand(builder.build());
+			
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
+	//not useful
 	public void heroAddEquip(RequestAddHeroEquipCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
 		int armId = cmd.getArmId();
@@ -161,30 +158,37 @@ public class HeroCommandService extends BaseCommandService {
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, infoId);;
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
 	
-		if (heroInfo != null) 
+		if (heroInfo != null)
 			result = heroLevelUpService.addHeroEquip(user, heroInfo, heroId, armId, userEquipList);
+		else{
+            responseBuilder.setErrorCommand(buildErrorCommand(result));
+			ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+			FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
+			herobuilder.setHeroId(heroId);
+			herobuilder.setInfoId(infoId);
+			deleteHeroBuilder.addHeroInfo(herobuilder.build());
+			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
+			return;
+		}
 		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		if (result instanceof SuccessConst) {
+		} else {
 			userHeroService.updateUserHero(heroInfo);
-			builder.setHeroId(heroId);
-			builder.addHeroInfo(heroInfo.buildHeroInfo());
-			responseBuilder.setHeroResultCommand(builder.build());
-			
-			if (userEquipList != null && userEquipList.size() > 0)
-				pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 		}
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		builder.setHeroId(heroId);
+		builder.addHeroInfo(heroInfo.buildHeroInfo());
+		responseBuilder.setHeroResultCommand(builder.build());
+		
+		if (userEquipList != null && userEquipList.size() > 0)
+			pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 	}
 	
 	public void fenjieHeroEquip(RequestFenjieHeroEquipCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
 		int armId = cmd.getArmId();
@@ -194,20 +198,24 @@ public class HeroCommandService extends BaseCommandService {
 		int equipId = 0;
 		if (heroInfo != null) 
 			equipId = heroLevelUpService.delHeroEquip(heroInfo, armId, heroId);
+		else{
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_NOT_EXIST));
+			ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+			FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
+			herobuilder.setHeroId(heroId);
+			herobuilder.setInfoId(infoId);
+			deleteHeroBuilder.addHeroInfo(herobuilder.build());
+			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
+			return;
+		}
 		
 		if (equipId == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		if (equipId > 0) {
+		}else if (equipId > 0) {
 			userHeroService.updateUserHero(heroInfo);
-			builder.setHeroId(heroId);
-			builder.addHeroInfo(heroInfo.buildHeroInfo());
-			responseBuilder.setHeroResultCommand(builder.build());
 			
 			List<RewardBean> rewardList = equipService.fenjieHeroEquip(user, equipId, 1);
 			if (rewardList == null || rewardList.size() == 0) {
@@ -222,6 +230,10 @@ public class HeroCommandService extends BaseCommandService {
 			
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		}
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		builder.setHeroId(heroId);
+		builder.addHeroInfo(heroInfo.buildHeroInfo());
+		responseBuilder.setHeroResultCommand(builder.build());
 	}
 	
 	public void fenjieHero(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user) {
@@ -301,7 +313,6 @@ public class HeroCommandService extends BaseCommandService {
 	}
 	
 	public void equipLevelup(RequestEquipLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
 		int armId = cmd.getArmId();
@@ -312,25 +323,33 @@ public class HeroCommandService extends BaseCommandService {
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
 		
 		heroInfo = userHeroService.selectUserHero(userId, infoId);
-		if (heroInfo != null) 
+		if (heroInfo != null)
 			result = heroLevelUpService.equipLevelUp(user, heroInfo, armId, levelUpId, userEquipList);
+		else{
+            responseBuilder.setErrorCommand(buildErrorCommand((ErrorConst)result));
+			ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+			FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
+			herobuilder.setHeroId(heroId);
+			herobuilder.setInfoId(infoId);
+			deleteHeroBuilder.addHeroInfo(herobuilder.build());
+			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
+			return;
+		}
 		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		if (result instanceof SuccessConst) {
+		}else{
 			userHeroService.updateUserHero(heroInfo);
-			builder.setHeroId(heroId);
-			builder.addHeroInfo(heroInfo.buildHeroInfo());
-			responseBuilder.setHeroResultCommand(builder.build());
-			
-			pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 		}
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		builder.setHeroId(heroId);
+		builder.addHeroInfo(heroInfo.buildHeroInfo());
+		responseBuilder.setHeroResultCommand(builder.build());
+		
+		pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 	}
 	
 	public void resetHeroSkill(RequestResetHeroSkillCommand cmd, Builder responseBuilder, UserBean user) {
@@ -341,7 +360,6 @@ public class HeroCommandService extends BaseCommandService {
 //			return;	
 //		}
 		
-		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
 		long userId = user.getId();
@@ -350,50 +368,62 @@ public class HeroCommandService extends BaseCommandService {
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, infoId);
 		if (heroInfo != null) 
 			result = heroLevelUpService.resetHeroSkill(user, heroInfo);
+		else{
+            responseBuilder.setErrorCommand(buildErrorCommand((ErrorConst)result));
+			ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+			FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
+			herobuilder.setHeroId(heroId);
+			herobuilder.setInfoId(infoId);
+			deleteHeroBuilder.addHeroInfo(herobuilder.build());
+			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
+			return;
+		}
 		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		if (result instanceof SuccessConst) {
+            pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		}else {
 			int resetCoin = skillService.getResetCoin(heroInfo.getSkillInfoList());
 			heroInfo.resetHeroSkill();
 			userHeroService.updateUserHero(heroInfo);
-			builder.setHeroId(heroId);
-			builder.addHeroInfo(heroInfo.buildHeroInfo());
-			responseBuilder.setHeroResultCommand(builder.build());
 			
 			List<RewardBean> rewardList = RewardBean.initRewardList(RewardConst.COIN, resetCoin);
 			rewardService.doRewards(user, rewardList);
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		}
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		builder.setHeroId(heroId);
+		builder.addHeroInfo(heroInfo.buildHeroInfo());
+		responseBuilder.setHeroResultCommand(builder.build());
 	}
 
 	public void lockHero(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
 		
 		heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
-		if (heroInfo != null)
+		if (heroInfo != null){
 			heroInfo.setLock(cmd.getIsLock());
-		
-		if(heroInfo == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HERO_NOT_EXIST);
-			
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_NOT_EXIST));
-		} else{
 			userHeroService.updateUserHero(heroInfo);
-			
-			builder.setHeroId(heroId);
-			builder.addHeroInfo(heroInfo.buildHeroInfo());
-			responseBuilder.setHeroResultCommand(builder.build());
+		}else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HERO_NOT_EXIST);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_NOT_EXIST));
+			ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+			FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
+			herobuilder.setHeroId(heroId);
+			herobuilder.setInfoId(infoId);
+			deleteHeroBuilder.addHeroInfo(herobuilder.build());
+			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
+			return;
 		}
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		builder.setHeroId(heroId);
+		builder.addHeroInfo(heroInfo.buildHeroInfo());
+		responseBuilder.setHeroResultCommand(builder.build());
 	}
 	
 	public void buyHeroPackage(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user) {
@@ -402,21 +432,17 @@ public class HeroCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT > HERO_PACKAGE_LIMIT) {
+		}else if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT > HERO_PACKAGE_LIMIT) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.HERO_LIMIT_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HERO_LIMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
+		}else {
+			user.setHeroLimit(user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT);
+			userService.updateUser(user);
+			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 		}
-		
-		user.setHeroLimit(user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT);
-		userService.updateUser(user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 	}
 	
 	public void submitComposeSkill(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user) {

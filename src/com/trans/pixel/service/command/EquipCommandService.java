@@ -57,16 +57,13 @@ public class EquipCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_EQUIP);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		if (composeEquipId > 0) {
+		}else if (composeEquipId > 0) {
 			builder.setEquipId(composeEquipId);
 			builder.setCount(count);
 			responseBuilder.setEquipComposeCommand(builder.build());
-			
-			pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 		}
+			
+		pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 	}
 	
 	public void fenjie(RequestFenjieEquipCommand cmd, Builder responseBuilder, UserBean user) {
@@ -79,17 +76,16 @@ public class EquipCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
+		}else{
+			rewardService.doRewards(user, rewardList);
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		}
-		
-		rewardService.doRewards(user, rewardList);
 		
 		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), equipId);
 		if (userEquip != null)
 			builder.addUserEquip(userEquip.buildUserEquip());
 		responseBuilder.setEquipResultCommand(builder.build());
 		
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 	}
 	
 	public void saleEquip(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user) {
@@ -101,13 +97,13 @@ public class EquipCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_SALE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
+		}else{
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			rewards.addAllLoot(rewardList);
+			rewards.setName("恭喜获得");
+			rewardService.doRewards(user, rewards.build());
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
-		MultiReward.Builder rewards = MultiReward.newBuilder();
-		rewards.addAllLoot(rewardList);
-		rewards.setName("恭喜获得");
-		rewardService.doRewards(user, rewards.build());
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 	}
 }

@@ -45,15 +45,16 @@ public class PropCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
+		}else{
+			rewardService.doRewards(user, multiReward);
+			pusher.pushRewardCommand(responseBuilder, user, multiReward);
 		}
 		
-		rewardService.doRewards(user, multiReward);
-		
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
-		if (userProp != null)
+		if (userProp != null){
 			builder.addUserProp(userProp.buildUserProp());
-		responseBuilder.setUsePropCommand(builder.build());
-		pusher.pushRewardCommand(responseBuilder, user, multiReward);
+			responseBuilder.setUsePropCommand(builder.build());
+		}
 //		pusher.pushUserPropListCommand(responseBuilder, user);
 	}
 }

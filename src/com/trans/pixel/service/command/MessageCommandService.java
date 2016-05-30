@@ -48,12 +48,10 @@ public class MessageCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-			return;
+		}else{
+			messageService.createMessageBoard(cmd.getType(), user, cmd.getMessage());
 		}
-		int type = cmd.getType();
-		String message = cmd.getMessage();
-		messageService.createMessageBoard(type, user, message);
-		pushCommandService.pushMessageBoardListCommand(type, responseBuilder, user);
+		pushCommandService.pushMessageBoardListCommand(cmd.getType(), responseBuilder, user);
 	}
 	
 	public void replyMessage(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user) {

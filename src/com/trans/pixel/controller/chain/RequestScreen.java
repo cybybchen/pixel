@@ -50,20 +50,19 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
+import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
+import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
+import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestLogCommand;
-import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
-import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
-import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
-import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
@@ -72,7 +71,6 @@ import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
-import com.trans.pixel.protoc.Commands.RequestKaifu2RewardCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
@@ -86,6 +84,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestLogCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
@@ -288,8 +287,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestRichangListCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestKaifu2ActivityCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestKaifu2RewardCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestKaifuRewardCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -731,11 +728,6 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasKaifuListCommand()) {
         	RequestKaifuListCommand cmd = request.getKaifuListCommand();
-        	if (result)
-        		result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasKaifu2RewardCommand()) {
-        	RequestKaifu2RewardCommand cmd = request.getKaifu2RewardCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }

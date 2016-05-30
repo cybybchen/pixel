@@ -31,6 +31,7 @@ public class LotteryEquipCommandService extends BaseCommandService {
 	@Resource
 	private LogService logService;
 	
+	//not useful
 	public void lotteryEquip(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
 		int count = 10;

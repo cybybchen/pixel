@@ -72,7 +72,6 @@ import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
-import com.trans.pixel.protoc.Commands.RequestKaifu2RewardCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
@@ -151,8 +150,8 @@ import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
-import com.trans.pixel.service.command.LogCommandService;
 import com.trans.pixel.service.command.LibaoCommandService;
+import com.trans.pixel.service.command.LogCommandService;
 import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
@@ -1014,13 +1013,6 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestKaifu2ActivityCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		activityCommandService.kaifu2Activity(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestKaifu2RewardCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		activityCommandService.kaifu2Reward(cmd, responseBuilder, user);
 		return true;
 	}
 

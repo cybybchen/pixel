@@ -79,6 +79,8 @@ public class AreaCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}else{
+			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		}
 	}
 	
@@ -129,6 +131,7 @@ public class AreaCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+			responseBuilder.setAreaCommand(getAreas(user));
 			return;
 		}
 		ResponseAreaResourceCommand.Builder arearesource = ResponseAreaResourceCommand.newBuilder();

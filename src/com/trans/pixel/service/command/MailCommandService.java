@@ -60,14 +60,13 @@ public class MailCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
-		
-		if (rewardList.size() > 0) {
-			rewardService.doRewards(user, rewardList);
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+		}else{
+			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
+			
+			if (rewardList.size() > 0) {
+				rewardService.doRewards(user, rewardList);
+				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+			}
 		}
 		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);
 	}
@@ -122,10 +121,8 @@ public class MailCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_DELETE_SUCCESS));
+		}else
+			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_DELETE_SUCCESS));
 		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);
 	}
 }

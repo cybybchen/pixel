@@ -70,10 +70,8 @@ public class LadderCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		
-		responseBuilder.setMessageCommand(this.buildMessageCommand(result));
+		}else
+			responseBuilder.setMessageCommand(this.buildMessageCommand(result));
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
@@ -87,26 +85,25 @@ public class LadderCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
+		}else{
+			if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
+				pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
+				MultiReward rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
+				if (rewards.getLootList().size() > 0) {
+					rewardService.doRewards(user, rewards);
+					pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
+				}
+			} 
+			
+			/**
+			 * 天梯活动
+			 */
+			activityService.ladderAttackActivity(user.getId(), result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode());
+			
+			builder.setCode(result.getCode());
+			builder.setMsg(result.getMesssage());
+			responseBuilder.setMessageCommand(builder.build());
 		}
-		
-		if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
-			pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
-			MultiReward rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
-			if (rewards.getLootList().size() > 0) {
-				rewardService.doRewards(user, rewards);
-				pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
-			}
-		} 
-		
-		/**
-		 * 天梯活动
-		 */
-		activityService.ladderAttackActivity(user.getId(), result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode());
-		
-		builder.setCode(result.getCode());
-		builder.setMsg(result.getMesssage());
-		responseBuilder.setMessageCommand(builder.build());
 	}
 	
 	public void getLadderUserInfo(RequestGetLadderUserInfoCommand cmd, Builder responseBuilder, UserBean user) {

@@ -1778,15 +1778,6 @@ message ResponseKaifu2ActivityCommand {
 	required int32 accRcPsRwRc = 3;//全民福利的领取记录
 }
 
-message RequestKaifu2RewardCommand {//全民福利的奖励
-	required int32 id = 1;
-	required int32 order = 2;
-}
-
-message ResponseKaifu2RewardCommand {
-	required int32 accRcPsRwRc = 1;
-}
-
 message RequestKaifuRewardCommand {
         required int32 id = 1;
         required int32 order = 2;
@@ -2043,7 +2034,6 @@ message RequestCommand {
 	optional RequestRichangRewardCommand richangRewardCommand = 73;
 	optional RequestRichangListCommand richangListCommand = 74;
 	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
-	optional RequestKaifu2RewardCommand kaifu2RewardCommand = 76;
 	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
 	optional RequestKaifuListCommand kaifuListCommand = 78;
 	optional RequestUserPokedeCommand userPokedeCommand = 80;
@@ -2113,7 +2103,6 @@ message ResponseCommand {
 	optional ResponseAchieveListCommand achieveListCommand = 40;
 	optional ResponseRichangListCommand richangListCommand = 42;
 	optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
-	optional ResponseKaifu2RewardCommand kaifu2RewardCommand = 44;
 	optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
     	optional ResponseKaifuListCommand kaifuListCommand = 46;
 	optional ResponseUserPokedeCommand userPokedeCommand = 47;

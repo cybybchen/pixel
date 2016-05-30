@@ -91,33 +91,29 @@ public class FriendCommandService extends BaseCommandService {
 	
 	public void handleReceiveFriendCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Integer> ids = cmd.getIdList();
+		boolean receive = cmd.getReceive();
 		List<MailBean> mailList = mailService.readMail(user, MailConst.TYPE_ADDFRIEND_MAIL, ids, null);
 		if (mailList.size() == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		boolean receive = cmd.getReceive();
-		if (receive) {
+		}else if (receive) {
 			if (userFriendService.getFriendCount(user.getId()) >= FriendConst.FRIEND_COUNT_MAX) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.YOUR_FRIEND_MAX_ERROR);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.YOUR_FRIEND_MAX_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
-	            return;
-			}
-			if (!doAddFriends(user.getId(), mailList)) {
+			}else if (!doAddFriends(user.getId(), mailList)) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.THE_PERSON_FRIEND_MAX_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
-	            return;
-			}
-			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.FRIEND_ADDED_SUCCESS));
-		} else
-			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.FRIEND_ADDED_FAILED));
+			}else
+				responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.FRIEND_ADDED_SUCCESS));
+		}
+		// else
+		// 	responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.FRIEND_ADDED_FAILED));
 //		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		pushCommandService.pushUserMailListCommand(responseBuilder, user, MailConst.TYPE_ADDFRIEND_MAIL);
