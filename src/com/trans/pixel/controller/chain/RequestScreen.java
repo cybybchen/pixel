@@ -55,6 +55,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestLogCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
@@ -344,6 +345,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestShouchongRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeartBeatCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLogCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	@Override
@@ -986,6 +988,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//GreenhandCommand
                 result = handleCommand(cmd, responseBuilder, user);//GreenhandCommand
         }//GreenhandCommand
+        if (request.hasLogCommand()) {
+            RequestLogCommand cmd = request.getLogCommand();
+            if (result)//LogCommand
+                result = handleCommand(cmd, responseBuilder, user);//LogCommand
+        }//LogCommand
         //call handleCommand here
         
         	if (responseBuilder.hasErrorCommand()) {

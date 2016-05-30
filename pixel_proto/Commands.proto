@@ -1834,7 +1834,7 @@ message RequestGreenhandCommand {
 }
 
 message RequestLogCommand {
-	required int32 logtype = 1;
+	required int32 logtype = 1; //0:login
 	optional string phoneuuid = 2;
 	optional int32 logintype = 3;
 	optional string platform = 4;

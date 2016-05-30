@@ -35,6 +35,7 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestLogCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -119,6 +120,7 @@ import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
+import com.trans.pixel.protoc.Commands.RequestLogCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
@@ -138,6 +140,7 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.protoc.Commands.RequestLogCommand;
 //add import here
 import com.trans.pixel.service.redis.ServerRedisService;
 
@@ -663,6 +666,11 @@ public class HeadScreen extends RequestScreen {
 		// TODO GreenhandCommand method
 		return true;//GreenhandCommand
 	}//GreenhandCommand
+	@Override//LogCommand
+	protected boolean handleCommand(RequestLogCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO LogCommand method
+		return true;//LogCommand
+	}//LogCommand
 	//add handleCommand here
 
 	@Override

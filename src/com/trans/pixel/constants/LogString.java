@@ -9,6 +9,7 @@ public class LogString {
 	public static final String SPLITER = "|";
 	
 	// 表中字段
+	public static final String LOGTYPE = "logtype";
 	public static final String USERID = "userid";
 	public static final String SERVERID = "serverid";
 	public static final String GM = "gm";
@@ -37,17 +38,8 @@ public class LogString {
 	public static final String ERRORMSG = "errormsg";
 	
 	public static final String MODE = "mode";
-	public static final String ROLEID = "roleId";
-	public static final String ROLELEVEL = "roleLevel";
-	public static final String MOUNTID = "mountId";
-	public static final String MOUNTLEVEL = "mountLevel";
-	public static final String PETID = "petId";
-	public static final String DISTANCE = "distance";
-	public static final String SCORE = "score";
-	public static final String LOSEMAP = "loseMap";
-	public static final String LOSEDISTANCE = "loseDistance";
-	public static final String PHONEUUID = "phoneUuid";
-	public static final String LOGINTYPE = "loginType";
+	public static final String PHONEUUID = "phoneuuid";
+	public static final String LOGINTYPE = "logintype";
 	public static final String PLATFORM = "platform";
 	public static final String VENDOR = "vendor";
 	public static final String PRODUCT = "product";

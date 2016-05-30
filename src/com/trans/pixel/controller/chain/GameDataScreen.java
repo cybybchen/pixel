@@ -56,12 +56,11 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
-import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
-import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
+import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
+import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
@@ -79,6 +78,7 @@ import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestLogCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
@@ -111,6 +111,7 @@ import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
@@ -142,6 +143,7 @@ import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeroCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
+import com.trans.pixel.service.command.LogCommandService;
 import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
@@ -221,6 +223,8 @@ public class GameDataScreen extends RequestScreen {
 	private RechargeCommandService rechargeCommandService;
 	@Resource
 	private NoticeCommandService noticeCommandService;
+	@Resource
+	private LogCommandService logCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -758,6 +762,11 @@ public class GameDataScreen extends RequestScreen {
 		userCommandService.submitGreenhand(cmd, responseBuilder, user);
 		return true;//GreenhandCommand
 	}//GreenhandCommand
+	@Override//LogCommand
+	protected boolean handleCommand(RequestLogCommand cmd, Builder responseBuilder, UserBean user) {
+		logCommandService.log(cmd, responseBuilder, user);
+		return true;//LogCommand
+	}//LogCommand
 	//add handleCommand here
 
 	@Override
