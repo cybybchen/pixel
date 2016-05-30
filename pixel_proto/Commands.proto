@@ -1841,6 +1841,13 @@ message RequestLogCommand {
 	optional string vendor = 5;
 	optional string model = 6;
 	optional string version = 7;
+	optional int32 currency = 8;
+	optional int32 currencyamount = 9;
+	optional int32 stage = 10;
+	optional int32 itemid = 11;
+	optional int32 action = 12;
+	optional string channel = 14;
+	optional int32 rechargetype = 15;
 }
 
 message RequestCommand {

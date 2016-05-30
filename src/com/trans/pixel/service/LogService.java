@@ -36,11 +36,23 @@ public class LogService {
 			case LogString.LOGTYPE_LOGIN:
 				sb.append(LogString.LOGTYPE_LOGIN_STR);
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.PHONEUUID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.USERID));
 				sb.append(LogString.SPLITER);
-				sb.append(now);
+				sb.append(params.get(LogString.LOGINTYPE));
 				sb.append(LogString.SPLITER);
-				sb.append(params.get(LogString.STATE));
+				sb.append(params.get(LogString.PLATFORM));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VENDOR));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.MODEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VERSION));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
 				sb.append(LogString.SPLITER);
 				break;
 			
