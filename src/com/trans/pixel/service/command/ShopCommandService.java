@@ -693,7 +693,6 @@ public class ShopCommandService extends BaseCommandService{
 
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getLibaoList());
-		shop.setEndTime(shoplist.getLibao(0).getEndtime());
 		responseBuilder.setLibaoShopCommand(shop);
 	}
 

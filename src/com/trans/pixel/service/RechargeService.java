@@ -138,7 +138,7 @@ public class RechargeService {
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.addAllLoot(rewardList);
-		rewardService.doRewards(user.getId(), rewards.build());
+		rewardService.doRewards(user, rewards.build());
 		userService.updateUser(user);
 		
 		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());

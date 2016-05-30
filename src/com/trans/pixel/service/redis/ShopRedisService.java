@@ -3,7 +3,6 @@ package com.trans.pixel.service.redis;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -662,6 +661,8 @@ public class ShopRedisService extends RedisService{
 			String countvalue = libaoMap.get(builder.getId()+"");
 			if(countvalue != null)
 				count = Integer.parseInt(countvalue);
+			if(builder.getPurchase() > 0 && count >= builder.getPurchase())
+				count = builder.getPurchase();
 			builder.setPurchase(Math.max(0, builder.getPurchase() - count));
 		}
 		return shopbuilder.build();
@@ -681,8 +682,12 @@ public class ShopRedisService extends RedisService{
 		count++;
 		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), rechargeid+"", count+"");
 		for(Libao libao : libaos.getLibaoList()){
-			if(libao.getRechargeid() == rechargeid){
-				this.expireAt(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), new Date(libao.getEndtime()));
+			if(libao.getRechargeid() == rechargeid && libao.getEndtime().length() > 5){
+				try {
+					this.expireAt(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(libao.getEndtime()));
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -691,17 +696,6 @@ public class ShopRedisService extends RedisService{
 		LibaoList.Builder itemsbuilder = LibaoList.newBuilder();
 		String xml = ReadConfig("lol_shoplibao.xml");
 		parseXml(xml, itemsbuilder);
-		long starttime = 0, endtime = 0;
-		try {
-			starttime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getStarttime()).getTime()/1000;
-			endtime = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(itemsbuilder.getEndtime()).getTime()/1000;
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		for(Libao.Builder libao : itemsbuilder.getLibaoBuilderList()){
-			libao.setStarttime(starttime);
-			libao.setEndtime(endtime);
-		}
 		set(LIBAOSHOP_CONFIG, formatJson(itemsbuilder.build()));
 		return itemsbuilder.build();
 	}

@@ -42,7 +42,6 @@ public class RechargeCommandService extends BaseCommandService {
 		LibaoList shoplist = shopRedisService.getLibaoShop(user);
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getLibaoList());
-		shop.setEndTime(shoplist.getLibao(0).getEndtime());
 		responseBuilder.setLibaoShopCommand(shop);
 	}
 }

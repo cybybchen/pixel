@@ -1558,19 +1558,16 @@ message Libao {
 	required int32 id = 1;
 	optional int32 rechargeid = 2;
 	optional int32 purchase = 3;
-	optional int64 starttime = 4;
-	optional int64 endtime = 5;
+	optional string starttime = 4;
+	optional string endtime = 5;
 }
 message LibaoList {
-	optional string starttime = 1;
-	optional string endtime = 2;
 	repeated Libao libao = 3;
 }
 message RequestLibaoShopCommand {//vip礼包商店
 }
 message ResponseLibaoShopCommand {
 	repeated Libao items = 1;//商品列表
-	optional int64 endTime = 2;//商品列表过期时间
 }
 
 message RequestPurchaseCoinCommand {//点石成金(获得金币和经验)
