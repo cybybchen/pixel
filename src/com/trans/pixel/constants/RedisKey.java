@@ -186,7 +186,7 @@ public class RedisKey {
 	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "kaifu2_send_record";
 	public static final String ACTIVITY_SHOUCHONG_KEY = PREFIX + CONFIG_PREFIX + "shouchong";
 	public static final String ACTIVITY_CONFIG_PREFIX = PREFIX + CONFIG_PREFIX + ACTIVITY_PREFIX;
-	public static final String ACTIVITY_REWARD_STATUS_PREFIX = PREFIX + "reward" + SPLIT;
+	public static final String ACTIVITY_REWARD_STATUS_PREFIX = PREFIX + "activityreward" + SPLIT;
 	public static final String ACTIVITY_COMPLETE_COUNT_PREFIX = PREFIX + "count" + SPLIT + ACTIVITY_PREFIX;
 	public static final String ACTIVITY_FILE_PREFIX = PREFIX + CONFIG_PREFIX + ACTIVITY_PREFIX;
 	
