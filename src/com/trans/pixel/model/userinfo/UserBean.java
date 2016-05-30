@@ -1143,7 +1143,7 @@ public class UserBean {
 			pool.setOrder(i);
 			pool.setRecharged(growExpCount);
 			LibaoService.calJewelPoolRewarded(pool, growExpCountStatus);
-			builder.addGrowJewelCount(pool);
+			builder.addGrowExpCount(pool);
 		}
 		
 		return builder.build();
