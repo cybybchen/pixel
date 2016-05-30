@@ -345,7 +345,7 @@ public class PvpMapService {
 								redis.saveMine(userId, mine.build());
 								String content = "霸占了你的矿点(" + map.getName() + ")";
 								
-								sendMineAttackedMail(userId, user, content, id);
+								sendMineAttackedMail(userId, user, content, id / 100);
 								
 								break;
 							}
