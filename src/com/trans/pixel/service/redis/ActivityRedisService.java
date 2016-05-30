@@ -313,15 +313,15 @@ public class ActivityRedisService extends RedisService {
 	
 	//activity + type
 	public Map<String, Activity> getActivityConfig(int type) {
-		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_PREFIX + type);
+		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_FILE_PREFIX + type);
 		if(keyvalue.isEmpty()){
 			Map<String, Activity> map = buildActivityConfig(type);
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Activity> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-				expireAt(RedisKey.ACTIVITY_PREFIX + type, DateUtil.getDate(entry.getValue().getEndtime()));
+				expireAt(RedisKey.ACTIVITY_FILE_PREFIX + type, DateUtil.getDate(entry.getValue().getEndtime()));
 			}
-			hputAll(RedisKey.ACTIVITY_PREFIX + type, redismap);
+			hputAll(RedisKey.ACTIVITY_FILE_PREFIX + type, redismap);
 			return map;
 		}else{
 			Map<String, Activity> map = new HashMap<String, Activity>();
