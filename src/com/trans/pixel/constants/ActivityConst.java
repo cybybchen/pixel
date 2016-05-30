@@ -144,4 +144,9 @@ public class ActivityConst {
 	public static final int LOG_TYPE_KAIFU = 1;
 	
 	public static final int LOG_TYPE_SHOUCHONG = 4;
+	
+	/**
+	 * activity type
+	 */
+	public static final int ACTIVITY_TYPE_LOGIN = 1;
 }

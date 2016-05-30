@@ -27,6 +27,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.Activity;
 import com.trans.pixel.protoc.Commands.ActivityOrder;
 import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Kaifu2;
@@ -43,6 +44,7 @@ import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
+import com.trans.pixel.service.redis.UserActivityRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -69,6 +71,8 @@ public class ActivityService {
 	private LadderRedisService ladderRedisService;
 	@Resource
 	private NoticeService noticeService;
+	@Resource
+	private UserActivityRedisService userActivityRedisService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -679,5 +683,56 @@ public class ActivityService {
 //		isDeleteNotice(user.getId());
 		
 		return ErrorConst.ACTIVITY_IS_OVER_ERROR;
+	}
+	
+	/**
+	 * activity new by type
+	 */
+	public void handleActivity(UserBean user, int type, int count) {
+		Map<String, Activity> map = activityRedisService.getActivityConfig(type);
+		if (map == null || map.size() == 0) {
+			return;
+		}
+		
+		count = userActivityRedisService.addActivityCount(user.getId(), count, type);
+		
+		Iterator<Entry<String, Activity>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Activity activity = it.next().getValue();
+			String[] serverIds = activity.getServerfilter().split(",");
+			List<Integer> serverIdList = new ArrayList<Integer>();
+			for (String serverIdStr : serverIds) {
+				serverIdList.add(TypeTranslatedUtil.stringToInt(serverIdStr));
+			}
+			
+			if (serverIdList.size() > 0 && !serverIdList.contains(user.getServerId()))
+				continue;
+			
+			boolean hasGet = userActivityRedisService.isGetActivityReward(user.getId(), type, activity.getId());
+			if (hasGet)
+				continue;
+			
+			int targetCount = activity.getTargetcount();
+			if (targetCount != 0 && count < targetCount)
+				continue;
+			
+			String startTime = activity.getStarttime();
+			String endTime = activity.getEndtime();
+			
+			if (DateUtil.timeIsAvailable(startTime, endTime)) {
+				sendActivityReward(user, activity);
+				userActivityRedisService.setActivityCompleteExpire(type, endTime);
+			} else {
+				userActivityRedisService.resetActivityComplete(type);
+			}
+		}
+	}
+	
+	private void sendActivityReward(UserBean user, Activity activity) {
+		if (activity.getActivitytype() != -1)
+			userActivityRedisService.setUserGetRewardState(user.getId(), activity);
+		
+		MailBean mail = MailBean.buildMail(user.getId(), activity.getDes(), activity.getRewardList());
+		mailService.addMail(mail);
 	}
 }

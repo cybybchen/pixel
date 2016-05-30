@@ -4,9 +4,11 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.protoc.Commands.Activity;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserActivityRedisService extends RedisService {
@@ -50,5 +52,46 @@ public class UserActivityRedisService extends RedisService {
 	
 	private String buildKaifuRedisKey(int type, long userId) {
 		return RedisKey.USER_ACTIVITY_KAIFU_PREFIX + type + RedisKey.SPLIT + RedisKey.USER_PREFIX + userId;
+	}
+	
+	/**
+	 * activity type
+	 */
+	public boolean isGetActivityReward(final long userId, final int type, final int id) {
+		String key = RedisKey.ACTIVITY_REWARD_STATUS_PREFIX + type + RedisKey.SPLIT + id;
+		if (TypeTranslatedUtil.stringToInt(hget(key, "" + userId)) == 1)
+			return true;
+		else
+			return false;
+	}
+	
+	public void setUserGetRewardState(final long userId, final Activity activity) {
+		String key = RedisKey.ACTIVITY_REWARD_STATUS_PREFIX + activity.getType() + RedisKey.SPLIT + activity.getId();
+		this.hput(key, "" + userId, "1");
+		int activityType = activity.getActivitytype();
+		
+		if (activityType == 1)
+			this.expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()));
+		else if (activityType == 0)
+			this.expireAt(key, DateUtil.getDate(activity.getEndtime()));
+				
+	}
+	
+	public void setActivityCompleteExpire(final int type, final String time) {
+		String key = RedisKey.ACTIVITY_COMPLETE_COUNT_PREFIX + type;
+		expireAt(key, DateUtil.getDate(time));
+	}
+	
+	public void resetActivityComplete(final int type) {
+		String key = RedisKey.ACTIVITY_COMPLETE_COUNT_PREFIX + type;
+		delete(key);
+	}
+	
+	public int addActivityCount(final long userId, final int add, final int type) {
+		String key = RedisKey.ACTIVITY_COMPLETE_COUNT_PREFIX + type;
+		int count = TypeTranslatedUtil.stringToInt(hget(key, "" + userId));
+		count += add;
+		hput(key, "" + userId, "" + count);
+		return count;
 	}
 }

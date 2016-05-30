@@ -13,6 +13,8 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.Activity;
+import com.trans.pixel.protoc.Commands.ActivityList;
 import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Kaifu2;
 import com.trans.pixel.protoc.Commands.Kaifu2List;
@@ -21,6 +23,7 @@ import com.trans.pixel.protoc.Commands.Richang;
 import com.trans.pixel.protoc.Commands.RichangList;
 import com.trans.pixel.protoc.Commands.Shouchong;
 import com.trans.pixel.protoc.Commands.ShouchongList;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -30,6 +33,7 @@ public class ActivityRedisService extends RedisService {
 	private static final String ACTIVITY_KAIFU2_FILE_NAME = "task/lol_taskkaifu2.xml";
 	private static final String ACTIVITY_KAIFU_FILE_NAME = "task/lol_taskkaifu1.xml";
 	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "task/lol_taskshouchong.xml";
+	private static final String ACTIVITY_FILE_PREFIX = "activity/activity_";
 	
 	//richang activity
 	public Richang getRichang(int id) {
@@ -304,6 +308,45 @@ public class ActivityRedisService extends RedisService {
 		for(Shouchong.Builder kaifu : builder.getTaskBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
+		return map;
+	}
+	
+	//activity + type
+	public Map<String, Activity> getActivityConfig(int type) {
+		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_PREFIX + type);
+		if(keyvalue.isEmpty()){
+			Map<String, Activity> map = buildActivityConfig(type);
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Activity> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				expireAt(RedisKey.ACTIVITY_PREFIX + type, DateUtil.getDate(entry.getValue().getEndtime()));
+			}
+			hputAll(RedisKey.ACTIVITY_PREFIX + type, redismap);
+			return map;
+		}else{
+			Map<String, Activity> map = new HashMap<String, Activity>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Activity.Builder builder = Activity.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Activity> buildActivityConfig(int type){
+		String xml = ReadConfig(ACTIVITY_FILE_PREFIX + type + ".xml");
+		ActivityList.Builder builder = ActivityList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + ACTIVITY_FILE_PREFIX + type + ".xml");
+			return null;
+		}
+		
+		Map<String, Activity> map = new HashMap<String, Activity>();
+		for(Activity.Builder activity : builder.getActivityBuilderList()){
+			map.put("" + activity.getId(), activity.build());
+		}
+		
 		return map;
 	}
 }

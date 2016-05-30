@@ -1036,6 +1036,22 @@ message Notice {
 	required int32 type = 1;//1:system mail 2:friend 3:achieve 4:activity
 }
 
+message ActivityList {
+	repeated Activity activity = 1;
+}
+
+message Activity {
+	required int32 id = 1;
+	required int32 type = 2;
+	required int32 targetcount = 3;
+	required string des = 4;
+	required string starttime = 5;
+	required string endtime = 6;
+	required int32 activitytype = 7;
+	repeated RewardInfo reward = 8;
+	required string serverfilter = 9;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1866,7 +1882,7 @@ message RequestGreenhandCommand {
 }
 
 message RequestLogCommand {
-	required int32 logtype = 1; //0:login
+	required int32 logtype = 1; //0:login 5:recharge
 	optional string phoneuuid = 2;
 	optional int32 logintype = 3;
 	optional string platform = 4;
