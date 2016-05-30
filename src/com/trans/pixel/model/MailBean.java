@@ -188,7 +188,7 @@ public class MailBean {
 		return builder.build();
 	}
 	
-	public static MailBean buildMail(long userId, String content, List<RewardInfo> rewardList) {
+	public static MailBean buildSystemMail(long userId, String content, List<RewardInfo> rewardList) {
 		List<RewardBean> rewardBeanList = RewardBean.buildRewardBeanList(rewardList);
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);

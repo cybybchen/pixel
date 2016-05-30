@@ -323,7 +323,7 @@ public class ActivityService {
 				List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, order.getTargetcount(), order.getTargetcount1());
 				for (UserRankBean userRank : rankList) {
 					if (userRank.getUserId() > 0) {
-						MailBean mail = MailBean.buildMail(userRank.getUserId(), order.getDescription(), rewardList);
+						MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), order.getDescription(), rewardList);
 						log.debug("ladder activity mail is:" + mail.toJson());
 						mailService.addMail(mail);
 					}
@@ -332,7 +332,7 @@ public class ActivityService {
 				Set<TypedTuple<String>> userInfoRankList = activityRedisService.getUserIdList(serverId, id, order.getTargetcount() - 1, order.getTargetcount1());
 				for (TypedTuple<String> userinfo : userInfoRankList) {
 					long userId = TypeTranslatedUtil.stringToLong(userinfo.getValue());
-					MailBean mail = MailBean.buildMail(userId, order.getDescription(), rewardList);
+					MailBean mail = MailBean.buildSystemMail(userId, order.getDescription(), rewardList);
 					log.debug("zhanji activity mail is:" + mail.toJson());
 					mailService.addMail(mail);
 				}
@@ -736,7 +736,7 @@ public class ActivityService {
 		if (activity.getActivitytype() != -1)
 			userActivityRedisService.setUserGetRewardState(user.getId(), activity);
 		
-		MailBean mail = MailBean.buildMail(user.getId(), activity.getDes(), activity.getRewardList());
+		MailBean mail = MailBean.buildSystemMail(user.getId(), activity.getDes(), activity.getRewardList());
 		mailService.addMail(mail);
 	}
 }
