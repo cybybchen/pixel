@@ -112,7 +112,8 @@ public class SkillService {
 	private int getResetCoin(SkillInfoBean skillInfo) {
 		int coin = 0;
 		SkillLevelBean skillLevel = getSkillLevel(skillInfo.getUnlock());
-		coin = skillLevel.getGold() * skillInfo.getSkillLevel() + skillLevel.getGoldlv() * skillInfo.getSkillLevel() / 2;
+		coin = (skillLevel.getGold() + skillLevel.getGold() + skillLevel.getGoldlv() * 
+				(skillInfo.getSkillLevel() - 1)) * skillInfo.getSkillLevel() / 2;
 		return coin;
 	}
 }
