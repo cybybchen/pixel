@@ -1127,12 +1127,18 @@ public class UserBean {
 		builder.setAdvance(advance);
 		builder.setShouchongIsComplete(shouchongIsComplete);
 		builder.setShouchongIsGetReward(shouchongIsGetReward);
-		builder.setMonthJewel(monthJewelStatus < monthJewel);
-		builder.setMonthJewel2(monthJewel2Status < monthJewel2);
-		builder.setPoluoLibao(poluoLibaoStatus < poluoLibao);
-		builder.setSuperPoluoLibao(superPoluoLibaoStatus < superPoluoLibao);
-		builder.setBlueEquipLibao(blueEquipLibaoStatus < blueEquipLibao);
-		builder.setPurpleEquipLibao(purpleEquipLibaoStatus < purpleEquipLibao);
+		builder.setMonthJewelStatus(monthJewelStatus < monthJewel);
+		builder.setMonthJewel(monthJewel);
+		builder.setMonthJewel2Status(monthJewel2Status < monthJewel2);
+		builder.setMonthJewel2(monthJewel2);
+		builder.setPoluoLibaoStatus(poluoLibaoStatus < poluoLibao);
+		builder.setPoluoLibao(poluoLibao);
+		builder.setSuperPoluoLibaoStatus(superPoluoLibaoStatus < superPoluoLibao);
+		builder.setSuperPoluoLibao(superPoluoLibao);
+		builder.setBlueEquipLibaoStatus(blueEquipLibaoStatus < blueEquipLibao);
+		builder.setBlueEquipLibao(blueEquipLibao);
+		builder.setPurpleEquipLibaoStatus(purpleEquipLibaoStatus < purpleEquipLibao);
+		builder.setPurpleEquipLibao(purpleEquipLibao);
 		for(int i = 1; i <= 6; i++){
 			JewelPool.Builder pool = JewelPool.newBuilder();
 			pool.setOrder(i);

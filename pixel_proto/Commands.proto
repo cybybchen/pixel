@@ -40,14 +40,20 @@ message UserInfo {
 	optional int32 advance = 41;
 	optional int32 shouchongIsComplete = 42;
 	optional int32 shouchongIsGetReward = 43;
-	optional bool monthJewel = 44;//初级钻石月卡可领
-	optional bool monthJewel2 = 45;//高级钻石月卡可领
-	optional bool poluoLibao = 46;//双周魄罗礼包可领
-	optional bool superPoluoLibao = 47;//双周超级魄罗礼包可领
-	optional bool blueEquipLibao = 48;//双周蓝色装备礼包可领
-	optional bool purpleEquipLibao = 49;//双周紫色装备礼包可领
-	repeated JewelPool growJewelCount = 50;//成长钻石基金可领
-	repeated JewelPool growExpCount = 51;//成长经验基金可领
+	optional bool monthJewelStatus = 44;//初级钻石月卡可领
+	optional int64 monthJewel = 45;
+	optional bool monthJewel2Status = 46;//高级钻石月卡可领
+	optional int64 monthJewel2 = 47;
+	optional bool poluoLibaoStatus = 48;//双周魄罗礼包可领
+	optional int64 poluoLibao = 49;
+	optional bool superPoluoLibaoStatus = 50;//双周超级魄罗礼包可领
+	optional int64 superPoluoLibao = 51;
+	optional bool blueEquipLibaoStatus = 52;//双周蓝色装备礼包可领
+	optional int64 blueEquipLibao = 53;
+	optional bool purpleEquipLibaoStatus = 54;//双周紫色装备礼包可领
+	optional int64 purpleEquipLibao = 55;
+	repeated JewelPool growJewelCount = 56;//成长钻石基金可领
+	repeated JewelPool growExpCount = 57;//成长经验基金可领
 }
 
 message ServerData {

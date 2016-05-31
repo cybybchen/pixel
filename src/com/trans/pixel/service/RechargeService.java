@@ -90,41 +90,42 @@ public class RechargeService {
 		Rmb rmb = rechargeRedisService.getRmb(productid);
 		int itemId = rmb.getItemid();
 		int jewel = rmb.getZuanshi();
+		long now = rechargeRedisService.now();
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
 			reward.setCount(rmb.getZuanshi());
 			rewardList.add(reward.build());
 		}else if(itemId == 43001){//初级钻石月卡:每天登陆游戏可以领取60钻石
-			if(user.getMonthJewel() > rechargeRedisService.now())
+			if(user.getMonthJewel() > now)
 				user.setMonthJewel(user.getMonthJewel()+30*24*3600);
 			else
-				user.setMonthJewel(rechargeRedisService.now()+30*24*3600);
+				user.setMonthJewel(now+30*24*3600);
 		}else if(itemId == 43002){//高级钻石月卡:每天登陆游戏获得300钻石
-			if(user.getMonthJewel2() > rechargeRedisService.now())
+			if(user.getMonthJewel2() > now)
 				user.setMonthJewel2(user.getMonthJewel2()+30*24*3600);
 			else
-				user.setMonthJewel2(rechargeRedisService.now()+30*24*3600);
+				user.setMonthJewel2(now+30*24*3600);
 		}else if(itemId == 43003){//双周魄罗礼包:连续14天每天领取1个魄罗礼包
-			if(user.getPoluoLibao() > rechargeRedisService.now())
+			if(user.getPoluoLibao() > now)
 				user.setPoluoLibao(user.getPoluoLibao()+14*24*3600);
 			else
-				user.setPoluoLibao(rechargeRedisService.now()+14*24*3600);
+				user.setPoluoLibao(now+14*24*3600);
 		}else if(itemId == 43004){//双周超级魄罗礼包:连续14天每天领取1个超级魄罗礼包
-			if(user.getSuperPoluoLibao() > rechargeRedisService.now())
+			if(user.getSuperPoluoLibao() > now)
 				user.setSuperPoluoLibao(user.getSuperPoluoLibao()+14*24*3600);
 			else
-				user.setSuperPoluoLibao(rechargeRedisService.now()+14*24*3600);
+				user.setSuperPoluoLibao(now+14*24*3600);
 		}else if(itemId == 43005){//双周蓝色装备礼包:连续14天每天领取1个蓝色装备宝箱
-			if(user.getBlueEquipLibao() > rechargeRedisService.now())
+			if(user.getBlueEquipLibao() > now)
 				user.setBlueEquipLibao(user.getBlueEquipLibao()+14*24*3600);
 			else
-				user.setBlueEquipLibao(rechargeRedisService.now()+14*24*3600);
+				user.setBlueEquipLibao(now+14*24*3600);
 		}else if(itemId == 43006){//双周紫色装备礼包:连续14天每天领取1个紫色装备宝箱
-			if(user.getPurpleEquipLibao() > rechargeRedisService.now())
+			if(user.getPurpleEquipLibao() > now)
 				user.setPurpleEquipLibao(user.getPurpleEquipLibao()+14*24*3600);
 			else
-				user.setPurpleEquipLibao(rechargeRedisService.now()+14*24*3600);
+				user.setPurpleEquipLibao(now+14*24*3600);
 		}else if(itemId == 43007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowJewelCount(user.getGrowJewelCount()+1);
 		}else if(itemId == 43008){//成长经验基金:按照玩家总战力领取不同阶段的钻石
@@ -135,11 +136,18 @@ public class RechargeService {
 		}
 
 		rechargeVip(user, rmb.getRmb(), jewel);
-		
+
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		rewards.addAllLoot(rewardList);
-		rewardService.doRewards(user, rewards.build());
-		userService.updateUser(user);
+		if(rewardList.isEmpty()){
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(itemId);
+			reward.setCount(1);
+			rewards.addLoot(reward);
+			userService.updateUser(user);
+		}else{
+			rewards.addAllLoot(rewardList);
+			rewardService.doRewards(user, rewards.build());
+		}
 		
 		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
 		shopRedisService.addLibaoCount(user, productid);
