@@ -96,39 +96,39 @@ public class RechargeService {
 			reward.setItemid(itemId);
 			reward.setCount(rmb.getZuanshi());
 			rewardList.add(reward.build());
-		}else if(itemId == 43001){//初级钻石月卡:每天登陆游戏可以领取60钻石
+		}else if(itemId == 44001){//初级钻石月卡:每天登陆游戏可以领取60钻石
 			if(user.getMonthJewel() > now)
 				user.setMonthJewel(user.getMonthJewel()+30*24*3600);
 			else
 				user.setMonthJewel(now+30*24*3600);
-		}else if(itemId == 43002){//高级钻石月卡:每天登陆游戏获得300钻石
+		}else if(itemId == 44002){//高级钻石月卡:每天登陆游戏获得300钻石
 			if(user.getMonthJewel2() > now)
 				user.setMonthJewel2(user.getMonthJewel2()+30*24*3600);
 			else
 				user.setMonthJewel2(now+30*24*3600);
-		}else if(itemId == 43003){//双周魄罗礼包:连续14天每天领取1个魄罗礼包
+		}else if(itemId == 44003){//双周魄罗礼包:连续14天每天领取1个魄罗礼包
 			if(user.getPoluoLibao() > now)
 				user.setPoluoLibao(user.getPoluoLibao()+14*24*3600);
 			else
 				user.setPoluoLibao(now+14*24*3600);
-		}else if(itemId == 43004){//双周超级魄罗礼包:连续14天每天领取1个超级魄罗礼包
+		}else if(itemId == 44004){//双周超级魄罗礼包:连续14天每天领取1个超级魄罗礼包
 			if(user.getSuperPoluoLibao() > now)
 				user.setSuperPoluoLibao(user.getSuperPoluoLibao()+14*24*3600);
 			else
 				user.setSuperPoluoLibao(now+14*24*3600);
-		}else if(itemId == 43005){//双周蓝色装备礼包:连续14天每天领取1个蓝色装备宝箱
+		}else if(itemId == 44005){//双周蓝色装备礼包:连续14天每天领取1个蓝色装备宝箱
 			if(user.getBlueEquipLibao() > now)
 				user.setBlueEquipLibao(user.getBlueEquipLibao()+14*24*3600);
 			else
 				user.setBlueEquipLibao(now+14*24*3600);
-		}else if(itemId == 43006){//双周紫色装备礼包:连续14天每天领取1个紫色装备宝箱
+		}else if(itemId == 44006){//双周紫色装备礼包:连续14天每天领取1个紫色装备宝箱
 			if(user.getPurpleEquipLibao() > now)
 				user.setPurpleEquipLibao(user.getPurpleEquipLibao()+14*24*3600);
 			else
 				user.setPurpleEquipLibao(now+14*24*3600);
-		}else if(itemId == 43007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
+		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowJewelCount(user.getGrowJewelCount()+1);
-		}else if(itemId == 43008){//成长经验基金:按照玩家总战力领取不同阶段的钻石
+		}else if(itemId == 44008){//成长经验基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowExpCount(user.getGrowExpCount()+1);
 		}else {
 			VipLibao libao = shopRedisService.getVipLibao(itemId);
