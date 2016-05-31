@@ -1562,7 +1562,7 @@ message Libao {
 	optional string endtime = 5;
 }
 message LibaoList {
-	repeated Libao libao = 3;
+	repeated Libao order = 3;
 }
 message RequestLibaoShopCommand {//vip礼包商店
 }
