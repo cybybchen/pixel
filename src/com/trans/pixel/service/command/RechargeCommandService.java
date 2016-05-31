@@ -37,7 +37,8 @@ public class RechargeCommandService extends BaseCommandService {
 	public void recharge(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward rewards = rechargeRedisService.getUserRecharge(user.getId());
 		
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
+		if (rewards != null)
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
 		
 		LibaoList shoplist = shopRedisService.getLibaoShop(user);
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();

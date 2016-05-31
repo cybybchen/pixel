@@ -346,7 +346,7 @@ public class PushCommandService extends BaseCommandService {
 			} if (rewardId > RewardConst.HERO) {
 				heroList.addAll(userHeroService.selectUserNewHero(userId));
 			} else if (rewardId > RewardConst.PACKAGE) {
-				if(rewardId / 1000 == 43)
+				if(rewardId / 1000 == 44)
 					isUserUpdated = true;
 				else
 					propList.add(userPropService.selectUserProp(userId, rewardId));
