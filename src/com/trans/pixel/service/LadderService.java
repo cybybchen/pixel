@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -248,16 +249,26 @@ public class LadderService {
 	
 	public void sendLadderDailyReward(int serverId) {
 		List<LadderDailyBean> ladderDailyList = getLadderDailyList();
-		for (LadderDailyBean ladderDaily : ladderDailyList) {
-			for (long i = ladderDaily.getRanking(); i <= ladderDaily.getRanking1(); ++ i) {
-				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
-				if (userRank != null && userRank.getUserId() > 0) {
-					MailBean mail = buildLadderDailyMail(userRank.getUserId(), ladderDaily);
-					mailService.addMail(mail);
+		Collections.sort(ladderDailyList, comparator);
+		try {	
+			for (LadderDailyBean ladderDaily : ladderDailyList) {
+	//			log.debug("ladder daily is:" + ladderDaily.toJson());
+				for (long i = ladderDaily.getRanking(); i <= ladderDaily.getRanking1(); ++ i) {
+					UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
+	//				if (serverId == 10)
+	//					log.debug("userRanking is:" + userRank.toJson());
+					if (userRank != null && userRank.getUserId() > 0) {
+						if (serverId == 10)
+							log.error("userRanking is:" + userRank.toJson());
+						MailBean mail = buildLadderDailyMail(userRank.getUserId(), ladderDaily);
+						mailService.addMail(mail);
+					}
 				}
 			}
+		} catch (Exception e) {
+			log.error("send ladder daily:" + ladderDailyList);
+			log.error("error:" + e);
 		}
-		
 //		Collections.sort(ladderDailyList, comparator);
 //		int index = 0;
 //		while (index < ladderDailyList.size() - 1) {

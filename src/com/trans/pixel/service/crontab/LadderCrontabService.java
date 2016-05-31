@@ -20,20 +20,24 @@ public class LadderCrontabService {
 	@Resource
 	private ServerService serverService;
 	
-	@Scheduled(cron = "0 0 21 * * ? ")
-//	@Scheduled(cron = "0 0/5 * * * ? ")
+//	@Scheduled(cron = "0 0 23 * * ? ")
+	@Scheduled(cron = "0 0/30 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 //	@Scheduled(cron = "0 55 10 * * ? ")
 	public void sendLadderDailyReward() {
-		List<Integer> serverIds = serverService.getServerIdList();
-		for (final int serverId : serverIds) {
-			Thread thread = new Thread() {
-				public void run() {
-					logger.debug("send ladder reward:" + serverId);
-					ladderService.sendLadderDailyReward(serverId);
-				}
-			};
-			thread.start();
+		try {
+			List<Integer> serverIds = serverService.getServerIdList();
+			for (final int serverId : serverIds) {
+				Thread thread = new Thread() {
+					public void run() {
+						logger.debug("send ladder reward:" + serverId);
+						ladderService.sendLadderDailyReward(serverId);
+					}
+				};
+				thread.start();
+			}
+		} catch (Exception e) {
+			logger.error("send ladder daily error:" + e);
 		}
 		
 	}
