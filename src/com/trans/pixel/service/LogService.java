@@ -170,6 +170,36 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_GM:
+				sb.append(LogString.LOGTYPE_GM_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.GM));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.COMMAND));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.REQUEST));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_MONITOR:
+				sb.append(LogString.LOGTYPE_MONITOR_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.DES));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -216,7 +246,16 @@ public class LogService {
 		params.put(LogString.COMMAND, "" + commandStr);
 		params.put(LogString.REQUEST, "" + request);
 		
-		sendLog(params, LogString.LOGTYPE_ERROR);
+		sendLog(params, LogString.LOGTYPE_GM);
+	}
+	
+	public void sendLadderDailyRewardLog(int serverId, int type, String des) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.TYPE, "" + type);
+		params.put(LogString.DES, des);
+		
+		sendLog(params, LogString.LOGTYPE_MONITOR);
 	}
 	
 	private void send(String str) {

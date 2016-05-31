@@ -36,6 +36,7 @@ public class LogString {
 	public static final String ERRORID = "errorid";
 	public static final String REQUEST = "request";
 	public static final String ERRORMSG = "errormsg";
+	public static final String DES = "des";
 	
 	public static final String MODE = "mode";
 	public static final String PHONEUUID = "phoneuuid";
@@ -64,6 +65,8 @@ public class LogString {
 	public static final int LOGTYPE_MISSION = 4;
 	public static final int LOGTYPE_RECHARGE = 5;
 	public static final int LOGTYPE_ERROR = 6;
+	public static final int LOGTYPE_GM = 7;
+	public static final int LOGTYPE_MONITOR = 8;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -72,4 +75,9 @@ public class LogString {
 	public static final String LOGTYPE_MISSION_STR = "Mission";
 	public static final String LOGTYPE_RECHARGE_STR = "Recharge";
 	public static final String LOGTYPE_ERROR_STR = "Error";
+	public static final String LOGTYPE_GM_STR = "Gm";
+	public static final String LOGTYPE_MONITOR_STR = "Monitor";
+	
+	//monitor type
+	public static final int TYPE_MONITOR_LADDERDAILY = 1;
 }

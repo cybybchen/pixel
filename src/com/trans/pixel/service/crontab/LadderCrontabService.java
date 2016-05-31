@@ -8,7 +8,9 @@ import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.service.LadderService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.ServerService;
 
 @Service
@@ -19,6 +21,8 @@ public class LadderCrontabService {
 	private LadderService ladderService;
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private LogService logService;
 	
 //	@Scheduled(cron = "0 0 23 * * ? ")
 	@Scheduled(cron = "0 0/30 * * * ? ")
@@ -31,7 +35,9 @@ public class LadderCrontabService {
 				Thread thread = new Thread() {
 					public void run() {
 						logger.debug("send ladder reward:" + serverId);
+						logService.sendLadderDailyRewardLog(serverId, LogString.TYPE_MONITOR_LADDERDAILY, "start");
 						ladderService.sendLadderDailyReward(serverId);
+						logService.sendLadderDailyRewardLog(serverId, LogString.TYPE_MONITOR_LADDERDAILY, "end");
 					}
 				};
 				thread.start();
@@ -39,6 +45,5 @@ public class LadderCrontabService {
 		} catch (Exception e) {
 			logger.error("send ladder daily error:" + e);
 		}
-		
 	}
 }
