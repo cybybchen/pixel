@@ -1,25 +1,8 @@
 package com.trans.pixel.service.crontab;
 
-import org.apache.log4j.Logger;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.CronTrigger;
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.quartz.JobKey;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.trans.pixel.model.JobBean;
 
 //@DisallowConcurrentExecution
-public class QuartzJobFactory implements Job {
+public class QuartzJobFactory {/*implements Job {
 	Logger logger = Logger.getLogger(QuartzJobFactory.class);
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
@@ -73,5 +56,5 @@ public class QuartzJobFactory implements Job {
 		} catch (SchedulerException e) {
 			logger.error(e);
 		}
-	}
+	}*/
 }

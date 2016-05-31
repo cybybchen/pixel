@@ -96,7 +96,7 @@
 	<task:annotation-driven />
 	
     <!-- quartz 配置 -->		
-	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
+	<!--bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" /-->
     
     <!-- redis 配置 -->
 	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
