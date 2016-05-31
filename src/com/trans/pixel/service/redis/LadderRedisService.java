@@ -152,7 +152,8 @@ public class LadderRedisService extends RedisService{
 				while (it.hasNext()) {
 					Entry<String, String> entry = it.next();
 					LadderDailyBean ladderRanking = LadderDailyBean.fromJson(entry.getValue());
-					ladderDailyList.add(ladderRanking);
+					if (ladderRanking != null)
+						ladderDailyList.add(ladderRanking);
 				}
 				return ladderDailyList;
 			}
