@@ -160,10 +160,16 @@ public class LadderService {
 		if (attackRank == myRankBean.getRank())
 			return ErrorConst.ATTACK_SELF;
 		long myRank = myRankBean.getRank();
-		if(!ladderRedisService.setLock("LadderRank_"+myRank))
+		if(!ladderRedisService.setLock("LadderRank_"+myRank)) {
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
+			userService.updateUser(user);
 			return ErrorConst.YOU_ARE_ATTACKING;
-		if(!ladderRedisService.setLock("LadderRank_"+attackRank))
+		}
+		if(!ladderRedisService.setLock("LadderRank_"+attackRank)) {
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
+			userService.updateUser(user);
 			return ErrorConst.HE_IS_ATTACKING;
+		}
 		
 //		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 //		userService.updateUser(user);
