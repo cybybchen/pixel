@@ -123,7 +123,7 @@ public class ShopService {
 		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
 		for(Libao.Builder builder : shopbuilder.getLibaoBuilderList()){
 			int count = 0;
-			Libao libao = libaoMap.get(builder.getRechargeid()+"");
+			Libao libao = libaoMap.get(builder.getRechargeid());
 			if(libao != null){
 				count = libao.getPurchase();
 				builder.setValidtime(libao.getValidtime());
