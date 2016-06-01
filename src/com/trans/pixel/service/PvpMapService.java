@@ -117,7 +117,7 @@ public class PvpMapService {
 			boolean timeout = true;
 			if (rank.hasLastLoginTime()) {
 				try {
-					Date date = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(rank.getLastLoginTime());
+					Date date = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(rank.getLastLoginTime());
 					if(new Date().getTime() - date.getTime() < RedisExpiredConst.EXPIRED_USERINFO_7DAY)
 						timeout = false;
 				} catch (ParseException e) {

@@ -103,7 +103,6 @@ public class RechargeService {
 		Rmb rmb = rechargeRedisService.getRmb(productid);
 		int itemId = rmb.getItemid();
 		int jewel = rmb.getZuanshi();
-		long now = rechargeRedisService.now();
 		Map<Integer, Libao> map = userService.getLibaos(user.getId());
 		Libao libao = map.get(productid);
 		Libao.Builder libaobuilder = null;
@@ -126,18 +125,19 @@ public class RechargeService {
 			user.setGrowExpCount(user.getGrowExpCount()+1);
 		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
 			YueKa yueka = shopService.getYueKa(itemId);
+			long now = rechargeRedisService.now()*1000L;
 			long time = 0;
 			if(libaobuilder.hasValidtime()){
 				try {
-					time = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(libao.getValidtime()).getTime();
+					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime();
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 			}
 			if(time > now){
-				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).format(new Date(time + yueka.getCount()*3600*1000)));
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(time + yueka.getCount()*24*3600*1000L)));
 			}else{
-				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).format(new Date(now + yueka.getCount()*3600*1000)));
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(now + yueka.getCount()*24*3600*1000L)));
 				if(time < rechargeRedisService.today(0)){
 					MailBean mail = new MailBean();
 					mail.setContent(yueka.getName());

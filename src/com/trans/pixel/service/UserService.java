@@ -135,7 +135,7 @@ public class UserService {
 			long time = 0;
 			if(libao.hasValidtime()){
 				try {
-					time = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(libao.getValidtime()).getTime();
+					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
