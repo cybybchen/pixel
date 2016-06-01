@@ -50,16 +50,10 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
-import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
-import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
-import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
@@ -351,12 +345,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestHeartBeatCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLogCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestGetMonthJewelCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestGetMonthJewel2Command cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestGetPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestGetSuperPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestGetBlueEquipLibaoCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestGetPurpleEquipLibaoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
@@ -1001,36 +989,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//LogCommand
                 result = handleCommand(cmd, responseBuilder, user);//LogCommand
         }//LogCommand
-        if (request.hasGetMonthJewelCommand()) {
-            RequestGetMonthJewelCommand cmd = request.getGetMonthJewelCommand();
-            if (result)//GetMonthJewelCommand
-                result = handleCommand(cmd, responseBuilder, user);//GetMonthJewelCommand
-        }//GetMonthJewelCommand
-        if (request.hasGetMonthJewel2Command()) {
-            RequestGetMonthJewel2Command cmd = request.getGetMonthJewel2Command();
-            if (result)//GetMonthJewel2Command
-                result = handleCommand(cmd, responseBuilder, user);//GetMonthJewel2Command
-        }//GetMonthJewel2Command
-        if (request.hasGetPoluoLibaoCommand()) {
-            RequestGetPoluoLibaoCommand cmd = request.getGetPoluoLibaoCommand();
-            if (result)//GetPoluoLibaoCommand
-                result = handleCommand(cmd, responseBuilder, user);//GetPoluoLibaoCommand
-        }//GetPoluoLibaoCommand
-        if (request.hasGetSuperPoluoLibaoCommand()) {
-            RequestGetSuperPoluoLibaoCommand cmd = request.getGetSuperPoluoLibaoCommand();
-            if (result)//GetSuperPoluoLibaoCommand
-                result = handleCommand(cmd, responseBuilder, user);//GetSuperPoluoLibaoCommand
-        }//GetSuperPoluoLibaoCommand
-        if (request.hasGetBlueEquipLibaoCommand()) {
-            RequestGetBlueEquipLibaoCommand cmd = request.getGetBlueEquipLibaoCommand();
-            if (result)//GetBlueEquipLibaoCommand
-                result = handleCommand(cmd, responseBuilder, user);//GetBlueEquipLibaoCommand
-        }//GetBlueEquipLibaoCommand
-        if (request.hasGetPurpleEquipLibaoCommand()) {
-            RequestGetPurpleEquipLibaoCommand cmd = request.getGetPurpleEquipLibaoCommand();
-            if (result)//GetPurpleEquipLibaoCommand
-                result = handleCommand(cmd, responseBuilder, user);//GetPurpleEquipLibaoCommand
-        }//GetPurpleEquipLibaoCommand
         if (request.hasGetGrowJewelCommand()) {
             RequestGetGrowJewelCommand cmd = request.getGetGrowJewelCommand();
             if (result)//GetGrowJewelCommand

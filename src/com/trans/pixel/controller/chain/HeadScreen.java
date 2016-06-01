@@ -56,16 +56,10 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
-import com.trans.pixel.protoc.Commands.RequestGetBlueEquipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetMonthJewel2Command;
-import com.trans.pixel.protoc.Commands.RequestGetMonthJewelCommand;
-import com.trans.pixel.protoc.Commands.RequestGetPoluoLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetPurpleEquipLibaoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetSuperPoluoLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
@@ -677,36 +671,6 @@ public class HeadScreen extends RequestScreen {
 		// TODO LogCommand method
 		return true;//LogCommand
 	}//LogCommand
-	@Override//GetMonthJewelCommand
-	protected boolean handleCommand(RequestGetMonthJewelCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO GetMonthJewelCommand method
-		return true;//GetMonthJewelCommand
-	}//GetMonthJewelCommand
-	@Override//GetMonthJewel2Command
-	protected boolean handleCommand(RequestGetMonthJewel2Command cmd, Builder responseBuilder, UserBean user) {
-		// TODO GetMonthJewel2Command method
-		return true;//GetMonthJewel2Command
-	}//GetMonthJewel2Command
-	@Override//GetPoluoLibaoCommand
-	protected boolean handleCommand(RequestGetPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO GetPoluoLibaoCommand method
-		return true;//GetPoluoLibaoCommand
-	}//GetPoluoLibaoCommand
-	@Override//GetSuperPoluoLibaoCommand
-	protected boolean handleCommand(RequestGetSuperPoluoLibaoCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO GetSuperPoluoLibaoCommand method
-		return true;//GetSuperPoluoLibaoCommand
-	}//GetSuperPoluoLibaoCommand
-	@Override//GetBlueEquipLibaoCommand
-	protected boolean handleCommand(RequestGetBlueEquipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO GetBlueEquipLibaoCommand method
-		return true;//GetBlueEquipLibaoCommand
-	}//GetBlueEquipLibaoCommand
-	@Override//GetPurpleEquipLibaoCommand
-	protected boolean handleCommand(RequestGetPurpleEquipLibaoCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO GetPurpleEquipLibaoCommand method
-		return true;//GetPurpleEquipLibaoCommand
-	}//GetPurpleEquipLibaoCommand
 	@Override//GetGrowJewelCommand
 	protected boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user) {
 		// TODO GetGrowJewelCommand method

@@ -1,7 +1,5 @@
 package com.trans.pixel.service.redis;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,11 +10,9 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.CommodityList;
-import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
@@ -27,6 +23,8 @@ import com.trans.pixel.protoc.Commands.ShopWillList;
 import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.protoc.Commands.VipLibaoList;
 import com.trans.pixel.protoc.Commands.Will;
+import com.trans.pixel.protoc.Commands.YueKa;
+import com.trans.pixel.protoc.Commands.YueKaList;
 
 @Repository
 public class ShopRedisService extends RedisService{
@@ -647,49 +645,15 @@ public class ShopRedisService extends RedisService{
 	}
 
 	//libao
-	public LibaoList getLibaoShop(UserBean user) {
+	public LibaoList.Builder getLibaoShop() {
 		String value = this.get(LIBAOSHOP_CONFIG);
-		Map<String, String> libaoMap = this.hget(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId());
 		LibaoList.Builder shopbuilder = LibaoList.newBuilder();
 		if(value == null){
 			shopbuilder = LibaoList.newBuilder(buildLibaoShop());
 		}else{
 			parseJson(value, shopbuilder);
 		}
-		for(Libao.Builder builder : shopbuilder.getLibaoBuilderList()){
-			int count = 0;
-			String countvalue = libaoMap.get(builder.getId()+"");
-			if(countvalue != null)
-				count = Integer.parseInt(countvalue);
-			if(builder.getPurchase() > 0 && count >= builder.getPurchase())
-				count = builder.getPurchase();
-			builder.setPurchase(Math.max(0, builder.getPurchase() - count));
-		}
-		return shopbuilder.build();
-	}
-	
-	public int getLibaoCount(UserBean user, int rechargeid) {
-		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), rechargeid+"");
-		int count = 0;
-		if(value != null)
-			count = Integer.parseInt(value);
-		return count;
-	}
-	
-	public void addLibaoCount(UserBean user, int rechargeid) {
-		LibaoList libaos = getLibaoShop(user);
-		int count = getLibaoCount(user, rechargeid);
-		count++;
-		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), rechargeid+"", count+"");
-		for(Libao libao : libaos.getLibaoList()){
-			if(libao.getRechargeid() == rechargeid && libao.getEndtime().length() > 5){
-				try {
-					this.expireAt(RedisKey.USER_LIBAOCOUNT_PREFIX+user.getId(), new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(libao.getEndtime()));
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		return shopbuilder;
 	}
 	
 	private LibaoList buildLibaoShop(){
@@ -792,5 +756,26 @@ public class ShopRedisService extends RedisService{
 		}
 		hputAll(RedisKey.VIPLIBAO_CONFIG, keyvalue);
 		return builder.build();
+	}
+	
+	public YueKa getYueKa(int id){
+		String value = this.hget(RedisKey.YUEKA_CONFIG, ""+id);
+		YueKa.Builder builder = YueKa.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			String xml = ReadConfig("lol_yueka.xml");
+			YueKaList.Builder listbuilder = YueKaList.newBuilder();
+			Map<String, String> keyvalue = new HashMap<String, String>();
+			parseXml(xml, listbuilder);
+			for(YueKa libao : listbuilder.getItemList()){
+				if(libao.getItemid() == id)
+					builder = YueKa.newBuilder(libao);
+				keyvalue.put(libao.getItemid()+"", formatJson(libao));
+			}
+			hputAll(RedisKey.YUEKA_CONFIG, keyvalue);
+
+			return builder.build();
+		}
 	}
 }

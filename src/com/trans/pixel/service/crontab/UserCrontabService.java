@@ -53,6 +53,12 @@ public class UserCrontabService {
 		while((key=userService.popDBKey()) != null){
 			userService.updateToDB(key);
 		}
+		while((key=userService.popDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int rechargeId = Integer.parseInt(keys[1]);
+			userService.updateToLibaoDB(userId, rechargeId);
+		}
 		while((key=userHeroService.popUpdateDBKey()) != null){
 			String keys[] = key.split("#");
 			long userId = Long.parseLong(keys[0]);

@@ -13,8 +13,8 @@ import com.trans.pixel.protoc.Commands.ResponseLibaoShopCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.redis.RechargeRedisService;
-import com.trans.pixel.service.redis.ShopRedisService;
 
 @Service
 public class RechargeCommandService extends BaseCommandService {
@@ -32,7 +32,7 @@ public class RechargeCommandService extends BaseCommandService {
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
-	private ShopRedisService shopRedisService;
+	private ShopService shopService;
 	
 	public void recharge(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward rewards = rechargeRedisService.getUserRecharge(user.getId());
@@ -40,7 +40,7 @@ public class RechargeCommandService extends BaseCommandService {
 		if (rewards != null)
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
 		
-		LibaoList shoplist = shopRedisService.getLibaoShop(user);
+		LibaoList shoplist = shopService.getLibaoShop(user);
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getLibaoList());
 		responseBuilder.setLibaoShopCommand(shop);

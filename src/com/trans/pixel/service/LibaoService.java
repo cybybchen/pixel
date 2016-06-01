@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.JewelPool;
 import com.trans.pixel.protoc.Commands.JewelPoolList;
-import com.trans.pixel.protoc.Commands.YueKa;
 import com.trans.pixel.service.redis.LibaoRedisService;
 
 @Service
@@ -17,9 +16,9 @@ public class LibaoService {
 	@Resource
     private LibaoRedisService redis;
 	
-	public YueKa getYueKa(int id){
-		return redis.getYueKa(id);
-	}
+	// public YueKa getYueKa(int id){
+	// 	return redis.getYueKa(id);
+	// }
 
 //	public JewelPool getJewelPool(int id){
 //		return redis.getJewelPool(id);

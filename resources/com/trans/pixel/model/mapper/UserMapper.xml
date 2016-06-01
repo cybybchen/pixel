@@ -40,18 +40,6 @@
 		<result property="shouchongIsComplete" column="shouchong_is_complete" />
 		<result property="shouchongIsGetReward" column="shouchong_is_get_reward" />
 		<result property="currentTeamid" column="current_teamid" />
-		<result property="monthJewel" column="month_jewel" />
-		<result property="monthJewelStatus" column="month_jewel_status" />
-		<result property="monthJewel2" column="month_jewel2" />
-		<result property="monthJewel2Status" column="month_jewel2_status" />
-		<result property="poluoLibao" column="poluo_libao" />
-		<result property="poluoLibaoStatus" column="poluo_libao_status" />
-		<result property="superPoluoLibao" column="super_poluo_libao" />
-		<result property="superPoluoLibaoStatus" column="super_poluo_libao_status" />
-		<result property="blueEquipLibao" column="blue_equip_libao" />
-		<result property="blueEquipLibaoStatus" column="blue_equip_libao_status" />
-		<result property="purpleEquipLibao" column="purple_equip_libao" />
-		<result property="purpleEquipLibaoStatus" column="purple_equip_libao_status" />
 		<result property="growJewelCount" column="grow_jewel_count" />
 		<result property="growJewelCountStatus" column="grow_jewel_count_status" />
 		<result property="growExpCount" column="grow_exp_count" />
@@ -97,11 +85,7 @@
 		login_days=#{loginDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock},
 		hero_limit=#{heroLimit}, compose_skill=#{composeSkill}, recharge_record=#{rechargeRecord}, hero_info_id=#{heroInfoId},
 		viplibao1=#{viplibao1}, viplibao2=#{viplibao2}, first_get_hero_id=#{firstGetHeroId}, total_sign_count=#{totalSignCount},
-		greenhand=#{greenhand}, advance=#{advance}, skill=#{skill}, failed=#{failed}, shouchong_is_complete=#{shouchongIsComplete}, shouchong_is_get_reward=#{shouchongIsGetReward}, current_teamid=#{currentTeamid}, month_jewel=#{monthJewel},
-		month_jewel_status=#{monthJewelStatus}, month_jewel2=#{monthJewel2}, month_jewel2_status=#{monthJewel2Status}, 
-		poluo_libao=#{poluoLibao}, poluo_libao_status=#{poluoLibaoStatus}, super_poluo_libao=#{superPoluoLibao}, 
-		super_poluo_libao_status=#{superPoluoLibaoStatus}, blue_equip_libao=#{blueEquipLibao}, blue_equip_libao_status=#{blueEquipLibaoStatus}, 
-		purple_equip_libao=#{purpleEquipLibao}, purple_equip_libao_status=#{purpleEquipLibaoStatus}, grow_jewel_count=#{growJewelCount}, 
+		greenhand=#{greenhand}, advance=#{advance}, skill=#{skill}, failed=#{failed}, shouchong_is_complete=#{shouchongIsComplete}, shouchong_is_get_reward=#{shouchongIsGetReward}, current_teamid=#{currentTeamid}, grow_jewel_count=#{growJewelCount}, 
 		grow_jewel_count_status=#{growJewelCountStatus}, grow_exp_count=#{growExpCount}, grow_exp_count_status=#{growExpCountStatus}
 		WHERE id=#{id}
 	</update>

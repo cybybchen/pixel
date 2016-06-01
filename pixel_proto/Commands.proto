@@ -40,18 +40,6 @@ message UserInfo {
 	optional int32 advance = 41;
 	optional int32 shouchongIsComplete = 42;
 	optional int32 shouchongIsGetReward = 43;
-	optional bool monthJewelStatus = 44;//初级钻石月卡可领
-	optional int64 monthJewel = 45;
-	optional bool monthJewel2Status = 46;//高级钻石月卡可领
-	optional int64 monthJewel2 = 47;
-	optional bool poluoLibaoStatus = 48;//双周魄罗礼包可领
-	optional int64 poluoLibao = 49;
-	optional bool superPoluoLibaoStatus = 50;//双周超级魄罗礼包可领
-	optional int64 superPoluoLibao = 51;
-	optional bool blueEquipLibaoStatus = 52;//双周蓝色装备礼包可领
-	optional int64 blueEquipLibao = 53;
-	optional bool purpleEquipLibaoStatus = 54;//双周紫色装备礼包可领
-	optional int64 purpleEquipLibao = 55;
 	repeated JewelPool growJewelCount = 56;//成长钻石基金可领
 	repeated JewelPool growExpCount = 57;//成长经验基金可领
 	optional int32 skill = 58;
@@ -1558,17 +1546,19 @@ message YueKa {
 	optional int32 rewardid = 2;
 	optional int32 rewardcount = 3;
 	optional int32 count = 4;
+	optional string name = 5;
 }
 message YueKaList {
 	repeated YueKa item = 1;
 }
 
 message Libao {
-	required int32 id = 1;
+	optional int32 id = 1;
 	optional int32 rechargeid = 2;
 	optional int32 purchase = 3;
 	optional string starttime = 4;
 	optional string endtime = 5;
+	optional string validtime = 6;
 }
 message LibaoList {
 	repeated Libao libao = 3;
@@ -1897,24 +1887,6 @@ message RequestLogCommand {
 	optional int32 rechargetype = 15;
 }
 
-message RequestGetMonthJewelCommand {
-	
-}
-message RequestGetMonthJewel2Command {
-	
-}
-message RequestGetPoluoLibaoCommand {
-	
-}
-message RequestGetSuperPoluoLibaoCommand {
-	
-}
-message RequestGetBlueEquipLibaoCommand {
-	
-}
-message RequestGetPurpleEquipLibaoCommand {
-	
-}
 message RequestGetGrowJewelCommand {
 	required int32 order = 1;
 }
@@ -1998,12 +1970,6 @@ message RequestCommand {
 	optional RequestCdkeyCommand cdkeyCommand = 138;
 	optional RequestCheatRechargeCommand rechargeCommand = 139;
 	optional RequestPurchaseVipLibaoCommand purchaseVipLibaoCommand = 141;
-	optional RequestGetMonthJewelCommand getMonthJewelCommand = 143;
-	optional RequestGetMonthJewel2Command getMonthJewel2Command = 144;
-	optional RequestGetPoluoLibaoCommand getPoluoLibaoCommand = 145;
-	optional RequestGetSuperPoluoLibaoCommand getSuperPoluoLibaoCommand = 146;
-	optional RequestGetBlueEquipLibaoCommand getBlueEquipLibaoCommand = 147;
-	optional RequestGetPurpleEquipLibaoCommand getPurpleEquipLibaoCommand = 148;
 	optional RequestGetGrowJewelCommand getGrowJewelCommand = 149;
 	optional RequestGetGrowExpCommand getGrowExpCommand = 150;
 	//////////////////////////////////////////////////////

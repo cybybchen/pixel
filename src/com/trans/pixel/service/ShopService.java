@@ -1,5 +1,7 @@
 package com.trans.pixel.service;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
+import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCost;
@@ -15,6 +18,7 @@ import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
 import com.trans.pixel.protoc.Commands.VipLibao;
+import com.trans.pixel.protoc.Commands.YueKa;
 import com.trans.pixel.service.redis.ShopRedisService;
 
 /**
@@ -115,7 +119,20 @@ public class ShopService {
 	}
 
 	public LibaoList getLibaoShop(UserBean user){
-		return redis.getLibaoShop(user);
+		LibaoList.Builder shopbuilder = redis.getLibaoShop();
+		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
+		for(Libao.Builder builder : shopbuilder.getLibaoBuilderList()){
+			int count = 0;
+			Libao libao = libaoMap.get(builder.getRechargeid()+"");
+			if(libao != null){
+				count = libao.getPurchase();
+				builder.setValidtime(libao.getValidtime());
+			}
+			if(builder.getPurchase() > 0 && count >= builder.getPurchase())
+				count = builder.getPurchase();
+			builder.setPurchase(Math.max(0, builder.getPurchase() - count));
+		}
+		return shopbuilder.build();
 	}
 
 	public ShopList getShop(){
@@ -152,5 +169,9 @@ public class ShopService {
 	
 	public VipLibao getVipLibao(int id){
 		return redis.getVipLibao(id);
+	}
+	
+	public YueKa getYueKa(int id){
+		return redis.getYueKa(id);
 	}
 }

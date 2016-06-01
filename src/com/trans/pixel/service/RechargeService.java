@@ -1,6 +1,9 @@
 package com.trans.pixel.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,15 +15,21 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RechargeBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.RechargeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Rmb;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipLibao;
+import com.trans.pixel.protoc.Commands.YueKa;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.ShopRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -49,6 +58,10 @@ public class RechargeService {
 	private RechargeMapper rechargeMapper;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private ShopService shopService;
+	@Resource
+	private MailService mailService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
     	int complete = user.getRechargeRecord()+jewel;
@@ -91,48 +104,58 @@ public class RechargeService {
 		int itemId = rmb.getItemid();
 		int jewel = rmb.getZuanshi();
 		long now = rechargeRedisService.now();
+		Map<Integer, Libao> map = userService.getLibaos(user.getId());
+		Libao libao = map.get(productid);
+		Libao.Builder libaobuilder = null;
+		if(libao == null){
+			libaobuilder = Libao.newBuilder();
+			libaobuilder.setRechargeid(productid);
+			libaobuilder.setPurchase(0);
+		}else
+			libaobuilder = Libao.newBuilder(libao);
+		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
+
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
 			reward.setCount(rmb.getZuanshi());
 			rewardList.add(reward.build());
-		}else if(itemId == 44001){//初级钻石月卡:每天登陆游戏可以领取60钻石
-			if(user.getMonthJewel() > now)
-				user.setMonthJewel(user.getMonthJewel()+30*24*3600);
-			else
-				user.setMonthJewel(now+30*24*3600);
-		}else if(itemId == 44002){//高级钻石月卡:每天登陆游戏获得300钻石
-			if(user.getMonthJewel2() > now)
-				user.setMonthJewel2(user.getMonthJewel2()+30*24*3600);
-			else
-				user.setMonthJewel2(now+30*24*3600);
-		}else if(itemId == 44003){//双周魄罗礼包:连续14天每天领取1个魄罗礼包
-			if(user.getPoluoLibao() > now)
-				user.setPoluoLibao(user.getPoluoLibao()+14*24*3600);
-			else
-				user.setPoluoLibao(now+14*24*3600);
-		}else if(itemId == 44004){//双周超级魄罗礼包:连续14天每天领取1个超级魄罗礼包
-			if(user.getSuperPoluoLibao() > now)
-				user.setSuperPoluoLibao(user.getSuperPoluoLibao()+14*24*3600);
-			else
-				user.setSuperPoluoLibao(now+14*24*3600);
-		}else if(itemId == 44005){//双周蓝色装备礼包:连续14天每天领取1个蓝色装备宝箱
-			if(user.getBlueEquipLibao() > now)
-				user.setBlueEquipLibao(user.getBlueEquipLibao()+14*24*3600);
-			else
-				user.setBlueEquipLibao(now+14*24*3600);
-		}else if(itemId == 44006){//双周紫色装备礼包:连续14天每天领取1个紫色装备宝箱
-			if(user.getPurpleEquipLibao() > now)
-				user.setPurpleEquipLibao(user.getPurpleEquipLibao()+14*24*3600);
-			else
-				user.setPurpleEquipLibao(now+14*24*3600);
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowJewelCount(user.getGrowJewelCount()+1);
 		}else if(itemId == 44008){//成长经验基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowExpCount(user.getGrowExpCount()+1);
+		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
+			YueKa yueka = shopService.getYueKa(itemId);
+			long time = 0;
+			if(libaobuilder.hasValidtime()){
+				try {
+					time = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(libao.getValidtime()).getTime();
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}
+			if(time > now){
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).format(new Date(time + yueka.getCount()*3600*1000)));
+			}else{
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).format(new Date(now + yueka.getCount()*3600*1000)));
+				if(time < rechargeRedisService.today(0)){
+					MailBean mail = new MailBean();
+					mail.setContent(yueka.getName());
+					RewardBean reward = new RewardBean();
+					List<RewardBean> list = new ArrayList<RewardBean>();
+					reward.setItemid(yueka.getRewardid());
+					reward.setCount(yueka.getRewardcount());
+					list.add(reward);
+					mail.setRewardList(list);
+					mail.setStartDate(DateUtil.getCurrentDateString());
+					mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+					mail.setUserId(user.getId());
+					mailService.addMail(mail);
+				}
+			}
 		}else {
-			VipLibao libao = shopRedisService.getVipLibao(itemId);
-			rewardList = libao.getItemList();
+			VipLibao viplibao = shopRedisService.getVipLibao(itemId);
+			rewardList = viplibao.getItemList();
 		}
 
 		rechargeVip(user, rmb.getRmb(), jewel);
@@ -151,7 +174,7 @@ public class RechargeService {
 		
 		activityService.sendShouchongScore(user);
 		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
-		shopRedisService.addLibaoCount(user, productid);
+		userService.saveLibao(user.getId(), libaobuilder.build());
 		
 		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb(), 0, productid, 2, "", company, 1);
 		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);

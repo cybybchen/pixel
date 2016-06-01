@@ -5,8 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Resource;
+import java.util.Map.Entry;
 
 import net.sf.json.JSONObject;
 
@@ -17,20 +16,15 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.model.userinfo.UserLibaoBean;
+import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipList;
-import com.trans.pixel.service.ActivityService;
-import com.trans.pixel.service.UserPropService;
 
 @Repository
 public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
-	@Resource
-	private UserPropService userPropService;
-	@Resource
-	private ActivityService activityService;
 
 	public final static String VIP = RedisKey.PREFIX+"Vip";
 	
@@ -38,47 +32,6 @@ public class UserRedisService extends RedisService{
 		String value = hget(RedisKey.USERDATA+userId, "UserData");
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserBean) JSONObject.toBean(json, UserBean.class);
-	}
-
-	/**
-	 * update daily data, never save
-	 */
-	public boolean refreshUserDailyData(UserBean user){
-		long time = now();
-		long today0 = caltoday(time, 0);
-		if(user.getRedisTime() >= today0){
-//			logger.warn(user.getId()+":"+user.getRedisTime() +">="+ today0);
-			user.setRedisTime(time);
-			return false;
-		}
-		logger.warn(user.getId()+":"+user.getRedisTime() +"<"+ today0+" init data!");
-		//每日首次登陆
-		user.setRedisTime(time);
-		user.setLoginDays(user.getLoginDays() + 1);
-		user.setSignCount(0);
-		user.setLadderModeLeftTimes(5);
-		user.setPurchaseCoinLeft(1);
-		user.setPurchaseCoinTime(0);
-		user.setPvpMineLeftTime(3);
-		VipInfo vip = getVip(user.getVip());
-		if(vip != null){
-			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
-			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
-			user.setPvpMineLeftTime(user.getPvpMineLeftTime()+vip.getPvp());
-			user.setPurchaseTireLeftTime(vip.getQuyu());
-			user.setRefreshExpeditionLeftTime(vip.getMohua());
-			user.setBaoxiangLeftTime(vip.getBaoxiang());
-			user.setZhibaoLeftTime(vip.getZhibao());
-			UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
-			if (userProp == null)
-				userProp = UserPropBean.initUserProp(user.getId(), 40022);
-			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
-			userPropService.updateUserProp(userProp);
-		}
-			
-		//累计登录的活动
-		activityService.loginActivity(user);
-		return true;
 	}
 
 	public void updateUser(final UserBean user) {
@@ -99,6 +52,58 @@ public class UserRedisService extends RedisService{
 	
 	public String popDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX);
+	}
+	
+	public String popLibaoDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_LIBAOCOUNT_PREFIX);
+	}
+	
+	public Libao getLibao(long userId, int rechargeid) {
+		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		Libao.Builder builder = Libao.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		builder.setRechargeid(rechargeid);
+		builder.setPurchase(0);
+		return builder.build();
+	}
+	
+	public Map<Integer, Libao> getLibaos(long userId) {
+		Map<String, String> keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId);
+		Map<Integer, Libao> map = new HashMap<Integer, Libao>();
+		for(Entry<String, String> entry : keyvalue.entrySet()){
+			Libao.Builder builder = Libao.newBuilder();
+			if(parseJson(entry.getValue(), builder))
+				map.put(Integer.parseInt(entry.getKey()), builder.build());
+		}
+		return map;
+	}
+	
+	public void saveLibao(long userId, Libao libao) {
+		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, libao.getRechargeid()+"", formatJson(libao));
+		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_LIBAOCOUNT_PREFIX, userId+"#"+libao.getRechargeid());
+	}
+	
+	public void saveLibaos(long userId, Map<Integer, Libao> libaos) {
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		for(Libao libao : libaos.values())
+			keyvalue.put(libao.getRechargeid()+"", formatJson(libao));
+		
+		hputAll(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, keyvalue);
+	}
+
+	public UserLibaoBean getLibaoBean(long userId, int rechargeid) {
+		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		Libao.Builder builder = Libao.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			UserLibaoBean libao = new UserLibaoBean();
+			libao.setUserId(userId);
+			libao.setRechargeId(rechargeid);
+			if(builder.hasValidtime()) libao.setValidTime(builder.getValidtime());
+			libao.setPurchase(builder.getPurchase());
+			return libao;
+		}
+		return null;
 	}
 
 	public String getUserIdByAccount(final int serverId, final String account) {
@@ -146,7 +151,7 @@ public class UserRedisService extends RedisService{
 		else
 			return null;
 	}
-	
+
 	/**
 	 * get other user
 	 */

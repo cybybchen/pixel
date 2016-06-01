@@ -1,8 +1,10 @@
 package com.trans.pixel.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -12,11 +14,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.mapper.UserLibaoMapper;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLibaoBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Commands.Libao;
+import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
+import com.trans.pixel.protoc.Commands.YueKa;
 import com.trans.pixel.service.redis.UserRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UserService {
@@ -26,6 +39,16 @@ public class UserService {
     private UserRedisService userRedisService;
 	@Resource
     private UserMapper userMapper;
+	@Resource
+    private UserLibaoMapper userLibaoMapper;
+	@Resource
+	private UserPropService userPropService;
+	@Resource
+	private ShopService shopService;
+	@Resource
+	private ActivityService activityService;
+	@Resource
+	private MailService mailService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -58,7 +81,7 @@ public class UserService {
     		}
     	}
     	
-        if(isme && user != null && userRedisService.refreshUserDailyData(user)){
+        if(isme && user != null && refreshUserDailyData(user)){
         	userRedisService.updateUser(user);
 
     		logger.warn(user.getId()+":"+user.getPurchaseCoinLeft()+" updateuser!");
@@ -67,6 +90,73 @@ public class UserService {
         
         return user;
     }
+
+	/**
+	 * update daily data, never save
+	 */
+	public boolean refreshUserDailyData(UserBean user){
+		long now = userRedisService.now();
+		long today0 = userRedisService.caltoday(now, 0);
+		if(user.getRedisTime() >= today0){
+//			logger.warn(user.getId()+":"+user.getRedisTime() +">="+ today0);
+			user.setRedisTime(now);
+			return false;
+		}
+		logger.warn(user.getId()+":"+user.getRedisTime() +"<"+ today0+" init data!");
+		//每日首次登陆
+		user.setRedisTime(now);
+		user.setLoginDays(user.getLoginDays() + 1);
+		user.setSignCount(0);
+		user.setLadderModeLeftTimes(5);
+		user.setPurchaseCoinLeft(1);
+		user.setPurchaseCoinTime(0);
+		user.setPvpMineLeftTime(3);
+		VipInfo vip = getVip(user.getVip());
+		if(vip != null){
+			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
+			user.setPvpMineLeftTime(user.getPvpMineLeftTime()+vip.getPvp());
+			user.setPurchaseTireLeftTime(vip.getQuyu());
+			user.setRefreshExpeditionLeftTime(vip.getMohua());
+			user.setBaoxiangLeftTime(vip.getBaoxiang());
+			user.setZhibaoLeftTime(vip.getZhibao());
+			UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
+			if (userProp == null)
+				userProp = UserPropBean.initUserProp(user.getId(), 40022);
+			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
+			userPropService.updateUserProp(userProp);
+		}
+		LibaoList libaolist = shopService.getLibaoShop(user);
+		for(Libao libao : libaolist.getLibaoList()){
+			YueKa yueka = shopService.getYueKa(libao.getRechargeid());
+			long time = 0;
+			if(libao.hasValidtime()){
+				try {
+					time = new SimpleDateFormat(TimeConst.DEFAULT_DATE_FORMAT).parse(libao.getValidtime()).getTime();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(time >= today0){
+				MailBean mail = new MailBean();
+				mail.setContent(yueka.getName());
+				RewardBean reward = new RewardBean();
+				List<RewardBean> list = new ArrayList<RewardBean>();
+				reward.setItemid(yueka.getRewardid());
+				reward.setCount(yueka.getRewardcount());
+				list.add(reward);
+				mail.setRewardList(list);
+				mail.setStartDate(DateUtil.getCurrentDateString());
+				mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+				mail.setUserId(user.getId());
+				mailService.addMail(mail);
+			}
+		}
+			
+		//累计登录的活动
+		activityService.loginActivity(user);
+		return true;
+	}
 	
 	public UserBean getRobotUser(long userId) {
     	logger.debug("The robot id is: " + userId);
@@ -96,7 +186,7 @@ public class UserService {
     			} else{
     				userRedisService.cache(serverId, user.buildShort());
     			}
-    			userRedisService.refreshUserDailyData(user);
+    			refreshUserDailyData(user);
 				userRedisService.updateUser(user);
 			}
 
@@ -141,7 +231,7 @@ public class UserService {
 		int result = userMapper.addNewUser(user);
 		user.setPvpMineRefreshTime((int)userRedisService.today(0));
 		user.setPvpMineGainTime(userRedisService.now());
-		userRedisService.refreshUserDailyData(user);
+		refreshUserDailyData(user);
 		userRedisService.updateUser(user);
 		userRedisService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
 		userRedisService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
@@ -172,6 +262,44 @@ public class UserService {
 		return userRedisService.popDBKey();
 	}
 
+	public void updateToLibaoDB(long userId, int libaoId) {
+		UserLibaoBean libao = userRedisService.getLibaoBean(userId, libaoId);
+		if(libao != null)
+			userLibaoMapper.update(libao);
+	}
+	
+	public String popLibaoDBKey(){
+		return userRedisService.popLibaoDBKey();
+	}
+	// public Libao getLibao(long userId, int rechargeid) {
+	// 	return userRedisService.getLibao(userId, rechargeid);
+	// }
+	public Map<Integer, Libao> getLibaos(long userId) {
+		Map<Integer, Libao> map = userRedisService.getLibaos(userId);
+		if(map.isEmpty()){
+			List<UserLibaoBean> list = userLibaoMapper.queryById(userId);
+			if(list.isEmpty()){
+				Libao.Builder libao = Libao.newBuilder();
+				libao.setRechargeid(1);
+				libao.setPurchase(0);
+				map.put(libao.getRechargeid(), libao.build());
+			}else{
+				for(UserLibaoBean libao : list){
+					map.put(libao.getRechargeId(), libao.build());
+				}
+			}
+			userRedisService.saveLibaos(userId, map);
+		}
+		return map;
+	}
+	
+	public void saveLibao(long userId, Libao libao) {
+		userRedisService.saveLibao(userId, libao);
+	}
+	public UserLibaoBean getLibaoBean(long userId, int rechargeid) {
+		return userRedisService.getLibaoBean(userId, rechargeid);
+	}
+
 	public List<UserBean> getUserByUnionId(int unionId) {
     	return userMapper.queryByUnionId(unionId);
     }
@@ -196,7 +324,7 @@ public class UserService {
 			UserInfo.Builder builder = UserInfo.newBuilder();
 			builder.setId(userId);
 			builder.setIcon(1);
-			builder.setName("7天离线玩家");
+			builder.setName("someone");
 			userinfo = builder.build();
 		}
 		return userinfo;
