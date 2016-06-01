@@ -145,6 +145,7 @@ import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 //add import here
 import com.trans.pixel.service.redis.ServerRedisService;
@@ -157,6 +158,8 @@ public class HeadScreen extends RequestScreen {
     private UserService userService;
 	@Resource
 	private ServerRedisService serverRedisService;
+	@Resource
+	private ServerService serverService;
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
@@ -185,6 +188,7 @@ public class HeadScreen extends RequestScreen {
 		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
 		nHead.setServerstarttime(serverRedisService.getKaifuTime(head.getServerId()));
 		nHead.setDatetime(System.currentTimeMillis() / 1000);
+		nHead.setOnlineStatus(serverService.getOnlineStatus("" + head.getGameVersion()));
 		
 		return nHead.build();
 	}

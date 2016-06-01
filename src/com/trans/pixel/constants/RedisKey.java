@@ -18,6 +18,7 @@ public class RedisKey {
 	public final static String USERCACHE_PREFIX = "UserCache_S";
 	public static final String SERVERDATA = PREFIX+"ServerData_";
 	public static final String SERVER_KAIFU_TIME = PREFIX + "server_kaifu_time";
+	public static final String GAME_VERSION_CONTROLLER_KEY = PREFIX + "game_version_controller";
 	
 	//user key prefix
 	public final static String USER_PREFIX = "user_";

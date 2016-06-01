@@ -148,6 +148,7 @@ message HeadInfo
 	optional int64 userId = 6;
 	optional string session = 7;
 	optional string serverstarttime = 8;
+	optional int32 onlineStatus = 9;	
 }
 
 message HeroInfo {

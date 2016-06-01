@@ -27,4 +27,8 @@ public class ServerService {
 		
 		return serverIds;
 	}
+	
+	public int getOnlineStatus(String version) {
+		return serverRedisService.getOnlineStatus(version);
+	}
 }

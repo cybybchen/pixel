@@ -92,4 +92,9 @@ public class ServerRedisService extends RedisService{
 		}
 		return value;
 	}
+	
+	public int getOnlineStatus(String version) {
+		String value = hget(RedisKey.GAME_VERSION_CONTROLLER_KEY, version);
+		return TypeTranslatedUtil.stringToInt(value);
+	}
 }
