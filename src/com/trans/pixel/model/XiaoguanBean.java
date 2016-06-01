@@ -72,8 +72,8 @@ public class XiaoguanBean {
 		json.put(DAGUAN, daguan);
 		json.put(XIAOGUAN, xiaoguan);
 		json.put(ID, id);
-		json.put(NAME, name);
-		json.put(CONTEXT, context);
+//		json.put(NAME, name);
+//		json.put(CONTEXT, context);
 		json.put(LOOTTIME, lootTime);
 		json.put(PREPARATIME, preparaTime);
 		
@@ -88,8 +88,8 @@ public class XiaoguanBean {
 		bean.setDaguan(json.getInt(DAGUAN));
 		bean.setXiaoguan(json.getInt(XIAOGUAN));
 		bean.setId(json.getInt(ID));
-		bean.setName(json.getString(NAME));
-		bean.setContext(json.getString(CONTEXT));
+//		bean.setName(json.getString(NAME));
+//		bean.setContext(json.getString(CONTEXT));
 		bean.setLootTime(json.getInt(LOOTTIME));
 		bean.setPreparaTime(json.getInt(PREPARATIME));
 
@@ -114,8 +114,8 @@ public class XiaoguanBean {
 				xg.setDaguan(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(DAGUAN)));
 				xg.setXiaoguan(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(XIAOGUAN)));
 				xg.setId(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(ID)));
-				xg.setName(levelElement.attributeValue(NAME));
-				xg.setContext(levelElement.attributeValue(CONTEXT));
+//				xg.setName(levelElement.attributeValue(NAME));
+//				xg.setContext(levelElement.attributeValue(CONTEXT));
 				xg.setLootTime(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(LOOTTIME)));
 				xg.setPreparaTime(TypeTranslatedUtil.stringToInt(levelElement.attributeValue(PREPARATIME)));
 				list.add(xg);
