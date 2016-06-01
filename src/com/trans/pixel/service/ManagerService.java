@@ -474,6 +474,40 @@ public class ManagerService extends RedisService{
 			result.putAll(map);
 		}
 
+		if(req.containsKey("update-LibaoCount") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_LIBAOCOUNT_PREFIX + userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-LibaoCount"));
+			for(Entry<String, String> entry : map.entrySet()){
+				String key = entry.getKey();
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.PREFIX + RedisKey.USER_LIBAOCOUNT_PREFIX + userId, key);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-LibaoCount", map.get(key));
+				}else if(entry.getValue().equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.PREFIX + RedisKey.USER_LIBAOCOUNT_PREFIX + userId, map);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-LibaoCount", map.toString());
+			}
+			
+			req.put("LibaoCount", 1);
+		}else if(req.containsKey("del-LibaoCount") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.PREFIX + RedisKey.USER_LIBAOCOUNT_PREFIX + userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-LibaoCount", "");
+			req.put("LibaoCount", 1);
+		}
+		if(req.containsKey("LibaoCount") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_LIBAOCOUNT_PREFIX + userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("LibaoCount", object);
+		}
+
 		if(req.containsKey("update-team") && gmaccountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-team"));
