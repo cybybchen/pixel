@@ -168,13 +168,20 @@ public class LadderRedisService extends RedisService{
 				BoundHashOperations<String, String, String> bhOps = redisTemplate
 						.boundHashOps(RedisKey.LADDER_DAILY_CONFIG_KEY);
 				
-				for (LadderDailyBean ladderRanking : ladderDailyList) {
-					bhOps.put("" + ladderRanking.getId(), ladderRanking.toJson());
-				}
+				bhOps.putAll(convertLadderDailyMap(ladderDailyList));
 				
 				return null;
 			}
 		});
+	}
+	
+	private Map<String, String> convertLadderDailyMap(List<LadderDailyBean> ladderDailyList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (LadderDailyBean ladderRanking : ladderDailyList) {
+			map.put("" + ladderRanking.getId(), ladderRanking.toJson());
+		}
+		
+		return map;
 	}
 	
 	public boolean lockRankRedis(int serverId) {
