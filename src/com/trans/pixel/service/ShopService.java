@@ -130,7 +130,7 @@ public class ShopService {
 			}
 			if(builder.getPurchase() > 0 && count >= builder.getPurchase())
 				count = builder.getPurchase();
-			builder.setPurchase(Math.max(0, builder.getPurchase() - count));
+			builder.setPurchase(builder.getPurchase() - count);
 		}
 		return shopbuilder.build();
 	}
