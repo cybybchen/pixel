@@ -217,6 +217,9 @@ function appendUserDatas(message){
     if(message["team"]!=null){
         appendUserData("team", message["team"]);
     }
+    if(message["LibaoCount"]!=null){
+        appendUserData("LibaoCount", message["LibaoCount"]);
+    }
     if(message["achieve"]!=null){
         appendUserData("achieve", message["achieve"]);
     }
