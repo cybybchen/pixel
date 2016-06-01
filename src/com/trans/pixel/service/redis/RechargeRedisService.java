@@ -89,6 +89,8 @@ public class RechargeRedisService extends RedisService {
 	public MultiReward getUserRecharge(long userId) {
 		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
 		String value = get(key);
+		if (value == null)
+			return null;
 		MultiReward.Builder builder = MultiReward.newBuilder();
 		if(parseJson(value, builder))
 			return builder.build();
