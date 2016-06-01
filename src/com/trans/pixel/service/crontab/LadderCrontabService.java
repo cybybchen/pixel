@@ -24,8 +24,8 @@ public class LadderCrontabService {
 	@Resource
 	private LogService logService;
 	
-//	@Scheduled(cron = "0 0 23 * * ? ")
-	@Scheduled(cron = "0 0/30 * * * ? ")
+	@Scheduled(cron = "0 0 21 * * ? ")
+//	@Scheduled(cron = "0 0/30 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 //	@Scheduled(cron = "0 55 10 * * ? ")
 	public void sendLadderDailyReward() {
