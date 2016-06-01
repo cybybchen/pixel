@@ -35,6 +35,8 @@
 		<result property="totalSignCount" column="total_sign_count" />
 		<result property="greenhand" column="greenhand" />
 		<result property="advance" column="advance" />
+		<result property="skill" column="skill" />
+		<result property="failed" column="failed" />
 		<result property="shouchongIsComplete" column="shouchong_is_complete" />
 		<result property="shouchongIsGetReward" column="shouchong_is_get_reward" />
 		<result property="currentTeamid" column="current_teamid" />
@@ -80,11 +82,11 @@
 		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
 		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, 
 		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count, greenhand, advance,
-		shouchong_is_complete, shouchong_is_get_reward, current_teamid)
+		skill, failed, shouchong_is_complete, shouchong_is_get_reward, current_teamid)
 		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
 		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId},
-		#{totalSignCount}, #{greenhand}, #{advance}, #{shouchongIsComplete}, #{shouchongIsGetReward}, #{currentTeamid})
+		#{totalSignCount}, #{greenhand}, #{advance}, #{skill}, #{failed}, #{shouchongIsComplete}, #{shouchongIsGetReward}, #{currentTeamid})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
@@ -95,7 +97,7 @@
 		login_days=#{loginDays}, pvp_unlock=#{pvpUnlock}, area_unlock=#{areaUnlock},
 		hero_limit=#{heroLimit}, compose_skill=#{composeSkill}, recharge_record=#{rechargeRecord}, hero_info_id=#{heroInfoId},
 		viplibao1=#{viplibao1}, viplibao2=#{viplibao2}, first_get_hero_id=#{firstGetHeroId}, total_sign_count=#{totalSignCount},
-		greenhand=#{greenhand}, advance=#{advance}, shouchong_is_complete=#{shouchongIsComplete}, shouchong_is_get_reward=#{shouchongIsGetReward}, current_teamid=#{currentTeamid}, month_jewel=#{monthJewel},
+		greenhand=#{greenhand}, advance=#{advance}, skill=#{skill}, failed=#{failed}, shouchong_is_complete=#{shouchongIsComplete}, shouchong_is_get_reward=#{shouchongIsGetReward}, current_teamid=#{currentTeamid}, month_jewel=#{monthJewel},
 		month_jewel_status=#{monthJewelStatus}, month_jewel2=#{monthJewel2}, month_jewel2_status=#{monthJewel2Status}, 
 		poluo_libao=#{poluoLibao}, poluo_libao_status=#{poluoLibaoStatus}, super_poluo_libao=#{superPoluoLibao}, 
 		super_poluo_libao_status=#{superPoluoLibaoStatus}, blue_equip_libao=#{blueEquipLibao}, blue_equip_libao_status=#{blueEquipLibaoStatus}, 

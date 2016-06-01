@@ -54,6 +54,8 @@ message UserInfo {
 	optional int64 purpleEquipLibao = 55;
 	repeated JewelPool growJewelCount = 56;//成长钻石基金可领
 	repeated JewelPool growExpCount = 57;//成长经验基金可领
+	optional int32 skill = 58;
+	optional int32 failed = 59;
 }
 
 message ServerData {
@@ -1871,8 +1873,10 @@ message RequestHeartBeatCommand {
 }
 
 message RequestGreenhandCommand {
-	required int32 greenhand = 1;
-	required int32 advance = 2;
+	optional int32 greenhand = 1;
+	optional int32 advance = 2;
+	optional int32 skill = 3;
+	optional int32 failed = 4;
 }
 
 message RequestLogCommand {

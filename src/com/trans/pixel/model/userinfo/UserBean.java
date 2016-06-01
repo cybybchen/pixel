@@ -70,6 +70,8 @@ public class UserBean {
 	private int totalSignCount = 0;
 	private int greenhand = 0;
 	private int advance = 0;
+	private int skill = 0;
+	private int failed = 0;
 	private int shouchongIsComplete = 0;
 	private int shouchongIsGetReward = 0;
 	private long currentTeamid = 0;
@@ -1025,6 +1027,18 @@ public class UserBean {
 	public void setShouchongIsGetReward(int shouchongIsGetReward) {
 		this.shouchongIsGetReward = shouchongIsGetReward;
 	}
+	public int getSkill() {
+		return skill;
+	}
+	public void setSkill(int skill) {
+		this.skill = skill;
+	}
+	public int getFailed() {
+		return failed;
+	}
+	public void setFailed(int failed) {
+		this.failed = failed;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1151,6 +1165,8 @@ public class UserBean {
 			LibaoService.calJewelPoolRewarded(pool, growExpCountStatus);
 			builder.addGrowExpCount(pool);
 		}
+		builder.setSkill(skill);
+		builder.setFailed(failed);
 		
 		return builder.build();
 	}
