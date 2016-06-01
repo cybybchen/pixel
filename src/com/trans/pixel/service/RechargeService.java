@@ -149,6 +149,7 @@ public class RechargeService {
 			rewardService.doRewards(user, rewards.build());
 		}
 		
+		activityService.sendShouchongScore(user);
 		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
 		shopRedisService.addLibaoCount(user, productid);
 		

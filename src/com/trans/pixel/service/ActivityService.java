@@ -43,7 +43,6 @@ import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
-import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.service.redis.UserActivityRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -60,7 +59,7 @@ public class ActivityService {
 	@Resource
 	private AchieveService achieveService;
 	@Resource
-	private ServerRedisService serverRedisService;
+	private ServerService serverService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -450,7 +449,7 @@ public class ActivityService {
 	}
 	
 	private int getKaifuDays(int serverId) {
-		String kaifuTime = serverRedisService.getKaifuTime(serverId);
+		String kaifuTime = serverService.getKaifuTime(serverId);
 		return DateUtil.intervalDays(DateUtil.getDate(DateUtil.getCurrentDateString()), DateUtil.getDate(kaifuTime));
 	}
 	

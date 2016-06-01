@@ -14,9 +14,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.utils.DateUtil;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 import com.trans.pixel.protoc.Commands.ServerData;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class ServerRedisService extends RedisService{
@@ -86,11 +85,12 @@ public class ServerRedisService extends RedisService{
 	
 	public String getKaifuTime(int serverId) {
 		String value = hget(RedisKey.SERVER_KAIFU_TIME, "" + serverId);
-		if(value == null){
-			value = DateUtil.getCurrentDateString();
-			hput(RedisKey.SERVER_KAIFU_TIME, "" + serverId, value);
-		}
+		
 		return value;
+	}
+	
+	public void setKaifuTime(int serverId, String kaifuTime) {
+		hput(RedisKey.SERVER_KAIFU_TIME, "" + serverId, kaifuTime);
 	}
 	
 	public int getOnlineStatus(String version) {

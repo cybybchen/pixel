@@ -7,4 +7,17 @@
 		from server
 	</select>
 	
+	<select id="selectServerKaifuTime" resultType="int">
+		SELECT kaifu_time
+		from server where server_id=#{serverId}
+	</select>
+	
+	<select id="insertServerKaifuTime" resultType="int">
+		INSERT INTO server(server_id, kaifu_time)
+		VALUES(#{serverId}, #{kaifuTime})
+		ON 
+	   duplicate key update
+   	kaifu_time=#{kaifuTime}
+	</select>
+	
 </mapper>

@@ -148,7 +148,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 //add import here
-import com.trans.pixel.service.redis.ServerRedisService;
 
 public class HeadScreen extends RequestScreen {
 	
@@ -156,8 +155,6 @@ public class HeadScreen extends RequestScreen {
 	
 	@Resource
     private UserService userService;
-	@Resource
-	private ServerRedisService serverRedisService;
 	@Resource
 	private ServerService serverService;
 	
@@ -186,7 +183,7 @@ public class HeadScreen extends RequestScreen {
 
 	private HeadInfo buildHeadInfo(HeadInfo head) {
 		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
-		nHead.setServerstarttime(serverRedisService.getKaifuTime(head.getServerId()));
+		nHead.setServerstarttime(serverService.getKaifuTime(head.getServerId()));
 		nHead.setDatetime(System.currentTimeMillis() / 1000);
 		nHead.setOnlineStatus(serverService.getOnlineStatus("" + head.getGameVersion()));
 		
