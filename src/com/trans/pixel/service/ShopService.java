@@ -174,4 +174,8 @@ public class ShopService {
 	public YueKa getYueKa(int id){
 		return redis.getYueKa(id);
 	}
+	
+	public Map<Integer, YueKa> getYueKas(){
+		return redis.getYueKas();
+	}
 }

@@ -758,24 +758,46 @@ public class ShopRedisService extends RedisService{
 		return builder.build();
 	}
 	
+	public Map<Integer, YueKa> getYueKas(){
+		Map<Integer, YueKa> map = new HashMap<Integer, YueKa>();
+		Map<String, String> keyvalue = this.hget(RedisKey.YUEKA_CONFIG);
+		if(!keyvalue.isEmpty()){
+			for(String value : keyvalue.values()){
+				YueKa.Builder builder = YueKa.newBuilder();
+				if(parseJson(value, builder)){
+					map.put(builder.getItemid(), builder.build());
+				}
+			}
+			return map;
+		}else{
+			return buildYueKa();
+		}
+	}
+
 	public YueKa getYueKa(int id){
 		String value = this.hget(RedisKey.YUEKA_CONFIG, ""+id);
 		YueKa.Builder builder = YueKa.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			String xml = ReadConfig("lol_yueka.xml");
-			YueKaList.Builder listbuilder = YueKaList.newBuilder();
-			Map<String, String> keyvalue = new HashMap<String, String>();
-			parseXml(xml, listbuilder);
-			for(YueKa libao : listbuilder.getItemList()){
-				if(libao.getItemid() == id)
-					builder = YueKa.newBuilder(libao);
-				keyvalue.put(libao.getItemid()+"", formatJson(libao));
-			}
-			hputAll(RedisKey.YUEKA_CONFIG, keyvalue);
-
-			return builder.build();
+			Map<Integer, YueKa> map = buildYueKa();
+			YueKa yueka = map.get(id);
+			return yueka;
 		}
+	}
+
+	public Map<Integer, YueKa> buildYueKa(){
+		String xml = ReadConfig("lol_yueka.xml");
+		YueKaList.Builder listbuilder = YueKaList.newBuilder();
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		Map<Integer, YueKa> map = new HashMap<Integer, YueKa>();
+		parseXml(xml, listbuilder);
+		for(YueKa libao : listbuilder.getItemList()){
+			map.put(libao.getItemid(), libao);
+			keyvalue.put(libao.getItemid()+"", formatJson(libao));
+		}
+		hputAll(RedisKey.YUEKA_CONFIG, keyvalue);
+		
+		return map;
 	}
 }

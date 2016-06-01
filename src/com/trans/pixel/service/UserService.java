@@ -127,8 +127,11 @@ public class UserService {
 			userPropService.updateUserProp(userProp);
 		}
 		LibaoList libaolist = shopService.getLibaoShop(user);
+		Map<Integer, YueKa> map = shopService.getYueKas();
 		for(Libao libao : libaolist.getLibaoList()){
-			YueKa yueka = shopService.getYueKa(libao.getRechargeid());
+			YueKa yueka = map.get(libao.getRechargeid());
+			if(yueka == null)
+				continue;
 			long time = 0;
 			if(libao.hasValidtime()){
 				try {
