@@ -130,7 +130,7 @@ public class ShopService {
 			}
 			if(builder.getPurchase() > 0 && count >= builder.getPurchase())
 				count = builder.getPurchase();
-			builder.setPurchase(builder.getPurchase() - count);
+			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
 		}
 		return shopbuilder.build();
 	}
@@ -145,13 +145,13 @@ public class ShopService {
 	
 	public int getPurchaseCoinCost(int time){
 		PurchaseCoinCostList list = redis.getPurchaseCoinCostList();
-		PurchaseCoinCost last = null;
+		PurchaseCoinCost last = list.getGold(0);
 		for(PurchaseCoinCost cost : list.getGoldList()){
 			if(time+1 < cost.getCount())
 				return last.getCost();
 			last = cost;
 		}
-		return 500;
+		return last.getCost();
 	}
 	
 	public MultiReward getPurchaseCoinReward(int daguan){

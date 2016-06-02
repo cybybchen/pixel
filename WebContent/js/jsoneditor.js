@@ -297,6 +297,7 @@ function buildUserJson(key, value){
             json["team"] = 1;
             json["teamCache"] = 1;
             json["achieve"] = 1;
+            json["LibaoCount"] = 1;
         }else if(datatype == "hero"){
             json["hero"] = 1;
             json["pokede"] = 1;

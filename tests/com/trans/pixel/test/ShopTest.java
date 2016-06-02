@@ -15,6 +15,7 @@ import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
@@ -67,10 +68,10 @@ public class ShopTest extends BaseTest {
 
 	private ResponseLibaoShopCommand libaoshop = null;
 	private void getLibaoShop(RequestCommand request) {
-		RequestDailyShopCommand.Builder builder = RequestDailyShopCommand.newBuilder();
+		RequestLibaoShopCommand.Builder builder = RequestLibaoShopCommand.newBuilder();
         ResponseCommand response = request("libaoShopCommand", builder.build(), request);
         
-        if(response != null && response.hasDailyShopCommand())
+        if(response != null && response.hasLibaoShopCommand())
         	libaoshop = response.getLibaoShopCommand();
 	}
 	

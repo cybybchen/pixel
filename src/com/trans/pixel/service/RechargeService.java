@@ -125,7 +125,7 @@ public class RechargeService {
 			user.setGrowExpCount(user.getGrowExpCount()+1);
 		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
 			YueKa yueka = shopService.getYueKa(itemId);
-			long now = rechargeRedisService.now()*1000L;
+			long now = System.currentTimeMillis();
 			long time = 0;
 			if(libaobuilder.hasValidtime()){
 				try {
