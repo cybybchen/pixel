@@ -18,6 +18,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
+import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
@@ -301,12 +302,31 @@ public class ManagerService extends RedisService{
 			result.put("success", "redis数据已删除");
 		}else if(req.containsKey("del-RedisData") && gmaccountBean.getCanwrite() == 1){
 			String value = req.getString("del-RedisData");
-			Set<String> keys = keys(value);
-			for(String key : keys)
-				delete(key);
-			result.put("success", "redis数据已删除");
+			if(value.indexOf(' ') > 0){
+				String[] keys = value.split(" ");
+				DataType type = type(keys[0]);
+				if(type.equals(DataType.NONE))
+					result.put("error", "未找到"+keys[0]+"对应的value");
+				else if(type.equals(DataType.HASH))
+					hdelete(keys[0], keys[1]);
+				else
+					result.put("error", "类型错误"+type.name()+"："+keys[0]);
+				result.put("RedisData", "keep");
+			}else if(value.indexOf('*') >= 0){
+				Set<String> keys = keys(value);
+				for(String key : keys)
+					delete(key);
+				req.put("RedisData", value);
+			}else{
+				if(exists(value))
+					delete(value);
+				else
+					result.put("error", "未找到"+value+"对应的value");
+				result.put("RedisData", "keep");
+			}
+			if(!result.containsKey("error"))
+				result.put("success", "redis数据已删除");
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-RedisData", value);
-			req.put("RedisData", value);
 		}
 		if(req.containsKey("RedisData") && gmaccountBean.getCanview() == 1){
 			Set<String> keys = keys(req.getString("RedisData"));

@@ -792,6 +792,8 @@ function appendConfigDatas(message, visible){
 }
 
 function addRedisDatas(json){
+    if(json == "keep")
+        return;
 	json.sort();
 	$("#data-controlgroup").empty();
 	$.each(json, function (key, value) {
