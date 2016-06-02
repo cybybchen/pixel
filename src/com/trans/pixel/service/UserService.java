@@ -81,12 +81,8 @@ public class UserService {
     		}
     	}
     	
-        if(isme && user != null && refreshUserDailyData(user)){
+        if(isme && user != null && refreshUserDailyData(user))
         	userRedisService.updateUser(user);
-
-    		logger.warn(user.getId()+":"+user.getPurchaseCoinLeft()+" updateuser!");
-        }
-//        	logger.warn(user.getId()+":"+":"+user.getPurchaseCoinLeft());
         
         return user;
     }
@@ -99,10 +95,10 @@ public class UserService {
 		long today0 = userRedisService.caltoday(now, 0);
 		if(user.getRedisTime() >= today0){
 //			logger.warn(user.getId()+":"+user.getRedisTime() +">="+ today0);
-			user.setRedisTime(now);
+			// user.setRedisTime(now);
 			return false;
 		}
-		logger.warn(user.getId()+":"+user.getRedisTime() +"<"+ today0+" init data!");
+		logger.info(user.getId()+":"+user.getRedisTime() +"<"+ today0+" init data!");
 		//每日首次登陆
 		user.setRedisTime(now);
 		user.setLoginDays(user.getLoginDays() + 1);
