@@ -210,26 +210,27 @@ public class PvpMapService {
 //			user.setPvpUnlock(fieldid);
 //			userService.updateUserDailyData(user);
 //			unlockMap(fieldid, 1000, user);
-			return maplist.build();
-		}
-		Map<String, String> pvpMap = redis.getUserBuffs(user);
-		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
-		List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
-		refreshMine(maplist, mineMap, user);
-		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
-			if(!mapBuilder.getOpened())
-				continue;
-			String buff = pvpMap.get(mapBuilder.getFieldid()+"");
-			if(buff != null)
-				mapBuilder.setBuff(Integer.parseInt(buff));
-			for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
-				PVPMine mine = mineMap.get(mineBuilder.getId()+"");
-				if(mine != null)
-					mineBuilder.mergeFrom(mine);
-			}
-			for(PVPMonster monster : monsters){
-				if(monster.getFieldid() == mapBuilder.getFieldid())
-					mapBuilder.addMonster(monster);
+			// return maplist.build();
+		}else{
+			Map<String, String> pvpMap = redis.getUserBuffs(user);
+			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
+			List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
+			refreshMine(maplist, mineMap, user);
+			for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
+				if(!mapBuilder.getOpened())
+					continue;
+				String buff = pvpMap.get(mapBuilder.getFieldid()+"");
+				if(buff != null)
+					mapBuilder.setBuff(Integer.parseInt(buff));
+				for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
+					PVPMine mine = mineMap.get(mineBuilder.getId()+"");
+					if(mine != null)
+						mineBuilder.mergeFrom(mine);
+				}
+				for(PVPMonster monster : monsters){
+					if(monster.getFieldid() == mapBuilder.getFieldid())
+						mapBuilder.addMonster(monster);
+				}
 			}
 		}
 		long time = redis.now()/3600*3600;
