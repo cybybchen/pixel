@@ -33,7 +33,7 @@ public enum ErrorConst implements ResultConst {
     UPDATE_TEAM_ERROR(1038, "更新队伍信息异常"), HERO_LIMIT_ERROR(1039, "人物数量已达上限"), YOUR_FRIEND_MAX_ERROR(1040, "你的好友数已达上限"), THE_PERSON_FRIEND_MAX_ERROR(1041, "该玩家好友数已达上限"),
     LOOT_PACKAGE_LIMIT_ERROR(1042, "挂机背包数量已达上限"), HEAD_NOT_EXIST(1043, "不存在该头像"), LOTTERY_ACTIVITY_TIME_ERROR(1044, "不在活动周期内"),
     BLACK_NOSAY_ERROR(1045, "你已被禁止发言"), BLACK_USER_ERROR(1046, "该角色已被封"), BLACK_ACCOUNT_ERROR(1047, "该帐号已被封"),
-    ACTIVITY_IS_OVER_ERROR(1048, "活动已过期"), NOT_WRITE_USER_ERROR(1049, "无法充值"),
+    ACTIVITY_IS_OVER_ERROR(1048, "活动已过期"), NOT_WRITE_USER_ERROR(1049, "充值异常"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 
