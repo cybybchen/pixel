@@ -173,7 +173,7 @@ public class PushCommandService extends BaseCommandService {
 	public void pushUserMailListCommand(Builder responseBuilder, UserBean user, int type) {
 		ResponseGetUserMailListCommand.Builder builder = ResponseGetUserMailListCommand.newBuilder();
 		List<MailList> mailBuilderList = new ArrayList<MailList>();
-		if (type == MailConst.TYPE_SYSTEM_MAIL) {
+		if (type == MailConst.TYPE_SYSTEM_MAIL || type == MailConst.TYPE_MINE_ATTACKED_MAIL) {
 			for (Integer systemType : MailConst.SYSTEM_MAIL_TYPES) {
 				List<MailBean> mailList = mailService.getMailList(user.getId(), systemType);
 				mailBuilderList.add(buildMailList(systemType, mailList));
