@@ -82,7 +82,8 @@ public class UserLevelBean {
 	
 	public static int getXiaoguanRecord(String string, int daguan) {
 		JSONObject json = JSONObject.fromObject(string);
-		return json.getInt("" + daguan);
+		
+		return TypeTranslatedUtil.jsonGetInt(json, "" + daguan);
 	}
 	
 	public static String updateXiaoguanRecord(String string, XiaoguanBean xg) {
