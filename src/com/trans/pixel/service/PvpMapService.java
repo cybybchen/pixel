@@ -71,9 +71,7 @@ public class PvpMapService {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() == fieldid){
-				/*if(map.getFieldid() != fieldid){
-					return ErrorConst.UNLOCK_ORDER_ERROR;
-				}else */if(zhanli >= map.getZhanli()){
+				if(zhanli >= map.getZhanli()){
 					map.setOpened(true);
 					redis.saveMapList(maplist.build(), user.getId());
 					if(map.getFieldid() > user.getPvpUnlock()){

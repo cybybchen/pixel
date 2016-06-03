@@ -40,7 +40,7 @@ public class PvpMapRedisService extends RedisService{
 			return builder;
 		}
 		PVPMapList.Builder maplist = getBasePvpMapList();
-		maplist.getFieldBuilder(0).setOpened(true);
+//		maplist.getFieldBuilder(0).setOpened(true);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() <= pvpUnlock)
 				map.setOpened(true);
