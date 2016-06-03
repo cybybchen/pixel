@@ -992,8 +992,9 @@ message Rmb {
 	required int32 rmb = 2;
 	required int32 itemid = 3;
 	required int32 zuanshi = 4;
-	required string name = 5;
-	required string description = 6;
+	optional string name = 5;
+	optional string description = 6;
+	optional string img = 7;
 }
 
 message HeroChoiceList {
