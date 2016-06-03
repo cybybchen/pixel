@@ -15,10 +15,10 @@
 	
 	<update id="update" parameterType="com.trans.pixel.model.userinfo.UserLibaoBean">
 	    INSERT INTO user_libao(user_id, recharge_id, valid_time, purchase)
-	    VALUES(#{userId}, #{rechargeId}), #{validTime}), #{purchase})
+	    VALUES(#{userId}, #{rechargeId}, #{validTime}, #{purchase})
 	    ON 
 	    duplicate key update
-	    user_id=#{userId} and recharge_id=#{rechargeId}
+	    valid_time=#{validTime}, purchase=#{purchase}
 	</update>
 	
 </mapper>

@@ -81,6 +81,7 @@ public class UserRedisService extends RedisService{
 	
 	public void saveLibao(long userId, Libao libao) {
 		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, libao.getRechargeid()+"", formatJson(libao));
+		this.expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_LIBAOCOUNT_PREFIX, userId+"#"+libao.getRechargeid());
 	}
 	
@@ -90,6 +91,7 @@ public class UserRedisService extends RedisService{
 			keyvalue.put(libao.getRechargeid()+"", formatJson(libao));
 		
 		hputAll(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, keyvalue);
+		this.expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public UserLibaoBean getLibaoBean(long userId, int rechargeid) {

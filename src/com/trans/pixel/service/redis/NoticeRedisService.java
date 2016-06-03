@@ -15,6 +15,8 @@ import com.trans.pixel.protoc.Commands.Notice;
 public class NoticeRedisService extends RedisService {
 	
 	public void pushNotice(final long userId, final Notice notice) {
+		if(userId < 0)
+			return;
 		String key = buildRedisKey(userId);
 		hput(key, "" + notice.getType(), formatJson(notice));
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
