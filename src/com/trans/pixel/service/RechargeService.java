@@ -125,20 +125,20 @@ public class RechargeService {
 			user.setGrowExpCount(user.getGrowExpCount()+1);
 		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
 			YueKa yueka = shopService.getYueKa(itemId);
-			long now = System.currentTimeMillis();
+			long today0 = rechargeRedisService.today(0);
 			long time = 0;
 			if(libaobuilder.hasValidtime()){
 				try {
-					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime();
+					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime()/1000;
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 			}
-			if(time > now){
-				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(time + yueka.getCount()*24*3600*1000L)));
+			if(time >= today0+24*3600L){
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(time*1000L + yueka.getCount()*24*3600*1000L)));
 			}else{
-				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(now + yueka.getCount()*24*3600*1000L)));
-				if(time < rechargeRedisService.today(0)){
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(today0*1000L-1000L + yueka.getCount()*24*3600*1000L)));
+				// if(time < today0){
 					MailBean mail = new MailBean();
 					mail.setContent(yueka.getName());
 					RewardBean reward = new RewardBean();
@@ -151,7 +151,7 @@ public class RechargeService {
 					mail.setType(MailConst.TYPE_SYSTEM_MAIL);
 					mail.setUserId(user.getId());
 					mailService.addMail(mail);
-				}
+				// }
 			}
 		}else {
 			VipLibao viplibao = shopRedisService.getVipLibao(itemId);
