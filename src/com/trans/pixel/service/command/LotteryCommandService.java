@@ -202,7 +202,15 @@ public class LotteryCommandService extends BaseCommandService {
 					return 2;
 				
 				return 3;
+			case LotteryConst.LOOTERY_SPECIAL_TYPE:
+				if (count == 1)
+					return 4;
+				
+				return 5;
 			default:
+				if (lotteryType == 1 || lotteryType == 2)
+					return 7;
+				
 				return 0;
 		}
 	}
