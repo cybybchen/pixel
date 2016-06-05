@@ -226,5 +226,8 @@ public class RedisKey {
 	//notice prefix
 	public static final String NOTICE_PREFIX = PREFIX + "notice_";
 	
+	//heart beat
+	public static final String HEART_BEAT_KEY = PREFIX + "heartbeat";
+	
 	
 }

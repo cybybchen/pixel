@@ -141,6 +141,7 @@ import com.trans.pixel.service.command.CdkeyCommandService;
 import com.trans.pixel.service.command.CheatRechargeCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
+import com.trans.pixel.service.command.HeartBeatCommandService;
 import com.trans.pixel.service.command.HeroCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
@@ -229,6 +230,8 @@ public class GameDataScreen extends RequestScreen {
 	private LogCommandService logCommandService;
 	@Resource
 	private LibaoCommandService libaoCommandService;
+	@Resource
+	private HeartBeatCommandService heartBeatCommmandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -758,7 +761,7 @@ public class GameDataScreen extends RequestScreen {
 	}//ShouchongRewardCommand
 	@Override//HeartBeatCommand
 	protected boolean handleCommand(RequestHeartBeatCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO HeartBeatCommand method
+		heartBeatCommmandService.heartBeat(cmd, responseBuilder, user);
 		return true;//HeartBeatCommand
 	}//HeartBeatCommand
 	@Override//GreenhandCommand

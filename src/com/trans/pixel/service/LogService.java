@@ -200,6 +200,17 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_HEARTBEAT:
+				sb.append(LogString.LOGTYPE_HEARTBEAT_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.COUNT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TIME));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}

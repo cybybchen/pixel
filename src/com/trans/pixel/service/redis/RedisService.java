@@ -339,6 +339,24 @@ public class RedisService {
 	 /**
     * 设置hashMap单个值
     */
+	protected void hincrby(final String key, final String key2, final long addvalue) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+
+				Ops.increment(key2, addvalue);
+
+				return null;
+			}
+		});
+	}
+	
+	 /**
+    * 设置hashMap单个值
+    */
 	protected void hput(final String key, final String key2, final String value) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
