@@ -13,6 +13,9 @@ public class HeartBeatRedisService extends RedisService {
 	}
 	
 	public Map<String, String> getHeartBeatDetail() {
-		return this.hget(RedisKey.HEART_BEAT_KEY);
+		Map<String, String> map = this.hget(RedisKey.HEART_BEAT_KEY);
+		this.delete(RedisKey.HEART_BEAT_KEY);
+		
+		return map;
 	}
 }

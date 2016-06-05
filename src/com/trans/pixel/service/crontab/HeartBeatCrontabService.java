@@ -47,7 +47,7 @@ public class HeartBeatCrontabService {
 	private Map<String, String> buildLogParams(String serverId, String count, String time) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, serverId);
-		params.put(LogString.CHANNEL, count);
+		params.put(LogString.COUNT, count);
 		params.put(LogString.TIME, time);
 		
 		return params;
