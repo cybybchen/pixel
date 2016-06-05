@@ -139,11 +139,9 @@ public class ActivityConst {
 	 */
 	public static final int LOG_TYPE_ACHIEVE = 3;
 	
-	public static final int LOG_TYPE_RICHANG = 2;
+	public static final int LOG_TYPE_ACTIVITY = 4;
 	
-	public static final int LOG_TYPE_KAIFU = 1;
-	
-	public static final int LOG_TYPE_SHOUCHONG = 4;
+	public static final int LOG_TYPE_SIGN = 5;
 	
 	/**
 	 * activity type

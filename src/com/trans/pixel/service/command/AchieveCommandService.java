@@ -57,7 +57,7 @@ public class AchieveCommandService extends BaseCommandService {
 			/**
 			 * send log
 			 */
-			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACHIEVE, type);
+			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACHIEVE, type, ua.getCompleteId());
 		}
 		
 		List<UserAchieveBean> uaList = userAchieveService.selectUserAchieveList(user.getId());

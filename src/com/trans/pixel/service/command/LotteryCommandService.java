@@ -56,6 +56,8 @@ public class LotteryCommandService extends BaseCommandService {
 		if (count > 10)
 			count = 10;
 		
+		boolean free = false;
+		
 		if (type == LotteryConst.LOOTERY_SPECIAL_TYPE && user.getVip() < LotteryConst.LOOTERY_SPECIAL_VIP_LIMIT) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
 			
@@ -87,7 +89,6 @@ public class LotteryCommandService extends BaseCommandService {
 			}
 		} else {
 			cost = getLotteryCost(type, count);
-			boolean free = false;
 			int costtype = RewardConst.COIN;
 			if(type == LotteryConst.LOOTERY_SPECIAL_TYPE)
 				costtype = RewardConst.JEWEL;
@@ -124,7 +125,7 @@ public class LotteryCommandService extends BaseCommandService {
 		/**
 		 * send log
 		 */
-		sendLog(user.getId(), user.getServerId(), type, count);
+		sendLog(user.getId(), user.getServerId(), type, free?1:0, count);
 	}
 
 	private void pushUserData(Builder responseBuilder, UserBean user, int type){
@@ -181,10 +182,11 @@ public class LotteryCommandService extends BaseCommandService {
 		return cost;
 	}
 	
-	private void sendLog(long userId, int serverId, int lotteryType, int count) {
+	private void sendLog(long userId, int serverId, int lotteryType, int free, int count) {
 		Map<String, String> logMap = new HashMap<String, String>();
 		logMap.put(LogString.USERID, "" + userId);
 		logMap.put(LogString.SERVERID, "" + serverId);
+		logMap.put(LogString.FREE, "" + free);
 		logMap.put(LogString.TYPE, "" + getLogTypeOfLottery(lotteryType, count));
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_LOTTERY);

@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -25,6 +26,8 @@ public class SignService {
 	private SignRedisService signRedisService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private ActivityService activityService;
 	
 	public List<RewardBean> sign(UserBean user) {
 		if (!canSign(user))
@@ -41,6 +44,11 @@ public class SignService {
 			rewardList.add(buildRewardBySign(totalSign));
 		
 		userService.updateUser(user);
+		
+		/**
+		 * send log
+		 */
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, 0, user.getTotalSignCount());
 		
 		return rewardList;
 	}

@@ -64,7 +64,7 @@ public class ActivityCommandService extends BaseCommandService {
 			/**
 			 * send log
 			 */
-			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_RICHANG, id);
+			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, id, order);
 		}
 		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
 		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
@@ -113,7 +113,7 @@ public class ActivityCommandService extends BaseCommandService {
 			/**
 			 * send log
 			 */
-			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_KAIFU, id);
+			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, id, order);
 		}
 		
 		
@@ -145,10 +145,6 @@ public class ActivityCommandService extends BaseCommandService {
 			rewardService.doRewards(user, multiReward.build());
 			
 			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
-			/**
-			 * send log
-			 */
-			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SHOUCHONG, 0);
 		}
 		
 		pusher.pushUserInfoCommand(responseBuilder, user);

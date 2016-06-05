@@ -296,7 +296,7 @@ public class PvpMapService {
 		/**
 		 * send log
 		 */
-		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), monster.getId());
+		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), null, monster.getId(), 0);
 		
 //		logger.warn(monster.getFieldid()+":+"+monster.getName()+ret+":"+monster.getBuffcount()+"->"+buff);
 		return rewards.build();
@@ -361,7 +361,8 @@ public class PvpMapService {
 		/**
 		 * send log
 		 */
-		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), enemyId);
+		
+		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), userTeamService.getTeamCache(enemyId).getHeroInfoList(), enemyId, mine.getLevel());
 		
 		return true;
 	}
@@ -401,7 +402,7 @@ public class PvpMapService {
 		return redis.getMine(user.getId(), id);
 	}
 	
-	private void sendLog(UserBean user, int time, int type, boolean ret, List<HeroInfo> heroList, long enemyId) {
+	private void sendLog(UserBean user, int time, int type, boolean ret, List<HeroInfo> heroList, List<HeroInfo> enemyList, long enemyId, int defencelevel) {
 		Map<String, String> logMap = new HashMap<String, String>();
 		logMap.put(LogString.USERID, "" + user.getId());
 		logMap.put(LogString.SERVERID, "" + user.getServerId());
@@ -410,6 +411,11 @@ public class PvpMapService {
 		logMap.put(LogString.RESULT, "" + (ret ? 1 : 0));
 		logMap.put(LogString.TEAM_LIST, userTeamService.getTeamString(heroList));
 		logMap.put(LogString.ENEMYID, "" + enemyId);
+		if (enemyList == null || enemyList.size() == 0)
+			logMap.put(LogString.ENEMY_LIST, "");
+		else
+			logMap.put(LogString.ENEMY_LIST, userTeamService.getTeamString(enemyList));
+		logMap.put(LogString.DEFENCELEVEL, "" + defencelevel);
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_LOOTPVP);
 	}

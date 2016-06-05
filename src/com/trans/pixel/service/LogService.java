@@ -88,6 +88,10 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.TEAM_LIST));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ENEMY_LIST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.DEFENCELEVEL));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ENEMYID));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.RESULT));
@@ -105,6 +109,8 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(now);
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.FREE));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.TYPE));
 				sb.append(LogString.SPLITER);
 				break;
@@ -121,6 +127,8 @@ public class LogService {
 				sb.append(params.get(LogString.MISSION_TYPE));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.MISSIONID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.MISSIONSTEP));
 				sb.append(LogString.SPLITER);
 				break;
 			
@@ -211,6 +219,57 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_SHOP:
+				sb.append(LogString.LOGTYPE_SHOP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SHOPID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CURRENCY));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CURRENCYAMOUNT));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_AID:
+				sb.append(LogString.LOGTYPE_AID_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID2));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_PVE:
+				sb.append(LogString.LOGTYPE_PVE_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TURN));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -267,6 +326,27 @@ public class LogService {
 		params.put(LogString.DES, des);
 		
 		sendLog(params, LogString.LOGTYPE_MONITOR);
+	}
+	
+	public void sendCallBrotherLog(int serverId, int type, long userId, long userId2) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.TYPE, "" + type);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.USERID2, "" + userId2);
+		
+		sendLog(params, LogString.LOGTYPE_AID);
+	}
+	
+	public void sendPveLog(int serverId, int result, long userId, int turn, int level) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.RESULT, "" + result);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.TURN, "" + turn);
+		params.put(LogString.LEVEL, "" + level);
+		
+		sendLog(params, LogString.LOGTYPE_PVE);
 	}
 	
 	private void send(String str) {

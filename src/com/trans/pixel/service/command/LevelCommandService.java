@@ -117,6 +117,18 @@ public class LevelCommandService extends BaseCommandService {
 	}
 	
 	public void levelResultFirstTime(RequestLevelResultCommand cmd, Builder responseBuilder, UserBean user) {
+		/**
+		 * send pve log
+		 */
+		boolean ret = false;
+		int turn = 0;
+		int level = 0;
+		if (cmd.hasRet())
+			ret = cmd.getRet();
+		if (cmd.hasTurn())
+			turn = cmd.getTurn();
+		logService.sendPveLog(user.getServerId(), ret ? 1 : 0, user.getId(), turn, level);
+		
 //		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();

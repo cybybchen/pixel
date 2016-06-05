@@ -642,12 +642,13 @@ public class ActivityService {
 	/**
 	 * activity and achieve log
 	 */
-	public void sendLog(long userId, int serverId, int type, int id) {
+	public void sendLog(long userId, int serverId, int type, int id, int step) {
 		Map<String, String> logMap = new HashMap<String, String>();
 		logMap.put(LogString.USERID, "" + userId);
 		logMap.put(LogString.SERVERID, "" + serverId);
 		logMap.put(LogString.MISSION_TYPE, "" + type);
 		logMap.put(LogString.MISSIONID, "" + id);
+		logMap.put(LogString.MISSIONSTEP, "" + step);
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_MISSION);
 	}
@@ -675,6 +676,11 @@ public class ActivityService {
 			rewards.addAllLoot(getShouchongRewardList(shouchong.getRewardList()));
 			user.setShouchongIsGetReward(1);
 			userService.updateUser(user);
+			
+			/**
+			 * send log
+			 */
+			sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, shouchong.getId(), 0);
 			
 			return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 		}

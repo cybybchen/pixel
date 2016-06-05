@@ -1103,6 +1103,8 @@ message RequestLevelResultCommand {
 	required int32 levelId = 1;
 	required string teamInfo = 2;
 	required string fightInfo = 3;
+	optional int32 turn = 4;
+	optional bool ret = 5;
 }
 
 message ResponseLevelResultCommand {

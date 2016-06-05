@@ -102,6 +102,8 @@ public class MailCommandService extends BaseCommandService {
 	            return;
 			}
 			pushCommandService.pushUserFriendListCommand(responseBuilder, user);
+			
+			logService.sendCallBrotherLog(user.getServerId(), 0, user.getId(), toUserId);
 		}
 		
 		if (cmd.hasRelatedId())

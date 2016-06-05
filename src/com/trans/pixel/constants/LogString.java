@@ -11,6 +11,7 @@ public class LogString {
 	// 表中字段
 	public static final String LOGTYPE = "logtype";
 	public static final String USERID = "userid";
+	public static final String USERID2 = "userid2";
 	public static final String SERVERID = "serverid";
 	public static final String GM = "gm";
 	public static final String ATTACK_TEAM_LIST = "attackteamlist";
@@ -20,10 +21,12 @@ public class LogString {
 	public static final String ATTACK_TIME = "attackTime";
 	public static final String OPERATION = "operation";
 	public static final String TEAM_LIST = "teamlist";
+	public static final String ENEMY_LIST = "enemylist";
 	public static final String ENEMYID = "enemyid";
 	public static final String TYPE = "type";
 	public static final String MISSION_TYPE = "missiontype";
 	public static final String MISSIONID = "missionid";
+	public static final String MISSIONSTEP = "missionstep";
 	public static final String CURRENCY = "currency";
 	public static final String CURRENCYAMOUNT = "currencyamount";
 	public static final String STATE = "state";
@@ -39,6 +42,10 @@ public class LogString {
 	public static final String DES = "des";
 	public static final String TIME = "time";
 	public static final String COUNT = "count";
+	public static final String DEFENCELEVEL = "defencelevel";
+	public static final String FREE = "free";
+	public static final String TURN = "turn";
+	public static final String LEVEL = "level";
 	
 	public static final String MODE = "mode";
 	public static final String PHONEUUID = "phoneuuid";
@@ -59,6 +66,8 @@ public class LogString {
 	public static final String BASE64_LOG = "base64_log";
 	public static final String FRIEND_USERID = "friendUserId";
 	
+	public static final String SHOPID = "shopid";
+	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
 	public static final int LOGTYPE_LADDER = 1;
@@ -70,6 +79,9 @@ public class LogString {
 	public static final int LOGTYPE_GM = 7;
 	public static final int LOGTYPE_MONITOR = 8;
 	public static final int LOGTYPE_HEARTBEAT = 9;
+	public static final int LOGTYPE_SHOP = 10;
+	public static final int LOGTYPE_AID = 11;
+	public static final int LOGTYPE_PVE = 12;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -81,6 +93,9 @@ public class LogString {
 	public static final String LOGTYPE_GM_STR = "Gm";
 	public static final String LOGTYPE_MONITOR_STR = "Monitor";
 	public static final String LOGTYPE_HEARTBEAT_STR = "HeartBeat";
+	public static final String LOGTYPE_SHOP_STR = "Shop";
+	public static final String LOGTYPE_AID_STR = "Aid";
+	public static final String LOGTYPE_PVE_STR = "Pve";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

@@ -148,7 +148,12 @@ public class PvpCommandService extends BaseCommandService {
 		
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
 			pusher.pushUserPropListCommand(responseBuilder, user);
-		}	
+		}
+		
+		/**
+		 * send help attack log
+		 */
+		logService.sendCallBrotherLog(user.getServerId(), cmd.getRet() ? 1 : 2, user.getId(), friendUserId);
 	}
 	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
