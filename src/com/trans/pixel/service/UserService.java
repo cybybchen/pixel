@@ -25,9 +25,11 @@ import com.trans.pixel.model.userinfo.UserLibaoBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.LibaoList;
+import com.trans.pixel.protoc.Commands.Rmb;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.YueKa;
+import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.UserRedisService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -49,6 +51,8 @@ public class UserService {
 	private ActivityService activityService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private RechargeRedisService rechargeRedisService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -125,18 +129,21 @@ public class UserService {
 		LibaoList libaolist = shopService.getLibaoShop(user);
 		Map<Integer, YueKa> map = shopService.getYueKas();
 		for(Libao libao : libaolist.getLibaoList()){
-			YueKa yueka = map.get(libao.getRechargeid());
-			if(yueka == null)
-				continue;
 			long time = 0;
-			if(libao.hasValidtime()){
+			if(libao.hasValidtime() && libao.getValidtime().length() > 5){
 				try {
-					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime();
+					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime()/1000L;
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error(time+"", e);
 				}
 			}
 			if(time >= today0){
+				Rmb rmb = rechargeRedisService.getRmb(libao.getRechargeid());
+				YueKa yueka = map.get(rmb.getItemid());
+				if(yueka == null){
+					logger.error("ivalid yueka type "+libao.getRechargeid());
+					continue;
+				}
 				MailBean mail = new MailBean();
 				mail.setContent(yueka.getName());
 				RewardBean reward = new RewardBean();

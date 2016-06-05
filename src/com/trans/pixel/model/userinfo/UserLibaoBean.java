@@ -36,6 +36,7 @@ public class UserLibaoBean {
 		Libao.Builder builder = Libao.newBuilder();
 		builder.setRechargeid(rechargeId);
 		builder.setPurchase(purchase);
+		if(validTime.length() > 5)
 		builder.setValidtime(validTime);
 		return builder.build();
 	}
