@@ -53,6 +53,8 @@ public class UserService {
 	private MailService mailService;
 	@Resource
 	private RechargeRedisService rechargeRedisService;
+	@Resource
+	private HeartBeatService heartBeatService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -95,6 +97,11 @@ public class UserService {
 	 * update daily data, never save
 	 */
 	public boolean refreshUserDailyData(UserBean user){
+		/**
+		 * heart beat function
+		 */
+		heartBeatService.heartBeat(user);
+		
 		long now = userRedisService.now();
 		long today0 = userRedisService.caltoday(now, 0);
 		if(user.getRedisTime() >= today0){

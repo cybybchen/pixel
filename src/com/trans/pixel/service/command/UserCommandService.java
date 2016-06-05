@@ -57,6 +57,7 @@ public class UserCommandService extends BaseCommandService {
 	@Resource
 	private LogService logService;
 	
+	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
 		if (blackService.isBlackAccount(head.getAccount())) {

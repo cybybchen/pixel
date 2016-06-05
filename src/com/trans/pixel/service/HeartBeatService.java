@@ -1,7 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,10 +14,10 @@ public class HeartBeatService {
 	private HeartBeatRedisService heartBeatRedisService;
 	
 	public void heartBeat(UserBean user) {
-		heartBeatRedisService.heartBeat(user.getServerId());
+		heartBeatRedisService.heartBeat(user.getServerId(), user.getId());
 	}
 	
-	public Map<String, String> getHeartBeatDetail() {
-		return heartBeatRedisService.getHeartBeatDetail();
+	public long getHeartBeatCount(int serverId) {
+		return heartBeatRedisService.getHeartBeatCount(serverId);
 	}
 }

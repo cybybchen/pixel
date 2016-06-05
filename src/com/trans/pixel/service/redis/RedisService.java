@@ -557,6 +557,24 @@ public class RedisService {
 			}
 		});
     }
+    
+    /**
+     * 获取set大小
+     */
+    protected long scard(final String key) {
+    	return redisTemplate.execute(new RedisCallback<Long>() {
+			@Override
+			public Long doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundSetOperations<String, String> Ops = redisTemplate
+						.boundSetOps(key);
+				if (Ops == null)
+					return (long)0;
+				
+				return Ops.size();
+			}
+		});
+    }
 	
     /**
      * 删除set

@@ -3,9 +3,8 @@ package com.trans.pixel.service.crontab;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -17,7 +16,7 @@ import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.service.HeartBeatService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.utils.TypeTranslatedUtil;
+import com.trans.pixel.service.ServerService;
 
 @Service
 public class HeartBeatCrontabService {
@@ -27,27 +26,26 @@ public class HeartBeatCrontabService {
 	private HeartBeatService heartBeatService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ServerService serverService;
 	
 	@Scheduled(cron = "0 0/10 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void handleHeartBeatReward() {
-		Map<String, String> heartBeatMap = heartBeatService.getHeartBeatDetail();
-		
 		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 		String time = df.format(new Date());
 		
-		Iterator<Entry<String, String>> it = heartBeatMap.entrySet().iterator();
-		while (it.hasNext()) {
-			Entry<String, String> entry = it.next();
-			Map<String, String> params = buildLogParams(entry.getKey(), entry.getValue(), time);
+		List<Integer> serverList = serverService.getServerIdList();
+		for (int serverId : serverList) {
+			Map<String, String> params = buildLogParams(serverId, heartBeatService.getHeartBeatCount(serverId), time);
 			logService.sendLog(params, LogString.LOGTYPE_HEARTBEAT);
 		}
 	}
 	
-	private Map<String, String> buildLogParams(String serverId, String count, String time) {
+	private Map<String, String> buildLogParams(int serverId, long count, String time) {
 		Map<String, String> params = new HashMap<String, String>();
-		params.put(LogString.SERVERID, serverId);
-		params.put(LogString.COUNT, count);
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.COUNT, "" + count);
 		params.put(LogString.TIME, time);
 		
 		return params;
