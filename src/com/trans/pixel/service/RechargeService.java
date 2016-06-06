@@ -120,9 +120,9 @@ public class RechargeService {
 			reward.setCount(rmb.getZuanshi());
 			rewardList.add(reward.build());
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
-			user.setGrowJewelCount(user.getGrowJewelCount()+1);
+			user.setGrowJewelCount(Math.min(7, user.getGrowJewelCount()+1));
 		}else if(itemId == 44008){//成长经验基金:按照玩家总战力领取不同阶段的钻石
-			user.setGrowExpCount(user.getGrowExpCount()+1);
+			user.setGrowExpCount(Math.min(7,user.getGrowExpCount()+1));
 		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
 			YueKa yueka = shopService.getYueKa(itemId);
 			long today0 = rechargeRedisService.today(0);
