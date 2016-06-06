@@ -178,11 +178,15 @@ public class PushCommandService extends BaseCommandService {
 				List<MailBean> mailList = mailService.getMailList(user.getId(), systemType);
 				mailBuilderList.add(buildMailList(systemType, mailList));
 			}
+			
+			mailService.isDeleteNotice(user.getId(), MailConst.TYPE_SYSTEM_MAIL);
 		} else {
 			for (Integer friendMailType : MailConst.FRIEND_MAIL_TYPES) {
 				List<MailBean> mailList = mailService.getMailList(user.getId(), friendMailType);
 				mailBuilderList.add(buildMailList(friendMailType, mailList));
 			}
+			
+			mailService.isDeleteNotice(user.getId(), MailConst.TYPE_ADDFRIEND_MAIL);
 		}
 		
 		builder.addAllMailList(mailBuilderList);

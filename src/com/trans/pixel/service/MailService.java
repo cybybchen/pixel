@@ -41,7 +41,7 @@ public class MailService {
 		return mailRedisService.getMailListByUserIdAndType(userId, type);
 	}
 	
-	private void isDeleteNotice(long userId, int type) {
+	public void isDeleteNotice(long userId, int type) {
 		if (type == MailConst.TYPE_SYSTEM_MAIL || type == MailConst.TYPE_MINE_ATTACKED_MAIL) {
 			for (Integer friendMailType : MailConst.SYSTEM_MAIL_TYPES) {
 				List<MailBean> mailList = getMailList(userId, friendMailType);
