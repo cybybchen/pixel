@@ -349,6 +349,17 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_PVE);
 	}
 	
+	public void sendShopLog(int serverId, long userId, int shopid, int itemid, int currency, int currencyamount) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.SHOPID, "" + shopid);
+		params.put(LogString.ITEMID, "" + itemid);
+		params.put(LogString.CURRENCY, "" + currencyamount);
+		
+		sendLog(params, LogString.LOGTYPE_PVE);
+	}
+	
 	private void send(String str) {
 		Socket socket = null;
 		str = str + "\n";
