@@ -68,6 +68,15 @@ public class LogString {
 	
 	public static final String SHOPID = "shopid";
 	
+	public static final String GREENHAND = "greenhand";
+	public static final String HEROID = "heroid";
+	public static final String RARE = "rare";
+	public static final String STAR = "star";
+	public static final String VALUE = "value";
+	public static final String SKILLID = "skillid";
+	public static final String EQUIPID = "equipid";
+	public static final String SKILLLEVEL = "skilllevel";
+	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
 	public static final int LOGTYPE_LADDER = 1;
@@ -82,6 +91,12 @@ public class LogString {
 	public static final int LOGTYPE_SHOP = 10;
 	public static final int LOGTYPE_AID = 11;
 	public static final int LOGTYPE_PVE = 12;
+	public static final int LOGTYPE_GREENHAND = 13;
+	public static final int LOGTYPE_LEVELUP = 14;
+	public static final int LOGTYPE_RAREUP = 15;
+	public static final int LOGTYPE_STARUP = 16;
+	public static final int LOGTYPE_SKILLUP = 17;
+	public static final int LOGTYPE_EQUIPUP = 18;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -96,6 +111,12 @@ public class LogString {
 	public static final String LOGTYPE_SHOP_STR = "Shop";
 	public static final String LOGTYPE_AID_STR = "Aid";
 	public static final String LOGTYPE_PVE_STR = "Pve";
+	public static final String LOGTYPE_GREENHAND_STR = "Greenhand";
+	public static final String LOGTYPE_LEVELUP_STR = "Levelup";
+	public static final String LOGTYPE_RAREUP_STR = "Rareup";
+	public static final String LOGTYPE_STARUP_STR = "Starup";
+	public static final String LOGTYPE_SKILLUP_STR = "Skillup";
+	public static final String LOGTYPE_EQUIPUP_STR = "Equipup";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

@@ -318,13 +318,15 @@ public class HeroInfoBean {
 		return null;
 	}
 	
-	public void upgradeSkill(int skillId) {
+	public int upgradeSkill(int skillId) {
 		for (SkillInfoBean skillInfo : skillInfoList) {
 			if (skillInfo.getId() == skillId) {
 				skillInfo.setSkillLevel(skillInfo.getSkillLevel() + 1);
-				break;
+				return skillInfo.getSkillLevel();
 			}
 		}
+		
+		return 0;
 	}
 	
 	public void unlockSkill(HeroBean hero, List<SkillLevelBean> skillLevelList) {

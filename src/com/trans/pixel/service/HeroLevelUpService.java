@@ -57,6 +57,8 @@ public class HeroLevelUpService {
 	private ActivityService activityService;
 	@Resource
 	private UserPokedeService userPokedeService;
+	@Resource
+	private LogService logService;
 	
 	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
@@ -129,6 +131,11 @@ public class HeroLevelUpService {
 			}
 		}
 			
+		/**
+		 * send levelup log
+		 */
+		logService.sendEquipupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), levelUpId);
+		
 		return result;
 	}
 	
@@ -155,6 +162,11 @@ public class HeroLevelUpService {
 		 */
 		activityService.heroLevelupActivity(user, heroInfo.getLevel());
 		
+		/**
+		 * send levelup log
+		 */
+		logService.sendLevelupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getLevel());
+		
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
 	
@@ -176,6 +188,11 @@ public class HeroLevelUpService {
 		 * 英雄升星的活动
 		 */
 		activityService.heroLevelupStarActivity(user, heroInfo.getStarLevel());
+		
+		/**
+		 * send starup log
+		 */
+		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue());
 		
 		return result;
 	}
@@ -225,6 +242,11 @@ public class HeroLevelUpService {
 		 */
 		activityService.heroLevelupRareActivity(user, heroInfo.getRare());
 		
+		/**
+		 * send rareup log
+		 */
+		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getRare());
+		
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}
 	
@@ -249,7 +271,12 @@ public class HeroLevelUpService {
 		if (!costService.costAndUpdate(user, RewardConst.COIN, costCoin))
 				return ErrorConst.NOT_ENOUGH_COIN;
 				
-		heroInfo.upgradeSkill(skillId);
+		int skilllevel = heroInfo.upgradeSkill(skillId);
+		
+		/**
+		 * send skillup log
+		 */
+		logService.sendSkillupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), skillInfo.getSkillId(), skilllevel);
 		
 		return SuccessConst.LEVELUP_SKILL_SUCCESS;
 	}

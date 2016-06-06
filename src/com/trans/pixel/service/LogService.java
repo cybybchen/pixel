@@ -270,6 +270,98 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_GREENHAND:
+				sb.append(LogString.LOGTYPE_GREENHAND_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.GREENHAND));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_LEVELUP:
+				sb.append(LogString.LOGTYPE_LEVELUP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_RAREUP:
+				sb.append(LogString.LOGTYPE_RAREUP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RARE));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_STARUP:
+				sb.append(LogString.LOGTYPE_STARUP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.STAR));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VALUE));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_SKILLUP:
+				sb.append(LogString.LOGTYPE_SKILLUP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SKILLID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SKILLLEVEL));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_EQUIPUP:
+				sb.append(LogString.LOGTYPE_EQUIPUP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.EQUIPID));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -358,6 +450,67 @@ public class LogService {
 		params.put(LogString.CURRENCY, "" + currencyamount);
 		
 		sendLog(params, LogString.LOGTYPE_PVE);
+	}
+	
+	public void sendGreenhandLog(int serverId, long userId, String greenhand) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.GREENHAND, greenhand);
+		
+		sendLog(params, LogString.LOGTYPE_GREENHAND);
+	}
+	
+	public void sendLevelupLog(int serverId, long userId, int heroid, int level) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.LEVEL, "" + level);
+		
+		sendLog(params, LogString.LOGTYPE_LEVELUP);
+	}
+	
+	public void sendRareupLog(int serverId, long userId, int heroid, int rare) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.RARE, "" + rare);
+		
+		sendLog(params, LogString.LOGTYPE_RAREUP);
+	}
+	
+	public void sendStarupLog(int serverId, long userId, int heroid, int star, int value) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.STAR, "" + star);
+		params.put(LogString.VALUE, "" + value);
+		
+		sendLog(params, LogString.LOGTYPE_STARUP);
+	}
+	
+	public void sendSkillupLog(int serverId, long userId, int heroid, int skillid, int skilllevel) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.SKILLID, "" + skillid);
+		params.put(LogString.SKILLLEVEL, "" + skilllevel);
+		
+		sendLog(params, LogString.LOGTYPE_SKILLUP);
+	}
+	
+	public void sendEquipupLog(int serverId, long userId, int heroid, int equipid) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.EQUIPID, "" + equipid);
+		
+		sendLog(params, LogString.LOGTYPE_EQUIPUP);
 	}
 	
 	private void send(String str) {

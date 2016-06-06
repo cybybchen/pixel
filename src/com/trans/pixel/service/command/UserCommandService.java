@@ -200,8 +200,14 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	public void submitGreenhand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user) {
-		if (cmd.hasGreenhand())
+		if (cmd.hasGreenhand()) {
 			user.setGreenhand(cmd.getGreenhand());
+			
+			/**
+			 * send greenhand log
+			 */
+			logService.sendGreenhandLog(user.getServerId(), user.getId(), cmd.getGreenhand());
+		}
 		if (cmd.hasAdvance())
 			user.setAdvance(cmd.getAdvance());
 		if (cmd.hasSkill())
