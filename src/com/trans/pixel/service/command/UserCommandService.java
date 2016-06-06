@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
@@ -55,6 +56,8 @@ public class UserCommandService extends BaseCommandService {
 	private UserHeadService userHeadService;
 	@Resource
 	private BlackService blackService;
+	@Resource
+	private ShopService shopService;
 	@Resource
 	private LogService logService;
 	
@@ -243,6 +246,7 @@ public class UserCommandService extends BaseCommandService {
 //		pushCommandService.pushUserAchieveCommand(responseBuilder, user);
 		pushCommandService.pushUserHeadCommand(responseBuilder, user);
 		pushCommandService.pushUserPokedeList(responseBuilder, user);
+		shopService.getLibaoShop(responseBuilder, user);
 		
 		noticeCommandService.pushNotices(responseBuilder, user);
 	}
