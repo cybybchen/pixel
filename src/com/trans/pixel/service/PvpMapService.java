@@ -220,6 +220,10 @@ public class PvpMapService {
 				String buff = pvpMap.get(mapBuilder.getFieldid()+"");
 				if(buff != null)
 					mapBuilder.setBuff(Integer.parseInt(buff));
+				else{
+					redis.addUserBuff(user, mapBuilder.getFieldid(), 1);
+					mapBuilder.setBuff(1);
+				}
 				for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
 					PVPMine mine = mineMap.get(mineBuilder.getId()+"");
 					if(mine != null)
