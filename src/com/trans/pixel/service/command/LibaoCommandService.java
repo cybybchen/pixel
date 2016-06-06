@@ -44,7 +44,7 @@ public class LibaoCommandService extends BaseCommandService{
 //			// rewards.addLoot(reward);
 //			pusher.pushRewardCommand(responseBuilder, user, yueka.getRewardid(), "", yueka.getRewardcount());
 //		}else{
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  43001+"", ErrorConst.GET_REWARD_AGAIN);
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  43001+"", ErrorConst.GET_REWARD_AGAIN);
 //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 //		}
 //		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -65,7 +65,7 @@ public class LibaoCommandService extends BaseCommandService{
 //			// rewards.addLoot(reward);
 //			pusher.pushRewardCommand(responseBuilder, user, yueka.getRewardid(), "", yueka.getRewardcount());
 //		}else{
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  43002+"", ErrorConst.GET_REWARD_AGAIN);
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  43002+"", ErrorConst.GET_REWARD_AGAIN);
 //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 //		}
 //		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -86,7 +86,7 @@ public class LibaoCommandService extends BaseCommandService{
 //			// rewards.addLoot(reward);
 //			pusher.pushRewardCommand(responseBuilder, user, yueka.getRewardid(), "", yueka.getRewardcount());
 //		}else{
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  43003+"", ErrorConst.GET_REWARD_AGAIN);
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  43003+"", ErrorConst.GET_REWARD_AGAIN);
 //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 //		}
 //		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -107,7 +107,7 @@ public class LibaoCommandService extends BaseCommandService{
 //			// rewards.addLoot(reward);
 //			pusher.pushRewardCommand(responseBuilder, user, yueka.getRewardid(), "", yueka.getRewardcount());
 //		}else{
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  43004+"", ErrorConst.GET_REWARD_AGAIN);
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  43004+"", ErrorConst.GET_REWARD_AGAIN);
 //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 //		}
 //		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -128,7 +128,7 @@ public class LibaoCommandService extends BaseCommandService{
 //			// rewards.addLoot(reward);
 //			pusher.pushRewardCommand(responseBuilder, user, yueka.getRewardid(), "", yueka.getRewardcount());
 //		}else{
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  43005+"", ErrorConst.GET_REWARD_AGAIN);
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  43005+"", ErrorConst.GET_REWARD_AGAIN);
 //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 //		}
 //		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -149,7 +149,7 @@ public class LibaoCommandService extends BaseCommandService{
 //			// rewards.addLoot(reward);
 //			pusher.pushRewardCommand(responseBuilder, user, yueka.getRewardid(), "", yueka.getRewardcount());
 //		}else{
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  43006+"", ErrorConst.GET_REWARD_AGAIN);
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  43006+"", ErrorConst.GET_REWARD_AGAIN);
 //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 //		}
 //		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -170,7 +170,7 @@ public class LibaoCommandService extends BaseCommandService{
 			// rewards.addLoot(reward);
 			pusher.pushRewardCommand(responseBuilder, user, pool.getRewardid(), "", pool.getRewardcount());
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.GET_REWARD_AGAIN);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.GET_REWARD_AGAIN);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 		}
 		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -191,7 +191,7 @@ public class LibaoCommandService extends BaseCommandService{
 			// rewards.addLoot(reward);
 			pusher.pushRewardCommand(responseBuilder, user, pool.getRewardid(), "", pool.getRewardcount());
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.GET_REWARD_AGAIN);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.GET_REWARD_AGAIN);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
 		}
 		pusher.pushUserInfoCommand(responseBuilder, user);

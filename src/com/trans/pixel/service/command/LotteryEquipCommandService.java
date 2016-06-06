@@ -43,7 +43,7 @@ public class LotteryEquipCommandService extends BaseCommandService {
 			if (type == RewardConst.JEWEL)
 				error = ErrorConst.NOT_ENOUGH_JEWEL;
 			ErrorCommand errorCommand = buildErrorCommand(error);
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), error);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 			

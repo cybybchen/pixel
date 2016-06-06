@@ -39,7 +39,7 @@ public class SignCommandService extends BaseCommandService {
 		List<RewardBean> rewardList = signService.sign(user);
 		
 		if (rewardList == null || rewardList.size() == 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 		}else{

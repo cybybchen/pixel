@@ -59,7 +59,7 @@ public class LotteryCommandService extends BaseCommandService {
 		boolean free = false;
 		
 		if (type == LotteryConst.LOOTERY_SPECIAL_TYPE && user.getVip() < LotteryConst.LOOTERY_SPECIAL_VIP_LIMIT) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
 			
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH);
 	            responseBuilder.setErrorCommand(errorCommand);
@@ -70,7 +70,7 @@ public class LotteryCommandService extends BaseCommandService {
 		int cost = 0;
 		if (type == 1 || type == 2) {
 			if (!lotteryService.isLotteryActivityAvailable(type)) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
@@ -80,7 +80,7 @@ public class LotteryCommandService extends BaseCommandService {
 			
 			lotteryList = lotteryService.randomLotteryActivity(user, type);
 			if (lotteryList.size() == 0) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_PROP);
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_PROP);
 				
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP);
 	            responseBuilder.setErrorCommand(errorCommand);
@@ -104,7 +104,7 @@ public class LotteryCommandService extends BaseCommandService {
 					ErrorCommand errorCommand = buildErrorCommand(error);
 		            responseBuilder.setErrorCommand(errorCommand);
 		            
-		            logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), error);
+		            logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 		            pushUserData(responseBuilder, user, type);
 					return;	
 				}

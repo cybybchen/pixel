@@ -52,24 +52,24 @@ public class CdkeyCommandService extends BaseCommandService {
 			String message = HttpUtil.post(masterserver, parameters);
 			log.info(masterserver+" : "+message);
 			if(!RedisService.parseJson(message, cdkey)){
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_INVALID);
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_INVALID);
 				
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_INVALID));
 				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_INVALID);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_INVALID);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_INVALID));
 			return;
 		}
 		if(cdkey.getUsed() == 1){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_USED);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_USED);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_USED));
 		}else if(cdkey.getUsed() == 2){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_REWARDED);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  RedisService.formatJson(cmd), ErrorConst.CDKEY_REWARDED);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CDKEY_REWARDED));
 		}else{

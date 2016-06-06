@@ -55,7 +55,7 @@ public class ActivityCommandService extends BaseCommandService {
 		ResultConst result = activityService.handleRichangReward(multiReward, ur, user.getId(), id, order);
 		
 		if (result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
@@ -103,7 +103,7 @@ public class ActivityCommandService extends BaseCommandService {
 		ResultConst result = activityService.handleKaifuReward(multiReward, uk, user, id, order);
 		
 		if (result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
@@ -138,7 +138,7 @@ public class ActivityCommandService extends BaseCommandService {
 		ResultConst result = activityService.handleShouchongReward(multiReward, user);
 		
 		if (result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{

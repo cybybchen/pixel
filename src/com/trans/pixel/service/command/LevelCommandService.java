@@ -68,12 +68,12 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelFirstTime(levelId, userLevel)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 		}else if (!levelService.isPreparad(userLevel, levelId)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_PREPARA_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_PREPARA_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_PREPARA_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -93,7 +93,7 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -134,7 +134,7 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -164,7 +164,7 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelLoot(levelId, userLevelRecord)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -190,7 +190,7 @@ public class LevelCommandService extends BaseCommandService {
 		long userId = user.getId();
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelUnlock(daguanId, userLevel, user)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);

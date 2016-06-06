@@ -294,11 +294,11 @@ public class LogService {
 		return true;
 	}
 
-	public void sendErrorLog(long userId, int serverId, String commandStr, String request, ResultConst error) {
+	public void sendErrorLog(long userId, int serverId, @SuppressWarnings("rawtypes") Class command, String request, ResultConst error) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + userId);
 		params.put(LogString.SERVERID, "" + serverId);
-		params.put(LogString.COMMAND, "" + commandStr);
+		params.put(LogString.COMMAND, "" + command.getSimpleName());
 		params.put(LogString.ERRORID, "" + error.getCode());
 		params.put(LogString.ERRORMSG, "" + error.getMesssage());
 		params.put(LogString.REQUEST, "" + request);

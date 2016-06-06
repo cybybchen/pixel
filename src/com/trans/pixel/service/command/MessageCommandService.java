@@ -44,7 +44,7 @@ public class MessageCommandService extends BaseCommandService {
 	
 	public void createMessage(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
 		if (blackService.isBlackNosay(user)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -56,7 +56,7 @@ public class MessageCommandService extends BaseCommandService {
 	
 	public void replyMessage(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user) {
 		if (blackService.isBlackNosay(user)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -68,7 +68,7 @@ public class MessageCommandService extends BaseCommandService {
 		String message = cmd.getMessage();
 		MessageBoardBean messageBoardBean = messageService.replyMessage(type, user, id, message);
 		if (messageBoardBean == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MESSAGE_NOT_EXIST);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MESSAGE_NOT_EXIST);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MESSAGE_NOT_EXIST);
             responseBuilder.setErrorCommand(errorCommand);

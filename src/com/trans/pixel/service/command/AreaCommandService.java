@@ -76,7 +76,7 @@ public class AreaCommandService extends BaseCommandService{
 	public void useAreaEquips(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user){
 		ResultConst result = service.useAreaEquips(cmd.getEquipId(), responseBuilder, user);
 		if(result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}else{
@@ -91,7 +91,7 @@ public class AreaCommandService extends BaseCommandService{
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.setName("恭喜你击杀了怪物");
 		if(!service.AttackMonster(cmd.getId(), user, rewards)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		} else
@@ -111,7 +111,7 @@ public class AreaCommandService extends BaseCommandService{
 		rewards.setName("恭喜你击杀了怪物");
 		ResultConst result = service.AttackBoss(cmd.getId(), cmd.getScore(), user, rewards);
 		if(result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		} else if(rewards.getLootCount() > 0)
@@ -128,7 +128,7 @@ public class AreaCommandService extends BaseCommandService{
 	public void resourceInfo(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user){
 		AreaResource resource = service.getResource(cmd.getResourceId(), user);
 		if(resource == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			responseBuilder.setAreaCommand(getAreas(user));
@@ -144,7 +144,7 @@ public class AreaCommandService extends BaseCommandService{
 		if(result instanceof SuccessConst)
 			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), result);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
 		pusher.pushUserInfoCommand(responseBuilder, user);
@@ -166,7 +166,7 @@ public class AreaCommandService extends BaseCommandService{
 		ResponseAttackResourceMineInfoCommand.Builder builder = ResponseAttackResourceMineInfoCommand.newBuilder();
 		Team team = service.AttackResourceMineInfo(cmd.getId(), user);
 		if(team == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
 			
 			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			responseBuilder.setAreaCommand(getAreas(user));

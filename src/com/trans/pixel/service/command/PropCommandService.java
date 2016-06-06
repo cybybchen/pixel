@@ -40,7 +40,7 @@ public class PropCommandService extends BaseCommandService {
 		MultiReward multiReward = propService.useProp(user, propId, propCount);
 		
 		if (multiReward == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);

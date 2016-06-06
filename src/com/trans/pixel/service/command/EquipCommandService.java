@@ -53,7 +53,7 @@ public class EquipCommandService extends BaseCommandService {
 		int composeEquipId = equipService.equipCompose(user, levelUpId, count, userEquipList);
 		
 		if (composeEquipId == 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_EQUIP);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_EQUIP);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_EQUIP);
             responseBuilder.setErrorCommand(errorCommand);
@@ -72,7 +72,7 @@ public class EquipCommandService extends BaseCommandService {
 		int equipCount = cmd.getEquipCount();
 		List<RewardBean> rewardList = equipService.fenjieUserEquip(user, equipId, equipCount);
 		if (rewardList == null || rewardList.size() == 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -93,7 +93,7 @@ public class EquipCommandService extends BaseCommandService {
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
 		List<RewardInfo> rewardList = equipService.saleEquip(user, itemList, userEquipList);
 		if (rewardList == null || rewardList.isEmpty()) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass().toString(), RedisService.formatJson(cmd), ErrorConst.EQUIP_SALE_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_SALE_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_SALE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
