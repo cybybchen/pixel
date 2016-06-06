@@ -36,7 +36,7 @@ message UserInfo {
 	optional string registerTime = 37;
 	optional int32 totalSignCount = 38;
 	optional int32 firstGetHeroId = 39;
-	optional int32 greenhand = 40;
+	optional string greenhand = 40;
 	optional int32 advance = 41;
 	optional int32 shouchongIsComplete = 42;
 	optional int32 shouchongIsGetReward = 43;
@@ -1867,7 +1867,7 @@ message RequestHeartBeatCommand {
 }
 
 message RequestGreenhandCommand {
-	optional int32 greenhand = 1;
+	optional string greenhand = 1;
 	optional int32 advance = 2;
 	optional int32 skill = 3;
 	optional int32 failed = 4;

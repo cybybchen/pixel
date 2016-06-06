@@ -68,7 +68,7 @@ public class UserBean {
 	private int heroInfoId = 0;
 	private int firstGetHeroId = 0;
 	private int totalSignCount = 0;
-	private int greenhand = 0;
+	private String greenhand = "";
 	private int advance = 0;
 	private int skill = 0;
 	private int failed = 0;
@@ -847,10 +847,10 @@ public class UserBean {
 	public void setTotalSignCount(int totalSignCount) {
 		this.totalSignCount = totalSignCount;
 	}
-	public int getGreenhand() {
+	public String getGreenhand() {
 		return greenhand;
 	}
-	public void setGreenhand(int greenhand) {
+	public void setGreenhand(String greenhand) {
 		this.greenhand = greenhand;
 	}
 	public int getAdvance() {
