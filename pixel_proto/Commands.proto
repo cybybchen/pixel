@@ -1572,6 +1572,15 @@ message ResponseLibaoShopCommand {
 	repeated Libao items = 1;//商品列表
 }
 
+message Status {
+	optional int32 id = 1;
+	optional bool canpurchase = 2;
+}
+message ResponseFirstRechargeStatusCommand {
+	repeated Status status = 1;
+}
+
+
 message RequestPurchaseCoinCommand {//点石成金(获得金币和经验)
 }
 
@@ -2040,6 +2049,7 @@ message ResponseCommand {
 	optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
 	optional ResponseLadderShopCommand ladderShopCommand = 108;
 	optional ResponseLibaoShopCommand libaoShopCommand = 142;
+	optional ResponseFirstRechargeStatusCommand firstRechargeStatusCommand = 143;
 	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
 	optional ResponseGetTeamCommand teamCommand = 123;
 	optional ResponsePVPMapListCommand pvpMapListCommand = 125;

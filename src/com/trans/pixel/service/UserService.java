@@ -284,9 +284,9 @@ public class UserService {
 	public String popLibaoDBKey(){
 		return userRedisService.popLibaoDBKey();
 	}
-	// public Libao getLibao(long userId, int rechargeid) {
-	// 	return userRedisService.getLibao(userId, rechargeid);
-	// }
+	public Libao getLibao(long userId, int rechargeid) {
+		return userRedisService.getLibao(userId, rechargeid);
+	}
 	public Map<Integer, Libao> getLibaos(long userId) {
 		Map<Integer, Libao> map = userRedisService.getLibaos(userId);
 		if(map.isEmpty()){

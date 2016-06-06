@@ -103,21 +103,17 @@ public class RechargeService {
 		Rmb rmb = rechargeRedisService.getRmb(productid);
 		int itemId = rmb.getItemid();
 		int jewel = rmb.getZuanshi();
-		Map<Integer, Libao> map = userService.getLibaos(user.getId());
-		Libao libao = map.get(productid);
-		Libao.Builder libaobuilder = null;
-		if(libao == null){
-			libaobuilder = Libao.newBuilder();
-			libaobuilder.setRechargeid(productid);
-			libaobuilder.setPurchase(0);
-		}else
-			libaobuilder = Libao.newBuilder(libao);
+		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
 
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
-			reward.setCount(rmb.getZuanshi());
+			if(libaobuilder.getPurchase() == 1){
+				reward.setCount(rmb.getZuanshi()*2);
+			}else{
+				reward.setCount(rmb.getZuanshi());
+			}
 			rewardList.add(reward.build());
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowJewelCount(Math.min(7, user.getGrowJewelCount()+1));
@@ -129,7 +125,7 @@ public class RechargeService {
 			long time = 0;
 			if(libaobuilder.hasValidtime()){
 				try {
-					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime()/1000;
+					time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libaobuilder.getValidtime()).getTime()/1000;
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}

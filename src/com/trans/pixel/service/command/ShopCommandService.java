@@ -181,26 +181,26 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void ShopPurchase(RequestShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
-//		Commodity comm = service.getShop(cmd.getId());
-//		if(comm == null){
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
-//			
-//	        responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-//	   		ShopList shoplist = service.getShop();
-//	   		ResponseShopCommand.Builder shop = ResponseShopCommand.newBuilder();
-//	   		shop.addAllItems(shoplist.getItemsList());
-//	   		responseBuilder.setShopCommand(shop);
-//		}else if(!costService.cost(user, comm.getCurrency(), comm.getCost())){
-//			ErrorConst error = getNotEnoughError(comm.getCurrency());
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
-//			responseBuilder.setErrorCommand(buildErrorCommand(error));
-//		}else{
-//			rewardService.doReward(user, comm.getItemid(), comm.getCount());
-//			rewardService.updateUser(user);
-//            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
-//            pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
-//            pusher.pushRewardCommand(responseBuilder, user, comm.getItemid(), comm.getName(), comm.getCount());
-//		}
+		Commodity comm = service.getShop(cmd.getId());
+		if(comm == null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
+			
+	        responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+	   		ShopList shoplist = service.getShop();
+	   		ResponseShopCommand.Builder shop = ResponseShopCommand.newBuilder();
+	   		shop.addAllItems(shoplist.getItemsList());
+	   		responseBuilder.setShopCommand(shop);
+		}else if(!costService.cost(user, comm.getCurrency(), comm.getCost())){
+			ErrorConst error = getNotEnoughError(comm.getCurrency());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
+			responseBuilder.setErrorCommand(buildErrorCommand(error));
+		}else{
+			rewardService.doReward(user, comm.getItemid(), comm.getCount());
+			rewardService.updateUser(user);
+           responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
+           pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
+           pusher.pushRewardCommand(responseBuilder, user, comm.getItemid(), comm.getName(), comm.getCount());
+		}
 	}
 
 	public int getBlackShopRefreshCost(int time){
@@ -695,11 +695,7 @@ public class ShopCommandService extends BaseCommandService{
 	}
 	
 	public void LibaoShop(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user){
-		LibaoList shoplist = service.getLibaoShop(user);
-
-		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
-		shop.addAllItems(shoplist.getLibaoList());
-		responseBuilder.setLibaoShopCommand(shop);
+		service.getLibaoShop(responseBuilder, user);
 	}
 
 	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){

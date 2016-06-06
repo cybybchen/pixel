@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.Libao;
@@ -15,10 +16,16 @@ import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCost;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseFirstRechargeStatusCommand;
+import com.trans.pixel.protoc.Commands.ResponseLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Commands.Rmb;
 import com.trans.pixel.protoc.Commands.ShopList;
+import com.trans.pixel.protoc.Commands.Status;
 import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.protoc.Commands.YueKa;
+import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.ShopRedisService;
 
 /**
@@ -33,6 +40,8 @@ public class ShopService {
     private UserService userService;
 	@Resource
     private RewardService rewardService;
+	@Resource
+	private RechargeRedisService rechargeRedisService;
 	
 	public ShopList getDailyShop(UserBean user){
 		return redis.getDailyShop(user);
@@ -119,8 +128,11 @@ public class ShopService {
 	}
 
 	public LibaoList getLibaoShop(UserBean user){
-		LibaoList.Builder shopbuilder = redis.getLibaoShop();
 		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
+		return getLibaoShop(user, libaoMap);
+	}
+	public LibaoList getLibaoShop(UserBean user, Map<Integer, Libao> libaoMap){
+		LibaoList.Builder shopbuilder = redis.getLibaoShop();
 		for(Libao.Builder builder : shopbuilder.getLibaoBuilderList()){
 			int count = 0;
 			Libao libao = libaoMap.get(builder.getRechargeid());
@@ -132,7 +144,30 @@ public class ShopService {
 				count = builder.getPurchase();
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
 		}
+		for(Libao libao : libaoMap.values()){
+			rechargeRedisService.getRmb(libao.getRechargeid());
+		}
 		return shopbuilder.build();
+	}
+	
+	public void getLibaoShop(Builder responseBuilder, UserBean user){
+		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
+		LibaoList list = getLibaoShop(user, libaoMap);
+		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
+		shop.addAllItems(list.getLibaoList());
+		responseBuilder.setLibaoShopCommand(shop);
+
+		ResponseFirstRechargeStatusCommand.Builder rechargestatus = ResponseFirstRechargeStatusCommand.newBuilder();
+		for(Rmb rmb : rechargeRedisService.getRmbConfig().values()){
+			if(rmb.getItemid() != RewardConst.JEWEL)
+				continue;
+			Status.Builder builder = Status.newBuilder();
+			builder.setId(rmb.getId());
+			Libao libao = libaoMap.get(rmb.getId());
+			builder.setCanpurchase(libao == null || libao.getPurchase() == 0);
+			rechargestatus.addStatus(builder);
+		}
+		responseBuilder.setFirstRechargeStatusCommand(rechargestatus);
 	}
 
 	public ShopList getShop(){

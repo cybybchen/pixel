@@ -40,9 +40,6 @@ public class RechargeCommandService extends BaseCommandService {
 		if (rewards != null)
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
 		
-		LibaoList shoplist = shopService.getLibaoShop(user);
-		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
-		shop.addAllItems(shoplist.getLibaoList());
-		responseBuilder.setLibaoShopCommand(shop);
+		shopService.getLibaoShop(responseBuilder, user);
 	}
 }
