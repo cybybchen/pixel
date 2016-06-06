@@ -213,7 +213,7 @@ function rankRate(rate) {
 	$.each(raterank, function (key, value) {
 		content += '<li style="background-image:none;"><a href="#" action="'+action+'&id='+value["heroid"]+'"><img src="css/images/char'+getHeroIcon(value["heroid"])
 		+'.png"><div class="ui-progress" style="margin-top:10px;"><div class="ui-progress-r" style="width:'+(value["herohot"]*2)+'%;"></div><span>'+value["herohot"]
-		+'%</span></div><div class="ui-progress"><div class="ui-progress-b" style="width:'+(value["herorate"]*0.7)+'%;"></div><span>'+value["herorate"]+'%</span></div></a></li>';
+		+'%</span></div><div class="ui-progress"><div class="ui-progress-b" style="width:'+(value["herorate"]*0.68)+'%;"></div><span>'+value["herorate"]+'%</span></div></a></li>';
 	});
 	content += '</ul>';
 	var $el = $( content );
