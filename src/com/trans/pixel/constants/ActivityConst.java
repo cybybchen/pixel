@@ -147,4 +147,5 @@ public class ActivityConst {
 	 * activity type
 	 */
 	public static final int ACTIVITY_TYPE_LOGIN = 1;
+	public static final int ACTIVITY_TYPE_REGISTER = 2;
 }

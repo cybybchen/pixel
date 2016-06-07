@@ -135,14 +135,17 @@ public class UserCommandService extends BaseCommandService {
 			addRegisterHero(user, addHeroId);
 			addRegisterTeam(user);
 			user.setFirstGetHeroId(addHeroId);
+			
+			/**
+			 * register activity
+			 */
+			activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_REGISTER);
 		}
 		
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
-		
-		
 		
 		pushCommand(responseBuilder, user);
 	}

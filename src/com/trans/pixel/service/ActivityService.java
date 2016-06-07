@@ -703,19 +703,23 @@ public class ActivityService {
 			return;
 		}
 		
-		count = userActivityRedisService.addActivityCount(user.getId(), count, type);
+		if (type != ActivityConst.ACTIVITY_TYPE_REGISTER)
+			count = userActivityRedisService.addActivityCount(user.getId(), count, type);
 		
 		Iterator<Entry<String, Activity>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Activity activity = it.next().getValue();
-			String[] serverIds = activity.getServerfilter().split(",");
-			List<Integer> serverIdList = new ArrayList<Integer>();
-			for (String serverIdStr : serverIds) {
-				serverIdList.add(TypeTranslatedUtil.stringToInt(serverIdStr));
+			String serverFilter = activity.getServerfilter();
+			if (!serverFilter.isEmpty()) {
+				String[] serverIds = activity.getServerfilter().split(",");
+				List<Integer> serverIdList = new ArrayList<Integer>();
+				for (String serverIdStr : serverIds) {
+					serverIdList.add(TypeTranslatedUtil.stringToInt(serverIdStr));
+				}
+				
+				if (serverIdList.size() > 0 && !serverIdList.contains(user.getServerId()))
+					continue;
 			}
-			
-			if (serverIdList.size() > 0 && !serverIdList.contains(user.getServerId()))
-				continue;
 			
 			boolean hasGet = userActivityRedisService.isGetActivityReward(user.getId(), type, activity.getId());
 			if (hasGet)
