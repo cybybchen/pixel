@@ -79,7 +79,7 @@ public class LadderCommandService extends BaseCommandService {
 		ResponseMessageCommand.Builder builder = ResponseMessageCommand.newBuilder();
 		long attackRank = cmd.getRank();
 		
-		ResultConst result = ladderService.attack(user, attackRank, cmd.getRet(), cmd.getTeamId());
+		ResultConst result = ladderService.attack(user, attackRank, cmd.getRet(), cmd.getTeamId(), cmd.hasAttackUserId() ? cmd.getAttackUserId() : 0);
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			
