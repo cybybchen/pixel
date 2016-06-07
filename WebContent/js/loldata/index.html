@@ -47,8 +47,8 @@
 				chart = new Highcharts.Chart({
 					chart : {
 						renderTo : 'container',
-						//area,line,spline,bar,column,pie
-						defaultSeriesType : 'area',
+						//area,areaspline,line,spline,bar,column,pie
+						defaultSeriesType : 'line',
 						marginRight : 10
 					},
 					title : {
@@ -74,6 +74,7 @@
 						title : {
 							text : '活跃人数'
 						},
+						min: 0,
 						//指定y=3直线的样式
 						plotLines : [ {
 							value : 0,
@@ -84,10 +85,25 @@
 					//鼠标放在某个点上时的提示信息
 					//dateFormat,numberFormat是highCharts的工具类
 					tooltip : {
+						crosshairs: true,
 						formatter : function() {
 							return '<b>' + this.series.name + '</b><br/>'
 									+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) + '<br/>'
 									+ Highcharts.numberFormat(this.y, 0);
+						}
+					},
+					plotOptions : {
+						line : {
+							marker : {
+								enabled : false,
+								symbol : 'circle',
+								radius : 2,
+								states : {
+									hover : {
+										enabled : true
+									}
+								}
+							}
 						}
 					},
 					//曲线的示例说明，像地图上得图标说明一样
@@ -133,13 +149,13 @@
 	// }
 	// setInterval(getCpuInfo, 1000);
 
-	$(document).ready(function(){
+	$(document).ready(function() {
 		Highcharts.setOptions({
 			global : {
 				useUTC : false
 			}
 		});
-		$("#whichday").change( function() {
+		$("#whichday").change(function() {
 			getDAU($(this).val());
 		});
 
