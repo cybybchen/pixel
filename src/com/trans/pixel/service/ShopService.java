@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
@@ -158,7 +159,7 @@ public class ShopService {
 		responseBuilder.setLibaoShopCommand(shop);
 
 		ResponseFirstRechargeStatusCommand.Builder rechargestatus = ResponseFirstRechargeStatusCommand.newBuilder();
-		for(Rmb rmb : rechargeRedisService.getRmbConfig().values()){
+		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).getRmbList()){
 			if(rmb.getItemid() != RewardConst.JEWEL)
 				continue;
 			Status.Builder builder = Status.newBuilder();

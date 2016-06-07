@@ -212,7 +212,8 @@ public class RedisKey {
 	public static final String LOTTERY_ACTIVITY_KEY = PREFIX + CONFIG_PREFIX +"lottery_activity";
 	
 	//rmb
-	public static final String RMB_KEY = PREFIX + CONFIG_PREFIX + "rmb";
+	public static final String RMB_KEY = "rmb";
+	public static final String RMB1_KEY = "rmb1";
 	
 	//recharge set
 	public static final String RECHARGE_KEY = "recharge";

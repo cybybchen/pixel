@@ -62,6 +62,8 @@ public class RechargeService {
 	private ShopService shopService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private ServerService serverService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
     	int complete = user.getRechargeRecord()+jewel;
@@ -105,6 +107,10 @@ public class RechargeService {
 		int jewel = rmb.getZuanshi();
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
+
+		if(serverService.getOnlineStatus(user.getVersion()) != 0 && itemId != RewardConst.JEWEL){
+			rmb = rechargeRedisService.getRmb1(productid);
+		}
 
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
@@ -170,10 +176,12 @@ public class RechargeService {
 		
 		activityService.sendShouchongScore(user);
 		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
-		userService.saveLibao(user.getId(), libaobuilder.build());
-		
-		Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb(), 0, productid, 2, "", company, 1);
-		logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
+		if(serverService.getOnlineStatus(user.getVersion()) == 0){
+			userService.saveLibao(user.getId(), libaobuilder.build());
+			
+			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb(), 0, productid, 2, "", company, 1);
+			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
+		}
 	}
 	
 	public void doRecharge(Map<String, String> params, boolean isCheat) {

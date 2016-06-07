@@ -88,6 +88,7 @@ public class UserCommandService extends BaseCommandService {
 //			user.setZhanli(cmd.getZhanli());
 //			userService.updateUserDailyData(user);
 //		}
+		user.setVersion(head.getVersion()+"");
 		refreshUserLogin(user);
 		
 		/**
@@ -141,7 +142,8 @@ public class UserCommandService extends BaseCommandService {
 			 */
 			activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_REGISTER);
 		}
-		
+
+		user.setVersion(head.getVersion()+"");
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		userInfoBuilder.setUser(user.build());

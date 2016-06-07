@@ -79,6 +79,19 @@ public class UserBean {
 	private int growJewelCountStatus = 0;
 	private int growExpCount = 0;
 	private int growExpCountStatus = 0;
+	private String version = "";
+	/**
+	 * 成长钻石基金
+	 */
+	public String getVersion() {
+		return version;
+	}
+	/**
+	 * 成长钻石基金
+	 */
+	public void setVersion(String version) {
+		this.version = version;
+	}
 	/**
 	 * 成长钻石基金
 	 */

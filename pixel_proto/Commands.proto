@@ -995,6 +995,7 @@ message Rmb {
 	optional string name = 5;
 	optional string description = 6;
 	optional string img = 7;
+	optional int32 type = 8;
 }
 
 message HeroChoiceList {
