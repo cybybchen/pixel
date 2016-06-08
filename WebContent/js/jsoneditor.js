@@ -519,7 +519,7 @@ function appendConfigData(key, value, visible){
     editor.find(".update-btn").hide();
     if(visible){
         editor.find(".json-editor").show();
-        if(key == "GmRight") editor.find(".update-btn").show();
+        if(key == "GmRight" || key == "VersionController") editor.find(".update-btn").show();
         editor.find(".json").show();
         editor.find(".json-editor").jsonEditor(value, { change: updateJSON, propertyclick: showPath });
         editor.find(".json").val(JSON.stringify(value));
@@ -773,6 +773,9 @@ function appendConfigDatas(message, visible){
     if(message["GmRight"]!=null){
         appendConfigData("GmRight", message["GmRight"], visible);
     }
+    if(message["VersionController"]!=null){
+        appendConfigData("VersionController", message["VersionController"], visible);
+    }
     if(message["Cdkey"]!=null){
     	$("#config-cdkey").show();
         showCdkeyTable(message["Cdkey"]);
@@ -923,6 +926,7 @@ function buildConfigJson(key, value){
         	json["DeleteData"] = "{}";
         }else if(datatype == "gmright"){
             json["GmRight"] = "{}";
+            json["VersionController"] = "{}";
         }else{
             json["HeroStarConfig"] = "{}";
             json["LotteryConfig1001"] = "{}";
@@ -1117,6 +1121,7 @@ $(document).ready(function() {
         	updateConfigJson(json);
         }else if(json.hasOwnProperty("GmRight")){
             json = buildConfigJson("GmRight", "1");
+            json["VersionController"] = 1;
             updateConfigJson(json);
         }else
         	appendConfigDatas(json, false);

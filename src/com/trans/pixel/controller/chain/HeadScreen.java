@@ -179,7 +179,7 @@ public class HeadScreen extends RequestScreen {
 		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
 		nHead.setServerstarttime(serverService.getKaifuTime(head.getServerId()));
 		nHead.setDatetime(System.currentTimeMillis() / 1000);
-		nHead.setOnlineStatus(serverService.getOnlineStatus("" + head.getGameVersion()));
+		nHead.setOnlineStatus(serverService.getOnlineStatus("" + head.getVersion()));
 		
 		return nHead.build();
 	}

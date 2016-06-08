@@ -147,8 +147,12 @@ public class UserCommandService extends BaseCommandService {
 		}
 
 		user.setVersion(head.getVersion()+"");
-		if(serverService.getOnlineStatus(user.getVersion()) != 0)
+		if(serverService.getOnlineStatus(user.getVersion()) != 0){
 			user.setGreenhand("14");
+			user.setSkill(1);
+			user.setAdvance(1);
+			user.setFailed(1);
+		}
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		userInfoBuilder.setUser(user.build());

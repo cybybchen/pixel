@@ -205,6 +205,38 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("GmRight", object);
 		}
+
+		if(req.containsKey("update-VersionController") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.VERSIONCONTROLLER_PREFIX);
+			JSONObject object = JSONObject.fromObject(req.get("update-VersionController"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.VERSIONCONTROLLER_PREFIX, key);
+					logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "del-VersionController", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.VERSIONCONTROLLER_PREFIX, map);
+				logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "update-VersionController", map.toString());
+			}
+			req.put("VersionController", 1);
+		}else if(req.containsKey("del-VersionController") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.VERSIONCONTROLLER_PREFIX);
+			logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "del-VersionController", "");
+			req.put("VersionController", 1);
+		}
+		if(req.containsKey("VersionController") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.VERSIONCONTROLLER_PREFIX);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("VersionController", object);
+		}
 		
 		Long userId = TypeTranslatedUtil.jsonGetLong(req, "userId");
 		String userName = TypeTranslatedUtil.jsonGetString(req, "userName");
@@ -306,7 +338,9 @@ public class ManagerService extends RedisService{
 				String[] keys = value.split(" ");
 				DataType type = type(keys[0]);
 				if(type.equals(DataType.NONE))
-					result.put("error", "未找到"+keys[0]+"对应的value");
+					result.put("error", "未找到"+keys[0]+"对应的hash");
+				else if(type.equals(DataType.HASH) && hget(keys[0], keys[1]) == null)
+					result.put("error", "未找到"+keys[1]+"对应的value");
 				else if(type.equals(DataType.HASH))
 					hdelete(keys[0], keys[1]);
 				else

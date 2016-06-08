@@ -81,13 +81,13 @@ public class UserBean {
 	private int growExpCountStatus = 0;
 	private String version = "";
 	/**
-	 * 成长钻石基金
+	 * 当前游戏版本
 	 */
 	public String getVersion() {
 		return version;
 	}
 	/**
-	 * 成长钻石基金
+	 * 当前游戏版本
 	 */
 	public void setVersion(String version) {
 		this.version = version;
