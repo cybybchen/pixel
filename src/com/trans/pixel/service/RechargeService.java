@@ -110,12 +110,14 @@ public class RechargeService {
 
 		if(serverService.getOnlineStatus(user.getVersion()) != 0 && itemId != RewardConst.JEWEL){
 			rmb = rechargeRedisService.getRmb1(productid);
+			itemId = rmb.getItemid();
+			jewel = rmb.getZuanshi();
 		}
 
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
-			if(libaobuilder.getPurchase() == 1){
+			if(libaobuilder.getPurchase() == 1 && serverService.getOnlineStatus(user.getVersion()) == 0){
 				reward.setCount(rmb.getZuanshi()*2);
 			}else{
 				reward.setCount(rmb.getZuanshi());

@@ -43,6 +43,8 @@ public class ShopService {
     private RewardService rewardService;
 	@Resource
 	private RechargeRedisService rechargeRedisService;
+	@Resource
+	private ServerService serverService;
 	
 	public ShopList getDailyShop(UserBean user){
 		return redis.getDailyShop(user);
@@ -165,7 +167,10 @@ public class ShopService {
 			Status.Builder builder = Status.newBuilder();
 			builder.setId(rmb.getId());
 			Libao libao = libaoMap.get(rmb.getId());
-			builder.setCanpurchase(libao == null || libao.getPurchase() == 0);
+			if(serverService.getOnlineStatus(user.getVersion()) != 0)
+				builder.setCanpurchase(false);
+			else
+				builder.setCanpurchase(libao == null || libao.getPurchase() == 0);
 			rechargestatus.addStatus(builder);
 		}
 		responseBuilder.setFirstRechargeStatusCommand(rechargestatus);
