@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
@@ -60,6 +61,8 @@ public class UserCommandService extends BaseCommandService {
 	private ShopService shopService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ServerService serverService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -144,6 +147,8 @@ public class UserCommandService extends BaseCommandService {
 		}
 
 		user.setVersion(head.getVersion()+"");
+		if(serverService.getOnlineStatus(user.getVersion()) != 0)
+			user.setGreenhand("14");
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		userInfoBuilder.setUser(user.build());
