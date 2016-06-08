@@ -8,7 +8,7 @@ public interface ServerMapper {
 	
 	public List<Integer> selectServerIdList();
 	
-	public Object selectServerKaifuTime(int serverId);
+	public String selectServerKaifuTime(int serverId);
 	
-	public Object insertServerKaifuTime(@Param("serverId") int serverId, @Param("kaifuTime") String kaifuTime);
+	public int insertServerKaifuTime(@Param("serverId") int serverId, @Param("kaifuTime") String kaifuTime);
 }

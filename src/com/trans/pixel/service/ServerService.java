@@ -35,19 +35,12 @@ public class ServerService {
 	public String getKaifuTime(int serverId) {
 		String kaifuTime = serverRedisService.getKaifuTime(serverId);
 		if (kaifuTime == null) {
-			Object value = serverMapper.selectServerKaifuTime(serverId);
-			log.debug("value is:" + value);
-			try {
-				if (value != null)
-					kaifuTime = (String)value;
-			} catch (Exception e) {
-				
-			}
+			kaifuTime = serverMapper.selectServerKaifuTime(serverId);
 			if (kaifuTime == null) {
 				kaifuTime = DateUtil.getCurrentDateString();
-				serverRedisService.setKaifuTime(serverId, kaifuTime);
 				serverMapper.insertServerKaifuTime(serverId, kaifuTime);
-			} 
+			}
+			serverRedisService.setKaifuTime(serverId, kaifuTime);
 		}
 		
 		return kaifuTime;
