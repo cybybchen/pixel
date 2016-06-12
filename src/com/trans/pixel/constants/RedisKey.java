@@ -1,9 +1,9 @@
 package com.trans.pixel.constants;
 
 public class RedisKey {
-//	public static String buildConfigKey(String configKey) {
-//		return PREFIX + CONFIG_PREFIX + configKey;
-//	}
+	public static String buildServerKey(int serverId) {
+		return SERVER_PREFIX + serverId + "_";
+	}
 	public final static String PREFIX = "pixel:";
 	public final static String SPLIT = ":";
 	

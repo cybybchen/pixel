@@ -20,6 +20,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.LadderDailyBean;
@@ -157,15 +158,24 @@ public class LadderService {
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
 		if (myRankBean == null)
 			myRankBean = initUserRank(user.getId(), user.getUserName());
-		if (attackRank == myRankBean.getRank())
+		if (attackRank == myRankBean.getRank()){
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
+			userService.updateUser(user);
 			return ErrorConst.ATTACK_SELF;
+		}
+		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
+		if (attackUserId != 0 && attackRankBean.getUserId() != attackUserId) {
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
+			userService.updateUser(user);
+			return ErrorConst.LADDER_RANK_ISCHANGED_ERROR;
+		}
 		long myRank = myRankBean.getRank();
-		if(!ladderRedisService.setLock("LadderRank_"+myRank)) {
+		if(!ladderRedisService.setLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank)) {
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
 			userService.updateUser(user);
 			return ErrorConst.YOU_ARE_ATTACKING;
 		}
-		if(!ladderRedisService.setLock("LadderRank_"+attackRank)) {
+		if(!ladderRedisService.setLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank)) {
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
 			userService.updateUser(user);
 			return ErrorConst.HE_IS_ATTACKING;
@@ -177,12 +187,6 @@ public class LadderService {
 		userTeamService.saveTeamCache(user, teamid, team);
 		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
-		UserRankBean attackRankBean = ladderRedisService.getUserRankByRank(serverId, attackRank);
-		if (attackUserId != 0 && attackRankBean.getUserId() != attackUserId) {
-			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
-			userService.updateUser(user);
-			return ErrorConst.LADDER_RANK_ISCHANGED_ERROR;
-		}
 		if (attackRank < myRankBean.getRank()) {
 			attackRankBean.setRank(myRankBean.getRank());
 			myRankBean.setRank(attackRank);
@@ -196,8 +200,8 @@ public class LadderService {
 		sendLog(user.getId(), user.getServerId(), userTeamService.getTeamCache(user.getId()).getHeroInfoList(),
 				userTeamService.getTeamCache(attackRankBean.getUserId()).getHeroInfoList(), result ? 1 : 0, attackRank);
 		
-		ladderRedisService.clearLock("LadderRank_"+myRank);
-		ladderRedisService.clearLock("LadderRank_"+attackRank);
+		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank);
+		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank);
 		
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
