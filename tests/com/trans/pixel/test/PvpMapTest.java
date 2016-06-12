@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
@@ -24,6 +25,7 @@ public class PvpMapTest extends BaseTest {
 	}
 	
 	public void testPvp(RequestCommand request) {
+//		submitZhanliTest(request);
 		unlockMap(request);
 		testPvpMap(request);
 		attackMonster(request);
@@ -31,6 +33,14 @@ public class PvpMapTest extends BaseTest {
 		attackMine(request);
 		testRefreshMine(request);
 		testRefreshPvpMap(request);
+	}
+
+	private void submitZhanliTest(RequestCommand request){
+		RequestSubmitZhanliCommand.Builder builder = RequestSubmitZhanliCommand.newBuilder();
+		builder.setZhanli(50000);
+//		builder.setZhanli(20000+(int)(System.currentTimeMillis()%30000));
+
+		ResponseCommand response = request("submitZhanliCommand", builder.build(), request);
 	}
 	
 	private void testRefreshPvpMap(RequestCommand request) {
