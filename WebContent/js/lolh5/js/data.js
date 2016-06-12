@@ -26,7 +26,7 @@ function updateListData(action, json){
 		$.each(json, function (key, value) {
 			var article = value["content"] == null ? "" : value["content"];
 			var content = article.split("\n").join("</p><p>");
-			var $el = $( '<h2>'+value["title"]+'</h2><span class="date">2016.1.1</span><p>'+content+'</p>' );
+			var $el = $( '<h2>'+value["title"]+'</h2><span class="date"> &nbsp; </span><p>'+content+'</p>' );
 			$("#detailview-page .ul-wapper .ui-detailview").append($el);
 		});
 	}else if(action.startsWith("action=A1003")){
@@ -46,7 +46,7 @@ function updateListData(action, json){
 		$.each(json, function (key, value) {
 			var article = value["content"] == null ? "" : value["content"];
 			var content = article.split("\n").join("</p><p>");
-			content = '<h2>'+value["title"]+'</h2><span class="date">2016.1.1</span><p>'+content
+			content = '<h2>'+value["title"]+'</h2><span class="date"> &nbsp; </span><p>'+content
 					+'</p><h3 style="margin-top: 15px;"><hr width="100px" color="#333" noshade="noshade" size="1" style="float:left;margin-right:-100px;"/>核心英雄<hr width="100px" color="#333" noshade="noshade" size="1" style="float:right;margin-left:-100px;"/></h3>'
 					+'<div class="ui-navbar"><ul class="ui-grid-d">';
 			content += (value["core1"] != "0"?'<li class="ui-block-a"><a href="#" action="'+action+'&id='+value["core1"]+'"><img src="css/images/char'+getHeroIcon(value["core1"])+'.png"></a></li>':'<li class="ui-block-a"><a></a></li>');
@@ -182,6 +182,15 @@ function updateListData(action, json){
 		raterank = json;
 		rankRate(rankrate);
 	}
+	// if($(".debug-info").length == 0)
+	// 	$("body").prepend("<div class='debug-info' style='position:fixed;z-index:999;font-size:16px;background-color:white;'></div>");
+	// $(".debug-info").html("window:"+window.innerWidth+"x"+$(window).height()+" scale"+window.innerWidth/360.0+"<br>"+
+	// 						"ui-page:"+$(".ui-page:visible").width()+"x"+$(".ui-page:visible").height()+"<br>"+
+	// 						"ui-content:"+$(".ui-content:visible").width()+"x"+$(".ui-content:visible").height()+"<br>"+
+	// 						"ul-wapper:"+$(".ul-wapper:visible").width()+"x"+$(".ul-wapper:visible").height()+"<br>"+
+	// 						"ui-listview:"+$(".ui-listview:visible").width()+"x"+$(".ui-listview:visible").height()+"<br>"+
+	// 						"ui-listview li:"+$(".ui-listview:visible li:first").width()+"x"+$(".ui-listview:visible li:first").height()+"<br>"
+	// 	);
 }
 
 
@@ -198,7 +207,7 @@ function rankRate(rate) {
 	rankrate = rate;
 	var action = "action=A1006";
 	$("#detailview-page .ul-wapper .ui-detailview").empty();
-	var content = '<h2>'+ranktitle+'</h2><span class="date">2016.1.1</span><div style="margin:12px 8px;font-size: 14px;">'
+	var content = '<h2>'+ranktitle+'</h2><span class="date"> &nbsp; </span><div style="margin:12px 8px;font-size: 14px;">'
 			+'<span style="margin-left:30px;">出场率<span style="display:inline-block;margin-left:5px;width:10px;height:10px;background-color: #F00;"></span></span>'
 			+'<span style="margin-left: 20px;">胜率<span style="display:inline-block;margin-left:5px;width:10px;height:10px;background-color: #00F;"></span></span>'
 			+'<a href="#" onclick="switchRate();" style="float:right;margin-right:10px;">';

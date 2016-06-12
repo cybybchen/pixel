@@ -107,7 +107,7 @@ body{
     margin-top: 0;
 }
 .ui-listview>li, .ui-listview>li a, .ui-field {
-	width: 337px;
+	width: 333px;
 	height: 84px;
 	display: block;
     position: relative;
@@ -143,9 +143,9 @@ body{
     width: 55px;
     padding: 14px 20px;
 }
-/*.ui-ratelist {
-    margin: 15px 0;
-}*/
+.ul-wapper .ui-ratelist {
+    width: 318px;
+}
 .ui-ratelist li a>img:first-child {
     padding: 5px 7px;
 }
