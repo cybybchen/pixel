@@ -449,7 +449,7 @@ public class LogService {
 		params.put(LogString.ITEMID, "" + itemid);
 		params.put(LogString.CURRENCY, "" + currencyamount);
 		
-		sendLog(params, LogString.LOGTYPE_PVE);
+		sendLog(params, LogString.LOGTYPE_SHOP);
 	}
 	
 	public void sendGreenhandLog(int serverId, long userId, String greenhand) {
