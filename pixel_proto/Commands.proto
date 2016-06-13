@@ -1899,6 +1899,7 @@ message RequestLogCommand {
 	optional int32 action = 12;
 	optional string channel = 14;
 	optional int32 rechargetype = 15;
+	optional string idfa = 16;
 }
 
 message RequestGetGrowJewelCommand {

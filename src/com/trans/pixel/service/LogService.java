@@ -38,6 +38,8 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.PHONEUUID));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.IDFA));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.SERVERID));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.USERID));
