@@ -91,9 +91,12 @@ public class UserFriendService {
 		
 		for (UserFriendBean friend : userFriendBeanList) {
 			UserInfo userCache = userService.getCache(user.getServerId(), friend.getFriendId());
-			UserFriend userFriend = buildUserFriend(user.getId(), friend, userCache);
-			
-			userFriendList.add(userFriend);
+			if(userCache.hasAccount()){
+				UserFriend userFriend = buildUserFriend(user.getId(), friend, userCache);
+				userFriendList.add(userFriend);
+			}else{
+				deleteUserFriend(user.getId(), friend.getFriendId());
+			}
 		}
 		
 		return userFriendList;
