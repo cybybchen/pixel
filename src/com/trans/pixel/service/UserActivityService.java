@@ -91,8 +91,10 @@ public class UserActivityService {
 		if (uk == null) {
 			if (kaifu.getLasttime() == -1) {
 				UserActivityBean uaBean = userActivityMapper.selectUserActivity(userId, type);
-				if (uaBean != null)
+				if (uaBean != null) {
 					uk = uaBean.buildUserKaifu();
+					updateUserKaifu(userId, uk);
+				}
 			}
 			
 			if (uk == null)
