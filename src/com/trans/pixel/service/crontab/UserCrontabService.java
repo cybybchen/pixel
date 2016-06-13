@@ -11,6 +11,7 @@ import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.service.CdkeyService;
 import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.UserAchieveService;
+import com.trans.pixel.service.UserActivityService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserLevelLootService;
@@ -45,6 +46,8 @@ public class UserCrontabService {
 	private CdkeyService cdkeyService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private UserActivityService userActivityService;
 	
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
@@ -113,6 +116,12 @@ public class UserCrontabService {
 			long userId = Long.parseLong(keys[0]);
 			int teamId = Integer.parseInt(keys[1]);
 			userTeamService.updateToDB(userId, teamId);
+		}
+		while((key=userActivityService.popDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int activityId = Integer.parseInt(keys[1]);
+			userActivityService.updateToDB(userId, activityId);
 		}
 	}
 }

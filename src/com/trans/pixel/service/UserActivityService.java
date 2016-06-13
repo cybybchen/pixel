@@ -10,6 +10,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.mapper.UserActivityMapper;
+import com.trans.pixel.model.userinfo.UserActivityBean;
 import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Richang;
 import com.trans.pixel.protoc.Commands.UserKaifu;
@@ -25,6 +27,8 @@ public class UserActivityService {
 	private UserActivityRedisService userActivityRedisService;
 	@Resource
 	private ActivityRedisService activityRedisService;
+	@Resource
+	private UserActivityMapper userActivityMapper;
 	
 	//richang activity
 	public void updateUserRichang(long userId, UserRichang ur, String endTime) {
@@ -65,13 +69,34 @@ public class UserActivityService {
 	
 	//kaifu activity
 	public void updateUserKaifu(long userId, UserKaifu uk) {
-		userActivityRedisService.updateUserKaifu(userId, uk);
+		Kaifu kaifu = activityRedisService.getKaifu(uk.getType());
+		userActivityRedisService.updateUserKaifu(userId, uk, kaifu.getLasttime());
+	}
+	
+	public void updateToDB(long userId, int id) {
+		UserKaifu uk = userActivityRedisService.getUserKaifu(userId, id);
+		if(uk != null) {
+			UserActivityBean uaBean = UserActivityBean.initUserActivity(uk, userId);
+			userActivityMapper.updateUserActivity(uaBean);
+		}
+	}
+	
+	public String popDBKey(){
+		return userActivityRedisService.popDBKey();
 	}
 	
 	public UserKaifu selectUserKaifu(long userId, int type) {
+		Kaifu kaifu = activityRedisService.getKaifu(type);
 		UserKaifu uk = userActivityRedisService.getUserKaifu(userId, type);
 		if (uk == null) {
-			uk = initUserKaifu(type);
+			if (kaifu.getLasttime() == -1) {
+				UserActivityBean uaBean = userActivityMapper.selectUserActivity(userId, type);
+				if (uaBean != null)
+					uk = uaBean.buildUserKaifu();
+			}
+			
+			if (uk == null)
+				uk = initUserKaifu(type);
 		}
 		
 		return uk;
@@ -84,7 +109,8 @@ public class UserActivityService {
 			return new ArrayList<UserKaifu>();
 		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			int type = TypeTranslatedUtil.stringToInt(it.next().getKey());
+			Entry<String, Kaifu> entry = it.next();
+			int type = TypeTranslatedUtil.stringToInt(entry.getKey());
 			UserKaifu uk = selectUserKaifu(userId, type);
 			ukList.add(uk);
 		}

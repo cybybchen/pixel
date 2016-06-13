@@ -122,15 +122,14 @@ public class LevelCommandService extends BaseCommandService {
 		 */
 		boolean ret = false;
 		int turn = 0;
-		int level = 0;
+		int levelId = cmd.getLevelId();
 		if (cmd.hasRet())
 			ret = cmd.getRet();
 		if (cmd.hasTurn())
 			turn = cmd.getTurn();
-		logService.sendPveLog(user.getServerId(), ret ? 1 : 0, user.getId(), turn, level);
+		logService.sendPveLog(user.getServerId(), ret ? 1 : 0, user.getId(), turn, levelId);
 		
 //		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
-		int levelId = cmd.getLevelId();
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
 		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {

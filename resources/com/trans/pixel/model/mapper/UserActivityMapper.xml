@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserActivityMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserActivityBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="activityId" column="activity_id" />
+		<result property="completeCount" column="complete_count" />
+		<result property="rewardOrder" column="reward_order" />
+	</resultMap>
+	
+	<select id="selectUserActivity" resultMap="resultMap">
+		SELECT *
+		from user_activity where user_id=#{userId} and activity_id=#{activityId}
+	</select>
+	
+	<insert id="updateUserActivity" parameterType="com.trans.pixel.model.userinfo.UserActivityBean">
+	    INSERT INTO user_activity(user_id, activity_id, complete_count, reward_order)
+	    VALUES(#{userId}, #{activityId}, #{completeCount}, #{rewardOrder})
+	    ON 
+	    duplicate key update
+	    complete_count=#{completeCount}, reward_order=#{rewardOrder}
+	</insert>
+	
+</mapper>
