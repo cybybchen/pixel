@@ -158,17 +158,13 @@ public class PvpCommandService extends BaseCommandService {
 	
 	public void getMineInfo(RequestPVPMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMine mine = pvpMapService.getUserMine(user, cmd.getId());
-		if(mine == null){
+		if(mine == null || !mine.hasOwner()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 		}else{
-			Team team = null;
-			if(!mine.hasOwner())
-				team = Team.newBuilder().build();
-			else
-				team = userTeamService.getTeamCache(mine.getOwner().getId());
+			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 			ResponsePVPMineInfoCommand.Builder builder= ResponsePVPMineInfoCommand.newBuilder();
 			builder.addAllHeroInfo(team.getHeroInfoList());
 			if(team.hasUser())
