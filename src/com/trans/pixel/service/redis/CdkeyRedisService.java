@@ -107,6 +107,10 @@ public class CdkeyRedisService extends RedisService{
 	public Map<String, String> getCdkeyConfigs(){
 		return hget(RedisKey.CDKEY_CONFIG);
 	}
+	
+	public void saveCdkeyConfigs(Map<String, String> keyvalue){
+		hputAll(RedisKey.CDKEY_CONFIG, keyvalue);
+	}
 
 	public Map<Integer, String> getCdkeyConfigs(Collection<String> cdkeys){
 		Map<Integer, String> cdkeymap = new TreeMap<Integer, String>();

@@ -3,6 +3,7 @@ package com.trans.pixel.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.annotation.Resource;
 
@@ -98,6 +99,13 @@ public class CdkeyService {
 		Map<String, String> map = redis.getCdkeyConfigs();
 		if(map.isEmpty()){
 			List<String> cdkeys = configMapper.selectAll();
+			Map<String, String> cdkeymap = new TreeMap<String, String>();
+			for(String value : cdkeys){
+				Cdkey.Builder builder = Cdkey.newBuilder();
+				RedisService.parseJson(value, builder);
+				cdkeymap.put(builder.getId()+"", RedisService.formatJson(builder.build()));
+			}
+			redis.saveCdkeyConfigs(cdkeymap);
 			return redis.getCdkeyConfigs(cdkeys);
 		}else
 			return redis.getCdkeyConfigs(map.values());
