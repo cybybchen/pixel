@@ -546,6 +546,11 @@ public class ActivityService {
 //		 * 累计登录的开服活动
 //		 */
 //		sendKaifuScore(user, ActivityConst.KAIFU_LOGIN);
+		
+		/**
+		 * 累计登录的日常活动
+		 */
+		sendRichangScore(user.getId(), ActivityConst.ACTIVITY_TYPE_LOGIN);
 	}
 	
 	public void rechargeActivity(UserBean user, int count) {
