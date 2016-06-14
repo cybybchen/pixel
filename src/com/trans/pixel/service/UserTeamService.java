@@ -32,20 +32,21 @@ public class UserTeamService {
 	@Resource
 	private HeroService heroService;
 	
-	public void addUserTeam(UserBean user, String record, String composeSkill) {
-		UserTeamBean userTeam = new UserTeamBean();
-		userTeam.setUserId(user.getId());
-		userTeam.setTeamRecord(record);
-		userTeam.setComposeSkill(composeSkill);
-		userTeamMapper.addUserTeam(userTeam);
-		userTeamRedisService.updateUserTeam(userTeam);
-		user.setCurrentTeamid(userTeam.getId());
-		userService.updateUser(user);
-	}
+	// public void addUserTeam(UserBean user, String record, String composeSkill) {
+	// 	UserTeamBean userTeam = new UserTeamBean();
+	// 	userTeam.setUserId(user.getId());
+	// 	userTeam.setTeamRecord(record);
+	// 	userTeam.setComposeSkill(composeSkill);
+	// 	userTeamMapper.addUserTeam(userTeam);
+	// 	userTeamRedisService.updateUserTeam(userTeam);
+	// 	user.setCurrentTeamid(userTeam.getId());
+	// 	userService.updateUser(user);
+	// }
 	
-	public void delUserTeam(long userId, long id) {
-		userTeamMapper.delUserTeam(id);
-		userTeamRedisService.delUserTeam(userId, id);
+	public void delUserTeam(long userId, int id) {
+		// userTeamMapper.delUserTeam(id);
+		// userTeamRedisService.delUserTeam(userId, id);
+		updateUserTeam(userId, id, "", "");
 	}
 	
 	public void updateUserTeam(long userId, long id,  String record, String composeSkill) {

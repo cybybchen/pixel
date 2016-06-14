@@ -6,7 +6,7 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
-import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
+import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
@@ -17,9 +17,10 @@ public class TeamTest extends BaseTest {
 	
 	public long teamAddTest(RequestCommand req, ResponseCommand loginResponse) {
 		RequestCommand.Builder builder = RequestCommand.newBuilder(req);
-		RequestAddTeamCommand.Builder b = RequestAddTeamCommand.newBuilder();
+		RequestUpdateTeamCommand.Builder b = RequestUpdateTeamCommand.newBuilder();
+		b.setId(1);
 		b.setTeamInfo("10,1|2,3|");
-		builder.setAddTeamCommand(b.build());
+		builder.setUpdateTeamCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
 		byte[] reqData = reqcmd.toByteArray();

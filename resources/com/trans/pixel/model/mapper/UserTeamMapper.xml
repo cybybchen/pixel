@@ -9,20 +9,22 @@
 		<result property="composeSkill" column="compose_skill" />
 	</resultMap>
 	
-	<insert id="addUserTeam" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
+	<!-- <insert id="addUserTeam" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
 	    INSERT INTO user_team(user_id, record, compose_skill)
 	    VALUES(#{userId}, #{teamRecord}, #{composeSkill})
-	</insert>
+	</insert> -->
 	
-	<insert id="delUserTeam" parameterType="long">
+	<!-- <insert id="delUserTeam">
 	    DELETE
 		from user_team where id=#{id}
-	</insert>
+	</insert> -->
 	
 	<update id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
-	    UPDATE user_team
-	    SET record=#{teamRecord}, compose_skill=#{composeSkill}
-		WHERE id=#{id} and user_id=#{userId}
+		INSERT INTO user_team(user_id, id, record, compose_skill)
+	    VALUES(#{userId}, #{id}, #{teamRecord}, #{composeSkill})
+		ON 
+	    duplicate key update
+	    record=#{teamRecord}, compose_skill=#{composeSkill}
 	</update>
 	
 	<select id="selectUserTeamList" parameterType="long" resultMap="resultMap">

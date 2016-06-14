@@ -9,7 +9,6 @@ import com.trans.pixel.protoc.Commands.RequestAchieveListCommand;
 import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
-import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
@@ -785,13 +784,6 @@ public class GameDataScreen extends RequestScreen {
 		return true;//GetGrowExpCommand
 	}//GetGrowExpCommand
 	//add handleCommand here
-
-	@Override
-	protected boolean handleCommand(RequestAddTeamCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		teamCommandService.addUserTeam(cmd, responseBuilder, user);
-		return true;
-	}
 
 	@Override
 	protected boolean handleCommand(RequestUserTeamListCommand cmd,

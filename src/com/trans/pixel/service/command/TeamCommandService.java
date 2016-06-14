@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
@@ -44,20 +43,20 @@ public class TeamCommandService extends BaseCommandService {
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 	
-	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
-		String teamInfo = cmd.getTeamInfo();
-		String composeSkill = "";
-		if (cmd.hasComposeSkill())
-			composeSkill = cmd.getComposeSkill();
-		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-		}else
-			userTeamService.addUserTeam(user, teamInfo, composeSkill);
-		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
-	}
+//	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
+//		String teamInfo = cmd.getTeamInfo();
+//		String composeSkill = "";
+//		if (cmd.hasComposeSkill())
+//			composeSkill = cmd.getComposeSkill();
+//		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
+//			
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
+//            responseBuilder.setErrorCommand(errorCommand);
+//		}else
+//			userTeamService.addUserTeam(user, teamInfo, composeSkill);
+//		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
+//	}
 	
 	public void getUserTeamList(RequestUserTeamListCommand cmd, Builder responseBuilder, UserBean user) {
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);

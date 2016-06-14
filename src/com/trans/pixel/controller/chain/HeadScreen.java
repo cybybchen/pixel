@@ -13,7 +13,6 @@ import com.trans.pixel.protoc.Commands.RequestAchieveListCommand;
 import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestAddHeroEquipCommand;
-import com.trans.pixel.protoc.Commands.RequestAddTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
@@ -734,13 +733,6 @@ public class HeadScreen extends RequestScreen {
 
 	@Override
 	protected boolean handleCommand(RequestReplyMessageCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestAddTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
 		return true;

@@ -174,8 +174,11 @@ public class UserCommandService extends BaseCommandService {
 			break;
 		}
 		
-		if (!teamRecord.isEmpty())
-			userTeamService.addUserTeam(user, teamRecord, "");
+		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, "");
+		userTeamService.updateUserTeam(user.getId(), 2, "", "");
+		userTeamService.updateUserTeam(user.getId(), 3, "", "");
+		userTeamService.updateUserTeam(user.getId(), 4, "", "");
+		userTeamService.updateUserTeam(user.getId(), 5, "", "");
 	}
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
