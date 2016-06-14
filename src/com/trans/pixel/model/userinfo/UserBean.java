@@ -906,8 +906,8 @@ public class UserBean {
 		setJewel(0);
 		setExp(0);
 		setHeroLimit(30);
-//		setFreeLotteryCoinTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (24 - 0.25)));
-		setFreeLotteryJewelTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (72 - 6)));
+//		setFreeLotteryCoinTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (22 - 0.25)));
+		setFreeLotteryJewelTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (70 - 1)));
 		return this;
 	}
 	public UserInfo buildShort() {
