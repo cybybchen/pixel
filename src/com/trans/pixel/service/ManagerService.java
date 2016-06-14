@@ -568,7 +568,7 @@ public class ManagerService extends RedisService{
 			for(Entry<String, String> entry : map.entrySet()){
 				String key = entry.getKey();
 				if(!object.keySet().contains(key)){
-					userTeamService.delUserTeam(userId, Long.parseLong(key));
+					userTeamService.delUserTeam(userId, Integer.parseInt(key));
 					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-team", map.get(key));
 //					hdelete(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId, key);
 				}else if(entry.getValue().equals(object.getString(key))){
