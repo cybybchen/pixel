@@ -6,14 +6,14 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 import net.sf.json.JSONObject;
 
 public class UserTeamBean {
-	public long id = 0;
+	public int id = 0;
 	public long userId = 0;
 	public String teamRecord = "";
 	public String composeSkill = "";
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public long getUserId() {
@@ -49,7 +49,7 @@ public class UserTeamBean {
 		UserTeamBean bean = new UserTeamBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
-		bean.setId(json.getLong(ID));
+		bean.setId(json.getInt(ID));
 		bean.setUserId(json.getLong(USER_ID));
 		bean.setTeamRecord(json.getString(TEAM_RECORD));
 		bean.setComposeSkill(TypeTranslatedUtil.jsonGetString(json, COMPOSE_SKILL));

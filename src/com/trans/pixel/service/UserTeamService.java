@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -49,7 +50,7 @@ public class UserTeamService {
 		updateUserTeam(userId, id, "", "");
 	}
 	
-	public void updateUserTeam(long userId, long id,  String record, String composeSkill) {
+	public void updateUserTeam(long userId, int id,  String record, String composeSkill) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setId(id);
 		userTeam.setUserId(userId);
@@ -77,20 +78,20 @@ public class UserTeamService {
 				userTeamRedisService.updateUserTeamList(userTeamList, userId);
 		}
 		if(userTeamList.size() < 5){
-			List<Integer> ids = new ArrayList<Integer>;
+			List<Integer> ids = new ArrayList<Integer>();
 			for(UserTeamBean team : userTeamList){
 				ids.add(team.getId());
 			}
 			if(!ids.contains(1))
-				updateUserTeam(user.getId(), 1, "", "");
+				updateUserTeam(userId, 1, "", "");
 			if(!ids.contains(2))
-				updateUserTeam(user.getId(), 2, "", "");
+				updateUserTeam(userId, 2, "", "");
 			if(!ids.contains(3))
-				updateUserTeam(user.getId(), 3, "", "");
+				updateUserTeam(userId, 3, "", "");
 			if(!ids.contains(4))
-				updateUserTeam(user.getId(), 4, "", "");
+				updateUserTeam(userId, 4, "", "");
 			if(!ids.contains(5))
-				updateUserTeam(user.getId(), 5, "", "");
+				updateUserTeam(userId, 5, "", "");
 			userTeamList = userTeamRedisService.selectUserTeamList(userId);
 		}
 		
@@ -177,7 +178,7 @@ public class UserTeamService {
 				for(String herostr : herosstr){
 					String[] str = herostr.split(",");
 					if(str.length == 2){
-						int heroId = Integer.parseInt(str[0]);
+//						int heroId = Integer.parseInt(str[0]);
 						int infoId = Integer.parseInt(str[1]);
 						for(HeroInfoBean herobean : userHeroList){
 							if(herobean.getId() == infoId){

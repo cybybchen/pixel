@@ -131,8 +131,6 @@ public class XiaoguanBean {
 	private final static String DAGUAN = "daguan";
 	private final static String XIAOGUAN = "xiaoguan";
 	private final static String ID = "id";
-	private final static String NAME = "name";
-	private final static String CONTEXT = "context";
 	private final static String LOOTTIME = "loottime";
 	private final static String PREPARATIME = "preparatime";
 }

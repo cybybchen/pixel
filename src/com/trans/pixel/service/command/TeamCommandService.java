@@ -28,7 +28,7 @@ public class TeamCommandService extends BaseCommandService {
 	
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
-		long id = cmd.getId();
+		int id = (int)cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
 		String composeSkill = "";
 		if (cmd.hasComposeSkill())
