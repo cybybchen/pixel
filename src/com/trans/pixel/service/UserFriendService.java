@@ -91,7 +91,7 @@ public class UserFriendService {
 		
 		for (UserFriendBean friend : userFriendBeanList) {
 			UserInfo userCache = userService.getCache(user.getServerId(), friend.getFriendId());
-			if(userCache.hasAccount()){
+			if(userCache.hasZhanli()){
 				UserFriend userFriend = buildUserFriend(user.getId(), friend, userCache);
 				userFriendList.add(userFriend);
 			}else{
