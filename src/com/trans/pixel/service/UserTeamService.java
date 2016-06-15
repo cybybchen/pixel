@@ -76,6 +76,23 @@ public class UserTeamService {
 			if (userTeamList != null && userTeamList.size() > 0)
 				userTeamRedisService.updateUserTeamList(userTeamList, userId);
 		}
+		if(userTeamList.size() < 5){
+			List<Integer> ids = new ArrayList<Integer>;
+			for(UserTeamBean team : userTeamList){
+				ids.add(team.getId());
+			}
+			if(!ids.contains(1))
+				updateUserTeam(user.getId(), 1, "", "");
+			if(!ids.contains(2))
+				updateUserTeam(user.getId(), 2, "", "");
+			if(!ids.contains(3))
+				updateUserTeam(user.getId(), 3, "", "");
+			if(!ids.contains(4))
+				updateUserTeam(user.getId(), 4, "", "");
+			if(!ids.contains(5))
+				updateUserTeam(user.getId(), 5, "", "");
+			userTeamList = userTeamRedisService.selectUserTeamList(userId);
+		}
 		
 		return userTeamList;
 	}
