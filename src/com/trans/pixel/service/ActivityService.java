@@ -445,7 +445,8 @@ public class ActivityService {
 	private boolean isInKaifuActivityTime(int lastTime, int serverId) {
 		if (lastTime <= 0)
 			return true;
-		return getKaifuDays(serverId) <= lastTime;
+		
+		return getKaifuDays(serverId) < lastTime;
 	}
 	
 	private int getKaifuDays(int serverId) {
