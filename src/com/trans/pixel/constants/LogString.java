@@ -121,4 +121,5 @@ public class LogString {
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;
+	public static final int TYPE_MONITOR_KAIFU2ACTIVITY = 2;
 }

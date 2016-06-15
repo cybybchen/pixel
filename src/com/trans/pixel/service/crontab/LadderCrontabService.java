@@ -35,9 +35,9 @@ public class LadderCrontabService {
 				Thread thread = new Thread() {
 					public void run() {
 						logger.debug("send ladder reward:" + serverId);
-						logService.sendLadderDailyRewardLog(serverId, LogString.TYPE_MONITOR_LADDERDAILY, "start");
+						logService.sendMonitorRewardLog(serverId, LogString.TYPE_MONITOR_LADDERDAILY, "start");
 						ladderService.sendLadderDailyReward(serverId);
-						logService.sendLadderDailyRewardLog(serverId, LogString.TYPE_MONITOR_LADDERDAILY, "end");
+						logService.sendMonitorRewardLog(serverId, LogString.TYPE_MONITOR_LADDERDAILY, "end");
 					}
 				};
 				thread.start();

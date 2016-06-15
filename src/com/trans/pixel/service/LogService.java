@@ -413,7 +413,7 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_GM);
 	}
 	
-	public void sendLadderDailyRewardLog(int serverId, int type, String des) {
+	public void sendMonitorRewardLog(int serverId, int type, String des) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.TYPE, "" + type);
