@@ -85,7 +85,7 @@ public class RedisKey {
 	
 	//user team redis
 	public static final String USER_TEAM_PREFIX = "user_team_";
-	public static final String TEAM_CACHE_PREFIX = "user_team_cache_";
+	public static final String TEAM_CACHE_PREFIX = "team_cache_";
 	
 	//loot redis
 	public static final String LOOT_LEVEL_KEY = CONFIG_PREFIX+"loot_level_key";
