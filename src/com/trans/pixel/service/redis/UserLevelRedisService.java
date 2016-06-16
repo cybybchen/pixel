@@ -17,8 +17,11 @@ public class UserLevelRedisService extends RedisService{
 	
 	public UserLevelBean selectUserLevelRecord(final long userId) {
 		String value = hget(RedisKey.USERDATA + userId, "LevelRecord");
-		JSONObject object = JSONObject.fromObject(value);
-		return (UserLevelBean) JSONObject.toBean(object, UserLevelBean.class);
+		if(value != null){
+			JSONObject object = JSONObject.fromObject(value);
+			return (UserLevelBean) JSONObject.toBean(object, UserLevelBean.class);
+		}else
+			return null;
 	}
 	
 	public void updateUserLevelRecord(final UserLevelBean userLevelRecordBean) {

@@ -35,12 +35,13 @@ public class UserLevelLootService {
 		UserLevelLootBean userLevelLootRecordBean = userLevelLootRecordRedisService.selectUserLevelLootRecord(userId);
 		if (userLevelLootRecordBean == null) {
 			userLevelLootRecordBean = userLevelLootRecordMapper.selectUserLevelLootRecord(userId);
-		}
-		if (userLevelLootRecordBean == null) {
-			userLevelLootRecordBean = initUserLevelLootRecord(userId);
-			userLevelLootRecordMapper.insertUserLevelLootRecord(userLevelLootRecordBean);
-			userLevelLootRecordRedisService.updateUserLevelLootRecord(userLevelLootRecordBean);
-			userLevelLootRecordBean = switchLootLevel(1001, userId);
+			if (userLevelLootRecordBean == null) {
+				userLevelLootRecordBean = initUserLevelLootRecord(userId);
+				userLevelLootRecordMapper.insertUserLevelLootRecord(userLevelLootRecordBean);
+				userLevelLootRecordRedisService.updateUserLevelLootRecord(userLevelLootRecordBean);
+				userLevelLootRecordBean = switchLootLevel(1001, userId);
+			}else
+				userLevelLootRecordRedisService.updateUserLevelLootRecord(userLevelLootRecordBean);
 		}
 		
 		return userLevelLootRecordBean;
