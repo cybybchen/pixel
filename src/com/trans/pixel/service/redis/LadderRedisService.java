@@ -48,7 +48,8 @@ public class LadderRedisService extends RedisService{
 				List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 				for (int i = start; i <= end; ++i) {
 					UserRankBean userRank = UserRankBean.fromJson(bhOps.get("" + i));
-					rankList.add(userRank);
+					if (userRank != null)
+						rankList.add(userRank);
 				}
 				
 				return rankList;
