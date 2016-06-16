@@ -1,6 +1,9 @@
 package com.trans.pixel.service;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -55,8 +58,7 @@ public class AchieveService {
 			
 		updateNextAchieve(ua);
 		
-		if (!isCompleteNew(ua))
-			noticeService.deleteNotice(ua.getUserId(), NoticeConst.TYPE_ACHIEVE);
+		isDeleteNotice(ua.getUserId());
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
@@ -119,5 +121,18 @@ public class AchieveService {
 		}
 		
 		return true;
+	}
+	
+	private void isDeleteNotice(long userId) {
+		Map<String, Achieve> map = achieveRedidService.getAchieveConfig();
+		Iterator<Entry<String, Achieve>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Achieve> entry = it.next();
+			UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, entry.getValue().getId());
+			if (isCompleteNew(ua)) 
+				return;
+		}
+		
+		noticeService.deleteNotice(userId, NoticeConst.TYPE_ACHIEVE);
 	}
 }
