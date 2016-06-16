@@ -978,8 +978,8 @@ public class UserBean {
 //		builder.setLastLoginTime(lastLoginTime);
 		builder.setLadderModeLeftTimes(ladderModeLeftTimes);
 //		builder.setLadderModeHistoryTop(ladderModeHistoryTop);
-		builder.setFreeLotteryCoinTime(Math.max(0, (int)((freeLotteryCoinTime + 24 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
-		builder.setFreeLotteryJewelTime(Math.max(0, (int)((freeLotteryJewelTime + 72 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
+		builder.setFreeLotteryCoinTime(Math.max(0, (int)((freeLotteryCoinTime + 22 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
+		builder.setFreeLotteryJewelTime(Math.max(0, (int)((freeLotteryJewelTime + 70 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setPVPMineLeftTime(pvpMineLeftTime);
 		builder.setSignCount(signCount);
 		builder.setLoginDays(loginDays);
