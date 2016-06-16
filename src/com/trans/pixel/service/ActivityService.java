@@ -130,7 +130,7 @@ public class ActivityService {
 			if (ur.getRewardOrderList().contains(order.getOrder()))
 				continue;
 			
-			if (ur.getCompleteCount() > order.getTargetcount())
+			if (ur.getCompleteCount() >= order.getTargetcount())
 				return true;
 		}
 		
@@ -531,7 +531,7 @@ public class ActivityService {
 			if (uk.getRewardOrderList().contains(order.getOrder()))
 				continue;
 			
-			if (uk.getCompleteCount() > order.getTargetcount())
+			if (uk.getCompleteCount() >= order.getTargetcount())
 				return true;
 		}
 		
