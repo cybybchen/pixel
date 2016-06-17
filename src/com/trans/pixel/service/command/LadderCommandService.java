@@ -85,6 +85,7 @@ public class LadderCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
+            pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}else{
 			if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
 				pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
