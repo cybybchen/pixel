@@ -361,8 +361,10 @@ public abstract class RequestScreen implements RequestHandle {
         	return false;
         } else {
         	if (user == null) {
+        		if (!request.hasLogCommand()) {
                 nullUserErrorHandle.handleRequest(req, rep);
                 return false;
+        		}
             }
         }
         

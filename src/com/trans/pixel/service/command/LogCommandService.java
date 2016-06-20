@@ -21,7 +21,13 @@ public class LogCommandService extends BaseCommandService {
 	private LogService logService;
 	
 	public void log(RequestLogCommand cmd, Builder responseBuilder, UserBean user) {
-		Map<String, String> params = initParams(user.getServerId(), user.getId(), cmd);
+		int serverId = 0;
+		long userId = 0;
+		if (user != null) {
+			serverId = user.getServerId();
+			userId = user.getId();
+		}
+		Map<String, String> params = initParams(serverId, userId, cmd);
 		logService.sendLog(params, cmd.getLogtype());
 		
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.LOG_SEND_SUCCESS));
