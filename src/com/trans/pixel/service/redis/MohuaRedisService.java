@@ -24,10 +24,10 @@ import com.trans.pixel.protoc.Commands.MohuaUserData;
 @Service
 public class MohuaRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(MohuaRedisService.class);
-	private static final String MAP_FILE_NAME = "mohua/lol_mohuamap.xml";
-	private static final String CARDLOOT_FILE_NAME = "mohua/lol_mohuacardloot.xml";
-	private static final String JIEDUAN_FILE_NAME = "mohua/lol_mohuajieduan.xml";
-	private static final String LOOT_FILE_NAME = "mohua/lol_mohualoot.xml";
+	private static final String MAP_FILE_NAME = "lol_mohuamap.xml";
+	private static final String CARDLOOT_FILE_NAME = "lol_mohuacardloot.xml";
+	private static final String JIEDUAN_FILE_NAME = "lol_mohuajieduan.xml";
+	private static final String LOOT_FILE_NAME = "lol_mohualoot.xml";
 	
 	public MohuaMapStageList getMohuaMap(int mapid) {
 		String value = hget(RedisKey.MOHUA_MAP_KEY, "" + mapid);
