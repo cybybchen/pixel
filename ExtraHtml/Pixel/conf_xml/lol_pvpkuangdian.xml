@@ -3,13 +3,13 @@
 <kuangdian id="10101" x="172" y="733" type="1" yield="5" enemyid="1001" img="kd101" />
 <kuangdian id="10102" x="440" y="685" type="1" yield="5" enemyid="1001" img="kd101" />
 <kuangdian id="10103" x="246" y="359" type="1" yield="5" enemyid="1001" img="kd101" />
-<kuangdian id="10104" x="189" y="547" type="2" yield="10" enemyid="1001" img="kd201" />
+<kuangdian id="10104" x="189" y="547" type="2" yield="10" enemyid="1001" img="kd202" />
 </field>
 <field fieldid="102" name="铁脊山脉" img="pvp102" yield="10" bufflimit="100" zhanli="15000" buffid="70002">
-<kuangdian id="10201" x="192" y="398" type="1" yield="5" enemyid="1004" img="kd102" />
-<kuangdian id="10202" x="386" y="718" type="1" yield="5" enemyid="1004" img="kd102" />
-<kuangdian id="10203" x="118" y="632" type="2" yield="10" enemyid="1004" img="kd201" />
-<kuangdian id="10204" x="359" y="464" type="2" yield="10" enemyid="1004" img="kd201" />
+<kuangdian id="10201" x="192" y="398" type="1" yield="5" enemyid="1004" img="kd101" />
+<kuangdian id="10202" x="386" y="718" type="1" yield="5" enemyid="1004" img="kd101" />
+<kuangdian id="10203" x="118" y="632" type="2" yield="10" enemyid="1004" img="kd202" />
+<kuangdian id="10204" x="359" y="464" type="2" yield="10" enemyid="1004" img="kd202" />
 </field>
 <field fieldid="103" name="风暴平原" img="pvp103" yield="10" bufflimit="100" zhanli="55000" buffid="70003">
 <kuangdian id="10301" x="106" y="653" type="1" yield="5" enemyid="1007" img="kd101" />
@@ -25,8 +25,8 @@
 <kuangdian id="10404" x="335" y="538" type="4" yield="20" enemyid="1010" img="kd401" />
 </field>
 <field fieldid="105" name="暗影岛" img="pvp105" yield="5" bufflimit="100" zhanli="218000" buffid="70005">
-<kuangdian id="10501" x="189" y="810" type="2" yield="10" enemyid="1013" img="kd203" />
-<kuangdian id="10502" x="532" y="337" type="2" yield="10" enemyid="1013" img="kd203" />
+<kuangdian id="10501" x="189" y="810" type="2" yield="10" enemyid="1013" img="kd202" />
+<kuangdian id="10502" x="532" y="337" type="2" yield="10" enemyid="1013" img="kd202" />
 <kuangdian id="10503" x="131" y="479" type="3" yield="15" enemyid="1013" img="kd201" />
 <kuangdian id="10504" x="451" y="700" type="3" yield="15" enemyid="1013" img="kd201" />
 <kuangdian id="10505" x="333" y="471" type="4" yield="20" enemyid="1013" img="kd401" />

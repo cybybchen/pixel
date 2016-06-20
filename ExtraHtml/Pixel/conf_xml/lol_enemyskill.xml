@@ -23,13 +23,13 @@
 <enemy enemyid="10202" enemyname="史莱姆" boss="1" >
 <skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
 </enemy>
-<enemy enemyid="10202" enemyname="哥布林" boss="1" >
+<enemy enemyid="10203" enemyname="哥布林" boss="1" >
 <skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
 </enemy>
-<enemy enemyid="10202" enemyname="牛头怪" boss="1" >
+<enemy enemyid="10204" enemyname="牛头怪" boss="1" >
 <skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
 </enemy>
-<enemy enemyid="10202" enemyname="小恶魔" boss="1" >
+<enemy enemyid="10205" enemyname="小恶魔" boss="1" >
 <skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>

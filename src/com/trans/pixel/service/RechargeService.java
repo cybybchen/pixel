@@ -181,7 +181,7 @@ public class RechargeService {
 		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 			userService.saveLibao(user.getId(), libaobuilder.build());
 			
-			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb(), 0, productid, 2, "", company, 1);
+			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", company, 1);
 			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
 		}
 	}

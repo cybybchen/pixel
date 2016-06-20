@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<touxiang id="62001" name="高级贵族" img="50010" des="成就“成为vip”达到vip1获得" />
+<touxiang id="62002" name="至尊贵族" img="50011" des="成就“成为vip”达到vip13获得" />
+<touxiang id="62003" name="至尊王者" img="50009" des="开服活动“血雨腥风”第一获得" />
+<touxiang id="62004" name="战皇无双" img="50008" des="开服活动“制霸天下”第一获得" />
+<touxiang id="62005" name="天下我有" img="50001" des="成就“收藏家”全部完成获得" />
+<touxiang id="62006" name="富甲天下" img="50002" des="成就“抽奖者”全部完成获得" />
+<touxiang id="62007" name="千年战帝" img="50003" des="成就“推图高手”全部完成获得" />
+<touxiang id="62008" name="英雄无敌" img="50004" des="成就“战力达人”全部完成获得" />
+<touxiang id="62009" name="人间凶器" img="50005" des="成就“竞技王者”全部完成获得" />
+<touxiang id="62010" name="血腥爆神" img="50006" des="成就“pk狂魔”全部完成获得" />
+<touxiang id="62011" name="铁血杀神" img="50007" des="成就“boss杀手”全部完成获得" />
+<touxiang id="61001" name="基础头像" img="user_head_1" des="" />
+<touxiang id="61002" name="基础头像" img="user_head_2" des="" />
+<touxiang id="61003" name="基础头像" img="user_head_3" des="" />
+<touxiang id="61004" name="基础头像" img="user_head_4" des="" />
+<touxiang id="61005" name="基础头像" img="user_head_5" des="" />
+</data>

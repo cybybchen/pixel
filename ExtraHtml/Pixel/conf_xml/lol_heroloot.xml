@@ -1,263 +1,367 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<hero itemid="51001" name="厄运小姐1星" heroid="1" star="1" count="1" />
-<hero itemid="51005" name="赵信1星" heroid="5" star="1" count="1" />
-<hero itemid="51008" name="潘森1星" heroid="8" star="1" count="1" />
-<hero itemid="51009" name="奥拉夫1星" heroid="9" star="1" count="1" />
-<hero itemid="51010" name="古拉加斯1星" heroid="10" star="1" count="1" />
-<hero itemid="51011" name="伊泽瑞尔1星" heroid="11" star="1" count="1" />
-<hero itemid="51012" name="奈德丽1星" heroid="12" star="1" count="1" />
-<hero itemid="51013" name="莫德凯撒1星" heroid="13" star="1" count="1" />
-<hero itemid="51017" name="盖伦1星" heroid="17" star="1" count="1" />
-<hero itemid="51024" name="崔斯特1星" heroid="24" star="1" count="1" />
-<hero itemid="51027" name="塔里克1星" heroid="27" star="1" count="1" />
-<hero itemid="51032" name="沃里克1星" heroid="32" star="1" count="1" />
-<hero itemid="51035" name="布里茨1星" heroid="35" star="1" count="1" />
-<hero itemid="51036" name="阿利斯塔1星" heroid="36" star="1" count="1" />
-<hero itemid="51038" name="易1星" heroid="38" star="1" count="1" />
-<hero itemid="51039" name="贾克斯1星" heroid="39" star="1" count="1" />
-<hero itemid="51040" name="崔斯坦娜1星" heroid="40" star="1" count="1" />
-<hero itemid="51041" name="安妮1星" heroid="41" star="1" count="1" />
-<hero itemid="51042" name="艾希1星" heroid="42" star="1" count="1" />
-<hero itemid="51043" name="提莫1星" heroid="43" star="1" count="1" />
-<hero itemid="51048" name="墨菲特1星" heroid="48" star="1" count="1" />
-<hero itemid="51050" name="蒙多医生1星" heroid="50" star="1" count="1" />
-<hero itemid="51051" name="泰达米尔1星" heroid="51" star="1" count="1" />
-<hero itemid="51052" name="辛吉德1星" heroid="52" star="1" count="1" />
-<hero itemid="51055" name="努努1星" heroid="55" star="1" count="1" />
-<hero itemid="51058" name="薇恩1星" heroid="58" star="1" count="1" />
-<hero itemid="51059" name="兰博1星" heroid="59" star="1" count="1" />
-<hero itemid="51060" name="布兰德1星" heroid="60" star="1" count="1" />
-<hero itemid="51061" name="李青1星" heroid="61" star="1" count="1" />
-<hero itemid="51063" name="嘉文四世1星" heroid="63" star="1" count="1" />
-<hero itemid="51070" name="艾瑞莉娅1星" heroid="70" star="1" count="1" />
-<hero itemid="51072" name="拉克丝1星" heroid="72" star="1" count="1" />
-<hero itemid="51074" name="娑娜1星" heroid="74" star="1" count="1" />
-<hero itemid="51075" name="卡特琳娜1星" heroid="75" star="1" count="1" />
-<hero itemid="51076" name="瑞兹1星" heroid="76" star="1" count="1" />
-<hero itemid="51078" name="蕾欧娜1星" heroid="78" star="1" count="1" />
-<hero itemid="51079" name="孙悟空1星" heroid="79" star="1" count="1" />
-<hero itemid="51082" name="瑞雯1星" heroid="82" star="1" count="1" />
-<hero itemid="51084" name="希瓦娜1星" heroid="84" star="1" count="1" />
-<hero itemid="51086" name="菲兹1星" heroid="86" star="1" count="1" />
-<hero itemid="51088" name="阿狸1星" heroid="88" star="1" count="1" />
-<hero itemid="51094" name="璐璐1星" heroid="94" star="1" count="1" />
-<hero itemid="51096" name="韦鲁斯1星" heroid="96" star="1" count="1" />
-<hero itemid="51097" name="德莱厄斯1星" heroid="97" star="1" count="1" />
-<hero itemid="51102" name="雷恩加尔1星" heroid="102" star="1" count="1" />
-<hero itemid="51104" name="卡兹克1星" heroid="104" star="1" count="1" />
-<hero itemid="51105" name="伊丽丝1星" heroid="105" star="1" count="1" />
-<hero itemid="51108" name="锤石1星" heroid="108" star="1" count="1" />
-<hero itemid="51116" name="金克丝1星" heroid="116" star="1" count="1" />
-<hero itemid="51117" name="亚索1星" heroid="117" star="1" count="1" />
-<hero itemid="51121" name="阿兹尔1星" heroid="121" star="1" count="1" />
-<hero itemid="51122" name="卡莉斯塔1星" heroid="122" star="1" count="1" />
-<hero itemid="52001" name="厄运小姐2星" heroid="1" star="2" count="1" />
-<hero itemid="52005" name="赵信2星" heroid="5" star="2" count="1" />
-<hero itemid="52008" name="潘森2星" heroid="8" star="2" count="1" />
-<hero itemid="52009" name="奥拉夫2星" heroid="9" star="2" count="1" />
-<hero itemid="52010" name="古拉加斯2星" heroid="10" star="2" count="1" />
-<hero itemid="52011" name="伊泽瑞尔2星" heroid="11" star="2" count="1" />
-<hero itemid="52012" name="奈德丽2星" heroid="12" star="2" count="1" />
-<hero itemid="52013" name="莫德凯撒2星" heroid="13" star="2" count="1" />
-<hero itemid="52017" name="盖伦2星" heroid="17" star="2" count="1" />
-<hero itemid="52024" name="崔斯特2星" heroid="24" star="2" count="1" />
-<hero itemid="52027" name="塔里克2星" heroid="27" star="2" count="1" />
-<hero itemid="52032" name="沃里克2星" heroid="32" star="2" count="1" />
-<hero itemid="52035" name="布里茨2星" heroid="35" star="2" count="1" />
-<hero itemid="52036" name="阿利斯塔2星" heroid="36" star="2" count="1" />
-<hero itemid="52038" name="易2星" heroid="38" star="2" count="1" />
-<hero itemid="52039" name="贾克斯2星" heroid="39" star="2" count="1" />
-<hero itemid="52040" name="崔斯坦娜2星" heroid="40" star="2" count="1" />
-<hero itemid="52041" name="安妮2星" heroid="41" star="2" count="1" />
-<hero itemid="52042" name="艾希2星" heroid="42" star="2" count="1" />
-<hero itemid="52043" name="提莫2星" heroid="43" star="2" count="1" />
-<hero itemid="52048" name="墨菲特2星" heroid="48" star="2" count="1" />
-<hero itemid="52050" name="蒙多医生2星" heroid="50" star="2" count="1" />
-<hero itemid="52051" name="泰达米尔2星" heroid="51" star="2" count="1" />
-<hero itemid="52052" name="辛吉德2星" heroid="52" star="2" count="1" />
-<hero itemid="52055" name="努努2星" heroid="55" star="2" count="1" />
-<hero itemid="52058" name="薇恩2星" heroid="58" star="2" count="1" />
-<hero itemid="52059" name="兰博2星" heroid="59" star="2" count="1" />
-<hero itemid="52060" name="布兰德2星" heroid="60" star="2" count="1" />
-<hero itemid="52061" name="李青2星" heroid="61" star="2" count="1" />
-<hero itemid="52063" name="嘉文四世2星" heroid="63" star="2" count="1" />
-<hero itemid="52070" name="艾瑞莉娅2星" heroid="70" star="2" count="1" />
-<hero itemid="52072" name="拉克丝2星" heroid="72" star="2" count="1" />
-<hero itemid="52074" name="娑娜2星" heroid="74" star="2" count="1" />
-<hero itemid="52075" name="卡特琳娜2星" heroid="75" star="2" count="1" />
-<hero itemid="52076" name="瑞兹2星" heroid="76" star="2" count="1" />
-<hero itemid="52078" name="蕾欧娜2星" heroid="78" star="2" count="1" />
-<hero itemid="52079" name="孙悟空2星" heroid="79" star="2" count="1" />
-<hero itemid="52082" name="瑞雯2星" heroid="82" star="2" count="1" />
-<hero itemid="52084" name="希瓦娜2星" heroid="84" star="2" count="1" />
-<hero itemid="52086" name="菲兹2星" heroid="86" star="2" count="1" />
-<hero itemid="52088" name="阿狸2星" heroid="88" star="2" count="1" />
-<hero itemid="52094" name="璐璐2星" heroid="94" star="2" count="1" />
-<hero itemid="52096" name="韦鲁斯2星" heroid="96" star="2" count="1" />
-<hero itemid="52097" name="德莱厄斯2星" heroid="97" star="2" count="1" />
-<hero itemid="52102" name="雷恩加尔2星" heroid="102" star="2" count="1" />
-<hero itemid="52104" name="卡兹克2星" heroid="104" star="2" count="1" />
-<hero itemid="52105" name="伊丽丝2星" heroid="105" star="2" count="1" />
-<hero itemid="52108" name="锤石2星" heroid="108" star="2" count="1" />
-<hero itemid="52116" name="金克丝2星" heroid="116" star="2" count="1" />
-<hero itemid="52117" name="亚索2星" heroid="117" star="2" count="1" />
-<hero itemid="52121" name="阿兹尔2星" heroid="121" star="2" count="1" />
-<hero itemid="52122" name="卡莉斯塔2星" heroid="122" star="2" count="1" />
-<hero itemid="53001" name="厄运小姐3星" heroid="1" star="3" count="1" />
-<hero itemid="53005" name="赵信3星" heroid="5" star="3" count="1" />
-<hero itemid="53008" name="潘森3星" heroid="8" star="3" count="1" />
-<hero itemid="53009" name="奥拉夫3星" heroid="9" star="3" count="1" />
-<hero itemid="53010" name="古拉加斯3星" heroid="10" star="3" count="1" />
-<hero itemid="53011" name="伊泽瑞尔3星" heroid="11" star="3" count="1" />
-<hero itemid="53012" name="奈德丽3星" heroid="12" star="3" count="1" />
-<hero itemid="53013" name="莫德凯撒3星" heroid="13" star="3" count="1" />
-<hero itemid="53017" name="盖伦3星" heroid="17" star="3" count="1" />
-<hero itemid="53024" name="崔斯特3星" heroid="24" star="3" count="1" />
-<hero itemid="53027" name="塔里克3星" heroid="27" star="3" count="1" />
-<hero itemid="53032" name="沃里克3星" heroid="32" star="3" count="1" />
-<hero itemid="53035" name="布里茨3星" heroid="35" star="3" count="1" />
-<hero itemid="53036" name="阿利斯塔3星" heroid="36" star="3" count="1" />
-<hero itemid="53038" name="易3星" heroid="38" star="3" count="1" />
-<hero itemid="53039" name="贾克斯3星" heroid="39" star="3" count="1" />
-<hero itemid="53040" name="崔斯坦娜3星" heroid="40" star="3" count="1" />
-<hero itemid="53041" name="安妮3星" heroid="41" star="3" count="1" />
-<hero itemid="53042" name="艾希3星" heroid="42" star="3" count="1" />
-<hero itemid="53043" name="提莫3星" heroid="43" star="3" count="1" />
-<hero itemid="53048" name="墨菲特3星" heroid="48" star="3" count="1" />
-<hero itemid="53050" name="蒙多医生3星" heroid="50" star="3" count="1" />
-<hero itemid="53051" name="泰达米尔3星" heroid="51" star="3" count="1" />
-<hero itemid="53052" name="辛吉德3星" heroid="52" star="3" count="1" />
-<hero itemid="53055" name="努努3星" heroid="55" star="3" count="1" />
-<hero itemid="53058" name="薇恩3星" heroid="58" star="3" count="1" />
-<hero itemid="53059" name="兰博3星" heroid="59" star="3" count="1" />
-<hero itemid="53060" name="布兰德3星" heroid="60" star="3" count="1" />
-<hero itemid="53061" name="李青3星" heroid="61" star="3" count="1" />
-<hero itemid="53063" name="嘉文四世3星" heroid="63" star="3" count="1" />
-<hero itemid="53070" name="艾瑞莉娅3星" heroid="70" star="3" count="1" />
-<hero itemid="53072" name="拉克丝3星" heroid="72" star="3" count="1" />
-<hero itemid="53074" name="娑娜3星" heroid="74" star="3" count="1" />
-<hero itemid="53075" name="卡特琳娜3星" heroid="75" star="3" count="1" />
-<hero itemid="53076" name="瑞兹3星" heroid="76" star="3" count="1" />
-<hero itemid="53078" name="蕾欧娜3星" heroid="78" star="3" count="1" />
-<hero itemid="53079" name="孙悟空3星" heroid="79" star="3" count="1" />
-<hero itemid="53082" name="瑞雯3星" heroid="82" star="3" count="1" />
-<hero itemid="53084" name="希瓦娜3星" heroid="84" star="3" count="1" />
-<hero itemid="53086" name="菲兹3星" heroid="86" star="3" count="1" />
-<hero itemid="53088" name="阿狸3星" heroid="88" star="3" count="1" />
-<hero itemid="53094" name="璐璐3星" heroid="94" star="3" count="1" />
-<hero itemid="53096" name="韦鲁斯3星" heroid="96" star="3" count="1" />
-<hero itemid="53097" name="德莱厄斯3星" heroid="97" star="3" count="1" />
-<hero itemid="53102" name="雷恩加尔3星" heroid="102" star="3" count="1" />
-<hero itemid="53104" name="卡兹克3星" heroid="104" star="3" count="1" />
-<hero itemid="53105" name="伊丽丝3星" heroid="105" star="3" count="1" />
-<hero itemid="53108" name="锤石3星" heroid="108" star="3" count="1" />
-<hero itemid="53116" name="金克丝3星" heroid="116" star="3" count="1" />
-<hero itemid="53117" name="亚索3星" heroid="117" star="3" count="1" />
-<hero itemid="53121" name="阿兹尔3星" heroid="121" star="3" count="1" />
-<hero itemid="53122" name="卡莉斯塔3星" heroid="122" star="3" count="1" />
-<hero itemid="54001" name="厄运小姐4星" heroid="1" star="4" count="1" />
-<hero itemid="54005" name="赵信4星" heroid="5" star="4" count="1" />
-<hero itemid="54008" name="潘森4星" heroid="8" star="4" count="1" />
-<hero itemid="54009" name="奥拉夫4星" heroid="9" star="4" count="1" />
-<hero itemid="54010" name="古拉加斯4星" heroid="10" star="4" count="1" />
-<hero itemid="54011" name="伊泽瑞尔4星" heroid="11" star="4" count="1" />
-<hero itemid="54012" name="奈德丽4星" heroid="12" star="4" count="1" />
-<hero itemid="54013" name="莫德凯撒4星" heroid="13" star="4" count="1" />
-<hero itemid="54017" name="盖伦4星" heroid="17" star="4" count="1" />
-<hero itemid="54024" name="崔斯特4星" heroid="24" star="4" count="1" />
-<hero itemid="54027" name="塔里克4星" heroid="27" star="4" count="1" />
-<hero itemid="54032" name="沃里克4星" heroid="32" star="4" count="1" />
-<hero itemid="54035" name="布里茨4星" heroid="35" star="4" count="1" />
-<hero itemid="54036" name="阿利斯塔4星" heroid="36" star="4" count="1" />
-<hero itemid="54038" name="易4星" heroid="38" star="4" count="1" />
-<hero itemid="54039" name="贾克斯4星" heroid="39" star="4" count="1" />
-<hero itemid="54040" name="崔斯坦娜4星" heroid="40" star="4" count="1" />
-<hero itemid="54041" name="安妮4星" heroid="41" star="4" count="1" />
-<hero itemid="54042" name="艾希4星" heroid="42" star="4" count="1" />
-<hero itemid="54043" name="提莫4星" heroid="43" star="4" count="1" />
-<hero itemid="54048" name="墨菲特4星" heroid="48" star="4" count="1" />
-<hero itemid="54050" name="蒙多医生4星" heroid="50" star="4" count="1" />
-<hero itemid="54051" name="泰达米尔4星" heroid="51" star="4" count="1" />
-<hero itemid="54052" name="辛吉德4星" heroid="52" star="4" count="1" />
-<hero itemid="54055" name="努努4星" heroid="55" star="4" count="1" />
-<hero itemid="54058" name="薇恩4星" heroid="58" star="4" count="1" />
-<hero itemid="54059" name="兰博4星" heroid="59" star="4" count="1" />
-<hero itemid="54060" name="布兰德4星" heroid="60" star="4" count="1" />
-<hero itemid="54061" name="李青4星" heroid="61" star="4" count="1" />
-<hero itemid="54063" name="嘉文四世4星" heroid="63" star="4" count="1" />
-<hero itemid="54070" name="艾瑞莉娅4星" heroid="70" star="4" count="1" />
-<hero itemid="54072" name="拉克丝4星" heroid="72" star="4" count="1" />
-<hero itemid="54074" name="娑娜4星" heroid="74" star="4" count="1" />
-<hero itemid="54075" name="卡特琳娜4星" heroid="75" star="4" count="1" />
-<hero itemid="54076" name="瑞兹4星" heroid="76" star="4" count="1" />
-<hero itemid="54078" name="蕾欧娜4星" heroid="78" star="4" count="1" />
-<hero itemid="54079" name="孙悟空4星" heroid="79" star="4" count="1" />
-<hero itemid="54082" name="瑞雯4星" heroid="82" star="4" count="1" />
-<hero itemid="54084" name="希瓦娜4星" heroid="84" star="4" count="1" />
-<hero itemid="54086" name="菲兹4星" heroid="86" star="4" count="1" />
-<hero itemid="54088" name="阿狸4星" heroid="88" star="4" count="1" />
-<hero itemid="54094" name="璐璐4星" heroid="94" star="4" count="1" />
-<hero itemid="54096" name="韦鲁斯4星" heroid="96" star="4" count="1" />
-<hero itemid="54097" name="德莱厄斯4星" heroid="97" star="4" count="1" />
-<hero itemid="54102" name="雷恩加尔4星" heroid="102" star="4" count="1" />
-<hero itemid="54104" name="卡兹克4星" heroid="104" star="4" count="1" />
-<hero itemid="54105" name="伊丽丝4星" heroid="105" star="4" count="1" />
-<hero itemid="54108" name="锤石4星" heroid="108" star="4" count="1" />
-<hero itemid="54116" name="金克丝4星" heroid="116" star="4" count="1" />
-<hero itemid="54117" name="亚索4星" heroid="117" star="4" count="1" />
-<hero itemid="54121" name="阿兹尔4星" heroid="121" star="4" count="1" />
-<hero itemid="54122" name="卡莉斯塔4星" heroid="122" star="4" count="1" />
-<hero itemid="55001" name="厄运小姐5星" heroid="1" star="5" count="1" />
-<hero itemid="55005" name="赵信5星" heroid="5" star="5" count="1" />
-<hero itemid="55008" name="潘森5星" heroid="8" star="5" count="1" />
-<hero itemid="55009" name="奥拉夫5星" heroid="9" star="5" count="1" />
-<hero itemid="55010" name="古拉加斯5星" heroid="10" star="5" count="1" />
-<hero itemid="55011" name="伊泽瑞尔5星" heroid="11" star="5" count="1" />
-<hero itemid="55012" name="奈德丽5星" heroid="12" star="5" count="1" />
-<hero itemid="55013" name="莫德凯撒5星" heroid="13" star="5" count="1" />
-<hero itemid="55017" name="盖伦5星" heroid="17" star="5" count="1" />
-<hero itemid="55024" name="崔斯特5星" heroid="24" star="5" count="1" />
-<hero itemid="55027" name="塔里克5星" heroid="27" star="5" count="1" />
-<hero itemid="55032" name="沃里克5星" heroid="32" star="5" count="1" />
-<hero itemid="55035" name="布里茨5星" heroid="35" star="5" count="1" />
-<hero itemid="55036" name="阿利斯塔5星" heroid="36" star="5" count="1" />
-<hero itemid="55038" name="易5星" heroid="38" star="5" count="1" />
-<hero itemid="55039" name="贾克斯5星" heroid="39" star="5" count="1" />
-<hero itemid="55040" name="崔斯坦娜5星" heroid="40" star="5" count="1" />
-<hero itemid="55041" name="安妮5星" heroid="41" star="5" count="1" />
-<hero itemid="55042" name="艾希5星" heroid="42" star="5" count="1" />
-<hero itemid="55043" name="提莫5星" heroid="43" star="5" count="1" />
-<hero itemid="55048" name="墨菲特5星" heroid="48" star="5" count="1" />
-<hero itemid="55050" name="蒙多医生5星" heroid="50" star="5" count="1" />
-<hero itemid="55051" name="泰达米尔5星" heroid="51" star="5" count="1" />
-<hero itemid="55052" name="辛吉德5星" heroid="52" star="5" count="1" />
-<hero itemid="55055" name="努努5星" heroid="55" star="5" count="1" />
-<hero itemid="55058" name="薇恩5星" heroid="58" star="5" count="1" />
-<hero itemid="55059" name="兰博5星" heroid="59" star="5" count="1" />
-<hero itemid="55060" name="布兰德5星" heroid="60" star="5" count="1" />
-<hero itemid="55061" name="李青5星" heroid="61" star="5" count="1" />
-<hero itemid="55063" name="嘉文四世5星" heroid="63" star="5" count="1" />
-<hero itemid="55070" name="艾瑞莉娅5星" heroid="70" star="5" count="1" />
-<hero itemid="55072" name="拉克丝5星" heroid="72" star="5" count="1" />
-<hero itemid="55074" name="娑娜5星" heroid="74" star="5" count="1" />
-<hero itemid="55075" name="卡特琳娜5星" heroid="75" star="5" count="1" />
-<hero itemid="55076" name="瑞兹5星" heroid="76" star="5" count="1" />
-<hero itemid="55078" name="蕾欧娜5星" heroid="78" star="5" count="1" />
-<hero itemid="55079" name="孙悟空5星" heroid="79" star="5" count="1" />
-<hero itemid="55082" name="瑞雯5星" heroid="82" star="5" count="1" />
-<hero itemid="55084" name="希瓦娜5星" heroid="84" star="5" count="1" />
-<hero itemid="55086" name="菲兹5星" heroid="86" star="5" count="1" />
-<hero itemid="55088" name="阿狸5星" heroid="88" star="5" count="1" />
-<hero itemid="55094" name="璐璐5星" heroid="94" star="5" count="1" />
-<hero itemid="55096" name="韦鲁斯5星" heroid="96" star="5" count="1" />
-<hero itemid="55097" name="德莱厄斯5星" heroid="97" star="5" count="1" />
-<hero itemid="55102" name="雷恩加尔5星" heroid="102" star="5" count="1" />
-<hero itemid="55104" name="卡兹克5星" heroid="104" star="5" count="1" />
-<hero itemid="55105" name="伊丽丝5星" heroid="105" star="5" count="1" />
-<hero itemid="55108" name="锤石5星" heroid="108" star="5" count="1" />
-<hero itemid="55116" name="金克丝5星" heroid="116" star="5" count="1" />
-<hero itemid="55117" name="亚索5星" heroid="117" star="5" count="1" />
-<hero itemid="55121" name="阿兹尔5星" heroid="121" star="5" count="1" />
-<hero itemid="55122" name="卡莉斯塔5星" heroid="122" star="5" count="1" />
+<hero itemid="51001" name="厄运小姐1星" description="获得厄运小姐1星" heroid="1" star="1" count="1" />
+<hero itemid="51005" name="赵信1星" description="获得赵信1星" heroid="5" star="1" count="1" />
+<hero itemid="51008" name="潘森1星" description="获得潘森1星" heroid="8" star="1" count="1" />
+<hero itemid="51009" name="奥拉夫1星" description="获得奥拉夫1星" heroid="9" star="1" count="1" />
+<hero itemid="51010" name="古拉加斯1星" description="获得古拉加斯1星" heroid="10" star="1" count="1" />
+<hero itemid="51011" name="伊泽瑞尔1星" description="获得伊泽瑞尔1星" heroid="11" star="1" count="1" />
+<hero itemid="51012" name="奈德丽1星" description="获得奈德丽1星" heroid="12" star="1" count="1" />
+<hero itemid="51013" name="莫德凯撒1星" description="获得莫德凯撒1星" heroid="13" star="1" count="1" />
+<hero itemid="51017" name="盖伦1星" description="获得盖伦1星" heroid="17" star="1" count="1" />
+<hero itemid="51024" name="崔斯特1星" description="获得崔斯特1星" heroid="24" star="1" count="1" />
+<hero itemid="51027" name="塔里克1星" description="获得塔里克1星" heroid="27" star="1" count="1" />
+<hero itemid="51032" name="沃里克1星" description="获得沃里克1星" heroid="32" star="1" count="1" />
+<hero itemid="51035" name="布里茨1星" description="获得布里茨1星" heroid="35" star="1" count="1" />
+<hero itemid="51036" name="阿利斯塔1星" description="获得阿利斯塔1星" heroid="36" star="1" count="1" />
+<hero itemid="51038" name="易1星" description="获得易1星" heroid="38" star="1" count="1" />
+<hero itemid="51039" name="贾克斯1星" description="获得贾克斯1星" heroid="39" star="1" count="1" />
+<hero itemid="51040" name="崔斯坦娜1星" description="获得崔斯坦娜1星" heroid="40" star="1" count="1" />
+<hero itemid="51041" name="安妮1星" description="获得安妮1星" heroid="41" star="1" count="1" />
+<hero itemid="51042" name="艾希1星" description="获得艾希1星" heroid="42" star="1" count="1" />
+<hero itemid="51043" name="提莫1星" description="获得提莫1星" heroid="43" star="1" count="1" />
+<hero itemid="51048" name="墨菲特1星" description="获得墨菲特1星" heroid="48" star="1" count="1" />
+<hero itemid="51050" name="蒙多医生1星" description="获得蒙多医生1星" heroid="50" star="1" count="1" />
+<hero itemid="51051" name="泰达米尔1星" description="获得泰达米尔1星" heroid="51" star="1" count="1" />
+<hero itemid="51052" name="辛吉德1星" description="获得辛吉德1星" heroid="52" star="1" count="1" />
+<hero itemid="51055" name="努努1星" description="获得努努1星" heroid="55" star="1" count="1" />
+<hero itemid="51058" name="薇恩1星" description="获得薇恩1星" heroid="58" star="1" count="1" />
+<hero itemid="51059" name="兰博1星" description="获得兰博1星" heroid="59" star="1" count="1" />
+<hero itemid="51060" name="布兰德1星" description="获得布兰德1星" heroid="60" star="1" count="1" />
+<hero itemid="51061" name="李青1星" description="获得李青1星" heroid="61" star="1" count="1" />
+<hero itemid="51063" name="嘉文四世1星" description="获得嘉文四世1星" heroid="63" star="1" count="1" />
+<hero itemid="51070" name="艾瑞莉娅1星" description="获得艾瑞莉娅1星" heroid="70" star="1" count="1" />
+<hero itemid="51072" name="拉克丝1星" description="获得拉克丝1星" heroid="72" star="1" count="1" />
+<hero itemid="51074" name="娑娜1星" description="获得娑娜1星" heroid="74" star="1" count="1" />
+<hero itemid="51075" name="卡特琳娜1星" description="获得卡特琳娜1星" heroid="75" star="1" count="1" />
+<hero itemid="51076" name="瑞兹1星" description="获得瑞兹1星" heroid="76" star="1" count="1" />
+<hero itemid="51078" name="蕾欧娜1星" description="获得蕾欧娜1星" heroid="78" star="1" count="1" />
+<hero itemid="51079" name="孙悟空1星" description="获得孙悟空1星" heroid="79" star="1" count="1" />
+<hero itemid="51082" name="瑞雯1星" description="获得瑞雯1星" heroid="82" star="1" count="1" />
+<hero itemid="51084" name="希瓦娜1星" description="获得希瓦娜1星" heroid="84" star="1" count="1" />
+<hero itemid="51086" name="菲兹1星" description="获得菲兹1星" heroid="86" star="1" count="1" />
+<hero itemid="51088" name="阿狸1星" description="获得阿狸1星" heroid="88" star="1" count="1" />
+<hero itemid="51094" name="璐璐1星" description="获得璐璐1星" heroid="94" star="1" count="1" />
+<hero itemid="51096" name="韦鲁斯1星" description="获得韦鲁斯1星" heroid="96" star="1" count="1" />
+<hero itemid="51097" name="德莱厄斯1星" description="获得德莱厄斯1星" heroid="97" star="1" count="1" />
+<hero itemid="51102" name="雷恩加尔1星" description="获得雷恩加尔1星" heroid="102" star="1" count="1" />
+<hero itemid="51104" name="卡兹克1星" description="获得卡兹克1星" heroid="104" star="1" count="1" />
+<hero itemid="51105" name="伊丽丝1星" description="获得伊丽丝1星" heroid="105" star="1" count="1" />
+<hero itemid="51108" name="锤石1星" description="获得锤石1星" heroid="108" star="1" count="1" />
+<hero itemid="51116" name="金克丝1星" description="获得金克丝1星" heroid="116" star="1" count="1" />
+<hero itemid="51117" name="亚索1星" description="获得亚索1星" heroid="117" star="1" count="1" />
+<hero itemid="51121" name="阿兹尔1星" description="获得阿兹尔1星" heroid="121" star="1" count="1" />
+<hero itemid="51122" name="卡莉斯塔1星" description="获得卡莉斯塔1星" heroid="122" star="1" count="1" />
+<hero itemid="52001" name="厄运小姐2星" description="获得厄运小姐2星" heroid="1" star="2" count="1" />
+<hero itemid="52005" name="赵信2星" description="获得赵信2星" heroid="5" star="2" count="1" />
+<hero itemid="52008" name="潘森2星" description="获得潘森2星" heroid="8" star="2" count="1" />
+<hero itemid="52009" name="奥拉夫2星" description="获得奥拉夫2星" heroid="9" star="2" count="1" />
+<hero itemid="52010" name="古拉加斯2星" description="获得古拉加斯2星" heroid="10" star="2" count="1" />
+<hero itemid="52011" name="伊泽瑞尔2星" description="获得伊泽瑞尔2星" heroid="11" star="2" count="1" />
+<hero itemid="52012" name="奈德丽2星" description="获得奈德丽2星" heroid="12" star="2" count="1" />
+<hero itemid="52013" name="莫德凯撒2星" description="获得莫德凯撒2星" heroid="13" star="2" count="1" />
+<hero itemid="52017" name="盖伦2星" description="获得盖伦2星" heroid="17" star="2" count="1" />
+<hero itemid="52024" name="崔斯特2星" description="获得崔斯特2星" heroid="24" star="2" count="1" />
+<hero itemid="52027" name="塔里克2星" description="获得塔里克2星" heroid="27" star="2" count="1" />
+<hero itemid="52032" name="沃里克2星" description="获得沃里克2星" heroid="32" star="2" count="1" />
+<hero itemid="52035" name="布里茨2星" description="获得布里茨2星" heroid="35" star="2" count="1" />
+<hero itemid="52036" name="阿利斯塔2星" description="获得阿利斯塔2星" heroid="36" star="2" count="1" />
+<hero itemid="52038" name="易2星" description="获得易2星" heroid="38" star="2" count="1" />
+<hero itemid="52039" name="贾克斯2星" description="获得贾克斯2星" heroid="39" star="2" count="1" />
+<hero itemid="52040" name="崔斯坦娜2星" description="获得崔斯坦娜2星" heroid="40" star="2" count="1" />
+<hero itemid="52041" name="安妮2星" description="获得安妮2星" heroid="41" star="2" count="1" />
+<hero itemid="52042" name="艾希2星" description="获得艾希2星" heroid="42" star="2" count="1" />
+<hero itemid="52043" name="提莫2星" description="获得提莫2星" heroid="43" star="2" count="1" />
+<hero itemid="52048" name="墨菲特2星" description="获得墨菲特2星" heroid="48" star="2" count="1" />
+<hero itemid="52050" name="蒙多医生2星" description="获得蒙多医生2星" heroid="50" star="2" count="1" />
+<hero itemid="52051" name="泰达米尔2星" description="获得泰达米尔2星" heroid="51" star="2" count="1" />
+<hero itemid="52052" name="辛吉德2星" description="获得辛吉德2星" heroid="52" star="2" count="1" />
+<hero itemid="52055" name="努努2星" description="获得努努2星" heroid="55" star="2" count="1" />
+<hero itemid="52058" name="薇恩2星" description="获得薇恩2星" heroid="58" star="2" count="1" />
+<hero itemid="52059" name="兰博2星" description="获得兰博2星" heroid="59" star="2" count="1" />
+<hero itemid="52060" name="布兰德2星" description="获得布兰德2星" heroid="60" star="2" count="1" />
+<hero itemid="52061" name="李青2星" description="获得李青2星" heroid="61" star="2" count="1" />
+<hero itemid="52063" name="嘉文四世2星" description="获得嘉文四世2星" heroid="63" star="2" count="1" />
+<hero itemid="52070" name="艾瑞莉娅2星" description="获得艾瑞莉娅2星" heroid="70" star="2" count="1" />
+<hero itemid="52072" name="拉克丝2星" description="获得拉克丝2星" heroid="72" star="2" count="1" />
+<hero itemid="52074" name="娑娜2星" description="获得娑娜2星" heroid="74" star="2" count="1" />
+<hero itemid="52075" name="卡特琳娜2星" description="获得卡特琳娜2星" heroid="75" star="2" count="1" />
+<hero itemid="52076" name="瑞兹2星" description="获得瑞兹2星" heroid="76" star="2" count="1" />
+<hero itemid="52078" name="蕾欧娜2星" description="获得蕾欧娜2星" heroid="78" star="2" count="1" />
+<hero itemid="52079" name="孙悟空2星" description="获得孙悟空2星" heroid="79" star="2" count="1" />
+<hero itemid="52082" name="瑞雯2星" description="获得瑞雯2星" heroid="82" star="2" count="1" />
+<hero itemid="52084" name="希瓦娜2星" description="获得希瓦娜2星" heroid="84" star="2" count="1" />
+<hero itemid="52086" name="菲兹2星" description="获得菲兹2星" heroid="86" star="2" count="1" />
+<hero itemid="52088" name="阿狸2星" description="获得阿狸2星" heroid="88" star="2" count="1" />
+<hero itemid="52094" name="璐璐2星" description="获得璐璐2星" heroid="94" star="2" count="1" />
+<hero itemid="52096" name="韦鲁斯2星" description="获得韦鲁斯2星" heroid="96" star="2" count="1" />
+<hero itemid="52097" name="德莱厄斯2星" description="获得德莱厄斯2星" heroid="97" star="2" count="1" />
+<hero itemid="52102" name="雷恩加尔2星" description="获得雷恩加尔2星" heroid="102" star="2" count="1" />
+<hero itemid="52104" name="卡兹克2星" description="获得卡兹克2星" heroid="104" star="2" count="1" />
+<hero itemid="52105" name="伊丽丝2星" description="获得伊丽丝2星" heroid="105" star="2" count="1" />
+<hero itemid="52108" name="锤石2星" description="获得锤石2星" heroid="108" star="2" count="1" />
+<hero itemid="52116" name="金克丝2星" description="获得金克丝2星" heroid="116" star="2" count="1" />
+<hero itemid="52117" name="亚索2星" description="获得亚索2星" heroid="117" star="2" count="1" />
+<hero itemid="52121" name="阿兹尔2星" description="获得阿兹尔2星" heroid="121" star="2" count="1" />
+<hero itemid="52122" name="卡莉斯塔2星" description="获得卡莉斯塔2星" heroid="122" star="2" count="1" />
+<hero itemid="53001" name="厄运小姐3星" description="获得厄运小姐3星" heroid="1" star="3" count="1" />
+<hero itemid="53005" name="赵信3星" description="获得赵信3星" heroid="5" star="3" count="1" />
+<hero itemid="53008" name="潘森3星" description="获得潘森3星" heroid="8" star="3" count="1" />
+<hero itemid="53009" name="奥拉夫3星" description="获得奥拉夫3星" heroid="9" star="3" count="1" />
+<hero itemid="53010" name="古拉加斯3星" description="获得古拉加斯3星" heroid="10" star="3" count="1" />
+<hero itemid="53011" name="伊泽瑞尔3星" description="获得伊泽瑞尔3星" heroid="11" star="3" count="1" />
+<hero itemid="53012" name="奈德丽3星" description="获得奈德丽3星" heroid="12" star="3" count="1" />
+<hero itemid="53013" name="莫德凯撒3星" description="获得莫德凯撒3星" heroid="13" star="3" count="1" />
+<hero itemid="53017" name="盖伦3星" description="获得盖伦3星" heroid="17" star="3" count="1" />
+<hero itemid="53024" name="崔斯特3星" description="获得崔斯特3星" heroid="24" star="3" count="1" />
+<hero itemid="53027" name="塔里克3星" description="获得塔里克3星" heroid="27" star="3" count="1" />
+<hero itemid="53032" name="沃里克3星" description="获得沃里克3星" heroid="32" star="3" count="1" />
+<hero itemid="53035" name="布里茨3星" description="获得布里茨3星" heroid="35" star="3" count="1" />
+<hero itemid="53036" name="阿利斯塔3星" description="获得阿利斯塔3星" heroid="36" star="3" count="1" />
+<hero itemid="53038" name="易3星" description="获得易3星" heroid="38" star="3" count="1" />
+<hero itemid="53039" name="贾克斯3星" description="获得贾克斯3星" heroid="39" star="3" count="1" />
+<hero itemid="53040" name="崔斯坦娜3星" description="获得崔斯坦娜3星" heroid="40" star="3" count="1" />
+<hero itemid="53041" name="安妮3星" description="获得安妮3星" heroid="41" star="3" count="1" />
+<hero itemid="53042" name="艾希3星" description="获得艾希3星" heroid="42" star="3" count="1" />
+<hero itemid="53043" name="提莫3星" description="获得提莫3星" heroid="43" star="3" count="1" />
+<hero itemid="53048" name="墨菲特3星" description="获得墨菲特3星" heroid="48" star="3" count="1" />
+<hero itemid="53050" name="蒙多医生3星" description="获得蒙多医生3星" heroid="50" star="3" count="1" />
+<hero itemid="53051" name="泰达米尔3星" description="获得泰达米尔3星" heroid="51" star="3" count="1" />
+<hero itemid="53052" name="辛吉德3星" description="获得辛吉德3星" heroid="52" star="3" count="1" />
+<hero itemid="53055" name="努努3星" description="获得努努3星" heroid="55" star="3" count="1" />
+<hero itemid="53058" name="薇恩3星" description="获得薇恩3星" heroid="58" star="3" count="1" />
+<hero itemid="53059" name="兰博3星" description="获得兰博3星" heroid="59" star="3" count="1" />
+<hero itemid="53060" name="布兰德3星" description="获得布兰德3星" heroid="60" star="3" count="1" />
+<hero itemid="53061" name="李青3星" description="获得李青3星" heroid="61" star="3" count="1" />
+<hero itemid="53063" name="嘉文四世3星" description="获得嘉文四世3星" heroid="63" star="3" count="1" />
+<hero itemid="53070" name="艾瑞莉娅3星" description="获得艾瑞莉娅3星" heroid="70" star="3" count="1" />
+<hero itemid="53072" name="拉克丝3星" description="获得拉克丝3星" heroid="72" star="3" count="1" />
+<hero itemid="53074" name="娑娜3星" description="获得娑娜3星" heroid="74" star="3" count="1" />
+<hero itemid="53075" name="卡特琳娜3星" description="获得卡特琳娜3星" heroid="75" star="3" count="1" />
+<hero itemid="53076" name="瑞兹3星" description="获得瑞兹3星" heroid="76" star="3" count="1" />
+<hero itemid="53078" name="蕾欧娜3星" description="获得蕾欧娜3星" heroid="78" star="3" count="1" />
+<hero itemid="53079" name="孙悟空3星" description="获得孙悟空3星" heroid="79" star="3" count="1" />
+<hero itemid="53082" name="瑞雯3星" description="获得瑞雯3星" heroid="82" star="3" count="1" />
+<hero itemid="53084" name="希瓦娜3星" description="获得希瓦娜3星" heroid="84" star="3" count="1" />
+<hero itemid="53086" name="菲兹3星" description="获得菲兹3星" heroid="86" star="3" count="1" />
+<hero itemid="53088" name="阿狸3星" description="获得阿狸3星" heroid="88" star="3" count="1" />
+<hero itemid="53094" name="璐璐3星" description="获得璐璐3星" heroid="94" star="3" count="1" />
+<hero itemid="53096" name="韦鲁斯3星" description="获得韦鲁斯3星" heroid="96" star="3" count="1" />
+<hero itemid="53097" name="德莱厄斯3星" description="获得德莱厄斯3星" heroid="97" star="3" count="1" />
+<hero itemid="53102" name="雷恩加尔3星" description="获得雷恩加尔3星" heroid="102" star="3" count="1" />
+<hero itemid="53104" name="卡兹克3星" description="获得卡兹克3星" heroid="104" star="3" count="1" />
+<hero itemid="53105" name="伊丽丝3星" description="获得伊丽丝3星" heroid="105" star="3" count="1" />
+<hero itemid="53108" name="锤石3星" description="获得锤石3星" heroid="108" star="3" count="1" />
+<hero itemid="53116" name="金克丝3星" description="获得金克丝3星" heroid="116" star="3" count="1" />
+<hero itemid="53117" name="亚索3星" description="获得亚索3星" heroid="117" star="3" count="1" />
+<hero itemid="53121" name="阿兹尔3星" description="获得阿兹尔3星" heroid="121" star="3" count="1" />
+<hero itemid="53122" name="卡莉斯塔3星" description="获得卡莉斯塔3星" heroid="122" star="3" count="1" />
+<hero itemid="54001" name="厄运小姐4星" description="获得厄运小姐4星" heroid="1" star="4" count="1" />
+<hero itemid="54005" name="赵信4星" description="获得赵信4星" heroid="5" star="4" count="1" />
+<hero itemid="54008" name="潘森4星" description="获得潘森4星" heroid="8" star="4" count="1" />
+<hero itemid="54009" name="奥拉夫4星" description="获得奥拉夫4星" heroid="9" star="4" count="1" />
+<hero itemid="54010" name="古拉加斯4星" description="获得古拉加斯4星" heroid="10" star="4" count="1" />
+<hero itemid="54011" name="伊泽瑞尔4星" description="获得伊泽瑞尔4星" heroid="11" star="4" count="1" />
+<hero itemid="54012" name="奈德丽4星" description="获得奈德丽4星" heroid="12" star="4" count="1" />
+<hero itemid="54013" name="莫德凯撒4星" description="获得莫德凯撒4星" heroid="13" star="4" count="1" />
+<hero itemid="54017" name="盖伦4星" description="获得盖伦4星" heroid="17" star="4" count="1" />
+<hero itemid="54024" name="崔斯特4星" description="获得崔斯特4星" heroid="24" star="4" count="1" />
+<hero itemid="54027" name="塔里克4星" description="获得塔里克4星" heroid="27" star="4" count="1" />
+<hero itemid="54032" name="沃里克4星" description="获得沃里克4星" heroid="32" star="4" count="1" />
+<hero itemid="54035" name="布里茨4星" description="获得布里茨4星" heroid="35" star="4" count="1" />
+<hero itemid="54036" name="阿利斯塔4星" description="获得阿利斯塔4星" heroid="36" star="4" count="1" />
+<hero itemid="54038" name="易4星" description="获得易4星" heroid="38" star="4" count="1" />
+<hero itemid="54039" name="贾克斯4星" description="获得贾克斯4星" heroid="39" star="4" count="1" />
+<hero itemid="54040" name="崔斯坦娜4星" description="获得崔斯坦娜4星" heroid="40" star="4" count="1" />
+<hero itemid="54041" name="安妮4星" description="获得安妮4星" heroid="41" star="4" count="1" />
+<hero itemid="54042" name="艾希4星" description="获得艾希4星" heroid="42" star="4" count="1" />
+<hero itemid="54043" name="提莫4星" description="获得提莫4星" heroid="43" star="4" count="1" />
+<hero itemid="54048" name="墨菲特4星" description="获得墨菲特4星" heroid="48" star="4" count="1" />
+<hero itemid="54050" name="蒙多医生4星" description="获得蒙多医生4星" heroid="50" star="4" count="1" />
+<hero itemid="54051" name="泰达米尔4星" description="获得泰达米尔4星" heroid="51" star="4" count="1" />
+<hero itemid="54052" name="辛吉德4星" description="获得辛吉德4星" heroid="52" star="4" count="1" />
+<hero itemid="54055" name="努努4星" description="获得努努4星" heroid="55" star="4" count="1" />
+<hero itemid="54058" name="薇恩4星" description="获得薇恩4星" heroid="58" star="4" count="1" />
+<hero itemid="54059" name="兰博4星" description="获得兰博4星" heroid="59" star="4" count="1" />
+<hero itemid="54060" name="布兰德4星" description="获得布兰德4星" heroid="60" star="4" count="1" />
+<hero itemid="54061" name="李青4星" description="获得李青4星" heroid="61" star="4" count="1" />
+<hero itemid="54063" name="嘉文四世4星" description="获得嘉文四世4星" heroid="63" star="4" count="1" />
+<hero itemid="54070" name="艾瑞莉娅4星" description="获得艾瑞莉娅4星" heroid="70" star="4" count="1" />
+<hero itemid="54072" name="拉克丝4星" description="获得拉克丝4星" heroid="72" star="4" count="1" />
+<hero itemid="54074" name="娑娜4星" description="获得娑娜4星" heroid="74" star="4" count="1" />
+<hero itemid="54075" name="卡特琳娜4星" description="获得卡特琳娜4星" heroid="75" star="4" count="1" />
+<hero itemid="54076" name="瑞兹4星" description="获得瑞兹4星" heroid="76" star="4" count="1" />
+<hero itemid="54078" name="蕾欧娜4星" description="获得蕾欧娜4星" heroid="78" star="4" count="1" />
+<hero itemid="54079" name="孙悟空4星" description="获得孙悟空4星" heroid="79" star="4" count="1" />
+<hero itemid="54082" name="瑞雯4星" description="获得瑞雯4星" heroid="82" star="4" count="1" />
+<hero itemid="54084" name="希瓦娜4星" description="获得希瓦娜4星" heroid="84" star="4" count="1" />
+<hero itemid="54086" name="菲兹4星" description="获得菲兹4星" heroid="86" star="4" count="1" />
+<hero itemid="54088" name="阿狸4星" description="获得阿狸4星" heroid="88" star="4" count="1" />
+<hero itemid="54094" name="璐璐4星" description="获得璐璐4星" heroid="94" star="4" count="1" />
+<hero itemid="54096" name="韦鲁斯4星" description="获得韦鲁斯4星" heroid="96" star="4" count="1" />
+<hero itemid="54097" name="德莱厄斯4星" description="获得德莱厄斯4星" heroid="97" star="4" count="1" />
+<hero itemid="54102" name="雷恩加尔4星" description="获得雷恩加尔4星" heroid="102" star="4" count="1" />
+<hero itemid="54104" name="卡兹克4星" description="获得卡兹克4星" heroid="104" star="4" count="1" />
+<hero itemid="54105" name="伊丽丝4星" description="获得伊丽丝4星" heroid="105" star="4" count="1" />
+<hero itemid="54108" name="锤石4星" description="获得锤石4星" heroid="108" star="4" count="1" />
+<hero itemid="54116" name="金克丝4星" description="获得金克丝4星" heroid="116" star="4" count="1" />
+<hero itemid="54117" name="亚索4星" description="获得亚索4星" heroid="117" star="4" count="1" />
+<hero itemid="54121" name="阿兹尔4星" description="获得阿兹尔4星" heroid="121" star="4" count="1" />
+<hero itemid="54122" name="卡莉斯塔4星" description="获得卡莉斯塔4星" heroid="122" star="4" count="1" />
+<hero itemid="55001" name="厄运小姐5星" description="获得厄运小姐5星" heroid="1" star="5" count="1" />
+<hero itemid="55005" name="赵信5星" description="获得赵信5星" heroid="5" star="5" count="1" />
+<hero itemid="55008" name="潘森5星" description="获得潘森5星" heroid="8" star="5" count="1" />
+<hero itemid="55009" name="奥拉夫5星" description="获得奥拉夫5星" heroid="9" star="5" count="1" />
+<hero itemid="55010" name="古拉加斯5星" description="获得古拉加斯5星" heroid="10" star="5" count="1" />
+<hero itemid="55011" name="伊泽瑞尔5星" description="获得伊泽瑞尔5星" heroid="11" star="5" count="1" />
+<hero itemid="55012" name="奈德丽5星" description="获得奈德丽5星" heroid="12" star="5" count="1" />
+<hero itemid="55013" name="莫德凯撒5星" description="获得莫德凯撒5星" heroid="13" star="5" count="1" />
+<hero itemid="55017" name="盖伦5星" description="获得盖伦5星" heroid="17" star="5" count="1" />
+<hero itemid="55024" name="崔斯特5星" description="获得崔斯特5星" heroid="24" star="5" count="1" />
+<hero itemid="55027" name="塔里克5星" description="获得塔里克5星" heroid="27" star="5" count="1" />
+<hero itemid="55032" name="沃里克5星" description="获得沃里克5星" heroid="32" star="5" count="1" />
+<hero itemid="55035" name="布里茨5星" description="获得布里茨5星" heroid="35" star="5" count="1" />
+<hero itemid="55036" name="阿利斯塔5星" description="获得阿利斯塔5星" heroid="36" star="5" count="1" />
+<hero itemid="55038" name="易5星" description="获得易5星" heroid="38" star="5" count="1" />
+<hero itemid="55039" name="贾克斯5星" description="获得贾克斯5星" heroid="39" star="5" count="1" />
+<hero itemid="55040" name="崔斯坦娜5星" description="获得崔斯坦娜5星" heroid="40" star="5" count="1" />
+<hero itemid="55041" name="安妮5星" description="获得安妮5星" heroid="41" star="5" count="1" />
+<hero itemid="55042" name="艾希5星" description="获得艾希5星" heroid="42" star="5" count="1" />
+<hero itemid="55043" name="提莫5星" description="获得提莫5星" heroid="43" star="5" count="1" />
+<hero itemid="55048" name="墨菲特5星" description="获得墨菲特5星" heroid="48" star="5" count="1" />
+<hero itemid="55050" name="蒙多医生5星" description="获得蒙多医生5星" heroid="50" star="5" count="1" />
+<hero itemid="55051" name="泰达米尔5星" description="获得泰达米尔5星" heroid="51" star="5" count="1" />
+<hero itemid="55052" name="辛吉德5星" description="获得辛吉德5星" heroid="52" star="5" count="1" />
+<hero itemid="55055" name="努努5星" description="获得努努5星" heroid="55" star="5" count="1" />
+<hero itemid="55058" name="薇恩5星" description="获得薇恩5星" heroid="58" star="5" count="1" />
+<hero itemid="55059" name="兰博5星" description="获得兰博5星" heroid="59" star="5" count="1" />
+<hero itemid="55060" name="布兰德5星" description="获得布兰德5星" heroid="60" star="5" count="1" />
+<hero itemid="55061" name="李青5星" description="获得李青5星" heroid="61" star="5" count="1" />
+<hero itemid="55063" name="嘉文四世5星" description="获得嘉文四世5星" heroid="63" star="5" count="1" />
+<hero itemid="55070" name="艾瑞莉娅5星" description="获得艾瑞莉娅5星" heroid="70" star="5" count="1" />
+<hero itemid="55072" name="拉克丝5星" description="获得拉克丝5星" heroid="72" star="5" count="1" />
+<hero itemid="55074" name="娑娜5星" description="获得娑娜5星" heroid="74" star="5" count="1" />
+<hero itemid="55075" name="卡特琳娜5星" description="获得卡特琳娜5星" heroid="75" star="5" count="1" />
+<hero itemid="55076" name="瑞兹5星" description="获得瑞兹5星" heroid="76" star="5" count="1" />
+<hero itemid="55078" name="蕾欧娜5星" description="获得蕾欧娜5星" heroid="78" star="5" count="1" />
+<hero itemid="55079" name="孙悟空5星" description="获得孙悟空5星" heroid="79" star="5" count="1" />
+<hero itemid="55082" name="瑞雯5星" description="获得瑞雯5星" heroid="82" star="5" count="1" />
+<hero itemid="55084" name="希瓦娜5星" description="获得希瓦娜5星" heroid="84" star="5" count="1" />
+<hero itemid="55086" name="菲兹5星" description="获得菲兹5星" heroid="86" star="5" count="1" />
+<hero itemid="55088" name="阿狸5星" description="获得阿狸5星" heroid="88" star="5" count="1" />
+<hero itemid="55094" name="璐璐5星" description="获得璐璐5星" heroid="94" star="5" count="1" />
+<hero itemid="55096" name="韦鲁斯5星" description="获得韦鲁斯5星" heroid="96" star="5" count="1" />
+<hero itemid="55097" name="德莱厄斯5星" description="获得德莱厄斯5星" heroid="97" star="5" count="1" />
+<hero itemid="55102" name="雷恩加尔5星" description="获得雷恩加尔5星" heroid="102" star="5" count="1" />
+<hero itemid="55104" name="卡兹克5星" description="获得卡兹克5星" heroid="104" star="5" count="1" />
+<hero itemid="55105" name="伊丽丝5星" description="获得伊丽丝5星" heroid="105" star="5" count="1" />
+<hero itemid="55108" name="锤石5星" description="获得锤石5星" heroid="108" star="5" count="1" />
+<hero itemid="55116" name="金克丝5星" description="获得金克丝5星" heroid="116" star="5" count="1" />
+<hero itemid="55117" name="亚索5星" description="获得亚索5星" heroid="117" star="5" count="1" />
+<hero itemid="55121" name="阿兹尔5星" description="获得阿兹尔5星" heroid="121" star="5" count="1" />
+<hero itemid="55122" name="卡莉斯塔5星" description="获得卡莉斯塔5星" heroid="122" star="5" count="1" />
+<hero itemid="56001" name="厄运小姐6星" description="获得厄运小姐6星" heroid="1" star="6" count="1" />
+<hero itemid="56005" name="赵信6星" description="获得赵信6星" heroid="5" star="6" count="1" />
+<hero itemid="56008" name="潘森6星" description="获得潘森6星" heroid="8" star="6" count="1" />
+<hero itemid="56009" name="奥拉夫6星" description="获得奥拉夫6星" heroid="9" star="6" count="1" />
+<hero itemid="56010" name="古拉加斯6星" description="获得古拉加斯6星" heroid="10" star="6" count="1" />
+<hero itemid="56011" name="伊泽瑞尔6星" description="获得伊泽瑞尔6星" heroid="11" star="6" count="1" />
+<hero itemid="56012" name="奈德丽6星" description="获得奈德丽6星" heroid="12" star="6" count="1" />
+<hero itemid="56013" name="莫德凯撒6星" description="获得莫德凯撒6星" heroid="13" star="6" count="1" />
+<hero itemid="56017" name="盖伦6星" description="获得盖伦6星" heroid="17" star="6" count="1" />
+<hero itemid="56024" name="崔斯特6星" description="获得崔斯特6星" heroid="24" star="6" count="1" />
+<hero itemid="56027" name="塔里克6星" description="获得塔里克6星" heroid="27" star="6" count="1" />
+<hero itemid="56032" name="沃里克6星" description="获得沃里克6星" heroid="32" star="6" count="1" />
+<hero itemid="56035" name="布里茨6星" description="获得布里茨6星" heroid="35" star="6" count="1" />
+<hero itemid="56036" name="阿利斯塔6星" description="获得阿利斯塔6星" heroid="36" star="6" count="1" />
+<hero itemid="56038" name="易6星" description="获得易6星" heroid="38" star="6" count="1" />
+<hero itemid="56039" name="贾克斯6星" description="获得贾克斯6星" heroid="39" star="6" count="1" />
+<hero itemid="56040" name="崔斯坦娜6星" description="获得崔斯坦娜6星" heroid="40" star="6" count="1" />
+<hero itemid="56041" name="安妮6星" description="获得安妮6星" heroid="41" star="6" count="1" />
+<hero itemid="56042" name="艾希6星" description="获得艾希6星" heroid="42" star="6" count="1" />
+<hero itemid="56043" name="提莫6星" description="获得提莫6星" heroid="43" star="6" count="1" />
+<hero itemid="56048" name="墨菲特6星" description="获得墨菲特6星" heroid="48" star="6" count="1" />
+<hero itemid="56050" name="蒙多医生6星" description="获得蒙多医生6星" heroid="50" star="6" count="1" />
+<hero itemid="56051" name="泰达米尔6星" description="获得泰达米尔6星" heroid="51" star="6" count="1" />
+<hero itemid="56052" name="辛吉德6星" description="获得辛吉德6星" heroid="52" star="6" count="1" />
+<hero itemid="56055" name="努努6星" description="获得努努6星" heroid="55" star="6" count="1" />
+<hero itemid="56058" name="薇恩6星" description="获得薇恩6星" heroid="58" star="6" count="1" />
+<hero itemid="56059" name="兰博6星" description="获得兰博6星" heroid="59" star="6" count="1" />
+<hero itemid="56060" name="布兰德6星" description="获得布兰德6星" heroid="60" star="6" count="1" />
+<hero itemid="56061" name="李青6星" description="获得李青6星" heroid="61" star="6" count="1" />
+<hero itemid="56063" name="嘉文四世6星" description="获得嘉文四世6星" heroid="63" star="6" count="1" />
+<hero itemid="56070" name="艾瑞莉娅6星" description="获得艾瑞莉娅6星" heroid="70" star="6" count="1" />
+<hero itemid="56072" name="拉克丝6星" description="获得拉克丝6星" heroid="72" star="6" count="1" />
+<hero itemid="56074" name="娑娜6星" description="获得娑娜6星" heroid="74" star="6" count="1" />
+<hero itemid="56075" name="卡特琳娜6星" description="获得卡特琳娜6星" heroid="75" star="6" count="1" />
+<hero itemid="56076" name="瑞兹6星" description="获得瑞兹6星" heroid="76" star="6" count="1" />
+<hero itemid="56078" name="蕾欧娜6星" description="获得蕾欧娜6星" heroid="78" star="6" count="1" />
+<hero itemid="56079" name="孙悟空6星" description="获得孙悟空6星" heroid="79" star="6" count="1" />
+<hero itemid="56082" name="瑞雯6星" description="获得瑞雯6星" heroid="82" star="6" count="1" />
+<hero itemid="56084" name="希瓦娜6星" description="获得希瓦娜6星" heroid="84" star="6" count="1" />
+<hero itemid="56086" name="菲兹6星" description="获得菲兹6星" heroid="86" star="6" count="1" />
+<hero itemid="56088" name="阿狸6星" description="获得阿狸6星" heroid="88" star="6" count="1" />
+<hero itemid="56094" name="璐璐6星" description="获得璐璐6星" heroid="94" star="6" count="1" />
+<hero itemid="56096" name="韦鲁斯6星" description="获得韦鲁斯6星" heroid="96" star="6" count="1" />
+<hero itemid="56097" name="德莱厄斯6星" description="获得德莱厄斯6星" heroid="97" star="6" count="1" />
+<hero itemid="56102" name="雷恩加尔6星" description="获得雷恩加尔6星" heroid="102" star="6" count="1" />
+<hero itemid="56104" name="卡兹克6星" description="获得卡兹克6星" heroid="104" star="6" count="1" />
+<hero itemid="56105" name="伊丽丝6星" description="获得伊丽丝6星" heroid="105" star="6" count="1" />
+<hero itemid="56108" name="锤石6星" description="获得锤石6星" heroid="108" star="6" count="1" />
+<hero itemid="56116" name="金克丝6星" description="获得金克丝6星" heroid="116" star="6" count="1" />
+<hero itemid="56117" name="亚索6星" description="获得亚索6星" heroid="117" star="6" count="1" />
+<hero itemid="56121" name="阿兹尔6星" description="获得阿兹尔6星" heroid="121" star="6" count="1" />
+<hero itemid="56122" name="卡莉斯塔6星" description="获得卡莉斯塔6星" heroid="122" star="6" count="1" />
+<hero itemid="57001" name="厄运小姐7星" description="获得厄运小姐7星" heroid="1" star="7" count="1" />
+<hero itemid="57005" name="赵信7星" description="获得赵信7星" heroid="5" star="7" count="1" />
+<hero itemid="57008" name="潘森7星" description="获得潘森7星" heroid="8" star="7" count="1" />
+<hero itemid="57009" name="奥拉夫7星" description="获得奥拉夫7星" heroid="9" star="7" count="1" />
+<hero itemid="57010" name="古拉加斯7星" description="获得古拉加斯7星" heroid="10" star="7" count="1" />
+<hero itemid="57011" name="伊泽瑞尔7星" description="获得伊泽瑞尔7星" heroid="11" star="7" count="1" />
+<hero itemid="57012" name="奈德丽7星" description="获得奈德丽7星" heroid="12" star="7" count="1" />
+<hero itemid="57013" name="莫德凯撒7星" description="获得莫德凯撒7星" heroid="13" star="7" count="1" />
+<hero itemid="57017" name="盖伦7星" description="获得盖伦7星" heroid="17" star="7" count="1" />
+<hero itemid="57024" name="崔斯特7星" description="获得崔斯特7星" heroid="24" star="7" count="1" />
+<hero itemid="57027" name="塔里克7星" description="获得塔里克7星" heroid="27" star="7" count="1" />
+<hero itemid="57032" name="沃里克7星" description="获得沃里克7星" heroid="32" star="7" count="1" />
+<hero itemid="57035" name="布里茨7星" description="获得布里茨7星" heroid="35" star="7" count="1" />
+<hero itemid="57036" name="阿利斯塔7星" description="获得阿利斯塔7星" heroid="36" star="7" count="1" />
+<hero itemid="57038" name="易7星" description="获得易7星" heroid="38" star="7" count="1" />
+<hero itemid="57039" name="贾克斯7星" description="获得贾克斯7星" heroid="39" star="7" count="1" />
+<hero itemid="57040" name="崔斯坦娜7星" description="获得崔斯坦娜7星" heroid="40" star="7" count="1" />
+<hero itemid="57041" name="安妮7星" description="获得安妮7星" heroid="41" star="7" count="1" />
+<hero itemid="57042" name="艾希7星" description="获得艾希7星" heroid="42" star="7" count="1" />
+<hero itemid="57043" name="提莫7星" description="获得提莫7星" heroid="43" star="7" count="1" />
+<hero itemid="57048" name="墨菲特7星" description="获得墨菲特7星" heroid="48" star="7" count="1" />
+<hero itemid="57050" name="蒙多医生7星" description="获得蒙多医生7星" heroid="50" star="7" count="1" />
+<hero itemid="57051" name="泰达米尔7星" description="获得泰达米尔7星" heroid="51" star="7" count="1" />
+<hero itemid="57052" name="辛吉德7星" description="获得辛吉德7星" heroid="52" star="7" count="1" />
+<hero itemid="57055" name="努努7星" description="获得努努7星" heroid="55" star="7" count="1" />
+<hero itemid="57058" name="薇恩7星" description="获得薇恩7星" heroid="58" star="7" count="1" />
+<hero itemid="57059" name="兰博7星" description="获得兰博7星" heroid="59" star="7" count="1" />
+<hero itemid="57060" name="布兰德7星" description="获得布兰德7星" heroid="60" star="7" count="1" />
+<hero itemid="57061" name="李青7星" description="获得李青7星" heroid="61" star="7" count="1" />
+<hero itemid="57063" name="嘉文四世7星" description="获得嘉文四世7星" heroid="63" star="7" count="1" />
+<hero itemid="57070" name="艾瑞莉娅7星" description="获得艾瑞莉娅7星" heroid="70" star="7" count="1" />
+<hero itemid="57072" name="拉克丝7星" description="获得拉克丝7星" heroid="72" star="7" count="1" />
+<hero itemid="57074" name="娑娜7星" description="获得娑娜7星" heroid="74" star="7" count="1" />
+<hero itemid="57075" name="卡特琳娜7星" description="获得卡特琳娜7星" heroid="75" star="7" count="1" />
+<hero itemid="57076" name="瑞兹7星" description="获得瑞兹7星" heroid="76" star="7" count="1" />
+<hero itemid="57078" name="蕾欧娜7星" description="获得蕾欧娜7星" heroid="78" star="7" count="1" />
+<hero itemid="57079" name="孙悟空7星" description="获得孙悟空7星" heroid="79" star="7" count="1" />
+<hero itemid="57082" name="瑞雯7星" description="获得瑞雯7星" heroid="82" star="7" count="1" />
+<hero itemid="57084" name="希瓦娜7星" description="获得希瓦娜7星" heroid="84" star="7" count="1" />
+<hero itemid="57086" name="菲兹7星" description="获得菲兹7星" heroid="86" star="7" count="1" />
+<hero itemid="57088" name="阿狸7星" description="获得阿狸7星" heroid="88" star="7" count="1" />
+<hero itemid="57094" name="璐璐7星" description="获得璐璐7星" heroid="94" star="7" count="1" />
+<hero itemid="57096" name="韦鲁斯7星" description="获得韦鲁斯7星" heroid="96" star="7" count="1" />
+<hero itemid="57097" name="德莱厄斯7星" description="获得德莱厄斯7星" heroid="97" star="7" count="1" />
+<hero itemid="57102" name="雷恩加尔7星" description="获得雷恩加尔7星" heroid="102" star="7" count="1" />
+<hero itemid="57104" name="卡兹克7星" description="获得卡兹克7星" heroid="104" star="7" count="1" />
+<hero itemid="57105" name="伊丽丝7星" description="获得伊丽丝7星" heroid="105" star="7" count="1" />
+<hero itemid="57108" name="锤石7星" description="获得锤石7星" heroid="108" star="7" count="1" />
+<hero itemid="57116" name="金克丝7星" description="获得金克丝7星" heroid="116" star="7" count="1" />
+<hero itemid="57117" name="亚索7星" description="获得亚索7星" heroid="117" star="7" count="1" />
+<hero itemid="57121" name="阿兹尔7星" description="获得阿兹尔7星" heroid="121" star="7" count="1" />
+<hero itemid="57122" name="卡莉斯塔7星" description="获得卡莉斯塔7星" heroid="122" star="7" count="1" />
 </data>

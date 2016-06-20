@@ -45,25 +45,25 @@
 <enemy position="5" enemyid="10202" enemyname="史莱姆" />
 </level>
 <level id="1008">
-<enemy position="1" enemyid="10202" enemyname="哥布林" />
-<enemy position="2" enemyid="10202" enemyname="哥布林" />
-<enemy position="3" enemyid="10202" enemyname="哥布林" />
-<enemy position="4" enemyid="10202" enemyname="哥布林" />
-<enemy position="5" enemyid="10202" enemyname="哥布林" />
+<enemy position="1" enemyid="10203" enemyname="哥布林" />
+<enemy position="2" enemyid="10203" enemyname="哥布林" />
+<enemy position="3" enemyid="10203" enemyname="哥布林" />
+<enemy position="4" enemyid="10203" enemyname="哥布林" />
+<enemy position="5" enemyid="10203" enemyname="哥布林" />
 </level>
 <level id="1009">
-<enemy position="1" enemyid="10202" enemyname="牛头怪" />
-<enemy position="2" enemyid="10202" enemyname="牛头怪" />
-<enemy position="3" enemyid="10202" enemyname="牛头怪" />
-<enemy position="4" enemyid="10202" enemyname="牛头怪" />
-<enemy position="5" enemyid="10202" enemyname="牛头怪" />
+<enemy position="1" enemyid="10204" enemyname="牛头怪" />
+<enemy position="2" enemyid="10204" enemyname="牛头怪" />
+<enemy position="3" enemyid="10204" enemyname="牛头怪" />
+<enemy position="4" enemyid="10204" enemyname="牛头怪" />
+<enemy position="5" enemyid="10204" enemyname="牛头怪" />
 </level>
 <level id="1010">
-<enemy position="1" enemyid="10202" enemyname="小恶魔" />
-<enemy position="2" enemyid="10202" enemyname="小恶魔" />
-<enemy position="3" enemyid="10202" enemyname="小恶魔" />
-<enemy position="4" enemyid="10202" enemyname="小恶魔" />
-<enemy position="5" enemyid="10202" enemyname="小恶魔" />
+<enemy position="1" enemyid="10205" enemyname="小恶魔" />
+<enemy position="2" enemyid="10205" enemyname="小恶魔" />
+<enemy position="3" enemyid="10205" enemyname="小恶魔" />
+<enemy position="4" enemyid="10205" enemyname="小恶魔" />
+<enemy position="5" enemyid="10205" enemyname="小恶魔" />
 </level>
 <level id="1011">
 <enemy position="1" enemyid="10301" enemyname="汪汪" />

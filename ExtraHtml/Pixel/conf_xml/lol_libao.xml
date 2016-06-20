@@ -236,7 +236,7 @@
 <libao itemid="45010" name="钻石金币包" img="recharge-3" rare="3" description="包含500钻石和10000金币" value="0" cost="0" ><item id="1" itemid="1002" count="500" />
 <item id="2" itemid="1001" count="10000" />
 </libao>
-<libao itemid="45011" name="钻石经验包" img="recharge-4" rare="3" description="包含500钻石和50000经验" value="" cost="" ><item id="1" itemid="1002" count="500" />
+<libao itemid="45011" name="钻石经验包" img="recharge-4" rare="3" description="包含500钻石和50000经验" value="0" cost="0" ><item id="1" itemid="1002" count="500" />
 <item id="2" itemid="1000" count="50000" />
 </libao>
 </data>
