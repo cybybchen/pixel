@@ -1,0 +1,35 @@
+<data>
+<qiandao id="301" activity="每日签到">
+<order order="1" description="累计登录1天" targetid="1" targetcount="1" rewardid="40005" rewardname="" rewardcount="1" />
+<order order="2" description="累计登录2天" targetid="1" targetcount="2" rewardid="1002" rewardname="" rewardcount="20" />
+<order order="3" description="累计登录3天" targetid="1" targetcount="3" rewardid="40001" rewardname="" rewardcount="2" />
+<order order="4" description="累计登录4天" targetid="1" targetcount="4" rewardid="40018" rewardname="" rewardcount="1" />
+<order order="5" description="累计登录5天" targetid="1" targetcount="5" rewardid="51001" rewardname="" rewardcount="1" />
+<order order="6" description="累计登录6天" targetid="1" targetcount="6" rewardid="40005" rewardname="" rewardcount="2" />
+<order order="7" description="累计登录7天" targetid="1" targetcount="7" rewardid="1002" rewardname="" rewardcount="40" />
+<order order="8" description="累计登录8天" targetid="1" targetcount="8" rewardid="40001" rewardname="" rewardcount="4" />
+<order order="9" description="累计登录9天" targetid="1" targetcount="9" rewardid="40018" rewardname="" rewardcount="2" />
+<order order="10" description="累计登录10天" targetid="1" targetcount="10" rewardid="51001" rewardname="" rewardcount="1" />
+<order order="11" description="累计登录11天" targetid="1" targetcount="11" rewardid="40005" rewardname="" rewardcount="3" />
+<order order="12" description="累计登录12天" targetid="1" targetcount="12" rewardid="1002" rewardname="" rewardcount="60" />
+<order order="13" description="累计登录13天" targetid="1" targetcount="13" rewardid="40002" rewardname="" rewardcount="1" />
+<order order="14" description="累计登录14天" targetid="1" targetcount="14" rewardid="40018" rewardname="" rewardcount="3" />
+<order order="15" description="累计登录15天" targetid="1" targetcount="15" rewardid="51001" rewardname="" rewardcount="1" />
+<order order="16" description="累计登录16天" targetid="1" targetcount="16" rewardid="40005" rewardname="" rewardcount="4" />
+<order order="17" description="累计登录17天" targetid="1" targetcount="17" rewardid="1002" rewardname="" rewardcount="80" />
+<order order="18" description="累计登录18天" targetid="1" targetcount="18" rewardid="40002" rewardname="" rewardcount="3" />
+<order order="19" description="累计登录19天" targetid="1" targetcount="19" rewardid="40018" rewardname="" rewardcount="4" />
+<order order="20" description="累计登录20天" targetid="1" targetcount="20" rewardid="51001" rewardname="" rewardcount="1" />
+<order order="21" description="累计登录21天" targetid="1" targetcount="21" rewardid="40006" rewardname="" rewardcount="1" />
+<order order="22" description="累计登录22天" targetid="1" targetcount="22" rewardid="1002" rewardname="" rewardcount="100" />
+<order order="23" description="累计登录23天" targetid="1" targetcount="23" rewardid="40003" rewardname="" rewardcount="1" />
+<order order="24" description="累计登录24天" targetid="1" targetcount="24" rewardid="40019" rewardname="" rewardcount="1" />
+<order order="25" description="累计登录25天" targetid="1" targetcount="25" rewardid="51001" rewardname="" rewardcount="2" />
+<order order="26" description="累计登录26天" targetid="1" targetcount="26" rewardid="40006" rewardname="" rewardcount="2" />
+<order order="27" description="累计登录27天" targetid="1" targetcount="27" rewardid="1002" rewardname="" rewardcount="150" />
+<order order="28" description="累计登录28天" targetid="1" targetcount="28" rewardid="40003" rewardname="" rewardcount="2" />
+<order order="29" description="累计登录29天" targetid="1" targetcount="29" rewardid="40020" rewardname="" rewardcount="1" />
+<order order="30" description="累计登录30天" targetid="1" targetcount="30" rewardid="51001" rewardname="" rewardcount="2" />
+<order order="31" description="累计登录31天" targetid="1" targetcount="31" rewardid="40006" rewardname="" rewardcount="3" />
+</qiandao>
+</data>

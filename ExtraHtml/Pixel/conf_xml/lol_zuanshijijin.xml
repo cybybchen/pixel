@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<order order="1" description="立即领取" zhanli="0" rewardid="1002" rewardcount="300" />
+<order order="2" description="战力达到2000领取" zhanli="2000" rewardid="1002" rewardcount="550" />
+<order order="3" description="战力达到15000领取" zhanli="15000" rewardid="1002" rewardcount="750" />
+<order order="4" description="战力达到55000领取" zhanli="55000" rewardid="1002" rewardcount="1000" />
+<order order="5" description="战力达到116000领取" zhanli="116000" rewardid="1002" rewardcount="1250" />
+<order order="6" description="战力达到218000领取" zhanli="218000" rewardid="1002" rewardcount="1650" />
+</data>

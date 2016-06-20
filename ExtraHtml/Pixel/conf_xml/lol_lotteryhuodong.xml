@@ -1,0 +1,14 @@
+<data>
+<lottery  type="1" cost="1001" count="10000" judge="5" starttime="2016-04-10 06:00:00" endtime="2016-05-17 06:00:00" >
+<item id="1" itemid="51001" count="1" weight="100" will="1" />
+<item id="2" itemid="51005" count="1" weight="100" will="0" />
+<item id="3" itemid="51008" count="1" weight="100" will="0" />
+<item id="4" itemid="51009" count="1" weight="100" will="0" />
+</lottery>
+<lottery  type="2" cost="27001" count="1000" judge="5" starttime="2016-04-10 06:00:00" endtime="2016-05-17 06:00:00" >
+<item id="1" itemid="51001" count="1" weight="100" will="1" />
+<item id="2" itemid="51005" count="1" weight="100" will="0" />
+<item id="3" itemid="51008" count="1" weight="100" will="0" />
+<item id="4" itemid="51009" count="1" weight="100" will="0" />
+</lottery>
+</data>

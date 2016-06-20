@@ -1,0 +1,32 @@
+<data>
+<region id="4">
+<time 
+time="6" group="2" count="1" condition="0" >
+<enemy enemyid="2401" weight="100" />
+</time>
+<time 
+time="6" group="3" count="1" condition="0" >
+<enemy enemyid="2402" weight="100" />
+</time>
+</region>
+<region id="5">
+<time 
+time="6" group="2" count="1" condition="0" >
+<enemy enemyid="2501" weight="100" />
+</time>
+<time 
+time="18" group="2" count="1" condition="0" >
+<enemy enemyid="2502" weight="100" />
+</time>
+</region>
+<region id="6">
+<time 
+time="6" group="2" count="1" condition="0" >
+<enemy enemyid="2601" weight="100" />
+</time>
+<time 
+time="18" group="3" count="1" condition="0" >
+<enemy enemyid="2602" weight="100" />
+</time>
+</region>
+</data>

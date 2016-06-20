@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<enemy id="1001" name="蛇怪" boss="1" weight="90" fieldid="101" buffcount="1" a="20" b="1" />
+<enemy id="1002" name="蛇怪贵族" boss="1" weight="9" fieldid="101" buffcount="2" a="50" b="2" />
+<enemy id="1003" name="巨蛇领主" boss="1" weight="1" fieldid="101" buffcount="5" a="100" b="5" />
+<enemy id="1004" name="峡谷迅捷蟹" boss="1" weight="90" fieldid="102" buffcount="1" a="20" b="1" />
+<enemy id="1005" name="峡谷龟" boss="1" weight="9" fieldid="102" buffcount="2" a="50" b="2" />
+<enemy id="1006" name="巨龟" boss="1" weight="1" fieldid="102" buffcount="5" a="100" b="5" />
+<enemy id="1007" name="石头人" boss="1" weight="90" fieldid="103" buffcount="1" a="20" b="1" />
+<enemy id="1008" name="花岗岩石巨人" boss="1" weight="9" fieldid="103" buffcount="2" a="50" b="2" />
+<enemy id="1009" name="石巨人国王" boss="1" weight="1" fieldid="103" buffcount="5" a="100" b="5" />
+<enemy id="1010" name="魔沼蛙" boss="1" weight="90" fieldid="104" buffcount="1" a="20" b="1" />
+<enemy id="1011" name="魔沼巨蛙" boss="1" weight="9" fieldid="104" buffcount="2" a="50" b="2" />
+<enemy id="1012" name="巨蛙领主" boss="1" weight="1" fieldid="104" buffcount="5" a="100" b="5" />
+<enemy id="1013" name="幽灵" boss="1" weight="90" fieldid="105" buffcount="1" a="20" b="1" />
+<enemy id="1014" name="大幽灵" boss="1" weight="9" fieldid="105" buffcount="2" a="50" b="2" />
+<enemy id="1015" name="千年幽灵" boss="1" weight="1" fieldid="105" buffcount="5" a="100" b="5" />
+</data>

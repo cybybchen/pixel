@@ -1,0 +1,46 @@
+<data>
+<region id="1001" name="蛇怪" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+<skill skillid="2" skilllevel="1" />
+</region>
+<region id="1002" name="蛇怪贵族" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="1003" name="巨蛇领主" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="1004" name="峡谷迅捷蟹" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="1005" name="峡谷龟" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="1006" name="巨龟" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="1007" name="石头人" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="2001" name="花岗岩石巨人" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="2002" name="石巨人国王" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="2003" name="魔沼蛙" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="2004" name="魔沼巨蛙" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="2005" name="巨蛙领主" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="2006" name="幽灵" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+</region>
+<region id="2007" name="大幽灵" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
+<skill skillid="1" skilllevel="1" />
+<skill skillid="2" skilllevel="2" />
+</region>
+</data>

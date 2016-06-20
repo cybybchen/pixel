@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<region id="2401" name="皮城执法官" belongto="4" x="450" y="50" hp="100000000" turn="10" count="3" />
+<region id="2402" name="机械先驱" belongto="4" x="450" y="100" hp="100000000" turn="10" count="3" />
+<region id="2501" name="阿波罗" belongto="5" x="450" y="150" hp="100000000" turn="10" count="3" />
+<region id="2502" name="艾露恩" belongto="5" x="450" y="200" hp="100000000" turn="10" count="3" />
+<region id="2601" name="祭坛守护者" belongto="6" x="450" y="250" hp="100000000" turn="10" count="3" />
+<region id="2602" name="远古巫灵" belongto="6" x="450" y="300" hp="100000000" turn="10" count="3" />
+</data>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<region id="1101" name="盗贼" belongto="1" />
+<region id="1102" name="诺克萨斯军队" belongto="1" />
+<region id="1103" name="诺克萨斯之手" belongto="1" />
+<region id="1201" name="蘑菇怪" belongto="2" />
+<region id="1202" name="沼泽巨人" belongto="2" />
+<region id="1203" name="软泥怪" belongto="2" />
+<region id="1204" name="有点大的飞蛾" belongto="2" />
+<region id="1205" name="霸王花" belongto="2" />
+<region id="1206" name="约德尔巡逻队" belongto="2" />
+<region id="1207" name="泥潭巨人" belongto="2" />
+<region id="1301" name="瘟疫携带者" belongto="3" />
+<region id="1302" name="炼金者" belongto="3" />
+<region id="1401" name="英勇投弹手" belongto="4" />
+<region id="1402" name="未来守护者" belongto="4" />
+<region id="1403" name="皮城女警" belongto="4" />
+<region id="1404" name="暴走萝莉" belongto="4" />
+<region id="1405" name="大发明家" belongto="4" />
+<region id="1501" name="巨型向日葵" belongto="5" />
+<region id="1502" name="葵花籽怪" belongto="5" />
+<region id="1503" name="太阳能使者" belongto="5" />
+<region id="1504" name="甜蛋超人" belongto="5" />
+<region id="1505" name="黑寡妇蜘蛛" belongto="5" />
+<region id="1506" name="黑人" belongto="5" />
+<region id="1507" name="凶手" belongto="5" />
+<region id="1508" name="黑石射手" belongto="5" />
+<region id="1601" name="沙漠大鳄鱼" belongto="6" />
+<region id="1602" name="巨型木乃伊" belongto="6" />
+<region id="1603" name="金字塔超人" belongto="6" />
+<region id="1604" name="骆驼驭手" belongto="6" />
+<region id="1605" name="闪电炮塔" belongto="6" />
+<region id="1701" name="大炮" belongto="7" />
+<region id="1702" name="诺克萨斯卫兵" belongto="7" />
+<region id="1703" name="乌鸦之王" belongto="7" />
+<region id="1704" name="亡者大军" belongto="7" />
+<region id="1705" name="吸血鬼" belongto="7" />
+</data>

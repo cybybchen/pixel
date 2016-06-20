@@ -1,0 +1,15 @@
+<data>
+<richang id="401" activity="累计消费" targetid="3" img="activity1" starttime="2016-05-12 00:00:00" endtime="2016-05-20 23:59:59" >
+<order order="1" description="累计消费100钻石" targetcount="100" targetcount1="100" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="累计消费500钻石" targetcount="500" targetcount1="500" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="累计消费1000钻石" targetcount="1000" targetcount1="1000" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="累计消费3000钻石" targetcount="3000" targetcount1="3000" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</richang>
+<richang id="402" activity="累计登录" targetid="1" img="activity_ceshi" starttime="2016-06-14 00:00:00" endtime="2016-06-20 23:59:59" >
+<order order="1" description="累计登录1天" targetcount="1" targetcount1="1" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="累计登录2天" targetcount="2" targetcount1="2" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="累计登录3天" targetcount="3" targetcount1="3" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="累计登录4天" targetcount="4" targetcount1="4" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="累计登录5天" targetcount="5" targetcount1="5" rewardid0="1001" rewardname0="" rewardcount0="100" rewardid1="1002" rewardname1="" rewardcount1="10" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</richang>
+</data>

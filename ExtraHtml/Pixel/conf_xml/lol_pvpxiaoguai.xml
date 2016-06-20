@@ -1,0 +1,62 @@
+<data>
+<field fieldid="101" name = "蛇纹石河">
+<xiaoguai id="20101" x="104" y="221" />
+<xiaoguai id="20102" x="74" y="368" />
+<xiaoguai id="20103" x="125" y="456" />
+<xiaoguai id="20104" x="52" y="633" />
+<xiaoguai id="20105" x="341" y="307" />
+<xiaoguai id="20106" x="320" y="482" />
+<xiaoguai id="20107" x="329" y="800" />
+<xiaoguai id="20108" x="493" y="481" />
+<xiaoguai id="20109" x="556" y="322" />
+<xiaoguai id="20110" x="595" y="576" />
+</field>
+<field fieldid="102" name = "铁脊山脉">
+<xiaoguai id="20201" x="125" y="229" />
+<xiaoguai id="20202" x="59" y="396" />
+<xiaoguai id="20203" x="55" y="532" />
+<xiaoguai id="20204" x="136" y="757" />
+<xiaoguai id="20205" x="281" y="282" />
+<xiaoguai id="20206" x="245" y="608" />
+<xiaoguai id="20207" x="491" y="250" />
+<xiaoguai id="20208" x="416" y="345" />
+<xiaoguai id="20209" x="425" y="582" />
+<xiaoguai id="20210" x="554" y="547" />
+</field>
+<field fieldid="103" name = "风暴平原">
+<xiaoguai id="20301" x="55" y="304" />
+<xiaoguai id="20302" x="62" y="465" />
+<xiaoguai id="20303" x="139" y="780" />
+<xiaoguai id="20304" x="193" y="504" />
+<xiaoguai id="20305" x="316" y="633" />
+<xiaoguai id="20306" x="350" y="770" />
+<xiaoguai id="20307" x="403" y="424" />
+<xiaoguai id="20308" x="431" y="549" />
+<xiaoguai id="20309" x="584" y="313" />
+<xiaoguai id="20310" x="565" y="520" />
+</field>
+<field fieldid="104" name = "库蒙古森林">
+<xiaoguai id="20401" x="83" y="331" />
+<xiaoguai id="20402" x="148" y="460" />
+<xiaoguai id="20403" x="91" y="687" />
+<xiaoguai id="20404" x="425" y="237" />
+<xiaoguai id="20405" x="376" y="369" />
+<xiaoguai id="20406" x="542" y="423" />
+<xiaoguai id="20407" x="466" y="609" />
+<xiaoguai id="20408" x="556" y="682" />
+<xiaoguai id="20409" x="337" y="699" />
+<xiaoguai id="20410" x="265" y="801" />
+</field>
+<field fieldid="105" name = "暗影岛">
+<xiaoguai id="20501" x="53" y="262" />
+<xiaoguai id="20502" x="178" y="270" />
+<xiaoguai id="20503" x="388" y="235" />
+<xiaoguai id="20504" x="343" y="348" />
+<xiaoguai id="20505" x="553" y="519" />
+<xiaoguai id="20506" x="439" y="601" />
+<xiaoguai id="20507" x="563" y="657" />
+<xiaoguai id="20508" x="131" y="640" />
+<xiaoguai id="20509" x="262" y="667" />
+<xiaoguai id="20510" x="331" y="807" />
+</field>
+</data>

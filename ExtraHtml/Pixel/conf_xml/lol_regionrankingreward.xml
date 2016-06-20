@@ -1,0 +1,44 @@
+<data>
+<boss id="2401" name="皮城执法官">
+<ranking ranking="1" itemid1="4401" count1="1" itemid2="1006" count2="200" itemid3="1001" count3="100000" />
+<ranking ranking="3" itemid1="1006" count1="100" itemid2="1001" count2="80000" itemid3="" count3="" />
+<ranking ranking="10" itemid1="1006" count1="50" itemid2="1001" count2="60000" itemid3="" count3="" />
+<ranking ranking="20" itemid1="1006" count1="20" itemid2="1001" count2="40000" itemid3="" count3="" />
+<ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
+</boss>
+<boss id="2402" name="机械先驱">
+<ranking ranking="1" itemid1="4402" count1="1" itemid2="1006" count2="200" itemid3="1001" count3="100000" />
+<ranking ranking="3" itemid1="1006" count1="100" itemid2="1001" count2="80000" itemid3="" count3="" />
+<ranking ranking="10" itemid1="1006" count1="50" itemid2="1001" count2="60000" itemid3="" count3="" />
+<ranking ranking="20" itemid1="1006" count1="20" itemid2="1001" count2="40000" itemid3="" count3="" />
+<ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
+</boss>
+<boss id="2501" name="阿波罗">
+<ranking ranking="1" itemid1="4511" count1="1" itemid2="1006" count2="200" itemid3="1001" count3="100000" />
+<ranking ranking="3" itemid1="4512" count1="1" itemid2="1006" count2="100" itemid3="1001" count3="80000" />
+<ranking ranking="10" itemid1="4513" count1="1" itemid2="1006" count2="50" itemid3="1001" count3="60000" />
+<ranking ranking="20" itemid1="4514" count1="1" itemid2="1006" count2="20" itemid3="1001" count3="40000" />
+<ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
+</boss>
+<boss id="2502" name="艾露恩">
+<ranking ranking="1" itemid1="4511" count1="1" itemid2="1006" count2="200" itemid3="1001" count3="100000" />
+<ranking ranking="3" itemid1="4512" count1="1" itemid2="1006" count2="100" itemid3="1001" count3="80000" />
+<ranking ranking="10" itemid1="4513" count1="1" itemid2="1006" count2="50" itemid3="1001" count3="60000" />
+<ranking ranking="20" itemid1="4514" count1="1" itemid2="1006" count2="20" itemid3="1001" count3="40000" />
+<ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
+</boss>
+<boss id="2601" name="祭坛守护者">
+<ranking ranking="1" itemid1="4606" count1="1" itemid2="1006" count2="200" itemid3="1001" count3="100000" />
+<ranking ranking="3" itemid1="1006" count1="100" itemid2="1001" count2="80000" itemid3="" count3="" />
+<ranking ranking="10" itemid1="1006" count1="50" itemid2="1001" count2="60000" itemid3="" count3="" />
+<ranking ranking="20" itemid1="1006" count1="20" itemid2="1001" count2="40000" itemid3="" count3="" />
+<ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
+</boss>
+<boss id="2602" name="远古巫灵">
+<ranking ranking="1" itemid1="4608" count1="1" itemid2="1006" count2="200" itemid3="1001" count3="100000" />
+<ranking ranking="3" itemid1="1006" count1="100" itemid2="1001" count2="80000" itemid3="" count3="" />
+<ranking ranking="10" itemid1="1006" count1="50" itemid2="1001" count2="60000" itemid3="" count3="" />
+<ranking ranking="20" itemid1="1006" count1="20" itemid2="1001" count2="40000" itemid3="" count3="" />
+<ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
+</boss>
+</data>

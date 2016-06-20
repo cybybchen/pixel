@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<currency currencyid="1000" name="经验" />
+<currency currencyid="1001" name="金币" />
+<currency currencyid="1002" name="钻石" />
+<currency currencyid="1003" name="魔晶" />
+<currency currencyid="1004" name="远征币" />
+<currency currencyid="1005" name="天梯币" />
+<currency currencyid="1006" name="公会币" />
+</data>

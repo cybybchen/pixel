@@ -1,0 +1,8 @@
+<data>
+<task id="206" activity="首充礼包" targetid="27" img="activity1" description="充值任意金额可领取" targetcount="1" >
+<reward rewardid="53048" count="1" />
+<reward rewardid="1000" count="15000" />
+<reward rewardid="1001" count="15000" />
+<reward rewardid="33178" count="5" />
+</task>
+</data>

@@ -1,0 +1,10 @@
+<data>
+<zhuanpan id="401" activity="幸运转盘">
+<order order="1" costid="1002" costcount="80" weightall="100" rewardid="1002" rewardcount="88" weight="0" rewardid="1002" rewardcount="96" weight="0" rewardid="1002" rewardcount="112" weight="0" rewardid="1002" rewardcount="128" weight="0" rewardid="1002" rewardcount="144" weight="20" rewardid="1002" rewardcount="160" weight="80" />
+<order order="2" costid="1002" costcount="200" weightall="100" rewardid="1002" rewardcount="220" weight="20" rewardid="1002" rewardcount="240" weight="20" rewardid="1002" rewardcount="280" weight="20" rewardid="1002" rewardcount="320" weight="20" rewardid="1002" rewardcount="360" weight="10" rewardid="1002" rewardcount="400" weight="10" />
+<order order="3" costid="1002" costcount="500" weightall="100" rewardid="1002" rewardcount="550" weight="70" rewardid="1002" rewardcount="600" weight="15" rewardid="1002" rewardcount="700" weight="5" rewardid="1002" rewardcount="800" weight="5" rewardid="1002" rewardcount="900" weight="4" rewardid="1002" rewardcount="1000" weight="1" />
+<order order="4" costid="1002" costcount="1200" weightall="100" rewardid="1002" rewardcount="1320" weight="70" rewardid="1002" rewardcount="1440" weight="15" rewardid="1002" rewardcount="1680" weight="5" rewardid="1002" rewardcount="1920" weight="5" rewardid="1002" rewardcount="2160" weight="4" rewardid="1002" rewardcount="2400" weight="1" />
+<order order="5" costid="1002" costcount="2500" weightall="100" rewardid="1002" rewardcount="2750" weight="70" rewardid="1002" rewardcount="3000" weight="15" rewardid="1002" rewardcount="3500" weight="5" rewardid="1002" rewardcount="4000" weight="5" rewardid="1002" rewardcount="4500" weight="4" rewardid="1002" rewardcount="5000" weight="1" />
+<order order="6" costid="1002" costcount="6000" weightall="100" rewardid="1002" rewardcount="6600" weight="75" rewardid="1002" rewardcount="7200" weight="10" rewardid="1002" rewardcount="8400" weight="5" rewardid="1002" rewardcount="9600" weight="5" rewardid="1002" rewardcount="10800" weight="4" rewardid="1002" rewardcount="12000" weight="1" />
+</zhuanpan>
+</data>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<ranking id="1" ranking="1" itemid="1002" count="500" />
+<ranking id="2" ranking="2" itemid="1002" count="450" />
+<ranking id="3" ranking="3" itemid="1002" count="400" />
+<ranking id="4" ranking="4" itemid="1002" count="350" />
+<ranking id="5" ranking="5" itemid="1002" count="300" />
+<ranking id="6" ranking="6" itemid="1002" count="250" />
+<ranking id="7" ranking="7" itemid="1002" count="200" />
+<ranking id="8" ranking="8" itemid="1002" count="150" />
+<ranking id="9" ranking="9" itemid="1002" count="100" />
+<ranking id="10" ranking="10" itemid="1002" count="50" />
+<ranking id="11" ranking="20" itemid="1002" count="25" />
+<ranking id="12" ranking="50" itemid="1002" count="10" />
+<ranking id="13" ranking="100" itemid="1002" count="5" />
+<ranking id="14" ranking="200" itemid="1002" count="1" />
+<ranking id="15" ranking="500" itemid="1002" count=".5" />
+<ranking id="16" ranking="1000" itemid="1002" count=".25" />
+<ranking id="17" ranking="2500" itemid="1002" count="100" />
+</data>
