@@ -17,7 +17,7 @@ public class SignRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(SignRedisService.class);
 	private static final String SIGN_FILE_NAME1 = "task/lol_tasksanqian.xml";
 	private static final String TOTAL_SIGN_FILE_NAME = "task/lol_taskleijiqiandao.xml";
-	private static final String SIGN_FILE_NAME2 = "task/lol_tasksanqian.xml";
+	private static final String SIGN_FILE_NAME2 = "task/lol_tasksanqian2.xml";
 	
 	public Sign getSign(int count) {
 		String value = hget(RedisKey.SIGN_KEY, "" + count);
