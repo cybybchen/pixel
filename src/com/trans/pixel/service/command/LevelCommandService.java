@@ -129,31 +129,32 @@ public class LevelCommandService extends BaseCommandService {
 			turn = cmd.getTurn();
 		logService.sendPveLog(user.getServerId(), ret ? 1 : 0, user.getId(), turn, levelId);
 		
-//		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
-		long userId = user.getId();
-		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
-		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-		}else{
-			userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, user);
-			userLevelRecord.setLevelPrepareTime(0);
-			userLevelRecord.setLastLevelResultTime(0);
-			userLevelService.updateUserLevelRecord(userLevelRecord);
-			log.debug("levelId is:" + levelId);
-			WinBean winBean = winService.getWinByLevelId(levelId);
-			List<RewardBean> rewardList = new ArrayList<RewardBean>();
-			if (winBean != null)
-				rewardList = winBean.getRewardList();
-			
-			rewardList.addAll(levelService.getNewplayReward(user, levelId));
-			
-			rewardService.doRewards(user, rewardList);
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+		if (ret) {
+	//		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
+			long userId = user.getId();
+			UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
+			if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+				
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+			}else{
+				userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, user);
+				userLevelRecord.setLevelPrepareTime(0);
+				userLevelRecord.setLastLevelResultTime(0);
+				userLevelService.updateUserLevelRecord(userLevelRecord);
+				log.debug("levelId is:" + levelId);
+				WinBean winBean = winService.getWinByLevelId(levelId);
+				List<RewardBean> rewardList = new ArrayList<RewardBean>();
+				if (winBean != null)
+					rewardList = winBean.getRewardList();
+				
+				rewardList.addAll(levelService.getNewplayReward(user, levelId));
+				
+				rewardService.doRewards(user, rewardList);
+				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+			}
 		}
-		
 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
 	}
 	
