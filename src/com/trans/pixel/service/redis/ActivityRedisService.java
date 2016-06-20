@@ -29,10 +29,10 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 @Service
 public class ActivityRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(ActivityRedisService.class);
-	private static final String ACTIVITY_RICHANG_FILE_NAME = "task/lol_taskrichang.xml";
-	private static final String ACTIVITY_KAIFU2_FILE_NAME = "task/lol_taskkaifu2.xml";
-	private static final String ACTIVITY_KAIFU_FILE_NAME = "task/lol_taskkaifu1.xml";
-	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "task/lol_taskshouchong.xml";
+	private static final String ACTIVITY_RICHANG_FILE_NAME = "lol_taskrichang.xml";
+	private static final String ACTIVITY_KAIFU2_FILE_NAME = "lol_taskkaifu2.xml";
+	private static final String ACTIVITY_KAIFU_FILE_NAME = "lol_taskkaifu1.xml";
+	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "lol_taskshouchong.xml";
 	private static final String ACTIVITY_FILE_PREFIX = "activity/activity_";
 	
 	//richang activity

@@ -14,7 +14,7 @@ import com.trans.pixel.protoc.Commands.AchieveList;
 @Service
 public class AchieveRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(AchieveRedisService.class);
-	private static final String ACHIEVE_FILE_NAME = "task/lol_taskchengjiu.xml";
+	private static final String ACHIEVE_FILE_NAME = "lol_taskchengjiu.xml";
 	
 	public Achieve getAchieve(int id) {
 		String value = hget(RedisKey.ACHIEVE_KEY, "" + id);
