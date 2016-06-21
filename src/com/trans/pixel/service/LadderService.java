@@ -185,6 +185,13 @@ public class LadderService {
 //		userService.updateUser(user);
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, teamid, team);
+		
+		/**
+		 * send log
+		 */
+		sendLog(user.getId(), user.getServerId(), userTeamService.getTeamCache(user.getId()).getHeroInfoList(),
+				userTeamService.getTeamCache(attackRankBean.getUserId()).getHeroInfoList(), result ? 1 : 0, attackRank);
+		
 		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
 		if (attackRank < myRankBean.getRank()) {
@@ -193,12 +200,6 @@ public class LadderService {
 			updateUserRank(serverId, attackRankBean);
 			updateUserRank(serverId, myRankBean);
 		}
-		
-		/**
-		 * send log
-		 */
-		sendLog(user.getId(), user.getServerId(), userTeamService.getTeamCache(user.getId()).getHeroInfoList(),
-				userTeamService.getTeamCache(attackRankBean.getUserId()).getHeroInfoList(), result ? 1 : 0, attackRank);
 		
 		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank);
 		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank);
