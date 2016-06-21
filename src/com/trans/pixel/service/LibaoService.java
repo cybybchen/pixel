@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.JewelPool;
-import com.trans.pixel.protoc.Commands.JewelPoolList;
 import com.trans.pixel.service.redis.LibaoRedisService;
 
 @Service
@@ -37,18 +36,18 @@ public class LibaoService {
 	
 	public JewelPool getExpPool(UserBean user, int id){
 		JewelPool.Builder builder = redis.getExpPool(id);
-		builder.setRecharged(user.getGrowJewelCount());
+		builder.setRecharged(user.getGrowExpCount());
 		calJewelPoolRewarded(builder, user.getGrowExpCountStatus());
 		return builder.build();
 	}
 	
-	public JewelPoolList getExpPoolList(UserBean user){
-		JewelPoolList.Builder listbuilder = redis.getExpPoolList();
-		for(JewelPool.Builder builder : listbuilder.getOrderBuilderList()){
-			builder.setRecharged(user.getGrowJewelCount());
-		}
-		return listbuilder.build();
-	}
+//	public JewelPoolList getExpPoolList(UserBean user){
+//		JewelPoolList.Builder listbuilder = redis.getExpPoolList();
+//		for(JewelPool.Builder builder : listbuilder.getOrderBuilderList()){
+//			builder.setRecharged(user.getGrowExpCount());
+//		}
+//		return listbuilder.build();
+//	}
 
 	public static void calJewelPoolRewarded(JewelPool.Builder builder, int status){
 		int index = 7;
