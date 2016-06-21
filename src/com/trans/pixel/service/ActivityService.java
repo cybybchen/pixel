@@ -102,7 +102,7 @@ public class ActivityService {
 		}
 	}
 	
-	public ResultConst handleRichangReward(MultiReward.Builder rewards, UserRichang.Builder ur, long userId, int id, int order) {
+	public ResultConst handleRichangReward(MultiReward.Builder rewards, UserRichang.Builder ur, UserBean user, int id, int order) {
 		if (ur.getRewardOrderList().contains(order))
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
@@ -115,16 +115,19 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
 		ur.addRewardOrder(order);
-		userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
+		userActivityService.updateUserRichang(user.getId(), ur.build(), richang.getEndtime());
 		rewards.addAllLoot(getRewardList(activityorder));
 		
-		isDeleteNotice(userId);
+		isDeleteNotice(user);
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
 	private boolean isCompleteNewRichang(UserRichang ur, long userId) {
 		Richang richang = activityRedisService.getRichang(ur.getType());
+		if (!DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime()))
+			return false;
+		
 		List<ActivityOrder> orderList = richang.getOrderList();
 		for (ActivityOrder order : orderList) {
 			if (ur.getRewardOrderList().contains(order.getOrder()))
@@ -480,7 +483,7 @@ public class ActivityService {
 				if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= getKaifuDays(user.getServerId())) {
 					userActivityService.updateUserKaifu(user.getId(), uk.build());
 					
-					if (isCompleteNewKaifu(uk.build(), user.getId()))
+					if (isCompleteNewKaifu(uk.build(), user))
 						noticeService.pushNotice(user.getId(), NoticeConst.TYPE_ACTIVITY);
 				}
 			}
@@ -503,15 +506,16 @@ public class ActivityService {
 		userActivityService.updateUserKaifu(user.getId(), uk.build());
 		rewards.addAllLoot(getRewardList(activityorder));
 		
-		isDeleteNotice(user.getId());
+		isDeleteNotice(user);
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
-	private void isDeleteNotice(long userId) {
+	public void isDeleteNotice(UserBean user) {
+		long userId = user.getId();
 		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(userId);
 		for (UserKaifu uk : ukList) {
-			if (isCompleteNewKaifu(uk, userId))
+			if (isCompleteNewKaifu(uk, user))
 				return;
 		}
 		
@@ -524,8 +528,11 @@ public class ActivityService {
 		noticeService.deleteNotice(userId, NoticeConst.TYPE_ACTIVITY);
 	}
 	
-	private boolean isCompleteNewKaifu(UserKaifu uk, long userId) {
+	private boolean isCompleteNewKaifu(UserKaifu uk, UserBean user) {
 		Kaifu kaifu = activityRedisService.getKaifu(uk.getType());
+		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
+			return false;
+		
 		List<ActivityOrder> orderList = kaifu.getOrderList();
 		for (ActivityOrder order : orderList) {
 			if (uk.getRewardOrderList().contains(order.getOrder()))

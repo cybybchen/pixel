@@ -52,7 +52,7 @@ public class ActivityCommandService extends BaseCommandService {
 		int order = cmd.getOrder();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
 		UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(user.getId(), id));
-		ResultConst result = activityService.handleRichangReward(multiReward, ur, user.getId(), id, order);
+		ResultConst result = activityService.handleRichangReward(multiReward, ur, user, id, order);
 		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
@@ -129,7 +129,7 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
 		builder.addAllRank(activityService.getKaifu2RankList(user));
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
-		
+		activityService.isDeleteNotice(user);
 		responseBuilder.setKaifuListCommand(builder.build());
 	}
 	
