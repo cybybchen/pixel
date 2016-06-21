@@ -49,6 +49,8 @@ public class LogCommandService extends BaseCommandService {
 		params.put(LogString.CHANNEL, cmd.getChannel());
 		params.put(LogString.RECHARGE_TYPE, "" + cmd.getRechargetype());
 		params.put(LogString.IDFA, cmd.getIdfa());
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
 		
 		return params;
 	}
