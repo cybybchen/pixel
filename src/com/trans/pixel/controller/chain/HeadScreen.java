@@ -34,7 +34,7 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
-//add import here
+import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
@@ -120,7 +120,6 @@ import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
-//add import here
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
@@ -681,6 +680,12 @@ public class HeadScreen extends RequestScreen {
 		return true;//GetGrowExpCommand
 	}//GetGrowExpCommand
 	//add handleCommand here
+	
+	@Override
+	protected boolean handleCommand(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
 	@Override
 	protected boolean handleCommand(RequestLevelPrepareCommand cmd,

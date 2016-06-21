@@ -146,6 +146,21 @@ public class HeroLevelUpService {
 		return SuccessConst.RESET_SKILL_SUCCESS;
 	}
 	
+	public ResultConst levelUpHeroTo(UserBean user, HeroInfoBean heroInfo, int level) {
+		int count = level - heroInfo.getLevel();
+		if(count <= 0)
+			return SuccessConst.HERO_LEVELUP_SUCCESS;
+		ResultConst result = levelUpHero(user, heroInfo);
+		count--;
+		while(count > 0){
+			ResultConst res = levelUpHero(user, heroInfo);
+			if(res instanceof ErrorConst)
+				break;
+			count--;
+		}
+		return result;
+	}
+	
 	private ResultConst levelUpHero(UserBean user, HeroInfoBean heroInfo) {
 		if (heroInfo.getLevel() == HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;

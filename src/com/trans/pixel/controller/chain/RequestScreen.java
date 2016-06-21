@@ -57,6 +57,7 @@ import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
@@ -345,6 +346,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
+	
+	protected abstract boolean handleCommand(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user);
 	
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
@@ -994,6 +997,11 @@ public abstract class RequestScreen implements RequestHandle {
                 result = handleCommand(cmd, responseBuilder, user);//GetGrowExpCommand
         }//GetGrowExpCommand
         //call handleCommand here
+        if (request.hasHeroLevelUpToCommand()) {
+            RequestHeroLevelUpToCommand cmd = request.getHeroLevelUpToCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
         
         	if (responseBuilder.hasErrorCommand()) {
         		int errorCode = TypeTranslatedUtil.stringToInt(responseBuilder.getErrorCommand().getCode());

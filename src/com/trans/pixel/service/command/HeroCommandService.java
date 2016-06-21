@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
@@ -77,6 +78,25 @@ public class HeroCommandService extends BaseCommandService {
 	@Resource
 	private LogService logService;
 	
+	public void heroLevelUpTo(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user) {
+		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), cmd.getInfoId());
+		ResultConst result = heroLevelUpService.levelUpHeroTo(user, heroInfo, cmd.getLevelUpTo());
+		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
+			
+			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
+            responseBuilder.setErrorCommand(errorCommand);
+		}else{
+			userHeroService.updateUserHero(heroInfo);
+		}
+
+		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+		builder.setHeroId(cmd.getHeroId());
+		builder.addHeroInfo(heroInfo.buildHeroInfo());
+		responseBuilder.setHeroResultCommand(builder.build());
+			
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelUpType = cmd.getLevelUpType();
 		int heroId = cmd.getHeroId();

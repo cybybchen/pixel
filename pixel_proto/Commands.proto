@@ -1130,11 +1130,6 @@ message RequestUpdateTeamCommand {
 	optional string composeSkill = 3;
 }
 
-message RequestAddTeamCommand {
-	required string teamInfo = 1;
-	optional string composeSkill = 2;
-}
-
 message RequestUserTeamListCommand {
 
 }
@@ -1147,6 +1142,12 @@ message RequestLockHeroCommand {
 	required int32 heroId = 2;
 	required int64 infoId = 3;
 	optional bool isLock = 4;
+}
+
+message RequestHeroLevelUpToCommand {
+	required int32 levelUpTo = 1;
+	required int32 heroId = 2;
+	required int64 infoId = 3;
 }
 
 message RequestHeroLevelUpCommand {
@@ -1919,6 +1920,7 @@ message RequestCommand {
 	optional RequestLevelLootStartCommand levelLootStartCommand = 7;
 	optional RequestLevelLootResultCommand levelLootResultCommand = 8;
 	optional RequestHeroLevelUpCommand heroLevelUpCommand = 9;
+	optional RequestHeroLevelUpToCommand heroLevelUpToCommand = 151;
 	optional RequestLockHeroCommand lockHeroCommand = 131;
 	optional RequestLootResultCommand lootResultCommand = 10;
 	optional RequestAddHeroEquipCommand addHeroEquipCommand = 11;
@@ -1993,7 +1995,6 @@ message RequestCommand {
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
 	optional RequestReplyMessageCommand replyMessageCommand = 38;
-	optional RequestAddTeamCommand addTeamCommand = 45;
 	optional RequestUserTeamListCommand userTeamListCommand = 46;
 	optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
 	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
