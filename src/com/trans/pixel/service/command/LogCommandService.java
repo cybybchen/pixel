@@ -42,7 +42,7 @@ public class LogCommandService extends BaseCommandService {
 		params.put(LogString.VERSION, cmd.getVersion());
 		params.put(LogString.MODEL, cmd.getModel());
 		params.put(LogString.CURRENCY, "" + cmd.getCurrency());
-		params.put(LogString.CURRENCYAMOUNT, "" + cmd.getCurrencyamount());	
+		params.put(LogString.CURRENCYAMOUNT, "" + cmd.getCurrencyamount() * 100);	
 		params.put(LogString.STAGE, "" + cmd.getStage());
 		params.put(LogString.ITEMID, "" + cmd.getItemid());
 		params.put(LogString.ACTION, "" + cmd.getAction());
