@@ -30,7 +30,7 @@ public class LogCommandService extends BaseCommandService {
 		Map<String, String> params = initParams(serverId, userId, cmd);
 		logService.sendLog(params, cmd.getLogtype());
 		
-		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.LOG_SEND_SUCCESS));
+		// responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.LOG_SEND_SUCCESS));
 	}
 	
 	private Map<String, String> initParams(int serverId, long userId, RequestLogCommand cmd) {
