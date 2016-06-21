@@ -82,7 +82,16 @@ public class UserTeamService {
 			for(UserTeamBean team : userTeamList){
 				ids.add(team.getId());
 			}
-			if(!ids.contains(1))
+			if(ids.isEmpty()){
+				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(userId);
+				String teamRecord = "";
+				for (HeroInfoBean hero : userHeroList) {
+					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
+					break;
+				}
+				updateUserTeam(userId, 1, teamRecord, "");
+				ids.add(1);
+			}else if(!ids.contains(1))
 				updateUserTeam(userId, 1, "", "");
 			if(!ids.contains(2))
 				updateUserTeam(userId, 2, "", "");
