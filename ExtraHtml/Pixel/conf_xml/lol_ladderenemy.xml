@@ -6,6 +6,7 @@
 <ranking ranking="451" ranking1="800" star="3" lv="16" rare="3" herocount="11" zhanli="20000" zhanli1="24000" />
 <ranking ranking="801" ranking1="1200" star="2" lv="15" rare="2" herocount="11" zhanli="12000" zhanli1="18000" />
 <ranking ranking="1201" ranking1="1700" star="2" lv="11" rare="2" herocount="8" zhanli="8000" zhanli1="10000" />
-<ranking ranking="1701" ranking1="2200" star="1" lv="9" rare="2" herocount="8" zhanli="4000" zhanli1="6000" />
-<ranking ranking="2201" ranking1="2500" star="1" lv="5" rare="1" herocount="8" zhanli="2000" zhanli1="2500" />
+<ranking ranking="1701" ranking1="2000" star="1" lv="9" rare="2" herocount="8" zhanli="4000" zhanli1="6000" />
+<ranking ranking="2001" ranking1="2200" star="1" lv="5" rare="1" herocount="8" zhanli="1600" zhanli1="2200" />
+<ranking ranking="2201" ranking1="2500" star="1" lv="5" rare="1" herocount="5" zhanli="1000" zhanli1="1500" />
 </data>

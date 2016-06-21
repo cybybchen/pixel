@@ -361,6 +361,8 @@ public class LadderService {
 		Map<Integer, Integer> heroInfoMap = new HashMap<Integer, Integer>();
 		while (heroInfoList.size() < ladderEnemy.getHerocount()) {
 			HeroBean randomHero = heroList.get(RandomUtils.nextInt(heroList.size()));
+			if (randomHero.getHandbook() == 0)
+				continue;
 			Integer originalCount = heroInfoMap.get(randomHero.getId());
 			if (originalCount == null)
 				originalCount = 0;

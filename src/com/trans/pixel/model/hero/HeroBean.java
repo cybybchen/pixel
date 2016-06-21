@@ -20,6 +20,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class HeroBean {
 	private int id = 0;
 	private String name = "";
+	private int handbook = 0;
 	private int zhanli = 0;
 	private int zhanli_lv = 0;
 	private int ad = 0;
@@ -44,6 +45,12 @@ public class HeroBean {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getHandbook() {
+		return handbook;
+	}
+	public void setHandbook(int handbook) {
+		this.handbook = handbook;
 	}
 	public int getZhanli() {
 		return zhanli;
@@ -152,6 +159,7 @@ public class HeroBean {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
 		json.put(NAME, name);
+		json.put(HANDBOOK, handbook);
 		json.put(ZHANLI, zhanli);
 		json.put(ZHANLI_LV, zhanli_lv);
 		json.put(AD, ad);
@@ -176,6 +184,7 @@ public class HeroBean {
 		
 		bean.setId(json.getInt(ID));
 		bean.setName(json.getString(NAME));
+		bean.setHandbook(json.getInt(HANDBOOK));
 		bean.setZhanli(json.getInt(ZHANLI));
 		bean.setZhanli_lv(json.getInt(ZHANLI_LV));
 		bean.setAd(json.getInt(AD));
@@ -231,6 +240,7 @@ public class HeroBean {
 				Element heroElement = (Element) heroList.get(i);
 				hero.setId(TypeTranslatedUtil.stringToInt(heroElement.attributeValue(ID)));
 				hero.setName(heroElement.attributeValue(NAME));
+				hero.setHandbook(TypeTranslatedUtil.stringToInt(heroElement.attributeValue(HANDBOOK)));
 				hero.setZhanli(TypeTranslatedUtil.stringToInt(heroElement.attributeValue(ZHANLI)));
 				hero.setZhanli_lv(TypeTranslatedUtil.stringToInt(heroElement.attributeValue(ZHANLI_LV)));
 				hero.setAd(TypeTranslatedUtil.stringToInt(heroElement.attributeValue(AD)));
@@ -257,6 +267,7 @@ public class HeroBean {
 	private static final String FILE_NAME = "lol_hero.xml";
 	private static final String ID = "id";
 	private static final String NAME = "name";
+	private static final String HANDBOOK = "handbook";
 	private static final String ZHANLI = "zhanli";
 	private static final String ZHANLI_LV = "zhanli_lv";
 	private static final String AD = "ad";
