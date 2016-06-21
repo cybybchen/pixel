@@ -126,7 +126,7 @@ public class LevelService {
 			return false;
 		}
 
-		if(getDaguanId(userLevelRecord.getPutongLevel()+1) != daguanId)
+		if(getDaguanId(userLevelRecord.getPutongLevel()) != daguanId)
 			return false;
 		
 		if (dg.getZhanli() > user.getZhanli())
