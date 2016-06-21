@@ -449,7 +449,8 @@ public class LogService {
 		params.put(LogString.USERID, "" + userId);
 		params.put(LogString.SHOPID, "" + shopid);
 		params.put(LogString.ITEMID, "" + itemid);
-		params.put(LogString.CURRENCY, "" + currencyamount);
+		params.put(LogString.CURRENCY, "" + currency);
+		params.put(LogString.CURRENCYAMOUNT, "" + currencyamount);
 		
 		sendLog(params, LogString.LOGTYPE_SHOP);
 	}
