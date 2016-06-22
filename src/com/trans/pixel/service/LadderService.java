@@ -108,7 +108,7 @@ public class LadderService {
 				createLadderData(serverId);
 				userRank = ladderRedisService.getUserRankByRank(serverId, rank);
 			}
-			if (userRank.getUserId() > 0) {	
+			if (userRank != null && userRank.getUserId() > 0) {	
 				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
 				userRank.initByUserCache(userInfo);
 			}
