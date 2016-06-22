@@ -1918,6 +1918,9 @@ public class ManagerService extends RedisService{
 			result.put("blackaccount", object);
 		}
 		
+		if(result.entrySet().size() <= 3)
+			result.put("error", "未找到有效的请求，请确认你的权限！");
+		
 		return result;
 	}
 }
