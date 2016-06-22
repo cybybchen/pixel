@@ -20,6 +20,7 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.HeroConst;
 import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
@@ -203,7 +204,7 @@ public class ActivityService {
 		/**
 		 * achieve type 106
 		 */
-		if (costType == RewardConst.JEWEL)
+		if (costType == RewardConst.JEWEL || costType == LotteryConst.LOOTERY_SPECIAL_TYPE)
 			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOTTERY, count);
 		
 		/**
