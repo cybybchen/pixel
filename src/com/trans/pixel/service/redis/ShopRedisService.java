@@ -225,6 +225,7 @@ public class ShopRedisService extends RedisService{
 		if(user.getVip() >= 12){
 			List<Integer> list = new ArrayList<Integer>();
 			int index = nextInt(builder.getItemsCount());
+			list.add(index);
 			Commodity.Builder comm = builder.getItemsBuilderList().get(index);
 			comm.setDiscount(90);
 			comm.setDiscost(comm.getCost()*90/100);
