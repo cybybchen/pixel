@@ -38,7 +38,6 @@ public class MailService {
 	}
 	
 	public List<MailBean> getMailList(long userId, int type) {
-		isDeleteNotice(userId, type);
 		return mailRedisService.getMailListByUserIdAndType(userId, type);
 	}
 	
