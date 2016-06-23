@@ -154,7 +154,7 @@ public abstract class RequestScreen implements RequestHandle {
 	@Resource
 	private PushCommandService pushCommandService;
 	
-	private RequestHandle nullUserErrorHandle = new NullUserErrorHandle();
+//	private RequestHandle nullUserErrorHandle = new NullUserErrorHandle();
 	
 	protected abstract boolean handleRegisterCommand(RequestCommand cmd, Builder responseBuilder);
 	
@@ -394,12 +394,7 @@ public abstract class RequestScreen implements RequestHandle {
 	            handleCommand(cmd, responseBuilder, user);//LogCommand
 	        }//LogCommand
 	        
-        	if (user == null) {
-        		if (!request.hasLogCommand()) {
-                	nullUserErrorHandle.handleRequest(req, rep);
-        		}
-                return false;
-            }else if (!user.getSession().equals(head.getSession())) {
+        	if (user == null || !user.getSession().equals(head.getSession())) {
 	        	ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 	            erBuilder.setCode(String.valueOf(ErrorConst.USER_NEED_LOGIN.getCode()));
 	            erBuilder.setMessage(ErrorConst.USER_NEED_LOGIN.getMesssage());
