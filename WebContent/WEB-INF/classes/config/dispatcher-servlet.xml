@@ -55,12 +55,12 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:defaultEncoding="utf-8" />
 		
-	<bean id="headScreen" class="com.trans.pixel.controller.chain.HeadScreen" />
+	<!-- bean id="headScreen" class="com.trans.pixel.controller.chain.HeadScreen" /-->
 	<bean id="gameDataScreen" class="com.trans.pixel.controller.chain.GameDataScreen" />
 	<bean id="chainOfScreens" class="java.util.ArrayList">
 		<constructor-arg>
 			<list>
-				<ref bean="headScreen" />
+				<!-- ref bean="headScreen" /-->
 				<ref bean="gameDataScreen" />
 			</list>
 		</constructor-arg>

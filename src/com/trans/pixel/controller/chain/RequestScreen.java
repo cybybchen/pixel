@@ -2,8 +2,13 @@ package com.trans.pixel.controller.chain;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.HeadInfo;
 import com.trans.pixel.protoc.Commands.RequestAchieveListCommand;
 import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestAddFriendCommand;
@@ -56,14 +61,14 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-//add import here
-import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
@@ -134,11 +139,18 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.service.ServerService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 
 public abstract class RequestScreen implements RequestHandle {
+	private static final Logger log = LoggerFactory.getLogger(RequestScreen.class);
+	@Resource
+    private UserService userService;
+	@Resource
+	private ServerService serverService;
 	@Resource
 	private PushCommandService pushCommandService;
 	
@@ -349,13 +361,23 @@ public abstract class RequestScreen implements RequestHandle {
 	
 	protected abstract boolean handleCommand(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user);
 	
+	private HeadInfo buildHeadInfo(HeadInfo head) {
+		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
+		nHead.setServerstarttime(serverService.getKaifuTime(head.getServerId()));
+		nHead.setDatetime(System.currentTimeMillis() / 1000);
+		nHead.setOnlineStatus(serverService.getOnlineStatus("" + head.getVersion()));
+		
+		return nHead.build();
+	}
+
 	@Override
     public boolean handleRequest(PixelRequest req, PixelResponse rep) {
-        boolean result = true;
-        RequestCommand request = req.command;
+    	RequestCommand request = req.command;
+        HeadInfo head = buildHeadInfo(request.getHead());
+        rep.command.setHead(head);
         ResponseCommand.Builder responseBuilder = rep.command;
-        UserBean user = req.user;
-    	
+        UserBean user = null;
+
         if (request.hasRegisterCommand()) {
         	handleRegisterCommand(request, responseBuilder);
         	return false;
@@ -363,14 +385,32 @@ public abstract class RequestScreen implements RequestHandle {
         	handleLoginCommand(request, responseBuilder);
         	return false;
         } else {
+	        long userId = head.getUserId();
+	        req.user = userService.getUser(userId);
+        	user = req.user;
+
+	        if (request.hasLogCommand()) {
+	            RequestLogCommand cmd = request.getLogCommand();
+	            handleCommand(cmd, responseBuilder, user);//LogCommand
+	        }//LogCommand
+	        
         	if (user == null) {
         		if (!request.hasLogCommand()) {
-                nullUserErrorHandle.handleRequest(req, rep);
-                return false;
+                	nullUserErrorHandle.handleRequest(req, rep);
         		}
-            }
+                return false;
+            }else if (!user.getSession().equals(head.getSession())) {
+	        	ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+	            erBuilder.setCode(String.valueOf(ErrorConst.USER_NEED_LOGIN.getCode()));
+	            erBuilder.setMessage(ErrorConst.USER_NEED_LOGIN.getMesssage());
+	            if(!request.hasLogCommand())
+	        		rep.command.setErrorCommand(erBuilder.build());
+	            log.info("cmd user need login:" + req);
+	            return false;
+	        }
         }
-        
+
+        boolean result = true;
         if (request.hasLevelResultCommand()) {
         	RequestLevelResultCommand cmd = request.getLevelResultCommand();
             if (result)
@@ -981,11 +1021,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//GreenhandCommand
                 result = handleCommand(cmd, responseBuilder, user);//GreenhandCommand
         }//GreenhandCommand
-        if (request.hasLogCommand()) {
-            RequestLogCommand cmd = request.getLogCommand();
-            if (result)//LogCommand
-                result = handleCommand(cmd, responseBuilder, user);//LogCommand
-        }//LogCommand
         if (request.hasGetGrowJewelCommand()) {
             RequestGetGrowJewelCommand cmd = request.getGetGrowJewelCommand();
             if (result)//GetGrowJewelCommand
