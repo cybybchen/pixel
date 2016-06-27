@@ -97,11 +97,11 @@ public class PvpMapService {
 		long myrank = rankRedisService.getMyZhanliRank(user);
 		List<UserInfo> ranks = new ArrayList<UserInfo>();
 		if(myrank < 0)
-			ranks = rankRedisService.getZhanliRanks(user, -15, -1);
+			ranks = rankRedisService.getZhanliRanks(user, -10, -1);
 		else if(myrank-10 > 0)
 			ranks = rankRedisService.getZhanliRanks(user, myrank-10, myrank+5);
 		else
-			ranks = rankRedisService.getZhanliRanks(user, 0, 15);
+			ranks = rankRedisService.getZhanliRanks(user, 0, myrank+5);
 		// List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
 		// Set<String> members = unionRedisService.getMemberIds(user);
 		Iterator<UserInfo> it = ranks.iterator();
