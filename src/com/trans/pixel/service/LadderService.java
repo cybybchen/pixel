@@ -187,8 +187,8 @@ public class LadderService {
 		if(user.getMyactive() >= 100){
 			user.setMyactive(user.getMyactive() - 100);
 			pvpMapService.refreshAMine(user);
-			userService.updateUser(user);
 		}
+		userService.updateUser(user);
 		
 //		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 //		userService.updateUser(user);

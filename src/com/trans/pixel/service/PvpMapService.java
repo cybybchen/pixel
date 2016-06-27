@@ -349,8 +349,8 @@ public class PvpMapService {
 		if(user.getMyactive() >= 100){
 			user.setMyactive(user.getMyactive() - 100);
 			refreshAMine(user);
-			userService.updateUser(user);
 		}
+		userService.updateUser(user);
 		
 		/**
 		 * send log
@@ -422,8 +422,8 @@ public class PvpMapService {
 		if(user.getMyactive() >= 100){
 			user.setMyactive(user.getMyactive() - 100);
 			refreshAMine(user);
-			userService.updateUser(user);
 		}
+		userService.updateUser(user);
 
 		/**
 		 * send log
