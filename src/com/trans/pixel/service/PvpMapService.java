@@ -211,14 +211,16 @@ public class PvpMapService {
 	}
 
 	public void refreshMine(PVPMap map, List<UserInfo> ranks, Map<String, PVPMine> mineMap, UserBean user, int count){
-		if(!map.getOpened() || ranks.isEmpty())
+		if(!map.getOpened())
 			return;
 		for(int i = 0, enemy = count;i < 10 && enemy > 0; i++){
 			PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
 			PVPMine mine = mineMap.get(builder.getId()+"");
 			// if(mine != null && mine.getEndTime() > redis.now() )
 			// 	continue;
-
+			
+			if(ranks.isEmpty())
+				return;
 			if(redis.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
 				int index = redis.nextInt(ranks.size());
 				builder.setOwner(ranks.get(index));
