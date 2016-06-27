@@ -23,6 +23,7 @@ import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.RechargeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -64,6 +65,8 @@ public class RechargeService {
 	private MailService mailService;
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private UserPropService userPropService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
     	int complete = user.getRechargeRecord()+jewel;
@@ -84,6 +87,11 @@ public class RechargeService {
 				user.setRefreshExpeditionLeftTime(user.getRefreshExpeditionLeftTime() + vip.getMohua() - oldvip.getMohua());
 				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());
 				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
+				UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
+				if (userProp == null)
+					userProp = UserPropBean.initUserProp(user.getId(), 40022);
+				userProp.setPropCount(userProp.getPropCount() + vip.getBaohu() - oldvip.getBaohu());
+				userPropService.updateUserProp(userProp);
 			}
 	    }
 //    	bean.setCompleteCount(complete);
