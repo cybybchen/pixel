@@ -227,7 +227,14 @@ public class PvpMapService {
 				mineMap.put(builder.getId()+"", builder.build());
 
 				String content = "霸占了你的矿点(" + map.getName() + ")";
-				sendMineAttackedMail(builder.getOwner().getId(), user, content, builder.getId() / 100);
+				UserBean bean = new UserBean();
+				bean.setId(builder.getOwner().getId());
+				bean.setIcon(builder.getOwner().getIcon());
+				bean.setVip(builder.getOwner().getVip());
+				bean.setUserName(builder.getOwner().getName());
+				bean.setZhanli(builder.getOwner().getZhanli());
+				bean.setLastLoginTime(builder.getOwner().getLastLoginTime());
+				sendMineAttackedMail(user.getId(), bean, content, builder.getId() / 100);
 			}
 			enemy-=3;
 		}
