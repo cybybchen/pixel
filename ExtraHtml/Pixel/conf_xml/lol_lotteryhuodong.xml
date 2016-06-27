@@ -1,5 +1,5 @@
 <data>
-<lottery  type="1" cost="1003" count="1500" judge="1" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
+<lottery  type="1" cost="1003" count="1500" judge="1" errordes="魔晶不足(在征战世界中获得)" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
 <item id="1" itemid="51005" count="1" weight="100" will="0" />
 <item id="2" itemid="51010" count="1" weight="100" will="0" />
 <item id="3" itemid="51061" count="1" weight="100" will="0" />
@@ -42,7 +42,7 @@
 <item id="40" itemid="35015" count="1" weight="25" will="0" />
 <item id="41" itemid="35016" count="1" weight="10" will="0" />
 </lottery>
-<lottery  type="2" cost="1003" count="14000" judge="10" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
+<lottery  type="2" cost="1003" count="14000" judge="10" errordes="魔晶不足(在征战世界中获得)" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
 <item id="1" itemid="51005" count="1" weight="100" will="0" />
 <item id="2" itemid="51010" count="1" weight="100" will="0" />
 <item id="3" itemid="51061" count="1" weight="100" will="0" />

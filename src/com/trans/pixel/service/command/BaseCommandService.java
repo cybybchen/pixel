@@ -65,6 +65,13 @@ public class BaseCommandService {
         erBuilder.setMessage(errorConst.getMesssage());
         return erBuilder.build();
     }
+	
+	protected ErrorCommand buildErrorCommand(ResultConst errorConst, String msg) {
+        ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+        erBuilder.setCode(String.valueOf(errorConst.getCode()));
+        erBuilder.setMessage(msg);
+        return erBuilder.build();
+    }
 
 	protected ErrorConst getNotEnoughError(int rewardId) {
 		ErrorConst errorConst = ErrorConst.NOT_ENOUGH;

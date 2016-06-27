@@ -26,6 +26,7 @@ import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LotteryService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.LotteryRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -45,6 +46,8 @@ public class LotteryCommandService extends BaseCommandService {
 	private ActivityService activityService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private LotteryRedisService lotteryRedisService;
 	
 	public void lottery(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardBean> lotteryList = new ArrayList<RewardBean>();
@@ -80,9 +83,10 @@ public class LotteryCommandService extends BaseCommandService {
 			
 			lotteryList = lotteryService.randomLotteryActivity(user, type);
 			if (lotteryList.size() == 0) {
+				LotteryActivity lotteryActivity = lotteryRedisService.getLotteryActivity(type);
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_PROP);
 				
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP, lotteryActivity.getErrordes());
 	            responseBuilder.setErrorCommand(errorCommand);
 	            pushUserData(responseBuilder, user, type);
 				return;	

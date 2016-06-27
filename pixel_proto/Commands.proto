@@ -973,6 +973,7 @@ message LotteryActivity {
 	required string starttime = 5;
 	required string endtime = 6;
 	repeated LotteryItem item = 7;		
+	optional string errordes = 8;
 }
 
 message LotteryItem {
