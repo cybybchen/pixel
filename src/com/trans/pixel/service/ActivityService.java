@@ -653,6 +653,10 @@ public class ActivityService {
 			sendKaifuScore(user, ActivityConst.KAIFU_DAY_7);
 	}
 	
+	public void mineAidActivity(UserBean user) {
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_MINE_AID);
+	}
+	
 	/**
 	 * activity and achieve log
 	 */

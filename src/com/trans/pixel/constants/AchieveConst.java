@@ -21,4 +21,5 @@ public class AchieveConst {
 	public static final int TYPE_HERO_RARE_7 = 117;//英雄培养-紫
 	public static final int TYPE_HERO_RARE_10 = 118;//英雄培养-橙
 	public static final int TYPE_HERO_LEVELUP = 119;//练级之王
+	public static final int TYPE_MINE_AID = 120;//天降正义 
 }

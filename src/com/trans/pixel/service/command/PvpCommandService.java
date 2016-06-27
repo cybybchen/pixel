@@ -29,6 +29,7 @@ import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
@@ -54,6 +55,8 @@ public class PvpCommandService extends BaseCommandService {
 	private UserPropService userPropService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ActivityService activityService;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
@@ -148,6 +151,11 @@ public class PvpCommandService extends BaseCommandService {
 		
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
 			pusher.pushUserPropListCommand(responseBuilder, user);
+			
+			/**
+			 * 征战世界成功支援的活动
+			 */
+			activityService.mineAidActivity(user);
 		}
 		
 		/**
