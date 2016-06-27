@@ -404,4 +404,7 @@ public class UserService {
 		
 		return "";
 	}
+	public int nextInt(int value){
+		return userRedisService.nextInt(value);
+	}
 }

@@ -60,6 +60,8 @@ public class LadderService {
 	private LogService logService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private PvpMapService pvpMapService;
 	
 	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
         public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -179,6 +181,13 @@ public class LadderService {
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
 			userService.updateUser(user);
 			return ErrorConst.HE_IS_ATTACKING;
+		}
+
+		user.setMyactive(user.getMyactive()+5+ladderRedisService.nextInt(11));
+		if(user.getMyactive() >= 100){
+			user.setMyactive(user.getMyactive() - 100);
+			pvpMapService.refreshAMine(user);
+			userService.updateUser(user);
 		}
 		
 //		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);

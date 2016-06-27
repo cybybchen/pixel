@@ -8,11 +8,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -40,12 +38,10 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
-import com.trans.pixel.service.redis.UnionRedisService;
-import com.trans.pixel.service.redis.UserFriendRedisService;
 
 @Service
 public class PvpMapService {
-	private static Logger logger = Logger.getLogger(PvpMapService.class);
+//	private static Logger logger = Logger.getLogger(PvpMapService.class);
 	@Resource
 	private PvpMapRedisService redis;
 	@Resource
@@ -54,10 +50,10 @@ public class PvpMapService {
 	private RewardService rewardService;
 	@Resource
 	private RankRedisService rankRedisService;
-	@Resource
-	private UserFriendRedisService userFriendRedisService;
-	@Resource
-	private UnionRedisService unionRedisService;
+//	@Resource
+//	private UserFriendRedisService userFriendRedisService;
+//	@Resource
+//	private UnionRedisService unionRedisService;
 	@Resource
 	private ActivityService activityService;
 	@Resource
@@ -101,14 +97,17 @@ public class PvpMapService {
 		long myrank = rankRedisService.getMyZhanliRank(user);
 		List<UserInfo> ranks = new ArrayList<UserInfo>();
 		if(myrank < 0)
-			return ranks;
-		ranks = rankRedisService.getZhanliRanks(user, myrank+1, myrank+count+30);
-		List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
-		Set<String> members = unionRedisService.getMemberIds(user);
+			ranks = rankRedisService.getZhanliRanks(user, -15, -1);
+		else if(myrank-10 > 0)
+			ranks = rankRedisService.getZhanliRanks(user, myrank-10, myrank+5);
+		else
+			ranks = rankRedisService.getZhanliRanks(user, 0, 15);
+		// List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
+		// Set<String> members = unionRedisService.getMemberIds(user);
 		Iterator<UserInfo> it = ranks.iterator();
 		while(it.hasNext()){
 			UserInfo rank = it.next();
-			if(rank.getId() == user.getId() || friends.contains(rank.getId()) || members.contains(rank.getId()+"")){
+			if(rank.getId() == user.getId()/* || friends.contains(rank.getId()) || members.contains(rank.getId()+"")*/){
 				it.remove();
 				continue;
 			}
@@ -161,6 +160,31 @@ public class PvpMapService {
 		return count;
 	}
 
+	public void refreshAMine(UserBean user){
+		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
+		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
+		List<UserInfo> ranks = getRandUser(50, user);//刷新一个对手
+		List<PVPMap> fields = new ArrayList<PVPMap>();
+		for(PVPMap map : maplist.getFieldList()){
+			if(map.getOpened())
+				fields.add(map);
+		}
+		if(!ranks.isEmpty() && !fields.isEmpty()){
+			PVPMap map = fields.get(redis.nextInt(fields.size()));
+			refreshMine(map, ranks, mineMap, user, 3);
+		}
+		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
+			if(!mapBuilder.getOpened())
+				continue;
+			for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
+				PVPMine mine = mineMap.get(mineBuilder.getId()+"");
+				if(mine != null)
+					mineBuilder.mergeFrom(mine);
+			}
+		}
+		gainMine(maplist, user);
+	}
+
 	public void refreshMine(PVPMapList.Builder maplist, Map<String, PVPMine> mineMap, UserBean user){
 		Iterator<Map.Entry<String, PVPMine>> it = mineMap.entrySet().iterator();
 		while(it.hasNext()){  
@@ -176,28 +200,34 @@ public class PvpMapService {
 				redis.deleteMine(user.getId(), mine.getId());
 			}
 		}
-		int count = getRefreshCount(user);
+		int count = getRefreshCount(user);//count=3*enemy
 		if(count > 0){//刷新对手
 			List<UserInfo> ranks = getRandUser(50, user);//每张地图刷新一个对手
 			if(ranks.isEmpty())
 				return;
-			for(PVPMap map : maplist.getFieldList()){
-				if(map.getOpened()){
-					for(int i = 0, enemy = count;i < 10 && enemy > 0; i++){
-						PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
-						PVPMine mine = mineMap.get(builder.getId()+"");
-						if(mine != null && mine.getEndTime() > redis.now() )
-							continue;
+			for(PVPMap map : maplist.getFieldList())
+				refreshMine(map, ranks, mineMap, user, count);
+		}
+	}
 
-						if(redis.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
-							builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
-							redis.saveMine(user.getId(), builder.build());
-							mineMap.put(builder.getId()+"", builder.build());
-						}
-						enemy-=3;
-					}
-				}
+	public void refreshMine(PVPMap map, List<UserInfo> ranks, Map<String, PVPMine> mineMap, UserBean user, int count){
+		if(!map.getOpened())
+			return;
+		for(int i = 0, enemy = count;i < 10 && enemy > 0; i++){
+			PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
+			PVPMine mine = mineMap.get(builder.getId()+"");
+			// if(mine != null && mine.getEndTime() > redis.now() )
+			// 	continue;
+
+			if(redis.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
+				builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
+				redis.saveMine(user.getId(), builder.build());
+				mineMap.put(builder.getId()+"", builder.build());
+
+				String content = "霸占了你的矿点(" + map.getName() + ")";
+				sendMineAttackedMail(builder.getOwner().getId(), user, content, builder.getId() / 100);
 			}
+			enemy-=3;
 		}
 	}
 	
@@ -235,6 +265,15 @@ public class PvpMapService {
 				}
 			}
 		}
+		if(gainMine(maplist, user)){
+			ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
+			builder.setUser(user.build());
+			responseBuilder.setUserInfoCommand(builder.build());
+		}
+		return maplist.build();
+	}
+
+	public boolean gainMine(PVPMapList.Builder maplist, UserBean user){
 		long time = redis.now()/3600*3600;
 		if(time > user.getPvpMineGainTime()){//收取资源
 			int resource = 0;
@@ -253,11 +292,9 @@ public class PvpMapService {
 			rewardService.doReward(user, RewardConst.PVPCOIN, resource);
 			user.setPvpMineGainTime(time);
 			userService.updateUserDailyData(user);
-			ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
-			builder.setUser(user.build());
-			responseBuilder.setUserInfoCommand(builder.build());
+			return true;
 		}
-		return maplist.build();
+		return false;
 	}
 	
 	public MultiReward attackMonster(UserBean user, int positionid, boolean ret, int time){
@@ -271,7 +308,7 @@ public class PvpMapService {
 		}
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		int buff = -1;
+//		int buff = -1;
 		if(ret){
 			if(monster.getId() > 2000)
 				redis.deleteBoss(user, positionid);
@@ -288,13 +325,20 @@ public class PvpMapService {
 				}
 			}
 			rewardService.doRewards(user, rewards.build());
-			buff = redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
+			/*buff = */redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
 			if (monster.getId() > 2000) {
 				/**
 				 * PVP攻击BOSS的活动
 				 */
 				activityService.pvpAttackBossSuccessActivity(user.getId());
 			}
+		}
+
+		user.setMyactive(user.getMyactive()+5+redis.nextInt(11));
+		if(user.getMyactive() >= 100){
+			user.setMyactive(user.getMyactive() - 100);
+			refreshAMine(user);
+			userService.updateUser(user);
 		}
 		
 		/**
@@ -362,6 +406,14 @@ public class PvpMapService {
 				redis.saveMine(user.getId(), mine.build());
 			}
 		}
+
+		user.setMyactive(user.getMyactive()+5+redis.nextInt(11));
+		if(user.getMyactive() >= 100){
+			user.setMyactive(user.getMyactive() - 100);
+			refreshAMine(user);
+			userService.updateUser(user);
+		}
+
 		/**
 		 * send log
 		 */

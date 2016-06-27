@@ -32,9 +32,11 @@ import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.WinService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -62,6 +64,10 @@ public class LevelCommandService extends BaseCommandService {
 	private CostService costService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserService userService;
+	@Resource
+	private PvpMapService pvpMapService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelId = cmd.getLevelId();
@@ -155,6 +161,14 @@ public class LevelCommandService extends BaseCommandService {
 				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 			}
 		}
+
+		user.setMyactive(user.getMyactive()+5+userService.nextInt(11));
+		if(user.getMyactive() >= 100){
+			user.setMyactive(user.getMyactive() - 100);
+			pvpMapService.refreshAMine(user);
+			userService.updateUser(user);
+		}
+
 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
 	}
 	

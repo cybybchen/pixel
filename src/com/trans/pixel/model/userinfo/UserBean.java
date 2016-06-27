@@ -74,12 +74,25 @@ public class UserBean {
 	private int failed = 0;
 	private int shouchongIsComplete = 0;
 	private int shouchongIsGetReward = 0;
-	private long currentTeamid = 0;
+	private long currentTeamid = 1;
 	private int growJewelCount = 0;
 	private int growJewelCountStatus = 0;
 	private int growExpCount = 0;
 	private int growExpCountStatus = 0;
 	private String version = "";
+	private int myactive = 0;
+	/**
+	 * 当前活跃度
+	 */
+	public int getMyactive() {
+		return myactive;
+	}
+	/**
+	 * 当前活跃度
+	 */
+	public void setMyactive(int myactive) {
+		this.myactive = myactive;
+	}
 	/**
 	 * 当前游戏版本
 	 */

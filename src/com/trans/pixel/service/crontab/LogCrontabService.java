@@ -34,7 +34,7 @@ public class LogCrontabService {
 				if (log == null)
 					break;
 				log += "\n";
-				utilLogger.debug("send to log server " + log);
+				// utilLogger.debug("send to log server " + log);
 //				doc.writeChars(log);
 				netOut.write(log.getBytes());
 				netOut.flush();
