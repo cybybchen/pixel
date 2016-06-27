@@ -211,7 +211,7 @@ public class PvpMapService {
 	}
 
 	public void refreshMine(PVPMap map, List<UserInfo> ranks, Map<String, PVPMine> mineMap, UserBean user, int count){
-		if(!map.getOpened())
+		if(!map.getOpened() || ranks.isEmpty())
 			return;
 		for(int i = 0, enemy = count;i < 10 && enemy > 0; i++){
 			PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
@@ -220,7 +220,9 @@ public class PvpMapService {
 			// 	continue;
 
 			if(redis.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
-				builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
+				int index = redis.nextInt(ranks.size());
+				builder.setOwner(ranks.get(index));
+				ranks.remove(index);
 				redis.saveMine(user.getId(), builder.build());
 				mineMap.put(builder.getId()+"", builder.build());
 
@@ -446,7 +448,10 @@ public class PvpMapService {
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			userService.updateUserDailyData(user);
 			List<UserInfo> ranks = getRandUser(50, user);
-			builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
+			UserInfo owner = ranks.get(redis.nextInt(ranks.size()));
+			if(owner.getId() == builder.getOwner().getId() && ranks.size() > 1)
+				owner = ranks.get(redis.nextInt(ranks.size()));
+			builder.setOwner(owner);
 			redis.saveMine(user.getId(), builder.build());
 		}else{
 			builder.clearOwner();
