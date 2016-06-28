@@ -255,7 +255,7 @@ function updateListJson(action, isback) {
 		updateListData(action, datajson);
 		if(!isback) $(".ul-wapper .ui-listview:visible").scrollTop(0);
 	}else{
-		$.getJSON("http://123.59.144.200/loldataserver/index.php", action, function(json){
+		$.getJSON("http://game.lolzj.cc/loldataserver/index.php", action, function(json){
 			updateListData(action, json);
 			$(".ul-wapper .ui-detailview:visible").scrollTop(0);
 			if(!isback) $(".ul-wapper .ui-listview:visible").scrollTop(0);
@@ -295,10 +295,6 @@ $(function() {
 			if(action.startsWith("action=A1009"))
 				ranktitle = $(this).find("h2").text();
 			updateListJson(action);
-			if($(this).hasClass("btn-navbar")){
-				$(".btn-open").removeClass("btn-open");
-				$(this).addClass("btn-open");
-			}
 		}
 	});
 });
@@ -311,13 +307,15 @@ function resizeContent() {
 	var height = Math.round($(window).height()/scale);
 	// $(".ui-header-fixed h1").html(window.innerWidth+"x"+height);
 	$(".ui-page").css({ "transform": "scale("+scale+")", "margin-top": -height/2 });
-	height = height - 156;
+	$("#background-page").height(height-145);	
+	height = height - 200;
 	$("#listview-page .ul-wapper").height(height);
 	$("#listview-page  .ul-wapper .ui-listview").height(height);
-	height += 82-24;
+	height += 64;
 	$("#detailview-page .ul-wapper").height(height);
-	$("#detailview-page .ul-wapper .ui-detailview-wapper").height(height-16);
-	$("#detailview-page .ul-wapper .ui-detailview").height(height-16);
+	$("#detailview-page .ul-wapper .ui-detailview").height(height);
+	//$("#detailview-page .ul-wapper .ui-detailview-wapper").height(height-16);
+	//$("#detailview-page .ul-wapper .ui-detailview").height(height-16);
 }
 
 String.prototype.startsWith = function(str) {
@@ -380,7 +378,7 @@ var heroicons = {"1":46,
 "102":51,
 "104":52,
 "116":35,
-"122":37}
+"122":37};
 
 function getRare(id){
 	return rares[id];
@@ -1083,7 +1081,7 @@ var rares = {"10001":1,
 "20065":5,
 "20066":5,
 "20067":5,
-"29068":3}
+"29068":3};
 
 function getIcon(id){
 	return icons[id];
@@ -1786,4 +1784,4 @@ var icons = {"10000":10017,
 "20065":12070,
 "20066":12071,
 "20067":12072,
-"29068":12073}
+"29068":12073};
