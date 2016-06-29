@@ -126,6 +126,7 @@ public class HeroCommandService extends BaseCommandService {
 			
 			if (costInfoIds.size() > 0){
 				int addExp = 0;
+				int addCoin = 0;
 				List<RewardBean> rewardList = new ArrayList<RewardBean>();
 				ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
 				HeroInfoBean bean = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), 1);
@@ -141,6 +142,8 @@ public class HeroCommandService extends BaseCommandService {
 						}
 						if(delHeroInfo.getLevel() > 1)
 							addExp += heroService.getDeleteExp(delHeroInfo.getLevel());
+						
+						addCoin += skillService.getResetCoin(delHeroInfo.getSkillInfoList());//升级技能消耗金币
 					}
 					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
 					herobuilder.setHeroId(heroId);
@@ -149,6 +152,8 @@ public class HeroCommandService extends BaseCommandService {
 				}
 				if (addExp > 0)
 					rewardList.add(RewardBean.init(RewardConst.EXP, addExp));
+				if (addCoin > 0)
+					rewardList.add(RewardBean.init(RewardConst.COIN, addCoin));
 				
 				userHeroService.delUserHero(user.getId(), costInfoIds);
 				
@@ -299,6 +304,7 @@ public class HeroCommandService extends BaseCommandService {
 					addCoin += 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
 					if(heroInfo.getLevel() > 1)
 						addExp += heroService.getDeleteExp(heroInfo.getLevel());
+					addCoin += skillService.getResetCoin(heroInfo.getSkillInfoList());//升级技能消耗金币
 				}else{
 					isError = true;
 					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_HAS_FENJIE);
