@@ -206,7 +206,7 @@ public class ManagerService extends RedisService{
 			result.put("GmRight", object);
 		}
 
-		if(req.containsKey("update-VersionController") && gmaccountBean.getCanwrite() == 1){
+		if(req.containsKey("update-VersionController") && gmaccountBean.getMaster() == 1){
 			Map<String, String> map = hget(RedisKey.VERSIONCONTROLLER_PREFIX);
 			JSONObject object = JSONObject.fromObject(req.get("update-VersionController"));
 			for(String key : map.keySet()){
@@ -226,12 +226,12 @@ public class ManagerService extends RedisService{
 				logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "update-VersionController", map.toString());
 			}
 			req.put("VersionController", 1);
-		}else if(req.containsKey("del-VersionController") && gmaccountBean.getCanwrite() == 1){
+		}else if(req.containsKey("del-VersionController") && gmaccountBean.getMaster() == 1){
 			delete(RedisKey.VERSIONCONTROLLER_PREFIX);
 			logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "del-VersionController", "");
 			req.put("VersionController", 1);
 		}
-		if(req.containsKey("VersionController") && gmaccountBean.getCanview() == 1){
+		if(req.containsKey("VersionController") && gmaccountBean.getMaster() == 1){
 			Map<String, String> map = hget(RedisKey.VERSIONCONTROLLER_PREFIX);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
@@ -326,13 +326,19 @@ public class ManagerService extends RedisService{
 			}
 		}
 		
-		if(req.containsKey("del-RedisDatas") && gmaccountBean.getCanwrite() == 1){
+		if(req.containsKey("del-RedisDatas")){
 			JSONArray keys = req.getJSONArray("del-RedisDatas");
-			for(Object key : keys.toArray())
-				delete((String)key);
+			for(Object obj : keys.toArray()){
+				String key = (String)obj;
+				if(gmaccountBean.getMaster() == 1 || key.contains("config"))
+					delete(key);
+			}
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-RedisDatas", keys.toString());
-			result.put("success", "redis数据已删除");
-		}else if(req.containsKey("del-RedisData") && gmaccountBean.getCanwrite() == 1){
+			if(gmaccountBean.getMaster() == 1)
+				result.put("success", "redis数据已删除");
+			else
+				result.put("success", "config已删除");
+		}else if(req.containsKey("del-RedisData") && (gmaccountBean.getMaster() == 1 || req.getString("del-RedisData").contains("config"))){
 			String value = req.getString("del-RedisData");
 			if(value.indexOf(' ') > 0){
 				String[] keys = value.split(" ");
@@ -362,7 +368,7 @@ public class ManagerService extends RedisService{
 				result.put("success", "redis数据已删除");
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-RedisData", value);
 		}
-		if(req.containsKey("RedisData") && gmaccountBean.getCanview() == 1){
+		if(req.containsKey("RedisData") && (gmaccountBean.getMaster() == 1 || req.getString("del-RedisData").contains("config"))){
 			Set<String> keys = keys(req.getString("RedisData"));
 			result.put("RedisData", keys);
 		}
