@@ -75,7 +75,7 @@ public class PvpMapService {
 						userService.updateUserDailyData(user);
 					}
 					
-					List<UserInfo> ranks = getRandUser(50, user);
+					List<UserInfo> ranks = getRandUser(-10, 5, user);
 					if(ranks.size() > 0){
 						Map<String, PVPMine> mineMap = new HashMap<String, PVPMine>();
 						for(PVPMine mine : map.getKuangdianList()){
@@ -93,15 +93,15 @@ public class PvpMapService {
 		return ErrorConst.UNLOCK_ORDER_ERROR;
 	}
 	
-	public List<UserInfo> getRandUser(int count, UserBean user){
+	public List<UserInfo> getRandUser(int index1, int index2, UserBean user){
 		long myrank = rankRedisService.getMyZhanliRank(user);
 		List<UserInfo> ranks = new ArrayList<UserInfo>();
 		if(myrank < 0)
-			ranks = rankRedisService.getZhanliRanks(user, -10, -1);
-		else if(myrank-10 > 0)
-			ranks = rankRedisService.getZhanliRanks(user, myrank-10, myrank+5);
+			ranks = rankRedisService.getZhanliRanks(user, Math.min(index1, -10), -1);
+		else if(myrank+index1 > 0)
+			ranks = rankRedisService.getZhanliRanks(user, myrank+index1, myrank+index2);
 		else
-			ranks = rankRedisService.getZhanliRanks(user, 0, myrank+5);
+			ranks = rankRedisService.getZhanliRanks(user, 0, myrank+index2);
 		// List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
 		// Set<String> members = unionRedisService.getMemberIds(user);
 		Iterator<UserInfo> it = ranks.iterator();
@@ -122,11 +122,11 @@ public class PvpMapService {
 			}
 			if(timeout){
 				rankRedisService.delZhanliRank(user.getServerId(), rank.getId());
-				if(ranks.size() > count)
+				if(ranks.size() > index2 - index1)
 					it.remove();
 			}
 		}
-		while(ranks.size() > count){
+		while(ranks.size() > index2 - index1){
 			ranks.remove(ranks.size()-1);
 		}
 		return ranks;
@@ -163,7 +163,7 @@ public class PvpMapService {
 	public void refreshAMine(UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
-		List<UserInfo> ranks = getRandUser(50, user);//刷新一个对手
+		List<UserInfo> ranks = getRandUser(-10, 5, user);//刷新一个对手
 		List<PVPMap> fields = new ArrayList<PVPMap>();
 		for(PVPMap map : maplist.getFieldList()){
 			if(map.getOpened())
@@ -202,7 +202,7 @@ public class PvpMapService {
 		}
 		int count = getRefreshCount(user);//count=3*enemy
 		if(count > 0){//刷新对手
-			List<UserInfo> ranks = getRandUser(50, user);//每张地图刷新一个对手
+			List<UserInfo> ranks = getRandUser(-10, 5, user);//每张地图刷新一个对手
 			if(ranks.isEmpty())
 				return;
 			for(PVPMap map : maplist.getFieldList())
@@ -456,7 +456,7 @@ public class PvpMapService {
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			userService.updateUserDailyData(user);
-			List<UserInfo> ranks = getRandUser(50, user);
+			List<UserInfo> ranks = getRandUser(0, 10, user);
 			UserInfo owner = ranks.get(redis.nextInt(ranks.size()));
 			if(owner.getId() == builder.getOwner().getId() && ranks.size() > 1)
 				owner = ranks.get(redis.nextInt(ranks.size()));
