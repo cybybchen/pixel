@@ -372,11 +372,12 @@ public class PvpMapService {
 		/**
 		 * PVP攻击玩家的活动
 		 */
-		if(mine.hasOwner())
+		if(mine.hasOwner()){
 			activityService.pvpAttackEnemyActivity(user.getId(), ret);
+			enemyId = mine.getOwner().getId();
+		}
 		if(ret){
 			if(mine.hasOwner()){
-				enemyId = mine.getOwner().getId();
 				long userId = mine.getOwner().getId();
 				mine.setOwner(user.buildShort());
 				mine.setEndTime(redis.now()+24*3600);
