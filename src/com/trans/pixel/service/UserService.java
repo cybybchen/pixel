@@ -114,6 +114,7 @@ public class UserService {
 		user.setRedisTime(now);
 		user.setLoginDays(user.getLoginDays() + 1);
 		user.setSignCount(0);
+		user.setLadderPurchaseTimes(0);
 		user.setLadderModeLeftTimes(5);
 		user.setPurchaseCoinLeft(1);
 		user.setPurchaseCoinTime(0);

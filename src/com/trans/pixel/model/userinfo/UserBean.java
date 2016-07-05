@@ -1009,6 +1009,7 @@ public class UserBean {
 //		builder.setLastLootTime(lastLootTime);
 //		builder.setRefreshLeftTimes(refreshLeftTimes);
 //		builder.setLastLoginTime(lastLoginTime);
+		builder.setLadderPurchaseTimes(ladderPurchaseTimes);
 		builder.setLadderModeLeftTimes(ladderModeLeftTimes);
 //		builder.setLadderModeHistoryTop(ladderModeHistoryTop);
 		builder.setFreeLotteryCoinTime(Math.max(0, (freeLotteryCoinTime-System.currentTimeMillis())/1000));

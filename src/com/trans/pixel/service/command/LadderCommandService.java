@@ -126,6 +126,7 @@ public class LadderCommandService extends BaseCommandService {
 			user.setLadderPurchaseTimes(user.getLadderPurchaseTimes()+1);
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+5);
 			userService.updateUser(user);
+			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
             pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}
 	}
