@@ -27,6 +27,8 @@ import com.trans.pixel.protoc.Commands.LadderEnemy;
 import com.trans.pixel.protoc.Commands.LadderEnemyList;
 import com.trans.pixel.protoc.Commands.LadderName;
 import com.trans.pixel.protoc.Commands.LadderNameList;
+import com.trans.pixel.protoc.Commands.LadderWinReward;
+import com.trans.pixel.protoc.Commands.LadderWinRewardList;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
@@ -59,6 +61,22 @@ public class LadderRedisService extends RedisService{
 		else
 			return builder.build();
 	}
+
+	public LadderWinRewardList getLadderWinRewardList(){
+		LadderWinRewardList.Builder builder = LadderWinRewardList.newBuilder();
+		String value = get(RedisKey.LADDERWIN_CONFIG);
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		String xml = ReadConfig("lol_goldcost.xml");
+		parseXml(xml, builder);
+		int weight = 0;
+		for(LadderWinReward reward : builder.getIdList()){
+			
+		}
+		set(RedisKey.LADDERWIN_CONFIG, formatJson(builder.build()));
+		return builder.build();
+	}
+	
 	
 	public List<UserRankBean> getRankList(final int serverId, final int start, final int end) {
 		return redisTemplate.execute(new RedisCallback<List<UserRankBean>>() {

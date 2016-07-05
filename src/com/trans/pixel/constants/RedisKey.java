@@ -123,6 +123,7 @@ public class RedisKey {
 	public static final String LADDER_RANKING_CONFIG_KEY = PREFIX+CONFIG_PREFIX+"ladder_ranking";
 	public static final String LADDER_DAILY_CONFIG_KEY = PREFIX+CONFIG_PREFIX+"ladder_daily";
 	public static final String LADDER_CHONGZHI_CONFIG = PREFIX+CONFIG_PREFIX+"LadderChongzhi";
+	public static final String LADDERWIN_CONFIG = PREFIX+CONFIG_PREFIX+"LadderWin";
 	
 	//lottery 
 	public static final String LOTTERY_PREFIX = CONFIG_PREFIX+"lottery_";
