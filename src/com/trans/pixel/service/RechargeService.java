@@ -108,7 +108,7 @@ public class RechargeService {
 		return rmb;
 	}
 	
-	public void recharge(UserBean user, int productid, String company, boolean isCheat){
+	public int recharge(UserBean user, int productid, String company, boolean isCheat){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		Rmb rmb = rechargeRedisService.getRmb(productid);
 		int itemId = rmb.getItemid();
@@ -192,14 +192,17 @@ public class RechargeService {
 			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", company, 1);
 			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
 		}
+		
+		return rmb.getRmb() * 100;
 	}
 	
 	public void doRecharge(Map<String, String> params, boolean isCheat) {
 		RechargeBean recharge = initRechargeBean(params);
-		rechargeRedisService.addRechargeRecord(recharge);
 
 		UserBean user = userService.getOther(recharge.getUserId());
-		recharge(user, recharge.getProductId(), recharge.getCompany(), isCheat);
+		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), isCheat));
+		
+		rechargeRedisService.addRechargeRecord(recharge);
 	}
 	
 	/**
