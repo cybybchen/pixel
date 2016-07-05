@@ -157,7 +157,7 @@ public class LotteryCommandService extends BaseCommandService {
 			if(user.getFreeLotteryCoinLeftTime() > 0)
 				user.setFreeLotteryCoinTime(System.currentTimeMillis()+10*60*1000);
 			else
-				user.setFreeLotteryCoinTime(userService.nextDay()*1000L);
+				user.setFreeLotteryCoinTime(userService.nextDay(0)*1000L);
 		}
 		
 		userService.updateUser(user);

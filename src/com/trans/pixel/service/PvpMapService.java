@@ -194,6 +194,7 @@ public class PvpMapService {
 				UserInfo owner = userService.getCache(user.getServerId(), mine.getOwner().getId());
 				PVPMine.Builder builder = PVPMine.newBuilder(mine);
 				builder.setOwner(owner);
+				builder.setPvpyield((int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 11), Math.min(2, owner.getZhanli()/(user.getZhanliMax()+1))));
 				entry.setValue(builder.build());
 			}else if(redis.now() > mine.getEndTime()){
 				it.remove();
@@ -255,10 +256,15 @@ public class PvpMapService {
 			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 			List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
 			refreshMine(maplist, mineMap, user);
+			String buff = pvpMap.get("0");
+			if(buff != null)
+				maplist.setBuff(Integer.parseInt(buff));
+			else
+				maplist.setBuff(0);
 			for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
 				if(!mapBuilder.getOpened())
 					continue;
-				String buff = pvpMap.get(mapBuilder.getFieldid()+"");
+				buff = pvpMap.get(mapBuilder.getFieldid()+"");
 				if(buff != null)
 					mapBuilder.setBuff(Integer.parseInt(buff));
 				else{
@@ -416,6 +422,11 @@ public class PvpMapService {
 				mine.clearOwner();
 				mine.setEnemyid(userId);
 				redis.saveMine(user.getId(), mine.build());
+
+				UserInfo enemy = userService.getCache(user.getServerId(), userId);
+				rewardService.doReward(user.getId(), RewardConst.PVPCOIN, (int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 11), Math.min(2, enemy.getZhanli()/(user.getZhanliMax()+1))));
+				
+				redis.addUserBuff(user, 0, 1);
 			}
 		}
 

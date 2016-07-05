@@ -408,4 +408,7 @@ public class UserService {
 	public int nextInt(int value){
 		return userRedisService.nextInt(value);
 	}
+	public long nextDay(int hour){
+		return userRedisService.nextDay(hour);
+	}
 }
