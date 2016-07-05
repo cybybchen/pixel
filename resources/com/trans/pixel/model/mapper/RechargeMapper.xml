@@ -3,8 +3,8 @@
 <mapper namespace="com.trans.pixel.model.mapper.RechargeMapper">
 
 	<insert id="insertUserRechargeRecord" parameterType="com.trans.pixel.model.RechargeBean">
-		INSERT INTO recharge(user_id, product_id, company, order_id, order_time, server_id)
-		VALUES(#{userId}, #{productId}, #{company}, #{orderId}, #{orderTime}, #{serverId})
+		INSERT INTO recharge(user_id, product_id, company, order_id, order_time, server_id, rmb)
+		VALUES(#{userId}, #{productId}, #{company}, #{orderId}, #{orderTime}, #{serverId}, #{rmb})
 	</insert>
 
 </mapper>

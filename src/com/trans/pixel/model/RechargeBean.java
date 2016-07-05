@@ -8,6 +8,7 @@ public class RechargeBean {
 	private String orderId = "";
 	private String orderTime = "";
 	private int serverId = 0;
+	private int rmb = 0;
 	public long getId() {
 		return id;
 	}
@@ -49,5 +50,11 @@ public class RechargeBean {
 	}
 	public void setServerId(int serverId) {
 		this.serverId = serverId;
+	}
+	public int getRmb() {
+		return rmb;
+	}
+	public void setRmb(int rmb) {
+		this.rmb = rmb;
 	}
 }
