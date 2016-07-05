@@ -78,6 +78,11 @@ public class PvpMapRedisService extends RedisService{
 		int buff = 0;
 		if(value != null)
 			buff = Integer.parseInt(value);
+		if(id == 0){
+			buff += buffcount;
+			saveUserBuff(user, id, buff);
+			return buff;
+		}
 		PVPMapList.Builder maplist = getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap map : maplist.getFieldList()){
 			if(map.getFieldid() == id){
