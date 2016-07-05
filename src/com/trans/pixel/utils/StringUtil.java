@@ -26,6 +26,8 @@ public class StringUtil {
     private static final int LETTER_AND_DIGIT_LENGTH = LETTER_AND_DIGIT.length;
     /** 字母字典长度 */
     private static final int LETTER_LENGTH = LETTER.length;
+    
+    private static final String FILTER_STRING = "[^a-zA-Z0-9\\-]";
 
     private StringUtil() {
     }
@@ -217,5 +219,11 @@ public class StringUtil {
         return a;
 
     }
+    
+    public static String filter(String character)
+	  {
+	    character = character.replaceAll(FILTER_STRING, "");
+	    return character;
+	  }
 
 }

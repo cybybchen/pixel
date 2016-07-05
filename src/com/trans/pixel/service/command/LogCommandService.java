@@ -13,6 +13,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.utils.StringUtil;
 
 @Service
 public class LogCommandService extends BaseCommandService {
@@ -48,7 +49,7 @@ public class LogCommandService extends BaseCommandService {
 		params.put(LogString.ACTION, "" + cmd.getAction());
 		params.put(LogString.CHANNEL, cmd.getChannel());
 		params.put(LogString.RECHARGE_TYPE, "" + cmd.getRechargetype());
-		params.put(LogString.IDFA, cmd.getIdfa());
+		params.put(LogString.IDFA, StringUtil.filter(cmd.getIdfa()));
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
 		
