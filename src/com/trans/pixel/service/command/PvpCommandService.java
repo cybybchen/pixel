@@ -62,6 +62,7 @@ public class PvpCommandService extends BaseCommandService {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
 		builder.addAllField(maplist.getFieldList());
+		builder.setBuff(maplist.getBuff());
 		builder.setEndTime(user.getRefreshPvpMapTime());
 		responseBuilder.setPvpMapListCommand(builder);
 	}

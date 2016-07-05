@@ -1693,6 +1693,7 @@ message RequestRefreshPVPMineCommand {//刷新pvp矿点对手
 message ResponsePVPMapListCommand {//挂机PVP列表
 	repeated PVPMap field = 1;
 	optional int64 endTime = 2;
+	optional int32 buff = 3;
 }
 
 message RequestSignCommand {
