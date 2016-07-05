@@ -68,6 +68,7 @@ import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
@@ -358,6 +359,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
+	
+	protected abstract boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -1027,6 +1030,11 @@ public abstract class RequestScreen implements RequestHandle {
                 result = handleCommand(cmd, responseBuilder, user);//GetGrowExpCommand
         }//GetGrowExpCommand
         //call handleCommand here
+        if (request.hasPurchaseLadderTimeCommand()) {
+            RequestPurchaseLadderTimeCommand cmd = request.getPurchaseLadderTimeCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
         if (request.hasHeroLevelUpToCommand()) {
             RequestHeroLevelUpToCommand cmd = request.getHeroLevelUpToCommand();
             if (result)

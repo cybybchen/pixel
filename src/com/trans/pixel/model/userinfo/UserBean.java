@@ -33,6 +33,7 @@ public class UserBean {
 	private String lastLoginTime = "";
 	private String registerTime = "";
 	private long redisTime = 0;
+	private int ladderPurchaseTimes = 0;
 	private int ladderModeLeftTimes = 0;
 	private long ladderModeHistoryTop = 2501;
 	private long freeLotteryCoinTime = 0;
@@ -652,6 +653,18 @@ public class UserBean {
 	}
 	public void setRedisTime(long time) {
 		this.redisTime = time;
+	}
+	/**
+	 * 天梯
+	 */
+	public int getLadderPurchaseTimes() {
+		return ladderPurchaseTimes;
+	}
+	/**
+	 * 天梯
+	 */
+	public void setLadderPurchaseTimes(int ladderPurchaseTimes) {
+		this.ladderPurchaseTimes = ladderPurchaseTimes;
 	}
 	/**
 	 * 剩余天梯次数

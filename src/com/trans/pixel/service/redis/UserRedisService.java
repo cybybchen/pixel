@@ -26,7 +26,7 @@ import com.trans.pixel.protoc.Commands.VipList;
 public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
 
-	public final static String VIP = RedisKey.PREFIX+"Vip";
+	public final static String VIP = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip";
 	
 	public <T> UserBean getUser(T userId) {
 		String value = hget(RedisKey.USERDATA+userId, "UserData");

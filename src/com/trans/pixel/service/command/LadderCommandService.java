@@ -13,11 +13,13 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.LadderChongzhi;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetLadderRankListCommand;
@@ -26,6 +28,7 @@ import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
@@ -47,6 +50,8 @@ public class LadderCommandService extends BaseCommandService {
 	private ActivityService activityService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private CostService costService;
 	@Resource
 	private LogService logService;
 	
@@ -104,6 +109,24 @@ public class LadderCommandService extends BaseCommandService {
 			builder.setCode(result.getCode());
 			builder.setMsg(result.getMesssage());
 			responseBuilder.setMessageCommand(builder.build());
+		}
+	}
+	
+	public void purchaseLadderTime(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderChongzhi chongzhi = ladderService.getLadderChongzhi(user.getLadderPurchaseTimes());
+		if(chongzhi == null){
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES);
+            responseBuilder.setErrorCommand(errorCommand);
+            pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		}else if(!costService.cost(user, chongzhi.getCurrency(), chongzhi.getCost())){
+			ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(chongzhi.getCurrency()));
+            responseBuilder.setErrorCommand(errorCommand);
+            pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		}else{
+			user.setLadderPurchaseTimes(user.getLadderPurchaseTimes()+1);
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+5);
+			userService.updateUser(user);
+            pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}
 	}
 	

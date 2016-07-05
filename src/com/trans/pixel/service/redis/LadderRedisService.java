@@ -21,6 +21,8 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.LadderChongzhi;
+import com.trans.pixel.protoc.Commands.LadderChongzhiList;
 import com.trans.pixel.protoc.Commands.LadderEnemy;
 import com.trans.pixel.protoc.Commands.LadderEnemyList;
 import com.trans.pixel.protoc.Commands.LadderName;
@@ -36,6 +38,27 @@ public class LadderRedisService extends RedisService{
 	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
+	
+	public LadderChongzhi getLadderChongzhi(int count){
+		String value = hget(RedisKey.LADDER_CHONGZHI_CONFIG, count+"");
+		LadderChongzhi.Builder builder = LadderChongzhi.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		String xml = ReadConfig("lol_ladderchongzhi.xml");
+		LadderChongzhiList.Builder listbuilder = LadderChongzhiList.newBuilder();
+		parseXml(xml, listbuilder);
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		for(LadderChongzhi chongzhi : listbuilder.getCountList()){
+			keyvalue.put(chongzhi.getCount()+"", formatJson(chongzhi));
+			if(chongzhi.getCount() == count)
+				builder.mergeFrom(chongzhi);
+		}
+		hputAll(RedisKey.LADDER_CHONGZHI_CONFIG, keyvalue);
+		if(builder.getCost() == 0)
+			return null;
+		else
+			return builder.build();
+	}
 	
 	public List<UserRankBean> getRankList(final int serverId, final int start, final int end) {
 		return redisTemplate.execute(new RedisCallback<List<UserRankBean>>() {

@@ -87,6 +87,15 @@ message ShopWillList {
 	repeated ShopWill shop = 1;
 }
 
+message LadderChongzhi {
+	optional int32 count = 1;
+	optional int32 currency = 2;
+	optional int32 cost = 3;
+}
+message LadderChongzhiList {
+	repeated LadderChongzhi count = 1;
+}
+
 message Cdkey {
 	required int32 id = 1;
 	optional string name = 2;
@@ -1268,6 +1277,9 @@ message RequestGetLadderUserInfoCommand {
 	required uint64 rank = 1;
 }
 
+message RequestPurchaseLadderTimeCommand {
+}
+
 message ResponseGetLadderUserInfoCommand {
 	required UserRank userRank = 1;
 }
@@ -1994,6 +2006,7 @@ message RequestCommand {
 	optional RequestPurchaseVipLibaoCommand purchaseVipLibaoCommand = 141;
 	optional RequestGetGrowJewelCommand getGrowJewelCommand = 149;
 	optional RequestGetGrowExpCommand getGrowExpCommand = 150;
+	optional RequestPurchaseLadderTimeCommand purchaseLadderTimeCommand = 152;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;

@@ -32,6 +32,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
+import com.trans.pixel.protoc.Commands.LadderChongzhi;
 import com.trans.pixel.protoc.Commands.LadderEnemy;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -77,6 +78,9 @@ public class LadderService {
         }
 	};
 
+	public LadderChongzhi getLadderChongzhi(int count){
+		return ladderRedisService.getLadderChongzhi(count);
+	}
 	
 	private List<Long> getRelativeRanks(long rank) {
 		List<Long> rankList = new ArrayList<Long>();

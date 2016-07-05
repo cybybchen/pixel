@@ -194,7 +194,7 @@ public class PvpMapService {
 				UserInfo owner = userService.getCache(user.getServerId(), mine.getOwner().getId());
 				PVPMine.Builder builder = PVPMine.newBuilder(mine);
 				builder.setOwner(owner);
-				builder.setPvpyield((int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 11), Math.min(2, owner.getZhanli()/(user.getZhanliMax()+1))));
+				builder.setPvpyield((int)Math.pow(mine.getYield()*Math.min(mine.getLevel()+1, 11), Math.min(1.5, owner.getZhanli()/(user.getZhanliMax()+1))));
 				entry.setValue(builder.build());
 			}else if(redis.now() > mine.getEndTime()){
 				it.remove();
@@ -430,7 +430,7 @@ public class PvpMapService {
 				if(isme){
 					redis.addUserBuff(user, 0, 1);
 					UserInfo enemy = userService.getCache(user.getServerId(), userId);
-					reward.setCount((int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 11), Math.min(2, enemy.getZhanli()/(user.getZhanliMax()+1))));
+					reward.setCount((int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 11), Math.min(1.5, enemy.getZhanli()/(user.getZhanliMax()+1))));
 					rewardService.doReward(user, reward.build());
 				}
 			}
@@ -481,6 +481,7 @@ public class PvpMapService {
 			if(owner.getId() == builder.getOwner().getId() && ranks.size() > 1)
 				owner = ranks.get(redis.nextInt(ranks.size()));
 			builder.setOwner(owner);
+			builder.setPvpyield((int)Math.pow(mine.getYield()*Math.min(mine.getLevel()+1, 11), Math.min(1.5, owner.getZhanli()/(user.getZhanliMax()+1))));
 			redis.saveMine(user.getId(), builder.build());
 		}else{
 			builder.clearOwner();
