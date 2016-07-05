@@ -366,13 +366,15 @@ public class PvpMapService {
 //		logger.warn(monster.getFieldid()+":+"+monster.getName()+ret+":"+monster.getBuffcount()+"->"+buff);
 		return rewards.build();
 	}
-	
-	public boolean attackMine(UserBean user, int id, boolean ret, int time){
+
+	public RewardInfo attackMine(UserBean user, int id, boolean ret, int time, boolean isme){
+		RewardInfo.Builder reward = RewardInfo.newBuilder();
+		reward.setItemid(RewardConst.PVPCOIN);
 		long enemyId = 0;
 		int logType = PvpMapConst.TYPE_ATTACK;
 		PVPMine pvpmine = redis.getMine(user.getId(), id);
 		if(pvpmine == null)
-			return false;
+			return null;
 		PVPMine.Builder mine = PVPMine.newBuilder(pvpmine);
 		if (mine.getLevel() > 0)
 			logType = PvpMapConst.TYPE_DEFEND;
@@ -423,20 +425,24 @@ public class PvpMapService {
 				mine.clearOwner();
 				mine.setEnemyid(userId);
 				redis.saveMine(user.getId(), mine.build());
-
-				UserInfo enemy = userService.getCache(user.getServerId(), userId);
-				rewardService.doReward(user.getId(), RewardConst.PVPCOIN, (int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 11), Math.min(2, enemy.getZhanli()/(user.getZhanliMax()+1))));
 				
-				redis.addUserBuff(user, 0, 1);
+				if(isme){
+					redis.addUserBuff(user, 0, 1);
+					UserInfo enemy = userService.getCache(user.getServerId(), userId);
+					reward.setCount((int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 11), Math.min(2, enemy.getZhanli()/(user.getZhanliMax()+1))));
+					rewardService.doReward(user, reward.build());
+				}
 			}
 		}
 
-		user.setMyactive(user.getMyactive()+5+redis.nextInt(11));
-		if(user.getMyactive() >= 100){
-			user.setMyactive(user.getMyactive() - 100);
-			refreshAMine(user);
+		if(isme){
+			user.setMyactive(user.getMyactive()+5+redis.nextInt(11));
+			if(user.getMyactive() >= 100){
+				user.setMyactive(user.getMyactive() - 100);
+				refreshAMine(user);
+			}
+			userService.updateUser(user);
 		}
-		userService.updateUser(user);
 
 		/**
 		 * send log
@@ -444,7 +450,7 @@ public class PvpMapService {
 		
 		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), userTeamService.getTeamCache(enemyId).getHeroInfoList(), enemyId, mine.getLevel());
 		
-		return true;
+		return reward.build();
 	}
 	
 	public boolean refreshMap(UserBean user){

@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMineInfoCommand;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
@@ -111,10 +112,13 @@ public class PvpCommandService extends BaseCommandService {
 		int time = 0;
 		if (cmd.hasTime())
 			time = cmd.getTime();
-		if(!pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time)) {
+		RewardInfo reward = pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time, true);
+		if(reward == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
+		}else if(reward.hasCount()){
+			pusher.pushRewardCommand(responseBuilder, user, reward.getItemid(), "", reward.getCount());
 		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
@@ -137,7 +141,8 @@ public class PvpCommandService extends BaseCommandService {
 		int time = 0;
 		if (cmd.hasTime())
 			time = cmd.getTime();
-		if(!pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time)) {
+		RewardInfo reward = pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time, false);
+		if(reward == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));

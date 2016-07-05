@@ -293,7 +293,7 @@ public class PushCommandService extends BaseCommandService {
 	/**
 	 * Include RewardCommand
 	 */
-	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId, String rewardName, int rewardCount) {
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId, String rewardName, long rewardCount) {
 		RewardCommand.Builder reward = RewardCommand.newBuilder();
 		RewardInfo.Builder builder = RewardInfo.newBuilder();
 		builder.setItemid(rewardId);
