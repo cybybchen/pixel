@@ -36,6 +36,7 @@ public class UserBean {
 	private int ladderModeLeftTimes = 0;
 	private long ladderModeHistoryTop = 2501;
 	private long freeLotteryCoinTime = 0;
+	private int freeLotteryCoinLeftTime = 5;
 	private long freeLotteryJewelTime = 0;
 	private int dailyShopRefreshTime = 0;
 	private int blackShopRefreshTime = 0;
@@ -790,6 +791,12 @@ public class UserBean {
 	public void setFreeLotteryCoinTime(long freeLotteryCoinTime) {
 		this.freeLotteryCoinTime = freeLotteryCoinTime;
 	}
+	public int getFreeLotteryCoinLeftTime() {
+		return freeLotteryCoinLeftTime;
+	}
+	public void setFreeLotteryCoinLeftTime(int freeLotteryCoinLeftTime) {
+		this.freeLotteryCoinLeftTime = freeLotteryCoinLeftTime;
+	}
 	public long getFreeLotteryJewelTime() {
 		return freeLotteryJewelTime;
 	}
@@ -919,8 +926,8 @@ public class UserBean {
 		setJewel(0);
 		setExp(0);
 		setHeroLimit(30);
-//		setFreeLotteryCoinTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (22 - 0.25)));
-		setFreeLotteryJewelTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (46 - 1)));
+		setFreeLotteryCoinTime(System.currentTimeMillis());
+		setFreeLotteryJewelTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (22 - 1)));
 		return this;
 	}
 	public UserInfo buildShort() {
@@ -991,8 +998,9 @@ public class UserBean {
 //		builder.setLastLoginTime(lastLoginTime);
 		builder.setLadderModeLeftTimes(ladderModeLeftTimes);
 //		builder.setLadderModeHistoryTop(ladderModeHistoryTop);
-		builder.setFreeLotteryCoinTime(Math.max(0, (int)((freeLotteryCoinTime + 22 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
-		builder.setFreeLotteryJewelTime(Math.max(0, (int)((freeLotteryJewelTime + 46 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
+		builder.setFreeLotteryCoinTime(freeLotteryCoinTime/1000);
+		builder.setFreeLotteryCoinLeftTime(freeLotteryCoinLeftTime);
+		builder.setFreeLotteryJewelTime(Math.max(0, (int)((freeLotteryJewelTime + 22 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setPVPMineLeftTime(pvpMineLeftTime);
 		builder.setSignCount(signCount);
 		builder.setLoginDays(loginDays);

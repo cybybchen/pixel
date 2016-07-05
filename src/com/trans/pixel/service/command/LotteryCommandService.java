@@ -145,26 +145,23 @@ public class LotteryCommandService extends BaseCommandService {
 		if (count == 10)
 			return false;
 		
-		long lastFreeTime = user.getFreeLotteryCoinTime();
-		if (type == RewardConst.JEWEL)
-			lastFreeTime = user.getFreeLotteryJewelTime();
+		if(type == RewardConst.JEWEL && user.getFreeLotteryJewelTime() > System.currentTimeMillis() - 22 * TimeConst.MILLIONSECONDS_PER_HOUR)
+			return false;
+		if(type == RewardConst.COIN && user.getFreeLotteryCoinTime() > System.currentTimeMillis())
+			return false;
 		
-		long delTime = 0;
 		if (type == RewardConst.JEWEL)
-			delTime = System.currentTimeMillis() - (lastFreeTime + 46 * TimeConst.MILLIONSECONDS_PER_HOUR);
-		else
-			delTime = System.currentTimeMillis() - (lastFreeTime + 22 * TimeConst.MILLIONSECONDS_PER_HOUR);
-		if (delTime > 0) {
-			if (type == RewardConst.JEWEL)
-				user.setFreeLotteryJewelTime(System.currentTimeMillis());
+			user.setFreeLotteryJewelTime(System.currentTimeMillis());
+		else{
+			user.setFreeLotteryCoinLeftTime(Math.max(0, user.getFreeLotteryCoinLeftTime()-1));
+			if(user.getFreeLotteryCoinLeftTime() > 0)
+				user.setFreeLotteryCoinTime(System.currentTimeMillis()+10*60*1000);
 			else
-				user.setFreeLotteryCoinTime(System.currentTimeMillis());
-			
-			userService.updateUser(user);
-			return true;
+				user.setFreeLotteryCoinTime(userService.nextDay()*1000L);
 		}
 		
-		return false;
+		userService.updateUser(user);
+		return true;
 	}
 	
 	private int getLotteryCost(int type, int count) {
