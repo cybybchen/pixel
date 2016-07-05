@@ -370,6 +370,7 @@ public class PvpMapService {
 	public RewardInfo attackMine(UserBean user, int id, boolean ret, int time, boolean isme){
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(RewardConst.PVPCOIN);
+		reward.setCount(0);
 		long enemyId = 0;
 		int logType = PvpMapConst.TYPE_ATTACK;
 		PVPMine pvpmine = redis.getMine(user.getId(), id);

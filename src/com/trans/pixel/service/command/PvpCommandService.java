@@ -117,7 +117,7 @@ public class PvpCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
-		}else if(reward.hasCount()){
+		}else if(reward.getCount() > 0){
 			pusher.pushRewardCommand(responseBuilder, user, reward.getItemid(), "", reward.getCount());
 		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
