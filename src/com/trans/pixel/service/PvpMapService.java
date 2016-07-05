@@ -370,9 +370,10 @@ public class PvpMapService {
 	public boolean attackMine(UserBean user, int id, boolean ret, int time){
 		long enemyId = 0;
 		int logType = PvpMapConst.TYPE_ATTACK;
-		PVPMine.Builder mine = PVPMine.newBuilder(redis.getMine(user.getId(), id));
-		if(mine == null)
+		PVPMine pvpmine = redis.getMine(user.getId(), id);
+		if(pvpmine == null)
 			return false;
+		PVPMine.Builder mine = PVPMine.newBuilder(pvpmine);
 		if (mine.getLevel() > 0)
 			logType = PvpMapConst.TYPE_DEFEND;
 		/**
