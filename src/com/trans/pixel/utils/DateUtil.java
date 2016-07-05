@@ -594,6 +594,20 @@ public class DateUtil {
 		return false;
 	}
 	
+	public static boolean timeIsBefore(String time1, String time2) {
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+		Date date1 = null;
+		Date date2 = null;
+		try {
+			date1 = df.parse(time1);
+			date2 = df.parse(time2);
+		} catch (ParseException e) {
+			
+		}  
+		
+		return date1.before(date2);
+	}
+	
 	public static boolean timeIsOver(String endTimeStr) {
 		return timeIsOver(endTimeStr, TimeConst.DEFAULT_DATETIME_FORMAT);
 	}

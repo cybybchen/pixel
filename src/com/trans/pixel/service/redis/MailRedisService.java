@@ -37,6 +37,9 @@ public class MailRedisService {
 				while (bhOps.hasKey("" + mailId)) {
 					mailId++;
 				}
+				if (mail.getType() == MailConst.TYPE_MINE_ATTACKED_MAIL && bhOps.size() >= MailConst.MAIL_SPECIAL_COUNT_MAX) {
+					delExtraMail(mail.getUserId(), mail.getType(), bhOps.size());
+				}
 				if (bhOps.size() >= MailConst.MAIL_COUNT_MAX_ONTTYPE) {
 					bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 					return null;
@@ -206,5 +209,22 @@ public class MailRedisService {
 	
 	private String buildMailRedisKey(long userId, int type) {
 		return RedisKey.PREFIX + RedisKey.MAIL_PREFIX + userId + RedisKey.SPLIT + type;
+	}
+	
+	private void delExtraMail(long userId, int type, long size) {
+		MailBean delMail = null;
+		for (int i = 0; i < size; ++i) {
+			MailBean theMail = getMailByTypeAndId(userId, type, i);
+			if (theMail == null)
+				continue;
+			
+			if (delMail == null)
+				delMail = theMail;
+			
+			if (DateUtil.timeIsBefore(theMail.getStartDate(), delMail.getStartDate()))
+				delMail = theMail;
+		}
+		if (delMail != null)
+			deleteMail(userId, type, delMail.getId());
 	}
 }
