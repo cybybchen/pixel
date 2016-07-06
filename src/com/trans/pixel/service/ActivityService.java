@@ -237,6 +237,8 @@ public class ActivityService {
 		 * 参与pk
 		 */
 		sendRichangScore(userId, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
+		if (ret)
+			sendRichangScore(userId, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
 	}
 	
 	public void pvpAttackBossSuccessActivity(long userId) {

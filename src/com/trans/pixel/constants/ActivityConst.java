@@ -14,6 +14,10 @@ public class ActivityConst {
 	 */
 	public static final int LEIJI_COST_JEWEL = 3;
 	/**
+	 * 征战世界夺回矿点
+	 */
+	public static final int PVP_ATTACK_ENEMY_SUCCESS = 10;
+	/**
 	 * 累计钻石抽奖
 	 */
 	public static final int RICHANG_LEIJI_LOTTERY_JEWEL = 305;
