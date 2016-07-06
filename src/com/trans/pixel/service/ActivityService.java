@@ -533,7 +533,7 @@ public class ActivityService {
 	
 	private boolean isCompleteNewKaifu(UserKaifu uk, UserBean user) {
 		Kaifu kaifu = activityRedisService.getKaifu(uk.getType());
-		if (kaifu.getLasttime() < getKaifuDays(user.getServerId()))
+		if (kaifu.getLasttime() > 0 && kaifu.getLasttime() < getKaifuDays(user.getServerId()))
 //		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
 			return false;
 		
