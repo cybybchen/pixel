@@ -473,9 +473,9 @@ public class ActivityService {
 			Kaifu kaifu = entry.getValue();
 			if (kaifu.getTargetid() == type) {
 				UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), kaifu.getId()));
-				if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.DANBI_RECHARGE)
-					uk.setCompleteCount(count);
-				else
+				if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.DANBI_RECHARGE) {
+					uk.setCompleteCount(Math.max(count, uk.getCompleteCount()));
+				} else
 					uk.setCompleteCount(uk.getCompleteCount() + count);
 				
 				/**
@@ -531,7 +531,8 @@ public class ActivityService {
 	
 	private boolean isCompleteNewKaifu(UserKaifu uk, UserBean user) {
 		Kaifu kaifu = activityRedisService.getKaifu(uk.getType());
-		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
+		if (kaifu.getLasttime() < getKaifuDays(user.getServerId()))
+//		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
 			return false;
 		
 		List<ActivityOrder> orderList = kaifu.getOrderList();
