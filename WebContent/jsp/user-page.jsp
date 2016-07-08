@@ -53,7 +53,7 @@
 	</div><!-- /navmenu -->
 
 	<div role="main" class="ui-content jqm-content">
-		<a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-d ui-btn-icon-notext ui-btn-inline" style="position:absolute;right:5px;" onclick="popupUsersPanel();">UsersPanel</a>
+		<a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-d ui-btn-icon-notext ui-btn-inline" style="position:absolute;right:5px;z-index:999;" onclick="popupUsersPanel();">UsersPanel</a>
 		<div data-role="controlgroup" id="user-controlgroup" class="ui-btn-inline">
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 			<!-- <a href="#" class="nav-btn ui-btn ui-btn-inline" userid="2">Anchor</a> -->
