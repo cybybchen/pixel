@@ -1833,6 +1833,42 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("VipLibaoConfig", object);
 		}
+		if(req.containsKey("del-VipConfig")){
+			delete(RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip");
+			req.put("VipConfig", 1);
+		}
+		if(req.containsKey("VipConfig")){
+			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip");
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("VipConfig", object);
+		}
+		if(req.containsKey("del-RmbConfig")){
+			delete(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
+			req.put("RmbConfig", 1);
+		}
+		if(req.containsKey("RmbConfig")){
+			String object = get(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
+			result.put("RmbConfig", object);
+		}
+		if(req.containsKey("del-Rmb1Config")){
+			delete(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
+			req.put("Rmb1Config", 1);
+		}
+		if(req.containsKey("Rmb1Config")){
+			String object = get(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
+			result.put("Rmb1Config", object);
+		}
+		if(req.containsKey("del-ActivityRichangConfig")){
+			delete(RedisKey.ACTIVITY_RICHANG_KEY);
+			req.put("ActivityRichangConfig", 1);
+		}
+		if(req.containsKey("ActivityRichangConfig")){
+			Map<String, String> map = hget(RedisKey.ACTIVITY_RICHANG_KEY);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("ActivityRichangConfig", object);
+		}
 		
 		if (req.containsKey("del-blackDatas") && gmaccountBean.getCanwrite() == 1) {
 			String blackType = req.getString("blackType");
@@ -1925,7 +1961,7 @@ public class ManagerService extends RedisService{
 		}
 		
 		if(result.entrySet().size() <= 3)
-			result.put("error", "未找到有效的请求，请确认你的权限！");
+			result.put("error", "无效的请求或无效的权限！");
 		
 		return result;
 	}

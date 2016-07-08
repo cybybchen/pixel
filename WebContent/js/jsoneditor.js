@@ -80,7 +80,7 @@ function addUserTab(){
     }
     if(!checked){
         var text = "S"+serverid+"."+username;
-        var $el = $( '<a href="#" userid="'+userid+'" onclick="requestUserJson('+userid+', \''+username+'\', '+serverid+')" class="nav-userbtn nav-btn ui-btn ui-btn-inline">' + text + "</a>" );
+        var $el = $( '<a href="#" userid="'+userid+'" title="userId:'+userid+'" onclick="requestUserJson('+userid+', \''+username+'\', '+serverid+')" class="nav-userbtn nav-btn ui-btn ui-btn-inline">' + text + '</a>' );
         $("#new-usertab").after($el);
         $el.buttonMarkup();
         $( "#user-controlgroup" ).controlgroup( "refresh" );
@@ -88,7 +88,31 @@ function addUserTab(){
         $($(".nav-userbtn")[0]).addClass("nav-btn-active");
     }
 
-    $("#current-userid").text("UserId: "+userid);
+    $("#current-userid").text("userId: "+userid);
+}
+
+function closeUserTab(id){
+    var navs =  $(".nav-userbtn");
+    for (var i =navs.length - 1; i >= 0; i--) {
+     if($(navs[i]).attr("userid") == id){
+         $(navs[i]).remove();
+         break;
+     }
+    }
+}
+
+function popupUsersPanel(){
+    var content = "";
+    $.each($(".nav-userbtn"), function () {
+        var id = $(this).attr("userid");
+        content += '<li class="ui-li-has-alt"><a href="#" userid="'+id+'" title="userId:'+id+'" onclick="requestUserJson('+id+')" class="ui-btn">'+$(this).text()+'</a><a href="#" userid="'+id+'" onclick="closeUserTab('+id+')" class="ui-btn ui-btn-icon-notext ui-icon-delete" title="close '+id+'"></a></li>'
+    });
+    if(content == "")
+        content = '<li><a href="#" class="ui-btn">Empty</a></li>';
+    else{
+        $("#users-panel ul").html(content);
+        $("#users-panel").popup('open');
+    }
 }
 
 function appendUserData(key, value){
@@ -166,8 +190,7 @@ function requestUserJson(myuserid, myusername, myserverid) {
         dataType: "json",
         success: function (message) {
             json = message;
-            $("#user-editor").empty();
-            appendUserDatas(message);
+            appendUserDatas(message, true);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         	alert("提交数据失败："+XMLHttpRequest.status);
@@ -175,13 +198,56 @@ function requestUserJson(myuserid, myusername, myserverid) {
     });
 }
 
-function appendUserDatas(message){
+function buildUserJson(key, value){
+    var json = {};
+    json["userId"] = userid;
+    json["userName"] = username;
+    json["serverId"] = serverid;
+    json["session"] = session;
+    if(key != null){
+        if(value != null)
+            json[key] = value;
+        else
+            json[key] = 1;
+    }else{
+        var datatype = $("#user-nav .nav-btn-active").attr("data-type");
+        if(datatype == "base"){
+            json["userData"] = 1;
+            json["team"] = 1;
+            json["teamCache"] = 1;
+            json["achieve"] = 1;
+            json["LibaoCount"] = 1;
+        }else if(datatype == "hero"){
+            json["hero"] = 1;
+            json["pokede"] = 1;
+        }else if(datatype == "equip"){
+            json["equip"] = 1;
+            json["prop"] = 1;
+        }else if(datatype == "pvp"){
+            json["areaMonster"] = 1;
+            json["areaBossTime"] = 1;
+            json["areaEquip"] = 1;
+            json["areaBuff"] = 1;
+            json["pvpMonster"] = 1;
+            json["pvpMine"] = 1;
+            json["pvpBuff"] = 1;
+        }else{
+            json["mailList"] = 1;
+            json["friendList"] = 1;
+        }
+    }
+    return json;
+}
+
+function appendUserDatas(message, dirty){
     if(message["error"]!=null){
         alert("ERROR:"+message["error"]);
         if(message["error"].match("Please login") != null)
         	document.location.href='login.jsp';
         return;
     }
+    if(dirty)
+        $("#user-editor").empty();
     if(message["success"]!=null){
     	$("#msg-popup").html(message["success"]);
 	    $("#msg-popup").popup('open');
@@ -277,47 +343,6 @@ function appendUserDatas(message){
     // if(message["LADDERSHOP"]!=null){
     //     appendUserData("LADDERSHOP", message["LADDERSHOP"]);
     // }
-}
-
-function buildUserJson(key, value){
-	var json = {};
-	json["userId"] = userid;
-	json["userName"] = username;
-    json["serverId"] = serverid;
-    json["session"] = session;
-    if(key != null){
-        if(value != null)
-            json[key] = value;
-        else
-            json[key] = 1;
-    }else{
-        var datatype = $("#user-nav .nav-btn-active").attr("data-type");
-        if(datatype == "base"){
-            json["userData"] = 1;
-            json["team"] = 1;
-            json["teamCache"] = 1;
-            json["achieve"] = 1;
-            json["LibaoCount"] = 1;
-        }else if(datatype == "hero"){
-            json["hero"] = 1;
-            json["pokede"] = 1;
-        }else if(datatype == "equip"){
-            json["equip"] = 1;
-            json["prop"] = 1;
-        }else if(datatype == "pvp"){
-            json["areaMonster"] = 1;
-            json["areaBossTime"] = 1;
-            json["areaEquip"] = 1;
-            json["areaBuff"] = 1;
-            json["pvpMonster"] = 1;
-            json["pvpMine"] = 1;
-            json["pvpBuff"] = 1;
-        }else{
-            json["mailList"] = 1;
-            json["friendList"] = 1;
-        }
-    }
-    return json;
 }
 
 //////////////server/////////////////
@@ -428,8 +453,7 @@ function requestServerJson(myserverid) {
         dataType: "json",
         success: function (message) {
             json = message;
-            $("#server-editor").empty();
-            appendServerDatas(message);
+            appendServerDatas(message, true);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("提交数据失败："+XMLHttpRequest.status);
@@ -437,13 +461,44 @@ function requestServerJson(myserverid) {
     });
 }
 
-function appendServerDatas(message){
+function buildServerJson(key, value){
+    var json = {};
+    json["serverId"] = serverid;
+    json["session"] = session;
+    if(key != null){
+        if(value != null)
+            json[key] = value;
+        else
+            json[key] = 1;
+    }else{
+        var datatype = $("#server-nav .nav-btn-active").attr("data-type");
+        if(datatype == "base"){
+            json["areaBoss"] = 1;
+            json["areaResource"] = 1;
+            json["areaResourceMine"] = 1;
+            json["unionList"] = 1;
+          } else if (datatype == "blacknosay") {
+                json["blacknosay"] = 1;
+          } else if (datatype == "blackuser") {
+            json["blackuser"] = 1;
+          } else if (datatype == "blackaccount") {
+            json["blackaccount"] = 1;
+          } else{
+            json["messageBoard"] = 1;
+        }
+    }
+    return json;
+}
+
+function appendServerDatas(message, dirty){
     if(message["error"]!=null){
         alert("ERROR:"+message["error"]);
         if(message["error"].match("Please login") != null)
         	document.location.href='login.jsp';
         return;
     }
+    if(dirty)
+        $("#server-editor").empty();
     if(message["success"]!=null){
     	$("#msg-popup").html(message["success"]);
 	    $("#msg-popup").popup('open');
@@ -475,35 +530,6 @@ function appendServerDatas(message){
     } else{
     	$("#black-data").hide();
     }
-}
-
-function buildServerJson(key, value){
-    var json = {};
-    json["serverId"] = serverid;
-    json["session"] = session;
-    if(key != null){
-        if(value != null)
-            json[key] = value;
-        else
-            json[key] = 1;
-    }else{
-        var datatype = $("#server-nav .nav-btn-active").attr("data-type");
-        if(datatype == "base"){
-            json["areaBoss"] = 1;
-            json["areaResource"] = 1;
-            json["areaResourceMine"] = 1;
-            json["unionList"] = 1;
-          } else if (datatype == "blacknosay") {
-        	  	json["blacknosay"] = 1;
-          } else if (datatype == "blackuser") {
-      	  	json["blackuser"] = 1;
-          } else if (datatype == "blackaccount") {
-      	  	json["blackaccount"] = 1;
-          } else{
-            json["messageBoard"] = 1;
-        }
-    }
-    return json;
 }
 //////////////config/////////////////
 function appendConfigData(key, value, visible){
@@ -577,6 +603,96 @@ function deleteConfigJson(jsondata) {
 //     });
 // }
 
+function buildConfigJson(key, value){
+    var json = {};
+    if(key != null){
+        json["serverId"] = 1;
+        json["session"] = session;
+        if(value != null)
+            json[key] = value;
+        else
+            json[key] = "{}";
+    }else{
+        var datatype = $("#config-nav .nav-btn-active").attr("data-type");
+        if(datatype == "common"){
+            json["RmbConfig"] = "{}";
+            json["Rmb1Config"] = "{}";
+            json["VipConfig"] = "{}";
+            json["ActivityRichangConfig"] = "{}";
+        }else if(datatype == "base"){
+            json["DailyShopConfig"] = "{}";
+            json["ShopConfig"] = "{}";
+            json["BlackShopConfig"] = "{}";
+            json["UnionShopConfig"] = "{}";
+            json["PvpShopConfig"] = "{}";
+            json["ExpeditionShopConfig"] = "{}";
+            json["LadderShopConfig"] = "{}";
+            json["AreaMonsterReward"] = "{}";
+            json["LadderRankingConfig"] = "{}";
+            json["LadderDailyConfig"] = "{}";
+            json["LevelConfig"] = "{}";
+            json["LevelDiffConfig1"] = "{}";
+            json["LevelDiffConfig2"] = "{}";
+            json["LevelDiffConfig3"] = "{}";
+            json["DaguanConfig"] = "{}";
+            json["WinLevelConfig"] = "{}";
+            json["LootLevelConfig"] = "{}";
+            json["HeroUpgradeConfig"] = "{}";
+            json["HeroConfig"] = "{}";
+            json["HeroRareConfig"] = "{}";
+        }else if(datatype == "cdkey"){
+            json["Cdkey"] = "{}";
+        }else if(datatype == "delete"){
+            json["DeleteData"] = "{}";
+        }else if(datatype == "gmright"){
+            json["GmRight"] = "{}";
+            json["VersionController"] = "{}";
+        }else{
+            json["HeroStarConfig"] = "{}";
+            json["LotteryConfig1001"] = "{}";
+            json["LotteryConfig1002"] = "{}";
+            json["LotteryEquipConfig1001"] = "{}";
+            json["LotteryEquipConfig1002"] = "{}";
+            json["EquipConfig"] = "{}";
+            json["ChipConfig"] = "{}";
+            json["SkillConfig"] = "{}";
+            json["SkillLevelConfig"] = "{}";
+            json["PropConfig"] = "{}";
+            json["FenJieConfig"] = "{}";
+            json["TotalSignConfig"] = "{}";
+            json["SignConfig"] = "{}";
+            json["Sign2Config"] = "{}";
+            json["VipLibaoConfig"] = "{}";
+            json["MoHuaConfig"] = "{}";
+            json["MoHuaCardConfig"] = "{}";
+            json["MoHuaJieDuanConfig"] = "{}";
+            json["MoHuaLootConfig"] = "{}";
+            json["AchieveConfig"] = "{}";
+            json["ActivityRiChangConfig"] = "{}";
+            json["ActivityKaiFu2Config"] = "{}";
+            json["ActivityKaiFuConfig"] = "{}";
+            json["AreaEquipConfig"] = "{}";
+            json["AreaMonsterRewardConfig"] = "{}";
+            json["AreaConfig"] = "{}";
+            json["AreaBossConfig"] = "{}";
+            json["AreaBossRandConfig"] = "{}";
+            json["AreaBossRewardConfig"] = "{}";
+            json["AreaMonsterConfig"] = "{}";
+            json["AreaMonsterRandConfig"] = "{}";
+            json["AreaPositionConfig"] = "{}";
+            json["AreaResourceConfig"] = "{}";
+            json["PvpMonsterRewardConfig"] = "{}";
+            json["PvpMonsterConfig"] = "{}";
+            json["PvpBossConfig"] = "{}";
+            json["PvpPositionConfig"] = "{}";
+            json["PvpMapConfig"] = "{}";
+            json["PurchaseCoinConfig"] = "{}";
+            json["PurchaseCoinRewardConfig"] = "{}";
+        }
+    }
+    return json;
+}
+
 function appendConfigDatas(message, visible){
     if(visible == null)
         visible = true;
@@ -590,6 +706,18 @@ function appendConfigDatas(message, visible){
     	$("#msg-popup").html(message["success"]);
 	    $("#msg-popup").popup('open');
 	}
+    if(message["RmbConfig"]!=null){
+        appendConfigData("RmbConfig", message["RmbConfig"], visible);
+    }
+    if(message["Rmb1Config"]!=null){
+        appendConfigData("Rmb1Config", message["Rmb1Config"], visible);
+    }
+    if(message["VipConfig"]!=null){
+        appendConfigData("VipConfig", message["VipConfig"], visible);
+    }
+    if(message["ActivityRichangConfig"]!=null){
+        appendConfigData("ActivityRichangConfig", message["ActivityRichangConfig"], visible);
+    }
     if(message["DailyShopConfig"]!=null){
         appendConfigData("DailyShopConfig", message["DailyShopConfig"], visible);
     }
@@ -888,91 +1016,6 @@ function updateCdkeyUrl(dom){
 	form.attr("action", "cdkey"+value+".txt");
 }
 
-function buildConfigJson(key, value){
-    var json = {};
-    if(key != null){
-        json["serverId"] = 1;
-        json["session"] = session;
-        if(value != null)
-            json[key] = value;
-        else
-            json[key] = "{}";
-    }else{
-        var datatype = $("#config-nav .nav-btn-active").attr("data-type");
-        if(datatype == "base"){
-            json["DailyShopConfig"] = "{}";
-            json["ShopConfig"] = "{}";
-            json["BlackShopConfig"] = "{}";
-            json["UnionShopConfig"] = "{}";
-            json["PvpShopConfig"] = "{}";
-            json["ExpeditionShopConfig"] = "{}";
-            json["LadderShopConfig"] = "{}";
-            json["AreaMonsterReward"] = "{}";
-            json["LadderRankingConfig"] = "{}";
-            json["LadderDailyConfig"] = "{}";
-            json["LevelConfig"] = "{}";
-            json["LevelDiffConfig1"] = "{}";
-            json["LevelDiffConfig2"] = "{}";
-            json["LevelDiffConfig3"] = "{}";
-            json["DaguanConfig"] = "{}";
-            json["WinLevelConfig"] = "{}";
-            json["LootLevelConfig"] = "{}";
-            json["HeroUpgradeConfig"] = "{}";
-            json["HeroConfig"] = "{}";
-            json["HeroRareConfig"] = "{}";
-        }else if(datatype == "cdkey"){
-            json["Cdkey"] = "{}";
-        }else if(datatype == "delete"){
-        	json["DeleteData"] = "{}";
-        }else if(datatype == "gmright"){
-            json["GmRight"] = "{}";
-            json["VersionController"] = "{}";
-        }else{
-            json["HeroStarConfig"] = "{}";
-            json["LotteryConfig1001"] = "{}";
-            json["LotteryConfig1002"] = "{}";
-            json["LotteryEquipConfig1001"] = "{}";
-            json["LotteryEquipConfig1002"] = "{}";
-            json["EquipConfig"] = "{}";
-            json["ChipConfig"] = "{}";
-            json["SkillConfig"] = "{}";
-            json["SkillLevelConfig"] = "{}";
-            json["PropConfig"] = "{}";
-            json["FenJieConfig"] = "{}";
-            json["TotalSignConfig"] = "{}";
-            json["SignConfig"] = "{}";
-            json["Sign2Config"] = "{}";
-            json["VipLibaoConfig"] = "{}";
-            json["MoHuaConfig"] = "{}";
-            json["MoHuaCardConfig"] = "{}";
-            json["MoHuaJieDuanConfig"] = "{}";
-            json["MoHuaLootConfig"] = "{}";
-            json["AchieveConfig"] = "{}";
-            json["ActivityRiChangConfig"] = "{}";
-            json["ActivityKaiFu2Config"] = "{}";
-            json["ActivityKaiFuConfig"] = "{}";
-            json["AreaEquipConfig"] = "{}";
-            json["AreaMonsterRewardConfig"] = "{}";
-            json["AreaConfig"] = "{}";
-            json["AreaBossConfig"] = "{}";
-            json["AreaBossRandConfig"] = "{}";
-            json["AreaBossRewardConfig"] = "{}";
-            json["AreaMonsterConfig"] = "{}";
-            json["AreaMonsterRandConfig"] = "{}";
-            json["AreaPositionConfig"] = "{}";
-            json["AreaResourceConfig"] = "{}";
-            json["PvpMonsterRewardConfig"] = "{}";
-            json["PvpMonsterConfig"] = "{}";
-            json["PvpBossConfig"] = "{}";
-            json["PvpPositionConfig"] = "{}";
-            json["PvpMapConfig"] = "{}";
-            json["PurchaseCoinConfig"] = "{}";
-            json["PurchaseCoinRewardConfig"] = "{}";
-        }
-    }
-    return json;
-}
-
 function getRedisData(){
 	var value = $("#redisdata-keys").val();
 	var json = buildConfigJson("RedisData", value);
@@ -1002,6 +1045,7 @@ $(document).ready(function() {
       animate: false
     });
     $( "#msg-popup" ).enhanceWithin().popup();
+    $( "#users-panel" ).enhanceWithin().popup();
     //////////////user///////////////////
     $("#user-editor").on('click', ".reload-btn", function() {
         var data = buildUserJson($( this ).parent().attr("key"));

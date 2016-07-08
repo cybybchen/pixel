@@ -13,12 +13,18 @@
    /* opacity: .4;
     filter: Alpha(Opacity=40);*/
 }
+.nav-userbtn .ui-icon-delete {
+  display: none;
+}
+.nav-userbtn .nav-btn-active .ui-icon-delete {
+  display: inline-block;
+}
 .jqm-demos .jqm-footer.ui-footer {
     position: absolute;
     bottom: 0;
     padding-bottom: 0;
 }
-#config-controlgroup,#server-controlgroup,#user-controlgroup {
+#config-controlgroup, #server-controlgroup, #user-controlgroup {
   margin: 0;
   white-space:nowrap;
 }
@@ -31,7 +37,7 @@
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.jqm-list .ui-btn:hover {
+.jqm-list .ui-btn:hover, .ui-controlgroup .ui-btn:hover {
   background-color: #555;
 }
 .jqm-list .nav-btn-active, .ui-controlgroup-controls .nav-btn-active {
@@ -93,9 +99,9 @@ jsoneditor .json{
 	background: rgba(0, 0, 0, 0.05);
 }
 @media screen and (min-width: 48em) {
-	.menu-panel{
+/*	.menu-panel{
 		width:25%;
-	}
+	}*/
 	#rewardForm .ui-block-a, #rewardForm .ui-block-b{
 		padding: 10px;
 	}

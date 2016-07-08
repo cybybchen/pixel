@@ -1,7 +1,7 @@
 #game.lolzj.cc
 #serverurl=http://game.lolzj.cc:8080/Lol450/gamedata
 #masterserver=http://game.lolzj.cc:8080/Lol450/datamanager
-#slaveserver=http://localhost:8080/pixel/datamanager,http://game.lolzj.cc:8080/Lol450/datamanager
+#slaveserver=http://game.lolzj.cc:8080/Lol450/datamanager
 
 #123.59.144.200
 #serverurl=http://123.59.144.200:8082/Lol450/gamedata

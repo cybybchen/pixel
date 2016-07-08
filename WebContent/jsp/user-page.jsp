@@ -20,6 +20,11 @@
 	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="addNewUserTab()">Sign in</a>
 		</div>
 	</div>
+	<div data-role="popup" id="users-panel" data-theme="b" data-position="right" data-display="overlay">
+		<ul data-role="listview" data-split-icon="delete" class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview">
+			<li><a href="#" class="ui-btn">Empty</a></li>
+		</ul>
+	</div><!-- /panel -->
 	<!-- <div data-role="popup" id="popupReward" data-theme="a" class="ui-corner-all">
 		<div style="padding:10px 20px;">
 			<h3>Please send reward</h3>
@@ -34,7 +39,7 @@
 	</div> -->
     <div id="user-navmenu-panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay">
     	<ul data-role="listview" id="user-nav" class="jqm-list ui-alt-icon ui-nodisc-icon">
-			<li class="nav-locate" style="background-color: #F6F6F6;">添加用户&nbsp;&nbsp;&rArr;</li>
+			<li class="nav-locate" style="background-color: #F6F6F6;">添加用户&nbsp;&nbsp;&rArr;&nbsp;&nbsp;<span id="current-userid"></span></li>
 			<li data-theme="b" data-icon="home"><a href="#menu-panel">导航【用户】</a></li>
 			<li ><a href="#" onclick='$("#rewardForm").toggle();'>发奖</a></li>
 			<li ><a href="#" class="nav-btn-active" data-type="base">基本</a></li>
@@ -48,11 +53,11 @@
 	</div><!-- /navmenu -->
 
 	<div role="main" class="ui-content jqm-content">
+		<a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-d ui-btn-icon-notext ui-btn-inline" style="position:absolute;right:5px;" onclick="popupUsersPanel();">UsersPanel</a>
 		<div data-role="controlgroup" id="user-controlgroup" class="ui-btn-inline">
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>
 			<!-- <a href="#" class="nav-btn ui-btn ui-btn-inline" userid="2">Anchor</a> -->
 		</div>
-		<small id="current-userid" style="display:block;margin-top:8px;margin-left:50px;font-size: 0.8em;"></small>
 		<form id="rewardForm" class="ui-grid-a" style="display:none;">
 			<div class="ui-block-a">
 	        	<label>RewardId:</label>
