@@ -1,17 +1,12 @@
 .new-tab {
-    width: 2.5em;
-    height: 2.5em;
-    padding: 0;
     background: none;
     border: 0;
     top: 50%;
-    margin: 0 5px;
-    -webkit-border-top-left-radius: 0;
-    border-top-left-radius: 0;
-    -webkit-border-top-right-radius: 0;
-    border-top-right-radius: 0;
    /* opacity: .4;
     filter: Alpha(Opacity=40);*/
+}
+.ui-controlgroup .ui-controlgroup-controls .new-tab:first-child {
+    border-radius: 0px;
 }
 .nav-userbtn .ui-icon-delete {
   display: none;
