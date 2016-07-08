@@ -41,8 +41,9 @@
   color: #fff;
   text-shadow: 0 1px 0 #059;
 }
-.jqm-demos .jqm-list .ui-btn:hover, .jqm-demos .jqm-list .ui-btn:active {
+.jqm-demos .jqm-list .ui-btn:hover, .jqm-demos .jqm-list .ui-btn:active, .ui-controlgroup .ui-btn:hover {
     color: #3388cc;
+    text-shadow: none;
 }
 .jqm-demos .jqm-list .ui-btn, .jqm-demos .jqm-list .ui-btn:visited, .jqm-demos .jqm-list .ui-li-divider {
     font-family: 'Open Sans', sans-serif;
