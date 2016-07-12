@@ -60,7 +60,7 @@
 		</div>
 		<form id="rewardForm" class="ui-grid-a" style="display:none;">
 			<div class="ui-block-a">
-	        	<label>RewardId:</label>
+			<label>RewardId:</label>
 			    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
 			        <input name="rewardid" data-type="search" data-enhanced="true" data-inset="false" id="rewardid-input" placeholder="rewardId">
 			    </div>
@@ -71,8 +71,11 @@
 			    </div>
 		    </div>
 	        <div class="ui-block-b">
-		        <label>RewardCount:</label>
+	        	<label>RewardCount:</label>
 		        <input type="text" name="rewardcount" value="" placeholder="rewardCount">
+
+	        	<label>MailContent:</label>
+		        <input type="text" name="mailcontent" value="" placeholder="mailContent">
 	
 	    		<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" onclick="doReward();">send reward</a>
     		</div>

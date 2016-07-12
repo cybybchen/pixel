@@ -11,9 +11,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<%@ include file="jsp/header.jsp" %>
     <link rel="stylesheet" href="css/jsoneditor.css"/>
-    <link rel="stylesheet" href="css/style.css?v=2"/>
+    <link rel="stylesheet" href="css/style.css?v=3"/>
     <script src="js/jquery.jsoneditor.js"></script>
-    <script src="js/jsoneditor.js?v=2"></script>
+    <script src="js/jsoneditor.js?v=3"></script>
 <%
 	javax.servlet.http.HttpSession session_comm = request
 			.getSession(true);

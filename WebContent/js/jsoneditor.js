@@ -156,8 +156,10 @@ function fillRewardId(item){
 function doReward(){
 	var rewardId = $('input[name="rewardid"]:visible').val();
 	var rewardCount = $('input[name="rewardcount"]:visible').val();
+    var mailContent = $.trim($('input[name="mailcontent"]:visible').val());
 	var data = buildUserJson("rewardId", rewardId);
 	data["rewardCount"] = rewardCount;
+    data["mailContent"] = mailContent;
 	var datatype = $("#user-nav .nav-btn-active").attr("data-type");
     if(datatype == "base"){
     	data["UserData"] = 1;
@@ -232,7 +234,14 @@ function buildUserJson(key, value){
             json["pvpMine"] = 1;
             json["pvpBuff"] = 1;
         }else{
-            json["mailList"] = 1;
+            json["mailList0"] = 1;
+            json["mailList1"] = 1;
+            json["mailList2"] = 1;
+            json["mailList3"] = 1;
+            json["mailList4"] = 1;
+            json["mailList5"] = 1;
+            json["mailList6"] = 1;
+            json["mailList7"] = 1;
             json["friendList"] = 1;
         }
     }
@@ -321,6 +330,18 @@ function appendUserDatas(message, dirty){
     }
     if(message["mailList3"]!=null){
         appendUserData("mailList3", message["mailList3"]);
+    }
+    if(message["mailList4"]!=null){
+        appendUserData("mailList4", message["mailList4"]);
+    }
+    if(message["mailList5"]!=null){
+        appendUserData("mailList5", message["mailList5"]);
+    }
+    if(message["mailList6"]!=null){
+        appendUserData("mailList6", message["mailList6"]);
+    }
+    if(message["mailList7"]!=null){
+        appendUserData("mailList7", message["mailList7"]);
     }
     if(message["friendList"]!=null){
         appendUserData("friendList", message["friendList"]);
@@ -1187,7 +1208,6 @@ $(document).ready(function() {
 		var userId = $('input[name="userid"]:visible').val();
 		var userName = $('input[name="username"]:visible').val();
 		var lastTime = $('input[name="lasttime"]:visible').val();
-//		var data = buildUserJson("rewardId", rewardId);
 		var data={};
 		data["session"] = session;
 		data["serverId"] = serverid;
