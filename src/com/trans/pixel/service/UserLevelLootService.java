@@ -102,6 +102,7 @@ public class UserLevelLootService {
 		userLevelLootRecordBean.setUserId(userId);
 		userLevelLootRecordBean.setPackageCount(5);
 		userLevelLootRecordBean.setLevelLootStartTime((int)(System.currentTimeMillis() / 1000));
+		userLevelLootRecordBean.initLootTime();
 		
 		return userLevelLootRecordBean;
 	}

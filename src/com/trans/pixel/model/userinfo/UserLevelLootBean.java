@@ -144,6 +144,18 @@ public class UserLevelLootBean {
 		lootRewardRecord = "";
 	}
 	
+	public void initLootTime() {
+		JSONObject json = new JSONObject();
+		int initTime = 50 * 60;
+		json.put(1, initTime);
+		json.put(2, initTime);
+		json.put(3, initTime);
+		json.put(4, initTime);
+		json.put(5, initTime);
+		
+		lootTime = json.toString();
+	}
+	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String PACKAGE_COUNT = "package_count";
