@@ -239,4 +239,13 @@
 <libao itemid="45011" name="钻石经验包" img="recharge-4" rare="3" description="包含500钻石和50000经验" value="0" cost="0" ><item id="1" itemid="1002" count="500" />
 <item id="2" itemid="1000" count="50000" />
 </libao>
+<libao itemid="42101" name="1星贾克斯礼包" img="libao_2_1" rare="3" description="包含3个1星贾克斯和900K经验" value="0" cost="0" ><item id="1" itemid="51039" count="3" />
+<item id="2" itemid="1000" count="900000" />
+</libao>
+<libao itemid="42102" name="3星贾克斯礼包" img="libao_2_2" rare="4" description="包含3个3星贾克斯和50M经验" value="0" cost="0" ><item id="1" itemid="53039" count="3" />
+<item id="2" itemid="1000" count="50000000" />
+</libao>
+<libao itemid="42103" name="5星贾克斯礼包" img="libao_2_3" rare="5" description="包含3个5星贾克斯和500M经验" value="0" cost="0" ><item id="1" itemid="55039" count="3" />
+<item id="2" itemid="1000" count="500000000" />
+</libao>
 </data>

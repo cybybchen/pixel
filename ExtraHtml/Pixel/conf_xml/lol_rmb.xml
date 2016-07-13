@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<rmb id="1" type="1" rmb="6" itemid="1002" zuanshi="60" name="小份钻石" description="60钻石" />
-<rmb id="2" type="1" rmb="30" itemid="1002" zuanshi="300" name="大份钻石" description="300钻石" />
-<rmb id="3" type="1" rmb="98" itemid="1002" zuanshi="980" name="一袋钻石" description="980钻石" />
-<rmb id="4" type="1" rmb="198" itemid="1002" zuanshi="1980" name="大袋钻石" description="1980钻石" />
-<rmb id="5" type="1" rmb="328" itemid="1002" zuanshi="3280" name="一箱钻石" description="3280钻石" />
-<rmb id="6" type="1" rmb="648" itemid="1002" zuanshi="6480" name="大箱钻石" description="6480钻石" />
-<rmb id="7" type="2" rmb="30" itemid="42001" zuanshi="0" name="1星薇恩礼包" description="包含3个1星薇恩和900K经验" />
-<rmb id="8" type="2" rmb="98" itemid="42002" zuanshi="0" name="3星薇恩礼包" description="包含3个3星薇恩和50M经验" />
-<rmb id="9" type="2" rmb="328" itemid="42003" zuanshi="0" name="5星薇恩礼包" description="包含3个5星薇恩和500M经验" />
-<rmb id="10" type="2" rmb="30" itemid="44001" zuanshi="0" name="初级钻石月卡" description="每天登陆游戏可以获得60钻石" />
-<rmb id="11" type="2" rmb="88" itemid="44002" zuanshi="0" name="高级钻石月卡" description="每天登陆游戏可以获得300钻石" />
-<rmb id="12" type="2" rmb="68" itemid="44003" zuanshi="0" name="双周魄罗礼包" description="连续14天每天获得1个魄罗礼包" />
-<rmb id="13" type="2" rmb="198" itemid="44004" zuanshi="0" name="双周超级魄罗礼包" description="连续14天每天获得1个超级魄罗礼包" />
-<rmb id="14" type="2" rmb="30" itemid="44005" zuanshi="0" name="双周蓝色装备礼包" description="连续14天每天获得1个蓝色装备宝箱" />
-<rmb id="15" type="2" rmb="98" itemid="44006" zuanshi="0" name="双周紫色装备礼包" description="连续14天每天获得1个紫色装备宝箱" />
-<rmb id="16" type="2" rmb="50" itemid="44007" zuanshi="0" name="成长钻石基金" description="按照玩家总战力领取不同阶段的钻石" />
-<rmb id="17" type="2" rmb="50" itemid="44008" zuanshi="0" name="成长经验基金" description="按照玩家总战力领取不同阶段的钻石" />
+<rmb id="1" type="1" rmb="6" itemid="1002" zuanshi="60" name="小份钻石" img="recharge-1" description="60钻石" />
+<rmb id="2" type="1" rmb="30" itemid="1002" zuanshi="300" name="大份钻石" img="recharge-2" description="300钻石" />
+<rmb id="3" type="1" rmb="98" itemid="1002" zuanshi="980" name="一袋钻石" img="recharge-3" description="980钻石" />
+<rmb id="4" type="1" rmb="198" itemid="1002" zuanshi="1980" name="大袋钻石" img="recharge-4" description="1980钻石" />
+<rmb id="5" type="1" rmb="328" itemid="1002" zuanshi="3280" name="一箱钻石" img="recharge-5" description="3280钻石" />
+<rmb id="6" type="1" rmb="648" itemid="1002" zuanshi="6480" name="大箱钻石" img="recharge-6" description="6480钻石" />
+<rmb id="7" type="2" rmb="30" itemid="42101" zuanshi="0" name="1星贾克斯礼包" img="libao_2_1" description="包含3个1星贾克斯和900K经验" />
+<rmb id="8" type="2" rmb="98" itemid="42102" zuanshi="0" name="3星贾克斯礼包" img="libao_2_2" description="包含3个3星贾克斯和50M经验" />
+<rmb id="9" type="2" rmb="328" itemid="42103" zuanshi="0" name="5星贾克斯礼包" img="libao_2_3" description="包含3个5星贾克斯和500M经验" />
+<rmb id="10" type="2" rmb="30" itemid="44001" zuanshi="0" name="初级钻石月卡" img="libao_4_1" description="连续30天每天可以获得60钻石" />
+<rmb id="11" type="2" rmb="88" itemid="44002" zuanshi="0" name="高级钻石月卡" img="libao_4_2" description="连续30天每天可以获得300钻石" />
+<rmb id="12" type="2" rmb="68" itemid="44003" zuanshi="0" name="双周魄罗礼包" img="libao_4_3" description="连续14天每天获得1个魄罗礼包" />
+<rmb id="13" type="2" rmb="198" itemid="44004" zuanshi="0" name="双周超级魄罗礼包" img="libao_4_4" description="连续14天每天获得1个超级魄罗礼包" />
+<rmb id="14" type="2" rmb="30" itemid="44005" zuanshi="0" name="双周蓝色装备礼包" img="libao_4_5" description="连续14天每天获得1个蓝色装备宝箱" />
+<rmb id="15" type="2" rmb="98" itemid="44006" zuanshi="0" name="双周紫色装备礼包" img="libao_4_6" description="连续14天每天获得1个紫色装备宝箱" />
+<rmb id="16" type="2" rmb="50" itemid="44007" zuanshi="0" name="成长钻石基金" img="zuanshijijing" description="按照玩家总战力领取不同阶段的钻石" />
+<rmb id="17" type="2" rmb="50" itemid="44008" zuanshi="0" name="成长经验基金" img="jingyanjijin" description="按照玩家总战力领取不同阶段的钻石" />
 </data>
