@@ -500,7 +500,7 @@
 <equip equipid="2" arm1="14065" arm2="14050" arm3="14007" arm4="14115" arm5="14042" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="63" name="嘉文四世" img="16" description="听说是个什么国家的皇子，喜欢在盆地里与人插旗决斗。" handbook="0" zhanli="100" ad="50" ad_rare="17" ap="31" ap_rare="" arm="14" arm_rare="20" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="63" name="嘉文四世" img="16" description="听说是个什么国家的皇子，喜欢在盆地里与人插旗决斗。" handbook="1" zhanli="100" ad="50" ad_rare="17" ap="31" ap_rare="" arm="14" arm_rare="20" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="6301" skill="战争律动" unlock="1" />
 <skill  skillid="6302" skill="巨龙撞击" unlock="2" />
