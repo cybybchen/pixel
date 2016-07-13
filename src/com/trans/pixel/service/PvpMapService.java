@@ -347,7 +347,7 @@ public class PvpMapService {
 				/**
 				 * PVP攻击BOSS的活动
 				 */
-				activityService.pvpAttackBossSuccessActivity(user.getId());
+				activityService.pvpAttackBossSuccessActivity(user);
 			}
 		}
 
@@ -383,7 +383,7 @@ public class PvpMapService {
 		 * PVP攻击玩家的活动
 		 */
 		if(mine.hasOwner()){
-			activityService.pvpAttackEnemyActivity(user.getId(), ret);
+			activityService.pvpAttackEnemyActivity(user, ret);
 			enemyId = mine.getOwner().getId();
 		}
 		if(ret){

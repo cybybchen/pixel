@@ -861,6 +861,8 @@ message Richang {
 	required string starttime = 3;
 	required string endtime = 4;
 	repeated ActivityOrder order = 5;
+	optional string noserverid = 7;
+	optional string serverid = 8;
 }
 
 message UserRichang {

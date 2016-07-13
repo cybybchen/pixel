@@ -78,16 +78,27 @@ public class ActivityService {
 	/** richang activity and achieve */
 	/****************************************************************************************/
 	
-	public void sendRichangScore(long userId, int type) {
-		sendRichangScore(userId, type, 1);
+	public void sendRichangScore(UserBean user, int type) {
+		sendRichangScore(user, type, 1);
 	}
 	
-	public void sendRichangScore(long userId, int type, int count) {
+	public void sendRichangScore(UserBean user, int type, int count) {
+		long userId = user.getId();
 		Map<String, Richang> map = activityRedisService.getRichangConfig();
 		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, Richang> entry = it.next();
 			Richang richang = entry.getValue();
+			if (!richang.getNoserverid().equals("")) {
+				List<Integer> noserveridList = convertServerIdList(richang.getNoserverid());
+				if (noserveridList.contains(user.getServerId()))
+					continue;
+			}
+			if (!richang.getServerid().equals("")) {
+				List<Integer> serveridList = convertServerIdList(richang.getServerid());
+				if (!serveridList.contains(user.getServerId()))
+					continue;
+			}
 			if (richang.getTargetid() == type && DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime())) {
 				UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(userId, richang.getId()));
 				if (type == ActivityConst.DANBI_RECHARGE)
@@ -193,7 +204,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的日常
 		 */
-		sendRichangScore(user.getId(), ActivityConst.LEIJI_COST_JEWEL, count);
+		sendRichangScore(user, ActivityConst.LEIJI_COST_JEWEL, count);
 		/**
 		 * 消耗钻石的开服活动
 		 */
@@ -213,69 +224,70 @@ public class ActivityService {
 		sendKaifuScore(user, ActivityConst.KAIFU_DAY_2, count);
 	}
 	
-	public void ladderAttackActivity(long userId, boolean ret) {
+	public void ladderAttackActivity(UserBean user, boolean ret) {
 		/**
 		 * achieve type 109
 		 */
 		if (ret)
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_LADDER);
+			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LADDER);
 		
 		/**
 		 * 热血竞技
 		 */
-		sendRichangScore(userId, ActivityConst.RICHANG_LADDER_ATTACK);
+		sendRichangScore(user, ActivityConst.RICHANG_LADDER_ATTACK);
 	}
 	
-	public void pvpAttackEnemyActivity(long userId, boolean ret) {
+	public void pvpAttackEnemyActivity(UserBean user, boolean ret) {
 		/**
 		 * achieve type 110
 		 */
 		if (ret)
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_LOOTPVP_ATTACK);
+			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_ATTACK);
 		
 		/**
 		 * 参与pk
 		 */
-		sendRichangScore(userId, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
+		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
 		if (ret)
-			sendRichangScore(userId, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
+			sendRichangScore(user, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
 	}
 	
-	public void pvpAttackBossSuccessActivity(long userId) {
+	public void pvpAttackBossSuccessActivity(UserBean user) {
 		/**
 		 * 成就 boss杀手
 		 */
-		achieveService.sendAchieveScore(userId, AchieveConst.TYPE_LOOTPVP_KILLBOSS);
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_KILLBOSS);
 		
 		/**
 		 * 挑战boss
 		 */
-		sendRichangScore(userId, ActivityConst.RICHANG_PVP_ATTACK_BOSS_SUCCESS);
+		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_BOSS_SUCCESS);
 	}
 	
-	public void storeMojingActivity(long userId, int count) {
+	public void storeMojingActivity(UserBean user, int count) {
 		/**
 		 * achieve type 112
 		 */
-		achieveService.sendAchieveScore(userId, AchieveConst.TYPE_GET_MOJING, count);
+		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_GET_MOJING, count);
 		
 		/**
 		 * 收集魔晶
 		 */
-		sendRichangScore(userId, ActivityConst.RICHANG_MOJING_STORE, count);
+		sendRichangScore(user, ActivityConst.RICHANG_MOJING_STORE, count);
 	}
 	
 	public void unionAttackActivity(long userId, boolean ret) {
+		UserBean user = userService.getUser(userId);
 		/**
 		 * 公会先锋
 		 */
 		if (ret)
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
+			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
 		
 		/**
 		 * 浴血奋战
 		 */
-		sendRichangScore(userId, ActivityConst.RICHANG_UNION_ATTACK);
+		sendRichangScore(user, ActivityConst.RICHANG_UNION_ATTACK);
 	}
 	
 	/****************************************************************************************/
@@ -562,7 +574,7 @@ public class ActivityService {
 		/**
 		 * 累计登录的日常活动
 		 */
-		sendRichangScore(user.getId(), ActivityConst.ACTIVITY_TYPE_LOGIN);
+		sendRichangScore(user, ActivityConst.ACTIVITY_TYPE_LOGIN);
 	}
 	
 	public void rechargeActivity(UserBean user, int count) {
@@ -581,11 +593,11 @@ public class ActivityService {
 		/**
 		 * 累计充值的日常
 		 */
-		sendRichangScore(user.getId(), ActivityConst.LEIJI_RECHARGE, count);
+		sendRichangScore(user, ActivityConst.LEIJI_RECHARGE, count);
 		/**
 		 * 单笔充值的日常
 		 */
-		sendRichangScore(user.getId(), ActivityConst.DANBI_RECHARGE, count);
+		sendRichangScore(user, ActivityConst.DANBI_RECHARGE, count);
 		/**
 		 * 开服2的充值活动
 		 */
@@ -768,5 +780,15 @@ public class ActivityService {
 		
 		MailBean mail = MailBean.buildSystemMail(user.getId(), activity.getDes(), activity.getRewardList());
 		mailService.addMail(mail);
+	}
+	
+	private List<Integer> convertServerIdList(String serverid) {
+		String[] serverids = serverid.split(",");
+		List<Integer> serverIdList = new ArrayList<Integer>();
+		for (String serveridStr : serverids) {
+			serverIdList.add(TypeTranslatedUtil.stringToInt(serveridStr));
+		}
+		
+		return serverIdList;
 	}
 }

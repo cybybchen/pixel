@@ -109,7 +109,7 @@ public class RewardService {
 					/**
 					 * 收集魔晶的活动
 					 */
-					activityService.storeMojingActivity(user.getId(), (int)rewardCount);
+					activityService.storeMojingActivity(user, (int)rewardCount);
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
 					user.setPointExpedition(user.getPointExpedition() + (int)rewardCount);

@@ -104,7 +104,7 @@ public class LadderCommandService extends BaseCommandService {
 			/**
 			 * 天梯活动
 			 */
-			activityService.ladderAttackActivity(user.getId(), result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode());
+			activityService.ladderAttackActivity(user, result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode());
 			
 			builder.setCode(result.getCode());
 			builder.setMsg(result.getMesssage());
