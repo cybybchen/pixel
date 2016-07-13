@@ -146,7 +146,7 @@ public class UserLevelLootBean {
 	
 	public void initLootTime() {
 		JSONObject json = new JSONObject();
-		int initTime = 50 * 60;
+		int initTime = 20 * 60;
 		json.put(1, initTime);
 		json.put(2, initTime);
 		json.put(3, initTime);
