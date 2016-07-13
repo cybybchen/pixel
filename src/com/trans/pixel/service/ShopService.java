@@ -133,6 +133,19 @@ public class ShopService {
 		return shoplist;
 	}
 
+	public Libao getLibaoConfig(int rechargeid){
+		LibaoList.Builder shopbuilder = redis.getLibaoShop();
+		for(Libao libao : shopbuilder.getLibaoList()){
+			if(libao.getRechargeid() == rechargeid)
+				return libao;
+		}
+		Libao.Builder builder = Libao.newBuilder();
+		builder.setRechargeid(rechargeid);
+		builder.setPurchase(0);
+		builder.setStarttime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date()));
+		builder.setEndtime(builder.getStarttime());
+		return builder.build();
+	}
 	public LibaoList getLibaoShop(UserBean user){
 		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
 		return getLibaoShop(user, libaoMap);

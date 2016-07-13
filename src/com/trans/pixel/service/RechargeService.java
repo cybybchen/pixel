@@ -163,7 +163,8 @@ public class RechargeService {
 				// }
 			}
 		}else {
-			libaobuilder.setValidtime(DateUtil.getCurrentDateString());
+			Libao config = shopService.getLibaoConfig(productid);
+			libaobuilder.setValidtime(config.getStarttime());
 			VipLibao viplibao = shopService.getVipLibao(itemId);
 			rewardList = viplibao.getItemList();
 		}
