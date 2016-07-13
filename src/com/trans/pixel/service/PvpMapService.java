@@ -390,7 +390,6 @@ public class PvpMapService {
 			if(mine.hasOwner()){
 				long userId = mine.getOwner().getId();
 				mine.setOwner(user.buildShort());
-				mine.setEndTime(redis.now()+24*3600);
 				mine.setLevel(mine.getLevel()+1);
 //				UserBean bean = userService.getUser(userId);
 //				PVPMapList.Builder maplist = redis.getBasePvpMapList();
@@ -412,6 +411,8 @@ public class PvpMapService {
 						PVPMapList.Builder maplist = redis.getMapList(userId, 0);
 						for (PVPMap map : maplist.getFieldList()) {
 							if (map.getFieldid() == id / 100 && map.getOpened()) {
+								mine.setEndTime(redis.now()+24*3600);
+
 								redis.saveMine(userId, mine.build());
 								String content = "霸占了你的矿点(" + map.getName() + ")";
 								
