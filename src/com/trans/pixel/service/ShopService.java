@@ -173,8 +173,13 @@ public class ShopService {
 					} catch (Exception e) {
 						
 					}
-					if(date.before(date2))
+					if(date.before(date2)){
+						Libao.Builder libaobuilder = Libao.newBuilder(libao);
+						libaobuilder.setPurchase(0);
+						libaobuilder.clearValidtime();
+						userService.saveLibao(user.getId(), libaobuilder.build());
 						count = 0;
+					}
 				}
 			}
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
