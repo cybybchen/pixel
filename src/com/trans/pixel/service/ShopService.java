@@ -180,6 +180,7 @@ public class ShopService {
 						userService.saveLibao(user.getId(), libaobuilder.build());
 						count = 0;
 					}
+					builder.clearValidtime();
 				}
 			}
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
