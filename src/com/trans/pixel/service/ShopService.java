@@ -1,5 +1,7 @@
 package com.trans.pixel.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.Libao;
@@ -143,8 +146,24 @@ public class ShopService {
 				count = libao.getPurchase();
 				builder.setValidtime(libao.getValidtime());
 			}
-			if(builder.getPurchase() > 0 && count >= builder.getPurchase())
-				count = builder.getPurchase();
+			if(builder.getPurchase() > 0){
+				if(count > builder.getPurchase())
+					count = builder.getPurchase();
+				if(!builder.hasValidtime()){
+					count = 0;
+				}else if(builder.hasValidtime()){
+					SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+					Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
+					try {
+						date = df.parse(builder.getValidtime());
+						date2 = df.parse(builder.getStarttime());
+					} catch (Exception e) {
+						
+					}
+					if(date.before(date2))
+						count = 0;
+				}
+			}
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
 		}
 		for(Libao libao : libaoMap.values()){

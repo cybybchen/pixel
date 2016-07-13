@@ -32,7 +32,6 @@ import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.protoc.Commands.YueKa;
 import com.trans.pixel.service.redis.RechargeRedisService;
-import com.trans.pixel.service.redis.ShopRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.LogUtils;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -54,13 +53,11 @@ public class RechargeService {
 	@Resource
 	private RechargeRedisService rechargeRedisService;
 	@Resource
-	private ShopRedisService shopRedisService;
+	private ShopService shopService;
 	@Resource
 	private RechargeMapper rechargeMapper;
 	@Resource
 	private RewardService rewardService;
-	@Resource
-	private ShopService shopService;
 	@Resource
 	private MailService mailService;
 	@Resource
@@ -166,7 +163,8 @@ public class RechargeService {
 				// }
 			}
 		}else {
-			VipLibao viplibao = shopRedisService.getVipLibao(itemId);
+			libaobuilder.setValidtime(DateUtil.getCurrentDateString());
+			VipLibao viplibao = shopService.getVipLibao(itemId);
 			rewardList = viplibao.getItemList();
 		}
 
