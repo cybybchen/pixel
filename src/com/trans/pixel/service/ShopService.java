@@ -162,9 +162,7 @@ public class ShopService {
 			if(builder.getPurchase() > 0){
 				if(count > builder.getPurchase())
 					count = builder.getPurchase();
-				if(!builder.hasValidtime()){
-					count = 0;
-				}else if(builder.hasValidtime()){
+				if(builder.hasValidtime()){
 					SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 					Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
 					try {
@@ -181,6 +179,8 @@ public class ShopService {
 						count = 0;
 					}
 					builder.clearValidtime();
+				}else{
+					count = 0;
 				}
 			}
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
