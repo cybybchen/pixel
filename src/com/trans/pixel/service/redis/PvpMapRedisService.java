@@ -36,7 +36,7 @@ public class PvpMapRedisService extends RedisService{
 	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
 		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
-		if(value != null && parseJson(value, builder)){
+		if(value != null && parseJson(value, builder) && builder.getField(0).getBufflimit() > 100){
 			return builder;
 		}
 		PVPMapList.Builder maplist = getBasePvpMapList();
@@ -87,7 +87,7 @@ public class PvpMapRedisService extends RedisService{
 		for(PVPMap map : maplist.getFieldList()){
 			if(map.getFieldid() == id){
 				buff += buffcount;
-				if(buff >= map.getBufflimit())
+				if(buff > map.getBufflimit())
 					buff = map.getBufflimit();
 				saveUserBuff(user, id, buff);
 				return buff;
@@ -241,7 +241,11 @@ public class PvpMapRedisService extends RedisService{
 							int level = nextInt(11)-5;
 							if(buff != null)
 								level += Integer.parseInt(buff);
-							bossbuilder.setLevel(Math.max(1, level));
+							if(level > 300)
+								level = 300;
+							else if(level < 1)
+								level = 1;
+							bossbuilder.setLevel(level);
 							set(RedisKey.PVPBOSS_PREFIX+user.getId(), formatJson(bosses.build()));
 						}
 						monsters.add(bossbuilder.build());
@@ -278,7 +282,11 @@ public class PvpMapRedisService extends RedisService{
 					int level = nextInt(11)-5;
 					if(buff != null)
 						level += Integer.parseInt(buff);
-					monsterbuilder.setLevel(Math.max(1, level));
+					if(level > 300)
+						level = 300;
+					else if(level < 1)
+						level = 1;
+					monsterbuilder.setLevel(level);
 					monsters.add(monsterbuilder.build());
 					keyvalue.put(monsterbuilder.getPositionid()+"", formatJson(monsterbuilder.build()));
 					count++;
