@@ -29,6 +29,7 @@ public class LoginTest extends BaseTest {
         	logger.warn(response.getErrorCommand().getMessage()+"，重新注册");
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
     		registerbuilder.setUserName(head().getAccount());
+    		registerbuilder.setHeroId(42);
     		builder.clearLoginCommand().setRegisterCommand(registerbuilder.build());
     		
     		reqcmd = builder.build();
