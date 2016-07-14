@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<xiaoguan xiaoguan="1" loottime="3600" />
-<xiaoguan xiaoguan="2" loottime="3600" />
-<xiaoguan xiaoguan="3" loottime="3600" />
-<xiaoguan xiaoguan="4" loottime="3600" />
-<xiaoguan xiaoguan="5" loottime="3600" />
+<xiaoguan xiaoguan="1" loottime="1800" />
+<xiaoguan xiaoguan="2" loottime="1800" />
+<xiaoguan xiaoguan="3" loottime="1800" />
+<xiaoguan xiaoguan="4" loottime="1800" />
+<xiaoguan xiaoguan="5" loottime="1800" />
 </data>

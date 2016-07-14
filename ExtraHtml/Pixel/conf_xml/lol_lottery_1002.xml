@@ -251,4 +251,7 @@
 <equip id="249" itemid="29013" count="5" weight="120" will="0" />
 <equip id="250" itemid="29014" count="5" weight="120" will="0" />
 <equip id="251" itemid="29015" count="5" weight="120" will="0" />
+<equip id="252" itemid="51063" count="1" weight="10" will="0" />
+<equip id="253" itemid="52063" count="1" weight="8" will="0" />
+<equip id="254" itemid="53063" count="1" weight="6" will="0" />
 </data>
