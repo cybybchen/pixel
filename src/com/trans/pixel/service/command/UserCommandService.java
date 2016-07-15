@@ -92,6 +92,7 @@ public class UserCommandService extends BaseCommandService {
 //			userService.updateUserDailyData(user);
 //		}
 		user.setVersion(head.getVersion()+"");
+		userHeroService.selectUserNewHero(user.getId());
 		refreshUserLogin(user);
 		
 		/**
