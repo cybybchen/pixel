@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<food id="80001" name="瘦头鱼" count="5" />
+<food id="80002" name="胖头鱼" count="10" />
+<food id="80003" name="红色巨头鱼" count="15" />
+<food id="80004" name="蓝色小丑" count="20" />
+<food id="80005" name="高清蓝光鱼" count="25" />
+<food id="80006" name="松果" count="5" />
+<food id="80007" name="酸梅" count="10" />
+<food id="80008" name="神奇果" count="15" />
+<food id="80009" name="饱满的南瓜" count="20" />
+<food id="80010" name="女王牌香蕉" count="25" />
+<food id="80011" name="奶油大面包" count="5" />
+<food id="80012" name="快化掉的冰淇淋" count="10" />
+<food id="80013" name="麻辣豆腐汤" count="15" />
+<food id="80014" name="古奥尔良烤鸡翅" count="20" />
+<food id="80015" name="感恩节烤鸡" count="25" />
+<food id="80016" name="蜷曲的虾肉" count="5" />
+<food id="80017" name="章鱼哥" count="10" />
+<food id="80018" name="巨眼章鱼" count="15" />
+<food id="80019" name="闪光鱼肉片" count="20" />
+<food id="80020" name="刀尖上的肉" count="25" />
+</data>
