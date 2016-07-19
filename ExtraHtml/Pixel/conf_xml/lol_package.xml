@@ -1500,4 +1500,10 @@
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="50" />
 	</loot>
+	<loot itemid="34001" name="元气宝箱" img="34001" rare="3" description="开启获得1-2个元气西瓜或者100pts" hashero="0" cyb="0" judge="0" itemcount="2" weightall="150" >
+		<item itemid="40101" item="元气西瓜" counta="1" countb="2" weight="100" />
+		<item itemid="27001" item="pts" counta="100" countb="100" weight="50" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 </data>
