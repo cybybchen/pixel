@@ -46,10 +46,32 @@ message UserInfo {
 	repeated JewelPool growExpCount = 57;//成长经验基金可领
 	optional int32 skill = 58;
 	optional int32 failed = 59;
+	optional int32 purchaseContractLeft = 62;
 }
 
 message ServerData {
 	optional int64 AreaBossRefreshTime = 1;
+}
+
+message ContractWeightList {
+	repeated ContractWeight contract = 1;
+	optional int32 weightall = 2;
+}
+
+message ContractWeight {
+	optional int32 id = 1;
+	optional int32 count = 2;
+	optional int32 weight = 3;
+}
+
+message ContractRewardList {
+	repeated ContractReward reward = 1;
+}
+
+message ContractReward {
+	optional int32 id = 1;
+	optional int32 rewardid = 2;
+	optional int32 count = 3;
 }
 
 message Commodity {
@@ -623,6 +645,7 @@ message VipInfo {
 	optional int32 libao1 = 12;
 	optional int32 libao2 = 13;
 	optional int32 zuanshi = 14;
+	optional int32 contract = 15;
 }
 
 message VipList {
@@ -1623,6 +1646,9 @@ message ResponseFirstRechargeStatusCommand {
 	repeated Status status = 1;
 }
 
+message RequestPurchaseContractCommand {//灵魂契约(获得pts和经验)
+	required int32 heroid = 1;
+}
 
 message RequestPurchaseCoinCommand {//点石成金(获得金币和经验)
 }
@@ -2031,6 +2057,7 @@ message RequestCommand {
 	optional RequestGetGrowJewelCommand getGrowJewelCommand = 149;
 	optional RequestGetGrowExpCommand getGrowExpCommand = 150;
 	optional RequestPurchaseLadderTimeCommand purchaseLadderTimeCommand = 152;
+	optional RequestPurchaseContractCommand purchaseContractCommand = 153;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;

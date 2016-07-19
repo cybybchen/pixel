@@ -58,6 +58,7 @@ import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
@@ -786,6 +787,12 @@ public class GameDataScreen extends RequestScreen {
 		return true;//GetGrowExpCommand
 	}//GetGrowExpCommand
 	//add handleCommand here
+	
+	@Override
+	protected boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.purchaseContract(cmd, responseBuilder, user);
+		return true;
+	}
 	
 	@Override
 	protected boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user) {

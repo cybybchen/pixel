@@ -117,12 +117,14 @@ public class UserService {
 		user.setLadderPurchaseTimes(0);
 		user.setLadderModeLeftTimes(5);
 		user.setPurchaseCoinLeft(1);
+		user.setPurchaseContractLeft(1);
 		user.setPurchaseCoinTime(0);
 		user.setPvpMineLeftTime(3);
 		user.setFreeLotteryCoinLeftTime(5);
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
 			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
+			user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract());
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()+vip.getPvp());
 			user.setPurchaseTireLeftTime(vip.getQuyu());
