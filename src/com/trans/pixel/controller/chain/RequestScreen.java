@@ -67,6 +67,7 @@ import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
@@ -358,6 +359,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestLogCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user);
@@ -1029,6 +1031,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//GetGrowExpCommand
                 result = handleCommand(cmd, responseBuilder, user);//GetGrowExpCommand
         }//GetGrowExpCommand
+        if (request.hasFeedFoodCommand()) {
+            RequestFeedFoodCommand cmd = request.getFeedFoodCommand();
+            if (result)//FeedFoodCommand
+                result = handleCommand(cmd, responseBuilder, user);//FeedFoodCommand
+        }//FeedFoodCommand
         //call handleCommand here
         if (request.hasPurchaseLadderTimeCommand()) {
             RequestPurchaseLadderTimeCommand cmd = request.getPurchaseLadderTimeCommand();

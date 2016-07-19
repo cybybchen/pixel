@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 
 @Service
@@ -22,6 +23,8 @@ public class CostService {
 	private UserPropService userPropService;
 	@Resource
 	private LootService lootService;
+	@Resource
+	private UserFoodService userFoodService;
 	
 	public boolean costAndUpdate(UserBean user, int itemId, int itemCount) {
 		boolean needUpdateUser = cost(user, itemId, itemCount);
@@ -36,7 +39,14 @@ public class CostService {
 	 */
 	public boolean cost(UserBean user, int itemId, int itemCount) {
 		long userId = user.getId();
-		if (itemId > RewardConst.HERO) {
+		if (itemId > RewardConst.FOOD) {
+			UserFoodBean userFood = userFoodService.selectUserFood(user, itemId);
+			if (userFood != null && userFood.getCount() >= itemCount) {
+				userFood.setCount(userFood.getCount() - itemCount);
+				userFoodService.updateUserFood(userFood);
+				return true;
+			}
+		} else if (itemId > RewardConst.HERO) {
 //			int heroId = rewardId % RewardConst.HERO_STAR;
 //			userHeroService.addUserHero(user.getId(), heroId);
 		} else if (itemId > RewardConst.PACKAGE) {

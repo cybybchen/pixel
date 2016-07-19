@@ -58,9 +58,9 @@ public class UserPokedeService {
 		return userPokedeList;
 	}
 	
-	private void updateUserPokede(UserPokedeBean userPokede, UserBean user) {
+	public void updateUserPokede(UserPokedeBean userPokede, UserBean user) {
 		userPokedeRedisService.updateUserPokede(userPokede, user.getId());
-		userPokedeMapper.updateUserPokede(user.getId(), userPokede.getHeroId(), userPokede.getRare());
+		userPokedeMapper.updateUserPokede(userPokede);
 	}
 	
 	public void updateUserPokede(HeroInfoBean heroInfo, UserBean user) {

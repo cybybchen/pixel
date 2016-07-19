@@ -35,6 +35,8 @@ public enum ErrorConst implements ResultConst {
     BLACK_NOSAY_ERROR(1045, "你已被禁止发言"), BLACK_USER_ERROR(1046, "该角色已被封"), BLACK_ACCOUNT_ERROR(1047, "该帐号已被封"),
     ACTIVITY_IS_OVER_ERROR(1048, "活动已过期"), NOT_WRITE_USER_ERROR(1049, "充值异常"),
     
+    FOOD_CAN_NOT_ADDED_ERROR(3001, "无法食用"), FOOD_NOT_ENOUGH(3002, "食物数量不足"), 
+    
     SERVER_ERROR(1100, "服务器异常错误");
 
     private final int code;

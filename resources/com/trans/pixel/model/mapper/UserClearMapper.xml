@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserClearMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserClearBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="heroId" column="hero_id" />
+		<result property="position" column="position" />
+		<result property="clearId" column="clear_id" />
+		<result property="count" column="count" />
+	</resultMap>
+	
+	<select id="selectUserClear" resultMap="resultMap">
+		SELECT *
+		from user_clear where user_id=#{userId} and hero_id=#{heroId}
+	</select>
+	
+	<insert id="updateUserClear" parameterType="com.trans.pixel.model.userinfo.UserClearBean">
+	    INSERT INTO user_clear(user_id, hero_id, position, clear_id, count)
+	    VALUES(#{userId}, #{heroId}, #{position}, #{clearId}, #{count})
+	    ON 
+	    duplicate key update
+	    count=#{count}
+	</insert>
+	
+	<select id="selectUserClearList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_clear where user_id=#{userId}
+	</select>
+	
+</mapper>

@@ -161,6 +161,7 @@ message HeroInfo {
 	optional int32 heroId = 8;
 	optional int32 position = 9;//useless
 	optional bool isLock = 10;
+	optional int32 count = 11;
 }
 
 message PurchaseCoinReward {
@@ -1079,6 +1080,51 @@ message Activity {
 	required string serverfilter = 9;
 }
 
+message ClearLevelList {
+	repeated ClearLevel level = 1;
+}
+
+message ClearLevel {
+	optional int32 level = 1;
+	optional int32 zhanli = 2;
+	optional int32 count = 3;
+}
+
+message ClearFoodList {
+	repeated ClearFood food = 1;
+}
+
+message ClearFood {
+	optional int32 id = 1;
+	optional int32 count = 2;
+}
+
+message ClearHeroList {
+	repeated ClearHero hero = 1;
+}
+
+message ClearHero {
+	optional int32 id = 1;
+	optional int32 handbook = 2;
+	optional int32 verylove = 3;
+	optional int32 love = 4;
+	optional int32 normal = 5;
+}
+
+message ClearAttributeList {
+	repeated ClearAttribute attribute = 1;
+}
+
+message ClearAttribute {
+	optional int32 id = 1;
+	optional int32 type = 2;
+	optional int32 position = 3;
+	optional int32 weight = 4;
+	optional int32 count1 = 5;
+	optional int32 count2 = 6;
+	optional int32 interval = 7;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1942,6 +1988,12 @@ message RequestGetGrowExpCommand {
 	required int32 order = 1;
 }
 
+message RequestFeedFoodCommand {
+	required int32 heroId = 1;
+	required int32 foodId = 2;
+	required int32 foodCount = 3;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2072,6 +2124,7 @@ message RequestCommand {
 	optional RequestHeartBeatCommand heartBeatCommand = 90;
 	optional RequestGreenhandCommand greenhandCommand = 91;
 	optional RequestLogCommand logCommand = 92;
+	optional RequestFeedFoodCommand feedFoodCommand = 93;
 }
 // response command list transfer only use it
 message ResponseCommand {

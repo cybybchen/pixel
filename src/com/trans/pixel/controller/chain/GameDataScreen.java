@@ -57,6 +57,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
@@ -785,6 +786,11 @@ public class GameDataScreen extends RequestScreen {
 		libaoCommandService.getGrowExp(cmd, responseBuilder, user);
 		return true;//GetGrowExpCommand
 	}//GetGrowExpCommand
+	@Override//FeedFoodCommand
+	protected boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user) {
+		pokedeCommandService.feedFood(cmd, responseBuilder, user);
+		return true;//FeedFoodCommand
+	}//FeedFoodCommand
 	//add handleCommand here
 	
 	@Override

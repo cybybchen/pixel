@@ -10,7 +10,7 @@ public interface UserPokedeMapper {
 	
 	public UserPokedeBean selectUserPokede(@Param("userId") long userId, @Param("heroId") int heroId);
 	
-	public int updateUserPokede(@Param("userId") long userId, @Param("heroId") int heroId, @Param("rare") int rare);
+	public int updateUserPokede(UserPokedeBean userPokede);
 	
 	public List<UserPokedeBean> selectUserPokedeList(long userId);
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserFoodMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserFoodBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="foodId" column="food_id" />
+		<result property="count" column="count" />
+	</resultMap>
+	
+	<select id="selectUserFood" resultMap="resultMap">
+		SELECT *
+		from user_food where user_id=#{userId} and food_id=#{foodId}
+	</select>
+	
+	<insert id="updateUserFood" parameterType="com.trans.pixel.model.userinfo.UserFoodBean">
+	    INSERT INTO user_food(user_id, food_id, count)
+	    VALUES(#{userId}, #{foodId}, #{count})
+	    ON 
+	    duplicate key update
+	    count=#{count}
+	</insert>
+	
+	<select id="selectUserFoodList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_food where user_id=#{userId}
+	</select>
+	
+</mapper>

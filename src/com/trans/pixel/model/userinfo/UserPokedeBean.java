@@ -8,6 +8,8 @@ public class UserPokedeBean {
 	private long userId = 0;
 	private int heroId = 0;
 	private int rare = 0;
+	private int level = 0;
+	private int count = 0;
 	public long getUserId() {
 		return userId;
 	}
@@ -26,12 +28,26 @@ public class UserPokedeBean {
 	public void setRare(int rare) {
 		this.rare = rare;
 	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	
 	public HeroInfo buildUserPokede() {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		
 		builder.setHeroId(heroId);
 		builder.setRare(rare);
+		builder.setLevel(level);
+		builder.setCount(count);
 		
 		return builder.build();
 	}

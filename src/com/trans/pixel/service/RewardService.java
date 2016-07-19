@@ -38,6 +38,8 @@ public class RewardService {
 	private RechargeService rechargeService;
 	@Resource
 	private UserHeadService userHeadService;
+	@Resource
+	private UserFoodService userFoodService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getOther(userId);
@@ -78,6 +80,8 @@ public class RewardService {
 	public boolean doReward(UserBean user, int rewardId, long rewardCount) {
 		if (rewardId > RewardConst.AREAEQUIPMENT) {
 			areaService.addAreaEquip(user, rewardId, (int)rewardCount);
+		} else if (rewardId > RewardConst.FOOD) {
+			userFoodService.addUserFood(user, rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.HEAD) {
 			userHeadService.addUserHead(user, rewardId);
 		} else if (rewardId > RewardConst.HERO) {
