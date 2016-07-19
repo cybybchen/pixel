@@ -55,6 +55,8 @@ public class RedisKey {
 	public final static String AREALEVEL = PREFIX+"AreaLevel_";
 	public final static String PURCHASECOIN_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoin";
 	public final static String PURCHASECOINREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoinReward";
+	public final static String PURCHASECONTRACTWEIGHT_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseContractWeight";
+	public final static String PURCHASECONTRACTREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseContractReward";
 	public final static String VIPLIBAO_CONFIG = PREFIX+CONFIG_PREFIX+"VipLibao";
 	public final static String JEWELPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"JewelPool";
 	public final static String EXPPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"ExpPool";

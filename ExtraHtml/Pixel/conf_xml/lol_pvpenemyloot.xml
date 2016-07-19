@@ -126,4 +126,10 @@
 <loot order="4" weightall="100" itemid="33026" counta="1" countb="0" weighta="-33" weightb=".66" />
 <loot order="5" weightall="100" itemid="33027" counta="1" countb="0" weighta="-50" weightb=".5" />
 </enemy>
+<enemy id="3001" name="夏日元气少女" >
+<loot order="1" weightall="100" itemid="1003" counta="100" countb="0" weighta="100" weightb="0" />
+<loot order="2" weightall="100" itemid="1000" counta="100" countb="0" weighta="100" weightb="0" />
+<loot order="3" weightall="100" itemid="40101" counta="1" countb="0" weighta="100" weightb="0" />
+<loot order="4" weightall="100" itemid="34001" counta="1" countb="0" weighta="50" weightb="0" />
+</enemy>
 </data>

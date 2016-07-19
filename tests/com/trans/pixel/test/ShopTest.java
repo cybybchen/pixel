@@ -19,6 +19,7 @@ import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -64,6 +65,7 @@ public class ShopTest extends BaseTest {
 		LadderShopPurchase(request, 0);
 		getShop(request);
 		ShopPurchase(request);
+		ContractPurchase(request);
 	}
 
 	private ResponseLibaoShopCommand libaoshop = null;
@@ -272,6 +274,13 @@ public class ShopTest extends BaseTest {
 		RequestShopPurchaseCommand.Builder builder = RequestShopPurchaseCommand.newBuilder();
 		builder.setId(shop.getItems(0).getId());
         ResponseCommand response = request("shopPurchaseCommand", builder.build(), request);
+
+	}
+	
+	private void ContractPurchase(RequestCommand request) {
+		RequestPurchaseContractCommand.Builder builder = RequestPurchaseContractCommand.newBuilder();
+		builder.setHeroid(42);
+        ResponseCommand response = request("purchaseContractCommand", builder.build(), request);
 
 	}
 

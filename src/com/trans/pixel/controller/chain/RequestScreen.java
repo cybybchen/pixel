@@ -69,6 +69,9 @@ import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
@@ -367,6 +370,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
+	
+	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -1058,6 +1063,11 @@ public abstract class RequestScreen implements RequestHandle {
                 result = handleCommand(cmd, responseBuilder, user);//ChoseClearInfoCommand
         }//ChoseClearInfoCommand
         //call handleCommand here
+        if (request.hasPurchaseContractCommand()) {
+            RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
         if (request.hasPurchaseLadderTimeCommand()) {
             RequestPurchaseLadderTimeCommand cmd = request.getPurchaseLadderTimeCommand();
             if (result)

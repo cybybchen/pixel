@@ -47,6 +47,7 @@ public class UserBean {
 	private int expeditionShopRefreshTime = 0;
 	private int purchaseCoinTime = 0;
 	private int purchaseCoinLeft = 0;
+	private int purchaseContractLeft = 0;
 	private long pvpMonsterRefreshTime = 0;
 	private long pvpBossRefreshTime = 0;
 	private long pvpMineRefreshTime = 0;
@@ -798,6 +799,18 @@ public class UserBean {
 	public void setPurchaseCoinLeft(int time){
 		purchaseCoinLeft = time;
 	}
+	/**
+	 * 灵魂契约剩余次数
+	 */
+	public int getPurchaseContractLeft(){
+		return purchaseContractLeft;
+	}
+	/**
+	 * 灵魂契约剩余次数
+	 */
+	public void setPurchaseContractLeft(int time){
+		purchaseContractLeft = time;
+	}
 	public long getFreeLotteryCoinTime() {
 		return freeLotteryCoinTime;
 	}
@@ -1015,6 +1028,7 @@ public class UserBean {
 		builder.setFreeLotteryCoinTime(Math.max(0, (freeLotteryCoinTime-System.currentTimeMillis())/1000));
 		builder.setFreeLotteryCoinLeftTime(freeLotteryCoinLeftTime);
 		builder.setFreeLotteryJewelTime(Math.max(0, ((freeLotteryJewelTime + 22 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
+		builder.setPurchaseContractLeft(purchaseContractLeft);
 		builder.setPVPMineLeftTime(pvpMineLeftTime);
 		builder.setSignCount(signCount);
 		builder.setLoginDays(loginDays);

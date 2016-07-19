@@ -13,10 +13,16 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.CommodityList;
+import com.trans.pixel.protoc.Commands.ContractReward;
+import com.trans.pixel.protoc.Commands.ContractRewardList;
+import com.trans.pixel.protoc.Commands.ContractWeight;
+import com.trans.pixel.protoc.Commands.ContractWeightList;
 import com.trans.pixel.protoc.Commands.LibaoList;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinRewardList;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
 import com.trans.pixel.protoc.Commands.ShopWill;
 import com.trans.pixel.protoc.Commands.ShopWillList;
@@ -710,6 +716,39 @@ public class ShopRedisService extends RedisService{
 		}
 		saveShop(shoplist.build());
 		return shoplist.build();
+	}
+	
+	public ContractWeightList getContractWeightList(){
+		ContractWeightList.Builder builder = ContractWeightList.newBuilder();
+		String value = get(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG);
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		String xml = ReadConfig("lol_soulcontract.xml");
+		parseXml(xml, builder);
+		int weightall = 0;
+		for(ContractWeight weight : builder.getContractList())
+			weightall += weight.getWeight();
+		builder.setWeightall(weightall);
+		set(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG, formatJson(builder.build()));
+		return builder.build();
+	}
+	
+	public MultiReward.Builder getContractRewardList(){
+		MultiReward.Builder builder = MultiReward.newBuilder();
+		String value = get(RedisKey.PURCHASECONTRACTREWARD_CONFIG);
+		if(value != null && parseJson(value, builder))
+			return builder;
+		ContractRewardList.Builder listbuilder = ContractRewardList.newBuilder();
+		String xml = ReadConfig("lol_soulreward.xml");
+		parseXml(xml, listbuilder);
+		for(ContractReward reward : listbuilder.getRewardList()){
+			RewardInfo.Builder rewardbuilder = RewardInfo.newBuilder();
+			rewardbuilder.setItemid(reward.getRewardid());
+			rewardbuilder.setCount(reward.getCount());
+			builder.addLoot(rewardbuilder);
+		}
+		set(RedisKey.PURCHASECONTRACTREWARD_CONFIG, formatJson(builder.build()));
+		return builder;
 	}
 	
 	public PurchaseCoinCostList getPurchaseCoinCostList(){

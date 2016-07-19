@@ -14,6 +14,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
+import com.trans.pixel.protoc.Commands.ContractWeightList;
 import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -131,6 +132,14 @@ public class ShopService {
 		ShopList shoplist = redis.buildLadderShop();
 		redis.saveLadderShop(shoplist, user);
 		return shoplist;
+	}
+
+	public ContractWeightList getContractWeightList(){
+		return redis.getContractWeightList();
+	}
+
+	public MultiReward.Builder getContractRewardList(){
+		return redis.getContractRewardList();
 	}
 
 	public Libao getLibaoConfig(int rechargeid){

@@ -12,7 +12,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Commodity;
-import com.trans.pixel.protoc.Commands.LibaoList;
+import com.trans.pixel.protoc.Commands.ContractWeight;
+import com.trans.pixel.protoc.Commands.ContractWeightList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
@@ -31,6 +32,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
@@ -42,7 +44,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseDailyShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseLadderShopCommand;
-import com.trans.pixel.protoc.Commands.ResponseLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPShopCommand;
 import com.trans.pixel.protoc.Commands.ResponsePurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.ResponseShopCommand;
@@ -696,6 +697,41 @@ public class ShopCommandService extends BaseCommandService{
 	
 	public void LibaoShop(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user){
 		service.getLibaoShop(responseBuilder, user);
+	}
+
+	public void purchaseContract(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user){
+		if(user.getPurchaseContractLeft() <= 0){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_PURCHASE_TIME);
+			
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
+			return;
+		}
+		if(!costService.cost(user, RewardConst.JEWEL, 328)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+			return;
+		}
+		ContractWeightList weights = service.getContractWeightList();
+		MultiReward.Builder rewards = service.getContractRewardList();
+		int index = userService.nextInt(weights.getWeightall());
+		for(ContractWeight weight : weights.getContractList()){
+			if(index < weight.getWeight()){
+				RewardInfo.Builder reward = RewardInfo.newBuilder();
+				reward.setItemid(51000+cmd.getHeroid());
+				reward.setCount(weight.getCount());
+				if(user.getVip() >= 9)
+					reward.setCount(reward.getCount()*2);
+				rewards.addLoot(reward);
+				break;
+			}else{
+				index -= weight.getWeight();
+			}
+		}
+		rewardService.doRewards(user, rewards.build());
+		user.setPurchaseContractLeft(user.getPurchaseContractLeft()-1);
+		rewardService.updateUser(user);
+		pusher.pushUserInfoCommand(responseBuilder, user);
+		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 
 	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){
