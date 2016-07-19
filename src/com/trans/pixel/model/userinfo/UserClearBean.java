@@ -2,6 +2,8 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.protoc.Commands.ClearInfo;
+
 public class UserClearBean {
 	private int id = 0;
 	private long userId = 0;
@@ -50,5 +52,15 @@ public class UserClearBean {
 			return null;
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserClearBean) JSONObject.toBean(json, UserClearBean.class);
+	}
+	
+	public ClearInfo buildUserClear() {
+		ClearInfo.Builder builder = ClearInfo.newBuilder();
+		
+		builder.setPosition(position);
+		builder.setClearId(clearId);
+		builder.setCount(count);
+		
+		return builder.build();
 	}
 }

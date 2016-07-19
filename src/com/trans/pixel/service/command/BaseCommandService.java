@@ -17,6 +17,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
@@ -35,18 +36,22 @@ import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserAchieve;
 import com.trans.pixel.protoc.Commands.UserEquip;
+import com.trans.pixel.protoc.Commands.UserFood;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHead;
 import com.trans.pixel.protoc.Commands.UserProp;
 import com.trans.pixel.protoc.Commands.UserRank;
 import com.trans.pixel.protoc.Commands.UserTeam;
 import com.trans.pixel.service.LadderService;
+import com.trans.pixel.service.UserClearService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class BaseCommandService {
 	@Resource
 	private LadderService ladderService;
+	@Resource
+	private UserClearService userClearService;
 	
 	protected void buildUserInfo(ResponseUserInfoCommand.Builder builder, UserBean user) {
 		builder.setUser(user.build());
@@ -147,6 +152,15 @@ public class BaseCommandService {
 		}
 		
 		return userEquipBuilderList;
+	}
+	
+	protected List<UserFood> buildUserFoodList(List<UserFoodBean> userFoodList) {
+		List<UserFood> userFoodBuilderList = new ArrayList<UserFood>();
+		for (UserFoodBean userFood : userFoodList) {
+			userFoodBuilderList.add(userFood.buildUserFood());
+		}
+		
+		return userFoodBuilderList;
 	}
 	
 	protected List<UserProp> buildUserPropList(List<UserPropBean> userPropList) {
@@ -282,10 +296,10 @@ public class BaseCommandService {
 		return builderList;
 	}
 	
-	protected List<HeroInfo> buildHeroInfo(List<UserPokedeBean> userPokedeList) {
+	protected List<HeroInfo> buildHeroInfo(List<UserPokedeBean> userPokedeList, UserBean user) {
 		List<HeroInfo> heroInfoList = new ArrayList<HeroInfo>();
 		for (UserPokedeBean userPokede : userPokedeList) {
-			heroInfoList.add(userPokede.buildUserPokede());
+			heroInfoList.add(userPokede.buildUserPokede(userClearService.selectUserClear(user, userPokede.getHeroId())));
 		}
 		
 		return heroInfoList;

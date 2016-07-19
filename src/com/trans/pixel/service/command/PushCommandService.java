@@ -17,6 +17,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
@@ -40,6 +41,7 @@ import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserFoodCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserHeadCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
@@ -57,6 +59,7 @@ import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.UserAchieveService;
 import com.trans.pixel.service.UserEquipService;
+import com.trans.pixel.service.UserFoodService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
@@ -101,6 +104,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserHeadService userHeadService;
 	@Resource
 	private UserPokedeService userPokedeService;
+	@Resource
+	private UserFoodService userFoodService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -159,6 +164,19 @@ public class PushCommandService extends BaseCommandService {
 		ResponseUserPropCommand.Builder builder = ResponseUserPropCommand.newBuilder();
 		builder.addAllUserProp(super.buildUserPropList(userPropList));
 		responseBuilder.setUserPropCommand(builder.build());
+	}
+	
+	public void pushUserFoodListCommand(Builder responseBuilder, UserBean user) {
+		List<UserFoodBean> userFoodList = userFoodService.selectUserFoodList(user.getId());
+		ResponseUserFoodCommand.Builder builder = ResponseUserFoodCommand.newBuilder();
+		builder.addAllUserFood(buildUserFoodList(userFoodList));
+		responseBuilder.setUserFoodCommand(builder.build());
+	}
+	
+	public void pushUserFoodListCommand(Builder responseBuilder, UserBean user, List<UserFoodBean> userFoodList) {
+		ResponseUserFoodCommand.Builder builder = ResponseUserFoodCommand.newBuilder();
+		builder.addAllUserFood(buildUserFoodList(userFoodList));
+		responseBuilder.setUserFoodCommand(builder.build());
 	}
 	
 	public void pushGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {
@@ -317,8 +335,12 @@ public class PushCommandService extends BaseCommandService {
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		List<UserHeadBean> headList = new ArrayList<UserHeadBean>();
+		List<UserFoodBean> foodList = new ArrayList<UserFoodBean>();
 		long userId = user.getId();
-		if (rewardId > RewardConst.HEAD) {
+		if (rewardId > RewardConst.FOOD) {
+			foodList.add(userFoodService.selectUserFood(user, rewardId));
+			this.pushUserFoodListCommand(responseBuilder, user, foodList);
+		} else if (rewardId > RewardConst.HEAD) {
 			headList.add(userHeadService.selectUserHead(userId, rewardId));
 			this.pushUserHeadCommand(responseBuilder, user, headList);
 		} else if (rewardId > RewardConst.HERO) {
@@ -341,13 +363,17 @@ public class PushCommandService extends BaseCommandService {
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		List<UserHeadBean> headList = new ArrayList<UserHeadBean>();
 		List<Integer> pushRewardIdList = new ArrayList<Integer>();
+		List<UserFoodBean> foodList = new ArrayList<UserFoodBean>();
 		boolean isUserUpdated = false;
 		long userId = user.getId();
 		for(RewardInfo reward : rewards.getLootList()){
 			int rewardId = reward.getItemid();
 			if (pushRewardIdList.contains(rewardId))
 				continue;
-			if (rewardId > RewardConst.HEAD) {
+			
+			if (rewardId > RewardConst.FOOD) {
+				foodList.add(userFoodService.selectUserFood(user, rewardId));
+			} else if (rewardId > RewardConst.HEAD) {
 				headList.add(userHeadService.selectUserHead(userId, rewardId));
 			} if (rewardId > RewardConst.HERO) {
 				heroList.addAll(userHeroService.selectUserNewHero(userId));
@@ -376,6 +402,8 @@ public class PushCommandService extends BaseCommandService {
 			this.pushUserPropListCommand(responseBuilder, user, propList);
 		if(equipList.size() > 0)
 			this.pushUserEquipListCommand(responseBuilder, user, equipList);
+		if (foodList.size() > 0)
+			this.pushUserFoodListCommand(responseBuilder, user, foodList);
 		if(isUserUpdated)
 			this.pushUserInfoCommand(responseBuilder, user);
 	}
@@ -445,7 +473,7 @@ public class PushCommandService extends BaseCommandService {
 	public void pushUserPokedeList(Builder responseBuilder, UserBean user) {
 		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
 		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
-		builder.addAllPokede(buildHeroInfo(userPokedeList));
+		builder.addAllPokede(buildHeroInfo(userPokedeList, user));
 		responseBuilder.setUserPokedeCommand(builder.build());
 	}
 }

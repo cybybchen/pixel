@@ -1,5 +1,7 @@
 package com.trans.pixel.model.userinfo;
 
+import java.util.List;
+
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.protoc.Commands.HeroInfo;
@@ -41,13 +43,16 @@ public class UserPokedeBean {
 		this.count = count;
 	}
 	
-	public HeroInfo buildUserPokede() {
+	public HeroInfo buildUserPokede(List<UserClearBean> userClearList) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		
 		builder.setHeroId(heroId);
 		builder.setRare(rare);
 		builder.setLevel(level);
 		builder.setCount(count);
+		for (UserClearBean userClear : userClearList) {
+			builder.addClear(userClear.buildUserClear());
+		}
 		
 		return builder.build();
 	}

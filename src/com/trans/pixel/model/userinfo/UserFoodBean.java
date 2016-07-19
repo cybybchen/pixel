@@ -2,6 +2,8 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.protoc.Commands.UserFood;
+
 public class UserFoodBean {
 	private long id = 0;
 	private long userId = 0;
@@ -37,5 +39,14 @@ public class UserFoodBean {
 			return null;
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserFoodBean) JSONObject.toBean(json, UserFoodBean.class);
+	}
+	
+	public UserFood buildUserFood() {
+		UserFood.Builder builder = UserFood.newBuilder();
+		
+		builder.setFoodId(foodId);
+		builder.setCount(count);
+		
+		return builder.build();
 	}
 }

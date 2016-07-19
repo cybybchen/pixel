@@ -150,6 +150,12 @@ message HeadInfo
 	optional int32 onlineStatus = 9;	
 }
 
+message ClearInfo {
+	required int32 position = 1;
+	required int32 clearId = 2;
+	required int32 count = 3;
+}
+
 message HeroInfo {
 	optional int64 infoId = 1;
 	optional int32 level = 2;
@@ -162,6 +168,7 @@ message HeroInfo {
 	optional int32 position = 9;//useless
 	optional bool isLock = 10;
 	optional int32 count = 11;
+	repeated ClearInfo clear = 12;
 }
 
 message PurchaseCoinReward {
@@ -1125,6 +1132,11 @@ message ClearAttribute {
 	optional int32 interval = 7;
 }
 
+message UserFood {
+	required int32 foodId = 1;
+	required int32 count = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1994,6 +2006,16 @@ message RequestFeedFoodCommand {
 	required int32 foodCount = 3;
 }
 
+message RequestClearHeroCommand {
+	required int32 heroId = 1;
+	required int32 position = 2;
+	required int32 type = 3;
+}
+
+message ResponseUserFoodCommand {
+	repeated UserFood userFood = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2125,6 +2147,7 @@ message RequestCommand {
 	optional RequestGreenhandCommand greenhandCommand = 91;
 	optional RequestLogCommand logCommand = 92;
 	optional RequestFeedFoodCommand feedFoodCommand = 93;
+	optional RequestClearHeroCommand clearHeroCommand = 94;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2188,6 +2211,7 @@ message ResponseCommand {
 	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
 	optional ResponseUserHeadCommand userHeadCommand = 51;
 	optional ResponseNoticeCommand noticeCommand = 53;
+	optional ResponseUserFoodCommand userFoodCommand = 54;
 }
 
 
