@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.utils.DateUtil;
 
 @Repository
 public class UserPropRedisService extends RedisService{
@@ -48,7 +49,10 @@ public class UserPropRedisService extends RedisService{
 				
 				
 				bhOps.put("" + userProp.getPropId(), userProp.toJson());
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
+				if (!userProp.getExpiredTime().equals(""))
+					bhOps.expireAt(DateUtil.getDate(userProp.getExpiredTime()));
+				else
+					bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				
 				return null;
 			}

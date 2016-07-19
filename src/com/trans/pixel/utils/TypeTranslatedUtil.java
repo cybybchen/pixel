@@ -91,7 +91,7 @@ public class TypeTranslatedUtil {
 		try {
 			value = json.getString(property);
 		} catch (JSONException e) {
-
+			value = "";
 		}
 		return value;
 	}  

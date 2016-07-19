@@ -227,6 +227,7 @@ message UserEquip {
 message UserProp {
 	required int32 propId = 1;
 	required int32 propCount = 2;
+	optional string expiredTime = 3;
 }
 
 message SkillInfo {
