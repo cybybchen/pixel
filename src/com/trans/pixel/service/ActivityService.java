@@ -36,6 +36,7 @@ import com.trans.pixel.protoc.Commands.Kaifu2Rank;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Commands.RewardOrder;
 import com.trans.pixel.protoc.Commands.Richang;
 import com.trans.pixel.protoc.Commands.Shouchong;
 import com.trans.pixel.protoc.Commands.ShouchongReward;
@@ -73,6 +74,8 @@ public class ActivityService {
 	private NoticeService noticeService;
 	@Resource
 	private UserActivityRedisService userActivityRedisService;
+	@Resource
+	private CostService costService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -115,18 +118,39 @@ public class ActivityService {
 	}
 	
 	public ResultConst handleRichangReward(MultiReward.Builder rewards, UserRichang.Builder ur, UserBean user, int id, int order) {
-		if (ur.getRewardOrderList().contains(order))
-			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
-		
 		Richang richang = activityRedisService.getRichang(id);
 		if (!DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime()))
 			return ErrorConst.ACTIVITY_IS_OVER_ERROR;
 		
-		ActivityOrder activityorder = richang.getOrder(order - 1);
-		if (activityorder.getTargetcount() > ur.getCompleteCount())
-			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+		if (ur.getRewardOrderList().contains(order))
+			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
-		ur.addRewardOrder(order);
+		ActivityOrder activityorder = richang.getOrder(order - 1);
+		
+		if (richang.getTargetid() == ActivityConst.CONSUME_ACTIVITY) {
+			for (int i = 0; i < ur.getRewardList().size(); ++ i) {
+				RewardOrder rewardOrder = ur.getReward(i);
+				if (rewardOrder.getOrder() == order) {
+					if (activityorder.getLimit() > 0 && rewardOrder.getCount() >= activityorder.getLimit())
+						return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
+					
+					if (!costService.cost(user, activityorder.getConsumeid(), activityorder.getTargetcount())) {
+						return ErrorConst.NOT_ENOUGH_PROP;
+					}
+					
+					RewardOrder.Builder newReward = RewardOrder.newBuilder(rewardOrder);
+					newReward.setCount(newReward.getCount() + 1);
+					ur.setReward(i, newReward.build());
+				}
+			}
+		}else {
+			if (activityorder.getTargetcount() > ur.getCompleteCount())
+				return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+			
+			ur.addRewardOrder(order);
+		}
+		
+		
 		userActivityService.updateUserRichang(user.getId(), ur.build(), richang.getEndtime());
 		rewards.addAllLoot(getRewardList(activityorder));
 		

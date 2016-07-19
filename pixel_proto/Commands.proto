@@ -849,6 +849,8 @@ message ActivityOrder {
 	required int32 rewardid3 = 14;
 	required string rewardname3 = 15;
 	required int32 rewardcount3 = 16;
+	optional int32 consumeid = 19;
+	optional int32 limit = 18;
 }
 
 message RichangList {
@@ -866,10 +868,16 @@ message Richang {
 	optional string serverid = 8;
 }
 
+message RewardOrder {
+	required int32 order = 1;
+	required int32 count = 2;
+}
+
 message UserRichang {
 	required int32 type = 1;
 	required int32 completeCount = 2;
-	repeated int32 rewardOrder = 3;
+	repeated RewardOrder reward = 3;
+	repeated int32 rewardOrder = 4;
 }
 
 message UserAchieve {

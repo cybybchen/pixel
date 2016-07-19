@@ -18,6 +18,10 @@ public class ActivityConst {
 	 */
 	public static final int PVP_ATTACK_ENEMY_SUCCESS = 10;
 	/**
+	 * 节日兑换活动
+	 */
+	public static final int CONSUME_ACTIVITY = 35;
+	/**
 	 * 累计钻石抽奖
 	 */
 	public static final int RICHANG_LEIJI_LOTTERY_JEWEL = 305;
