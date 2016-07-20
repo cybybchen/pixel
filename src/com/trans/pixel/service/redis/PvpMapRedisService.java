@@ -189,7 +189,7 @@ public class PvpMapRedisService extends RedisService{
 		for(String value : keyvalue.values()) {
 			PVPMonster.Builder builder = PVPMonster.newBuilder();
 			if(parseJson(value, builder)){
-				if(!builder.hasEndtime() || DateUtil.timeIsAvailable(builder.getStarttime(), builder.getEndtime()))
+				if(!builder.hasEndtime() || (DateUtil.timeIsAvailable(builder.getStarttime(), builder.getEndtime()) && !refreshMonster))
 					monsters.add(builder.build());
 				else{
 					hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), builder.getPositionid()+"");
