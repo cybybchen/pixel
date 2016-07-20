@@ -25,6 +25,7 @@ public class PackageBean {
 	private int judge = 0;
 	private int itemcount = 0;
 	private int weightall = 0;
+	private String endTime = "";
 	private int cyb = 0;
 	private List<ItemBean> itemList = new ArrayList<ItemBean>();
 	
@@ -71,6 +72,12 @@ public class PackageBean {
 	public void setCyb(int cyb) {
 		this.cyb = cyb;
 	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ITEMID, itemid);
@@ -80,6 +87,7 @@ public class PackageBean {
 		json.put(WEIGHTALL, weightall);
 		json.put(ITEM, itemList);
 		json.put(CYB, cyb);
+		json.put(ENDTIME, endTime);
 		
 		return json.toString();
 	}
@@ -95,6 +103,7 @@ public class PackageBean {
 		bean.setItemcount(json.getInt(ITEMCOUNT));
 		bean.setWeightall(json.getInt(WEIGHTALL));
 		bean.setCyb(json.getInt(CYB));
+		bean.setEndTime(json.getString(ENDTIME));
 		
 		List<ItemBean> list = new ArrayList<ItemBean>();
 		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, ITEM);
@@ -127,6 +136,10 @@ public class PackageBean {
 				bean.setItemcount(TypeTranslatedUtil.stringToInt(element.attributeValue(ITEMCOUNT)));
 				bean.setWeightall(TypeTranslatedUtil.stringToInt(element.attributeValue(WEIGHTALL)));
 				bean.setCyb(TypeTranslatedUtil.stringToInt(element.attributeValue(CYB)));
+				String endTime = element.attributeValue(ENDTIME);
+				if (endTime == null)
+					endTime = "";
+				bean.setEndTime(endTime);
 				
 				List<ItemBean> itemList = new ArrayList<ItemBean>();
 				List<?> itemNodeList = element.elements();
@@ -182,4 +195,5 @@ public class PackageBean {
 	private static final String WEIGHTALL = "weightall";
 	private static final String ITEM = "item";
 	private static final String CYB = "cyb";
+	private static final String ENDTIME = "endtime";
 }

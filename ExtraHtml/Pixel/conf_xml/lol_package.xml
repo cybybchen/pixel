@@ -1,1508 +1,1514 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-	<loot itemid="30001" name="金币包" img="30001" rare="1" description="可以开出40-100金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30001" name="金币包" img="30001" rare="1" description="可以开出40-100金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="40" countb="60" weight="45" />
 		<item itemid="1001" item="金币" counta="80" countb="100" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30002" name="金币包" img="30001" rare="1" description="可以开出80-200金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30002" name="金币包" img="30001" rare="1" description="可以开出80-200金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="80" countb="120" weight="45" />
 		<item itemid="1001" item="金币" counta="160" countb="200" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30003" name="金币包" img="30001" rare="1" description="可以开出120-300金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30003" name="金币包" img="30001" rare="1" description="可以开出120-300金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="120" countb="180" weight="45" />
 		<item itemid="1001" item="金币" counta="240" countb="300" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30004" name="金币包" img="30001" rare="1" description="可以开出160-400金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30004" name="金币包" img="30001" rare="1" description="可以开出160-400金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="160" countb="240" weight="45" />
 		<item itemid="1001" item="金币" counta="320" countb="400" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30005" name="金币包" img="30001" rare="1" description="可以开出200-500金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30005" name="金币包" img="30001" rare="1" description="可以开出200-500金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="200" countb="300" weight="45" />
 		<item itemid="1001" item="金币" counta="400" countb="500" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30006" name="金币包" img="30001" rare="1" description="可以开出240-600金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30006" name="金币包" img="30001" rare="1" description="可以开出240-600金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="240" countb="360" weight="45" />
 		<item itemid="1001" item="金币" counta="480" countb="600" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30007" name="金币包" img="30001" rare="1" description="可以开出288-720金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30007" name="金币包" img="30001" rare="1" description="可以开出288-720金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="288" countb="432" weight="45" />
 		<item itemid="1001" item="金币" counta="576" countb="720" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30008" name="金币包" img="30001" rare="1" description="可以开出352-880金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30008" name="金币包" img="30001" rare="1" description="可以开出352-880金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="352" countb="528" weight="45" />
 		<item itemid="1001" item="金币" counta="704" countb="880" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30009" name="金币包" img="30001" rare="1" description="可以开出408-1020金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30009" name="金币包" img="30001" rare="1" description="可以开出408-1020金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="408" countb="612" weight="45" />
 		<item itemid="1001" item="金币" counta="816" countb="1020" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30010" name="金币包" img="30001" rare="1" description="可以开出464-1160金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30010" name="金币包" img="30001" rare="1" description="可以开出464-1160金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="464" countb="696" weight="45" />
 		<item itemid="1001" item="金币" counta="928" countb="1160" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30011" name="金币包" img="30001" rare="1" description="可以开出520-1300金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30011" name="金币包" img="30001" rare="1" description="可以开出520-1300金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="520" countb="780" weight="45" />
 		<item itemid="1001" item="金币" counta="1040" countb="1300" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30012" name="金币包" img="30001" rare="1" description="可以开出576-1440金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30012" name="金币包" img="30001" rare="1" description="可以开出576-1440金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="576" countb="864" weight="45" />
 		<item itemid="1001" item="金币" counta="1152" countb="1440" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30013" name="金币包" img="30001" rare="1" description="可以开出648-1620金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30013" name="金币包" img="30001" rare="1" description="可以开出648-1620金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="648" countb="972" weight="45" />
 		<item itemid="1001" item="金币" counta="1296" countb="1620" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30014" name="金币包" img="30001" rare="1" description="可以开出720-1800金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30014" name="金币包" img="30001" rare="1" description="可以开出720-1800金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="720" countb="1080" weight="45" />
 		<item itemid="1001" item="金币" counta="1440" countb="1800" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30015" name="金币包" img="30001" rare="1" description="可以开出792-1980金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30015" name="金币包" img="30001" rare="1" description="可以开出792-1980金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="792" countb="1188" weight="45" />
 		<item itemid="1001" item="金币" counta="1584" countb="1980" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30016" name="金币包" img="30001" rare="1" description="可以开出864-2160金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30016" name="金币包" img="30001" rare="1" description="可以开出864-2160金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="864" countb="1296" weight="45" />
 		<item itemid="1001" item="金币" counta="1728" countb="2160" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30017" name="金币包" img="30001" rare="1" description="可以开出960-2400金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30017" name="金币包" img="30001" rare="1" description="可以开出960-2400金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="960" countb="1440" weight="45" />
 		<item itemid="1001" item="金币" counta="1920" countb="2400" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30018" name="金币包" img="30001" rare="1" description="可以开出1056-2640金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30018" name="金币包" img="30001" rare="1" description="可以开出1056-2640金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1056" countb="1584" weight="45" />
 		<item itemid="1001" item="金币" counta="2112" countb="2640" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30019" name="金币包" img="30001" rare="1" description="可以开出1152-2880金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30019" name="金币包" img="30001" rare="1" description="可以开出1152-2880金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1152" countb="1728" weight="45" />
 		<item itemid="1001" item="金币" counta="2304" countb="2880" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30020" name="金币包" img="30001" rare="1" description="可以开出1248-3120金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30020" name="金币包" img="30001" rare="1" description="可以开出1248-3120金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1248" countb="1872" weight="45" />
 		<item itemid="1001" item="金币" counta="2496" countb="3120" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30021" name="金币包" img="30001" rare="1" description="可以开出1344-3360金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30021" name="金币包" img="30001" rare="1" description="可以开出1344-3360金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1344" countb="2016" weight="45" />
 		<item itemid="1001" item="金币" counta="2688" countb="3360" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30022" name="金币包" img="30001" rare="1" description="可以开出1440-3600金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30022" name="金币包" img="30001" rare="1" description="可以开出1440-3600金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1440" countb="2160" weight="45" />
 		<item itemid="1001" item="金币" counta="2880" countb="3600" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30023" name="金币包" img="30001" rare="1" description="可以开出1536-3840金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30023" name="金币包" img="30001" rare="1" description="可以开出1536-3840金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1536" countb="2304" weight="45" />
 		<item itemid="1001" item="金币" counta="3072" countb="3840" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30024" name="金币包" img="30001" rare="1" description="可以开出1632-4080金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30024" name="金币包" img="30001" rare="1" description="可以开出1632-4080金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1632" countb="2448" weight="45" />
 		<item itemid="1001" item="金币" counta="3264" countb="4080" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30025" name="金币包" img="30001" rare="1" description="可以开出1728-4320金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30025" name="金币包" img="30001" rare="1" description="可以开出1728-4320金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1728" countb="2592" weight="45" />
 		<item itemid="1001" item="金币" counta="3456" countb="4320" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30026" name="金币包" img="30001" rare="1" description="可以开出1872-4680金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30026" name="金币包" img="30001" rare="1" description="可以开出1872-4680金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="1872" countb="2808" weight="45" />
 		<item itemid="1001" item="金币" counta="3744" countb="4680" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30027" name="金币包" img="30001" rare="1" description="可以开出2016-5040金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30027" name="金币包" img="30001" rare="1" description="可以开出2016-5040金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="2016" countb="3024" weight="45" />
 		<item itemid="1001" item="金币" counta="4032" countb="5040" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30028" name="金币包" img="30001" rare="1" description="可以开出2160-5400金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30028" name="金币包" img="30001" rare="1" description="可以开出2160-5400金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="2160" countb="3240" weight="45" />
 		<item itemid="1001" item="金币" counta="4320" countb="5400" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30029" name="金币包" img="30001" rare="1" description="可以开出2304-5760金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30029" name="金币包" img="30001" rare="1" description="可以开出2304-5760金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="2304" countb="3456" weight="45" />
 		<item itemid="1001" item="金币" counta="4608" countb="5760" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30030" name="金币包" img="30001" rare="1" description="可以开出2592-6480金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30030" name="金币包" img="30001" rare="1" description="可以开出2592-6480金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="2592" countb="3888" weight="45" />
 		<item itemid="1001" item="金币" counta="5184" countb="6480" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="30031" name="金币包" img="30001" rare="1" description="可以开出2880-7200金币" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="30031" name="金币包" img="30001" rare="1" description="可以开出2880-7200金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1001" item="金币" counta="2880" countb="4320" weight="45" />
 		<item itemid="1001" item="金币" counta="5760" countb="7200" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31001" name="经验包" img="31001" rare="1" description="可以开出200-500经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31001" name="经验包" img="31001" rare="1" description="可以开出200-500经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="200" countb="300" weight="45" />
 		<item itemid="1000" item="经验" counta="400" countb="500" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31002" name="经验包" img="31001" rare="1" description="可以开出288-720经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31002" name="经验包" img="31001" rare="1" description="可以开出288-720经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="288" countb="432" weight="45" />
 		<item itemid="1000" item="经验" counta="576" countb="720" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31003" name="经验包" img="31001" rare="1" description="可以开出720-1800经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31003" name="经验包" img="31001" rare="1" description="可以开出720-1800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="720" countb="1080" weight="45" />
 		<item itemid="1000" item="经验" counta="1440" countb="1800" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31004" name="经验包" img="31001" rare="1" description="可以开出1296-3240经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31004" name="经验包" img="31001" rare="1" description="可以开出1296-3240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="1296" countb="1944" weight="45" />
 		<item itemid="1000" item="经验" counta="2592" countb="3240" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31005" name="经验包" img="31001" rare="1" description="可以开出2448-6120经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31005" name="经验包" img="31001" rare="1" description="可以开出2448-6120经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="2448" countb="3672" weight="45" />
 		<item itemid="1000" item="经验" counta="4896" countb="6120" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31006" name="经验包" img="31001" rare="1" description="可以开出4896-12240经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31006" name="经验包" img="31001" rare="1" description="可以开出4896-12240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="4896" countb="7344" weight="45" />
 		<item itemid="1000" item="经验" counta="9792" countb="12240" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31007" name="经验包" img="31001" rare="1" description="可以开出6768-16920经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31007" name="经验包" img="31001" rare="1" description="可以开出6768-16920经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="6768" countb="10152" weight="45" />
 		<item itemid="1000" item="经验" counta="13536" countb="16920" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31008" name="经验包" img="31001" rare="1" description="可以开出14256-35640经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31008" name="经验包" img="31001" rare="1" description="可以开出14256-35640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="14256" countb="21384" weight="45" />
 		<item itemid="1000" item="经验" counta="28512" countb="35640" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31009" name="经验包" img="31001" rare="1" description="可以开出20736-51840经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31009" name="经验包" img="31001" rare="1" description="可以开出20736-51840经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="20736" countb="31104" weight="45" />
 		<item itemid="1000" item="经验" counta="41472" countb="51840" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31010" name="经验包" img="31001" rare="1" description="可以开出28512-71280经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31010" name="经验包" img="31001" rare="1" description="可以开出28512-71280经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="28512" countb="42768" weight="45" />
 		<item itemid="1000" item="经验" counta="57024" countb="71280" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31011" name="经验包" img="31001" rare="1" description="可以开出34848-87120经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31011" name="经验包" img="31001" rare="1" description="可以开出34848-87120经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="34848" countb="52272" weight="45" />
 		<item itemid="1000" item="经验" counta="69696" countb="87120" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31012" name="经验包" img="31001" rare="1" description="可以开出44928-112320经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31012" name="经验包" img="31001" rare="1" description="可以开出44928-112320经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="44928" countb="67392" weight="45" />
 		<item itemid="1000" item="经验" counta="89856" countb="112320" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31013" name="经验包" img="31001" rare="1" description="可以开出55008-137520经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31013" name="经验包" img="31001" rare="1" description="可以开出55008-137520经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="55008" countb="82512" weight="45" />
 		<item itemid="1000" item="经验" counta="110016" countb="137520" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31014" name="经验包" img="31001" rare="1" description="可以开出61056-152640经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31014" name="经验包" img="31001" rare="1" description="可以开出61056-152640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="61056" countb="91584" weight="45" />
 		<item itemid="1000" item="经验" counta="122112" countb="152640" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31015" name="经验包" img="31001" rare="1" description="可以开出68544-171360经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31015" name="经验包" img="31001" rare="1" description="可以开出68544-171360经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="68544" countb="102816" weight="45" />
 		<item itemid="1000" item="经验" counta="137088" countb="171360" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31016" name="经验包" img="31001" rare="1" description="可以开出72720-181800经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31016" name="经验包" img="31001" rare="1" description="可以开出72720-181800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="72720" countb="109080" weight="45" />
 		<item itemid="1000" item="经验" counta="145440" countb="181800" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31017" name="经验包" img="31001" rare="1" description="可以开出84240-210600经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31017" name="经验包" img="31001" rare="1" description="可以开出84240-210600经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="84240" countb="126360" weight="45" />
 		<item itemid="1000" item="经验" counta="168480" countb="210600" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31018" name="经验包" img="31001" rare="1" description="可以开出95904-239760经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31018" name="经验包" img="31001" rare="1" description="可以开出95904-239760经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="95904" countb="143856" weight="45" />
 		<item itemid="1000" item="经验" counta="191808" countb="239760" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31019" name="经验包" img="31001" rare="1" description="可以开出105120-262800经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31019" name="经验包" img="31001" rare="1" description="可以开出105120-262800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="105120" countb="157680" weight="45" />
 		<item itemid="1000" item="经验" counta="210240" countb="262800" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31020" name="经验包" img="31001" rare="1" description="可以开出107568-268920经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31020" name="经验包" img="31001" rare="1" description="可以开出107568-268920经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="107568" countb="161352" weight="45" />
 		<item itemid="1000" item="经验" counta="215136" countb="268920" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31021" name="经验包" img="31001" rare="1" description="可以开出111456-278640经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31021" name="经验包" img="31001" rare="1" description="可以开出111456-278640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="111456" countb="167184" weight="45" />
 		<item itemid="1000" item="经验" counta="222912" countb="278640" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31022" name="经验包" img="31001" rare="1" description="可以开出116496-291240经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31022" name="经验包" img="31001" rare="1" description="可以开出116496-291240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="116496" countb="174744" weight="45" />
 		<item itemid="1000" item="经验" counta="232992" countb="291240" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31023" name="经验包" img="31001" rare="1" description="可以开出120960-302400经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31023" name="经验包" img="31001" rare="1" description="可以开出120960-302400经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="120960" countb="181440" weight="45" />
 		<item itemid="1000" item="经验" counta="241920" countb="302400" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31024" name="经验包" img="31001" rare="1" description="可以开出125568-313920经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31024" name="经验包" img="31001" rare="1" description="可以开出125568-313920经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="125568" countb="188352" weight="45" />
 		<item itemid="1000" item="经验" counta="251136" countb="313920" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31025" name="经验包" img="31001" rare="1" description="可以开出130176-325440经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31025" name="经验包" img="31001" rare="1" description="可以开出130176-325440经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="130176" countb="195264" weight="45" />
 		<item itemid="1000" item="经验" counta="260352" countb="325440" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31026" name="经验包" img="31001" rare="1" description="可以开出137088-342720经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31026" name="经验包" img="31001" rare="1" description="可以开出137088-342720经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="137088" countb="205632" weight="45" />
 		<item itemid="1000" item="经验" counta="274176" countb="342720" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31027" name="经验包" img="31001" rare="1" description="可以开出147456-368640经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31027" name="经验包" img="31001" rare="1" description="可以开出147456-368640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="147456" countb="221184" weight="45" />
 		<item itemid="1000" item="经验" counta="294912" countb="368640" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31028" name="经验包" img="31001" rare="1" description="可以开出155520-388800经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31028" name="经验包" img="31001" rare="1" description="可以开出155520-388800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="155520" countb="233280" weight="45" />
 		<item itemid="1000" item="经验" counta="311040" countb="388800" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31029" name="经验包" img="31001" rare="1" description="可以开出159984-399960经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31029" name="经验包" img="31001" rare="1" description="可以开出159984-399960经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="159984" countb="239976" weight="45" />
 		<item itemid="1000" item="经验" counta="319968" countb="399960" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31030" name="经验包" img="31001" rare="1" description="可以开出177696-444240经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31030" name="经验包" img="31001" rare="1" description="可以开出177696-444240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="177696" countb="266544" weight="45" />
 		<item itemid="1000" item="经验" counta="355392" countb="444240" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31031" name="经验包" img="31001" rare="1" description="可以开出201456-503640经验" hashero="0" cyb="0" judge="0" itemcount="2" weightall="50" >
+	<loot itemid="31031" name="经验包" img="31001" rare="1" description="可以开出201456-503640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="201456" countb="302184" weight="45" />
 		<item itemid="1000" item="经验" counta="402912" countb="503640" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32001" name="德玛西亚男英雄包" img="32001" rare="3" description="可以开出德玛西亚地区的男性1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="90" >
+	<loot itemid="32001" name="德玛西亚男英雄包" img="32001" rare="3" description="可以开出德玛西亚地区的男性1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="90" >
 		<item itemid="51017" item="盖伦1星" counta="1" countb="2" weight="50" />
 		<item itemid="51009" item="奥拉夫1星" counta="1" countb="2" weight="20" />
 		<item itemid="51005" item="赵信1星" counta="1" countb="2" weight="20" />
 		<item itemid="51063" item="嘉文四世1星" counta="1" countb="2" weight="0" />
 	</loot>
-	<loot itemid="32002" name="德玛西亚女英雄包" img="32001" rare="3" description="可以开出德玛西亚地区的女性1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="80" >
+	<loot itemid="32002" name="德玛西亚女英雄包" img="32001" rare="3" description="可以开出德玛西亚地区的女性1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="80" >
 		<item itemid="51072" item="拉克丝1星" counta="1" countb="2" weight="50" />
 		<item itemid="51084" item="希瓦娜1星" counta="1" countb="2" weight="20" />
 		<item itemid="51060" item="布兰德1星" counta="1" countb="2" weight="0" />
 		<item itemid="51058" item="薇恩1星" counta="1" countb="2" weight="10" />
 	</loot>
-	<loot itemid="32003" name="艾欧尼亚男英雄包" img="32003" rare="3" description="可以开出艾欧尼亚地区的男性1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="41" >
+	<loot itemid="32003" name="艾欧尼亚男英雄包" img="32003" rare="3" description="可以开出艾欧尼亚地区的男性1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="41" >
 		<item itemid="51061" item="李青1星" counta="1" countb="2" weight="10" />
 		<item itemid="51117" item="亚索1星" counta="1" countb="2" weight="1" />
 		<item itemid="51038" item="易1星" counta="1" countb="2" weight="20" />
 		<item itemid="51096" item="韦鲁斯1星" counta="1" countb="2" weight="10" />
 	</loot>
-	<loot itemid="32004" name="艾欧尼亚女英雄包" img="32003" rare="3" description="可以开出艾欧尼亚地区的女性1星英雄" hashero="1" cyb="0" judge="0" itemcount="3" weightall="60" >
+	<loot itemid="32004" name="艾欧尼亚女英雄包" img="32003" rare="3" description="可以开出艾欧尼亚地区的女性1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="3" weightall="60" >
 		<item itemid="51088" item="阿狸1星" counta="1" countb="2" weight="50" />
 		<item itemid="51070" item="艾瑞莉娅1星" counta="1" countb="2" weight="0" />
 		<item itemid="51074" item="娑娜1星" counta="1" countb="2" weight="10" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32005" name="祖安英雄包" img="32005" rare="3" description="可以开出祖安地区的1星英雄" hashero="1" cyb="0" judge="0" itemcount="3" weightall="70" >
+	<loot itemid="32005" name="祖安英雄包" img="32005" rare="3" description="可以开出祖安地区的1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="3" weightall="70" >
 		<item itemid="51032" item="沃里克1星" counta="1" countb="2" weight="50" />
 		<item itemid="51035" item="布里茨1星" counta="1" countb="2" weight="0" />
 		<item itemid="51052" item="辛吉德1星" counta="1" countb="2" weight="20" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32006" name="约德尔英雄包" img="32006" rare="3" description="可以开出约德尔西亚地区的1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="20" >
+	<loot itemid="32006" name="约德尔英雄包" img="32006" rare="3" description="可以开出约德尔西亚地区的1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="20" >
 		<item itemid="51059" item="兰博1星" counta="1" countb="2" weight="0" />
 		<item itemid="51094" item="璐璐1星" counta="1" countb="2" weight="20" />
 		<item itemid="51040" item="崔斯塔娜1星" counta="1" countb="2" weight="0" />
 		<item itemid="51043" item="提莫1星" counta="1" countb="2" weight="0" />
 	</loot>
-	<loot itemid="32007" name="暗影岛英雄包" img="32007" rare="3" description="可以开出暗影岛地区的1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="10" >
+	<loot itemid="32007" name="暗影岛英雄包" img="32007" rare="3" description="可以开出暗影岛地区的1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="10" >
 		<item itemid="51013" item="莫德凯撒1星" counta="1" countb="2" weight="0" />
 		<item itemid="51122" item="卡莉斯塔1星" counta="1" countb="2" weight="0" />
 		<item itemid="51108" item="锤石1星" counta="1" countb="2" weight="0" />
 		<item itemid="51105" item="伊丽丝1星" counta="1" countb="2" weight="10" />
 	</loot>
-	<loot itemid="32008" name="提亚马特女英雄包" img="32008" rare="3" description="可以开出提亚马特地区的女性1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="70" >
+	<loot itemid="32008" name="提亚马特女英雄包" img="32008" rare="3" description="可以开出提亚马特地区的女性1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="70" >
 		<item itemid="51041" item="安妮1星" counta="1" countb="2" weight="50" />
 		<item itemid="51082" item="瑞雯1星" counta="1" countb="2" weight="20" />
 		<item itemid="51102" item="雷恩加尔1星" counta="1" countb="2" weight="0" />
 		<item itemid="51048" item="墨菲特1星" counta="1" countb="2" weight="0" />
 	</loot>
-	<loot itemid="32009" name="提亚马特男英雄包" img="32008" rare="3" description="可以开出提亚马特地区的男性1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="60" >
+	<loot itemid="32009" name="提亚马特男英雄包" img="32008" rare="3" description="可以开出提亚马特地区的男性1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="60" >
 		<item itemid="51027" item="塔里克1星" counta="1" countb="2" weight="10" />
 		<item itemid="51024" item="崔斯特1星" counta="1" countb="2" weight="20" />
 		<item itemid="51039" item="贾克斯1星" counta="1" countb="2" weight="20" />
 		<item itemid="51079" item="孙悟空1星" counta="1" countb="2" weight="10" />
 	</loot>
-	<loot itemid="32010" name="西南地区英雄包" img="32010" rare="3" description="可以开出西南地区的1星英雄" hashero="1" cyb="0" judge="0" itemcount="4" weightall="60" >
+	<loot itemid="32010" name="西南地区英雄包" img="32010" rare="3" description="可以开出西南地区的1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="4" weightall="60" >
 		<item itemid="51010" item="古拉加斯1星" counta="1" countb="2" weight="50" />
 		<item itemid="51036" item="阿利斯塔1星" counta="1" countb="2" weight="0" />
 		<item itemid="51121" item="阿兹尔1星" counta="1" countb="2" weight="10" />
 		<item itemid="51012" item="奈德丽1星" counta="1" countb="2" weight="0" />
 	</loot>
-	<loot itemid="40001" name="小型经验药水" img="40001" rare="1" description="使用获得1000经验" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40001" name="小型经验药水" img="40001" rare="1" description="使用获得1000经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1000" item="经验" counta="1000" countb="1000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40002" name="中型经验药水" img="40002" rare="2" description="使用获得5000经验" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40002" name="中型经验药水" img="40002" rare="2" description="使用获得5000经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1000" item="经验" counta="5000" countb="5000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40003" name="大型经验药水" img="40003" rare="3" description="使用获得20000经验" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40003" name="大型经验药水" img="40003" rare="3" description="使用获得20000经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1000" item="经验" counta="20000" countb="20000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40004" name="超级经验药水" img="40004" rare="3" description="使用获得100000经验" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40004" name="超级经验药水" img="40004" rare="3" description="使用获得100000经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1000" item="经验" counta="100000" countb="100000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40024" name="圣级经验药水" img="40024" rare="4" description="使用获得1M经验" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40024" name="圣级经验药水" img="40024" rare="4" description="使用获得1M经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1000" item="经验" counta="1000000" countb="1000000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40025" name="神级经验药水" img="40025" rare="5" description="使用获得100M经验" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40025" name="神级经验药水" img="40025" rare="5" description="使用获得100M经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1000" item="经验" counta="100000000" countb="100000000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40005" name="小包金币" img="40005" rare="1" description="使用获得2000金币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40005" name="小包金币" img="40005" rare="1" description="使用获得2000金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1001" item="金币" counta="2000" countb="2000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40006" name="大包金币" img="40006" rare="1" description="使用获得10000金币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40006" name="大包金币" img="40006" rare="1" description="使用获得10000金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1001" item="金币" counta="10000" countb="10000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40007" name="小箱金币" img="40007" rare="1" description="使用获得40000金币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40007" name="小箱金币" img="40007" rare="1" description="使用获得40000金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1001" item="金币" counta="40000" countb="40000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40008" name="大箱金币" img="40008" rare="1" description="使用获得200000金币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40008" name="大箱金币" img="40008" rare="1" description="使用获得200000金币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1001" item="金币" counta="200000" countb="200000" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40009" name="小包魔晶" img="40009" rare="2" description="使用获得100魔晶" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40009" name="小包魔晶" img="40009" rare="2" description="使用获得100魔晶" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1003" item="魔晶" counta="100" countb="100" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40010" name="大包魔晶" img="40010" rare="2" description="使用获得500魔晶" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40010" name="大包魔晶" img="40010" rare="2" description="使用获得500魔晶" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1003" item="魔晶" counta="500" countb="500" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40011" name="小包远征币" img="40011" rare="2" description="使用获得100远征币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40011" name="小包远征币" img="40011" rare="2" description="使用获得100远征币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1004" item="远征币" counta="100" countb="100" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40012" name="大包远征币" img="40012" rare="2" description="使用获得500远征币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40012" name="大包远征币" img="40012" rare="2" description="使用获得500远征币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1004" item="远征币" counta="500" countb="500" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40013" name="小包荣誉" img="40013" rare="2" description="使用获得100荣誉" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40013" name="小包荣誉" img="40013" rare="2" description="使用获得100荣誉" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1005" item="荣誉" counta="100" countb="100" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40014" name="大包荣誉" img="40014" rare="2" description="使用获得500荣誉" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40014" name="大包荣誉" img="40014" rare="2" description="使用获得500荣誉" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1005" item="荣誉" counta="500" countb="500" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40015" name="小包公会币" img="40015" rare="2" description="使用获得100公会币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40015" name="小包公会币" img="40015" rare="2" description="使用获得100公会币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1006" item="公会币" counta="100" countb="100" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40016" name="大包公会币" img="40016" rare="2" description="使用获得500公会币" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40016" name="大包公会币" img="40016" rare="2" description="使用获得500公会币" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="1006" item="公会币" counta="500" countb="500" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40018" name="神器雕纹" img="40018" rare="2" description="使用获得100pts" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40018" name="神器雕纹" img="40018" rare="2" description="使用获得100pts" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="27001" item="pts" counta="100" countb="100" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40019" name="神器符印" img="40019" rare="3" description="使用获得300pts" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40019" name="神器符印" img="40019" rare="3" description="使用获得300pts" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="27001" item="pts" counta="300" countb="300" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40020" name="神器印记" img="40020" rare="4" description="使用获得150hpts" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40020" name="神器印记" img="40020" rare="4" description="使用获得150hpts" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="27002" item="hpts" counta="150" countb="150" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40021" name="神器精华" img="40021" rare="5" description="使用获得50tpts" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="40021" name="神器精华" img="40021" rare="5" description="使用获得50tpts" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="27003" item="tpts" counta="50" countb="50" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40017" name="挂机背包" img="40017" rare="2" description="挂机背包上限永久+1" hashero="0" cyb="1" judge="0" itemcount="" weightall="" >
+	<loot itemid="40017" name="挂机背包" img="40017" rare="2" description="挂机背包上限永久+1" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40022" name="保护之手" img="40022" rare="2" description="拥有它，你就可以保护小弟" hashero="0" cyb="1" judge="0" itemcount="" weightall="" >
+	<loot itemid="40022" name="保护之手" img="40022" rare="2" description="拥有它，你就可以保护小弟" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40023" name="英雄上限扩展" img="40023" rare="2" description="英雄上限永久+5" hashero="0" cyb="1" judge="0" itemcount="" weightall="" >
+	<loot itemid="40023" name="英雄上限扩展" img="40023" rare="2" description="英雄上限永久+5" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32101" name="娑娜英雄包" img="32011" rare="3" description="开启获得娑娜1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32101" name="娑娜英雄包" img="32011" rare="3" description="开启获得娑娜1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51074" item="娑娜1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32102" name="希瓦娜英雄包" img="32011" rare="3" description="开启获得希瓦娜1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32102" name="希瓦娜英雄包" img="32011" rare="3" description="开启获得希瓦娜1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51084" item="希瓦娜1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32103" name="安妮英雄包" img="32011" rare="3" description="开启获得安妮1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32103" name="安妮英雄包" img="32011" rare="3" description="开启获得安妮1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51041" item="安妮1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32104" name="瑞兹英雄包" img="32011" rare="3" description="开启获得瑞兹1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32104" name="瑞兹英雄包" img="32011" rare="3" description="开启获得瑞兹1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51076" item="瑞兹1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32105" name="塔里克英雄包" img="32011" rare="3" description="开启获得塔里克1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32105" name="塔里克英雄包" img="32011" rare="3" description="开启获得塔里克1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51027" item="塔里克1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32106" name="墨菲特英雄包" img="32011" rare="3" description="开启获得墨菲特1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32106" name="墨菲特英雄包" img="32011" rare="3" description="开启获得墨菲特1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51048" item="墨菲特1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32107" name="蒙多医生英雄包" img="32011" rare="3" description="开启获得蒙多医生1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32107" name="蒙多医生英雄包" img="32011" rare="3" description="开启获得蒙多医生1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51050" item="蒙多医生1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32108" name="伊丽丝英雄包" img="32011" rare="3" description="开启获得伊丽丝1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32108" name="伊丽丝英雄包" img="32011" rare="3" description="开启获得伊丽丝1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51105" item="伊丽丝1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32109" name="韦鲁斯英雄包" img="32011" rare="3" description="开启获得韦鲁斯1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32109" name="韦鲁斯英雄包" img="32011" rare="3" description="开启获得韦鲁斯1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51096" item="韦鲁斯1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32110" name="德莱厄斯英雄包" img="32011" rare="3" description="开启获得德莱厄斯1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32110" name="德莱厄斯英雄包" img="32011" rare="3" description="开启获得德莱厄斯1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51097" item="德莱厄斯1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32111" name="盖伦英雄包" img="32011" rare="3" description="开启获得盖伦1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32111" name="盖伦英雄包" img="32011" rare="3" description="开启获得盖伦1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51017" item="盖伦1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32112" name="努努英雄包" img="32011" rare="3" description="开启获得努努1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32112" name="努努英雄包" img="32011" rare="3" description="开启获得努努1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51055" item="努努1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32113" name="艾希英雄包" img="32011" rare="3" description="开启获得艾希1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32113" name="艾希英雄包" img="32011" rare="3" description="开启获得艾希1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51042" item="艾希1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32114" name="拉克丝英雄包" img="32011" rare="3" description="开启获得拉克丝1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32114" name="拉克丝英雄包" img="32011" rare="3" description="开启获得拉克丝1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51072" item="拉克丝1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32115" name="李青英雄包" img="32011" rare="4" description="开启获得李青2星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32115" name="李青英雄包" img="32011" rare="4" description="开启获得李青2星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="52061" item="李青2星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32116" name="伊泽瑞尔英雄包" img="32011" rare="5" description="开启获得伊泽瑞尔3星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32116" name="伊泽瑞尔英雄包" img="32011" rare="5" description="开启获得伊泽瑞尔3星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="53011" item="伊泽瑞尔3星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32117" name="泰达米尔英雄包" img="32011" rare="5" description="开启获得泰达米尔3星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32117" name="泰达米尔英雄包" img="32011" rare="5" description="开启获得泰达米尔3星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="53051" item="泰达米尔3星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32118" name="亚索英雄包" img="32011" rare="5" description="开启获得亚索3星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32118" name="亚索英雄包" img="32011" rare="5" description="开启获得亚索3星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="53117" item="亚索3星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32119" name="菲兹英雄包" img="32011" rare="5" description="开启获得菲兹3星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32119" name="菲兹英雄包" img="32011" rare="5" description="开启获得菲兹3星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="53086" item="菲兹3星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="32120" name="瑞雯英雄包" img="32011" rare="4" description="开启获得瑞雯1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="32120" name="瑞雯英雄包" img="32011" rare="4" description="开启获得瑞雯1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51082" item="瑞雯1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33001" name="蓝色碎片箱" img="32012" rare="3" description="开启获得随机蓝装碎片" hashero="0" cyb="0" judge="0" itemcount="2" weightall="700" >
+	<loot itemid="33001" name="蓝色碎片箱" img="32012" rare="3" description="开启获得随机蓝装碎片" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="700" >
 		<item itemid="33101" item="蓝色碎片基础箱1" counta="1" countb="1" weight="400" />
 		<item itemid="33102" item="蓝色碎片基础箱2" counta="1" countb="1" weight="300" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33002" name="紫色碎片箱" img="32013" rare="4" description="开启获得随机紫装碎片" hashero="0" cyb="0" judge="0" itemcount="3" weightall="250" >
+	<loot itemid="33002" name="紫色碎片箱" img="32013" rare="4" description="开启获得随机紫装碎片" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="250" >
 		<item itemid="33103" item="紫色碎片基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33104" item="紫色碎片基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33105" item="紫色碎片基础箱3" counta="1" countb="1" weight="50" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33003" name="橙色碎片箱" img="32014" rare="5" description="开启获得随机橙装碎片" hashero="0" cyb="0" judge="0" itemcount="4" weightall="350" >
+	<loot itemid="33003" name="橙色碎片箱" img="32014" rare="5" description="开启获得随机橙装碎片" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="350" >
 		<item itemid="33106" item="橙色碎片基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33107" item="橙色碎片基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33108" item="橙色碎片基础箱3" counta="1" countb="1" weight="100" />
 		<item itemid="33109" item="橙色碎片基础箱4" counta="1" countb="1" weight="50" />
 	</loot>
-	<loot itemid="33101" name="蓝色碎片基础箱1" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33101" name="蓝色碎片基础箱1" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27004" item="暴风大剑碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27005" item="无用大棒碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27008" item="火影斗篷碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27009" item="大法师斗篷碎片" counta="1" countb="2" weight="100" />
 	</loot>
-	<loot itemid="33102" name="蓝色碎片基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="3" weightall="300" >
+	<loot itemid="33102" name="蓝色碎片基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="27010" item="霸王血铠碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27011" item="酒吧凶器碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27012" item="蜂刺碎片" counta="1" countb="2" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33103" name="紫色碎片基础箱1" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33103" name="紫色碎片基础箱1" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="28001" item="魔王板甲碎片" counta="1" countb="2" weight="100" />
 		<item itemid="28002" item="飓风大剑碎片" counta="1" countb="2" weight="100" />
 		<item itemid="28003" item="无用巨棒碎片" counta="1" countb="2" weight="100" />
 		<item itemid="28004" item="黄金龟壳碎片" counta="1" countb="2" weight="100" />
 	</loot>
-	<loot itemid="33104" name="紫色碎片基础箱2" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33104" name="紫色碎片基础箱2" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="28005" item="利维坦之甲碎片" counta="1" countb="2" weight="100" />
 		<item itemid="28006" item="预言之刃碎片" counta="1" countb="2" weight="100" />
 		<item itemid="28007" item="冥火碎片" counta="1" countb="2" weight="100" />
 		<item itemid="28008" item="凯奇的幸运手碎片" counta="1" countb="2" weight="100" />
 	</loot>
-	<loot itemid="33105" name="紫色碎片基础箱3" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33105" name="紫色碎片基础箱3" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="28009" item="狂想曲碎片" counta="1" countb="2" weight="100" />
 		<item itemid="28010" item="兴奋坠饰碎片" counta="1" countb="2" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33106" name="橙色碎片基础箱1" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33106" name="橙色碎片基础箱1" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="29001" item="辛多雷血袍碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29002" item="碎梦斧碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29003" item="烈日能量碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29004" item="战争使者碎片" counta="1" countb="2" weight="100" />
 	</loot>
-	<loot itemid="33107" name="橙色碎片基础箱2" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33107" name="橙色碎片基础箱2" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="29005" item="静谧波浪碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29008" item="泰坦之握碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29006" item="彗星碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29007" item="虚空碎片" counta="1" countb="2" weight="100" />
 	</loot>
-	<loot itemid="33108" name="橙色碎片基础箱3" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33108" name="橙色碎片基础箱3" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="29012" item="喧哗卷轴碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29013" item="欢欣卷轴碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29014" item="统帅卷轴碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29015" item="失真卷轴碎片" counta="1" countb="2" weight="100" />
 	</loot>
-	<loot itemid="33109" name="橙色碎片基础箱4" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33109" name="橙色碎片基础箱4" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="29009" item="迅捷碎片" counta="1" countb="2" weight="100" />
 		<item itemid="29010" item="嗜血碎片" counta="1" countb="2" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33004" name="蓝色装备箱" img="32012" rare="3" description="开启获得随机蓝装" hashero="0" cyb="0" judge="0" itemcount="2" weightall="700" >
+	<loot itemid="33004" name="蓝色装备箱" img="32012" rare="3" description="开启获得随机蓝装" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="700" >
 		<item itemid="33110" item="蓝色装备基础箱1" counta="1" countb="1" weight="400" />
 		<item itemid="33111" item="蓝色装备基础箱2" counta="1" countb="1" weight="300" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33005" name="紫色装备箱" img="32013" rare="4" description="开启获得随机紫装" hashero="0" cyb="0" judge="0" itemcount="3" weightall="250" >
+	<loot itemid="33005" name="紫色装备箱" img="32013" rare="4" description="开启获得随机紫装" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="250" >
 		<item itemid="33112" item="紫色装备基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33113" item="紫色装备基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33114" item="紫色装备基础箱3" counta="1" countb="1" weight="50" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33006" name="橙色装备箱" img="32014" rare="5" description="开启获得随机橙装" hashero="0" cyb="0" judge="0" itemcount="4" weightall="350" >
+	<loot itemid="33006" name="橙色装备箱" img="32014" rare="5" description="开启获得随机橙装" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="350" >
 		<item itemid="33115" item="橙色装备基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33116" item="橙色装备基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33117" item="橙色装备基础箱3" counta="1" countb="1" weight="100" />
 		<item itemid="33118" item="橙色装备基础箱4" counta="1" countb="1" weight="50" />
 	</loot>
-	<loot itemid="33110" name="蓝色装备基础箱1" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33110" name="蓝色装备基础箱1" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="17004" item="暴风大剑" counta="1" countb="1" weight="100" />
 		<item itemid="17005" item="无用大棒" counta="1" countb="1" weight="100" />
 		<item itemid="17008" item="火影斗篷" counta="1" countb="1" weight="100" />
 		<item itemid="17009" item="大法师斗篷" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33111" name="蓝色装备基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="3" weightall="300" >
+	<loot itemid="33111" name="蓝色装备基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="17010" item="霸王血铠" counta="1" countb="1" weight="100" />
 		<item itemid="17011" item="酒吧凶器" counta="1" countb="1" weight="100" />
 		<item itemid="17012" item="蜂刺" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33112" name="紫色装备基础箱1" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33112" name="紫色装备基础箱1" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="18001" item="魔王板甲" counta="1" countb="1" weight="100" />
 		<item itemid="18002" item="飓风大剑" counta="1" countb="1" weight="100" />
 		<item itemid="18003" item="无用巨棒" counta="1" countb="1" weight="100" />
 		<item itemid="18004" item="黄金龟壳" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33113" name="紫色装备基础箱2" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33113" name="紫色装备基础箱2" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="18005" item="利维坦之甲" counta="1" countb="1" weight="100" />
 		<item itemid="18006" item="预言之刃" counta="1" countb="1" weight="100" />
 		<item itemid="18007" item="冥火" counta="1" countb="1" weight="100" />
 		<item itemid="18008" item="凯奇的幸运手" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33114" name="紫色装备基础箱3" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33114" name="紫色装备基础箱3" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="18009" item="狂想曲" counta="1" countb="1" weight="100" />
 		<item itemid="18010" item="兴奋坠饰" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33115" name="橙色装备基础箱1" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33115" name="橙色装备基础箱1" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="19001" item="辛多雷血袍" counta="1" countb="1" weight="100" />
 		<item itemid="19002" item="碎梦斧" counta="1" countb="1" weight="100" />
 		<item itemid="19003" item="烈日能量" counta="1" countb="1" weight="100" />
 		<item itemid="19004" item="战争使者" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33116" name="橙色装备基础箱2" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33116" name="橙色装备基础箱2" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="19005" item="静谧波浪" counta="1" countb="1" weight="100" />
 		<item itemid="19008" item="泰坦之握" counta="1" countb="1" weight="100" />
 		<item itemid="19006" item="彗星" counta="1" countb="1" weight="100" />
 		<item itemid="19007" item="虚空" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33117" name="橙色装备基础箱3" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33117" name="橙色装备基础箱3" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="19011" item="喧哗卷轴" counta="1" countb="1" weight="100" />
 		<item itemid="19012" item="欢欣卷轴" counta="1" countb="1" weight="100" />
 		<item itemid="19013" item="统帅卷轴" counta="1" countb="1" weight="100" />
 		<item itemid="19014" item="失真卷轴" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33118" name="橙色装备基础箱4" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33118" name="橙色装备基础箱4" img="32014" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="19009" item="迅捷" counta="1" countb="1" weight="100" />
 		<item itemid="19010" item="嗜血" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33007" name="1星英雄箱" img="32015" rare="3" description="开启获得随机1星英雄" hashero="1" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33007" name="1星英雄箱" img="32015" rare="3" description="开启获得随机1星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33127" item="1星英雄组合箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33128" item="1星英雄组合箱2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33008" name="2星英雄箱" img="32016" rare="4" description="开启获得随机2星英雄" hashero="1" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33008" name="2星英雄箱" img="32016" rare="4" description="开启获得随机2星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33137" item="2星英雄组合箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33138" item="2星英雄组合箱2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33009" name="3星英雄箱" img="32017" rare="5" description="开启获得随机3星英雄" hashero="1" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33009" name="3星英雄箱" img="32017" rare="5" description="开启获得随机3星英雄" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33147" item="3星英雄组合箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33148" item="3星英雄组合箱2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33119" name="1星英雄基础箱1" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33119" name="1星英雄基础箱1" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="51005" item="赵信1星" counta="1" countb="1" weight="100" />
 		<item itemid="51008" item="潘森1星" counta="1" countb="1" weight="100" />
 		<item itemid="51009" item="奥拉夫1星" counta="1" countb="1" weight="100" />
 		<item itemid="51010" item="古拉加斯1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33120" name="1星英雄基础箱2" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33120" name="1星英雄基础箱2" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="51048" item="墨菲特1星" counta="1" countb="1" weight="100" />
 		<item itemid="51050" item="蒙多医生1星" counta="1" countb="1" weight="100" />
 		<item itemid="51052" item="辛吉德1星" counta="1" countb="1" weight="100" />
 		<item itemid="51055" item="努努1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33121" name="1星英雄基础箱3" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33121" name="1星英雄基础箱3" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="51058" item="薇恩1星" counta="1" countb="1" weight="100" />
 		<item itemid="51001" item="厄运小姐1星" counta="1" countb="1" weight="100" />
 		<item itemid="51041" item="安妮1星" counta="1" countb="1" weight="100" />
 		<item itemid="51042" item="艾希1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33122" name="1星英雄基础箱4" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33122" name="1星英雄基础箱4" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="51072" item="拉克丝1星" counta="1" countb="1" weight="100" />
 		<item itemid="51074" item="娑娜1星" counta="1" countb="1" weight="100" />
 		<item itemid="51075" item="卡特琳娜1星" counta="1" countb="1" weight="100" />
 		<item itemid="51078" item="蕾欧娜1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33123" name="1星英雄基础箱5" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33123" name="1星英雄基础箱5" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="51105" item="伊丽丝1星" counta="1" countb="1" weight="100" />
 		<item itemid="51082" item="瑞雯1星" counta="1" countb="1" weight="100" />
 		<item itemid="51084" item="希瓦娜1星" counta="1" countb="1" weight="100" />
 		<item itemid="51094" item="璐璐1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33124" name="1星英雄基础箱6" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="310" >
+	<loot itemid="33124" name="1星英雄基础箱6" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="310" >
 		<item itemid="51038" item="易1星" counta="1" countb="1" weight="100" />
 		<item itemid="51039" item="贾克斯1星" counta="1" countb="1" weight="100" />
 		<item itemid="51061" item="李青1星" counta="1" countb="1" weight="100" />
 		<item itemid="51117" item="亚索1星" counta="1" countb="1" weight="10" />
 	</loot>
-	<loot itemid="33125" name="1星英雄基础箱7" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33125" name="1星英雄基础箱7" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="51032" item="沃里克1星" counta="1" countb="1" weight="100" />
 		<item itemid="51096" item="韦鲁斯1星" counta="1" countb="1" weight="100" />
 		<item itemid="51097" item="德莱厄斯1星" counta="1" countb="1" weight="100" />
 		<item itemid="51121" item="阿兹尔1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33126" name="1星英雄基础箱8" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33126" name="1星英雄基础箱8" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="51024" item="崔斯特1星" counta="1" countb="1" weight="100" />
 		<item itemid="51017" item="盖伦1星" counta="1" countb="1" weight="100" />
 		<item itemid="51027" item="塔里克1星" counta="1" countb="1" weight="100" />
 		<item itemid="51076" item="瑞兹1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33127" name="1星英雄组合箱1" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33127" name="1星英雄组合箱1" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33119" item="1星英雄基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33120" item="1星英雄基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33121" item="1星英雄基础箱3" counta="1" countb="1" weight="100" />
 		<item itemid="33122" item="1星英雄基础箱4" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33128" name="1星英雄组合箱2" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33128" name="1星英雄组合箱2" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33123" item="1星英雄基础箱5" counta="1" countb="1" weight="100" />
 		<item itemid="33124" item="1星英雄基础箱6" counta="1" countb="1" weight="100" />
 		<item itemid="33125" item="1星英雄基础箱7" counta="1" countb="1" weight="100" />
 		<item itemid="33126" item="1星英雄基础箱8" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33129" name="2星英雄基础箱1" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33129" name="2星英雄基础箱1" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="52005" item="赵信2星" counta="1" countb="1" weight="100" />
 		<item itemid="52008" item="潘森2星" counta="1" countb="1" weight="100" />
 		<item itemid="52009" item="奥拉夫2星" counta="1" countb="1" weight="100" />
 		<item itemid="52010" item="古拉加斯2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33130" name="2星英雄基础箱2" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33130" name="2星英雄基础箱2" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="52048" item="墨菲特2星" counta="1" countb="1" weight="100" />
 		<item itemid="52050" item="蒙多医生2星" counta="1" countb="1" weight="100" />
 		<item itemid="52052" item="辛吉德2星" counta="1" countb="1" weight="100" />
 		<item itemid="52055" item="努努2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33131" name="2星英雄基础箱3" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33131" name="2星英雄基础箱3" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="52058" item="薇恩2星" counta="1" countb="1" weight="100" />
 		<item itemid="52001" item="厄运小姐2星" counta="1" countb="1" weight="100" />
 		<item itemid="52041" item="安妮2星" counta="1" countb="1" weight="100" />
 		<item itemid="52042" item="艾希2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33132" name="2星英雄基础箱4" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33132" name="2星英雄基础箱4" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="52072" item="拉克丝2星" counta="1" countb="1" weight="100" />
 		<item itemid="52074" item="娑娜2星" counta="1" countb="1" weight="100" />
 		<item itemid="52075" item="卡特琳娜2星" counta="1" countb="1" weight="100" />
 		<item itemid="52078" item="蕾欧娜2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33133" name="2星英雄基础箱5" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33133" name="2星英雄基础箱5" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="52105" item="伊丽丝2星" counta="1" countb="1" weight="100" />
 		<item itemid="52082" item="瑞雯2星" counta="1" countb="1" weight="100" />
 		<item itemid="52084" item="希瓦娜2星" counta="1" countb="1" weight="100" />
 		<item itemid="52094" item="璐璐2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33134" name="2星英雄基础箱6" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="310" >
+	<loot itemid="33134" name="2星英雄基础箱6" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="310" >
 		<item itemid="52038" item="易2星" counta="1" countb="1" weight="100" />
 		<item itemid="52039" item="贾克斯2星" counta="1" countb="1" weight="100" />
 		<item itemid="52061" item="李青2星" counta="1" countb="1" weight="100" />
 		<item itemid="52117" item="亚索2星" counta="1" countb="1" weight="10" />
 	</loot>
-	<loot itemid="33135" name="2星英雄基础箱7" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33135" name="2星英雄基础箱7" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="52032" item="沃里克2星" counta="1" countb="1" weight="100" />
 		<item itemid="52096" item="韦鲁斯2星" counta="1" countb="1" weight="100" />
 		<item itemid="52097" item="德莱厄斯2星" counta="1" countb="1" weight="100" />
 		<item itemid="52121" item="阿兹尔2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33136" name="2星英雄基础箱8" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33136" name="2星英雄基础箱8" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="52024" item="崔斯特2星" counta="1" countb="1" weight="100" />
 		<item itemid="52017" item="盖伦2星" counta="1" countb="1" weight="100" />
 		<item itemid="52027" item="塔里克2星" counta="1" countb="1" weight="100" />
 		<item itemid="52076" item="瑞兹2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33137" name="2星英雄组合箱1" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33137" name="2星英雄组合箱1" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33129" item="2星英雄基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33130" item="2星英雄基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33131" item="2星英雄基础箱3" counta="1" countb="1" weight="100" />
 		<item itemid="33132" item="2星英雄基础箱4" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33138" name="2星英雄组合箱2" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33138" name="2星英雄组合箱2" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33133" item="2星英雄基础箱5" counta="1" countb="1" weight="100" />
 		<item itemid="33134" item="2星英雄基础箱6" counta="1" countb="1" weight="100" />
 		<item itemid="33135" item="2星英雄基础箱7" counta="1" countb="1" weight="100" />
 		<item itemid="33136" item="2星英雄基础箱8" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33139" name="3星英雄基础箱1" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33139" name="3星英雄基础箱1" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="53005" item="赵信3星" counta="1" countb="1" weight="100" />
 		<item itemid="53008" item="潘森3星" counta="1" countb="1" weight="100" />
 		<item itemid="53009" item="奥拉夫3星" counta="1" countb="1" weight="100" />
 		<item itemid="53010" item="古拉加斯3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33140" name="3星英雄基础箱2" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33140" name="3星英雄基础箱2" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="53048" item="墨菲特3星" counta="1" countb="1" weight="100" />
 		<item itemid="53050" item="蒙多医生3星" counta="1" countb="1" weight="100" />
 		<item itemid="53052" item="辛吉德3星" counta="1" countb="1" weight="100" />
 		<item itemid="53055" item="努努3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33141" name="3星英雄基础箱3" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33141" name="3星英雄基础箱3" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="53058" item="薇恩3星" counta="1" countb="1" weight="100" />
 		<item itemid="53001" item="厄运小姐3星" counta="1" countb="1" weight="100" />
 		<item itemid="53041" item="安妮3星" counta="1" countb="1" weight="100" />
 		<item itemid="53042" item="艾希3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33142" name="3星英雄基础箱4" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33142" name="3星英雄基础箱4" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="53072" item="拉克丝3星" counta="1" countb="1" weight="100" />
 		<item itemid="53074" item="娑娜3星" counta="1" countb="1" weight="100" />
 		<item itemid="53075" item="卡特琳娜3星" counta="1" countb="1" weight="100" />
 		<item itemid="53078" item="蕾欧娜3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33143" name="3星英雄基础箱5" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33143" name="3星英雄基础箱5" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="53105" item="伊丽丝3星" counta="1" countb="1" weight="100" />
 		<item itemid="53082" item="瑞雯3星" counta="1" countb="1" weight="100" />
 		<item itemid="53084" item="希瓦娜3星" counta="1" countb="1" weight="100" />
 		<item itemid="53094" item="璐璐3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33144" name="3星英雄基础箱6" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="310" >
+	<loot itemid="33144" name="3星英雄基础箱6" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="310" >
 		<item itemid="53038" item="易3星" counta="1" countb="1" weight="100" />
 		<item itemid="53039" item="贾克斯3星" counta="1" countb="1" weight="100" />
 		<item itemid="53061" item="李青3星" counta="1" countb="1" weight="100" />
 		<item itemid="53117" item="亚索3星" counta="1" countb="1" weight="10" />
 	</loot>
-	<loot itemid="33145" name="3星英雄基础箱7" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33145" name="3星英雄基础箱7" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="53032" item="沃里克3星" counta="1" countb="1" weight="100" />
 		<item itemid="53096" item="韦鲁斯3星" counta="1" countb="1" weight="100" />
 		<item itemid="53097" item="德莱厄斯3星" counta="1" countb="1" weight="100" />
 		<item itemid="53121" item="阿兹尔3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33146" name="3星英雄基础箱8" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33146" name="3星英雄基础箱8" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="53024" item="崔斯特3星" counta="1" countb="1" weight="100" />
 		<item itemid="53017" item="盖伦3星" counta="1" countb="1" weight="100" />
 		<item itemid="53027" item="塔里克3星" counta="1" countb="1" weight="100" />
 		<item itemid="53076" item="瑞兹3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33147" name="3星英雄组合箱1" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33147" name="3星英雄组合箱1" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33139" item="3星英雄基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33140" item="3星英雄基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33141" item="3星英雄基础箱3" counta="1" countb="1" weight="100" />
 		<item itemid="33142" item="3星英雄基础箱4" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33148" name="3星英雄组合箱2" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33148" name="3星英雄组合箱2" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33143" item="3星英雄基础箱5" counta="1" countb="1" weight="100" />
 		<item itemid="33144" item="3星英雄基础箱6" counta="1" countb="1" weight="100" />
 		<item itemid="33145" item="3星英雄基础箱7" counta="1" countb="1" weight="100" />
 		<item itemid="33146" item="3星英雄基础箱8" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33010" name="绿色征战箱" img="32024" rare="2" description="可以开出征战世界的绿色材料" hashero="0" cyb="0" judge="0" itemcount="3" weightall="300" >
+	<loot itemid="33010" name="绿色征战箱" img="32024" rare="2" description="可以开出征战世界的绿色材料" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="29022" item="蟹爪" counta="2" countb="5" weight="100" />
 		<item itemid="29028" item="毒液" counta="2" countb="5" weight="100" />
 		<item itemid="29037" item="魔沼蛙皮" counta="2" countb="5" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33011" name="蓝色征战箱" img="32025" rare="3" description="可以开出征战世界的蓝色材料" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33011" name="蓝色征战箱" img="32025" rare="3" description="可以开出征战世界的蓝色材料" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="29019" item="武装晶石" counta="2" countb="5" weight="100" />
 		<item itemid="29023" item="铁蟹爪" counta="2" countb="5" weight="100" />
 		<item itemid="29029" item="剧毒液" counta="2" countb="5" weight="100" />
 		<item itemid="29038" item="魔沼巨蛙皮" counta="2" countb="5" weight="100" />
 	</loot>
-	<loot itemid="33012" name="紫色征战箱" img="32026" rare="4" description="可以开出征战世界的紫色材料" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33012" name="紫色征战箱" img="32026" rare="4" description="可以开出征战世界的紫色材料" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="29024" item="铁龟皮" counta="2" countb="5" weight="100" />
 		<item itemid="29030" item="剧毒晶体" counta="2" countb="5" weight="100" />
 		<item itemid="29035" item="破碎的刀锋" counta="2" countb="5" weight="100" />
 		<item itemid="29039" item="完整的蛙皮" counta="2" countb="5" weight="100" />
 	</loot>
-	<loot itemid="33013" name="橙色征战箱" img="32027" rare="5" description="可以开出征战世界的紫色或橙色材料" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33013" name="橙色征战箱" img="32027" rare="5" description="可以开出征战世界的紫色或橙色材料" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="29036" item="幽灵晶" counta="2" countb="5" weight="100" />
 		<item itemid="29018" item="风语者之证" counta="2" countb="5" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33014" name="紫色竞技箱" img="32026" rare="4" description="可以开出天梯的紫色材料" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33014" name="紫色竞技箱" img="32026" rare="4" description="可以开出天梯的紫色材料" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="29020" item="天使之翼" counta="2" countb="5" weight="100" />
 		<item itemid="29026" item="王者之证" counta="2" countb="5" weight="100" />
 		<item itemid="29034" item="精炼石" counta="2" countb="5" weight="100" />
 		<item itemid="29021" item="恶魔之心" counta="2" countb="5" weight="100" />
 	</loot>
-	<loot itemid="33015" name="橙色竞技箱" img="32027" rare="5" description="可以开出天梯的橙色材料" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33015" name="橙色竞技箱" img="32027" rare="5" description="可以开出天梯的橙色材料" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="29016" item="风暴骑士之证" counta="2" countb="5" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35001" name="魄罗宝箱" img="32018" rare="3" description="开启获得多个蓝色物品或一星英雄" hashero="1" cyb="0" judge="5" itemcount="3" weightall="500" >
+	<loot itemid="35001" name="魄罗宝箱" img="32018" rare="3" description="开启获得多个蓝色物品或一星英雄" hashero="1" cyb="0" judge="5" endtime="" itemcount="3" weightall="500" >
 		<item itemid="33004" item="蓝色装备箱" counta="1" countb="1" weight="100" />
 		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
 		<item itemid="33001" item="蓝色碎片箱" counta="1" countb="1" weight="300" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35002" name="超级魄罗宝箱" img="32019" rare="4" description="开启获得多个紫色物品或二星英雄" hashero="1" cyb="0" judge="5" itemcount="3" weightall="500" >
+	<loot itemid="35002" name="超级魄罗宝箱" img="32019" rare="4" description="开启获得多个紫色物品或二星英雄" hashero="1" cyb="0" judge="5" endtime="" itemcount="3" weightall="500" >
 		<item itemid="33005" item="紫色装备箱" counta="1" countb="1" weight="100" />
 		<item itemid="33008" item="2星英雄箱" counta="1" countb="1" weight="100" />
 		<item itemid="33002" item="紫色碎片箱" counta="1" countb="1" weight="300" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35003" name="传奇魄罗宝箱" img="32020" rare="5" description="开启获得多个橙色物品或三星英雄" hashero="1" cyb="0" judge="5" itemcount="3" weightall="500" >
+	<loot itemid="35003" name="传奇魄罗宝箱" img="32020" rare="5" description="开启获得多个橙色物品或三星英雄" hashero="1" cyb="0" judge="5" endtime="" itemcount="3" weightall="500" >
 		<item itemid="33006" item="橙色装备箱" counta="1" countb="1" weight="100" />
 		<item itemid="33009" item="3星英雄箱" counta="1" countb="1" weight="100" />
 		<item itemid="33003" item="橙色碎片箱" counta="1" countb="1" weight="300" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35004" name="字母包1" img="32021" rare="1" description="开启获得A-D" hashero="0" cyb="0" judge="0" itemcount="4" weightall="700" >
+	<loot itemid="35004" name="字母包1" img="32021" rare="1" description="开启获得A-D" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="700" >
 		<item itemid="20042" item="A" counta="1" countb="1" weight="300" />
 		<item itemid="20043" item="B" counta="1" countb="1" weight="200" />
 		<item itemid="20044" item="C" counta="1" countb="1" weight="100" />
 		<item itemid="20045" item="D" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="35005" name="字母包2" img="32021" rare="1" description="开启获得E-H" hashero="0" cyb="0" judge="0" itemcount="4" weightall="700" >
+	<loot itemid="35005" name="字母包2" img="32021" rare="1" description="开启获得E-H" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="700" >
 		<item itemid="20046" item="E" counta="1" countb="1" weight="300" />
 		<item itemid="20047" item="F" counta="1" countb="1" weight="200" />
 		<item itemid="20048" item="G" counta="1" countb="1" weight="100" />
 		<item itemid="20049" item="H" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="35006" name="字母包3" img="32021" rare="1" description="开启获得I-L" hashero="0" cyb="0" judge="0" itemcount="4" weightall="650" >
+	<loot itemid="35006" name="字母包3" img="32021" rare="1" description="开启获得I-L" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="650" >
 		<item itemid="20050" item="I" counta="1" countb="1" weight="200" />
 		<item itemid="20051" item="J" counta="1" countb="1" weight="200" />
 		<item itemid="20052" item="K" counta="1" countb="1" weight="150" />
 		<item itemid="20053" item="L" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="35007" name="字母包4" img="32021" rare="1" description="开启获得M-P" hashero="0" cyb="0" judge="0" itemcount="4" weightall="600" >
+	<loot itemid="35007" name="字母包4" img="32021" rare="1" description="开启获得M-P" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="600" >
 		<item itemid="20054" item="M" counta="1" countb="1" weight="200" />
 		<item itemid="20055" item="N" counta="1" countb="1" weight="200" />
 		<item itemid="20056" item="O" counta="1" countb="1" weight="100" />
 		<item itemid="20057" item="P" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="35008" name="字母包5" img="32021" rare="1" description="开启获得Q-T" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="35008" name="字母包5" img="32021" rare="1" description="开启获得Q-T" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="20058" item="Q" counta="1" countb="1" weight="150" />
 		<item itemid="20059" item="R" counta="1" countb="1" weight="120" />
 		<item itemid="20060" item="S" counta="1" countb="1" weight="80" />
 		<item itemid="20061" item="T" counta="1" countb="1" weight="50" />
 	</loot>
-	<loot itemid="35009" name="字母包6" img="32021" rare="1" description="开启获得U-W" hashero="0" cyb="0" judge="0" itemcount="3" weightall="300" >
+	<loot itemid="35009" name="字母包6" img="32021" rare="1" description="开启获得U-W" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="20062" item="U" counta="1" countb="1" weight="150" />
 		<item itemid="20063" item="V" counta="1" countb="1" weight="100" />
 		<item itemid="20064" item="W" counta="1" countb="1" weight="50" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35010" name="字母包7" img="32021" rare="1" description="开启获得X-Z" hashero="0" cyb="0" judge="0" itemcount="3" weightall="250" >
+	<loot itemid="35010" name="字母包7" img="32021" rare="1" description="开启获得X-Z" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="250" >
 		<item itemid="20065" item="X" counta="1" countb="1" weight="150" />
 		<item itemid="20066" item="Y" counta="1" countb="1" weight="75" />
 		<item itemid="20067" item="Z" counta="1" countb="1" weight="25" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35011" name="初级字母组合" img="32021" rare="1" description="开启获得初级字母" hashero="0" cyb="0" judge="0" itemcount="3" weightall="600" >
+	<loot itemid="35011" name="初级字母组合" img="32021" rare="1" description="开启获得初级字母" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="600" >
 		<item itemid="35004" item="字母包1" counta="1" countb="1" weight="300" />
 		<item itemid="35005" item="字母包2" counta="1" countb="1" weight="200" />
 		<item itemid="35006" item="字母包3" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35012" name="中级字母组合" img="32021" rare="1" description="开启获得中级字母" hashero="0" cyb="0" judge="0" itemcount="2" weightall="300" >
+	<loot itemid="35012" name="中级字母组合" img="32021" rare="1" description="开启获得中级字母" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="300" >
 		<item itemid="35007" item="字母包4" counta="1" countb="1" weight="200" />
 		<item itemid="35008" item="字母包5" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35013" name="高级字母组合" img="32021" rare="1" description="开启获得高级字母" hashero="0" cyb="0" judge="0" itemcount="2" weightall="350" >
+	<loot itemid="35013" name="高级字母组合" img="32021" rare="1" description="开启获得高级字母" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="350" >
 		<item itemid="35009" item="字母包6" counta="1" countb="1" weight="250" />
 		<item itemid="35010" item="字母包7" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="35014" name="吐槽宝箱" img="32021" rare="3" description="开启获得多个字母" hashero="0" cyb="0" judge="3" itemcount="4" weightall="5710" >
+	<loot itemid="35014" name="吐槽宝箱" img="32021" rare="3" description="开启获得多个字母" hashero="0" cyb="0" judge="3" endtime="" itemcount="4" weightall="5710" >
 		<item itemid="29068" item="吐槽补丁" counta="1" countb="1" weight="500" />
 		<item itemid="35011" item="初级字母组合" counta="1" countb="1" weight="5000" />
 		<item itemid="35012" item="中级字母组合" counta="1" countb="1" weight="200" />
 		<item itemid="35013" item="高级字母组合" counta="1" countb="1" weight="10" />
 	</loot>
-	<loot itemid="35015" name="超级吐槽宝箱" img="32022" rare="4" description="开启获得多个中级字母" hashero="0" cyb="0" judge="3" itemcount="4" weightall="6400" >
+	<loot itemid="35015" name="超级吐槽宝箱" img="32022" rare="4" description="开启获得多个中级字母" hashero="0" cyb="0" judge="3" endtime="" itemcount="4" weightall="6400" >
 		<item itemid="29068" item="吐槽补丁" counta="1" countb="1" weight="500" />
 		<item itemid="35011" item="初级字母组合" counta="1" countb="1" weight="5000" />
 		<item itemid="35012" item="中级字母组合" counta="1" countb="1" weight="800" />
 		<item itemid="35013" item="高级字母组合" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="35016" name="传奇吐槽宝箱" img="32023" rare="5" description="开启获得多个高级字母" hashero="0" cyb="0" judge="3" itemcount="4" weightall="8000" >
+	<loot itemid="35016" name="传奇吐槽宝箱" img="32023" rare="5" description="开启获得多个高级字母" hashero="0" cyb="0" judge="3" endtime="" itemcount="4" weightall="8000" >
 		<item itemid="29068" item="吐槽补丁" counta="1" countb="1" weight="500" />
 		<item itemid="35011" item="初级字母组合" counta="1" countb="1" weight="5000" />
 		<item itemid="35012" item="中级字母组合" counta="1" countb="1" weight="2000" />
 		<item itemid="35013" item="高级字母组合" counta="1" countb="1" weight="500" />
 	</loot>
-	<loot itemid="33016" name="物理装备初级箱" img="32032" rare="2" description="可以开出物理系白色或绿色装备" hashero="0" cyb="0" judge="3" itemcount="2" weightall="200" >
+	<loot itemid="33016" name="物理装备初级箱" img="32032" rare="2" description="可以开出物理系白色或绿色装备" hashero="0" cyb="0" judge="3" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33149" item="物理初1" counta="1" countb="1" weight="100" />
 		<item itemid="33150" item="物理初2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33017" name="法术装备初级箱" img="32032" rare="2" description="可以开出法术系白色或绿色装备" hashero="0" cyb="0" judge="3" itemcount="2" weightall="200" >
+	<loot itemid="33017" name="法术装备初级箱" img="32032" rare="2" description="可以开出法术系白色或绿色装备" hashero="0" cyb="0" judge="3" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33156" item="法术初1" counta="1" countb="1" weight="100" />
 		<item itemid="33157" item="法术初2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33018" name="防御装备初级箱" img="32032" rare="2" description="可以开出防御系白色或绿色装备" hashero="0" cyb="0" judge="3" itemcount="3" weightall="300" >
+	<loot itemid="33018" name="防御装备初级箱" img="32032" rare="2" description="可以开出防御系白色或绿色装备" hashero="0" cyb="0" judge="3" endtime="" itemcount="3" weightall="300" >
 		<item itemid="33163" item="防御初1" counta="1" countb="1" weight="100" />
 		<item itemid="33164" item="防御初2" counta="1" countb="1" weight="100" />
 		<item itemid="33165" item="防御初3" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33019" name="物理装备中级箱" img="32032" rare="4" description="可以开出物理系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="3" itemcount="2" weightall="200" >
+	<loot itemid="33019" name="物理装备中级箱" img="32032" rare="4" description="可以开出物理系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="3" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33151" item="物理中1" counta="1" countb="1" weight="100" />
 		<item itemid="33152" item="物理中2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33020" name="法术装备中级箱" img="32032" rare="4" description="可以开出法术系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="3" itemcount="2" weightall="200" >
+	<loot itemid="33020" name="法术装备中级箱" img="32032" rare="4" description="可以开出法术系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="3" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33158" item="法术中1" counta="1" countb="1" weight="100" />
 		<item itemid="33159" item="法术中2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33021" name="防御装备中级箱" img="32032" rare="4" description="可以开出防御系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="3" itemcount="2" weightall="200" >
+	<loot itemid="33021" name="防御装备中级箱" img="32032" rare="4" description="可以开出防御系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="3" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33166" item="防御中1" counta="1" countb="1" weight="100" />
 		<item itemid="33167" item="防御中2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33022" name="物理装备高级箱" img="32032" rare="5" description="可以开出物理系紫色或橙色装备碎片" hashero="0" cyb="0" judge="3" itemcount="3" weightall="300" >
+	<loot itemid="33022" name="物理装备高级箱" img="32032" rare="5" description="可以开出物理系紫色或橙色装备碎片" hashero="0" cyb="0" judge="3" endtime="" itemcount="3" weightall="300" >
 		<item itemid="33153" item="物理高1" counta="1" countb="1" weight="100" />
 		<item itemid="33154" item="物理高2" counta="1" countb="1" weight="100" />
 		<item itemid="33155" item="物理高3" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33023" name="法术装备高级箱" img="32032" rare="5" description="可以开出法术系紫色或橙色装备碎片" hashero="0" cyb="0" judge="3" itemcount="3" weightall="300" >
+	<loot itemid="33023" name="法术装备高级箱" img="32032" rare="5" description="可以开出法术系紫色或橙色装备碎片" hashero="0" cyb="0" judge="3" endtime="" itemcount="3" weightall="300" >
 		<item itemid="33160" item="法术高1" counta="1" countb="1" weight="100" />
 		<item itemid="33161" item="法术高2" counta="1" countb="1" weight="100" />
 		<item itemid="33162" item="法术高3" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33024" name="防御装备高级箱" img="32032" rare="5" description="可以开出防御系紫色或橙色装备碎片" hashero="0" cyb="0" judge="3" itemcount="2" weightall="200" >
+	<loot itemid="33024" name="防御装备高级箱" img="32032" rare="5" description="可以开出防御系紫色或橙色装备碎片" hashero="0" cyb="0" judge="3" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33168" item="防御高1" counta="1" countb="1" weight="100" />
 		<item itemid="33169" item="防御高2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33025" name="混合装备初级箱" img="32032" rare="2" description="可以开出所有系白色或绿色装备" hashero="0" cyb="0" judge="2" itemcount="3" weightall="300" >
+	<loot itemid="33025" name="混合装备初级箱" img="32032" rare="2" description="可以开出所有系白色或绿色装备" hashero="0" cyb="0" judge="2" endtime="" itemcount="3" weightall="300" >
 		<item itemid="33016" item="物理装备初级箱" counta="1" countb="1" weight="100" />
 		<item itemid="33017" item="法术装备初级箱" counta="1" countb="1" weight="100" />
 		<item itemid="33018" item="防御装备初级箱" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33026" name="混合装备中级箱" img="32032" rare="4" description="可以开出所有系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="2" itemcount="3" weightall="300" >
+	<loot itemid="33026" name="混合装备中级箱" img="32032" rare="4" description="可以开出所有系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="2" endtime="" itemcount="3" weightall="300" >
 		<item itemid="33019" item="物理装备中级箱" counta="1" countb="1" weight="100" />
 		<item itemid="33020" item="法术装备中级箱" counta="1" countb="1" weight="100" />
 		<item itemid="33021" item="防御装备中级箱" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33027" name="混合装备高级箱" img="32032" rare="5" description="可以开出所有系紫色或橙色装备碎片" hashero="0" cyb="0" judge="2" itemcount="3" weightall="300" >
+	<loot itemid="33027" name="混合装备高级箱" img="32032" rare="5" description="可以开出所有系紫色或橙色装备碎片" hashero="0" cyb="0" judge="2" endtime="" itemcount="3" weightall="300" >
 		<item itemid="33022" item="物理装备高级箱" counta="1" countb="1" weight="100" />
 		<item itemid="33023" item="法术装备高级箱" counta="1" countb="1" weight="100" />
 		<item itemid="33024" item="防御装备高级箱" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33149" name="物理初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33149" name="物理初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27015" item="简易磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="27017" item="坚固磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33150" name="物理初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="370" >
+	<loot itemid="33150" name="物理初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="370" >
 		<item itemid="15004" item="格斗手套" counta="1" countb="1" weight="100" />
 		<item itemid="16004" item="十字镐" counta="1" countb="1" weight="90" />
 		<item itemid="16005" item="灵巧披风" counta="1" countb="1" weight="90" />
 		<item itemid="16010" item="净蚀" counta="1" countb="1" weight="90" />
 	</loot>
-	<loot itemid="33151" name="物理中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="280" >
+	<loot itemid="33151" name="物理中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="280" >
 		<item itemid="28006" item="预言之刃碎片" counta="2" countb="5" weight="60" />
 		<item itemid="27004" item="暴风大剑碎片" counta="2" countb="5" weight="80" />
 		<item itemid="27012" item="蜂刺碎片" counta="2" countb="5" weight="80" />
 		<item itemid="28002" item="飓风大剑碎片" counta="2" countb="5" weight="60" />
 	</loot>
-	<loot itemid="33152" name="物理中2" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="3" weightall="180" >
+	<loot itemid="33152" name="物理中2" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="180" >
 		<item itemid="28008" item="凯奇的幸运手碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28009" item="狂想曲碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28010" item="兴奋坠饰碎片" counta="2" countb="5" weight="60" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33153" name="物理高1" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="240" >
+	<loot itemid="33153" name="物理高1" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="240" >
 		<item itemid="28002" item="飓风大剑碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28006" item="预言之刃碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28008" item="凯奇的幸运手碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28009" item="狂想曲碎片" counta="2" countb="5" weight="60" />
 	</loot>
-	<loot itemid="33154" name="物理高2" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="180" >
+	<loot itemid="33154" name="物理高2" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="180" >
 		<item itemid="28010" item="兴奋坠饰碎片" counta="2" countb="5" weight="60" />
 		<item itemid="29002" item="碎梦斧碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29006" item="彗星碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29008" item="泰坦之握碎片" counta="2" countb="5" weight="40" />
 	</loot>
-	<loot itemid="33155" name="物理高3" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="160" >
+	<loot itemid="33155" name="物理高3" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="160" >
 		<item itemid="29009" item="迅捷碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29010" item="嗜血碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29012" item="喧哗卷轴碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29013" item="欢欣卷轴碎片" counta="2" countb="5" weight="40" />
 	</loot>
-	<loot itemid="33156" name="法术初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="390" >
+	<loot itemid="33156" name="法术初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="390" >
 		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="100" />
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
 		<item itemid="16003" item="爆裂魔杖" counta="1" countb="1" weight="90" />
 	</loot>
-	<loot itemid="33157" name="法术初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="3" weightall="280" >
+	<loot itemid="33157" name="法术初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="280" >
 		<item itemid="16006" item="残暴之力" counta="1" countb="1" weight="90" />
 		<item itemid="16009" item="耀光" counta="1" countb="1" weight="90" />
 		<item itemid="16011" item="反曲之弓" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33158" name="法术中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="280" >
+	<loot itemid="33158" name="法术中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="280" >
 		<item itemid="28007" item="冥火碎片" counta="2" countb="5" weight="60" />
 		<item itemid="27005" item="无用大棒碎片" counta="2" countb="5" weight="80" />
 		<item itemid="27011" item="酒吧凶器碎片" counta="1" countb="1" weight="80" />
 		<item itemid="28003" item="无用巨棒碎片" counta="2" countb="5" weight="60" />
 	</loot>
-	<loot itemid="33159" name="法术中2" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="120" >
+	<loot itemid="33159" name="法术中2" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="120" >
 		<item itemid="28008" item="凯奇的幸运手碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28009" item="狂想曲碎片" counta="2" countb="5" weight="60" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33160" name="法术高1" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="240" >
+	<loot itemid="33160" name="法术高1" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="240" >
 		<item itemid="28003" item="无用巨棒碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28007" item="冥火碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28008" item="凯奇的幸运手碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28009" item="狂想曲碎片" counta="2" countb="5" weight="60" />
 	</loot>
-	<loot itemid="33161" name="法术高2" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="160" >
+	<loot itemid="33161" name="法术高2" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="160" >
 		<item itemid="29003" item="烈日能量碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29007" item="虚空碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29008" item="泰坦之握碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29009" item="迅捷碎片" counta="2" countb="5" weight="40" />
 	</loot>
-	<loot itemid="33162" name="法术高3" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="3" weightall="120" >
+	<loot itemid="33162" name="法术高3" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="120" >
 		<item itemid="29015" item="失真卷轴碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29012" item="喧哗卷轴碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29013" item="欢欣卷轴碎片" counta="2" countb="5" weight="40" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33163" name="防御初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33163" name="防御初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="15002" item="抗魔斗篷" counta="1" countb="1" weight="100" />
 		<item itemid="27013" item="水晶修复装置" counta="1" countb="1" weight="100" />
 		<item itemid="27014" item="额外的布料" counta="1" countb="1" weight="100" />
 		<item itemid="15001" item="治疗宝珠" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33164" name="防御初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="380" >
+	<loot itemid="33164" name="防御初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="380" >
 		<item itemid="15003" item="仙女护符" counta="1" countb="1" weight="100" />
 		<item itemid="15005" item="蓝水晶" counta="1" countb="1" weight="100" />
 		<item itemid="16001" item="负极斗篷" counta="1" countb="1" weight="90" />
 		<item itemid="16002" item="锁子甲" counta="1" countb="1" weight="90" />
 	</loot>
-	<loot itemid="33165" name="防御初3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="180" >
+	<loot itemid="33165" name="防御初3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="180" >
 		<item itemid="16007" item="冰川护甲" counta="1" countb="1" weight="90" />
 		<item itemid="16008" item="幽魂斗篷" counta="1" countb="1" weight="90" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33166" name="防御中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="300" >
+	<loot itemid="33166" name="防御中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="300" >
 		<item itemid="27008" item="火影斗篷碎片" counta="2" countb="5" weight="80" />
 		<item itemid="27009" item="大法师斗篷碎片" counta="2" countb="5" weight="80" />
 		<item itemid="27010" item="霸王血铠碎片" counta="2" countb="5" weight="80" />
 		<item itemid="28001" item="魔王板甲碎片" counta="2" countb="5" weight="60" />
 	</loot>
-	<loot itemid="33167" name="防御中2" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="120" >
+	<loot itemid="33167" name="防御中2" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="120" >
 		<item itemid="28004" item="黄金龟壳碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28005" item="利维坦之甲碎片" counta="2" countb="5" weight="60" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33168" name="防御高1" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="220" >
+	<loot itemid="33168" name="防御高1" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="220" >
 		<item itemid="28001" item="魔王板甲碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28004" item="黄金龟壳碎片" counta="2" countb="5" weight="60" />
 		<item itemid="28005" item="利维坦之甲碎片" counta="2" countb="5" weight="60" />
 		<item itemid="29001" item="辛多雷血袍碎片" counta="2" countb="5" weight="40" />
 	</loot>
-	<loot itemid="33169" name="防御高2" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="3" weightall="120" >
+	<loot itemid="33169" name="防御高2" img="32015" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="120" >
 		<item itemid="29004" item="战争使者碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29005" item="静谧波浪碎片" counta="2" countb="5" weight="40" />
 		<item itemid="29014" item="统帅卷轴碎片" counta="2" countb="5" weight="40" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33028" name="初级装备碎片箱" img="32030" rare="3" description="使用获得1500pts" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33028" name="初级装备碎片箱" img="32030" rare="3" description="使用获得1500pts" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="27001" item="pts" counta="1500" countb="1500" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33029" name="高级装备碎片箱" img="32031" rare="4" description="使用获得800hpts" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33029" name="高级装备碎片箱" img="32031" rare="4" description="使用获得800hpts" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="27002" item="hpts" counta="800" countb="800" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33030" name="特级装备碎片箱" img="32029" rare="5" description="使用获得200tpts" hashero="0" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33030" name="特级装备碎片箱" img="32029" rare="5" description="使用获得200tpts" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="27003" item="tpts" counta="200" countb="200" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33031" name="奥拉夫英雄包" img="32011" rare="4" description="开启获得奥拉夫1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33031" name="奥拉夫英雄包" img="32011" rare="4" description="开启获得奥拉夫1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51009" item="奥拉夫1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33032" name="卡特琳娜英雄包" img="32011" rare="4" description="开启获得卡特琳娜1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33032" name="卡特琳娜英雄包" img="32011" rare="4" description="开启获得卡特琳娜1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51075" item="卡特琳娜1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33033" name="贾克斯英雄包" img="32011" rare="4" description="开启获得贾克斯1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33033" name="贾克斯英雄包" img="32011" rare="4" description="开启获得贾克斯1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51039" item="贾克斯1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33034" name="阿狸英雄包" img="32011" rare="4" description="开启获得阿狸1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33034" name="阿狸英雄包" img="32011" rare="4" description="开启获得阿狸1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51088" item="阿狸1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33035" name="阿兹尔英雄包" img="32011" rare="4" description="开启获得阿兹尔1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33035" name="阿兹尔英雄包" img="32011" rare="4" description="开启获得阿兹尔1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51121" item="阿兹尔1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33036" name="金克丝英雄包" img="32011" rare="4" description="开启获得金克丝1星" hashero="1" cyb="0" judge="0" itemcount="1" weightall="100" >
+	<loot itemid="33036" name="金克丝英雄包" img="32011" rare="4" description="开启获得金克丝1星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="51116" item="金克丝1星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33037" name="白绿装备箱" img="32028" rare="2" description="开启获得随机白装和绿装" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33037" name="白绿装备箱" img="32028" rare="2" description="开启获得随机白装和绿装" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33176" item="白绿装备组合箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33177" item="白绿装备组合箱2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33170" name="白绿装备基础箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33170" name="白绿装备基础箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27013" item="水晶修复装置" counta="1" countb="1" weight="100" />
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
 		<item itemid="16003" item="爆裂魔杖" counta="1" countb="1" weight="100" />
 		<item itemid="16007" item="冰川护甲" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33171" name="白绿装备基础箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33171" name="白绿装备基础箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27014" item="额外的布料" counta="1" countb="1" weight="100" />
 		<item itemid="15001" item="治疗宝珠" counta="1" countb="1" weight="100" />
 		<item itemid="16004" item="十字镐" counta="1" countb="1" weight="100" />
 		<item itemid="16008" item="幽魂斗篷" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33172" name="白绿装备基础箱3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33172" name="白绿装备基础箱3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27015" item="简易磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="15002" item="抗魔斗篷" counta="1" countb="1" weight="100" />
 		<item itemid="16005" item="灵巧披风" counta="1" countb="1" weight="100" />
 		<item itemid="16009" item="耀光" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33173" name="白绿装备基础箱4" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33173" name="白绿装备基础箱4" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="100" />
 		<item itemid="15003" item="仙女护符" counta="1" countb="1" weight="100" />
 		<item itemid="16001" item="负极斗篷" counta="1" countb="1" weight="100" />
 		<item itemid="16010" item="净蚀" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33174" name="白绿装备基础箱5" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33174" name="白绿装备基础箱5" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27017" item="坚固磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="15004" item="格斗手套" counta="1" countb="1" weight="100" />
 		<item itemid="16002" item="锁子甲" counta="1" countb="1" weight="100" />
 		<item itemid="16011" item="反曲之弓" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33175" name="白绿装备基础箱6" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="3" weightall="300" >
+	<loot itemid="33175" name="白绿装备基础箱6" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 		<item itemid="15005" item="蓝水晶" counta="1" countb="1" weight="100" />
 		<item itemid="16006" item="残暴之力" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33176" name="白绿装备组合箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="4" weightall="400" >
+	<loot itemid="33176" name="白绿装备组合箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33170" item="白绿装备基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33172" item="白绿装备基础箱3" counta="1" countb="1" weight="100" />
 		<item itemid="33174" item="白绿装备基础箱5" counta="1" countb="1" weight="100" />
 		<item itemid="33175" item="白绿装备基础箱6" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33177" name="白绿装备组合箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33177" name="白绿装备组合箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33171" item="白绿装备基础箱2" counta="1" countb="1" weight="100" />
 		<item itemid="33173" item="白绿装备基础箱4" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33178" name="基础装备箱" img="32015" rare="1" description="开启获得基础装备强化素材" hashero="0" cyb="0" judge="0" itemcount="2" weightall="200" >
+	<loot itemid="33178" name="基础装备箱" img="32015" rare="1" description="开启获得基础装备强化素材" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33179" item="基础装备箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33180" item="基础装备箱2" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33179" name="基础装备箱1" img="32015" rare="1" description="基础装备箱" hashero="0" cyb="0" judge="0" itemcount="4" weightall="350" >
+	<loot itemid="33179" name="基础装备箱1" img="32015" rare="1" description="基础装备箱" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="350" >
 		<item itemid="27015" item="简易磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="27013" item="水晶修复装置" counta="1" countb="1" weight="100" />
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
 		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="50" />
 	</loot>
-	<loot itemid="33180" name="基础装备箱2" img="32015" rare="1" description="基础装备箱" hashero="0" cyb="0" judge="0" itemcount="4" weightall="350" >
+	<loot itemid="33180" name="基础装备箱2" img="32015" rare="1" description="基础装备箱" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="350" >
 		<item itemid="27017" item="坚固磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="27014" item="额外的布料" counta="1" countb="1" weight="100" />
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="50" />
 	</loot>
-	<loot itemid="34001" name="元气宝箱" img="34001" rare="3" description="开启获得1-2个元气西瓜或者100pts" hashero="0" cyb="0" judge="0" itemcount="2" weightall="150" >
+	<loot itemid="34001" name="元气宝箱" img="34001" rare="3" description="开启获得1-2个元气西瓜或者100pts" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="150" >
 		<item itemid="40101" item="元气西瓜" counta="1" countb="2" weight="100" />
 		<item itemid="27001" item="pts" counta="100" countb="100" weight="50" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="40101" name="元气西瓜" img="40101" rare="2" description="可在活动-西瓜大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-07-27 23:59:59" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
