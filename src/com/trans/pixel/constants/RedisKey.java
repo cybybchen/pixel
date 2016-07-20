@@ -33,6 +33,7 @@ public class RedisKey {
 	public final static String MOHUA_USERDATA = "mohua_userdata";
 	public final static String PVPMAP_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMap";
 	public final static String PVPMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonster";
+	public final static String PVPACTIVITYMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPActivityMonster";
 	public final static String PVPBOSS_CONFIG = PREFIX+CONFIG_PREFIX+"PVPBoss";
 	public final static String PVPPOSITION_CONFIG = PREFIX+CONFIG_PREFIX+"PVPPosition";
 	public final static String PVPMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonsterReward";

@@ -483,12 +483,12 @@ message PVPMonster {//pvp怪物Config
 	optional int32 fieldid = 4;//区域ID
 	optional int32 buffcount = 5;//增加的buff层数
 	optional int32 weight = 12;//出现几率
-	optional int32 a = 6;
-	optional float b = 7;
 	optional int32 x = 8;//坐标x
 	optional int32 y = 9;//坐标y
 	optional int32 positionid = 10;
 	optional int32 level = 11;
+	optional string starttime = 13;
+	optional string endtime = 14;
 }
 
 message PVPMonsterList {

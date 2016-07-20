@@ -38,6 +38,7 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class PvpMapService {
@@ -318,6 +319,8 @@ public class PvpMapService {
 		int logType = PvpMapConst.TYPE_MONSTER;
 		PVPMonster monster = redis.getMonster(user, positionid);
 		if(monster == null)
+			return null;
+		if(monster.hasEndtime() && !DateUtil.timeIsAvailable(monster.getStarttime(), monster.getEndtime()))
 			return null;
 		
 		if (monster.getId() > 2000) {
