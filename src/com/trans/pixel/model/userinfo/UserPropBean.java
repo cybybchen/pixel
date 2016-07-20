@@ -76,10 +76,11 @@ public class UserPropBean {
 		return builder.build();
 	}
 
-	public static UserPropBean initUserProp(long userId, int propId) {
+	public static UserPropBean initUserProp(long userId, int propId, String endTime) {
 		UserPropBean userProp = new UserPropBean();
 		userProp.setUserId(userId);
 		userProp.setPropId(propId);
+		userProp.setExpiredTime(endTime);
 		
 		return userProp;
 	}
