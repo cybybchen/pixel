@@ -304,7 +304,7 @@ public class PvpMapRedisService extends RedisService{
 						continue;
 					for(int i = 0; i < 2; i++){
 						PVPMonster.Builder monsterbuilder = PVPMonster.newBuilder(monster);
-						monsterbuilder.setFieldid(map.getFieldid());
+						monsterbuilder.setFieldid(list.getEnemy(0).getFieldid());
 						PVPPositionList positions = positionMap.get(monsterbuilder.getFieldid()+"");
 						PVPPosition position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
 						while(positionValues.contains(position.getId())){
