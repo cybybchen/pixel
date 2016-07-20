@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.Commands.PVPMonsterRewardList;
 import com.trans.pixel.protoc.Commands.PVPPosition;
 import com.trans.pixel.protoc.Commands.PVPPositionList;
 import com.trans.pixel.protoc.Commands.PVPPositionLists;
+import com.trans.pixel.utils.DateUtil;
 
 @Repository
 public class PvpMapRedisService extends RedisService{
@@ -187,8 +188,14 @@ public class PvpMapRedisService extends RedisService{
 		Map<String, String> keyvalue = this.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
 		for(String value : keyvalue.values()) {
 			PVPMonster.Builder builder = PVPMonster.newBuilder();
-			if(parseJson(value, builder))
-				monsters.add(builder.build());
+			if(parseJson(value, builder)){
+				if(!builder.hasEndtime() || DateUtil.timeIsAvailable(builder.getStarttime(), builder.getEndtime()))
+					monsters.add(builder.build());
+				else{
+					hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), builder.getPositionid()+"");
+					keyvalue.remove(builder.getPositionid()+"");
+				}
+			}
 		}
 		PVPMonsterList.Builder bosses = PVPMonsterList.newBuilder();
 		String value = get(RedisKey.PVPBOSS_PREFIX+user.getId());
@@ -196,9 +203,10 @@ public class PvpMapRedisService extends RedisService{
 			parseJson(value, bosses);
 		if(refreshMonster){
 			Map<String, PVPMonsterList> monstermap = getMonsterConfig();
+			PVPMonsterList activitymonsters = getActivityMonsterConfig();
 			Map<String, PVPPositionList> positionMap = getPositionConfig();
+			PVPMapList.Builder pvpmap = getMapList(user.getId(), user.getPvpUnlock());
 			if(refreshBoss){
-				PVPMapList.Builder pvpmap = getMapList(user.getId(), user.getPvpUnlock());
 				List<Integer> fieldids = new ArrayList<Integer>();
 				for(PVPMap map : pvpmap.getFieldList()){
 					if(map.getOpened())
@@ -253,7 +261,6 @@ public class PvpMapRedisService extends RedisService{
 					}
 				}
 				
-				
 				while(count < 5){//添加怪物
 					int weight = 0;
 					for(PVPMonster monster : list.getEnemyList()){
@@ -290,6 +297,36 @@ public class PvpMapRedisService extends RedisService{
 					monsters.add(monsterbuilder.build());
 					keyvalue.put(monsterbuilder.getPositionid()+"", formatJson(monsterbuilder.build()));
 					count++;
+				}
+
+				for(PVPMonster monster : activitymonsters.getEnemyList()){//添加活动怪物
+					if(!DateUtil.timeIsAvailable(monster.getStarttime(), monster.getEndtime()))
+						continue;
+					for(PVPMap map : pvpmap.getFieldList())
+					for(int i = 0; i < 2; i++){
+						PVPMonster.Builder monsterbuilder = PVPMonster.newBuilder(monster);
+						monsterbuilder.setFieldid(map.getFieldid());
+						PVPPositionList positions = positionMap.get(monsterbuilder.getFieldid()+"");
+						PVPPosition position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
+						while(positionValues.contains(position.getId())){
+							position = positions.getXiaoguai(nextInt(positions.getXiaoguaiCount()));
+						}
+						positionValues.add(position.getId());
+						monsterbuilder.setPositionid(position.getId());
+						monsterbuilder.setX(position.getX());
+						monsterbuilder.setY(position.getY());
+						String buff = pvpMap.get(monsterbuilder.getFieldid()+"");
+						int level = nextInt(11)-5;
+						if(buff != null)
+							level += Integer.parseInt(buff);
+						if(level > 300)
+							level = 300;
+						else if(level < 1)
+							level = 1;
+						monsterbuilder.setLevel(level);
+						monsters.add(monsterbuilder.build());
+						keyvalue.put(monsterbuilder.getPositionid()+"", formatJson(monsterbuilder.build()));
+					}
 				}
 			}
 			hputAll(RedisKey.PVPMONSTER_PREFIX+user.getId(), keyvalue);
@@ -339,6 +376,19 @@ public class PvpMapRedisService extends RedisService{
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
+		}
+	}
+	
+	public PVPMonsterList getActivityMonsterConfig() {
+		String value = get(RedisKey.PVPACTIVITYMONSTER_CONFIG);
+		PVPMonsterList.Builder builder = PVPMonsterList.newBuilder();
+		if(value != null && parseJson(value, builder)){
+			return builder.build();
+		}else{
+			String xml = ReadConfig("lol_pvphuodong.xml");
+			parseXml(xml, builder);
+			set(RedisKey.PVPACTIVITYMONSTER_CONFIG, formatJson(builder.build()));
+			return builder.build();
 		}
 	}
 	
