@@ -133,7 +133,7 @@ public class UserService {
 			user.setZhibaoLeftTime(vip.getZhibao());
 			UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
 			if (userProp == null)
-				userProp = UserPropBean.initUserProp(user.getId(), 40022);
+				userProp = UserPropBean.initUserProp(user.getId(), 40022, "");
 			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
 			userPropService.updateUserProp(userProp);
 		}
