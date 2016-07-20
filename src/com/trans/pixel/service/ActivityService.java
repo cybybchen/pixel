@@ -129,8 +129,12 @@ public class ActivityService {
 		
 		RewardOrder.Builder rewardOrderBuilder = RewardOrder.newBuilder();
 		if (richang.getTargetid() == ActivityConst.CONSUME_ACTIVITY) {
-			if (ur.getRewardList().size() >= order) 
-				rewardOrderBuilder = RewardOrder.newBuilder(ur.getReward(order - 1));
+			for (RewardOrder reward : ur.getRewardList()) {
+				if (reward.getOrder() == order) {
+					rewardOrderBuilder = RewardOrder.newBuilder(reward);
+					break;
+				}
+			}
 					
 			if (activityorder.getLimit() > 0 && rewardOrderBuilder.getCount() >= activityorder.getLimit())
 				return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
@@ -139,12 +143,13 @@ public class ActivityService {
 				return ErrorConst.NOT_ENOUGH_PROP;
 			}
 			
-			rewardOrderBuilder.setOrder(order);
 			rewardOrderBuilder.setCount(rewardOrderBuilder.getCount() + 1);
-			if (ur.getRewardList().size() >= order) 
+			if (rewardOrderBuilder.getOrder() > 0)  
 				ur.setReward(order - 1, rewardOrderBuilder.build());
-			else
+			else {
+				rewardOrderBuilder.setOrder(order);
 				ur.addReward(rewardOrderBuilder.build());
+			}
 		}else {
 			if (activityorder.getTargetcount() > ur.getCompleteCount())
 				return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
