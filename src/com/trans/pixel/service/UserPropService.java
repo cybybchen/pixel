@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.PackageBean;
 import com.trans.pixel.model.mapper.UserPropMapper;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.service.redis.PropRedisService;
 import com.trans.pixel.service.redis.UserPropRedisService;
 
 @Service
@@ -19,7 +18,7 @@ public class UserPropService {
 	@Resource
 	private UserPropMapper userPropMapper;
 	@Resource
-	private PropRedisService propRedisService;
+	private PropService propService;
 	
 	public UserPropBean selectUserProp(long userId, int propId) {
 		UserPropBean userProp = userPropRedisService.selectUserProp(userId, propId);
@@ -67,7 +66,7 @@ public class UserPropService {
 	public void addUserProp(long userId, int propId, int propCount) {
 		UserPropBean userProp = selectUserProp(userId, propId);
 		if (userProp == null) {
-			PackageBean prop = propRedisService.getProp(propId);
+			PackageBean prop = propService.getProp(propId);
 			userProp = UserPropBean.initUserProp(userId, propId, prop.getEndTime());
 		}
 		

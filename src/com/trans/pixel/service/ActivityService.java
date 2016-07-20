@@ -127,22 +127,24 @@ public class ActivityService {
 		
 		ActivityOrder activityorder = richang.getOrder(order - 1);
 		
+		RewardOrder.Builder rewardOrderBuilder = RewardOrder.newBuilder();
 		if (richang.getTargetid() == ActivityConst.CONSUME_ACTIVITY) {
-			for (int i = 0; i < ur.getRewardList().size(); ++ i) {
-				RewardOrder rewardOrder = ur.getReward(i);
-				if (rewardOrder.getOrder() == order) {
-					if (activityorder.getLimit() > 0 && rewardOrder.getCount() >= activityorder.getLimit())
-						return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
+			if (ur.getRewardList().size() >= order) 
+				rewardOrderBuilder = RewardOrder.newBuilder(ur.getReward(order - 1));
 					
-					if (!costService.cost(user, activityorder.getConsumeid(), activityorder.getTargetcount())) {
-						return ErrorConst.NOT_ENOUGH_PROP;
-					}
-					
-					RewardOrder.Builder newReward = RewardOrder.newBuilder(rewardOrder);
-					newReward.setCount(newReward.getCount() + 1);
-					ur.setReward(i, newReward.build());
-				}
+			if (activityorder.getLimit() > 0 && rewardOrderBuilder.getCount() >= activityorder.getLimit())
+				return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
+			
+			if (!costService.cost(user, activityorder.getConsumeid(), activityorder.getTargetcount())) {
+				return ErrorConst.NOT_ENOUGH_PROP;
 			}
+			
+			rewardOrderBuilder.setOrder(order);
+			rewardOrderBuilder.setCount(rewardOrderBuilder.getCount() + 1);
+			if (ur.getRewardList().size() >= order) 
+				ur.setReward(order - 1, rewardOrderBuilder.build());
+			else
+				ur.addReward(rewardOrderBuilder.build());
 		}else {
 			if (activityorder.getTargetcount() > ur.getCompleteCount())
 				return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;

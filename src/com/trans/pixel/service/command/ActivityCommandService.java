@@ -10,6 +10,7 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.ActivityOrder;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
@@ -22,6 +23,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.ResponseKaifuListCommand;
 import com.trans.pixel.protoc.Commands.ResponseRichangListCommand;
+import com.trans.pixel.protoc.Commands.Richang;
 import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.ActivityService;
@@ -29,6 +31,7 @@ import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.NoticeService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserActivityService;
+import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -46,6 +49,8 @@ public class ActivityCommandService extends BaseCommandService {
 	private NoticeService noticeService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ActivityRedisService activityRedisService;
 	
 	public void richangReward(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int id = cmd.getId();
@@ -71,6 +76,12 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.addAllRank(activityService.getKaifu2RankList(user));
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		responseBuilder.setKaifuListCommand(builder.build());
+		
+		Richang richang = activityRedisService.getRichang(id);
+		ActivityOrder activityorder = richang.getOrder(order - 1);
+		if (richang.getTargetid() == ActivityConst.CONSUME_ACTIVITY) {
+			pusher.pushUserDataByRewardId(responseBuilder, user, activityorder.getConsumeid());
+		}
 	}
 	
 	//not useful
