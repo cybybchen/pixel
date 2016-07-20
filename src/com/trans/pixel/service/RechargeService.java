@@ -87,7 +87,7 @@ public class RechargeService {
 				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
 				UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
 				if (userProp == null)
-					userProp = UserPropBean.initUserProp(user.getId(), 40022);
+					userProp = UserPropBean.initUserProp(user.getId(), 40022, "");
 				userProp.setPropCount(userProp.getPropCount() + vip.getBaohu() - oldvip.getBaohu());
 				userPropService.updateUserProp(userProp);
 			}
