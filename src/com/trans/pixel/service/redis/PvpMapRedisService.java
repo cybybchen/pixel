@@ -302,7 +302,6 @@ public class PvpMapRedisService extends RedisService{
 				for(PVPMonster monster : activitymonsters.getEnemyList()){//添加活动怪物
 					if(!DateUtil.timeIsAvailable(monster.getStarttime(), monster.getEndtime()))
 						continue;
-					for(PVPMap map : pvpmap.getFieldList())
 					for(int i = 0; i < 2; i++){
 						PVPMonster.Builder monsterbuilder = PVPMonster.newBuilder(monster);
 						monsterbuilder.setFieldid(map.getFieldid());
