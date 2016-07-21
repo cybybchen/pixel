@@ -2,6 +2,7 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -186,14 +187,17 @@ public class PvpMapRedisService extends RedisService{
 		}
 		List<PVPMonster> monsters = new ArrayList<PVPMonster>();
 		Map<String, String> keyvalue = this.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
-		for(String value : keyvalue.values()) {
+		Iterator<Entry<String, String>> it = keyvalue.entrySet().iterator();
+		while(it.hasNext()){
+			Entry<String, String> entry = it.next();
+			String value = entry.getValue();
 			PVPMonster.Builder builder = PVPMonster.newBuilder();
 			if(parseJson(value, builder)){
 				if(!builder.hasEndtime() || (DateUtil.timeIsAvailable(builder.getStarttime(), builder.getEndtime()) && !refreshMonster))
 					monsters.add(builder.build());
 				else{
 					hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), builder.getPositionid()+"");
-					keyvalue.remove(builder.getPositionid()+"");
+					it.remove();
 				}
 			}
 		}
