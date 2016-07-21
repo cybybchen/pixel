@@ -1181,8 +1181,8 @@ $(document).ready(function() {
         	updateConfigJson(json);
         }else if(json.hasOwnProperty("DeleteData")){
         	$("#selectAllData").attr("checked",false).checkboxradio("refresh");
-        	$("#redisdata-keys").val("*config*");
-        	json = buildConfigJson("RedisData", "*config*");
+        	$("#redisdata-keys").val("pixel:config*");
+        	json = buildConfigJson("RedisData", "pixel:config*");
         	updateConfigJson(json);
         }else if(json.hasOwnProperty("GmRight")){
             json = buildConfigJson("GmRight", "1");
