@@ -323,14 +323,14 @@ public class PvpMapService {
 		if(monster.hasEndtime() && !DateUtil.timeIsAvailable(monster.getStarttime(), monster.getEndtime()))
 			return null;
 		
-		if (monster.getId() > 2000) {
+		if (monster.getId()/1000 == 2) {
 			logType = PvpMapConst.TYPE_BOSS;
 		}
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 //		int buff = -1;
 		if(ret){
-			if(monster.getId() > 2000)
+			if(monster.getId()/1000 == 2)
 				redis.deleteBoss(user, positionid);
 			else
 				redis.deleteMonster(user, positionid);
@@ -346,7 +346,7 @@ public class PvpMapService {
 			}
 			rewardService.doRewards(user, rewards.build());
 			/*buff = */redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
-			if (monster.getId() > 2000) {
+			if (monster.getId()/1000 == 2) {
 				/**
 				 * PVP攻击BOSS的活动
 				 */
