@@ -64,8 +64,8 @@ public class PvpMapTest extends BaseTest {
 	
 	private void unlockMap(RequestCommand request) {
 		RequestUnlockPVPMapCommand.Builder builder = RequestUnlockPVPMapCommand.newBuilder();
-		builder.setFieldid(103);
-		builder.setZhanli(50000);
+		builder.setFieldid(101);
+		builder.setZhanli(500000);
         ResponseCommand response = request("unlockPvpMapCommand", builder.build(), request);
         
         if(response != null && response.hasPvpMapListCommand())
