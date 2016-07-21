@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
@@ -700,17 +701,20 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void purchaseContract(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getPurchaseContractLeft() <= 0){
+		if(user.getFreeContractTime() <= System.currentTimeMillis() - 70 * TimeConst.MILLIONSECONDS_PER_HOUR)
+			user.setFreeContractTime(System.currentTimeMillis());
+		else if(user.getPurchaseContractLeft() <= 0){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_PURCHASE_TIME);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
 			return;
 		}
-		if(!costService.cost(user, RewardConst.JEWEL, 328)) {
+		else if(!costService.cost(user, RewardConst.JEWEL, 328)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 			return;
-		}
+		}else
+			user.setPurchaseContractLeft(user.getPurchaseContractLeft()-1);
 		ContractWeightList weights = service.getContractWeightList();
 		MultiReward.Builder rewards = service.getContractRewardList();
 		int index = userService.nextInt(weights.getWeightall());
@@ -728,7 +732,6 @@ public class ShopCommandService extends BaseCommandService{
 			}
 		}
 		rewardService.doRewards(user, rewards.build());
-		user.setPurchaseContractLeft(user.getPurchaseContractLeft()-1);
 		rewardService.updateUser(user);
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		pusher.pushRewardCommand(responseBuilder, user, rewards.build());

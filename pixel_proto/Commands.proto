@@ -22,6 +22,7 @@ message UserInfo {
 	optional int64 freeLotteryCoinTime = 17; //免费金币抽取倒计时
 	optional int32 freeLotteryCoinLeftTime = 61; //免费金币抽取剩余次数
 	optional int64 freeLotteryJewelTime = 18; //免费钻石抽取倒计时
+	optional int64 freeContractTime = 63; //免费契约倒计时
 	optional int32 ladderPurchaseTimes = 60;//天梯购买次数
 	optional int32 ladderModeLeftTimes = 12;//每日天梯挑战剩余次数
 	optional int32 PVPMineLeftTime = 20;//pvp矿点对手免费刷新次数
