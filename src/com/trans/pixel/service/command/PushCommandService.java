@@ -156,7 +156,11 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserPropListCommand(Builder responseBuilder, UserBean user, List<UserPropBean> userPropList) {
-		ResponseUserPropCommand.Builder builder = ResponseUserPropCommand.newBuilder();
+		ResponseUserPropCommand.Builder builder = null;
+		if(responseBuilder.hasUserPropCommand())
+			builder = responseBuilder.getUserPropCommandBuilder();
+		else
+			builder = ResponseUserPropCommand.newBuilder();
 		builder.addAllUserProp(super.buildUserPropList(userPropList));
 		responseBuilder.setUserPropCommand(builder.build());
 	}
