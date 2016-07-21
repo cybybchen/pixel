@@ -336,7 +336,7 @@ public class ActivityService {
 			Entry<String, Kaifu2> entry = it.next();
 			Kaifu2 kaifu2 = entry.getValue();
 			if (isInKaifuActivityTime(kaifu2.getLasttime(), user.getServerId()) && kaifu2.getTargetid() == type) {
-				activityRedisService.addKaifu2Score(user.getId(), user.getServerId(), kaifu2.getId(), score);
+				activityRedisService.addKaifu2Score(user.getId(), user.getServerId(), kaifu2.getId(), kaifu2.getTargetid(), score);
 			}
 		}
 	}
