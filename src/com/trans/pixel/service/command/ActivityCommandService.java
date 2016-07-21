@@ -10,6 +10,7 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ActivityOrder;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -19,6 +20,7 @@ import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangListCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
+import com.trans.pixel.protoc.Commands.ResponseUsePropCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.ResponseKaifuListCommand;
@@ -31,6 +33,7 @@ import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.NoticeService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserActivityService;
+import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -51,6 +54,8 @@ public class ActivityCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private ActivityRedisService activityRedisService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public void richangReward(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int id = cmd.getId();
@@ -80,7 +85,12 @@ public class ActivityCommandService extends BaseCommandService {
 		Richang richang = activityRedisService.getRichang(id);
 		ActivityOrder activityorder = richang.getOrder(order - 1);
 		if (richang.getTargetid() == ActivityConst.CONSUME_ACTIVITY) {
-			pusher.pushUserDataByRewardId(responseBuilder, user, activityorder.getConsumeid());
+			ResponseUsePropCommand.Builder propbuilder = ResponseUsePropCommand.newBuilder();
+			UserPropBean userProp = userPropService.selectUserProp(user.getId(), activityorder.getConsumeid());
+			if (userProp != null){
+				propbuilder.addUserProp(userProp.buildUserProp());
+				responseBuilder.setUsePropCommand(propbuilder.build());
+			}
 		}
 	}
 	
