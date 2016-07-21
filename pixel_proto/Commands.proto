@@ -899,8 +899,8 @@ message RewardOrder {
 message UserRichang {
 	required int32 type = 1;
 	required int32 completeCount = 2;
-	repeated RewardOrder reward = 3;
-	repeated int32 rewardOrder = 4;
+	repeated RewardOrder reward = 4;
+	repeated int32 rewardOrder = 3;
 }
 
 message UserAchieve {

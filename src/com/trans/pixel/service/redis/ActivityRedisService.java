@@ -190,8 +190,8 @@ public class ActivityRedisService extends RedisService {
 	}
 	
 	//kaifu2 activity rank
-	public void addKaifu2Score(long userId, int serverId, int type, long score) {
-		String key = buildKaifu2RankRedisKey(serverId, type);
+	public void addKaifu2Score(long userId, int serverId, int id, int type, long score) {
+		String key = buildKaifu2RankRedisKey(serverId, id);
 		if (type == ActivityConst.KAIFU2_ZHANLI)
 			zadd(key, score, "" + userId);
 		else
