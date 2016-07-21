@@ -39,6 +39,7 @@ public class UserBean {
 	private long freeLotteryCoinTime = 0;
 	private int freeLotteryCoinLeftTime = 5;
 	private long freeLotteryJewelTime = 0;
+	private long freeContractTime = 0;
 	private int dailyShopRefreshTime = 0;
 	private int blackShopRefreshTime = 0;
 	private int unionShopRefreshTime = 0;
@@ -829,6 +830,12 @@ public class UserBean {
 	public void setFreeLotteryJewelTime(long freeLotteryJewelTime) {
 		this.freeLotteryJewelTime = freeLotteryJewelTime;
 	}
+	public long getFreeContractTime() {
+		return freeContractTime;
+	}
+	public void setFreeContractTime(long freeContractTime) {
+		this.freeContractTime = freeContractTime;
+	}
 	/**
 	 * 上次签到时间
 	 */
@@ -954,6 +961,7 @@ public class UserBean {
 		setHeroLimit(30);
 		setFreeLotteryCoinTime(System.currentTimeMillis());
 		setFreeLotteryJewelTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (22 - 1)));
+		setFreeContractTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (70 - 1)));
 		return this;
 	}
 	public UserInfo buildShort() {
@@ -1028,6 +1036,7 @@ public class UserBean {
 		builder.setFreeLotteryCoinTime(Math.max(0, (freeLotteryCoinTime-System.currentTimeMillis())/1000));
 		builder.setFreeLotteryCoinLeftTime(freeLotteryCoinLeftTime);
 		builder.setFreeLotteryJewelTime(Math.max(0, ((freeLotteryJewelTime + 22 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
+		builder.setFreeContractTime(Math.max(0, ((freeContractTime + 70 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setPurchaseContractLeft(purchaseContractLeft);
 		builder.setPVPMineLeftTime(pvpMineLeftTime);
 		builder.setSignCount(signCount);
