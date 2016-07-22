@@ -76,13 +76,17 @@ public class PvpMapService {
 						userService.updateUserDailyData(user);
 					}
 					
-					List<UserInfo> ranks = getRandUser(-10, 5, user);
+					List<UserInfo> ranks = getRandUser(-10, 0, user);
 					if(ranks.size() > 0){
 						Map<String, PVPMine> mineMap = new HashMap<String, PVPMine>();
 						for(PVPMine mine : map.getKuangdianList()){
-							PVPMine.Builder builder = PVPMine.newBuilder(mine);
-							builder.setOwner(ranks.get(redis.nextInt(ranks.size())));
-							mineMap.put(builder.getId()+"", builder.build());
+							if(ranks.size() > 0){
+								PVPMine.Builder builder = PVPMine.newBuilder(mine);
+								int index = redis.nextInt(ranks.size());
+								builder.setOwner(ranks.get(index));
+								mineMap.put(builder.getId()+"", builder.build());
+								ranks.remove(index);
+							}
 						}
 						redis.saveMines(user.getId(), mineMap);
 					}
@@ -221,6 +225,12 @@ public class PvpMapService {
 			// if(mine != null && mine.getEndTime() > redis.now() )
 			// 	continue;
 			
+			Iterator<UserInfo> it = ranks.iterator();
+			while(it.hasNext()){
+				UserInfo userinfo = it.next();
+				if(userinfo.getZhanli() < map.getZhanli())
+					it.remove();
+			}
 			if(ranks.isEmpty())
 				return;
 			if(redis.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
