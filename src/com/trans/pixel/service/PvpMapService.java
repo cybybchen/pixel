@@ -199,7 +199,7 @@ public class PvpMapService {
 				UserInfo owner = userService.getCache(user.getServerId(), mine.getOwner().getId());
 				PVPMine.Builder builder = PVPMine.newBuilder(mine);
 				builder.setOwner(owner);
-				builder.setPvpyield((int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 10)/2.0+3, Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
+				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
 				entry.setValue(builder.build());
 			}else if(redis.now() > mine.getEndTime()){
 				it.remove();
@@ -444,7 +444,7 @@ public class PvpMapService {
 				if(isme){
 					redis.addUserBuff(user, 0, 1);
 					UserInfo owner = userService.getCache(user.getServerId(), userId);
-					reward.setCount((int)Math.pow(mine.getYield()*Math.min(mine.getLevel()-1, 10)/2.0+3, Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
+					reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
 					rewardService.doReward(user, reward.build());
 				}
 			}
@@ -498,7 +498,7 @@ public class PvpMapService {
 					owner = ranks.get(redis.nextInt(ranks.size()));
 				builder.setOwner(owner);
 			}
-			builder.setPvpyield((int)Math.pow(mine.getYield()*Math.min(mine.getLevel(), 10)/2.0+3, Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
+			builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
 			redis.saveMine(user.getId(), builder.build());
 		}else{
 			builder.clearOwner();
