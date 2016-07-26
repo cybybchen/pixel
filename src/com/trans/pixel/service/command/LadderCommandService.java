@@ -113,7 +113,7 @@ public class LadderCommandService extends BaseCommandService {
 	}
 	
 	public void purchaseLadderTime(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user) {
-		LadderChongzhi chongzhi = ladderService.getLadderChongzhi(user.getLadderPurchaseTimes());
+		LadderChongzhi chongzhi = ladderService.getLadderChongzhi(user.getLadderPurchaseTimes()+1);
 		if(chongzhi == null){
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES);
             responseBuilder.setErrorCommand(errorCommand);
