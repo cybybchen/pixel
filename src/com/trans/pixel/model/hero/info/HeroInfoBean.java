@@ -158,6 +158,12 @@ public class HeroInfoBean {
 		
 		return json.toString();
 	}
+	public static HeroInfoBean fromJson(String jsonString, final long userId) {
+		HeroInfoBean bean = fromJson(jsonString);
+		bean.setUserId(userId);
+		return bean;
+	}
+
 	public static HeroInfoBean fromJson(String jsonString) {
 		if (jsonString == null)
 			return null;

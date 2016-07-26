@@ -34,7 +34,7 @@ public class UserHeroRedisService extends RedisService{
 						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
 				
 				
-				return HeroInfoBean.fromJson(bhOps.get("" + id));
+				return HeroInfoBean.fromJson(bhOps.get("" + id), userId);
 			}
 		});
 	}
