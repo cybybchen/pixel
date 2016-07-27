@@ -75,8 +75,8 @@ public class LotteryService {
     	return randomLotteryList;
     }
 	
-	public boolean isLotteryActivityAvailable(int type) {
-		LotteryActivity lotteryActivity = lotteryRedisService.getLotteryActivity(type);
+	public boolean isLotteryActivityAvailable(int id) {
+		LotteryActivity lotteryActivity = lotteryRedisService.getLotteryActivity(id);
 		if (lotteryActivity == null || !DateUtil.timeIsAvailable(lotteryActivity.getStarttime(), lotteryActivity.getEndtime()))
 				return false;
 		

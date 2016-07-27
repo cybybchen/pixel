@@ -71,7 +71,7 @@ public class LotteryCommandService extends BaseCommandService {
 		}
 		
 		int cost = 0;
-		if (type == 1 || type == 2) {
+		if (type < 1000) {
 			if (!lotteryService.isLotteryActivityAvailable(type)) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LOTTERY_ACTIVITY_TIME_ERROR);
 				
