@@ -89,6 +89,12 @@ public class ServerRedisService extends RedisService{
 		return value;
 	}
 	
+	public String getGameVersion() {
+		String value = get(RedisKey.GAME_VERSION_KEY);
+		
+		return value;
+	}
+	
 	public void setKaifuTime(int serverId, String kaifuTime) {
 		hput(RedisKey.SERVER_KAIFU_TIME, "" + serverId, kaifuTime);
 	}
