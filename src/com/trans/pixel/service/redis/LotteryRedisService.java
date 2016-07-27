@@ -92,11 +92,11 @@ public class LotteryRedisService extends RedisService {
 	
 
 	
-	public LotteryActivity getLotteryActivity(int type) {
-		String value = hget(RedisKey.LOTTERY_ACTIVITY_KEY, "" + type);
+	public LotteryActivity getLotteryActivity(int id) {
+		String value = hget(RedisKey.LOTTERY_ACTIVITY_KEY, "" + id);
 		if (value == null) {
 			Map<String, LotteryActivity> lotteryActivityConfig = getLotteryActivityConfig();
-			return lotteryActivityConfig.get("" + type);
+			return lotteryActivityConfig.get("" + id);
 		} else {
 			LotteryActivity.Builder builder = LotteryActivity.newBuilder();
 			if(parseJson(value, builder))
@@ -137,7 +137,7 @@ public class LotteryRedisService extends RedisService {
 		
 		Map<String, LotteryActivity> map = new HashMap<String, LotteryActivity>();
 		for(LotteryActivity.Builder lottery : builder.getLotteryBuilderList()){
-			map.put("" + lottery.getType(), lottery.build());
+			map.put("" + lottery.getId(), lottery.build());
 		}
 		return map;
 	}

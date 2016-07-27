@@ -1034,6 +1034,7 @@ message LotteryActivity {
 	required string endtime = 6;
 	repeated LotteryItem item = 7;		
 	optional string errordes = 8;
+	optional int32 id = 9;
 }
 
 message LotteryItem {
