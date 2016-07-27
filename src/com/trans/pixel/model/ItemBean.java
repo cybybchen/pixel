@@ -79,7 +79,7 @@ public class ItemBean {
 		if (counta == countb)
 			return counta;
 		
-		return counta + rand.nextInt(countb - counta);
+		return counta + rand.nextInt(countb - counta + 1);
 	}
 	
 	private static final String ITEMID = "itemid";
