@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.ServerMapper;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class ServerService {
@@ -44,6 +45,15 @@ public class ServerService {
 		}
 		
 		return kaifuTime;
+	}
+	
+	public int getGameVersion() {
+		String gameVersion = serverRedisService.getGameVersion();
+		if (gameVersion == null) {
+			return 0;
+		}
+		
+		return TypeTranslatedUtil.stringToInt(gameVersion);
 	}
 	
 	public int getOnlineStatus(String version) {

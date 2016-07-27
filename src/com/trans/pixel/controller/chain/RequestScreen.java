@@ -382,6 +382,7 @@ public abstract class RequestScreen implements RequestHandle {
 		nHead.setServerstarttime(serverService.getKaifuTime(head.getServerId()));
 		nHead.setDatetime(System.currentTimeMillis() / 1000);
 		nHead.setOnlineStatus(serverService.getOnlineStatus("" + head.getVersion()));
+		nHead.setGameVersion(serverService.getGameVersion());
 		
 		return nHead.build();
 	}
