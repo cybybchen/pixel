@@ -1,5 +1,5 @@
 <data>
-<lottery  id="1" type="1" cost="1003" count="1500" judge="1" errordes="魔晶不足(在征战世界中获得)" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
+<lottery  id="1" activity="1" type="1" cost="1003" count="1500" judge="1" errordes="魔晶不足(在征战世界中获得)" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
 <item id="1" itemid="51005" count="1" weight="100" will="0" />
 <item id="2" itemid="51010" count="1" weight="100" will="0" />
 <item id="3" itemid="51061" count="1" weight="100" will="0" />
@@ -42,7 +42,7 @@
 <item id="40" itemid="35015" count="1" weight="25" will="0" />
 <item id="41" itemid="35016" count="1" weight="10" will="0" />
 </lottery>
-<lottery  id="2" type="2" cost="1003" count="14000" judge="10" errordes="魔晶不足(在征战世界中获得)" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
+<lottery  id="2" activity="1" type="2" cost="1003" count="14000" judge="10" errordes="魔晶不足(在征战世界中获得)" starttime="2016-06-27 00:00:00" endtime="2016-07-27 23:59:59" >
 <item id="1" itemid="51005" count="1" weight="100" will="0" />
 <item id="2" itemid="51010" count="1" weight="100" will="0" />
 <item id="3" itemid="51061" count="1" weight="100" will="0" />
@@ -97,7 +97,7 @@
 <item id="52" itemid="29036" count="10" weight="10" will="0" />
 <item id="53" itemid="29018" count="10" weight="5" will="0" />
 </lottery>
-<lottery  id="3" type="1" cost="1003" count="2000" judge="1" errordes="魔晶不足(在征战世界中获得)" starttime="2016-07-28 00:00:00" endtime="2016-08-24 23:59:59" >
+<lottery  id="3" activity="2" type="1" cost="1003" count="2000" judge="1" errordes="魔晶不足(在征战世界中获得)" starttime="2016-07-28 00:00:00" endtime="2016-08-24 23:59:59" >
 <item id="1" itemid="51010" count="1" weight="100" will="0" />
 <item id="2" itemid="51061" count="1" weight="100" will="0" />
 <item id="3" itemid="51078" count="1" weight="100" will="0" />
@@ -147,7 +147,7 @@
 <item id="47" itemid="35015" count="1" weight="25" will="0" />
 <item id="48" itemid="35016" count="1" weight="10" will="0" />
 </lottery>
-<lottery  id="4" type="2" cost="1003" count="18000" judge="10" errordes="魔晶不足(在征战世界中获得)" starttime="2016-07-28 00:00:00" endtime="2016-08-24 23:59:59" >
+<lottery  id="4" activity="2" type="2" cost="1003" count="18000" judge="10" errordes="魔晶不足(在征战世界中获得)" starttime="2016-07-28 00:00:00" endtime="2016-08-24 23:59:59" >
 <item id="1" itemid="51010" count="1" weight="100" will="0" />
 <item id="2" itemid="51061" count="1" weight="100" will="0" />
 <item id="3" itemid="51078" count="1" weight="100" will="0" />
