@@ -55,7 +55,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1014">
-<loot itemid="15001" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1015">
@@ -72,7 +72,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1018">
-<loot itemid="15003" weight="1000" count="1" />
+<loot itemid="15004" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1019">
@@ -80,7 +80,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1020">
-<loot itemid="15005" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="1021">
@@ -118,7 +118,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1029">
-<loot itemid="15005" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1030">
@@ -160,7 +160,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1039">
-<loot itemid="15001" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1040">
@@ -181,11 +181,11 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1044">
-<loot itemid="15005" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1045">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="1046">
@@ -202,7 +202,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1049">
-<loot itemid="15003" weight="1000" count="1" />
+<loot itemid="15004" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1050">
@@ -223,11 +223,11 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1054">
-<loot itemid="15001" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1055">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="1056">
@@ -248,7 +248,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1060">
-<loot itemid="16007" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="1061">
@@ -269,7 +269,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1065">
-<loot itemid="16009" weight="1000" count="1" />
+<loot itemid="16004" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="1066">
@@ -349,11 +349,11 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1084">
-<loot itemid="15005" weight="1000" count="2" />
+<loot itemid="15002" weight="1000" count="2" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1085">
-<loot itemid="16007" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="1086">
@@ -366,7 +366,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1088">
-<loot itemid="15003" weight="1000" count="2" />
+<loot itemid="15004" weight="1000" count="2" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1089">
@@ -374,7 +374,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1090">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="1091">
@@ -387,12 +387,11 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1093">
-<loot itemid="16002" weight="300" count="1" />
+<loot itemid="16004" weight="300" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1094">
 <loot itemid="16011" weight="100" count="1" />
-<loot itemid="16008" weight="100" count="1" />
 <loot itemid="20042" weight="1" count="1" />
 </level>
 <level id="1095">
@@ -474,11 +473,11 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1113">
-<loot itemid="16007" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1114">
-<loot itemid="27004" weight="100" count="1" />
+<loot itemid="27020" weight="100" count="1" />
 <loot itemid="20046" weight="1" count="1" />
 </level>
 <level id="1115">
@@ -495,7 +494,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="1118">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="1119">
@@ -524,7 +523,7 @@
 <loot itemid="20048" weight="1" count="1" />
 </level>
 <level id="1125">
-<loot itemid="27005" weight="100" count="1" />
+<loot itemid="27020" weight="100" count="1" />
 <loot itemid="20049" weight="1" count="1" />
 </level>
 <level id="1126">
@@ -588,7 +587,7 @@
 <loot itemid="20042" weight="1" count="1" />
 </level>
 <level id="1140">
-<loot itemid="27012" weight="50" count="1" />
+<loot itemid="27020" weight="50" count="1" />
 <loot itemid="20043" weight="1" count="1" />
 <loot itemid="33037" weight="3" count="2" />
 </level>
@@ -1310,7 +1309,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2029">
-<loot itemid="15005" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2030">
@@ -1356,7 +1355,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2039">
-<loot itemid="15001" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2040">
@@ -1402,7 +1401,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2049">
-<loot itemid="15003" weight="1000" count="1" />
+<loot itemid="15004" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2050">
@@ -1429,7 +1428,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2055">
-<loot itemid="16007" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="2056">
@@ -1452,7 +1451,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2060">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="2061">
@@ -1490,15 +1489,15 @@
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="2068">
-<loot itemid="15005" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2069">
-<loot itemid="15003" weight="1000" count="1" />
+<loot itemid="15004" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2070">
-<loot itemid="16001" weight="1000" count="1" />
+<loot itemid="16003" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="2071">
@@ -1513,7 +1512,7 @@
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="2073">
-<loot itemid="15001" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2074">
@@ -1521,7 +1520,7 @@
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2075">
-<loot itemid="16002" weight="1000" count="1" />
+<loot itemid="16004" weight="1000" count="1" />
 <loot itemid="29068" weight="1" count="1" />
 </level>
 <level id="2076">
@@ -1563,7 +1562,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2084">
-<loot itemid="16006" weight="1000" count="1" />
+<loot itemid="16003" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2085">
@@ -1582,11 +1581,11 @@
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="2088">
-<loot itemid="16008" weight="1000" count="1" />
+<loot itemid="16011" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2089">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="35014" weight="1" count="1" />
 </level>
 <level id="2090">
@@ -1697,7 +1696,7 @@
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="2113">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2114">
@@ -1720,7 +1719,7 @@
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="2118">
-<loot itemid="16009" weight="1000" count="1" />
+<loot itemid="16004" weight="1000" count="1" />
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2119">
@@ -1747,7 +1746,7 @@
 <loot itemid="35001" weight="1" count="1" />
 </level>
 <level id="2124">
-<loot itemid="27004" weight="100" count="1" />
+<loot itemid="27020" weight="100" count="1" />
 <loot itemid="20052" weight="1" count="1" />
 </level>
 <level id="2125">
@@ -1792,7 +1791,7 @@
 <loot itemid="27012" weight="1000" count="1" />
 </level>
 <level id="2134">
-<loot itemid="27005" weight="100" count="1" />
+<loot itemid="27020" weight="100" count="1" />
 </level>
 <level id="2135">
 <loot itemid="33178" weight="500" count="2" />
@@ -1857,7 +1856,7 @@
 <loot itemid="27010" weight="1000" count="1" />
 </level>
 <level id="2149">
-<loot itemid="27012" weight="100" count="1" />
+<loot itemid="27020" weight="100" count="1" />
 </level>
 <level id="2150">
 <loot itemid="33001" weight="1200" count="1" />
@@ -2535,7 +2534,7 @@
 <loot itemid="35001" weight="2" count="1" />
 </level>
 <level id="3039">
-<loot itemid="15001" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="3040">
@@ -2580,7 +2579,7 @@
 <loot itemid="35001" weight="2" count="1" />
 </level>
 <level id="3049">
-<loot itemid="15003" weight="1000" count="1" />
+<loot itemid="15004" weight="1000" count="1" />
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="3050">
@@ -2763,7 +2762,7 @@
 <loot itemid="35001" weight="2" count="1" />
 </level>
 <level id="3089">
-<loot itemid="15005" weight="1000" count="1" />
+<loot itemid="15002" weight="1000" count="1" />
 <loot itemid="35014" weight="2" count="1" />
 </level>
 <level id="3090">
@@ -2783,7 +2782,7 @@
 <loot itemid="35014" weight="3" count="1" />
 </level>
 <level id="3093">
-<loot itemid="16006" weight="1000" count="1" />
+<loot itemid="16003" weight="1000" count="1" />
 <loot itemid="35001" weight="2" count="1" />
 </level>
 <level id="3094">
@@ -2830,7 +2829,7 @@
 <loot itemid="35014" weight="3" count="1" />
 </level>
 <level id="3103">
-<loot itemid="16002" weight="1000" count="1" />
+<loot itemid="16004" weight="1000" count="1" />
 <loot itemid="35001" weight="2" count="1" />
 </level>
 <level id="3104">
@@ -2877,7 +2876,7 @@
 <loot itemid="35014" weight="3" count="1" />
 </level>
 <level id="3113">
-<loot itemid="16005" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="35001" weight="2" count="1" />
 </level>
 <level id="3114">
@@ -2901,11 +2900,11 @@
 <loot itemid="35014" weight="3" count="1" />
 </level>
 <level id="3118">
-<loot itemid="16007" weight="1000" count="1" />
+<loot itemid="16010" weight="1000" count="1" />
 <loot itemid="35001" weight="2" count="1" />
 </level>
 <level id="3119">
-<loot itemid="27005" weight="100" count="1" />
+<loot itemid="27020" weight="100" count="1" />
 </level>
 <level id="3120">
 <loot itemid="33001" weight="100" count="1" />
@@ -3062,7 +3061,7 @@
 <loot itemid="27005" weight="1000" count="1" />
 </level>
 <level id="3154">
-<loot itemid="27004" weight="100" count="1" />
+<loot itemid="27020" weight="100" count="1" />
 <loot itemid="20054" weight="2" count="1" />
 </level>
 <level id="3155">

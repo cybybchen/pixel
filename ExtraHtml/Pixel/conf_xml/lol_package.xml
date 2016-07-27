@@ -726,11 +726,11 @@
 		<item itemid="27008" item="火影斗篷碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27009" item="大法师斗篷碎片" counta="1" countb="2" weight="100" />
 	</loot>
-	<loot itemid="33102" name="蓝色碎片基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
+	<loot itemid="33102" name="蓝色碎片基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27010" item="霸王血铠碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27011" item="酒吧凶器碎片" counta="1" countb="2" weight="100" />
 		<item itemid="27012" item="蜂刺碎片" counta="1" countb="2" weight="100" />
-		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="27020" item="吸血枪碎片" counta="1" countb="2" weight="100" />
 	</loot>
 	<loot itemid="33103" name="紫色碎片基础箱1" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="28001" item="魔王板甲碎片" counta="1" countb="2" weight="100" />
@@ -798,11 +798,11 @@
 		<item itemid="17008" item="火影斗篷" counta="1" countb="1" weight="100" />
 		<item itemid="17009" item="大法师斗篷" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33111" name="蓝色装备基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
+	<loot itemid="33111" name="蓝色装备基础箱2" img="32012" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="17010" item="霸王血铠" counta="1" countb="1" weight="100" />
 		<item itemid="17011" item="酒吧凶器" counta="1" countb="1" weight="100" />
 		<item itemid="17012" item="蜂刺" counta="1" countb="1" weight="100" />
-		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="17003" item="吸血枪" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33112" name="紫色装备基础箱1" img="32013" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="18001" item="魔王板甲" counta="1" countb="1" weight="100" />
@@ -1188,10 +1188,10 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33018" name="防御装备初级箱" img="32032" rare="2" description="可以开出防御系白色或绿色装备" hashero="0" cyb="0" judge="3" endtime="" itemcount="3" weightall="300" >
+	<loot itemid="33018" name="防御装备初级箱" img="32032" rare="2" description="可以开出防御系白色或绿色装备" hashero="0" cyb="0" judge="3" endtime="" itemcount="1" weightall="100" >
 		<item itemid="33163" item="防御初1" counta="1" countb="1" weight="100" />
-		<item itemid="33164" item="防御初2" counta="1" countb="1" weight="100" />
-		<item itemid="33165" item="防御初3" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33019" name="物理装备中级箱" img="32032" rare="4" description="可以开出物理系蓝色或紫色装备碎片" hashero="0" cyb="0" judge="3" endtime="" itemcount="2" weightall="200" >
@@ -1254,11 +1254,11 @@
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33150" name="物理初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="370" >
+	<loot itemid="33150" name="物理初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="280" >
 		<item itemid="15004" item="格斗手套" counta="1" countb="1" weight="100" />
 		<item itemid="16004" item="十字镐" counta="1" countb="1" weight="90" />
-		<item itemid="16005" item="灵巧披风" counta="1" countb="1" weight="90" />
 		<item itemid="16010" item="净蚀" counta="1" countb="1" weight="90" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33151" name="物理中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="280" >
 		<item itemid="28006" item="预言之刃碎片" counta="2" countb="5" weight="60" />
@@ -1296,10 +1296,10 @@
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
 		<item itemid="16003" item="爆裂魔杖" counta="1" countb="1" weight="90" />
 	</loot>
-	<loot itemid="33157" name="法术初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="280" >
-		<item itemid="16006" item="残暴之力" counta="1" countb="1" weight="90" />
-		<item itemid="16009" item="耀光" counta="1" countb="1" weight="90" />
+	<loot itemid="33157" name="法术初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="16011" item="反曲之弓" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33158" name="法术中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="280" >
@@ -1332,22 +1332,10 @@
 		<item itemid="29013" item="欢欣卷轴碎片" counta="2" countb="5" weight="40" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33163" name="防御初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+	<loot itemid="33163" name="防御初1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="15002" item="抗魔斗篷" counta="1" countb="1" weight="100" />
 		<item itemid="27013" item="水晶修复装置" counta="1" countb="1" weight="100" />
 		<item itemid="27014" item="额外的布料" counta="1" countb="1" weight="100" />
-		<item itemid="15001" item="治疗宝珠" counta="1" countb="1" weight="100" />
-	</loot>
-	<loot itemid="33164" name="防御初2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="380" >
-		<item itemid="15003" item="仙女护符" counta="1" countb="1" weight="100" />
-		<item itemid="15005" item="蓝水晶" counta="1" countb="1" weight="100" />
-		<item itemid="16001" item="负极斗篷" counta="1" countb="1" weight="90" />
-		<item itemid="16002" item="锁子甲" counta="1" countb="1" weight="90" />
-	</loot>
-	<loot itemid="33165" name="防御初3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="180" >
-		<item itemid="16007" item="冰川护甲" counta="1" countb="1" weight="90" />
-		<item itemid="16008" item="幽魂斗篷" counta="1" countb="1" weight="90" />
-		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33166" name="防御中1" img="32015" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="300" >
@@ -1438,43 +1426,31 @@
 		<item itemid="27013" item="水晶修复装置" counta="1" countb="1" weight="100" />
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
 		<item itemid="16003" item="爆裂魔杖" counta="1" countb="1" weight="100" />
-		<item itemid="16007" item="冰川护甲" counta="1" countb="1" weight="100" />
+		<item itemid="16010" item="净蚀" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33171" name="白绿装备基础箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27014" item="额外的布料" counta="1" countb="1" weight="100" />
-		<item itemid="15001" item="治疗宝珠" counta="1" countb="1" weight="100" />
+		<item itemid="15004" item="格斗手套" counta="1" countb="1" weight="100" />
 		<item itemid="16004" item="十字镐" counta="1" countb="1" weight="100" />
-		<item itemid="16008" item="幽魂斗篷" counta="1" countb="1" weight="100" />
+		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33172" name="白绿装备基础箱3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27015" item="简易磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="15002" item="抗魔斗篷" counta="1" countb="1" weight="100" />
-		<item itemid="16005" item="灵巧披风" counta="1" countb="1" weight="100" />
-		<item itemid="16009" item="耀光" counta="1" countb="1" weight="100" />
-	</loot>
-	<loot itemid="33173" name="白绿装备基础箱4" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="100" />
-		<item itemid="15003" item="仙女护符" counta="1" countb="1" weight="100" />
-		<item itemid="16001" item="负极斗篷" counta="1" countb="1" weight="100" />
-		<item itemid="16010" item="净蚀" counta="1" countb="1" weight="100" />
-	</loot>
-	<loot itemid="33174" name="白绿装备基础箱5" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="27017" item="坚固磨刀石" counta="1" countb="1" weight="100" />
-		<item itemid="15004" item="格斗手套" counta="1" countb="1" weight="100" />
-		<item itemid="16002" item="锁子甲" counta="1" countb="1" weight="100" />
 		<item itemid="16011" item="反曲之弓" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33175" name="白绿装备基础箱6" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
-		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
-		<item itemid="15005" item="蓝水晶" counta="1" countb="1" weight="100" />
-		<item itemid="16006" item="残暴之力" counta="1" countb="1" weight="100" />
+	<loot itemid="33173" name="白绿装备基础箱4" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
+		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33176" name="白绿装备组合箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+	<loot itemid="33176" name="白绿装备组合箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33170" item="白绿装备基础箱1" counta="1" countb="1" weight="100" />
 		<item itemid="33172" item="白绿装备基础箱3" counta="1" countb="1" weight="100" />
-		<item itemid="33174" item="白绿装备基础箱5" counta="1" countb="1" weight="100" />
-		<item itemid="33175" item="白绿装备基础箱6" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33177" name="白绿装备组合箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33171" item="白绿装备基础箱2" counta="1" countb="1" weight="100" />
@@ -1518,7 +1494,7 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40102" name="元气冰淇淋" img="40102" rare="2" description="可在活动-冰淇淋大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-03 23:59:59" itemcount="" weightall="" >
+	<loot itemid="40102" name="元气冰淇淋" img="40102" rare="2" description="可在活动-冰淇淋大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-04 23:59:59" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
