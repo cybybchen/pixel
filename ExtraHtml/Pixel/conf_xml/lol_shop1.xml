@@ -11,14 +11,10 @@
 <item id="9" itemid="27017" name="坚固磨刀石" count="1" currency="1001" cost="1000" will="1" />
 <item id="10" itemid="27018" name="铁砧" count="1" currency="1001" cost="1000" will="1" />
 <item id="11" itemid="27019" name="鞋带" count="1" currency="1001" cost="1000" will="1" />
-<item id="12" itemid="15001" name="治疗宝珠" count="1" currency="1001" cost="1000" will="1" />
 <item id="13" itemid="15002" name="抗魔斗篷" count="1" currency="1001" cost="1000" will="1" />
-<item id="14" itemid="15003" name="仙女护符" count="1" currency="1001" cost="1000" will="1" />
 <item id="15" itemid="15004" name="格斗手套" count="1" currency="1001" cost="1000" will="1" />
-<item id="16" itemid="15005" name="蓝水晶" count="1" currency="1001" cost="1000" will="1" />
 <item id="17" itemid="16003" name="爆裂魔杖" count="1" currency="1001" cost="3000" will="1" />
 <item id="18" itemid="16004" name="十字镐" count="1" currency="1001" cost="3000" will="1" />
-<item id="19" itemid="16005" name="灵巧披风" count="1" currency="1001" cost="3000" will="1" />
 <item id="20" itemid="27004" name="暴风大剑碎片" count="1" currency="1001" cost="5000" will="1" />
 <item id="21" itemid="27005" name="无用大棒碎片" count="1" currency="1001" cost="5000" will="1" />
 <item id="22" itemid="27008" name="火影斗篷碎片" count="1" currency="1001" cost="5000" will="1" />

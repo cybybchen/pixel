@@ -3,13 +3,13 @@
 <chip itemid="27001" itemname="pts" img="10025" rare="1" cost="1" mojing="" description="普通的合成材料，分解低级装备获得" aim="" count="" lootid1="" loot1="" lootid2="" loot2="" lootid3="" loot3="" />
 <chip itemid="27002" itemname="hpts" img="10026" rare="4" cost="2" mojing="" description="稀有的合成材料，分解中级装备获得" aim="" count="" lootid1="" loot1="" lootid2="" loot2="" lootid3="" loot3="" />
 <chip itemid="27003" itemname="tpts" img="10027" rare="5" cost="5" mojing="" description="罕见的合成材料，分解高级装备获得" aim="" count="" lootid1="" loot1="" lootid2="" loot2="" lootid3="" loot3="" />
-<chip itemid="27004" itemname="暴风大剑碎片" img="12007" rare="3" cost="50" mojing="" description="凑齐5个合成1件暴风大剑" aim="17004" count="5" lootid1="1" loot1="1099" lootid2="1" loot2="1114" lootid3="1" loot3="1124" />
-<chip itemid="27005" itemname="无用大棒碎片" img="12008" rare="3" cost="50" mojing="" description="凑齐5个合成1件无用大棒" aim="17005" count="5" lootid1="1" loot1="1099" lootid2="1" loot2="1115" lootid3="1" loot3="1125" />
+<chip itemid="27004" itemname="暴风大剑碎片" img="12007" rare="3" cost="50" mojing="" description="凑齐5个合成1件暴风大剑" aim="17004" count="5" lootid1="1" loot1="1099" lootid2="1" loot2="1124" lootid3="1" loot3="1133" />
+<chip itemid="27005" itemname="无用大棒碎片" img="12008" rare="3" cost="50" mojing="" description="凑齐5个合成1件无用大棒" aim="17005" count="5" lootid1="1" loot1="1099" lootid2="1" loot2="1115" lootid3="1" loot3="1134" />
 <chip itemid="27008" itemname="火影斗篷碎片" img="12030" rare="3" cost="50" mojing="" description="凑齐5个合成1件火影斗篷" aim="17008" count="5" lootid1="1" loot1="1104" lootid2="1" loot2="1135" lootid3="1" loot3="1154" />
 <chip itemid="27009" itemname="大法师斗篷碎片" img="12031" rare="3" cost="50" mojing="" description="凑齐5个合成1件大法师斗篷" aim="17009" count="5" lootid1="1" loot1="1130" lootid2="1" loot2="1149" lootid3="1" loot3="2104" />
 <chip itemid="27010" itemname="霸王血铠碎片" img="12032" rare="3" cost="50" mojing="" description="凑齐5个合成1件霸王血铠" aim="17010" count="5" lootid1="1" loot1="1119" lootid2="1" loot2="1138" lootid3="1" loot3="1148" />
 <chip itemid="27011" itemname="酒吧凶器碎片" img="12033" rare="3" cost="50" mojing="" description="凑齐5个合成1件酒吧凶器" aim="17011" count="5" lootid1="1" loot1="1120" lootid2="1" loot2="1139" lootid3="1" loot3="1149" />
-<chip itemid="27012" itemname="蜂刺碎片" img="12034" rare="3" cost="50" mojing="" description="凑齐5个合成1件蜂刺" aim="17012" count="5" lootid1="1" loot1="1109" lootid2="1" loot2="1129" lootid3="1" loot3="1140" />
+<chip itemid="27012" itemname="蜂刺碎片" img="12034" rare="3" cost="50" mojing="" description="凑齐5个合成1件蜂刺" aim="17012" count="5" lootid1="1" loot1="1109" lootid2="1" loot2="1129" lootid3="1" loot3="1154" />
 <chip itemid="27013" itemname="水晶修复装置" img="10018" rare="1" cost="10" mojing="" description="修复红水晶的材料" aim="" count="" lootid1="1" loot1="1003" lootid2="1" loot2="1079" lootid3="1" loot3="2028" />
 <chip itemid="27014" itemname="额外的布料" img="10019" rare="1" cost="10" mojing="" description="修复布甲的材料" aim="" count="" lootid1="1" loot1="1004" lootid2="1" loot2="1023" lootid3="1" loot3="1078" />
 <chip itemid="27015" itemname="简易磨刀石" img="10020" rare="1" cost="10" mojing="" description="修复长剑的材料" aim="" count="" lootid1="1" loot1="1005" lootid2="1" loot2="1024" lootid3="1" loot3="1064" />
@@ -17,6 +17,7 @@
 <chip itemid="27017" itemname="坚固磨刀石" img="10022" rare="1" cost="10" mojing="" description="修复短剑的材料" aim="" count="" lootid1="1" loot1="1009" lootid2="1" loot2="1033" lootid3="1" loot3="1069" />
 <chip itemid="27018" itemname="铁砧" img="10023" rare="1" cost="10" mojing="" description="修复打野刀的材料" aim="" count="" lootid1="1" loot1="1010" lootid2="1" loot2="1034" lootid3="1" loot3="1073" />
 <chip itemid="27019" itemname="鞋带" img="10024" rare="1" cost="10" mojing="" description="修复鞋子的材料" aim="" count="" lootid1="1" loot1="1013" lootid2="1" loot2="1025" lootid3="1" loot3="1074" />
+<chip itemid="27020" itemname="吸血枪碎片" img="12006" rare="3" cost="50" mojing="" description="凑齐5个合成1件吸血枪" aim="17003" count="5" lootid1="1" loot1="1114" lootid2="1" loot2="1125" lootid3="1" loot3="1140" />
 <chip itemid="28001" itemname="魔王板甲碎片" img="13053" rare="4" cost="100" mojing="" description="凑齐12个合成1件魔王板甲" aim="18001" count="12" lootid1="1" loot1="1163" lootid2="1" loot2="1209" lootid3="1" loot3="2160" />
 <chip itemid="28002" itemname="飓风大剑碎片" img="13042" rare="4" cost="100" mojing="" description="凑齐12个合成1件飓风大剑" aim="18002" count="12" lootid1="1" loot1="1164" lootid2="1" loot2="1199" lootid3="1" loot3="1213" />
 <chip itemid="28003" itemname="无用巨棒碎片" img="13043" rare="4" cost="100" mojing="" description="凑齐12个合成1件无用巨棒" aim="18003" count="12" lootid1="1" loot1="1165" lootid2="1" loot2="1175" lootid3="1" loot3="1214" />
