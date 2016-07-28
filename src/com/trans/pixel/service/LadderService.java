@@ -34,6 +34,10 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.LadderChongzhi;
 import com.trans.pixel.protoc.Commands.LadderEnemy;
+import com.trans.pixel.protoc.Commands.LadderWinReward;
+import com.trans.pixel.protoc.Commands.LadderWinRewardList;
+import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.LadderRedisService;
@@ -218,6 +222,24 @@ public class LadderService {
 		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank);
 		
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
+	}
+
+	public MultiReward getRandLadderWinReward(){
+		LadderWinRewardList list = ladderRedisService.getLadderWinRewardList();
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		int index = ladderRedisService.nextInt(list.getWeightall());
+		for(LadderWinReward win : list.getIdList()){
+			if(index < win.getWeight()){
+				RewardInfo.Builder reward = RewardInfo.newBuilder();
+				reward.setItemid(win.getReward());
+				reward.setCount(win.getCount());
+				rewards.addLoot(reward);
+				return rewards.build();
+			}else{
+				index -= win.getWeight();
+			}
+		}
+		return rewards.build();
 	}
 	
 	private void sendLog(long userId, int serverId, List<HeroInfo> attackHeroList, List<HeroInfo> defenseHeroList, int result, long rank) {

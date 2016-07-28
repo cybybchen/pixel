@@ -67,12 +67,13 @@ public class LadderRedisService extends RedisService{
 		String value = get(RedisKey.LADDERWIN_CONFIG);
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		String xml = ReadConfig("lol_goldcost.xml");
+		String xml = ReadConfig("lol_ladderwin.xml");
 		parseXml(xml, builder);
 		int weight = 0;
 		for(LadderWinReward reward : builder.getIdList()){
-			
+			weight += reward.getWeight();
 		}
+		builder.setWeightall(weight);
 		set(RedisKey.LADDERWIN_CONFIG, formatJson(builder.build()));
 		return builder.build();
 	}

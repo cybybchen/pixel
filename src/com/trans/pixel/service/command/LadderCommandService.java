@@ -94,10 +94,14 @@ public class LadderCommandService extends BaseCommandService {
 		}else{
 			if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
 				pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
-				MultiReward rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
+				MultiReward.Builder rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
+//				MultiReward winrewards = ladderService.getRandLadderWinReward();
+//				rewards.addAllLoot(winrewards.getLootList());
+//				if(!rewards.hasName())
+//					rewards.setName("天梯获胜奖励");
 				if (rewards.getLootList().size() > 0) {
-					rewardService.doRewards(user, rewards);
-					pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
+					rewardService.doRewards(user, rewards.build());
+					pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 				}
 			} 
 			
@@ -156,7 +160,7 @@ public class LadderCommandService extends BaseCommandService {
 //		}
 //	}
 	
-	private MultiReward updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
+	private MultiReward.Builder updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		long oldRank = user.getLadderModeHistoryTop();
 		if (oldRank > newRank) {
@@ -171,6 +175,6 @@ public class LadderCommandService extends BaseCommandService {
 //			mailService.addMail(mail);
 		}
 		
-		return rewards.build();
+		return rewards;
 	}
 }
