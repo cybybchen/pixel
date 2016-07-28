@@ -87,6 +87,20 @@ public class ManagerService extends RedisService{
 	private MailService mailService;
 	@Resource
 	private LogService logService;
+
+	protected String getJson(String key) {
+		String value = get(key);
+		if(value == null)
+			value = "{}";
+		return value;
+	}
+
+	protected String hgetJson(String key1, String key2) {
+		String value = hget(key1, key2);
+		if(value == null)
+			value = "{}";
+		return value;
+	}
 	
 	public JSONObject getData(JSONObject req) {
 		JSONObject result = new JSONObject();
@@ -407,7 +421,7 @@ public class ManagerService extends RedisService{
 			req.put("UserData", 1);
 		}
 		if(req.containsKey("UserData") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "UserData");
+			String value = hgetJson(USERDATA+userId, "UserData");
 			result.put("UserData", value);
 		}
 		if(req.containsKey("update-LevelRecord") && gmaccountBean.getCanwrite() == 1){
@@ -420,7 +434,7 @@ public class ManagerService extends RedisService{
 			req.put("LevelRecord", 1);
 		}
 		if(req.containsKey("LevelRecord") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "LevelRecord");
+			String value = hgetJson(USERDATA+userId, "LevelRecord");
 			result.put("LevelRecord", value);
 		}
 		if(req.containsKey("update-LootLevel") && gmaccountBean.getCanwrite() == 1){
@@ -433,7 +447,7 @@ public class ManagerService extends RedisService{
 			req.put("LootLevel", 1);
 		}
 		if(req.containsKey("LootLevel") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "LootLevel");
+			String value = hgetJson(USERDATA+userId, "LootLevel");
 			result.put("LootLevel", value);
 		}
 		if(req.containsKey("update-DAILYSHOP") && gmaccountBean.getCanwrite() == 1){
@@ -446,7 +460,7 @@ public class ManagerService extends RedisService{
 			req.put("DAILYSHOP", 1);
 		}
 		if(req.containsKey("DAILYSHOP") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "DAILYSHOP");
+			String value = hgetJson(USERDATA+userId, "DAILYSHOP");
 			result.put("DAILYSHOP", value);
 		}
 		if(req.containsKey("update-BLACKSHOP") && gmaccountBean.getCanwrite() == 1){
@@ -459,7 +473,7 @@ public class ManagerService extends RedisService{
 			req.put("BLACKSHOP", 1);
 		}
 		if(req.containsKey("BLACKSHOP") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "BLACKSHOP");
+			String value = hgetJson(USERDATA+userId, "BLACKSHOP");
 			result.put("BLACKSHOP", value);
 		}
 		if(req.containsKey("update-UNIONSHOP") && gmaccountBean.getCanwrite() == 1){
@@ -472,7 +486,7 @@ public class ManagerService extends RedisService{
 			req.put("UNIONSHOP", 1);
 		}
 		if(req.containsKey("UNIONSHOP") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "UNIONSHOP");
+			String value = hgetJson(USERDATA+userId, "UNIONSHOP");
 			result.put("UNIONSHOP", value);
 		}
 		if(req.containsKey("update-PVPSHOP") && gmaccountBean.getCanwrite() == 1){
@@ -485,7 +499,7 @@ public class ManagerService extends RedisService{
 			req.put("PVPSHOP", 1);
 		}
 		if(req.containsKey("PVPSHOP") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "PVPSHOP");
+			String value = hgetJson(USERDATA+userId, "PVPSHOP");
 			result.put("PVPSHOP", value);
 		}
 		if(req.containsKey("update-EXPEDITIONSHOP") && gmaccountBean.getCanwrite() == 1){
@@ -498,7 +512,7 @@ public class ManagerService extends RedisService{
 			req.put("EXPEDITIONSHOP", 1);
 		}
 		if(req.containsKey("EXPEDITIONSHOP") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "EXPEDITIONSHOP");
+			String value = hgetJson(USERDATA+userId, "EXPEDITIONSHOP");
 			result.put("EXPEDITIONSHOP", value);
 		}
 		if(req.containsKey("update-LADDERSHOP") && gmaccountBean.getCanwrite() == 1){
@@ -511,7 +525,7 @@ public class ManagerService extends RedisService{
 			req.put("LADDERSHOP", 1);
 		}
 		if(req.containsKey("LADDERSHOP") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "LADDERSHOP");
+			String value = hgetJson(USERDATA+userId, "LADDERSHOP");
 			result.put("LADDERSHOP", value);
 		}
 		if(req.containsKey("update-MoHua") && gmaccountBean.getCanwrite() == 1){
@@ -524,7 +538,7 @@ public class ManagerService extends RedisService{
 			req.put("MoHua", 1);
 		}
 		if(req.containsKey("MoHua") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, RedisKey.MOHUA_USERDATA);
+			String value = hgetJson(USERDATA+userId, RedisKey.MOHUA_USERDATA);
 			result.put("MoHua", value);
 		}
 		if(req.containsKey("update-PvpMap") && gmaccountBean.getCanwrite() == 1){
@@ -537,7 +551,7 @@ public class ManagerService extends RedisService{
 			req.put("PvpMap", 1);
 		}
 		if(req.containsKey("PvpMap") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "PvpMap");
+			String value = hgetJson(USERDATA+userId, "PvpMap");
 			result.put("PvpMap", value);
 		}
 		if(req.containsKey("update-Area") && gmaccountBean.getCanwrite() == 1){
@@ -550,7 +564,7 @@ public class ManagerService extends RedisService{
 			req.put("Area", 1);
 		}
 		if(req.containsKey("Area") && gmaccountBean.getCanview() == 1){
-			String value = hget(USERDATA+userId, "Area");
+			String value = hgetJson(USERDATA+userId, "Area");
 			result.put("Area", value);
 		}
 		if (req.containsKey("userData")) {
@@ -635,7 +649,7 @@ public class ManagerService extends RedisService{
 			req.put("teamCache", 1);
 		}
 		if(req.containsKey("teamCache") && gmaccountBean.getCanview() == 1){
-			String map = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
+			String map = getJson(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId);
 			result.put("teamCache", map);
 		}
 		if(req.containsKey("update-achieve") && gmaccountBean.getCanwrite() == 1){
@@ -885,7 +899,7 @@ public class ManagerService extends RedisService{
 			req.put("pvpBoss", 1);
 		}
 		if(req.containsKey("pvpBoss") && gmaccountBean.getCanview() == 1){
-			String object = get(RedisKey.PVPBOSS_PREFIX+userId);
+			String object = getJson(RedisKey.PVPBOSS_PREFIX+userId);
 			result.put("pvpBoss", object);
 		}
 		if(req.containsKey("update-pvpMine") && gmaccountBean.getCanwrite() == 1){
@@ -1874,7 +1888,7 @@ public class ManagerService extends RedisService{
 			req.put("AreaConfig", 1);
 		}
 		if(req.containsKey("AreaConfig")){
-			String object = get(RedisKey.AREA_CONFIG);
+			String object = getJson(RedisKey.AREA_CONFIG);
 			result.put("AreaConfig", object);
 		}
 		if(req.containsKey("del-AreaBossConfig")){
@@ -1892,7 +1906,7 @@ public class ManagerService extends RedisService{
 			req.put("AreaBossRandConfig", 1);
 		}
 		if(req.containsKey("AreaBossRandConfig")){
-			String object = get(RedisKey.AREABOSSRAND_CONFIG);
+			String object = getJson(RedisKey.AREABOSSRAND_CONFIG);
 			result.put("AreaBossRandConfig", object);
 		}
 		if(req.containsKey("del-AreaBossRewardConfig")){
@@ -1920,7 +1934,7 @@ public class ManagerService extends RedisService{
 			req.put("AreaMonsterRandConfig", 1);
 		}
 		if(req.containsKey("AreaMonsterRandConfig")){
-			String object = get(RedisKey.AREAMONSTERRAND_CONFIG);
+			String object = getJson(RedisKey.AREAMONSTERRAND_CONFIG);
 			result.put("AreaMonsterRandConfig", object);
 		}
 		if(req.containsKey("del-AreaPositionConfig")){
@@ -1989,7 +2003,7 @@ public class ManagerService extends RedisService{
 			req.put("PvpMapConfig", 1);
 		}
 		if(req.containsKey("PvpMapConfig")){
-			String object = get(RedisKey.PVPMAP_CONFIG);
+			String object = getJson(RedisKey.PVPMAP_CONFIG);
 			result.put("PvpMapConfig", object);
 		}
 
@@ -1998,7 +2012,7 @@ public class ManagerService extends RedisService{
 			req.put("PurchaseCoinConfig", 1);
 		}
 		if(req.containsKey("PurchaseCoinConfig")){
-			String object = get(RedisKey.PURCHASECOIN_CONFIG);
+			String object = getJson(RedisKey.PURCHASECOIN_CONFIG);
 			result.put("PurchaseCoinConfig", object);
 		}
 		if(req.containsKey("del-PurchaseCoinRewardConfig")){
@@ -2036,7 +2050,7 @@ public class ManagerService extends RedisService{
 			req.put("RmbConfig", 1);
 		}
 		if(req.containsKey("RmbConfig")){
-			String object = get(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
+			String object = getJson(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
 			result.put("RmbConfig", object);
 		}
 		if(req.containsKey("del-Rmb1Config")){
@@ -2044,7 +2058,7 @@ public class ManagerService extends RedisService{
 			req.put("Rmb1Config", 1);
 		}
 		if(req.containsKey("Rmb1Config")){
-			String object = get(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
+			String object = getJson(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
 			result.put("Rmb1Config", object);
 		}
 		if(req.containsKey("del-ActivityRichangConfig")){
