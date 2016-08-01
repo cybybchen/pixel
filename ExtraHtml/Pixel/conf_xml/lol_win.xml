@@ -2902,6 +2902,9 @@
 </level>
 <level id="3264">
 <loot itemid="19010" count="1" />
+</level>
+<level id="3265">
+<loot itemid="19001" count="1" />
 <loot itemid="1002" count="100" />
 </level>
 <level id="3266">
