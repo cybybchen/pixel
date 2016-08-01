@@ -213,8 +213,9 @@ public class MailRedisService {
 	
 	private void delExtraMail(long userId, int type, long size) {
 		MailBean delMail = null;
-		for (int i = 0; i < size; ++i) {
-			MailBean theMail = getMailByTypeAndId(userId, type, i);
+		List<MailBean> mailList = getMailListByUserIdAndType(userId, type);
+		for (MailBean mail : mailList) {
+			MailBean theMail = mail;
 			if (theMail == null)
 				continue;
 			
