@@ -473,11 +473,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
-        if (request.hasAttackLadderModeCommand()) {
-        	RequestAttackLadderModeCommand cmd = request.getAttackLadderModeCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
         if (request.hasGetUserMailListCommand()) {
         	RequestGetUserMailListCommand cmd = request.getGetUserMailListCommand();
             if (result)
@@ -998,6 +993,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//ReadyAttackLadderCommand
                 result = handleCommand(cmd, responseBuilder, user);//ReadyAttackLadderCommand
         }//ReadyAttackLadderCommand
+        if (request.hasAttackLadderModeCommand()) {
+        	RequestAttackLadderModeCommand cmd = request.getAttackLadderModeCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
         if (request.hasBindAccountCommand()) {
             RequestBindAccountCommand cmd = request.getBindAccountCommand();
             if (result)//BindAccountCommand
