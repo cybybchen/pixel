@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class LadderTest extends BaseTest {
@@ -18,14 +19,14 @@ public class LadderTest extends BaseTest {
 
 	@Test
 	public void testLadder() {
-//		login();
-//		attackLadder();
+		login();
+		attackLadder();
 		getUserLadder();
 //		getLadderUserInfo();
 	}
 	private void attackLadder() {
-		int teamid = 6;
-		int rank = 9;
+		int teamid = 1;
+		int rank = 1;
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestAttackLadderModeCommand.Builder builder = RequestAttackLadderModeCommand.newBuilder();
@@ -33,6 +34,8 @@ public class LadderTest extends BaseTest {
 		builder.setRet(true);
 		builder.setTeamId(teamid);
 		requestBuilder.setAttackLadderModeCommand(builder.build());
+		RequestReadyAttackLadderCommand.Builder readybuilder = RequestReadyAttackLadderCommand.newBuilder();
+		requestBuilder.setReadyAttackLadderCommand(readybuilder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
 		byte[] reqData = reqcmd.toByteArray();
