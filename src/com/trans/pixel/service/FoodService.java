@@ -31,9 +31,9 @@ public class FoodService {
 		int pokedeCount = userPokede.getCount();
 		if (clearHero.getVerylove() == foodId)
 			pokedeCount += FOOD_VERYLOVE_PERCENT * clearFood.getCount() * foodCount;
-		else if (clearHero.getLove() == foodId)
+		else if (clearHero.getLove1() == foodId || clearHero.getLove2() == foodId)
 			pokedeCount += FOOD_LOVE_PERCENT * clearFood.getCount() * foodCount;
-		else if (clearHero.getNormal() == foodId)
+		else if (clearHero.getNormal1() == foodId || clearHero.getNormal2() == foodId || clearHero.getNormal3() == foodId)
 			pokedeCount += FOOD_NORMAL_PERCENT * clearFood.getCount() * foodCount;
 		else 
 			return ErrorConst.FOOD_CAN_NOT_ADDED_ERROR;

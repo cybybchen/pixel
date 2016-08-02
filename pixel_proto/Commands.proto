@@ -1148,8 +1148,11 @@ message ClearHero {
 	optional int32 id = 1;
 	optional int32 handbook = 2;
 	optional int32 verylove = 3;
-	optional int32 love = 4;
-	optional int32 normal = 5;
+	optional int32 love1 = 4;
+	optional int32 love2 = 6;
+	optional int32 normal1 = 5;
+	optional int32 normal2 = 7;
+	optional int32 normal3 = 8;
 }
 
 message ClearAttributeList {
