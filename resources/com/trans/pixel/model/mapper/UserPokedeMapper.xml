@@ -16,7 +16,7 @@
 	
 	<insert id="updateUserPokede" parameterType="com.trans.pixel.model.userinfo.UserPokedeBean">
 	    INSERT INTO user_pokede(user_id, hero_id, rare, level, count)
-	    VALUES(#{userId}, #{heroId}, #{rare})
+	    VALUES(#{userId}, #{heroId}, #{rare}, #{level}, #{count})
 	    ON 
 	    duplicate key update
 	    rare=#{rare}, level=#{level}, count=#{count}
