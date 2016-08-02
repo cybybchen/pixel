@@ -269,7 +269,7 @@ public class ActivityService {
 		/**
 		 * 热血竞技
 		 */
-		sendRichangScore(user, ActivityConst.RICHANG_LADDER_ATTACK);
+		sendRichangScore(user, ActivityConst.LADDER_ATTACK);
 	}
 	
 	public void pvpAttackEnemyActivity(UserBean user, boolean ret) {
@@ -296,7 +296,7 @@ public class ActivityService {
 		/**
 		 * 挑战boss
 		 */
-		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_BOSS_SUCCESS);
+		sendRichangScore(user, ActivityConst.PVP_ATTACK_BOSS_SUCCESS);
 	}
 	
 	public void storeMojingActivity(UserBean user, int count) {
