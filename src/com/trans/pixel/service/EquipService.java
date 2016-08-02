@@ -20,9 +20,13 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.protoc.Commands.Chip;
+import com.trans.pixel.protoc.Commands.ClearFood;
 import com.trans.pixel.protoc.Commands.Item;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -38,6 +42,10 @@ public class EquipService {
 	private FenjieService fenjieService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private ClearRedisService clearRedisService;
+	@Resource
+	private UserFoodService userFoodService;
 	
 	public EquipmentBean getEquip(int itemId) {
 		EquipmentBean equip = equipRedisService.getEquip(itemId);
@@ -193,7 +201,7 @@ public class EquipService {
 		return ret;
 	}
 	
-	public List<RewardInfo> saleEquip(UserBean user, List<Item> itemList, List<UserEquipBean> userEquipList) {
+	public List<RewardInfo> sale(UserBean user, List<Item> itemList, MultiReward.Builder costItems) {
 		boolean canSale = canSaleEquip(user.getId(), itemList);
 		if (!canSale)
 			return null;
@@ -201,22 +209,42 @@ public class EquipService {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		for (Item item : itemList) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(RewardConst.COIN);
-			reward.setCount(0);
+			
 			int itemId = item.getItemId();
 			int itemCount = item.getItemCount();
-			if(itemId > RewardConst.CHIP) {
-				Chip chip = equipRedisService.getChip(itemId);
-				reward.setCount(chip.getCost() * itemCount);	
-			} else if (itemId > RewardConst.EQUIPMENT) {
-				EquipmentBean equip = getEquip(itemId);
-				reward.setCount(TypeTranslatedUtil.stringToInt(equip.getCost()) * itemCount);
-			} 
+			reward.setItemid(RewardConst.COIN);
+			reward.setCount(getSaleRewardCount(itemId, itemCount));
 			
 			rewardList = rewardService.mergeReward(rewardList, reward.build());
-			userEquipList.add(userEquipService.useUserEquip(user.getId(), itemId, itemCount));
+			RewardInfo.Builder builder = RewardInfo.newBuilder();
+			builder.setItemid(itemId);
+			if (itemId > RewardConst.FOOD) {
+				UserFoodBean userFood = userFoodService.addUserFood(user, itemId, -itemCount);
+				builder.setCount(userFood.getCount());
+			} else {
+				UserEquipBean userEquip = userEquipService.useUserEquip(user.getId(), itemId, itemCount);
+				builder.setCount(userEquip.getEquipCount());
+			}
+			costItems.addLoot(builder.build());
+			
 		}
 		return rewardList;
+	}
+	
+	private int getSaleRewardCount(int itemId, int itemCount) {
+		int rewardCount = 0;
+		if (itemId > RewardConst.FOOD) {
+			ClearFood food = clearRedisService.getClearFood(itemId);
+			rewardCount = food.getCost();
+		} else if(itemId > RewardConst.CHIP) {
+			Chip chip = equipRedisService.getChip(itemId);
+			rewardCount = chip.getCost();	
+		} else if (itemId > RewardConst.EQUIPMENT) {
+			EquipmentBean equip = getEquip(itemId);
+			rewardCount = TypeTranslatedUtil.stringToInt(equip.getCost());
+		} 
+		
+		return rewardCount * itemCount;
 	}
 	
 	private boolean canSaleEquip(long userId, List<Item> itemList) {

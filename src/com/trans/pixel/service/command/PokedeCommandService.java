@@ -1,6 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,18 +9,13 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.Item;
-import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
-import com.trans.pixel.protoc.Commands.RequestSaleFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserPokedeCommand;
-import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.ClearService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.FoodService;
@@ -107,24 +101,5 @@ public class PokedeCommandService extends BaseCommandService {
 		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
 		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
 		responseBuilder.setUserPokedeCommand(builder.build());
-	}
-	
-	public void saleFood(RequestSaleFoodCommand cmd, Builder responseBuilder, UserBean user) {
-		List<Item> itemList = cmd.getItemList();
-		List<UserFoodBean> userFoodList = new ArrayList<UserFoodBean>();
-		List<RewardInfo> rewardList = foodService.saleFood(user, itemList, userFoodList);
-		if (rewardList == null || rewardList.isEmpty()) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FOOD_SALE_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FOOD_SALE_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-		}else{
-			MultiReward.Builder rewards = MultiReward.newBuilder();
-			rewards.addAllLoot(rewardList);
-			rewards.setName("恭喜获得");
-			rewardService.doRewards(user, rewards.build());
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
-		}
-		pushCommandService.pushUserFoodListCommand(responseBuilder, user, userFoodList);
 	}
 }

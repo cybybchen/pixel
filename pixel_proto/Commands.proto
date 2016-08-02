@@ -2057,10 +2057,6 @@ message ResponseUserFoodCommand {
 	repeated UserFood userFood = 1;
 }
 
-message RequestSaleFoodCommand {
-        repeated Item item = 1;
-}
-
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2194,7 +2190,6 @@ message RequestCommand {
 	optional RequestLogCommand logCommand = 92;
 	optional RequestFeedFoodCommand feedFoodCommand = 93;
 	optional RequestClearHeroCommand clearHeroCommand = 94;
-	optional RequestSaleFoodCommand saleFoodCommand = 95;
 }
 // response command list transfer only use it
 message ResponseCommand {

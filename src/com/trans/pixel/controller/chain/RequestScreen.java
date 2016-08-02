@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
@@ -51,6 +52,7 @@ import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
@@ -67,12 +69,6 @@ import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
-import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
-import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
-import com.trans.pixel.protoc.Commands.RequestSaleFoodCommand;
-//add import here
-import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
@@ -102,6 +98,9 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
@@ -365,7 +364,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestClearHeroCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestSaleFoodCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user);
@@ -1052,11 +1050,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//PurchaseContractCommand
                 result = handleCommand(cmd, responseBuilder, user);//PurchaseContractCommand
         }//PurchaseContractCommand
-        if (request.hasSaleFoodCommand()) {
-            RequestSaleFoodCommand cmd = request.getSaleFoodCommand();
-            if (result)//SaleFoodCommand
-                result = handleCommand(cmd, responseBuilder, user);//SaleFoodCommand
-        }//SaleFoodCommand
         //call handleCommand here
         if (request.hasPurchaseLadderTimeCommand()) {
             RequestPurchaseLadderTimeCommand cmd = request.getPurchaseLadderTimeCommand();

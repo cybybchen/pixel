@@ -30,6 +30,7 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
@@ -47,6 +48,7 @@ import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
@@ -57,19 +59,13 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
-import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
-import com.trans.pixel.protoc.Commands.RequestSaleFoodCommand;
-//add import here
-import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
-import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
@@ -98,6 +94,9 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
@@ -804,11 +803,6 @@ public class GameDataScreen extends RequestScreen {
 		// TODO PurchaseContractCommand method
 		return true;//PurchaseContractCommand
 	}//PurchaseContractCommand
-	@Override//SaleFoodCommand
-	protected boolean handleCommand(RequestSaleFoodCommand cmd, Builder responseBuilder, UserBean user) {
-		pokedeCommandService.saleFood(cmd, responseBuilder, user);
-		return true;//SaleFoodCommand
-	}//SaleFoodCommand
 	//add handleCommand here
 	
 	@Override

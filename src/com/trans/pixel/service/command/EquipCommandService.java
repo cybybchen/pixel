@@ -90,8 +90,8 @@ public class EquipCommandService extends BaseCommandService {
 	
 	public void saleEquip(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Item> itemList = cmd.getItemList();
-		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
-		List<RewardInfo> rewardList = equipService.saleEquip(user, itemList, userEquipList);
+		MultiReward.Builder costItems = MultiReward.newBuilder();
+		List<RewardInfo> rewardList = equipService.sale(user, itemList, costItems);
 		if (rewardList == null || rewardList.isEmpty()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_SALE_ERROR);
 			
@@ -104,6 +104,6 @@ public class EquipCommandService extends BaseCommandService {
 			rewardService.doRewards(user, rewards.build());
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
-		pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);
+		pushCommandService.pushRewardCommand(responseBuilder, user, costItems.build());
 	}
 }

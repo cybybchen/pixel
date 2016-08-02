@@ -1,24 +1,17 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
-import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ClearFood;
 import com.trans.pixel.protoc.Commands.ClearHero;
 import com.trans.pixel.protoc.Commands.ClearLevel;
-import com.trans.pixel.protoc.Commands.Item;
-import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.redis.ClearRedisService;
 
 @Service
@@ -53,38 +46,6 @@ public class FoodService {
 		userPokede = refreshUserPokede(userPokede);
 		
 		return SuccessConst.FOOD_ADDED_SUCCESS;
-	}
-	
-	public List<RewardInfo> saleFood(UserBean user, List<Item> itemList, List<UserFoodBean> userFoodList) {
-		boolean canSale = canSale(user, itemList);
-		if (!canSale)
-			return null;
-		
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		for (Item item : itemList) {
-			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(RewardConst.COIN);
-			reward.setCount(0);
-			int itemId = item.getItemId();
-			int itemCount = item.getItemCount();
-			ClearFood food = clearRedisService.getClearFood(itemId);
-			reward.setCount(food.getCost() * itemCount);	
-			
-			
-			rewardList = rewardService.mergeReward(rewardList, reward.build());
-			userFoodList.add(userFoodService.addUserFood(user, itemId, -itemCount));
-		}
-		return rewardList;
-	}
-	
-	private boolean canSale(UserBean user, List<Item> itemList) {
-		for (Item item : itemList) {
-			UserFoodBean userFood = userFoodService.selectUserFood(user, item.getItemId());
-			if (userFood.getCount() < item.getItemCount())
-				return false;
-		}
-		
-		return true;
 	}
 	
 	private UserPokedeBean refreshUserPokede(UserPokedeBean userPokede) {
