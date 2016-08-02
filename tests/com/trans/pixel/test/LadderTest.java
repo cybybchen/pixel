@@ -13,6 +13,7 @@ import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
 
 public class LadderTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LadderTest.class);
@@ -20,19 +21,21 @@ public class LadderTest extends BaseTest {
 	@Test
 	public void testLadder() {
 		login();
-		attackLadder();
 		getUserLadder();
+		attackLadder();
 //		getLadderUserInfo();
 	}
 	private void attackLadder() {
 		int teamid = 1;
-		int rank = 1;
+		long rank = ranks.getUserRankList().get(0).getRank();
+		long enemyid = ranks.getUserRankList().get(0).getUserId();
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestAttackLadderModeCommand.Builder builder = RequestAttackLadderModeCommand.newBuilder();
 		builder.setRank(rank);
 		builder.setRet(true);
 		builder.setTeamId(teamid);
+		builder.setAttackUserId(enemyid);
 		requestBuilder.setAttackLadderModeCommand(builder.build());
 		RequestReadyAttackLadderCommand.Builder readybuilder = RequestReadyAttackLadderCommand.newBuilder();
 		requestBuilder.setReadyAttackLadderCommand(readybuilder.build());
@@ -44,6 +47,7 @@ public class LadderTest extends BaseTest {
         Assert.assertNotNull(response);
         logger.info(response.getAllFields());
 	}
+	private ResponseGetUserLadderRankListCommand ranks = null;
 	private void getUserLadder() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -55,6 +59,7 @@ public class LadderTest extends BaseTest {
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
+        ranks = response.getGetUserLadderRankListCommand();
         logger.info(response.getAllFields());
 	}
 	public void getLadderUserInfo(){
