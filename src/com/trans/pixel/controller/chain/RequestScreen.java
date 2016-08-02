@@ -69,6 +69,8 @@ import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.Commands.RequestSaleFoodCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
@@ -362,6 +364,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestClearHeroCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSaleFoodCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user);
@@ -1043,6 +1047,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//ClearHeroCommand
                 result = handleCommand(cmd, responseBuilder, user);//ClearHeroCommand
         }//ClearHeroCommand
+        if (request.hasPurchaseContractCommand()) {
+            RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();
+            if (result)//PurchaseContractCommand
+                result = handleCommand(cmd, responseBuilder, user);//PurchaseContractCommand
+        }//PurchaseContractCommand
+        if (request.hasSaleFoodCommand()) {
+            RequestSaleFoodCommand cmd = request.getSaleFoodCommand();
+            if (result)//SaleFoodCommand
+                result = handleCommand(cmd, responseBuilder, user);//SaleFoodCommand
+        }//SaleFoodCommand
         //call handleCommand here
         if (request.hasPurchaseLadderTimeCommand()) {
             RequestPurchaseLadderTimeCommand cmd = request.getPurchaseLadderTimeCommand();

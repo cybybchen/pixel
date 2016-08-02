@@ -59,6 +59,8 @@ import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.Commands.RequestSaleFoodCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
@@ -797,6 +799,16 @@ public class GameDataScreen extends RequestScreen {
 		pokedeCommandService.clearPokede(cmd, responseBuilder, user);
 		return true;//ClearHeroCommand
 	}//ClearHeroCommand
+	@Override//PurchaseContractCommand
+	protected boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO PurchaseContractCommand method
+		return true;//PurchaseContractCommand
+	}//PurchaseContractCommand
+	@Override//SaleFoodCommand
+	protected boolean handleCommand(RequestSaleFoodCommand cmd, Builder responseBuilder, UserBean user) {
+		pokedeCommandService.saleFood(cmd, responseBuilder, user);
+		return true;//SaleFoodCommand
+	}//SaleFoodCommand
 	//add handleCommand here
 	
 	@Override

@@ -52,7 +52,7 @@ public class UserFoodService {
 		return userFoodList;
 	}
 	
-	public void addUserFood(UserBean user, int foodId, int foodCount) {
+	public UserFoodBean addUserFood(UserBean user, int foodId, int foodCount) {
 		UserFoodBean userFood = selectUserFood(user, foodId);
 		if (userFood == null) {
 			userFood = initUserFood(user.getId(), foodId);
@@ -60,6 +60,8 @@ public class UserFoodService {
 		
 		userFood.setCount(userFood.getCount() + foodCount);
 		updateUserFood(userFood);
+		
+		return userFood;
 	}
 	
 	
