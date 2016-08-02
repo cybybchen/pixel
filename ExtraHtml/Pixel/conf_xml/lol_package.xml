@@ -1476,15 +1476,21 @@
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
 		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="50" />
 	</loot>
-	<loot itemid="34001" name="元气宝箱" img="34001" rare="3" description="开启获得1-2个元气西瓜或者100pts" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="150" >
+	<loot itemid="34001" name="元气宝箱" img="34001" rare="3" description="开启获得1-2个元气西瓜或者100pts" hashero="0" cyb="0" judge="0" endtime="2016-07-27 23:59:59" itemcount="2" weightall="150" >
 		<item itemid="40101" item="元气西瓜" counta="1" countb="2" weight="100" />
 		<item itemid="27001" item="pts" counta="100" countb="100" weight="50" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="34002" name="元气竹篮" img="34002" rare="3" description="开启获得1-2个元气冰淇淋或者100pts" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="150" >
+	<loot itemid="34002" name="元气竹篮" img="34002" rare="3" description="开启获得1-2个元气冰淇淋或者100pts" hashero="0" cyb="0" judge="0" endtime="2016-08-03 23:59:59" itemcount="2" weightall="150" >
 		<item itemid="40102" item="元气冰淇淋" counta="1" countb="2" weight="100" />
 		<item itemid="27001" item="pts" counta="100" countb="100" weight="50" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="34003" name="肥皂盒" img="34003" rare="4" description="开启获得2-5个夏日肥皂" hashero="0" cyb="0" judge="0" endtime="2016-08-10 23:59:59" itemcount="1" weightall="100" >
+		<item itemid="40103" item="夏日肥皂" counta="2" countb="5" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
@@ -1494,7 +1500,13 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40102" name="元气冰淇淋" img="40102" rare="2" description="可在活动-冰淇淋大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-04 23:59:59" itemcount="" weightall="" >
+	<loot itemid="40102" name="元气冰淇淋" img="40102" rare="2" description="可在活动-冰淇淋大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-03 23:59:59" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="40103" name="夏日肥皂" img="40103" rare="2" description="可在活动-肥皂大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-10 23:59:59" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
