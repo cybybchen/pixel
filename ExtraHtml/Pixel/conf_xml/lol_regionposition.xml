@@ -47,40 +47,4 @@
 <position position="9" x="200" y="450" />
 <position position="10" x="200" y="500" />
 </region>
-<region id="5">
-<position position="1" x="250" y="50" />
-<position position="2" x="250" y="100" />
-<position position="3" x="250" y="150" />
-<position position="4" x="250" y="200" />
-<position position="5" x="250" y="250" />
-<position position="6" x="250" y="300" />
-<position position="7" x="250" y="350" />
-<position position="8" x="250" y="400" />
-<position position="9" x="250" y="450" />
-<position position="10" x="250" y="500" />
-</region>
-<region id="6">
-<position position="1" x="300" y="50" />
-<position position="2" x="300" y="100" />
-<position position="3" x="300" y="150" />
-<position position="4" x="300" y="200" />
-<position position="5" x="300" y="250" />
-<position position="6" x="300" y="300" />
-<position position="7" x="300" y="350" />
-<position position="8" x="300" y="400" />
-<position position="9" x="300" y="450" />
-<position position="10" x="300" y="500" />
-</region>
-<region id="7">
-<position position="1" x="350" y="50" />
-<position position="2" x="350" y="100" />
-<position position="3" x="350" y="150" />
-<position position="4" x="350" y="200" />
-<position position="5" x="350" y="250" />
-<position position="6" x="350" y="300" />
-<position position="7" x="350" y="350" />
-<position position="8" x="350" y="400" />
-<position position="9" x="350" y="450" />
-<position position="10" x="350" y="500" />
-</region>
 </data>

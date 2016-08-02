@@ -1,46 +1,143 @@
 <data>
-<region id="1001">
-<loot itemid="1001" itemname="金币" count="100" />
-<loot itemid="1001" itemname="金币" count="200" />
+<region id="1101">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="2" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="80016" count1="1" weight1="50" itemid2="" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84102" count1="1" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="1002">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1102">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="2" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80001" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84102" count1="1" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="1003">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1103">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="2" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80006" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84103" count1="1" weight1="5" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="1004">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1104">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="5" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84206" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="1005">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1105">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="5" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84202" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="1006">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1106">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84204" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="1007">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1107">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84205" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="2001">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1201">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="5" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80011" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84201" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="2002">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1202">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="5" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80006" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="84302" count1="1" weight1="20" itemid2="84303" count2="1" weight2="10" itemid3="" count3="" weight3="" />
 </region>
-<region id="2003">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1203">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="84302" count1="1" weight1="10" itemid2="84303" count2="1" weight2="20" itemid3="" count3="" weight3="" />
 </region>
-<region id="2004">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1204">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84403" count1="1" weight1="5" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="2005">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1205">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="20" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84404" count1="1" weight1="5" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="2006">
-<loot itemid="1001" itemname="金币" count="100" />
+<region id="1301">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="7" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80016" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84502" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
-<region id="2007">
-<loot itemid="1001" itemname="金币" count="100" />
-<loot itemid="1001" itemname="金币" count="200" />
+<region id="1302">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="7" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80011" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84503" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1303">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="7" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80006" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84504" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1304">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="15" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84506" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1305">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="15" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84507" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1306">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="30" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84508" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1307">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="30" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84509" count1="1" weight1="5" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1401">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="7" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80001" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84603" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1402">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="7" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80016" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84604" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1403">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="7" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80011" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84605" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1404">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="15" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84701" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1405">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="15" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84702" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="1406">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="30" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="80015" count1="1" weight1="50" itemid2="80015" count2="1" weight2="50" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="84703" count1="1" weight1="10" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+</region>
+<region id="2101">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="1001" count1="100" weight1="95" itemid2="84401" count2="1" weight2="5" itemid3="" count3="" weight3="" />
+</region>
+<region id="2201">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="1001" count1="100" weight1="95" itemid2="84402" count2="1" weight2="5" itemid3="" count3="" weight3="" />
+</region>
+<region id="2301">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="2" weightall="100" itemid1="1001" count1="100" weight1="95" itemid2="84510" count2="1" weight2="5" itemid3="" count3="" weight3="" />
+</region>
+<region id="2401">
+<loot itemcount="1" weightall="100" itemid1="1006" count1="10" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<loot itemcount="1" weightall="100" itemid1="1001" count1="100" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
 </region>
 </data>

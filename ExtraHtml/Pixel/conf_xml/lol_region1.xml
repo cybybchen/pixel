@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
 <region id="1" name="德玛西亚" zhanli="0" />
-<region id="2" name="班德尔城" zhanli="10000" />
-<region id="3" name="祖安" zhanli="20000" />
-<region id="4" name="皮尔特沃夫" zhanli="50000" />
-<region id="5" name="巨神峰" zhanli="80000" />
-<region id="6" name="恕瑞玛" zhanli="120000" />
-<region id="7" name="诺克萨斯" zhanli="180000" />
+<region id="2" name="祖安" zhanli="100" />
+<region id="3" name="皮尔特沃夫" zhanli="100" />
+<region id="4" name="巨神峰" zhanli="100" />
 </data>

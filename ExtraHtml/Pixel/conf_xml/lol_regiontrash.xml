@@ -1,46 +1,154 @@
 <data>
-<region id="1001" name="蛇怪" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
-<skill skillid="2" skilllevel="1" />
+<region id="1101" name="盗贼" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+<skill skillid="80001" skilllevel="1" />
 </region>
-<region id="1002" name="蛇怪贵族" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1102" name="诺克萨斯男军人" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+<skill skillid="80002" skilllevel="1" />
 </region>
-<region id="1003" name="巨蛇领主" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1103" name="诺克萨斯女军人" img="1" boss="1" >
+<skill skillid="80009" skilllevel="1" />
+<skill skillid="80010" skilllevel="1" />
 </region>
-<region id="1004" name="峡谷迅捷蟹" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1104" name="武道家" img="1" boss="1" >
+<skill skillid="80003" skilllevel="2" />
+<skill skillid="80003" skilllevel="2" />
 </region>
-<region id="1005" name="峡谷龟" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1105" name="武道家女" img="1" boss="1" >
+<skill skillid="80003" skilllevel="2" />
+<skill skillid="80003" skilllevel="2" />
 </region>
-<region id="1006" name="巨龟" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1106" name="诺克萨斯之手 " img="1" boss="1" >
+<skill skillid="80004" skilllevel="2" />
+<skill skillid="80003" skilllevel="2" />
 </region>
-<region id="1007" name="石头人" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1107" name="德玛西亚贵族" img="1" boss="1" >
+<skill skillid="80004" skilllevel="2" />
+<skill skillid="80003" skilllevel="2" />
 </region>
-<region id="2001" name="花岗岩石巨人" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1201" name="黑皮少年" img="1" boss="1" >
+<skill skillid="80007" skilllevel="3" />
+<skill skillid="80006" skilllevel="3" />
 </region>
-<region id="2002" name="石巨人国王" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1202" name="黑皮少女" img="1" boss="1" >
+<skill skillid="80007" skilllevel="3" />
+<skill skillid="80011" skilllevel="4" />
 </region>
-<region id="2003" name="魔沼蛙" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1203" name="绿发游侠" img="1" boss="1" >
+<skill skillid="80012" skilllevel="4" />
+<skill skillid="80013" skilllevel="4" />
 </region>
-<region id="2004" name="魔沼巨蛙" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1204" name="黄发游侠" img="1" boss="1" >
+<skill skillid="80014" skilllevel="4" />
+<skill skillid="80015" skilllevel="4" />
 </region>
-<region id="2005" name="巨蛙领主" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1205" name="魔化老太婆" img="1" boss="1" >
+<skill skillid="80016" skilllevel="4" />
+<skill skillid="80017" skilllevel="4" />
 </region>
-<region id="2006" name="幽灵" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
+<region id="1301" name="火法" img="1" boss="1" >
+<skill skillid="80007" skilllevel="5" />
+<skill skillid="80007" skilllevel="5" />
 </region>
-<region id="2007" name="大幽灵" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" >
-<skill skillid="1" skilllevel="1" />
-<skill skillid="2" skilllevel="2" />
+<region id="1302" name="男战士" img="1" boss="1" >
+<skill skillid="80008" skilllevel="5" />
+<skill skillid="80003" skilllevel="5" />
+</region>
+<region id="1303" name="女战士" img="1" boss="1" >
+<skill skillid="80004" skilllevel="5" />
+<skill skillid="80001" skilllevel="5" />
+</region>
+<region id="1304" name="奥法" img="1" boss="1" >
+<skill skillid="80002" skilllevel="5" />
+<skill skillid="80001" skilllevel="5" />
+</region>
+<region id="1305" name="老年战士" img="1" boss="1" >
+<skill skillid="80002" skilllevel="5" />
+<skill skillid="80021" skilllevel="5" />
+</region>
+<region id="1306" name="男警察" img="1" boss="1" >
+<skill skillid="80022" skilllevel="5" />
+<skill skillid="80003" skilllevel="6" />
+</region>
+<region id="1307" name="女警察" img="1" boss="1" >
+<skill skillid="80004" skilllevel="6" />
+<skill skillid="80003" skilllevel="6" />
+</region>
+<region id="1401" name="阿拉伯" img="1" boss="1" >
+<skill skillid="80005" skilllevel="6" />
+<skill skillid="80004" skilllevel="6" />
+</region>
+<region id="1402" name="老头" img="1" boss="1" >
+<skill skillid="80005" skilllevel="6" />
+<skill skillid="80006" skilllevel="7" />
+</region>
+<region id="1403" name="老太婆" img="1" boss="1" >
+<skill skillid="80007" skilllevel="7" />
+<skill skillid="80009" skilllevel="7" />
+</region>
+<region id="1404" name="皇后" img="1" boss="1" >
+<skill skillid="80023" skilllevel="7" />
+<skill skillid="80007" skilllevel="7" />
+</region>
+<region id="1405" name="公主" img="1" boss="1" >
+<skill skillid="80008" skilllevel="7" />
+<skill skillid="80007" skilllevel="7" />
+</region>
+<region id="1406" name="国王" img="1" boss="1" >
+<skill skillid="80008" skilllevel="7" />
+<skill skillid="80007" skilllevel="7" />
+</region>
+<region id="2101" name="恶魔之源" img="1" boss="1" >
+<skill skillid="80029" skilllevel="1" />
+<skill skillid="80030" skilllevel="1" />
+</region>
+<region id="2201" name="魔化之源" img="1" boss="1" >
+<skill skillid="80033" skilllevel="1" />
+<skill skillid="80034" skilllevel="1" />
+</region>
+<region id="2301" name="灵鸟" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="2401" name="巨神王" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3001" name="1b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3002" name="2b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3003" name="3b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3004" name="4b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3005" name="5b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3006" name="6b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3007" name="7b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3008" name="8b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3009" name="9b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3010" name="10b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3011" name="11b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
+</region>
+<region id="3012" name="12b" img="1" boss="1" >
+<skill skillid="80001" skilllevel="1" />
 </region>
 </data>
