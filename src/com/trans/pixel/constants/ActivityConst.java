@@ -28,7 +28,7 @@ public class ActivityConst {
 	/**
 	 * 热血竞技
 	 */
-	public static final int RICHANG_LADDER_ATTACK = 306;
+	public static final int LADDER_ATTACK = 9;
 	/**
 	 * 参与pk
 	 */
@@ -36,7 +36,7 @@ public class ActivityConst {
 	/**
 	 * 挑战boss
 	 */
-	public static final int RICHANG_PVP_ATTACK_BOSS_SUCCESS = 308;
+	public static final int PVP_ATTACK_BOSS_SUCCESS = 11;
 	/**
 	 * 收集魔晶
 	 */
@@ -50,7 +50,7 @@ public class ActivityConst {
 	 * 所有日常活动
 	 */
 	public static final int[] RICHANG_TYPES = {DANBI_RECHARGE, LEIJI_COST_JEWEL, LEIJI_RECHARGE,
-		RICHANG_LEIJI_LOTTERY_JEWEL, RICHANG_LADDER_ATTACK, RICHANG_PVP_ATTACK_ENEMY, RICHANG_PVP_ATTACK_BOSS_SUCCESS, 
+		RICHANG_LEIJI_LOTTERY_JEWEL, LADDER_ATTACK, RICHANG_PVP_ATTACK_ENEMY, PVP_ATTACK_BOSS_SUCCESS, 
 		RICHANG_MOJING_STORE, RICHANG_UNION_ATTACK}; 
 	
 	
