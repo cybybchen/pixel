@@ -202,7 +202,7 @@ public class EquipService {
 	}
 	
 	public List<RewardInfo> sale(UserBean user, List<Item> itemList, MultiReward.Builder costItems) {
-		boolean canSale = canSaleEquip(user.getId(), itemList);
+		boolean canSale = canSaleEquip(user, itemList);
 		if (!canSale)
 			return null;
 		
@@ -247,11 +247,17 @@ public class EquipService {
 		return rewardCount * itemCount;
 	}
 	
-	private boolean canSaleEquip(long userId, List<Item> itemList) {
+	private boolean canSaleEquip(UserBean user, List<Item> itemList) {
 		for (Item item : itemList) {
-			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, item.getItemId());
-			if (userEquip.getEquipCount() < item.getItemCount())
-				return false;
+			if (item.getItemId() > RewardConst.FOOD) {
+				UserFoodBean userFood = userFoodService.selectUserFood(user, item.getItemId());
+				if (userFood.getCount() < item.getItemCount())
+					return false;
+			} else {
+				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), item.getItemId());
+				if (userEquip.getEquipCount() < item.getItemCount())
+					return false;
+			}
 		}
 		
 		return true;
