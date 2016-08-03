@@ -37,7 +37,7 @@ public class FoodService {
 			return ErrorConst.HERO_CLEAR_LEVEL_IS_LIMIT_ERROR;
 		
 		int pokedeCount = userPokede.getCount();
-		if (clearHero.getVerylove() == foodId)
+		if (clearHero.getVerylove1() == foodId)
 			pokedeCount += FOOD_VERYLOVE_PERCENT * clearFood.getCount() * foodCount;
 		else if (clearHero.getLove1() == foodId || clearHero.getLove2() == foodId)
 			pokedeCount += FOOD_LOVE_PERCENT * clearFood.getCount() * foodCount;

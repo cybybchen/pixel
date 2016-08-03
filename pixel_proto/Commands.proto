@@ -401,48 +401,40 @@ message AreaBossList {
 	repeated AreaBoss region = 1;
 }
 
-message AreaRefresh {
-	required int32 level = 1;
-	required int32 time = 2;
-	required int32 limit = 3;
+message AreaWeight {
+	required int32 enemyid = 1;
+	required int32 weight = 2;
 }
 
-message AreaRefreshList {
-	repeated AreaRefresh level = 1;
-}
-
-message AreaRefresh2 {
+message AreaTime {
 	required int32 time = 1;
 	required int32 group = 2;
 	required int32 count = 3;
 	required int32 condition = 4;
-	optional int32 enemyid = 5;
+	repeated AreaWeight enemy = 5;
 }
 
-message AreaRefresh2List {
+message AreaTimeList {
 	required int32 id = 1;
-	repeated AreaRefresh2 time = 2;
+	repeated AreaTime time = 2;
 }
 
-message AreaRefresh2Lists {
-	repeated AreaRefresh2List region = 1;
+message AreaFieldTimeList {
+	repeated AreaTimeList region = 1;
 }
 
 message AreaMonster {//区域怪物
 	required int32 id = 1;
 	required string name = 2;
 	optional int32 belongto = 3;//区域ID
-	optional int32 positionid = 9;
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	optional int32 level = 8;
-	optional int32 level1 = 11;
-	optional int32 weight = 10;
+	optional int32 group = 6;
+	optional bool killed = 7;//已击杀
 }
 
 message AreaMonsterList {
 	repeated AreaMonster region = 1;
-	optional int32 weightall = 2;
 }
 
 message Position {
@@ -500,9 +492,9 @@ message PVPMonster {//pvp怪物Config
 	optional int32 fieldid = 4;//区域ID
 	optional int32 buffcount = 5;//增加的buff层数
 	optional int32 weight = 12;//出现几率
-	optional int32 positionid = 10;
 	optional int32 x = 8;//坐标x
 	optional int32 y = 9;//坐标y
+	optional int32 positionid = 10;
 	optional int32 level = 11;
 	optional string starttime = 13;
 	optional string endtime = 14;
@@ -1156,7 +1148,7 @@ message ClearHeroList {
 message ClearHero {
 	optional int32 id = 1;
 	optional int32 handbook = 2;
-	optional int32 verylove = 3;
+	optional int32 verylove1 = 3;
 	optional int32 love1 = 4;
 	optional int32 love2 = 6;
 	optional int32 normal1 = 5;
