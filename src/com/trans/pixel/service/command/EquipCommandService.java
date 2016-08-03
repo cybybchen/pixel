@@ -104,6 +104,6 @@ public class EquipCommandService extends BaseCommandService {
 			rewardService.doRewards(user, rewards.build());
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
-		pushCommandService.pushRewardCommand(responseBuilder, user, costItems.build());
+		pushCommandService.pushRewardCommand(responseBuilder, user, costItems.build(), false);
 	}
 }

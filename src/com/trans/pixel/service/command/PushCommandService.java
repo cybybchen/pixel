@@ -358,6 +358,10 @@ public class PushCommandService extends BaseCommandService {
 	}
 
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards) {
+		pushRewardCommand(responseBuilder, user, rewards, true);
+	}
+	
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards, boolean isreward) {
 		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
@@ -390,10 +394,12 @@ public class PushCommandService extends BaseCommandService {
 			
 			pushRewardIdList.add(rewardId);
 		}
-		RewardCommand.Builder reward = RewardCommand.newBuilder();
-		reward.setTitle(rewards.getName());
-		reward.addAllLoot(rewards.getLootList());
-		responseBuilder.setRewardCommand(reward);
+		if (isreward) {
+			RewardCommand.Builder reward = RewardCommand.newBuilder();
+			reward.setTitle(rewards.getName());
+			reward.addAllLoot(rewards.getLootList());
+			responseBuilder.setRewardCommand(reward);
+		}
 		if (headList.size() > 0)
 			this.pushUserHeadCommand(responseBuilder, user, headList);
 		if(heroList.size() > 0)
