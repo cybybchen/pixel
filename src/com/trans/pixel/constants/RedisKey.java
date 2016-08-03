@@ -40,6 +40,7 @@ public class RedisKey {
 	public final static String USER_LIBAOCOUNT_PREFIX = PREFIX+"UserLibaoCount_";
 	public static final String USER_FOOD_PREFIX = PREFIX + "user_food_";
 	public static final String USER_CLEAR_PREFIX = PREFIX + "user_clear_";
+	public static final String USER_LAST_CLEAR_PREFIX = PREFIX + "user_last_clear_";
 
 	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";

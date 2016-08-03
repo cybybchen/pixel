@@ -177,6 +177,7 @@ message ClearInfo {
 	required int32 position = 1;
 	required int32 clearId = 2;
 	required int32 count = 3;
+	optional int32 id = 4;
 }
 
 message HeroInfo {
@@ -2051,10 +2052,20 @@ message RequestClearHeroCommand {
 	required int32 heroId = 1;
 	required int32 position = 2;
 	required int32 type = 3;
+	optional int32 count = 4;
 }
 
 message ResponseUserFoodCommand {
 	repeated UserFood userFood = 1;
+}
+
+message ResponseClearInfoCommand {
+	repeated ClearInfo clearInfo = 1;
+}
+
+message RequestChoseClearInfoCommand {
+	required bool refused = 1;
+	optional int32 id = 2;
 }
 
 message RequestCommand {
@@ -2190,6 +2201,7 @@ message RequestCommand {
 	optional RequestLogCommand logCommand = 92;
 	optional RequestFeedFoodCommand feedFoodCommand = 93;
 	optional RequestClearHeroCommand clearHeroCommand = 94;
+	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2254,6 +2266,7 @@ message ResponseCommand {
 	optional ResponseUserHeadCommand userHeadCommand = 51;
 	optional ResponseNoticeCommand noticeCommand = 53;
 	optional ResponseUserFoodCommand userFoodCommand = 54;
+	optional ResponseClearInfoCommand clearInfoCommand = 55;
 }
 
 

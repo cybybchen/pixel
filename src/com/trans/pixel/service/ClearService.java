@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ClearAttribute;
 import com.trans.pixel.service.redis.ClearRedisService;
+import com.trans.pixel.service.redis.UserClearRedisService;
 
 @Service
 public class ClearService {
@@ -30,6 +31,8 @@ public class ClearService {
 	private CostService costService;
 	@Resource
 	private UserClearService userClearService;
+	@Resource
+	private UserClearRedisService userClearRedisService;
 	
 	
 	private static final int CLEAR_TYPE_COIN_COST = 10000;
@@ -41,20 +44,25 @@ public class ClearService {
 	private static final int CLEAR_POSITION_2 = 2;
 	private static final int CLEAR_POSITION_3 = 3;
 	
-	public ResultConst clearHero(UserPokedeBean userPokede, int position, int type, UserBean user) {
+	public ResultConst clearHero(UserPokedeBean userPokede, int position, int type, UserBean user, int count, List<UserClearBean> clearList) {
 		if (userPokede.getLevel() < USER_POKEDE_LIMIT_1 
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_2 && position >= CLEAR_POSITION_2)
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_3 && position >= CLEAR_POSITION_3))
 			return ErrorConst.CLEAR_IS_LOCKED_ERROR;
 		
-		if (!costService.costAndUpdate(user, type, type == RewardConst.COIN ? CLEAR_TYPE_COIN_COST : CLEAR_TYPE_JEWEL_COST)) {
+		if (!costService.costAndUpdate(user, type, (type == RewardConst.COIN ? CLEAR_TYPE_COIN_COST : CLEAR_TYPE_JEWEL_COST) * count)) {
 			return type == RewardConst.COIN ? ErrorConst.NOT_ENOUGH_COIN : ErrorConst.NOT_ENOUGH_JEWEL;
 		}
 		
-		UserClearBean userClear = clearHero(user, userPokede.getHeroId(), position, type);
-		if (userClear != null)
-			userClearService.updateUserClear(userClear);
+		while (clearList.size() < count) {
+			UserClearBean userClear = clearHero(user, userPokede.getHeroId(), position, type);
+			if (userClear != null)
+	//			userClearService.updateUserClear(userClear);
+				userClear.setId(clearList.size());
+				clearList.add(userClear);
+		}
 		
+		userClearRedisService.updateUserLastClearInfoList(clearList, user.getId());
 		return SuccessConst.HERO_CLEAR_SUCCESS;
 	}
 	

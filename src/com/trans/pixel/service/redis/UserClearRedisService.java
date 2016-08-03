@@ -54,16 +54,32 @@ public class UserClearRedisService extends RedisService {
 	public void updateUserClearList(final List<UserClearBean> userClearList, final long userId) {
 		Map<String, String> map = convertUserClearListToMap(userClearList);
 		this.hputAll(RedisKey.USER_CLEAR_PREFIX + userId, map);
+		expire(RedisKey.USER_CLEAR_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public boolean isExistClearKey(final long userId) {
 		return exists(RedisKey.USER_CLEAR_PREFIX + userId);
 	}
 	
+	public void updateUserLastClearInfoList(final List<UserClearBean> userClearList, final long userId) {
+		Map<String, String> map = convertUserLastClearListToMap(userClearList);
+		this.hputAll(RedisKey.USER_LAST_CLEAR_PREFIX + userId, map);
+		expire(RedisKey.USER_LAST_CLEAR_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_1HOUR);
+	}
+	
 	private Map<String, String> convertUserClearListToMap(List<UserClearBean> userClearList) {
 		Map<String, String> map = new HashMap<String, String>();
 		for (UserClearBean userClear : userClearList) {
 			 map.put(userClear.getHeroId() + RedisKey.SPLIT + userClear.getPosition(), JSONObject.fromObject(userClear).toString());
+		}
+		
+		return map;
+	}
+	
+	private Map<String, String> convertUserLastClearListToMap(List<UserClearBean> userClearList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (UserClearBean userClear : userClearList) {
+			 map.put("" + userClear.getId(), JSONObject.fromObject(userClear).toString());
 		}
 		
 		return map;

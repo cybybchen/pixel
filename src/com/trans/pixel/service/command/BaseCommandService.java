@@ -16,6 +16,7 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
@@ -24,6 +25,7 @@ import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
+import com.trans.pixel.protoc.Commands.ClearInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.Mail;
@@ -303,5 +305,14 @@ public class BaseCommandService {
 		}
 		
 		return heroInfoList;
+	}
+	
+	protected List<ClearInfo> buildClearInfo(List<UserClearBean> userClearList) {
+		List<ClearInfo> clearInfoList = new ArrayList<ClearInfo>();
+		for (UserClearBean userClear : userClearList) {
+			clearInfoList.add(userClear.buildClearInfo());
+		}
+		
+		return clearInfoList;
 	}
 }

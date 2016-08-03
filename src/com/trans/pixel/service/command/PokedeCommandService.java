@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,11 +10,13 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
+import com.trans.pixel.protoc.Commands.ResponseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserPokedeCommand;
 import com.trans.pixel.service.ClearService;
@@ -87,9 +90,14 @@ public class PokedeCommandService extends BaseCommandService {
 		int position = cmd.getPosition();
 		int heroId = cmd.getHeroId();
 		int type = cmd.getType();
+		int count = 1;
+		if (cmd.hasCount())
+			count = cmd.getCount();
+		
+		List<UserClearBean> clearList = new ArrayList<UserClearBean>();
 		
 		UserPokedeBean userPokede = userPokedeService.selectUserPokede(user, heroId);
-		ResultConst result = clearService.clearHero(userPokede, position, type, user);
+		ResultConst result = clearService.clearHero(userPokede, position, type, user, count, clearList);
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
@@ -98,8 +106,11 @@ public class PokedeCommandService extends BaseCommandService {
             return;
 		}
 		
-		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
-		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
-		responseBuilder.setUserPokedeCommand(builder.build());
+//		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
+//		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
+//		responseBuilder.setUserPokedeCommand(builder.build());
+		ResponseClearInfoCommand.Builder builder = ResponseClearInfoCommand.newBuilder();
+		builder.addAllClearInfo(this.buildClearInfo(clearList));
+		responseBuilder.setClearInfoCommand(builder.build());
 	}
 }

@@ -63,4 +63,14 @@ public class UserClearBean {
 		
 		return builder.build();
 	}
+	
+	public ClearInfo buildClearInfo() {
+		ClearInfo.Builder builder = ClearInfo.newBuilder();
+		builder.setClearId(clearId);
+		builder.setCount(count);
+		builder.setPosition(position);
+		builder.setId(id);
+		
+		return builder.build();
+	}
 }
