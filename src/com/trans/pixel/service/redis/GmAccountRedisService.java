@@ -44,8 +44,8 @@ public class GmAccountRedisService extends RedisService{
 	public String getSession(String account){
 		String session = get(RedisKey.GM_SESSION_PREFIX+account);
 		if(session != null){
-			expire(RedisKey.GM_SESSION_PREFIX+account, 6*3600*1000);
-			expire(RedisKey.GM_SESSION_PREFIX+session, 6*3600*1000);
+			expire(RedisKey.GM_SESSION_PREFIX+account, 24*3600*1000);
+			expire(RedisKey.GM_SESSION_PREFIX+session, 24*3600*1000);
 		}
 		return session;
 	}
@@ -53,9 +53,9 @@ public class GmAccountRedisService extends RedisService{
 	public String createNewSession(String account){
 		String session = DigestUtils.md5Hex(account+System.currentTimeMillis());
 		set(RedisKey.GM_SESSION_PREFIX+account, session);
-		expire(RedisKey.GM_SESSION_PREFIX+account, 6*3600*1000);
+		expire(RedisKey.GM_SESSION_PREFIX+account, 24*3600*1000);
 		set(RedisKey.GM_SESSION_PREFIX+session, account);
-		expire(RedisKey.GM_SESSION_PREFIX+session, 6*3600*1000);
+		expire(RedisKey.GM_SESSION_PREFIX+session, 24*3600*1000);
 		return session;
 	}
 	
