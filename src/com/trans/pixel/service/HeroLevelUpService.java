@@ -33,7 +33,7 @@ public class HeroLevelUpService {
 	
 	private static final int HERO_MAX_LEVEL = 60;
 	
-	private static final int RESET_SKILL_COST_JEWEL = 400;
+	private static final int RESET_SKILL_COST_JEWEL = 200;
 	
 	@Resource
 	private UserService userService;
