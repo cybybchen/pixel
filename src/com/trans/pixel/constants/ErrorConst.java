@@ -36,6 +36,7 @@ public enum ErrorConst implements ResultConst {
     ACTIVITY_IS_OVER_ERROR(1048, "活动已过期"), NOT_WRITE_USER_ERROR(1049, "充值异常"),
     
     FOOD_CAN_NOT_ADDED_ERROR(3001, "无法食用"), FOOD_NOT_ENOUGH(3002, "食物数量不足"), CLEAR_IS_LOCKED_ERROR(3003, "该洗练位还未解锁"), FOOD_SALE_ERROR(3004, "食物出售异常"), 
+    HERO_CLEAR_LEVEL_IS_LIMIT_ERROR(3005, "英雄等级已达上限"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

@@ -27,10 +27,14 @@ public class FoodService {
 	private static final float FOOD_VERYLOVE_PERCENT = 1.5f;
 	private static final float FOOD_LOVE_PERCENT = 1.2f;
 	private static final float FOOD_NORMAL_PERCENT = 1.0f;
+	private static final int FEED_HERO_LEVEL_LIMIT = 9;
 	
 	public ResultConst feedFood(UserPokedeBean userPokede, UserBean user, int foodId, int foodCount) {
 		ClearHero clearHero = clearRedisService.getClearHero(userPokede.getHeroId());
 		ClearFood clearFood = clearRedisService.getClearFood(foodId);
+		
+		if (userPokede.getLevel() >= FEED_HERO_LEVEL_LIMIT)
+			return ErrorConst.HERO_CLEAR_LEVEL_IS_LIMIT_ERROR;
 		
 		int pokedeCount = userPokede.getCount();
 		if (clearHero.getVerylove() == foodId)
