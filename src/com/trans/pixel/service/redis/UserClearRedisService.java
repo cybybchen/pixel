@@ -61,6 +61,14 @@ public class UserClearRedisService extends RedisService {
 		return exists(RedisKey.USER_CLEAR_PREFIX + userId);
 	}
 	
+	public UserClearBean getLastClear(int id, final long userId) {
+		String value = hget(RedisKey.USER_LAST_CLEAR_PREFIX + userId, "" + id);
+		if (value == null)
+			return null;
+		
+		return UserClearBean.fromJson(value);
+	}
+	
 	public void updateUserLastClearInfoList(final List<UserClearBean> userClearList, final long userId) {
 		Map<String, String> map = convertUserLastClearListToMap(userClearList);
 		this.hputAll(RedisKey.USER_LAST_CLEAR_PREFIX + userId, map);

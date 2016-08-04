@@ -95,6 +95,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
@@ -803,6 +804,11 @@ public class GameDataScreen extends RequestScreen {
 		// TODO PurchaseContractCommand method
 		return true;//PurchaseContractCommand
 	}//PurchaseContractCommand
+	@Override//ChoseClearInfoCommand
+	protected boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		pokedeCommandService.choseClearInfo(cmd, responseBuilder, user);
+		return true;//ChoseClearInfoCommand
+	}//ChoseClearInfoCommand
 	//add handleCommand here
 	
 	@Override

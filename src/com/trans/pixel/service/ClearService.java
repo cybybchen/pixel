@@ -66,6 +66,17 @@ public class ClearService {
 		return SuccessConst.HERO_CLEAR_SUCCESS;
 	}
 	
+	public ResultConst choseClear(UserBean user, int id, UserClearBean userClear) {	
+		userClear = userClearRedisService.getLastClear(id, user.getId());
+		if (userClear == null)
+			return ErrorConst.CLEAR_CHOSE_ERROR;
+		
+		userClearService.updateUserClear(userClear);
+		
+		
+		return SuccessConst.HERO_CLEAR_SUCCESS;
+	}
+	
 	public UserClearBean clearHero(UserBean user, int heroId, int position, int type) {
 		List<ClearAttribute> attList = getClearAttribute(position);
 		int allWeight = 0;

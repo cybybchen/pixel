@@ -13,6 +13,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
@@ -112,5 +113,30 @@ public class PokedeCommandService extends BaseCommandService {
 		ResponseClearInfoCommand.Builder builder = ResponseClearInfoCommand.newBuilder();
 		builder.addAllClearInfo(this.buildClearInfo(clearList));
 		responseBuilder.setClearInfoCommand(builder.build());
+	}
+	
+	public void choseClearInfo(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		int id = 0;
+		if (cmd.hasId())
+			id = cmd.getId();
+		boolean refused = cmd.getRefused();
+		if (refused)
+			return;
+		
+		UserClearBean userClear = new UserClearBean();
+		
+		ResultConst result = clearService.choseClear(user, id, userClear);
+		if (result instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
+			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
+		UserPokedeBean userPokede = userPokedeService.selectUserPokede(user, userClear.getHeroId());
+		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
+		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, userClear.getHeroId())));
+		responseBuilder.setUserPokedeCommand(builder.build());
 	}
 }

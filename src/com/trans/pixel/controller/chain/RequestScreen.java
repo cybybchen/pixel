@@ -99,6 +99,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
@@ -364,6 +365,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestClearHeroCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user);
@@ -1050,6 +1052,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//PurchaseContractCommand
                 result = handleCommand(cmd, responseBuilder, user);//PurchaseContractCommand
         }//PurchaseContractCommand
+        if (request.hasChoseClearInfoCommand()) {
+            RequestChoseClearInfoCommand cmd = request.getChoseClearInfoCommand();
+            if (result)//ChoseClearInfoCommand
+                result = handleCommand(cmd, responseBuilder, user);//ChoseClearInfoCommand
+        }//ChoseClearInfoCommand
         //call handleCommand here
         if (request.hasPurchaseLadderTimeCommand()) {
             RequestPurchaseLadderTimeCommand cmd = request.getPurchaseLadderTimeCommand();
