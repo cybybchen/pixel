@@ -33,7 +33,7 @@
 	</select>
 	
 	<update id="updateUnion" parameterType="com.trans.pixel.model.UnionBean">
-	    UPDATE user_union SET level={level}, point=#{point}
+	    UPDATE user_union SET level=#{level}, point=#{point}
 		WHERE id=#{id}
 	</update>
 	
