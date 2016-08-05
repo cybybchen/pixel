@@ -117,6 +117,7 @@ public class PokedeCommandService extends BaseCommandService {
 		ResponseClearInfoCommand.Builder builder = ResponseClearInfoCommand.newBuilder();
 		builder.addAllClearInfo(this.buildClearInfo(clearList));
 		responseBuilder.setClearInfoCommand(builder.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void choseClearInfo(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user) {
