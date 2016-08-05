@@ -402,7 +402,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestAttackResourceMineCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		areaCommandService.AttackResourceMine(cmd, responseBuilder, user);
+//		areaCommandService.AttackResourceMine(cmd, responseBuilder, user);
 		return true;
 	}
 	
@@ -626,7 +626,7 @@ public class GameDataScreen extends RequestScreen {
 	}//PurchaseCoinCommand
 	@Override//AttackResourceMineInfoCommand
 	protected boolean handleCommand(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
-		areaCommandService.AttackResourceMineInfo(cmd, responseBuilder, user);
+//		areaCommandService.AttackResourceMineInfo(cmd, responseBuilder, user);
 		return true;//AttackResourceMineInfoCommand
 	}//AttackResourceMineInfoCommand
 	@Override//UserMineTeamCommand
@@ -681,7 +681,7 @@ public class GameDataScreen extends RequestScreen {
 	}//UnlockPvpMapCommand
 	@Override//CollectResourceMineCommand
 	protected boolean handleCommand(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user) {
-		areaCommandService.collectMine(cmd, responseBuilder, user);
+//		areaCommandService.collectMine(cmd, responseBuilder, user);
 		return true;//CollectResourceMineCommand
 	}//CollectResourceMineCommand
 	@Override//AreaResourceCommand

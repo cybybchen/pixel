@@ -41,7 +41,6 @@ import com.trans.pixel.protoc.Commands.AreaRefresh2Lists;
 import com.trans.pixel.protoc.Commands.AreaRefreshList;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceList;
-import com.trans.pixel.protoc.Commands.AreaResourceMine;
 import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.Position;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -55,7 +54,7 @@ public class AreaRedisService extends RedisService{
 	private final static String MYAREABUFF = RedisKey.PREFIX+"AreaBuff_";
 	private final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	private final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
-	private final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
+//	private final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
 	private final static String MINEGAIN = RedisKey.PREFIX+"AreaResourceMineGain_";
 	@Resource
 	private UserRedisService userRedisService;
@@ -114,10 +113,7 @@ public class AreaRedisService extends RedisService{
 			for(AreaResource resource : m_ResourceMap.values()){
 				for(AreaInfo.Builder areabuilder : builder.getRegionBuilderList()){
 					if(areabuilder.getId() == resource.getBelongto()){
-						AreaResource.Builder resourcebuilder = AreaResource.newBuilder(resource);
-						for (int i = 1; i <= resourcebuilder.getCount(); i++)
-							resourcebuilder.addMines(buildAreaResourceMine(resourcebuilder.build(), (resourcebuilder.getId() - 1) * 20 + i));
-						areabuilder.addResources(resourcebuilder);
+						areabuilder.addResources(resource);
 					}
 				}
 			}
@@ -300,7 +296,7 @@ public class AreaRedisService extends RedisService{
 			}
 			for(Entry<Integer, AreaMonsterList> entry : monsterMap.entrySet()) {
 				if(refresh.getLevel() == entry.getKey()%100){
-					int oldcount = monstercount.get(entry.getKey());
+					int oldcount = monstercount.containsKey(entry.getKey()) ? monstercount.get(entry.getKey()) : 0;
 					AreaMonsterList list = entry.getValue();
 					AreaMonster monster = null;
 					while(oldcount < refresh.getLimit()){
@@ -367,10 +363,10 @@ public class AreaRedisService extends RedisService{
 		expire(RedisKey.AREALEVEL+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
-	public int addLevel(int id, UserBean user) {
-		int count = getLevel(id, user)+1;
-		saveLevel(id, count, user);
-		return count;
+	public int addLevel(int id, int count, UserBean user) {
+		int level = getLevel(id, user)+count;
+		saveLevel(id, level, user);
+		return level;
 	}
 
 	public void saveMonster(AreaMonster monster,UserBean user) {
@@ -441,44 +437,44 @@ public class AreaRedisService extends RedisService{
 		this.hput(AREARESOURCE+user.getServerId(), resource.getId()+"", formatJson(resource));
 	}
 	
-	public Map<String, AreaResourceMine> getResourceMines(UserBean user){
-		Map<String, AreaResourceMine> resourcemines= new HashMap<String, AreaResourceMine>();
-		Map<String, String> valueMap = this.hget(AREARESOURCEMINE+user.getServerId());
-		for(Entry<String, String> entry : valueMap.entrySet()){
-			AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
-			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
-				resourcemines.put(entry.getKey(), builder.build());
-			}
-		}
-		return resourcemines;
-	}
-	
-	public AreaResourceMine getResourceMine(int id,UserBean user){
-		String value = this.hget(AREARESOURCEMINE+user.getServerId(), id+"");
-		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}else{
-//			AreaResourceMine resourcemine = buildAreaResourceMine(id);
-//			saveResourceMine(resourcemine);
-			return null;
-		}
-	}
-
-	public void saveResourceMine(AreaResourceMine mine,UserBean user) {
-		this.hput(AREARESOURCEMINE+user.getServerId(), mine.getId()+"", formatJson(mine));
-	}
-	
-	public AreaResourceMine buildAreaResourceMine(final AreaResource resource, final int id){
-		AreaResourceMine.Builder mineBuilder = AreaResourceMine.newBuilder();
-		mineBuilder.setId(id);
-		mineBuilder.setResourceId(resource.getId());
-		mineBuilder.setYield(resource.getYield());
-		mineBuilder.setTime(12*3600);
-		// mineBuilder.setOwner("owner");
-		// mineBuilder.setEndtime(12222);
-		return mineBuilder.build();
-	}
+//	public Map<String, AreaResourceMine> getResourceMines(UserBean user){
+//		Map<String, AreaResourceMine> resourcemines= new HashMap<String, AreaResourceMine>();
+//		Map<String, String> valueMap = this.hget(AREARESOURCEMINE+user.getServerId());
+//		for(Entry<String, String> entry : valueMap.entrySet()){
+//			AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
+//			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
+//				resourcemines.put(entry.getKey(), builder.build());
+//			}
+//		}
+//		return resourcemines;
+//	}
+//	
+//	public AreaResourceMine getResourceMine(int id,UserBean user){
+//		String value = this.hget(AREARESOURCEMINE+user.getServerId(), id+"");
+//		AreaResourceMine.Builder builder = AreaResourceMine.newBuilder();
+//		if(value != null && parseJson(value, builder)){
+//			return builder.build();
+//		}else{
+////			AreaResourceMine resourcemine = buildAreaResourceMine(id);
+////			saveResourceMine(resourcemine);
+//			return null;
+//		}
+//	}
+//
+//	public void saveResourceMine(AreaResourceMine mine,UserBean user) {
+//		this.hput(AREARESOURCEMINE+user.getServerId(), mine.getId()+"", formatJson(mine));
+//	}
+//	
+//	public AreaResourceMine buildAreaResourceMine(final AreaResource resource, final int id){
+//		AreaResourceMine.Builder mineBuilder = AreaResourceMine.newBuilder();
+//		mineBuilder.setId(id);
+//		mineBuilder.setResourceId(resource.getId());
+//		mineBuilder.setYield(resource.getYield());
+//		mineBuilder.setTime(12*3600);
+//		// mineBuilder.setOwner("owner");
+//		// mineBuilder.setEndtime(12222);
+//		return mineBuilder.build();
+//	}
 
 	public Map<String, AreaResource> getAreaResourceConfig(){
 		Map<String, String> keyvalue = hget(RedisKey.AREARESOURCE_CONFIG);

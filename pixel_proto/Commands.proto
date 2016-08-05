@@ -344,27 +344,14 @@ message AreaEquipList {
 	repeated AreaEquip equip = 1;
 }
 
-message AreaResourceMine {//区域资源开采点
-	required int32 id = 1;//开采点ID
-	optional int32 resourceId = 2;//资源点ID
-	required int32 time = 3;//开采时间
-	required int32 yield = 4;//开采产量
-	///////////////////////////////////
-	optional UserInfo user = 5;//开采玩家
-	optional int64 collectTime = 6;//上次收取时间
-	optional int64 endTime = 7;//开采结束时间
-}
-
 message AreaResource {//区域资源点
 	required int32 id = 1;//资源点ID
 	required string name = 2;
 	optional int32 belongto = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	required int32 yield = 6;//开采产量
-	required int32 count = 7;//开采点数量
-	required int32 bossid = 8;//资源点BOSS
-	repeated AreaResourceMine mines = 9;//开采点
+	optional int32 yield = 6;//开采产量
+	optional int32 bossid = 8;//资源点BOSS
 	///////////////////////////////////
 	optional int32 state = 10;//争夺状态:0正常，1准备战斗
 	optional int64 endtime = 11;//该阶段结束时间
