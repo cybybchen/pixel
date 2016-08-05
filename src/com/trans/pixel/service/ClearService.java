@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -24,7 +26,7 @@ import com.trans.pixel.service.redis.UserClearRedisService;
 
 @Service
 public class ClearService {
-
+	private static final Logger log = LoggerFactory.getLogger(ClearService.class);
 	@Resource
 	private ClearRedisService clearRedisService;
 	@Resource
@@ -66,15 +68,16 @@ public class ClearService {
 		return SuccessConst.HERO_CLEAR_SUCCESS;
 	}
 	
-	public ResultConst choseClear(UserBean user, int id, UserClearBean userClear) {	
-		userClear = userClearRedisService.getLastClear(id, user.getId());
+	public UserClearBean choseClear(UserBean user, int id) {	
+		UserClearBean userClear = userClearRedisService.getLastClear(id, user.getId());
 		if (userClear == null)
-			return ErrorConst.CLEAR_CHOSE_ERROR;
+			return null;
 		
+		log.debug("11:" + userClear + "|" + userClear.getHeroId());
 		userClearService.updateUserClear(userClear);
 		
 		
-		return SuccessConst.HERO_CLEAR_SUCCESS;
+		return userClear;
 	}
 	
 	public UserClearBean clearHero(UserBean user, int heroId, int position, int type) {

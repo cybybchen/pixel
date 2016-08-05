@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -22,6 +24,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserPokedeCommand;
 import com.trans.pixel.service.ClearService;
 import com.trans.pixel.service.CostService;
+import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.FoodService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
@@ -31,6 +34,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class PokedeCommandService extends BaseCommandService {
+	private static final Logger log = LoggerFactory.getLogger(PokedeCommandService.class);
 	@Resource
 	private UserPokedeService userPokedeService;
 	@Resource
@@ -123,12 +127,11 @@ public class PokedeCommandService extends BaseCommandService {
 		if (refused)
 			return;
 		
-		UserClearBean userClear = new UserClearBean();
+		UserClearBean userClear = clearService.choseClear(user, id);
 		
-		ResultConst result = clearService.choseClear(user, id, userClear);
-		if (result instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
-			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
+		if (userClear == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.CLEAR_CHOSE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.CLEAR_CHOSE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             
             return;
