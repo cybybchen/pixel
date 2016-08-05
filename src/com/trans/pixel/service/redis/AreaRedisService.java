@@ -66,16 +66,21 @@ public class AreaRedisService extends RedisService{
 		String value = this.hget(RedisKey.USERDATA+user.getId(), "Area");
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(value != null && parseJson(value, builder)){
-			return builder;
-		}else{
-			AreaMode.Builder areamode = getBaseAreaMode();
-			for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
-				if(areainfo.getId() <= user.getAreaUnlock())
-					areainfo.setOpened(true);
-			}
-			saveAreaMode(areamode.build(), user);
-			return areamode;
+			if(builder.getRegionCount() == 4)
+				return builder;
 		}
+
+		if(user.getAreaUnlock() < 1){
+			user.setAreaUnlock(1);
+			userRedisService.updateUser(user);
+		}
+		AreaMode.Builder areamode = getBaseAreaMode();
+		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
+			if(areainfo.getId() <= user.getAreaUnlock())
+				areainfo.setOpened(true);
+		}
+		saveAreaMode(areamode.build(), user);
+		return areamode;
 	}
 	
 	public AreaMode.Builder getBaseAreaMode(){
@@ -350,22 +355,22 @@ public class AreaRedisService extends RedisService{
 		}
 	}
 
-	public int getBuff(int id, UserBean user){
-		String value = hget(RedisKey.AREABUFF+user.getId(), id+"");
+	public int getLevel(int id, UserBean user){
+		String value = hget(RedisKey.AREALEVEL+user.getId(), id+"");
 		if(value == null)
 			return 0;
 		return Integer.parseInt(value);
 	}
 
-	public void saveBuff(int id, int count, UserBean user) {
-		hput(RedisKey.AREABUFF+user.getId(), id+"", count+"");
-		expire(RedisKey.AREABUFF+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	public void saveLevel(int id, int count, UserBean user) {
+		hput(RedisKey.AREALEVEL+user.getId(), id+"", count+"");
+		expire(RedisKey.AREALEVEL+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
-	public int addBuff(int id, UserBean user) {
-		int count = getBuff(id, user);
-		saveBuff(id, count+1, user);
-		return count+1;
+	public int addLevel(int id, UserBean user) {
+		int count = getLevel(id, user)+1;
+		saveLevel(id, count, user);
+		return count;
 	}
 
 	public void saveMonster(AreaMonster monster,UserBean user) {

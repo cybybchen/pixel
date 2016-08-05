@@ -127,12 +127,21 @@ public class AreaFightService extends FightService{
 		if(monster == null)
 			return false;
 		redis.deleteMonster(monster.getId(), user);
-		redis.addBuff(id, user);
 		AreaMonsterReward monsterreward = redis.getAreaMonsterReward(id);
 		for(WeightReward weightreward : monsterreward.getLootList()){
 			rewards.addLoot(randReward(weightreward));
 		}
 		rewardService.doRewards(user, rewards.build());
+
+		AreaMode.Builder areamode = redis.getAreaMode(user);
+		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
+			if(user.getAreaUnlock() == monster.getBelongto() && areainfo.getId() > user.getAreaUnlock()){
+				int level = redis.addLevel(monster.getBelongto(), user);
+				if(level >= areainfo.getZhanli()){
+					unlockArea(areainfo.getId(), level, user);
+				}
+			}
+		}
 		return true;
 	}
 
