@@ -231,7 +231,7 @@ public class UserBean {
 	 * 区域解锁进度
 	 */
 	public int getAreaUnlock() {
-		return areaUnlock;
+		return Math.max(1, areaUnlock);
 	}
 	/**
 	 * 区域解锁进度

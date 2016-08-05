@@ -70,10 +70,10 @@ public class AreaRedisService extends RedisService{
 				return builder;
 		}
 
-		if(user.getAreaUnlock() < 1){
-			user.setAreaUnlock(1);
-			userRedisService.updateUser(user);
-		}
+		// if(user.getAreaUnlock() < 1){
+		// 	user.setAreaUnlock(1);
+		// 	userRedisService.updateUser(user);
+		// }
 		AreaMode.Builder areamode = getBaseAreaMode();
 		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
 			if(areainfo.getId() <= user.getAreaUnlock())
