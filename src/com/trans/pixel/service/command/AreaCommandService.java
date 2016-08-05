@@ -20,17 +20,12 @@ import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaResourceCommand;
-import com.trans.pixel.protoc.Commands.ResponseAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.AreaFightService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserService;
@@ -151,30 +146,30 @@ public class AreaCommandService extends BaseCommandService{
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
-	public void collectMine(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user){
-		service.collectMine(responseBuilder, cmd.getMineId(), user);
-		responseBuilder.setAreaCommand(getAreas(user));
-	}
-	
-	public void AttackResourceMine(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user){
-		service.AttackResourceMine(cmd.getId(), cmd.getTeamid(), cmd.getRet(), user, responseBuilder);
-		pusher.pushUserInfoCommand(responseBuilder, user);
-		responseBuilder.setAreaCommand(getAreas(user));
-	}
-	
-	public void AttackResourceMineInfo(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user){
-		ResponseAttackResourceMineInfoCommand.Builder builder = ResponseAttackResourceMineInfoCommand.newBuilder();
-		Team team = service.AttackResourceMineInfo(cmd.getId(), user);
-		if(team == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
-			
-			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
-			responseBuilder.setAreaCommand(getAreas(user));
-		}else{
-			if(team.hasUser())
-				builder.setUser(team.getUser());
-			builder.addAllHeroInfo(team.getHeroInfoList());
-			responseBuilder.setResourceMineInfoCommand(builder);
-		}
-	}
+//	public void collectMine(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user){
+//		service.collectMine(responseBuilder, cmd.getMineId(), user);
+//		responseBuilder.setAreaCommand(getAreas(user));
+//	}
+//	
+//	public void AttackResourceMine(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user){
+//		service.AttackResourceMine(cmd.getId(), cmd.getTeamid(), cmd.getRet(), user, responseBuilder);
+//		pusher.pushUserInfoCommand(responseBuilder, user);
+//		responseBuilder.setAreaCommand(getAreas(user));
+//	}
+//	
+//	public void AttackResourceMineInfo(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user){
+//		ResponseAttackResourceMineInfoCommand.Builder builder = ResponseAttackResourceMineInfoCommand.newBuilder();
+//		Team team = service.AttackResourceMineInfo(cmd.getId(), user);
+//		if(team == null){
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
+//			
+//			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.MAPINFO_ERROR));
+//			responseBuilder.setAreaCommand(getAreas(user));
+//		}else{
+//			if(team.hasUser())
+//				builder.setUser(team.getUser());
+//			builder.addAllHeroInfo(team.getHeroInfoList());
+//			responseBuilder.setResourceMineInfoCommand(builder);
+//		}
+//	}
 }

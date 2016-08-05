@@ -15,7 +15,6 @@ import com.trans.pixel.protoc.Commands.RequestAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
@@ -28,7 +27,6 @@ public class AreaTest extends BaseTest {
 		testAreaBoss();
 		testAreaMonster();
 		testAreaResource();
-		testAreaResourceMine();
 	}
 	
 	ResponseAreaCommand area = null;
@@ -53,7 +51,7 @@ public class AreaTest extends BaseTest {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestAttackBossCommand.Builder builder = RequestAttackBossCommand.newBuilder();
-		AreaBoss boss = area.getAreas(4).getBosses(0);
+		AreaBoss boss = area.getAreas(0).getBosses(0);
 		builder.setId(boss.getId());
 		builder.setScore(boss.getHp());
 		requestBuilder.setAttackBossCommand(builder.build());
@@ -106,24 +104,24 @@ public class AreaTest extends BaseTest {
         System.out.println(response.getAllFields());
 	}
 	
-	private void testAreaResourceMine() {
-		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
-		requestBuilder.setHead(head());
-		RequestAttackResourceMineCommand.Builder builder = RequestAttackResourceMineCommand.newBuilder();
-		AreaResource resource = area.getAreas(0).getResources(0);
-		builder.setId(resource.getMines(0).getId());
-		builder.setTeamid(22);
-		builder.setRet(true);
-		requestBuilder.setAttackResourceMineCommand(builder.build());
-		
-		RequestCommand reqcmd = requestBuilder.build();
-		byte[] reqData = reqcmd.toByteArray();
-        InputStream input = new ByteArrayInputStream(reqData);
-        ResponseCommand response = http.post(url, input);
-        Assert.assertNotNull(response);
-        if(!response.hasAreaCommand())
-        	fail("testAreaResourceMine Not yet implemented");
-        System.out.println(response.getAllFields());
-	}
+//	private void testAreaResourceMine() {
+//		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+//		requestBuilder.setHead(head());
+//		RequestAttackResourceMineCommand.Builder builder = RequestAttackResourceMineCommand.newBuilder();
+//		AreaResource resource = area.getAreas(0).getResources(0);
+//		builder.setId(resource.getMines(0).getId());
+//		builder.setTeamid(22);
+//		builder.setRet(true);
+//		requestBuilder.setAttackResourceMineCommand(builder.build());
+//		
+//		RequestCommand reqcmd = requestBuilder.build();
+//		byte[] reqData = reqcmd.toByteArray();
+//        InputStream input = new ByteArrayInputStream(reqData);
+//        ResponseCommand response = http.post(url, input);
+//        Assert.assertNotNull(response);
+//        if(!response.hasAreaCommand())
+//        	fail("testAreaResourceMine Not yet implemented");
+//        System.out.println(response.getAllFields());
+//	}
 
 }
