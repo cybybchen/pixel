@@ -3,7 +3,7 @@ package com.trans.pixel.model;
 public class GmAccountBean {
 	public String account = "";
 	public int canreward = 0;
-	public int canview = 1;
+	public int canview = 0;
 	public int canwrite = 0;
 	public int master = 0;
 	public String getAccount() {
