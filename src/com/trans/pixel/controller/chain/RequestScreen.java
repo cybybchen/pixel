@@ -367,7 +367,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestClearHeroCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
@@ -1053,11 +1052,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//ClearHeroCommand
                 result = handleCommand(cmd, responseBuilder, user);//ClearHeroCommand
         }//ClearHeroCommand
-        if (request.hasPurchaseContractCommand()) {
-            RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();
-            if (result)//PurchaseContractCommand
-                result = handleCommand(cmd, responseBuilder, user);//PurchaseContractCommand
-        }//PurchaseContractCommand
         if (request.hasChoseClearInfoCommand()) {
             RequestChoseClearInfoCommand cmd = request.getChoseClearInfoCommand();
             if (result)//ChoseClearInfoCommand

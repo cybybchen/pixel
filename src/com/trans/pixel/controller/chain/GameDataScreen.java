@@ -803,11 +803,6 @@ public class GameDataScreen extends RequestScreen {
 		pokedeCommandService.clearPokede(cmd, responseBuilder, user);
 		return true;//ClearHeroCommand
 	}//ClearHeroCommand
-	@Override//PurchaseContractCommand
-	protected boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO PurchaseContractCommand method
-		return true;//PurchaseContractCommand
-	}//PurchaseContractCommand
 	@Override//ChoseClearInfoCommand
 	protected boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		pokedeCommandService.choseClearInfo(cmd, responseBuilder, user);
