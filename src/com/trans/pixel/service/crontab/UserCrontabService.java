@@ -12,6 +12,7 @@ import com.trans.pixel.service.CdkeyService;
 import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.UserAchieveService;
 import com.trans.pixel.service.UserActivityService;
+import com.trans.pixel.service.UserClearService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFoodService;
 import com.trans.pixel.service.UserHeroService;
@@ -51,6 +52,8 @@ public class UserCrontabService {
 	private UserActivityService userActivityService;
 	@Resource
 	private UserFoodService userFoodService;
+	@Resource
+	private UserClearService userClearService;
 	
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
@@ -131,6 +134,13 @@ public class UserCrontabService {
 			long userId = Long.parseLong(keys[0]);
 			int foodId = Integer.parseInt(keys[1]);
 			userFoodService.updateToDB(userId, foodId);
+		}
+		while((key=userClearService.popDBKey()) != null) {
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int heroId = Integer.parseInt(keys[1]);
+			int position = Integer.parseInt(keys[2]);
+			userClearService.updateToDB(userId, heroId, position);
 		}
 	}
 }
