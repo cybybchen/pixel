@@ -285,6 +285,7 @@ public class AreaRedisService extends RedisService{
 		AreaRefreshList timelist = getMonsterRandConfig();
 		Map<Integer, AreaMonsterList> monsterMap = getAreaMonsterConfig();
 		Map<String, AreaPosition> positionMap = getAreaPosition();
+		Map<Integer, Integer> levelMap = getLevels(user);
 		long areaMonsterRefreshTime = user.getAreaMonsterRefreshTime();
 		long time = now() - areaMonsterRefreshTime;
 		for(AreaRefresh refresh : timelist.getLevelList()) {
@@ -295,6 +296,7 @@ public class AreaRedisService extends RedisService{
 				userRedisService.updateUser(user);
 			}
 			for(Entry<Integer, AreaMonsterList> entry : monsterMap.entrySet()) {
+				int level = levelMap.containsKey(entry.getKey()/100) ? levelMap.get(entry.getKey()/100) : 0;
 				if(refresh.getLevel() == entry.getKey()%100){
 					int oldcount = monstercount.containsKey(entry.getKey()) ? monstercount.get(entry.getKey()) : 0;
 					AreaMonsterList list = entry.getValue();
@@ -311,6 +313,7 @@ public class AreaRedisService extends RedisService{
 						if(monster == null)
 							break;
 						AreaMonster.Builder builder = AreaMonster.newBuilder(monster);
+						builder.setLevel(Math.max(1, level-5+nextInt(11)));
 						//add position
 						Position position = randPosition(positionMap.get(builder.getBelongto()+"").getPositionList());
 						Iterator<AreaMonster> iter = monsters.values().iterator();
@@ -325,7 +328,7 @@ public class AreaRedisService extends RedisService{
 						builder.setX(position.getX());
 						builder.setY(position.getY());
 						saveMonster(builder.build(), user);
-						monsters.put(builder.getId()+"", builder.build());
+						monsters.put(builder.getPositionid()+"", builder.build());
 						oldcount++;
 					}
 				}
@@ -339,8 +342,8 @@ public class AreaRedisService extends RedisService{
 		return positions.get(index);
 	}
 	
-	public AreaMonster getMonster(int id,UserBean user){
-		String value = this.hget(AREAMONSTER+user.getId(), id+"");
+	public AreaMonster getMonster(int positionid,UserBean user){
+		String value = this.hget(AREAMONSTER+user.getId(), positionid+"");
 		AreaMonster.Builder builder = AreaMonster.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -349,6 +352,15 @@ public class AreaRedisService extends RedisService{
 //			saveMonster(monster);
 			return null;
 		}
+	}
+
+	public Map<Integer, Integer> getLevels(UserBean user){
+		Map<String, String> value = hget(RedisKey.AREALEVEL+user.getId());
+		Map<Integer, Integer> result = new HashMap<Integer, Integer>();
+		for(Entry<String, String> entry : value.entrySet()){
+			result.put(Integer.parseInt(entry.getKey()), Integer.parseInt(entry.getValue()));
+		}
+		return result;
 	}
 
 	public int getLevel(int id, UserBean user){
@@ -371,12 +383,12 @@ public class AreaRedisService extends RedisService{
 
 	public void saveMonster(AreaMonster monster,UserBean user) {
 		String key = AREAMONSTER+user.getId();
-		this.hput(key, monster.getId()+"", formatJson(monster));
+		this.hput(key, monster.getPositionid()+"", formatJson(monster));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
-	public void deleteMonster(int monsterId,UserBean user) {
-		this.hdelete(AREAMONSTER+user.getId(), monsterId+"");
+	public void deleteMonster(int positionid,UserBean user) {
+		this.hdelete(AREAMONSTER+user.getId(), positionid+"");
 	}
 
 	public Map<String, AreaResource> getResources(UserBean user){

@@ -117,12 +117,12 @@ public class AreaFightService extends FightService{
 		redis.costEnergy(user);
 	}
 
-	public boolean AttackMonster(int id, UserBean user, MultiReward.Builder rewards){
-		AreaMonster monster = redis.getMonster(id, user);
+	public boolean AttackMonster(int positionid, UserBean user, MultiReward.Builder rewards){
+		AreaMonster monster = redis.getMonster(positionid, user);
 		if(monster == null)
 			return false;
-		redis.deleteMonster(monster.getId(), user);
-		AreaMonsterReward monsterreward = redis.getAreaMonsterReward(id);
+		redis.deleteMonster(monster.getPositionid(), user);
+		AreaMonsterReward monsterreward = redis.getAreaMonsterReward(monster.getId());
 		for(WeightReward weightreward : monsterreward.getLootList()){
 			rewards.addLoot(randReward(weightreward));
 		}

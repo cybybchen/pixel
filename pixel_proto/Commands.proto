@@ -1462,7 +1462,7 @@ message ResponseAreaResourceCommand {
 }
 
 message RequestAttackMonsterCommand {//区域争夺打怪物
-	required int32 id = 1;
+	required int32 positionid = 1;
 	optional bool ret = 2;
 }
 
