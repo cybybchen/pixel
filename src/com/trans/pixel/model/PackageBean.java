@@ -103,7 +103,7 @@ public class PackageBean {
 		bean.setItemcount(json.getInt(ITEMCOUNT));
 		bean.setWeightall(json.getInt(WEIGHTALL));
 		bean.setCyb(json.getInt(CYB));
-		bean.setEndTime(json.getString(ENDTIME));
+		bean.setEndTime(TypeTranslatedUtil.jsonGetString(json, ENDTIME));
 		
 		List<ItemBean> list = new ArrayList<ItemBean>();
 		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, ITEM);
