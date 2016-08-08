@@ -350,7 +350,7 @@ public class ActivityService {
 		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Kaifu2 kaifu2 = it.next().getValue();
-			if (isInKaifuActivityTime(kaifu2.getLasttime(), serverId)) 
+			if (kaifu2.getLasttime() <= 0 || getKaifuDays(serverId) != kaifu2.getLasttime()) 
 				return;
 			int id = kaifu2.getId();
 			if (!activityRedisService.hasKaifu2RewardSend(serverId, id)) {

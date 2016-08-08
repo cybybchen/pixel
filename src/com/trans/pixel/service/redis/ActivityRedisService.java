@@ -240,7 +240,7 @@ public class ActivityRedisService extends RedisService {
 	public void setKaifu2SendRewardRecord(int serverId, int type) {
 		String key = buildKaifu2SendRewardRedisKey(serverId);
 		sadd(key, "" + type);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
+//		expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}
 	
 	public boolean hasKaifu2RewardSend(int serverId, int type) {
