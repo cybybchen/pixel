@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -233,7 +234,7 @@ public class UnionService extends FightService{
 		if(isBloodFighting(id, user))
 			return ErrorConst.BLOOD_FIGHT_BUSY;
 		if(id == user.getId()){
-			if(user.getUnionJob() == 3){
+			if(user.getUnionJob() == UnionConst.UNION_HUIZHANG){
 				if(delete(user))
 					return SuccessConst.DELETE_UNION_SUCCESS;
 				else
@@ -246,10 +247,10 @@ public class UnionService extends FightService{
 			userService.cache(user.getServerId(), user.buildShort());
 			return SuccessConst.QUIT_UNION_SUCCESS;
 		}else{
-			if(user.getUnionJob() < 2)
+			if(user.getUnionJob() < UnionConst.UNION_FUHUIZHANG)
 				return ErrorConst.PERMISSION_DENIED;
 			UserBean bean = userService.getOther(id);
-			if(bean.getUnionJob() >= 1 && user.getUnionJob() < 3)
+			if(bean.getUnionJob() >= UnionConst.UNION_ZHANGLAO && user.getUnionJob() < UnionConst.UNION_HUIZHANG)
 				return ErrorConst.PERMISSION_DENIED;
 			redis.quit(id, user);
 			bean.setUnionId(0);
@@ -263,7 +264,7 @@ public class UnionService extends FightService{
 	}
 	
 	public boolean delete(UserBean user) {
-		if(user.getUnionJob() == 3 && redis.getNumOfMembers(user) <= 1){
+		if(user.getUnionJob() == UnionConst.UNION_HUIZHANG && redis.getNumOfMembers(user) <= 1){
 			redis.deleteMembers(user);
 			redis.deleteUnion(user);
 			unionMapper.deleteUnion(user.getUnionId());
@@ -331,7 +332,7 @@ public class UnionService extends FightService{
 				if(builder.getCount() >= builder.getMaxCount())
 					return ErrorConst.UNION_FULL;
 				bean.setUnionId(user.getUnionId());
-				bean.setUnionJob(0);
+				bean.setUnionJob(UnionConst.UNION_HUIZHONG);
 				userService.updateUser(bean);
 				userService.cache(user.getServerId(), bean.buildShort());
 				redis.saveMember(bean.getId(), user);
@@ -357,29 +358,29 @@ public class UnionService extends FightService{
 	}
 	
 	public ResultConst handleMember(long id, int job, UserBean user) {
-		if(user.getUnionJob() < 3)
+		if(user.getUnionJob() < UnionConst.UNION_HUIZHANG)
 			return ErrorConst.PERMISSION_DENIED;
 		if(user.getId() == id)
 			return ErrorConst.PERMISSION_DENIED;
 		int vicecount = 0;
 		int eldercount = 0;
-		if(job == 2 || job == 1){
+		if(job == UnionConst.UNION_FUHUIZHANG || job == UnionConst.UNION_ZHANGLAO){
 			List<UserInfo> members = redis.getMembers(user);
 			for(UserInfo member : members){
-				if(member.getUnionJob() == 2)
+				if(member.getUnionJob() == UnionConst.UNION_FUHUIZHANG)
 					vicecount++;
-				else if(member.getUnionJob() == 1)
+				else if(member.getUnionJob() == UnionConst.UNION_ZHANGLAO)
 					eldercount++;
 			}
-			if(job == 2 && vicecount >= 1)
+			if(job == UnionConst.UNION_FUHUIZHANG && vicecount >= 1)
 				return ErrorConst.UNION_VICE_FULL;
-			if(job == 1 && eldercount >= 4)
+			if(job == UnionConst.UNION_ZHANGLAO && eldercount >= 4)
 				return ErrorConst.UNION_ELDER_FULL;
 		}
 		UserBean bean = userService.getOther(id);
 		if(bean.getUnionId() == user.getUnionId()){
-			if(job == 3){//会长转让
-				user.setUnionJob(0);
+			if(job == UnionConst.UNION_HUIZHANG){//会长转让
+				user.setUnionJob(UnionConst.UNION_HUIZHONG);
 				redis.saveMember(user.getId(), user);
 				userService.updateUser(user);
 				userService.cache(user.getServerId(), user.buildShort());
@@ -402,7 +403,7 @@ public class UnionService extends FightService{
 			Team team = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, teamid, team);
 			redis.attack(builder.getAttackId(), user);
-		}else if(user.getUnionJob() >= 2 && attackId != 0 && redis.now() > builder.getAttackCloseTime()){
+		}else if(user.getUnionJob() >= UnionConst.UNION_FUHUIZHANG && attackId != 0 && redis.now() > builder.getAttackCloseTime()){
 			Union.Builder defendUnion = Union.newBuilder();
 			builder.setAttackId(attackId);
 			builder.setAttackCloseTime(redis.today(24));
