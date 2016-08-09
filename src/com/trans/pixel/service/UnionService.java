@@ -216,7 +216,7 @@ public class UnionService extends FightService{
 		unionMapper.createUnion(union);
 		redis.saveUnion(union.build(), user);
 		user.setUnionId(union.getId());
-		user.setUnionJob(3);//会长
+		user.setUnionJob(UnionConst.UNION_HUIZHANG);//会长
 		userService.updateUser(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		Union.Builder builder = Union.newBuilder(union.build());
@@ -242,7 +242,7 @@ public class UnionService extends FightService{
 			}
 			redis.quit(id, user);
 			user.setUnionId(0);
-			user.setUnionJob(0);
+			user.setUnionJob(UnionConst.UNION_HUIZHONG);
 			userService.updateUser(user);
 			userService.cache(user.getServerId(), user.buildShort());
 			return SuccessConst.QUIT_UNION_SUCCESS;
@@ -254,7 +254,7 @@ public class UnionService extends FightService{
 				return ErrorConst.PERMISSION_DENIED;
 			redis.quit(id, user);
 			bean.setUnionId(0);
-			bean.setUnionJob(0);
+			bean.setUnionJob(UnionConst.UNION_HUIZHONG);
 			userService.updateUser(bean);
 			userService.cache(user.getServerId(), bean.buildShort());
 			return SuccessConst.QUIT_UNION_MEMBER_SUCCESS;
@@ -269,7 +269,7 @@ public class UnionService extends FightService{
 			redis.deleteUnion(user);
 			unionMapper.deleteUnion(user.getUnionId());
 			user.setUnionId(0);
-			user.setUnionJob(0);
+			user.setUnionJob(UnionConst.UNION_HUIZHONG);
 			userService.updateUser(user);
 			return true;
 		}
