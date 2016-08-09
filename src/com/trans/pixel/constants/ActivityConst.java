@@ -24,7 +24,7 @@ public class ActivityConst {
 	/**
 	 * 累计钻石抽奖
 	 */
-	public static final int RICHANG_LEIJI_LOTTERY_JEWEL = 305;
+	public static final int LEIJI_LOTTERY_JEWEL = 6;
 	/**
 	 * 热血竞技
 	 */
@@ -50,7 +50,7 @@ public class ActivityConst {
 	 * 所有日常活动
 	 */
 	public static final int[] RICHANG_TYPES = {DANBI_RECHARGE, LEIJI_COST_JEWEL, LEIJI_RECHARGE,
-		RICHANG_LEIJI_LOTTERY_JEWEL, LADDER_ATTACK, RICHANG_PVP_ATTACK_ENEMY, PVP_ATTACK_BOSS_SUCCESS, 
+		LEIJI_LOTTERY_JEWEL, LADDER_ATTACK, RICHANG_PVP_ATTACK_ENEMY, PVP_ATTACK_BOSS_SUCCESS, 
 		RICHANG_MOJING_STORE, RICHANG_UNION_ATTACK}; 
 	
 	

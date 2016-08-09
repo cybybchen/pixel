@@ -250,8 +250,14 @@ public class ActivityService {
 		/**
 		 * achieve type 106
 		 */
-		if (costType == RewardConst.JEWEL || costType == LotteryConst.LOOTERY_SPECIAL_TYPE)
+		if (costType == RewardConst.JEWEL || costType == LotteryConst.LOOTERY_SPECIAL_TYPE) {
 			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOTTERY, count);
+			
+			/**
+			 * 累计钻石抽奖的日常
+			 */
+			this.sendRichangScore(user, ActivityConst.LEIJI_LOTTERY_JEWEL, count);
+		}
 		
 		/**
 		 * 累计抽奖的开服活动
