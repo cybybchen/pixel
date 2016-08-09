@@ -143,4 +143,9 @@
 <loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="34003" counta="1" countb="0" weighta="100" weightb="0" />
 </enemy>
+<enemy id="3004" name="夏日裸奔少年" >
+<loot order="1" weightall="100" itemid="1003" counta="100" countb="0" weighta="100" weightb="0" />
+<loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
+<loot order="3" weightall="100" itemid="40104" counta="2" countb="0" weighta="100" weightb="0" />
+</enemy>
 </data>

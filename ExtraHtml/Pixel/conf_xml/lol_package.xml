@@ -1512,4 +1512,10 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="40104" name="蓝色胖次" img="40104" rare="2" description="可在活动-胖次大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-17 23:59:59" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 </data>
