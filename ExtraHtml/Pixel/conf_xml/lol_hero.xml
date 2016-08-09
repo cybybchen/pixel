@@ -800,7 +800,7 @@
 <equip equipid="2" arm1="14075" arm2="14016" arm3="14014" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="108" name="锤石" img="8" description="手提灯笼的引路人，常常出现在昏暗的街角。" handbook="0" zhanli="100" ad="46" ad_rare="6" ap="36" ap_rare="" arm="18" arm_rare="" mr="30" mr_rare="" adi="" adi_rare="2.5" api="" api_rare="2.5" rating="" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="108" name="锤石" img="8" description="手提灯笼的引路人，常常出现在昏暗的街角。" handbook="1" zhanli="100" ad="46" ad_rare="6" ap="36" ap_rare="" arm="18" arm_rare="" mr="30" mr_rare="" adi="" adi_rare="2.5" api="" api_rare="2.5" rating="" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="10801" skill="地狱诅咒" unlock="1" />
 <skill  skillid="10802" skill="魂引之灯" unlock="2" />
