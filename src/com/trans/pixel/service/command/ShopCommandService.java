@@ -701,9 +701,10 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void purchaseContract(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getFreeContractTime() <= System.currentTimeMillis() - 70 * TimeConst.MILLIONSECONDS_PER_HOUR)
+		if(user.getFreeContractTime() <= System.currentTimeMillis() - 70 * TimeConst.MILLIONSECONDS_PER_HOUR) {
 			user.setFreeContractTime(System.currentTimeMillis());
-		else if(user.getPurchaseContractLeft() <= 0){
+			logService.sendQiyueLog(user.getServerId(), user.getId(), cmd.getHeroid(), 0);
+		} else if(user.getPurchaseContractLeft() <= 0){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_PURCHASE_TIME);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
@@ -713,8 +714,10 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 			return;
-		}else
+		}else {
 			user.setPurchaseContractLeft(user.getPurchaseContractLeft()-1);
+			logService.sendQiyueLog(user.getServerId(), user.getId(), cmd.getHeroid(), 1);
+		}
 		ContractWeightList weights = service.getContractWeightList();
 		MultiReward.Builder rewards = service.getContractRewardList();
 		int index = userService.nextInt(weights.getWeightall());
