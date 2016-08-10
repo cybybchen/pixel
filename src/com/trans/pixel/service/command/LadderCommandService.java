@@ -95,10 +95,10 @@ public class LadderCommandService extends BaseCommandService {
 			if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
 				pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
 				MultiReward.Builder rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
-//				MultiReward winrewards = ladderService.getRandLadderWinReward();
-//				rewards.addAllLoot(winrewards.getLootList());
-//				if(!rewards.hasName())
-//					rewards.setName("天梯获胜奖励");
+				MultiReward winrewards = ladderService.getRandLadderWinReward();
+				rewards.addAllLoot(winrewards.getLootList());
+				if(!rewards.hasName())
+					rewards.setName("天梯获胜奖励");
 				if (rewards.getLootList().size() > 0) {
 					rewardService.doRewards(user, rewards.build());
 					pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
