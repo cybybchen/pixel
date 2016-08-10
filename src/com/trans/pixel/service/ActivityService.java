@@ -275,7 +275,8 @@ public class ActivityService {
 		/**
 		 * 热血竞技
 		 */
-		sendRichangScore(user, ActivityConst.LADDER_ATTACK);
+		if (ret)
+			sendRichangScore(user, ActivityConst.LADDER_ATTACK);
 	}
 	
 	public void pvpAttackEnemyActivity(UserBean user, boolean ret) {
