@@ -364,6 +364,21 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_QIYUE:
+				sb.append(LogString.LOGTYPE_QIYUE_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.STATE));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -514,6 +529,16 @@ public class LogService {
 		params.put(LogString.EQUIPID, "" + equipid);
 		
 		sendLog(params, LogString.LOGTYPE_EQUIPUP);
+	}
+	
+	public void sendQiyueLog(int serverId, long userId, int heroid, int state) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.STATE, "" + state);
+		
+		sendLog(params, LogString.LOGTYPE_QIYUE);
 	}
 	
 	private void send(String str) {
