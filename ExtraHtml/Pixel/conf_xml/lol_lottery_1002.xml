@@ -239,7 +239,10 @@
 <equip id="237" itemid="29013" count="5" weight="120" will="0" />
 <equip id="238" itemid="29014" count="5" weight="120" will="0" />
 <equip id="239" itemid="29015" count="5" weight="120" will="0" />
-<equip id="240" itemid="51063" count="1" weight="10" will="0" />
-<equip id="241" itemid="52063" count="1" weight="8" will="0" />
-<equip id="242" itemid="53063" count="1" weight="6" will="0" />
+<equip id="240" itemid="51063" count="1" weight="25" will="0" />
+<equip id="241" itemid="52063" count="1" weight="20" will="0" />
+<equip id="242" itemid="53063" count="1" weight="15" will="0" />
+<equip id="243" itemid="51108" count="1" weight="10" will="0" />
+<equip id="244" itemid="52108" count="1" weight="8" will="0" />
+<equip id="245" itemid="53108" count="1" weight="6" will="0" />
 </data>

@@ -118,5 +118,6 @@
 <equip id="116" itemid="29013" count="3" weight="50" will="0" />
 <equip id="117" itemid="29014" count="3" weight="50" will="0" />
 <equip id="118" itemid="29015" count="3" weight="50" will="0" />
-<equip id="119" itemid="53063" count="1" weight="100" will="0" />
+<equip id="119" itemid="53063" count="1" weight="80" will="0" />
+<equip id="120" itemid="53108" count="1" weight="100" will="0" />
 </data>
