@@ -38,9 +38,11 @@ public class MessageRedisService extends RedisService {
 				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
 					MessageBoardBean messageBoardBean = getMessageBoard(serverId, messageBoard.getValue());
-					UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-					messageBoardBean.setVip(userInfo.getVip());
-					messageBoardList.add(messageBoardBean);
+					if (messageBoardBean != null) {
+						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
+						messageBoardBean.setVip(userInfo.getVip());
+						messageBoardList.add(messageBoardBean);
+					}
 				}
 				
 				return messageBoardList;
@@ -127,7 +129,9 @@ public class MessageRedisService extends RedisService {
 //				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
 				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					messageBoardList.add(getUnionMessageBoard(unionId, messageBoard.getValue()));
+					MessageBoardBean messageBoardBean = getUnionMessageBoard(unionId, messageBoard.getValue());
+					if (messageBoardBean != null)
+						messageBoardList.add(messageBoardBean);
 				}
 				
 				return messageBoardList;
