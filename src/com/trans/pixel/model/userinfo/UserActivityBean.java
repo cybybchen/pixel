@@ -79,7 +79,9 @@ public class UserActivityBean {
 			rewardOrder = rewardOrder + SPLIT + orderId;
 		}
 		
-		rewardOrder = rewardOrder.substring(1);
+		
+		if(rewardOrder.length() > 0)
+			rewardOrder = rewardOrder.substring(1);
 		
 		return rewardOrder;
 	}
