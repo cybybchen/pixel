@@ -18,7 +18,7 @@
 	    VALUES(#{userId}, #{rechargeId}, #{validTime}, #{purchase})
 	    ON 
 	    duplicate key update
-	    user_id=#{userId}, recharge_id=#{rechargeId}
+	    valid_time=#{validTime}, purchase=#{purchase}
 	</update>
 	
 </mapper>
