@@ -12,12 +12,17 @@ import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class HeroTest extends BaseTest {
-//	@Test
+	@Test
+	public void test(){
+		login();
+		testHeroLevelUpTest();
+	}
+	
 	public void testHeroLevelUpTest() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestHeroLevelUpCommand.Builder b = RequestHeroLevelUpCommand.newBuilder();
-		b.setHeroId(1);
+		b.setHeroId(42);
 		b.setInfoId(1);
 		b.setLevelUpType(1);
 		requestBuilder.setHeroLevelUpCommand(b.build());
