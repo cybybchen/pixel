@@ -85,6 +85,7 @@ public class UserBean {
 	private int growExpCountStatus = 0;
 	private String version = "";
 	private int myactive = 0;
+	private String idfa = "";
 	/**
 	 * 当前活跃度
 	 */
@@ -948,6 +949,16 @@ public class UserBean {
 	}
 	public void setFailed(int failed) {
 		this.failed = failed;
+	}
+	/**
+	 * 设备唯一标识符
+	 * @return
+	 */
+	public String getIdfa() {
+		return idfa;
+	}
+	public void setIdfa(String idfa) {
+		this.idfa = idfa;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

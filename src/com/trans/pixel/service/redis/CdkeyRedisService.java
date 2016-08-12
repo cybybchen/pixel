@@ -175,4 +175,12 @@ public class CdkeyRedisService extends RedisService{
 //		}else
 			return null;
 	}
+	
+	public void addJustsingCdkRecord(String idfa, int type) {
+		this.sadd(RedisKey.JUSTSING_CDK_PREFIX + type, idfa);
+	}
+	
+	public boolean hasinJustsingCdkRecord(String idfa, int type) {
+		return this.sismember(RedisKey.JUSTSING_CDK_PREFIX + type, idfa);
+	}
 }

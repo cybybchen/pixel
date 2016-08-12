@@ -602,7 +602,7 @@ public class DateUtil {
 			date1 = df.parse(time1);
 			date2 = df.parse(time2);
 		} catch (ParseException e) {
-			
+			return true;
 		}  
 		
 		return date1.before(date2);

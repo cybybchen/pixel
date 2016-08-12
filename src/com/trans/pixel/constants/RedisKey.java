@@ -236,5 +236,9 @@ public class RedisKey {
 	//heart beat
 	public static final String HEART_BEAT_PREFIX = PREFIX + "heartbeat_";
 	
+	//justsing activity cdk record type
+	public static final String JUSTSING_CDK_RECORD_PREFIX = PREFIX + "justsing_record_cdk_";
+	public static final String JUSTSING_CDK_PREFIX = PREFIX + "justsing_cdk_";
+	public static final String JUSTSING_ACTIVITY_AVAILABLE_TIME_KEY = "justsing_activity_available_time";
 	
 }

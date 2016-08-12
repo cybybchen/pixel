@@ -8,11 +8,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LogString;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.StringUtil;
 
 @Service
@@ -20,6 +20,8 @@ public class LogCommandService extends BaseCommandService {
 
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserService userService;
 	
 	public void log(RequestLogCommand cmd, Builder responseBuilder, UserBean user) {
 		int serverId = 0;
@@ -31,6 +33,10 @@ public class LogCommandService extends BaseCommandService {
 		Map<String, String> params = initParams(serverId, userId, cmd);
 		logService.sendLog(params, cmd.getLogtype());
 		
+		if (user != null) {
+			user.setIdfa(params.get(LogString.IDFA));
+			userService.updateUser(user);
+		}
 		// responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.LOG_SEND_SUCCESS));
 	}
 	

@@ -19,6 +19,7 @@ import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.HeroConst;
+import com.trans.pixel.constants.JustsingConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.NoticeConst;
