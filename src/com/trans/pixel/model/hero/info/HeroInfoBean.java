@@ -160,6 +160,8 @@ public class HeroInfoBean {
 	}
 	public static HeroInfoBean fromJson(String jsonString, final long userId) {
 		HeroInfoBean bean = fromJson(jsonString);
+		if(bean == null)
+			return null;
 		bean.setUserId(userId);
 		return bean;
 	}
