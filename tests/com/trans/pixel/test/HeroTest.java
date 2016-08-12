@@ -34,7 +34,6 @@ public class HeroTest extends BaseTest {
         Assert.assertNotNull(response);
 	}
 	
-	@Test
 	public void testEquipLevelUpTest() {
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
@@ -52,24 +51,23 @@ public class HeroTest extends BaseTest {
         Assert.assertNotNull(response);
 	}
 	
-//	@Test
-//	public void testFenjieHeroTest() {
-//		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
-//		requestBuilder.setHead(head());
-//		RequestFenjieHeroCommand.Builder b = RequestFenjieHeroCommand.newBuilder();
-//		if(loginResponse.getGetUserHeroCommand().getUserHeroCount() == 0)
-//			return;
-//		HeroInfo userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
-//		FenjieHeroInfo.Builder fenjieHero = FenjieHeroInfo.newBuilder();
-//		fenjieHero.setHeroId(userHero.getHeroId());
-//		fenjieHero.setInfoId(userHero.getInfoId());
-//		b.addFenjieHero(fenjieHero.build());
-//		builder.setFenjieHeroCommand(b.build());
-//		
-//		RequestCommand reqcmd = builder.build();
-//		byte[] reqData = reqcmd.toByteArray();
-//        InputStream input = new ByteArrayInputStream(reqData);
-//        ResponseCommand response = http.post(url, input);
-//        Assert.assertNotNull(response);
-//	}
+	public void testFenjieHeroTest() {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestFenjieHeroCommand.Builder b = RequestFenjieHeroCommand.newBuilder();
+		if(loginResponse.getGetUserHeroCommand().getUserHeroCount() == 0)
+			return;
+		HeroInfo userHero = loginResponse.getGetUserHeroCommand().getUserHero(0);
+		FenjieHeroInfo.Builder fenjieHero = FenjieHeroInfo.newBuilder();
+		fenjieHero.setHeroId(userHero.getHeroId());
+		fenjieHero.setInfoId(userHero.getInfoId());
+		b.addFenjieHero(fenjieHero.build());
+		builder.setFenjieHeroCommand(b.build());
+		
+		RequestCommand reqcmd = builder.build();
+		byte[] reqData = reqcmd.toByteArray();
+       InputStream input = new ByteArrayInputStream(reqData);
+       ResponseCommand response = http.post(url, input);
+       Assert.assertNotNull(response);
+	}
 }
