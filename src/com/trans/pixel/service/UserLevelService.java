@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.JustsingConst;
 import com.trans.pixel.constants.LevelConst;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.mapper.UserLevelMapper;
@@ -25,6 +26,8 @@ public class UserLevelService {
 	private UserLevelMapper userLevelMapper;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private JustsingActivityService justsingActivityService;
 	
 	public UserLevelBean selectUserLevelRecord(long userId) {
 		UserLevelBean userLevelRecordBean = userLevelRedisService.selectUserLevelRecord(userId);
@@ -70,6 +73,13 @@ public class UserLevelService {
 				 * 推图的活动
 				 */
 				activityService.levelActivity(user);
+				
+				/**
+				 * justsing activity
+				 */
+				if (levelId >= JustsingConst.JUSTSING_LIMIT_LEVEL)
+					justsingActivityService.sendJustsingCdk(user, JustsingConst.TYPE_AFTER_SPECIALLEVEL);
+				
 				break;
 			case LevelConst.DIFF_KUNNAN:
 				userLevelRecord.setKunnanLevel(UserLevelBean.updateXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg));

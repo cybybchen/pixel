@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.JustsingConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -27,6 +28,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackService;
+import com.trans.pixel.service.JustsingActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
@@ -63,6 +65,8 @@ public class UserCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private JustsingActivityService justsingActivityService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -145,6 +149,11 @@ public class UserCommandService extends BaseCommandService {
 			 * register activity
 			 */
 			activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_REGISTER);
+			
+			/**
+			 * justsing activity
+			 */
+			justsingActivityService.sendJustsingCdk(user, JustsingConst.TYPE_REGISTER);
 		}
 
 		user.setVersion(head.getVersion()+"");

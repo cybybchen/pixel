@@ -245,4 +245,10 @@ public class RedisKey {
 	public static final String CLEAR_LEVEL_KEY = PREFIX + CONFIG_PREFIX + "clear_level";
 	public static final String CLEAR_HERO_KEY = PREFIX + CONFIG_PREFIX + "clear_hero";
 	public static final String CLEAR_ATTRIBUTE_KEY = PREFIX + CONFIG_PREFIX + "clear_attribute";
+
+	//justsing activity cdk record type
+	public static final String JUSTSING_CDK_RECORD_PREFIX = PREFIX + "justsing_record_cdk_";
+	public static final String JUSTSING_CDK_PREFIX = PREFIX + "justsing_cdk_";
+	public static final String JUSTSING_ACTIVITY_AVAILABLE_TIME_KEY = "justsing_activity_available_time";
+	
 }
