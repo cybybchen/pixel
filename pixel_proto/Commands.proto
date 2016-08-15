@@ -8,6 +8,7 @@ message UserInfo {
 	optional string name = 3;
 	optional int32 serverId = 4;
 	optional int32 unionId = 14;
+	optional string unionName = 64;
 	optional int32 unionJob = 15;
 	optional int32 vip = 19;
 	optional int32 jewel = 5;

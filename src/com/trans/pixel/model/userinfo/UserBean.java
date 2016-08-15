@@ -13,6 +13,7 @@ public class UserBean {
 	private String name = "";
 	private int serverId = 0;
 	private int unionId = 0;
+	private String unionName = "";
 	private int unionJob = 0;
 	private int vip = 0;
 	private int jewel = 0;
@@ -509,6 +510,18 @@ public class UserBean {
 		this.unionId = unionId;
 	}
 	/**
+	 * 所属工会
+	 */
+	public String getUnionName() {
+		return unionName;
+	}
+	/**
+	 * 所属工会
+	 */
+	public void setUnionName(String unionName) {
+		this.unionName = unionName;
+	}
+	/**
 	 * 拥有钻石
 	 */
 	public int getJewel() {
@@ -985,6 +998,7 @@ public class UserBean {
 		builder.setVip(vip);
 		builder.setZhanli(zhanliMax);
 		builder.setUnionId(unionId);
+		builder.setUnionName(unionName);
 		builder.setUnionJob(unionJob);
 		builder.setLastLoginTime(lastLoginTime);
 		return builder.build();
