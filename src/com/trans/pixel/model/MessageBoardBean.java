@@ -22,6 +22,7 @@ public class MessageBoardBean {
 	private int icon = 0;
 	private List<MessageBean> messageList = new ArrayList<MessageBean>();
 	private int vip = 0;
+	private int job = 0;//工会职位
 	public long getTimeStamp() {
 		return timeStamp;
 	}
@@ -70,6 +71,12 @@ public class MessageBoardBean {
 	public void setVip(int vip) {
 		this.vip = vip;
 	}
+	public int getJob() {
+		return job;
+	}
+	public void setJob(int job) {
+		this.job = job;
+	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();
 		builder.setId(id);
@@ -78,6 +85,7 @@ public class MessageBoardBean {
 		builder.setUserId(userId);
 		builder.setUserName(userName);
 		builder.setIcon(icon);
+		builder.setJob(job);
 		List<Msg> msgBuilderList = new ArrayList<Msg>();
 		for (MessageBean message : messageList) {
 			msgBuilderList.add(message.buildMsg());
@@ -96,6 +104,7 @@ public class MessageBoardBean {
 		json.put(MESSAGE, message);
 		json.put(MESSAGE_LIST, messageList);
 		json.put(ICON, icon);
+		json.put(JOB, job);
 		
 		return json.toString();
 	}
@@ -119,6 +128,7 @@ public class MessageBoardBean {
 		}
 		bean.setMessageList(list);
 		bean.setIcon(TypeTranslatedUtil.jsonGetInt(json, ICON));
+		bean.setJob(TypeTranslatedUtil.jsonGetInt(json, JOB));
 
 		return bean;
 	}
@@ -163,4 +173,5 @@ public class MessageBoardBean {
 	private static final String MESSAGE = "message";
 	private static final String MESSAGE_LIST = "message_list";
 	private static final String ICON = "icon";
+	private static final String JOB = "job";
 }

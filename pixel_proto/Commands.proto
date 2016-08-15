@@ -728,6 +728,7 @@ message MessageBoard {
 	repeated Msg msg = 6;
 	required int32 icon = 7;
 	optional int32 vip = 8;
+	optional int32 job = 9;//工会职位
 }
 
 message Msg {

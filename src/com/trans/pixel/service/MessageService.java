@@ -75,7 +75,7 @@ public class MessageService {
 	}
 	
 	private void createMessageBoard(UserBean user, String message) {
-		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message, user.getIcon());
+		MessageBoardBean messageBoard = initMessageBoard(user, message);
 		messageRedisService.addMessageBoard(user.getServerId(), messageBoard);
 		messageRedisService.addMessageBoardValue(user.getServerId(), messageBoard);
 	}
@@ -105,7 +105,7 @@ public class MessageService {
 	}
 	
 	private void createUnionMessageBoard(UserBean user, String message) {
-		MessageBoardBean messageBoard = initMessageBoard(user.getId(), user.getUserName(), message, user.getIcon());
+		MessageBoardBean messageBoard = initMessageBoard(user, message);
 		messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 		messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 	}
@@ -125,14 +125,15 @@ public class MessageService {
 		return null;
 	}
 	
-	private MessageBoardBean initMessageBoard(long userId, String userName, String message, int icon) {
+	private MessageBoardBean initMessageBoard(UserBean user, String message) {
 		MessageBoardBean messageBoard = new MessageBoardBean();
 		messageBoard.setMessage(message);
-		messageBoard.setUserId(userId);
-		messageBoard.setUserName(userName);
-		messageBoard.setIcon(icon);
+		messageBoard.setUserId(user.getId());
+		messageBoard.setUserName(user.getUserName());
+		messageBoard.setIcon(user.getIcon());
 		messageBoard.setTimeStamp(System.currentTimeMillis());
 		messageBoard.setId(System.currentTimeMillis());
+		messageBoard.setJob(user.getUnionJob());
 		
 		return messageBoard;
 	}
