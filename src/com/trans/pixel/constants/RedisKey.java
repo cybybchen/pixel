@@ -249,6 +249,6 @@ public class RedisKey {
 	//justsing activity cdk record type
 	public static final String JUSTSING_CDK_RECORD_PREFIX = PREFIX + "justsing_record_cdk_";
 	public static final String JUSTSING_CDK_PREFIX = PREFIX + "justsing_cdk_";
-	public static final String JUSTSING_ACTIVITY_AVAILABLE_TIME_KEY = "justsing_activity_available_time";
+	public static final String JUSTSING_ACTIVITY_AVAILABLE_TIME_KEY = PREFIX + "justsing_activity_available_time";
 	
 }
