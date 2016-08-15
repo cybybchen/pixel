@@ -109,6 +109,11 @@ public class UserCommandService extends BaseCommandService {
 		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		userInfoBuilder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
+		
+		/**
+		 * justsing activity
+		 */
+		justsingActivityService.sendJustsingCdk(user, JustsingConst.TYPE_REGISTER);
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {
@@ -149,11 +154,6 @@ public class UserCommandService extends BaseCommandService {
 			 * register activity
 			 */
 			activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_REGISTER);
-			
-			/**
-			 * justsing activity
-			 */
-			justsingActivityService.sendJustsingCdk(user, JustsingConst.TYPE_REGISTER);
 		}
 
 		user.setVersion(head.getVersion()+"");
