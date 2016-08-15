@@ -26,8 +26,8 @@ public class BaseTest {
     //define device user
     protected static int GAME_VERSION = 1;
     protected static int VERSION = 1;
-    protected static int SERVER_ID = 10012;
-    protected static String ACCOUNT = "DW:168621";
+    protected static int SERVER_ID = 10001;
+    protected static String ACCOUNT = "conghui";
     protected static String USER_NAME = ACCOUNT;
     protected static long USER_ID = 791;
     protected static String DEVICE_ID = "iphone5";
