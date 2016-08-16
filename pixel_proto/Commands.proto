@@ -1173,6 +1173,11 @@ message UserFood {
 	required int32 count = 2;
 }
 
+message BosskillRecord {
+	required int32 bossId = 1;
+	required int32 count = 2;	
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2063,6 +2068,15 @@ message ResponseClearInfoCommand {
 message RequestChoseClearInfoCommand {
 	required bool refused = 1;
 	optional int32 id = 2;
+}
+
+message RequestSubmitBosskillCommand {
+	required int32 bossId = 1;
+}
+
+message ResponseBosskillCommand {
+	repeated int32 bossId = 1;
+	repeated BosskillRecord record = 2;	
 }
 
 message RequestCommand {

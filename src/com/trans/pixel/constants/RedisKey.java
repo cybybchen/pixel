@@ -251,4 +251,7 @@ public class RedisKey {
 	public static final String JUSTSING_CDK_PREFIX = PREFIX + "justsing_cdk_";
 	public static final String JUSTSING_ACTIVITY_AVAILABLE_TIME_KEY = PREFIX + "justsing_activity_available_time";
 	
+	//bosskill
+	public static final String BOSSKILL_RECORD_PREFIX = PREFIX + "bosskill_";
+	
 }
