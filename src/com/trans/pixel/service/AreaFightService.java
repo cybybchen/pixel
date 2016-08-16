@@ -239,9 +239,9 @@ public class AreaFightService extends FightService{
 			if(builder.getClosetime() < redis.now())
 				return ErrorConst.JOIN_END;
 			if(user.getUnionId() == builder.getOwner().getUnionId() && user.getUnionId() != 0){//防守
-				builder.addDefenses(user.buildUnionShort());
+				builder.addDefenses(user.buildShort());
 			}else{//进攻
-				builder.addAttacks(user.buildUnionShort());
+				builder.addAttacks(user.buildShort());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
