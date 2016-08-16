@@ -85,7 +85,7 @@ public class AreaCommandService extends BaseCommandService{
 			return;
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.setName("恭喜你击杀了怪物");
-		if(!service.AttackMonster(cmd.getId(), user, rewards)) {
+		if(!service.AttackMonster(cmd.getPositionid(), user, rewards)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));

@@ -8,6 +8,7 @@ message UserInfo {
 	optional string name = 3;
 	optional int32 serverId = 4;
 	optional int32 unionId = 14;
+	optional string unionName = 64;
 	optional int32 unionJob = 15;
 	optional int32 vip = 19;
 	optional int32 jewel = 5;
@@ -173,6 +174,13 @@ message HeadInfo
 	optional int32 onlineStatus = 9;	
 }
 
+message ClearInfo {
+	required int32 position = 1;
+	required int32 clearId = 2;
+	required int32 count = 3;
+	optional int32 id = 4;
+}
+
 message HeroInfo {
 	optional int64 infoId = 1;
 	optional int32 level = 2;
@@ -184,6 +192,8 @@ message HeroInfo {
 	optional int32 heroId = 8;
 	optional int32 position = 9;//useless
 	optional bool isLock = 10;
+	optional int32 count = 11;
+	repeated ClearInfo clear = 12;
 }
 
 message PurchaseCoinReward {
@@ -380,40 +390,48 @@ message AreaBossList {
 	repeated AreaBoss region = 1;
 }
 
-message AreaWeight {
-	required int32 enemyid = 1;
-	required int32 weight = 2;
+message AreaRefresh {
+	required int32 level = 1;
+	required int32 time = 2;
+	required int32 limit = 3;
 }
 
-message AreaTime {
+message AreaRefreshList {
+	repeated AreaRefresh level = 1;
+}
+
+message AreaRefresh2 {
 	required int32 time = 1;
 	required int32 group = 2;
 	required int32 count = 3;
 	required int32 condition = 4;
-	repeated AreaWeight enemy = 5;
+	optional int32 enemyid = 5;
 }
 
-message AreaTimeList {
+message AreaRefresh2List {
 	required int32 id = 1;
-	repeated AreaTime time = 2;
+	repeated AreaRefresh2 time = 2;
 }
 
-message AreaFieldTimeList {
-	repeated AreaTimeList region = 1;
+message AreaRefresh2Lists {
+	repeated AreaRefresh2List region = 1;
 }
 
 message AreaMonster {//区域怪物
 	required int32 id = 1;
 	required string name = 2;
 	optional int32 belongto = 3;//区域ID
+	optional int32 positionid = 9;
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
-	optional int32 group = 6;
-	optional bool killed = 7;//已击杀
+	optional int32 level = 8;
+	optional int32 level1 = 11;
+	optional int32 weight = 10;
 }
 
 message AreaMonsterList {
 	repeated AreaMonster region = 1;
+	optional int32 weightall = 2;
 }
 
 message Position {
@@ -711,6 +729,7 @@ message MessageBoard {
 	repeated Msg msg = 6;
 	required int32 icon = 7;
 	optional int32 vip = 8;
+	optional int32 job = 9;//工会职位
 }
 
 message Msg {
@@ -1100,6 +1119,60 @@ message Activity {
 	required string serverfilter = 9;
 }
 
+message ClearLevelList {
+	repeated ClearLevel level = 1;
+}
+
+message ClearLevel {
+	optional int32 level = 1;
+	optional int32 zhanli = 2;
+	optional int32 count = 3;
+}
+
+message ClearFoodList {
+	repeated ClearFood food = 1;
+}
+
+message ClearFood {
+	optional int32 id = 1;
+	optional int32 count = 2;
+	optional int32 cost = 3;
+}
+
+message ClearHeroList {
+	repeated ClearHero hero = 1;
+}
+
+message ClearHero {
+	optional int32 id = 1;
+	optional int32 handbook = 2;
+	optional int32 verylove1 = 3;
+	optional int32 love1 = 4;
+	optional int32 love2 = 6;
+	optional int32 normal1 = 5;
+	optional int32 normal2 = 7;
+	optional int32 normal3 = 8;
+}
+
+message ClearAttributeList {
+	repeated ClearAttribute attribute = 1;
+}
+
+message ClearAttribute {
+	optional int32 id = 1;
+	optional int32 type = 2;
+	optional int32 position = 3;
+	optional int32 weight = 4;
+	optional int32 count1 = 5;
+	optional int32 count2 = 6;
+	optional int32 interval = 7;
+}
+
+message UserFood {
+	required int32 foodId = 1;
+	required int32 count = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1391,7 +1464,7 @@ message ResponseAreaResourceCommand {
 }
 
 message RequestAttackMonsterCommand {//区域争夺打怪物
-	required int32 id = 1;
+	required int32 positionid = 1;
 	optional bool ret = 2;
 }
 
@@ -1966,6 +2039,32 @@ message RequestGetGrowExpCommand {
 	required int32 order = 1;
 }
 
+message RequestFeedFoodCommand {
+	required int32 heroId = 1;
+	required int32 foodId = 2;
+	required int32 foodCount = 3;
+}
+
+message RequestClearHeroCommand {
+	required int32 heroId = 1;
+	required int32 position = 2;
+	required int32 type = 3;
+	optional int32 count = 4;
+}
+
+message ResponseUserFoodCommand {
+	repeated UserFood userFood = 1;
+}
+
+message ResponseClearInfoCommand {
+	repeated ClearInfo clearInfo = 1;
+}
+
+message RequestChoseClearInfoCommand {
+	required bool refused = 1;
+	optional int32 id = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2097,6 +2196,9 @@ message RequestCommand {
 	optional RequestHeartBeatCommand heartBeatCommand = 90;
 	optional RequestGreenhandCommand greenhandCommand = 91;
 	optional RequestLogCommand logCommand = 92;
+	optional RequestFeedFoodCommand feedFoodCommand = 93;
+	optional RequestClearHeroCommand clearHeroCommand = 94;
+	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2160,6 +2262,8 @@ message ResponseCommand {
 	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
 	optional ResponseUserHeadCommand userHeadCommand = 51;
 	optional ResponseNoticeCommand noticeCommand = 53;
+	optional ResponseUserFoodCommand userFoodCommand = 54;
+	optional ResponseClearInfoCommand clearInfoCommand = 55;
 }
 
 

@@ -40,6 +40,9 @@ public class RedisKey {
 	public final static String PVPMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonsterReward";
 	public static final String USER_POKEDE_PREFIX = PREFIX + "user_pokede_"; 
 	public final static String USER_LIBAOCOUNT_PREFIX = PREFIX+"UserLibaoCount_";
+	public static final String USER_FOOD_PREFIX = PREFIX + "user_food_";
+	public static final String USER_CLEAR_PREFIX = PREFIX + "user_clear_";
+	public static final String USER_LAST_CLEAR_PREFIX = PREFIX + "user_last_clear_";
 
 	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";
@@ -51,6 +54,7 @@ public class RedisKey {
 	public final static String AREARESOURCE_CONFIG = PREFIX+CONFIG_PREFIX+"AreaResource";
 	public final static String AREAMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonsterReward";
 	public final static String AREAEQUIP_CONFIG = PREFIX+CONFIG_PREFIX+"AreaEquip";
+	public final static String AREALEVEL = PREFIX+"AreaLevel_";
 	public final static String PURCHASECOIN_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoin";
 	public final static String PURCHASECOINREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoinReward";
 	public final static String PURCHASECONTRACTWEIGHT_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseContractWeight";
@@ -236,6 +240,12 @@ public class RedisKey {
 	//heart beat
 	public static final String HEART_BEAT_PREFIX = PREFIX + "heartbeat_";
 	
+	//clear 
+	public static final String CLEAR_FOOD_KEY = PREFIX + CONFIG_PREFIX + "clear_food";
+	public static final String CLEAR_LEVEL_KEY = PREFIX + CONFIG_PREFIX + "clear_level";
+	public static final String CLEAR_HERO_KEY = PREFIX + CONFIG_PREFIX + "clear_hero";
+	public static final String CLEAR_ATTRIBUTE_KEY = PREFIX + CONFIG_PREFIX + "clear_attribute";
+
 	//justsing activity cdk record type
 	public static final String JUSTSING_CDK_RECORD_PREFIX = PREFIX + "justsing_record_cdk_";
 	public static final String JUSTSING_CDK_PREFIX = PREFIX + "justsing_cdk_";
