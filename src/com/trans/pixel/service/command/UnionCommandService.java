@@ -56,9 +56,17 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void create(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		Union union = unionService.create(cmd.getIcon(), cmd.getName(), user);
-		if(union == null)
+		if(unionService.isAreaFighting(user.getId(), user)){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.AREA_FIGHT_BUSY);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.AREA_FIGHT_BUSY));
 			return;
+		}
+		Union union = unionService.create(cmd.getIcon(), cmd.getName(), user);
+		if(union == null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.CREATE_UNION_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.CREATE_UNION_ERROR));
+			return;
+		}
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(union);
 		responseBuilder.setUnionInfoCommand(builder.build());
