@@ -603,6 +603,8 @@ public class DateUtil {
 			date2 = df.parse(time2);
 		} catch (ParseException e) {
 			return true;
+		}  catch (NullPointerException e) {
+			return true;
 		}  
 		
 		return date1.before(date2);
