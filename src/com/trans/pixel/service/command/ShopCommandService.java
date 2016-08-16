@@ -53,6 +53,7 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipLibao;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.LogService;
@@ -89,6 +90,8 @@ public class ShopCommandService extends BaseCommandService{
 	private UserService userService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ActivityService activityService;
 
 	public int getDailyShopRefreshCost(int time){
 		if(time < 2){
@@ -738,6 +741,8 @@ public class ShopCommandService extends BaseCommandService{
 		rewardService.updateUser(user);
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		
+		activityService.qiyueActivity(user);
 	}
 
 	public void PurchaseCoin(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user){
