@@ -19,7 +19,6 @@ import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.HeroConst;
-import com.trans.pixel.constants.JustsingConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.NoticeConst;
@@ -713,6 +712,13 @@ public class ActivityService {
 	
 	public void mineAidActivity(UserBean user) {
 		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_MINE_AID);
+	}
+	
+	/**
+	 * 累计使用契约的活动
+	 */
+	public void qiyueActivity(UserBean user) {
+		sendRichangScore(user, ActivityConst.QIYUE);
 	}
 	
 	/**

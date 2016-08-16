@@ -30,6 +30,10 @@ public class ActivityConst {
 	 */
 	public static final int LADDER_ATTACK = 9;
 	/**
+	 * 使用契约
+	 */
+	public static final int QIYUE = 36;
+	/**
 	 * 参与pk
 	 */
 	public static final int RICHANG_PVP_ATTACK_ENEMY = 307;
