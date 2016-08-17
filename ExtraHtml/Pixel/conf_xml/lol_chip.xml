@@ -96,4 +96,5 @@
 <chip itemid="20067" itemname="字母Z" img="12072" rare="5" cost="10000" mojing="" description="终极字母，不时传来A合成Z的传说" aim="" count="" lootid1="1" loot1="1298" lootid2="1" loot2="2298" lootid3="1" loot3="3298" />
 <chip itemid="29068" itemname="吐槽补丁" img="12073" rare="3" cost="500" mojing="" description="打上吐槽补丁，装备就能拥有吐槽之力！" aim="" count="" lootid1="1" loot1="1005" lootid2="1" loot2="1045" lootid3="1" loot3="1165" />
 <chip itemid="29069" itemname="德玛西亚君王令" img="14083" rare="5" cost="5000" mojing="" description="这是德玛西亚君王令" aim="" count="" lootid1="" loot1="" lootid2="" loot2="" lootid3="" loot3="" />
+<chip itemid="29070" itemname="源质碎片" img="10044" rare="5" cost="10000" mojing="" description="镜像世界出产，可以将装备进行特殊强化" aim="" count="" lootid1="" loot1="" lootid2="" loot2="" lootid3="" loot3="" />
 </data>
