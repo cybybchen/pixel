@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.JustsingConst;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -39,14 +41,20 @@ public class JustsingActivityService {
 			return;
 		
 		String cdk = getJustsingCdk(type);
-		sendJustsingCdkMail(user, cdk);
+		sendJustsingCdkMail(user, cdk, type);
 		redis.addJustsingCdkRecord(user.getIdfa(), type);
 	}
 	
-	private void sendJustsingCdkMail(UserBean user, String cdk) {
+	private void sendJustsingCdkMail(UserBean user, String cdk, int justsingType) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		String content = "你获取的心动K歌的兑换码是：" + cdk;
-		MailBean mail = MailBean.buildSystemMail(user.getId(), content, rewardList);
+		String content = "恭喜您获得《心动K歌》";
+		if (justsingType == JustsingConst.TYPE_REGISTER)
+			content += "翅膀礼包兑换码";
+		else
+			content += "对戒礼包兑换码";
+		
+		content += cdk + "。您可以去AppStore或各大安卓市场下载《心动K歌》游戏，在\"活动-礼品兑换\"界面输入兑换码，领取奖励。";
+		MailBean mail = MailBean.buildSpecialSystemMail(user.getId(), content, rewardList, MailConst.TYPE_SPECIAL_SYSTEM_MAIL);
 		mailService.addMail(mail);
 	}
 }

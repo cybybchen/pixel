@@ -200,6 +200,18 @@ public class MailBean {
 		return mail;
 	}
 	
+	public static MailBean buildSpecialSystemMail(long userId, String content, List<RewardInfo> rewardList, int type) {
+		List<RewardBean> rewardBeanList = RewardBean.buildRewardBeanList(rewardList);
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setContent(content);
+		mail.setType(type);
+		mail.setRewardList(rewardBeanList);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
+	}
+	
 	public static MailBean buildMail(long userId, long friendId, int vip, int icon, String usreName, String content, int type, int relatedId) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);

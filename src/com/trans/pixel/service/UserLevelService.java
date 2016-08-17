@@ -80,6 +80,8 @@ public class UserLevelService {
 				if (levelId >= JustsingConst.JUSTSING_LIMIT_LEVEL)
 					justsingActivityService.sendJustsingCdk(user, JustsingConst.TYPE_AFTER_SPECIALLEVEL);
 				
+				justsingActivityService.sendJustsingCdk(user, JustsingConst.TYPE_REGISTER);
+				
 				break;
 			case LevelConst.DIFF_KUNNAN:
 				userLevelRecord.setKunnanLevel(UserLevelBean.updateXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg));
