@@ -77,7 +77,7 @@ public class UserTeamService {
 			if (userTeamList != null && userTeamList.size() > 0)
 				userTeamRedisService.updateUserTeamList(userTeamList, userId);
 		}
-		if(userTeamList.size() < 5){
+		if(userTeamList.size() < 6){
 			List<Integer> ids = new ArrayList<Integer>();
 			for(UserTeamBean team : userTeamList){
 				ids.add(team.getId());
@@ -101,6 +101,8 @@ public class UserTeamService {
 				updateUserTeam(userId, 4, "", "");
 			if(!ids.contains(5))
 				updateUserTeam(userId, 5, "", "");
+			if(!ids.contains(1000))
+				updateUserTeam(userId, 1000, "", "");
 			userTeamList = userTeamRedisService.selectUserTeamList(userId);
 		}
 		

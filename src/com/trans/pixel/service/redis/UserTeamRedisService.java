@@ -52,7 +52,7 @@ public class UserTeamRedisService extends RedisService {
 	}
 
 	public void updateUserTeam(final UserTeamBean userTeam) {
-		if(userTeam.getId() < 1 || userTeam.getId() > 5)
+		if((userTeam.getId() < 1 || userTeam.getId() > 5) && userTeam.getId() != 1000)
 			return;
 		hput(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userTeam.getUserId(), "" + userTeam.getId(), userTeam.toJson());
 		expire(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userTeam.getUserId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
