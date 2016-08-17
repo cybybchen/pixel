@@ -94,7 +94,7 @@ public class RechargeService {
 	    }
 //    	userAchieveService.updateUserAchieve(bean);
 		
-		activityService.rechargeActivity(user, jewel);
+		activityService.rechargeActivity(user, rmb*10);
 		
 		/**
 		 * 记录用户的累计充值金额
