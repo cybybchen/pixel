@@ -66,7 +66,7 @@ public class RechargeService {
 	private UserPropService userPropService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
-    	int complete = user.getRechargeRecord()+jewel;
+    	int complete = user.getRechargeRecord()+rmb*10;
     	while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
 	    	if(vip == null || complete < vip.getZuanshi())
@@ -92,7 +92,6 @@ public class RechargeService {
 				userPropService.updateUserProp(userProp);
 			}
 	    }
-//    	bean.setCompleteCount(complete);
 //    	userAchieveService.updateUserAchieve(bean);
 		
 		activityService.rechargeActivity(user, jewel);
@@ -100,7 +99,7 @@ public class RechargeService {
 		/**
 		 * 记录用户的累计充值金额
 		 */
-		user.setRechargeRecord(user.getRechargeRecord() + jewel);
+		user.setRechargeRecord(complete);
 		userService.updateUser(user);
 		
 		return rmb;
