@@ -13,6 +13,7 @@ public class MailConst {
 	public static final int TYPE_CALL_BROTHER_MAILL = 5;//大哥被叫
 	public static final int TYPE_SEND_FRIEND_INFO_MAIL = 6;//好友间互发邮件
 	public static final int TYPE_MINE_ATTACKED_MAIL = 7;//矿点被攻击邮件
+	public static final int TYPE_SPECIAL_SYSTEM_MAIL = 100;//特殊的系统公告邮件
 	
 	public static final int[] MAIL_TYPES = {TYPE_SYSTEM_MAIL, TYPE_ADDFRIEND_MAIL, TYPE_APPLY_UNION_MAIL, TYPE_UNION_REFUSED_MAIL, 
 		TYPE_HELP_ATTACK_PVP_MAIL, TYPE_CALL_BROTHER_MAILL, TYPE_SEND_FRIEND_INFO_MAIL};
@@ -20,5 +21,5 @@ public class MailConst {
 	public static final int[] FRIEND_MAIL_TYPES = {TYPE_ADDFRIEND_MAIL,  
 		TYPE_HELP_ATTACK_PVP_MAIL, TYPE_CALL_BROTHER_MAILL, TYPE_SEND_FRIEND_INFO_MAIL};
 	
-	public static final int[] SYSTEM_MAIL_TYPES = {TYPE_SYSTEM_MAIL, TYPE_MINE_ATTACKED_MAIL};
+	public static final int[] SYSTEM_MAIL_TYPES = {TYPE_SYSTEM_MAIL, TYPE_MINE_ATTACKED_MAIL, TYPE_SPECIAL_SYSTEM_MAIL};
 }
