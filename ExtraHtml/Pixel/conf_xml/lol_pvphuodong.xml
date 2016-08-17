@@ -4,5 +4,5 @@
 <enemy id="3002" name="夏日水着少女" boss="1" starttime="2016-07-28 00:00:00" endtime="2016-08-03 23:59:59" />
 <enemy id="3003" name="夏日洗澡狂魔" boss="1" starttime="2016-08-04 00:00:00" endtime="2016-08-10 23:59:59" />
 <enemy id="3004" name="夏日裸奔少年" boss="1" starttime="2016-08-11 00:00:00" endtime="2016-08-17 23:59:59" />
-<enemy id="3005" name="神奇的光头大汉" boss="1" starttime="2016-08-17 00:00:00" endtime="2016-08-24 23:59:59" />
+<enemy id="3005" name="神奇的光头大汉" boss="1" starttime="2016-08-18 00:00:00" endtime="2016-08-24 23:59:59" />
 </data>
