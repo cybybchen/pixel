@@ -105,6 +105,43 @@ public class RechargeService {
 		return rmb;
 	}
 	
+	public int buchangVip(UserBean user, int rmb, int jewel) {
+    	int complete = user.getRechargeRecord()+jewel;
+    	while(true){
+	    	VipInfo vip = userService.getVip(user.getVip()+1);
+	    	if(vip == null || complete < vip.getZuanshi())
+	    		break;
+	    	VipInfo oldvip = userService.getVip(user.getVip());
+	    	if(oldvip == null)
+	    		oldvip = VipInfo.newBuilder().build();
+	    	user.setVip(user.getVip()+1);
+	    	achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_VIP, user.getVip());
+			if(vip != null){
+				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin() - oldvip.getDianjin());
+				user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract() - oldvip.getContract());
+				user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti() - oldvip.getTianti());
+				user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvp() - oldvip.getPvp());
+				user.setPurchaseTireLeftTime(user.getPurchaseTireLeftTime() + vip.getQuyu() - oldvip.getQuyu());
+				user.setRefreshExpeditionLeftTime(user.getRefreshExpeditionLeftTime() + vip.getMohua() - oldvip.getMohua());
+				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());
+				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
+				UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
+				if (userProp == null)
+					userProp = UserPropBean.initUserProp(user.getId(), 40022, "");
+				userProp.setPropCount(userProp.getPropCount() + vip.getBaohu() - oldvip.getBaohu());
+				userPropService.updateUserProp(userProp);
+			}
+	    }
+		
+		/**
+		 * 记录用户的累计充值金额
+		 */
+		user.setRechargeRecord(user.getRechargeRecord() + jewel);
+		userService.updateUser(user);
+		
+		return rmb;
+	}
+	
 	public int recharge(UserBean user, int productid, String company, boolean isCheat){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		Rmb rmb = rechargeRedisService.getRmb(productid);
