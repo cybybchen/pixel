@@ -2,9 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trans.pixel.model.mapper.RechargeMapper">
 
+	<resultMap id="resultMap" type="com.trans.pixel.model.RechargeBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="productId" column="product_id" />
+		<result property="company" column="company" />
+		<result property="orderId" column="order_id" />
+		<result property="orderTime" column="order_time" />
+		<result property="serverId" column="server_id" />
+		<result property="rmb" column="rmb" />
+	</resultMap>
+
 	<insert id="insertUserRechargeRecord" parameterType="com.trans.pixel.model.RechargeBean">
 		INSERT INTO recharge(user_id, product_id, company, order_id, order_time, server_id, rmb)
 		VALUES(#{userId}, #{productId}, #{company}, #{orderId}, #{orderTime}, #{serverId}, #{rmb})
 	</insert>
+	
+	<select id="getRechargeRecord" resultMap="resultMap">
+		SELECT * from recharge
+	</select>
 
 </mapper>
