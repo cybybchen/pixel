@@ -682,4 +682,8 @@ public class DateUtil {
 		
 		return false;
 	}
+	
+	public static Date getEndDateOfD() {
+		return setToDayEndTime(getDate());
+	}
 }

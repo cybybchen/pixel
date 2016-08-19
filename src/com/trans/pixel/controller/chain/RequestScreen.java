@@ -67,6 +67,10 @@ import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
+import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -359,6 +363,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestLogCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestClearHeroCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
@@ -1033,6 +1041,26 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//GetGrowExpCommand
                 result = handleCommand(cmd, responseBuilder, user);//GetGrowExpCommand
         }//GetGrowExpCommand
+        if (request.hasFeedFoodCommand()) {
+            RequestFeedFoodCommand cmd = request.getFeedFoodCommand();
+            if (result)//FeedFoodCommand
+                result = handleCommand(cmd, responseBuilder, user);//FeedFoodCommand
+        }//FeedFoodCommand
+        if (request.hasClearHeroCommand()) {
+            RequestClearHeroCommand cmd = request.getClearHeroCommand();
+            if (result)//ClearHeroCommand
+                result = handleCommand(cmd, responseBuilder, user);//ClearHeroCommand
+        }//ClearHeroCommand
+        if (request.hasChoseClearInfoCommand()) {
+            RequestChoseClearInfoCommand cmd = request.getChoseClearInfoCommand();
+            if (result)//ChoseClearInfoCommand
+                result = handleCommand(cmd, responseBuilder, user);//ChoseClearInfoCommand
+        }//ChoseClearInfoCommand
+        if (request.hasSubmitBosskillCommand()) {
+            RequestSubmitBosskillCommand cmd = request.getSubmitBosskillCommand();
+            if (result)//SubmitBosskillCommand
+                result = handleCommand(cmd, responseBuilder, user);//SubmitBosskillCommand
+        }//SubmitBosskillCommand
         //call handleCommand here
         if (request.hasPurchaseContractCommand()) {
             RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();

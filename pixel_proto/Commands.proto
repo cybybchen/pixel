@@ -49,6 +49,7 @@ message UserInfo {
 	optional int32 skill = 58;
 	optional int32 failed = 59;
 	optional int32 purchaseContractLeft = 62;
+	optional int32 zhanliMax = 65;
 }
 
 message ServerData {
@@ -1173,9 +1174,30 @@ message UserFood {
 	required int32 count = 2;
 }
 
-message BosskillRecord {
+message BossGroupRecord {
+	required int32 groupId = 1;
+	repeated BossRecord bossRecord = 2;
+}
+
+message BossRecord {
 	required int32 bossId = 1;
-	required int32 count = 2;	
+	optional int32 count = 2;	
+}
+
+message BossgroupList {
+	repeated Bossgroup group = 1;
+}
+
+message Bossgroup {
+	optional int32 id = 1;
+	optional int32 zhanli = 2;
+	optional int32 bosscount = 3;
+	optional int32 count = 4;
+	repeated Boss boss = 5;
+}
+
+message Boss {
+	optional int32 bossid = 1;
 }
 
 message ErrorCommand{
@@ -2071,12 +2093,12 @@ message RequestChoseClearInfoCommand {
 }
 
 message RequestSubmitBosskillCommand {
-	required int32 bossId = 1;
+	required int32 groupId = 1;
+	required int32 bossId = 2;
 }
 
 message ResponseBosskillCommand {
-	repeated int32 bossId = 1;
-	repeated BosskillRecord record = 2;	
+	repeated BossGroupRecord record = 1;	
 }
 
 message RequestCommand {
@@ -2213,6 +2235,7 @@ message RequestCommand {
 	optional RequestFeedFoodCommand feedFoodCommand = 93;
 	optional RequestClearHeroCommand clearHeroCommand = 94;
 	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
+	optional RequestSubmitBosskillCommand submitBosskillCommand = 96;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2278,6 +2301,7 @@ message ResponseCommand {
 	optional ResponseNoticeCommand noticeCommand = 53;
 	optional ResponseUserFoodCommand userFoodCommand = 54;
 	optional ResponseClearInfoCommand clearInfoCommand = 55;
+	optional ResponseBosskillCommand bosskillCommand = 56;
 }
 
 

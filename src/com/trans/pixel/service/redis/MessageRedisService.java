@@ -197,6 +197,6 @@ public class MessageRedisService extends RedisService {
 	}
 	
 	private String buildUnionMessageBoardValueRedisKey(int unionId) {
-		return RedisKey.PREFIX + RedisKey.UNION_PREFIX + unionId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_KEY;
+		return RedisKey.PREFIX + RedisKey.UNION_PREFIX + unionId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_VALUE_KEY;
 	}
 }
