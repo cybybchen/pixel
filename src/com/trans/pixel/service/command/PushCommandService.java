@@ -24,6 +24,7 @@ import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
+import com.trans.pixel.protoc.Commands.BossGroupRecord;
 import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.PVPMapList;
@@ -34,6 +35,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseAchieveListCommand;
+import com.trans.pixel.protoc.Commands.ResponseBosskillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
@@ -52,6 +54,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserFriend;
+import com.trans.pixel.service.BossService;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
@@ -106,6 +109,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserPokedeService userPokedeService;
 	@Resource
 	private UserFoodService userFoodService;
+	@Resource
+	private BossService bossService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -485,5 +490,13 @@ public class PushCommandService extends BaseCommandService {
 		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
 		builder.addAllPokede(buildHeroInfo(userPokedeList, user));
 		responseBuilder.setUserPokedeCommand(builder.build());
+	}
+	
+	public void pushUserBosskillRecord(Builder responseBuilder, UserBean user) {
+		ResponseBosskillCommand.Builder builder = ResponseBosskillCommand.newBuilder();
+		List<BossGroupRecord> list = bossService.getBossGroupRecord(user);
+		builder.addAllRecord(list);
+		responseBuilder.setBosskillCommand(builder.build());
+		
 	}
 }

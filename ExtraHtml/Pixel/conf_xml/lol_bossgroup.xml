@@ -1,0 +1,35 @@
+<data>
+<group id="1" zhanli="30000" bosscount="2" count="2" >
+<boss bossid="100001" />
+<boss bossid="100002" />
+<boss bossid="100003" />
+<boss bossid="100004" />
+<boss bossid="100005" />
+<boss bossid="100006" />
+<boss bossid="100007" />
+<boss bossid="100008" />
+<boss bossid="100009" />
+</group>
+<group id="2" zhanli="135000" bosscount="2" count="2" >
+<boss bossid="100001" />
+<boss bossid="100002" />
+<boss bossid="100003" />
+<boss bossid="100004" />
+<boss bossid="100005" />
+<boss bossid="100006" />
+<boss bossid="100007" />
+<boss bossid="100008" />
+<boss bossid="100009" />
+</group>
+<group id="3" zhanli="245000" bosscount="2" count="2" >
+<boss bossid="100001" />
+<boss bossid="100002" />
+<boss bossid="100003" />
+<boss bossid="100004" />
+<boss bossid="100005" />
+<boss bossid="100006" />
+<boss bossid="100007" />
+<boss bossid="100008" />
+<boss bossid="100009" />
+</group>
+</data>

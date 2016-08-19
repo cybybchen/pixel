@@ -1095,6 +1095,7 @@ public class UserBean {
 		}
 		builder.setSkill(skill);
 		builder.setFailed(failed);
+		builder.setZhanliMax(zhanliMax);
 		
 		return builder.build();
 	}

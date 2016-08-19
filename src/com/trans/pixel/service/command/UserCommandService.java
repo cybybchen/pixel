@@ -266,6 +266,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserPokedeList(responseBuilder, user);
 		pushCommandService.pushUserFoodListCommand(responseBuilder, user);
 		shopService.getLibaoShop(responseBuilder, user);
+		pushCommandService.pushUserBosskillRecord(responseBuilder, user);
 		
 		noticeCommandService.pushNotices(responseBuilder, user);
 	}

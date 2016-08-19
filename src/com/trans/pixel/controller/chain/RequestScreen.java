@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
@@ -69,9 +70,6 @@ import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
-//add import here
-import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
@@ -101,9 +99,8 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
-import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
@@ -127,6 +124,7 @@ import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
@@ -151,6 +149,7 @@ import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+//add import here
 
 
 public abstract class RequestScreen implements RequestHandle {
@@ -368,6 +367,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestFeedFoodCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestClearHeroCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
@@ -1057,6 +1057,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//ChoseClearInfoCommand
                 result = handleCommand(cmd, responseBuilder, user);//ChoseClearInfoCommand
         }//ChoseClearInfoCommand
+        if (request.hasSubmitBosskillCommand()) {
+            RequestSubmitBosskillCommand cmd = request.getSubmitBosskillCommand();
+            if (result)//SubmitBosskillCommand
+                result = handleCommand(cmd, responseBuilder, user);//SubmitBosskillCommand
+        }//SubmitBosskillCommand
         //call handleCommand here
         if (request.hasPurchaseContractCommand()) {
             RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();
