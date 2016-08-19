@@ -70,6 +70,13 @@ import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
+import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
+import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;

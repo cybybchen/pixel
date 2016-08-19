@@ -95,8 +95,8 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
-import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;

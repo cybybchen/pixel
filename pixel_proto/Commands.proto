@@ -1083,6 +1083,10 @@ message HeroChoice {
 	required int32 level2_2 = 7;
 	required int32 level3_1 = 8;
 	required int32 level3_2 = 9;
+	optional int32 level4 = 10;
+	optional int32 level5 = 11;
+	optional int32 level6 = 12;
+	optional int32 level7 = 13;
 }
 
 message ShouchongList {
@@ -1203,7 +1207,7 @@ message Boss {
 }
 
 message BosslootGroupList {
-	repeated BosslootGroup group = 1;
+	repeated BosslootGroup boss = 1;
 }
 
 message BosslootGroup {
@@ -1222,6 +1226,20 @@ message Bossloot {
 	optional int32 itemid3 = 8;
 	optional int32 itemcount3 = 9;
 	optional int32 weight3 = 10;
+	optional int32 order = 11;
+}
+
+message UnionBossList {
+	repeated UnionBoss boss = 1;
+}
+
+message UnionBoss {
+	optional int32 id = 1;
+	optional int32 type = 2;
+	optional int32 targetid = 3;
+	optional int32 targetcount = 4;
+	optional int32 time = 5;
+	optional int32 HP = 6;
 }
 
 message ErrorCommand{
@@ -2121,6 +2139,10 @@ message RequestSubmitBosskillCommand {
 	required int32 bossId = 2;
 }
 
+message RequestBosskillCommand {
+	
+}
+
 message ResponseBosskillCommand {
 	repeated BossGroupRecord record = 1;	
 }
@@ -2260,6 +2282,7 @@ message RequestCommand {
 	optional RequestClearHeroCommand clearHeroCommand = 94;
 	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
 	optional RequestSubmitBosskillCommand submitBosskillCommand = 96;
+	optional RequestBosskillCommand bosskillCommand = 97;
 }
 // response command list transfer only use it
 message ResponseCommand {
