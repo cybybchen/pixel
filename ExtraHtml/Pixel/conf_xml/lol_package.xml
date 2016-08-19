@@ -1530,4 +1530,34 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="36001" name="1" img="32011" rare="1" description="开启获得1个随机1星英雄" hashero="1" cyb="0" judge="1" endtime="" itemcount="1" weightall="100" >
+		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36002" name="3" img="32011" rare="2" description="开启获得3个随机1星英雄" hashero="1" cyb="0" judge="3" endtime="" itemcount="1" weightall="100" >
+		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36003" name="5" img="32011" rare="3" description="开启获得5个随机1星英雄" hashero="1" cyb="0" judge="5" endtime="" itemcount="1" weightall="100" >
+		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36004" name="7" img="32011" rare="4" description="开启获得7个随机1星英雄" hashero="1" cyb="0" judge="7" endtime="" itemcount="1" weightall="100" >
+		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36005" name="10" img="32011" rare="5" description="开启获得10个随机1星英雄" hashero="1" cyb="0" judge="10" endtime="" itemcount="1" weightall="100" >
+		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 </data>

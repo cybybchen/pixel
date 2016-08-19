@@ -14,6 +14,8 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
 import com.trans.pixel.protoc.Commands.Bossgroup;
 import com.trans.pixel.protoc.Commands.BossgroupList;
+import com.trans.pixel.protoc.Commands.BosslootGroup;
+import com.trans.pixel.protoc.Commands.BosslootGroupList;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -21,8 +23,9 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class BossRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(BossRedisService.class);
 	private static final String BOSS_GROUP_FILE_NAME = "lol_bossgroup.xml";
+	private static final String BOSS_LOOT_FILE_NAME = "lol_bossloot.xml";
 	
-	//richang activity
+	//bossgroup activity
 	public Bossgroup getBossgroup(int id) {
 		String value = hget(RedisKey.BOSSGROUP_KEY, "" + id);
 		if (value == null) {
@@ -69,6 +72,57 @@ public class BossRedisService extends RedisService {
 		Map<String, Bossgroup> map = new HashMap<String, Bossgroup>();
 		for(Bossgroup.Builder bossgroup : builder.getGroupBuilderList()){
 			map.put("" + bossgroup.getId(), bossgroup.build());
+		}
+		return map;
+	}
+	
+	//bossloot activity
+	public BosslootGroup getBosslootGroup(int id) {
+		String value = hget(RedisKey.BOSS_LOOT_KEY, "" + id);
+		if (value == null) {
+			Map<String, BosslootGroup> config = getBosslootGroupConfig();
+			return config.get("" + id);
+		} else {
+			BosslootGroup.Builder builder = BosslootGroup.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, BosslootGroup> getBosslootGroupConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.BOSS_LOOT_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, BosslootGroup> map = buildBosslootGroupConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, BosslootGroup> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.BOSS_LOOT_KEY, redismap);
+			return map;
+		}else{
+			Map<String, BosslootGroup> map = new HashMap<String, BosslootGroup>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				BosslootGroup.Builder builder = BosslootGroup.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, BosslootGroup> buildBosslootGroupConfig(){
+		String xml = ReadConfig(BOSS_LOOT_FILE_NAME);
+		BosslootGroupList.Builder builder = BosslootGroupList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + BOSS_LOOT_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, BosslootGroup> map = new HashMap<String, BosslootGroup>();
+		for(BosslootGroup.Builder bosslootGroup : builder.getGroupBuilderList()){
+			map.put("" + bosslootGroup.getId(), bosslootGroup.build());
 		}
 		return map;
 	}

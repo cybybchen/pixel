@@ -255,5 +255,6 @@ public class RedisKey {
 	public static final String BOSSKILL_RECORD_PREFIX = PREFIX + "bosskill_";
 	public static final String BOSSGROUP_KEY = PREFIX + "bossgroup";
 	public static final String BOSSGROUP_DAILY_KEY = PREFIX + "daily_bossgroup";
+	public static final String BOSS_LOOT_KEY = PREFIX + "bossloot";
 	
 }
