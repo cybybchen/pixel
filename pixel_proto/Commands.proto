@@ -49,6 +49,7 @@ message UserInfo {
 	optional int32 skill = 58;
 	optional int32 failed = 59;
 	optional int32 purchaseContractLeft = 62;
+	optional int32 zhanliMax = 65;
 }
 
 message ServerData {
@@ -380,10 +381,11 @@ message AreaBoss {//区域世界BOSS
 	optional int32 hpMax = 7;//最大血量
 	optional int32 turn = 8;//回合限制
 	optional int32 count = 9;//次数限制
+	optional int32 pl = 10;
 	///////////////////////////////////
-	optional int32 hp = 10;//当前血量
-	optional UserInfo owner = 11;//击杀者
-	repeated Rank ranks = 12;//伤害排行
+	optional int32 hp = 14;//当前血量
+	optional UserInfo owner = 15;//击杀者
+	repeated Rank ranks = 16;//伤害排行
 }
 
 message AreaBossList {
@@ -427,6 +429,7 @@ message AreaMonster {//区域怪物
 	optional int32 level = 8;
 	optional int32 level1 = 11;
 	optional int32 weight = 10;
+	optional int32 pl = 12;
 }
 
 message AreaMonsterList {
@@ -1173,9 +1176,52 @@ message UserFood {
 	required int32 count = 2;
 }
 
-message BosskillRecord {
+message BossGroupRecord {
+	required int32 groupId = 1;
+	repeated BossRecord bossRecord = 2;
+}
+
+message BossRecord {
 	required int32 bossId = 1;
-	required int32 count = 2;	
+	optional int32 count = 2;	
+}
+
+message BossgroupList {
+	repeated Bossgroup group = 1;
+}
+
+message Bossgroup {
+	optional int32 id = 1;
+	optional int32 zhanli = 2;
+	optional int32 bosscount = 3;
+	optional int32 count = 4;
+	repeated Boss boss = 5;
+}
+
+message Boss {
+	optional int32 bossid = 1;
+}
+
+message BosslootGroupList {
+	repeated BosslootGroup group = 1;
+}
+
+message BosslootGroup {
+	optional int32 id = 1;
+	repeated Bossloot loot = 2;
+}
+
+message Bossloot {
+	optional int32 weightall = 1;
+	optional int32 itemid1 = 2;
+	optional int32 itemcount1 = 3;
+	optional int32 weight1 = 4;
+	optional int32 itemid2 = 5;
+	optional int32 itemcount2 = 6;
+	optional int32 weight2 = 7;
+	optional int32 itemid3 = 8;
+	optional int32 itemcount3 = 9;
+	optional int32 weight3 = 10;
 }
 
 message ErrorCommand{
@@ -2071,12 +2117,12 @@ message RequestChoseClearInfoCommand {
 }
 
 message RequestSubmitBosskillCommand {
-	required int32 bossId = 1;
+	required int32 groupId = 1;
+	required int32 bossId = 2;
 }
 
 message ResponseBosskillCommand {
-	repeated int32 bossId = 1;
-	repeated BosskillRecord record = 2;	
+	repeated BossGroupRecord record = 1;	
 }
 
 message RequestCommand {
@@ -2213,6 +2259,7 @@ message RequestCommand {
 	optional RequestFeedFoodCommand feedFoodCommand = 93;
 	optional RequestClearHeroCommand clearHeroCommand = 94;
 	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
+	optional RequestSubmitBosskillCommand submitBosskillCommand = 96;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2278,6 +2325,7 @@ message ResponseCommand {
 	optional ResponseNoticeCommand noticeCommand = 53;
 	optional ResponseUserFoodCommand userFoodCommand = 54;
 	optional ResponseClearInfoCommand clearInfoCommand = 55;
+	optional ResponseBosskillCommand bosskillCommand = 56;
 }
 
 

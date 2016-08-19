@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<region id="2101" name="恶魔之源" belongto="1" x="450" y="50" hp="100000000" turn="10" count="3" limit="20000000" />
-<region id="2201" name="魔化之源" belongto="2" x="450" y="100" hp="100000000" turn="10" count="3" limit="20000000" />
-<region id="2301" name="灵鸟" belongto="3" x="450" y="150" hp="100000000" turn="10" count="3" limit="20000000" />
-<region id="2401" name="巨神王" belongto="4" x="450" y="200" hp="100000000" turn="10" count="3" limit="20000000" />
+<region id="2101" name="恶魔之源" belongto="1" x="450" y="50" hp="100000000" turn="10" count="3" limit="20000000" pl="10" />
+<region id="2201" name="魔化之源" belongto="2" x="450" y="100" hp="100000000" turn="10" count="3" limit="20000000" pl="10" />
+<region id="2301" name="灵鸟" belongto="3" x="450" y="150" hp="100000000" turn="10" count="3" limit="20000000" pl="10" />
+<region id="2401" name="巨神王" belongto="4" x="450" y="200" hp="100000000" turn="10" count="3" limit="20000000" pl="10" />
 </data>

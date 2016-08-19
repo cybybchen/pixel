@@ -80,7 +80,6 @@ public class AreaCommandService extends BaseCommandService{
 	}
 	
 	public void AttackMonster(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user){
-		service.costEnergy(user);
 		if(!cmd.getRet())
 			return;
 		MultiReward.Builder rewards = MultiReward.newBuilder();
@@ -101,7 +100,6 @@ public class AreaCommandService extends BaseCommandService{
 	}
 
 	public void AttackBoss(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user){
-		service.costEnergy(user);
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.setName("恭喜你击杀了怪物");
 		ResultConst result = service.AttackBoss(cmd.getId(), cmd.getScore(), user, rewards);

@@ -126,16 +126,16 @@ public class AreaRedisService extends RedisService{
 		hput(RedisKey.USERDATA+user.getId(), "Area", formatJson(areamode));
 	}
 	
-	public void costEnergy(UserBean user) {
+	public void costEnergy(UserBean user, int count) {
 		long time = now()/300*300;
 		if(user.getAreaEnergy() >= 150){
-			user.setAreaEnergy(user.getAreaEnergy()-1);
+			user.setAreaEnergy(user.getAreaEnergy()-count);
 		}else if(time - user.getAreaEnergyTime() >= 300){
-			user.setAreaEnergy((int)(user.getAreaEnergy()-1+(time - user.getAreaEnergyTime()/300)));
+			user.setAreaEnergy((int)(user.getAreaEnergy()-count+(time - user.getAreaEnergyTime()/300)));
 			if(user.getAreaEnergy() >= 150)
-				user.setAreaEnergy(149);
-		}else if(user.getAreaEnergy() > 0)
-			user.setAreaEnergy(user.getAreaEnergy()-1);
+				user.setAreaEnergy(150-count);
+		}else
+			user.setAreaEnergy(Math.max(0, user.getAreaEnergy()-count));
 		user.setAreaEnergyTime(time);
 		userRedisService.updateUser(user);
 	}

@@ -113,8 +113,8 @@ public class AreaFightService extends FightService{
 		return reward.build();
 	}
 	
-	public void costEnergy(UserBean user){
-		redis.costEnergy(user);
+	public void costEnergy(UserBean user, int count){
+		redis.costEnergy(user, count);
 	}
 
 	public boolean AttackMonster(int positionid, UserBean user, MultiReward.Builder rewards){
@@ -137,6 +137,7 @@ public class AreaFightService extends FightService{
 				}
 			}
 		}
+		costEnergy(user, monster.getPl());
 		return true;
 	}
 
@@ -186,6 +187,7 @@ public class AreaFightService extends FightService{
 			}
 		}
 		redis.saveBoss(builder.build(), user);
+		costEnergy(user, boss.getPl());
 		return SuccessConst.PVP_ATTACK_SUCCESS;
 	}
 	
@@ -214,7 +216,7 @@ public class AreaFightService extends FightService{
 			if(user.getUnionId() != 0 && builder.hasOwner() && builder.getOwner().getUnionId() == user.getUnionId())
 				return ErrorConst.SAVE_UNION;
 			if(!ret){
-				costEnergy(user);
+				costEnergy(user, 5);
 				return SuccessConst.AREA_ATTACK_FAIL;
 			}
 			builder.setState(1);
@@ -231,7 +233,7 @@ public class AreaFightService extends FightService{
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
-			costEnergy(user);
+			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user);
 		}else{
 			if(builder.getStarttime() > redis.now())
@@ -245,7 +247,7 @@ public class AreaFightService extends FightService{
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
-			costEnergy(user);
+			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user);
 		}
 		return SuccessConst.Add_AREA_FIGHT;
