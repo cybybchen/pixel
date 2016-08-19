@@ -1,0 +1,17 @@
+<data>
+<group id="1" >
+<loot weightall="100" itemid1="29070" itemcount1="1" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot weightall="100" itemid1="1001" itemcount1="20000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot weightall="100" itemid1="36001" itemcount1="1" weight1="70" itemid2="36002" itemcount2="1" weight2="25" itemid3="36003" itemcount3="1" weight3="5" />
+</group>
+<group id="2" >
+<loot weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot weightall="100" itemid1="36002" itemcount1="1" weight1="70" itemid2="36003" itemcount2="1" weight2="25" itemid3="36004" itemcount3="1" weight3="5" />
+</group>
+<group id="3" >
+<loot weightall="100" itemid1="29070" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot weightall="100" itemid1="1001" itemcount1="100000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot weightall="100" itemid1="36003" itemcount1="1" weight1="70" itemid2="36004" itemcount2="1" weight2="25" itemid3="36005" itemcount3="1" weight3="5" />
+</group>
+</data>

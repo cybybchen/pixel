@@ -11,10 +11,13 @@ import javax.annotation.Resource;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
 import com.trans.pixel.protoc.Commands.BossRecord;
 import com.trans.pixel.protoc.Commands.Bossgroup;
+import com.trans.pixel.protoc.Commands.Bossloot;
+import com.trans.pixel.protoc.Commands.BosslootGroup;
 import com.trans.pixel.service.redis.BossRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -24,7 +27,7 @@ public class BossService {
 	@Resource
 	private BossRedisService bossRedisService;
 	
-	public void submitBosskill(UserBean user, int groupId, int bossId) {
+	public List<RewardBean> submitBosskill(UserBean user, int groupId, int bossId) {
 		BossGroupRecord bossGroupRecord = bossRedisService.getBossGroupRecord(groupId);
 		if (bossGroupRecord != null) {
 			for (BossRecord bossRecord :bossGroupRecord.getBossRecordList()) {
@@ -35,9 +38,38 @@ public class BossService {
 						break;
 					
 					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
+					return getBossloot(groupId);
 				}
 			}
 		}
+		
+		return new ArrayList<RewardBean>();
+	}
+	
+	private List<RewardBean> getBossloot(int groupId) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		BosslootGroup bosslootGroup = bossRedisService.getBosslootGroup(groupId);
+		for (Bossloot bossloot : bosslootGroup.getLootList()) {
+			int randomWeight = RandomUtils.nextInt(bossloot.getWeightall()) + 1;
+			if (randomWeight <= bossloot.getWeight1()) {
+				rewardList.add(RewardBean.init(bossloot.getItemid1(), bossloot.getItemcount1()));
+				continue;
+			}
+			
+			randomWeight -= bossloot.getWeight1();
+			if (randomWeight <= bossloot.getWeight2()) {
+				rewardList.add(RewardBean.init(bossloot.getItemid2(), bossloot.getItemcount2()));
+				continue;
+			}
+			
+			randomWeight -= bossloot.getWeight2();
+			if (randomWeight <= bossloot.getWeight3()) {
+				rewardList.add(RewardBean.init(bossloot.getItemid3(), bossloot.getItemcount3()));
+				continue;
+			}
+		}
+		
+		return rewardList;
 	}
 	
 	public List<BossGroupRecord> getBossGroupRecord(UserBean user) {

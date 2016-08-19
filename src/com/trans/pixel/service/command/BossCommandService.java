@@ -1,12 +1,14 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
-import com.trans.pixel.protoc.Commands.ResponseBosskillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.BossService;
 import com.trans.pixel.service.RewardService;
@@ -22,8 +24,11 @@ public class BossCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	
 	public void bossKill(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseBosskillCommand.Builder builder = ResponseBosskillCommand.newBuilder();
-		bossService.submitBosskill(user, cmd.getGroupId(), cmd.getBossId());
+		List<RewardBean> rewardList = bossService.submitBosskill(user, cmd.getGroupId(), cmd.getBossId());
+		if (rewardList != null && rewardList.size() > 0) {
+			rewardService.doRewards(user, rewardList);
+			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+		}
 		pusher.pushUserBosskillRecord(responseBuilder, user);
 	}
 }
