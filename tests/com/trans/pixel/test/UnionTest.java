@@ -33,7 +33,7 @@ public class UnionTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestCreateUnionCommand.Builder builder = RequestCreateUnionCommand.newBuilder();
 		builder.setIcon(1);
-		builder.setName("工会"+System.currentTimeMillis()/1000);
+		builder.setName("公会"+System.currentTimeMillis()/1000);
 		requestBuilder.setCreateUnionCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();

@@ -199,7 +199,7 @@ public class UnionService extends FightService{
 		redis.saveUnion(defendUnion.build(), serverId);
 		
 		/**
-		 * 工会血战的活动
+		 * 公会血战的活动
 		 */
 		for (UserInfo user : attacks) {
 			activityService.unionAttackActivity(user.getId(), attacksuccess);

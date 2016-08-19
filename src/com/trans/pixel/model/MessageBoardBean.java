@@ -22,7 +22,7 @@ public class MessageBoardBean {
 	private int icon = 0;
 	private List<MessageBean> messageList = new ArrayList<MessageBean>();
 	private int vip = 0;
-	private int job = 0;//工会职位
+	private int job = 0;//公会职位
 	public long getTimeStamp() {
 		return timeStamp;
 	}

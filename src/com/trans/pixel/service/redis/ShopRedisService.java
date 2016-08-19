@@ -294,7 +294,7 @@ public class ShopRedisService extends RedisService{
 		}
 	}
 
-	//工会商店
+	//公会商店
 	public ShopList getUnionShop(UserBean user) {
 		String value = this.hget(USERDATA+user.getId(), "UNIONSHOP");
 		ShopList.Builder builder = ShopList.newBuilder();

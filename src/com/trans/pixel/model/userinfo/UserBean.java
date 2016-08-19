@@ -498,25 +498,25 @@ public class UserBean {
 		this.vip = vip;
 	}
 	/**
-	 * 所属工会ID
+	 * 所属公会ID
 	 */
 	public int getUnionId() {
 		return unionId;
 	}
 	/**
-	 * 所属工会ID
+	 * 所属公会ID
 	 */
 	public void setUnionId(int unionId) {
 		this.unionId = unionId;
 	}
 	/**
-	 * 所属工会
+	 * 所属公会
 	 */
 	public String getUnionName() {
 		return unionName;
 	}
 	/**
-	 * 所属工会
+	 * 所属公会
 	 */
 	public void setUnionName(String unionName) {
 		this.unionName = unionName;
@@ -594,13 +594,13 @@ public class UserBean {
 		this.pointExpedition = pointExpedition;
 	}
 	/**
-	 * 拥有工会币
+	 * 拥有公会币
 	 */
 	public int getPointUnion() {
 		return pointUnion;
 	}
 	/**
-	 * 拥有工会币
+	 * 拥有公会币
 	 */
 	public void setPointUnion(int pointUnion) {
 		this.pointUnion = pointUnion;
@@ -707,13 +707,13 @@ public class UserBean {
 		this.ladderModeHistoryTop = ladderModeHistoryTop;
 	}
 	/**
-	 * 工会职务
+	 * 公会职务
 	 */
 	public int getUnionJob() {
 		return unionJob;
 	}
 	/**
-	 * 工会职务
+	 * 公会职务
 	 */
 	public void setUnionJob(int unionJob) {
 		this.unionJob = unionJob;
@@ -743,13 +743,13 @@ public class UserBean {
 		blackShopRefreshTime = refreshTime;
 	}
 	/**
-	 * 工会商店刷新次数
+	 * 公会商店刷新次数
 	 */
 	public int getUnionShopRefreshTime() {
 		return unionShopRefreshTime;
 	}
 	/**
-	 * 工会商店刷新次数
+	 * 公会商店刷新次数
 	 */
 	public void setUnionShopRefreshTime(int refreshTime) {
 		unionShopRefreshTime = refreshTime;
