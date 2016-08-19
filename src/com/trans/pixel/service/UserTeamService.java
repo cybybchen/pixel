@@ -127,7 +127,7 @@ public class UserTeamService {
 		for(HeroInfo hero : team.getHeroInfoList()){
 			str+=luaHeroInfo(hero);
 		}
-		str+="}},";
+		str+="}},composeSkill=\""+team.getComposeSkill()+"\",";
 		return str;
 	}
 
