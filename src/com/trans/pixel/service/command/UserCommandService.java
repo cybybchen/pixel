@@ -173,20 +173,22 @@ public class UserCommandService extends BaseCommandService {
 		String composeSkill = "";
 		for (HeroInfoBean hero : userHeroList) {
 			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
-			switch(hero.getHeroId()){
-			case 82:
-				composeSkill = "82,"+hero.getId()+",8201_8201_组合技";
-				break;
-			case 72:
-				composeSkill = "72,"+hero.getId()+",7201_7201_组合技";
-				break;
-			case 55:
-				composeSkill = "55,"+hero.getId()+",5501_5501_组合技";
-				break;
-			case 42:
-				composeSkill = "42,"+hero.getId()+",4201_4201_组合技";
-				break;
-			}
+			int skillid = hero.getSkillInfoList().get(0).getSkillId();
+			composeSkill = hero.getHeroId()+","+hero.getId()+","+skillid+"_"+skillid+"_组合技";
+//			switch(hero.getHeroId()){
+//			case 82:
+//				composeSkill = "82,"+hero.getId()+",8201_8201_组合技";
+//				break;
+//			case 72:
+//				composeSkill = "72,"+hero.getId()+",7201_7201_组合技";
+//				break;
+//			case 55:
+//				composeSkill = "55,"+hero.getId()+",5501_5501_组合技";
+//				break;
+//			case 42:
+//				composeSkill = "42,"+hero.getId()+",4201_4201_组合技";
+//				break;
+//			}
 			break;
 		}
 		
