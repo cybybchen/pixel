@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<id id="1" heroid="42" description="物理核心英雄，通过不断强化普通攻击来获得强大的输出，防御能力较弱。" level1_1="27017" level1_2="27015" level2_1="27015" level2_2="27013" level3_1="27014" level3_2="27019" level4="51116" level5="51058" level6="51096" level7="51001" />
-<id id="2" heroid="55" description="辅助回复英雄，通过强大的回复和辅助技能来提升队伍能力。" level1_1="27016" level1_2="27014" level2_1="27013" level2_2="27013" level3_1="27013" level3_2="27019" level4="51075" level5="51074" level6="51050" level7="51010" />
-<id id="3" heroid="72" description="法术刺客英雄，使用超大伤害的法术技能在瞬间秒杀敌人。" level1_1="27016" level1_2="27016" level2_1="27016" level2_2="27014" level3_1="27013" level3_2="27019" level4="51121" level5="51041" level6="51076" level7="51024" />
-<id id="4" heroid="82" description="战士英雄，攻守平衡的英雄，并且越大越强。" level1_1="27015" level1_2="27015" level2_1="27015" level2_2="27014" level3_1="27013" level3_2="27019" level4="51005" level5="51097" level6="51084" level7="51038" />
+<id id="1" heroid="42" description="无情射手英雄，通过不断强化普通攻击来获得强大的输出，防御能力较弱。" level1_1="27017" level1_2="27015" level2_1="27015" level2_2="27013" level3_1="27014" level3_2="27019" level4="51116" level5="51058" level6="51096" level7="51001" />
+<id id="2" heroid="55" description="战斗法师英雄，通过持续不断的法术伤害击溃敌人。" level1_1="27016" level1_2="27014" level2_1="27013" level2_2="27013" level3_1="27013" level3_2="27019" level4="51075" level5="51074" level6="51050" level7="51010" />
+<id id="3" heroid="72" description="爆发法术英雄，使用超大伤害的法术技能在瞬间秒杀敌人。" level1_1="27016" level1_2="27016" level2_1="27016" level2_2="27014" level3_1="27013" level3_2="27019" level4="51121" level5="51041" level6="51076" level7="51024" />
+<id id="4" heroid="82" description="重装战士英雄，攻守平衡的英雄，并且越大越强。" level1_1="27015" level1_2="27015" level2_1="27015" level2_2="27014" level3_1="27013" level3_2="27019" level4="51005" level5="51097" level6="51084" level7="51038" />
+<id id="5" heroid="76" description="战斗法师英雄，通过持续不断的法术伤害击溃敌人。" level1_1="27016" level1_2="27016" level2_1="27016" level2_2="27014" level3_1="27013" level3_2="27019" level4="51075" level5="51074" level6="51055" level7="51010" />
 </data>
