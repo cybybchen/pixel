@@ -6,19 +6,19 @@
 <loot itemid="1000" count="1200" />
 </level>
 <level id="1003">
-<loot itemid="51017" count="1" />
+<loot itemid="1001" count="500" />
 </level>
 <level id="1004">
 <loot itemid="1002" count="30" />
 </level>
 <level id="1005">
-<loot itemid="51038" count="1" />
+<loot itemid="1000" count="1200" />
 </level>
 <level id="1006">
 <loot itemid="" count="" />
 </level>
 <level id="1007">
-<loot itemid="51005" count="1" />
+<loot itemid="1001" count="500" />
 <loot itemid="27015" count="3" />
 <loot itemid="27001" count="300" />
 </level>
@@ -31,7 +31,7 @@
 <loot itemid="" count="" />
 </level>
 <level id="1010">
-<loot itemid="52078" count="1" />
+<loot itemid="1000" count="1200" />
 </level>
 <level id="1011">
 <loot itemid="" count="" />
