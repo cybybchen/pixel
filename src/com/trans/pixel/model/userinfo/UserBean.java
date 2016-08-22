@@ -86,6 +86,7 @@ public class UserBean {
 	private String version = "";
 	private int myactive = 0;
 	private String idfa = "";
+	private int lotteryStatus = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -959,6 +960,12 @@ public class UserBean {
 	}
 	public void setIdfa(String idfa) {
 		this.idfa = idfa;
+	}
+	public int getLotteryStatus() {
+		return lotteryStatus;
+	}
+	public void setLotteryStatus(int lotteryStatus) {
+		this.lotteryStatus = lotteryStatus;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

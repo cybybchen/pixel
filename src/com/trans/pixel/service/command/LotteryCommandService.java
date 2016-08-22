@@ -114,7 +114,10 @@ public class LotteryCommandService extends BaseCommandService {
 				}
 			}
 			
-			lotteryList = lotteryService.randomLotteryList(type, count);
+			if (type != LotteryConst.LOOTERY_SPECIAL_TYPE && ifFirstLottery(user, type))
+				lotteryList = firstLotteryReward(user, type);
+			else
+				lotteryList = lotteryService.randomLotteryList(type, count);
 		}
 		
 		/**
@@ -216,5 +219,37 @@ public class LotteryCommandService extends BaseCommandService {
 				
 				return 0;
 		}
+	}
+	
+	private boolean ifFirstLottery(UserBean user, int type) {
+		switch (type) {
+			case RewardConst.COIN :
+				if ((user.getLotteryStatus() >> 1 & 1) == 1)
+					return false;
+			case RewardConst.JEWEL :
+				if ((user.getLotteryStatus() >> 2 & 1) == 1)
+					return false;
+			default:
+				return true;
+		}
+	}
+	
+	private List<RewardBean> firstLotteryReward(UserBean user, int type) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		switch (type) {
+			case RewardConst.COIN :
+				rewardList.add(RewardBean.init(52017, 1));
+				user.setLotteryStatus(user.getLotteryStatus() + 1 << 1);
+				break;
+			case RewardConst.JEWEL :
+				user.setLotteryStatus(user.getLotteryStatus() + 1 << 2);
+				rewardList.add(RewardBean.init(53078, 1));
+				break;
+			default:
+				break;
+		}
+		
+		userService.updateUser(user);
+		return rewardList;
 	}
 }
