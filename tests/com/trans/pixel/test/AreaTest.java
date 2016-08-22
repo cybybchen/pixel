@@ -71,7 +71,7 @@ public class AreaTest extends BaseTest {
 		requestBuilder.setHead(head());
 		RequestAttackMonsterCommand.Builder builder = RequestAttackMonsterCommand.newBuilder();
 		AreaMonster monster = area.getAreas(0).getMonsters(0);
-		builder.setId(monster.getId());
+		builder.setPositionid(monster.getPositionid());
 		builder.setRet(true);
 		requestBuilder.setAttackMonsterCommand(builder.build());
 		
