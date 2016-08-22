@@ -12,8 +12,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10005" arm4="10001" arm5="10002" arm6="10007" />
@@ -32,8 +32,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -52,8 +52,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -72,8 +72,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
@@ -92,8 +92,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10003" arm3="10003" arm4="10005" arm5="10001" arm6="10007" />
@@ -112,8 +112,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -132,8 +132,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -152,8 +152,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10001" arm2="10001" arm3="10002" arm4="10002" arm5="10002" arm6="10007" />
@@ -172,8 +172,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
@@ -192,8 +192,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10001" arm2="10001" arm3="10002" arm4="10002" arm5="10002" arm6="10007" />
@@ -212,8 +212,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10001" arm2="10001" arm3="10002" arm4="10002" arm5="10002" arm6="10007" />
@@ -232,8 +232,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10005" arm4="10001" arm5="10002" arm6="10007" />
@@ -252,8 +252,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10003" arm3="10003" arm4="10003" arm5="10002" arm6="10007" />
@@ -272,8 +272,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10001" arm6="10007" />
@@ -292,8 +292,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -312,8 +312,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10005" arm4="10001" arm5="10002" arm6="10007" />
@@ -332,8 +332,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -352,8 +352,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10001" arm3="10002" arm4="10002" arm5="10002" arm6="10007" />
@@ -372,8 +372,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
@@ -392,8 +392,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10005" arm5="10001" arm6="10007" />
@@ -412,8 +412,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -432,8 +432,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -452,8 +452,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10005" arm4="10005" arm5="10001" arm6="10007" />
@@ -472,8 +472,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -492,8 +492,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -512,8 +512,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -532,8 +532,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10005" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -552,8 +552,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -572,8 +572,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -592,8 +592,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
@@ -612,8 +612,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -632,8 +632,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10001" arm2="10001" arm3="10002" arm4="10002" arm5="10002" arm6="10007" />
@@ -652,8 +652,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
@@ -672,8 +672,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
@@ -692,8 +692,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
@@ -712,8 +712,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
@@ -732,8 +732,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
@@ -752,8 +752,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
@@ -772,8 +772,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -792,8 +792,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -812,8 +812,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
@@ -832,8 +832,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10005" arm4="10005" arm5="10001" arm6="10007" />
@@ -852,8 +852,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
@@ -872,8 +872,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10004" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
@@ -892,8 +892,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
@@ -912,8 +912,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10001" arm6="10007" />
@@ -932,8 +932,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
@@ -952,8 +952,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
@@ -972,8 +972,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
@@ -992,8 +992,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
@@ -1012,8 +1012,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10002" arm6="10007" />
@@ -1032,8 +1032,8 @@
 <star  starid="1" starvalue="6" />
 <star  starid="2" starvalue="7" />
 <star  starid="3" starvalue="8" />
-<star  starid="4" starvalue="9" />
-<star  starid="5" starvalue="10" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
 </star> 
 <equip> 
 <equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10002" arm6="10007" />
