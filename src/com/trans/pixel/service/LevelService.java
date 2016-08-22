@@ -34,9 +34,13 @@ public class LevelService {
 	private static final int DIFF_DELTA = 1000;
 	private static final int XIAOGUAN_COUNT_EVERY_DAGUAN = 5;
 	
-	private static final int NEWPLAY_LEVEL_1= 1006;
-	private static final int NEWPLAY_LEVEL_2= 1009;
-	private static final int NEWPLAY_LEVEL_3= 1011;
+	private static final int NEWPLAY_LEVEL_1 = 1006;
+	private static final int NEWPLAY_LEVEL_2 = 1009;
+	private static final int NEWPLAY_LEVEL_3 = 1011;
+	private static final int NEWPLAY_LEVEL_4 = 1002;
+	private static final int NEWPLAY_LEVEL_5 = 1003;
+	private static final int NEWPLAY_LEVEL_6 = 1004;
+	private static final int NEWPLAY_LEVEL_7 = 1005;
 	
 	public int getDifficulty(int levelId) {
 		return levelId / DIFF_DELTA;
@@ -238,6 +242,18 @@ public class LevelService {
 			case NEWPLAY_LEVEL_3:
 				rewardList.add(RewardBean.init(heroChoice.getLevel31(), 1));
 				rewardList.add(RewardBean.init(heroChoice.getLevel32(), 1));
+				break;
+			case NEWPLAY_LEVEL_4:
+				rewardList.add(RewardBean.init(heroChoice.getLevel4(), 1));
+				break;
+			case NEWPLAY_LEVEL_5:
+				rewardList.add(RewardBean.init(heroChoice.getLevel5(), 1));
+				break;
+			case NEWPLAY_LEVEL_6:
+				rewardList.add(RewardBean.init(heroChoice.getLevel6(), 1));
+				break;
+			case NEWPLAY_LEVEL_7:
+				rewardList.add(RewardBean.init(heroChoice.getLevel7(), 1));
 				break;
 			default:
 				break;
