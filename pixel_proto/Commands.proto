@@ -17,7 +17,7 @@ message UserInfo {
 	optional int32 pointPVP = 8; //挂机PVP积分
 	optional int32 pointLadder = 9; //天梯积分
 	optional int32 pointExpedition = 10; //远征积分
-	optional int32 pointUnion = 11; //工会积分
+	optional int32 pointUnion = 11; //公会积分
 	optional int32 areaEnergy = 26;//疲劳
 	optional int64 areaEnergyTime = 16;//上次疲劳恢复时间
 	optional int64 freeLotteryCoinTime = 17; //免费金币抽取倒计时
@@ -360,7 +360,7 @@ message AreaResource {//区域资源点
 	optional int64 starttime = 18;//该阶段开始报名时间
 	optional int64 closetime = 19;//该阶段结束报名时间
 	optional UserInfo owner = 12;//占领玩家
-	optional int32 attackerId = 13;//进攻工会
+	optional int32 attackerId = 13;//进攻公会
 	optional int32 warDefended = 14;//抵挡波数
 	repeated UserInfo attacks = 15;//进攻方
 	repeated UserInfo defenses = 16;//防守方
@@ -381,10 +381,11 @@ message AreaBoss {//区域世界BOSS
 	optional int32 hpMax = 7;//最大血量
 	optional int32 turn = 8;//回合限制
 	optional int32 count = 9;//次数限制
+	optional int32 pl = 10;
 	///////////////////////////////////
-	optional int32 hp = 10;//当前血量
-	optional UserInfo owner = 11;//击杀者
-	repeated Rank ranks = 12;//伤害排行
+	optional int32 hp = 14;//当前血量
+	optional UserInfo owner = 15;//击杀者
+	repeated Rank ranks = 16;//伤害排行
 }
 
 message AreaBossList {
@@ -428,6 +429,7 @@ message AreaMonster {//区域怪物
 	optional int32 level = 8;
 	optional int32 level1 = 11;
 	optional int32 weight = 10;
+	optional int32 pl = 12;
 }
 
 message AreaMonsterList {
@@ -730,7 +732,7 @@ message MessageBoard {
 	repeated Msg msg = 6;
 	required int32 icon = 7;
 	optional int32 vip = 8;
-	optional int32 job = 9;//工会职位
+	optional int32 job = 9;//公会职位
 }
 
 message Msg {
@@ -1081,6 +1083,10 @@ message HeroChoice {
 	required int32 level2_2 = 7;
 	required int32 level3_1 = 8;
 	required int32 level3_2 = 9;
+	optional int32 level4 = 10;
+	optional int32 level5 = 11;
+	optional int32 level6 = 12;
+	optional int32 level7 = 13;
 }
 
 message ShouchongList {
@@ -1554,12 +1560,12 @@ message ResponseUserLootLevelCommand {
 	required UserLootLevel userLootLevel = 1;
 }
 
-message RequestCreateUnionCommand {//创建工会
+message RequestCreateUnionCommand {//创建公会
 	optional int32 icon = 1;
 	required string name = 2;
 }
 
-message RequestApplyUnionCommand {//提交工会申请
+message RequestApplyUnionCommand {//提交公会申请
 	required int32 unionId = 1;
 }
 
@@ -1568,27 +1574,27 @@ message RequestReplyUnionCommand {//回复公会申请
 	required bool receive = 2;
 }
 
-message RequestHandleUnionMemberCommand {//调整工会成员权限
+message RequestHandleUnionMemberCommand {//调整公会成员权限
 	required int64 id = 1;
 	required int32 job = 2;
 }
 
-message RequestUpgradeUnionCommand {//升级工会
+message RequestUpgradeUnionCommand {//升级公会
 }
 
-message RequestQuitUnionCommand {//退出工会
+message RequestQuitUnionCommand {//退出公会
 	optional int64 id = 1;
 }
 
-message RequestUnionInfoCommand {//工会
+message RequestUnionInfoCommand {//公会
 }
 
-message RequestAttackUnionCommand {//进攻其他工会
+message RequestAttackUnionCommand {//进攻其他公会
 	optional int32 unionId = 1;
 	required int64 teamid = 2;
 }
 
-message RequestDefendUnionCommand {//防守其他工会
+message RequestDefendUnionCommand {//防守其他公会
 	required int64 teamid = 2;
 }
 
@@ -1604,7 +1610,7 @@ message ResponseUnionListCommand {
 }
 
 message RequestMessageBoardListCommand { //获取所有留言板信息
-	required int32 type = 1; //1:普通的 2:工会的
+	required int32 type = 1; //1:普通的 2:公会的
 }
 
 message ResponseMessageBoardListCommand {
@@ -1665,13 +1671,13 @@ message ResponseBlackShopCommand {
 	optional int32 refreshCost = 3;//刷新消耗
 }
 
-message RequestUnionShopCommand {//工会商店
+message RequestUnionShopCommand {//公会商店
 }
-message RequestUnionShopPurchaseCommand {//工会商店购买
+message RequestUnionShopPurchaseCommand {//公会商店购买
 	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
-message RequestUnionShopRefreshCommand {//工会商店刷新
+message RequestUnionShopRefreshCommand {//公会商店刷新
 }
 message ResponseUnionShopCommand {
 	repeated Commodity items = 1;//商品列表
