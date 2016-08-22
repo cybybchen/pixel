@@ -170,16 +170,31 @@ public class UserCommandService extends BaseCommandService {
 	private void addRegisterTeam(UserBean user) {
 		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
 		String teamRecord = "";
+		String composeSkill = "";
 		for (HeroInfoBean hero : userHeroList) {
 			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
+			switch(hero.getHeroId()){
+			case 82:
+				composeSkill = "82,"+hero.getId()+",8201_8201_组合技";
+				break;
+			case 72:
+				composeSkill = "72,"+hero.getId()+",7201_7201_组合技";
+				break;
+			case 55:
+				composeSkill = "55,"+hero.getId()+",5501_5501_组合技";
+				break;
+			case 42:
+				composeSkill = "42,"+hero.getId()+",4201_4201_组合技";
+				break;
+			}
 			break;
 		}
 		
-		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, "");
-		userTeamService.updateUserTeam(user.getId(), 2, "", "");
-		userTeamService.updateUserTeam(user.getId(), 3, "", "");
-		userTeamService.updateUserTeam(user.getId(), 4, "", "");
-		userTeamService.updateUserTeam(user.getId(), 5, "", "");
+		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, composeSkill);
+		// userTeamService.updateUserTeam(user.getId(), 2, "", "");
+		// userTeamService.updateUserTeam(user.getId(), 3, "", "");
+		// userTeamService.updateUserTeam(user.getId(), 4, "", "");
+		// userTeamService.updateUserTeam(user.getId(), 5, "", "");
 	}
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
