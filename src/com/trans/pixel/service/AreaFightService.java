@@ -43,6 +43,7 @@ import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.MailRedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 /**
  * 1.1.3.6区域争夺战
@@ -64,8 +65,6 @@ public class AreaFightService extends FightService{
 	MailRedisService mailRedisService;
 	@Resource
 	PushCommandService pusher;
-	final int WARTIME = 60;
-	final int PROTECTTIME = 30;
 	
 	public void delAreaEquip(long userId, int rewardId){
 		UserBean user = new UserBean();
@@ -218,10 +217,11 @@ public class AreaFightService extends FightService{
 				return SuccessConst.AREA_ATTACK_FAIL;
 			}
 			builder.setState(1);
+			redis.addFight(user.getServerId(), builder.getId(), builder.getClosetime());
 			long time = redis.now();
 			builder.setStarttime(time);
-			builder.setClosetime(time+/*24*3600L*/WARTIME);
-			builder.setEndtime(builder.getClosetime()+PROTECTTIME);
+			builder.setClosetime(time+/*24*3600L*/redis.WARTIME);
+			builder.setEndtime(builder.getClosetime()+redis.PROTECTTIME);
 			if(builder.hasOwner()){
 				builder.setMessage("领主"+builder.getOwner().getName()+"已经被"+user.getUserName()+"刺杀");
 				builder.setAttackerId(user.getUnionId());
@@ -232,7 +232,7 @@ public class AreaFightService extends FightService{
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
 			costEnergy(user);
-			redis.saveResource(builder.build(), user);
+			redis.saveResource(builder.build(), user.getServerId());
 		}else{
 			if(builder.getStarttime() > redis.now())
 				return ErrorConst.JOIN_NOT_START;
@@ -246,7 +246,7 @@ public class AreaFightService extends FightService{
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
 			costEnergy(user);
-			redis.saveResource(builder.build(), user);
+			redis.saveResource(builder.build(), user.getServerId());
 		}
 		return SuccessConst.Add_AREA_FIGHT;
 	}
@@ -371,9 +371,35 @@ public class AreaFightService extends FightService{
 ////		}
 //		return yield;
 //	}
-	
-	public void resourceFight(AreaResource.Builder builder, UserBean user){
-		if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+builder.getId(), 60))
+
+	public void calFight(){
+		Set<TypedTuple<String>> set = redis.getFightSet();
+		for (TypedTuple<String> key : set){
+			redis.removeFight(key.getValue());
+			String[] value = key.getValue().split("#");
+			if(value.length == 2){
+				int serverId = TypeTranslatedUtil.stringToInt(value[0]);
+				int resourceId = TypeTranslatedUtil.stringToInt(value[1]);
+				resourceFight(resourceId, serverId);
+			}
+		}
+	}
+
+	public void resourceFight(int resourceId, int serverId){
+		AreaResource resource = redis.getResource(resourceId,serverId);
+		if(resource == null)
+			return;
+		AreaResource.Builder builder = AreaResource.newBuilder(resource);
+		if (builder.getState() == 0)
+			return;
+		// if (builder.getState() == 1 && redis.now() >= builder.getClosetime()) {// 攻城开始
+		resourceFight(builder, serverId);
+		if(builder.getState() == 1)
+			redis.addFight(serverId, resourceId, builder.getClosetime());
+	}
+
+	public void resourceFight(AreaResource.Builder builder, int serverId){
+		if(!redis.setLock("S"+serverId+"_AreaResource_"+builder.getId(), 120))
 			return;
 		//防守玩家最后一个加入战斗
 		List<UserInfo> attacks = new ArrayList<UserInfo>();
@@ -394,7 +420,7 @@ public class AreaFightService extends FightService{
 					UserInfo owner = null;
 					for(UserInfo userinfo : attacks){
 						if(userinfo.getId() == winresult.getWin().getUserId())
-							owner = userService.getCache(user.getServerId(), userinfo.getId());
+							owner = userService.getCache(serverId, userinfo.getId());
 					}
 
 					builder.setWarDefended(0);
@@ -421,14 +447,14 @@ public class AreaFightService extends FightService{
 			builder.clearEndtime();
 		}else{
 			builder.setStarttime(time);
-			builder.setClosetime(time+WARTIME);
-			builder.setEndtime(builder.getClosetime()+PROTECTTIME);
+			builder.setClosetime(time+redis.WARTIME);
+			builder.setEndtime(builder.getClosetime()+redis.PROTECTTIME);
 		}
 		builder.clearDefenses();
 		builder.clearAttacks();
 		builder.clearAttackerId();
-		redis.saveResource(builder.build(), user);
-		redis.clearLock("S"+user.getServerId()+"_AreaResource_"+builder.getId());
+		redis.saveResource(builder.build(), serverId);
+		redis.clearLock("S"+serverId+"_AreaResource_"+builder.getId());
 	}
 	
 	private void getBossRank(AreaBoss.Builder bossbuilder, UserBean user){
@@ -468,13 +494,13 @@ public class AreaFightService extends FightService{
 	}
 
 	public AreaResource getResource(int id, UserBean user) {
-		AreaResource resource = redis.getResource(id,user);
+		AreaResource resource = redis.getResource(id,user.getServerId());
 		if(resource == null)
 			return null;
 		AreaResource.Builder builder = AreaResource.newBuilder(resource);
-		if (builder.getState() == 1 && redis.now() >= builder.getClosetime()) {// 攻城开始
-			resourceFight(builder, user);
-		}
+		// if (builder.getState() == 1 && redis.now() >= builder.getClosetime()) {// 攻城开始
+		// 	resourceFight(builder, user);
+		// }
 		return builder.build();
 	}
 	
@@ -573,14 +599,14 @@ public class AreaFightService extends FightService{
 			}
 			// 更新资源开采点
 			// 更新资源点
-			long time = redis.now();
+//			long time = redis.now();
 			for (AreaResource.Builder resourcebuilder : areabuilder.getResourcesBuilderList()) {
 				AreaResource resource = resourceMap.get(resourcebuilder.getId() + "");
 				if (resource != null) {
 					AreaResource.Builder builder = AreaResource.newBuilder(resource);
-					if (builder.getState() == 1 && time >= builder.getClosetime()) {// 攻城开始
-						resourceFight(builder, user);
-					}
+//					if (builder.getState() == 1 && time >= builder.getClosetime()) {// 攻城开始
+//						resourceFight(builder, user);
+//					}
 					resourcebuilder.mergeFrom(builder.build());
 				}
 //				for (int i = 1; i <= resourcebuilder.getCount(); i++)

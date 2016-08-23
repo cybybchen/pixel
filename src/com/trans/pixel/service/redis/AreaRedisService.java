@@ -56,6 +56,8 @@ public class AreaRedisService extends RedisService{
 	private final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
 //	private final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
 	private final static String MINEGAIN = RedisKey.PREFIX+"AreaResourceMineGain_";
+	public final int WARTIME = 60;
+	public final int PROTECTTIME = 60;
 	@Resource
 	private UserRedisService userRedisService;
 	@Resource
@@ -138,6 +140,18 @@ public class AreaRedisService extends RedisService{
 			user.setAreaEnergy(user.getAreaEnergy()-1);
 		user.setAreaEnergyTime(time);
 		userRedisService.updateUser(user);
+	}
+
+	public void addFight(int serverId, int resourceId, long timestamp){
+		zadd(RedisKey.PREFIX+"AreaResourceFight", timestamp, serverId+"#"+resourceId);
+	}
+
+	public Set<TypedTuple<String>>  getFightSet(){
+		return zrangewithscore(RedisKey.PREFIX+"AreaResourceFight", 0, now());
+	}
+
+	public void removeFight(String key){
+		zremove(RedisKey.PREFIX+"AreaResourceFight", key);
 	}
 	
 	public Map<String, AreaBoss.Builder> getBosses(UserBean user){
@@ -413,8 +427,8 @@ public class AreaRedisService extends RedisService{
 		}
 	}
 	
-	public AreaResource getResource(int id,UserBean user){
-		String value = this.hget(AREARESOURCE+user.getServerId(), id+"");
+	public AreaResource getResource(int id,int serverId){
+		String value = this.hget(AREARESOURCE+serverId, id+"");
 		AreaResource.Builder builder = AreaResource.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -445,8 +459,8 @@ public class AreaRedisService extends RedisService{
 			return Integer.parseInt(value);
 	}
 
-	public void saveResource(AreaResource resource,UserBean user) {
-		this.hput(AREARESOURCE+user.getServerId(), resource.getId()+"", formatJson(resource));
+	public void saveResource(AreaResource resource,int serverId) {
+		this.hput(AREARESOURCE+serverId, resource.getId()+"", formatJson(resource));
 	}
 	
 //	public Map<String, AreaResourceMine> getResourceMines(UserBean user){
@@ -770,5 +784,6 @@ public class AreaRedisService extends RedisService{
 
 	public void saveFight(int id, FightResultList build) {
 		set(RedisKey.PREFIX+"AreaResourceFight_"+id, formatJson(build));
+		expire(RedisKey.PREFIX+"AreaResourceFight_"+id, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 	}
 }
