@@ -8,7 +8,7 @@
 <hero id="11" handbook="1" verylove1="80009" love1="80007" love2="80008" normal1="80006" normal2="80012" normal3="80010" />
 <hero id="12" handbook="0" verylove1="80012" love1="80013" love2="80014" normal1="80006" normal2="80018" normal3="80010" />
 <hero id="13" handbook="0" verylove1="80012" love1="80013" love2="80014" normal1="80006" normal2="80018" normal3="80010" />
-<hero id="17" handbook="1" verylove1="80002" love1="80007" love2="80012" normal1="80013" normal2="80018" normal3="80014" />
+<hero id="17" handbook="1" verylove1="80001" love1="80007" love2="80012" normal1="80013" normal2="80018" normal3="80014" />
 <hero id="24" handbook="1" verylove1="80007" love1="80018" love2="80019" normal1="80006" normal2="80003" normal3="80010" />
 <hero id="27" handbook="1" verylove1="80014" love1="80002" love2="80003" normal1="80006" normal2="80017" normal3="80015" />
 <hero id="32" handbook="1" verylove1="80017" love1="80003" love2="80004" normal1="80001" normal2="80008" normal3="80015" />
@@ -32,7 +32,7 @@
 <hero id="63" handbook="0" verylove1="80020" love1="80004" love2="80002" normal1="80018" normal2="80003" normal3="80001" />
 <hero id="70" handbook="0" verylove1="80012" love1="80013" love2="80014" normal1="80006" normal2="80018" normal3="80010" />
 <hero id="72" handbook="1" verylove1="80011" love1="80012" love2="80002" normal1="80008" normal2="80013" normal3="80019" />
-<hero id="74" handbook="1" verylove1="80012" love1="80013" love2="80018" normal1="80011" normal2="80018" normal3="80020" />
+<hero id="74" handbook="1" verylove1="80012" love1="80013" love2="80019" normal1="80011" normal2="80018" normal3="80020" />
 <hero id="75" handbook="1" verylove1="80010" love1="80008" love2="80009" normal1="80012" normal2="80013" normal3="80006" />
 <hero id="76" handbook="1" verylove1="80015" love1="80003" love2="80004" normal1="80017" normal2="80008" normal3="80006" />
 <hero id="78" handbook="1" verylove1="80006" love1="80007" love2="80012" normal1="80013" normal2="80018" normal3="80019" />
@@ -50,6 +50,6 @@
 <hero id="108" handbook="0" verylove1="80012" love1="80013" love2="80014" normal1="80006" normal2="80018" normal3="80010" />
 <hero id="116" handbook="1" verylove1="80009" love1="80012" love2="80013" normal1="80016" normal2="80002" normal3="80010" />
 <hero id="117" handbook="1" verylove1="80020" love1="80013" love2="80014" normal1="80007" normal2="80018" normal3="80001" />
-<hero id="121" handbook="1" verylove1="80002" love1="80018" love2="80003" normal1="80006" normal2="80003" normal3="80015" />
+<hero id="121" handbook="1" verylove1="80002" love1="80018" love2="80004" normal1="80006" normal2="80003" normal3="80015" />
 <hero id="122" handbook="0" verylove1="80012" love1="80013" love2="80014" normal1="80006" normal2="80018" normal3="80010" />
 </data>
