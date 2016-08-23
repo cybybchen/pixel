@@ -40,9 +40,9 @@ public class ClearService {
 	private static final int CLEAR_TYPE_COIN_COST = 10000;
 	private static final int CLEAR_TYPE_JEWEL_COST = 100;
 	
-	private static final int USER_POKEDE_LIMIT_1 = 1;
-	private static final int USER_POKEDE_LIMIT_2 = 4;
-	private static final int USER_POKEDE_LIMIT_3 = 7;
+	private static final int USER_POKEDE_LIMIT_1 = 3;
+	private static final int USER_POKEDE_LIMIT_2 = 6;
+	private static final int USER_POKEDE_LIMIT_3 = 9;
 	private static final int CLEAR_POSITION_2 = 2;
 	private static final int CLEAR_POSITION_3 = 3;
 	
