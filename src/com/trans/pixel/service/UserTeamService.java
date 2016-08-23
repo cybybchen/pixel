@@ -138,6 +138,22 @@ public class UserTeamService {
 		return str;
 	}
 
+	public Team getDefendTeam(long userid){
+		Team.Builder team = Team.newBuilder();
+		UserBean user = userService.getOther(userid);
+		if (user == null) {
+			user = new UserBean();
+			user.init(1, "someone", "someone", 0);
+		}
+		team.setUser(user.buildShort());
+		Team currentTeam = getTeam(user, 1000);
+		if(currentTeam.getHeroInfoCount() == 0)
+			return getTeamCache(userid);
+
+		team.mergeFrom(currentTeam);
+		return team.build();
+	}
+
 	public Team getTeamCache(long userid){
 		Team.Builder team = userTeamRedisService.getTeamCache(userid);
 

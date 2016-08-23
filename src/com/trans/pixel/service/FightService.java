@@ -34,7 +34,7 @@ public class FightService {
 		}
 		List<Team> defendteams = new ArrayList<Team>();
 		for(UserInfo user : defendusers){
-			Team team = userTeamService.getTeamCache(user.getId());
+			Team team = userTeamService.getDefendTeam(user.getId());
 			if(team != null)
 				defendteams.add(team);
 		}
