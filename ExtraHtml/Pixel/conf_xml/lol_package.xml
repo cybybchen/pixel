@@ -1500,6 +1500,12 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="34005" name="西瓜篮" img="34002" rare="4" description="开启获得2-4个西瓜" hashero="0" cyb="0" judge="0" endtime="2016-08-31 23:59:59" itemcount="1" weightall="100" >
+		<item itemid="40106" item="西瓜" counta="2" countb="4" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 	<loot itemid="40101" name="元气西瓜" img="40101" rare="2" description="可在活动-西瓜大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-07-27 23:59:59" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
@@ -1525,6 +1531,12 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="40105" name="专用布料" img="40105" rare="2" description="可在活动-布料大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-24 23:59:59" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="40106" name="西瓜" img="40101" rare="2" description="可在活动-西瓜大作战中兑换奖励，在征战世界中获得" hashero="0" cyb="1" judge="0" endtime="2016-08-31 23:59:59" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
