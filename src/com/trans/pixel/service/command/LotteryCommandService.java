@@ -114,7 +114,7 @@ public class LotteryCommandService extends BaseCommandService {
 				}
 			}
 			
-			if (type != LotteryConst.LOOTERY_SPECIAL_TYPE && ifFirstLottery(user, type))
+			if (type != LotteryConst.LOOTERY_SPECIAL_TYPE && ifFirstLottery(user, type) && count == 1)
 				lotteryList = firstLotteryReward(user, type);
 			else
 				lotteryList = lotteryService.randomLotteryList(type, count);
