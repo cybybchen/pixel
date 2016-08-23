@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <activity>
-	<activity id="1" type="1" targetcount="0" des="61登录送豪礼" starttime="2016-05-27 00:00:00" endtime="2016-06-03 00:00:00" activitytype="1" serverfilter="1,2,3,4,5,6,7,8,9">
-		<reward id="1" itemid="1002" count="1000" />
+	<activity id="1" type="1" targetcount="0" des="8月23日更新补偿奖励" starttime="2016-08-23 00:00:00" endtime="2016-08-30 00:00:00" activitytype="0" serverfilter="">
+		<reward id="1" itemid="1002" count="100" />
 	</activity>
 </activity>
