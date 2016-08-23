@@ -71,6 +71,7 @@ import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
+import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -367,6 +368,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestClearHeroCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestBosskillCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
@@ -1061,6 +1063,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//SubmitBosskillCommand
                 result = handleCommand(cmd, responseBuilder, user);//SubmitBosskillCommand
         }//SubmitBosskillCommand
+        if (request.hasBosskillCommand()) {
+            RequestBosskillCommand cmd = request.getBosskillCommand();
+            if (result)//BosskillCommand
+                result = handleCommand(cmd, responseBuilder, user);//BosskillCommand
+        }//BosskillCommand
         //call handleCommand here
         if (request.hasPurchaseContractCommand()) {
             RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();

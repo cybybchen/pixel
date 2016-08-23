@@ -2125,6 +2125,10 @@ message RequestSubmitBosskillCommand {
 	required int32 bossId = 2;
 }
 
+message RequestBosskillCommand {
+	
+}
+
 message ResponseBosskillCommand {
 	repeated BossGroupRecord record = 1;	
 }
@@ -2264,6 +2268,7 @@ message RequestCommand {
 	optional RequestClearHeroCommand clearHeroCommand = 94;
 	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
 	optional RequestSubmitBosskillCommand submitBosskillCommand = 96;
+	optional RequestBosskillCommand bosskillCommand = 97;
 }
 // response command list transfer only use it
 message ResponseCommand {

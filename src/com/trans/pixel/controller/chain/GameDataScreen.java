@@ -95,6 +95,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -813,6 +814,11 @@ public class GameDataScreen extends RequestScreen {
 		bossCommandService.bossKill(cmd, responseBuilder, user);
 		return true;//SubmitBosskillCommand
 	}//SubmitBosskillCommand
+	@Override//BosskillCommand
+	protected boolean handleCommand(RequestBosskillCommand cmd, Builder responseBuilder, UserBean user) {
+		bossCommandService.getBosskillRecord(responseBuilder, user);
+		return true;//BosskillCommand
+	}//BosskillCommand
 	//add handleCommand here
 	
 	@Override

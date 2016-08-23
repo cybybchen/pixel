@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.BossGroupRecord;
+import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
+import com.trans.pixel.protoc.Commands.ResponseBosskillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.BossService;
 import com.trans.pixel.service.RewardService;
@@ -30,5 +33,13 @@ public class BossCommandService extends BaseCommandService {
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
 		}
 		pusher.pushUserBosskillRecord(responseBuilder, user);
+	}
+	
+	public void getBosskillRecord(Builder responseBuilder, UserBean user) {
+		ResponseBosskillCommand.Builder builder = ResponseBosskillCommand.newBuilder();
+		List<BossGroupRecord> list = bossService.getBossGroupRecord(user);
+		builder.addAllRecord(list);
+		responseBuilder.setBosskillCommand(builder.build());
+		
 	}
 }
