@@ -38,7 +38,7 @@ public class BossService {
 						break;
 					
 					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
-					return getBossloot(groupId);
+					return getBossloot(bossId);
 				}
 			}
 		}
@@ -46,9 +46,9 @@ public class BossService {
 		return new ArrayList<RewardBean>();
 	}
 	
-	private List<RewardBean> getBossloot(int groupId) {
+	private List<RewardBean> getBossloot(int bossId) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		BosslootGroup bosslootGroup = bossRedisService.getBosslootGroup(groupId);
+		BosslootGroup bosslootGroup = bossRedisService.getBosslootGroup(bossId);
 		for (Bossloot bossloot : bosslootGroup.getLootList()) {
 			int randomWeight = RandomUtils.nextInt(bossloot.getWeightall()) + 1;
 			if (randomWeight <= bossloot.getWeight1()) {
