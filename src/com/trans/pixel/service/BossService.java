@@ -28,7 +28,7 @@ public class BossService {
 	private BossRedisService bossRedisService;
 	
 	public List<RewardBean> submitBosskill(UserBean user, int groupId, int bossId) {
-		BossGroupRecord bossGroupRecord = bossRedisService.getBossGroupRecord(groupId);
+		BossGroupRecord bossGroupRecord = bossRedisService.getBossGroupRecord(user.getServerId(), groupId);
 		if (bossGroupRecord != null) {
 			for (BossRecord bossRecord :bossGroupRecord.getBossRecordList()) {
 				if (bossRecord.getBossId() == bossId) {
