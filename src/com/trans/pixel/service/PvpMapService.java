@@ -168,7 +168,7 @@ public class PvpMapService {
 	public void refreshAMine(UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
-		List<UserInfo> ranks = getRandUser(-10, 5, user);//刷新一个对手
+		List<UserInfo> ranks = getRandUser(-5, 10, user);//刷新一个对手
 		List<PVPMap> fields = new ArrayList<PVPMap>();
 		for(PVPMap map : maplist.getFieldList()){
 			if(map.getOpened())
@@ -208,7 +208,7 @@ public class PvpMapService {
 		}
 		int count = getRefreshCount(user);//count=3*enemy
 		if(count > 0){//刷新对手
-			List<UserInfo> ranks = getRandUser(-10, 5, user);//每张地图刷新一个对手
+			List<UserInfo> ranks = getRandUser(-5, 10, user);//每张地图刷新一个对手
 			if(ranks.isEmpty())
 				return;
 			for(PVPMap map : maplist.getFieldList())
