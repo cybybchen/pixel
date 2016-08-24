@@ -521,10 +521,13 @@ public class AreaFightService extends FightService{
 		Map<String, AreaEquip> equipMap = redis.getMyAreaEquips(user);
 		if(equipMap.isEmpty()){
 			List<UserAreaPropBean> beans = mapper.selectUserAreaPropList(user.getId());
+			Map<Integer, AreaEquip> map = redis.getAreaEquipConfig();
 			for(UserAreaPropBean bean : beans){
 				AreaEquip.Builder builder = bean.build();
-				builder.mergeFrom(redis.getAreaEquip(bean.getId()));
-				equipMap.put(builder.getId()+"", builder.build());
+				if(map.containsKey(bean.getId())){
+					builder.mergeFrom(map.get(bean.getId()));
+					equipMap.put(builder.getId()+"", builder.build());
+				}
 			}
 			redis.saveMyAreaEquips(user, equipMap.values());
 		}

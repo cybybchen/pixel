@@ -759,26 +759,41 @@ public class AreaRedisService extends RedisService{
 		}
 		return map;
 	}
+
+	public Map<Integer, AreaEquip> getAreaEquipConfig(){
+		Map<String, String> keyvalue = hget(RedisKey.AREAEQUIP_CONFIG);
+		Map<Integer, AreaEquip> map = new HashMap<Integer, AreaEquip>();
+		if(!keyvalue.isEmpty()){
+			for(String value : keyvalue.values()){
+				AreaEquip.Builder builder = AreaEquip.newBuilder();
+				if(parseJson(value, builder))
+					map.put(builder.getId(), builder.build());
+			}
+			return map;
+		}
+		keyvalue = new HashMap<String, String>();
+		String xml = ReadConfig("lol_regionequip.xml");
+		AreaEquipList.Builder list = AreaEquipList.newBuilder();
+		parseXml(xml, list);
+		for(AreaEquip.Builder equip : list.getEquipBuilderList()){
+//			equip.clearImg();
+			equip.clearDescription();
+//			equip.clearName();
+			keyvalue.put(equip.getId()+"", formatJson(equip.build()));
+			map.put(equip.getId(), equip.build());
+		}
+		hputAll(RedisKey.AREAEQUIP_CONFIG, keyvalue);
+		return map;
+	}
+
 	public AreaEquip getAreaEquip(int id){
 		AreaEquip.Builder builder = AreaEquip.newBuilder();
 		String value = hget(RedisKey.AREAEQUIP_CONFIG, id+"");
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			Map<String, String> keyvalue = new HashMap<String, String>();
-			String xml = ReadConfig("lol_regionequip.xml");
-			AreaEquipList.Builder list = AreaEquipList.newBuilder();
-			parseXml(xml, list);
-			for(AreaEquip.Builder equip : list.getEquipBuilderList()){
-//				equip.clearImg();
-				equip.clearDescription();
-//				equip.clearName();
-				if(equip.getId() == id)
-					builder = equip;
-				keyvalue.put(equip.getId()+"", formatJson(equip.build()));
-			}
-			hputAll(RedisKey.AREAEQUIP_CONFIG, keyvalue);
-			return builder.build();
+			Map<Integer, AreaEquip> map = getAreaEquipConfig();
+			return map.get(id);
 		}
 	}
 
