@@ -652,6 +652,22 @@ public class RedisService {
     /**
      * 获取zset(倒序)
      */
+    protected Set<TypedTuple<String>> zrangebyscore(final String key, final long start, final long end) {
+    	return redisTemplate.execute(new RedisCallback<Set<TypedTuple<String>>>() {
+			@Override
+			public Set<TypedTuple<String>> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> Ops = redisTemplate
+						.boundZSetOps(key);
+				
+				return Ops.reverseRangeByScoreWithScores(start, end);
+			}
+		});
+    }
+
+    /**
+     * 获取zset(倒序)
+     */
     protected Set<TypedTuple<String>> zrangewithscore(final String key, final long start, final long end) {
     	return redisTemplate.execute(new RedisCallback<Set<TypedTuple<String>>>() {
 			@Override

@@ -147,7 +147,7 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public Set<TypedTuple<String>>  getFightSet(){
-		return zrangewithscore(RedisKey.PREFIX+"AreaResourceFight", 0, now());
+		return zrangebyscore(RedisKey.PREFIX+"AreaResourceFight", 0, now());
 	}
 
 	public void removeFight(String key){

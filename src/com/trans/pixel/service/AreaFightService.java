@@ -42,6 +42,7 @@ import com.trans.pixel.protoc.Commands.WeightReward;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.MailRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -403,6 +404,7 @@ public class AreaFightService extends FightService{
 	public void resourceFight(AreaResource.Builder builder, int serverId){
 		if(!redis.setLock("S"+serverId+"_AreaResource_"+builder.getId(), 120))
 			return;
+		logger.info("S"+serverId+":"+RedisService.formatJson(builder.build()));
 		//防守玩家最后一个加入战斗
 		List<UserInfo> attacks = new ArrayList<UserInfo>();
 		attacks.addAll(builder.getAttacksList());
