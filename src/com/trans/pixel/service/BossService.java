@@ -73,10 +73,10 @@ public class BossService {
 	}
 	
 	public List<BossGroupRecord> getBossGroupRecord(UserBean user) {
-		List<BossGroupRecord> list = bossRedisService.getBossGroupRecordList();
+		List<BossGroupRecord> list = bossRedisService.getBossGroupRecordList(user.getServerId());
 		if (list.size() == 0) {
 			list = randomDailyBoss();
-			bossRedisService.setBossgroupRecord(list);
+			bossRedisService.setBossgroupRecord(list, user.getServerId());
 		}
 		
 		List<BossGroupRecord> userBossGroupList = new ArrayList<BossGroupRecord>();

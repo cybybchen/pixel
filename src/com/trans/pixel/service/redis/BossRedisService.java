@@ -127,9 +127,9 @@ public class BossRedisService extends RedisService {
 		return map;
 	}
 	
-	public List<BossGroupRecord> getBossGroupRecordList() {
+	public List<BossGroupRecord> getBossGroupRecordList(int serverId) {
 		List<BossGroupRecord> list = new ArrayList<BossGroupRecord>();
-		String key = RedisKey.BOSSGROUP_DAILY_KEY;
+		String key = RedisKey.BOSSGROUP_DAILY_PREFIX + serverId;
 		Map<String, String> map = this.hget(key);
 		if (map != null) {
 			Iterator<Entry<String, String>> it = map.entrySet().iterator();
@@ -142,8 +142,8 @@ public class BossRedisService extends RedisService {
 		return list;
 	}
 	
-	public BossGroupRecord getBossGroupRecord(int groupId) {
-		String key = RedisKey.BOSSGROUP_DAILY_KEY;
+	public BossGroupRecord getBossGroupRecord(int serverId, int groupId) {
+		String key = RedisKey.BOSSGROUP_DAILY_PREFIX + serverId;
 		Map<String, String> map = this.hget(key);
 		if (map != null) {
 			Iterator<Entry<String, String>> it = map.entrySet().iterator();
@@ -159,13 +159,13 @@ public class BossRedisService extends RedisService {
 		return null;
 	}
 	
-	public void setBossgroupRecord(List<BossGroupRecord> list) {
+	public void setBossgroupRecord(List<BossGroupRecord> list, int serverId) {
 		Map<String, String> redismap = new HashMap<String, String>();
 		for(BossGroupRecord record : list)
 			redismap.put("" + record.getGroupId(), formatJson(record));
 		
-		hputAll(RedisKey.BOSSGROUP_DAILY_KEY, redismap);
-		expireAt(RedisKey.BOSSGROUP_DAILY_KEY, DateUtil.getEndDateOfD());
+		hputAll(RedisKey.BOSSGROUP_DAILY_PREFIX + serverId, redismap);
+		expireAt(RedisKey.BOSSGROUP_DAILY_PREFIX + serverId, DateUtil.getEndDateOfD());
 	}
 	
 	public int getBosskillCount(long userId, int group, int bossId) {
