@@ -1,87 +1,87 @@
 <data>
 <boss id="100001" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="20000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36003" itemcount1="1" weight1="5" itemid2="36002" itemcount2="1" weight2="25" itemid3="36001" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="27005" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="100002" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="20000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36003" itemcount1="1" weight1="5" itemid2="36002" itemcount2="1" weight2="25" itemid3="36001" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="27009" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="100003" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="20000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36003" itemcount1="1" weight1="5" itemid2="36002" itemcount2="1" weight2="25" itemid3="36001" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="27010" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="100004" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="20000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36003" itemcount1="1" weight1="5" itemid2="36002" itemcount2="1" weight2="25" itemid3="36001" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="27004" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="100005" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="20000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36003" itemcount1="1" weight1="5" itemid2="36002" itemcount2="1" weight2="25" itemid3="36001" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="27011" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="100006" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="1" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="20000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36003" itemcount1="1" weight1="5" itemid2="36002" itemcount2="1" weight2="25" itemid3="36001" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="27008" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110001" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="28003" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110002" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
 <loot order="4" weightall="100" itemid1="28005" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110003" >
-<loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
-<loot order="4" weightall="100" itemid1="28001" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="4" weightall="100" itemid1="28001" itemcount1="5" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110004" >
 <loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
-<loot order="4" weightall="100" itemid1="28002" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="4" weightall="100" itemid1="28002" itemcount1="5" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110005" >
 <loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
-<loot order="4" weightall="100" itemid1="28008" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="4" weightall="100" itemid1="28008" itemcount1="5" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110006" >
 <loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
-<loot order="4" weightall="100" itemid1="28004" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="4" weightall="100" itemid1="28004" itemcount1="5" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110007" >
 <loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
-<loot order="4" weightall="100" itemid1="28007" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="4" weightall="100" itemid1="28007" itemcount1="5" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="110008" >
 <loot order="1" weightall="100" itemid1="29070" itemcount1="3" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="2" weightall="100" itemid1="1001" itemcount1="50000" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 <loot order="3" weightall="100" itemid1="36004" itemcount1="1" weight1="5" itemid2="36003" itemcount2="1" weight2="25" itemid3="36002" itemcount3="1" weight3="70" />
-<loot order="4" weightall="100" itemid1="28006" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
+<loot order="4" weightall="100" itemid1="28006" itemcount1="5" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
 <boss id="120001" >
 <loot order="1" weightall="100" itemid1="29070" itemcount1="5" weight1="100" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
