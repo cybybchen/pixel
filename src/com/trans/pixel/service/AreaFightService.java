@@ -445,7 +445,7 @@ public class AreaFightService extends FightService{
 			builder.setWarDefended(0);
 			builder.clearMessage();
 			builder.clearClosetime();
-			builder.setStarttime(time);
+			builder.setStarttime(time+redis.PROTECTTIME);
 			builder.clearEndtime();
 		}else{
 			builder.setStarttime(time);
