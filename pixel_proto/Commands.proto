@@ -1207,7 +1207,7 @@ message Boss {
 }
 
 message BosslootGroupList {
-	repeated BosslootGroup group = 1;
+	repeated BosslootGroup boss = 1;
 }
 
 message BosslootGroup {
@@ -1226,6 +1226,20 @@ message Bossloot {
 	optional int32 itemid3 = 8;
 	optional int32 itemcount3 = 9;
 	optional int32 weight3 = 10;
+	optional int32 order = 11;
+}
+
+message UnionBossList {
+	repeated UnionBoss boss = 1;
+}
+
+message UnionBoss {
+	optional int32 id = 1;
+	optional int32 type = 2;
+	optional int32 targetid = 3;
+	optional int32 targetcount = 4;
+	optional int32 time = 5;
+	optional int32 HP = 6;
 }
 
 message ErrorCommand{
