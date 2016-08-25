@@ -47,6 +47,7 @@ public class LogString {
 	public static final String TURN = "turn";
 	public static final String LEVEL = "level";
 	public static final String IDFA = "idfa";
+	public static final String ZHANLI = "zhanli";
 	
 	public static final String MODE = "mode";
 	public static final String PHONEUUID = "phoneuuid";

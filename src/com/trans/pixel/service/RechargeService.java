@@ -23,6 +23,7 @@ import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.RechargeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -64,6 +65,8 @@ public class RechargeService {
 	private ServerService serverService;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private UserLevelService userLevelService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
     	int complete = user.getRechargeRecord()+rmb*10;
@@ -225,7 +228,9 @@ public class RechargeService {
 		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 			userService.saveLibao(user.getId(), libaobuilder.build());
 			
-			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", company, 1);
+			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", 
+					company, 1, userLevel != null ? userLevel.getPutongLevel() : 0, user.getZhanliMax());
 			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
 		}
 		

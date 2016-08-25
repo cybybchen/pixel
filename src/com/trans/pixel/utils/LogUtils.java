@@ -7,7 +7,7 @@ import com.trans.pixel.constants.LogString;
 
 public class LogUtils {
 	public static final Map<String, String> buildRechargeMap(long userId, int serverId, int currencyAmount, int stage, int itemid, int action, String version,
-			String channel, int rechargeType) {
+			String channel, int rechargeType, int level, int zhanli) {
 		Map<String, String> params = new HashMap<String, String>();	
 		params.put(LogString.USERID, "" + userId);
 		params.put(LogString.SERVERID, "" + serverId);
@@ -19,6 +19,8 @@ public class LogUtils {
 		params.put(LogString.VERSION, version);
 		params.put(LogString.CHANNEL, channel);
 		params.put(LogString.RECHARGE_TYPE, "" + rechargeType);
+		params.put(LogString.LEVEL, "" + level);
+		params.put(LogString.ZHANLI, "" + zhanli);
 		return params;
 	}
 	

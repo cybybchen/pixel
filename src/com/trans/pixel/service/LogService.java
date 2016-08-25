@@ -159,6 +159,10 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.RECHARGE_TYPE));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ZHANLI));
+				sb.append(LogString.SPLITER);
 				break;
 				
 			case LogString.LOGTYPE_ERROR:
