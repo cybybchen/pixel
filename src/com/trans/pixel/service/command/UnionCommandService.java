@@ -50,7 +50,6 @@ public class UnionCommandService extends BaseCommandService {
 		Union union = unionService.getUnion(user);
 		if(union == null)
 			return;
-		
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(union);
 		responseBuilder.setUnionInfoCommand(builder.build());

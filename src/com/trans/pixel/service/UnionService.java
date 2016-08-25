@@ -1,14 +1,11 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
-
-import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 
@@ -25,17 +22,13 @@ import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.Union;
-import com.trans.pixel.protoc.Commands.UnionBoss;
-import com.trans.pixel.protoc.Commands.UnionBossRecord;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
-import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UnionService extends FightService{
 
-	
 	@Resource
 	private UnionRedisService redis;
 	@Resource
@@ -130,9 +123,6 @@ public class UnionService extends FightService{
 		if(user.getUnionJob() > 0){
 			builder.addAllApplies(redis.getApplies(user.getUnionId()));
 		}
-		
-		builder.addAllUnionBoss(getUnionBossList(user.getUnionId()));
-		
 		return builder.build();
 	}
 	
@@ -474,69 +464,12 @@ public class UnionService extends FightService{
 				} catch (InterruptedException e) {
 					logger.debug(e);
 					return;
-				} 
+				}
 				bloodFight(attackUnionId, defendUnionId, serverId);
 				redis.deleteFightKey(attackUnionId, serverId);
 				redis.clearLock("Union_"+attackUnionId);
 				redis.clearLock("Union_"+defendUnionId);
 			}
 		}
-	}
-	
-	public void costUnionBossActivity(UserBean user, int targetId, int count) {
-		if (user.getUnionId() > 0)
-			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_COST, targetId, count);
-	}
-	
-	public void killMonsterBossActivity(UserBean user, int targetId, int count) {
-		if (user.getUnionId() > 0)
-			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_KILLMONSTER, targetId, count);
-	}
-	
-	public void doUnionBossRecord(UserBean user, int type, int targetId, int count) {
-		Union union = getUnion(user);
-		if (union == null)
-			return;
-		UnionBean unionBean = new UnionBean(union);
-		Map<String, UnionBoss> map = redis.getUnionBossConfig();
-		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
-		while (it.hasNext()) {
-			Entry<String, UnionBoss> entry = it.next();
-			UnionBoss unionBoss = entry.getValue();
-			if (unionBoss.getType() == type) {
-				if (unionBoss.getTargetid() == targetId) {
-					if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER)
-						unionBean.updateKillMonsterRecord(targetId, count);
-					else if (type == UnionConst.UNION_BOSS_TYPE_COST)
-						unionBean.updateCostRecord(targetId, count);
-					
-					calUnionBossRefresh(unionBean, unionBoss);
-					redis.saveUnion(unionBean.build(), user);
-				}
-			}
-		}
-	}
-	
-	public void calUnionBossRefresh(UnionBean union, UnionBoss unionBoss) {
-		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
-		if (unionBossRecord != null && !DateUtil.timeIsOver(unionBossRecord.getEndTime()))
-			return;
-		if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_COST) {
-			JSONObject json = JSONObject.fromObject(union.getCostRecord());
-			if (json.getInt("" + unionBoss.getTargetid()) >= unionBoss.getTargetcount()) {
-				union.updateCostRecord(unionBoss.getTargetid(),  - unionBoss.getTargetcount());
-			}	
-		} else if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
-			JSONObject json = JSONObject.fromObject(union.getKillMonsterRecord());
-			if (json.getInt("" + unionBoss.getTargetid()) >= unionBoss.getTargetcount()) {
-				union.updateCostRecord(unionBoss.getTargetid(),  - unionBoss.getTargetcount());
-			}	
-		}
-		
-		redis.saveUnionBoss(union, unionBoss);
-	}
-	
-	public List<UnionBossRecord> getUnionBossList(int unionId) {
-		return redis.getUnionBossList(unionId);
 	}
 }
