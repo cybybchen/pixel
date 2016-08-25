@@ -63,6 +63,8 @@ public class PvpMapService {
 	private LogService logService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private UnionService unionService;
 
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
@@ -362,6 +364,7 @@ public class PvpMapService {
 				 */
 				activityService.pvpAttackBossSuccessActivity(user);
 			}
+			unionService.killMonsterBossActivity(user, monster.getId(), 1);
 		}
 
 		user.setMyactive(user.getMyactive()+5+redis.nextInt(11));

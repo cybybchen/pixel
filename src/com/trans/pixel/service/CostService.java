@@ -25,6 +25,8 @@ public class CostService {
 	private LootService lootService;
 	@Resource
 	private UserFoodService userFoodService;
+	@Resource
+	private UnionService unionService;
 	
 	public boolean costAndUpdate(UserBean user, int itemId, int itemCount) {
 		boolean needUpdateUser = cost(user, itemId, itemCount);
@@ -64,6 +66,7 @@ public class CostService {
 				return true;
 			}
 		} else {
+			unionService.costUnionBossActivity(user, itemId, itemCount);
 			switch (itemId) {
 				case RewardConst.EXP:
 					lootService.updateLootResult(user);

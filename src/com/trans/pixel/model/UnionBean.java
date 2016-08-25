@@ -1,5 +1,7 @@
 package com.trans.pixel.model;
 
+import net.sf.json.JSONObject;
+
 import com.trans.pixel.protoc.Commands.Union;
 
 public class UnionBean {
@@ -10,6 +12,8 @@ public class UnionBean {
 	private int icon = 0;
 	private int point = 0;
 	private int rank = 0;
+	private String killMonsterRecord = "";
+	private String costRecord = "";
 //	private List<UnionUserBean> unionUserList = new ArrayList<UnionUserBean>();
 //	private List<MailBean> mailList = new ArrayList<MailBean>();
 	public UnionBean(){
@@ -20,6 +24,8 @@ public class UnionBean {
 		setName(union.getName());
 		setLevel(union.getLevel());
 		setPoint(union.getPoint());
+		setKillMonsterRecord(union.getKillMonsterRecord());
+		setCostRecord(union.getCostRecord());
 	}
 	public int getId() {
 		return id;
@@ -51,7 +57,42 @@ public class UnionBean {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-	
+	public String getKillMonsterRecord() {
+		return killMonsterRecord;
+	}
+	public void setKillMonsterRecord(String killMonsterRecord) {
+		this.killMonsterRecord = killMonsterRecord;
+	}
+	public String getCostRecord() {
+		return costRecord;
+	}
+	public void setCostRecord(String costRecord) {
+		this.costRecord = costRecord;
+	}
+	public void updateKillMonsterRecord(int targetId, int count) {
+		int targetCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(killMonsterRecord);
+			targetCount = json.getInt("" + targetId) + count;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + targetId, targetCount);
+		killMonsterRecord = json.toString();
+	}
+	public void updateCostRecord(int targetId, int count) {
+		int targetCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(costRecord);
+			targetCount = json.getInt("" + targetId) + count;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + targetId, targetCount);
+		costRecord = json.toString();
+	}
 	public Union build() {
 		Union.Builder union = Union.newBuilder();
 		union.setId(id);
@@ -62,6 +103,8 @@ public class UnionBean {
 		union.setPoint(point);
 		union.setCount(1);
 		union.setMaxCount(30);
+		union.setKillMonsterRecord(killMonsterRecord);
+		union.setCostRecord(costRecord);
 		
 		return union.build();
 	}
