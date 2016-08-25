@@ -24,6 +24,8 @@ import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinRewardList;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.ShopList;
+import com.trans.pixel.protoc.Commands.ShopRefresh;
+import com.trans.pixel.protoc.Commands.ShopRefreshList;
 import com.trans.pixel.protoc.Commands.ShopWill;
 import com.trans.pixel.protoc.Commands.ShopWillList;
 import com.trans.pixel.protoc.Commands.VipLibao;
@@ -36,14 +38,6 @@ import com.trans.pixel.protoc.Commands.YueKaList;
 public class ShopRedisService extends RedisService{
 	Logger logger = Logger.getLogger(ShopRedisService.class);
 	private final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
-	private final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
-	private final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
-	private final static String LIBAOSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LibaoShop";
-	private final static String BLACKSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShop";
-	private final static String UNIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"UnionShop";
-	private final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
-	private final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
-	private final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
 	
 	//普通商店
 	public ShopList getDailyShop(UserBean user) {
@@ -104,11 +98,11 @@ public class ShopRedisService extends RedisService{
 	
 	public ShopList buildDailyShop(UserBean user){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(DAILYSHOP_CONFIG+"Type");
+		String value = get(RedisKey.DAILYSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shop1shop1.xml");
 			parseXml(xml, willsbuilder);
-			set(DAILYSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+			set(RedisKey.DAILYSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getDailyShopComms());
@@ -162,13 +156,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(DAILYSHOP_CONFIG, resultmap);
+		this.hputAll(RedisKey.DAILYSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getDailyShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(DAILYSHOP_CONFIG);
+		Map<String, String> keyvalue = this.hget(RedisKey.DAILYSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readDailyShopComms();
 		}else{
@@ -182,7 +176,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getDailyShopComms(int will){
-		String value = this.hget(DAILYSHOP_CONFIG, will+"");
+		String value = this.hget(RedisKey.DAILYSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -204,6 +198,22 @@ public class ShopRedisService extends RedisService{
 			return shoplist;
 		}
 	}
+
+	public int getBlackShopRefreshCost(int time){
+		String value = get(RedisKey.BLACKSHOPCOST_CONFIG);
+		ShopRefreshList.Builder builder = ShopRefreshList.newBuilder();
+		if(value != null && parseJson(value, builder)){
+		}else{
+			String xml = ReadConfig("lol_shopblackshuaxin.xml");
+			parseXml(xml, builder);
+			set(RedisKey.BLACKSHOPCOST_CONFIG, formatJson(builder.build()));
+		}
+		for(ShopRefresh refresh : builder.getCountList()){
+			if(time >= refresh.getCount()-1 && (time < refresh.getCount1() || refresh.getCount1()<0))
+				return refresh.getCost();
+		}
+		return 500;
+	}
 	
 	public void saveBlackShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
@@ -220,11 +230,11 @@ public class ShopRedisService extends RedisService{
 	
 	public ShopList buildBlackShop(UserBean user){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(BLACKSHOP_CONFIG+"Type");
+		String value = get(RedisKey.BLACKSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopblackshopblack.xml");
 			parseXml(xml, willsbuilder);
-			set(BLACKSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+			set(RedisKey.BLACKSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getBlackShopComms());
@@ -264,13 +274,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(BLACKSHOP_CONFIG, resultmap);
+		this.hputAll(RedisKey.BLACKSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getBlackShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(BLACKSHOP_CONFIG);
+		Map<String, String> keyvalue = this.hget(RedisKey.BLACKSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readBlackShopComms();
 		}else{
@@ -284,7 +294,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getBlackShopComms(int will){
-		String value = this.hget(BLACKSHOP_CONFIG, will+"");
+		String value = this.hget(RedisKey.BLACKSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -322,11 +332,11 @@ public class ShopRedisService extends RedisService{
 	
 	public ShopList buildUnionShop(){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(UNIONSHOP_CONFIG+"Type");
+		String value = get(RedisKey.UNIONSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopgonghuishopgonghui.xml");
 			parseXml(xml, willsbuilder);
-			set(UNIONSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+			set(RedisKey.UNIONSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getUnionShopComms());
@@ -352,13 +362,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(UNIONSHOP_CONFIG, resultmap);
+		this.hputAll(RedisKey.UNIONSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getUnionShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(UNIONSHOP_CONFIG);
+		Map<String, String> keyvalue = this.hget(RedisKey.UNIONSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readUnionShopComms();
 		}else{
@@ -372,7 +382,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getUnionShopComms(int will){
-		String value = this.hget(UNIONSHOP_CONFIG, will+"");
+		String value = this.hget(RedisKey.UNIONSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -410,11 +420,11 @@ public class ShopRedisService extends RedisService{
 	
 	public ShopList buildPVPShop(){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(PVPSHOP_CONFIG+"Type");
+		String value = get(RedisKey.PVPSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopmojingshopmojing.xml");
 			parseXml(xml, willsbuilder);
-			set(PVPSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+			set(RedisKey.PVPSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getPVPShopComms());
@@ -440,13 +450,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(PVPSHOP_CONFIG, resultmap);
+		this.hputAll(RedisKey.PVPSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getPVPShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(PVPSHOP_CONFIG);
+		Map<String, String> keyvalue = this.hget(RedisKey.PVPSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readPVPShopComms();
 		}else{
@@ -460,7 +470,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getPVPShopComms(int will){
-		String value = this.hget(PVPSHOP_CONFIG, will+"");
+		String value = this.hget(RedisKey.PVPSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -498,11 +508,11 @@ public class ShopRedisService extends RedisService{
 	
 	public ShopList buildExpeditionShop(){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(EXPEDITIONSHOP_CONFIG+"Type");
+		String value = get(RedisKey.EXPEDITIONSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shopyuanzhengshopyuanzheng.xml");
 			parseXml(xml, willsbuilder);
-			set(EXPEDITIONSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+			set(RedisKey.EXPEDITIONSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getExpeditionShopComms());
@@ -528,13 +538,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(EXPEDITIONSHOP_CONFIG, resultmap);
+		this.hputAll(RedisKey.EXPEDITIONSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getExpeditionShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(EXPEDITIONSHOP_CONFIG);
+		Map<String, String> keyvalue = this.hget(RedisKey.EXPEDITIONSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readExpeditionShopComms();
 		}else{
@@ -548,7 +558,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getExpeditionShopComms(int will){
-		String value = this.hget(EXPEDITIONSHOP_CONFIG, will+"");
+		String value = this.hget(RedisKey.EXPEDITIONSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -591,11 +601,11 @@ public class ShopRedisService extends RedisService{
 	 
 	public ShopList buildLadderShop(){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(LADDERSHOP_CONFIG+"Type");
+		String value = get(RedisKey.LADDERSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
 			String xml = ReadConfig("lol_shoptiantishoptianti.xml");
 			parseXml(xml, willsbuilder);
-			set(LADDERSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+			set(RedisKey.LADDERSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
 		ShopList.Builder builder = buildComms(willsbuilder, getLadderShopComms());
@@ -621,13 +631,13 @@ public class ShopRedisService extends RedisService{
 		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
 			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
 		}
-		this.hputAll(LADDERSHOP_CONFIG, resultmap);
+		this.hputAll(RedisKey.LADDERSHOP_CONFIG, resultmap);
 		return map;
 	}
 	
 	public Map<Integer, CommodityList.Builder> getLadderShopComms(){
 		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(LADDERSHOP_CONFIG);
+		Map<String, String> keyvalue = this.hget(RedisKey.LADDERSHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return readLadderShopComms();
 		}else{
@@ -641,7 +651,7 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public CommodityList getLadderShopComms(int will){
-		String value = this.hget(LADDERSHOP_CONFIG, will+"");
+		String value = this.hget(RedisKey.LADDERSHOP_CONFIG, will+"");
 		CommodityList.Builder builder = CommodityList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -653,7 +663,7 @@ public class ShopRedisService extends RedisService{
 
 	//libao
 	public LibaoList.Builder getLibaoShop() {
-		String value = this.get(LIBAOSHOP_CONFIG);
+		String value = this.get(RedisKey.LIBAOSHOP_CONFIG);
 		LibaoList.Builder shopbuilder = LibaoList.newBuilder();
 		if(value == null){
 			shopbuilder = LibaoList.newBuilder(buildLibaoShop());
@@ -667,13 +677,13 @@ public class ShopRedisService extends RedisService{
 		LibaoList.Builder itemsbuilder = LibaoList.newBuilder();
 		String xml = ReadConfig("lol_shoplibao.xml");
 		parseXml(xml, itemsbuilder);
-		set(LIBAOSHOP_CONFIG, formatJson(itemsbuilder.build()));
+		set(RedisKey.LIBAOSHOP_CONFIG, formatJson(itemsbuilder.build()));
 		return itemsbuilder.build();
 	}
 
 	//商城
 	public Commodity getShop(int id) {
-		String value = this.hget(SHOP_CONFIG, id+"");
+		String value = this.hget(RedisKey.SHOP_CONFIG, id+"");
 		Commodity.Builder builder = Commodity.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -682,7 +692,7 @@ public class ShopRedisService extends RedisService{
 	}
 
 	public ShopList getShop() {
-		Map<String, String> keyvalue = this.hget(SHOP_CONFIG);
+		Map<String, String> keyvalue = this.hget(RedisKey.SHOP_CONFIG);
 		if(keyvalue.isEmpty()){
 			return buildShop();
 		}
@@ -701,7 +711,7 @@ public class ShopRedisService extends RedisService{
 			Map<String, String> map = new HashMap<String, String>();
 			for(Commodity comm : shoplist.getItemsList())
 				map.put(comm.getId()+"", formatJson(comm));
-			this.hputAll(SHOP_CONFIG, map);
+			this.hputAll(RedisKey.SHOP_CONFIG, map);
 		}
 	}
 	

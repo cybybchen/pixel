@@ -65,6 +65,17 @@ public class RedisKey {
 	public final static String EXPPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"ExpPool";
 	public final static String YUEKA_CONFIG = PREFIX+CONFIG_PREFIX+"YueKa";
 
+	//shop
+	public final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
+	public final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
+	public final static String LIBAOSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LibaoShop";
+	public final static String BLACKSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShop";
+	public final static String BLACKSHOPCOST_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShopCost";
+	public final static String UNIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"UnionShop";
+	public final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
+	public final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
+	public final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
+
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "mysql_update:";
 	public final static String DELETE_MYSQL_KEY = "mysql_delete:";

@@ -46,8 +46,8 @@ public class AreaCommandService extends BaseCommandService{
 	private LogService logService;
 
 	public void unlockArea(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user){
-		if(service.unlockArea(cmd.getId(), cmd.getZhanli(), user))
-			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.UNLOCK_AREA));
+		// if(service.unlockArea(cmd.getId(), cmd.getZhanli(), user))
+		// 	responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.UNLOCK_AREA));
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
 	

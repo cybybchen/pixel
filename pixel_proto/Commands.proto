@@ -99,6 +99,15 @@ message ShopList {
 	optional int64 endTime = 2;//商品列表过期时间
 	optional int32 refreshTime = 3;//刷新
 }
+message ShopRefresh {
+	optional int32 count = 1;
+	optional int32 count1 = 2;
+	optional int32 currency = 3;
+	optional int32 cost = 4;
+}
+message ShopRefreshList {
+	repeated ShopRefresh count = 1;
+}
 message Will {
 	required int32 will = 1;
 	required int32 weight = 2;
@@ -314,6 +323,9 @@ message Union {
 	repeated UserInfo attacks = 18;
 	repeated UserInfo defends = 19;
 	optional bool isApply = 20;
+	optional string killMonsterRecord = 21;
+	optional string costRecord = 22;
+	repeated UnionBossRecord unionBoss = 23;
 }
 
 message UnionApply {
@@ -663,8 +675,8 @@ message VipList {
 
 message AreaInfo {//可争夺区域
 	required int32 id = 1;//区域ID
-	required string name = 2;//开放所需战力
-	required int32 zhanli = 3;//开放所需战力
+	required string name = 2;
+	required int32 zhanli = 3;//开放所需等级
 	optional bool opened = 7;//是否开放
 	repeated AreaResource resources = 4;//区域资源点
 	repeated AreaBoss bosses = 5;//区域BOSS
@@ -1240,6 +1252,12 @@ message UnionBoss {
 	optional int32 targetcount = 4;
 	optional int32 time = 5;
 	optional int32 HP = 6;
+}
+
+message UnionBossRecord {
+	optional int32 bossId = 1;
+	optional int32 hp = 2;
+	optional string endTime = 3;
 }
 
 message ErrorCommand{
@@ -2147,6 +2165,10 @@ message ResponseBosskillCommand {
 	repeated BossGroupRecord record = 1;	
 }
 
+message ResponseUnionBossCommand {
+	repeated UnionBossRecord unionBoss = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2349,6 +2371,7 @@ message ResponseCommand {
 	optional ResponseUserFoodCommand userFoodCommand = 54;
 	optional ResponseClearInfoCommand clearInfoCommand = 55;
 	optional ResponseBosskillCommand bosskillCommand = 56;
+	optional ResponseUnionBossCommand unionBossCommand = 57;
 }
 
 

@@ -208,25 +208,25 @@ public class ShopCommandService extends BaseCommandService{
 		}
 	}
 
-	public int getBlackShopRefreshCost(int time){
-		final int factor = 1;
-		if(time < 1){
-			return 10*factor;
-		}
-		if(time < 3){
-			return 20*factor;
-		}
-		if(time < 6){
-			return 50*factor;
-		}
-		if(time < 10){
-			return 100*factor;
-		}
-		if(time < 20){
-			return 200*factor;
-		}
-		return 500*factor;
-	}
+	// public int getBlackShopRefreshCost(int time){
+	// 	final int factor = 1;
+	// 	if(time < 1){
+	// 		return 10*factor;
+	// 	}
+	// 	if(time < 3){
+	// 		return 20*factor;
+	// 	}
+	// 	if(time < 6){
+	// 		return 50*factor;
+	// 	}
+	// 	if(time < 10){
+	// 		return 100*factor;
+	// 	}
+	// 	if(time < 20){
+	// 		return 200*factor;
+	// 	}
+	// 	return 500*factor;
+	// }
 
 	public void BlackShop(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user){
 		if(user.getVip() < 6)
@@ -246,7 +246,7 @@ public class ShopCommandService extends BaseCommandService{
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getItemsList());
 		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(getBlackShopRefreshCost(refreshtime));
+		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
 		responseBuilder.setBlackShopCommand(shop);
 	}
 
@@ -284,7 +284,7 @@ public class ShopCommandService extends BaseCommandService{
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getItemsList());
 		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(getBlackShopRefreshCost(refreshtime));
+		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
 		responseBuilder.setBlackShopCommand(shop);
 	}
 
@@ -293,7 +293,7 @@ public class ShopCommandService extends BaseCommandService{
 			return;
 		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();
-		if(costService.cost(user, RewardConst.JEWEL, getBlackShopRefreshCost(refreshtime))) {
+		if(costService.cost(user, RewardConst.JEWEL, service.getBlackShopRefreshCost(refreshtime))) {
 			shoplist = service.refreshBlackShop(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
@@ -311,7 +311,7 @@ public class ShopCommandService extends BaseCommandService{
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getItemsList());
 		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(getBlackShopRefreshCost(refreshtime));
+		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
 		responseBuilder.setBlackShopCommand(shop);
 	}
 

@@ -216,7 +216,7 @@ public class AreaFightService extends FightService{
 			if(user.getUnionId() != 0 && builder.hasOwner() && builder.getOwner().getUnionId() == user.getUnionId())
 				return ErrorConst.SAVE_UNION;
 			if(!ret){
-				costEnergy(user, 5);
+				// costEnergy(user, 5);
 				return SuccessConst.AREA_ATTACK_FAIL;
 			}
 			builder.setState(1);

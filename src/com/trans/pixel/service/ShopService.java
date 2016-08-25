@@ -67,6 +67,9 @@ public class ShopService {
 	public ShopList getBlackShop(UserBean user){
 		return redis.getBlackShop(user);
 	}
+	public int getBlackShopRefreshCost(int time){
+		return redis.getBlackShopRefreshCost(time);
+	}
 	
 	public void saveBlackShop(ShopList shoplist, UserBean user){
 		redis.saveBlackShop(shoplist, user);
