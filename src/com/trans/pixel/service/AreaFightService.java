@@ -585,8 +585,10 @@ public class AreaFightService extends FightService{
 		Map<String, String> bosstimeMap = redis.getBossTimes(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 //		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
+		Map<Integer, Integer> levelMap = redis.getLevels(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
+			areabuilder.setLevel(levelMap.containsKey(areabuilder.getId())? levelMap.get(areabuilder.getId()) : 0);
 			if(!areabuilder.getOpened())
 				continue;
 			// 更新世界BOSS

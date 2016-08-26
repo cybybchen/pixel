@@ -681,6 +681,7 @@ message AreaInfo {//可争夺区域
 	repeated AreaResource resources = 4;//区域资源点
 	repeated AreaBoss bosses = 5;//区域BOSS
 	repeated AreaMonster monsters = 6;//区域怪物
+	optional int32 level = 8;
 }
 
 message AreaMode {//区域争夺
