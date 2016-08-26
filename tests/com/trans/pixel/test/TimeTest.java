@@ -8,7 +8,7 @@ public class TimeTest extends BaseTest {
 	
 	@Test
 	public void test() {
-		testTime(1460715544);
+		testTime(1472185800);
 	}
 	
 	public void testTime(long sec) {

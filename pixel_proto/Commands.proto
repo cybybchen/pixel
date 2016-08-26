@@ -394,6 +394,8 @@ message AreaBoss {//区域世界BOSS
 	optional int32 turn = 8;//回合限制
 	optional int32 count = 9;//次数限制
 	optional int32 pl = 10;
+	optional string img = 11;
+	optional int32 bosslv = 12;
 	///////////////////////////////////
 	optional int32 hp = 14;//当前血量
 	optional UserInfo owner = 15;//击杀者

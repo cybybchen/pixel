@@ -121,6 +121,7 @@ public class AreaFightService extends FightService{
 		AreaMonster monster = redis.getMonster(positionid, user);
 		if(monster == null)
 			return false;
+		redis.getMonsters(user);
 		redis.deleteMonster(monster.getPositionid(), user);
 		AreaMonsterReward monsterreward = redis.getAreaMonsterReward(monster.getId());
 		for(WeightReward weightreward : monsterreward.getLootList()){

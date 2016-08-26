@@ -315,7 +315,9 @@ public class AreaRedisService extends RedisService{
 					int oldcount = monstercount.containsKey(entry.getKey()) ? monstercount.get(entry.getKey()) : 0;
 					AreaMonsterList list = entry.getValue();
 					AreaMonster monster = null;
-					while(oldcount < refresh.getLimit()){
+					for(int i = 0; i < count; i++){
+						if(oldcount >= refresh.getLimit())
+							break;
 						int index = nextInt(list.getWeightall());
 						for(AreaMonster areamonster : list.getRegionList()){
 							if(index < areamonster.getWeight()){
