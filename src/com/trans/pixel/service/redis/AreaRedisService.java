@@ -229,7 +229,7 @@ public class AreaRedisService extends RedisService{
 
 	public void saveBossTime(int id, int time, UserBean user){
 		hput(AREABOSSTIME+user.getId(), id+"", time+"");
-		this.expireAt(AREABOSSTIME+user.getId(), nextDay());
+		expireAt(AREABOSSTIME+user.getId(), nextDay());
 	}
 	
 	public AreaBoss getBoss(int id,UserBean user){
@@ -250,14 +250,14 @@ public class AreaRedisService extends RedisService{
 	
 	public void saveBoss(AreaBoss boss,UserBean user) {
 		String key = AREABOSS+user.getServerId();
-		this.hput(key, boss.getId()+"", formatJson(boss));
-		this.expireAt(key, nextDay());
+		hput(key, boss.getId()+"", formatJson(boss));
+		expireAt(key, nextDay());
 	}
 	
 	public void addBossRank(final int bossId, final int score,UserBean user) {
 		String key = AREABOSS+user.getServerId()+"_Rank_"+bossId;
-		this.zincrby(key, score, user.getId()+"");
-		this.expireAt(key, nextDay());
+		zincrby(key, score, user.getId()+"");
+		expireAt(key, nextDay());
 	}
 	
 	public Set<TypedTuple<String>> getBossRank(final int bossId,UserBean user) {

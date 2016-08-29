@@ -952,7 +952,7 @@ public class RedisService {
 	 * 第二天0点
 	 */
 	public Date nextDay(){
-		Date date = new Date(nextDay(0));
+		Date date = new Date(nextDay(0)*1000L);
 		return date;
 	}
 	public long caltoday(long time, int hour){
