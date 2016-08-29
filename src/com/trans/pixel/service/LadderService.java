@@ -31,6 +31,7 @@ import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.LadderChongzhi;
@@ -403,7 +404,8 @@ public class LadderService {
 			if (originalCount == null)
 				originalCount = 0;
 			if (originalCount < 3) {
-				heroInfoList.add(HeroInfoBean.initHeroInfo(randomHero, ladderEnemy.getStar(), ladderEnemy.getRare(), ladderEnemy.getLv()).buildTeamHeroInfo(new ArrayList<UserClearBean>()));
+				heroInfoList.add(HeroInfoBean.initHeroInfo(randomHero, ladderEnemy.getStar(), ladderEnemy.getRare(), 
+						ladderEnemy.getLv()).buildTeamHeroInfo(new ArrayList<UserClearBean>(), new UserPokedeBean()));
 				heroInfoMap.put(randomHero.getId(), originalCount + 1);
 			}
 		}

@@ -37,10 +37,10 @@ public class LevelService {
 	private static final int NEWPLAY_LEVEL_1 = 1006;
 	private static final int NEWPLAY_LEVEL_2 = 1009;
 	private static final int NEWPLAY_LEVEL_3 = 1011;
-	private static final int NEWPLAY_LEVEL_4 = 1002;
-	private static final int NEWPLAY_LEVEL_5 = 1003;
-	private static final int NEWPLAY_LEVEL_6 = 1004;
-	private static final int NEWPLAY_LEVEL_7 = 1005;
+	private static final int NEWPLAY_LEVEL_4 = 1003;
+	private static final int NEWPLAY_LEVEL_5 = 1005;
+	private static final int NEWPLAY_LEVEL_6 = 1008;
+	private static final int NEWPLAY_LEVEL_7 = 1010;
 	
 	public int getDifficulty(int levelId) {
 		return levelId / DIFF_DELTA;
