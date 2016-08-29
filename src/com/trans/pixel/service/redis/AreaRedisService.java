@@ -130,14 +130,9 @@ public class AreaRedisService extends RedisService{
 	
 	public void costEnergy(UserBean user, int count) {
 		long time = now()/300*300;
-		if(user.getAreaEnergy() >= 150){
-			user.setAreaEnergy(user.getAreaEnergy()-count);
-		}else if(time - user.getAreaEnergyTime() >= 300){
-			user.setAreaEnergy((int)(user.getAreaEnergy()-count+(time - user.getAreaEnergyTime()/300)));
-			if(user.getAreaEnergy() >= 150)
-				user.setAreaEnergy(150-count);
-		}else
-			user.setAreaEnergy(Math.max(0, user.getAreaEnergy()-count));
+		if(time - user.getAreaEnergyTime() >= 300 && user.getAreaEnergy() < 150)
+			user.setAreaEnergy(Math.min(150, (int)(user.getAreaEnergy()+(time - user.getAreaEnergyTime())/300)));
+		user.setAreaEnergy(Math.max(0, user.getAreaEnergy()-count));
 		user.setAreaEnergyTime(time);
 		userRedisService.updateUser(user);
 	}
