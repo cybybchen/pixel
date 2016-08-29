@@ -237,6 +237,7 @@ public class AreaFightService extends FightService{
 				return ErrorConst.ERROR_LOCKED;
 			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user.getServerId());
+			redis.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
 		}else{
 			if(builder.getStarttime() > redis.now())
 				return ErrorConst.JOIN_NOT_START;
@@ -251,6 +252,7 @@ public class AreaFightService extends FightService{
 				return ErrorConst.ERROR_LOCKED;
 			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user.getServerId());
+			redis.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
 		}
 		return SuccessConst.Add_AREA_FIGHT;
 	}
