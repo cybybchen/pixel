@@ -20,6 +20,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ClearAttribute;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.service.redis.ClearRedisService;
@@ -36,6 +37,8 @@ public class ClearService {
 	private UserClearService userClearService;
 	@Resource
 	private UserClearRedisService userClearRedisService;
+	@Resource
+	private UserPropService userPropService;
 	
 	
 	private static final int CLEAR_TYPE_COIN_COST = 10000;
@@ -99,7 +102,7 @@ public class ClearService {
 		return null;
 	}
 	
-	public ResultConst heroStrengthen(UserPokedeBean userPokede, UserBean user) {
+	public ResultConst heroStrengthen(UserPokedeBean userPokede, UserBean user, List<UserPropBean> propList) {
 		Strengthen strengthen = clearRedisService.getStrengthen(userPokede.getStrengthen() + 1);
 		if (strengthen == null)
 			return ErrorConst.HERO_STRENGTHEN_ERROR;
@@ -109,6 +112,7 @@ public class ClearService {
 		
 		if (strengthenSuccess(strengthen.getSuccess())) {
 			userPokede.setStrengthen(userPokede.getStrengthen() + 1);
+			propList.add(userPropService.selectUserProp(user.getId(), strengthen.getItemid()));
 			return SuccessConst.HERO_STRENGTHEN_SUCCESS;
 		}
 		

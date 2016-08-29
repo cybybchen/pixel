@@ -14,6 +14,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
@@ -146,8 +147,9 @@ public class PokedeCommandService extends BaseCommandService {
 	
 	public void heroStrengthen(RequestHeroStrengthenCommand cmd, Builder responseBuilder, UserBean user) {
 		int heroId = cmd.getHeroId();
+		List<UserPropBean> propList = new ArrayList<UserPropBean>();
 		UserPokedeBean userPokede = userPokedeService.selectUserPokede(user, heroId);
-		ResultConst result = clearService.heroStrengthen(userPokede, user);
+		ResultConst result = clearService.heroStrengthen(userPokede, user, propList);
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand(result);
@@ -161,5 +163,6 @@ public class PokedeCommandService extends BaseCommandService {
 		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
 		responseBuilder.setUserPokedeCommand(builder.build());
 		responseBuilder.setMessageCommand(this.buildMessageCommand(result));
+		pushCommandService.pushUserPropListCommand(responseBuilder, user, propList);
 	}
 }
