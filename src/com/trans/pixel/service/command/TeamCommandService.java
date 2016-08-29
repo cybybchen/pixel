@@ -79,11 +79,6 @@ public class TeamCommandService extends BaseCommandService {
 		if (team.hasComposeSkill())
 			builder.setComposeSkill(team.getComposeSkill());
 		
-		UserBean other = userService.getOther(cmd.getUserId());
-		if (other != null) {
-			List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(cmd.getUserId());
-			builder.addAllHeroInfo(buildHeroInfo(userPokedeList, other));
-		}
 		responseBuilder.setTeamCommand(builder.build());
 	}
 }
