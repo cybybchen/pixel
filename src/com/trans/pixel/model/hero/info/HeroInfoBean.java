@@ -10,6 +10,7 @@ import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -223,7 +224,7 @@ public class HeroInfoBean {
 		return builder.build();
 	}
 	
-	public HeroInfo buildTeamHeroInfo(List<UserClearBean> userClearList) {
+	public HeroInfo buildTeamHeroInfo(List<UserClearBean> userClearList, UserPokedeBean userPokede) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		builder.setEquipInfo(equipInfo);
 		builder.setHeroId(heroId);
@@ -236,6 +237,7 @@ public class HeroInfoBean {
 		for (UserClearBean userClear : userClearList) {
 			builder.addClear(userClear.buildUserClear());
 		}
+		builder.setStrengthen(userPokede.getStrengthen());
 		
 		return builder.build();
 	}

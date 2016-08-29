@@ -34,6 +34,8 @@ public class UserTeamService {
 	private HeroService heroService;
 	@Resource
 	private UserClearService userClearService;
+	@Resource
+	private UserPokedeService userPokedeService;
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
 	// 	UserTeamBean userTeam = new UserTeamBean();
@@ -211,7 +213,8 @@ public class UserTeamService {
 						int infoId = Integer.parseInt(str[1]);
 						for(HeroInfoBean herobean : userHeroList){
 							if(herobean.getId() == infoId){
-								team.addHeroInfo(herobean.buildTeamHeroInfo(userClearService.selectUserClear(user, herobean.getHeroId())));
+								team.addHeroInfo(herobean.buildTeamHeroInfo(
+										userClearService.selectUserClear(user, herobean.getHeroId()), userPokedeService.selectUserPokede(user, herobean.getHeroId())));
 								break;
 							}
 						}
