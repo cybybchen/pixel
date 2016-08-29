@@ -1425,6 +1425,7 @@ message ResponseGetTeamCommand {
 	repeated HeroInfo heroInfo = 1;
 	optional UserInfo user = 2;
 	optional string composeSkill = 3;
+	repeated HeroInfo userPokede = 4;
 }
 
 message RequestLotteryCommand {

@@ -1,11 +1,14 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
@@ -14,6 +17,8 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.UserPokedeService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -25,6 +30,10 @@ public class TeamCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserPokedeService userPokedeService;
+	@Resource
+	private UserService userService;
 	
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
@@ -69,6 +78,12 @@ public class TeamCommandService extends BaseCommandService {
 		builder.setUser(team.getUser());
 		if (team.hasComposeSkill())
 			builder.setComposeSkill(team.getComposeSkill());
-		responseBuilder.setTeamCommand(builder);
+		
+		UserBean other = userService.getOther(cmd.getUserId());
+		if (other != null) {
+			List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(cmd.getUserId());
+			builder.addAllHeroInfo(buildHeroInfo(userPokedeList, other));
+		}
+		responseBuilder.setTeamCommand(builder.build());
 	}
 }
