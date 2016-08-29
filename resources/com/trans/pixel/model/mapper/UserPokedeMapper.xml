@@ -20,7 +20,7 @@
 	    VALUES(#{userId}, #{heroId}, #{rare}, #{level}, #{count}, #{strengthen})
 	    ON 
 	    duplicate key update
-	    rare=#{rare}, level=#{level}, count=#{count}
+	    rare=#{rare}, level=#{level}, count=#{count}, strengthen=#{strengthen}
 	</insert>
 	
 	<select id="selectUserPokedeList" parameterType="long" resultMap="resultMap">
