@@ -204,6 +204,7 @@ message HeroInfo {
 	optional bool isLock = 10;
 	optional int32 count = 11;
 	repeated ClearInfo clear = 12;
+	optional int32 strengthen = 13;
 }
 
 message PurchaseCoinReward {
@@ -1263,6 +1264,18 @@ message UnionBossRecord {
 	optional string endTime = 3;
 }
 
+message StrengthenList {
+	repeated Strengthen id = 1;
+}
+
+message Strengthen {
+	optional int32 id = 1;
+	optional int32 zhanli_per = 2;
+	optional int32 itemid = 3;
+	optional int32 count = 4;
+	optional int32 success = 5;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2172,6 +2185,15 @@ message ResponseUnionBossCommand {
 	repeated UnionBossRecord unionBoss = 1;
 }
 
+message RequestUnionBossFightCommand {
+	required int32 bossId = 1;
+	required int32 hp = 2;
+}
+
+message RequestHeroStrengthenCommand {
+	required int32 heroId = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2308,6 +2330,8 @@ message RequestCommand {
 	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
 	optional RequestSubmitBosskillCommand submitBosskillCommand = 96;
 	optional RequestBosskillCommand bosskillCommand = 97;
+	optional RequestUnionBossFightCommand unionBossFightCommand = 98;
+	optional RequestHeroStrengthenCommand heroStrengthenCommand = 99;
 }
 // response command list transfer only use it
 message ResponseCommand {

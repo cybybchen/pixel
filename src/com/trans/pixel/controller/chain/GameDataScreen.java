@@ -96,6 +96,8 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -819,6 +821,16 @@ public class GameDataScreen extends RequestScreen {
 		bossCommandService.getBosskillRecord(responseBuilder, user);
 		return true;//BosskillCommand
 	}//BosskillCommand
+	@Override//UnionBossFightCommand
+	protected boolean handleCommand(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO UnionBossFightCommand method
+		return true;//UnionBossFightCommand
+	}//UnionBossFightCommand
+	@Override//HeroStrengthenCommand
+	protected boolean handleCommand(RequestHeroStrengthenCommand cmd, Builder responseBuilder, UserBean user) {
+		pokedeCommandService.heroStrengthen(cmd, responseBuilder, user);
+		return true;//HeroStrengthenCommand
+	}//HeroStrengthenCommand
 	//add handleCommand here
 	
 	@Override

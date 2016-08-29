@@ -101,6 +101,8 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -150,6 +152,8 @@ import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 //add import here
 
 
@@ -370,6 +374,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBosskillCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestHeroStrengthenCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
@@ -1069,6 +1075,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//BosskillCommand
                 result = handleCommand(cmd, responseBuilder, user);//BosskillCommand
         }//BosskillCommand
+        if (request.hasUnionBossFightCommand()) {
+            RequestUnionBossFightCommand cmd = request.getUnionBossFightCommand();
+            if (result)//UnionBossFightCommand
+                result = handleCommand(cmd, responseBuilder, user);//UnionBossFightCommand
+        }//UnionBossFightCommand
+        if (request.hasHeroStrengthenCommand()) {
+            RequestHeroStrengthenCommand cmd = request.getHeroStrengthenCommand();
+            if (result)//HeroStrengthenCommand
+                result = handleCommand(cmd, responseBuilder, user);//HeroStrengthenCommand
+        }//HeroStrengthenCommand
         //call handleCommand here
         if (request.hasPurchaseContractCommand()) {
             RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();

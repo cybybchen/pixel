@@ -21,6 +21,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ClearAttribute;
+import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.UserClearRedisService;
 
@@ -96,6 +97,26 @@ public class ClearService {
 		}
 		
 		return null;
+	}
+	
+	public ResultConst heroStrengthen(UserPokedeBean userPokede, UserBean user) {
+		Strengthen strengthen = clearRedisService.getStrengthen(userPokede.getStrengthen() + 1);
+		if (strengthen == null)
+			return ErrorConst.HERO_STRENGTHEN_ERROR;
+		
+		if (!costService.cost(user, strengthen.getItemid(), strengthen.getCount()))
+			return ErrorConst.NOT_ENOUGH_PROP;
+		
+		if (strengthenSuccess(strengthen.getSuccess())) {
+			userPokede.setStrengthen(userPokede.getStrengthen() + 1);
+			return SuccessConst.HERO_STRENGTHEN_SUCCESS;
+		}
+		
+		return SuccessConst.HERO_STRENGTHEN_FAILED_SUCCESS;
+	}
+	
+	private boolean strengthenSuccess(int percent) {
+		return RandomUtils.nextInt(100) < percent;
 	}
 	
 	private UserClearBean randomClear(ClearAttribute att, int type, int heroId, long userId) {

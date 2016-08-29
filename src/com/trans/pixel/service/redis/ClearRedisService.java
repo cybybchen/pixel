@@ -16,6 +16,8 @@ import com.trans.pixel.protoc.Commands.ClearHero;
 import com.trans.pixel.protoc.Commands.ClearHeroList;
 import com.trans.pixel.protoc.Commands.ClearLevel;
 import com.trans.pixel.protoc.Commands.ClearLevelList;
+import com.trans.pixel.protoc.Commands.Strengthen;
+import com.trans.pixel.protoc.Commands.StrengthenList;
 
 @Service
 public class ClearRedisService extends RedisService {
@@ -25,6 +27,7 @@ public class ClearRedisService extends RedisService {
 	private static final String CLEAR_LEVEL_FILE_NAME = "lol_clearlevel.xml";
 	private static final String CLEAR_FOOD_FILE_NAME = "lol_clearfood.xml";
 	private static final String CLEAR_ATTRIBUTE_FILE_NAME = "lol_clearattribute.xml";
+	private static final String HERO_STRENGTHEN_FILE_NAME = "lol_strengthen.xml";
 	
 	//clear food
 	public ClearFood getClearFood(int id) {
@@ -226,6 +229,57 @@ public class ClearRedisService extends RedisService {
 		Map<String, ClearAttribute> map = new HashMap<String, ClearAttribute>();
 		for(ClearAttribute.Builder clearAttribute : builder.getAttributeBuilderList()){
 			map.put("" + clearAttribute.getId(), clearAttribute.build());
+		}
+		return map;
+	}
+	
+	//hero strengthen
+	public Strengthen getStrengthen(int id) {
+		String value = hget(RedisKey.HERO_STRENGTHEN_KEY, "" + id);
+		if (value == null) {
+			Map<String, Strengthen> strengthenConfig = getStrengthenConfig();
+			return strengthenConfig.get("" + id);
+		} else {
+			Strengthen.Builder builder = Strengthen.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Strengthen> getStrengthenConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.HERO_STRENGTHEN_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Strengthen> map = buildStrengthenConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Strengthen> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.HERO_STRENGTHEN_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Strengthen> map = new HashMap<String, Strengthen>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Strengthen.Builder builder = Strengthen.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Strengthen> buildStrengthenConfig(){
+		String xml = ReadConfig(HERO_STRENGTHEN_FILE_NAME);
+		StrengthenList.Builder builder = StrengthenList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + HERO_STRENGTHEN_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Strengthen> map = new HashMap<String, Strengthen>();
+		for(Strengthen.Builder strengthen : builder.getIdBuilderList()){
+			map.put("" + strengthen.getId(), strengthen.build());
 		}
 		return map;
 	}

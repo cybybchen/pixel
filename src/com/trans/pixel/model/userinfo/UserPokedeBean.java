@@ -12,6 +12,7 @@ public class UserPokedeBean {
 	private int rare = 0;
 	private int level = 0;
 	private int count = 0;
+	private int strengthen = 0;
 	public long getUserId() {
 		return userId;
 	}
@@ -42,7 +43,12 @@ public class UserPokedeBean {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+	public int getStrengthen() {
+		return strengthen;
+	}
+	public void setStrengthen(int strengthen) {
+		this.strengthen = strengthen;
+	}
 	public HeroInfo buildUserPokede(List<UserClearBean> userClearList) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		
@@ -53,6 +59,7 @@ public class UserPokedeBean {
 		for (UserClearBean userClear : userClearList) {
 			builder.addClear(userClear.buildUserClear());
 		}
+		builder.setStrengthen(strengthen);
 		
 		return builder.build();
 	}

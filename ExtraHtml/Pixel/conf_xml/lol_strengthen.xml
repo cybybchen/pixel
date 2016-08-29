@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<id id="1" zhanli_per="1" itemid="37001" count="6" success="100" />
+<id id="2" zhanli_per="2" itemid="37001" count="7" success="100" />
+<id id="3" zhanli_per="3" itemid="37001" count="8" success="100" />
+<id id="4" zhanli_per="5" itemid="37001" count="12" success="95" />
+<id id="5" zhanli_per="7" itemid="37001" count="14" success="95" />
+<id id="6" zhanli_per="10" itemid="37001" count="20" success="90" />
+<id id="7" zhanli_per="14" itemid="37001" count="21" success="85" />
+<id id="8" zhanli_per="18" itemid="37001" count="21" success="75" />
+<id id="9" zhanli_per="22" itemid="37001" count="22" success="65" />
+<id id="10" zhanli_per="27" itemid="37001" count="24" success="60" />
+<id id="11" zhanli_per="32" itemid="37001" count="34" success="55" />
+<id id="12" zhanli_per="38" itemid="37001" count="35" success="50" />
+<id id="13" zhanli_per="44" itemid="37001" count="37" success="45" />
+<id id="14" zhanli_per="51" itemid="37001" count="39" success="38" />
+<id id="15" zhanli_per="58" itemid="37001" count="42" success="32" />
+<id id="16" zhanli_per="67" itemid="37001" count="50" success="22" />
+<id id="17" zhanli_per="76" itemid="37001" count="50" success="21" />
+<id id="18" zhanli_per="86" itemid="37001" count="50" success="19" />
+<id id="19" zhanli_per="96" itemid="37001" count="50" success="17" />
+<id id="20" zhanli_per="108" itemid="37001" count="50" success="15" />
+</data>

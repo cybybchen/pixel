@@ -1578,4 +1578,10 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="37001" name="强化水晶" img="37001" rare="4" description="强化英雄必须的道具" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 </data>

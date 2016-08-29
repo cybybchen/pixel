@@ -1,0 +1,14 @@
+<data>
+<boss id="200001" name="cyb1" type="1" targetid="0" targetcount="12" time="10" img="100001" des="凯尔特的勇士，战斗力惊人，就是脸黑。" zhanli="120000" ad="10" ap="10" arm="2000" mr="2000" adi="1" api="1" rating="1500" speed="500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="1" >
+<skill skillid="100042" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100043" skilllevel="1" condition="1" con1="2" con2="2" skillpri="2" />
+</boss>
+<boss id="200002" name="cyb2" type="2" targetid="1101" targetcount="10" time="10" img="100001" des="腹黑法师，很会使诈。" zhanli="120000" ad="10" ap="10" arm="2000" mr="2000" adi="1" api="1" rating="1500" speed="500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="1" >
+<skill skillid="100042" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100043" skilllevel="1" condition="1" con1="2" con2="2" skillpri="2" />
+</boss>
+<boss id="200003" name="cyb2" type="3" targetid="1002" targetcount="1000" time="10" img="100001" des="充满怒火的狂战士，见人就打。" zhanli="120000" ad="10" ap="10" arm="2000" mr="2000" adi="1" api="1" rating="1500" speed="500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="1" >
+<skill skillid="100042" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100043" skilllevel="1" condition="1" con1="2" con2="2" skillpri="2" />
+</boss>
+</data>
