@@ -9,6 +9,7 @@ import net.sf.json.JSONObject;
 import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
+import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -222,7 +223,7 @@ public class HeroInfoBean {
 		return builder.build();
 	}
 	
-	public HeroInfo buildTeamHeroInfo() {
+	public HeroInfo buildTeamHeroInfo(List<UserClearBean> userClearList) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		builder.setEquipInfo(equipInfo);
 		builder.setHeroId(heroId);
@@ -232,6 +233,9 @@ public class HeroInfoBean {
 		builder.setStar(starLevel);
 		builder.addAllSkill(buildSkillList());
 		builder.setInfoId(id);
+		for (UserClearBean userClear : userClearList) {
+			builder.addClear(userClear.buildUserClear());
+		}
 		
 		return builder.build();
 	}
