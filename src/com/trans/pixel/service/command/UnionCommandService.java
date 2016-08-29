@@ -44,6 +44,7 @@ public class UnionCommandService extends BaseCommandService {
 		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
 		builder.addAllUnion(unions);
 		responseBuilder.setUnionListCommand(builder.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void getUnion(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user) {
