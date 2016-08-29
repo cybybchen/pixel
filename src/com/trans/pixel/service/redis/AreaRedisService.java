@@ -773,9 +773,9 @@ public class AreaRedisService extends RedisService{
 		AreaEquipList.Builder list = AreaEquipList.newBuilder();
 		parseXml(xml, list);
 		for(AreaEquip.Builder equip : list.getEquipBuilderList()){
-//			equip.clearImg();
+			equip.clearImg();
 			equip.clearDescription();
-//			equip.clearName();
+			equip.clearName();
 			keyvalue.put(equip.getId()+"", formatJson(equip.build()));
 			map.put(equip.getId(), equip.build());
 		}
