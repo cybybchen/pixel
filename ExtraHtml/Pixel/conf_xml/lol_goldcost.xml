@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<gold count="1" currency="1002" cost="10" />
-<gold count="2" currency="1002" cost="20" />
-<gold count="6" currency="1002" cost="50" />
-<gold count="11" currency="1002" cost="100" />
-<gold count="51" currency="1002" cost="200" />
+<gold count="1" currency="1002" cost="20" />
+<gold count="2" currency="1002" cost="45" />
+<gold count="6" currency="1002" cost="80" />
+<gold count="11" currency="1002" cost="120" />
+<gold count="16" currency="1002" cost="160" />
+<gold count="21" currency="1002" cost="240" />
+<gold count="26" currency="1002" cost="480" />
 </data>
