@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<equip id="84001" name="区域物品1" img="80010" rare="1" description="正义雄鹰徽章" skill="84001" />
-<equip id="84002" name="区域物品2" img="80010" rare="1" description="仲裁者印记" skill="84001" />
-<equip id="84003" name="区域物品3" img="80010" rare="1" description="血手" skill="84001" />
-<equip id="84004" name="区域物品4" img="80010" rare="1" description="巨人boss印记" skill="84001" />
-<equip id="84005" name="区域物品5" img="80010" rare="1" description="巨人精英" skill="84001" />
-<equip id="84006" name="区域物品6" img="80010" rare="1" description="巨人花粉" skill="84001" />
-<equip id="84007" name="区域物品7" img="80010" rare="1" description="剧毒蜂刺" skill="84001" />
-<equip id="84008" name="区域物品8" img="80010" rare="1" description="火化后的飞蛾" skill="84001" />
-<equip id="84009" name="区域物品9" img="80010" rare="1" description="香菇酱" skill="84001" />
-<equip id="84010" name="区域物品10" img="80010" rare="1" description="有点绿的帽子" skill="84001" />
-<equip id="84011" name="区域物品11" img="80010" rare="1" description="特别绿的帽子" skill="84001" />
-<equip id="84012" name="区域物品12" img="80010" rare="1" description="金色药剂" skill="84001" />
-<equip id="84013" name="区域物品13" img="80010" rare="1" description="红色药剂" skill="84001" />
-<equip id="84014" name="区域物品14" img="80010" rare="1" description="蓝色药剂" skill="84001" />
-<equip id="84015" name="区域物品15" img="80010" rare="1" description="海克斯科技改装拳套" skill="84001" />
-<equip id="84016" name="区域物品16" img="80010" rare="1" description="海克斯科技核心" skill="84001" />
-<equip id="84017" name="区域物品17" img="80010" rare="1" description="海克斯科技榴弹" skill="84001" />
-<equip id="84018" name="区域物品18" img="80010" rare="1" description="海克斯科技电容" skill="84002" />
-<equip id="84019" name="区域物品19" img="80010" rare="1" description="约德尔诱捕器" skill="84002" />
-<equip id="84020" name="区域物品20" img="80010" rare="1" description="海克斯科技枪炮" skill="84002" />
-<equip id="84021" name="区域物品21" img="80010" rare="1" description="海克斯科技微型火箭" skill="84002" />
-<equip id="84022" name="区域物品22" img="80010" rare="1" description="一袋香瓜子" skill="84002" />
-<equip id="84023" name="区域物品23" img="80010" rare="1" description="葵花籽油" skill="84002" />
-<equip id="84024" name="区域物品24" img="80010" rare="1" description="太阳能热水器" skill="84002" />
-<equip id="84025" name="区域物品25" img="80010" rare="1" description="甜鸭蛋" skill="84002" />
-<equip id="84026" name="区域物品26" img="80010" rare="1" description="曙光之盾" skill="84002" />
-<equip id="84027" name="区域物品27" img="80010" rare="1" description="烤蜘蛛腿" skill="84002" />
-<equip id="84028" name="区域物品28" img="80010" rare="1" description="牙膏" skill="84002" />
-<equip id="84029" name="区域物品29" img="80010" rare="1" description="面罩" skill="84002" />
-<equip id="84030" name="区域物品30" img="80010" rare="1" description="黑色岩炮" skill="84002" />
+<equip id="84001" name="区域物品1" img="80010" rare="1" description="正义雄鹰徽章" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84002" name="区域物品2" img="80010" rare="1" description="仲裁者印记" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84003" name="区域物品3" img="80010" rare="1" description="血手" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84004" name="区域物品4" img="80010" rare="1" description="巨人boss印记" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84005" name="区域物品5" img="80010" rare="1" description="巨人精英" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84006" name="区域物品6" img="80010" rare="1" description="巨人花粉" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84007" name="区域物品7" img="80010" rare="1" description="剧毒蜂刺" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84008" name="区域物品8" img="80010" rare="1" description="火化后的飞蛾" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84009" name="区域物品9" img="80010" rare="1" description="香菇酱" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84010" name="区域物品10" img="80010" rare="1" description="有点绿的帽子" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84011" name="区域物品11" img="80010" rare="1" description="特别绿的帽子" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84012" name="区域物品12" img="80010" rare="1" description="金色药剂" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84013" name="区域物品13" img="80010" rare="1" description="红色药剂" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84014" name="区域物品14" img="80010" rare="1" description="蓝色药剂" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84015" name="区域物品15" img="80010" rare="1" description="海克斯科技改装拳套" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84016" name="区域物品16" img="80010" rare="1" description="海克斯科技核心" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84017" name="区域物品17" img="80010" rare="1" description="海克斯科技榴弹" skill="84001" type="0" layer="5" time="1200"/>
+<equip id="84018" name="区域物品18" img="80010" rare="1" description="海克斯科技电容" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84019" name="区域物品19" img="80010" rare="1" description="约德尔诱捕器" skill="84002" type="0" layer="5" time="1200"/> 
+<equip id="84020" name="区域物品20" img="80010" rare="1" description="海克斯科技枪炮" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84021" name="区域物品21" img="80010" rare="1" description="海克斯科技微型火箭" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84022" name="区域物品22" img="80010" rare="1" description="一袋香瓜子" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84023" name="区域物品23" img="80010" rare="1" description="葵花籽油" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84024" name="区域物品24" img="80010" rare="1" description="太阳能热水器" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84025" name="区域物品25" img="80010" rare="1" description="甜鸭蛋" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84026" name="区域物品26" img="80010" rare="1" description="曙光之盾" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84027" name="区域物品27" img="80010" rare="1" description="烤蜘蛛腿" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84028" name="区域物品28" img="80010" rare="1" description="牙膏" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84029" name="区域物品29" img="80010" rare="1" description="面罩" skill="84002" type="0" layer="5" time="1200"/>
+<equip id="84030" name="区域物品30" img="80010" rare="1" description="黑色岩炮" skill="84002" type="0" layer="5" time="1200"/>
 </data>
