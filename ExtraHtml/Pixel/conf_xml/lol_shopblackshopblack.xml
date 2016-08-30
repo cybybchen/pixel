@@ -10,6 +10,7 @@
 </shop>
 <shop id="4">
 <loot will="1" weight="100" />
+<loot will="2" weight="50" />
 </shop>
 <shop id="5">
 <loot will="2" weight="100" />
@@ -19,10 +20,10 @@
 <loot will="3" weight="50" />
 </shop>
 <shop id="7">
-<loot will="4" weight="100" />
+<loot will="5" weight="100" />
 </shop>
 <shop id="8">
-<loot will="4" weight="100" />
-<loot will="5" weight="100" />
+<loot will="6" weight="100" />
+<loot will="7" weight="20" />
 </shop>
 </data>

@@ -1,26 +1,27 @@
 <data>
-<shop id="1">
+<shop id="1" >
 <loot will="0" weight="100" />
 </shop>
-<shop id="2">
+<shop id="2" >
 <loot will="0" weight="100" />
 </shop>
-<shop id="3">
+<shop id="3" >
 <loot will="1" weight="100" />
 </shop>
-<shop id="4">
+<shop id="4" >
 <loot will="1" weight="100" />
 </shop>
-<shop id="5">
-<loot will="1" weight="100" />
-</shop>
-<shop id="6">
-<loot will="1" weight="100" />
-</shop>
-<shop id="7">
+<shop id="5" >
 <loot will="2" weight="100" />
 </shop>
-<shop id="8">
+<shop id="6" >
 <loot will="2" weight="100" />
+</shop>
+<shop id="7" >
+<loot will="3" weight="100" />
+</shop>
+<shop id="8" >
+<loot will="3" weight="100" />
+<loot will="4" weight="10" />
 </shop>
 </data>
