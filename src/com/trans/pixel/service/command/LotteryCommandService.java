@@ -94,7 +94,7 @@ public class LotteryCommandService extends BaseCommandService {
 		} else {
 			cost = getLotteryCost(type, count);
 			int costtype = RewardConst.COIN;
-			if(type == LotteryConst.LOOTERY_SPECIAL_TYPE)
+			if(type == LotteryConst.LOOTERY_SPECIAL_TYPE || type == RewardConst.EQUIPMENT)
 				costtype = RewardConst.JEWEL;
 			else{
 				free = isFreeLotteryTime(user, type, count);
@@ -114,7 +114,7 @@ public class LotteryCommandService extends BaseCommandService {
 				}
 			}
 			
-			if (type != LotteryConst.LOOTERY_SPECIAL_TYPE && ifFirstLottery(user, type) && count == 1)
+			if (type != LotteryConst.LOOTERY_SPECIAL_TYPE && type != RewardConst.EQUIPMENT && ifFirstLottery(user, type) && count == 1)
 				lotteryList = firstLotteryReward(user, type);
 			else
 				lotteryList = lotteryService.randomLotteryList(type, count);
@@ -178,6 +178,9 @@ public class LotteryCommandService extends BaseCommandService {
 				break;
 			case LotteryConst.LOOTERY_SPECIAL_TYPE:
 				cost = LotteryConst.COST_LOOTERY_HERO_HUNJIA * count;
+				break;
+			case RewardConst.EQUIPMENT:
+				cost = LotteryConst.COST_LOTTERY_EQUIP_JEWEL * count;
 				break;
 			default:
 				break;

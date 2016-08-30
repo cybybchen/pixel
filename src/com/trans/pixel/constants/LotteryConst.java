@@ -6,9 +6,9 @@ public class LotteryConst {
 	
 	public static final int COST_LOTTERY_HERO_COIN = 10000;
 	public static final int COST_LOTTERY_HERO_JEWEL = 200;
+	public static final int COST_LOTTERY_EQUIP_JEWEL = 80;
 	
 	public static final int COST_LOTTERY_EQUIP_COIN = 100;
-	public static final int COST_LOTTERY_EQUIP_JEWEL = 100;
 	
 	public static final int COST_LOOTERY_HERO_HUNJIA = 400;
 	
