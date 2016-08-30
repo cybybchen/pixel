@@ -150,6 +150,7 @@ public class PokedeCommandService extends BaseCommandService {
 		List<UserPropBean> propList = new ArrayList<UserPropBean>();
 		UserPokedeBean userPokede = userPokedeService.selectUserPokede(user, heroId);
 		ResultConst result = clearService.heroStrengthen(userPokede, user, propList);
+		pushCommandService.pushUserPropListCommand(responseBuilder, user, propList);
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand(result);
@@ -163,6 +164,5 @@ public class PokedeCommandService extends BaseCommandService {
 		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
 		responseBuilder.setUserPokedeCommand(builder.build());
 		responseBuilder.setMessageCommand(this.buildMessageCommand(result));
-		pushCommandService.pushUserPropListCommand(responseBuilder, user, propList);
 	}
 }

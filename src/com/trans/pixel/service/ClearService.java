@@ -107,12 +107,22 @@ public class ClearService {
 		if (strengthen == null)
 			return ErrorConst.HERO_STRENGTHEN_ERROR;
 		
-		if (!costService.cost(user, strengthen.getItemid(), strengthen.getCount()))
+		
+		
+		if (!costService.cost(user, strengthen.getItemid(), strengthen.getCount())) {
+			UserPropBean userProp = userPropService.selectUserProp(user.getId(), strengthen.getItemid());
+			if (userProp != null)
+				propList.add(userProp);
 			return ErrorConst.NOT_ENOUGH_PROP;
+		}
+		
+		UserPropBean userProp = userPropService.selectUserProp(user.getId(), strengthen.getItemid());
+		if (userProp != null)
+			propList.add(userProp);
 		
 		if (strengthenSuccess(strengthen.getSuccess())) {
 			userPokede.setStrengthen(userPokede.getStrengthen() + 1);
-			propList.add(userPropService.selectUserProp(user.getId(), strengthen.getItemid()));
+			
 			return SuccessConst.HERO_STRENGTHEN_SUCCESS;
 		}
 		
