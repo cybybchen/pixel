@@ -42,5 +42,5 @@
 <item id="40" itemid="37001" name="强化水晶" count="10" currency="1002" cost="500" will="5" />
 <item id="41" itemid="37001" name="强化水晶" count="50" currency="1002" cost="2500" will="6" />
 <item id="42" itemid="37001" name="强化水晶" count="100" currency="1002" cost="5000" will="6" />
-<item id="43" itemid="37001" name="强化水晶" count="200" currency="1002" cost="10000" will="6" />
+<item id="43" itemid="37001" name="强化水晶" count="200" currency="1002" cost="10000" will="7" />
 </data>
