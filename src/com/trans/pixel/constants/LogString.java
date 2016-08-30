@@ -100,6 +100,7 @@ public class LogString {
 	public static final int LOGTYPE_SKILLUP = 17;
 	public static final int LOGTYPE_EQUIPUP = 18;
 	public static final int LOGTYPE_QIYUE = 19;
+	public static final int LOGTYPE_QIANGHUA = 20;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -121,6 +122,7 @@ public class LogString {
 	public static final String LOGTYPE_SKILLUP_STR = "Skillup";
 	public static final String LOGTYPE_EQUIPUP_STR = "Equipup";
 	public static final String LOGTYPE_QIYUE_STR = "Qiyue";
+	public static final String LOGTYPE_QIANGHUA_STR = "Qianghua";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

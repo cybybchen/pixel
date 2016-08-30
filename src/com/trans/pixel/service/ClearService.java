@@ -39,6 +39,8 @@ public class ClearService {
 	private UserClearRedisService userClearRedisService;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private LogService logService;
 	
 	
 	private static final int CLEAR_TYPE_COIN_COST = 10000;
@@ -120,7 +122,9 @@ public class ClearService {
 		if (userProp != null)
 			propList.add(userProp);
 		
-		if (strengthenSuccess(strengthen.getSuccess())) {
+		boolean ret = strengthenSuccess(strengthen.getSuccess());
+		logService.sendQianghuaLog(user.getServerId(), user.getId(), userPokede.getHeroId(), userPokede.getStrengthen(), ret ? 1 : 0);
+		if (ret) {
 			userPokede.setStrengthen(userPokede.getStrengthen() + 1);
 			
 			return SuccessConst.HERO_STRENGTHEN_SUCCESS;

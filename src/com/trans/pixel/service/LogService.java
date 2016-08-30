@@ -383,6 +383,23 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_QIANGHUA:
+				sb.append(LogString.LOGTYPE_QIANGHUA_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -543,6 +560,17 @@ public class LogService {
 		params.put(LogString.STATE, "" + state);
 		
 		sendLog(params, LogString.LOGTYPE_QIYUE);
+	}
+	
+	public void sendQianghuaLog(int serverId, long userId, int heroid, int level, int result) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.LEVEL, "" + level);
+		params.put(LogString.RESULT, "" + result);
+		
+		sendLog(params, LogString.LOGTYPE_QIANGHUA);
 	}
 	
 	private void send(String str) {
