@@ -920,7 +920,7 @@
 <equip equipid="2" arm1="14012" arm2="14019" arm3="14017" arm4="14005" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="60" name="布兰德" img="43" description="身上燃烧着烈火，却怎么也烧不完的样子。" position="0" handbook="0" zhanli="100" ad="14" ad_rare="5.5" ap="45" ap_rare="" arm="12" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="60" name="布兰德" img="43" description="身上燃烧着烈火，却怎么也烧不完的样子。" position="0" handbook="1" zhanli="100" ad="14" ad_rare="5.5" ap="45" ap_rare="" arm="12" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="6001" skill="烈焰之柱" unlock="1" />
 <skill  skillid="6002" skill="炽热之焰" unlock="2" />

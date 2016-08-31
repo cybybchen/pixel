@@ -158,4 +158,9 @@
 <loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="34005" counta="1" countb="0" weighta="100" weightb="0" />
 </enemy>
+<enemy id="3007" name="洗澡狂魔" >
+<loot order="1" weightall="100" itemid="1001" counta="1000" countb="0" weighta="100" weightb="0" />
+<loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
+<loot order="3" weightall="100" itemid="40107" counta="1" countb="0" weighta="100" weightb="0" />
+</enemy>
 </data>
