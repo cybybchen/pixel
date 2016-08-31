@@ -151,6 +151,7 @@ public class AreaRedisService extends RedisService{
 	
 	public Map<String, AreaBoss.Builder> getBosses(UserBean user){
 		Map<String, AreaBoss.Builder> bosses= new HashMap<String, AreaBoss.Builder>();
+		Map<String, AreaPosition> positionMap = getAreaPosition();
 		Map<String, String> valueMap = this.hget(AREABOSS+user.getServerId());
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaBoss.Builder builder = AreaBoss.newBuilder();
@@ -205,6 +206,19 @@ public class AreaRedisService extends RedisService{
 						AreaBoss Boss = bossMap.get(time.getEnemyid()+"");
 						AreaBoss.Builder builder = AreaBoss.newBuilder(Boss);
 						builder.setGroup(time.getGroup());
+						//add position
+						Position position = randPosition(positionMap.get(builder.getBelongto()+"").getPositionList());
+						Iterator<AreaBoss.Builder> iter = bosses.values().iterator();
+						while (iter.hasNext()) {
+							AreaBoss.Builder boss2 = iter.next();
+							if(boss2.getBelongto() == builder.getBelongto() && boss2.getPositionid() == position.getPosition()) {
+								position = randPosition(positionMap.get(builder.getBelongto()+"").getPositionList());
+								iter = bosses.values().iterator();
+							}
+						}
+						builder.setPositionid(position.getPosition());
+						builder.setX(position.getX());
+						builder.setY(position.getY());
 						saveBoss(builder.build(), user);
 						bosses.put(builder.getId()+"", builder);
 						count++;

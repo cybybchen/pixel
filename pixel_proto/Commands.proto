@@ -390,6 +390,7 @@ message AreaBoss {//区域世界BOSS
 	optional int32 belongto = 3;//区域ID
 	optional int32 x = 4;//坐标x
 	optional int32 y = 5;//坐标y
+	optional int32 positionid = 13;//坐标
 	optional int32 group = 6;
 	optional int32 hpMax = 7;//最大血量
 	optional int32 turn = 8;//回合限制
@@ -1262,6 +1263,8 @@ message UnionBossRecord {
 	optional int32 bossId = 1;
 	optional int32 hp = 2;
 	optional string endTime = 3;
+	optional int32 myAttackHp = 4;
+	repeated UserRank ranks = 5;
 }
 
 message StrengthenList {
