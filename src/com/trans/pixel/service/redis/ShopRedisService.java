@@ -68,8 +68,10 @@ public class ShopRedisService extends RedisService{
 			weight = weight*Math.random();
 			for(Will will : shopwill.getLootList()){
 				weight -= will.getWeight();
-				if(weight <= 0)
+				if(weight <= 0){
 					willnum = will.getWill();
+					break;
+				}
 			}
 			CommodityList.Builder commsbuilder = commsmap.get(willnum);
 			int index = nextInt(commsbuilder.getItemCount());
