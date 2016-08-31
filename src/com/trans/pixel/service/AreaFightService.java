@@ -121,7 +121,7 @@ public class AreaFightService extends FightService{
 		AreaMonster monster = redis.getMonster(positionid, user);
 		if(monster == null)
 			return false;
-		redis.getMonsters(user);
+		redis.getMonsters(user, new ArrayList<Integer>());
 		redis.deleteMonster(monster.getPositionid(), user);
 		AreaMonsterReward monsterreward = redis.getAreaMonsterReward(monster.getId());
 		for(WeightReward weightreward : monsterreward.getLootList()){
@@ -583,8 +583,9 @@ public class AreaFightService extends FightService{
 	public AreaMode getAreas(UserBean user) {
 		AreaMode.Builder areamodebuilder = redis.getAreaMode(user);
 //		Map<String, MultiReward> monsterrewardMap = redis.getAreaMonsterRewards();
-		Map<String, AreaMonster> monsterMap = redis.getMonsters(user);
-		Map<String, AreaBoss.Builder> bossMap = redis.getBosses(user);
+		List<Integer> positionids = new ArrayList<Integer>();
+		Map<String, AreaMonster> monsterMap = redis.getMonsters(user, positionids);
+		Map<String, AreaBoss.Builder> bossMap = redis.getBosses(user, positionids);
 		Map<String, String> bosstimeMap = redis.getBossTimes(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 //		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
