@@ -6,9 +6,9 @@
 <rmb id="4" type="1" rmb="198" itemid="1002" zuanshi="1980" name="大袋钻石" img="recharge-4" description="1980钻石" />
 <rmb id="5" type="1" rmb="328" itemid="1002" zuanshi="3280" name="一箱钻石" img="recharge-5" description="3280钻石" />
 <rmb id="6" type="1" rmb="648" itemid="1002" zuanshi="6480" name="大箱钻石" img="recharge-6" description="6480钻石" />
-<rmb id="7" type="2" rmb="30" itemid="42201" zuanshi="0" name="1星嘉文四世礼包" img="libao_2_1" description="包含3个1星嘉文四世和10个蓝色装备箱（获得300点vip经验）" />
-<rmb id="8" type="2" rmb="98" itemid="42202" zuanshi="0" name="3星嘉文四世礼包" img="libao_2_2" description="包含3个3星嘉文四世和15个紫色装备箱（获得980点vip经验）" />
-<rmb id="9" type="2" rmb="328" itemid="42203" zuanshi="0" name="5星嘉文四世礼包" img="libao_2_3" description="包含3个5星嘉文四世和20个橙色装备箱（获得3280点vip经验）" />
+<rmb id="7" type="2" rmb="30" itemid="42301" zuanshi="0" name="纵情狂欢流初级礼包" img="libao_2_1" description="包含1星布兰德，古拉加斯，伊丽丝，璐璐，蕾欧娜和5个强化水晶（获得300点vip经验）" />
+<rmb id="8" type="2" rmb="98" itemid="42302" zuanshi="0" name="纵情狂欢流高级礼包" img="libao_2_2" description="包含3星布兰德，古拉加斯，伊丽丝，璐璐，蕾欧娜和15个强化水晶（获得980点vip经验）" />
+<rmb id="9" type="2" rmb="328" itemid="42303" zuanshi="0" name="纵情狂欢流超级礼包" img="libao_2_3" description="包含5星布兰德，古拉加斯，伊丽丝，璐璐，蕾欧娜和50个强化水晶（获得3280点vip经验）" />
 <rmb id="10" type="2" rmb="30" itemid="44001" zuanshi="0" name="初级钻石月卡" img="libao_4_1" description="连续30天每天可以获得60钻石（获得300点vip经验）" />
 <rmb id="11" type="2" rmb="88" itemid="44002" zuanshi="0" name="高级钻石月卡" img="libao_4_2" description="连续30天每天可以获得300钻石（获得880点vip经验）" />
 <rmb id="12" type="2" rmb="68" itemid="44003" zuanshi="0" name="双周魄罗礼包" img="libao_4_3" description="连续14天每天获得1个魄罗礼包（获得680点vip经验）" />
