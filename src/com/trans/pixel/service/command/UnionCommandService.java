@@ -59,7 +59,7 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void create(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		if(unionService.isAreaFighting(user.getId(), user)){
+		if(unionService.getAreaFighting(user.getId(), user) == 1){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.AREA_FIGHT_BUSY);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.AREA_FIGHT_BUSY));
 			return;

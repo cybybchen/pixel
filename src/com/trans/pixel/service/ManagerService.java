@@ -413,6 +413,7 @@ public class ManagerService extends RedisService{
 		
 		if(req.containsKey("update-UserData") && gmaccountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "UserData", req.get("update-UserData").toString());
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX, userId+"");
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-UserData", req.get("update-UserData").toString());
 			req.put("UserData", 1);
 		}else if(req.containsKey("del-UserData") && gmaccountBean.getCanwrite() == 1){

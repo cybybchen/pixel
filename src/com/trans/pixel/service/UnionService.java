@@ -230,8 +230,11 @@ public class UnionService extends FightService{
 	}
 	
 	public ResultConst quit(long id, Builder responseBuilder, UserBean user) {
-		if(isAreaFighting(id, user))
+		int fightstate = getAreaFighting(id, user);
+		if(fightstate == 1)
 			return ErrorConst.AREA_FIGHT_BUSY;
+		else if(fightstate == 2)
+			return ErrorConst.AREA_OWNER_BUSY;
 		if(isBloodFighting(id, user))
 			return ErrorConst.BLOOD_FIGHT_BUSY;
 		if(id == user.getId()){
@@ -286,21 +289,25 @@ public class UnionService extends FightService{
 		redis.apply(unionId, user);
 	}
 	
-	public boolean isAreaFighting(long userId, UserBean user){
+	public int getAreaFighting(long userId, UserBean user){
 		Map<String, AreaResource> resources = areaRedisService.getResources(user);
 		for(AreaResource resource : resources.values()){
-			if(resource.getState() != 0 && resource.hasOwner() && resource.getOwner().getId() == userId)
-				return true;
+			if(resource.hasOwner() && resource.getOwner().getId() == userId){
+				if(resource.getState() != 0)
+					return 1;
+				else
+					return 2;
+			}
 			for(UserInfo userinfo : resource.getAttacksList()){
 				if(userinfo.getId() == userId)
-					return true;
+					return 1;
 			}
 			for(UserInfo userinfo : resource.getDefensesList()){
 				if(userinfo.getId() == userId)
-					return true;
+					return 1;
 			}
 		}
-		return false;
+		return 0;
 	}
 	
 	public boolean isBloodFighting(long userId, UserBean user){
@@ -329,7 +336,7 @@ public class UnionService extends FightService{
 		if(receive){
 			UserBean bean = userService.getOther(userId);
 			if(bean != null && bean.getUnionId() == 0){
-				if(isAreaFighting(userId, user))
+				if(getAreaFighting(userId, user) == 1)
 					return ErrorConst.AREA_FIGHT_BUSY;
 				Union.Builder builder = Union.newBuilder();
 				redis.getBaseUnion(builder, user.getUnionId(), user.getServerId());
