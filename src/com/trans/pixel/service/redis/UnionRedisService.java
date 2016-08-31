@@ -124,6 +124,7 @@ public class UnionRedisService extends RedisService{
 		builder.setId(user.getId());
 		builder.setUser(user.buildShort());
 		builder.setEndTime((System.currentTimeMillis()+RedisExpiredConst.EXPIRED_USERINFO_1DAY)/1000);
+		builder.setTimestamp(System.currentTimeMillis());
 		this.hput(key, builder.getId()+"", formatJson(builder.build()));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 		key = RedisKey.USERDATA+"Apply_"+user.getId();

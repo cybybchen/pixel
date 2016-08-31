@@ -333,6 +333,7 @@ message UnionApply {
 	required int64 id = 1;
 	required UserInfo user = 2;
 	required int64 endTime = 3;
+	optional int64 timestamp = 4;
 }
 
 message AreaEquip {//区域道具
