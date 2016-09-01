@@ -11,6 +11,7 @@ import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.service.IdfaService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.StringUtil;
@@ -22,6 +23,8 @@ public class LogCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private IdfaService idfaService;
 	
 	public void log(RequestLogCommand cmd, Builder responseBuilder, UserBean user) {
 		int serverId = 0;
@@ -33,6 +36,9 @@ public class LogCommandService extends BaseCommandService {
 		Map<String, String> params = initParams(serverId, userId, cmd);
 		logService.sendLog(params, cmd.getLogtype());
 		
+		if (!params.get(LogString.IDFA).isEmpty())
+			idfaService.updateIdfaStatus(params.get(LogString.IDFA));
+			
 		if (user != null) {
 			user.setIdfa(params.get(LogString.IDFA));
 			userService.updateUser(user);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.IdfaMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.IdfaBean">
+		<id property="id" column="id" />
+		<result property="idfa" column="idfa" />
+		<result property="ip" column="ip" />
+		<result property="callback" column="callback" />
+		<result property="isRecall" column="is_recall" />
+	</resultMap>
+
+	<select id="addIdfa" parameterType="com.trans.pixel.model.IdfaBean">
+	    INSERT INTO idfa(idfa, ip, callback) 
+		 VALUES(#{idfa}, #{ip}, #{callback})
+	</select>
+
+	<select id="queryIdfa" resultMap="resultMap">
+	    SELECT * from idfa where idfa=#{idfa}
+	</select>
+	
+	<update id="updateStatus" parameterType="com.trans.pixel.model.IdfaBean">
+	    UPDATE idfa SET is_recall=#{isRecall}
+		WHERE idfa=#{idfa}
+	</update>
+	
+</mapper>

@@ -1,10 +1,12 @@
 package com.trans.pixel.model.mapper;
 
-import org.apache.ibatis.annotations.Param;
+import com.trans.pixel.model.IdfaBean;
 
 public interface IdfaMapper {
 
-	public void addIdfa(@Param("idfa") String idfa, @Param("ip") String ip, @Param("callback") String callback);
+	public void addIdfa(IdfaBean idfa);
 	
-	public String queryIdfa(String idfa);
+	public IdfaBean queryIdfa(String idfa);
+	
+	public void updateStatus(IdfaBean idfa);
 }
