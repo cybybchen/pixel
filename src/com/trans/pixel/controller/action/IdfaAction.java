@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,14 +21,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.trans.pixel.service.IdfaService;
+import com.trans.pixel.utils.HmacSHA1Encryption;
+
 @Controller
 @Scope("prototype")
 public class IdfaAction {
 	private Logger logger = Logger.getLogger(IdfaAction.class);
 
+	@Resource
+	private IdfaService idfaService;
+	
 	@RequestMapping("/idfa_query")
    @ResponseBody
-	public void idfa_query(HttpServletRequest request, HttpServletResponse response) {
+	public String idfa_query(HttpServletRequest request, HttpServletResponse response) {
 		StringBuffer sb = new StringBuffer();
 		//获取HTTP请求的输入流
 		InputStream is;
@@ -48,13 +56,19 @@ public class IdfaAction {
       logger.warn(sb.toString());
       String[] idfas = sb.toString().split(",");
 		JSONObject json = new JSONObject();
+		for (String idfa : idfas) {
+			json.put(idfa, idfaService.queryIdfa(idfa));
+		}
 		
+		return json.toString();
 	}
 	
 	@RequestMapping("/idfa_login")
    @ResponseBody
 	public void idfa_login(HttpServletRequest request, HttpServletResponse response) {
-		
+		Map<String, String> params = getParamsMap(request);
+		logger.warn("recall params is:" + params);
+		idfaService.addIdfa(params);
 	}
 	
 	private void idfaecall(String callback, String requestStr) {
@@ -89,5 +103,12 @@ public class IdfaAction {
 			if (conn != null)
 				conn.disconnect();
 		}
+	}
+	
+	private Map<String, String> getParamsMap(HttpServletRequest request) {
+		Map<String, String> paramsMap = HmacSHA1Encryption.parseRequest(request);
+		logger.info("params " + paramsMap);
+		
+		return paramsMap;
 	}
 }
