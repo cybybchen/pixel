@@ -1,7 +1,9 @@
 package com.trans.pixel.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +18,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.mapper.UserAreaPropMapper;
 import com.trans.pixel.model.userinfo.UserAreaPropBean;
@@ -226,11 +229,12 @@ public class AreaFightService extends FightService{
 			builder.setStarttime(time);
 			builder.setClosetime(time+/*24*3600L*/redis.WARTIME);
 			builder.setEndtime(builder.getClosetime()+redis.PROTECTTIME);
+			builder.clearMessage();
 			if(builder.hasOwner()){
-				builder.setMessage("领主"+builder.getOwner().getName()+"已经被"+user.getUserName()+"刺杀");
+				builder.addMessage(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(System.currentTimeMillis()))+" 领主"+builder.getOwner().getName()+"已被"+user.getUserName()+"刺杀");
 				builder.setAttackerId(user.getUnionId());
 			}else{
-				builder.setMessage("领主已经被"+user.getUserName()+"刺杀");
+				builder.addMessage(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(System.currentTimeMillis()))+" 领主已被"+user.getUserName()+"刺杀");
 				builder.setOwner(user.buildShort());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
@@ -415,9 +419,10 @@ public class AreaFightService extends FightService{
 		defends.addAll(builder.getDefensesList());
 		if(builder.hasOwner())
 			defends.add(builder.getOwner());
+		String message = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(System.currentTimeMillis()))+" ";
 		if(attacks.size() == 0){
 			builder.setWarDefended(builder.getWarDefended()+1);
-			builder.setMessage("当前已成功防守"+builder.getWarDefended()+"波敌人！");
+			message += ("领主"+(builder.hasOwner()?builder.getOwner().getName():"")+"已成功防守"+builder.getWarDefended()+"波敌人！");
 		}else{
 			FightResultList.Builder resultlist = queueFight(attacks, defends);
 			redis.saveFight(builder.getId(), resultlist.build());
@@ -433,22 +438,23 @@ public class AreaFightService extends FightService{
 					builder.setWarDefended(0);
 					if(owner != null){
 						builder.setOwner(owner);
-						builder.setMessage(builder.getOwner().getName()+"成功拿下了据点！");
+						message += "玩家"+(builder.getOwner().getName()+"成功拿下了据点，成为新的领主！");
 					}
 				}else{
 					builder.setWarDefended(builder.getWarDefended()+1);
-					builder.setMessage("当前已成功防守"+builder.getWarDefended()+"波敌人！");
+					message += ("领主"+(builder.hasOwner()?builder.getOwner().getName():"")+"已成功防守"+builder.getWarDefended()+"波敌人！");
 				}
 //				for(FightResult result : resultlist.getListList()){//发奖
 //					
 //				}
 			}
 		}
+		builder.addMessage(message);
 		long time = Math.max(redis.now(), builder.getEndtime());
 		if(builder.getWarDefended() >= 3){//防守结束
 			builder.setState(0);
 			builder.setWarDefended(0);
-			builder.clearMessage();
+			// builder.clearMessage();
 			builder.clearClosetime();
 			builder.setStarttime(time+redis.PROTECTTIME);
 			builder.clearEndtime();
