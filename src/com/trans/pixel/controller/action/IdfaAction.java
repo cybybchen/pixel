@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -65,44 +62,11 @@ public class IdfaAction {
 	
 	@RequestMapping("/idfa_login")
    @ResponseBody
-	public void idfa_login(HttpServletRequest request, HttpServletResponse response) {
+	public String idfa_login(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, String> params = getParamsMap(request);
 		logger.warn("recall params is:" + params);
 		idfaService.addIdfa(params);
-	}
-	
-	private void idfaecall(String callback, String requestStr) {
-		String urlStr = callback;
-		logger.info("urlStr is:" + urlStr);
-		InputStream is = null;
-		
-		URL url;
-		HttpURLConnection conn = null;
-		try {
-			System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 6.1; WOW64)");
-			url = new URL(urlStr);
-			conn = (HttpURLConnection) url.openConnection();
-			conn.setReadTimeout(5000);
-			conn.setConnectTimeout(5000);
-			conn.setRequestMethod("GET");
-			conn.setDoInput(true);
-			
-			conn.connect();
-			int response = conn.getResponseCode();
-			String line = "";
-			if (response == 200) {
-			
-			} else{
-			
-			}
-		} catch (MalformedURLException e) {
-			
-		} catch (IOException e) {
-			
-		} finally {
-			if (conn != null)
-				conn.disconnect();
-		}
+		return "{\"success\":true,\"message\":\"ok\"}";
 	}
 	
 	private Map<String, String> getParamsMap(HttpServletRequest request) {
