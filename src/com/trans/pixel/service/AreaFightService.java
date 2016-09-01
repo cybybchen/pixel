@@ -231,10 +231,10 @@ public class AreaFightService extends FightService{
 			builder.setEndtime(builder.getClosetime()+redis.PROTECTTIME);
 			builder.clearMessage();
 			if(builder.hasOwner()){
-				builder.addMessage(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(System.currentTimeMillis()))+" 领主"+builder.getOwner().getName()+"已被"+user.getUserName()+"刺杀");
+				builder.addMessage(new SimpleDateFormat("MM-dd HH:mm").format(new Date(System.currentTimeMillis()))+" 领主"+builder.getOwner().getName()+"已被"+user.getUserName()+"刺杀");
 				builder.setAttackerId(user.getUnionId());
 			}else{
-				builder.addMessage(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(System.currentTimeMillis()))+" 领主已被"+user.getUserName()+"刺杀");
+				builder.addMessage(new SimpleDateFormat("MM-dd HH:mm").format(new Date(System.currentTimeMillis()))+" 领主已被"+user.getUserName()+"刺杀");
 				builder.setOwner(user.buildShort());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
@@ -419,7 +419,7 @@ public class AreaFightService extends FightService{
 		defends.addAll(builder.getDefensesList());
 		if(builder.hasOwner())
 			defends.add(builder.getOwner());
-		String message = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(System.currentTimeMillis()))+" ";
+		String message = new SimpleDateFormat("MM-dd HH:mm").format(new Date(System.currentTimeMillis()))+" ";
 		if(attacks.size() == 0){
 			builder.setWarDefended(builder.getWarDefended()+1);
 			message += ("领主"+(builder.hasOwner()?builder.getOwner().getName():"")+"已成功防守"+builder.getWarDefended()+"波敌人！");
