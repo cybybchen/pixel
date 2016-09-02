@@ -13,6 +13,9 @@
 	<select id="addIdfa" parameterType="com.trans.pixel.model.IdfaBean">
 	    INSERT INTO idfa(idfa, ip, callback) 
 		 VALUES(#{idfa}, #{ip}, #{callback})
+		ON 
+	    duplicate key update
+	    ip=#{ip}, callback=#{callback}
 	</select>
 
 	<select id="queryIdfa" resultMap="resultMap">

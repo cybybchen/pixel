@@ -801,8 +801,13 @@ public class ShopCommandService extends BaseCommandService{
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.PURCHASE_VIPLIBAO_AGAIN));
 				return;
 			}
-			user.setViplibao2(user.getViplibao2() | state);
 			libao = service.getVipLibao(vip.getLibao2());
+			if(libao.getCost() > 0 && !costService.cost(user, RewardConst.JEWEL, libao.getCost())) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+				return;
+			}
+			user.setViplibao2(user.getViplibao2() | state);
 		}else{
 			if((user.getViplibao1() & state) != 0){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PURCHASE_VIPLIBAO_AGAIN);
@@ -810,13 +815,13 @@ public class ShopCommandService extends BaseCommandService{
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.PURCHASE_VIPLIBAO_AGAIN));
 				return;
 			}
-			user.setViplibao1(user.getViplibao1() | state);
 			libao = service.getVipLibao(vip.getLibao1());
-		}
-		if(libao.getCost() > 0 && !costService.cost(user, RewardConst.JEWEL, libao.getCost())) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
-			return;
+			if(libao.getCost() > 0 && !costService.cost(user, RewardConst.JEWEL, libao.getCost())) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+				return;
+			}
+			user.setViplibao1(user.getViplibao1() | state);
 		}
 		MultiReward.Builder builder = MultiReward.newBuilder();
 		for(RewardInfo reward : libao.getItemList()){
