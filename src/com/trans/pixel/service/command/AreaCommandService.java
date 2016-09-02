@@ -119,9 +119,13 @@ public class AreaCommandService extends BaseCommandService{
 	}
 	
 	public void resourceInfo(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user){
-		AreaResource resource = service.getResource(cmd.getResourceId(), user);
+		resourceInfo(cmd.getResourceId(), responseBuilder, user);
+	}
+	
+	public void resourceInfo(int resourceid, Builder responseBuilder, UserBean user){
+		AreaResource resource = service.getResource(resourceid, user);
 		if(resource == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAPINFO_ERROR);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MAPINFO_ERROR));
 			responseBuilder.setAreaCommand(getAreas(user));
@@ -133,7 +137,7 @@ public class AreaCommandService extends BaseCommandService{
 	}
 	
 	public void AttackResource(RequestAttackResourceCommand cmd, Builder responseBuilder, UserBean user){
-		ResultConst result = service.AttackResource(cmd.getId(), cmd.getRet(), user);
+		ResultConst result = service.AttackResource(cmd.getId(), cmd.hasRet(), cmd.getRet(), user);
 		if(result instanceof SuccessConst)
 			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		else{
@@ -141,7 +145,8 @@ public class AreaCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
 		pusher.pushUserInfoCommand(responseBuilder, user);
-		responseBuilder.setAreaCommand(getAreas(user));
+		resourceInfo(cmd.getId(), responseBuilder, user);
+		// responseBuilder.setAreaCommand(getAreas(user));
 	}
 	
 //	public void collectMine(RequestCollectResourceMineCommand cmd, Builder responseBuilder, UserBean user){

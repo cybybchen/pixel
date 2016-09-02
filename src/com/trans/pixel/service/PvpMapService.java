@@ -491,17 +491,19 @@ public class PvpMapService {
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			userService.updateUserDailyData(user);
 			List<UserInfo> ranks = getRandUser(0, 10, user);
-			UserInfo owner = builder.getOwner();
+			// UserInfo owner = builder.getOwner();
 			if(!ranks.isEmpty()){
-				owner = ranks.get(redis.nextInt(ranks.size()));
+				UserInfo owner = ranks.get(redis.nextInt(ranks.size()));
 				if(owner.getId() == builder.getOwner().getId() && ranks.size() > 1)
 					owner = ranks.get(redis.nextInt(ranks.size()));
 				builder.setOwner(owner);
+				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
+			}else{
+				builder.clearOwner();
 			}
-			builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, owner.getZhanli()/(user.getZhanliMax()+1.0)))));
 			redis.saveMine(user.getId(), builder.build());
-		}else{
-			builder.clearOwner();
+		// }else{
+		// 	builder.clearOwner();
 		}
 		return builder.build();
 	}

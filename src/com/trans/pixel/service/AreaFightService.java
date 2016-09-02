@@ -195,7 +195,7 @@ public class AreaFightService extends FightService{
 		return SuccessConst.PVP_ATTACK_SUCCESS;
 	}
 	
-	public ResultConst AttackResource(int id, boolean ret, UserBean user){
+	public ResultConst AttackResource(int id, boolean iskill, boolean ret, UserBean user){
 		Map<String, AreaResource> resources = redis.getResources(user);
 		AreaResource.Builder builder = null;
 		for(AreaResource resource : resources.values()){
@@ -216,7 +216,9 @@ public class AreaFightService extends FightService{
 			return ErrorConst.MAPINFO_ERROR;
 		if(builder.getStarttime() > redis.now())
 			return ErrorConst.JOIN_NOT_START;
-		if (builder.getState() == 0) {//刺杀
+		if (iskill) {//刺杀
+			if(builder.getState() != 0)
+				return ErrorConst.NOT_ENEMY;
 			if(user.getUnionId() != 0 && builder.hasOwner() && builder.getOwner().getUnionId() == user.getUnionId())
 				return ErrorConst.SAVE_UNION;
 			if(!ret){
@@ -242,7 +244,10 @@ public class AreaFightService extends FightService{
 			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user.getServerId());
 			redis.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
+			return SuccessConst.AREA_ATTACK_SUCCESS;
 		}else{
+			if(builder.getState() == 0)
+				return ErrorConst.JOIN_NOT_START;
 			if(builder.getStarttime() > redis.now())
 				return ErrorConst.JOIN_NOT_START;
 			if(builder.getClosetime() < redis.now())
@@ -257,8 +262,8 @@ public class AreaFightService extends FightService{
 			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user.getServerId());
 			redis.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
+			return SuccessConst.Add_AREA_FIGHT;
 		}
-		return SuccessConst.Add_AREA_FIGHT;
 	}
 	
 //	public ResultConst collectMine(Builder responseBuilder, int id, UserBean user){

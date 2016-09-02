@@ -288,25 +288,25 @@ public class AreaRedisService extends RedisService{
 	// }
 	
 	public Map<String, AreaMonster> getMonsters(UserBean user, List<Integer> positionids){
+		Map<String, String> value2Map = this.hget(AREABOSS+user.getServerId());
+		for(Entry<String, String> entry : value2Map.entrySet()){
+			AreaBoss.Builder builder = AreaBoss.newBuilder();
+			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
+				positionids.add(builder.getPositionid());
+			}
+		}
 		String key = AREAMONSTER+user.getId();
 		Map<String, AreaMonster> monsters= new HashMap<String, AreaMonster>();
 		Map<String, String> valueMap = this.hget(key);
 		Map<Integer, Integer> monstercount = new HashMap<Integer, Integer>();
 		for(Entry<String, String> entry : valueMap.entrySet()){
 			AreaMonster.Builder builder = AreaMonster.newBuilder();
-			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
+			if(entry.getValue() != null && parseJson(entry.getValue(), builder) && !positionids.contains(builder.getPositionid())) {
 				positionids.add(builder.getPositionid());
 				monsters.put(entry.getKey(), builder.build());
 				int id = builder.getBelongto()*100+builder.getLevel1();
 				int count = monstercount.containsKey(id) ? monstercount.get(id) : 0;
 				monstercount.put(id, count+1);
-			}
-		}
-		Map<String, String> value2Map = this.hget(AREABOSS+user.getServerId());
-		for(Entry<String, String> entry : value2Map.entrySet()){
-			AreaBoss.Builder builder = AreaBoss.newBuilder();
-			if(entry.getValue() != null && parseJson(entry.getValue(), builder)){
-				positionids.add(builder.getPositionid());
 			}
 		}
 		AreaRefreshList timelist = getMonsterRandConfig();
