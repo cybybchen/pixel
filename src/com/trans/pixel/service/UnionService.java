@@ -67,6 +67,7 @@ public class UnionService extends FightService{
 				for(UserBean bean : beans){
 					memberIds.add(bean.getId());
 					members.add(bean.buildShort());
+					userService.cache(bean.getServerId(), bean.buildShort());
 				}
 				redis.saveMembers(memberIds, user);
 				union = builder.build();
