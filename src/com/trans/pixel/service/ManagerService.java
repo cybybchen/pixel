@@ -1395,11 +1395,64 @@ public class ManagerService extends RedisService{
 		// 	Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + ":" + RedisKey.LADDER_RANK_INFO);
 		// 	result.put("ladderRankInfo", map);
 		// }
+		if(req.containsKey("update-areaBoss") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(AREABOSS+serverId);
+			JSONObject object = JSONObject.fromObject(req.get("update-areaBoss"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(AREABOSS+serverId, key);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-areaBoss", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(AREABOSS+serverId, map);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-areaBoss", map.toString());
+			}
+			
+			req.put("areaBoss", 1);
+		}else if(req.containsKey("del-areaBoss") && gmaccountBean.getCanwrite() == 1){
+			delete(AREABOSS+serverId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-areaBoss", "");
+			req.put("areaBoss", 1);
+		}
 		if(req.containsKey("areaBoss")){
 			Map<String, String> map = hget(AREABOSS+serverId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("areaBoss", object);
+		}
+
+		if(req.containsKey("update-areaResource") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(AREARESOURCE+serverId);
+			JSONObject object = JSONObject.fromObject(req.get("update-areaResource"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(AREARESOURCE+serverId, key);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-areaResource", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(AREARESOURCE+serverId, map);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-areaResource", map.toString());
+			}
+			
+			req.put("areaResource", 1);
+		}else if(req.containsKey("del-areaResource") && gmaccountBean.getCanwrite() == 1){
+			delete(AREARESOURCE+serverId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-areaResource", "");
+			req.put("areaResource", 1);
 		}
 		if(req.containsKey("areaResource")){
 			Map<String, String> map = hget(AREARESOURCE+serverId);
@@ -1407,11 +1460,32 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("areaResource", object);
 		}
-		if(req.containsKey("areaResourceMine")){
-			Map<String, String> map = hget(AREARESOURCEMINE+serverId);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("areaResourceMine", object);
+
+		if(req.containsKey("update-unionList") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + serverId);
+			JSONObject object = JSONObject.fromObject(req.get("update-unionList"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + serverId, key);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-unionList", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + serverId, map);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-unionList", map.toString());
+			}
+			
+			req.put("unionList", 1);
+		}else if(req.containsKey("del-unionList") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + serverId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-unionList", "");
+			req.put("unionList", 1);
 		}
 		if(req.containsKey("unionList")){
 			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.UNION_SERVER_PREFIX + serverId);

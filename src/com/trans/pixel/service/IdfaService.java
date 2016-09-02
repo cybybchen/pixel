@@ -8,13 +8,16 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.IdfaBean;
 import com.trans.pixel.model.mapper.IdfaMapper;
+import com.trans.pixel.service.crontab.LogCrontabService;
 
 @Service
 public class IdfaService {
+	private Logger log = Logger.getLogger(LogCrontabService.class);
 
 	@Resource
 	private IdfaMapper idfaMapper;
@@ -58,7 +61,7 @@ public class IdfaService {
 	
 	private void idfaecall(String callback) {
 		String urlStr = callback;
-		// logger.info("urlStr is:" + urlStr);
+		 log.info("urlStr is:" + urlStr);
 //		InputStream is = null;
 		
 		URL url;
