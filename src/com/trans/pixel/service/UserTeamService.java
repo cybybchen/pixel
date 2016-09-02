@@ -149,7 +149,7 @@ public class UserTeamService {
 		UserBean user = userService.getOther(userid);
 		if (user == null) {
 			user = new UserBean();
-			user.init(1, "someone", "someone", 0);
+			user.init(1, "someone", "某人", 0);
 		}
 		team.setUser(user.buildShort());
 		Team currentTeam = getTeam(user, 1000);
@@ -166,7 +166,7 @@ public class UserTeamService {
 		UserBean user = userService.getOther(userid);
 		if (user == null) {
 			user = new UserBean();
-			user.init(1, "someone", "someone", 0);
+			user.init(1, "someone", "某人", 0);
 		}
 		team.setUser(user.buildShort());
 		if(team.getHeroInfoCount() == 0){

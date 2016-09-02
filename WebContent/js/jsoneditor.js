@@ -243,6 +243,12 @@ function buildUserJson(key, value){
             json["mailList6"] = 1;
             json["mailList7"] = 1;
             json["friendList"] = 1;
+            json["DAILYSHOP"] = 1;
+            json["BLACKSHOP"] = 1;
+            json["UNIONSHOP"] = 1;
+            json["PVPSHOP"] = 1;
+            json["EXPEDITIONSHOP"] = 1;
+            json["LADDERSHOP"] = 1; 
         }
     }
     return json;
@@ -346,24 +352,24 @@ function appendUserDatas(message, dirty){
     if(message["friendList"]!=null){
         appendUserData("friendList", message["friendList"]);
     }
-    // if(message["DAILYSHOP"]!=null){
-    //     appendUserData("DAILYSHOP", message["DAILYSHOP"]);
-    // }
-    // if(message["BLACKSHOP"]!=null){
-    //     appendUserData("BLACKSHOP", message["BLACKSHOP"]);
-    // }
-    // if(message["UNIONSHOP"]!=null){
-    //     appendUserData("UNIONSHOP", message["UNIONSHOP"]);
-    // }
-    // if(message["PVPSHOP"]!=null){
-    //     appendUserData("PVPSHOP", message["PVPSHOP"]);
-    // }
-    // if(message["EXPEDITIONSHOP"]!=null){
-    //     appendUserData("EXPEDITIONSHOP", message["EXPEDITIONSHOP"]);
-    // }
-    // if(message["LADDERSHOP"]!=null){
-    //     appendUserData("LADDERSHOP", message["LADDERSHOP"]);
-    // }
+    if(message["DAILYSHOP"]!=null){
+        appendUserData("DAILYSHOP", message["DAILYSHOP"]);
+    }
+    if(message["BLACKSHOP"]!=null){
+        appendUserData("BLACKSHOP", message["BLACKSHOP"]);
+    }
+    if(message["UNIONSHOP"]!=null){
+        appendUserData("UNIONSHOP", message["UNIONSHOP"]);
+    }
+    if(message["PVPSHOP"]!=null){
+        appendUserData("PVPSHOP", message["PVPSHOP"]);
+    }
+    if(message["EXPEDITIONSHOP"]!=null){
+        appendUserData("EXPEDITIONSHOP", message["EXPEDITIONSHOP"]);
+    }
+    if(message["LADDERSHOP"]!=null){
+        appendUserData("LADDERSHOP", message["LADDERSHOP"]);
+    }
 }
 
 //////////////server/////////////////

@@ -341,7 +341,7 @@ public class UserService {
 			UserInfo.Builder builder = UserInfo.newBuilder();
 			builder.setId(userId);
 			builder.setIcon(1);
-			builder.setName("someone");
+			builder.setName("某人");
 			userinfo = builder.build();
 		}
 		return userinfo;
