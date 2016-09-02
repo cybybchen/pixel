@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -43,20 +44,25 @@ public class IdfaAction {
 	       //读取HTTP请求内容
 	       while ((buffer = br.readLine()) != null) {
 	    	   //在页面中显示读取到的请求参数
-	    	   sb.append(buffer+"\n");
+	    	   sb.append(buffer);
 	       }
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("input hegame recall error:" + e);
 		}
 	   
-      logger.warn(sb.toString());
-      String[] idfas = sb.toString().split(",");
+		logger.warn(sb.toString());
+		String[] idfas;
 		JSONObject json = new JSONObject();
-		for (String idfa : idfas) {
-			json.put(idfa, idfaService.queryIdfa(idfa));
+		try {
+			idfas = java.net.URLDecoder.decode(sb.toString(), "utf-8").substring(5).split(",");
+			for (String idfa : idfas) {
+				json.put(idfa, idfaService.queryIdfa(idfa));
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
-		
+
 		return json.toString();
 	}
 	
