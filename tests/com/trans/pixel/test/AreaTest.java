@@ -21,7 +21,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class AreaTest extends BaseTest {
 	@Test
-	public void testArea() {
+	public void test() {
 		login();
 		testGetArea();
 //		testAreaBoss();

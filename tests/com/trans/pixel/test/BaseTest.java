@@ -113,10 +113,10 @@ public class BaseTest {
 		return builder.build();
     }
     
-//    @Test
-//    public void test(){
-//    	login();
-//    }
+    @Test
+    public void test(){
+    	login();
+    }
     
 	public ResponseCommand login() {
 		return login(getRequestCommand());

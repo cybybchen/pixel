@@ -30,8 +30,8 @@ public class IdfaService {
 		Object ret = idfaMapper.queryIdfa(idfa);
 		if (ret == null)
 			return 0;
-		else 
-			return 1;
+		IdfaBean idfaBean = (IdfaBean) ret;
+		return idfaBean.getIsRecall();
 	}
 	
 	public void updateIdfaStatus(String idfa) {
