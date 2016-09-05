@@ -26,6 +26,8 @@ public class UserHeroService {
 	private UserPokedeService userPokedeService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private SkillService skillService;
 	
 	public HeroInfoBean selectUserHero(long userId, long infoId) {
 		HeroInfoBean userHero = userHeroRedisService.selectUserHero(userId, infoId);
@@ -112,8 +114,12 @@ public class UserHeroService {
 	}
 	
 	public void addUserHero(UserBean user, int heroId, int star, int count) {
+		addUserHero(user, heroId, star, count, 1);
+	}
+	
+	public void addUserHero(UserBean user, int heroId, int star, int count, int rare) {
 		long userId = user.getId();
-		HeroInfoBean newHero = initUserHero(userId, heroId, star);
+		HeroInfoBean newHero = initUserHero(userId, heroId, star, rare);
 		HeroInfoBean oldHero = selectUserHeroByHeroId(userId, heroId);
 		if (oldHero == null) {
 			/**
@@ -132,9 +138,10 @@ public class UserHeroService {
 		userService.updateUser(user);
 	}
 	
-	private HeroInfoBean initUserHero(long userId, int heroId, int star) {
-		HeroInfoBean userHero = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), star);
+	private HeroInfoBean initUserHero(long userId, int heroId, int star, int rare) {
+		HeroInfoBean userHero = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), star, rare);
 		userHero.setUserId(userId);
+		skillService.unlockHeroSkill(heroId, userHero);
 		
 		return userHero;
 	}

@@ -252,13 +252,17 @@ public class HeroInfoBean {
 	}
 	
 	public static HeroInfoBean initHeroInfo(HeroBean hero, int star) {
+		return initHeroInfo(hero, star, 1);
+	}
+	
+	public static HeroInfoBean initHeroInfo(HeroBean hero, int star, int rare) {
 		HeroInfoBean heroInfo = new HeroInfoBean();
 		heroInfo.setId(0);
 		heroInfo.setHeroId(hero.getId());
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(star);
 		heroInfo.setValue(0);
-		heroInfo.setRare(1);
+		heroInfo.setRare(rare);
 		heroInfo.setLock(false);
 		heroInfo.setEquipInfo(initEquipInfo(hero));
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");

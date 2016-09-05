@@ -246,6 +246,9 @@ public class RedisKey {
 	//hero choice config
 	public static final String HERO_CHOICE_CONFIG = PREFIX + CONFIG_PREFIX + "hero_choice";
 	
+	//hero loot config
+	public static final String HERO_LOOT_CONFIG = PREFIX + CONFIG_PREFIX + "hero_loot";
+	
 	//notice prefix
 	public static final String NOTICE_PREFIX = PREFIX + "notice_";
 	

@@ -1280,6 +1280,18 @@ message Strengthen {
 	optional int32 success = 5;
 }
 
+message HerolootList {
+	repeated Heroloot hero = 1;
+}
+
+message Heroloot {
+	optional int32 itemid = 1;
+	optional int32 heroid = 2;
+	optional int32 star = 3;
+	optional int32 count = 4;
+	optional int32 rare = 5;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

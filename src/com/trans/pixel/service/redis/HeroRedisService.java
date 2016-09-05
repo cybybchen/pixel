@@ -22,11 +22,15 @@ import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.protoc.Commands.HeroChoice;
 import com.trans.pixel.protoc.Commands.HeroChoiceList;
+import com.trans.pixel.protoc.Commands.Heroloot;
+import com.trans.pixel.protoc.Commands.HerolootList;
 
 @Repository
 public class HeroRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(HeroRedisService.class);
 	private static final String HEROCHOICE_FILE_NAME = "lol_herochoice.xml";
+	private static final String HEROLOOT_FILE_NAME = "lol_heroloot.xml";
+	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
@@ -105,6 +109,7 @@ public class HeroRedisService extends RedisService {
 		return heroList;
 	}
 	
+	//hero choice
 	public HeroChoice getHerochoice(int heroId) {
 		String value = hget(RedisKey.HERO_CHOICE_CONFIG, "" + heroId);
 		if (value == null) {
@@ -151,6 +156,57 @@ public class HeroRedisService extends RedisService {
 		Map<String, HeroChoice> map = new HashMap<String, HeroChoice>();
 		for(HeroChoice.Builder herochoice : builder.getIdBuilderList()){
 			map.put("" + herochoice.getHeroid(), herochoice.build());
+		}
+		return map;
+	}
+	
+	//hero loot
+	public Heroloot getHeroloot(int heroId) {
+		String value = hget(RedisKey.HERO_LOOT_CONFIG, "" + heroId);
+		if (value == null) {
+			Map<String, Heroloot> herolootConfig = getHerolootConfig();
+			return herolootConfig.get("" + heroId);
+		} else {
+			Heroloot.Builder builder = Heroloot.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	private Map<String, Heroloot> getHerolootConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.HERO_LOOT_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, Heroloot> map = buildHerolootConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Heroloot> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.HERO_LOOT_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, Heroloot> map = new HashMap<String, Heroloot>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Heroloot.Builder builder = Heroloot.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Heroloot> buildHerolootConfig(){
+		String xml = ReadConfig(HEROLOOT_FILE_NAME);
+		HerolootList.Builder builder = HerolootList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + HEROLOOT_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Heroloot> map = new HashMap<String, Heroloot>();
+		for(Heroloot.Builder heroloot : builder.getHeroBuilderList()){
+			map.put("" + heroloot.getItemid(), heroloot.build());
 		}
 		return map;
 	}

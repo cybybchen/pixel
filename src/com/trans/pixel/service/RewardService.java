@@ -14,8 +14,10 @@ import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
+import com.trans.pixel.protoc.Commands.Heroloot;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.service.redis.HeroRedisService;
 
 @Service
 public class RewardService {
@@ -42,6 +44,8 @@ public class RewardService {
 	private UserFoodService userFoodService;
 	@Resource
 	private ShopService shopService;
+	@Resource
+	private HeroRedisService heroRedisService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getOther(userId);
@@ -87,9 +91,10 @@ public class RewardService {
 		} else if (rewardId > RewardConst.HEAD) {
 			userHeadService.addUserHead(user, rewardId);
 		} else if (rewardId > RewardConst.HERO) {
-			int star = (rewardId % RewardConst.HERO) / RewardConst.HERO_STAR;
-			int heroId = rewardId % RewardConst.HERO_STAR;
-			userHeroService.addUserHero(user, heroId, star, (int)rewardCount);
+			Heroloot heroloot = heroRedisService.getHeroloot(rewardId);
+//			int star = (rewardId % RewardConst.HERO) / RewardConst.HERO_STAR;
+//			int heroId = rewardId % RewardConst.HERO_STAR;
+			userHeroService.addUserHero(user, heroloot.getHeroid(), heroloot.getStar(), (int)(heroloot.getCount() * rewardCount), heroloot.getRare());
 		} else if (rewardId > RewardConst.PACKAGE) {
 			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {
