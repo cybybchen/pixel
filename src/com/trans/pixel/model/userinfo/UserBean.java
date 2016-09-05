@@ -995,7 +995,7 @@ public class UserBean {
 		setFreeContractTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (70 - 1)));
 		return this;
 	}
-	public UserInfo buildShort() {
+	public UserInfo buildShort(boolean isme) {
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		builder.setId(id);
 //		builder.setAccount(account);
@@ -1003,12 +1003,19 @@ public class UserBean {
 		builder.setName(name);
 //		builder.setServerId(serverId);
 		builder.setVip(vip);
-		builder.setZhanli(zhanliMax);
+		if(isme)
+			builder.setZhanli(zhanli);
+		else
+			builder.setZhanli(zhanliMax);
 		builder.setUnionId(unionId);
 		builder.setUnionName(unionName);
 		builder.setUnionJob(unionJob);
 		builder.setLastLoginTime(lastLoginTime);
 		return builder.build();
+	}
+
+	public UserInfo buildShort() {
+		return buildShort(false);
 	}
 	
 	public UserInfo buildUnionShort() {

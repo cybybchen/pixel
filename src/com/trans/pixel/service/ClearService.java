@@ -132,6 +132,10 @@ public class ClearService {
 		
 		return SuccessConst.HERO_STRENGTHEN_FAILED_SUCCESS;
 	}
+
+	public Strengthen getStrengthen(int id) {
+		return clearRedisService.getStrengthen(id);
+	}
 	
 	private boolean strengthenSuccess(int percent) {
 		return RandomUtils.nextInt(100) < percent;

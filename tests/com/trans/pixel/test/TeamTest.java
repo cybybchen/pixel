@@ -12,15 +12,20 @@ import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 
 public class TeamTest extends BaseTest {
-private static Logger logger = Logger.getLogger(TeamTest.class);
+//private static Logger logger = Logger.getLogger(TeamTest.class);
 	
 	@Test
+	public void test() {
+		login();
+		teamTest();
+	}
+	
 	public void teamTest() {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
 		RequestUpdateTeamCommand.Builder b = RequestUpdateTeamCommand.newBuilder();
 		b.setId(1);
-		b.setTeamInfo("10,1|2,3|");
+		b.setTeamInfo("42,1|");
 		builder.setUpdateTeamCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
@@ -28,5 +33,6 @@ private static Logger logger = Logger.getLogger(TeamTest.class);
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
         Assert.assertNotNull(response);
+        System.out.println(response.getAllFields());
 	}
 }

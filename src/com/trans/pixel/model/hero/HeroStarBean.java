@@ -40,7 +40,7 @@ public class HeroStarBean {
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
 		bean.setStarid(json.getInt(STARID));
-		bean.setStarvalue(json.getInt(STARVALUE));
+		bean.setStarvalue(TypeTranslatedUtil.stringToFloat(json.getString(STARVALUE)));
 
 		return bean;
 	}
@@ -52,7 +52,7 @@ public class HeroStarBean {
 			HeroStarBean heroStar = new HeroStarBean();
 			Element heroStarElement = (Element) elementList.get(i);
 			heroStar.setStarid(TypeTranslatedUtil.stringToInt(heroStarElement.attributeValue(STARID)));
-			heroStar.setStarvalue(TypeTranslatedUtil.stringToInt(heroStarElement.attributeValue(STARVALUE)));
+			heroStar.setStarvalue(TypeTranslatedUtil.stringToFloat(heroStarElement.attributeValue(STARVALUE)));
 			heroStarList.add(heroStar);
 		}
 		

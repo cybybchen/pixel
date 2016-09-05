@@ -192,7 +192,7 @@ public class UserCommandService extends BaseCommandService {
 			break;
 		}
 		
-		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, composeSkill);
+		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, composeSkill, null);
 		// userTeamService.updateUserTeam(user.getId(), 2, "", "");
 		// userTeamService.updateUserTeam(user.getId(), 3, "", "");
 		// userTeamService.updateUserTeam(user.getId(), 4, "", "");

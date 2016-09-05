@@ -1,20 +1,18 @@
 package com.trans.pixel.service.command;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserPokedeService;
@@ -48,8 +46,11 @@ public class TeamCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 		}else
-			userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill);
+			userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill, user);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
+		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
+		builder.setUser(user.build());
+		responseBuilder.setUserInfoCommand(builder.build());
 	}
 	
 //	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {

@@ -5,8 +5,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.EquipmentBean;
+import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -14,12 +17,15 @@ import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
+import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.TeamUnlock;
 import com.trans.pixel.service.redis.UserTeamRedisService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserTeamService {
+	private static Logger log = Logger.getLogger(UserTeamService.class);
 	@Resource
 	private UserTeamRedisService userTeamRedisService;
 	@Resource
@@ -33,9 +39,13 @@ public class UserTeamService {
 	@Resource
 	private HeroService heroService;
 	@Resource
+	private ClearService clearService;
+	@Resource
 	private UserClearService userClearService;
 	@Resource
 	private UserPokedeService userPokedeService;
+	@Resource
+	private EquipService equipService;
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
 	// 	UserTeamBean userTeam = new UserTeamBean();
@@ -51,10 +61,10 @@ public class UserTeamService {
 	public void delUserTeam(long userId, int id) {
 		// userTeamMapper.delUserTeam(id);
 		// userTeamRedisService.delUserTeam(userId, id);
-		updateUserTeam(userId, id, "", "");
+		updateUserTeam(userId, id, "", "", null);
 	}
 	
-	public void updateUserTeam(long userId, int id,  String record, String composeSkill) {
+	public void updateUserTeam(long userId, int id,  String record, String composeSkill, UserBean user) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setId(id);
 		userTeam.setUserId(userId);
@@ -62,6 +72,12 @@ public class UserTeamService {
 		userTeam.setComposeSkill(composeSkill);
 		userTeamRedisService.updateUserTeam(userTeam);
 //		userTeamMapper.updateUserTeam(userTeam);
+		if(user != null){
+			user.setCurrentTeamid(id);
+			Team team = getTeamCache(user);
+			user.setZhanliMax(Math.max(user.getZhanliMax(), team.getUser().getZhanli()));
+			userService.updateUser(user);
+		}
 	}
 
 	public void updateToDB(long userId, long id) {
@@ -93,20 +109,20 @@ public class UserTeamService {
 					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
 					break;
 				}
-				updateUserTeam(userId, 1, teamRecord, "");
+				updateUserTeam(userId, 1, teamRecord, "", null);
 				ids.add(1);
 			}else if(!ids.contains(1))
-				updateUserTeam(userId, 1, "", "");
+				updateUserTeam(userId, 1, "", "", null);
 			if(!ids.contains(2))
-				updateUserTeam(userId, 2, "", "");
+				updateUserTeam(userId, 2, "", "", null);
 			if(!ids.contains(3))
-				updateUserTeam(userId, 3, "", "");
+				updateUserTeam(userId, 3, "", "", null);
 			if(!ids.contains(4))
-				updateUserTeam(userId, 4, "", "");
+				updateUserTeam(userId, 4, "", "", null);
 			if(!ids.contains(5))
-				updateUserTeam(userId, 5, "", "");
+				updateUserTeam(userId, 5, "", "", null);
 			if(!ids.contains(1000))
-				updateUserTeam(userId, 1000, "", "");
+				updateUserTeam(userId, 1000, "", "", null);
 			userTeamList = userTeamRedisService.selectUserTeamList(userId);
 		}
 		
@@ -161,14 +177,37 @@ public class UserTeamService {
 	}
 
 	public Team getTeamCache(long userid){
-		Team.Builder team = userTeamRedisService.getTeamCache(userid);
-
 		UserBean user = userService.getOther(userid);
 		if (user == null) {
 			user = new UserBean();
 			user.init(1, "someone", "某人", 0);
+			user.setId(userid);
 		}
-		team.setUser(user.buildShort());
+		return getTeamCache(user);
+	}
+
+	public Team getTeamCache(UserBean user){
+		// Team.Builder team = userTeamRedisService.getTeamCache(user.getId());
+		// if (user == null) {
+		// 	user = new UserBean();
+		// 	user.init(1, "someone", "某人", 0);
+		// }
+		// team.setUser(user.buildShort());
+		// if(team.getHeroInfoCount() == 0){
+		// 	Team currentTeam = getTeam(user, user.getCurrentTeamid());
+		// 	team.mergeFrom(currentTeam);
+		// 	if(team.getHeroInfoCount() == 0){
+		// 		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
+		// 		team.addHeroInfo(heroInfo.buildRankHeroInfo());
+		// 	}
+		// 	// saveTeamCache(user, 0, team.build());
+		// }
+		// return team.build();
+
+		Team.Builder team = Team.newBuilder();
+		if(user.getId() <= 0){
+			team = userTeamRedisService.getTeamCache(user.getId());
+		}
 		if(team.getHeroInfoCount() == 0){
 			Team currentTeam = getTeam(user, user.getCurrentTeamid());
 			team.mergeFrom(currentTeam);
@@ -176,8 +215,39 @@ public class UserTeamService {
 				HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
 				team.addHeroInfo(heroInfo.buildRankHeroInfo());
 			}
-			saveTeamCache(user, 0, team.build());
+			// saveTeamCache(user, 0, team.build());
 		}
+		
+		int myzhanli = 0;
+		for (HeroInfo hero : team.getHeroInfoList()) {
+			HeroBean base = heroService.getHero(hero.getHeroId());
+			if (base == null)
+				continue;
+			int star = hero.getStar();
+			if (base.getStarList().size() < star)
+				star = base.getStarList().size();
+			int pre = 100;
+			Strengthen strengthen = clearService.getStrengthen(hero.getHeroId());
+			if (strengthen != null)
+				pre = 100 + strengthen.getZhanliPer();
+			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * hero.getLevel() * (hero.getLevel() + 1) / 2 * 0.8 + 75 * hero.getRare() * (hero.getRare() - 1) / 2;
+			log.debug(hero.getEquipInfo());
+			for(String equipid : hero.getEquipInfo().split("\\|")){
+				int id = TypeTranslatedUtil.stringToInt(equipid);
+				if(id == 0)
+					continue;
+				EquipmentBean equip = equipService.getEquip(id);
+				zhanli += equip.getZhanli();
+				log.debug(equip.getZhanli());
+			}
+			zhanli = zhanli * pre / 100;
+
+			myzhanli += zhanli;
+			 log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
+		}
+		user.setZhanli(myzhanli);
+		team.setUser(user.buildShort(true));
+		
 		return team.build();
 	}
 
@@ -186,11 +256,11 @@ public class UserTeamService {
 	}
 
 	public void saveTeamCache(UserBean user, long teamid, Team team){
-		if(teamid > 0){
-			user.setCurrentTeamid(teamid);
-			userService.updateUser(user);
-		}
-		userTeamRedisService.saveTeamCache(user, team);
+	// 	if(teamid > 0){
+	// 		user.setCurrentTeamid(teamid);
+	// 		userService.updateUser(user);
+	// 	}
+	// 	userTeamRedisService.saveTeamCache(user, team);
 	}
 
 	public List<HeroInfo> getProtoTeamCache(long userId) {
