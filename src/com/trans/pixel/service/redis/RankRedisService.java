@@ -24,7 +24,7 @@ public class RankRedisService extends RedisService{
 	}
 	
 	public void delZhanliRank(final int serverId, final long userId) {
-		this.zremove(RedisKey.ZHANLI_RANK+serverId, userId+"");
+		zremove(RedisKey.ZHANLI_RANK+serverId, userId+"");
 	}
 	
 	/**

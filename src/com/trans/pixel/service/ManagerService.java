@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.model.BlackListBean;
 import com.trans.pixel.model.GmAccountBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
@@ -87,6 +88,8 @@ public class ManagerService extends RedisService{
 	private MailService mailService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private BlackListService blackListService;
 
 	protected String getJson(String key) {
 		String value = get(key);
@@ -260,6 +263,7 @@ public class ManagerService extends RedisService{
 		Long userId = TypeTranslatedUtil.jsonGetLong(req, "userId");
 		String userName = TypeTranslatedUtil.jsonGetString(req, "userName");
 		String userAccount = "";
+		String idfa = "";
 		int serverId = TypeTranslatedUtil.jsonGetInt(req, "serverId");
 		if (userId == 0 && serverId == 0) {
 			result.put("error", "Empty userId and serverId!");
@@ -273,6 +277,7 @@ public class ManagerService extends RedisService{
 			}
 			userName = user.getUserName();
 			userAccount = user.getAccount();
+			idfa = user.getIdfa();
 			serverId = user.getServerId();
 		}else if(userId == 0 && serverId != 0 && !userName.isEmpty()){
 			UserBean user = userService.getUserByName(serverId, userName);
@@ -281,6 +286,7 @@ public class ManagerService extends RedisService{
 				return result;
 			}
 			userAccount = user.getAccount();
+			idfa = user.getIdfa();
 			userId = user.getId();
 		}
 		result.put("userId", userId);
@@ -362,6 +368,33 @@ public class ManagerService extends RedisService{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+
+		if(req.containsKey("update-BlackList") && gmaccountBean.getCanwrite() == 1){
+			JSONObject json = JSONObject.fromObject(req.get("update-BlackList").toString());
+			Object object = JSONObject.toBean(json, BlackListBean.class);
+			BlackListBean blacklist = (BlackListBean)object;
+			blacklist.setUserId(userId);
+			blacklist.setUserName(userName);
+			blacklist.setServerId(serverId);
+			blacklist.setAccount(userAccount);
+			blacklist.setIdfa(idfa);
+			blackListService.updateBlackList(blacklist);
+			// hput(RedisKey.PREFIX + RedisKey.BLACKLIST, blacklist.getUserId()+"", JSONObject.fromObject(blacklist).toString());
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-BlackList", JSONObject.fromObject(blacklist).toString());
+			req.put("BlackList", 1);
+		}else if(req.containsKey("del-BlackList") && gmaccountBean.getCanwrite() == 1){
+			String value = hget(RedisKey.PREFIX + RedisKey.BLACKLIST, req.get("del-BlackList").toString());
+			// hdelete(RedisKey.PREFIX + RedisKey.BLACKLIST, req.get("del-BlackList").toString());
+			blackListService.deleteBlackList(Integer.parseInt(req.get("del-BlackList").toString()));
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-BlackList", ""+value);
+			req.put("BlackList", 1);
+		}
+		if(req.containsKey("BlackList") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = blackListService.getBlackListMap();
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("BlackList", object);
 		}
 		
 		if(req.containsKey("del-RedisDatas")){

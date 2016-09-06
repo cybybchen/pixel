@@ -230,20 +230,20 @@ public class UserTeamService {
 			Strengthen strengthen = clearService.getStrengthen(hero.getHeroId());
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
+			log.debug(strengthen+" : "+pre);
 			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * hero.getLevel() * (hero.getLevel() + 1) / 2 * 0.8 + 75 * hero.getRare() * (hero.getRare() - 1) / 2;
-			log.debug(hero.getEquipInfo());
 			for(String equipid : hero.getEquipInfo().split("\\|")){
 				int id = TypeTranslatedUtil.stringToInt(equipid);
 				if(id == 0)
 					continue;
 				EquipmentBean equip = equipService.getEquip(id);
 				zhanli += equip.getZhanli();
-				log.debug(equip.getZhanli());
+				// log.debug(equip.getZhanli());
 			}
 			zhanli = zhanli * pre / 100;
 
 			myzhanli += zhanli;
-			 log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
+			  log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
 		}
 		user.setZhanli(myzhanli);
 		team.setUser(user.buildShort(true));

@@ -340,6 +340,18 @@ public class ActivityService {
 		sendKaifu2Score(user, type, 1);
 	}
 	
+	public void deleteKaifu2Score(long userId, int serverId, int type) {
+		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
+		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Kaifu2> entry = it.next();
+			Kaifu2 kaifu2 = entry.getValue();
+			if (isInKaifuActivityTime(kaifu2.getLasttime(), serverId) && kaifu2.getTargetid() == type) {
+				activityRedisService.deleteKaifu2Score(userId, serverId, kaifu2.getId(), kaifu2.getTargetid());
+			}
+		}
+	}
+	
 	public void sendKaifu2Score(UserBean user, int type, int score) {
 		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
 		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();

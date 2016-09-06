@@ -20,6 +20,9 @@ public class RedisKey {
 	public static final String SERVER_KAIFU_TIME = PREFIX + "server_kaifu_time";
 	public static final String VERSIONCONTROLLER_PREFIX = PREFIX + "VersionController";
 	public static final String GAME_VERSION_KEY = PREFIX + "game_version";
+	public final static String BLACKLIST = "BlackList";
+	public final static String BLACKLIST_ACCOUNT = "BlackList_Account";
+	public final static String BLACKLIST_IDFA = "BlackList_Idfa";
 	
 	//user key prefix
 	public final static String USER_PREFIX = "user_";

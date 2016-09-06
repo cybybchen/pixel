@@ -199,6 +199,11 @@ public class ActivityRedisService extends RedisService {
 		
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}
+
+	public void deleteKaifu2Score(long userId, int serverId, int id, int type) {
+		String key = buildKaifu2RankRedisKey(serverId, id);
+		zremove(key, "" + userId);
+	}
 	
 	public int getRankListSize(int serverId, int type) {
 		String key = buildKaifu2RankRedisKey(serverId, type);

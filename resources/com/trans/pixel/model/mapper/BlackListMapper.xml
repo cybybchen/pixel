@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.BlackListMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.BlackListBean">
+		<id property="userId" column="userid" />
+		<result property="userName" column="username" />
+		<result property="serverId" column="serverid" />
+		<result property="account" column="account" />
+		<result property="idfa" column="idfa" />
+		<result property="notalk" column="notalk" />
+		<result property="noranklist" column="noranklist" />
+		<result property="nologin" column="nologin" />
+		<result property="noaccount" column="noaccount" />
+		<result property="noidfa" column="noidfa" />
+	</resultMap>
+
+	<select id="selectBlackListById" resultMap="resultMap">
+	    SELECT * from blacklist where userid=#{userId}
+	</select>
+
+	<delete id="deleteBlackList" resultMap="resultMap">
+	    DELETE from blacklist where userid=#{userId}
+	</delete>
+
+	<select id="selectBlackLists" resultMap="resultMap">
+	    SELECT * from blacklist where 1
+	</select>
+	
+	<update id="updateBlackList" parameterType="com.trans.pixel.model.BlackListBean">
+		INSERT INTO blacklist(userid, username, serverid, account, idfa, notalk, noranklist, nologin, noaccount, noidfa)
+	    VALUES(#{userId}, #{userName}, #{serverId}, #{account}, #{idfa}, #{notalk}, #{noranklist}, #{nologin}, #{noaccount}, #{noidfa})
+		ON 
+	    duplicate key update
+	    username=#{userName}, serverid=#{serverId}, account=#{account}, idfa=#{idfa}, notalk=#{notalk}, noranklist=#{noranklist}, nologin=#{nologin}, noaccount=#{noaccount}, noidfa=#{noidfa}
+	</update>
+	
+</mapper>

@@ -669,6 +669,8 @@ function buildConfigJson(key, value){
             json["HeroRareConfig"] = "{}";
         }else if(datatype == "cdkey"){
             json["Cdkey"] = "{}";
+        }else if(datatype == "blacklist"){
+            json["BlackList"] = "{}";
         }else if(datatype == "delete"){
             json["DeleteData"] = "{}";
         }else if(datatype == "gmright"){
@@ -941,6 +943,16 @@ function appendConfigDatas(message, visible){
     }else{
     	$("#config-cdkey").hide();
     }
+    if(message["BlackList"]!=null){
+        $("#config-blacklist").show();
+        showBlackListTable(message["BlackList"]);
+        
+        $("#table-blacklist-popup-popup :checkbox").on('click', function() {
+            toggleBlackListTable(this);
+        });
+    }else{
+        $("#config-blacklist").hide();
+    }
     if(message["RedisData"]!=null){
     	$("#config-redisdata").show();
     	addRedisDatas(message["RedisData"]);
@@ -1041,6 +1053,82 @@ function updateCdkeyUrl(dom){
 	var value = $(dom).val();
 	var form = $(dom).parent().parent().parent();
 	form.attr("action", "cdkey"+value+".txt");
+}
+
+
+function showBlackListTable(json){
+    var table = $("#table-blacklist tbody");
+    var dom = table.find("tr");
+    var jsonlength = Object.keys(json).length;
+    for (var i = dom.length - 1; i > 0; i--) {
+        dom[i].remove();
+    };
+    for (var i = 1; i < jsonlength; i++) {
+        table.append($(dom[0]).clone());
+    };
+    dom = table.find("tr");
+    var index = jsonlength-1;
+    $.each(json, function (key, value) {
+        var children = $(dom[index]).children();
+        $(children[0]).html(key);
+        $(children[1]).html(value["userName"]);
+        $(children[2]).html(value["serverId"]);
+        $(children[3]).html(value["account"]);
+        $(children[4]).html(value["idfa"]);
+        $(children[5]).html(value["notalk"] ? "√" : "×");
+        $(children[6]).html(value["noranklist"] ? "√" : "×");
+        $(children[7]).html(value["nologin"] ? "√" : "×");
+        $(children[8]).html(value["noaccount"] ? "√" : "×");
+        $(children[9]).html(value["noidfa"] ? "√" : "×");
+        index--;
+    });
+}
+
+function toggleBlackListTable(checkbox){
+    var name = $(checkbox).prev().text();
+    var tr = $("#table-blacklist thead tr th");
+    var th = 3;
+    var ischecked = $(checkbox).is(":checked");
+    for(var i = 0; i < tr.length; i++){
+        if($(tr[i]).text() == name)
+            th = i;
+    }
+    $.each($("#table-blacklist tbody tr"), function () {
+        var children = $(this).children();
+        if(ischecked){
+            $(children[th]).removeClass("ui-table-cell-hidden");
+            $(children[th]).addClass("ui-table-cell-visible");
+        }else{
+            $(children[th]).removeClass("ui-table-cell-visible");
+            $(children[th]).addClass("ui-table-cell-hidden");
+        }
+    });
+}
+
+//function addBlackList(){
+//  var json = {};
+//  json["id"] = Number($("#blacklist-form input[name='id']").val());
+//  json["name"] = $("#blacklist-form input[name='name']").val();
+//  json["reward"] = $("#blacklist-form input[name='reward']").val();
+//  json["count"] = Number($("#blacklist-form input[name='count']").val());
+//  updateConfigJson(buildConfigJson("add-BlackList", json));
+//}
+
+//function delBlackList(dom){
+//  var key = $(dom).parent().parent().find("th:first").text();
+//  updateConfigJson(buildConfigJson("del-BlackList", key));
+//}
+
+function configBlackList(dom){
+    var children = $(dom).children();
+    $("#blacklist-form input[name='userid']").val($(children[0]).text());
+    $("#blacklist-form input[name='username']").val($(children[1]).text());
+    $("#blacklist-form input[name='serverid']").val($(children[2]).text());
+    $("#blacklist-form input[name='blacklist-notalk']").val($(children[5]).text());
+    $("#blacklist-form input[name='blacklist-ranklist']").val($(children[6]).text());
+    $("#blacklist-form input[name='blacklist-login']").val($(children[7]).text());
+    $("#blacklist-form input[name='blacklist-account']").val($(children[8]).text());
+    $("#blacklist-form input[name='blacklist-idfa']").val($(children[9]).text());
 }
 
 function getRedisData(){
@@ -1185,6 +1273,9 @@ $(document).ready(function() {
         if(json.hasOwnProperty("Cdkey")){
         	json = buildConfigJson("Cdkey", "{}");
         	updateConfigJson(json);
+        }else if(json.hasOwnProperty("BlackList")){
+            json = buildConfigJson("BlackList", "{}");
+            updateConfigJson(json);
         }else if(json.hasOwnProperty("DeleteData")){
         	$("#selectAllData").attr("checked",false).checkboxradio("refresh");
         	$("#redisdata-keys").val("pixel:config*");
@@ -1203,6 +1294,40 @@ $(document).ready(function() {
     	updateConfigJson(json);
     });
     $("#cdkey-session").val(session);
+    $("#table-blacklist").on('click', ".del-btn", function() {
+        var userid = $(this).parent().parent().find("th:first").text();
+        var json = buildConfigJson("del-BlackList", userid);
+        updateConfigJson(json);
+    });
+     $('#blacklist-form').submit(function(e) {
+        e.preventDefault();
+        var data = {};
+        data["notalk"] =  $('input[name="notalk"]:visible').is(':checked');
+        data["noranklist"] =  $('input[name="noranklist"]:visible').is(':checked');
+        data["nologin"] =  $('input[name="nologin"]:visible').is(':checked');
+        data["noaccount"] =  $('input[name="noaccount"]:visible').is(':checked');
+        data["noidfa"] =  $('input[name="noidfa"]:visible').is(':checked');
+        var json = buildConfigJson("update-BlackList", data);
+        json["userId"] =  Number($('input[name="userid"]:visible').val());
+        json["userName"] =  $('input[name="username"]:visible').val();
+        json["serverId"] =  Number($('input[name="serverid"]:visible').val());
+        updateConfigJson(json);
+        // $.ajax({
+        // type: "POST",
+        // url: "datamanager",
+        // contentType: "application/json; charset=utf-8",
+        // data: $('#blacklist-form').serialize(),
+        // dataType: "json",
+        // success: function (message) {
+        //     // json = message;
+        //     showBlackListTable(message);
+        // },
+        // error: function (XMLHttpRequest, textStatus, errorThrown) {
+        //     alert("提交数据失败："+XMLHttpRequest.status);
+        //     showReloadBtn();
+        // }
+    // });
+     });
 //    $('.json').val(JSON.stringify(json));
 //    $('.json-editor').jsonEditor(json, { change: updateJSON, propertyclick: showPath });
 });

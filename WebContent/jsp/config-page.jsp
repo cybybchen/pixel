@@ -11,6 +11,7 @@
 			<li ><a href="#" data-type="cdkey">cdkey</a></li>
 			<li ><a href="#" data-type="delete">删除数据(慎用)</a></li>
 			<li ><a href="#" data-type="gmright">管理GM账号</a></li>
+			<li ><a href="#" data-type="blacklist">封号</a></li>
 			<li data-theme="b"><a href="#user-page">用户</a></li>
 			<li data-theme="b"><a href="#server-page">服务器</a></li>
 
@@ -80,6 +81,80 @@
 			</div>
 		    <div data-role="controlgroup" id="data-controlgroup"><!-- items will be injected here --></div>
 		    </div>
+		</div>
+		<div id="config-blacklist" style="display:none;">
+		<form id="blacklist-form">
+			<div class="ui-grid-a ui-responsive">
+			    <div class="ui-block-a">
+					<div class="ui-field-contain" style="margin:7px 0 -17px;padding:0 5px;">
+					    <label for="blacklist-notalk">禁言</label>
+					    <input name="notalk" id="blacklist-notalk" type="checkbox">
+					</div>
+					<div class="ui-field-contain" style="margin:-17px 0;padding:0 5px;">
+					    <label for="blacklist-noranklist">排行榜</label>
+					    <input name="noranklist" id="blacklist-noranklist" type="checkbox">
+					</div>
+					<div class="ui-field-contain" style="margin:-17px 0;padding:0 5px;">
+					    <label for="blacklist-nologin">禁登陆</label>
+					    <input name="nologin" id="blacklist-nologin" type="checkbox">
+					</div>
+					<div class="ui-field-contain" style="margin:-17px 0;padding:0 5px;">
+					    <label for="blacklist-noaccount">禁账号</label>
+					    <input name="noaccount" id="blacklist-noaccount" type="checkbox">
+					</div>
+					<div class="ui-field-contain" style="margin:-17px 0;padding:0 5px;">
+					    <label for="blacklist-noidfa">禁设备</label>
+					    <input name="noidfa" id="blacklist-noidfa" type="checkbox">
+					</div>
+				</div>
+				<div class="ui-block-b" style="padding:0 5px;">
+					<div class="ui-field-contain">
+					    <label for="blacklist-userid">UserId:</label>
+					    <input name="userid" id="blacklist-userid" value="" type="text">
+					</div>
+					<div class="ui-field-contain">
+					    <label for="blacklist-username">UserName:</label>
+					    <input name="username" id="blacklist-username" value="礼包" type="text">
+					</div>
+					<div class="ui-field-contain">
+					    <label for="blacklist-serverid">ServerId:</label>
+					    <input name="serverid" id="blacklist-serverid" value="8" type="text">
+					</div>
+					<input type="submit" value="更新黑名单" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-delete">
+				</div>
+		</form>
+		<table data-role="table" id="table-blacklist" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="选择列">
+			<thead>
+				<tr class="ui-bar-d">
+					<th data-priority="4">UserId</th>
+					<th data-priority="2">昵称</th>
+					<th data-priority="5">Server</th>
+					<th data-priority="5">account</th>
+					<th data-priority="5">idfa</th>
+					<th data-priority="3">禁言</th>
+					<th data-priority="3">排行</th>
+					<th data-priority="3">登陆</th>
+					<th data-priority="3">账号</th>
+					<th data-priority="3">设备</th>
+					<th data-priority="1">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr onclick="configBlackList(this)">
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<td><a href="#"  class="del-btn table-btn ui-btn ui-btn-inline">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
 		</div>
 		<div id="config-editor">
 		</div>
