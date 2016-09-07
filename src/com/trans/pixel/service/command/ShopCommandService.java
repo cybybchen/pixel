@@ -61,6 +61,7 @@ import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RedisService;
@@ -86,6 +87,8 @@ public class ShopCommandService extends BaseCommandService{
 	private LadderRedisService ladderRedisService;
 	@Resource
 	private PvpMapRedisService pvpMapRedisService;
+	@Resource
+	private AreaRedisService areaRedisService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -364,6 +367,10 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+		}else if(!areaRedisService.isAreaOpen(user, commbuilder.getJudge())){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_PVPCONDITION);
+			
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_PVPCONDITION));
 		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
 			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);

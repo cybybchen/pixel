@@ -63,6 +63,15 @@ public class AreaRedisService extends RedisService{
 	@Resource
 	private ServerRedisService serverRedisService;
 	
+	public boolean isAreaOpen(UserBean user, int areaId){
+		AreaMode.Builder arealist = getAreaMode(user);
+		for(AreaInfo area : arealist.getRegionList()){
+			if(area.getId() == areaId && area.getOpened())
+				return true;
+		}
+		return false;
+	}
+
 	public AreaMode.Builder getAreaMode(UserBean user) {
 		String value = this.hget(RedisKey.USERDATA+user.getId(), "Area");
 		AreaMode.Builder builder = AreaMode.newBuilder();
