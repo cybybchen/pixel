@@ -103,6 +103,7 @@ import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
+import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -154,6 +155,7 @@ import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
+import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 //add import here
 
 
@@ -376,6 +378,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBosskillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroStrengthenCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
@@ -1085,6 +1088,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//HeroStrengthenCommand
                 result = handleCommand(cmd, responseBuilder, user);//HeroStrengthenCommand
         }//HeroStrengthenCommand
+        if (request.hasSevenLoginSignCommand()) {
+            RequestSevenLoginSignCommand cmd = request.getSevenLoginSignCommand();
+            if (result)//SevenLoginSignCommand
+                result = handleCommand(cmd, responseBuilder, user);//SevenLoginSignCommand
+        }//SevenLoginSignCommand
         //call handleCommand here
         if (request.hasPurchaseContractCommand()) {
             RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();

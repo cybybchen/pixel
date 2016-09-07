@@ -186,6 +186,7 @@ public class RedisKey {
 	public static final String SIGN_KEY = PREFIX + CONFIG_PREFIX+"sign";
 	public static final String SIGN2_KEY = PREFIX + CONFIG_PREFIX + "sign2";
 	public static final String TOTAL_SIGN_KEY = PREFIX + CONFIG_PREFIX + "total_sign";
+	public static final String SEVEN_LOGIN_KEY = PREFIX + CONFIG_PREFIX + "seven_login";
 	
 	//mohua
 	public static final String MOHUA_MAP_KEY = PREFIX + CONFIG_PREFIX+"mohua_map";

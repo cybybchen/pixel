@@ -50,6 +50,8 @@ message UserInfo {
 	optional int32 failed = 59;
 	optional int32 purchaseContractLeft = 62;
 	optional int32 zhanliMax = 65;
+	optional int32 sevenLoginDays = 66;
+	optional int32 sevenSignStatus = 67;
 }
 
 message ServerData {
@@ -1325,6 +1327,24 @@ message Heroloot {
 	optional int32 rare = 5;
 }
 
+message SevenLoginList {
+	repeated SevenLogin seven = 1;
+}
+
+message SevenLogin {
+	optional int32 id = 1;
+	optional int32 targetid = 2;
+	optional int32 targetcount = 3;
+	repeated SevenOrder order = 4;
+}
+
+message SevenOrder {
+	optional int32 order = 1;
+	optional int32 itemid = 2;
+	optional int32 count = 3;
+	optional int32 choose = 4;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2243,6 +2263,11 @@ message RequestHeroStrengthenCommand {
 	required int32 heroId = 1;
 }
 
+message RequestSevenLoginSignCommand {
+	optional int32 day = 1;
+	optional int32 chooseId = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2381,6 +2406,7 @@ message RequestCommand {
 	optional RequestBosskillCommand bosskillCommand = 97;
 	optional RequestUnionBossFightCommand unionBossFightCommand = 98;
 	optional RequestHeroStrengthenCommand heroStrengthenCommand = 99;
+	optional RequestSevenLoginSignCommand sevenLoginSignCommand = 200;
 }
 // response command list transfer only use it
 message ResponseCommand {

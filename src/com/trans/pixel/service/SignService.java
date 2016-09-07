@@ -13,6 +13,8 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.SevenLogin;
+import com.trans.pixel.protoc.Commands.SevenOrder;
 import com.trans.pixel.protoc.Commands.Sign;
 import com.trans.pixel.service.redis.SignRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -28,6 +30,8 @@ public class SignService {
 	private UserService userService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private LogService logService;
 	
 	public List<RewardBean> sign(UserBean user) {
 		if (!canSign(user))
@@ -49,6 +53,63 @@ public class SignService {
 		 * send log
 		 */
 		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, 0, user.getTotalSignCount());
+		
+		return rewardList;
+	}
+	
+	public List<RewardBean> sevenSign(UserBean user) {
+		if (!canSign(user))
+			return null;
+		
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		user.setSignCount(user.getSignCount() + 1);
+		user.setTotalSignCount(user.getTotalSignCount() + 1);
+		Sign sign = getSign(user);
+		RewardBean reward = buildRewardBySign(sign);
+		rewardList.add(reward);
+		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
+		if (totalSign != null) 
+			rewardList.add(buildRewardBySign(totalSign));
+		
+		userService.updateUser(user);
+		
+		/**
+		 * send log
+		 */
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, 0, user.getTotalSignCount());
+		
+		return rewardList;
+	}
+	
+	public List<RewardBean> sevenLoginSign(UserBean user, int day, int chooseId) {
+		if (!canSevenLoginSign(user, day))
+			return null;
+		
+		int heroId = 0;
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		SevenLogin sevenLogin = signRedisService.getSevenLogin(day);
+		List<SevenOrder> orderList = sevenLogin.getOrderList();
+		for (SevenOrder order : orderList) {
+			if (order.getChoose() == 0) {
+				rewardList.add(RewardBean.init(order.getItemid(), order.getCount()));
+				continue;
+			}
+			
+			if (order.getChoose() == 1) {
+				if (chooseId > 0 && chooseId == order.getOrder()) {
+					heroId = order.getItemid();
+					rewardList.add(RewardBean.init(order.getItemid(), order.getCount()));
+				}
+			}
+		}
+		
+		if (rewardList != null && rewardList.size() > 0)
+			userService.updateUser(user);
+		
+		/**
+		 * send log
+		 */
+		logService.sendSevenLoginSign(user.getServerId(), user.getId(), heroId, day);
 		
 		return rewardList;
 	}
@@ -88,6 +149,18 @@ public class SignService {
 				|| time2.after(last) && time2.before(current)
 				|| time3.after(last) && time3.before(current)) {
 			user.setLastSignTime(df.format(current));
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private boolean canSevenLoginSign(UserBean user, int day) {
+		if (user.getSevenLoginDays() < day)
+			return false;
+		
+		if ((user.getSevenSignStatus() >> day & 1) == 0) {
+			user.setSevenSignStatus(user.getSevenSignStatus() | 1 << day);
 			return true;
 		}
 		

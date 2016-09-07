@@ -98,6 +98,7 @@ import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
+import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -823,7 +824,7 @@ public class GameDataScreen extends RequestScreen {
 	}//BosskillCommand
 	@Override//UnionBossFightCommand
 	protected boolean handleCommand(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO UnionBossFightCommand method
+		unionCommandService.attackUnionBoss(cmd, responseBuilder, user);
 		return true;//UnionBossFightCommand
 	}//UnionBossFightCommand
 	@Override//HeroStrengthenCommand
@@ -831,6 +832,11 @@ public class GameDataScreen extends RequestScreen {
 		pokedeCommandService.heroStrengthen(cmd, responseBuilder, user);
 		return true;//HeroStrengthenCommand
 	}//HeroStrengthenCommand
+	@Override//SevenLoginSignCommand
+	protected boolean handleCommand(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user) {
+		signCommandService.sevenSign(cmd, responseBuilder, user);
+		return true;//SevenLoginSignCommand
+	}//SevenLoginSignCommand
 	//add handleCommand here
 	
 	@Override

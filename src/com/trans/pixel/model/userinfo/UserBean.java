@@ -88,6 +88,8 @@ public class UserBean {
 	private int myactive = 0;
 	private String idfa = "";
 	private int lotteryStatus = 0;
+	private int sevenLoginDays = 0;
+	private int sevenSignStatus = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -980,6 +982,18 @@ public class UserBean {
 	public void setLotteryStatus(int lotteryStatus) {
 		this.lotteryStatus = lotteryStatus;
 	}
+	public int getSevenLoginDays() {
+		return sevenLoginDays;
+	}
+	public void setSevenLoginDays(int sevenLoginDays) {
+		this.sevenLoginDays = sevenLoginDays;
+	}
+	public int getSevenSignStatus() {
+		return sevenSignStatus;
+	}
+	public void setSevenSignStatus(int sevenSignStatus) {
+		this.sevenSignStatus = sevenSignStatus;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1095,6 +1109,8 @@ public class UserBean {
 		builder.setAdvance(advance);
 		builder.setShouchongIsComplete(shouchongIsComplete);
 		builder.setShouchongIsGetReward(shouchongIsGetReward);
+		builder.setSevenLoginDays(sevenLoginDays);
+		builder.setSevenSignStatus(sevenSignStatus);
 		for(int i = 1; i <= 6; i++){
 			JewelPool.Builder pool = JewelPool.newBuilder();
 			pool.setOrder(i);

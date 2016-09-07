@@ -573,6 +573,16 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_QIANGHUA);
 	}
 	
+	public void sendSevenLoginSign(int serverId, long userId, int heroid, int level) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.LEVEL, "" + level);
+		
+		sendLog(params, LogString.LOGTYPE_CHENGJIANG);
+	}
+	
 	private void send(String str) {
 		Socket socket = null;
 		str = str + "\n";

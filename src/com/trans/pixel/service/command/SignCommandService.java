@@ -10,6 +10,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseSignCommand;
@@ -46,6 +47,23 @@ public class SignCommandService extends BaseCommandService {
 			rewardService.doRewards(user, rewardList);
 			builder.addAllReward(RewardBean.buildRewardInfoList(rewardList));
 			responseBuilder.setSignCommand(builder.build());
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+		}
+
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void sevenSign(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user) {
+		int day = cmd.getDay();
+		int chooseId = cmd.getChooseId();
+		List<RewardBean> rewardList = signService.sevenLoginSign(user, day, chooseId);
+		
+		if (rewardList == null || rewardList.size() == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+		}else{
+			rewardService.doRewards(user, rewardList);
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		}
 

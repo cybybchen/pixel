@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.Commands.Qiandao;
+import com.trans.pixel.protoc.Commands.SevenLogin;
+import com.trans.pixel.protoc.Commands.SevenLoginList;
 import com.trans.pixel.protoc.Commands.Sign;
 import com.trans.pixel.protoc.Commands.SignList;
 
@@ -18,6 +20,7 @@ public class SignRedisService extends RedisService{
 	private static final String SIGN_FILE_NAME1 = "lol_tasksanqian.xml";
 	private static final String TOTAL_SIGN_FILE_NAME = "lol_taskleijiqiandao.xml";
 	private static final String SIGN_FILE_NAME2 = "lol_tasksanqian2.xml";
+	private static final String SEVEN_SIGN_FILE_NAME = "lol_taskseven.xml";
 	
 	public Sign getSign(int count) {
 		String value = hget(RedisKey.SIGN_KEY, "" + count);
@@ -171,6 +174,57 @@ public class SignRedisService extends RedisService{
 			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
 				map.put("" + sign.getTargetcount(), sign.build());
 			}
+		}
+		return map;
+	}
+	
+	//task seven
+	public SevenLogin getSevenLogin(int day) {
+		String value = hget(RedisKey.SEVEN_LOGIN_KEY, "" + day);
+		if (value == null) {
+			Map<String, SevenLogin> signConfig = getSevenLoginConfig();
+			return signConfig.get("" + day);
+		} else {
+			SevenLogin.Builder builder = SevenLogin.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, SevenLogin> getSevenLoginConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.SEVEN_LOGIN_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, SevenLogin> map = buildSevenLoginConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, SevenLogin> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.SEVEN_LOGIN_KEY, redismap);
+			return map;
+		}else{
+			Map<String, SevenLogin> map = new HashMap<String, SevenLogin>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				SevenLogin.Builder builder = SevenLogin.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, SevenLogin> buildSevenLoginConfig(){
+		String xml = ReadConfig(SEVEN_SIGN_FILE_NAME);
+		SevenLoginList.Builder builder = SevenLoginList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + SEVEN_SIGN_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, SevenLogin> map = new HashMap<String, SevenLogin>();
+		for(SevenLogin.Builder sevenLogin : builder.getSevenBuilderList()){
+			map.put("" + sevenLogin.getId(), sevenLogin.build());
 		}
 		return map;
 	}
