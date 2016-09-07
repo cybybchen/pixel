@@ -1263,6 +1263,11 @@ message UnionBoss {
 	optional int32 targetcount = 4;
 	optional int32 time = 5;
 	optional int32 HP = 6;
+	message Skill {
+		optional int32 skilid = 1;
+		optional int32 skilllevel = 2;
+	}
+	repeated Skill skill = 7;
 }
 
 message UnionBosslootList {
