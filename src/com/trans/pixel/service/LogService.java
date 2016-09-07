@@ -400,6 +400,21 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_CHENGJIANG:
+				sb.append(LogString.LOGTYPE_CHENGJIANG_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
