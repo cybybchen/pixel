@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -84,6 +85,14 @@ public class SkillRedisService {
 					if (skillLevel != null)
 						skillLevelList.add(skillLevel);
 				}
+				skillLevelList.sort(new Comparator<SkillLevelBean>() {
+			        public int compare(SkillLevelBean bean1, SkillLevelBean bean2) {
+		                if (bean1.getId() < bean2.getId()) {
+		                        return -1;
+		                } else {
+		                        return 1;
+		                }
+			        }});
 				
 				return skillLevelList;
 			}

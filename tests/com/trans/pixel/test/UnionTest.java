@@ -20,9 +20,9 @@ public class UnionTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(UnionTest.class);
 
 	@Test
-	public void testUnion() {
-//		login();
-//		testCreateUnion();
+	public void test() {
+		login();
+		testCreateUnion();
 		testGetUnion();
 //		testUnionApply();
 //		testGetUnionList();
