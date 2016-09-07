@@ -13,4 +13,7 @@ public class RankConst {
 	
 	public static final int RANK_LIST_START = 1;
 	public static final int RANK_LIST_END = 50;
+	
+	public static final int UNIONBOSS_RANK_LIST_START = 0;
+	public static final int UNIONBOSS_RANK_LIST_END = 19;
 }

@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
@@ -17,13 +19,17 @@ import com.trans.pixel.protoc.Commands.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseUnionBossCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionListCommand;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Union;
+import com.trans.pixel.protoc.Commands.UnionBossRecord;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.redis.RedisService;
@@ -53,6 +59,7 @@ public class UnionCommandService extends BaseCommandService {
 			getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
 			return;
 		}
+		
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(union);
 		responseBuilder.setUnionInfoCommand(builder.build());
@@ -171,6 +178,7 @@ public class UnionCommandService extends BaseCommandService {
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());
 	}
+	
 	public void defend(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		ResultConst result = unionService.defend(cmd.getTeamid(), user);
 		if(result instanceof ErrorConst) {
@@ -182,5 +190,23 @@ public class UnionCommandService extends BaseCommandService {
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(unionService.getUnion(user));
 		responseBuilder.setUnionInfoCommand(builder.build());
+	}
+	
+	public void attackUnionBoss(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user) {
+		Union union = unionService.getUnion(user);
+		if(union == null){
+			getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
+			return;
+		}
+		int bossId = cmd.getBossId();
+		int hp = cmd.getHp();
+		
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		UnionBossRecord unionBoss = unionService.attackUnionBoss(user, union, bossId, hp, rewards);
+		
+		ResponseUnionBossCommand.Builder builder = ResponseUnionBossCommand.newBuilder();
+		builder.addUnionBoss(unionBoss);
+		responseBuilder.setUnionBossCommand(builder.build());
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 }

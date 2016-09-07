@@ -25,7 +25,7 @@ public class BossCrontabService {
 	@Resource
 	private LogService logService;
 	
-	@Scheduled(cron = "0 0 0 * * ? ")
+//	@Scheduled(cron = "0 0 0 * * ? ")
 //	@Scheduled(cron = "0 0/1 * * * ? ")
 	public void sendActivityReward() {
 		try {

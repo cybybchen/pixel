@@ -1,5 +1,8 @@
 package com.trans.pixel.model.userinfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -132,6 +135,16 @@ public class UserRankBean {
 		icon = userInfo.getIcon();
 		zhanli = userInfo.getZhanli();
 		vip = userInfo.getVip();
+	}
+	
+	public static List<UserRank> buildUserRankList(List<UserRankBean> userRankList) {
+		List<UserRank> userRankBuilderList = new ArrayList<UserRank>();
+		for (UserRankBean userRank : userRankList) {
+			if(userRank != null)
+				userRankBuilderList.add(userRank.buildUserRank());
+		}
+		
+		return userRankBuilderList;
 	}
 	
 	private static final String ID = "id";

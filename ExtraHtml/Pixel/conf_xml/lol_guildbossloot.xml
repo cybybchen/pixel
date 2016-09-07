@@ -1,0 +1,38 @@
+<data>
+<boss id="200001" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200002" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200003" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200004" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200005" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200006" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200007" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200008" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+<boss id="200009" >
+<item itemid="1006" count="10" weight="10" />
+<item itemid="1006" count="20" weight="10" />
+</boss>
+</data>

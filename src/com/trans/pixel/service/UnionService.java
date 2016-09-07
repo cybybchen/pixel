@@ -1,34 +1,57 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
+import org.apache.commons.lang.math.RandomUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.UnionConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.FightResult;
 import com.trans.pixel.protoc.Commands.FightResultList;
+import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.RankItem;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.Union;
+import com.trans.pixel.protoc.Commands.UnionBoss;
+import com.trans.pixel.protoc.Commands.UnionBossRecord;
+import com.trans.pixel.protoc.Commands.UnionBossloot;
+import com.trans.pixel.protoc.Commands.UnionBosswin;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
+import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UnionService extends FightService{
 
+	private static final Logger log = LoggerFactory.getLogger(UnionService.class);
+	
 	@Resource
 	private UnionRedisService redis;
 	@Resource
@@ -124,6 +147,13 @@ public class UnionService extends FightService{
 		if(user.getUnionJob() > 0){
 			builder.addAllApplies(redis.getApplies(user.getUnionId()));
 		}
+		
+		/**
+		 * 刷新定时工会boss
+		 */
+		crontabUnionBossActivity(user);
+		builder.addAllUnionBoss(getUnionBossList(user));
+		
 		return builder.build();
 	}
 	
@@ -472,12 +502,204 @@ public class UnionService extends FightService{
 				} catch (InterruptedException e) {
 					logger.debug(e);
 					return;
-				}
+				} 
 				bloodFight(attackUnionId, defendUnionId, serverId);
 				redis.deleteFightKey(attackUnionId, serverId);
 				redis.clearLock("Union_"+attackUnionId);
 				redis.clearLock("Union_"+defendUnionId);
 			}
 		}
+	}
+	
+	public void crontabUnionBossActivity(UserBean user) {
+		if (user.getUnionId() > 0)
+			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_CRONTAB, 0, 0);
+	}
+	
+	public void costUnionBossActivity(UserBean user, int targetId, int count) {
+		if (user.getUnionId() > 0)
+			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_COST, targetId, count);
+	}
+	
+	public void killMonsterBossActivity(UserBean user, int targetId, int count) {
+		if (user.getUnionId() > 0)
+			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_KILLMONSTER, targetId, count);
+	}
+	
+	public void doUnionBossRecord(UserBean user, int type, int targetId, int count) {
+		Union union = getUnion(user);
+		if (union == null)
+			return;
+		UnionBean unionBean = new UnionBean(union);
+		Map<String, UnionBoss> map = redis.getUnionBossConfig();
+		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, UnionBoss> entry = it.next();
+			UnionBoss unionBoss = entry.getValue();
+			if (unionBoss.getType() == type) {
+				if (unionBoss.getTargetid() == targetId) {
+					if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER)
+						unionBean.updateKillMonsterRecord(targetId, count);
+					else if (type == UnionConst.UNION_BOSS_TYPE_COST)
+						unionBean.updateCostRecord(targetId, count);
+					
+					calUnionBossRefresh(unionBean, unionBoss);
+					redis.saveUnion(unionBean.build(), user);
+				}
+			}
+		}
+	}
+	
+	public void calUnionBossRefresh(UnionBean union, UnionBoss unionBoss) {
+		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
+		if (unionBossRecord != null) {
+			if (unionBossRecord.getEndTime().equals("")) {
+				if (unionBossRecord.getHp() > 0)
+					return;
+			} else if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()))
+				return;
+		}
+		int bossCount = union.getUnionBossCount(unionBoss.getId());
+		JSONObject json = null;
+		if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_COST) {
+			json = JSONObject.fromObject(union.getCostRecord());
+		} else if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
+			json = JSONObject.fromObject(union.getKillMonsterRecord());
+		} 
+		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss) 
+				|| (json != null && json.getInt("" + unionBoss.getTargetid()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
+			union.updateUnionBossRecord(unionBoss.getId());
+			redis.delUnionBossRankKey(union.getId(), unionBoss.getId());
+			redis.saveUnionBoss(union, unionBoss);
+		}	
+	}
+	
+	public List<UnionBossRecord> getUnionBossList(UserBean user) {
+		List<UnionBossRecord> builderList = new ArrayList<UnionBossRecord>();
+		List<UnionBossRecord> unionBossList = redis.getUnionBossList(user.getUnionId());
+		for (UnionBossRecord unionBoss : unionBossList) {
+			UnionBossRecord.Builder builder = UnionBossRecord.newBuilder(unionBoss);
+			List<UserRankBean> ranks = getUnionBossRankList(user, unionBoss.getBossId());
+			builder.addAllRanks(UserRankBean.buildUserRankList(ranks));
+			builderList.add(builder.build());
+			
+		}
+		return builderList;
+	}
+	
+	public UnionBossRecord attackUnionBoss(UserBean user, Union union, int bossId, int hp, MultiReward.Builder rewards) {
+		UnionBossRecord.Builder unionBossRecord = UnionBossRecord.newBuilder(redis.getUnionBoss(user.getUnionId(), bossId));
+		if (DateUtil.timeIsOver(unionBossRecord.getEndTime())) {
+			return unionBossRecord.build();
+		}
+		
+		unionBossRecord.setHp(unionBossRecord.getHp() - hp);
+		if (unionBossRecord.getHp() <= 0) {
+			doUnionBossRankReward(user.getUnionId(), bossId);
+			UnionBean unionBean = new UnionBean(union);
+			unionBean.updateUnionBossEndTime(bossId);
+			calUnionBossRefresh(unionBean, redis.getUnionBoss(bossId));
+			redis.saveUnion(unionBean.build(), user);
+		}
+		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
+		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);
+		
+		rewards.addAllLoot(calUnionBossReward(bossId));
+		
+		return unionBossRecord.build();
+	}
+	
+	private void doUnionBossRankReward(int unionId, int bossId) {
+		UnionBosswin unionBosswin = redis.getUnionBosswin(bossId);
+		List<RankItem> rankList = unionBosswin.getItemList();
+		for (RankItem item : rankList) {
+			Set<TypedTuple<String>> ranks = redis.getUnionBossRanks(unionId, bossId, item.getRank() - 1, item.getRank1() - 1);
+			for (TypedTuple<String> rank : ranks) {
+				MailBean mail = MailBean.buildSystemMail(TypeTranslatedUtil.stringToLong(rank.getValue()), item.getDes(), getRankRewardList(item));
+				log.debug("unionboss rank mail is:" + mail.toJson());
+				mailService.addMail(mail);
+			}
+		}
+	}
+	
+	private List<RewardInfo> getRankRewardList(RankItem rankItem) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		RewardInfo.Builder builder = RewardInfo.newBuilder();
+		if (rankItem.getItemid1() > 0) {
+			builder.setItemid(rankItem.getItemid1());
+			builder.setCount(rankItem.getCount1());
+			rewardList.add(builder.build());
+			builder.clear();
+		}
+		if (rankItem.getItemid2() > 0) {
+			builder.setItemid(rankItem.getItemid2());
+			builder.setCount(rankItem.getCount2());
+			rewardList.add(builder.build());
+			builder.clear();
+		}
+		if (rankItem.getItemid3() > 0) {
+			builder.setItemid(rankItem.getItemid3());
+			builder.setCount(rankItem.getCount3());
+			rewardList.add(builder.build());
+		}
+		
+		return rewardList;
+	}
+	
+	private List<RewardInfo> calUnionBossReward(int bossId) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		UnionBossloot bossloot = redis.getUnionBossloot(bossId);
+		int weightAll = 0;
+		List<RewardInfo> itemList = bossloot.getItemList();
+		for (RewardInfo item : itemList) {
+			weightAll += item.getWeight();
+		}
+		
+		int randomWeight = RandomUtils.nextInt(weightAll);
+		for (RewardInfo item : itemList) {
+			if (item.getWeight() > randomWeight) {
+				rewardList.add(item);
+				break;
+			}
+			
+			randomWeight -= item.getWeight();
+		}
+		
+		return rewardList;
+	}
+	
+	private List<UserRankBean> getUnionBossRankList(UserBean user, int bossId) {
+		Set<TypedTuple<String>> ranks = redis.getUnionBossRanks(user.getUnionId(), bossId, RankConst.UNIONBOSS_RANK_LIST_START, RankConst.UNIONBOSS_RANK_LIST_END);
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
+		int rankInit = 1;
+		for (TypedTuple<String> rank : ranks) {
+			UserRankBean userRank = new UserRankBean();
+			UserInfo userInfo = userService.getCache(user.getServerId(), TypeTranslatedUtil.stringToLong(rank.getValue()));
+			
+			userRank.setRank(rankInit);
+			userRank.initByUserCache(userInfo);
+			userRank.setZhanli(rank.getScore().intValue());
+			
+			rankList.add(userRank);
+			rankInit++;
+		}
+		
+		return rankList;
+	}
+	
+	private boolean canRefreshCrontabBoss(UnionBean union, UnionBoss boss) {
+		Date current = DateUtil.getDate();
+		Date last = DateUtil.getDate(union.getUnionBossEndTime(boss.getId()));
+		Date bossTime = DateUtil.setToDayTime(current, boss.getTargetcount());
+		if (current.before(bossTime))
+			return false;
+			
+		if (last == null)
+			return true;
+		
+		if (DateUtil.intervalDays(current, last) >= 1)
+			return true;
+		
+		return false;
 	}
 }

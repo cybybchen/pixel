@@ -303,6 +303,24 @@ public class DateUtil {
 
         return calendar.getTime();
     }
+    
+    /**
+     * 将时间调整到当天的NN：0：0
+     * 
+     * @param date
+     * @return
+     */
+    public static Date setToDayTime(Date date, int hour) {
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.setTimeInMillis(date.getTime());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        return calendar.getTime();
+    }
 
     public static int intervalHours(long time1, long time2) {
         return (int) ((time2 - time1) / TimeConst.MILLIONSECONDS_PER_HOUR);

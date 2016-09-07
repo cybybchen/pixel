@@ -154,6 +154,7 @@ message RewardInfo {
 	required int32 itemid = 1;
 	optional string itemname = 2;
 	required int64 count = 3;
+	optional int32 weight = 4;
 }
 
 message Item {
@@ -327,6 +328,8 @@ message Union {
 	optional string killMonsterRecord = 21;
 	optional string costRecord = 22;
 	repeated UnionBossRecord unionBoss = 23;
+	optional string bossRecord = 24;
+	optional string bossEndTime = 25;
 }
 
 message UnionApply {
@@ -1258,6 +1261,36 @@ message UnionBoss {
 	optional int32 targetcount = 4;
 	optional int32 time = 5;
 	optional int32 HP = 6;
+}
+
+message UnionBosslootList {
+	repeated UnionBossloot boss = 1;
+}
+
+message UnionBossloot {
+	optional int32 id = 1;
+	repeated RewardInfo item = 2;	
+}
+
+message UnionBosswinList {
+	repeated UnionBosswin boss = 1;
+}
+
+message UnionBosswin {
+	optional int32 id = 1;
+	repeated RankItem item = 2;
+}
+
+message RankItem {
+	optional int32 rank = 1;
+	optional int32 rank1 = 2;
+	optional int32 itemid1 = 3;
+	optional int32 count1 = 4;
+	optional int32 itemid2 = 5;
+	optional int32 count2 = 6;
+	optional int32 itemid3 = 7;
+	optional int32 count3 = 8;
+	optional string des = 9;
 }
 
 message UnionBossRecord {

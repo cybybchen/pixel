@@ -1,6 +1,9 @@
 package com.trans.pixel.model;
 
+import net.sf.json.JSONObject;
+
 import com.trans.pixel.protoc.Commands.Union;
+import com.trans.pixel.utils.DateUtil;
 
 public class UnionBean {
 	private int id = 0;
@@ -10,6 +13,10 @@ public class UnionBean {
 	private int icon = 0;
 	private int point = 0;
 	private int rank = 0;
+	private String killMonsterRecord = "";
+	private String costRecord = "";
+	private String bossRecord = "";
+	private String bossEndTime = "";
 //	private List<UnionUserBean> unionUserList = new ArrayList<UnionUserBean>();
 //	private List<MailBean> mailList = new ArrayList<MailBean>();
 	public UnionBean(){
@@ -20,6 +27,10 @@ public class UnionBean {
 		setName(union.getName());
 		setLevel(union.getLevel());
 		setPoint(union.getPoint());
+		setKillMonsterRecord(union.getKillMonsterRecord());
+		setCostRecord(union.getCostRecord());
+		setBossRecord(union.getBossRecord());
+		setBossEndTime(union.getBossEndTime());
 	}
 	public int getId() {
 		return id;
@@ -51,7 +62,98 @@ public class UnionBean {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-	
+	public String getKillMonsterRecord() {
+		return killMonsterRecord;
+	}
+	public void setKillMonsterRecord(String killMonsterRecord) {
+		this.killMonsterRecord = killMonsterRecord;
+	}
+	public String getCostRecord() {
+		return costRecord;
+	}
+	public void setCostRecord(String costRecord) {
+		this.costRecord = costRecord;
+	}
+	public String getBossRecord() {
+		return bossRecord;
+	}
+	public void setBossRecord(String bossRecord) {
+		this.bossRecord = bossRecord;
+	}
+	public String getBossEndTime() {
+		return bossEndTime;
+	}
+	public void setBossEndTime(String bossEndTime) {
+		this.bossEndTime = bossEndTime;
+	}
+	public void updateKillMonsterRecord(int targetId, int count) {
+		int targetCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(killMonsterRecord);
+			targetCount = json.getInt("" + targetId) + count;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + targetId, targetCount);
+		killMonsterRecord = json.toString();
+	}
+	public void updateCostRecord(int targetId, int count) {
+		int targetCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(costRecord);
+			targetCount = json.getInt("" + targetId) + count;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + targetId, targetCount);
+		costRecord = json.toString();
+	}
+	public void updateUnionBossRecord(int bossId) {
+		int bossCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(bossRecord);
+			bossCount = json.getInt("" + bossId) + 1;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + bossId, bossCount);
+		bossRecord = json.toString();
+	}
+	public int getUnionBossCount(int bossId) {
+		int bossCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(bossRecord);
+			bossCount = json.getInt("" + bossId);	
+		} catch (Exception e) {
+			
+		}
+		return bossCount;
+	}
+	public void updateUnionBossEndTime(int bossId) {
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(bossEndTime);
+			json.put("" + bossId, DateUtil.getCurrentDateString());
+		} catch (Exception e) {
+			
+		}
+		bossEndTime = json.toString();
+	}
+	public String getUnionBossEndTime(int bossId) {
+		JSONObject json = new JSONObject();
+		String time = "";
+		try {
+			json = JSONObject.fromObject(bossEndTime);
+			time = json.getString("" + bossId);
+		} catch (Exception e) {
+			time = "";
+		}
+		return time;
+	}
 	public Union build() {
 		Union.Builder union = Union.newBuilder();
 		union.setId(id);
@@ -62,6 +164,10 @@ public class UnionBean {
 		union.setPoint(point);
 		union.setCount(1);
 		union.setMaxCount(30);
+		union.setKillMonsterRecord(killMonsterRecord);
+		union.setCostRecord(costRecord);
+		union.setBossRecord(bossRecord);
+		union.setBossEndTime(bossEndTime);
 		
 		return union.build();
 	}
