@@ -364,7 +364,9 @@
 <hero itemid="57117" name="亚索7星" description="获得亚索7星" heroid="117" star="7" count="1" rare="1" />
 <hero itemid="57121" name="阿兹尔7星" description="获得阿兹尔7星" heroid="121" star="7" count="1" rare="1" />
 <hero itemid="57122" name="卡莉斯塔7星" description="获得卡莉斯塔7星" heroid="122" star="7" count="1" rare="1" />
-<hero itemid="50001" name="厄运小姐1星" description="获得厄运小姐1星" heroid="1" star="1" count="1" rare="4" />
-<hero itemid="50002" name="赵信2星" description="获得赵信2星" heroid="5" star="2" count="1" rare="4" />
-<hero itemid="50003" name="潘森3星" description="获得潘森3星" heroid="8" star="3" count="1" rare="5" />
+<hero itemid="50001" name="蒙多医生3星" description="获得紫色蒙多医生3星" heroid="50" star="3" count="1" rare="7" />
+<hero itemid="50002" name="阿狸3星" description="获得橙色阿狸3星" heroid="88" star="3" count="1" rare="10" />
+<hero itemid="50003" name="璐璐3星" description="获得橙色璐璐3星" heroid="94" star="3" count="1" rare="10" />
+<hero itemid="50004" name="韦鲁斯3星" description="获得橙色韦鲁斯3星" heroid="96" star="3" count="1" rare="10" />
+<hero itemid="50005" name="易3星" description="获得橙色易3星" heroid="38" star="3" count="1" rare="10" />
 </data>
