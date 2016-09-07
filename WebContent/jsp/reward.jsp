@@ -371,6 +371,7 @@
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="57117 亚索7星" itemid="57117">亚索7星</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="57121 阿兹尔7星" itemid="57121">阿兹尔7星</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="57122 卡莉斯塔7星" itemid="57122">卡莉斯塔7星</a>
+<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="37001 强化水晶" itemid="37001">强化水晶</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="30001 金币包" itemid="30001">金币包</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="30002 金币包" itemid="30002">金币包</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="30003 金币包" itemid="30003">金币包</a>

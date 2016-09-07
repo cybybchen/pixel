@@ -1123,12 +1123,12 @@ function configBlackList(dom){
     var children = $(dom).children();
     $("#blacklist-form input[name='userid']").val($(children[0]).text());
     $("#blacklist-form input[name='username']").val($(children[1]).text());
-    $("#blacklist-form input[name='serverid']").val($(children[2]).text());
-    $("#blacklist-form input[name='blacklist-notalk']").val($(children[5]).text());
-    $("#blacklist-form input[name='blacklist-ranklist']").val($(children[6]).text());
-    $("#blacklist-form input[name='blacklist-login']").val($(children[7]).text());
-    $("#blacklist-form input[name='blacklist-account']").val($(children[8]).text());
-    $("#blacklist-form input[name='blacklist-idfa']").val($(children[9]).text());
+    $("#blacklist-form input[name='serverid']").val("");//$(children[2]).text());
+    // $("#blacklist-form input[name='notalk']").attr("checked", $(children[5]).text() == "×" ? false : true).checkboxradio("refresh");
+    // $("#blacklist-form input[name='noranklist']").attr("checked", $(children[6]).text() == "×" ? false : true).checkboxradio("refresh");
+    // $("#blacklist-form input[name='nologin']").attr("checked", $(children[7]).text() == "×" ? false : true).checkboxradio("refresh");
+    // $("#blacklist-form input[name='noaccount']").attr("checked", $(children[8]).text() == "×" ? false : true).checkboxradio("refresh");
+    // $("#blacklist-form input[name='noidfa']").attr("checked", $(children[9]).text() == "×" ? false : true).checkboxradio("refresh");
 }
 
 function getRedisData(){

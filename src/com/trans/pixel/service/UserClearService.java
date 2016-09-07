@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.UserClearMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
-import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.service.redis.UserClearRedisService;
 
 @Service
@@ -34,8 +33,12 @@ public class UserClearService {
 		if (userClearList.size() == 0) {
 			if (!userClearRedisService.isExistClearKey(userId)) {
 				List<UserClearBean> userAllClearList = userClearMapper.selectUserClearList(userId);
-				if (userAllClearList != null && userAllClearList.size() > 0)
-					userClearRedisService.updateUserClearList(userAllClearList, userId);
+				if (userAllClearList.isEmpty()){
+					UserClearBean bean = new UserClearBean();
+					userAllClearList = new ArrayList<UserClearBean>();
+					userAllClearList.add(bean.init(userId));
+				}
+				userClearRedisService.updateUserClearList(userAllClearList, userId);
 				
 				for (int i = 1; i < 4; ++i) {
 					UserClearBean userClear = userClearRedisService.selectUserClear(userId, heroId, i);
@@ -52,8 +55,12 @@ public class UserClearService {
 		List<UserClearBean> userClearList = userClearRedisService.selectUserClearList(userId);
 		if (userClearList == null || userClearList.size() == 0) {
 			userClearList = userClearMapper.selectUserClearList(userId);
-			if (userClearList != null && userClearList.size() > 0)
-				userClearRedisService.updateUserClearList(userClearList, userId);
+			if (userClearList.isEmpty()){
+				UserClearBean bean = new UserClearBean();
+				userClearList = new ArrayList<UserClearBean>();
+				userClearList.add(bean.init(userId));
+			}
+			userClearRedisService.updateUserClearList(userClearList, userId);
 		}
 		
 		return userClearList;

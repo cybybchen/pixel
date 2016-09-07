@@ -16,7 +16,7 @@ import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
-import com.trans.pixel.service.BlackService;
+import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.redis.RedisService;
@@ -29,7 +29,7 @@ public class MessageCommandService extends BaseCommandService {
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
-	private BlackService blackService;
+	private BlackListService blackService;
 	@Resource
 	private LogService logService;
 	
@@ -43,7 +43,7 @@ public class MessageCommandService extends BaseCommandService {
 	}
 	
 	public void createMessage(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
-		if (blackService.isBlackNosay(user)) {
+		if (blackService.isNotalk(user.getId())) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
@@ -55,7 +55,7 @@ public class MessageCommandService extends BaseCommandService {
 	}
 	
 	public void replyMessage(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user) {
-		if (blackService.isBlackNosay(user)) {
+		if (blackService.isNotalk(user.getId())) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);

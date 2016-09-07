@@ -227,8 +227,8 @@ public class LadderRedisService extends RedisService{
 		return map;
 	}
 	
-	public boolean lockRankRedis(int serverId) {
-		return this.setLock(buildRankRedisKey(serverId), 20);
+	public boolean lockRankRedis(int serverId, int second) {
+		return this.setLock(buildRankRedisKey(serverId), second);
 	}
 	
 	private String buildRankRedisKey(int serverId) {

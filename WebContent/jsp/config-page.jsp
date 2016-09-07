@@ -121,7 +121,9 @@
 					    <input name="serverid" id="blacklist-serverid" value="8" type="text">
 					</div>
 					<input type="submit" value="更新黑名单" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-delete">
+					<center style="font-size: 0.75em;">同时会改变账号和设备的封禁状态</center>
 				</div>
+			</div>
 		</form>
 		<table data-role="table" id="table-blacklist" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="选择列">
 			<thead>

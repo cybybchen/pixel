@@ -2,6 +2,7 @@ package com.trans.pixel.service.command;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
@@ -17,6 +18,7 @@ import com.trans.pixel.service.redis.RankRedisService;
 
 @Service
 public class ZhanliCommandService extends BaseCommandService {
+	private static Logger log = Logger.getLogger(UserTeamService.class);	
 	@Resource
 	private UserService userService;
 	@Resource
@@ -33,6 +35,7 @@ public class ZhanliCommandService extends BaseCommandService {
 		if(user.getZhanliMax() < zhanli){
 			Team team = userTeamService.getTeamCache(user);
 			if(team.getUser().getZhanli() < zhanli){
+				log.debug("submit zhanli "+zhanli +" < real "+team.getUser().getZhanli());
 				zhanli = team.getUser().getZhanli();
 				ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 				builder.setUser(user.build());
@@ -40,6 +43,7 @@ public class ZhanliCommandService extends BaseCommandService {
 				return;
 			}
 
+			zhanli = team.getUser().getZhanli();
 			user.setZhanli(zhanli);
 			user.setZhanliMax(zhanli);
 			if(!blackService.isNoranklist(user.getId())) {

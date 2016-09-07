@@ -19,7 +19,7 @@
 	    SELECT * from blacklist where userid=#{userId}
 	</select>
 
-	<delete id="deleteBlackList" resultMap="resultMap">
+	<delete id="deleteBlackList">
 	    DELETE from blacklist where userid=#{userId}
 	</delete>
 

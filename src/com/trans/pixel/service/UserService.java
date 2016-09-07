@@ -83,6 +83,7 @@ public class UserService {
     				user.setZhanli(cache.getZhanli());
     				user.setZhanliMax(cache.getZhanli());
     			}
+    			userRedisService.cache(user.getServerId(), user.buildShort());
     			userRedisService.updateUser(user);
     		}
     	}

@@ -126,15 +126,16 @@ public class UserRankBean {
 		return builder.build();
 	}
 	
-	public void initByUserCache(UserInfo userInfo) {
+	public boolean initByUserCache(UserInfo userInfo) {
 		if (userInfo == null)
-			return;
+			return false;
 		
 		userId = userInfo.getId();
 		userName = userInfo.getName();
 		icon = userInfo.getIcon();
 		zhanli = userInfo.getZhanli();
 		vip = userInfo.getVip();
+		return true;
 	}
 	
 	public static List<UserRank> buildUserRankList(List<UserRankBean> userRankList) {

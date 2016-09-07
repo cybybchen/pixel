@@ -227,10 +227,10 @@ public class UserTeamService {
 			if (base.getStarList().size() < star)
 				star = base.getStarList().size();
 			int pre = 100;
-			Strengthen strengthen = clearService.getStrengthen(hero.getHeroId());
+			Strengthen strengthen = clearService.getStrengthen(hero.getStrengthen());
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
-			log.debug(strengthen+" : "+pre);
+			// log.debug(strengthen+" : "+pre);
 			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * hero.getLevel() * (hero.getLevel() + 1) / 2 * 0.8 + 75 * hero.getRare() * (hero.getRare() - 1) / 2;
 			for(String equipid : hero.getEquipInfo().split("\\|")){
 				int id = TypeTranslatedUtil.stringToInt(equipid);
@@ -243,10 +243,11 @@ public class UserTeamService {
 			zhanli = zhanli * pre / 100;
 
 			myzhanli += zhanli;
-			  log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
+			  // log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
 		}
+		log.debug("zhanli:"+myzhanli);
 		user.setZhanli(myzhanli);
-		team.setUser(user.buildShort(true));
+		team.setUser(user.buildShort());
 		
 		return team.build();
 	}

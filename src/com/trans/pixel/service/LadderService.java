@@ -123,6 +123,8 @@ public class LadderService {
 			if (userRank != null && userRank.getUserId() > 0) {	
 				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
 				userRank.initByUserCache(userInfo);
+				// Team team = userTeamService.getTeamCache(userRank.getUserId());
+				// userRank.setZhanli(team.getUser().getZhanli());
 			}
 			rankList.add(userRank);
 		}
@@ -351,7 +353,7 @@ public class LadderService {
 	
 	private void createLadderData(int serverId) {
 		//lock the redis when create ladder data
-		if (!ladderRedisService.lockRankRedis(serverId))
+		if (!ladderRedisService.lockRankRedis(serverId, 60))
 			return;
 		
 		serverRedisService.setServerId(serverId);
@@ -363,25 +365,27 @@ public class LadderService {
 		List<HeroBean> heroList = heroService.getHeroList();
 		for (LadderEnemy ladderEnemy : enemyList) {
 			for (int i = ladderEnemy.getRanking(); i <= ladderEnemy.getRanking1(); ++i) {
-				String robotName = randomRobotName(name2List, nameList);
-				int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
 				long userId = -i;
 				UserBean robot = userService.getRobotUser(userId);
 				if (robot == null) {
 					robot = new UserBean();
-					robot.init(serverId, robotName, robotName, ladderRedisService.nextInt(5) + 61001);
+					String robotName = randomRobotName(name2List, nameList);
+					robot.init(serverId, "account", robotName, ladderRedisService.nextInt(5) + 61001);
 					robot.setId(userId);
+					Team.Builder team = Team.newBuilder();
+					List<HeroInfo> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
+					team.addAllHeroInfo(heroInfoList);
+					userTeamService.saveTeamCacheWithoutExpire(robot, team.build());
+					// int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
+					Team myteam = userTeamService.getTeamCache(robot.getId());
+					int zhanli = myteam.getUser().getZhanli();
 					robot.setZhanli(zhanli);
 					robot.setZhanliMax(zhanli);
 					userService.updateRobotUser(robot);
 				}
-				Team.Builder team = Team.newBuilder();
-				List<HeroInfo> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
-				team.addAllHeroInfo(heroInfoList);
-				userTeamService.saveTeamCacheWithoutExpire(robot, team.build());
 				UserRankBean robotRank = initRobotRank(robot.getId(), robot.getUserName(), robot.getIcon(), i);
 				
-				robotRank.setZhanli(zhanli);
+				robotRank.setZhanli(robot.getZhanli());
 				updateUserRank(serverId, robotRank);
 			}
 		}

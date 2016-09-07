@@ -73,4 +73,13 @@ public class UserClearBean {
 		
 		return builder.build();
 	}
+
+	public UserClearBean init(long userId) {
+		setUserId(userId);
+		setHeroId(1);
+		setPosition(1);
+		setClearId(1);
+		setCount(0);
+		return this;
+	}
 }
