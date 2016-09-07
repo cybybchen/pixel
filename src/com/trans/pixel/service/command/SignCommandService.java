@@ -54,9 +54,10 @@ public class SignCommandService extends BaseCommandService {
 	}
 	
 	public void sevenSign(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user) {
-		int day = cmd.getDay();
-		int chooseId = cmd.getChooseId();
-		List<RewardBean> rewardList = signService.sevenLoginSign(user, day, chooseId);
+		int chooseId = 0;
+		if (cmd.hasChooseId())
+			chooseId = cmd.getChooseId();
+		List<RewardBean> rewardList = signService.sevenLoginSign(user, chooseId);
 		
 		if (rewardList == null || rewardList.size() == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR);

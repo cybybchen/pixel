@@ -122,7 +122,7 @@ public class UserService {
 		user.setPurchaseCoinTime(0);
 		user.setPvpMineLeftTime(5);
 		user.setFreeLotteryCoinLeftTime(5);
-		user.setSevenLoginDays(user.getSevenLoginDays() + 1);
+		user.setSevenSignStatus(0);
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
 			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());

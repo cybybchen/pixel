@@ -81,13 +81,16 @@ public class SignService {
 		return rewardList;
 	}
 	
-	public List<RewardBean> sevenLoginSign(UserBean user, int day, int chooseId) {
-		if (!canSevenLoginSign(user, day))
+	public List<RewardBean> sevenLoginSign(UserBean user, int chooseId) {
+		if (!canSevenLoginSign(user))
 			return null;
 		
 		int heroId = 0;
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		SevenLogin sevenLogin = signRedisService.getSevenLogin(day);
+		SevenLogin sevenLogin = signRedisService.getSevenLogin(user.getSevenLoginDays());
+		if (sevenLogin == null)
+			return null;
+		
 		List<SevenOrder> orderList = sevenLogin.getOrderList();
 		for (SevenOrder order : orderList) {
 			if (order.getChoose() == 0) {
@@ -109,7 +112,7 @@ public class SignService {
 		/**
 		 * send log
 		 */
-		logService.sendSevenLoginSign(user.getServerId(), user.getId(), heroId, day);
+		logService.sendSevenLoginSign(user.getServerId(), user.getId(), heroId, user.getSevenLoginDays());
 		
 		return rewardList;
 	}
@@ -155,12 +158,10 @@ public class SignService {
 		return false;
 	}
 	
-	private boolean canSevenLoginSign(UserBean user, int day) {
-		if (user.getSevenLoginDays() < day)
-			return false;
-		
-		if ((user.getSevenSignStatus() >> day & 1) == 0) {
-			user.setSevenSignStatus(user.getSevenSignStatus() | 1 << day);
+	private boolean canSevenLoginSign(UserBean user) {
+		if (user.getSevenSignStatus() == 0) {
+			user.setSevenSignStatus(1);
+			user.setSevenLoginDays(user.getSevenLoginDays() + 1);
 			return true;
 		}
 		

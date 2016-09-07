@@ -2264,8 +2264,7 @@ message RequestHeroStrengthenCommand {
 }
 
 message RequestSevenLoginSignCommand {
-	optional int32 day = 1;
-	optional int32 chooseId = 2;
+	optional int32 chooseId = 1;
 }
 
 message RequestCommand {
