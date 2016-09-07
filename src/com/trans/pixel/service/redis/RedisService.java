@@ -54,6 +54,9 @@ public class RedisService {
 		} catch (ParseException e) {
 			logger.warn(input, e);
 			return false;
+		} catch (NullPointerException e) {
+			logger.warn(input, e);
+			return false;
 		}
 		return true;
 	}
