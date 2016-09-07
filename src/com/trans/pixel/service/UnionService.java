@@ -527,7 +527,7 @@ public class UnionService extends FightService{
 	}
 	
 	public void doUnionBossRecord(UserBean user, int type, int targetId, int count) {
-		Union union = getUnion(user);
+		Union union = redis.getUnion(user);
 		if (union == null)
 			return;
 		UnionBean unionBean = new UnionBean(union);
