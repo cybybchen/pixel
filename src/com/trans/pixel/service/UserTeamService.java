@@ -246,7 +246,10 @@ public class UserTeamService {
 			  // log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
 		}
 		log.debug("zhanli:"+myzhanli);
-		user.setZhanli(myzhanli);
+		if(myzhanli != user.getZhanli()){
+			user.setZhanli(myzhanli);
+			userService.cache(user.buildShort());
+		}
 		team.setUser(user.buildShort());
 		
 		return team.build();

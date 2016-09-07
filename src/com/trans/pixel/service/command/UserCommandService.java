@@ -67,12 +67,12 @@ public class UserCommandService extends BaseCommandService {
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
-		// if (blackService.isBlackAccount(head.getAccount())) {
-		// 	ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
-		// 	logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestLoginCommand.class, RedisService.formatJson(head), ErrorConst.BLACK_ACCOUNT_ERROR);
-  //           responseBuilder.setErrorCommand(errorCommand);
-		// 	return;
-		// }
+		if (blackService.isNoaccount(head.getAccount())) {
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
+			logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestLoginCommand.class, RedisService.formatJson(head), ErrorConst.BLACK_ACCOUNT_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		UserBean user = userService.getUserByAccount(head.getServerId(), head.getAccount());
 		if (user == null) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
@@ -80,7 +80,7 @@ public class UserCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		if (blackService.isNologin(user.getId())) {
+		if (blackService.isNologin(user.getId()) || blackService.isNoidfa(user.getIdfa())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_USER_ERROR);
             logService.sendErrorLog(user.getId(), user.getServerId(), RequestLoginCommand.class, RedisService.formatJson(head), ErrorConst.BLACK_USER_ERROR);
             responseBuilder.setErrorCommand(errorCommand);

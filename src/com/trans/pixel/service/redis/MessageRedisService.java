@@ -40,7 +40,8 @@ public class MessageRedisService extends RedisService {
 					MessageBoardBean messageBoardBean = getMessageBoard(serverId, messageBoard.getValue());
 					if (messageBoardBean != null) {
 						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-						messageBoardBean.setVip(userInfo.getVip());
+						if(userInfo != null)
+							messageBoardBean.setVip(userInfo.getVip());
 						messageBoardList.add(messageBoardBean);
 					}
 				}

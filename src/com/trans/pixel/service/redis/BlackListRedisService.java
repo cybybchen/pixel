@@ -48,9 +48,9 @@ public class BlackListRedisService extends RedisService{
 			hput(RedisKey.PREFIX+RedisKey.BLACKLIST_ACCOUNT, bean.getAccount()+"", bean.getUserId()+"");
 		else
 			hdelete(RedisKey.PREFIX+RedisKey.BLACKLIST_ACCOUNT, bean.getAccount()+"");
-		if(bean.isNoidfa())
+		if(bean.isNoidfa() && (bean.getIdfa()+"").length() > 5) {
 			hput(RedisKey.PREFIX+RedisKey.BLACKLIST_IDFA, bean.getIdfa()+"", bean.getUserId()+"");
-		else
+		}else
 			hdelete(RedisKey.PREFIX+RedisKey.BLACKLIST_IDFA, bean.getIdfa()+"");
 	}
 
