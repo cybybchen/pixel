@@ -248,7 +248,7 @@ public class UserTeamService {
 		log.debug("zhanli:"+myzhanli);
 		if(myzhanli != user.getZhanli()){
 			user.setZhanli(myzhanli);
-			userService.cache(user.buildShort());
+			userService.cache(user.getServerId(), user.buildShort());
 		}
 		team.setUser(user.buildShort());
 		
