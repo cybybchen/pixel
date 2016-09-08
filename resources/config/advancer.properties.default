@@ -8,7 +8,7 @@ serverurl=http://game.lolzj.cc:8082/Lol450/gamedata
 masterserver=http://game.lolzj.cc:8082/Lol450/datamanager
 slaveserver=http://game.lolzj.cc:8082/Lol450/datamanager
 redis.host=10.9.17.119
-jdbc.url=jdbc:mysql://10.9.24.74:3306/lol450_android?useUnicode=true&characterEncoding=UTF-8
+jdbc.url=jdbc:mysql://10.9.26.112:3306/lol450_android?useUnicode=true&characterEncoding=UTF-8
 
 #123.59.144.200
 #serverurl=http://123.59.144.200:8082/Lol450/gamedata
