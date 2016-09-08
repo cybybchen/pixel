@@ -243,12 +243,12 @@ function buildUserJson(key, value){
             json["mailList6"] = 1;
             json["mailList7"] = 1;
             json["friendList"] = 1;
-            json["DAILYSHOP"] = 1;
-            json["BLACKSHOP"] = 1;
-            json["UNIONSHOP"] = 1;
-            json["PVPSHOP"] = 1;
-            json["EXPEDITIONSHOP"] = 1;
-            json["LADDERSHOP"] = 1; 
+            // json["DAILYSHOP"] = 1;
+            // json["BLACKSHOP"] = 1;
+            // json["UNIONSHOP"] = 1;
+            // json["PVPSHOP"] = 1;
+            // json["EXPEDITIONSHOP"] = 1;
+            // json["LADDERSHOP"] = 1; 
         }
     }
     return json;
