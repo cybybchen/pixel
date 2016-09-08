@@ -20,7 +20,6 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.UnionConst;
-import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.Union;
@@ -44,15 +43,8 @@ public class UnionRedisService extends RedisService{
 	@Resource
 	public UserRedisService userRedisService;
 	
-	public Union getUnion(UserBean user) {
-		String unionvalue = this.hget(getUnionServerKey(user.getServerId()), user.getUnionId()+"");
-		Union.Builder unionbuilder = Union.newBuilder();
-		if(unionvalue == null)
-			return null;
-		if(!parseJson(unionvalue, unionbuilder)){
-			logger.warn("cannot build Union:"+user.getUnionId());
-			return null;
-		}
+	public Union.Builder getUnion(UserBean user) {
+		return getUnion(user.getServerId(), user.getUnionId());
 //		if (user.getUnionJob() >= 2) {
 //			Map<String, String> applyMap = this.hget(this.getUnionApplyKey(user.getUnionId()));
 //			for (String applyvalue : applyMap.values()) {
@@ -68,7 +60,19 @@ public class UnionRedisService extends RedisService{
 //			}
 //		});
 //		unionbuilder.addAllMembers(members);
-		return unionbuilder.build();
+		// return unionbuilder;
+	}
+	
+	public Union.Builder getUnion(final int serverId, final int unionId) {
+		String unionvalue = this.hget(getUnionServerKey(serverId), unionId+"");
+		Union.Builder unionbuilder = Union.newBuilder();
+		if(unionvalue == null)
+			return null;
+		if(!parseJson(unionvalue, unionbuilder)){
+			logger.warn("cannot build Union:"+unionId);
+			return null;
+		}
+		return unionbuilder;
 	}
 	
 	public List<Union> getBaseUnions(UserBean user) {
@@ -110,17 +114,6 @@ public class UnionRedisService extends RedisService{
 			}
 		});
 		return unions;
-	}
-	
-	public boolean getBaseUnion(Union.Builder unionbuilder, final int unionId, final int serverId) {
-		String unionvalue = this.hget(getUnionServerKey(serverId), unionId+"");
-		if(unionvalue == null)
-			return false;
-		if(!parseJson(unionvalue, unionbuilder)){
-			logger.warn("cannot build Union:"+unionId);
-			return false;
-		}
-		return true;
 	}
 	
 	public void apply(final int unionId,UserBean user) {
@@ -172,6 +165,7 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public void saveUnion(final Union union, int serverId) {
+		logger.debug("saveunion "+formatJson(union));
 		this.hput(getUnionServerKey(serverId), union.getId()+"", formatJson(union));
 	}
 	
@@ -197,15 +191,15 @@ public class UnionRedisService extends RedisService{
 		saveUnion(union, user.getServerId());
 	}
 
-	public void saveUnions(final List<Union> unions, UserBean user) {
-		Map<String, String> unionMap = new HashMap<String, String>();
-		for(Union union : unions){
-			String key = union.getId()+"";
-			String value = formatJson(union);
-			unionMap.put(key, value);
-		}
-		this.hputAll(getUnionServerKey(user.getServerId()), unionMap);
-	}
+//	public void saveUnions(final List<Union> unions, UserBean user) {
+//		Map<String, String> unionMap = new HashMap<String, String>();
+//		for(Union union : unions){
+//			String key = union.getId()+"";
+//			String value = formatJson(union);
+//			unionMap.put(key, value);
+//		}
+//		this.hputAll(getUnionServerKey(user.getServerId()), unionMap);
+//	}
 	
 	public int getNumOfMembers(final UserBean user){
 		Set<String> memberMap = this.smember(this.getUnionMemberKey(user));
@@ -435,7 +429,7 @@ public class UnionRedisService extends RedisService{
 		return map;
 	}
 	
-	public void saveUnionBoss(UnionBean union, UnionBoss boss) {
+	public void saveUnionBoss(Union.Builder union, UnionBoss boss) {
 		String key = RedisKey.UNION_BOSS_PREFIX + union.getId();
 		UnionBossRecord.Builder builder = UnionBossRecord.newBuilder();
 		Date date = null;

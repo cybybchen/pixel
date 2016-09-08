@@ -22,7 +22,7 @@ public class UnionTest extends BaseTest {
 	@Test
 	public void test() {
 		login();
-		testCreateUnion();
+//		testCreateUnion();
 		testGetUnion();
 //		testUnionApply();
 //		testGetUnionList();

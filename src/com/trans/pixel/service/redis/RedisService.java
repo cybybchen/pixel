@@ -236,6 +236,20 @@ public class RedisService {
 		});
 	}
 
+	public boolean waitLock(final String key) {
+		for(int i = 0; i < 10; i++) {
+			if(setLock(key))
+				return true;
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				logger.info(e.toString());
+				return false;
+			}
+		}
+		return false;
+	}
+
 //	/**
 //	 * 读取同步锁
 //	 */

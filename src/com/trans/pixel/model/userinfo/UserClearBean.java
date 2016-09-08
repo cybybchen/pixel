@@ -76,7 +76,7 @@ public class UserClearBean {
 
 	public UserClearBean init(long userId) {
 		setUserId(userId);
-		setHeroId(1);
+		setHeroId(0);
 		setPosition(1);
 		setClearId(1);
 		setCount(0);

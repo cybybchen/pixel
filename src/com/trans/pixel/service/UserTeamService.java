@@ -217,6 +217,10 @@ public class UserTeamService {
 			}
 			// saveTeamCache(user, 0, team.build());
 		}
+		if(user.getId() < 0) {
+			team.setUser(user.buildShort());
+			return team.build();
+		}
 		
 		int myzhanli = 0;
 		for (HeroInfo hero : team.getHeroInfoList()) {

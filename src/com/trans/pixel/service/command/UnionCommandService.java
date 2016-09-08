@@ -193,9 +193,11 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void attackUnionBoss(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user) {
-		Union union = unionService.getUnion(user);
+		Union.Builder union = unionService.getBaseUnion(user);
 		if(union == null){
-			getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 			return;
 		}
 		int bossId = cmd.getBossId();

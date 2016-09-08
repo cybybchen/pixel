@@ -73,19 +73,17 @@ public class UnionService extends FightService{
 		return redis.getBaseUnions(user);
 	}
 	
-	public Union getUnion(UserBean user) {
+	public Union.Builder getBaseUnion(UserBean user) {
 		if(user.getUnionId() == 0)
 			return null;
-		Union union = redis.getUnion(user);
-		List<UserInfo> members = redis.getMembers(user);
+		Union.Builder union = redis.getUnion(user);
 		if(union == null && user.getUnionId() != 0){//load union from db
 			UnionBean unionbean = unionMapper.selectUnionById(user.getUnionId());
-			redis.saveUnion(unionbean.build(), user);
-			union = redis.getUnion(user);
-			if(union != null && union.getMembersCount() == 0){//load members from db
-				members.clear();
+			if(unionbean != null){//load members from db
+				redis.saveUnion(unionbean.build(), user);
+				union = redis.getUnion(user);
+				List<UserInfo> members = new ArrayList<UserInfo>();
 				List<UserBean> beans = userService.getUserByUnionId(user.getUnionId());
-				Union.Builder builder = Union.newBuilder(union);
 				List<Long> memberIds = new ArrayList<Long>();
 				for(UserBean bean : beans){
 					memberIds.add(bean.getId());
@@ -93,12 +91,18 @@ public class UnionService extends FightService{
 					userService.cache(bean.getServerId(), bean.buildShort());
 				}
 				redis.saveMembers(memberIds, user);
-				union = builder.build();
 			}
 		}
 		if(union == null)
 			return null;
-		Union.Builder builder = Union.newBuilder(union);
+		return union;
+	}
+
+	public Union getUnion(UserBean user) {
+		Union.Builder union = getBaseUnion(user);
+		if(union == null)
+			return null;
+		List<UserInfo> members = redis.getMembers(user);
 		boolean needupdate = false;
 
 		int index = 0;
@@ -112,66 +116,68 @@ public class UnionService extends FightService{
 				zhanli += member.getZhanli()/10;
 			index++;
 		}
-		if(zhanli != builder.getZhanli()){
-			builder.setZhanli(zhanli);
+		if(zhanli != union.getZhanli()){
+			union.setZhanli(zhanli);
 			needupdate = true;
 		}
-		if(builder.getCount() != members.size()){
-			builder.setCount(members.size());
+		if(union.getCount() != members.size()){
+			union.setCount(members.size());
 			needupdate = true;
 		}
-		if(union.hasAttackId() && builder.getAttackCloseTime() < redis.now()){
-			builder.clearAttackId();
-			builder.clearAttackEndTime();
-			builder.clearAttackCloseTime();
+		if(union.hasAttackId() && union.getAttackCloseTime() < redis.now()){
+			union.clearAttackId();
+			union.clearAttackEndTime();
+			union.clearAttackCloseTime();
 			needupdate = true;
 		}
-		if(union.hasDefendId() && builder.getDefendCloseTime() < redis.now()){
-			builder.clearDefendId();
-			builder.clearDefendCloseTime();
-			builder.clearDefendEndTime();
+		if(union.hasDefendId() && union.getDefendCloseTime() < redis.now()){
+			union.clearDefendId();
+			union.clearDefendCloseTime();
+			union.clearDefendEndTime();
 			needupdate = true;
 		}
-		if(needupdate && redis.setLock("Union_"+builder.getId()))
-			redis.saveUnion(builder.build(), user);
+		if(needupdate && redis.setLock("Union_"+union.getId()))
+			redis.saveUnion(union.build(), user);
 
 		if(union.hasAttackId()){
 			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
-			builder.addAllAttacks(users);
+			union.addAllAttacks(users);
 		}
 		if(union.hasDefendId()){
 	 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
-	 		builder.addAllDefends(users);
+	 		union.addAllDefends(users);
 		}
-		builder.addAllMembers(members);
+		union.addAllMembers(members);
 		if(user.getUnionJob() > 0){
-			builder.addAllApplies(redis.getApplies(user.getUnionId()));
+			union.addAllApplies(redis.getApplies(user.getUnionId()));
 		}
 		
 		/**
 		 * 刷新定时工会boss
 		 */
 		crontabUnionBossActivity(user);
-		builder.addAllUnionBoss(getUnionBossList(user));
+		union.addAllUnionBoss(getUnionBossList(user));
 		
-		return builder.build();
+		return union.build();
 	}
 	
 	/**
 	 * 血战
 	 */
 	public void bloodFight(int attackUnionId, int defendUnionId, int serverId){
-		Union.Builder attackUnion = Union.newBuilder();
-		Union.Builder defendUnion = Union.newBuilder();
-		boolean hasattack = redis.getBaseUnion(attackUnion, attackUnionId, serverId);
-		boolean hasdefend = redis.getBaseUnion(defendUnion, defendUnionId, serverId);
+		Union.Builder attackUnion = redis.getUnion(serverId, attackUnionId);
+		Union.Builder defendUnion = redis.getUnion(serverId, defendUnionId);
+		boolean hasattack = (attackUnion != null);
+		boolean hasdefend = (defendUnion != null);
 		
 		if(hasattack && !hasdefend){
 			attackUnion.clearAttackId();
+			redis.waitLock("Union_"+attackUnion.getId());
 			redis.saveUnion(attackUnion.build(), serverId);
 			return;
 		}else if(!hasattack && hasdefend){
 			defendUnion.clearDefendId();
+			redis.waitLock("Union_"+defendUnion.getId());
 			redis.saveUnion(defendUnion.build(), serverId);
 			return;
 		}else if(!hasattack && !hasdefend){
@@ -223,10 +229,12 @@ public class UnionService extends FightService{
 		if(attacksuccess){
 			attackUnion.setPoint(attackUnion.getPoint()+defendUnion.getPoint()/5);
 			defendUnion.setPoint(defendUnion.getPoint()*4/5);
-			unionMapper.updateUnion(new UnionBean(attackUnion.build()));
-			unionMapper.updateUnion(new UnionBean(defendUnion.build()));
+			unionMapper.updateUnion(new UnionBean(attackUnion));
+			unionMapper.updateUnion(new UnionBean(defendUnion));
 		}
+		redis.waitLock("Union_"+attackUnion.getId());
 		redis.saveUnion(attackUnion.build(), serverId);
+		redis.waitLock("Union_"+defendUnion.getId());
 		redis.saveUnion(defendUnion.build(), serverId);
 		
 		/**
@@ -344,8 +352,9 @@ public class UnionService extends FightService{
 	public boolean isBloodFighting(long userId, UserBean user){
 		if(user.getUnionId() == 0)
 			return false;
-		Union.Builder builder = Union.newBuilder();
-		redis.getBaseUnion(builder, user.getUnionId(), user.getServerId());
+		Union.Builder builder = redis.getUnion(user.getServerId(), user.getUnionId());
+		if(builder == null)
+			return false;
 		if(builder.hasAttackId()){
 			List<UserInfo> users = redis.getFightQueue(builder.getId(), builder.getAttackId());
 			for(UserInfo userinfo : users){
@@ -369,8 +378,7 @@ public class UnionService extends FightService{
 			if(bean != null && bean.getUnionId() == 0){
 				if(getAreaFighting(userId, user) == 1)
 					return ErrorConst.AREA_FIGHT_BUSY;
-				Union.Builder builder = Union.newBuilder();
-				redis.getBaseUnion(builder, user.getUnionId(), user.getServerId());
+				Union.Builder builder = redis.getUnion(user.getServerId(), user.getUnionId());
 				if(builder.getCount() >= builder.getMaxCount())
 					return ErrorConst.UNION_FULL;
 				bean.setUnionId(user.getUnionId());
@@ -390,13 +398,12 @@ public class UnionService extends FightService{
 	}
 	
 	public ResultConst upgrade(UserBean user) {
-		Union.Builder builder = Union.newBuilder();
-		redis.getBaseUnion(builder, user.getUnionId(), user.getServerId());
-		if(!redis.setLock("Union_"+user.getUnionId()))
+		Union.Builder builder = redis.getUnion(user.getServerId(), user.getUnionId());
+		if(builder == null || !redis.setLock("Union_"+user.getUnionId()))
 			return ErrorConst.ERROR_LOCKED;
 		builder.setLevel(builder.getLevel()+1);
 		redis.saveUnion(builder.build(), user);
-		unionMapper.updateUnion(new UnionBean(builder.build()));
+		unionMapper.updateUnion(new UnionBean(builder));
 		return SuccessConst.UPGRADE_UNION_SUCCESS;
 	}
 	
@@ -437,8 +444,7 @@ public class UnionService extends FightService{
 	}
 	
 	public ResultConst attack(int attackId, long teamid, UserBean user){
-		Union.Builder builder = Union.newBuilder();
-		redis.getBaseUnion(builder, user.getUnionId(), user.getServerId());
+		Union.Builder builder = redis.getUnion(user.getServerId(), user.getUnionId());
 		if(builder.hasAttackId()){
 			if(redis.now() > builder.getAttackCloseTime()){
 				return ErrorConst.JOIN_END;
@@ -447,11 +453,10 @@ public class UnionService extends FightService{
 			userTeamService.saveTeamCache(user, teamid, team);
 			redis.attack(builder.getAttackId(), user);
 		}else if(user.getUnionJob() >= UnionConst.UNION_FUHUIZHANG && attackId != 0 && redis.now() > builder.getAttackCloseTime()){
-			Union.Builder defendUnion = Union.newBuilder();
 			builder.setAttackId(attackId);
 			builder.setAttackCloseTime(redis.today(24));
 			builder.setAttackEndTime(builder.getAttackCloseTime()+300);
-			redis.getBaseUnion(defendUnion, builder.getAttackId(), user.getServerId());
+			Union.Builder defendUnion = redis.getUnion(user.getServerId(), builder.getAttackId());
 			defendUnion.setDefendId(builder.getId());
 			defendUnion.setDefendCloseTime(redis.today(24));
 			builder.setDefendEndTime(builder.getDefendCloseTime()+300);
@@ -472,8 +477,7 @@ public class UnionService extends FightService{
 	}
 	
 	public ResultConst defend(long teamid, UserBean user){
-		Union.Builder union = Union.newBuilder();
-		redis.getBaseUnion(union, user.getUnionId(), user.getServerId());
+		Union.Builder union = redis.getUnion(user.getServerId(), user.getUnionId());
 		if(union.hasDefendId()){
 			if(redis.now() > union.getDefendCloseTime()){
 				return ErrorConst.JOIN_END;
@@ -525,12 +529,80 @@ public class UnionService extends FightService{
 		if (user.getUnionId() > 0)
 			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_KILLMONSTER, targetId, count);
 	}
+
+	public void updateKillMonsterRecord(Union.Builder union, int targetId, int count) {
+		int targetCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(union.getKillMonsterRecord());
+			targetCount = json.getInt("" + targetId) + count;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + targetId, targetCount);
+		union.setKillMonsterRecord(json.toString());
+	}
+	public void updateCostRecord(Union.Builder union, int targetId, int count) {
+		int targetCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(union.getCostRecord());
+			targetCount = json.getInt("" + targetId) + count;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + targetId, targetCount);
+		union.setCostRecord(json.toString());
+	}
+	public void updateUnionBossRecord(Union.Builder union, int bossId) {
+		int bossCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(union.getBossRecord());
+			bossCount = json.getInt("" + bossId) + 1;	
+		} catch (Exception e) {
+			
+		}
+		json.put("" + bossId, bossCount);
+		union.setBossRecord(json.toString());
+	}
+	public int getUnionBossCount(Union.Builder union, int bossId) {
+		int bossCount = 0;
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(union.getBossRecord());
+			bossCount = json.getInt("" + bossId);	
+		} catch (Exception e) {
+			
+		}
+		return bossCount;
+	}
+	public void updateUnionBossEndTime(Union.Builder union, int bossId) {
+		JSONObject json = new JSONObject();
+		try {
+			json = JSONObject.fromObject(union.getBossEndTime());
+			json.put("" + bossId, DateUtil.getCurrentDateString());
+		} catch (Exception e) {
+			
+		}
+		union.setBossEndTime(json.toString());
+	}
+	public String getUnionBossEndTime(Union.Builder union, int bossId) {
+		JSONObject json = new JSONObject();
+		String time = "";
+		try {
+			json = JSONObject.fromObject(union.getBossEndTime());
+			time = json.getString("" + bossId);
+		} catch (Exception e) {
+			time = "";
+		}
+		return time;
+	}
 	
 	public void doUnionBossRecord(UserBean user, int type, int targetId, int count) {
-		Union union = redis.getUnion(user);
+		Union.Builder union = redis.getUnion(user);
 		if (union == null)
 			return;
-		UnionBean unionBean = new UnionBean(union);
 		Map<String, UnionBoss> map = redis.getUnionBossConfig();
 		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -539,18 +611,19 @@ public class UnionService extends FightService{
 			if (unionBoss.getType() == type) {
 				if (unionBoss.getTargetid() == targetId) {
 					if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER)
-						unionBean.updateKillMonsterRecord(targetId, count);
+						updateKillMonsterRecord(union, targetId, count);
 					else if (type == UnionConst.UNION_BOSS_TYPE_COST)
-						unionBean.updateCostRecord(targetId, count);
+						updateCostRecord(union, targetId, count);
 					
-					calUnionBossRefresh(unionBean, unionBoss);
-					redis.saveUnion(unionBean.build(), user);
+					calUnionBossRefresh(union, unionBoss);
+					redis.waitLock("Union_"+union.getId());
+					redis.saveUnion(union.build(), user);
 				}
 			}
 		}
 	}
 	
-	public void calUnionBossRefresh(UnionBean union, UnionBoss unionBoss) {
+	public void calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss) {
 		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
 		if (unionBossRecord != null) {
 			if (unionBossRecord.getEndTime().equals("")) {
@@ -559,7 +632,7 @@ public class UnionService extends FightService{
 			} else if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()))
 				return;
 		}
-		int bossCount = union.getUnionBossCount(unionBoss.getId());
+		int bossCount = getUnionBossCount(union, unionBoss.getId());
 		JSONObject json = null;
 		if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_COST) {
 			json = JSONObject.fromObject(union.getCostRecord());
@@ -568,7 +641,7 @@ public class UnionService extends FightService{
 		} 
 		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss) 
 				|| (json != null && json.getInt("" + unionBoss.getTargetid()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
-			union.updateUnionBossRecord(unionBoss.getId());
+			updateUnionBossRecord(union, unionBoss.getId());
 			redis.delUnionBossRankKey(union.getId(), unionBoss.getId());
 			redis.saveUnionBoss(union, unionBoss);
 		}	
@@ -587,7 +660,7 @@ public class UnionService extends FightService{
 		return builderList;
 	}
 	
-	public UnionBossRecord attackUnionBoss(UserBean user, Union union, int bossId, int hp, MultiReward.Builder rewards) {
+	public UnionBossRecord attackUnionBoss(UserBean user, Union.Builder union, int bossId, int hp, MultiReward.Builder rewards) {
 		UnionBossRecord.Builder unionBossRecord = UnionBossRecord.newBuilder(redis.getUnionBoss(user.getUnionId(), bossId));
 		if (DateUtil.timeIsOver(unionBossRecord.getEndTime())) {
 			return unionBossRecord.build();
@@ -596,10 +669,10 @@ public class UnionService extends FightService{
 		unionBossRecord.setHp(unionBossRecord.getHp() - hp);
 		if (unionBossRecord.getHp() <= 0) {
 			doUnionBossRankReward(user.getUnionId(), bossId);
-			UnionBean unionBean = new UnionBean(union);
-			unionBean.updateUnionBossEndTime(bossId);
-			calUnionBossRefresh(unionBean, redis.getUnionBoss(bossId));
-			redis.saveUnion(unionBean.build(), user);
+			updateUnionBossEndTime(union, bossId);
+			calUnionBossRefresh(union, redis.getUnionBoss(bossId));
+			redis.waitLock("Union_"+union.getId());
+			redis.saveUnion(union.build(), user);
 		}
 		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
 		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);
@@ -687,9 +760,9 @@ public class UnionService extends FightService{
 		return rankList;
 	}
 	
-	private boolean canRefreshCrontabBoss(UnionBean union, UnionBoss boss) {
+	private boolean canRefreshCrontabBoss(Union.Builder union, UnionBoss boss) {
 		Date current = DateUtil.getDate();
-		Date last = DateUtil.getDate(union.getUnionBossEndTime(boss.getId()));
+		Date last = DateUtil.getDate(getUnionBossEndTime(union, boss.getId()));
 		Date bossTime = DateUtil.setToDayTime(current, boss.getTargetcount());
 		if (current.before(bossTime))
 			return false;
