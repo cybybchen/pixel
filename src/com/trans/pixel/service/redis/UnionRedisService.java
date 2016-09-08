@@ -474,7 +474,8 @@ public class UnionRedisService extends RedisService{
 		String key = RedisKey.UNION_BOSS_PREFIX + unionId;
 		
 		UnionBossRecord.Builder builder = UnionBossRecord.newBuilder();
-		if(parseJson(hget(key, "" + bossId), builder))
+		String value = hget(key, "" + bossId);
+		if(value != null && parseJson(value, builder))
 			return builder.build();
 		
 		return null;

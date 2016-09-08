@@ -136,8 +136,10 @@ public class UnionService extends FightService{
 			union.clearDefendEndTime();
 			needupdate = true;
 		}
-		if(needupdate && redis.setLock("Union_"+union.getId()))
+		if(needupdate && redis.setLock("Union_"+union.getId())){
 			redis.saveUnion(union.build(), user);
+			redis.clearLock("Union_"+union.getId());
+		}
 
 		if(union.hasAttackId()){
 			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
@@ -174,11 +176,13 @@ public class UnionService extends FightService{
 			attackUnion.clearAttackId();
 			redis.waitLock("Union_"+attackUnion.getId());
 			redis.saveUnion(attackUnion.build(), serverId);
+			redis.clearLock("Union_"+attackUnion.getId());
 			return;
 		}else if(!hasattack && hasdefend){
 			defendUnion.clearDefendId();
 			redis.waitLock("Union_"+defendUnion.getId());
 			redis.saveUnion(defendUnion.build(), serverId);
+			redis.clearLock("Union_"+defendUnion.getId());
 			return;
 		}else if(!hasattack && !hasdefend){
 			return;
@@ -234,8 +238,10 @@ public class UnionService extends FightService{
 		}
 		redis.waitLock("Union_"+attackUnion.getId());
 		redis.saveUnion(attackUnion.build(), serverId);
+		redis.clearLock("Union_"+attackUnion.getId());
 		redis.waitLock("Union_"+defendUnion.getId());
 		redis.saveUnion(defendUnion.build(), serverId);
+		redis.clearLock("Union_"+defendUnion.getId());
 		
 		/**
 		 * 公会血战的活动
@@ -404,6 +410,7 @@ public class UnionService extends FightService{
 		builder.setLevel(builder.getLevel()+1);
 		redis.saveUnion(builder.build(), user);
 		unionMapper.updateUnion(new UnionBean(builder));
+		redis.clearLock("Union_"+builder.getId());
 		return SuccessConst.UPGRADE_UNION_SUCCESS;
 	}
 	
@@ -466,6 +473,8 @@ public class UnionService extends FightService{
 				redis.saveUnion(builder.build(), user);
 				redis.saveUnion(defendUnion.build(), user);
 				redis.saveFightKey(builder.getId(), defendUnion.getId(), user.getServerId());
+				redis.clearLock("Union_"+builder.getId());
+				redis.clearLock("Union_"+defendUnion.getId());
 			}else{
 				return ErrorConst.ERROR_LOCKED;
 			}
@@ -498,15 +507,8 @@ public class UnionService extends FightService{
 			for(Entry<String, String> entry : map.entrySet()){
 				int attackUnionId = Integer.parseInt(entry.getKey());
 				int defendUnionId = Integer.parseInt(entry.getValue());
-				try {
-					while(!redis.setLock("Union_"+attackUnionId, 60))
-							Thread.sleep(1);
-					while(!redis.setLock("Union_"+defendUnionId, 60))
-							Thread.sleep(1);
-				} catch (InterruptedException e) {
-					logger.debug(e);
-					return;
-				} 
+				redis.waitLock("Union_"+attackUnionId, 60);
+				redis.waitLock("Union_"+defendUnionId, 60);
 				bloodFight(attackUnionId, defendUnionId, serverId);
 				redis.deleteFightKey(attackUnionId, serverId);
 				redis.clearLock("Union_"+attackUnionId);
@@ -616,8 +618,10 @@ public class UnionService extends FightService{
 						updateCostRecord(union, targetId, count);
 					
 					calUnionBossRefresh(union, unionBoss);
-					redis.waitLock("Union_"+union.getId());
-					redis.saveUnion(union.build(), user);
+					if(redis.waitLock("Union_"+union.getId())){
+						redis.saveUnion(union.build(), user);
+						redis.clearLock("Union_"+union.getId());
+					}
 				}
 			}
 		}
@@ -666,13 +670,16 @@ public class UnionService extends FightService{
 			return unionBossRecord.build();
 		}
 		
-		unionBossRecord.setHp(unionBossRecord.getHp() - hp);
-		if (unionBossRecord.getHp() <= 0) {
+		
+		if (unionBossRecord.getHp() - hp <= 0) {
+			if(!redis.waitLock("Union_"+union.getId()))
+				return unionBossRecord.build();
+			unionBossRecord.setHp(unionBossRecord.getHp() - hp);
 			doUnionBossRankReward(user.getUnionId(), bossId);
 			updateUnionBossEndTime(union, bossId);
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId));
-			redis.waitLock("Union_"+union.getId());
 			redis.saveUnion(union.build(), user);
+			redis.clearLock("Union_"+union.getId());
 		}
 		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
 		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);

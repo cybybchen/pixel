@@ -237,11 +237,15 @@ public class RedisService {
 	}
 
 	public boolean waitLock(final String key) {
-		for(int i = 0; i < 10; i++) {
-			if(setLock(key))
+		return waitLock(key, 4);
+	}
+
+	public boolean waitLock(final String key, int seconds) {
+		for(int i = 0; i < 8; i++) {
+			if(setLock(key, seconds))
 				return true;
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				logger.info(e.toString());
 				return false;
