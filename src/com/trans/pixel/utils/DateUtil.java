@@ -644,6 +644,8 @@ public class DateUtil {
 			
 		}  
 		
+		if (endDate == null)
+			return false;
 		if (currentDate.before(endDate))
 			return false;
 		
