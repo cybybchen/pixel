@@ -1,37 +1,37 @@
 <data>
-<boss id="200001" name="灵能之神" type="1" targetid="0" targetcount="12" time="-1" count="1" img="100001" des="浑身包围灵能的巨怪。" zhanli="150000" ad="2500" ap="2500" arm="2000" mr="2000" adi="150" api="150" rating="1500" speed="1500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="100" >
+<boss id="200001" name="灵能之神" type="1" targetid="0" targetcount="12" refreshtime="24" lasttime="-1" count="1" img="100001" des="浑身包围灵能的巨怪。" zhanli="150000" ad="2500" ap="2500" arm="2000" mr="2000" adi="150" api="150" rating="1500" speed="1500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="100" >
 <skill skillid="50050" skilllevel="2" />
 <skill skillid="50051" skilllevel="2" />
 </boss>
-<boss id="200002" name="海滩巨人" type="2" targetid="1101" targetcount="150" time="-1" count="1" img="100001" des="每天晒晒太阳~" zhanli="150000" ad="2500" ap="2500" arm="2000" mr="2000" adi="150" api="150" rating="1500" speed="1500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="100" >
+<boss id="200002" name="海滩巨人" type="2" targetid="1101" targetcount="150" refreshtime="24" lasttime="-1" count="1" img="100001" des="每天晒晒太阳~" zhanli="150000" ad="2500" ap="2500" arm="2000" mr="2000" adi="150" api="150" rating="1500" speed="1500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="100" >
 <skill skillid="50043" skilllevel="2" />
 <skill skillid="50044" skilllevel="2" />
 </boss>
-<boss id="200003" name="土地精" type="3" targetid="1002" targetcount="2000" time="-1" count="1" img="100001" des="充满怒火的狂战士，见人就打。" zhanli="150000" ad="2500" ap="2500" arm="2000" mr="2000" adi="150" api="150" rating="1500" speed="1500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="100" >
+<boss id="200003" name="土地精" type="3" targetid="1002" targetcount="2000" refreshtime="24" lasttime="-1" count="1" img="100001" des="充满怒火的狂战士，见人就打。" zhanli="150000" ad="2500" ap="2500" arm="2000" mr="2000" adi="150" api="150" rating="1500" speed="1500" steal="1" jianshang_per="0" heal="2000" duochong="100" level="25" HP="100" >
 <skill skillid="50074" skilllevel="2" />
 <skill skillid="50075" skilllevel="2" />
 </boss>
-<boss id="200004" name="灵能大神" type="1" targetid="0" targetcount="18" time="-1" count="1" img="100001" des="浑身包围灵能的巨怪。" zhanli="250000" ad="4500" ap="4500" arm="4000" mr="4000" adi="500" api="500" rating="1500" speed="1500" steal="1" jianshang_per="10" heal="2000" duochong="100" level="35" HP="150" >
+<boss id="200004" name="灵能大神" type="1" targetid="0" targetcount="18" refreshtime="24" lasttime="-1" count="1" img="100001" des="浑身包围灵能的巨怪。" zhanli="250000" ad="4500" ap="4500" arm="4000" mr="4000" adi="500" api="500" rating="1500" speed="1500" steal="1" jianshang_per="10" heal="2000" duochong="100" level="35" HP="150" >
 <skill skillid="50050" skilllevel="4" />
 <skill skillid="50051" skilllevel="4" />
 </boss>
-<boss id="200005" name="海岸巨人" type="2" targetid="1101" targetcount="400" time="-1" count="2" img="100001" des="每天晒晒太阳~" zhanli="250000" ad="4500" ap="4500" arm="4000" mr="4000" adi="500" api="500" rating="1500" speed="1500" steal="1" jianshang_per="10" heal="2000" duochong="100" level="35" HP="150" >
+<boss id="200005" name="海岸巨人" type="2" targetid="1101" targetcount="400" refreshtime="24" lasttime="-1" count="2" img="100001" des="每天晒晒太阳~" zhanli="250000" ad="4500" ap="4500" arm="4000" mr="4000" adi="500" api="500" rating="1500" speed="1500" steal="1" jianshang_per="10" heal="2000" duochong="100" level="35" HP="150" >
 <skill skillid="50043" skilllevel="4" />
 <skill skillid="50044" skilllevel="4" />
 </boss>
-<boss id="200006" name="大地精" type="3" targetid="1002" targetcount="3500" time="-1" count="2" img="100001" des="充满怒火的狂战士，见人就打。" zhanli="250000" ad="4500" ap="4500" arm="4000" mr="4000" adi="500" api="500" rating="1500" speed="1500" steal="1" jianshang_per="10" heal="2000" duochong="100" level="35" HP="150" >
+<boss id="200006" name="大地精" type="3" targetid="1002" targetcount="3500" refreshtime="24" lasttime="-1" count="2" img="100001" des="充满怒火的狂战士，见人就打。" zhanli="250000" ad="4500" ap="4500" arm="4000" mr="4000" adi="500" api="500" rating="1500" speed="1500" steal="1" jianshang_per="10" heal="2000" duochong="100" level="35" HP="150" >
 <skill skillid="50074" skilllevel="4" />
 <skill skillid="50075" skilllevel="4" />
 </boss>
-<boss id="200007" name="灵能巨神" type="3" targetid="1003" targetcount="500000" time="-1" count="2" img="100001" des="浑身包围灵能的巨怪。" zhanli="400000" ad="7000" ap="7000" arm="8000" mr="8000" adi="1000" api="1000" rating="1500" speed="1500" steal="1" jianshang_per="25" heal="2000" duochong="100" level="50" HP="200" >
+<boss id="200007" name="灵能巨神" type="3" targetid="1003" targetcount="500000" refreshtime="24" lasttime="-1" count="2" img="100001" des="浑身包围灵能的巨怪。" zhanli="400000" ad="7000" ap="7000" arm="8000" mr="8000" adi="1000" api="1000" rating="1500" speed="1500" steal="1" jianshang_per="25" heal="2000" duochong="100" level="50" HP="200" >
 <skill skillid="50050" skilllevel="6" />
 <skill skillid="50051" skilllevel="6" />
 </boss>
-<boss id="200008" name="海浪巨人" type="2" targetid="1101" targetcount="800" time="-1" count="2" img="100001" des="每天晒晒太阳~" zhanli="400000" ad="7000" ap="7000" arm="8000" mr="8000" adi="1000" api="1000" rating="1500" speed="1500" steal="1" jianshang_per="25" heal="2000" duochong="100" level="50" HP="200" >
+<boss id="200008" name="海浪巨人" type="2" targetid="1101" targetcount="800" refreshtime="24" lasttime="-1" count="2" img="100001" des="每天晒晒太阳~" zhanli="400000" ad="7000" ap="7000" arm="8000" mr="8000" adi="1000" api="1000" rating="1500" speed="1500" steal="1" jianshang_per="25" heal="2000" duochong="100" level="50" HP="200" >
 <skill skillid="50043" skilllevel="6" />
 <skill skillid="50044" skilllevel="6" />
 </boss>
-<boss id="200009" name="地精王" type="3" targetid="1002" targetcount="10000" time="-1" count="2" img="100001" des="充满怒火的狂战士，见人就打。" zhanli="400000" ad="7000" ap="7000" arm="8000" mr="8000" adi="1000" api="1000" rating="1500" speed="1500" steal="1" jianshang_per="25" heal="2000" duochong="100" level="50" HP="200" >
+<boss id="200009" name="地精王" type="3" targetid="1002" targetcount="10000" refreshtime="24" lasttime="-1" count="2" img="100001" des="充满怒火的狂战士，见人就打。" zhanli="400000" ad="7000" ap="7000" arm="8000" mr="8000" adi="1000" api="1000" rating="1500" speed="1500" steal="1" jianshang_per="25" heal="2000" duochong="100" level="50" HP="200" >
 <skill skillid="50074" skilllevel="6" />
 <skill skillid="50075" skilllevel="6" />
 </boss>

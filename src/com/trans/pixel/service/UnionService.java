@@ -629,10 +629,7 @@ public class UnionService extends FightService{
 	public boolean calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss) {
 		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
 		if (unionBossRecord != null) {
-			if (unionBossRecord.getEndTime().equals("")) {
-				if (unionBossRecord.getHp() > 0)
-					return false;
-			} else if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()))
+			if (!DateUtil.timeIsOver(DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), unionBoss.getRefreshtime())))
 				return false;
 		}
 		int bossCount = getUnionBossCount(union, unionBoss.getId());
@@ -671,8 +668,14 @@ public class UnionService extends FightService{
 			return unionBossRecord.build();
 		}
 		
+		UnionBoss unionBoss = redis.getUnionBoss(bossId);
+		Map<Integer, Integer> unionBossMap = user.getUnionBossMap();
+		if (unionBossMap.get(bossId) >= unionBoss.getCount())
+			return unionBossRecord.build();
 		
 		if (unionBossRecord.getHp() - hp <= 0) {
+			if (!redis.setLock("UnionBoss_" + bossId, 10))
+				return unionBossRecord.build();
 			if(!redis.waitLock("Union_"+union.getId()))
 				return unionBossRecord.build();
 			unionBossRecord.setHp(unionBossRecord.getHp() - hp);
@@ -681,11 +684,18 @@ public class UnionService extends FightService{
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId));
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
-		}
+			redis.clearLock("UnionBoss_" + bossId);
+		} else
+			unionBossRecord.setHp(unionBossRecord.getHp() - hp);
+		
 		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
 		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);
 		
 		rewards.addAllLoot(calUnionBossReward(bossId));
+		
+		unionBossMap.put(bossId, unionBossMap.get(bossId));
+		user.setUnionBossMap(unionBossMap);
+		userService.updateUser(user);
 		
 		return unionBossRecord.build();
 	}

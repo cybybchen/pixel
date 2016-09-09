@@ -650,6 +650,26 @@ public class DateUtil {
 		return true;
 	}
 	
+	public static boolean timeIsOver(Date endTime) {
+		return timeIsOver(endTime, TimeConst.DEFAULT_DATETIME_FORMAT);
+	}
+	
+	public static boolean timeIsOver(Date endTime, String simpleDate) {
+		SimpleDateFormat df = new SimpleDateFormat(simpleDate);
+		Date currentDate = null;
+		String currentTimeStr = df.format(new Date());
+		try {
+			currentDate = df.parse(currentTimeStr);
+		} catch (ParseException e) {
+			
+		}  
+		
+		if (currentDate.before(endTime))
+			return false;
+		
+		return true;
+	}
+	
 	public static int getWeekDay() {
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date());

@@ -52,6 +52,7 @@ message UserInfo {
 	optional int32 zhanliMax = 65;
 	optional int32 sevenLoginDays = 66;
 	optional int32 sevenSignStatus = 67;
+	repeated UnionBossRecord unionBossRecord = 68;
 }
 
 message ServerData {
@@ -685,13 +686,14 @@ message VipList {
 
 message AreaInfo {//可争夺区域
 	required int32 id = 1;//区域ID
-	required string name = 2;
-	required int32 zhanli = 3;//开放所需等级
+	optional string name = 2;
+	optional int32 zhanli = 3;//开放所需等级
 	optional bool opened = 7;//是否开放
 	repeated AreaResource resources = 4;//区域资源点
 	repeated AreaBoss bosses = 5;//区域BOSS
 	repeated AreaMonster monsters = 6;//区域怪物
 	optional int32 level = 8;
+	optional int32 zhanlicount = 9;
 }
 
 message AreaMode {//区域争夺
@@ -1261,13 +1263,15 @@ message UnionBoss {
 	optional int32 type = 2;
 	optional int32 targetid = 3;
 	optional int32 targetcount = 4;
-	optional int32 time = 5;
+	optional int32 lasttime = 5;
 	optional int32 HP = 6;
 	message Skill {
 		optional int32 skilid = 1;
 		optional int32 skilllevel = 2;
 	}
 	repeated Skill skill = 7;
+	optional int32 refreshtime = 8;
+	optional int32 count = 9;
 }
 
 message UnionBosslootList {
@@ -1306,6 +1310,8 @@ message UnionBossRecord {
 	optional string endTime = 3;
 	optional int32 myAttackHp = 4;
 	repeated UserRank ranks = 5;
+	optional string startTime = 6;
+	optional int32 count = 7;
 }
 
 message StrengthenList {

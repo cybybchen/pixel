@@ -3,6 +3,7 @@ package com.trans.pixel.service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -123,6 +124,7 @@ public class UserService {
 		user.setPvpMineLeftTime(5);
 		user.setFreeLotteryCoinLeftTime(5);
 		user.setSevenSignStatus(0);
+		user.setUnionBossMap(new HashMap<Integer, Integer>());
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
 			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());

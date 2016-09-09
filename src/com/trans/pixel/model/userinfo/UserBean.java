@@ -1,7 +1,13 @@
 package com.trans.pixel.model.userinfo;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.protoc.Commands.JewelPool;
+import com.trans.pixel.protoc.Commands.UnionBossRecord;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.LibaoService;
 
@@ -90,6 +96,7 @@ public class UserBean {
 	private int lotteryStatus = 0;
 	private int sevenLoginDays = 0;
 	private int sevenSignStatus = 0;
+	private Map<Integer, Integer> unionBossMap = new HashMap<Integer, Integer>();
 	/**
 	 * 当前活跃度
 	 */
@@ -994,6 +1001,12 @@ public class UserBean {
 	public void setSevenSignStatus(int sevenSignStatus) {
 		this.sevenSignStatus = sevenSignStatus;
 	}
+	public Map<Integer, Integer> getUnionBossMap() {
+		return unionBossMap;
+	}
+	public void setUnionBossMap(Map<Integer, Integer> unionBossMap) {
+		this.unionBossMap = unionBossMap;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1121,6 +1134,14 @@ public class UserBean {
 		builder.setFailed(failed);
 		builder.setZhanliMax(zhanliMax);
 		
+		Iterator<Entry<Integer, Integer>> it = unionBossMap.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<Integer, Integer> entry = it.next();
+			UnionBossRecord.Builder unionBossRecordBuilder = UnionBossRecord.newBuilder();
+			unionBossRecordBuilder.setBossId(entry.getKey());
+			unionBossRecordBuilder.setCount(entry.getValue());
+			builder.addUnionBossRecord(unionBossRecordBuilder.build());
+		}
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {
