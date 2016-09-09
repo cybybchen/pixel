@@ -1628,6 +1628,9 @@ message ResponseGetUserFriendListCommand {
 message RequestAreaCommand {//区域争夺
 }
 
+message RequestRefreshAreaCommand {//重置区域
+}
+
 message RequestUnlockAreaCommand {//解锁区域
 	required int32 id = 1;
 	required int32 zhanli = 2;
@@ -1635,6 +1638,7 @@ message RequestUnlockAreaCommand {//解锁区域
 
 message ResponseAreaCommand {
 	repeated AreaInfo areas = 1;
+	optional int64 endTime = 3;
 	optional bool hasreward = 2;
 }
 
@@ -2303,6 +2307,7 @@ message RequestCommand {
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
 	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestAreaCommand areaCommand = 26;
+	optional RequestRefreshAreaCommand refreshAreaCommand = 154;
 	optional RequestUseAreaEquipCommand useAreaEquipCommand = 137;
 	optional RequestAreaResourceCommand areaResourceCommand = 136;
 	optional RequestUnlockAreaCommand unlockAreaCommand = 133;

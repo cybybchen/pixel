@@ -18,7 +18,6 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.mapper.UserAreaPropMapper;
 import com.trans.pixel.model.userinfo.UserAreaPropBean;
@@ -133,14 +132,17 @@ public class AreaFightService extends FightService{
 		rewardService.doRewards(user, rewards.build());
 
 		AreaMode.Builder areamode = redis.getAreaMode(user);
-		int level = redis.addLevel(monster.getBelongto(), monster.getLevel1(), user);
-		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
-			if(user.getAreaUnlock() == monster.getBelongto() && areainfo.getId() > user.getAreaUnlock()){
-				if(level >= areainfo.getZhanli()){
-					unlockArea(areainfo.getId(), level, user);
+		Integer[] level = redis.addLevel(monster.getBelongto(), monster.getLevel1(), user);
+		if(level[2] == 0)
+			for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
+				if(user.getAreaUnlock() == monster.getBelongto() && areainfo.getId() > user.getAreaUnlock()){
+					if(level[1] >= areainfo.getZhanli()){
+						unlockArea(areainfo.getId(), level[1], user);
+						level[2] = 1;
+						redis.saveLevel(monster.getBelongto(), level, user);
+					}
 				}
 			}
-		}
 		costEnergy(user, monster.getPl());
 		return true;
 	}
@@ -495,6 +497,13 @@ public class AreaFightService extends FightService{
 		}
 	}
 	
+	public boolean refreshArea(UserBean user){
+		redis.deleteMonsters(user);
+		user.setAreaMonsterRefreshTime(redis.now()-24*3600);
+		redis.clearLevel(user);
+		return true;
+	}
+	
 	public boolean unlockArea(int id, int zhanli, UserBean user){
 		AreaMode.Builder areamode = redis.getAreaMode(user);
 		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
@@ -600,10 +609,15 @@ public class AreaFightService extends FightService{
 		Map<String, String> bosstimeMap = redis.getBossTimes(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 //		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
-		Map<Integer, Integer> levelMap = redis.getLevels(user);
+		Map<Integer, Integer[]> levelMap = redis.getLevels(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
 		for (AreaInfo.Builder areabuilder : areas) {
-			areabuilder.setLevel(levelMap.containsKey(areabuilder.getId())? levelMap.get(areabuilder.getId()) : 0);
+			if(levelMap.containsKey(areabuilder.getId())){
+				Integer[] level = levelMap.get(areabuilder.getId());
+				areabuilder.setLevel(level[0]);
+				areabuilder.setZhanlicount(level[1]);
+			}
+			areabuilder.setLevel(levelMap.containsKey(areabuilder.getId())? levelMap.get(areabuilder.getId())[0] : 0);
 			if(!areabuilder.getOpened())
 				continue;
 			// 更新世界BOSS

@@ -100,6 +100,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
@@ -838,6 +839,12 @@ public class GameDataScreen extends RequestScreen {
 		return true;//SevenLoginSignCommand
 	}//SevenLoginSignCommand
 	//add handleCommand here
+	
+	@Override
+	protected boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user) {
+		areaCommandService.refreshArea(cmd, responseBuilder, user);
+		return true;
+	}
 	
 	@Override
 	protected boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user) {

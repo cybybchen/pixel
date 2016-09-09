@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
@@ -50,6 +51,12 @@ public class AreaCommandService extends BaseCommandService{
 		// 	responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.UNLOCK_AREA));
 		responseBuilder.setAreaCommand(getAreas(user));
 	}
+
+	public void refreshArea(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user){
+		if(service.refreshArea(user))
+			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.UNLOCK_AREA));
+		responseBuilder.setAreaCommand(getAreas(user));
+	}
 	
 	public void Areas(RequestAreaCommand cmd, Builder responseBuilder, UserBean user){
 		Collection<AreaEquip> equips = service.AreaEquips(user);
@@ -65,6 +72,7 @@ public class AreaCommandService extends BaseCommandService{
 		ResponseAreaCommand.Builder builder = ResponseAreaCommand.newBuilder();
 		builder.addAllAreas(areas);
 		builder.setHasreward(service.hasReward(user));
+		builder.setEndTime(user.getAreaRefreshTime());
 		return builder.build();
 	}
 

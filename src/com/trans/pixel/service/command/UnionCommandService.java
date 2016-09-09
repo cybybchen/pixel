@@ -1,6 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -27,7 +26,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUnionBossCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionListCommand;
-import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UnionBossRecord;
 import com.trans.pixel.service.LogService;

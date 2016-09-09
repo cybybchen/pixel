@@ -71,6 +71,7 @@ public class UserBean {
 	private long areaMonsterRefreshTime = 0;
 	private int areaEnergy = 0;
 	private int areaUnlock = 0;
+	private long areaRefreshTime = 0;
 	private int pvpUnlock = 0;
 	private int heroLimit = 0;
 	private String composeSkill = "";
@@ -204,6 +205,18 @@ public class UserBean {
 	 */
 	public void setViplibao2(int viplibao2) {
 		this.viplibao2 = viplibao2;
+	}
+	/**
+	 * 下次area刷新时间
+	 */
+	public long getAreaRefreshTime() {
+		return areaRefreshTime;
+	}
+	/**
+	 * 下次area刷新时间
+	 */
+	public void setAreaRefreshTime(long areaRefreshTime) {
+		this.areaRefreshTime = areaRefreshTime;
 	}
 	/**
 	 * 下次pvp刷新时间

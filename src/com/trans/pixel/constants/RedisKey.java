@@ -58,6 +58,7 @@ public class RedisKey {
 	public final static String AREAMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonsterReward";
 	public final static String AREAEQUIP_CONFIG = PREFIX+CONFIG_PREFIX+"AreaEquip";
 	public final static String AREALEVEL = PREFIX+"AreaLevel_";
+	public final static String AREAZHANLICOUNT = PREFIX+"AreaZhanlicount_";
 	public final static String AREASET = PREFIX+CONFIG_PREFIX+"AreaSet";
 	public final static String PURCHASECOIN_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoin";
 	public final static String PURCHASECOINREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseCoinReward";

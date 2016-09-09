@@ -321,7 +321,7 @@ public class AreaRedisService extends RedisService{
 		AreaRefreshList timelist = getMonsterRandConfig();
 		Map<Integer, AreaMonsterList> monsterMap = getAreaMonsterConfig();
 		Map<String, AreaPosition> positionMap = getAreaPosition();
-		Map<Integer, Integer> levelMap = getLevels(user);
+		Map<Integer, Integer[]> levelMap = getLevels(user);
 		long areaMonsterRefreshTime = user.getAreaMonsterRefreshTime();
 		long time = now() - areaMonsterRefreshTime;
 		for(AreaRefresh refresh : timelist.getLevelList()) {
@@ -332,7 +332,7 @@ public class AreaRedisService extends RedisService{
 				userRedisService.updateUser(user);
 			}
 			for(Entry<Integer, AreaMonsterList> entry : monsterMap.entrySet()) {
-				int level = levelMap.containsKey(entry.getKey()/100) ? levelMap.get(entry.getKey()/100) : 0;
+				int level = levelMap.containsKey(entry.getKey()/100) ? levelMap.get(entry.getKey()/100)[0] : 0;
 				if(refresh.getLevel() == entry.getKey()%100){
 					int oldcount = monstercount.containsKey(entry.getKey()) ? monstercount.get(entry.getKey()) : 0;
 					AreaMonsterList list = entry.getValue();
@@ -387,31 +387,54 @@ public class AreaRedisService extends RedisService{
 		}
 	}
 
-	public Map<Integer, Integer> getLevels(UserBean user){
+	public Map<Integer, Integer[]> getLevels(UserBean user){
 		Map<String, String> value = hget(RedisKey.AREALEVEL+user.getId());
-		Map<Integer, Integer> result = new HashMap<Integer, Integer>();
+		Map<Integer, Integer[]> result = new HashMap<Integer, Integer[]>();
 		for(Entry<String, String> entry : value.entrySet()){
-			result.put(Integer.parseInt(entry.getKey()), Integer.parseInt(entry.getValue()));
+			result.put(Integer.parseInt(entry.getKey()), calLevel(entry.getValue()));
 		}
 		return result;
 	}
 
-	public int getLevel(int id, UserBean user){
-		String value = hget(RedisKey.AREALEVEL+user.getId(), id+"");
+	private Integer[] calLevel(String value) {
+		Integer[] levelvalue = {0,0,0};
 		if(value == null)
-			return 0;
-		return Integer.parseInt(value);
+			return levelvalue;
+		String[] values = value.split("#");
+		if(values.length == 3){
+			levelvalue[0] = Integer.parseInt(values[0]);
+			levelvalue[1] = Integer.parseInt(values[1]);
+			levelvalue[2] = Integer.parseInt(values[2]);
+		}
+		return levelvalue;
 	}
 
-	public void saveLevel(int id, int count, UserBean user) {
-		hput(RedisKey.AREALEVEL+user.getId(), id+"", count+"");
+	public Integer[] getLevel(int id, UserBean user){
+		String value = hget(RedisKey.AREALEVEL+user.getId(), id+"");
+		return calLevel(value);
+	}
+
+	public void saveLevel(int id, Integer[] count, UserBean user) {
+		hput(RedisKey.AREALEVEL+user.getId(), id+"", count[0]+"#"+count[1]+"#"+count[2]);
 		expire(RedisKey.AREALEVEL+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
-	public int addLevel(int id, int count, UserBean user) {
-		int level = getLevel(id, user)+count;
+	public Integer[] addLevel(int id, int count, UserBean user) {
+		Integer[] level = getLevel(id, user);
+		level[0] += count;
+		level[1]++;
 		saveLevel(id, level, user);
 		return level;
+	}
+
+	public void clearLevel(UserBean user) {
+		Map<Integer, Integer[]> levelMap = getLevels(user);
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		for(Entry<Integer, Integer[]> entry : levelMap.entrySet()){
+			Integer[] count = entry.getValue();
+			keyvalue.put(entry.getKey()+"", count[0]+"#"+count[1]+"#"+count[2]);
+		}
+		hputAll(RedisKey.AREALEVEL+user.getId(), keyvalue);
 	}
 
 	public void saveMonster(AreaMonster monster,UserBean user) {
@@ -422,6 +445,10 @@ public class AreaRedisService extends RedisService{
 	
 	public void deleteMonster(int positionid,UserBean user) {
 		this.hdelete(AREAMONSTER+user.getId(), positionid+"");
+	}
+
+	public void deleteMonsters(UserBean user) {
+		this.delete(AREAMONSTER+user.getId());
 	}
 
 	public Map<String, AreaResource> getResources(UserBean user){
