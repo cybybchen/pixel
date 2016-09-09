@@ -617,8 +617,7 @@ public class UnionService extends FightService{
 					else if (type == UnionConst.UNION_BOSS_TYPE_COST)
 						updateCostRecord(union, targetId, count);
 					
-					calUnionBossRefresh(union, unionBoss);
-					if(redis.waitLock("Union_"+union.getId())){
+					if(calUnionBossRefresh(union, unionBoss) && redis.waitLock("Union_"+union.getId())){
 						redis.saveUnion(union.build(), user);
 						redis.clearLock("Union_"+union.getId());
 					}
@@ -627,14 +626,14 @@ public class UnionService extends FightService{
 		}
 	}
 	
-	public void calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss) {
+	public boolean calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss) {
 		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
 		if (unionBossRecord != null) {
 			if (unionBossRecord.getEndTime().equals("")) {
 				if (unionBossRecord.getHp() > 0)
-					return;
+					return false;
 			} else if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()))
-				return;
+				return false;
 		}
 		int bossCount = getUnionBossCount(union, unionBoss.getId());
 		JSONObject json = null;
@@ -648,7 +647,9 @@ public class UnionService extends FightService{
 			updateUnionBossRecord(union, unionBoss.getId());
 			redis.delUnionBossRankKey(union.getId(), unionBoss.getId());
 			redis.saveUnionBoss(union, unionBoss);
-		}	
+			return true;
+		}
+		return false;	
 	}
 	
 	public List<UnionBossRecord> getUnionBossList(UserBean user) {
