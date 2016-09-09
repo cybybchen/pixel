@@ -296,22 +296,22 @@
 <item id="5" itemid="55078" count="1" />
 <item id="6" itemid="37001" count="50" />
 </libao>
-<libao itemid="42401" name="纯粹普攻流初级礼包" img="libao_2_1" rare="3" description="包含1星易，薇恩，厄运小姐，金克丝，韦鲁斯和5个强化水晶（获得300点vip经验）" value="0" cost="0" ><item id="1" itemid="51060" count="1" />
-<item id="2" itemid="51010" count="1" />
+<libao itemid="42401" name="纯粹普攻流初级礼包" img="libao_2_1" rare="3" description="包含1星易，薇恩，厄运小姐，金克丝，韦鲁斯各1个和5个强化水晶（获得300点vip经验）" value="0" cost="0" ><item id="1" itemid="51038" count="1" />
+<item id="2" itemid="51058" count="1" />
 <item id="3" itemid="51001" count="1" />
 <item id="4" itemid="51116" count="1" />
 <item id="5" itemid="51096" count="1" />
 <item id="6" itemid="37001" count="5" />
 </libao>
-<libao itemid="42402" name="纯粹普攻流高级礼包" img="libao_2_2" rare="4" description="包含3星易，薇恩，厄运小姐，金克丝，韦鲁斯和15个强化水晶（获得980点vip经验）" value="0" cost="0" ><item id="1" itemid="53060" count="1" />
-<item id="2" itemid="53010" count="1" />
+<libao itemid="42402" name="纯粹普攻流高级礼包" img="libao_2_2" rare="4" description="包含3星易，薇恩，厄运小姐，金克丝，韦鲁斯各1个和15个强化水晶（获得980点vip经验）" value="0" cost="0" ><item id="1" itemid="53038" count="1" />
+<item id="2" itemid="53058" count="1" />
 <item id="3" itemid="53001" count="1" />
 <item id="4" itemid="53116" count="1" />
 <item id="5" itemid="53096" count="1" />
 <item id="6" itemid="37001" count="15" />
 </libao>
-<libao itemid="42403" name="纯粹普攻流超级礼包" img="libao_2_3" rare="5" description="包含5星易，薇恩，厄运小姐，金克丝，韦鲁斯和50个强化水晶（获得3280点vip经验）" value="0" cost="0" ><item id="1" itemid="55060" count="1" />
-<item id="2" itemid="55010" count="1" />
+<libao itemid="42403" name="纯粹普攻流超级礼包" img="libao_2_3" rare="5" description="包含5星易，薇恩，厄运小姐，金克丝，韦鲁斯各1个和50个强化水晶（获得3280点vip经验）" value="0" cost="0" ><item id="1" itemid="55038" count="1" />
+<item id="2" itemid="55058" count="1" />
 <item id="3" itemid="55001" count="1" />
 <item id="4" itemid="55116" count="1" />
 <item id="5" itemid="55096" count="1" />
