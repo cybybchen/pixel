@@ -210,5 +210,6 @@ public class UnionCommandService extends BaseCommandService {
 		builder.addUnionBoss(unionBoss);
 		responseBuilder.setUnionBossCommand(builder.build());
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 }
