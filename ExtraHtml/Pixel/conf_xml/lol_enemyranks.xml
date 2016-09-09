@@ -2117,6 +2117,156 @@
 <level id="1300">
 <enemy position="1" enemyid="16005" enemyname="伊泽瑞尔" />
 </level>
+<level id="1301">
+<enemy position="1" enemyid="16101" enemyname="金克丝" />
+</level>
+<level id="1302">
+<enemy position="1" enemyid="16102" enemyname="薇恩" />
+</level>
+<level id="1303">
+<enemy position="1" enemyid="16103" enemyname="韦鲁斯" />
+</level>
+<level id="1304">
+<enemy position="1" enemyid="16104" enemyname="厄运小姐" />
+</level>
+<level id="1305">
+<enemy position="1" enemyid="16105" enemyname="崔斯塔娜" />
+</level>
+<level id="1306">
+<enemy position="1" enemyid="16201" enemyname="拉克丝" />
+</level>
+<level id="1307">
+<enemy position="1" enemyid="16202" enemyname="阿兹尔" />
+</level>
+<level id="1308">
+<enemy position="1" enemyid="16203" enemyname="安妮" />
+</level>
+<level id="1309">
+<enemy position="1" enemyid="16204" enemyname="瑞兹" />
+</level>
+<level id="1310">
+<enemy position="1" enemyid="16205" enemyname="菲兹" />
+</level>
+<level id="1311">
+<enemy position="1" enemyid="16301" enemyname="瑞雯" />
+</level>
+<level id="1312">
+<enemy position="1" enemyid="16302" enemyname="赵信" />
+</level>
+<level id="1313">
+<enemy position="1" enemyid="16303" enemyname="德莱厄斯" />
+</level>
+<level id="1314">
+<enemy position="1" enemyid="16304" enemyname="嘉文四世" />
+</level>
+<level id="1315">
+<enemy position="1" enemyid="16305" enemyname="亚索" />
+</level>
+<level id="1316">
+<enemy position="1" enemyid="16401" enemyname="卡特琳娜" />
+</level>
+<level id="1317">
+<enemy position="1" enemyid="16402" enemyname="娑娜" />
+</level>
+<level id="1318">
+<enemy position="1" enemyid="16403" enemyname="辛吉德" />
+</level>
+<level id="1319">
+<enemy position="1" enemyid="16404" enemyname="锤石" />
+</level>
+<level id="1320">
+<enemy position="1" enemyid="16405" enemyname="阿狸" />
+</level>
+<level id="1321">
+<enemy position="1" enemyid="16501" enemyname="布兰德" />
+</level>
+<level id="1322">
+<enemy position="1" enemyid="16502" enemyname="古拉加斯" />
+</level>
+<level id="1323">
+<enemy position="1" enemyid="16503" enemyname="伊丽丝" />
+</level>
+<level id="1324">
+<enemy position="1" enemyid="16504" enemyname="璐璐" />
+</level>
+<level id="1325">
+<enemy position="1" enemyid="16505" enemyname="蕾欧娜" />
+</level>
+<level id="1326">
+<enemy position="1" enemyid="16601" enemyname="崔斯塔娜" />
+</level>
+<level id="1327">
+<enemy position="1" enemyid="16602" enemyname="布兰德" />
+</level>
+<level id="1328">
+<enemy position="1" enemyid="16603" enemyname="莫德凯撒" />
+</level>
+<level id="1329">
+<enemy position="1" enemyid="16604" enemyname="阿利斯塔" />
+</level>
+<level id="1330">
+<enemy position="1" enemyid="16605" enemyname="卡兹克" />
+</level>
+<level id="1331">
+<enemy position="1" enemyid="16701" enemyname="安妮" />
+</level>
+<level id="1332">
+<enemy position="1" enemyid="16702" enemyname="贾克斯" />
+</level>
+<level id="1333">
+<enemy position="1" enemyid="16703" enemyname="辛吉德" />
+</level>
+<level id="1334">
+<enemy position="1" enemyid="16704" enemyname="塔里克" />
+</level>
+<level id="1335">
+<enemy position="1" enemyid="16705" enemyname="希瓦娜" />
+</level>
+<level id="1336">
+<enemy position="1" enemyid="16801" enemyname="崔斯特" />
+</level>
+<level id="1337">
+<enemy position="1" enemyid="16802" enemyname="卡特琳娜" />
+</level>
+<level id="1338">
+<enemy position="1" enemyid="16803" enemyname="瑞兹" />
+</level>
+<level id="1339">
+<enemy position="1" enemyid="16804" enemyname="提莫" />
+</level>
+<level id="1340">
+<enemy position="1" enemyid="16805" enemyname="努努" />
+</level>
+<level id="1341">
+<enemy position="1" enemyid="16901" enemyname="布里茨" />
+</level>
+<level id="1342">
+<enemy position="1" enemyid="16902" enemyname="雷恩加尔" />
+</level>
+<level id="1343">
+<enemy position="1" enemyid="16903" enemyname="卡莉斯塔" />
+</level>
+<level id="1344">
+<enemy position="1" enemyid="16904" enemyname="兰博" />
+</level>
+<level id="1345">
+<enemy position="1" enemyid="16905" enemyname="奈德丽" />
+</level>
+<level id="1346">
+<enemy position="1" enemyid="17001" enemyname="亚索" />
+</level>
+<level id="1347">
+<enemy position="1" enemyid="17002" enemyname="菲兹" />
+</level>
+<level id="1348">
+<enemy position="1" enemyid="17003" enemyname="崔斯塔娜" />
+</level>
+<level id="1349">
+<enemy position="1" enemyid="17004" enemyname="阿利斯塔" />
+</level>
+<level id="1350">
+<enemy position="1" enemyid="17005" enemyname="泰达米尔" />
+</level>
 <level id="2021">
 <enemy position="1" enemyid="20501" enemyname="骷髅怪" />
 <enemy position="2" enemyid="20501" enemyname="骷髅怪" />
@@ -4011,16 +4161,16 @@
 <enemy position="2" enemyid="25510" enemyname="卡特琳娜" />
 </level>
 <level id="2276">
-<enemy position="1" enemyid="0" enemyname="小兵" />
-<enemy position="2" enemyid="0" enemyname="小兵" />
+<enemy position="1" enemyid="25602" enemyname="小兵" />
+<enemy position="2" enemyid="25602" enemyname="小兵" />
 </level>
 <level id="2277">
 <enemy position="1" enemyid="25603" enemyname="炮车" />
 <enemy position="2" enemyid="25603" enemyname="炮车" />
 </level>
 <level id="2278">
-<enemy position="1" enemyid="0" enemyname="三狼" />
-<enemy position="2" enemyid="0" enemyname="三狼" />
+<enemy position="1" enemyid="25601" enemyname="三狼" />
+<enemy position="2" enemyid="25601" enemyname="三狼" />
 </level>
 <level id="2279">
 <enemy position="1" enemyid="25604" enemyname="超级兵" />
@@ -4098,6 +4248,156 @@
 </level>
 <level id="2300">
 <enemy position="1" enemyid="26005" enemyname="伊泽瑞尔" />
+</level>
+<level id="2301">
+<enemy position="1" enemyid="26101" enemyname="金克丝" />
+</level>
+<level id="2302">
+<enemy position="1" enemyid="26102" enemyname="薇恩" />
+</level>
+<level id="2303">
+<enemy position="1" enemyid="26103" enemyname="韦鲁斯" />
+</level>
+<level id="2304">
+<enemy position="1" enemyid="26104" enemyname="厄运小姐" />
+</level>
+<level id="2305">
+<enemy position="1" enemyid="26105" enemyname="崔斯塔娜" />
+</level>
+<level id="2306">
+<enemy position="1" enemyid="26201" enemyname="拉克丝" />
+</level>
+<level id="2307">
+<enemy position="1" enemyid="26202" enemyname="阿兹尔" />
+</level>
+<level id="2308">
+<enemy position="1" enemyid="26203" enemyname="安妮" />
+</level>
+<level id="2309">
+<enemy position="1" enemyid="26204" enemyname="瑞兹" />
+</level>
+<level id="2310">
+<enemy position="1" enemyid="26205" enemyname="菲兹" />
+</level>
+<level id="2311">
+<enemy position="1" enemyid="26301" enemyname="瑞雯" />
+</level>
+<level id="2312">
+<enemy position="1" enemyid="26302" enemyname="赵信" />
+</level>
+<level id="2313">
+<enemy position="1" enemyid="26303" enemyname="德莱厄斯" />
+</level>
+<level id="2314">
+<enemy position="1" enemyid="26304" enemyname="嘉文四世" />
+</level>
+<level id="2315">
+<enemy position="1" enemyid="26305" enemyname="亚索" />
+</level>
+<level id="2316">
+<enemy position="1" enemyid="26401" enemyname="卡特琳娜" />
+</level>
+<level id="2317">
+<enemy position="1" enemyid="26402" enemyname="娑娜" />
+</level>
+<level id="2318">
+<enemy position="1" enemyid="26403" enemyname="辛吉德" />
+</level>
+<level id="2319">
+<enemy position="1" enemyid="26404" enemyname="锤石" />
+</level>
+<level id="2320">
+<enemy position="1" enemyid="26405" enemyname="阿狸" />
+</level>
+<level id="2321">
+<enemy position="1" enemyid="26501" enemyname="布兰德" />
+</level>
+<level id="2322">
+<enemy position="1" enemyid="26502" enemyname="古拉加斯" />
+</level>
+<level id="2323">
+<enemy position="1" enemyid="26503" enemyname="伊丽丝" />
+</level>
+<level id="2324">
+<enemy position="1" enemyid="26504" enemyname="璐璐" />
+</level>
+<level id="2325">
+<enemy position="1" enemyid="26505" enemyname="蕾欧娜" />
+</level>
+<level id="2326">
+<enemy position="1" enemyid="26601" enemyname="崔斯塔娜" />
+</level>
+<level id="2327">
+<enemy position="1" enemyid="26602" enemyname="布兰德" />
+</level>
+<level id="2328">
+<enemy position="1" enemyid="26603" enemyname="莫德凯撒" />
+</level>
+<level id="2329">
+<enemy position="1" enemyid="26604" enemyname="阿利斯塔" />
+</level>
+<level id="2330">
+<enemy position="1" enemyid="26605" enemyname="卡兹克" />
+</level>
+<level id="2331">
+<enemy position="1" enemyid="26701" enemyname="安妮" />
+</level>
+<level id="2332">
+<enemy position="1" enemyid="26702" enemyname="贾克斯" />
+</level>
+<level id="2333">
+<enemy position="1" enemyid="26703" enemyname="辛吉德" />
+</level>
+<level id="2334">
+<enemy position="1" enemyid="26704" enemyname="塔里克" />
+</level>
+<level id="2335">
+<enemy position="1" enemyid="26705" enemyname="希瓦娜" />
+</level>
+<level id="2336">
+<enemy position="1" enemyid="26801" enemyname="崔斯特" />
+</level>
+<level id="2337">
+<enemy position="1" enemyid="26802" enemyname="卡特琳娜" />
+</level>
+<level id="2338">
+<enemy position="1" enemyid="26803" enemyname="瑞兹" />
+</level>
+<level id="2339">
+<enemy position="1" enemyid="26804" enemyname="提莫" />
+</level>
+<level id="2340">
+<enemy position="1" enemyid="26805" enemyname="努努" />
+</level>
+<level id="2341">
+<enemy position="1" enemyid="26901" enemyname="布里茨" />
+</level>
+<level id="2342">
+<enemy position="1" enemyid="26902" enemyname="雷恩加尔" />
+</level>
+<level id="2343">
+<enemy position="1" enemyid="26903" enemyname="卡莉斯塔" />
+</level>
+<level id="2344">
+<enemy position="1" enemyid="26904" enemyname="兰博" />
+</level>
+<level id="2345">
+<enemy position="1" enemyid="26905" enemyname="奈德丽" />
+</level>
+<level id="2346">
+<enemy position="1" enemyid="27001" enemyname="亚索" />
+</level>
+<level id="2347">
+<enemy position="1" enemyid="27002" enemyname="菲兹" />
+</level>
+<level id="2348">
+<enemy position="1" enemyid="27003" enemyname="崔斯塔娜" />
+</level>
+<level id="2349">
+<enemy position="1" enemyid="27004" enemyname="阿利斯塔" />
+</level>
+<level id="2350">
+<enemy position="1" enemyid="27005" enemyname="泰达米尔" />
 </level>
 <level id="3036">
 <enemy position="1" enemyid="30801" enemyname="古拉加斯" />
@@ -5990,5 +6290,161 @@
 </level>
 <level id="3300">
 <enemy position="1" enemyid="36005" enemyname="伊泽瑞尔" />
+</level>
+<level id="3301">
+<enemy position="1" enemyid="36101" enemyname="金克丝" />
+</level>
+<level id="3302">
+<enemy position="1" enemyid="36102" enemyname="薇恩" />
+</level>
+<level id="3303">
+<enemy position="1" enemyid="36103" enemyname="韦鲁斯" />
+</level>
+<level id="3304">
+<enemy position="1" enemyid="36104" enemyname="厄运小姐" />
+</level>
+<level id="3305">
+<enemy position="1" enemyid="36105" enemyname="崔斯塔娜" />
+</level>
+<level id="3306">
+<enemy position="1" enemyid="36201" enemyname="拉克丝" />
+</level>
+<level id="3307">
+<enemy position="1" enemyid="36202" enemyname="阿兹尔" />
+</level>
+<level id="3308">
+<enemy position="1" enemyid="36203" enemyname="安妮" />
+</level>
+<level id="3309">
+<enemy position="1" enemyid="36204" enemyname="瑞兹" />
+</level>
+<level id="3310">
+<enemy position="1" enemyid="36205" enemyname="菲兹" />
+</level>
+<level id="3311">
+<enemy position="1" enemyid="36301" enemyname="瑞雯" />
+</level>
+<level id="3312">
+<enemy position="1" enemyid="36302" enemyname="赵信" />
+</level>
+<level id="3313">
+<enemy position="1" enemyid="36303" enemyname="德莱厄斯" />
+</level>
+<level id="3314">
+<enemy position="1" enemyid="36304" enemyname="嘉文四世" />
+</level>
+<level id="3315">
+<enemy position="1" enemyid="36305" enemyname="亚索" />
+</level>
+<level id="3316">
+<enemy position="1" enemyid="36401" enemyname="卡特琳娜" />
+</level>
+<level id="3317">
+<enemy position="1" enemyid="36402" enemyname="娑娜" />
+</level>
+<level id="3318">
+<enemy position="1" enemyid="36403" enemyname="辛吉德" />
+</level>
+<level id="3319">
+<enemy position="1" enemyid="36404" enemyname="锤石" />
+</level>
+<level id="3320">
+<enemy position="1" enemyid="36405" enemyname="阿狸" />
+</level>
+<level id="3321">
+<enemy position="1" enemyid="36501" enemyname="布兰德" />
+</level>
+<level id="3322">
+<enemy position="1" enemyid="36502" enemyname="古拉加斯" />
+</level>
+<level id="3323">
+<enemy position="1" enemyid="36503" enemyname="伊丽丝" />
+</level>
+<level id="3324">
+<enemy position="1" enemyid="36504" enemyname="璐璐" />
+</level>
+<level id="3325">
+<enemy position="1" enemyid="36505" enemyname="蕾欧娜" />
+</level>
+<level id="3326">
+<enemy position="1" enemyid="36601" enemyname="崔斯塔娜" />
+</level>
+<level id="3327">
+<enemy position="1" enemyid="36602" enemyname="布兰德" />
+</level>
+<level id="3328">
+<enemy position="1" enemyid="36603" enemyname="莫德凯撒" />
+</level>
+<level id="3329">
+<enemy position="1" enemyid="36604" enemyname="阿利斯塔" />
+</level>
+<level id="3330">
+<enemy position="1" enemyid="36605" enemyname="卡兹克" />
+</level>
+<level id="3331">
+<enemy position="1" enemyid="36701" enemyname="安妮" />
+</level>
+<level id="3332">
+<enemy position="1" enemyid="36702" enemyname="贾克斯" />
+</level>
+<level id="3333">
+<enemy position="1" enemyid="36703" enemyname="辛吉德" />
+</level>
+<level id="3334">
+<enemy position="1" enemyid="36704" enemyname="塔里克" />
+</level>
+<level id="3335">
+<enemy position="1" enemyid="36705" enemyname="希瓦娜" />
+</level>
+<level id="3336">
+<enemy position="1" enemyid="36801" enemyname="崔斯特" />
+</level>
+<level id="3337">
+<enemy position="1" enemyid="36802" enemyname="卡特琳娜" />
+</level>
+<level id="3338">
+<enemy position="1" enemyid="36803" enemyname="瑞兹" />
+</level>
+<level id="3339">
+<enemy position="1" enemyid="36804" enemyname="提莫" />
+</level>
+<level id="3340">
+<enemy position="1" enemyid="36805" enemyname="努努" />
+</level>
+<level id="3341">
+<enemy position="1" enemyid="36901" enemyname="布里茨" />
+</level>
+<level id="3342">
+<enemy position="1" enemyid="36902" enemyname="雷恩加尔" />
+</level>
+<level id="3343">
+<enemy position="1" enemyid="36903" enemyname="卡莉斯塔" />
+</level>
+<level id="3344">
+<enemy position="1" enemyid="36904" enemyname="兰博" />
+</level>
+<level id="3345">
+<enemy position="1" enemyid="36905" enemyname="奈德丽" />
+</level>
+<level id="3346">
+<enemy position="1" enemyid="37001" enemyname="亚索" />
+</level>
+<level id="3347">
+<enemy position="1" enemyid="37002" enemyname="菲兹" />
+</level>
+<level id="3348">
+<enemy position="1" enemyid="37003" enemyname="崔斯塔娜" />
+</level>
+<level id="3349">
+<enemy position="1" enemyid="37004" enemyname="阿利斯塔" />
+</level>
+<level id="3350">
+<enemy position="1" enemyid="37005" enemyname="泰达米尔" />
+</level>
+<level id="5001">
+<enemy position="1" enemyid="50101" enemyname="蜥蜴人红buff" />
+</level>
+<level id="5002">
+<enemy position="1" enemyid="50201" enemyname="大龙" />
 </level>
 </data>

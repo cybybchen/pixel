@@ -60,4 +60,14 @@
 <level id="58" name="战争学院" zhanli="347000" nandu="3" gold="10" experience="1255" bg="battle_bg_4" layer="layer4" />
 <level id="59" name="超神峰" zhanli="372000" nandu="3" gold="10" experience="1302" bg="battle_bg_3" layer="layer5" />
 <level id="60" name="巨龙之巢" zhanli="400000" nandu="3" gold="10" experience="1365" bg="battle_bg_5" layer="layer1" />
+<level id="61" name="守护者之海" zhanli="440000" nandu="3" gold="10" experience="1370" bg="battle_bg_7" layer="layer3" />
+<level id="62" name="瘟疫丛林" zhanli="480000" nandu="3" gold="10" experience="1380" bg="battle_bg_5" layer="layer1" />
+<level id="63" name="紫色玫瑰" zhanli="520000" nandu="3" gold="10" experience="1390" bg="battle_bg_1" layer="layer2" />
+<level id="64" name="库蒙古森林" zhanli="560000" nandu="3" gold="10" experience="1400" bg="battle_bg_5" layer="layer1" />
+<level id="65" name="卡拉多" zhanli="600000" nandu="3" gold="11" experience="1410" bg="battle_bg_3" layer="layer5" />
+<level id="66" name="蛇纹石河" zhanli="640000" nandu="3" gold="11" experience="1420" bg="battle_bg_3" layer="layer5" />
+<level id="67" name="泡沫泥沼" zhanli="680000" nandu="3" gold="11" experience="1430" bg="battle_bg_8" layer="layer2" />
+<level id="68" name="铁脊山脉" zhanli="720000" nandu="3" gold="11" experience="1440" bg="battle_bg_3" layer="layer5" />
+<level id="69" name="费罗尼平原" zhanli="760000" nandu="3" gold="11" experience="1450" bg="battle_bg_2" layer="layer1" />
+<level id="70" name="皇城" zhanli="800000" nandu="3" gold="11" experience="1460" bg="battle_bg_2" layer="layer1" />
 </data>

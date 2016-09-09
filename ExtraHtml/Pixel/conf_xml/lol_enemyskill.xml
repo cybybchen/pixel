@@ -6,10 +6,10 @@
 <skill img="54" skillid="50003" skillname="轻砍" skilllevel="1" />
 </enemy>
 <enemy enemyid="10103" enemyname="炮车" boss="0" >
-<skill img="55" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="55" skillid="51002" skillname="砰！" skilllevel="1" />
 </enemy>
 <enemy enemyid="10104" enemyname="超级兵" boss="0" >
-<skill img="56" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="56" skillid="51003" skillname="龟速打脸" skilllevel="1" />
 </enemy>
 <enemy enemyid="10105" enemyname="大龙" boss="1" >
 <skill img="59" skillid="50082" skillname="地刺" skilllevel="1" />
@@ -21,64 +21,71 @@
 <skill img="116" skillid="50001" skillname="爪击" skilllevel="1" />
 </enemy>
 <enemy enemyid="10202" enemyname="史莱姆" boss="1" >
-<skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="117" skillid="51012" skillname="吐口水" skilllevel="1" />
 </enemy>
 <enemy enemyid="10203" enemyname="哥布林" boss="1" >
-<skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="118" skillid="51013" skillname="迎头乱撞" skilllevel="1" />
 </enemy>
 <enemy enemyid="10204" enemyname="牛头怪" boss="1" >
-<skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="119" skillid="51014" skillname="牛角顶" skilllevel="1" />
 </enemy>
 <enemy enemyid="10205" enemyname="小恶魔" boss="1" >
 <skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="10301" enemyname="汪汪" boss="1" >
 <skill img="121" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10302" enemyname="喵喵" boss="1" >
 <skill img="122" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10303" enemyname="吱吱" boss="1" >
 <skill img="123" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10304" enemyname="咩咩" boss="1" >
-<skill img="124" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="124" skillid="51015" skillname="羊蹄猛踹" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10305" enemyname="僵尸" boss="1" >
-<skill img="125" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="125" skillid="51023" skillname="僵尸毒气" skilllevel="1" />
 </enemy>
 <enemy enemyid="10401" enemyname="黄精灵" boss="1" >
 <skill img="126" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10402" enemyname="红精灵" boss="1" >
 <skill img="127" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10403" enemyname="蓝精灵" boss="1" >
 <skill img="128" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10404" enemyname="绿精灵" boss="1" >
 <skill img="129" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10405" enemyname="悬浮怪" boss="1" >
-<skill img="130" skillid="50008" skillname="火球" skilllevel="1" />
-<skill img="" skillid="50009" skillname="炎爆" skilllevel="1" />
+<skill img="130" skillid="51024" skillname="幽冥一击" skilllevel="1" />
+<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10501" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 </enemy>
 <enemy enemyid="10502" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 </enemy>
 <enemy enemyid="10503" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 </enemy>
 <enemy enemyid="10504" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 </enemy>
 <enemy enemyid="10505" enemyname="大恶魔" boss="1" >
-<skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="134" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="10601" enemyname="盖伦" boss="1" >
@@ -95,6 +102,8 @@
 </enemy>
 <enemy enemyid="10605" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="10" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 </enemy>
 <enemy enemyid="10606" enemyname="艾希" boss="1" >
 <skill img="31" skillid="50029" skillname="万箭齐发" skilllevel="1" />
@@ -104,6 +113,7 @@
 </enemy>
 <enemy enemyid="10608" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="10609" enemyname="兰博" boss="1" >
 <skill img="22" skillid="50039" skillname="纵火盛宴" skilllevel="1" />
@@ -170,22 +180,26 @@
 </enemy>
 <enemy enemyid="10901" enemyname="汪汪" boss="1" >
 <skill img="121" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10902" enemyname="喵喵" boss="1" >
 <skill img="122" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10903" enemyname="吱吱" boss="1" >
 <skill img="123" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10904" enemyname="咩咩" boss="1" >
-<skill img="124" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="124" skillid="51015" skillname="羊蹄猛踹" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 </enemy>
 <enemy enemyid="10905" enemyname="僵尸" boss="1" >
-<skill img="125" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="125" skillid="51023" skillname="僵尸毒气" skilllevel="1" />
 </enemy>
 <enemy enemyid="11001" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="11002" enemyname="希瓦娜" boss="1" >
 <skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
@@ -195,6 +209,7 @@
 </enemy>
 <enemy enemyid="11004" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 </enemy>
 <enemy enemyid="11005" enemyname="蕾欧娜" boss="1" >
 <skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
@@ -213,6 +228,7 @@
 </enemy>
 <enemy enemyid="11010" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 </enemy>
 <enemy enemyid="11101" enemyname="黄精灵" boss="1" >
 <skill img="126" skillid="50008" skillname="火球" skilllevel="1" />
@@ -228,6 +244,7 @@
 </enemy>
 <enemy enemyid="11105" enemyname="悬浮怪" boss="1" >
 <skill img="130" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="" skillid="51024" skillname="幽冥一击" skilllevel="1" />
 </enemy>
 <enemy enemyid="11201" enemyname="女仆" boss="1" >
 <skill img="135" skillid="50011" skillname="治疗术" skilllevel="1" />
@@ -246,19 +263,19 @@
 <skill img="" skillid="50012" skillname="治愈术" skilllevel="1" />
 </enemy>
 <enemy enemyid="11301" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 </enemy>
 <enemy enemyid="11302" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 </enemy>
 <enemy enemyid="11303" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 </enemy>
 <enemy enemyid="11304" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 </enemy>
 <enemy enemyid="11305" enemyname="大恶魔" boss="1" >
-<skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="134" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="11401" enemyname="韦鲁斯" boss="1" >
@@ -281,6 +298,7 @@
 </enemy>
 <enemy enemyid="11407" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="11408" enemyname="艾希" boss="1" >
 <skill img="31" skillid="50029" skillname="万箭齐发" skilllevel="1" />
@@ -295,23 +313,24 @@
 <skill img="116" skillid="50001" skillname="爪击" skilllevel="1" />
 </enemy>
 <enemy enemyid="11502" enemyname="史莱姆" boss="1" >
-<skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="117" skillid="51012" skillname="吐口水" skilllevel="1" />
 </enemy>
 <enemy enemyid="11503" enemyname="哥布林" boss="1" >
-<skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="118" skillid="51013" skillname="迎头乱撞" skilllevel="1" />
 </enemy>
 <enemy enemyid="11504" enemyname="牛头怪" boss="1" >
-<skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="119" skillid="51014" skillname="牛角顶" skilllevel="1" />
 </enemy>
 <enemy enemyid="11505" enemyname="小恶魔" boss="1" >
 <skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="11601" enemyname="崔斯特" boss="1" >
 <skill img="3" skillid="50071" skillname="万能牌" skilllevel="1" />
 </enemy>
 <enemy enemyid="11602" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="11603" enemyname="阿狸" boss="1" >
 <skill img="24" skillid="50059" skillname="欺诈宝珠" skilllevel="1" />
@@ -354,19 +373,20 @@
 <skill img="" skillid="50012" skillname="治愈术" skilllevel="1" />
 </enemy>
 <enemy enemyid="11801" enemyname="小丑" boss="1" >
-<skill img="140" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="140" skillid="51004" skillname="捅你一刀" skilllevel="1" />
 </enemy>
 <enemy enemyid="11802" enemyname="特务" boss="1" >
-<skill img="141" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="141" skillid="51005" skillname="射你一枪" skilllevel="1" />
 </enemy>
 <enemy enemyid="11803" enemyname="水手" boss="1" >
-<skill img="142" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="142" skillid="51006" skillname="强行水帖" skilllevel="1" />
 </enemy>
 <enemy enemyid="11804" enemyname="海军上将" boss="1" >
-<skill img="143" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="143" skillid="51007" skillname="水刀" skilllevel="1" />
 </enemy>
 <enemy enemyid="11805" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
@@ -384,6 +404,7 @@
 </enemy>
 <enemy enemyid="11905" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 </enemy>
 <enemy enemyid="11906" enemyname="艾希" boss="1" >
 <skill img="31" skillid="50029" skillname="万箭齐发" skilllevel="1" />
@@ -393,6 +414,7 @@
 </enemy>
 <enemy enemyid="11908" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="11909" enemyname="兰博" boss="1" >
 <skill img="22" skillid="50039" skillname="纵火盛宴" skilllevel="1" />
@@ -402,6 +424,7 @@
 </enemy>
 <enemy enemyid="12002" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 </enemy>
 <enemy enemyid="12003" enemyname="阿兹尔" boss="1" >
 <skill img="27" skillid="50066" skillname="狂沙猛攻" skilllevel="1" />
@@ -417,12 +440,14 @@
 </enemy>
 <enemy enemyid="12007" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="12008" enemyname="希瓦娜" boss="1" >
 <skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
 </enemy>
 <enemy enemyid="12009" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 </enemy>
 <enemy enemyid="12010" enemyname="嘉文四世" boss="1" >
 <skill img="16" skillid="50042" skillname="天崩地裂" skilllevel="1" />
@@ -459,9 +484,11 @@
 </enemy>
 <enemy enemyid="12201" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 </enemy>
 <enemy enemyid="12202" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 </enemy>
 <enemy enemyid="12203" enemyname="易" boss="1" >
 <skill img="12" skillid="50025" skillname="多重打击" skilllevel="1" />
@@ -495,6 +522,7 @@
 </enemy>
 <enemy enemyid="12303" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 </enemy>
 <enemy enemyid="12304" enemyname="塔里克" boss="1" >
 <skill img="38" skillid="50021" skillname="神圣洗礼" skilllevel="1" />
@@ -525,6 +553,7 @@
 </enemy>
 <enemy enemyid="12403" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="12404" enemyname="薇恩" boss="1" >
 <skill img="14" skillid="50038" skillname="恶魔审判" skilllevel="1" />
@@ -549,6 +578,7 @@
 </enemy>
 <enemy enemyid="12501" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="12502" enemyname="希瓦娜" boss="1" >
 <skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
@@ -558,6 +588,7 @@
 </enemy>
 <enemy enemyid="12504" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 </enemy>
 <enemy enemyid="12505" enemyname="蕾欧娜" boss="1" >
 <skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
@@ -576,6 +607,7 @@
 </enemy>
 <enemy enemyid="12510" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 </enemy>
 <enemy enemyid="12601" enemyname="易" boss="1" >
 <skill img="12" skillid="50025" skillname="多重打击" skilllevel="1" />
@@ -612,6 +644,7 @@
 </enemy>
 <enemy enemyid="12707" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="12708" enemyname="艾希" boss="1" >
 <skill img="31" skillid="50029" skillname="万箭齐发" skilllevel="1" />
@@ -627,6 +660,7 @@
 </enemy>
 <enemy enemyid="12802" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="12803" enemyname="阿狸" boss="1" >
 <skill img="24" skillid="50059" skillname="欺诈宝珠" skilllevel="1" />
@@ -642,6 +676,7 @@
 </enemy>
 <enemy enemyid="12807" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 </enemy>
 <enemy enemyid="12808" enemyname="锤石" boss="1" >
 <skill img="8" skillid="50063" skillname="死亡判决" skilllevel="1" />
@@ -653,16 +688,16 @@
 <skill img="1" skillid="50018" skillname="秘术射击" skilllevel="1" />
 </enemy>
 <enemy enemyid="12901" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="12902" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="12903" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="12904" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="12905" enemyname="蜥蜴人红buff" boss="1" >
 <skill img="58" skillid="50078" skillname="蜥蜴剧毒" skilllevel="1" />
@@ -672,6 +707,7 @@
 </enemy>
 <enemy enemyid="13002" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 </enemy>
 <enemy enemyid="13003" enemyname="阿兹尔" boss="1" >
 <skill img="27" skillid="50066" skillname="狂沙猛攻" skilllevel="1" />
@@ -687,30 +723,33 @@
 </enemy>
 <enemy enemyid="13007" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="13008" enemyname="希瓦娜" boss="1" >
 <skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
 </enemy>
 <enemy enemyid="13009" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 </enemy>
 <enemy enemyid="13010" enemyname="嘉文四世" boss="1" >
 <skill img="16" skillid="50042" skillname="天崩地裂" skilllevel="1" />
 </enemy>
 <enemy enemyid="13101" enemyname="小丑" boss="1" >
-<skill img="140" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="140" skillid="51004" skillname="捅你一刀" skilllevel="1" />
 </enemy>
 <enemy enemyid="13102" enemyname="特务" boss="1" >
-<skill img="141" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="141" skillid="51005" skillname="射你一枪" skilllevel="1" />
 </enemy>
 <enemy enemyid="13103" enemyname="水手" boss="1" >
-<skill img="142" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="142" skillid="51006" skillname="强行水帖" skilllevel="1" />
 </enemy>
 <enemy enemyid="13104" enemyname="海军上将" boss="1" >
-<skill img="143" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="143" skillid="51007" skillname="水刀" skilllevel="1" />
 </enemy>
 <enemy enemyid="13105" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
@@ -725,6 +764,7 @@
 </enemy>
 <enemy enemyid="13204" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 </enemy>
 <enemy enemyid="13205" enemyname="古拉加斯" boss="1" >
 <skill img="18" skillid="50067" skillname="滚动酒桶" skilllevel="1" />
@@ -746,9 +786,11 @@
 </enemy>
 <enemy enemyid="13301" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 </enemy>
 <enemy enemyid="13302" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 </enemy>
 <enemy enemyid="13303" enemyname="易" boss="1" >
 <skill img="12" skillid="50025" skillname="多重打击" skilllevel="1" />
@@ -782,6 +824,7 @@
 </enemy>
 <enemy enemyid="13403" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="13404" enemyname="薇恩" boss="1" >
 <skill img="14" skillid="50038" skillname="恶魔审判" skilllevel="1" />
@@ -824,9 +867,11 @@
 </enemy>
 <enemy enemyid="13507" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="13508" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="13509" enemyname="艾希" boss="1" >
 <skill img="31" skillid="50029" skillname="万箭齐发" skilllevel="1" />
@@ -850,16 +895,16 @@
 <skill img="29" skillid="50020" skillname="德玛西亚正义" skilllevel="1" />
 </enemy>
 <enemy enemyid="13701" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="13702" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="13703" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="13704" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="13705" enemyname="蜥蜴人红buff" boss="1" >
 <skill img="58" skillid="50078" skillname="蜥蜴剧毒" skilllevel="1" />
@@ -871,13 +916,14 @@
 <skill img="54" skillid="50003" skillname="轻砍" skilllevel="1" />
 </enemy>
 <enemy enemyid="13803" enemyname="炮车" boss="1" >
-<skill img="55" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="55" skillid="51002" skillname="砰！" skilllevel="1" />
 </enemy>
 <enemy enemyid="13804" enemyname="超级兵" boss="1" >
-<skill img="56" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="56" skillid="51003" skillname="龟速打脸" skilllevel="1" />
 </enemy>
 <enemy enemyid="13805" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
@@ -908,6 +954,7 @@
 </enemy>
 <enemy enemyid="14004" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 </enemy>
 <enemy enemyid="14005" enemyname="古拉加斯" boss="1" >
 <skill img="18" skillid="50067" skillname="滚动酒桶" skilllevel="1" />
@@ -932,9 +979,11 @@
 </enemy>
 <enemy enemyid="14102" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 </enemy>
 <enemy enemyid="14103" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 </enemy>
 <enemy enemyid="14104" enemyname="辛吉德" boss="1" >
 <skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
@@ -977,6 +1026,7 @@
 </enemy>
 <enemy enemyid="14207" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="14208" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
@@ -1017,6 +1067,7 @@
 </enemy>
 <enemy enemyid="14405" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 </enemy>
 <enemy enemyid="14406" enemyname="蕾欧娜" boss="1" >
 <skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
@@ -1026,6 +1077,7 @@
 </enemy>
 <enemy enemyid="14408" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="14409" enemyname="希瓦娜" boss="1" >
 <skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
@@ -1034,19 +1086,19 @@
 <skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
 </enemy>
 <enemy enemyid="14501" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 </enemy>
 <enemy enemyid="14502" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 </enemy>
 <enemy enemyid="14503" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 </enemy>
 <enemy enemyid="14504" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 </enemy>
 <enemy enemyid="14505" enemyname="大恶魔" boss="1" >
-<skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="134" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="14601" enemyname="墨菲特" boss="1" >
@@ -1054,9 +1106,11 @@
 </enemy>
 <enemy enemyid="14602" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 </enemy>
 <enemy enemyid="14603" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 </enemy>
 <enemy enemyid="14604" enemyname="辛吉德" boss="1" >
 <skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
@@ -1080,16 +1134,16 @@
 <skill img="16" skillid="50042" skillname="天崩地裂" skilllevel="1" />
 </enemy>
 <enemy enemyid="14701" enemyname="公主" boss="1" >
-<skill img="148" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="148" skillid="51020" skillname="皇家火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="14702" enemyname="王子" boss="1" >
-<skill img="149" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="149" skillid="51020" skillname="皇家火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="14703" enemyname="王后" boss="1" >
-<skill img="150" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="150" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="14704" enemyname="国王" boss="1" >
-<skill img="151" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="151" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="14705" enemyname="石头人蓝buff" boss="1" >
 <skill img="57" skillid="50008" skillname="火球" skilllevel="1" />
@@ -1099,17 +1153,17 @@
 <skill img="116" skillid="50001" skillname="爪击" skilllevel="1" />
 </enemy>
 <enemy enemyid="14802" enemyname="史莱姆" boss="1" >
-<skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="117" skillid="51012" skillname="吐口水" skilllevel="1" />
 </enemy>
 <enemy enemyid="14803" enemyname="哥布林" boss="1" >
-<skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="118" skillid="51013" skillname="迎头乱撞" skilllevel="1" />
 </enemy>
 <enemy enemyid="14804" enemyname="牛头怪" boss="1" >
-<skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="119" skillid="51014" skillname="牛角顶" skilllevel="1" />
 </enemy>
 <enemy enemyid="14805" enemyname="小恶魔" boss="1" >
 <skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="14901" enemyname="艾瑞莉娅" boss="1" >
 <skill img="32" skillid="50043" skillname="均衡打击" skilllevel="1" />
@@ -1125,6 +1179,7 @@
 </enemy>
 <enemy enemyid="14905" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 </enemy>
 <enemy enemyid="14906" enemyname="蕾欧娜" boss="1" >
 <skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
@@ -1134,6 +1189,7 @@
 </enemy>
 <enemy enemyid="14908" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="14909" enemyname="希瓦娜" boss="1" >
 <skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
@@ -1152,6 +1208,7 @@
 </enemy>
 <enemy enemyid="15004" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 </enemy>
 <enemy enemyid="15005" enemyname="雷恩加尔" boss="1" >
 <skill img="51" skillid="50074" skillname="残忍无情" skilllevel="1" />
@@ -1170,6 +1227,7 @@
 </enemy>
 <enemy enemyid="15010" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 </enemy>
 <enemy enemyid="15101" enemyname="盖伦" boss="1" >
 <skill img="29" skillid="50020" skillname="德玛西亚正义" skilllevel="1" />
@@ -1185,6 +1243,7 @@
 </enemy>
 <enemy enemyid="15105" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 </enemy>
 <enemy enemyid="15106" enemyname="艾希" boss="1" >
 <skill img="31" skillid="50029" skillname="万箭齐发" skilllevel="1" />
@@ -1194,21 +1253,22 @@
 </enemy>
 <enemy enemyid="15108" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="15109" enemyname="兰博" boss="1" >
 <skill img="22" skillid="50039" skillname="纵火盛宴" skilllevel="1" />
 </enemy>
 <enemy enemyid="15201" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="15202" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="15203" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="15204" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 </enemy>
 <enemy enemyid="15205" enemyname="蜥蜴人红buff" boss="1" >
 <skill img="58" skillid="50078" skillname="蜥蜴剧毒" skilllevel="1" />
@@ -1245,16 +1305,16 @@
 <skill img="33" skillid="50053" skillname="腾云突击" skilllevel="1" />
 </enemy>
 <enemy enemyid="15401" enemyname="公主" boss="1" >
-<skill img="148" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="148" skillid="51020" skillname="皇家火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="15402" enemyname="王子" boss="1" >
-<skill img="149" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="149" skillid="51020" skillname="皇家火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="15403" enemyname="王后" boss="1" >
-<skill img="150" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="150" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="15404" enemyname="国王" boss="1" >
-<skill img="151" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="151" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 </enemy>
 <enemy enemyid="15405" enemyname="石头人蓝buff" boss="1" >
 <skill img="57" skillid="50008" skillname="火球" skilllevel="1" />
@@ -1269,6 +1329,7 @@
 </enemy>
 <enemy enemyid="15503" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 </enemy>
 <enemy enemyid="15504" enemyname="塔里克" boss="1" >
 <skill img="38" skillid="50021" skillname="神圣洗礼" skilllevel="1" />
@@ -1298,10 +1359,10 @@
 <skill img="54" skillid="50003" skillname="轻砍" skilllevel="1" />
 </enemy>
 <enemy enemyid="15603" enemyname="炮车" boss="1" >
-<skill img="55" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="55" skillid="51002" skillname="砰！" skilllevel="1" />
 </enemy>
 <enemy enemyid="15604" enemyname="超级兵" boss="1" >
-<skill img="56" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="56" skillid="51003" skillname="龟速打脸" skilllevel="1" />
 </enemy>
 <enemy enemyid="15605" enemyname="大龙" boss="1" >
 <skill img="59" skillid="50082" skillname="地刺" skilllevel="1" />
@@ -1309,6 +1370,7 @@
 </enemy>
 <enemy enemyid="15701" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="15702" enemyname="希瓦娜" boss="1" >
 <skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
@@ -1318,6 +1380,7 @@
 </enemy>
 <enemy enemyid="15704" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 </enemy>
 <enemy enemyid="15705" enemyname="蕾欧娜" boss="1" >
 <skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
@@ -1336,21 +1399,26 @@
 </enemy>
 <enemy enemyid="15710" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 </enemy>
 <enemy enemyid="15801" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 </enemy>
 <enemy enemyid="15802" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 </enemy>
 <enemy enemyid="15803" enemyname="菲兹" boss="1" >
 <skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
 </enemy>
 <enemy enemyid="15804" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 </enemy>
 <enemy enemyid="15805" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 </enemy>
 <enemy enemyid="15901" enemyname="韦鲁斯" boss="1" >
 <skill img="50" skillid="50060" skillname="穿刺之箭" skilllevel="1" />
@@ -1372,6 +1440,7 @@
 </enemy>
 <enemy enemyid="15907" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="15908" enemyname="艾希" boss="1" >
 <skill img="31" skillid="50029" skillname="万箭齐发" skilllevel="1" />
@@ -1390,6 +1459,7 @@
 </enemy>
 <enemy enemyid="16003" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 </enemy>
 <enemy enemyid="16004" enemyname="贾克斯" boss="1" >
 <skill img="11" skillid="50026" skillname="跳斩" skilllevel="1" />
@@ -1397,25 +1467,174 @@
 <enemy enemyid="16005" enemyname="伊泽瑞尔" boss="1" >
 <skill img="1" skillid="50018" skillname="秘术射击" skilllevel="1" />
 </enemy>
+<enemy enemyid="16101" enemyname="金克丝" boss="1" >
+<skill img="35" skillid="50076" skillname="超究极死神飞弹" skilllevel="1" />
+</enemy>
+<enemy enemyid="16102" enemyname="薇恩" boss="1" >
+<skill img="14" skillid="50038" skillname="恶魔审判" skilllevel="1" />
+</enemy>
+<enemy enemyid="16103" enemyname="韦鲁斯" boss="1" >
+<skill img="50" skillid="50060" skillname="穿刺之箭" skilllevel="1" />
+</enemy>
+<enemy enemyid="16104" enemyname="厄运小姐" boss="1" >
+<skill img="46" skillid="50014" skillname="枪林弹雨" skilllevel="1" />
+</enemy>
+<enemy enemyid="16105" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+</enemy>
+<enemy enemyid="16201" enemyname="拉克丝" boss="1" >
+<skill img="5" skillid="50045" skillname="透光奇点" skilllevel="1" />
+</enemy>
+<enemy enemyid="16202" enemyname="阿兹尔" boss="1" >
+<skill img="27" skillid="50066" skillname="狂沙猛攻" skilllevel="1" />
+</enemy>
+<enemy enemyid="16203" enemyname="安妮" boss="1" >
+<skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+</enemy>
+<enemy enemyid="16204" enemyname="瑞兹" boss="1" >
+<skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+</enemy>
+<enemy enemyid="16205" enemyname="菲兹" boss="1" >
+<skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
+</enemy>
+<enemy enemyid="16301" enemyname="瑞雯" boss="1" >
+<skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+</enemy>
+<enemy enemyid="16302" enemyname="赵信" boss="1" >
+<skill img="9" skillid="50015" skillname="三重爪击" skilllevel="1" />
+</enemy>
+<enemy enemyid="16303" enemyname="德莱厄斯" boss="1" >
+<skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+</enemy>
+<enemy enemyid="16304" enemyname="嘉文四世" boss="1" >
+<skill img="16" skillid="50042" skillname="天崩地裂" skilllevel="1" />
+</enemy>
+<enemy enemyid="16305" enemyname="亚索" boss="1" >
+<skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+</enemy>
+<enemy enemyid="16401" enemyname="卡特琳娜" boss="1" >
+<skill img="44" skillid="50048" skillname="弹射之刃" skilllevel="1" />
+</enemy>
+<enemy enemyid="16402" enemyname="娑娜" boss="1" >
+<skill img="6" skillid="50046" skillname="能量和弦" skilllevel="1" />
+</enemy>
+<enemy enemyid="16403" enemyname="辛吉德" boss="1" >
+<skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
+</enemy>
+<enemy enemyid="16404" enemyname="锤石" boss="1" >
+<skill img="8" skillid="50063" skillname="死亡判决" skilllevel="1" />
+</enemy>
+<enemy enemyid="16405" enemyname="阿狸" boss="1" >
+<skill img="24" skillid="50059" skillname="欺诈宝珠" skilllevel="1" />
+</enemy>
+<enemy enemyid="16501" enemyname="布兰德" boss="1" >
+<skill img="43" skillid="50072" skillname="烈焰之柱" skilllevel="1" />
+</enemy>
+<enemy enemyid="16502" enemyname="古拉加斯" boss="1" >
+<skill img="18" skillid="50067" skillname="滚动酒桶" skilllevel="1" />
+</enemy>
+<enemy enemyid="16503" enemyname="伊丽丝" boss="1" >
+<skill img="26" skillid="50062" skillname="神经毒素" skilllevel="1" />
+</enemy>
+<enemy enemyid="16504" enemyname="璐璐" boss="1" >
+<skill img="25" skillid="50073" skillname="闪耀长枪" skilllevel="1" />
+</enemy>
+<enemy enemyid="16505" enemyname="蕾欧娜" boss="1" >
+<skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
+</enemy>
+<enemy enemyid="16601" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+</enemy>
+<enemy enemyid="16602" enemyname="布兰德" boss="1" >
+<skill img="43" skillid="50072" skillname="烈焰之柱" skilllevel="1" />
+</enemy>
+<enemy enemyid="16603" enemyname="莫德凯撒" boss="1" >
+<skill img="2" skillid="50019" skillname="死亡之子" skilllevel="1" />
+</enemy>
+<enemy enemyid="16604" enemyname="阿利斯塔" boss="1" >
+<skill img="20" skillid="50024" skillname="粉碎大地" skilllevel="1" />
+</enemy>
+<enemy enemyid="16605" enemyname="卡兹克" boss="1" >
+<skill img="52" skillid="50075" skillname="虚空突刺" skilllevel="1" />
+</enemy>
+<enemy enemyid="16701" enemyname="安妮" boss="1" >
+<skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+</enemy>
+<enemy enemyid="16702" enemyname="贾克斯" boss="1" >
+<skill img="11" skillid="50026" skillname="跳斩" skilllevel="1" />
+</enemy>
+<enemy enemyid="16703" enemyname="辛吉德" boss="1" >
+<skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
+</enemy>
+<enemy enemyid="16704" enemyname="塔里克" boss="1" >
+<skill img="38" skillid="50021" skillname="神圣洗礼" skilllevel="1" />
+</enemy>
+<enemy enemyid="16705" enemyname="希瓦娜" boss="1" >
+<skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
+</enemy>
+<enemy enemyid="16801" enemyname="崔斯特" boss="1" >
+<skill img="3" skillid="50071" skillname="万能牌" skilllevel="1" />
+</enemy>
+<enemy enemyid="16802" enemyname="卡特琳娜" boss="1" >
+<skill img="44" skillid="50048" skillname="弹射之刃" skilllevel="1" />
+</enemy>
+<enemy enemyid="16803" enemyname="瑞兹" boss="1" >
+<skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+</enemy>
+<enemy enemyid="16804" enemyname="提莫" boss="1" >
+<skill img="4" skillid="50030" skillname="毒性射击" skilllevel="1" />
+</enemy>
+<enemy enemyid="16805" enemyname="努努" boss="1" >
+<skill img="21" skillid="50036" skillname="吞噬" skilllevel="1" />
+</enemy>
+<enemy enemyid="16901" enemyname="布里茨" boss="1" >
+<skill img="19" skillid="50023" skillname="静电力场" skilllevel="1" />
+</enemy>
+<enemy enemyid="16902" enemyname="雷恩加尔" boss="1" >
+<skill img="51" skillid="50074" skillname="残忍无情" skilllevel="1" />
+</enemy>
+<enemy enemyid="16903" enemyname="卡莉斯塔" boss="1" >
+<skill img="37" skillid="50077" skillname="穿刺" skilllevel="1" />
+</enemy>
+<enemy enemyid="16904" enemyname="兰博" boss="1" >
+<skill img="22" skillid="50039" skillname="纵火盛宴" skilllevel="1" />
+</enemy>
+<enemy enemyid="16905" enemyname="奈德丽" boss="1" >
+<skill img="10" skillid="50069" skillname="标枪投掷" skilllevel="1" />
+</enemy>
+<enemy enemyid="17001" enemyname="亚索" boss="1" >
+<skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+</enemy>
+<enemy enemyid="17002" enemyname="菲兹" boss="1" >
+<skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
+</enemy>
+<enemy enemyid="17003" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+</enemy>
+<enemy enemyid="17004" enemyname="阿利斯塔" boss="1" >
+<skill img="20" skillid="50024" skillname="粉碎大地" skilllevel="1" />
+</enemy>
+<enemy enemyid="17005" enemyname="泰达米尔" boss="1" >
+<skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+</enemy>
 <enemy enemyid="20501" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="20502" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="20503" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="20504" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="20505" enemyname="大恶魔" boss="1" >
-<skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="134" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="20601" enemyname="盖伦" boss="1" >
 <skill img="29" skillid="50020" skillname="德玛西亚正义" skilllevel="1" />
@@ -1435,6 +1654,8 @@
 </enemy>
 <enemy enemyid="20605" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="10" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="20606" enemyname="艾希" boss="1" >
@@ -1448,6 +1669,7 @@
 <enemy enemyid="20608" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 </enemy>
 <enemy enemyid="20609" enemyname="兰博" boss="1" >
 <skill img="22" skillid="50039" skillname="纵火盛宴" skilllevel="1" />
@@ -1503,6 +1725,7 @@
 </enemy>
 <enemy enemyid="20803" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="20804" enemyname="塔里克" boss="1" >
@@ -1535,27 +1758,31 @@
 </enemy>
 <enemy enemyid="20901" enemyname="汪汪" boss="1" >
 <skill img="121" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="20902" enemyname="喵喵" boss="1" >
 <skill img="122" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="20903" enemyname="吱吱" boss="1" >
 <skill img="123" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="20904" enemyname="咩咩" boss="1" >
-<skill img="124" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="124" skillid="51015" skillname="羊蹄猛踹" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="20905" enemyname="僵尸" boss="1" >
-<skill img="125" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="125" skillid="51023" skillname="僵尸毒气" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="21001" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="21002" enemyname="希瓦娜" boss="1" >
@@ -1568,6 +1795,7 @@
 </enemy>
 <enemy enemyid="21004" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="21005" enemyname="蕾欧娜" boss="1" >
@@ -1592,6 +1820,7 @@
 </enemy>
 <enemy enemyid="21010" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="21101" enemyname="黄精灵" boss="1" >
@@ -1637,24 +1866,24 @@
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="21301" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="21302" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="21303" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="21304" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="21305" enemyname="大恶魔" boss="1" >
 <skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 </enemy>
 <enemy enemyid="21401" enemyname="韦鲁斯" boss="1" >
 <skill img="50" skillid="50060" skillname="穿刺之箭" skilllevel="1" />
@@ -1682,6 +1911,7 @@
 </enemy>
 <enemy enemyid="21407" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21408" enemyname="艾希" boss="1" >
@@ -1701,19 +1931,19 @@
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21502" enemyname="史莱姆" boss="1" >
-<skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="117" skillid="51012" skillname="吐口水" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21503" enemyname="哥布林" boss="1" >
-<skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="118" skillid="51013" skillname="迎头乱撞" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21504" enemyname="牛头怪" boss="1" >
-<skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="119" skillid="51014" skillname="牛角顶" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21505" enemyname="小恶魔" boss="1" >
-<skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="120" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
@@ -1723,6 +1953,7 @@
 </enemy>
 <enemy enemyid="21602" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21603" enemyname="阿狸" boss="1" >
@@ -1743,6 +1974,7 @@
 </enemy>
 <enemy enemyid="21607" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21608" enemyname="锤石" boss="1" >
@@ -1779,23 +2011,24 @@
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="21801" enemyname="小丑" boss="1" >
-<skill img="140" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="140" skillid="51004" skillname="捅你一刀" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21802" enemyname="特务" boss="1" >
-<skill img="141" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="141" skillid="51005" skillname="射你一枪" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21803" enemyname="水手" boss="1" >
-<skill img="142" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="142" skillid="51006" skillname="强行水帖" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21804" enemyname="海军上将" boss="1" >
-<skill img="143" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="143" skillid="51007" skillname="水刀" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="21805" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
@@ -1818,6 +2051,8 @@
 </enemy>
 <enemy enemyid="21905" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="21906" enemyname="艾希" boss="1" >
@@ -1830,6 +2065,7 @@
 </enemy>
 <enemy enemyid="21908" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="21909" enemyname="兰博" boss="1" >
@@ -1842,6 +2078,7 @@
 </enemy>
 <enemy enemyid="22002" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="22003" enemyname="阿兹尔" boss="1" >
@@ -1862,6 +2099,7 @@
 </enemy>
 <enemy enemyid="22007" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="22008" enemyname="希瓦娜" boss="1" >
@@ -1870,6 +2108,7 @@
 </enemy>
 <enemy enemyid="22009" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="22010" enemyname="嘉文四世" boss="1" >
@@ -1918,10 +2157,13 @@
 </enemy>
 <enemy enemyid="22201" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="22202" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="22203" enemyname="易" boss="1" >
@@ -1966,6 +2208,7 @@
 </enemy>
 <enemy enemyid="22303" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22304" enemyname="塔里克" boss="1" >
@@ -2006,6 +2249,7 @@
 </enemy>
 <enemy enemyid="22403" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="22404" enemyname="薇恩" boss="1" >
@@ -2038,6 +2282,7 @@
 </enemy>
 <enemy enemyid="22501" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22502" enemyname="希瓦娜" boss="1" >
@@ -2050,6 +2295,7 @@
 </enemy>
 <enemy enemyid="22504" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22505" enemyname="蕾欧娜" boss="1" >
@@ -2074,6 +2320,7 @@
 </enemy>
 <enemy enemyid="22510" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22601" enemyname="易" boss="1" >
@@ -2122,6 +2369,7 @@
 </enemy>
 <enemy enemyid="22707" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="22708" enemyname="艾希" boss="1" >
@@ -2142,6 +2390,7 @@
 </enemy>
 <enemy enemyid="22802" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="22803" enemyname="阿狸" boss="1" >
@@ -2162,6 +2411,7 @@
 </enemy>
 <enemy enemyid="22807" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="22808" enemyname="锤石" boss="1" >
@@ -2177,19 +2427,19 @@
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="22901" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22902" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22903" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22904" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="22905" enemyname="蜥蜴人红buff" boss="1" >
@@ -2203,6 +2453,7 @@
 </enemy>
 <enemy enemyid="23002" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23003" enemyname="阿兹尔" boss="1" >
@@ -2223,6 +2474,7 @@
 </enemy>
 <enemy enemyid="23007" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23008" enemyname="希瓦娜" boss="1" >
@@ -2231,6 +2483,7 @@
 </enemy>
 <enemy enemyid="23009" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23010" enemyname="嘉文四世" boss="1" >
@@ -2238,23 +2491,24 @@
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23101" enemyname="小丑" boss="1" >
-<skill img="140" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="140" skillid="51004" skillname="捅你一刀" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="23102" enemyname="特务" boss="1" >
-<skill img="141" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="141" skillid="51005" skillname="射你一枪" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="23103" enemyname="水手" boss="1" >
-<skill img="142" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="142" skillid="51006" skillname="强行水帖" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="23104" enemyname="海军上将" boss="1" >
-<skill img="143" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="143" skillid="51007" skillname="水刀" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="23105" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
@@ -2273,6 +2527,7 @@
 </enemy>
 <enemy enemyid="23204" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23205" enemyname="古拉加斯" boss="1" >
@@ -2301,10 +2556,13 @@
 </enemy>
 <enemy enemyid="23301" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23302" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23303" enemyname="易" boss="1" >
@@ -2349,6 +2607,7 @@
 </enemy>
 <enemy enemyid="23403" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23404" enemyname="薇恩" boss="1" >
@@ -2405,10 +2664,12 @@
 </enemy>
 <enemy enemyid="23507" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23508" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23509" enemyname="艾希" boss="1" >
@@ -2440,19 +2701,19 @@
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="23701" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="23702" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="23703" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="23704" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="23705" enemyname="蜥蜴人红buff" boss="1" >
@@ -2469,15 +2730,16 @@
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="23803" enemyname="炮车" boss="1" >
-<skill img="55" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="55" skillid="51002" skillname="砰！" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="23804" enemyname="超级兵" boss="1" >
-<skill img="56" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="56" skillid="51003" skillname="龟速打脸" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="23805" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
@@ -2517,6 +2779,7 @@
 </enemy>
 <enemy enemyid="24004" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24005" enemyname="古拉加斯" boss="1" >
@@ -2549,10 +2812,13 @@
 </enemy>
 <enemy enemyid="24102" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24103" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24104" enemyname="辛吉德" boss="1" >
@@ -2609,10 +2875,12 @@
 </enemy>
 <enemy enemyid="24207" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24208" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24209" enemyname="艾希" boss="1" >
@@ -2662,6 +2930,7 @@
 </enemy>
 <enemy enemyid="24405" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24406" enemyname="蕾欧娜" boss="1" >
@@ -2674,6 +2943,7 @@
 </enemy>
 <enemy enemyid="24408" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24409" enemyname="希瓦娜" boss="1" >
@@ -2685,23 +2955,23 @@
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24501" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="24502" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="24503" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="24504" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="24505" enemyname="大恶魔" boss="1" >
-<skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="134" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 </enemy>
 <enemy enemyid="24601" enemyname="墨菲特" boss="1" >
@@ -2710,10 +2980,13 @@
 </enemy>
 <enemy enemyid="24602" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24603" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24604" enemyname="辛吉德" boss="1" >
@@ -2745,19 +3018,19 @@
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24701" enemyname="公主" boss="1" >
-<skill img="148" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="148" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24702" enemyname="王子" boss="1" >
-<skill img="149" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="149" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24703" enemyname="王后" boss="1" >
-<skill img="150" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="150" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24704" enemyname="国王" boss="1" >
-<skill img="151" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="151" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24705" enemyname="石头人蓝buff" boss="1" >
@@ -2771,20 +3044,20 @@
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="24802" enemyname="史莱姆" boss="1" >
-<skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="117" skillid="51012" skillname="吐口水" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="24803" enemyname="哥布林" boss="1" >
-<skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="118" skillid="51013" skillname="迎头乱撞" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="24804" enemyname="牛头怪" boss="1" >
-<skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="119" skillid="51014" skillname="牛角顶" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="24805" enemyname="小恶魔" boss="1" >
 <skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="24901" enemyname="艾瑞莉娅" boss="1" >
@@ -2805,6 +3078,7 @@
 </enemy>
 <enemy enemyid="24905" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24906" enemyname="蕾欧娜" boss="1" >
@@ -2817,6 +3091,7 @@
 </enemy>
 <enemy enemyid="24908" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="24909" enemyname="希瓦娜" boss="1" >
@@ -2841,6 +3116,7 @@
 </enemy>
 <enemy enemyid="25004" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25005" enemyname="雷恩加尔" boss="1" >
@@ -2865,6 +3141,7 @@
 </enemy>
 <enemy enemyid="25010" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25101" enemyname="盖伦" boss="1" >
@@ -2885,6 +3162,8 @@
 </enemy>
 <enemy enemyid="25105" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="25106" enemyname="艾希" boss="1" >
@@ -2897,6 +3176,7 @@
 </enemy>
 <enemy enemyid="25108" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="25109" enemyname="兰博" boss="1" >
@@ -2904,19 +3184,19 @@
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="25201" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25202" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25203" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25204" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25205" enemyname="蜥蜴人红buff" boss="1" >
@@ -2965,19 +3245,19 @@
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="25401" enemyname="公主" boss="1" >
-<skill img="148" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="148" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="25402" enemyname="王子" boss="1" >
-<skill img="149" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="149" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="25403" enemyname="王后" boss="1" >
-<skill img="150" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="150" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="25404" enemyname="国王" boss="1" >
-<skill img="151" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="151" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="25405" enemyname="石头人蓝buff" boss="1" >
@@ -2995,6 +3275,7 @@
 </enemy>
 <enemy enemyid="25503" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="25504" enemyname="塔里克" boss="1" >
@@ -3026,12 +3307,20 @@
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
 </enemy>
+<enemy enemyid="25601" enemyname="三狼" boss="1" >
+<skill img="53" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="25602" enemyname="小兵" boss="1" >
+<skill img="54" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
+</enemy>
 <enemy enemyid="25603" enemyname="炮车" boss="1" >
-<skill img="55" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="55" skillid="51002" skillname="砰！" skilllevel="1" />
 <skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25604" enemyname="超级兵" boss="1" >
-<skill img="56" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="56" skillid="51003" skillname="龟速打脸" skilllevel="1" />
 <skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25605" enemyname="大龙" boss="1" >
@@ -3040,6 +3329,7 @@
 </enemy>
 <enemy enemyid="25701" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="25702" enemyname="希瓦娜" boss="1" >
@@ -3052,6 +3342,7 @@
 </enemy>
 <enemy enemyid="25704" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="25705" enemyname="蕾欧娜" boss="1" >
@@ -3076,15 +3367,18 @@
 </enemy>
 <enemy enemyid="25710" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="25801" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25802" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
 </enemy>
@@ -3095,11 +3389,13 @@
 </enemy>
 <enemy enemyid="25804" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="25805" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
 </enemy>
@@ -3129,6 +3425,7 @@
 </enemy>
 <enemy enemyid="25907" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="25908" enemyname="艾希" boss="1" >
@@ -3155,6 +3452,8 @@
 </enemy>
 <enemy enemyid="26003" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 </enemy>
@@ -3168,6 +3467,206 @@
 <skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 </enemy>
+<enemy enemyid="26101" enemyname="金克丝" boss="1" >
+<skill img="35" skillid="50076" skillname="超究极死神飞弹" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26102" enemyname="薇恩" boss="1" >
+<skill img="14" skillid="50038" skillname="恶魔审判" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26103" enemyname="韦鲁斯" boss="1" >
+<skill img="50" skillid="50060" skillname="穿刺之箭" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26104" enemyname="厄运小姐" boss="1" >
+<skill img="46" skillid="50014" skillname="枪林弹雨" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26105" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
+</enemy>
+<enemy enemyid="26201" enemyname="拉克丝" boss="1" >
+<skill img="5" skillid="50045" skillname="透光奇点" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26202" enemyname="阿兹尔" boss="1" >
+<skill img="27" skillid="50066" skillname="狂沙猛攻" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26203" enemyname="安妮" boss="1" >
+<skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26204" enemyname="瑞兹" boss="1" >
+<skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26205" enemyname="菲兹" boss="1" >
+<skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26301" enemyname="瑞雯" boss="1" >
+<skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26302" enemyname="赵信" boss="1" >
+<skill img="9" skillid="50015" skillname="三重爪击" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26303" enemyname="德莱厄斯" boss="1" >
+<skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26304" enemyname="嘉文四世" boss="1" >
+<skill img="16" skillid="50042" skillname="天崩地裂" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26305" enemyname="亚索" boss="1" >
+<skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
+</enemy>
+<enemy enemyid="26401" enemyname="卡特琳娜" boss="1" >
+<skill img="44" skillid="50048" skillname="弹射之刃" skilllevel="1" />
+<skill img="" skillid="50049" skillname="终极莲华" skilllevel="1" />
+</enemy>
+<enemy enemyid="26402" enemyname="娑娜" boss="1" >
+<skill img="6" skillid="50046" skillname="能量和弦" skilllevel="1" />
+<skill img="" skillid="50047" skillname="狂舞终乐章" skilllevel="1" />
+</enemy>
+<enemy enemyid="26403" enemyname="辛吉德" boss="1" >
+<skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26404" enemyname="锤石" boss="1" >
+<skill img="8" skillid="50063" skillname="死亡判决" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26405" enemyname="阿狸" boss="1" >
+<skill img="24" skillid="50059" skillname="欺诈宝珠" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26501" enemyname="布兰德" boss="1" >
+<skill img="43" skillid="50072" skillname="烈焰之柱" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26502" enemyname="古拉加斯" boss="1" >
+<skill img="18" skillid="50067" skillname="滚动酒桶" skilllevel="1" />
+<skill img="" skillid="50068" skillname="欢乐时光" skilllevel="1" />
+</enemy>
+<enemy enemyid="26503" enemyname="伊丽丝" boss="1" >
+<skill img="26" skillid="50062" skillname="神经毒素" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26504" enemyname="璐璐" boss="1" >
+<skill img="25" skillid="50073" skillname="闪耀长枪" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26505" enemyname="蕾欧娜" boss="1" >
+<skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26601" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
+</enemy>
+<enemy enemyid="26602" enemyname="布兰德" boss="1" >
+<skill img="43" skillid="50072" skillname="烈焰之柱" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26603" enemyname="莫德凯撒" boss="1" >
+<skill img="2" skillid="50019" skillname="死亡之子" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26604" enemyname="阿利斯塔" boss="1" >
+<skill img="20" skillid="50024" skillname="粉碎大地" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26605" enemyname="卡兹克" boss="1" >
+<skill img="52" skillid="50075" skillname="虚空突刺" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26701" enemyname="安妮" boss="1" >
+<skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26702" enemyname="贾克斯" boss="1" >
+<skill img="11" skillid="50026" skillname="跳斩" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26703" enemyname="辛吉德" boss="1" >
+<skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26704" enemyname="塔里克" boss="1" >
+<skill img="38" skillid="50021" skillname="神圣洗礼" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26705" enemyname="希瓦娜" boss="1" >
+<skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
+<skill img="" skillid="50057" skillname="野火燎原" skilllevel="1" />
+</enemy>
+<enemy enemyid="26801" enemyname="崔斯特" boss="1" >
+<skill img="3" skillid="50071" skillname="万能牌" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26802" enemyname="卡特琳娜" boss="1" >
+<skill img="44" skillid="50048" skillname="弹射之刃" skilllevel="1" />
+<skill img="" skillid="50049" skillname="终极莲华" skilllevel="1" />
+</enemy>
+<enemy enemyid="26803" enemyname="瑞兹" boss="1" >
+<skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26804" enemyname="提莫" boss="1" >
+<skill img="4" skillid="50030" skillname="毒性射击" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26805" enemyname="努努" boss="1" >
+<skill img="21" skillid="50036" skillname="吞噬" skilllevel="1" />
+<skill img="" skillid="50037" skillname="绝对零度" skilllevel="1" />
+</enemy>
+<enemy enemyid="26901" enemyname="布里茨" boss="1" >
+<skill img="19" skillid="50023" skillname="静电力场" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26902" enemyname="雷恩加尔" boss="1" >
+<skill img="51" skillid="50074" skillname="残忍无情" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26903" enemyname="卡莉斯塔" boss="1" >
+<skill img="37" skillid="50077" skillname="穿刺" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26904" enemyname="兰博" boss="1" >
+<skill img="22" skillid="50039" skillname="纵火盛宴" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="26905" enemyname="奈德丽" boss="1" >
+<skill img="10" skillid="50069" skillname="标枪投掷" skilllevel="1" />
+<skill img="" skillid="50070" skillname="推倒" skilllevel="1" />
+</enemy>
+<enemy enemyid="27001" enemyname="亚索" boss="1" >
+<skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
+</enemy>
+<enemy enemyid="27002" enemyname="菲兹" boss="1" >
+<skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="27003" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
+</enemy>
+<enemy enemyid="27004" enemyname="阿利斯塔" boss="1" >
+<skill img="20" skillid="50024" skillname="粉碎大地" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+</enemy>
+<enemy enemyid="27005" enemyname="泰达米尔" boss="1" >
+<skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+</enemy>
 <enemy enemyid="30801" enemyname="古拉加斯" boss="1" >
 <skill img="18" skillid="50067" skillname="滚动酒桶" skilllevel="1" />
 <skill img="" skillid="50068" skillname="欢乐时光" skilllevel="1" />
@@ -3180,6 +3679,7 @@
 </enemy>
 <enemy enemyid="30803" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3220,32 +3720,36 @@
 </enemy>
 <enemy enemyid="30901" enemyname="汪汪" boss="1" >
 <skill img="121" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="30902" enemyname="喵喵" boss="1" >
 <skill img="122" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51032" skillname="物理防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="30903" enemyname="吱吱" boss="1" >
 <skill img="123" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="30904" enemyname="咩咩" boss="1" >
-<skill img="124" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="124" skillid="51015" skillname="羊蹄猛踹" skilllevel="1" />
+<skill img="" skillid="51033" skillname="魔法防护" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="30905" enemyname="僵尸" boss="1" >
-<skill img="125" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="125" skillid="51023" skillname="僵尸毒气" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31001" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3261,6 +3765,7 @@
 </enemy>
 <enemy enemyid="31004" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3291,6 +3796,7 @@
 </enemy>
 <enemy enemyid="31010" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3347,28 +3853,28 @@
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="31301" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="31302" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="31303" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="31304" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="31305" enemyname="大恶魔" boss="1" >
 <skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="31401" enemyname="韦鲁斯" boss="1" >
@@ -3403,6 +3909,7 @@
 </enemy>
 <enemy enemyid="31407" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -3427,22 +3934,22 @@
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31502" enemyname="史莱姆" boss="1" >
-<skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="117" skillid="51012" skillname="吐口水" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31503" enemyname="哥布林" boss="1" >
-<skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="118" skillid="51013" skillname="迎头乱撞" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31504" enemyname="牛头怪" boss="1" >
-<skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="119" skillid="51014" skillname="牛角顶" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31505" enemyname="小恶魔" boss="1" >
-<skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="120" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
@@ -3454,6 +3961,7 @@
 </enemy>
 <enemy enemyid="31602" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -3479,6 +3987,7 @@
 </enemy>
 <enemy enemyid="31607" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -3524,27 +4033,28 @@
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="31801" enemyname="小丑" boss="1" >
-<skill img="140" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="140" skillid="51004" skillname="捅你一刀" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31802" enemyname="特务" boss="1" >
-<skill img="141" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="141" skillid="51005" skillname="射你一枪" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31803" enemyname="水手" boss="1" >
-<skill img="142" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="142" skillid="51006" skillname="强行水帖" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31804" enemyname="海军上将" boss="1" >
-<skill img="143" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="143" skillid="51007" skillname="水刀" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="31805" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
@@ -3572,6 +4082,8 @@
 </enemy>
 <enemy enemyid="31905" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="10" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
@@ -3587,6 +4099,7 @@
 </enemy>
 <enemy enemyid="31908" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
@@ -3602,6 +4115,7 @@
 </enemy>
 <enemy enemyid="32002" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
@@ -3628,6 +4142,7 @@
 <enemy enemyid="32007" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
 <skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="32008" enemyname="希瓦娜" boss="1" >
@@ -3637,6 +4152,7 @@
 </enemy>
 <enemy enemyid="32009" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
@@ -3697,12 +4213,14 @@
 </enemy>
 <enemy enemyid="32201" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="32202" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
-<skill img="" skillid="50034" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="10" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="32203" enemyname="易" boss="1" >
@@ -3757,6 +4275,7 @@
 </enemy>
 <enemy enemyid="32303" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3807,6 +4326,7 @@
 </enemy>
 <enemy enemyid="32403" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 </enemy>
@@ -3847,6 +4367,7 @@
 </enemy>
 <enemy enemyid="32501" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3862,6 +4383,7 @@
 </enemy>
 <enemy enemyid="32504" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3892,6 +4414,7 @@
 </enemy>
 <enemy enemyid="32510" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -3952,6 +4475,7 @@
 </enemy>
 <enemy enemyid="32707" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -3977,6 +4501,7 @@
 </enemy>
 <enemy enemyid="32802" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -4002,6 +4527,7 @@
 </enemy>
 <enemy enemyid="32807" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -4021,22 +4547,22 @@
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="32901" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="32902" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="32903" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="32904" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
@@ -4052,6 +4578,7 @@
 </enemy>
 <enemy enemyid="33002" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
@@ -4078,6 +4605,7 @@
 <enemy enemyid="33007" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
 <skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="33008" enemyname="希瓦娜" boss="1" >
@@ -4087,6 +4615,7 @@
 </enemy>
 <enemy enemyid="33009" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
@@ -4096,27 +4625,28 @@
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="33101" enemyname="小丑" boss="1" >
-<skill img="140" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="140" skillid="51004" skillname="捅你一刀" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33102" enemyname="特务" boss="1" >
-<skill img="141" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="141" skillid="51005" skillname="射你一枪" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33103" enemyname="水手" boss="1" >
-<skill img="142" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="142" skillid="51006" skillname="强行水帖" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33104" enemyname="海军上将" boss="1" >
-<skill img="143" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="143" skillid="51007" skillname="水刀" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33105" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
@@ -4139,6 +4669,7 @@
 </enemy>
 <enemy enemyid="33204" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
@@ -4174,12 +4705,15 @@
 </enemy>
 <enemy enemyid="33301" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="33302" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
-<skill img="" skillid="50034" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="10" />
+<skill img="" skillid="50034" skillname="无尽怒火改" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="33303" enemyname="易" boss="1" >
@@ -4234,6 +4768,7 @@
 </enemy>
 <enemy enemyid="33403" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 </enemy>
@@ -4304,11 +4839,13 @@
 </enemy>
 <enemy enemyid="33507" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="33508" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
@@ -4348,22 +4885,22 @@
 <skill img="" skillid="50105" skillname="五小强" skilllevel="1" />
 </enemy>
 <enemy enemyid="33701" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33702" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33703" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33704" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 </enemy>
@@ -4383,17 +4920,18 @@
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33803" enemyname="炮车" boss="1" >
-<skill img="55" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="55" skillid="51002" skillname="砰！" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33804" enemyname="超级兵" boss="1" >
-<skill img="56" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="56" skillid="51003" skillname="龟速打脸" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="33805" enemyname="小龙" boss="1" >
 <skill img="60" skillid="50081" skillname="红龙之怒" skilllevel="1" />
+<skill img="" skillid="51030" skillname="龙之舞" skilllevel="1" />
 <skill img="" skillid="50001" skillname="爪击" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
@@ -4442,6 +4980,7 @@
 </enemy>
 <enemy enemyid="34004" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
@@ -4482,12 +5021,15 @@
 </enemy>
 <enemy enemyid="34102" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34103" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
-<skill img="" skillid="50034" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="50034" skillname="无尽怒火改" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34104" enemyname="辛吉德" boss="1" >
@@ -4557,11 +5099,13 @@
 </enemy>
 <enemy enemyid="34207" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34208" enemyname="安妮" boss="1" >
 <skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="51027" skillname="提伯斯之怒" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 </enemy>
@@ -4623,6 +5167,7 @@
 </enemy>
 <enemy enemyid="34405" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
@@ -4638,6 +5183,7 @@
 </enemy>
 <enemy enemyid="34408" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
@@ -4652,28 +5198,28 @@
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34501" enemyname="骷髅怪" boss="1" >
-<skill img="131" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="131" skillid="51016" skillname="八音白骨爪" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="34502" enemyname="幽灵" boss="1" >
-<skill img="113" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="113" skillid="51017" skillname="鬼叫" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="34503" enemyname="魔女" boss="1" >
-<skill img="132" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="132" skillid="51018" skillname="鞭打" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="34504" enemyname="屠夫" boss="1" >
-<skill img="133" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="133" skillid="51019" skillname="鸡飞狗跳" skilllevel="1" />
 <skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="34505" enemyname="大恶魔" boss="1" >
 <skill img="134" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="34601" enemyname="墨菲特" boss="1" >
@@ -4683,12 +5229,15 @@
 </enemy>
 <enemy enemyid="34602" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34603" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
-<skill img="" skillid="50034" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="50034" skillname="无尽怒火改" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="10" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34604" enemyname="辛吉德" boss="1" >
@@ -4727,22 +5276,22 @@
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34701" enemyname="公主" boss="1" >
-<skill img="148" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="148" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34702" enemyname="王子" boss="1" >
-<skill img="149" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="149" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34703" enemyname="王后" boss="1" >
-<skill img="150" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="150" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="34704" enemyname="国王" boss="1" >
-<skill img="151" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="151" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
@@ -4758,23 +5307,23 @@
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="34802" enemyname="史莱姆" boss="1" >
-<skill img="117" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="117" skillid="51012" skillname="吐口水" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="34803" enemyname="哥布林" boss="1" >
-<skill img="118" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="118" skillid="51013" skillname="迎头乱撞" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="34804" enemyname="牛头怪" boss="1" >
-<skill img="119" skillid="50001" skillname="爪击" skilllevel="1" />
+<skill img="119" skillid="51014" skillname="牛角顶" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
 <enemy enemyid="34805" enemyname="小恶魔" boss="1" >
 <skill img="120" skillid="50001" skillname="爪击" skilllevel="1" />
-<skill img="" skillid="50002" skillname="撕咬" skilllevel="1" />
+<skill img="" skillid="51022" skillname="恶魔之怒" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -4800,6 +5349,7 @@
 </enemy>
 <enemy enemyid="34905" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
@@ -4815,6 +5365,7 @@
 </enemy>
 <enemy enemyid="34908" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 </enemy>
@@ -4845,6 +5396,7 @@
 </enemy>
 <enemy enemyid="35004" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50100" skillname="耐久光环" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
@@ -4875,6 +5427,7 @@
 </enemy>
 <enemy enemyid="35010" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
 <skill img="" skillid="50096" skillname="专注光环" skilllevel="1" />
 </enemy>
@@ -4900,6 +5453,8 @@
 </enemy>
 <enemy enemyid="35105" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="10" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
@@ -4915,6 +5470,7 @@
 </enemy>
 <enemy enemyid="35108" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
@@ -4924,22 +5480,22 @@
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="35201" enemyname="士兵" boss="1" >
-<skill img="144" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="144" skillid="51008" skillname="基础剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35202" enemyname="近卫兵" boss="1" >
-<skill img="145" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="145" skillid="51009" skillname="高级剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35203" enemyname="管家" boss="1" >
-<skill img="146" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="146" skillid="51010" skillname="祖传剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35204" enemyname="大臣" boss="1" >
-<skill img="147" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="147" skillid="51011" skillname="随缘剑法" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
@@ -5000,22 +5556,22 @@
 <skill img="" skillid="50088" skillname="魔法天赋" skilllevel="1" />
 </enemy>
 <enemy enemyid="35401" enemyname="公主" boss="1" >
-<skill img="148" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="148" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35402" enemyname="王子" boss="1" >
-<skill img="149" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="149" skillid="51020" skillname="皇家火球" skilllevel="1" />
 <skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35403" enemyname="王后" boss="1" >
-<skill img="150" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="150" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35404" enemyname="国王" boss="1" >
-<skill img="151" skillid="50008" skillname="火球" skilllevel="1" />
+<skill img="151" skillid="51021" skillname="皇家大火球" skilllevel="1" />
 <skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
 <skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="1" />
 </enemy>
@@ -5038,6 +5594,7 @@
 </enemy>
 <enemy enemyid="35503" enemyname="瑞兹" boss="1" >
 <skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50051" skillname="法术涌动" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -5089,13 +5646,13 @@
 <skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35603" enemyname="炮车" boss="1" >
-<skill img="55" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="55" skillid="51002" skillname="砰！" skilllevel="1" />
 <skill img="" skillid="50005" skillname="冲锋" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35604" enemyname="超级兵" boss="1" >
-<skill img="56" skillid="50003" skillname="轻砍" skilllevel="1" />
+<skill img="56" skillid="51003" skillname="龟速打脸" skilllevel="1" />
 <skill img="" skillid="50007" skillname="怒斩" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 <skill img="" skillid="50102" skillname="必杀光环" skilllevel="1" />
@@ -5110,6 +5667,7 @@
 </enemy>
 <enemy enemyid="35701" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -5125,6 +5683,7 @@
 </enemy>
 <enemy enemyid="35704" enemyname="奥拉夫" boss="1" >
 <skill img="28" skillid="50017" skillname="逆流投掷" skilllevel="1" />
+<skill img="" skillid="51034" skillname="诸神黄昏" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
@@ -5155,17 +5714,20 @@
 </enemy>
 <enemy enemyid="35710" enemyname="蒙多医生" boss="1" >
 <skill img="41" skillid="50032" skillname="病毒屠刀" skilllevel="1" />
+<skill img="" skillid="51029" skillname="背水一战" skilllevel="1" />
 <skill img="" skillid="50093" skillname="物理抗性" skilllevel="1" />
 <skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
 </enemy>
 <enemy enemyid="35801" enemyname="德莱厄斯" boss="1" >
 <skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="51028" skillname="断头台" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 <skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="35802" enemyname="亚索" boss="1" >
 <skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="51031" skillname="狂风绝息斩" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 <skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
@@ -5184,6 +5746,7 @@
 </enemy>
 <enemy enemyid="35805" enemyname="瑞雯" boss="1" >
 <skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50055" skillname="勇往直前" skilllevel="1" />
 <skill img="" skillid="50095" skillname="命令光环" skilllevel="1" />
 <skill img="" skillid="50101" skillname="吸血光环" skilllevel="1" />
 <skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
@@ -5220,6 +5783,7 @@
 </enemy>
 <enemy enemyid="35907" enemyname="崔斯塔娜" boss="1" >
 <skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="51026" skillname="瞄准" skilllevel="1" />
 <skill img="" skillid="50087" skillname="物理天赋" skilllevel="1" />
 <skill img="" skillid="50094" skillname="魔法抗性" skilllevel="1" />
 </enemy>
@@ -5252,8 +5816,9 @@
 </enemy>
 <enemy enemyid="36003" enemyname="泰达米尔" boss="1" >
 <skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
-<skill img="" skillid="50034" skillname="无尽怒火" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
 <skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
 </enemy>
 <enemy enemyid="36004" enemyname="贾克斯" boss="1" >
@@ -5267,5 +5832,262 @@
 <skill img="" skillid="50097" skillname="王者光环" skilllevel="1" />
 <skill img="" skillid="50099" skillname="强击光环" skilllevel="1" />
 <skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36101" enemyname="金克丝" boss="1" >
+<skill img="35" skillid="50076" skillname="超究极死神飞弹" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36102" enemyname="薇恩" boss="1" >
+<skill img="14" skillid="50038" skillname="恶魔审判" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36103" enemyname="韦鲁斯" boss="1" >
+<skill img="50" skillid="50060" skillname="穿刺之箭" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36104" enemyname="厄运小姐" boss="1" >
+<skill img="46" skillid="50014" skillname="枪林弹雨" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36105" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50098" skillname="腐蚀光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36201" enemyname="拉克丝" boss="1" >
+<skill img="5" skillid="50045" skillname="透光奇点" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50099" skillname="强击光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36202" enemyname="阿兹尔" boss="1" >
+<skill img="27" skillid="50066" skillname="狂沙猛攻" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50099" skillname="强击光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36203" enemyname="安妮" boss="1" >
+<skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50099" skillname="强击光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36204" enemyname="瑞兹" boss="1" >
+<skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50099" skillname="强击光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36205" enemyname="菲兹" boss="1" >
+<skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50099" skillname="强击光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36301" enemyname="瑞雯" boss="1" >
+<skill img="17" skillid="50054" skillname="折翼之舞" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50101" skillname="吸血光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36302" enemyname="赵信" boss="1" >
+<skill img="9" skillid="50015" skillname="三重爪击" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50101" skillname="吸血光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36303" enemyname="德莱厄斯" boss="1" >
+<skill img="34" skillid="50061" skillname="大杀四方" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50101" skillname="吸血光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36304" enemyname="嘉文四世" boss="1" >
+<skill img="16" skillid="50042" skillname="天崩地裂" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50101" skillname="吸血光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36305" enemyname="亚索" boss="1" >
+<skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
+<skill img="" skillid="50101" skillname="吸血光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="36401" enemyname="卡特琳娜" boss="1" >
+<skill img="44" skillid="50048" skillname="弹射之刃" skilllevel="1" />
+<skill img="" skillid="50049" skillname="终极莲华" skilllevel="1" />
+<skill img="" skillid="50093" skillname="物理抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36402" enemyname="娑娜" boss="1" >
+<skill img="6" skillid="50046" skillname="能量和弦" skilllevel="1" />
+<skill img="" skillid="50047" skillname="狂舞终乐章" skilllevel="1" />
+<skill img="" skillid="50093" skillname="物理抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36403" enemyname="辛吉德" boss="1" >
+<skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50093" skillname="物理抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36404" enemyname="锤石" boss="1" >
+<skill img="8" skillid="50063" skillname="死亡判决" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50093" skillname="物理抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36405" enemyname="阿狸" boss="1" >
+<skill img="24" skillid="50059" skillname="欺诈宝珠" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50093" skillname="物理抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36501" enemyname="布兰德" boss="1" >
+<skill img="43" skillid="50072" skillname="烈焰之柱" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50094" skillname="魔法抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36502" enemyname="古拉加斯" boss="1" >
+<skill img="18" skillid="50067" skillname="滚动酒桶" skilllevel="1" />
+<skill img="" skillid="50068" skillname="欢乐时光" skilllevel="1" />
+<skill img="" skillid="50094" skillname="魔法抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36503" enemyname="伊丽丝" boss="1" >
+<skill img="26" skillid="50062" skillname="神经毒素" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50094" skillname="魔法抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36504" enemyname="璐璐" boss="1" >
+<skill img="25" skillid="50073" skillname="闪耀长枪" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50094" skillname="魔法抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36505" enemyname="蕾欧娜" boss="1" >
+<skill img="45" skillid="50052" skillname="破晓之盾" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50094" skillname="魔法抗性" skilllevel="20" />
+</enemy>
+<enemy enemyid="36601" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36602" enemyname="布兰德" boss="1" >
+<skill img="43" skillid="50072" skillname="烈焰之柱" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36603" enemyname="莫德凯撒" boss="1" >
+<skill img="2" skillid="50019" skillname="死亡之子" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36604" enemyname="阿利斯塔" boss="1" >
+<skill img="20" skillid="50024" skillname="粉碎大地" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36605" enemyname="卡兹克" boss="1" >
+<skill img="52" skillid="50075" skillname="虚空突刺" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50103" skillname="神行光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36701" enemyname="安妮" boss="1" >
+<skill img="39" skillid="50028" skillname="碎裂之火" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36702" enemyname="贾克斯" boss="1" >
+<skill img="11" skillid="50026" skillname="跳斩" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36703" enemyname="辛吉德" boss="1" >
+<skill img="42" skillid="50035" skillname="剧毒踪迹" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36704" enemyname="塔里克" boss="1" >
+<skill img="38" skillid="50021" skillname="神圣洗礼" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36705" enemyname="希瓦娜" boss="1" >
+<skill img="49" skillid="50056" skillname="龙牙突刺" skilllevel="1" />
+<skill img="" skillid="50057" skillname="野火燎原" skilllevel="1" />
+<skill img="" skillid="50104" skillname="撒旦光环" skilllevel="1" />
+</enemy>
+<enemy enemyid="36801" enemyname="崔斯特" boss="1" >
+<skill img="3" skillid="50071" skillname="万能牌" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50091" skillname="物免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36802" enemyname="卡特琳娜" boss="1" >
+<skill img="44" skillid="50048" skillname="弹射之刃" skilllevel="1" />
+<skill img="" skillid="50049" skillname="终极莲华" skilllevel="1" />
+<skill img="" skillid="50091" skillname="物免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36803" enemyname="瑞兹" boss="1" >
+<skill img="7" skillid="50050" skillname="超负荷" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50091" skillname="物免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36804" enemyname="提莫" boss="1" >
+<skill img="4" skillid="50030" skillname="毒性射击" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50091" skillname="物免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36805" enemyname="努努" boss="1" >
+<skill img="21" skillid="50036" skillname="吞噬" skilllevel="1" />
+<skill img="" skillid="50037" skillname="绝对零度" skilllevel="1" />
+<skill img="" skillid="50091" skillname="物免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36901" enemyname="布里茨" boss="1" >
+<skill img="19" skillid="50023" skillname="静电力场" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50092" skillname="魔免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36902" enemyname="雷恩加尔" boss="1" >
+<skill img="51" skillid="50074" skillname="残忍无情" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50092" skillname="魔免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36903" enemyname="卡莉斯塔" boss="1" >
+<skill img="37" skillid="50077" skillname="穿刺" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50092" skillname="魔免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36904" enemyname="兰博" boss="1" >
+<skill img="22" skillid="50039" skillname="纵火盛宴" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50092" skillname="魔免" skilllevel="20" />
+</enemy>
+<enemy enemyid="36905" enemyname="奈德丽" boss="1" >
+<skill img="10" skillid="50069" skillname="标枪投掷" skilllevel="1" />
+<skill img="" skillid="50070" skillname="推倒" skilllevel="1" />
+<skill img="" skillid="50092" skillname="魔免" skilllevel="20" />
+</enemy>
+<enemy enemyid="37001" enemyname="亚索" boss="1" >
+<skill img="36" skillid="50064" skillname="斩钢闪" skilllevel="1" />
+<skill img="" skillid="50065" skillname="踏前斩" skilllevel="1" />
+<skill img="" skillid="50097" skillname="王者光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="37002" enemyname="菲兹" boss="1" >
+<skill img="23" skillid="50058" skillname="淘气打击" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50097" skillname="王者光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="37003" enemyname="崔斯塔娜" boss="1" >
+<skill img="30" skillid="50027" skillname="爆炸射击" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="50097" skillname="王者光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="37004" enemyname="阿利斯塔" boss="1" >
+<skill img="20" skillid="50024" skillname="粉碎大地" skilllevel="1" />
+<skill img="" skillid="50090" skillname="魔法奥义" skilllevel="1" />
+<skill img="" skillid="50097" skillname="王者光环" skilllevel="20" />
+</enemy>
+<enemy enemyid="37005" enemyname="泰达米尔" boss="1" >
+<skill img="13" skillid="50033" skillname="旋风斩" skilllevel="1" />
+<skill img="" skillid="50089" skillname="物理奥义" skilllevel="1" />
+<skill img="" skillid="51025" skillname="暴君" skilllevel="1" />
+<skill img="" skillid="5105" skillname="无尽怒火" skilllevel="1" />
+</enemy>
+<enemy enemyid="50101" enemyname="蜥蜴人红buff" boss="1" >
+<skill img="58" skillid="50078" skillname="蜥蜴剧毒" skilllevel="1" />
+</enemy>
+<enemy enemyid="50201" enemyname="大龙" boss="1" >
+<skill img="59" skillid="50082" skillname="地刺" skilllevel="1" />
 </enemy>
 </data>

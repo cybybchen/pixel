@@ -1311,6 +1311,206 @@
 <loot itemid="33003" weight="100" count="1" />
 <loot itemid="33006" weight="3" count="1" />
 </level>
+<level id="1301">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1302">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1303">
+<loot itemid="29001" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1304">
+<loot itemid="29004" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1305">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1306">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1307">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1308">
+<loot itemid="29002" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1309">
+<loot itemid="29003" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1310">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1311">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1312">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1313">
+<loot itemid="29006" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1314">
+<loot itemid="29007" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1315">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1316">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1317">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1318">
+<loot itemid="29005" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1319">
+<loot itemid="29008" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1320">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1321">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1322">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1323">
+<loot itemid="29009" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1324">
+<loot itemid="29010" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1325">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1326">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1327">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1328">
+<loot itemid="29012" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1329">
+<loot itemid="29014" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1330">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1331">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1332">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1333">
+<loot itemid="29013" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1334">
+<loot itemid="29015" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1335">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1336">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1337">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1338">
+<loot itemid="29001" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1339">
+<loot itemid="29004" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1340">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1341">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1342">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1343">
+<loot itemid="29002" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1344">
+<loot itemid="29003" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1345">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="1346">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="1347">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="1348">
+<loot itemid="29006" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1349">
+<loot itemid="29007" weight="100" count="1" />
+<loot itemid="33005" weight="1" count="1" />
+</level>
+<level id="1350">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
 <level id="2021">
 <loot itemid="31005" weight="1000" count="1" />
 <loot itemid="31006" weight="500" count="1" />
@@ -2607,6 +2807,206 @@
 <level id="2300">
 <loot itemid="27003" weight="100" count="18" />
 </level>
+<level id="2301">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2302">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2303">
+<loot itemid="29001" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2304">
+<loot itemid="29004" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2305">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2306">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2307">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2308">
+<loot itemid="29002" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2309">
+<loot itemid="29003" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2310">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2311">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2312">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2313">
+<loot itemid="29006" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2314">
+<loot itemid="29007" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2315">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2316">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2317">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2318">
+<loot itemid="29005" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2319">
+<loot itemid="29008" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2320">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2321">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2322">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2323">
+<loot itemid="29009" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2324">
+<loot itemid="29010" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2325">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2326">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2327">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2328">
+<loot itemid="29012" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2329">
+<loot itemid="29014" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2330">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2331">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2332">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2333">
+<loot itemid="29013" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2334">
+<loot itemid="29015" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2335">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2336">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2337">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2338">
+<loot itemid="29001" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2339">
+<loot itemid="29004" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2340">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2341">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2342">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2343">
+<loot itemid="29002" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2344">
+<loot itemid="29003" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2345">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="2346">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="1" count="1" />
+</level>
+<level id="2347">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="1" count="1" />
+</level>
+<level id="2348">
+<loot itemid="29006" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2349">
+<loot itemid="29007" weight="100" count="1" />
+<loot itemid="33005" weight="2" count="1" />
+</level>
+<level id="2350">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
 <level id="3036">
 <loot itemid="31008" weight="1000" count="1" />
 <loot itemid="31009" weight="1000" count="1" />
@@ -3857,5 +4257,205 @@
 <level id="3300">
 <loot itemid="33003" weight="100" count="2" />
 <loot itemid="33006" weight="10" count="1" />
+</level>
+<level id="3301">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3302">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3303">
+<loot itemid="29001" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3304">
+<loot itemid="29004" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3305">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3306">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3307">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3308">
+<loot itemid="29002" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3309">
+<loot itemid="29003" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3310">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3311">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3312">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3313">
+<loot itemid="29006" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3314">
+<loot itemid="29007" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3315">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3316">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3317">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3318">
+<loot itemid="29005" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3319">
+<loot itemid="29008" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3320">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3321">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3322">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3323">
+<loot itemid="29009" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3324">
+<loot itemid="29010" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3325">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3326">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3327">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3328">
+<loot itemid="29012" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3329">
+<loot itemid="29014" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3330">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3331">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3332">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3333">
+<loot itemid="29013" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3334">
+<loot itemid="29015" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3335">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3336">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3337">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3338">
+<loot itemid="29001" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3339">
+<loot itemid="29004" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3340">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3341">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3342">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3343">
+<loot itemid="29002" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3344">
+<loot itemid="29003" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3345">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
+</level>
+<level id="3346">
+<loot itemid="31030" weight="1000" count="1" />
+<loot itemid="35003" weight="2" count="1" />
+</level>
+<level id="3347">
+<loot itemid="30030" weight="1000" count="1" />
+<loot itemid="35016" weight="2" count="1" />
+</level>
+<level id="3348">
+<loot itemid="29006" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3349">
+<loot itemid="29007" weight="100" count="1" />
+<loot itemid="33005" weight="3" count="1" />
+</level>
+<level id="3350">
+<loot itemid="33003" weight="100" count="1" />
+<loot itemid="33006" weight="3" count="1" />
 </level>
 </data>
