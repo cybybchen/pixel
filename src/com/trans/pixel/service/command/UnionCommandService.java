@@ -200,9 +200,10 @@ public class UnionCommandService extends BaseCommandService {
 		}
 		int bossId = cmd.getBossId();
 		int hp = cmd.getHp();
+		int percent = cmd.getPercent();
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		UnionBossRecord unionBoss = unionService.attackUnionBoss(user, union, bossId, hp, rewards);
+		UnionBossRecord unionBoss = unionService.attackUnionBoss(user, union, bossId, hp, percent, rewards);
 		
 		ResponseUnionBossCommand.Builder builder = ResponseUnionBossCommand.newBuilder();
 		builder.addUnionBoss(unionBoss);

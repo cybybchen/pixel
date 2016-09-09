@@ -39,6 +39,7 @@ import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UnionBoss;
 import com.trans.pixel.protoc.Commands.UnionBossRecord;
+import com.trans.pixel.protoc.Commands.UnionBossUserRecord;
 import com.trans.pixel.protoc.Commands.UnionBossloot;
 import com.trans.pixel.protoc.Commands.UnionBosswin;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -662,7 +663,7 @@ public class UnionService extends FightService{
 		return builderList;
 	}
 	
-	public UnionBossRecord attackUnionBoss(UserBean user, Union.Builder union, int bossId, int hp, MultiReward.Builder rewards) {
+	public UnionBossRecord attackUnionBoss(UserBean user, Union.Builder union, int bossId, int hp, int percent, MultiReward.Builder rewards) {
 		UnionBossRecord.Builder unionBossRecord = UnionBossRecord.newBuilder(redis.getUnionBoss(user.getUnionId(), bossId));
 		if (DateUtil.timeIsOver(unionBossRecord.getEndTime())) {
 			return unionBossRecord.build();
@@ -673,12 +674,12 @@ public class UnionService extends FightService{
 		if (unionBossMap.get(bossId) >= unionBoss.getCount())
 			return unionBossRecord.build();
 		
-		if (unionBossRecord.getHp() - hp <= 0) {
+		if (unionBossRecord.getPercent() + percent >= 10000) {
 			if (!redis.setLock("UnionBoss_" + bossId, 10))
 				return unionBossRecord.build();
 			if(!redis.waitLock("Union_"+union.getId()))
 				return unionBossRecord.build();
-			unionBossRecord.setHp(unionBossRecord.getHp() - hp);
+			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
 			doUnionBossRankReward(user.getUnionId(), bossId);
 			updateUnionBossEndTime(union, bossId);
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId));
@@ -686,9 +687,8 @@ public class UnionService extends FightService{
 			redis.clearLock("Union_"+union.getId());
 			redis.clearLock("UnionBoss_" + bossId);
 		} else
-			unionBossRecord.setHp(unionBossRecord.getHp() - hp);
+			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
 		
-		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
 		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);
 		
 		rewards.addAllLoot(calUnionBossReward(bossId));
@@ -696,6 +696,21 @@ public class UnionService extends FightService{
 		unionBossMap.put(bossId, unionBossMap.get(bossId));
 		user.setUnionBossMap(unionBossMap);
 		userService.updateUser(user);
+		
+		UnionBossUserRecord.Builder builder = UnionBossUserRecord.newBuilder();
+		builder.setUserId(user.getId());
+		for (int i = 0; i < unionBossRecord.getUserRecordCount(); ++i) {
+			UnionBossUserRecord record = unionBossRecord.getUserRecord(i);
+			if (record.getUserId() == user.getId()) {
+				builder = UnionBossUserRecord.newBuilder(record);
+				unionBossRecord.removeUserRecord(i);
+				break;
+			}
+		}
+		builder.setPercent(builder.getPercent() + percent);
+		unionBossRecord.addUserRecord(builder.build());
+		
+		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
 		
 		return unionBossRecord.build();
 	}

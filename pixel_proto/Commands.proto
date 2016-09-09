@@ -1304,6 +1304,11 @@ message RankItem {
 	optional string des = 9;
 }
 
+message UnionBossUserRecord {
+	optional int64 userId = 1;
+        optional int32 percent = 2;
+}
+
 message UnionBossRecord {
 	optional int32 bossId = 1;
 	optional int32 hp = 2;
@@ -1312,6 +1317,8 @@ message UnionBossRecord {
 	repeated UserRank ranks = 5;
 	optional string startTime = 6;
 	optional int32 count = 7;
+	optional int32 percent = 8;
+	repeated UnionBossUserRecord userRecord = 9;
 }
 
 message StrengthenList {
@@ -2272,6 +2279,7 @@ message ResponseUnionBossCommand {
 message RequestUnionBossFightCommand {
 	required int32 bossId = 1;
 	required int32 hp = 2;
+	optional int32 percent = 3;
 }
 
 message RequestHeroStrengthenCommand {
