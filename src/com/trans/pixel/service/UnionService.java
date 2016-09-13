@@ -255,6 +255,7 @@ public class UnionService extends FightService{
 	public Union create(int icon, String unionName, UserBean user) {
 		if(user.getUnionId() != 0)
 			return getUnion(user);
+		
 		UnionBean union = new UnionBean();
 		union.setName(unionName);
 		union.setIcon(icon);

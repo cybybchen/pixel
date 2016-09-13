@@ -38,7 +38,7 @@ public enum ErrorConst implements ResultConst {
     
     FOOD_CAN_NOT_ADDED_ERROR(3001, "无法食用"), FOOD_NOT_ENOUGH(3002, "食物数量不足"), CLEAR_IS_LOCKED_ERROR(3003, "该洗练位还未解锁"), FOOD_SALE_ERROR(3004, "食物出售异常"), 
     HERO_CLEAR_LEVEL_IS_LIMIT_ERROR(3005, "英雄等级已达上限"), CLEAR_CHOSE_ERROR(3006, "洗练结果异常"), HERO_STRENGTHEN_ERROR(3007, "英雄强化异常"),
-    UNIONBOSS_TIME_OVER_ERROR(3008, "工会BOSS时间异常"),
+    UNIONBOSS_TIME_OVER_ERROR(3008, "工会BOSS时间异常"), UNIONNAME_IS_EXIST_ERROR(3009, "公会名已被注册"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

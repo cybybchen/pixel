@@ -10,6 +10,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
@@ -46,6 +47,8 @@ public class UnionCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private UnionMapper unionMapper;
 
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Union> unions = unionService.getBaseUnions(user);
@@ -71,6 +74,12 @@ public class UnionCommandService extends BaseCommandService {
 		if(unionService.getAreaFighting(user.getId(), user) == 1){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.AREA_FIGHT_BUSY);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.AREA_FIGHT_BUSY));
+			return;
+		}
+		
+		if (unionMapper.selectUnionByServerIdAndName(user.getServerId(), cmd.getName()) != null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNIONNAME_IS_EXIST_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNIONNAME_IS_EXIST_ERROR));
 			return;
 		}
 		
