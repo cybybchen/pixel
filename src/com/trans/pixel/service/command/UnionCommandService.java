@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -28,6 +29,7 @@ import com.trans.pixel.protoc.Commands.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseUnionListCommand;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UnionBossRecord;
+import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.redis.RedisService;
@@ -35,13 +37,15 @@ import com.trans.pixel.service.redis.RedisService;
 @Service
 public class UnionCommandService extends BaseCommandService {
 //	private static final Logger log = LoggerFactory.getLogger(UnionCommandService.class);
-	
+	private static final int CREATE_UNION_COST_JEWEL = 500;
 	@Resource
 	private UnionService unionService;
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private CostService costService;
 
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Union> unions = unionService.getBaseUnions(user);
@@ -69,6 +73,13 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.AREA_FIGHT_BUSY));
 			return;
 		}
+		
+		if (!costService.costAndUpdate(user, RewardConst.JEWEL, CREATE_UNION_COST_JEWEL)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+			return;
+		}
+		
 		Union union = unionService.create(cmd.getIcon(), cmd.getName(), user);
 		if(union == null){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.CREATE_UNION_ERROR);
