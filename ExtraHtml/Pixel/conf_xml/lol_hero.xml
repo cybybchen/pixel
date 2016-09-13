@@ -220,13 +220,13 @@
 <equip equipid="2" arm1="14001" arm2="14115" arm3="14042" arm4="14046" arm5="14045" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="36" name="阿利斯塔" img="20" description="没人能击退他，因为他总是先把别人击退，绝活是救死扶伤顶。" position="3" handbook="0" zhanli="100" ad="43" ad_rare="13" ap="29" ap_rare="5" arm="12" arm_rare="18" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="3" steal_rare="14" >
+<hero id="36" name="阿利斯塔" img="20" description="没人能击退他，因为他总是先把别人击退，绝活是救死扶伤顶。" position="3" handbook="1" zhanli="100" ad="43" ad_rare="13" ap="29" ap_rare="5" arm="12" arm_rare="18" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="3" steal_rare="14" >
 <skill> 
-<skill  skillid="3601" skill="践踏" unlock="1" />
+<skill  skillid="3605" skill="坚定" unlock="1" />
 <skill  skillid="3602" skill="粉碎大地" unlock="2" />
 <skill  skillid="3603" skill="英勇意志" unlock="4" />
 <skill  skillid="3604" skill="强化" unlock="7" />
-<skill  skillid="3605" skill="坚定" unlock="10" />
+<skill  skillid="3601" skill="践踏" unlock="10" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
