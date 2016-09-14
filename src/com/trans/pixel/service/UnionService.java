@@ -291,12 +291,37 @@ public class UnionService extends FightService{
 				else
 					return ErrorConst.UNIONLEADER_QUIT;
 			}
+			
 			redis.quit(id, user);
+
+			Union.Builder union = getBaseUnion(user);
+			List<UserInfo> members = redis.getMembers(user);
+
+			int index = 0;
+			int zhanli = 0;
+			for(UserInfo member : members){
+				if(index < 10)
+					zhanli += member.getZhanli()*6/10;
+				else if(index < 20)
+					zhanli += member.getZhanli()*3/10;
+				else if(index < 30)
+					zhanli += member.getZhanli()/10;
+				index++;
+			}
+			if(zhanli != union.getZhanli()){
+				union.setZhanli(zhanli);
+				if(redis.setLock("Union_"+union.getId())){
+					redis.saveUnion(union.build(), user);
+					redis.clearLock("Union_"+union.getId());
+				}
+			}
+			
 			user.setUnionId(0);
 			user.setUnionName("");
 			user.setUnionJob(UnionConst.UNION_HUIZHONG);
 			userService.updateUser(user);
 			userService.cache(user.getServerId(), user.buildShort());
+			
 			return SuccessConst.QUIT_UNION_SUCCESS;
 		}else{
 			if(user.getUnionJob() < UnionConst.UNION_FUHUIZHANG)
