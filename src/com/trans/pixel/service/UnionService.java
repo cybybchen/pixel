@@ -308,6 +308,7 @@ public class UnionService extends FightService{
 					zhanli += member.getZhanli()/10;
 				index++;
 			}
+			union.setCount(union.getCount() - 1);
 			if(zhanli != union.getZhanli()){
 				union.setZhanli(zhanli);
 				if(redis.setLock("Union_"+union.getId())){
