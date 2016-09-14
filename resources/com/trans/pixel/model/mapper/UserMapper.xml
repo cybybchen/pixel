@@ -47,6 +47,7 @@
 		<result property="lotteryStatus" column="lottery_status" />
 		<result property="zhanliMax" column="zhanli_max" />
 		<result property="sevenLoginDays" column="seven_login_days" />
+		<result property="icon" column="icon" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -70,18 +71,18 @@
 	</select>
 	
 	<insert id="addNewUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserBean">
-		INSERT INTO user(account, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
+		INSERT INTO user(account, icon, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
 		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, 
 		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count, greenhand, advance,
 		skill, failed, shouchong_is_complete, shouchong_is_get_reward, current_teamid)
-		VALUES(#{account}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
+		VALUES(#{account}, #{icon}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
 		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId},
 		#{totalSignCount}, #{greenhand}, #{advance}, #{skill}, #{failed}, #{shouchongIsComplete}, #{shouchongIsGetReward}, #{currentTeamid})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
-		UPDATE user SET name=#{userName}, server_id=#{serverId}, union_id=#{unionId}, account=#{account}, union_job=#{unionJob}, jewel=#{jewel}, coin=#{coin},
+		UPDATE user SET icon=#{icon}, name=#{userName}, server_id=#{serverId}, union_id=#{unionId}, account=#{account}, union_job=#{unionJob}, jewel=#{jewel}, coin=#{coin},
 		exp=#{exp}, point_pvp=#{pointPVP}, point_ladder=#{pointLadder}, point_expedition=#{pointExpedition},
 		point_union=#{pointUnion}, receive_message_timestamp=#{receiveMessageTimeStamp},vip=#{vip},
 		last_loot_time=#{lastLootTime}, last_login_time=#{lastLoginTime}, ladder_mode_history_top=#{ladderModeHistoryTop},
