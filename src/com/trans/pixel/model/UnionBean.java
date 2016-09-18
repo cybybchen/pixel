@@ -161,6 +161,7 @@ public class UnionBean {
 	 	union.setPoint(point);
 	 	union.setCount(1);
 	 	union.setMaxCount(30);
+	 	union.setZhanli(0);
 	// 	union.setKillMonsterRecord(killMonsterRecord);
 	// 	union.setCostRecord(costRecord);
 	// 	union.setBossRecord(bossRecord);

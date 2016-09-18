@@ -88,8 +88,12 @@ public class UnionService extends FightService{
 				List<Long> memberIds = new ArrayList<Long>();
 				for(UserBean bean : beans){
 					memberIds.add(bean.getId());
-					members.add(bean.buildShort());
-					userService.cache(bean.getServerId(), bean.buildShort());
+					UserInfo userinfo = userService.getCache(bean.getServerId(), bean.getId());
+					if(userinfo.getZhanli() == 0) {
+						userinfo = bean.buildShort();
+						userService.cache(bean.getServerId(), userinfo);
+					}
+					members.add(userinfo);
 				}
 				redis.saveMembers(memberIds, user);
 			}

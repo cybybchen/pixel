@@ -1043,7 +1043,10 @@ public class UserBean {
 		builder.setName(name);
 //		builder.setServerId(serverId);
 		builder.setVip(vip);
-		builder.setZhanli(zhanli);
+		if(zhanli > 0)
+			builder.setZhanli(zhanli);
+		else
+			builder.setZhanli(zhanliMax);
 		builder.setZhanliMax(zhanliMax);
 		builder.setUnionId(unionId);
 		builder.setUnionName(unionName);

@@ -41,7 +41,8 @@ public class ZhanliCommandService extends BaseCommandService {
 				builder.setUser(user.build());
 				responseBuilder.setUserInfoCommand(builder.build());
 				return;
-			}
+			}else
+				log.debug("zhanli update "+user.getZhanliMax() +" to "+team.getUser().getZhanli());
 
 			zhanli = team.getUser().getZhanli();
 			user.setZhanli(zhanli);
