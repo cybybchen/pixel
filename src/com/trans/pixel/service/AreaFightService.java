@@ -498,9 +498,13 @@ public class AreaFightService extends FightService{
 	}
 	
 	public boolean refreshArea(UserBean user){
+		if(user.getAreaRefreshTime() > redis.now())
+			return false;
 		redis.deleteMonsters(user);
 		user.setAreaMonsterRefreshTime(redis.now()-24*3600);
+		user.setAreaRefreshTime(redis.now()+24*3600);
 		redis.clearLevel(user);
+		userService.updateUser(user);
 		return true;
 	}
 	

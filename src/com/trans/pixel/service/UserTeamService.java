@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.TeamUnlock;
+import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -46,6 +47,12 @@ public class UserTeamService {
 	private UserPokedeService userPokedeService;
 	@Resource
 	private EquipService equipService;
+	@Resource
+	private RankRedisService rankRedisService;
+	@Resource
+	private ActivityService activityService;
+	@Resource
+	private BlackListService blackService;
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
 	// 	UserTeamBean userTeam = new UserTeamBean();
@@ -252,6 +259,16 @@ public class UserTeamService {
 		log.debug("zhanli:"+myzhanli);
 		if(myzhanli != user.getZhanli()){
 			user.setZhanli(myzhanli);
+			if(myzhanli > user.getZhanliMax()){
+				user.setZhanliMax(myzhanli);
+				if(!blackService.isNoranklist(user.getId())) {
+					rankRedisService.updateZhanliRank(user);
+					/**
+					 * zhanli activity
+					 */
+					activityService.zhanliActivity(user, myzhanli);
+				}
+			}
 			userService.cache(user.getServerId(), user.buildShort());
 		}
 		team.setUser(user.buildShort());
