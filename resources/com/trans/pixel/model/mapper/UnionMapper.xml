@@ -9,6 +9,10 @@
 		<result property="serverId" column="serverid" />
 		<result property="icon" column="icon" />
 		<result property="point" column="point" />
+		<result property="killMonsterRecord" column="kill_monster_record" />
+		<result property="costRecord" column="cost_record" />
+		<result property="bossRecord" column="boss_record" />
+		<result property="bossEndTime" column="boss_end_time" />
 	</resultMap>
 
 	<select id="selectUnionById" resultMap="resultMap">
@@ -33,8 +37,9 @@
 	</select>
 	
 	<update id="updateUnion" parameterType="com.trans.pixel.model.UnionBean">
-	    UPDATE user_union SET level=#{level}, point=#{point}
-		WHERE id=#{id}
+	    UPDATE user_union SET level=#{level}, point=#{point}, kill_monster_record=#{killMonsterRecord}, 
+	    cost_record=#{costRecord}, boss_record=#{bossRecord}, boss_end_time=#{bossEndTime}
+		 WHERE id=#{id}
 	</update>
 	
 </mapper>

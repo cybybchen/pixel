@@ -24,6 +24,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -41,6 +42,7 @@ import com.trans.pixel.protoc.Commands.UnionBoss;
 import com.trans.pixel.protoc.Commands.UnionBossRecord;
 import com.trans.pixel.protoc.Commands.UnionBossUserRecord;
 import com.trans.pixel.protoc.Commands.UnionBossloot;
+import com.trans.pixel.protoc.Commands.UnionBosslootItem;
 import com.trans.pixel.protoc.Commands.UnionBosswin;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -163,7 +165,7 @@ public class UnionService extends FightService{
 		 * 刷新定时工会boss
 		 */
 		crontabUnionBossActivity(user);
-		union.addAllUnionBoss(getUnionBossList(user));
+		union.addAllUnionBoss(getUnionBossList(user, union));
 		
 		return union.build();
 	}
@@ -571,10 +573,12 @@ public class UnionService extends FightService{
 			json = JSONObject.fromObject(union.getKillMonsterRecord());
 			targetCount = json.getInt("" + targetId) + count;	
 		} catch (Exception e) {
-			
+			targetCount = count;
 		}
 		json.put("" + targetId, targetCount);
 		union.setKillMonsterRecord(json.toString());
+		
+		unionMapper.updateUnion(new UnionBean(union));
 	}
 	public void updateCostRecord(Union.Builder union, int targetId, int count) {
 		int targetCount = 0;
@@ -583,10 +587,12 @@ public class UnionService extends FightService{
 			json = JSONObject.fromObject(union.getCostRecord());
 			targetCount = json.getInt("" + targetId) + count;	
 		} catch (Exception e) {
-			
+			targetCount = count;
 		}
 		json.put("" + targetId, targetCount);
 		union.setCostRecord(json.toString());
+		
+		unionMapper.updateUnion(new UnionBean(union));
 	}
 	public void updateUnionBossRecord(Union.Builder union, int bossId) {
 		int bossCount = 0;
@@ -599,6 +605,8 @@ public class UnionService extends FightService{
 		}
 		json.put("" + bossId, bossCount);
 		union.setBossRecord(json.toString());
+		
+		unionMapper.updateUnion(new UnionBean(union));
 	}
 	public int getUnionBossCount(Union.Builder union, int bossId) {
 		int bossCount = 0;
@@ -620,6 +628,8 @@ public class UnionService extends FightService{
 			
 		}
 		union.setBossEndTime(json.toString());
+		
+		unionMapper.updateUnion(new UnionBean(union));
 	}
 	public String getUnionBossEndTime(Union.Builder union, int bossId) {
 		JSONObject json = new JSONObject();
@@ -649,7 +659,8 @@ public class UnionService extends FightService{
 					else if (type == UnionConst.UNION_BOSS_TYPE_COST)
 						updateCostRecord(union, targetId, count);
 					
-					if(calUnionBossRefresh(union, unionBoss) && redis.waitLock("Union_"+union.getId())){
+					calUnionBossRefresh(union, unionBoss);
+					if (redis.waitLock("Union_"+union.getId())){
 						redis.saveUnion(union.build(), user);
 						redis.clearLock("Union_"+union.getId());
 					}
@@ -661,15 +672,20 @@ public class UnionService extends FightService{
 	public boolean calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss) {
 		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
 		if (unionBossRecord != null) {
+			if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()) && unionBossRecord.getPercent() < 10000)
+				return false;
 			if (!DateUtil.timeIsOver(DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), unionBoss.getRefreshtime())))
 				return false;
 		}
+		
 		int bossCount = getUnionBossCount(union, unionBoss.getId());
 		JSONObject json = null;
 		if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_COST) {
-			json = JSONObject.fromObject(union.getCostRecord());
+			if (union.hasCostRecord())
+				json = JSONObject.fromObject(union.getCostRecord());
 		} else if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
-			json = JSONObject.fromObject(union.getKillMonsterRecord());
+			if (union.hasKillMonsterRecord())
+				json = JSONObject.fromObject(union.getKillMonsterRecord());
 		} 
 		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss) 
 				|| (json != null && json.getInt("" + unionBoss.getTargetid()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
@@ -681,7 +697,14 @@ public class UnionService extends FightService{
 		return false;	
 	}
 	
-	public List<UnionBossRecord> getUnionBossList(UserBean user) {
+	public List<UnionBossRecord> getUnionBossList(UserBean user, Union.Builder union) {
+		Map<String, UnionBoss> map = redis.getUnionBossConfig();
+		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, UnionBoss> entry = it.next();
+			calUnionBossRefresh(union, redis.getUnionBoss(TypeTranslatedUtil.stringToInt(entry.getKey())));
+		}
+		
 		List<UnionBossRecord> builderList = new ArrayList<UnionBossRecord>();
 		List<UnionBossRecord> unionBossList = redis.getUnionBossList(user.getUnionId());
 		for (UnionBossRecord unionBoss : unionBossList) {
@@ -701,8 +724,8 @@ public class UnionService extends FightService{
 		}
 		
 		UnionBoss unionBoss = redis.getUnionBoss(bossId);
-		Map<Integer, Integer> unionBossMap = user.getUnionBossMap();
-		if (unionBossMap.get(bossId) >= unionBoss.getCount())
+		Map<String, Integer> unionBossMap = user.getUnionBossMap();
+		if (unionBossMap.get("" + bossId) != null && unionBossMap.get("" + bossId) >= unionBoss.getCount())
 			return unionBossRecord.build();
 		
 		if (unionBossRecord.getPercent() + percent >= 10000) {
@@ -724,7 +747,7 @@ public class UnionService extends FightService{
 		
 		rewards.addAllLoot(calUnionBossReward(bossId));
 		
-		unionBossMap.put(bossId, unionBossMap.get(bossId));
+		unionBossMap.put("" + bossId, unionBossMap.get("" + bossId) == null ? 1 : unionBossMap.get("" + bossId) + 1);
 		user.setUnionBossMap(unionBossMap);
 		userService.updateUser(user);
 		
@@ -742,6 +765,8 @@ public class UnionService extends FightService{
 		unionBossRecord.addUserRecord(builder.build());
 		
 		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
+		List<UserRankBean> ranks = getUnionBossRankList(user, bossId);
+		unionBossRecord.addAllRanks(UserRankBean.buildUserRankList(ranks));
 		
 		return unionBossRecord.build();
 	}
@@ -786,20 +811,17 @@ public class UnionService extends FightService{
 	private List<RewardInfo> calUnionBossReward(int bossId) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		UnionBossloot bossloot = redis.getUnionBossloot(bossId);
-		int weightAll = 0;
-		List<RewardInfo> itemList = bossloot.getItemList();
-		for (RewardInfo item : itemList) {
-			weightAll += item.getWeight();
-		}
-		
-		int randomWeight = RandomUtils.nextInt(weightAll);
-		for (RewardInfo item : itemList) {
-			if (item.getWeight() > randomWeight) {
-				rewardList.add(item);
-				break;
-			}
+		List<UnionBosslootItem> itemList = bossloot.getItemList();
+		for (UnionBosslootItem item : itemList) {
+			int randomWeight = RandomUtils.nextInt(item.getWeightall());
+			if (randomWeight < item.getWeight1())
+				rewardList.add(RewardBean.init(item.getItemid1(), item.getCount1()).buildRewardInfo());
 			
-			randomWeight -= item.getWeight();
+			if (randomWeight < item.getWeight2())
+				rewardList.add(RewardBean.init(item.getItemid2(), item.getCount2()).buildRewardInfo());
+			
+			if (randomWeight < item.getWeight3())
+				rewardList.add(RewardBean.init(item.getItemid3(), item.getCount3()).buildRewardInfo());
 		}
 		
 		return rewardList;
@@ -833,6 +855,7 @@ public class UnionService extends FightService{
 			
 		if (last == null)
 			return true;
+		
 		
 		if (DateUtil.intervalDays(current, last) >= 1)
 			return true;

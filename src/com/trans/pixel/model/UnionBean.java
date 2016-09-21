@@ -10,10 +10,10 @@ public class UnionBean {
 	private int icon = 0;
 	private int point = 0;
 	private int rank = 0;
-	// private String killMonsterRecord = "";
-	// private String costRecord = "";
-	// private String bossRecord = "";
-	// private String bossEndTime = "";
+	 private String killMonsterRecord = "";
+	 private String costRecord = "";
+	 private String bossRecord = "";
+	 private String bossEndTime = "";
 //	private List<UnionUserBean> unionUserList = new ArrayList<UnionUserBean>();
 //	private List<MailBean> mailList = new ArrayList<MailBean>();
 	public UnionBean(){
@@ -24,10 +24,10 @@ public class UnionBean {
 		setName(union.getName());
 		setLevel(union.getLevel());
 		setPoint(union.getPoint());
-		// setKillMonsterRecord(union.getKillMonsterRecord());
-		// setCostRecord(union.getCostRecord());
-		// setBossRecord(union.getBossRecord());
-		// setBossEndTime(union.getBossEndTime());
+		 setKillMonsterRecord(union.getKillMonsterRecord());
+		 setCostRecord(union.getCostRecord());
+		 setBossRecord(union.getBossRecord());
+		 setBossEndTime(union.getBossEndTime());
 	}
 	public int getId() {
 		return id;
@@ -59,30 +59,30 @@ public class UnionBean {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-	// public String getKillMonsterRecord() {
-	// 	return killMonsterRecord;
-	// }
-	// public void setKillMonsterRecord(String killMonsterRecord) {
-	// 	this.killMonsterRecord = killMonsterRecord;
-	// }
-	// public String getCostRecord() {
-	// 	return costRecord;
-	// }
-	// public void setCostRecord(String costRecord) {
-	// 	this.costRecord = costRecord;
-	// }
-	// public String getBossRecord() {
-	// 	return bossRecord;
-	// }
-	// public void setBossRecord(String bossRecord) {
-	// 	this.bossRecord = bossRecord;
-	// }
-	// public String getBossEndTime() {
-	// 	return bossEndTime;
-	// }
-	// public void setBossEndTime(String bossEndTime) {
-	// 	this.bossEndTime = bossEndTime;
-	// }
+	 public String getKillMonsterRecord() {
+	 	return killMonsterRecord;
+	 }
+	 public void setKillMonsterRecord(String killMonsterRecord) {
+	 	this.killMonsterRecord = killMonsterRecord;
+	 }
+	 public String getCostRecord() {
+	 	return costRecord;
+	 }
+	 public void setCostRecord(String costRecord) {
+	 	this.costRecord = costRecord;
+	 }
+	 public String getBossRecord() {
+	 	return bossRecord;
+	 }
+	 public void setBossRecord(String bossRecord) {
+	 	this.bossRecord = bossRecord;
+	 }
+	 public String getBossEndTime() {
+	 	return bossEndTime;
+	 }
+	 public void setBossEndTime(String bossEndTime) {
+	 	this.bossEndTime = bossEndTime;
+	 }
 	// public void updateKillMonsterRecord(int targetId, int count) {
 	// 	int targetCount = 0;
 	// 	JSONObject json = new JSONObject();

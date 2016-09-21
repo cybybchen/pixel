@@ -52,10 +52,10 @@ public class RedisService {
 		try {
 			JsonFormat.merge(input, builder);
 		} catch (ParseException e) {
-			logger.warn(input, e);
+			logger.error(input, e);
 			return false;
 		} catch (NullPointerException e) {
-			logger.warn(input, e);
+			logger.error(input, e);
 			return false;
 		}
 		return true;

@@ -1280,7 +1280,20 @@ message UnionBosslootList {
 
 message UnionBossloot {
 	optional int32 id = 1;
-	repeated RewardInfo item = 2;	
+	repeated UnionBosslootItem item = 2;
+}
+
+message UnionBosslootItem {
+	optional int32 weightall = 1;
+	optional int32 itemid1 = 2;
+	optional int32 count1 = 3;
+	optional int32 weight1 = 4;
+	optional int32 itemid2 = 5;
+	optional int32 count2 = 6;
+	optional int32 weight2 = 7;
+	optional int32 itemid3 = 8;
+	optional int32 count3 = 9;
+	optional int32 weight3 = 10;
 }
 
 message UnionBosswinList {

@@ -433,12 +433,17 @@ public class UnionRedisService extends RedisService{
 		String key = RedisKey.UNION_BOSS_PREFIX + union.getId();
 		UnionBossRecord.Builder builder = UnionBossRecord.newBuilder();
 		Date date = null;
+		Date startDate = null;
 		if (boss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB) {
-			date = DateUtil.getFutureHour(DateUtil.setToDayStartTime(DateUtil.getDate()), boss.getTargetcount() + boss.getLasttime());
+			startDate = DateUtil.getFutureHour(DateUtil.setToDayStartTime(DateUtil.getDate()), boss.getTargetcount());
+		} else
+			startDate = DateUtil.getDate();
+		if (boss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB) {
+			date = DateUtil.getFutureHour(DateUtil.setToDayStartTime(DateUtil.getDate()), boss.getTargetcount() + 24);
 		} else
 			date = DateUtil.getFutureHour(DateUtil.getDate(), boss.getLasttime());
 		
-		builder.setStartTime(DateUtil.getCurrentDateString());
+		builder.setStartTime(DateUtil.forDatetime(startDate));
 		builder.setEndTime(DateUtil.forDatetime(date));
 		builder.setHp(boss.getHP());
 		builder.setBossId(boss.getId());

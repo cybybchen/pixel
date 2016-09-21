@@ -224,7 +224,7 @@ public class UserTeamService {
 			}
 			// saveTeamCache(user, 0, team.build());
 		}
-		if(user.getId() < 0) {
+		if(user.getId() < 0 && user.getZhanli() > 0) {
 			team.setUser(user.buildShort());
 			return team.build();
 		}
@@ -266,7 +266,8 @@ public class UserTeamService {
 					/**
 					 * zhanli activity
 					 */
-					activityService.zhanliActivity(user, myzhanli);
+					if (user.getId() > 0)
+						activityService.zhanliActivity(user, myzhanli);
 				}
 			}
 			userService.cache(user.getServerId(), user.buildShort());

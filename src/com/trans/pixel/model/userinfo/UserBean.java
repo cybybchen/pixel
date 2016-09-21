@@ -10,6 +10,7 @@ import com.trans.pixel.protoc.Commands.JewelPool;
 import com.trans.pixel.protoc.Commands.UnionBossRecord;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.LibaoService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserBean {
 	private long id = 0;
@@ -97,7 +98,7 @@ public class UserBean {
 	private int lotteryStatus = 0;
 	private int sevenLoginDays = 0;
 	private int sevenSignStatus = 0;
-	private Map<Integer, Integer> unionBossMap = new HashMap<Integer, Integer>();
+	private Map<String, Integer> unionBossMap = new HashMap<String, Integer>();
 	/**
 	 * 当前活跃度
 	 */
@@ -1014,10 +1015,10 @@ public class UserBean {
 	public void setSevenSignStatus(int sevenSignStatus) {
 		this.sevenSignStatus = sevenSignStatus;
 	}
-	public Map<Integer, Integer> getUnionBossMap() {
+	public Map<String, Integer> getUnionBossMap() {
 		return unionBossMap;
 	}
-	public void setUnionBossMap(Map<Integer, Integer> unionBossMap) {
+	public void setUnionBossMap(Map<String, Integer> unionBossMap) {
 		this.unionBossMap = unionBossMap;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
@@ -1150,11 +1151,11 @@ public class UserBean {
 		builder.setFailed(failed);
 		builder.setZhanliMax(zhanliMax);
 		
-		Iterator<Entry<Integer, Integer>> it = unionBossMap.entrySet().iterator();
+		Iterator<Entry<String, Integer>> it = unionBossMap.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<Integer, Integer> entry = it.next();
+			Entry<String, Integer> entry = it.next();
 			UnionBossRecord.Builder unionBossRecordBuilder = UnionBossRecord.newBuilder();
-			unionBossRecordBuilder.setBossId(entry.getKey());
+			unionBossRecordBuilder.setBossId(TypeTranslatedUtil.stringToInt(entry.getKey()));
 			unionBossRecordBuilder.setCount(entry.getValue());
 			builder.addUnionBossRecord(unionBossRecordBuilder.build());
 		}
