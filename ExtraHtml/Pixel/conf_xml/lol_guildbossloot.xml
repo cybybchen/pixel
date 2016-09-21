@@ -1,38 +1,38 @@
 <data>
 <boss id="200001" >
-<item weighall="100" itemid1="1001" count1="5000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="40024" count1="1" weight1="1" itemid2="40004" count2="1" weight2="4" itemid3="40003" count3="1" weight3="45" />
+<item weightall="100" itemid1="1001" count1="5000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="40024" count1="1" weight1="1" itemid2="40004" count2="1" weight2="4" itemid3="40003" count3="1" weight3="45" />
 </boss>
 <boss id="200002" >
-<item weighall="100" itemid1="1001" count1="5000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="33003" count1="2" weight1="1" itemid2="33002" count2="2" weight2="4" itemid3="33001" count3="2" weight3="45" />
+<item weightall="100" itemid1="1001" count1="5000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="33003" count1="2" weight1="1" itemid2="33002" count2="2" weight2="4" itemid3="33001" count3="2" weight3="45" />
 </boss>
 <boss id="200003" >
-<item weighall="100" itemid1="1001" count1="10000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="36003" count1="1" weight1="1" itemid2="36002" count2="1" weight2="4" itemid3="36001" count3="1" weight3="45" />
+<item weightall="100" itemid1="1001" count1="10000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="36003" count1="1" weight1="1" itemid2="36002" count2="1" weight2="4" itemid3="36001" count3="1" weight3="45" />
 </boss>
 <boss id="200004" >
-<item weighall="100" itemid1="1001" count1="10000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="40024" count1="1" weight1="2" itemid2="40004" count2="1" weight2="10" itemid3="40003" count3="1" weight3="40" />
+<item weightall="100" itemid1="1001" count1="10000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="40024" count1="1" weight1="2" itemid2="40004" count2="1" weight2="10" itemid3="40003" count3="1" weight3="40" />
 </boss>
 <boss id="200005" >
-<item weighall="100" itemid1="1001" count1="10000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="33003" count1="2" weight1="5" itemid2="33002" count2="2" weight2="10" itemid3="33001" count3="2" weight3="35" />
+<item weightall="100" itemid1="1001" count1="10000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="33003" count1="2" weight1="5" itemid2="33002" count2="2" weight2="10" itemid3="33001" count3="2" weight3="35" />
 </boss>
 <boss id="200006" >
-<item weighall="100" itemid1="1001" count1="20000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="36004" count1="1" weight1="1" itemid2="36003" count2="1" weight2="4" itemid3="36002" count3="1" weight3="45" />
+<item weightall="100" itemid1="1001" count1="20000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="36004" count1="1" weight1="1" itemid2="36003" count2="1" weight2="4" itemid3="36002" count3="1" weight3="45" />
 </boss>
 <boss id="200007" >
-<item weighall="100" itemid1="1001" count1="20000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="36004" count1="1" weight1="1" itemid2="36003" count2="1" weight2="4" itemid3="36002" count3="1" weight3="45" />
+<item weightall="100" itemid1="1001" count1="20000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="36004" count1="1" weight1="1" itemid2="36003" count2="1" weight2="4" itemid3="36002" count3="1" weight3="45" />
 </boss>
 <boss id="200008" >
-<item weighall="100" itemid1="1001" count1="40000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="33003" count1="2" weight1="10" itemid2="33002" count2="2" weight2="15" itemid3="33001" count3="1" weight3="25" />
+<item weightall="100" itemid1="1001" count1="40000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="33003" count1="2" weight1="10" itemid2="33002" count2="2" weight2="15" itemid3="33001" count3="1" weight3="25" />
 </boss>
 <boss id="200009" >
-<item weighall="100" itemid1="1001" count1="50000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
-<item weighall="100" itemid1="36005" count1="1" weight1="1" itemid2="36004" count2="1" weight2="4" itemid3="36003" count3="1" weight3="45" />
+<item weightall="100" itemid1="1001" count1="50000" weight1="100" itemid2="" count2="" weight2="" itemid3="" count3="" weight3="" />
+<item weightall="100" itemid1="36005" count1="1" weight1="1" itemid2="36004" count2="1" weight2="4" itemid3="36003" count3="1" weight3="45" />
 </boss>
 </data>
