@@ -1192,12 +1192,18 @@ message ClearAttributeList {
 
 message ClearAttribute {
 	optional int32 id = 1;
+	optional int32 position = 2;
+	optional int32 zuanshi = 3;
+	repeated ClearAttributeOrder order = 4;
+}
+
+message ClearAttributeOrder {
+	optional int32 order = 1;
 	optional int32 type = 2;
-	optional int32 position = 3;
-	optional int32 weight = 4;
-	optional int32 count1 = 5;
-	optional int32 count2 = 6;
-	optional int32 interval = 7;
+	optional int32 weight = 3;
+	optional int32 count1 = 4;
+	optional int32 count2 = 5;
+	optional int32 interval = 6;
 }
 
 message UserFood {

@@ -1,6 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +21,7 @@ import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ClearAttribute;
+import com.trans.pixel.protoc.Commands.ClearAttributeOrder;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.UserClearRedisService;
@@ -87,18 +87,18 @@ public class ClearService {
 	}
 	
 	public UserClearBean clearHero(UserBean user, int heroId, int position, int type) {
-		List<ClearAttribute> attList = getClearAttribute(position);
+		ClearAttribute att = getClearAttribute(position, type == RewardConst.JEWEL ? 1 : 0);
 		int allWeight = 0;
-		for (ClearAttribute att : attList) {
-			allWeight += att.getWeight();
+		for (ClearAttributeOrder order : att.getOrderList()) {
+			allWeight += order.getWeight();
 		}
 		
-		for (ClearAttribute att : attList) {
+		for (ClearAttributeOrder order : att.getOrderList()) {
 			int randWeight = RandomUtils.nextInt(allWeight);
-			if (randWeight < att.getWeight()) 
-				return randomClear(att, type, heroId, user.getId());
+			if (randWeight < order.getWeight()) 
+				return randomClear(order, att.getPosition(), heroId, user.getId());
 			
-			allWeight -= att.getWeight();
+			allWeight -= order.getWeight();
 		}
 		
 		return null;
@@ -141,34 +141,31 @@ public class ClearService {
 		return RandomUtils.nextInt(100) < percent;
 	}
 	
-	private UserClearBean randomClear(ClearAttribute att, int type, int heroId, long userId) {
+	private UserClearBean randomClear(ClearAttributeOrder order, int position, int heroId, long userId) {
 		UserClearBean userClear = new UserClearBean();
-		userClear.setClearId(att.getId());
+		userClear.setClearId(order.getType());
 		userClear.setHeroId(heroId);
-		userClear.setPosition(att.getPosition());
+		userClear.setPosition(position);
 		userClear.setUserId(userId);
 		
-		int count1 = att.getCount1();
-		int count2 = att.getCount2();
-		if (type == RewardConst.JEWEL)
-			count1 = (count1 + count2) / 2;
+		int count1 = order.getCount1();
+		int count2 = order.getCount2();
 		
-		int randCount = count1 + RandomUtils.nextInt(1 + (count2 - count1) / att.getInterval()) * att.getInterval();
+		int randCount = count1 + RandomUtils.nextInt(1 + (count2 - count1) / order.getInterval()) * order.getInterval();
 		userClear.setCount(randCount);
 		
 		return userClear;
 	}
 	
-	private List<ClearAttribute> getClearAttribute(int position) {
+	private ClearAttribute getClearAttribute(int position, int type) {
 		Map<String, ClearAttribute> map = clearRedisService.getClearAttributeConfig();
-		List<ClearAttribute> attList = new ArrayList<ClearAttribute>();
 		Iterator<Entry<String, ClearAttribute>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			ClearAttribute att = it.next().getValue();
-			if (att.getPosition() == position)
-				attList.add(att);
+			if (att.getPosition() == position && att.getZuanshi() == type)
+				return att;
 		}
 		
-		return attList;
+		return null;
 	}
 }

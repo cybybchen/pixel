@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<level level="1" zhanli="200" count="100" />
-<level level="2" zhanli="200" count="150" />
-<level level="3" zhanli="200" count="200" />
-<level level="4" zhanli="300" count="300" />
-<level level="5" zhanli="300" count="500" />
-<level level="6" zhanli="300" count="1000" />
-<level level="7" zhanli="400" count="1500" />
-<level level="8" zhanli="400" count="2000" />
-<level level="9" zhanli="500" count="2500" />
+<level level="1" zhanli="150" count="100" />
+<level level="2" zhanli="200" count="250" />
+<level level="3" zhanli="250" count="350" />
+<level level="4" zhanli="300" count="550" />
+<level level="5" zhanli="350" count="750" />
+<level level="6" zhanli="400" count="1000" />
+<level level="7" zhanli="450" count="1500" />
+<level level="8" zhanli="550" count="2000" />
+<level level="9" zhanli="650" count="2500" />
 </data>
