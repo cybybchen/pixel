@@ -601,7 +601,7 @@ public class UnionService extends FightService{
 			json = JSONObject.fromObject(union.getBossRecord());
 			bossCount = json.getInt("" + bossId) + 1;	
 		} catch (Exception e) {
-			
+			bossCount = 1;
 		}
 		json.put("" + bossId, bossCount);
 		union.setBossRecord(json.toString());
@@ -737,6 +737,8 @@ public class UnionService extends FightService{
 		if (unionBossMap.get("" + bossId) != null && unionBossMap.get("" + bossId) >= unionBoss.getCount())
 			return unionBossRecord.build();
 		
+		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);
+		
 		if (unionBossRecord.getPercent() + percent >= 10000) {
 			if (!redis.setLock("UnionBoss_" + bossId, 10))
 				return unionBossRecord.build();
@@ -751,8 +753,6 @@ public class UnionService extends FightService{
 			redis.clearLock("UnionBoss_" + bossId);
 		} else
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
-		
-		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);
 		
 		rewards.addAllLoot(calUnionBossReward(bossId));
 		
