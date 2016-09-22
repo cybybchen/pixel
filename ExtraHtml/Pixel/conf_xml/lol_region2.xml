@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<region id="101" name="德1" img="kd101" belongto="1" x="239" y="1456" yield="8" bossid="3001" bosslv="10" />
-<region id="102" name="德2" img="kd101" belongto="1" x="348" y="1772" yield="10" bossid="3002" bosslv="15" />
-<region id="201" name="祖1" img="kd101" belongto="2" x="505" y="630" yield="15" bossid="3004" bosslv="25" />
-<region id="202" name="祖2" img="kd101" belongto="2" x="307" y="309" yield="15" bossid="3005" bosslv="30" />
-<region id="301" name="皮1" img="kd101" belongto="3" x="1046" y="860" yield="10" bossid="3007" bosslv="40" />
-<region id="302" name="皮2" img="kd101" belongto="3" x="895" y="381" yield="10" bossid="3008" bosslv="45" />
-<region id="401" name="巨1" img="kd101" belongto="4" x="1044" y="1404" yield="36" bossid="3010" bosslv="55" />
-<region id="403" name="巨3" img="kd101" belongto="4" x="1016" y="1748" yield="50" bossid="3012" bosslv="65" />
+<region id="101" name="德意志堡垒" img="kd101" belongto="1" x="239" y="1456" yield="10" bossid="3001" bosslv="10" />
+<region id="102" name="远古城堡" img="kd101" belongto="1" x="348" y="1772" yield="15" bossid="3002" bosslv="15" />
+<region id="201" name="游魂堡垒" img="kd101" belongto="2" x="505" y="630" yield="10" bossid="3003" bosslv="20" />
+<region id="202" name="药剂师营地" img="kd101" belongto="2" x="307" y="309" yield="15" bossid="3004" bosslv="25" />
+<region id="301" name="铁锈监狱" img="kd101" belongto="3" x="1046" y="860" yield="10" bossid="3005" bosslv="40" />
+<region id="302" name="科技之城" img="kd101" belongto="3" x="895" y="381" yield="15" bossid="3006" bosslv="45" />
+<region id="401" name="月之城" img="kd101" belongto="4" x="1044" y="1404" yield="10" bossid="3007" bosslv="50" />
+<region id="402" name="日之城" img="kd101" belongto="4" x="1016" y="1748" yield="15" bossid="3008" bosslv="55" />
+<region id="501" name="皇城" img="kd101" belongto="5" x="639" y="1141" yield="20" bossid="3009" bosslv="100" />
 </data>

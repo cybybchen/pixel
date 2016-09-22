@@ -1,154 +1,184 @@
 <data>
-<region id="1101" name="盗贼" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
-<skill skillid="80001" skilllevel="1" />
+<region id="1101" name="盗贼" des="这是一位肉鸽。" img="1" boss="1" >
+<skill skillid="50077" skilllevel="1" />
+<skill skillid="50087" skilllevel="1" />
 </region>
-<region id="1102" name="诺克萨斯男军人" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
-<skill skillid="80002" skilllevel="1" />
+<region id="1102" name="诺克萨斯男军人" des="非常强壮的男人。" img="1" boss="1" >
+<skill skillid="50061" skilllevel="1" />
+<skill skillid="50087" skilllevel="1" />
 </region>
-<region id="1103" name="诺克萨斯女军人" img="1" boss="1" >
-<skill skillid="80009" skilllevel="1" />
-<skill skillid="80010" skilllevel="1" />
+<region id="1103" name="诺克萨斯女军人" des="非常强壮的女人。" img="1" boss="1" >
+<skill skillid="50061" skilllevel="1" />
+<skill skillid="50087" skilllevel="1" />
 </region>
-<region id="1104" name="武道家" img="1" boss="1" >
-<skill skillid="80003" skilllevel="2" />
-<skill skillid="80003" skilllevel="2" />
+<region id="1104" name="武道家" des="打之前先要鞠个躬。" img="1" boss="1" >
+<skill skillid="50043" skilllevel="2" />
+<skill skillid="50089" skilllevel="2" />
 </region>
-<region id="1105" name="武道家女" img="1" boss="1" >
-<skill skillid="80003" skilllevel="2" />
-<skill skillid="80003" skilllevel="2" />
+<region id="1105" name="武道家女" des="打之前先要鞠两个躬。" img="1" boss="1" >
+<skill skillid="50043" skilllevel="2" />
+<skill skillid="50089" skilllevel="2" />
 </region>
-<region id="1106" name="诺克萨斯之手 " img="1" boss="1" >
-<skill skillid="80004" skilllevel="2" />
-<skill skillid="80003" skilllevel="2" />
+<region id="1106" name="诺克萨斯之手 " des="非常强壮的手。" img="1" boss="1" >
+<skill skillid="50033" skilllevel="2" />
+<skill skillid="50042" skilllevel="2" />
+<skill skillid="50089" skilllevel="2" />
 </region>
-<region id="1107" name="德玛西亚贵族" img="1" boss="1" >
-<skill skillid="80004" skilllevel="2" />
-<skill skillid="80003" skilllevel="2" />
+<region id="1107" name="德玛西亚贵族" des="西部王国的贵族。" img="1" boss="1" >
+<skill skillid="50020" skilllevel="2" />
+<skill skillid="50017" skilllevel="2" />
+<skill skillid="50095" skilllevel="2" />
 </region>
-<region id="1201" name="黑皮少年" img="1" boss="1" >
-<skill skillid="80007" skilllevel="3" />
-<skill skillid="80006" skilllevel="3" />
+<region id="1201" name="黑皮少年" des="全身被黑皮包围的不良少年。" img="1" boss="1" >
+<skill skillid="50074" skilllevel="3" />
+<skill skillid="50077" skilllevel="3" />
+<skill skillid="50099" skilllevel="3" />
 </region>
-<region id="1202" name="黑皮少女" img="1" boss="1" >
-<skill skillid="80007" skilllevel="3" />
-<skill skillid="80011" skilllevel="4" />
+<region id="1202" name="黑皮少女" des="全身被黑皮包围的不良少女。" img="1" boss="1" >
+<skill skillid="50077" skilllevel="3" />
+<skill skillid="50070" skilllevel="3" />
+<skill skillid="50099" skilllevel="4" />
 </region>
-<region id="1203" name="绿发游侠" img="1" boss="1" >
-<skill skillid="80012" skilllevel="4" />
-<skill skillid="80013" skilllevel="4" />
+<region id="1203" name="绿发游侠" des="绿色头发的射手。" img="1" boss="1" >
+<skill skillid="50076" skilllevel="4" />
+<skill skillid="50060" skilllevel="4" />
+<skill skillid="50103" skilllevel="4" />
 </region>
-<region id="1204" name="黄发游侠" img="1" boss="1" >
-<skill skillid="80014" skilllevel="4" />
-<skill skillid="80015" skilllevel="4" />
+<region id="1204" name="黄发游侠" des="黄色头发的射手。" img="1" boss="1" >
+<skill skillid="50076" skilllevel="4" />
+<skill skillid="50018" skilllevel="4" />
+<skill skillid="50103" skilllevel="4" />
 </region>
-<region id="1205" name="魔化老太婆" img="1" boss="1" >
-<skill skillid="80016" skilllevel="4" />
-<skill skillid="80017" skilllevel="4" />
+<region id="1205" name="魔化老太婆" des="发狂的狼外婆。" img="1" boss="1" >
+<skill skillid="50084" skilllevel="4" />
+<skill skillid="50094" skilllevel="4" />
+<skill skillid="50098" skilllevel="4" />
 </region>
-<region id="1301" name="火法" img="1" boss="1" >
-<skill skillid="80007" skilllevel="5" />
-<skill skillid="80007" skilllevel="5" />
+<region id="1301" name="火法" des="一名单身的烈焰法师。" img="1" boss="1" >
+<skill skillid="50039" skilllevel="5" />
+<skill skillid="50040" skilllevel="5" />
+<skill skillid="50090" skilllevel="5" />
 </region>
-<region id="1302" name="男战士" img="1" boss="1" >
-<skill skillid="80008" skilllevel="5" />
-<skill skillid="80003" skilllevel="5" />
+<region id="1302" name="男战士" des="性别男，爱好女，职业战士。" img="1" boss="1" >
+<skill skillid="50015" skilllevel="5" />
+<skill skillid="50016" skilllevel="5" />
+<skill skillid="50089" skilllevel="5" />
 </region>
-<region id="1303" name="女战士" img="1" boss="1" >
-<skill skillid="80004" skilllevel="5" />
-<skill skillid="80001" skilllevel="5" />
+<region id="1303" name="女战士" des="性别女，爱好男，职业战士。" img="1" boss="1" >
+<skill skillid="50043" skilllevel="5" />
+<skill skillid="50044" skilllevel="5" />
+<skill skillid="50089" skilllevel="5" />
 </region>
-<region id="1304" name="奥法" img="1" boss="1" >
-<skill skillid="80002" skilllevel="5" />
-<skill skillid="80001" skilllevel="5" />
+<region id="1304" name="奥法" des="我是达拉然之力。" img="1" boss="1" >
+<skill skillid="50050" skilllevel="5" />
+<skill skillid="50051" skilllevel="5" />
+<skill skillid="50090" skilllevel="5" />
 </region>
-<region id="1305" name="老年战士" img="1" boss="1" >
-<skill skillid="80002" skilllevel="5" />
-<skill skillid="80021" skilllevel="5" />
+<region id="1305" name="老年战士" des="一名年迈的战士，喜欢转甲。" img="1" boss="1" >
+<skill skillid="50054" skilllevel="5" />
+<skill skillid="50055" skilllevel="5" />
+<skill skillid="50089" skilllevel="5" />
 </region>
-<region id="1306" name="男警察" img="1" boss="1" >
-<skill skillid="80022" skilllevel="5" />
-<skill skillid="80003" skilllevel="6" />
+<region id="1306" name="男警察" des="穿制服的男性警察。" img="1" boss="1" >
+<skill skillid="50064" skilllevel="5" />
+<skill skillid="50065" skilllevel="6" />
+<skill skillid="50102" skilllevel="6" />
 </region>
-<region id="1307" name="女警察" img="1" boss="1" >
-<skill skillid="80004" skilllevel="6" />
-<skill skillid="80003" skilllevel="6" />
+<region id="1307" name="女警察" des="穿制服的女性警察。" img="1" boss="1" >
+<skill skillid="50011" skilllevel="6" />
+<skill skillid="50012" skilllevel="6" />
+<skill skillid="50102" skilllevel="6" />
 </region>
-<region id="1401" name="阿拉伯" img="1" boss="1" >
-<skill skillid="80005" skilllevel="6" />
-<skill skillid="80004" skilllevel="6" />
+<region id="1401" name="阿拉伯" des="阿拉的大伯。" img="1" boss="1" >
+<skill skillid="50076" skilllevel="6" />
+<skill skillid="50053" skilllevel="6" />
+<skill skillid="50103" skilllevel="6" />
 </region>
-<region id="1402" name="老头" img="1" boss="1" >
-<skill skillid="80005" skilllevel="6" />
-<skill skillid="80006" skilllevel="7" />
+<region id="1402" name="老头" des="海边打渔的老头子。" img="1" boss="1" >
+<skill skillid="50078" skilllevel="6" />
+<skill skillid="50079" skilllevel="7" />
+<skill skillid="50104" skilllevel="7" />
 </region>
-<region id="1403" name="老太婆" img="1" boss="1" >
-<skill skillid="80007" skilllevel="7" />
-<skill skillid="80009" skilllevel="7" />
+<region id="1403" name="老太婆" des="河边打渔的老太婆。" img="1" boss="1" >
+<skill skillid="50081" skilllevel="7" />
+<skill skillid="50082" skilllevel="7" />
+<skill skillid="50104" skilllevel="7" />
 </region>
-<region id="1404" name="皇后" img="1" boss="1" >
-<skill skillid="80023" skilllevel="7" />
-<skill skillid="80007" skilllevel="7" />
+<region id="1404" name="皇后" des="某个北欧小国家的皇后。" img="1" boss="1" >
+<skill skillid="50047" skilllevel="7" />
+<skill skillid="50086" skilllevel="7" />
+<skill skillid="50097" skilllevel="7" />
 </region>
-<region id="1405" name="公主" img="1" boss="1" >
-<skill skillid="80008" skilllevel="7" />
-<skill skillid="80007" skilllevel="7" />
+<region id="1405" name="公主" des="某个北欧小国家的公主。" img="1" boss="1" >
+<skill skillid="50059" skilllevel="7" />
+<skill skillid="50068" skilllevel="7" />
+<skill skillid="50097" skilllevel="7" />
 </region>
-<region id="1406" name="国王" img="1" boss="1" >
-<skill skillid="80008" skilllevel="7" />
-<skill skillid="80007" skilllevel="7" />
+<region id="1406" name="国王" des="某个北欧小国家的国王。" img="1" boss="1" >
+<skill skillid="50056" skilllevel="7" />
+<skill skillid="50068" skilllevel="7" />
+<skill skillid="50097" skilllevel="7" />
 </region>
-<region id="2101" name="恶魔之源" img="1" boss="1" >
-<skill skillid="80029" skilllevel="1" />
-<skill skillid="80030" skilllevel="1" />
+<region id="2101" name="恶魔之源" des="无时无刻不在释放混乱的能量。" img="1" boss="1" >
+<skill skillid="50002" skilllevel="10" />
+<skill skillid="50006" skilllevel="10" />
+<skill skillid="50094" skilllevel="10" />
+<skill skillid="50086" skilllevel="10" />
+<skill skillid="50079" skilllevel="10" />
 </region>
-<region id="2201" name="魔化之源" img="1" boss="1" >
-<skill skillid="80033" skilllevel="1" />
-<skill skillid="80034" skilllevel="1" />
+<region id="2201" name="魔化之源" des="魔化能量的掌控者。" img="1" boss="1" >
+<skill skillid="50010" skilllevel="10" />
+<skill skillid="50028" skilllevel="10" />
+<skill skillid="50094" skilllevel="10" />
+<skill skillid="50086" skilllevel="10" />
+<skill skillid="50079" skilllevel="10" />
 </region>
-<region id="2301" name="灵鸟" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
-<skill skillid="80001" skilllevel="1" />
+<region id="2301" name="灵鸟" des="常年围绕着一座巨型山峰的大鸟。" img="1" boss="1" >
+<skill skillid="50009" skilllevel="10" />
+<skill skillid="50008" skilllevel="10" />
+<skill skillid="50092" skilllevel="10" />
+<skill skillid="50086" skilllevel="10" />
+<skill skillid="50079" skilllevel="10" />
 </region>
-<region id="2401" name="巨神王" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
-<skill skillid="80001" skilllevel="1" />
+<region id="2302" name="灵鸦" des="常年围绕着一座巨型山峰的乌鸦。" img="1" boss="1" >
+<skill skillid="50013" skilllevel="10" />
+<skill skillid="50108" skilllevel="10" />
+<skill skillid="50091" skilllevel="10" />
+<skill skillid="50083" skilllevel="10" />
+<skill skillid="50079" skilllevel="10" />
 </region>
-<region id="3001" name="1b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="2401" name="巨神王" des="古老的神像受到诅咒后动了起来。" img="1" boss="1" >
+<skill skillid="50007" skilllevel="10" />
+<skill skillid="50026" skilllevel="10" />
+<skill skillid="50093" skilllevel="10" />
+<skill skillid="50086" skilllevel="10" />
+<skill skillid="50079" skilllevel="10" />
 </region>
-<region id="3002" name="2b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3001" name="大宝剑" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50001" skilllevel="1" />
 </region>
-<region id="3003" name="3b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3002" name="二宝剑" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50002" skilllevel="1" />
 </region>
-<region id="3004" name="4b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3003" name="祖安狂魔" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50001" skilllevel="1" />
 </region>
-<region id="3005" name="5b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3004" name="祖安狂徒" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50002" skilllevel="1" />
 </region>
-<region id="3006" name="6b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3005" name="皮城小偷" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50001" skilllevel="1" />
 </region>
-<region id="3007" name="7b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3006" name="皮城大盗" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50002" skilllevel="1" />
 </region>
-<region id="3008" name="8b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3007" name="天神小弟" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50001" skilllevel="1" />
 </region>
-<region id="3009" name="9b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3008" name="天神小妹" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50002" skilllevel="1" />
 </region>
-<region id="3010" name="10b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
-</region>
-<region id="3011" name="11b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
-</region>
-<region id="3012" name="12b" img="1" boss="1" >
-<skill skillid="80001" skilllevel="1" />
+<region id="3009" name="皇城霸主" des="来打我呀~" img="1" boss="1" >
+<skill skillid="50002" skilllevel="1" />
 </region>
 </data>

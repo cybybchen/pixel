@@ -99,19 +99,35 @@ public class AreaFightService extends FightService{
 		redis.saveMyAreaEquip(user, builder.build());
 	}
 	
-	private RewardInfo randReward(WeightReward weightreward){
+	private RewardInfo randReward(WeightReward weightreward, int level){
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
+		reward.setItemid(0);
+		reward.setCount(0);
 		int index = (int)(weightreward.getWeightall()*Math.random());
-		if(index < weightreward.getWeight1()){
+		if(index < weightreward.getWeight1A() + (int)(weightreward.getWeight1B() * level)){
 			reward.setItemid(weightreward.getItemid1());
-			reward.setCount(weightreward.getCount1());
-		}else if(index < weightreward.getWeight1() + weightreward.getWeight2()){
-			reward.setItemid(weightreward.getItemid2());
-			reward.setCount(weightreward.getCount2());
-		}else{
-			reward.setItemid(weightreward.getItemid3());
-			reward.setCount(weightreward.getCount3());
+			reward.setCount(weightreward.getCount1A() + (int)(weightreward.getCount1B() + level));
+			
+			return reward.build();
 		}
+		
+		if (weightreward.getItemid2().isEmpty())
+			return reward.build();
+		
+		if(index < TypeTranslatedUtil.stringToInt(weightreward.getWeight2A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getWeight2B()) * level)){
+			reward.setItemid(TypeTranslatedUtil.stringToInt(weightreward.getItemid2()));
+			reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount2A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount2B()) + level));
+			
+			return reward.build();
+		}
+		
+		if (weightreward.getItemid3().isEmpty())
+			return reward.build();
+		
+		
+		reward.setItemid(TypeTranslatedUtil.stringToInt(weightreward.getItemid3()));
+		reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount3A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount3B()) + level));
+		
 		return reward.build();
 	}
 	
@@ -127,7 +143,7 @@ public class AreaFightService extends FightService{
 		redis.deleteMonster(monster.getPositionid(), user);
 		AreaMonsterReward monsterreward = redis.getAreaMonsterReward(monster.getId());
 		for(WeightReward weightreward : monsterreward.getLootList()){
-			rewards.addLoot(randReward(weightreward));
+			rewards.addLoot(randReward(weightreward, monster.getLevel()));
 		}
 		rewardService.doRewards(user, rewards.build());
 
@@ -165,7 +181,7 @@ public class AreaFightService extends FightService{
 			//击杀奖励
 			AreaMonsterReward monsterreward = redis.getAreaMonsterReward(id);
 			for(WeightReward weightreward : monsterreward.getLootList()){
-				rewards.addLoot(randReward(weightreward));
+				rewards.addLoot(randReward(weightreward, boss.getBosslv()));
 			}
 			rewardService.doRewards(user, rewards.build());
 			//排行奖励

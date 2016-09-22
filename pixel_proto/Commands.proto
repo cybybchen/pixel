@@ -604,17 +604,24 @@ message Sign {
 }
 
 message WeightReward {
+	optional int32 order = 100;
 	optional int32 itemcount = 1;
 	optional int32 weightall = 2;
 	optional int32 itemid1 = 3;
-	optional int32 count1 = 4;
-	optional int32 weight1 = 5;
-	optional int32 itemid2 = 6;
-	optional int32 count2 = 7;
-	optional int32 weight2 = 8;
-	optional int32 itemid3 = 9;
-	optional int32 count3 = 10;
-	optional int32 weight3 = 11;
+	optional int32 count1a = 4;
+	optional float count1b = 5;
+	optional int32 weight1a = 6;
+	optional float weight1b = 8;
+	optional string itemid2 = 9;
+	optional string count2a = 10;
+	optional string count2b = 11;
+	optional string weight2a = 12;
+	optional string weight2b = 13;
+	optional string itemid3 = 14;
+	optional string count3a = 15;
+	optional string count3b = 16;
+	optional string weight3a = 17;
+	optional string weight3b = 18;
 }
 
 message AreaMonsterReward {
