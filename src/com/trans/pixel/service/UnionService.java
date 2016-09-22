@@ -647,6 +647,9 @@ public class UnionService extends FightService{
 		Union.Builder union = redis.getUnion(user);
 		if (union == null)
 			return;
+		
+		boolean hasCostRecord = false;
+		boolean hasKillMonsterRecord = false;
 		Map<String, UnionBoss> map = redis.getUnionBossConfig();
 		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -654,11 +657,17 @@ public class UnionService extends FightService{
 			UnionBoss unionBoss = entry.getValue();
 			if (unionBoss.getType() == type) {
 				if (unionBoss.getTargetid() == targetId) {
-					if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER)
-						updateKillMonsterRecord(union, targetId, count);
-					else if (type == UnionConst.UNION_BOSS_TYPE_COST)
-						updateCostRecord(union, targetId, count);
-					
+					if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
+						if (!hasKillMonsterRecord) {
+							updateKillMonsterRecord(union, targetId, count);
+							hasKillMonsterRecord = true;
+						}
+					} else if (type == UnionConst.UNION_BOSS_TYPE_COST) {
+						if (!hasCostRecord) {
+							updateCostRecord(union, targetId, count);
+							hasCostRecord = true;
+						}
+					}
 					calUnionBossRefresh(union, unionBoss);
 					if (redis.waitLock("Union_"+union.getId())){
 						redis.saveUnion(union.build(), user);
@@ -688,7 +697,7 @@ public class UnionService extends FightService{
 				json = JSONObject.fromObject(union.getKillMonsterRecord());
 		} 
 		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss) 
-				|| (json != null && json.getInt("" + unionBoss.getTargetid()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
+				|| (json != null && json.has("" + unionBoss.getTargetid()) && json.getInt("" + unionBoss.getTargetid()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
 			updateUnionBossRecord(union, unionBoss.getId());
 			redis.delUnionBossRankKey(union.getId(), unionBoss.getId());
 			redis.saveUnionBoss(union, unionBoss);
