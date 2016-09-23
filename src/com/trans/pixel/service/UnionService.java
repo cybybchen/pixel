@@ -721,7 +721,6 @@ public class UnionService extends FightService{
 			List<UserRankBean> ranks = getUnionBossRankList(user, unionBoss.getBossId());
 			builder.addAllRanks(UserRankBean.buildUserRankList(ranks));
 			builderList.add(builder.build());
-			
 		}
 		return builderList;
 	}

@@ -55,19 +55,19 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class AreaFightService extends FightService{
 	Logger logger = Logger.getLogger(AreaFightService.class);
 	@Resource
-	UserAreaPropMapper mapper;
+	private UserAreaPropMapper mapper;
 	@Resource
-    private AreaRedisService redis;
+   private AreaRedisService redis;
 	@Resource
-    private UserService userService;
+   private UserService userService;
 	@Resource
-    private RewardService rewardService;
+   private RewardService rewardService;
 	@Resource
-	UserTeamService userTeamService;
+	private UserTeamService userTeamService;
 	@Resource
-	MailRedisService mailRedisService;
+	private MailRedisService mailRedisService;
 	@Resource
-	PushCommandService pusher;
+	private PushCommandService pusher;
 	
 	public void delAreaEquip(long userId, int rewardId){
 		UserBean user = new UserBean();

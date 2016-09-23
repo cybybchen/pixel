@@ -242,7 +242,7 @@ public class PvpMapService {
 				redis.saveMine(user.getId(), builder.build());
 				mineMap.put(builder.getId()+"", builder.build());
 
-				String content = "获得了你的矿点(" + map.getName() + ")";
+				String content = "霸占了你的矿点(" + map.getName() + ")";
 				UserBean bean = new UserBean();
 				bean.setId(builder.getOwner().getId());
 				bean.setIcon(builder.getOwner().getIcon());
@@ -430,7 +430,7 @@ public class PvpMapService {
 								mine.setEndTime(redis.now()+24*3600);
 
 								redis.saveMine(userId, mine.build());
-								String content = "获得了你的矿点(" + map.getName() + ")";
+								String content = "霸占了你的矿点(" + map.getName() + ")";
 								
 								sendMineAttackedMail(userId, user, content, id / 100);
 								
