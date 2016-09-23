@@ -1,12 +1,13 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -15,11 +16,9 @@ import net.sf.json.JSONObject;
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.UnionConst;
@@ -71,6 +70,18 @@ public class UnionService extends FightService{
 	private ServerService serverService;
 	@Resource
 	private ActivityService activityService;
+	
+	Comparator<UserRankBean> comparator = new Comparator<UserRankBean>() {
+        public int compare(UserRankBean bean1, UserRankBean bean2) {
+            if (bean1.getDps() < bean2.getDps()) {
+                return 1;
+            } else if (bean1.getDps() == bean2.getDps() && bean1.getZhanli() < bean2.getZhanli()){
+                return 1;
+            } else {
+            		return -1;
+            	 }
+        }
+	};
 	
 	public List<Union> getBaseUnions(UserBean user) {
 		return redis.getBaseUnions(user);
@@ -668,7 +679,7 @@ public class UnionService extends FightService{
 							hasCostRecord = true;
 						}
 					}
-					calUnionBossRefresh(union, unionBoss);
+					calUnionBossRefresh(union, unionBoss, user);
 					if (redis.waitLock("Union_"+union.getId())){
 						redis.saveUnion(union.build(), user);
 						redis.clearLock("Union_"+union.getId());
@@ -678,7 +689,9 @@ public class UnionService extends FightService{
 		}
 	}
 	
-	public boolean calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss) {
+	public boolean calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss, UserBean user) {
+		if (unionBoss.getHandbook() == 0)
+			return false;
 		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
 		if (unionBossRecord != null) {
 			if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()) && unionBossRecord.getPercent() < 10000)
@@ -696,11 +709,19 @@ public class UnionService extends FightService{
 			if (union.hasKillMonsterRecord())
 				json = JSONObject.fromObject(union.getKillMonsterRecord());
 		} 
+		
 		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss) 
 				|| (json != null && json.has("" + unionBoss.getTargetid()) && json.getInt("" + unionBoss.getTargetid()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
 			updateUnionBossRecord(union, unionBoss.getId());
 			redis.delUnionBossRankKey(union.getId(), unionBoss.getId());
-			redis.saveUnionBoss(union, unionBoss);
+			unionBossRecord = redis.saveUnionBoss(union, unionBoss);
+			
+			List<UserInfo> members = redis.getMembers(user);
+			for (UserInfo info : members) {
+				UserRankBean userRank = new UserRankBean();
+				userRank.initByUserCache(info);
+				redis.addUnionBossAttackRank(userRank, unionBossRecord, union.getId());
+			}
 			return true;
 		}
 		return false;	
@@ -711,14 +732,14 @@ public class UnionService extends FightService{
 		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, UnionBoss> entry = it.next();
-			calUnionBossRefresh(union, redis.getUnionBoss(TypeTranslatedUtil.stringToInt(entry.getKey())));
+			calUnionBossRefresh(union, redis.getUnionBoss(TypeTranslatedUtil.stringToInt(entry.getKey())), user);
 		}
 		
 		List<UnionBossRecord> builderList = new ArrayList<UnionBossRecord>();
 		List<UnionBossRecord> unionBossList = redis.getUnionBossList(user.getUnionId());
 		for (UnionBossRecord unionBoss : unionBossList) {
 			UnionBossRecord.Builder builder = UnionBossRecord.newBuilder(unionBoss);
-			List<UserRankBean> ranks = getUnionBossRankList(user, unionBoss.getBossId());
+			List<UserRankBean> ranks = getUnionBossRankList(user.getUnionId(), unionBoss.getBossId());
 			builder.addAllRanks(UserRankBean.buildUserRankList(ranks));
 			builderList.add(builder.build());
 		}
@@ -736,7 +757,11 @@ public class UnionService extends FightService{
 		if (unionBossMap.get("" + bossId) != null && unionBossMap.get("" + bossId) >= unionBoss.getCount())
 			return unionBossRecord.build();
 		
-		redis.addUnionBossAttackRank(user, unionBossRecord.build(), hp);
+		UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
+		if (userRankBean == null)
+			userRankBean = new UserRankBean(user);
+		userRankBean.setDps(userRankBean.getDps() + hp);
+		redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
 		
 		if (unionBossRecord.getPercent() + percent >= 10000) {
 			if (!redis.setLock("UnionBoss_" + bossId, 10))
@@ -746,7 +771,7 @@ public class UnionService extends FightService{
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
 			doUnionBossRankReward(user.getUnionId(), bossId);
 			updateUnionBossEndTime(union, bossId);
-			calUnionBossRefresh(union, redis.getUnionBoss(bossId));
+			calUnionBossRefresh(union, redis.getUnionBoss(bossId), user);
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
 			redis.clearLock("UnionBoss_" + bossId);
@@ -773,7 +798,7 @@ public class UnionService extends FightService{
 		unionBossRecord.addUserRecord(builder.build());
 		
 		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
-		List<UserRankBean> ranks = getUnionBossRankList(user, bossId);
+		List<UserRankBean> ranks = getUnionBossRankList(user.getUnionId(), bossId);
 		unionBossRecord.addAllRanks(UserRankBean.buildUserRankList(ranks));
 		
 		return unionBossRecord.build();
@@ -782,13 +807,25 @@ public class UnionService extends FightService{
 	private void doUnionBossRankReward(int unionId, int bossId) {
 		UnionBosswin unionBosswin = redis.getUnionBosswin(bossId);
 		List<RankItem> rankList = unionBosswin.getItemList();
+		List<UserRankBean> userRankList = getUnionBossRankList(unionId, bossId);
 		for (RankItem item : rankList) {
-			Set<TypedTuple<String>> ranks = redis.getUnionBossRanks(unionId, bossId, item.getRank() - 1, item.getRank1() - 1);
-			for (TypedTuple<String> rank : ranks) {
-				MailBean mail = MailBean.buildSystemMail(TypeTranslatedUtil.stringToLong(rank.getValue()), item.getDes(), getRankRewardList(item));
-				log.debug("unionboss rank mail is:" + mail.toJson());
-				mailService.addMail(mail);
+			List<RewardInfo> rewardList = getRankRewardList(item);
+			for (int i = item.getRank() - 1; i < item.getRank1(); ++ i) {
+				if (i >= userRankList.size())
+					return;
+				UserRankBean userRank = userRankList.get(i);
+				if (userRank != null) {
+					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), item.getDes(), rewardList);
+					log.debug("unionboss rank mail is:" + mail.toJson());
+					mailService.addMail(mail);
+				}
 			}
+//			Set<TypedTuple<String>> ranks = redis.getUnionBossRankList(unionId, bossId, item.getRank() - 1, item.getRank1() - 1);
+//			for (TypedTuple<String> rank : ranks) {
+//				MailBean mail = MailBean.buildSystemMail(TypeTranslatedUtil.stringToLong(rank.getValue()), item.getDes(), getRankRewardList(item));
+//				log.debug("unionboss rank mail is:" + mail.toJson());
+//				mailService.addMail(mail);
+//			}
 		}
 	}
 	
@@ -835,21 +872,37 @@ public class UnionService extends FightService{
 		return rewardList;
 	}
 	
-	private List<UserRankBean> getUnionBossRankList(UserBean user, int bossId) {
-		Set<TypedTuple<String>> ranks = redis.getUnionBossRanks(user.getUnionId(), bossId, RankConst.UNIONBOSS_RANK_LIST_START, RankConst.UNIONBOSS_RANK_LIST_END);
+//	private List<UserRankBean> getUnionBossRankList(UserBean user, int bossId) {
+//		Set<TypedTuple<String>> ranks = redis.getUnionBossRanks(user.getUnionId(), bossId, RankConst.UNIONBOSS_RANK_LIST_START, RankConst.UNIONBOSS_RANK_LIST_END);
+//		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
+//		int rankInit = 1;
+//		for (TypedTuple<String> rank : ranks) {
+//			UserRankBean userRank = new UserRankBean();
+//			UserInfo userInfo = userService.getCache(user.getServerId(), TypeTranslatedUtil.stringToLong(rank.getValue()));
+//			
+//			userRank.setRank(rankInit);
+//			userRank.initByUserCache(userInfo);
+//			userRank.setZhanli(rank.getScore().intValue());
+//			
+//			rankList.add(userRank);
+//			rankInit++;
+//		}
+//		
+//		return rankList;
+//	}
+	
+	private List<UserRankBean> getUnionBossRankList(int unionId, int bossId) {
+		Map<String, String> map = redis.getUnionBossRanks(unionId, bossId);
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
-		int rankInit = 1;
-		for (TypedTuple<String> rank : ranks) {
-			UserRankBean userRank = new UserRankBean();
-			UserInfo userInfo = userService.getCache(user.getServerId(), TypeTranslatedUtil.stringToLong(rank.getValue()));
-			
-			userRank.setRank(rankInit);
-			userRank.initByUserCache(userInfo);
-			userRank.setZhanli(rank.getScore().intValue());
-			
-			rankList.add(userRank);
-			rankInit++;
+		Iterator<Entry<String, String>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, String> entry = it.next();
+			UserRankBean userRankBean = UserRankBean.fromJson(entry.getValue());
+			if (userRankBean != null)
+				rankList.add(userRankBean);
 		}
+		
+		Collections.sort(rankList, comparator);
 		
 		return rankList;
 	}

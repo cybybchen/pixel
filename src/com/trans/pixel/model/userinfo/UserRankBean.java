@@ -7,6 +7,7 @@ import net.sf.json.JSONObject;
 
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserRankBean {
 	private int id = 0;
@@ -17,7 +18,21 @@ public class UserRankBean {
 	private long rank = 0;
 	private int icon = 0;
 	private int vip = 0;
+	private int dps = 0;
 //	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
+	
+	public UserRankBean() {
+		
+	}
+	
+	public UserRankBean(UserBean user) {
+		userId = user.getId();
+		userName = user.getUserName();
+		icon = user.getIcon();
+		zhanli = user.getZhanliMax();
+		vip = user.getVip();
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -60,6 +75,12 @@ public class UserRankBean {
 	public void setVip(int vip) {
 		this.vip = vip;
 	}
+	public int getDps() {
+		return dps;
+	}
+	public void setDps(int dps) {
+		this.dps = dps;
+	}
 	//	public List<HeroInfoBean> getHeroList() {
 //		return heroList;
 //	}
@@ -75,6 +96,7 @@ public class UserRankBean {
 		json.put(ZHANLI, zhanli);
 		json.put(ICON, icon);
 		json.put(RANK, rank);
+		json.put(DPS, dps);
 //		json.put(HERO_LIST, heroList);
 		
 		return json.toString();
@@ -98,6 +120,7 @@ public class UserRankBean {
 		bean.setZhanli(json.getInt(ZHANLI));
 		bean.setIcon(json.getInt(ICON));
 		bean.setRank(json.getInt(RANK));
+		bean.setDps(TypeTranslatedUtil.jsonGetInt(json, DPS));
 		
 //		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
 //		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, HERO_LIST);
@@ -122,6 +145,7 @@ public class UserRankBean {
 		builder.setZhanli(zhanli);
 		builder.setIcon(icon);
 		builder.setVip(vip);
+		builder.setDps(dps);
 		
 		return builder.build();
 	}
@@ -155,4 +179,5 @@ public class UserRankBean {
 	private static final String ZHANLI = "zhanli";
 	private static final String ICON = "icon";
 	private static final String RANK = "rank";
+	private static final String DPS = "dps";
 }

@@ -722,6 +722,7 @@ message UserRank {
 	optional int32 icon = 6;
 	optional int32 vip = 7;
 	optional string composeSkill = 8;
+	optional int32 dps = 9;
 }
 
 message UserFriend {
@@ -1285,6 +1286,7 @@ message UnionBoss {
 	repeated Skill skill = 7;
 	optional int32 refreshtime = 8;
 	optional int32 count = 9;
+	optional int32 handbook = 10;
 }
 
 message UnionBosslootList {

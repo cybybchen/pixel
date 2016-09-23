@@ -14,13 +14,13 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.UnionApply;
@@ -429,7 +429,7 @@ public class UnionRedisService extends RedisService{
 		return map;
 	}
 	
-	public void saveUnionBoss(Union.Builder union, UnionBoss boss) {
+	public UnionBossRecord saveUnionBoss(Union.Builder union, UnionBoss boss) {
 		String key = RedisKey.UNION_BOSS_PREFIX + union.getId();
 		UnionBossRecord.Builder builder = UnionBossRecord.newBuilder();
 		Date date = null;
@@ -449,6 +449,8 @@ public class UnionRedisService extends RedisService{
 		builder.setBossId(boss.getId());
 		this.hput(key, "" + builder.getBossId(), formatJson(builder.build()));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		
+		return builder.build();
 	}
 	
 	public void saveUnionBoss(int unionId, UnionBossRecord boss) {
@@ -484,17 +486,36 @@ public class UnionRedisService extends RedisService{
 		return null;
 	}
 	
-	public void addUnionBossAttackRank(UserBean user, UnionBossRecord boss, int hp) {
-		String key = RedisKey.UNION_BOSS_RANK_PREFIX + user.getUnionId() + RedisKey.SPLIT + boss.getBossId();
-		this.zincrby(key, hp, "" + user.getId());
+	public void addUnionBossAttackRank(UserRankBean userRank, UnionBossRecord boss, int unionId) {
+		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + boss.getBossId();
+		this.hput(key, "" + userRank.getUserId(), userRank.toJson());
 		
 		this.expireAt(key, DateUtil.getDate(boss.getEndTime()));
 	}
 	
-	public Set<TypedTuple<String>> getUnionBossRanks(int unionId, int bossId, long start, long end) {
+	public UserRankBean getUserRank(int unionId, int bossId, long userId) {
 		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + bossId;
-		return this.zrangewithscore(key, start, end);
+		String value = this.hget(key, "" + userId);
+		
+		return UserRankBean.fromJson(value);
 	}
+	
+	public Map<String, String> getUnionBossRanks(int unionId, int bossId) {
+		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + bossId;
+		return this.hget(key);
+	}
+	
+//	public void addUnionBossAttackRank(UserBean user, UnionBossRecord boss, int hp) {
+//		String key = RedisKey.UNION_BOSS_RANK_PREFIX + user.getUnionId() + RedisKey.SPLIT + boss.getBossId();
+//		this.zincrby(key, hp, "" + user.getId());
+//		
+//		this.expireAt(key, DateUtil.getDate(boss.getEndTime()));
+//	}
+	
+//	public Set<TypedTuple<String>> getUnionBossRanks(int unionId, int bossId, long start, long end) {
+//		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + bossId;
+//		return this.zrangewithscore(key, start, end);
+//	}
 	
 	public void delUnionBossRankKey(int unionId, int bossId) {
 		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + bossId;
