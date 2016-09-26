@@ -106,7 +106,7 @@ public class AreaFightService extends FightService{
 		int index = (int)(weightreward.getWeightall()*Math.random());
 		if(index < weightreward.getWeight1A() + (int)(weightreward.getWeight1B() * level)){
 			reward.setItemid(weightreward.getItemid1());
-			reward.setCount(weightreward.getCount1A() + (int)(weightreward.getCount1B() + level));
+			reward.setCount(weightreward.getCount1A() + (int)(weightreward.getCount1B() * level));
 			
 			return reward.build();
 		}
@@ -116,7 +116,7 @@ public class AreaFightService extends FightService{
 		
 		if(index < TypeTranslatedUtil.stringToInt(weightreward.getWeight2A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getWeight2B()) * level)){
 			reward.setItemid(TypeTranslatedUtil.stringToInt(weightreward.getItemid2()));
-			reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount2A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount2B()) + level));
+			reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount2A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount2B()) * level));
 			
 			return reward.build();
 		}
@@ -126,7 +126,7 @@ public class AreaFightService extends FightService{
 		
 		
 		reward.setItemid(TypeTranslatedUtil.stringToInt(weightreward.getItemid3()));
-		reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount3A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount3B()) + level));
+		reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount3A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount3B()) * level));
 		
 		return reward.build();
 	}
