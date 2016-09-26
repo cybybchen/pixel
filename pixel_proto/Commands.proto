@@ -364,6 +364,7 @@ message AreaBuff {//区域BUFF
 	optional int32 level = 9;//当前层数
 	optional int32 time = 10;//持续时间
 	optional int64 endTime = 11;//结束时间
+	optional int32 countlimit = 12;//层数上限
 }
 
 message AreaEquipList {
