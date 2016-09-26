@@ -77,7 +77,7 @@ public class AreaRedisService extends RedisService{
 		String value = this.hget(RedisKey.USERDATA+user.getId(), "Area");
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(value != null && parseJson(value, builder)){
-			if(builder.getRegionCount() == 4)
+			if(builder.getRegionCount() == 5)
 				return builder;
 		}
 
