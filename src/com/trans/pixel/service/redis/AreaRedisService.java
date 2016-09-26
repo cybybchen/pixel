@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.Commands.AreaBossList;
 import com.trans.pixel.protoc.Commands.AreaBossReward;
 import com.trans.pixel.protoc.Commands.AreaBossRewardList;
 import com.trans.pixel.protoc.Commands.AreaBuff;
+import com.trans.pixel.protoc.Commands.AreaBuffList;
 import com.trans.pixel.protoc.Commands.AreaEquip;
 import com.trans.pixel.protoc.Commands.AreaEquipList;
 import com.trans.pixel.protoc.Commands.AreaInfo;
@@ -233,6 +234,26 @@ public class AreaRedisService extends RedisService{
 			}
 		}
 		return bosses;
+	}
+
+	public AreaBuff.Builder getAreaBuffConfig(int id){
+		AreaBuff.Builder builder = AreaBuff.newBuilder();
+		String value = hget(RedisKey.AREABUFF_CONFIG, id+"");
+		if(value == null){
+			String xml = ReadConfig("lol_regionskilltime.xml");
+			AreaBuffList.Builder listbuilder = AreaBuffList.newBuilder();
+			Map<String, String> keyvalue = new HashMap<String, String>();
+			parseXml(xml, listbuilder);
+			for(AreaBuff buff : listbuilder.getSkillList()){
+				keyvalue.put(buff.getSkillid()+"", formatJson(buff));
+				if(buff.getSkillid() == id)
+					builder = AreaBuff.newBuilder(buff);
+			}
+			hputAll(RedisKey.AREABUFF_CONFIG, keyvalue);
+		}else{
+			parseJson(value, builder);
+		}
+		return builder;
 	}
 
 	public Map<String, String> getBossTimes(UserBean user){
@@ -747,7 +768,7 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveMyAreaBuff(UserBean user, AreaBuff buff){
-		hput(MYAREABUFF+user.getId(), buff.getSkill()+"", formatJson(buff));
+		hput(MYAREABUFF+user.getId(), buff.getSkillid()+"", formatJson(buff));
 		expire(MYAREABUFF+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
@@ -758,7 +779,7 @@ public class AreaRedisService extends RedisService{
 			return builder;
 		// builder.setSkill(skill);
 		// return builder;
-		return null;
+		return getAreaBuffConfig(skill);
 	}
 
 	public Collection<AreaBuff> getMyAreaBuffs(UserBean user){
@@ -768,7 +789,7 @@ public class AreaRedisService extends RedisService{
 			AreaBuff.Builder builder = AreaBuff.newBuilder();
 			if(parseJson(value, builder)){
 				if(now() > builder.getEndTime())
-					hdelete(MYAREABUFF+user.getId(), builder.getSkill()+"");
+					hdelete(MYAREABUFF+user.getId(), builder.getSkillid()+"");
 				else
 					list.add(builder.build());
 			}

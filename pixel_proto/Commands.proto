@@ -355,10 +355,14 @@ message AreaEquip {//区域道具
 	optional int64 primaryId = 12;
 }
 
+message AreaBuffList {
+	repeated AreaBuff skill = 1;
+}
 message AreaBuff {//区域BUFF
-	optional int32 type = 5;//适用区域
-	optional int32 skill = 8;//对应技能
+	optional int32 belongto = 5;//适用区域
+	optional int32 skillid = 8;//对应技能
 	optional int32 level = 9;//当前层数
+	optional int32 time = 10;//持续时间
 	optional int64 endTime = 11;//结束时间
 }
 

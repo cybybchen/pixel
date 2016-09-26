@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<skill skillid="84001" belongto="1" time="600" />
+<skill skillid="84002" belongto="1" time="600" />
+<skill skillid="84003" belongto="1" time="600" />
+<skill skillid="84004" belongto="1" time="600" />
+<skill skillid="84005" belongto="1" time="600" />
+<skill skillid="84006" belongto="1" time="600" />
+<skill skillid="84007" belongto="1" time="600" />
+<skill skillid="84008" belongto="2" time="600" />
+<skill skillid="84009" belongto="2" time="600" />
+<skill skillid="84010" belongto="2" time="600" />
+<skill skillid="84011" belongto="2" time="600" />
+<skill skillid="84012" belongto="2" time="600" />
+<skill skillid="84013" belongto="1" time="900" />
+<skill skillid="84014" belongto="1" time="900" />
+<skill skillid="84015" belongto="1" time="900" />
+<skill skillid="84016" belongto="1" time="900" />
+<skill skillid="84017" belongto="1" time="900" />
+<skill skillid="84018" belongto="1" time="900" />
+<skill skillid="84019" belongto="1" time="900" />
+<skill skillid="84020" belongto="2" time="900" />
+<skill skillid="84021" belongto="2" time="900" />
+<skill skillid="84022" belongto="2" time="900" />
+<skill skillid="84023" belongto="2" time="900" />
+<skill skillid="84024" belongto="2" time="900" />
+<skill skillid="84025" belongto="2" time="900" />
+<skill skillid="84026" belongto="0" time="1800" />
+<skill skillid="84027" belongto="0" time="1800" />
+<skill skillid="84028" belongto="0" time="1800" />
+<skill skillid="84029" belongto="0" time="1800" />
+<skill skillid="84030" belongto="0" time="1800" />
+</data>

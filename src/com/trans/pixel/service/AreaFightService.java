@@ -592,16 +592,16 @@ public class AreaFightService extends FightService{
 					// 	builder.setLevel(builder.getLayer());
 					redis.saveMyAreaEquip(user, builder.build());
 					AreaBuff.Builder buff = redis.getMyAreaBuff(user, builder.getSkill());
-					if(buff == null){
-						buff = AreaBuff.newBuilder();
-						buff.setSkill(builder.getSkill());
-						buff.setType(builder.getType());
-					}
+					// if(buff == null){
+					// 	buff = AreaBuff.newBuilder();
+					// 	buff.setSkill(builder.getSkill());
+					// 	buff.setType(builder.getType());
+					// }
 					if(buff.getEndTime() > redis.now())
 						buff.setLevel(buff.getLevel()+1);
 					else
 						buff.setLevel(1);
-					buff.setEndTime(redis.now()+builder.getTime()*60);
+					buff.setEndTime(redis.now()+buff.getTime()*60);
 					if(buff.getLevel() > builder.getLayer() && builder.getLayer() > 0)
 						buff.setLevel(builder.getLayer());
 					redis.saveMyAreaBuff(user, buff.build());
