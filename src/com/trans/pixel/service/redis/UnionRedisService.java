@@ -434,14 +434,20 @@ public class UnionRedisService extends RedisService{
 		UnionBossRecord.Builder builder = UnionBossRecord.newBuilder();
 		Date date = null;
 		Date startDate = null;
+		Date current = DateUtil.getDate();
 		if (boss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB) {
 			startDate = DateUtil.getFutureHour(DateUtil.setToDayStartTime(DateUtil.getDate()), boss.getTargetcount());
 		} else
 			startDate = DateUtil.getDate();
 		if (boss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB) {
-			date = DateUtil.getFutureHour(DateUtil.setToDayStartTime(DateUtil.getDate()), boss.getTargetcount() + 24);
+			date = DateUtil.getFutureHour(DateUtil.setToDayStartTime(DateUtil.getDate()), boss.getTargetcount() + boss.getLasttime());
 		} else
 			date = DateUtil.getFutureHour(DateUtil.getDate(), boss.getLasttime());
+		
+		if (boss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && current.before(startDate)) {
+			startDate = DateUtil.getPastDay(startDate, 1);
+			date = DateUtil.getPastDay(date, 1);
+		}
 		
 		builder.setStartTime(DateUtil.forDatetime(startDate));
 		builder.setEndTime(DateUtil.forDatetime(date));

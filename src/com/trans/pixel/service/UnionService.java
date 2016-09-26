@@ -703,7 +703,7 @@ public class UnionService extends FightService{
 				json = JSONObject.fromObject(union.getKillMonsterRecord());
 		} 
 		
-		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss) 
+		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss, unionBossRecord) 
 				|| (json != null && json.has("" + unionBoss.getId()) && json.getInt("" + unionBoss.getId()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
 			updateUnionBossRecord(union, unionBoss.getId());
 			redis.delUnionBossRankKey(union.getId(), unionBoss.getId());
@@ -900,16 +900,22 @@ public class UnionService extends FightService{
 		return rankList;
 	}
 	
-	private boolean canRefreshCrontabBoss(Union.Builder union, UnionBoss boss) {
+	private boolean canRefreshCrontabBoss(Union.Builder union, UnionBoss boss, UnionBossRecord unionBossRecord) {
 		Date current = DateUtil.getDate();
 		Date last = DateUtil.getDate(getUnionBossEndTime(union, boss.getId()));
 		Date bossTime = DateUtil.setToDayTime(current, boss.getTargetcount());
+		
+		if (unionBossRecord != null) {
+			Date bossStartTime = DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), boss.getRefreshtime());
+			Date bossEndTime = DateUtil.getFutureDay(DateUtil.getDate(unionBossRecord.getEndTime()), 1);
+			if (current.after(bossEndTime) && current.after(bossStartTime))
+				return true;
+		}
 		if (current.before(bossTime))
 			return false;
 			
 		if (last == null)
 			return true;
-		
 		
 		if (DateUtil.intervalDays(current, last) >= 1)
 			return true;
