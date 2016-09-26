@@ -124,9 +124,10 @@ public class AreaFightService extends FightService{
 		if (weightreward.getItemid3().isEmpty())
 			return reward.build();
 		
-		
-		reward.setItemid(TypeTranslatedUtil.stringToInt(weightreward.getItemid3()));
-		reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount3A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount3B()) * level));
+		if(index < TypeTranslatedUtil.stringToInt(weightreward.getWeight3A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getWeight3B()) * level)){
+			reward.setItemid(TypeTranslatedUtil.stringToInt(weightreward.getItemid3()));
+			reward.setCount(TypeTranslatedUtil.stringToInt(weightreward.getCount3A()) + (int)(TypeTranslatedUtil.stringToFloat(weightreward.getCount3B()) * level));
+		}
 		
 		return reward.build();
 	}
@@ -165,7 +166,8 @@ public class AreaFightService extends FightService{
 
 	public ResultConst AttackBoss(int id, int score, UserBean user, MultiReward.Builder rewards){
 		AreaBoss boss = redis.getBoss(id, user);
-		if(boss == null || boss.getHp() <= 0)
+//		if(boss == null || boss.getHp() <= 0)
+		if(boss == null)
 			return ErrorConst.NOT_MONSTER;
 		int time = redis.getBossTime(id,user);
 		if(time >= boss.getCount())

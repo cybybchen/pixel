@@ -732,7 +732,7 @@ public class UnionService extends FightService{
 		List<UnionBossRecord> unionBossList = redis.getUnionBossList(user.getUnionId());
 		for (UnionBossRecord unionBoss : unionBossList) {
 			UnionBossRecord.Builder builder = UnionBossRecord.newBuilder(unionBoss);
-			List<UserRankBean> ranks = getUnionBossRankList(user.getUnionId(), unionBoss.getBossId());
+			List<UserRankBean> ranks = getUnionBossRankList(user.getUnionId(), unionBoss.getBossId(), user.getServerId());
 			builder.addAllRanks(UserRankBean.buildUserRankList(ranks));
 			builderList.add(builder.build());
 		}
@@ -791,7 +791,7 @@ public class UnionService extends FightService{
 		unionBossRecord.addUserRecord(builder.build());
 		
 		redis.saveUnionBoss(user.getUnionId(), unionBossRecord.build());
-		List<UserRankBean> ranks = getUnionBossRankList(user.getUnionId(), bossId);
+		List<UserRankBean> ranks = getUnionBossRankList(user.getUnionId(), bossId, user.getServerId());
 		unionBossRecord.addAllRanks(UserRankBean.buildUserRankList(ranks));
 		
 		return unionBossRecord.build();
@@ -800,7 +800,7 @@ public class UnionService extends FightService{
 	private void doUnionBossRankReward(int unionId, int bossId) {
 		UnionBosswin unionBosswin = redis.getUnionBosswin(bossId);
 		List<RankItem> rankList = unionBosswin.getItemList();
-		List<UserRankBean> userRankList = getUnionBossRankList(unionId, bossId);
+		List<UserRankBean> userRankList = getUnionBossRankList(unionId, bossId, 0);
 		for (RankItem item : rankList) {
 			List<RewardInfo> rewardList = getRankRewardList(item);
 			for (int i = item.getRank() - 1; i < item.getRank1(); ++ i) {
@@ -887,15 +887,19 @@ public class UnionService extends FightService{
 //		return rankList;
 //	}
 	
-	private List<UserRankBean> getUnionBossRankList(int unionId, int bossId) {
+	private List<UserRankBean> getUnionBossRankList(int unionId, int bossId, int serverId) {
 		Map<String, String> map = redis.getUnionBossRanks(unionId, bossId);
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, String> entry = it.next();
 			UserRankBean userRankBean = UserRankBean.fromJson(entry.getValue());
-			if (userRankBean != null)
+			if (userRankBean != null) {
+				UserInfo userInfo = userService.getCache(serverId, userRankBean.getUserId());
+				if (userInfo != null)
+					userRankBean.initByUserCache(userInfo);
 				rankList.add(userRankBean);
+			}
 		}
 		
 		Collections.sort(rankList, comparator);
