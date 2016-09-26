@@ -808,6 +808,9 @@ public class UnionService extends FightService{
 					return;
 				UserRankBean userRank = userRankList.get(i);
 				if (userRank != null) {
+					UserBean user = userService.getUser(userRank.getUserId());
+					if (user == null || user.getUnionId() != unionId)
+						return;
 					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), item.getDes(), rewardList);
 					log.debug("unionboss rank mail is:" + mail.toJson());
 					mailService.addMail(mail);
