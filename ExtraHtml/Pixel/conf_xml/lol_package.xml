@@ -1560,6 +1560,12 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="40109" name="小红旗" img="40109" rare="4" description="可在活动-小红旗兑换中兑换奖励，在活动-国庆买买买中获得" hashero="0" cyb="1" judge="0" endtime="2016-10-12 23:59:59" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 	<loot itemid="36001" name="一重英雄包" img="32011" rare="1" description="开启获得1个随机1星英雄" hashero="1" cyb="0" judge="1" endtime="" itemcount="1" weightall="100" >
 		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
@@ -1601,5 +1607,11 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="37002" name="强化水晶包" img="32003" rare="5" description="开启后随机获得8个，18个，88个，188个强化水晶" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="1225" >
+		<item itemid="37001" item="强化水晶" counta="8" countb="8" weight="1000" />
+		<item itemid="37001" item="强化水晶" counta="18" countb="18" weight="200" />
+		<item itemid="37001" item="强化水晶" counta="88" countb="88" weight="20" />
+		<item itemid="37001" item="强化水晶" counta="188" countb="188" weight="5" />
 	</loot>
 </data>
