@@ -667,6 +667,8 @@ public class UnionService extends FightService{
 		while (it.hasNext()) {
 			Entry<String, UnionBoss> entry = it.next();
 			UnionBoss unionBoss = entry.getValue();
+			if (unionBoss.getHandbook() == 0)
+				continue;
 			if (unionBoss.getType() == type) {
 				if (unionBoss.getTargetid() == targetId) {
 					if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
@@ -696,7 +698,7 @@ public class UnionService extends FightService{
 				return false;
 		}
 		
-		int bossCount = getUnionBossCount(union, unionBoss.getId());
+//		int bossCount = getUnionBossCount(union, unionBoss.getId());
 		JSONObject json = null;
 		if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_COST) {
 			if (union.hasCostRecord())
@@ -707,8 +709,13 @@ public class UnionService extends FightService{
 		} 
 		
 		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss, unionBossRecord) 
-				|| (json != null && json.has("" + unionBoss.getId()) && json.getInt("" + unionBoss.getId()) >= (bossCount + 1) * unionBoss.getTargetcount()))) {
+				|| (json != null && json.has("" + unionBoss.getId()) && json.getInt("" + unionBoss.getId()) >= unionBoss.getTargetcount()))) {
 			updateUnionBossRecord(union, unionBoss.getId());
+			if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
+				updateKillMonsterRecord(union, unionBoss.getId(), -unionBoss.getTargetcount());
+			} else if (type == UnionConst.UNION_BOSS_TYPE_COST) {
+				updateCostRecord(union, unionBoss.getId(), -unionBoss.getTargetcount());
+			}
 			redis.delUnionBossRankKey(union.getId(), unionBoss.getId());
 			unionBossRecord = redis.saveUnionBoss(union, unionBoss);
 			
@@ -768,7 +775,7 @@ public class UnionService extends FightService{
 			if(!redis.waitLock("Union_"+union.getId()))
 				return unionBossRecord.build();
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
-			doUnionBossRankReward(user.getUnionId(), bossId);
+			doUnionBossRankReward(user.getUnionId(), bossId, user.getServerId());
 			updateUnionBossEndTime(union, bossId);
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId), user, unionBoss.getType());
 			redis.saveUnion(union.build(), user);
@@ -803,10 +810,10 @@ public class UnionService extends FightService{
 		return unionBossRecord.build();
 	}
 	
-	private void doUnionBossRankReward(int unionId, int bossId) {
+	private void doUnionBossRankReward(int unionId, int bossId, int serverId) {
 		UnionBosswin unionBosswin = redis.getUnionBosswin(bossId);
 		List<RankItem> rankList = unionBosswin.getItemList();
-		List<UserRankBean> userRankList = getUnionBossRankList(unionId, bossId, 0);
+		List<UserRankBean> userRankList = getUnionBossRankList(unionId, bossId, serverId);
 		for (RankItem item : rankList) {
 			List<RewardInfo> rewardList = getRankRewardList(item);
 			for (int i = item.getRank() - 1; i < item.getRank1(); ++ i) {
