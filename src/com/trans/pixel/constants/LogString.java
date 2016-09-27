@@ -78,8 +78,8 @@ public class LogString {
 	public static final String SKILLID = "skillid";
 	public static final String EQUIPID = "equipid";
 	public static final String SKILLLEVEL = "skilllevel";
-	public static final String UNIONID = "unionId";
-	public static final String BOSSID = "bossId";
+	public static final String UNIONID = "unionid";
+	public static final String BOSSID = "bossid";
 	public static final String DAMAGE = "damage";
 	
 	// 日志类型
