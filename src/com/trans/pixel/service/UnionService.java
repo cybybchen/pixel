@@ -685,6 +685,7 @@ public class UnionService extends FightService{
 	public boolean calUnionBossRefresh(Union.Builder union, UnionBoss unionBoss, UserBean user, int type) {
 		if (unionBoss.getHandbook() == 0)
 			return false;
+		
 		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
 		if (unionBossRecord != null) {
 			if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()) && unionBossRecord.getPercent() < 10000)
@@ -717,6 +718,7 @@ public class UnionService extends FightService{
 			}
 			return true;
 		}
+		
 		return false;	
 	}
 	
@@ -915,12 +917,12 @@ public class UnionService extends FightService{
 		if (unionBossRecord != null) {
 			Date bossStartTime = DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), boss.getRefreshtime());
 			Date bossEndTime = DateUtil.getFutureDay(DateUtil.getDate(unionBossRecord.getEndTime()), 1);
-			if (current.after(bossEndTime) && current.after(bossStartTime))
+			if (current.before(bossEndTime) && current.after(bossStartTime))
 				return true;
 		}
 		if (current.before(bossTime))
 			return false;
-			
+		
 		if (last == null)
 			return true;
 		
