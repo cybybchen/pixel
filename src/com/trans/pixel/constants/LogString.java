@@ -78,6 +78,9 @@ public class LogString {
 	public static final String SKILLID = "skillid";
 	public static final String EQUIPID = "equipid";
 	public static final String SKILLLEVEL = "skilllevel";
+	public static final String UNIONID = "unionId";
+	public static final String BOSSID = "bossId";
+	public static final String DAMAGE = "damage";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -102,6 +105,7 @@ public class LogString {
 	public static final int LOGTYPE_QIYUE = 19;
 	public static final int LOGTYPE_QIANGHUA = 20;
 	public static final int LOGTYPE_CHENGJIANG = 21;
+	public static final int LOGTYPE_UNIONBOSS = 22;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -125,6 +129,7 @@ public class LogString {
 	public static final String LOGTYPE_QIYUE_STR = "Qiyue";
 	public static final String LOGTYPE_QIANGHUA_STR = "Qianghua";
 	public static final String LOGTYPE_CHENGJIANG_STR = "Chengjiang";
+	public static final String LOGTYPE_UNIONBOSS_STR = "Unionboss";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

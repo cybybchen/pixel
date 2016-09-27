@@ -70,6 +70,8 @@ public class UnionService extends FightService{
 	private ServerService serverService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private LogService logService;
 	
 	Comparator<UserRankBean> comparator = new Comparator<UserRankBean>() {
         public int compare(UserRankBean bean1, UserRankBean bean2) {
@@ -751,6 +753,8 @@ public class UnionService extends FightService{
 		Map<String, Integer> unionBossMap = user.getUnionBossMap();
 		if (unionBossMap.get("" + bossId) != null && unionBossMap.get("" + bossId) >= unionBoss.getCount())
 			return unionBossRecord.build();
+		
+		logService.sendUnionbossLog(user.getServerId(), user.getId(), union.getId(), bossId, percent);
 		
 		UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
 		if (userRankBean == null)

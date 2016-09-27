@@ -415,6 +415,23 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_UNIONBOSS:
+				sb.append(LogString.LOGTYPE_UNIONBOSS_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.UNIONID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.BOSSID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.DAMAGE));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -596,6 +613,17 @@ public class LogService {
 		params.put(LogString.LEVEL, "" + level);
 		
 		sendLog(params, LogString.LOGTYPE_CHENGJIANG);
+	}
+	
+	public void sendUnionbossLog(int serverId, long userId, int unionId, int bossId, int damage) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.UNIONID, "" + unionId);
+		params.put(LogString.BOSSID, "" + bossId);
+		params.put(LogString.DAMAGE, "" + damage);
+		
+		sendLog(params, LogString.LOGTYPE_UNIONBOSS);
 	}
 	
 	private void send(String str) {
