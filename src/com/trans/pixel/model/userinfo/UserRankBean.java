@@ -162,6 +162,18 @@ public class UserRankBean {
 		return true;
 	}
 	
+	public boolean initByUserCacheByZhanliMax(UserInfo userInfo) {
+		if (userInfo == null)
+			return false;
+		
+		userId = userInfo.getId();
+		userName = userInfo.getName();
+		icon = userInfo.getIcon();
+		zhanli = userInfo.getZhanliMax();
+		vip = userInfo.getVip();
+		return true;
+	}
+	
 	public static List<UserRank> buildUserRankList(List<UserRankBean> userRankList) {
 		List<UserRank> userRankBuilderList = new ArrayList<UserRank>();
 		for (UserRankBean userRank : userRankList) {

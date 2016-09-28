@@ -722,7 +722,7 @@ public class UnionService extends FightService{
 			List<UserInfo> members = redis.getMembers(user);
 			for (UserInfo info : members) {
 				UserRankBean userRank = new UserRankBean();
-				userRank.initByUserCache(info);
+				userRank.initByUserCacheByZhanliMax(info);
 				redis.addUnionBossAttackRank(userRank, unionBossRecord, union.getId());
 			}
 			return true;
@@ -910,7 +910,7 @@ public class UnionService extends FightService{
 			if (userRankBean != null) {
 				UserInfo userInfo = userService.getCache(serverId, userRankBean.getUserId());
 				if (userInfo != null)
-					userRankBean.initByUserCache(userInfo);
+					userRankBean.initByUserCacheByZhanliMax(userInfo);
 				rankList.add(userRankBean);
 			}
 		}
