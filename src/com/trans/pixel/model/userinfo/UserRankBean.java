@@ -169,7 +169,8 @@ public class UserRankBean {
 		userId = userInfo.getId();
 		userName = userInfo.getName();
 		icon = userInfo.getIcon();
-		zhanli = userInfo.getZhanliMax();
+		if (userInfo.hasZhanliMax() && userInfo.getZhanliMax() > 0)
+			zhanli = userInfo.getZhanliMax();
 		vip = userInfo.getVip();
 		return true;
 	}
