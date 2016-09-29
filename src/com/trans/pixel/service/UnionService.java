@@ -769,7 +769,7 @@ public class UnionService extends FightService{
 		userRankBean.setDps(userRankBean.getDps() + hp);
 		redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
 		
-		if (unionBossRecord.getPercent() + percent >= 10000) {
+		if (unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
 			if (!redis.setLock("UnionBoss_" + bossId, 10))
 				return unionBossRecord.build();
 			if(!redis.waitLock("Union_"+union.getId()))
