@@ -237,13 +237,17 @@ public class RechargeService {
 		return rmb.getRmb() * 100;
 	}
 	
+	//http://123.59.144.200:8082/Lol450/recharge?order_id=1111311&company=ios&player=&playerid=1066&ratio=1:100&sn=b300f2edfe5443b2a378faed3af682f3&action=1&itemid=1&zone_id=1
 	public void doRecharge(Map<String, String> params, boolean isCheat) {
 		RechargeBean recharge = initRechargeBean(params);
+		if(rechargeMapper.getUserRechargeRecord(recharge.getOrderId()) != null)
+			return;
 
 		UserBean user = userService.getOther(recharge.getUserId());
 		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), isCheat));
 		
-		rechargeRedisService.addRechargeRecord(recharge);
+		updateToDB(recharge);
+		// rechargeRedisService.addRechargeRecord(recharge); 
 	}
 	
 	/**

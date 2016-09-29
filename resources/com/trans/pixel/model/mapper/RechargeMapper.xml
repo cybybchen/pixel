@@ -17,6 +17,10 @@
 		INSERT INTO recharge(user_id, product_id, company, order_id, order_time, server_id, rmb)
 		VALUES(#{userId}, #{productId}, #{company}, #{orderId}, #{orderTime}, #{serverId}, #{rmb})
 	</insert>
+
+	<select id="getUserRechargeRecord" resultMap="resultMap">
+		SELECT * from recharge where order_id=#{orderId} limit 1
+	</select>
 	
 	<select id="getRechargeRecord" resultMap="resultMap">
 		SELECT * from recharge

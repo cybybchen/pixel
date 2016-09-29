@@ -26,7 +26,7 @@ public class RechargeCrontabService {
 	@Resource
 	private UserService userService;
 	
-	@Scheduled(cron = "0 0 0 18 8 ?")
+	// @Scheduled(cron = "0 0 0 18 8 ?")
 //	@Transactional(rollbackFor=Exception.class)
 	public void updateRechargeRecord() {
 		log.debug("11");
