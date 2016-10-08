@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.AreaFightService;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
@@ -29,6 +30,8 @@ public class ZhanliCommandService extends BaseCommandService {
 	private UserTeamService userTeamService;
 	@Resource
 	private BlackListService blackService;
+	@Resource
+	private AreaFightService areaService;
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
 		int zhanli = cmd.getZhanli();
@@ -55,6 +58,7 @@ public class ZhanliCommandService extends BaseCommandService {
 				activityService.zhanliActivity(user, zhanli);
 			}
 		}
+		areaService.unlockArea(zhanli, user);
 		user.setZhanli(zhanli);
 		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUserDailyData(user);

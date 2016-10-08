@@ -148,18 +148,18 @@ public class AreaFightService extends FightService{
 		}
 		rewardService.doRewards(user, rewards.build());
 
-		AreaMode.Builder areamode = redis.getAreaMode(user);
-		Integer[] level = redis.addLevel(monster.getBelongto(), monster.getLevel1(), user);
-		if(level[2] == 0)
-			for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
-				if(user.getAreaUnlock() == monster.getBelongto() && areainfo.getId() > user.getAreaUnlock()){
-					if(level[1] >= areainfo.getZhanli()){
-						unlockArea(areainfo.getId(), level[1], user);
-						level[2] = 1;
-						redis.saveLevel(monster.getBelongto(), level, user);
-					}
-				}
-			}
+//		AreaMode.Builder areamode = redis.getAreaMode(user);
+//		Integer[] level = redis.addLevel(monster.getBelongto(), monster.getLevel1(), user);
+//		if(level[2] == 0)
+//			for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
+//				if(user.getAreaUnlock() == monster.getBelongto() && areainfo.getId() > user.getAreaUnlock()){
+//					if(level[1] >= areainfo.getZhanli()){
+//						unlockArea(areainfo.getId(), level[1], user);
+//						level[2] = 1;
+//						redis.saveLevel(monster.getBelongto(), level, user);
+//					}
+//				}
+//			}
 		costEnergy(user, monster.getPl());
 		return true;
 	}
@@ -526,7 +526,24 @@ public class AreaFightService extends FightService{
 		return true;
 	}
 	
-	public boolean unlockArea(int id, int zhanli, UserBean user){
+	public void unlockArea(int zhanli, UserBean user){
+		AreaMode.Builder areamode = redis.getAreaMode(user);
+		
+		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
+			if(zhanli >= areainfo.getZhanli()) {
+				Integer[] level = redis.addLevel(areainfo.getId(), areainfo.getLevel(), user);
+				if(level[2] == 0) {
+					if(areainfo.getId() > user.getAreaUnlock()){
+							unlockArea(areainfo.getId(), zhanli, user);
+							level[2] = 1;
+							redis.saveLevel(areainfo.getId(), level, user);
+					}
+				}
+			}
+		}
+	}
+	
+	private boolean unlockArea(int id, int zhanli, UserBean user){
 		AreaMode.Builder areamode = redis.getAreaMode(user);
 		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
 			if(id == areainfo.getId()){
