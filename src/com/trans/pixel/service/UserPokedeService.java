@@ -37,7 +37,7 @@ public class UserPokedeService {
 		
 		if (userPokede == null) {
 			userPokede = initUserPokede(userId, heroId);
-			userPokedeRedisService.updateUserPokede(userPokede, userId);
+			updateUserPokede(userPokede, user);
 			/**
 			 * 收集不同英雄的活动
 			 */
