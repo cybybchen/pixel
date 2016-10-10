@@ -53,6 +53,7 @@ public class AreaRedisService extends RedisService{
 	private final static String AREABOSSTIME = RedisKey.PREFIX+"AreaBossTime_";
 	private final static String MYAREAEQUIP = RedisKey.PREFIX+"AreaEquip_";
 	private final static String MYAREABUFF = RedisKey.PREFIX+"AreaBuff_";
+	private final static String UNIONAREABUFF = RedisKey.PREFIX+"UnionAreaBuff_";
 	private final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	private final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
 //	private final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
@@ -771,6 +772,11 @@ public class AreaRedisService extends RedisService{
 		hput(MYAREABUFF+user.getId(), buff.getSkillid()+"", formatJson(buff));
 		expire(MYAREABUFF+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
+	
+	public void saveUnionAreaBuff(UserBean user, AreaBuff buff){
+		hput(UNIONAREABUFF+user.getUnionId(), buff.getSkillid()+"", formatJson(buff));
+		expire(UNIONAREABUFF+user.getUnionId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
 
 	public AreaBuff.Builder getMyAreaBuff(UserBean user, int skill){
 		String value = hget(MYAREABUFF+user.getId(), skill+"");
@@ -794,6 +800,24 @@ public class AreaRedisService extends RedisService{
 					list.add(builder.build());
 			}
 		}
+		list.addAll(getUnionAreaBuffs(user));
+		
+		return list;
+	}
+	
+	public Collection<AreaBuff> getUnionAreaBuffs(UserBean user){
+		List<AreaBuff> list = new ArrayList<AreaBuff>();
+		Map<String,String> keyvalue = hget(UNIONAREABUFF+user.getUnionId());
+		for(String value : keyvalue.values()){
+			AreaBuff.Builder builder = AreaBuff.newBuilder();
+			if(parseJson(value, builder)){
+				if(now() > builder.getEndTime())
+					hdelete(UNIONAREABUFF+user.getId(), builder.getSkillid()+"");
+				else
+					list.add(builder.build());
+			}
+		}
+
 		return list;
 	}
 

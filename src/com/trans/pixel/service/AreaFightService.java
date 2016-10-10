@@ -69,6 +69,8 @@ public class AreaFightService extends FightService{
 	@Resource
 	private PushCommandService pusher;
 	
+	private static final int TYPE_UNION_BUFF = 1;
+	
 	public void delAreaEquip(long userId, int rewardId){
 		UserBean user = new UserBean();
 		user.setId(userId);
@@ -623,7 +625,10 @@ public class AreaFightService extends FightService{
 					buff.setEndTime(redis.now()+buff.getTime());
 					if(buff.getLevel() > builder.getLayer() && builder.getLayer() > 0)
 						buff.setLevel(builder.getLayer());
-					redis.saveMyAreaBuff(user, buff.build());
+					if (user.getUnionId() > 0 && buff.getBufftype() == TYPE_UNION_BUFF)
+						redis.saveUnionAreaBuff(user, buff.build());
+					else
+						redis.saveMyAreaBuff(user, buff.build());
 					mapper.updateUserAreaProp(new UserAreaPropBean().parse(builder.build(), user));
 					equipMap.put(builder.getId()+"", builder.build());
 				}else{

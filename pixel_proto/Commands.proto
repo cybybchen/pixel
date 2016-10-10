@@ -365,6 +365,7 @@ message AreaBuff {//区域BUFF
 	optional int32 time = 10;//持续时间
 	optional int64 endTime = 11;//结束时间
 	optional int32 countlimit = 12;//层数上限
+	optional int32 bufftype = 13;//buff所属
 }
 
 message AreaEquipList {
