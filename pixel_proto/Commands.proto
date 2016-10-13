@@ -391,6 +391,7 @@ message AreaResource {//区域资源点
 	repeated UserInfo attacks = 15;//进攻方
 	repeated UserInfo defenses = 16;//防守方
 	repeated string message = 17;//进攻信息
+	optional int64 lastRewardTime = 20;//上轮奖励发放时间
 }
 
 message AreaResourceList {

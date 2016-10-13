@@ -20,7 +20,9 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
@@ -72,6 +74,8 @@ public class UnionService extends FightService{
 	private ActivityService activityService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private RewardService rewardService;
 	
 	Comparator<UserRankBean> comparator = new Comparator<UserRankBean>() {
         public int compare(UserRankBean bean1, UserRankBean bean2) {
@@ -179,6 +183,11 @@ public class UnionService extends FightService{
 		 */
 		crontabUnionBossActivity(user);
 		union.addAllUnionBoss(getUnionBossList(user, union));
+		
+		/**
+		 * 计算镜像世界矿点奖励
+		 */
+		calAreaResourceReward(user);
 		
 		return union.build();
 	}
@@ -941,5 +950,32 @@ public class UnionService extends FightService{
 			return true;
 		
 		return false;
+	}
+	
+	private void calAreaResourceReward(UserBean user) {
+		Map<String, AreaResource> resources = areaRedisService.getResources(user);
+		for(AreaResource resource : resources.values()){
+			if (!resource.hasOwner())
+				continue;
+			
+			UserInfo userInfo = resource.getOwner();
+			int unionId = 0;
+			if (userInfo.hasUnionId())
+				unionId = userInfo.getUnionId();
+			
+			int hours = DateUtil.intervalHours(resource.getLastRewardTime(), areaRedisService.now());
+			AreaResource.Builder builder = AreaResource.newBuilder(resource);
+			builder.setLastRewardTime(builder.getLastRewardTime() + hours * TimeConst.SECONDS_PER_HOUR);
+			areaRedisService.saveResource(builder.build(), user.getServerId());
+			if (unionId == 0) {
+				rewardService.doReward(userInfo.getId(), RewardConst.UNIONCOIN, resource.getYield() * hours);
+				continue;
+			}
+			
+			List<UserInfo> members = redis.getMembers(unionId, user.getServerId());
+			for (UserInfo cache : members) {
+				rewardService.doReward(cache.getId(), RewardConst.UNIONCOIN, resource.getYield() * hours);
+			}
+		}
 	}
 }

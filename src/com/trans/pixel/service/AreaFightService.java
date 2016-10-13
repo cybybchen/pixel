@@ -465,11 +465,14 @@ public class AreaFightService extends FightService{
 					builder.setWarDefended(0);
 					if(owner != null){
 						builder.setOwner(owner);
-						message += "玩家"+(builder.getOwner().getName()+"成功拿下了据点，成为新的领主！");
+//						message += "玩家"+(builder.getOwner().getName()+"成功拿下了据点，成为新的领主！");
+						message += "玩家"+(builder.getOwner().getName()+"成功夺取了据点！");
 					}
 				}else{
 					builder.setWarDefended(builder.getWarDefended()+1);
 					message += ("领主"+(builder.hasOwner()?builder.getOwner().getName():"")+"已成功防守"+builder.getWarDefended()+"波敌人！");
+					if (builder.getWarDefended() == 3)
+						message += "成为了新的领主！";
 				}
 //				for(FightResult result : resultlist.getListList()){//发奖
 //					
@@ -485,6 +488,7 @@ public class AreaFightService extends FightService{
 			builder.clearClosetime();
 			builder.setStarttime(time+redis.PROTECTTIME);
 			builder.clearEndtime();
+			builder.setLastRewardTime(time);
 		}else{
 			builder.setStarttime(time);
 			builder.setClosetime(time+redis.WARTIME);

@@ -214,6 +214,14 @@ public class UnionRedisService extends RedisService{
 		return userRedisService.getCaches(user.getServerId(), getMemberIds(user));
 	}
 	
+	public Set<String> getMemberIds(final int unionId){
+		return this.smember(this.getUnionMemberKey(unionId));
+	}
+	
+	public List<UserInfo> getMembers(final int unionId, int serverId){
+		return userRedisService.getCaches(serverId, getMemberIds(unionId));
+	}
+	
 	public void deleteMembers(final UserBean user){
 		this.delete(getUnionMemberKey(user));
 	}
@@ -274,6 +282,9 @@ public class UnionRedisService extends RedisService{
 	}
 	private String getUnionMemberKey(UserBean user) {
 		return getUnionRedisKey(user.getUnionId())+"_member";
+	}
+	private String getUnionMemberKey(int unionId) {
+		return getUnionRedisKey(unionId)+"_member";
 	}
 	
 	//union boss
