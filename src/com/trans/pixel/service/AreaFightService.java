@@ -151,17 +151,18 @@ public class AreaFightService extends FightService{
 		rewardService.doRewards(user, rewards.build());
 
 //		AreaMode.Builder areamode = redis.getAreaMode(user);
-//		Integer[] level = redis.addLevel(monster.getBelongto(), monster.getLevel1(), user);
-//		if(level[2] == 0)
+		Integer[] level = redis.addLevel(monster.getBelongto(), monster.getLevel1(), user);
+		if(level[2] == 0) {
 //			for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
 //				if(user.getAreaUnlock() == monster.getBelongto() && areainfo.getId() > user.getAreaUnlock()){
 //					if(level[1] >= areainfo.getZhanli()){
 //						unlockArea(areainfo.getId(), level[1], user);
-//						level[2] = 1;
-//						redis.saveLevel(monster.getBelongto(), level, user);
+						level[2] = 1;
+						redis.saveLevel(monster.getBelongto(), level, user);
 //					}
 //				}
 //			}
+		}
 		costEnergy(user, monster.getPl());
 		return true;
 	}
@@ -716,5 +717,18 @@ public class AreaFightService extends FightService{
 			}
 		}
 		return areamodebuilder.build();
+	}
+	
+	public boolean isAreaOwner(UserBean user) {
+		Map<String, AreaResource> resources = redis.getResources(user);
+		for (AreaResource resource : resources.values()) {
+			if (resource.hasOwner()) {
+				UserInfo userInfo = resource.getOwner();
+				if (userInfo != null && userInfo.getId() == user.getId())
+					return true;
+			}
+		}
+		
+		return false;
 	}
 }

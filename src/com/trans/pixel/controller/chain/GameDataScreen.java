@@ -99,6 +99,7 @@ import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
+import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -838,6 +839,11 @@ public class GameDataScreen extends RequestScreen {
 		signCommandService.sevenSign(cmd, responseBuilder, user);
 		return true;//SevenLoginSignCommand
 	}//SevenLoginSignCommand
+	@Override//IsAreaOwnerCommand
+	protected boolean handleCommand(RequestIsAreaOwnerCommand cmd, Builder responseBuilder, UserBean user) {
+		areaCommandService.isAreaOwner(cmd, responseBuilder, user);
+		return true;//IsAreaOwnerCommand
+	}//IsAreaOwnerCommand
 	//add handleCommand here
 	
 	@Override

@@ -104,6 +104,7 @@ import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
+import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -157,6 +158,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
+import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
@@ -381,6 +383,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroStrengthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestIsAreaOwnerCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -1097,6 +1100,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//SevenLoginSignCommand
                 result = handleCommand(cmd, responseBuilder, user);//SevenLoginSignCommand
         }//SevenLoginSignCommand
+        if (request.hasIsAreaOwnerCommand()) {
+            RequestIsAreaOwnerCommand cmd = request.getIsAreaOwnerCommand();
+            if (result)//IsAreaOwnerCommand
+                result = handleCommand(cmd, responseBuilder, user);//IsAreaOwnerCommand
+        }//IsAreaOwnerCommand
         //call handleCommand here
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();

@@ -2325,6 +2325,14 @@ message RequestSevenLoginSignCommand {
 	optional int32 chooseId = 1;
 }
 
+message RequestIsAreaOwnerCommand {
+
+}
+
+message ResponseIsAreaOwnerCommand {
+	optional bool isOwner = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2465,6 +2473,7 @@ message RequestCommand {
 	optional RequestUnionBossFightCommand unionBossFightCommand = 98;
 	optional RequestHeroStrengthenCommand heroStrengthenCommand = 99;
 	optional RequestSevenLoginSignCommand sevenLoginSignCommand = 200;
+	optional RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2532,6 +2541,7 @@ message ResponseCommand {
 	optional ResponseClearInfoCommand clearInfoCommand = 55;
 	optional ResponseBosskillCommand bosskillCommand = 56;
 	optional ResponseUnionBossCommand unionBossCommand = 57;
+	optional ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;
 }
 
 

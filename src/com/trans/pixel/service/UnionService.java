@@ -963,8 +963,11 @@ public class UnionService extends FightService{
 			if (userInfo.hasUnionId())
 				unionId = userInfo.getUnionId();
 			
-			int hours = DateUtil.intervalHours(resource.getLastRewardTime(), areaRedisService.now());
+			
 			AreaResource.Builder builder = AreaResource.newBuilder(resource);
+			if (builder.getLastRewardTime() == 0)
+				builder.setLastRewardTime(areaRedisService.now());
+			int hours = DateUtil.intervalHours(builder.getLastRewardTime(), areaRedisService.now());
 			builder.setLastRewardTime(builder.getLastRewardTime() + hours * TimeConst.SECONDS_PER_HOUR);
 			areaRedisService.saveResource(builder.build(), user.getServerId());
 			if (unionId == 0) {

@@ -20,12 +20,14 @@ import com.trans.pixel.protoc.Commands.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
+import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseAreaResourceCommand;
+import com.trans.pixel.protoc.Commands.ResponseIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AreaFightService;
 import com.trans.pixel.service.LogService;
@@ -183,4 +185,12 @@ public class AreaCommandService extends BaseCommandService{
 //			responseBuilder.setResourceMineInfoCommand(builder);
 //		}
 //	}
+	
+	public void isAreaOwner(RequestIsAreaOwnerCommand cmd, Builder responseBuilder, UserBean user){
+		ResponseIsAreaOwnerCommand.Builder builder = ResponseIsAreaOwnerCommand.newBuilder();
+		boolean ret = service.isAreaOwner(user);
+		
+		builder.setIsOwner(ret);
+		responseBuilder.setIsAreaOwnerCommand(builder.build());
+	}
 }
