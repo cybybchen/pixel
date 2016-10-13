@@ -877,14 +877,20 @@ public class UnionService extends FightService{
 		List<UnionBosslootItem> itemList = bossloot.getItemList();
 		for (UnionBosslootItem item : itemList) {
 			int randomWeight = RandomUtils.nextInt(item.getWeightall());
-			if (randomWeight < item.getWeight1())
+			if (randomWeight < item.getWeight1()) {
 				rewardList.add(RewardBean.init(item.getItemid1(), item.getCount1()).buildRewardInfo());
+				continue;
+			}
 			
-			if (randomWeight < item.getWeight2())
+			if (randomWeight < item.getWeight2()) {
 				rewardList.add(RewardBean.init(item.getItemid2(), item.getCount2()).buildRewardInfo());
+				continue;
+			}
 			
-			if (randomWeight < item.getWeight3())
+			if (randomWeight < item.getWeight3()) {
 				rewardList.add(RewardBean.init(item.getItemid3(), item.getCount3()).buildRewardInfo());
+				continue;
+			}
 		}
 		
 		return rewardList;
