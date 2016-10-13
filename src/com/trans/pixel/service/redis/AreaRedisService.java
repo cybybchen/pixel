@@ -15,8 +15,10 @@ import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.AreaBoss;
 import com.trans.pixel.protoc.Commands.AreaBossList;
@@ -43,8 +45,10 @@ import com.trans.pixel.protoc.Commands.AreaRefreshList;
 import com.trans.pixel.protoc.Commands.AreaResource;
 import com.trans.pixel.protoc.Commands.AreaResourceList;
 import com.trans.pixel.protoc.Commands.FightResultList;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Position;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.utils.DateUtil;
 
 @Repository
 public class AreaRedisService extends RedisService{
@@ -64,6 +68,8 @@ public class AreaRedisService extends RedisService{
 	private UserRedisService userRedisService;
 	@Resource
 	private ServerRedisService serverRedisService;
+	@Resource
+	private MailRedisService mailRedisService;
 	
 	public boolean isAreaOpen(UserBean user, int areaId){
 		AreaMode.Builder arealist = getAreaMode(user);
@@ -287,6 +293,31 @@ public class AreaRedisService extends RedisService{
 	}
 	
 	public void deleteBoss(int id,UserBean user){
+		if (this.hget(AREABOSS+user.getServerId(), id+"") != null) {
+			//排行奖励
+			Set<TypedTuple<String>> ranks = getBossRank(id, user);
+			AreaBossReward bossreward = getBossReward(id);
+			List<AreaRankReward> rankrewards = bossreward.getRankingList();
+			int index = 0;
+			int myrank = 1;
+			for(TypedTuple<String> rank : ranks){
+				if(rankrewards.get(index).getRanking() < myrank && rankrewards.get(index).getRanking() >= 0)
+					index++;
+				if(index >= rankrewards.size())
+					break;
+				MultiReward.Builder multireward = MultiReward.newBuilder();
+				multireward.addAllLoot(rankrewards.get(index).getRewardList());
+//				rewardService.doRewards(Long.parseLong(rank.getValue()), multireward.build());
+				MailBean mail = new MailBean();
+				mail.setContent("");
+//				mail.setRewardList(buildRewardList(ladderDaily));
+				mail.setStartDate(DateUtil.getCurrentDateString());
+				mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+				mail.setUserId(Long.parseLong(rank.getValue()));
+				mail.parseRewardList(multireward.getLootList());
+				mailRedisService.addMail(mail);
+			}
+		}
 		this.hdelete(AREABOSS+user.getServerId(), id+"");
 	}
 	

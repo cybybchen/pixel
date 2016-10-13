@@ -188,29 +188,29 @@ public class AreaFightService extends FightService{
 				rewards.addLoot(randReward(weightreward, boss.getBosslv()));
 			}
 			rewardService.doRewards(user, rewards.build());
-			//排行奖励
-			Set<TypedTuple<String>> ranks = redis.getBossRank(id, user);
-			AreaBossReward bossreward = redis.getBossReward(id);
-			List<AreaRankReward> rankrewards = bossreward.getRankingList();
-			int index = 0;
-			int myrank = 1;
-			for(TypedTuple<String> rank : ranks){
-				if(rankrewards.get(index).getRanking() < myrank && rankrewards.get(index).getRanking() >= 0)
-					index++;
-				if(index >= rankrewards.size())
-					break;
-				MultiReward.Builder multireward = MultiReward.newBuilder();
-				multireward.addAllLoot(rankrewards.get(index).getRewardList());
-//				rewardService.doRewards(Long.parseLong(rank.getValue()), multireward.build());
-				MailBean mail = new MailBean();
-				mail.setContent("");
-//				mail.setRewardList(buildRewardList(ladderDaily));
-				mail.setStartDate(DateUtil.getCurrentDateString());
-				mail.setType(MailConst.TYPE_SYSTEM_MAIL);
-				mail.setUserId(Long.parseLong(rank.getValue()));
-				mail.parseRewardList(multireward.getLootList());
-				mailRedisService.addMail(mail);
-			}
+//			//排行奖励
+//			Set<TypedTuple<String>> ranks = redis.getBossRank(id, user);
+//			AreaBossReward bossreward = redis.getBossReward(id);
+//			List<AreaRankReward> rankrewards = bossreward.getRankingList();
+//			int index = 0;
+//			int myrank = 1;
+//			for(TypedTuple<String> rank : ranks){
+//				if(rankrewards.get(index).getRanking() < myrank && rankrewards.get(index).getRanking() >= 0)
+//					index++;
+//				if(index >= rankrewards.size())
+//					break;
+//				MultiReward.Builder multireward = MultiReward.newBuilder();
+//				multireward.addAllLoot(rankrewards.get(index).getRewardList());
+////				rewardService.doRewards(Long.parseLong(rank.getValue()), multireward.build());
+//				MailBean mail = new MailBean();
+//				mail.setContent("");
+////				mail.setRewardList(buildRewardList(ladderDaily));
+//				mail.setStartDate(DateUtil.getCurrentDateString());
+//				mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+//				mail.setUserId(Long.parseLong(rank.getValue()));
+//				mail.parseRewardList(multireward.getLootList());
+//				mailRedisService.addMail(mail);
+//			}
 		}
 		redis.saveBoss(builder.build(), user);
 		costEnergy(user, boss.getPl());
