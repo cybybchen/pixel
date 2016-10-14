@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.Commands.FightResultList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.ResponseAreaEquipCommand;
+import com.trans.pixel.protoc.Commands.Union;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -45,6 +46,7 @@ import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.MailRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -68,6 +70,8 @@ public class AreaFightService extends FightService{
 	private MailRedisService mailRedisService;
 	@Resource
 	private PushCommandService pusher;
+	@Resource
+	private UnionRedisService unionRedisService;
 	
 	private static final int TYPE_UNION_BUFF = 1;
 	
@@ -260,7 +264,12 @@ public class AreaFightService extends FightService{
 				builder.setAttackerId(user.getUnionId());
 			}else{
 				builder.addMessage(new SimpleDateFormat("MM-dd HH:mm").format(new Date(System.currentTimeMillis()))+" 领主已被"+user.getUserName()+"刺杀");
-				builder.setOwner(user.buildShort());
+				Union.Builder union = unionRedisService.getUnion(user);
+				UserInfo.Builder userInfoBuilder = UserInfo.newBuilder(user.buildShort());
+				if (union != null) {
+					userInfoBuilder.setUnionIcon(union.getIcon());
+				}
+				builder.setOwner(userInfoBuilder.build());
 			}
 			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
@@ -465,7 +474,12 @@ public class AreaFightService extends FightService{
 
 					builder.setWarDefended(0);
 					if(owner != null){
-						builder.setOwner(owner);
+						Union.Builder union = unionRedisService.getUnion(userService.getUser(owner.getId()));
+						UserInfo.Builder userInfoBuilder = UserInfo.newBuilder(owner);
+						if (union != null) {
+							userInfoBuilder.setUnionIcon(union.getIcon());
+						}
+						builder.setOwner(userInfoBuilder.build());
 //						message += "玩家"+(builder.getOwner().getName()+"成功拿下了据点，成为新的领主！");
 						message += "玩家"+(builder.getOwner().getName()+"成功夺取了据点！");
 					}

@@ -53,6 +53,7 @@ message UserInfo {
 	optional int32 sevenLoginDays = 66;
 	optional int32 sevenSignStatus = 67;
 	repeated UnionBossRecord unionBossRecord = 68;
+	optional int32 unionIcon = 69;
 }
 
 message ServerData {
