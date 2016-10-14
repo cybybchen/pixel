@@ -227,8 +227,9 @@ public class AreaRedisService extends RedisService{
 						//add position
 						builder.setBelongto(fieldtime.getId());
 						Position position = randPosition(positionMap.get(builder.getBelongto()+"").getPositionList());
-						while (positionids.contains(position.getPosition())) 
+						while (positionids.contains(position.getPosition())) {
 								position = randPosition(positionMap.get(builder.getBelongto()+"").getPositionList());
+						}
 						positionids.add(position.getPosition());
 						builder.setPositionid(position.getPosition());
 						builder.setX(position.getX());

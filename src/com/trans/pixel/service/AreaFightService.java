@@ -667,8 +667,8 @@ public class AreaFightService extends FightService{
 		AreaMode.Builder areamodebuilder = redis.getAreaMode(user);
 //		Map<String, MultiReward> monsterrewardMap = redis.getAreaMonsterRewards();
 		List<Integer> positionids = new ArrayList<Integer>();
-		Map<String, AreaMonster> monsterMap = redis.getMonsters(user, positionids);
 		Map<String, AreaBoss.Builder> bossMap = redis.getBosses(user, positionids);
+		Map<String, AreaMonster> monsterMap = redis.getMonsters(user, positionids);
 		Map<String, String> bosstimeMap = redis.getBossTimes(user);
 		Map<String, AreaResource> resourceMap = redis.getResources(user);
 //		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
