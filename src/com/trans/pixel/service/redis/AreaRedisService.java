@@ -816,6 +816,12 @@ public class AreaRedisService extends RedisService{
 			return builder;
 		// builder.setSkill(skill);
 		// return builder;
+		
+		value = hget(UNIONAREABUFF+user.getUnionId(), skill+"");
+		builder = AreaBuff.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder;
+		
 		return getAreaBuffConfig(skill);
 	}
 
