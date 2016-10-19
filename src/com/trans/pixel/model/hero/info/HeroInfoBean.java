@@ -347,16 +347,21 @@ public class HeroInfoBean {
 		return 0;
 	}
 	
-	public void unlockSkill(HeroBean hero, List<SkillLevelBean> skillLevelList) {
+	public boolean unlockSkill(HeroBean hero, List<SkillLevelBean> skillLevelList) {
+		boolean addNewSkill = false;
 		for (SkillLevelBean skillLevel : skillLevelList) {
-			if (rare >= skillLevel.getUnlock()) {
+			if (starLevel >= skillLevel.getUnlock()) {
 				if (!contains(skillLevel)) {
 					SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), skillLevel.getUnlock(), skillInfoList.size());
 					if (skillInfo != null)
 						skillInfoList.add(skillInfo);
+					
+					addNewSkill = true;
 				}
 			}
 		}
+		
+		return addNewSkill;
 	}
 	
 	private boolean contains(SkillLevelBean skillLevel) {

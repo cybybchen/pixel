@@ -31,11 +31,11 @@ public class UserHeroService {
 	
 	public HeroInfoBean selectUserHero(long userId, long infoId) {
 		HeroInfoBean userHero = userHeroRedisService.selectUserHero(userId, infoId);
-		if (userHero == null) {
-			userHero = userHeroMapper.selectUserHero(userId, (int)infoId);
-			if (userHero != null)
-				userHero.buildSkillInfoList();
-		}
+//		if (userHero == null) {
+//			userHero = userHeroMapper.selectUserHero(userId, (int)infoId);
+//			if (userHero != null)
+//				userHero.buildSkillInfoList();
+//		}
 		
 		return userHero;
 	}
@@ -66,6 +66,10 @@ public class UserHeroService {
 				}
 				userHeroRedisService.updateUserHeroList(userHeroList, userId);
 			}
+		}
+		for (HeroInfoBean heroInfo : userHeroList) {
+			if (heroInfo.unlockSkill(heroService.getHero(heroInfo.getHeroId()), skillService.getSkillLevelList()))
+				updateUserHero(heroInfo);
 		}
 		
 		return userHeroList;

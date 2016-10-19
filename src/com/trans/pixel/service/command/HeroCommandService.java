@@ -132,6 +132,8 @@ public class HeroCommandService extends BaseCommandService {
 				HeroInfoBean bean = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), 1);
 				for(long costId : costInfoIds){
 					HeroInfoBean delHeroInfo = userHeroService.selectUserHero(userId, costId);
+					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
+					herobuilder.setHeroId(0);
 					if (delHeroInfo != null) {				
 						if(!bean.getEquipInfo().equals(delHeroInfo.getEquipInfo())){
 							for (String equipIdStr : delHeroInfo.equipIds()) {
@@ -144,9 +146,10 @@ public class HeroCommandService extends BaseCommandService {
 							addExp += heroService.getDeleteExp(delHeroInfo.getLevel());
 						
 						addCoin += skillService.getResetCoin(delHeroInfo.getSkillInfoList());//升级技能消耗金币
+						
+						herobuilder.setHeroId(delHeroInfo.getHeroId());
 					}
-					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
-					herobuilder.setHeroId(delHeroInfo.getHeroId());
+					
 					herobuilder.setInfoId(costId);
 					deleteHeroBuilder.addHeroInfo(herobuilder.build());
 				}
