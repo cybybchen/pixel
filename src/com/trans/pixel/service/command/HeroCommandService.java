@@ -146,7 +146,7 @@ public class HeroCommandService extends BaseCommandService {
 						addCoin += skillService.getResetCoin(delHeroInfo.getSkillInfoList());//升级技能消耗金币
 					}
 					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
-					herobuilder.setHeroId(heroId);
+					herobuilder.setHeroId(delHeroInfo.getHeroId());
 					herobuilder.setInfoId(costId);
 					deleteHeroBuilder.addHeroInfo(herobuilder.build());
 				}
