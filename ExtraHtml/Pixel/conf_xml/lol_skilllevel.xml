@@ -2,7 +2,7 @@
 <data>
 <skill id="1" unlock="1" inilevel="1" levelup="3" maxlevel="20" sp="10" gold="500" goldlv="500" />
 <skill id="2" unlock="2" inilevel="10" levelup="3" maxlevel="20" sp="15" gold="2000" goldlv="2000" />
-<skill id="3" unlock="4" inilevel="20" levelup="3" maxlevel="20" sp="20" gold="5000" goldlv="5000" />
-<skill id="4" unlock="7" inilevel="35" levelup="3" maxlevel="15" sp="25" gold="20000" goldlv="20000" />
-<skill id="5" unlock="10" inilevel="50" levelup="2" maxlevel="10" sp="50" gold="100000" goldlv="100000" />
+<skill id="3" unlock="3" inilevel="20" levelup="3" maxlevel="20" sp="20" gold="5000" goldlv="5000" />
+<skill id="4" unlock="4" inilevel="35" levelup="3" maxlevel="15" sp="25" gold="20000" goldlv="20000" />
+<skill id="5" unlock="5" inilevel="50" levelup="2" maxlevel="10" sp="50" gold="100000" goldlv="100000" />
 </data>
