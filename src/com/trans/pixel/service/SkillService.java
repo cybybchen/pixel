@@ -39,11 +39,11 @@ public class SkillService {
 		}
 	}
 	
-	public SkillLevelBean getSkillLevel(int unlocktype) {
-		SkillLevelBean skillLevel = skillRedisService.getSkillLevelByUnlock(unlocktype);
+	public SkillLevelBean getSkillLevel(int id) {
+		SkillLevelBean skillLevel = skillRedisService.getSkillLevelById(id);
 		if (skillLevel == null) {
 			parseSkillLevelAndSaveConfig();
-			skillLevel = skillRedisService.getSkillLevelByUnlock(unlocktype);
+			skillLevel = skillRedisService.getSkillLevelById(id);
 		}
 		
 		return skillLevel;
@@ -72,7 +72,7 @@ public class SkillService {
 	}
 	
 	public boolean canLevelUp(HeroInfoBean heroInfo, SkillInfoBean skillInfo) {
-		SkillLevelBean skillLevel = getSkillLevel(skillInfo.getUnlock());
+		SkillLevelBean skillLevel = getSkillLevel(skillInfo.getId());
 		if (skillLevel == null)
 			return false;
 		
@@ -85,12 +85,12 @@ public class SkillService {
 		return true;
 	}
 	
-	public boolean hasEnoughSP(HeroInfoBean heroInfo, int unlock) {
+	public boolean hasEnoughSP(HeroInfoBean heroInfo, int id) {
 		HeroUpgradeBean upgrade = heroService.getHeroUpgrade(heroInfo.getLevel());
 		
-		int needSP = getSkillLevel(unlock).getSp();
+		int needSP = getSkillLevel(id).getSp();
 		for (SkillInfoBean skillInfo : heroInfo.getSkillInfoList()) {
-			SkillLevelBean skillLevel = getSkillLevel(skillInfo.getUnlock());
+			SkillLevelBean skillLevel = getSkillLevel(skillInfo.getId());
 			needSP += skillLevel.getSp() * skillInfo.getSkillLevel();
 		}
 		
@@ -111,7 +111,7 @@ public class SkillService {
 	
 	private int getResetCoin(SkillInfoBean skillInfo) {
 		int coin = 0;
-		SkillLevelBean skillLevel = getSkillLevel(skillInfo.getUnlock());
+		SkillLevelBean skillLevel = getSkillLevel(skillInfo.getId());
 		coin = (skillLevel.getGold() + skillLevel.getGold() + skillLevel.getGoldlv() * 
 				(skillInfo.getSkillLevel() - 1)) * skillInfo.getSkillLevel() / 2;
 		return coin;

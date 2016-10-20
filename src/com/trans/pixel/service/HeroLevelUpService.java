@@ -275,11 +275,11 @@ public class HeroLevelUpService {
 			return ErrorConst.SKILL_CAN_NOT_LEVELUP;
 		}
 		
-		if (!skillService.hasEnoughSP(heroInfo, skillInfo.getUnlock())) {
+		if (!skillService.hasEnoughSP(heroInfo, skillInfo.getId())) {
 			return ErrorConst.SP_NOT_ENOUGH;
 		}
 		
-		SkillLevelBean skillLevel = skillService.getSkillLevel(skillInfo.getUnlock());
+		SkillLevelBean skillLevel = skillService.getSkillLevel(skillInfo.getId());
 		int costCoin = skillLevel.getGold() + skillLevel.getGoldlv() * skillInfo.getSkillLevel();
 		log.debug("levelup skill level is:" + skillInfo.getSkillLevel());
 		log.debug("skill level up cost is:" + costCoin);
