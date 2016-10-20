@@ -666,6 +666,96 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="32201" name="B级战士英雄包" img="32003" rare="3" description="开启获得1个1星B级战士" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51201" item="最强男军人1星" counta="1" countb="1" weight="100" />
+		<item itemid="51202" item="最强女军人1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32202" name="B级辅助英雄包" img="32005" rare="3" description="开启获得1个1星B级辅助" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51207" item="皇后1星" counta="1" countb="1" weight="100" />
+		<item itemid="51208" item="国王1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32203" name="B级法师英雄包" img="32006" rare="3" description="开启获得1个1星B级法师" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51213" item="火法1星" counta="1" countb="1" weight="100" />
+		<item itemid="51214" item="奥法1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32204" name="B级射手英雄包" img="32007" rare="3" description="开启获得1个1星B级射手" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51219" item="绿发游侠1星" counta="1" countb="1" weight="100" />
+		<item itemid="51220" item="黄发游侠1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32205" name="B级坦克英雄包" img="32008" rare="3" description="开启获得1个1星B级坦克" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51225" item="武道家1星" counta="1" countb="1" weight="100" />
+		<item itemid="51226" item="女武道家1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32206" name="C级战士英雄包" img="32003" rare="2" description="开启获得1个1星C级战士" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51203" item="男警察1星" counta="1" countb="1" weight="100" />
+		<item itemid="51204" item="女警察1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32207" name="C级辅助英雄包" img="32005" rare="2" description="开启获得1个1星C级辅助" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51209" item="黄精灵1星" counta="1" countb="1" weight="100" />
+		<item itemid="51210" item="红精灵1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32208" name="C级法师英雄包" img="32006" rare="2" description="开启获得1个1星C级法师" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51215" item="魔化老太婆1星" counta="1" countb="1" weight="100" />
+		<item itemid="51216" item="阿拉伯1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32209" name="C级射手英雄包" img="32007" rare="2" description="开启获得1个1星C级射手" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51221" item="黑皮少女1星" counta="1" countb="1" weight="100" />
+		<item itemid="51222" item="黑皮少年1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32210" name="C级坦克英雄包" img="32008" rare="2" description="开启获得1个1星C级坦克" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51227" item="头盔人1星" counta="1" countb="1" weight="100" />
+		<item itemid="51228" item="钢盔人1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32211" name="D级战士英雄包" img="32003" rare="1" description="开启获得1个1星D级战士" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51205" item="男战士1星" counta="1" countb="1" weight="100" />
+		<item itemid="51206" item="女战士1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32212" name="D级辅助英雄包" img="32005" rare="1" description="开启获得1个1星D级辅助" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51211" item="吱吱1星" counta="1" countb="1" weight="100" />
+		<item itemid="51212" item="咩咩1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32213" name="D级法师英雄包" img="32006" rare="1" description="开启获得1个1星D级法师" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51217" item="老太婆1星" counta="1" countb="1" weight="100" />
+		<item itemid="51218" item="老头1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32214" name="D级射手英雄包" img="32007" rare="1" description="开启获得1个1星D级射手" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51223" item="汪汪1星" counta="1" countb="1" weight="100" />
+		<item itemid="51224" item="喵喵1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32215" name="D级坦克英雄包" img="32008" rare="1" description="开启获得1个1星D级坦克" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51229" item="哥布林1星" counta="1" countb="1" weight="100" />
+		<item itemid="51230" item="牛头怪1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 	<loot itemid="32115" name="李青英雄包" img="32011" rare="4" description="开启获得李青2星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="52061" item="李青2星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
@@ -865,52 +955,52 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33119" name="1星英雄基础箱1" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="51005" item="赵信1星" counta="1" countb="1" weight="100" />
-		<item itemid="51008" item="潘森1星" counta="1" countb="1" weight="100" />
-		<item itemid="51009" item="奥拉夫1星" counta="1" countb="1" weight="100" />
-		<item itemid="51010" item="古拉加斯1星" counta="1" countb="1" weight="100" />
+		<item itemid="51209" item="黄精灵1星" counta="1" countb="1" weight="100" />
+		<item itemid="51201" item="最强男军人1星" counta="1" countb="1" weight="100" />
+		<item itemid="51217" item="老太婆1星" counta="1" countb="1" weight="100" />
+		<item itemid="51224" item="喵喵1星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33120" name="1星英雄基础箱2" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="51048" item="墨菲特1星" counta="1" countb="1" weight="100" />
-		<item itemid="51050" item="蒙多医生1星" counta="1" countb="1" weight="100" />
-		<item itemid="51052" item="辛吉德1星" counta="1" countb="1" weight="100" />
-		<item itemid="51055" item="努努1星" counta="1" countb="1" weight="100" />
+		<item itemid="51210" item="红精灵1星" counta="1" countb="1" weight="100" />
+		<item itemid="51202" item="最强女军人1星" counta="1" countb="1" weight="100" />
+		<item itemid="51218" item="老头1星" counta="1" countb="1" weight="100" />
+		<item itemid="51225" item="武道家1星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33121" name="1星英雄基础箱3" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="51058" item="薇恩1星" counta="1" countb="1" weight="100" />
-		<item itemid="51001" item="厄运小姐1星" counta="1" countb="1" weight="100" />
-		<item itemid="51041" item="安妮1星" counta="1" countb="1" weight="100" />
-		<item itemid="51042" item="艾希1星" counta="1" countb="1" weight="100" />
+		<item itemid="51211" item="吱吱1星" counta="1" countb="1" weight="100" />
+		<item itemid="51203" item="男警察1星" counta="1" countb="1" weight="100" />
+		<item itemid="51219" item="绿发游侠1星" counta="1" countb="1" weight="100" />
+		<item itemid="51226" item="女武道家1星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33122" name="1星英雄基础箱4" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="51072" item="拉克丝1星" counta="1" countb="1" weight="100" />
-		<item itemid="51074" item="娑娜1星" counta="1" countb="1" weight="100" />
-		<item itemid="51075" item="卡特琳娜1星" counta="1" countb="1" weight="100" />
-		<item itemid="51078" item="蕾欧娜1星" counta="1" countb="1" weight="100" />
+		<item itemid="51212" item="咩咩1星" counta="1" countb="1" weight="100" />
+		<item itemid="51204" item="女警察1星" counta="1" countb="1" weight="100" />
+		<item itemid="51220" item="黄发游侠1星" counta="1" countb="1" weight="100" />
+		<item itemid="51227" item="头盔人1星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33123" name="1星英雄基础箱5" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="51105" item="伊丽丝1星" counta="1" countb="1" weight="100" />
-		<item itemid="51082" item="瑞雯1星" counta="1" countb="1" weight="100" />
-		<item itemid="51084" item="希瓦娜1星" counta="1" countb="1" weight="100" />
-		<item itemid="51094" item="璐璐1星" counta="1" countb="1" weight="100" />
+		<item itemid="51213" item="火法1星" counta="1" countb="1" weight="100" />
+		<item itemid="51205" item="男战士1星" counta="1" countb="1" weight="100" />
+		<item itemid="51221" item="黑皮少女1星" counta="1" countb="1" weight="100" />
+		<item itemid="51228" item="钢盔人1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33124" name="1星英雄基础箱6" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="310" >
-		<item itemid="51038" item="易1星" counta="1" countb="1" weight="100" />
-		<item itemid="51039" item="贾克斯1星" counta="1" countb="1" weight="100" />
-		<item itemid="51061" item="李青1星" counta="1" countb="1" weight="100" />
-		<item itemid="51117" item="亚索1星" counta="1" countb="1" weight="10" />
+	<loot itemid="33124" name="1星英雄基础箱6" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+		<item itemid="51214" item="奥法1星" counta="1" countb="1" weight="100" />
+		<item itemid="51206" item="女战士1星" counta="1" countb="1" weight="100" />
+		<item itemid="51222" item="黑皮少年1星" counta="1" countb="1" weight="100" />
+		<item itemid="51229" item="哥布林1星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33125" name="1星英雄基础箱7" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="51032" item="沃里克1星" counta="1" countb="1" weight="100" />
-		<item itemid="51096" item="韦鲁斯1星" counta="1" countb="1" weight="100" />
-		<item itemid="51097" item="德莱厄斯1星" counta="1" countb="1" weight="100" />
-		<item itemid="51121" item="阿兹尔1星" counta="1" countb="1" weight="100" />
+		<item itemid="51215" item="魔化老太婆1星" counta="1" countb="1" weight="100" />
+		<item itemid="51207" item="皇后1星" counta="1" countb="1" weight="100" />
+		<item itemid="51223" item="汪汪1星" counta="1" countb="1" weight="100" />
+		<item itemid="51230" item="牛头怪1星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33126" name="1星英雄基础箱8" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="51024" item="崔斯特1星" counta="1" countb="1" weight="100" />
-		<item itemid="51017" item="盖伦1星" counta="1" countb="1" weight="100" />
-		<item itemid="51027" item="塔里克1星" counta="1" countb="1" weight="100" />
-		<item itemid="51076" item="瑞兹1星" counta="1" countb="1" weight="100" />
+	<loot itemid="33126" name="1星英雄基础箱8" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="51216" item="阿拉伯1星" counta="1" countb="1" weight="100" />
+		<item itemid="51208" item="国王1星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33127" name="1星英雄组合箱1" img="32015" rare="3" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33119" item="1星英雄基础箱1" counta="1" countb="1" weight="100" />
@@ -925,52 +1015,52 @@
 		<item itemid="33126" item="1星英雄基础箱8" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33129" name="2星英雄基础箱1" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="52005" item="赵信2星" counta="1" countb="1" weight="100" />
-		<item itemid="52008" item="潘森2星" counta="1" countb="1" weight="100" />
-		<item itemid="52009" item="奥拉夫2星" counta="1" countb="1" weight="100" />
-		<item itemid="52010" item="古拉加斯2星" counta="1" countb="1" weight="100" />
+		<item itemid="52201" item="最强男军人2星" counta="1" countb="1" weight="100" />
+		<item itemid="52209" item="黄精灵2星" counta="1" countb="1" weight="100" />
+		<item itemid="52217" item="老太婆2星" counta="1" countb="1" weight="100" />
+		<item itemid="52224" item="喵喵2星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33130" name="2星英雄基础箱2" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="52048" item="墨菲特2星" counta="1" countb="1" weight="100" />
-		<item itemid="52050" item="蒙多医生2星" counta="1" countb="1" weight="100" />
-		<item itemid="52052" item="辛吉德2星" counta="1" countb="1" weight="100" />
-		<item itemid="52055" item="努努2星" counta="1" countb="1" weight="100" />
+		<item itemid="52202" item="最强女军人2星" counta="1" countb="1" weight="100" />
+		<item itemid="52210" item="红精灵2星" counta="1" countb="1" weight="100" />
+		<item itemid="52218" item="老头2星" counta="1" countb="1" weight="100" />
+		<item itemid="52225" item="武道家2星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33131" name="2星英雄基础箱3" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="52058" item="薇恩2星" counta="1" countb="1" weight="100" />
-		<item itemid="52001" item="厄运小姐2星" counta="1" countb="1" weight="100" />
-		<item itemid="52041" item="安妮2星" counta="1" countb="1" weight="100" />
-		<item itemid="52042" item="艾希2星" counta="1" countb="1" weight="100" />
+		<item itemid="52203" item="男警察2星" counta="1" countb="1" weight="100" />
+		<item itemid="52211" item="吱吱2星" counta="1" countb="1" weight="100" />
+		<item itemid="52219" item="绿发游侠2星" counta="1" countb="1" weight="100" />
+		<item itemid="52226" item="女武道家2星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33132" name="2星英雄基础箱4" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="52072" item="拉克丝2星" counta="1" countb="1" weight="100" />
-		<item itemid="52074" item="娑娜2星" counta="1" countb="1" weight="100" />
-		<item itemid="52075" item="卡特琳娜2星" counta="1" countb="1" weight="100" />
-		<item itemid="52078" item="蕾欧娜2星" counta="1" countb="1" weight="100" />
+		<item itemid="52204" item="女警察2星" counta="1" countb="1" weight="100" />
+		<item itemid="52212" item="咩咩2星" counta="1" countb="1" weight="100" />
+		<item itemid="52220" item="黄发游侠2星" counta="1" countb="1" weight="100" />
+		<item itemid="52227" item="头盔人2星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33133" name="2星英雄基础箱5" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="52105" item="伊丽丝2星" counta="1" countb="1" weight="100" />
-		<item itemid="52082" item="瑞雯2星" counta="1" countb="1" weight="100" />
-		<item itemid="52084" item="希瓦娜2星" counta="1" countb="1" weight="100" />
-		<item itemid="52094" item="璐璐2星" counta="1" countb="1" weight="100" />
+		<item itemid="52205" item="男战士2星" counta="1" countb="1" weight="100" />
+		<item itemid="52213" item="火法2星" counta="1" countb="1" weight="100" />
+		<item itemid="52221" item="黑皮少女2星" counta="1" countb="1" weight="100" />
+		<item itemid="52228" item="钢盔人2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33134" name="2星英雄基础箱6" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="310" >
-		<item itemid="52038" item="易2星" counta="1" countb="1" weight="100" />
-		<item itemid="52039" item="贾克斯2星" counta="1" countb="1" weight="100" />
-		<item itemid="52061" item="李青2星" counta="1" countb="1" weight="100" />
-		<item itemid="52117" item="亚索2星" counta="1" countb="1" weight="10" />
+	<loot itemid="33134" name="2星英雄基础箱6" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+		<item itemid="52206" item="女战士2星" counta="1" countb="1" weight="100" />
+		<item itemid="52214" item="奥法2星" counta="1" countb="1" weight="100" />
+		<item itemid="52222" item="黑皮少年2星" counta="1" countb="1" weight="100" />
+		<item itemid="52229" item="哥布林2星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33135" name="2星英雄基础箱7" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="52032" item="沃里克2星" counta="1" countb="1" weight="100" />
-		<item itemid="52096" item="韦鲁斯2星" counta="1" countb="1" weight="100" />
-		<item itemid="52097" item="德莱厄斯2星" counta="1" countb="1" weight="100" />
-		<item itemid="52121" item="阿兹尔2星" counta="1" countb="1" weight="100" />
+		<item itemid="52207" item="皇后2星" counta="1" countb="1" weight="100" />
+		<item itemid="52215" item="魔化老太婆2星" counta="1" countb="1" weight="100" />
+		<item itemid="52223" item="汪汪2星" counta="1" countb="1" weight="100" />
+		<item itemid="52230" item="牛头怪2星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33136" name="2星英雄基础箱8" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="52024" item="崔斯特2星" counta="1" countb="1" weight="100" />
-		<item itemid="52017" item="盖伦2星" counta="1" countb="1" weight="100" />
-		<item itemid="52027" item="塔里克2星" counta="1" countb="1" weight="100" />
-		<item itemid="52076" item="瑞兹2星" counta="1" countb="1" weight="100" />
+	<loot itemid="33136" name="2星英雄基础箱8" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="202" >
+		<item itemid="52208" item="国王2星" counta="1" countb="1" weight="100" />
+		<item itemid="52216" item="阿拉伯2星" counta="1" countb="1" weight="100" />
+		<item itemid="52063" item="嘉文四世2星" counta="1" countb="1" weight="1" />
+		<item itemid="52078" item="蕾欧娜2星" counta="1" countb="1" weight="1" />
 	</loot>
 	<loot itemid="33137" name="2星英雄组合箱1" img="32016" rare="4" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33129" item="2星英雄基础箱1" counta="1" countb="1" weight="100" />
@@ -985,52 +1075,52 @@
 		<item itemid="33136" item="2星英雄基础箱8" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33139" name="3星英雄基础箱1" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="53005" item="赵信3星" counta="1" countb="1" weight="100" />
-		<item itemid="53008" item="潘森3星" counta="1" countb="1" weight="100" />
-		<item itemid="53009" item="奥拉夫3星" counta="1" countb="1" weight="100" />
-		<item itemid="53010" item="古拉加斯3星" counta="1" countb="1" weight="100" />
+		<item itemid="53209" item="黄精灵3星" counta="1" countb="1" weight="100" />
+		<item itemid="53201" item="最强男军人3星" counta="1" countb="1" weight="100" />
+		<item itemid="53217" item="老太婆3星" counta="1" countb="1" weight="100" />
+		<item itemid="53224" item="喵喵3星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33140" name="3星英雄基础箱2" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="53048" item="墨菲特3星" counta="1" countb="1" weight="100" />
-		<item itemid="53050" item="蒙多医生3星" counta="1" countb="1" weight="100" />
-		<item itemid="53052" item="辛吉德3星" counta="1" countb="1" weight="100" />
-		<item itemid="53055" item="努努3星" counta="1" countb="1" weight="100" />
+		<item itemid="53210" item="红精灵3星" counta="1" countb="1" weight="100" />
+		<item itemid="53202" item="最强女军人3星" counta="1" countb="1" weight="100" />
+		<item itemid="53218" item="老头3星" counta="1" countb="1" weight="100" />
+		<item itemid="53225" item="武道家3星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33141" name="3星英雄基础箱3" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="53058" item="薇恩3星" counta="1" countb="1" weight="100" />
-		<item itemid="53001" item="厄运小姐3星" counta="1" countb="1" weight="100" />
-		<item itemid="53041" item="安妮3星" counta="1" countb="1" weight="100" />
-		<item itemid="53042" item="艾希3星" counta="1" countb="1" weight="100" />
+		<item itemid="53211" item="吱吱3星" counta="1" countb="1" weight="100" />
+		<item itemid="53203" item="男警察3星" counta="1" countb="1" weight="100" />
+		<item itemid="53219" item="绿发游侠3星" counta="1" countb="1" weight="100" />
+		<item itemid="53226" item="女武道家3星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33142" name="3星英雄基础箱4" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="53072" item="拉克丝3星" counta="1" countb="1" weight="100" />
-		<item itemid="53074" item="娑娜3星" counta="1" countb="1" weight="100" />
-		<item itemid="53075" item="卡特琳娜3星" counta="1" countb="1" weight="100" />
-		<item itemid="53078" item="蕾欧娜3星" counta="1" countb="1" weight="100" />
+		<item itemid="53212" item="咩咩3星" counta="1" countb="1" weight="100" />
+		<item itemid="53204" item="女警察3星" counta="1" countb="1" weight="100" />
+		<item itemid="53220" item="黄发游侠3星" counta="1" countb="1" weight="100" />
+		<item itemid="53227" item="头盔人3星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33143" name="3星英雄基础箱5" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="53105" item="伊丽丝3星" counta="1" countb="1" weight="100" />
-		<item itemid="53082" item="瑞雯3星" counta="1" countb="1" weight="100" />
-		<item itemid="53084" item="希瓦娜3星" counta="1" countb="1" weight="100" />
-		<item itemid="53094" item="璐璐3星" counta="1" countb="1" weight="100" />
+		<item itemid="53213" item="火法3星" counta="1" countb="1" weight="100" />
+		<item itemid="53205" item="男战士3星" counta="1" countb="1" weight="100" />
+		<item itemid="53221" item="黑皮少女3星" counta="1" countb="1" weight="100" />
+		<item itemid="53228" item="钢盔人3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33144" name="3星英雄基础箱6" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="310" >
-		<item itemid="53038" item="易3星" counta="1" countb="1" weight="100" />
-		<item itemid="53039" item="贾克斯3星" counta="1" countb="1" weight="100" />
-		<item itemid="53061" item="李青3星" counta="1" countb="1" weight="100" />
-		<item itemid="53117" item="亚索3星" counta="1" countb="1" weight="10" />
+	<loot itemid="33144" name="3星英雄基础箱6" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+		<item itemid="53214" item="奥法3星" counta="1" countb="1" weight="100" />
+		<item itemid="53206" item="女战士3星" counta="1" countb="1" weight="100" />
+		<item itemid="53222" item="黑皮少年3星" counta="1" countb="1" weight="100" />
+		<item itemid="53229" item="哥布林3星" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33145" name="3星英雄基础箱7" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="53032" item="沃里克3星" counta="1" countb="1" weight="100" />
-		<item itemid="53096" item="韦鲁斯3星" counta="1" countb="1" weight="100" />
-		<item itemid="53097" item="德莱厄斯3星" counta="1" countb="1" weight="100" />
-		<item itemid="53121" item="阿兹尔3星" counta="1" countb="1" weight="100" />
+		<item itemid="53215" item="魔化老太婆3星" counta="1" countb="1" weight="100" />
+		<item itemid="53207" item="皇后3星" counta="1" countb="1" weight="100" />
+		<item itemid="53223" item="汪汪3星" counta="1" countb="1" weight="100" />
+		<item itemid="53230" item="牛头怪3星" counta="1" countb="1" weight="100" />
 	</loot>
-	<loot itemid="33146" name="3星英雄基础箱8" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
-		<item itemid="53024" item="崔斯特3星" counta="1" countb="1" weight="100" />
-		<item itemid="53017" item="盖伦3星" counta="1" countb="1" weight="100" />
-		<item itemid="53027" item="塔里克3星" counta="1" countb="1" weight="100" />
-		<item itemid="53076" item="瑞兹3星" counta="1" countb="1" weight="100" />
+	<loot itemid="33146" name="3星英雄基础箱8" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="202" >
+		<item itemid="53216" item="阿拉伯3星" counta="1" countb="1" weight="100" />
+		<item itemid="53208" item="国王3星" counta="1" countb="1" weight="100" />
+		<item itemid="53005" item="赵信3星" counta="1" countb="1" weight="1" />
+		<item itemid="53117" item="亚索3星" counta="1" countb="1" weight="1" />
 	</loot>
 	<loot itemid="33147" name="3星英雄组合箱1" img="32017" rare="5" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="33139" item="3星英雄基础箱1" counta="1" countb="1" weight="100" />

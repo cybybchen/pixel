@@ -293,7 +293,7 @@
 <item id="35" itemid="29070" count="2" weight="20" will="0" />
 <item id="36" itemid="29070" count="5" weight="10" will="0" />
 </lottery>
-<lottery  id="7" activity="4" type="1" cost="1003" count="2000" judge="1" errordes="魔晶不足(在征战世界中获得)" starttime="2016-09-29 00:00:00" endtime="2016-12-28 23:59:59" >
+<lottery  id="7" activity="4" type="1" cost="1003" count="2000" judge="1" errordes="魔晶不足(在征战世界中获得)" starttime="2016-09-29 00:00:00" endtime="2016-10-19 23:59:59" >
 <item id="1" itemid="51001" count="1" weight="100" will="0" />
 <item id="2" itemid="51005" count="1" weight="100" will="0" />
 <item id="3" itemid="51010" count="1" weight="100" will="0" />
@@ -336,7 +336,7 @@
 <item id="40" itemid="19008" count="1" weight="30" will="0" />
 <item id="41" itemid="19009" count="1" weight="30" will="0" />
 </lottery>
-<lottery  id="8" activity="4" type="2" cost="1003" count="18000" judge="10" errordes="魔晶不足(在征战世界中获得)" starttime="2016-09-29 00:00:00" endtime="2016-12-28 23:59:59" >
+<lottery  id="8" activity="4" type="2" cost="1003" count="18000" judge="10" errordes="魔晶不足(在征战世界中获得)" starttime="2016-09-29 00:00:00" endtime="2016-10-19 23:59:59" >
 <item id="1" itemid="51001" count="1" weight="100" will="0" />
 <item id="2" itemid="51005" count="1" weight="100" will="0" />
 <item id="3" itemid="51010" count="1" weight="100" will="0" />

@@ -1162,8 +1162,8 @@
 <star  starid="7" starvalue="13.5" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14043" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="202" name="最强女军人" img="1103" description="诺诚最强壮的女军官，详见生物书。" quality="3" position="1" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="" >
@@ -1184,8 +1184,8 @@
 <star  starid="7" starvalue="13.5" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14043" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14049" arm2="14049" arm3="14049" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="203" name="男警察" img="1306" description="一名恪尽职守的警官。" quality="2" position="1" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1206,8 +1206,8 @@
 <star  starid="7" starvalue="12.9" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14043" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="204" name="女警察" img="1307" description="另一名恪尽职守的警官，还是女的。" quality="2" position="1" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1228,8 +1228,8 @@
 <star  starid="7" starvalue="12.9" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14043" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14049" arm2="14049" arm3="14049" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="205" name="男战士" img="1302" description="冲锋陷阵的小战士。" quality="1" position="1" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1250,8 +1250,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14043" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="206" name="女战士" img="1303" description="冲锋陷阵的女战士。" quality="1" position="1" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1272,8 +1272,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14043" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14049" arm2="14049" arm3="14049" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="207" name="皇后" img="1404" description="身居后宫的老大。" quality="3" position="3" handbook="1" zhanli="100" ad="30" ad_rare="1" ap="10" ap_rare="1" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1316,8 +1316,8 @@
 <star  starid="7" starvalue="13.5" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10004" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14010" arm2="14003" arm3="14115" arm4="14045" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14010" arm2="14012" arm3="14018" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="209" name="黄精灵" img="126" description="精灵王国的一员。" quality="2" position="3" handbook="1" zhanli="80" ad="25" ad_rare=".8" ap="10" ap_rare=".8" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1360,8 +1360,8 @@
 <star  starid="7" starvalue="12.9" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10004" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14010" arm2="14003" arm3="14115" arm4="14045" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14010" arm2="14012" arm3="14018" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="211" name="吱吱" img="123" description="下水道的大领主。" quality="1" position="3" handbook="1" zhanli="60" ad="20" ad_rare=".5" ap="10" ap_rare=".5" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1404,8 +1404,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10004" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14010" arm2="14003" arm3="14115" arm4="14045" arm5="14044" arm6="14024" />
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14010" arm2="14012" arm3="14018" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
 <hero id="213" name="火法" img="1301" description="某团的强力党。" quality="3" position="0" handbook="1" zhanli="100" ad="30" ad_rare=".5" ap="10" ap_rare="2" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1426,8 +1426,8 @@
 <star  starid="7" starvalue="13.5" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10004" arm2="10004" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14016" arm2="14018" arm3="14002" arm4="14004" arm5="14045" arm6="14029" />
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10004" arm6="10007" />
+<equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="14029" />
 </equip> 
 </hero> 
 <hero id="214" name="奥法" img="1304" description="奥能的掌控者。" quality="3" position="0" handbook="1" zhanli="100" ad="30" ad_rare=".5" ap="10" ap_rare="2" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1470,8 +1470,8 @@
 <star  starid="7" starvalue="12.9" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10004" arm2="10004" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14016" arm2="14018" arm3="14002" arm4="14004" arm5="14045" arm6="14029" />
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10004" arm6="10007" />
+<equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="14029" />
 </equip> 
 </hero> 
 <hero id="216" name="阿拉伯" img="1401" description="与非洲酋长是好朋友。" quality="2" position="0" handbook="1" zhanli="80" ad="25" ad_rare=".5" ap="10" ap_rare="1.5" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1514,8 +1514,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10004" arm2="10004" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14016" arm2="14018" arm3="14002" arm4="14004" arm5="14045" arm6="14029" />
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10004" arm6="10004" />
+<equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="13040" />
 </equip> 
 </hero> 
 <hero id="218" name="老头" img="1402" description="隐藏在竹林中的高手。" quality="1" position="0" handbook="1" zhanli="60" ad="20" ad_rare=".5" ap="10" ap_rare="1" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1558,8 +1558,8 @@
 <star  starid="7" starvalue="13.5" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14056" arm2="14055" arm3="14115" arm4="14006" arm5="14043" arm6="14031" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10005" arm6="10007" />
+<equip equipid="2" arm1="14056" arm2="14055" arm3="14055" arm4="14062" arm5="14062" arm6="14031" />
 </equip> 
 </hero> 
 <hero id="220" name="黄发游侠" img="1204" description="年轻的灌木林弓箭手。" quality="3" position="2" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="1" steal="" steal_rare="" >
@@ -1580,8 +1580,8 @@
 <star  starid="7" starvalue="13.5" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14056" arm2="14055" arm3="14115" arm4="14006" arm5="14043" arm6="14031" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10005" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14056" arm2="14055" arm3="14062" arm4="14006" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
 <hero id="221" name="黑皮少女" img="1202" description="夜行弓箭手。（女）" quality="2" position="2" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="1" steal="" steal_rare="" >
@@ -1602,8 +1602,8 @@
 <star  starid="7" starvalue="12.9" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14056" arm2="14055" arm3="14115" arm4="14006" arm5="14043" arm6="14031" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10005" arm6="10007" />
+<equip equipid="2" arm1="14056" arm2="14055" arm3="14055" arm4="14062" arm5="14062" arm6="14031" />
 </equip> 
 </hero> 
 <hero id="222" name="黑皮少年" img="1201" description="夜行弓箭手。" quality="2" position="2" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="1" steal="" steal_rare="" >
@@ -1624,8 +1624,8 @@
 <star  starid="7" starvalue="12.9" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14056" arm2="14055" arm3="14115" arm4="14006" arm5="14043" arm6="14031" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10005" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14056" arm2="14055" arm3="14062" arm4="14006" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
 <hero id="223" name="汪汪" img="121" description="看门的大狗。" quality="1" position="2" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare=".5" steal="" steal_rare="" >
@@ -1646,8 +1646,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14056" arm2="14055" arm3="14115" arm4="14006" arm5="14043" arm6="14031" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10003" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14055" arm2="14055" arm3="14055" arm4="14055" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
 <hero id="224" name="喵喵" img="122" description="蹲家的小猫。" quality="1" position="2" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare=".5" steal="" steal_rare="" >
@@ -1668,8 +1668,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10003" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14056" arm2="14055" arm3="14115" arm4="14006" arm5="14043" arm6="14031" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10005" arm6="10005" />
+<equip equipid="2" arm1="14056" arm2="14056" arm3="14056" arm4="14063" arm5="14063" arm6="14063" />
 </equip> 
 </hero> 
 <hero id="225" name="武道家" img="1104" description="擅长踢馆的高手。" quality="3" position="4" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1690,8 +1690,8 @@
 <star  starid="7" starvalue="13.5" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14042" arm5="14046" arm6="14034" />
+<equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14003" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
 <hero id="226" name="女武道家" img="1105" description="喜欢陪别人一起踢馆。" quality="3" position="4" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1734,8 +1734,8 @@
 <star  starid="7" starvalue="12.9" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14042" arm5="14046" arm6="14034" />
+<equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14003" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
 <hero id="228" name="钢盔人" img="108" description="摩托驭手。" quality="2" position="4" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1778,8 +1778,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10002" arm5="10002" arm6="10007" />
-<equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14042" arm5="14046" arm6="14034" />
+<equip equipid="1" arm1="10001" arm2="10001" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14003" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
 <hero id="230" name="牛头怪" img="119" description="雷霆崖山脚下的怪物。" quality="1" position="4" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare=".5" speed="" speed_rare="" steal="" steal_rare="" >
