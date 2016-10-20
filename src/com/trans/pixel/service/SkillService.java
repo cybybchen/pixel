@@ -66,9 +66,9 @@ public class SkillService {
 		}
 	}
 	
-	public void unlockHeroSkill(int heroId, HeroInfoBean heroInfo) {
+	public boolean unlockHeroSkill(int heroId, HeroInfoBean heroInfo) {
 		HeroBean hero = heroService.getHero(heroId);
-		heroInfo.unlockSkill(hero, getSkillLevelList());
+		return heroInfo.unlockSkill(hero, getSkillLevelList());
 	}
 	
 	public boolean canLevelUp(HeroInfoBean heroInfo, SkillInfoBean skillInfo) {

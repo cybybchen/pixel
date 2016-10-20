@@ -366,7 +366,7 @@ public class HeroInfoBean {
 	
 	private boolean contains(SkillLevelBean skillLevel) {
 		for (SkillInfoBean skillInfo : skillInfoList) {
-			if (skillInfo.getUnlock() == skillLevel.getUnlock()) {
+			if (skillInfo.getId() == skillLevel.getId()) {
 				return true;
 			}
 		}

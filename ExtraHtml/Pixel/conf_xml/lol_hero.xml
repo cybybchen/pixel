@@ -4,9 +4,9 @@
 <skill> 
 <skill  skillid="101" skill="黑枪射击" unlock="1" />
 <skill  skillid="102" skill="大步流星" unlock="2" />
-<skill  skillid="103" skill="一箭双雕" unlock="4" />
-<skill  skillid="104" skill="枪林弹雨" unlock="7" />
-<skill  skillid="105" skill="弹幕时间" unlock="10" />
+<skill  skillid="103" skill="一箭双雕" unlock="3" />
+<skill  skillid="104" skill="枪林弹雨" unlock="4" />
+<skill  skillid="105" skill="弹幕时间" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -26,9 +26,9 @@
 <skill> 
 <skill  skillid="501" skill="狂暴怒吼" unlock="1" />
 <skill  skillid="502" skill="三重爪击" unlock="2" />
-<skill  skillid="505" skill="新月之击" unlock="4" />
-<skill  skillid="504" skill="战个痛快" unlock="7" />
-<skill  skillid="503" skill="无畏冲锋" unlock="10" />
+<skill  skillid="505" skill="新月之击" unlock="3" />
+<skill  skillid="504" skill="战个痛快" unlock="4" />
+<skill  skillid="503" skill="无畏冲锋" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -48,9 +48,9 @@
 <skill> 
 <skill  skillid="801" skill="长矛飞掷" unlock="1" />
 <skill  skillid="802" skill="穿心长矛" unlock="2" />
-<skill  skillid="803" skill="圣盾打击" unlock="4" />
-<skill  skillid="804" skill="圣盾庇护" unlock="7" />
-<skill  skillid="805" skill="堕天一击" unlock="10" />
+<skill  skillid="803" skill="圣盾打击" unlock="3" />
+<skill  skillid="804" skill="圣盾庇护" unlock="4" />
+<skill  skillid="805" skill="堕天一击" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -70,9 +70,9 @@
 <skill> 
 <skill  skillid="901" skill="逆流投掷" unlock="1" />
 <skill  skillid="902" skill="狂战之怒" unlock="2" />
-<skill  skillid="903" skill="残暴打击" unlock="4" />
-<skill  skillid="904" skill="鲁莽挥击" unlock="7" />
-<skill  skillid="905" skill="诸神黄昏" unlock="10" />
+<skill  skillid="903" skill="残暴打击" unlock="3" />
+<skill  skillid="904" skill="鲁莽挥击" unlock="4" />
+<skill  skillid="905" skill="诸神黄昏" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -92,9 +92,9 @@
 <skill> 
 <skill  skillid="1101" skill="秘术射击" unlock="1" />
 <skill  skillid="1102" skill="精华跃动" unlock="2" />
-<skill  skillid="1103" skill="精准弹幕" unlock="4" />
-<skill  skillid="1104" skill="咒能高涨" unlock="7" />
-<skill  skillid="1105" skill="奥术跃迁" unlock="10" />
+<skill  skillid="1103" skill="精准弹幕" unlock="3" />
+<skill  skillid="1104" skill="咒能高涨" unlock="4" />
+<skill  skillid="1105" skill="奥术跃迁" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -114,9 +114,9 @@
 <skill> 
 <skill  skillid="1301" skill="铁人" unlock="1" />
 <skill  skillid="1302" skill="铲击之锤" unlock="2" />
-<skill  skillid="1305" skill="死亡之子" unlock="4" />
-<skill  skillid="1304" skill="怒意连击" unlock="7" />
-<skill  skillid="1303" skill="悲伤收割" unlock="10" />
+<skill  skillid="1305" skill="死亡之子" unlock="3" />
+<skill  skillid="1304" skill="怒意连击" unlock="4" />
+<skill  skillid="1303" skill="悲伤收割" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -136,9 +136,9 @@
 <skill> 
 <skill  skillid="1702" skill="德玛西亚正义" unlock="1" />
 <skill  skillid="1701" skill="坚韧" unlock="2" />
-<skill  skillid="1705" skill="勇气" unlock="4" />
-<skill  skillid="1704" skill="审判" unlock="7" />
-<skill  skillid="1703" skill="致命打击" unlock="10" />
+<skill  skillid="1705" skill="勇气" unlock="3" />
+<skill  skillid="1704" skill="审判" unlock="4" />
+<skill  skillid="1703" skill="致命打击" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -158,9 +158,9 @@
 <skill> 
 <skill  skillid="2701" skill="宝石护盾" unlock="1" />
 <skill  skillid="2702" skill="神圣洗礼" unlock="2" />
-<skill  skillid="2703" skill="宝石狂热" unlock="4" />
-<skill  skillid="2704" skill="炫光" unlock="7" />
-<skill  skillid="2705" skill="辉耀" unlock="10" />
+<skill  skillid="2703" skill="宝石狂热" unlock="3" />
+<skill  skillid="2704" skill="炫光" unlock="4" />
+<skill  skillid="2705" skill="辉耀" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -180,9 +180,9 @@
 <skill> 
 <skill  skillid="3201" skill="血之饥渴" unlock="1" />
 <skill  skillid="3205" skill="无尽束缚" unlock="2" />
-<skill  skillid="3203" skill="嗜血攻击" unlock="4" />
-<skill  skillid="3204" skill="血迹追踪" unlock="7" />
-<skill  skillid="3202" skill="猎手怒吼" unlock="10" />
+<skill  skillid="3203" skill="嗜血攻击" unlock="3" />
+<skill  skillid="3204" skill="血迹追踪" unlock="4" />
+<skill  skillid="3202" skill="猎手怒吼" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -202,9 +202,9 @@
 <skill> 
 <skill  skillid="3501" skill="机械外壳" unlock="1" />
 <skill  skillid="3502" skill="能量铁拳" unlock="2" />
-<skill  skillid="3503" skill="过载运转" unlock="4" />
-<skill  skillid="3504" skill="法力屏障" unlock="7" />
-<skill  skillid="3505" skill="静电力场" unlock="10" />
+<skill  skillid="3503" skill="过载运转" unlock="3" />
+<skill  skillid="3504" skill="法力屏障" unlock="4" />
+<skill  skillid="3505" skill="静电力场" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -224,9 +224,9 @@
 <skill> 
 <skill  skillid="3605" skill="坚定" unlock="1" />
 <skill  skillid="3602" skill="粉碎大地" unlock="2" />
-<skill  skillid="3603" skill="英勇意志" unlock="4" />
-<skill  skillid="3604" skill="强化" unlock="7" />
-<skill  skillid="3601" skill="践踏" unlock="10" />
+<skill  skillid="3603" skill="英勇意志" unlock="3" />
+<skill  skillid="3604" skill="强化" unlock="4" />
+<skill  skillid="3601" skill="践踏" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -246,9 +246,9 @@
 <skill> 
 <skill  skillid="3801" skill="多重打击" unlock="1" />
 <skill  skillid="3802" skill="阿尔法突袭" unlock="2" />
-<skill  skillid="3803" skill="冥想" unlock="4" />
-<skill  skillid="3804" skill="无极剑道" unlock="7" />
-<skill  skillid="3805" skill="高原血统" unlock="10" />
+<skill  skillid="3803" skill="冥想" unlock="3" />
+<skill  skillid="3804" skill="无极剑道" unlock="4" />
+<skill  skillid="3805" skill="高原血统" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -268,9 +268,9 @@
 <skill> 
 <skill  skillid="3901" skill="跳斩" unlock="1" />
 <skill  skillid="3902" skill="蓄力一击" unlock="2" />
-<skill  skillid="3903" skill="反击风暴" unlock="4" />
-<skill  skillid="3904" skill="宗师之威" unlock="7" />
-<skill  skillid="3905" skill="无情连打" unlock="10" />
+<skill  skillid="3903" skill="反击风暴" unlock="3" />
+<skill  skillid="3904" skill="宗师之威" unlock="4" />
+<skill  skillid="3905" skill="无情连打" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -290,9 +290,9 @@
 <skill> 
 <skill  skillid="4001" skill="爆炸射击" unlock="1" />
 <skill  skillid="4002" skill="爆炸火花" unlock="2" />
-<skill  skillid="4003" skill="瞄准" unlock="4" />
-<skill  skillid="4004" skill="急速射击" unlock="7" />
-<skill  skillid="4005" skill="毁灭射击" unlock="10" />
+<skill  skillid="4003" skill="瞄准" unlock="3" />
+<skill  skillid="4004" skill="急速射击" unlock="4" />
+<skill  skillid="4005" skill="毁灭射击" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -312,9 +312,9 @@
 <skill> 
 <skill  skillid="4103" skill="碎裂之火" unlock="1" />
 <skill  skillid="4104" skill="提伯斯之怒" unlock="2" />
-<skill  skillid="4101" skill="嗜火" unlock="4" />
-<skill  skillid="4102" skill="熔岩护盾" unlock="7" />
-<skill  skillid="4105" skill="焚烧" unlock="10" />
+<skill  skillid="4101" skill="嗜火" unlock="3" />
+<skill  skillid="4102" skill="熔岩护盾" unlock="4" />
+<skill  skillid="4105" skill="焚烧" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -334,9 +334,9 @@
 <skill> 
 <skill  skillid="4201" skill="万箭齐发" unlock="1" />
 <skill  skillid="4202" skill="鹰击长空" unlock="2" />
-<skill  skillid="4203" skill="魔法水晶箭" unlock="4" />
-<skill  skillid="4204" skill="射手的专注" unlock="7" />
-<skill  skillid="4205" skill="冰霜射击" unlock="10" />
+<skill  skillid="4203" skill="魔法水晶箭" unlock="3" />
+<skill  skillid="4204" skill="射手的专注" unlock="4" />
+<skill  skillid="4205" skill="冰霜射击" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -356,9 +356,9 @@
 <skill> 
 <skill  skillid="4301" skill="毒性射击" unlock="1" />
 <skill  skillid="4302" skill="种蘑菇" unlock="2" />
-<skill  skillid="4303" skill="蘑菇爆炸" unlock="4" />
-<skill  skillid="4304" skill="毒性爆发" unlock="7" />
-<skill  skillid="4305" skill="小莫快跑" unlock="10" />
+<skill  skillid="4303" skill="蘑菇爆炸" unlock="3" />
+<skill  skillid="4304" skill="毒性爆发" unlock="4" />
+<skill  skillid="4305" skill="小莫快跑" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -378,9 +378,9 @@
 <skill> 
 <skill  skillid="4801" skill="花岗岩护盾" unlock="1" />
 <skill  skillid="4805" skill="势不可挡" unlock="2" />
-<skill  skillid="4803" skill="大地震颤" unlock="4" />
-<skill  skillid="4804" skill="野蛮打击" unlock="7" />
-<skill  skillid="4802" skill="地震碎片" unlock="10" />
+<skill  skillid="4803" skill="大地震颤" unlock="3" />
+<skill  skillid="4804" skill="野蛮打击" unlock="4" />
+<skill  skillid="4802" skill="地震碎片" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -400,9 +400,9 @@
 <skill> 
 <skill  skillid="5001" skill="病毒屠刀" unlock="1" />
 <skill  skillid="5002" skill="痛苦燃烧" unlock="2" />
-<skill  skillid="5005" skill="背水一战" unlock="4" />
-<skill  skillid="5004" skill="潜能激发" unlock="7" />
-<skill  skillid="5003" skill="肾上腺素" unlock="10" />
+<skill  skillid="5005" skill="背水一战" unlock="3" />
+<skill  skillid="5004" skill="潜能激发" unlock="4" />
+<skill  skillid="5003" skill="肾上腺素" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -422,9 +422,9 @@
 <skill> 
 <skill  skillid="5101" skill="嗜血杀戮" unlock="1" />
 <skill  skillid="5102" skill="旋风斩" unlock="2" />
-<skill  skillid="5105" skill="无尽怒火" unlock="4" />
-<skill  skillid="5104" skill="战斗狂怒" unlock="7" />
-<skill  skillid="5103" skill="蔑视" unlock="10" />
+<skill  skillid="5105" skill="无尽怒火" unlock="3" />
+<skill  skillid="5104" skill="战斗狂怒" unlock="4" />
+<skill  skillid="5103" skill="蔑视" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -444,9 +444,9 @@
 <skill> 
 <skill  skillid="5201" skill="生命壁垒" unlock="1" />
 <skill  skillid="5202" skill="化学试剂" unlock="2" />
-<skill  skillid="5203" skill="剧毒踪迹" unlock="4" />
-<skill  skillid="5204" skill="强力黏胶" unlock="7" />
-<skill  skillid="5205" skill="疯狂药剂" unlock="10" />
+<skill  skillid="5203" skill="剧毒踪迹" unlock="3" />
+<skill  skillid="5204" skill="强力黏胶" unlock="4" />
+<skill  skillid="5205" skill="疯狂药剂" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -466,9 +466,9 @@
 <skill> 
 <skill  skillid="5501" skill="吞噬" unlock="1" />
 <skill  skillid="5502" skill="血之沸腾" unlock="2" />
-<skill  skillid="5505" skill="绝对零度" unlock="4" />
-<skill  skillid="5504" skill="法术幻想" unlock="7" />
-<skill  skillid="5503" skill="冰雹" unlock="10" />
+<skill  skillid="5505" skill="绝对零度" unlock="3" />
+<skill  skillid="5504" skill="法术幻想" unlock="4" />
+<skill  skillid="5503" skill="冰雹" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -488,9 +488,9 @@
 <skill> 
 <skill  skillid="5801" skill="圣银箭弩" unlock="1" />
 <skill  skillid="5802" skill="暗夜猎手" unlock="2" />
-<skill  skillid="5803" skill="闪避突袭" unlock="4" />
-<skill  skillid="5804" skill="恶魔审判" unlock="7" />
-<skill  skillid="5805" skill="终极时刻" unlock="10" />
+<skill  skillid="5803" skill="闪避突袭" unlock="3" />
+<skill  skillid="5804" skill="恶魔审判" unlock="4" />
+<skill  skillid="5805" skill="终极时刻" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -510,9 +510,9 @@
 <skill> 
 <skill  skillid="5901" skill="纵火盛宴" unlock="1" />
 <skill  skillid="5905" skill="恒温灼烧" unlock="2" />
-<skill  skillid="5903" skill="加强火力" unlock="4" />
-<skill  skillid="5904" skill="电子鱼叉" unlock="7" />
-<skill  skillid="5902" skill="机械重组" unlock="10" />
+<skill  skillid="5903" skill="加强火力" unlock="3" />
+<skill  skillid="5904" skill="电子鱼叉" unlock="4" />
+<skill  skillid="5902" skill="机械重组" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -532,9 +532,9 @@
 <skill> 
 <skill  skillid="6101" skill="天音波" unlock="1" />
 <skill  skillid="6102" skill="天雷破" unlock="2" />
-<skill  skillid="6104" skill="猛龙摆尾" unlock="4" />
-<skill  skillid="6103" skill="摧经断骨" unlock="7" />
-<skill  skillid="6105" skill="金钟罩" unlock="10" />
+<skill  skillid="6104" skill="猛龙摆尾" unlock="3" />
+<skill  skillid="6103" skill="摧经断骨" unlock="4" />
+<skill  skillid="6105" skill="金钟罩" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -554,9 +554,9 @@
 <skill> 
 <skill  skillid="6301" skill="战争律动" unlock="1" />
 <skill  skillid="6302" skill="巨龙撞击" unlock="2" />
-<skill  skillid="6305" skill="天崩地裂" unlock="4" />
-<skill  skillid="6304" skill="德邦军旗" unlock="7" />
-<skill  skillid="6303" skill="黄金圣盾" unlock="10" />
+<skill  skillid="6305" skill="天崩地裂" unlock="3" />
+<skill  skillid="6304" skill="德邦军旗" unlock="4" />
+<skill  skillid="6303" skill="黄金圣盾" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -576,9 +576,9 @@
 <skill> 
 <skill  skillid="7001" skill="均衡打击" unlock="1" />
 <skill  skillid="7002" skill="飞天姿态" unlock="2" />
-<skill  skillid="7005" skill="至尊锋刃" unlock="4" />
-<skill  skillid="7004" skill="艾欧尼亚热诚" unlock="7" />
-<skill  skillid="7003" skill="利刃冲击" unlock="10" />
+<skill  skillid="7005" skill="至尊锋刃" unlock="3" />
+<skill  skillid="7004" skill="艾欧尼亚热诚" unlock="4" />
+<skill  skillid="7003" skill="利刃冲击" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -598,9 +598,9 @@
 <skill> 
 <skill  skillid="7201" skill="透光奇点" unlock="1" />
 <skill  skillid="7202" skill="曲光屏障" unlock="2" />
-<skill  skillid="7205" skill="终极闪光" unlock="4" />
-<skill  skillid="7204" skill="光芒四射" unlock="7" />
-<skill  skillid="7203" skill="光之束缚" unlock="10" />
+<skill  skillid="7205" skill="终极闪光" unlock="3" />
+<skill  skillid="7204" skill="光芒四射" unlock="4" />
+<skill  skillid="7203" skill="光之束缚" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -620,9 +620,9 @@
 <skill> 
 <skill  skillid="7402" skill="英勇赞美诗" unlock="1" />
 <skill  skillid="7401" skill="能量和弦" unlock="2" />
-<skill  skillid="7405" skill="狂舞终乐章" unlock="4" />
-<skill  skillid="7404" skill="迅捷奏鸣曲" unlock="7" />
-<skill  skillid="7403" skill="坚毅咏叹调" unlock="10" />
+<skill  skillid="7405" skill="狂舞终乐章" unlock="3" />
+<skill  skillid="7404" skill="迅捷奏鸣曲" unlock="4" />
+<skill  skillid="7403" skill="坚毅咏叹调" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -642,9 +642,9 @@
 <skill> 
 <skill  skillid="7501" skill="弹射之刃" unlock="1" />
 <skill  skillid="7502" skill="瞬步" unlock="2" />
-<skill  skillid="7505" skill="终极莲华" unlock="4" />
-<skill  skillid="7504" skill="贪婪" unlock="7" />
-<skill  skillid="7503" skill="不祥之刃" unlock="10" />
+<skill  skillid="7505" skill="终极莲华" unlock="3" />
+<skill  skillid="7504" skill="贪婪" unlock="4" />
+<skill  skillid="7503" skill="不祥之刃" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -664,9 +664,9 @@
 <skill> 
 <skill  skillid="7601" skill="超负荷" unlock="1" />
 <skill  skillid="7602" skill="法术涌动" unlock="2" />
-<skill  skillid="7603" skill="符文禁锢" unlock="4" />
-<skill  skillid="7604" skill="奥术专精" unlock="7" />
-<skill  skillid="7605" skill="绝望之力" unlock="10" />
+<skill  skillid="7603" skill="符文禁锢" unlock="3" />
+<skill  skillid="7604" skill="奥术专精" unlock="4" />
+<skill  skillid="7605" skill="绝望之力" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -686,9 +686,9 @@
 <skill> 
 <skill  skillid="7801" skill="天顶之刃" unlock="1" />
 <skill  skillid="7802" skill="日蚀" unlock="2" />
-<skill  skillid="7803" skill="破晓之盾" unlock="4" />
-<skill  skillid="7804" skill="日光" unlock="7" />
-<skill  skillid="7805" skill="日炎耀斑" unlock="10" />
+<skill  skillid="7803" skill="破晓之盾" unlock="3" />
+<skill  skillid="7804" skill="日光" unlock="4" />
+<skill  skillid="7805" skill="日炎耀斑" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -708,9 +708,9 @@
 <skill> 
 <skill  skillid="7902" skill="腾云突击" unlock="1" />
 <skill  skillid="7904" skill="腾云驾雾" unlock="2" />
-<skill  skillid="7905" skill="大闹天宫" unlock="4" />
-<skill  skillid="7901" skill="金刚不坏" unlock="7" />
-<skill  skillid="7903" skill="粉碎打击" unlock="10" />
+<skill  skillid="7905" skill="大闹天宫" unlock="3" />
+<skill  skillid="7901" skill="金刚不坏" unlock="4" />
+<skill  skillid="7903" skill="粉碎打击" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -730,9 +730,9 @@
 <skill> 
 <skill  skillid="8201" skill="折翼之舞" unlock="1" />
 <skill  skillid="8202" skill="符文之刃" unlock="2" />
-<skill  skillid="8203" skill="勇往直前" unlock="4" />
-<skill  skillid="8204" skill="震魂怒吼" unlock="7" />
-<skill  skillid="8205" skill="放逐之锋" unlock="10" />
+<skill  skillid="8203" skill="勇往直前" unlock="3" />
+<skill  skillid="8204" skill="震魂怒吼" unlock="4" />
+<skill  skillid="8205" skill="放逐之锋" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -752,9 +752,9 @@
 <skill> 
 <skill  skillid="8401" skill="龙牙突刺" unlock="1" />
 <skill  skillid="8402" skill="烈焰吐息" unlock="2" />
-<skill  skillid="8403" skill="野火燎原" unlock="4" />
-<skill  skillid="8404" skill="龙族血统" unlock="7" />
-<skill  skillid="8405" skill="真龙形态" unlock="10" />
+<skill  skillid="8403" skill="野火燎原" unlock="3" />
+<skill  skillid="8404" skill="龙族血统" unlock="4" />
+<skill  skillid="8405" skill="真龙形态" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -774,9 +774,9 @@
 <skill> 
 <skill  skillid="8601" skill="淘气打击" unlock="1" />
 <skill  skillid="8602" skill="海石三叉戟" unlock="2" />
-<skill  skillid="8605" skill="巨鲨强袭" unlock="4" />
-<skill  skillid="8604" skill="伶俐斗士" unlock="7" />
-<skill  skillid="8603" skill="古灵精怪" unlock="10" />
+<skill  skillid="8605" skill="巨鲨强袭" unlock="3" />
+<skill  skillid="8604" skill="伶俐斗士" unlock="4" />
+<skill  skillid="8603" skill="古灵精怪" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -796,9 +796,9 @@
 <skill> 
 <skill  skillid="8801" skill="夺魂摄魄" unlock="1" />
 <skill  skillid="8802" skill="欺诈宝珠" unlock="2" />
-<skill  skillid="8803" skill="妖异狐火" unlock="4" />
-<skill  skillid="8804" skill="魅惑妖术" unlock="7" />
-<skill  skillid="8805" skill="灵魂突袭" unlock="10" />
+<skill  skillid="8803" skill="妖异狐火" unlock="3" />
+<skill  skillid="8804" skill="魅惑妖术" unlock="4" />
+<skill  skillid="8805" skill="灵魂突袭" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -818,9 +818,9 @@
 <skill> 
 <skill  skillid="9601" skill="枯萎箭袋" unlock="1" />
 <skill  skillid="9602" skill="穿刺之箭" unlock="2" />
-<skill  skillid="9603" skill="蓄力穿刺" unlock="4" />
-<skill  skillid="9604" skill="恶灵箭雨" unlock="7" />
-<skill  skillid="9605" skill="复仇之欲" unlock="10" />
+<skill  skillid="9603" skill="蓄力穿刺" unlock="3" />
+<skill  skillid="9604" skill="恶灵箭雨" unlock="4" />
+<skill  skillid="9605" skill="复仇之欲" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -840,9 +840,9 @@
 <skill> 
 <skill  skillid="9701" skill="无情铁手" unlock="1" />
 <skill  skillid="9702" skill="大杀四方" unlock="2" />
-<skill  skillid="9703" skill="出血" unlock="4" />
-<skill  skillid="9705" skill="断头台" unlock="7" />
-<skill  skillid="9704" skill="致残打击" unlock="10" />
+<skill  skillid="9703" skill="出血" unlock="3" />
+<skill  skillid="9705" skill="断头台" unlock="4" />
+<skill  skillid="9704" skill="致残打击" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -862,9 +862,9 @@
 <skill> 
 <skill  skillid="10501" skill="神经毒素" unlock="1" />
 <skill  skillid="10502" skill="剧毒之蜇" unlock="2" />
-<skill  skillid="10504" skill="蜘蛛形态" unlock="4" />
-<skill  skillid="10505" skill="掠行狂暴" unlock="7" />
-<skill  skillid="10503" skill="结茧" unlock="10" />
+<skill  skillid="10504" skill="蜘蛛形态" unlock="3" />
+<skill  skillid="10505" skill="掠行狂暴" unlock="4" />
+<skill  skillid="10503" skill="结茧" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -884,9 +884,9 @@
 <skill> 
 <skill  skillid="10801" skill="地狱诅咒" unlock="1" />
 <skill  skillid="10802" skill="魂引之灯" unlock="2" />
-<skill  skillid="10803" skill="厄运钟摆" unlock="4" />
-<skill  skillid="10804" skill="幽魂监牢" unlock="7" />
-<skill  skillid="10805" skill="死亡判决" unlock="10" />
+<skill  skillid="10803" skill="厄运钟摆" unlock="3" />
+<skill  skillid="10804" skill="幽魂监牢" unlock="4" />
+<skill  skillid="10805" skill="死亡判决" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -906,9 +906,9 @@
 <skill> 
 <skill  skillid="11701" skill="斩钢闪" unlock="1" />
 <skill  skillid="11702" skill="踏前斩" unlock="2" />
-<skill  skillid="11705" skill="狂风绝息斩" unlock="4" />
-<skill  skillid="11704" skill="剑意" unlock="7" />
-<skill  skillid="11703" skill="浪客之道" unlock="10" />
+<skill  skillid="11705" skill="狂风绝息斩" unlock="3" />
+<skill  skillid="11704" skill="剑意" unlock="4" />
+<skill  skillid="11703" skill="浪客之道" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -928,9 +928,9 @@
 <skill> 
 <skill  skillid="12101" skill="狂沙猛攻" unlock="1" />
 <skill  skillid="12102" skill="恕瑞玛的传承" unlock="2" />
-<skill  skillid="12105" skill="禁军之墙" unlock="4" />
-<skill  skillid="12104" skill="流沙移影" unlock="7" />
-<skill  skillid="12103" skill="沙兵现身" unlock="10" />
+<skill  skillid="12105" skill="禁军之墙" unlock="3" />
+<skill  skillid="12104" skill="流沙移影" unlock="4" />
+<skill  skillid="12103" skill="沙兵现身" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -950,9 +950,9 @@
 <skill> 
 <skill  skillid="1001" skill="欢乐时光" unlock="1" />
 <skill  skillid="1002" skill="滚动酒桶" unlock="2" />
-<skill  skillid="1003" skill="醉酒狂暴" unlock="4" />
-<skill  skillid="1004" skill="肉弹冲击" unlock="7" />
-<skill  skillid="1005" skill="再来一杯" unlock="10" />
+<skill  skillid="1003" skill="醉酒狂暴" unlock="3" />
+<skill  skillid="1004" skill="肉弹冲击" unlock="4" />
+<skill  skillid="1005" skill="再来一杯" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -972,9 +972,9 @@
 <skill> 
 <skill  skillid="1201" skill="标枪投掷" unlock="1" />
 <skill  skillid="1202" skill="寻觅" unlock="2" />
-<skill  skillid="1203" skill="推倒" unlock="4" />
-<skill  skillid="1204" skill="丛林伏击" unlock="7" />
-<skill  skillid="1205" skill="野性奔腾" unlock="10" />
+<skill  skillid="1203" skill="推倒" unlock="3" />
+<skill  skillid="1204" skill="丛林伏击" unlock="4" />
+<skill  skillid="1205" skill="野性奔腾" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -994,9 +994,9 @@
 <skill> 
 <skill  skillid="2401" skill="幸运签" unlock="1" />
 <skill  skillid="2402" skill="万能牌" unlock="2" />
-<skill  skillid="2404" skill="卡牌骗术" unlock="4" />
-<skill  skillid="2403" skill="选牌" unlock="7" />
-<skill  skillid="2405" skill="命运" unlock="10" />
+<skill  skillid="2404" skill="卡牌骗术" unlock="3" />
+<skill  skillid="2403" skill="选牌" unlock="4" />
+<skill  skillid="2405" skill="命运" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1016,9 +1016,9 @@
 <skill> 
 <skill  skillid="6001" skill="烈焰之柱" unlock="1" />
 <skill  skillid="6002" skill="炽热之焰" unlock="2" />
-<skill  skillid="6003" skill="火焰烙印" unlock="4" />
-<skill  skillid="6004" skill="烈火燃烧" unlock="7" />
-<skill  skillid="6005" skill="烈焰风暴" unlock="10" />
+<skill  skillid="6003" skill="火焰烙印" unlock="3" />
+<skill  skillid="6004" skill="烈火燃烧" unlock="4" />
+<skill  skillid="6005" skill="烈焰风暴" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1034,13 +1034,13 @@
 <equip equipid="2" arm1="14009" arm2="14015" arm3="14012" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="94" name="璐璐" img="25" description="掌握着古老的奇奇怪怪的魔法的女巫，与精灵是好伙伴。" quality="4" position="3" handbook="1" zhanli="100" ad="32" ad_rare="10" ap="36" ap_rare="4" arm="9" arm_rare="18.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="10" >
+<hero id="94" name="璐璐" img="25" description="掌握着古老的奇奇怪怪的魔法的女巫，与精灵是好伙伴。" quality="5" position="3" handbook="1" zhanli="100" ad="32" ad_rare="10" ap="36" ap_rare="4" arm="9" arm_rare="18.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="10" >
 <skill> 
 <skill  skillid="9401" skill="奇思妙想" unlock="1" />
 <skill  skillid="9402" skill="闪耀长枪" unlock="2" />
-<skill  skillid="9403" skill="帮忙，皮克斯" unlock="4" />
-<skill  skillid="9404" skill="皮克斯伙伴" unlock="7" />
-<skill  skillid="9405" skill="狂野生长" unlock="10" />
+<skill  skillid="9403" skill="帮忙，皮克斯" unlock="3" />
+<skill  skillid="9404" skill="皮克斯伙伴" unlock="4" />
+<skill  skillid="9405" skill="狂野生长" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1060,9 +1060,9 @@
 <skill> 
 <skill  skillid="10201" skill="无形掠食者" unlock="1" />
 <skill  skillid="10202" skill="残忍无情" unlock="2" />
-<skill  skillid="10203" skill="战争咆哮" unlock="4" />
-<skill  skillid="10204" skill="套索打击" unlock="7" />
-<skill  skillid="10205" skill="狩猎律动" unlock="10" />
+<skill  skillid="10203" skill="战争咆哮" unlock="3" />
+<skill  skillid="10204" skill="套索打击" unlock="4" />
+<skill  skillid="10205" skill="狩猎律动" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1082,9 +1082,9 @@
 <skill> 
 <skill  skillid="10401" skill="虚空突刺" unlock="1" />
 <skill  skillid="10402" skill="无形威胁" unlock="2" />
-<skill  skillid="10403" skill="品尝恐惧" unlock="4" />
-<skill  skillid="10404" skill="跃击" unlock="7" />
-<skill  skillid="10405" skill="虚空来袭" unlock="10" />
+<skill  skillid="10403" skill="品尝恐惧" unlock="3" />
+<skill  skillid="10404" skill="跃击" unlock="4" />
+<skill  skillid="10405" skill="虚空来袭" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1104,9 +1104,9 @@
 <skill> 
 <skill  skillid="11601" skill="罪恶快感" unlock="1" />
 <skill  skillid="11602" skill="超究极死神飞弹" unlock="2" />
-<skill  skillid="11603" skill="枪炮交响曲" unlock="4" />
-<skill  skillid="11604" skill="震荡电磁波" unlock="7" />
-<skill  skillid="11605" skill="火炮加强" unlock="10" />
+<skill  skillid="11603" skill="枪炮交响曲" unlock="3" />
+<skill  skillid="11604" skill="震荡电磁波" unlock="4" />
+<skill  skillid="11605" skill="火炮加强" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1126,9 +1126,9 @@
 <skill> 
 <skill  skillid="12201" skill="武术姿态" unlock="1" />
 <skill  skillid="12202" skill="穿刺" unlock="2" />
-<skill  skillid="12203" skill="哨兵" unlock="4" />
-<skill  skillid="12204" skill="撕裂" unlock="7" />
-<skill  skillid="12205" skill="命运的召唤" unlock="10" />
+<skill  skillid="12203" skill="哨兵" unlock="3" />
+<skill  skillid="12204" skill="撕裂" unlock="4" />
+<skill  skillid="12205" skill="命运的召唤" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1148,9 +1148,9 @@
 <skill> 
 <skill  skillid="12101" skill="狂沙猛攻" unlock="1" />
 <skill  skillid="12102" skill="恕瑞玛的传承" unlock="2" />
-<skill  skillid="12105" skill="禁军之墙" unlock="4" />
-<skill  skillid="12104" skill="流沙移影" unlock="7" />
-<skill  skillid="12103" skill="沙兵现身" unlock="10" />
+<skill  skillid="12105" skill="禁军之墙" unlock="3" />
+<skill  skillid="12104" skill="流沙移影" unlock="4" />
+<skill  skillid="12103" skill="沙兵现身" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1170,9 +1170,9 @@
 <skill> 
 <skill  skillid="1001" skill="欢乐时光" unlock="1" />
 <skill  skillid="1002" skill="滚动酒桶" unlock="2" />
-<skill  skillid="1003" skill="醉酒狂暴" unlock="4" />
-<skill  skillid="1004" skill="肉弹冲击" unlock="7" />
-<skill  skillid="1005" skill="再来一杯" unlock="10" />
+<skill  skillid="1003" skill="醉酒狂暴" unlock="3" />
+<skill  skillid="1004" skill="肉弹冲击" unlock="4" />
+<skill  skillid="1005" skill="再来一杯" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1192,9 +1192,9 @@
 <skill> 
 <skill  skillid="1201" skill="标枪投掷" unlock="1" />
 <skill  skillid="1202" skill="寻觅" unlock="2" />
-<skill  skillid="1203" skill="推倒" unlock="4" />
-<skill  skillid="1204" skill="丛林伏击" unlock="7" />
-<skill  skillid="1205" skill="野性奔腾" unlock="10" />
+<skill  skillid="1203" skill="推倒" unlock="3" />
+<skill  skillid="1204" skill="丛林伏击" unlock="4" />
+<skill  skillid="1205" skill="野性奔腾" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1214,9 +1214,9 @@
 <skill> 
 <skill  skillid="2401" skill="幸运签" unlock="1" />
 <skill  skillid="2402" skill="万能牌" unlock="2" />
-<skill  skillid="2404" skill="卡牌骗术" unlock="4" />
-<skill  skillid="2403" skill="选牌" unlock="7" />
-<skill  skillid="2405" skill="命运" unlock="10" />
+<skill  skillid="2404" skill="卡牌骗术" unlock="3" />
+<skill  skillid="2403" skill="选牌" unlock="4" />
+<skill  skillid="2405" skill="命运" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1236,9 +1236,9 @@
 <skill> 
 <skill  skillid="6001" skill="烈焰之柱" unlock="1" />
 <skill  skillid="6002" skill="炽热之焰" unlock="2" />
-<skill  skillid="6003" skill="火焰烙印" unlock="4" />
-<skill  skillid="6004" skill="烈火燃烧" unlock="7" />
-<skill  skillid="6005" skill="烈焰风暴" unlock="10" />
+<skill  skillid="6003" skill="火焰烙印" unlock="3" />
+<skill  skillid="6004" skill="烈火燃烧" unlock="4" />
+<skill  skillid="6005" skill="烈焰风暴" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1258,9 +1258,9 @@
 <skill> 
 <skill  skillid="9401" skill="奇思妙想" unlock="1" />
 <skill  skillid="9402" skill="闪耀长枪" unlock="2" />
-<skill  skillid="9403" skill="帮忙，皮克斯" unlock="4" />
-<skill  skillid="9404" skill="皮克斯伙伴" unlock="7" />
-<skill  skillid="9405" skill="狂野生长" unlock="10" />
+<skill  skillid="9403" skill="帮忙，皮克斯" unlock="3" />
+<skill  skillid="9404" skill="皮克斯伙伴" unlock="4" />
+<skill  skillid="9405" skill="狂野生长" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1280,9 +1280,9 @@
 <skill> 
 <skill  skillid="10201" skill="无形掠食者" unlock="1" />
 <skill  skillid="10202" skill="残忍无情" unlock="2" />
-<skill  skillid="10203" skill="战争咆哮" unlock="4" />
-<skill  skillid="10204" skill="套索打击" unlock="7" />
-<skill  skillid="10205" skill="狩猎律动" unlock="10" />
+<skill  skillid="10203" skill="战争咆哮" unlock="3" />
+<skill  skillid="10204" skill="套索打击" unlock="4" />
+<skill  skillid="10205" skill="狩猎律动" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1302,9 +1302,9 @@
 <skill> 
 <skill  skillid="10401" skill="虚空突刺" unlock="1" />
 <skill  skillid="10402" skill="无形威胁" unlock="2" />
-<skill  skillid="10403" skill="品尝恐惧" unlock="4" />
-<skill  skillid="10404" skill="跃击" unlock="7" />
-<skill  skillid="10405" skill="虚空来袭" unlock="10" />
+<skill  skillid="10403" skill="品尝恐惧" unlock="3" />
+<skill  skillid="10404" skill="跃击" unlock="4" />
+<skill  skillid="10405" skill="虚空来袭" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1324,9 +1324,9 @@
 <skill> 
 <skill  skillid="11601" skill="罪恶快感" unlock="1" />
 <skill  skillid="11602" skill="超究极死神飞弹" unlock="2" />
-<skill  skillid="11603" skill="枪炮交响曲" unlock="4" />
-<skill  skillid="11604" skill="震荡电磁波" unlock="7" />
-<skill  skillid="11605" skill="火炮加强" unlock="10" />
+<skill  skillid="11603" skill="枪炮交响曲" unlock="3" />
+<skill  skillid="11604" skill="震荡电磁波" unlock="4" />
+<skill  skillid="11605" skill="火炮加强" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1346,9 +1346,9 @@
 <skill> 
 <skill  skillid="12201" skill="武术姿态" unlock="1" />
 <skill  skillid="12202" skill="穿刺" unlock="2" />
-<skill  skillid="12203" skill="哨兵" unlock="4" />
-<skill  skillid="12204" skill="撕裂" unlock="7" />
-<skill  skillid="12205" skill="命运的召唤" unlock="10" />
+<skill  skillid="12203" skill="哨兵" unlock="3" />
+<skill  skillid="12204" skill="撕裂" unlock="4" />
+<skill  skillid="12205" skill="命运的召唤" unlock="5" />
 </skill> 
 <star> 
 <star  starid="1" starvalue="6" />
@@ -1364,164 +1364,444 @@
 <equip equipid="2" arm1="14055" arm2="14056" arm3="14053" arm4="14063" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="211" name="吱吱" img="123" description="" quality="1" position="3" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="211" name="吱吱" img="123" description="" quality="1" position="3" handbook="1" zhanli="100" ad="31" ad_rare="6" ap="46" ap_rare="" arm="14" arm_rare="15" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="5" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="12101" skill="狂沙猛攻" unlock="1" />
+<skill  skillid="12102" skill="恕瑞玛的传承" unlock="2" />
+<skill  skillid="12105" skill="禁军之墙" unlock="3" />
+<skill  skillid="12104" skill="流沙移影" unlock="4" />
+<skill  skillid="12103" skill="沙兵现身" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14012" arm2="14015" arm3="14016" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="212" name="咩咩" img="124" description="" quality="1" position="3" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="212" name="咩咩" img="124" description="" quality="1" position="3" handbook="1" zhanli="100" ad="35" ad_rare="6" ap="46" ap_rare="" arm="16" arm_rare="18" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="10" >
 <skill> 
+<skill  skillid="1001" skill="欢乐时光" unlock="1" />
+<skill  skillid="1002" skill="滚动酒桶" unlock="2" />
+<skill  skillid="1003" skill="醉酒狂暴" unlock="3" />
+<skill  skillid="1004" skill="肉弹冲击" unlock="4" />
+<skill  skillid="1005" skill="再来一杯" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10004" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14075" arm2="14014" arm3="14005" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="213" name="火法" img="1301" description="" quality="3" position="0" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="213" name="火法" img="1301" description="" quality="3" position="0" handbook="1" zhanli="100" ad="34" ad_rare="6" ap="36" ap_rare="" arm="15.5" arm_rare="15" mr="30" mr_rare="" adi=".3" adi_rare="" api=".6" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="1201" skill="标枪投掷" unlock="1" />
+<skill  skillid="1202" skill="寻觅" unlock="2" />
+<skill  skillid="1203" skill="推倒" unlock="3" />
+<skill  skillid="1204" skill="丛林伏击" unlock="4" />
+<skill  skillid="1205" skill="野性奔腾" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14075" arm2="14012" arm3="14018" arm4="14019" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="214" name="奥法" img="1304" description="" quality="3" position="0" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="214" name="奥法" img="1304" description="" quality="3" position="0" handbook="1" zhanli="100" ad="24" ad_rare="6" ap="52" ap_rare="" arm="11.25" arm_rare="16" mr="30" mr_rare="" adi="" adi_rare="" api=".6" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="2401" skill="幸运签" unlock="1" />
+<skill  skillid="2402" skill="万能牌" unlock="2" />
+<skill  skillid="2404" skill="卡牌骗术" unlock="3" />
+<skill  skillid="2403" skill="选牌" unlock="4" />
+<skill  skillid="2405" skill="命运" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14012" arm2="14019" arm3="14017" arm4="14005" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="215" name="魔化老太婆" img="1205" description="" quality="2" position="0" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="215" name="魔化老太婆" img="1205" description="" quality="2" position="0" handbook="1" zhanli="100" ad="14" ad_rare="5.5" ap="45" ap_rare="" arm="12" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="6001" skill="烈焰之柱" unlock="1" />
+<skill  skillid="6002" skill="炽热之焰" unlock="2" />
+<skill  skillid="6003" skill="火焰烙印" unlock="3" />
+<skill  skillid="6004" skill="烈火燃烧" unlock="4" />
+<skill  skillid="6005" skill="烈焰风暴" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14009" arm2="14015" arm3="14012" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="216" name="阿拉伯" img="1401" description="" quality="2" position="0" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="216" name="阿拉伯" img="1401" description="" quality="2" position="0" handbook="1" zhanli="100" ad="32" ad_rare="10" ap="36" ap_rare="4" arm="9" arm_rare="18.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="10" >
 <skill> 
+<skill  skillid="9401" skill="奇思妙想" unlock="1" />
+<skill  skillid="9402" skill="闪耀长枪" unlock="2" />
+<skill  skillid="9403" skill="帮忙，皮克斯" unlock="3" />
+<skill  skillid="9404" skill="皮克斯伙伴" unlock="4" />
+<skill  skillid="9405" skill="狂野生长" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14009" arm2="14018" arm3="14015" arm4="14005" arm5="14045" arm6="14026" />
 </equip> 
 </hero> 
-<hero id="217" name="老太婆" img="1403" description="" quality="1" position="0" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="217" name="老太婆" img="1403" description="" quality="1" position="0" handbook="1" zhanli="100" ad="60" ad_rare="15" ap="28" ap_rare="" arm="25.8" arm_rare="17.5" mr="32" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="10" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="10201" skill="无形掠食者" unlock="1" />
+<skill  skillid="10202" skill="残忍无情" unlock="2" />
+<skill  skillid="10203" skill="战争咆哮" unlock="3" />
+<skill  skillid="10204" skill="套索打击" unlock="4" />
+<skill  skillid="10205" skill="狩猎律动" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14065" arm2="14050" arm3="14049" arm4="14007" arm5="14043" arm6="14035" />
 </equip> 
 </hero> 
-<hero id="218" name="老头" img="1402" description="" quality="1" position="0" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="218" name="老头" img="1402" description="" quality="1" position="0" handbook="1" zhanli="100" ad="50" ad_rare="15" ap="25" ap_rare="" arm="15" arm_rare="15" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="10" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="10401" skill="虚空突刺" unlock="1" />
+<skill  skillid="10402" skill="无形威胁" unlock="2" />
+<skill  skillid="10403" skill="品尝恐惧" unlock="3" />
+<skill  skillid="10404" skill="跃击" unlock="4" />
+<skill  skillid="10405" skill="虚空来袭" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14065" arm2="14050" arm3="14049" arm4="14007" arm5="14043" arm6="14035" />
 </equip> 
 </hero> 
-<hero id="219" name="绿发游侠" img="1203" description="" quality="3" position="2" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="219" name="绿发游侠" img="1203" description="" quality="3" position="2" handbook="1" zhanli="100" ad="50" ad_rare="15" ap="31" ap_rare="" arm="13" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="13" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="11601" skill="罪恶快感" unlock="1" />
+<skill  skillid="11602" skill="超究极死神飞弹" unlock="2" />
+<skill  skillid="11603" skill="枪炮交响曲" unlock="3" />
+<skill  skillid="11604" skill="震荡电磁波" unlock="4" />
+<skill  skillid="11605" skill="火炮加强" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14058" arm2="14055" arm3="14057" arm4="14061" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="220" name="黄发游侠" img="1204" description="" quality="3" position="2" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="220" name="黄发游侠" img="1204" description="" quality="3" position="2" handbook="1" zhanli="100" ad="55" ad_rare="15" ap="26" ap_rare="" arm="19" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="12" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="12201" skill="武术姿态" unlock="1" />
+<skill  skillid="12202" skill="穿刺" unlock="2" />
+<skill  skillid="12203" skill="哨兵" unlock="3" />
+<skill  skillid="12204" skill="撕裂" unlock="4" />
+<skill  skillid="12205" skill="命运的召唤" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14055" arm2="14056" arm3="14053" arm4="14063" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="221" name="黑皮少女" img="1202" description="" quality="2" position="2" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="221" name="黑皮少女" img="1202" description="" quality="2" position="2" handbook="1" zhanli="100" ad="31" ad_rare="6" ap="46" ap_rare="" arm="14" arm_rare="15" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="5" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="12101" skill="狂沙猛攻" unlock="1" />
+<skill  skillid="12102" skill="恕瑞玛的传承" unlock="2" />
+<skill  skillid="12105" skill="禁军之墙" unlock="3" />
+<skill  skillid="12104" skill="流沙移影" unlock="4" />
+<skill  skillid="12103" skill="沙兵现身" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14012" arm2="14015" arm3="14016" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="222" name="黑皮少年" img="1201" description="" quality="2" position="2" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="222" name="黑皮少年" img="1201" description="" quality="2" position="2" handbook="1" zhanli="100" ad="35" ad_rare="6" ap="46" ap_rare="" arm="16" arm_rare="18" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="10" >
 <skill> 
+<skill  skillid="1001" skill="欢乐时光" unlock="1" />
+<skill  skillid="1002" skill="滚动酒桶" unlock="2" />
+<skill  skillid="1003" skill="醉酒狂暴" unlock="3" />
+<skill  skillid="1004" skill="肉弹冲击" unlock="4" />
+<skill  skillid="1005" skill="再来一杯" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10004" arm3="10001" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14075" arm2="14014" arm3="14005" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="223" name="汪汪" img="121" description="" quality="1" position="2" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="223" name="汪汪" img="121" description="" quality="1" position="2" handbook="1" zhanli="100" ad="34" ad_rare="6" ap="36" ap_rare="" arm="15.5" arm_rare="15" mr="30" mr_rare="" adi=".3" adi_rare="" api=".6" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="1201" skill="标枪投掷" unlock="1" />
+<skill  skillid="1202" skill="寻觅" unlock="2" />
+<skill  skillid="1203" skill="推倒" unlock="3" />
+<skill  skillid="1204" skill="丛林伏击" unlock="4" />
+<skill  skillid="1205" skill="野性奔腾" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14075" arm2="14012" arm3="14018" arm4="14019" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="224" name="喵喵" img="122" description="" quality="1" position="2" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="224" name="喵喵" img="122" description="" quality="1" position="2" handbook="1" zhanli="100" ad="24" ad_rare="6" ap="52" ap_rare="" arm="11.25" arm_rare="16" mr="30" mr_rare="" adi="" adi_rare="" api=".6" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="2401" skill="幸运签" unlock="1" />
+<skill  skillid="2402" skill="万能牌" unlock="2" />
+<skill  skillid="2404" skill="卡牌骗术" unlock="3" />
+<skill  skillid="2403" skill="选牌" unlock="4" />
+<skill  skillid="2405" skill="命运" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14012" arm2="14019" arm3="14017" arm4="14005" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="225" name="武道家" img="1104" description="" quality="3" position="4" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="225" name="武道家" img="1104" description="" quality="3" position="4" handbook="1" zhanli="100" ad="14" ad_rare="5.5" ap="45" ap_rare="" arm="12" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="6001" skill="烈焰之柱" unlock="1" />
+<skill  skillid="6002" skill="炽热之焰" unlock="2" />
+<skill  skillid="6003" skill="火焰烙印" unlock="3" />
+<skill  skillid="6004" skill="烈火燃烧" unlock="4" />
+<skill  skillid="6005" skill="烈焰风暴" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10001" arm6="10007" />
+<equip equipid="2" arm1="14009" arm2="14015" arm3="14012" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="226" name="女武道家" img="1105" description="" quality="3" position="4" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="226" name="女武道家" img="1105" description="" quality="3" position="4" handbook="1" zhanli="100" ad="32" ad_rare="10" ap="36" ap_rare="4" arm="9" arm_rare="18.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="10" >
 <skill> 
+<skill  skillid="9401" skill="奇思妙想" unlock="1" />
+<skill  skillid="9402" skill="闪耀长枪" unlock="2" />
+<skill  skillid="9403" skill="帮忙，皮克斯" unlock="3" />
+<skill  skillid="9404" skill="皮克斯伙伴" unlock="4" />
+<skill  skillid="9405" skill="狂野生长" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14009" arm2="14018" arm3="14015" arm4="14005" arm5="14045" arm6="14026" />
 </equip> 
 </hero> 
-<hero id="227" name="头盔人" img="107" description="" quality="2" position="4" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="227" name="头盔人" img="107" description="" quality="2" position="4" handbook="1" zhanli="100" ad="60" ad_rare="15" ap="28" ap_rare="" arm="25.8" arm_rare="17.5" mr="32" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="10" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="10201" skill="无形掠食者" unlock="1" />
+<skill  skillid="10202" skill="残忍无情" unlock="2" />
+<skill  skillid="10203" skill="战争咆哮" unlock="3" />
+<skill  skillid="10204" skill="套索打击" unlock="4" />
+<skill  skillid="10205" skill="狩猎律动" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14065" arm2="14050" arm3="14049" arm4="14007" arm5="14043" arm6="14035" />
 </equip> 
 </hero> 
-<hero id="228" name="钢盔人" img="108" description="" quality="2" position="4" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="228" name="钢盔人" img="108" description="" quality="2" position="4" handbook="1" zhanli="100" ad="50" ad_rare="15" ap="25" ap_rare="" arm="15" arm_rare="15" mr="30" mr_rare="6" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="10" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="10401" skill="虚空突刺" unlock="1" />
+<skill  skillid="10402" skill="无形威胁" unlock="2" />
+<skill  skillid="10403" skill="品尝恐惧" unlock="3" />
+<skill  skillid="10404" skill="跃击" unlock="4" />
+<skill  skillid="10405" skill="虚空来袭" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10006" arm2="10003" arm3="10003" arm4="10001" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14065" arm2="14050" arm3="14049" arm4="14007" arm5="14043" arm6="14035" />
 </equip> 
 </hero> 
-<hero id="229" name="哥布林" img="118" description="" quality="1" position="4" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="229" name="哥布林" img="118" description="" quality="1" position="4" handbook="1" zhanli="100" ad="50" ad_rare="15" ap="31" ap_rare="" arm="13" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="13" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="11601" skill="罪恶快感" unlock="1" />
+<skill  skillid="11602" skill="超究极死神飞弹" unlock="2" />
+<skill  skillid="11603" skill="枪炮交响曲" unlock="3" />
+<skill  skillid="11604" skill="震荡电磁波" unlock="4" />
+<skill  skillid="11605" skill="火炮加强" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14058" arm2="14055" arm3="14057" arm4="14061" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="230" name="牛头怪" img="119" description="" quality="1" position="4" handbook="1" zhanli="" ad="" ad_rare="" ap="" ap_rare="" arm="" arm_rare="" mr="" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="230" name="牛头怪" img="119" description="" quality="1" position="4" handbook="1" zhanli="100" ad="55" ad_rare="15" ap="26" ap_rare="" arm="19" arm_rare="17.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="12" steal="" steal_rare="" >
 <skill> 
+<skill  skillid="12201" skill="武术姿态" unlock="1" />
+<skill  skillid="12202" skill="穿刺" unlock="2" />
+<skill  skillid="12203" skill="哨兵" unlock="3" />
+<skill  skillid="12204" skill="撕裂" unlock="4" />
+<skill  skillid="12205" skill="命运的召唤" unlock="5" />
 </skill> 
 <star> 
+<star  starid="1" starvalue="6" />
+<star  starid="2" starvalue="7" />
+<star  starid="3" starvalue="8" />
+<star  starid="4" starvalue="9.2" />
+<star  starid="5" starvalue="11" />
+<star  starid="6" starvalue="13.2" />
+<star  starid="7" starvalue="16" />
 </star> 
 <equip> 
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10002" arm6="10007" />
+<equip equipid="2" arm1="14055" arm2="14056" arm3="14053" arm4="14063" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
 </data>

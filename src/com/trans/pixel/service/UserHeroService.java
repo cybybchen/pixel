@@ -68,7 +68,7 @@ public class UserHeroService {
 			}
 		}
 		for (HeroInfoBean heroInfo : userHeroList) {
-			if (heroInfo.unlockSkill(heroService.getHero(heroInfo.getHeroId()), skillService.getSkillLevelList()))
+			if (skillService.unlockHeroSkill(heroInfo.getHeroId(), heroInfo))
 				updateUserHero(heroInfo);
 		}
 		
