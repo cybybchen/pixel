@@ -1514,8 +1514,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10004" arm6="10004" />
-<equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="13040" />
+<equip equipid="1" arm1="10004" arm2="10004" arm3="10004" arm4="10004" arm5="10004" arm6="10007" />
+<equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="14029" />
 </equip> 
 </hero> 
 <hero id="218" name="老头" img="1402" description="隐藏在竹林中的高手。" quality="1" position="0" handbook="1" zhanli="60" ad="20" ad_rare=".5" ap="10" ap_rare="1" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
@@ -1668,8 +1668,8 @@
 <star  starid="7" starvalue="12.3" />
 </star> 
 <equip> 
-<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10005" arm6="10005" />
-<equip equipid="2" arm1="14056" arm2="14056" arm3="14056" arm4="14063" arm5="14063" arm6="14063" />
+<equip equipid="1" arm1="10003" arm2="10003" arm3="10003" arm4="10005" arm5="10005" arm6="10007" />
+<equip equipid="2" arm1="14056" arm2="14056" arm3="14056" arm4="14063" arm5="14063" arm6="14031" />
 </equip> 
 </hero> 
 <hero id="225" name="武道家" img="1104" description="擅长踢馆的高手。" quality="3" position="4" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
