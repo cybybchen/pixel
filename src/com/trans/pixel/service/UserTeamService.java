@@ -242,7 +242,7 @@ public class UserTeamService {
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
 			// log.debug(strengthen+" : "+pre);
-			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * hero.getLevel() * (hero.getLevel() + 1) / 2 * 0.8 + 75 * hero.getRare() * (hero.getRare() - 1) / 2;
+			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * hero.getLevel() * (hero.getLevel() + 1) / 2 * 0.8 + 2.1 * hero.getLevel() * (hero.getLevel() - 1) / 2;
 			for(String equipid : hero.getEquipInfo().split("\\|")){
 				int id = TypeTranslatedUtil.stringToInt(equipid);
 				if(id == 0)
