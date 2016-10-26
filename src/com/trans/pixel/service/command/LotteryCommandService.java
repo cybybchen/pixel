@@ -117,7 +117,7 @@ public class LotteryCommandService extends BaseCommandService {
 			if (type != LotteryConst.LOOTERY_SPECIAL_TYPE && type != RewardConst.EQUIPMENT && ifFirstLottery(user, type) && count == 1)
 				lotteryList = firstLotteryReward(user, type);
 			else
-				lotteryList = lotteryService.randomLotteryList(type, count);
+				lotteryList = lotteryService.randomLotteryList(type, count, user);
 		}
 		
 		/**
@@ -247,6 +247,7 @@ public class LotteryCommandService extends BaseCommandService {
 			case RewardConst.JEWEL :
 				user.setLotteryStatus(user.getLotteryStatus() + 1 << 2);
 				rewardList.add(RewardBean.init(53078, 1));
+				user.setJewelPRD(user.getJewelPRD() + 1);
 				break;
 			default:
 				break;

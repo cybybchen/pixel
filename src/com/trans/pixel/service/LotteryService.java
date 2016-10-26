@@ -2,13 +2,14 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.LotteryConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.LotteryActivity;
@@ -26,6 +27,8 @@ public class LotteryService {
 	private CostService costService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private UserService userService;
     
     private List<RewardBean> getLotteryList(int type) {
     	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
@@ -35,31 +38,34 @@ public class LotteryService {
         return lotteryList;
     }
     
-    public RewardBean randomLottery(int type, long userId) {
-    	List<RewardBean> lotteryList = getLotteryList(type);
-    	int totalWeight = 0;
-    	for (RewardBean lottery : lotteryList) {
-    		totalWeight += lottery.getWeight();
-    	}
-    	Random rand = new Random();
-    	int randNum = rand.nextInt(lotteryList.size());
-    	RewardBean lottery = lotteryList.get(randNum);
-		int circleCount = 0;
-		while (circleCount < 20 && rand.nextInt(totalWeight) > lottery.getWeight()) {
-			randNum = rand.nextInt(lotteryList.size());
-			lottery = lotteryList.get(randNum);
-			circleCount++;
-		}
-		
-		return lottery;
-    }
+//    public RewardBean randomLottery(int type, long userId) {
+//    	List<RewardBean> lotteryList = getLotteryList(type);
+//    	int totalWeight = 0;
+//    	for (RewardBean lottery : lotteryList) {
+//    		totalWeight += lottery.getWeight();
+//    	}
+//    	Random rand = new Random();
+//    	int randNum = rand.nextInt(lotteryList.size());
+//    	RewardBean lottery = lotteryList.get(randNum);
+//		int circleCount = 0;
+//		while (circleCount < 20 && rand.nextInt(totalWeight) > lottery.getWeight()) {
+//			randNum = rand.nextInt(lotteryList.size());
+//			lottery = lotteryList.get(randNum);
+//			circleCount++;
+//		}
+//		
+//		return lottery;
+//    }
 	
-	public List<RewardBean> randomLotteryList(int type, int count) {
+	public List<RewardBean> randomLotteryList(int type, int count, UserBean user) {
     	List<RewardBean> lotteryList = getLotteryList(type);
     	List<RewardBean> willLotteryList = new ArrayList<RewardBean>();
+    	List<RewardBean> prdLotteryList = new ArrayList<RewardBean>();
 
     	for (RewardBean lottery : lotteryList) {
     		if (lottery.getWill() == 1)
+    			willLotteryList.add(lottery);
+    		if (lottery.getWill() == 2)
     			willLotteryList.add(lottery);
     	}
    
@@ -70,8 +76,29 @@ public class LotteryService {
 	    		randomLotteryList.add(willReward);
     	}
     		
-    	randomLotteryList.addAll(rewardService.randomRewardList(lotteryList, count - randomLotteryList.size()));
+    	while (randomLotteryList.size() < count) {
+    		if (type == RewardConst.JEWEL || type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
+    			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD()) * 2) {
+    				randomLotteryList.add(rewardService.randomReward(prdLotteryList));
+    				if (type == RewardConst.JEWEL)
+    					user.setJewelPRD(0);
+    				else
+    					user.setHunxiaPRD(0);
+    				continue;
+    			} else {
+    				if (type == RewardConst.JEWEL)
+    					user.setJewelPRD(user.getJewelPRD() + 1);
+    				else
+    					user.setHunxiaPRD(user.getHunxiaPRD() + 1);
+    			}	
+    		}
+    		
+    		randomLotteryList.add(rewardService.randomReward(lotteryList));
+    	}
     	
+//    	randomLotteryList.addAll(rewardService.randomRewardList(lotteryList, count - randomLotteryList.size()));
+    	
+    	userService.updateUser(user);
     	return randomLotteryList;
     }
 	

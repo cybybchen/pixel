@@ -99,6 +99,8 @@ public class UserBean {
 	private int sevenLoginDays = 0;
 	private int sevenSignStatus = 0;
 	private Map<String, Integer> unionBossMap = new HashMap<String, Integer>();
+	private int jewelPRD = 0;
+	private int hunxiaPRD = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1020,6 +1022,18 @@ public class UserBean {
 	}
 	public void setUnionBossMap(Map<String, Integer> unionBossMap) {
 		this.unionBossMap = unionBossMap;
+	}
+	public int getJewelPRD() {
+		return jewelPRD;
+	}
+	public void setJewelPRD(int jewelPRD) {
+		this.jewelPRD = jewelPRD;
+	}
+	public int getHunxiaPRD() {
+		return hunxiaPRD;
+	}
+	public void setHunxiaPRD(int hunxiaPRD) {
+		this.hunxiaPRD = hunxiaPRD;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
