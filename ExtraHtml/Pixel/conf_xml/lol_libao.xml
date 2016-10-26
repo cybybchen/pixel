@@ -317,4 +317,19 @@
 <item id="5" itemid="55096" count="1" />
 <item id="6" itemid="37001" count="50" />
 </libao>
+<libao itemid="42501" name="物法双修流初级礼包" img="libao_2_1" rare="3" description="包含1星赵信，伊泽瑞尔，韦鲁斯各1个和5个强化水晶（获得300点vip经验）" value="0" cost="0" ><item id="1" itemid="51005" count="1" />
+<item id="2" itemid="51011" count="1" />
+<item id="3" itemid="51096" count="1" />
+<item id="4" itemid="37001" count="5" />
+</libao>
+<libao itemid="42502" name="物法双修流高级礼包" img="libao_2_2" rare="4" description="包含3星赵信，伊泽瑞尔，韦鲁斯各1个和15个强化水晶（获得980点vip经验）" value="0" cost="0" ><item id="1" itemid="53005" count="1" />
+<item id="2" itemid="53011" count="1" />
+<item id="3" itemid="53096" count="1" />
+<item id="4" itemid="37001" count="15" />
+</libao>
+<libao itemid="42503" name="物法双修流超级礼包" img="libao_2_3" rare="5" description="包含5星赵信，伊泽瑞尔，韦鲁斯各1个和50个强化水晶（获得3280点vip经验）" value="0" cost="0" ><item id="1" itemid="55005" count="1" />
+<item id="2" itemid="55011" count="1" />
+<item id="3" itemid="55096" count="1" />
+<item id="4" itemid="37001" count="50" />
+</libao>
 </data>
