@@ -66,7 +66,7 @@ public class LotteryService {
     		if (lottery.getWill() == 1)
     			willLotteryList.add(lottery);
     		if (lottery.getWill() == 2)
-    			willLotteryList.add(lottery);
+    			prdLotteryList.add(lottery);
     	}
    
     	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
@@ -79,7 +79,9 @@ public class LotteryService {
     	while (randomLotteryList.size() < count) {
     		if (type == RewardConst.JEWEL || type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
     			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD()) * 2) {
-    				randomLotteryList.add(rewardService.randomReward(prdLotteryList));
+    				RewardBean reward = rewardService.randomReward(prdLotteryList);
+    				if (reward != null)
+    					randomLotteryList.add(reward);
     				if (type == RewardConst.JEWEL)
     					user.setJewelPRD(0);
     				else
@@ -93,7 +95,8 @@ public class LotteryService {
     			}	
     		}
     		
-    		randomLotteryList.add(rewardService.randomReward(lotteryList));
+    		RewardBean reward = rewardService.randomReward(lotteryList);
+    		randomLotteryList.add(reward);
     	}
     	
 //    	randomLotteryList.addAll(rewardService.randomRewardList(lotteryList, count - randomLotteryList.size()));

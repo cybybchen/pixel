@@ -80,10 +80,10 @@
 <equip id="78" itemid="52224" count="1" weight="500" will="0" />
 <equip id="79" itemid="52229" count="1" weight="500" will="0" />
 <equip id="80" itemid="52230" count="1" weight="500" will="0" />
-<equip id="81" itemid="53039" count="1" weight="280" will="2" />
-<equip id="82" itemid="53058" count="1" weight="270" will="2" />
-<equip id="83" itemid="53075" count="1" weight="290" will="2" />
-<equip id="84" itemid="53108" count="1" weight="272" will="2" />
+<equip id="81" itemid="53039" count="1" weight="55" will="2" />
+<equip id="82" itemid="53058" count="1" weight="55" will="2" />
+<equip id="83" itemid="53075" count="1" weight="55" will="2" />
+<equip id="84" itemid="53108" count="1" weight="55" will="2" />
 <equip id="85" itemid="53001" count="1" weight="220" will="0" />
 <equip id="86" itemid="53005" count="1" weight="250" will="0" />
 <equip id="87" itemid="53009" count="1" weight="240" will="0" />

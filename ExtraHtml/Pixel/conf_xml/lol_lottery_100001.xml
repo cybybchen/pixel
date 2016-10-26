@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<equip id="1" itemid="53036" count="1" weight="110" will="2" />
-<equip id="2" itemid="53040" count="1" weight="110" will="2" />
-<equip id="3" itemid="53039" count="1" weight="79" will="2" />
-<equip id="4" itemid="53058" count="1" weight="69" will="2" />
-<equip id="5" itemid="53075" count="1" weight="79" will="2" />
-<equip id="6" itemid="53108" count="1" weight="72" will="2" />
+<equip id="1" itemid="53036" count="1" weight="22" will="2" />
+<equip id="2" itemid="53040" count="1" weight="22" will="2" />
+<equip id="3" itemid="53039" count="1" weight="13" will="2" />
+<equip id="4" itemid="53058" count="1" weight="13" will="2" />
+<equip id="5" itemid="53075" count="1" weight="14" will="2" />
+<equip id="6" itemid="53108" count="1" weight="14" will="2" />
 <equip id="7" itemid="53001" count="1" weight="88" will="0" />
 <equip id="8" itemid="53005" count="1" weight="88" will="0" />
 <equip id="9" itemid="53009" count="1" weight="90" will="0" />
@@ -29,7 +29,7 @@
 <equip id="27" itemid="53032" count="1" weight="130" will="0" />
 <equip id="28" itemid="53042" count="1" weight="130" will="0" />
 <equip id="29" itemid="53048" count="1" weight="130" will="0" />
-<equip id="30" itemid="53050" count="1" weight="88" will="0" />
+<equip id="30" itemid="53050" count="1" weight="130" will="0" />
 <equip id="31" itemid="53052" count="1" weight="130" will="0" />
 <equip id="32" itemid="53055" count="1" weight="130" will="0" />
 <equip id="33" itemid="53061" count="1" weight="130" will="0" />
