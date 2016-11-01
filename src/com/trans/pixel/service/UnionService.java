@@ -942,12 +942,15 @@ public class UnionService extends FightService{
 		
 		if (unionBossRecord != null) {
 			Date bossStartTime = DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), boss.getRefreshtime());
-			String bossEnd = getUnionBossEndTime(union, boss.getId());
-			if (!bossEnd.isEmpty()) {
-				if (DateUtil.getDate(bossEnd).after(bossStartTime)) {
-					return false;
-				}
-			}
+//			String bossEnd = getUnionBossEndTime(union, boss.getId());
+//			if (!bossEnd.isEmpty()) {
+//				if (DateUtil.getDate(bossEnd).after(bossStartTime)) {
+//					return false;
+//				}
+//			}
+			if (!bossStartTime.after(bossTime) && current.after(bossTime))
+				return true;
+			
 			Date bossEndTime = DateUtil.getFutureDay(DateUtil.getDate(unionBossRecord.getEndTime()), 1);
 			if (current.before(bossEndTime) && current.after(bossStartTime))
 				return true;
