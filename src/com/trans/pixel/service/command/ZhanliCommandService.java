@@ -35,7 +35,8 @@ public class ZhanliCommandService extends BaseCommandService {
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
 		int zhanli = cmd.getZhanli();
-		if(user.getZhanliMax() < zhanli){
+		if(user.getZhanliMax() < zhanli || user.getFirstAddedtoZhanli() == 0){
+			user.setFirstAddedtoZhanli(1);
 			Team team = userTeamService.getTeamCache(user);
 			if(team.getUser().getZhanli() < zhanli){
 				log.debug("submit zhanli "+zhanli +" < real "+team.getUser().getZhanli());

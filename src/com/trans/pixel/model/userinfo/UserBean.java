@@ -101,6 +101,7 @@ public class UserBean {
 	private Map<String, Integer> unionBossMap = new HashMap<String, Integer>();
 	private int jewelPRD = 0;
 	private int hunxiaPRD = 0;
+	private int firstAddedtoZhanli = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1034,6 +1035,12 @@ public class UserBean {
 	}
 	public void setHunxiaPRD(int hunxiaPRD) {
 		this.hunxiaPRD = hunxiaPRD;
+	}
+	public int getFirstAddedtoZhanli() {
+		return firstAddedtoZhanli;
+	}
+	public void setFirstAddedtoZhanli(int firstAddedtoZhanli) {
+		this.firstAddedtoZhanli = firstAddedtoZhanli;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
