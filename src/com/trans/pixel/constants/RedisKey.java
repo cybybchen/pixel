@@ -255,6 +255,9 @@ public class RedisKey {
 	//hero loot config
 	public static final String HERO_LOOT_CONFIG = PREFIX + CONFIG_PREFIX + "hero_loot";
 	
+	//hero rare levelup
+	public static final String HERO_RARE_LEVELUP_CONFIG = PREFIX + CONFIG_PREFIX + "hero_rare_levelup";
+	
 	//notice prefix
 	public static final String NOTICE_PREFIX = PREFIX + "notice_";
 	

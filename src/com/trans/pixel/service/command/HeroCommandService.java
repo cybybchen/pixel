@@ -106,12 +106,13 @@ public class HeroCommandService extends BaseCommandService {
 		if (cmd.hasSkillId())
 			skillId = cmd.getSkillId();
 		List<Long> costInfoIds = new ArrayList<Long>();
+		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		costInfoIds.addAll(cmd.getCostInfoIdList());
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, infoId);
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		
 		if (heroInfo != null) {
-			result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds);
+			result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds, equipList);
 			if (result instanceof SuccessConst)
 				skillService.unlockHeroSkill(heroId, heroInfo);
 		}
@@ -173,6 +174,8 @@ public class HeroCommandService extends BaseCommandService {
 		responseBuilder.setHeroResultCommand(builder.build());
 			
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		if (equipList.size() > 0)
+			pushCommandService.pushUserEquipListCommand(responseBuilder, user, equipList);
 	}
 	
 	//not useful

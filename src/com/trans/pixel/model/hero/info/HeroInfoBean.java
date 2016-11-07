@@ -28,6 +28,7 @@ public class HeroInfoBean {
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 	private long userId = 0;
 	private String skillInfo = "";
+	private int rank = 0;
 	public String getSkillInfo() {
 		return skillInfo;
 	}
@@ -100,9 +101,16 @@ public class HeroInfoBean {
 	public void setSkillInfoList(List<SkillInfoBean> skillInfoList) {
 		this.skillInfoList = skillInfoList;
 	}
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 	
 	public void levelUpRare() {
-		rare++;
+//		rare++;
+		rank++;
 	}
 	
 	public int getEquipIdByArmId(int armId) {
@@ -143,6 +151,7 @@ public class HeroInfoBean {
 		isLock = hero.isLock();
 		skillInfoList = hero.getSkillInfoList();
 		userId = hero.getUserId();
+		rank = hero.getRank();
 	}
 	
 	public String toJson() {
@@ -157,6 +166,7 @@ public class HeroInfoBean {
 		json.put(SKILL_INFO_LIST, skillInfoList);
 		json.put(HERO_ID, heroId);
 		json.put(USER_ID, userId);
+		json.put(RANK, rank);
 		
 		return json.toString();
 	}
@@ -192,6 +202,7 @@ public class HeroInfoBean {
 			list.add(skillInfo);
 		}
 		bean.setSkillInfoList(list);
+		bean.setRank(TypeTranslatedUtil.jsonGetInt(json, RANK));
 
 		return bean;
 	}
@@ -207,6 +218,7 @@ public class HeroInfoBean {
 		builder.setIsLock(isLock);
 		builder.setHeroId(heroId);
 		builder.addAllSkill(buildSkillList());
+		builder.setRank(rank);
 		
 		return builder.build();
 	}
@@ -220,6 +232,7 @@ public class HeroInfoBean {
 		builder.setValue(value);
 		builder.setStar(starLevel);
 		builder.addAllSkill(buildSkillList());
+		builder.setRank(rank);
 		
 		return builder.build();
 	}
@@ -238,6 +251,7 @@ public class HeroInfoBean {
 			builder.addClear(userClear.buildUserClear());
 		}
 		builder.setStrengthen(userPokede.getStrengthen());
+		builder.setRank(rank);
 		
 		return builder.build();
 	}
@@ -386,4 +400,5 @@ public class HeroInfoBean {
 	
 	private static final String EQUIP_SPLIT = "|";
 	private static final String USER_ID = "user_id";
+	private static final String RANK = "rank";
 }

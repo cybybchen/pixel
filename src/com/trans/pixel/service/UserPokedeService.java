@@ -66,14 +66,19 @@ public class UserPokedeService {
 	
 	public void updateUserPokede(HeroInfoBean heroInfo, UserBean user) {
 		UserPokedeBean userPokede = selectUserPokede(user, heroInfo.getHeroId());
-		if (userPokede.getRare() < heroInfo.getRare()) {
-			userPokede.setRare(heroInfo.getRare());
+//		if (userPokede.getRare() < heroInfo.getRare()) {
+//			userPokede.setRare(heroInfo.getRare());
+//			updateUserPokede(userPokede, user);
+//		}
+		if (userPokede.getRank() < heroInfo.getRank()) {
+			userPokede.setRank(heroInfo.getRank());
 			updateUserPokede(userPokede, user);
 		}
 	}
 	
 	public void delUserPokede(UserPokedeBean userPokede, UserBean user){
-		userPokede.setRare(0);
+//		userPokede.setRare(0);
+		userPokede.setRank(0);
 		updateUserPokede(userPokede, user);
 	}
 	

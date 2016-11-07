@@ -34,6 +34,8 @@ public class HeroBean {
 	private List<HeroSkillBean> skillList = new ArrayList<HeroSkillBean>();
 	private List<HeroStarBean> starList = new ArrayList<HeroStarBean>();
 	private List<HeroEquipBean> equipList = new ArrayList<HeroEquipBean>();
+	private int quality = 0;
+	private int position = 0;
 	public int getId() {
 		return id;
 	}
@@ -145,7 +147,18 @@ public class HeroBean {
 	public static String getMrLv() {
 		return MR_LV;
 	}
-
+	public int getQuality() {
+		return quality;
+	}
+	public void setQuality(int quality) {
+		this.quality = quality;
+	}
+	public int getPosition() {
+		return position;
+	}
+	public void setPosition(int position) {
+		this.position = position;
+	}
 	public HeroEquipBean getEquip(int equipId) {
 		for (HeroEquipBean equip : equipList) {
 			if (equip.getEquipid() == equipId)
@@ -173,6 +186,8 @@ public class HeroBean {
 		json.put(SKILL, skillList);
 		json.put(STAR, starList);
 		json.put(EQUIP, equipList);
+		json.put(QUALITY, quality);
+		json.put(POSITION, position);
 		
 		return json.toString();
 	}
@@ -219,6 +234,8 @@ public class HeroBean {
 			equipList.add(equip);
 		}
 		bean.setEquipList(equipList);
+		bean.setQuality(json.getInt(QUALITY));
+		bean.setPosition(json.getInt(POSITION));
 		
 		return bean;
 	}
@@ -254,6 +271,8 @@ public class HeroBean {
 				hero.setSkillList(HeroSkillBean.xmlParse(heroElement.element(SKILL)));
 				hero.setStarList(HeroStarBean.xmlParse(heroElement.element(STAR)));
 				hero.setEquipList(HeroEquipBean.xmlParse(heroElement.element(EQUIP)));
+				hero.setQuality(TypeTranslatedUtil.stringToInt(heroElement.attributeValue(QUALITY)));
+				hero.setPosition(TypeTranslatedUtil.stringToInt(heroElement.attributeValue(POSITION)));
 				
 				list.add(hero);
 			}
@@ -281,4 +300,6 @@ public class HeroBean {
 	private static final String SKILL = "skill";
 	private static final String STAR = "star";
 	private static final String EQUIP = "equip";
+	private static final String QUALITY = "quality";
+	private static final String POSITION = "position";
 }

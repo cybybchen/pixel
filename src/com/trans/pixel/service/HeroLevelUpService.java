@@ -21,6 +21,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 
 @Service
 public class HeroLevelUpService {
@@ -60,7 +61,7 @@ public class HeroLevelUpService {
 	@Resource
 	private LogService logService;
 	
-	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds) {
+	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds, List<UserEquipBean> equipList) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
 			case TYPE_HEROLEVEL:
@@ -70,7 +71,7 @@ public class HeroLevelUpService {
 				result = levelUpStar(user, heroInfo, costInfoIds);
 				break;
 			case TYPE_RARELEVEL:
-				result = levelUpRare(user, heroInfo);
+				result = levelUpRare(user, heroInfo, equipList);
 				break;
 			case TYPE_SKILLLEVEL:
 				result = levelUpSkill(user, heroInfo, skillId);
@@ -238,12 +239,15 @@ public class HeroLevelUpService {
 		return addValue;
 	}
 	
-	private ResultConst levelUpRare(UserBean user, HeroInfoBean heroInfo) {
+	private ResultConst levelUpRare(UserBean user, HeroInfoBean heroInfo, List<UserEquipBean> equipList) {
 		int heroEquipLevel = equipService.calHeroEquipLevel(heroInfo);
-		int needLevel = heroRareService.getRare(heroInfo.getRare() + 1);
-		if (needLevel == 0 || needLevel > heroEquipLevel) {
+		HeroRareLevelupRank herorareRank = heroRareService.getHeroRare(heroInfo);
+		if (herorareRank == null || herorareRank.getRare() > heroEquipLevel) {
 			return ErrorConst.LEVELUP_RARE_ERROR;
 		}
+		
+		if (!equipService.canHeroRareLevelup(user, heroInfo, herorareRank, equipList))
+			return ErrorConst.LEVELUP_RARE_NOT_ENOUGH_EQUIP_ERROR;
 		
 		heroInfo.levelUpRare();
 		
@@ -253,9 +257,17 @@ public class HeroLevelUpService {
 		userPokedeService.updateUserPokede(heroInfo, user);
 		
 		/**
+		 * 更新装备
+		 */
+		for (UserEquipBean userEquip : equipList) {
+			userEquip.setUserId(user.getId());
+			userEquipService.updateUserEquip(userEquip);
+		}
+		
+		/**
 		 * 培养英雄的活动
 		 */
-//		activityService.heroLevelupRareActivity(user, heroInfo.getRare());
+		activityService.heroLevelupRareActivity(user, heroInfo.getRare());
 		
 		/**
 		 * send rareup log
@@ -264,6 +276,33 @@ public class HeroLevelUpService {
 		
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}
+	
+//	private ResultConst levelUpRare(UserBean user, HeroInfoBean heroInfo) {
+//		int heroEquipLevel = equipService.calHeroEquipLevel(heroInfo);
+//		int needLevel = heroRareService.getRare(heroInfo.getRare() + 1);
+//		if (needLevel == 0 || needLevel > heroEquipLevel) {
+//			return ErrorConst.LEVELUP_RARE_ERROR;
+//		}
+//		
+//		heroInfo.levelUpRare();
+//		
+//		/**
+//		 * 更新图鉴
+//		 */
+//		userPokedeService.updateUserPokede(heroInfo, user);
+//		
+//		/**
+//		 * 培养英雄的活动
+//		 */
+////		activityService.heroLevelupRareActivity(user, heroInfo.getRare());
+//		
+//		/**
+//		 * send rareup log
+//		 */
+//		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getRare());
+//		
+//		return SuccessConst.LEVELUP_RARE_SUCCESS;
+//	}
 	
 	private ResultConst levelUpSkill(UserBean user, HeroInfoBean heroInfo, int skillId) {
 		SkillInfoBean skillInfo = heroInfo.getSKillInfo(skillId);

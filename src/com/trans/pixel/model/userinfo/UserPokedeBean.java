@@ -13,6 +13,7 @@ public class UserPokedeBean {
 	private int level = 0;
 	private int count = 0;
 	private int strengthen = 0;
+	private int rank = 0;
 	public long getUserId() {
 		return userId;
 	}
@@ -49,6 +50,12 @@ public class UserPokedeBean {
 	public void setStrengthen(int strengthen) {
 		this.strengthen = strengthen;
 	}
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 	public HeroInfo buildUserPokede(List<UserClearBean> userClearList) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		
@@ -60,6 +67,7 @@ public class UserPokedeBean {
 			builder.addClear(userClear.buildUserClear());
 		}
 		builder.setStrengthen(strengthen);
+		builder.setRank(rank);
 		
 		return builder.build();
 	}

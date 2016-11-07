@@ -22,6 +22,8 @@ import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.protoc.Commands.HeroChoice;
 import com.trans.pixel.protoc.Commands.HeroChoiceList;
+import com.trans.pixel.protoc.Commands.HeroRareLevelup;
+import com.trans.pixel.protoc.Commands.HeroRareLevelupList;
 import com.trans.pixel.protoc.Commands.Heroloot;
 import com.trans.pixel.protoc.Commands.HerolootList;
 
@@ -30,6 +32,7 @@ public class HeroRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(HeroRedisService.class);
 	private static final String HEROCHOICE_FILE_NAME = "lol_herochoice.xml";
 	private static final String HEROLOOT_FILE_NAME = "lol_heroloot.xml";
+	private static final String HERORARE_LEVELUP_FILE_NAME = "lol_rank1.xml";
 	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
@@ -207,6 +210,57 @@ public class HeroRedisService extends RedisService {
 		Map<String, Heroloot> map = new HashMap<String, Heroloot>();
 		for(Heroloot.Builder heroloot : builder.getHeroBuilderList()){
 			map.put("" + heroloot.getItemid(), heroloot.build());
+		}
+		return map;
+	}
+	
+	//hero loot
+	public HeroRareLevelup getHeroRareLevelup(int position) {
+		String value = hget(RedisKey.HERO_RARE_LEVELUP_CONFIG, "" + position);
+		if (value == null) {
+			Map<String, HeroRareLevelup> heroRareLevelupConfig = getHeroRareLevelupConfig();
+			return heroRareLevelupConfig.get("" + position);
+		} else {
+			HeroRareLevelup.Builder builder = HeroRareLevelup.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	private Map<String, HeroRareLevelup> getHeroRareLevelupConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.HERO_RARE_LEVELUP_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, HeroRareLevelup> map = buildHeroRareLevelupConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, HeroRareLevelup> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.HERO_RARE_LEVELUP_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, HeroRareLevelup> map = new HashMap<String, HeroRareLevelup>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				HeroRareLevelup.Builder builder = HeroRareLevelup.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, HeroRareLevelup> buildHeroRareLevelupConfig(){
+		String xml = ReadConfig(HERORARE_LEVELUP_FILE_NAME);
+		HeroRareLevelupList.Builder builder = HeroRareLevelupList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + HERORARE_LEVELUP_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, HeroRareLevelup> map = new HashMap<String, HeroRareLevelup>();
+		for(HeroRareLevelup.Builder herorare : builder.getIdBuilderList()){
+			map.put("" + herorare.getPosition(), herorare.build());
 		}
 		return map;
 	}

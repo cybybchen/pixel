@@ -17,12 +17,14 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.FenjieLevelBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.protoc.Commands.Chip;
 import com.trans.pixel.protoc.Commands.ClearFood;
+import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.protoc.Commands.Item;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -46,6 +48,8 @@ public class EquipService {
 	private ClearRedisService clearRedisService;
 	@Resource
 	private UserFoodService userFoodService;
+	@Resource
+	private HeroService heroService;
 	
 	public EquipmentBean getEquip(int itemId) {
 		EquipmentBean equip = equipRedisService.getEquip(itemId);
@@ -229,6 +233,35 @@ public class EquipService {
 			
 		}
 		return rewardList;
+	}
+	
+	public boolean canHeroRareLevelup(UserBean user, HeroInfoBean heroInfo, HeroRareLevelupRank herorare, List<UserEquipBean> equipList) {
+		HeroBean hero = heroService.getHero(heroInfo.getHeroId());
+			
+		equipList.add(UserEquipBean.initUserEquip(herorare.getEquip1(), 
+				userEquipService.selectUserEquip(user.getId(), herorare.getEquip1()).getEquipCount() - herorare.getCount1()));
+		if (hero.getQuality() >= 2)
+			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip2(), 
+					userEquipService.selectUserEquip(user.getId(), herorare.getEquip2()).getEquipCount() - herorare.getCount2()));
+		
+		if (hero.getQuality() >= 3)
+			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip3(), 
+					userEquipService.selectUserEquip(user.getId(), herorare.getEquip3()).getEquipCount() - herorare.getCount3()));
+		
+		if (hero.getQuality() >= 4)
+			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip4(), 
+					userEquipService.selectUserEquip(user.getId(), herorare.getEquip4()).getEquipCount() - herorare.getCount4()));
+		
+		if (hero.getQuality() >= 5)
+			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip5(), 
+					userEquipService.selectUserEquip(user.getId(), herorare.getEquip5()).getEquipCount() - herorare.getCount5()));	
+		
+		for (UserEquipBean userEquip : equipList) {
+			if (userEquip.getEquipCount() < 0)
+				return false;
+		}
+		
+		return true;
 	}
 	
 	private int getSaleRewardCount(int itemId, int itemCount) {
