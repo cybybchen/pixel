@@ -7,11 +7,11 @@
 <fetters fettersid="30032" fettersdes="100速度" >
 <hero heroid="86" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="103" fettersdes="自身黑枪射击变态" >
+<fetters fettersid="30050" fettersdes="自身黑枪射击变态" >
 <hero heroid="42" herostar="3" herorank="1" />
 <hero heroid="78" herostar="3" herorank="2" />
 </fetters>
-<fetters fettersid="104" fettersdes="自身+100攻击力" >
+<fetters fettersid="30051" fettersdes="自身+100攻击力" >
 <hero heroid="223" herostar="3" herorank="1" />
 </fetters>
 </order>
@@ -24,10 +24,10 @@
 <hero heroid="63" herostar="3" herorank="1" />
 <hero heroid="17" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="503" fettersdes="自身+25攻击力" >
+<fetters fettersid="30050" fettersdes="自身+25攻击力" >
 <hero heroid="201" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="504" fettersdes="自身+15穿透" >
+<fetters fettersid="30051" fettersdes="自身+15穿透" >
 <hero heroid="212" herostar="3" herorank="1" />
 <hero heroid="223" herostar="3" herorank="1" />
 </fetters>
@@ -47,7 +47,7 @@
 <hero heroid="97" herostar="3" herorank="1" />
 <hero heroid="50" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="902" fettersdes="自身+2%暴击伤害" >
+<fetters fettersid="30032" fettersdes="自身+2%暴击伤害" >
 <hero heroid="27" herostar="3" herorank="1" />
 </fetters>
 </order>
@@ -57,7 +57,7 @@
 <hero heroid="74" herostar="3" herorank="1" />
 <hero heroid="27" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="1102" fettersdes="秘书射击获得5.5%多重施法" >
+<fetters fettersid="30032" fettersdes="秘书射击获得5.5%多重施法" >
 <hero heroid="27" herostar="3" herorank="1" />
 </fetters>
 </order>
@@ -85,11 +85,11 @@
 <hero heroid="117" herostar="3" herorank="1" />
 <hero heroid="79" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="3603" fettersdes="普通攻击伤害增加1.5%" >
+<fetters fettersid="30050" fettersdes="普通攻击伤害增加1.5%" >
 <hero heroid="96" herostar="3" herorank="1" />
 <hero heroid="116" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="3604" fettersdes="120点法穿" >
+<fetters fettersid="30051" fettersdes="120点法穿" >
 <hero heroid="41" herostar="3" herorank="1" />
 <hero heroid="88" herostar="3" herorank="1" />
 </fetters>
@@ -105,7 +105,7 @@
 <hero heroid="84" herostar="3" herorank="1" />
 <hero heroid="72" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="3903" fettersdes="提高120法强" >
+<fetters fettersid="30050" fettersdes="提高120法强" >
 <hero heroid="86" herostar="3" herorank="1" />
 <hero heroid="60" herostar="3" herorank="1" />
 </fetters>
@@ -120,7 +120,7 @@
 <fetters fettersid="30032" fettersdes="爆炸射击获得1000点护甲穿透" >
 <hero heroid="32" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="4003" fettersdes="22" >
+<fetters fettersid="30050" fettersdes="22" >
 <hero heroid="215" herostar="3" herorank="1" />
 <hero heroid="217" herostar="3" herorank="1" />
 </fetters>
@@ -133,7 +133,7 @@
 <fetters fettersid="30032" fettersdes="旋风斩暴击时获得20%吸血" >
 <hero heroid="42" herostar="3" herorank="1" />
 </fetters>
-<fetters fettersid="5103" fettersdes="战斗时+1%战斗力" >
+<fetters fettersid="30050" fettersdes="战斗时+1%战斗力" >
 <hero heroid="55" herostar="3" herorank="1" />
 <hero heroid="72" herostar="3" herorank="1" />
 </fetters>
