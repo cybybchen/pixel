@@ -1,87 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<item id="1" itemid="51204" name="女警察1星" count="1" currency="1005" cost="800" will="0" />
-<item id="2" itemid="51210" name="红精灵1星" count="1" currency="1005" cost="800" will="0" />
-<item id="3" itemid="51216" name="阿拉伯1星" count="1" currency="1005" cost="800" will="0" />
-<item id="4" itemid="51222" name="黑皮少年1星" count="1" currency="1005" cost="800" will="0" />
-<item id="5" itemid="51228" name="钢盔人1星" count="1" currency="1005" cost="800" will="0" />
-<item id="6" itemid="51202" name="最强女军人1星" count="1" currency="1005" cost="2000" will="1" />
-<item id="7" itemid="51208" name="国王1星" count="1" currency="1005" cost="2000" will="1" />
-<item id="8" itemid="51214" name="奥法1星" count="1" currency="1005" cost="2000" will="1" />
-<item id="9" itemid="51220" name="黄发游侠1星" count="1" currency="1005" cost="2000" will="1" />
-<item id="10" itemid="51226" name="女武道家1星" count="1" currency="1005" cost="2000" will="1" />
-<item id="11" itemid="51204" name="女警察1星" count="1" currency="1005" cost="720" will="2" />
-<item id="12" itemid="51210" name="红精灵1星" count="1" currency="1005" cost="720" will="2" />
-<item id="13" itemid="51216" name="阿拉伯1星" count="1" currency="1005" cost="720" will="2" />
-<item id="14" itemid="51222" name="黑皮少年1星" count="1" currency="1005" cost="720" will="2" />
-<item id="15" itemid="51228" name="钢盔人1星" count="1" currency="1005" cost="720" will="2" />
-<item id="16" itemid="17003" name="海克斯科技左轮枪" count="1" currency="1005" cost="800" will="3" />
-<item id="17" itemid="17004" name="暴风大剑" count="1" currency="1005" cost="800" will="3" />
-<item id="18" itemid="17005" name="无用大棒" count="1" currency="1005" cost="800" will="3" />
-<item id="19" itemid="17008" name="火影斗篷" count="1" currency="1005" cost="800" will="3" />
-<item id="20" itemid="17009" name="大法师斗篷" count="1" currency="1005" cost="800" will="3" />
-<item id="21" itemid="17010" name="霸王血铠" count="1" currency="1005" cost="800" will="3" />
-<item id="22" itemid="17011" name="酒吧凶器" count="1" currency="1005" cost="800" will="3" />
-<item id="23" itemid="17012" name="蜂刺" count="1" currency="1005" cost="800" will="3" />
-<item id="24" itemid="18002" name="飓风大剑" count="1" currency="1005" cost="1720" will="6" />
-<item id="25" itemid="18003" name="无用巨棒" count="1" currency="1005" cost="1720" will="6" />
-<item id="26" itemid="18001" name="魔王板甲" count="1" currency="1005" cost="1720" will="6" />
-<item id="27" itemid="18004" name="黄金龟壳" count="1" currency="1005" cost="1720" will="6" />
-<item id="28" itemid="18005" name="利维坦之甲" count="1" currency="1005" cost="1720" will="6" />
-<item id="29" itemid="18006" name="预言之刃" count="1" currency="1005" cost="1720" will="6" />
-<item id="30" itemid="18007" name="冥火" count="1" currency="1005" cost="1720" will="6" />
-<item id="31" itemid="18008" name="凯奇的幸运手" count="1" currency="1005" cost="1720" will="6" />
-<item id="32" itemid="18009" name="狂想曲" count="1" currency="1005" cost="1720" will="6" />
-<item id="33" itemid="18010" name="兴奋坠饰" count="1" currency="1005" cost="1720" will="6" />
-<item id="34" itemid="19001" name="辛多雷血袍" count="1" currency="1005" cost="4320" will="7" />
-<item id="35" itemid="19002" name="碎梦斧" count="1" currency="1005" cost="4320" will="7" />
-<item id="36" itemid="19003" name="烈日能量" count="1" currency="1005" cost="4320" will="7" />
-<item id="37" itemid="19004" name="战争使者" count="1" currency="1005" cost="4320" will="7" />
-<item id="38" itemid="19005" name="静谧波浪" count="1" currency="1005" cost="4320" will="7" />
-<item id="39" itemid="19006" name="彗星" count="1" currency="1005" cost="4320" will="7" />
-<item id="40" itemid="19007" name="虚空" count="1" currency="1005" cost="4320" will="7" />
-<item id="41" itemid="19008" name="泰坦之握" count="1" currency="1005" cost="4320" will="7" />
-<item id="42" itemid="19009" name="迅捷" count="1" currency="1005" cost="4320" will="7" />
-<item id="43" itemid="19010" name="嗜血" count="1" currency="1005" cost="4320" will="7" />
-<item id="44" itemid="19011" name="喧哗卷轴" count="1" currency="1005" cost="4320" will="7" />
-<item id="45" itemid="19012" name="欢欣卷轴" count="1" currency="1005" cost="4320" will="7" />
-<item id="46" itemid="19013" name="统帅卷轴" count="1" currency="1005" cost="4320" will="7" />
-<item id="47" itemid="19014" name="失真卷轴" count="1" currency="1005" cost="4320" will="7" />
-<item id="48" itemid="29020" name="天使之翼" count="5" currency="1005" cost="1920" will="7" />
-<item id="49" itemid="29021" name="恶魔之心" count="5" currency="1005" cost="1920" will="7" />
-<item id="50" itemid="29026" name="王者之证" count="5" currency="1005" cost="1920" will="7" />
-<item id="51" itemid="29034" name="精炼石" count="5" currency="1005" cost="1920" will="7" />
-<item id="52" itemid="29016" name="风暴骑士之证" count="5" currency="1005" cost="2250" will="7" />
-<item id="53" itemid="18002" name="飓风大剑" count="1" currency="1005" cost="1920" will="4" />
-<item id="54" itemid="18003" name="无用巨棒" count="1" currency="1005" cost="1920" will="4" />
-<item id="55" itemid="18001" name="魔王板甲" count="1" currency="1005" cost="1920" will="4" />
-<item id="56" itemid="18004" name="黄金龟壳" count="1" currency="1005" cost="1920" will="4" />
-<item id="57" itemid="18005" name="利维坦之甲" count="1" currency="1005" cost="1920" will="4" />
-<item id="58" itemid="18006" name="预言之刃" count="1" currency="1005" cost="1920" will="4" />
-<item id="59" itemid="18007" name="冥火" count="1" currency="1005" cost="1920" will="4" />
-<item id="60" itemid="18008" name="凯奇的幸运手" count="1" currency="1005" cost="1920" will="4" />
-<item id="61" itemid="18009" name="狂想曲" count="1" currency="1005" cost="1920" will="4" />
-<item id="62" itemid="18010" name="兴奋坠饰" count="1" currency="1005" cost="1920" will="4" />
-<item id="63" itemid="19001" name="辛多雷血袍" count="1" currency="1005" cost="4800" will="5" />
-<item id="64" itemid="19002" name="碎梦斧" count="1" currency="1005" cost="4800" will="5" />
-<item id="65" itemid="19003" name="烈日能量" count="1" currency="1005" cost="4800" will="5" />
-<item id="66" itemid="19004" name="战争使者" count="1" currency="1005" cost="4800" will="5" />
-<item id="67" itemid="19005" name="静谧波浪" count="1" currency="1005" cost="4800" will="5" />
-<item id="68" itemid="19006" name="彗星" count="1" currency="1005" cost="4800" will="5" />
-<item id="69" itemid="19007" name="虚空" count="1" currency="1005" cost="4800" will="5" />
-<item id="70" itemid="19008" name="泰坦之握" count="1" currency="1005" cost="4800" will="5" />
-<item id="71" itemid="19009" name="迅捷" count="1" currency="1005" cost="4800" will="5" />
-<item id="72" itemid="19010" name="嗜血" count="1" currency="1005" cost="4800" will="5" />
-<item id="73" itemid="19011" name="喧哗卷轴" count="1" currency="1005" cost="4800" will="5" />
-<item id="74" itemid="19012" name="欢欣卷轴" count="1" currency="1005" cost="4800" will="5" />
-<item id="75" itemid="19013" name="统帅卷轴" count="1" currency="1005" cost="4800" will="5" />
-<item id="76" itemid="19014" name="失真卷轴" count="1" currency="1005" cost="4800" will="5" />
-<item id="77" itemid="29021" name="恶魔之心" count="5" currency="1005" cost="2160" will="5" />
-<item id="78" itemid="29020" name="天使之翼" count="5" currency="1005" cost="2160" will="5" />
-<item id="79" itemid="29026" name="王者之证" count="5" currency="1005" cost="2160" will="5" />
-<item id="80" itemid="29034" name="精炼石" count="5" currency="1005" cost="2160" will="5" />
-<item id="81" itemid="29016" name="风暴骑士之证" count="5" currency="1005" cost="2500" will="5" />
-<item id="82" itemid="37001" name="强化水晶" count="1" currency="1005" cost="400" will="8" />
-<item id="83" itemid="37001" name="强化水晶" count="2" currency="1005" cost="800" will="8" />
-<item id="84" itemid="37001" name="强化水晶" count="5" currency="1005" cost="2000" will="8" />
+<item id="1" itemid="51206" count="1" currency="1005" cost="800" will="1" />
+<item id="2" itemid="51212" count="1" currency="1005" cost="800" will="1" />
+<item id="3" itemid="51218" count="1" currency="1005" cost="800" will="1" />
+<item id="4" itemid="51224" count="1" currency="1005" cost="800" will="1" />
+<item id="5" itemid="51230" count="1" currency="1005" cost="800" will="1" />
+<item id="6" itemid="51204" count="1" currency="1005" cost="1000" will="2" />
+<item id="7" itemid="51210" count="1" currency="1005" cost="1000" will="2" />
+<item id="8" itemid="51216" count="1" currency="1005" cost="1000" will="2" />
+<item id="9" itemid="51222" count="1" currency="1005" cost="1000" will="2" />
+<item id="10" itemid="51228" count="1" currency="1005" cost="1000" will="2" />
+<item id="11" itemid="51202" count="1" currency="1005" cost="2400" will="3" />
+<item id="12" itemid="51208" count="1" currency="1005" cost="2400" will="3" />
+<item id="13" itemid="51214" count="1" currency="1005" cost="2400" will="3" />
+<item id="14" itemid="51220" count="1" currency="1005" cost="2400" will="3" />
+<item id="15" itemid="51226" count="1" currency="1005" cost="2400" will="3" />
+<item id="16" itemid="27013" count="1" currency="1005" cost="120" will="4" />
+<item id="17" itemid="27014" count="1" currency="1005" cost="120" will="4" />
+<item id="18" itemid="27015" count="1" currency="1005" cost="120" will="4" />
+<item id="19" itemid="27016" count="1" currency="1005" cost="120" will="4" />
+<item id="20" itemid="27017" count="1" currency="1005" cost="120" will="4" />
+<item id="21" itemid="27018" count="1" currency="1005" cost="120" will="4" />
+<item id="22" itemid="27019" count="1" currency="1005" cost="120" will="4" />
+<item id="23" itemid="15002" count="1" currency="1005" cost="120" will="4" />
+<item id="24" itemid="15004" count="1" currency="1005" cost="120" will="4" />
+<item id="25" itemid="16003" count="1" currency="1005" cost="240" will="5" />
+<item id="26" itemid="16004" count="1" currency="1005" cost="240" will="5" />
+<item id="27" itemid="16010" count="1" currency="1005" cost="240" will="5" />
+<item id="28" itemid="16011" count="1" currency="1005" cost="240" will="5" />
+<item id="29" itemid="17003" count="1" currency="1005" cost="400" will="6" />
+<item id="30" itemid="17004" count="1" currency="1005" cost="400" will="6" />
+<item id="31" itemid="17005" count="1" currency="1005" cost="400" will="6" />
+<item id="32" itemid="17008" count="1" currency="1005" cost="400" will="6" />
+<item id="33" itemid="17009" count="1" currency="1005" cost="400" will="6" />
+<item id="34" itemid="17010" count="1" currency="1005" cost="400" will="6" />
+<item id="35" itemid="17011" count="1" currency="1005" cost="400" will="6" />
+<item id="36" itemid="17012" count="1" currency="1005" cost="400" will="6" />
+<item id="37" itemid="18001" count="1" currency="1005" cost="1600" will="7" />
+<item id="38" itemid="18002" count="1" currency="1005" cost="1600" will="7" />
+<item id="39" itemid="18003" count="1" currency="1005" cost="1600" will="7" />
+<item id="40" itemid="18004" count="1" currency="1005" cost="1600" will="7" />
+<item id="41" itemid="18005" count="1" currency="1005" cost="1600" will="7" />
+<item id="42" itemid="18006" count="1" currency="1005" cost="1600" will="7" />
+<item id="43" itemid="18007" count="1" currency="1005" cost="1600" will="7" />
+<item id="44" itemid="18008" count="1" currency="1005" cost="1600" will="7" />
+<item id="45" itemid="18009" count="1" currency="1005" cost="1600" will="7" />
+<item id="46" itemid="18010" count="1" currency="1005" cost="1600" will="7" />
+<item id="47" itemid="19001" count="1" currency="1005" cost="8000" will="8" />
+<item id="48" itemid="19002" count="1" currency="1005" cost="8000" will="8" />
+<item id="49" itemid="19003" count="1" currency="1005" cost="8000" will="8" />
+<item id="50" itemid="19004" count="1" currency="1005" cost="8000" will="8" />
+<item id="51" itemid="19005" count="1" currency="1005" cost="8000" will="8" />
+<item id="52" itemid="19006" count="1" currency="1005" cost="8000" will="8" />
+<item id="53" itemid="19007" count="1" currency="1005" cost="8000" will="8" />
+<item id="54" itemid="19008" count="1" currency="1005" cost="8000" will="8" />
+<item id="55" itemid="19009" count="1" currency="1005" cost="8000" will="8" />
+<item id="56" itemid="19010" count="1" currency="1005" cost="8000" will="8" />
+<item id="57" itemid="19011" count="1" currency="1005" cost="8000" will="8" />
+<item id="58" itemid="19012" count="1" currency="1005" cost="8000" will="8" />
+<item id="59" itemid="19013" count="1" currency="1005" cost="8000" will="8" />
+<item id="60" itemid="19014" count="1" currency="1005" cost="8000" will="8" />
+<item id="61" itemid="28001" count="5" currency="1005" cost="700" will="9" />
+<item id="62" itemid="28002" count="5" currency="1005" cost="700" will="9" />
+<item id="63" itemid="28003" count="5" currency="1005" cost="700" will="9" />
+<item id="64" itemid="28004" count="5" currency="1005" cost="700" will="9" />
+<item id="65" itemid="28005" count="5" currency="1005" cost="700" will="9" />
+<item id="66" itemid="28006" count="5" currency="1005" cost="700" will="9" />
+<item id="67" itemid="28007" count="5" currency="1005" cost="700" will="9" />
+<item id="68" itemid="28008" count="5" currency="1005" cost="700" will="9" />
+<item id="69" itemid="28009" count="5" currency="1005" cost="700" will="9" />
+<item id="70" itemid="28010" count="5" currency="1005" cost="700" will="9" />
+<item id="71" itemid="29001" count="5" currency="1005" cost="1600" will="10" />
+<item id="72" itemid="29002" count="5" currency="1005" cost="1600" will="10" />
+<item id="73" itemid="29003" count="5" currency="1005" cost="1600" will="10" />
+<item id="74" itemid="29004" count="5" currency="1005" cost="1600" will="10" />
+<item id="75" itemid="29005" count="5" currency="1005" cost="1600" will="10" />
+<item id="76" itemid="29006" count="5" currency="1005" cost="1600" will="10" />
+<item id="77" itemid="29007" count="5" currency="1005" cost="1600" will="10" />
+<item id="78" itemid="29008" count="5" currency="1005" cost="1600" will="10" />
+<item id="79" itemid="29009" count="5" currency="1005" cost="1600" will="10" />
+<item id="80" itemid="29010" count="5" currency="1005" cost="1600" will="10" />
+<item id="81" itemid="29012" count="5" currency="1005" cost="1600" will="10" />
+<item id="82" itemid="29013" count="5" currency="1005" cost="1600" will="10" />
+<item id="83" itemid="29014" count="5" currency="1005" cost="1600" will="10" />
+<item id="84" itemid="29015" count="5" currency="1005" cost="1600" will="10" />
+<item id="85" itemid="29020" count="5" currency="1005" cost="2700" will="11" />
+<item id="86" itemid="29021" count="5" currency="1005" cost="2700" will="11" />
+<item id="87" itemid="29026" count="5" currency="1005" cost="2700" will="11" />
+<item id="88" itemid="29034" count="5" currency="1005" cost="2700" will="11" />
+<item id="89" itemid="29016" count="5" currency="1005" cost="3200" will="11" />
+<item id="90" itemid="37001" count="1" currency="1005" cost="400" will="12" />
+<item id="91" itemid="37001" count="2" currency="1005" cost="800" will="12" />
+<item id="92" itemid="37001" count="5" currency="1005" cost="2000" will="12" />
+<item id="93" itemid="37001" count="10" currency="1005" cost="4000" will="12" />
+<item id="94" itemid="52061" count="1" currency="1005" cost="9600" will="13" />
+<item id="95" itemid="52063" count="1" currency="1005" cost="9600" will="13" />
+<item id="96" itemid="52072" count="1" currency="1005" cost="9600" will="13" />
+<item id="97" itemid="52074" count="1" currency="1005" cost="9600" will="13" />
+<item id="98" itemid="52076" count="1" currency="1005" cost="9600" will="13" />
+<item id="99" itemid="52078" count="1" currency="1005" cost="9600" will="13" />
+<item id="100" itemid="52079" count="1" currency="1005" cost="9600" will="13" />
+<item id="101" itemid="52082" count="1" currency="1005" cost="9600" will="13" />
+<item id="102" itemid="52084" count="1" currency="1005" cost="9600" will="13" />
+<item id="103" itemid="52105" count="1" currency="1005" cost="9600" will="13" />
+<item id="104" itemid="53088" count="1" currency="1005" cost="30000" will="14" />
+<item id="105" itemid="53094" count="1" currency="1005" cost="30000" will="14" />
+<item id="106" itemid="53096" count="1" currency="1005" cost="30000" will="14" />
+<item id="107" itemid="53097" count="1" currency="1005" cost="30000" will="14" />
+<item id="108" itemid="53116" count="1" currency="1005" cost="30000" will="14" />
+<item id="109" itemid="53117" count="1" currency="1005" cost="30000" will="14" />
+<item id="110" itemid="53121" count="1" currency="1005" cost="30000" will="14" />
+<item id="111" itemid="53050" count="1" currency="1005" cost="30000" will="14" />
 </data>
