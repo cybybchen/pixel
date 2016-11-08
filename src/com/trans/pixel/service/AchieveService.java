@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.AchieveConst;
@@ -23,7 +24,7 @@ import com.trans.pixel.service.redis.AchieveRedisService;
 
 @Service
 public class AchieveService {
-
+	Logger logger = Logger.getLogger(AchieveService.class);
 	@Resource
 	private UserAchieveService userAchieveService;
 	@Resource
@@ -95,6 +96,8 @@ public class AchieveService {
 	
 	private ActivityOrder getAchieveOrder(int type, int achieveId) {
 		Achieve achieve = achieveRedidService.getAchieve(type);
+		if (achieve == null)
+			return null;
 		List<ActivityOrder> achieveOrderList = achieve.getOrderList();
 		for (ActivityOrder achieveOrder : achieveOrderList) {
 			if (achieveOrder.getOrder() == achieveId) {

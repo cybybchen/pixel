@@ -104,7 +104,7 @@ public class ShopService {
 	}
 	
 	public ShopList refreshPVPShop(UserBean user){
-		ShopList shoplist = redis.buildPVPShop();
+		ShopList shoplist = redis.buildPVPShop(user);
 		redis.savePVPShop(shoplist, user);
 		return shoplist;
 	}
@@ -132,7 +132,7 @@ public class ShopService {
 	}
 	
 	public ShopList refreshLadderShop(UserBean user){
-		ShopList shoplist = redis.buildLadderShop();
+		ShopList shoplist = redis.buildLadderShop(user);
 		redis.saveLadderShop(shoplist, user);
 		return shoplist;
 	}

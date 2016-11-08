@@ -466,11 +466,11 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!pvpMapRedisService.isMapOpen(user, commbuilder.getJudge())){
+		}/*else if(!pvpMapRedisService.isMapOpen(user, commbuilder.getJudge())){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_PVPCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_PVPCONDITION));
-		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else*/ if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
 			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
@@ -648,18 +648,18 @@ public class ShopCommandService extends BaseCommandService{
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = ShopList.newBuilder(service.refreshLadderShop(user));
 		}
-		UserRankBean myrank = ladderRedisService.getUserRankByUserId(user.getServerId(), user.getId());
+//		UserRankBean myrank = ladderRedisService.getUserRankByUserId(user.getServerId(), user.getId());
 		int refreshtime = user.getLadderShopRefreshTime();
 		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
 		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(myrank == null || myrank.getRank() > commbuilder.getJudge()){
+		}/*else if(myrank == null || myrank.getRank() > commbuilder.getJudge()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_LADDERCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_LADDERCONDITION));
-		}else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+		}else*/ if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
 			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));

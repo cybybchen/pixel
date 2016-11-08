@@ -114,7 +114,8 @@ message ShopRefreshList {
 }
 message Will {
 	required int32 will = 1;
-	required int32 weight = 2;
+	optional int32 weight = 2;
+	optional int32 position = 3;
 }
 message ShopWill {
 	required int32 id = 1;

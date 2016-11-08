@@ -20,6 +20,8 @@ public class HeroRareService {
 	@Resource
 	private HeroRareRedisService heroRareRedisService;
 	@Resource
+	private HeroService heroService;
+	@Resource
 	private HeroRedisService heroRedisService;
 	
 	public int getRare(int rare) {
@@ -38,10 +40,10 @@ public class HeroRareService {
 	}
 	
 	public HeroRareLevelupRank getHeroRare(HeroInfoBean heroInfo) {
-		HeroBean hero = heroRedisService.getHeroByHeroId(heroInfo.getHeroId());
+		HeroBean hero = heroService.getHero(heroInfo.getHeroId());
 		HeroRareLevelup herorare = heroRedisService.getHeroRareLevelup(hero.getPosition());
 		for (HeroRareLevelupRank rank : herorare.getRankList()) {
-			if (rank.getRare() == heroInfo.getRank() + 1)
+			if (rank.getRank() == heroInfo.getRank() + 1)
 				return rank;
 		}
 				

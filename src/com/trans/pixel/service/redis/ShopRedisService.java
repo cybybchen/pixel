@@ -83,6 +83,43 @@ public class ShopRedisService extends RedisService{
 		return builder;
 	}
 	
+	public ShopList.Builder buildPVPComms(ShopWillList.Builder shopwillsbuilder, Map<Integer, CommodityList.Builder> commsmap, UserBean user){
+		ShopList.Builder builder = ShopList.newBuilder();
+		for(ShopWill shopwill : shopwillsbuilder.getShopList()){
+			if (shopwill.getJudge1() < user.getPvpUnlock())
+				continue;
+			
+			for(Will will : shopwill.getLootList()){
+				CommodityList.Builder commsbuilder = commsmap.get(will.getWill());
+				int index = nextInt(commsbuilder.getItemCount());
+				Commodity.Builder comm = commsbuilder.getItemBuilder(index);
+				if(shopwill.hasJudge1())
+					comm.setJudge(shopwill.getJudge1());
+				builder.addItems(comm);
+			}
+		}
+		return builder;
+	}
+	
+	public ShopList.Builder buildLadderComms(ShopWillList.Builder shopwillsbuilder, Map<Integer, CommodityList.Builder> commsmap, UserBean user){
+		ShopList.Builder builder = ShopList.newBuilder();
+		ShopWill.Builder shop = shopwillsbuilder.getShopBuilder(0);
+		for(ShopWill shopwill : shopwillsbuilder.getShopList()){
+			if (shop.getJudge1() > shopwill.getJudge1() && shopwill.getJudge1() > user.getLadderModeHistoryTop())
+				shop = ShopWill.newBuilder(shopwill);	
+		}
+		
+		for(Will will : shop.getLootList()){
+			CommodityList.Builder commsbuilder = commsmap.get(will.getWill());
+			int index = nextInt(commsbuilder.getItemCount());
+			Commodity.Builder comm = commsbuilder.getItemBuilder(index);
+			if(shop.hasJudge1())
+				comm.setJudge(shop.getJudge1());
+			builder.addItems(comm);
+		}
+		return builder;
+	}
+	
 	public long getDailyShopEndTime(){
 		long time[] = {today(0), today(12), today(18), today(21)};
 		long now = now();
@@ -401,7 +438,7 @@ public class ShopRedisService extends RedisService{
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			ShopList shoplist = buildPVPShop();
+			ShopList shoplist = buildPVPShop(user);
 			savePVPShop(shoplist, user);
 			return shoplist;
 		}
@@ -420,7 +457,7 @@ public class ShopRedisService extends RedisService{
 			return time+24*3600;
 	}
 	
-	public ShopList buildPVPShop(){
+	public ShopList buildPVPShop(UserBean user){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		String value = get(RedisKey.PVPSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
@@ -429,7 +466,7 @@ public class ShopRedisService extends RedisService{
 			set(RedisKey.PVPSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
-		ShopList.Builder builder = buildComms(willsbuilder, getPVPShopComms());
+		ShopList.Builder builder = buildPVPComms(willsbuilder, getPVPShopComms(), user);
 		builder.setEndTime(getPVPShopEndTime());
 		return builder.build();
 	}
@@ -577,7 +614,7 @@ public class ShopRedisService extends RedisService{
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			ShopList shoplist = buildLadderShop();
+			ShopList shoplist = buildLadderShop(user);
 			saveLadderShop(shoplist, user);
 			return shoplist;
 		}
@@ -601,7 +638,7 @@ public class ShopRedisService extends RedisService{
 //		}
 //	}
 	 
-	public ShopList buildLadderShop(){
+	public ShopList buildLadderShop(UserBean user){
 		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
 		String value = get(RedisKey.LADDERSHOP_CONFIG+"Type");
 		if(value == null || !parseJson(value, willsbuilder)){
@@ -610,7 +647,7 @@ public class ShopRedisService extends RedisService{
 			set(RedisKey.LADDERSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
 		
-		ShopList.Builder builder = buildComms(willsbuilder, getLadderShopComms());
+		ShopList.Builder builder = buildLadderComms(willsbuilder, getLadderShopComms(), user);
 		builder.setEndTime(getLadderShopEndTime());
 		return builder.build();
 	}
