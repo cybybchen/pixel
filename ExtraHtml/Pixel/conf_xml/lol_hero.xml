@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<hero id="1" name="厄运小姐" img="46" description="号称“双枪大小姐”，手里的两把手枪能射出成吨的子弹。" quality="5" position="2" handbook="1" zhanli="100" ad="46" ad_rare="2.5" ap="25" ap_rare="" arm="15" arm_rare="2.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="2.5" steal="" steal_rare="" >
+<hero id="1" name="厄运小姐" img="46" description="号称“双枪大小姐”，手里的两把手枪能射出成吨的子弹。" quality="5" position="2" handbook="1" zhanli="100" ad="46" ad_rare="10" ap="25" ap_rare="" arm="15" arm_rare="10" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="10" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="101" skill="黑枪射击" unlock="1" />
 <skill  skillid="102" skill="大步流星" unlock="2" />
@@ -22,7 +22,7 @@
 <equip equipid="2" arm1="14047" arm2="14053" arm3="14063" arm4="14006" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="5" name="赵信" img="9" description="他喜欢突到人群中，还对菊花有着特殊的青睐。" quality="5" position="1" handbook="1" zhanli="100" ad="46" ad_rare="3" ap="34" ap_rare="" arm="16" arm_rare="2.65" mr="30" mr_rare="6" adi=".5" adi_rare="4" api=".5" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="5" name="赵信" img="9" description="他喜欢突到人群中，还对菊花有着特殊的青睐。" quality="5" position="1" handbook="1" zhanli="100" ad="46" ad_rare="12" ap="34" ap_rare="" arm="16" arm_rare="10.6" mr="30" mr_rare="24" adi=".5" adi_rare="16" api=".5" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="501" skill="狂暴怒吼" unlock="1" />
 <skill  skillid="502" skill="三重爪击" unlock="2" />
@@ -44,7 +44,7 @@
 <equip equipid="2" arm1="14065" arm2="14050" arm3="14007" arm4="14001" arm5="14046" arm6="14101" />
 </equip> 
 </hero> 
-<hero id="8" name="潘森" img="47" description="这是一个喜欢从天而降的斯巴达，热爱太阳。" quality="4" position="1" handbook="1" zhanli="100" ad="51" ad_rare="2.5" ap="20" ap_rare="" arm="15" arm_rare="3.3" mr="30" mr_rare="1" adi="4" adi_rare="1" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="8" name="潘森" img="47" description="这是一个喜欢从天而降的斯巴达，热爱太阳。" quality="4" position="1" handbook="1" zhanli="100" ad="51" ad_rare="10" ap="20" ap_rare="" arm="15" arm_rare="13.2" mr="30" mr_rare="4" adi="4" adi_rare="4" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="801" skill="长矛飞掷" unlock="1" />
 <skill  skillid="802" skill="穿心长矛" unlock="2" />
@@ -66,7 +66,7 @@
 <equip equipid="2" arm1="14050" arm2="14049" arm3="14007" arm4="14001" arm5="14042" arm6="14101" />
 </equip> 
 </hero> 
-<hero id="9" name="奥拉夫" img="28" description="谁都无法阻挡住一个已经发狂的战士！" quality="5" position="1" handbook="1" zhanli="100" ad="54" ad_rare="3.5" ap="23" ap_rare="" arm="17" arm_rare="2.5" mr="30" mr_rare="1" adi="5" adi_rare="1" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="9" name="奥拉夫" img="28" description="谁都无法阻挡住一个已经发狂的战士！" quality="5" position="1" handbook="1" zhanli="100" ad="54" ad_rare="14" ap="23" ap_rare="" arm="17" arm_rare="10" mr="30" mr_rare="4" adi="5" adi_rare="4" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="901" skill="逆流投掷" unlock="1" />
 <skill  skillid="902" skill="狂战之怒" unlock="2" />
@@ -88,7 +88,7 @@
 <equip equipid="2" arm1="14050" arm2="14055" arm3="14007" arm4="14042" arm5="14043" arm6="14035" />
 </equip> 
 </hero> 
-<hero id="11" name="伊泽瑞尔" img="1" description="拥有一个能够射出奇怪能量的神奇手套，据说可以看到未来。" quality="5" position="2" handbook="1" zhanli="100" ad="40" ad_rare="1.6" ap="31" ap_rare="1.5" arm="16" arm_rare="2.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="5" speed_rare="1.6" steal="" steal_rare="" >
+<hero id="11" name="伊泽瑞尔" img="1" description="拥有一个能够射出奇怪能量的神奇手套，据说可以看到未来。" quality="5" position="2" handbook="1" zhanli="100" ad="40" ad_rare="6.4" ap="31" ap_rare="6" arm="16" arm_rare="10" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="5" speed_rare="6.4" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="1101" skill="秘术射击" unlock="1" />
 <skill  skillid="1102" skill="精华跃动" unlock="2" />
@@ -110,7 +110,7 @@
 <equip equipid="2" arm1="14119" arm2="14058" arm3="14056" arm4="14060" arm5="14006" arm6="14030" />
 </equip> 
 </hero> 
-<hero id="13" name="莫德凯撒" img="2" description="金属的外壳中藏着令人生畏的邪恶亡魂。" quality="5" position="1" handbook="0" zhanli="100" ad="22" ad_rare="1.6" ap="51" ap_rare="1.6" arm="15" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="3" api_rare="1" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="13" name="莫德凯撒" img="2" description="金属的外壳中藏着令人生畏的邪恶亡魂。" quality="5" position="1" handbook="0" zhanli="100" ad="22" ad_rare="6.4" ap="51" ap_rare="6.4" arm="15" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="3" api_rare="4" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="1301" skill="铁人" unlock="1" />
 <skill  skillid="1302" skill="铲击之锤" unlock="2" />
@@ -132,7 +132,7 @@
 <equip equipid="2" arm1="14014" arm2="14014" arm3="14021" arm4="14016" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="17" name="盖伦" img="29" description="喜欢躲在草丛中，最常用的一招是将大宝剑从天而降。" quality="4" position="4" handbook="1" zhanli="100" ad="44" ad_rare="1.6" ap="36" ap_rare="1.5" arm="19" arm_rare="2.5" mr="30" mr_rare="1.2" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="6" steal_rare="2" >
+<hero id="17" name="盖伦" img="29" description="喜欢躲在草丛中，最常用的一招是将大宝剑从天而降。" quality="4" position="4" handbook="1" zhanli="100" ad="44" ad_rare="6.4" ap="36" ap_rare="6" arm="19" arm_rare="10" mr="30" mr_rare="4.8" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="6" steal_rare="8" >
 <skill> 
 <skill  skillid="1702" skill="德玛西亚正义" unlock="1" />
 <skill  skillid="1701" skill="坚韧" unlock="2" />
@@ -154,7 +154,7 @@
 <equip equipid="2" arm1="14115" arm2="14004" arm3="14007" arm4="14003" arm5="14042" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="27" name="塔里克" img="38" description="狂热的宝石爱好者，看样子像是个基佬，但更是一个土豪！" quality="4" position="3" handbook="1" zhanli="100" ad="55" ad_rare="1" ap="28" ap_rare="2" arm="16.5" arm_rare="2.6" mr="30" mr_rare="1.2" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="7" steal_rare="1.6" >
+<hero id="27" name="塔里克" img="38" description="狂热的宝石爱好者，看样子像是个基佬，但更是一个土豪！" quality="4" position="3" handbook="1" zhanli="100" ad="55" ad_rare="4" ap="28" ap_rare="8" arm="16.5" arm_rare="10.4" mr="30" mr_rare="4.8" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="7" steal_rare="6.4" >
 <skill> 
 <skill  skillid="2701" skill="宝石护盾" unlock="1" />
 <skill  skillid="2702" skill="神圣洗礼" unlock="2" />
@@ -176,7 +176,7 @@
 <equip equipid="2" arm1="14001" arm2="14004" arm3="14044" arm4="14045" arm5="14046" arm6="14036" />
 </equip> 
 </hero> 
-<hero id="32" name="沃里克" img="48" description="月圆之夜的神秘身影，令人颤抖的恐怖嚎叫！" quality="4" position="1" handbook="1" zhanli="100" ad="57" ad_rare="3" ap="18" ap_rare="" arm="16" arm_rare="3" mr="30" mr_rare="2" adi="1.5" adi_rare=".5" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="32" name="沃里克" img="48" description="月圆之夜的神秘身影，令人颤抖的恐怖嚎叫！" quality="4" position="1" handbook="1" zhanli="100" ad="57" ad_rare="12" ap="18" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="8" adi="1.5" adi_rare="2" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="3201" skill="血之饥渴" unlock="1" />
 <skill  skillid="3205" skill="无尽束缚" unlock="2" />
@@ -198,7 +198,7 @@
 <equip equipid="2" arm1="14068" arm2="14055" arm3="14050" arm4="14007" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="35" name="布里茨" img="19" description="老式带勾机器人，但经常因为用力过猛而导致系统瘫痪。。。" quality="4" position="3" handbook="0" zhanli="100" ad="26" ad_rare="1.5" ap="29" ap_rare="1.2" arm="13" arm_rare="3" mr="30" mr_rare="1.2" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="35" name="布里茨" img="19" description="老式带勾机器人，但经常因为用力过猛而导致系统瘫痪。。。" quality="4" position="3" handbook="0" zhanli="100" ad="26" ad_rare="6" ap="29" ap_rare="4.8" arm="13" arm_rare="12" mr="30" mr_rare="4.8" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="3501" skill="机械外壳" unlock="1" />
 <skill  skillid="3502" skill="能量铁拳" unlock="2" />
@@ -220,7 +220,7 @@
 <equip equipid="2" arm1="14001" arm2="14115" arm3="14042" arm4="14046" arm5="14045" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="36" name="阿利斯塔" img="20" description="没人能击退他，因为他总是先把别人击退，绝活是救死扶伤顶。" quality="6" position="3" handbook="1" zhanli="100" ad="43" ad_rare="2" ap="29" ap_rare="2" arm="12" arm_rare="4" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="3" steal_rare="2" >
+<hero id="36" name="阿利斯塔" img="20" description="没人能击退他，因为他总是先把别人击退，绝活是救死扶伤顶。" quality="6" position="3" handbook="1" zhanli="100" ad="43" ad_rare="8" ap="29" ap_rare="8" arm="12" arm_rare="16" mr="30" mr_rare="16" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="3" steal_rare="8" >
 <skill> 
 <skill  skillid="3605" skill="坚定" unlock="1" />
 <skill  skillid="3602" skill="粉碎大地" unlock="2" />
@@ -242,7 +242,7 @@
 <equip equipid="2" arm1="14115" arm2="14001" arm3="14045" arm4="14044" arm5="14042" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="38" name="易" img="12" description="擅长偷和跑，人剑合一之时就是他最强的时刻！" quality="5" position="1" handbook="1" zhanli="100" ad="55" ad_rare="2.5" ap="27" ap_rare="" arm="16" arm_rare="3" mr="30" mr_rare="1" adi="2" adi_rare="1" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="38" name="易" img="12" description="擅长偷和跑，人剑合一之时就是他最强的时刻！" quality="5" position="1" handbook="1" zhanli="100" ad="55" ad_rare="10" ap="27" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="4" adi="2" adi_rare="4" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="3801" skill="多重打击" unlock="1" />
 <skill  skillid="3802" skill="阿尔法突袭" unlock="2" />
@@ -264,7 +264,7 @@
 <equip equipid="2" arm1="14055" arm2="14055" arm3="14062" arm4="14007" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="39" name="贾克斯" img="11" description="一代武学宗师，喜欢用路灯对敌人进行连续的敲打。" quality="6" position="1" handbook="1" zhanli="100" ad="46" ad_rare="3" ap="35" ap_rare="3" arm="18" arm_rare="3" mr="30" mr_rare="1" adi="1" adi_rare="2" api="1" api_rare="2" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="39" name="贾克斯" img="11" description="一代武学宗师，喜欢用路灯对敌人进行连续的敲打。" quality="6" position="1" handbook="1" zhanli="100" ad="46" ad_rare="12" ap="35" ap_rare="12" arm="18" arm_rare="12" mr="30" mr_rare="4" adi="1" adi_rare="8" api="1" api_rare="8" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="3901" skill="跳斩" unlock="1" />
 <skill  skillid="3902" skill="蓄力一击" unlock="2" />
@@ -286,7 +286,7 @@
 <equip equipid="2" arm1="14119" arm2="14055" arm3="14047" arm4="14049" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="40" name="崔斯塔娜" img="30" description="拿着巨炮的萝莉，虽然拿着巨炮，但是跳得很远。" quality="6" position="2" handbook="1" zhanli="100" ad="46.5" ad_rare="5" ap="19" ap_rare="" arm="15" arm_rare="2" mr="30" mr_rare="2" adi="" adi_rare="3" api="" api_rare="" rating="" rating_rare="" speed="8" speed_rare="2" steal="" steal_rare="" >
+<hero id="40" name="崔斯塔娜" img="30" description="拿着巨炮的萝莉，虽然拿着巨炮，但是跳得很远。" quality="6" position="2" handbook="1" zhanli="100" ad="46.5" ad_rare="20" ap="19" ap_rare="" arm="15" arm_rare="8" mr="30" mr_rare="8" adi="" adi_rare="12" api="" api_rare="" rating="" rating_rare="" speed="8" speed_rare="8" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="4001" skill="爆炸射击" unlock="1" />
 <skill  skillid="4002" skill="爆炸火花" unlock="2" />
@@ -308,7 +308,7 @@
 <equip equipid="2" arm1="14055" arm2="14058" arm3="14057" arm4="14062" arm5="14007" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="41" name="安妮" img="39" description="拿着熊布偶的小女孩，经常拿自己的熊砸人。" quality="5" position="0" handbook="1" zhanli="100" ad="39" ad_rare="1" ap="48" ap_rare="2" arm="12.5" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="3" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="41" name="安妮" img="39" description="拿着熊布偶的小女孩，经常拿自己的熊砸人。" quality="5" position="0" handbook="1" zhanli="100" ad="39" ad_rare="4" ap="48" ap_rare="8" arm="12.5" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="3" rating_rare="8" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="4103" skill="碎裂之火" unlock="1" />
 <skill  skillid="4104" skill="提伯斯之怒" unlock="2" />
@@ -330,7 +330,7 @@
 <equip equipid="2" arm1="14012" arm2="14015" arm3="14009" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="42" name="艾希" img="31" description="专注于射箭的异族弓箭手，拥有敏锐的洞察力，自称瞄得很稳。" quality="4" position="2" handbook="1" zhanli="100" ad="56" ad_rare="3" ap="17" ap_rare="" arm="21.75" arm_rare="2" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="6" speed_rare="2" steal="" steal_rare="" >
+<hero id="42" name="艾希" img="31" description="专注于射箭的异族弓箭手，拥有敏锐的洞察力，自称瞄得很稳。" quality="4" position="2" handbook="1" zhanli="100" ad="56" ad_rare="12" ap="17" ap_rare="" arm="21.75" arm_rare="8" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="6" speed_rare="8" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="4201" skill="万箭齐发" unlock="1" />
 <skill  skillid="4202" skill="鹰击长空" unlock="2" />
@@ -352,7 +352,7 @@
 <equip equipid="2" arm1="14058" arm2="14053" arm3="14063" arm4="14006" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="43" name="提莫" img="4" description="戴着绿帽子的正太，喜欢在草丛里种蘑菇。" quality="5" position="0" handbook="0" zhanli="100" ad="22.5" ad_rare="1" ap="51" ap_rare="2" arm="14" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api="2" api_rare="1" rating="" rating_rare="" speed="1" speed_rare="1" steal="" steal_rare="" >
+<hero id="43" name="提莫" img="4" description="戴着绿帽子的正太，喜欢在草丛里种蘑菇。" quality="5" position="0" handbook="0" zhanli="100" ad="22.5" ad_rare="4" ap="51" ap_rare="8" arm="14" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="2" api_rare="4" rating="" rating_rare="" speed="1" speed_rare="4" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="4301" skill="毒性射击" unlock="1" />
 <skill  skillid="4302" skill="种蘑菇" unlock="2" />
@@ -374,7 +374,7 @@
 <equip equipid="2" arm1="14011" arm2="14014" arm3="14016" arm4="14016" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="48" name="墨菲特" img="40" description="从石头里蹦出来的，但不是猴子，而是块石头，会蹦的石头。" quality="4" position="4" handbook="1" zhanli="100" ad="56.3" ad_rare="2" ap="36" ap_rare="1" arm="18" arm_rare="4" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="48" name="墨菲特" img="40" description="从石头里蹦出来的，但不是猴子，而是块石头，会蹦的石头。" quality="4" position="4" handbook="1" zhanli="100" ad="56.3" ad_rare="8" ap="36" ap_rare="4" arm="18" arm_rare="16" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="4801" skill="花岗岩护盾" unlock="1" />
 <skill  skillid="4805" skill="势不可挡" unlock="2" />
@@ -396,7 +396,7 @@
 <equip equipid="2" arm1="14014" arm2="14016" arm3="14042" arm4="14045" arm5="14044" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="50" name="蒙多医生" img="41" description="虽然是个医生，但是感觉他自己却病的不轻了。" quality="5" position="4" handbook="1" zhanli="100" ad="56.23" ad_rare="1.6" ap="31" ap_rare="1" arm="17" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="10" steal_rare="2.5" >
+<hero id="50" name="蒙多医生" img="41" description="虽然是个医生，但是感觉他自己却病的不轻了。" quality="5" position="4" handbook="1" zhanli="100" ad="56.23" ad_rare="6.4" ap="31" ap_rare="4" arm="17" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="10" steal_rare="10" >
 <skill> 
 <skill  skillid="5001" skill="病毒屠刀" unlock="1" />
 <skill  skillid="5002" skill="痛苦燃烧" unlock="2" />
@@ -418,7 +418,7 @@
 <equip equipid="2" arm1="14004" arm2="14003" arm3="14001" arm4="14042" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="51" name="泰达米尔" img="13" description="五秒真男人，是真男人，就要下100层！" quality="6" position="1" handbook="1" zhanli="100" ad="56" ad_rare="5" ap="39" ap_rare="" arm="14.9" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="3" api="" api_rare="" rating="3" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="51" name="泰达米尔" img="13" description="五秒真男人，是真男人，就要下100层！" quality="6" position="1" handbook="1" zhanli="100" ad="56" ad_rare="20" ap="39" ap_rare="" arm="14.9" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="12" api="" api_rare="" rating="3" rating_rare="16" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="5101" skill="嗜血杀戮" unlock="1" />
 <skill  skillid="5102" skill="旋风斩" unlock="2" />
@@ -440,7 +440,7 @@
 <equip equipid="2" arm1="14073" arm2="14058" arm3="14050" arm4="14062" arm5="14007" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="52" name="辛吉德" img="42" description="年轻的时候是化学课代表，长大变成一个钻在药剂堆里的疯子。" quality="4" position="4" handbook="1" zhanli="100" ad="56.65" ad_rare="2" ap="37" ap_rare="1" arm="18" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api="2" api_rare=".5" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="52" name="辛吉德" img="42" description="年轻的时候是化学课代表，长大变成一个钻在药剂堆里的疯子。" quality="4" position="4" handbook="1" zhanli="100" ad="56.65" ad_rare="8" ap="37" ap_rare="4" arm="18" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="2" api_rare="2" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="5201" skill="生命壁垒" unlock="1" />
 <skill  skillid="5202" skill="化学试剂" unlock="2" />
@@ -462,7 +462,7 @@
 <equip equipid="2" arm1="14016" arm2="14014" arm3="14005" arm4="14002" arm5="14044" arm6="14040" />
 </equip> 
 </hero> 
-<hero id="55" name="努努" img="21" description="努努是那个雪人，那熊孩子是谁谁都不知道。" quality="4" position="3" handbook="1" zhanli="100" ad="51.6" ad_rare="2" ap="44" ap_rare="1" arm="16.5" arm_rare="2.5" mr="30" mr_rare="1" adi="" adi_rare="" api="1" api_rare="" rating="4" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="55" name="努努" img="21" description="努努是那个雪人，那熊孩子是谁谁都不知道。" quality="4" position="3" handbook="1" zhanli="100" ad="51.6" ad_rare="8" ap="44" ap_rare="4" arm="16.5" arm_rare="10" mr="30" mr_rare="4" adi="" adi_rare="" api="1" api_rare="" rating="4" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="5501" skill="吞噬" unlock="1" />
 <skill  skillid="5502" skill="血之沸腾" unlock="2" />
@@ -484,7 +484,7 @@
 <equip equipid="2" arm1="14017" arm2="14005" arm3="14115" arm4="14002" arm5="14045" arm6="14040" />
 </equip> 
 </hero> 
-<hero id="58" name="薇恩" img="14" description="带着红外眼镜，经常在黑暗中猎杀猎物。" quality="6" position="2" handbook="1" zhanli="100" ad="55.8" ad_rare="4" ap="14" ap_rare="" arm="16" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="3.5" steal="" steal_rare="" >
+<hero id="58" name="薇恩" img="14" description="带着红外眼镜，经常在黑暗中猎杀猎物。" quality="6" position="2" handbook="1" zhanli="100" ad="55.8" ad_rare="16" ap="14" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="14" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="5801" skill="圣银箭弩" unlock="1" />
 <skill  skillid="5802" skill="暗夜猎手" unlock="2" />
@@ -506,7 +506,7 @@
 <equip equipid="2" arm1="14058" arm2="14055" arm3="14063" arm4="14062" arm5="14006" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="59" name="兰博" img="22" description="矮子开高达大概就是这个样子吧。。。" quality="5" position="0" handbook="0" zhanli="100" ad="55.66" ad_rare="2.5" ap="46" ap_rare="" arm="16" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="3" rating_rare="2.5" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="59" name="兰博" img="22" description="矮子开高达大概就是这个样子吧。。。" quality="5" position="0" handbook="0" zhanli="100" ad="55.66" ad_rare="10" ap="46" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="3" rating_rare="10" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="5901" skill="纵火盛宴" unlock="1" />
 <skill  skillid="5905" skill="恒温灼烧" unlock="2" />
@@ -528,7 +528,7 @@
 <equip equipid="2" arm1="14012" arm2="14014" arm3="14017" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="61" name="李青" img="15" description="虽然是个瞎子，但身手敏捷，绝活是救死扶伤脚。" quality="4" position="1" handbook="1" zhanli="100" ad="55.8" ad_rare="2.5" ap="29" ap_rare="" arm="16" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="3" rating_rare="2.5" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="61" name="李青" img="15" description="虽然是个瞎子，但身手敏捷，绝活是救死扶伤脚。" quality="4" position="1" handbook="1" zhanli="100" ad="55.8" ad_rare="10" ap="29" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="3" rating_rare="10" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="6101" skill="天音波" unlock="1" />
 <skill  skillid="6102" skill="天雷破" unlock="2" />
@@ -550,7 +550,7 @@
 <equip equipid="2" arm1="14065" arm2="14050" arm3="14007" arm4="14115" arm5="14042" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="63" name="嘉文四世" img="16" description="听说是个什么国家的皇子，喜欢在盆地里与人插旗决斗。" quality="4" position="1" handbook="1" zhanli="100" ad="50" ad_rare="3" ap="31" ap_rare="" arm="14" arm_rare="3.5" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="63" name="嘉文四世" img="16" description="听说是个什么国家的皇子，喜欢在盆地里与人插旗决斗。" quality="4" position="1" handbook="1" zhanli="100" ad="50" ad_rare="12" ap="31" ap_rare="" arm="14" arm_rare="14" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="6301" skill="战争律动" unlock="1" />
 <skill  skillid="6302" skill="巨龙撞击" unlock="2" />
@@ -572,7 +572,7 @@
 <equip equipid="2" arm1="14065" arm2="14050" arm3="14007" arm4="14115" arm5="14042" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="70" name="艾瑞莉娅" img="32" description="XXX太强了，那么是时候削弱一下刀妹了！" quality="5" position="1" handbook="0" zhanli="100" ad="54" ad_rare="2" ap="32" ap_rare=".5" arm="15" arm_rare="3" mr="30" mr_rare="1" adi="5" adi_rare="1" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="70" name="艾瑞莉娅" img="32" description="XXX太强了，那么是时候削弱一下刀妹了！" quality="5" position="1" handbook="0" zhanli="100" ad="54" ad_rare="8" ap="32" ap_rare="2" arm="15" arm_rare="12" mr="30" mr_rare="4" adi="5" adi_rare="4" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="7001" skill="均衡打击" unlock="1" />
 <skill  skillid="7002" skill="飞天姿态" unlock="2" />
@@ -594,7 +594,7 @@
 <equip equipid="2" arm1="14055" arm2="14060" arm3="14001" arm4="14007" arm5="14042" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="72" name="拉克丝" img="5" description="全身闪光的美少女高中生，经常被蹲在草丛里拉shi的哥哥吓到。" quality="4" position="0" handbook="1" zhanli="100" ad="44" ad_rare="1" ap="46" ap_rare="1.6" arm="8" arm_rare="3.2" mr="30" mr_rare="1" adi="" adi_rare="" api="2" api_rare=".8" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="72" name="拉克丝" img="5" description="全身闪光的美少女高中生，经常被蹲在草丛里拉shi的哥哥吓到。" quality="4" position="0" handbook="1" zhanli="100" ad="44" ad_rare="4" ap="46" ap_rare="6.4" arm="8" arm_rare="12.8" mr="30" mr_rare="4" adi="" adi_rare="" api="2" api_rare="3.2" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="7201" skill="透光奇点" unlock="1" />
 <skill  skillid="7202" skill="曲光屏障" unlock="2" />
@@ -616,7 +616,7 @@
 <equip equipid="2" arm1="14012" arm2="14015" arm3="14009" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="74" name="娑娜" img="6" description="一个哑巴，却成天拖着一把巨大的古琴到处跑。" quality="4" position="3" handbook="1" zhanli="100" ad="42" ad_rare="1.2" ap="44" ap_rare="1.2" arm="9" arm_rare="3.5" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="5" steal_rare="10" >
+<hero id="74" name="娑娜" img="6" description="一个哑巴，却成天拖着一把巨大的古琴到处跑。" quality="4" position="3" handbook="1" zhanli="100" ad="42" ad_rare="4.8" ap="44" ap_rare="4.8" arm="9" arm_rare="14" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="5" steal_rare="40" >
 <skill> 
 <skill  skillid="7402" skill="英勇赞美诗" unlock="1" />
 <skill  skillid="7401" skill="能量和弦" unlock="2" />
@@ -638,7 +638,7 @@
 <equip equipid="2" arm1="14018" arm2="14001" arm3="14004" arm4="14005" arm5="14045" arm6="14022" />
 </equip> 
 </hero> 
-<hero id="75" name="卡特琳娜" img="44" description="随身携带数把匕首，还会瞬间移动，一个hentai的典型特征。" quality="6" position="0" handbook="1" zhanli="100" ad="33" ad_rare="1" ap="58" ap_rare="3" arm="14.75" arm_rare="3.2" mr="30" mr_rare="1" adi="" adi_rare="" api="1" api_rare="3" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="75" name="卡特琳娜" img="44" description="随身携带数把匕首，还会瞬间移动，一个hentai的典型特征。" quality="6" position="0" handbook="1" zhanli="100" ad="33" ad_rare="4" ap="58" ap_rare="12" arm="14.75" arm_rare="12.8" mr="30" mr_rare="4" adi="" adi_rare="" api="1" api_rare="12" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="7501" skill="弹射之刃" unlock="1" />
 <skill  skillid="7502" skill="瞬步" unlock="2" />
@@ -660,7 +660,7 @@
 <equip equipid="2" arm1="14012" arm2="14014" arm3="14015" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="76" name="瑞兹" img="7" description="脑袋上印着神秘的符文，据说是出家那天刚好被雷劈了。" quality="4" position="0" handbook="1" zhanli="100" ad="36" ad_rare="1.2" ap="53" ap_rare="2" arm="11" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="76" name="瑞兹" img="7" description="脑袋上印着神秘的符文，据说是出家那天刚好被雷劈了。" quality="4" position="0" handbook="1" zhanli="100" ad="36" ad_rare="4.8" ap="53" ap_rare="8" arm="11" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="7601" skill="超负荷" unlock="1" />
 <skill  skillid="7602" skill="法术涌动" unlock="2" />
@@ -682,7 +682,7 @@
 <equip equipid="2" arm1="14008" arm2="14017" arm3="14012" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="78" name="蕾欧娜" img="45" description="将阳光化为力量和护盾，充分地利用了太阳能。" quality="4" position="3" handbook="1" zhanli="100" ad="50" ad_rare="2" ap="42" ap_rare=".4" arm="18" arm_rare="2.5" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="78" name="蕾欧娜" img="45" description="将阳光化为力量和护盾，充分地利用了太阳能。" quality="4" position="3" handbook="1" zhanli="100" ad="50" ad_rare="8" ap="42" ap_rare="1.6" arm="18" arm_rare="10" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="7801" skill="天顶之刃" unlock="1" />
 <skill  skillid="7802" skill="日蚀" unlock="2" />
@@ -704,7 +704,7 @@
 <equip equipid="2" arm1="14001" arm2="14115" arm3="14042" arm4="14044" arm5="14046" arm6="14038" />
 </equip> 
 </hero> 
-<hero id="79" name="孙悟空" img="33" description="这货是从石头里蹦出来的，还真是只猴子。Σ( ° △ °|||)︴" quality="4" position="1" handbook="1" zhanli="100" ad="54" ad_rare="3.3" ap="26" ap_rare="" arm="15" arm_rare="2.8" mr="30" mr_rare="1" adi="1" adi_rare=".6" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="79" name="孙悟空" img="33" description="这货是从石头里蹦出来的，还真是只猴子。Σ( ° △ °|||)︴" quality="4" position="1" handbook="1" zhanli="100" ad="54" ad_rare="13.2" ap="26" ap_rare="" arm="15" arm_rare="11.2" mr="30" mr_rare="4" adi="1" adi_rare="2.4" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="7902" skill="腾云突击" unlock="1" />
 <skill  skillid="7904" skill="腾云驾雾" unlock="2" />
@@ -726,7 +726,7 @@
 <equip equipid="2" arm1="14050" arm2="14007" arm3="14007" arm4="14043" arm5="14046" arm6="14032" />
 </equip> 
 </hero> 
-<hero id="82" name="瑞雯" img="17" description="女汉子一枚，一直想重铸一把断剑，请勿轻易靠近。" quality="4" position="1" handbook="1" zhanli="100" ad="54" ad_rare="2.5" ap="26" ap_rare="" arm="12" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="1" api="" api_rare="" rating="" rating_rare="1.6" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="82" name="瑞雯" img="17" description="女汉子一枚，一直想重铸一把断剑，请勿轻易靠近。" quality="4" position="1" handbook="1" zhanli="100" ad="54" ad_rare="10" ap="26" ap_rare="" arm="12" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="4" api="" api_rare="" rating="" rating_rare="6.4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="8201" skill="折翼之舞" unlock="1" />
 <skill  skillid="8202" skill="符文之刃" unlock="2" />
@@ -748,7 +748,7 @@
 <equip equipid="2" arm1="14050" arm2="14051" arm3="14049" arm4="14007" arm5="14043" arm6="14032" />
 </equip> 
 </hero> 
-<hero id="84" name="希瓦娜" img="49" description="北方龙族的后裔，全社杀一头，足够吃半年。" quality="4" position="1" handbook="1" zhanli="100" ad="54.5" ad_rare="2" ap="31" ap_rare="1.1" arm="17.6" arm_rare="2.7" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="3" speed_rare="1.3" steal="" steal_rare="" >
+<hero id="84" name="希瓦娜" img="49" description="北方龙族的后裔，全社杀一头，足够吃半年。" quality="4" position="1" handbook="1" zhanli="100" ad="54.5" ad_rare="8" ap="31" ap_rare="4.4" arm="17.6" arm_rare="10.8" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="3" speed_rare="5.2" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="8401" skill="龙牙突刺" unlock="1" />
 <skill  skillid="8402" skill="烈焰吐息" unlock="2" />
@@ -770,7 +770,7 @@
 <equip equipid="2" arm1="14068" arm2="14050" arm3="14050" arm4="14007" arm5="14044" arm6="14032" />
 </equip> 
 </hero> 
-<hero id="86" name="菲兹" img="23" description="浑身粘粘的鱼人，经常放鲨鱼出来咬人。" quality="5" position="0" handbook="1" zhanli="100" ad="35" ad_rare=".5" ap="58" ap_rare="2.2" arm="13" arm_rare="2.8" mr="30" mr_rare="1" adi="" adi_rare="" api="1.2" api_rare="1" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="86" name="菲兹" img="23" description="浑身粘粘的鱼人，经常放鲨鱼出来咬人。" quality="5" position="0" handbook="1" zhanli="100" ad="35" ad_rare="2" ap="58" ap_rare="8.8" arm="13" arm_rare="11.2" mr="30" mr_rare="4" adi="" adi_rare="" api="1.2" api_rare="4" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="8601" skill="淘气打击" unlock="1" />
 <skill  skillid="8602" skill="海石三叉戟" unlock="2" />
@@ -792,7 +792,7 @@
 <equip equipid="2" arm1="14012" arm2="14017" arm3="14019" arm4="14009" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="88" name="阿狸" img="24" description="这是一只卖包子的狐狸，声音动人，专门勾引没有防备的男人。" quality="5" position="0" handbook="1" zhanli="100" ad="40" ad_rare="1" ap="53" ap_rare="1.8" arm="11" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="1" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="88" name="阿狸" img="24" description="这是一只卖包子的狐狸，声音动人，专门勾引没有防备的男人。" quality="5" position="0" handbook="1" zhanli="100" ad="40" ad_rare="4" ap="53" ap_rare="7.2" arm="11" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="4" rating="" rating_rare="8" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="8801" skill="夺魂摄魄" unlock="1" />
 <skill  skillid="8802" skill="欺诈宝珠" unlock="2" />
@@ -814,7 +814,7 @@
 <equip equipid="2" arm1="14012" arm2="14017" arm3="14015" arm4="14009" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="96" name="韦鲁斯" img="50" description="某高中不良少年，有着一头杀马特发型，喜欢暗箭伤人。" quality="5" position="2" handbook="1" zhanli="100" ad="46.3" ad_rare="2.5" ap="36" ap_rare=".4" arm="11.4" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="6" speed_rare="1.6" steal="" steal_rare="" >
+<hero id="96" name="韦鲁斯" img="50" description="某高中不良少年，有着一头杀马特发型，喜欢暗箭伤人。" quality="5" position="2" handbook="1" zhanli="100" ad="46.3" ad_rare="10" ap="36" ap_rare="1.6" arm="11.4" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="6" speed_rare="6.4" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="9601" skill="枯萎箭袋" unlock="1" />
 <skill  skillid="9602" skill="穿刺之箭" unlock="2" />
@@ -836,7 +836,7 @@
 <equip equipid="2" arm1="14050" arm2="14047" arm3="14053" arm4="14007" arm5="14043" arm6="14032" />
 </equip> 
 </hero> 
-<hero id="97" name="德莱厄斯" img="34" description="挥动着巨大的斧头，表面是个大汉，实际是小学生中的孩子王。" quality="5" position="1" handbook="1" zhanli="100" ad="50" ad_rare="2.6" ap="29" ap_rare="" arm="20" arm_rare="6" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="5" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="97" name="德莱厄斯" img="34" description="挥动着巨大的斧头，表面是个大汉，实际是小学生中的孩子王。" quality="5" position="1" handbook="1" zhanli="100" ad="50" ad_rare="10.4" ap="29" ap_rare="" arm="20" arm_rare="24" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="5" rating_rare="8" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="9701" skill="无情铁手" unlock="1" />
 <skill  skillid="9702" skill="大杀四方" unlock="2" />
@@ -858,7 +858,7 @@
 <equip equipid="2" arm1="14049" arm2="14050" arm3="14007" arm4="14115" arm5="14046" arm6="14032" />
 </equip> 
 </hero> 
-<hero id="105" name="伊丽丝" img="26" description="十里村有名的缝纫大妈，针线活不错。" quality="4" position="0" handbook="1" zhanli="100" ad="43" ad_rare="2.1" ap="32" ap_rare="" arm="12.5" arm_rare="3.2" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare=".5" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="105" name="伊丽丝" img="26" description="十里村有名的缝纫大妈，针线活不错。" quality="4" position="0" handbook="1" zhanli="100" ad="43" ad_rare="8.4" ap="32" ap_rare="" arm="12.5" arm_rare="12.8" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="2" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="10501" skill="神经毒素" unlock="1" />
 <skill  skillid="10502" skill="剧毒之蜇" unlock="2" />
@@ -880,7 +880,7 @@
 <equip equipid="2" arm1="14075" arm2="14016" arm3="14014" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="108" name="锤石" img="8" description="手提灯笼的引路人，常常出现在昏暗的街角。" quality="6" position="3" handbook="1" zhanli="100" ad="46" ad_rare="" ap="36" ap_rare="" arm="18" arm_rare="" mr="30" mr_rare="" adi="" adi_rare="2" api="" api_rare="2" rating="" rating_rare="2" speed="" speed_rare="2" steal="" steal_rare="" >
+<hero id="108" name="锤石" img="8" description="手提灯笼的引路人，常常出现在昏暗的街角。" quality="6" position="3" handbook="1" zhanli="100" ad="46" ad_rare="" ap="36" ap_rare="" arm="18" arm_rare="" mr="30" mr_rare="" adi="" adi_rare="8" api="" api_rare="8" rating="" rating_rare="8" speed="" speed_rare="8" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="10801" skill="地狱诅咒" unlock="1" />
 <skill  skillid="10802" skill="魂引之灯" unlock="2" />
@@ -902,7 +902,7 @@
 <equip equipid="2" arm1="14002" arm2="14115" arm3="14001" arm4="14042" arm5="14045" arm6="14022" />
 </equip> 
 </hero> 
-<hero id="117" name="亚索" img="36" description="满口日语的中二少年，常常背对疾风，装逼如风，常伴吾生。" quality="5" position="1" handbook="1" zhanli="100" ad="48" ad_rare="3" ap="32" ap_rare="" arm="15" arm_rare="2.6" mr="30" mr_rare="1" adi="" adi_rare="1" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="117" name="亚索" img="36" description="满口日语的中二少年，常常背对疾风，装逼如风，常伴吾生。" quality="5" position="1" handbook="1" zhanli="100" ad="48" ad_rare="12" ap="32" ap_rare="" arm="15" arm_rare="10.4" mr="30" mr_rare="4" adi="" adi_rare="4" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="11701" skill="斩钢闪" unlock="1" />
 <skill  skillid="11702" skill="踏前斩" unlock="2" />
@@ -924,7 +924,7 @@
 <equip equipid="2" arm1="14058" arm2="14058" arm3="14060" arm4="14062" arm5="14007" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="121" name="阿兹尔" img="27" description="沙漠里发现的黄金脆皮鸡，味道可口，加热后食用更佳。" quality="5" position="0" handbook="1" zhanli="100" ad="31" ad_rare="1" ap="46" ap_rare="1.5" arm="14" arm_rare="3" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="2" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="121" name="阿兹尔" img="27" description="沙漠里发现的黄金脆皮鸡，味道可口，加热后食用更佳。" quality="5" position="0" handbook="1" zhanli="100" ad="31" ad_rare="4" ap="46" ap_rare="6" arm="14" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="8" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="12101" skill="狂沙猛攻" unlock="1" />
 <skill  skillid="12102" skill="恕瑞玛的传承" unlock="2" />
@@ -946,7 +946,7 @@
 <equip equipid="2" arm1="14012" arm2="14015" arm3="14016" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="10" name="古拉加斯" img="18" description="酒鬼一个，以桶论酒，在各大酒吧中均有身影。" quality="4" position="0" handbook="1" zhanli="100" ad="35" ad_rare="1" ap="46" ap_rare="" arm="16" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="1.5" >
+<hero id="10" name="古拉加斯" img="18" description="酒鬼一个，以桶论酒，在各大酒吧中均有身影。" quality="4" position="0" handbook="1" zhanli="100" ad="35" ad_rare="4" ap="46" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="6" >
 <skill> 
 <skill  skillid="1001" skill="欢乐时光" unlock="1" />
 <skill  skillid="1002" skill="滚动酒桶" unlock="2" />
@@ -968,7 +968,7 @@
 <equip equipid="2" arm1="14075" arm2="14014" arm3="14005" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="12" name="奈德丽" img="10" description="丛林中的迷失者都会成为她的猎物。" quality="5" position="0" handbook="0" zhanli="100" ad="34" ad_rare="1" ap="36" ap_rare="" arm="15.5" arm_rare="2.5" mr="30" mr_rare="" adi=".3" adi_rare="" api=".6" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="12" name="奈德丽" img="10" description="丛林中的迷失者都会成为她的猎物。" quality="5" position="0" handbook="0" zhanli="100" ad="34" ad_rare="4" ap="36" ap_rare="" arm="15.5" arm_rare="10" mr="30" mr_rare="" adi=".3" adi_rare="" api=".6" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="1201" skill="标枪投掷" unlock="1" />
 <skill  skillid="1202" skill="寻觅" unlock="2" />
@@ -990,7 +990,7 @@
 <equip equipid="2" arm1="14075" arm2="14012" arm3="14018" arm4="14019" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="24" name="崔斯特" img="3" description="经常在等待游戏载入时玩斗地主的赌瘾少年，玩的一手好牌。" quality="4" position="0" handbook="1" zhanli="100" ad="24" ad_rare="1" ap="52" ap_rare="2" arm="11.25" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api=".6" api_rare="" rating="" rating_rare=".5" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="24" name="崔斯特" img="3" description="经常在等待游戏载入时玩斗地主的赌瘾少年，玩的一手好牌。" quality="4" position="0" handbook="1" zhanli="100" ad="24" ad_rare="4" ap="52" ap_rare="8" arm="11.25" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api=".6" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="2401" skill="幸运签" unlock="1" />
 <skill  skillid="2402" skill="万能牌" unlock="2" />
@@ -1012,7 +1012,7 @@
 <equip equipid="2" arm1="14012" arm2="14019" arm3="14017" arm4="14005" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="60" name="布兰德" img="43" description="身上燃烧着烈火，却怎么也烧不完的样子。" quality="5" position="0" handbook="1" zhanli="100" ad="14" ad_rare="1" ap="45" ap_rare="1.5" arm="12" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare=".5" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="60" name="布兰德" img="43" description="身上燃烧着烈火，却怎么也烧不完的样子。" quality="5" position="0" handbook="1" zhanli="100" ad="14" ad_rare="4" ap="45" ap_rare="6" arm="12" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="6001" skill="烈焰之柱" unlock="1" />
 <skill  skillid="6002" skill="炽热之焰" unlock="2" />
@@ -1034,7 +1034,7 @@
 <equip equipid="2" arm1="14009" arm2="14015" arm3="14012" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="94" name="璐璐" img="25" description="掌握着古老的奇奇怪怪的魔法的女巫，与精灵是好伙伴。" quality="5" position="3" handbook="1" zhanli="100" ad="32" ad_rare="1.5" ap="36" ap_rare="1.5" arm="9" arm_rare="3" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="10" >
+<hero id="94" name="璐璐" img="25" description="掌握着古老的奇奇怪怪的魔法的女巫，与精灵是好伙伴。" quality="5" position="3" handbook="1" zhanli="100" ad="32" ad_rare="6" ap="36" ap_rare="6" arm="9" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="40" >
 <skill> 
 <skill  skillid="9401" skill="奇思妙想" unlock="1" />
 <skill  skillid="9402" skill="闪耀长枪" unlock="2" />
@@ -1056,7 +1056,7 @@
 <equip equipid="2" arm1="14009" arm2="14018" arm3="14015" arm4="14005" arm5="14045" arm6="14026" />
 </equip> 
 </hero> 
-<hero id="102" name="雷恩加尔" img="51" description="疑似丛林中的凶猛野兽，但是喜欢吃螳螂。" quality="5" position="1" handbook="0" zhanli="100" ad="60" ad_rare="2.5" ap="28" ap_rare="" arm="25.8" arm_rare="3" mr="32" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="1.5" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="102" name="雷恩加尔" img="51" description="疑似丛林中的凶猛野兽，但是喜欢吃螳螂。" quality="5" position="1" handbook="0" zhanli="100" ad="60" ad_rare="10" ap="28" ap_rare="" arm="25.8" arm_rare="12" mr="32" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="6" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="10201" skill="无形掠食者" unlock="1" />
 <skill  skillid="10202" skill="残忍无情" unlock="2" />
@@ -1078,7 +1078,7 @@
 <equip equipid="2" arm1="14065" arm2="14050" arm3="14049" arm4="14007" arm5="14043" arm6="14035" />
 </equip> 
 </hero> 
-<hero id="104" name="卡兹克" img="52" description="史前！巨型！螳螂！的高清重置版克隆体。" quality="5" position="1" handbook="0" zhanli="100" ad="50" ad_rare="2.5" ap="25" ap_rare="" arm="15" arm_rare="2.5" mr="30" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="1.6" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="104" name="卡兹克" img="52" description="史前！巨型！螳螂！的高清重置版克隆体。" quality="5" position="1" handbook="0" zhanli="100" ad="50" ad_rare="10" ap="25" ap_rare="" arm="15" arm_rare="10" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="2" rating_rare="6.4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="10401" skill="虚空突刺" unlock="1" />
 <skill  skillid="10402" skill="无形威胁" unlock="2" />
@@ -1100,7 +1100,7 @@
 <equip equipid="2" arm1="14065" arm2="14050" arm3="14049" arm4="14007" arm5="14043" arm6="14035" />
 </equip> 
 </hero> 
-<hero id="116" name="金克丝" img="35" description="真是个磨人的小妖精！(╯‵□′)╯︵┻━┻" quality="5" position="2" handbook="1" zhanli="100" ad="50" ad_rare="2.5" ap="31" ap_rare="" arm="13" arm_rare="2.6" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="1.9" steal="" steal_rare="" >
+<hero id="116" name="金克丝" img="35" description="真是个磨人的小妖精！(╯‵□′)╯︵┻━┻" quality="5" position="2" handbook="1" zhanli="100" ad="50" ad_rare="10" ap="31" ap_rare="" arm="13" arm_rare="10.4" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="7.6" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="11601" skill="罪恶快感" unlock="1" />
 <skill  skillid="11602" skill="超究极死神飞弹" unlock="2" />
@@ -1122,7 +1122,7 @@
 <equip equipid="2" arm1="14058" arm2="14055" arm3="14057" arm4="14061" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="122" name="卡莉斯塔" img="37" description="这货很跳，走路时喜欢蹭地，为了省买鞋的钱就不穿未完成的鞋子了。" quality="5" position="2" handbook="0" zhanli="100" ad="55" ad_rare="2.5" ap="26" ap_rare="" arm="19" arm_rare="2.9" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="3" steal="" steal_rare="" >
+<hero id="122" name="卡莉斯塔" img="37" description="这货很跳，走路时喜欢蹭地，为了省买鞋的钱就不穿未完成的鞋子了。" quality="5" position="2" handbook="0" zhanli="100" ad="55" ad_rare="10" ap="26" ap_rare="" arm="19" arm_rare="11.6" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="4" speed_rare="12" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="12201" skill="武术姿态" unlock="1" />
 <skill  skillid="12202" skill="穿刺" unlock="2" />
@@ -1144,7 +1144,7 @@
 <equip equipid="2" arm1="14055" arm2="14056" arm3="14053" arm4="14063" arm5="14043" arm6="14033" />
 </equip> 
 </hero> 
-<hero id="201" name="最强男军人" img="1102" description="诺诚最强壮的军官。" quality="3" position="1" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="201" name="最强男军人" img="1102" description="诺诚最强壮的军官。" quality="3" position="1" handbook="1" zhanli="100" ad="30" ad_rare="8" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20101" skill="凶猛挥砍" unlock="1" />
 <skill  skillid="20102" skill="战士之怒" unlock="2" />
@@ -1166,7 +1166,7 @@
 <equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="202" name="最强女军人" img="1103" description="诺诚最强壮的女军官，详见生物书。" quality="3" position="1" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="" >
+<hero id="202" name="最强女军人" img="1103" description="诺诚最强壮的女军官，详见生物书。" quality="3" position="1" handbook="1" zhanli="100" ad="30" ad_rare="8" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="" >
 <skill> 
 <skill  skillid="20101" skill="凶猛挥砍" unlock="1" />
 <skill  skillid="20102" skill="战士之怒" unlock="2" />
@@ -1188,7 +1188,7 @@
 <equip equipid="2" arm1="14049" arm2="14049" arm3="14049" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="203" name="男警察" img="1306" description="一名恪尽职守的警官。" quality="2" position="1" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="203" name="男警察" img="1306" description="一名恪尽职守的警官。" quality="2" position="1" handbook="1" zhanli="80" ad="25" ad_rare="6" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20112" skill="挥砍" unlock="1" />
 <skill  skillid="20114" skill="怒击" unlock="2" />
@@ -1210,7 +1210,7 @@
 <equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="204" name="女警察" img="1307" description="另一名恪尽职守的警官，还是女的。" quality="2" position="1" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="204" name="女警察" img="1307" description="另一名恪尽职守的警官，还是女的。" quality="2" position="1" handbook="1" zhanli="80" ad="25" ad_rare="6" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20112" skill="挥砍" unlock="1" />
 <skill  skillid="20114" skill="怒击" unlock="2" />
@@ -1232,7 +1232,7 @@
 <equip equipid="2" arm1="14049" arm2="14049" arm3="14049" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="205" name="男战士" img="1302" description="冲锋陷阵的小战士。" quality="1" position="1" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="205" name="男战士" img="1302" description="冲锋陷阵的小战士。" quality="1" position="1" handbook="1" zhanli="60" ad="20" ad_rare="4" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20113" skill="砍" unlock="1" />
 <skill  skillid="20115" skill="小弟一击" unlock="2" />
@@ -1254,7 +1254,7 @@
 <equip equipid="2" arm1="14049" arm2="14003" arm3="14115" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="206" name="女战士" img="1303" description="冲锋陷阵的女战士。" quality="1" position="1" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="206" name="女战士" img="1303" description="冲锋陷阵的女战士。" quality="1" position="1" handbook="1" zhanli="60" ad="20" ad_rare="4" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20113" skill="砍" unlock="1" />
 <skill  skillid="20115" skill="小弟一击" unlock="2" />
@@ -1276,7 +1276,7 @@
 <equip equipid="2" arm1="14049" arm2="14049" arm3="14049" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="207" name="皇后" img="1404" description="身居后宫的老大。" quality="3" position="3" handbook="1" zhanli="100" ad="30" ad_rare="1" ap="10" ap_rare="1" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="207" name="皇后" img="1404" description="身居后宫的老大。" quality="3" position="3" handbook="1" zhanli="100" ad="30" ad_rare="4" ap="10" ap_rare="4" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20107" skill="特效战意" unlock="1" />
 <skill  skillid="20121" skill="特效武器强化" unlock="2" />
@@ -1298,7 +1298,7 @@
 <equip equipid="2" arm1="14010" arm2="14003" arm3="14115" arm4="14045" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="208" name="国王" img="1406" description="掌管国事的大王。" quality="3" position="3" handbook="1" zhanli="100" ad="30" ad_rare="1" ap="10" ap_rare="1" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="208" name="国王" img="1406" description="掌管国事的大王。" quality="3" position="3" handbook="1" zhanli="100" ad="30" ad_rare="4" ap="10" ap_rare="4" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20107" skill="特效战意" unlock="1" />
 <skill  skillid="20118" skill="特效奥能强化" unlock="2" />
@@ -1320,7 +1320,7 @@
 <equip equipid="2" arm1="14010" arm2="14012" arm3="14018" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="209" name="黄精灵" img="126" description="精灵王国的一员。" quality="2" position="3" handbook="1" zhanli="80" ad="25" ad_rare=".8" ap="10" ap_rare=".8" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="209" name="黄精灵" img="126" description="精灵王国的一员。" quality="2" position="3" handbook="1" zhanli="80" ad="25" ad_rare="3.2" ap="10" ap_rare="3.2" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20106" skill="强效战意" unlock="1" />
 <skill  skillid="20120" skill="强效武器强化" unlock="2" />
@@ -1342,7 +1342,7 @@
 <equip equipid="2" arm1="14010" arm2="14003" arm3="14115" arm4="14045" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="210" name="红精灵" img="127" description="精灵王国的一员。" quality="2" position="3" handbook="1" zhanli="80" ad="25" ad_rare=".8" ap="10" ap_rare=".8" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="210" name="红精灵" img="127" description="精灵王国的一员。" quality="2" position="3" handbook="1" zhanli="80" ad="25" ad_rare="3.2" ap="10" ap_rare="3.2" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20106" skill="强效战意" unlock="1" />
 <skill  skillid="20117" skill="强效奥能强化" unlock="2" />
@@ -1364,7 +1364,7 @@
 <equip equipid="2" arm1="14010" arm2="14012" arm3="14018" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="211" name="吱吱" img="123" description="下水道的大领主。" quality="1" position="3" handbook="1" zhanli="60" ad="20" ad_rare=".5" ap="10" ap_rare=".5" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="211" name="吱吱" img="123" description="下水道的大领主。" quality="1" position="3" handbook="1" zhanli="60" ad="20" ad_rare="2" ap="10" ap_rare="2" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20104" skill="战斗怒吼" unlock="1" />
 <skill  skillid="20116" skill="奥能强化" unlock="2" />
@@ -1386,7 +1386,7 @@
 <equip equipid="2" arm1="14010" arm2="14003" arm3="14115" arm4="14045" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="212" name="咩咩" img="124" description="大牧场的大领主。" quality="1" position="3" handbook="1" zhanli="60" ad="20" ad_rare=".5" ap="10" ap_rare=".5" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="212" name="咩咩" img="124" description="大牧场的大领主。" quality="1" position="3" handbook="1" zhanli="60" ad="20" ad_rare="2" ap="10" ap_rare="2" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20104" skill="战斗怒吼" unlock="1" />
 <skill  skillid="20119" skill="武器强化" unlock="2" />
@@ -1408,7 +1408,7 @@
 <equip equipid="2" arm1="14010" arm2="14012" arm3="14018" arm4="14115" arm5="14044" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="213" name="火法" img="1301" description="某团的强力党。" quality="3" position="0" handbook="1" zhanli="100" ad="30" ad_rare=".5" ap="10" ap_rare="2" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="213" name="火法" img="1301" description="某团的强力党。" quality="3" position="0" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="8" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20151" skill="火焰冲击" unlock="1" />
 <skill  skillid="20139" skill="特级秘法连击" unlock="2" />
@@ -1430,7 +1430,7 @@
 <equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="214" name="奥法" img="1304" description="奥能的掌控者。" quality="3" position="0" handbook="1" zhanli="100" ad="30" ad_rare=".5" ap="10" ap_rare="2" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="214" name="奥法" img="1304" description="奥能的掌控者。" quality="3" position="0" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="8" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20136" skill="秘法冲击" unlock="1" />
 <skill  skillid="20139" skill="特级秘法连击" unlock="2" />
@@ -1452,7 +1452,7 @@
 <equip equipid="2" arm1="14016" arm2="14018" arm3="14002" arm4="14004" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="215" name="魔化老太婆" img="1205" description="善用魔法碰瓷。" quality="2" position="0" handbook="1" zhanli="80" ad="25" ad_rare=".5" ap="10" ap_rare="1.5" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="215" name="魔化老太婆" img="1205" description="善用魔法碰瓷。" quality="2" position="0" handbook="1" zhanli="80" ad="25" ad_rare="2" ap="10" ap_rare="6" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20135" skill="秘法飞弹" unlock="1" />
 <skill  skillid="20138" skill="高级秘法连击" unlock="2" />
@@ -1474,7 +1474,7 @@
 <equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="216" name="阿拉伯" img="1401" description="与非洲酋长是好朋友。" quality="2" position="0" handbook="1" zhanli="80" ad="25" ad_rare=".5" ap="10" ap_rare="1.5" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="216" name="阿拉伯" img="1401" description="与非洲酋长是好朋友。" quality="2" position="0" handbook="1" zhanli="80" ad="25" ad_rare="2" ap="10" ap_rare="6" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20135" skill="火焰飞弹" unlock="1" />
 <skill  skillid="20138" skill="高级秘法连击" unlock="2" />
@@ -1496,7 +1496,7 @@
 <equip equipid="2" arm1="14016" arm2="14018" arm3="14002" arm4="14004" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="217" name="老太婆" img="1403" description="碰瓷达人。" quality="1" position="0" handbook="1" zhanli="60" ad="20" ad_rare=".5" ap="10" ap_rare="1" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="217" name="老太婆" img="1403" description="碰瓷达人。" quality="1" position="0" handbook="1" zhanli="60" ad="20" ad_rare="2" ap="10" ap_rare="4" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20149" skill="火焰射击" unlock="1" />
 <skill  skillid="20137" skill="秘法连击" unlock="2" />
@@ -1518,7 +1518,7 @@
 <equip equipid="2" arm1="14016" arm2="14018" arm3="14010" arm4="14012" arm5="13040" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="218" name="老头" img="1402" description="隐藏在竹林中的高手。" quality="1" position="0" handbook="1" zhanli="60" ad="20" ad_rare=".5" ap="10" ap_rare="1" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="218" name="老头" img="1402" description="隐藏在竹林中的高手。" quality="1" position="0" handbook="1" zhanli="60" ad="20" ad_rare="2" ap="10" ap_rare="4" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20134" skill="秘法射击" unlock="1" />
 <skill  skillid="20137" skill="秘法连击" unlock="2" />
@@ -1540,7 +1540,7 @@
 <equip equipid="2" arm1="14016" arm2="14018" arm3="14002" arm4="14004" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="219" name="绿发游侠" img="1203" description="年轻的森林弓箭手。" quality="3" position="2" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="1" steal="" steal_rare="" >
+<hero id="219" name="绿发游侠" img="1203" description="年轻的森林弓箭手。" quality="3" position="2" handbook="1" zhanli="100" ad="30" ad_rare="8" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="4" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20142" skill="爆裂射击" unlock="1" />
 <skill  skillid="20145" skill="风之子" unlock="2" />
@@ -1562,7 +1562,7 @@
 <equip equipid="2" arm1="14056" arm2="14055" arm3="14055" arm4="14062" arm5="14062" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="220" name="黄发游侠" img="1204" description="年轻的灌木林弓箭手。" quality="3" position="2" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="1" steal="" steal_rare="" >
+<hero id="220" name="黄发游侠" img="1204" description="年轻的灌木林弓箭手。" quality="3" position="2" handbook="1" zhanli="100" ad="30" ad_rare="8" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="4" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20142" skill="爆裂射击" unlock="1" />
 <skill  skillid="20145" skill="风之子" unlock="2" />
@@ -1584,7 +1584,7 @@
 <equip equipid="2" arm1="14056" arm2="14055" arm3="14062" arm4="14006" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="221" name="黑皮少女" img="1202" description="夜行弓箭手。（女）" quality="2" position="2" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="1" steal="" steal_rare="" >
+<hero id="221" name="黑皮少女" img="1202" description="夜行弓箭手。（女）" quality="2" position="2" handbook="1" zhanli="80" ad="25" ad_rare="6" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="4" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20141" skill="弹幕射击" unlock="1" />
 <skill  skillid="20144" skill="射击大师" unlock="2" />
@@ -1606,7 +1606,7 @@
 <equip equipid="2" arm1="14056" arm2="14055" arm3="14055" arm4="14062" arm5="14062" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="222" name="黑皮少年" img="1201" description="夜行弓箭手。" quality="2" position="2" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="1" steal="" steal_rare="" >
+<hero id="222" name="黑皮少年" img="1201" description="夜行弓箭手。" quality="2" position="2" handbook="1" zhanli="80" ad="25" ad_rare="6" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="4" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20141" skill="弹幕射击" unlock="1" />
 <skill  skillid="20144" skill="射击大师" unlock="2" />
@@ -1628,7 +1628,7 @@
 <equip equipid="2" arm1="14056" arm2="14055" arm3="14062" arm4="14006" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="223" name="汪汪" img="121" description="看门的大狗。" quality="1" position="2" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare=".5" steal="" steal_rare="" >
+<hero id="223" name="汪汪" img="121" description="看门的大狗。" quality="1" position="2" handbook="1" zhanli="60" ad="20" ad_rare="4" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="2" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20140" skill="精准射击" unlock="1" />
 <skill  skillid="20143" skill="百发百中" unlock="2" />
@@ -1650,7 +1650,7 @@
 <equip equipid="2" arm1="14055" arm2="14055" arm3="14055" arm4="14055" arm5="14043" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="224" name="喵喵" img="122" description="蹲家的小猫。" quality="1" position="2" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare=".5" steal="" steal_rare="" >
+<hero id="224" name="喵喵" img="122" description="蹲家的小猫。" quality="1" position="2" handbook="1" zhanli="60" ad="20" ad_rare="4" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="2" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20140" skill="精准射击" unlock="1" />
 <skill  skillid="20143" skill="百发百中" unlock="2" />
@@ -1672,7 +1672,7 @@
 <equip equipid="2" arm1="14056" arm2="14056" arm3="14056" arm4="14063" arm5="14063" arm6="14031" />
 </equip> 
 </hero> 
-<hero id="225" name="武道家" img="1104" description="擅长踢馆的高手。" quality="3" position="4" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="225" name="武道家" img="1104" description="擅长踢馆的高手。" quality="3" position="4" handbook="1" zhanli="100" ad="30" ad_rare="8" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20148" skill="风暴涌动" unlock="1" />
 <skill  skillid="20124" skill="特效迅捷" unlock="2" />
@@ -1694,7 +1694,7 @@
 <equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14003" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="226" name="女武道家" img="1105" description="喜欢陪别人一起踢馆。" quality="3" position="4" handbook="1" zhanli="100" ad="30" ad_rare="2" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="226" name="女武道家" img="1105" description="喜欢陪别人一起踢馆。" quality="3" position="4" handbook="1" zhanli="100" ad="30" ad_rare="8" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20148" skill="风暴涌动" unlock="1" />
 <skill  skillid="20124" skill="特效迅捷" unlock="2" />
@@ -1716,7 +1716,7 @@
 <equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14042" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="227" name="头盔人" img="107" description="工地搬砖者。" quality="2" position="4" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="227" name="头盔人" img="107" description="工地搬砖者。" quality="2" position="4" handbook="1" zhanli="80" ad="25" ad_rare="6" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20147" skill="雷霆践踏" unlock="1" />
 <skill  skillid="20123" skill="强效迅捷" unlock="2" />
@@ -1738,7 +1738,7 @@
 <equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14003" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="228" name="钢盔人" img="108" description="摩托驭手。" quality="2" position="4" handbook="1" zhanli="80" ad="25" ad_rare="1.5" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="1" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="228" name="钢盔人" img="108" description="摩托驭手。" quality="2" position="4" handbook="1" zhanli="80" ad="25" ad_rare="6" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="4" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20147" skill="雷霆践踏" unlock="1" />
 <skill  skillid="20123" skill="强效迅捷" unlock="2" />
@@ -1760,7 +1760,7 @@
 <equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14042" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="229" name="哥布林" img="118" description="绿头绿脑的财迷。" quality="1" position="4" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare=".5" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="229" name="哥布林" img="118" description="绿头绿脑的财迷。" quality="1" position="4" handbook="1" zhanli="60" ad="20" ad_rare="4" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20146" skill="闪电冲击" unlock="1" />
 <skill  skillid="20122" skill="迅捷" unlock="2" />
@@ -1782,7 +1782,7 @@
 <equip equipid="2" arm1="14001" arm2="14003" arm3="14007" arm4="14003" arm5="14046" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="230" name="牛头怪" img="119" description="雷霆崖山脚下的怪物。" quality="1" position="4" handbook="1" zhanli="60" ad="20" ad_rare="1" ap="10" ap_rare="" arm="15" arm_rare="2" mr="15" mr_rare="1" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare=".5" speed="" speed_rare="" steal="" steal_rare="" >
+<hero id="230" name="牛头怪" img="119" description="雷霆崖山脚下的怪物。" quality="1" position="4" handbook="1" zhanli="60" ad="20" ad_rare="4" ap="10" ap_rare="" arm="15" arm_rare="8" mr="15" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="2" speed="" speed_rare="" steal="" steal_rare="" >
 <skill> 
 <skill  skillid="20146" skill="闪电冲击" unlock="1" />
 <skill  skillid="20122" skill="迅捷" unlock="2" />

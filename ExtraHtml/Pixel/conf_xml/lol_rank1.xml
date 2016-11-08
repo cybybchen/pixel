@@ -1,112 +1,112 @@
 <data>
 <id id="1" position="0" >
-<rank rank="1" rare="6" sp="30" equip1="27016" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
-<rank rank="2" rare="12" sp="60" equip1="16003" count1="1" equip2="27016" count2="1" equip3="15004" count3="1" equip4="27019" count4="1" equip5="27013" count5="1" />
-<rank rank="3" rare="20" sp="90" equip1="17005" count1="1" equip2="16003" count2="2" equip3="27016" count3="2" equip4="27019" count4="2" equip5="15004" count5="2" />
-<rank rank="4" rare="32" sp="120" equip1="17005" count1="1" equip2="17003" count2="1" equip3="16003" count3="2" equip4="27016" count4="2" equip5="27013" count5="2" />
-<rank rank="5" rare="46" sp="150" equip1="17005" count1="2" equip2="17011" count2="2" equip3="17012" count3="2" equip4="16003" count4="3" equip5="27016" count5="3" />
-<rank rank="6" rare="60" sp="180" equip1="17005" count1="2" equip2="17012" count2="2" equip3="17010" count3="2" equip4="16003" count4="3" equip5="16011" count5="3" />
-<rank rank="7" rare="70" sp="210" equip1="18003" count1="1" equip2="17005" count2="2" equip3="17011" count3="2" equip4="16003" count4="4" equip5="16011" count5="4" />
-<rank rank="8" rare="80" sp="240" equip1="18003" count1="1" equip2="17005" count2="3" equip3="17010" count3="3" equip4="17012" count4="3" equip5="16003" count5="4" />
-<rank rank="9" rare="90" sp="270" equip1="18003" count1="1" equip2="18007" count2="1" equip3="17005" count3="3" equip4="17003" count4="3" equip5="16003" count5="5" />
-<rank rank="10" rare="100" sp="300" equip1="18003" count1="2" equip2="18007" count2="2" equip3="17005" count3="3" equip4="17011" count4="3" equip5="17012" count5="3" />
-<rank rank="11" rare="110" sp="330" equip1="18003" count1="2" equip2="18001" count2="2" equip3="18007" count3="2" equip4="17005" count4="4" equip5="17010" count5="4" />
-<rank rank="12" rare="120" sp="360" equip1="18003" count1="2" equip2="18008" count2="2" equip3="18007" count3="2" equip4="17005" count4="2" equip5="17011" count5="4" />
-<rank rank="13" rare="130" sp="390" equip1="19003" count1="1" equip2="18003" count2="3" equip3="18009" count3="3" equip4="18007" count4="3" equip5="17005" count5="5" />
-<rank rank="14" rare="130" sp="420" equip1="19003" count1="2" equip2="18003" count2="3" equip3="18010" count3="3" equip4="18007" count4="3" equip5="17005" count5="3" />
-<rank rank="15" rare="130" sp="450" equip1="19003" count1="2" equip2="19007" count2="2" equip3="18003" count3="3" equip4="18001" count4="3" equip5="18007" count5="3" />
-<rank rank="16" rare="130" sp="480" equip1="19003" count1="3" equip2="19008" count2="3" equip3="18003" count3="4" equip4="18008" count4="4" equip5="18007" count5="4" />
-<rank rank="17" rare="130" sp="510" equip1="19003" count1="3" equip2="19007" count2="3" equip3="19009" count3="3" equip4="18003" count4="4" equip5="18008" count5="4" />
-<rank rank="18" rare="130" sp="540" equip1="19003" count1="4" equip2="19008" count2="4" equip3="19010" count3="4" equip4="18003" count4="4" equip5="18007" count5="4" />
-<rank rank="19" rare="130" sp="570" equip1="19003" count1="4" equip2="19007" count2="4" equip3="19001" count3="4" equip4="19009" count4="4" equip5="18003" count5="5" />
-<rank rank="20" rare="130" sp="600" equip1="19003" count1="6" equip2="19008" count2="6" equip3="19001" count3="6" equip4="19010" count4="6" equip5="19005" count5="6" />
+<rank rank="1" rare="6" zhanli="200" sp="30" equip1="27016" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
+<rank rank="2" rare="12" zhanli="500" sp="60" equip1="16003" count1="1" equip2="27016" count2="1" equip3="15004" count3="1" equip4="27019" count4="1" equip5="27013" count5="1" />
+<rank rank="3" rare="20" zhanli="900" sp="90" equip1="17005" count1="1" equip2="16003" count2="2" equip3="27016" count3="2" equip4="27019" count4="2" equip5="15004" count5="2" />
+<rank rank="4" rare="32" zhanli="1400" sp="120" equip1="17005" count1="1" equip2="17003" count2="1" equip3="16003" count3="2" equip4="27016" count4="2" equip5="27013" count5="2" />
+<rank rank="5" rare="46" zhanli="2000" sp="150" equip1="17005" count1="2" equip2="17011" count2="2" equip3="17012" count3="2" equip4="16003" count4="3" equip5="27016" count5="3" />
+<rank rank="6" rare="60" zhanli="2700" sp="180" equip1="17005" count1="2" equip2="17012" count2="2" equip3="17010" count3="2" equip4="16003" count4="3" equip5="16011" count5="3" />
+<rank rank="7" rare="70" zhanli="3500" sp="210" equip1="18003" count1="1" equip2="17005" count2="2" equip3="17011" count3="2" equip4="16003" count4="4" equip5="16011" count5="4" />
+<rank rank="8" rare="80" zhanli="4500" sp="240" equip1="18003" count1="1" equip2="17005" count2="3" equip3="17010" count3="3" equip4="17012" count4="3" equip5="16003" count5="4" />
+<rank rank="9" rare="90" zhanli="5600" sp="270" equip1="18003" count1="1" equip2="18007" count2="1" equip3="17005" count3="3" equip4="17003" count4="3" equip5="16003" count5="5" />
+<rank rank="10" rare="100" zhanli="7200" sp="300" equip1="18003" count1="2" equip2="18007" count2="2" equip3="17005" count3="3" equip4="17011" count4="3" equip5="17012" count5="3" />
+<rank rank="11" rare="110" zhanli="9500" sp="330" equip1="18003" count1="2" equip2="18001" count2="2" equip3="18007" count3="2" equip4="17005" count4="4" equip5="17010" count5="4" />
+<rank rank="12" rare="120" zhanli="11500" sp="360" equip1="18003" count1="2" equip2="18008" count2="2" equip3="18007" count3="2" equip4="17005" count4="2" equip5="17011" count5="4" />
+<rank rank="13" rare="125" zhanli="19000" sp="390" equip1="19003" count1="1" equip2="18003" count2="3" equip3="18009" count3="3" equip4="18007" count4="3" equip5="17005" count5="5" />
+<rank rank="14" rare="126" zhanli="21500" sp="420" equip1="19003" count1="2" equip2="18003" count2="3" equip3="18010" count3="3" equip4="18007" count4="3" equip5="17005" count5="3" />
+<rank rank="15" rare="128" zhanli="23150" sp="450" equip1="19003" count1="2" equip2="19007" count2="2" equip3="18003" count3="3" equip4="18001" count4="3" equip5="18007" count5="3" />
+<rank rank="16" rare="130" zhanli="24910" sp="480" equip1="19003" count1="3" equip2="19008" count2="3" equip3="18003" count3="4" equip4="18008" count4="4" equip5="18007" count5="4" />
+<rank rank="17" rare="130" zhanli="26780" sp="510" equip1="19003" count1="3" equip2="19007" count2="3" equip3="19009" count3="3" equip4="18003" count4="4" equip5="18008" count5="4" />
+<rank rank="18" rare="130" zhanli="28760" sp="540" equip1="19003" count1="4" equip2="19008" count2="4" equip3="19010" count3="4" equip4="18003" count4="4" equip5="18007" count5="4" />
+<rank rank="19" rare="130" zhanli="30850" sp="570" equip1="19003" count1="4" equip2="19007" count2="4" equip3="19001" count3="4" equip4="19009" count4="4" equip5="18003" count5="5" />
+<rank rank="20" rare="130" zhanli="33050" sp="600" equip1="19003" count1="6" equip2="19008" count2="6" equip3="19001" count3="6" equip4="19010" count4="6" equip5="19005" count5="6" />
 </id>
 <id id="2" position="1" >
-<rank rank="1" rare="6" sp="30" equip1="27015" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
-<rank rank="2" rare="12" sp="60" equip1="16004" count1="1" equip2="27015" count2="1" equip3="27014" count3="1" equip4="15002" count4="1" equip5="27018" count5="1" />
-<rank rank="3" rare="20" sp="90" equip1="17004" count1="1" equip2="16004" count2="2" equip3="27015" count3="2" equip4="27014" count4="2" equip5="15002" count5="2" />
-<rank rank="4" rare="32" sp="120" equip1="17004" count1="1" equip2="17010" count2="1" equip3="16004" count3="2" equip4="27015" count4="2" equip5="27017" count5="2" />
-<rank rank="5" rare="46" sp="150" equip1="17004" count1="2" equip2="17008" count2="2" equip3="17009" count3="2" equip4="16004" count4="3" equip5="27015" count5="3" />
-<rank rank="6" rare="60" sp="180" equip1="17004" count1="2" equip2="17008" count2="2" equip3="17009" count3="2" equip4="16004" count4="3" equip5="16010" count5="3" />
-<rank rank="7" rare="70" sp="210" equip1="18002" count1="1" equip2="17004" count2="2" equip3="17012" count3="2" equip4="16004" count4="4" equip5="16010" count5="4" />
-<rank rank="8" rare="80" sp="240" equip1="18002" count1="1" equip2="17004" count2="3" equip3="17008" count3="3" equip4="17009" count4="3" equip5="16004" count5="4" />
-<rank rank="9" rare="90" sp="270" equip1="18002" count1="1" equip2="18001" count2="1" equip3="17004" count3="3" equip4="17003" count4="3" equip5="16004" count5="5" />
-<rank rank="10" rare="100" sp="300" equip1="18002" count1="2" equip2="18009" count2="2" equip3="17004" count3="3" equip4="17008" count4="3" equip5="17009" count5="3" />
-<rank rank="11" rare="110" sp="330" equip1="18002" count1="2" equip2="18004" count2="2" equip3="18005" count3="2" equip4="17004" count4="4" equip5="17010" count5="4" />
-<rank rank="12" rare="120" sp="360" equip1="18002" count1="2" equip2="18004" count2="2" equip3="18005" count3="2" equip4="17004" count4="2" equip5="17010" count5="4" />
-<rank rank="13" rare="130" sp="390" equip1="19002" count1="1" equip2="18002" count2="3" equip3="18001" count3="3" equip4="18010" count4="3" equip5="17004" count5="5" />
-<rank rank="14" rare="130" sp="420" equip1="19001" count1="2" equip2="18002" count2="3" equip3="18004" count3="3" equip4="18005" count4="3" equip5="17004" count5="3" />
-<rank rank="15" rare="130" sp="450" equip1="19002" count1="2" equip2="19004" count2="2" equip3="18002" count3="3" equip4="18001" count4="3" equip5="18010" count5="3" />
-<rank rank="16" rare="130" sp="480" equip1="19001" count1="3" equip2="19005" count2="3" equip3="18002" count3="4" equip4="18004" count4="4" equip5="18005" count5="4" />
-<rank rank="17" rare="130" sp="510" equip1="19002" count1="3" equip2="19004" count2="3" equip3="19011" count3="3" equip4="18002" count4="4" equip5="18009" count5="4" />
-<rank rank="18" rare="130" sp="540" equip1="19001" count1="4" equip2="19005" count2="4" equip3="19012" count3="4" equip4="18002" count4="4" equip5="18001" count5="4" />
-<rank rank="19" rare="130" sp="570" equip1="19002" count1="4" equip2="19004" count2="4" equip3="19013" count3="4" equip4="19009" count4="4" equip5="18002" count5="5" />
-<rank rank="20" rare="130" sp="600" equip1="19001" count1="6" equip2="19005" count2="6" equip3="19014" count3="6" equip4="19010" count4="6" equip5="19009" count5="6" />
+<rank rank="1" rare="6" zhanli="200" sp="30" equip1="27015" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
+<rank rank="2" rare="12" zhanli="500" sp="60" equip1="16004" count1="1" equip2="27015" count2="1" equip3="27014" count3="1" equip4="15002" count4="1" equip5="27018" count5="1" />
+<rank rank="3" rare="20" zhanli="900" sp="90" equip1="17004" count1="1" equip2="16004" count2="2" equip3="27015" count3="2" equip4="27014" count4="2" equip5="15002" count5="2" />
+<rank rank="4" rare="32" zhanli="1400" sp="120" equip1="17004" count1="1" equip2="17010" count2="1" equip3="16004" count3="2" equip4="27015" count4="2" equip5="27017" count5="2" />
+<rank rank="5" rare="46" zhanli="2000" sp="150" equip1="17004" count1="2" equip2="17008" count2="2" equip3="17009" count3="2" equip4="16004" count4="3" equip5="27015" count5="3" />
+<rank rank="6" rare="60" zhanli="2700" sp="180" equip1="17004" count1="2" equip2="17008" count2="2" equip3="17009" count3="2" equip4="16004" count4="3" equip5="16010" count5="3" />
+<rank rank="7" rare="70" zhanli="3500" sp="210" equip1="18002" count1="1" equip2="17004" count2="2" equip3="17012" count3="2" equip4="16004" count4="4" equip5="16010" count5="4" />
+<rank rank="8" rare="80" zhanli="4500" sp="240" equip1="18002" count1="1" equip2="17004" count2="3" equip3="17008" count3="3" equip4="17009" count4="3" equip5="16004" count5="4" />
+<rank rank="9" rare="90" zhanli="5600" sp="270" equip1="18002" count1="1" equip2="18001" count2="1" equip3="17004" count3="3" equip4="17003" count4="3" equip5="16004" count5="5" />
+<rank rank="10" rare="100" zhanli="7200" sp="300" equip1="18002" count1="2" equip2="18009" count2="2" equip3="17004" count3="3" equip4="17008" count4="3" equip5="17009" count5="3" />
+<rank rank="11" rare="110" zhanli="9500" sp="330" equip1="18002" count1="2" equip2="18004" count2="2" equip3="18005" count3="2" equip4="17004" count4="4" equip5="17010" count5="4" />
+<rank rank="12" rare="120" zhanli="11500" sp="360" equip1="18002" count1="2" equip2="18004" count2="2" equip3="18005" count3="2" equip4="17004" count4="2" equip5="17010" count5="4" />
+<rank rank="13" rare="125" zhanli="19000" sp="390" equip1="19002" count1="1" equip2="18002" count2="3" equip3="18001" count3="3" equip4="18010" count4="3" equip5="17004" count5="5" />
+<rank rank="14" rare="126" zhanli="21500" sp="420" equip1="19001" count1="2" equip2="18002" count2="3" equip3="18004" count3="3" equip4="18005" count4="3" equip5="17004" count5="3" />
+<rank rank="15" rare="128" zhanli="23150" sp="450" equip1="19002" count1="2" equip2="19004" count2="2" equip3="18002" count3="3" equip4="18001" count4="3" equip5="18010" count5="3" />
+<rank rank="16" rare="130" zhanli="24910" sp="480" equip1="19001" count1="3" equip2="19005" count2="3" equip3="18002" count3="4" equip4="18004" count4="4" equip5="18005" count5="4" />
+<rank rank="17" rare="130" zhanli="26780" sp="510" equip1="19002" count1="3" equip2="19004" count2="3" equip3="19011" count3="3" equip4="18002" count4="4" equip5="18009" count5="4" />
+<rank rank="18" rare="130" zhanli="28760" sp="540" equip1="19001" count1="4" equip2="19005" count2="4" equip3="19012" count3="4" equip4="18002" count4="4" equip5="18001" count5="4" />
+<rank rank="19" rare="130" zhanli="30850" sp="570" equip1="19002" count1="4" equip2="19004" count2="4" equip3="19013" count3="4" equip4="19009" count4="4" equip5="18002" count5="5" />
+<rank rank="20" rare="130" zhanli="33050" sp="600" equip1="19001" count1="6" equip2="19005" count2="6" equip3="19014" count3="6" equip4="19010" count4="6" equip5="19009" count5="6" />
 </id>
 <id id="3" position="2" >
-<rank rank="1" rare="6" sp="30" equip1="27015" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
-<rank rank="2" rare="12" sp="60" equip1="16004" count1="1" equip2="27015" count2="1" equip3="15004" count3="1" equip4="27017" count4="1" equip5="27018" count5="1" />
-<rank rank="3" rare="20" sp="90" equip1="17004" count1="1" equip2="16004" count2="2" equip3="27015" count3="2" equip4="27017" count4="2" equip5="15004" count5="2" />
-<rank rank="4" rare="32" sp="120" equip1="17004" count1="1" equip2="17003" count2="1" equip3="16004" count3="2" equip4="27015" count4="2" equip5="27018" count5="2" />
-<rank rank="5" rare="46" sp="150" equip1="17004" count1="2" equip2="17011" count2="2" equip3="17012" count3="2" equip4="16004" count4="3" equip5="27015" count5="3" />
-<rank rank="6" rare="60" sp="180" equip1="17004" count1="2" equip2="17012" count2="2" equip3="17010" count3="2" equip4="16004" count4="3" equip5="16011" count5="3" />
-<rank rank="7" rare="70" sp="210" equip1="18002" count1="1" equip2="17004" count2="2" equip3="17011" count3="2" equip4="16004" count4="4" equip5="16011" count5="4" />
-<rank rank="8" rare="80" sp="240" equip1="18002" count1="1" equip2="17004" count2="3" equip3="17010" count3="3" equip4="17012" count4="3" equip5="16004" count5="4" />
-<rank rank="9" rare="90" sp="270" equip1="18002" count1="1" equip2="18006" count2="1" equip3="17004" count3="3" equip4="17003" count4="3" equip5="16004" count5="5" />
-<rank rank="10" rare="100" sp="300" equip1="18002" count1="2" equip2="18006" count2="2" equip3="17004" count3="3" equip4="17011" count4="3" equip5="17012" count5="3" />
-<rank rank="11" rare="110" sp="330" equip1="18002" count1="2" equip2="18001" count2="2" equip3="18006" count3="2" equip4="17004" count4="4" equip5="17010" count5="4" />
-<rank rank="12" rare="120" sp="360" equip1="18002" count1="2" equip2="18008" count2="2" equip3="18006" count3="2" equip4="17004" count4="2" equip5="17011" count5="4" />
-<rank rank="13" rare="130" sp="390" equip1="19002" count1="1" equip2="18002" count2="3" equip3="18009" count3="3" equip4="18006" count4="3" equip5="17004" count5="5" />
-<rank rank="14" rare="130" sp="420" equip1="19002" count1="2" equip2="18002" count2="3" equip3="18010" count3="3" equip4="18006" count4="3" equip5="17004" count5="3" />
-<rank rank="15" rare="130" sp="450" equip1="19002" count1="2" equip2="19006" count2="2" equip3="18002" count3="3" equip4="18001" count4="3" equip5="18006" count5="3" />
-<rank rank="16" rare="130" sp="480" equip1="19002" count1="3" equip2="19008" count2="3" equip3="18002" count3="4" equip4="18008" count4="4" equip5="18006" count5="4" />
-<rank rank="17" rare="130" sp="510" equip1="19002" count1="3" equip2="19006" count2="3" equip3="19009" count3="3" equip4="18002" count4="4" equip5="18008" count5="4" />
-<rank rank="18" rare="130" sp="540" equip1="19002" count1="4" equip2="19008" count2="4" equip3="19010" count3="4" equip4="18002" count4="4" equip5="18006" count5="4" />
-<rank rank="19" rare="130" sp="570" equip1="19002" count1="4" equip2="19006" count2="4" equip3="19001" count3="4" equip4="19009" count4="4" equip5="18002" count5="5" />
-<rank rank="20" rare="130" sp="600" equip1="19002" count1="6" equip2="19008" count2="6" equip3="19001" count3="6" equip4="19010" count4="6" equip5="19004" count5="6" />
+<rank rank="1" rare="6" zhanli="200" sp="30" equip1="27015" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
+<rank rank="2" rare="12" zhanli="500" sp="60" equip1="16004" count1="1" equip2="27015" count2="1" equip3="15004" count3="1" equip4="27017" count4="1" equip5="27018" count5="1" />
+<rank rank="3" rare="20" zhanli="900" sp="90" equip1="17004" count1="1" equip2="16004" count2="2" equip3="27015" count3="2" equip4="27017" count4="2" equip5="15004" count5="2" />
+<rank rank="4" rare="32" zhanli="1400" sp="120" equip1="17004" count1="1" equip2="17003" count2="1" equip3="16004" count3="2" equip4="27015" count4="2" equip5="27018" count5="2" />
+<rank rank="5" rare="46" zhanli="2000" sp="150" equip1="17004" count1="2" equip2="17011" count2="2" equip3="17012" count3="2" equip4="16004" count4="3" equip5="27015" count5="3" />
+<rank rank="6" rare="60" zhanli="2700" sp="180" equip1="17004" count1="2" equip2="17012" count2="2" equip3="17010" count3="2" equip4="16004" count4="3" equip5="16011" count5="3" />
+<rank rank="7" rare="70" zhanli="3500" sp="210" equip1="18002" count1="1" equip2="17004" count2="2" equip3="17011" count3="2" equip4="16004" count4="4" equip5="16011" count5="4" />
+<rank rank="8" rare="80" zhanli="4500" sp="240" equip1="18002" count1="1" equip2="17004" count2="3" equip3="17010" count3="3" equip4="17012" count4="3" equip5="16004" count5="4" />
+<rank rank="9" rare="90" zhanli="5600" sp="270" equip1="18002" count1="1" equip2="18006" count2="1" equip3="17004" count3="3" equip4="17003" count4="3" equip5="16004" count5="5" />
+<rank rank="10" rare="100" zhanli="7200" sp="300" equip1="18002" count1="2" equip2="18006" count2="2" equip3="17004" count3="3" equip4="17011" count4="3" equip5="17012" count5="3" />
+<rank rank="11" rare="110" zhanli="9500" sp="330" equip1="18002" count1="2" equip2="18001" count2="2" equip3="18006" count3="2" equip4="17004" count4="4" equip5="17010" count5="4" />
+<rank rank="12" rare="120" zhanli="11500" sp="360" equip1="18002" count1="2" equip2="18008" count2="2" equip3="18006" count3="2" equip4="17004" count4="2" equip5="17011" count5="4" />
+<rank rank="13" rare="125" zhanli="19000" sp="390" equip1="19002" count1="1" equip2="18002" count2="3" equip3="18009" count3="3" equip4="18006" count4="3" equip5="17004" count5="5" />
+<rank rank="14" rare="126" zhanli="21500" sp="420" equip1="19002" count1="2" equip2="18002" count2="3" equip3="18010" count3="3" equip4="18006" count4="3" equip5="17004" count5="3" />
+<rank rank="15" rare="128" zhanli="23150" sp="450" equip1="19002" count1="2" equip2="19006" count2="2" equip3="18002" count3="3" equip4="18001" count4="3" equip5="18006" count5="3" />
+<rank rank="16" rare="130" zhanli="24910" sp="480" equip1="19002" count1="3" equip2="19008" count2="3" equip3="18002" count3="4" equip4="18008" count4="4" equip5="18006" count5="4" />
+<rank rank="17" rare="130" zhanli="26780" sp="510" equip1="19002" count1="3" equip2="19006" count2="3" equip3="19009" count3="3" equip4="18002" count4="4" equip5="18008" count5="4" />
+<rank rank="18" rare="130" zhanli="28760" sp="540" equip1="19002" count1="4" equip2="19008" count2="4" equip3="19010" count3="4" equip4="18002" count4="4" equip5="18006" count5="4" />
+<rank rank="19" rare="130" zhanli="30850" sp="570" equip1="19002" count1="4" equip2="19006" count2="4" equip3="19001" count3="4" equip4="19009" count4="4" equip5="18002" count5="5" />
+<rank rank="20" rare="130" zhanli="33050" sp="600" equip1="19002" count1="6" equip2="19008" count2="6" equip3="19001" count3="6" equip4="19010" count4="6" equip5="19004" count5="6" />
 </id>
 <id id="4" position="3" >
-<rank rank="1" rare="6" sp="30" equip1="27016" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
-<rank rank="2" rare="12" sp="60" equip1="16003" count1="1" equip2="27016" count2="1" equip3="15002" count3="1" equip4="27014" count4="1" equip5="27013" count5="1" />
-<rank rank="3" rare="20" sp="90" equip1="17005" count1="1" equip2="16003" count2="2" equip3="27016" count3="2" equip4="15002" count4="2" equip5="27014" count5="2" />
-<rank rank="4" rare="32" sp="120" equip1="17005" count1="1" equip2="17010" count2="1" equip3="16003" count3="2" equip4="27016" count4="2" equip5="27019" count5="2" />
-<rank rank="5" rare="46" sp="150" equip1="17005" count1="2" equip2="17009" count2="2" equip3="17008" count3="2" equip4="16003" count4="3" equip5="27016" count5="3" />
-<rank rank="6" rare="60" sp="180" equip1="17005" count1="2" equip2="17009" count2="2" equip3="17008" count3="2" equip4="16003" count4="3" equip5="16010" count5="3" />
-<rank rank="7" rare="70" sp="210" equip1="18003" count1="1" equip2="17005" count2="2" equip3="17012" count3="2" equip4="16003" count4="4" equip5="16010" count5="4" />
-<rank rank="8" rare="80" sp="240" equip1="18003" count1="1" equip2="17005" count2="3" equip3="17009" count3="3" equip4="17008" count4="3" equip5="16003" count5="4" />
-<rank rank="9" rare="90" sp="270" equip1="18003" count1="1" equip2="18001" count2="1" equip3="17005" count3="3" equip4="17003" count4="3" equip5="16003" count5="5" />
-<rank rank="10" rare="100" sp="300" equip1="18003" count1="2" equip2="18009" count2="2" equip3="17005" count3="3" equip4="17009" count4="3" equip5="17008" count5="3" />
-<rank rank="11" rare="110" sp="330" equip1="18003" count1="2" equip2="18005" count2="2" equip3="18004" count3="2" equip4="17005" count4="4" equip5="17010" count5="4" />
-<rank rank="12" rare="120" sp="360" equip1="18003" count1="2" equip2="18005" count2="2" equip3="18004" count3="2" equip4="17005" count4="2" equip5="17010" count5="4" />
-<rank rank="13" rare="130" sp="390" equip1="19003" count1="1" equip2="18003" count2="3" equip3="18001" count3="3" equip4="18010" count4="3" equip5="17005" count5="5" />
-<rank rank="14" rare="130" sp="420" equip1="19001" count1="2" equip2="18003" count2="3" equip3="18005" count3="3" equip4="18004" count4="3" equip5="17005" count5="3" />
-<rank rank="15" rare="130" sp="450" equip1="19003" count1="2" equip2="19005" count2="2" equip3="18003" count3="3" equip4="18001" count4="3" equip5="18010" count5="3" />
-<rank rank="16" rare="130" sp="480" equip1="19001" count1="3" equip2="19004" count2="3" equip3="18003" count3="4" equip4="18005" count4="4" equip5="18004" count5="4" />
-<rank rank="17" rare="130" sp="510" equip1="19003" count1="3" equip2="19005" count2="3" equip3="19011" count3="3" equip4="18003" count4="4" equip5="18009" count5="4" />
-<rank rank="18" rare="130" sp="540" equip1="19001" count1="4" equip2="19004" count2="4" equip3="19012" count3="4" equip4="18003" count4="4" equip5="18001" count5="4" />
-<rank rank="19" rare="130" sp="570" equip1="19003" count1="4" equip2="19005" count2="4" equip3="19013" count3="4" equip4="19010" count4="4" equip5="18003" count5="5" />
-<rank rank="20" rare="130" sp="600" equip1="19001" count1="6" equip2="19004" count2="6" equip3="19014" count3="6" equip4="19009" count4="6" equip5="19010" count5="6" />
+<rank rank="1" rare="6" zhanli="200" sp="30" equip1="27016" count1="1" equip2="27013" count2="1" equip3="27018" count3="1" equip4="27017" count4="1" equip5="15004" count5="1" />
+<rank rank="2" rare="12" zhanli="500" sp="60" equip1="16003" count1="1" equip2="27016" count2="1" equip3="15002" count3="1" equip4="27014" count4="1" equip5="27013" count5="1" />
+<rank rank="3" rare="20" zhanli="900" sp="90" equip1="17005" count1="1" equip2="16003" count2="2" equip3="27016" count3="2" equip4="15002" count4="2" equip5="27014" count5="2" />
+<rank rank="4" rare="32" zhanli="1400" sp="120" equip1="17005" count1="1" equip2="17010" count2="1" equip3="16003" count3="2" equip4="27016" count4="2" equip5="27019" count5="2" />
+<rank rank="5" rare="46" zhanli="2000" sp="150" equip1="17005" count1="2" equip2="17009" count2="2" equip3="17008" count3="2" equip4="16003" count4="3" equip5="27016" count5="3" />
+<rank rank="6" rare="60" zhanli="2700" sp="180" equip1="17005" count1="2" equip2="17009" count2="2" equip3="17008" count3="2" equip4="16003" count4="3" equip5="16010" count5="3" />
+<rank rank="7" rare="70" zhanli="3500" sp="210" equip1="18003" count1="1" equip2="17005" count2="2" equip3="17012" count3="2" equip4="16003" count4="4" equip5="16010" count5="4" />
+<rank rank="8" rare="80" zhanli="4500" sp="240" equip1="18003" count1="1" equip2="17005" count2="3" equip3="17009" count3="3" equip4="17008" count4="3" equip5="16003" count5="4" />
+<rank rank="9" rare="90" zhanli="5600" sp="270" equip1="18003" count1="1" equip2="18001" count2="1" equip3="17005" count3="3" equip4="17003" count4="3" equip5="16003" count5="5" />
+<rank rank="10" rare="100" zhanli="7200" sp="300" equip1="18003" count1="2" equip2="18009" count2="2" equip3="17005" count3="3" equip4="17009" count4="3" equip5="17008" count5="3" />
+<rank rank="11" rare="110" zhanli="9500" sp="330" equip1="18003" count1="2" equip2="18005" count2="2" equip3="18004" count3="2" equip4="17005" count4="4" equip5="17010" count5="4" />
+<rank rank="12" rare="120" zhanli="11500" sp="360" equip1="18003" count1="2" equip2="18005" count2="2" equip3="18004" count3="2" equip4="17005" count4="2" equip5="17010" count5="4" />
+<rank rank="13" rare="125" zhanli="19000" sp="390" equip1="19003" count1="1" equip2="18003" count2="3" equip3="18001" count3="3" equip4="18010" count4="3" equip5="17005" count5="5" />
+<rank rank="14" rare="126" zhanli="21500" sp="420" equip1="19001" count1="2" equip2="18003" count2="3" equip3="18005" count3="3" equip4="18004" count4="3" equip5="17005" count5="3" />
+<rank rank="15" rare="128" zhanli="23150" sp="450" equip1="19003" count1="2" equip2="19005" count2="2" equip3="18003" count3="3" equip4="18001" count4="3" equip5="18010" count5="3" />
+<rank rank="16" rare="130" zhanli="24910" sp="480" equip1="19001" count1="3" equip2="19004" count2="3" equip3="18003" count3="4" equip4="18005" count4="4" equip5="18004" count5="4" />
+<rank rank="17" rare="130" zhanli="26780" sp="510" equip1="19003" count1="3" equip2="19005" count2="3" equip3="19011" count3="3" equip4="18003" count4="4" equip5="18009" count5="4" />
+<rank rank="18" rare="130" zhanli="28760" sp="540" equip1="19001" count1="4" equip2="19004" count2="4" equip3="19012" count3="4" equip4="18003" count4="4" equip5="18001" count5="4" />
+<rank rank="19" rare="130" zhanli="30850" sp="570" equip1="19003" count1="4" equip2="19005" count2="4" equip3="19013" count3="4" equip4="19010" count4="4" equip5="18003" count5="5" />
+<rank rank="20" rare="130" zhanli="33050" sp="600" equip1="19001" count1="6" equip2="19004" count2="6" equip3="19014" count3="6" equip4="19009" count4="6" equip5="19010" count5="6" />
 </id>
 <id id="5" position="4" >
-<rank rank="1" rare="6" sp="30" equip1="27014" count1="1" equip2="15002" count2="1" equip3="27013" count3="1" equip4="27018" count4="1" equip5="27019" count5="1" />
-<rank rank="2" rare="12" sp="60" equip1="16010" count1="1" equip2="27014" count2="1" equip3="15002" count3="1" equip4="27013" count4="1" equip5="27018" count5="1" />
-<rank rank="3" rare="20" sp="90" equip1="17010" count1="1" equip2="16010" count2="2" equip3="27014" count3="2" equip4="15002" count4="2" equip5="27017" count5="2" />
-<rank rank="4" rare="32" sp="120" equip1="17008" count1="1" equip2="17009" count2="1" equip3="16010" count3="2" equip4="27014" count4="2" equip5="15002" count5="2" />
-<rank rank="5" rare="46" sp="150" equip1="17008" count1="2" equip2="17009" count2="2" equip3="17003" count3="2" equip4="16010" count4="3" equip5="27019" count5="3" />
-<rank rank="6" rare="60" sp="180" equip1="17008" count1="2" equip2="17009" count2="2" equip3="17012" count3="2" equip4="16010" count4="3" equip5="16011" count5="3" />
-<rank rank="7" rare="70" sp="210" equip1="18001" count1="1" equip2="17008" count2="2" equip3="17009" count3="2" equip4="16010" count4="4" equip5="16011" count5="4" />
-<rank rank="8" rare="80" sp="240" equip1="18001" count1="1" equip2="17008" count2="3" equip3="17009" count3="3" equip4="17010" count4="3" equip5="16010" count5="4" />
-<rank rank="9" rare="90" sp="270" equip1="18004" count1="1" equip2="18005" count2="1" equip3="17008" count3="3" equip4="17009" count4="3" equip5="16010" count5="5" />
-<rank rank="10" rare="100" sp="300" equip1="18004" count1="2" equip2="18005" count2="2" equip3="17008" count3="3" equip4="17009" count4="3" equip5="17003" count5="3" />
-<rank rank="11" rare="110" sp="330" equip1="18004" count1="2" equip2="18005" count2="2" equip3="18008" count3="2" equip4="17008" count4="4" equip5="17009" count5="4" />
-<rank rank="12" rare="120" sp="360" equip1="18004" count1="2" equip2="18005" count2="2" equip3="18001" count3="2" equip4="17008" count4="2" equip5="17009" count5="4" />
-<rank rank="13" rare="130" sp="390" equip1="19001" count1="1" equip2="18004" count2="3" equip3="18005" count3="3" equip4="18009" count4="3" equip5="17010" count5="5" />
-<rank rank="14" rare="130" sp="420" equip1="19001" count1="2" equip2="18004" count2="3" equip3="18005" count3="3" equip4="18001" count4="3" equip5="17010" count5="3" />
-<rank rank="15" rare="130" sp="450" equip1="19004" count1="2" equip2="19005" count2="2" equip3="18001" count3="3" equip4="18008" count4="3" equip5="18010" count5="3" />
-<rank rank="16" rare="130" sp="480" equip1="19005" count1="3" equip2="19004" count2="3" equip3="18001" count3="4" equip4="18009" count4="4" equip5="18010" count5="4" />
-<rank rank="17" rare="130" sp="510" equip1="19004" count1="3" equip2="19005" count2="3" equip3="19011" count3="3" equip4="18004" count4="4" equip5="18005" count5="4" />
-<rank rank="18" rare="130" sp="540" equip1="19005" count1="4" equip2="19004" count2="4" equip3="19012" count3="4" equip4="18004" count4="4" equip5="18005" count5="4" />
-<rank rank="19" rare="130" sp="570" equip1="19004" count1="4" equip2="19005" count2="4" equip3="19013" count3="4" equip4="19009" count4="4" equip5="18001" count5="5" />
-<rank rank="20" rare="130" sp="600" equip1="19005" count1="6" equip2="19004" count2="6" equip3="19014" count3="6" equip4="19010" count4="6" equip5="19001" count5="6" />
+<rank rank="1" rare="6" zhanli="200" sp="30" equip1="27014" count1="1" equip2="15002" count2="1" equip3="27013" count3="1" equip4="27018" count4="1" equip5="27019" count5="1" />
+<rank rank="2" rare="12" zhanli="500" sp="60" equip1="16010" count1="1" equip2="27014" count2="1" equip3="15002" count3="1" equip4="27013" count4="1" equip5="27018" count5="1" />
+<rank rank="3" rare="20" zhanli="900" sp="90" equip1="17010" count1="1" equip2="16010" count2="2" equip3="27014" count3="2" equip4="15002" count4="2" equip5="27017" count5="2" />
+<rank rank="4" rare="32" zhanli="1400" sp="120" equip1="17008" count1="1" equip2="17009" count2="1" equip3="16010" count3="2" equip4="27014" count4="2" equip5="15002" count5="2" />
+<rank rank="5" rare="46" zhanli="2000" sp="150" equip1="17008" count1="2" equip2="17009" count2="2" equip3="17003" count3="2" equip4="16010" count4="3" equip5="27019" count5="3" />
+<rank rank="6" rare="60" zhanli="2700" sp="180" equip1="17008" count1="2" equip2="17009" count2="2" equip3="17012" count3="2" equip4="16010" count4="3" equip5="16011" count5="3" />
+<rank rank="7" rare="70" zhanli="3500" sp="210" equip1="18001" count1="1" equip2="17008" count2="2" equip3="17009" count3="2" equip4="16010" count4="4" equip5="16011" count5="4" />
+<rank rank="8" rare="80" zhanli="4500" sp="240" equip1="18001" count1="1" equip2="17008" count2="3" equip3="17009" count3="3" equip4="17010" count4="3" equip5="16010" count5="4" />
+<rank rank="9" rare="90" zhanli="5600" sp="270" equip1="18004" count1="1" equip2="18005" count2="1" equip3="17008" count3="3" equip4="17009" count4="3" equip5="16010" count5="5" />
+<rank rank="10" rare="100" zhanli="7200" sp="300" equip1="18004" count1="2" equip2="18005" count2="2" equip3="17008" count3="3" equip4="17009" count4="3" equip5="17003" count5="3" />
+<rank rank="11" rare="110" zhanli="9500" sp="330" equip1="18004" count1="2" equip2="18005" count2="2" equip3="18008" count3="2" equip4="17008" count4="4" equip5="17009" count5="4" />
+<rank rank="12" rare="120" zhanli="11500" sp="360" equip1="18004" count1="2" equip2="18005" count2="2" equip3="18001" count3="2" equip4="17008" count4="2" equip5="17009" count5="4" />
+<rank rank="13" rare="125" zhanli="19000" sp="390" equip1="19001" count1="1" equip2="18004" count2="3" equip3="18005" count3="3" equip4="18009" count4="3" equip5="17010" count5="5" />
+<rank rank="14" rare="126" zhanli="21500" sp="420" equip1="19001" count1="2" equip2="18004" count2="3" equip3="18005" count3="3" equip4="18001" count4="3" equip5="17010" count5="3" />
+<rank rank="15" rare="128" zhanli="23150" sp="450" equip1="19004" count1="2" equip2="19005" count2="2" equip3="18001" count3="3" equip4="18008" count4="3" equip5="18010" count5="3" />
+<rank rank="16" rare="130" zhanli="24910" sp="480" equip1="19005" count1="3" equip2="19004" count2="3" equip3="18001" count3="4" equip4="18009" count4="4" equip5="18010" count5="4" />
+<rank rank="17" rare="130" zhanli="26780" sp="510" equip1="19004" count1="3" equip2="19005" count2="3" equip3="19011" count3="3" equip4="18004" count4="4" equip5="18005" count5="4" />
+<rank rank="18" rare="130" zhanli="28760" sp="540" equip1="19005" count1="4" equip2="19004" count2="4" equip3="19012" count3="4" equip4="18004" count4="4" equip5="18005" count5="4" />
+<rank rank="19" rare="130" zhanli="30850" sp="570" equip1="19004" count1="4" equip2="19005" count2="4" equip3="19013" count3="4" equip4="19009" count4="4" equip5="18001" count5="5" />
+<rank rank="20" rare="130" zhanli="33050" sp="600" equip1="19005" count1="6" equip2="19004" count2="6" equip3="19014" count3="6" equip4="19010" count4="6" equip5="19001" count5="6" />
 </id>
 </data>
