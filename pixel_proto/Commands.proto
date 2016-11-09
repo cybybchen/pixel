@@ -1429,8 +1429,20 @@ message HeroRareLevelupRank {
 	optional int32 zhanli = 14;
 }
 
+message HeroFettersOrderList {
+	repeated HeroFettersOrder order = 1;
+}
+
+message HeroFettersOrder {
+	optional int32 order = 1;
+	optional int32 id = 2;
+	repeated HeroFetters fetters = 3;
+}
+
 message HeroFetters {
 	optional int32 fettersid = 1;
+	optional string fettersdes = 2;
+	repeated HeroFetter hero = 3;
 }
 
 message HeroFetter {
