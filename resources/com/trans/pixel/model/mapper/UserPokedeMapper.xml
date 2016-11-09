@@ -10,6 +10,8 @@
 		<result property="count" column="count" />
 		<result property="strengthen" column="strengthen" />
 		<result property="rank" column="rank" />
+		<result property="star" column="star" />
+		<result property="fetters" column="fetters" />
 	</resultMap>
 	
 	<select id="selectUserPokede" resultMap="resultMap">
@@ -18,11 +20,11 @@
 	</select>
 	
 	<insert id="updateUserPokede" parameterType="com.trans.pixel.model.userinfo.UserPokedeBean">
-	    INSERT INTO user_pokede(user_id, hero_id, rare, level, count, strengthen, rank)
-	    VALUES(#{userId}, #{heroId}, #{rare}, #{level}, #{count}, #{strengthen}, #{rank})
+	    INSERT INTO user_pokede(user_id, hero_id, rare, level, count, strengthen, rank, star, fetters)
+	    VALUES(#{userId}, #{heroId}, #{rare}, #{level}, #{count}, #{strengthen}, #{rank}, #{star}, #{fetters})
 	    ON 
 	    duplicate key update
-	    rare=#{rare}, level=#{level}, count=#{count}, strengthen=#{strengthen}, rank=#{rank}
+	    rare=#{rare}, level=#{level}, count=#{count}, strengthen=#{strengthen}, rank=#{rank}, star=#{star}, fetters=#{fetters}
 	</insert>
 	
 	<select id="selectUserPokedeList" parameterType="long" resultMap="resultMap">

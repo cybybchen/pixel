@@ -100,6 +100,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
+import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -844,6 +845,11 @@ public class GameDataScreen extends RequestScreen {
 		areaCommandService.isAreaOwner(cmd, responseBuilder, user);
 		return true;//IsAreaOwnerCommand
 	}//IsAreaOwnerCommand
+	@Override//OpenFetterCommand
+	protected boolean handleCommand(RequestOpenFetterCommand cmd, Builder responseBuilder, UserBean user) {
+		pokedeCommandService.openFetters(cmd, responseBuilder, user);
+		return true;//OpenFetterCommand
+	}//OpenFetterCommand
 	//add handleCommand here
 	
 	@Override

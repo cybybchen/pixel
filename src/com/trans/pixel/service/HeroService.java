@@ -6,9 +6,17 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
+import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
+import com.trans.pixel.protoc.Commands.HeroFetter;
+import com.trans.pixel.protoc.Commands.HeroFetters;
+import com.trans.pixel.protoc.Commands.HeroFettersOrder;
 import com.trans.pixel.service.redis.HeroRedisService;
 
 @Service
@@ -16,6 +24,8 @@ public class HeroService {
 
 	@Resource
 	private HeroRedisService heroRedisService;
+	@Resource
+	private UserPokedeService userPokedeService;
 	
 	public HeroBean getHero(int heroId) {
 		HeroBean hero = heroRedisService.getHeroByHeroId(heroId);
@@ -87,5 +97,25 @@ public class HeroService {
 		}
 		
 		return heroList;
+	}
+	
+	public ResultConst openFetter(UserBean user, UserPokedeBean userPokede, int fetterId) {
+		if (userPokede.hasOpenedFetter(fetterId))
+			return ErrorConst.HAS_OPEN_FETTER_ERROR;
+		HeroFettersOrder heroFettersOrder = heroRedisService.getHeroFettersOrder(userPokede.getHeroId());
+		for (HeroFetters heroFetters : heroFettersOrder.getFettersList()) {
+			if (heroFetters.getFettersid() == fetterId) {
+				for (HeroFetter heroFetter : heroFetters.getHeroList()) {
+					UserPokedeBean fetterPokede = userPokedeService.selectUserPokede(user, heroFetter.getHeroid());
+					if (heroFetter.getHerorank() > fetterPokede.getRank() || heroFetter.getHerostar() > fetterPokede.getStar())
+						return ErrorConst.OPEN_FETTER_ERROR;
+					
+					userPokede.addFetterId(fetterId);
+					return SuccessConst.OPEN_FETTER_SUCCESS;
+				}
+			}
+		}
+		
+		return ErrorConst.OPEN_FETTER_ERROR;
 	}
 }

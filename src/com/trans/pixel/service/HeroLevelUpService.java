@@ -201,6 +201,11 @@ public class HeroLevelUpService {
 		result = SuccessConst.STAR_LEVELUP_SUCCESS;
 		
 		/**
+		 * 更新图鉴
+		 */
+		userPokedeService.updateUserPokede(heroInfo, user);
+		
+		/**
 		 * 英雄升星的活动
 		 */
 		activityService.heroLevelupStarActivity(user, heroInfo.getStarLevel());

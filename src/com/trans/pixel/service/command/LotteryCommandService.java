@@ -176,7 +176,7 @@ public class LotteryCommandService extends BaseCommandService {
 		int cost = LotteryConst.COST_LOTTERY_HERO_COIN * count;
 		switch (type) {
 			case RewardConst.COIN:
-				cost = (int)Math.pow(2, user.getLotteryCoinCount()) * LotteryConst.COST_LOTTERY_HERO_COIN * count;
+				cost = (int)Math.pow(2, Math.min(user.getLotteryCoinCount(), 10)) * LotteryConst.COST_LOTTERY_HERO_COIN * count;
 				break;
 			case RewardConst.JEWEL:
 				cost = LotteryConst.COST_LOTTERY_HERO_JEWEL * count;

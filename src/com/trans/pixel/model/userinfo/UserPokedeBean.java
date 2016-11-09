@@ -14,6 +14,8 @@ public class UserPokedeBean {
 	private int count = 0;
 	private int strengthen = 0;
 	private int rank = 0;
+	private String fetters = "";
+	private int star = 0;
 	public long getUserId() {
 		return userId;
 	}
@@ -56,6 +58,18 @@ public class UserPokedeBean {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
+	public String getFetters() {
+		return fetters;
+	}
+	public void setFetters(String fetters) {
+		this.fetters = fetters;
+	}
+	public int getStar() {
+		return star;
+	}
+	public void setStar(int star) {
+		this.star = star;
+	}
 	public HeroInfo buildUserPokede(List<UserClearBean> userClearList) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		
@@ -68,6 +82,8 @@ public class UserPokedeBean {
 		}
 		builder.setStrengthen(strengthen);
 		builder.setRank(rank);
+		builder.setStar(star);
+		builder.setFetters(fetters);
 		
 		return builder.build();
 	}
@@ -77,5 +93,22 @@ public class UserPokedeBean {
 			return null;
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserPokedeBean) JSONObject.toBean(json, UserPokedeBean.class);
+	}
+	
+	public void addFetterId(int fetterId) {
+		if (fetters.isEmpty())
+			fetters = fetters + fetterId;
+		else
+			fetters = fetters + "," + fetterId;
+	}
+	
+	public boolean hasOpenedFetter(int fetterId) {
+		String[] fetterIds = fetters.split(",");
+		for (String fetter : fetterIds) {
+			if (fetter.equals("" + fetterId))
+				return true;
+		}
+		
+		return false;
 	}
 }

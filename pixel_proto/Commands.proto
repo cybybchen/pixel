@@ -213,6 +213,7 @@ message HeroInfo {
 	repeated ClearInfo clear = 12;
 	optional int32 strengthen = 13;
 	optional int32 rank = 14;
+	optional string fetters = 15;
 }
 
 message PurchaseCoinReward {
@@ -2386,6 +2387,11 @@ message ResponseIsAreaOwnerCommand {
 	optional bool isOwner = 1;
 }
 
+message RequestOpenFetterCommand {
+	required int32 heroId = 1;
+	required int32 fetterid = 2;	
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2527,6 +2533,7 @@ message RequestCommand {
 	optional RequestHeroStrengthenCommand heroStrengthenCommand = 99;
 	optional RequestSevenLoginSignCommand sevenLoginSignCommand = 200;
 	optional RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;
+	optional RequestOpenFetterCommand openFetterCommand = 202;
 }
 // response command list transfer only use it
 message ResponseCommand {

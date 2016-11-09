@@ -258,6 +258,9 @@ public class RedisKey {
 	//hero rare levelup
 	public static final String HERO_RARE_LEVELUP_CONFIG = PREFIX + CONFIG_PREFIX + "hero_rare_levelup";
 	
+	//hero fetters
+	public static final String HERO_FETTERS_CONFIG = PREFIX + CONFIG_PREFIX + "hero_fetters";
+	
 	//notice prefix
 	public static final String NOTICE_PREFIX = PREFIX + "notice_";
 	

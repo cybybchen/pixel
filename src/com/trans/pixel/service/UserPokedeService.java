@@ -74,6 +74,11 @@ public class UserPokedeService {
 			userPokede.setRank(heroInfo.getRank());
 			updateUserPokede(userPokede, user);
 		}
+		
+		if (userPokede.getStar() < heroInfo.getStarLevel()) {
+			userPokede.setStar(heroInfo.getStarLevel());
+			updateUserPokede(userPokede, user);
+		}
 	}
 	
 	public void delUserPokede(UserPokedeBean userPokede, UserBean user){

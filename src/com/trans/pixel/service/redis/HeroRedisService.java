@@ -22,6 +22,8 @@ import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.protoc.Commands.HeroChoice;
 import com.trans.pixel.protoc.Commands.HeroChoiceList;
+import com.trans.pixel.protoc.Commands.HeroFettersOrder;
+import com.trans.pixel.protoc.Commands.HeroFettersOrderList;
 import com.trans.pixel.protoc.Commands.HeroRareLevelup;
 import com.trans.pixel.protoc.Commands.HeroRareLevelupList;
 import com.trans.pixel.protoc.Commands.Heroloot;
@@ -33,6 +35,7 @@ public class HeroRedisService extends RedisService {
 	private static final String HEROCHOICE_FILE_NAME = "lol_herochoice.xml";
 	private static final String HEROLOOT_FILE_NAME = "lol_heroloot.xml";
 	private static final String HERORARE_LEVELUP_FILE_NAME = "lol_rank1.xml";
+	private static final String HERO_FETTERS_FILE_NAME = "lol_herofetters.xml";
 	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
@@ -214,7 +217,7 @@ public class HeroRedisService extends RedisService {
 		return map;
 	}
 	
-	//hero loot
+	//hero rarelevelup
 	public HeroRareLevelup getHeroRareLevelup(int position) {
 		String value = hget(RedisKey.HERO_RARE_LEVELUP_CONFIG, "" + position);
 		if (value == null) {
@@ -261,6 +264,57 @@ public class HeroRedisService extends RedisService {
 		Map<String, HeroRareLevelup> map = new HashMap<String, HeroRareLevelup>();
 		for(HeroRareLevelup.Builder herorare : builder.getIdBuilderList()){
 			map.put("" + herorare.getPosition(), herorare.build());
+		}
+		return map;
+	}
+	
+	//hero fetters
+	public HeroFettersOrder getHeroFettersOrder(int heroId) {
+		String value = hget(RedisKey.HERO_FETTERS_CONFIG, "" + heroId);
+		if (value == null) {
+			Map<String, HeroFettersOrder> heroFettersConfig = getHeroFettersConfig();
+			return heroFettersConfig.get("" + heroId);
+		} else {
+			HeroFettersOrder.Builder builder = HeroFettersOrder.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	private Map<String, HeroFettersOrder> getHeroFettersConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.HERO_FETTERS_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, HeroFettersOrder> map = buildHeroFettersOrderConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, HeroFettersOrder> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.HERO_FETTERS_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, HeroFettersOrder> map = new HashMap<String, HeroFettersOrder>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				HeroFettersOrder.Builder builder = HeroFettersOrder.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, HeroFettersOrder> buildHeroFettersOrderConfig(){
+		String xml = ReadConfig(HERO_FETTERS_FILE_NAME);
+		HeroFettersOrderList.Builder builder = HeroFettersOrderList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + HERO_FETTERS_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, HeroFettersOrder> map = new HashMap<String, HeroFettersOrder>();
+		for(HeroFettersOrder.Builder herofetters : builder.getOrderBuilderList()){
+			map.put("" + herofetters.getId(), herofetters.build());
 		}
 		return map;
 	}

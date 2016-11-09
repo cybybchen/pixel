@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
+import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.ResponseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -27,6 +28,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserPokedeCommand;
 import com.trans.pixel.service.ClearService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.FoodService;
+import com.trans.pixel.service.HeroService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserClearService;
@@ -52,6 +54,8 @@ public class PokedeCommandService extends BaseCommandService {
 	private ClearService clearService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private HeroService heroService;
 	
 	public void getUserPokedeList(RequestUserPokedeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
@@ -164,5 +168,26 @@ public class PokedeCommandService extends BaseCommandService {
 		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
 		responseBuilder.setUserPokedeCommand(builder.build());
 		responseBuilder.setMessageCommand(this.buildMessageCommand(result));
+	}
+	
+	public void openFetters(RequestOpenFetterCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
+		int heroId = cmd.getHeroId();
+		int fetterId = cmd.getFetterid();
+		UserPokedeBean userPokede = userPokedeService.selectUserPokede(user, heroId);
+		ResultConst result = heroService.openFetter(user, userPokede, fetterId);
+		if (result instanceof ErrorConst) {
+			builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
+			responseBuilder.setUserPokedeCommand(builder.build());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
+			ErrorCommand errorCommand = buildErrorCommand(result);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
+		userPokedeService.updateUserPokede(userPokede, user);
+		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
+		responseBuilder.setUserPokedeCommand(builder.build());
 	}
 }
