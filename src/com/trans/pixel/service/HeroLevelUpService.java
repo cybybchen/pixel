@@ -319,7 +319,8 @@ public class HeroLevelUpService {
 			return ErrorConst.SKILL_CAN_NOT_LEVELUP;
 		}
 		
-		if (!skillService.hasEnoughSP(heroInfo, skillInfo.getId())) {
+		HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(heroInfo);
+		if (!skillService.hasEnoughSP(heroInfo, skillInfo.getId(), herorareRank)) {
 			return ErrorConst.SP_NOT_ENOUGH;
 		}
 		

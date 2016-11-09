@@ -12,6 +12,7 @@ import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
+import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.SkillRedisService;
 
 @Service
@@ -85,7 +86,7 @@ public class SkillService {
 		return true;
 	}
 	
-	public boolean hasEnoughSP(HeroInfoBean heroInfo, int id) {
+	public boolean hasEnoughSP(HeroInfoBean heroInfo, int id, HeroRareLevelupRank herorare) {
 		HeroUpgradeBean upgrade = heroService.getHeroUpgrade(heroInfo.getLevel());
 		
 		int needSP = getSkillLevel(id).getSp();
@@ -94,7 +95,7 @@ public class SkillService {
 			needSP += skillLevel.getSp() * skillInfo.getSkillLevel();
 		}
 		
-		if (needSP <= upgrade.getSp())
+		if (needSP <= upgrade.getSp() + (herorare == null ? 0 : herorare.getSp()))
 			return true;
 		
 		return false;

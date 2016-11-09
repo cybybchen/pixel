@@ -265,7 +265,7 @@ public class EquipService {
 			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip4(), 
 					userEquipService.selectUserEquip(user.getId(), herorare.getEquip4()).getEquipCount() - herorare.getCount4()));
 		
-		if (hero.getQuality() >= 5)
+		if (hero.getQuality() >= 6)
 			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip5(), 
 					userEquipService.selectUserEquip(user.getId(), herorare.getEquip5()).getEquipCount() - herorare.getCount5()));	
 		
