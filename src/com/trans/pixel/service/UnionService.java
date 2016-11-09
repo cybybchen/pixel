@@ -710,10 +710,10 @@ public class UnionService extends FightService{
 //		int bossCount = getUnionBossCount(union, unionBoss.getId());
 		JSONObject json = null;
 		if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_COST) {
-			if (union.hasCostRecord())
+			if (union.hasCostRecord() && !union.getCostRecord().isEmpty())
 				json = JSONObject.fromObject(union.getCostRecord());
 		} else if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
-			if (union.hasKillMonsterRecord())
+			if (union.hasKillMonsterRecord() && !union.getKillMonsterRecord().isEmpty())
 				json = JSONObject.fromObject(union.getKillMonsterRecord());
 		} 
 		
