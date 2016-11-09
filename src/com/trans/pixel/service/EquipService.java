@@ -118,7 +118,7 @@ public class EquipService {
 		userEquip.setEquipCount(userEquip.getEquipCount() - fenjieCount);
 		userEquipService.updateUserEquip(userEquip);
 		
-		return fenjie.randomReward(fenjieCount, equip.getIsequipment());
+		return getFenjieReward(fenjie, equip, fenjieCount);
 	}
 	
 	public List<RewardBean> fenjieHeroEquip(UserBean user, int equipId, int fenjieCount) {
@@ -128,7 +128,20 @@ public class EquipService {
 		if (fenjie == null)
 			return null;
 		
-		return fenjie.randomReward(fenjieCount, equip.getIsequipment());
+		return getFenjieReward(fenjie, equip, fenjieCount);
+	}
+	
+	private List<RewardBean> getFenjieReward(FenjieLevelBean fenjie, EquipmentBean equip, int count) {
+		List<RewardBean> rewardList = fenjie.randomReward(count, equip.getIsequipment());
+		List<RewardBean> extraList = new ArrayList<RewardBean>();
+		if (equip.getFenjie1() > 0)
+			extraList.add(RewardBean.init(equip.getFenjie1(), equip.getFenjiecount1()));
+		if (equip.getFenjie2() > 0)
+			extraList.add(RewardBean.init(equip.getFenjie2(), equip.getFenjiecount2()));
+		if (equip.getFenjie3() > 0)
+			extraList.add(RewardBean.init(equip.getFenjie3(), equip.getFenjiecount3()));
+		
+		return rewardService.mergeReward(rewardList, extraList);
 	}
 	
 	private List<UserEquipBean> getCostEquipList(EquipmentBean equip) {

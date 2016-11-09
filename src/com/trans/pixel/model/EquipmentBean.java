@@ -44,6 +44,13 @@ public class EquipmentBean {
 	private int cover3 = 0;
 	private int count3 = 0;
 	private int isequipment = 0;
+	private int levellimit = 0;
+	private int fenjie1 = 0;
+	private int fenjiecount1 = 0;
+	private int fenjie2 = 0;
+	private int fenjiecount2 = 0;
+	private int fenjie3 = 0;
+	private int fenjiecount3 = 0;
 	
 	public int getItemid() {
 		return itemid;
@@ -208,6 +215,48 @@ public class EquipmentBean {
 		this.isequipment = isequipment;
 	}
 	
+	public int getLevellimit() {
+		return levellimit;
+	}
+	public void setLevellimit(int levellimit) {
+		this.levellimit = levellimit;
+	}
+	public int getFenjie1() {
+		return fenjie1;
+	}
+	public void setFenjie1(int fenjie1) {
+		this.fenjie1 = fenjie1;
+	}
+	public int getFenjiecount1() {
+		return fenjiecount1;
+	}
+	public void setFenjiecount1(int fenjiecount1) {
+		this.fenjiecount1 = fenjiecount1;
+	}
+	public int getFenjie2() {
+		return fenjie2;
+	}
+	public void setFenjie2(int fenjie2) {
+		this.fenjie2 = fenjie2;
+	}
+	public int getFenjiecount2() {
+		return fenjiecount2;
+	}
+	public void setFenjiecount2(int fenjiecount2) {
+		this.fenjiecount2 = fenjiecount2;
+	}
+	public int getFenjie3() {
+		return fenjie3;
+	}
+	public void setFenjie3(int fenjie3) {
+		this.fenjie3 = fenjie3;
+	}
+	public int getFenjiecount3() {
+		return fenjiecount3;
+	}
+	public void setFenjiecount3(int fenjiecount3) {
+		this.fenjiecount3 = fenjiecount3;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ITEM_ID, itemid);
@@ -237,6 +286,13 @@ public class EquipmentBean {
 		json.put(COVER3, cover3);
 		json.put(COUNT3, count3);
 		json.put(ISEQUIPMENT, isequipment);
+		json.put(LEVELLIMIT, levellimit);
+		json.put(FENJIE1, fenjie1);
+		json.put(FENJIECOUNT1, fenjiecount1);
+		json.put(FENJIE2, fenjie2);
+		json.put(FENJIECOUNT2, fenjiecount2);
+		json.put(FENJIE3, fenjie3);
+		json.put(FENJIECOUNT3, fenjiecount3);
 		
 		return json.toString();
 	}
@@ -273,6 +329,13 @@ public class EquipmentBean {
 		bean.setCover3(json.getInt(COVER3));
 		bean.setCount3(json.getInt(COUNT3));
 		bean.setIsequipment(json.getInt(ISEQUIPMENT));
+		bean.setLevellimit(json.getInt(LEVELLIMIT));
+		bean.setFenjie1(json.getInt(FENJIE1));
+		bean.setFenjiecount1(json.getInt(FENJIECOUNT1));
+		bean.setFenjie2(json.getInt(FENJIE2));
+		bean.setFenjiecount2(json.getInt(FENJIECOUNT2));
+		bean.setFenjie3(json.getInt(FENJIE3));
+		bean.setFenjiecount3(json.getInt(FENJIECOUNT3));
 
 		return bean;
 	}
@@ -318,6 +381,13 @@ public class EquipmentBean {
 				bean.setCover3(TypeTranslatedUtil.stringToInt(element.attributeValue(COVER3)));
 				bean.setCount3(TypeTranslatedUtil.stringToInt(element.attributeValue(COUNT3)));
 				bean.setIsequipment(TypeTranslatedUtil.stringToInt(element.attributeValue(ISEQUIPMENT)));
+				bean.setLevellimit(TypeTranslatedUtil.stringToInt(element.attributeValue(LEVELLIMIT)));
+				bean.setFenjie1(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIE1)));
+				bean.setFenjiecount1(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIECOUNT1)));
+				bean.setFenjie2(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIE2)));
+				bean.setFenjiecount2(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIECOUNT2)));
+				bean.setFenjie3(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIE3)));
+				bean.setFenjiecount3(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIECOUNT3)));
 				
 				list.add(bean);
 			}
@@ -356,4 +426,11 @@ public class EquipmentBean {
 	private static final String COVER3 = "cover3";
 	private static final String COUNT3 = "count3";
 	private static final String ISEQUIPMENT = "isequipment";
+	private static final String LEVELLIMIT = "levellimit";
+	private static final String FENJIE1 = "fenjie1";
+	private static final String FENJIECOUNT1 = "fenjiecount1";
+	private static final String FENJIE2 = "fenjie2";
+	private static final String FENJIECOUNT2 = "fenjiecount2";
+	private static final String FENJIE3 = "fenjie3";
+	private static final String FENJIECOUNT3 = "fenjiecount3";
 }
