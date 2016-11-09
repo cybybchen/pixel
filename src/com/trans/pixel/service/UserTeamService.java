@@ -16,6 +16,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
+import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.protoc.Commands.Team;
@@ -53,6 +54,8 @@ public class UserTeamService {
 	private ActivityService activityService;
 	@Resource
 	private BlackListService blackService;
+	@Resource
+	private HeroRareService heroRareService;
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
 	// 	UserTeamBean userTeam = new UserTeamBean();
@@ -242,7 +245,9 @@ public class UserTeamService {
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
 			// log.debug(strengthen+" : "+pre);
-			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * hero.getLevel() * (hero.getLevel() + 1) / 2 * 0.8 + 2.1 * hero.getLevel() * (hero.getLevel() - 1) / 2;
+			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), hero.getInfoId());
+			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(heroInfo);
+			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
 			for(String equipid : hero.getEquipInfo().split("\\|")){
 				int id = TypeTranslatedUtil.stringToInt(equipid);
 				if(id == 0)

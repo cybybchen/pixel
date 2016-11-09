@@ -21,6 +21,7 @@ public class HeroUpgradeBean {
 	private int level = 0;
 	private int exp = 0;
 	private int sp = 0;
+	private int zhanli = 0;
 	public int getLevel() {
 		return level;
 	}
@@ -40,11 +41,18 @@ public class HeroUpgradeBean {
 		this.sp = sp;
 	}
 	
+	public int getZhanli() {
+		return zhanli;
+	}
+	public void setZhanli(int zhanli) {
+		this.zhanli = zhanli;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(LEVEL, level);
 		json.put(EXP, exp);
 		json.put(SP, sp);
+		json.put(ZHANLI, zhanli);
 		
 		return json.toString();
 	}
@@ -57,6 +65,7 @@ public class HeroUpgradeBean {
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setExp(json.getInt(EXP));
 		bean.setSp(json.getInt(SP));
+		bean.setZhanli(json.getInt(ZHANLI));
 		
 		return bean;
 	}
@@ -78,6 +87,7 @@ public class HeroUpgradeBean {
 				hu.setLevel(TypeTranslatedUtil.stringToInt(huElement.attributeValue(LEVEL)));
 				hu.setExp(TypeTranslatedUtil.stringToInt(huElement.attributeValue(EXP)));
 				hu.setSp(TypeTranslatedUtil.stringToInt(huElement.attributeValue(SP)));
+				hu.setZhanli(TypeTranslatedUtil.stringToInt(huElement.attributeValue(ZHANLI)));
 				
 				list.add(hu);
 			}
@@ -92,4 +102,5 @@ public class HeroUpgradeBean {
 	private static final String LEVEL = "level";
 	private static final String EXP = "exp";
 	private static final String SP = "sp";
+	private static final String ZHANLI = "zhanli";
 }

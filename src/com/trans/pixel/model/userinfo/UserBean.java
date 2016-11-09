@@ -102,6 +102,7 @@ public class UserBean {
 	private int jewelPRD = 0;
 	private int hunxiaPRD = 0;
 	private int firstAddedtoZhanli = 0;
+	private int lotteryCoinCount = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1042,6 +1043,12 @@ public class UserBean {
 	public void setFirstAddedtoZhanli(int firstAddedtoZhanli) {
 		this.firstAddedtoZhanli = firstAddedtoZhanli;
 	}
+	public int getLotteryCoinCount() {
+		return lotteryCoinCount;
+	}
+	public void setLotteryCoinCount(int lotteryCoinCount) {
+		this.lotteryCoinCount = lotteryCoinCount;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1180,6 +1187,8 @@ public class UserBean {
 			unionBossRecordBuilder.setCount(entry.getValue());
 			builder.addUnionBossRecord(unionBossRecordBuilder.build());
 		}
+		
+		builder.setLotteryCoinCount(lotteryCoinCount);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {

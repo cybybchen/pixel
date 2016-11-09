@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -48,7 +49,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class HeroCommandService extends BaseCommandService {
-//	private Logger logger = Logger.getLogger(HeroCommandService.class);
+	private Logger logger = Logger.getLogger(HeroCommandService.class);
 	
 	private static final int BUY_HERO_PACKAGE_COST = 50;
 	private static final int BUY_HERO_PACKAGE_COUNT = 5;
@@ -98,6 +99,7 @@ public class HeroCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	public void heroLevelUp(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user) {
+		logger.debug(System.currentTimeMillis());
 		int levelUpType = cmd.getLevelUpType();
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
@@ -110,13 +112,13 @@ public class HeroCommandService extends BaseCommandService {
 		costInfoIds.addAll(cmd.getCostInfoIdList());
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, infoId);
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
-		
+		logger.debug(System.currentTimeMillis());
 		if (heroInfo != null) {
 			result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds, equipList);
 			if (result instanceof SuccessConst)
 				skillService.unlockHeroSkill(heroId, heroInfo);
 		}
-		
+		logger.debug(System.currentTimeMillis());
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			
@@ -124,7 +126,7 @@ public class HeroCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 		}else if (result instanceof SuccessConst) {
 			userHeroService.updateUserHero(heroInfo);
-			
+			logger.debug(System.currentTimeMillis());
 			if (costInfoIds.size() > 0){
 				int addExp = 0;
 				int addCoin = 0;
@@ -168,6 +170,7 @@ public class HeroCommandService extends BaseCommandService {
 				responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 			}
 		}
+		logger.debug(System.currentTimeMillis());
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		builder.setHeroId(heroId);
 		builder.addHeroInfo(heroInfo.buildHeroInfo());
@@ -176,6 +179,7 @@ public class HeroCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		if (equipList.size() > 0)
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user, equipList);
+		logger.debug(System.currentTimeMillis());
 	}
 	
 	//not useful

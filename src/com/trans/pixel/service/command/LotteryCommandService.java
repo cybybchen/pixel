@@ -92,7 +92,7 @@ public class LotteryCommandService extends BaseCommandService {
 				return;	
 			}
 		} else {
-			cost = getLotteryCost(type, count);
+			cost = getLotteryCost(type, count, user);
 			int costtype = RewardConst.COIN;
 			if(type == LotteryConst.LOOTERY_SPECIAL_TYPE || type == RewardConst.EQUIPMENT)
 				costtype = RewardConst.JEWEL;
@@ -111,6 +111,11 @@ public class LotteryCommandService extends BaseCommandService {
 		            logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 		            pushUserData(responseBuilder, user, type);
 					return;	
+				}
+				
+				if (type == RewardConst.COIN) {
+					user.setLotteryCoinCount(user.getLotteryCoinCount() + 1);
+					userService.updateUser(user);
 				}
 			}
 			
@@ -167,11 +172,11 @@ public class LotteryCommandService extends BaseCommandService {
 		return true;
 	}
 	
-	private int getLotteryCost(int type, int count) {
+	private int getLotteryCost(int type, int count, UserBean user) {
 		int cost = LotteryConst.COST_LOTTERY_HERO_COIN * count;
 		switch (type) {
 			case RewardConst.COIN:
-				cost = LotteryConst.COST_LOTTERY_HERO_COIN * count;
+				cost = (int)Math.pow(2, user.getLotteryCoinCount()) * LotteryConst.COST_LOTTERY_HERO_COIN * count;
 				break;
 			case RewardConst.JEWEL:
 				cost = LotteryConst.COST_LOTTERY_HERO_JEWEL * count;

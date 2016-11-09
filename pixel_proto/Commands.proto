@@ -54,6 +54,7 @@ message UserInfo {
 	optional int32 sevenSignStatus = 67;
 	repeated UnionBossRecord unionBossRecord = 68;
 	optional int32 unionIcon = 69;
+	optional int32 lotteryCoinCount = 70;
 }
 
 message ServerData {
@@ -1425,6 +1426,17 @@ message HeroRareLevelupRank {
 	optional int32 count4 = 11;
 	optional int32 equip5 = 12;
 	optional int32 count5 = 13;
+	optional int32 zhanli = 14;
+}
+
+message HeroFetters {
+	optional int32 fettersid = 1;
+}
+
+message HeroFetter {
+	optional int32 heroid = 1;
+	optional int32 herostar = 2;
+	optional int32 herorank = 3;
 }
 
 message ErrorCommand{

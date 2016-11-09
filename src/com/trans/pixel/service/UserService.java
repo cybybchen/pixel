@@ -124,6 +124,7 @@ public class UserService {
 		user.setPvpMineLeftTime(5);
 		user.setFreeLotteryCoinLeftTime(5);
 		user.setSevenSignStatus(0);
+		user.setLotteryCoinCount(0);
 		user.setUnionBossMap(new HashMap<String, Integer>());
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){

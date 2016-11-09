@@ -19,7 +19,7 @@ import com.trans.pixel.service.redis.RankRedisService;
 
 @Service
 public class ZhanliCommandService extends BaseCommandService {
-	private static Logger log = Logger.getLogger(UserTeamService.class);	
+	private static Logger log = Logger.getLogger(ZhanliCommandService.class);	
 	@Resource
 	private UserService userService;
 	@Resource
@@ -34,10 +34,12 @@ public class ZhanliCommandService extends BaseCommandService {
 	private AreaFightService areaService;
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
+		log.debug("00 ||" + System.currentTimeMillis());
 		int zhanli = cmd.getZhanli();
 		if(user.getZhanliMax() < zhanli || user.getFirstAddedtoZhanli() == 0){
 			user.setFirstAddedtoZhanli(1);
 			Team team = userTeamService.getTeamCache(user);
+			log.debug("33|| " + System.currentTimeMillis());
 			if(team.getUser().getZhanli() < zhanli){
 				log.debug("submit zhanli "+zhanli +" < real "+team.getUser().getZhanli());
 				zhanli = team.getUser().getZhanli();
@@ -59,11 +61,12 @@ public class ZhanliCommandService extends BaseCommandService {
 				activityService.zhanliActivity(user, zhanli);
 			}
 		}
+		log.debug("11||" + System.currentTimeMillis());
 		areaService.unlockArea(zhanli, user);
 		user.setZhanli(zhanli);
 		userService.cache(user.getServerId(), user.buildShort());
-		userService.updateUserDailyData(user);
-		
+		userService.updateUser(user);
+		log.debug("22||" + System.currentTimeMillis());
 //		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_ZHANLI_SUCCESS));
 	}
 }
