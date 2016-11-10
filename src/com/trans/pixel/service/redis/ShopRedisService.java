@@ -86,16 +86,16 @@ public class ShopRedisService extends RedisService{
 	public ShopList.Builder buildPVPComms(ShopWillList.Builder shopwillsbuilder, Map<Integer, CommodityList.Builder> commsmap, UserBean user){
 		ShopList.Builder builder = ShopList.newBuilder();
 		for(ShopWill shopwill : shopwillsbuilder.getShopList()){
-			if (shopwill.getJudge1() < user.getPvpUnlock())
-				continue;
-			
-			for(Will will : shopwill.getLootList()){
-				CommodityList.Builder commsbuilder = commsmap.get(will.getWill());
-				int index = nextInt(commsbuilder.getItemCount());
-				Commodity.Builder comm = commsbuilder.getItemBuilder(index);
-				if(shopwill.hasJudge1())
-					comm.setJudge(shopwill.getJudge1());
-				builder.addItems(comm);
+			if (shopwill.getJudge1() == user.getPvpUnlock()) {
+				for(Will will : shopwill.getLootList()){
+					CommodityList.Builder commsbuilder = commsmap.get(will.getWill());
+					int index = nextInt(commsbuilder.getItemCount());
+					Commodity.Builder comm = commsbuilder.getItemBuilder(index);
+	//				if(shopwill.hasJudge1())
+	//					comm.setJudge(shopwill.getJudge1());
+					builder.addItems(comm);
+				}
+				break;
 			}
 		}
 		return builder;
@@ -113,8 +113,8 @@ public class ShopRedisService extends RedisService{
 			CommodityList.Builder commsbuilder = commsmap.get(will.getWill());
 			int index = nextInt(commsbuilder.getItemCount());
 			Commodity.Builder comm = commsbuilder.getItemBuilder(index);
-			if(shop.hasJudge1())
-				comm.setJudge(shop.getJudge1());
+//			if(shop.hasJudge1())
+//				comm.setJudge(shop.getJudge1());
 			builder.addItems(comm);
 		}
 		return builder;

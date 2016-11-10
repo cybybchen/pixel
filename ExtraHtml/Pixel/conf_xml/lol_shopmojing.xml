@@ -99,7 +99,7 @@
 <item id="97" itemid="37001" name="强化水晶" count="1" currency="1003" cost="1000" will="14" />
 <item id="98" itemid="37001" name="强化水晶" count="2" currency="1003" cost="2000" will="14" />
 <item id="99" itemid="37001" name="强化水晶" count="5" currency="1003" cost="5000" will="14" />
-<item id="100" itemid="37001" name="强化水晶" count="10" currency="1004" cost="9900" will="14" />
+<item id="100" itemid="37001" name="强化水晶" count="10" currency="1003" cost="9900" will="14" />
 <item id="101" itemid="52008" name="潘森2星" count="1" currency="1003" cost="24000" will="15" />
 <item id="102" itemid="52010" name="古拉加斯2星" count="1" currency="1003" cost="24000" will="15" />
 <item id="103" itemid="52017" name="盖伦2星" count="1" currency="1003" cost="24000" will="15" />
