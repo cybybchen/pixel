@@ -948,6 +948,9 @@ public class UnionService extends FightService{
 //					return false;
 //				}
 //			}
+			if (last != null && last.after(bossStartTime))
+				return false;
+			
 			if (!bossStartTime.after(bossTime) && current.after(bossTime))
 				return true;
 			
