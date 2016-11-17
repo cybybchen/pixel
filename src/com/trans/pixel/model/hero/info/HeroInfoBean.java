@@ -252,6 +252,7 @@ public class HeroInfoBean {
 		}
 		builder.setStrengthen(userPokede.getStrengthen());
 		builder.setRank(rank);
+		builder.setFetters(userPokede.getFetters());
 		
 		return builder.build();
 	}
