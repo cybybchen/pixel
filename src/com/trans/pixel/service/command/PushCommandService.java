@@ -127,7 +127,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserHeroListCommand(Builder responseBuilder, UserBean user) {
-		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 		ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 		builder.addAllUserHero(super.buildUserHeroList(userHeroList));
 		responseBuilder.setGetUserHeroCommand(builder.build());
@@ -262,7 +262,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserTeamListCommand(Builder responseBuilder, UserBean user) {
-		List<UserTeamBean> userTeamList = userTeamService.selectUserTeamList(user.getId());
+		List<UserTeamBean> userTeamList = userTeamService.selectUserTeamList(user);
 		ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
 		builder.addAllUserTeam(buildUserTeamList(userTeamList));
 		

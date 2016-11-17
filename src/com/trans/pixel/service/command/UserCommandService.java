@@ -168,7 +168,7 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	private void addRegisterTeam(UserBean user) {
-		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 		String teamRecord = "";
 		String composeSkill = "";
 		for (HeroInfoBean hero : userHeroList) {

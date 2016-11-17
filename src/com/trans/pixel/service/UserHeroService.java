@@ -56,7 +56,8 @@ public class UserHeroService {
 		return userHero;
 	}
 	
-	public List<HeroInfoBean> selectUserHeroList(long userId) {
+	public List<HeroInfoBean> selectUserHeroList(UserBean user) {
+		long userId = user.getId();
 		List<HeroInfoBean> userHeroList = userHeroRedisService.selectUserHeroList(userId);
 		if (userHeroList == null || userHeroList.size() == 0) {
 			userHeroList = userHeroMapper.selectUserHeroList(userId);
@@ -70,6 +71,8 @@ public class UserHeroService {
 		for (HeroInfoBean heroInfo : userHeroList) {
 			if (skillService.unlockHeroSkill(heroInfo.getHeroId(), heroInfo))
 				updateUserHero(heroInfo);
+			
+			userPokedeService.updateUserPokede(heroInfo, user);
 		}
 		
 		return userHeroList;

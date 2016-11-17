@@ -100,7 +100,8 @@ public class UserTeamService {
 		return userTeamRedisService.popDBKey();
 	}
 	
-	public List<UserTeamBean> selectUserTeamList(long userId) {
+	public List<UserTeamBean> selectUserTeamList(UserBean user) {
+		long userId = user.getId();
 		List<UserTeamBean> userTeamList = userTeamRedisService.selectUserTeamList(userId);
 		if (userTeamList == null || userTeamList.size() == 0) {
 			userTeamList = userTeamMapper.selectUserTeamList(userId);
@@ -113,7 +114,7 @@ public class UserTeamService {
 				ids.add(team.getId());
 			}
 			if(ids.isEmpty()){
-				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(userId);
+				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 				String teamRecord = "";
 				for (HeroInfoBean hero : userHeroList) {
 					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
@@ -301,11 +302,11 @@ public class UserTeamService {
 	
 	public Team getTeam(UserBean user, long teamid){
 		Team.Builder team = Team.newBuilder();
-		List<UserTeamBean> userTeamList = selectUserTeamList(user.getId());
+		List<UserTeamBean> userTeamList = selectUserTeamList(user);
 		for(UserTeamBean userTeam : userTeamList){
 			if(teamid == userTeam.getId()){
 				team.setComposeSkill(userTeam.getComposeSkill());
-				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user.getId());
+				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 				String[] herosstr = userTeam.getTeamRecord().split("\\|");
 				for(String herostr : herosstr){
 					String[] str = herostr.split(",");
