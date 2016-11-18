@@ -935,37 +935,62 @@ public class UnionService extends FightService{
 		return rankList;
 	}
 	
+//	private boolean canRefreshCrontabBoss(Union.Builder union, UnionBoss boss, UnionBossRecord unionBossRecord) {
+//		Date current = DateUtil.getDate();
+//		Date last = DateUtil.getDate(getUnionBossEndTime(union, boss.getId()));
+//		Date bossTime = DateUtil.setToDayTime(current, boss.getTargetcount());
+//		
+//		if (unionBossRecord != null) {
+//			Date bossStartTime = DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), boss.getRefreshtime());
+////			String bossEnd = getUnionBossEndTime(union, boss.getId());
+////			if (!bossEnd.isEmpty()) {
+////				if (DateUtil.getDate(bossEnd).after(bossStartTime)) {
+////					return false;
+////				}
+////			}
+//			if (last != null && last.after(bossStartTime))
+//				return false;
+//			
+//			if (!bossStartTime.after(bossTime) && current.after(bossTime))
+//				return true;
+//			
+//			Date bossEndTime = DateUtil.getFutureDay(DateUtil.getDate(unionBossRecord.getEndTime()), 1);
+//			if (current.before(bossEndTime) && current.after(bossStartTime))
+//				return true;
+//		}
+//		if (current.before(bossTime))
+//			return false;
+//		
+//		if (last == null)
+//			return true;
+//		
+//		if (DateUtil.intervalDays(current, last) >= 1)
+//			return true;
+//		
+//		return false;
+//	}
+	
 	private boolean canRefreshCrontabBoss(Union.Builder union, UnionBoss boss, UnionBossRecord unionBossRecord) {
-		Date current = DateUtil.getDate();
 		Date last = DateUtil.getDate(getUnionBossEndTime(union, boss.getId()));
-		Date bossTime = DateUtil.setToDayTime(current, boss.getTargetcount());
-		
-		if (unionBossRecord != null) {
-			Date bossStartTime = DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), boss.getRefreshtime());
-//			String bossEnd = getUnionBossEndTime(union, boss.getId());
-//			if (!bossEnd.isEmpty()) {
-//				if (DateUtil.getDate(bossEnd).after(bossStartTime)) {
-//					return false;
-//				}
-//			}
-			if (last != null && last.after(bossStartTime))
-				return false;
-			
-			if (!bossStartTime.after(bossTime) && current.after(bossTime))
-				return true;
-			
-			Date bossEndTime = DateUtil.getFutureDay(DateUtil.getDate(unionBossRecord.getEndTime()), 1);
-			if (current.before(bossEndTime) && current.after(bossStartTime))
-				return true;
-		}
-		if (current.before(bossTime))
-			return false;
-		
 		if (last == null)
 			return true;
 		
-		if (DateUtil.intervalDays(current, last) >= 1)
-			return true;
+		Date current = DateUtil.getDate();
+		
+		Date date = DateUtil.getFutureHour(DateUtil.setToDayStartTime(current), boss.getTargetcount() + boss.getLasttime());;
+		Date startDate = DateUtil.getFutureHour(DateUtil.setToDayStartTime(current), boss.getTargetcount());;
+		if (current.before(startDate)) {
+			startDate = DateUtil.getPastDay(startDate, 1);
+			date = DateUtil.getPastDay(date, 1);
+		}
+		
+		if (unionBossRecord != null) {
+			if (last.after(startDate))
+				return false;
+	
+			if (current.before(date) && current.after(startDate))
+				return true;
+		}
 		
 		return false;
 	}
