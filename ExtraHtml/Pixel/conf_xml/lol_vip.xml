@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<vip vip="1" rmb="6" zuanshi="60" effect="解锁立即结束战斗功能" dianjin="5" tianti="" pvp="" baohu="1" contract="1" quyu="" mohua="" baoxiang="5" zhibao="5" libao1="41001" libao2="41014" />
-<vip vip="2" rmb="30" zuanshi="300" effect="" dianjin="10" tianti="" pvp="" baohu="1" contract="1" quyu="" mohua="" baoxiang="10" zhibao="10" libao1="41002" libao2="41015" />
-<vip vip="3" rmb="66" zuanshi="660" effect="副本挂机宝箱10%几率奖励加倍" dianjin="20" tianti="2" pvp="" baohu="1" contract="2" quyu="" mohua="" baoxiang="15" zhibao="15" libao1="41003" libao2="41016" />
-<vip vip="4" rmb="98" zuanshi="980" effect="" dianjin="30" tianti="3" pvp="" baohu="2" contract="2" quyu="" mohua="" baoxiang="20" zhibao="20" libao1="41004" libao2="41017" />
-<vip vip="5" rmb="198" zuanshi="1980" effect="神秘商人每次刷新必有2件9折商品" dianjin="40" tianti="4" pvp="2" baohu="2" contract="3" quyu="" mohua="" baoxiang="25" zhibao="25" libao1="41005" libao2="41018" />
-<vip vip="6" rmb="328" zuanshi="3280" effect="永久解锁黑市功能" dianjin="50" tianti="5" pvp="3" baohu="2" contract="3" quyu="" mohua="" baoxiang="30" zhibao="30" libao1="41006" libao2="41019" />
-<vip vip="7" rmb="518" zuanshi="5180" effect="" dianjin="60" tianti="6" pvp="4" baohu="3" contract="4" quyu="1" mohua="" baoxiang="35" zhibao="35" libao1="41007" libao2="41020" />
-<vip vip="8" rmb="980" zuanshi="9800" effect="永久解锁魂匣功能" dianjin="80" tianti="7" pvp="5" baohu="3" contract="4" quyu="2" mohua="" baoxiang="40" zhibao="40" libao1="41008" libao2="41021" />
-<vip vip="9" rmb="1980" zuanshi="19800" effect="灵魂契约获得英雄数量加倍" dianjin="100" tianti="8" pvp="6" baohu="3" contract="5" quyu="2" mohua="1" baoxiang="45" zhibao="45" libao1="41009" libao2="41022" />
-<vip vip="10" rmb="3880" zuanshi="38800" effect="征战世界魔晶产量增加10%" dianjin="120" tianti="9" pvp="7" baohu="4" contract="5" quyu="3" mohua="1" baoxiang="50" zhibao="50" libao1="41010" libao2="41023" />
-<vip vip="11" rmb="6480" zuanshi="64800" effect="" dianjin="140" tianti="10" pvp="8" baohu="4" contract="6" quyu="3" mohua="1" baoxiang="55" zhibao="55" libao1="41011" libao2="41024" />
-<vip vip="12" rmb="9720" zuanshi="97200" effect="黑市商人每次刷新必有2件7折商品" dianjin="160" tianti="11" pvp="9" baohu="5" contract="6" quyu="4" mohua="1" baoxiang="60" zhibao="60" libao1="41012" libao2="41025" />
-<vip vip="13" rmb="12960" zuanshi="129600" effect="" dianjin="180" tianti="12" pvp="10" baohu="5" contract="7" quyu="5" mohua="1" baoxiang="65" zhibao="65" libao1="41013" libao2="41026" />
-<vip vip="14" rmb="19440" zuanshi="194400" effect="神秘商人每次刷新必有2件7折商品" dianjin="200" tianti="14" pvp="12" baohu="7" contract="7" quyu="6" mohua="1" baoxiang="70" zhibao="70" libao1="41027" libao2="41029" />
-<vip vip="15" rmb="32400" zuanshi="324000" effect="获得专属尊贵头像" dianjin="240" tianti="16" pvp="14" baohu="9" contract="8" quyu="7" mohua="1" baoxiang="75" zhibao="75" libao1="41028" libao2="41030" />
+<vip vip="1" rmb="6" zuanshi="60" effect="解锁立即结束战斗功能" dianjin="1" tianti="" pvp="" baohu="1" contract="1" quyu="" mohua="" baoxiang="5" zhibao="5" libao1="41001" libao2="41014" />
+<vip vip="2" rmb="30" zuanshi="300" effect="" dianjin="2" tianti="" pvp="" baohu="1" contract="1" quyu="" mohua="" baoxiang="10" zhibao="10" libao1="41002" libao2="41015" />
+<vip vip="3" rmb="66" zuanshi="660" effect="副本挂机宝箱10%几率奖励加倍" dianjin="4" tianti="2" pvp="" baohu="1" contract="2" quyu="" mohua="" baoxiang="15" zhibao="15" libao1="41003" libao2="41016" />
+<vip vip="4" rmb="98" zuanshi="980" effect="" dianjin="6" tianti="3" pvp="" baohu="2" contract="2" quyu="" mohua="" baoxiang="20" zhibao="20" libao1="41004" libao2="41017" />
+<vip vip="5" rmb="198" zuanshi="1980" effect="神秘商人每次刷新必有2件9折商品" dianjin="10" tianti="4" pvp="2" baohu="2" contract="3" quyu="" mohua="" baoxiang="25" zhibao="25" libao1="41005" libao2="41018" />
+<vip vip="6" rmb="328" zuanshi="3280" effect="永久解锁黑市功能" dianjin="12" tianti="5" pvp="3" baohu="2" contract="3" quyu="" mohua="" baoxiang="30" zhibao="30" libao1="41006" libao2="41019" />
+<vip vip="7" rmb="518" zuanshi="5180" effect="" dianjin="14" tianti="6" pvp="4" baohu="3" contract="4" quyu="1" mohua="" baoxiang="35" zhibao="35" libao1="41007" libao2="41020" />
+<vip vip="8" rmb="980" zuanshi="9800" effect="永久解锁魂匣功能" dianjin="16" tianti="7" pvp="5" baohu="3" contract="4" quyu="2" mohua="" baoxiang="40" zhibao="40" libao1="41008" libao2="41021" />
+<vip vip="9" rmb="1980" zuanshi="19800" effect="灵魂契约获得英雄数量加倍" dianjin="18" tianti="8" pvp="6" baohu="3" contract="5" quyu="2" mohua="1" baoxiang="45" zhibao="45" libao1="41009" libao2="41022" />
+<vip vip="10" rmb="3880" zuanshi="38800" effect="征战世界魔晶产量增加10%" dianjin="20" tianti="9" pvp="7" baohu="4" contract="5" quyu="3" mohua="1" baoxiang="50" zhibao="50" libao1="41010" libao2="41023" />
+<vip vip="11" rmb="6480" zuanshi="64800" effect="" dianjin="24" tianti="10" pvp="8" baohu="4" contract="6" quyu="3" mohua="1" baoxiang="55" zhibao="55" libao1="41011" libao2="41024" />
+<vip vip="12" rmb="9720" zuanshi="97200" effect="黑市商人每次刷新必有2件7折商品" dianjin="30" tianti="11" pvp="9" baohu="5" contract="6" quyu="4" mohua="1" baoxiang="60" zhibao="60" libao1="41012" libao2="41025" />
+<vip vip="13" rmb="12960" zuanshi="129600" effect="" dianjin="40" tianti="12" pvp="10" baohu="5" contract="7" quyu="5" mohua="1" baoxiang="65" zhibao="65" libao1="41013" libao2="41026" />
+<vip vip="14" rmb="19440" zuanshi="194400" effect="神秘商人每次刷新必有2件7折商品" dianjin="50" tianti="14" pvp="12" baohu="7" contract="7" quyu="6" mohua="1" baoxiang="70" zhibao="70" libao1="41027" libao2="41029" />
+<vip vip="15" rmb="32400" zuanshi="324000" effect="获得专属尊贵头像" dianjin="60" tianti="16" pvp="14" baohu="9" contract="8" quyu="7" mohua="1" baoxiang="75" zhibao="75" libao1="41028" libao2="41030" />
 </data>

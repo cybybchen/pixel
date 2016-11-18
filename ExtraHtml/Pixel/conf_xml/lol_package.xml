@@ -186,189 +186,189 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31001" name="经验包" img="31001" rare="1" description="可以开出200-500经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="200" countb="300" weight="45" />
-		<item itemid="1000" item="经验" counta="400" countb="500" weight="5" />
+	<loot itemid="31001" name="经验包" img="31001" rare="1" description="可以开出10368-25920经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="10368" countb="15552" weight="45" />
+		<item itemid="1000" item="经验" counta="20736" countb="25920" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31002" name="经验包" img="31001" rare="1" description="可以开出288-720经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="288" countb="432" weight="45" />
-		<item itemid="1000" item="经验" counta="576" countb="720" weight="5" />
+	<loot itemid="31002" name="经验包" img="31001" rare="1" description="可以开出46656-116640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="46656" countb="69984" weight="45" />
+		<item itemid="1000" item="经验" counta="93312" countb="116640" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31003" name="经验包" img="31001" rare="1" description="可以开出720-1800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="720" countb="1080" weight="45" />
-		<item itemid="1000" item="经验" counta="1440" countb="1800" weight="5" />
+	<loot itemid="31003" name="经验包" img="31001" rare="1" description="可以开出73440-183600经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="73440" countb="110160" weight="45" />
+		<item itemid="1000" item="经验" counta="146880" countb="183600" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31004" name="经验包" img="31001" rare="1" description="可以开出1296-3240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="1296" countb="1944" weight="45" />
-		<item itemid="1000" item="经验" counta="2592" countb="3240" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31005" name="经验包" img="31001" rare="1" description="可以开出2448-6120经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="2448" countb="3672" weight="45" />
-		<item itemid="1000" item="经验" counta="4896" countb="6120" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31006" name="经验包" img="31001" rare="1" description="可以开出4896-12240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="4896" countb="7344" weight="45" />
-		<item itemid="1000" item="经验" counta="9792" countb="12240" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31007" name="经验包" img="31001" rare="1" description="可以开出6768-16920经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="6768" countb="10152" weight="45" />
-		<item itemid="1000" item="经验" counta="13536" countb="16920" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31008" name="经验包" img="31001" rare="1" description="可以开出14256-35640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="14256" countb="21384" weight="45" />
-		<item itemid="1000" item="经验" counta="28512" countb="35640" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31009" name="经验包" img="31001" rare="1" description="可以开出20736-51840经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="20736" countb="31104" weight="45" />
-		<item itemid="1000" item="经验" counta="41472" countb="51840" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31010" name="经验包" img="31001" rare="1" description="可以开出28512-71280经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="28512" countb="42768" weight="45" />
-		<item itemid="1000" item="经验" counta="57024" countb="71280" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31011" name="经验包" img="31001" rare="1" description="可以开出34848-87120经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="34848" countb="52272" weight="45" />
-		<item itemid="1000" item="经验" counta="69696" countb="87120" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31012" name="经验包" img="31001" rare="1" description="可以开出44928-112320经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="44928" countb="67392" weight="45" />
-		<item itemid="1000" item="经验" counta="89856" countb="112320" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31013" name="经验包" img="31001" rare="1" description="可以开出55008-137520经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="55008" countb="82512" weight="45" />
-		<item itemid="1000" item="经验" counta="110016" countb="137520" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31014" name="经验包" img="31001" rare="1" description="可以开出61056-152640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="61056" countb="91584" weight="45" />
-		<item itemid="1000" item="经验" counta="122112" countb="152640" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31015" name="经验包" img="31001" rare="1" description="可以开出68544-171360经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="68544" countb="102816" weight="45" />
-		<item itemid="1000" item="经验" counta="137088" countb="171360" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31016" name="经验包" img="31001" rare="1" description="可以开出72720-181800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="72720" countb="109080" weight="45" />
-		<item itemid="1000" item="经验" counta="145440" countb="181800" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31017" name="经验包" img="31001" rare="1" description="可以开出84240-210600经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="84240" countb="126360" weight="45" />
-		<item itemid="1000" item="经验" counta="168480" countb="210600" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31018" name="经验包" img="31001" rare="1" description="可以开出95904-239760经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="95904" countb="143856" weight="45" />
-		<item itemid="1000" item="经验" counta="191808" countb="239760" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31019" name="经验包" img="31001" rare="1" description="可以开出105120-262800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="105120" countb="157680" weight="45" />
-		<item itemid="1000" item="经验" counta="210240" countb="262800" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31020" name="经验包" img="31001" rare="1" description="可以开出107568-268920经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="107568" countb="161352" weight="45" />
-		<item itemid="1000" item="经验" counta="215136" countb="268920" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31021" name="经验包" img="31001" rare="1" description="可以开出111456-278640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="111456" countb="167184" weight="45" />
-		<item itemid="1000" item="经验" counta="222912" countb="278640" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31022" name="经验包" img="31001" rare="1" description="可以开出116496-291240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="116496" countb="174744" weight="45" />
-		<item itemid="1000" item="经验" counta="232992" countb="291240" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31023" name="经验包" img="31001" rare="1" description="可以开出120960-302400经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="120960" countb="181440" weight="45" />
-		<item itemid="1000" item="经验" counta="241920" countb="302400" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31024" name="经验包" img="31001" rare="1" description="可以开出125568-313920经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="125568" countb="188352" weight="45" />
-		<item itemid="1000" item="经验" counta="251136" countb="313920" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31025" name="经验包" img="31001" rare="1" description="可以开出130176-325440经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="130176" countb="195264" weight="45" />
-		<item itemid="1000" item="经验" counta="260352" countb="325440" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31026" name="经验包" img="31001" rare="1" description="可以开出137088-342720经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="137088" countb="205632" weight="45" />
-		<item itemid="1000" item="经验" counta="274176" countb="342720" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31027" name="经验包" img="31001" rare="1" description="可以开出147456-368640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="147456" countb="221184" weight="45" />
-		<item itemid="1000" item="经验" counta="294912" countb="368640" weight="5" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-	</loot>
-	<loot itemid="31028" name="经验包" img="31001" rare="1" description="可以开出155520-388800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+	<loot itemid="31004" name="经验包" img="31001" rare="1" description="可以开出155520-388800经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
 		<item itemid="1000" item="经验" counta="155520" countb="233280" weight="45" />
 		<item itemid="1000" item="经验" counta="311040" countb="388800" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31029" name="经验包" img="31001" rare="1" description="可以开出159984-399960经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="159984" countb="239976" weight="45" />
-		<item itemid="1000" item="经验" counta="319968" countb="399960" weight="5" />
+	<loot itemid="31005" name="经验包" img="31001" rare="1" description="可以开出342144-855360经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="342144" countb="513216" weight="45" />
+		<item itemid="1000" item="经验" counta="684288" countb="855360" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31030" name="经验包" img="31001" rare="1" description="可以开出177696-444240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="177696" countb="266544" weight="45" />
-		<item itemid="1000" item="经验" counta="355392" countb="444240" weight="5" />
+	<loot itemid="31006" name="经验包" img="31001" rare="1" description="可以开出376704-941760经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="376704" countb="565056" weight="45" />
+		<item itemid="1000" item="经验" counta="753408" countb="941760" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="31031" name="经验包" img="31001" rare="1" description="可以开出201456-503640经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
-		<item itemid="1000" item="经验" counta="201456" countb="302184" weight="45" />
-		<item itemid="1000" item="经验" counta="402912" countb="503640" weight="5" />
+	<loot itemid="31007" name="经验包" img="31001" rare="1" description="可以开出370136-925340经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="370136" countb="555204" weight="45" />
+		<item itemid="1000" item="经验" counta="740272" countb="925340" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31008" name="经验包" img="31001" rare="1" description="可以开出401240-1003100经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="401240" countb="601860" weight="45" />
+		<item itemid="1000" item="经验" counta="802480" countb="1003100" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31009" name="经验包" img="31001" rare="1" description="可以开出827712-2069280经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="827712" countb="1241568" weight="45" />
+		<item itemid="1000" item="经验" counta="1655424" countb="2069280" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31010" name="经验包" img="31001" rare="1" description="可以开出900288-2250720经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="900288" countb="1350432" weight="45" />
+		<item itemid="1000" item="经验" counta="1800576" countb="2250720" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31011" name="经验包" img="31001" rare="1" description="可以开出974592-2436480经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="974592" countb="1461888" weight="45" />
+		<item itemid="1000" item="经验" counta="1949184" countb="2436480" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31012" name="经验包" img="31001" rare="1" description="可以开出1048896-2622240经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="1048896" countb="1573344" weight="45" />
+		<item itemid="1000" item="经验" counta="2097792" countb="2622240" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31013" name="经验包" img="31001" rare="1" description="可以开出1123200-2808000经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="1123200" countb="1684800" weight="45" />
+		<item itemid="1000" item="经验" counta="2246400" countb="2808000" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31014" name="经验包" img="31001" rare="1" description="可以开出1199232-2998080经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="1199232" countb="1798848" weight="45" />
+		<item itemid="1000" item="经验" counta="2398464" countb="2998080" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31015" name="经验包" img="31001" rare="1" description="可以开出2192832-5482080经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="2192832" countb="3289248" weight="45" />
+		<item itemid="1000" item="经验" counta="4385664" countb="5482080" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31016" name="经验包" img="31001" rare="1" description="可以开出2381184-5952960经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="2381184" countb="3571776" weight="45" />
+		<item itemid="1000" item="经验" counta="4762368" countb="5952960" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31017" name="经验包" img="31001" rare="1" description="可以开出2569536-6423840经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="2569536" countb="3854304" weight="45" />
+		<item itemid="1000" item="经验" counta="5139072" countb="6423840" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31018" name="经验包" img="31001" rare="1" description="可以开出2757888-6894720经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="2757888" countb="4136832" weight="45" />
+		<item itemid="1000" item="经验" counta="5515776" countb="6894720" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31019" name="经验包" img="31001" rare="1" description="可以开出2947104-7367760经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="2947104" countb="4420656" weight="45" />
+		<item itemid="1000" item="经验" counta="5894208" countb="7367760" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31020" name="经验包" img="31001" rare="1" description="可以开出6389796-15974490经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="6389796" countb="9584694" weight="45" />
+		<item itemid="1000" item="经验" counta="12779592" countb="15974490" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31021" name="经验包" img="31001" rare="1" description="可以开出7028464-17571160经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="7028464" countb="10542696" weight="45" />
+		<item itemid="1000" item="经验" counta="14056928" countb="17571160" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31022" name="经验包" img="31001" rare="1" description="可以开出7667136-19167840经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="7667136" countb="11500704" weight="45" />
+		<item itemid="1000" item="经验" counta="15334272" countb="19167840" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31023" name="经验包" img="31001" rare="1" description="可以开出8305804-20764510经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="8305804" countb="12458706" weight="45" />
+		<item itemid="1000" item="经验" counta="16611608" countb="20764510" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31024" name="经验包" img="31001" rare="1" description="可以开出8944992-22362480经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="8944992" countb="13417488" weight="45" />
+		<item itemid="1000" item="经验" counta="17889984" countb="22362480" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31025" name="经验包" img="31001" rare="1" description="可以开出9584696-23961740经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="9584696" countb="14377044" weight="45" />
+		<item itemid="1000" item="经验" counta="19169392" countb="23961740" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31026" name="经验包" img="31001" rare="1" description="可以开出18591636-46479090经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="18591636" countb="27887454" weight="45" />
+		<item itemid="1000" item="经验" counta="37183272" countb="46479090" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31027" name="经验包" img="31001" rare="1" description="可以开出22226140-55565350经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="22226140" countb="33339210" weight="45" />
+		<item itemid="1000" item="经验" counta="44452280" countb="55565350" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31028" name="经验包" img="31001" rare="1" description="可以开出25915332-64788330经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="25915332" countb="38872998" weight="45" />
+		<item itemid="1000" item="经验" counta="51830664" countb="64788330" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31029" name="经验包" img="31001" rare="1" description="可以开出29659216-74148040经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="29659216" countb="44488824" weight="45" />
+		<item itemid="1000" item="经验" counta="59318432" countb="74148040" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31030" name="经验包" img="31001" rare="1" description="可以开出33403104-83507760经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="33403104" countb="50104656" weight="45" />
+		<item itemid="1000" item="经验" counta="66806208" countb="83507760" weight="5" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="31031" name="经验包" img="31001" rare="1" description="可以开出35226056-88065140经验" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="50" >
+		<item itemid="1000" item="经验" counta="35226056" countb="52839084" weight="45" />
+		<item itemid="1000" item="经验" counta="70452112" countb="88065140" weight="5" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
@@ -1512,29 +1512,41 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33170" name="白绿装备基础箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+	<loot itemid="33038" name="白色装备箱" img="32015" rare="1" description="开启获得随机白色装备" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
+		<item itemid="33170" item="白绿装备基础箱1" counta="1" countb="1" weight="100" />
+		<item itemid="33171" item="白绿装备基础箱2" counta="1" countb="1" weight="100" />
+		<item itemid="33172" item="白绿装备基础箱3" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="33039" name="绿色装备箱" img="32028" rare="2" description="开启获得随机绿色装备" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
+		<item itemid="33173" item="白绿装备基础箱4" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="33170" name="白绿装备基础箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="27013" item="水晶修复装置" counta="1" countb="1" weight="100" />
 		<item itemid="27019" item="鞋带" counta="1" countb="1" weight="100" />
-		<item itemid="16003" item="爆裂魔杖" counta="1" countb="1" weight="100" />
-		<item itemid="16010" item="净蚀" counta="1" countb="1" weight="100" />
+		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33171" name="白绿装备基础箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+	<loot itemid="33171" name="白绿装备基础箱2" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="27014" item="额外的布料" counta="1" countb="1" weight="100" />
 		<item itemid="15004" item="格斗手套" counta="1" countb="1" weight="100" />
-		<item itemid="16004" item="十字镐" counta="1" countb="1" weight="100" />
 		<item itemid="27018" item="铁砧" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33172" name="白绿装备基础箱3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+	<loot itemid="33172" name="白绿装备基础箱3" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="27015" item="简易磨刀石" counta="1" countb="1" weight="100" />
 		<item itemid="15002" item="抗魔斗篷" counta="1" countb="1" weight="100" />
 		<item itemid="27017" item="坚固磨刀石" counta="1" countb="1" weight="100" />
-		<item itemid="16011" item="反曲之弓" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="33173" name="白绿装备基础箱4" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
-		<item itemid="27016" item="魔法书页" counta="1" countb="1" weight="100" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
-		<item itemid="" item="" counta="" countb="" weight="" />
+	<loot itemid="33173" name="白绿装备基础箱4" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
+		<item itemid="16003" item="爆裂魔杖" counta="1" countb="1" weight="100" />
+		<item itemid="16010" item="净蚀" counta="1" countb="1" weight="100" />
+		<item itemid="16011" item="反曲之弓" counta="1" countb="1" weight="100" />
+		<item itemid="16004" item="十字镐" counta="1" countb="1" weight="100" />
 	</loot>
 	<loot itemid="33176" name="白绿装备组合箱1" img="32015" rare="2" description="里面装有奇怪东西的箱子" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
 		<item itemid="33170" item="白绿装备基础箱1" counta="1" countb="1" weight="100" />

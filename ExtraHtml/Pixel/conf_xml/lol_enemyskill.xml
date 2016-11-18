@@ -54,19 +54,15 @@
 </enemy>
 <enemy enemyid="10401" enemyname="黄精灵" boss="1" >
 <skill img="126" skillid="50008" skillname="火球" skilllevel="1" />
-<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10402" enemyname="红精灵" boss="1" >
 <skill img="127" skillid="50008" skillname="火球" skilllevel="1" />
-<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10403" enemyname="蓝精灵" boss="1" >
 <skill img="128" skillid="50008" skillname="火球" skilllevel="1" />
-<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10404" enemyname="绿精灵" boss="1" >
 <skill img="129" skillid="50008" skillname="火球" skilllevel="1" />
-<skill img="" skillid="51052" skillname="冥界恢复" skilllevel="1" />
 </enemy>
 <enemy enemyid="10405" enemyname="悬浮怪" boss="1" >
 <skill img="130" skillid="51024" skillname="幽冥一击" skilllevel="1" />

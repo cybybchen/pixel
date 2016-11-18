@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<id id="1" reward="33014" count="1" weight="5" />
-<id id="2" reward="33015" count="1" weight="2" />
-<id id="3" reward="27001" count="10" weight="50" />
-<id id="4" reward="27001" count="20" weight="10" />
-<id id="5" reward="27002" count="10" weight="50" />
-<id id="6" reward="27002" count="20" weight="10" />
-<id id="7" reward="27003" count="5" weight="10" />
-<id id="8" reward="1005" count="80" weight="150" />
+<id id="1" reward="33014" count="1" weight="10" />
+<id id="2" reward="33015" count="1" weight="10" />
+<id id="3" reward="27001" count="100" weight="10" />
+<id id="4" reward="27002" count="100" weight="10" />
+<id id="5" reward="27003" count="100" weight="10" />
+<id id="6" reward="1005" count="200" weight="150" />
 </data>
