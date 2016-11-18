@@ -10,6 +10,7 @@ import com.trans.pixel.protoc.Commands.JewelPool;
 import com.trans.pixel.protoc.Commands.UnionBossRecord;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.LibaoService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserBean {
@@ -108,6 +109,14 @@ public class UserBean {
 	 */
 	public int getMyactive() {
 		return myactive;
+	}
+	public void addMyactive() {
+		if(zhanliMax < 20000)
+			myactive += 1+RedisService.nextInt(5);
+		else if(zhanliMax < 90000)
+			myactive += 5+RedisService.nextInt(6);
+		else
+			myactive += 5+RedisService.nextInt(11);
 	}
 	/**
 	 * 当前活跃度

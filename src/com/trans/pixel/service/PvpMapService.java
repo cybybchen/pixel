@@ -367,7 +367,7 @@ public class PvpMapService {
 			unionService.killMonsterBossActivity(user, monster.getId(), 1);
 		}
 
-		user.setMyactive(user.getMyactive()+5+redis.nextInt(11));
+		user.addMyactive();
 		if(user.getMyactive() >= 100){
 			user.setMyactive(user.getMyactive() - 100);
 			refreshAMine(user);
@@ -454,7 +454,7 @@ public class PvpMapService {
 		}
 
 		if(isme){
-			user.setMyactive(user.getMyactive()+5+redis.nextInt(11));
+			user.addMyactive();
 			if(user.getMyactive() >= 100){
 				user.setMyactive(user.getMyactive() - 100);
 				refreshAMine(user);

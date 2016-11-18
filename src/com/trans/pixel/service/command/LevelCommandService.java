@@ -162,7 +162,7 @@ public class LevelCommandService extends BaseCommandService {
 			}
 		}
 
-		user.setMyactive(user.getMyactive()+5+userService.nextInt(11));
+		user.addMyactive();
 		if(user.getMyactive() >= 100){
 			user.setMyactive(user.getMyactive() - 100);
 			pvpMapService.refreshAMine(user);

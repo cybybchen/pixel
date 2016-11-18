@@ -195,7 +195,7 @@ public class LadderService {
 			return ErrorConst.HE_IS_ATTACKING;
 		}
 
-		user.setMyactive(user.getMyactive()+5+ladderRedisService.nextInt(11));
+		user.addMyactive();
 		if(user.getMyactive() >= 100){
 			user.setMyactive(user.getMyactive() - 100);
 			pvpMapService.refreshAMine(user);

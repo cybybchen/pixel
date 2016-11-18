@@ -1004,7 +1004,7 @@ public class RedisService {
 		return (int)((System.currentTimeMillis()/1000L+8*3600)/24/3600L+3)%7+1;
 	}
 
-	public int nextInt(int value){
+	public static int nextInt(int value){
 		if(value <= 0)
 			return 0;
 		else
