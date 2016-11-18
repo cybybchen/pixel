@@ -30,7 +30,7 @@ import com.trans.pixel.service.ManagerService;
 
 
 @Controller
-@Scope("prototype")
+//@Scope("prototype")
 public class GamedataAction {
 	private static final Logger logger = LoggerFactory.getLogger(GamedataAction.class);
 	private static final String CONTENT_TYPE = "application/octet-stream";
