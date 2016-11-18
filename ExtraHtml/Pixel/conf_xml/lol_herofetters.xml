@@ -244,8 +244,8 @@
 </order>
 <order order="58" id="58" >
 <fetters fettersid="42052" >
-<hero heroid="102" herostar="3" herorank="8" />
-<hero heroid="203" herostar="3" herorank="8" />
+<hero heroid="11" herostar="3" herorank="8" />
+<hero heroid="105" herostar="3" herorank="8" />
 </fetters>
 <fetters fettersid="42053" >
 <hero heroid="116" herostar="5" herorank="13" />
@@ -378,8 +378,8 @@
 <hero heroid="79" herostar="5" herorank="13" />
 </fetters>
 <fetters fettersid="42079" >
-<hero heroid="102" herostar="4" herorank="11" />
-<hero heroid="203" herostar="3" herorank="8" />
+<hero heroid="24" herostar="4" herorank="11" />
+<hero heroid="11" herostar="3" herorank="8" />
 </fetters>
 </order>
 <order order="88" id="88" >
