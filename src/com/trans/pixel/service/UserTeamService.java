@@ -257,10 +257,10 @@ public class UserTeamService {
 			if (base.getStarList().size() < star)
 				star = base.getStarList().size();
 			int pre = 100;
-			Strengthen strengthen = strengthehConfig.get(hero.getStrengthen());
+			Strengthen strengthen = strengthehConfig.get("" + hero.getStrengthen());
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
-			// log.debug(strengthen+" : "+pre);
+//			 log.debug(strengthen+" : "+pre);
 			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
 			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
 			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(huList, hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
@@ -273,7 +273,6 @@ public class UserTeamService {
 				// log.debug(equip.getZhanli());
 			}
 			zhanli = zhanli * pre / 100;
-
 			myzhanli += zhanli;
 			  // log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
 		}
