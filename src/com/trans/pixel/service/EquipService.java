@@ -61,6 +61,23 @@ public class EquipService {
 		return equip;
 	}
 	
+	public Map<String, EquipmentBean> getEquipConfig() {
+		Map<String, EquipmentBean> equipConfig = equipRedisService.getEquipConfig();
+		if (equipConfig.isEmpty()) {
+			parseAndSaveEquipConfig();
+			equipConfig = equipRedisService.getEquipConfig();
+		}
+		
+		return equipConfig;
+	}
+	
+	public EquipmentBean getEquip(Map<String, EquipmentBean> map, int itemId) {
+		EquipmentBean equip = map.get("" + itemId);		
+		if (equip != null)
+			return equip;
+		return getEquip(itemId);
+	}
+	
 	public int calHeroEquipLevel(HeroInfoBean heroInfo) {
 		String[] equipIds = heroInfo.equipIds();
 		int level = 0;

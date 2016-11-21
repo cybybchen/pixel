@@ -88,6 +88,19 @@ public class EquipRedisService extends RedisService {
 		});
 	}
 	
+	public Map<String, EquipmentBean> getEquipConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
+		Map<String, EquipmentBean> map = new HashMap<String, EquipmentBean>();
+		if(!keyvalue.isEmpty()){
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				EquipmentBean bean = EquipmentBean.fromJson(entry.getValue());
+				if (bean != null)
+					map.put(entry.getKey(), bean);
+			}
+		}
+		return map;
+	}
+	
 	public Chip getChip(int itemId) {
 		String value = hget(RedisKey.CHIP_CONFIG, "" + itemId);
 		if (value == null) {

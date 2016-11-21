@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -53,6 +54,16 @@ public class HeroRareService {
 	public HeroRareLevelupRank getCurrentHeroRare(HeroInfoBean heroInfo) {
 		HeroBean hero = heroService.getHero(heroInfo.getHeroId());
 		HeroRareLevelup herorare = heroRedisService.getHeroRareLevelup(hero.getPosition());
+		for (HeroRareLevelupRank rank : herorare.getRankList()) {
+			if (rank.getRank() == heroInfo.getRank())
+				return rank;
+		}
+				
+		return null;
+	}
+	
+	public HeroRareLevelupRank getCurrentHeroRare(Map<String, HeroRareLevelup> herorareConfig, HeroBean hero, HeroInfoBean heroInfo) {
+		HeroRareLevelup herorare = herorareConfig.get("" + hero.getPosition());
 		for (HeroRareLevelupRank rank : herorare.getRankList()) {
 			if (rank.getRank() == heroInfo.getRank())
 				return rank;

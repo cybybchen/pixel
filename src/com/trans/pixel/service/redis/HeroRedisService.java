@@ -71,6 +71,19 @@ public class HeroRedisService extends RedisService {
 		});
 	}
 	
+	public List<HeroUpgradeBean> getHeroUpgradeList() {
+		List<HeroUpgradeBean> heroUpgradeList = new ArrayList<HeroUpgradeBean>();
+		Iterator<Entry<String, String>> it = this.hget(RedisKey.PREFIX + RedisKey.HERO_UPGRADE_LEVEL_key).entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, String> entry = it.next();
+			HeroUpgradeBean heroupgrade = HeroUpgradeBean.fromJson(entry.getValue());
+			if (heroupgrade != null)
+				heroUpgradeList.add(heroupgrade);
+		}
+		
+		return heroUpgradeList;
+	}
+	
 	public HeroBean getHeroByHeroId(final int id) {
 		return redisTemplate.execute(new RedisCallback<HeroBean>() {
 			@Override
@@ -232,7 +245,7 @@ public class HeroRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, HeroRareLevelup> getHeroRareLevelupConfig() {
+	public Map<String, HeroRareLevelup> getHeroRareLevelupConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.HERO_RARE_LEVELUP_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, HeroRareLevelup> map = buildHeroRareLevelupConfig();

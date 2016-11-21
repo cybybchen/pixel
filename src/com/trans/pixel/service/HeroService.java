@@ -46,6 +46,15 @@ public class HeroService {
 		return heroList;
 	}
 	
+	public HeroBean getHero(List<HeroBean> heroList, int heroId) {
+		for (HeroBean hero : heroList) {
+			if (hero.getId() == heroId)
+				return hero;
+		}
+		
+		return getHero(heroId);
+	}
+	
 	public HeroEquipBean getHeroEquip(int heroId) {
 		HeroBean hero = getHero(heroId);
 		return hero.getEquip(1);
@@ -66,6 +75,25 @@ public class HeroService {
 		}
 		
 		return hu;
+	}
+	
+	public HeroUpgradeBean getHeroUpgrade(List<HeroUpgradeBean> huList, int level) {
+		for (HeroUpgradeBean hu : huList) {
+			if (hu.getLevel() == level)
+				return hu;
+		}
+		
+		return getHeroUpgrade(level);
+	}
+	
+	public List<HeroUpgradeBean> getHeroUpgradeList() {
+		List<HeroUpgradeBean> huList = heroRedisService.getHeroUpgradeList();
+		if (huList.isEmpty()) {
+			parseHeroUpgradeAndSaveConfig();
+			huList = heroRedisService.getHeroUpgradeList();
+		}
+		
+		return huList;
 	}
 	
 	public int getDeleteExp(int level) {

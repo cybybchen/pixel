@@ -91,6 +91,17 @@ public class UserClearService {
 		return userClearRedisService.popDBKey();
 	}
 	
+	public List<UserClearBean> getHeroClearList(List<UserClearBean> clearList, int heroId) {
+		List<UserClearBean> userClearList = new ArrayList<UserClearBean>();
+		for (UserClearBean userClear : clearList) {
+			if (userClear.getHeroId() == heroId) {
+				userClearList.add(userClear);
+			}
+		}
+		
+		return userClearList;
+	}
+	
 //	private UserFoodBean initUserFood(long userId, int foodId) {
 //		UserFoodBean userFood = new UserFoodBean();
 //		userFood.setUserId(userId);

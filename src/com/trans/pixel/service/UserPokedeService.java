@@ -87,6 +87,16 @@ public class UserPokedeService {
 		updateUserPokede(userPokede, user);
 	}
 	
+	public UserPokedeBean getUserPokede(List<UserPokedeBean> pokedeList, int heroId, UserBean user) {
+		for (UserPokedeBean userPokede : pokedeList) {
+			if (userPokede.getHeroId() == heroId) {
+				return userPokede;
+			}
+		}
+		
+		return selectUserPokede(user, heroId);
+	}
+	
 	private UserPokedeBean initUserPokede(long userId, int heroId) {
 		UserPokedeBean UserPokede = new UserPokedeBean();
 		UserPokede.setHeroId(heroId);

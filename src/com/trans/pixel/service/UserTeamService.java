@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,17 +11,23 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.hero.HeroBean;
+import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
+import com.trans.pixel.protoc.Commands.HeroRareLevelup;
 import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.TeamUnlock;
+import com.trans.pixel.service.redis.ClearRedisService;
+import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -41,7 +48,7 @@ public class UserTeamService {
 	@Resource
 	private HeroService heroService;
 	@Resource
-	private ClearService clearService;
+	private ClearRedisService clearRedisService;
 	@Resource
 	private UserClearService userClearService;
 	@Resource
@@ -56,6 +63,8 @@ public class UserTeamService {
 	private BlackListService blackService;
 	@Resource
 	private HeroRareService heroRareService;
+	@Resource
+	private HeroRedisService heroRedisService;
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
 	// 	UserTeamBean userTeam = new UserTeamBean();
@@ -214,7 +223,6 @@ public class UserTeamService {
 		// 	// saveTeamCache(user, 0, team.build());
 		// }
 		// return team.build();
-
 		Team.Builder team = Team.newBuilder();
 		if(user.getId() <= 0){
 			team = userTeamRedisService.getTeamCache(user.getId());
@@ -228,32 +236,39 @@ public class UserTeamService {
 			}
 			// saveTeamCache(user, 0, team.build());
 		}
+		
 		if(user.getId() < 0 && user.getZhanli() > 0) {
 			team.setUser(user.buildShort());
 			return team.build();
 		}
 		
 		int myzhanli = 0;
+		List<HeroBean> heroList = heroService.getHeroList();
+		Map<String, Strengthen> strengthehConfig = clearRedisService.getStrengthenConfig();
+		List<HeroInfoBean> heroInfoList = userHeroService.selectUserHeroList(user);
+		Map<String, HeroRareLevelup> herorareConfig = heroRedisService.getHeroRareLevelupConfig();
+		List<HeroUpgradeBean> huList = heroService.getHeroUpgradeList();
+		Map<String, EquipmentBean> equipConfig = equipService.getEquipConfig();
 		for (HeroInfo hero : team.getHeroInfoList()) {
-			HeroBean base = heroService.getHero(hero.getHeroId());
+			HeroBean base = heroService.getHero(heroList, hero.getHeroId());
 			if (base == null)
 				continue;
 			int star = hero.getStar();
 			if (base.getStarList().size() < star)
 				star = base.getStarList().size();
 			int pre = 100;
-			Strengthen strengthen = clearService.getStrengthen(hero.getStrengthen());
+			Strengthen strengthen = strengthehConfig.get(hero.getStrengthen());
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
 			// log.debug(strengthen+" : "+pre);
-			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), hero.getInfoId());
-			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(heroInfo);
-			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
+			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
+			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
+			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(huList, hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
 			for(String equipid : hero.getEquipInfo().split("\\|")){
 				int id = TypeTranslatedUtil.stringToInt(equipid);
 				if(id == 0)
 					continue;
-				EquipmentBean equip = equipService.getEquip(id);
+				EquipmentBean equip = equipService.getEquip(equipConfig, id);
 				zhanli += equip.getZhanli();
 				// log.debug(equip.getZhanli());
 			}
@@ -307,6 +322,8 @@ public class UserTeamService {
 			if(teamid == userTeam.getId()){
 				team.setComposeSkill(userTeam.getComposeSkill());
 				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
+				List<UserClearBean> userClearList = userClearService.selectUserClearList(user.getId());
+				List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
 				String[] herosstr = userTeam.getTeamRecord().split("\\|");
 				for(String herostr : herosstr){
 					String[] str = herostr.split(",");
@@ -316,7 +333,7 @@ public class UserTeamService {
 						for(HeroInfoBean herobean : userHeroList){
 							if(herobean.getId() == infoId){
 								team.addHeroInfo(herobean.buildTeamHeroInfo(
-										userClearService.selectUserClear(user, herobean.getHeroId()), userPokedeService.selectUserPokede(user, herobean.getHeroId())));
+										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId(), user)));
 								break;
 							}
 						}

@@ -137,6 +137,10 @@ public class ClearService {
 		return clearRedisService.getStrengthen(id);
 	}
 	
+	public Map<String, Strengthen> getStrengthenConfig() {
+		return clearRedisService.getStrengthenConfig();
+	}
+	
 	private boolean strengthenSuccess(int percent) {
 		return RandomUtils.nextInt(100) < percent;
 	}

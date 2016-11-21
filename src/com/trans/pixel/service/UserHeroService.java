@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.hero.info.HeroInfoBean;
@@ -13,7 +14,7 @@ import com.trans.pixel.service.redis.UserHeroRedisService;
 
 @Service
 public class UserHeroService {
-	
+	private static Logger log = Logger.getLogger(UserHeroService.class);
 	@Resource
 	private UserHeroRedisService userHeroRedisService;
 	@Resource
@@ -68,12 +69,15 @@ public class UserHeroService {
 				userHeroRedisService.updateUserHeroList(userHeroList, userId);
 			}
 		}
-		for (HeroInfoBean heroInfo : userHeroList) {
-			if (skillService.unlockHeroSkill(heroInfo.getHeroId(), heroInfo))
-				updateUserHero(heroInfo);
-			
-			userPokedeService.updateUserPokede(heroInfo, user);
-		}
+//		log.error("111|" + System.currentTimeMillis());
+//		for (HeroInfoBean heroInfo : userHeroList) {
+//			log.error(heroInfo.getHeroId() + "start|" + System.currentTimeMillis());
+//			if (skillService.unlockHeroSkill(heroInfo.getHeroId(), heroInfo))
+//				updateUserHero(heroInfo);
+//			log.error(heroInfo.getHeroId() + "middle|" + System.currentTimeMillis());
+//			userPokedeService.updateUserPokede(heroInfo, user);
+//			log.error(heroInfo.getHeroId() + "end|" + System.currentTimeMillis());
+//		}
 		
 		return userHeroList;
 	}
@@ -143,6 +147,15 @@ public class UserHeroService {
 		}
 		
 		userService.updateUser(user);
+	}
+	
+	public HeroInfoBean getUserHero(List<HeroInfoBean> heroList, long infoId, UserBean user) {
+		for (HeroInfoBean hero : heroList) {
+			if (hero.getId() == infoId)
+				return hero;
+		}
+		
+		return selectUserHero(user.getId(), infoId);
 	}
 	
 	private HeroInfoBean initUserHero(long userId, int heroId, int star, int rare) {
