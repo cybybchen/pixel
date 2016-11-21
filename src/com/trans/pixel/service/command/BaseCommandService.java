@@ -299,9 +299,10 @@ public class BaseCommandService {
 	}
 	
 	protected List<HeroInfo> buildHeroInfo(List<UserPokedeBean> userPokedeList, UserBean user) {
+		List<UserClearBean> userClearList = userClearService.selectUserClearList(user.getId());
 		List<HeroInfo> heroInfoList = new ArrayList<HeroInfo>();
 		for (UserPokedeBean userPokede : userPokedeList) {
-			heroInfoList.add(userPokede.buildUserPokede(userClearService.selectUserClear(user, userPokede.getHeroId())));
+			heroInfoList.add(userPokede.buildUserPokede(userClearService.getHeroClearList(userClearList, userPokede.getHeroId())));
 		}
 		
 		return heroInfoList;
