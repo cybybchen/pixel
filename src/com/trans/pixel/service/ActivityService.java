@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.Commands.ActivityOrder;
 import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Kaifu2;
 import com.trans.pixel.protoc.Commands.Kaifu2Rank;
+import com.trans.pixel.protoc.Commands.KaifuOrder;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Rank;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -541,7 +542,30 @@ public class ActivityService {
 			Kaifu kaifu = entry.getValue();
 			if (kaifu.getTargetid() == type) {
 				UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), kaifu.getId()));
-				if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.DANBI_RECHARGE) {
+				if (type == ActivityConst.HERO_RARE) {
+					List<KaifuOrder> orderRecordList = uk.getOrderRecordList();
+					if (orderRecordList == null || orderRecordList.isEmpty()) {
+						orderRecordList = new ArrayList<KaifuOrder>();
+						for (ActivityOrder order : kaifu.getOrderList()) {
+							KaifuOrder.Builder orderRecord = KaifuOrder.newBuilder();
+							orderRecord.setTargetcount(0);
+							orderRecord.setTargetcount1(order.getTargetcount1());
+							if (count == order.getTargetcount1())
+								orderRecord.setTargetcount(1);
+							orderRecordList.add(orderRecord.build());
+						}
+						uk.addAllOrderRecord(orderRecordList);
+					} else {
+						for (int i = 0; i < uk.getOrderRecordList().size(); ++i) {
+							KaifuOrder.Builder orderRecord = KaifuOrder.newBuilder(uk.getOrderRecord(i));
+							if (orderRecord.getTargetcount1() == count) {
+								orderRecord.setTargetcount(orderRecord.getTargetcount() + 1);
+								uk.setOrderRecord(i, orderRecord.build());
+								break;
+							}
+						}
+					}
+				} else if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.DANBI_RECHARGE) {
 					uk.setCompleteCount(Math.max(count, uk.getCompleteCount()));
 				} else
 					uk.setCompleteCount(uk.getCompleteCount() + count);
@@ -568,7 +592,15 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_IS_OVER_ERROR;
 		
 		ActivityOrder activityorder = kaifu.getOrder(order - 1);
-		if (activityorder.getTargetcount() > uk.getCompleteCount())
+		if (kaifu.getTargetid() == ActivityConst.HERO_RARE) {
+			for (KaifuOrder orderRecord : uk.getOrderRecordList()) {
+				if (orderRecord.getTargetcount1() == activityorder.getTargetcount1()) {
+					if (orderRecord.getTargetcount() < activityorder.getTargetcount())
+						return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+					break;
+				}
+			}
+		} else if (activityorder.getTargetcount() > uk.getCompleteCount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
 		uk.addRewardOrder(order);
@@ -677,25 +709,31 @@ public class ActivityService {
 	public void heroLevelupRareActivity(UserBean user, int rare) {
 		/**
 		 * achieve type 115,116,117,118
-		 *  开服活动第三天
+		 *  开服活动英雄进阶
 		 */
 		long userId = user.getId();
 		switch (rare) {
-		case HeroConst.RARE_GREEN:
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_2);
-			sendKaifuScore(user, ActivityConst.KAIFU_DAY_3);
-			break;
-		case HeroConst.RARE_BLUE:
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_4);
-			break;
-		case HeroConst.RARE_PURPLE:
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_7);
-			break;
-		case HeroConst.RARE_ORANGE:
-			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_10);
-			break;
-		default:
-			break;
+//		case HeroConst.RARE_GREEN:
+//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_2);
+//			sendKaifuScore(user, ActivityConst.KAIFU_DAY_3);
+//			break;
+//		case HeroConst.RARE_BLUE:
+//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_4);
+//			break;
+//		case HeroConst.RARE_PURPLE:
+//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_7);
+//			break;
+//		case HeroConst.RARE_ORANGE:
+//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_10);
+//			break;
+			case HeroConst.RARE_LEVEL_3:
+			case HeroConst.RARE_LEVEL_5:
+			case HeroConst.RARE_LEVEL_8:
+			case HeroConst.RARE_LEVEL_10:
+				sendKaifuScore(user, ActivityConst.HERO_RARE, rare);
+				break;
+			default:
+				break;
 		}
 	}
 	

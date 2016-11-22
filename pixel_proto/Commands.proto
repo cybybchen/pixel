@@ -994,10 +994,16 @@ message Kaifu {
 	repeated ActivityOrder order = 5;
 }
 
+message KaifuOrder {
+	optional int32 targetcount = 1;
+	optional int32 targetcount1 = 2;
+}
+
 message UserKaifu {
         required int32 type = 1;
         required int32 completeCount = 2;
         repeated int32 rewardOrder = 3;
+	repeated KaifuOrder orderRecord = 4;
 }
 
 message FenjieHeroInfo {

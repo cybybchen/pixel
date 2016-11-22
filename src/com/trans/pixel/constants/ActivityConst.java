@@ -34,6 +34,10 @@ public class ActivityConst {
 	 */
 	public static final int QIYUE = 36;
 	/**
+	 * 英雄进阶
+	 */
+	public static final int HERO_RARE = 42;
+	/**
 	 * 参与pk
 	 */
 	public static final int RICHANG_PVP_ATTACK_ENEMY = 307;
