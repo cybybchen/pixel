@@ -546,12 +546,17 @@ public class ActivityService {
 					List<KaifuOrder> orderRecordList = uk.getOrderRecordList();
 					if (orderRecordList == null || orderRecordList.isEmpty()) {
 						orderRecordList = new ArrayList<KaifuOrder>();
+						List<Integer> targetcount1List = new ArrayList<Integer>();
 						for (ActivityOrder order : kaifu.getOrderList()) {
+							if (targetcount1List.contains(order.getTargetcount1()))
+								continue;
 							KaifuOrder.Builder orderRecord = KaifuOrder.newBuilder();
 							orderRecord.setTargetcount(0);
 							orderRecord.setTargetcount1(order.getTargetcount1());
 							if (count == order.getTargetcount1())
 								orderRecord.setTargetcount(1);
+							
+							targetcount1List.add(order.getTargetcount1());
 							orderRecordList.add(orderRecord.build());
 						}
 						uk.addAllOrderRecord(orderRecordList);
@@ -726,6 +731,7 @@ public class ActivityService {
 //		case HeroConst.RARE_ORANGE:
 //			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_10);
 //			break;
+			case HeroConst.RARE_LEVEL_1:
 			case HeroConst.RARE_LEVEL_3:
 			case HeroConst.RARE_LEVEL_5:
 			case HeroConst.RARE_LEVEL_8:

@@ -6,6 +6,7 @@ public class HeroConst {
 	public static final int RARE_PURPLE = 7;
 	public static final int RARE_ORANGE = 10;
 	
+	public static final int RARE_LEVEL_1 = 1;
 	public static final int RARE_LEVEL_3 = 3;
 	public static final int RARE_LEVEL_5 = 5;
 	public static final int RARE_LEVEL_8 = 8;
