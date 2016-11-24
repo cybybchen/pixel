@@ -145,6 +145,9 @@ public class HeroCommandService extends BaseCommandService {
 									rewardList = rewardService.mergeReward(rewardList, equipService.fenjieHeroEquip(user, equipId, 1));
 							}
 						}
+						if (delHeroInfo.getRank() > 0) {
+							rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(delHeroInfo));
+						}
 						if(delHeroInfo.getLevel() > 1)
 							addExp += heroService.getDeleteExp(delHeroInfo.getLevel());
 						
@@ -311,6 +314,11 @@ public class HeroCommandService extends BaseCommandService {
 								rewardList = rewardService.mergeReward(rewardList, equipService.fenjieHeroEquip(user, equipId, 1));
 						}
 					}
+					
+					if (heroInfo.getRank() > 0) {
+						rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(heroInfo));
+					}
+					
 					addCoin += 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
 					if(heroInfo.getLevel() > 1)
 						addExp += heroService.getDeleteExp(heroInfo.getLevel());

@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,14 +10,18 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.hero.HeroUpgradeBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.HeroFetter;
 import com.trans.pixel.protoc.Commands.HeroFetters;
 import com.trans.pixel.protoc.Commands.HeroFettersOrder;
+import com.trans.pixel.protoc.Commands.HeroRareLevelup;
+import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.HeroRedisService;
 
 @Service
@@ -145,5 +150,29 @@ public class HeroService {
 		}
 		
 		return ErrorConst.OPEN_FETTER_ERROR;
+	}
+	
+	public List<RewardBean> getHeroRareEquip(HeroInfoBean heroInfo) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		HeroBean hero = getHero(heroInfo.getHeroId());
+		HeroRareLevelup heroRareLevelup = heroRedisService.getHeroRareLevelup(hero.getPosition());
+		for (HeroRareLevelupRank rank : heroRareLevelup.getRankList()) {
+			if (rank.getRank() <= heroInfo.getRank()) {
+				rewardList.add(RewardBean.init(rank.getEquip1(), rank.getCount1()));
+				if (hero.getQuality() >= 2)
+					rewardList.add(RewardBean.init(rank.getEquip2(), rank.getCount2()));
+				
+				if (hero.getQuality() >= 3)
+					rewardList.add(RewardBean.init(rank.getEquip3(), rank.getCount3()));
+				
+				if (hero.getQuality() >= 4)
+					rewardList.add(RewardBean.init(rank.getEquip4(), rank.getCount4()));
+				
+				if (hero.getQuality() >= 6)
+					rewardList.add(RewardBean.init(rank.getEquip5(), rank.getCount5()));
+			}
+		}
+		
+		return rewardList;
 	}
 }
