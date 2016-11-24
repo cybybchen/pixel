@@ -1435,10 +1435,10 @@
 <loot itemid="27001" count="45" />
 </level>
 <level id="2088">
-<loot itemid="16010" count="6" />
+<loot itemid="16010" count="5" />
 </level>
 <level id="2089">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2090">
 <loot itemid="1002" count="80" />
@@ -1452,10 +1452,10 @@
 <loot itemid="27001" count="45" />
 </level>
 <level id="2093">
-<loot itemid="16004" count="6" />
+<loot itemid="16004" count="5" />
 </level>
 <level id="2094">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2095">
 <loot itemid="1002" count="80" />
@@ -1469,10 +1469,10 @@
 <loot itemid="27001" count="45" />
 </level>
 <level id="2098">
-<loot itemid="16003" count="6" />
+<loot itemid="16003" count="5" />
 </level>
 <level id="2099">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2100">
 <loot itemid="1002" count="80" />
@@ -1486,10 +1486,10 @@
 <loot itemid="27001" count="50" />
 </level>
 <level id="2103">
-<loot itemid="16011" count="6" />
+<loot itemid="16011" count="5" />
 </level>
 <level id="2104">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2105">
 <loot itemid="1002" count="80" />
@@ -1503,10 +1503,10 @@
 <loot itemid="27001" count="50" />
 </level>
 <level id="2108">
-<loot itemid="16010" count="6" />
+<loot itemid="16010" count="5" />
 </level>
 <level id="2109">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2110">
 <loot itemid="1002" count="80" />
@@ -1520,10 +1520,10 @@
 <loot itemid="27001" count="50" />
 </level>
 <level id="2113">
-<loot itemid="16004" count="6" />
+<loot itemid="16004" count="5" />
 </level>
 <level id="2114">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2115">
 <loot itemid="1002" count="80" />
@@ -1537,10 +1537,10 @@
 <loot itemid="27001" count="50" />
 </level>
 <level id="2118">
-<loot itemid="16003" count="6" />
+<loot itemid="16003" count="5" />
 </level>
 <level id="2119">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2120">
 <loot itemid="1002" count="80" />
@@ -1554,10 +1554,10 @@
 <loot itemid="27001" count="50" />
 </level>
 <level id="2123">
-<loot itemid="16011" count="6" />
+<loot itemid="16011" count="5" />
 </level>
 <level id="2124">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2125">
 <loot itemid="1002" count="80" />
@@ -1571,10 +1571,10 @@
 <loot itemid="27001" count="55" />
 </level>
 <level id="2128">
-<loot itemid="16010" count="6" />
+<loot itemid="16010" count="5" />
 </level>
 <level id="2129">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2130">
 <loot itemid="1002" count="80" />
@@ -1588,10 +1588,10 @@
 <loot itemid="27001" count="55" />
 </level>
 <level id="2133">
-<loot itemid="16004" count="6" />
+<loot itemid="16004" count="5" />
 </level>
 <level id="2134">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2135">
 <loot itemid="1002" count="80" />
@@ -1605,10 +1605,10 @@
 <loot itemid="27001" count="55" />
 </level>
 <level id="2138">
-<loot itemid="16003" count="6" />
+<loot itemid="16003" count="5" />
 </level>
 <level id="2139">
-<loot itemid="33039" count="8" />
+<loot itemid="33039" count="5" />
 </level>
 <level id="2140">
 <loot itemid="1002" count="80" />
@@ -1622,10 +1622,10 @@
 <loot itemid="27001" count="55" />
 </level>
 <level id="2143">
-<loot itemid="17010" count="10" />
+<loot itemid="17010" count="3" />
 </level>
 <level id="2144">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2145">
 <loot itemid="35002" count="1" />
@@ -1639,10 +1639,10 @@
 <loot itemid="27001" count="55" />
 </level>
 <level id="2148">
-<loot itemid="17004" count="10" />
+<loot itemid="17004" count="3" />
 </level>
 <level id="2149">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2150">
 <loot itemid="1002" count="80" />
@@ -1656,10 +1656,10 @@
 <loot itemid="27001" count="60" />
 </level>
 <level id="2153">
-<loot itemid="17005" count="10" />
+<loot itemid="17005" count="3" />
 </level>
 <level id="2154">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2155">
 <loot itemid="1002" count="80" />
@@ -1673,10 +1673,10 @@
 <loot itemid="27001" count="60" />
 </level>
 <level id="2158">
-<loot itemid="17008" count="10" />
+<loot itemid="17008" count="3" />
 </level>
 <level id="2159">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2160">
 <loot itemid="1002" count="80" />
@@ -1690,10 +1690,10 @@
 <loot itemid="27001" count="60" />
 </level>
 <level id="2163">
-<loot itemid="17003" count="10" />
+<loot itemid="17003" count="3" />
 </level>
 <level id="2164">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2165">
 <loot itemid="1002" count="80" />
@@ -1707,10 +1707,10 @@
 <loot itemid="27001" count="60" />
 </level>
 <level id="2168">
-<loot itemid="17009" count="10" />
+<loot itemid="17009" count="3" />
 </level>
 <level id="2169">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2170">
 <loot itemid="1002" count="80" />
@@ -1724,10 +1724,10 @@
 <loot itemid="27001" count="60" />
 </level>
 <level id="2173">
-<loot itemid="17011" count="10" />
+<loot itemid="17011" count="3" />
 </level>
 <level id="2174">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2175">
 <loot itemid="1002" count="80" />
@@ -1741,10 +1741,10 @@
 <loot itemid="27002" count="30" />
 </level>
 <level id="2178">
-<loot itemid="17012" count="10" />
+<loot itemid="17012" count="3" />
 </level>
 <level id="2179">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2180">
 <loot itemid="1002" count="80" />
@@ -1758,10 +1758,10 @@
 <loot itemid="27002" count="30" />
 </level>
 <level id="2183">
-<loot itemid="17010" count="10" />
+<loot itemid="17010" count="3" />
 </level>
 <level id="2184">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2185">
 <loot itemid="1002" count="80" />
@@ -1775,10 +1775,10 @@
 <loot itemid="27002" count="30" />
 </level>
 <level id="2188">
-<loot itemid="17004" count="10" />
+<loot itemid="17004" count="3" />
 </level>
 <level id="2189">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2190">
 <loot itemid="1002" count="80" />
@@ -1792,10 +1792,10 @@
 <loot itemid="27002" count="30" />
 </level>
 <level id="2193">
-<loot itemid="17005" count="10" />
+<loot itemid="17005" count="3" />
 </level>
 <level id="2194">
-<loot itemid="33004" count="10" />
+<loot itemid="33004" count="4" />
 </level>
 <level id="2195">
 <loot itemid="1002" count="80" />
