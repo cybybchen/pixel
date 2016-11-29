@@ -63,6 +63,8 @@ public class HeroRareService {
 	}
 	
 	public HeroRareLevelupRank getCurrentHeroRare(Map<String, HeroRareLevelup> herorareConfig, HeroBean hero, HeroInfoBean heroInfo) {
+		if (heroInfo == null)
+			return null;
 		HeroRareLevelup herorare = herorareConfig.get("" + hero.getPosition());
 		for (HeroRareLevelupRank rank : herorare.getRankList()) {
 			if (rank.getRank() == heroInfo.getRank())
