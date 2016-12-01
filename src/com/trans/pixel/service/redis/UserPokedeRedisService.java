@@ -29,6 +29,8 @@ public class UserPokedeRedisService extends RedisService {
 		if (value == null)
 			return null;
 		
+		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		
 		return UserPokedeBean.fromJson(value);
 	}
 	
@@ -43,12 +45,15 @@ public class UserPokedeRedisService extends RedisService {
 				userPokedeList.add(userPokede);
 		}
 		
+		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		
 		return userPokedeList;
 	}
 	
 	public void updateUserPokedeList(final List<UserPokedeBean> userPokedeList, final long userId) {
 		Map<String, String> map = convertUserPokedeListToMap(userPokedeList);
 		this.hputAll(RedisKey.USER_POKEDE_PREFIX + userId, map);
+		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public boolean isExistPokedeKey(final long userId) {
