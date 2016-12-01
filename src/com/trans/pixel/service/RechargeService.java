@@ -145,7 +145,7 @@ public class RechargeService {
 		return rmb;
 	}
 	
-	public int recharge(UserBean user, int productid, String company, boolean isCheat){
+	public int recharge(UserBean user, int productid, String company, String orderId, boolean isCheat){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		Rmb rmb = rechargeRedisService.getRmb(productid);
 		int itemId = rmb.getItemid();
@@ -224,6 +224,8 @@ public class RechargeService {
 		}
 		
 		activityService.sendShouchongScore(user);
+		if (orderId != null && !orderId.isEmpty())
+			rewards.setName(orderId);
 		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
 		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 			userService.saveLibao(user.getId(), libaobuilder.build());
@@ -244,7 +246,7 @@ public class RechargeService {
 			return;
 
 		UserBean user = userService.getOther(recharge.getUserId());
-		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), isCheat));
+		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), recharge.getOrderId(), isCheat));
 		
 		updateToDB(recharge);
 		// rechargeRedisService.addRechargeRecord(recharge); 

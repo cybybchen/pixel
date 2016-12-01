@@ -2281,7 +2281,7 @@ message RequestPurchaseVipLibaoCommand {
 }
 
 message RequestQueryRechargeCommand {
-	
+	optional string orderId = 1;	
 }
 
 message RequestShouchongRewardCommand {
