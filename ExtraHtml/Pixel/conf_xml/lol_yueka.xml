@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<item itemid="44001" name="初级钻石月卡" rewardid="1002" rewardcount="60" count="30" />
-<item itemid="44002" name="高级钻石月卡" rewardid="1002" rewardcount="300" count="30" />
-<item itemid="44003" name="双周魄罗礼包" rewardid="35001" rewardcount="1" count="14" />
-<item itemid="44004" name="双周超级魄罗礼包" rewardid="35002" rewardcount="1" count="14" />
-<item itemid="44005" name="双周蓝色装备礼包" rewardid="33004" rewardcount="1" count="14" />
-<item itemid="44006" name="双周紫色装备礼包" rewardid="33005" rewardcount="1" count="14" />
+<item itemid="44001" name="初級鉆石月卡" rewardid="1002" rewardcount="60" count="30" />
+<item itemid="44002" name="高級鉆石月卡" rewardid="1002" rewardcount="300" count="30" />
+<item itemid="44003" name="雙周魄羅禮包" rewardid="35001" rewardcount="1" count="14" />
+<item itemid="44004" name="雙周超級魄羅禮包" rewardid="35002" rewardcount="1" count="14" />
+<item itemid="44005" name="雙周藍色裝備禮包" rewardid="33004" rewardcount="1" count="14" />
+<item itemid="44006" name="雙周紫色裝備禮包" rewardid="33005" rewardcount="1" count="14" />
 </data>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<order order="1" description="立即领取" zhanli="0" rewardid="1000" rewardcount="5000" />
-<order order="2" description="战力达到4500领取" zhanli="4000" rewardid="1000" rewardcount="720000" />
-<order order="3" description="战力达到28000领取" zhanli="15000" rewardid="1000" rewardcount="5000000" />
-<order order="4" description="战力达到76000领取" zhanli="76000" rewardid="1000" rewardcount="9800000" />
-<order order="5" description="战力达到150000领取" zhanli="220000" rewardid="1000" rewardcount="57600000" />
-<order order="6" description="战力达到274000领取" zhanli="746000" rewardid="1000" rewardcount="300000000" />
+<order order="1" description="立即領取" zhanli="0" rewardid="1000" rewardcount="5000" />
+<order order="2" description="戰力達到4500領取" zhanli="4000" rewardid="1000" rewardcount="720000" />
+<order order="3" description="戰力達到28000領取" zhanli="15000" rewardid="1000" rewardcount="5000000" />
+<order order="4" description="戰力達到76000領取" zhanli="76000" rewardid="1000" rewardcount="9800000" />
+<order order="5" description="戰力達到150000領取" zhanli="220000" rewardid="1000" rewardcount="57600000" />
+<order order="6" description="戰力達到274000領取" zhanli="746000" rewardid="1000" rewardcount="300000000" />
 </data>

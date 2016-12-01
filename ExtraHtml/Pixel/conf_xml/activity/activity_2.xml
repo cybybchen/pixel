@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <activity>
-	<activity id="1" type="2" targetcount="0" des="下载送EZ" starttime="2016-05-27 00:00:00" endtime="2020-06-03 00:00:00" activitytype="-1" serverfilter="">
+	<activity id="1" type="2" targetcount="0" des="下載送EZ" starttime="2016-05-27 00:00:00" endtime="2020-06-03 00:00:00" activitytype="-1" serverfilter="">
 		<reward id="1" itemid="51011" count="1" />
 	</activity>
 </activity>

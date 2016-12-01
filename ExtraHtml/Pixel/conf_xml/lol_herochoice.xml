@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<id id="1" heroid="42" description="无情射手英雄，通过不断强化普通攻击来获得强大的输出，防御能力较弱。" level1_1="27017" level1_2="27015" level2_1="27015" level2_2="27013" level3_1="27014" level3_2="27019" level4="51223" level5="51221" level6="51222" level7="51219" />
-<id id="2" heroid="55" description="战斗法师英雄，通过持续不断的法术伤害击溃敌人。" level1_1="27016" level1_2="27014" level2_1="27013" level2_2="27013" level3_1="27013" level3_2="27019" level4="51211" level5="51209" level6="51210" level7="51208" />
-<id id="3" heroid="72" description="爆发法术英雄，使用超大伤害的法术技能在瞬间秒杀敌人。" level1_1="27016" level1_2="27016" level2_1="27016" level2_2="27014" level3_1="27013" level3_2="27019" level4="51217" level5="51215" level6="51216" level7="51214" />
-<id id="4" heroid="82" description="重装战士英雄，攻守平衡的英雄，并且越大越强。" level1_1="27015" level1_2="27015" level2_1="27015" level2_2="27014" level3_1="27013" level3_2="27019" level4="51205" level5="51203" level6="51204" level7="51201" />
-<id id="5" heroid="76" description="战斗法师英雄，通过持续不断的法术伤害击溃敌人。" level1_1="27016" level1_2="27016" level2_1="27016" level2_2="27014" level3_1="27013" level3_2="27019" level4="51211" level5="51209" level6="51210" level7="51208" />
+<id id="1" heroid="42" description="無情射手英雄，通過不斷強化普通攻擊來獲得強大的輸出，防御能力較弱。" level1_1="27017" level1_2="27015" level2_1="27015" level2_2="27013" level3_1="27014" level3_2="27019" level4="51223" level5="51221" level6="51222" level7="51219" />
+<id id="2" heroid="55" description="戰斗法師英雄，通過持續不斷的法術傷害擊潰敵人。" level1_1="27016" level1_2="27014" level2_1="27013" level2_2="27013" level3_1="27013" level3_2="27019" level4="51211" level5="51209" level6="51210" level7="51208" />
+<id id="3" heroid="72" description="爆發法術英雄，使用超大傷害的法術技能在瞬間秒殺敵人。" level1_1="27016" level1_2="27016" level2_1="27016" level2_2="27014" level3_1="27013" level3_2="27019" level4="51217" level5="51215" level6="51216" level7="51214" />
+<id id="4" heroid="82" description="重裝戰士英雄，攻守平衡的英雄，并且越大越強。" level1_1="27015" level1_2="27015" level2_1="27015" level2_2="27014" level3_1="27013" level3_2="27019" level4="51205" level5="51203" level6="51204" level7="51201" />
+<id id="5" heroid="76" description="戰斗法師英雄，通過持續不斷的法術傷害擊潰敵人。" level1_1="27016" level1_2="27016" level2_1="27016" level2_2="27014" level3_1="27013" level3_2="27019" level4="51211" level5="51209" level6="51210" level7="51208" />
 </data>

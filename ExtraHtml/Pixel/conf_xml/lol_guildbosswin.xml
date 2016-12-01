@@ -1,65 +1,65 @@
 <data>
 <boss id="200001" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1000" count1="300000" itemid2="40019" count2="10" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1000" count1="200000" itemid2="40019" count2="8" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1000" count1="100000" itemid2="40019" count2="6" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1000" count1="50000" itemid2="40019" count2="4" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1000" count1="20000" itemid2="40019" count2="2" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1000" count1="300000" itemid2="40019" count2="10" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1000" count1="200000" itemid2="40019" count2="8" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1000" count1="100000" itemid2="40019" count2="6" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1000" count1="50000" itemid2="40019" count2="4" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1000" count1="20000" itemid2="40019" count2="2" itemid3="" count3="" />
 </boss>
 <boss id="200002" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1001" count1="50000" itemid2="33005" count2="3" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1001" count1="40000" itemid2="33005" count2="2" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1001" count1="30000" itemid2="33005" count2="1" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1001" count1="20000" itemid2="33002" count2="3" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1001" count1="10000" itemid2="33002" count2="2" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1001" count1="50000" itemid2="33005" count2="3" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1001" count1="40000" itemid2="33005" count2="2" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1001" count1="30000" itemid2="33005" count2="1" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1001" count1="20000" itemid2="33002" count2="3" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1001" count1="10000" itemid2="33002" count2="2" itemid3="" count3="" />
 </boss>
 <boss id="200003" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1002" count1="500" itemid2="" count2="" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1002" count1="400" itemid2="" count2="" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1002" count1="300" itemid2="" count2="" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1002" count1="200" itemid2="" count2="" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1002" count1="150" itemid2="" count2="" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1002" count1="500" itemid2="" count2="" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1002" count1="400" itemid2="" count2="" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1002" count1="300" itemid2="" count2="" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1002" count1="200" itemid2="" count2="" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1002" count1="150" itemid2="" count2="" itemid3="" count3="" />
 </boss>
 <boss id="200004" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1000" count1="3000000" itemid2="40020" count2="10" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1000" count1="2000000" itemid2="40020" count2="8" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1000" count1="1000000" itemid2="40020" count2="6" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1000" count1="500000" itemid2="40020" count2="4" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1000" count1="200000" itemid2="40020" count2="2" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1000" count1="3000000" itemid2="40020" count2="10" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1000" count1="2000000" itemid2="40020" count2="8" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1000" count1="1000000" itemid2="40020" count2="6" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1000" count1="500000" itemid2="40020" count2="4" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1000" count1="200000" itemid2="40020" count2="2" itemid3="" count3="" />
 </boss>
 <boss id="200005" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1001" count1="20000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1001" count1="12000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1001" count1="8000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1001" count1="4000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1001" count1="20000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1001" count1="12000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1001" count1="8000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1001" count1="4000" itemid2="" count2="" itemid3="" count3="" />
 </boss>
 <boss id="200006" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1001" count1="40000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1001" count1="32000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1001" count1="24000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1001" count1="8000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1001" count1="40000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1001" count1="32000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1001" count1="24000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1001" count1="8000" itemid2="" count2="" itemid3="" count3="" />
 </boss>
 <boss id="200007" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1001" count1="40000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1001" count1="32000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1001" count1="24000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1001" count1="8000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1001" count1="40000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1001" count1="32000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1001" count1="24000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1001" count1="8000" itemid2="" count2="" itemid3="" count3="" />
 </boss>
 <boss id="200008" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1001" count1="80000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1001" count1="64000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1001" count1="48000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1001" count1="32000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1001" count1="80000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1001" count1="64000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1001" count1="48000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1001" count1="32000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1001" count1="16000" itemid2="" count2="" itemid3="" count3="" />
 </boss>
 <boss id="200009" >
-<item rank="1" rank1="1" des="公会boss伤害排名第1名奖励" itemid1="1001" count1="100000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="2" rank1="2" des="公会boss伤害排名第2名奖励" itemid1="1001" count1="80000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="3" rank1="3" des="公会boss伤害排名第3名奖励" itemid1="1001" count1="60000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="4" rank1="10" des="公会boss伤害排名4-10名奖励" itemid1="1001" count1="40000" itemid2="" count2="" itemid3="" count3="" />
-<item rank="11" rank1="20" des="公会boss伤害排名11-20名奖励" itemid1="1001" count1="20000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="1" rank1="1" des="公會boss傷害排名第1名獎勵" itemid1="1001" count1="100000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="2" rank1="2" des="公會boss傷害排名第2名獎勵" itemid1="1001" count1="80000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="3" rank1="3" des="公會boss傷害排名第3名獎勵" itemid1="1001" count1="60000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="4" rank1="10" des="公會boss傷害排名4-10名獎勵" itemid1="1001" count1="40000" itemid2="" count2="" itemid3="" count3="" />
+<item rank="11" rank1="20" des="公會boss傷害排名11-20名獎勵" itemid1="1001" count1="20000" itemid2="" count2="" itemid3="" count3="" />
 </boss>
 </data>

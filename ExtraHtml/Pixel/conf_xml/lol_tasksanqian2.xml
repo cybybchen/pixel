@@ -1,5 +1,5 @@
 <data>
-<sanqian id="302" activity="每日三签" >
+<sanqian id="302" activity="每日三簽" >
 <order order="1" targetid="33" targetcount="1" rewardid="40006" rewardcount="1" />
 <order order="2" targetid="33" targetcount="2" rewardid="40010" rewardcount="1" />
 <order order="3" targetid="33" targetcount="3" rewardid="1002" rewardcount="50" />

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<region id="2101" name="恶魔之源" hp="100" turn="10" count="3" pl="10" bosslv="300" />
+<region id="2101" name="惡魔之源" hp="100" turn="10" count="3" pl="10" bosslv="300" />
 <region id="2201" name="魔化之源" hp="100" turn="10" count="3" pl="10" bosslv="300" />
-<region id="2301" name="灵鸟" hp="100" turn="10" count="3" pl="10" bosslv="300" />
-<region id="2302" name="灵鸦" hp="100" turn="10" count="3" pl="10" bosslv="300" />
+<region id="2301" name="靈鳥" hp="100" turn="10" count="3" pl="10" bosslv="300" />
+<region id="2302" name="靈鴉" hp="100" turn="10" count="3" pl="10" bosslv="300" />
 <region id="2401" name="巨神王" hp="100" turn="10" count="3" pl="10" bosslv="300" />
 </data>

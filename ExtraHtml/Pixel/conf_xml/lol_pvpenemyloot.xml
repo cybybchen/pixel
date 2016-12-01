@@ -1,53 +1,53 @@
 <data>
-<enemy id="1001" name="养蛇人" >
+<enemy id="1001" name="養蛇人" >
 <loot order="1" weightall="100" itemid="1003" counta="50" countb=".01" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33038" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29028" counta="1" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29029" counta="1" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29030" counta="1" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1002" name="养蛇贵族" >
+<enemy id="1002" name="養蛇貴族" >
 <loot order="1" weightall="100" itemid="1003" counta="60" countb=".02" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33038" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29028" counta="2" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29029" counta="2" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29030" counta="2" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1003" name="养蛇之王" >
+<enemy id="1003" name="養蛇之王" >
 <loot order="1" weightall="100" itemid="1003" counta="70" countb=".03" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33038" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29028" counta="5" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29029" counta="5" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29030" counta="5" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1004" name="峡谷迅捷螃蟹人" >
+<enemy id="1004" name="峽谷迅捷螃蟹人" >
 <loot order="1" weightall="100" itemid="1003" counta="100" countb=".01" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33039" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29022" counta="1" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29023" counta="1" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29024" counta="1" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1005" name="峡谷龟忍者" >
+<enemy id="1005" name="峽谷龜忍者" >
 <loot order="1" weightall="100" itemid="1003" counta="110" countb=".02" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33039" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29022" counta="2" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29023" counta="2" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29024" counta="2" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1006" name="巨龟忍者" >
+<enemy id="1006" name="巨龜忍者" >
 <loot order="1" weightall="100" itemid="1003" counta="120" countb=".03" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33039" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29022" counta="5" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29023" counta="5" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29024" counta="5" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1007" name="头盔人" >
+<enemy id="1007" name="頭盔人" >
 <loot order="1" weightall="100" itemid="1003" counta="150" countb=".01" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33001" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29019" counta="1" countb="0" weighta="25" weightb=".3" />
 <loot order="4" weightall="100" itemid="29018" counta="1" countb="0" weighta="10" weightb=".3" />
 </enemy>
-<enemy id="1008" name="钢盔人" >
+<enemy id="1008" name="鋼盔人" >
 <loot order="1" weightall="100" itemid="1003" counta="160" countb=".02" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33001" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29019" counta="2" countb="0" weighta="25" weightb=".3" />
@@ -59,40 +59,40 @@
 <loot order="3" weightall="100" itemid="29019" counta="5" countb="0" weighta="25" weightb=".3" />
 <loot order="4" weightall="100" itemid="29018" counta="5" countb="0" weighta="10" weightb=".3" />
 </enemy>
-<enemy id="1010" name="魔沼蛙养殖人" >
+<enemy id="1010" name="魔沼蛙養殖人" >
 <loot order="1" weightall="100" itemid="1003" counta="200" countb=".01" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33002" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29037" counta="1" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29038" counta="1" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29039" counta="1" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1011" name="魔沼巨蛙养殖人" >
+<enemy id="1011" name="魔沼巨蛙養殖人" >
 <loot order="1" weightall="100" itemid="1003" counta="220" countb=".02" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33002" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29037" counta="2" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29038" counta="2" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29039" counta="2" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1012" name="巨蛙领主" >
+<enemy id="1012" name="巨蛙領主" >
 <loot order="1" weightall="100" itemid="1003" counta="250" countb=".03" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33002" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29037" counta="5" countb="0" weighta="50" weightb=".5" />
 <loot order="4" weightall="100" itemid="29038" counta="5" countb="0" weighta="-50" weightb="1" />
 <loot order="5" weightall="100" itemid="29039" counta="5" countb="0" weighta="-100" weightb="1" />
 </enemy>
-<enemy id="1013" name="幽灵" >
+<enemy id="1013" name="幽靈" >
 <loot order="1" weightall="100" itemid="1003" counta="200" countb=".01" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33003" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29035" counta="1" countb="0" weighta="25" weightb=".3" />
 <loot order="4" weightall="100" itemid="29036" counta="1" countb="0" weighta="10" weightb=".3" />
 </enemy>
-<enemy id="1014" name="大幽灵" >
+<enemy id="1014" name="大幽靈" >
 <loot order="1" weightall="100" itemid="1003" counta="220" countb=".02" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33003" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29035" counta="2" countb="0" weighta="25" weightb=".3" />
 <loot order="4" weightall="100" itemid="29036" counta="2" countb="0" weighta="10" weightb=".3" />
 </enemy>
-<enemy id="1015" name="千年幽灵" >
+<enemy id="1015" name="千年幽靈" >
 <loot order="1" weightall="100" itemid="1003" counta="250" countb=".03" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="33003" counta="2" countb=".0067" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="29035" counta="5" countb="0" weighta="25" weightb=".3" />
@@ -105,14 +105,14 @@
 <loot order="4" weightall="100" itemid="33019" counta="1" countb="0" weighta="-33" weightb=".66" />
 <loot order="5" weightall="100" itemid="33022" counta="1" countb="0" weighta="-50" weightb=".5" />
 </enemy>
-<enemy id="2017" name="瑞兹" >
+<enemy id="2017" name="瑞茲" >
 <loot order="1" weightall="100" itemid="1003" counta="500" countb="1" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1001" counta="10000" countb="135" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="33017" counta="1" countb="0" weighta="0" weightb=".66" />
 <loot order="4" weightall="100" itemid="33020" counta="1" countb="0" weighta="-33" weightb=".66" />
 <loot order="5" weightall="100" itemid="33023" counta="1" countb="0" weighta="-50" weightb=".5" />
 </enemy>
-<enemy id="2018" name="盖伦" >
+<enemy id="2018" name="蓋倫" >
 <loot order="1" weightall="100" itemid="1003" counta="500" countb="1" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1001" counta="10000" countb="135" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="33018" counta="1" countb="0" weighta="0" weightb=".66" />
@@ -126,13 +126,13 @@
 <loot order="4" weightall="100" itemid="33026" counta="1" countb="0" weighta="-33" weightb=".66" />
 <loot order="5" weightall="100" itemid="33027" counta="1" countb="0" weighta="-50" weightb=".5" />
 </enemy>
-<enemy id="3001" name="夏日元气少女" >
+<enemy id="3001" name="夏日元氣少女" >
 <loot order="1" weightall="100" itemid="1003" counta="100" countb="0" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="40101" counta="1" countb="0" weighta="100" weightb="0" />
 <loot order="4" weightall="100" itemid="34001" counta="1" countb="0" weighta="50" weightb="0" />
 </enemy>
-<enemy id="3002" name="夏日水着少女" >
+<enemy id="3002" name="夏日水著少女" >
 <loot order="1" weightall="100" itemid="1003" counta="100" countb="0" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="40102" counta="1" countb="0" weighta="100" weightb="0" />
@@ -148,12 +148,12 @@
 <loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="40104" counta="2" countb="0" weighta="100" weightb="0" />
 </enemy>
-<enemy id="3005" name="神奇的光头大汉" >
+<enemy id="3005" name="神奇的光頭大漢" >
 <loot order="1" weightall="100" itemid="1003" counta="100" countb="0" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="34004" counta="1" countb="0" weighta="100" weightb="0" />
 </enemy>
-<enemy id="3006" name="卖瓜少女" >
+<enemy id="3006" name="賣瓜少女" >
 <loot order="1" weightall="100" itemid="1003" counta="100" countb="0" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1000" counta="10000" countb="0" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="34005" counta="1" countb="0" weighta="100" weightb="0" />

@@ -148,7 +148,7 @@ public class FriendCommandService extends BaseCommandService {
 	}
 	
 	private void buildAddFriendMail(long userId, UserBean user) {
-		String content = "添加你为好友";
+		String content = "添加妳為好友";
 		MailBean mail = buildMail(userId, user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_ADDFRIEND_MAIL);
 		mailService.addMail(mail);
 	}

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<mohua id="1" name="审判女巫" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60047" skilllevel="1" stage="1" special="" />
-<mohua id="2" name="阿兹尔" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60048" skilllevel="1" stage="1" special="" />
-<mohua id="3" name="丛林守护者" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60049" skilllevel="1" stage="1" special="" />
-<mohua id="4" name="疯狂的乌龟" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60050" skilllevel="1" stage="1" special="" />
-<mohua id="5" name="大老师" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60051" skilllevel="1" stage="1" special="" />
+<mohua id="1" name="審判女巫" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60047" skilllevel="1" stage="1" special="" />
+<mohua id="2" name="阿茲爾" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60048" skilllevel="1" stage="1" special="" />
+<mohua id="3" name="叢林守護者" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60049" skilllevel="1" stage="1" special="" />
+<mohua id="4" name="瘋狂的烏龜" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60050" skilllevel="1" stage="1" special="" />
+<mohua id="5" name="大老師" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60051" skilllevel="1" stage="1" special="" />
 <mohua id="6" name="空白" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60052" skilllevel="1" stage="1" special="" />
-<mohua id="7" name="团子" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60053" skilllevel="1" stage="1" special="" />
-<mohua id="8" name="黄色章鱼" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60054" skilllevel="1" stage="1" special="" />
+<mohua id="7" name="團子" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60053" skilllevel="1" stage="1" special="" />
+<mohua id="8" name="黃色章魚" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60054" skilllevel="1" stage="1" special="" />
 <mohua id="9" name="教主" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60055" skilllevel="1" stage="1" special="" />
-<mohua id="10" name="馆长" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60056" skilllevel="1" stage="1" special="" />
+<mohua id="10" name="館長" boss="1" zhanli="1" ad="1" ap="1" arm="1" mr="1" adi="1" api="1" rating="1" speed="1" steal="1" level="1" skillid="60056" skilllevel="1" stage="1" special="" />
 </data>

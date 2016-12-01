@@ -1,5 +1,5 @@
 <data>
-<field fieldid="101" name = "蛇纹石河">
+<field fieldid="101" name = "蛇紋石河">
 <xiaoguai id="20101" x="104" y="221" />
 <xiaoguai id="20102" x="74" y="368" />
 <xiaoguai id="20103" x="125" y="456" />
@@ -11,7 +11,7 @@
 <xiaoguai id="20109" x="556" y="322" />
 <xiaoguai id="20110" x="595" y="576" />
 </field>
-<field fieldid="102" name = "铁脊山脉">
+<field fieldid="102" name = "鐵脊山脈">
 <xiaoguai id="20201" x="125" y="229" />
 <xiaoguai id="20202" x="59" y="396" />
 <xiaoguai id="20203" x="55" y="532" />
@@ -23,7 +23,7 @@
 <xiaoguai id="20209" x="425" y="582" />
 <xiaoguai id="20210" x="554" y="547" />
 </field>
-<field fieldid="103" name = "风暴平原">
+<field fieldid="103" name = "風暴平原">
 <xiaoguai id="20301" x="55" y="304" />
 <xiaoguai id="20302" x="62" y="465" />
 <xiaoguai id="20303" x="139" y="780" />
@@ -35,7 +35,7 @@
 <xiaoguai id="20309" x="584" y="313" />
 <xiaoguai id="20310" x="565" y="520" />
 </field>
-<field fieldid="104" name = "库蒙古森林">
+<field fieldid="104" name = "庫蒙古森林">
 <xiaoguai id="20401" x="83" y="331" />
 <xiaoguai id="20402" x="148" y="460" />
 <xiaoguai id="20403" x="91" y="687" />
@@ -47,7 +47,7 @@
 <xiaoguai id="20409" x="337" y="699" />
 <xiaoguai id="20410" x="265" y="801" />
 </field>
-<field fieldid="105" name = "暗影岛">
+<field fieldid="105" name = "暗影島">
 <xiaoguai id="20501" x="53" y="262" />
 <xiaoguai id="20502" x="178" y="270" />
 <xiaoguai id="20503" x="388" y="235" />

@@ -1,5 +1,5 @@
 <data>
-<mohua mapid="1" mapname="守护丛林" >
+<mohua mapid="1" mapname="守護叢林" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />
@@ -21,7 +21,7 @@
 <carduse item="1001" itemcount="1" />
 </hp>
 </mohua>
-<mohua mapid="2" mapname="虚空裂隙" >
+<mohua mapid="2" mapname="虛空裂隙" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />
@@ -43,7 +43,7 @@
 <carduse item="1001" itemcount="1" />
 </hp>
 </mohua>
-<mohua mapid="3" mapname="魄罗对决" >
+<mohua mapid="3" mapname="魄羅對決" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />
@@ -65,7 +65,7 @@
 <carduse item="1001" itemcount="1" />
 </hp>
 </mohua>
-<mohua mapid="4" mapname="香蕉大作战" >
+<mohua mapid="4" mapname="香蕉大作戰" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />
@@ -87,7 +87,7 @@
 <carduse item="1001" itemcount="1" />
 </hp>
 </mohua>
-<mohua mapid="5" mapname="转角遇到鬼" >
+<mohua mapid="5" mapname="轉角遇到鬼" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />
@@ -109,7 +109,7 @@
 <carduse item="1001" itemcount="1" />
 </hp>
 </mohua>
-<mohua mapid="6" mapname="太阳井之心" >
+<mohua mapid="6" mapname="太陽井之心" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />
@@ -131,7 +131,7 @@
 <carduse item="1001" itemcount="1" />
 </hp>
 </mohua>
-<mohua mapid="7" mapname="跳跃的法力水晶" >
+<mohua mapid="7" mapname="跳躍的法力水晶" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />
@@ -153,7 +153,7 @@
 <carduse item="1001" itemcount="1" />
 </hp>
 </mohua>
-<mohua mapid="8" mapname="锄强扶弱" >
+<mohua mapid="8" mapname="鋤強扶弱" >
 <hp consumehp="20" >
 <carduse item="1001" itemcount="1" />
 <carduse item="1001" itemcount="1" />

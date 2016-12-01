@@ -1,5 +1,5 @@
 <data>
-<boss id="2101" name="恶魔之源">
+<boss id="2101" name="惡魔之源">
 <ranking ranking="1" itemid1="1006" count1="200" itemid2="1001" count2="100000" itemid3="84026" count3="1" />
 <ranking ranking="3" itemid1="1006" count1="100" itemid2="1001" count2="80000" itemid3="" count3="" />
 <ranking ranking="10" itemid1="1006" count1="50" itemid2="1001" count2="60000" itemid3="" count3="" />
@@ -13,14 +13,14 @@
 <ranking ranking="20" itemid1="1006" count1="20" itemid2="1001" count2="40000" itemid3="" count3="" />
 <ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
 </boss>
-<boss id="2301" name="灵鸟">
+<boss id="2301" name="靈鳥">
 <ranking ranking="1" itemid1="1006" count1="200" itemid2="1001" count2="100000" itemid3="84028" count3="1" />
 <ranking ranking="3" itemid1="1006" count1="100" itemid2="1001" count2="80000" itemid3="" count3="" />
 <ranking ranking="10" itemid1="1006" count1="50" itemid2="1001" count2="60000" itemid3="" count3="" />
 <ranking ranking="20" itemid1="1006" count1="20" itemid2="1001" count2="40000" itemid3="" count3="" />
 <ranking ranking="-1" itemid1="1006" count1="10" itemid2="1001" count2="20000" itemid3="" count3="" />
 </boss>
-<boss id="2302" name="灵鸦">
+<boss id="2302" name="靈鴉">
 <ranking ranking="1" itemid1="1006" count1="200" itemid2="1001" count2="100000" itemid3="84030" count3="1" />
 <ranking ranking="3" itemid1="1006" count1="100" itemid2="1001" count2="80000" itemid3="" count3="" />
 <ranking ranking="10" itemid1="1006" count1="50" itemid2="1001" count2="60000" itemid3="" count3="" />

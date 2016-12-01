@@ -1,5 +1,5 @@
 <data>
-<mohua mapid="1" mapname="守护丛林" maxcrystal="10" >
+<mohua mapid="1" mapname="守護叢林" maxcrystal="10" >
 <stage stage="1" turn="2" crystal="2" randomcard="1" />
 <stage stage="2" turn="2" crystal="2" randomcard="1" />
 <stage stage="3" turn="3" crystal="2" randomcard="1" />
@@ -11,7 +11,7 @@
 <stage stage="9" turn="3" crystal="2" randomcard="1" />
 <stage stage="10" turn="4" crystal="2" randomcard="1" />
 </mohua>
-<mohua mapid="2" mapname="虚空裂隙" maxcrystal="10" >
+<mohua mapid="2" mapname="虛空裂隙" maxcrystal="10" >
 <stage stage="1" turn="2" crystal="2" randomcard="1" />
 <stage stage="2" turn="2" crystal="2" randomcard="1" />
 <stage stage="3" turn="2" crystal="2" randomcard="1" />
@@ -23,7 +23,7 @@
 <stage stage="9" turn="4" crystal="2" randomcard="1" />
 <stage stage="10" turn="4" crystal="2" randomcard="1" />
 </mohua>
-<mohua mapid="3" mapname="魄罗对决" maxcrystal="10" >
+<mohua mapid="3" mapname="魄羅對決" maxcrystal="10" >
 <stage stage="1" turn="2" crystal="2" randomcard="1" />
 <stage stage="2" turn="2" crystal="2" randomcard="1" />
 <stage stage="3" turn="2" crystal="2" randomcard="1" />
@@ -35,7 +35,7 @@
 <stage stage="9" turn="4" crystal="2" randomcard="1" />
 <stage stage="10" turn="4" crystal="2" randomcard="1" />
 </mohua>
-<mohua mapid="4" mapname="香蕉大作战" maxcrystal="10" >
+<mohua mapid="4" mapname="香蕉大作戰" maxcrystal="10" >
 <stage stage="1" turn="2" crystal="2" randomcard="1" />
 <stage stage="2" turn="2" crystal="2" randomcard="1" />
 <stage stage="3" turn="2" crystal="2" randomcard="1" />
@@ -47,7 +47,7 @@
 <stage stage="9" turn="4" crystal="2" randomcard="1" />
 <stage stage="10" turn="4" crystal="2" randomcard="1" />
 </mohua>
-<mohua mapid="5" mapname="转角遇到鬼" maxcrystal="10" >
+<mohua mapid="5" mapname="轉角遇到鬼" maxcrystal="10" >
 <stage stage="1" turn="3" crystal="2" randomcard="1" />
 <stage stage="2" turn="3" crystal="2" randomcard="1" />
 <stage stage="3" turn="2" crystal="2" randomcard="1" />
@@ -59,7 +59,7 @@
 <stage stage="9" turn="3" crystal="2" randomcard="1" />
 <stage stage="10" turn="4" crystal="2" randomcard="1" />
 </mohua>
-<mohua mapid="6" mapname="太阳井之心" maxcrystal="10" >
+<mohua mapid="6" mapname="太陽井之心" maxcrystal="10" >
 <stage stage="1" turn="2" crystal="10" randomcard="1" />
 <stage stage="2" turn="2" crystal="10" randomcard="1" />
 <stage stage="3" turn="3" crystal="10" randomcard="1" />
@@ -71,7 +71,7 @@
 <stage stage="9" turn="2" crystal="10" randomcard="1" />
 <stage stage="10" turn="4" crystal="10" randomcard="1" />
 </mohua>
-<mohua mapid="7" mapname="跳跃的法力水晶" maxcrystal="10" >
+<mohua mapid="7" mapname="跳躍的法力水晶" maxcrystal="10" >
 <stage stage="1" turn="3" crystal="2" randomcard="1" />
 <stage stage="2" turn="3" crystal="2" randomcard="1" />
 <stage stage="3" turn="3" crystal="2" randomcard="1" />
@@ -83,7 +83,7 @@
 <stage stage="9" turn="3" crystal="2" randomcard="1" />
 <stage stage="10" turn="3" crystal="2" randomcard="1" />
 </mohua>
-<mohua mapid="8" mapname="锄强扶弱" maxcrystal="10" >
+<mohua mapid="8" mapname="鋤強扶弱" maxcrystal="10" >
 <stage stage="1" turn="3" crystal="2" randomcard="1" />
 <stage stage="2" turn="2" crystal="2" randomcard="1" />
 <stage stage="3" turn="3" crystal="2" randomcard="1" />
