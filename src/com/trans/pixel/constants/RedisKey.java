@@ -292,4 +292,6 @@ public class RedisKey {
 	public static final String UNION_BOSS_PREFIX = PREFIX + "union_boss_";
 	public static final String UNION_BOSS_RANK_PREFIX = PREFIX + "union_boss_rank_";
 	
+	//notice message key
+	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;
 }

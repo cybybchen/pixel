@@ -673,7 +673,7 @@ public class RedisService {
     /**
      * 获取zset(倒序)
      */
-    protected Set<TypedTuple<String>> zrangebyscore(final String key, final long start, final long end) {
+    protected Set<TypedTuple<String>> zrangebyscore(final String key, final long min, final long max) {
     	return redisTemplate.execute(new RedisCallback<Set<TypedTuple<String>>>() {
 			@Override
 			public Set<TypedTuple<String>> doInRedis(RedisConnection arg0)
@@ -681,7 +681,7 @@ public class RedisService {
 				BoundZSetOperations<String, String> Ops = redisTemplate
 						.boundZSetOps(key);
 				
-				return Ops.reverseRangeByScoreWithScores(start, end);
+				return Ops.reverseRangeByScoreWithScores(min, max);
 			}
 		});
     }
@@ -689,7 +689,7 @@ public class RedisService {
     /**
      * 获取zset(倒序)
      */
-    protected Set<TypedTuple<String>> zrangewithscore(final String key, final long start, final long end) {
+    protected Set<TypedTuple<String>> zrangewithscore(final String key, final long min, final long max) {
     	return redisTemplate.execute(new RedisCallback<Set<TypedTuple<String>>>() {
 			@Override
 			public Set<TypedTuple<String>> doInRedis(RedisConnection arg0)
@@ -697,7 +697,23 @@ public class RedisService {
 				BoundZSetOperations<String, String> Ops = redisTemplate
 						.boundZSetOps(key);
 				
-				return Ops.reverseRangeWithScores(start, end);
+				return Ops.reverseRangeWithScores(min, max);
+			}
+		});
+    }
+    
+    /**
+     * 获取zset(升序)
+     */
+    protected Set<String> zrangeByScore(final String key, final long min, final long max) {
+    	return redisTemplate.execute(new RedisCallback<Set<String>>() {
+			@Override
+			public Set<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> Ops = redisTemplate
+						.boundZSetOps(key);
+				
+				return Ops.rangeByScore(min, max);
 			}
 		});
     }

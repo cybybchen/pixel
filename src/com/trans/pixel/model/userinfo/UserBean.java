@@ -104,6 +104,7 @@ public class UserBean {
 	private int hunxiaPRD = 0;
 	private int firstAddedtoZhanli = 0;
 	private int lotteryCoinCount = 0;
+	private long receiveNoticeMessageTimeStamp = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1057,6 +1058,12 @@ public class UserBean {
 	}
 	public void setLotteryCoinCount(int lotteryCoinCount) {
 		this.lotteryCoinCount = lotteryCoinCount;
+	}
+	public long getReceiveNoticeMessageTimeStamp() {
+		return receiveNoticeMessageTimeStamp;
+	}
+	public void setReceiveNoticeMessageTimeStamp(long receiveNoticeMessageTimeStamp) {
+		this.receiveNoticeMessageTimeStamp = receiveNoticeMessageTimeStamp;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

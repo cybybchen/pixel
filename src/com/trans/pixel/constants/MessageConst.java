@@ -10,4 +10,6 @@ public class MessageConst {
 	
 	public static final int MESSAGE_LIST_START = 0;
 	public static final int MESSAGE_LIST_END = 19;
+	
+	public static final int NOTICE_MESSAGE_MAX = 20;
 }

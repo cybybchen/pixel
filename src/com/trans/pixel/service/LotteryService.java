@@ -29,6 +29,8 @@ public class LotteryService {
 	private RewardService rewardService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
     
     private List<RewardBean> getLotteryList(int type) {
     	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
@@ -72,8 +74,9 @@ public class LotteryService {
     	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
     	if(count > 1){
 	    	RewardBean willReward = rewardService.randomReward(willLotteryList);
-	    	if (willReward != null)
+	    	if (willReward != null) {
 	    		randomLotteryList.add(willReward);
+	    	}
 	    	
 	    	if (type == RewardConst.JEWEL)
 	    		user.setJewelPRD(user.getJewelPRD() + 1);
@@ -85,8 +88,9 @@ public class LotteryService {
     		if (type == RewardConst.JEWEL || type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
     			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD()) * 2) {
     				RewardBean reward = rewardService.randomReward(prdLotteryList);
-    				if (reward != null)
+    				if (reward != null) {
     					randomLotteryList.add(reward);
+    				}
     				if (type == RewardConst.JEWEL)
     					user.setJewelPRD(0);
     				else
@@ -106,6 +110,7 @@ public class LotteryService {
     	
 //    	randomLotteryList.addAll(rewardService.randomRewardList(lotteryList, count - randomLotteryList.size()));
     	
+    	noticeMessageService.composeLotteryMessage(user, randomLotteryList);
     	userService.updateUser(user);
     	return randomLotteryList;
     }

@@ -2289,7 +2289,8 @@ message RequestShouchongRewardCommand {
 }
 
 message ResponseNoticeCommand {
-	repeated Notice notice = 1;	
+	repeated Notice notice = 1;
+	repeated string message = 2;	
 }
 
 message RequestHeartBeatCommand {
