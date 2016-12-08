@@ -1552,7 +1552,7 @@ message RequestLockHeroCommand {
 }
 
 message RequestHeroLevelUpToCommand {
-	required int32 levelUpTo = 1;
+	required int32 levelUp = 1;
 	required int32 heroId = 2;
 	required int64 infoId = 3;
 }

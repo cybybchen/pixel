@@ -148,9 +148,7 @@ public class HeroLevelUpService {
 	}
 	
 	public ResultConst levelUpHeroTo(UserBean user, HeroInfoBean heroInfo, int level) {
-		int count = level - heroInfo.getLevel();
-		if(count <= 0)
-			return SuccessConst.HERO_LEVELUP_SUCCESS;
+		int count = level;
 		ResultConst result = levelUpHero(user, heroInfo);
 		count--;
 		while(count > 0){
