@@ -176,15 +176,18 @@ public class LevelCommandService extends BaseCommandService {
 		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
 		int levelId = cmd.getLevelId();
 		long userId = user.getId();
+		log.debug("1|" + System.currentTimeMillis());
 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
+		log.debug("2|" + System.currentTimeMillis());
 		if (levelService.isCheatLevelLoot(levelId, userLevelRecord)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
+			log.debug("4|" + System.currentTimeMillis());
 			UserLevelLootBean userLevelLoot = userLevelLootRecordService.switchLootLevel(levelId, userId);
-			
+			log.debug("3|" + System.currentTimeMillis());
 			builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
 			responseBuilder.setUserLootLevelCommand(builder.build());
 		}

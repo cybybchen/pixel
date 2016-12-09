@@ -29,11 +29,11 @@ public class NoticeMessageService {
 		for (RewardBean reward : rewardList) {
 			if (reward.getItemid() < RewardConst.HERO || reward.getItemid() > RewardConst.HEAD)
 				continue;
-			log.debug("111");
+			
 			HeroBean hero = heroService.getHero(reward.getItemid() % RewardConst.HERO_STAR);
 			if (hero == null)
 				continue;
-			log.debug("222");
+			
 			StringBuilder sb = new StringBuilder();
 			sb.append(user.getUserName()).append("召唤了");
 			if (hero.getQuality() < 5)
@@ -43,7 +43,6 @@ public class NoticeMessageService {
 			else if (hero.getQuality() == 5)
 				sb.append("神话");
 			
-			log.debug("333");
 			sb.append("英雄").append(hero.getName());
 			
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());

@@ -89,7 +89,6 @@ public class LevelService {
 		XiaoguanBean xg = getXiaoguan(levelId);
 		if (xg == null)
 			return true;
-		
 		int diff = getDifficulty(levelId);
 		switch (diff) {
 			case LevelConst.DIFF_PUTONG:
@@ -104,6 +103,7 @@ public class LevelService {
 				int unlockedKunnanDaguan = getDaguanId(userLevelRecord.getPutongLevel());
 				if (unlockedKunnanDaguan < xg.getDaguan())
 					return true;
+				
 				if (xg.getXiaoguan() > UserLevelBean.getXiaoguanRecord(userLevelRecord.getKunnanLevel(), xg.getDaguan()) + 1)
 					return true;
 				
@@ -181,6 +181,8 @@ public class LevelService {
 	public XiaoguanBean getXiaoguan(int levelId) {
 		if(levelId == 0)
 			levelId = 1001;
+		if (levelId < 2000 && levelId > 1350)
+			return null;
 		XiaoguanBean xiaoguan = levelRedisService.getXiaoguanByLevelId(levelId);
 		if (xiaoguan == null) {
 			parseAndSaveConfig(getDifficulty(levelId));
