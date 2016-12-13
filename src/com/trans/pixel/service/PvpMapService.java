@@ -357,7 +357,7 @@ public class PvpMapService {
 				}
 			}
 			rewardService.doRewards(user, rewards.build());
-			/*buff = */redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
+			int buff = redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
 			if (monster.getId()/1000 == 2) {
 				/**
 				 * PVP攻击BOSS的活动
@@ -365,6 +365,10 @@ public class PvpMapService {
 				activityService.pvpAttackBossSuccessActivity(user);
 			}
 			unionService.killMonsterBossActivity(user, monster.getId(), 1);
+			/**
+			 * buff的活动
+			 */
+			activityService.upPvpBuff(user, monster.getFieldid(), buff);
 		}
 
 		user.addMyactive();

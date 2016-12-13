@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.ResponseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserPokedeCommand;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.ClearService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.FoodService;
@@ -56,6 +57,8 @@ public class PokedeCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private ActivityService activityService;
 	
 	public void getUserPokedeList(RequestUserPokedeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
@@ -168,6 +171,11 @@ public class PokedeCommandService extends BaseCommandService {
 		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
 		responseBuilder.setUserPokedeCommand(builder.build());
 		responseBuilder.setMessageCommand(this.buildMessageCommand(result));
+		
+		/**
+		 * activity
+		 */
+		activityService.heroStrengthen(user, userPokede.getStrengthen());
 	}
 	
 	public void openFetters(RequestOpenFetterCommand cmd, Builder responseBuilder, UserBean user) {
@@ -189,5 +197,10 @@ public class PokedeCommandService extends BaseCommandService {
 		userPokedeService.updateUserPokede(userPokede, user);
 		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, heroId)));
 		responseBuilder.setUserPokedeCommand(builder.build());
+		
+		/**
+		 * activity
+		 */
+		activityService.openFetters(user);
 	}
 }

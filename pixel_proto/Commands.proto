@@ -55,6 +55,7 @@ message UserInfo {
 	repeated UnionBossRecord unionBossRecord = 68;
 	optional int32 unionIcon = 69;
 	optional int32 lotteryCoinCount = 70;
+	optional int32 task1Order = 71;
 }
 
 message ServerData {
@@ -1458,6 +1459,32 @@ message HeroFetter {
 	optional int32 herorank = 3;
 }
 
+message TaskTargetList {
+	repeated TaskTarget target = 1;
+}
+
+message TaskTarget {
+	optional int32 targetid = 1;
+	repeated TaskOrder order = 2;
+}
+
+message TaskOrder {
+	optional int32 order = 1;
+	optional int32 type = 2;
+	optional string des = 3;
+	optional int32 targetcount = 4;
+	optional int32 rewardid1 = 5;
+	optional int32 rewardcount1 = 6;
+	optional int32 targetid = 7;
+	optional int32 rewardid2 = 8;
+	optional int32 rewardcount2 = 9;
+}
+
+message UserTask {
+	optional int32 targetid = 1;
+	optional int32 process = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2399,6 +2426,19 @@ message RequestOpenFetterCommand {
 	required int32 fetterid = 2;	
 }
 
+message RequestUserTaskCommand {
+
+}
+
+message ResponseUserTaskCommand {
+	repeated UserTask userTask1 = 1;
+}
+
+message RequestGetTaskRewardCommand {
+	required int32 type = 1;//1：主线， 2：支线， 3：每日
+	optional int32 order = 2;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2541,6 +2581,8 @@ message RequestCommand {
 	optional RequestSevenLoginSignCommand sevenLoginSignCommand = 200;
 	optional RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;
 	optional RequestOpenFetterCommand openFetterCommand = 202;
+	optional RequestUserTaskCommand userTaskCommand = 203;
+	optional RequestGetTaskRewardCommand getTaskRewardCommand = 204;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2609,6 +2651,7 @@ message ResponseCommand {
 	optional ResponseBosskillCommand bosskillCommand = 56;
 	optional ResponseUnionBossCommand unionBossCommand = 57;
 	optional ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;
+	optional ResponseUserTaskCommand userTaskCommand = 59;
 }
 
 

@@ -97,6 +97,11 @@ public class UserTeamService {
 			user.setZhanliMax(Math.max(user.getZhanliMax(), team.getUser().getZhanli()));
 			userService.updateUser(user);
 		}
+		
+		/**
+		 * 上阵英雄的活动
+		 */
+		activityService.upHero(user, record);
 	}
 
 	public void updateToDB(long userId, long id) {

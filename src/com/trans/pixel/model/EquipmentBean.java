@@ -51,6 +51,7 @@ public class EquipmentBean {
 	private int fenjiecount2 = 0;
 	private int fenjie3 = 0;
 	private int fenjiecount3 = 0;
+	private int herolimit = 0;
 	
 	public int getItemid() {
 		return itemid;
@@ -257,6 +258,12 @@ public class EquipmentBean {
 	public void setFenjiecount3(int fenjiecount3) {
 		this.fenjiecount3 = fenjiecount3;
 	}
+	public int getHerolimit() {
+		return herolimit;
+	}
+	public void setHerolimit(int herolimit) {
+		this.herolimit = herolimit;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ITEM_ID, itemid);
@@ -293,6 +300,7 @@ public class EquipmentBean {
 		json.put(FENJIECOUNT2, fenjiecount2);
 		json.put(FENJIE3, fenjie3);
 		json.put(FENJIECOUNT3, fenjiecount3);
+		json.put(HEROLIMIT, herolimit);
 		
 		return json.toString();
 	}
@@ -336,6 +344,7 @@ public class EquipmentBean {
 		bean.setFenjiecount2(json.getInt(FENJIECOUNT2));
 		bean.setFenjie3(json.getInt(FENJIE3));
 		bean.setFenjiecount3(json.getInt(FENJIECOUNT3));
+		bean.setHerolimit(json.getInt(HEROLIMIT));
 
 		return bean;
 	}
@@ -388,6 +397,7 @@ public class EquipmentBean {
 				bean.setFenjiecount2(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIECOUNT2)));
 				bean.setFenjie3(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIE3)));
 				bean.setFenjiecount3(TypeTranslatedUtil.stringToInt(element.attributeValue(FENJIECOUNT3)));
+				bean.setHerolimit(TypeTranslatedUtil.stringToInt(element.attributeValue(HEROLIMIT)));
 				
 				list.add(bean);
 			}
@@ -433,4 +443,5 @@ public class EquipmentBean {
 	private static final String FENJIECOUNT2 = "fenjiecount2";
 	private static final String FENJIE3 = "fenjie3";
 	private static final String FENJIECOUNT3 = "fenjiecount3";
+	private static final String HEROLIMIT = "herolimit";
 }

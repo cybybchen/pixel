@@ -294,4 +294,11 @@ public class RedisKey {
 	
 	//notice message key
 	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;
+	
+	//task
+	public static final String TASK1_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "task1";
+	public static final String TASK1_ORDER_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "task1_order";
+	
+	//user task
+	public static final String USER_TASK_1_PREFIX = PREFIX + "T1_";
 }

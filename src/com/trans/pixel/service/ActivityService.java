@@ -25,7 +25,10 @@ import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.TaskConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.hero.HeroBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Activity;
@@ -77,6 +80,12 @@ public class ActivityService {
 	private UserActivityRedisService userActivityRedisService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private TaskService taskService;
+	@Resource
+	private UserHeroService userHeroService;
+	@Resource
+	private HeroService heroService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -450,6 +459,10 @@ public class ActivityService {
 		 * 开服活动第五天
 		 */
 		sendKaifuScore(user, ActivityConst.KAIFU_DAY_5);
+		/**
+		 * 任务系统
+		 */
+		taskService.sendTask1Score(user, TaskConst.TARGET_PUTONG_LEVEL);
 	}
 	
 	public int getKaifu2AccRcPs(int serverId, int type) {//获取kaifu2累计充值人数
@@ -741,6 +754,21 @@ public class ActivityService {
 			default:
 				break;
 		}
+		
+		if (rare == 3)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_3);
+		if (rare == 5)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_5);
+		if (rare == 6)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_6);
+		if (rare == 8)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_8);
+		if (rare == 10)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_10);
+		if (rare == 11)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_11);
+		if (rare == 13)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_13);
 	}
 	
 	public void heroLevelupActivity(UserBean user, int level) {
@@ -756,6 +784,43 @@ public class ActivityService {
 		 */
 		if (level == HeroConst.ACTIVITY_KAIFU_HERO_LEVEL)
 			sendKaifuScore(user, ActivityConst.KAIFU_DAY_4);
+		
+		if (level == 5) {
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_5);
+		}
+		if (level == 10) {
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_10);
+		}
+		if (level == 15)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_15);
+		if (level == 20)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_20);
+		if (level == 22)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_22);
+		if (level == 25)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_25);
+		if (level == 28)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_28);
+		if (level == 30)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_30);
+		if (level == 35)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_35);
+		if (level == 38)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_38);
+		if (level == 40)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_40);
+		if (level == 42)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_42);
+		if (level == 45)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_45);
+		if (level == 48)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_48);
+		if (level == 52)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_52);
+		if (level == 55)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_55);
+		if (level == 60)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_60);
 	}
 	
 	public void heroLevelupStarActivity(UserBean user, int star) {
@@ -775,6 +840,151 @@ public class ActivityService {
 	 */
 	public void qiyueActivity(UserBean user) {
 		sendRichangScore(user, ActivityConst.QIYUE);
+	}
+	
+	/**
+	 * 上阵英雄
+	 */
+	public void upHero(UserBean user, String teamInfo) {
+		List<Integer> heroList = new ArrayList<Integer>();
+		List<Integer> heroInfoList = new ArrayList<Integer>();
+		String[] teamList = teamInfo.split("\\|");
+		for (String heroString : teamList) {
+			String[] heroInfo = heroString.split(",");
+			if (heroInfo.length > 0)
+				heroList.add(TypeTranslatedUtil.stringToInt(heroInfo[0]));
+		}
+		/**
+		 * 上阵英雄数量
+		 */
+		taskService.sendTask1Score(user, TaskConst.TARGET_SHANGZHEN_HERO, heroList.size(), false);
+	
+		int quality3Count = 0;
+		int quality4Count = 0;
+		int quality5Count = 0;
+		/**
+		 * 上阵盖伦
+		 */
+		for (int heroId : heroList) {
+			if (heroId == 17)
+				taskService.sendTask1Score(user, TaskConst.TARGET_SHANGZHEN_GAILUN, heroId, false);
+			
+			HeroBean heroBean = heroService.getHero(heroId);
+			if (heroBean.getQuality() >= 3)
+				++quality3Count;
+			if (heroBean.getQuality() >= 4)
+				++quality4Count;
+			if (heroBean.getQuality() >= 5)
+				++quality5Count;
+		}
+		
+		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_QUALITY_3, quality3Count, false);
+		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_QUALITY_4, quality4Count, false);
+		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_QUALITY_5, quality5Count, false);
+		
+		int star2Count = 0;
+		int star3Count = 0;
+		int star5Count = 0;
+		for (int infoId : heroInfoList) {
+			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
+			if (heroInfo.getStarLevel() >= 2)
+				++star2Count;
+			if (heroInfo.getStarLevel() >= 3)
+				++star3Count;
+			if (heroInfo.getStarLevel() >= 5)
+				++star5Count;
+		}
+		
+		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_2, star2Count, false);
+		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_3, star3Count, false);
+		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_5, star5Count, false);
+	}
+	
+	/**
+	 * 提升装备稀有度
+	 */
+	public void upEquipRare(UserBean user, int originalRare, int currentRare) {
+		if (originalRare < 2 && currentRare >= 2)
+			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_2);
+		if (originalRare < 6 && currentRare >= 6)
+			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_6);
+		if (originalRare < 8 && currentRare >= 8)
+			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_8);
+		if (originalRare < 10 && currentRare >= 10)
+			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_10);
+	}
+	
+	/**
+	 * 提升英雄的装备稀有度
+	 */
+	public void upHeroEquipRare(UserBean user, int originalRare, int currentRare, int heroId) {
+		if (originalRare < 10 && currentRare >= 10)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_10);
+		if (originalRare < 15 && currentRare >= 15)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_15);
+		if (originalRare < 20 && currentRare >= 20)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_20);
+		if (originalRare < 22 && currentRare >= 22)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_22);
+		if (originalRare < 25 && currentRare >= 25)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_25);
+		
+		if (heroId == user.getFirstGetHeroId()) {
+			taskService.sendTask1Score(user, TaskConst.TARGET_START_HERO_RARE_10, currentRare, false);
+		}
+		
+		if (heroId == 17) {
+			taskService.sendTask1Score(user, TaskConst.TARGET_GAILUN_RARE_10, currentRare, false);
+		}
+	}
+	
+	/**
+	 * 提升技能等级
+	 */
+	public void upSkillLevel(UserBean user, int heroId, int skillIndex, int skillLevel) {
+		if (heroId == user.getFirstGetHeroId() && skillIndex == 1)
+			taskService.sendTask1Score(user, TaskConst.TARGET_START_HERO_SKILL_1, skillLevel, false);
+		
+		if (heroId == 17 && skillIndex == 2) {
+			taskService.sendTask1Score(user, TaskConst.TARGET_GAILUN_SKILL_2, skillLevel, false);
+		}
+	}
+	
+	/**
+	 * 提升征战天下区域buff
+	 */
+	public void upPvpBuff(UserBean user, int fieldId, int buff) {
+		if (fieldId == 2) {
+			taskService.sendTask1Score(user, TaskConst.TARGET_MINE_1_BUFF, buff);
+		}
+	}
+	
+	/**
+	 * 激活羁绊
+	 */
+	public void openFetters(UserBean user) {
+		taskService.sendTask1Score(user, TaskConst.TARGET_OPEN_FETTERS);
+	}
+	
+	/**
+	 * 英雄强化
+	 */
+	public void heroStrengthen(UserBean user, int strengthen) {
+		if (strengthen == 3)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_3);
+		if (strengthen == 7)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_7);
+		if (strengthen == 12)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_12);
+		if (strengthen == 15)
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_15);
+	}
+	
+	/**
+	 * 合成专属装备
+	 */
+	public void composeSpecialEquip(UserBean user) {
+		taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_COMPOSE_SPECIAL);
 	}
 	
 	/**

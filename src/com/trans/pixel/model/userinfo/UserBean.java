@@ -105,6 +105,7 @@ public class UserBean {
 	private int firstAddedtoZhanli = 0;
 	private int lotteryCoinCount = 0;
 	private long receiveNoticeMessageTimeStamp = 0;
+	private int task1Order = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1065,6 +1066,12 @@ public class UserBean {
 	public void setReceiveNoticeMessageTimeStamp(long receiveNoticeMessageTimeStamp) {
 		this.receiveNoticeMessageTimeStamp = receiveNoticeMessageTimeStamp;
 	}
+	public int getTask1Order() {
+		return task1Order;
+	}
+	public void setTask1Order(int task1Order) {
+		this.task1Order = task1Order;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1205,6 +1212,7 @@ public class UserBean {
 		}
 		
 		builder.setLotteryCoinCount(lotteryCoinCount);
+		builder.setTask1Order(task1Order);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {

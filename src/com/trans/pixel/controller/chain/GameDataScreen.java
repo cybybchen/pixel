@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
@@ -57,6 +58,7 @@ import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
@@ -67,6 +69,8 @@ import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
+import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
@@ -89,20 +93,13 @@ import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
+import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
-import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
-import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
-import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
-import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
-import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
-//add import here
-import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
@@ -112,6 +109,8 @@ import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
@@ -122,6 +121,7 @@ import com.trans.pixel.protoc.Commands.RequestRichangListCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
+import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
@@ -131,6 +131,7 @@ import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -145,6 +146,7 @@ import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
+import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AchieveCommandService;
@@ -175,6 +177,7 @@ import com.trans.pixel.service.command.RankCommandService;
 import com.trans.pixel.service.command.RechargeCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
 import com.trans.pixel.service.command.SignCommandService;
+import com.trans.pixel.service.command.TaskCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
 import com.trans.pixel.service.command.UserCommandService;
@@ -248,6 +251,8 @@ public class GameDataScreen extends RequestScreen {
 	private HeartBeatCommandService heartBeatCommmandService;
 	@Resource
 	private BossCommandService bossCommandService;
+	@Resource
+	private TaskCommandService taskCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -850,6 +855,16 @@ public class GameDataScreen extends RequestScreen {
 		pokedeCommandService.openFetters(cmd, responseBuilder, user);
 		return true;//OpenFetterCommand
 	}//OpenFetterCommand
+	@Override//UserTaskCommand
+	protected boolean handleCommand(RequestUserTaskCommand cmd, Builder responseBuilder, UserBean user) {
+		taskCommandService.userTask(cmd, responseBuilder, user);
+		return true;//UserTaskCommand
+	}//UserTaskCommand
+	@Override//GetTaskRewardCommand
+	protected boolean handleCommand(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		taskCommandService.taskReward(cmd, responseBuilder, user);
+		return true;//GetTaskRewardCommand
+	}//GetTaskRewardCommand
 	//add handleCommand here
 	
 	@Override

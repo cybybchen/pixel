@@ -124,8 +124,22 @@ public class HeroLevelUpService {
 					result = ErrorConst.NOT_ENOUGH_EQUIP;
 					boolean equipLevelUpRet = equipService.equipLevelUp(user.getId(), equip, userEquipList);
 					if (equipLevelUpRet) {
+						int originalRare = equipService.calHeroEquipRare(heroInfo);
 						heroInfo.updateEquipIdByArmId(levelUpId, armId);
 						result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
+						
+						/**
+						 * 提升装备稀有度的活动
+						 */
+						EquipmentBean oldEquip = equipService.getEquip(equipId);
+						activityService.upEquipRare(user, oldEquip.getRare(), equip.getRare());
+						
+						int currentRare = equipService.calHeroEquipRare(heroInfo);
+						activityService.upHeroEquipRare(user, originalRare, currentRare, heroInfo.getHeroId());
+						
+						if (oldEquip.getHerolimit() == 0 && equip.getHerolimit() == 1)
+							activityService.composeSpecialEquip(user);
+							
 					}
 				} else
 					result = ErrorConst.EQUIP_LEVELUP_ERROR;
@@ -335,6 +349,11 @@ public class HeroLevelUpService {
 		 * send skillup log
 		 */
 		logService.sendSkillupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), skillInfo.getSkillId(), skilllevel);
+		
+		/**
+		 * 升级技能的活动
+		 */
+		activityService.upSkillLevel(user, heroInfo.getHeroId(), skillId, skilllevel);
 		
 		return SuccessConst.LEVELUP_SKILL_SUCCESS;
 	}

@@ -106,6 +106,8 @@ import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
+import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
+import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -161,6 +163,8 @@ import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
+import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
+import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
@@ -387,6 +391,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestIsAreaOwnerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestOpenFetterCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUserTaskCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -1113,6 +1119,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//OpenFetterCommand
                 result = handleCommand(cmd, responseBuilder, user);//OpenFetterCommand
         }//OpenFetterCommand
+        if (request.hasUserTaskCommand()) {
+            RequestUserTaskCommand cmd = request.getUserTaskCommand();
+            if (result)//UserTaskCommand
+                result = handleCommand(cmd, responseBuilder, user);//UserTaskCommand
+        }//UserTaskCommand
+        if (request.hasGetTaskRewardCommand()) {
+            RequestGetTaskRewardCommand cmd = request.getGetTaskRewardCommand();
+            if (result)//GetTaskRewardCommand
+                result = handleCommand(cmd, responseBuilder, user);//GetTaskRewardCommand
+        }//GetTaskRewardCommand
         //call handleCommand here
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();
