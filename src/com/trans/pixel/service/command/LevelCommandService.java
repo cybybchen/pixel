@@ -29,6 +29,7 @@ import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.LogService;
@@ -68,6 +69,8 @@ public class LevelCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private PvpMapService pvpMapService;
+	@Resource
+	private ActivityService activityService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelId = cmd.getLevelId();
@@ -199,6 +202,13 @@ public class LevelCommandService extends BaseCommandService {
 		rewardService.doRewards(user, lootRewardList);
 		pushCommandService.pushRewardCommand(responseBuilder, user, lootRewardList);
 		pushCommandService.pushUserLootLevelCommand(responseBuilder, user);
+		
+		/**
+		 * 收取挂机背包的活动
+		 */
+		if (!lootRewardList.isEmpty()) {
+			activityService.getLootPackageActivity(user);
+		}
 	}
 	
 	public void levelUnlock(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {

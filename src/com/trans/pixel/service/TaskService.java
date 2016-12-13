@@ -61,34 +61,18 @@ public class TaskService {
 	/****************************************************************************************/
 	
 	public void sendTask1Score(UserBean user, TaskConst taskConst, boolean isAdded) {
-		sendTask1Score(user, taskConst.getTargetid(), isAdded);
+		sendTask1Score(user, taskConst, 1, isAdded);
 	}
 	
 	public void sendTask1Score(UserBean user, TaskConst taskConst) {
-		sendTask1Score(user, taskConst.getTargetid());
+		sendTask1Score(user, taskConst, true);
 	}
 	
 	public void sendTask1Score(UserBean user, TaskConst taskConst, int count) {
-		sendTask1Score(user, taskConst.getTargetid(), count);
-	}
-	
-	public void sendTask1Score(UserBean user, int targetId) {
-		sendTask1Score(user, targetId, 1, true);
-	}
-	
-	public void sendTask1Score(UserBean user, int targetId, int count) {
-		sendTask1Score(user, targetId, count, true);
-	}
-	
-	public void sendTask1Score(UserBean user, int targetId, boolean isAdded) {
-		sendTask1Score(user, targetId, 1, isAdded);
+		sendTask1Score(user, taskConst, count, true);
 	}
 	
 	public void sendTask1Score(UserBean user, TaskConst taskConst, int count, boolean isAdded) {
-		sendTask1Score(user, taskConst.getTargetid(), count, isAdded);
-	}
-	
-	public void sendTask1Score(UserBean user, int targetId, int count, boolean isAdded) {
 		long userId = user.getId();
 		Map<String, TaskTarget> map = taskRedisService.getTask1TargetConfig();
 		Iterator<Entry<String, TaskTarget>> it = map.entrySet().iterator();
@@ -96,7 +80,7 @@ public class TaskService {
 			Entry<String, TaskTarget> entry = it.next();
 			TaskTarget task = entry.getValue();
 			
-			if (task.getTargetid() == targetId) {
+			if (task.getTargetid() == taskConst.getTargetid()) {
 				if (isAllFinished(task, user))
 					return;
 				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask(userId, task.getTargetid()));
@@ -107,7 +91,35 @@ public class TaskService {
 				
 				userTaskService.updateUserTask(userId, ut.build());
 				
-				if (isCompleteNewTask(ut.build(), user))
+				if (isCompleteNewTaskByTask1(ut.build(), user))
+					noticeService.pushNotice(userId, NoticeConst.TYPE_TASK);
+			}
+		}
+	}
+	
+	/**
+	 * task 3
+	 */
+	
+	public void sendTask3Score(UserBean user, TaskConst taskConst) {
+		sendTask3Score(user, taskConst, 1);
+	}
+	
+	public void sendTask3Score(UserBean user, TaskConst taskConst, int count) {
+		long userId = user.getId();
+		Map<String, TaskOrder> map = taskRedisService.getTask3OrderConfig();
+		Iterator<Entry<String, TaskOrder>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, TaskOrder> entry = it.next();
+			TaskOrder task = entry.getValue();
+			
+			if (task.getTargetid() == taskConst.getTargetid()) {
+				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask3(userId, task.getTargetid()));
+				ut.setProcess(ut.getProcess() + count);
+				
+				userTaskService.updateUserTask3(userId, ut.build());
+				
+				if (isCompleteNewTaskByTask3(ut.build(), user, task))
 					noticeService.pushNotice(userId, NoticeConst.TYPE_TASK);
 			}
 		}
@@ -128,12 +140,13 @@ public class TaskService {
 		if (taskOrder == null)
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
-		UserTask userTask = getUserTask(user, type, taskOrder.getTargetid());
+		UserTask.Builder userTask = UserTask.newBuilder(getUserTask(user, type, taskOrder.getTargetid()));
 		if (userTask.getProcess() < taskOrder.getTargetcount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
+		userTask.setStatus(1);
 		rewards.addAllLoot(getRewardList(taskOrder));
-		updateUserTaskProcess(userTask, user, type);
+		updateUserTaskProcess(userTask.build(), user, type);
 		
 		isDeleteNotice(user);
 		
@@ -145,6 +158,8 @@ public class TaskService {
 			if (user.getTask1Order() + 1 != order)
 				return null;
 			return taskRedisService.getTask1Order(order);
+		} else if (type == 3) {
+			return taskRedisService.getTask3Order(order);
 		}
 		
 		return null;
@@ -153,6 +168,8 @@ public class TaskService {
 	private UserTask getUserTask(UserBean user, int type, int targetId) {
 		if (type == 1) {
 			return userTaskService.selectUserTask(user.getId(), targetId);
+		} else if (type == 3) {
+			return userTaskService.selectUserTask3(user.getId(), targetId);
 		}
 		
 		return null;
@@ -161,10 +178,13 @@ public class TaskService {
 	private void updateUserTaskProcess(UserTask userTask, UserBean user, int type) {
 		if (type == 1) {
 			user.setTask1Order(user.getTask1Order() + 1);
+		} else if (type == 3) {
+			userTaskService.updateUserTask3(user.getId(), userTask);
+			sendTask3Score(user, TaskConst.TARGET_COMPLETE_ALL_DAILY);
 		}
 	}
 	
-	private boolean isCompleteNewTask(UserTask ut, UserBean user) {
+	private boolean isCompleteNewTaskByTask1(UserTask ut, UserBean user) {
 		TaskOrder taskOrder = taskRedisService.getTask1Order(user.getTask1Order() + 1);
 		if (taskOrder == null)
 			return false;
@@ -173,6 +193,13 @@ public class TaskService {
 			return false;
 		
 		if (taskOrder.getTargetcount() <= ut.getProcess())
+			return true;
+		
+		return false;
+	}
+	
+	private boolean isCompleteNewTaskByTask3(UserTask ut, UserBean user, TaskOrder task) {
+		if (task.getTargetcount() <= ut.getProcess())
 			return true;
 		
 		return false;
@@ -200,9 +227,21 @@ public class TaskService {
 	public void isDeleteNotice(UserBean user) {
 		long userId = user.getId();
 		
+		//task 1
 		List<UserTask> ut1List = userTaskService.selectUserTaskList(userId);
 		for (UserTask ut : ut1List) {
-			if (isCompleteNewTask(ut, user))
+			if (isCompleteNewTaskByTask1(ut, user))
+				return;
+		}
+		
+		//task 3
+		Map<String, TaskOrder> map = taskRedisService.getTask3OrderConfig();
+		Iterator<Entry<String, TaskOrder>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, TaskOrder> entry = it.next();
+			TaskOrder taskOrder = entry.getValue();
+			UserTask ut = userTaskService.selectUserTask3(userId, taskOrder.getTargetid());
+			if (isCompleteNewTaskByTask3(ut, user, taskOrder))
 				return;
 		}
 		

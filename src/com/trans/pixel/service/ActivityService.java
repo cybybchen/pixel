@@ -273,6 +273,10 @@ public class ActivityService {
 		 * 累计抽奖的开服活动
 		 */
 		sendKaifuScore(user, ActivityConst.KAIFU_DAY_2, count);
+		
+		if (costType == RewardConst.COIN) {
+			taskService.sendTask3Score(user, TaskConst.TARGET_LOTTERY_COIN);
+		}
 	}
 	
 	public void ladderAttackActivity(UserBean user, boolean ret) {
@@ -287,6 +291,8 @@ public class ActivityService {
 		 */
 		if (ret)
 			sendRichangScore(user, ActivityConst.LADDER_ATTACK);
+		
+		taskService.sendTask3Score(user, TaskConst.TARGET_LADDER_FIGHT);
 	}
 	
 	public void pvpAttackEnemyActivity(UserBean user, boolean ret) {
@@ -302,6 +308,9 @@ public class ActivityService {
 		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
 		if (ret)
 			sendRichangScore(user, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
+		
+		if (ret)
+			taskService.sendTask3Score(user, TaskConst.TARGET_DUOHUI_MINE);
 	}
 	
 	public void pvpAttackBossSuccessActivity(UserBean user) {
@@ -821,6 +830,8 @@ public class ActivityService {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_55);
 		if (level == 60)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_60);
+		
+		taskService.sendTask3Score(user, TaskConst.TARGET_HERO_LEVELUP);
 	}
 	
 	public void heroLevelupStarActivity(UserBean user, int star) {
@@ -903,7 +914,7 @@ public class ActivityService {
 	/**
 	 * 提升装备稀有度
 	 */
-	public void upEquipRare(UserBean user, int originalRare, int currentRare) {
+	public void levelupEquip(UserBean user, int originalRare, int currentRare) {
 		if (originalRare < 2 && currentRare >= 2)
 			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_2);
 		if (originalRare < 6 && currentRare >= 6)
@@ -912,6 +923,8 @@ public class ActivityService {
 			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_8);
 		if (originalRare < 10 && currentRare >= 10)
 			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_10);
+		
+		taskService.sendTask3Score(user, TaskConst.TARGET_EQUIP_LEVELUP);
 	}
 	
 	/**
@@ -948,6 +961,8 @@ public class ActivityService {
 		if (heroId == 17 && skillIndex == 2) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_GAILUN_SKILL_2, skillLevel, false);
 		}
+		
+		taskService.sendTask3Score(user, TaskConst.TARGET_SKILL_LEVELUP);
 	}
 	
 	/**
@@ -985,6 +1000,27 @@ public class ActivityService {
 	 */
 	public void composeSpecialEquip(UserBean user) {
 		taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_COMPOSE_SPECIAL);
+	}
+	
+	/**
+	 * 强化装备的活动
+	 */
+	public void levelupEquip(UserBean user) {
+		
+	}
+	
+	/**
+	 * 征战天下攻击怪物
+	 */
+	public void attackMonster(UserBean user) {
+		taskService.sendTask3Score(user, TaskConst.TARGET_KILL_MONSTER);
+	}
+	
+	/**
+	 * 收取挂机背包
+	 */
+	public void getLootPackageActivity(UserBean user) {
+		taskService.sendTask3Score(user, TaskConst.TARGET_LOOT_PACKAGE);
 	}
 	
 	/**

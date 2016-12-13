@@ -132,14 +132,13 @@ public class HeroLevelUpService {
 						 * 提升装备稀有度的活动
 						 */
 						EquipmentBean oldEquip = equipService.getEquip(equipId);
-						activityService.upEquipRare(user, oldEquip.getRare(), equip.getRare());
+						activityService.levelupEquip(user, oldEquip.getRare(), equip.getRare());
 						
 						int currentRare = equipService.calHeroEquipRare(heroInfo);
 						activityService.upHeroEquipRare(user, originalRare, currentRare, heroInfo.getHeroId());
 						
 						if (oldEquip.getHerolimit() == 0 && equip.getHerolimit() == 1)
 							activityService.composeSpecialEquip(user);
-							
 					}
 				} else
 					result = ErrorConst.EQUIP_LEVELUP_ERROR;

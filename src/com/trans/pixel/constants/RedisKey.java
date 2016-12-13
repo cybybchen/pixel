@@ -298,7 +298,11 @@ public class RedisKey {
 	//task
 	public static final String TASK1_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "task1";
 	public static final String TASK1_ORDER_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "task1_order";
+	public static final String TASK2_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "task2";
+	public static final String TASK3_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "task3";
 	
 	//user task
 	public static final String USER_TASK_1_PREFIX = PREFIX + "T1_";
+	public static final String USER_TASK_2_PREFIX = PREFIX + "T2_";
+	public static final String USER_TASK_3_PREFIX = PREFIX + "T3_";
 }

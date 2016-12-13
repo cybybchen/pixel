@@ -364,6 +364,11 @@ public class PvpMapService {
 				 */
 				activityService.pvpAttackBossSuccessActivity(user);
 			}
+			/**
+			 * 攻击怪物的活动
+			 */
+			activityService.attackMonster(user);
+			
 			unionService.killMonsterBossActivity(user, monster.getId(), 1);
 			/**
 			 * buff的活动

@@ -56,12 +56,14 @@ public class TaskCommandService extends BaseCommandService {
 		}
 		ResponseUserTaskCommand.Builder builder = ResponseUserTaskCommand.newBuilder();
 		builder.addAllUserTask1(userTaskService.selectUserTaskList(user.getId()));
+		builder.addAllUserTask3(userTaskService.selectUserTask3List(user.getId()));
 		responseBuilder.setUserTaskCommand(builder.build());
 	}
 
 	public void userTask(RequestUserTaskCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserTaskCommand.Builder builder = ResponseUserTaskCommand.newBuilder();
 		builder.addAllUserTask1(userTaskService.selectUserTaskList(user.getId()));
+		builder.addAllUserTask3(userTaskService.selectUserTask3List(user.getId()));
 		responseBuilder.setUserTaskCommand(builder.build());
 	}
 }

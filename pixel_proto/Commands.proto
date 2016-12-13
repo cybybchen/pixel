@@ -1480,9 +1480,14 @@ message TaskOrder {
 	optional int32 rewardcount2 = 9;
 }
 
+message Task3OrderList {
+	repeated TaskOrder order = 1;
+}
+
 message UserTask {
 	optional int32 targetid = 1;
 	optional int32 process = 2;
+	optional int32 status = 3;
 }
 
 message ErrorCommand{
@@ -2432,6 +2437,7 @@ message RequestUserTaskCommand {
 
 message ResponseUserTaskCommand {
 	repeated UserTask userTask1 = 1;
+	repeated UserTask userTask3 = 3;
 }
 
 message RequestGetTaskRewardCommand {
