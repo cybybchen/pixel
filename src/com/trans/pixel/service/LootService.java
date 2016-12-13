@@ -41,10 +41,10 @@ public class LootService {
 		long userId = user.getId();
 		UserLevelBean userLevelRecord = userLevelRecordService.selectUserLevelRecord(userId);
 		DaguanBean dg = levelService.getDaguan(userLevelRecord.getPutongLevel());
-		int addGold = 0;
-		int addExp = 0;
+		long addGold = 0;
+		long addExp = 0;
 		if (dg != null && user.getLastLootTime() != 0) {
-			int deltaTime = (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - user.getLastLootTime();
+			long deltaTime = (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - user.getLastLootTime();
 			addGold = deltaTime * dg.getGold();
 			addExp = deltaTime * dg.getExperience();			
 			rewardService.doReward(user, RewardConst.COIN, addGold);
