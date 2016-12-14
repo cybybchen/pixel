@@ -39,8 +39,9 @@ public class TaskCommandService extends BaseCommandService {
 	public void taskReward(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
 		int order = cmd.getOrder();
+		int heroId = cmd.getHeroid();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
-		ResultConst result = taskService.handleTaskReward(multiReward, user, type, order);
+		ResultConst result = taskService.handleTaskReward(multiReward, user, type, order, heroId);
 		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);

@@ -175,8 +175,8 @@ public class TaskService {
 		return true;
 	}
 	
-	public ResultConst handleTaskReward(MultiReward.Builder rewards, UserBean user, int type, int order) {
-		TaskOrder taskOrder = getTaskOrder(user, type, order);
+	public ResultConst handleTaskReward(MultiReward.Builder rewards, UserBean user, int type, int order, int heroId) {
+		TaskOrder taskOrder = getTaskOrder(user, type, order, heroId);
 		if (taskOrder == null)
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
@@ -184,20 +184,20 @@ public class TaskService {
 		if (userTask.getProcess() < taskOrder.getTargetcount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
-		userTask.setStatus(1);
 		rewards.addAllLoot(getRewardList(taskOrder));
-		updateUserTaskProcess(userTask.build(), user, type);
+		updateUserTaskProcess(userTask, user, type, heroId);
 		
 		isDeleteNotice(user);
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
-	private TaskOrder getTaskOrder(UserBean user, int type, int order) {
+	private TaskOrder getTaskOrder(UserBean user, int type, int order, int heroId) {
 		if (type == 1) {
-			if (user.getTask1Order() + 1 != order)
-				return null;
-			return taskRedisService.getTask1Order(order);
+			return taskRedisService.getTask1Order(user.getTask1Order() + 1);
+		} else if (type == 2) {
+			int originalOrder = user.getTask2Record() >> (4 * (heroId - 1)) & 15;
+			return taskRedisService.getTask2Order(originalOrder + 1, heroId);
 		} else if (type == 3) {
 			return taskRedisService.getTask3Order(order);
 		}
@@ -208,6 +208,8 @@ public class TaskService {
 	private UserTask getUserTask(UserBean user, int type, int targetId) {
 		if (type == 1) {
 			return userTaskService.selectUserTask(user.getId(), targetId);
+		} else if (type == 2) {
+			return userTaskService.selectUserTask2(user.getId(), targetId);
 		} else if (type == 3) {
 			return userTaskService.selectUserTask3(user.getId(), targetId);
 		}
@@ -215,11 +217,16 @@ public class TaskService {
 		return null;
 	}
 	
-	private void updateUserTaskProcess(UserTask userTask, UserBean user, int type) {
+	private void updateUserTaskProcess(UserTask.Builder userTask, UserBean user, int type, int heroId) {
 		if (type == 1) {
 			user.setTask1Order(user.getTask1Order() + 1);
+			userService.updateUser(user);
+		} else if (type == 2) {
+			user.setTask2Record(user.getTask2Record() + 0 << (4 * (heroId - 1)));
+			userService.updateUser(user);
 		} else if (type == 3) {
-			userTaskService.updateUserTask3(user.getId(), userTask);
+			userTask.setStatus(1);
+			userTaskService.updateUserTask3(user.getId(), userTask.build());
 			sendTask3Score(user, TaskConst.TARGET_COMPLETE_ALL_DAILY);
 		}
 	}

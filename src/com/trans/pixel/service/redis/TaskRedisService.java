@@ -199,9 +199,24 @@ public class TaskRedisService extends RedisService {
 					redismap.put("" + order.getOrder(), formatJson(order.build()));
 				}
 			}
-			hputAll(RedisKey.TASK3_ORDER_CONFIG_PREFIX + hero.getHeroid(), redismap);
+			hputAll(RedisKey.TASK2_ORDER_CONFIG_PREFIX + hero.getHeroid(), redismap);
 		}
 		
 		return map;
+	}
+	
+	//task2 order
+	public TaskOrder getTask2Order(int order, int heroId) {
+		String value = hget(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
+		if (value == null) {
+			buildTask2TargetConfig();
+			value = hget(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
+		} 
+		
+		TaskOrder.Builder builder = TaskOrder.newBuilder();
+		if(parseJson(value, builder))
+			return builder.build();
+		
+		return null;
 	}
 }

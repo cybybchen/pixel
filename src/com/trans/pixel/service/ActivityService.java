@@ -453,7 +453,7 @@ public class ActivityService {
 	/**
 	 * 过关的成就和开服活动
 	 */
-	public void levelActivity(UserBean user) {
+	public void levelActivity(UserBean user, int levelId) {
 		/**
 		 * achieve type 107
 		 */
@@ -471,7 +471,7 @@ public class ActivityService {
 		/**
 		 * 任务系统
 		 */
-		taskService.sendTask1Score(user, TaskConst.TARGET_PUTONG_LEVEL);
+		taskService.sendTask1Score(user, TaskConst.TARGET_PUTONG_LEVEL, levelId, false);
 	}
 	
 	public int getKaifu2AccRcPs(int serverId, int type) {//获取kaifu2累计充值人数

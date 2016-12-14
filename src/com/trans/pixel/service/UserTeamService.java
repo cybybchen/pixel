@@ -101,7 +101,8 @@ public class UserTeamService {
 		/**
 		 * 上阵英雄的活动
 		 */
-		activityService.upHero(user, record);
+		if (user != null)
+			activityService.upHero(user, record);
 	}
 
 	public void updateToDB(long userId, long id) {

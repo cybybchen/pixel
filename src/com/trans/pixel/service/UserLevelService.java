@@ -72,7 +72,7 @@ public class UserLevelService {
 				/**
 				 * 推图的活动
 				 */
-				activityService.levelActivity(user);
+				activityService.levelActivity(user, levelId);
 				
 				/**
 				 * justsing activity
