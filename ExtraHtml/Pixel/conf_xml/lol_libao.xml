@@ -332,4 +332,44 @@
 <item id="3" itemid="55096" count="1" />
 <item id="4" itemid="37001" count="50" />
 </libao>
+<libao itemid="42601" name="战士流初级礼包" img="libao_2_1" rare="" description="包含1星德莱厄斯，希瓦娜，潘森各1个（获得300点vip经验）" value="0" cost="0" ><item id="1" itemid="51097" count="1" />
+<item id="2" itemid="51084" count="1" />
+<item id="3" itemid="51008" count="1" />
+</libao>
+<libao itemid="42602" name="战士流高级礼包" img="libao_2_2" rare="" description="包含3星德莱厄斯，希瓦娜，潘森各1个和一套传说级战士进阶到+5的装备（获得980点vip经验）" value="0" cost="0" ><item id="1" itemid="53097" count="1" />
+<item id="2" itemid="53084" count="1" />
+<item id="3" itemid="53008" count="1" />
+<item id="4" itemid="27013" count="3" />
+<item id="5" itemid="27014" count="6" />
+<item id="6" itemid="27015" count="15" />
+<item id="7" itemid="27017" count="3" />
+<item id="8" itemid="27018" count="3" />
+<item id="9" itemid="27019" count="3" />
+<item id="10" itemid="15002" count="3" />
+<item id="11" itemid="16004" count="12" />
+<item id="12" itemid="16010" count="9" />
+<item id="13" itemid="16011" count="3" />
+<item id="14" itemid="17004" count="3" />
+<item id="15" itemid="17008" count="3" />
+</libao>
+<libao itemid="42603" name="战士流超级礼包" img="libao_2_3" rare="" description="包含4星德莱厄斯，希瓦娜，潘森各1个和一套传说级战士进阶到+8的装备（获得3280点vip经验）" value="0" cost="0" ><item id="1" itemid="54097" count="1" />
+<item id="2" itemid="54084" count="1" />
+<item id="3" itemid="54008" count="1" />
+<item id="4" itemid="27013" count="3" />
+<item id="5" itemid="27014" count="6" />
+<item id="6" itemid="27015" count="15" />
+<item id="7" itemid="27017" count="3" />
+<item id="8" itemid="27018" count="3" />
+<item id="9" itemid="27019" count="3" />
+<item id="10" itemid="15002" count="3" />
+<item id="11" itemid="16004" count="24" />
+<item id="12" itemid="16010" count="9" />
+<item id="13" itemid="16011" count="3" />
+<item id="14" itemid="17004" count="18" />
+<item id="15" itemid="17008" count="9" />
+<item id="16" itemid="17009" count="6" />
+<item id="17" itemid="17010" count="3" />
+<item id="18" itemid="18002" count="3" />
+<item id="19" itemid="18004" count="3" />
+</libao>
 </data>
