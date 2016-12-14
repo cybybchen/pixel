@@ -2448,12 +2448,14 @@ message RequestUserTaskCommand {
 
 message ResponseUserTaskCommand {
 	repeated UserTask userTask1 = 1;
+	repeated UserTask userTask2 = 2;
 	repeated UserTask userTask3 = 3;
 }
 
 message RequestGetTaskRewardCommand {
 	required int32 type = 1;//1：主线， 2：支线， 3：每日
 	optional int32 order = 2;
+	optional int32 heroid = 3;
 }
 
 message RequestCommand {

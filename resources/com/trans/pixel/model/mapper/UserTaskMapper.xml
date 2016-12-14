@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserTaskMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserTaskBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="targetId" column="target_id" />
+		<result property="targetCount" column="target_count" />
+		<result property="targetRecord" column="target_record" />
+	</resultMap>
+	
+	<update id="updateUserTask1" parameterType="com.trans.pixel.model.userinfo.UserTaskBean">
+		INSERT INTO user_task1(user_id, target_id, target_count)
+	    VALUES(#{userId}, #{targetId}, #{targetCount})
+		ON 
+	    duplicate key update
+	    target_count=#{targetCount}
+	</update>
+	
+	<select id="selectUserTask1List" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_task1 where user_id=#{userId}
+	</select>
+	
+	<update id="updateUserTask2" parameterType="com.trans.pixel.model.userinfo.UserTaskBean">
+		INSERT INTO user_task2(user_id, target_id, target_count, target_record)
+	    VALUES(#{userId}, #{targetId}, #{targetCount}, #{targetRecord})
+		ON 
+	    duplicate key update
+	    target_count=#{targetCount}, target_record=#{targetRecord}
+	</update>
+	
+	<select id="selectUserTask2List" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_task2 where user_id=#{userId}
+	</select>
+	
+</mapper>

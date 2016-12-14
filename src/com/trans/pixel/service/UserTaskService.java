@@ -1,14 +1,17 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.mapper.UserActivityMapper;
+import com.trans.pixel.model.mapper.UserTaskMapper;
+import com.trans.pixel.model.userinfo.UserFoodBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
+import com.trans.pixel.model.userinfo.UserTaskBean;
 import com.trans.pixel.protoc.Commands.UserTask;
-import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.UserTaskRedisService;
 
 @Service
@@ -17,9 +20,7 @@ public class UserTaskService {
 	@Resource
 	private UserTaskRedisService userTaskRedisService;
 	@Resource
-	private ActivityRedisService activityRedisService;
-	@Resource
-	private UserActivityMapper userActivityMapper;
+	private UserTaskMapper userTaskMapper;
 	
 	//task 1
 	public void updateUserTask(long userId, UserTask ut) {
@@ -28,6 +29,16 @@ public class UserTaskService {
 	
 	public UserTask selectUserTask(long userId, int targetId) {
 		UserTask ut = userTaskRedisService.getUserTask(userId, targetId);
+		
+		if (ut == null) {
+			if (!userTaskRedisService.isExistTask1Key(userId)) {
+				List<UserTaskBean> userTaskList = userTaskMapper.selectUserTask1List(userId);
+				userTaskRedisService.setUserTaskList(userId, buildUserTaskList(userTaskList));
+				
+				ut = userTaskRedisService.getUserTask(userId, targetId);
+			}
+		}
+		
 		if (ut == null) {
 			ut = initUserTask(targetId);
 		}
@@ -37,8 +48,23 @@ public class UserTaskService {
 	
 	public List<UserTask> selectUserTaskList(long userId) {
 		List<UserTask> utList = userTaskRedisService.getUserTaskList(userId);
+		if (utList == null || utList.isEmpty()) {
+			List<UserTaskBean> userTaskList = userTaskMapper.selectUserTask1List(userId);
+			utList = buildUserTaskList(userTaskList);
+			userTaskRedisService.setUserTaskList(userId, utList);
+		}
 		
 		return utList;
+	}
+	
+	public void updateTask1ToDB(long userId, int targetId) {
+		UserTask ut = userTaskRedisService.getUserTask(userId, targetId);
+		if(ut != null)
+			userTaskMapper.updateUserTask1(new UserTaskBean(userId, ut));
+	}
+	
+	public String popTask1DBKey(){
+		return userTaskRedisService.popTask1DBKey();
 	}
 	
 	/**
@@ -74,6 +100,16 @@ public class UserTaskService {
 	 */
 	public UserTask selectUserTask2(long userId, int targetId) {
 		UserTask ut = userTaskRedisService.getUserTask2(userId, targetId);
+		
+		if (ut == null) {
+			if (!userTaskRedisService.isExistTask2Key(userId)) {
+				List<UserTaskBean> userTaskList = userTaskMapper.selectUserTask2List(userId);
+				userTaskRedisService.setUserTask2List(userId, buildUserTaskList(userTaskList));
+				
+				ut = userTaskRedisService.getUserTask2(userId, targetId);
+			}
+		}
+		
 		if (ut == null) {
 			ut = initUserTask(targetId);
 		}
@@ -91,11 +127,30 @@ public class UserTaskService {
 		return utList;
 	}
 	
+	public void updateTask2ToDB(long userId, int targetId) {
+		UserTask ut = userTaskRedisService.getUserTask2(userId, targetId);
+		if(ut != null)
+			userTaskMapper.updateUserTask2(new UserTaskBean(userId, ut));
+	}
+	
+	public String popTask2DBKey(){
+		return userTaskRedisService.popTask2DBKey();
+	}
+	
 	private UserTask initUserTask(int targetId) {
 		UserTask.Builder ut = UserTask.newBuilder();
 		ut.setTargetid(targetId);
 		ut.setProcess(0);
 		
 		return ut.build();
+	}
+	
+	private List<UserTask> buildUserTaskList(List<UserTaskBean> userTaskList) {
+		List<UserTask> utList = new ArrayList<UserTask>();
+		for (UserTaskBean userTask : userTaskList) {
+			utList.add(userTask.build());
+		}
+		
+		return utList;
 	}
 }
