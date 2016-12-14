@@ -96,7 +96,7 @@ public class UserHeroService {
 		userHeroRedisService.updateUserHero(userHero);
 	}
 	
-	public void addUserHero(HeroInfoBean userHero) {
+	private void addUserHero(HeroInfoBean userHero) {
 		userHeroRedisService.addUserHero(userHero);
 	}
 	
@@ -143,6 +143,10 @@ public class UserHeroService {
 		while (addCount < count) {
 			newHero.setId(user.updateHeroInfoId());
 			addUserHero(newHero);
+			/**
+			 * 获得英雄的活动
+			 */
+			activityService.getHeroActivity(user, heroId);
 			++addCount;
 		}
 		

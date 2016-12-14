@@ -66,6 +66,31 @@ public class UserTaskService {
 		return utList;
 	}
 	
+	/**
+	 * task 2
+	 * @param userId
+	 * @param targetId
+	 * @return
+	 */
+	public UserTask selectUserTask2(long userId, int targetId) {
+		UserTask ut = userTaskRedisService.getUserTask2(userId, targetId);
+		if (ut == null) {
+			ut = initUserTask(targetId);
+		}
+		
+		return ut;
+	}
+	
+	public void updateUserTask2(long userId, UserTask ut) {
+		userTaskRedisService.updateUserTask2(userId, ut);
+	}
+	
+	public List<UserTask> selectUserTask2List(long userId) {
+		List<UserTask> utList = userTaskRedisService.getUserTask2List(userId);
+		
+		return utList;
+	}
+	
 	private UserTask initUserTask(int targetId) {
 		UserTask.Builder ut = UserTask.newBuilder();
 		ut.setTargetid(targetId);

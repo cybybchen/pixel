@@ -283,7 +283,7 @@ public class HeroLevelUpService {
 		/**
 		 * 培养英雄的活动
 		 */
-		activityService.heroLevelupRareActivity(user, heroInfo.getRank());
+		activityService.heroLevelupRareActivity(user, heroInfo.getHeroId(), heroInfo.getRank());
 		
 		/**
 		 * send rareup log

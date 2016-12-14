@@ -125,6 +125,46 @@ public class TaskService {
 		}
 	}
 	
+	/**
+	 * task 2
+	 */
+	
+	public void sendTask2Score(UserBean user, TaskConst taskConst, int heroId) {
+		sendTask2Score(user, taskConst, heroId, 1);
+	}
+	
+	public void sendTask2Score(UserBean user, TaskConst taskConst, int heroId, int count) {
+		long userId = user.getId();
+		Map<String, TaskTarget> map = taskRedisService.getTask2TargetConfig();
+		Iterator<Entry<String, TaskTarget>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, TaskTarget> entry = it.next();
+			TaskTarget task = entry.getValue();
+			
+			if (task.getTargetid() == taskConst.getTargetid()) {
+				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask3(userId, task.getTargetid()));
+				boolean hasModify = false;
+				if (task.getTargetid() % 1000 == 700 && !ut.getHeroidList().contains(heroId)) {
+					ut.addHeroid(heroId);
+					hasModify = true;
+				}
+				for (TaskOrder order : task.getOrderList()) {
+					if (order.getTargetcount() == heroId) {
+						ut.setProcess(Math.max(count, ut.getProcess()));
+						hasModify = true;
+					}
+				}
+				
+				if (hasModify) {
+					userTaskService.updateUserTask2(userId, ut.build());
+				
+					if (isCompleteNewTaskByTask2(ut.build(), user, task))
+						noticeService.pushNotice(userId, NoticeConst.TYPE_TASK);
+				}
+			}
+		}
+	}
+	
 	private boolean isAllFinished(TaskTarget task, UserBean user) {
 		List<TaskOrder> taskOrderList = task.getOrderList();
 		for (TaskOrder taskOrder : taskOrderList) {
@@ -201,6 +241,21 @@ public class TaskService {
 	private boolean isCompleteNewTaskByTask3(UserTask ut, UserBean user, TaskOrder task) {
 		if (task.getTargetcount() <= ut.getProcess())
 			return true;
+		
+		return false;
+	}
+	
+	private boolean isCompleteNewTaskByTask2(UserTask ut, UserBean user, TaskTarget task) {
+		int nextOrder = (user.getTask2Record() >> 4 & 15) + 1;
+		for (TaskOrder taskOrder : task.getOrderList()) {
+			if (taskOrder.getOrder() == nextOrder) {
+				if (task.getTargetid() % 1000 == 700 && ut.getHeroidList().contains(taskOrder.getTargetcount()))
+					return true;
+				
+				if (ut.getProcess() >= taskOrder.getTargetcount())
+					return true;
+			}
+		}
 		
 		return false;
 	}

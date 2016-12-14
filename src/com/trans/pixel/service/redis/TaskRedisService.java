@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.protoc.Commands.Task2TargetHero;
+import com.trans.pixel.protoc.Commands.Task2TargetList;
 import com.trans.pixel.protoc.Commands.Task3OrderList;
 import com.trans.pixel.protoc.Commands.TaskOrder;
 import com.trans.pixel.protoc.Commands.TaskTarget;
@@ -140,6 +142,66 @@ public class TaskRedisService extends RedisService {
 		for(TaskOrder.Builder task : builder.getOrderBuilderList()){
 			map.put("" + task.getOrder(), task.build());
 		}
+		return map;
+	}
+	
+	//task2
+	public TaskTarget getTask2Target(int targetId) {
+		String value = hget(RedisKey.TASK2_CONFIG_KEY, "" + targetId);
+		if (value == null) {
+			Map<String, TaskTarget> config = getTask2TargetConfig();
+			return config.get("" + targetId);
+		} else {
+			TaskTarget.Builder builder = TaskTarget.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, TaskTarget> getTask2TargetConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.TASK2_CONFIG_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, TaskTarget> map = buildTask2TargetConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, TaskTarget> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.TASK2_CONFIG_KEY, redismap);
+			return map;
+		}else{
+			Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				TaskTarget.Builder builder = TaskTarget.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, TaskTarget> buildTask2TargetConfig(){
+		String xml = ReadConfig(TASK2_FILE_NAME);
+		Task2TargetList.Builder builder = Task2TargetList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + TASK2_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
+		for (Task2TargetHero.Builder hero : builder.getHeroBuilderList()) {
+			Map<String, String> redismap = new HashMap<String, String>();
+			for (TaskTarget.Builder task : hero.getTargetBuilderList()) {
+				map.put("" + task.getTargetid(), task.build());
+				for (TaskOrder.Builder order : task.getOrderBuilderList()) {
+					order.setTargetid(task.getTargetid());
+					redismap.put("" + order.getOrder(), formatJson(order.build()));
+				}
+			}
+			hputAll(RedisKey.TASK3_ORDER_CONFIG_PREFIX + hero.getHeroid(), redismap);
+		}
+		
 		return map;
 	}
 }

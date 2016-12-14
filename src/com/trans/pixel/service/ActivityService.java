@@ -733,7 +733,7 @@ public class ActivityService {
 		sendKaifuScore(user, ActivityConst.KAIFU_DAY_1);
 	}
 	
-	public void heroLevelupRareActivity(UserBean user, int rare) {
+	public void heroLevelupRareActivity(UserBean user, int heroId, int rare) {
 		/**
 		 * achieve type 115,116,117,118
 		 *  开服活动英雄进阶
@@ -764,20 +764,50 @@ public class ActivityService {
 				break;
 		}
 		
-		if (rare == 3)
+		if (rare == 3) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_3);
-		if (rare == 5)
+		}
+		if (rare == 5) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_5);
+			taskService.sendTask2Score(user, TaskConst.TARGET_ZHAOXIN_RARE_5, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_JINKESI_5, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_ANNI_5, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_GULAJIASI_5, heroId);
+		}
 		if (rare == 6)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_6);
+		if (rare == 7) {
+			taskService.sendTask2Score(user, TaskConst.TARGET_JIAWENSISHI_RARE_7, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_YIZERUIER_7, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_CUISITE_7, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_YILISI_7, heroId);
+		}
 		if (rare == 8)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_8);
+		if (rare == 9) {
+			taskService.sendTask2Score(user, TaskConst.TARGET_SUNWUKONG_RARE_9, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_EYUNXIAOJIE_9, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_AZIER_9, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_LULU_9, heroId);
+		}
 		if (rare == 10)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_10);
-		if (rare == 11)
+		if (rare == 11) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_11);
-		if (rare == 13)
+			
+			taskService.sendTask2Score(user, TaskConst.TARGET_DELAIESI_RARE_11, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_WEILUSI_11, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_FEIZI_11, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_ALI_11, heroId);
+		}
+		if (rare == 13) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_13);
+			
+			taskService.sendTask2Score(user, TaskConst.TARGET_JIAKESI_RARE_13, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_WEIEN_13, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_KATELINNA_13, heroId);
+			taskService.sendTask2Score(user, TaskConst.TARGET_CHUISHI_13, heroId);
+		}
 	}
 	
 	public void heroLevelupActivity(UserBean user, int level) {
@@ -1021,6 +1051,16 @@ public class ActivityService {
 	 */
 	public void getLootPackageActivity(UserBean user) {
 		taskService.sendTask3Score(user, TaskConst.TARGET_LOOT_PACKAGE);
+	}
+	
+	/**
+	 * 获得英雄
+	 */
+	public void getHeroActivity(UserBean user, int heroId) {
+		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_1, heroId);
+		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_2, heroId);
+		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_3, heroId);
+		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_4, heroId);
 	}
 	
 	/**
