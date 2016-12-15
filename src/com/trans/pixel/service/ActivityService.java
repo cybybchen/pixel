@@ -1006,7 +1006,7 @@ public class ActivityService {
 	 */
 	public void upPvpBuff(UserBean user, int fieldId, int buff) {
 		if (fieldId == 101) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_MINE_1_BUFF, buff);
+			taskService.sendTask1Score(user, TaskConst.TARGET_MINE_1_BUFF, buff, false);
 		}
 	}
 	

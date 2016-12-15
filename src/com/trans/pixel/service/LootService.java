@@ -1,9 +1,13 @@
 package com.trans.pixel.service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
@@ -12,10 +16,17 @@ import com.trans.pixel.model.DaguanBean;
 import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.protoc.Commands.Libao;
+import com.trans.pixel.protoc.Commands.LibaoList;
+import com.trans.pixel.protoc.Commands.Rmb;
+import com.trans.pixel.protoc.Commands.YueKa;
 import com.trans.pixel.service.redis.LootRedisService;
+import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.service.redis.UserRedisService;
 
 @Service
 public class LootService {
+	Logger logger = LoggerFactory.getLogger(LootService.class);
 	@Resource
 	private LootRedisService lootRedisService;
 	@Resource
@@ -26,6 +37,12 @@ public class LootService {
 	private UserService userService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private ShopService shopService;
+	@Resource
+	private UserRedisService userRedisService;
+	@Resource
+	private RechargeRedisService rechargeRedisService;
 	
 	public LootBean getLootByLevelId(int levelId) {
 		LootBean loot = lootRedisService.getLootByLevelId(levelId);
@@ -46,7 +63,32 @@ public class LootService {
 		if (dg != null && user.getLastLootTime() != 0) {
 			long deltaTime = (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - user.getLastLootTime();
 			addGold = deltaTime * dg.getGold();
-			addExp = deltaTime * dg.getExperience();			
+			int jingyanPer = 0;
+			long now = userRedisService.now();
+			long today0 = userRedisService.caltoday(now, 0);
+			LibaoList libaolist = shopService.getLibaoShop(user);
+			Map<Integer, YueKa> map = shopService.getYueKas();
+			for(Libao libao : libaolist.getLibaoList()){
+				long time = 0;
+				if(libao.hasValidtime() && libao.getValidtime().length() > 5){
+					try {
+						time = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(libao.getValidtime()).getTime()/1000L;
+					} catch (Exception e) {
+						logger.error(time+"", e);
+					}
+				}
+				if(time >= today0){
+					Rmb rmb = rechargeRedisService.getRmb(libao.getRechargeid());
+					YueKa yueka = map.get(rmb.getItemid());
+					if(yueka == null){
+						logger.error("ivalid yueka type "+libao.getRechargeid());
+						continue;
+					}
+					jingyanPer += yueka.getJingyanPer();
+				}
+			}
+			addExp = deltaTime * dg.getExperience();
+			addExp *= (100 + jingyanPer) / 100.f;
 			rewardService.doReward(user, RewardConst.COIN, addGold);
 			rewardService.doReward(user, RewardConst.EXP, addExp);
 		}

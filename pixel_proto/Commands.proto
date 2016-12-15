@@ -2010,6 +2010,9 @@ message YueKa {
 	optional int32 rewardcount = 3;
 	optional int32 count = 4;
 	optional string name = 5;
+	optional int32 rewardid1 = 6;
+	optional int32 rewardcount1 = 7;
+	optional int32 jingyan_per = 9;
 }
 message YueKaList {
 	repeated YueKa item = 1;
