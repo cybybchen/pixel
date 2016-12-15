@@ -80,184 +80,184 @@
 <order order="4" type="1" name="结伴而行" des="上阵第3个英雄" targetcount="3" rewardid1="1001" rewardcount1="3000" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10300" skip="3" >
-<order order="12" type="1" name="人在塔在" des="上阵盖伦" targetcount="17" rewardid1="1001" rewardcount1="20000" rewardid2="" rewardcount2="" />
+<order order="12" type="1" name="人在塔在" des="上阵盖伦" targetcount="17" rewardid1="1001" rewardcount1="10000" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10402" skip="2" >
-<order order="6" type="1" name="装备升级" des="将1件装备的稀有度提升到2" targetcount="1" rewardid1="40018" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="6" type="1" name="装备升级" des="将1件装备的稀有度提升到2" targetcount="1" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10406" skip="2" >
-<order order="22" type="2" name="装备升级" des="将3件装备的稀有度升级到6" targetcount="3" rewardid1="40018" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="22" type="2" name="装备升级" des="将3件装备的稀有度提升到6" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10408" skip="2" >
-<order order="34" type="2" name="装备升级" des="将5件装备的稀有度升级到8" targetcount="5" rewardid1="40018" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="34" type="2" name="装备升级" des="将5件装备的稀有度提升到8" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10410" skip="2" >
-<order order="47" type="2" name="装备升级" des="将10件装备的稀有度升级到10" targetcount="10" rewardid1="40018" rewardcount1="3" rewardid2="" rewardcount2="" />
+<order order="47" type="2" name="装备升级" des="将10件装备的稀有度提升到10" targetcount="10" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10510" skip="2" >
-<order order="21" type="2" name="英雄装备" des="将5个英雄的装备稀有度升级到10" targetcount="5" rewardid1="40019" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="21" type="2" name="英雄装备" des="将5个英雄的装备稀有度提升到10" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10515" skip="2" >
-<order order="28" type="2" name="英雄装备" des="将5个英雄的装备稀有度升级到15" targetcount="5" rewardid1="40019" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="28" type="2" name="英雄装备" des="将5个英雄的装备稀有度提升到15" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10520" skip="2" >
-<order order="32" type="2" name="英雄装备" des="将5个英雄的装备稀有度升级到20" targetcount="5" rewardid1="40019" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="32" type="2" name="英雄装备" des="将5个英雄的装备稀有度提升到20" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10522" skip="2" >
-<order order="37" type="2" name="英雄装备" des="将8个英雄的装备稀有度升级到22" targetcount="8" rewardid1="40019" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="37" type="2" name="英雄装备" des="将8个英雄的装备稀有度提升到22" targetcount="8" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10525" skip="2" >
-<order order="41" type="2" name="英雄装备" des="将11个英雄的装备稀有度升级到25" targetcount="11" rewardid1="40019" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="41" type="2" name="英雄装备" des="将11个英雄的装备稀有度提升到25" targetcount="11" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10600" skip="2" >
-<order order="9" type="1" name="英雄装备" des="将$1的装备稀有度提升到6" targetcount="6" rewardid1="40018" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="9" type="1" name="英雄装备" des="将$1的装备稀有度提升到6" targetcount="6" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10700" skip="2" >
 <order order="10" type="1" name="技能升级" des="将$1英雄的技能$2提升到3级" targetcount="3" rewardid1="1001" rewardcount1="5000" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10810" skip="2" >
-<order order="14" type="1" name="勇往直前" des="将盖伦的装备稀有度提升到10" targetcount="10" rewardid1="40019" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="14" type="1" name="勇往直前" des="将盖伦的装备稀有度提升到10" targetcount="10" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10901" skip="2" >
 <order order="17" type="1" name="保家卫国" des="将盖伦的技能坚韧提升到1级" targetcount="1" rewardid1="1001" rewardcount1="20000" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="10902" skip="5" >
-<order order="18" type="1" name="buff升级" des="将蛇纹石河的buff提升到5级" targetcount="5" rewardid1="1003" rewardcount1="500" rewardid2="" rewardcount2="" />
+<order order="18" type="1" name="buff升级" des="将蛇纹石河的buff提升到5级" targetcount="5" rewardid1="1003" rewardcount1="100" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11005" skip="2" >
-<order order="8" type="1" name="技能升级" des="将3个英雄升到5级" targetcount="3" rewardid1="40001" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="8" type="1" name="技能升级" des="将3个英雄升级到5级" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11010" skip="2" >
-<order order="15" type="1" name="技能升级" des="将5个英雄提升到10级" targetcount="5" rewardid1="40001" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="24" type="2" name="技能升级" des="将8个英雄升级到10级" targetcount="8" rewardid1="40001" rewardcount1="3" rewardid2="" rewardcount2="" />
+<order order="15" type="1" name="技能升级" des="将5个英雄升级到10级" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="24" type="2" name="技能升级" des="将8个英雄升级到10级" targetcount="8" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11012" skip="2" >
-<order order="26" type="2" name="技能升级" des="将1个英雄升级到12级" targetcount="1" rewardid1="40002" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="26" type="2" name="技能升级" des="将1个英雄升级到12级" targetcount="1" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11015" skip="2" >
-<order order="30" type="2" name="技能升级" des="将3个英雄升级到15级" targetcount="3" rewardid1="40002" rewardcount1="3" rewardid2="" rewardcount2="" />
+<order order="30" type="2" name="技能升级" des="将3个英雄升级到15级" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11020" skip="2" >
-<order order="35" type="2" name="技能升级" des="将5个英雄升级到20级" targetcount="5" rewardid1="40002" rewardcount1="5" rewardid2="" rewardcount2="" />
-<order order="39" type="2" name="技能升级" des="将8个英雄升级到20级" targetcount="8" rewardid1="40002" rewardcount1="7" rewardid2="" rewardcount2="" />
-<order order="43" type="2" name="技能升级" des="将11个英雄升级到20级" targetcount="11" rewardid1="40002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="35" type="2" name="技能升级" des="将5个英雄升级到20级" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="39" type="2" name="技能升级" des="将8个英雄升级到20级" targetcount="8" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="43" type="2" name="技能升级" des="将11个英雄升级到20级" targetcount="11" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11022" skip="2" >
-<order order="45" type="2" name="技能升级" des="将1个英雄升级到22级" targetcount="1" rewardid1="40003" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="45" type="2" name="技能升级" des="将1个英雄升级到22级" targetcount="1" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11025" skip="2" >
-<order order="51" type="2" name="技能升级" des="将3个英雄升级到25级" targetcount="3" rewardid1="40003" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="51" type="2" name="技能升级" des="将3个英雄升级到25级" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11028" skip="2" >
-<order order="57" type="2" name="技能升级" des="将5个英雄升级到28级" targetcount="5" rewardid1="40003" rewardcount1="4" rewardid2="" rewardcount2="" />
+<order order="57" type="2" name="技能升级" des="将5个英雄升级到28级" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11030" skip="2" >
-<order order="63" type="2" name="技能升级" des="将11个英雄升级到30级" targetcount="11" rewardid1="40003" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="63" type="2" name="技能升级" des="将11个英雄升级到30级" targetcount="11" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11035" skip="2" >
-<order order="71" type="2" name="技能升级" des="将5个英雄升级到35级" targetcount="5" rewardid1="40024" rewardcount1="1" rewardid2="" rewardcount2="" />
-<order order="75" type="2" name="技能升级" des="将8个英雄升级到35级" targetcount="8" rewardid1="40024" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="71" type="2" name="技能升级" des="将5个英雄升级到35级" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="75" type="2" name="技能升级" des="将8个英雄升级到35级" targetcount="8" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11038" skip="2" >
-<order order="81" type="2" name="技能升级" des="将11个英雄升级到38级" targetcount="11" rewardid1="40024" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="81" type="2" name="技能升级" des="将11个英雄升级到38级" targetcount="11" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11040" skip="2" >
-<order order="85" type="2" name="技能升级" des="将14个英雄升级到40级" targetcount="14" rewardid1="40024" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="85" type="2" name="技能升级" des="将14个英雄升级到40级" targetcount="14" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11042" skip="2" >
-<order order="89" type="2" name="技能升级" des="将3个英雄升级到42级" targetcount="3" rewardid1="40024" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="89" type="2" name="技能升级" des="将3个英雄升级到42级" targetcount="3" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11045" skip="2" >
-<order order="93" type="2" name="技能升级" des="将5个英雄升级到45级" targetcount="5" rewardid1="40024" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="93" type="2" name="技能升级" des="将5个英雄升级到45级" targetcount="5" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11048" skip="2" >
-<order order="99" type="2" name="技能升级" des="将11个英雄升级到48级" targetcount="11" rewardid1="40024" rewardcount1="20" rewardid2="" rewardcount2="" />
+<order order="99" type="2" name="技能升级" des="将11个英雄升级到48级" targetcount="11" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11052" skip="2" >
-<order order="113" type="2" name="技能升级" des="将3个英雄升级到52级" targetcount="3" rewardid1="40024" rewardcount1="50" rewardid2="" rewardcount2="" />
+<order order="113" type="2" name="技能升级" des="将3个英雄升级到52级" targetcount="3" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11055" skip="2" >
-<order order="123" type="2" name="技能升级" des="将8个英雄升级到55" targetcount="8" rewardid1="40025" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="123" type="2" name="技能升级" des="将8个英雄升级到55" targetcount="8" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11060" skip="2" >
-<order order="127" type="2" name="技能升级" des="将14个英雄升级到60" targetcount="14" rewardid1="40025" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="135" type="2" name="技能升级" des="将20个英雄升级到60" targetcount="20" rewardid1="40025" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="127" type="2" name="技能升级" des="将14个英雄升级到60" targetcount="14" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="135" type="2" name="技能升级" des="将20个英雄升级到60" targetcount="20" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11103" skip="2" >
-<order order="49" type="2" name="英雄进阶" des="将1个英雄进阶到+3" targetcount="1" rewardid1="33037" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="53" type="2" name="英雄进阶" des="将3个英雄进阶到+3" targetcount="3" rewardid1="33037" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="49" type="2" name="英雄进阶" des="将1个英雄进阶到+3" targetcount="1" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="53" type="2" name="英雄进阶" des="将3个英雄进阶到+3" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11105" skip="2" >
-<order order="59" type="2" name="英雄进阶" des="将5个英雄进阶到+5" targetcount="5" rewardid1="33004" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="65" type="2" name="英雄进阶" des="将11个英雄进阶到+5" targetcount="11" rewardid1="33004" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="59" type="2" name="英雄进阶" des="将5个英雄进阶到+5" targetcount="5" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="65" type="2" name="英雄进阶" des="将11个英雄进阶到+5" targetcount="11" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11106" skip="2" >
-<order order="67" type="2" name="英雄进阶" des="将3个英雄进阶到+6" targetcount="3" rewardid1="33004" rewardcount1="3" rewardid2="" rewardcount2="" />
-<order order="73" type="2" name="英雄进阶" des="将8个英雄进阶到+6" targetcount="8" rewardid1="33004" rewardcount1="3" rewardid2="" rewardcount2="" />
+<order order="67" type="2" name="英雄进阶" des="将3个英雄进阶到+6" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="73" type="2" name="英雄进阶" des="将8个英雄进阶到+6" targetcount="8" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11108" skip="2" >
-<order order="83" type="2" name="英雄进阶" des="将11个英雄进阶到+8" targetcount="11" rewardid1="33005" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="83" type="2" name="英雄进阶" des="将11个英雄进阶到+8" targetcount="11" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11110" skip="2" >
-<order order="91" type="2" name="英雄进阶" des="将3个英雄进阶到+10" targetcount="3" rewardid1="33005" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="97" type="2" name="英雄进阶" des="将5个英雄进阶到+10" targetcount="5" rewardid1="33005" rewardcount1="3" rewardid2="" rewardcount2="" />
+<order order="91" type="2" name="英雄进阶" des="将3个英雄进阶到+10" targetcount="3" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
+<order order="97" type="2" name="英雄进阶" des="将5个英雄进阶到+10" targetcount="5" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11111" skip="2" >
-<order order="107" type="2" name="英雄进阶" des="将8个英雄进阶到+11" targetcount="8" rewardid1="33005" rewardcount1="3" rewardid2="" rewardcount2="" />
+<order order="107" type="2" name="英雄进阶" des="将8个英雄进阶到+11" targetcount="8" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11113" skip="2" >
-<order order="119" type="2" name="英雄进阶" des="将1个英雄进阶到+13" targetcount="1" rewardid1="33006" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="133" type="2" name="英雄进阶" des="将8个英雄进阶到+13" targetcount="8" rewardid1="33006" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="137" type="2" name="英雄进阶" des="将11个英雄进阶到+13" targetcount="11" rewardid1="33006" rewardcount1="3" rewardid2="" rewardcount2="" />
-<order order="147" type="2" name="英雄进阶" des="将20个英雄进阶到+13" targetcount="20" rewardid1="33006" rewardcount1="3" rewardid2="" rewardcount2="" />
+<order order="119" type="2" name="英雄进阶" des="将1个英雄进阶到+13" targetcount="1" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="133" type="2" name="英雄进阶" des="将8个英雄进阶到+13" targetcount="8" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="137" type="2" name="英雄进阶" des="将11个英雄进阶到+13" targetcount="11" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
+<order order="147" type="2" name="英雄进阶" des="将20个英雄进阶到+13" targetcount="20" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11202" skip="2" >
-<order order="55" type="2" name="英雄升星" des="队伍中有3个2星及以上的英雄" targetcount="3" rewardid1="36001" rewardcount1="1" rewardid2="" rewardcount2="" />
-<order order="61" type="2" name="英雄升星" des="队伍中有7个2星及以上的英雄" targetcount="7" rewardid1="36001" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="55" type="2" name="英雄升星" des="队伍中有3个2星及以上的英雄" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="61" type="2" name="英雄升星" des="队伍中有7个2星及以上的英雄" targetcount="7" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11203" skip="2" >
-<order order="69" type="2" name="英雄升星" des="队伍中有3个3星及以上的英雄" targetcount="3" rewardid1="36002" rewardcount1="1" rewardid2="" rewardcount2="" />
-<order order="77" type="2" name="英雄升星" des="队伍中有5个3星及以上的英雄" targetcount="5" rewardid1="36002" rewardcount1="1" rewardid2="" rewardcount2="" />
-<order order="95" type="2" name="英雄升星" des="队伍中有8个3星及以上的英雄" targetcount="8" rewardid1="36002" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="101" type="2" name="英雄升星" des="队伍中有14个3星及以上的英雄" targetcount="14" rewardid1="36002" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="69" type="2" name="英雄升星" des="队伍中有3个3星及以上的英雄" targetcount="3" rewardid1="1002" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="77" type="2" name="英雄升星" des="队伍中有5个3星及以上的英雄" targetcount="5" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
+<order order="95" type="2" name="英雄升星" des="队伍中有8个3星及以上的英雄" targetcount="8" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
+<order order="101" type="2" name="英雄升星" des="队伍中有14个3星及以上的英雄" targetcount="14" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11205" skip="2" >
-<order order="117" type="2" name="英雄升星" des="队伍中有1个5星及以上英雄" targetcount="1" rewardid1="36003" rewardcount1="1" rewardid2="" rewardcount2="" />
-<order order="129" type="2" name="英雄升星" des="队伍中有3个5星及以上英雄" targetcount="3" rewardid1="36003" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="117" type="2" name="英雄升星" des="队伍中有1个5星及以上英雄" targetcount="1" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="129" type="2" name="英雄升星" des="队伍中有3个5星及以上英雄" targetcount="3" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11303" skip="3" >
-<order order="79" type="2" name="精良英雄" des="队伍中上阵14个英雄并且均为蓝色及以上" targetcount="14" rewardid1="36003" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="79" type="2" name="精良英雄" des="队伍中上阵14个英雄并且均为蓝色及以上" targetcount="14" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11304" skip="3" >
-<order order="103" type="2" name="史诗英雄" des="队伍中上阵17个英雄并且均为紫色及以上" targetcount="17" rewardid1="36004" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="103" type="2" name="史诗英雄" des="队伍中上阵17个英雄并且均为紫色及以上" targetcount="17" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11305" skip="3" >
-<order order="151" type="2" name="传说英雄" des="队伍中上阵17个英雄并且均为橙色及以上" targetcount="17" rewardid1="36005" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="151" type="2" name="传说英雄" des="队伍中上阵17个英雄并且均为橙色及以上" targetcount="17" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11400" skip="2" >
-<order order="87" type="2" name="英雄羁绊" des="激活1次羁绊" targetcount="1" rewardid1="1002" rewardcount1="100" rewardid2="" rewardcount2="" />
-<order order="111" type="2" name="英雄羁绊" des="激活5个羁绊" targetcount="5" rewardid1="1002" rewardcount1="100" rewardid2="" rewardcount2="" />
-<order order="141" type="2" name="英雄羁绊" des="激活15个羁绊" targetcount="15" rewardid1="1002" rewardcount1="200" rewardid2="" rewardcount2="" />
-<order order="145" type="2" name="英雄羁绊" des="激活30个羁绊" targetcount="30" rewardid1="1002" rewardcount1="500" rewardid2="" rewardcount2="" />
+<order order="87" type="2" name="英雄羁绊" des="激活1次羁绊" targetcount="1" rewardid1="1002" rewardcount1="8" rewardid2="" rewardcount2="" />
+<order order="111" type="2" name="英雄羁绊" des="激活5个羁绊" targetcount="5" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="141" type="2" name="英雄羁绊" des="激活15个羁绊" targetcount="15" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
+<order order="145" type="2" name="英雄羁绊" des="激活30个羁绊" targetcount="30" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11503" skip="4" >
-<order order="105" type="2" name="英雄强化" des="将1个英雄强化到3级" targetcount="1" rewardid1="37001" rewardcount1="5" rewardid2="" rewardcount2="" />
-<order order="109" type="2" name="英雄强化" des="将5个英雄强化到3级" targetcount="5" rewardid1="37001" rewardcount1="5" rewardid2="" rewardcount2="" />
+<order order="105" type="2" name="英雄强化" des="将1个英雄强化到3级" targetcount="1" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="109" type="2" name="英雄强化" des="将5个英雄强化到3级" targetcount="5" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11507" skip="4" >
-<order order="121" type="2" name="英雄强化" des="将1个英雄强化到7级" targetcount="1" rewardid1="37001" rewardcount1="10" rewardid2="" rewardcount2="" />
-<order order="131" type="2" name="英雄强化" des="将5个英雄强化到7级" targetcount="5" rewardid1="37001" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="121" type="2" name="英雄强化" des="将1个英雄强化到7级" targetcount="1" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="131" type="2" name="英雄强化" des="将5个英雄强化到7级" targetcount="5" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11512" skip="4" >
-<order order="149" type="2" name="英雄强化" des="将1个英雄强化到12级" targetcount="1" rewardid1="37002" rewardcount1="1" rewardid2="" rewardcount2="" />
+<order order="149" type="2" name="英雄强化" des="将1个英雄强化到12级" targetcount="1" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11515" skip="4" >
-<order order="153" type="2" name="英雄强化" des="将3个英雄强化到15级" targetcount="3" rewardid1="37002" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="153" type="2" name="英雄强化" des="将3个英雄强化到15级" targetcount="3" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
 </target>
 <target targetid="11600" skip="2" >
-<order order="115" type="2" name="专属装备" des="合成1件专属装备" targetcount="1" rewardid1="33029" rewardcount1="1" rewardid2="" rewardcount2="" />
-<order order="125" type="2" name="专属装备" des="合成3件专属装备" targetcount="3" rewardid1="33029" rewardcount1="2" rewardid2="" rewardcount2="" />
-<order order="139" type="2" name="专属装备" des="合成8件专属装备" targetcount="8" rewardid1="33030" rewardcount1="1" rewardid2="" rewardcount2="" />
-<order order="143" type="2" name="专属装备" des="合成15件专属装备" targetcount="15" rewardid1="33030" rewardcount1="2" rewardid2="" rewardcount2="" />
+<order order="115" type="2" name="专属装备" des="合成1件专属装备" targetcount="1" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="125" type="2" name="专属装备" des="合成3件专属装备" targetcount="3" rewardid1="1002" rewardcount1="10" rewardid2="" rewardcount2="" />
+<order order="139" type="2" name="专属装备" des="合成8件专属装备" targetcount="8" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
+<order order="143" type="2" name="专属装备" des="合成15件专属装备" targetcount="15" rewardid1="1002" rewardcount1="15" rewardid2="" rewardcount2="" />
 </target>
 </data>
