@@ -83,23 +83,12 @@ public class EquipService {
 		int level = 0;
 		for (String equipId : equipIds) {
 			EquipmentBean equip = getEquip(TypeTranslatedUtil.stringToInt(equipId));
-			if (equip != null)
+			if (equip != null) {
 				level += equip.getLevel();
+			}
 		}
 		
 		return level;
-	}
-	
-	public int calHeroEquipRare(HeroInfoBean heroInfo) {
-		String[] equipIds = heroInfo.equipIds();
-		int rare = 0;
-		for (String equipId : equipIds) {
-			EquipmentBean equip = getEquip(TypeTranslatedUtil.stringToInt(equipId));
-			if (equip != null)
-				rare += equip.getRare();
-		}
-		
-		return rare;
 	}
 	
 	public int equipCompose(UserBean user, int levelUpId, int count, List<UserEquipBean> userEquipList) {

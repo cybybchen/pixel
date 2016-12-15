@@ -432,6 +432,80 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_MAINQUEST:
+				sb.append(LogString.LOGTYPE_MAINQUEST_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TARGETID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ORDER));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_SIDEQUEST:
+				sb.append(LogString.LOGTYPE_SIDEQUEST_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.QUESTID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TARGETID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ORDER));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_DAILYQUEST:
+				sb.append(LogString.LOGTYPE_DAILYQUEST_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TARGETID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ZHANLI));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VIPLEVEL));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_ACTIVITY:
+				sb.append(LogString.LOGTYPE_ACTIVITY_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ACTIVITYID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TARGETID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ORDER));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ZHANLI));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VIPLEVEL));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -624,6 +698,53 @@ public class LogService {
 		params.put(LogString.DAMAGE, "" + damage);
 		
 		sendLog(params, LogString.LOGTYPE_UNIONBOSS);
+	}
+	
+	public void sendMainquestLog(int serverId, long userId, int targetId, int order) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.TARGETID, "" + targetId);
+		params.put(LogString.ORDER, "" + order);
+		
+		sendLog(params, LogString.LOGTYPE_MAINQUEST);
+	}
+	
+	public void sendSidequestLog(int serverId, long userId, int questId, int targetId, int order) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.TARGETID, "" + targetId);
+		params.put(LogString.ORDER, "" + order);
+		params.put(LogString.QUESTID, "" + questId);
+		
+		sendLog(params, LogString.LOGTYPE_SIDEQUEST);
+	}
+	
+	public void sendDailyquestLog(int serverId, long userId, int targetId, int level, int zhanli, int vipLevel) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.TARGETID, "" + targetId);
+		params.put(LogString.LEVEL, "" + level);
+		params.put(LogString.ZHANLI, "" + zhanli);
+		params.put(LogString.VIPLEVEL, "" + vipLevel);
+		
+		sendLog(params, LogString.LOGTYPE_DAILYQUEST);
+	}
+	
+	public void sendActivityquestLog(int serverId, long userId, int activityId, int targetId, int order, int level, int zhanli, int vipLevel) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.ACTIVITYID, "" + activityId);
+		params.put(LogString.TARGETID, "" + targetId);
+		params.put(LogString.ORDER, "" + order);
+		params.put(LogString.LEVEL, "" + level);
+		params.put(LogString.ZHANLI, "" + zhanli);
+		params.put(LogString.VIPLEVEL, "" + vipLevel);
+		
+		sendLog(params, LogString.LOGTYPE_ACTIVITY);
 	}
 	
 	private void send(String str) {

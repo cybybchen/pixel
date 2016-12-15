@@ -30,6 +30,7 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Activity;
 import com.trans.pixel.protoc.Commands.ActivityOrder;
@@ -86,6 +87,8 @@ public class ActivityService {
 	private UserHeroService userHeroService;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private UserLevelService userLevelService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -176,6 +179,9 @@ public class ActivityService {
 		rewards.addAllLoot(getRewardList(activityorder));
 		
 		isDeleteNotice(user);
+		
+		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+		logService.sendActivityquestLog(user.getServerId(), user.getId(), id, richang.getTargetid(), order, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
@@ -999,7 +1005,7 @@ public class ActivityService {
 	 * 提升征战天下区域buff
 	 */
 	public void upPvpBuff(UserBean user, int fieldId, int buff) {
-		if (fieldId == 2) {
+		if (fieldId == 101) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_MINE_1_BUFF, buff);
 		}
 	}

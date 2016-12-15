@@ -50,6 +50,7 @@ public class TaskCommandService extends BaseCommandService {
 		}else{
 			rewardService.doRewards(user, multiReward.build());
 			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+			pusher.pushUserInfoCommand(responseBuilder, user);
 			/**
 			 * send log
 			 */

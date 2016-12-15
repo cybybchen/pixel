@@ -124,7 +124,7 @@ public class HeroLevelUpService {
 					result = ErrorConst.NOT_ENOUGH_EQUIP;
 					boolean equipLevelUpRet = equipService.equipLevelUp(user.getId(), equip, userEquipList);
 					if (equipLevelUpRet) {
-						int originalRare = equipService.calHeroEquipRare(heroInfo);
+						int originalRare = equipService.calHeroEquipLevel(heroInfo);
 						heroInfo.updateEquipIdByArmId(levelUpId, armId);
 						result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
 						
@@ -134,7 +134,7 @@ public class HeroLevelUpService {
 						EquipmentBean oldEquip = equipService.getEquip(equipId);
 						activityService.levelupEquip(user, oldEquip.getRare(), equip.getRare());
 						
-						int currentRare = equipService.calHeroEquipRare(heroInfo);
+						int currentRare = equipService.calHeroEquipLevel(heroInfo);
 						activityService.upHeroEquipRare(user, originalRare, currentRare, heroInfo.getHeroId());
 						
 						if (oldEquip.getHerolimit() == 0 && equip.getHerolimit() == 1)

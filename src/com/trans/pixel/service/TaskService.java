@@ -18,14 +18,13 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TaskConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.TaskOrder;
 import com.trans.pixel.protoc.Commands.TaskTarget;
 import com.trans.pixel.protoc.Commands.UserTask;
-import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.TaskRedisService;
-import com.trans.pixel.service.redis.UserActivityRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -38,23 +37,13 @@ public class TaskService {
 	@Resource
 	private TaskRedisService taskRedisService;
 	@Resource
-	private AchieveService achieveService;
-	@Resource
-	private ServerService serverService;
-	@Resource
 	private UserService userService;
-	@Resource
-	private MailService mailService;
 	@Resource
 	private LogService logService;
 	@Resource
-	private LadderRedisService ladderRedisService;
-	@Resource
 	private NoticeService noticeService;
 	@Resource
-	private UserActivityRedisService userActivityRedisService;
-	@Resource
-	private CostService costService;
+	private UserLevelService userLevelService;
 	
 	/****************************************************************************************/
 	/** task1*/
@@ -221,13 +210,18 @@ public class TaskService {
 		if (type == 1) {
 			user.setTask1Order(user.getTask1Order() + 1);
 			userService.updateUser(user);
+			logService.sendMainquestLog(user.getServerId(), user.getId(), userTask.getTargetid(), user.getTask1Order());
 		} else if (type == 2) {
 			user.setTask2Record(user.getTask2Record() + 0 << (4 * (heroId - 1)));
 			userService.updateUser(user);
+			logService.sendSidequestLog(user.getServerId(), user.getId(), heroId, userTask.getTargetid(), (user.getTask2Record() >> (4 * (heroId - 1))) & 15);
 		} else if (type == 3) {
 			userTask.setStatus(1);
 			userTaskService.updateUserTask3(user.getId(), userTask.build());
 			sendTask3Score(user, TaskConst.TARGET_COMPLETE_ALL_DAILY);
+			
+			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+			logService.sendDailyquestLog(user.getServerId(), user.getId(), userTask.getTargetid(), userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
 		}
 	}
 	

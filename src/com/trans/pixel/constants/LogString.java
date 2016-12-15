@@ -81,6 +81,11 @@ public class LogString {
 	public static final String UNIONID = "unionid";
 	public static final String BOSSID = "bossid";
 	public static final String DAMAGE = "damage";
+	public static final String TARGETID = "targetid";
+	public static final String ORDER = "order";
+	public static final String QUESTID = "questid";
+	public static final String VIPLEVEL = "viplevel";
+	public static final String ACTIVITYID = "activityid";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -106,6 +111,10 @@ public class LogString {
 	public static final int LOGTYPE_QIANGHUA = 20;
 	public static final int LOGTYPE_CHENGJIANG = 21;
 	public static final int LOGTYPE_UNIONBOSS = 22;
+	public static final int LOGTYPE_MAINQUEST = 23;
+	public static final int LOGTYPE_SIDEQUEST = 24;
+	public static final int LOGTYPE_DAILYQUEST = 25;
+	public static final int LOGTYPE_ACTIVITY = 26;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -130,6 +139,10 @@ public class LogString {
 	public static final String LOGTYPE_QIANGHUA_STR = "Qianghua";
 	public static final String LOGTYPE_CHENGJIANG_STR = "Chengjiang";
 	public static final String LOGTYPE_UNIONBOSS_STR = "Unionboss";
+	public static final String LOGTYPE_MAINQUEST_STR = "Mainquest";
+	public static final String LOGTYPE_SIDEQUEST_STR = "Sidequest";
+	public static final String LOGTYPE_DAILYQUEST_STR = "Dailyquest";
+	public static final String LOGTYPE_ACTIVITY_STR = "Activity";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;
