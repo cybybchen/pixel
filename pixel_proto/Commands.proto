@@ -1479,6 +1479,7 @@ message TaskOrder {
 	optional int32 targetid = 7;
 	optional int32 rewardid2 = 8;
 	optional int32 rewardcount2 = 9;
+	optional int32 taskcount1 = 10;
 }
 
 message Task3OrderList {
@@ -2458,7 +2459,7 @@ message ResponseUserTaskCommand {
 message RequestGetTaskRewardCommand {
 	required int32 type = 1;//1：主线， 2：支线， 3：每日
 	optional int32 order = 2;
-	optional int32 heroid = 3;
+	optional int32 heroid = 3;//支线任务的排序
 }
 
 message RequestCommand {

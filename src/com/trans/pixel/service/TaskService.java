@@ -131,15 +131,20 @@ public class TaskService {
 			TaskTarget task = entry.getValue();
 			
 			if (task.getTargetid() == taskConst.getTargetid()) {
-				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask3(userId, task.getTargetid()));
+				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask2(userId, task.getTargetid()));
 				boolean hasModify = false;
 				if (task.getTargetid() % 1000 == 700 && !ut.getHeroidList().contains(heroId)) {
-					ut.addHeroid(heroId);
-					hasModify = true;
+					for (TaskOrder order : task.getOrderList()) {
+						if (order.getTargetcount() == heroId) {
+							ut.addHeroid(heroId);
+							hasModify = true;
+							break;
+						}
+					}
 				}
 				for (TaskOrder order : task.getOrderList()) {
-					if (order.getTargetcount() == heroId) {
-						ut.setProcess(Math.max(count, ut.getProcess()));
+					if (order.getTargetcount() == heroId && order.getTaskcount1() <= count) {
+						ut.setProcess(heroId);
 						hasModify = true;
 					}
 				}
@@ -170,7 +175,11 @@ public class TaskService {
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
 		UserTask.Builder userTask = UserTask.newBuilder(getUserTask(user, type, taskOrder.getTargetid()));
-		if (userTask.getProcess() < taskOrder.getTargetcount())
+		if (type == 2 && taskOrder.getTargetid() % 1000 == 700) {
+			if (!userTask.getHeroidList().contains(taskOrder.getTargetcount())) {
+				return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+			}
+		} else if (userTask.getProcess() < taskOrder.getTargetcount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
 		rewards.addAllLoot(getRewardList(taskOrder));
@@ -186,6 +195,7 @@ public class TaskService {
 			return taskRedisService.getTask1Order(user.getTask1Order() + 1);
 		} else if (type == 2) {
 			int originalOrder = user.getTask2Record() >> (4 * (heroId - 1)) & 15;
+		log.debug("originalOrder is:" + originalOrder);
 			return taskRedisService.getTask2Order(originalOrder + 1, heroId);
 		} else if (type == 3) {
 			return taskRedisService.getTask3Order(order);
@@ -212,7 +222,7 @@ public class TaskService {
 			userService.updateUser(user);
 			logService.sendMainquestLog(user.getServerId(), user.getId(), userTask.getTargetid(), user.getTask1Order());
 		} else if (type == 2) {
-			user.setTask2Record(user.getTask2Record() + 0 << (4 * (heroId - 1)));
+			user.setTask2Record((1 << (4 * (heroId - 1))) + user.getTask2Record());
 			userService.updateUser(user);
 			logService.sendSidequestLog(user.getServerId(), user.getId(), heroId, userTask.getTargetid(), (user.getTask2Record() >> (4 * (heroId - 1))) & 15);
 		} else if (type == 3) {

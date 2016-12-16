@@ -775,45 +775,49 @@ public class ActivityService {
 		}
 		if (rare == 5) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_5);
-			taskService.sendTask2Score(user, TaskConst.TARGET_ZHAOXIN_RARE_5, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_JINKESI_5, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_ANNI_5, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_GULAJIASI_5, heroId);
 		}
 		if (rare == 6)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_6);
 		if (rare == 7) {
-			taskService.sendTask2Score(user, TaskConst.TARGET_JIAWENSISHI_RARE_7, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_YIZERUIER_7, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_CUISITE_7, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_YILISI_7, heroId);
+			
 		}
 		if (rare == 8)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_8);
 		if (rare == 9) {
-			taskService.sendTask2Score(user, TaskConst.TARGET_SUNWUKONG_RARE_9, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_EYUNXIAOJIE_9, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_AZIER_9, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_LULU_9, heroId);
+			
 		}
 		if (rare == 10)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_10);
 		if (rare == 11) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_11);
-			
-			taskService.sendTask2Score(user, TaskConst.TARGET_DELAIESI_RARE_11, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_WEILUSI_11, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_FEIZI_11, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_ALI_11, heroId);
 		}
 		if (rare == 13) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_13);
-			
-			taskService.sendTask2Score(user, TaskConst.TARGET_JIAKESI_RARE_13, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_WEIEN_13, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_KATELINNA_13, heroId);
-			taskService.sendTask2Score(user, TaskConst.TARGET_CHUISHI_13, heroId);
 		}
+		taskService.sendTask2Score(user, TaskConst.TARGET_ZHAOXIN_RARE_5, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_JINKESI_5, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_ANNI_5, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_GULAJIASI_5, heroId, rare);
+		
+		taskService.sendTask2Score(user, TaskConst.TARGET_JIAWENSISHI_RARE_7, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_YIZERUIER_7, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_CUISITE_7, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_YILISI_7, heroId, rare);
+		
+		taskService.sendTask2Score(user, TaskConst.TARGET_SUNWUKONG_RARE_9, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_EYUNXIAOJIE_9, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_AZIER_9, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_LULU_9, heroId, rare);
+		
+		taskService.sendTask2Score(user, TaskConst.TARGET_DELAIESI_RARE_11, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_WEILUSI_11, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_FEIZI_11, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_ALI_11, heroId, rare);
+		
+		taskService.sendTask2Score(user, TaskConst.TARGET_JIAKESI_RARE_13, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_WEIEN_13, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_KATELINNA_13, heroId, rare);
+		taskService.sendTask2Score(user, TaskConst.TARGET_CHUISHI_13, heroId, rare);
 	}
 	
 	public void heroLevelupActivity(UserBean user, int level) {
@@ -835,6 +839,9 @@ public class ActivityService {
 		}
 		if (level == 10) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_10);
+		}
+		if (level == 12) {
+			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_12);
 		}
 		if (level == 15)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_15);
