@@ -81,7 +81,7 @@ public class TaskService {
 				userTaskService.updateUserTask(userId, ut.build());
 				
 				if (isCompleteNewTaskByTask1(ut.build(), user))
-					noticeService.pushNotice(userId, NoticeConst.TYPE_TASK);
+					noticeService.pushNotice(userId, NoticeConst.TYPE_MAINTASK);
 			}
 		}
 	}
@@ -109,7 +109,7 @@ public class TaskService {
 				userTaskService.updateUserTask3(userId, ut.build());
 				
 				if (isCompleteNewTaskByTask3(ut.build(), user, task))
-					noticeService.pushNotice(userId, NoticeConst.TYPE_TASK);
+					noticeService.pushNotice(userId, NoticeConst.TYPE_DAILYTASK);
 			}
 		}
 	}
@@ -143,7 +143,7 @@ public class TaskService {
 					}
 				}
 				for (TaskOrder order : task.getOrderList()) {
-					if (order.getTargetcount() == heroId && order.getTaskcount1() <= count) {
+					if (order.getTargetcount() == heroId && order.getTargetcount1() <= count) {
 						ut.setProcess(heroId);
 						hasModify = true;
 					}
@@ -153,7 +153,7 @@ public class TaskService {
 					userTaskService.updateUserTask2(userId, ut.build());
 				
 					if (isCompleteNewTaskByTask2(ut.build(), user, task))
-						noticeService.pushNotice(userId, NoticeConst.TYPE_TASK);
+						noticeService.pushNotice(userId, NoticeConst.TYPE_MAINTASK);
 				}
 			}
 		}
@@ -185,7 +185,10 @@ public class TaskService {
 		rewards.addAllLoot(getRewardList(taskOrder));
 		updateUserTaskProcess(userTask, user, type, heroId);
 		
-		isDeleteNotice(user);
+		if (type == 3) {
+			isDeleteDailyTaskNotice(user);
+		}else 
+			isDeleteMainTaskNotice(user);
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
@@ -250,6 +253,8 @@ public class TaskService {
 	}
 	
 	private boolean isCompleteNewTaskByTask3(UserTask ut, UserBean user, TaskOrder task) {
+		if (ut.hasStatus() && ut.getStatus() == 1)
+			return false;
 		if (task.getTargetcount() <= ut.getProcess())
 			return true;
 		
@@ -257,13 +262,13 @@ public class TaskService {
 	}
 	
 	private boolean isCompleteNewTaskByTask2(UserTask ut, UserBean user, TaskTarget task) {
-		int nextOrder = (user.getTask2Record() >> 4 & 15) + 1;
+		int nextOrder = (user.getTask2Record() >> (4 * (task.getTargetid() / 10000 - 1)) & 15) + 1;
 		for (TaskOrder taskOrder : task.getOrderList()) {
 			if (taskOrder.getOrder() == nextOrder) {
-				if (task.getTargetid() % 1000 == 700 && ut.getHeroidList().contains(taskOrder.getTargetcount()))
-					return true;
-				
-				if (ut.getProcess() >= taskOrder.getTargetcount())
+				if (task.getTargetid() % 1000 == 700) {
+					if (ut.getHeroidList().contains(taskOrder.getTargetcount()))
+							return true;
+				} else if (ut.getProcess() >= taskOrder.getTargetcount())
 					return true;
 			}
 		}
@@ -290,16 +295,38 @@ public class TaskService {
 		return rewardList;
 	}
 	
-	public void isDeleteNotice(UserBean user) {
+	public void isDeleteMainTaskNotice(UserBean user) {
 		long userId = user.getId();
-		
+		log.debug("111");
 		//task 1
-		List<UserTask> ut1List = userTaskService.selectUserTaskList(userId);
-		for (UserTask ut : ut1List) {
-			if (isCompleteNewTaskByTask1(ut, user))
+		TaskOrder task1Order = taskRedisService.getTask1Order(user.getTask1Order() + 1);
+		UserTask ut1 = userTaskService.selectUserTask(userId, task1Order.getTargetid());
+		if (isCompleteNewTaskByTask1(ut1, user))
+			return;
+		
+		log.debug("222");
+		//task 2
+		for (int i = 1; i <= 4; ++i) {
+			int nextOrder = (user.getTask2Record() >> (4 * (i - 1)) & 15) + 1;
+			TaskOrder taskOrder = taskRedisService.getTask2Order(nextOrder, i);
+			if (taskOrder == null)
+				continue;
+			UserTask ut = userTaskService.selectUserTask2(user.getId(), taskOrder.getTargetid());
+			if (taskOrder.getTargetid() % 1000 == 700) {
+				if (ut.getHeroidList().contains(taskOrder.getTargetcount()))
+						return;
+			} else if (ut.getProcess() >= taskOrder.getTargetcount())
 				return;
 		}
 		
+		log.debug("333");
+		noticeService.deleteNotice(userId, NoticeConst.TYPE_MAINTASK);
+	}
+	
+	public void isDeleteDailyTaskNotice(UserBean user) {
+		long userId = user.getId();
+		
+		log.debug("333");
 		//task 3
 		Map<String, TaskOrder> map = taskRedisService.getTask3OrderConfig();
 		Iterator<Entry<String, TaskOrder>> it = map.entrySet().iterator();
@@ -310,17 +337,7 @@ public class TaskService {
 			if (isCompleteNewTaskByTask3(ut, user, taskOrder))
 				return;
 		}
-		
-		noticeService.deleteNotice(userId, NoticeConst.TYPE_ACTIVITY);
-	}
-	
-	private List<Integer> convertServerIdList(String serverid) {
-		String[] serverids = serverid.split(",");
-		List<Integer> serverIdList = new ArrayList<Integer>();
-		for (String serveridStr : serverids) {
-			serverIdList.add(TypeTranslatedUtil.stringToInt(serveridStr));
-		}
-		
-		return serverIdList;
+		log.debug("444");
+		noticeService.deleteNotice(userId, NoticeConst.TYPE_DAILYTASK);
 	}
 }

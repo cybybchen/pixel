@@ -293,7 +293,7 @@ public class ManagerService extends RedisService{
 		result.put("userName", userName);
 		result.put("serverId", serverId);
 		int rewardId = TypeTranslatedUtil.jsonGetInt(req, "rewardId");
-		int rewardCount = TypeTranslatedUtil.jsonGetInt(req, "rewardCount");
+		long rewardCount = TypeTranslatedUtil.jsonGetLong(req, "rewardCount");
 		String mailContent = TypeTranslatedUtil.jsonGetString(req, "mailContent");
 		if(rewardId > 0 && rewardCount > 0 && gmaccountBean.getCanreward() == 1){
 			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();

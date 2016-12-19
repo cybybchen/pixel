@@ -820,58 +820,58 @@ public class ActivityService {
 		taskService.sendTask2Score(user, TaskConst.TARGET_CHUISHI_13, heroId, rare);
 	}
 	
-	public void heroLevelupActivity(UserBean user, int level) {
+	public void heroLevelupActivity(UserBean user, int start, int level) {
 		/**
 		 * achieve type 119
 		 */
-		if (level == HeroConst.ACHIEVE_HERO_LEVEL) {
+		if (start < HeroConst.ACHIEVE_HERO_LEVEL + level && level >= HeroConst.ACHIEVE_HERO_LEVEL) {
 			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_HERO_LEVELUP);
 		}
 		
 		/**
 		 * 开服活动第四天
 		 */
-		if (level == HeroConst.ACTIVITY_KAIFU_HERO_LEVEL)
+		if (start < HeroConst.ACTIVITY_KAIFU_HERO_LEVEL && level >= HeroConst.ACTIVITY_KAIFU_HERO_LEVEL)
 			sendKaifuScore(user, ActivityConst.KAIFU_DAY_4);
 		
-		if (level == 5) {
+		if (start < 5 && level >= 5) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_5);
 		}
-		if (level == 10) {
+		if (start < 10 && level >= 10) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_10);
 		}
-		if (level == 12) {
+		if (start < 12 && level >= 12) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_12);
 		}
-		if (level == 15)
+		if (start < 15 && level >= 15)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_15);
-		if (level == 20)
+		if (start < 20 && level >= 20)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_20);
-		if (level == 22)
+		if (start < 22 && level >= 22)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_22);
-		if (level == 25)
+		if (start < 25 && level >= 25)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_25);
-		if (level == 28)
+		if (start < 28 && level >= 28)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_28);
-		if (level == 30)
+		if (start < 30 && level >= 30)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_30);
-		if (level == 35)
+		if (start < 35 && level >= 35)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_35);
-		if (level == 38)
+		if (start < 38 && level >= 38)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_38);
-		if (level == 40)
+		if (start < 40 && level >= 40)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_40);
-		if (level == 42)
+		if (start < 42 && level >= 42)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_42);
-		if (level == 45)
+		if (start < 45 && level >= 45)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_45);
-		if (level == 48)
+		if (start < 48 && level >= 48)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_48);
-		if (level == 52)
+		if (start < 52 && level >= 52)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_52);
-		if (level == 55)
+		if (start < 55 && level >= 55)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_55);
-		if (level == 60)
+		if (start < 60 && level >= 60)
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_60);
 		
 		taskService.sendTask3Score(user, TaskConst.TARGET_HERO_LEVELUP);

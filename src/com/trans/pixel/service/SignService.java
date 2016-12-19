@@ -52,7 +52,7 @@ public class SignService {
 		/**
 		 * send log
 		 */
-		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, 0, user.getTotalSignCount());
+		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, user.getSignCount(), user.getTotalSignCount());
 		
 		return rewardList;
 	}

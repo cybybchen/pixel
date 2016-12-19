@@ -35,13 +35,13 @@ public class NoticeMessageService {
 				continue;
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append(user.getUserName()).append("召唤了");
+			sb.append(user.getUserName()).append("召唤了,");
 			if (hero.getQuality() < 5)
 				continue;
 			else if (hero.getQuality() == 6)
-				sb.append("神话");
+				sb.append("6,神话");
 			else if (hero.getQuality() == 5)
-				sb.append("传说");
+				sb.append("5,传说");
 			
 			sb.append("英雄").append(hero.getName()).append("！");
 			

@@ -22,7 +22,7 @@ public class RewardBean {
 	private int itemid = 0;
 	private String name = "";
 	private int weight = 0;
-	private int count = 0;
+	private long count = 0;
 	private int will = 0;
 	public int getId() {
 		return id;
@@ -48,10 +48,10 @@ public class RewardBean {
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	public int getCount() {
+	public long getCount() {
 		return count;
 	}
-	public void setCount(int count) {
+	public void setCount(long count) {
 		this.count = count;
 	}
 	public int getWill() {
@@ -102,7 +102,7 @@ public class RewardBean {
 		bean.setItemid(json.getInt(ITEM_ID));
 		bean.setName(json.getString(NAME));
 		bean.setWeight(json.getInt(WEIGHT));
-		bean.setCount(json.getInt(COUNT));
+		bean.setCount(json.getLong(COUNT));
 		bean.setWill(TypeTranslatedUtil.jsonGetInt(json, WILL));
 
 		return bean;
@@ -114,7 +114,7 @@ public class RewardBean {
 		reward.setItemid(TypeTranslatedUtil.stringToInt(e.attributeValue(ITEM_ID)));
 //		reward.setName(e.attributeValue(NAME));
 		reward.setWeight(TypeTranslatedUtil.stringToInt(e.attributeValue(WEIGHT)));
-		reward.setCount(TypeTranslatedUtil.stringToInt(e.attributeValue(COUNT)));
+		reward.setCount(TypeTranslatedUtil.stringToLong(e.attributeValue(COUNT)));
 		reward.setWill(TypeTranslatedUtil.stringToInt(e.attributeValue(WILL)));
 		
 		return reward;
@@ -182,7 +182,7 @@ public class RewardBean {
 		return rewardInfoList;
 	}
 	
-	public static RewardBean init(int type, int count) {
+	public static RewardBean init(int type, long count) {
 		RewardBean reward = new RewardBean();
 		reward.setItemid(type);
 		reward.setCount(count);
@@ -190,7 +190,7 @@ public class RewardBean {
 		return reward;
 	}
 	
-	public static List<RewardBean> initRewardList(int type, int count) {
+	public static List<RewardBean> initRewardList(int type, long count) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		RewardBean reward = new RewardBean();
 		reward.setItemid(type);

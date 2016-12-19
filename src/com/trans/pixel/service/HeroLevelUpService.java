@@ -160,21 +160,21 @@ public class HeroLevelUpService {
 		return SuccessConst.RESET_SKILL_SUCCESS;
 	}
 	
-	public ResultConst levelUpHeroTo(UserBean user, HeroInfoBean heroInfo, int level) {
-		int count = level;
-		ResultConst result = levelUpHero(user, heroInfo);
-		count--;
-		while(count > 0){
-			ResultConst res = levelUpHero(user, heroInfo);
-			if(res instanceof ErrorConst)
-				break;
-			count--;
-		}
-		return result;
-	}
+//	public ResultConst levelUpHeroTo(UserBean user, HeroInfoBean heroInfo, int level) {
+//		int count = level;
+//		ResultConst result = levelUpHero(user, heroInfo);
+//		count--;
+//		while(count > 0){
+//			ResultConst res = levelUpHero(user, heroInfo);
+//			if(res instanceof ErrorConst)
+//				break;
+//			count--;
+//		}
+//		return result;
+//	}
 	
 	private ResultConst levelUpHero(UserBean user, HeroInfoBean heroInfo) {
-		if (heroInfo.getLevel() == HERO_MAX_LEVEL) {
+		if (heroInfo.getLevel() >= HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;
 		}
 		int useExp = heroService.getLevelUpExp(heroInfo.getLevel() + 1);
@@ -187,7 +187,33 @@ public class HeroLevelUpService {
 		/**
 		 * 英雄升级的活动
 		 */
-		activityService.heroLevelupActivity(user, heroInfo.getLevel());
+		activityService.heroLevelupActivity(user, heroInfo.getLevel() - 1, heroInfo.getLevel());
+		
+		/**
+		 * send levelup log
+		 */
+		logService.sendLevelupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getLevel());
+		
+		return SuccessConst.HERO_LEVELUP_SUCCESS;
+	}
+	
+	public ResultConst levelUpHeroTo(UserBean user, HeroInfoBean heroInfo, int level) {
+		if (heroInfo.getLevel() >= HERO_MAX_LEVEL || heroInfo.getLevel() + level > HERO_MAX_LEVEL) {
+			return ErrorConst.HERO_LEVEL_MAX;
+		}
+		int useExp = heroService.getLevelUpExp(heroInfo.getLevel(), level);
+		if (!costService.costAndUpdate(user, RewardConst.EXP, useExp)) {
+			return ErrorConst.NOT_ENOUGH_EXP;
+		}
+		
+		/**
+		 * 英雄升级的活动
+		 */
+		activityService.heroLevelupActivity(user, heroInfo.getLevel(), heroInfo.getLevel() + level);
+		
+		heroInfo.setLevel(heroInfo.getLevel() + level);
+		
+		
 		
 		/**
 		 * send levelup log
@@ -224,7 +250,7 @@ public class HeroLevelUpService {
 		/**
 		 * send starup log
 		 */
-		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue());
+		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue);
 		
 		return result;
 	}

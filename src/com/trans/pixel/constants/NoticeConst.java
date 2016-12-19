@@ -5,5 +5,6 @@ public class NoticeConst {
 	public static final int TYPE_FRIEND = 2;
 	public static final int TYPE_ACHIEVE = 3;
 	public static final int TYPE_ACTIVITY = 4;
-	public static final int TYPE_TASK = 5;
+	public static final int TYPE_MAINTASK = 5;
+	public static final int TYPE_DAILYTASK = 6;
 }

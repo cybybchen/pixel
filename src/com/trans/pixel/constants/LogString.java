@@ -86,6 +86,13 @@ public class LogString {
 	public static final String QUESTID = "questid";
 	public static final String VIPLEVEL = "viplevel";
 	public static final String ACTIVITYID = "activityid";
+	public static final String CONSUMEVALUE = "consumevalue";
+	public static final String ITEMID1 = "itemid1";
+	public static final String ITEMCOUNT1 = "itemidcount1";
+	public static final String ITEMID2 = "itemid2";
+	public static final String ITEMCOUNT2 = "itemidcount2";
+	public static final String ITEMID3 = "itemid3";
+	public static final String ITEMCOUNT3 = "itemidcount3";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -115,6 +122,7 @@ public class LogString {
 	public static final int LOGTYPE_SIDEQUEST = 24;
 	public static final int LOGTYPE_DAILYQUEST = 25;
 	public static final int LOGTYPE_ACTIVITY = 26;
+	public static final int LOGTYPE_WORLDBOSS = 27;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -143,6 +151,7 @@ public class LogString {
 	public static final String LOGTYPE_SIDEQUEST_STR = "Sidequest";
 	public static final String LOGTYPE_DAILYQUEST_STR = "Dailyquest";
 	public static final String LOGTYPE_ACTIVITY_STR = "Activity";
+	public static final String LOGTYPE_WORLDBOSS_STR = "Worldboss";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

@@ -72,6 +72,18 @@ public class HeroService {
 		return next.getExp();
 	}
 	
+	public int getLevelUpExp(int start, int add) {
+		List<HeroUpgradeBean> huList = getHeroUpgradeList();
+		int exp = 0;
+		for (HeroUpgradeBean hu : huList) {
+			if (hu.getLevel() > start && hu.getLevel() <= start + add) {
+				exp += hu.getExp();
+			}
+		}
+		
+		return exp;
+	}
+	
 	public HeroUpgradeBean getHeroUpgrade(int level) {
 		HeroUpgradeBean hu = heroRedisService.getHeroUpgradeByLevelId(level);
 		if (hu == null) {
@@ -109,7 +121,8 @@ public class HeroService {
 				parseHeroUpgradeAndSaveConfig();
 				hu = heroRedisService.getHeroUpgradeByLevelId(level);
 			}
-			addExp += hu.getExp();
+			if (hu != null)
+				addExp += hu.getExp();
 			level--;
 		}
 		

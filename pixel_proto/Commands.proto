@@ -1479,7 +1479,7 @@ message TaskOrder {
 	optional int32 targetid = 7;
 	optional int32 rewardid2 = 8;
 	optional int32 rewardcount2 = 9;
-	optional int32 taskcount1 = 10;
+	optional int32 targetcount1 = 10;
 }
 
 message Task3OrderList {

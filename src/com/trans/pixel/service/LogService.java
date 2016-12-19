@@ -334,6 +334,8 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.VALUE));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CONSUMEVALUE));
+				sb.append(LogString.SPLITER);
 				break;
 				
 			case LogString.LOGTYPE_SKILLUP:
@@ -506,6 +508,39 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_WORLDBOSS:
+				sb.append(LogString.LOGTYPE_WORLDBOSS_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.BOSSID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMID1));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMCOUNT1));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMID2));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMCOUNT2));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMID3));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMCOUNT3));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ZHANLI));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VIPLEVEL));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -626,13 +661,14 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_RAREUP);
 	}
 	
-	public void sendStarupLog(int serverId, long userId, int heroid, int star, int value) {
+	public void sendStarupLog(int serverId, long userId, int heroid, int star, int value, int consumeValue) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
 		params.put(LogString.HEROID, "" + heroid);
 		params.put(LogString.STAR, "" + star);
 		params.put(LogString.VALUE, "" + value);
+		params.put(LogString.CONSUMEVALUE, "" + consumeValue);
 		
 		sendLog(params, LogString.LOGTYPE_STARUP);
 	}
@@ -745,6 +781,26 @@ public class LogService {
 		params.put(LogString.VIPLEVEL, "" + vipLevel);
 		
 		sendLog(params, LogString.LOGTYPE_ACTIVITY);
+	}
+	
+	public void sendWorldbossLog(int serverId, long userId, int bossId, int result, int itemid1, int itemcount1, 
+			int itemid2, int itemcount2, int itemid3, int itemcount3, int level, int zhanli, int vipLevel) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.BOSSID, "" + bossId);
+		params.put(LogString.RESULT, "" + result);
+		params.put(LogString.ITEMID1, "" + itemid1);
+		params.put(LogString.ITEMCOUNT1, "" + itemcount1);
+		params.put(LogString.ITEMID2, "" + itemid2);
+		params.put(LogString.ITEMCOUNT2, "" + itemcount2);
+		params.put(LogString.ITEMID3, "" + itemid3);
+		params.put(LogString.ITEMCOUNT3, "" + itemcount3);
+		params.put(LogString.LEVEL, "" + level);
+		params.put(LogString.ZHANLI, "" + zhanli);
+		params.put(LogString.VIPLEVEL, "" + vipLevel);
+		
+		sendLog(params, LogString.LOGTYPE_WORLDBOSS);
 	}
 	
 	private void send(String str) {
