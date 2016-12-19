@@ -907,6 +907,8 @@ public class ActivityService {
 			String[] heroInfo = heroString.split(",");
 			if (heroInfo.length > 0)
 				heroList.add(TypeTranslatedUtil.stringToInt(heroInfo[0]));
+			if (heroInfo.length > 1)
+				heroInfoList.add(TypeTranslatedUtil.stringToInt(heroInfo[1]));
 		}
 		/**
 		 * 上阵英雄数量
