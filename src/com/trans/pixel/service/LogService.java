@@ -533,6 +533,10 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ITEMCOUNT3));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMID4));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMCOUNT4));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.LEVEL));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ZHANLI));
@@ -784,7 +788,7 @@ public class LogService {
 	}
 	
 	public void sendWorldbossLog(int serverId, long userId, int bossId, int result, int itemid1, int itemcount1, 
-			int itemid2, int itemcount2, int itemid3, int itemcount3, int level, int zhanli, int vipLevel) {
+			int itemid2, int itemcount2, int itemid3, int itemcount3, int itemid4, int itemcount4, int level, int zhanli, int vipLevel) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
@@ -796,6 +800,8 @@ public class LogService {
 		params.put(LogString.ITEMCOUNT2, "" + itemcount2);
 		params.put(LogString.ITEMID3, "" + itemid3);
 		params.put(LogString.ITEMCOUNT3, "" + itemcount3);
+		params.put(LogString.ITEMID4, "" + itemid4);
+		params.put(LogString.ITEMCOUNT4, "" + itemcount4);
 		params.put(LogString.LEVEL, "" + level);
 		params.put(LogString.ZHANLI, "" + zhanli);
 		params.put(LogString.VIPLEVEL, "" + vipLevel);

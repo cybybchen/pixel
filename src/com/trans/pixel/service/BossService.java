@@ -58,37 +58,73 @@ public class BossService {
 		int itemcount2 = 0;
 		int itemid3 = 0;
 		int itemcount3 = 0;
+		int itemid4 = 0;
+		int itemcount4 = 0;
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		BosslootGroup bosslootGroup = bossRedisService.getBosslootGroup(bossId);
-		for (Bossloot bossloot : bosslootGroup.getLootList()) {
+		for (int i = 0; i < bosslootGroup.getLootList().size(); ++i) {
+			Bossloot bossloot = bosslootGroup.getLoot(i);
 			int randomWeight = RandomUtils.nextInt(bossloot.getWeightall()) + 1;
 			if (randomWeight <= bossloot.getWeight1()) {
-				itemid1 = bossloot.getItemid1();
-				itemcount1 = bossloot.getItemcount1();
+				if (i == 0) {
+					itemid1 = bossloot.getItemid1();
+					itemcount1 = bossloot.getItemcount1();
+				} else if (i == 1) {
+					itemid2 = bossloot.getItemid1();
+					itemcount2 = bossloot.getItemcount1();
+				} else if (i == 2) {
+					itemid3 = bossloot.getItemid1();
+					itemcount3 = bossloot.getItemcount1();
+				} else if (i == 3) {
+					itemid4 = bossloot.getItemid1();
+					itemcount4 = bossloot.getItemcount1();
+				}
 				rewardList.add(RewardBean.init(bossloot.getItemid1(), bossloot.getItemcount1()));
 				continue;
 			}
 			
 			randomWeight -= bossloot.getWeight1();
 			if (randomWeight <= bossloot.getWeight2()) {
-				itemid2 = bossloot.getItemid2();
-				itemcount2 = bossloot.getItemcount2();
+				if (i == 0) {
+					itemid1 = bossloot.getItemid2();
+					itemcount1 = bossloot.getItemcount2();
+				} else if (i == 1) {
+					itemid2 = bossloot.getItemid2();
+					itemcount2 = bossloot.getItemcount2();
+				} else if (i == 2) {
+					itemid3 = bossloot.getItemid2();
+					itemcount3 = bossloot.getItemcount2();
+				} else if (i == 3) {
+					itemid4 = bossloot.getItemid2();
+					itemcount4 = bossloot.getItemcount2();
+				}
 				rewardList.add(RewardBean.init(bossloot.getItemid2(), bossloot.getItemcount2()));
 				continue;
 			}
 			
 			randomWeight -= bossloot.getWeight2();
 			if (randomWeight <= bossloot.getWeight3()) {
-				itemid3 = bossloot.getItemid3();
-				itemcount3 = bossloot.getItemcount3();
+				if (i == 0) {
+					itemid1 = bossloot.getItemid3();
+					itemcount1 = bossloot.getItemcount3();
+				} else if (i == 1) {
+					itemid2 = bossloot.getItemid3();
+					itemcount2 = bossloot.getItemcount3();
+				} else if (i == 2) {
+					itemid3 = bossloot.getItemid3();
+					itemcount3 = bossloot.getItemcount3();
+				} else if (i == 3) {
+					itemid4 = bossloot.getItemid3();
+					itemcount4 = bossloot.getItemcount3();
+				}
 				rewardList.add(RewardBean.init(bossloot.getItemid3(), bossloot.getItemcount3()));
 				continue;
 			}
 		}
-		
+	
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
 		logService.sendWorldbossLog(user.getServerId(), user.getId(), bossId, 1, itemid1, itemcount1, 
-				itemid2, itemcount2, itemid3, itemcount3, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
+				itemid2, itemcount2, itemid3, itemcount3, itemid4, itemcount4, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
 		
 		return rewardList;
 	}

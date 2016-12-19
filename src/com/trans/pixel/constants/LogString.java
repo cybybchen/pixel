@@ -93,6 +93,8 @@ public class LogString {
 	public static final String ITEMCOUNT2 = "itemidcount2";
 	public static final String ITEMID3 = "itemid3";
 	public static final String ITEMCOUNT3 = "itemidcount3";
+	public static final String ITEMID4 = "itemid4";
+	public static final String ITEMCOUNT4 = "itemidcount4";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
