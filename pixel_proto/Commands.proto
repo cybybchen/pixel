@@ -198,6 +198,7 @@ message ClearInfo {
 	required int32 clearId = 2;
 	required int32 count = 3;
 	optional int32 id = 4;
+	optional int32 rare = 5;
 }
 
 message HeroInfo {
@@ -1232,6 +1233,7 @@ message ClearAttributeOrder {
 	optional int32 count1 = 4;
 	optional int32 count2 = 5;
 	optional int32 interval = 6;
+	optional int32 rare = 7;
 }
 
 message UserFood {

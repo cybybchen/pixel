@@ -167,7 +167,7 @@ public class UserService {
 				reward.setItemid(yueka.getRewardid());
 				reward.setCount(yueka.getRewardcount());
 				list.add(reward);
-				if (yueka.hasRewardid1() && yueka.getRewardid1() > 0) {
+				if (yueka.getRewardid1() > 0) {
 					reward = new RewardBean();
 					reward.setItemid(yueka.getRewardid1());
 					reward.setCount(yueka.getRewardcount1());

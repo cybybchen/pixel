@@ -279,6 +279,7 @@ public class UserTeamService {
 				// log.debug(equip.getZhanli());
 			}
 			zhanli = zhanli * pre / 100;
+			log.debug("111|||" + zhanli);
 			myzhanli += zhanli;
 			  // log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
 		}

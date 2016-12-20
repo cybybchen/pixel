@@ -11,6 +11,7 @@ public class UserClearBean {
 	private int position = 0;
 	private int clearId = 0;
 	private int count = 0;
+	private int rare = 0;
 	public int getId() {
 		return id;
 	}
@@ -47,6 +48,12 @@ public class UserClearBean {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public int getRare() {
+		return rare;
+	}
+	public void setRare(int rare) {
+		this.rare = rare;
+	}
 	public static UserClearBean fromJson(String value) {
 		if (value == null)
 			return null;
@@ -60,6 +67,7 @@ public class UserClearBean {
 		builder.setPosition(position);
 		builder.setClearId(clearId);
 		builder.setCount(count);
+		builder.setRare(rare);
 		
 		return builder.build();
 	}
@@ -70,6 +78,7 @@ public class UserClearBean {
 		builder.setCount(count);
 		builder.setPosition(position);
 		builder.setId(id);
+		builder.setRare(rare);
 		
 		return builder.build();
 	}
@@ -80,6 +89,8 @@ public class UserClearBean {
 		setPosition(1);
 		setClearId(1);
 		setCount(0);
+		setRare(0);
+		
 		return this;
 	}
 }

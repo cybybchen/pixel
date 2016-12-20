@@ -9,6 +9,7 @@
 		<result property="position" column="position" />
 		<result property="clearId" column="clear_id" />
 		<result property="count" column="count" />
+		<result property="rare" column="rare" />
 	</resultMap>
 	
 	<select id="selectUserClear" resultMap="resultMap">
@@ -17,11 +18,11 @@
 	</select>
 	
 	<insert id="updateUserClear" parameterType="com.trans.pixel.model.userinfo.UserClearBean">
-	    INSERT INTO user_clear(user_id, hero_id, position, clear_id, count)
-	    VALUES(#{userId}, #{heroId}, #{position}, #{clearId}, #{count})
+	    INSERT INTO user_clear(user_id, hero_id, position, clear_id, count, rare)
+	    VALUES(#{userId}, #{heroId}, #{position}, #{clearId}, #{count}, #{rare})
 	    ON 
 	    duplicate key update
-	    count=#{count}
+	    clear_id=#{clearId}, count=#{count}, rare=#{rare}
 	</insert>
 	
 	<select id="selectUserClearList" parameterType="long" resultMap="resultMap">

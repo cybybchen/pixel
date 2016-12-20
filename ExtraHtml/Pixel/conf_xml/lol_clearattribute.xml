@@ -1,232 +1,383 @@
 <data>
 <attribute id="1" position="1" zuanshi="0" >
-<order order="1" type="1" weight="1000" count1="5" count2="30" interval="1" />
-<order order="2" type="1" weight="10" count1="31" count2="50" interval="1" />
-<order order="3" type="2" weight="1000" count1="5" count2="30" interval="1" />
-<order order="4" type="2" weight="10" count1="31" count2="50" interval="1" />
-<order order="5" type="3" weight="1000" count1="8" count2="45" interval="1" />
-<order order="6" type="3" weight="10" count1="46" count2="75" interval="1" />
-<order order="7" type="4" weight="1000" count1="5" count2="30" interval="1" />
-<order order="8" type="4" weight="10" count1="31" count2="50" interval="1" />
-<order order="9" type="5" weight="1000" count1="5" count2="30" interval="1" />
-<order order="10" type="5" weight="10" count1="31" count2="50" interval="1" />
-<order order="11" type="6" weight="1000" count1="3" count2="18" interval="1" />
-<order order="12" type="6" weight="10" count1="19" count2="30" interval="1" />
-<order order="13" type="7" weight="1000" count1="10" count2="60" interval="1" />
-<order order="14" type="7" weight="10" count1="61" count2="100" interval="1" />
-<order order="15" type="8" weight="1000" count1="5" count2="30" interval="1" />
-<order order="16" type="8" weight="10" count1="31" count2="50" interval="1" />
-<order order="17" type="9" weight="1000" count1="5" count2="30" interval="1" />
-<order order="18" type="9" weight="10" count1="31" count2="50" interval="1" />
-<order order="19" type="10" weight="1000" count1="5" count2="30" interval="1" />
-<order order="20" type="10" weight="10" count1="31" count2="50" interval="1" />
-<order order="21" type="11" weight="5" count1="1" count2="1" interval="1" />
-<order order="22" type="11" weight="1" count1="2" count2="2" interval="1" />
-<order order="23" type="12" weight="5" count1="1" count2="1" interval="1" />
-<order order="24" type="13" weight="5" count1="1" count2="1" interval="1" />
+<order order="1" type="1" weight="1200" count1="5" count2="10" interval="1" rare="1" />
+<order order="2" type="1" weight="700" count1="11" count2="20" interval="1" rare="2" />
+<order order="3" type="1" weight="100" count1="21" count2="30" interval="1" rare="3" />
+<order order="4" type="1" weight="10" count1="31" count2="40" interval="1" rare="4" />
+<order order="5" type="1" weight="1" count1="41" count2="50" interval="1" rare="5" />
+<order order="6" type="2" weight="1200" count1="5" count2="10" interval="1" rare="1" />
+<order order="7" type="2" weight="700" count1="11" count2="20" interval="1" rare="2" />
+<order order="8" type="2" weight="100" count1="21" count2="30" interval="1" rare="3" />
+<order order="9" type="2" weight="10" count1="31" count2="40" interval="1" rare="4" />
+<order order="10" type="2" weight="1" count1="41" count2="50" interval="1" rare="5" />
+<order order="11" type="3" weight="1200" count1="8" count2="15" interval="1" rare="1" />
+<order order="12" type="3" weight="700" count1="16" count2="30" interval="1" rare="2" />
+<order order="13" type="3" weight="100" count1="31" count2="45" interval="1" rare="3" />
+<order order="14" type="3" weight="10" count1="46" count2="60" interval="1" rare="4" />
+<order order="15" type="3" weight="1" count1="61" count2="75" interval="1" rare="5" />
+<order order="16" type="4" weight="1200" count1="5" count2="10" interval="1" rare="1" />
+<order order="17" type="4" weight="700" count1="11" count2="20" interval="1" rare="2" />
+<order order="18" type="4" weight="100" count1="21" count2="30" interval="1" rare="3" />
+<order order="19" type="4" weight="10" count1="31" count2="40" interval="1" rare="4" />
+<order order="20" type="4" weight="1" count1="41" count2="50" interval="1" rare="5" />
+<order order="21" type="5" weight="1200" count1="5" count2="10" interval="1" rare="1" />
+<order order="22" type="5" weight="700" count1="11" count2="20" interval="1" rare="2" />
+<order order="23" type="5" weight="100" count1="21" count2="30" interval="1" rare="3" />
+<order order="24" type="5" weight="10" count1="31" count2="40" interval="1" rare="4" />
+<order order="25" type="5" weight="1" count1="41" count2="50" interval="1" rare="5" />
+<order order="26" type="6" weight="1200" count1="3" count2="6" interval="1" rare="1" />
+<order order="27" type="6" weight="700" count1="7" count2="12" interval="1" rare="2" />
+<order order="28" type="6" weight="100" count1="13" count2="18" interval="1" rare="3" />
+<order order="29" type="6" weight="10" count1="19" count2="24" interval="1" rare="4" />
+<order order="30" type="6" weight="1" count1="25" count2="30" interval="1" rare="5" />
+<order order="31" type="7" weight="1200" count1="10" count2="20" interval="1" rare="1" />
+<order order="32" type="7" weight="700" count1="21" count2="40" interval="1" rare="2" />
+<order order="33" type="7" weight="100" count1="41" count2="60" interval="1" rare="3" />
+<order order="34" type="7" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="35" type="7" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="36" type="8" weight="1200" count1="5" count2="10" interval="1" rare="1" />
+<order order="37" type="8" weight="700" count1="11" count2="20" interval="1" rare="2" />
+<order order="38" type="8" weight="100" count1="21" count2="30" interval="1" rare="3" />
+<order order="39" type="8" weight="10" count1="31" count2="40" interval="1" rare="4" />
+<order order="40" type="8" weight="1" count1="41" count2="50" interval="1" rare="5" />
+<order order="41" type="9" weight="1200" count1="5" count2="10" interval="1" rare="1" />
+<order order="42" type="9" weight="700" count1="11" count2="20" interval="1" rare="2" />
+<order order="43" type="9" weight="100" count1="21" count2="30" interval="1" rare="3" />
+<order order="44" type="9" weight="10" count1="31" count2="40" interval="1" rare="4" />
+<order order="45" type="9" weight="1" count1="41" count2="50" interval="1" rare="5" />
+<order order="46" type="10" weight="1200" count1="5" count2="10" interval="1" rare="1" />
+<order order="47" type="10" weight="700" count1="11" count2="20" interval="1" rare="2" />
+<order order="48" type="10" weight="100" count1="21" count2="30" interval="1" rare="3" />
+<order order="49" type="10" weight="10" count1="31" count2="40" interval="1" rare="4" />
+<order order="50" type="10" weight="1" count1="41" count2="50" interval="1" rare="5" />
+<order order="51" type="11" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="52" type="11" weight="1" count1="2" count2="2" interval="1" rare="5" />
+<order order="53" type="12" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="54" type="13" weight="5" count1="1" count2="1" interval="1" rare="4" />
 </attribute>
 <attribute id="2" position="2" zuanshi="0" >
-<order order="1" type="1" weight="2500" count1="8" count2="40" interval="1" />
-<order order="2" type="1" weight="500" count1="41" count2="56" interval="1" />
-<order order="3" type="1" weight="10" count1="57" count2="80" interval="1" />
-<order order="4" type="2" weight="2500" count1="8" count2="40" interval="1" />
-<order order="5" type="2" weight="500" count1="41" count2="56" interval="1" />
-<order order="6" type="2" weight="10" count1="57" count2="80" interval="1" />
-<order order="7" type="3" weight="2500" count1="12" count2="60" interval="1" />
-<order order="8" type="3" weight="500" count1="61" count2="84" interval="1" />
-<order order="9" type="3" weight="10" count1="85" count2="120" interval="1" />
-<order order="10" type="4" weight="2500" count1="8" count2="40" interval="1" />
-<order order="11" type="4" weight="500" count1="41" count2="56" interval="1" />
-<order order="12" type="4" weight="10" count1="57" count2="80" interval="1" />
-<order order="13" type="5" weight="2500" count1="8" count2="40" interval="1" />
-<order order="14" type="5" weight="500" count1="41" count2="56" interval="1" />
-<order order="15" type="5" weight="10" count1="57" count2="80" interval="1" />
-<order order="16" type="6" weight="2500" count1="6" count2="30" interval="1" />
-<order order="17" type="6" weight="500" count1="31" count2="42" interval="1" />
-<order order="18" type="6" weight="10" count1="43" count2="60" interval="1" />
-<order order="19" type="7" weight="2500" count1="16" count2="80" interval="1" />
-<order order="20" type="7" weight="500" count1="81" count2="112" interval="1" />
-<order order="21" type="7" weight="10" count1="113" count2="160" interval="1" />
-<order order="22" type="8" weight="2500" count1="8" count2="40" interval="1" />
-<order order="23" type="8" weight="500" count1="41" count2="56" interval="1" />
-<order order="24" type="8" weight="10" count1="57" count2="80" interval="1" />
-<order order="25" type="9" weight="2500" count1="8" count2="40" interval="1" />
-<order order="26" type="9" weight="500" count1="41" count2="56" interval="1" />
-<order order="27" type="9" weight="10" count1="57" count2="80" interval="1" />
-<order order="28" type="10" weight="2500" count1="8" count2="40" interval="1" />
-<order order="29" type="10" weight="500" count1="41" count2="56" interval="1" />
-<order order="30" type="10" weight="10" count1="57" count2="80" interval="1" />
-<order order="31" type="11" weight="5" count1="1" count2="1" interval="1" />
-<order order="32" type="11" weight="1" count1="2" count2="2" interval="1" />
-<order order="33" type="12" weight="5" count1="1" count2="1" interval="1" />
-<order order="34" type="12" weight="1" count1="2" count2="2" interval="1" />
-<order order="35" type="13" weight="5" count1="1" count2="1" interval="1" />
-<order order="36" type="14" weight="5" count1="1" count2="1" interval="1" />
-<order order="37" type="15" weight="5" count1="1" count2="1" interval="1" />
-<order order="38" type="16" weight="2500" count1="20" count2="100" interval="10" />
-<order order="39" type="16" weight="500" count1="110" count2="140" interval="10" />
-<order order="40" type="16" weight="10" count1="150" count2="200" interval="10" />
+<order order="1" type="1" weight="3600" count1="8" count2="16" interval="1" rare="1" />
+<order order="2" type="1" weight="2100" count1="17" count2="32" interval="1" rare="2" />
+<order order="3" type="1" weight="300" count1="33" count2="48" interval="1" rare="3" />
+<order order="4" type="1" weight="10" count1="49" count2="64" interval="1" rare="4" />
+<order order="5" type="1" weight="1" count1="65" count2="80" interval="1" rare="5" />
+<order order="6" type="2" weight="3600" count1="8" count2="16" interval="1" rare="1" />
+<order order="7" type="2" weight="2100" count1="17" count2="32" interval="1" rare="2" />
+<order order="8" type="2" weight="300" count1="33" count2="48" interval="1" rare="3" />
+<order order="9" type="2" weight="10" count1="49" count2="64" interval="1" rare="4" />
+<order order="10" type="2" weight="1" count1="65" count2="80" interval="1" rare="5" />
+<order order="11" type="3" weight="3600" count1="12" count2="24" interval="1" rare="1" />
+<order order="12" type="3" weight="2100" count1="25" count2="48" interval="1" rare="2" />
+<order order="13" type="3" weight="300" count1="49" count2="72" interval="1" rare="3" />
+<order order="14" type="3" weight="10" count1="73" count2="96" interval="1" rare="4" />
+<order order="15" type="3" weight="1" count1="97" count2="120" interval="1" rare="5" />
+<order order="16" type="4" weight="3600" count1="8" count2="16" interval="1" rare="1" />
+<order order="17" type="4" weight="2100" count1="17" count2="32" interval="1" rare="2" />
+<order order="18" type="4" weight="300" count1="33" count2="48" interval="1" rare="3" />
+<order order="19" type="4" weight="10" count1="49" count2="64" interval="1" rare="4" />
+<order order="20" type="4" weight="1" count1="65" count2="80" interval="1" rare="5" />
+<order order="21" type="5" weight="3600" count1="8" count2="16" interval="1" rare="1" />
+<order order="22" type="5" weight="2100" count1="17" count2="32" interval="1" rare="2" />
+<order order="23" type="5" weight="300" count1="33" count2="48" interval="1" rare="3" />
+<order order="24" type="5" weight="10" count1="49" count2="64" interval="1" rare="4" />
+<order order="25" type="5" weight="1" count1="65" count2="80" interval="1" rare="5" />
+<order order="26" type="6" weight="3600" count1="6" count2="12" interval="1" rare="1" />
+<order order="27" type="6" weight="2100" count1="13" count2="24" interval="1" rare="2" />
+<order order="28" type="6" weight="300" count1="25" count2="36" interval="1" rare="3" />
+<order order="29" type="6" weight="10" count1="37" count2="48" interval="1" rare="4" />
+<order order="30" type="6" weight="1" count1="49" count2="60" interval="1" rare="5" />
+<order order="31" type="7" weight="3600" count1="16" count2="32" interval="1" rare="1" />
+<order order="32" type="7" weight="2100" count1="33" count2="64" interval="1" rare="2" />
+<order order="33" type="7" weight="300" count1="65" count2="96" interval="1" rare="3" />
+<order order="34" type="7" weight="10" count1="97" count2="128" interval="1" rare="4" />
+<order order="35" type="7" weight="1" count1="129" count2="160" interval="1" rare="5" />
+<order order="36" type="8" weight="3600" count1="8" count2="16" interval="1" rare="1" />
+<order order="37" type="8" weight="2100" count1="17" count2="32" interval="1" rare="2" />
+<order order="38" type="8" weight="300" count1="33" count2="48" interval="1" rare="3" />
+<order order="39" type="8" weight="10" count1="49" count2="64" interval="1" rare="4" />
+<order order="40" type="8" weight="1" count1="65" count2="80" interval="1" rare="5" />
+<order order="41" type="9" weight="3600" count1="8" count2="16" interval="1" rare="1" />
+<order order="42" type="9" weight="2100" count1="17" count2="32" interval="1" rare="2" />
+<order order="43" type="9" weight="300" count1="33" count2="48" interval="1" rare="3" />
+<order order="44" type="9" weight="10" count1="49" count2="64" interval="1" rare="4" />
+<order order="45" type="9" weight="1" count1="65" count2="80" interval="1" rare="5" />
+<order order="46" type="10" weight="3600" count1="8" count2="16" interval="1" rare="1" />
+<order order="47" type="10" weight="2100" count1="17" count2="32" interval="1" rare="2" />
+<order order="48" type="10" weight="300" count1="33" count2="48" interval="1" rare="3" />
+<order order="49" type="10" weight="10" count1="49" count2="64" interval="1" rare="4" />
+<order order="50" type="10" weight="1" count1="65" count2="80" interval="1" rare="5" />
+<order order="51" type="11" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="52" type="11" weight="1" count1="2" count2="2" interval="1" rare="5" />
+<order order="53" type="12" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="54" type="12" weight="1" count1="2" count2="2" interval="1" rare="5" />
+<order order="55" type="13" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="56" type="14" weight="5" count1="1" count2="1" interval="1" rare="5" />
+<order order="57" type="15" weight="5" count1="1" count2="1" interval="1" rare="5" />
+<order order="58" type="16" weight="3600" count1="20" count2="40" interval="10" rare="1" />
+<order order="59" type="16" weight="2100" count1="50" count2="80" interval="10" rare="2" />
+<order order="60" type="16" weight="300" count1="90" count2="120" interval="10" rare="3" />
+<order order="61" type="16" weight="10" count1="130" count2="160" interval="10" rare="4" />
+<order order="62" type="16" weight="1" count1="170" count2="200" interval="10" rare="5" />
 </attribute>
 <attribute id="3" position="3" zuanshi="0" >
-<order order="1" type="1" weight="7500" count1="10" count2="50" interval="1" />
-<order order="2" type="1" weight="1500" count1="51" count2="70" interval="1" />
-<order order="3" type="1" weight="10" count1="71" count2="100" interval="1" />
-<order order="4" type="2" weight="7500" count1="10" count2="50" interval="1" />
-<order order="5" type="2" weight="1500" count1="51" count2="70" interval="1" />
-<order order="6" type="2" weight="10" count1="71" count2="100" interval="1" />
-<order order="7" type="3" weight="7500" count1="15" count2="75" interval="1" />
-<order order="8" type="3" weight="1500" count1="76" count2="105" interval="1" />
-<order order="9" type="3" weight="10" count1="106" count2="150" interval="1" />
-<order order="10" type="4" weight="7500" count1="10" count2="50" interval="1" />
-<order order="11" type="4" weight="1500" count1="51" count2="70" interval="1" />
-<order order="12" type="4" weight="10" count1="71" count2="100" interval="1" />
-<order order="13" type="5" weight="7500" count1="10" count2="50" interval="1" />
-<order order="14" type="5" weight="1500" count1="51" count2="70" interval="1" />
-<order order="15" type="5" weight="10" count1="71" count2="100" interval="1" />
-<order order="16" type="6" weight="7500" count1="8" count2="37" interval="1" />
-<order order="17" type="6" weight="1500" count1="38" count2="52" interval="1" />
-<order order="18" type="6" weight="10" count1="53" count2="75" interval="1" />
-<order order="19" type="7" weight="7500" count1="20" count2="100" interval="1" />
-<order order="20" type="7" weight="1500" count1="101" count2="140" interval="1" />
-<order order="21" type="7" weight="10" count1="141" count2="200" interval="1" />
-<order order="22" type="8" weight="7500" count1="10" count2="50" interval="1" />
-<order order="23" type="8" weight="1500" count1="51" count2="70" interval="1" />
-<order order="24" type="8" weight="10" count1="71" count2="100" interval="1" />
-<order order="25" type="9" weight="7500" count1="10" count2="50" interval="1" />
-<order order="26" type="9" weight="1500" count1="51" count2="70" interval="1" />
-<order order="27" type="9" weight="10" count1="71" count2="100" interval="1" />
-<order order="28" type="10" weight="7500" count1="10" count2="50" interval="1" />
-<order order="29" type="10" weight="1500" count1="51" count2="70" interval="1" />
-<order order="30" type="10" weight="10" count1="71" count2="100" interval="1" />
-<order order="31" type="11" weight="5" count1="1" count2="1" interval="1" />
-<order order="32" type="11" weight="1" count1="2" count2="2" interval="1" />
-<order order="33" type="12" weight="5" count1="1" count2="1" interval="1" />
-<order order="34" type="12" weight="1" count1="2" count2="2" interval="1" />
-<order order="35" type="13" weight="5" count1="1" count2="1" interval="1" />
-<order order="36" type="13" weight="1" count1="2" count2="2" interval="1" />
-<order order="37" type="14" weight="5" count1="1" count2="1" interval="1" />
-<order order="38" type="14" weight="1" count1="2" count2="2" interval="1" />
-<order order="39" type="15" weight="1" count1="1" count2="1" interval="1" />
-<order order="40" type="16" weight="7500" count1="50" count2="250" interval="25" />
-<order order="41" type="16" weight="1500" count1="275" count2="350" interval="25" />
-<order order="42" type="16" weight="10" count1="375" count2="500" interval="25" />
-<order order="43" type="17" weight="7500" count1="10" count2="50" interval="5" />
-<order order="44" type="17" weight="1500" count1="55" count2="70" interval="5" />
-<order order="45" type="17" weight="10" count1="75" count2="100" interval="5" />
+<order order="1" type="1" weight="10800" count1="10" count2="20" interval="1" rare="1" />
+<order order="2" type="1" weight="6300" count1="21" count2="40" interval="1" rare="2" />
+<order order="3" type="1" weight="900" count1="41" count2="60" interval="1" rare="3" />
+<order order="4" type="1" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="5" type="1" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="6" type="2" weight="10800" count1="10" count2="20" interval="1" rare="1" />
+<order order="7" type="2" weight="6300" count1="21" count2="40" interval="1" rare="2" />
+<order order="8" type="2" weight="900" count1="41" count2="60" interval="1" rare="3" />
+<order order="9" type="2" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="10" type="2" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="11" type="3" weight="10800" count1="15" count2="30" interval="1" rare="1" />
+<order order="12" type="3" weight="6300" count1="31" count2="60" interval="1" rare="2" />
+<order order="13" type="3" weight="900" count1="61" count2="90" interval="1" rare="3" />
+<order order="14" type="3" weight="10" count1="91" count2="120" interval="1" rare="4" />
+<order order="15" type="3" weight="1" count1="121" count2="150" interval="1" rare="5" />
+<order order="16" type="4" weight="10800" count1="10" count2="20" interval="1" rare="1" />
+<order order="17" type="4" weight="6300" count1="21" count2="40" interval="1" rare="2" />
+<order order="18" type="4" weight="900" count1="41" count2="60" interval="1" rare="3" />
+<order order="19" type="4" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="20" type="4" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="21" type="5" weight="10800" count1="10" count2="20" interval="1" rare="1" />
+<order order="22" type="5" weight="6300" count1="21" count2="40" interval="1" rare="2" />
+<order order="23" type="5" weight="900" count1="41" count2="60" interval="1" rare="3" />
+<order order="24" type="5" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="25" type="5" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="26" type="6" weight="10800" count1="8" count2="15" interval="1" rare="1" />
+<order order="27" type="6" weight="6300" count1="16" count2="30" interval="1" rare="2" />
+<order order="28" type="6" weight="900" count1="31" count2="45" interval="1" rare="3" />
+<order order="29" type="6" weight="10" count1="46" count2="60" interval="1" rare="4" />
+<order order="30" type="6" weight="1" count1="61" count2="75" interval="1" rare="5" />
+<order order="31" type="7" weight="10800" count1="20" count2="40" interval="1" rare="1" />
+<order order="32" type="7" weight="6300" count1="41" count2="80" interval="1" rare="2" />
+<order order="33" type="7" weight="900" count1="81" count2="120" interval="1" rare="3" />
+<order order="34" type="7" weight="10" count1="121" count2="160" interval="1" rare="4" />
+<order order="35" type="7" weight="1" count1="161" count2="200" interval="1" rare="5" />
+<order order="36" type="8" weight="10800" count1="10" count2="20" interval="1" rare="1" />
+<order order="37" type="8" weight="6300" count1="21" count2="40" interval="1" rare="2" />
+<order order="38" type="8" weight="900" count1="41" count2="60" interval="1" rare="3" />
+<order order="39" type="8" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="40" type="8" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="41" type="9" weight="10800" count1="10" count2="20" interval="1" rare="1" />
+<order order="42" type="9" weight="6300" count1="21" count2="40" interval="1" rare="2" />
+<order order="43" type="9" weight="900" count1="41" count2="60" interval="1" rare="3" />
+<order order="44" type="9" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="45" type="9" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="46" type="10" weight="10800" count1="10" count2="20" interval="1" rare="1" />
+<order order="47" type="10" weight="6300" count1="21" count2="40" interval="1" rare="2" />
+<order order="48" type="10" weight="900" count1="41" count2="60" interval="1" rare="3" />
+<order order="49" type="10" weight="10" count1="61" count2="80" interval="1" rare="4" />
+<order order="50" type="10" weight="1" count1="81" count2="100" interval="1" rare="5" />
+<order order="51" type="11" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="52" type="11" weight="1" count1="2" count2="2" interval="1" rare="5" />
+<order order="53" type="12" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="54" type="12" weight="1" count1="2" count2="2" interval="1" rare="5" />
+<order order="55" type="13" weight="5" count1="1" count2="1" interval="1" rare="4" />
+<order order="56" type="13" weight="1" count1="2" count2="2" interval="1" rare="5" />
+<order order="57" type="14" weight="5" count1="1" count2="1" interval="1" rare="5" />
+<order order="58" type="15" weight="1" count1="1" count2="1" interval="1" rare="5" />
+<order order="59" type="16" weight="10800" count1="50" count2="100" interval="25" rare="1" />
+<order order="60" type="16" weight="6300" count1="125" count2="200" interval="25" rare="2" />
+<order order="61" type="16" weight="900" count1="225" count2="300" interval="25" rare="3" />
+<order order="62" type="16" weight="10" count1="325" count2="400" interval="25" rare="4" />
+<order order="63" type="16" weight="1" count1="425" count2="500" interval="25" rare="5" />
+<order order="64" type="17" weight="10800" count1="10" count2="20" interval="5" rare="1" />
+<order order="65" type="17" weight="6300" count1="25" count2="40" interval="5" rare="2" />
+<order order="66" type="17" weight="900" count1="45" count2="60" interval="5" rare="3" />
+<order order="67" type="17" weight="10" count1="65" count2="80" interval="5" rare="4" />
+<order order="68" type="17" weight="1" count1="85" count2="100" interval="5" rare="5" />
 </attribute>
 <attribute id="4" position="1" zuanshi="1" >
-<order order="1" type="1" weight="1000" count1="20" count2="40" interval="1" />
-<order order="2" type="1" weight="250" count1="41" count2="50" interval="1" />
-<order order="3" type="2" weight="1000" count1="20" count2="40" interval="1" />
-<order order="4" type="2" weight="250" count1="41" count2="50" interval="1" />
-<order order="5" type="3" weight="1000" count1="30" count2="60" interval="1" />
-<order order="6" type="3" weight="250" count1="61" count2="75" interval="1" />
-<order order="7" type="4" weight="1000" count1="20" count2="40" interval="1" />
-<order order="8" type="4" weight="250" count1="41" count2="50" interval="1" />
-<order order="9" type="5" weight="1000" count1="20" count2="40" interval="1" />
-<order order="10" type="5" weight="250" count1="41" count2="50" interval="1" />
-<order order="11" type="6" weight="1000" count1="12" count2="24" interval="1" />
-<order order="12" type="6" weight="250" count1="25" count2="30" interval="1" />
-<order order="13" type="7" weight="1000" count1="40" count2="80" interval="1" />
-<order order="14" type="7" weight="250" count1="81" count2="100" interval="1" />
-<order order="15" type="8" weight="1000" count1="20" count2="40" interval="1" />
-<order order="16" type="8" weight="250" count1="41" count2="50" interval="1" />
-<order order="17" type="9" weight="1000" count1="20" count2="40" interval="1" />
-<order order="18" type="9" weight="250" count1="41" count2="50" interval="1" />
-<order order="19" type="10" weight="1000" count1="20" count2="40" interval="1" />
-<order order="20" type="10" weight="250" count1="41" count2="50" interval="1" />
-<order order="21" type="11" weight="250" count1="1" count2="1" interval="1" />
-<order order="22" type="11" weight="50" count1="2" count2="2" interval="1" />
-<order order="23" type="12" weight="250" count1="1" count2="1" interval="1" />
-<order order="24" type="13" weight="250" count1="1" count2="1" interval="1" />
+<order order="1" type="1" weight="1000" count1="15" count2="20" interval="1" rare="2" />
+<order order="2" type="1" weight="1000" count1="21" count2="30" interval="1" rare="3" />
+<order order="3" type="1" weight="200" count1="31" count2="40" interval="1" rare="4" />
+<order order="4" type="1" weight="40" count1="41" count2="50" interval="1" rare="5" />
+<order order="5" type="1" weight="10" count1="51" count2="55" interval="1" rare="6" />
+<order order="6" type="2" weight="1000" count1="15" count2="20" interval="1" rare="2" />
+<order order="7" type="2" weight="1000" count1="21" count2="30" interval="1" rare="3" />
+<order order="8" type="2" weight="200" count1="31" count2="40" interval="1" rare="4" />
+<order order="9" type="2" weight="40" count1="41" count2="50" interval="1" rare="5" />
+<order order="10" type="2" weight="10" count1="51" count2="55" interval="1" rare="6" />
+<order order="11" type="3" weight="1000" count1="20" count2="30" interval="1" rare="2" />
+<order order="12" type="3" weight="1000" count1="31" count2="45" interval="1" rare="3" />
+<order order="13" type="3" weight="200" count1="46" count2="60" interval="1" rare="4" />
+<order order="14" type="3" weight="40" count1="61" count2="75" interval="1" rare="5" />
+<order order="15" type="3" weight="10" count1="76" count2="80" interval="1" rare="6" />
+<order order="16" type="4" weight="1000" count1="15" count2="20" interval="1" rare="2" />
+<order order="17" type="4" weight="1000" count1="21" count2="30" interval="1" rare="3" />
+<order order="18" type="4" weight="200" count1="31" count2="40" interval="1" rare="4" />
+<order order="19" type="4" weight="40" count1="41" count2="50" interval="1" rare="5" />
+<order order="20" type="4" weight="10" count1="51" count2="55" interval="1" rare="6" />
+<order order="21" type="5" weight="1000" count1="15" count2="20" interval="1" rare="2" />
+<order order="22" type="5" weight="1000" count1="21" count2="30" interval="1" rare="3" />
+<order order="23" type="5" weight="200" count1="31" count2="40" interval="1" rare="4" />
+<order order="24" type="5" weight="40" count1="41" count2="50" interval="1" rare="5" />
+<order order="25" type="5" weight="10" count1="51" count2="55" interval="1" rare="6" />
+<order order="26" type="6" weight="1000" count1="9" count2="12" interval="1" rare="2" />
+<order order="27" type="6" weight="1000" count1="13" count2="18" interval="1" rare="3" />
+<order order="28" type="6" weight="200" count1="19" count2="24" interval="1" rare="4" />
+<order order="29" type="6" weight="40" count1="25" count2="30" interval="1" rare="5" />
+<order order="30" type="6" weight="10" count1="31" count2="33" interval="1" rare="6" />
+<order order="31" type="7" weight="1000" count1="30" count2="40" interval="1" rare="2" />
+<order order="32" type="7" weight="1000" count1="41" count2="60" interval="1" rare="3" />
+<order order="33" type="7" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="34" type="7" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="35" type="7" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="36" type="8" weight="1000" count1="15" count2="20" interval="1" rare="2" />
+<order order="37" type="8" weight="1000" count1="21" count2="30" interval="1" rare="3" />
+<order order="38" type="8" weight="200" count1="31" count2="40" interval="1" rare="4" />
+<order order="39" type="8" weight="40" count1="41" count2="50" interval="1" rare="5" />
+<order order="40" type="8" weight="10" count1="51" count2="55" interval="1" rare="6" />
+<order order="41" type="9" weight="1000" count1="15" count2="20" interval="1" rare="2" />
+<order order="42" type="9" weight="1000" count1="21" count2="30" interval="1" rare="3" />
+<order order="43" type="9" weight="200" count1="31" count2="40" interval="1" rare="4" />
+<order order="44" type="9" weight="40" count1="41" count2="50" interval="1" rare="5" />
+<order order="45" type="9" weight="10" count1="51" count2="55" interval="1" rare="6" />
+<order order="46" type="10" weight="1000" count1="15" count2="20" interval="1" rare="2" />
+<order order="47" type="10" weight="1000" count1="21" count2="30" interval="1" rare="3" />
+<order order="48" type="10" weight="200" count1="31" count2="40" interval="1" rare="4" />
+<order order="49" type="10" weight="40" count1="41" count2="50" interval="1" rare="5" />
+<order order="50" type="10" weight="10" count1="51" count2="55" interval="1" rare="6" />
+<order order="51" type="11" weight="250" count1="1" count2="1" interval="1" rare="4" />
+<order order="52" type="11" weight="50" count1="2" count2="2" interval="1" rare="5" />
+<order order="53" type="12" weight="250" count1="1" count2="1" interval="1" rare="4" />
+<order order="54" type="13" weight="250" count1="1" count2="1" interval="1" rare="4" />
 </attribute>
 <attribute id="5" position="2" zuanshi="1" >
-<order order="1" type="1" weight="1000" count1="32" count2="48" interval="1" />
-<order order="2" type="1" weight="400" count1="49" count2="68" interval="1" />
-<order order="3" type="1" weight="100" count1="69" count2="80" interval="1" />
-<order order="4" type="2" weight="1000" count1="32" count2="48" interval="1" />
-<order order="5" type="2" weight="400" count1="49" count2="68" interval="1" />
-<order order="6" type="2" weight="100" count1="69" count2="80" interval="1" />
-<order order="7" type="3" weight="1000" count1="48" count2="72" interval="1" />
-<order order="8" type="3" weight="400" count1="73" count2="102" interval="1" />
-<order order="9" type="3" weight="100" count1="103" count2="120" interval="1" />
-<order order="10" type="4" weight="1000" count1="32" count2="48" interval="1" />
-<order order="11" type="4" weight="400" count1="49" count2="68" interval="1" />
-<order order="12" type="4" weight="100" count1="69" count2="80" interval="1" />
-<order order="13" type="5" weight="1000" count1="32" count2="48" interval="1" />
-<order order="14" type="5" weight="400" count1="49" count2="68" interval="1" />
-<order order="15" type="5" weight="100" count1="69" count2="80" interval="1" />
-<order order="16" type="6" weight="1000" count1="24" count2="36" interval="1" />
-<order order="17" type="6" weight="400" count1="37" count2="51" interval="1" />
-<order order="18" type="6" weight="100" count1="52" count2="60" interval="1" />
-<order order="19" type="7" weight="1000" count1="64" count2="96" interval="1" />
-<order order="20" type="7" weight="400" count1="97" count2="136" interval="1" />
-<order order="21" type="7" weight="100" count1="137" count2="160" interval="1" />
-<order order="22" type="8" weight="1000" count1="32" count2="48" interval="1" />
-<order order="23" type="8" weight="400" count1="49" count2="68" interval="1" />
-<order order="24" type="8" weight="100" count1="69" count2="80" interval="1" />
-<order order="25" type="9" weight="1000" count1="32" count2="48" interval="1" />
-<order order="26" type="9" weight="400" count1="49" count2="68" interval="1" />
-<order order="27" type="9" weight="100" count1="69" count2="80" interval="1" />
-<order order="28" type="10" weight="1000" count1="32" count2="48" interval="1" />
-<order order="29" type="10" weight="400" count1="49" count2="68" interval="1" />
-<order order="30" type="10" weight="100" count1="69" count2="80" interval="1" />
-<order order="31" type="11" weight="100" count1="1" count2="1" interval="1" />
-<order order="32" type="11" weight="10" count1="2" count2="2" interval="1" />
-<order order="33" type="12" weight="100" count1="1" count2="1" interval="1" />
-<order order="34" type="12" weight="10" count1="2" count2="2" interval="1" />
-<order order="35" type="13" weight="100" count1="1" count2="1" interval="1" />
-<order order="36" type="14" weight="100" count1="1" count2="1" interval="1" />
-<order order="37" type="15" weight="100" count1="1" count2="1" interval="1" />
-<order order="38" type="16" weight="1000" count1="80" count2="120" interval="10" />
-<order order="39" type="16" weight="400" count1="130" count2="170" interval="10" />
-<order order="40" type="16" weight="100" count1="180" count2="200" interval="10" />
+<order order="1" type="1" weight="3000" count1="24" count2="32" interval="1" rare="2" />
+<order order="2" type="1" weight="3000" count1="33" count2="48" interval="1" rare="3" />
+<order order="3" type="1" weight="200" count1="49" count2="64" interval="1" rare="4" />
+<order order="4" type="1" weight="40" count1="65" count2="80" interval="1" rare="5" />
+<order order="5" type="1" weight="10" count1="81" count2="88" interval="1" rare="6" />
+<order order="6" type="2" weight="3000" count1="24" count2="32" interval="1" rare="2" />
+<order order="7" type="2" weight="3000" count1="33" count2="48" interval="1" rare="3" />
+<order order="8" type="2" weight="200" count1="49" count2="64" interval="1" rare="4" />
+<order order="9" type="2" weight="40" count1="65" count2="80" interval="1" rare="5" />
+<order order="10" type="2" weight="10" count1="81" count2="88" interval="1" rare="6" />
+<order order="11" type="3" weight="3000" count1="26" count2="48" interval="1" rare="2" />
+<order order="12" type="3" weight="3000" count1="49" count2="72" interval="1" rare="3" />
+<order order="13" type="3" weight="200" count1="73" count2="96" interval="1" rare="4" />
+<order order="14" type="3" weight="40" count1="97" count2="120" interval="1" rare="5" />
+<order order="15" type="3" weight="10" count1="121" count2="132" interval="1" rare="6" />
+<order order="16" type="4" weight="3000" count1="24" count2="32" interval="1" rare="2" />
+<order order="17" type="4" weight="3000" count1="33" count2="48" interval="1" rare="3" />
+<order order="18" type="4" weight="200" count1="49" count2="64" interval="1" rare="4" />
+<order order="19" type="4" weight="40" count1="65" count2="80" interval="1" rare="5" />
+<order order="20" type="4" weight="10" count1="81" count2="88" interval="1" rare="6" />
+<order order="21" type="5" weight="3000" count1="24" count2="32" interval="1" rare="2" />
+<order order="22" type="5" weight="3000" count1="33" count2="48" interval="1" rare="3" />
+<order order="23" type="5" weight="200" count1="49" count2="64" interval="1" rare="4" />
+<order order="24" type="5" weight="40" count1="65" count2="80" interval="1" rare="5" />
+<order order="25" type="5" weight="10" count1="81" count2="88" interval="1" rare="6" />
+<order order="26" type="6" weight="3000" count1="18" count2="24" interval="1" rare="2" />
+<order order="27" type="6" weight="3000" count1="25" count2="36" interval="1" rare="3" />
+<order order="28" type="6" weight="200" count1="37" count2="48" interval="1" rare="4" />
+<order order="29" type="6" weight="40" count1="49" count2="60" interval="1" rare="5" />
+<order order="30" type="6" weight="10" count1="61" count2="66" interval="1" rare="6" />
+<order order="31" type="7" weight="3000" count1="48" count2="64" interval="1" rare="2" />
+<order order="32" type="7" weight="3000" count1="65" count2="96" interval="1" rare="3" />
+<order order="33" type="7" weight="200" count1="97" count2="128" interval="1" rare="4" />
+<order order="34" type="7" weight="40" count1="129" count2="160" interval="1" rare="5" />
+<order order="35" type="7" weight="10" count1="161" count2="176" interval="1" rare="6" />
+<order order="36" type="8" weight="3000" count1="24" count2="32" interval="1" rare="2" />
+<order order="37" type="8" weight="3000" count1="33" count2="48" interval="1" rare="3" />
+<order order="38" type="8" weight="200" count1="49" count2="64" interval="1" rare="4" />
+<order order="39" type="8" weight="40" count1="65" count2="80" interval="1" rare="5" />
+<order order="40" type="8" weight="10" count1="81" count2="88" interval="1" rare="6" />
+<order order="41" type="9" weight="3000" count1="24" count2="32" interval="1" rare="2" />
+<order order="42" type="9" weight="3000" count1="33" count2="48" interval="1" rare="3" />
+<order order="43" type="9" weight="200" count1="49" count2="64" interval="1" rare="4" />
+<order order="44" type="9" weight="40" count1="65" count2="80" interval="1" rare="5" />
+<order order="45" type="9" weight="10" count1="81" count2="88" interval="1" rare="6" />
+<order order="46" type="10" weight="3000" count1="24" count2="32" interval="1" rare="2" />
+<order order="47" type="10" weight="3000" count1="33" count2="48" interval="1" rare="3" />
+<order order="48" type="10" weight="200" count1="49" count2="64" interval="1" rare="4" />
+<order order="49" type="10" weight="40" count1="65" count2="80" interval="1" rare="5" />
+<order order="50" type="10" weight="10" count1="81" count2="88" interval="1" rare="6" />
+<order order="51" type="11" weight="100" count1="1" count2="1" interval="1" rare="4" />
+<order order="52" type="11" weight="10" count1="2" count2="2" interval="1" rare="5" />
+<order order="53" type="12" weight="100" count1="1" count2="1" interval="1" rare="4" />
+<order order="54" type="12" weight="10" count1="2" count2="2" interval="1" rare="5" />
+<order order="55" type="13" weight="100" count1="1" count2="1" interval="1" rare="4" />
+<order order="56" type="14" weight="100" count1="1" count2="1" interval="1" rare="5" />
+<order order="57" type="15" weight="100" count1="1" count2="1" interval="1" rare="5" />
+<order order="58" type="16" weight="3000" count1="60" count2="80" interval="10" rare="2" />
+<order order="59" type="16" weight="3000" count1="90" count2="120" interval="10" rare="3" />
+<order order="60" type="16" weight="200" count1="130" count2="160" interval="10" rare="4" />
+<order order="61" type="16" weight="40" count1="170" count2="200" interval="10" rare="5" />
+<order order="62" type="16" weight="10" count1="210" count2="220" interval="10" rare="6" />
 </attribute>
 <attribute id="6" position="3" zuanshi="1" >
-<order order="1" type="1" weight="3000" count1="40" count2="60" interval="1" />
-<order order="2" type="1" weight="1200" count1="61" count2="85" interval="1" />
-<order order="3" type="1" weight="100" count1="86" count2="100" interval="1" />
-<order order="4" type="2" weight="3000" count1="40" count2="60" interval="1" />
-<order order="5" type="2" weight="1200" count1="61" count2="85" interval="1" />
-<order order="6" type="2" weight="100" count1="86" count2="100" interval="1" />
-<order order="7" type="3" weight="3000" count1="60" count2="90" interval="1" />
-<order order="8" type="3" weight="1200" count1="91" count2="127" interval="1" />
-<order order="9" type="3" weight="100" count1="128" count2="150" interval="1" />
-<order order="10" type="4" weight="3000" count1="40" count2="60" interval="1" />
-<order order="11" type="4" weight="1200" count1="61" count2="85" interval="1" />
-<order order="12" type="4" weight="100" count1="86" count2="100" interval="1" />
-<order order="13" type="5" weight="3000" count1="40" count2="60" interval="1" />
-<order order="14" type="5" weight="1200" count1="61" count2="85" interval="1" />
-<order order="15" type="5" weight="100" count1="86" count2="100" interval="1" />
-<order order="16" type="6" weight="3000" count1="30" count2="45" interval="1" />
-<order order="17" type="6" weight="1200" count1="46" count2="63" interval="1" />
-<order order="18" type="6" weight="100" count1="64" count2="75" interval="1" />
-<order order="19" type="7" weight="3000" count1="80" count2="120" interval="1" />
-<order order="20" type="7" weight="1200" count1="121" count2="170" interval="1" />
-<order order="21" type="7" weight="100" count1="171" count2="200" interval="1" />
-<order order="22" type="8" weight="3000" count1="40" count2="60" interval="1" />
-<order order="23" type="8" weight="1200" count1="61" count2="85" interval="1" />
-<order order="24" type="8" weight="100" count1="86" count2="100" interval="1" />
-<order order="25" type="9" weight="3000" count1="40" count2="60" interval="1" />
-<order order="26" type="9" weight="1200" count1="61" count2="85" interval="1" />
-<order order="27" type="9" weight="100" count1="86" count2="100" interval="1" />
-<order order="28" type="10" weight="3000" count1="40" count2="60" interval="1" />
-<order order="29" type="10" weight="1200" count1="61" count2="85" interval="1" />
-<order order="30" type="10" weight="100" count1="86" count2="100" interval="1" />
-<order order="31" type="11" weight="100" count1="1" count2="1" interval="1" />
-<order order="32" type="11" weight="10" count1="2" count2="2" interval="1" />
-<order order="33" type="12" weight="100" count1="1" count2="1" interval="1" />
-<order order="34" type="12" weight="10" count1="2" count2="2" interval="1" />
-<order order="35" type="13" weight="100" count1="1" count2="1" interval="1" />
-<order order="36" type="13" weight="10" count1="2" count2="2" interval="1" />
-<order order="37" type="14" weight="100" count1="1" count2="1" interval="1" />
-<order order="38" type="14" weight="10" count1="2" count2="2" interval="1" />
-<order order="39" type="15" weight="10" count1="1" count2="1" interval="1" />
-<order order="40" type="16" weight="3000" count1="200" count2="300" interval="25" />
-<order order="41" type="16" weight="1200" count1="325" count2="425" interval="25" />
-<order order="42" type="16" weight="100" count1="450" count2="500" interval="25" />
-<order order="43" type="17" weight="3000" count1="40" count2="60" interval="5" />
-<order order="44" type="17" weight="1200" count1="65" count2="85" interval="5" />
-<order order="45" type="17" weight="100" count1="90" count2="100" interval="5" />
+<order order="1" type="1" weight="9000" count1="30" count2="40" interval="1" rare="2" />
+<order order="2" type="1" weight="9000" count1="41" count2="60" interval="1" rare="3" />
+<order order="3" type="1" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="4" type="1" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="5" type="1" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="6" type="2" weight="9000" count1="30" count2="40" interval="1" rare="2" />
+<order order="7" type="2" weight="9000" count1="41" count2="60" interval="1" rare="3" />
+<order order="8" type="2" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="9" type="2" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="10" type="2" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="11" type="3" weight="9000" count1="45" count2="60" interval="1" rare="2" />
+<order order="12" type="3" weight="9000" count1="61" count2="90" interval="1" rare="3" />
+<order order="13" type="3" weight="200" count1="91" count2="120" interval="1" rare="4" />
+<order order="14" type="3" weight="40" count1="121" count2="150" interval="1" rare="5" />
+<order order="15" type="3" weight="10" count1="151" count2="165" interval="1" rare="6" />
+<order order="16" type="4" weight="9000" count1="30" count2="40" interval="1" rare="2" />
+<order order="17" type="4" weight="9000" count1="41" count2="60" interval="1" rare="3" />
+<order order="18" type="4" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="19" type="4" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="20" type="4" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="21" type="5" weight="9000" count1="30" count2="40" interval="1" rare="2" />
+<order order="22" type="5" weight="9000" count1="41" count2="60" interval="1" rare="3" />
+<order order="23" type="5" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="24" type="5" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="25" type="5" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="26" type="6" weight="9000" count1="20" count2="30" interval="1" rare="2" />
+<order order="27" type="6" weight="9000" count1="31" count2="45" interval="1" rare="3" />
+<order order="28" type="6" weight="200" count1="46" count2="60" interval="1" rare="4" />
+<order order="29" type="6" weight="40" count1="61" count2="75" interval="1" rare="5" />
+<order order="30" type="6" weight="10" count1="76" count2="80" interval="1" rare="6" />
+<order order="31" type="7" weight="9000" count1="60" count2="80" interval="1" rare="2" />
+<order order="32" type="7" weight="9000" count1="81" count2="120" interval="1" rare="3" />
+<order order="33" type="7" weight="200" count1="121" count2="160" interval="1" rare="4" />
+<order order="34" type="7" weight="40" count1="161" count2="200" interval="1" rare="5" />
+<order order="35" type="7" weight="10" count1="201" count2="220" interval="1" rare="6" />
+<order order="36" type="8" weight="9000" count1="30" count2="40" interval="1" rare="2" />
+<order order="37" type="8" weight="9000" count1="41" count2="60" interval="1" rare="3" />
+<order order="38" type="8" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="39" type="8" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="40" type="8" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="41" type="9" weight="9000" count1="30" count2="40" interval="1" rare="2" />
+<order order="42" type="9" weight="9000" count1="41" count2="60" interval="1" rare="3" />
+<order order="43" type="9" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="44" type="9" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="45" type="9" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="46" type="10" weight="9000" count1="30" count2="40" interval="1" rare="2" />
+<order order="47" type="10" weight="9000" count1="41" count2="60" interval="1" rare="3" />
+<order order="48" type="10" weight="200" count1="61" count2="80" interval="1" rare="4" />
+<order order="49" type="10" weight="40" count1="81" count2="100" interval="1" rare="5" />
+<order order="50" type="10" weight="10" count1="101" count2="110" interval="1" rare="6" />
+<order order="51" type="11" weight="100" count1="1" count2="1" interval="1" rare="4" />
+<order order="52" type="11" weight="10" count1="2" count2="2" interval="1" rare="5" />
+<order order="53" type="12" weight="100" count1="1" count2="1" interval="1" rare="4" />
+<order order="54" type="12" weight="10" count1="2" count2="2" interval="1" rare="5" />
+<order order="55" type="13" weight="100" count1="1" count2="1" interval="1" rare="4" />
+<order order="56" type="13" weight="10" count1="2" count2="2" interval="1" rare="5" />
+<order order="57" type="14" weight="100" count1="1" count2="1" interval="1" rare="5" />
+<order order="58" type="14" weight="10" count1="2" count2="2" interval="1" rare="6" />
+<order order="59" type="15" weight="10" count1="1" count2="1" interval="1" rare="5" />
+<order order="60" type="16" weight="9000" count1="150" count2="200" interval="25" rare="2" />
+<order order="61" type="16" weight="9000" count1="225" count2="300" interval="25" rare="3" />
+<order order="62" type="16" weight="200" count1="325" count2="400" interval="25" rare="4" />
+<order order="63" type="16" weight="40" count1="425" count2="500" interval="25" rare="5" />
+<order order="64" type="16" weight="10" count1="525" count2="550" interval="25" rare="6" />
+<order order="65" type="17" weight="9000" count1="30" count2="40" interval="5" rare="2" />
+<order order="66" type="17" weight="9000" count1="45" count2="60" interval="5" rare="3" />
+<order order="67" type="17" weight="200" count1="65" count2="80" interval="5" rare="4" />
+<order order="68" type="17" weight="40" count1="85" count2="100" interval="5" rare="5" />
+<order order="69" type="17" weight="10" count1="105" count2="110" interval="5" rare="6" />
 </attribute>
 </data>
