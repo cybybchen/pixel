@@ -50,6 +50,8 @@ public class EquipService {
 	private UserFoodService userFoodService;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private UserHeroService userHeroService;
 	
 	public EquipmentBean getEquip(int itemId) {
 		EquipmentBean equip = equipRedisService.getEquip(itemId);
@@ -108,10 +110,12 @@ public class EquipService {
 				if (userEquip != null && userEquip.getEquipCount() >= chip.getCount() * count) {
 					userEquip.setEquipCount(userEquip.getEquipCount() - chip.getCount() * count);
 					userEquipService.updateUserEquip(userEquip);
-					userEquipService.addUserEquip(user.getId(), chip.getAim(), count);
+					rewardService.doReward(user, chip.getAim(), count);
+//						userEquipService.addUserEquip(user.getId(), chip.getAim(), count);
 					composeEquipId = chip.getAim();
-					userEquipList.add(userEquip);
-					userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
+						userEquipList.add(userEquip);
+						if (composeEquipId < RewardConst.HERO)
+							userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
 				}
 			}
 				

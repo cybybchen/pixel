@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
@@ -49,7 +50,6 @@ public class EquipCommandService extends BaseCommandService {
 			count = cmd.getCount();
 		
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
-		
 		int composeEquipId = equipService.equipCompose(user, levelUpId, count, userEquipList);
 		
 		if (composeEquipId == 0) {
@@ -58,6 +58,8 @@ public class EquipCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_EQUIP);
             responseBuilder.setErrorCommand(errorCommand);
 		}else if (composeEquipId > 0) {
+			if (composeEquipId > RewardConst.HERO)
+				pushCommandService.pushRewardCommand(responseBuilder, user, composeEquipId);
 			builder.setEquipId(composeEquipId);
 			builder.setCount(count);
 			responseBuilder.setEquipComposeCommand(builder.build());
