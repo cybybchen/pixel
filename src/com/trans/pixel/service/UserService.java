@@ -160,25 +160,28 @@ public class UserService {
 					logger.error("ivalid yueka type "+libao.getRechargeid());
 					continue;
 				}
-				MailBean mail = new MailBean();
-				mail.setContent(yueka.getName());
-				RewardBean reward = new RewardBean();
-				List<RewardBean> list = new ArrayList<RewardBean>();
-				reward.setItemid(yueka.getRewardid());
-				reward.setCount(yueka.getRewardcount());
-				list.add(reward);
-				if (yueka.getRewardid1() > 0) {
-					reward = new RewardBean();
-					reward.setItemid(yueka.getRewardid1());
-					reward.setCount(yueka.getRewardcount1());
-					list.add(reward);
-				}
 				
-				mail.setRewardList(list);
-				mail.setStartDate(DateUtil.getCurrentDateString());
-				mail.setType(MailConst.TYPE_SYSTEM_MAIL);
-				mail.setUserId(user.getId());
-				mailService.addMail(mail);
+				if (yueka.getRewardid() > 0) {
+					MailBean mail = new MailBean();
+					mail.setContent(yueka.getName());
+					RewardBean reward = new RewardBean();
+					List<RewardBean> list = new ArrayList<RewardBean>();
+					reward.setItemid(yueka.getRewardid());
+					reward.setCount(yueka.getRewardcount());
+					list.add(reward);
+					if (yueka.getRewardid1() > 0) {
+						reward = new RewardBean();
+						reward.setItemid(yueka.getRewardid1());
+						reward.setCount(yueka.getRewardcount1());
+						list.add(reward);
+					}
+					
+					mail.setRewardList(list);
+					mail.setStartDate(DateUtil.getCurrentDateString());
+					mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+					mail.setUserId(user.getId());
+					mailService.addMail(mail);
+				}
 			}
 		}
 			

@@ -44,7 +44,7 @@ public class NoticeMessageRedisService extends RedisService {
 				
 				if (bzOps.size() >= MessageConst.NOTICE_MESSAGE_MAX) {
 //					Set<String> ids = bzOps.range(bzOps.size() - 1, bzOps.size() - 1);
-					bzOps.removeRange(bzOps.size() - 1, bzOps.size() - 1);
+					bzOps.removeRange(0, 0);
 				}
 				
 				return bzOps.add(message, timeStamp);
