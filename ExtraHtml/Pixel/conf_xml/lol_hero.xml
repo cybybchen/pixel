@@ -132,7 +132,7 @@
 <equip equipid="2" arm1="14014" arm2="14014" arm3="14021" arm4="14016" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="17" name="盖伦" img="29" description="喜欢躲在草丛中，最常用的一招是将大宝剑从天而降。" quality="4" position="4" handbook="1" zhanli="100" ad="44" ad_rare="6.4" ap="36" ap_rare="6" arm="19" arm_rare="10" mr="30" mr_rare="4.8" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="6" steal_rare="8" >
+<hero id="17" name="盖伦" img="29" description="喜欢躲在草丛中，最常用的一招是将大宝剑从天而降。" quality="4" position="4" handbook="1" zhanli="100" ad="44" ad_rare="6.4" ap="36" ap_rare="6" arm="19" arm_rare="10" mr="30" mr_rare="4.8" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="6" steal_rare="3" >
 <skill> 
 <skill  skillid="1702" skill="德玛西亚正义" unlock="1" />
 <skill  skillid="1701" skill="坚韧" unlock="2" />
@@ -154,7 +154,7 @@
 <equip equipid="2" arm1="14115" arm2="14004" arm3="14007" arm4="14003" arm5="14042" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="27" name="塔里克" img="38" description="狂热的宝石爱好者，看样子像是个基佬，但更是一个土豪！" quality="4" position="3" handbook="1" zhanli="100" ad="55" ad_rare="4" ap="28" ap_rare="8" arm="16.5" arm_rare="10.4" mr="30" mr_rare="4.8" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="7" steal_rare="6.4" >
+<hero id="27" name="塔里克" img="38" description="狂热的宝石爱好者，看样子像是个基佬，但更是一个土豪！" quality="4" position="3" handbook="1" zhanli="100" ad="55" ad_rare="4" ap="28" ap_rare="8" arm="16.5" arm_rare="10.4" mr="30" mr_rare="4.8" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="7" steal_rare="2" >
 <skill> 
 <skill  skillid="2701" skill="宝石护盾" unlock="1" />
 <skill  skillid="2702" skill="神圣洗礼" unlock="2" />
@@ -220,7 +220,7 @@
 <equip equipid="2" arm1="14001" arm2="14115" arm3="14042" arm4="14046" arm5="14045" arm6="14024" />
 </equip> 
 </hero> 
-<hero id="36" name="阿利斯塔" img="20" description="没人能击退他，因为他总是先把别人击退，绝活是救死扶伤顶。" quality="6" position="3" handbook="1" zhanli="100" ad="43" ad_rare="8" ap="29" ap_rare="8" arm="12" arm_rare="16" mr="30" mr_rare="16" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="3" steal_rare="8" >
+<hero id="36" name="阿利斯塔" img="20" description="没人能击退他，因为他总是先把别人击退，绝活是救死扶伤顶。" quality="6" position="3" handbook="1" zhanli="100" ad="43" ad_rare="8" ap="29" ap_rare="8" arm="12" arm_rare="16" mr="30" mr_rare="16" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="3" steal_rare="3" >
 <skill> 
 <skill  skillid="3605" skill="坚定" unlock="1" />
 <skill  skillid="3602" skill="粉碎大地" unlock="2" />
@@ -396,7 +396,7 @@
 <equip equipid="2" arm1="14014" arm2="14016" arm3="14042" arm4="14045" arm5="14044" arm6="14034" />
 </equip> 
 </hero> 
-<hero id="50" name="蒙多医生" img="41" description="虽然是个医生，但是感觉他自己却病的不轻了。" quality="5" position="4" handbook="1" zhanli="100" ad="56.23" ad_rare="6.4" ap="31" ap_rare="4" arm="17" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="10" steal_rare="10" >
+<hero id="50" name="蒙多医生" img="41" description="虽然是个医生，但是感觉他自己却病的不轻了。" quality="5" position="4" handbook="1" zhanli="100" ad="56.23" ad_rare="6.4" ap="31" ap_rare="4" arm="17" arm_rare="12" mr="30" mr_rare="4" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="10" steal_rare="4" >
 <skill> 
 <skill  skillid="5001" skill="病毒屠刀" unlock="1" />
 <skill  skillid="5002" skill="痛苦燃烧" unlock="2" />
@@ -616,7 +616,7 @@
 <equip equipid="2" arm1="14012" arm2="14015" arm3="14009" arm4="14005" arm5="14045" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="74" name="娑娜" img="6" description="一个哑巴，却成天拖着一把巨大的古琴到处跑。" quality="4" position="3" handbook="1" zhanli="100" ad="42" ad_rare="4.8" ap="44" ap_rare="4.8" arm="9" arm_rare="14" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="5" steal_rare="40" >
+<hero id="74" name="娑娜" img="6" description="一个哑巴，却成天拖着一把巨大的古琴到处跑。" quality="4" position="3" handbook="1" zhanli="100" ad="42" ad_rare="4.8" ap="44" ap_rare="4.8" arm="9" arm_rare="14" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="5" steal_rare="3" >
 <skill> 
 <skill  skillid="7402" skill="英勇赞美诗" unlock="1" />
 <skill  skillid="7401" skill="能量和弦" unlock="2" />
@@ -946,7 +946,7 @@
 <equip equipid="2" arm1="14012" arm2="14015" arm3="14016" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="10" name="古拉加斯" img="18" description="酒鬼一个，以桶论酒，在各大酒吧中均有身影。" quality="4" position="0" handbook="1" zhanli="100" ad="35" ad_rare="4" ap="46" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="6" >
+<hero id="10" name="古拉加斯" img="18" description="酒鬼一个，以桶论酒，在各大酒吧中均有身影。" quality="4" position="0" handbook="1" zhanli="100" ad="35" ad_rare="4" ap="46" ap_rare="" arm="16" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="8" steal_rare="2" >
 <skill> 
 <skill  skillid="1001" skill="欢乐时光" unlock="1" />
 <skill  skillid="1002" skill="滚动酒桶" unlock="2" />
@@ -1034,7 +1034,7 @@
 <equip equipid="2" arm1="14009" arm2="14015" arm3="14012" arm4="14017" arm5="14005" arm6="14029" />
 </equip> 
 </hero> 
-<hero id="94" name="璐璐" img="25" description="掌握着古老的奇奇怪怪的魔法的女巫，与精灵是好伙伴。" quality="5" position="3" handbook="1" zhanli="100" ad="32" ad_rare="6" ap="36" ap_rare="6" arm="9" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="40" >
+<hero id="94" name="璐璐" img="25" description="掌握着古老的奇奇怪怪的魔法的女巫，与精灵是好伙伴。" quality="5" position="3" handbook="1" zhanli="100" ad="32" ad_rare="6" ap="36" ap_rare="6" arm="9" arm_rare="12" mr="30" mr_rare="" adi="" adi_rare="" api="" api_rare="" rating="" rating_rare="" speed="" speed_rare="" steal="2" steal_rare="3" >
 <skill> 
 <skill  skillid="9401" skill="奇思妙想" unlock="1" />
 <skill  skillid="9402" skill="闪耀长枪" unlock="2" />
