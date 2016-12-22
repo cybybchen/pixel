@@ -135,5 +135,8 @@
 	</bean>
 	<bean id="gmAccountRedisService" class="com.trans.pixel.service.redis.GmAccountRedisService">
 	</bean>
+	
+	<bean id="userService" class="com.trans.pixel.service.UserService">
+	</bean>
     
 </beans>  
