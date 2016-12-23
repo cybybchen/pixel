@@ -155,14 +155,14 @@ public class AreaFightService extends FightService{
 		rewardService.doRewards(user, rewards.build());
 
 //		AreaMode.Builder areamode = redis.getAreaMode(user);
-		Integer[] level = redis.addLevel(monster.getBelongto(), monster.getLevel1(), user);
-		if(level[2] == 0) {
+		String[] level = redis.addLevel(monster.getBelongto(), monster.getLevel2(), user);
+		if(TypeTranslatedUtil.stringToInt(level[2]) == 0) {
 //			for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
 //				if(user.getAreaUnlock() == monster.getBelongto() && areainfo.getId() > user.getAreaUnlock()){
 //					if(level[1] >= areainfo.getZhanli()){
 //						unlockArea(areainfo.getId(), level[1], user);
-						level[2] = 1;
-						redis.saveLevel(monster.getBelongto(), level, user);
+						level[2] = "1";
+						redis.saveOriginalLevel(monster.getBelongto(), level, user);
 //					}
 //				}
 //			}
@@ -552,12 +552,12 @@ public class AreaFightService extends FightService{
 		
 		for(AreaInfo.Builder areainfo : areamode.getRegionBuilderList()){
 			if(zhanli >= areainfo.getZhanli()) {
-				Integer[] level = redis.addLevel(areainfo.getId(), areainfo.getLevel(), user);
-				if(level[2] == 0) {
+				String[] level = redis.addLevel(areainfo.getId(), areainfo.getLevel(), user);
+				if(TypeTranslatedUtil.stringToInt(level[2]) == 0) {
 					if(areainfo.getId() > user.getAreaUnlock()){
 							unlockArea(areainfo.getId(), zhanli, user);
-							level[2] = 1;
-							redis.saveLevel(areainfo.getId(), level, user);
+							level[2] = "1";
+							redis.saveOriginalLevel(areainfo.getId(), level, user);
 					}
 				}
 			}

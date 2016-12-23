@@ -468,6 +468,7 @@ message AreaMonster {//区域怪物
 	optional int32 level1 = 11;
 	optional int32 weight = 10;
 	optional int32 pl = 12;
+	optional float level2 = 13;
 }
 
 message AreaMonsterList {

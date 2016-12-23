@@ -49,6 +49,7 @@ import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.Position;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class AreaRedisService extends RedisService{
@@ -463,22 +464,45 @@ public class AreaRedisService extends RedisService{
 		}
 		return levelvalue;
 	}
-
-	public Integer[] getLevel(int id, UserBean user){
-		String value = hget(RedisKey.AREALEVEL+user.getId(), id+"");
-		return calLevel(value);
+	
+	private String[] calOriginalLevel(String value) {
+		String[] levelvalue = {"","",""};
+		if(value == null)
+			return levelvalue;
+		String[] values = value.split("#");
+		if(values.length == 3){
+			levelvalue[0] = values[0];
+			levelvalue[1] = values[1];
+			levelvalue[2] = values[2];
+		}
+		return levelvalue;
 	}
 
-	public void saveLevel(int id, Integer[] count, UserBean user) {
+//	public Integer[] getLevel(int id, UserBean user){
+//		String value = hget(RedisKey.AREALEVEL+user.getId(), id+"");
+//		return calLevel(value);
+//	}
+	
+	public String[] getOriginalLevel(int id, UserBean user){
+		String value = hget(RedisKey.AREALEVEL+user.getId(), id+"");
+		return calOriginalLevel(value);
+	}
+
+//	public void saveLevel(int id, Integer[] count, UserBean user) {
+//		hput(RedisKey.AREALEVEL+user.getId(), id+"", count[0]+"#"+count[1]+"#"+count[2]);
+//		expire(RedisKey.AREALEVEL+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+//	}
+	
+	public void saveOriginalLevel(int id, String[] count, UserBean user) {
 		hput(RedisKey.AREALEVEL+user.getId(), id+"", count[0]+"#"+count[1]+"#"+count[2]);
 		expire(RedisKey.AREALEVEL+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
-	public Integer[] addLevel(int id, int count, UserBean user) {
-		Integer[] level = getLevel(id, user);
-		level[0] += count;
-		level[1]++;
-		saveLevel(id, level, user);
+	public String[] addLevel(int id, float count, UserBean user) {
+		String[] level = getOriginalLevel(id, user);
+		level[0] = "" + (TypeTranslatedUtil.stringToFloat(level[0]) + count);
+		level[1] = "" + (TypeTranslatedUtil.stringToInt(level[1]) + 1);
+		saveOriginalLevel(id, level, user);
 		return level;
 	}
 

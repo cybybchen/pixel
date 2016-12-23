@@ -10,5 +10,6 @@
 <order order="8" description="累计签到135次" targetid="32" targetcount="135" rewardid="53116" rewardcount="1" />
 <order order="9" description="累计签到180次" targetid="32" targetcount="180" rewardid="53097" rewardcount="1" />
 <order order="10" description="累计签到360次" targetid="32" targetcount="360" rewardid="53108" rewardcount="1" />
+<order order="11" description="累计签到1000次" targetid="32" targetcount="1000" rewardid="55039" rewardcount="1" />
 </sanqian>
 </data>
