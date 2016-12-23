@@ -255,7 +255,7 @@ function updateListJson(action, isback) {
 		updateListData(action, datajson);
 		if(!isback) $(".ul-wapper .ui-listview:visible").scrollTop(0);
 	}else{
-		$.getJSON("http://game.lolzj.cc/loldataserver/index.php", action, function(json){
+		$.getJSON("https://123.207.88.112/loldataserver/index.php", action, function(json){
 			updateListData(action, json);
 			$(".ul-wapper .ui-detailview:visible").scrollTop(0);
 			if(!isback) $(".ul-wapper .ui-listview:visible").scrollTop(0);
