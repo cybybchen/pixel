@@ -1812,4 +1812,10 @@
 		<item itemid="22040" item="崔斯塔娜碎片" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="35101" name="进群福利礼包" img="34001" rare="5" description="开启随机获得大量英雄和装备碎片" hashero="0" cyb="0" judge="5" endtime="" itemcount="4" weightall="310" >
+		<item itemid="33001" item="蓝色碎片箱" counta="1" countb="1" weight="100" />
+		<item itemid="33002" item="紫色碎片箱" counta="1" countb="1" weight="100" />
+		<item itemid="36007" item="紫色英雄碎片包" counta="1" countb="1" weight="100" />
+		<item itemid="36008" item="橙色英雄碎片包" counta="1" countb="1" weight="10" />
+	</loot>
 </data>
