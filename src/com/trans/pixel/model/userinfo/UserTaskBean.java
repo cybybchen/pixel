@@ -12,6 +12,13 @@ public class UserTaskBean {
 	private int targetId = 0;
 	private int targetCount = 0;
 	private String targetRecord = "";
+	public UserTaskBean(long id, long userId, int targetId, int targetCount, String targetRecord) {
+		this.id = id;
+		this.userId = userId;
+		this.targetId = targetId;
+		this.targetCount = targetCount;
+		this.targetRecord = targetRecord;
+	}
 	public UserTaskBean(long userId, UserTask userTask) {
 		this.userId = userId;
 		this.targetId = userTask.getTargetid();
