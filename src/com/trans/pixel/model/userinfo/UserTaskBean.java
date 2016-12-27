@@ -12,18 +12,21 @@ public class UserTaskBean {
 	private int targetId = 0;
 	private int targetCount = 0;
 	private String targetRecord = "";
-	public UserTaskBean(long id, long userId, int targetId, int targetCount, String targetRecord) {
-		this.id = id;
-		this.userId = userId;
-		this.targetId = targetId;
-		this.targetCount = targetCount;
-		this.targetRecord = targetRecord;
-	}
-	public UserTaskBean(long userId, UserTask userTask) {
-		this.userId = userId;
-		this.targetId = userTask.getTargetid();
-		this.targetCount = userTask.getProcess();
-		this.targetRecord = composeTargetRecord(userTask.getHeroidList());
+//	public UserTaskBean(long id, long userId, int targetId, int targetCount, String targetRecord) {
+//		this.id = id;
+//		this.userId = userId;
+//		this.targetId = targetId;
+//		this.targetCount = targetCount;
+//		this.targetRecord = targetRecord;
+//	}
+	public static UserTaskBean init(long userId, UserTask userTask) {
+		UserTaskBean ut = new UserTaskBean();
+		ut.setUserId(userId);
+		ut.setTargetId(userTask.getTargetid());
+		ut.setTargetCount(userTask.getProcess());
+		ut.setTargetRecord(composeTargetRecord(userTask.getHeroidList()));
+		
+		return ut;
 	}
 	
 	public UserTask build() {
@@ -65,7 +68,7 @@ public class UserTaskBean {
 	public void setTargetRecord(String targetRecord) {
 		this.targetRecord = targetRecord;
 	}
-	private String composeTargetRecord(List<Integer> heroIdList) {
+	private static String composeTargetRecord(List<Integer> heroIdList) {
 		String record = "";
 		for (int heroId : heroIdList) {
 			record += SPLIT + heroId;

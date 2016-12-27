@@ -60,7 +60,7 @@ public class UserTaskService {
 	public void updateTask1ToDB(long userId, int targetId) {
 		UserTask ut = userTaskRedisService.getUserTask(userId, targetId);
 		if(ut != null)
-			userTaskMapper.updateUserTask1(new UserTaskBean(userId, ut));
+			userTaskMapper.updateUserTask1(UserTaskBean.init(userId, ut));
 	}
 	
 	public String popTask1DBKey(){
@@ -130,7 +130,7 @@ public class UserTaskService {
 	public void updateTask2ToDB(long userId, int targetId) {
 		UserTask ut = userTaskRedisService.getUserTask2(userId, targetId);
 		if(ut != null)
-			userTaskMapper.updateUserTask2(new UserTaskBean(userId, ut));
+			userTaskMapper.updateUserTask2(UserTaskBean.init(userId, ut));
 	}
 	
 	public String popTask2DBKey(){
