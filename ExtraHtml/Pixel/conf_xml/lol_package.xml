@@ -1734,6 +1734,12 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="36010" name="英雄碎片包" img="32010" rare="5" description="开启获得1-2个随机英雄碎片" hashero="0" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="36007" item="紫色英雄碎片包" counta="2" countb="2" weight="100" />
+		<item itemid="36008" item="橙色英雄碎片包" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 	<loot itemid="36101" name="紫色坦克碎片包" img="32010" rare="4" description="开启获得1个随机紫色英雄碎片" hashero="0" cyb="0" judge="0" endtime="" itemcount="4" weightall="400" >
 		<item itemid="22048" item="墨菲特碎片" counta="1" countb="1" weight="100" />
 		<item itemid="22052" item="辛吉德碎片" counta="1" countb="1" weight="100" />
