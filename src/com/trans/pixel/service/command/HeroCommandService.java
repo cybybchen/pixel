@@ -281,7 +281,7 @@ public class HeroCommandService extends BaseCommandService {
 		
 		long userId = user.getId();
 		int addCoin = 0;
-		int addExp = 0;
+		long addExp = 0;
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		Map<Integer, List<FenjieHeroInfo>> map = new HashMap<Integer, List<FenjieHeroInfo>>();
 		for (FenjieHeroInfo hero : fenjieList) {

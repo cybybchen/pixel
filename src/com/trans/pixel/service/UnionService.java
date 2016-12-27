@@ -578,7 +578,7 @@ public class UnionService extends FightService{
 			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_CRONTAB, 0, 0);
 	}
 	
-	public void costUnionBossActivity(UserBean user, int targetId, int count) {
+	public void costUnionBossActivity(UserBean user, int targetId, long count) {
 		if (user.getUnionId() > 0)
 			doUnionBossRecord(user, UnionConst.UNION_BOSS_TYPE_COST, targetId, count);
 	}
@@ -666,7 +666,7 @@ public class UnionService extends FightService{
 		return time;
 	}
 	
-	public void doUnionBossRecord(UserBean user, int type, int targetId, int count) {
+	public void doUnionBossRecord(UserBean user, int type, int targetId, long count) {
 		Union.Builder union = redis.getUnion(user);
 		if (union == null)
 			return;
@@ -681,9 +681,9 @@ public class UnionService extends FightService{
 			if (unionBoss.getType() == type) {
 				if (unionBoss.getTargetid() == targetId) {
 					if (type == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
-						updateKillMonsterRecord(union, unionBoss.getId(), count);
+						updateKillMonsterRecord(union, unionBoss.getId(), (int)count);
 					} else if (type == UnionConst.UNION_BOSS_TYPE_COST) {
-						updateCostRecord(union, unionBoss.getId(), count);
+						updateCostRecord(union, unionBoss.getId(), (int)count);
 					}
 					calUnionBossRefresh(union, unionBoss, user, type);
 					if (redis.waitLock("Union_"+union.getId())){

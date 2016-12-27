@@ -19,7 +19,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class HeroUpgradeBean {
 	private int level = 0;
-	private int exp = 0;
+	private long exp = 0;
 	private int sp = 0;
 	private int zhanli = 0;
 	public int getLevel() {
@@ -28,10 +28,10 @@ public class HeroUpgradeBean {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	public int getExp() {
+	public long getExp() {
 		return exp;
 	}
-	public void setExp(int exp) {
+	public void setExp(long exp) {
 		this.exp = exp;
 	}
 	public int getSp() {
@@ -63,7 +63,7 @@ public class HeroUpgradeBean {
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
 		bean.setLevel(json.getInt(LEVEL));
-		bean.setExp(json.getInt(EXP));
+		bean.setExp(json.getLong(EXP));
 		bean.setSp(json.getInt(SP));
 		bean.setZhanli(json.getInt(ZHANLI));
 		
@@ -85,7 +85,7 @@ public class HeroUpgradeBean {
 				HeroUpgradeBean hu = new HeroUpgradeBean();
 				Element huElement = (Element) rootList.get(i);
 				hu.setLevel(TypeTranslatedUtil.stringToInt(huElement.attributeValue(LEVEL)));
-				hu.setExp(TypeTranslatedUtil.stringToInt(huElement.attributeValue(EXP)));
+				hu.setExp(TypeTranslatedUtil.stringToLong(huElement.attributeValue(EXP)));
 				hu.setSp(TypeTranslatedUtil.stringToInt(huElement.attributeValue(SP)));
 				hu.setZhanli(TypeTranslatedUtil.stringToInt(huElement.attributeValue(ZHANLI)));
 				

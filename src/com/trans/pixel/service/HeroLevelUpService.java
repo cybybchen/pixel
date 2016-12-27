@@ -177,7 +177,7 @@ public class HeroLevelUpService {
 		if (heroInfo.getLevel() >= HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;
 		}
-		int useExp = heroService.getLevelUpExp(heroInfo.getLevel() + 1);
+		long useExp = heroService.getLevelUpExp(heroInfo.getLevel() + 1);
 		if (!costService.costAndUpdate(user, RewardConst.EXP, useExp)) {
 			return ErrorConst.NOT_ENOUGH_EXP;
 		}
@@ -201,7 +201,7 @@ public class HeroLevelUpService {
 		if (heroInfo.getLevel() >= HERO_MAX_LEVEL || heroInfo.getLevel() + level > HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;
 		}
-		int useExp = heroService.getLevelUpExp(heroInfo.getLevel(), level);
+		long useExp = heroService.getLevelUpExp(heroInfo.getLevel(), level);
 		if (!costService.costAndUpdate(user, RewardConst.EXP, useExp)) {
 			return ErrorConst.NOT_ENOUGH_EXP;
 		}

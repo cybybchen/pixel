@@ -28,7 +28,7 @@ public class CostService {
 	@Resource
 	private UnionService unionService;
 	
-	public boolean costAndUpdate(UserBean user, int itemId, int itemCount) {
+	public boolean costAndUpdate(UserBean user, int itemId, long itemCount) {
 		boolean needUpdateUser = cost(user, itemId, itemCount);
 		if (needUpdateUser)
 			userService.updateUser(user);
@@ -39,12 +39,12 @@ public class CostService {
 	/**
 	 * need updateuser when return true
 	 */
-	public boolean cost(UserBean user, int itemId, int itemCount) {
+	public boolean cost(UserBean user, int itemId, long itemCount) {
 		long userId = user.getId();
 		if (itemId > RewardConst.FOOD) {
 			UserFoodBean userFood = userFoodService.selectUserFood(user, itemId);
 			if (userFood != null && userFood.getCount() >= itemCount) {
-				userFood.setCount(userFood.getCount() - itemCount);
+				userFood.setCount((int)(userFood.getCount() - itemCount));
 				userFoodService.updateUserFood(userFood);
 				return true;
 			}
@@ -54,14 +54,14 @@ public class CostService {
 		} else if (itemId > RewardConst.PACKAGE) {
 			UserPropBean userProp = userPropService.selectUserProp(user.getId(), itemId);
 			if (userProp != null && userProp.getPropCount() >= itemCount) {
-				userProp.setPropCount(userProp.getPropCount() - itemCount);
+				userProp.setPropCount((int)(userProp.getPropCount() - itemCount));
 				userPropService.updateUserProp(userProp);
 				return true;
 			}
 		} else if (itemId > RewardConst.EQUIPMENT) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip != null && userEquip.getEquipCount() >= itemCount) {
-				userEquip.setEquipCount(userEquip.getEquipCount() - itemCount);
+				userEquip.setEquipCount((int)(userEquip.getEquipCount() - itemCount));
 				userEquipService.updateUserEquip(userEquip);
 				return true;
 			}
@@ -80,28 +80,28 @@ public class CostService {
 					return true;
 				case RewardConst.JEWEL:
 					if(itemCount > user.getJewel()) return false;
-					user.setJewel(user.getJewel() - itemCount);
+					user.setJewel((int)(user.getJewel() - itemCount));
 					/**
 					 * 消耗钻石的活动
 					 */
-					activityService.costJewelActivity(user, itemCount);
+					activityService.costJewelActivity(user, (int)itemCount);
 					
 					return true;
 				case RewardConst.PVPCOIN:
 					if(itemCount > user.getPointPVP()) return false;
-					user.setPointPVP(user.getPointPVP() - itemCount);
+					user.setPointPVP((int)(user.getPointPVP() - itemCount));
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
 					if(itemCount > user.getPointExpedition()) return false;
-					user.setPointExpedition(user.getPointExpedition() - itemCount);
+					user.setPointExpedition((int)(user.getPointExpedition() - itemCount));
 					return true;
 				case RewardConst.LADDERCOIN:
 					if(itemCount > user.getPointLadder()) return false;
-					user.setPointLadder(user.getPointLadder() - itemCount);
+					user.setPointLadder((int)(user.getPointLadder() - itemCount));
 					return true;
 				case RewardConst.UNIONCOIN:
 					if(itemCount > user.getPointUnion()) return false;
-					user.setPointUnion(user.getPointUnion() - itemCount);
+					user.setPointUnion((int)(user.getPointUnion() - itemCount));
 					return true;
 				default:
 					break;

@@ -943,6 +943,8 @@ public class ActivityService {
 		int star5Count = 0;
 		for (int infoId : heroInfoList) {
 			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
+			if (heroInfo == null)
+				continue;
 			if (heroInfo.getStarLevel() >= 2)
 				++star2Count;
 			if (heroInfo.getStarLevel() >= 3)
