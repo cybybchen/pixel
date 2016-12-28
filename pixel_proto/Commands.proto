@@ -1505,6 +1505,33 @@ message UserTask {
 	repeated int32 heroid = 4;
 }
 
+message UserBattletower {
+	optional int64 userId = 1;
+	optional int32 toptower = 2;
+	optional int32 currenttower = 3;
+	optional int32 resettimes = 4;
+	optional int32 lefttimes = 5;
+}
+
+message TowerReward {
+	optional int32 id = 1;
+	optional int32 floor = 2;
+	optional int32 floora = 3;
+	optional int32 floorb = 4;
+	optional int32 rewardid = 5;
+	optional int32 rewardcount = 6;
+	optional int32 rewardid1 = 7;
+	optional int32 rewardcount1 = 8;
+	optional int32 rewardid2 = 9;
+	optional int32 rewardcount2 = 10;
+	optional int32 rewardid3 = 11;
+	optional int32 rewardcount3 = 12;
+}
+
+message TowerRewardList {
+	repeated TowerReward id = 1;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2465,6 +2492,23 @@ message RequestGetTaskRewardCommand {
 	optional int32 heroid = 3;//支线任务的排序
 }
 
+message RequestSubmitBattletowerCommand {
+	required bool success = 1;
+	optional int32 tower = 2;
+}
+
+message RequestResetBattletowerCommand {
+	
+}
+
+message RequestGetBattletowerCommand {
+	optional UserBattletower ubt = 1;
+}
+
+message ResponseUserBattletowerCommand {
+	optional UserBattletower ubt = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2609,6 +2653,9 @@ message RequestCommand {
 	optional RequestOpenFetterCommand openFetterCommand = 202;
 	optional RequestUserTaskCommand userTaskCommand = 203;
 	optional RequestGetTaskRewardCommand getTaskRewardCommand = 204;
+	optional RequestSubmitBattletowerCommand submitBattletowerCommand = 205;
+	optional RequestResetBattletowerCommand resetBattletowerCommand = 206;
+	optional RequestGetBattletowerCommand getBattletowerCommand = 207;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2678,6 +2725,7 @@ message ResponseCommand {
 	optional ResponseUnionBossCommand unionBossCommand = 57;
 	optional ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;
 	optional ResponseUserTaskCommand userTaskCommand = 59;
+	optional ResponseUserBattletowerCommand userBattletowerCommand = 60;
 }
 
 

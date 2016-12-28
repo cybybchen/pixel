@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserBattletowerMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserBattletowerBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="toptower" column="toptower" />
+		<result property="currenttower" column="currenttower" />
+		<result property="resettimes" column="resettimes" />
+		<result property="lefttimes" column="lefttimes" />
+	</resultMap>
+	
+	<select id="selectUserBattletower" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_battletower where user_id=#{userId}
+	</select>
+	
+	<insert id="updateUserBattletower" parameterType="com.trans.pixel.model.userinfo.UserBattletowerBean">
+	    INSERT INTO user_battletower(user_id, toptower, currenttower, resettimes, lefttimes)
+	    VALUES(#{userId}, #{toptower}, #{currenttower}, #{resettimes}, #{lefttimes})
+	    ON 
+	    duplicate key update
+	    toptower=#{toptower}, currenttower=#{currenttower}, resettimes=#{resettimes}, lefttimes=#{lefttimes}
+	</insert>
+	
+</mapper>

@@ -108,6 +108,9 @@ import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestResetBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -165,6 +168,9 @@ import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestResetBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
@@ -393,6 +399,9 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestOpenFetterCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUserTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSubmitBattletowerCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestResetBattletowerCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestGetBattletowerCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -1129,6 +1138,21 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//GetTaskRewardCommand
                 result = handleCommand(cmd, responseBuilder, user);//GetTaskRewardCommand
         }//GetTaskRewardCommand
+        if (request.hasSubmitBattletowerCommand()) {
+            RequestSubmitBattletowerCommand cmd = request.getSubmitBattletowerCommand();
+            if (result)//SubmitBattletowerCommand
+                result = handleCommand(cmd, responseBuilder, user);//SubmitBattletowerCommand
+        }//SubmitBattletowerCommand
+        if (request.hasResetBattletowerCommand()) {
+            RequestResetBattletowerCommand cmd = request.getResetBattletowerCommand();
+            if (result)//ResetBattletowerCommand
+                result = handleCommand(cmd, responseBuilder, user);//ResetBattletowerCommand
+        }//ResetBattletowerCommand
+        if (request.hasGetBattletowerCommand()) {
+            RequestGetBattletowerCommand cmd = request.getGetBattletowerCommand();
+            if (result)//GetBattletowerCommand
+                result = handleCommand(cmd, responseBuilder, user);//GetBattletowerCommand
+        }//GetBattletowerCommand
         //call handleCommand here
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();

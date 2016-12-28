@@ -109,6 +109,7 @@ import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -116,6 +117,7 @@ import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestResetBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangListCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangRewardCommand;
@@ -127,6 +129,7 @@ import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
@@ -152,6 +155,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AchieveCommandService;
 import com.trans.pixel.service.command.ActivityCommandService;
 import com.trans.pixel.service.command.AreaCommandService;
+import com.trans.pixel.service.command.BattletowerCommandService;
 import com.trans.pixel.service.command.BossCommandService;
 import com.trans.pixel.service.command.CdkeyCommandService;
 import com.trans.pixel.service.command.CheatRechargeCommandService;
@@ -253,6 +257,8 @@ public class GameDataScreen extends RequestScreen {
 	private BossCommandService bossCommandService;
 	@Resource
 	private TaskCommandService taskCommandService;
+	@Resource
+	private BattletowerCommandService battletowerCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -865,6 +871,21 @@ public class GameDataScreen extends RequestScreen {
 		taskCommandService.taskReward(cmd, responseBuilder, user);
 		return true;//GetTaskRewardCommand
 	}//GetTaskRewardCommand
+	@Override//SubmitBattletowerCommand
+	protected boolean handleCommand(RequestSubmitBattletowerCommand cmd, Builder responseBuilder, UserBean user) {
+		battletowerCommandService.submitBattletower(cmd, responseBuilder, user);
+		return true;//SubmitBattletowerCommand
+	}//SubmitBattletowerCommand
+	@Override//ResetBattletowerCommand
+	protected boolean handleCommand(RequestResetBattletowerCommand cmd, Builder responseBuilder, UserBean user) {
+		battletowerCommandService.resetBattletower(cmd, responseBuilder, user);
+		return true;//ResetBattletowerCommand
+	}//ResetBattletowerCommand
+	@Override//GetBattletowerCommand
+	protected boolean handleCommand(RequestGetBattletowerCommand cmd, Builder responseBuilder, UserBean user) {
+		battletowerCommandService.getBattletower(cmd, responseBuilder, user);
+		return true;//GetBattletowerCommand
+	}//GetBattletowerCommand
 	//add handleCommand here
 	
 	@Override

@@ -56,6 +56,8 @@ public class UserService {
 	private RechargeRedisService rechargeRedisService;
 	@Resource
 	private HeartBeatService heartBeatService;
+	@Resource
+	private UserBattletowerService userBattletowerService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -187,6 +189,9 @@ public class UserService {
 			
 		//累计登录的活动
 		activityService.loginActivity(user);
+		
+		userBattletowerService.refreshUserBattletower(user);
+		
 		return true;
 	}
 	

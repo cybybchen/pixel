@@ -306,4 +306,11 @@ public class RedisKey {
 	public static final String USER_TASK_1_PREFIX = PREFIX + "T1_";
 	public static final String USER_TASK_2_PREFIX = PREFIX + "T2_";
 	public static final String USER_TASK_3_PREFIX = PREFIX + "T3_";
+	
+	//user battletower
+	public static final String USER_BATTLETOWER_PREFIX = PREFIX + "bt_";
+	
+	//tower reward
+	public static final String BATTLETOWER_REWARD1_KEY = PREFIX + CONFIG_PREFIX + "bt_reward1";
+	public static final String BATTLETOWER_REWARD2_KEY = PREFIX + CONFIG_PREFIX + "bt_reward2";
 }
