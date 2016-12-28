@@ -61,6 +61,7 @@ public class BattletowerService {
 		rewards.addAllLoot(buildTowerReward2(ubt.getCurrenttower()));
 		ubt.setCurrenttower(0);
 		ubt.setResettimes(ubt.getResettimes() - 1);
+		ubt.setLefttimes(3);
 		
 		userBattletowerService.updateUserBattletower(ubt);
 		
