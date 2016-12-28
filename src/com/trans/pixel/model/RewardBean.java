@@ -65,7 +65,7 @@ public class RewardBean {
 		for (RewardInfo reward : rewardList) {
 			RewardBean rewardBean = new RewardBean();
 			rewardBean.setItemid(reward.getItemid());
-			rewardBean.setCount((int)reward.getCount());
+			rewardBean.setCount(reward.getCount());
 			rewardBeanList.add(rewardBean);
 		}
 		
