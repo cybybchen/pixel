@@ -33,7 +33,7 @@ public class StringBuffer {
 		if(isFull()) {
 			clean();
 		}
-		for(int i=0;i<10;i++) {
+		for(int i = 0; i < BUFFERSIZE ; i++) {
 			if(" ".equals(buffer[i])) {
 				buffer[i] = stringToAdd;
 				break;

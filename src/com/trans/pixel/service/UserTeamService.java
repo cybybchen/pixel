@@ -105,6 +105,10 @@ public class UserTeamService {
 			activityService.upHero(user, record);
 	}
 
+	public UserTeamBean getUserTeam(long userId, long id) {
+		return userTeamRedisService.getUserTeam(userId, id);
+	}
+	
 	public void updateToDB(long userId, long id) {
 		UserTeamBean team = userTeamRedisService.getUserTeam(userId, id);
 		if(team != null)

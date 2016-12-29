@@ -313,4 +313,8 @@ public class RedisKey {
 	//tower reward
 	public static final String BATTLETOWER_REWARD1_KEY = PREFIX + CONFIG_PREFIX + "bt_reward1";
 	public static final String BATTLETOWER_REWARD2_KEY = PREFIX + CONFIG_PREFIX + "bt_reward2";
+	
+	//blood enter key
+	public static final String BLOOD_ENTER_PREFIX = PREFIX + "enter" + SPLIT + SERVER_PREFIX;
+	public static final String BLOOD_ZHANLI_PREFIX = PREFIX + "zhanli" + SPLIT + SERVER_PREFIX;
 }
