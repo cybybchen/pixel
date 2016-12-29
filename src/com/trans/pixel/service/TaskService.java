@@ -299,14 +299,7 @@ public class TaskService {
 	
 	public void isDeleteMainTaskNotice(UserBean user) {
 		long userId = user.getId();
-		log.debug("111");
-		//task 1
-		TaskOrder task1Order = taskRedisService.getTask1Order(user.getTask1Order() + 1);
-		UserTask ut1 = userTaskService.selectUserTask(userId, task1Order.getTargetid());
-		if (isCompleteNewTaskByTask1(ut1, user))
-			return;
 		
-		log.debug("222");
 		//task 2
 		for (int i = 1; i <= 4; ++i) {
 			int nextOrder = (user.getTask2Record() >> (4 * (i - 1)) & 15) + 1;
@@ -320,8 +313,15 @@ public class TaskService {
 			} else if (ut.getProcess() >= taskOrder.getTargetcount())
 				return;
 		}
+				
+		//task 1
+		TaskOrder task1Order = taskRedisService.getTask1Order(user.getTask1Order() + 1);
+		if (task1Order != null) {
+			UserTask ut1 = userTaskService.selectUserTask(userId, task1Order.getTargetid());
+			if (isCompleteNewTaskByTask1(ut1, user))
+				return;
+		}
 		
-		log.debug("333");
 		noticeService.deleteNotice(userId, NoticeConst.TYPE_MAINTASK);
 	}
 	
