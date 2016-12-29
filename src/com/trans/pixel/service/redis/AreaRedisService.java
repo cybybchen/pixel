@@ -458,7 +458,7 @@ public class AreaRedisService extends RedisService{
 			return levelvalue;
 		String[] values = value.split("#");
 		if(values.length == 3){
-			levelvalue[0] = Integer.parseInt(values[0]);
+			levelvalue[0] = (int)TypeTranslatedUtil.stringToFloat(values[0]);
 			levelvalue[1] = Integer.parseInt(values[1]);
 			levelvalue[2] = Integer.parseInt(values[2]);
 		}
