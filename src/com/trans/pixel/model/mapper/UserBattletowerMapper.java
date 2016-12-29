@@ -6,6 +6,6 @@ public interface UserBattletowerMapper {
 	
 	public UserBattletowerBean selectUserBattletower(long userId);
 	
-	public int insertUserBattertower(UserBattletowerBean ubt);
+	public int insertUserBattletower(UserBattletowerBean ubt);
 	
 }

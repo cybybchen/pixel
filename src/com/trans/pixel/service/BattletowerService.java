@@ -70,7 +70,7 @@ public class BattletowerService {
 	
 	private List<RewardInfo> buildTowerReward1(int tower) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		TowerReward towerReward = redis.getTowerReward2(tower / 10 * 10 + 1);
+		TowerReward towerReward = redis.getTowerReward1(tower / 10 * 10 + 1);
 		if (towerReward == null)
 			return rewardList;
 		
@@ -79,7 +79,11 @@ public class BattletowerService {
 	
 	private List<RewardInfo> buildTowerReward2(int tower) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		TowerReward towerReward = redis.getTowerReward2(tower / 10 * 10);
+		TowerReward towerReward = null;
+		if (tower == 1)
+			towerReward = redis.getTowerReward2(1);
+		else
+			towerReward = redis.getTowerReward2(tower / 10 * 10);
 		if (towerReward == null)
 			return rewardList;
 		

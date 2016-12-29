@@ -16,7 +16,7 @@
 		from user_battletower where user_id=#{userId}
 	</select>
 	
-	<insert id="updateUserBattletower" parameterType="com.trans.pixel.model.userinfo.UserBattletowerBean">
+	<insert id="insertUserBattletower" parameterType="com.trans.pixel.model.userinfo.UserBattletowerBean">
 	    INSERT INTO user_battletower(user_id, toptower, currenttower, resettimes, lefttimes)
 	    VALUES(#{userId}, #{toptower}, #{currenttower}, #{resettimes}, #{lefttimes})
 	    ON 

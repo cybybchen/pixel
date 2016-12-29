@@ -30,12 +30,14 @@ public class UserBattletowerService {
 	
 	public void updateUserBattletower(UserBattletowerBean ubt) {
 		redis.setUserBattletower(ubt);
-		mapper.insertUserBattertower(ubt);
+		mapper.insertUserBattletower(ubt);
 	}
 	
 	private UserBattletowerBean initUserBattletower(long userId) {
 		UserBattletowerBean ubt = new UserBattletowerBean();
 		ubt.setUserId(userId);
+		ubt.setLefttimes(3);
+		ubt.setResettimes(3);
 		
 		return ubt;
 	}
