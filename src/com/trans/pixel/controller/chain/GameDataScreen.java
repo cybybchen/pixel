@@ -110,6 +110,9 @@ import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -886,6 +889,21 @@ public class GameDataScreen extends RequestScreen {
 		battletowerCommandService.getBattletower(cmd, responseBuilder, user);
 		return true;//GetBattletowerCommand
 	}//GetBattletowerCommand
+	@Override//BattletowerShopCommand
+	protected boolean handleCommand(RequestBattletowerShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.battletowerShop(cmd, responseBuilder, user);
+		return true;//BattletowerShopCommand
+	}//BattletowerShopCommand
+	@Override//BattletowerShopPurchaseCommand
+	protected boolean handleCommand(RequestBattletowerShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.battletowerShopPurchase(cmd, responseBuilder, user);
+		return true;//BattletowerShopPurchaseCommand
+	}//BattletowerShopPurchaseCommand
+	@Override//BattletowerShopRefreshCommand
+	protected boolean handleCommand(RequestBattletowerShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.battletowerShopRefresh(cmd, responseBuilder, user);
+		return true;//BattletowerShopRefreshCommand
+	}//BattletowerShopRefreshCommand
 	//add handleCommand here
 	
 	@Override

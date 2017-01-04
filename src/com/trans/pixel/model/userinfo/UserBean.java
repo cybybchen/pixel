@@ -54,6 +54,7 @@ public class UserBean {
 	private int unionShopRefreshTime = 0;
 	private int PVPShopRefreshTime = 0;
 	private int ladderShopRefreshTime = 0;
+	private int battletowerShopRefreshTime = 0;
 	private int expeditionShopRefreshTime = 0;
 	private int purchaseCoinTime = 0;
 	private int purchaseCoinLeft = 0;
@@ -1078,6 +1079,12 @@ public class UserBean {
 	}
 	public void setTask2Record(int task2Record) {
 		this.task2Record = task2Record;
+	}
+	public int getBattletowerShopRefreshTime() {
+		return battletowerShopRefreshTime;
+	}
+	public void setBattletowerShopRefreshTime(int battletowerShopRefreshTime) {
+		this.battletowerShopRefreshTime = battletowerShopRefreshTime;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

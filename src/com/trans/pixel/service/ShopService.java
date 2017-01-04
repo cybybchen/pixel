@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.userinfo.UserBattletowerBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.ContractWeightList;
@@ -49,6 +50,8 @@ public class ShopService {
 	private RechargeRedisService rechargeRedisService;
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private UserBattletowerService userBattletowerService;
 	
 	public ShopList getDailyShop(UserBean user){
 		return redis.getDailyShop(user);
@@ -90,7 +93,7 @@ public class ShopService {
 	}
 	
 	public ShopList refreshUnionShop(UserBean user){
-		ShopList shoplist = redis.buildUnionShop();
+		ShopList shoplist = redis.buildUnionShop(user);
 		redis.saveUnionShop(shoplist, user);
 		return shoplist;
 	}
@@ -137,6 +140,22 @@ public class ShopService {
 		return shoplist;
 	}
 
+	public ShopList getBattletowerShop(UserBean user){
+		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
+		return redis.getBattletowerShop(user, ubt);
+	}
+	
+	public void saveBattletowerShop(ShopList shoplist, UserBean user){
+		redis.saveBattletowerShop(shoplist, user);
+	}
+	
+	public ShopList refreshBattletowerShop(UserBean user){
+		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
+		ShopList shoplist = redis.buildBattletowerShop(ubt);
+		redis.saveBattletowerShop(shoplist, user);
+		return shoplist;
+	}
+	
 	public ContractWeightList getContractWeightList(){
 		return redis.getContractWeightList();
 	}

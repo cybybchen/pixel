@@ -11,11 +11,13 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
-import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.ContractWeight;
 import com.trans.pixel.protoc.Commands.ContractWeightList;
 import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
@@ -40,6 +42,7 @@ import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.ResponseBattletowerShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseBlackShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseDailyShopCommand;
@@ -688,7 +691,7 @@ public class ShopCommandService extends BaseCommandService{
 			shoplist = service.refreshLadderShop(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
 			refreshtime++;
-			user.setDailyShopRefreshTime(refreshtime);
+			user.setLadderShopRefreshTime(refreshtime);
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 		}else{
@@ -704,6 +707,103 @@ public class ShopCommandService extends BaseCommandService{
 		shop.setEndTime(shoplist.getEndTime());
 		shop.setRefreshCost(getLadderShopRefreshCost(refreshtime));
 		responseBuilder.setLadderShopCommand(shop);
+	}
+	
+	public int getBattletowerShopRefreshCost(int time){
+		final int factor = 1;
+		if(time < 1){
+			return 10*factor;
+		}
+		if(time < 3){
+			return 20*factor;
+		}
+		if(time < 6){
+			return 50*factor;
+		}
+		if(time < 10){
+			return 100*factor;
+		}
+		if(time < 20){
+			return 200*factor;
+		}
+		return 500*factor;
+	}
+	
+	public void battletowerShop(RequestBattletowerShopCommand cmd, Builder responseBuilder, UserBean user){
+		ShopList shoplist = service.getBattletowerShop(user);
+		int refreshtime = user.getBattletowerShopRefreshTime();
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = service.refreshBattletowerShop(user);
+		}
+
+		ResponseBattletowerShopCommand.Builder shop = ResponseBattletowerShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getBattletowerShopRefreshCost(refreshtime));
+		responseBuilder.setBattletowerShopCommand(shop);
+	}
+
+	public void battletowerShopPurchase(RequestBattletowerShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
+		ShopList.Builder shoplist = ShopList.newBuilder(service.getBattletowerShop(user));
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = ShopList.newBuilder(service.refreshBattletowerShop(user));
+		}
+//		UserRankBean myrank = ladderRedisService.getUserRankByUserId(user.getServerId(), user.getId());
+		int refreshtime = user.getBattletowerShopRefreshTime();
+		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
+		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
+			
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+		}/*else if(myrank == null || myrank.getRank() > commbuilder.getJudge()){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_LADDERCONDITION);
+			
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_LADDERCONDITION));
+		}else*/ if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
+			responseBuilder.setErrorCommand(buildErrorCommand(error));
+		}else{
+			commbuilder.setIsOut(true);
+			rewardService.doReward(user, commbuilder.getItemid(), commbuilder.getCount());
+			rewardService.updateUser(user);
+            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
+            service.saveLadderShop(shoplist.build(), user);
+            pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            logService.sendShopLog(user.getServerId(), user.getId(), 3, commbuilder.getItemid(), commbuilder.getCurrency(), commbuilder.getCost());
+		}
+		
+		ResponseBattletowerShopCommand.Builder shop = ResponseBattletowerShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getBattletowerShopRefreshCost(refreshtime));
+		responseBuilder.setBattletowerShopCommand(shop);
+	}
+
+	public void battletowerShopRefresh(RequestBattletowerShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
+		ShopList shoplist = service.getBattletowerShop(user);
+		int refreshtime = user.getBattletowerShopRefreshTime();
+		if(costService.cost(user, RewardConst.JEWEL, getBattletowerShopRefreshCost(refreshtime))) {
+			shoplist = service.refreshBattletowerShop(user);
+            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
+			refreshtime++;
+			user.setBattletowerShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
+		}else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+		}
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = service.refreshBattletowerShop(user);
+		}
+
+		ResponseBattletowerShopCommand.Builder shop = ResponseBattletowerShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getLadderShopRefreshCost(refreshtime));
+		responseBuilder.setBattletowerShopCommand(shop);
 	}
 	
 	public void LibaoShop(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user){

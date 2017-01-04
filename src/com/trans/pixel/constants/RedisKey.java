@@ -80,6 +80,7 @@ public class RedisKey {
 	public final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
 	public final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
 	public final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
+	public final static String BATTLETOWERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BattletowerShop";
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "mysql_update:";
@@ -317,4 +318,5 @@ public class RedisKey {
 	//blood enter key
 	public static final String BLOOD_ENTER_PREFIX = PREFIX + "enter" + SPLIT + SERVER_PREFIX;
 	public static final String BLOOD_ZHANLI_PREFIX = PREFIX + "zhanli" + SPLIT + SERVER_PREFIX;
+	public static final String BLOOD_USERINFO_PREFIX = PREFIX + "userinfo" + SPLIT + SERVER_PREFIX;
 }

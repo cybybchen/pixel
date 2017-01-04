@@ -2035,6 +2035,20 @@ message ResponseLadderShopCommand {
 	optional int32 refreshCost = 3;//刷新消耗
 }
 
+message RequestBattletowerShopCommand {//战斗塔商店
+}
+message RequestBattletowerShopPurchaseCommand {//战斗塔商店购买
+	required int32 index = 1;//第几个商品(0~7)
+	required int32 id = 2;
+}
+message RequestBattletowerShopRefreshCommand {//战斗塔商店刷新
+}
+message ResponseBattletowerShopCommand {
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshCost = 3;//刷新消耗
+}
+
 message YueKa {
 	required int32 itemid = 1;
 	optional int32 rewardid = 2;
@@ -2656,6 +2670,10 @@ message RequestCommand {
 	optional RequestSubmitBattletowerCommand submitBattletowerCommand = 205;
 	optional RequestResetBattletowerCommand resetBattletowerCommand = 206;
 	optional RequestGetBattletowerCommand getBattletowerCommand = 207;
+	optional RequestBattletowerShopCommand battletowerShopCommand = 208;
+	optional RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;
+	optional RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;
+
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2726,6 +2744,7 @@ message ResponseCommand {
 	optional ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;
 	optional ResponseUserTaskCommand userTaskCommand = 59;
 	optional ResponseUserBattletowerCommand userBattletowerCommand = 60;
+	optional ResponseBattletowerShopCommand battletowerShopCommand = 61;
 }
 
 
