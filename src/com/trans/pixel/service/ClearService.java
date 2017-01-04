@@ -22,6 +22,7 @@ import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ClearAttribute;
 import com.trans.pixel.protoc.Commands.ClearAttributeOrder;
+import com.trans.pixel.protoc.Commands.ClearLevel;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.UserClearRedisService;
@@ -171,5 +172,18 @@ public class ClearService {
 		}
 		
 		return null;
+	}
+	
+	public int getClearLevelZhanli(int level, Map<String, ClearLevel> map) {
+		int zhanli = 0;
+		Iterator<Entry<String, ClearLevel>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, ClearLevel> entry = it.next();
+			ClearLevel clear = entry.getValue();
+			if (clear.getLevel() <= level)
+				zhanli += clear.getZhanli();
+		}
+		
+		return zhanli;
 	}
 }

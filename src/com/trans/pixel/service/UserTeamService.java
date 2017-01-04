@@ -19,6 +19,7 @@ import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
+import com.trans.pixel.protoc.Commands.ClearLevel;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.HeroRareLevelup;
 import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
@@ -65,6 +66,8 @@ public class UserTeamService {
 	private HeroRareService heroRareService;
 	@Resource
 	private HeroRedisService heroRedisService;
+	@Resource
+	private ClearService clearService;
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
 	// 	UserTeamBean userTeam = new UserTeamBean();
@@ -255,6 +258,7 @@ public class UserTeamService {
 		int myzhanli = 0;
 		List<HeroBean> heroList = heroService.getHeroList();
 		Map<String, Strengthen> strengthehConfig = clearRedisService.getStrengthenConfig();
+		Map<String, ClearLevel> clearLevelConfig = clearRedisService.getClearLevelConfig();
 		List<HeroInfoBean> heroInfoList = userHeroService.selectUserHeroList(user);
 		Map<String, HeroRareLevelup> herorareConfig = heroRedisService.getHeroRareLevelupConfig();
 		List<HeroUpgradeBean> huList = heroService.getHeroUpgradeList();
@@ -270,6 +274,7 @@ public class UserTeamService {
 			Strengthen strengthen = strengthehConfig.get("" + hero.getStrengthen());
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
+			pre += clearService.getClearLevelZhanli(hero.getLevel(), clearLevelConfig);
 //			 log.debug(strengthen+" : "+pre);
 			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
 			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
