@@ -1668,6 +1668,12 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="40110" name="红包" img="40110" rare="5" description="可在活动-红包兑换中兑换奖励，在活动-中获得" hashero="0" cyb="1" judge="0" endtime="2017-12-31 23:59:59" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 	<loot itemid="36001" name="一重英雄包" img="32011" rare="1" description="开启获得1个随机1星英雄" hashero="1" cyb="0" judge="1" endtime="" itemcount="1" weightall="100" >
 		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
@@ -1823,5 +1829,29 @@
 		<item itemid="33002" item="紫色碎片箱" counta="1" countb="1" weight="100" />
 		<item itemid="36007" item="紫色英雄碎片包" counta="1" countb="1" weight="100" />
 		<item itemid="36008" item="橙色英雄碎片包" counta="1" countb="1" weight="10" />
+	</loot>
+	<loot itemid="37003" name="初级洗练石" img="37003" rare="3" description="洗练英雄第一条属性必须的道具" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="37004" name="中级洗练石" img="37004" rare="4" description="洗练英雄第二条属性必须的道具" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="37005" name="高级洗练石" img="37005" rare="5" description="洗练英雄第三条属性必须的道具" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="37006" name="特级洗练石" img="37006" rare="6" description="洗练英雄的万能道具" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 </data>
