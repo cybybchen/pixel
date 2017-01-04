@@ -824,7 +824,7 @@ public class ActivityService {
 		/**
 		 * achieve type 119
 		 */
-		if (start < HeroConst.ACHIEVE_HERO_LEVEL + level && level >= HeroConst.ACHIEVE_HERO_LEVEL) {
+		if (start < HeroConst.ACHIEVE_HERO_LEVEL && level >= HeroConst.ACHIEVE_HERO_LEVEL) {
 			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_HERO_LEVELUP);
 		}
 		
