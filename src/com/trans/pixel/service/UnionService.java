@@ -975,6 +975,9 @@ public class UnionService extends FightService{
 		if (last == null)
 			return true;
 		
+		if (unionBossRecord == null)
+			return true;
+		
 		Date current = DateUtil.getDate();
 		
 		Date date = DateUtil.getFutureHour(DateUtil.setToDayStartTime(current), boss.getTargetcount() + boss.getLasttime());;
