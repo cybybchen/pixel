@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.Commands.ClearAttribute;
 import com.trans.pixel.protoc.Commands.ClearAttributeList;
+import com.trans.pixel.protoc.Commands.ClearCost;
+import com.trans.pixel.protoc.Commands.ClearCostList;
 import com.trans.pixel.protoc.Commands.ClearFood;
 import com.trans.pixel.protoc.Commands.ClearFoodList;
 import com.trans.pixel.protoc.Commands.ClearHero;
@@ -28,6 +30,7 @@ public class ClearRedisService extends RedisService {
 	private static final String CLEAR_FOOD_FILE_NAME = "lol_clearfood.xml";
 	private static final String CLEAR_ATTRIBUTE_FILE_NAME = "lol_clearattribute.xml";
 	private static final String HERO_STRENGTHEN_FILE_NAME = "lol_strengthen.xml";
+	private static final String CLEAR_COST_FILE_NAME = "lol_clearcost.xml";
 	
 	//clear food
 	public ClearFood getClearFood(int id) {
@@ -229,6 +232,57 @@ public class ClearRedisService extends RedisService {
 		Map<String, ClearAttribute> map = new HashMap<String, ClearAttribute>();
 		for(ClearAttribute.Builder clearAttribute : builder.getAttributeBuilderList()){
 			map.put("" + clearAttribute.getId(), clearAttribute.build());
+		}
+		return map;
+	}
+	
+	//clear cost
+	public ClearCost getClearCost(int quality) {
+		String value = hget(RedisKey.CLEAR_COST_KEY, "" + quality);
+		if (value == null) {
+			Map<String, ClearCost> config = getClearCostConfig();
+			return config.get("" + quality);
+		} else {
+			ClearCost.Builder builder = ClearCost.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, ClearCost> getClearCostConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.CLEAR_COST_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, ClearCost> map = buildClearCostConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, ClearCost> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.CLEAR_COST_KEY, redismap);
+			return map;
+		}else{
+			Map<String, ClearCost> map = new HashMap<String, ClearCost>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				ClearCost.Builder builder = ClearCost.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, ClearCost> buildClearCostConfig(){
+		String xml = ReadConfig(CLEAR_COST_FILE_NAME);
+		ClearCostList.Builder builder = ClearCostList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + CLEAR_COST_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, ClearCost> map = new HashMap<String, ClearCost>();
+		for(ClearCost.Builder clearCost : builder.getIdBuilderList()){
+			map.put("" + clearCost.getQuality(), clearCost.build());
 		}
 		return map;
 	}

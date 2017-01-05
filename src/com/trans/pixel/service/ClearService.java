@@ -16,12 +16,14 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ClearAttribute;
 import com.trans.pixel.protoc.Commands.ClearAttributeOrder;
+import com.trans.pixel.protoc.Commands.ClearCost;
 import com.trans.pixel.protoc.Commands.ClearLevel;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.service.redis.ClearRedisService;
@@ -42,6 +44,8 @@ public class ClearService {
 	private UserPropService userPropService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private HeroService heroService;
 	
 	
 	private static final int CLEAR_TYPE_COIN_COST = 10000;
@@ -59,12 +63,26 @@ public class ClearService {
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_3 && position >= CLEAR_POSITION_3))
 			return ErrorConst.CLEAR_IS_LOCKED_ERROR;
 		
-		if (!costService.costAndUpdate(user, type, (type == RewardConst.COIN ? CLEAR_TYPE_COIN_COST : CLEAR_TYPE_JEWEL_COST) * count)) {
-			return type == RewardConst.COIN ? ErrorConst.NOT_ENOUGH_COIN : ErrorConst.NOT_ENOUGH_JEWEL;
+		HeroBean hero = heroService.getHero(userPokede.getHeroId());
+		ClearCost clearCost = clearRedisService.getClearCost(hero.getQuality());
+		int costType = 0;
+		int costCount = 0;
+		if (position == 1) {
+			costType = clearCost.getItemid1();
+			costCount = clearCost.getItemcount1();
+		} else if (position == 2) {
+			costType = clearCost.getItemid2();
+			costCount = clearCost.getItemcount2();
+		} else if (position == 3) {
+			costType = clearCost.getItemid3();
+			costCount = clearCost.getItemcount3();
+		}
+		if (!costService.costAndUpdate(user, costType, costCount * count)) {
+			return ErrorConst.NOT_ENOUGH_CLEARPROP_ERROR;
 		}
 		
 		while (clearList.size() < count) {
-			UserClearBean userClear = clearHero(user, userPokede.getHeroId(), position, type);
+			UserClearBean userClear = clearHero(user, userPokede.getHeroId(), position, RewardConst.JEWEL);
 			if (userClear != null)
 	//			userClearService.updateUserClear(userClear);
 				userClear.setId(clearList.size());
@@ -174,16 +192,22 @@ public class ClearService {
 		return null;
 	}
 	
-	public int getClearLevelZhanli(int level, Map<String, ClearLevel> map) {
-		int zhanli = 0;
-		Iterator<Entry<String, ClearLevel>> it = map.entrySet().iterator();
-		while (it.hasNext()) {
-			Entry<String, ClearLevel> entry = it.next();
-			ClearLevel clear = entry.getValue();
-			if (clear.getLevel() <= level)
-				zhanli += clear.getZhanli();
+	public int getClearLevelZhanli(int heroId, Map<String, ClearLevel> map, List<UserPokedeBean> userPokedeList) {
+		for (UserPokedeBean userPokede : userPokedeList) {
+			if (userPokede.getHeroId() == heroId) {
+				int zhanli = 0;
+				Iterator<Entry<String, ClearLevel>> it = map.entrySet().iterator();
+				while (it.hasNext()) {
+					Entry<String, ClearLevel> entry = it.next();
+					ClearLevel clear = entry.getValue();
+					if (clear.getLevel() <= userPokede.getLevel())
+						zhanli += clear.getZhanli();
+				}
+				
+				return zhanli;
+			}
+			
 		}
-		
-		return zhanli;
+		return 0;
 	}
 }

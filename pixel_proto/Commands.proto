@@ -1532,6 +1532,21 @@ message TowerRewardList {
 	repeated TowerReward id = 1;
 }
 
+message ClearCostList {
+	repeated ClearCost id = 1;
+}
+
+message ClearCost {
+	optional int32 id = 1;
+	optional int32 quality = 2;
+	optional int32 itemid1 = 3;
+	optional int32 itemcount1 = 4;
+	optional int32 itemid2 = 5;
+	optional int32 itemcount2 = 6;
+	optional int32 itemid3 = 7;
+	optional int32 itemcount3 = 8;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2523,6 +2538,14 @@ message ResponseUserBattletowerCommand {
 	optional UserBattletower ubt = 1;
 }
 
+message RequestBloodEnterCommand {
+
+}
+
+message RequestBloodXiazhuCommand {
+	required int64 xiazhuUserId = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2673,6 +2696,8 @@ message RequestCommand {
 	optional RequestBattletowerShopCommand battletowerShopCommand = 208;
 	optional RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;
 	optional RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;
+	optional RequestBloodEnterCommand bloodEnterCommand = 211;
+	optional RequestBloodXiazhuCommand bloodXiazhuCommand = 212;
 
 }
 // response command list transfer only use it
