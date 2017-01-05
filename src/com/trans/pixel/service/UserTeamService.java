@@ -69,6 +69,7 @@ public class UserTeamService {
 	@Resource
 	private ClearService clearService;
 	
+	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
 	// 	UserTeamBean userTeam = new UserTeamBean();
 	// 	userTeam.setUserId(user.getId());
@@ -263,6 +264,7 @@ public class UserTeamService {
 		Map<String, HeroRareLevelup> herorareConfig = heroRedisService.getHeroRareLevelupConfig();
 		List<HeroUpgradeBean> huList = heroService.getHeroUpgradeList();
 		Map<String, EquipmentBean> equipConfig = equipService.getEquipConfig();
+		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
 		for (HeroInfo hero : team.getHeroInfoList()) {
 			HeroBean base = heroService.getHero(heroList, hero.getHeroId());
 			if (base == null)
@@ -274,7 +276,6 @@ public class UserTeamService {
 			Strengthen strengthen = strengthehConfig.get("" + hero.getStrengthen());
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
-			pre += clearService.getClearLevelZhanli(hero.getLevel(), clearLevelConfig);
 //			 log.debug(strengthen+" : "+pre);
 			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
 			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
@@ -287,6 +288,7 @@ public class UserTeamService {
 				zhanli += equip.getZhanli();
 				// log.debug(equip.getZhanli());
 			}
+			zhanli += clearService.getClearLevelZhanli(hero.getHeroId(), clearLevelConfig, userPokedeList);
 			zhanli = zhanli * pre / 100;
 			log.debug("111|||" + zhanli);
 			myzhanli += zhanli;
