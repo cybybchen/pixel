@@ -57,7 +57,8 @@ public class ClearService {
 	private static final int CLEAR_POSITION_2 = 2;
 	private static final int CLEAR_POSITION_3 = 3;
 	
-	public ResultConst clearHero(UserPokedeBean userPokede, int position, int type, UserBean user, int count, List<UserClearBean> clearList) {
+	public ResultConst clearHero(UserPokedeBean userPokede, int position, int type, UserBean user, int count, 
+			List<UserClearBean> clearList, List<UserPropBean> userPropList) {
 		if (userPokede.getLevel() < USER_POKEDE_LIMIT_1 
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_2 && position >= CLEAR_POSITION_2)
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_3 && position >= CLEAR_POSITION_3))
@@ -90,6 +91,9 @@ public class ClearService {
 		}
 		
 		userClearRedisService.updateUserLastClearInfoList(clearList, user.getId());
+		
+		userPropList.add(userPropService.selectUserProp(user.getId(), costType));
+		
 		return SuccessConst.HERO_CLEAR_SUCCESS;
 	}
 	
