@@ -174,6 +174,7 @@ public class ClearService {
 		userClear.setHeroId(heroId);
 		userClear.setPosition(position);
 		userClear.setUserId(userId);
+		userClear.setRare(order.getRare());
 		
 		int count1 = order.getCount1();
 		int count2 = order.getCount2();
