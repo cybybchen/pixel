@@ -57,6 +57,7 @@ message UserInfo {
 	optional int32 lotteryCoinCount = 70;
 	optional int32 task1Order = 71;
 	optional int32 task2Record = 72;
+	optional int32 questStatus = 73;//是否参与过问卷调查
 }
 
 message ServerData {
@@ -1511,6 +1512,7 @@ message UserBattletower {
 	optional int32 currenttower = 3;
 	optional int32 resettimes = 4;
 	optional int32 lefttimes = 5;
+	optional int32 random = 6;
 }
 
 message TowerReward {

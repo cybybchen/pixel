@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1">
+	<title>问卷调查</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<link rel="shortcut icon" href="css/favicon.ico">
+	<script src="js/jquery.min.js"></script>
+<!-- 	<link rel="stylesheet" href="css/guide.css?v=13"/> -->
+<!-- 	<script src="js/data.js?v=13"></script> -->
+	<script type="text/javascript">
+	function checkAll(str)    
+	{    
+	    var a = document.getElementsByName(str);    
+	    var n = a.length;    
+	    for (var i=0; i<n; i++)    
+	    a[i].checked = window.event.srcElement.checked;    
+	}    
+	function checkItem(str)    
+	{    
+	    var e = window.event.srcElement;    
+	    var all = eval("document.all."+ str);    
+	    if (e.checked)    
+	    {    
+	        var a = document.getElementsByName(e.name);    
+	        all.checked = true;    
+	        for (var i=0; i<a.length; i++)    
+	        {    
+	            if (!a[i].checked)   
+	            {   
+	                all.color = "#FF0000"; 
+	                all.checked = false; break;   
+	            }    
+	        }   
+	    }    
+	    else    
+	        all.checked = false;    
+	} 
+	 $(document).ready(function() {
+		  $('input[type=checkbox]').click(function() {
+		   $("input[name='gametype']").attr('disabled', true);
+		   if ($("input[name='gametype']:checked").length >= 3) {
+		    $("input[name='gametype']:checked").attr('disabled', false);
+		   } else {
+		    $("input[name='gametype']").attr('disabled', false);
+		   }
+		  });
+		 })
+		 
+		function check()
+		{
+		   for(var i=0;i<document.form1.elements.length-1;i++)
+		   {
+			  if(document.form1.elements[i].value=="")
+			  {
+				 alert("当前表单不能有空项");
+				 document.form1.elements[i].focus();
+				 return false;
+			  }
+		   }
+		   return true;
+		  
+		}
+	</script>
+</head>
+
+<body>
+<div data-role="page">
+  <div data-role="header" style="text-align:center">
+  <h1>选择菜单</h1>
+  </div>
+
+  <div data-role="content" >
+    <form name="form1" method="post" action="http://123.207.88.112:8080/pixel/question" onSubmit="return check()">
+      <fieldset data-role="fieldcontain">
+	      <?php
+	        $data = $_GET;
+       	echo "<input type='text' style= 'height:28px;display:none' value='$data[userid]' name='userid'/> </p>";
+			?>
+        <label>1你的性别？</label><p>
+        		<input type="radio" name="sex" value="1">男<p>
+ 				<input type="radio" name="sex" value="2">女<p>
+ 			<label>2您的年龄？</label><p>
+        		<input type="radio" name="age" value="1">18岁以下<p>
+ 				<input type="radio" name="age" value="2">18-24岁<p>
+ 				<input type="radio" name="age" value="3">24岁以上<p>
+ 			<label>3您是从什么途径知道这款手游的？</label><p>
+        		<input type="checkbox" name="channel" value="1">社交平台如微信、微博等<p>
+ 				<input type="checkbox" name="channel" value="2">哗哩哗哩AcFun等二次元网站<p>
+ 				<input type="checkbox" name="channel" value="3">身边朋友推荐<p>
+ 				<input type="checkbox" name="channel" value="4">APPStore软件商店排名<p>
+ 				<input type="checkbox" name="channel" value="5">没听过<p>
+ 			<label>4您玩这款游戏多久？</label><p>
+        		<input type="radio" name="playtime" value="1">一周<p>
+ 				<input type="radio" name="playtime" value="2">三周<p>
+ 				<input type="radio" name="playtime" value="3">一个月<p>
+ 				<input type="radio" name="playtime" value="4">三个月<p>
+ 				<input type="radio" name="playtime" value="5">半年以上<p>
+ 			<label>5最吸引你的地方在哪儿？</label><p>
+        		<input type="checkbox" name="love" value="1">人物丰富，涵盖很多领域<p>
+ 				<input type="checkbox" name="love" value="2">身边很多朋友在玩，感觉还不错<p>
+ 				<input type="checkbox" name="love" value="3">独特的挂机玩法，不会占用很多时间又可以打发闲暇<p>
+ 				<input type="checkbox" name="love" value="4">技能装备组合很有策略性<p>
+ 				<input type="checkbox" name="love" value="5">像素风格非常喜欢<p>
+ 			<label>6您对一款手游的热情持续时间？</label><p>
+        		<input type="radio" name="lasttime" value="1">一周以下<p>
+ 				<input type="radio" name="lasttime" value="2">一个月以下 <p>
+ 				<input type="radio" name="lasttime" value="3">3个月以下<p>
+ 				<input type="radio" name="lasttime" value="4">半年以下<p>
+ 				<input type="radio" name="lasttime" value="5">半年及以上<p>
+ 			<label>7您的社交平台上关于乱斗英雄传的内容数量如何？</label><p>
+        		<input type="radio" name="content" value="1">很多<p>
+ 				<input type="radio" name="content" value="2">一般<p>
+ 				<input type="radio" name="content" value="3">很少<p>
+ 			<label>8每天会花多久在玩这款游戏中？</label><p>
+        		<input type="radio" name="dailyplaytime" value="1">不超过1h<p>
+ 				<input type="radio" name="dailyplaytime" value="2">1-3h<p>
+ 				<input type="radio" name="dailyplaytime" value="3">3-6h<p>
+ 				<input type="radio" name="dailyplaytime" value="4">6h<p>
+ 			<label>9您一般在什么情况下玩游戏？</label><p>
+        		<input type="checkbox" name="whattime" value="1">下课/休息间隙<p>
+ 				<input type="checkbox" name="whattime" value="2">寝室里休息 <p>
+ 				<input type="checkbox" name="whattime" value="3">上课/工作期间<p>
+ 				<input type="checkbox" name="whattime" value="4">根本停不下来<p>
+ 				<input type="checkbox" name="whattime" value="5">睡前做做任务<p>
+ 				<input type="checkbox" name="whattime" value="6">其他<p>
+ 			<label>10在进入游戏之前，您对这款游戏的了解有多少？</label><p>
+        		<input type="checkbox" name="know" value="1">没有听说过<p>
+ 				<input type="checkbox" name="know" value="2">只知道这个词 <p>
+ 				<input type="checkbox" name="know" value="3">看过相关文学、动漫作品<p>
+ 				<input type="checkbox" name="know" value="4">进行过研究<p>
+ 			<label>11您对动漫关注的多吗？</label><p>
+        		<input type="radio" name="anime" value="1">看过几部经典动漫<p>
+ 				<input type="radio" name="anime" value="2">看的挺多会追新番 <p>
+ 				<input type="radio" name="anime" value="3">不看动漫<p>
+ 				<input type="radio" name="anime" value="4">会追番且关注周边文化<p>
+ 				<input type="radio" name="anime" value="5">会追番且自己参与创作同人作品<p>
+			<label>12你还有其他游戏经历吗？</label><p>
+        		<input type="checkbox" name="games" value="1">不玩其他游戏<p>
+ 				<input type="checkbox" name="games" value="2">日系手游舰娘、阴阳师等 <p>
+ 				<input type="checkbox" name="games" value="3">休闲手游消消乐、球球大作战等<p>
+ 				<input type="checkbox" name="games" value="4">网游LOL、 WOW、剑网系列等<p>
+ 				<input type="checkbox" name="games" value="5">剧情类仙剑、轩辕剑等<p>
+ 			<label>13你在手游中的需求如何？</label><p>
+        		<input type="checkbox" name="requires" value="1">希望自己一个人刷怪<p>
+ 				<input type="checkbox" name="requires" value="2">希望有组队任务等社交活动<p>
+ 				<input type="checkbox" name="requires" value="3">希望有游戏工会类社交活动<p>
+ 				<input type="checkbox" name="requires" value="4">希望认识几个游戏好友<p>
+ 			<label>14你会在游戏中花钱吗？</label><p>
+        		<input type="radio" name="ifcost" value="1">不会<p>
+ 				<input type="radio" name="ifcost" value="2">会 <p>
+ 			<label>15在一款手游中您能接受的每月花费额度是？</label><p>
+        		<input type="radio" name="cost" value="1">不花费<p>
+ 				<input type="radio" name="cost" value="2">10元以下 <p>
+ 				<input type="radio" name="cost" value="3">10~30元（不包括30元）<p>
+ 				<input type="radio" name="cost" value="4">30~60元（不包括60元）<p>
+ 				<input type="radio" name="cost" value="5">60~100元（不包括100元）<p>
+ 				<input type="radio" name="cost" value="6">100元及以上<p>
+ 			<label>16您最喜欢的游戏类型是？</label><p>
+        		<input type="radio" name="mostlove" value="1">动作<p>
+ 				<input type="radio" name="mostlove" value="2">角色扮演<p>
+ 				<input type="radio" name="mostlove" value="3">模拟<p>
+ 				<input type="radio" name="mostlove" value="4">冒险<p>
+ 				<input type="radio" name="mostlove" value="5">即时策略<p>
+ 			<label>17哪一类题材的游戏最吸引你？（最多可选3项）*  </label><p>
+        		<input type="checkbox" name="gametype" value="1">历史战争<p>
+ 				<input type="checkbox" name="gametype" value="2">未来机战<p>
+ 				<input type="checkbox" name="gametype" value="3">传统武侠<p>
+ 				<input type="checkbox" name="gametype" value="4">魔幻仙侠<p>
+ 				<input type="checkbox" name="gametype" value="5">架空幻想<p>
+ 				<input type="checkbox" name="gametype" value="6">现代商业<p>
+ 				<input type="checkbox" name="gametype" value="7">东方神话<p>
+ 				<input type="checkbox" name="gametype" value="8">欧非神话<p>
+ 				<input type="checkbox" name="gametype" value="9">体育经营<p>
+ 				<input type="checkbox" name="gametype" value="10">宠物饲养<p>
+ 				<input type="checkbox" name="gametype" value="11">黑帮犯罪<p>
+ 				<input type="checkbox" name="gametype" value="12">其他<p>
+ 			<label>18您觉得这个游戏很有趣，您会主动推荐给身边朋友吗？</label><p>
+        		<input type="radio" name="recommand" value="1">不会，自己玩自己的<p>
+ 				<input type="radio" name="recommand" value="2">会，推荐给另一个朋友<p>
+ 				<input type="radio" name="recommand" value="3">会，推荐给2到3个朋友<p>
+ 				<input type="radio" name="recommand" value="4">会，推荐给4到5个朋友<p>
+ 				<input type="radio" name="recommand" value="5">会，推荐给5个以上的朋友<p>
+ 			<label>19你认为这款游戏需要改进的地方？</label><p>
+ 				<input type="text" style="height:28px" name="advise" value=""/> 
+      </fieldset>
+      <div style="margin:0 auto;text-align:center"> 
+     	 <input type="submit" style="font-size:18px" data-inline="true" value="提交">
+      </div> 
+    </form>
+  </div>
+</div>
+</body>
+</html>

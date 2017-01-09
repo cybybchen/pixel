@@ -545,6 +545,53 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_QUESTION:
+				sb.append(LogString.LOGTYPE_QUESTION_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SEX));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.AGE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CHANNEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.PLAYTIME));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LOVE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LASTTIME));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.DAILYPLAYTIME));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.WHATTIME));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.KNOW));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ANIME));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.GAMES));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.REQUIRES));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.IFCOST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.COST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.MOSTLOVE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.GAMETYPE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RECOMMAND));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ADVISE));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}

@@ -95,6 +95,23 @@ public class LogString {
 	public static final String ITEMCOUNT3 = "itemidcount3";
 	public static final String ITEMID4 = "itemid4";
 	public static final String ITEMCOUNT4 = "itemidcount4";
+	public static final String SEX = "sex";
+	public static final String AGE = "age";
+	public static final String PLAYTIME = "playtime";
+	public static final String LOVE = "love";
+	public static final String LASTTIME = "lasttime";
+	public static final String DAILYPLAYTIME = "dailyplaytime";
+	public static final String WHATTIME = "whattime";
+	public static final String KNOW = "know";
+	public static final String ANIME = "anime";
+	public static final String GAMES = "games";
+	public static final String REQUIRES = "requires";
+	public static final String IFCOST = "ifcost";
+	public static final String COST = "cost";
+	public static final String MOSTLOVE = "mostlove";
+	public static final String GAMETYPE = "gametype";
+	public static final String RECOMMAND = "recommand";
+	public static final String ADVISE = "advise";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -125,6 +142,7 @@ public class LogString {
 	public static final int LOGTYPE_DAILYQUEST = 25;
 	public static final int LOGTYPE_ACTIVITY = 26;
 	public static final int LOGTYPE_WORLDBOSS = 27;
+	public static final int LOGTYPE_QUESTION = 28;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -154,6 +172,7 @@ public class LogString {
 	public static final String LOGTYPE_DAILYQUEST_STR = "Dailyquest";
 	public static final String LOGTYPE_ACTIVITY_STR = "Activity";
 	public static final String LOGTYPE_WORLDBOSS_STR = "Worldboss";
+	public static final String LOGTYPE_QUESTION_STR = "Question";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

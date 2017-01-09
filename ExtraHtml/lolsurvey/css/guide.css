@@ -1,0 +1,374 @@
+body,.ui-page {
+	margin: 0;
+	padding: 0;
+	width: 360px;
+/* 	overflow: hidden; */
+/* 	border-width: 55px 0 90px; */
+/* 	border-style: solid; */
+/* 	border-image: url(images/main_bg.jpg) 55 0 90 0 fill stretch; */
+}
+
+#background-page {
+	border-width: 55px 0 90px;
+	border-style: solid;
+	border-image: url(images/main_bg.jpg) 55 0 90 0 fill stretch;
+}
+/*body{
+	background-image: url(images/main_bg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed
+}*/
+* {
+	/* 禁止用户选中文字 for iOS */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	/*很多Android 浏览器的 a 链接有边框，这里取消它*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#listview-page {
+	padding: 52px 0 94px;
+}
+
+#detailview-page {
+	padding: 52px 0 30px;
+}
+
+.ui-page {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -180px;
+	display: none;
+}
+
+.ui-page-active {
+	display: block;
+}
+
+.ui-header-fixed,.ui-footer-fixed {
+	left: 0;
+	right: 0;
+	width: 100%;
+	position: fixed;
+	z-index: 1000;
+}
+
+.ui-header-fixed {
+	height: 42px;
+	top: -1px;
+	padding-top: 1px;
+}
+
+.ui-header h1 {
+	padding: 3px 0;
+	text-align: center;
+	margin: 0 30%;
+	white-space: nowrap;
+}
+
+.ui-content {
+	padding: 0;
+/* 	overflow: hidden; */
+}
+
+.ul-wapper .ui-listview,.ul-wapper .ui-detailview {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 318px;
+	position: relative;
+}
+
+.ul-wapper {
+	overflow-y: hidden;
+	overflow-x: hidden;
+	width: 303px;
+	margin: 0 auto;
+	border-width: 27px;
+	border-style: solid;
+	border-image: url(images/bottoms.png) 27 fill stretch;
+}
+
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+.ui-listview,.ui-listview>li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ui-listview>li {
+	margin: 7px 0;
+	background-image: url(images/data.png);
+}
+
+.ui-listview>li:first-child {
+	margin-top: 0;
+}
+
+.ui-listview>li,.ui-listview>li a,.ui-field {
+	width: 303px;
+	height: 68px;
+	display: block;
+	position: relative;
+}
+
+.ui-field {
+	height: 60px;
+}
+
+.ui-ratelist>li a {
+	height: 60px;
+}
+
+.ui-listview>li a {
+	width: 234px;
+}
+
+.ui-field>img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 59px;
+	width: 59px;
+	padding: 3px 5px;
+}
+
+.ui-listview li a>img:first-child,.ui-field>img:first-child {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 55px;
+	width: 55px;
+	padding: 5px 7px;
+}
+
+.ui-listview li a,.ui-field {
+	padding: 5px;
+	padding-left: 69px;
+}
+
+.ui-score {
+	width: 112px;
+	float: left;
+	margin: 6px;
+	margin-left: 15px;
+	margin-right: -25px;
+	font-size: 13px;
+}
+
+.ui-listview li a {
+	text-align: left;
+	text-overflow: ellipsis;
+/* 	overflow: hidden; */
+	white-space: nowrap;
+	color: #333;
+	/*font-weight: 700;*/
+	font-size: 16px;
+	line-height: 1.3;
+}
+
+.ui-page a {
+	/*font-family: sans-serif;*/
+	text-decoration: none;
+}
+
+.ui-detailview h1,.ui-detailview h2,.ui-detailview h3 {
+	font-size: 1.2em;
+	display: block;
+	margin: 0.1em;
+	padding: 0.2em;
+	padding-top: 0;
+	margin-bottom: .4em;
+	text-align: center;
+	text-overflow: ellipsis;
+/* 	overflow: hidden; */
+	white-space: nowrap;
+}
+
+.ui-detailview h3 {
+	font-size: 1em;
+}
+
+.ui-detailview h1,.ui-detailview h2 {
+	border-bottom: 1px solid #333;
+}
+
+.ui-detailview p {
+	text-indent: 2em;
+	margin: .2em auto;
+	width: 21em;
+	font-size: 14px;
+}
+
+.ui-field p {
+	width: 15em;
+	text-indent: 0;
+}
+
+.ul-wapper .date {
+	position: absolute;
+	margin-top: -23px;
+	font-size: 8px;
+	font-weight: bold;
+	padding: 3px;
+	display: block;
+}
+
+.ui-listview>li h1,.ui-listview>li h2 {
+	font-size: 1em;
+	/*font-weight: 700;*/
+	display: block;
+	margin: .15em 0;
+	text-overflow: ellipsis;
+/* 	overflow: hidden; */
+	white-space: nowrap;
+}
+
+h1,h2,h3 {
+	font-weight: 500;
+}
+
+.ui-progress span {
+	font-weight: bold;
+}
+
+.ui-listview>li p {
+	font-size: .75em;
+	/*font-weight: 400;*/
+	display: block;
+	margin: .3em 0;
+	height: 30px;
+	text-overflow: ellipsis;
+/* 	overflow: hidden; */
+	white-space: normal;
+}
+
+.ui-footer-fixed {
+	bottom: 0;
+}
+
+.ui-navbar {
+	max-width: 100%;
+}
+
+.ui-navbar ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: block;
+	border: 0;
+	max-width: 100%;
+	overflow: visible;
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.ui-grid-c>.ui-block-a,.ui-grid-c>.ui-block-b,.ui-grid-c>.ui-block-c,.ui-grid-c>.ui-block-d
+	{
+	width: 25%;
+}
+
+.ui-grid-d>.ui-block-a,.ui-grid-d>.ui-block-b,.ui-grid-d>.ui-block-c,.ui-grid-d>.ui-block-d,.ui-grid-d>.ui-block-e
+	{
+	width: 20%;
+}
+
+.ui-grid-e>.ui-block-a,.ui-grid-e>.ui-block-b,.ui-grid-e>.ui-block-c,.ui-grid-e>.ui-block-d,.ui-grid-e>.ui-block-e,.ui-grid-e>.ui-block-f
+	{
+	width: 16.6%;
+}
+
+.ui-detailview .ui-grid-d,.ui-detailview .ui-grid-e {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	height: 55px;
+}
+
+.ui-detailview .ui-grid-d img {
+	max-width: 60px;
+}
+
+.ui-detailview .ui-grid-e img:first-child {
+	width: 44px;
+	height: 44px;
+	margin: 2px;
+	margin-right: -46px;
+}
+
+ul.ui-grid-a,ul.ui-grid-b,ul.ui-grid-c,ul.ui-grid-d,ul.ui-grid-e,ul.ui-grid-solo,li.ui-block-a,li.ui-block-b,li.ui-block-c,li.ui-block-d,li.ui-block-e,li.ui-block-f
+	{
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+	list-style: none;
+	width: 100%;
+}
+
+.ui-block-a,.ui-block-b,.ui-block-c,.ui-block-d,.ui-block-e,.ui-block-f
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+}
+
+.ui-block-a {
+	clear: left;
+}
+
+.ui-footer a {
+	height: 78px;
+}
+
+li.ui-block-a a,li.ui-block-b a,li.ui-block-c a,li.ui-block-d a,li.ui-block-e a,li.ui-block-f a
+	{
+	display: block;
+	text-align: center;
+	text-overflow: ellipsis;
+/* 	overflow: hidden; */
+	white-space: nowrap;
+}
+
+.ui-footer a img {
+	margin-top: 10px;
+}
+
+.ui-progress {
+	width: 234px;
+	position: relative;
+}
+
+.ui-progress-r,.ui-progress-b,.ui-progress {
+	height: 18px;
+	float: left;
+	margin-right: 4px;
+}
+
+.ui-progress-r {
+	background-color: #F00;
+}
+
+.ui-progress-b {
+	background-color: #00F;
+}
+
+.ui-rate,.ui-hot {
+	border: 1px solid #F00;
+	background-color: #FFF;
+	color: #666;
+	padding: 3px 5px;
+	text-decoration: none !important;
+}
+
+.ui-rate-active {
+	background-color: #F00;
+	color: #FFF;
+}
+/*@media screen and (min-width: 48em) {
+	
+}*/

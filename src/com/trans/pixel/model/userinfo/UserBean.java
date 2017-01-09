@@ -108,6 +108,7 @@ public class UserBean {
 	private long receiveNoticeMessageTimeStamp = 0;
 	private int task1Order = 0;
 	private int task2Record = 0;
+	private int questStatus = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1086,6 +1087,12 @@ public class UserBean {
 	public void setBattletowerShopRefreshTime(int battletowerShopRefreshTime) {
 		this.battletowerShopRefreshTime = battletowerShopRefreshTime;
 	}
+	public int getQuestStatus() {
+		return questStatus;
+	}
+	public void setQuestStatus(int questStatus) {
+		this.questStatus = questStatus;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1228,6 +1235,7 @@ public class UserBean {
 		builder.setLotteryCoinCount(lotteryCoinCount);
 		builder.setTask1Order(task1Order);
 		builder.setTask2Record(task2Record);
+		builder.setQuestStatus(questStatus);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {
