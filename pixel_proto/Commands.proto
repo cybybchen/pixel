@@ -65,14 +65,14 @@ message ServerData {
 }
 
 message ContractWeightList {
-	repeated ContractWeight contract = 1;
-	optional int32 weightall = 2;
+	repeated ContractWeight quality = 1;
 }
 
 message ContractWeight {
-	optional int32 id = 1;
-	optional int32 count = 2;
-	optional int32 weight = 3;
+	optional int32 quality = 1;
+	optional int32 ishero = 2;
+	repeated RewardInfo count = 3;
+	optional int32 weightall = 4;
 }
 
 message ContractRewardList {
@@ -160,9 +160,9 @@ message CdkeyList {
 }
 
 message RewardInfo {
-	required int32 itemid = 1;
+	optional int32 itemid = 1;
 	optional string itemname = 2;
-	required int64 count = 3;
+	optional int64 count = 3;
 	optional int32 weight = 4;
 }
 

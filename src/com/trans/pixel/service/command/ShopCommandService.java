@@ -828,13 +828,16 @@ public class ShopCommandService extends BaseCommandService{
 			user.setPurchaseContractLeft(user.getPurchaseContractLeft()-1);
 			logService.sendQiyueLog(user.getServerId(), user.getId(), cmd.getHeroid(), 1);
 		}
-		ContractWeightList weights = service.getContractWeightList();
+		ContractWeight weights = service.getContractWeight(cmd.getHeroid());
 		MultiReward.Builder rewards = service.getContractRewardList();
 		int index = userService.nextInt(weights.getWeightall());
-		for(ContractWeight weight : weights.getContractList()){
+		for(RewardInfo weight : weights.getCountList()){
 			if(index < weight.getWeight()){
 				RewardInfo.Builder reward = RewardInfo.newBuilder();
-				reward.setItemid(51000+cmd.getHeroid());
+				if (weights.getIshero() == 1)
+					reward.setItemid(51000+cmd.getHeroid());
+				else
+					reward.setItemid(22000+cmd.getHeroid());
 				reward.setCount(weight.getCount());
 				if(user.getVip() >= 9)
 					reward.setCount(reward.getCount()*2);

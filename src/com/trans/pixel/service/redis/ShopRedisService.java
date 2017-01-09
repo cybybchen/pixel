@@ -24,6 +24,8 @@ import com.trans.pixel.protoc.Commands.PurchaseCoinCostList;
 import com.trans.pixel.protoc.Commands.PurchaseCoinReward;
 import com.trans.pixel.protoc.Commands.PurchaseCoinRewardList;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Commands.Richang;
+import com.trans.pixel.protoc.Commands.RichangList;
 import com.trans.pixel.protoc.Commands.ShopList;
 import com.trans.pixel.protoc.Commands.ShopRefresh;
 import com.trans.pixel.protoc.Commands.ShopRefreshList;
@@ -895,19 +897,60 @@ public class ShopRedisService extends RedisService{
 		return shoplist.build();
 	}
 	
-	public ContractWeightList getContractWeightList(){
-		ContractWeightList.Builder builder = ContractWeightList.newBuilder();
-		String value = get(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG);
-		if(value != null && parseJson(value, builder))
-			return builder.build();
+	//contract activity
+	public ContractWeight getContract(int quality) {
+		String value = hget(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG, "" + quality);
+		if (value == null) {
+			Map<String, ContractWeight> config = getContractConfig();
+			return config.get("" + quality);
+		} else {
+			ContractWeight.Builder builder = ContractWeight.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, ContractWeight> getContractConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, ContractWeight> map = buildContractConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, ContractWeight> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, ContractWeight> map = new HashMap<String, ContractWeight>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				ContractWeight.Builder builder = ContractWeight.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, ContractWeight> buildContractConfig(){
 		String xml = ReadConfig("lol_soulcontract.xml");
-		parseXml(xml, builder);
-		int weightall = 0;
-		for(ContractWeight weight : builder.getContractList())
-			weightall += weight.getWeight();
-		builder.setWeightall(weightall);
-		set(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG, formatJson(builder.build()));
-		return builder.build();
+		ContractWeightList.Builder builder = ContractWeightList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + "lol_soulcontract.xml");
+			return null;
+		}
+		
+		Map<String, ContractWeight> map = new HashMap<String, ContractWeight>();
+		for(ContractWeight.Builder weight : builder.getQualityBuilderList()){
+			int weightall = 0;
+			for (RewardInfo reward : weight.getCountList()) {
+				weightall += reward.getWeight();
+			}
+			weight.setWeightall(weightall);
+			map.put("" + weight.getQuality(), weight.build());
+		}
+		return map;
 	}
 	
 	public MultiReward.Builder getContractRewardList(){

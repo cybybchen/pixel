@@ -1,7 +1,42 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<contract id="1" count="2" weight="100" />
-<contract id="2" count="3" weight="50" />
-<contract id="3" count="4" weight="10" />
-<contract id="4" count="5" weight="2" />
+<quality quality="1" des="购买经验包随机赠送2-5个$" ishero="1" >
+<count count="2" weight="100" />
+<count count="3" weight="50" />
+<count count="4" weight="10" />
+<count count="5" weight="2" />
+</quality>
+<quality quality="2" des="购买经验包随机赠送2-5个$" ishero="1" >
+<count count="2" weight="100" />
+<count count="3" weight="50" />
+<count count="4" weight="10" />
+<count count="5" weight="2" />
+</quality>
+<quality quality="3" des="购买经验包随机赠送2-5个$" ishero="1" >
+<count count="2" weight="100" />
+<count count="3" weight="50" />
+<count count="4" weight="10" />
+<count count="5" weight="2" />
+</quality>
+<quality quality="4" des="购买经验包随机赠送10-20个$碎片" ishero="0" >
+<count count="10" weight="100" />
+<count count="11" weight="100" />
+<count count="12" weight="100" />
+<count count="13" weight="100" />
+<count count="14" weight="100" />
+<count count="15" weight="100" />
+<count count="16" weight="50" />
+<count count="17" weight="40" />
+<count count="18" weight="30" />
+<count count="19" weight="20" />
+<count count="20" weight="10" />
+</quality>
+<quality quality="5" des="购买经验包随机赠送3-5个$碎片" ishero="0" >
+<count count="3" weight="100" />
+<count count="4" weight="10" />
+<count count="5" weight="2" />
+</quality>
+<quality quality="6" des="购买经验包随机赠送1-2个$碎片" ishero="0" >
+<count count="1" weight="100" />
+<count count="2" weight="2" />
+</quality>
 </data>
