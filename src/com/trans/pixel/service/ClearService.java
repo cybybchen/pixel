@@ -110,7 +110,7 @@ public class ClearService {
 	}
 	
 	public UserClearBean clearHero(UserBean user, int heroId, int position, int type) {
-		ClearAttribute att = getClearAttribute(position, type == RewardConst.JEWEL ? 1 : 0);
+		ClearAttribute att = getClearAttribute(position, 0);
 		int allWeight = 0;
 		for (ClearAttributeOrder order : att.getOrderList()) {
 			allWeight += order.getWeight();

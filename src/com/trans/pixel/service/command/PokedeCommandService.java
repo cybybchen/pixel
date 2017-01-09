@@ -108,9 +108,9 @@ public class PokedeCommandService extends BaseCommandService {
 			count = cmd.getCount();
 		
 		List<UserClearBean> clearList = new ArrayList<UserClearBean>();
-		
+		List<UserPropBean> userPropList = new ArrayList<UserPropBean>();
 		UserPokedeBean userPokede = userPokedeService.selectUserPokede(user, heroId);
-		ResultConst result = clearService.clearHero(userPokede, position, type, user, count, clearList);
+		ResultConst result = clearService.clearHero(userPokede, position, type, user, count, clearList, userPropList);
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
@@ -126,6 +126,7 @@ public class PokedeCommandService extends BaseCommandService {
 		builder.addAllClearInfo(this.buildClearInfo(clearList));
 		responseBuilder.setClearInfoCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		pushCommandService.pushUserPropListCommand(responseBuilder, user, userPropList);
 	}
 	
 	public void choseClearInfo(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user) {
