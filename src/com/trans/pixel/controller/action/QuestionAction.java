@@ -42,6 +42,7 @@ public class QuestionAction {
 	@ResponseBody
 	public void dispatchRequest(HttpServletRequest request,
 			HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		Map<String, String[]> params = request.getParameterMap();
 //		logger.warn("params is:" + params);
 		Iterator<Entry<String, String[]>> it = params.entrySet().iterator();
@@ -63,6 +64,8 @@ public class QuestionAction {
 		}
 		
 		logger.warn("logmap is:" + logMap);
+		
+		
 	}
 	
 	private String composeQuestion(String[] questions) {

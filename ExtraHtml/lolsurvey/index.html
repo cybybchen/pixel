@@ -9,7 +9,7 @@
 	<meta http-equiv="expires" content="0">
 	<link rel="shortcut icon" href="css/favicon.ico">
 	<script src="js/jquery.min.js"></script>
-<!-- 	<link rel="stylesheet" href="css/guide.css?v=13"/> -->
+	<link rel="stylesheet" href="css/guide.css?v=13"/>
 <!-- 	<script src="js/data.js?v=13"></script> -->
 	<script type="text/javascript">
 	function checkAll(str)    
@@ -40,6 +40,7 @@
 	        all.checked = false;    
 	} 
 	 $(document).ready(function() {
+		 resizeContent();
 		  $('input[type=checkbox]').click(function() {
 		   $("input[name='gametype']").attr('disabled', true);
 		   if ($("input[name='gametype']:checked").length >= 3) {
@@ -64,17 +65,65 @@
 		   return true;
 		  
 		}
+	 
+	 function sub() {  
+		 for(var i=0;i<document.form1.elements.length-1;i++)
+		   {
+			  if(document.form1.elements[i].value=="")
+			  {
+				 alert("当前表单不能有空项");
+				 document.form1.elements[i].focus();
+				 return false;
+			  }
+		   }
+        $.ajax({  
+                cache: true,  
+                type: "POST",  
+                url:"http://123.207.88.112:8081/pixel/question",  
+                data:$('#formid').serialize(),// 你的formid  
+                async: false,  
+                error: function(request) {  
+                    alert("Connection error:"+request.error);  
+                },  
+                success: function(data) {  
+                    alert("感谢您参与我们的问卷调查，请至游戏邮件里领取奖励!");  
+                }  
+            });  
+	    } 
+	 $(window).resize(function() {
+			resizeContent();
+		});
+
+		function resizeContent() {
+			var scale = window.innerWidth/360.0;
+			var height = Math.round($(window).height()/scale);
+			// $(".ui-header-fixed h1").html(window.innerWidth+"x"+height);
+			$(".ui-page").css({ "transform": "scale("+scale+")", "margin-top": -height/2 });
+			$("#background-page").height(height-145);	
+			height = height - 200;
+// 			$(".ul-wapper").height(height);
+// 			$(".ul-wapper .ui-listview").height(height);
+			height += 64;
+			$(".ul-wapper").height(height);
+			$(".ul-wapper .ui-detailview").height(height);
+			//$("#detailview-page .ul-wapper .ui-detailview-wapper").height(height-16);
+			//$("#detailview-page .ul-wapper .ui-detailview").height(height-16);
+		}
 	</script>
 </head>
 
 <body>
-<div data-role="page">
-  <div data-role="header" style="text-align:center">
-  <h1>选择菜单</h1>
+<div id="background-page" class="ui-page">
+</div>
+<div data-role="page" class="ui-page">
+  <div data-role="header" style="text-align:center;">
+  <h2 style="margin:15px;color:#FFFFFF">问卷调查</h2>
   </div>
 
-  <div data-role="content" >
-    <form name="form1" method="post" action="http://123.207.88.112:8080/pixel/question" onSubmit="return check()">
+  <div data-role="content">
+  <div class="ul-wapper" style="height: 302px;">
+		<div class="ui-detailview" style="height: 302px;">
+    <form id="formid" name="form1" method="post" action="http://localhost:8080/pixel/question" onSubmit="return check()">
       <fieldset data-role="fieldcontain">
 	      <?php
 	        $data = $_GET;
@@ -188,9 +237,11 @@
  				<input type="text" style="height:28px" name="advise" value=""/> 
       </fieldset>
       <div style="margin:0 auto;text-align:center"> 
-     	 <input type="submit" style="font-size:18px" data-inline="true" value="提交">
+     	 <input type="button" style="font-size:18px" data-inline="true" value="提交"  onclick="sub()">
       </div> 
     </form>
+    </div>
+    </div>
   </div>
 </div>
 </body>
