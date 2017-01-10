@@ -1,13 +1,17 @@
 package com.trans.pixel.model;
 
+import net.sf.json.JSONObject;
+
 public class BloodUserBean {
 	private long userId = 0;
 	private int position1 = 0;
 	private int position2 = 0;
 	private int position3 = 0;
 	private int position4 = 0;
+	private int position5 = 0;
 	private boolean isSurvival = true;
 	private String teamInfo = "";
+	private int currentPosition = 0;
 	public long getUserId() {
 		return userId;
 	}
@@ -38,6 +42,12 @@ public class BloodUserBean {
 	public void setPosition4(int position4) {
 		this.position4 = position4;
 	}
+	public int getPosition5() {
+		return position5;
+	}
+	public void setPosition5(int position5) {
+		this.position5 = position5;
+	}
 	public boolean isSurvival() {
 		return isSurvival;
 	}
@@ -49,5 +59,20 @@ public class BloodUserBean {
 	}
 	public void setTeamInfo(String teamInfo) {
 		this.teamInfo = teamInfo;
+	}
+	public int getCurrentPosition() {
+		return currentPosition;
+	}
+	public void setCurrentPosition(int currentPosition) {
+		this.currentPosition = currentPosition;
+	}
+	public static BloodUserBean fromJson(String value) {
+		JSONObject json = JSONObject.fromObject(value);
+		Object object = JSONObject.toBean(json, BloodUserBean.class);
+		return (BloodUserBean) object;
+	}
+	public static String toJson(BloodUserBean buser) {
+		JSONObject json = JSONObject.fromObject(buser);
+		return json.toString();
 	}
 }

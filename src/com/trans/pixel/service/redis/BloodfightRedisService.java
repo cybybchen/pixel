@@ -1,6 +1,9 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -15,8 +18,8 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.MessageConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.BloodUserBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.TowerReward;
 import com.trans.pixel.protoc.Commands.TowerRewardList;
@@ -65,6 +68,59 @@ public class BloodfightRedisService extends RedisService {
 	public Set<String> getBloodfightUserSet(final int serverId) {
 		String key = RedisKey.BLOOD_ZHANLI_PREFIX + serverId;
 		return this.zrange(key, 0, -1);
+	}
+	
+	public void setBloodUserList(int serverId, List<BloodUserBean> buserList) {
+		this.hputAll(RedisKey.BLOOD_USERINFO_PREFIX + serverId, convertBloodUserMap(buserList));
+	}
+	
+	public List<BloodUserBean> getBloodUserList(int serverId) {
+		List<BloodUserBean> buserList = new ArrayList<BloodUserBean>();
+		Map<String, String> map = this.hget(RedisKey.BLOOD_USERINFO_PREFIX + serverId);
+		Iterator<Entry<String, String>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, String> entry = it.next();
+			BloodUserBean buser = BloodUserBean.fromJson(entry.getValue());
+			if (buser != null && buser.isSurvival()) {
+				buserList.add(buser);
+			}
+		}
+		
+		return buserList;
+	}
+	
+	public BloodUserBean getBloodUser(UserBean user) {
+		String value = this.hget(RedisKey.BLOOD_USERINFO_PREFIX + user.getServerId(), "" + user.getId());
+		BloodUserBean buser = BloodUserBean.fromJson(value);
+		if (buser != null ) {
+			return buser;
+		}
+		
+		return null;
+	}
+	
+	public void setBloodUser(int serverId, BloodUserBean buser) {
+		this.hput(RedisKey.BLOOD_USERINFO_PREFIX + serverId, "" + buser.getUserId(), BloodUserBean.toJson(buser));
+	}
+	
+	public void xiazhu(UserBean user, long xiazhuUserId) {
+		String key = RedisKey.BLOOD_XIAZHU_PREFIX + user.getServerId();
+		this.hput(key, "" + user.getId(), "" + xiazhuUserId);
+	}
+	
+	public Map<String, String> getXiazhuMap(int serverId) {
+		Map<String, String> map = this.hget(RedisKey.BLOOD_XIAZHU_PREFIX + serverId);
+		this.delete(RedisKey.BLOOD_XIAZHU_PREFIX + serverId);
+		return map;
+	}
+	
+	private Map<String, String> convertBloodUserMap(List<BloodUserBean> buserList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (BloodUserBean buser : buserList) {
+			map.put("" + buser.getUserId(), BloodUserBean.toJson(buser));
+		}
+		
+		return map;
 	}
 	
 	//tower reward1

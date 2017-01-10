@@ -274,6 +274,7 @@ public class RedisKey {
 	public static final String CLEAR_HERO_KEY = PREFIX + CONFIG_PREFIX + "clear_hero";
 	public static final String CLEAR_ATTRIBUTE_KEY = PREFIX + CONFIG_PREFIX + "clear_attribute";
 	public static final String HERO_STRENGTHEN_KEY = PREFIX + CONFIG_PREFIX + "hero_strengthen";
+	public static final String CLEAR_COST_KEY = PREFIX + CONFIG_PREFIX + "clear_cost";
 
 	//justsing activity cdk record type
 	public static final String JUSTSING_CDK_RECORD_PREFIX = PREFIX + "justsing_record_cdk_";
@@ -319,4 +320,5 @@ public class RedisKey {
 	public static final String BLOOD_ENTER_PREFIX = PREFIX + "enter" + SPLIT + SERVER_PREFIX;
 	public static final String BLOOD_ZHANLI_PREFIX = PREFIX + "zhanli" + SPLIT + SERVER_PREFIX;
 	public static final String BLOOD_USERINFO_PREFIX = PREFIX + "userinfo" + SPLIT + SERVER_PREFIX;
+	public static final String BLOOD_XIAZHU_PREFIX = PREFIX + "xiazhu" + SPLIT + SERVER_PREFIX;
 }

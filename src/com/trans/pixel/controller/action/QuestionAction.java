@@ -2,6 +2,7 @@ package com.trans.pixel.controller.action;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -17,8 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -30,6 +35,8 @@ public class QuestionAction {
 	private LogService logService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private MailService mailService;
 	
 	@RequestMapping(value = "/question")
 	@ResponseBody
@@ -51,6 +58,8 @@ public class QuestionAction {
 			
 			user.setQuestStatus(1);
 			userService.updateUser(user);
+			
+			sendReward(user.getId());
 		}
 		
 		logger.warn("logmap is:" + logMap);
@@ -63,5 +72,12 @@ public class QuestionAction {
 		}
 		
 		return question;
+	}
+	
+	private void sendReward(long userId) {
+		String content = "问卷调查奖励";
+		List<RewardBean> rewardList = RewardBean.initRewardList(RewardConst.JEWEL, 200);
+		MailBean mail = MailBean.buildSystemMail(userId, content, RewardBean.buildRewardInfoList(rewardList));
+		mailService.addMail(mail);
 	}
 }

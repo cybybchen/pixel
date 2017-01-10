@@ -44,6 +44,7 @@ public class BattletowerCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BATTLETOWER_SUBMIT_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BATTLETOWER_SUBMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
+            return;
 		}
 		builder.setUbt(ubt.build());
 		responseBuilder.setUserBattletowerCommand(builder.build());
@@ -61,6 +62,7 @@ public class BattletowerCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BATTLETOWER_RESET_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BATTLETOWER_RESET_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
+            return;
 		}
 		builder.setUbt(ubt.build());
 		responseBuilder.setUserBattletowerCommand(builder.build());

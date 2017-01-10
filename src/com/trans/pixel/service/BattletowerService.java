@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,7 @@ public class BattletowerService {
 		if (success) {
 			if (tower == ubt.getCurrenttower() + 1) {
 				ubt.setCurrenttower(tower);
+				ubt.setRandom(RandomUtils.nextInt(1000000));
 				rewards.addAllLoot(buildTowerReward1(ubt.getCurrenttower()));
 			}
 			
@@ -62,6 +64,7 @@ public class BattletowerService {
 		ubt.setCurrenttower(0);
 		ubt.setResettimes(ubt.getResettimes() - 1);
 		ubt.setLefttimes(3);
+		ubt.setRandom(RandomUtils.nextInt(1000000));
 		
 		userBattletowerService.updateUserBattletower(ubt);
 		
@@ -80,7 +83,7 @@ public class BattletowerService {
 	private List<RewardInfo> buildTowerReward2(int tower) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		TowerReward towerReward = null;
-		if (tower == 1)
+		if (tower < 10)
 			towerReward = redis.getTowerReward2(1);
 		else
 			towerReward = redis.getTowerReward2(tower / 10 * 10);

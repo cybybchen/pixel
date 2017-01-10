@@ -9,6 +9,7 @@
 		<result property="currenttower" column="currenttower" />
 		<result property="resettimes" column="resettimes" />
 		<result property="lefttimes" column="lefttimes" />
+		<result property="random" column="random" />
 	</resultMap>
 	
 	<select id="selectUserBattletower" parameterType="long" resultMap="resultMap">
@@ -17,11 +18,11 @@
 	</select>
 	
 	<insert id="insertUserBattletower" parameterType="com.trans.pixel.model.userinfo.UserBattletowerBean">
-	    INSERT INTO user_battletower(user_id, toptower, currenttower, resettimes, lefttimes)
-	    VALUES(#{userId}, #{toptower}, #{currenttower}, #{resettimes}, #{lefttimes})
+	    INSERT INTO user_battletower(user_id, toptower, currenttower, resettimes, lefttimes, random)
+	    VALUES(#{userId}, #{toptower}, #{currenttower}, #{resettimes}, #{lefttimes}, #{random})
 	    ON 
 	    duplicate key update
-	    toptower=#{toptower}, currenttower=#{currenttower}, resettimes=#{resettimes}, lefttimes=#{lefttimes}
+	    toptower=#{toptower}, currenttower=#{currenttower}, resettimes=#{resettimes}, lefttimes=#{lefttimes}, random=#{random}
 	</insert>
 	
 </mapper>

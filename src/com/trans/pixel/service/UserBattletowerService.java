@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserBattletowerMapper;
@@ -38,6 +39,7 @@ public class UserBattletowerService {
 		ubt.setUserId(userId);
 		ubt.setLefttimes(3);
 		ubt.setResettimes(3);
+		ubt.setRandom(RandomUtils.nextInt(1000000));
 		
 		return ubt;
 	}
