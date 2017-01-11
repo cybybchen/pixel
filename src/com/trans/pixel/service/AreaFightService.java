@@ -594,8 +594,10 @@ public class AreaFightService extends FightService{
 					AreaBuff.Builder buff = redis.getMyAreaBuff(user, builder.getSkill());
 					if(buff == null){
 						buff = AreaBuff.newBuilder();
-						buff.setSkill(builder.getSkill());
-						buff.setType(builder.getType());
+//						buff.setSkill(builder.getSkill());
+						buff.setSkillid(builder.getSkill());
+//						buff.setType(builder.getType());
+						buff.setBufftype(builder.getType());
 					}
 					if(buff.getEndTime() > redis.now())
 						buff.setLevel(buff.getLevel()+1);

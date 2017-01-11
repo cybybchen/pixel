@@ -80,7 +80,7 @@ public class HeroCommandService extends BaseCommandService {
 	
 	public void heroLevelUpTo(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user) {
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), cmd.getInfoId());
-		ResultConst result = heroLevelUpService.levelUpHeroTo(user, heroInfo, cmd.getLevelUpTo());
+		ResultConst result = heroLevelUpService.levelUpHeroTo(user, heroInfo, cmd.getLevelUp());
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			

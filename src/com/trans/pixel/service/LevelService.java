@@ -243,18 +243,18 @@ public class LevelService {
 				rewardList.add(RewardBean.init(heroChoice.getLevel31(), 1));
 				rewardList.add(RewardBean.init(heroChoice.getLevel32(), 1));
 				break;
-			case NEWPLAY_LEVEL_4:
-				rewardList.add(RewardBean.init(heroChoice.getLevel4(), 1));
-				break;
-			case NEWPLAY_LEVEL_5:
-				rewardList.add(RewardBean.init(heroChoice.getLevel5(), 1));
-				break;
-			case NEWPLAY_LEVEL_6:
-				rewardList.add(RewardBean.init(heroChoice.getLevel6(), 1));
-				break;
-			case NEWPLAY_LEVEL_7:
-				rewardList.add(RewardBean.init(heroChoice.getLevel7(), 1));
-				break;
+//			case NEWPLAY_LEVEL_4:
+//				rewardList.add(RewardBean.init(heroChoice.getLevel4(), 1));
+//				break;
+//			case NEWPLAY_LEVEL_5:
+//				rewardList.add(RewardBean.init(heroChoice.getLevel5(), 1));
+//				break;
+//			case NEWPLAY_LEVEL_6:
+//				rewardList.add(RewardBean.init(heroChoice.getLevel6(), 1));
+//				break;
+//			case NEWPLAY_LEVEL_7:
+//				rewardList.add(RewardBean.init(heroChoice.getLevel7(), 1));
+//				break;
 			default:
 				break;
 		}

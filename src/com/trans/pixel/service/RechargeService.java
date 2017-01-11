@@ -208,8 +208,9 @@ public class RechargeService {
 			VipLibao viplibao = shopService.getVipLibao(itemId);
 			rewardList = viplibao.getItemList();
 		}
-
-		rechargeVip(user, rmb.getRmb(), jewel);
+		
+		if (!isCheat)
+			rechargeVip(user, rmb.getRmb(), jewel);
 
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(rewardList.isEmpty()){

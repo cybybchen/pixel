@@ -53,6 +53,10 @@ message UserInfo {
 	optional int32 sevenLoginDays = 66;
 	optional int32 sevenSignStatus = 67;
 	repeated UnionBossRecord unionBossRecord = 68;
+	optional int32 unionIcon = 69;
+	optional int32 lotteryCoinCount = 70;
+	optional int32 task1Order = 71;
+	optional int32 task2Record = 72;
 }
 
 message ServerData {
@@ -113,7 +117,8 @@ message ShopRefreshList {
 }
 message Will {
 	required int32 will = 1;
-	required int32 weight = 2;
+	optional int32 weight = 2;
+	optional int32 position = 3;
 }
 message ShopWill {
 	required int32 id = 1;
@@ -193,6 +198,7 @@ message ClearInfo {
 	required int32 clearId = 2;
 	required int32 count = 3;
 	optional int32 id = 4;
+	optional int32 rare = 5;
 }
 
 message HeroInfo {
@@ -209,6 +215,8 @@ message HeroInfo {
 	optional int32 count = 11;
 	repeated ClearInfo clear = 12;
 	optional int32 strengthen = 13;
+	optional int32 rank = 14;
+	optional string fetters = 15;
 }
 
 message PurchaseCoinReward {
@@ -355,11 +363,17 @@ message AreaEquip {//区域道具
 	optional int64 primaryId = 12;
 }
 
+message AreaBuffList {
+	repeated AreaBuff skill = 1;
+}
 message AreaBuff {//区域BUFF
-	optional int32 type = 5;//适用区域
-	optional int32 skill = 8;//对应技能
+	optional int32 belongto = 5;//适用区域
+	optional int32 skillid = 8;//对应技能
 	optional int32 level = 9;//当前层数
+	optional int32 time = 10;//持续时间
 	optional int64 endTime = 11;//结束时间
+	optional int32 countlimit = 12;//层数上限
+	optional int32 bufftype = 13;//buff所属
 }
 
 message AreaEquipList {
@@ -385,6 +399,7 @@ message AreaResource {//区域资源点
 	repeated UserInfo attacks = 15;//进攻方
 	repeated UserInfo defenses = 16;//防守方
 	repeated string message = 17;//进攻信息
+	optional int64 lastRewardTime = 20;//上轮奖励发放时间
 }
 
 message AreaResourceList {
@@ -453,6 +468,7 @@ message AreaMonster {//区域怪物
 	optional int32 level1 = 11;
 	optional int32 weight = 10;
 	optional int32 pl = 12;
+	optional float level2 = 13;
 }
 
 message AreaMonsterList {
@@ -722,6 +738,7 @@ message UserRank {
 	optional int32 icon = 6;
 	optional int32 vip = 7;
 	optional string composeSkill = 8;
+	optional int32 dps = 9;
 }
 
 message UserFriend {
@@ -981,10 +998,16 @@ message Kaifu {
 	repeated ActivityOrder order = 5;
 }
 
+message KaifuOrder {
+	optional int32 targetcount = 1;
+	optional int32 targetcount1 = 2;
+}
+
 message UserKaifu {
         required int32 type = 1;
         required int32 completeCount = 2;
         repeated int32 rewardOrder = 3;
+	repeated KaifuOrder orderRecord = 4;
 }
 
 message FenjieHeroInfo {
@@ -1099,6 +1122,7 @@ message Rmb {
 	optional string description = 6;
 	optional string img = 7;
 	optional int32 type = 8;
+	optional int32 costid = 9;
 }
 
 message HeroChoiceList {
@@ -1211,6 +1235,7 @@ message ClearAttributeOrder {
 	optional int32 count1 = 4;
 	optional int32 count2 = 5;
 	optional int32 interval = 6;
+	optional int32 rare = 7;
 }
 
 message UserFood {
@@ -1285,6 +1310,7 @@ message UnionBoss {
 	repeated Skill skill = 7;
 	optional int32 refreshtime = 8;
 	optional int32 count = 9;
+	optional int32 handbook = 10;
 }
 
 message UnionBosslootList {
@@ -1389,6 +1415,97 @@ message SevenOrder {
 	optional int32 choose = 4;
 }
 
+message HeroRareLevelupList {
+	repeated HeroRareLevelup id = 1;
+}
+
+message HeroRareLevelup {
+	optional int32 id = 1;
+	optional int32 position = 2;
+	repeated HeroRareLevelupRank rank = 3;	
+}
+
+message HeroRareLevelupRank {
+	optional int32 rank = 1;
+	optional int32 rare = 2;
+	optional int32 sp = 3;
+	optional int32 equip1 = 4;
+	optional int32 count1 = 5;
+	optional int32 equip2 = 6;
+	optional int32 count2 = 7;
+	optional int32 equip3 = 8;
+	optional int32 count3 = 9;
+	optional int32 equip4 = 10;
+	optional int32 count4 = 11;
+	optional int32 equip5 = 12;
+	optional int32 count5 = 13;
+	optional int32 zhanli = 14;
+}
+
+message HeroFettersOrderList {
+	repeated HeroFettersOrder order = 1;
+}
+
+message HeroFettersOrder {
+	optional int32 order = 1;
+	optional int32 id = 2;
+	repeated HeroFetters fetters = 3;
+}
+
+message HeroFetters {
+	optional int32 fettersid = 1;
+	optional string fettersdes = 2;
+	repeated HeroFetter hero = 3;
+}
+
+message HeroFetter {
+	optional int32 heroid = 1;
+	optional int32 herostar = 2;
+	optional int32 herorank = 3;
+}
+
+message TaskTargetList {
+	repeated TaskTarget target = 1;
+}
+
+message TaskTarget {
+	optional int32 targetid = 1;
+	repeated TaskOrder order = 2;
+}
+
+message TaskOrder {
+	optional int32 order = 1;
+	optional int32 type = 2;
+	optional string des = 3;
+	optional int32 targetcount = 4;
+	optional int32 rewardid1 = 5;
+	optional int32 rewardcount1 = 6;
+	optional int32 targetid = 7;
+	optional int32 rewardid2 = 8;
+	optional int32 rewardcount2 = 9;
+	optional int32 targetcount1 = 10;
+}
+
+message Task3OrderList {
+	repeated TaskOrder order = 1;
+}
+
+message Task2TargetHero {
+	optional int32 heroid = 1;
+	repeated TaskTarget target = 2;
+}
+
+message Task2TargetList {
+	repeated Task2TargetHero hero = 1;
+}
+
+message UserTask {
+	optional int32 targetid = 1;
+	optional int32 process = 2;
+	optional int32 status = 3;
+	repeated int32 heroid = 4;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1483,7 +1600,7 @@ message RequestLockHeroCommand {
 }
 
 message RequestHeroLevelUpToCommand {
-	required int32 levelUpTo = 1;
+	required int32 levelUp = 1;
 	required int32 heroId = 2;
 	required int64 infoId = 3;
 }
@@ -1898,6 +2015,9 @@ message YueKa {
 	optional int32 rewardcount = 3;
 	optional int32 count = 4;
 	optional string name = 5;
+	optional int32 rewardid1 = 6;
+	optional int32 rewardcount1 = 7;
+	optional int32 jingyan_per = 9;
 }
 message YueKaList {
 	repeated YueKa item = 1;
@@ -2212,7 +2332,7 @@ message RequestPurchaseVipLibaoCommand {
 }
 
 message RequestQueryRechargeCommand {
-	
+	optional string orderId = 1;	
 }
 
 message RequestShouchongRewardCommand {
@@ -2220,7 +2340,8 @@ message RequestShouchongRewardCommand {
 }
 
 message ResponseNoticeCommand {
-	repeated Notice notice = 1;	
+	repeated Notice notice = 1;
+	repeated string message = 2;	
 }
 
 message RequestHeartBeatCommand {
@@ -2314,6 +2435,35 @@ message RequestHeroStrengthenCommand {
 
 message RequestSevenLoginSignCommand {
 	optional int32 chooseId = 1;
+}
+
+message RequestIsAreaOwnerCommand {
+
+}
+
+message ResponseIsAreaOwnerCommand {
+	optional bool isOwner = 1;
+}
+
+message RequestOpenFetterCommand {
+	required int32 heroId = 1;
+	required int32 fetterid = 2;	
+}
+
+message RequestUserTaskCommand {
+
+}
+
+message ResponseUserTaskCommand {
+	repeated UserTask userTask1 = 1;
+	repeated UserTask userTask2 = 2;
+	repeated UserTask userTask3 = 3;
+}
+
+message RequestGetTaskRewardCommand {
+	required int32 type = 1;//1：主线， 2：支线， 3：每日
+	optional int32 order = 2;
+	optional int32 heroid = 3;//支线任务的排序
 }
 
 message RequestCommand {
@@ -2456,6 +2606,10 @@ message RequestCommand {
 	optional RequestUnionBossFightCommand unionBossFightCommand = 98;
 	optional RequestHeroStrengthenCommand heroStrengthenCommand = 99;
 	optional RequestSevenLoginSignCommand sevenLoginSignCommand = 200;
+	optional RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;
+	optional RequestOpenFetterCommand openFetterCommand = 202;
+	optional RequestUserTaskCommand userTaskCommand = 203;
+	optional RequestGetTaskRewardCommand getTaskRewardCommand = 204;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2523,6 +2677,8 @@ message ResponseCommand {
 	optional ResponseClearInfoCommand clearInfoCommand = 55;
 	optional ResponseBosskillCommand bosskillCommand = 56;
 	optional ResponseUnionBossCommand unionBossCommand = 57;
+	optional ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;
+	optional ResponseUserTaskCommand userTaskCommand = 59;
 }
 
 

@@ -1,30 +1,30 @@
 <data>
-<field fieldid="101" name="蛇纹石河" img="pvp101" yield="15" bufflimit="300" zhanli="0" buffid="70001">
+<field fieldid="101" name="蛇纹石河" img="pvp101" yield="15" bufflimit="100" zhanli="0" buffid="70001">
 <kuangdian id="10101" x="172" y="733" type="1" yield="5" enemyid="1001" img="kd101" />
 <kuangdian id="10102" x="440" y="685" type="1" yield="5" enemyid="1001" img="kd101" />
 <kuangdian id="10103" x="246" y="359" type="1" yield="5" enemyid="1001" img="kd101" />
 <kuangdian id="10104" x="189" y="547" type="2" yield="10" enemyid="1001" img="kd202" />
 </field>
-<field fieldid="102" name="铁脊山脉" img="pvp102" yield="10" bufflimit="300" zhanli="15000" buffid="70002">
+<field fieldid="102" name="铁脊山脉" img="pvp102" yield="10" bufflimit="100" zhanli="15000" buffid="70002">
 <kuangdian id="10201" x="192" y="398" type="1" yield="5" enemyid="1004" img="kd101" />
 <kuangdian id="10202" x="386" y="718" type="1" yield="5" enemyid="1004" img="kd101" />
 <kuangdian id="10203" x="118" y="632" type="2" yield="10" enemyid="1004" img="kd202" />
 <kuangdian id="10204" x="359" y="464" type="2" yield="10" enemyid="1004" img="kd202" />
 </field>
-<field fieldid="103" name="风暴平原" img="pvp103" yield="10" bufflimit="300" zhanli="55000" buffid="70003">
+<field fieldid="103" name="风暴平原" img="pvp103" yield="10" bufflimit="100" zhanli="55000" buffid="70003">
 <kuangdian id="10301" x="106" y="653" type="1" yield="5" enemyid="1007" img="kd101" />
 <kuangdian id="10302" x="402" y="274" type="1" yield="5" enemyid="1007" img="kd101" />
 <kuangdian id="10303" x="511" y="685" type="1" yield="5" enemyid="1007" img="kd101" />
 <kuangdian id="10304" x="313" y="496" type="2" yield="10" enemyid="1007" img="kd202" />
 <kuangdian id="10305" x="202" y="294" type="3" yield="15" enemyid="1007" img="kd201" />
 </field>
-<field fieldid="104" name="库蒙古森林" img="pvp104" yield="5" bufflimit="300" zhanli="116000" buffid="70004">
+<field fieldid="104" name="库蒙古森林" img="pvp104" yield="5" bufflimit="100" zhanli="116000" buffid="70004">
 <kuangdian id="10401" x="142" y="578" type="2" yield="10" enemyid="1010" img="kd202" />
 <kuangdian id="10402" x="472" y="782" type="2" yield="10" enemyid="1010" img="kd202" />
 <kuangdian id="10403" x="225" y="239" type="3" yield="15" enemyid="1010" img="kd201" />
 <kuangdian id="10404" x="335" y="538" type="4" yield="20" enemyid="1010" img="kd401" />
 </field>
-<field fieldid="105" name="暗影岛" img="pvp105" yield="5" bufflimit="300" zhanli="218000" buffid="70005">
+<field fieldid="105" name="暗影岛" img="pvp105" yield="5" bufflimit="100" zhanli="218000" buffid="70005">
 <kuangdian id="10501" x="189" y="810" type="2" yield="10" enemyid="1013" img="kd202" />
 <kuangdian id="10502" x="532" y="337" type="2" yield="10" enemyid="1013" img="kd202" />
 <kuangdian id="10503" x="131" y="479" type="3" yield="15" enemyid="1013" img="kd201" />

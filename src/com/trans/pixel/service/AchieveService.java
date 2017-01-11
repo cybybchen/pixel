@@ -32,20 +32,22 @@ public class AchieveService {
 	private NoticeService noticeService;
 	
 	public void sendAchieveScore(long userId, int type) {
-		sendAchieveScore(userId, type, 1);
+		return;
+//		sendAchieveScore(userId, type, 1);
 	}
 	public void sendAchieveScore(long userId, int type, int count) {
-		UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, type);
-		if (type == AchieveConst.TYPE_ZHANLI || type == AchieveConst.TYPE_VIP)
-			ua.setCompleteCount(count);
-		else
-			ua.setCompleteCount(ua.getCompleteCount() + count);
-		
-		userAchieveService.updateUserAchieve(ua);
-		
-		if (isCompleteNew(ua)) {
-			noticeService.pushNotice(userId, NoticeConst.TYPE_ACHIEVE);
-		}
+		return;
+//		UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, type);
+//		if (type == AchieveConst.TYPE_ZHANLI || type == AchieveConst.TYPE_VIP)
+//			ua.setCompleteCount(count);
+//		else
+//			ua.setCompleteCount(ua.getCompleteCount() + count);
+//		
+//		userAchieveService.updateUserAchieve(ua);
+//		
+//		if (isCompleteNew(ua)) {
+//			noticeService.pushNotice(userId, NoticeConst.TYPE_ACHIEVE);
+//		}
 	}
 	
 	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int type) {

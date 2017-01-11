@@ -45,53 +45,43 @@
 <item id="4" itemid="33005" count="2" />
 <item id="5" itemid="33029" count="1" />
 </libao>
-<libao itemid="41009" name="vip9礼包" img="32011" rare="4" description="达到vip9可领取" value="3065" cost="0" ><item id="1" itemid="1001" count="350000" />
+<libao itemid="41009" name="vip9礼包" img="32011" rare="4" description="达到vip9可领取" value="3065" cost="0" ><item id="1" itemid="1001" count="150000" />
 <item id="2" itemid="40024" count="5" />
 <item id="3" itemid="29068" count="3" />
 <item id="4" itemid="33005" count="3" />
-<item id="5" itemid="33029" count="8" />
 </libao>
-<libao itemid="41010" name="vip10礼包" img="32011" rare="4" description="达到vip10可领取" value="2875" cost="0" ><item id="1" itemid="1001" count="550000" />
+<libao itemid="41010" name="vip10礼包" img="32011" rare="4" description="达到vip10可领取" value="2875" cost="0" ><item id="1" itemid="1001" count="150000" />
 <item id="2" itemid="40024" count="10" />
 <item id="3" itemid="29068" count="3" />
 <item id="4" itemid="33005" count="5" />
 <item id="5" itemid="33006" count="1" />
-<item id="6" itemid="33029" count="12" />
 </libao>
-<libao itemid="41011" name="vip11礼包" img="32011" rare="4" description="达到vip11可领取" value="2790" cost="0" ><item id="1" itemid="1001" count="700000" />
+<libao itemid="41011" name="vip11礼包" img="32011" rare="4" description="达到vip11可领取" value="2790" cost="0" ><item id="1" itemid="1001" count="200000" />
 <item id="2" itemid="40024" count="20" />
 <item id="3" itemid="40025" count="3" />
 <item id="4" itemid="29068" count="3" />
 <item id="5" itemid="33006" count="2" />
-<item id="6" itemid="33029" count="16" />
+<item id="6" itemid="33029" count="3" />
 </libao>
-<libao itemid="41012" name="vip12礼包" img="32011" rare="4" description="达到vip12可领取" value="2840" cost="0" ><item id="1" itemid="1001" count="1000000" />
+<libao itemid="41012" name="vip12礼包" img="32011" rare="4" description="达到vip12可领取" value="2840" cost="0" ><item id="1" itemid="1001" count="200000" />
 <item id="2" itemid="40025" count="5" />
 <item id="3" itemid="29068" count="3" />
 <item id="4" itemid="33006" count="3" />
-<item id="5" itemid="33029" count="16" />
-<item id="6" itemid="33030" count="8" />
 </libao>
-<libao itemid="41013" name="vip13礼包" img="32011" rare="4" description="达到vip13可领取" value="2750" cost="0" ><item id="1" itemid="1001" count="1500000" />
+<libao itemid="41013" name="vip13礼包" img="32011" rare="4" description="达到vip13可领取" value="2750" cost="0" ><item id="1" itemid="1001" count="200000" />
 <item id="2" itemid="40025" count="10" />
 <item id="3" itemid="29068" count="3" />
 <item id="4" itemid="33006" count="5" />
-<item id="5" itemid="33029" count="16" />
-<item id="6" itemid="33030" count="12" />
 </libao>
-<libao itemid="41027" name="vip14礼包" img="32011" rare="4" description="达到vip14可领取" value="2880" cost="0" ><item id="1" itemid="1001" count="2000000" />
+<libao itemid="41027" name="vip14礼包" img="32011" rare="4" description="达到vip14可领取" value="2880" cost="0" ><item id="1" itemid="1001" count="220000" />
 <item id="2" itemid="40025" count="10" />
 <item id="3" itemid="29068" count="3" />
 <item id="4" itemid="35003" count="1" />
-<item id="5" itemid="33029" count="16" />
-<item id="6" itemid="33030" count="20" />
 </libao>
-<libao itemid="41028" name="vip15礼包" img="32011" rare="4" description="达到vip15可领取" value="3600" cost="0" ><item id="1" itemid="1001" count="5000000" />
+<libao itemid="41028" name="vip15礼包" img="32011" rare="4" description="达到vip15可领取" value="3600" cost="0" ><item id="1" itemid="1001" count="240000" />
 <item id="2" itemid="40025" count="10" />
 <item id="3" itemid="29068" count="3" />
 <item id="4" itemid="35003" count="2" />
-<item id="5" itemid="33029" count="30" />
-<item id="6" itemid="33030" count="30" />
 </libao>
 <libao itemid="41014" name="vip1特惠礼包" img="32011" rare="5" description="达到vip1可购买" value="20" cost="1" ><item id="1" itemid="1001" count="1000" />
 <item id="2" itemid="40002" count="1" />
@@ -139,51 +129,43 @@
 <item id="4" itemid="33005" count="2" />
 <item id="5" itemid="54088" count="1" />
 </libao>
-<libao itemid="41022" name="vip9特惠礼包" img="32011" rare="5" description="达到vip9可购买" value="6065" cost="448" ><item id="1" itemid="1001" count="500000" />
+<libao itemid="41022" name="vip9特惠礼包" img="32011" rare="5" description="达到vip9可购买" value="3065" cost="448" ><item id="1" itemid="1001" count="300000" />
 <item id="2" itemid="40024" count="20" />
 <item id="3" itemid="29068" count="3" />
 <item id="4" itemid="33005" count="3" />
-<item id="5" itemid="35002" count="10" />
-<item id="6" itemid="56058" count="1" />
+<item id="5" itemid="35002" count="1" />
 </libao>
-<libao itemid="41023" name="vip10特惠礼包" img="32011" rare="5" description="达到vip10可购买" value="9875" cost="448" ><item id="1" itemid="1001" count="800000" />
+<libao itemid="41023" name="vip10特惠礼包" img="32011" rare="5" description="达到vip10可购买" value="2875" cost="448" ><item id="1" itemid="1001" count="300000" />
 <item id="2" itemid="40024" count="50" />
 <item id="3" itemid="29068" count="5" />
 <item id="4" itemid="33005" count="5" />
-<item id="5" itemid="33028" count="10" />
-<item id="6" itemid="56039" count="1" />
-<item id="7" itemid="53051" count="1" />
+<item id="5" itemid="54039" count="1" />
 </libao>
-<libao itemid="41024" name="vip11特惠礼包" img="32011" rare="5" description="达到vip11可购买" value="12790" cost="448" ><item id="1" itemid="1001" count="1000000" />
+<libao itemid="41024" name="vip11特惠礼包" img="32011" rare="5" description="达到vip11可购买" value="2790" cost="448" ><item id="1" itemid="1001" count="300000" />
 <item id="2" itemid="40025" count="5" />
 <item id="3" itemid="29068" count="5" />
 <item id="4" itemid="33006" count="2" />
 <item id="5" itemid="33030" count="5" />
-<item id="6" itemid="29070" count="50" />
 </libao>
-<libao itemid="41025" name="vip12特惠礼包" img="32011" rare="5" description="达到vip12可购买" value="15840" cost="448" ><item id="1" itemid="1001" count="1500000" />
+<libao itemid="41025" name="vip12特惠礼包" img="32011" rare="5" description="达到vip12可购买" value="2840" cost="448" ><item id="1" itemid="1001" count="300000" />
 <item id="2" itemid="40025" count="10" />
 <item id="3" itemid="33006" count="3" />
-<item id="4" itemid="56121" count="1" />
-<item id="5" itemid="29070" count="100" />
-<item id="6" itemid="36005" count="5" />
+<item id="4" itemid="55121" count="1" />
 </libao>
-<libao itemid="41026" name="vip13特惠礼包" img="32011" rare="5" description="达到vip13可购买" value="18500" cost="448" ><item id="1" itemid="1001" count="2000000" />
+<libao itemid="41026" name="vip13特惠礼包" img="32011" rare="5" description="达到vip13可购买" value="2750" cost="448" ><item id="1" itemid="1001" count="300000" />
 <item id="2" itemid="40025" count="15" />
 <item id="3" itemid="33006" count="5" />
-<item id="4" itemid="35003" count="10" />
+<item id="4" itemid="35003" count="1" />
 </libao>
-<libao itemid="41029" name="vip14特惠礼包" img="32011" rare="5" description="达到vip14可购买" value="22880" cost="448" ><item id="1" itemid="1001" count="3000000" />
+<libao itemid="41029" name="vip14特惠礼包" img="32011" rare="5" description="达到vip14可购买" value="2880" cost="448" ><item id="1" itemid="1001" count="500000" />
 <item id="2" itemid="40025" count="20" />
 <item id="3" itemid="33006" count="8" />
 <item id="4" itemid="57027" count="1" />
-<item id="5" itemid="36006" count="5" />
 </libao>
-<libao itemid="41030" name="vip15特惠礼包" img="32011" rare="5" description="达到vip15可购买" value="32000" cost="448" ><item id="1" itemid="1001" count="5000000" />
+<libao itemid="41030" name="vip15特惠礼包" img="32011" rare="5" description="达到vip15可购买" value="3000" cost="448" ><item id="1" itemid="1001" count="500000" />
 <item id="2" itemid="40025" count="25" />
 <item id="3" itemid="33006" count="10" />
 <item id="4" itemid="57051" count="1" />
-<item id="5" itemid="36006" count="10" />
 </libao>
 <libao itemid="42001" name="1星薇恩礼包" img="libao_2_1" rare="3" description="包含3个1星薇恩和900K经验" value="0" cost="0" ><item id="1" itemid="51058" count="3" />
 <item id="2" itemid="1000" count="900000" />
@@ -256,65 +238,5 @@
 </libao>
 <libao itemid="45011" name="钻石经验包" img="recharge-4" rare="3" description="包含500钻石和50000经验" value="0" cost="0" ><item id="1" itemid="1002" count="500" />
 <item id="2" itemid="1000" count="50000" />
-</libao>
-<libao itemid="42101" name="1星贾克斯礼包" img="libao_2_1" rare="3" description="包含3个1星贾克斯和900K经验" value="0" cost="0" ><item id="1" itemid="51039" count="3" />
-<item id="2" itemid="1000" count="900000" />
-</libao>
-<libao itemid="42102" name="3星贾克斯礼包" img="libao_2_2" rare="4" description="包含3个3星贾克斯和50M经验" value="0" cost="0" ><item id="1" itemid="53039" count="3" />
-<item id="2" itemid="1000" count="50000000" />
-</libao>
-<libao itemid="42103" name="5星贾克斯礼包" img="libao_2_3" rare="5" description="包含3个5星贾克斯和500M经验" value="0" cost="0" ><item id="1" itemid="55039" count="3" />
-<item id="2" itemid="1000" count="500000000" />
-</libao>
-<libao itemid="42201" name="1星嘉文四世礼包" img="libao_2_1" rare="3" description="包含3个1星嘉文四世和10个蓝色装备箱" value="0" cost="0" ><item id="1" itemid="51063" count="3" />
-<item id="2" itemid="33004" count="10" />
-</libao>
-<libao itemid="42202" name="3星嘉文四世礼包" img="libao_2_2" rare="4" description="包含3个3星嘉文四世和15个紫色装备箱" value="0" cost="0" ><item id="1" itemid="53063" count="3" />
-<item id="2" itemid="33005" count="15" />
-</libao>
-<libao itemid="42203" name="5星嘉文四世礼包" img="libao_2_3" rare="5" description="包含3个5星嘉文四世和20个橙色装备箱" value="0" cost="0" ><item id="1" itemid="55063" count="3" />
-<item id="2" itemid="33006" count="20" />
-</libao>
-<libao itemid="42301" name="纵情狂欢流初级礼包" img="libao_2_1" rare="3" description="包含1星布兰德，古拉加斯，伊丽丝，璐璐，蕾欧娜和5个强化水晶（获得300点vip经验）" value="0" cost="0" ><item id="1" itemid="51060" count="1" />
-<item id="2" itemid="51010" count="1" />
-<item id="3" itemid="51105" count="1" />
-<item id="4" itemid="51094" count="1" />
-<item id="5" itemid="51078" count="1" />
-<item id="6" itemid="37001" count="5" />
-</libao>
-<libao itemid="42302" name="纵情狂欢流高级礼包" img="libao_2_2" rare="4" description="包含3星布兰德，古拉加斯，伊丽丝，璐璐，蕾欧娜和15个强化水晶（获得980点vip经验）" value="0" cost="0" ><item id="1" itemid="53060" count="1" />
-<item id="2" itemid="53010" count="1" />
-<item id="3" itemid="53105" count="1" />
-<item id="4" itemid="53094" count="1" />
-<item id="5" itemid="53078" count="1" />
-<item id="6" itemid="37001" count="15" />
-</libao>
-<libao itemid="42303" name="纵情狂欢流超级礼包" img="libao_2_3" rare="5" description="包含5星布兰德，古拉加斯，伊丽丝，璐璐，蕾欧娜和50个强化水晶（获得3280点vip经验）" value="0" cost="0" ><item id="1" itemid="55060" count="1" />
-<item id="2" itemid="55010" count="1" />
-<item id="3" itemid="55105" count="1" />
-<item id="4" itemid="55094" count="1" />
-<item id="5" itemid="55078" count="1" />
-<item id="6" itemid="37001" count="50" />
-</libao>
-<libao itemid="42401" name="纯粹普攻流初级礼包" img="libao_2_1" rare="3" description="包含1星易，薇恩，厄运小姐，金克丝，韦鲁斯各1个和5个强化水晶（获得300点vip经验）" value="0" cost="0" ><item id="1" itemid="51038" count="1" />
-<item id="2" itemid="51058" count="1" />
-<item id="3" itemid="51001" count="1" />
-<item id="4" itemid="51116" count="1" />
-<item id="5" itemid="51096" count="1" />
-<item id="6" itemid="37001" count="5" />
-</libao>
-<libao itemid="42402" name="纯粹普攻流高级礼包" img="libao_2_2" rare="4" description="包含3星易，薇恩，厄运小姐，金克丝，韦鲁斯各1个和15个强化水晶（获得980点vip经验）" value="0" cost="0" ><item id="1" itemid="53038" count="1" />
-<item id="2" itemid="53058" count="1" />
-<item id="3" itemid="53001" count="1" />
-<item id="4" itemid="53116" count="1" />
-<item id="5" itemid="53096" count="1" />
-<item id="6" itemid="37001" count="15" />
-</libao>
-<libao itemid="42403" name="纯粹普攻流超级礼包" img="libao_2_3" rare="5" description="包含5星易，薇恩，厄运小姐，金克丝，韦鲁斯各1个和50个强化水晶（获得3280点vip经验）" value="0" cost="0" ><item id="1" itemid="55038" count="1" />
-<item id="2" itemid="55058" count="1" />
-<item id="3" itemid="55001" count="1" />
-<item id="4" itemid="55116" count="1" />
-<item id="5" itemid="55096" count="1" />
-<item id="6" itemid="37001" count="50" />
 </libao>
 </data>

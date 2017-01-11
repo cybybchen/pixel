@@ -746,7 +746,7 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveMyAreaBuff(UserBean user, AreaBuff buff){
-		hput(MYAREABUFF+user.getId(), buff.getSkill()+"", formatJson(buff));
+		hput(MYAREABUFF+user.getId(), buff.getSkillid()+"", formatJson(buff));
 		expire(MYAREABUFF+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
@@ -767,7 +767,7 @@ public class AreaRedisService extends RedisService{
 			AreaBuff.Builder builder = AreaBuff.newBuilder();
 			if(parseJson(value, builder)){
 				if(now() > builder.getEndTime())
-					hdelete(MYAREABUFF+user.getId(), builder.getSkill()+"");
+					hdelete(MYAREABUFF+user.getId(), builder.getSkillid()+"");
 				else
 					list.add(builder.build());
 			}
