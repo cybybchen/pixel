@@ -278,7 +278,10 @@ public class HeroInfoBean {
 		heroInfo.setStarLevel(star);
 		heroInfo.setValue(0);
 		heroInfo.setRare(rare);
-		heroInfo.setLock(false);
+		if (hero.getQuality() >= 5)
+			heroInfo.setLock(true);
+		else
+			heroInfo.setLock(false);
 		heroInfo.setEquipInfo(initEquipInfo(hero));
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -298,7 +301,10 @@ public class HeroInfoBean {
 		heroInfo.setStarLevel(star);
 		heroInfo.setValue(0);
 		heroInfo.setRare(rare);
-		heroInfo.setLock(false);
+		if (hero.getQuality() >= 5)
+			heroInfo.setLock(true);
+		else
+			heroInfo.setLock(false);
 		heroInfo.setEquipInfo(initEquipInfo(hero));
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
