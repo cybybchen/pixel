@@ -2573,7 +2573,7 @@ message RequestBloodXiazhuCommand {
 }
 
 message RequestQueryNoticeBoardCommand {
-	required int64 messageId = 1;
+	required string messageId = 1;
 }
 
 message RequestCommand {
