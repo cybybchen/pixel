@@ -12,6 +12,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
+import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardCommand;
@@ -19,6 +20,7 @@ import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MessageService;
+import com.trans.pixel.service.NoticeService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -32,6 +34,8 @@ public class MessageCommandService extends BaseCommandService {
 	private BlackListService blackService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private NoticeService noticeService;
 	
 	public void getMessageBoardList(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
@@ -77,5 +81,9 @@ public class MessageCommandService extends BaseCommandService {
 		builder.setType(type);
 		builder.setMessageBoard(messageBoardBean.buildMessageBoard());
 		responseBuilder.setMessageBoardCommand(builder.build());
+	}
+	
+	public void queryNoticeBoard(RequestQueryNoticeBoardCommand cmd, Builder responseBuilder, UserBean user) {
+		noticeService.delNoticeId(user.getId(), cmd.getMessageId());
 	}
 }

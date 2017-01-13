@@ -113,6 +113,9 @@ import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBattletowerShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
+import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
+import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -904,6 +907,21 @@ public class GameDataScreen extends RequestScreen {
 		shopCommandService.battletowerShopRefresh(cmd, responseBuilder, user);
 		return true;//BattletowerShopRefreshCommand
 	}//BattletowerShopRefreshCommand
+	@Override//BloodEnterCommand
+	protected boolean handleCommand(RequestBloodEnterCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BloodEnterCommand method
+		return true;//BloodEnterCommand
+	}//BloodEnterCommand
+	@Override//BloodXiazhuCommand
+	protected boolean handleCommand(RequestBloodXiazhuCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO BloodXiazhuCommand method
+		return true;//BloodXiazhuCommand
+	}//BloodXiazhuCommand
+	@Override//QueryNoticeBoardCommand
+	protected boolean handleCommand(RequestQueryNoticeBoardCommand cmd, Builder responseBuilder, UserBean user) {
+		messageCommandService.queryNoticeBoard(cmd, responseBuilder, user);
+		return true;//QueryNoticeBoardCommand
+	}//QueryNoticeBoardCommand
 	//add handleCommand here
 	
 	@Override

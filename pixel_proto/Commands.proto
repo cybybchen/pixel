@@ -1163,7 +1163,8 @@ message ShouchongReward {
 }
 
 message Notice {
-	required int32 type = 1;//1:system mail 2:friend 3:achieve 4:activity
+	required int32 type = 1;//1:system mail 2:friend 3:achieve 4:activity 5:maintask 6:dailytask 7:niticeboard
+	repeated int64 noticeId = 2;//留言板的id
 }
 
 message ActivityList {
@@ -1547,6 +1548,22 @@ message ClearCost {
 	optional int32 itemcount2 = 6;
 	optional int32 itemid3 = 7;
 	optional int32 itemcount3 = 8;
+}
+
+message AllheroData {
+	repeated AllheroList id = 1;
+}
+
+message AllheroList {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional int32 img = 3;
+	optional int32 rare = 4;
+	repeated Allhero hero = 5;
+}
+
+message Allhero {
+	optional int32 heroid = 1;
 }
 
 message ErrorCommand{
@@ -2548,6 +2565,10 @@ message RequestBloodXiazhuCommand {
 	required int64 xiazhuUserId = 1;
 }
 
+message RequestQueryNoticeBoardCommand {
+	required int64 messageId = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2700,7 +2721,7 @@ message RequestCommand {
 	optional RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;
 	optional RequestBloodEnterCommand bloodEnterCommand = 211;
 	optional RequestBloodXiazhuCommand bloodXiazhuCommand = 212;
-
+	optional RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;
 }
 // response command list transfer only use it
 message ResponseCommand {

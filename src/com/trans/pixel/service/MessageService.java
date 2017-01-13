@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.MessageConst;
+import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.service.redis.MessageRedisService;
@@ -18,6 +19,8 @@ public class MessageService {
 	private MessageRedisService messageRedisService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private NoticeService noticeService;
 
 	public List<MessageBoardBean> getMessageBoardList(int type, UserBean user) {
 		switch (type) {
@@ -89,10 +92,16 @@ public class MessageService {
 			messageRedisService.addMessageBoard(serverId, messageBoard);
 			messageRedisService.addMessageBoardValue(serverId, messageBoard);
 			
+			sendMessageNotice(messageBoard.getUserId(), messageBoard.getId());
+			
 			return messageBoard;
 		}
 		
 		return null;
+	}
+	
+	private void sendMessageNotice(long userId, long messageId) {
+		noticeService.pushNotice(userId, NoticeConst.TYPE_NOTICEBOARD, messageId);
 	}
 	
 	private List<MessageBoardBean> getUnionMessageBoardList(UserBean user) {

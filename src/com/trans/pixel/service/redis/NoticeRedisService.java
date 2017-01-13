@@ -36,6 +36,17 @@ public class NoticeRedisService extends RedisService {
 		return userNoticeList;
 	}
 	
+	public Notice selectUserNotice(final long userId, final int type) {
+		String key = buildRedisKey(userId);
+		String value = this.hget(key, "" + type);
+		
+		Notice.Builder builder = Notice.newBuilder();
+		if (parseJson(value, builder))
+			return builder.build();
+		
+		return null;
+	}
+	
 	public void deleteNotice(final long userId, final int type) {
 		String key = buildRedisKey(userId);
 		this.hdelete(key, "" + type);
