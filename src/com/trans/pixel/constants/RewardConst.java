@@ -27,4 +27,6 @@ public class RewardConst {
 	public static final int AREAEQUIPMENT = 84000;
 	
 	public static final int HERO_STAR = 1000;
+	
+	public static final int HELP_ATTACK_PROP_ID = 40022;
 }

@@ -227,6 +227,21 @@ public class MailBean {
 		return mail;
 	}
 	
+	public static MailBean buildMail(long userId, long friendId, int vip, int icon, String usreName, String content, int type, List<RewardBean> rewardList) {
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setFromUserId(friendId);
+		mail.setContent(content);
+		mail.setType(type);
+		mail.setRewardList(rewardList);
+		mail.setFromUserName(usreName);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		mail.setVip(vip);
+		mail.setIcon(icon);
+		
+		return mail;
+	}
+	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String FROM_USER_ID = "from_user_id";

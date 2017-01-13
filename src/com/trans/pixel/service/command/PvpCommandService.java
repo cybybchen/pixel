@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -41,7 +42,6 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class PvpCommandService extends BaseCommandService {
-	private static final int HELP_ATTACK_PROP_ID = 40022;
 	@Resource
 	private UserTeamService userTeamService;
 	@Resource
@@ -124,7 +124,7 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMine(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
-		UserPropBean userProp = userPropService.selectUserProp(user.getId(), HELP_ATTACK_PROP_ID);
+		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
 		if (userProp.getPropCount() < 1) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
 			

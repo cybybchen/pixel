@@ -116,6 +116,7 @@ import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -922,6 +923,11 @@ public class GameDataScreen extends RequestScreen {
 		messageCommandService.queryNoticeBoard(cmd, responseBuilder, user);
 		return true;//QueryNoticeBoardCommand
 	}//QueryNoticeBoardCommand
+	@Override//HelpLevelCommand
+	protected boolean handleCommand(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user) {
+		levelCommandService.helpLevelResult(cmd, responseBuilder, user);
+		return true;//HelpLevelCommand
+	}//HelpLevelCommand
 	//add handleCommand here
 	
 	@Override

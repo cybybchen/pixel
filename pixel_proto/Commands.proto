@@ -2212,6 +2212,13 @@ message RequestHelpAttackPVPMineCommand {//攻击pvp矿点对手
 	optional int32 time = 5;
 }
 
+message RequestHelpLevelCommand {//帮助小弟过关
+	required int32 id = 1;
+	required int64 teamid = 2;
+	optional bool ret = 3;
+	required int64 userId = 4;
+}
+
 message RequestSendMailCommand {
 	required int64 toUserId = 1;
 	required string content = 2;
@@ -2722,6 +2729,7 @@ message RequestCommand {
 	optional RequestBloodEnterCommand bloodEnterCommand = 211;
 	optional RequestBloodXiazhuCommand bloodXiazhuCommand = 212;
 	optional RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;
+	optional RequestHelpLevelCommand helpLevelCommand = 214;
 }
 // response command list transfer only use it
 message ResponseCommand {

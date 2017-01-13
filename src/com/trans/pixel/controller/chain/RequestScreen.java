@@ -117,6 +117,7 @@ import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -183,6 +184,7 @@ import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
@@ -420,6 +422,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBloodEnterCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBloodXiazhuCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQueryNoticeBoardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -1201,6 +1204,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//QueryNoticeBoardCommand
                 result = handleCommand(cmd, responseBuilder, user);//QueryNoticeBoardCommand
         }//QueryNoticeBoardCommand
+        if (request.hasHelpLevelCommand()) {
+            RequestHelpLevelCommand cmd = request.getHelpLevelCommand();
+            if (result)//HelpLevelCommand
+                result = handleCommand(cmd, responseBuilder, user);//HelpLevelCommand
+        }//HelpLevelCommand
         //call handleCommand here
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();

@@ -10,15 +10,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.WinBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
@@ -29,15 +34,19 @@ import com.trans.pixel.protoc.Commands.RequestUnlockLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
+import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
+import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.WinService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -71,6 +80,12 @@ public class LevelCommandService extends BaseCommandService {
 	private PvpMapService pvpMapService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private UserPropService userPropService;
+	@Resource
+	private UserTeamService userTeamService;
+	@Resource
+	private MailService mailService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelId = cmd.getLevelId();
@@ -250,5 +265,89 @@ public class LevelCommandService extends BaseCommandService {
 		builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
 		responseBuilder.setUserLootLevelCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void helpLevelResult(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user) {
+		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
+		if (userProp.getPropCount() < 1) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		long teamid = cmd.getTeamid();
+		long friendUserId = cmd.getUserId();
+		UserBean friend = userService.getOther(friendUserId);
+		Team team = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user, teamid, team);
+		
+		if (cmd.getRet()) {
+			int levelId = cmd.getId();
+			UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(friendUserId);
+			if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
+				logService.sendErrorLog(friendUserId, user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+				
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+			}else{
+				userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, friend);
+				userLevelRecord.setLevelPrepareTime(0);
+				userLevelRecord.setLastLevelResultTime(0);
+				userLevelService.updateUserLevelRecord(userLevelRecord);
+				log.debug("levelId is:" + levelId);
+				WinBean winBean = winService.getWinByLevelId(levelId);
+				List<RewardBean> rewardList = new ArrayList<RewardBean>();
+				if (winBean != null)
+					rewardList = winBean.getRewardList();
+				
+				rewardList.addAll(levelService.getNewplayReward(user, levelId));
+				
+				userProp.setPropCount(userProp.getPropCount() - 1);
+				userPropService.updateUserProp(userProp);
+			
+				sendHelpMail(friend, user, rewardList);
+			
+				responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
+				pushCommandService.pushUserPropListCommand(responseBuilder, user);
+				
+//				rewardService.doRewards(user, rewardList);
+//				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+			}
+
+//			user.addMyactive();
+//			if(user.getMyactive() >= 100){
+//				user.setMyactive(user.getMyactive() - 100);
+//				pvpMapService.refreshAMine(user);
+//			}
+//			userService.updateUser(user);
+		
+//			pushCommandService.pushUserLevelCommand(responseBuilder, user);
+//		RewardInfo reward = pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time, false);
+//		if(reward == null) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
+//			
+//			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
+//			return;
+//		}
+		
+			
+			
+//			/**
+//			 * 征战世界成功支援的活动
+//			 */
+//			activityService.mineAidActivity(user);
+		}
+		
+		/**
+		 * send help attack log
+		 */
+		logService.sendCallBrotherLog(user.getServerId(), cmd.getRet() ? 1 : 2, user.getId(), friendUserId);
+	}
+	
+	private void sendHelpMail(UserBean friend, UserBean user, List<RewardBean> rewardList) {
+		String content = "帮你过关啦！"; 
+		MailBean mail = MailBean.buildMail(friend.getId(), user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_HELP_ATTACK_PVP_MAIL, rewardList);
+		mailService.addMail(mail);
 	}
 }
