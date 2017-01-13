@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,10 +30,19 @@ public class NoticeService {
 	}
 	
 	public void delNoticeId(long userId, long messageId) {
-		Notice.Builder builder = Notice.newBuilder(noticeRedisService.selectUserNotice(userId, NoticeConst.TYPE_NOTICEBOARD));
-		builder.getNoticeIdList().remove(messageId);
-		
-		noticeRedisService.pushNotice(userId, builder.build());
+		Notice originalNotice = noticeRedisService.selectUserNotice(userId, NoticeConst.TYPE_NOTICEBOARD);
+		if (originalNotice == null)
+			return;
+		Notice.Builder builder = Notice.newBuilder(originalNotice);
+		List<Long> messageList = new ArrayList<Long>(builder.getNoticeIdList());
+		messageList.remove(messageId);
+		if (messageList.isEmpty())
+			deleteNotice(userId, NoticeConst.TYPE_NOTICEBOARD);
+		else {
+			builder.clearNoticeId();
+			builder.addAllNoticeId(messageList);
+			noticeRedisService.pushNotice(userId, builder.build());
+		}
 	}
 	
 	public List<Notice> getNoticeList(long userId) {

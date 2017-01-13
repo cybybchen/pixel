@@ -40,6 +40,9 @@ public class NoticeRedisService extends RedisService {
 		String key = buildRedisKey(userId);
 		String value = this.hget(key, "" + type);
 		
+		if (value == null)
+			return null;
+		
 		Notice.Builder builder = Notice.newBuilder();
 		if (parseJson(value, builder))
 			return builder.build();

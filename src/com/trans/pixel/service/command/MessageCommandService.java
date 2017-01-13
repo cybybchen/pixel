@@ -22,6 +22,7 @@ import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.NoticeService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class MessageCommandService extends BaseCommandService {
@@ -84,6 +85,6 @@ public class MessageCommandService extends BaseCommandService {
 	}
 	
 	public void queryNoticeBoard(RequestQueryNoticeBoardCommand cmd, Builder responseBuilder, UserBean user) {
-		noticeService.delNoticeId(user.getId(), cmd.getMessageId());
+		noticeService.delNoticeId(user.getId(), TypeTranslatedUtil.stringToLong(cmd.getMessageId()));
 	}
 }
