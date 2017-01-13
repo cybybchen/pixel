@@ -22,6 +22,7 @@ import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.BlackListBean;
@@ -318,6 +319,14 @@ public class ManagerService extends RedisService{
 			}
 			result.put("success", "奖励发放成功");
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "sendReward", rewardId+":"+rewardCount);
+		}
+		
+		if (rewardId == 0 && mailContent.length() > 0) {
+			MailBean mail = MailBean.buildSpecialMail(userId, mailContent, MailConst.TYPE_SPECIAL_SYSTEM_MAIL);
+			mailService.addMail(mail);
+			
+			result.put("success", "邮件发送成功");
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "sendMail", mailContent);
 		}
 		
 		if(req.containsKey("del-Cdkey") && gmaccountBean.getCanwrite() == 1){

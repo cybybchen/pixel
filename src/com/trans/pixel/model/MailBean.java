@@ -212,6 +212,16 @@ public class MailBean {
 		return mail;
 	}
 	
+	public static MailBean buildSpecialMail(long userId, String content, int type) { //玩家无法删除的邮件
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setContent(content);
+		mail.setType(type);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
+	}
+	
 	public static MailBean buildMail(long userId, long friendId, int vip, int icon, String usreName, String content, int type, int relatedId) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
