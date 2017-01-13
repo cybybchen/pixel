@@ -1485,6 +1485,8 @@ message TaskOrder {
 	optional int32 rewardid2 = 8;
 	optional int32 rewardcount2 = 9;
 	optional int32 targetcount1 = 10;
+	optional int32 rewardid3 = 11;
+	optional int32 rewardcount3 = 12;
 }
 
 message Task3OrderList {

@@ -294,6 +294,12 @@ public class TaskService {
 			rewardList.add(reward.build());
 		}
 		
+		if (order.getRewardid3() > 0) {
+			reward.setItemid(order.getRewardid3());
+			reward.setCount(order.getRewardcount3());
+			rewardList.add(reward.build());
+		}
+		
 		return rewardList;
 	}
 	
