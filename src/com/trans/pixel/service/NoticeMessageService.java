@@ -60,7 +60,7 @@ public class NoticeMessageService {
 		if (userPokede.getStrengthen() == 3 || userPokede.getStrengthen() == 6 || userPokede.getStrengthen() >= 9) {
 			HeroBean hero = heroService.getHero(userPokede.getHeroId());
 			StringBuilder sb = new StringBuilder();
-			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName())
+			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName()).append("%s,6,")
 				.append("强化到了").append(userPokede.getStrengthen()).append("级").append("！");
 			
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
@@ -91,7 +91,7 @@ public class NoticeMessageService {
 				|| heroInfo.getRank() >= 18) {
 			HeroBean hero = heroService.getHero(heroInfo.getHeroId());
 			StringBuilder sb = new StringBuilder();
-			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName())
+			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName()).append("%s,5,")
 			.append("进阶到了").append(heroInfo.getRank()).append("级").append("！");
 		
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
@@ -100,13 +100,13 @@ public class NoticeMessageService {
 	
 	public void composeCallbrotherHelpAttackMine(UserBean user, String enemyName) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("战报:").append(user.getUserName()).append("帮助好友击败了").append(enemyName).append("，").append("夺回矿点");
+		sb.append("%s").append(user.getUserName()).append("帮助好友击败了").append(enemyName).append("，").append("夺回矿点").append(",6,战报:");
 		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	
 	public void composeCallBrotherHelpLevelResult(UserBean user, int level) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("战报:").append(user.getUserName()).append("帮助好友通关");
+		sb.append("%s").append(user.getUserName()).append("帮助好友通关").append(",6,战报:");
 		if (level > 2000)
 			sb.append("困难");
 		else if (level > 3000)
