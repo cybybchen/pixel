@@ -72,6 +72,7 @@ public class RechargeRedisService extends RedisService {
 		String value = get(key);
 		if (value == null)
 			return null;
+		this.delete(key);//查询之后删除，防止又一次查询
 		MultiReward.Builder builder = MultiReward.newBuilder();
 		if(parseJson(value, builder))
 			return builder.build();
