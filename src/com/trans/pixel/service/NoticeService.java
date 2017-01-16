@@ -23,7 +23,10 @@ public class NoticeService {
 	}
 	
 	public void pushNotice(long userId, int type, long messageId) {
+		Notice originalNotice = noticeRedisService.selectUserNotice(userId, NoticeConst.TYPE_NOTICEBOARD);
 		Notice.Builder builder = Notice.newBuilder();
+		if (originalNotice != null)
+			builder = Notice.newBuilder(noticeRedisService.selectUserNotice(userId, NoticeConst.TYPE_NOTICEBOARD));
 		builder.setType(type);
 		builder.addNoticeId(messageId);
 		noticeRedisService.pushNotice(userId, builder.build());
