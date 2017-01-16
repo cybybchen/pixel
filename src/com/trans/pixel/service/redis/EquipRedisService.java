@@ -22,11 +22,14 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.protoc.Commands.Chip;
 import com.trans.pixel.protoc.Commands.ChipList;
+import com.trans.pixel.protoc.Commands.Equiptucao;
+import com.trans.pixel.protoc.Commands.EquiptucaoList;
 
 @Service
 public class EquipRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(EquipRedisService.class);
 	private static final String CHIP_FILE_NAME = "lol_chip.xml";
+	private static final String EQUIPTUCAO_FILE_NAME = "lol_equiptucao.xml";
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
 	
@@ -147,6 +150,57 @@ public class EquipRedisService extends RedisService {
 		Map<String, Chip> map = new HashMap<String, Chip>();
 		for(Chip.Builder chip : builder.getChipBuilderList()){
 			map.put("" + chip.getItemid(), chip.build());
+		}
+		return map;
+	}
+	
+	//equiptucao
+	public Equiptucao getEquiptucao(int itemId) {
+		String value = hget(RedisKey.EQUIP_TUCAO_CONFIG, "" + itemId);
+		if (value == null) {
+			Map<String, Equiptucao> config = getEquiptucaoConfig();
+			return config.get("" + itemId);
+		} else {
+			Equiptucao.Builder builder = Equiptucao.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Equiptucao> getEquiptucaoConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.EQUIP_TUCAO_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, Equiptucao> map = buildEquiptucaoConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Equiptucao> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.EQUIP_TUCAO_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, Equiptucao> map = new HashMap<String, Equiptucao>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Equiptucao.Builder builder = Equiptucao.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Equiptucao> buildEquiptucaoConfig(){
+		String xml = ReadConfig(EQUIPTUCAO_FILE_NAME);
+		EquiptucaoList.Builder builder = EquiptucaoList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + EQUIPTUCAO_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Equiptucao> map = new HashMap<String, Equiptucao>();
+		for(Equiptucao.Builder euiqptucao : builder.getEquipBuilderList()){
+			map.put("" + euiqptucao.getItemid(), euiqptucao.build());
 		}
 		return map;
 	}

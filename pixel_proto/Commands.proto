@@ -1568,6 +1568,16 @@ message Allhero {
 	optional int32 heroid = 1;
 }
 
+message EquiptucaoList {
+	repeated Equiptucao equip = 1;
+}
+
+message Equiptucao {
+	optional int32 itemid = 1;
+	optional string itemname = 2;
+	optional int32 rare = 3;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

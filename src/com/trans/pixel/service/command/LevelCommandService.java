@@ -40,6 +40,7 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.NoticeMessageService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserLevelLootService;
@@ -86,6 +87,8 @@ public class LevelCommandService extends BaseCommandService {
 	private UserTeamService userTeamService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelId = cmd.getLevelId();
@@ -313,6 +316,9 @@ public class LevelCommandService extends BaseCommandService {
 				
 //				rewardService.doRewards(user, rewardList);
 //				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+				
+				//全服通告
+				noticeMessageService.composeCallBrotherHelpLevelResult(user, levelId);
 			}
 
 //			user.addMyactive();

@@ -65,6 +65,8 @@ public class PvpMapService {
 	private MailService mailService;
 	@Resource
 	private UnionService unionService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
 
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
@@ -392,7 +394,7 @@ public class PvpMapService {
 		return rewards.build();
 	}
 
-	public RewardInfo attackMine(UserBean user, int id, boolean ret, int time, boolean isme){
+	public RewardInfo attackMine(UserBean user, int id, boolean ret, int time, boolean isme, UserBean my){
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(RewardConst.PVPCOIN);
 		reward.setCount(0);
@@ -410,6 +412,10 @@ public class PvpMapService {
 		if(mine.hasOwner()){
 			activityService.pvpAttackEnemyActivity(user, ret);
 			enemyId = mine.getOwner().getId();
+			
+			//全服通告
+			if (ret)
+				noticeMessageService.composeCallbrotherHelpAttackMine(my, mine.getOwner().getName());
 		}
 		if(ret){
 			if(mine.hasOwner()){

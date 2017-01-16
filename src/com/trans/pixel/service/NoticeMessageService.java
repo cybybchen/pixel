@@ -9,9 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.HeroBean;
+import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
+import com.trans.pixel.protoc.Commands.Equiptucao;
+import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.NoticeMessageRedisService;
 
 @Service
@@ -24,6 +29,8 @@ public class NoticeMessageService {
 	private NoticeMessageRedisService redis;
 	@Resource
 	private UserService userService;
+	@Resource
+	private EquipRedisService equipRedisService;
 	
 	public void composeLotteryMessage(UserBean user, List<RewardBean> rewardList) {
 		for (RewardBean reward : rewardList) {
@@ -35,7 +42,7 @@ public class NoticeMessageService {
 				continue;
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append(user.getUserName()).append("召唤了,");
+			sb.append(user.getUserName()).append("召唤了%s,");
 			if (hero.getQuality() < 5)
 				continue;
 			else if (hero.getQuality() == 6)
@@ -47,6 +54,67 @@ public class NoticeMessageService {
 			
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 		}
+	}
+	
+	public void composeStrengthen(UserBean user, UserPokedeBean userPokede) {
+		if (userPokede.getStrengthen() == 3 || userPokede.getStrengthen() == 6 || userPokede.getStrengthen() >= 9) {
+			HeroBean hero = heroService.getHero(userPokede.getHeroId());
+			StringBuilder sb = new StringBuilder();
+			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName())
+				.append("强化到了").append(userPokede.getStrengthen()).append("！");
+			
+			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+		}	
+	}
+	
+	public void composeEquipLevelup(UserBean user, EquipmentBean equip) {
+		Equiptucao equiptucao = equipRedisService.getEquiptucao(equip.getItemid());
+		if (equiptucao == null)
+			return;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(user.getUserName()).append("合成了%s").append("，").append("小伙伴们都惊呆了！").append(",").append(equiptucao.getRare()).append(",").append(equiptucao.getItemname());
+		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+	}
+	
+	public void composeLadderLevelup(UserBean user, long rank) {
+		if (rank != 1)
+			return;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("恭喜").append(user.getUserName()).append("登顶天梯第一！");
+		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+	}
+	
+	public void composeHeroRankup(UserBean user, HeroInfoBean heroInfo) {
+		if (heroInfo.getRank() == 6 || heroInfo.getRank() == 9 || heroInfo.getRank() == 12 || heroInfo.getRank() == 15
+				|| heroInfo.getRank() >= 18) {
+			HeroBean hero = heroService.getHero(heroInfo.getHeroId());
+			StringBuilder sb = new StringBuilder();
+			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName())
+			.append("进阶到了").append(heroInfo.getRank()).append("！");
+		
+			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+		}
+	}
+	
+	public void composeCallbrotherHelpAttackMine(UserBean user, String enemyName) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("战报:").append(user.getUserName()).append("帮助好友击败了").append(enemyName).append("，").append("夺回矿点");
+		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+	}
+	
+	public void composeCallBrotherHelpLevelResult(UserBean user, int level) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("战报:").append(user.getUserName()).append("帮助好友通关");
+		if (level > 2000)
+			sb.append("困难");
+		else if (level > 3000)
+			sb.append("地狱");
+		
+		level = level % 1000;
+		sb.append(1 + level / 5).append("-").append(level % 5);
+		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	
 	public List<String> getNoticeMessageList(UserBean user) {

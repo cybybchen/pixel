@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<equip id="1" itemid="53036" count="1" weight="30" will="2" />
-<equip id="2" itemid="53040" count="1" weight="30" will="2" />
+<equip id="1" itemid="53036" count="1" weight="25" will="2" />
+<equip id="2" itemid="53040" count="1" weight="25" will="2" />
 <equip id="3" itemid="53039" count="1" weight="13" will="2" />
 <equip id="4" itemid="53058" count="1" weight="13" will="2" />
 <equip id="5" itemid="53075" count="1" weight="14" will="2" />
@@ -212,13 +212,13 @@
 <equip id="210" itemid="22117" count="20" weight="300" will="0" />
 <equip id="211" itemid="22121" count="20" weight="300" will="0" />
 <equip id="212" itemid="22050" count="20" weight="300" will="0" />
-<equip id="213" itemid="22039" count="10" weight="250" will="0" />
-<equip id="214" itemid="22058" count="10" weight="250" will="0" />
-<equip id="215" itemid="22075" count="10" weight="250" will="0" />
-<equip id="216" itemid="22108" count="10" weight="250" will="0" />
-<equip id="217" itemid="22040" count="5" weight="250" will="0" />
-<equip id="218" itemid="22051" count="5" weight="250" will="0" />
-<equip id="219" itemid="22036" count="5" weight="250" will="0" />
+<equip id="213" itemid="22039" count="8" weight="180" will="0" />
+<equip id="214" itemid="22058" count="8" weight="180" will="0" />
+<equip id="215" itemid="22075" count="8" weight="180" will="0" />
+<equip id="216" itemid="22108" count="8" weight="180" will="0" />
+<equip id="217" itemid="22040" count="5" weight="180" will="0" />
+<equip id="218" itemid="22051" count="5" weight="180" will="0" />
+<equip id="219" itemid="22036" count="5" weight="180" will="0" />
 <equip id="220" itemid="22058" count="88" weight="5" will="0" />
 <equip id="221" itemid="22075" count="88" weight="5" will="0" />
 <equip id="222" itemid="22108" count="88" weight="5" will="0" />

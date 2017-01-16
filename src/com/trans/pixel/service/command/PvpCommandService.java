@@ -112,7 +112,7 @@ public class PvpCommandService extends BaseCommandService {
 		int time = 0;
 		if (cmd.hasTime())
 			time = cmd.getTime();
-		RewardInfo reward = pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time, true);
+		RewardInfo reward = pvpMapService.attackMine(user, cmd.getId(), cmd.getRet(), time, true, user);
 		if(reward == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			
@@ -141,7 +141,7 @@ public class PvpCommandService extends BaseCommandService {
 		int time = 0;
 		if (cmd.hasTime())
 			time = cmd.getTime();
-		RewardInfo reward = pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time, false);
+		RewardInfo reward = pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time, false, user);
 		if(reward == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			

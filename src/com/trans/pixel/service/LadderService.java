@@ -69,6 +69,8 @@ public class LadderService {
 	private ActivityService activityService;
 	@Resource
 	private PvpMapService pvpMapService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
 	
 	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
         public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -228,6 +230,9 @@ public class LadderService {
 			myRankBean.setRank(attackRank);
 			updateUserRank(serverId, attackRankBean);
 			updateUserRank(serverId, myRankBean);
+			
+			//全服通告
+			noticeMessageService.composeLadderLevelup(user, attackRank);
 		}
 		
 		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank);

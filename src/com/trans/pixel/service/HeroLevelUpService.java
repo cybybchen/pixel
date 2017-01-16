@@ -60,6 +60,8 @@ public class HeroLevelUpService {
 	private UserPokedeService userPokedeService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
 	
 	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds, List<UserEquipBean> equipList) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
@@ -127,6 +129,9 @@ public class HeroLevelUpService {
 						int originalRare = equipService.calHeroEquipLevel(heroInfo);
 						heroInfo.updateEquipIdByArmId(levelUpId, armId);
 						result = SuccessConst.EQUIP_LEVELUP_SUCCESS;
+						
+						//全服通告
+						noticeMessageService.composeEquipLevelup(user, equip);
 						
 						/**
 						 * 提升装备稀有度的活动
@@ -310,6 +315,9 @@ public class HeroLevelUpService {
 		 * 培养英雄的活动
 		 */
 		activityService.heroLevelupRareActivity(user, heroInfo.getHeroId(), heroInfo.getRank());
+		
+		//全服通告
+		noticeMessageService.composeHeroRankup(user, heroInfo);
 		
 		/**
 		 * send rareup log

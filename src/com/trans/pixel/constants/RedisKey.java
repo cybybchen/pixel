@@ -173,6 +173,7 @@ public class RedisKey {
 	//equip
 	public static final String EQUIP_CONFIG = CONFIG_PREFIX+"equip";
 	public static final String CHIP_CONFIG = PREFIX + CONFIG_PREFIX+"chip";
+	public static final String EQUIP_TUCAO_CONFIG = PREFIX + CONFIG_PREFIX + "equiptucao";
 	
 	//message board
 	public static final String MESSAGE_BOARD_KEY = "message_key";

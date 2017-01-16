@@ -46,6 +46,8 @@ public class ClearService {
 	private LogService logService;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
 	
 	
 	private static final int CLEAR_TYPE_COIN_COST = 10000;
@@ -149,6 +151,9 @@ public class ClearService {
 		logService.sendQianghuaLog(user.getServerId(), user.getId(), userPokede.getHeroId(), userPokede.getStrengthen(), ret ? 1 : 0);
 		if (ret) {
 			userPokede.setStrengthen(userPokede.getStrengthen() + 1);
+			
+			//全服通告
+			noticeMessageService.composeStrengthen(user, userPokede);
 			
 			return SuccessConst.HERO_STRENGTHEN_SUCCESS;
 		}
