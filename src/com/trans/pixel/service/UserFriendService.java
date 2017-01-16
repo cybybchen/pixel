@@ -17,6 +17,7 @@ import com.trans.pixel.service.redis.UserFriendRedisService;
 
 @Service
 public class UserFriendService {
+	private static final int FIREND_CALL_COUNTDOWN_TIME = 1;//1h
 	@Resource
 	private UserFriendMapper userFriendMapper;
 	@Resource
@@ -72,7 +73,7 @@ public class UserFriendService {
 	
 	public UserFriendBean updateFriendCallTime(long userId, long friendId) {
 		UserFriendBean userFriend = userFriendRedisService.selectUserFriend(userId, friendId);
-		if (userFriend.getLastCallTime() + 1 * TimeConst.SECONDS_PER_HOUR > (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND)) {
+		if (userFriend.getLastCallTime() + FIREND_CALL_COUNTDOWN_TIME * TimeConst.SECONDS_PER_HOUR > (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND)) {
 			return null;
 		}
 		userFriend.setLastCallTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
@@ -113,7 +114,7 @@ public class UserFriendService {
 		if (userCache.hasLastLoginTime())
 			userFriend.setLastLoginTime(userCache.getLastLoginTime());
 		
-		userFriend.setCountDown((int)(userFriendBean.getLastCallTime() + 12 * TimeConst.SECONDS_PER_HOUR - System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
+		userFriend.setCountDown((int)(userFriendBean.getLastCallTime() + FIREND_CALL_COUNTDOWN_TIME * TimeConst.SECONDS_PER_HOUR - System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		
 		if (userCache.hasIcon())
 			userFriend.setIcon(userCache.getIcon());
