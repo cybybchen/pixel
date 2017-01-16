@@ -38,6 +38,8 @@ public class RankService {
 				return getZhanliRankList(serverId);
 			case RankConst.TYPE_RECHARGE:
 				return getRechargeRankList(serverId);
+			case RankConst.TYPE_HELP:
+				return getHelpRankList(serverId);
 			default:
 				break;
 		}
@@ -79,6 +81,28 @@ public class RankService {
 	private List<UserRankBean> getRechargeRankList(int serverId) {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, ActivityConst.KAIFU2_RECHARGE);
+		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
+		int rankInit = values.size() + 1;
+		for (TypedTuple<String> value : values) {
+			UserRankBean rank = new UserRankBean();
+			for (UserInfo userInfo : userInfoList) {
+				if (value.getValue().equals("" + userInfo.getId())) {
+					rank.setRank(rankInit);
+					rank.initByUserCache(userInfo);
+					rank.setZhanli(value.getScore().intValue());
+					rankInit--;
+					rankList.add(rank);
+					break;
+				}
+			}
+		}
+		
+		return rankList;
+	}
+	
+	private List<UserRankBean> getHelpRankList(int serverId) {
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
+		Set<TypedTuple<String>> values = rankRedisService.getRankList(serverId, RankConst.TYPE_HELP, RankConst.RANK_LIST_START - 1, RankConst.RANK_LIST_END - 1);
 		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
 		int rankInit = values.size() + 1;
 		for (TypedTuple<String> value : values) {

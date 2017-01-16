@@ -139,9 +139,10 @@ public class RedisKey {
 	public static final String USER_PROP_PREFIX = "user_prop_";
 	
 	//zhanli rank redis
-	public static final String RANK_PREFIX = PREFIX+"Rank_"+SERVER_PREFIX;
+//	public static final String RANK_PREFIX = PREFIX+"Rank_"+SERVER_PREFIX;
 	public static final String ZHANLI_RANK = PREFIX+"ZhanliRank_"+SERVER_PREFIX;
 	public static final String ZHANLI_RANK_NODELETE = PREFIX + "NoDeleteZhanliRank_" + SERVER_PREFIX; //不会删除不活跃用户
+	public static final String RANK_PREFIX = "Rank_";
 	
 	//ladder rank redis
 	public static final String LADDER_RANK = "ladder_rank";

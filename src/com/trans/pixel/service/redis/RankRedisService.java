@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ActivityConst;
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.UserInfo;
@@ -44,5 +46,21 @@ public class RankRedisService extends RedisService{
 	
 	public Set<TypedTuple<String>> getZhanliRanks(final int serverId, long start, long end) {
 		return this.zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE + serverId, start, end);
+	}
+	
+	public Set<TypedTuple<String>> getRankList(int serverId, int type, int start, int end) {
+		String key = buildRankRedisKey(serverId, type);
+		
+		return zrangewithscore(key, start, end - 1);
+	}
+	
+	//rank
+	public void addRankScore(long userId, int serverId, int type, long score) {
+		String key = buildRankRedisKey(serverId, type);
+		zincrby(key, score, "" + userId);
+	}
+	
+	private String buildRankRedisKey(int serverId, int type) {
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.RANK_PREFIX + type;
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
@@ -49,6 +50,7 @@ import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.WinService;
+import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -89,6 +91,8 @@ public class LevelCommandService extends BaseCommandService {
 	private MailService mailService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
+	@Resource
+	private RankRedisService rankRedisService;
 	
 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		int levelId = cmd.getLevelId();
@@ -319,6 +323,9 @@ public class LevelCommandService extends BaseCommandService {
 				
 				//全服通告
 				noticeMessageService.composeCallBrotherHelpLevelResult(user, levelId);
+				
+				//支援排行榜
+				rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_HELP, 1);
 			}
 
 //			user.addMyactive();
