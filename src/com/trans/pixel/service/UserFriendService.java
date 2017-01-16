@@ -64,7 +64,7 @@ public class UserFriendService {
 	
 	public boolean canCallBrother(long userId, long friendId) {
 		UserFriendBean userFriend = userFriendRedisService.selectUserFriend(userId, friendId);
-		if (userFriend.getLastCallTime() + 12 * TimeConst.SECONDS_PER_HOUR > (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND)) {
+		if (userFriend.getLastCallTime() + FIREND_CALL_COUNTDOWN_TIME * TimeConst.SECONDS_PER_HOUR > (int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND)) {
 			return false;
 		}
 		
