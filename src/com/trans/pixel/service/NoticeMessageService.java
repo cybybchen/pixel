@@ -61,7 +61,7 @@ public class NoticeMessageService {
 			HeroBean hero = heroService.getHero(userPokede.getHeroId());
 			StringBuilder sb = new StringBuilder();
 			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName())
-				.append("强化到了").append(userPokede.getStrengthen()).append("！");
+				.append("强化到了").append(userPokede.getStrengthen()).append("级").append("！");
 			
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 		}	
@@ -92,7 +92,7 @@ public class NoticeMessageService {
 			HeroBean hero = heroService.getHero(heroInfo.getHeroId());
 			StringBuilder sb = new StringBuilder();
 			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName())
-			.append("进阶到了").append(heroInfo.getRank()).append("！");
+			.append("进阶到了").append(heroInfo.getRank()).append("级").append("！");
 		
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 		}
