@@ -93,10 +93,18 @@ public class LadderService {
 		if (rank <= RankConst.RANK_MOST)
 			rankList.add(rank);
 		
-		int delRank = Math.max((int)(rank / RankConst.RANK_DEL), 1);
+		int rankDel = RankConst.RANK_DEL1;
+		if (rank <= 100)
+			rankDel = RankConst.RANK_DEL3;
+		else if (rank <= 300)
+			rankDel = RankConst.RANK_DEL2;
+		int delRank = Math.max((int)(rank / rankDel), 1);
 		long addRank = rank + RandomUtils.nextInt(delRank);
+		int rankDelRank = delRank;
 		while (rankList.size() < RankConst.RANK_SIZE) {
-			addRank = addRank - delRank;
+			addRank = addRank - rankDelRank;
+//			addRank = rank + RandomUtils.nextInt(delRank);
+			rankDelRank = RandomUtils.nextInt(delRank) + 1;
 			if (addRank > 0)
 				rankList.add(addRank);
 			else

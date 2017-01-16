@@ -7,7 +7,9 @@ public class RankConst {
 	
 	public static final int RANK_SIZE = 10;
 	
-	public static final int RANK_DEL = 50;
+	public static final int RANK_DEL1 = 50;
+	public static final int RANK_DEL2 = 30;
+	public static final int RANK_DEL3 = 10;
 	
 	public static final int RANK_MOST = 2500;
 	
