@@ -414,7 +414,7 @@ public class PvpMapService {
 			enemyId = mine.getOwner().getId();
 			
 			//全服通告
-			if (ret)
+			if (!isme && ret)
 				noticeMessageService.composeCallbrotherHelpAttackMine(my, mine.getOwner().getName());
 		}
 		if(ret){

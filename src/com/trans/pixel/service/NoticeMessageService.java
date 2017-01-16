@@ -82,7 +82,7 @@ public class NoticeMessageService {
 			return;
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("恭喜").append(user.getUserName()).append("登顶天梯第一！");
+		sb.append("%s,6,恭喜").append(user.getUserName()).append("登顶天梯第一！");
 		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	
