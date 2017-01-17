@@ -106,14 +106,14 @@ public class NoticeMessageService {
 	
 	public void composeCallBrotherHelpLevelResult(UserBean user, int level) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("%s").append(user.getUserName()).append("帮助好友通关").append(",6,战报:");
+		sb.append("%s").append(user.getUserName()).append("帮助好友通关");
 		if (level > 2000)
 			sb.append("困难");
 		else if (level > 3000)
 			sb.append("地狱");
 		
 		level = level % 1000;
-		sb.append(1 + level / 5).append("-").append(level % 5);
+		sb.append(1 + level / 5).append("-").append(level % 5).append(",6,战报:");
 		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	
