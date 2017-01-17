@@ -113,7 +113,7 @@ public class NoticeMessageService {
 			sb.append("地狱");
 		
 		level = level % 1000;
-		sb.append(1 + level / 5).append("-").append(level % 5).append(",6,战报:");
+		sb.append(1 + level / 5).append("-").append(level % 5 == 0 ? 5 : level % 5).append(",6,战报:");
 		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	
