@@ -756,6 +756,24 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="32216" name="2星升星箱" img="32017" rare="2" description="开启获得1个2星升星材料" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="33149" item="2星升星1" counta="1" countb="1" weight="100" />
+		<item itemid="33150" item="2星升星2" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32217" name="3星升星箱" img="32017" rare="3" description="开启获得1个3星升星材料" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="33151" item="3星升星1" counta="1" countb="1" weight="100" />
+		<item itemid="33152" item="3星升星2" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="32218" name="4星升星箱" img="32017" rare="4" description="开启获得1个4星升星材料" hashero="1" cyb="0" judge="0" endtime="" itemcount="2" weightall="200" >
+		<item itemid="33153" item="4星升星1" counta="1" countb="1" weight="100" />
+		<item itemid="33154" item="4星升星2" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 	<loot itemid="32115" name="李青英雄包" img="32011" rare="4" description="开启获得李青2星" hashero="1" cyb="0" judge="0" endtime="" itemcount="1" weightall="100" >
 		<item itemid="52061" item="李青2星" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
@@ -1133,6 +1151,42 @@
 		<item itemid="33144" item="3星英雄基础箱6" counta="1" countb="1" weight="100" />
 		<item itemid="33145" item="3星英雄基础箱7" counta="1" countb="1" weight="100" />
 		<item itemid="33146" item="3星英雄基础箱8" counta="1" countb="1" weight="100" />
+	</loot>
+	<loot itemid="33149" name="2星升星1" img="" rare="" description="" hashero="" cyb="" judge="" endtime="" itemcount="3" weightall="300" >
+		<item itemid="52206" item="女战士2星" counta="1" countb="1" weight="100" />
+		<item itemid="52217" item="老太婆2星" counta="1" countb="1" weight="100" />
+		<item itemid="52229" item="哥布林2星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="33150" name="2星升星2" img="" rare="" description="" hashero="" cyb="" judge="" endtime="" itemcount="3" weightall="200" >
+		<item itemid="52211" item="吱吱2星" counta="1" countb="1" weight="100" />
+		<item itemid="52223" item="汪汪2星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="33151" name="3星升星1" img="" rare="" description="" hashero="" cyb="" judge="" endtime="" itemcount="3" weightall="300" >
+		<item itemid="53206" item="女战士3星" counta="1" countb="1" weight="100" />
+		<item itemid="53217" item="老太婆3星" counta="1" countb="1" weight="100" />
+		<item itemid="53229" item="哥布林3星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="33152" name="3星升星2" img="" rare="" description="" hashero="" cyb="" judge="" endtime="" itemcount="3" weightall="200" >
+		<item itemid="53211" item="吱吱3星" counta="1" countb="1" weight="100" />
+		<item itemid="53223" item="汪汪3星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="33153" name="4星升星1" img="" rare="" description="" hashero="" cyb="" judge="" endtime="" itemcount="3" weightall="300" >
+		<item itemid="54206" item="女战士4星" counta="1" countb="1" weight="100" />
+		<item itemid="54217" item="老太婆4星" counta="1" countb="1" weight="100" />
+		<item itemid="54229" item="哥布林4星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="33154" name="4星升星2" img="" rare="" description="" hashero="" cyb="" judge="" endtime="" itemcount="3" weightall="200" >
+		<item itemid="54211" item="吱吱4星" counta="1" countb="1" weight="100" />
+		<item itemid="54223" item="汪汪4星" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="33010" name="绿色征战箱" img="32024" rare="2" description="可以开出征战世界的绿色材料" hashero="0" cyb="0" judge="0" endtime="" itemcount="3" weightall="300" >
 		<item itemid="29022" item="蟹爪" counta="2" countb="5" weight="100" />
@@ -1674,13 +1728,13 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40111" name="红包" img="40110" rare="4" description="" hashero="" cyb="" judge="" endtime="" itemcount="" weightall="" >
+	<loot itemid="40111" name="红包" img="40110" rare="4" description="可在活动-红包兑换中兑换奖励，在活动中获得" hashero="0" cyb="1" judge="0" endtime="2017-02-08 23:59:59" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40112" name="爆竹" img="40112" rare="4" description="" hashero="" cyb="" judge="" endtime="" itemcount="" weightall="" >
+	<loot itemid="40112" name="爆竹" img="40112" rare="4" description="可在活动-爆竹兑换中兑换奖励，在活动中获得" hashero="0" cyb="1" judge="0" endtime="2017-02-08 23:59:59" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
