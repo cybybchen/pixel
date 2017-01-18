@@ -109,6 +109,7 @@ public class UserBean {
 	private int task1Order = 0;
 	private int task2Record = 0;
 	private int questStatus = 0;
+	private long bossRoomUserId = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1092,6 +1093,12 @@ public class UserBean {
 	}
 	public void setQuestStatus(int questStatus) {
 		this.questStatus = questStatus;
+	}
+	public long getBossRoomUserId() {
+		return bossRoomUserId;
+	}
+	public void setBossRoomUserId(long bossRoomUserId) {
+		this.bossRoomUserId = bossRoomUserId;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

@@ -188,6 +188,17 @@ public class MailBean {
 		return builder.build();
 	}
 	
+	public static MailBean buildSystemMail1(long userId, String content, List<RewardBean> rewardList) {
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setContent(content);
+		mail.setType(MailConst.TYPE_SYSTEM_MAIL);
+		mail.setRewardList(rewardList);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		
+		return mail;
+	}
+	
 	public static MailBean buildSystemMail(long userId, String content, List<RewardInfo> rewardList) {
 		List<RewardBean> rewardBeanList = RewardBean.buildRewardBeanList(rewardList);
 		MailBean mail = new MailBean();

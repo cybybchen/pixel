@@ -1,19 +1,29 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
+import com.trans.pixel.protoc.Commands.BossRoomRecord;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
+import com.trans.pixel.protoc.Commands.ResponseBossRoomRecordCommand;
 import com.trans.pixel.protoc.Commands.ResponseBosskillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.BossService;
+import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class BossCommandService extends BaseCommandService {
@@ -24,6 +34,8 @@ public class BossCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private LogService logService;
 	
 	public void bossKill(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardBean> rewardList = bossService.submitBosskill(user, cmd.getGroupId(), cmd.getBossId());
@@ -40,5 +52,48 @@ public class BossCommandService extends BaseCommandService {
 		builder.addAllRecord(list);
 		responseBuilder.setBosskillCommand(builder.build());
 		
+		BossRoomRecord record = bossService.getBossRoomRecord(user);
+		if (record != null) {
+			ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
+			roombuilder.setBossRoom(record);
+			responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+		}
+	}
+	
+	public void createFightBossRoom(RequestInviteFightBossCommand cmd, Builder responseBuilder, UserBean user) {
+		List<Long> userIds = cmd.getUserIdList();
+		int groupId = cmd.getGroupId();
+		int bossId = cmd.getBossId();
+		long createUserId = cmd.getCreateUserId();
+		BossRoomRecord bossRoomRecord = bossService.inviteFightBoss(user, createUserId, userIds, groupId, bossId);
+		
+		pusher.pushUserInfoCommand(responseBuilder, user);
+		ResponseBossRoomRecordCommand.Builder builder = ResponseBossRoomRecordCommand.newBuilder();
+		builder.setBossRoom(bossRoomRecord);
+		responseBuilder.setBossRoomRecordCommand(builder.build());
+	}
+	
+	public void quitFightBossRoom(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user) {
+		bossService.quitBossRoom(user);
+		pusher.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void submitBossRoomScore(RequestSubmitBossRoomScoreCommand cmd, Builder responseBuilder, UserBean user) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		BossRoomRecord bossRoomRecord = bossService.submitBossRoomScore(user, cmd.getPercent(), rewardList);
+		if (bossRoomRecord == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SUBMIT_BOSS_SCORE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SUBMIT_BOSS_SCORE_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
+		roombuilder.setBossRoom(bossRoomRecord);
+		responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+		if (!rewardList.isEmpty()) {
+			rewardService.doRewards(user, rewardList);
+			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+		}
 	}
 }

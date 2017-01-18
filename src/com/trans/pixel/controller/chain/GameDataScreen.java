@@ -117,6 +117,9 @@ import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
+import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -928,6 +931,21 @@ public class GameDataScreen extends RequestScreen {
 		levelCommandService.helpLevelResult(cmd, responseBuilder, user);
 		return true;//HelpLevelCommand
 	}//HelpLevelCommand
+	@Override//InviteFightBossCommand
+	protected boolean handleCommand(RequestInviteFightBossCommand cmd, Builder responseBuilder, UserBean user) {
+		bossCommandService.createFightBossRoom(cmd, responseBuilder, user);
+		return true;//InviteFightBossCommand
+	}//InviteFightBossCommand
+	@Override//QuitFightBossCommand
+	protected boolean handleCommand(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user) {
+		bossCommandService.quitFightBossRoom(cmd, responseBuilder, user);
+		return true;//QuitFightBossCommand
+	}//QuitFightBossCommand
+	@Override//SubmitBossScoreCommand
+	protected boolean handleCommand(RequestSubmitBossRoomScoreCommand cmd, Builder responseBuilder, UserBean user) {
+		bossCommandService.submitBossRoomScore(cmd, responseBuilder, user);
+		return true;//SubmitBossScoreCommand
+	}//SubmitBossScoreCommand
 	//add handleCommand here
 	
 	@Override

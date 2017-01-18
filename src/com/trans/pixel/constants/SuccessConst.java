@@ -23,7 +23,7 @@ public enum SuccessConst implements ResultConst {
     SUBMIT_ZHANLI_SUCCESS(1108, "战力提交成功"), ACTIVITY_REWARD_SUCCESS(1109, "奖励领取成功"), RECHARGE_SUCCESS(1110, "充值成功（cheat）"),
     SUBMIT_SUCCESS(1111, "上传成功"), READY_ATTACK_LADDER_SUCCESS(1112, "天梯准备成功"), LOG_SEND_SUCCESS(1113, "LOG发送成功"),
     FOOD_ADDED_SUCCESS(1114, "食用成功"), HERO_CLEAR_SUCCESS(1115, "洗练成功"), HERO_STRENGTHEN_SUCCESS(1116, "英雄强化成功"), HERO_STRENGTHEN_FAILED_SUCCESS(1117, "英雄强化失败"),
-    OPEN_FETTER_SUCCESS(1118, "羁绊激活成功"), XIAZHU_SUCCESS(1119, "下注成功");
+    OPEN_FETTER_SUCCESS(1118, "羁绊激活成功"), XIAZHU_SUCCESS(1119, "下注成功"), CREATE_ROOM_SUCCESS(1120, "房间创建成功");
 
     private final int code;
 

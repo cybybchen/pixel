@@ -1244,14 +1244,23 @@ message UserFood {
 	required int32 count = 2;
 }
 
+message BossRoomRecord {
+	required int32 groupId = 1;
+	required int32 bossId = 2;
+	required int64 createUserId = 3;
+	repeated BossRecord bossRecord = 4;
+	repeated int64 userId = 5;
+}
+
 message BossGroupRecord {
 	required int32 groupId = 1;
 	repeated BossRecord bossRecord = 2;
 }
 
 message BossRecord {
-	required int32 bossId = 1;
+	optional int32 bossId = 1;
 	optional int32 count = 2;	
+	optional int64 userId = 3;
 }
 
 message BossgroupList {
@@ -2379,7 +2388,7 @@ message ResponseUserPokedeCommand {
 }
 
 message RequestRankCommand {
-	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge
+	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge, 4:help
 }
 
 message ResponseRankCommand {
@@ -2588,6 +2597,25 @@ message RequestQueryNoticeBoardCommand {
 	required string messageId = 1;
 }
 
+message RequestInviteFightBossCommand {
+	repeated int64 userId = 1;
+	optional int32 groupId = 2;
+	optional int32 bossId = 3;
+	optional int64 createUserId = 4;
+}
+
+message RequestQuitFightBossCommand {
+
+}
+
+message ResponseBossRoomRecordCommand {
+	required BossRoomRecord bossRoom = 1;
+}
+
+message RequestSubmitBossRoomScoreCommand {
+	required int32 percent = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2742,6 +2770,9 @@ message RequestCommand {
 	optional RequestBloodXiazhuCommand bloodXiazhuCommand = 212;
 	optional RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;
 	optional RequestHelpLevelCommand helpLevelCommand = 214;
+	optional RequestInviteFightBossCommand inviteFightBossCommand = 215;
+	optional RequestQuitFightBossCommand quitFightBossCommand = 216;
+	optional RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2813,6 +2844,7 @@ message ResponseCommand {
 	optional ResponseUserTaskCommand userTaskCommand = 59;
 	optional ResponseUserBattletowerCommand userBattletowerCommand = 60;
 	optional ResponseBattletowerShopCommand battletowerShopCommand = 61;
+	optional ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;
 }
 
 

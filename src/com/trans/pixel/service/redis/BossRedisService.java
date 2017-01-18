@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
+import com.trans.pixel.protoc.Commands.BossRoomRecord;
 import com.trans.pixel.protoc.Commands.Bossgroup;
 import com.trans.pixel.protoc.Commands.BossgroupList;
 import com.trans.pixel.protoc.Commands.BosslootGroup;
@@ -178,5 +179,29 @@ public class BossRedisService extends RedisService {
 		this.hincrby(key, "" + userId, 1);
 		
 		this.expireAt(key, DateUtil.getEndDateOfD());
+	}
+	
+	public void setBossRoomRecord(BossRoomRecord bossRoomRecord) {
+		String key = RedisKey.BOOS_ROOM_RECORD_PREFIX + bossRoomRecord.getCreateUserId();
+		set(key, formatJson(bossRoomRecord));
+		expireAt(key, DateUtil.getEndDateOfD());
+	}
+	
+	public void delBossRoomRecord(long userId) {
+		String key = RedisKey.BOOS_ROOM_RECORD_PREFIX + userId;
+		delete(key);
+	}
+	
+	public BossRoomRecord getBossRoomRecord(long createUserId) {
+		String key = RedisKey.BOOS_ROOM_RECORD_PREFIX + createUserId;
+		String value = get(key);
+		if (value == null)
+			return null;
+		
+		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
+		if (parseJson(value, builder))
+			return builder.build();
+		
+		return null;
 	}
 }

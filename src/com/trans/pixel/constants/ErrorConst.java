@@ -41,7 +41,7 @@ public enum ErrorConst implements ResultConst {
     UNIONBOSS_TIME_OVER_ERROR(3008, "工会BOSS时间异常"), UNIONNAME_IS_EXIST_ERROR(3009, "公会名已被注册"), OPEN_FETTER_ERROR(3010, "羁绊激活异常"),
     HAS_OPEN_FETTER_ERROR(3011, "该羁绊已激活"), NOT_ENOUGH_CLEARPROP_ERROR(3012, "洗练道具不足"),
     
-    BATTLETOWER_SUBMIT_ERROR(4001, "战斗塔成绩提交异常"), BATTLETOWER_RESET_ERROR(4002, "战斗塔重置异常"),
+    BATTLETOWER_SUBMIT_ERROR(4001, "战斗塔成绩提交异常"), BATTLETOWER_RESET_ERROR(4002, "战斗塔重置异常"), SUBMIT_BOSS_SCORE_ERROR(4003, "世界boss成绩提交异常"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 
