@@ -165,7 +165,7 @@ public class PvpCommandService extends BaseCommandService {
 			/**
 			 * 征战世界成功支援的活动
 			 */
-			activityService.mineAidActivity(user);
+			activityService.aidActivity(user, 0);
 			
 			//支援排行榜
 			rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_HELP, 1);

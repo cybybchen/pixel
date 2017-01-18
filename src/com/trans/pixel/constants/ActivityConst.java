@@ -38,6 +38,10 @@ public class ActivityConst {
 	 */
 	public static final int HERO_RARE = 42;
 	/**
+	 * 支援好友
+	 */
+	public static final int AID = 43;
+	/**
 	 * 参与pk
 	 */
 	public static final int RICHANG_PVP_ATTACK_ENEMY = 307;

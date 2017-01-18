@@ -885,8 +885,11 @@ public class ActivityService {
 			sendKaifuScore(user, ActivityConst.KAIFU_DAY_7);
 	}
 	
-	public void mineAidActivity(UserBean user) {
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_MINE_AID);
+	public void aidActivity(UserBean user, int type) {//0:征战天下 1:level
+		if (type == 0)
+			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_MINE_AID);
+		
+		sendRichangScore(user, ActivityConst.AID);
 	}
 	
 	/**

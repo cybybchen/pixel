@@ -346,10 +346,10 @@ public class LevelCommandService extends BaseCommandService {
 		
 			
 			
-//			/**
-//			 * 征战世界成功支援的活动
-//			 */
-//			activityService.mineAidActivity(user);
+			/**
+			 * 征战世界成功支援的活动
+			 */
+			activityService.aidActivity(user, 1);
 		}
 		
 		/**
