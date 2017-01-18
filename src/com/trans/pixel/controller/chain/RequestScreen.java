@@ -121,6 +121,7 @@ import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
+import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -191,6 +192,7 @@ import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
+import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
@@ -432,6 +434,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestInviteFightBossCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBossRoomScoreCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUserInfoCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -1233,6 +1236,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//SubmitBossScoreCommand
                 result = handleCommand(cmd, responseBuilder, user);//SubmitBossScoreCommand
         }//SubmitBossScoreCommand
+        if (request.hasUserInfoCommand()) {
+            RequestUserInfoCommand cmd = request.getUserInfoCommand();
+            if (result)//UserInfoCommand
+                result = handleCommand(cmd, responseBuilder, user);//UserInfoCommand
+        }//UserInfoCommand
         //call handleCommand here
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();

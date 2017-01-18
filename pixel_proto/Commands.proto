@@ -2616,6 +2616,10 @@ message RequestSubmitBossRoomScoreCommand {
 	required int32 percent = 1;
 }
 
+message RequestUserInfoCommand {
+
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2773,6 +2777,7 @@ message RequestCommand {
 	optional RequestInviteFightBossCommand inviteFightBossCommand = 215;
 	optional RequestQuitFightBossCommand quitFightBossCommand = 216;
 	optional RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;
+	optional RequestUserInfoCommand userInfoCommand = 218;
 }
 // response command list transfer only use it
 message ResponseCommand {

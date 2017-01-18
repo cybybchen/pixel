@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
+import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
@@ -255,6 +256,10 @@ public class UserCommandService extends BaseCommandService {
 		
 		userService.updateUser(user);
 		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void userInfo(RequestUserInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	

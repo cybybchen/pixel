@@ -120,6 +120,7 @@ import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
+import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -946,6 +947,11 @@ public class GameDataScreen extends RequestScreen {
 		bossCommandService.submitBossRoomScore(cmd, responseBuilder, user);
 		return true;//SubmitBossScoreCommand
 	}//SubmitBossScoreCommand
+	@Override//UserInfoCommand
+	protected boolean handleCommand(RequestUserInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		userCommandService.userInfo(cmd, responseBuilder, user);
+		return true;//UserInfoCommand
+	}//UserInfoCommand
 	//add handleCommand here
 	
 	@Override
