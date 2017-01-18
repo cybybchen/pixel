@@ -242,9 +242,13 @@ public class LotteryCommandService extends BaseCommandService {
 			case RewardConst.COIN :
 				if ((user.getLotteryStatus() >> 1 & 1) == 1)
 					return false;
+				
+				return true;
 			case RewardConst.JEWEL :
 				if ((user.getLotteryStatus() >> 2 & 1) == 1)
 					return false;
+				
+				return true;
 			default:
 				return true;
 		}
