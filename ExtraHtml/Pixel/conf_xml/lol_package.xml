@@ -1668,7 +1668,25 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40110" name="红包" img="40110" rare="5" description="可在活动-红包兑换中兑换奖励，在活动-中获得" hashero="0" cyb="1" judge="0" endtime="2017-12-31 23:59:59" itemcount="" weightall="" >
+	<loot itemid="40110" name="红包" img="40110" rare="5" description="可在活动-红包派发中兑换奖励，在活动中获得" hashero="0" cyb="1" judge="0" endtime="2017-01-18 23:59:59" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="40111" name="红包" img="40110" rare="4" description="" hashero="" cyb="" judge="" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="40112" name="爆竹" img="40112" rare="4" description="" hashero="" cyb="" judge="" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="40113" name="红旗" img="40109" rare="4" description="可在活动-小红旗兑换中兑换奖励，在活动中获得" hashero="0" cyb="1" judge="0" endtime="2017-01-25 23:59:59" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
@@ -1849,6 +1867,30 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="37006" name="特级洗练石" img="37006" rare="6" description="洗练英雄的万能道具" hashero="0" cyb="1" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="35201" name="唤魔令-风" img="35201" rare="6" description="使用后在世界BOSS中召唤出特殊BOSS风" hashero="0" cyb="0" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="35202" name="唤魔令-林" img="35202" rare="6" description="使用后在世界BOSS中召唤出特殊BOSS林" hashero="0" cyb="0" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="35203" name="唤魔令-火" img="35203" rare="6" description="使用后在世界BOSS中召唤出特殊BOSS火" hashero="0" cyb="0" judge="0" endtime="" itemcount="" weightall="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="35204" name="唤魔令-山" img="35204" rare="6" description="使用后在世界BOSS中召唤出特殊BOSS山" hashero="0" cyb="0" judge="0" endtime="" itemcount="" weightall="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
