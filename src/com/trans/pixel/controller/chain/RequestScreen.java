@@ -1273,7 +1273,7 @@ public abstract class RequestScreen implements RequestHandle {
 	        /**
 	    	 * push notice
 	    	 */
-	    	if (result && user != null)
+	    	if (result && user != null && !request.hasQueryRechargeCommand())
 	    		pushNoticeCommand(responseBuilder, user);
         
         return result;

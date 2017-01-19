@@ -170,7 +170,7 @@ public class RechargeService {
 			rewardList.add(reward.build());
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowJewelCount(Math.min(7, user.getGrowJewelCount()+1));
-		}else if(itemId == 44008){//成长经验基金:按照玩家总战力领取不同阶段的钻石
+		}else if(itemId == 44008){//成长经验基金:按照玩家总战力领取不同阶段的经验
 			user.setGrowExpCount(Math.min(7,user.getGrowExpCount()+1));
 		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
 			YueKa yueka = shopService.getYueKa(itemId);
@@ -218,6 +218,8 @@ public class RechargeService {
 			reward.setCount(1);
 			rewards.addLoot(reward);
 			userService.updateUser(user);
+			logger.debug("jewel is" + user.getGrowJewelCount());
+			logger.debug("exp is" + user.getGrowExpCount());
 		}else{
 			rewards.addAllLoot(rewardList);
 			rewardService.doRewards(user, rewards.build());
