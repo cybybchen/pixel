@@ -768,7 +768,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewardService.doReward(user, commbuilder.getItemid(), commbuilder.getCount());
 			rewardService.updateUser(user);
             responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
-            service.saveLadderShop(shoplist.build(), user);
+            service.saveBattletowerShop(shoplist.build(), user);
             pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
             pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
             logService.sendShopLog(user.getServerId(), user.getId(), 3, commbuilder.getItemid(), commbuilder.getCurrency(), commbuilder.getCost());
