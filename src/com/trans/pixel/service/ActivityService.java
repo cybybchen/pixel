@@ -165,6 +165,7 @@ public class ActivityService {
 				return ErrorConst.NOT_ENOUGH_PROP;
 			}
 			
+			rewardOrderBuilder.setOrder(order);
 			rewardOrderBuilder.setCount(rewardOrderBuilder.getCount() + 1);
 			ur.setReward(order - 1, rewardOrderBuilder.build());
 		}else {
