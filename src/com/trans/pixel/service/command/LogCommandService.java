@@ -40,8 +40,10 @@ public class LogCommandService extends BaseCommandService {
 			idfaService.updateIdfaStatus(params.get(LogString.IDFA));
 			
 		if (user != null) {
-			user.setIdfa(params.get(LogString.IDFA));
-			userService.updateUser(user);
+			if (params.get(LogString.IDFA) != null && !params.get(LogString.IDFA).isEmpty()) {
+				user.setIdfa(params.get(LogString.IDFA));
+				userService.updateUser(user);
+			}
 		}
 		// responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.LOG_SEND_SUCCESS));
 	}
