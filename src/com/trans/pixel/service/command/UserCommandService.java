@@ -290,7 +290,7 @@ public class UserCommandService extends BaseCommandService {
 		shopService.getLibaoShop(responseBuilder, user);
 		pushCommandService.pushUserBosskillRecord(responseBuilder, user);
 		
-		noticeCommandService.pushNotices(responseBuilder, user);
+//		noticeCommandService.pushNotices(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {
