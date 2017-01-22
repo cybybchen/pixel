@@ -268,6 +268,11 @@ public class BossService {
 		if (!builder.getUserIdList().contains(user.getId()))
 			return null;
 		
+		int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
+		Bossgroup bossGroup = bossRedisService.getBossgroup(builder.getGroupId());
+		if (userHasKillCount >= bossGroup.getCount())
+			return null;
+		
 		int totalPercent = 0;
 		for (int i = 0; i < builder.getBossRecordList().size(); i++) {
 			BossRecord bossRecord = builder.getBossRecord(i);
@@ -284,10 +289,12 @@ public class BossService {
 		}
 		
 		if (totalPercent >= 100) {
+			bossRedisService.addBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
 			rewardList = getBossloot(builder.getBossId(), user);
 			for (long userId : builder.getUserIdList()) {
 				if (userId != user.getId()) {
 					sendBossRoomWinRewardMail(userId, rewardList);
+					bossRedisService.addBosskillCount(userId, builder.getGroupId(), builder.getBossId());
 				}
 			}
 		}
