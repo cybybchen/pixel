@@ -24,6 +24,8 @@ public class PropService {
 	private PropRedisService propRedisService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private BossService bossService;
 	
 	public PackageBean getProp(int itemId) {
 		PackageBean prop = propRedisService.getProp(itemId);
@@ -55,6 +57,13 @@ public class PropService {
 		PackageBean prop = getProp(userProp.getPropId());
 		if (prop == null || prop.getCyb() == 1)
 			return null;
+		
+		if (prop.getBossid() > 0) {
+			bossService.zhaohuanBoss(user, prop.getBossid());
+			userProp.setPropCount(userProp.getPropCount() - propCount);
+			userPropService.updateUserProp(userProp);
+			return null;
+		}
 		
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();

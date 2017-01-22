@@ -153,4 +153,28 @@
 <loot order="4" weightall="100" itemid1="29006" itemcount1="5" weight1="20" itemid2="29006" itemcount2="2" weight2="80" itemid3="" itemcount3="" weight3="" />
 <loot order="5" weightall="100" itemid1="36009" itemcount1="1" weight1="50" itemid2="" itemcount2="" weight2="" itemid3="" itemcount3="" weight3="" />
 </boss>
+<boss id="130001" >
+<loot order="1" weightall="100" itemid1="32218" itemcount1="1" weight1="1" itemid2="32217" itemcount2="1" weight2="19" itemid3="32216" itemcount3="1" weight3="80" />
+<loot order="2" weightall="100" itemid1="33006" itemcount1="1" weight1="1" itemid2="33005" itemcount2="1" weight2="19" itemid3="33004" itemcount3="1" weight3="80" />
+<loot order="3" weightall="100" itemid1="36009" itemcount1="1" weight1="5" itemid2="36008" itemcount2="1" weight2="20" itemid3="36007" itemcount3="1" weight3="75" />
+<loot order="4" weightall="100" itemid1="37001" itemcount1="10" weight1="5" itemid2="37001" itemcount2="5" weight2="20" itemid3="37001" itemcount3="2" weight3="75" />
+</boss>
+<boss id="130002" >
+<loot order="1" weightall="100" itemid1="32218" itemcount1="1" weight1="1" itemid2="32217" itemcount2="1" weight2="19" itemid3="32216" itemcount3="1" weight3="80" />
+<loot order="2" weightall="100" itemid1="33006" itemcount1="1" weight1="1" itemid2="33005" itemcount2="1" weight2="19" itemid3="33004" itemcount3="1" weight3="80" />
+<loot order="3" weightall="100" itemid1="36009" itemcount1="1" weight1="5" itemid2="36008" itemcount2="1" weight2="20" itemid3="36007" itemcount3="1" weight3="75" />
+<loot order="4" weightall="100" itemid1="1009" itemcount1="5" weight1="1" itemid2="1009" itemcount2="3" weight2="19" itemid3="1009" itemcount3="1" weight3="80" />
+</boss>
+<boss id="130003" >
+<loot order="1" weightall="100" itemid1="32218" itemcount1="1" weight1="1" itemid2="32217" itemcount2="1" weight2="19" itemid3="32216" itemcount3="1" weight3="80" />
+<loot order="2" weightall="100" itemid1="33006" itemcount1="1" weight1="1" itemid2="33005" itemcount2="1" weight2="19" itemid3="33004" itemcount3="1" weight3="80" />
+<loot order="3" weightall="100" itemid1="36009" itemcount1="1" weight1="5" itemid2="36008" itemcount2="1" weight2="19" itemid3="36007" itemcount3="1" weight3="75" />
+<loot order="4" weightall="100" itemid1="35003" itemcount1="1" weight1="5" itemid2="35002" itemcount2="1" weight2="20" itemid3="35001" itemcount3="1" weight3="75" />
+</boss>
+<boss id="130004" >
+<loot order="1" weightall="100" itemid1="32218" itemcount1="1" weight1="1" itemid2="32217" itemcount2="1" weight2="19" itemid3="32216" itemcount3="1" weight3="80" />
+<loot order="2" weightall="100" itemid1="33006" itemcount1="1" weight1="1" itemid2="33005" itemcount2="1" weight2="19" itemid3="33004" itemcount3="1" weight3="80" />
+<loot order="3" weightall="100" itemid1="36009" itemcount1="1" weight1="5" itemid2="36008" itemcount2="1" weight2="20" itemid3="36007" itemcount3="1" weight3="75" />
+<loot order="4" weightall="100" itemid1="35016" itemcount1="1" weight1="5" itemid2="35015" itemcount2="1" weight2="20" itemid3="35014" itemcount3="1" weight3="75" />
+</boss>
 </data>

@@ -289,6 +289,7 @@ public class RedisKey {
 	public static final String BOSSGROUP_DAILY_PREFIX = PREFIX + "daily_bossgroup_";
 	public static final String BOSS_LOOT_KEY = PREFIX + CONFIG_PREFIX + "bossloot";
 	public static final String BOOS_ROOM_RECORD_PREFIX = PREFIX + "bossroom_";
+	public static final String BOSSGROUP_ZHAOHUAN_PREFIX = PREFIX + "zhaohuan_bossgroup_";
 	
 	//union boss
 	public static final String UNION_BOSS_KEY = PREFIX + CONFIG_PREFIX + "union_boss";

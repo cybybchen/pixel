@@ -10,7 +10,9 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
 import com.trans.pixel.protoc.Commands.BossRoomRecord;
 import com.trans.pixel.protoc.Commands.Bossgroup;
@@ -199,6 +201,22 @@ public class BossRedisService extends RedisService {
 			return null;
 		
 		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
+		if (parseJson(value, builder))
+			return builder.build();
+		
+		return null;
+	}
+	
+	public void zhaohuanBoss(UserBean user, BossGroupRecord group) {
+		String key = RedisKey.BOSSGROUP_ZHAOHUAN_PREFIX + user.getId();
+		set(key, formatJson(group));
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public BossGroupRecord getZhaohuanBoss(UserBean user) {
+		String key = RedisKey.BOSSGROUP_ZHAOHUAN_PREFIX + user.getId();
+		String value = get(key);
+		BossGroupRecord.Builder builder = BossGroupRecord.newBuilder();
 		if (parseJson(value, builder))
 			return builder.build();
 		

@@ -1264,6 +1264,7 @@ message BossRecord {
 	optional int32 bossId = 1;
 	optional int32 count = 2;	
 	optional int64 userId = 3;
+	optional string endTime = 4;
 }
 
 message BossgroupList {
@@ -1276,6 +1277,7 @@ message Bossgroup {
 	optional int32 bosscount = 3;
 	optional int32 count = 4;
 	repeated Boss boss = 5;
+	optional int32 time = 6;//持续时间，0表示没有时间限制，和原来一样，每天刷新
 }
 
 message Boss {

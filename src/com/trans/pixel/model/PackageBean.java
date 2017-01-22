@@ -27,6 +27,7 @@ public class PackageBean {
 	private int weightall = 0;
 	private String endTime = "";
 	private int cyb = 0;
+	private int bossid = 0;
 	private List<ItemBean> itemList = new ArrayList<ItemBean>();
 	
 	public int getItemid() {
@@ -78,6 +79,12 @@ public class PackageBean {
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
+	public int getBossid() {
+		return bossid;
+	}
+	public void setBossid(int bossid) {
+		this.bossid = bossid;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ITEMID, itemid);
@@ -88,6 +95,7 @@ public class PackageBean {
 		json.put(ITEM, itemList);
 		json.put(CYB, cyb);
 		json.put(ENDTIME, endTime);
+		json.put(BOSSID, bossid);
 		
 		return json.toString();
 	}
@@ -104,6 +112,7 @@ public class PackageBean {
 		bean.setWeightall(json.getInt(WEIGHTALL));
 		bean.setCyb(json.getInt(CYB));
 		bean.setEndTime(TypeTranslatedUtil.jsonGetString(json, ENDTIME));
+		bean.setBossid(json.getInt(BOSSID));
 		
 		List<ItemBean> list = new ArrayList<ItemBean>();
 		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, ITEM);
@@ -136,6 +145,7 @@ public class PackageBean {
 				bean.setItemcount(TypeTranslatedUtil.stringToInt(element.attributeValue(ITEMCOUNT)));
 				bean.setWeightall(TypeTranslatedUtil.stringToInt(element.attributeValue(WEIGHTALL)));
 				bean.setCyb(TypeTranslatedUtil.stringToInt(element.attributeValue(CYB)));
+				bean.setBossid(TypeTranslatedUtil.stringToInt(element.attributeValue(BOSSID)));
 				String endTime = element.attributeValue(ENDTIME);
 				if (endTime == null)
 					endTime = "";
@@ -196,4 +206,5 @@ public class PackageBean {
 	private static final String ITEM = "item";
 	private static final String CYB = "cyb";
 	private static final String ENDTIME = "endtime";
+	private static final String BOSSID = "bossid";
 }

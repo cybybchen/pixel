@@ -1,5 +1,5 @@
 <data>
-<group id="1" zhanli="116000" bosscount="2" count="2" >
+<group id="1" zhanli="116000" bosscount="2" count="2" time="0" >
 <boss bossid="100001" />
 <boss bossid="100002" />
 <boss bossid="100003" />
@@ -7,7 +7,7 @@
 <boss bossid="100005" />
 <boss bossid="100006" />
 </group>
-<group id="2" zhanli="390000" bosscount="2" count="2" >
+<group id="2" zhanli="390000" bosscount="2" count="2" time="0" >
 <boss bossid="110001" />
 <boss bossid="110002" />
 <boss bossid="110003" />
@@ -17,7 +17,7 @@
 <boss bossid="110007" />
 <boss bossid="110008" />
 </group>
-<group id="3" zhanli="730000" bosscount="2" count="2" >
+<group id="3" zhanli="730000" bosscount="2" count="2" time="0" >
 <boss bossid="120001" />
 <boss bossid="120002" />
 <boss bossid="120003" />
@@ -26,5 +26,11 @@
 <boss bossid="120006" />
 <boss bossid="120007" />
 <boss bossid="120008" />
+</group>
+<group id="4" zhanli="0" bosscount="4" count="1" time="24" >
+<boss bossid="130001" />
+<boss bossid="130002" />
+<boss bossid="130003" />
+<boss bossid="130004" />
 </group>
 </data>

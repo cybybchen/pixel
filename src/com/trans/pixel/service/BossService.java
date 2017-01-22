@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.Commands.Bossgroup;
 import com.trans.pixel.protoc.Commands.Bossloot;
 import com.trans.pixel.protoc.Commands.BosslootGroup;
 import com.trans.pixel.service.redis.BossRedisService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -143,6 +144,10 @@ public class BossService {
 			bossRedisService.setBossgroupRecord(list, user.getServerId());
 		}
 		
+		BossGroupRecord bossGroupRecord = bossRedisService.getZhaohuanBoss(user);
+		if (bossGroupRecord != null)
+			list.add(bossGroupRecord);
+		
 		List<BossGroupRecord> userBossGroupList = new ArrayList<BossGroupRecord>();
 		for (BossGroupRecord bossgroup : list) {
 			BossGroupRecord.Builder builder = BossGroupRecord.newBuilder();
@@ -171,6 +176,8 @@ public class BossService {
 			List<BossRecord> bossRecordList = new ArrayList<BossRecord>();
 			List<Integer> bossIdList = new ArrayList<Integer>();
 			Bossgroup bossgroup = entry.getValue();
+			if (bossgroup.getTime() != 0)
+				continue;
 			while (bossRecordList.size() < bossgroup.getBosscount()) {
 				BossRecord.Builder bossRecord = BossRecord.newBuilder();
 				int random = RandomUtils.nextInt(bossgroup.getBossCount());
@@ -226,8 +233,6 @@ public class BossService {
 		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
 		if (record == null)
 			return;
-		
-		
 		
 		user.setBossRoomUserId(0);
 		userService.updateUser(user);
@@ -300,6 +305,18 @@ public class BossService {
 		}
 		
 		return builder.build();
+	}
+	
+	public void zhaohuanBoss(UserBean user, int bossId) {
+		Bossgroup bossgroup = bossRedisService.getBossgroup(4);//召唤的boss全在这里
+		if (bossgroup == null)
+			return;
+		BossGroupRecord.Builder builder = BossGroupRecord.newBuilder();
+		BossRecord.Builder bossRecord = BossRecord.newBuilder();
+		bossRecord.setBossId(bossId);
+		bossRecord.setEndTime(DateUtil.forDatetime(DateUtil.getFutureHour(DateUtil.getDate(), bossgroup.getTime())));
+		builder.addBossRecord(bossRecord.build());
+		bossRedisService.zhaohuanBoss(user, builder.build());
 	}
 	
 	private void sendInviteMail(UserBean user, long userId, int groupId, int bossId) {
