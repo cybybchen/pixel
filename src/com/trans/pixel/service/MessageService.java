@@ -33,13 +33,13 @@ public class MessageService {
 		}
 	}
 	
-	public void createMessageBoard(int type, UserBean user, String message) {
+	public void createMessageBoard(int type, UserBean user, String message, int groupId, int bossId) {
 		switch (type) {
 			case MessageConst.TYPE_MESSAGE_NORMAL:
 				createMessageBoard(user, message);
 				break;
 			case MessageConst.TYPE_MESSAGE_UNION:
-				createUnionMessageBoard(user, message);
+				createUnionMessageBoard(user, message, groupId, bossId);
 				break;
 			default:
 				break;
@@ -113,8 +113,10 @@ public class MessageService {
 		return messageBoardList;
 	}
 	
-	private void createUnionMessageBoard(UserBean user, String message) {
+	private void createUnionMessageBoard(UserBean user, String message, int groupId, int bossId) {
 		MessageBoardBean messageBoard = initMessageBoard(user, message);
+		messageBoard.setGroupId(groupId);
+		messageBoard.setBossId(bossId);
 		messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 		messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 	}

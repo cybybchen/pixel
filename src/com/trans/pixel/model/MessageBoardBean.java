@@ -23,6 +23,8 @@ public class MessageBoardBean {
 	private List<MessageBean> messageList = new ArrayList<MessageBean>();
 	private int vip = 0;
 	private int job = 0;//公会职位
+	private int groupId = 0;
+	private int bossId = 0;
 	public long getTimeStamp() {
 		return timeStamp;
 	}
@@ -77,6 +79,18 @@ public class MessageBoardBean {
 	public void setJob(int job) {
 		this.job = job;
 	}
+	public int getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
+	public int getBossId() {
+		return bossId;
+	}
+	public void setBossId(int bossId) {
+		this.bossId = bossId;
+	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();
 		builder.setId(id);
@@ -91,6 +105,8 @@ public class MessageBoardBean {
 			msgBuilderList.add(message.buildMsg());
 		}
 		builder.addAllMsg(msgBuilderList);
+		builder.setGroupId(groupId);
+		builder.setBossId(bossId);
 		
 		return builder.build();
 	}
@@ -105,6 +121,8 @@ public class MessageBoardBean {
 		json.put(MESSAGE_LIST, messageList);
 		json.put(ICON, icon);
 		json.put(JOB, job);
+		json.put(GROUPID, groupId);
+		json.put(BOSSID, bossId);
 		
 		return json.toString();
 	}
@@ -129,6 +147,8 @@ public class MessageBoardBean {
 		bean.setMessageList(list);
 		bean.setIcon(TypeTranslatedUtil.jsonGetInt(json, ICON));
 		bean.setJob(TypeTranslatedUtil.jsonGetInt(json, JOB));
+		bean.setGroupId(TypeTranslatedUtil.jsonGetInt(json, GROUPID));
+		bean.setBossId(TypeTranslatedUtil.jsonGetInt(json, BOSSID));
 
 		return bean;
 	}
@@ -174,4 +194,6 @@ public class MessageBoardBean {
 	private static final String MESSAGE_LIST = "message_list";
 	private static final String ICON = "icon";
 	private static final String JOB = "job";
+	private static final String GROUPID = "groupId";
+	private static final String BOSSID = "bossId";
 }

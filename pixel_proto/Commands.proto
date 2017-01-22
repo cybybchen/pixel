@@ -784,6 +784,8 @@ message MessageBoard {
 	required int32 icon = 7;
 	optional int32 vip = 8;
 	optional int32 job = 9;//公会职位
+	optional int32 groupId = 10;
+	optional int32 bossId = 11;
 }
 
 message Msg {
@@ -1985,6 +1987,8 @@ message ResponseMessageBoardListCommand {
 message RequestCreateMessageBoardCommand { //创建一个新的留言板
 	required int32 type = 1;
 	required string message = 2;
+	optional int32 groupId = 3;
+	optional int32 bossId = 4;
 }
 
 message RequestReplyMessageCommand { //回复留言板

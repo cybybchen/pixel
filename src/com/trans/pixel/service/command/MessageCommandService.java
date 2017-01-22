@@ -54,7 +54,7 @@ public class MessageCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			messageService.createMessageBoard(cmd.getType(), user, cmd.getMessage());
+			messageService.createMessageBoard(cmd.getType(), user, cmd.getMessage(), cmd.hasGroupId() ? cmd.getGroupId() : 0, cmd.hasBossId() ? cmd.getBossId() : 0);
 		}
 		pushCommandService.pushMessageBoardListCommand(cmd.getType(), responseBuilder, user);
 	}
