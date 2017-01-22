@@ -58,6 +58,7 @@ message UserInfo {
 	optional int32 task1Order = 71;
 	optional int32 task2Record = 72;
 	optional int32 questStatus = 73;//是否参与过问卷调查
+	optional int32 zhaohuanshi = 74;//召唤石
 }
 
 message ServerData {

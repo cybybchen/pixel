@@ -131,6 +131,9 @@ public class RewardService {
 				case RewardConst.UNIONCOIN:
 					user.setPointUnion(user.getPointUnion() + (int)rewardCount);
 					return true;
+				case RewardConst.ZHAOHUANSHI:
+					user.setZhaohuanshi(user.getZhaohuanshi() + (int)rewardCount);
+					return true;
 				default:
 					break;
 			}

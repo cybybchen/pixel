@@ -9,6 +9,8 @@ public class RewardConst {
 	public static final int EXPEDITIONCOIN = 1004;//远征币
 	public static final int LADDERCOIN = 1005;
 	public static final int UNIONCOIN = 1006;
+	public static final int RMB = 1008;
+	public static final int ZHAOHUANSHI = 1009;//召唤石
 	
 	public static final int EQUIPMENT = 10000;
 	

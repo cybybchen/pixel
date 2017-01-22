@@ -103,6 +103,10 @@ public class CostService {
 					if(itemCount > user.getPointUnion()) return false;
 					user.setPointUnion((int)(user.getPointUnion() - itemCount));
 					return true;
+				case RewardConst.ZHAOHUANSHI:
+					if(itemCount > user.getZhaohuanshi()) return false;
+					user.setZhaohuanshi((int)(user.getZhaohuanshi() - itemCount));
+					return true;
 				default:
 					break;
 			}

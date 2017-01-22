@@ -110,6 +110,7 @@ public class UserBean {
 	private int task2Record = 0;
 	private int questStatus = 0;
 	private long bossRoomUserId = 0;
+	private int zhaohuanshi = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1100,6 +1101,12 @@ public class UserBean {
 	public void setBossRoomUserId(long bossRoomUserId) {
 		this.bossRoomUserId = bossRoomUserId;
 	}
+	public int getZhaohuanshi() {
+		return zhaohuanshi;
+	}
+	public void setZhaohuanshi(int zhaohuanshi) {
+		this.zhaohuanshi = zhaohuanshi;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1243,6 +1250,7 @@ public class UserBean {
 		builder.setTask1Order(task1Order);
 		builder.setTask2Record(task2Record);
 		builder.setQuestStatus(questStatus);
+		builder.setZhaohuanshi(zhaohuanshi);
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {
