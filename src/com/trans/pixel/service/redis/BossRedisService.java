@@ -216,6 +216,8 @@ public class BossRedisService extends RedisService {
 	public BossGroupRecord getZhaohuanBoss(UserBean user) {
 		String key = RedisKey.BOSSGROUP_ZHAOHUAN_PREFIX + user.getId();
 		String value = get(key);
+		if (value == null)
+			return null;
 		BossGroupRecord.Builder builder = BossGroupRecord.newBuilder();
 		if (parseJson(value, builder))
 			return builder.build();

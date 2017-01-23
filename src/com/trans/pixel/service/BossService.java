@@ -41,6 +41,22 @@ public class BossService {
 	private MailService mailService;
 	
 	public List<RewardBean> submitBosskill(UserBean user, int groupId, int bossId) {
+		BossGroupRecord userBossGroup = bossRedisService.getZhaohuanBoss(user);
+		if (userBossGroup != null && userBossGroup.getGroupId() == groupId) {
+			List<BossRecord> bossRecordList = new ArrayList<BossRecord>(userBossGroup.getBossRecordList());
+			for (BossRecord bossRecord : bossRecordList) {
+				BossRecord.Builder builder = BossRecord.newBuilder(bossRecord);
+				if (bossRecord.getBossId() == bossId && bossRecord.getEndTime().isEmpty()) {
+					builder.setEndTime(DateUtil.getCurrentDateString());
+					bossRecord = builder.build();
+					BossGroupRecord.Builder bossgroupBuilder = BossGroupRecord.newBuilder(userBossGroup);
+					bossgroupBuilder.clearBossRecord();
+					bossgroupBuilder.addAllBossRecord(bossRecordList);
+					bossRedisService.zhaohuanBoss(user, bossgroupBuilder.build());
+					return getBossloot(bossId, user);
+				}
+			}
+		}
 		BossGroupRecord bossGroupRecord = bossRedisService.getBossGroupRecord(user.getServerId(), groupId);
 		if (bossGroupRecord != null) {
 			for (BossRecord bossRecord :bossGroupRecord.getBossRecordList()) {
@@ -51,6 +67,7 @@ public class BossService {
 						break;
 					
 					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
+					
 					return getBossloot(bossId, user);
 				}
 			}
@@ -314,7 +331,7 @@ public class BossService {
 		BossGroupRecord.Builder builder = BossGroupRecord.newBuilder();
 		BossRecord.Builder bossRecord = BossRecord.newBuilder();
 		bossRecord.setBossId(bossId);
-		bossRecord.setEndTime(DateUtil.forDatetime(DateUtil.getFutureHour(DateUtil.getDate(), bossgroup.getTime())));
+		bossRecord.setEndTime("");
 		builder.addBossRecord(bossRecord.build());
 		bossRedisService.zhaohuanBoss(user, builder.build());
 	}
