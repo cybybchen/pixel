@@ -149,17 +149,17 @@ public class RechargeService {
 	
 	public int recharge(UserBean user, int productid, String company, String orderId, boolean isCheat){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		Rmb rmb = rechargeRedisService.getRmb(productid);
+		Rmb rmb = null;
+		if(serverService.getOnlineStatus(user.getVersion()) != 0){
+			rmb = rechargeRedisService.getRmb1(productid);
+		} else
+			rmb = rechargeRedisService.getRmb(productid);
+		
 		int itemId = rmb.getItemid();
 		int jewel = rmb.getZuanshi();
+		
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
-
-		if(serverService.getOnlineStatus(user.getVersion()) != 0 && itemId != RewardConst.JEWEL){
-			rmb = rechargeRedisService.getRmb1(productid);
-			itemId = rmb.getItemid();
-			jewel = rmb.getZuanshi();
-		}
 
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
