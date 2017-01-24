@@ -1,38 +1,38 @@
 <data>
 <seven id="1" targetid="1" targetcount="1" >
-<order order="1" itemid="1002" count="60" choose="0" />
+<order order="1" itemid="1009" count="1" choose="0" />
 <order order="2" itemid="1001" count="30000" choose="0" />
 <order order="3" itemid="40001" count="20" choose="0" />
 </seven>
 <seven id="2" targetid="1" targetcount="2" >
-<order order="1" itemid="1002" count="100" choose="0" />
+<order order="1" itemid="1009" count="1" choose="0" />
 <order order="2" itemid="1001" count="60000" choose="0" />
 <order order="3" itemid="50001" count="1" choose="0" />
 </seven>
 <seven id="3" targetid="1" targetcount="3" >
-<order order="1" itemid="1002" count="100" choose="0" />
+<order order="1" itemid="1009" count="1" choose="0" />
 <order order="2" itemid="1001" count="60000" choose="0" />
 <order order="3" itemid="33178" count="5" choose="0" />
 </seven>
 <seven id="4" targetid="1" targetcount="4" >
-<order order="1" itemid="1002" count="100" choose="0" />
+<order order="1" itemid="1009" count="1" choose="0" />
 <order order="2" itemid="1001" count="80000" choose="0" />
 <order order="3" itemid="33037" count="5" choose="0" />
 </seven>
 <seven id="5" targetid="1" targetcount="5" >
-<order order="1" itemid="1002" count="120" choose="0" />
+<order order="1" itemid="1009" count="1" choose="0" />
 <order order="2" itemid="1001" count="80000" choose="0" />
 <order order="3" itemid="33004" count="2" choose="0" />
 <order order="4" itemid="1003" count="2000" choose="0" />
 </seven>
 <seven id="6" targetid="1" targetcount="6" >
-<order order="1" itemid="1002" count="120" choose="0" />
+<order order="1" itemid="1009" count="1" choose="0" />
 <order order="2" itemid="1001" count="100000" choose="0" />
 <order order="3" itemid="33005" count="2" choose="0" />
 <order order="4" itemid="1005" count="800" choose="0" />
 </seven>
 <seven id="7" targetid="1" targetcount="7" >
-<order order="1" itemid="1002" count="120" choose="0" />
+<order order="1" itemid="1009" count="1" choose="0" />
 <order order="2" itemid="1001" count="100000" choose="0" />
 <order order="3" itemid="33006" count="2" choose="0" />
 <order order="4" itemid="35002" count="1" choose="0" />
