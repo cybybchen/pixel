@@ -1126,6 +1126,8 @@ message Rmb {
 	optional string description = 6;
 	optional string img = 7;
 	optional int32 type = 8;
+	optional int32 zuanshi1 = 9;
+	optional int32 costid = 10;
 }
 
 message HeroChoiceList {
@@ -1277,7 +1279,7 @@ message Bossgroup {
 	optional int32 bosscount = 3;
 	optional int32 count = 4;
 	repeated Boss boss = 5;
-	optional int32 time = 6;//持续时间，0表示没有时间限制，和原来一样，每天刷新
+	optional int32 time = 6;//持续时间
 }
 
 message Boss {
@@ -2426,6 +2428,10 @@ message RequestCheatRechargeCommand{
 	optional int32 itemid = 1;
 }
 
+message RequestRechargeCommand {
+	required int32 itemid = 1;
+}
+
 message ResponseUserHeadCommand {
 	repeated UserHead userHead = 1;
 }
@@ -2703,7 +2709,7 @@ message RequestCommand {
 	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
 	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
 	optional RequestCdkeyCommand cdkeyCommand = 138;
-	optional RequestCheatRechargeCommand rechargeCommand = 139;
+	optional RequestCheatRechargeCommand cheatrechargeCommand = 139;
 	optional RequestPurchaseVipLibaoCommand purchaseVipLibaoCommand = 141;
 	optional RequestGetGrowJewelCommand getGrowJewelCommand = 149;
 	optional RequestGetGrowExpCommand getGrowExpCommand = 150;
@@ -2785,6 +2791,7 @@ message RequestCommand {
 	optional RequestQuitFightBossCommand quitFightBossCommand = 216;
 	optional RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;
 	optional RequestUserInfoCommand userInfoCommand = 218;
+	optional RequestRechargeCommand rechargeCommand = 219;
 }
 // response command list transfer only use it
 message ResponseCommand {

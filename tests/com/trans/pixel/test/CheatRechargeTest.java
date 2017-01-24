@@ -25,7 +25,7 @@ private static Logger logger = Logger.getLogger(CheatRechargeTest.class);
 		builder.setHead(head());
 		RequestCheatRechargeCommand.Builder b = RequestCheatRechargeCommand.newBuilder();
 		b.setItemid(1);
-		builder.setRechargeCommand(b.build());
+		builder.setCheatrechargeCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
 		byte[] reqData = reqcmd.toByteArray();

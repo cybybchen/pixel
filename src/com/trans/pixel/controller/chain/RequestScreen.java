@@ -122,6 +122,7 @@ import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -193,6 +194,7 @@ import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
@@ -435,6 +437,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBossRoomScoreCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUserInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -1046,8 +1049,8 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//SubmitIconCommand
                 result = handleCommand(cmd, responseBuilder, user);//SubmitIconCommand
         }//SubmitIconCommand
-        if (request.hasRechargeCommand()) {
-            RequestCheatRechargeCommand cmd = request.getRechargeCommand();
+        if (request.hasCheatrechargeCommand()) {
+            RequestCheatRechargeCommand cmd = request.getCheatrechargeCommand();
             if (result)//RechargeCommand
                 result = handleCommand(cmd, responseBuilder, user);//RechargeCommand
         }//RechargeCommand
@@ -1241,6 +1244,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//UserInfoCommand
                 result = handleCommand(cmd, responseBuilder, user);//UserInfoCommand
         }//UserInfoCommand
+        if (request.hasRechargeCommand()) {
+            RequestRechargeCommand cmd = request.getRechargeCommand();
+            if (result)//RechargeCommand
+                result = handleCommand(cmd, responseBuilder, user);//RechargeCommand
+        }//RechargeCommand
         //call handleCommand here
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();

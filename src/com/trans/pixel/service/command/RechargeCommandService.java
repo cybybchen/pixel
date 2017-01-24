@@ -1,20 +1,27 @@
 package com.trans.pixel.service.command;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.LibaoList;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseLibaoShopCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class RechargeCommandService extends BaseCommandService {
@@ -33,8 +40,10 @@ public class RechargeCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private ShopService shopService;
+	@Resource
+	private RechargeService rechargeService;
 	
-	public void recharge(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user) {
+	public void queryRecharge(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward rewards = rechargeRedisService.getUserRecharge(user.getId());
 		
 		if (rewards != null) {
@@ -44,5 +53,16 @@ public class RechargeCommandService extends BaseCommandService {
 		}
 		
 		shopService.getLibaoShop(responseBuilder, user);
+	}
+	
+	public void recharge(RequestRechargeCommand cmd, Builder responseBuilder, UserBean user) {
+		int itemid = cmd.getItemid();
+		MultiReward rewards = rechargeService.buy(user, itemid);
+		if (rewards == null || rewards.getLootList().isEmpty()) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
+            responseBuilder.setErrorCommand(errorCommand);
+		}
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
 	}
 }

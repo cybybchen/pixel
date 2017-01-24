@@ -67,6 +67,8 @@ public class RechargeService {
 	private UserPropService userPropService;
 	@Resource
 	private UserLevelService userLevelService;
+	@Resource
+	private CostService costService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
     	int complete = user.getRechargeRecord()+rmb*10;
@@ -162,11 +164,11 @@ public class RechargeService {
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
-			if(libaobuilder.getPurchase() == 1 && serverService.getOnlineStatus(user.getVersion()) == 0){
-				reward.setCount(rmb.getZuanshi()*2);
-			}else{
-				reward.setCount(rmb.getZuanshi());
-			}
+//			if(libaobuilder.getPurchase() == 1 && serverService.getOnlineStatus(user.getVersion()) == 0){
+//				reward.setCount(rmb.getZuanshi()*2);
+//			}else{
+				reward.setCount(rmb.getZuanshi() + rmb.getZuanshi1());
+//			}
 			rewardList.add(reward.build());
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
 			user.setGrowJewelCount(Math.min(7, user.getGrowJewelCount()+1));
@@ -275,4 +277,36 @@ public class RechargeService {
 		return recharge;
 	}
 	
+	//不是充值，是用游戏里的货币购买
+	public MultiReward buy(UserBean user, int productid){
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		Rmb rmb = rechargeRedisService.getRmb(productid);
+		int costId = rmb.getCostid();
+		int itemId = rmb.getItemid();
+		
+		if (!costService.costAndUpdate(user, costId, rmb.getRmb()))
+			return null;	
+
+		VipLibao viplibao = shopService.getVipLibao(itemId);
+		rewardList = viplibao.getItemList();
+
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		if(rewardList.isEmpty()){
+			return null;
+		}else{
+			rewards.addAllLoot(rewardList);
+			rewardService.doRewards(user, rewards.build());
+		}
+		
+		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getItemid(), rmb.getCostid(), rmb.getRmb());
+		if(serverService.getOnlineStatus(user.getVersion()) == 0){
+			
+//			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+//			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", 
+//					company, 1, userLevel != null ? userLevel.getPutongLevel() : 0, user.getZhanliMax());
+//			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
+		}
+		
+		return rewards.build();
+	}
 }
