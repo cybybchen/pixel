@@ -6,9 +6,9 @@
 <rmb id="4" type="1" order="4" costid="1008" rmb="198" itemid="1002" zuanshi="1980" zuanshi1="300" name="大袋钻石" img="recharge-4" description="1280颗钻石" />
 <rmb id="5" type="1" order="5" costid="1008" rmb="328" itemid="1002" zuanshi="3280" zuanshi1="600" name="一箱钻石" img="recharge-5" description="3280颗钻石" />
 <rmb id="6" type="1" order="6" costid="1008" rmb="648" itemid="1002" zuanshi="6480" zuanshi1="1280" name="大箱钻石" img="recharge-6" description="6480颗钻石" />
-<rmb id="7" type="2" order="2" costid="1008" rmb="30" itemid="42601" zuanshi="0" zuanshi1="" name="战士流初级礼包" img="libao_2_1" description="包含1星德莱厄斯，希瓦娜，潘森各1个（获得300点vip经验）" />
-<rmb id="8" type="2" order="3" costid="1008" rmb="98" itemid="42602" zuanshi="0" zuanshi1="" name="战士流高级礼包" img="libao_2_2" description="包含3星德莱厄斯，希瓦娜，潘森各1个和一套传说级战士进阶到+5的材料（获得980点vip经验）" />
-<rmb id="9" type="2" order="4" costid="1008" rmb="328" itemid="42603" zuanshi="0" zuanshi1="" name="战士流超级礼包" img="libao_2_3" description="包含4星德莱厄斯，希瓦娜，潘森各1个和一套传说级战士进阶到+8的材料（获得3280点vip经验）" />
+<rmb id="7" type="2" order="2" costid="1008" rmb="30" itemid="42004" zuanshi="0" zuanshi1="" name="辅助流初级礼包" img="libao_2_1" description="包含1星璐璐，塔里克，娑娜各1个（获得300点vip经验）" />
+<rmb id="8" type="2" order="3" costid="1008" rmb="98" itemid="42005" zuanshi="0" zuanshi1="" name="辅助流高级礼包" img="libao_2_2" description="包含3星璐璐，塔里克，娑娜各1个和一套传说级辅助进阶到+5的材料（获得980点vip经验）" />
+<rmb id="9" type="2" order="4" costid="1008" rmb="328" itemid="42006" zuanshi="0" zuanshi1="" name="辅助流超级礼包" img="libao_2_3" description="包含4星璐璐，塔里克，娑娜各1个和一套传说级辅助进阶到+8的材料（获得3280点vip经验）" />
 <rmb id="10" type="2" order="5" costid="1008" rmb="30" itemid="44001" zuanshi="0" zuanshi1="" name="初级钻石月卡" img="libao_4_1" description="连续30天每天可以获得60钻石（获得300点vip经验）" />
 <rmb id="11" type="2" order="6" costid="1008" rmb="88" itemid="44002" zuanshi="0" zuanshi1="" name="高级钻石月卡" img="libao_4_2" description="连续30天每天可以获得300钻石（获得880点vip经验）" />
 <rmb id="12" type="2" order="7" costid="1008" rmb="68" itemid="44003" zuanshi="0" zuanshi1="" name="双周魄罗礼包" img="libao_4_3" description="连续14天每天获得1个超级魄罗宝箱和1个召唤石（获得680点vip经验）" />
