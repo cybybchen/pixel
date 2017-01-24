@@ -20,7 +20,7 @@ import com.trans.pixel.service.redis.BattletowerRedisService;
 public class BattletowerService {
 	Logger logger = Logger.getLogger(BattletowerService.class);
 	
-	private static final int DAILY_RESET_TIMES = 3;
+	private static final int DAILY_RESET_TIMES = 1;
 	
 	@Resource
 	private UserBattletowerService userBattletowerService;
@@ -83,7 +83,9 @@ public class BattletowerService {
 	private List<RewardInfo> buildTowerReward2(int tower) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		TowerReward towerReward = null;
-		if (tower < 10)
+		if (tower == 0)
+			towerReward = null;
+		else if (tower < 10)
 			towerReward = redis.getTowerReward2(1);
 		else
 			towerReward = redis.getTowerReward2(tower / 10 * 10);
