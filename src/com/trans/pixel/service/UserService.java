@@ -165,7 +165,7 @@ public class UserService {
 				
 				if (yueka.getRewardid() > 0) {
 					MailBean mail = new MailBean();
-					mail.setContent(yueka.getName());
+					mail.setContent(rmb.getName());
 					RewardBean reward = new RewardBean();
 					List<RewardBean> list = new ArrayList<RewardBean>();
 					reward.setItemid(yueka.getRewardid());
