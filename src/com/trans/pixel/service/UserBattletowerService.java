@@ -38,7 +38,7 @@ public class UserBattletowerService {
 		UserBattletowerBean ubt = new UserBattletowerBean();
 		ubt.setUserId(userId);
 		ubt.setLefttimes(3);
-		ubt.setResettimes(3);
+		ubt.setResettimes(1);
 		ubt.setRandom(RandomUtils.nextInt(1000000));
 		
 		return ubt;

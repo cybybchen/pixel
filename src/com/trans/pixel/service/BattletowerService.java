@@ -9,12 +9,14 @@ import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.model.userinfo.UserBattletowerBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.TowerReward;
 import com.trans.pixel.service.redis.BattletowerRedisService;
+import com.trans.pixel.service.redis.RankRedisService;
 
 @Service
 public class BattletowerService {
@@ -30,6 +32,8 @@ public class BattletowerService {
 	private LogService logService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private RankRedisService rankRedisService;
 	
 	public void refreshUserBattletower(UserBean user) {
 		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
@@ -49,13 +53,16 @@ public class BattletowerService {
 				rewards.addAllLoot(buildTowerReward1(ubt.getCurrenttower()));
 			}
 			
+			if (ubt.getCurrenttower() > ubt.getToptower()) {
+				rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_BATTLETOWER, ubt.getCurrenttower());
+			}
 			ubt.setToptower(Math.max(ubt.getToptower(), ubt.getCurrenttower()));
 		} else {
 			ubt.setLefttimes(ubt.getLefttimes() - 1);
 		}
 		
 		userBattletowerService.updateUserBattletower(ubt);
-		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower(), userTeamService.getTeamString(user), enemyId, success ? 1 : 0, ubt.getToptower());
+		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower() + 1, userTeamService.getTeamString(user), enemyId, success ? 1 : 0, ubt.getToptower());
 		return ubt;
 	}
 	
@@ -64,7 +71,7 @@ public class BattletowerService {
 		if (ubt.getResettimes() < 1)
 			return null;
 		
-		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower(), "", 0, 2, ubt.getToptower());
+		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower() + 1, "", 0, 2, ubt.getToptower());
 		
 		rewards.addAllLoot(buildTowerReward2(ubt.getCurrenttower()));
 		ubt.setCurrenttower(0);
