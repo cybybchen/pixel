@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="1" rechargeid="26" purchase="-1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="2" rechargeid="7" purchase="1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="3" rechargeid="8" purchase="1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="4" rechargeid="9" purchase="1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="5" rechargeid="10" purchase="-1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="6" rechargeid="11" purchase="-1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="7" rechargeid="12" purchase="-1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="8" rechargeid="13" purchase="-1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="9" rechargeid="14" purchase="-1" />
-<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="10" rechargeid="15" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="1" rechargeid="27" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="2" rechargeid="26" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="3" rechargeid="7" purchase="1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="4" rechargeid="8" purchase="1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="5" rechargeid="9" purchase="1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="6" rechargeid="10" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="7" rechargeid="11" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="8" rechargeid="12" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="9" rechargeid="13" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="10" rechargeid="14" purchase="-1" />
+<libao starttime="2016-11-01 00:00:00" endtime="2020-06-20 23:59:59" id="11" rechargeid="15" purchase="-1" />
 </data>

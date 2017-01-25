@@ -264,6 +264,8 @@
 </libao>
 <libao itemid="43011" name="召唤石礼包" img="libao_23" rare="3" description="包含11个召唤石" value="0" cost="0" ><item id="1" itemid="1009" count="11" />
 </libao>
+<libao itemid="43012" name="召唤石" img="libao_27" rare="3" description="1个召唤石" value="0" cost="0" ><item id="1" itemid="1009" count="1" />
+</libao>
 <libao itemid="45001" name="1星猎人礼包" img="libao_2_1" rare="3" description="包含3个1星猎人和900K经验" value="0" cost="0" ><item id="1" itemid="51058" count="3" />
 <item id="2" itemid="1000" count="900000" />
 </libao>
