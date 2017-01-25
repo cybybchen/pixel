@@ -431,8 +431,8 @@
 <item id="15" itemid="17009" count="1" />
 </libao>
 <libao itemid="42006" name="辅助流超级礼包" img="libao_2_3" rare="5" description="包含4星璐璐，塔里克，娑娜各1个和一套传说级辅助进阶到+8的材料（获得3280点vip经验）" value="0" cost="0" ><item id="1" itemid="54094" count="1" />
-<item id="2" itemid="54027" count="" />
-<item id="3" itemid="54074" count="" />
+<item id="2" itemid="54027" count="1" />
+<item id="3" itemid="54074" count="1" />
 <item id="4" itemid="27016" count="5" />
 <item id="5" itemid="15002" count="2" />
 <item id="6" itemid="27013" count="1" />
