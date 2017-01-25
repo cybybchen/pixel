@@ -1281,7 +1281,7 @@ public abstract class RequestScreen implements RequestHandle {
 	        /**
 	    	 * push notice
 	    	 */
-	    	if (result && user != null && !request.hasQueryRechargeCommand())
+	    	if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand())
 	    		pushNoticeCommand(responseBuilder, user);
         
         return result;
