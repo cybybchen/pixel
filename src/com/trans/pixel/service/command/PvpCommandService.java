@@ -168,7 +168,7 @@ public class PvpCommandService extends BaseCommandService {
 			activityService.aidActivity(user, 0);
 			
 			//支援排行榜
-			rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_HELP, 1);
+			rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_HELP, 1, true);
 		}
 		
 		/**
