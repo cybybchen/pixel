@@ -103,28 +103,24 @@
 <loot order="2" weightall="100" itemid="1001" counta="10000" countb="135" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="22042" counta="1" countb=".005" weighta="20" weightb=".4" />
 <loot order="4" weightall="100" itemid="36008" counta="1" countb=".004" weighta="0" weightb=".3" />
-<loot order="5" weightall="100" itemid="35202" counta="1" countb="0" weighta="-15" weightb=".15" />
 </enemy>
 <enemy id="2017" name="瑞兹" >
 <loot order="1" weightall="100" itemid="1003" counta="500" countb="1" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1001" counta="10000" countb="135" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="22076" counta="1" countb=".005" weighta="20" weightb=".4" />
 <loot order="4" weightall="100" itemid="36008" counta="1" countb=".004" weighta="0" weightb=".3" />
-<loot order="5" weightall="100" itemid="35201" counta="1" countb="0" weighta="-15" weightb=".15" />
 </enemy>
 <enemy id="2018" name="盖伦" >
 <loot order="1" weightall="100" itemid="1003" counta="500" countb="1" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1001" counta="10000" countb="135" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="22017" counta="1" countb=".005" weighta="20" weightb=".4" />
 <loot order="4" weightall="100" itemid="36008" counta="1" countb=".004" weighta="0" weightb=".3" />
-<loot order="5" weightall="100" itemid="35204" counta="1" countb="0" weighta="-15" weightb=".15" />
 </enemy>
 <enemy id="2019" name="卡牌" >
 <loot order="1" weightall="100" itemid="1003" counta="500" countb="1" weighta="100" weightb="0" />
 <loot order="2" weightall="100" itemid="1001" counta="10000" countb="135" weighta="100" weightb="0" />
 <loot order="3" weightall="100" itemid="22024" counta="1" countb=".005" weighta="20" weightb=".4" />
 <loot order="4" weightall="100" itemid="36008" counta="1" countb=".004" weighta="0" weightb=".3" />
-<loot order="5" weightall="100" itemid="35203" counta="1" countb="0" weighta="-15" weightb=".15" />
 </enemy>
 <enemy id="3001" name="夏日元气少女" >
 <loot order="1" weightall="100" itemid="1003" counta="100" countb="0" weighta="100" weightb="0" />
