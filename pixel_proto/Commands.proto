@@ -2588,7 +2588,7 @@ message RequestSubmitBattletowerCommand {
 }
 
 message RequestResetBattletowerCommand {
-	
+	optional int32 enemyId = 1;	
 }
 
 message RequestGetBattletowerCommand {

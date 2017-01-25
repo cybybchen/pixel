@@ -57,7 +57,7 @@ public class BattletowerCommandService extends BaseCommandService {
 	public void resetBattletower(RequestResetBattletowerCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserBattletowerCommand.Builder builder = ResponseUserBattletowerCommand.newBuilder();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		UserBattletowerBean ubt = battletowerService.resetBattletower(user, rewards);
+		UserBattletowerBean ubt = battletowerService.resetBattletower(user, rewards, cmd.getEnemyId());
 		if (ubt == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BATTLETOWER_RESET_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BATTLETOWER_RESET_ERROR);

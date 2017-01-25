@@ -44,6 +44,7 @@ public class BattletowerService {
 	
 	public UserBattletowerBean submitBattletower(boolean success, int tower, UserBean user, MultiReward.Builder rewards, int enemyId) {
 		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
+		int floor = 0;
 		if (ubt.getLefttimes() < 1)
 			return null;
 		if (success) {
@@ -52,26 +53,27 @@ public class BattletowerService {
 				ubt.setRandom(RandomUtils.nextInt(1000000));
 				rewards.addAllLoot(buildTowerReward1(ubt.getCurrenttower()));
 			}
-			
+			floor = ubt.getCurrenttower();
 			if (ubt.getCurrenttower() > ubt.getToptower()) {
-				rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_BATTLETOWER, ubt.getCurrenttower());
+				rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_BATTLETOWER, ubt.getCurrenttower(), false);
 			}
 			ubt.setToptower(Math.max(ubt.getToptower(), ubt.getCurrenttower()));
 		} else {
 			ubt.setLefttimes(ubt.getLefttimes() - 1);
+			floor = ubt.getCurrenttower() + 1;
 		}
 		
 		userBattletowerService.updateUserBattletower(ubt);
-		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower() + 1, userTeamService.getTeamString(user), enemyId, success ? 1 : 0, ubt.getToptower());
+		logService.sendBattletowerLog(user.getServerId(), user.getId(), floor, userTeamService.getTeamString(user), enemyId, success ? 1 : 0, ubt.getToptower());
 		return ubt;
 	}
 	
-	public UserBattletowerBean resetBattletower(UserBean user, MultiReward.Builder rewards) {
+	public UserBattletowerBean resetBattletower(UserBean user, MultiReward.Builder rewards, int enemyId) {
 		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
 		if (ubt.getResettimes() < 1)
 			return null;
 		
-		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower() + 1, "", 0, 2, ubt.getToptower());
+		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower() + 1, "", enemyId, 2, ubt.getToptower());
 		
 		rewards.addAllLoot(buildTowerReward2(ubt.getCurrenttower()));
 		ubt.setCurrenttower(0);
