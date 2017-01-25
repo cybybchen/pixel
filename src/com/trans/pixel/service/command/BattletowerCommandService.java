@@ -39,7 +39,7 @@ public class BattletowerCommandService extends BaseCommandService {
 		boolean success = cmd.getSuccess();
 		int tower = cmd.getTower();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		UserBattletowerBean ubt = battletowerService.submitBattletower(success, tower, user, rewards);
+		UserBattletowerBean ubt = battletowerService.submitBattletower(success, tower, user, rewards, cmd.getEnemyId());
 		if (ubt == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BATTLETOWER_SUBMIT_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BATTLETOWER_SUBMIT_ERROR);

@@ -2584,6 +2584,7 @@ message RequestGetTaskRewardCommand {
 message RequestSubmitBattletowerCommand {
 	required bool success = 1;
 	optional int32 tower = 2;
+	optional int32 enemyId = 3;
 }
 
 message RequestResetBattletowerCommand {

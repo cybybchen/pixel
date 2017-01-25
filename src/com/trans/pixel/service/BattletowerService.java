@@ -26,6 +26,10 @@ public class BattletowerService {
 	private UserBattletowerService userBattletowerService;
 	@Resource
 	private BattletowerRedisService redis;
+	@Resource
+	private LogService logService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public void refreshUserBattletower(UserBean user) {
 		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
@@ -34,7 +38,7 @@ public class BattletowerService {
 		userBattletowerService.updateUserBattletower(ubt);
 	}
 	
-	public UserBattletowerBean submitBattletower(boolean success, int tower, UserBean user, MultiReward.Builder rewards) {
+	public UserBattletowerBean submitBattletower(boolean success, int tower, UserBean user, MultiReward.Builder rewards, int enemyId) {
 		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
 		if (ubt.getLefttimes() < 1)
 			return null;
@@ -51,7 +55,7 @@ public class BattletowerService {
 		}
 		
 		userBattletowerService.updateUserBattletower(ubt);
-		
+		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower(), userTeamService.getTeamString(user), enemyId, success ? 1 : 0, ubt.getToptower());
 		return ubt;
 	}
 	
@@ -59,6 +63,8 @@ public class BattletowerService {
 		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
 		if (ubt.getResettimes() < 1)
 			return null;
+		
+		logService.sendBattletowerLog(user.getServerId(), user.getId(), ubt.getCurrenttower(), "", 0, 2, ubt.getToptower());
 		
 		rewards.addAllLoot(buildTowerReward2(ubt.getCurrenttower()));
 		ubt.setCurrenttower(0);

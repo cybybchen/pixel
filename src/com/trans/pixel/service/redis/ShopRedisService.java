@@ -147,7 +147,7 @@ public class ShopRedisService extends RedisService{
 		ShopList.Builder builder = ShopList.newBuilder();
 		ShopWill.Builder shop = shopwillsbuilder.getShopBuilder(0);
 		for(ShopWill shopwill : shopwillsbuilder.getShopList()){
-			if (shop.getJudge1() > shopwill.getJudge1() && shopwill.getJudge1() > ubt.getToptower())
+			if (shop.getJudge1() > shopwill.getJudge1() && shopwill.getJudge1() <= ubt.getToptower())
 				shop = ShopWill.newBuilder(shopwill);	
 		}
 		

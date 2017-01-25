@@ -25,5 +25,5 @@
 <rmb id="23" type="2" order="" costid="1008" rmb="328" itemid="43008" zuanshi="0" zuanshi1="" name="中级召唤包" img="libao_23" description="包含28个召唤石，200钻石，100000金币" />
 <rmb id="24" type="2" order="" costid="1008" rmb="648" itemid="43009" zuanshi="0" zuanshi1="" name="高级召唤包" img="libao_24" description="包含60个召唤石，400钻石，200000金币" />
 <rmb id="25" type="2" order="" costid="1008" rmb="18" itemid="43010" zuanshi="0" zuanshi1="" name="每日召唤包" img="libao_25" description="包含1个召唤石，20钻石，1个吐槽宝箱，1个吐槽补丁" />
-<rmb id="26" type="2" order="1" costid="1002" rmb="1000" itemid="43011" zuanshi="0" zuanshi1="" name="召唤石礼包" img="libao_23" description="包含11个召唤石" />
+<rmb id="26" type="2" order="1" costid="1002" rmb="2000" itemid="43011" zuanshi="0" zuanshi1="" name="召唤石礼包" img="libao_23" description="包含11个召唤石" />
 </data>

@@ -592,6 +592,27 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 				
+			case LogString.LOGTYPE_BATTLETOWER:
+				sb.append(LogString.LOGTYPE_BATTLETOWER_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.FLOOR));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TEAM_LIST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ENEMYID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.MAXFLOOR));
+				sb.append(LogString.SPLITER);
+				break;
+				
 			default:
 				break;
 			}
@@ -854,6 +875,19 @@ public class LogService {
 		params.put(LogString.VIPLEVEL, "" + vipLevel);
 		
 		sendLog(params, LogString.LOGTYPE_WORLDBOSS);
+	}
+	
+	public void sendBattletowerLog(int serverId, long userId, int floor, String team, int enemyId, int result, int maxFloor) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.FLOOR, "" + floor);	
+		params.put(LogString.TEAM_LIST, "" + team);
+		params.put(LogString.ENEMYID, "" + enemyId);
+		params.put(LogString.RESULT, "" + result);
+		params.put(LogString.MAXFLOOR, "" + maxFloor);
+		
+		sendLog(params, LogString.LOGTYPE_BATTLETOWER);
 	}
 	
 	private void send(String str) {

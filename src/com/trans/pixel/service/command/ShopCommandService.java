@@ -771,7 +771,7 @@ public class ShopCommandService extends BaseCommandService{
             service.saveBattletowerShop(shoplist.build(), user);
             pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
             pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
-            logService.sendShopLog(user.getServerId(), user.getId(), 3, commbuilder.getItemid(), commbuilder.getCurrency(), commbuilder.getCost());
+            logService.sendShopLog(user.getServerId(), user.getId(), 5, commbuilder.getItemid(), commbuilder.getCurrency(), commbuilder.getCost());
 		}
 		
 		ResponseBattletowerShopCommand.Builder shop = ResponseBattletowerShopCommand.newBuilder();
@@ -878,6 +878,8 @@ public class ShopCommandService extends BaseCommandService{
 		getPurchaseCoinTime(responseBuilder, user);
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		pusher.pushRewardCommand(responseBuilder, user, rewards);
+		
+		logService.sendShopLog(user.getServerId(), user.getId(), 6, 0, RewardConst.JEWEL, service.getPurchaseCoinCost(user.getPurchaseCoinTime()));
 	}
 	
 	public void getPurchaseCoinTime(Builder responseBuilder, UserBean user){

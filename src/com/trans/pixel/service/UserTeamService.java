@@ -362,6 +362,11 @@ public class UserTeamService {
 		return team.build();
 	}
 	
+	public String getTeamString(UserBean user) {
+		Team team = getTeamCache(user);
+		return getTeamString(team.getHeroInfoList());
+	}
+	
 	public String getTeamString(List<HeroInfo> heroList) {
 		String team = "";
 		for (HeroInfo heroInfo : heroList) 
