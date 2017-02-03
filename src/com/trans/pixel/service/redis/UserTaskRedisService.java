@@ -47,6 +47,7 @@ public class UserTaskRedisService extends RedisService {
 				userTaskList.add(builder.build());
 		}
 		
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		return userTaskList;
 	}
 	

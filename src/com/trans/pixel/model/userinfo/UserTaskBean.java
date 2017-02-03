@@ -74,6 +74,9 @@ public class UserTaskBean {
 			record += SPLIT + heroId;
 		}
 		
+		if (record.isEmpty())
+			return "";
+		 
 		return record.substring(1);
 	}
 	private List<Integer> splitHeroId(String record) {
