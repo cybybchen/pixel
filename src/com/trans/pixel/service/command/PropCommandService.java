@@ -8,6 +8,8 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.PackageBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Commands.BossGroupRecord;
+import com.trans.pixel.protoc.Commands.BossRecord;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
@@ -17,6 +19,7 @@ import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserPropService;
+import com.trans.pixel.service.redis.BossRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -32,14 +35,30 @@ public class PropCommandService extends BaseCommandService {
 	private UserPropService userPropService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private BossRedisService bossRedisService;
 	
 	public void useProp(RequestUsePropCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUsePropCommand.Builder builder = ResponseUsePropCommand.newBuilder();
 		int propId = cmd.getPropId();
 		int propCount = cmd.getPropCount();
+		PackageBean prop = propService.getProp(propId);
+		if (prop.getBossid() > 0) {
+			BossGroupRecord bossGroupRecord = bossRedisService.getZhaohuanBoss(user);
+			if (bossGroupRecord != null) {
+				for (BossRecord bossRecord : bossGroupRecord.getBossRecordList()) {
+					if (bossRecord.getBossId() == prop.getBossid() && !bossRecord.getEndTime().isEmpty()) {
+						logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_HAS_ZHAOHUAN);
+						
+						ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_HAS_ZHAOHUAN);
+			            responseBuilder.setErrorCommand(errorCommand);
+			            return;
+					}
+				}
+			}
+		}
 		
 		MultiReward multiReward = propService.useProp(user, propId, propCount);
-		PackageBean prop = propService.getProp(propId);
 		if (prop.getBossid() == 0) {
 			if (multiReward == null) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);

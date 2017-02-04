@@ -328,12 +328,37 @@ public class BossService {
 		Bossgroup bossgroup = bossRedisService.getBossgroup(4);//召唤的boss全在这里
 		if (bossgroup == null)
 			return;
+		BossGroupRecord bossGroup = bossRedisService.getZhaohuanBoss(user);
 		BossGroupRecord.Builder builder = BossGroupRecord.newBuilder();
-		BossRecord.Builder bossRecord = BossRecord.newBuilder();
-		bossRecord.setBossId(bossId);
-		bossRecord.setEndTime("");
-		builder.addBossRecord(bossRecord.build());
+		builder.setGroupId(4);
+		if (bossGroup != null)
+			builder = BossGroupRecord.newBuilder(bossRedisService.getZhaohuanBoss(user));
+		List<BossRecord> bossRecordList = new ArrayList<BossRecord>(builder.getBossRecordList());
+		for (BossRecord bossRecord : bossRecordList) {
+			if (bossRecord.getBossId() == bossId) {
+				if (!bossRecord.getEndTime().isEmpty()) {//boss已被击杀
+					BossRecord.Builder bossRecordBuilder = BossRecord.newBuilder(bossRecord);
+//					bossRecordBuilder.setBossId(bossId);
+					bossRecordBuilder.setEndTime("");
+					bossRecord = bossRecordBuilder.build();
+					builder.clearBossRecord();
+					builder.addAllBossRecord(bossRecordList);
+					bossRedisService.zhaohuanBoss(user, builder.build());
+				}
+				
+				return;
+			}
+		}
+		
+		//boss未被召唤过
+		BossRecord.Builder bossRecordBuilder = BossRecord.newBuilder();
+		bossRecordBuilder.setBossId(bossId);
+		bossRecordBuilder.setEndTime("");
+		bossRecordList.add(bossRecordBuilder.build());
+		builder.clearBossRecord();
+		builder.addAllBossRecord(bossRecordList);
 		bossRedisService.zhaohuanBoss(user, builder.build());
+		
 	}
 	
 	private void sendInviteMail(UserBean user, long userId, int groupId, int bossId) {
