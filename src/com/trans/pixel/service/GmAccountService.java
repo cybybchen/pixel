@@ -44,6 +44,9 @@ public class GmAccountService {
 			if(bean == null){
 				bean = new GmAccountBean();
 				bean.setAccount(entry.getKey());
+				if(entry.getKey().equals("ybchen") || entry.getKey().equals("Xjwang")){
+					bean.setMaster(1);
+				}
 			}
 			accountMap.put(entry.getKey(), bean);
 		}

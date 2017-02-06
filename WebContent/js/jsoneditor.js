@@ -61,6 +61,10 @@ function addNewUserTab() {
     userid = $('input[name="userid"]:visible').val();
     username = $('input[name="username"]:visible').val();
     serverid = $('input[name="serverid"]:visible').val();
+    if(userid){
+    	username = 0;
+    	serverid = 0;
+    }
     requestUserJson(userid, username, serverid);
 }
 
@@ -203,7 +207,8 @@ function requestUserJson(myuserid, myusername, myserverid) {
 function buildUserJson(key, value){
     var json = {};
     json["userId"] = userid;
-    json["userName"] = username;
+    if(username)
+    	json["userName"] = username;
     json["serverId"] = serverid;
     json["session"] = session;
     if(key != null){

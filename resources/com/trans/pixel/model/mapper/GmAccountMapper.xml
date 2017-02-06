@@ -14,8 +14,8 @@
 	</select>
 	
 	<insert id="updateGmAccount" parameterType="com.trans.pixel.model.GmAccountBean">
-	    INSERT INTO gm_account(account, canreward, canview, canwrite)
-	    VALUES(#{account}, #{canreward}, #{canview}, #{canwrite})
+	    INSERT INTO gm_account(account, canreward, canview, canwrite, master)
+	    VALUES(#{account}, #{canreward}, #{canview}, #{canwrite}, #{master})
 	    ON 
 	    duplicate key update
 	    canreward=#{canreward}, canview=#{canview}, canwrite=#{canwrite}
