@@ -145,6 +145,9 @@ import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
@@ -193,6 +196,7 @@ import com.trans.pixel.service.command.RankCommandService;
 import com.trans.pixel.service.command.RechargeCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
 import com.trans.pixel.service.command.SignCommandService;
+import com.trans.pixel.service.command.TalentCommandService;
 import com.trans.pixel.service.command.TaskCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
@@ -271,6 +275,8 @@ public class GameDataScreen extends RequestScreen {
 	private TaskCommandService taskCommandService;
 	@Resource
 	private BattletowerCommandService battletowerCommandService;
+	@Resource
+	private TalentCommandService talentCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -958,6 +964,21 @@ public class GameDataScreen extends RequestScreen {
 		rechargeCommandService.recharge(cmd, responseBuilder, user);
 		return true;//RechargeCommand
 	}//RechargeCommand
+	@Override//TalentupgradeCommand
+	protected boolean handleCommand(RequestTalentupgradeCommand cmd, Builder responseBuilder, UserBean user) {
+		talentCommandService.talentupgrade(cmd, responseBuilder, user);
+		return true;//TalentupgradeCommand
+	}//TalentupgradeCommand
+	@Override//TalentChangeUseCommand
+	protected boolean handleCommand(RequestTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user) {
+		talentCommandService.talentChangeUse(cmd, responseBuilder, user);
+		return true;//TalentChangeUseCommand
+	}//TalentChangeUseCommand
+	@Override//TalentChangeSkillCommand
+	protected boolean handleCommand(RequestTalentChangeSkillCommand cmd, Builder responseBuilder, UserBean user) {
+		talentCommandService.talentChangeSkill(cmd, responseBuilder, user);
+		return true;//TalentChangeSkillCommand
+	}//TalentChangeSkillCommand
 	//add handleCommand here
 	
 	@Override

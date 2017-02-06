@@ -325,4 +325,12 @@ public class RedisKey {
 	public static final String BLOOD_ZHANLI_PREFIX = PREFIX + "zhanli" + SPLIT + SERVER_PREFIX;
 	public static final String BLOOD_USERINFO_PREFIX = PREFIX + "userinfo" + SPLIT + SERVER_PREFIX;
 	public static final String BLOOD_XIAZHU_PREFIX = PREFIX + "xiazhu" + SPLIT + SERVER_PREFIX;
+	
+	//talent
+	public static final String TALENT_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "talent";
+	public static final String TALENTUPGRADE_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "talentupgrade";
+	public static final String TALENTUNLOCK_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "talentunlock";
+	
+	// user talent
+	public static final String USER_TALENT_PREFIX = PREFIX + "talent_";
 }

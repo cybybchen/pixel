@@ -1594,6 +1594,59 @@ message Equiptucao {
 	optional int32 rare = 3;
 }
 
+message TalentOrder {
+	optional int32 order = 1;
+	optional int32 skill1 = 2;
+	optional int32 skill2 = 3;
+	optional int32 skill3 = 4;
+}
+
+message Talent {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional string img = 3;
+	repeated TalentOrder order = 4;
+}
+
+message TalentList {
+	repeated Talent id = 1;
+}
+
+message Talentupgrade {
+	optional int32 level = 1;
+	optional int32 itemid = 2;
+	optional int32 itemcount = 3;
+}
+
+message TalentupgradeList {
+	repeated Talentupgrade level = 1;
+}
+
+message Talentunlock {
+	optional int32 order = 1;
+	optional int32 level = 2;
+}
+
+message TalentunlockList {
+	repeated Talentunlock order = 1;
+}
+
+message UserTalentList {
+	repeated UserTalent userTalent = 1;
+}
+
+message UserTalent {
+	required int32 id = 1;
+	required int32 level = 2;
+	optional bool isUse = 3;
+	repeated UserTalentOrder skill = 4;
+}
+
+message UserTalentOrder {
+	required int32 order = 1;
+	required int32 skillId = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2634,6 +2687,24 @@ message RequestUserInfoCommand {
 
 }
 
+message RequestTalentupgradeCommand {
+	required int32 id = 1;
+}
+
+message RequestTalentChangeUseCommand {
+	required int32 id = 1;
+}
+
+message RequestTalentChangeSkillCommand {
+	required int32 id = 1;
+	required int32 order = 2;
+	required int32 skillId = 3;
+}
+
+message ResponseUserTalentCommand {
+	repeated UserTalent userTalent = 1;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2793,6 +2864,9 @@ message RequestCommand {
 	optional RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;
 	optional RequestUserInfoCommand userInfoCommand = 218;
 	optional RequestRechargeCommand rechargeCommand = 219;
+	optional RequestTalentupgradeCommand talentupgradeCommand = 220;
+	optional RequestTalentChangeUseCommand talentChangeUseCommand = 223;
+	optional RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2865,6 +2939,7 @@ message ResponseCommand {
 	optional ResponseUserBattletowerCommand userBattletowerCommand = 60;
 	optional ResponseBattletowerShopCommand battletowerShopCommand = 61;
 	optional ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;
+	optional ResponseUserTalentCommand userTalentCommand = 63;
 }
 
 
