@@ -43,16 +43,23 @@ public class BossService {
 	public List<RewardBean> submitBosskill(UserBean user, int groupId, int bossId) {
 		BossGroupRecord userBossGroup = bossRedisService.getZhaohuanBoss(user);
 		if (userBossGroup != null && userBossGroup.getGroupId() == groupId) {
-			List<BossRecord> bossRecordList = new ArrayList<BossRecord>(userBossGroup.getBossRecordList());
-			for (BossRecord bossRecord : bossRecordList) {
+//			List<BossRecord> bossRecordList = new ArrayList<BossRecord>(userBossGroup.getBossRecordList());
+			for (int i = 0; i < userBossGroup.getBossRecordList().size(); ++i) {
+				BossRecord bossRecord = userBossGroup.getBossRecord(i);
 				BossRecord.Builder builder = BossRecord.newBuilder(bossRecord);
 				if (bossRecord.getBossId() == bossId && bossRecord.getEndTime().isEmpty()) {
+//					int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), groupId, bossId);
+//					Bossgroup bossGroup = bossRedisService.getBossgroup(groupId);
+//					if (userHasKillCount >= bossGroup.getCount())
+//						break;
 					builder.setEndTime(DateUtil.getCurrentDateString());
-					bossRecord = builder.build();
 					BossGroupRecord.Builder bossgroupBuilder = BossGroupRecord.newBuilder(userBossGroup);
-					bossgroupBuilder.clearBossRecord();
-					bossgroupBuilder.addAllBossRecord(bossRecordList);
+//					bossgroupBuilder.clearBossRecord();
+					bossgroupBuilder.setBossRecord(i, builder.build());
+//					bossgroupBuilder.addAllBossRecord(bossRecordList);
 					bossRedisService.zhaohuanBoss(user, bossgroupBuilder.build());
+					
+//					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
 					return getBossloot(bossId, user);
 				}
 			}
@@ -333,16 +340,20 @@ public class BossService {
 		builder.setGroupId(4);
 		if (bossGroup != null)
 			builder = BossGroupRecord.newBuilder(bossRedisService.getZhaohuanBoss(user));
-		List<BossRecord> bossRecordList = new ArrayList<BossRecord>(builder.getBossRecordList());
-		for (BossRecord bossRecord : bossRecordList) {
+//		List<BossRecord> bossRecordList = new ArrayList<BossRecord>(builder.getBossRecordList());
+		for (int i = 0; i < builder.getBossRecordList().size(); ++i) {
+			BossRecord bossRecord = builder.getBossRecord(i);
 			if (bossRecord.getBossId() == bossId) {
+//				int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), 4, bossId);
+//				Bossgroup bg = bossRedisService.getBossgroup(4);
 				if (!bossRecord.getEndTime().isEmpty()) {//boss已被击杀
 					BossRecord.Builder bossRecordBuilder = BossRecord.newBuilder(bossRecord);
 //					bossRecordBuilder.setBossId(bossId);
 					bossRecordBuilder.setEndTime("");
-					bossRecord = bossRecordBuilder.build();
-					builder.clearBossRecord();
-					builder.addAllBossRecord(bossRecordList);
+//					bossRecord = bossRecordBuilder.build();
+//					builder.clearBossRecord();
+//					builder.addAllBossRecord(bossRecordList);
+					builder.setBossRecord(i, bossRecordBuilder.build());
 					bossRedisService.zhaohuanBoss(user, builder.build());
 				}
 				
@@ -354,9 +365,9 @@ public class BossService {
 		BossRecord.Builder bossRecordBuilder = BossRecord.newBuilder();
 		bossRecordBuilder.setBossId(bossId);
 		bossRecordBuilder.setEndTime("");
-		bossRecordList.add(bossRecordBuilder.build());
-		builder.clearBossRecord();
-		builder.addAllBossRecord(bossRecordList);
+//		bossRecordList.add(bossRecordBuilder.build());
+//		builder.clearBossRecord();
+		builder.addBossRecord(bossRecordBuilder.build());
 		bossRedisService.zhaohuanBoss(user, builder.build());
 		
 	}

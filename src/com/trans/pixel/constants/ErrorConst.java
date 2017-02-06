@@ -42,7 +42,7 @@ public enum ErrorConst implements ResultConst {
     HAS_OPEN_FETTER_ERROR(3011, "该羁绊已激活"), NOT_ENOUGH_CLEARPROP_ERROR(3012, "洗练道具不足"),
     
     BATTLETOWER_SUBMIT_ERROR(4001, "战斗塔成绩提交异常"), BATTLETOWER_RESET_ERROR(4002, "战斗塔重置异常"), SUBMIT_BOSS_SCORE_ERROR(4003, "世界boss成绩提交异常"),
-    NOT_ENOUGH_ZHAOHUANSHI(4004, "召唤石不足"), BOSS_HAS_ZHAOHUAN(4005, "该boss已被召唤"),
+    NOT_ENOUGH_ZHAOHUANSHI(4004, "召唤石不足"), BOSS_HAS_ZHAOHUAN(4005, "该boss已被召唤"), BOSS_CANNOT_ZHAOHUAN(4006, "今日已无法召唤该boss"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

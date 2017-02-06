@@ -21,6 +21,7 @@ import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.redis.BossRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class PropCommandService extends BaseCommandService {
@@ -47,12 +48,20 @@ public class PropCommandService extends BaseCommandService {
 			BossGroupRecord bossGroupRecord = bossRedisService.getZhaohuanBoss(user);
 			if (bossGroupRecord != null) {
 				for (BossRecord bossRecord : bossGroupRecord.getBossRecordList()) {
-					if (bossRecord.getBossId() == prop.getBossid() && !bossRecord.getEndTime().isEmpty()) {
-						logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_HAS_ZHAOHUAN);
-						
-						ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_HAS_ZHAOHUAN);
-			            responseBuilder.setErrorCommand(errorCommand);
-			            return;
+					if (bossRecord.getBossId() == prop.getBossid()) {
+						if (bossRecord.getEndTime().isEmpty()) {
+							logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_HAS_ZHAOHUAN);
+							
+							ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_HAS_ZHAOHUAN);
+				            responseBuilder.setErrorCommand(errorCommand);
+				            return;
+						} else if (DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(bossRecord.getEndTime())) == 0){
+							logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_CANNOT_ZHAOHUAN);
+							
+							ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_CANNOT_ZHAOHUAN);
+				            responseBuilder.setErrorCommand(errorCommand);
+				            return;
+						}
 					}
 				}
 			}
