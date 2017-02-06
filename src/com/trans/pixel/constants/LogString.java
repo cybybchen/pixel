@@ -5,7 +5,7 @@ public class LogString {
 //	public static final String SERVER = "log.kalazhu.com.cn";
 //	public static final String SERVER = "www.transmension.com";
 	public static final String SERVER = "127.0.0.1";
-	public static final int PORT = 4345; //test:4346 正式：4345
+	public static final int PORT = 4347; //test:4347 正式：4345 ck:4348
 	public static final String SPLITER = "|";
 	
 	// 表中字段
@@ -112,6 +112,8 @@ public class LogString {
 	public static final String GAMETYPE = "gametype";
 	public static final String RECOMMAND = "recommand";
 	public static final String ADVISE = "advise";
+	public static final String FLOOR = "floor";
+	public static final String MAXFLOOR = "maxfloor";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -143,6 +145,7 @@ public class LogString {
 	public static final int LOGTYPE_ACTIVITY = 26;
 	public static final int LOGTYPE_WORLDBOSS = 27;
 	public static final int LOGTYPE_QUESTION = 28;
+	public static final int LOGTYPE_BATTLETOWER = 29;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -173,6 +176,7 @@ public class LogString {
 	public static final String LOGTYPE_ACTIVITY_STR = "Activity";
 	public static final String LOGTYPE_WORLDBOSS_STR = "Worldboss";
 	public static final String LOGTYPE_QUESTION_STR = "Question";
+	public static final String LOGTYPE_BATTLETOWER_STR = "Battletower";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;
