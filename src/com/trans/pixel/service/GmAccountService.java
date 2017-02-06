@@ -19,11 +19,19 @@ public class GmAccountService {
 	@Resource
 	private GmAccountMapper mapper;
 	
+	private GmAccountBean buildGmAccount(String account){
+		GmAccountBean bean = new GmAccountBean();
+		bean.setAccount(account);
+		if(account.equals("ybchen") || account.equals("xjwang")){
+			bean.setMaster(1);
+		}
+		return bean;
+	}
+	
 	public GmAccountBean getAccount(String account){
 		GmAccountBean bean = mapper.queryGmAccount(account);
 		if(bean == null){
-			bean = new GmAccountBean();
-			bean.setAccount(account);
+			bean = buildGmAccount(account);
 		}
 		return bean;
 	}
@@ -42,11 +50,7 @@ public class GmAccountService {
 		for(Entry<String, String> entry : map.entrySet()){
 			GmAccountBean bean = getAccount(entry.getKey());
 			if(bean == null){
-				bean = new GmAccountBean();
-				bean.setAccount(entry.getKey());
-				if(entry.getKey().equals("ybchen") || entry.getKey().equals("Xjwang")){
-					bean.setMaster(1);
-				}
+				bean = buildGmAccount(entry.getKey());
 			}
 			accountMap.put(entry.getKey(), bean);
 		}
