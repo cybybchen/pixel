@@ -1746,6 +1746,12 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
+	<loot itemid="40114" name="小红旗" img="40109" rare="4" description="可在活动-小红旗兑换中兑换奖励，在活动中获得" hashero="0" cyb="1" judge="0" endtime="2017-02-15 23:59:59" itemcount="" weightall="" bossid="" >
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
 	<loot itemid="36001" name="一重英雄包" img="32011" rare="1" description="开启获得1个随机1星英雄" hashero="1" cyb="0" judge="1" endtime="" itemcount="1" weightall="100" bossid="" >
 		<item itemid="33007" item="1星英雄箱" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
