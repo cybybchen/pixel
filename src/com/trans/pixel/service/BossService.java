@@ -299,7 +299,7 @@ public class BossService {
 		
 		int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
 		Bossgroup bossGroup = bossRedisService.getBossgroup(builder.getGroupId());
-		if (userHasKillCount >= bossGroup.getCount())
+		if (userHasKillCount >= bossGroup.getCount() && builder.getGroupId() < 4)
 			return null;
 		
 		int totalPercent = 0;
