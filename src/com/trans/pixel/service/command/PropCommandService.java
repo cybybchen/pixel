@@ -45,6 +45,7 @@ public class PropCommandService extends BaseCommandService {
 		int propCount = cmd.getPropCount();
 		PackageBean prop = propService.getProp(propId);
 		if (prop.getBossid() > 0) {
+			propCount = 1;
 			BossGroupRecord bossGroupRecord = bossRedisService.getZhaohuanBoss(user);
 			if (bossGroupRecord != null) {
 				for (BossRecord bossRecord : bossGroupRecord.getBossRecordList()) {
