@@ -128,7 +128,7 @@ public class HeroCommandService extends BaseCommandService {
 			userHeroService.updateUserHero(heroInfo);
 			logger.debug(System.currentTimeMillis());
 			if (costInfoIds.size() > 0){
-				int addExp = 0;
+				long addExp = 0;
 				int addCoin = 0;
 				List<RewardBean> rewardList = new ArrayList<RewardBean>();
 				ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
