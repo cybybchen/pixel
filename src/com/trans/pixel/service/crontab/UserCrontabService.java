@@ -20,6 +20,7 @@ import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTaskService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RechargeRedisService;
@@ -57,6 +58,8 @@ public class UserCrontabService {
 	private UserClearService userClearService;
 	@Resource
 	private UserTaskService userTaskService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
@@ -156,6 +159,12 @@ public class UserCrontabService {
 			long userId = Long.parseLong(keys[0]);
 			int targetId = Integer.parseInt(keys[1]);
 			userTaskService.updateTask2ToDB(userId, targetId);
+		}
+		while((key=userTalentService.popTalentDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int talentId = Integer.parseInt(keys[1]);
+			userTalentService.updateTalentToDB(userId, talentId);
 		}
 	}
 }

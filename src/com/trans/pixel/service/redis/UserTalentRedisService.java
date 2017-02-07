@@ -52,20 +52,20 @@ public class UserTalentRedisService extends RedisService {
 	
 	public void updateUserTalentList(long userId, List<UserTalent> utList) {
 		String key = RedisKey.USER_TALENT_PREFIX + userId;
-		Map<String,String> map = composeUserTaskMap(utList);
+		Map<String,String> map = composeUserTalentMap(utList);
 		this.hputAll(key, map);
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
-	public boolean isExistTask1Key(final long userId) {
-		return exists(RedisKey.USER_TASK_1_PREFIX + userId);
+	public boolean isExistTalentKey(final long userId) {
+		return exists(RedisKey.USER_TALENT_PREFIX + userId);
 	}
 	
-	public String popTask1DBKey(){
-		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TASK_1_PREFIX);
+	public String popTalentDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENT_PREFIX);
 	}
 	
-	private Map<String, String> composeUserTaskMap(List<UserTalent> utList) {
+	private Map<String, String> composeUserTalentMap(List<UserTalent> utList) {
 		Map<String, String> map = new HashMap<String, String>();
 		for (UserTalent ut : utList) {
 			map.put("" + ut.getId(), formatJson(ut));

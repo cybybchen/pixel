@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserTalentMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserTalentBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="talentId" column="talent_id" />
+		<result property="level" column="talent_level" />
+		<result property="talent_skill" column="talent_skill" />
+	</resultMap>
+	
+	<update id="updateUserTalent" parameterType="com.trans.pixel.model.userinfo.UserTalentBean">
+		INSERT INTO user_talent(user_id, talent_id, talent_level, talent_skill)
+	    VALUES(#{userId}, #{talentId}, #{level}, #{talentSkill})
+		ON 
+	    duplicate key update
+	    level=#{level}
+	</update>
+	
+	<select id="selectUserTalentList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_talent where user_id=#{userId}
+	</select>
+	
+	<select id="selectUserTalent" resultMap="resultMap">
+		SELECT *
+		from user_talent where user_id=#{userId} and talent_id=#{talentId}
+	</select>
+	
+</mapper>
