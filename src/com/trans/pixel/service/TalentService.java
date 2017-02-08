@@ -43,6 +43,8 @@ public class TalentService {
 			return null;
 		int originalLevel = userTalent.getLevel();
 		Talentupgrade talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel() + 1);
+		if (talentupgrade == null)
+			return null;
 		if (!costService.costAndUpdate(user, talentupgrade.getItemid(), talentupgrade.getItemcount())) {
 			return null;
 		}

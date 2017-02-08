@@ -1,0 +1,18 @@
+<data>
+<id id="1" name="冒险家" img="" >
+<order order="1" skill1="40001" skill2="40007" skill3="40013" />
+<order order="2" skill1="40002" skill2="40008" skill3="40014" />
+<order order="3" skill1="40003" skill2="40009" skill3="40015" />
+<order order="4" skill1="40004" skill2="40010" skill3="40016" />
+<order order="5" skill1="40005" skill2="40011" skill3="40017" />
+<order order="6" skill1="40006" skill2="40012" skill3="40018" />
+</id>
+<id id="2" name="养猪人" img="" >
+<order order="1" skill1="40001" skill2="40007" skill3="40013" />
+<order order="2" skill1="40002" skill2="40008" skill3="40014" />
+<order order="3" skill1="40003" skill2="40009" skill3="40015" />
+<order order="4" skill1="40004" skill2="40010" skill3="40016" />
+<order order="5" skill1="40005" skill2="40011" skill3="40017" />
+<order order="6" skill1="40006" skill2="40012" skill3="40018" />
+</id>
+</data>
