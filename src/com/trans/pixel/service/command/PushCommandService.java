@@ -50,6 +50,7 @@ import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserPropCommand;
+import com.trans.pixel.protoc.Commands.ResponseUserTalentCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.RewardCommand;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -70,6 +71,7 @@ import com.trans.pixel.service.UserLevelLootService;
 import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.UserPokedeService;
 import com.trans.pixel.service.UserPropService;
+import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 
 @Service
@@ -111,6 +113,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserFoodService userFoodService;
 	@Resource
 	private BossService bossService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -498,5 +502,11 @@ public class PushCommandService extends BaseCommandService {
 		builder.addAllRecord(list);
 		responseBuilder.setBosskillCommand(builder.build());
 		
+	}
+	
+	public void pushUserTalentList(Builder responseBuilder, UserBean user) {
+		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+		builder.addAllUserTalent(userTalentService.getUserTalentList(user));
+		responseBuilder.setUserTalentCommand(builder.build());
 	}
 }
