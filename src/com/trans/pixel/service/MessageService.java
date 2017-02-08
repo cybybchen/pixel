@@ -145,6 +145,7 @@ public class MessageService {
 		messageBoard.setTimeStamp(System.currentTimeMillis());
 		messageBoard.setId(System.currentTimeMillis());
 		messageBoard.setJob(user.getUnionJob());
+		messageBoard.setVip(user.getVip());
 		
 		return messageBoard;
 	}

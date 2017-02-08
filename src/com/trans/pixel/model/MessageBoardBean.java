@@ -107,6 +107,7 @@ public class MessageBoardBean {
 		builder.addAllMsg(msgBuilderList);
 		builder.setGroupId(groupId);
 		builder.setBossId(bossId);
+		builder.setVip(vip);
 		
 		return builder.build();
 	}
