@@ -126,6 +126,8 @@ import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
@@ -201,6 +203,8 @@ import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
@@ -447,6 +451,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestTalentupgradeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestTalentChangeSkillCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestStartBossRoomCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -1273,6 +1279,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//TalentChangeSkillCommand
                 result = handleCommand(cmd, responseBuilder, user);//TalentChangeSkillCommand
         }//TalentChangeSkillCommand
+        if (request.hasStartBossRoomCommand()) {
+            RequestStartBossRoomCommand cmd = request.getStartBossRoomCommand();
+            if (result)//StartBossRoomCommand
+                result = handleCommand(cmd, responseBuilder, user);//StartBossRoomCommand
+        }//StartBossRoomCommand
+        if (request.hasCreateBossRoomCommand()) {
+            RequestCreateBossRoomCommand cmd = request.getCreateBossRoomCommand();
+            if (result)//CreateBossRoomCommand
+                result = handleCommand(cmd, responseBuilder, user);//CreateBossRoomCommand
+        }//CreateBossRoomCommand
         //call handleCommand here
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();

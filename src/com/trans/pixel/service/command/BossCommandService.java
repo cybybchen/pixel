@@ -13,8 +13,10 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
 import com.trans.pixel.protoc.Commands.BossRoomRecord;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
+import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.ResponseBossRoomRecordCommand;
@@ -68,9 +70,11 @@ public class BossCommandService extends BaseCommandService {
 		BossRoomRecord bossRoomRecord = bossService.inviteFightBoss(user, createUserId, userIds, groupId, bossId);
 		
 		pusher.pushUserInfoCommand(responseBuilder, user);
-		ResponseBossRoomRecordCommand.Builder builder = ResponseBossRoomRecordCommand.newBuilder();
-		builder.setBossRoom(bossRoomRecord);
-		responseBuilder.setBossRoomRecordCommand(builder.build());
+		if (bossRoomRecord != null) {
+			ResponseBossRoomRecordCommand.Builder builder = ResponseBossRoomRecordCommand.newBuilder();
+			builder.setBossRoom(bossRoomRecord);
+			responseBuilder.setBossRoomRecordCommand(builder.build());
+		}
 	}
 	
 	public void quitFightBossRoom(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user) {
@@ -95,5 +99,27 @@ public class BossCommandService extends BaseCommandService {
 			rewardService.doRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
 		}
+	}
+	
+	public void startBossRoom(RequestStartBossRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		BossRoomRecord bossRoomRecord = bossService.startBossRoom(user);
+		
+		ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
+		roombuilder.setBossRoom(bossRoomRecord);
+		responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+	}
+	
+	public void createBossRoom(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		BossRoomRecord bossRoomRecord = bossService.createBossRoom(user, cmd.getGroupId(), cmd.getBossId());
+		if (bossRoomRecord == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_START);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_START);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
+		roombuilder.setBossRoom(bossRoomRecord);
+		responseBuilder.setBossRoomRecordCommand(roombuilder.build());
 	}
 }

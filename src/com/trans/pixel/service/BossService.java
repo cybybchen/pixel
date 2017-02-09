@@ -220,12 +220,27 @@ public class BossService {
 		return list;
 	}
 	
+	public BossRoomRecord startBossRoom(UserBean user) {
+		if (user.getBossRoomUserId() != 0)
+			return null;
+		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getId());
+		if (record == null)
+			return null;
+		
+		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(record);
+		builder.setStatus(1);
+		bossRedisService.setBossRoomRecord(builder.build());
+		return builder.build();
+	}
+	
 	public BossRoomRecord inviteFightBoss(UserBean user, long createUserId, List<Long> userIds, int groupId, int bossId) {
 		if (userIds.isEmpty()) {//接收邀请
 			user.setBossRoomUserId(createUserId);
 			userService.updateUser(user);
-			
-			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(bossRedisService.getBossRoomRecord(createUserId));
+			BossRoomRecord bossRoom = bossRedisService.getBossRoomRecord(createUserId);
+			if (bossRoom == null)
+				return null;
+			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(bossRoom);
 			List<Long> userIdList = new ArrayList<Long>(builder.getUserIdList()); 
 			userIdList.add(user.getId());
 			builder.clearUserId();
@@ -240,6 +255,10 @@ public class BossService {
 			user.setBossRoomUserId(user.getId());
 			userService.updateUser(user);
 			
+			BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
+			if (record != null)
+				return record;
+			
 			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
 			builder.setBossId(bossId);
 			builder.setGroupId(groupId);
@@ -249,6 +268,23 @@ public class BossService {
 			
 			return builder.build();
 		}
+	}
+	
+	public BossRoomRecord createBossRoom(UserBean user, int groupId, int bossId) {
+		user.setBossRoomUserId(user.getId());
+		userService.updateUser(user);
+		
+		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
+		if (record != null)
+			return record;
+		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
+		builder.setBossId(bossId);
+		builder.setGroupId(groupId);
+		builder.setCreateUserId(user.getId());
+		
+		bossRedisService.setBossRoomRecord(builder.build());
+		
+		return builder.build();
 	}
 	
 	public void quitBossRoom(UserBean user) {

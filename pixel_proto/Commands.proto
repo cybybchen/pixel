@@ -1255,6 +1255,7 @@ message BossRoomRecord {
 	required int64 createUserId = 3;
 	repeated BossRecord bossRecord = 4;
 	repeated int64 userId = 5;
+	optional int32 status = 6;//0或者空：准备状态  1：开始
 }
 
 message BossGroupRecord {
@@ -2683,6 +2684,15 @@ message RequestSubmitBossRoomScoreCommand {
 	required int32 percent = 1;
 }
 
+message RequestStartBossRoomCommand {
+	
+}
+
+message RequestCreateBossRoomCommand {
+	required int32 groupId = 2;
+	required int32 bossId = 3;
+}
+
 message RequestUserInfoCommand {
 
 }
@@ -2867,6 +2877,8 @@ message RequestCommand {
 	optional RequestTalentupgradeCommand talentupgradeCommand = 220;
 	optional RequestTalentChangeUseCommand talentChangeUseCommand = 223;
 	optional RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;
+	optional RequestStartBossRoomCommand startBossRoomCommand = 225;
+	optional RequestCreateBossRoomCommand createBossRoomCommand = 226;
 }
 // response command list transfer only use it
 message ResponseCommand {

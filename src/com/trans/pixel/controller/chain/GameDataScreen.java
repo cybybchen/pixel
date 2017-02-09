@@ -120,6 +120,8 @@ import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -979,6 +981,16 @@ public class GameDataScreen extends RequestScreen {
 		talentCommandService.talentChangeSkill(cmd, responseBuilder, user);
 		return true;//TalentChangeSkillCommand
 	}//TalentChangeSkillCommand
+	@Override//StartBossRoomCommand
+	protected boolean handleCommand(RequestStartBossRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		bossCommandService.startBossRoom(cmd, responseBuilder, user);
+		return true;//StartBossRoomCommand
+	}//StartBossRoomCommand
+	@Override//CreateBossRoomCommand
+	protected boolean handleCommand(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		bossCommandService.createBossRoom(cmd, responseBuilder, user);
+		return true;//CreateBossRoomCommand
+	}//CreateBossRoomCommand
 	//add handleCommand here
 	
 	@Override
