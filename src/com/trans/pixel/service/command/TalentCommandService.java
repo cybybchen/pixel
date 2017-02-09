@@ -48,7 +48,7 @@ public class TalentCommandService extends BaseCommandService {
 	public void talentChangeUse(RequestTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
 		List<UserTalent> userTalentList = talentService.changeUseTalent(user, cmd.getId());
-		if (userTalentList.size() < 2) {
+		if (userTalentList.size() < 1) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.TALENTCHANGEUSE_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.TALENTCHANGEUSE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
