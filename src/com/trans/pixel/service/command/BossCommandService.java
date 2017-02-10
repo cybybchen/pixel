@@ -67,14 +67,21 @@ public class BossCommandService extends BaseCommandService {
 		int groupId = cmd.getGroupId();
 		int bossId = cmd.getBossId();
 		long createUserId = cmd.getCreateUserId();
-		BossRoomRecord bossRoomRecord = bossService.inviteFightBoss(user, createUserId, userIds, groupId, bossId);
+		String startDate = cmd.hasStartDate() ? cmd.getStartDate() : "";
+		BossRoomRecord bossRoomRecord = bossService.inviteFightBoss(user, createUserId, userIds, groupId, bossId, startDate);
 		
 		pusher.pushUserInfoCommand(responseBuilder, user);
-		if (bossRoomRecord != null) {
-			ResponseBossRoomRecordCommand.Builder builder = ResponseBossRoomRecordCommand.newBuilder();
-			builder.setBossRoom(bossRoomRecord);
-			responseBuilder.setBossRoomRecordCommand(builder.build());
+		if (bossRoomRecord == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_NOT);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_NOT);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
 		}
+		
+		ResponseBossRoomRecordCommand.Builder builder = ResponseBossRoomRecordCommand.newBuilder();
+		builder.setBossRoom(bossRoomRecord);
+		responseBuilder.setBossRoomRecordCommand(builder.build());
 	}
 	
 	public void quitFightBossRoom(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user) {

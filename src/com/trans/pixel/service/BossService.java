@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.MailConst;
@@ -29,6 +31,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 @Service
 public class BossService {
 
+	private static final Logger log = LoggerFactory.getLogger(BossService.class);
+	
 	@Resource
 	private BossRedisService bossRedisService;
 	@Resource
@@ -233,13 +237,17 @@ public class BossService {
 		return builder.build();
 	}
 	
-	public BossRoomRecord inviteFightBoss(UserBean user, long createUserId, List<Long> userIds, int groupId, int bossId) {
+	public BossRoomRecord inviteFightBoss(UserBean user, long createUserId, List<Long> userIds, int groupId, int bossId, String startDate) {
 		if (userIds.isEmpty()) {//接收邀请
-			user.setBossRoomUserId(createUserId);
-			userService.updateUser(user);
 			BossRoomRecord bossRoom = bossRedisService.getBossRoomRecord(createUserId);
 			if (bossRoom == null)
 				return null;
+			if (!bossRoom.getCreateTime().equals(startDate))
+				return null;
+			
+			user.setBossRoomUserId(createUserId);
+			userService.updateUser(user);
+			
 			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(bossRoom);
 			List<Long> userIdList = new ArrayList<Long>(builder.getUserIdList()); 
 			userIdList.add(user.getId());
@@ -249,24 +257,28 @@ public class BossService {
 			
 			return builder.build();
 		} else { //邀请别人
-			for (long userId : userIds) {
-				sendInviteMail(user, userId, groupId, bossId);
-			}
+			String createTime = DateUtil.getCurrentDateString();
+			
 			user.setBossRoomUserId(user.getId());
 			userService.updateUser(user);
 			
 			BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
-			if (record != null)
-				return record;
+			if (record == null) {
+				BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
+				builder.setBossId(bossId);
+				builder.setGroupId(groupId);
+				builder.setCreateUserId(user.getId());
+				builder.setCreateTime(createTime);
+				
+				bossRedisService.setBossRoomRecord(builder.build());
+				record = builder.build();
+			}
 			
-			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
-			builder.setBossId(bossId);
-			builder.setGroupId(groupId);
-			builder.setCreateUserId(user.getId());
+			for (long userId : userIds) {
+				sendInviteMail(user, userId, groupId, bossId, record.getCreateTime());
+			}
 			
-			bossRedisService.setBossRoomRecord(builder.build());
-			
-			return builder.build();
+			return record;
 		}
 	}
 	
@@ -281,6 +293,7 @@ public class BossService {
 		builder.setBossId(bossId);
 		builder.setGroupId(groupId);
 		builder.setCreateUserId(user.getId());
+		builder.setCreateTime(DateUtil.getCurrentDateString());
 		
 		bossRedisService.setBossRoomRecord(builder.build());
 		
@@ -408,10 +421,12 @@ public class BossService {
 		
 	}
 	
-	private void sendInviteMail(UserBean user, long userId, int groupId, int bossId) {
+	private void sendInviteMail(UserBean user, long userId, int groupId, int bossId, String createTime) {
 		String content = "邀请你一起伐木boss！";
 		MailBean mail = MailBean.buildMail(userId, user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_INVITE_FIGHTBOSS_MAIL, groupId * 1000000 + bossId);
+		mail.setStartDate(createTime);
 		mailService.addMail(mail);
+		log.debug("mail is:" + mail.toJson());
 	}
 	
 	private void sendBossRoomWinRewardMail(long userId, List<RewardBean> rewardList) {

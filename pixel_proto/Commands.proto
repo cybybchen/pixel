@@ -1256,6 +1256,7 @@ message BossRoomRecord {
 	repeated BossRecord bossRecord = 4;
 	repeated int64 userId = 5;
 	optional int32 status = 6;//0或者空：准备状态  1：开始
+	required string createTime = 7;
 }
 
 message BossGroupRecord {
@@ -2670,6 +2671,7 @@ message RequestInviteFightBossCommand {
 	optional int32 groupId = 2;
 	optional int32 bossId = 3;
 	optional int64 createUserId = 4;
+	optional string startDate = 5;
 }
 
 message RequestQuitFightBossCommand {
