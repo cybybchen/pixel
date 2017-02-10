@@ -85,8 +85,13 @@ public class BossCommandService extends BaseCommandService {
 	}
 	
 	public void quitFightBossRoom(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user) {
-		bossService.quitBossRoom(user);
-		pusher.pushUserInfoCommand(responseBuilder, user);
+		BossRoomRecord bossRecord = bossService.quitBossRoom(user, cmd.getUserId());
+		if (bossRecord != null) {
+			ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
+			roombuilder.setBossRoom(bossRecord);
+			responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+		}
+//		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void submitBossRoomScore(RequestSubmitBossRoomScoreCommand cmd, Builder responseBuilder, UserBean user) {

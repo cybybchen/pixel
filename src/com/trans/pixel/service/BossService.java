@@ -24,6 +24,7 @@ import com.trans.pixel.protoc.Commands.BossRoomRecord;
 import com.trans.pixel.protoc.Commands.Bossgroup;
 import com.trans.pixel.protoc.Commands.Bossloot;
 import com.trans.pixel.protoc.Commands.BosslootGroup;
+import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.BossRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -249,10 +250,10 @@ public class BossService {
 			userService.updateUser(user);
 			
 			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(bossRoom);
-			List<Long> userIdList = new ArrayList<Long>(builder.getUserIdList()); 
-			userIdList.add(user.getId());
-			builder.clearUserId();
-			builder.addAllUserId(userIdList);
+			List<UserInfo> userList = new ArrayList<UserInfo>(builder.getUserList()); 
+			userList.add(userService.getCache(user.getServerId(), user.getId()));
+			builder.clearUser();
+			builder.addAllUser(userList);
 			bossRedisService.setBossRoomRecord(builder.build());
 			
 			return builder.build();
@@ -269,6 +270,7 @@ public class BossService {
 				builder.setGroupId(groupId);
 				builder.setCreateUserId(user.getId());
 				builder.setCreateTime(createTime);
+				builder.addUser(userService.getCache(user.getServerId(), user.getId()));
 				
 				bossRedisService.setBossRoomRecord(builder.build());
 				record = builder.build();
@@ -293,6 +295,7 @@ public class BossService {
 		builder.setBossId(bossId);
 		builder.setGroupId(groupId);
 		builder.setCreateUserId(user.getId());
+		builder.addUser(userService.getCache(user.getServerId(), user.getId()));
 		builder.setCreateTime(DateUtil.getCurrentDateString());
 		
 		bossRedisService.setBossRoomRecord(builder.build());
@@ -300,25 +303,39 @@ public class BossService {
 		return builder.build();
 	}
 	
-	public void quitBossRoom(UserBean user) {
+	public BossRoomRecord quitBossRoom(UserBean user, long userId) {
 		if (user.getBossRoomUserId() == 0)
-			return;
+			return null;
 		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
 		if (record == null)
-			return;
+			return null;
 		
-		user.setBossRoomUserId(0);
-		userService.updateUser(user);
+		if (user.getId() != userId && record.getCreateUserId() != user.getId()) {
+			return null;
+		}
+		
+//		user.setBossRoomUserId(0);
+//		userService.updateUser(user);
 		
 		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(record);
 		if (builder.getCreateUserId() == user.getId()) {
 			bossRedisService.delBossRoomRecord(user.getId());
+			return null;
 		} else {
-			List<Long> userIdList = new ArrayList<Long>(builder.getUserIdList()); 
-			userIdList.remove(user.getId());
-			builder.clearUserId();
-			builder.addAllUserId(userIdList);
+			List<UserInfo> userList = new ArrayList<UserInfo>(builder.getUserList()); 
+			for (int i = 0; i < userList.size(); ++i) {
+				UserInfo userInfo = userList.get(i);
+				if (userInfo.getId() == userId) {
+					userList.remove(i);
+					break;
+				}
+			}
+			
+			builder.clearUser();
+			builder.addAllUser(userList);
 			bossRedisService.setBossRoomRecord(builder.build());
+			
+			return builder.build();
 		}
 	}
 	
@@ -343,8 +360,8 @@ public class BossService {
 			return null;
 		
 		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(record);
-		if (!builder.getUserIdList().contains(user.getId()))
-			return null;
+//		if (!builder.getUserIdList().contains(user.getId()))
+//			return null;
 		
 		int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
 		Bossgroup bossGroup = bossRedisService.getBossgroup(builder.getGroupId());
@@ -369,10 +386,10 @@ public class BossService {
 		if (totalPercent >= 100) {
 			bossRedisService.addBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
 			rewardList = getBossloot(builder.getBossId(), user);
-			for (long userId : builder.getUserIdList()) {
-				if (userId != user.getId()) {
-					sendBossRoomWinRewardMail(userId, rewardList);
-					bossRedisService.addBosskillCount(userId, builder.getGroupId(), builder.getBossId());
+			for (UserInfo userInfo : builder.getUserList()) {
+				if (userInfo.getId() != user.getId()) {
+					sendBossRoomWinRewardMail(userInfo.getId(), rewardList);
+					bossRedisService.addBosskillCount(userInfo.getId(), builder.getGroupId(), builder.getBossId());
 				}
 			}
 		}

@@ -1254,7 +1254,7 @@ message BossRoomRecord {
 	required int32 bossId = 2;
 	required int64 createUserId = 3;
 	repeated BossRecord bossRecord = 4;
-	repeated int64 userId = 5;
+	repeated UserInfo user = 5;
 	optional int32 status = 6;//0或者空：准备状态  1：开始
 	required string createTime = 7;
 }
@@ -2675,7 +2675,7 @@ message RequestInviteFightBossCommand {
 }
 
 message RequestQuitFightBossCommand {
-
+	required int64 userId = 1;
 }
 
 message ResponseBossRoomRecordCommand {
