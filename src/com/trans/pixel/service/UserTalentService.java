@@ -1,6 +1,9 @@
 package com.trans.pixel.service;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -9,7 +12,11 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.UserTalentMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTalentBean;
+import com.trans.pixel.protoc.Commands.Talent;
+import com.trans.pixel.protoc.Commands.Talentunlock;
 import com.trans.pixel.protoc.Commands.UserTalent;
+import com.trans.pixel.protoc.Commands.UserTalentOrder;
+import com.trans.pixel.service.redis.TalentRedisService;
 import com.trans.pixel.service.redis.UserTalentRedisService;
 
 @Service
@@ -19,6 +26,8 @@ public class UserTalentService {
 	private UserTalentRedisService userTalentRedisService;
 	@Resource
 	private UserTalentMapper userTalentMapper;
+	@Resource
+	private TalentRedisService talentRedisService;
 	
 	public UserTalent getUserTalent(UserBean user, int id) {
 		UserTalent userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
@@ -44,7 +53,22 @@ public class UserTalentService {
 	}
 	
 	public List<UserTalent> getUserTalentList(UserBean user) {
-		return userTalentRedisService.getUserTalentList(user.getId());
+		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(user.getId());
+		if (userTalentList.isEmpty()) {
+			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(user.getId());
+			if (utBeanList == null || utBeanList.isEmpty()) {
+				Map<String, Talent> map = talentRedisService.getTalentConfig();
+				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
+				while (it.hasNext()) {
+					Entry<String, Talent> entry = it.next();
+					UserTalent userTalent = initUserTalent(user, entry.getValue().getId());
+					userTalentList.add(userTalent);
+					updateUserTalent(user, userTalent);
+				}
+			}
+		}
+		
+		return userTalentList;
 	}
 	
 	public void updateUserTalentList(UserBean user, List<UserTalent> userTalentList) {
@@ -65,6 +89,18 @@ public class UserTalentService {
 		UserTalent.Builder builder = UserTalent.newBuilder();
 		builder.setId(id);
 		builder.setLevel(0);
+		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Iterator<Entry<String, Talentunlock>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Talentunlock> entry = it.next();
+			Talentunlock talentunlock = entry.getValue();
+			if (talentunlock.getLevel() <= builder.getLevel()) {
+				UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
+				skillBuilder.setOrder(talentunlock.getOrder());
+				skillBuilder.setSkillId(0);
+				builder.addSkill(skillBuilder.build());
+			}
+		}
 		
 		return builder.build();
 	}
