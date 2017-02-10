@@ -42,7 +42,7 @@ public class RechargeRedisService extends RedisService {
 			String xml = ReadConfig("lol_"+rmbKey+".xml");
 			parseXml(xml, builder);
 			for(Rmb.Builder rmb : builder.getRmbBuilderList()){
-				rmb.clearName();
+//				rmb.clearName();
 				rmb.clearImg();
 				rmb.clearDescription();
 			}
