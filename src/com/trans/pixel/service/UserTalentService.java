@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserTalentMapper;
@@ -21,6 +23,7 @@ import com.trans.pixel.service.redis.UserTalentRedisService;
 
 @Service
 public class UserTalentService {
+	private static final Logger log = LoggerFactory.getLogger(UserTalentService.class);
 	
 	@Resource
 	private UserTalentRedisService userTalentRedisService;
@@ -55,8 +58,11 @@ public class UserTalentService {
 	public List<UserTalent> getUserTalentList(UserBean user) {
 		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(user.getId());
 		if (userTalentList.isEmpty()) {
+			log.debug("11");
 			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(user.getId());
+			log.debug("12 + size:" + utBeanList.size());
 			if (utBeanList == null || utBeanList.isEmpty()) {
+				log.debug("22");
 				Map<String, Talent> map = talentRedisService.getTalentConfig();
 				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
 				while (it.hasNext()) {
@@ -64,6 +70,14 @@ public class UserTalentService {
 					UserTalent userTalent = initUserTalent(user, entry.getValue().getId());
 					userTalentList.add(userTalent);
 					updateUserTalent(user, userTalent);
+				}
+			} else {
+				for (UserTalentBean ut : utBeanList) {
+					UserTalent userTalent = ut.buildUserTalent();
+					if (userTalent != null) {
+						userTalentList.add(userTalent);
+						updateUserTalent(user, userTalent);
+					}
 				}
 			}
 		}

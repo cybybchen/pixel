@@ -7,6 +7,7 @@ import net.sf.json.JSONObject;
 
 import com.trans.pixel.protoc.Commands.UserTalent;
 import com.trans.pixel.protoc.Commands.UserTalentOrder;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserTalentBean {
 	private long id = 0;
@@ -21,6 +22,7 @@ public class UserTalentBean {
 		utBean.setUserId(userId);
 		utBean.setTalentId(ut.getId());
 		utBean.setTalentSkill(composeTalentSkill(ut.getSkillList()));
+		utBean.setIsUse(ut.hasIsUse() ? (ut.getIsUse() ? 1 : 0) : 0);
 		
 		return utBean;
 	}
@@ -41,7 +43,7 @@ public class UserTalentBean {
 		Set<Object> set = json.keySet();
 		for (Object o : set) {
 			UserTalentOrder.Builder orderBuilder = UserTalentOrder.newBuilder();
-			orderBuilder.setOrder((Integer)o);
+			orderBuilder.setOrder(TypeTranslatedUtil.stringToInt((String)o));
 			orderBuilder.setSkillId(json.getInt((String)o));
 			builder.addSkill(orderBuilder.build());
 		}
@@ -78,5 +80,11 @@ public class UserTalentBean {
 	}
 	public void setTalentSkill(String talentSkill) {
 		this.talentSkill = talentSkill;
+	}
+	public int getIsUse() {
+		return isUse;
+	}
+	public void setIsUse(int isUse) {
+		this.isUse = isUse;
 	}
 }
