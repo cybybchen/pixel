@@ -303,38 +303,28 @@ public class BossService {
 		return builder.build();
 	}
 	
-	public BossRoomRecord quitBossRoom(UserBean user, long userId) {
-		if (user.getBossRoomUserId() == 0)
-			return null;
-		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
+	public BossRoomRecord quitBossRoom(UserBean user, BossRoomRecord record, long userId) {
 		if (record == null)
 			return null;
-		
 		if (user.getId() != userId && record.getCreateUserId() != user.getId()) {
 			return null;
 		}
-		
-//		user.setBossRoomUserId(0);
-//		userService.updateUser(user);
-		
 		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(record);
-		if (builder.getCreateUserId() == user.getId()) {
+		
+		if (builder.getCreateUserId() == user.getId() && user.getId() == userId) {
 			bossRedisService.delBossRoomRecord(user.getId());
-			return null;
+			builder.clearUser();
+			user.setBossRoomUserId(0);
+			userService.updateUser(user);
+			return builder.build();
 		} else {
-			List<UserInfo> userList = new ArrayList<UserInfo>(builder.getUserList()); 
-			for (int i = 0; i < userList.size(); ++i) {
-				UserInfo userInfo = userList.get(i);
-				if (userInfo.getId() == userId) {
-					userList.remove(i);
+			for (int i = 0; i < builder.getUserCount(); ++i) {
+				if (builder.getUser(i).getId() == userId) {
+					builder.removeUser(i);
 					break;
 				}
 			}
-			
-			builder.clearUser();
-			builder.addAllUser(userList);
 			bossRedisService.setBossRoomRecord(builder.build());
-			
 			return builder.build();
 		}
 	}
