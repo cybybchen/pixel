@@ -66,7 +66,7 @@ public class LootService {
 			int jingyanPer = 0;
 			long now = userRedisService.now();
 			long today0 = userRedisService.caltoday(now, 0);
-			LibaoList libaolist = shopService.getLibaoShop(user);
+			LibaoList libaolist = shopService.getLibaoShop(user, false);
 			Map<Integer, YueKa> map = shopService.getYueKas();
 			for(Libao libao : libaolist.getLibaoList()){
 				long time = 0;

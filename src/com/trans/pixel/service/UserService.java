@@ -145,7 +145,7 @@ public class UserService {
 			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
 			userPropService.updateUserProp(userProp);
 		}
-		LibaoList libaolist = shopService.getLibaoShop(user);
+		LibaoList libaolist = shopService.getLibaoShop(user, true);
 		Map<Integer, YueKa> map = shopService.getYueKas();
 		for(Libao libao : libaolist.getLibaoList()){
 			long time = 0;

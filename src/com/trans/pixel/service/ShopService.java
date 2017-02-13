@@ -181,17 +181,23 @@ public class ShopService {
 		builder.setEndtime(builder.getStarttime());
 		return builder.build();
 	}
-	public LibaoList getLibaoShop(UserBean user){
+	public LibaoList getLibaoShop(UserBean user, boolean refresh){
 		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
-		return getLibaoShop(user, libaoMap);
+		return getLibaoShop(user, libaoMap, refresh);
 	}
-	public LibaoList getLibaoShop(UserBean user, Map<Integer, Libao> libaoMap){
+	public LibaoList getLibaoShop(UserBean user, Map<Integer, Libao> libaoMap, boolean refresh){
 		LibaoList.Builder shopbuilder = redis.getLibaoShop();
 		for(Libao.Builder builder : shopbuilder.getLibaoBuilderList()){
 			int count = 0;
 			Libao libao = libaoMap.get(builder.getRechargeid());
 			if(libao != null){
 				count = libao.getPurchase();
+				if(refresh && count != 0){
+					Libao.Builder libaobuilder = Libao.newBuilder(libao);
+					libaobuilder.setPurchase(0);
+					count = 0;
+					userService.saveLibao(user.getId(), libaobuilder.build());
+				}
 				builder.setValidtime(libao.getValidtime());
 			}
 			if(builder.getPurchase() > 0){
@@ -228,7 +234,7 @@ public class ShopService {
 	
 	public void getLibaoShop(Builder responseBuilder, UserBean user){
 		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
-		LibaoList list = getLibaoShop(user, libaoMap);
+		LibaoList list = getLibaoShop(user, libaoMap, false);
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
 		shop.addAllItems(list.getLibaoList());
 		responseBuilder.setLibaoShopCommand(shop);
