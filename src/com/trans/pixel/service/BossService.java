@@ -228,7 +228,7 @@ public class BossService {
 	public BossRoomRecord startBossRoom(UserBean user) {
 		if (user.getBossRoomUserId() != 0)
 			return null;
-		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getId());
+		BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getId());
 		if (record == null)
 			return null;
 		
@@ -240,7 +240,7 @@ public class BossService {
 	
 	public BossRoomRecord inviteFightBoss(UserBean user, long createUserId, List<Long> userIds, int groupId, int bossId, String startDate) {
 		if (userIds.isEmpty()) {//接收邀请
-			BossRoomRecord bossRoom = bossRedisService.getBossRoomRecord(createUserId);
+			BossRoomRecord bossRoom = bossRedisService.getBossRoomRecord(user, createUserId);
 			if (bossRoom == null)
 				return null;
 			if (!bossRoom.getCreateTime().equals(startDate))
@@ -263,7 +263,7 @@ public class BossService {
 			user.setBossRoomUserId(user.getId());
 			userService.updateUser(user);
 			
-			BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
+			BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getBossRoomUserId());
 			if (record == null) {
 				BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
 				builder.setBossId(bossId);
@@ -288,7 +288,7 @@ public class BossService {
 		user.setBossRoomUserId(user.getId());
 		userService.updateUser(user);
 		
-		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
+		BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getBossRoomUserId());
 		if (record != null)
 			return record;
 		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
@@ -332,7 +332,7 @@ public class BossService {
 	public BossRoomRecord getBossRoomRecord(UserBean user) {
 		if (user.getBossRoomUserId() == 0)
 			return null;
-		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
+		BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getBossRoomUserId());
 		if (record == null) {
 			user.setBossRoomUserId(0);
 			userService.updateUser(user);
@@ -345,7 +345,7 @@ public class BossService {
 		if (user.getBossRoomUserId() == 0)
 			return null;
 		
-		BossRoomRecord record = bossRedisService.getBossRoomRecord(user.getBossRoomUserId());
+		BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getBossRoomUserId());
 		if (record == null)
 			return null;
 		

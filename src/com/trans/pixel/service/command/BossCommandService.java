@@ -63,6 +63,13 @@ public class BossCommandService extends BaseCommandService {
 	}
 	
 	public void createFightBossRoom(RequestInviteFightBossCommand cmd, Builder responseBuilder, UserBean user) {
+		BossRoomRecord bossRecord = bossService.getBossRoomRecord(user);
+		if(bossRecord != null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HASIN);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		List<Long> userIds = cmd.getUserIdList();
 		int groupId = cmd.getGroupId();
 		int bossId = cmd.getBossId();
@@ -138,6 +145,13 @@ public class BossCommandService extends BaseCommandService {
 	}
 	
 	public void createBossRoom(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		BossRoomRecord bossRecord = bossService.getBossRoomRecord(user);
+		if(bossRecord != null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HASIN);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		BossRoomRecord bossRoomRecord = bossService.createBossRoom(user, cmd.getGroupId(), cmd.getBossId());
 		if (bossRoomRecord == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_START);

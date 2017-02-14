@@ -44,7 +44,7 @@ public enum ErrorConst implements ResultConst {
     BATTLETOWER_SUBMIT_ERROR(4001, "战斗塔成绩提交异常"), BATTLETOWER_RESET_ERROR(4002, "战斗塔重置异常"), SUBMIT_BOSS_SCORE_ERROR(4003, "世界boss成绩提交异常"),
     NOT_ENOUGH_ZHAOHUANSHI(4004, "召唤石不足"), BOSS_HAS_ZHAOHUAN(4005, "该boss已被召唤"), BOSS_CANNOT_ZHAOHUAN(4006, "今日已无法召唤该boss"),
     TALENTUPGRADE_ERROR(4007, "职业升级异常"), TALENTCHANGEUSE_ERROR(4008, "职业切换异常"), TALENTCHANGESKILL_ERROR(4009, "天赋切换异常"),
-    BOSS_ROOM_START(4010, "boss开启异常"), BOSS_ROOM_IS_NOT(4011, "房间不存在"),BOSS_ROOM_FULL(4012, "队伍中存在其他队员"),
+    BOSS_ROOM_START(4010, "boss开启异常"), BOSS_ROOM_IS_NOT(4011, "房间不存在"),BOSS_ROOM_FULL(4012, "房间中存在其他队员"),BOSS_ROOM_HASIN(4013, "不能加入多个房间"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

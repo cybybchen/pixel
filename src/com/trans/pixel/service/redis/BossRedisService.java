@@ -194,15 +194,20 @@ public class BossRedisService extends RedisService {
 		delete(key);
 	}
 	
-	public BossRoomRecord getBossRoomRecord(long createUserId) {
+	public BossRoomRecord getBossRoomRecord(UserBean user, long createUserId) {
 		String key = RedisKey.BOOS_ROOM_RECORD_PREFIX + createUserId;
 		String value = get(key);
 		if (value == null)
 			return null;
 		
 		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
-		if (parseJson(value, builder))
-			return builder.build();
+		if (parseJson(value, builder)){
+			for (int i = 0; i < builder.getUserCount(); ++i) {
+				if (builder.getUser(i).getId() == user.getId()) {
+					return builder.build();
+				}
+			}
+		}
 		
 		return null;
 	}
