@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<order targetid="201" skip="2" order="1" type="4" des="升级3次装备" targetcount="3" rewardid1="27001" rewardcount1="100" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order targetid="202" skip="2" order="2" type="4" des="英雄升级3次" targetcount="3" rewardid1="1000" rewardcount1="10000" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order targetid="203" skip="5" order="3" type="4" des="征战天下中击败5个怪物" targetcount="5" rewardid1="33010" rewardcount1="1" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order targetid="204" skip="5" order="4" type="4" des="征战天下中击夺回3次矿点" targetcount="3" rewardid1="1003" rewardcount1="200" rewardid2="40022" rewardcount2="3" rewardid3="" rewardcount3="" />
+<order targetid="205" skip="1" order="5" type="4" des="收取1次挂机背包" targetcount="1" rewardid1="33037" rewardcount1="1" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order targetid="206" skip="2" order="6" type="4" des="英雄技能升级3次" targetcount="3" rewardid1="1001" rewardcount1="10000" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order targetid="207" skip="6" order="7" type="4" des="天梯进行3次战斗" targetcount="3" rewardid1="1005" rewardcount1="80" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order targetid="208" skip="7" order="8" type="4" des="进行3次金币抽奖" targetcount="3" rewardid1="1001" rewardcount1="10000" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order targetid="209" skip="0" order="9" type="4" des="完成以上全部8个任务" targetcount="8" rewardid1="36010" rewardcount1="1" rewardid2="1002" rewardcount2="50" rewardid3="40022" rewardcount3="5" />
+</data>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<star star="1" value="1" upvalue="0" />
+<star star="2" value="3" upvalue="2" />
+<star star="3" value="9" upvalue="6" />
+<star star="4" value="27" upvalue="18" />
+<star star="5" value="81" upvalue="54" />
+<star star="6" value="243" upvalue="162" />
+<star star="7" value="729" upvalue="486" />
+</data>

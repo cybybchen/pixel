@@ -1,0 +1,151 @@
+<data>
+<boss bossid="100001" bossname="永生者提姆" img="100001" des="原兽森林中的古老半神，拥有传说中的永生之酒。" zhanli="840000" ad="10" ap="10" arm="2200" mr="2000" adi="1" api="1" rating="500" speed="400" steal="0" jianshang_per="" heal="900" duochong="100" level="25" HP="1" >
+<skill skillid="100042" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100043" skilllevel="1" condition="1" con1="2" con2="2" skillpri="2" />
+<skill skillid="100003" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="100002" bossname="长眠的恩底弥翁" img="100002" des="永恒梦境的守护者。" zhanli="280000" ad="500" ap="1800" arm="2000" mr="2000" adi="100" api="200" rating="500" speed="400" steal="0" jianshang_per="" heal="100" duochong="0" level="25" HP="2" >
+<skill skillid="100044" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100045" skilllevel="1" condition="1" con1="1" con2="5" skillpri="2" />
+<skill skillid="100006" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="100003" bossname="悲惨的提米" img="100003" des="身负痛苦的诅咒，在折磨中战斗着。" zhanli="770000" ad="2000" ap="10" arm="1900" mr="1500" adi="300" api="1" rating="500" speed="400" steal="100" jianshang_per="" heal="1000" duochong="0" level="25" HP="1" >
+<skill skillid="100046" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100052" skilllevel="1" condition="1" con1="3" con2="3" skillpri="2" />
+<skill skillid="100033" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="100004" bossname="库兰的猛犬" img="100004" des="凯尔特的勇士，战斗力惊人，就是脸黑。" zhanli="175000" ad="2200" ap="20" arm="1800" mr="1500" adi="350" api="1" rating="500" speed="400" steal="0" jianshang_per="" heal="0" duochong="0" level="25" HP="6" >
+<skill skillid="100047" skilllevel="1" condition="1" con1="3" con2="2" skillpri="2" />
+<skill skillid="100048" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100011" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100025" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100012" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="100005" bossname="欧皇特使" img="100005" des="纯正欧洲血统，刀刀暴击。" zhanli="280000" ad="1900" ap="20" arm="1800" mr="2000" adi="300" api="2" rating="2000" speed="300" steal="0" jianshang_per="" heal="0" duochong="0" level="25" HP="3" >
+<skill skillid="100049" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100050" skilllevel="1" condition="1" con1="2" con2="3" skillpri="2" />
+<skill skillid="100040" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100015" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100016" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="100006" bossname="狄米莉亚" img="100008" des="腹黑法师，很会使诈。" zhanli="420000" ad="20" ap="1500" arm="1700" mr="1700" adi="20" api="350" rating="100" speed="300" steal="0" jianshang_per="" heal="0" duochong="0" level="25" HP="2" >
+<skill skillid="100024" skilllevel="1" condition="1" con1="1" con2="2" skillpri="2" />
+<skill skillid="100051" skilllevel="1" condition="1" con1="2" con2="2" skillpri="1" />
+<skill skillid="100053" skilllevel="1" condition="1" con1="7" con2="6" skillpri="3" />
+</boss>
+<boss bossid="110001" bossname="永生者提姆" img="100001" des="原兽森林中的古老半神，拥有传说中的永生之酒。" zhanli="2400000" ad="10" ap="10" arm="4500" mr="4000" adi="1" api="1" rating="1500" speed="1500" steal="1" jianshang_per="30" heal="2500" duochong="500" level="37" HP="1" >
+<skill skillid="100001" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100002" skilllevel="1" condition="1" con1="2" con2="2" skillpri="2" />
+<skill skillid="100030" skilllevel="1" condition="1" con1="10" con2="10" skillpri="3" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="110002" bossname="长眠的恩底弥翁" img="100002" des="永恒梦境的守护者。" zhanli="600000" ad="500" ap="3500" arm="3500" mr="3000" adi="100" api="1000" rating="2000" speed="1000" steal="500" jianshang_per="10" heal="100" duochong="800" level="37" HP="2" >
+<skill skillid="100004" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100005" skilllevel="1" condition="1" con1="1" con2="4" skillpri="2" />
+<skill skillid="100031" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="110003" bossname="悲惨的提米" img="100003" des="身负痛苦的诅咒，在折磨中战斗着。" zhanli="1000000" ad="5000" ap="10" arm="4000" mr="3000" adi="1800" api="1" rating="1000" speed="1000" steal="500" jianshang_per="35" heal="1000" duochong="0" level="37" HP="2" >
+<skill skillid="100007" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100032" skilllevel="1" condition="1" con1="3" con2="3" skillpri="2" />
+<skill skillid="100008" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="110004" bossname="库兰的猛犬" img="100004" des="凯尔特的勇士，战斗力惊人，就是脸黑。" zhanli="280000" ad="6000" ap="20" arm="4000" mr="3000" adi="1600" api="1" rating="1000" speed="1000" steal="1000" jianshang_per="25" heal="0" duochong="" level="37" HP="8" >
+<skill skillid="100009" skilllevel="1" condition="1" con1="3" con2="2" skillpri="2" />
+<skill skillid="100010" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100011" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100034" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100012" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="110005" bossname="欧皇特使" img="100005" des="纯正欧洲血统，刀刀暴击。" zhanli="560000" ad="4800" ap="20" arm="4500" mr="4500" adi="1500" api="2" rating="5000" speed="1000" steal="1200" jianshang_per="25" heal="" duochong="" level="37" HP="4" >
+<skill skillid="100013" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100014" skilllevel="1" condition="1" con1="2" con2="3" skillpri="2" />
+<skill skillid="100035" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100015" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100016" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="110006" bossname="狄米莉亚" img="100008" des="腹黑法师，很会使诈。" zhanli="640000" ad="20" ap="3500" arm="4000" mr="4000" adi="20" api="1500" rating="100" speed="1000" steal="1000" jianshang_per="25" heal="" duochong="" level="37" HP="3" >
+<skill skillid="100026" skilllevel="1" condition="1" con1="1" con2="2" skillpri="2" />
+<skill skillid="100025" skilllevel="1" condition="1" con1="2" con2="2" skillpri="1" />
+<skill skillid="100037" skilllevel="1" condition="1" con1="7" con2="6" skillpri="3" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="110007" bossname="风之棉被王" img="100007" des="身披棉被的骑士之王，全身有风之结界加护。" zhanli="720000" ad="2000" ap="1000" arm="4000" mr="4000" adi="1500" api="20" rating="1500" speed="1000" steal="1000" jianshang_per="15" heal="" duochong="" level="37" HP="3" >
+<skill skillid="100021" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100022" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100023" skilllevel="1" condition="1" con1="3" con2="2" skillpri="2" />
+<skill skillid="100036" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="110008" bossname="巴萨卡" img="100009" des="充满怒火的狂战士，见人就打。" zhanli="1000000" ad="4000" ap="2000" arm="4000" mr="3500" adi="2400" api="11" rating="2500" speed="1000" steal="1500" jianshang_per="35" heal="" duochong="" level="37" HP="2" >
+<skill skillid="100027" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100028" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100029" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100038" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100039" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120001" bossname="永生者提姆" img="100001" des="原兽森林中的古老半神，拥有传说中的永生之酒。" zhanli="7500000" ad="10" ap="10" arm="10000" mr="8000" adi="1" api="1" rating="2000" speed="3000" steal="1" jianshang_per="60" heal="4000" duochong="1000" level="50" HP="5" >
+<skill skillid="100001" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100002" skilllevel="1" condition="1" con1="2" con2="2" skillpri="2" />
+<skill skillid="100030" skilllevel="1" condition="1" con1="10" con2="10" skillpri="3" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120002" bossname="长眠的恩底弥翁" img="100002" des="永恒梦境的守护者。" zhanli="6000000" ad="500" ap="10000" arm="10000" mr="8000" adi="100" api="4000" rating="2000" speed="3000" steal="500" jianshang_per="40" heal="100" duochong="1500" level="50" HP="6" >
+<skill skillid="100004" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100005" skilllevel="1" condition="1" con1="1" con2="3" skillpri="2" />
+<skill skillid="100041" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100031" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120003" bossname="悲惨的提米" img="100003" des="身负痛苦的诅咒，在折磨中战斗着。" zhanli="6000000" ad="10000" ap="10" arm="10000" mr="8000" adi="5000" api="1" rating="1000" speed="3000" steal="1000" jianshang_per="50" heal="2000" duochong="" level="50" HP="8" >
+<skill skillid="100007" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100032" skilllevel="1" condition="1" con1="3" con2="3" skillpri="2" />
+<skill skillid="100008" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100041" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120004" bossname="库兰的猛犬" img="100004" des="凯尔特的勇士，战斗力惊人，就是脸黑。" zhanli="4000000" ad="25000" ap="20" arm="10000" mr="8000" adi="5000" api="1" rating="1000" speed="2000" steal="1000" jianshang_per="50" heal="0" duochong="500" level="50" HP="12" >
+<skill skillid="100009" skilllevel="1" condition="1" con1="3" con2="2" skillpri="2" />
+<skill skillid="100010" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100011" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100034" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100012" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100041" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120005" bossname="欧皇特使" img="100005" des="纯正欧洲血统，刀刀暴击。" zhanli="5500000" ad="10000" ap="20" arm="10000" mr="8000" adi="5500" api="2" rating="5000" speed="2000" steal="1500" jianshang_per="50" heal="" duochong="" level="50" HP="6" >
+<skill skillid="100013" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100014" skilllevel="1" condition="1" con1="2" con2="3" skillpri="2" />
+<skill skillid="100035" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100015" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100016" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100041" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120006" bossname="狄米莉亚" img="100008" des="腹黑法师，很会使诈。" zhanli="5500000" ad="20" ap="6500" arm="10000" mr="8000" adi="20" api="6000" rating="100" speed="1800" steal="1000" jianshang_per="50" heal="" duochong="" level="40" HP="9" >
+<skill skillid="100026" skilllevel="1" condition="1" con1="1" con2="2" skillpri="2" />
+<skill skillid="100025" skilllevel="1" condition="1" con1="2" con2="2" skillpri="1" />
+<skill skillid="100037" skilllevel="1" condition="1" con1="7" con2="6" skillpri="3" />
+<skill skillid="100041" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120007" bossname="风之棉被王" img="100007" des="身披棉被的骑士之王，全身有风之结界加护。" zhanli="7500000" ad="1500" ap="1500" arm="30000" mr="20000" adi="12000" api="20" rating="2500" speed="2500" steal="1000" jianshang_per="35" heal="" duochong="" level="50" HP="6" >
+<skill skillid="100021" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100022" skilllevel="1" condition="0" con1="" con2="" skillpri="1" />
+<skill skillid="100023" skilllevel="1" condition="1" con1="3" con2="2" skillpri="2" />
+<skill skillid="100036" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100041" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+<boss bossid="120008" bossname="巴萨卡" img="100009" des="充满怒火的狂战士，见人就打。" zhanli="12500000" ad="12000" ap="3000" arm="10000" mr="8000" adi="8000" api="11" rating="3000" speed="2000" steal="2000" jianshang_per="55" heal="" duochong="500" level="50" HP="1" >
+<skill skillid="100027" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100028" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100029" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100038" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100039" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100041" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+<skill skillid="100054" skilllevel="1" condition="-1" con1="" con2="" skillpri="" />
+</boss>
+</data>

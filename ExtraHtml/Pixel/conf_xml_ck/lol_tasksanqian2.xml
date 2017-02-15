@@ -1,0 +1,25 @@
+<data>
+<sanqian id="302" activity="每日三签" >
+<order order="1" targetid="33" targetcount="1" rewardid="40006" rewardcount="1" />
+<order order="2" targetid="33" targetcount="2" rewardid="40010" rewardcount="1" />
+<order order="3" targetid="33" targetcount="3" rewardid="1002" rewardcount="50" />
+<order order="4" targetid="33" targetcount="1" rewardid="33001" rewardcount="2" />
+<order order="5" targetid="33" targetcount="2" rewardid="1002" rewardcount="50" />
+<order order="6" targetid="33" targetcount="3" rewardid="40014" rewardcount="1" />
+<order order="7" targetid="33" targetcount="1" rewardid="33037" rewardcount="2" />
+<order order="8" targetid="33" targetcount="2" rewardid="33010" rewardcount="2" />
+<order order="9" targetid="33" targetcount="3" rewardid="1002" rewardcount="50" />
+<order order="10" targetid="33" targetcount="1" rewardid="40006" rewardcount="1" />
+<order order="11" targetid="33" targetcount="2" rewardid="33007" rewardcount="1" />
+<order order="12" targetid="33" targetcount="3" rewardid="1002" rewardcount="50" />
+<order order="13" targetid="33" targetcount="1" rewardid="33178" rewardcount="5" />
+<order order="14" targetid="33" targetcount="2" rewardid="1002" rewardcount="50" />
+<order order="15" targetid="33" targetcount="3" rewardid="40020" rewardcount="1" />
+<order order="16" targetid="33" targetcount="1" rewardid="33004" rewardcount="1" />
+<order order="17" targetid="33" targetcount="2" rewardid="40014" rewardcount="1" />
+<order order="18" targetid="33" targetcount="3" rewardid="33009" rewardcount="1" />
+<order order="19" targetid="33" targetcount="1" rewardid="40019" rewardcount="1" />
+<order order="20" targetid="33" targetcount="2" rewardid="33002" rewardcount="3" />
+<order order="21" targetid="33" targetcount="3" rewardid="1002" rewardcount="100" />
+</sanqian>
+</data>

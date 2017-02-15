@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<message id="1" name="开心超人" maxlv="80" sex="男" attack="38" magnet="5" giant="5" sprint="1" ladder="5" currency="0.3" Characteristic="二段跳" skill="开心铁拳" skilldescription="使用主动冲刺一段时间|boss时使用攻击力增加50%" cooling="50" coolinglv="0.1" duration="1" durationlv="0.1" />
+<message id="2" name="甜心超人" maxlv="100" sex="女" attack="34" magnet="5" giant="5" sprint="1" ladder="5" currency="0.3" Characteristic="三段跳" skill="甜心保护罩" skilldescription="使用获得一个保护罩|boss时使用攻击力增加50%" cooling="60" coolinglv="0.1" duration="3" durationlv="0.1" />
+<message id="3" name="花心超人" maxlv="100" sex="男" attack="36" magnet="5" giant="5" sprint="1" ladder="5" currency="0.3" Characteristic="滑翔" skill="花心磁力" skilldescription="使用持续时间内获得强磁力效果能吸走怪物和宝箱|boss时开启攻击力增加50%" cooling="45" coolinglv="0.15" duration="3.5" durationlv="0.1" />
+<message id="4" name="粗心超人" maxlv="100" sex="男" attack="41" magnet="5" giant="5" sprint="1" ladder="5" currency="0.3" Characteristic="三段跳" skill="粗心飞弹" skilldescription="使用持续时间内前方所有硬币全部变成能量石|boss时开启攻击力增加50%" cooling="45" coolinglv="0.15" duration="3" durationlv="0.1" />
+<message id="5" name="小心超人" maxlv="120" sex="男" attack="44" magnet="5" giant="5" sprint="1" ladder="5" currency="0.3" Characteristic="滑翔" skill="小心分身" skilldescription="主动使用获得一个分身，分身能抵挡一次伤害，最多拥有两个分身|boss时开始攻速大幅提升（6-->10)" cooling="45" coolinglv="0.2" duration="3" durationlv="0.1" />
+<message id="6" name="伽罗" maxlv="120" sex="男" attack="43" magnet="5" giant="5" sprint="1" ladder="5" currency="0.3" Characteristic="三段跳" skill="变身" skilldescription="使用后随机获得一个强力效果|boss时开启攻击力增加50%" cooling="50" coolinglv="0.3" duration="3" durationlv="0.1" />
+<message id="0" name="0" maxlv="0" sex="0" attack="0" magnet="0" giant="0" sprint="0" ladder="0" currency="0" Characteristic="0" skill="0" skilldescription="0" cooling="0" coolinglv="0" duration="0" durationlv="0" />
+<message id="0" name="0" maxlv="0" sex="0" attack="0" magnet="0" giant="0" sprint="0" ladder="0" currency="0" Characteristic="0" skill="0" skilldescription="0" cooling="0" coolinglv="0" duration="0" durationlv="0" />
+</data>

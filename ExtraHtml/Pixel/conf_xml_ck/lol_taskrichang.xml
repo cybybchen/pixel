@@ -1,0 +1,35 @@
+<data>
+<richang id="401" activity="一掷千金" noserverid="" serverid="" targetid="2" img="activity406" starttime="2017-02-15 00:00:00" endtime="2017-02-22 23:59:59" >
+<order order="1" description="累计充值60钻石" consumeid="" targetcount="60" targetcount1="60" limit="" rewardid0="1002" rewardcount0="10" rewardid1="35001" rewardcount1="2" rewardid2="40115" rewardcount2="2" rewardid3="" rewardcount3="" />
+<order order="2" description="累计充值300钻石" consumeid="" targetcount="300" targetcount1="300" limit="" rewardid0="1002" rewardcount0="50" rewardid1="35001" rewardcount1="4" rewardid2="40115" rewardcount2="5" rewardid3="" rewardcount3="" />
+<order order="3" description="累计充值1000钻石" consumeid="" targetcount="1000" targetcount1="1000" limit="" rewardid0="1002" rewardcount0="150" rewardid1="35002" rewardcount1="2" rewardid2="40115" rewardcount2="8" rewardid3="" rewardcount3="" />
+<order order="4" description="累计充值3000钻石" consumeid="" targetcount="3000" targetcount1="3000" limit="" rewardid0="1002" rewardcount0="400" rewardid1="35002" rewardcount1="4" rewardid2="40115" rewardcount2="12" rewardid3="" rewardcount3="" />
+<order order="5" description="累计充值6000钻石" consumeid="" targetcount="6000" targetcount1="6000" limit="" rewardid0="1002" rewardcount0="600" rewardid1="35003" rewardcount1="2" rewardid2="40115" rewardcount2="16" rewardid3="" rewardcount3="" />
+<order order="6" description="累计充值12000钻石" consumeid="" targetcount="12000" targetcount1="12000" limit="" rewardid0="1002" rewardcount0="800" rewardid1="35003" rewardcount1="4" rewardid2="40115" rewardcount2="20" rewardid3="" rewardcount3="" />
+<order order="7" description="累计充值30000钻石" consumeid="" targetcount="30000" targetcount1="30000" limit="" rewardid0="1002" rewardcount0="1500" rewardid1="62013" rewardcount1="1" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+</richang>
+<richang id="402" activity="天道酬勤" noserverid="" serverid="" targetid="1" img="activity404" starttime="2017-02-15 00:00:00" endtime="2017-02-22 23:59:59" >
+<order order="1" description="累计登录1天" consumeid="" targetcount="1" targetcount1="1" limit="" rewardid0="36001" rewardcount0="1" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="2" description="累计登录2天" consumeid="" targetcount="2" targetcount1="2" limit="" rewardid0="36001" rewardcount0="1" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="3" description="累计登录3天" consumeid="" targetcount="3" targetcount1="3" limit="" rewardid0="36002" rewardcount0="1" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="4" description="累计登录4天" consumeid="" targetcount="4" targetcount1="4" limit="" rewardid0="36002" rewardcount0="1" rewardid1="22094" rewardcount1="10" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="5" description="累计登录6天" consumeid="" targetcount="6" targetcount1="6" limit="" rewardid0="36003" rewardcount0="1" rewardid1="22108" rewardcount1="5" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+</richang>
+<richang id="403" activity="征战天下" noserverid="" serverid="" targetid="10" img="activity405" starttime="2017-02-15 00:00:00" endtime="2017-02-22 23:59:59" >
+<order order="1" description="征战天下累计夺回矿点5次" consumeid="" targetcount="5" targetcount1="5" limit="" rewardid0="40019" rewardcount0="1" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="2" description="征战天下累计夺回矿点10次" consumeid="" targetcount="10" targetcount1="10" limit="" rewardid0="40019" rewardcount0="2" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="3" description="征战天下累计夺回矿点20次" consumeid="" targetcount="20" targetcount1="20" limit="" rewardid0="40020" rewardcount0="1" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="4" description="征战天下累计夺回矿点30次" consumeid="" targetcount="30" targetcount1="30" limit="" rewardid0="40020" rewardcount0="2" rewardid1="22097" rewardcount1="10" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="5" description="征战天下累计夺回矿点50次" consumeid="" targetcount="50" targetcount1="50" limit="" rewardid0="40021" rewardcount0="2" rewardid1="22108" rewardcount1="5" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+</richang>
+<richang id="404" activity="小红旗兑换" noserverid="" serverid="" targetid="35" img="activity453" starttime="2017-02-15 00:00:00" endtime="2017-02-22 23:59:59" >
+<order order="1" description="消耗1个小红旗兑换" consumeid="40115" targetcount="1" targetcount1="1" limit="10" rewardid0="33037" rewardcount0="5" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="2" description="消耗1个小红旗兑换" consumeid="40115" targetcount="1" targetcount1="1" limit="10" rewardid0="33004" rewardcount0="2" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="3" description="消耗1个小红旗兑换" consumeid="40115" targetcount="1" targetcount1="1" limit="10" rewardid0="33005" rewardcount0="1" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="4" description="消耗5个小红旗兑换" consumeid="40115" targetcount="5" targetcount1="5" limit="5" rewardid0="33006" rewardcount0="1" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="5" description="消耗5个小红旗兑换" consumeid="40115" targetcount="5" targetcount1="5" limit="10" rewardid0="22097" rewardcount0="10" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="6" description="消耗5个小红旗兑换" consumeid="40115" targetcount="5" targetcount1="5" limit="10" rewardid0="22094" rewardcount0="10" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="7" description="消耗8个小红旗兑换" consumeid="40115" targetcount="8" targetcount1="8" limit="5" rewardid0="22108" rewardcount0="10" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+<order order="8" description="消耗12个小红旗兑换" consumeid="40115" targetcount="12" targetcount1="12" limit="5" rewardid0="22036" rewardcount0="10" rewardid1="" rewardcount1="" rewardid2="" rewardcount2="" rewardid3="" rewardcount3="" />
+</richang>
+</data>

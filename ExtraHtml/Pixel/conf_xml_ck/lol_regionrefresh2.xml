@@ -1,0 +1,26 @@
+<data>
+<region id="1">
+<time 
+time="6" group="1" count="1" condition="0" enemyid="2101" />
+<time 
+time="18" group="1" count="1" condition="0" enemyid="2101" />
+</region>
+<region id="2">
+<time 
+time="6" group="1" count="1" condition="0" enemyid="2201" />
+<time 
+time="18" group="1" count="1" condition="0" enemyid="2201" />
+</region>
+<region id="3">
+<time 
+time="6" group="1" count="1" condition="0" enemyid="2301" />
+<time 
+time="18" group="1" count="1" condition="0" enemyid="2302" />
+</region>
+<region id="4">
+<time 
+time="6" group="1" count="1" condition="0" enemyid="2401" />
+<time 
+time="18" group="1" count="1" condition="0" enemyid="2401" />
+</region>
+</data>

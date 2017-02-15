@@ -1,0 +1,62 @@
+<data>
+<shop id="1" judge="1" judge1="101" >
+<loot position="1" will="1" />
+<loot position="2" will="1" />
+<loot position="3" will="2" />
+<loot position="4" will="2" />
+<loot position="5" will="4" />
+<loot position="6" will="4" />
+<loot position="7" will="5" />
+<loot position="8" will="5" />
+<loot position="9" will="11" />
+<loot position="10" will="14" />
+</shop>
+<shop id="2" judge="1" judge1="102" >
+<loot position="1" will="1" />
+<loot position="2" will="2" />
+<loot position="3" will="2" />
+<loot position="4" will="3" />
+<loot position="5" will="4" />
+<loot position="6" will="4" />
+<loot position="7" will="5" />
+<loot position="8" will="6" />
+<loot position="9" will="11" />
+<loot position="10" will="14" />
+</shop>
+<shop id="3" judge="1" judge1="103" >
+<loot position="1" will="1" />
+<loot position="2" will="2" />
+<loot position="3" will="3" />
+<loot position="4" will="15" />
+<loot position="5" will="5" />
+<loot position="6" will="6" />
+<loot position="7" will="6" />
+<loot position="8" will="9" />
+<loot position="9" will="12" />
+<loot position="10" will="14" />
+</shop>
+<shop id="4" judge="1" judge1="104" >
+<loot position="1" will="2" />
+<loot position="2" will="3" />
+<loot position="3" will="15" />
+<loot position="4" will="16" />
+<loot position="5" will="6" />
+<loot position="6" will="9" />
+<loot position="7" will="7" />
+<loot position="8" will="10" />
+<loot position="9" will="12" />
+<loot position="10" will="14" />
+</shop>
+<shop id="5" judge="1" judge1="105" >
+<loot position="1" will="2" />
+<loot position="2" will="3" />
+<loot position="3" will="15" />
+<loot position="4" will="16" />
+<loot position="5" will="7" />
+<loot position="6" will="10" />
+<loot position="7" will="10" />
+<loot position="8" will="8" />
+<loot position="9" will="13" />
+<loot position="10" will="14" />
+</shop>
+</data>

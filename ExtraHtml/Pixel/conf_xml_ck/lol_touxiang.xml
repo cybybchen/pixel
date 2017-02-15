@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<touxiang id="62001" name="高级贵族" img="50010" des="获取途径：成就“达到vip1”" />
+<touxiang id="62002" name="至尊贵族" img="50011" des="获取途径：成就“达到vip15”" />
+<touxiang id="62003" name="至尊王者" img="50009" des="获取途径：活动“天梯排名”" />
+<touxiang id="62004" name="战皇无双" img="50008" des="获取途径：活动“战斗力排名”" />
+<touxiang id="62005" name="天下我有" img="50001" des="获取途径：成就“累计拥有50个不同英雄”" />
+<touxiang id="62006" name="富甲天下" img="50002" des="获取途径：成就“累计钻石抽奖3000次”" />
+<touxiang id="62007" name="千年战帝" img="50003" des="获取途径：成就“通过普通难度第60-5关”" />
+<touxiang id="62008" name="英雄无敌" img="50004" des="获取途径：成就“战力达到400000”" />
+<touxiang id="62009" name="人间凶器" img="50005" des="获取途径：成就“天梯累计战胜对手3000次”" />
+<touxiang id="62010" name="血腥爆神" img="50006" des="获取途径：成就“征战世界累计夺回矿点1000次”" />
+<touxiang id="62011" name="铁血杀神" img="50007" des="获取途径：成就“征战世界累计打败boss500次”" />
+<touxiang id="62012" name="国王" img="50012" des="获取途径：日常活动" />
+<touxiang id="62013" name="皇后" img="50013" des="获取途径：日常活动" />
+<touxiang id="61001" name="基础头像" img="user_head_1" des="" />
+<touxiang id="61002" name="基础头像" img="user_head_2" des="" />
+<touxiang id="61003" name="基础头像" img="user_head_3" des="" />
+<touxiang id="61004" name="基础头像" img="user_head_4" des="" />
+<touxiang id="61005" name="基础头像" img="user_head_5" des="" />
+<touxiang id="61006" name="基础头像" img="user_head_6" des="" />
+<touxiang id="61007" name="基础头像" img="user_head_7" des="" />
+<touxiang id="61008" name="基础头像" img="user_head_8" des="" />
+<touxiang id="61009" name="基础头像" img="user_head_9" des="" />
+<touxiang id="61010" name="基础头像" img="user_head_10" des="" />
+<touxiang id="61011" name="基础头像" img="user_head_11" des="" />
+<touxiang id="61012" name="基础头像" img="user_head_12" des="" />
+<touxiang id="61013" name="基础头像" img="user_head_13" des="" />
+<touxiang id="61014" name="基础头像" img="user_head_14" des="" />
+<touxiang id="61015" name="基础头像" img="user_head_15" des="" />
+</data>

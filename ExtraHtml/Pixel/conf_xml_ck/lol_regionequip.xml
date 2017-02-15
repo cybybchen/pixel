@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<equip id="84001" name="失窃之宝" img="80010" rare="1" description="提高10%暴击，持续10分钟" skill="84001" />
+<equip id="84002" name="仲裁者印记" img="80010" rare="1" description="造成的伤害提高2%，持续10分钟" skill="84002" />
+<equip id="84003" name="血手" img="80010" rare="1" description="受到的伤害降低2%，持续10分钟" skill="84003" />
+<equip id="84004" name="武道棍" img="80010" rare="1" description="暴击伤害提高15%，持续10分钟" skill="84004" />
+<equip id="84005" name="武道短棍" img="80010" rare="1" description="速度提高1200点，持续10分钟" skill="84005" />
+<equip id="84006" name="血斧" img="80010" rare="1" description="攻击附加400点伤害，持续10分钟" skill="84006" />
+<equip id="84007" name="贵族圆环" img="80010" rare="1" description="暴击提高5%，速度提高800，暴击伤害提高8%，持续10分钟" skill="84007" />
+<equip id="84008" name="剧毒飞镖" img="80010" rare="1" description="降低敌人15%治疗效果，持续10分钟" skill="84008" />
+<equip id="84009" name="黑色兜帽" img="80010" rare="1" description="降低敌人10%暴击，持续10分钟" skill="84009" />
+<equip id="84010" name="野性箭袋" img="80010" rare="1" description="攻击时有20%几率使伤害提高20%，持续10分钟" skill="84010" />
+<equip id="84011" name="森林箭袋" img="80010" rare="1" description="速度提高10000，造成的伤害降低12%，持续10分钟" skill="84011" />
+<equip id="84012" name="魔火残骸" img="80010" rare="1" description="造成的伤害提高7%，受到的伤害提高4%，持续10分钟" skill="84012" />
+<equip id="84013" name="火焰结晶" img="80010" rare="1" description="法术强度提高5%，持续15分钟" skill="84013" />
+<equip id="84014" name="双手斧" img="80010" rare="1" description="攻击力提高5%，持续15分钟" skill="84014" />
+<equip id="84015" name="单手斧" img="80010" rare="1" description="物理穿透提高500，持续15分钟" skill="84015" />
+<equip id="84016" name="奥术结晶" img="80010" rare="1" description="法术穿透提高500，持续15分钟" skill="84016" />
+<equip id="84017" name="锁甲" img="80010" rare="1" description="降低400护甲，提高600攻击力，500法师，持续15分钟" skill="84017" />
+<equip id="84018" name="手枪" img="80010" rare="1" description="造成的伤害提高10%，暴击降低40%，持续15分钟" skill="84018" />
+<equip id="84019" name="电击棒" img="80010" rare="1" description="降低敌人1000速度，持续15分钟" skill="84019" />
+<equip id="84020" name="闪亮的砖头" img="80010" rare="1" description="每次攻击增加2%暴击，持续15分钟" skill="84020" />
+<equip id="84021" name="拐杖" img="80010" rare="1" description="每次攻击增加4%暴击伤害，持续15分钟" skill="84021" />
+<equip id="84022" name="木拐杖" img="80010" rare="1" description="每次攻击增加300速度，持续15分钟" skill="84022" />
+<equip id="84023" name="皇后之赐" img="80010" rare="1" description="每次攻击增加200攻击力和法术强度，持续15分钟" skill="84023" />
+<equip id="84024" name="公主之靴" img="80010" rare="1" description="每次攻击增加70物理穿透和法术穿透，持续15分钟" skill="84024" />
+<equip id="84025" name="国王之印" img="80010" rare="1" description="每次攻击增加300护甲，200魔抗，持续15分钟" skill="84025" />
+<equip id="84026" name="恶魔之核" img="80010" rare="1" description="全公会成员的护甲魔抗提高10%，持续30分钟" skill="84026" />
+<equip id="84027" name="魔化结晶" img="80010" rare="1" description="全公会成员的暴击提高8%，暴击伤害提高25%，持续30分钟" skill="84027" />
+<equip id="84028" name="灵翼" img="80010" rare="1" description="全公会成员造成的伤害提高6%，持续30分钟" skill="84028" />
+<equip id="84029" name="神棍" img="80010" rare="1" description="全公会成员受到的伤害降低5%，持续30分钟" skill="84029" />
+<equip id="84030" name="灵羽" img="80010" rare="1" description="全公会的治疗效果提高40%，持续30分钟" skill="84030" />
+</data>

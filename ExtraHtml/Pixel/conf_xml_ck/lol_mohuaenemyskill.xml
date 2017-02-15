@@ -1,0 +1,169 @@
+<data>
+<mohua mapid="1" mapname="守护丛林" >
+<stage stage="2" >
+<carduse carduse="60058" />
+</stage>
+<stage stage="3" >
+<carduse carduse="60049" />
+</stage>
+<stage stage="4" >
+<carduse carduse="60058" />
+</stage>
+<stage stage="6" >
+<carduse carduse="60049" />
+</stage>
+<stage stage="7" >
+<carduse carduse="60058" />
+</stage>
+<stage stage="9" >
+<carduse carduse="60049" />
+</stage>
+</mohua>
+<mohua mapid="2" mapname="虚空裂隙" >
+<stage stage="2" >
+<carduse carduse="60039" />
+</stage>
+<stage stage="4" >
+<carduse carduse="60038" />
+<carduse carduse="60047" />
+</stage>
+<stage stage="7" >
+<carduse carduse="60047" />
+<carduse carduse="60039" />
+</stage>
+<stage stage="9" >
+<carduse carduse="60016" />
+</stage>
+<stage stage="10" >
+<carduse carduse="60021" />
+</stage>
+</mohua>
+<mohua mapid="3" mapname="魄罗对决" >
+<stage stage="1" >
+<carduse carduse="60014" />
+</stage>
+<stage stage="3" >
+<carduse carduse="60014" />
+</stage>
+<stage stage="5" >
+<carduse carduse="60014" />
+</stage>
+<stage stage="9" >
+<carduse carduse="60022" />
+</stage>
+</mohua>
+<mohua mapid="4" mapname="香蕉大作战" >
+<stage stage="2" >
+<carduse carduse="60059" />
+</stage>
+<stage stage="3" >
+<carduse carduse="60001" />
+</stage>
+<stage stage="5" >
+<carduse carduse="60059" />
+</stage>
+<stage stage="6" >
+<carduse carduse="60001" />
+</stage>
+<stage stage="7" >
+<carduse carduse="60059" />
+</stage>
+<stage stage="9" >
+<carduse carduse="60001" />
+</stage>
+</mohua>
+<mohua mapid="5" mapname="转角遇到鬼" >
+<stage stage="2" >
+<carduse carduse="60019" />
+<carduse carduse="60050" />
+</stage>
+<stage stage="4" >
+<carduse carduse="60060" />
+</stage>
+<stage stage="5" >
+<carduse carduse="60031" />
+<carduse carduse="60056" />
+</stage>
+<stage stage="6" >
+<carduse carduse="60051" />
+</stage>
+<stage stage="7" >
+<carduse carduse="60059" />
+<carduse carduse="60055" />
+</stage>
+<stage stage="8" >
+<carduse carduse="60052" />
+</stage>
+<stage stage="9" >
+<carduse carduse="60021" />
+<carduse carduse="60053" />
+</stage>
+<stage stage="10" >
+<carduse carduse="60054" />
+</stage>
+</mohua>
+<mohua mapid="6" mapname="太阳井之心" >
+<stage stage="3" >
+<carduse carduse="60030" />
+</stage>
+<stage stage="4" >
+<carduse carduse="60033" />
+</stage>
+<stage stage="5" >
+<carduse carduse="60042" />
+</stage>
+<stage stage="6" >
+<carduse carduse="60031" />
+</stage>
+<stage stage="7" >
+<carduse carduse="60002" />
+</stage>
+<stage stage="8" >
+<carduse carduse="60022" />
+</stage>
+<stage stage="9" >
+<carduse carduse="60027" />
+<carduse carduse="60045" />
+</stage>
+<stage stage="10" >
+<carduse carduse="60035" />
+</stage>
+</mohua>
+<mohua mapid="7" mapname="跳跃的法力水晶" >
+<stage stage="3" >
+<carduse carduse="60060" />
+<carduse carduse="60033" />
+</stage>
+<stage stage="4" >
+<carduse carduse="60011" />
+</stage>
+<stage stage="6" >
+<carduse carduse="60013" />
+</stage>
+<stage stage="8" >
+<carduse carduse="60014" />
+</stage>
+<stage stage="10" >
+<carduse carduse="60015" />
+</stage>
+</mohua>
+<mohua mapid="8" mapname="锄强扶弱" >
+<stage stage="4" >
+<carduse carduse="60010" />
+<carduse carduse="60032" />
+</stage>
+<stage stage="5" >
+<carduse carduse="60058" />
+</stage>
+<stage stage="7" >
+<carduse carduse="60027" />
+<carduse carduse="60010" />
+</stage>
+<stage stage="9" >
+<carduse carduse="60060" />
+</stage>
+<stage stage="10" >
+<carduse carduse="60010" />
+</stage>
+</mohua>
+</data>

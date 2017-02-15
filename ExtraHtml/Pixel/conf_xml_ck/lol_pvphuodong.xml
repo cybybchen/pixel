@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<enemy id="3001" name="夏日元气少女" boss="1" starttime="2016-07-14 00:00:00" endtime="2016-07-27 23:59:59" />
+<enemy id="3002" name="夏日水着少女" boss="1" starttime="2016-07-28 00:00:00" endtime="2016-08-03 23:59:59" />
+<enemy id="3003" name="夏日洗澡狂魔" boss="1" starttime="2016-08-04 00:00:00" endtime="2016-08-10 23:59:59" />
+<enemy id="3004" name="夏日裸奔少年" boss="1" starttime="2016-08-11 00:00:00" endtime="2016-08-17 23:59:59" />
+<enemy id="3005" name="神奇的光头大汉" boss="1" starttime="2016-08-18 00:00:00" endtime="2016-08-24 23:59:59" />
+<enemy id="3006" name="卖瓜少女" boss="1" starttime="2016-08-25 00:00:00" endtime="2016-08-31 23:59:59" />
+<enemy id="3007" name="洗澡狂魔" boss="1" starttime="2016-09-01 00:00:00" endtime="2016-09-07 23:59:59" />
+<enemy id="3008" name="月球白色少女" boss="1" starttime="2016-09-15 00:00:00" endtime="2016-09-21 23:59:59" />
+<enemy id="3009" name="新年特使" boss="1" starttime="2017-01-23 00:00:00" endtime="2017-02-08 23:59:59" />
+</data>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<enemy id="1001" name="养蛇人" boss="1" weight="80" fieldid="101" buffcount="1" />
+<enemy id="1002" name="养蛇贵族" boss="1" weight="15" fieldid="101" buffcount="2" />
+<enemy id="1003" name="养蛇之王" boss="1" weight="5" fieldid="101" buffcount="5" />
+<enemy id="1004" name="峡谷迅捷螃蟹人" boss="1" weight="80" fieldid="102" buffcount="1" />
+<enemy id="1005" name="峡谷龟忍者" boss="1" weight="15" fieldid="102" buffcount="2" />
+<enemy id="1006" name="巨龟忍者" boss="1" weight="5" fieldid="102" buffcount="5" />
+<enemy id="1007" name="头盔人" boss="1" weight="80" fieldid="103" buffcount="1" />
+<enemy id="1008" name="钢盔人" boss="1" weight="15" fieldid="103" buffcount="2" />
+<enemy id="1009" name="帽子人" boss="1" weight="5" fieldid="103" buffcount="5" />
+<enemy id="1010" name="魔沼蛙养殖人" boss="1" weight="80" fieldid="104" buffcount="1" />
+<enemy id="1011" name="魔沼巨蛙养殖人" boss="1" weight="15" fieldid="104" buffcount="2" />
+<enemy id="1012" name="巨蛙领主" boss="1" weight="5" fieldid="104" buffcount="5" />
+<enemy id="1013" name="幽灵" boss="1" weight="80" fieldid="105" buffcount="1" />
+<enemy id="1014" name="大幽灵" boss="1" weight="15" fieldid="105" buffcount="2" />
+<enemy id="1015" name="千年幽灵" boss="1" weight="5" fieldid="105" buffcount="5" />
+</data>

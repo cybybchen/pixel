@@ -1,0 +1,129 @@
+<data>
+<equip 
+level="1" >
+<loot isequipment="0" weightall="100" itemid="27001" count="50" weight="100" />
+</equip>
+<equip 
+level="2" >
+<loot isequipment="0" weightall="100" itemid="27001" count="100" weight="100" />
+</equip>
+<equip 
+level="3" >
+<loot isequipment="0" weightall="100" itemid="27001" count="100" weight="100" />
+</equip>
+<equip 
+level="4" >
+<loot isequipment="0" weightall="100" itemid="27001" count="200" weight="100" />
+</equip>
+<equip 
+level="5" >
+<loot isequipment="0" weightall="100" itemid="27001" count="200" weight="100" />
+</equip>
+<equip 
+level="6" >
+<loot isequipment="0" weightall="100" itemid="27001" count="300" weight="100" />
+</equip>
+<equip 
+level="7" >
+<loot isequipment="0" weightall="100" itemid="27001" count="350" weight="100" />
+</equip>
+<equip 
+level="8" >
+<loot isequipment="0" weightall="100" itemid="27001" count="400" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27002" count="100" weight="5" />
+</equip>
+<equip 
+level="9" >
+<loot isequipment="0" weightall="100" itemid="27001" count="500" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27002" count="200" weight="5" />
+</equip>
+<equip 
+level="10" >
+<loot isequipment="0" weightall="100" itemid="27001" count="700" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27002" count="200" weight="10" />
+</equip>
+<equip 
+level="11" >
+<loot isequipment="0" weightall="100" itemid="27001" count="750" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27002" count="200" weight="15" />
+</equip>
+<equip 
+level="12" >
+<loot isequipment="0" weightall="100" itemid="27002" count="400" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="13" >
+<loot isequipment="0" weightall="100" itemid="27002" count="450" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="14" >
+<loot isequipment="0" weightall="100" itemid="27002" count="500" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="15" >
+<loot isequipment="0" weightall="100" itemid="27002" count="600" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="16" >
+<loot isequipment="0" weightall="100" itemid="27002" count="800" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="17" >
+<loot isequipment="0" weightall="100" itemid="27002" count="850" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27003" count="100" weight="5" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="18" >
+<loot isequipment="0" weightall="100" itemid="27002" count="900" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27003" count="200" weight="5" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="19" >
+<loot isequipment="0" weightall="100" itemid="27002" count="1100" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27003" count="200" weight="10" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="20" >
+<loot isequipment="0" weightall="100" itemid="27002" count="1200" weight="100" />
+<loot isequipment="0" weightall="100" itemid="27003" count="200" weight="15" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+</equip>
+<equip 
+level="21" >
+<loot isequipment="0" weightall="100" itemid="27003" count="400" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27002" count="1100" weight="100" />
+</equip>
+<equip 
+level="22" >
+<loot isequipment="0" weightall="100" itemid="27003" count="500" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27002" count="1100" weight="100" />
+</equip>
+<equip 
+level="23" >
+<loot isequipment="0" weightall="100" itemid="27003" count="650" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27002" count="1100" weight="100" />
+</equip>
+<equip 
+level="24" >
+<loot isequipment="0" weightall="100" itemid="27003" count="800" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27002" count="1100" weight="100" />
+</equip>
+<equip 
+level="25" >
+<loot isequipment="0" weightall="100" itemid="27003" count="1000" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27001" count="700" weight="100" />
+<loot isequipment="1" weightall="100" itemid="27002" count="1100" weight="100" />
+</equip>
+</data>

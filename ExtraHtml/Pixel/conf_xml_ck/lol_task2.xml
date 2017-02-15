@@ -1,0 +1,98 @@
+<data>
+<hero heroid="1" >
+<target targetid="11700" skip="7" >
+<order order="1" type="3" name="必杀战士流-英雄获取" des="获得赵信" targetcount="5" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="3" type="3" name="必杀战士流-英雄获取" des="获得嘉文四世" targetcount="63" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="5" type="3" name="必杀战士流-英雄获取" des="获得孙悟空" targetcount="79" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="7" type="3" name="必杀战士流-英雄获取" des="获得德莱厄斯" targetcount="97" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="9" type="3" name="必杀战士流-英雄获取" des="获得贾克斯" targetcount="39" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="11805" skip="2" >
+<order order="2" type="3" name="必杀战士流-英雄进阶" des="将赵信进阶到+5" targetcount="5" targetcount1="5" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="11807" skip="2" >
+<order order="4" type="3" name="必杀战士流-英雄进阶" des="将嘉文四世进阶到+7" targetcount="63" targetcount1="7" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="11809" skip="2" >
+<order order="6" type="3" name="必杀战士流-英雄进阶" des="将孙悟空进阶到+9" targetcount="79" targetcount1="9" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="11811" skip="2" >
+<order order="8" type="3" name="必杀战士流-英雄进阶" des="将德莱厄斯进阶到+11" targetcount="97" targetcount1="11" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="11813" skip="2" >
+<order order="10" type="3" name="必杀战士流-英雄进阶" des="将贾克斯进阶到+13" targetcount="39" targetcount1="13" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+</hero>
+<hero heroid="2" >
+<target targetid="21700" skip="7" >
+<order order="1" type="3" name="极速射手流-英雄获取" des="获得金克丝" targetcount="116" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="3" type="3" name="极速射手流-英雄获取" des="获得伊泽瑞尔" targetcount="11" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="5" type="3" name="极速射手流-英雄获取" des="获得厄运小姐" targetcount="1" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="7" type="3" name="极速射手流-英雄获取" des="获得韦鲁斯" targetcount="96" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="9" type="3" name="极速射手流-英雄获取" des="获得薇恩" targetcount="58" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="21805" skip="2" >
+<order order="2" type="3" name="极速射手流-英雄进阶" des="将金克丝进阶到+5" targetcount="116" targetcount1="5" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="21807" skip="2" >
+<order order="4" type="3" name="极速射手流-英雄进阶" des="将伊泽瑞尔进阶到+7" targetcount="11" targetcount1="7" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="21809" skip="2" >
+<order order="6" type="3" name="极速射手流-英雄进阶" des="将厄运小姐进阶到+9" targetcount="1" targetcount1="9" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="21811" skip="2" >
+<order order="8" type="3" name="极速射手流-英雄进阶" des="将韦鲁斯进阶到+11" targetcount="96" targetcount1="11" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="21813" skip="2" >
+<order order="10" type="3" name="极速射手流-英雄进阶" des="将薇恩进阶到+13" targetcount="58" targetcount1="13" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+</hero>
+<hero heroid="3" >
+<target targetid="31700" skip="7" >
+<order order="1" type="3" name="刺客法师流-英雄获取" des="获得安妮" targetcount="41" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="3" type="3" name="刺客法师流-英雄获取" des="获得崔斯特" targetcount="24" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="5" type="3" name="刺客法师流-英雄获取" des="获得阿兹尔" targetcount="121" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="7" type="3" name="刺客法师流-英雄获取" des="获得菲兹" targetcount="86" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="9" type="3" name="刺客法师流-英雄获取" des="获得卡特琳娜" targetcount="75" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="31805" skip="2" >
+<order order="2" type="3" name="刺客法师流-英雄进阶" des="将安妮进阶到+5" targetcount="41" targetcount1="5" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="31807" skip="2" >
+<order order="4" type="3" name="刺客法师流-英雄进阶" des="将崔斯特进阶到+7" targetcount="24" targetcount1="7" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="31809" skip="2" >
+<order order="6" type="3" name="刺客法师流-英雄进阶" des="将阿兹尔进阶到+9" targetcount="121" targetcount1="9" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="31811" skip="2" >
+<order order="8" type="3" name="刺客法师流-英雄进阶" des="将菲兹进阶到+11" targetcount="86" targetcount1="11" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="31813" skip="2" >
+<order order="10" type="3" name="刺客法师流-英雄进阶" des="将卡特琳娜进阶到+13" targetcount="75" targetcount1="13" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+</hero>
+<hero heroid="4" >
+<target targetid="41700" skip="7" >
+<order order="1" type="3" name="核心法师流-英雄获取" des="获得古拉加斯" targetcount="10" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="3" type="3" name="核心法师流-英雄获取" des="获得伊丽丝" targetcount="105" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="5" type="3" name="核心法师流-英雄获取" des="获得璐璐" targetcount="94" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="7" type="3" name="核心法师流-英雄获取" des="获得阿狸" targetcount="88" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+<order order="9" type="3" name="核心法师流-英雄获取" des="获得锤石" targetcount="108" targetcount1="" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="41805" skip="2" >
+<order order="2" type="3" name="核心法师流-英雄进阶" des="将古拉加斯进阶到+5" targetcount="10" targetcount1="5" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="41807" skip="2" >
+<order order="4" type="3" name="核心法师流-英雄进阶" des="将伊丽丝进阶到+7" targetcount="105" targetcount1="7" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="41809" skip="2" >
+<order order="6" type="3" name="核心法师流-英雄进阶" des="将璐璐进阶到+9" targetcount="94" targetcount1="9" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="41811" skip="2" >
+<order order="8" type="3" name="核心法师流-英雄进阶" des="将阿狸进阶到+11" targetcount="88" targetcount1="11" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+<target targetid="41813" skip="2" >
+<order order="10" type="3" name="核心法师流-英雄进阶" des="将锤石进阶到+13" targetcount="108" targetcount1="13" rewardid1="1002" rewardcount1="25" rewardid2="" rewardcount2="" />
+</target>
+</hero>
+</data>

@@ -1,0 +1,788 @@
+<data>
+<id levelid="1001" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1002" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1003" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1004" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1005" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1010" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="1015" >
+<playerskill skilltype="1" skillid="51038" />
+<enemyskill />
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="1020" >
+<playerskill skilltype="1" skillid="51041" />
+<enemyskill />
+<playerskill skilltype="1" skillid="51038" />
+<enemyskill />
+</id>
+<id levelid="1021" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="1022" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="1023" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="1024" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="1025" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="1030" >
+<playerskill skilltype="1" skillid="51040" />
+<enemyskill />
+</id>
+<id levelid="1035" >
+<playerskill skilltype="1" skillid="51039" />
+<enemyskill />
+</id>
+<id levelid="1040" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+<playerskill skilltype="1" skillid="51038" />
+<enemyskill />
+</id>
+<id levelid="1045" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="1046" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1047" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1048" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1049" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="1050" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+<playerskill skilltype="1" skillid="51038" />
+<enemyskill />
+</id>
+<id levelid="1055" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="1060" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="1066" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="1067" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="1068" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="1069" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="1070" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="1076" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="1077" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="1078" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="1079" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="1080" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="1086" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="1087" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="1088" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="1089" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="1090" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="1096" >
+<playerskill skilltype="1" skillid="51050" />
+<enemyskill />
+</id>
+<id levelid="1097" >
+<playerskill skilltype="1" skillid="51050" />
+<enemyskill />
+</id>
+<id levelid="1098" >
+<playerskill skilltype="1" skillid="51050" />
+<enemyskill />
+</id>
+<id levelid="1099" >
+<playerskill skilltype="1" skillid="51050" />
+<enemyskill />
+</id>
+<id levelid="1100" >
+<playerskill skilltype="1" skillid="51050" />
+<enemyskill />
+</id>
+<id levelid="1106" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="1107" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="1108" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="1109" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="1110" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="1116" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="1117" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="1118" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="1119" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="1120" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="1126" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="1127" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="1128" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="1129" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="1130" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="2021" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="2022" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="2023" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="2024" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="2025" >
+<playerskill skilltype="1" skillid="51036" />
+<enemyskill />
+</id>
+<id levelid="2026" >
+<playerskill skilltype="1" skillid="51040" />
+<enemyskill />
+</id>
+<id levelid="2027" >
+<playerskill skilltype="1" skillid="51040" />
+<enemyskill />
+</id>
+<id levelid="2028" >
+<playerskill skilltype="1" skillid="51040" />
+<enemyskill />
+</id>
+<id levelid="2029" >
+<playerskill skilltype="1" skillid="51040" />
+<enemyskill />
+</id>
+<id levelid="2030" >
+<playerskill skilltype="1" skillid="51040" />
+<enemyskill />
+</id>
+<id levelid="2031" >
+<playerskill skilltype="1" skillid="51039" />
+<enemyskill />
+</id>
+<id levelid="2032" >
+<playerskill skilltype="1" skillid="51039" />
+<enemyskill />
+</id>
+<id levelid="2033" >
+<playerskill skilltype="1" skillid="51039" />
+<enemyskill />
+</id>
+<id levelid="2034" >
+<playerskill skilltype="1" skillid="51039" />
+<enemyskill />
+</id>
+<id levelid="2035" >
+<playerskill skilltype="1" skillid="51039" />
+<enemyskill />
+</id>
+<id levelid="2036" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="2037" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="2038" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="2039" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="2040" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="2041" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="2042" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="2043" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="2044" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="2045" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="2046" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="2047" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="2048" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="2049" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="2050" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="2051" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="2052" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="2053" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="2054" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="2055" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="2056" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2057" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2058" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2059" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2060" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2066" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="2067" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="2068" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="2069" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="2070" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="2076" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="2077" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="2078" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="2079" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="2080" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="2086" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="2087" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="2088" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="2089" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="2090" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="2096" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2097" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2098" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2099" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2100" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="2106" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="2107" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="2108" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="2109" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="2110" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="2116" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="2117" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="2118" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="2119" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="2120" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="2126" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="2127" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="2128" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="2129" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="2130" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="3036" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="3037" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="3038" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="3039" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="3040" >
+<playerskill skilltype="1" skillid="51043" />
+<enemyskill />
+</id>
+<id levelid="3041" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="3042" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="3043" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="3044" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="3045" >
+<playerskill skilltype="1" skillid="51042" />
+<enemyskill />
+</id>
+<id levelid="3046" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="3047" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="3048" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="3049" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="3050" >
+<playerskill skilltype="1" skillid="51035" />
+<enemyskill />
+</id>
+<id levelid="3051" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="3052" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="3053" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="3054" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="3055" >
+<playerskill skilltype="1" skillid="51037" />
+<enemyskill />
+</id>
+<id levelid="3056" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3057" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3058" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3059" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3060" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3066" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="3067" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="3068" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="3069" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="3070" >
+<playerskill skilltype="1" skillid="51047" />
+<enemyskill />
+</id>
+<id levelid="3076" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="3077" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="3078" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="3079" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="3080" >
+<playerskill skilltype="1" skillid="51048" />
+<enemyskill />
+</id>
+<id levelid="3086" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="3087" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="3088" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="3089" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="3090" >
+<playerskill skilltype="1" skillid="51049" />
+<enemyskill />
+</id>
+<id levelid="3096" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3097" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3098" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3099" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3100" >
+<playerskill skilltype="1" skillid="51051" />
+<enemyskill />
+</id>
+<id levelid="3106" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="3107" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="3108" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="3109" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="3110" >
+<playerskill skilltype="0" skillid="51044" />
+<enemyskill />
+</id>
+<id levelid="3116" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="3117" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="3118" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="3119" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="3120" >
+<playerskill skilltype="0" skillid="51045" />
+<enemyskill />
+</id>
+<id levelid="3126" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="3127" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="3128" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="3129" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+<id levelid="3130" >
+<playerskill skilltype="0" skillid="51046" />
+<enemyskill />
+</id>
+</data>

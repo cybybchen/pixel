@@ -1,0 +1,178 @@
+<data>
+<mohua mapid="1" mapname="守护丛林" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+<mohua mapid="2" mapname="虚空裂隙" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+<mohua mapid="3" mapname="魄罗对决" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+<mohua mapid="4" mapname="香蕉大作战" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+<mohua mapid="5" mapname="转角遇到鬼" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+<mohua mapid="6" mapname="太阳井之心" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+<mohua mapid="7" mapname="跳跃的法力水晶" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+<mohua mapid="8" mapname="锄强扶弱" >
+<hp consumehp="20" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="40" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="60" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="80" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+<hp consumehp="100" >
+<carduse item="1001" itemcount="1" />
+<carduse item="1001" itemcount="1" />
+</hp>
+</mohua>
+</data>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<level level="1" time="600" limit="5" />
+<level level="2" time="1800" limit="2" />
+<level level="3" time="3600" limit="1" />
+</data>

@@ -1,0 +1,50 @@
+<data>
+<region id="1">
+<position position="101" x="128" y="1310" />
+<position position="102" x="126" y="1607" />
+<position position="103" x="258" y="1647" />
+<position position="104" x="434" y="1606" />
+<position position="105" x="127" y="1766" />
+<position position="106" x="546" y="1721" />
+<position position="107" x="192" y="1847" />
+<position position="108" x="481" y="1902" />
+<position position="109" x="238" y="1983" />
+<position position="110" x="106" y="2039" />
+</region>
+<region id="2">
+<position position="201" x="196" y="192" />
+<position position="202" x="460" y="242" />
+<position position="203" x="84" y="350" />
+<position position="204" x="172" y="515" />
+<position position="205" x="392" y="470" />
+<position position="206" x="547" y="421" />
+<position position="207" x="107" y="697" />
+<position position="208" x="264" y="649" />
+<position position="209" x="152" y="852" />
+<position position="210" x="305" y="816" />
+</region>
+<region id="3">
+<position position="301" x="715" y="169" />
+<position position="302" x="757" y="313" />
+<position position="303" x="1149" y="404" />
+<position position="304" x="761" y="491" />
+<position position="305" x="1022" y="491" />
+<position position="306" x="892" y="586" />
+<position position="307" x="1150" y="605" />
+<position position="308" x="761" y="696" />
+<position position="309" x="1023" y="699" />
+<position position="310" x="1192" y="810" />
+</region>
+<region id="4">
+<position position="401" x="1128" y="1228" />
+<position position="402" x="804" y="1540" />
+<position position="403" x="957" y="1518" />
+<position position="404" x="1150" y="1540" />
+<position position="405" x="913" y="1645" />
+<position position="406" x="761" y="1722" />
+<position position="407" x="1130" y="1834" />
+<position position="408" x="735" y="1851" />
+<position position="409" x="891" y="1976" />
+<position position="410" x="1078" y="2012" />
+</region>
+</data>

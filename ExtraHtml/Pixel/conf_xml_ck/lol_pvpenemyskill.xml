@@ -1,0 +1,89 @@
+<data>
+<enemy id="1001" name="养蛇人" img="101" boss="1" description="路边的一个卖蛇的而已。" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70002" skillname="撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70020" skillname="暴击光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1002" name="养蛇贵族" img="102" boss="1" description="靠卖蛇赚了点小钱的人。" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70002" skillname="撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70018" skillname="精英光环" unlocklevel="10" skillup="10" />
+<skill skillid="70020" skillname="暴击光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1003" name="养蛇之王" img="103" boss="1" description="与石油大王，钢铁大王同等级的大人物。" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70003" skillname="咆哮" unlocklevel="10" skillup="10" />
+<skill skillid="70019" skillname="领主光环" unlocklevel="10" skillup="10" />
+<skill skillid="70020" skillname="暴击光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1004" name="峡谷迅捷螃蟹人" img="104" boss="1" description="一个螃蟹能跑这么快？这肯定是螃蟹人！" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70002" skillname="撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70021" skillname="物抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1005" name="峡谷龟忍者" img="105" boss="1" description="峡谷中不仅有螃蟹，还有龟，忍者神龟！" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70002" skillname="撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70018" skillname="精英光环" unlocklevel="10" skillup="10" />
+<skill skillid="70021" skillname="物抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1006" name="巨龟忍者" img="106" boss="1" description="这个忍者龟就有点大了。。。" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70003" skillname="咆哮" unlocklevel="10" skillup="10" />
+<skill skillid="70019" skillname="领主光环" unlocklevel="10" skillup="10" />
+<skill skillid="70021" skillname="物抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1007" name="头盔人" img="107" boss="1" description="戴着头盔的人。。" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70002" skillname="撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70022" skillname="魔抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1008" name="钢盔人" img="108" boss="1" description="戴着钢盔的人。。" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70002" skillname="撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70018" skillname="精英光环" unlocklevel="10" skillup="10" />
+<skill skillid="70022" skillname="魔抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1009" name="帽子人" img="109" boss="1" description="戴着帽子的人。。咦。是绿的" ><skill skillid="70001" skillname="爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70003" skillname="咆哮" unlocklevel="10" skillup="10" />
+<skill skillid="70019" skillname="领主光环" unlocklevel="10" skillup="10" />
+<skill skillid="70022" skillname="魔抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1010" name="魔沼蛙养殖人" img="110" boss="1" description="热爱养殖一种奇怪的两栖类动物，貌似还带毒" ><skill skillid="70004" skillname="剧毒爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70005" skillname="剧毒撕咬" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1011" name="魔沼巨蛙养殖人" img="111" boss="1" description="养殖着巨型蛙类也是需要一定勇气的。。。" ><skill skillid="70004" skillname="剧毒爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70005" skillname="剧毒撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70018" skillname="精英光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1012" name="巨蛙领主" img="112" boss="1" description="当巨蛙突然变异，就翻身做主人了。" ><skill skillid="70004" skillname="剧毒爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70006" skillname="剧毒咆哮" unlocklevel="10" skillup="10" />
+<skill skillid="70019" skillname="领主光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1013" name="幽灵" img="113" boss="1" description="小心幽灵！" ><skill skillid="70007" skillname="魔化爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70008" skillname="魔化撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70023" skillname="魔攻光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1014" name="大幽灵" img="114" boss="1" description="幽灵变大了的话或许就没那么可怕了吧。（雾）" ><skill skillid="70007" skillname="魔化爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70008" skillname="魔化撕咬" unlocklevel="10" skillup="10" />
+<skill skillid="70018" skillname="精英光环" unlocklevel="10" skillup="10" />
+<skill skillid="70023" skillname="魔攻光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="1015" name="千年幽灵" img="115" boss="1" description="能碰上千年老幽灵，朋友你赚大了。。。" ><skill skillid="70007" skillname="魔化爪击" unlocklevel="10" skillup="10" />
+<skill skillid="70009" skillname="魔化咆哮" unlocklevel="10" skillup="10" />
+<skill skillid="70019" skillname="领主光环" unlocklevel="10" skillup="10" />
+<skill skillid="70023" skillname="魔攻光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="2016" name="艾希" img="31" boss="1" description="专注于射箭的异族弓箭手，拥有敏锐的洞察力，自称瞄得很稳。" ><skill skillid="70010" skillname="万箭齐发" unlocklevel="10" skillup="10" />
+<skill skillid="70011" skillname="冰霜射击" unlocklevel="10" skillup="10" />
+<skill skillid="70024" skillname="王者光环" unlocklevel="10" skillup="10" />
+<skill skillid="70021" skillname="物抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="2017" name="瑞兹" img="7" boss="1" description="光头雷电法王，脑袋上印着神秘的符文，不时地放出电火花。" ><skill skillid="70012" skillname="法术涌动" unlocklevel="10" skillup="10" />
+<skill skillid="70013" skillname="符文禁锢" unlocklevel="10" skillup="10" />
+<skill skillid="70024" skillname="王者光环" unlocklevel="10" skillup="10" />
+<skill skillid="70022" skillname="魔抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="2018" name="盖伦" img="29" boss="1" description="喜欢躲在草丛中，最常用的一招是将大宝剑从天而降。" ><skill skillid="70014" skillname="德玛西亚正义" unlocklevel="10" skillup="10" />
+<skill skillid="70015" skillname="德玛西亚万岁" unlocklevel="10" skillup="10" />
+<skill skillid="70024" skillname="王者光环" unlocklevel="10" skillup="10" />
+<skill skillid="70021" skillname="物抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+<enemy id="2019" name="卡牌" img="3" boss="1" description="经常在等待游戏载入时玩斗地主的赌瘾少年，玩的一手好牌。" ><skill skillid="70016" skillname="万能牌" unlocklevel="10" skillup="10" />
+<skill skillid="70017" skillname="幸运签" unlocklevel="10" skillup="10" />
+<skill skillid="70024" skillname="王者光环" unlocklevel="10" skillup="10" />
+<skill skillid="70022" skillname="魔抗光环" unlocklevel="10" skillup="10" />
+</enemy>
+</data>

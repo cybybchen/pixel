@@ -1,0 +1,217 @@
+<data>
+<id id="1" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40002" />
+<skill qianghualevel="16" qianghuaskillid="40030" />
+</id>
+<id id="5" >
+<skill qianghualevel="6" qianghuaskillid="40023" />
+<skill qianghualevel="11" qianghuaskillid="40031" />
+<skill qianghualevel="16" qianghuaskillid="40002" />
+</id>
+<id id="8" >
+<skill qianghualevel="6" qianghuaskillid="40009" />
+<skill qianghualevel="11" qianghuaskillid="40008" />
+<skill qianghualevel="16" qianghuaskillid="40032" />
+</id>
+<id id="9" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40020" />
+<skill qianghualevel="16" qianghuaskillid="40016" />
+</id>
+<id id="10" >
+<skill qianghualevel="6" qianghuaskillid="40007" />
+<skill qianghualevel="11" qianghuaskillid="40033" />
+<skill qianghualevel="16" qianghuaskillid="40024" />
+</id>
+<id id="11" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40020" />
+<skill qianghualevel="16" qianghuaskillid="40034" />
+</id>
+<id id="17" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40023" />
+<skill qianghualevel="16" qianghuaskillid="40035" />
+</id>
+<id id="24" >
+<skill qianghualevel="6" qianghuaskillid="40011" />
+<skill qianghualevel="11" qianghuaskillid="40018" />
+<skill qianghualevel="16" qianghuaskillid="40036" />
+</id>
+<id id="27" >
+<skill qianghualevel="6" qianghuaskillid="40021" />
+<skill qianghualevel="11" qianghuaskillid="40008" />
+<skill qianghualevel="16" qianghuaskillid="40037" />
+</id>
+<id id="32" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40002" />
+<skill qianghualevel="16" qianghuaskillid="40022" />
+</id>
+<id id="36" >
+<skill qianghualevel="6" qianghuaskillid="40017" />
+<skill qianghualevel="11" qianghuaskillid="40018" />
+<skill qianghualevel="16" qianghuaskillid="40038" />
+</id>
+<id id="38" >
+<skill qianghualevel="6" qianghuaskillid="40009" />
+<skill qianghualevel="11" qianghuaskillid="40008" />
+<skill qianghualevel="16" qianghuaskillid="40039" />
+</id>
+<id id="39" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40040" />
+<skill qianghualevel="16" qianghuaskillid="40010" />
+</id>
+<id id="40" >
+<skill qianghualevel="6" qianghuaskillid="40017" />
+<skill qianghualevel="11" qianghuaskillid="40014" />
+<skill qianghualevel="16" qianghuaskillid="40041" />
+</id>
+<id id="41" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40004" />
+<skill qianghualevel="16" qianghuaskillid="40042" />
+</id>
+<id id="42" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40002" />
+<skill qianghualevel="16" qianghuaskillid="40043" />
+</id>
+<id id="48" >
+<skill qianghualevel="6" qianghuaskillid="40021" />
+<skill qianghualevel="11" qianghuaskillid="40006" />
+<skill qianghualevel="16" qianghuaskillid="40044" />
+</id>
+<id id="50" >
+<skill qianghualevel="6" qianghuaskillid="40021" />
+<skill qianghualevel="11" qianghuaskillid="40022" />
+<skill qianghualevel="16" qianghuaskillid="40035" />
+</id>
+<id id="51" >
+<skill qianghualevel="6" qianghuaskillid="40009" />
+<skill qianghualevel="11" qianghuaskillid="40010" />
+<skill qianghualevel="16" qianghuaskillid="40045" />
+</id>
+<id id="52" >
+<skill qianghualevel="6" qianghuaskillid="40017" />
+<skill qianghualevel="11" qianghuaskillid="40004" />
+<skill qianghualevel="16" qianghuaskillid="40035" />
+</id>
+<id id="55" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40004" />
+<skill qianghualevel="16" qianghuaskillid="40046" />
+</id>
+<id id="58" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40002" />
+<skill qianghualevel="16" qianghuaskillid="40014" />
+</id>
+<id id="60" >
+<skill qianghualevel="6" qianghuaskillid="40017" />
+<skill qianghualevel="11" qianghuaskillid="40004" />
+<skill qianghualevel="16" qianghuaskillid="40047" />
+</id>
+<id id="61" >
+<skill qianghualevel="6" qianghuaskillid="40009" />
+<skill qianghualevel="11" qianghuaskillid="40006" />
+<skill qianghualevel="16" qianghuaskillid="40048" />
+</id>
+<id id="63" >
+<skill qianghualevel="6" qianghuaskillid="40023" />
+<skill qianghualevel="11" qianghuaskillid="40049" />
+<skill qianghualevel="16" qianghuaskillid="40010" />
+</id>
+<id id="72" >
+<skill qianghualevel="6" qianghuaskillid="40011" />
+<skill qianghualevel="11" qianghuaskillid="40008" />
+<skill qianghualevel="16" qianghuaskillid="40050" />
+</id>
+<id id="74" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40051" />
+<skill qianghualevel="16" qianghuaskillid="40004" />
+</id>
+<id id="75" >
+<skill qianghualevel="6" qianghuaskillid="40011" />
+<skill qianghualevel="11" qianghuaskillid="40012" />
+<skill qianghualevel="16" qianghuaskillid="40052" />
+</id>
+<id id="76" >
+<skill qianghualevel="6" qianghuaskillid="40011" />
+<skill qianghualevel="11" qianghuaskillid="40016" />
+<skill qianghualevel="16" qianghuaskillid="40053" />
+</id>
+<id id="78" >
+<skill qianghualevel="6" qianghuaskillid="40019" />
+<skill qianghualevel="11" qianghuaskillid="40004" />
+<skill qianghualevel="16" qianghuaskillid="40024" />
+</id>
+<id id="79" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40054" />
+<skill qianghualevel="16" qianghuaskillid="40002" />
+</id>
+<id id="82" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40002" />
+<skill qianghualevel="16" qianghuaskillid="40055" />
+</id>
+<id id="84" >
+<skill qianghualevel="6" qianghuaskillid="40023" />
+<skill qianghualevel="11" qianghuaskillid="40008" />
+<skill qianghualevel="16" qianghuaskillid="40056" />
+</id>
+<id id="86" >
+<skill qianghualevel="6" qianghuaskillid="40023" />
+<skill qianghualevel="11" qianghuaskillid="40057" />
+<skill qianghualevel="16" qianghuaskillid="40012" />
+</id>
+<id id="88" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40004" />
+<skill qianghualevel="16" qianghuaskillid="40058" />
+</id>
+<id id="94" >
+<skill qianghualevel="6" qianghuaskillid="40017" />
+<skill qianghualevel="11" qianghuaskillid="40059" />
+<skill qianghualevel="16" qianghuaskillid="40022" />
+</id>
+<id id="96" >
+<skill qianghualevel="6" qianghuaskillid="40009" />
+<skill qianghualevel="11" qianghuaskillid="40060" />
+<skill qianghualevel="16" qianghuaskillid="40002" />
+</id>
+<id id="97" >
+<skill qianghualevel="6" qianghuaskillid="40019" />
+<skill qianghualevel="11" qianghuaskillid="40002" />
+<skill qianghualevel="16" qianghuaskillid="40061" />
+</id>
+<id id="105" >
+<skill qianghualevel="6" qianghuaskillid="40019" />
+<skill qianghualevel="11" qianghuaskillid="40018" />
+<skill qianghualevel="16" qianghuaskillid="40062" />
+</id>
+<id id="108" >
+<skill qianghualevel="6" qianghuaskillid="40013" />
+<skill qianghualevel="11" qianghuaskillid="40006" />
+<skill qianghualevel="16" qianghuaskillid="40063" />
+</id>
+<id id="116" >
+<skill qianghualevel="6" qianghuaskillid="40009" />
+<skill qianghualevel="11" qianghuaskillid="40020" />
+<skill qianghualevel="16" qianghuaskillid="40064" />
+</id>
+<id id="117" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40065" />
+<skill qianghualevel="16" qianghuaskillid="40010" />
+</id>
+<id id="121" >
+<skill qianghualevel="6" qianghuaskillid="40015" />
+<skill qianghualevel="11" qianghuaskillid="40004" />
+<skill qianghualevel="16" qianghuaskillid="40016" />
+</id>
+</data>

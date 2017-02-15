@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<rmb id="1" type="1" costid="1008" rmb="6" itemid="1002" zuanshi="60" name="小份钻石" img="recharge-1" description="60钻石" />
+<rmb id="2" type="1" costid="1008" rmb="30" itemid="1002" zuanshi="300" name="大份钻石" img="recharge-2" description="300钻石" />
+<rmb id="3" type="1" costid="1008" rmb="98" itemid="1002" zuanshi="980" name="一袋钻石" img="recharge-3" description="980钻石" />
+<rmb id="4" type="1" costid="1008" rmb="198" itemid="1002" zuanshi="1980" name="大袋钻石" img="recharge-4" description="1980钻石" />
+<rmb id="5" type="1" costid="1008" rmb="328" itemid="1002" zuanshi="3280" name="一箱钻石" img="recharge-5" description="3280钻石" />
+<rmb id="6" type="1" costid="1008" rmb="648" itemid="1002" zuanshi="6480" name="大箱钻石" img="recharge-6" description="6480钻石" />
+<rmb id="7" type="2" costid="1008" rmb="30" itemid="45001" zuanshi="0" name="1星猎人礼包" img="libao_2_1" description="包含3个1星猎人和900K经验" />
+<rmb id="8" type="2" costid="1008" rmb="98" itemid="45002" zuanshi="0" name="3星猎人礼包" img="libao_2_2" description="包含3个3星猎人和50M经验" />
+<rmb id="9" type="2" costid="1008" rmb="328" itemid="45003" zuanshi="0" name="5星猎人礼包" img="libao_2_3" description="包含3个5星猎人和500M经验" />
+<rmb id="10" type="2" costid="1008" rmb="30" itemid="45004" zuanshi="0" name="初级钻石礼包" img="libao_4_1" description="包含300钻石，1000金币和2000经验" />
+<rmb id="11" type="2" costid="1008" rmb="88" itemid="45005" zuanshi="0" name="高级钻石礼包" img="libao_4_2" description="包含880钻石，3000金币和6000经验" />
+<rmb id="12" type="2" costid="1008" rmb="68" itemid="45006" zuanshi="0" name="魄罗礼包" img="libao_4_3" description="包含10个魄罗宝箱" />
+<rmb id="13" type="2" costid="1008" rmb="198" itemid="45007" zuanshi="0" name="超级魄罗礼包" img="libao_4_4" description="包含10个超级魄罗宝箱" />
+<rmb id="14" type="2" costid="1008" rmb="30" itemid="45008" zuanshi="0" name="蓝色装备礼包" img="libao_4_5" description="包含10个蓝色装备箱" />
+<rmb id="15" type="2" costid="1008" rmb="98" itemid="45009" zuanshi="0" name="紫色装备礼包" img="libao_4_6" description="包含10个紫色装备箱" />
+<rmb id="16" type="2" costid="1008" rmb="50" itemid="45010" zuanshi="0" name="钻石金币包" img="recharge-3" description="包含500钻石和10000金币" />
+<rmb id="17" type="2" costid="1008" rmb="50" itemid="45011" zuanshi="0" name="钻石经验包" img="recharge-4" description="包含500钻石和50000经验" />
+<rmb id="18" type="2" costid="1008" rmb="128" itemid="43003" zuanshi="" name="春节初级召唤包" img="libao_22" description="包含10个召唤石，2个2星升星箱，100钻石，50000金币" />
+<rmb id="19" type="2" costid="1008" rmb="328" itemid="43004" zuanshi="" name="春节中级召唤包" img="libao_23" description="包含28个召唤石，2个3星升星箱，200钻石，100000金币" />
+<rmb id="20" type="2" costid="1008" rmb="648" itemid="43005" zuanshi="" name="春节高级召唤包" img="libao_24" description="包含60个召唤石，2个4星升星箱，400钻石，200000金币" />
+<rmb id="21" type="2" costid="1008" rmb="60" itemid="43006" zuanshi="" name="新手召唤包" img="libao_21" description="包含3个召唤石，50钻石，20000金币" />
+<rmb id="22" type="2" costid="1008" rmb="128" itemid="43007" zuanshi="" name="初级召唤包" img="libao_22" description="包含10个召唤石，100钻石，50000金币" />
+<rmb id="23" type="2" costid="1008" rmb="328" itemid="43008" zuanshi="" name="中级召唤包" img="libao_23" description="包含28个召唤石，200钻石，100000金币" />
+<rmb id="24" type="2" costid="1008" rmb="648" itemid="43009" zuanshi="" name="高级召唤包" img="libao_24" description="包含60个召唤石，400钻石，200000金币" />
+<rmb id="25" type="2" costid="1008" rmb="18" itemid="43010" zuanshi="" name="每日召唤包" img="libao_25" description="包含1个召唤石，20钻石，1个吐槽宝箱，1个吐槽补丁" />
+<rmb id="26" type="1" costid="1008" rmb="60" itemid="1002" zuanshi="600" name="一袋钻石" img="recharge-3" description="600颗钻石" />
+<rmb id="27" type="1" costid="1008" rmb="128" itemid="1002" zuanshi="1280" name="大袋钻石" img="recharge-4" description="1280颗钻石" />
+</data>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<currency itemid="1000" name="经验" des="可用于升级武将。挂机，点石成金，经验包获得。" />
+<currency itemid="1001" name="金币" des="可用于寻宝，洗点。挂机，点石成金，金币包获得。" />
+<currency itemid="1002" name="钻石" des="高级货币。可用于寻宝，契约，购买高级道具等。充值，活动获得。" />
+<currency itemid="1003" name="魔晶" des="可在魔晶商店中购买道具。可从征战天下中获得。" />
+<currency itemid="1004" name="战斗币" des="可在战斗塔商店中购买道具。可从战斗塔中获得。" />
+<currency itemid="1005" name="荣誉" des="可在荣誉商店中购买道具。可从天梯中获得。" />
+<currency itemid="1006" name="公会宝珠" des="可在公会商店中购买道具。可从镜像大陆中获得。" />
+<currency itemid="1007" name="战斗力" des="" />
+<currency itemid="1008" name="rmb" des="" />
+<currency itemid="1009" name="召唤石" des="用于钻石抽奖和魂匣抽奖。可在商店中购买。" />
+</data>

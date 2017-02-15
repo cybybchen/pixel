@@ -1,0 +1,470 @@
+<data>
+<order order="1" id="1" >
+<fetters fettersid="42000" >
+<hero heroid="202" herostar="2" herorank="5" />
+<hero heroid="220" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42001" >
+<hero heroid="86" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42002" >
+<hero heroid="42" herostar="4" herorank="11" />
+<hero heroid="78" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42003" >
+<hero heroid="223" herostar="2" herorank="5" />
+</fetters>
+</order>
+<order order="5" id="5" >
+<fetters fettersid="42004" >
+<hero heroid="38" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42005" >
+<hero heroid="63" herostar="3" herorank="8" />
+<hero heroid="17" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42006" >
+<hero heroid="201" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42007" >
+<hero heroid="212" herostar="1" herorank="3" />
+<hero heroid="223" herostar="1" herorank="3" />
+</fetters>
+</order>
+<order order="8" id="8" >
+<fetters fettersid="42008" >
+<hero heroid="78" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42009" >
+<hero heroid="61" herostar="5" herorank="13" />
+<hero heroid="63" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="9" id="9" >
+<fetters fettersid="42010" >
+<hero heroid="82" herostar="4" herorank="11" />
+<hero heroid="97" herostar="4" herorank="11" />
+<hero heroid="50" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42011" >
+<hero heroid="27" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="10" id="10" >
+<fetters fettersid="42012" >
+<hero heroid="121" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42013" >
+<hero heroid="208" herostar="2" herorank="5" />
+<hero heroid="216" herostar="2" herorank="5" />
+<hero heroid="218" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42014" >
+<hero heroid="52" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="11" id="11" >
+<fetters fettersid="42015" >
+<hero heroid="78" herostar="3" herorank="8" />
+<hero heroid="74" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42016" >
+<hero heroid="27" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="17" id="17" >
+<fetters fettersid="42005" >
+<hero heroid="63" herostar="3" herorank="8" />
+<hero heroid="5" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="24" id="24" >
+<fetters fettersid="42017" >
+<hero heroid="10" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42018" >
+<hero heroid="229" herostar="2" herorank="5" />
+<hero heroid="230" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42019" >
+<hero heroid="214" herostar="3" herorank="8" />
+<hero heroid="215" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="27" id="27" >
+<fetters fettersid="42020" >
+<hero heroid="52" herostar="3" herorank="8" />
+<hero heroid="17" herostar="4" herorank="11" />
+<hero heroid="55" herostar="5" herorank="13" />
+<hero heroid="94" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="32" id="32" >
+<fetters fettersid="42021" >
+<hero heroid="211" herostar="3" herorank="5" />
+<hero heroid="212" herostar="3" herorank="5" />
+<hero heroid="223" herostar="3" herorank="5" />
+<hero heroid="224" herostar="3" herorank="5" />
+</fetters>
+<fetters fettersid="42022" >
+<hero heroid="230" herostar="1" herorank="5" />
+</fetters>
+</order>
+<order order="36" id="36" >
+<fetters fettersid="42023" >
+<hero heroid="10" herostar="3" herorank="8" />
+<hero heroid="52" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42024" >
+<hero heroid="61" herostar="2" herorank="5" />
+<hero heroid="117" herostar="2" herorank="5" />
+<hero heroid="79" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42025" >
+<hero heroid="96" herostar="5" herorank="13" />
+<hero heroid="116" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42026" >
+<hero heroid="41" herostar="4" herorank="8" />
+<hero heroid="88" herostar="4" herorank="8" />
+</fetters>
+</order>
+<order order="38" id="38" >
+<fetters fettersid="42027" >
+<hero heroid="225" herostar="3" herorank="10" />
+<hero heroid="226" herostar="3" herorank="10" />
+</fetters>
+</order>
+<order order="39" id="39" >
+<fetters fettersid="42028" >
+<hero heroid="38" herostar="5" herorank="13" />
+<hero heroid="117" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42029" >
+<hero heroid="42" herostar="3" herorank="8" />
+<hero heroid="74" herostar="3" herorank="8" />
+<hero heroid="84" herostar="3" herorank="8" />
+<hero heroid="72" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42030" >
+<hero heroid="86" herostar="2" herorank="5" />
+<hero heroid="60" herostar="2" herorank="5" />
+</fetters>
+</order>
+<order order="40" id="40" >
+<fetters fettersid="42031" >
+<hero heroid="11" herostar="3" herorank="8" />
+<hero heroid="42" herostar="3" herorank="8" />
+<hero heroid="219" herostar="2" herorank="5" />
+<hero heroid="222" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42032" >
+<hero heroid="32" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42033" >
+<hero heroid="215" herostar="2" herorank="5" />
+<hero heroid="217" herostar="2" herorank="5" />
+</fetters>
+</order>
+<order order="41" id="41" >
+<fetters fettersid="42034" >
+<hero heroid="32" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42035" >
+<hero heroid="60" herostar="5" herorank="13" />
+<hero heroid="213" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42036" >
+<hero heroid="116" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="42" id="42" >
+<fetters fettersid="42037" >
+<hero heroid="51" herostar="5" herorank="10" />
+</fetters>
+<fetters fettersid="42038" >
+<hero heroid="55" herostar="2" herorank="5" />
+<hero heroid="72" herostar="2" herorank="5" />
+</fetters>
+</order>
+<order order="48" id="48" >
+<fetters fettersid="42039" >
+<hero heroid="227" herostar="2" herorank="5" />
+<hero heroid="228" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42040" >
+<hero heroid="79" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42041" >
+<hero heroid="27" herostar="4" herorank="11" />
+<hero heroid="78" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="50" id="50" >
+<fetters fettersid="42042" >
+<hero heroid="52" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42023" >
+<hero heroid="17" herostar="3" herorank="10" />
+</fetters>
+</order>
+<order order="51" id="51" >
+<fetters fettersid="42017" >
+<hero heroid="32" herostar="3" herorank="8" />
+<hero heroid="97" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42045" >
+<hero heroid="42" herostar="5" herorank="10" />
+</fetters>
+<fetters fettersid="42038" >
+<hero heroid="55" herostar="2" herorank="5" />
+<hero heroid="72" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42047" >
+<hero heroid="216" herostar="3" herorank="3" />
+<hero heroid="208" herostar="3" herorank="3" />
+</fetters>
+</order>
+<order order="52" id="52" >
+<fetters fettersid="42042" >
+<hero heroid="50" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42049" >
+<hero heroid="61" herostar="3" herorank="8" />
+<hero heroid="82" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="55" id="55" >
+<fetters fettersid="42050" >
+<hero heroid="42" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42051" >
+<hero heroid="215" herostar="3" herorank="3" />
+</fetters>
+</order>
+<order order="58" id="58" >
+<fetters fettersid="42052" >
+<hero heroid="11" herostar="3" herorank="8" />
+<hero heroid="105" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42053" >
+<hero heroid="116" herostar="5" herorank="13" />
+<hero heroid="42" herostar="5" herorank="13" />
+<hero heroid="1" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="60" id="60" >
+<fetters fettersid="42054" >
+<hero heroid="41" herostar="4" herorank="11" />
+<hero heroid="213" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42055" >
+<hero heroid="121" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="61" id="61" >
+<fetters fettersid="42056" >
+<hero heroid="24" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42057" >
+<hero heroid="209" herostar="3" herorank="5" />
+<hero heroid="211" herostar="3" herorank="5" />
+<hero heroid="229" herostar="3" herorank="5" />
+<hero heroid="220" herostar="3" herorank="5" />
+</fetters>
+</order>
+<order order="63" id="63" >
+<fetters fettersid="42005" >
+<hero heroid="17" herostar="3" herorank="8" />
+<hero heroid="5" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42058" >
+<hero heroid="201" herostar="3" herorank="8" />
+<hero heroid="202" herostar="3" herorank="8" />
+<hero heroid="84" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42059" >
+<hero heroid="97" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="72" id="72" >
+<fetters fettersid="42060" >
+<hero heroid="17" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42061" >
+<hero heroid="209" herostar="2" herorank="5" />
+<hero heroid="210" herostar="2" herorank="5" />
+</fetters>
+</order>
+<order order="74" id="74" >
+<fetters fettersid="42062" >
+<hero heroid="88" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42063" >
+<hero heroid="24" herostar="4" herorank="11" />
+<hero heroid="72" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="75" id="75" >
+<fetters fettersid="42064" >
+<hero heroid="74" herostar="4" herorank="11" />
+<hero heroid="24" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42065" >
+<hero heroid="86" herostar="3" herorank="8" />
+<hero heroid="88" herostar="4" herorank="11" />
+<hero heroid="79" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="76" id="76" >
+<fetters fettersid="42066" >
+<hero heroid="214" herostar="3" herorank="8" />
+<hero heroid="207" herostar="3" herorank="8" />
+<hero heroid="208" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42067" >
+<hero heroid="117" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="78" id="78" >
+<fetters fettersid="42068" >
+<hero heroid="27" herostar="3" herorank="8" />
+<hero heroid="48" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42069" >
+<hero heroid="79" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="79" id="79" >
+<fetters fettersid="42069" >
+<hero heroid="78" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42071" >
+<hero heroid="48" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42072" >
+<hero heroid="86" herostar="3" herorank="8" />
+<hero heroid="88" herostar="4" herorank="11" />
+<hero heroid="72" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="82" id="82" >
+<fetters fettersid="42073" >
+<hero heroid="61" herostar="5" herorank="13" />
+<hero heroid="63" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42074" >
+<hero heroid="202" herostar="3" herorank="8" />
+<hero heroid="204" herostar="3" herorank="8" />
+<hero heroid="206" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="84" id="84" >
+<fetters fettersid="42075" >
+<hero heroid="82" herostar="3" herorank="8" />
+<hero heroid="78" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42076" >
+<hero heroid="86" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="86" id="86" >
+<fetters fettersid="42076" >
+<hero heroid="84" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42078" >
+<hero heroid="72" herostar="3" herorank="8" />
+<hero heroid="88" herostar="4" herorank="11" />
+<hero heroid="79" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42079" >
+<hero heroid="24" herostar="4" herorank="11" />
+<hero heroid="11" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="88" id="88" >
+<fetters fettersid="42062" >
+<hero heroid="74" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42081" >
+<hero heroid="72" herostar="5" herorank="13" />
+<hero heroid="41" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="94" id="94" >
+<fetters fettersid="42082" >
+<hero heroid="209" herostar="2" herorank="5" />
+<hero heroid="210" herostar="2" herorank="5" />
+<hero heroid="219" herostar="2" herorank="5" />
+<hero heroid="220" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42083" >
+<hero heroid="215" herostar="4" herorank="11" />
+<hero heroid="88" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="96" id="96" >
+<fetters fettersid="42084" >
+<hero heroid="221" herostar="2" herorank="5" />
+<hero heroid="222" herostar="2" herorank="5" />
+</fetters>
+<fetters fettersid="42085" >
+<hero heroid="219" herostar="3" herorank="8" />
+<hero heroid="220" herostar="3" herorank="8" />
+<hero heroid="42" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="97" id="97" >
+<fetters fettersid="42059" >
+<hero heroid="63" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42087" >
+<hero heroid="201" herostar="3" herorank="8" />
+<hero heroid="205" herostar="3" herorank="8" />
+</fetters>
+</order>
+<order order="105" id="105" >
+<fetters fettersid="42088" >
+<hero heroid="10" herostar="4" herorank="11" />
+</fetters>
+</order>
+<order order="108" id="108" >
+<fetters fettersid="42089" >
+<hero heroid="96" herostar="5" herorank="13" />
+<hero heroid="40" herostar="5" herorank="13" />
+</fetters>
+<fetters fettersid="42090" >
+<hero heroid="216" herostar="3" herorank="5" />
+<hero heroid="217" herostar="3" herorank="5" />
+<hero heroid="218" herostar="3" herorank="5" />
+</fetters>
+</order>
+<order order="116" id="116" >
+<fetters fettersid="42036" >
+<hero heroid="41" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42092" >
+<hero heroid="24" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="117" id="117" >
+<fetters fettersid="42093" >
+<hero heroid="76" herostar="4" herorank="11" />
+</fetters>
+<fetters fettersid="42094" >
+<hero heroid="38" herostar="3" herorank="8" />
+<hero heroid="78" herostar="5" herorank="13" />
+</fetters>
+</order>
+<order order="121" id="121" >
+<fetters fettersid="42095" >
+<hero heroid="63" herostar="3" herorank="8" />
+<hero heroid="42" herostar="3" herorank="8" />
+</fetters>
+<fetters fettersid="42096" >
+<hero heroid="216" herostar="2" herorank="5" />
+<hero heroid="205" herostar="2" herorank="5" />
+<hero heroid="208" herostar="3" herorank="8" />
+</fetters>
+</order>
+</data>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<food id="80001" name="瘦头鱼" count="5" img="80001" rare="1" cost="100" des="1" />
+<food id="80002" name="胖头鱼" count="10" img="80002" rare="2" cost="200" des="1" />
+<food id="80003" name="红色巨头鱼" count="15" img="80003" rare="3" cost="300" des="1" />
+<food id="80004" name="蓝色小丑鱼" count="20" img="80004" rare="4" cost="400" des="1" />
+<food id="80005" name="高清蓝光鱼" count="25" img="80005" rare="5" cost="500" des="1" />
+<food id="80006" name="松果" count="5" img="80006" rare="1" cost="100" des="1" />
+<food id="80007" name="酸梅" count="10" img="80007" rare="2" cost="200" des="1" />
+<food id="80008" name="神奇果" count="15" img="80008" rare="3" cost="300" des="1" />
+<food id="80009" name="饱满的南瓜" count="20" img="80009" rare="4" cost="400" des="1" />
+<food id="80010" name="女王牌香蕉" count="25" img="80010" rare="5" cost="500" des="1" />
+<food id="80011" name="奶油大面包" count="5" img="80011" rare="1" cost="100" des="1" />
+<food id="80012" name="草莓味冰淇淋" count="10" img="80012" rare="2" cost="200" des="1" />
+<food id="80013" name="麻辣豆腐汤" count="15" img="80013" rare="3" cost="300" des="1" />
+<food id="80014" name="古奥尔良烤鸡翅" count="20" img="80014" rare="4" cost="400" des="1" />
+<food id="80015" name="感恩节烤鸡" count="25" img="80015" rare="5" cost="500" des="1" />
+<food id="80016" name="蜷曲的虾肉" count="5" img="80016" rare="1" cost="100" des="1" />
+<food id="80017" name="章鱼哥" count="10" img="80017" rare="2" cost="200" des="1" />
+<food id="80018" name="巨眼章鱼" count="15" img="80018" rare="3" cost="300" des="1" />
+<food id="80019" name="闪光鱼肉片" count="20" img="80019" rare="4" cost="400" des="1" />
+<food id="80020" name="刀尖上的肉" count="25" img="80020" rare="5" cost="500" des="1" />
+</data>

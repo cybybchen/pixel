@@ -1,0 +1,72 @@
+<data>
+<kaifu id="201" activity="首充礼包" whichday="">
+<order order="1" description="首次充值任意数量钻石" targetid="20" targetcount="1" targetcount1="1" rewardid0="" rewardname0="金币" rewardcount0="8888" rewardid1="53011" rewardname1="伊泽瑞尔3星" rewardcount1="1" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="202" activity="七日登录" whichday="">
+<order order="1" description="累计登录1天" targetid="1" targetcount="1" targetcount1="1" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="累计登录2天" targetid="1" targetcount="2" targetcount1="2" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="累计登录3天" targetid="1" targetcount="3" targetcount1="3" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="累计登录4天" targetid="1" targetcount="4" targetcount1="4" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="累计登录5天" targetid="1" targetcount="5" targetcount1="5" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="6" description="累计登录6天" targetid="1" targetcount="6" targetcount1="6" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="7" description="累计登录7天" targetid="1" targetcount="7" targetcount1="7" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="203" activity="七日充值" whichday="">
+<order order="1" description="累计充值60钻石" targetid="2" targetcount="60" targetcount1="60" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="累计充值300钻石" targetid="2" targetcount="300" targetcount1="300" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="累计充值980钻石" targetid="2" targetcount="980" targetcount1="980" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="累计充值1980钻石" targetid="2" targetcount="1980" targetcount1="1980" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="累计充值3280钻石" targetid="2" targetcount="3280" targetcount1="3280" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="6" description="累计充值6480钻石" targetid="2" targetcount="6480" targetcount1="6480" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="7" description="累计充值19980钻石" targetid="2" targetcount="19980" targetcount1="19980" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="204" activity="七日活动第一天" whichday="1">
+<order order="1" description="累计拥有1个不同英雄" targetid="5" targetcount="1" targetcount1="1" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="累计拥有3个不同英雄" targetid="5" targetcount="3" targetcount1="3" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="累计拥有5个不同英雄" targetid="5" targetcount="5" targetcount1="5" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="累计拥有8个不同英雄" targetid="5" targetcount="8" targetcount1="8" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="累计拥有10个不同英雄" targetid="5" targetcount="10" targetcount1="10" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="205" activity="七日活动第二天" whichday="2">
+<order order="1" description="累计抽奖5次" targetid="6" targetcount="5" targetcount1="5" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="累计抽奖10次" targetid="6" targetcount="10" targetcount1="10" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="累计抽奖25次" targetid="6" targetcount="25" targetcount1="25" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="累计抽奖50次" targetid="6" targetcount="50" targetcount1="50" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="累计抽奖100次" targetid="6" targetcount="100" targetcount1="100" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="206" activity="七日活动第三天" whichday="3">
+<order order="1" description="将1个英雄培养到绿色" targetid="15" targetcount="1" targetcount1="1" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="将3个英雄培养到绿色" targetid="15" targetcount="3" targetcount1="3" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="将5个英雄培养到绿色" targetid="15" targetcount="5" targetcount1="5" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="将8个英雄培养到绿色" targetid="15" targetcount="8" targetcount1="8" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="将10个英雄培养到绿色" targetid="15" targetcount="10" targetcount1="10" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="207" activity="七日活动第四天" whichday="4">
+<order order="1" description="将1个英雄升到20级" targetid="21" targetcount="1" targetcount1="1" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="将3个英雄升到20级" targetid="21" targetcount="3" targetcount1="3" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="将5个英雄升到20级" targetid="21" targetcount="5" targetcount1="5" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="将8个英雄升到20级" targetid="21" targetcount="8" targetcount1="8" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="将10个英雄升到20级" targetid="21" targetcount="10" targetcount1="10" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="208" activity="七日活动第五天" whichday="5">
+<order order="1" description="通过普通难度第10-5关" targetid="7" targetcount="50" targetcount1="50" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="通过普通难度第11-5关" targetid="7" targetcount="55" targetcount1="55" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="通过普通难度第12-5关" targetid="7" targetcount="60" targetcount1="60" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="通过普通难度第13-5关" targetid="7" targetcount="65" targetcount1="65" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="通过普通难度第14-5关" targetid="7" targetcount="70" targetcount1="70" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="209" activity="七日活动第六天" whichday="6">
+<order order="1" description="战力达到25000" targetid="8" targetcount="25000" targetcount1="25000" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="战力达到35000" targetid="8" targetcount="35000" targetcount1="35000" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="战力达到45000" targetid="8" targetcount="45000" targetcount1="45000" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="战力达到55000" targetid="8" targetcount="55000" targetcount1="55000" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="战力达到65000" targetid="8" targetcount="65000" targetcount1="65000" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+<kaifu id="210" activity="七日活动第七天" whichday="7">
+<order order="1" description="将1个英雄升到三星" targetid="22" targetcount="1" targetcount1="1" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="2" description="将3个英雄升到三星" targetid="22" targetcount="3" targetcount1="3" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="3" description="将5个英雄升到三星" targetid="22" targetcount="5" targetcount1="5" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="4" description="将7个英雄升到三星" targetid="22" targetcount="7" targetcount1="7" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+<order order="5" description="将10个英雄升到三星" targetid="22" targetcount="10" targetcount1="10" rewardid0="" rewardname0="" rewardcount0="" rewardid1="" rewardname1="" rewardcount1="" rewardid2="" rewardname2="" rewardcount2="" rewardid3="" rewardname3="" rewardcount3="" />
+</kaifu>
+</data>

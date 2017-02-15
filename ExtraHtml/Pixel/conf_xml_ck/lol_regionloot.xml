@@ -1,0 +1,152 @@
+<data>
+<region id="1101">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="3" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80001" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80007" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80008" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84001" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1102">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="3" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80006" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80017" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80013" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84002" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1103">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="3" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80011" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80012" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80003" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84003" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1104">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="6" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80016" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80013" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80009" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84004" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1105">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="6" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80006" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80018" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80014" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84005" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1106">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="15" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80007" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80004" count2a="1" count2b="0" weight2a="5" weight2b="0" itemid3="80010" count3a="1" count3b="0" weight3a="2" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84006" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1107">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="15" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80002" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80019" count2a="1" count2b="0" weight2a="5" weight2b="0" itemid3="80015" count3a="1" count3b="0" weight3a="2" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84007" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1201">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="4" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80016" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80007" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80013" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84008" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1202">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="4" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80006" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80002" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80018" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84009" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1203">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="8" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80011" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80008" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80004" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84010" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1204">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="8" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80001" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80003" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80019" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84011" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1205">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="20" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80012" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80009" count2a="1" count2b="0" weight2a="5" weight2b="0" itemid3="80005" count3a="1" count3b="0" weight3a="2" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84012" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1301">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="5" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80001" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80007" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80008" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84013" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1302">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="5" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80011" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80002" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80003" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84014" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1303">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="5" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80016" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80012" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80018" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84015" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1304">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="10" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80006" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80013" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80009" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84016" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1305">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="10" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80001" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80003" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80014" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84017" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1306">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="25" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80017" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80009" count2a="1" count2b="0" weight2a="5" weight2b="0" itemid3="80010" count3a="1" count3b="0" weight3a="2" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84018" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1307">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="25" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80007" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80014" count2a="1" count2b="0" weight2a="5" weight2b="0" itemid3="80020" count3a="1" count3b="0" weight3a="2" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84019" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1401">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="6" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80001" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80017" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80008" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84020" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1402">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="6" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80011" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80002" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80013" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84021" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1403">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="6" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80006" count1a="1" count1b="0" weight1a="7" weight1b="0" itemid2="80012" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80003" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84022" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1404">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="12" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80016" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80008" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80004" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84023" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1405">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="12" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80011" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80018" count2a="1" count2b="0" weight2a="2" weight2b="0" itemid3="80019" count3a="1" count3b="0" weight3a="1" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84024" count1a="1" count1b="0" weight1a="5" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="1406">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="30" count1b=".01" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="3" weightall="100" itemid1="80017" count1a="1" count1b="0" weight1a="20" weight1b="0" itemid2="80014" count2a="1" count2b="0" weight2a="5" weight2b="0" itemid3="80015" count3a="1" count3b="0" weight3a="2" weight3b="0" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84025" count1a="1" count1b="0" weight1a="10" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="2101">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="50" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="1" weightall="100" itemid1="1001" count1a="20000" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84026" count1a="1" count1b="0" weight1a="1" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="2201">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="50" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="1" weightall="100" itemid1="1001" count1a="20000" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84027" count1a="1" count1b="0" weight1a="1" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="2301">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="50" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="1" weightall="100" itemid1="1001" count1a="20000" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84028" count1a="1" count1b="0" weight1a="1" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="2401">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="50" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="1" weightall="100" itemid1="1001" count1a="20000" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84029" count1a="1" count1b="0" weight1a="1" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+<region id="2302">
+<loot order="1" itemcount="1" weightall="100" itemid1="1006" count1a="50" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="2" itemcount="1" weightall="100" itemid1="1001" count1a="20000" count1b="0" weight1a="100" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+<loot order="3" itemcount="1" weightall="100" itemid1="84030" count1a="1" count1b="0" weight1a="1" weight1b="0" itemid2="" count2a="" count2b="" weight2a="" weight2b="" itemid3="" count3a="" count3b="" weight3a="" weight3b="" />
+</region>
+</data>

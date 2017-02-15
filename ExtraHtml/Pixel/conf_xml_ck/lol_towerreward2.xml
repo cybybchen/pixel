@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<id id="1" floor="1" rewardid1="1002" rewardcount1="5" rewardid2="36007" rewardcount2="2" rewardid3="" rewardcount3="" />
+<id id="2" floor="10" rewardid1="1002" rewardcount1="15" rewardid2="36008" rewardcount2="1" rewardid3="33001" rewardcount3="5" />
+<id id="3" floor="20" rewardid1="1002" rewardcount1="30" rewardid2="36008" rewardcount2="2" rewardid3="33001" rewardcount3="8" />
+<id id="4" floor="30" rewardid1="1002" rewardcount1="45" rewardid2="36008" rewardcount2="3" rewardid3="33002" rewardcount3="5" />
+<id id="5" floor="40" rewardid1="1002" rewardcount1="60" rewardid2="36008" rewardcount2="4" rewardid3="33002" rewardcount3="8" />
+<id id="6" floor="50" rewardid1="1002" rewardcount1="75" rewardid2="36009" rewardcount2="2" rewardid3="33003" rewardcount3="4" />
+<id id="7" floor="60" rewardid1="1002" rewardcount1="75" rewardid2="36009" rewardcount2="3" rewardid3="33003" rewardcount3="4" />
+<id id="8" floor="70" rewardid1="1002" rewardcount1="80" rewardid2="36009" rewardcount2="4" rewardid3="33003" rewardcount3="5" />
+<id id="9" floor="80" rewardid1="1002" rewardcount1="80" rewardid2="36009" rewardcount2="5" rewardid3="33003" rewardcount3="5" />
+<id id="10" floor="90" rewardid1="1002" rewardcount1="85" rewardid2="36009" rewardcount2="6" rewardid3="33003" rewardcount3="6" />
+<id id="11" floor="100" rewardid1="1002" rewardcount1="85" rewardid2="36009" rewardcount2="7" rewardid3="33003" rewardcount3="6" />
+<id id="12" floor="110" rewardid1="1002" rewardcount1="90" rewardid2="36009" rewardcount2="8" rewardid3="33003" rewardcount3="7" />
+<id id="13" floor="120" rewardid1="1002" rewardcount1="90" rewardid2="36009" rewardcount2="9" rewardid3="33003" rewardcount3="7" />
+<id id="14" floor="130" rewardid1="1002" rewardcount1="100" rewardid2="36009" rewardcount2="10" rewardid3="33003" rewardcount3="8" />
+<id id="15" floor="140" rewardid1="1002" rewardcount1="100" rewardid2="36009" rewardcount2="11" rewardid3="33003" rewardcount3="8" />
+<id id="16" floor="150" rewardid1="1002" rewardcount1="110" rewardid2="36009" rewardcount2="12" rewardid3="33003" rewardcount3="9" />
+<id id="17" floor="160" rewardid1="1002" rewardcount1="110" rewardid2="36009" rewardcount2="13" rewardid3="33003" rewardcount3="9" />
+<id id="18" floor="170" rewardid1="1002" rewardcount1="120" rewardid2="36009" rewardcount2="14" rewardid3="33003" rewardcount3="10" />
+<id id="19" floor="180" rewardid1="1002" rewardcount1="120" rewardid2="36009" rewardcount2="15" rewardid3="33003" rewardcount3="10" />
+<id id="20" floor="190" rewardid1="1002" rewardcount1="130" rewardid2="36009" rewardcount2="16" rewardid3="33003" rewardcount3="12" />
+<id id="21" floor="200" rewardid1="1002" rewardcount1="135" rewardid2="36009" rewardcount2="18" rewardid3="33003" rewardcount3="12" />
+</data>

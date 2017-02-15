@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+<region id="1101" name="盗贼" belongto="1" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1102" name="诺克萨斯男军人" belongto="1" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1103" name="诺克萨斯女军人" belongto="1" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1104" name="武道家" belongto="1" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1105" name="武道家女" belongto="1" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1106" name="诺克萨斯之手 " belongto="1" level1="3" level2=".5" weight="100" pl="5" />
+<region id="1107" name="德玛西亚贵族" belongto="1" level1="3" level2=".5" weight="100" pl="5" />
+<region id="1201" name="黑皮少年" belongto="2" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1202" name="黑皮少女" belongto="2" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1203" name="绿发游侠" belongto="2" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1204" name="黄发游侠" belongto="2" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1205" name="魔化老太婆" belongto="2" level1="3" level2=".5" weight="100" pl="5" />
+<region id="1301" name="火法" belongto="3" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1302" name="男战士" belongto="3" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1303" name="女战士" belongto="3" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1304" name="奥法" belongto="3" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1305" name="老年战士" belongto="3" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1306" name="男警察" belongto="3" level1="3" level2=".5" weight="100" pl="5" />
+<region id="1307" name="女警察" belongto="3" level1="3" level2=".5" weight="100" pl="5" />
+<region id="1401" name="阿拉伯" belongto="4" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1402" name="老头" belongto="4" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1403" name="老太婆" belongto="4" level1="1" level2=".1" weight="100" pl="1" />
+<region id="1404" name="皇后" belongto="4" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1405" name="公主" belongto="4" level1="2" level2=".2" weight="100" pl="2" />
+<region id="1406" name="国王" belongto="4" level1="3" level2=".5" weight="100" pl="5" />
+</data>
