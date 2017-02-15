@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.userinfo.UserTalentSkillBean;
 import com.trans.pixel.protoc.Commands.UserTalent;
+import com.trans.pixel.protoc.Commands.UserTalentSkill;
 
 @Service
 public class UserTalentRedisService extends RedisService {
@@ -65,10 +67,74 @@ public class UserTalentRedisService extends RedisService {
 		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENT_PREFIX);
 	}
 	
+	public String popTalentSkillDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENTSKILL_PREFIX);
+	}
+	
 	private Map<String, String> composeUserTalentMap(List<UserTalent> utList) {
 		Map<String, String> map = new HashMap<String, String>();
 		for (UserTalent ut : utList) {
 			map.put("" + ut.getId(), formatJson(ut));
+		}
+		
+		return map;
+	}
+	
+	public void updateUserTalentSkill(long userId, UserTalentSkill ut) {
+		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
+		this.hput(key, "" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId(), formatJson(ut));
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	
+		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENTSKILL_PREFIX, userId + "#" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId());
+	}
+	
+	public UserTalentSkill getUserTalentSkill(long userId, int talentId, int orderId, int skillId) {
+		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
+		String value = hget(key, "" + talentId + "-" + orderId + "-" + skillId);
+		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
+		if(value!= null && parseJson(value, builder))
+			return builder.build();
+		else
+			return null;
+	}
+	
+	public UserTalentSkill getUserTalentSkill(long userId, String talentInfo) {
+		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
+		String value = hget(key, talentInfo);
+		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
+		if(value!= null && parseJson(value, builder))
+			return builder.build();
+		else
+			return null;
+	}
+	
+	public List<UserTalentSkill> getUserTalentSkillList(long userId) {
+		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
+		Map<String,String> map = hget(key);
+		List<UserTalentSkill> userTalentSkillList = new ArrayList<UserTalentSkill>();
+		Iterator<Entry<String, String>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			String value = it.next().getValue();
+			UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
+			if(value!= null && parseJson(value, builder))
+				userTalentSkillList.add(builder.build());
+		}
+		
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		return userTalentSkillList;
+	}
+	
+	public void updateUserTalentSkillList(long userId, List<UserTalentSkillBean> utList) {
+		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
+		Map<String,String> map = composeUserTalentSkillMap(utList);
+		this.hputAll(key, map);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	private Map<String, String> composeUserTalentSkillMap(List<UserTalentSkillBean> utList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (UserTalentSkillBean ut : utList) {
+			map.put("" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId(), formatJson(ut.buildUserTalentSkill()));
 		}
 		
 		return map;

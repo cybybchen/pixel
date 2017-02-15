@@ -333,4 +333,5 @@ public class RedisKey {
 	
 	// user talent
 	public static final String USER_TALENT_PREFIX = PREFIX + "talent_";
+	public static final String USER_TALENTSKILL_PREFIX = PREFIX + "talentskill_";
 }

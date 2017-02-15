@@ -1649,6 +1649,13 @@ message UserTalentOrder {
 	required int32 skillId = 2;
 }
 
+message UserTalentSkill {
+	required int32 talentId = 1;
+	required int32 orderId = 2;
+	required int32 skillId = 3;
+	required int32 level = 4;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -2719,6 +2726,7 @@ message RequestTalentChangeSkillCommand {
 
 message ResponseUserTalentCommand {
 	repeated UserTalent userTalent = 1;
+	repeated UserTalentSkill userTalentSkill = 2;
 }
 
 message RequestCommand {

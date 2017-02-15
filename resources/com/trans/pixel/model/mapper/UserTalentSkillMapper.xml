@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserTalentSkillMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserTalentSkillBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="talentId" column="talent_id" />
+		<result property="orderId" column="order_id" />
+		<result property="skillId" column="skill_id" />
+		<result property="level" column="level" />
+	</resultMap>
+	
+	<update id="updateUserTalentSkill" parameterType="com.trans.pixel.model.userinfo.UserTalentSkillBean">
+		INSERT INTO user_talentskill(user_id, talent_id, order_id, skill_id, level)
+	    VALUES(#{userId}, #{talentId}, #{orderId}, #{skillId}, #{level})
+		ON 
+	    duplicate key update
+	    level=#{level}
+	</update>
+	
+	<select id="selectUserTalentSkillList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_talentskill where user_id=#{userId}
+	</select>
+	
+<!-- 	<select id="selectUserTalent" resultMap="resultMap"> -->
+<!-- 		SELECT * -->
+<!-- 		from user_talent where user_id=#{userId} and talent_id=#{talentId} -->
+<!-- 	</select> -->
+	
+</mapper>

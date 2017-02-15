@@ -166,5 +166,11 @@ public class UserCrontabService {
 			int talentId = Integer.parseInt(keys[1]);
 			userTalentService.updateTalentToDB(userId, talentId);
 		}
+		while((key=userTalentService.popTalentSkillDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			String skillInfo = keys[1];
+			userTalentService.updateTalentSkillToDB(userId, skillInfo);
+		}
 	}
 }

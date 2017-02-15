@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import com.trans.pixel.protoc.Commands.Talentunlock;
 import com.trans.pixel.protoc.Commands.Talentupgrade;
 import com.trans.pixel.protoc.Commands.UserTalent;
 import com.trans.pixel.protoc.Commands.UserTalentOrder;
+import com.trans.pixel.protoc.Commands.UserTalentSkill;
 import com.trans.pixel.service.redis.TalentRedisService;
 
 @Service
@@ -53,7 +55,20 @@ public class TalentService {
 		builder.setLevel(builder.getLevel() + 1);
 		userTalentService.updateUserTalent(user, unlockTalent(user, builder, originalLevel));
 		
+		levelupTalentSkill(user, id, builder.getLevel() - originalLevel);
+		
 		return builder.build();
+	}
+	
+	public void levelupTalentSkill(UserBean user, int talentId, int level) {
+		List<UserTalentSkill> userTalentSkillList = userTalentService.getUserTalentSkillListByTalentId(user, talentId);
+		while (level > 0) {
+			UserTalentSkill.Builder builder = UserTalentSkill.newBuilder(
+					userTalentSkillList.get(RandomUtils.nextInt(userTalentSkillList.size())));
+			builder.setLevel(builder.getLevel() + 1);
+			userTalentService.updateUserTalentSkill(user, builder.build());
+			level--;
+		}
 	}
 	
 	private UserTalent unlockTalent(UserBean user, UserTalent.Builder utBuilder, int originalLevel) {
@@ -67,6 +82,8 @@ public class TalentService {
 				builder.setOrder(talentunlock.getOrder());
 				builder.setSkillId(0);
 				utBuilder.addSkill(builder.build());
+				
+				userTalentService.unlockUserTalentSkill(user, utBuilder.getId(), talentunlock.getOrder());
 			}
 		}
 		
