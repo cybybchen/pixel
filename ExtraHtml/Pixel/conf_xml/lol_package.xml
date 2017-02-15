@@ -1752,7 +1752,7 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
-	<loot itemid="40115" name="小红旗" img="40109" rare="4" description="可在活动-小红旗兑换中兑换奖励，在活动中获得" hashero="0" cyb="1" judge="0" endtime="2017-02-22 23:59:59" itemcount="" weightall="" bossid="" >
+	<loot itemid="40115" name="红包" img="40110" rare="4" description="可在活动-红包兑换中兑换奖励，在活动中获得" hashero="0" cyb="1" judge="0" endtime="2017-02-22 23:59:59" itemcount="" weightall="" bossid="" >
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
@@ -1789,6 +1789,60 @@
 		<item itemid="" item="" counta="" countb="" weight="" />
 	</loot>
 	<loot itemid="36006" name="十重三星英雄包" img="32011" rare="5" description="开启获得10个随机3星英雄" hashero="1" cyb="0" judge="10" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33009" item="3星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36011" name="一重二星英雄包" img="32011" rare="1" description="开启获得1个随机2星英雄" hashero="1" cyb="0" judge="1" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33008" item="2星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36012" name="三重二星英雄包" img="32011" rare="2" description="开启获得3个随机2星英雄" hashero="1" cyb="0" judge="3" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33008" item="2星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36013" name="五重二星英雄包" img="32011" rare="3" description="开启获得5个随机2星英雄" hashero="1" cyb="0" judge="5" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33008" item="2星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36014" name="七重二星英雄包" img="32011" rare="4" description="开启获得7个随机2星英雄" hashero="1" cyb="0" judge="7" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33008" item="2星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36015" name="十重二星英雄包" img="32011" rare="5" description="开启获得10个随机2星英雄" hashero="1" cyb="0" judge="10" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33008" item="2星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36021" name="一重三星英雄包" img="32011" rare="1" description="开启获得1个随机3星英雄" hashero="1" cyb="0" judge="1" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33009" item="3星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36022" name="三重三星英雄包" img="32011" rare="2" description="开启获得3个随机3星英雄" hashero="1" cyb="0" judge="3" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33009" item="3星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36023" name="五重三星英雄包" img="32011" rare="3" description="开启获得5个随机3星英雄" hashero="1" cyb="0" judge="5" endtime="" itemcount="1" weightall="100" bossid="" >
+		<item itemid="33009" item="3星英雄箱" counta="1" countb="1" weight="100" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+		<item itemid="" item="" counta="" countb="" weight="" />
+	</loot>
+	<loot itemid="36024" name="七重三星英雄包" img="32011" rare="4" description="开启获得7个随机3星英雄" hashero="1" cyb="0" judge="7" endtime="" itemcount="1" weightall="100" bossid="" >
 		<item itemid="33009" item="3星英雄箱" counta="1" countb="1" weight="100" />
 		<item itemid="" item="" counta="" countb="" weight="" />
 		<item itemid="" item="" counta="" countb="" weight="" />
