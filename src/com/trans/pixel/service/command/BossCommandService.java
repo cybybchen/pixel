@@ -102,6 +102,12 @@ public class BossCommandService extends BaseCommandService {
 	
 	public void quitFightBossRoom(RequestQuitFightBossCommand cmd, Builder responseBuilder, UserBean user) {
 		BossRoomRecord bossRecord = bossService.getBossRoomRecord(user);
+		if (bossRecord == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_NOT);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_NOT);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		if(bossRecord.getCreateUserId() == user.getId() && cmd.getUserId() == user.getId() && bossRecord.getUserCount() > 1){
 			ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
 			roombuilder.setBossRoom(bossRecord);
