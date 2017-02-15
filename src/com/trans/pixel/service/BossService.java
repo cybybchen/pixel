@@ -240,12 +240,15 @@ public class BossService {
 	
 	public BossRoomRecord inviteFightBoss(UserBean user, long createUserId, List<Long> userIds, int groupId, int bossId, String startDate) {
 		if (userIds.isEmpty()) {//接收邀请
-			BossRoomRecord bossRoom = bossRedisService.getBossRoomRecord(user, createUserId);
+			BossRoomRecord bossRoom = bossRedisService.getBossRoomRecordFirst(createUserId);
 			if (bossRoom == null)
 				return null;
+			log.debug("startDate:" + startDate);
+			log.debug("createTime:" + bossRoom.getCreateTime());
 			if (!bossRoom.getCreateTime().equals(startDate))
 				return null;
 			
+			log.debug("11111111");
 			user.setBossRoomUserId(createUserId);
 			userService.updateUser(user);
 			

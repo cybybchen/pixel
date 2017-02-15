@@ -122,6 +122,7 @@ import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
 import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
+import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
@@ -991,6 +992,11 @@ public class GameDataScreen extends RequestScreen {
 		bossCommandService.createBossRoom(cmd, responseBuilder, user);
 		return true;//CreateBossRoomCommand
 	}//CreateBossRoomCommand
+	@Override//BossRoomInfoCommand
+	protected boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		bossCommandService.bossRoomInfo(responseBuilder, user);
+		return true;//BossRoomInfoCommand
+	}//BossRoomInfoCommand
 	//add handleCommand here
 	
 	@Override

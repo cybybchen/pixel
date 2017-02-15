@@ -212,6 +212,20 @@ public class BossRedisService extends RedisService {
 		return null;
 	}
 	
+	public BossRoomRecord getBossRoomRecordFirst(long createUserId) {//接收邀请的时候
+		String key = RedisKey.BOOS_ROOM_RECORD_PREFIX + createUserId;
+		String value = get(key);
+		if (value == null)
+			return null;
+		
+		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
+		if (parseJson(value, builder)){
+			return builder.build();
+		}
+		
+		return null;
+	}
+	
 	public void zhaohuanBoss(UserBean user, BossGroupRecord group) {
 		String key = RedisKey.BOSSGROUP_ZHAOHUAN_PREFIX + user.getId();
 		set(key, formatJson(group));

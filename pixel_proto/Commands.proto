@@ -924,16 +924,16 @@ message ActivityOrder {
 	required int32 targetcount = 4;
 	required int32 targetcount1 = 17;
 	required int32 rewardid0 = 5;
-	optional string rewardname0 = 6;
+	required string rewardname0 = 6;
 	required int32 rewardcount0 = 7;
 	required int32 rewardid1 = 8;
-	optional string rewardname1 = 9;
+	required string rewardname1 = 9;
 	required int32 rewardcount1 = 10;
 	required int32 rewardid2 = 11;
-	optional string rewardname2 = 12;
+	required string rewardname2 = 12;
 	required int32 rewardcount2 = 13;
 	required int32 rewardid3 = 14;
-	optional string rewardname3 = 15;
+	required string rewardname3 = 15;
 	required int32 rewardcount3 = 16;
 	optional int32 consumeid = 19;
 	optional int32 limit = 18;
@@ -2185,11 +2185,10 @@ message YueKaList {
 message Libao {
 	optional int32 id = 1;
 	optional int32 rechargeid = 2;
+	optional int32 purchase = 3;
 	optional string starttime = 4;
 	optional string endtime = 5;
 	optional string validtime = 6;
-	optional int32 purchase = 3;
-	optional int32 refresh = 7;
 }
 message LibaoList {
 	repeated Libao libao = 3;
@@ -2696,6 +2695,10 @@ message RequestCreateBossRoomCommand {
 	required int32 bossId = 3;
 }
 
+message RequestBossRoomInfoCommand {
+	
+}
+
 message RequestUserInfoCommand {
 
 }
@@ -2882,6 +2885,7 @@ message RequestCommand {
 	optional RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;
 	optional RequestStartBossRoomCommand startBossRoomCommand = 225;
 	optional RequestCreateBossRoomCommand createBossRoomCommand = 226;
+	optional RequestBossRoomInfoCommand bossRoomInfoCommand = 227;
 }
 // response command list transfer only use it
 message ResponseCommand {
