@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data>
-<rmb id="1" type="1" costid="1008" rmb="6" itemid="1002" zuanshi="60" zuanshi1="" name="小份钻石" img="recharge-1" description="60颗钻石" />
-<rmb id="2" type="1" costid="1008" rmb="30" itemid="1002" zuanshi="300" zuanshi1="" name="大份钻石" img="recharge-2" description="300颗钻石" />
-<rmb id="3" type="1" costid="1008" rmb="60" itemid="1002" zuanshi="600" zuanshi1="100" name="一袋钻石" img="recharge-3" description="600颗钻石" />
-<rmb id="4" type="1" costid="1008" rmb="128" itemid="1002" zuanshi="1280" zuanshi1="220" name="大袋钻石" img="recharge-4" description="1280颗钻石" />
-<rmb id="5" type="1" costid="1008" rmb="328" itemid="1002" zuanshi="3280" zuanshi1="600" name="一箱钻石" img="recharge-5" description="3280颗钻石" />
-<rmb id="6" type="1" costid="1008" rmb="648" itemid="1002" zuanshi="6480" zuanshi1="1280" name="大箱钻石" img="recharge-6" description="6480颗钻石" />
-<rmb id="7" type="2" costid="1008" rmb="30" itemid="42004" zuanshi="0" zuanshi1="" name="辅助流初级礼包" img="libao_2_1" description="包含1星仙林女巫，比利王，打碟少女各1个（获得300点vip经验）" />
-<rmb id="8" type="2" costid="1008" rmb="98" itemid="42005" zuanshi="0" zuanshi1="" name="辅助流高级礼包" img="libao_2_2" description="包含3星仙林女巫，比利王，打碟少女各1个和一套传说级辅助进阶到+5的材料（获得980点vip经验）" />
-<rmb id="9" type="2" costid="1008" rmb="328" itemid="42006" zuanshi="0" zuanshi1="" name="辅助流超级礼包" img="libao_2_3" description="包含4星仙林女巫，比利王，打碟少女各1个和一套传说级辅助进阶到+8的材料（获得3280点vip经验）" />
-<rmb id="10" type="2" costid="1008" rmb="30" itemid="44001" zuanshi="0" zuanshi1="" name="初级钻石月卡" img="libao_4_1" description="连续30天每天可以获得60钻石（获得300点vip经验）" />
-<rmb id="11" type="2" costid="1008" rmb="88" itemid="44002" zuanshi="0" zuanshi1="" name="高级钻石月卡" img="libao_4_2" description="连续30天每天可以获得300钻石（获得880点vip经验）" />
-<rmb id="12" type="2" costid="1008" rmb="68" itemid="44003" zuanshi="0" zuanshi1="" name="双周魄罗礼包" img="libao_4_3" description="连续14天每天获得1个超级魄罗宝箱和1个召唤石（获得680点vip经验）" />
-<rmb id="13" type="2" costid="1008" rmb="198" itemid="44004" zuanshi="0" zuanshi1="" name="双周英雄礼包" img="libao_4_4" description="连续14天每天获得1个3星英雄箱和50钻石（获得1980点vip经验）" />
-<rmb id="14" type="2" costid="1008" rmb="30" itemid="44005" zuanshi="0" zuanshi1="" name="单月buff礼包" img="libao_4_5" description="连续30天获得挂机经验百分之十五加成（获得300点vip经验）" />
-<rmb id="15" type="2" costid="1008" rmb="98" itemid="44006" zuanshi="0" zuanshi1="" name="双周优惠礼包" img="libao_4_6" description="连续14天每天获得60钻石和挂机经验百分之三十加成（获得980点vip经验）" />
-<rmb id="16" type="2" costid="1008" rmb="50" itemid="44007" zuanshi="0" zuanshi1="" name="成长钻石基金" img="zuanshijijing" description="按照玩家总战力领取不同阶段的钻石" />
-<rmb id="17" type="2" costid="1008" rmb="50" itemid="44008" zuanshi="0" zuanshi1="" name="成长经验基金" img="jingyanjijin" description="按照玩家总战力领取不同阶段的钻石" />
-<rmb id="18" type="2" costid="1008" rmb="128" itemid="43003" zuanshi="0" zuanshi1="" name="春节初级召唤包" img="libao_22" description="包含10个召唤石，2个2星升星箱，100钻石，50000金币" />
-<rmb id="19" type="2" costid="1008" rmb="328" itemid="43004" zuanshi="0" zuanshi1="" name="春节中级召唤包" img="libao_24" description="包含28个召唤石，2个3星升星箱，200钻石，100000金币" />
-<rmb id="20" type="2" costid="1008" rmb="648" itemid="43005" zuanshi="0" zuanshi1="" name="春节高级召唤包" img="libao_26" description="包含60个召唤石，2个4星升星箱，400钻石，200000金币" />
-<rmb id="21" type="2" costid="1008" rmb="60" itemid="43006" zuanshi="0" zuanshi1="" name="新手召唤包" img="libao_21" description="包含3个召唤石，50钻石，20000金币" />
-<rmb id="22" type="2" costid="1008" rmb="128" itemid="43007" zuanshi="0" zuanshi1="" name="初级召唤包" img="libao_22" description="包含10个召唤石，100钻石，50000金币" />
-<rmb id="23" type="2" costid="1008" rmb="328" itemid="43008" zuanshi="0" zuanshi1="" name="中级召唤包" img="libao_24" description="包含28个召唤石，200钻石，100000金币" />
-<rmb id="24" type="2" costid="1008" rmb="648" itemid="43009" zuanshi="0" zuanshi1="" name="高级召唤包" img="libao_26" description="包含60个召唤石，400钻石，200000金币" />
-<rmb id="25" type="2" costid="1008" rmb="18" itemid="43010" zuanshi="0" zuanshi1="" name="每日召唤包" img="libao_25" description="包含1个召唤石，20钻石，1个吐槽宝箱，1个吐槽补丁，每天可购买1次" />
-<rmb id="26" type="2" costid="1002" rmb="2000" itemid="43011" zuanshi="0" zuanshi1="" name="召唤石礼包" img="libao_23" description="包含11个召唤石" />
-<rmb id="27" type="2" costid="1002" rmb="200" itemid="43012" zuanshi="0" zuanshi1="" name="召唤石" img="libao_27" description="1个召唤石" />
+<rmb id="1" type="1" order="1" costid="1008" rmb="6" itemid="1002" zuanshi="60" zuanshi1="" name="小份钻石" img="recharge-1" description="60颗钻石" />
+<rmb id="2" type="1" order="2" costid="1008" rmb="30" itemid="1002" zuanshi="300" zuanshi1="" name="大份钻石" img="recharge-2" description="300颗钻石" />
+<rmb id="3" type="1" order="3" costid="1008" rmb="98" itemid="1002" zuanshi="980" zuanshi1="100" name="一袋钻石" img="recharge-3" description="600颗钻石" />
+<rmb id="4" type="1" order="4" costid="1008" rmb="198" itemid="1002" zuanshi="1980" zuanshi1="300" name="大袋钻石" img="recharge-4" description="1280颗钻石" />
+<rmb id="5" type="1" order="5" costid="1008" rmb="328" itemid="1002" zuanshi="3280" zuanshi1="600" name="一箱钻石" img="recharge-5" description="3280颗钻石" />
+<rmb id="6" type="1" order="6" costid="1008" rmb="648" itemid="1002" zuanshi="6480" zuanshi1="1280" name="大箱钻石" img="recharge-6" description="6480颗钻石" />
+<rmb id="7" type="2" order="2" costid="1008" rmb="30" itemid="42004" zuanshi="0" zuanshi1="" name="辅助流初级礼包" img="libao_2_1" description="包含1星璐璐，塔里克，娑娜各1个（获得300点vip经验）" />
+<rmb id="8" type="2" order="3" costid="1008" rmb="98" itemid="42005" zuanshi="0" zuanshi1="" name="辅助流高级礼包" img="libao_2_2" description="包含3星璐璐，塔里克，娑娜各1个和一套传说级辅助进阶到+5的材料（获得980点vip经验）" />
+<rmb id="9" type="2" order="4" costid="1008" rmb="328" itemid="42006" zuanshi="0" zuanshi1="" name="辅助流超级礼包" img="libao_2_3" description="包含4星璐璐，塔里克，娑娜各1个和一套传说级辅助进阶到+8的材料（获得3280点vip经验）" />
+<rmb id="10" type="2" order="5" costid="1008" rmb="30" itemid="44001" zuanshi="0" zuanshi1="" name="初级钻石月卡" img="libao_4_1" description="连续30天每天可以获得60钻石（获得300点vip经验）" />
+<rmb id="11" type="2" order="6" costid="1008" rmb="88" itemid="44002" zuanshi="0" zuanshi1="" name="高级钻石月卡" img="libao_4_2" description="连续30天每天可以获得300钻石（获得880点vip经验）" />
+<rmb id="12" type="2" order="7" costid="1008" rmb="68" itemid="44003" zuanshi="0" zuanshi1="" name="双周魄罗礼包" img="libao_4_3" description="连续14天每天获得1个超级魄罗宝箱和1个召唤石（获得680点vip经验）" />
+<rmb id="13" type="2" order="8" costid="1008" rmb="198" itemid="44004" zuanshi="0" zuanshi1="" name="双周英雄礼包" img="libao_4_4" description="连续14天每天获得1个3星英雄箱和50钻石（获得1980点vip经验）" />
+<rmb id="14" type="2" order="9" costid="1008" rmb="30" itemid="44005" zuanshi="0" zuanshi1="" name="单月buff礼包" img="libao_4_5" description="连续30天获得挂机经验15%加成（获得300点vip经验）" />
+<rmb id="15" type="2" order="10" costid="1008" rmb="98" itemid="44006" zuanshi="0" zuanshi1="" name="双周优惠礼包" img="libao_4_6" description="连续14天每天获得60钻石和挂机经验30%加成（获得980点vip经验）" />
+<rmb id="16" type="2" order="" costid="1008" rmb="50" itemid="44007" zuanshi="0" zuanshi1="" name="成长钻石基金" img="zuanshijijing" description="按照玩家总战力领取不同阶段的钻石" />
+<rmb id="17" type="2" order="" costid="1008" rmb="50" itemid="44008" zuanshi="0" zuanshi1="" name="成长经验基金" img="jingyanjijin" description="按照玩家总战力领取不同阶段的钻石" />
+<rmb id="18" type="2" order="" costid="1008" rmb="128" itemid="43003" zuanshi="0" zuanshi1="" name="春节初级召唤包" img="libao_22" description="包含10个召唤石，2个2星升星箱，100钻石，50000金币" />
+<rmb id="19" type="2" order="" costid="1008" rmb="328" itemid="43004" zuanshi="0" zuanshi1="" name="春节中级召唤包" img="libao_23" description="包含28个召唤石，2个3星升星箱，200钻石，100000金币" />
+<rmb id="20" type="2" order="" costid="1008" rmb="648" itemid="43005" zuanshi="0" zuanshi1="" name="春节高级召唤包" img="libao_24" description="包含60个召唤石，2个4星升星箱，400钻石，200000金币" />
+<rmb id="21" type="2" order="" costid="1008" rmb="60" itemid="43006" zuanshi="0" zuanshi1="" name="新手召唤包" img="libao_21" description="包含3个召唤石，50钻石，20000金币" />
+<rmb id="22" type="2" order="" costid="1008" rmb="128" itemid="43007" zuanshi="0" zuanshi1="" name="初级召唤包" img="libao_22" description="包含10个召唤石，100钻石，50000金币" />
+<rmb id="23" type="2" order="" costid="1008" rmb="328" itemid="43008" zuanshi="0" zuanshi1="" name="中级召唤包" img="libao_23" description="包含28个召唤石，200钻石，100000金币" />
+<rmb id="24" type="2" order="" costid="1008" rmb="648" itemid="43009" zuanshi="0" zuanshi1="" name="高级召唤包" img="libao_24" description="包含60个召唤石，400钻石，200000金币" />
+<rmb id="25" type="2" order="" costid="1008" rmb="18" itemid="43010" zuanshi="0" zuanshi1="" name="每日召唤包" img="libao_25" description="包含1个召唤石，20钻石，1个吐槽宝箱，1个吐槽补丁" />
+<rmb id="26" type="2" order="1" costid="1002" rmb="2000" itemid="43011" zuanshi="0" zuanshi1="" name="召唤石礼包" img="libao_23" description="包含11个召唤石" />
+<rmb id="27" type="2" order="" costid="1002" rmb="200" itemid="43012" zuanshi="0" zuanshi1="" name="召唤石" img="libao_27" description="1个召唤石" />
 </data>
