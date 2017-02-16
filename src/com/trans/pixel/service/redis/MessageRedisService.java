@@ -86,16 +86,15 @@ public class MessageRedisService extends RedisService {
 				BoundZSetOperations<String, String> bzOps = redisTemplate
 						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
 				
-				boolean ret = bzOps.add("" + messageBoard.getId(), messageBoard.getTimeStamp());
-				
-				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX && ret) {
-					Set<String> ids = bzOps.range(bzOps.size() - 1, bzOps.size() - 1);
-					bzOps.removeRange(bzOps.size() - 1, bzOps.size() - 1);
+
+				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX) {
+					Set<String> ids = bzOps.range(0, 0);
+					bzOps.removeRange(0, 0);
 					for (String id : ids)
 						deleteMessageBoard(serverId, id);
 				}
 				
-				return ret;
+				return bzOps.add("" + messageBoard.getId(), messageBoard.getTimeStamp());
 			}
 		});
 	}
@@ -173,16 +172,14 @@ public class MessageRedisService extends RedisService {
 				BoundZSetOperations<String, String> bzOps = redisTemplate
 						.boundZSetOps(buildUnionMessageBoardRedisKey(unionId));
 				
-				boolean ret = bzOps.add("" + messageBoard.getId(), messageBoard.getTimeStamp());
-				
-				if (bzOps.size() > MessageConst.MESSAGE_BOARD_MAX && ret) {
-					Set<String> ids = bzOps.range(bzOps.size() - 1, bzOps.size() - 1);
-					bzOps.removeRange(bzOps.size() - 1, bzOps.size() - 1);
+				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX) {
+					Set<String> ids = bzOps.range(0, 0);
+					bzOps.removeRange(0, 0);
 					for (String id : ids)
 						deleteUnionMessageBoard(unionId, id);
 				}
 				
-				return ret;
+				return bzOps.add("" + messageBoard.getId(), messageBoard.getTimeStamp());
 			}
 		});
 	}
