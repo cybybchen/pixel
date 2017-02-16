@@ -13,7 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -248,6 +251,11 @@ public class BossService {
 			if (!bossRoom.getCreateTime().equals(startDate))
 				return null;
 			
+			int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), bossRoom.getGroupId(), bossRoom.getBossId());
+			Bossgroup bossGroup = bossRedisService.getBossgroup(bossRoom.getGroupId());
+			if (userHasKillCount >= bossGroup.getCount() && bossRoom.getGroupId() < 4)
+				return null;
+			
 			log.debug("11111111");
 			user.setBossRoomUserId(createUserId);
 			userService.updateUser(user);
@@ -306,20 +314,20 @@ public class BossService {
 		return builder.build();
 	}
 	
-	public BossRoomRecord quitBossRoom(UserBean user, BossRoomRecord record, long userId) {
-		if (record == null)
-			return null;
-		if (user.getId() != userId && record.getCreateUserId() != user.getId()) {
-			return null;
+	public ResultConst quitBossRoom(UserBean user, BossRoomRecord.Builder builder, long userId) {
+		if (user.getId() != userId && builder.getCreateUserId() != user.getId()) {
+			return ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER;
 		}
-		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(record);
+		
+		if (builder.hasStatus() && builder.getStatus() == 1) {
+			return ErrorConst.BOSS_ROOM_HAS_START;
+		}
 		
 		if (builder.getCreateUserId() == user.getId() && user.getId() == userId) {
 			bossRedisService.delBossRoomRecord(user.getId());
 			builder.clearUser();
 			user.setBossRoomUserId(0);
 			userService.updateUser(user);
-			return builder.build();
 		} else {
 			for (int i = 0; i < builder.getUserCount(); ++i) {
 				if (builder.getUser(i).getId() == userId) {
@@ -334,8 +342,9 @@ public class BossService {
 				}
 			}
 			bossRedisService.setBossRoomRecord(builder.build());
-			return builder.build();
 		}
+		
+		return SuccessConst.BOSS_ROOM_QUIT_SUCCESS;
 	}
 	
 	public BossRoomRecord getBossRoomRecord(UserBean user) {
@@ -350,22 +359,9 @@ public class BossService {
 		return record;
 	}
 	
-	public BossRoomRecord submitBossRoomScore(UserBean user, int percent, List<RewardBean> rewardList) {
-		if (user.getBossRoomUserId() == 0)
-			return null;
-		
-		BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getBossRoomUserId());
-		if (record == null)
-			return null;
-		
-		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(record);
-//		if (!builder.getUserIdList().contains(user.getId()))
-//			return null;
-		
-		int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
-		Bossgroup bossGroup = bossRedisService.getBossgroup(builder.getGroupId());
-		if (userHasKillCount >= bossGroup.getCount() && builder.getGroupId() < 4)
-			return null;
+	public ResultConst submitBossRoomScore(UserBean user, int percent, List<RewardBean> rewardList, BossRoomRecord.Builder builder) {
+		if (!builder.hasStatus() || builder.getStatus() != 1)
+			return ErrorConst.BOSS_ROOM_IS_NOT_START_OTHER;
 		
 		int totalPercent = 0;
 		boolean first = true;//首次提交成绩
@@ -375,7 +371,7 @@ public class BossService {
 			if (bossBuilder.getUserId() == user.getId()) {
 				first = false;
 				if (bossBuilder.getCount() >= percent)
-					return builder.build();
+					return SuccessConst.BOSS_SUBMIT_SUCCESS;
 				
 				bossBuilder.setCount(percent);
 				builder.setBossRecord(i, bossBuilder.build());
@@ -405,7 +401,7 @@ public class BossService {
 			bossRedisService.delBossRoomRecord(builder.getCreateUserId());
 		}
 		
-		return builder.build();
+		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
 	
 	public void zhaohuanBoss(UserBean user, int bossId) {

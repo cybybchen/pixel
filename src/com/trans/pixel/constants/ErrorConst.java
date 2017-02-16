@@ -45,6 +45,7 @@ public enum ErrorConst implements ResultConst {
     NOT_ENOUGH_ZHAOHUANSHI(4004, "召唤石不足"), BOSS_HAS_ZHAOHUAN(4005, "该boss已被召唤"), BOSS_CANNOT_ZHAOHUAN(4006, "今日已无法召唤该boss"),
     TALENTUPGRADE_ERROR(4007, "职业升级异常"), TALENTCHANGEUSE_ERROR(4008, "职业切换异常"), TALENTCHANGESKILL_ERROR(4009, "天赋切换异常"),
     BOSS_ROOM_START(4010, "boss开启异常"), BOSS_ROOM_IS_NOT(4011, "房间不存在"), BOSS_ROOM_FULL(4012, "房间中存在其他队员"), BOSS_ROOM_HASIN(4013, "不能加入多个房间"),
+    BOSS_ROOM_HAS_START(4014, "房间已开始战斗"), BOSS_ROOM_CAN_NOT_QUIT_OTHER(4015, "你不是房主，无法踢出别人"), BOSS_ROOM_IS_NOT_START_OTHER(4016, "房间还没开始"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

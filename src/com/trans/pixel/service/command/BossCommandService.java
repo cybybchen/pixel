@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
@@ -117,33 +119,42 @@ public class BossCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		bossRecord = bossService.quitBossRoom(user, bossRecord, cmd.getUserId());
-		if (bossRecord != null) {
+		BossRoomRecord.Builder bossRecordBuilder = BossRoomRecord.newBuilder(bossRecord);
+		ResultConst ret = bossService.quitBossRoom(user, bossRecordBuilder, cmd.getUserId());
+		if (ret instanceof SuccessConst) {
 			if(bossRecord.getUserCount() == 0)
 				return;
 			ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
-			roombuilder.setBossRoom(bossRecord);
+			roombuilder.setBossRoom(bossRecordBuilder.build());
 			responseBuilder.setBossRoomRecordCommand(roombuilder.build());
 		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_NOT);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_NOT);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
             responseBuilder.setErrorCommand(errorCommand);
 		}
 //		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void submitBossRoomScore(RequestSubmitBossRoomScoreCommand cmd, Builder responseBuilder, UserBean user) {
+		BossRoomRecord record = bossService.getBossRoomRecord(user);
+		if (record == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_NOT);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_NOT);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		BossRoomRecord bossRoomRecord = bossService.submitBossRoomScore(user, cmd.getPercent(), rewardList);
-		if (bossRoomRecord == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SUBMIT_BOSS_SCORE_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SUBMIT_BOSS_SCORE_ERROR);
+		BossRoomRecord.Builder bossRoomRecordBuilder = BossRoomRecord.newBuilder(record);
+		ResultConst ret = bossService.submitBossRoomScore(user, cmd.getPercent(), rewardList, bossRoomRecordBuilder);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
 		
 		ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
-		roombuilder.setBossRoom(bossRoomRecord);
+		roombuilder.setBossRoom(bossRoomRecordBuilder.build());
 		responseBuilder.setBossRoomRecordCommand(roombuilder.build());
 		if (!rewardList.isEmpty()) {
 			rewardService.doRewards(user, rewardList);
