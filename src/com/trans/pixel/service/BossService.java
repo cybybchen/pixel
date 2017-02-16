@@ -327,6 +327,12 @@ public class BossService {
 					break;
 				}
 			}
+			for (int i = 0; i < builder.getBossRecordCount(); ++i) {
+				if (builder.getBossRecord(i).getUserId() == userId) {
+					builder.removeBossRecord(i);
+					break;
+				}
+			}
 			bossRedisService.setBossRoomRecord(builder.build());
 			return builder.build();
 		}
@@ -395,6 +401,8 @@ public class BossService {
 					bossRedisService.addBosskillCount(userInfo.getId(), builder.getGroupId(), builder.getBossId());
 				}
 			}
+			
+			bossRedisService.delBossRoomRecord(builder.getCreateUserId());
 		}
 		
 		return builder.build();
