@@ -362,21 +362,31 @@ public class BossService {
 			return null;
 		
 		int totalPercent = 0;
+		boolean first = true;//首次提交成绩
 		for (int i = 0; i < builder.getBossRecordList().size(); i++) {
 			BossRecord bossRecord = builder.getBossRecord(i);
-			if (bossRecord.getUserId() == user.getId()) {
-				if (bossRecord.getCount() < percent)
+			BossRecord.Builder bossBuilder = BossRecord.newBuilder(bossRecord);
+			if (bossBuilder.getUserId() == user.getId()) {
+				first = false;
+				if (bossBuilder.getCount() >= percent)
 					return builder.build();
 				
-				BossRecord.Builder bossBuilder = BossRecord.newBuilder(bossRecord);
 				bossBuilder.setCount(percent);
 				builder.setBossRecord(i, bossBuilder.build());
 				bossRedisService.setBossRoomRecord(builder.build());
 			}
-			totalPercent += bossRecord.getCount();
+			totalPercent += bossBuilder.getCount();
+		}
+		if (first) {
+			BossRecord.Builder bossBuilder = BossRecord.newBuilder();
+			bossBuilder.setUserId(user.getId());
+			bossBuilder.setCount(percent);
+			builder.addBossRecord(bossBuilder.build());
+			bossRedisService.setBossRoomRecord(builder.build());
+			totalPercent += percent;
 		}
 		
-		if (totalPercent >= 100) {
+		if (totalPercent >= 10000) {
 			bossRedisService.addBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
 			rewardList = getBossloot(builder.getBossId(), user);
 			for (UserInfo userInfo : builder.getUserList()) {
