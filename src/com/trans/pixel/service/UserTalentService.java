@@ -152,7 +152,7 @@ public class UserTalentService {
 	
 	private UserTalentSkill initUserTalentSkill(UserBean user, int talentId, int orderId, int skillId) {
 		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
-		builder.setLevel(0);
+		builder.setLevel(1);
 		builder.setOrderId(orderId);
 		builder.setSkillId(skillId);
 		builder.setTalentId(talentId);

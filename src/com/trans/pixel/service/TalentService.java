@@ -65,6 +65,8 @@ public class TalentService {
 		while (level > 0) {
 			UserTalentSkill.Builder builder = UserTalentSkill.newBuilder(
 					userTalentSkillList.get(RandomUtils.nextInt(userTalentSkillList.size())));
+			if (builder.getLevel() >= 20)
+				continue;
 			builder.setLevel(builder.getLevel() + 1);
 			userTalentService.updateUserTalentSkill(user, builder.build());
 			level--;
