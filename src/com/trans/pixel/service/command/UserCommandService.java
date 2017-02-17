@@ -228,7 +228,7 @@ public class UserCommandService extends BaseCommandService {
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
-			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+//			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 			return;
 		}
 		UserBean olduser = userService.getUserByAccount(user.getServerId(), cmd.getNewAccount());
@@ -241,7 +241,8 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		user.setAccount(cmd.getNewAccount());
-		userService.updateUser(user);
+		userService.updateUserToMysql(user);
+		userService.delUserIdByAccount(user.getServerId(), cmd.getOldAccount());
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}

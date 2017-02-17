@@ -16,6 +16,7 @@ import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
@@ -286,6 +287,11 @@ public class UserService {
 //		userMapper.updateUser(user);
 	}
 	
+	public void updateUserToMysql(UserBean user) {
+		userRedisService.updateUser(user);
+		userMapper.updateUser(user);
+	}
+	
 	public void updateRobotUser(UserBean user) {
 		userRedisService.updateRobotUser(user);
 	}
@@ -294,6 +300,10 @@ public class UserService {
 		UserBean user = userRedisService.getUser(userId);
 		if(user != null)
 			userMapper.updateUser(user);
+	}
+	
+	public void delUserIdByAccount(final int serverId, final String account) {
+		userRedisService.delUserIdByAccount(serverId, account);
 	}
 	
 	public String popDBKey(){

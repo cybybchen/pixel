@@ -116,6 +116,10 @@ public class UserRedisService extends RedisService{
 		hput(RedisKey.PREFIX+RedisKey.ACCOUNT_PREFIX+serverId, account, userId+"");
 	}
 
+	public void delUserIdByAccount(final int serverId, final String account) {
+		hdelete(RedisKey.PREFIX + RedisKey.ACCOUNT_PREFIX + serverId, account);
+	}
+	
 	public long getUserIdByName(final int serverId, final String userName) {
 		String value = hget(RedisKey.PREFIX+RedisKey.USERNAME_PREFIX+serverId, userName);
 		if(value == null)
