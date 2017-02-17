@@ -11,6 +11,7 @@ import com.trans.pixel.constants.MessageConst;
 import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.BossRoomRecord;
 import com.trans.pixel.service.redis.MessageRedisService;
 
 @Service
@@ -21,6 +22,8 @@ public class MessageService {
 	private UserService userService;
 	@Resource
 	private NoticeService noticeService;
+	@Resource
+	private BossService bossService;
 
 	public List<MessageBoardBean> getMessageBoardList(int type, UserBean user) {
 		switch (type) {
@@ -117,6 +120,10 @@ public class MessageService {
 		MessageBoardBean messageBoard = initMessageBoard(user, message);
 		messageBoard.setGroupId(groupId);
 		messageBoard.setBossId(bossId);
+		if (groupId != 0 && bossId != 0) {
+			BossRoomRecord bossRoom = bossService.getBossRoomRecord(user);
+			messageBoard.setStartDate(bossRoom.getCreateTime());
+		}
 		messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 		messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 	}

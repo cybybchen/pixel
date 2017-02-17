@@ -402,6 +402,7 @@ public class BossService {
 			}
 			
 			bossRedisService.delBossRoomRecord(builder.getCreateUserId());
+			builder.setStatus(2);//打死
 		}
 		
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;

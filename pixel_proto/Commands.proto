@@ -786,6 +786,7 @@ message MessageBoard {
 	optional int32 job = 9;//公会职位
 	optional int32 groupId = 10;
 	optional int32 bossId = 11;
+	optional string startDate = 12;
 }
 
 message Msg {

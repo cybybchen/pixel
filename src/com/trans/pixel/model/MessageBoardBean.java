@@ -25,6 +25,7 @@ public class MessageBoardBean {
 	private int job = 0;//公会职位
 	private int groupId = 0;
 	private int bossId = 0;
+	private String startDate = "";
 	public long getTimeStamp() {
 		return timeStamp;
 	}
@@ -91,6 +92,12 @@ public class MessageBoardBean {
 	public void setBossId(int bossId) {
 		this.bossId = bossId;
 	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();
 		builder.setId(id);
@@ -108,6 +115,7 @@ public class MessageBoardBean {
 		builder.setGroupId(groupId);
 		builder.setBossId(bossId);
 		builder.setVip(vip);
+		builder.setStartDate(startDate);
 		
 		return builder.build();
 	}
@@ -124,6 +132,7 @@ public class MessageBoardBean {
 		json.put(JOB, job);
 		json.put(GROUPID, groupId);
 		json.put(BOSSID, bossId);
+		json.put(STARTDATE, startDate);
 		
 		return json.toString();
 	}
@@ -150,6 +159,7 @@ public class MessageBoardBean {
 		bean.setJob(TypeTranslatedUtil.jsonGetInt(json, JOB));
 		bean.setGroupId(TypeTranslatedUtil.jsonGetInt(json, GROUPID));
 		bean.setBossId(TypeTranslatedUtil.jsonGetInt(json, BOSSID));
+		bean.setStartDate(TypeTranslatedUtil.jsonGetString(json, STARTDATE));
 
 		return bean;
 	}
@@ -197,4 +207,5 @@ public class MessageBoardBean {
 	private static final String JOB = "job";
 	private static final String GROUPID = "groupId";
 	private static final String BOSSID = "bossId";
+	private static final String STARTDATE = "startdate";
 }

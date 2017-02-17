@@ -153,9 +153,11 @@ public class BossCommandService extends BaseCommandService {
             return;
 		}
 		
-		ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
-		roombuilder.setBossRoom(bossRoomRecordBuilder.build());
-		responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+		if (bossRoomRecordBuilder.getStatus() != 2) {
+			ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
+			roombuilder.setBossRoom(bossRoomRecordBuilder.build());
+			responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+		}
 		if (!rewardList.isEmpty()) {
 			rewardService.doRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
