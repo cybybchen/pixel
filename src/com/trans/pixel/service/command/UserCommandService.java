@@ -231,7 +231,15 @@ public class UserCommandService extends BaseCommandService {
 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 			return;
 		}
-		
+		UserBean olduser = userService.getUserByAccount(user.getServerId(), cmd.getNewAccount());
+		if (olduser != null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_HAS_EXIST);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_HAS_EXIST);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
 		user.setAccount(cmd.getNewAccount());
 		userService.updateUser(user);
 		
