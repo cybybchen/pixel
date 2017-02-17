@@ -159,15 +159,19 @@ public class BossCommandService extends BaseCommandService {
 		if (!rewardList.isEmpty()) {
 			rewardService.doRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+			
+			pusher.pushUserBosskillRecord(responseBuilder, user);
 		}
 	}
 	
 	public void startBossRoom(RequestStartBossRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		BossRoomRecord bossRoomRecord = bossService.startBossRoom(user);
 		
-		ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
-		roombuilder.setBossRoom(bossRoomRecord);
-		responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+		if (bossRoomRecord != null) {
+			ResponseBossRoomRecordCommand.Builder roombuilder = ResponseBossRoomRecordCommand.newBuilder();
+			roombuilder.setBossRoom(bossRoomRecord);
+			responseBuilder.setBossRoomRecordCommand(roombuilder.build());
+		}
 	}
 	
 	public void createBossRoom(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user) {

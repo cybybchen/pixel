@@ -229,7 +229,7 @@ public class BossService {
 	}
 	
 	public BossRoomRecord startBossRoom(UserBean user) {
-		if (user.getBossRoomUserId() != 0)
+		if (user.getBossRoomUserId() != user.getId())
 			return null;
 		BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getId());
 		if (record == null)
@@ -249,6 +249,9 @@ public class BossService {
 			log.debug("startDate:" + startDate);
 			log.debug("createTime:" + bossRoom.getCreateTime());
 			if (!bossRoom.getCreateTime().equals(startDate))
+				return null;
+			
+			if (bossRoom.hasStatus() && bossRoom.getStatus() == 1)
 				return null;
 			
 			int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), bossRoom.getGroupId(), bossRoom.getBossId());
@@ -319,9 +322,9 @@ public class BossService {
 			return ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER;
 		}
 		
-		if (builder.hasStatus() && builder.getStatus() == 1) {
-			return ErrorConst.BOSS_ROOM_HAS_START;
-		}
+//		if (builder.hasStatus() && builder.getStatus() == 1) {
+//			return ErrorConst.BOSS_ROOM_HAS_START;
+//		}
 		
 		if (builder.getCreateUserId() == user.getId() && user.getId() == userId) {
 			bossRedisService.delBossRoomRecord(user.getId());
@@ -390,7 +393,7 @@ public class BossService {
 		
 		if (totalPercent >= 10000) {
 			bossRedisService.addBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
-			rewardList = getBossloot(builder.getBossId(), user);
+			rewardList.addAll(getBossloot(builder.getBossId(), user));
 			for (UserInfo userInfo : builder.getUserList()) {
 				if (userInfo.getId() != user.getId()) {
 					sendBossRoomWinRewardMail(userInfo.getId(), rewardList);
