@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.trans.pixel.protoc.Commands.HeadInfo;
+import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
@@ -21,7 +22,7 @@ public class RegisterTest extends BaseTest {
 			url = headurl();
 			System.out.println("test server:" + url);
 		}
-		ACCOUNT = "RegisterTest"+System.currentTimeMillis();
+//		ACCOUNT = "RegisterTest"+System.currentTimeMillis();
 		USER_NAME = ACCOUNT;
         HeadInfo.Builder head = HeadInfo.newBuilder();
         head.setGameVersion(GAME_VERSION);
@@ -34,13 +35,36 @@ public class RegisterTest extends BaseTest {
         return head.build();
     }
     
+
 	@Test
+	public void test() {
+		login();
+		bindAccountTest();
+	}
+    
+//	@Test
 	public void registerTest() {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
 		RequestRegisterCommand.Builder b = RequestRegisterCommand.newBuilder();
 		b.setUserName(USER_NAME);
 		builder.setRegisterCommand(b.build());
+		
+		RequestCommand reqcmd = builder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+	}
+	
+//	@Test
+	public void bindAccountTest() {
+		RequestCommand.Builder builder = RequestCommand.newBuilder();
+		builder.setHead(head());
+		RequestBindAccountCommand.Builder b = RequestBindAccountCommand.newBuilder();
+		b.setNewAccount("haha");
+		b.setOldAccount("test");
+		builder.setBindAccountCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();
 		byte[] reqData = reqcmd.toByteArray();
