@@ -95,6 +95,22 @@ public class BossCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             
             return;
+		} 
+		
+		if (bossRoomRecord.hasStatus() && bossRoomRecord.getStatus() == 1) { //已经开始了，无法加入
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HAS_START);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HAS_START);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
+		if (bossRoomRecord.hasStatus() && bossRoomRecord.getStatus() == 3) { // 没次数了
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_COUNT_IS_USED_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_COUNT_IS_USED_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
 		}
 		
 		ResponseBossRoomRecordCommand.Builder builder = ResponseBossRoomRecordCommand.newBuilder();

@@ -246,24 +246,27 @@ public class BossService {
 			BossRoomRecord bossRoom = bossRedisService.getBossRoomRecordFirst(createUserId);
 			if (bossRoom == null)
 				return null;
-			log.debug("startDate:" + startDate);
-			log.debug("createTime:" + bossRoom.getCreateTime());
-			if (!bossRoom.getCreateTime().equals(startDate))
+			
+			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(bossRoom);
+			
+			if (!builder.getCreateTime().equals(startDate))
 				return null;
 			
-			if (bossRoom.hasStatus() && bossRoom.getStatus() == 1)
-				return null;
+			if (builder.hasStatus() && builder.getStatus() == 1)
+				return builder.build();
 			
-			int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), bossRoom.getGroupId(), bossRoom.getBossId());
-			Bossgroup bossGroup = bossRedisService.getBossgroup(bossRoom.getGroupId());
-			if (userHasKillCount >= bossGroup.getCount() && bossRoom.getGroupId() < 4)
-				return null;
+			int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
+			Bossgroup bossGroup = bossRedisService.getBossgroup(builder.getGroupId());
+			if (userHasKillCount >= bossGroup.getCount() && builder.getGroupId() < 4) {
+				builder.setStatus(3);//没次数了
+				return builder.build();
+			}
 			
 			log.debug("11111111");
 			user.setBossRoomUserId(createUserId);
 			userService.updateUser(user);
 			
-			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder(bossRoom);
+			
 			List<UserInfo> userList = new ArrayList<UserInfo>(builder.getUserList()); 
 			userList.add(userService.getCache(user.getServerId(), user.getId()));
 			builder.clearUser();
