@@ -56,10 +56,10 @@ public class BossService {
 				BossRecord bossRecord = userBossGroup.getBossRecord(i);
 				BossRecord.Builder builder = BossRecord.newBuilder(bossRecord);
 				if (bossRecord.getBossId() == bossId && bossRecord.getEndTime().isEmpty()) {
-//					int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), groupId, bossId);
-//					Bossgroup bossGroup = bossRedisService.getBossgroup(groupId);
-//					if (userHasKillCount >= bossGroup.getCount())
-//						break;
+					int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), groupId, bossId);
+					Bossgroup bossGroup = bossRedisService.getBossgroup(groupId);
+					if (userHasKillCount >= bossGroup.getCount())
+						break;
 					builder.setEndTime(DateUtil.getCurrentDateString());
 					BossGroupRecord.Builder bossgroupBuilder = BossGroupRecord.newBuilder(userBossGroup);
 //					bossgroupBuilder.clearBossRecord();
@@ -67,7 +67,7 @@ public class BossService {
 //					bossgroupBuilder.addAllBossRecord(bossRecordList);
 					bossRedisService.zhaohuanBoss(user, bossgroupBuilder.build());
 					
-//					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
+					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
 					return getBossloot(bossId, user);
 				}
 			}
@@ -184,7 +184,11 @@ public class BossService {
 		for (BossGroupRecord bossgroup : list) {
 			BossGroupRecord.Builder builder = BossGroupRecord.newBuilder();
 			List<BossRecord> bossRecordList = new ArrayList<BossRecord>();
+			Bossgroup group = bossRedisService.getBossgroup(bossgroup.getGroupId());
 			for (BossRecord bossRecord : bossgroup.getBossRecordList()) {
+				if (bossgroup.getGroupId() == 4 && bossRedisService.getBosskillCount(user.getId(), bossgroup.getGroupId(), bossRecord.getBossId()) >= group.getCount()) {
+					continue;
+				}
 				BossRecord.Builder bossRecordBuilder = BossRecord.newBuilder(bossRecord);
 				bossRecordBuilder.setCount(bossRedisService.getBosskillCount(user.getId(), bossgroup.getGroupId(), bossRecord.getBossId()));
 				bossRecordList.add(bossRecordBuilder.build());
@@ -308,16 +312,44 @@ public class BossService {
 		BossRoomRecord record = bossRedisService.getBossRoomRecord(user, user.getBossRoomUserId());
 		if (record != null)
 			return record;
-		BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
-		builder.setBossId(bossId);
-		builder.setGroupId(groupId);
-		builder.setCreateUserId(user.getId());
-		builder.addUser(userService.getCache(user.getServerId(), user.getId()));
-		builder.setCreateTime(DateUtil.getCurrentDateString());
 		
-		bossRedisService.setBossRoomRecord(builder.build());
+		if (groupId == 4) {
+			BossGroupRecord bossGroup = bossRedisService.getZhaohuanBoss(user);
+			if (bossGroup == null)
+				return null;
 		
-		return builder.build();
+			for (int i = 0; i < bossGroup.getBossRecordList().size(); ++i) {
+				BossRecord bossRecord = bossGroup.getBossRecord(i);
+				if (bossRecord.getBossId() == bossId && bossRecord.getEndTime().isEmpty()) {
+					int userHasKillCount = bossRedisService.getBosskillCount(user.getId(), groupId, bossId);
+					Bossgroup group = bossRedisService.getBossgroup(groupId);
+					if (userHasKillCount >= group.getCount())
+						break;
+					
+					BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
+					builder.setBossId(bossId);
+					builder.setGroupId(groupId);
+					builder.setCreateUserId(user.getId());
+					builder.addUser(userService.getCache(user.getServerId(), user.getId()));
+					builder.setCreateTime(DateUtil.getCurrentDateString());
+					
+					bossRedisService.setBossRoomRecord(builder.build());
+					return builder.build();
+				}
+			}
+		} else {
+			BossRoomRecord.Builder builder = BossRoomRecord.newBuilder();
+			builder.setBossId(bossId);
+			builder.setGroupId(groupId);
+			builder.setCreateUserId(user.getId());
+			builder.addUser(userService.getCache(user.getServerId(), user.getId()));
+			builder.setCreateTime(DateUtil.getCurrentDateString());
+			
+			bossRedisService.setBossRoomRecord(builder.build());
+			return builder.build();
+		}
+		
+		return null;
 	}
 	
 	public ResultConst quitBossRoom(UserBean user, BossRoomRecord.Builder builder, long userId) {
