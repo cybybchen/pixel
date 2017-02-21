@@ -266,6 +266,11 @@ public class BossService {
 				return builder.build();
 			}
 			
+			if (builder.getUserCount() >= 4) {
+				builder.setStatus(4);//房间人数已满
+				return builder.build();
+			}
+			
 			log.debug("11111111");
 			user.setBossRoomUserId(createUserId);
 			userService.updateUser(user);

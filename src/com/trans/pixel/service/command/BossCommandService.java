@@ -113,6 +113,15 @@ public class BossCommandService extends BaseCommandService {
             return;
 		}
 		
+
+		if (bossRoomRecord.hasStatus() && bossRoomRecord.getStatus() == 4) { // 房间人数已满
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_FULL_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_FULL_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
 		ResponseBossRoomRecordCommand.Builder builder = ResponseBossRoomRecordCommand.newBuilder();
 		builder.setBossRoom(bossRoomRecord);
 		responseBuilder.setBossRoomRecordCommand(builder.build());
