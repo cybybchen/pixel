@@ -5,7 +5,7 @@ public class LogString {
 //	public static final String SERVER = "log.kalazhu.com.cn";
 //	public static final String SERVER = "www.transmension.com";
 	public static final String SERVER = "127.0.0.1";
-	public static final int PORT = 4347; //test:4347 正式：4345 ck:4348
+	public static final int PORT = 4347; //test:4347 正式：4345 ck:4348 newversion:4349
 	public static final String SPLITER = "|";
 	
 	// 表中字段

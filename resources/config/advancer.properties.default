@@ -64,3 +64,10 @@ slaveserver=http://123.207.88.112:8081/Lol450/datamanager
 #redis.pass=
 #masterserver=http://123.59.144.200:8082/Lol450/datamanager
 #slaveserver=http://123.59.144.200:8082/Lol450/datamanager
+
+#qlcoud_newversion
+serverurl=http://123.207.88.112:8082/Lol450/gamedata
+jdbc.url=jdbc:mysql://10.66.110.134:3306/lol450_newversion?useUnicode=true&characterEncoding=UTF-8
+redis.default.db=15
+masterserver=http://123.207.88.112:8082/Lol450/datamanager
+slaveserver=http://123.207.88.112:8082/Lol450/datamanager
