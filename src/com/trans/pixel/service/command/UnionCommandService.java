@@ -71,6 +71,7 @@ public class UnionCommandService extends BaseCommandService {
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 		builder.setUnion(union);
 		responseBuilder.setUnionInfoCommand(builder.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void create(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user) {
