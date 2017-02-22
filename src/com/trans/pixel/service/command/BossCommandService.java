@@ -46,6 +46,10 @@ public class BossCommandService extends BaseCommandService {
 		if (rewardList != null && rewardList.size() > 0) {
 			rewardService.doRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+		} else {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
 		}
 		pusher.pushUserBosskillRecord(responseBuilder, user);
 	}
