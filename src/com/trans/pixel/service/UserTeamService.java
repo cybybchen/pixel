@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Commands.ClearLevel;
+import com.trans.pixel.protoc.Commands.FightInfo;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.HeroRareLevelup;
 import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
@@ -389,5 +390,12 @@ public class UserTeamService {
 		}
 		
 		return false;
+	}
+
+	public void saveFightInfo(String info, UserBean user){
+		userTeamRedisService.saveFightInfo(info, user);
+	}
+	public List<FightInfo> getFightInfoList(UserBean user){
+		return userTeamRedisService.getFightInfoList(user);
 	}
 }

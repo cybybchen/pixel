@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Commands.ResponseBosskillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseFightInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
@@ -509,5 +510,11 @@ public class PushCommandService extends BaseCommandService {
 		builder.addAllUserTalent(userTalentService.getUserTalentList(user));
 		builder.addAllUserTalentSkill(userTalentService.getUserTalentSkillList(user));
 		responseBuilder.setUserTalentCommand(builder.build());
+	}
+	
+	public void pushFightInfoList(Builder responseBuilder, UserBean user) {
+		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand.newBuilder();
+		builder.addAllInfo(userTeamService.getFightInfoList(user));
+		responseBuilder.setFightInfoCommand(builder.build());
 	}
 }

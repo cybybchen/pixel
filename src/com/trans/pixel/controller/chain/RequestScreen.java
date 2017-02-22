@@ -130,6 +130,8 @@ import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
@@ -208,6 +210,8 @@ import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
 
@@ -457,6 +461,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
+	
+	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
+	
+	protected abstract boolean handleCommand(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -1298,6 +1306,16 @@ public abstract class RequestScreen implements RequestHandle {
                 result = handleCommand(cmd, responseBuilder, user);//BossRoomInfoCommand
         }//BossRoomInfoCommand
         //call handleCommand here
+        if (request.hasGetFightInfoCommand()) {
+            RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
+        if (request.hasFightInfoCommand()) {
+            RequestFightInfoCommand cmd = request.getFightInfoCommand();
+            if (result)
+                result = handleCommand(cmd, responseBuilder, user);
+        }
         if (request.hasRefreshAreaCommand()) {
             RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();
             if (result)

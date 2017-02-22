@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
@@ -15,7 +16,6 @@ import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.UserPokedeService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
@@ -28,8 +28,8 @@ public class TeamCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private LogService logService;
-	@Resource
-	private UserPokedeService userPokedeService;
+	// @Resource
+	// private UserPokedeService userPokedeService;
 	@Resource
 	private UserService userService;
 	
@@ -51,6 +51,14 @@ public class TeamCommandService extends BaseCommandService {
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 		builder.setUser(user.build());
 		responseBuilder.setUserInfoCommand(builder.build());
+	}
+
+	public void submitFightInfo(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		userTeamService.saveFightInfo(RedisService.formatJson(cmd.getInfo()), user);
+	}
+
+	public void getFightInfo(/*RequestGetFightInfoCommand cmd,*/ Builder responseBuilder, UserBean user) {
+		pushCommandService.pushFightInfoList(responseBuilder, user);
 	}
 	
 //	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {

@@ -17,6 +17,7 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLibaoBean;
+import com.trans.pixel.protoc.Commands.FightInfo;
 import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.protoc.Commands.VipInfo;

@@ -885,6 +885,22 @@ public class RedisService {
     }
     
     /**
+     * 获取list
+     */
+    protected long llen(final String key) {
+    	return redisTemplate.execute(new RedisCallback<Long>() {
+			@Override
+			public Long doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundListOperations<String, String> Ops = redisTemplate
+						.boundListOps(key);
+				
+				return Ops.size();
+			}
+		});
+    }
+    
+    /**
      * 检查key是否存在
      */
     protected Boolean exists(final String key) {

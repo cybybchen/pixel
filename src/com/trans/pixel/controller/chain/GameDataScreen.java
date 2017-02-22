@@ -124,6 +124,8 @@ import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
 //add import here
+import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
@@ -998,6 +1000,18 @@ public class GameDataScreen extends RequestScreen {
 		return true;//BossRoomInfoCommand
 	}//BossRoomInfoCommand
 	//add handleCommand here
+	
+	@Override
+	protected boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		teamCommandService.getFightInfo(responseBuilder, user);
+		return true;
+	}
+	
+	@Override
+	protected boolean handleCommand(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		teamCommandService.submitFightInfo(cmd, responseBuilder, user);
+		return true;
+	}
 	
 	@Override
 	protected boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user) {

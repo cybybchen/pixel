@@ -1713,6 +1713,18 @@ message RequestLevelResultCommand {
 	optional int32 turn = 4;
 	optional bool ret = 5;
 }
+message FightInfo {
+        required string fightInfo = 1;
+        required string fightData = 2;
+}
+message RequestGetFightInfoCommand {
+}
+message RequestFightInfoCommand {
+	required FightInfo info = 1;
+}
+message ResponseFightInfoCommand {
+	repeated FightInfo info = 1;
+}
 
 message ResponseLevelResultCommand {
 	repeated RewardInfo reward = 1;
@@ -2813,6 +2825,8 @@ message RequestCommand {
 	optional RequestGetGrowExpCommand getGrowExpCommand = 150;
 	optional RequestPurchaseLadderTimeCommand purchaseLadderTimeCommand = 152;
 	optional RequestPurchaseContractCommand purchaseContractCommand = 153;
+	optional RequestFightInfoCommand fightInfoCommand = 155;
+	optional RequestGetFightInfoCommand getFightInfoCommand = 156;
 	//////////////////////////////////////////////////////
 	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
 	optional RequestLevelPauseCommand levelPauseCommand = 35;
@@ -2916,6 +2930,7 @@ message ResponseCommand {
 	optional ResponsePVPMapListCommand pvpMapListCommand = 125;
 	optional ResponseAreaEquipCommand areaEquipCommand = 137;
 	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
+	optional ResponseFightInfoCommand fightInfoCommand = 155;
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

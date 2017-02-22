@@ -40,6 +40,7 @@ public class UserTalentBean {
 		builder.setId(talentId);
 		builder.setIsUse(isUse == 1 ? true : false);
 		builder.setLevel(level);
+		@SuppressWarnings("unchecked")
 		Set<Object> set = json.keySet();
 		for (Object o : set) {
 			UserTalentOrder.Builder orderBuilder = UserTalentOrder.newBuilder();
