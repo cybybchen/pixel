@@ -68,7 +68,7 @@ public class BossService {
 					bossRedisService.zhaohuanBoss(user, bossgroupBuilder.build());
 					
 					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
-					return getBossloot(bossId, user);
+					return getBossloot(bossId, user, 0 , 0);
 				}
 			}
 		}
@@ -83,7 +83,7 @@ public class BossService {
 					
 					bossRedisService.addBosskillCount(user.getId(), groupId, bossId);
 					
-					return getBossloot(bossId, user);
+					return getBossloot(bossId, user, 0, 0);
 				}
 			}
 		}
@@ -91,7 +91,7 @@ public class BossService {
 		return new ArrayList<RewardBean>();
 	}
 	
-	private List<RewardBean> getBossloot(int bossId, UserBean user) {
+	private List<RewardBean> getBossloot(int bossId, UserBean user, int team, int dps) {
 		int itemid1 = 0;
 		int itemcount1 = 0;
 		int itemid2 = 0;
@@ -163,7 +163,7 @@ public class BossService {
 		}
 	
 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
-		logService.sendWorldbossLog(user.getServerId(), user.getId(), bossId, 1, itemid1, itemcount1, 
+		logService.sendWorldbossLog(user.getServerId(), user.getId(), bossId, team, 1, dps, itemid1, itemcount1, 
 				itemid2, itemcount2, itemid3, itemcount3, itemid4, itemcount4, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
 		
 		return rewardList;
@@ -433,7 +433,7 @@ public class BossService {
 		
 		if (totalPercent >= 10000) {
 			bossRedisService.addBosskillCount(user.getId(), builder.getGroupId(), builder.getBossId());
-			rewardList.addAll(getBossloot(builder.getBossId(), user));
+			rewardList.addAll(getBossloot(builder.getBossId(), user, builder.getCreateUserId() == user.getId() ? 1 : 2, percent));
 			for (UserInfo userInfo : builder.getUserList()) {
 				if (userInfo.getId() != user.getId()) {
 					sendBossRoomWinRewardMail(userInfo.getId(), rewardList);
@@ -443,6 +443,10 @@ public class BossService {
 			
 			bossRedisService.delBossRoomRecord(builder.getCreateUserId());
 			builder.setStatus(2);//打死
+		} else {
+			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+			logService.sendWorldbossLog(user.getServerId(), user.getId(), builder.getBossId(), builder.getCreateUserId() == user.getId() ? 1 : 2, 0, percent, 0, 0, 
+					0, 0, 0, 0, 0, 0, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
 		}
 		
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;

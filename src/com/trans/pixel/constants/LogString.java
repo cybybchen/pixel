@@ -80,6 +80,8 @@ public class LogString {
 	public static final String SKILLLEVEL = "skilllevel";
 	public static final String UNIONID = "unionid";
 	public static final String BOSSID = "bossid";
+	public static final String TEAM = "team";
+	public static final String DPS = "dps";
 	public static final String DAMAGE = "damage";
 	public static final String TARGETID = "targetid";
 	public static final String ORDER = "order";
