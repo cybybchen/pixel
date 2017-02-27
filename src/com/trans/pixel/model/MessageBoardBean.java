@@ -133,6 +133,7 @@ public class MessageBoardBean {
 		json.put(GROUPID, groupId);
 		json.put(BOSSID, bossId);
 		json.put(STARTDATE, startDate);
+		json.put(VIP, vip);
 		
 		return json.toString();
 	}
@@ -160,6 +161,7 @@ public class MessageBoardBean {
 		bean.setGroupId(TypeTranslatedUtil.jsonGetInt(json, GROUPID));
 		bean.setBossId(TypeTranslatedUtil.jsonGetInt(json, BOSSID));
 		bean.setStartDate(TypeTranslatedUtil.jsonGetString(json, STARTDATE));
+		bean.setVip(TypeTranslatedUtil.jsonGetInt(json, VIP));
 
 		return bean;
 	}
@@ -208,4 +210,5 @@ public class MessageBoardBean {
 	private static final String GROUPID = "groupId";
 	private static final String BOSSID = "bossId";
 	private static final String STARTDATE = "startdate";
+	private static final String VIP = "vip";
 }
