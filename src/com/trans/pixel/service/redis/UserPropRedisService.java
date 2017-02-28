@@ -49,9 +49,9 @@ public class UserPropRedisService extends RedisService{
 				
 				
 				bhOps.put("" + userProp.getPropId(), userProp.toJson());
-				if (!userProp.getExpiredTime().equals(""))
-					bhOps.expireAt(DateUtil.getDate(userProp.getExpiredTime()));
-				else
+				// if (!userProp.getExpiredTime().equals(""))
+				// 	bhOps.expireAt(DateUtil.getDate(userProp.getExpiredTime()));
+				// else
 					bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
 				
 				return null;
