@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.FightInfo;
 import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
@@ -54,7 +55,9 @@ public class TeamCommandService extends BaseCommandService {
 	}
 
 	public void submitFightInfo(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
-		userTeamService.saveFightInfo(RedisService.formatJson(cmd.getInfo()), user);
+		FightInfo.Builder builder = FightInfo.newBuilder(cmd.getInfo());
+		builder.setId((int)((System.currentTimeMillis()+12345)%10000000));
+		userTeamService.saveFightInfo(RedisService.formatJson(builder.build()), user);
 	}
 
 	public void getFightInfo(/*RequestGetFightInfoCommand cmd,*/ Builder responseBuilder, UserBean user) {
