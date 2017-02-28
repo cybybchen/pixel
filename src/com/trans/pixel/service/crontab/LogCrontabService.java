@@ -26,7 +26,7 @@ public class LogCrontabService {
 	public void sendLog() {
 		Socket socket = null;
 		try {
-			socket = new Socket(LogString.SERVER, LogString.PORT);
+			socket = new Socket(LogString.SERVER, LogString.getPort());
 			OutputStream netOut = socket.getOutputStream();
 //			DataOutputStream doc = new DataOutputStream(netOut);
 			while (true) {

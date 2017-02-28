@@ -1714,6 +1714,7 @@ message RequestLevelResultCommand {
 	optional bool ret = 5;
 }
 message FightInfo {
+	optional int32 id = 3;
         required string fightInfo = 1;
         required string fightData = 2;
 }
@@ -2065,9 +2066,10 @@ message ResponseMessageBoardListCommand {
 
 message RequestCreateMessageBoardCommand { //创建一个新的留言板
 	required int32 type = 1;
-	required string message = 2;
+	optional string message = 2;
 	optional int32 groupId = 3;
 	optional int32 bossId = 4;
+	optional int32 fightId = 5;
 }
 
 message RequestReplyMessageCommand { //回复留言板

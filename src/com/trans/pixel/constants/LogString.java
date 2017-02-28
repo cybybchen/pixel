@@ -1,11 +1,27 @@
 package com.trans.pixel.constants;
 
+import java.io.InputStream;
+import java.util.Properties;
+
 public class LogString {
 //	public static final String SERVER = "117.135.134.144";
 //	public static final String SERVER = "log.kalazhu.com.cn";
 //	public static final String SERVER = "www.transmension.com";
 	public static final String SERVER = "127.0.0.1";
-	public static final int PORT = 4347; //test:4347 正式：4345 ck:4348 newversion:4349
+	public static int PORT = 0; //test:4347 正式：4345 ck:4348 newversion:4349
+	public static int getPort(){
+		if(PORT == 0){
+			Properties props = new Properties();
+			try {
+				InputStream in = DirConst.class.getResourceAsStream("/config/advancer.properties");
+				props.load(in);
+				PORT = Integer.parseInt(props.getProperty("logport"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return PORT;
+	}
 	public static final String SPLITER = "|";
 	
 	// 表中字段

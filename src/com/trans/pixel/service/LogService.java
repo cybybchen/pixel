@@ -900,7 +900,7 @@ public class LogService {
 		Socket socket = null;
 		str = str + "\n";
 		try {
-			socket = new Socket(LogString.SERVER, LogString.PORT);
+			socket = new Socket(LogString.SERVER, LogString.getPort());
 			OutputStream netOut = socket.getOutputStream();
 			DataOutputStream doc = new DataOutputStream(netOut);
 			log.debug("send to log server " + str);

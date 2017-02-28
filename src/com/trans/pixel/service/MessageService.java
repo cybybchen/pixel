@@ -12,6 +12,8 @@ import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.BossRoomRecord;
+import com.trans.pixel.protoc.Commands.FightInfo;
+import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.service.redis.MessageRedisService;
 
 @Service
@@ -24,6 +26,8 @@ public class MessageService {
 	private NoticeService noticeService;
 	@Resource
 	private BossService bossService;
+	@Resource
+	private UserTeamService userTeamService;
 
 	public List<MessageBoardBean> getMessageBoardList(int type, UserBean user) {
 		switch (type) {
@@ -36,13 +40,13 @@ public class MessageService {
 		}
 	}
 	
-	public void createMessageBoard(int type, UserBean user, String message, int groupId, int bossId) {
-		switch (type) {
+	public void createMessageBoard(RequestCreateMessageBoardCommand cmd, UserBean user) {
+		switch (cmd.getType()) {
 			case MessageConst.TYPE_MESSAGE_NORMAL:
-				createMessageBoard(user, message);
+				createMessageBoard(user, cmd.getMessage());
 				break;
 			case MessageConst.TYPE_MESSAGE_UNION:
-				createUnionMessageBoard(user, message, groupId, bossId);
+				createUnionMessageBoard(user, cmd.getMessage(), cmd.getGroupId(), cmd.getBossId(), cmd.getFightId());
 				break;
 			default:
 				break;
@@ -57,7 +61,7 @@ public class MessageService {
 			return messageRedisService.getUnionMessageBoardById(user.getUnionId(), id);
 		default:
 			return messageRedisService.getMessageBoardById(user.getServerId(), id);
-	}
+		}
 	}
 	
 	public MessageBoardBean replyMessage(int type, UserBean user, String id, String message) {
@@ -116,16 +120,29 @@ public class MessageService {
 		return messageBoardList;
 	}
 	
-	private void createUnionMessageBoard(UserBean user, String message, int groupId, int bossId) {
+	private void createUnionMessageBoard(UserBean user, String message, int groupId, int bossId, int fightId) {
 		MessageBoardBean messageBoard = initMessageBoard(user, message);
 		messageBoard.setGroupId(groupId);
 		messageBoard.setBossId(bossId);
 		if (groupId != 0 && bossId != 0) {
 			BossRoomRecord bossRoom = bossService.getBossRoomRecord(user);
 			messageBoard.setStartDate(bossRoom.getCreateTime());
+			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
+			messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
+		}else if(fightId !=0) {
+			List<FightInfo> list = userTeamService.getFightInfoList(user);
+			for(FightInfo info : list){
+				if(fightId == info.getId()){
+					messageBoard.setMessage(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());
+					messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
+					messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
+					break;
+				}
+			}
+		}else{
+			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
+			messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 		}
-		messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
-		messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 	}
 	
 	private MessageBoardBean replyUnionMessage(int unionId, String id, String message) {
