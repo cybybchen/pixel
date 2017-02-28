@@ -42,6 +42,10 @@ public class ActivityConst {
 	 */
 	public static final int AID = 43;
 	/**
+	 * 免费钻石抽奖
+	 */
+	public static final int FREE_JEWEL_LOTTERY = 44;
+	/**
 	 * 参与pk
 	 */
 	public static final int RICHANG_PVP_ATTACK_ENEMY = 307;

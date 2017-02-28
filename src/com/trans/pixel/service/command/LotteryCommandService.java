@@ -134,7 +134,7 @@ public class LotteryCommandService extends BaseCommandService {
 		/**
 		 * 抽奖活动
 		 */
-		activityService.lotteryActivity(user, count, type, cost);
+		activityService.lotteryActivity(user, count, type, cost, free);
 		
 		rewardService.doRewards(user, lotteryList);
 		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
