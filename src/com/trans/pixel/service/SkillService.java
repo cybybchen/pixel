@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.SkillBean;
 import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.hero.HeroBean;
-import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
-import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
+import com.trans.pixel.protoc.Commands.Rankvalue;
+import com.trans.pixel.protoc.Commands.Upgrade;
+import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.SkillRedisService;
 
 @Service
@@ -22,6 +23,8 @@ public class SkillService {
 	private SkillRedisService skillRedisService;
 	@Resource
 	private HeroService heroService;
+	@Resource
+	private HeroRedisService heroRedisService;
 	
 	public SkillBean getSkill(int id) {
 		SkillBean skill = skillRedisService.getSkillById(id);
@@ -86,8 +89,8 @@ public class SkillService {
 		return true;
 	}
 	
-	public boolean hasEnoughSP(HeroInfoBean heroInfo, int id, HeroRareLevelupRank herorare) {
-		HeroUpgradeBean upgrade = heroService.getHeroUpgrade(heroInfo.getLevel());
+	public boolean hasEnoughSP(HeroInfoBean heroInfo, int id, int rank) {
+		Upgrade upgrade = heroService.getUpgrade(heroInfo.getLevel());
 		
 		int needSP = getSkillLevel(id).getSp();
 		for (SkillInfoBean skillInfo : heroInfo.getSkillInfoList()) {
@@ -95,7 +98,8 @@ public class SkillService {
 			needSP += skillLevel.getSp() * skillInfo.getSkillLevel();
 		}
 		
-		if (needSP <= upgrade.getSp() + (herorare == null ? 0 : herorare.getSp()))
+		Rankvalue rankvalue = heroRedisService.getRankvalu(rank);
+		if (needSP <= upgrade.getSp() + rankvalue.getSp())
 			return true;
 		
 		return false;

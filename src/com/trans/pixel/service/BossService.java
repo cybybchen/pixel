@@ -71,6 +71,8 @@ public class BossService {
 					return getBossloot(bossId, user, 0 , 0);
 				}
 			}
+			
+			return null;
 		}
 		BossGroupRecord bossGroupRecord = bossRedisService.getBossGroupRecord(user.getServerId(), groupId);
 		if (bossGroupRecord != null) {

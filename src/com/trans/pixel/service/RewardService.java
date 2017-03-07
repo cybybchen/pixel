@@ -94,7 +94,7 @@ public class RewardService {
 			Heroloot heroloot = heroRedisService.getHeroloot(rewardId);
 //			int star = (rewardId % RewardConst.HERO) / RewardConst.HERO_STAR;
 //			int heroId = rewardId % RewardConst.HERO_STAR;
-			userHeroService.addUserHero(user, heroloot.getHeroid(), heroloot.getStar(), (int)(heroloot.getCount() * rewardCount), heroloot.getRare());
+			userHeroService.addUserHero(user, heroloot.getHeroid(), heroloot.getStar(), (int)(heroloot.getCount() * rewardCount));
 		} else if (rewardId > RewardConst.PACKAGE) {
 			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {

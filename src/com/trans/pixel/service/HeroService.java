@@ -1,7 +1,10 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -13,7 +16,6 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroEquipBean;
-import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
@@ -22,6 +24,7 @@ import com.trans.pixel.protoc.Commands.HeroFetters;
 import com.trans.pixel.protoc.Commands.HeroFettersOrder;
 import com.trans.pixel.protoc.Commands.HeroRareLevelup;
 import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
+import com.trans.pixel.protoc.Commands.Upgrade;
 import com.trans.pixel.service.redis.HeroRedisService;
 
 @Service
@@ -66,74 +69,41 @@ public class HeroService {
 	}
 	
 	public long getLevelUpExp(int levelId) {
-		HeroUpgradeBean next = getHeroUpgrade(levelId);
+		Upgrade next = heroRedisService.getUpgrade(levelId);
 //		HeroUpgradeBean current = getHeroUpgrade(levelId - 1);
 		
 		return next.getExp();
 	}
 	
 	public long getLevelUpExp(int start, int add) {
-		List<HeroUpgradeBean> huList = getHeroUpgradeList();
+		Map<String, Upgrade> upgradeMap = heroRedisService.getUpgradeConfig();
 		long exp = 0;
-		for (HeroUpgradeBean hu : huList) {
-			if (hu.getLevel() > start && hu.getLevel() <= start + add) {
-				exp += hu.getExp();
+		Iterator<Entry<String, Upgrade>> it = upgradeMap.entrySet().iterator();
+		while (it.hasNext()) {
+		Entry<String, Upgrade> entry = it.next();
+		Upgrade upgrade = entry.getValue();
+			if (upgrade.getLevel() > start && upgrade.getLevel() <= start + add) {
+				exp += upgrade.getExp();
 			}
 		}
 		
 		return exp;
 	}
 	
-	public HeroUpgradeBean getHeroUpgrade(int level) {
-		HeroUpgradeBean hu = heroRedisService.getHeroUpgradeByLevelId(level);
-		if (hu == null) {
-			parseHeroUpgradeAndSaveConfig();
-			hu = heroRedisService.getHeroUpgradeByLevelId(level);
-		}
-		
-		return hu;
-	}
-	
-	public HeroUpgradeBean getHeroUpgrade(List<HeroUpgradeBean> huList, int level) {
-		for (HeroUpgradeBean hu : huList) {
-			if (hu.getLevel() == level)
-				return hu;
-		}
-		
-		return getHeroUpgrade(level);
-	}
-	
-	public List<HeroUpgradeBean> getHeroUpgradeList() {
-		List<HeroUpgradeBean> huList = heroRedisService.getHeroUpgradeList();
-		if (huList.isEmpty()) {
-			parseHeroUpgradeAndSaveConfig();
-			huList = heroRedisService.getHeroUpgradeList();
-		}
-		
-		return huList;
+	public Upgrade getUpgrade(int level) {
+		return heroRedisService.getUpgrade(level);
 	}
 	
 	public long getDeleteExp(int level) {
 		long addExp = 0;
+		Map<String, Upgrade> map = heroRedisService.getUpgradeConfig();
 		while (level > 0) {
-			HeroUpgradeBean hu = heroRedisService.getHeroUpgradeByLevelId(level);
-			if (hu == null) {
-				parseHeroUpgradeAndSaveConfig();
-				hu = heroRedisService.getHeroUpgradeByLevelId(level);
-			}
-			if (hu != null)
-				addExp += hu.getExp();
+			Upgrade upgrade = map.get(level);
+			addExp += upgrade.getExp();
 			level--;
 		}
 		
 		return addExp;
-	}
-	
-	private void parseHeroUpgradeAndSaveConfig() {
-		List<HeroUpgradeBean> huList = HeroUpgradeBean.xmlParse();
-		if (huList != null && huList.size() != 0) {
-			heroRedisService.setHeroUpgradeList(huList);
-		}
 	}
 	
 	private List<HeroBean> parseHeroAndSaveConfig() {

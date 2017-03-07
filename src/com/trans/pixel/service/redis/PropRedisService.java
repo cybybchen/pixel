@@ -1,84 +1,74 @@
 package com.trans.pixel.service.redis;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
+import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.PackageBean;
+import com.trans.pixel.protoc.Commands.Prop;
+import com.trans.pixel.protoc.Commands.PropList;
 
 @Service
-public class PropRedisService {
+public class PropRedisService extends RedisService {
+	private static Logger logger = Logger.getLogger(PropRedisService.class);
+	private static final String PACKAGE_FILE_NAME = "ld_package.xml";
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
 	
-	public List<PackageBean> getPropList() {
-		return redisTemplate.execute(new RedisCallback<List<PackageBean>>() {
-			@Override
-			public List<PackageBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.PROP_KEY);
-				
-				List<PackageBean> list = new ArrayList<PackageBean>();
-				Set<Entry<String, String>> set = bhOps.entries().entrySet();
-				Iterator<Entry<String, String>> itr = set.iterator();
-				while(itr.hasNext()) {
-					Entry<String, String> entry = itr.next();
-					PackageBean bean = PackageBean.fromJson(entry.getValue());
-					if (bean != null) {
-						list.add(bean);
-					}
-				}
-				
-				return list;
-			}
+	//hero
+	public Prop getPackage(int id) {
+		String value = hget(RedisKey.PROP_KEY, "" + id);
+		if (value == null) {
+			Map<String, Prop> packageConfig = getPackageConfig();
+			return packageConfig.get("" + id);
+		} else {
+			Prop.Builder builder = Prop.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
 		
-		});
+		return null;
 	}
 	
-	public void setPropList(final List<PackageBean> list) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.PROP_KEY);
-				
-				for (PackageBean bean : list) {
-					bhOps.put("" + bean.getItemid(), bean.toJson());
-				}
-				
-				return null;
+	private Map<String, Prop> getPackageConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.PROP_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Prop> map = buildPackageConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Prop> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-		
-		});
+			hputAll(RedisKey.PROP_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Prop> map = new HashMap<String, Prop>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Prop.Builder builder = Prop.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
 	}
 	
-	public PackageBean getProp(final int id) {
-		return redisTemplate.execute(new RedisCallback<PackageBean>() {
-			@Override
-			public PackageBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.PROP_KEY);
-				
-				PackageBean bean = PackageBean.fromJson(bhOps.get("" + id));
-				return bean;
-			}
+	private Map<String, Prop> buildPackageConfig(){
+		String xml = ReadConfig(PACKAGE_FILE_NAME);
+		PropList.Builder builder = PropList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + PACKAGE_FILE_NAME);
+			return null;
+		}
 		
-		});
+		Map<String, Prop> map = new HashMap<String, Prop>();
+		for(Prop.Builder prop : builder.getLootBuilderList()){
+			map.put("" + prop.getItemid(), prop.build());
+		}
+		return map;
 	}
-	
 }

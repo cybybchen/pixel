@@ -165,6 +165,9 @@ message RewardInfo {
 	optional string itemname = 2;
 	optional int64 count = 3;
 	optional int32 weight = 4;
+	optional int32 counta = 5;
+	optional int32 countb = 6;
+	optional string item = 7;
 }
 
 message Item {
@@ -207,7 +210,7 @@ message HeroInfo {
 	optional int64 infoId = 1;
 	optional int32 level = 2;
 	optional int32 rare = 3;
-	optional string equipInfo = 4;
+	optional int32 equipId = 4;
 	repeated SkillInfo skill = 5;
 	optional int32 value = 6;
 	optional int32 star = 7;
@@ -1406,7 +1409,7 @@ message Strengthen {
 }
 
 message HerolootList {
-	repeated Heroloot hero = 1;
+	repeated Heroloot id = 1;
 }
 
 message Heroloot {
@@ -1414,7 +1417,8 @@ message Heroloot {
 	optional int32 heroid = 2;
 	optional int32 star = 3;
 	optional int32 count = 4;
-	optional int32 rare = 5;
+	optional string name = 5;
+	optional string description = 6;
 }
 
 message SevenLoginList {
@@ -1447,8 +1451,6 @@ message HeroRareLevelup {
 
 message HeroRareLevelupRank {
 	optional int32 rank = 1;
-	optional int32 rare = 2;
-	optional int32 sp = 3;
 	optional int32 equip1 = 4;
 	optional int32 count1 = 5;
 	optional int32 equip2 = 6;
@@ -1460,6 +1462,7 @@ message HeroRareLevelupRank {
 	optional int32 equip5 = 12;
 	optional int32 count5 = 13;
 	optional int32 zhanli = 14;
+	optional int32 levelrequire = 15;
 }
 
 message HeroFettersOrderList {
@@ -1657,6 +1660,133 @@ message UserTalentSkill {
 	required int32 level = 4;
 }
 
+message HeroList {
+	repeated Hero id = 1;
+}
+
+message Hero {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional int32 img = 3;
+	optional string description = 4;
+	optional int32 quality = 5;
+	optional int32 position = 6;
+	optional int32 handbook = 7;
+	optional int32 hp = 8;
+	optional int32 vit = 9;
+	optional int32 power = 10;
+	optional int32 def = 11;
+	optional int32 ad = 12;
+	optional int32 ap = 13;
+	optional int32 arm = 14;
+	optional int32 mr = 15;
+	repeated HeroSkill skill = 16;
+}
+
+message HeroSkill {
+	optional int32 skillid = 1;
+	optional string skill = 2;	
+	optional int32 unlock = 3;
+}
+
+message UpgradeList {
+	repeated Upgrade level = 1;
+}
+
+message Upgrade {
+	optional int32 level = 1;
+	optional int32 sp = 2;
+	optional int64 exp = 3;
+	optional float hp = 4;
+	optional float arm = 5;
+	optional float mr = 6;
+	optional float ad = 7;
+	optional float ap = 8;
+}
+
+message PropList {
+	repeated Prop loot = 1;
+}
+
+message Prop {
+	optional int32 itemid = 1;
+	optional string name = 2;
+	optional int32 img = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 hashero = 6;
+	optional int32 judge = 7;
+	optional string endtime = 8;
+	optional int32 bossid = 9;
+	optional int32 itemcount = 10;
+	optional int32 weightall = 11;
+	repeated RewardInfo item = 12;
+}
+
+message EquipList {
+	repeated Equip id = 1;
+}
+
+message Equip {
+	optional int32 itemid = 1;
+	optional string name = 2;
+	optional int32 level = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 type = 6;
+	optional int32 zhanli = 7;
+	optional int32 ad = 8;
+	optional int32 ap = 9;
+	optional int32 skill = 10;
+}
+
+message RankvalueList {
+	repeated Rankvalue rank = 1;
+}
+
+message Rankvalue {
+	optional int32 rank = 1;
+	optional int32 sp = 2;
+	optional float def = 3;
+	optional float vit = 4;
+	optional float power = 5;
+}
+
+message ArmorList {
+	repeated Armor id = 1;
+}
+
+message Armor {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional int32 level = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 type = 6;
+	optional int32 zhanli = 7;
+	optional int32 arm = 8;
+	optional int32 mr = 9;
+	optional int32 reelement = 10;
+	optional int32 ad = 11;
+	optional int32 ap = 12;
+	optional int32 adi = 13;
+	optional int32 api = 14;
+	optional int32 rating = 15;
+	optional int32 ratingdamage = 16;
+	optional int32 fireup = 17;
+	optional int32 iceup = 18;
+	optional int32 lightup = 19;
+	optional int32 darkup = 20;
+	optional int32 atk_damage = 21;
+	optional int32 duochong = 22;
+	optional string skill = 23;
+}
+
+message UserEquipPokede {
+	required int32 itemId = 1;
+	required int32 level = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;
@@ -1804,14 +1934,7 @@ message ResponseLootResultCommand {
 message RequestAddHeroEquipCommand {
 	required int32 heroId = 1;
 	required int64 infoId = 2;
-	optional int32 armId = 3;
-}
-
-message RequestEquipLevelUpCommand {
-        required int32 heroId = 1;
-        required int64 infoId = 2;
-        required int32 armId = 3;
-	required int32 levelUpId = 4;
+	optional int32 equipId = 3;
 }
 
 message RequestEquipComposeCommand {
@@ -2357,12 +2480,6 @@ message ResponseSignCommand {
 	repeated RewardInfo reward = 1;
 }
 
-message RequestFenjieHeroEquipCommand {
-	required int32 heroId = 1;
-	required int64 infoId = 2;
-	required int32 armId = 3;
-}
-
 message RequestFenjieHeroCommand {
 	repeated FenjieHeroInfo fenjieHero = 1;
 }
@@ -2745,6 +2862,18 @@ message ResponseUserTalentCommand {
 	repeated UserTalentSkill userTalentSkill = 2;
 }
 
+message RequestEquipStrenthenCommand {
+	required int32 itemId = 1;
+}
+
+message RequestEquipPokedeCommand {
+
+}
+
+message ResponseEquipPokedeCommand {
+	repeated UserEquipPokede userEquipPokede = 1; 
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -2768,7 +2897,6 @@ message RequestCommand {
 	optional RequestDeleteMailCommand deleteMailCommand = 20;
 	optional RequestAddFriendCommand addFriendCommand = 21;
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
-	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestAreaCommand areaCommand = 26;
 	optional RequestRefreshAreaCommand refreshAreaCommand = 154;
 	optional RequestUseAreaEquipCommand useAreaEquipCommand = 137;
@@ -2842,7 +2970,6 @@ message RequestCommand {
 	optional RequestUsePropCommand usePropCommand = 51;
 	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
 	optional RequestSignCommand signCommand = 53;
-	optional RequestFenjieHeroEquipCommand fenjieHeroEquipCommand = 54;
 	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
 	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
 	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
@@ -2912,6 +3039,8 @@ message RequestCommand {
 	optional RequestStartBossRoomCommand startBossRoomCommand = 225;
 	optional RequestCreateBossRoomCommand createBossRoomCommand = 226;
 	optional RequestBossRoomInfoCommand bossRoomInfoCommand = 227;
+	optional RequestEquipStrenthenCommand equipStrenthenCommand = 228;
+	optional RequestEquipPokedeCommand equipPokedeCommand = 229;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -2986,6 +3115,7 @@ message ResponseCommand {
 	optional ResponseBattletowerShopCommand battletowerShopCommand = 61;
 	optional ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;
 	optional ResponseUserTalentCommand userTalentCommand = 63;
+	optional ResponseEquipPokedeCommand equipPokedeCommand = 64;
 }
 
 

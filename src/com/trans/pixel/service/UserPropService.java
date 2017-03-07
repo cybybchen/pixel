@@ -6,9 +6,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.PackageBean;
 import com.trans.pixel.model.mapper.UserPropMapper;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Commands.Prop;
 import com.trans.pixel.service.redis.UserPropRedisService;
 
 @Service
@@ -66,8 +66,8 @@ public class UserPropService {
 	public void addUserProp(long userId, int propId, int propCount) {
 		UserPropBean userProp = selectUserProp(userId, propId);
 		if (userProp == null) {
-			PackageBean prop = propService.getProp(propId);
-			userProp = UserPropBean.initUserProp(userId, propId, prop.getEndTime());
+			Prop prop = propService.getProp(propId);
+			userProp = UserPropBean.initUserProp(userId, propId, prop.getEndtime());
 		}
 		
 		userProp.setPropCount(userProp.getPropCount() + propCount);

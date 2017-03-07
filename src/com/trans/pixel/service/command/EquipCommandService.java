@@ -69,24 +69,24 @@ public class EquipCommandService extends BaseCommandService {
 	}
 	
 	public void fenjie(RequestFenjieEquipCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseEquipResultCommand.Builder builder = ResponseEquipResultCommand.newBuilder();
-		int equipId = cmd.getEquipId();
-		int equipCount = cmd.getEquipCount();
-		List<RewardBean> rewardList = equipService.fenjieUserEquip(user, equipId, equipCount);
-		if (rewardList == null || rewardList.size() == 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-		}else{
-			rewardService.doRewards(user, rewardList);
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
-		}
-		
-		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), equipId);
-		if (userEquip != null)
-			builder.addUserEquip(userEquip.buildUserEquip());
-		responseBuilder.setEquipResultCommand(builder.build());
+//		ResponseEquipResultCommand.Builder builder = ResponseEquipResultCommand.newBuilder();
+//		int equipId = cmd.getEquipId();
+//		int equipCount = cmd.getEquipCount();
+//		List<RewardBean> rewardList = equipService.fenjieUserEquip(user, equipId, equipCount);
+//		if (rewardList == null || rewardList.size() == 0) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_FENJIE_ERROR);
+//			
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_FENJIE_ERROR);
+//            responseBuilder.setErrorCommand(errorCommand);
+//		}else{
+//			rewardService.doRewards(user, rewardList);
+//			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+//		}
+//		
+//		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), equipId);
+//		if (userEquip != null)
+//			builder.addUserEquip(userEquip.buildUserEquip());
+//		responseBuilder.setEquipResultCommand(builder.build());
 		
 	}
 	

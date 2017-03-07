@@ -5,13 +5,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.model.PackageBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.BossGroupRecord;
 import com.trans.pixel.protoc.Commands.BossRecord;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.Prop;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseUsePropCommand;
@@ -43,7 +43,7 @@ public class PropCommandService extends BaseCommandService {
 		ResponseUsePropCommand.Builder builder = ResponseUsePropCommand.newBuilder();
 		int propId = cmd.getPropId();
 		int propCount = cmd.getPropCount();
-		PackageBean prop = propService.getProp(propId);
+		Prop prop = propService.getProp(propId);
 		if (prop.getBossid() > 0) {
 			propCount = 1;
 			BossGroupRecord bossGroupRecord = bossRedisService.getZhaohuanBoss(user);

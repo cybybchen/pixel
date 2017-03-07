@@ -124,13 +124,13 @@ public class UserHeroService {
 		return userHeroRedisService.popDeleteDBKey();
 	}
 	
-	public void addUserHero(UserBean user, int heroId, int star, int count) {
-		addUserHero(user, heroId, star, count, 1);
-	}
+//	public void addUserHero(UserBean user, int heroId, int star, int count) {
+//		addUserHero(user, heroId, star, count, 1);
+//	}
 	
-	public void addUserHero(UserBean user, int heroId, int star, int count, int rare) {
+	public void addUserHero(UserBean user, int heroId, int star, int count) {
 		long userId = user.getId();
-		HeroInfoBean newHero = initUserHero(userId, heroId, star, rare);
+		HeroInfoBean newHero = initUserHero(userId, heroId, star);
 		HeroInfoBean oldHero = selectUserHeroByHeroId(userId, heroId);
 		if (oldHero == null) {
 			/**
@@ -162,8 +162,8 @@ public class UserHeroService {
 		return selectUserHero(user.getId(), infoId);
 	}
 	
-	private HeroInfoBean initUserHero(long userId, int heroId, int star, int rare) {
-		HeroInfoBean userHero = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), star, rare);
+	private HeroInfoBean initUserHero(long userId, int heroId, int star) {
+		HeroInfoBean userHero = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), star);
 		userHero.setUserId(userId);
 		skillService.unlockHeroSkill(heroId, userHero);
 		

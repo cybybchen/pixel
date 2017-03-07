@@ -47,6 +47,7 @@ public class RedisKey {
 	public static final String USER_CLEAR_PREFIX = PREFIX + "user_clear_";
 	public static final String USER_LAST_CLEAR_PREFIX = PREFIX + "user_last_clear_";
 	public final static String USER_FIGHT_PREFIX = PREFIX + "user_fight_";
+	public static final String USER_EQUIP_POKEDE_PREFIX = PREFIX + "user_equip_pokede_"; 
 
 	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";
@@ -173,9 +174,10 @@ public class RedisKey {
 	public static final String BLACK_ACCOUNT_LIST = PREFIX + "accountblack";
 	
 	//equip
-	public static final String EQUIP_CONFIG = CONFIG_PREFIX+"equip";
+	public static final String EQUIP_CONFIG = PREFIX + CONFIG_PREFIX+"equip";
 	public static final String CHIP_CONFIG = PREFIX + CONFIG_PREFIX+"chip";
 	public static final String EQUIP_TUCAO_CONFIG = PREFIX + CONFIG_PREFIX + "equiptucao";
+	public static final String ARMOR_CONFIG = PREFIX + CONFIG_PREFIX + "armor";
 	
 	//message board
 	public static final String MESSAGE_BOARD_KEY = "message_key";
@@ -262,8 +264,17 @@ public class RedisKey {
 	//hero rare levelup
 	public static final String HERO_RARE_LEVELUP_CONFIG = PREFIX + CONFIG_PREFIX + "hero_rare_levelup";
 	
+	//rank value
+	public static final String RANK_VALUE_CONFIG = PREFIX + CONFIG_PREFIX + "rankvalue";
+	
 	//hero fetters
 	public static final String HERO_FETTERS_CONFIG = PREFIX + CONFIG_PREFIX + "hero_fetters";
+	
+	//hero
+	public static final String HERO_CONFIG = PREFIX + CONFIG_PREFIX + "hero";
+	
+	//hero
+	public static final String UPGRADE_CONFIG = PREFIX + CONFIG_PREFIX + "upgrade";
 	
 	//notice prefix
 	public static final String NOTICE_PREFIX = PREFIX + "notice_";

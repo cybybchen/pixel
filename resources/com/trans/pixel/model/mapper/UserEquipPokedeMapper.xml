@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserEquipPokedeMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserEquipPokedeBean">
+		<result property="userId" column="user_id" />
+		<result property="itemId" column="item_id" />
+		<result property="level" column="level" />
+	</resultMap>
+	
+	<select id="selectUserEquipPokede" resultMap="resultMap">
+		SELECT *
+		from user_equippokede where user_id=#{userId} and item_id=#{itemId}
+	</select>
+	
+	<insert id="updateUserEquipPokede" parameterType="com.trans.pixel.model.userinfo.UserEquipPokedeBean">
+	    INSERT INTO user_equippokede(user_id, item_id, level,)
+	    VALUES(#{userId}, #{itemId}, #{level})
+	    ON 
+	    duplicate key update
+	    level=#{level}
+	</insert>
+	
+	<select id="selectUserEquipPokedeList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_equippokede where user_id=#{userId}
+	</select>
+	
+</mapper>

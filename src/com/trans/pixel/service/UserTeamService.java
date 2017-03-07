@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.hero.HeroBean;
-import com.trans.pixel.model.hero.HeroUpgradeBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -32,7 +31,6 @@ import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.UserTeamRedisService;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserTeamService {
@@ -169,12 +167,13 @@ public class UserTeamService {
 	}
 
 	public String luaHeroInfo(HeroInfo hero){
-		String str = "{heroId="+hero.getHeroId()+",heroLv="+hero.getLevel()+",star="+hero.getStar()+",rare="+hero.getRare()+",equips={"+hero.getEquipInfo().replace("|", ",")+"},skills={";
-		for(SkillInfo skill : hero.getSkillList()){
-			str += luaSkillInfo(skill);
-		}
-		str += "},},";
-		return str;
+//		String str = "{heroId="+hero.getHeroId()+",heroLv="+hero.getLevel()+",star="+hero.getStar()+",rare="+hero.getRare()+",equips={"+hero.getEquipInfo().replace("|", ",")+"},skills={";
+//		for(SkillInfo skill : hero.getSkillList()){
+//			str += luaSkillInfo(skill);
+//		}
+//		str += "},},";
+//		return str;
+		return "";
 	}
 
 	public String luaTeam(Team team){
@@ -263,8 +262,8 @@ public class UserTeamService {
 		Map<String, ClearLevel> clearLevelConfig = clearRedisService.getClearLevelConfig();
 		List<HeroInfoBean> heroInfoList = userHeroService.selectUserHeroList(user);
 		Map<String, HeroRareLevelup> herorareConfig = heroRedisService.getHeroRareLevelupConfig();
-		List<HeroUpgradeBean> huList = heroService.getHeroUpgradeList();
-		Map<String, EquipmentBean> equipConfig = equipService.getEquipConfig();
+//		List<HeroUpgradeBean> huList = new ArrayList<HeroUpgradeBean>();//heroService.getHeroUpgradeList();
+//		Map<String, EquipmentBean> equipConfig = equipService.getEquipConfig();
 		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
 		for (HeroInfo hero : team.getHeroInfoList()) {
 			HeroBean base = heroService.getHero(heroList, hero.getHeroId());
@@ -280,15 +279,16 @@ public class UserTeamService {
 //			 log.debug(strengthen+" : "+pre);
 			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
 			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
-			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(huList, hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
-			for(String equipid : hero.getEquipInfo().split("\\|")){
-				int id = TypeTranslatedUtil.stringToInt(equipid);
-				if(id == 0)
-					continue;
-				EquipmentBean equip = equipService.getEquip(equipConfig, id);
-				zhanli += equip.getZhanli();
-				// log.debug(equip.getZhanli());
-			}
+//			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(huList, hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
+			double zhanli = 0;
+//			for(String equipid : hero.getEquipInfo().split("\\|")){
+//				int id = TypeTranslatedUtil.stringToInt(equipid);
+//				if(id == 0)
+//					continue;
+//				EquipmentBean equip = equipService.getEquip(equipConfig, id);
+//				zhanli += equip.getZhanli();
+//				// log.debug(equip.getZhanli());
+//			}
 			zhanli += clearService.getClearLevelZhanli(hero.getHeroId(), clearLevelConfig, userPokedeList);
 			zhanli = zhanli * pre / 100;
 			log.debug("111|||" + zhanli);

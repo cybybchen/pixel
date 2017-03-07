@@ -8,7 +8,6 @@ import net.sf.json.JSONObject;
 
 import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.hero.HeroBean;
-import com.trans.pixel.model.hero.HeroEquipBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.HeroInfo;
@@ -24,7 +23,7 @@ public class HeroInfoBean {
 	private int value = 1;
 	private int rare = 1;
 	private boolean isLock = false;
-	private String equipInfo = "0|0|0|0|0|0";
+	private int equipId = 0;
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 	private long userId = 0;
 	private String skillInfo = "";
@@ -89,11 +88,11 @@ public class HeroInfoBean {
 	public void setRare(int rare) {
 		this.rare = rare;
 	}
-	public String getEquipInfo() {
-		return equipInfo;
+	public int getEquipId() {
+		return equipId;
 	}
-	public void setEquipInfo(String equipInfo) {
-		this.equipInfo = equipInfo;
+	public void setEquipId(int equipId) {
+		this.equipId = equipId;
 	}
 	public List<SkillInfoBean> getSkillInfoList() {
 		return skillInfoList;
@@ -113,39 +112,10 @@ public class HeroInfoBean {
 		rank++;
 	}
 	
-	public int getEquipIdByArmId(int armId) {
-		String[] equipIds = equipIds();
-		if (equipIds.length >= armId - 1)
-			return TypeTranslatedUtil.stringToInt(equipIds[armId - 1]);
-		
-		return 0;
-	}
-	
-	public void updateEquipIdByArmId(int equipId, int armId) {
-		String[] equipIds = equipIds();
-		if (equipIds.length > armId - 1) {
-			equipIds[armId - 1] = "" + equipId;
-			composeEquipInfo(equipIds);
-		}
-	}
-	
-	public String[] equipIds() {
-		return equipInfo.split("\\" + EQUIP_SPLIT);
-	}
-	
-	private void composeEquipInfo(String[] equipIds) {
-		equipInfo = "";
-		for (String equipId : equipIds) {
-			equipInfo = equipInfo + EQUIP_SPLIT + equipId;
-		}
-		
-		equipInfo = equipInfo.substring(1);
-	}
-	
 	public void copy(HeroInfoBean hero) {
 		level = hero.getLevel();
 		starLevel = hero.getStarLevel();
-		equipInfo = hero.getEquipInfo();
+		equipId = hero.getEquipId();
 		rare = hero.getRare();
 		value = hero.getValue();
 		isLock = hero.isLock();
@@ -162,7 +132,7 @@ public class HeroInfoBean {
 		json.put(VALUE, value);
 		json.put(RARE, rare);
 		json.put(LOCK, isLock);
-		json.put(EQUIP_INFO, equipInfo);
+		json.put(EQUIP_ID, equipId);
 		json.put(SKILL_INFO_LIST, skillInfoList);
 		json.put(HERO_ID, heroId);
 		json.put(USER_ID, userId);
@@ -188,7 +158,7 @@ public class HeroInfoBean {
 		bean.setLevel(json.getInt(LEVEL));
 		bean.setStarLevel(json.getInt(STAR_LEVEL));
 		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
-		bean.setEquipInfo(json.getString(EQUIP_INFO));
+		bean.setEquipId(json.getInt(EQUIP_ID));
 		bean.setRare(json.getInt(RARE));
 		bean.setLock(TypeTranslatedUtil.jsonGetBoolean(json, LOCK));
 		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
@@ -209,7 +179,7 @@ public class HeroInfoBean {
 	
 	public HeroInfo buildHeroInfo() {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
-		builder.setEquipInfo(equipInfo);
+		builder.setEquipId(equipId);
 		builder.setInfoId(id);
 		builder.setLevel(level);
 		builder.setRare(rare);
@@ -225,7 +195,7 @@ public class HeroInfoBean {
 	
 	public HeroInfo buildRankHeroInfo() {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
-		builder.setEquipInfo(equipInfo);
+		builder.setEquipId(equipId);
 		builder.setHeroId(heroId);
 		builder.setLevel(level);
 		builder.setRare(rare);
@@ -239,7 +209,7 @@ public class HeroInfoBean {
 	
 	public HeroInfo buildTeamHeroInfo(List<UserClearBean> userClearList, UserPokedeBean userPokede) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
-		builder.setEquipInfo(equipInfo);
+		builder.setEquipId(equipId);
 		builder.setHeroId(heroId);
 		builder.setLevel(level);
 		builder.setRare(rare);
@@ -266,23 +236,23 @@ public class HeroInfoBean {
 		return builderList;
 	}
 	
-	public static HeroInfoBean initHeroInfo(HeroBean hero, int star) {
-		return initHeroInfo(hero, star, 1);
-	}
+//	public static HeroInfoBean initHeroInfo(HeroBean hero, int star) {
+//		return initHeroInfo(hero, star, 1);
+//	}
 	
-	public static HeroInfoBean initHeroInfo(HeroBean hero, int star, int rare) {
+	public static HeroInfoBean initHeroInfo(HeroBean hero, int star) {
 		HeroInfoBean heroInfo = new HeroInfoBean();
 		heroInfo.setId(0);
 		heroInfo.setHeroId(hero.getId());
 		heroInfo.setLevel(1);
 		heroInfo.setStarLevel(star);
 		heroInfo.setValue(0);
-		heroInfo.setRare(rare);
+//		heroInfo.setRare(rare);
 		if (hero.getQuality() >= 5)
 			heroInfo.setLock(true);
 		else
 			heroInfo.setLock(false);
-		heroInfo.setEquipInfo(initEquipInfo(hero));
+		heroInfo.setEquipId(0);
 //		heroInfo.setEquipInfo("1|1|1|1|1|1");
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
@@ -305,7 +275,7 @@ public class HeroInfoBean {
 			heroInfo.setLock(true);
 		else
 			heroInfo.setLock(false);
-		heroInfo.setEquipInfo(initEquipInfo(hero));
+		heroInfo.setEquipId(0);
 		List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 		SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), 1);
 		if (skillInfo != null)
@@ -330,12 +300,6 @@ public class HeroInfoBean {
 			list.add(skillInfo);
 		}
 		setSkillInfoList(list);
-	}
-	
-	private static String initEquipInfo(HeroBean hero) {
-		HeroEquipBean heroEquip = hero.getEquip(1);
-		return heroEquip.getArm1() + EQUIP_SPLIT + heroEquip.getArm2() + EQUIP_SPLIT + heroEquip.getArm3() +
-				EQUIP_SPLIT + heroEquip.getArm4() + EQUIP_SPLIT + heroEquip.getArm5() + EQUIP_SPLIT + heroEquip.getArm6();
 	}
 	
 	public static HeroInfoBean initHeroInfo(HeroBean hero) {
@@ -400,7 +364,7 @@ public class HeroInfoBean {
 	private static final String VALUE = "value";
 	private static final String RARE = "rare";
 	private static final String LOCK = "lock";
-	private static final String EQUIP_INFO = "equipInfo";
+	private static final String EQUIP_ID = "equipId";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
 	private static final String HERO_ID = "heroId";
 //	private static final String POSITION = "position";

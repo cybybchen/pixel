@@ -2,16 +2,17 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.model.PackageBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.Prop;
 import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.redis.PropRedisService;
 
@@ -27,20 +28,16 @@ public class PropService {
 	@Resource
 	private BossService bossService;
 	
-	public PackageBean getProp(int itemId) {
-		PackageBean prop = propRedisService.getProp(itemId);
-		if (prop == null) {
-			parseAndSaveEquipConfig();
-			prop = propRedisService.getProp(itemId);
-		}
+	public Prop getProp(int itemId) {
+		Prop prop = propRedisService.getPackage(itemId);
 		
 		return prop;
 	}
 	
-	private void randomReward(List<RewardInfo> rewardList, PackageBean prop, int propCount){
+	private void randomReward(List<RewardInfo> rewardList, Prop prop, int propCount){
 		for (int i = 0; i < propCount; ++i) {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
-				RewardInfo reward = prop.randomReward();
+				RewardInfo reward = randomReward(prop);
 				if(reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001){
 					randomReward(rewardList, getProp(reward.getItemid()), (int)reward.getCount());
 				}else
@@ -54,8 +51,8 @@ public class PropService {
 		if (userProp == null || userProp.getPropCount() < propCount)
 			return null;
 		
-		PackageBean prop = getProp(userProp.getPropId());
-		if (prop == null || prop.getCyb() == 1)
+		Prop prop = getProp(userProp.getPropId());
+		if (prop == null)
 			return null;
 		
 		if (prop.getBossid() > 0) {
@@ -79,8 +76,26 @@ public class PropService {
 		return null;
 	}
 	
-	private void parseAndSaveEquipConfig() {
-		List<PackageBean> list = PackageBean.xmlParse();
-		propRedisService.setPropList(list);;
+	private RewardInfo randomItem(Prop prop) {
+		Random rand = new Random();
+		int randWeight = rand.nextInt(prop.getWeightall());
+		for (int i = 0; i < prop.getItemCount(); ++i) {
+			RewardInfo item = prop.getItem(i);
+			if (randWeight < item.getWeight())
+				return item;
+			
+			randWeight -= item.getWeight();
+		}
+		
+		return null;
+	}
+	
+	public RewardInfo randomReward(Prop prop) {
+		RewardInfo item = randomItem(prop);
+		if (item != null) {
+			return item;
+		}
+		
+		return null;
 	}
 }

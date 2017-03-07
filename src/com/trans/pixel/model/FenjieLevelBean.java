@@ -58,7 +58,7 @@ public class FenjieLevelBean {
 	}
 	
 	public static Map<String, String> xmlParse() {
-		Logger logger = Logger.getLogger(PackageBean.class);
+		Logger logger = Logger.getLogger(FenjieLevelBean.class);
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			String filePath = DirConst.getConfigXmlPath(FILE_NAME);

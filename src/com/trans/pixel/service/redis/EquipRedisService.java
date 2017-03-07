@@ -1,108 +1,29 @@
 package com.trans.pixel.service.redis;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
-
-import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.EquipmentBean;
+import com.trans.pixel.protoc.Commands.Armor;
+import com.trans.pixel.protoc.Commands.ArmorList;
 import com.trans.pixel.protoc.Commands.Chip;
 import com.trans.pixel.protoc.Commands.ChipList;
+import com.trans.pixel.protoc.Commands.Equip;
+import com.trans.pixel.protoc.Commands.EquipList;
 import com.trans.pixel.protoc.Commands.Equiptucao;
 import com.trans.pixel.protoc.Commands.EquiptucaoList;
 
 @Service
 public class EquipRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(EquipRedisService.class);
-	private static final String CHIP_FILE_NAME = "lol_chip.xml";
+	private static final String CHIP_FILE_NAME = "ld_chip.xml";
+	private static final String EQUIP_FILE_NAME = "ld_equip.xml";
 	private static final String EQUIPTUCAO_FILE_NAME = "lol_equiptucao.xml";
-	@Resource
-	public RedisTemplate<String, String> redisTemplate;
-	
-	public List<EquipmentBean> getEquipList() {
-		return redisTemplate.execute(new RedisCallback<List<EquipmentBean>>() {
-			@Override
-			public List<EquipmentBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
-				
-				List<EquipmentBean> list = new ArrayList<EquipmentBean>();
-				Set<Entry<String, String>> set = bhOps.entries().entrySet();
-				Iterator<Entry<String, String>> itr = set.iterator();
-				while(itr.hasNext()) {
-					Entry<String, String> entry = itr.next();
-					EquipmentBean bean = EquipmentBean.fromJson(entry.getValue());
-					if (bean != null) {
-						list.add(bean);
-					}
-				}
-				
-				return list;
-			}
-		
-		});
-	}
-	
-	public void setEquipList(final List<EquipmentBean> list) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
-				
-				for (EquipmentBean bean : list) {
-					bhOps.put("" + bean.getItemid(), bean.toJson());
-				}
-				
-				return null;
-			}
-		
-		});
-	}
-	
-	public EquipmentBean getEquip(final int id) {
-		return redisTemplate.execute(new RedisCallback<EquipmentBean>() {
-			@Override
-			public EquipmentBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
-				
-				EquipmentBean bean = EquipmentBean.fromJson(bhOps.get("" + id));
-				return bean;
-			}
-		
-		});
-	}
-	
-	public Map<String, EquipmentBean> getEquipConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
-		Map<String, EquipmentBean> map = new HashMap<String, EquipmentBean>();
-		if(!keyvalue.isEmpty()){
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				EquipmentBean bean = EquipmentBean.fromJson(entry.getValue());
-				if (bean != null)
-					map.put(entry.getKey(), bean);
-			}
-		}
-		return map;
-	}
+	private static final String ARMOR_FILE_NAME = "ld_armor.xml";
 	
 	public Chip getChip(int itemId) {
 		String value = hget(RedisKey.CHIP_CONFIG, "" + itemId);
@@ -201,6 +122,108 @@ public class EquipRedisService extends RedisService {
 		Map<String, Equiptucao> map = new HashMap<String, Equiptucao>();
 		for(Equiptucao.Builder euiqptucao : builder.getEquipBuilderList()){
 			map.put("" + euiqptucao.getItemid(), euiqptucao.build());
+		}
+		return map;
+	}
+	
+	//equip
+	public Equip getEquip(int itemId) {
+		String value = hget(RedisKey.EQUIP_CONFIG, "" + itemId);
+		if (value == null) {
+			Map<String, Equip> equipConfig = getEquipConfig();
+			return equipConfig.get("" + itemId);
+		} else {
+			Equip.Builder builder = Equip.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Equip> getEquipConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.EQUIP_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, Equip> map = buildEquipConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Equip> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.EQUIP_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, Equip> map = new HashMap<String, Equip>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Equip.Builder builder = Equip.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Equip> buildEquipConfig(){
+		String xml = ReadConfig(EQUIP_FILE_NAME);
+		EquipList.Builder builder = EquipList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + EQUIP_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Equip> map = new HashMap<String, Equip>();
+		for(Equip.Builder chip : builder.getIdBuilderList()){
+			map.put("" + chip.getItemid(), chip.build());
+		}
+		return map;
+	}
+	
+	//equip
+	public Armor getArmor(int itemId) {
+		String value = hget(RedisKey.ARMOR_CONFIG, "" + itemId);
+		if (value == null) {
+			Map<String, Armor> config = getArmorConfig();
+			return config.get("" + itemId);
+		} else {
+			Armor.Builder builder = Armor.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Armor> getArmorConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.ARMOR_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, Armor> map = buildArmorConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Armor> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.ARMOR_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, Armor> map = new HashMap<String, Armor>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Armor.Builder builder = Armor.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Armor> buildArmorConfig(){
+		String xml = ReadConfig(ARMOR_FILE_NAME);
+		ArmorList.Builder builder = ArmorList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + ARMOR_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Armor> map = new HashMap<String, Armor>();
+		for(Armor.Builder armor : builder.getIdBuilderList()){
+			map.put("" + armor.getId(), armor.build());
 		}
 		return map;
 	}

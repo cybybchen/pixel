@@ -25,17 +25,27 @@ import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopPurchaseCommand;
+import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
+import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
+import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.RequestCheatRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
@@ -47,17 +57,23 @@ import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
-import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
+import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
-import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
@@ -66,13 +82,12 @@ import com.trans.pixel.protoc.Commands.RequestGreenhandCommand;
 import com.trans.pixel.protoc.Commands.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpAttackPVPMineCommand;
+import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
-import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
-import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
-import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
-import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestHeroLevelUpToCommand;
+import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
+import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
+import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuListCommand;
 import com.trans.pixel.protoc.Commands.RequestKaifuRewardCommand;
@@ -95,71 +110,54 @@ import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
+import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseCoinCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
-import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
-import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
-import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
-import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
-import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
-import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestResetBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestBattletowerShopCommand;
-import com.trans.pixel.protoc.Commands.RequestBattletowerShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
-import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
-import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
-import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
-import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
-import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
-import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
-import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
-import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
-import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
-//add import here
-import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.Commands.RequestPurchaseVipLibaoCommand;
+import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
 import com.trans.pixel.protoc.Commands.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestRankCommand;
 import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
+import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
+import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.Commands.RequestResetBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangListCommand;
 import com.trans.pixel.protoc.Commands.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestSendMailCommand;
+import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
+import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
+import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
+import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
@@ -173,7 +171,9 @@ import com.trans.pixel.protoc.Commands.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestUseAreaEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
+import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
+import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -181,38 +181,9 @@ import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
-import com.trans.pixel.protoc.Commands.RequestUnionBossFightCommand;
-import com.trans.pixel.protoc.Commands.RequestHeroStrengthenCommand;
-import com.trans.pixel.protoc.Commands.RequestSevenLoginSignCommand;
-import com.trans.pixel.protoc.Commands.RequestIsAreaOwnerCommand;
-import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
-import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
-import com.trans.pixel.protoc.Commands.RequestGetTaskRewardCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestResetBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestBattletowerShopCommand;
-import com.trans.pixel.protoc.Commands.RequestBattletowerShopPurchaseCommand;
-import com.trans.pixel.protoc.Commands.RequestBattletowerShopRefreshCommand;
-import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
-import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
-import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
-import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
-import com.trans.pixel.protoc.Commands.RequestInviteFightBossCommand;
-import com.trans.pixel.protoc.Commands.RequestQuitFightBossCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
-import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
-import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
-import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
-import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
 //add import here
-import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 
 
 public abstract class RequestScreen implements RequestHandle {
@@ -261,8 +232,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAddFriendCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestEquipLevelUpCommand cmd, Builder responseBuilder, UserBean user);
 
 	protected abstract boolean handleCommand(RequestAreaCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -319,8 +288,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUsePropCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestFenjieEquipCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestFenjieHeroEquipCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestSignCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -460,6 +427,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestStartBossRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
@@ -593,11 +562,6 @@ public abstract class RequestScreen implements RequestHandle {
         if (request.hasReceiveFriendCommand()) {
         	RequestReceiveFriendCommand cmd = request.getReceiveFriendCommand();
             if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasEquipLevelUpCommand()) {
-        	RequestEquipLevelUpCommand cmd = request.getEquipLevelUpCommand();
-        	if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
         if (request.hasAreaCommand()) {
@@ -742,11 +706,6 @@ public abstract class RequestScreen implements RequestHandle {
         }
         if (request.hasFenjieEquipCommand()) {
         	RequestFenjieEquipCommand cmd = request.getFenjieEquipCommand();
-        	if (result)
-        		result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasFenjieHeroEquipCommand()) {
-        	RequestFenjieHeroEquipCommand cmd = request.getFenjieHeroEquipCommand();
         	if (result)
         		result = handleCommand(cmd, responseBuilder, user);
         }
@@ -1305,6 +1264,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//BossRoomInfoCommand
                 result = handleCommand(cmd, responseBuilder, user);//BossRoomInfoCommand
         }//BossRoomInfoCommand
+        if (request.hasEquipStrenthenCommand()) {
+            RequestEquipStrenthenCommand cmd = request.getEquipStrenthenCommand();
+            if (result)//EquipStrenthenCommand
+                result = handleCommand(cmd, responseBuilder, user);//EquipStrenthenCommand
+        }//EquipStrenthenCommand
+        if (request.hasEquipPokedeCommand()) {
+            RequestEquipPokedeCommand cmd = request.getEquipPokedeCommand();
+            if (result)//EquipPokedeCommand
+                result = handleCommand(cmd, responseBuilder, user);//EquipPokedeCommand
+        }//EquipPokedeCommand
         //call handleCommand here
         if (request.hasGetFightInfoCommand()) {
             RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();

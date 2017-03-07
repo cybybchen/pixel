@@ -30,6 +30,7 @@ import com.trans.pixel.protoc.Commands.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodEnterCommand;
 import com.trans.pixel.protoc.Commands.RequestBloodXiazhuCommand;
+import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestBuyHeroPackageCommand;
@@ -40,6 +41,7 @@ import com.trans.pixel.protoc.Commands.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestClearHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestCollectResourceMineCommand;
 import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.Commands.RequestDailyShopCommand;
@@ -51,15 +53,18 @@ import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
-import com.trans.pixel.protoc.Commands.RequestEquipLevelUpCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
-import com.trans.pixel.protoc.Commands.RequestFenjieHeroEquipCommand;
+import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
+//add import here
+import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.Commands.RequestGetLadderRankListCommand;
@@ -120,12 +125,6 @@ import com.trans.pixel.protoc.Commands.RequestReadMailCommand;
 import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
-import com.trans.pixel.protoc.Commands.RequestCreateBossRoomCommand;
-import com.trans.pixel.protoc.Commands.RequestBossRoomInfoCommand;
-//add import here
-import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
@@ -143,6 +142,7 @@ import com.trans.pixel.protoc.Commands.RequestShopCommand;
 import com.trans.pixel.protoc.Commands.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
+import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
@@ -406,13 +406,6 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestReceiveFriendCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		friendCommandService.handleReceiveFriendCommand(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestEquipLevelUpCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		heroCommandService.equipLevelup(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -999,6 +992,16 @@ public class GameDataScreen extends RequestScreen {
 		bossCommandService.bossRoomInfo(responseBuilder, user);
 		return true;//BossRoomInfoCommand
 	}//BossRoomInfoCommand
+	@Override//EquipStrenthenCommand
+	protected boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO EquipStrenthenCommand method
+		return true;//EquipStrenthenCommand
+	}//EquipStrenthenCommand
+	@Override//EquipPokedeCommand
+	protected boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO EquipPokedeCommand method
+		return true;//EquipPokedeCommand
+	}//EquipPokedeCommand
 	//add handleCommand here
 	
 	@Override
@@ -1076,13 +1079,6 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestFenjieEquipCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		equipCommandService.fenjie(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestFenjieHeroEquipCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		heroCommandService.fenjieHeroEquip(cmd, responseBuilder, user);
 		return true;
 	}
 

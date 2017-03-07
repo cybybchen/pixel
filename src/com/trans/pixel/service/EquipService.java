@@ -24,6 +24,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.protoc.Commands.Chip;
 import com.trans.pixel.protoc.Commands.ClearFood;
+import com.trans.pixel.protoc.Commands.Equip;
 import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.protoc.Commands.Item;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -53,50 +54,14 @@ public class EquipService {
 	@Resource
 	private UserHeroService userHeroService;
 	
-	public EquipmentBean getEquip(int itemId) {
-		EquipmentBean equip = equipRedisService.getEquip(itemId);
-		if (equip == null) {
-			parseAndSaveEquipConfig();
-			equip = equipRedisService.getEquip(itemId);
-		}
-		
-		return equip;
-	}
-	
-	public Map<String, EquipmentBean> getEquipConfig() {
-		Map<String, EquipmentBean> equipConfig = equipRedisService.getEquipConfig();
-		if (equipConfig.isEmpty()) {
-			parseAndSaveEquipConfig();
-			equipConfig = equipRedisService.getEquipConfig();
-		}
-		
-		return equipConfig;
-	}
-	
-	public EquipmentBean getEquip(Map<String, EquipmentBean> map, int itemId) {
-		EquipmentBean equip = map.get("" + itemId);		
-		if (equip != null)
-			return equip;
-		return getEquip(itemId);
-	}
-	
-	public int calHeroEquipLevel(HeroInfoBean heroInfo) {
-		String[] equipIds = heroInfo.equipIds();
-		int level = 0;
-		for (String equipId : equipIds) {
-			EquipmentBean equip = getEquip(TypeTranslatedUtil.stringToInt(equipId));
-			if (equip != null) {
-				level += equip.getLevel();
-			}
-		}
-		
-		return level;
+	public Equip getEquip(int itemId) {
+		return equipRedisService.getEquip(itemId);
 	}
 	
 	public int equipCompose(UserBean user, int levelUpId, int count, List<UserEquipBean> userEquipList) {
 		int composeEquipId = 0;;
 		if (levelUpId < RewardConst.CHIP) {//合成装备
-			EquipmentBean equip = getEquip(levelUpId);
+			Equip equip = getEquip(levelUpId);
 			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip, userEquipList);
 			if (equipLevelUpRet) {
 				userEquipService.addUserEquip(user.getId(), equip.getItemid(), 1);
@@ -124,61 +89,18 @@ public class EquipService {
 		return composeEquipId;
 	}
 	
-	public List<RewardBean> fenjieUserEquip(UserBean user, int equipId, int fenjieCount) {
-		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), equipId);
-		if (userEquip.getEquipCount() < fenjieCount)
-			return null;
-		
-		EquipmentBean equip = getEquip(equipId);
-		if (equip == null)
-			return null;
-		
-		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
-		if (fenjie == null)
-			return null;
-		
-		userEquip.setEquipCount(userEquip.getEquipCount() - fenjieCount);
-		userEquipService.updateUserEquip(userEquip);
-		
-		return getFenjieReward(fenjie, equip, fenjieCount);
-	}
-	
-	public List<RewardBean> fenjieHeroEquip(UserBean user, int equipId, int fenjieCount) {
-		EquipmentBean equip = getEquip(equipId);
-		FenjieLevelBean fenjie = fenjieService.getFenjie(equip.getLevel());
-		
-		if (fenjie == null)
-			return null;
-		
-		return getFenjieReward(fenjie, equip, fenjieCount);
-	}
-	
-	private List<RewardBean> getFenjieReward(FenjieLevelBean fenjie, EquipmentBean equip, int count) {
-		List<RewardBean> rewardList = fenjie.randomReward(count, equip.getIsequipment());
-		List<RewardBean> extraList = new ArrayList<RewardBean>();
-		if (equip.getFenjie1() > 0)
-			extraList.add(RewardBean.init(equip.getFenjie1(), equip.getFenjiecount1()));
-		if (equip.getFenjie2() > 0)
-			extraList.add(RewardBean.init(equip.getFenjie2(), equip.getFenjiecount2()));
-		if (equip.getFenjie3() > 0)
-			extraList.add(RewardBean.init(equip.getFenjie3(), equip.getFenjiecount3()));
-		
-		return rewardService.mergeReward(rewardList, extraList);
-	}
-	
-	private List<UserEquipBean> getCostEquipList(EquipmentBean equip) {
+	private List<UserEquipBean> getCostEquipList(Equip equip) {
 		List<UserEquipBean> costEquipList = new ArrayList<UserEquipBean>();
-		UserEquipBean costEquip = UserEquipBean.initUserEquip(equip.getCover1(), equip.getCount1());
-		costEquipList = mergeEquipList(costEquipList, costEquip);
-		
-		costEquip = UserEquipBean.initUserEquip(equip.getCover2(), equip.getCount2());
-		costEquipList = mergeEquipList(costEquipList, costEquip);
-		
-		costEquip = UserEquipBean.initUserEquip(equip.getCover3(), equip.getCount3());
-		costEquipList = mergeEquipList(costEquipList, costEquip);
+//		UserEquipBean costEquip = UserEquipBean.initUserEquip(equip.getCover1(), equip.getCount1());
+//		costEquipList = mergeEquipList(costEquipList, costEquip);
+//		
+//		costEquip = UserEquipBean.initUserEquip(equip.getCover2(), equip.getCount2());
+//		costEquipList = mergeEquipList(costEquipList, costEquip);
+//		
+//		costEquip = UserEquipBean.initUserEquip(equip.getCover3(), equip.getCount3());
+//		costEquipList = mergeEquipList(costEquipList, costEquip);
 		
 		return costEquipList;
-		
 	}
 	
 	private List<UserEquipBean> mergeEquipList(List<UserEquipBean> costEquipList, UserEquipBean costEquip) {
@@ -205,7 +127,7 @@ public class EquipService {
 		return costEquipMap;
 	}
 	
-	public boolean equipLevelUp(long userId, EquipmentBean equip, List<UserEquipBean> returnUserEquipList) {
+	public boolean equipLevelUp(long userId, Equip equip, List<UserEquipBean> returnUserEquipList) {
 		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(userId);
 		List<UserEquipBean> costUserEquipList = getCostEquipList(equip);
 		
@@ -307,10 +229,10 @@ public class EquipService {
 		} else if(itemId > RewardConst.CHIP) {
 			Chip chip = equipRedisService.getChip(itemId);
 			rewardCount = chip.getCost();	
-		} else if (itemId > RewardConst.EQUIPMENT) {
-			EquipmentBean equip = getEquip(itemId);
+		} /*else if (itemId > RewardConst.EQUIPMENT) {
+			Equip equip = getEquip(itemId);
 			rewardCount = TypeTranslatedUtil.stringToInt(equip.getCost());
-		} 
+		} */
 		
 		return rewardCount * itemCount;
 	}
@@ -329,10 +251,5 @@ public class EquipService {
 		}
 		
 		return true;
-	}
-	
-	private void parseAndSaveEquipConfig() {
-		List<EquipmentBean> list = EquipmentBean.xmlParse();
-		equipRedisService.setEquipList(list);;
 	}
 }

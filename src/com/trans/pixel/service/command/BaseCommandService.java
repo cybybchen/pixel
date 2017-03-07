@@ -18,6 +18,7 @@ import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
@@ -38,6 +39,7 @@ import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserAchieve;
 import com.trans.pixel.protoc.Commands.UserEquip;
+import com.trans.pixel.protoc.Commands.UserEquipPokede;
 import com.trans.pixel.protoc.Commands.UserFood;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.protoc.Commands.UserHead;
@@ -306,6 +308,15 @@ public class BaseCommandService {
 		}
 		
 		return heroInfoList;
+	}
+	
+	protected List<UserEquipPokede> buildEquipPokede(List<UserEquipPokedeBean> userEquipPokedeList) {
+		List<UserEquipPokede> equipPokedeList = new ArrayList<UserEquipPokede>();
+		for (UserEquipPokedeBean userPokede : userEquipPokedeList) {
+			equipPokedeList.add(userPokede.build());
+		}
+		
+		return equipPokedeList;
 	}
 	
 	protected List<ClearInfo> buildClearInfo(List<UserClearBean> userClearList) {
