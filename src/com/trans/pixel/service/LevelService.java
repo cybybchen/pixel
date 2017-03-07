@@ -133,8 +133,8 @@ public class LevelService {
 		if(getDaguanId(userLevelRecord.getPutongLevel())+1 != daguanId)
 			return true;
 		
-		if (dg.getZhanli() > user.getZhanli())
-			return true;
+//		if (dg.getZhanli() > user.getZhanli())
+//			return true;
 		
 		if (dg.getId() == userLevelRecord.getUnlockedLevel())
 			return true;
