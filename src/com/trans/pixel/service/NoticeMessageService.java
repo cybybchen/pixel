@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.Commands.Equiptucao;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.NoticeMessageRedisService;
 
@@ -37,7 +37,7 @@ public class NoticeMessageService {
 			if (reward.getItemid() < RewardConst.HERO || reward.getItemid() > RewardConst.HEAD)
 				continue;
 			
-			HeroBean hero = heroService.getHero(reward.getItemid() % RewardConst.HERO_STAR);
+			Hero hero = heroService.getHero(reward.getItemid() % RewardConst.HERO_STAR);
 			if (hero == null)
 				continue;
 			
@@ -58,7 +58,7 @@ public class NoticeMessageService {
 	
 	public void composeStrengthen(UserBean user, UserPokedeBean userPokede) {
 		if (userPokede.getStrengthen() == 3 || userPokede.getStrengthen() == 6 || userPokede.getStrengthen() >= 9) {
-			HeroBean hero = heroService.getHero(userPokede.getHeroId());
+			Hero hero = heroService.getHero(userPokede.getHeroId());
 			StringBuilder sb = new StringBuilder();
 			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName()).append("%s,6,")
 				.append("强化到了").append(userPokede.getStrengthen()).append("级").append("！");
@@ -89,7 +89,7 @@ public class NoticeMessageService {
 	public void composeHeroRankup(UserBean user, HeroInfoBean heroInfo) {
 		if (heroInfo.getRank() == 6 || heroInfo.getRank() == 9 || heroInfo.getRank() == 12 || heroInfo.getRank() == 15
 				|| heroInfo.getRank() >= 18) {
-			HeroBean hero = heroService.getHero(heroInfo.getHeroId());
+			Hero hero = heroService.getHero(heroInfo.getHeroId());
 			StringBuilder sb = new StringBuilder();
 			sb.append("恭喜").append(user.getUserName()).append("将").append(hero.getName()).append("%s,5,")
 			.append("进阶到了").append(heroInfo.getRank()).append("级").append("！");

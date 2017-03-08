@@ -1,24 +1,13 @@
 package com.trans.pixel.service.redis;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.HeroChoice;
 import com.trans.pixel.protoc.Commands.HeroChoiceList;
@@ -44,54 +33,6 @@ public class HeroRedisService extends RedisService {
 	private static final String HERO_FILE_NAME = "ld_hero.xml";
 	private static final String UPGRADE_FILE_NAME = "ld_upgrade.xml";
 	private static final String RANKVALUE_FILE_NAME = "ld_rankvalue.xml";
-	
-	
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
-	
-	public HeroBean getHeroByHeroId(final int id) {
-		return redisTemplate.execute(new RedisCallback<HeroBean>() {
-			@Override
-			public HeroBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.HERO_KEY);
-				
-				
-				return HeroBean.fromJson(bhOps.get("" + id));
-			}
-		});
-	}
-	
-	public void setHeroList(final List<HeroBean> heroList) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.HERO_KEY);
-				
-				for (HeroBean hero : heroList) {
-					bhOps.put("" + hero.getId(), hero.toJson());
-				}
-				
-				return null;
-			}
-		});
-	}
-	
-	public List<HeroBean> getHeroList() {
-		List<HeroBean> heroList = new ArrayList<HeroBean>();
-		Iterator<Entry<String, String>> it = this.hget(RedisKey.PREFIX + RedisKey.HERO_KEY).entrySet().iterator();
-		while (it.hasNext()) {
-			Entry<String, String> entry = it.next();
-			HeroBean hero = HeroBean.fromJson(entry.getValue());
-			if (hero != null)
-				heroList.add(hero);
-		}
-		
-		return heroList;
-	}
 	
 	//hero choice
 	public HeroChoice getHerochoice(int heroId) {
@@ -312,7 +253,7 @@ public class HeroRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, Hero> getHeroConfig() {
+	public Map<String, Hero> getHeroConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.HERO_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Hero> map = buildHeroConfig();

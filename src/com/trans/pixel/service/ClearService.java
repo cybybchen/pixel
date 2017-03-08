@@ -16,7 +16,6 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
@@ -25,6 +24,7 @@ import com.trans.pixel.protoc.Commands.ClearAttribute;
 import com.trans.pixel.protoc.Commands.ClearAttributeOrder;
 import com.trans.pixel.protoc.Commands.ClearCost;
 import com.trans.pixel.protoc.Commands.ClearLevel;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.UserClearRedisService;
@@ -66,7 +66,7 @@ public class ClearService {
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_3 && position >= CLEAR_POSITION_3))
 			return ErrorConst.CLEAR_IS_LOCKED_ERROR;
 		
-		HeroBean hero = heroService.getHero(userPokede.getHeroId());
+		Hero hero = heroService.getHero(userPokede.getHeroId());
 		ClearCost clearCost = clearRedisService.getClearCost(hero.getQuality());
 		int costType = 0;
 		int costCount = 0;

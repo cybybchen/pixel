@@ -27,13 +27,13 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TaskConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Commands.Activity;
 import com.trans.pixel.protoc.Commands.ActivityOrder;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.Kaifu;
 import com.trans.pixel.protoc.Commands.Kaifu2;
 import com.trans.pixel.protoc.Commands.Kaifu2Rank;
@@ -936,12 +936,12 @@ public class ActivityService {
 			if (heroId == 17)
 				taskService.sendTask1Score(user, TaskConst.TARGET_SHANGZHEN_GAILUN, heroId, false);
 			
-			HeroBean heroBean = heroService.getHero(heroId);
-			if (heroBean.getQuality() >= 3)
+			Hero hero = heroService.getHero(heroId);
+			if (hero.getQuality() >= 3)
 				++quality3Count;
-			if (heroBean.getQuality() >= 4)
+			if (hero.getQuality() >= 4)
 				++quality4Count;
-			if (heroBean.getQuality() >= 5)
+			if (hero.getQuality() >= 5)
 				++quality5Count;
 		}
 		

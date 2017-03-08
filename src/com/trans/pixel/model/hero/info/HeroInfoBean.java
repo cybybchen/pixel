@@ -7,9 +7,9 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.model.SkillLevelBean;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -240,7 +240,7 @@ public class HeroInfoBean {
 //		return initHeroInfo(hero, star, 1);
 //	}
 	
-	public static HeroInfoBean initHeroInfo(HeroBean hero, int star) {
+	public static HeroInfoBean initHeroInfo(Hero hero, int star) {
 		HeroInfoBean heroInfo = new HeroInfoBean();
 		heroInfo.setId(0);
 		heroInfo.setHeroId(hero.getId());
@@ -263,7 +263,7 @@ public class HeroInfoBean {
 		return heroInfo;
 	}
 	
-	public static HeroInfoBean initHeroInfo(HeroBean hero, int star, int rare, int level) {
+	public static HeroInfoBean initHeroInfo(Hero hero, int star, int rare, int level) {
 		HeroInfoBean heroInfo = new HeroInfoBean();
 		heroInfo.setId(0);
 		heroInfo.setHeroId(hero.getId());
@@ -302,7 +302,7 @@ public class HeroInfoBean {
 		setSkillInfoList(list);
 	}
 	
-	public static HeroInfoBean initHeroInfo(HeroBean hero) {
+	public static HeroInfoBean initHeroInfo(Hero hero) {
 		return initHeroInfo(hero, 1);
 	}
 	
@@ -332,7 +332,7 @@ public class HeroInfoBean {
 		return 0;
 	}
 	
-	public boolean unlockSkill(HeroBean hero, List<SkillLevelBean> skillLevelList) {
+	public boolean unlockSkill(Hero hero, List<SkillLevelBean> skillLevelList) {
 		boolean addNewSkill = false;
 		for (SkillLevelBean skillLevel : skillLevelList) {
 			if (starLevel >= skillLevel.getUnlock()) {
@@ -369,7 +369,6 @@ public class HeroInfoBean {
 	private static final String HERO_ID = "heroId";
 //	private static final String POSITION = "position";
 	
-	private static final String EQUIP_SPLIT = "|";
 	private static final String USER_ID = "user_id";
 	private static final String RANK = "rank";
 }

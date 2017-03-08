@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.userinfo.UserBattletowerBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.ContractWeight;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.Libao;
 import com.trans.pixel.protoc.Commands.LibaoList;
 import com.trans.pixel.protoc.Commands.MultiReward;
@@ -160,7 +160,7 @@ public class ShopService {
 	}
 	
 	public ContractWeight getContractWeight(int heroId){
-		HeroBean hero = heroService.getHero(heroId);
+		Hero hero = heroService.getHero(heroId);
 		return redis.getContract(hero.getQuality());
 	}
 

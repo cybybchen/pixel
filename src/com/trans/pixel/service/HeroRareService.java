@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.HeroRareBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.HeroRareLevelup;
 import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.HeroRareRedisService;
@@ -41,7 +41,7 @@ public class HeroRareService {
 	}
 	
 	public HeroRareLevelupRank getHeroRare(HeroInfoBean heroInfo) {
-		HeroBean hero = heroService.getHero(heroInfo.getHeroId());
+		Hero hero = heroService.getHero(heroInfo.getHeroId());
 		HeroRareLevelup herorare = heroRedisService.getHeroRareLevelup(hero.getPosition());
 		for (HeroRareLevelupRank rank : herorare.getRankList()) {
 			if (rank.getRank() == heroInfo.getRank() + 1)
@@ -52,7 +52,7 @@ public class HeroRareService {
 	}
 	
 	public HeroRareLevelupRank getCurrentHeroRare(HeroInfoBean heroInfo) {
-		HeroBean hero = heroService.getHero(heroInfo.getHeroId());
+		Hero hero = heroService.getHero(heroInfo.getHeroId());
 		HeroRareLevelup herorare = heroRedisService.getHeroRareLevelup(hero.getPosition());
 		for (HeroRareLevelupRank rank : herorare.getRankList()) {
 			if (rank.getRank() == heroInfo.getRank())
@@ -62,7 +62,7 @@ public class HeroRareService {
 		return null;
 	}
 	
-	public HeroRareLevelupRank getCurrentHeroRare(Map<String, HeroRareLevelup> herorareConfig, HeroBean hero, HeroInfoBean heroInfo) {
+	public HeroRareLevelupRank getCurrentHeroRare(Map<String, HeroRareLevelup> herorareConfig, Hero hero, HeroInfoBean heroInfo) {
 		if (heroInfo == null)
 			return null;
 		HeroRareLevelup herorare = herorareConfig.get("" + hero.getPosition());

@@ -9,8 +9,6 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.EquipmentBean;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -22,7 +20,6 @@ import com.trans.pixel.protoc.Commands.ClearLevel;
 import com.trans.pixel.protoc.Commands.FightInfo;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.HeroRareLevelup;
-import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.protoc.Commands.Team;
@@ -257,7 +254,7 @@ public class UserTeamService {
 		}
 		
 		int myzhanli = 0;
-		List<HeroBean> heroList = heroService.getHeroList();
+//		List<HeroBean> heroList = heroService.getHeroList();
 		Map<String, Strengthen> strengthehConfig = clearRedisService.getStrengthenConfig();
 		Map<String, ClearLevel> clearLevelConfig = clearRedisService.getClearLevelConfig();
 		List<HeroInfoBean> heroInfoList = userHeroService.selectUserHeroList(user);
@@ -266,19 +263,19 @@ public class UserTeamService {
 //		Map<String, EquipmentBean> equipConfig = equipService.getEquipConfig();
 		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
 		for (HeroInfo hero : team.getHeroInfoList()) {
-			HeroBean base = heroService.getHero(heroList, hero.getHeroId());
-			if (base == null)
-				continue;
+//			Hero base = heroService.getHero(heroList, hero.getHeroId());
+//			if (base == null)
+//				continue;
 			int star = hero.getStar();
-			if (base.getStarList().size() < star)
-				star = base.getStarList().size();
+//			if (base.getStarList().size() < star)
+//				star = base.getStarList().size();
 			int pre = 100;
 			Strengthen strengthen = strengthehConfig.get("" + hero.getStrengthen());
 			if (strengthen != null)
 				pre = 100 + strengthen.getZhanliPer();
 //			 log.debug(strengthen+" : "+pre);
 			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
-			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
+//			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
 //			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(huList, hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
 			double zhanli = 0;
 //			for(String equipid : hero.getEquipInfo().split("\\|")){

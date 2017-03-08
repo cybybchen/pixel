@@ -8,8 +8,8 @@ import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
 
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.service.UserTeamService;
 
@@ -20,7 +20,7 @@ public class LuaJTest {
 		UserTeamService userTeamService = new UserTeamService();
 		List<Team> attackteams = new ArrayList<Team>();
 		Team.Builder builder  = Team.newBuilder();
-		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(new HeroBean());
+		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(Hero.newBuilder().build());
 		heroInfo.setHeroId(1);
 		builder.addHeroInfo(heroInfo.buildRankHeroInfo());
 		attackteams.add(builder.build());

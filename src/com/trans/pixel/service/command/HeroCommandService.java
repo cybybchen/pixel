@@ -134,9 +134,9 @@ public class HeroCommandService extends BaseCommandService {
 					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
 					herobuilder.setHeroId(0);
 					if (delHeroInfo != null) {				
-						if (delHeroInfo.getRank() > 0) {
-							rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(delHeroInfo));
-						}
+//						if (delHeroInfo.getRank() > 0) {
+//							rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(delHeroInfo));
+//						}
 						if(delHeroInfo.getLevel() > 1)
 							addExp += heroService.getDeleteExp(delHeroInfo.getLevel());
 						
@@ -241,9 +241,9 @@ public class HeroCommandService extends BaseCommandService {
 						return;
 					}
 					
-					if (heroInfo.getRank() > 0) {
-						rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(heroInfo));
-					}
+//					if (heroInfo.getRank() > 0) {
+//						rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(heroInfo));
+//					}
 					
 					addCoin += 1000 * heroInfo.getStarLevel() * heroInfo.getStarLevel();
 					if(heroInfo.getLevel() > 1)

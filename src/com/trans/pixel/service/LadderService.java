@@ -27,12 +27,12 @@ import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.HeroInfo;
 import com.trans.pixel.protoc.Commands.LadderChongzhi;
 import com.trans.pixel.protoc.Commands.LadderEnemy;
@@ -375,7 +375,7 @@ public class LadderService {
 		List<LadderEnemy> enemyList = ladderRedisService.getLadderEnemy();
 		List<String> nameList = ladderRedisService.getLadderNames();
 		List<String> name2List = ladderRedisService.getLadderNames2();
-		List<HeroBean> heroList = heroService.getHeroList();
+		Map<String, Hero> heroMap = heroService.getHeroMap();
 		for (LadderEnemy ladderEnemy : enemyList) {
 			for (int i = ladderEnemy.getRanking(); i <= ladderEnemy.getRanking1(); ++i) {
 				long userId = -i;
@@ -386,7 +386,7 @@ public class LadderService {
 					robot.init(serverId, "account", robotName, ladderRedisService.nextInt(5) + 61001);
 					robot.setId(userId);
 					Team.Builder team = Team.newBuilder();
-					List<HeroInfo> heroInfoList = getHeroInfoList(heroList, ladderEnemy);
+					List<HeroInfo> heroInfoList = getHeroInfoList(heroMap, ladderEnemy);
 					team.addAllHeroInfo(heroInfoList);
 					userTeamService.saveTeamCacheWithoutExpire(robot, team.build());
 					// int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
@@ -410,11 +410,11 @@ public class LadderService {
 		return name1List.get(RandomUtils.nextInt(name1List.size())) + name2List.get(RandomUtils.nextInt(name2List.size()));
 	}
 	
-	private List<HeroInfo> getHeroInfoList(List<HeroBean> heroList, LadderEnemy ladderEnemy) {
+	private List<HeroInfo> getHeroInfoList(Map<String, Hero> heroMap, LadderEnemy ladderEnemy) {
 		List<HeroInfo> heroInfoList = new ArrayList<HeroInfo>();
 		Map<Integer, Integer> heroInfoMap = new HashMap<Integer, Integer>();
 		while (heroInfoList.size() < ladderEnemy.getHerocount()) {
-			HeroBean randomHero = heroList.get(RandomUtils.nextInt(heroList.size()));
+			Hero randomHero = heroMap.get(RandomUtils.nextInt(heroMap.size()));
 			if (randomHero.getHandbook() == 0)
 				continue;
 			Integer originalCount = heroInfoMap.get(randomHero.getId());

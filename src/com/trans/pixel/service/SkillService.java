@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.SkillBean;
 import com.trans.pixel.model.SkillLevelBean;
-import com.trans.pixel.model.hero.HeroBean;
 import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.hero.info.SkillInfoBean;
+import com.trans.pixel.protoc.Commands.Hero;
 import com.trans.pixel.protoc.Commands.Rankvalue;
 import com.trans.pixel.protoc.Commands.Upgrade;
 import com.trans.pixel.service.redis.HeroRedisService;
@@ -71,7 +71,7 @@ public class SkillService {
 	}
 	
 	public boolean unlockHeroSkill(int heroId, HeroInfoBean heroInfo) {
-		HeroBean hero = heroService.getHero(heroId);
+		Hero hero = heroService.getHero(heroId);
 		return heroInfo.unlockSkill(hero, getSkillLevelList());
 	}
 	

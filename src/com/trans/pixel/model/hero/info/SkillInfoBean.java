@@ -5,6 +5,7 @@ import java.util.List;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.model.hero.HeroSkillBean;
+import com.trans.pixel.protoc.Commands.HeroSkill;
 import com.trans.pixel.protoc.Commands.SkillInfo;
 
 public class SkillInfoBean {
@@ -67,12 +68,12 @@ public class SkillInfoBean {
 		return builder.build();
 	}
 	
-	public static SkillInfoBean initSkillInfo(List<HeroSkillBean> skillList, int unlock) {
+	public static SkillInfoBean initSkillInfo(List<HeroSkill> skillList, int unlock) {
 		return initSkillInfo(skillList, unlock, 0);
 	}
 	
-	public static SkillInfoBean initSkillInfo(List<HeroSkillBean> skillList, int unlock, int id) {
-		for (HeroSkillBean skill : skillList) {
+	public static SkillInfoBean initSkillInfo(List<HeroSkill> skillList, int unlock, int id) {
+		for (HeroSkill skill : skillList) {
 			if (skill.getUnlock() == unlock) {
 				SkillInfoBean skillInfo = new SkillInfoBean();
 				skillInfo.setId(id + 1);
