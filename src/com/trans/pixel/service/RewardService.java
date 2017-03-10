@@ -98,9 +98,9 @@ public class RewardService {
 		} else if (rewardId > RewardConst.PACKAGE) {
 			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {
-			userEquipService.addUserEquip(user.getId(), rewardId, (int)rewardCount);
+			userEquipService.addUserEquip(user, rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
-			userEquipService.addUserEquip(user.getId(), rewardId, (int)rewardCount);
+			userEquipService.addUserEquip(user, rewardId, (int)rewardCount);
 		} else {
 			switch (rewardId) {
 				case RewardConst.RECHARGE:

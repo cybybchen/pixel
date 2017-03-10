@@ -17,6 +17,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
@@ -37,6 +38,7 @@ import com.trans.pixel.protoc.Commands.RequestUnionShopCommand;
 import com.trans.pixel.protoc.Commands.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Commands.ResponseBosskillCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.Commands.ResponseEquipPokedeCommand;
 import com.trans.pixel.protoc.Commands.ResponseFightInfoCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
@@ -63,6 +65,7 @@ import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.UserAchieveService;
+import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFoodService;
 import com.trans.pixel.service.UserFriendService;
@@ -116,6 +119,8 @@ public class PushCommandService extends BaseCommandService {
 	private BossService bossService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 		user = lootService.updateLootResult(user);
@@ -516,5 +521,12 @@ public class PushCommandService extends BaseCommandService {
 		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand.newBuilder();
 		builder.addAllInfo(userTeamService.getFightInfoList(user));
 		responseBuilder.setFightInfoCommand(builder.build());
+	}
+	
+	public void pushUserEquipPokedeList(Builder responseBuilder, UserBean user) {
+		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
+		List<UserEquipPokedeBean> userPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+		builder.addAllUserEquipPokede(buildEquipPokede(userPokedeList));
+		responseBuilder.setEquipPokedeCommand(builder.build());
 	}
 }

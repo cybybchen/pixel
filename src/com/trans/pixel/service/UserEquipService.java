@@ -6,7 +6,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.mapper.UserEquipMapper;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.service.redis.UserEquipRedisService;
 
@@ -16,6 +18,8 @@ public class UserEquipService {
 	private UserEquipRedisService userEquipRedisService;
 	@Resource
 	private UserEquipMapper userEquipMapper;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	public UserEquipBean selectUserEquip(long userId, int equipId) {
 		UserEquipBean userEquip = userEquipRedisService.selectUserEquip(userId, equipId);
@@ -69,7 +73,8 @@ public class UserEquipService {
 		return userEquip;
 	}
 	
-	public void addUserEquip(long userId, int equipId, int equipCount) {
+	public void addUserEquip(UserBean user, int equipId, int equipCount) {
+		long userId = user.getId();
 		UserEquipBean userEquip = selectUserEquip(userId, equipId);
 		if (userEquip == null) {
 			userEquip = initUserEquip(userId, equipId);
@@ -77,6 +82,9 @@ public class UserEquipService {
 		
 		userEquip.setEquipCount(userEquip.getEquipCount() + equipCount);
 		updateUserEquip(userEquip);
+		
+		if (equipId < RewardConst.CHIP)
+			userEquipPokedeService.updateUserEquipPokede(userEquip, user);
 	}
 	
 	private UserEquipBean initUserEquip(long userId, int equipId) {

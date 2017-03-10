@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -17,6 +18,8 @@ public class EquipPokedeService {
 	private static final Logger log = LoggerFactory.getLogger(EquipPokedeService.class);
 	 
 	public ResultConst heroStrengthen(UserEquipPokedeBean pokede, UserBean user, List<UserPropBean> propList) {
+		if (pokede == null)
+			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
 		pokede.setLevel(pokede.getLevel() + 1);
 		
 		return SuccessConst.HERO_STRENGTHEN_FAILED_SUCCESS;

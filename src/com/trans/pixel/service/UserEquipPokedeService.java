@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserEquipPokedeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.service.redis.UserEquipPokedeRedisService;
 
@@ -34,16 +35,6 @@ public class UserEquipPokedeService {
 			}
 		}
 		
-		if (userPokede == null) {
-			userPokede = initUserPokede(userId, itemId);
-			updateUserEquipPokede(userPokede, user);
-//			/**
-//			 * 收集不同英雄的活动
-//			 */
-//			
-//			activityService.heroStoreActivity(user);
-		}
-		
 		return userPokede;
 	}
 	
@@ -61,6 +52,14 @@ public class UserEquipPokedeService {
 	public void updateUserEquipPokede(UserEquipPokedeBean userPokede, UserBean user) {
 		redis.updateUserEquipPokede(userPokede, user.getId());
 		mapper.updateUserEquipPokede(userPokede);
+	}
+	
+	public void updateUserEquipPokede(UserEquipBean equip, UserBean user) {
+		UserEquipPokedeBean pokede = selectUserEquipPokede(user, equip.getEquipId());
+		if (pokede == null) {
+			pokede = initUserPokede(user.getId(), equip.getEquipId());
+			updateUserEquipPokede(pokede, user);
+		}
 	}
 	
 	private UserEquipPokedeBean initUserPokede(long userId, int itemId) {

@@ -300,6 +300,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserBosskillRecord(responseBuilder, user);
 		pushCommandService.pushUserTalentList(responseBuilder, user);
 //		noticeCommandService.pushNotices(responseBuilder, user);
+		pushCommandService.pushUserEquipPokedeList(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {
