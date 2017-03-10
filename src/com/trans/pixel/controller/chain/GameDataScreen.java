@@ -53,6 +53,8 @@ import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
@@ -61,8 +63,6 @@ import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
-import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
@@ -150,6 +150,7 @@ import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
@@ -180,6 +181,7 @@ import com.trans.pixel.service.command.BossCommandService;
 import com.trans.pixel.service.command.CdkeyCommandService;
 import com.trans.pixel.service.command.CheatRechargeCommandService;
 import com.trans.pixel.service.command.EquipCommandService;
+import com.trans.pixel.service.command.EquipPokedeCommandService;
 import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeartBeatCommandService;
 import com.trans.pixel.service.command.HeroCommandService;
@@ -282,6 +284,8 @@ public class GameDataScreen extends RequestScreen {
 	private BattletowerCommandService battletowerCommandService;
 	@Resource
 	private TalentCommandService talentCommandService;
+	@Resource
+	private EquipPokedeCommandService equipPokedeCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -994,14 +998,19 @@ public class GameDataScreen extends RequestScreen {
 	}//BossRoomInfoCommand
 	@Override//EquipStrenthenCommand
 	protected boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO EquipStrenthenCommand method
+		equipPokedeCommandService.pokedeStrengthen(cmd, responseBuilder, user);
 		return true;//EquipStrenthenCommand
 	}//EquipStrenthenCommand
 	@Override//EquipPokedeCommand
 	protected boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO EquipPokedeCommand method
+		equipPokedeCommandService.getUserEquipPokedeList(cmd, responseBuilder, user);
 		return true;//EquipPokedeCommand
 	}//EquipPokedeCommand
+	@Override//TalentChangeEquipCommand
+	protected boolean handleCommand(RequestTalentChangeEquipCommand cmd, Builder responseBuilder, UserBean user) {
+		talentCommandService.talentChangeEquip(cmd, responseBuilder, user);
+		return true;//TalentChangeEquipCommand
+	}//TalentChangeEquipCommand
 	//add handleCommand here
 	
 	@Override

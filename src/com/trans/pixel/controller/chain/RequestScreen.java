@@ -67,6 +67,7 @@ import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeEquipCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
@@ -183,6 +184,7 @@ import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeEquipCommand;
 //add import here
 
 
@@ -429,6 +431,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestTalentChangeEquipCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
@@ -1274,6 +1277,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//EquipPokedeCommand
                 result = handleCommand(cmd, responseBuilder, user);//EquipPokedeCommand
         }//EquipPokedeCommand
+        if (request.hasTalentChangeEquipCommand()) {
+            RequestTalentChangeEquipCommand cmd = request.getTalentChangeEquipCommand();
+            if (result)//TalentChangeEquipCommand
+                result = handleCommand(cmd, responseBuilder, user);//TalentChangeEquipCommand
+        }//TalentChangeEquipCommand
         //call handleCommand here
         if (request.hasGetFightInfoCommand()) {
             RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();

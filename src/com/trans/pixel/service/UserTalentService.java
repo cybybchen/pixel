@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserTalentSkillBean;
 import com.trans.pixel.protoc.Commands.Talent;
 import com.trans.pixel.protoc.Commands.Talentunlock;
 import com.trans.pixel.protoc.Commands.UserTalent;
+import com.trans.pixel.protoc.Commands.UserTalentEquip;
 import com.trans.pixel.protoc.Commands.UserTalentOrder;
 import com.trans.pixel.protoc.Commands.UserTalentSkill;
 import com.trans.pixel.service.redis.TalentRedisService;
@@ -177,6 +178,13 @@ public class UserTalentService {
 				
 				unlockUserTalentSkill(user, id, talentunlock.getOrder());
 			}
+		}
+		
+		for (int i = 0; i < 10; ++i) {
+			UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
+			equipBuilder.setPosition(i);
+			equipBuilder.setItemId(0);
+			builder.addEquip(equipBuilder.build());
 		}
 		
 		return builder.build();

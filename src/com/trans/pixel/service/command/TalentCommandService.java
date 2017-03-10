@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
@@ -67,6 +68,21 @@ public class TalentCommandService extends BaseCommandService {
 		if (userTalent == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.TALENTCHANGESKILL_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.TALENTCHANGESKILL_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		builder.addUserTalent(userTalent);
+		responseBuilder.setUserTalentCommand(builder.build());
+		
+		userTalentService.updateUserTalent(user, userTalent);
+	}
+	
+	public void talentChangeEquip(RequestTalentChangeEquipCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+		UserTalent userTalent = talentService.changeTalentEquip(user, cmd.getId(), cmd.getPosition(), cmd.getItemId());
+		if (userTalent == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_CHANGE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_CHANGE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}

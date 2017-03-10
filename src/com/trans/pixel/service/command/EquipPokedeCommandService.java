@@ -55,7 +55,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		responseBuilder.setEquipPokedeCommand(builder.build());
 	}
 	
-	public void heroStrengthen(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user) {
+	public void pokedeStrengthen(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user) {
 		int itemId = cmd.getItemId();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>();
 		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, itemId);

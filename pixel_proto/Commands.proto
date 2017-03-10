@@ -1646,11 +1646,17 @@ message UserTalent {
 	required int32 level = 2;
 	optional bool isUse = 3;
 	repeated UserTalentOrder skill = 4;
+	repeated UserTalentEquip equip = 5;
 }
 
 message UserTalentOrder {
 	required int32 order = 1;
 	required int32 skillId = 2;
+}
+
+message UserTalentEquip {
+	optional int32 position = 1;
+	optional int32 itemId = 2;
 }
 
 message UserTalentSkill {
@@ -2874,6 +2880,12 @@ message ResponseEquipPokedeCommand {
 	repeated UserEquipPokede userEquipPokede = 1; 
 }
 
+message RequestTalentChangeEquipCommand {
+	required int32 id = 1;
+	required int32 position = 2;
+	required int32 itemId = 3;
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -3041,6 +3053,7 @@ message RequestCommand {
 	optional RequestBossRoomInfoCommand bossRoomInfoCommand = 227;
 	optional RequestEquipStrenthenCommand equipStrenthenCommand = 228;
 	optional RequestEquipPokedeCommand equipPokedeCommand = 229;
+	optional RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
 }
 // response command list transfer only use it
 message ResponseCommand {

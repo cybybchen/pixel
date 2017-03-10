@@ -17,6 +17,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Talentunlock;
 import com.trans.pixel.protoc.Commands.Talentupgrade;
 import com.trans.pixel.protoc.Commands.UserTalent;
+import com.trans.pixel.protoc.Commands.UserTalentEquip;
 import com.trans.pixel.protoc.Commands.UserTalentOrder;
 import com.trans.pixel.protoc.Commands.UserTalentSkill;
 import com.trans.pixel.service.redis.TalentRedisService;
@@ -120,6 +121,32 @@ public class TalentService {
 			if (utoBuilder.getOrder() == order) {
 				utoBuilder.setSkillId(skillId);
 				builder.setSkill(i, utoBuilder.build());
+				return builder.build();
+			}
+		}
+		
+		return builder.build();
+	}
+	
+	public UserTalent changeTalentEquip(UserBean user, int id, int position, int itemId) {
+		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+		if (userTalent == null)
+			return null;
+		
+		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+		if (builder.getEquipCount() == 0) {
+			for (int i = 0; i < 10; ++i) {
+				UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
+				equipBuilder.setPosition(i);
+				equipBuilder.setItemId(0);
+				builder.addEquip(equipBuilder.build());
+			}
+		}
+		for (int i = 0; i < builder.getEquipCount(); ++i) {
+			UserTalentEquip.Builder equipBuilder = builder.getEquipBuilder(i);
+			if (equipBuilder.getPosition() == position) {
+				equipBuilder.setItemId(itemId);
+				builder.setEquip(i, equipBuilder.build());
 				return builder.build();
 			}
 		}
