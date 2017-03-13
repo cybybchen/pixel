@@ -9,6 +9,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 
 @Service
 public class CostService {
@@ -34,6 +36,17 @@ public class CostService {
 			userService.updateUser(user);
 		
 		return needUpdateUser;
+	}
+	
+	public boolean cost(UserBean user, MultiReward costs) {
+		for (RewardInfo cost : costs.getLootList()) {
+			if (!canCost(user, cost.getItemid(), cost.getCount()))
+				return false;
+		}
+		for (RewardInfo cost : costs.getLootList()) {
+			cost(user, cost.getItemid(), cost.getCount());
+		}
+		return true;
 	}
 	
 	/**
@@ -106,6 +119,62 @@ public class CostService {
 				case RewardConst.ZHAOHUANSHI:
 					if(itemCount > user.getZhaohuanshi()) return false;
 					user.setZhaohuanshi((int)(user.getZhaohuanshi() - itemCount));
+					return true;
+				default:
+					break;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * not update prop
+	 */
+	public boolean canCost(UserBean user, int itemId, long itemCount) {
+		long userId = user.getId();
+		if (itemId > RewardConst.FOOD) {
+			UserFoodBean userFood = userFoodService.selectUserFood(user, itemId);
+			if (userFood != null && userFood.getCount() >= itemCount) {
+				return true;
+			}
+		} else if (itemId > RewardConst.HERO) {
+
+		} else if (itemId > RewardConst.PACKAGE) {
+			UserPropBean userProp = userPropService.selectUserProp(user.getId(), itemId);
+			if (userProp != null && userProp.getPropCount() >= itemCount) {
+				return true;
+			}
+		} else if (itemId > RewardConst.EQUIPMENT) {
+			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
+			if (userEquip != null && userEquip.getEquipCount() >= itemCount) {
+				return true;
+			}
+		} else {
+			switch (itemId) {
+				case RewardConst.EXP:
+					if(itemCount > user.getExp()) return false;
+					return true;
+				case RewardConst.COIN:
+					if(itemCount > user.getCoin()) return false;
+					return true;
+				case RewardConst.JEWEL:
+					if(itemCount > user.getJewel()) return false;
+					return true;
+				case RewardConst.PVPCOIN:
+					if(itemCount > user.getPointPVP()) return false;
+					user.setPointPVP((int)(user.getPointPVP() - itemCount));
+					return true;
+				case RewardConst.EXPEDITIONCOIN:
+					if(itemCount > user.getPointExpedition()) return false;
+					return true;
+				case RewardConst.LADDERCOIN:
+					if(itemCount > user.getPointLadder()) return false;
+					return true;
+				case RewardConst.UNIONCOIN:
+					if(itemCount > user.getPointUnion()) return false;
+					return true;
+				case RewardConst.ZHAOHUANSHI:
+					if(itemCount > user.getZhaohuanshi()) return false;
 					return true;
 				default:
 					break;

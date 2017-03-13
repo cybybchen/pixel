@@ -1793,6 +1793,23 @@ message UserEquipPokede {
 	required int32 level = 2;
 }
 
+message EquipIncreaseList {
+	repeated EquipIncrease level = 1;
+}
+
+message EquipIncrease {
+	optional int32 level = 1;
+	optional float increase = 2;
+	optional int32 rate = 3;
+	optional int32 zero = 4;
+	repeated CostItem cost = 5;
+}
+
+message CostItem {
+	optional int32 costid = 1;
+	optional int32 costcount = 2;
+}
+
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

@@ -14,6 +14,7 @@ import com.trans.pixel.model.LootBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelLootBean;
+import com.trans.pixel.protoc.Commands.CostItem;
 import com.trans.pixel.protoc.Commands.Heroloot;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
@@ -272,5 +273,17 @@ public class RewardService {
 
 	public void updateUserDailyData(UserBean user) {
 		userService.updateUserDailyData(user);
+	}
+	
+	public List<RewardInfo> convertCost(List<CostItem> costList) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		for (CostItem cost : costList) {
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(cost.getCostid());
+			reward.setCount(cost.getCostcount());
+			rewardList.add(reward.build());
+		}
+		
+		return rewardList;
 	}
 }

@@ -1,6 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,8 +12,8 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -57,10 +56,10 @@ public class EquipPokedeCommandService extends BaseCommandService {
 	
 	public void pokedeStrengthen(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user) {
 		int itemId = cmd.getItemId();
-		List<UserPropBean> propList = new ArrayList<UserPropBean>();
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, itemId);
-		ResultConst result = equipPokedeService.heroStrengthen(pokede, user, propList);
-		pushCommandService.pushUserPropListCommand(responseBuilder, user, propList);
+		ResultConst result = equipPokedeService.heroStrengthen(pokede, user, rewards);
+		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			ErrorCommand errorCommand = buildErrorCommand(result);
@@ -73,5 +72,6 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 		builder.addUserEquipPokede(pokede.build());
 		responseBuilder.setEquipPokedeCommand(builder.build());
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build(), false);
 	}
 }
