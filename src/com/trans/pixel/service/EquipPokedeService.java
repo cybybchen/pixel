@@ -31,7 +31,7 @@ public class EquipPokedeService {
 		if (pokede == null)
 			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
 		
-		EquipIncrease equipIncrease = equipPokedeRedisService.getEquipIncrease(pokede.getLevel());
+		EquipIncrease equipIncrease = equipPokedeRedisService.getEquipIncrease(pokede.getLevel() + 1);
 		if (equipIncrease == null)
 			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
 		

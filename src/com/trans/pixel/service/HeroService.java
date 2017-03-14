@@ -68,7 +68,7 @@ public class HeroService {
 		long addExp = 0;
 		Map<String, Upgrade> map = heroRedisService.getUpgradeConfig();
 		while (level > 0) {
-			Upgrade upgrade = map.get(level);
+			Upgrade upgrade = map.get("" + level);
 			addExp += upgrade.getExp();
 			level--;
 		}
