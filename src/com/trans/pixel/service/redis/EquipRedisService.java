@@ -69,7 +69,7 @@ public class EquipRedisService extends RedisService {
 		}
 		
 		Map<String, Chip> map = new HashMap<String, Chip>();
-		for(Chip.Builder chip : builder.getChipBuilderList()){
+		for(Chip.Builder chip : builder.getIdBuilderList()){
 			map.put("" + chip.getItemid(), chip.build());
 		}
 		return map;

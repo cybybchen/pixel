@@ -892,7 +892,7 @@ message MohuaLoot {
 }
 
 message ChipList {
-	repeated Chip chip = 1;
+	repeated Chip id = 1;
 }
 
 message Chip {
@@ -901,7 +901,6 @@ message Chip {
 	required int32 img = 3;
 	required int32 rare = 4;
 	required int32 cost = 5;
-	required int32 mojing = 6;
 	optional string description = 7;
 	optional int32 aim = 8;
 	optional int32 count = 9;
