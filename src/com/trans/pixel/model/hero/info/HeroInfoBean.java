@@ -225,7 +225,7 @@ public class HeroInfoBean {
 		builder.setRank(rank);
 		builder.setFetters(userPokede.getFetters());
 		if (userEquipPokede != null)
-			builder.addEquipPokede(userEquipPokede.build());
+			builder.setEquipPokede(userEquipPokede.build());
 		
 		return builder.build();
 	}
