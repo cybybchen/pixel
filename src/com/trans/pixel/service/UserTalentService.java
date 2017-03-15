@@ -38,6 +38,8 @@ public class UserTalentService {
 	private UserTalentSkillMapper userTalentSkillMapper;
 	@Resource
 	private TalentRedisService talentRedisService;
+	@Resource
+	private UserService userService;
 	
 	public UserTalent getUserTalent(UserBean user, int id) {
 		UserTalent userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
@@ -87,6 +89,25 @@ public class UserTalentService {
 		}
 		
 		return userTalentList;
+	}
+	
+	public UserTalent getOtherUsingTalent(long userId) {
+		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(userId);
+		if (userTalentList.isEmpty()) {
+			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(userId);
+			if (utBeanList == null || utBeanList.isEmpty()) {
+				return null;
+			} else {
+				for (UserTalentBean ut : utBeanList) {
+					UserTalent userTalent = ut.buildUserTalent();
+					if (userTalent != null && userTalent.getIsUse()) {
+						return userTalent;
+					}
+				}
+			}
+		}
+		
+		return null;
 	}
 	
 	public void updateUserTalentSkill(UserBean user, UserTalentSkill ut) {

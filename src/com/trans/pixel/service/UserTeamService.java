@@ -13,6 +13,7 @@ import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserTeamMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
@@ -64,6 +65,8 @@ public class UserTeamService {
 	private HeroRedisService heroRedisService;
 	@Resource
 	private ClearService clearService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
@@ -339,6 +342,7 @@ public class UserTeamService {
 				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 				List<UserClearBean> userClearList = userClearService.selectUserClearList(user.getId());
 				List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
+				List<UserEquipPokedeBean> userEquipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
 				String[] herosstr = userTeam.getTeamRecord().split("\\|");
 				for(String herostr : herosstr){
 					String[] str = herostr.split(",");
@@ -348,7 +352,8 @@ public class UserTeamService {
 						for(HeroInfoBean herobean : userHeroList){
 							if(herobean.getId() == infoId){
 								team.addHeroInfo(herobean.buildTeamHeroInfo(
-										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId(), user)));
+										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId(), user),
+										userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId(), user)));
 								break;
 							}
 						}

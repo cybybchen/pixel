@@ -222,6 +222,7 @@ message HeroInfo {
 	optional int32 strengthen = 13;
 	optional int32 rank = 14;
 	optional string fetters = 15;
+	optional UserEquipPokede equipPokede = 16;
 }
 
 message PurchaseCoinReward {
@@ -1823,6 +1824,19 @@ message RewardCommand {
 
 message ResponseNeedRegisterCommand {
 
+}
+
+message RaidReward {
+	optional int32 lootid = 1;
+	optional int32 lootcount = 2;
+}
+message RaidOrder {
+	optional int32 order = 1;
+	optional int32 enemyid = 2;
+	repeated RaidReward loot = 3;
+}
+message Raid {
+	repeated RaidOrder id = 1;
 }
 
 message RequestRegisterCommand {

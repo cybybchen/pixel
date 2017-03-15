@@ -10,6 +10,7 @@ import com.trans.pixel.model.mapper.UserEquipPokedeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.service.redis.UserEquipPokedeRedisService;
 
 @Service
@@ -47,6 +48,16 @@ public class UserEquipPokedeService {
 		}
 		
 		return userPokedeList;
+	}
+	
+	public UserEquipPokedeBean getUserEquipPokede(List<UserEquipPokedeBean> pokedeList, int itemId, UserBean user) {
+		for (UserEquipPokedeBean pokede : pokedeList) {
+			if (pokede.getItemId() == itemId) {
+				return pokede;
+			}
+		}
+		
+		return selectUserEquipPokede(user, itemId);
 	}
 	
 	public void updateUserEquipPokede(UserEquipPokedeBean userPokede, UserBean user) {
