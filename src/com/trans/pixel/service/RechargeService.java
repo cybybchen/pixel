@@ -32,6 +32,7 @@ import com.trans.pixel.protoc.Commands.Rmb;
 import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.protoc.Commands.YueKa;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.LogUtils;
@@ -66,7 +67,7 @@ public class RechargeService {
 	@Resource
 	private UserPropService userPropService;
 	@Resource
-	private UserLevelService userLevelService;
+	private LevelRedisService userLevelService;
 	@Resource
 	private CostService costService;
 
@@ -234,9 +235,9 @@ public class RechargeService {
 		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 			userService.saveLibao(user.getId(), libaobuilder.build());
 			
-			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+			UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
 			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", 
-					company, 1, userLevel != null ? userLevel.getPutongLevel() : 0, user.getZhanliMax());
+					company, 1, userLevel != null ? userLevel.getUnlockDaguan() : 0, user.getZhanliMax());
 			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
 		}
 		

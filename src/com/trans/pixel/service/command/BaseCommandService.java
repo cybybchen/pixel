@@ -34,7 +34,6 @@ import com.trans.pixel.protoc.Commands.MailList;
 import com.trans.pixel.protoc.Commands.MessageBoard;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.ResponseLootResultCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.Commands.UserAchieve;
@@ -131,14 +130,14 @@ public class BaseCommandService {
 		return 100;
 	}
 	
-	protected ResponseLootResultCommand builderLootResultCommand(UserBean user) {
-		ResponseLootResultCommand.Builder builder = ResponseLootResultCommand.newBuilder();
-		builder.setExp(user.getExp());
-		builder.setGold(user.getCoin());
-		builder.setLastLootTime(user.getLastLootTime());
-		
-		return builder.build();
-	}
+//	protected ResponseLootResultCommand builderLootResultCommand(UserBean user) {
+//		ResponseLootResultCommand.Builder builder = ResponseLootResultCommand.newBuilder();
+//		builder.setExp(user.getExp());
+//		builder.setGold(user.getCoin());
+//		builder.setLastLootTime(user.getLastLootTime());
+//		
+//		return builder.build();
+//	}
 	
 	protected List<HeroInfo> buildUserHeroList(List<HeroInfoBean> userHeroList) {
 		List<HeroInfo> userHeroBuilderList = new ArrayList<HeroInfo>();

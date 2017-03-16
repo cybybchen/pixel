@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.Commands.TeamUnlock;
 import com.trans.pixel.protoc.Commands.UserTalent;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.UserTeamRedisService;
 
@@ -41,7 +42,7 @@ public class UserTeamService {
 	@Resource
 	private UserHeroService userHeroService;
 	@Resource
-	private UserLevelService userLevelService;
+	private LevelRedisService userLevelService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -388,10 +389,12 @@ public class UserTeamService {
 	
 	public boolean canUpdateTeam(UserBean user, String teamInfo) {
 		String[] teamList = teamInfo.split("\\|");
-		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
+		if(userLevel == null)
+			return false;
 		List<TeamUnlock> teamUnlockList = userTeamRedisService.getTeamUnlockConfig();
 		for (TeamUnlock teamUnlock : teamUnlockList) {
-			if (teamUnlock.getId() <= userLevel.getPutongLevel()) {
+			if (teamUnlock.getId() <= userLevel.getUnlockDaguan()) {
 				if (teamList.length <= teamUnlock.getCount())				
 					return true;
 			}

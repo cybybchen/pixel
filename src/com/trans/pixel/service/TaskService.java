@@ -24,8 +24,8 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.TaskOrder;
 import com.trans.pixel.protoc.Commands.TaskTarget;
 import com.trans.pixel.protoc.Commands.UserTask;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.TaskRedisService;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class TaskService {
@@ -43,7 +43,7 @@ public class TaskService {
 	@Resource
 	private NoticeService noticeService;
 	@Resource
-	private UserLevelService userLevelService;
+	private LevelRedisService userLevelService;
 	
 	/****************************************************************************************/
 	/** task1*/
@@ -235,8 +235,8 @@ public class TaskService {
 			userTaskService.updateUserTask3(user.getId(), userTask.build());
 			sendTask3Score(user, TaskConst.TARGET_COMPLETE_ALL_DAILY);
 			
-			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
-			logService.sendDailyquestLog(user.getServerId(), user.getId(), userTask.getTargetid(), userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
+			UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+			logService.sendDailyquestLog(user.getServerId(), user.getId(), userTask.getTargetid(), userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
 		}
 	}
 	

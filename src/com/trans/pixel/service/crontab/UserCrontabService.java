@@ -16,13 +16,12 @@ import com.trans.pixel.service.UserClearService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFoodService;
 import com.trans.pixel.service.UserHeroService;
-import com.trans.pixel.service.UserLevelLootService;
-import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTaskService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 
 @Service
@@ -39,9 +38,7 @@ public class UserCrontabService {
 	@Resource
 	private UserAchieveService userAchieveService;
 	@Resource
-	private UserLevelService userLevelService;
-	@Resource
-	private UserLevelLootService userLevelLootService;
+	private LevelRedisService userLevelService;
 	@Resource
 	private RechargeRedisService rechargeRedisService;
 	@Resource
@@ -109,10 +106,6 @@ public class UserCrontabService {
 		while((key=userLevelService.popDBKey()) != null){
 			long userId = Long.parseLong(key);
 			userLevelService.updateToDB(userId);
-		}
-		while((key=userLevelLootService.popDBKey()) != null){
-			long userId = Long.parseLong(key);
-			userLevelLootService.updateToDB(userId);
 		}
 		while ((key = rechargeRedisService.popDBKey()) != null) {
 			JSONObject json = JSONObject.fromObject(key);

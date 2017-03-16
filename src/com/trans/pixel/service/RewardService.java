@@ -24,8 +24,6 @@ import com.trans.pixel.service.redis.HeroRedisService;
 public class RewardService {
 //	private static final Logger log = LoggerFactory.getLogger(RewardService.class);
 	@Resource
-	private LootService lootService;
-	@Resource
 	private UserHeroService userHeroService;
 	@Resource
 	private UserService userService;
@@ -145,24 +143,24 @@ public class RewardService {
 		return false;
 	}
 	
-	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord, UserBean user) {
-		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
-		for (int lootLevel : rewardRecordList) {
-			LootBean loot = lootService.getLootByLevelId(lootLevel);
-			if (loot != null){
-				RewardBean reward = randomReward(loot.getRewardList());
-				if(user.getVip() >= 3 && RandomUtils.nextInt(100) < 10)
-					reward.setCount(reward.getCount()*2);
-				rewardList.add(reward);
-			}
-			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
-				break;
-		}
-		
-		userLevelLootRecord.clearRewardRecord();
-		return rewardList;
-	}
+//	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord, UserBean user) {
+//		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+//		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
+//		for (int lootLevel : rewardRecordList) {
+//			LootBean loot = lootService.getLootByLevelId(lootLevel);
+//			if (loot != null){
+//				RewardBean reward = randomReward(loot.getRewardList());
+//				if(user.getVip() >= 3 && RandomUtils.nextInt(100) < 10)
+//					reward.setCount(reward.getCount()*2);
+//				rewardList.add(reward);
+//			}
+//			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
+//				break;
+//		}
+//		
+//		userLevelLootRecord.clearRewardRecord();
+//		return rewardList;
+//	}
 	
 	public RewardBean randomReward(List<RewardBean> rewardList) {
 		if(rewardList.isEmpty())

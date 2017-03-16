@@ -1932,7 +1932,7 @@ message RequestLevelStartCommand {
 message RequestLevelLootResultCommand {
 }
 message RequestEventResultCommand {
-	optional int32 id = 1;
+	optional int32 order = 1;
 	optional string teamInfo = 2;
 	optional string fightInfo = 3;
 	optional int32 turn = 4;
@@ -1945,7 +1945,7 @@ message ResponseLevelLootCommand {
         optional int32 unlockDaguan = 1;
         optional int32 leftCount = 2;
         optional int32 lootDaguan = 3;
-	optional int32 lootTime = 4;
+	optional int64 lootTime = 4;
         repeated Event event = 5;
 }
 
@@ -2962,7 +2962,7 @@ message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
 	optional RequestLoginCommand loginCommand = 3;
-	optional RequestEventResultCommand levelResultCommand = 4;
+	optional RequestEventResultCommand eventResultCommand = 4;
 	optional RequestUpdateTeamCommand updateTeamCommand = 5;
 	optional RequestLevelStartCommand levelStartCommand = 6;
 	optional RequestLevelLootResultCommand levelLootResultCommand = 8;
@@ -3145,8 +3145,8 @@ message ResponseCommand {
         ////////////////////////////////////////////////////////
         optional ResponseNeedRegisterCommand needRegisterCommand = 3;
         optional ResponseUserInfoCommand userInfoCommand = 4;
-        optional ResponseEventResultCommand eventResultCommand = 6;
-        optional ResponseLevelLootCommand levelLootCommand = 7;
+        optional ResponseEventResultCommand eventResultCommand = 166;
+        optional ResponseLevelLootCommand levelLootCommand = 167;
         optional ResponseHeroResultCommand heroResultCommand = 8;
 	optional ResponseGetUserHeroCommand getUserHeroCommand = 14;
         optional ResponseGetLadderRankListCommand getLadderRankListCommand = 15;

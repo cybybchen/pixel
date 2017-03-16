@@ -48,6 +48,7 @@ public class RedisKey {
 	public static final String USER_LAST_CLEAR_PREFIX = PREFIX + "user_last_clear_";
 	public final static String USER_FIGHT_PREFIX = PREFIX + "user_fight_";
 	public static final String USER_EQUIP_POKEDE_PREFIX = PREFIX + "user_equip_pokede_"; 
+	public static final String USEREVENT_PREFIX = PREFIX+"UserEvent_";
 
 	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";
@@ -71,6 +72,9 @@ public class RedisKey {
 	public final static String JEWELPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"JewelPool";
 	public final static String EXPPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"ExpPool";
 	public final static String YUEKA_CONFIG = PREFIX+CONFIG_PREFIX+"YueKa";
+	public static final String DAGUAN_CONFIG = PREFIX+CONFIG_PREFIX+"Daguan";
+	public static final String DAGUANEVENT_CONFIG = PREFIX+CONFIG_PREFIX+"DaguanEvent";
+	public static final String EVENT_CONFIG = PREFIX+CONFIG_PREFIX+"Event";
 
 	//shop
 	public final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
@@ -91,9 +95,6 @@ public class RedisKey {
 	//xiaoguan redis
 	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";
 	public static final String LEVEL_DIFF_PREDIX = CONFIG_PREFIX+"level_diff_"; 
-	
-	//daguan redis
-	public static final String DAGUAN_KEY = CONFIG_PREFIX+"daguan";
 	
 	//cdkey
 	public static final String CDKEY_CONFIG = PREFIX+CONFIG_PREFIX+"cdkey";

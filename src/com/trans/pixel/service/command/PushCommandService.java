@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.RewardBean;
@@ -21,7 +20,6 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
-import com.trans.pixel.model.userinfo.UserLevelLootBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
@@ -44,13 +42,12 @@ import com.trans.pixel.protoc.Commands.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.Commands.ResponseGetUserMailListCommand;
+import com.trans.pixel.protoc.Commands.ResponseLevelLootCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserFoodCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserHeadCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
-import com.trans.pixel.protoc.Commands.ResponseUserLevelCommand;
-import com.trans.pixel.protoc.Commands.ResponseUserLootLevelCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserPropCommand;
 import com.trans.pixel.protoc.Commands.ResponseUserTalentCommand;
@@ -60,7 +57,6 @@ import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.protoc.Commands.UserFriend;
 import com.trans.pixel.service.BossService;
 import com.trans.pixel.service.LadderService;
-import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.PvpMapService;
@@ -71,18 +67,15 @@ import com.trans.pixel.service.UserFoodService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
-import com.trans.pixel.service.UserLevelLootService;
-import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.UserPokedeService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
 public class PushCommandService extends BaseCommandService {
 
-	@Resource
-	private LootService lootService;
 	@Resource
 	private PvpMapService pvpMapService;
 	@Resource
@@ -96,9 +89,7 @@ public class PushCommandService extends BaseCommandService {
 	@Resource
 	private UserFriendService userFriendService;
 	@Resource
-	private UserLevelService userLevelService;
-	@Resource
-	private UserLevelLootService userLevelLootService;
+	private LevelRedisService userLevelService;
 	@Resource
 	private MessageService messageService;
 	@Resource
@@ -122,10 +113,10 @@ public class PushCommandService extends BaseCommandService {
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
 	
-	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
-		user = lootService.updateLootResult(user);
-		responseBuilder.setLootResultCommand(super.builderLootResultCommand(user));
-	}
+//	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
+//		user = lootService.updateLootResult(user);
+//		responseBuilder.setLootResultCommand(super.builderLootResultCommand(user));
+//	}
 	
 	public void pushPvpMapListCommand(Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
@@ -203,7 +194,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserInfoCommand(Builder responseBuilder, UserBean user) {
-		lootService.updateLootResult(user);
+//		lootService.updateLootResult(user);
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 		buildUserInfo(builder, user);
 		responseBuilder.setUserInfoCommand(builder.build());
@@ -239,25 +230,23 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setGetUserFriendListCommand(builder.build());
 	}
 	
-	public void pushUserLevelCommand(Builder responseBuilder, UserBean user) {
-		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
-		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
-		if (userLevel.getLastLevelResultTime() > 0) {
-			userLevel.setLevelPrepareTime(userLevel.getLevelPrepareTime() + 
-					(int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - userLevel.getLastLevelResultTime());
-			userLevel.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
-			userLevelService.updateUserLevelRecord(userLevel);
-		}
-		builder.setUserLevel(userLevel.buildUserLevel());
-		responseBuilder.setUserLevelCommand(builder.build());
+	public void pushLevelLootCommand(Builder responseBuilder, UserBean user) {
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
+//		if (userLevel.getLastLevelResultTime() > 0) {
+//			userLevel.setLevelPrepareTime(userLevel.getLevelPrepareTime() + 
+//					(int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - userLevel.getLastLevelResultTime());
+//			userLevel.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
+//			userLevelService.updateUserLevelRecord(userLevel);
+//		}
+		responseBuilder.setLevelLootCommand(userLevel.build());
 	}
 	
-	public void pushUserLootLevelCommand(Builder responseBuilder, UserBean user) {
-		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
-		UserLevelLootBean userLevelLoot = userLevelLootService.selectUserLevelLootRecord(user.getId());
-		builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
-		responseBuilder.setUserLootLevelCommand(builder.build());
-	}
+//	public void pushUserLootLevelCommand(Builder responseBuilder, UserBean user) {
+//		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
+//		UserLevelLootBean userLevelLoot = userLevelLootService.selectUserLevelLootRecord(user.getId());
+//		builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
+//		responseBuilder.setUserLootLevelCommand(builder.build());
+//	}
 	
 	public void pushLadderRankListCommand(Builder responseBuilder, UserBean user) {	
 		super.handleGetUserLadderRankListCommand(responseBuilder, user);

@@ -120,16 +120,16 @@ public class PressureTest extends BaseTest {
 	private void levelTest(RequestCommand request, ResponseCommand loginResponse) {
 		LevelTest levelTest = new LevelTest();
 		
-		levelTest.levelPauseTest(request, loginResponse);
+//		levelTest.levelPauseTest(request, loginResponse);
 		
-		UserLevel userLevel = levelTest.levelPauseTest(request, loginResponse);
-		sleep(userLevel.getPrepareTime() * 1000);
-		
-		levelTest.levelStartTest(request, loginResponse);
-		
-		levelTest.levelResutlTest(request, loginResponse);
-		
-		levelTest.levellootStartTest(request, loginResponse);
+//		UserLevel userLevel = levelTest.levelPauseTest(request, loginResponse);
+//		sleep(userLevel.getPrepareTime() * 1000);
+//		
+//		levelTest.levelStartTest(request, loginResponse);
+//		
+//		levelTest.levelResutlTest(request, loginResponse);
+//		
+//		levelTest.levellootStartTest(request, loginResponse);
 		
 		levelTest.levellootResultTest(request, loginResponse);
 	}

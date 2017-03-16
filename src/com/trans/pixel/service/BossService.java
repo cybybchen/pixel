@@ -29,6 +29,7 @@ import com.trans.pixel.protoc.Commands.Bossloot;
 import com.trans.pixel.protoc.Commands.BosslootGroup;
 import com.trans.pixel.protoc.Commands.UserInfo;
 import com.trans.pixel.service.redis.BossRedisService;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -42,7 +43,7 @@ public class BossService {
 	@Resource
 	private LogService logService;
 	@Resource
-	private UserLevelService userLevelService;
+	private LevelRedisService userLevelService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -164,9 +165,10 @@ public class BossService {
 			}
 		}
 	
-		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+		UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+		if(userLevel != null)
 		logService.sendWorldbossLog(user.getServerId(), user.getId(), bossId, team, 1, dps, itemid1, itemcount1, 
-				itemid2, itemcount2, itemid3, itemcount3, itemid4, itemcount4, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
+				itemid2, itemcount2, itemid3, itemcount3, itemid4, itemcount4, userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
 		
 		return rewardList;
 	}
@@ -446,9 +448,9 @@ public class BossService {
 			bossRedisService.delBossRoomRecord(builder.getCreateUserId());
 			builder.setStatus(2);//打死
 		} else {
-			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+			UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
 			logService.sendWorldbossLog(user.getServerId(), user.getId(), builder.getBossId(), builder.getCreateUserId() == user.getId() ? 1 : 2, 0, percent, 0, 0, 
-					0, 0, 0, 0, 0, 0, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
+					0, 0, 0, 0, 0, 0, userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
 		}
 		
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;

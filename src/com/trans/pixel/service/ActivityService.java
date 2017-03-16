@@ -50,6 +50,7 @@ import com.trans.pixel.protoc.Commands.UserKaifu;
 import com.trans.pixel.protoc.Commands.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.UserActivityRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -88,7 +89,7 @@ public class ActivityService {
 	@Resource
 	private HeroService heroService;
 	@Resource
-	private UserLevelService userLevelService;
+	private LevelRedisService userLevelService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -181,8 +182,9 @@ public class ActivityService {
 		
 		isDeleteNotice(user);
 		
-		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
-		logService.sendActivityquestLog(user.getServerId(), user.getId(), id, richang.getTargetid(), order, userLevel.getPutongLevel(), user.getZhanliMax(), user.getVip());
+		UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+		if(userLevel != null)
+		logService.sendActivityquestLog(user.getServerId(), user.getId(), id, richang.getTargetid(), order, userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}

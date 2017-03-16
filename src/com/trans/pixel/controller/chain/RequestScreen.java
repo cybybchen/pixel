@@ -57,6 +57,9 @@ import com.trans.pixel.protoc.Commands.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.Commands.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
+import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
+import com.trans.pixel.protoc.Commands.RequestEventResultCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
@@ -65,9 +68,6 @@ import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
-import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
-import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentChangeEquipCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
@@ -96,16 +96,11 @@ import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
-import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
@@ -155,6 +150,7 @@ import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.Commands.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentChangeUseCommand;
 import com.trans.pixel.protoc.Commands.RequestTalentupgradeCommand;
@@ -182,9 +178,6 @@ import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
-import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
-import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
-import com.trans.pixel.protoc.Commands.RequestTalentChangeEquipCommand;
 //add import here
 
 
@@ -205,13 +198,9 @@ public abstract class RequestScreen implements RequestHandle {
 	
 	protected abstract boolean handleCommand(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user);
 	
-	protected abstract boolean handleCommand(RequestLevelResultCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestLevelLootStartCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestLootResultCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -250,10 +239,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestLoginCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestLevelPrepareCommand cmd, Builder responseBuilder, UserBean user);
-	
-	protected abstract boolean handleCommand(RequestLevelPauseCommand cmd, Builder responseBuilder, UserBean user);
 	
 	protected abstract boolean handleCommand(RequestApplyUnionCommand cmd, Builder responseBuilder, UserBean user);
 	
@@ -492,11 +477,6 @@ public abstract class RequestScreen implements RequestHandle {
         }
 
         boolean result = true;
-        if (request.hasLevelResultCommand()) {
-        	RequestLevelResultCommand cmd = request.getLevelResultCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
         if (request.hasAddHeroEquipCommand()) {
         	RequestAddHeroEquipCommand cmd = request.getAddHeroEquipCommand();
         	if (result)
@@ -512,18 +492,13 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
-        if (request.hasLevelLootStartCommand()) {
-        	RequestLevelLootStartCommand cmd = request.getLevelLootStartCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
         if (request.hasLevelStartCommand()) {
         	RequestLevelStartCommand cmd = request.getLevelStartCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
-        if (request.hasLootResultCommand()) {
-        	RequestLootResultCommand cmd = request.getLootResultCommand();
+        if (request.hasEventResultCommand()) {
+        	RequestEventResultCommand cmd = request.getEventResultCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
@@ -604,16 +579,6 @@ public abstract class RequestScreen implements RequestHandle {
 //        }
         if (request.hasGetUserLadderRankListCommand()) {
             RequestGetUserLadderRankListCommand cmd = request.getGetUserLadderRankListCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasLevelPrepareCommand()) {
-            RequestLevelPrepareCommand cmd = request.getLevelPrepareCommand();
-            if (result)
-                result = handleCommand(cmd, responseBuilder, user);
-        }
-        if (request.hasLevelPauseCommand()) {
-            RequestLevelPauseCommand cmd = request.getLevelPauseCommand();
             if (result)
                 result = handleCommand(cmd, responseBuilder, user);
         }
@@ -1002,11 +967,6 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//AreaResourceCommand
                 result = handleCommand(cmd, responseBuilder, user);//AreaResourceCommand
         }//AreaResourceCommand
-        if (request.hasUnlockLevelCommand()) {
-            RequestUnlockLevelCommand cmd = request.getUnlockLevelCommand();
-            if (result)//UnlockLevelCommand
-                result = handleCommand(cmd, responseBuilder, user);//UnlockLevelCommand
-        }//UnlockLevelCommand
         if (request.hasUseAreaEquipCommand()) {
             RequestUseAreaEquipCommand cmd = request.getUseAreaEquipCommand();
             if (result)//UseAreaEquipCommand

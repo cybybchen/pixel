@@ -55,6 +55,7 @@ import com.trans.pixel.protoc.Commands.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestEquipStrenthenCommand;
+import com.trans.pixel.protoc.Commands.RequestEventResultCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestExpeditionShopRefreshCommand;
@@ -91,16 +92,11 @@ import com.trans.pixel.protoc.Commands.RequestLadderShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.Commands.RequestLadderShopRefreshCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelLootStartCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelPauseCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelPrepareCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.Commands.RequestLockHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestLogCommand;
 import com.trans.pixel.protoc.Commands.RequestLoginCommand;
-import com.trans.pixel.protoc.Commands.RequestLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
@@ -189,7 +185,6 @@ import com.trans.pixel.service.command.LadderCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LibaoCommandService;
 import com.trans.pixel.service.command.LogCommandService;
-import com.trans.pixel.service.command.LootCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.MailCommandService;
@@ -222,8 +217,6 @@ public class GameDataScreen extends RequestScreen {
 	private PvpCommandService pvpCommandService;
 	@Resource
 	private TeamCommandService teamCommandService;
-	@Resource
-	private LootCommandService lootCommandService;
 	@Resource
 	private HeroCommandService heroCommandService;
 	@Resource
@@ -302,27 +295,6 @@ public class GameDataScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestLevelResultCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		levelCommandService.levelResultFirstTime(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestLevelStartCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		levelCommandService.levelStartFirstTime(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestLevelLootStartCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		levelCommandService.levelLootStart(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
 	protected boolean handleCommand(RequestLevelLootResultCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		levelCommandService.levelLootResult(cmd, responseBuilder, user);
@@ -330,9 +302,15 @@ public class GameDataScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestLootResultCommand cmd,
+	protected boolean handleCommand(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
+		levelCommandService.levelStart(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEventResultCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		lootCommandService.lootResult(cmd, responseBuilder, user);
+		levelCommandService.eventResult(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -479,20 +457,6 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		unionCommandService.upgrade(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestLevelPrepareCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		levelCommandService.levelPrepara(cmd, responseBuilder, user);
-		return true;
-	}
-
-	@Override
-	protected boolean handleCommand(RequestLevelPauseCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		levelCommandService.levelPause(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -731,11 +695,6 @@ public class GameDataScreen extends RequestScreen {
 		areaCommandService.resourceInfo(cmd, responseBuilder, user);
 		return true;//AreaResourceCommand
 	}//AreaResourceCommand
-	@Override//UnlockLevelCommand
-	protected boolean handleCommand(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {
-		levelCommandService.levelUnlock(cmd, responseBuilder, user);
-		return true;//UnlockLevelCommand
-	}//UnlockLevelCommand
 	@Override//UseAreaEquipCommand
 	protected boolean handleCommand(RequestUseAreaEquipCommand cmd, Builder responseBuilder, UserBean user) {
 		areaCommandService.useAreaEquips(cmd, responseBuilder, user);
@@ -751,11 +710,6 @@ public class GameDataScreen extends RequestScreen {
 		heroCommandService.submitComposeSkill(cmd, responseBuilder, user);
 		return true;//SubmitComposeSkillCommand
 	}//SubmitComposeSkillCommand
-	@Override//BuyLootPackageCommand
-	protected boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user) {
-		levelCommandService.buyLootPackage(cmd, responseBuilder, user);
-		return true;//BuyLootPackageCommand
-	}//BuyLootPackageCommand
 	@Override//CdkeyCommand
 	protected boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user) {
 		cdkeyCommandService.useCdkey(cmd, responseBuilder, user);
@@ -1264,6 +1218,18 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean pushNoticeCommand(Builder responseBuilder, UserBean user) {
 		noticeCommandService.pushNotices(responseBuilder, user);
 		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
