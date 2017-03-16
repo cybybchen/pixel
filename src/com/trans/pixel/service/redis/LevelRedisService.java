@@ -232,18 +232,47 @@ public class LevelRedisService extends RedisService {
 	
 	public void updateToDB(long userId){
 		UserLevelBean bean = getUserLevel(userId);
-		// if(value != null)
-		// 	mapper.update(userId, value);
+		if(bean != null)
+			mapper.updateUserLevel(bean);
 	}
 	public String popDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY+"UserLevel");
 	}
 	public UserLevelBean getUserLevel(long userId){
 		String value = hget(RedisKey.USERDATA+userId, "UserLevel");
-		return UserLevelBean.fromJson(value);
+		if(value == null){
+			UserLevelBean userLevel = mapper.getUserLevel(userId);
+			if(userLevel == null){
+				userLevel = new UserLevelBean();
+				Daguan daguan = getDaguan(1);
+				userLevel.setUserId(userId);
+				userLevel.setLootTime(System.currentTimeMillis());
+				userLevel.setUnlockDaguan(daguan.getId());
+				userLevel.setLeftCount(daguan.getCount());
+				userLevel.setLootDaguan(daguan.getId());
+				userLevel.setCoin(daguan.getGold());
+				userLevel.setExp(daguan.getExperience());
+			}else{
+				Daguan daguan = getDaguan(userLevel.getLootDaguan());
+				userLevel.setCoin(daguan.getGold());
+				userLevel.setExp(daguan.getExperience());
+			}
+			saveUserLevel(userLevel);
+			return userLevel;
+		}else{
+			return UserLevelBean.fromJson(value);
+		}
 	}
 	public UserLevelBean getUserLevel(UserBean user){
 		return getUserLevel(user.getId());
+	}
+	public int getCoin(UserBean user){
+		UserLevelBean userLevel = getUserLevel(user);
+		return (int)(System.currentTimeMillis()-userLevel.getLootTime())/1000*userLevel.getCoin();
+	}
+	public int getExp(UserBean user){
+		UserLevelBean userLevel = getUserLevel(user);
+		return (int)(System.currentTimeMillis()-userLevel.getLootTime())/1000*userLevel.getExp();
 	}
 	public void saveUserLevel(UserLevelBean bean){
 		hput(RedisKey.USERDATA+bean.getUserId(), "UserLevel", toJson(bean));

@@ -8,12 +8,9 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
-import com.trans.pixel.model.XiaoguanBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Commands.Commodity;
 import com.trans.pixel.protoc.Commands.ContractWeight;
-import com.trans.pixel.protoc.Commands.ContractWeightList;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.Commands.RequestBattletowerShopPurchaseCommand;
@@ -58,14 +55,13 @@ import com.trans.pixel.protoc.Commands.VipInfo;
 import com.trans.pixel.protoc.Commands.VipLibao;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
-import com.trans.pixel.service.LevelService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
-import com.trans.pixel.service.UserLevelService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -79,11 +75,9 @@ public class ShopCommandService extends BaseCommandService{
 	@Resource
 	private RewardService rewardService;
 	@Resource
-	private UserLevelService userLevelService;
-	@Resource
 	private PushCommandService pusher;
 	@Resource
-	private LevelService levelService;
+	private LevelRedisService levelService;
 	@Resource
 	private CostService costService;
 	@Resource
@@ -867,9 +861,7 @@ public class ShopCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 			return;
 		}
-		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
-		XiaoguanBean xiaoguan = levelService.getXiaoguan(userLevel.getPutongLevel());
-		MultiReward rewards = service.getPurchaseCoinReward(xiaoguan.getDaguan());
+		MultiReward rewards = service.getPurchaseCoinReward(levelService.getUserLevel(user).getUnlockDaguan());
 		for(RewardInfo reward : rewards.getLootList())
 			rewardService.doReward(user, reward.getItemid(), reward.getCount());
 		user.setPurchaseCoinTime(user.getPurchaseCoinTime()+1);

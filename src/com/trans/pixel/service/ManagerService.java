@@ -1697,16 +1697,6 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("LevelDiffConfig3", object);
 		}
-		if(req.containsKey("del-DaguanConfig")){
-			delete(RedisKey.PREFIX + RedisKey.DAGUAN_KEY);
-			req.put("DaguanConfig", 1);
-		}
-		if(req.containsKey("DaguanConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.DAGUAN_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("DaguanConfig", object);
-		}
 		if(req.containsKey("del-WinLevelConfig")){
 			delete(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
 			req.put("WinLevelConfig", 1);

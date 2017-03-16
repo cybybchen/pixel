@@ -35,11 +35,25 @@ public class UserLevelBean {
 	public void setLootDaguan(int lootDaguan) {
 		this.lootDaguan = lootDaguan;
 	}
+	public int getCoin() {
+		return coin;
+	}
+	public void setCoin(int coin) {
+		this.coin = coin;
+	}
+	public int getExp() {
+		return exp;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
 	private long userId = 0;
 	private long lootTime = 0;
 	private int unlockDaguan = 0;
 	private int leftCount = 0;
 	private int lootDaguan = 0;
+	private int coin = 0;
+	private int exp = 0;
 	public static UserLevelBean fromJson(String value) {
 		JSONObject json = JSONObject.fromObject(value);
 		Object object = JSONObject.toBean(json, UserLevelBean.class);

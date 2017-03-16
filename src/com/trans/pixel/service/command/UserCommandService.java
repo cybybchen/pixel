@@ -273,12 +273,10 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {
-		pushCommandService.pushLootResultCommand(responseBuilder, user);
+		pushCommandService.pushLevelLootCommand(responseBuilder, user);
 		pushCommandService.pushUserFriendListCommand(responseBuilder, user);
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
-		pushCommandService.pushUserLevelCommand(responseBuilder, user);
-		pushCommandService.pushUserLootLevelCommand(responseBuilder, user);
 		pushCommandService.pushLadderRankListCommand(responseBuilder, user);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 		pushCommandService.pushShopCommand(responseBuilder, user);

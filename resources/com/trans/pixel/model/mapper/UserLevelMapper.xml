@@ -3,35 +3,23 @@
 <mapper namespace="com.trans.pixel.model.mapper.UserLevelMapper">
 
 	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserLevelBean">
-		<id property="id" column="id" />
-		<result property="userId" column="user_id" />
-		<result property="lastLevelResultTime" column="last_level_result_time" />
-		<result property="levelPrepareTime" column="level_prepare_time" />
-		<result property="putongLevel" column="putong_level" />
-		<result property="kunnanLevel" column="kunnan_level" />
-		<result property="diyuLevel" column="diyu_level" />
-		<result property="unlockedLevel" column="unlock_level" />
+		<id property="userId" column="userId" />
+		<result property="lootTime" column="lootTime" />
+		<result property="unlockDaguan" column="unlockDaguan" />
+		<result property="leftCount" column="leftCount" />
+		<result property="lootDaguan" column="lootDaguan" />
 	</resultMap>
 
-	<select id="selectUserLevelRecord" parameterType="long" resultMap="resultMap">
-		SELECT *
-		from user_level where user_id = #{userId}
-	</select>
-	
-	<insert id="insertUserLevelRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
-		INSERT INTO user_level(user_id, last_level_result_time, level_prepare_time, putong_level, kunnan_level, diyu_level, unlock_level)
-		VALUES(#{userId}, #{lastLevelResultTime}, #{levelPrepareTime}, #{putongLevel}, #{kunnanLevel}, #{diyuLevel}, #{unlockedLevel})
-	</insert>
-	
-	<update id="updateUserLevelRecord" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
-		UPDATE user_level 
-		SET last_level_result_time=#{lastLevelResultTime}, 
-		level_prepare_time=#{levelPrepareTime}, 
-		putong_level=#{putongLevel},
-		kunnan_level=#{kunnanLevel},
-		diyu_level=#{diyuLevel},
-		unlock_level=#{unlockedLevel}
-		WHERE user_id=#{userId}
+	<update id="updateUserLevel" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
+		INSERT INTO user_level(userId, lootTime, unlockDaguan, leftCount, lootDaguan)
+	    VALUES(#{userId}, #{lootTime}, #{unlockDaguan}, #{leftCount}, #{lootDaguan})
+	    ON 
+	    duplicate key update
+	    lootTime=#{lootTime},unlockDaguan=#{unlockDaguan},leftCount=#{leftCount},lootDaguan=#{lootDaguan}
 	</update>
 
+	<select id="getUserLevel" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_level where userId = #{userId}
+	</select>
 </mapper>

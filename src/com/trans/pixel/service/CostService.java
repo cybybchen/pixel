@@ -11,6 +11,7 @@ import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
 public class CostService {
@@ -24,7 +25,7 @@ public class CostService {
 	@Resource
 	private UserPropService userPropService;
 	@Resource
-	private LootService lootService;
+	private LevelRedisService lootService;
 	@Resource
 	private UserFoodService userFoodService;
 	@Resource
@@ -82,13 +83,12 @@ public class CostService {
 			unionService.costUnionBossActivity(user, itemId, itemCount);
 			switch (itemId) {
 				case RewardConst.EXP:
-					lootService.updateLootResult(user);
-					if(itemCount > user.getExp()) return false;
+					;
+					if(itemCount > user.getExp()+lootService.getExp(user)) return false;
 					user.setExp(user.getExp() - itemCount);
 					return true;
 				case RewardConst.COIN:
-					lootService.updateLootResult(user);
-					if(itemCount > user.getCoin()) return false;
+					if(itemCount > user.getCoin()+lootService.getCoin(user)) return false;
 					user.setCoin(user.getCoin() - itemCount);
 					return true;
 				case RewardConst.JEWEL:
