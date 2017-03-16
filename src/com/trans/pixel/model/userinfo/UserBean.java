@@ -111,6 +111,7 @@ public class UserBean {
 	private int questStatus = 0;
 	private long bossRoomUserId = 0;
 	private int zhaohuanshi = 0;
+	private int zhujueExp = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1107,6 +1108,12 @@ public class UserBean {
 	public void setZhaohuanshi(int zhaohuanshi) {
 		this.zhaohuanshi = zhaohuanshi;
 	}
+	public int getZhujueExp() {
+		return zhujueExp;
+	}
+	public void setZhujueExp(int zhujueExp) {
+		this.zhujueExp = zhujueExp;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1251,6 +1258,8 @@ public class UserBean {
 		builder.setTask2Record(task2Record);
 		builder.setQuestStatus(questStatus);
 		builder.setZhaohuanshi(zhaohuanshi);
+		builder.setZhujueExp(zhujueExp);
+		
 		return builder.build();
 	}
 //	public Map<String, String> toMap() {

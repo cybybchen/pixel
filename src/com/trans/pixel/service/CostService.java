@@ -120,6 +120,10 @@ public class CostService {
 					if(itemCount > user.getZhaohuanshi()) return false;
 					user.setZhaohuanshi((int)(user.getZhaohuanshi() - itemCount));
 					return true;
+				case RewardConst.ZHUJUEEXP:
+					if (itemCount > user.getZhujueExp()) return false;
+					user.setZhujueExp((int)(user.getZhujueExp() - itemCount));
+					return true;
 				default:
 					break;
 			}
@@ -175,6 +179,9 @@ public class CostService {
 					return true;
 				case RewardConst.ZHAOHUANSHI:
 					if(itemCount > user.getZhaohuanshi()) return false;
+					return true;
+				case RewardConst.ZHUJUEEXP:
+					if (itemCount > user.getZhujueExp()) return false;
 					return true;
 				default:
 					break;

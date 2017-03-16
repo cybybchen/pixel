@@ -135,6 +135,9 @@ public class RewardService {
 				case RewardConst.ZHAOHUANSHI:
 					user.setZhaohuanshi(user.getZhaohuanshi() + (int)rewardCount);
 					return true;
+				case RewardConst.ZHUJUEEXP:
+					user.setZhujueExp(user.getZhujueExp() + (int)rewardCount);
+					return true;
 				default:
 					break;
 			}
