@@ -11,11 +11,17 @@ public class UserLevelBean {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	public long getLootTime() {
+	public int getLootTime() {
 		return lootTime;
 	}
-	public void setLootTime(long lootTime) {
+	public void setLootTime(int lootTime) {
 		this.lootTime = lootTime;
+	}
+	public int getEventTime() {
+		return eventTime;
+	}
+	public void setEventTime(int eventTime) {
+		this.eventTime = eventTime;
 	}
 	public int getUnlockDaguan() {
 		return unlockDaguan;
@@ -48,7 +54,8 @@ public class UserLevelBean {
 		this.exp = exp;
 	}
 	private long userId = 0;
-	private long lootTime = 0;
+	private int lootTime = 0;
+	private int eventTime = 0;
 	private int unlockDaguan = 0;
 	private int leftCount = 0;
 	private int lootDaguan = 0;
@@ -62,6 +69,7 @@ public class UserLevelBean {
 	public ResponseLevelLootCommand.Builder build() {
 		ResponseLevelLootCommand.Builder builder = ResponseLevelLootCommand.newBuilder();
 		builder.setLootTime(lootTime);
+		builder.setEventTime(eventTime);
 		builder.setUnlockDaguan(unlockDaguan);
 		builder.setLeftCount(leftCount);
 		builder.setLootDaguan(lootDaguan);

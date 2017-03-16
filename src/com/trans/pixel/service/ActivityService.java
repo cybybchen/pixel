@@ -182,7 +182,7 @@ public class ActivityService {
 		
 		isDeleteNotice(user);
 		
-		UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
 		if(userLevel != null)
 		logService.sendActivityquestLog(user.getServerId(), user.getId(), id, richang.getTargetid(), order, userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
 		

@@ -235,7 +235,7 @@ public class RechargeService {
 		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 			userService.saveLibao(user.getId(), libaobuilder.build());
 			
-			UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+			UserLevelBean userLevel = userLevelService.getUserLevel(user);
 			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", 
 					company, 1, userLevel != null ? userLevel.getUnlockDaguan() : 0, user.getZhanliMax());
 			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);

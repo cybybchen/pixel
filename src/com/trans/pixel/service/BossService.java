@@ -165,7 +165,7 @@ public class BossService {
 			}
 		}
 	
-		UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
 		if(userLevel != null)
 		logService.sendWorldbossLog(user.getServerId(), user.getId(), bossId, team, 1, dps, itemid1, itemcount1, 
 				itemid2, itemcount2, itemid3, itemcount3, itemid4, itemcount4, userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
@@ -448,7 +448,7 @@ public class BossService {
 			bossRedisService.delBossRoomRecord(builder.getCreateUserId());
 			builder.setStatus(2);//打死
 		} else {
-			UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+			UserLevelBean userLevel = userLevelService.getUserLevel(user);
 			logService.sendWorldbossLog(user.getServerId(), user.getId(), builder.getBossId(), builder.getCreateUserId() == user.getId() ? 1 : 2, 0, percent, 0, 0, 
 					0, 0, 0, 0, 0, 0, userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
 		}

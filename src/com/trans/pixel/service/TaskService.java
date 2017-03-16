@@ -235,7 +235,7 @@ public class TaskService {
 			userTaskService.updateUserTask3(user.getId(), userTask.build());
 			sendTask3Score(user, TaskConst.TARGET_COMPLETE_ALL_DAILY);
 			
-			UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+			UserLevelBean userLevel = userLevelService.getUserLevel(user);
 			logService.sendDailyquestLog(user.getServerId(), user.getId(), userTask.getTargetid(), userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
 		}
 	}

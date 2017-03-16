@@ -1945,8 +1945,9 @@ message ResponseLevelLootCommand {
         optional int32 unlockDaguan = 1;
         optional int32 leftCount = 2;
         optional int32 lootDaguan = 3;
-	optional int64 lootTime = 4;
-        repeated Event event = 5;
+	optional int32 lootTime = 4;
+	optional int32 eventTime = 5;
+        repeated Event event = 6;
 }
 
 message FightInfo {

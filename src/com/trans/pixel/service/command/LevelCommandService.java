@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.mapper.UserLevelMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Commands.AreaEvent;
@@ -17,12 +17,15 @@ import com.trans.pixel.protoc.Commands.Daguan;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.Event;
 import com.trans.pixel.protoc.Commands.EventReward;
+import com.trans.pixel.protoc.Commands.MultiReward;
 import com.trans.pixel.protoc.Commands.RequestEventResultCommand;
 import com.trans.pixel.protoc.Commands.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseLevelLootCommand;
+import com.trans.pixel.protoc.Commands.RewardCommand;
+import com.trans.pixel.protoc.Commands.RewardInfo;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
@@ -79,7 +82,7 @@ public class LevelCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getLeftCount() <= 0){
-			Daguan daguan = redis.getDaguan(id);
+			Daguan.Builder daguan = redis.getDaguan(id);
 			if(daguan == null || redis.hasEvent(user)){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
@@ -89,12 +92,12 @@ public class LevelCommandService extends BaseCommandService {
 				userLevel.setUnlockDaguan(userLevel.getUnlockDaguan()+1);
 				userLevel.setLootDaguan(userLevel.getUnlockDaguan());
 				userLevel.setLeftCount(daguan.getCount());
+				userLevel.setCoin(daguan.getGold());
+				userLevel.setExp(daguan.getExperience());
 				redis.saveUserLevel(userLevel);
 				for(Event.Builder event : events.getEventBuilderList()){
-					if(id == event.getDaguan()){
-						// event.setOrder(redis.currentIndex()+event.getOrder());
+					if(id == event.getDaguan())
 						redis.saveEvent(user, event.build());
-					}
 				}
 			}
 		}else if(id != userLevel.getLootDaguan()){
@@ -107,6 +110,32 @@ public class LevelCommandService extends BaseCommandService {
 		responseBuilder.setLevelLootCommand(builder.build());
 	}
 	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
+		UserLevelBean userLevel = redis.getUserLevel(user);
+		long time = redis.now() - userLevel.getLootTime();
+		RewardCommand.Builder rewardCommand = RewardCommand.newBuilder();
+		if(time >= 60){
+			Daguan.Builder daguan = redis.getDaguan(userLevel.getLootDaguan());
+			for(RewardInfo.Builder reward : daguan.getItemBuilderList())
+				reward.setCount(reward.getCount()*time/60);
+			rewardCommand.addAllLoot(daguan.getItemList());
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			rewardCommand.addAllLoot(daguan.getItemList());
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(RewardConst.EXP);
+			reward.setCount(daguan.getExperience()*time/60);
+			rewards.addLoot(reward);
+			reward.setItemid(RewardConst.COIN);
+			reward.setCount(daguan.getGold()*time/60);
+			rewards.addLoot(reward);
+			rewardService.doRewards(user, rewards.build());
+			userLevel.setLootTime(userLevel.getLootTime()+(int)time/60*60);
+			redis.saveUserLevel(userLevel);
+		}
+		responseBuilder.setRewardCommand(rewardCommand.build());
+		ResponseLevelLootCommand.Builder builder = userLevel.build();
+		for(Event.Builder event : redis.getEvents(user).values())
+			builder.addEvent(event);
+		responseBuilder.setLevelLootCommand(builder.build());
 	}
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);

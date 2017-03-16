@@ -240,39 +240,44 @@ public class LevelRedisService extends RedisService {
 	}
 	public UserLevelBean getUserLevel(long userId){
 		String value = hget(RedisKey.USERDATA+userId, "UserLevel");
-		if(value == null){
-			UserLevelBean userLevel = mapper.getUserLevel(userId);
-			if(userLevel == null){
-				userLevel = new UserLevelBean();
-				Daguan daguan = getDaguan(1);
-				userLevel.setUserId(userId);
-				userLevel.setLootTime(System.currentTimeMillis());
-				userLevel.setUnlockDaguan(daguan.getId());
-				userLevel.setLeftCount(daguan.getCount());
-				userLevel.setLootDaguan(daguan.getId());
-				userLevel.setCoin(daguan.getGold());
-				userLevel.setExp(daguan.getExperience());
-			}else{
-				Daguan daguan = getDaguan(userLevel.getLootDaguan());
-				userLevel.setCoin(daguan.getGold());
-				userLevel.setExp(daguan.getExperience());
-			}
-			saveUserLevel(userLevel);
-			return userLevel;
-		}else{
-			return UserLevelBean.fromJson(value);
-		}
+		return UserLevelBean.fromJson(value);
 	}
 	public UserLevelBean getUserLevel(UserBean user){
-		return getUserLevel(user.getId());
+		UserLevelBean userLevel = getUserLevel(user.getId());
+		if(userLevel != null)
+			return userLevel;
+		userLevel = mapper.getUserLevel(user.getId());
+		if(userLevel == null){
+			userLevel = new UserLevelBean();
+			Daguan.Builder daguan = getDaguan(1);
+			userLevel.setUserId(user.getId());
+			userLevel.setLootTime((int)now());
+			userLevel.setEventTime((int)now());
+			userLevel.setUnlockDaguan(daguan.getId());
+			userLevel.setLeftCount(daguan.getCount());
+			userLevel.setLootDaguan(daguan.getId());
+			userLevel.setCoin(daguan.getGold());
+			userLevel.setExp(daguan.getExperience());
+			AreaEvent.Builder events = getDaguanEvent(daguan.getId());
+			for(Event.Builder event : events.getEventBuilderList()){
+				if(daguan.getId() == event.getDaguan())
+					saveEvent(user, event.build());
+			}
+		}else{
+			Daguan.Builder daguan = getDaguan(userLevel.getLootDaguan());
+			userLevel.setCoin(daguan.getGold());
+			userLevel.setExp(daguan.getExperience());
+		}
+		saveUserLevel(userLevel);
+		return userLevel;
 	}
 	public int getCoin(UserBean user){
 		UserLevelBean userLevel = getUserLevel(user);
-		return (int)(System.currentTimeMillis()-userLevel.getLootTime())/1000*userLevel.getCoin();
+		return (int)(now()-userLevel.getLootTime())*userLevel.getCoin();
 	}
 	public int getExp(UserBean user){
 		UserLevelBean userLevel = getUserLevel(user);
-		return (int)(System.currentTimeMillis()-userLevel.getLootTime())/1000*userLevel.getExp();
+		return (int)(now()-userLevel.getLootTime())*userLevel.getExp();
 	}
 	public void saveUserLevel(UserLevelBean bean){
 		hput(RedisKey.USERDATA+bean.getUserId(), "UserLevel", toJson(bean));
@@ -296,11 +301,11 @@ public class LevelRedisService extends RedisService {
 		return false;
 	}
 	public void productEvent(UserBean user, UserLevelBean userLevel){
-		long time = System.currentTimeMillis() - userLevel.getLootTime();
-		if(time >= 60000){
+		long time = now() - userLevel.getEventTime();
+		if(time >= 60){
 			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
 			if(events != null)
-			for(int i = 0; i < time/60000; i++){
+			for(int i = 0; i < time/60; i++){
 				int weight = nextInt(events.getWeight());
 				for(Event.Builder event : events.getEventBuilderList()){
 					if(event.getWeight() >= weight){
@@ -312,7 +317,7 @@ public class LevelRedisService extends RedisService {
 					}
 				}
 			}
-			userLevel.setLootTime(userLevel.getLootTime()+time/60000*60000);
+			userLevel.setEventTime(userLevel.getEventTime()+(int)time/60*60);
 			saveUserLevel(userLevel);
 		}
 	}
@@ -394,25 +399,25 @@ public class LevelRedisService extends RedisService {
 		hputAll(RedisKey.EVENT_CONFIG, keyvalue2);
 	}
 
-	public Daguan getDaguan(int id){
+	public Daguan.Builder getDaguan(int id){
 		String value = hget(RedisKey.DAGUAN_CONFIG, id+"");
 		Daguan.Builder builder = Daguan.newBuilder();
 		if(value != null && parseJson(value, builder))
-			return builder.build();
+			return builder;
 		Map<String, String> keyvalue = new HashMap<String, String>();
 		String xml = ReadConfig("ld_daguan.xml");
 		DaguanList.Builder list = DaguanList.newBuilder();
 		parseXml(xml, list);
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		Map<Integer, Loot> lootMap = getLootConfig();
-		Map<Integer, Daguan> map = new HashMap<Integer, Daguan>();
+		Map<Integer, Daguan.Builder> map = new HashMap<Integer, Daguan.Builder>();
 		for(Daguan.Builder daguan : list.getIdBuilderList()){
 			// daguan.clearName();
 			daguan.clearDes();
 			daguan.setAreaid(areaMap.get(daguan.getId()));
 			daguan.addAllItem(lootMap.get(daguan.getId()).getItemList());
 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
-			map.put(daguan.getId(), daguan.build());
+			map.put(daguan.getId(), daguan);
 		}
 		hputAll(RedisKey.DAGUAN_CONFIG, keyvalue);
 		return map.get(id);
