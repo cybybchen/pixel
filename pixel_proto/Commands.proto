@@ -279,6 +279,7 @@ message Team {
 	optional UserInfo user = 1;
 	repeated HeroInfo heroInfo = 2;
 	optional string composeSkill = 3;
+	optional UserTalent userTalent = 4;
 }
 
 message UserEquip {
@@ -745,6 +746,7 @@ message UserRank {
 	optional int32 vip = 7;
 	optional string composeSkill = 8;
 	optional int32 dps = 9;
+	optional UserTalent userTalent = 10;
 }
 
 message UserFriend {
@@ -1835,7 +1837,14 @@ message RaidOrder {
 	repeated RaidReward loot = 3;
 }
 message Raid {
-	repeated RaidOrder id = 1;
+	optional int32 id = 1;
+	optional int32 costid = 2;
+	optional int32 costcount = 3;
+	optional string name = 4;
+	repeated RaidOrder order = 5;
+}
+message RaidList {
+        repeated Raid id = 1;
 }
 
 message RequestRegisterCommand {
@@ -1860,25 +1869,85 @@ message ResponsePopupCommand {
 	optional string noButtonID = 6;
 }
 
+message Area {
+	optional int32 areaid = 1;
+        optional string name = 2;
+	repeated Daguan id = 3;
+}
+message AreaList {
+	repeated Area area = 1;
+}
+message Daguan {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional string des = 3;
+	optional int32 count = 4;
+	optional int32 gold = 5;
+	optional int32 experience = 6;
+	optional string bg = 7;
+	optional string layer = 8;
+	optional int32 areaid = 9;
+	repeated RewardInfo item = 10;
+}
+message DaguanList {
+	repeated Daguan id = 1;
+}
+message EventReward {
+	optional int32 rewardid = 1;
+	optional int32 rewardcount = 2;
+	optional int32 rewardcount1 = 3;
+	optional int32 rewardweight = 4;
+}
+message Event {
+	optional int32 order = 1;
+	optional int32 eventid = 2;
+	optional int32 daguan = 3;
+	optional string name = 4;
+	optional string des = 5;
+	optional int32 weight = 6;
+	optional int32 type = 7;
+	optional int32 costid = 8;
+	optional int32 costcount = 9;
+	repeated EventReward reward = 10;
+}
+message AreaEvent {
+	optional int32 id = 1;
+	repeated Event event = 2;
+	optional int32 weight = 3;
+}
+message AreaEventList {
+	repeated AreaEvent id = 1;
+}
+message Loot {
+	optional int32 id = 1;
+	repeated RewardInfo item = 2;
+}
+message LootList {
+	repeated Loot id = 1;
+}
 message RequestLevelStartCommand {
-	required int32 levelId = 1;
+	required int32 id = 1;
 }
-
-message RequestLevelPrepareCommand {
-	required int32 levelId = 1;
+message RequestLevelLootResultCommand {
 }
-
-message RequestLevelPauseCommand {
-	
-}
-
-message RequestLevelResultCommand {
-	required int32 levelId = 1;
-	required string teamInfo = 2;
-	required string fightInfo = 3;
+message RequestEventResultCommand {
+	optional int32 eventId = 1;
+	optional string teamInfo = 2;
+	optional string fightInfo = 3;
 	optional int32 turn = 4;
 	optional bool ret = 5;
 }
+message ResponseEventResultCommand {
+        repeated RewardInfo reward = 1;
+}
+message ResponseLevelLootCommand {
+        optional int32 unlockDaguan = 1;
+        optional int32 leftCount = 2;
+        optional int32 lootDaguan = 3;
+	optional int32 lootTime = 4;
+        repeated Event event = 5;
+}
+
 message FightInfo {
 	optional int32 id = 3;
         required string fightInfo = 1;
@@ -1891,22 +1960,6 @@ message RequestFightInfoCommand {
 }
 message ResponseFightInfoCommand {
 	repeated FightInfo info = 1;
-}
-
-message ResponseLevelResultCommand {
-	repeated RewardInfo reward = 1;
-}
-
-message RequestLevelLootStartCommand {
-	required int32 levelId = 1;
-}
-
-message RequestLevelLootResultCommand {
-
-}
-
-message ResponseLevelLootResultCommand {
-	repeated RewardInfo reward = 1;
 }
 
 message RequestUpdateTeamCommand {
@@ -1957,16 +2010,6 @@ message RequestResetHeroSkillCommand {
 	required int64 infoId = 2;
 }
 
-message RequestLootResultCommand {
-
-}
-
-message ResponseLootResultCommand {
-	optional int64 gold = 1;
-	optional int64 exp = 2;
-	optional int32 lastLootTime = 3;
-}
-
 message RequestAddHeroEquipCommand {
 	required int32 heroId = 1;
 	required int64 infoId = 2;
@@ -1988,9 +2031,7 @@ message RequestGetTeamCommand {
 }
 
 message ResponseGetTeamCommand {
-	repeated HeroInfo heroInfo = 1;
-	optional UserInfo user = 2;
-	optional string composeSkill = 3;
+	required Team team = 1;
 }
 
 message RequestLotteryCommand {
@@ -2920,15 +2961,13 @@ message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
 	optional RequestLoginCommand loginCommand = 3;
-	optional RequestLevelResultCommand levelResultCommand = 4;
+	optional RequestEventResultCommand levelResultCommand = 4;
 	optional RequestUpdateTeamCommand updateTeamCommand = 5;
 	optional RequestLevelStartCommand levelStartCommand = 6;
-	optional RequestLevelLootStartCommand levelLootStartCommand = 7;
 	optional RequestLevelLootResultCommand levelLootResultCommand = 8;
 	optional RequestHeroLevelUpCommand heroLevelUpCommand = 9;
 	optional RequestHeroLevelUpToCommand heroLevelUpToCommand = 151;
 	optional RequestLockHeroCommand lockHeroCommand = 131;
-	optional RequestLootResultCommand lootResultCommand = 10;
 	optional RequestAddHeroEquipCommand addHeroEquipCommand = 11;
 	optional RequestLotteryCommand lotteryCommand = 14;
 	optional RequestGetLadderRankListCommand getLadderRankListCommand = 15;
@@ -2966,199 +3005,192 @@ message RequestCommand {
 	optional RequestShopCommand shopCommand = 105;
 	optional RequestShopPurchaseCommand shopPurchaseCommand = 106;
 	optional RequestBlackShopCommand blackShopCommand = 107;
-	optional RequestBlackShopPurchaseCommand blackShopPurchaseCommand = 108;
-	optional RequestBlackShopRefreshCommand blackShopRefreshCommand = 109;
-	optional RequestUnionShopCommand unionShopCommand = 110;
-	optional RequestUnionShopPurchaseCommand unionShopPurchaseCommand = 111;
-	optional RequestUnionShopRefreshCommand unionShopRefreshCommand = 112;
-	optional RequestPVPShopCommand PVPShopCommand = 113;
-	optional RequestPVPShopPurchaseCommand PVPShopPurchaseCommand = 114;
-	optional RequestPVPShopRefreshCommand PVPShopRefreshCommand = 115;
-	optional RequestExpeditionShopCommand expeditionShopCommand = 116;
-	optional RequestExpeditionShopPurchaseCommand expeditionShopPurchaseCommand = 117;
-	optional RequestExpeditionShopRefreshCommand expeditionShopRefreshCommand = 118;
-	optional RequestLadderShopCommand ladderShopCommand = 119;
-	optional RequestLadderShopPurchaseCommand ladderShopPurchaseCommand = 120;
-	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
-	optional RequestLibaoShopCommand libaoShopCommand = 142;
-	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
-	optional RequestGetTeamCommand teamCommand = 123;
-	optional RequestRefreshPVPMapCommand refreshPvpMapCommand = 140;
-	optional RequestPVPMapListCommand pvpMapListCommand = 125;
-	optional RequestUnlockPVPMapCommand unlockPvpMapCommand = 132;
-	optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;
-	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
-	optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
-	optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
-	optional RequestCdkeyCommand cdkeyCommand = 138;
-	optional RequestCheatRechargeCommand cheatrechargeCommand = 139;
-	optional RequestPurchaseVipLibaoCommand purchaseVipLibaoCommand = 141;
-	optional RequestGetGrowJewelCommand getGrowJewelCommand = 149;
-	optional RequestGetGrowExpCommand getGrowExpCommand = 150;
-	optional RequestPurchaseLadderTimeCommand purchaseLadderTimeCommand = 152;
-	optional RequestPurchaseContractCommand purchaseContractCommand = 153;
-	optional RequestFightInfoCommand fightInfoCommand = 155;
-	optional RequestGetFightInfoCommand getFightInfoCommand = 156;
-	//////////////////////////////////////////////////////
-	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
-	optional RequestLevelPauseCommand levelPauseCommand = 35;
-	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
-	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
-	optional RequestReplyMessageCommand replyMessageCommand = 38;
-	optional RequestUserTeamListCommand userTeamListCommand = 46;
-	optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
-	optional RequestGetUserFriendListCommand userFriendListCommand = 48;
-	optional RequestEquipComposeCommand equipComposeCommand = 50;
-	optional RequestUsePropCommand usePropCommand = 51;
-	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
-	optional RequestSignCommand signCommand = 53;
-	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
-	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
-	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
-	optional RequestSendMailCommand sendMailCommand = 58;
-	optional RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;
-	optional RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;
-	optional RequestStartMohuaMapCommand startMohuaMapCommand = 61;
-	optional RequestUseMohuaCardCommand useMohuaCardCommand = 62;
-	optional RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;
-	optional RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;
-	optional RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;
-	optional RequestEndMohuaMapCommand endMohuaMapCommand = 66;
-	optional RequestSaleEquipCommand saleEquipCommand = 67;
-	optional RequestDelFriendCommand delFriendCommand = 68;
-	optional RequestSubmitZhanliCommand submitZhanliCommand = 69;
-	optional RequestAchieveRewardCommand achieveRewardCommand = 70;
-	optional RequestAchieveListCommand achieveListCommand = 71;
-	optional RequestUnlockLevelCommand unlockLevelCommand = 72;
-	optional RequestRichangRewardCommand richangRewardCommand = 73;
-	optional RequestRichangListCommand richangListCommand = 74;
-	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
-	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
-	optional RequestKaifuListCommand kaifuListCommand = 78;
-	optional RequestUserPokedeCommand userPokedeCommand = 80;
-	optional RequestRankCommand rankCommand = 81;
-	optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;
-	optional RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;
-	optional RequestBuyLootPackageCommand buyLootPackageCommand = 84;
-	optional RequestSubmitIconCommand submitIconCommand = 85;
-	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
-	optional RequestBindAccountCommand bindAccountCommand = 87;
-	optional RequestQueryRechargeCommand queryRechargeCommand = 88;
-	optional RequestShouchongRewardCommand shouchongRewardCommand = 89;
-	optional RequestHeartBeatCommand heartBeatCommand = 90;
-	optional RequestGreenhandCommand greenhandCommand = 91;
-	optional RequestLogCommand logCommand = 92;
-	optional RequestFeedFoodCommand feedFoodCommand = 93;
-	optional RequestClearHeroCommand clearHeroCommand = 94;
-	optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
-	optional RequestSubmitBosskillCommand submitBosskillCommand = 96;
-	optional RequestBosskillCommand bosskillCommand = 97;
-	optional RequestUnionBossFightCommand unionBossFightCommand = 98;
-	optional RequestHeroStrengthenCommand heroStrengthenCommand = 99;
-	optional RequestSevenLoginSignCommand sevenLoginSignCommand = 200;
-	optional RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;
-	optional RequestOpenFetterCommand openFetterCommand = 202;
-	optional RequestUserTaskCommand userTaskCommand = 203;
-	optional RequestGetTaskRewardCommand getTaskRewardCommand = 204;
-	optional RequestSubmitBattletowerCommand submitBattletowerCommand = 205;
-	optional RequestResetBattletowerCommand resetBattletowerCommand = 206;
-	optional RequestGetBattletowerCommand getBattletowerCommand = 207;
-	optional RequestBattletowerShopCommand battletowerShopCommand = 208;
-	optional RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;
-	optional RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;
-	optional RequestBloodEnterCommand bloodEnterCommand = 211;
-	optional RequestBloodXiazhuCommand bloodXiazhuCommand = 212;
-	optional RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;
-	optional RequestHelpLevelCommand helpLevelCommand = 214;
-	optional RequestInviteFightBossCommand inviteFightBossCommand = 215;
-	optional RequestQuitFightBossCommand quitFightBossCommand = 216;
-	optional RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;
-	optional RequestUserInfoCommand userInfoCommand = 218;
-	optional RequestRechargeCommand rechargeCommand = 219;
-	optional RequestTalentupgradeCommand talentupgradeCommand = 220;
-	optional RequestTalentChangeUseCommand talentChangeUseCommand = 223;
-	optional RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;
-	optional RequestStartBossRoomCommand startBossRoomCommand = 225;
-	optional RequestCreateBossRoomCommand createBossRoomCommand = 226;
-	optional RequestBossRoomInfoCommand bossRoomInfoCommand = 227;
-	optional RequestEquipStrenthenCommand equipStrenthenCommand = 228;
-	optional RequestEquipPokedeCommand equipPokedeCommand = 229;
-	optional RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
+        optional RequestBlackShopPurchaseCommand blackShopPurchaseCommand = 108;
+        optional RequestBlackShopRefreshCommand blackShopRefreshCommand = 109;
+        optional RequestUnionShopCommand unionShopCommand = 110;
+        optional RequestUnionShopPurchaseCommand unionShopPurchaseCommand = 111;
+        optional RequestUnionShopRefreshCommand unionShopRefreshCommand = 112;
+        optional RequestPVPShopCommand PVPShopCommand = 113;
+        optional RequestPVPShopPurchaseCommand PVPShopPurchaseCommand = 114;
+        optional RequestPVPShopRefreshCommand PVPShopRefreshCommand = 115;
+        optional RequestExpeditionShopCommand expeditionShopCommand = 116;
+        optional RequestExpeditionShopPurchaseCommand expeditionShopPurchaseCommand = 117;
+        optional RequestExpeditionShopRefreshCommand expeditionShopRefreshCommand = 118;
+        optional RequestLadderShopCommand ladderShopCommand = 119;
+        optional RequestLadderShopPurchaseCommand ladderShopPurchaseCommand = 120;
+        optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
+        optional RequestLibaoShopCommand libaoShopCommand = 142;
+        optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
+        optional RequestGetTeamCommand teamCommand = 123;
+        optional RequestRefreshPVPMapCommand refreshPvpMapCommand = 140;
+        optional RequestPVPMapListCommand pvpMapListCommand = 125;
+        optional RequestUnlockPVPMapCommand unlockPvpMapCommand = 132;
+        optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;
+        optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
+        optional RequestAttackPVPMineCommand attackPVPMineCommand = 129;
+        optional RequestRefreshPVPMineCommand refreshPVPMineCommand = 130;
+        optional RequestCdkeyCommand cdkeyCommand = 138;
+        optional RequestCheatRechargeCommand cheatrechargeCommand = 139;
+        optional RequestPurchaseVipLibaoCommand purchaseVipLibaoCommand = 141;
+        optional RequestGetGrowJewelCommand getGrowJewelCommand = 149;
+        optional RequestGetGrowExpCommand getGrowExpCommand = 150;
+        optional RequestPurchaseLadderTimeCommand purchaseLadderTimeCommand = 152;
+        optional RequestPurchaseContractCommand purchaseContractCommand = 153;
+        optional RequestFightInfoCommand fightInfoCommand = 155;
+        optional RequestGetFightInfoCommand getFightInfoCommand = 156;
+        //////////////////////////////////////////////////////
+        optional RequestMessageBoardListCommand messageBoardListCommand = 36;
+        optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
+        optional RequestReplyMessageCommand replyMessageCommand = 38;
+        optional RequestUserTeamListCommand userTeamListCommand = 46;
+        optional RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;
+        optional RequestGetUserFriendListCommand userFriendListCommand = 48;
+        optional RequestEquipComposeCommand equipComposeCommand = 50;
+        optional RequestUsePropCommand usePropCommand = 51;
+        optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
+        optional RequestSignCommand signCommand = 53;
+        optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
+        optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
+	 optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
+        optional RequestSendMailCommand sendMailCommand = 58;
+        optional RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;
+        optional RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;
+        optional RequestStartMohuaMapCommand startMohuaMapCommand = 61;
+        optional RequestUseMohuaCardCommand useMohuaCardCommand = 62;
+        optional RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;
+        optional RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;
+        optional RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;
+        optional RequestEndMohuaMapCommand endMohuaMapCommand = 66;
+        optional RequestSaleEquipCommand saleEquipCommand = 67;
+        optional RequestDelFriendCommand delFriendCommand = 68;
+        optional RequestSubmitZhanliCommand submitZhanliCommand = 69;
+        optional RequestAchieveRewardCommand achieveRewardCommand = 70;
+        optional RequestAchieveListCommand achieveListCommand = 71;
+        optional RequestRichangRewardCommand richangRewardCommand = 73;
+        optional RequestRichangListCommand richangListCommand = 74;
+        optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
+        optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
+        optional RequestKaifuListCommand kaifuListCommand = 78;
+        optional RequestUserPokedeCommand userPokedeCommand = 80;
+        optional RequestRankCommand rankCommand = 81;
+        optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;
+        optional RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;
+        optional RequestBuyLootPackageCommand buyLootPackageCommand = 84;
+        optional RequestSubmitIconCommand submitIconCommand = 85;
+        optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
+        optional RequestBindAccountCommand bindAccountCommand = 87;
+        optional RequestQueryRechargeCommand queryRechargeCommand = 88;
+        optional RequestShouchongRewardCommand shouchongRewardCommand = 89;
+        optional RequestHeartBeatCommand heartBeatCommand = 90;
+        optional RequestGreenhandCommand greenhandCommand = 91;
+        optional RequestLogCommand logCommand = 92;
+        optional RequestFeedFoodCommand feedFoodCommand = 93;
+        optional RequestClearHeroCommand clearHeroCommand = 94;
+        optional RequestChoseClearInfoCommand choseClearInfoCommand = 95;
+        optional RequestSubmitBosskillCommand submitBosskillCommand = 96;
+        optional RequestBosskillCommand bosskillCommand = 97;
+        optional RequestUnionBossFightCommand unionBossFightCommand = 98;
+        optional RequestHeroStrengthenCommand heroStrengthenCommand = 99;
+        optional RequestSevenLoginSignCommand sevenLoginSignCommand = 200;
+        optional RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;
+        optional RequestOpenFetterCommand openFetterCommand = 202;
+        optional RequestUserTaskCommand userTaskCommand = 203;
+        optional RequestGetTaskRewardCommand getTaskRewardCommand = 204;
+        optional RequestSubmitBattletowerCommand submitBattletowerCommand = 205;
+        optional RequestResetBattletowerCommand resetBattletowerCommand = 206;
+        optional RequestGetBattletowerCommand getBattletowerCommand = 207;
+	 optional RequestBattletowerShopCommand battletowerShopCommand = 208;
+        optional RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;
+        optional RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;
+        optional RequestBloodEnterCommand bloodEnterCommand = 211;
+        optional RequestBloodXiazhuCommand bloodXiazhuCommand = 212;
+        optional RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;
+        optional RequestHelpLevelCommand helpLevelCommand = 214;
+        optional RequestInviteFightBossCommand inviteFightBossCommand = 215;
+        optional RequestQuitFightBossCommand quitFightBossCommand = 216;
+        optional RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;
+        optional RequestUserInfoCommand userInfoCommand = 218;
+        optional RequestRechargeCommand rechargeCommand = 219;
+        optional RequestTalentupgradeCommand talentupgradeCommand = 220;
+        optional RequestTalentChangeUseCommand talentChangeUseCommand = 223;
+        optional RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;
+        optional RequestStartBossRoomCommand startBossRoomCommand = 225;
+        optional RequestCreateBossRoomCommand createBossRoomCommand = 226;
+        optional RequestBossRoomInfoCommand bossRoomInfoCommand = 227;
+        optional RequestEquipStrenthenCommand equipStrenthenCommand = 228;
+        optional RequestEquipPokedeCommand equipPokedeCommand = 229;
+        optional RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
 }
 // response command list transfer only use it
 message ResponseCommand {
-	required HeadInfo head = 1;
-	optional ErrorCommand errorCommand = 2;
-	optional RewardCommand rewardCommand = 101;
-	optional ResponseDailyShopCommand dailyShopCommand = 102;
-	optional ResponseShopCommand shopCommand = 103;
-	optional ResponseBlackShopCommand blackShopCommand = 104;
-	optional ResponseUnionShopCommand unionShopCommand = 105;
-	optional ResponsePVPShopCommand PVPShopCommand = 106;
-	optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
-	optional ResponseLadderShopCommand ladderShopCommand = 108;
-	optional ResponseLibaoShopCommand libaoShopCommand = 142;
-	optional ResponseFirstRechargeStatusCommand firstRechargeStatusCommand = 143;
-	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
-	optional ResponseGetTeamCommand teamCommand = 123;
-	optional ResponsePVPMapListCommand pvpMapListCommand = 125;
-	optional ResponseAreaEquipCommand areaEquipCommand = 137;
-	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
-	optional ResponseFightInfoCommand fightInfoCommand = 155;
-	////////////////////////////////////////////////////////
-	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
-	optional ResponseUserInfoCommand userInfoCommand = 4;
-	optional ResponseLevelResultCommand levelResultCommand = 6;
-	optional ResponseLevelLootResultCommand levelLootResultCommand = 7;
-	optional ResponseHeroResultCommand heroResultCommand = 8;
-	optional ResponseLootResultCommand lootResultCommand = 9;
+        required HeadInfo head = 1;
+        optional ErrorCommand errorCommand = 2;
+        optional RewardCommand rewardCommand = 101;
+        optional ResponseDailyShopCommand dailyShopCommand = 102;
+        optional ResponseShopCommand shopCommand = 103;
+        optional ResponseBlackShopCommand blackShopCommand = 104;
+        optional ResponseUnionShopCommand unionShopCommand = 105;
+        optional ResponsePVPShopCommand PVPShopCommand = 106;
+        optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
+        optional ResponseLadderShopCommand ladderShopCommand = 108;
+        optional ResponseLibaoShopCommand libaoShopCommand = 142;
+        optional ResponseFirstRechargeStatusCommand firstRechargeStatusCommand = 143;
+        optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
+        optional ResponseGetTeamCommand teamCommand = 123;
+        optional ResponsePVPMapListCommand pvpMapListCommand = 125;
+        optional ResponseAreaEquipCommand areaEquipCommand = 137;
+        optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
+        optional ResponseFightInfoCommand fightInfoCommand = 155;
+        ////////////////////////////////////////////////////////
+        optional ResponseNeedRegisterCommand needRegisterCommand = 3;
+        optional ResponseUserInfoCommand userInfoCommand = 4;
+        optional ResponseEventResultCommand eventResultCommand = 6;
+        optional ResponseLevelLootCommand levelLootCommand = 7;
+        optional ResponseHeroResultCommand heroResultCommand = 8;
 	optional ResponseGetUserHeroCommand getUserHeroCommand = 14;
-	optional ResponseGetLadderRankListCommand getLadderRankListCommand = 15;
-	optional ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;
-	optional ResponseAttackLadderModeCommand attackLadderModeCommand = 17;
-	optional ResponseGetUserMailListCommand getUserMailListCommand = 18;
-	optional ResponseSendRewardCommand sendRewardCommand = 19;
-	optional ResponseMessageCommand messageCommand = 20;
-	optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
-	optional ResponseGetUserEquipCommand userEquipCommand = 23;
-	optional ResponseAreaCommand areaCommand = 24;
-	optional ResponseAreaResourceCommand areaResourceCommand = 136;
-	optional ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;
-	optional ResponseUserLevelCommand userLevelCommand = 25;
-	optional ResponseUserLootLevelCommand userLootLevelCommand = 26;
-	optional ResponseUnionInfoCommand unionInfoCommand = 27;
-	optional ResponseUnionListCommand unionListCommand = 28;
-	optional ResponseMessageBoardListCommand messageBoardListCommand = 29;
-	optional ResponseMessageBoardCommand messageBoardCommand = 30;
-	optional ResponseUserTeamListCommand userTeamListCommand = 31;
-	optional ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;
-	optional ResponseEquipComposeCommand equipComposeCommand = 33;
-	optional ResponseUserPropCommand userPropCommand = 34;
-	optional ResponseUsePropCommand usePropCommand = 35;
-	optional ResponseSignCommand signCommand = 37;
-	optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
-	optional ResponseAchieveListCommand achieveListCommand = 40;
-	optional ResponseRichangListCommand richangListCommand = 42;
-	optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
-	optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
-    	optional ResponseKaifuListCommand kaifuListCommand = 46;
-	optional ResponseUserPokedeCommand userPokedeCommand = 47;
-	optional ResponseRankCommand rankCommand = 48;
-	optional ResponseEquipResultCommand equipResultCommand = 49;
-	optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
-	optional ResponseUserHeadCommand userHeadCommand = 51;
-	optional ResponseNoticeCommand noticeCommand = 53;
-	optional ResponseUserFoodCommand userFoodCommand = 54;
-	optional ResponseClearInfoCommand clearInfoCommand = 55;
-	optional ResponseBosskillCommand bosskillCommand = 56;
-	optional ResponseUnionBossCommand unionBossCommand = 57;
-	optional ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;
-	optional ResponseUserTaskCommand userTaskCommand = 59;
-	optional ResponseUserBattletowerCommand userBattletowerCommand = 60;
-	optional ResponseBattletowerShopCommand battletowerShopCommand = 61;
-	optional ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;
-	optional ResponseUserTalentCommand userTalentCommand = 63;
-	optional ResponseEquipPokedeCommand equipPokedeCommand = 64;
+        optional ResponseGetLadderRankListCommand getLadderRankListCommand = 15;
+        optional ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;
+        optional ResponseAttackLadderModeCommand attackLadderModeCommand = 17;
+        optional ResponseGetUserMailListCommand getUserMailListCommand = 18;
+        optional ResponseSendRewardCommand sendRewardCommand = 19;
+        optional ResponseMessageCommand messageCommand = 20;
+        optional ResponseGetUserFriendListCommand getUserFriendListCommand = 21;
+        optional ResponseGetUserEquipCommand userEquipCommand = 23;
+        optional ResponseAreaCommand areaCommand = 24;
+        optional ResponseAreaResourceCommand areaResourceCommand = 136;
+        optional ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;
+        optional ResponseUnionInfoCommand unionInfoCommand = 27;
+        optional ResponseUnionListCommand unionListCommand = 28;
+        optional ResponseMessageBoardListCommand messageBoardListCommand = 29;
+        optional ResponseMessageBoardCommand messageBoardCommand = 30;
+        optional ResponseUserTeamListCommand userTeamListCommand = 31;
+        optional ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;
+        optional ResponseEquipComposeCommand equipComposeCommand = 33;
+        optional ResponseUserPropCommand userPropCommand = 34;
+        optional ResponseUsePropCommand usePropCommand = 35;
+        optional ResponseSignCommand signCommand = 37;
+        optional ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;
+        optional ResponseAchieveListCommand achieveListCommand = 40;
+        optional ResponseRichangListCommand richangListCommand = 42;
+        optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
+        optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
+        optional ResponseKaifuListCommand kaifuListCommand = 46;
+        optional ResponseUserPokedeCommand userPokedeCommand = 47;
+        optional ResponseRankCommand rankCommand = 48;
+        optional ResponseEquipResultCommand equipResultCommand = 49;
+        optional ResponseDeleteHeroCommand deleteHeroCommand = 50;
+        optional ResponseUserHeadCommand userHeadCommand = 51;
+        optional ResponseNoticeCommand noticeCommand = 53;
+        optional ResponseUserFoodCommand userFoodCommand = 54;
+        optional ResponseClearInfoCommand clearInfoCommand = 55;
+        optional ResponseBosskillCommand bosskillCommand = 56;
+        optional ResponseUnionBossCommand unionBossCommand = 57;
+        optional ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;
+        optional ResponseUserTaskCommand userTaskCommand = 59;
+        optional ResponseUserBattletowerCommand userBattletowerCommand = 60;
+        optional ResponseBattletowerShopCommand battletowerShopCommand = 61;
+        optional ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;
+        optional ResponseUserTalentCommand userTalentCommand = 63;
+        optional ResponseEquipPokedeCommand equipPokedeCommand = 64;
 }
-
 

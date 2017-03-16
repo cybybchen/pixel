@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.Commands.SkillInfo;
 import com.trans.pixel.protoc.Commands.Strengthen;
 import com.trans.pixel.protoc.Commands.Team;
 import com.trans.pixel.protoc.Commands.TeamUnlock;
+import com.trans.pixel.protoc.Commands.UserTalent;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
@@ -67,6 +68,8 @@ public class UserTeamService {
 	private ClearService clearService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
@@ -354,6 +357,9 @@ public class UserTeamService {
 								team.addHeroInfo(herobean.buildTeamHeroInfo(
 										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId(), user),
 										userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId(), user)));
+								UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
+								if (userTalent != null)
+									team.setUserTalent(userTalent);
 								break;
 							}
 						}
