@@ -434,6 +434,22 @@ public class RedisService {
     }
 
     /**
+     * 获取hashMap大小
+     */
+    protected Long hlen(final String key) {
+    	return redisTemplate.execute(new RedisCallback<Long>() {
+			@Override
+			public Long doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+				
+				return Ops.size();
+			}
+		});
+    }
+
+    /**
      * 获取hashMap多个值
      */
     protected List<String> hget(final String key, final Collection<String> key2) {

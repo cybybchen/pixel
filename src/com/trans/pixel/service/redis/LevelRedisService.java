@@ -302,10 +302,11 @@ public class LevelRedisService extends RedisService {
 	}
 	public void productEvent(UserBean user, UserLevelBean userLevel){
 		long time = now() - userLevel.getEventTime();
+		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId());
 		if(time >= 60){
 			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
 			if(events != null)
-			for(int i = 0; i < time/60; i++){
+			for(int i = 0; i < Math.min(20-eventsize,time/60); i++){
 				int weight = nextInt(events.getWeight());
 				for(Event.Builder event : events.getEventBuilderList()){
 					if(event.getWeight() >= weight){

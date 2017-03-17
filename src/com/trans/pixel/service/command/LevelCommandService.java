@@ -77,17 +77,17 @@ public class LevelCommandService extends BaseCommandService {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		int id = cmd.getId();
 		redis.productEvent(user, userLevel);
-		if(id > userLevel.getUnlockDaguan() && userLevel.getLeftCount() > 0){
+		if(id > userLevel.getUnlockDaguan() && userLevel.getLeftCount() > 0){//illegal next level
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getLeftCount() <= 0){
+		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getLeftCount() <= 0){//next level
 			Daguan.Builder daguan = redis.getDaguan(id);
-			if(daguan == null || redis.hasEvent(user)){
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+			if(daguan == null || redis.hasEvent(user)){//need finish event first
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_FIRST);
 	            responseBuilder.setErrorCommand(errorCommand);
-	        }else{
+	        }else{//goto next level
 				AreaEvent.Builder events = redis.getDaguanEvent(id);
 				userLevel.setUnlockDaguan(userLevel.getUnlockDaguan()+1);
 				userLevel.setLootDaguan(userLevel.getUnlockDaguan());
@@ -101,9 +101,7 @@ public class LevelCommandService extends BaseCommandService {
 				}
 			}
 		}else if(id != userLevel.getLootDaguan()){
-			RewardCommand.Builder rewardCommand = levelLoot(userLevel, responseBuilder, user);
-			if(rewardCommand.getLootCount() > 0)
-				responseBuilder.setRewardCommand(rewardCommand.build());
+			levelLoot(userLevel, responseBuilder, user);
 			userLevel.setLootDaguan(id);
 			redis.saveUserLevel(userLevel);
 		}
@@ -112,68 +110,69 @@ public class LevelCommandService extends BaseCommandService {
 			builder.addEvent(event);
 		responseBuilder.setLevelLootCommand(builder.build());
 	}
-	public RewardCommand.Builder levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
+	public void levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
 		long time = redis.now() - userLevel.getLootTime();
-		RewardCommand.Builder rewardCommand = RewardCommand.newBuilder();
 		if(time >= 60){
 			Daguan.Builder daguan = redis.getDaguan(userLevel.getLootDaguan());
 			for(RewardInfo.Builder reward : daguan.getItemBuilderList())
 				reward.setCount(reward.getCount()*time/60);
-			rewardCommand.addAllLoot(daguan.getItemList());
+			rewardService.doReward(user, RewardConst.COIN, daguan.getGold()*time/60);
+			rewardService.doReward(user, RewardConst.EXP, daguan.getExperience()*time/60);
+			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 			MultiReward.Builder rewards = MultiReward.newBuilder();
-			rewardCommand.addAllLoot(daguan.getItemList());
-			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(RewardConst.EXP);
-			reward.setCount(daguan.getExperience()*time/60);
-			rewards.addLoot(reward);
-			reward.setItemid(RewardConst.COIN);
-			reward.setCount(daguan.getGold()*time/60);
-			rewards.addLoot(reward);
+			rewards.addAllLoot(daguan.getItemList());
 			rewardService.doRewards(user, rewards.build());
+			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time/60*60);
 			redis.saveUserLevel(userLevel);
-			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
-		return rewardCommand;
 	}
 
 	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
-		RewardCommand.Builder rewardCommand = levelLoot(userLevel, responseBuilder, user);
-		if(rewardCommand.getLootCount() > 0)
-			responseBuilder.setRewardCommand(rewardCommand.build());
+		levelLoot(userLevel, responseBuilder, user);
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
 		for(Event.Builder event : redis.getEvents(user).values())
 			builder.addEvent(event);
 		responseBuilder.setLevelLootCommand(builder.build());
 	}
 
+	public void eventReward(Event event, Builder responseBuilder, UserBean user){
+		List<RewardBean> rewards = new ArrayList<RewardBean>();
+		for(EventReward eventreward : event.getRewardList()){
+			RewardBean bean = new RewardBean();
+			bean.setItemid(eventreward.getRewardid());
+			bean.setCount(eventreward.getRewardcount()+redis.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
+			rewards.add(bean);
+		}
+		rewardService.doRewards(user, rewards);
+		pusher.pushRewardCommand(responseBuilder, user, rewards);
+	}
+
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		Event event = redis.getEvent(user, cmd.getOrder());
-		if(event == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+		if(event == null){//illegal event order
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENEMY);
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(event.getOrder() >= 100 || cmd.getRet()){
-			if(event.getType() == 1){
+			if(event.getType() == 1){//buy event
 				if(cmd.getRet()){
 					Event eventconfig = redis.getEvent(event.getEventid());
-					costService.cost(user, eventconfig.getCostid(), eventconfig.getCostcount());
-					List<RewardBean> rewards = new ArrayList<RewardBean>();
-					for(EventReward eventreward : eventconfig.getRewardList()){
-						RewardBean bean = new RewardBean();
-						bean.setItemid(eventreward.getRewardid());
-						bean.setCount(eventreward.getRewardcount()+redis.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
-						rewards.add(bean);
+					if(costService.cost(user, eventconfig.getCostid(), eventconfig.getCostcount())){
+						eventReward(eventconfig, responseBuilder, user);
 					}
-					rewardService.doRewards(user, rewards);
+
 				}
-			}else if(cmd.getRet()){
+			}else if(cmd.getRet()){//fight event
 				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
+				Event eventconfig = redis.getEvent(event.getEventid());
+				eventReward(eventconfig, responseBuilder, user);
 			}
 			redis.delEvent(user, event.getOrder());
 		}
