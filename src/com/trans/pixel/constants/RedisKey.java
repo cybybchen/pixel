@@ -75,6 +75,9 @@ public class RedisKey {
 	public static final String DAGUAN_CONFIG = PREFIX+CONFIG_PREFIX+"Daguan";
 	public static final String DAGUANEVENT_CONFIG = PREFIX+CONFIG_PREFIX+"DaguanEvent";
 	public static final String EVENT_CONFIG = PREFIX+CONFIG_PREFIX+"Event";
+	public final static String RAID_CONFIG = PREFIX+CONFIG_PREFIX+"Raid";
+	public final static String RAIDORDER_CONFIG = PREFIX+CONFIG_PREFIX+"RaidOrder";
+	public final static String TEAMRAID_CONFIG = PREFIX+CONFIG_PREFIX+"TeamRaid";
 
 	//shop
 	public final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";

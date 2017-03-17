@@ -374,7 +374,7 @@ public class LevelRedisService extends RedisService {
 				if(event.getDaguan() != 0){
 					if(map.get(event.getDaguan())!=null){
 						AreaEvent.Builder builder = AreaEvent.newBuilder();
-						builder.setId(area.getId());
+						builder.setId(event.getDaguan());
 						map.put(builder.getId(), builder);
 					}
 					AreaEvent.Builder builder = map.get(event.getDaguan());
@@ -385,7 +385,7 @@ public class LevelRedisService extends RedisService {
 			for(Event.Builder event : area.getEventBuilderList()){
 				if(event.getDaguan() == 0){
 					for(AreaEvent.Builder daguan : map.values()){
-						if(daguan.getId() == area.getId()){
+						if(daguan.getAreaid() == area.getId()){
 							daguan.addEvent(event);
 							daguan.setWeight(daguan.getWeight()+event.getWeight());
 						}

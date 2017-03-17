@@ -231,14 +231,14 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserBean user) {
-		UserLevelBean userLevel = userLevelService.getUserLevel(user);
+		// UserLevelBean userLevel = userLevelService.getUserLevel(user);
 //		if (userLevel.getLastLevelResultTime() > 0) {
 //			userLevel.setLevelPrepareTime(userLevel.getLevelPrepareTime() + 
 //					(int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - userLevel.getLastLevelResultTime());
 //			userLevel.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 //			userLevelService.updateUserLevelRecord(userLevel);
 //		}
-		responseBuilder.setLevelLootCommand(userLevel.build());
+		// responseBuilder.setLevelLootCommand(userLevel.build());
 	}
 	
 //	public void pushUserLootLevelCommand(Builder responseBuilder, UserBean user) {
