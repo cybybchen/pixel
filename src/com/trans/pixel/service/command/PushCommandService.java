@@ -112,6 +112,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserTalentService userTalentService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private RaidCommandService raidCommandService;
 	
 //	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 //		user = lootService.updateLootResult(user);
@@ -231,14 +233,14 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserBean user) {
-		// UserLevelBean userLevel = userLevelService.getUserLevel(user);
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
 //		if (userLevel.getLastLevelResultTime() > 0) {
 //			userLevel.setLevelPrepareTime(userLevel.getLevelPrepareTime() + 
 //					(int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - userLevel.getLastLevelResultTime());
 //			userLevel.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 //			userLevelService.updateUserLevelRecord(userLevel);
 //		}
-		// responseBuilder.setLevelLootCommand(userLevel.build());
+		responseBuilder.setLevelLootCommand(userLevel.build());
 	}
 	
 //	public void pushUserLootLevelCommand(Builder responseBuilder, UserBean user) {
@@ -314,7 +316,10 @@ public class PushCommandService extends BaseCommandService {
 		cmd.addAllUserHead(this.buildUserHeadList(userHeadList));
 		responseBuilder.setUserHeadCommand(cmd.build());
 	}
-	
+
+	public void pushUserRaid(Builder responseBuilder, UserBean user){
+		raidCommandService.getRaid(responseBuilder, user);
+	}
 	
 	/**
 	 * Include RewardCommand

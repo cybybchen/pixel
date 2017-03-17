@@ -104,6 +104,7 @@ import com.trans.pixel.protoc.Commands.RequestMohuaHpRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.Commands.RequestOpenFetterCommand;
+import com.trans.pixel.protoc.Commands.RequestOpenRaidCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestPVPShopCommand;
@@ -141,6 +142,7 @@ import com.trans.pixel.protoc.Commands.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.Commands.RequestSignCommand;
 import com.trans.pixel.protoc.Commands.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.Commands.RequestStartMohuaMapCommand;
+import com.trans.pixel.protoc.Commands.RequestStartRaidCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.Commands.RequestSubmitBosskillCommand;
@@ -169,6 +171,7 @@ import com.trans.pixel.protoc.Commands.RequestUserInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTaskCommand;
 import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
+import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.command.AchieveCommandService;
 import com.trans.pixel.service.command.ActivityCommandService;
@@ -195,6 +198,7 @@ import com.trans.pixel.service.command.NoticeCommandService;
 import com.trans.pixel.service.command.PokedeCommandService;
 import com.trans.pixel.service.command.PropCommandService;
 import com.trans.pixel.service.command.PvpCommandService;
+import com.trans.pixel.service.command.RaidCommandService;
 import com.trans.pixel.service.command.RankCommandService;
 import com.trans.pixel.service.command.RechargeCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
@@ -280,6 +284,8 @@ public class GameDataScreen extends RequestScreen {
 	private TalentCommandService talentCommandService;
 	@Resource
 	private EquipPokedeCommandService equipPokedeCommandService;
+	@Resource
+	private RaidCommandService raidCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -971,6 +977,16 @@ public class GameDataScreen extends RequestScreen {
 		messageCommandService.zanHeroMessage(cmd, responseBuilder, user);
 		return true;//ZanHeroMessageBoardCommand
 	}//ZanHeroMessageBoardCommand
+	@Override//OpenRaidCommand
+	protected boolean handleCommand(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user) {
+		raidCommandService.openRaid(cmd, responseBuilder, user);
+		return true;//OpenRaidCommand
+	}//OpenRaidCommand
+	@Override//RaidCommand
+	protected boolean handleCommand(RequestStartRaidCommand cmd, Builder responseBuilder, UserBean user) {
+		raidCommandService.startRaid(cmd, responseBuilder, user);
+		return true;//RaidCommand
+	}//RaidCommand
 	//add handleCommand here
 	
 	@Override

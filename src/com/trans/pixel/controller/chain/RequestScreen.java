@@ -69,6 +69,9 @@ import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
 import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
+import com.trans.pixel.protoc.Commands.RequestOpenRaidCommand;
+import com.trans.pixel.protoc.Commands.RequestStartRaidCommand;
+import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
@@ -179,6 +182,9 @@ import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
+import com.trans.pixel.protoc.Commands.RequestOpenRaidCommand;
+import com.trans.pixel.protoc.Commands.RequestStartRaidCommand;
 import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
 //add import here
 
@@ -419,6 +425,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestTalentChangeEquipCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestStartRaidCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestZanHeroMessageBoardCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
@@ -1250,6 +1258,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//ZanHeroMessageBoardCommand
                 result = handleCommand(cmd, responseBuilder, user);//ZanHeroMessageBoardCommand
         }//ZanHeroMessageBoardCommand
+        if (request.hasOpenRaidCommand()) {
+            RequestOpenRaidCommand cmd = request.getOpenRaidCommand();
+            if (result)//OpenRaidCommand
+                result = handleCommand(cmd, responseBuilder, user);//OpenRaidCommand
+        }//OpenRaidCommand
+        if (request.hasRaidCommand()) {
+            RequestStartRaidCommand cmd = request.getRaidCommand();
+            if (result)//RaidCommand
+                result = handleCommand(cmd, responseBuilder, user);//RaidCommand
+        }//RaidCommand
         //call handleCommand here
         if (request.hasGetFightInfoCommand()) {
             RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();

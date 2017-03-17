@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.Raid;
 import com.trans.pixel.protoc.Commands.RaidList;
 import com.trans.pixel.protoc.Commands.RaidOrder;
@@ -829,6 +830,18 @@ public class RaidRedisService extends RedisService{
 
 // 		return list;
 // 	}
+
+	public int getRaid(UserBean user){
+		String value = get(RedisKey.USERRAID_PREFIX+user.getId());
+		if(value != null)
+			return Integer.parseInt(value);
+		else
+			return 0;
+	}
+
+	public void saveRaid(UserBean user, int id){
+		set(RedisKey.USERRAID_PREFIX+user.getId(), id+"");
+	}
 
 	public Raid getRaid(int id){
 		String value = hget(RedisKey.RAID_CONFIG, id+"");
