@@ -252,8 +252,8 @@ public class PushCommandService extends BaseCommandService {
 		super.handleGetUserLadderRankListCommand(responseBuilder, user);
 	}
 	
-	public void pushMessageBoardListCommand(int type, Builder responseBuilder, UserBean user) {
-		List<MessageBoardBean> messageBoardList = messageService.getMessageBoardList(type, user);
+	public void pushMessageBoardListCommand(int type, Builder responseBuilder, UserBean user, int itemId) {
+		List<MessageBoardBean> messageBoardList = messageService.getMessageBoardList(type, user, itemId);
 		ResponseMessageBoardListCommand.Builder builder = ResponseMessageBoardListCommand.newBuilder();
 		builder.addAllMessageBoard(super.buildMessageBoardList(messageBoardList));
 		builder.setType(type);

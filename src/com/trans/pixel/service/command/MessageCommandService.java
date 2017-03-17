@@ -60,7 +60,7 @@ public class MessageCommandService extends BaseCommandService {
 		}else{
 			messageService.createMessageBoard(cmd, user);
 		}
-		pushCommandService.pushMessageBoardListCommand(cmd.getType(), responseBuilder, user);
+		pushCommandService.pushMessageBoardListCommand(cmd.getType(), responseBuilder, user, cmd.hasItemId() ? cmd.getItemId() : 0);
 	}
 	
 	public void replyMessage(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user) {
