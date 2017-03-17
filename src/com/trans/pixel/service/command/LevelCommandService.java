@@ -52,8 +52,8 @@ public class LevelCommandService extends BaseCommandService {
 	// private UserLevelService userLevelService;
 	// @Resource
 	// private UserLevelLootService userLevelLootRecordService;
-	// @Resource
-	// private PushCommandService pushCommandService;
+	@Resource
+	private PushCommandService pusher;
 	 @Resource
 	 private LogService logService;
 	// @Resource
@@ -101,6 +101,9 @@ public class LevelCommandService extends BaseCommandService {
 				}
 			}
 		}else if(id != userLevel.getLootDaguan()){
+			RewardCommand.Builder rewardCommand = levelLoot(userLevel, responseBuilder, user);
+			if(rewardCommand.getLootCount() > 0)
+				responseBuilder.setRewardCommand(rewardCommand.build());
 			userLevel.setLootDaguan(id);
 			redis.saveUserLevel(userLevel);
 		}
@@ -109,8 +112,7 @@ public class LevelCommandService extends BaseCommandService {
 			builder.addEvent(event);
 		responseBuilder.setLevelLootCommand(builder.build());
 	}
-	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
-		UserLevelBean userLevel = redis.getUserLevel(user);
+	public RewardCommand.Builder levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
 		long time = redis.now() - userLevel.getLootTime();
 		RewardCommand.Builder rewardCommand = RewardCommand.newBuilder();
 		if(time >= 60){
@@ -130,13 +132,22 @@ public class LevelCommandService extends BaseCommandService {
 			rewardService.doRewards(user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time/60*60);
 			redis.saveUserLevel(userLevel);
+			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
-		responseBuilder.setRewardCommand(rewardCommand.build());
+		return rewardCommand;
+	}
+
+	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
+		UserLevelBean userLevel = redis.getUserLevel(user);
+		RewardCommand.Builder rewardCommand = levelLoot(userLevel, responseBuilder, user);
+		if(rewardCommand.getLootCount() > 0)
+			responseBuilder.setRewardCommand(rewardCommand.build());
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
 		for(Event.Builder event : redis.getEvents(user).values())
 			builder.addEvent(event);
 		responseBuilder.setLevelLootCommand(builder.build());
 	}
+
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		Event event = redis.getEvent(user, cmd.getOrder());
