@@ -365,6 +365,7 @@ public class LevelRedisService extends RedisService {
 		AreaEventList.Builder list = AreaEventList.newBuilder();
 		parseXml(xml, list);
 		Map<Integer, AreaEvent.Builder> map = new HashMap<Integer, AreaEvent.Builder>();
+		Map<Integer, Integer> areaMap = getAreaConfig();
 		for(AreaEvent.Builder area : list.getIdBuilderList()){
 			for(Event.Builder event : area.getEventBuilderList()){
 				// event.clearName();
@@ -372,22 +373,22 @@ public class LevelRedisService extends RedisService {
 				keyvalue2.put(event.getEventid()+"", formatJson(event.build()));
 				event.clearReward();
 				if(event.getDaguan() != 0){
-					if(map.get(event.getDaguan())!=null){
-						AreaEvent.Builder builder = AreaEvent.newBuilder();
+					AreaEvent.Builder builder = map.get(event.getDaguan());
+					if(builder!=null){
+						builder = AreaEvent.newBuilder();
 						builder.setId(event.getDaguan());
 						map.put(builder.getId(), builder);
 					}
-					AreaEvent.Builder builder = map.get(event.getDaguan());
 					builder.addEvent(event);
 					builder.setWeight(builder.getWeight()+event.getWeight());
 				}
 			}
 			for(Event.Builder event : area.getEventBuilderList()){
 				if(event.getDaguan() == 0){
-					for(AreaEvent.Builder daguan : map.values()){
-						if(daguan.getAreaid() == area.getId()){
-							daguan.addEvent(event);
-							daguan.setWeight(daguan.getWeight()+event.getWeight());
+					for(AreaEvent.Builder builder : map.values()){
+						if(areaMap.get(builder.getId()) == area.getId()){
+							builder.addEvent(event);
+							builder.setWeight(builder.getWeight()+event.getWeight());
 						}
 					}
 				}
