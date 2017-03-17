@@ -939,6 +939,8 @@ public class ActivityService {
 				taskService.sendTask1Score(user, TaskConst.TARGET_SHANGZHEN_GAILUN, heroId, false);
 			
 			Hero hero = heroService.getHero(heroId);
+			if (hero == null)
+				continue;
 			if (hero.getQuality() >= 3)
 				++quality3Count;
 			if (hero.getQuality() >= 4)
