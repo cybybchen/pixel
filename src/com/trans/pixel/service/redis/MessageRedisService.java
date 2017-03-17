@@ -315,6 +315,16 @@ public class MessageRedisService extends RedisService {
 		});
 	}
 	
+	public void delHeroMessage_normal(int serverId, int itemId, String id) {
+		String key = buildHeroMessageBoardNormalKeyRedisKey(serverId, itemId);
+		this.zremove(key, id);
+	}
+	
+	public void delHeroMessage_top(int serverId, int itemId, String id) {
+		String key = buildHeroMessageBoardTopKeyRedisKey(serverId, itemId);
+		this.zremove(key, id);
+	}
+	
 	private String buildHeroMessageBoardNormalKeyRedisKey(int serverId, int itemId) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_NORMAL_PREFIX + itemId;
 	}

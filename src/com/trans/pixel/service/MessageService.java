@@ -185,6 +185,14 @@ public class MessageService {
 	
 	//hero message
 	private void createHeroMessageBoard(UserBean user, int itemId, String message) {
+		List<MessageBoardBean> messageBoardList = getHeroMessageBoardList(user, itemId);
+		for (MessageBoardBean messageBoard : messageBoardList) {
+			if (messageBoard.getUserId() == user.getId()) {
+				messageRedisService.deleteHeroMessageBoard(user.getServerId(), itemId, "" + messageBoard.getId());
+				messageRedisService.delHeroMessage_normal(user.getServerId(), itemId, "" + messageBoard.getId());
+				messageRedisService.delHeroMessage_top(user.getServerId(), itemId, "" + messageBoard.getId());
+			}
+		}
 		MessageBoardBean messageBoard = initMessageBoard(user, message);
 		messageRedisService.addHeroMessageBoardTop(user.getServerId(), itemId, messageBoard);
 		messageRedisService.addHeroMessageBoardValue(user.getServerId(), itemId, messageBoard);

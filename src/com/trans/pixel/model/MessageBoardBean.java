@@ -123,6 +123,7 @@ public class MessageBoardBean {
 		builder.setBossId(bossId);
 		builder.setVip(vip);
 		builder.setStartDate(startDate);
+		builder.setReplyCount(replyCount);
 		
 		return builder.build();
 	}
@@ -170,6 +171,7 @@ public class MessageBoardBean {
 		bean.setBossId(TypeTranslatedUtil.jsonGetInt(json, BOSSID));
 		bean.setStartDate(TypeTranslatedUtil.jsonGetString(json, STARTDATE));
 		bean.setVip(TypeTranslatedUtil.jsonGetInt(json, VIP));
+		bean.setReplyCount(TypeTranslatedUtil.jsonGetInt(json, REPLYCOUNT));
 
 		return bean;
 	}
