@@ -188,6 +188,10 @@ public class RedisKey {
 	public static final String MESSAGE_BOARD_KEY = "message_key";
 	public static final String MESSAGE_BOARD_VALUE_KEY = "message_value";
 	
+	public static final String HERO_MESSAGE_BOARD_NORMAL_PREFIX = "hero_message_normal_";
+	public static final String HERO_MESSAGE_BOARD_TOP_PREFIX = "hero_message_top_";
+	public static final String HERO_MESSAGE_BOARD_VALUE_PREFIX = "hero_message_value_";
+	
 	//skill
 	public static final String SKILL_KEY = CONFIG_PREFIX+"skill";
 	public static final String SKILLLEVEL_KEY = CONFIG_PREFIX+"skilllevel";

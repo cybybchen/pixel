@@ -26,6 +26,7 @@ public class MessageBoardBean {
 	private int groupId = 0;
 	private int bossId = 0;
 	private String startDate = "";
+	private int replyCount = 0;
 	public long getTimeStamp() {
 		return timeStamp;
 	}
@@ -98,6 +99,12 @@ public class MessageBoardBean {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+	public int getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();
 		builder.setId(id);
@@ -134,6 +141,7 @@ public class MessageBoardBean {
 		json.put(BOSSID, bossId);
 		json.put(STARTDATE, startDate);
 		json.put(VIP, vip);
+		json.put(REPLYCOUNT, replyCount);
 		
 		return json.toString();
 	}
@@ -211,4 +219,5 @@ public class MessageBoardBean {
 	private static final String BOSSID = "bossId";
 	private static final String STARTDATE = "startdate";
 	private static final String VIP = "vip";
+	private static final String REPLYCOUNT = "replycount";
 }

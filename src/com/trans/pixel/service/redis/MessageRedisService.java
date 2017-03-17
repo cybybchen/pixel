@@ -205,4 +205,125 @@ public class MessageRedisService extends RedisService {
 	private String buildUnionMessageBoardValueRedisKey(int unionId) {
 		return RedisKey.PREFIX + RedisKey.UNION_PREFIX + unionId + RedisKey.SPLIT + RedisKey.MESSAGE_BOARD_VALUE_KEY;
 	}
+	
+	public boolean addHeroMessageBoardNormal(final int serverId, final int itemId, final MessageBoardBean messageBoard) {
+		return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> bzOps = redisTemplate
+						.boundZSetOps(buildHeroMessageBoardNormalKeyRedisKey(serverId, itemId));
+				
+
+				if (bzOps.size() >= MessageConst.HERO_MESSAGE_BOARD_MAX) {
+					Set<String> ids = bzOps.range(0, 0);
+					bzOps.removeRange(0, 0);
+					for (String id : ids)
+						deleteHeroMessageBoard(serverId, itemId, id);
+				}
+				
+				return bzOps.add("" + messageBoard.getId(), messageBoard.getTimeStamp());
+			}
+		});
+	}
+	
+	public boolean addHeroMessageBoardTop(final int serverId, final int itemId, final MessageBoardBean messageBoard) {
+		return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> bzOps = redisTemplate
+						.boundZSetOps(buildHeroMessageBoardTopKeyRedisKey(serverId, itemId));
+				
+				boolean ret = bzOps.add("" + messageBoard.getId(), messageBoard.getReplyCount());
+				if (ret && bzOps.size() > MessageConst.HERO_MESSAGE_BOARD_TOP_MAX) {
+					Set<String> ids = bzOps.range(0, 0);
+					bzOps.removeRange(0, 0);
+					for (String id : ids) {
+						MessageBoardBean message = getHeroMessageBoard(serverId, itemId, id);
+						addHeroMessageBoardNormal(serverId, itemId, message);
+					}
+				}
+				
+				return ret;
+			}
+		});
+	}
+	
+	public void addHeroMessageBoardValue(final int serverId, final int itemId, final MessageBoardBean messageBoard) {
+		String key = buildHeroMessageBoardValueRedisKey(serverId, itemId);
+		this.hput(key, "" + messageBoard.getId(), messageBoard.toJson());
+	}
+	
+	public void deleteHeroMessageBoard(final int serverId, final int itemId, final String id) {
+		String key = buildHeroMessageBoardValueRedisKey(serverId, itemId);
+		this.hdelete(key, id);
+	}
+	
+	public MessageBoardBean getHeroMessageBoard(int serverId, int itemId, String id) {
+		String value = hget(buildHeroMessageBoardValueRedisKey(serverId, itemId), id);
+		return MessageBoardBean.fromJson(value);
+	}
+	
+	public List<MessageBoardBean> getHeroMessageBoardList_normal(final int serverId, final int itemId) {
+		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
+			@Override
+			public List<MessageBoardBean> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> bzOps = redisTemplate
+						.boundZSetOps(buildHeroMessageBoardNormalKeyRedisKey(serverId, itemId));
+				
+				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
+				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(0, -1);
+				for (TypedTuple<String> messageBoard : messageBoarSet) {
+					MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
+					if (messageBoardBean != null) {
+						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
+						if(userInfo != null)
+							messageBoardBean.setVip(userInfo.getVip());
+						messageBoardList.add(messageBoardBean);
+					}
+				}
+				
+				return messageBoardList;
+			}
+		});
+	}
+	
+	public List<MessageBoardBean> getHeroMessageBoardList_top(final int serverId, final int itemId) {
+		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
+			@Override
+			public List<MessageBoardBean> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundZSetOperations<String, String> bzOps = redisTemplate
+						.boundZSetOps(buildHeroMessageBoardTopKeyRedisKey(serverId, itemId));
+				
+				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
+				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(0, -1);
+				for (TypedTuple<String> messageBoard : messageBoarSet) {
+					MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
+					if (messageBoardBean != null) {
+						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
+						if(userInfo != null)
+							messageBoardBean.setVip(userInfo.getVip());
+						messageBoardList.add(messageBoardBean);
+					}
+				}
+				
+				return messageBoardList;
+			}
+		});
+	}
+	
+	private String buildHeroMessageBoardNormalKeyRedisKey(int serverId, int itemId) {
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_NORMAL_PREFIX + itemId;
+	}
+	
+	private String buildHeroMessageBoardTopKeyRedisKey(int serverId, int itemId) {
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_TOP_PREFIX + itemId;
+	}
+	
+	private String buildHeroMessageBoardValueRedisKey(int serverId, int itemId) {
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_VALUE_PREFIX + itemId;
+	}
 }

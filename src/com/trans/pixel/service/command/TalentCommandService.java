@@ -45,6 +45,7 @@ public class TalentCommandService extends BaseCommandService {
 		builder.addUserTalent(userTalent);
 		builder.addAllUserTalentSkill(userTalentService.getUserTalentSkillListByTalentId(user, cmd.getId()));
 		responseBuilder.setUserTalentCommand(builder.build());
+		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void talentChangeUse(RequestTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user) {

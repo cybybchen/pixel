@@ -14,6 +14,7 @@ import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.RequestQueryNoticeBoardCommand;
 import com.trans.pixel.protoc.Commands.RequestReplyMessageCommand;
+import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.ResponseMessageBoardListCommand;
@@ -40,7 +41,10 @@ public class MessageCommandService extends BaseCommandService {
 	
 	public void getMessageBoardList(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = cmd.getType();
-		List<MessageBoardBean> messageBoardList = messageService.getMessageBoardList(type, user);
+		int itemId = 0;
+		if (cmd.hasItemId())
+			itemId = cmd.getItemId();
+		List<MessageBoardBean> messageBoardList = messageService.getMessageBoardList(type, user, itemId);
 		ResponseMessageBoardListCommand.Builder builder = ResponseMessageBoardListCommand.newBuilder();
 		builder.addAllMessageBoard(super.buildMessageBoardList(messageBoardList));
 		builder.setType(type);
@@ -80,6 +84,28 @@ public class MessageCommandService extends BaseCommandService {
 			return;
 		}
 		builder.setType(type);
+		builder.setMessageBoard(messageBoardBean.buildMessageBoard());
+		responseBuilder.setMessageBoardCommand(builder.build());
+	}
+	
+	public void zanHeroMessage(RequestZanHeroMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
+		if (blackService.isNotalk(user.getId())) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BLACK_NOSAY_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_NOSAY_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		ResponseMessageBoardCommand.Builder builder = ResponseMessageBoardCommand.newBuilder();
+		MessageBoardBean messageBoardBean = messageService.zanHeroMessage(user, cmd.getItemId(), cmd.getId(), cmd.getZan());
+		if (messageBoardBean == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MESSAGE_NOT_EXIST);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MESSAGE_NOT_EXIST);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		builder.setType(3);
 		builder.setMessageBoard(messageBoardBean.buildMessageBoard());
 		responseBuilder.setMessageBoardCommand(builder.build());
 	}

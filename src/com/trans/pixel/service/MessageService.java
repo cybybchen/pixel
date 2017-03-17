@@ -29,12 +29,14 @@ public class MessageService {
 	@Resource
 	private UserTeamService userTeamService;
 
-	public List<MessageBoardBean> getMessageBoardList(int type, UserBean user) {
+	public List<MessageBoardBean> getMessageBoardList(int type, UserBean user, int itemId) {
 		switch (type) {
 			case MessageConst.TYPE_MESSAGE_NORMAL:
 				return getMessageBoardList(user);
 			case MessageConst.TYPE_MESSAGE_UNION:
 				return getUnionMessageBoardList(user);
+			case MessageConst.TYPE_MESSAGE_HERO:
+				return getHeroMessageBoardList(user, itemId);
 			default:
 				return new ArrayList<MessageBoardBean>();
 		}
@@ -47,6 +49,9 @@ public class MessageService {
 				break;
 			case MessageConst.TYPE_MESSAGE_UNION:
 				createUnionMessageBoard(user, cmd.getMessage(), cmd.getGroupId(), cmd.getBossId(), cmd.getFightId());
+				break;
+			case MessageConst.TYPE_MESSAGE_HERO:
+				createHeroMessageBoard(user, cmd.getItemId(), cmd.getMessage());
 				break;
 			default:
 				break;
@@ -73,6 +78,10 @@ public class MessageService {
 			default:
 				return replyMessage(user.getUnionId(), id, message);
 		}
+	}
+	
+	public MessageBoardBean zanHeroMessage(UserBean user, int itemId, String id, boolean zan) {
+			return zanHeroMessage(user.getServerId(), itemId, id, zan);
 	}
 	
 	private List<MessageBoardBean> getMessageBoardList(UserBean user) {
@@ -172,5 +181,38 @@ public class MessageService {
 		messageBoard.setVip(user.getVip());
 		
 		return messageBoard;
+	}
+	
+	//hero message
+	private void createHeroMessageBoard(UserBean user, int itemId, String message) {
+		MessageBoardBean messageBoard = initMessageBoard(user, message);
+		messageRedisService.addHeroMessageBoardTop(user.getServerId(), itemId, messageBoard);
+		messageRedisService.addHeroMessageBoardValue(user.getServerId(), itemId, messageBoard);
+	}
+	
+	private MessageBoardBean zanHeroMessage(int serverId, int itemId, String id, boolean zan) {
+		MessageBoardBean messageBoard = messageRedisService.getHeroMessageBoard(serverId, itemId, id);
+		if (messageBoard != null) {
+			if (zan)
+				messageBoard.setReplyCount(messageBoard.getReplyCount() + 1);
+			else
+				messageBoard.setReplyCount(messageBoard.getReplyCount() - 1);
+			
+			messageRedisService.addHeroMessageBoardTop(serverId, itemId, messageBoard);
+			messageRedisService.addHeroMessageBoardValue(serverId, itemId, messageBoard);
+			
+			
+			return messageBoard;
+		}
+		
+		return null;
+	}
+	
+	private List<MessageBoardBean> getHeroMessageBoardList(UserBean user, int itemId) {
+		List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
+		messageBoardList.addAll(messageRedisService.getHeroMessageBoardList_top(user.getServerId(), itemId));
+		messageBoardList.addAll(messageRedisService.getHeroMessageBoardList_normal(user.getServerId(), itemId));
+		
+		return messageBoardList;
 	}
 }

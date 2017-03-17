@@ -68,6 +68,7 @@ import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
@@ -178,6 +179,7 @@ import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
 //add import here
 
 
@@ -417,6 +419,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestTalentChangeEquipCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestZanHeroMessageBoardCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
@@ -1242,6 +1245,11 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//TalentChangeEquipCommand
                 result = handleCommand(cmd, responseBuilder, user);//TalentChangeEquipCommand
         }//TalentChangeEquipCommand
+        if (request.hasZanHeroMessageBoardCommand()) {
+            RequestZanHeroMessageBoardCommand cmd = request.getZanHeroMessageBoardCommand();
+            if (result)//ZanHeroMessageBoardCommand
+                result = handleCommand(cmd, responseBuilder, user);//ZanHeroMessageBoardCommand
+        }//ZanHeroMessageBoardCommand
         //call handleCommand here
         if (request.hasGetFightInfoCommand()) {
             RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();

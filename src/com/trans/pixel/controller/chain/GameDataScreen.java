@@ -64,6 +64,7 @@ import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetBattletowerCommand;
+import com.trans.pixel.protoc.Commands.RequestZanHeroMessageBoardCommand;
 //add import here
 import com.trans.pixel.protoc.Commands.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
@@ -965,6 +966,11 @@ public class GameDataScreen extends RequestScreen {
 		talentCommandService.talentChangeEquip(cmd, responseBuilder, user);
 		return true;//TalentChangeEquipCommand
 	}//TalentChangeEquipCommand
+	@Override//ZanHeroMessageBoardCommand
+	protected boolean handleCommand(RequestZanHeroMessageBoardCommand cmd, Builder responseBuilder, UserBean user) {
+		messageCommandService.zanHeroMessage(cmd, responseBuilder, user);
+		return true;//ZanHeroMessageBoardCommand
+	}//ZanHeroMessageBoardCommand
 	//add handleCommand here
 	
 	@Override

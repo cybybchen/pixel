@@ -794,6 +794,7 @@ message MessageBoard {
 	optional int32 groupId = 10;
 	optional int32 bossId = 11;
 	optional string startDate = 12;
+	optional int32 replyCount = 13;
 }
 
 message Msg {
@@ -1847,6 +1848,16 @@ message Raid {
 message RaidList {
         repeated Raid id = 1;
 }
+message RequestOpenRaidCommand{
+	optional int32 id = 1;
+}
+message RequestStartRaidCommand{
+	optional int32 id = 1;
+	optional bool ret = 2;
+}
+message ResponseRaidCommand{
+	optional int32 id = 1;
+}
 
 message RequestRegisterCommand {
 	required string userName = 1;
@@ -2258,7 +2269,8 @@ message ResponseUnionListCommand {
 }
 
 message RequestMessageBoardListCommand { //获取所有留言板信息
-	required int32 type = 1; //1:普通的 2:公会的
+	required int32 type = 1; //1:普通的 2:公会的 3:英雄
+	optional int32 itemId = 2;//type=3时需要
 }
 
 message ResponseMessageBoardListCommand {
@@ -2272,6 +2284,7 @@ message RequestCreateMessageBoardCommand { //创建一个新的留言板
 	optional int32 groupId = 3;
 	optional int32 bossId = 4;
 	optional int32 fightId = 5;
+	optional int32 itemId = 6;//英雄和装备ID
 }
 
 message RequestReplyMessageCommand { //回复留言板
@@ -2959,6 +2972,12 @@ message RequestTalentChangeEquipCommand {
 	required int32 itemId = 3;
 }
 
+message RequestZanHeroMessageBoardCommand {
+        required int32 itemId = 1;
+        required string id = 2;
+        required bool zan = 3;//true:dianzan false:quxiao
+}
+
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
@@ -3040,6 +3059,8 @@ message RequestCommand {
         optional RequestPurchaseContractCommand purchaseContractCommand = 153;
         optional RequestFightInfoCommand fightInfoCommand = 155;
         optional RequestGetFightInfoCommand getFightInfoCommand = 156;
+        optional RequestOpenRaidCommand openRaidCommand = 157;
+	optional RequestStartRaidCommand raidCommand = 158;
         //////////////////////////////////////////////////////
         optional RequestMessageBoardListCommand messageBoardListCommand = 36;
         optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
@@ -3122,6 +3143,7 @@ message RequestCommand {
         optional RequestEquipStrenthenCommand equipStrenthenCommand = 228;
         optional RequestEquipPokedeCommand equipPokedeCommand = 229;
         optional RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
+	optional RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;
 }
 // response command list transfer only use it
 message ResponseCommand {
@@ -3143,7 +3165,8 @@ message ResponseCommand {
         optional ResponseAreaEquipCommand areaEquipCommand = 137;
         optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
         optional ResponseFightInfoCommand fightInfoCommand = 155;
-        ////////////////////////////////////////////////////////
+	optional ResponseRaidCommand raidCommand = 158;        
+	////////////////////////////////////////////////////////
         optional ResponseNeedRegisterCommand needRegisterCommand = 3;
         optional ResponseUserInfoCommand userInfoCommand = 4;
         optional ResponseEventResultCommand eventResultCommand = 166;
@@ -3195,4 +3218,3 @@ message ResponseCommand {
         optional ResponseUserTalentCommand userTalentCommand = 63;
         optional ResponseEquipPokedeCommand equipPokedeCommand = 64;
 }
-
