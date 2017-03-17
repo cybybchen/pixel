@@ -329,7 +329,7 @@ public class LevelRedisService extends RedisService {
 		return null;
 	}
 	public void saveEvent(UserBean user, Event event) {
-		hput(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"", toJson(event));
+		hput(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"", formatJson(event));
 	}
 	public void delEvent(UserBean user, int order) {
 		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), order+"");
@@ -374,7 +374,7 @@ public class LevelRedisService extends RedisService {
 				event.clearReward();
 				if(event.getDaguan() != 0){
 					AreaEvent.Builder builder = map.get(event.getDaguan());
-					if(builder!=null){
+					if(builder == null){
 						builder = AreaEvent.newBuilder();
 						builder.setId(event.getDaguan());
 						map.put(builder.getId(), builder);
