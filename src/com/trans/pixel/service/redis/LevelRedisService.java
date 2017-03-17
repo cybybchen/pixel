@@ -369,7 +369,7 @@ public class LevelRedisService extends RedisService {
 			for(Event.Builder event : area.getEventBuilderList()){
 				// event.clearName();
 				event.clearDes();
-				keyvalue2.put(event.getEventid()+"", toJson(event));
+				keyvalue2.put(event.getEventid()+"", formatJson(event.build()));
 				event.clearReward();
 				if(event.getDaguan() != 0){
 					if(map.get(event.getDaguan())!=null){
