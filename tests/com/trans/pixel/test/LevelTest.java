@@ -21,63 +21,17 @@ private static Logger logger = Logger.getLogger(LevelTest.class);
 public void test() {
 	login();
 	levelLootResultTest();
-	levelStartTest();
-//	if(loot.getEvent(0) != null)
-//	eventResultTest(loot.getEvent(0).getOrder());
+	levelStartTest(2);
+	if(loot.getEvent(0) != null)
+	eventResultTest(loot.getEvent(0).getOrder());
 }
-//	@Test
-//	public void levelResutlTest() {
-//		RequestCommand.Builder builder = RequestCommand.newBuilder();
-//		builder.setHead(head());
-//		RequestLevelResultCommand.Builder b = RequestLevelResultCommand.newBuilder();
-//		b.setLevelId(1008);
-//		b.setFightInfo("");
-//		b.setTeamInfo("");
-//		builder.setLevelResultCommand(b.build());
-//		
-//		RequestCommand reqcmd = builder.build();
-//		byte[] reqData = reqcmd.toByteArray();
-//        InputStream input = new ByteArrayInputStream(reqData);
-//        ResponseCommand response = http.post(url, input);
-//        Assert.assertNotNull(response);
-//	}
-	
-//	@Test
-//	public void levellootStartTest() {
-//		RequestCommand.Builder builder = RequestCommand.newBuilder();
-//		builder.setHead(head());
-//		RequestLevelLootStartCommand.Builder b = RequestLevelLootStartCommand.newBuilder();
-//		b.setLevelId(1001);
-//		builder.setLevelLootStartCommand(b.build());
-//		
-//		RequestCommand reqcmd = builder.build();
-//		byte[] reqData = reqcmd.toByteArray();
-//        InputStream input = new ByteArrayInputStream(reqData);
-//        ResponseCommand response = http.post(url, input);
-//        Assert.assertNotNull(response);
-//	}
-	
-//	@Test
-//	public void levelPrepareTest() {
-//		RequestCommand.Builder builder = RequestCommand.newBuilder();
-//		builder.setHead(head());
-//		RequestLevelPrepareCommand.Builder b = RequestLevelPrepareCommand.newBuilder();
-//		b.setLevelId(1002);
-//		builder.setLevelPrepareCommand(b.build());
-//		
-//		RequestCommand reqcmd = builder.build();
-//		byte[] reqData = reqcmd.toByteArray();
-//        InputStream input = new ByteArrayInputStream(reqData);
-//        ResponseCommand response = http.post(url, input);
-//        Assert.assertNotNull(response);
-//	}
 ResponseLevelLootCommand loot = null;
 //	@Test
-	public void levelStartTest() {
+	public void levelStartTest(int id) {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
 		RequestLevelStartCommand.Builder b = RequestLevelStartCommand.newBuilder();
-		b.setId(1);
+		b.setId(id);
 		builder.setLevelStartCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();

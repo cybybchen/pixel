@@ -469,17 +469,17 @@ public class ManagerService extends RedisService{
 		}
 
 		if(req.containsKey("update-UserLevel") && gmaccountBean.getCanwrite() == 1){
-			hput(RedisKey.USER_PREFIX+userId, "UserLevel", req.get("update-UserLevel").toString());
+			hput(USERDATA+userId, "UserLevel", req.get("update-UserLevel").toString());
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_PREFIX, userId+"");
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-UserLevel", req.get("update-UserLevel").toString());
 			req.put("UserLevel", 1);
 		}else if(req.containsKey("del-UserLevel") && gmaccountBean.getCanwrite() == 1){
-			hdelete(RedisKey.USER_PREFIX+userId, "UserLevel");
+			hdelete(USERDATA+userId, "UserLevel");
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-UserLevel", "");
 			req.put("UserLevel", 1);
 		}
 		if(req.containsKey("UserLevel") && gmaccountBean.getCanview() == 1){
-			String value = hgetJson(RedisKey.USER_PREFIX+userId, "UserLevel");
+			String value = hgetJson(USERDATA+userId, "UserLevel");
 			result.put("UserLevel", value);
 		}
 

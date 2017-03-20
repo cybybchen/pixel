@@ -7,3 +7,4 @@ Properties
 resources/config
 dist
 build.properties
+pixel_proto/*.proto

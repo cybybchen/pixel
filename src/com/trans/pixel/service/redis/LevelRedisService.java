@@ -381,8 +381,8 @@ public class LevelRedisService extends RedisService {
 						builder.setId(event.getDaguan());
 						map.put(builder.getId(), builder);
 					}
-					builder.addEvent(event);
-					builder.setWeight(builder.getWeight()+event.getWeight());
+					// builder.addEvent(event);
+					// builder.setWeight(builder.getWeight()+event.getWeight());
 				}
 			}
 			for(Event.Builder event : area.getEventBuilderList()){
