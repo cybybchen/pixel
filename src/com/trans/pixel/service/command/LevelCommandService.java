@@ -96,8 +96,10 @@ public class LevelCommandService extends BaseCommandService {
 				userLevel.setExp(daguan.getExperience());
 				redis.saveUserLevel(userLevel);
 				for(Event.Builder event : events.getEventBuilderList()){
-					if(id == event.getDaguan())
+					if(id == event.getDaguan()){
+						event.setOrder(redis.currentIndex()+event.getOrder());
 						redis.saveEvent(user, event.build());
+					}
 				}
 			}
 		}else if(id != userLevel.getLootDaguan() && id != 0){
