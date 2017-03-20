@@ -38,19 +38,19 @@ public class ZhanliCommandService extends BaseCommandService {
 		int zhanli = cmd.getZhanli();
 		if(user.getZhanliMax() < zhanli || user.getFirstAddedtoZhanli() == 0){
 			user.setFirstAddedtoZhanli(1);
-			Team team = userTeamService.getTeamCache(user);
-			log.debug("33|| " + System.currentTimeMillis());
-			if(team.getUser().getZhanli() < zhanli){
-				log.debug("submit zhanli "+zhanli +" < real "+team.getUser().getZhanli());
-				zhanli = team.getUser().getZhanli();
-				ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
-				builder.setUser(user.build());
-				responseBuilder.setUserInfoCommand(builder.build());
-				return;
-			}else
-				log.warn("zhanli update "+user.getZhanliMax() +" to "+team.getUser().getZhanli());
-
-			zhanli = team.getUser().getZhanli();
+//			Team team = userTeamService.getTeamCache(user);
+//			log.debug("33|| " + System.currentTimeMillis());
+//			if(team.getUser().getZhanli() < zhanli){
+//				log.debug("submit zhanli "+zhanli +" < real "+team.getUser().getZhanli());
+//				zhanli = team.getUser().getZhanli();
+//				ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
+//				builder.setUser(user.build());
+//				responseBuilder.setUserInfoCommand(builder.build());
+//				return;
+//			}else
+//				log.warn("zhanli update "+user.getZhanliMax() +" to "+team.getUser().getZhanli());
+//
+//			zhanli = team.getUser().getZhanli();
 			user.setZhanli(zhanli);
 			user.setZhanliMax(zhanli);
 			if(!blackService.isNoranklist(user.getId())) {
