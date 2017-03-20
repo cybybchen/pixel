@@ -467,6 +467,54 @@ public class ManagerService extends RedisService{
 			String value = hgetJson(USERDATA+userId, "UserData");
 			result.put("UserData", value);
 		}
+
+		if(req.containsKey("update-UserLevel") && gmaccountBean.getCanwrite() == 1){
+			hput(RedisKey.USER_PREFIX+userId, "UserLevel", req.get("update-UserLevel").toString());
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_PREFIX, userId+"");
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-UserLevel", req.get("update-UserLevel").toString());
+			req.put("UserLevel", 1);
+		}else if(req.containsKey("del-UserLevel") && gmaccountBean.getCanwrite() == 1){
+			hdelete(RedisKey.USER_PREFIX+userId, "UserLevel");
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-UserLevel", "");
+			req.put("UserLevel", 1);
+		}
+		if(req.containsKey("UserLevel") && gmaccountBean.getCanview() == 1){
+			String value = hgetJson(RedisKey.USER_PREFIX+userId, "UserLevel");
+			result.put("UserLevel", value);
+		}
+
+		if(req.containsKey("update-Event") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.USEREVENT_PREFIX + userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-Event"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.USEREVENT_PREFIX + userId, key);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-Event", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.USEREVENT_PREFIX + userId, map);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-Event", map.toString());
+			}
+			req.put("Event", 1);
+		}else if(req.containsKey("del-Event") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.USEREVENT_PREFIX + userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-Event", "");
+			req.put("Event", 1);
+		}
+		if(req.containsKey("Event") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.USEREVENT_PREFIX + userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("Event", object);
+		}
+		
 		if(req.containsKey("update-LevelRecord") && gmaccountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "LevelRecord", req.get("update-LevelRecord").toString());
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-LevelRecord", req.get("update-LevelRecord").toString());

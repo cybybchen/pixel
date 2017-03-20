@@ -100,7 +100,7 @@ public class LevelCommandService extends BaseCommandService {
 						redis.saveEvent(user, event.build());
 				}
 			}
-		}else if(id != userLevel.getLootDaguan()){
+		}else if(id != userLevel.getLootDaguan() && id != 0){
 			levelLoot(userLevel, responseBuilder, user);
 			userLevel.setLootDaguan(id);
 			redis.saveUserLevel(userLevel);
@@ -132,6 +132,7 @@ public class LevelCommandService extends BaseCommandService {
 	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		levelLoot(userLevel, responseBuilder, user);
+		redis.productEvent(user, userLevel);
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
 		for(Event.Builder event : redis.getEvents(user).values())
 			builder.addEvent(event);

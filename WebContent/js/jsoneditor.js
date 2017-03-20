@@ -220,6 +220,8 @@ function buildUserJson(key, value){
         var datatype = $("#user-nav .nav-btn-active").attr("data-type");
         if(datatype == "base"){
             json["userData"] = 1;
+            // json["UserLevel"] = 1;
+            json["Event"] = 1;
             json["team"] = 1;
             json["teamCache"] = 1;
             json["achieve"] = 1;
@@ -278,6 +280,12 @@ function appendUserDatas(message, dirty){
     addUserTab();
     if(message["UserData"]!=null){
         appendUserData("UserData", message["UserData"]);
+    }
+    if(message["UserLevel"]!=null){
+        appendUserData("UserLevel", message["UserLevel"]);
+    }
+    if(message["Event"]!=null){
+        appendUserData("Event", message["Event"]);
     }
     if(message["hero"]!=null){
         appendUserData("hero", message["hero"]);
