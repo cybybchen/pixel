@@ -54,7 +54,7 @@ public class TalentService {
 		
 		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
 		builder.setLevel(builder.getLevel() + 1);
-		userTalentService.updateUserTalent(user, unlockTalent(user, builder, originalLevel));
+		userTalentService.updateUserTalent(user.getId(), unlockTalent(user, builder, originalLevel));
 		
 		levelupTalentSkill(user, id, builder.getLevel() - originalLevel);
 		

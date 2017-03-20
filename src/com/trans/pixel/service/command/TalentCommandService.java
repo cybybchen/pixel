@@ -75,7 +75,7 @@ public class TalentCommandService extends BaseCommandService {
 		builder.addUserTalent(userTalent);
 		responseBuilder.setUserTalentCommand(builder.build());
 		
-		userTalentService.updateUserTalent(user, userTalent);
+		userTalentService.updateUserTalent(user.getId(), userTalent);
 	}
 	
 	public void talentChangeEquip(RequestTalentChangeEquipCommand cmd, Builder responseBuilder, UserBean user) {
@@ -90,6 +90,6 @@ public class TalentCommandService extends BaseCommandService {
 		builder.addUserTalent(userTalent);
 		responseBuilder.setUserTalentCommand(builder.build());
 		
-		userTalentService.updateUserTalent(user, userTalent);
+		userTalentService.updateUserTalent(user.getId(), userTalent);
 	}
 }

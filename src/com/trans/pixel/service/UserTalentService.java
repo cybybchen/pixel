@@ -60,8 +60,8 @@ public class UserTalentService {
 		return userTalent;	
 	}
 	
-	public void updateUserTalent(UserBean user, UserTalent userTalent) {
-		userTalentRedisService.updateUserTalent(user.getId(), userTalent);
+	public void updateUserTalent(long userId, UserTalent userTalent) {
+		userTalentRedisService.updateUserTalent(userId, userTalent);
 	}
 	
 	public List<UserTalent> getUserTalentList(UserBean user) {
@@ -75,14 +75,14 @@ public class UserTalentService {
 					Entry<String, Talent> entry = it.next();
 					UserTalent userTalent = initUserTalent(user, entry.getValue().getId());
 					userTalentList.add(userTalent);
-					updateUserTalent(user, userTalent);
+					updateUserTalent(user.getId(), userTalent);
 				}
 			} else {
 				for (UserTalentBean ut : utBeanList) {
 					UserTalent userTalent = ut.buildUserTalent();
 					if (userTalent != null) {
 						userTalentList.add(userTalent);
-						updateUserTalent(user, userTalent);
+						updateUserTalent(user.getId(), userTalent);
 					}
 				}
 			}
@@ -100,10 +100,19 @@ public class UserTalentService {
 			} else {
 				for (UserTalentBean ut : utBeanList) {
 					UserTalent userTalent = ut.buildUserTalent();
-					if (userTalent != null && userTalent.getIsUse()) {
-						return userTalent;
+					if (userTalent != null) {
+						userTalentList.add(userTalent);
+						updateUserTalent(userId, userTalent);
 					}
 				}
+				
+				userTalentList = userTalentRedisService.getUserTalentList(userId);
+			}
+		}
+		
+		for (UserTalent ut : userTalentList) {
+			if (ut != null && ut.getIsUse()) {
+				return ut;
 			}
 		}
 		
