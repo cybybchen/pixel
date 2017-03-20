@@ -293,13 +293,13 @@ public class LevelRedisService extends RedisService {
 		}
 		return map;
 	}
-	public boolean hasEvent(UserBean user){
-		for(Event.Builder event : getEvents(user).values()){
-			if(event.getOrder() < 100)
-				return true;
-		}
-		return false;
-	}
+	// public boolean hasEvent(UserBean user){
+	// 	for(Event.Builder event : getEvents(user).values()){
+	// 		if(event.getOrder() < 100)
+	// 			return true;
+	// 	}
+	// 	return false;
+	// }
 	public void productEvent(UserBean user, UserLevelBean userLevel){
 		long time = now() - userLevel.getEventTime();
 		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId());

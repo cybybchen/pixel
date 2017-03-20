@@ -83,7 +83,7 @@ public class LevelCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getLeftCount() <= 0){//next level
 			Daguan.Builder daguan = redis.getDaguan(id);
-			if(daguan == null || redis.hasEvent(user)){//need finish event first
+			if(daguan == null){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_FIRST);
 	            responseBuilder.setErrorCommand(errorCommand);
@@ -165,7 +165,6 @@ public class LevelCommandService extends BaseCommandService {
 					if(costService.cost(user, eventconfig.getCostid(), eventconfig.getCostcount())){
 						eventReward(eventconfig, responseBuilder, user);
 					}
-
 				}
 			}else if(cmd.getRet()){//fight event
 				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
