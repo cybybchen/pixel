@@ -316,7 +316,9 @@ public class UserTeamService {
 			userService.cache(user.getServerId(), user.buildShort());
 		}
 		team.setUser(user.buildShort());
-		
+		UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
+		if (userTalent != null)
+			team.setUserTalent(userTalent);
 		return team.build();
 	}
 
