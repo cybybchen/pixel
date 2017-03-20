@@ -358,14 +358,14 @@ public class UserTeamService {
 								team.addHeroInfo(herobean.buildTeamHeroInfo(
 										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId(), user),
 										userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId(), user)));
-								UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
-								if (userTalent != null)
-									team.setUserTalent(userTalent);
 								break;
 							}
 						}
 					}
 				}
+				UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
+				if (userTalent != null)
+					team.setUserTalent(userTalent);
 				break;
 			}
 		}
