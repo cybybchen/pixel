@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.Item;
@@ -247,5 +248,9 @@ public class EquipService {
 		}
 		
 		return true;
+	}
+	
+	public Armor getArmor(int itemId) {
+		return equipRedisService.getArmor(itemId);
 	}
 }

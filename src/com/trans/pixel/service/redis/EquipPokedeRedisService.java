@@ -10,11 +10,14 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.EquipProto.EquipIncrease;
 import com.trans.pixel.protoc.EquipProto.EquipIncreaseList;
+import com.trans.pixel.protoc.EquipProto.IncreaseLevel;
+import com.trans.pixel.protoc.EquipProto.IncreaseLevelList;
 
 @Service
 public class EquipPokedeRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(EquipPokedeRedisService.class);
 	private static final String INCREASE_FILE_NAME = "ld_increase.xml";
+	private static final String INCREASECOST_FILE_NAME = "ld_increasecost.xml";
 	
 	public EquipIncrease getEquipIncrease(int level) {
 		String value = hget(RedisKey.EQUIP_INCREASE_CONFIG, "" + level);
@@ -62,6 +65,57 @@ public class EquipPokedeRedisService extends RedisService {
 		Map<String, EquipIncrease> map = new HashMap<String, EquipIncrease>();
 		for(EquipIncrease.Builder chip : builder.getLevelBuilderList()){
 			map.put("" + chip.getLevel(), chip.build());
+		}
+		return map;
+	}
+	
+	//increase cost
+	public IncreaseLevel getIncreaseLevel(int level) {
+		String value = hget(RedisKey.EQUIP_INCREASELEVEL_CONFIG, "" + level);
+		if (value == null) {
+			Map<String, IncreaseLevel> config = getIncreaseLevelConfig();
+			return config.get("" + level);
+		} else {
+			IncreaseLevel.Builder builder = IncreaseLevel.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, IncreaseLevel> getIncreaseLevelConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.EQUIP_INCREASELEVEL_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, IncreaseLevel> map = buildIncreaseLevelConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, IncreaseLevel> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.EQUIP_INCREASELEVEL_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, IncreaseLevel> map = new HashMap<String, IncreaseLevel>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				IncreaseLevel.Builder builder = IncreaseLevel.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, IncreaseLevel> buildIncreaseLevelConfig(){
+		String xml = ReadConfig(INCREASECOST_FILE_NAME);
+		IncreaseLevelList.Builder builder = IncreaseLevelList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + INCREASECOST_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, IncreaseLevel> map = new HashMap<String, IncreaseLevel>();
+		for(IncreaseLevel.Builder increase : builder.getLevelBuilderList()){
+			map.put("" + increase.getLevel(), increase.build());
 		}
 		return map;
 	}

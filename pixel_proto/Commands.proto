@@ -977,6 +977,7 @@ message Equip {
 	optional int32 ad = 8;
 	optional int32 ap = 9;
 	optional int32 skill = 10;
+	optional int32 ilevel = 11;
 }
 
 message EquiptucaoList {
@@ -1037,6 +1038,7 @@ message Armor {
 	optional int32 atk_damage = 21;
 	optional int32 duochong = 22;
 	optional string skill = 23;
+	optional int32 ilevel = 24;
 }
 
 message EquipIncreaseList {
@@ -1048,7 +1050,20 @@ message EquipIncrease {
 	optional float increase = 2;
 	optional int32 rate = 3;
 	optional int32 zero = 4;
-	repeated CostItem cost = 5;
+}
+
+message IncreaseLevelList {
+	repeated IncreaseLevel level = 1;
+}
+
+message IncreaseLevel {
+	optional int32 level = 1;
+	repeated IncreaseRare rare = 2;
+}
+
+message IncreaseRare {
+	optional int32 rare = 1;
+	repeated CostItem cost = 2;
 }
 
 message CostItem {
