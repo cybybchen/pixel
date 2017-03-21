@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.UserTalentMapper;
 import com.trans.pixel.model.mapper.UserTalentSkillMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserTalentBean;
 import com.trans.pixel.model.userinfo.UserTalentSkillBean;
 import com.trans.pixel.protoc.Base.UserTalent;
@@ -40,6 +41,8 @@ public class UserTalentService {
 	private TalentRedisService talentRedisService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	public UserTalent getUserTalent(UserBean user, int id) {
 		UserTalent userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
@@ -120,6 +123,13 @@ public class UserTalentService {
 					if (skill != null)
 						builder.setLevel(skill.getLevel());
 					utBuilder.setSkill(i, builder.build());
+				}
+				for (int i = 0; i < utBuilder.getEquipCount(); ++i) {
+					UserTalentEquip.Builder builder = UserTalentEquip.newBuilder(utBuilder.getEquip(i));
+					UserEquipPokedeBean userEquipPokede = userEquipPokedeService.selectUserEquipPokede(userId, builder.getItemId());
+					if (userEquipPokede != null)
+						builder.setLevel(userEquipPokede.getLevel());
+					utBuilder.setEquip(i, builder.build());
 				}
 				return utBuilder.build();
 			}

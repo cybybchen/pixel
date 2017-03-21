@@ -146,6 +146,8 @@ public class LadderCommandService extends BaseCommandService {
 			userrank.setComposeSkill(team.getComposeSkill());
 		if (team.hasUserTalent())
 			userrank.setUserTalent(team.getUserTalent());
+		if (team.hasRolePosition())
+			userrank.setRolePosition(team.getRolePosition());
 		builder.setUserRank(userrank);
 		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}
