@@ -10,6 +10,7 @@ public class UserTeamBean {
 	public long userId = 0;
 	public String teamRecord = "";
 	public String composeSkill = "";
+	public int rolePosition = 0;
 	public int getId() {
 		return id;
 	}
@@ -34,12 +35,19 @@ public class UserTeamBean {
 	public void setComposeSkill(String composeSkill) {
 		this.composeSkill = composeSkill;
 	}
+	public int getRolePosition() {
+		return rolePosition;
+	}
+	public void setRolePosition(int rolePosition) {
+		this.rolePosition = rolePosition;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
 		json.put(USER_ID, userId);
 		json.put(TEAM_RECORD, teamRecord);
 		json.put(COMPOSE_SKILL, composeSkill);
+		json.put(ROLE_POSITION, rolePosition);
 		
 		return json.toString();
 	}
@@ -53,6 +61,7 @@ public class UserTeamBean {
 		bean.setUserId(json.getLong(USER_ID));
 		bean.setTeamRecord(json.getString(TEAM_RECORD));
 		bean.setComposeSkill(TypeTranslatedUtil.jsonGetString(json, COMPOSE_SKILL));
+		bean.setRolePosition(TypeTranslatedUtil.jsonGetInt(json, ROLE_POSITION));
 
 		return bean;
 	}
@@ -70,4 +79,5 @@ public class UserTeamBean {
 	private static final String USER_ID = "user_id";
 	private static final String TEAM_RECORD = "team_record";
 	private static final String COMPOSE_SKILL = "compose_skill";
+	private static final String ROLE_POSITION = "role_position";
 }

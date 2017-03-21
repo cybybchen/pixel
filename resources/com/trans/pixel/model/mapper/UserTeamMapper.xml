@@ -7,6 +7,7 @@
 		<result property="userId" column="user_id" />
 		<result property="teamRecord" column="record" />
 		<result property="composeSkill" column="compose_skill" />
+		<result property="rolePosition" column="role_position" />
 	</resultMap>
 	
 	<!-- <insert id="addUserTeam" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
@@ -20,11 +21,11 @@
 	</insert> -->
 	
 	<update id="updateUserTeam" parameterType="com.trans.pixel.model.userinfo.UserTeamBean">
-		INSERT INTO user_team(user_id, id, record, compose_skill)
-	    VALUES(#{userId}, #{id}, #{teamRecord}, #{composeSkill})
+		INSERT INTO user_team(user_id, id, record, compose_skill, role_position)
+	    VALUES(#{userId}, #{id}, #{teamRecord}, #{composeSkill}, #{rolePosition})
 		ON 
 	    duplicate key update
-	    record=#{teamRecord}, compose_skill=#{composeSkill}
+	    record=#{teamRecord}, compose_skill=#{composeSkill}, role_position=#{rolePosition}
 	</update>
 	
 	<select id="selectUserTeamList" parameterType="long" resultMap="resultMap">

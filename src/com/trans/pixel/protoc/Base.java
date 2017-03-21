@@ -13499,6 +13499,16 @@ public final class Base {
      * <code>required int32 skillId = 2;</code>
      */
     int getSkillId();
+
+    // optional int32 level = 3;
+    /**
+     * <code>optional int32 level = 3;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 3;</code>
+     */
+    int getLevel();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserTalentOrder}
@@ -13559,6 +13569,11 @@ public final class Base {
             case 16: {
               bitField0_ |= 0x00000002;
               skillId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              level_ = input.readInt32();
               break;
             }
           }
@@ -13633,9 +13648,26 @@ public final class Base {
       return skillId_;
     }
 
+    // optional int32 level = 3;
+    public static final int LEVEL_FIELD_NUMBER = 3;
+    private int level_;
+    /**
+     * <code>optional int32 level = 3;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 level = 3;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
     private void initFields() {
       order_ = 0;
       skillId_ = 0;
+      level_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13663,6 +13695,9 @@ public final class Base {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, skillId_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, level_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -13679,6 +13714,10 @@ public final class Base {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, skillId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, level_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13800,6 +13839,8 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000001);
         skillId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -13836,6 +13877,10 @@ public final class Base {
           to_bitField0_ |= 0x00000002;
         }
         result.skillId_ = skillId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.level_ = level_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13857,6 +13902,9 @@ public final class Base {
         }
         if (other.hasSkillId()) {
           setSkillId(other.getSkillId());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -13955,6 +14003,39 @@ public final class Base {
       public Builder clearSkillId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         skillId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 3;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 3;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 level = 3;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 3;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000004;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 3;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level_ = 0;
         onChanged();
         return this;
       }
@@ -22384,35 +22465,36 @@ public final class Base {
       "\030\002 \002(\005\022\r\n\005isUse\030\003 \001(\010\0226\n\005skill\030\004 \003(\0132\'.c" +
       "om.trans.pixel.protoc.UserTalentOrder\0226\n" +
       "\005equip\030\005 \003(\0132\'.com.trans.pixel.protoc.Us" +
-      "erTalentEquip\"1\n\017UserTalentOrder\022\r\n\005orde" +
-      "r\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\"3\n\017UserTalentEq" +
-      "uip\022\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\"\364\001" +
-      "\n\010UserRank\022\016\n\006userId\030\001 \001(\003\022\020\n\010userName\030\002" +
-      " \001(\t\022\014\n\004rank\030\003 \001(\003\0222\n\010heroInfo\030\004 \003(\0132 .c" +
-      "om.trans.pixel.protoc.HeroInfo\022\016\n\006zhanli",
-      "\030\005 \001(\005\022\014\n\004icon\030\006 \001(\005\022\013\n\003vip\030\007 \001(\005\022\024\n\014com" +
-      "poseSkill\030\010 \001(\t\022\013\n\003dps\030\t \001(\005\0226\n\nuserTale" +
-      "nt\030\n \001(\0132\".com.trans.pixel.protoc.UserTa" +
-      "lent\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007c" +
-      "learId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022" +
-      "\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 " +
-      "\002(\005\022\022\n\nskillLevel\030\002 \002(\005\"0\n\017UserEquipPoke" +
-      "de\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\"\373\002\n\010He" +
-      "roInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n" +
-      "\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 ",
-      "\003(\0132!.com.trans.pixel.protoc.SkillInfo\022\r" +
-      "\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 " +
-      "\001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n" +
-      "\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans." +
-      "pixel.protoc.ClearInfo\022\022\n\nstrengthen\030\r \001" +
-      "(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equ" +
-      "ipPokede\030\020 \001(\0132\'.com.trans.pixel.protoc." +
-      "UserEquipPokede\"{\n\nRewardInfo\022\016\n\006itemid\030" +
-      "\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016" +
-      "\n\006weight\030\004 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb",
-      "\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\"Y\n\013MultiReward\022\n\n\002i" +
-      "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".co" +
-      "m.trans.pixel.protoc.RewardInfo"
+      "erTalentEquip\"@\n\017UserTalentOrder\022\r\n\005orde" +
+      "r\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"" +
+      "3\n\017UserTalentEquip\022\020\n\010position\030\001 \001(\005\022\016\n\006" +
+      "itemId\030\002 \001(\005\"\364\001\n\010UserRank\022\016\n\006userId\030\001 \001(" +
+      "\003\022\020\n\010userName\030\002 \001(\t\022\014\n\004rank\030\003 \001(\003\0222\n\010her" +
+      "oInfo\030\004 \003(\0132 .com.trans.pixel.protoc.Her",
+      "oInfo\022\016\n\006zhanli\030\005 \001(\005\022\014\n\004icon\030\006 \001(\005\022\013\n\003v" +
+      "ip\030\007 \001(\005\022\024\n\014composeSkill\030\010 \001(\t\022\013\n\003dps\030\t " +
+      "\001(\005\0226\n\nuserTalent\030\n \001(\0132\".com.trans.pixe" +
+      "l.protoc.UserTalent\"W\n\tClearInfo\022\020\n\010posi" +
+      "tion\030\001 \002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002" +
+      "(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInf" +
+      "o\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"0" +
+      "\n\017UserEquipPokede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005lev" +
+      "el\030\002 \002(\005\"\373\002\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n" +
+      "\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 ",
+      "\001(\005\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel.pro" +
+      "toc.SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001" +
+      "(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006" +
+      "isLock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003" +
+      "(\0132!.com.trans.pixel.protoc.ClearInfo\022\022\n" +
+      "\nstrengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fette" +
+      "rs\030\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.tran" +
+      "s.pixel.protoc.UserEquipPokede\"{\n\nReward" +
+      "Info\022\016\n\006itemid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\r" +
+      "\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\016\n\006counta\030",
+      "\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\"Y\n\013M" +
+      "ultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004" +
+      "loot\030\003 \003(\0132\".com.trans.pixel.protoc.Rewa" +
+      "rdInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -22466,7 +22548,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserTalentOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalentOrder_descriptor,
-              new java.lang.String[] { "Order", "SkillId", });
+              new java.lang.String[] { "Order", "SkillId", "Level", });
           internal_static_com_trans_pixel_protoc_UserTalentEquip_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_UserTalentEquip_fieldAccessorTable = new

@@ -37,6 +37,7 @@ public class TeamCommandService extends BaseCommandService {
 		int id = (int)cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
 		String composeSkill = "";
+		int rolePosition = cmd.getRolePosition();
 		if (cmd.hasComposeSkill())
 			composeSkill = cmd.getComposeSkill();
 		// if (!userTeamService.canUpdateTeam(user, teamInfo)) {
@@ -45,7 +46,7 @@ public class TeamCommandService extends BaseCommandService {
 		// 	ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
   //           responseBuilder.setErrorCommand(errorCommand);
 		// }else
-			userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill, user);
+			userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill, user, rolePosition);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 		builder.setUser(user.build());

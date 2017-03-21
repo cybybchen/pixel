@@ -87,15 +87,16 @@ public class UserTeamService {
 	public void delUserTeam(long userId, int id) {
 		// userTeamMapper.delUserTeam(id);
 		// userTeamRedisService.delUserTeam(userId, id);
-		updateUserTeam(userId, id, "", "", null);
+		updateUserTeam(userId, id, "", "", null, 0);
 	}
 	
-	public void updateUserTeam(long userId, int id,  String record, String composeSkill, UserBean user) {
+	public void updateUserTeam(long userId, int id,  String record, String composeSkill, UserBean user, int rolePosition) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setId(id);
 		userTeam.setUserId(userId);
 		userTeam.setTeamRecord(record);
 		userTeam.setComposeSkill(composeSkill);
+		userTeam.setRolePosition(rolePosition);
 		userTeamRedisService.updateUserTeam(userTeam);
 //		userTeamMapper.updateUserTeam(userTeam);
 		if(user != null){
@@ -146,20 +147,20 @@ public class UserTeamService {
 					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
 					break;
 				}
-				updateUserTeam(userId, 1, teamRecord, "", null);
+				updateUserTeam(userId, 1, teamRecord, "", null, 0);
 				ids.add(1);
 			}else if(!ids.contains(1))
-				updateUserTeam(userId, 1, "", "", null);
+				updateUserTeam(userId, 1, "", "", null, 0);
 			if(!ids.contains(2))
-				updateUserTeam(userId, 2, "", "", null);
+				updateUserTeam(userId, 2, "", "", null, 0);
 			if(!ids.contains(3))
-				updateUserTeam(userId, 3, "", "", null);
+				updateUserTeam(userId, 3, "", "", null, 0);
 			if(!ids.contains(4))
-				updateUserTeam(userId, 4, "", "", null);
+				updateUserTeam(userId, 4, "", "", null, 0);
 			if(!ids.contains(5))
-				updateUserTeam(userId, 5, "", "", null);
+				updateUserTeam(userId, 5, "", "", null, 0);
 			if(!ids.contains(1000))
-				updateUserTeam(userId, 1000, "", "", null);
+				updateUserTeam(userId, 1000, "", "", null, 0);
 			userTeamList = userTeamRedisService.selectUserTeamList(userId);
 		}
 		
@@ -368,6 +369,7 @@ public class UserTeamService {
 				UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
 				if (userTalent != null)
 					team.setUserTalent(userTalent);
+				team.setRolePosition(userTeam.getRolePosition());
 				break;
 			}
 		}

@@ -111,6 +111,7 @@ message UserTalent {
 message UserTalentOrder {
 	required int32 order = 1;
 	required int32 skillId = 2;
+	optional int32 level = 3;
 }
 
 message UserTalentEquip {
@@ -796,6 +797,7 @@ message Team {
 	repeated HeroInfo heroInfo = 2;
 	optional string composeSkill = 3;
 	optional UserTalent userTalent = 4;
+	optional int32 rolePosition = 5;
 }
 
 message UserTeam {
@@ -821,6 +823,7 @@ message RequestUpdateTeamCommand {
 	required int64 id = 1;
 	required string teamInfo = 2;
 	optional string composeSkill = 3;
+	optional int32 rolePosition = 4;
 }
 
 message RequestUserTeamListCommand {

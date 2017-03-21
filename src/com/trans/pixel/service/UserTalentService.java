@@ -112,7 +112,14 @@ public class UserTalentService {
 		
 		for (UserTalent ut : userTalentList) {
 			if (ut != null && ut.getIsUse()) {
-				return ut;
+//				List<UserTalentSkill> userTalentSkillList = userTalentRedisService.getUserTalentSkillList(userId);
+				UserTalent.Builder utBuilder = UserTalent.newBuilder(ut);
+				for (int i = 0 ; i < utBuilder.getSkillCount(); ++i) {
+					UserTalentOrder.Builder builder = UserTalentOrder.newBuilder(utBuilder.getSkill(i));
+					builder.setLevel(userTalentRedisService.getUserTalentSkill(userId, utBuilder.getId(), builder.getOrder(), builder.getSkillId()).getLevel());
+					utBuilder.setSkill(i, builder.build());
+				}
+				return utBuilder.build();
 			}
 		}
 		
