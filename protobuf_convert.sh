@@ -4,6 +4,7 @@ packagepath=""
 package=""
 packages=()
 content=""
+proto_dir=pixel_proto/pb/
 function pushCommand()
 {
 	while [ 0 -lt $# ];
@@ -18,10 +19,10 @@ function pushCommand()
 	    	if [[ $package != "" ]]
 	    	then
 	    		echo  "$package"
-	    		echo -e "$packagepath;\n" > pixel_proto/$package.proto
+	    		echo -e "$packagepath;\n" > ${proto_dir}/$package.proto
 	    		if [[ $package != "Base" ]] && [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
     			then
-		    		echo "import \"Base.proto\";" >> pixel_proto/$package.proto
+		    		echo "import \"Base.proto\";" >> ${proto_dir}/$package.proto
 		    	fi
 	    		if [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
     			then
@@ -29,10 +30,10 @@ function pushCommand()
 			    else
 		    		for i in ${packages[*]}
 		    		do
-			    		echo "import \"$i.proto\";" >> pixel_proto/$package.proto
+			    		echo "import \"$i.proto\";" >> ${proto_dir}/$package.proto
 			    	done
 			    fi
-	    		echo -e $content >> pixel_proto/$package.proto
+	    		echo -e $content >> ${proto_dir}/$package.proto
 	    		content=""
 	    	fi
 	    	package=$1
@@ -60,7 +61,6 @@ do
 	# echo $line
 	# sleep 1
 done
-proto_dir=pixel_proto
 # protoc -I=${proto_dir}/ --cpp_out=${proto_dir}/ ${proto_dir}/*proto
-protoc -I=${proto_dir}/ --java_out=${proto_dir}/../src/ ${proto_dir}/*proto
+protoc -I=${proto_dir}/ --java_out=${proto_dir}/../../src/ ${proto_dir}/*proto
 #protoc -I=${proto_dir}/ --plugin=protoc-gen-lua=${proto_dir}/protoc-gen-lua/protoc-gen-lua --lua_out=${proto_dir}/ ${proto_dir}/*proto
