@@ -116,7 +116,9 @@ public class UserTalentService {
 				UserTalent.Builder utBuilder = UserTalent.newBuilder(ut);
 				for (int i = 0 ; i < utBuilder.getSkillCount(); ++i) {
 					UserTalentOrder.Builder builder = UserTalentOrder.newBuilder(utBuilder.getSkill(i));
-					builder.setLevel(userTalentRedisService.getUserTalentSkill(userId, utBuilder.getId(), builder.getOrder(), builder.getSkillId()).getLevel());
+					UserTalentSkill skill = userTalentRedisService.getUserTalentSkill(userId, utBuilder.getId(), builder.getOrder(), builder.getSkillId());
+					if (skill != null)
+						builder.setLevel(skill.getLevel());
 					utBuilder.setSkill(i, builder.build());
 				}
 				return utBuilder.build();
