@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.Cdkey;
+import com.trans.pixel.protoc.ShopProto.Cdkey;
 
 @Repository
 public class CdkeyRedisService extends RedisService{

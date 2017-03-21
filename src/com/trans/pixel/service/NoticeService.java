@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.NoticeConst;
-import com.trans.pixel.protoc.Commands.Notice;
+import com.trans.pixel.protoc.MessageBoardProto.Notice;
 import com.trans.pixel.service.redis.NoticeRedisService;
 
 @Service

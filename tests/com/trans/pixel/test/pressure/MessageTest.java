@@ -7,10 +7,10 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 
 import com.trans.pixel.constants.MessageConst;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
-import com.trans.pixel.protoc.Commands.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
+import com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.test.BaseTest;
 
 public class MessageTest extends BaseTest {

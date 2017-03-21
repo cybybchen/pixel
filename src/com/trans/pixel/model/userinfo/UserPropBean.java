@@ -2,7 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.UserProp;
+import com.trans.pixel.protoc.EquipProto.UserProp;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserPropBean {

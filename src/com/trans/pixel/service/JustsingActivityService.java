@@ -11,7 +11,7 @@ import com.trans.pixel.constants.JustsingConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.service.redis.JustsingActivityRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.FileUtil;

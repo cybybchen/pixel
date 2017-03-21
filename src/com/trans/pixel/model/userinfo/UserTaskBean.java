@@ -3,7 +3,7 @@ package com.trans.pixel.model.userinfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trans.pixel.protoc.Commands.UserTask;
+import com.trans.pixel.protoc.TaskProto.UserTask;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserTaskBean {

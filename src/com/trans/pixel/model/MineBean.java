@@ -1,4 +1,4 @@
-package com.trans.pixel.model.pvp;
+package com.trans.pixel.model;
 
 import java.util.ArrayList;
 import java.util.List;

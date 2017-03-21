@@ -23,7 +23,7 @@ import org.springframework.web.context.ContextLoader;
 
 import com.trans.pixel.controller.chain.PixelRequest;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.service.UserService;
 
 /**

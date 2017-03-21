@@ -9,8 +9,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service

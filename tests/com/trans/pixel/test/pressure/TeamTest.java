@@ -3,14 +3,12 @@ package com.trans.pixel.test.pressure;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 
-import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
-import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
+import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.test.BaseTest;
 
 public class TeamTest extends BaseTest {

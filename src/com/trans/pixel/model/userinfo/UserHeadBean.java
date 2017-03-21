@@ -1,6 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
-import com.trans.pixel.protoc.Commands.UserHead;
+import com.trans.pixel.protoc.UserInfoProto.UserHead;
 
 public class UserHeadBean {
 	private long id = 0;

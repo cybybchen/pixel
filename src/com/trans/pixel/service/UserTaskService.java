@@ -8,10 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserTaskMapper;
-import com.trans.pixel.model.userinfo.UserFoodBean;
-import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserTaskBean;
-import com.trans.pixel.protoc.Commands.UserTask;
+import com.trans.pixel.protoc.TaskProto.UserTask;
 import com.trans.pixel.service.redis.UserTaskRedisService;
 
 @Service

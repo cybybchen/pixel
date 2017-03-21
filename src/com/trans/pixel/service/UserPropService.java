@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserPropMapper;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.Commands.Prop;
+import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.service.redis.UserPropRedisService;
 
 @Service

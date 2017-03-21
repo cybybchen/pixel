@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.EquipmentBean;
+import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
-import com.trans.pixel.protoc.Commands.Equiptucao;
-import com.trans.pixel.protoc.Commands.Hero;
+import com.trans.pixel.protoc.EquipProto.Equiptucao;
+import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.NoticeMessageRedisService;
 

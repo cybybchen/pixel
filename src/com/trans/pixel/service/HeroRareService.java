@@ -7,11 +7,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.hero.HeroRareBean;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
-import com.trans.pixel.protoc.Commands.Hero;
-import com.trans.pixel.protoc.Commands.HeroRareLevelup;
-import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
+import com.trans.pixel.model.HeroInfoBean;
+import com.trans.pixel.model.HeroRareBean;
+import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.HeroRareLevelup;
+import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.HeroRareRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
 

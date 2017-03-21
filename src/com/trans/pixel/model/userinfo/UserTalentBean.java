@@ -5,9 +5,9 @@ import java.util.Set;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.UserTalent;
-import com.trans.pixel.protoc.Commands.UserTalentEquip;
-import com.trans.pixel.protoc.Commands.UserTalentOrder;
+import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.Base.UserTalentEquip;
+import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserTalentBean {

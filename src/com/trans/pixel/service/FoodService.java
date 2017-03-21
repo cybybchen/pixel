@@ -9,9 +9,9 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
-import com.trans.pixel.protoc.Commands.ClearFood;
-import com.trans.pixel.protoc.Commands.ClearHero;
-import com.trans.pixel.protoc.Commands.ClearLevel;
+import com.trans.pixel.protoc.HeroProto.ClearFood;
+import com.trans.pixel.protoc.HeroProto.ClearHero;
+import com.trans.pixel.protoc.HeroProto.ClearLevel;
 import com.trans.pixel.service.redis.ClearRedisService;
 
 @Service

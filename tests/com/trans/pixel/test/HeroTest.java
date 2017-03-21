@@ -6,9 +6,9 @@ import java.io.InputStream;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class HeroTest extends BaseTest {
 	@Test

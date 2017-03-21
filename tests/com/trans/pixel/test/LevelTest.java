@@ -7,12 +7,12 @@ import junit.framework.Assert;
 
 import org.apache.log4j.Logger;
 
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestEventResultCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelLootResultCommand;
-import com.trans.pixel.protoc.Commands.RequestLevelStartCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.ResponseLevelLootCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
 
 public class LevelTest extends BaseTest {
 private static Logger logger = Logger.getLogger(LevelTest.class);

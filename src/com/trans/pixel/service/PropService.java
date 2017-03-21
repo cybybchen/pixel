@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.Prop;
-import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.service.redis.PropRedisService;
 
 @Service

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
-import com.trans.pixel.protoc.Commands.RequestRankCommand;
-import com.trans.pixel.protoc.Commands.ResponseRankCommand;
-import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.protoc.ActivityProto.RequestRankCommand;
+import com.trans.pixel.protoc.ActivityProto.ResponseRankCommand;
+import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.RankService;
 

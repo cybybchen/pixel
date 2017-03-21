@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.Raid;
-import com.trans.pixel.protoc.Commands.RaidOrder;
-import com.trans.pixel.protoc.Commands.RaidReward;
-import com.trans.pixel.protoc.Commands.RequestOpenRaidCommand;
-import com.trans.pixel.protoc.Commands.RequestStartRaidCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseRaidCommand;
-import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.TaskProto.Raid;
+import com.trans.pixel.protoc.TaskProto.RaidOrder;
+import com.trans.pixel.protoc.TaskProto.RaidReward;
+import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
+import com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand;
+import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
@@ -44,6 +44,10 @@ public class RaidCommandService extends BaseCommandService{
 			ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 			builder.setId(id);
 			responseBuilder.setRaidCommand(builder);
+		}else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH);
+            responseBuilder.setErrorCommand(errorCommand);
 		}
 	}
 

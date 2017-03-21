@@ -20,12 +20,12 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.Commands.ClearAttribute;
-import com.trans.pixel.protoc.Commands.ClearAttributeOrder;
-import com.trans.pixel.protoc.Commands.ClearCost;
-import com.trans.pixel.protoc.Commands.ClearLevel;
-import com.trans.pixel.protoc.Commands.Hero;
-import com.trans.pixel.protoc.Commands.Strengthen;
+import com.trans.pixel.protoc.HeroProto.ClearAttribute;
+import com.trans.pixel.protoc.HeroProto.ClearAttributeOrder;
+import com.trans.pixel.protoc.HeroProto.ClearCost;
+import com.trans.pixel.protoc.HeroProto.ClearLevel;
+import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.Strengthen;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.UserClearRedisService;
 

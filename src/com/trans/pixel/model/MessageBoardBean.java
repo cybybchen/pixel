@@ -9,8 +9,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.constants.MessageConst;
-import com.trans.pixel.protoc.Commands.MessageBoard;
-import com.trans.pixel.protoc.Commands.Msg;
+import com.trans.pixel.protoc.MessageBoardProto.MessageBoard;
+import com.trans.pixel.protoc.MessageBoardProto.Msg;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class MessageBoardBean {

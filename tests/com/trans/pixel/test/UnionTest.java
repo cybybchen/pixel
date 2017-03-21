@@ -9,12 +9,12 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestApplyUnionCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestCreateUnionCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestUnionListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
+import com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand;
+import com.trans.pixel.protoc.UnionProto.RequestCreateUnionCommand;
+import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
+import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 
 public class UnionTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(UnionTest.class);

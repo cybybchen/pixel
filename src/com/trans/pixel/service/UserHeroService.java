@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserHeroMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.service.redis.UserHeroRedisService;

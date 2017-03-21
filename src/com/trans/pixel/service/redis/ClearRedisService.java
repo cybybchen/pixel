@@ -8,18 +8,18 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.ClearAttribute;
-import com.trans.pixel.protoc.Commands.ClearAttributeList;
-import com.trans.pixel.protoc.Commands.ClearCost;
-import com.trans.pixel.protoc.Commands.ClearCostList;
-import com.trans.pixel.protoc.Commands.ClearFood;
-import com.trans.pixel.protoc.Commands.ClearFoodList;
-import com.trans.pixel.protoc.Commands.ClearHero;
-import com.trans.pixel.protoc.Commands.ClearHeroList;
-import com.trans.pixel.protoc.Commands.ClearLevel;
-import com.trans.pixel.protoc.Commands.ClearLevelList;
-import com.trans.pixel.protoc.Commands.Strengthen;
-import com.trans.pixel.protoc.Commands.StrengthenList;
+import com.trans.pixel.protoc.HeroProto.ClearAttribute;
+import com.trans.pixel.protoc.HeroProto.ClearAttributeList;
+import com.trans.pixel.protoc.HeroProto.ClearCost;
+import com.trans.pixel.protoc.HeroProto.ClearCostList;
+import com.trans.pixel.protoc.HeroProto.ClearFood;
+import com.trans.pixel.protoc.HeroProto.ClearFoodList;
+import com.trans.pixel.protoc.HeroProto.ClearHero;
+import com.trans.pixel.protoc.HeroProto.ClearHeroList;
+import com.trans.pixel.protoc.HeroProto.ClearLevel;
+import com.trans.pixel.protoc.HeroProto.ClearLevelList;
+import com.trans.pixel.protoc.HeroProto.Strengthen;
+import com.trans.pixel.protoc.HeroProto.StrengthenList;
 
 @Service
 public class ClearRedisService extends RedisService {

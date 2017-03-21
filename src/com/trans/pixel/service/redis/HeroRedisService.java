@@ -8,20 +8,20 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Hero;
-import com.trans.pixel.protoc.Commands.HeroChoice;
-import com.trans.pixel.protoc.Commands.HeroChoiceList;
-import com.trans.pixel.protoc.Commands.HeroFettersOrder;
-import com.trans.pixel.protoc.Commands.HeroFettersOrderList;
-import com.trans.pixel.protoc.Commands.HeroList;
-import com.trans.pixel.protoc.Commands.HeroRareLevelup;
-import com.trans.pixel.protoc.Commands.HeroRareLevelupList;
-import com.trans.pixel.protoc.Commands.Heroloot;
-import com.trans.pixel.protoc.Commands.HerolootList;
-import com.trans.pixel.protoc.Commands.Rankvalue;
-import com.trans.pixel.protoc.Commands.RankvalueList;
-import com.trans.pixel.protoc.Commands.Upgrade;
-import com.trans.pixel.protoc.Commands.UpgradeList;
+import com.trans.pixel.protoc.ActivityProto.Rankvalue;
+import com.trans.pixel.protoc.ActivityProto.RankvalueList;
+import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.HeroChoice;
+import com.trans.pixel.protoc.HeroProto.HeroChoiceList;
+import com.trans.pixel.protoc.HeroProto.HeroFettersOrder;
+import com.trans.pixel.protoc.HeroProto.HeroFettersOrderList;
+import com.trans.pixel.protoc.HeroProto.HeroList;
+import com.trans.pixel.protoc.HeroProto.HeroRareLevelup;
+import com.trans.pixel.protoc.HeroProto.HeroRareLevelupList;
+import com.trans.pixel.protoc.HeroProto.Heroloot;
+import com.trans.pixel.protoc.HeroProto.HerolootList;
+import com.trans.pixel.protoc.HeroProto.Upgrade;
+import com.trans.pixel.protoc.HeroProto.UpgradeList;
 
 @Repository
 public class HeroRedisService extends RedisService {

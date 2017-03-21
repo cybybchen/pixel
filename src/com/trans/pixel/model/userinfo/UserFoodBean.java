@@ -2,7 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.UserFood;
+import com.trans.pixel.protoc.HeroProto.UserFood;
 
 public class UserFoodBean {
 	private long id = 0;

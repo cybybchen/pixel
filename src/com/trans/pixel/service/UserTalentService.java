@@ -17,12 +17,12 @@ import com.trans.pixel.model.mapper.UserTalentSkillMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTalentBean;
 import com.trans.pixel.model.userinfo.UserTalentSkillBean;
-import com.trans.pixel.protoc.Commands.Talent;
-import com.trans.pixel.protoc.Commands.Talentunlock;
-import com.trans.pixel.protoc.Commands.UserTalent;
-import com.trans.pixel.protoc.Commands.UserTalentEquip;
-import com.trans.pixel.protoc.Commands.UserTalentOrder;
-import com.trans.pixel.protoc.Commands.UserTalentSkill;
+import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.Base.UserTalentEquip;
+import com.trans.pixel.protoc.Base.UserTalentOrder;
+import com.trans.pixel.protoc.HeroProto.Talent;
+import com.trans.pixel.protoc.HeroProto.Talentunlock;
+import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
 import com.trans.pixel.service.redis.TalentRedisService;
 import com.trans.pixel.service.redis.UserTalentRedisService;
 

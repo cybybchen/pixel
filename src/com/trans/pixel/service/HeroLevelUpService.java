@@ -12,13 +12,13 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.HeroInfoBean;
+import com.trans.pixel.model.SkillInfoBean;
 import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.StarBean;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
-import com.trans.pixel.model.hero.info.SkillInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
+import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
 
 @Service
 public class HeroLevelUpService {

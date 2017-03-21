@@ -8,8 +8,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.EquipIncrease;
-import com.trans.pixel.protoc.Commands.EquipIncreaseList;
+import com.trans.pixel.protoc.EquipProto.EquipIncrease;
+import com.trans.pixel.protoc.EquipProto.EquipIncreaseList;
 
 @Service
 public class EquipPokedeRedisService extends RedisService {

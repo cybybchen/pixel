@@ -14,18 +14,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
-import com.trans.pixel.protoc.Commands.Chip;
-import com.trans.pixel.protoc.Commands.ClearFood;
-import com.trans.pixel.protoc.Commands.Equip;
-import com.trans.pixel.protoc.Commands.Hero;
-import com.trans.pixel.protoc.Commands.HeroRareLevelupRank;
-import com.trans.pixel.protoc.Commands.Item;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Chip;
+import com.trans.pixel.protoc.EquipProto.Equip;
+import com.trans.pixel.protoc.EquipProto.Item;
+import com.trans.pixel.protoc.HeroProto.ClearFood;
+import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.EquipRedisService;
 

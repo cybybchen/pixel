@@ -7,13 +7,13 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestGetLadderUserInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.Commands.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.ResponseGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.LadderProto.RequestAttackLadderModeCommand;
+import com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.LadderProto.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand;
+import com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class LadderTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LadderTest.class);

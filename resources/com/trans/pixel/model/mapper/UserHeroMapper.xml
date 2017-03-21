@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trans.pixel.model.mapper.UserHeroMapper">
 
-	<resultMap id="resultMap" type="com.trans.pixel.model.hero.info.HeroInfoBean">
+	<resultMap id="resultMap" type="com.trans.pixel.model.HeroInfoBean">
 		<result property="userId" column="user_id" />
 		<result property="heroId" column="hero_id" />
 		<result property="id" column="info_id" />
@@ -26,12 +26,12 @@
 		from user_hero where user_id=#{userId} and hero_id=#{heroId} limit 1
 	</select>
 	
-	<insert id="addUserHero" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.hero.info.HeroInfoBean">
+	<insert id="addUserHero" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.HeroInfoBean">
 	    INSERT INTO user_hero(user_id, hero_id, info_id, level, star_level, value, rare, is_lock, equip_info, skill_info, rank)
 	    VALUES(#{userId}, #{heroId}, #{id}, #{level}, #{starLevel}, #{value}, #{rare}, #{isLock}, #{equipInfo}, #{skillInfo}, #{rank})
 	</insert>
 	
-	<update id="updateUserHero" parameterType="com.trans.pixel.model.hero.info.HeroInfoBean">
+	<update id="updateUserHero" parameterType="com.trans.pixel.model.HeroInfoBean">
 	    update user_hero set level=#{level}, star_level=#{starLevel},
 	    value=#{value}, rare=#{rare}, is_lock=#{isLock}, equip_info=#{equipInfo}, skill_info=#{skillInfo}, rank=#{rank}
 	    where user_id=#{userId} and info_id=#{id}

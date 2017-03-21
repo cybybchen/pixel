@@ -8,8 +8,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.TowerReward;
-import com.trans.pixel.protoc.Commands.TowerRewardList;
+import com.trans.pixel.protoc.UnionProto.TowerReward;
+import com.trans.pixel.protoc.UnionProto.TowerRewardList;
 
 @Service
 public class BattletowerRedisService extends RedisService {

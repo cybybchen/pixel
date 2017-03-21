@@ -8,16 +8,16 @@ import java.io.InputStream;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.AreaBoss;
-import com.trans.pixel.protoc.Commands.AreaMonster;
-import com.trans.pixel.protoc.Commands.AreaResource;
-import com.trans.pixel.protoc.Commands.RequestAreaCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackBossCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackMonsterCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackResourceCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.ResponseAreaCommand;
+import com.trans.pixel.protoc.AreaProto.AreaBoss;
+import com.trans.pixel.protoc.AreaProto.AreaMonster;
+import com.trans.pixel.protoc.AreaProto.AreaResource;
+import com.trans.pixel.protoc.AreaProto.RequestAreaCommand;
+import com.trans.pixel.protoc.AreaProto.RequestAttackBossCommand;
+import com.trans.pixel.protoc.AreaProto.RequestAttackMonsterCommand;
+import com.trans.pixel.protoc.AreaProto.RequestAttackResourceCommand;
+import com.trans.pixel.protoc.AreaProto.ResponseAreaCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class RaidTest extends BaseTest {
 	@Test

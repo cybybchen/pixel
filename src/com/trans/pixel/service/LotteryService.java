@@ -12,8 +12,8 @@ import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.LotteryActivity;
-import com.trans.pixel.protoc.Commands.LotteryItem;
+import com.trans.pixel.protoc.ActivityProto.LotteryActivity;
+import com.trans.pixel.protoc.ActivityProto.LotteryItem;
 import com.trans.pixel.service.redis.LotteryRedisService;
 import com.trans.pixel.utils.DateUtil;
 

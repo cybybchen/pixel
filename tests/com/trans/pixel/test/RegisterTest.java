@@ -8,11 +8,11 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.HeadInfo;
-import com.trans.pixel.protoc.Commands.RequestBindAccountCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
+import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
+import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 
 public class RegisterTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(RegisterTest.class);

@@ -14,9 +14,9 @@ import javax.websocket.WebSocketContainer;
 
 import org.apache.log4j.Logger;
 
-import com.trans.pixel.protoc.Commands.HeadInfo;
-import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
+import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
 
 public class MyClientApp {
 

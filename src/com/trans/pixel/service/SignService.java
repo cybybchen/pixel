@@ -13,9 +13,9 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.SevenLogin;
-import com.trans.pixel.protoc.Commands.SevenOrder;
-import com.trans.pixel.protoc.Commands.Sign;
+import com.trans.pixel.protoc.ActivityProto.SevenLogin;
+import com.trans.pixel.protoc.ActivityProto.SevenOrder;
+import com.trans.pixel.protoc.RechargeProto.Sign;
 import com.trans.pixel.service.redis.SignRedisService;
 import com.trans.pixel.utils.DateUtil;
 

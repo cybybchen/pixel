@@ -1,6 +1,6 @@
 package com.trans.pixel.model;
 
-import com.trans.pixel.protoc.Commands.Union;
+import com.trans.pixel.protoc.UnionProto.Union;
 
 public class UnionBean {
 	private int id = 0;

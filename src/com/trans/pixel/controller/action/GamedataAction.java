@@ -23,8 +23,8 @@ import com.trans.pixel.controller.chain.GenericErrorHandle;
 import com.trans.pixel.controller.chain.PixelRequest;
 import com.trans.pixel.controller.chain.PixelResponse;
 import com.trans.pixel.controller.chain.RequestHandle;
-import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.service.ManagerService;
 
 

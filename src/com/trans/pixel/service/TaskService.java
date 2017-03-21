@@ -19,11 +19,11 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TaskConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.RewardInfo;
-import com.trans.pixel.protoc.Commands.TaskOrder;
-import com.trans.pixel.protoc.Commands.TaskTarget;
-import com.trans.pixel.protoc.Commands.UserTask;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.TaskProto.TaskOrder;
+import com.trans.pixel.protoc.TaskProto.TaskTarget;
+import com.trans.pixel.protoc.TaskProto.UserTask;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.TaskRedisService;
 

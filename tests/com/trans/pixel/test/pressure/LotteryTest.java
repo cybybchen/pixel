@@ -6,9 +6,9 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
+import com.trans.pixel.protoc.ActivityProto.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.test.BaseTest;
 
 public class LotteryTest extends BaseTest {

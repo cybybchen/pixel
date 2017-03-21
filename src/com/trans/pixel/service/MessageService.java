@@ -11,9 +11,9 @@ import com.trans.pixel.constants.MessageConst;
 import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.BossRoomRecord;
-import com.trans.pixel.protoc.Commands.FightInfo;
-import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
+import com.trans.pixel.protoc.LadderProto.FightInfo;
+import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
+import com.trans.pixel.protoc.UnionProto.BossRoomRecord;
 import com.trans.pixel.service.redis.MessageRedisService;
 
 @Service

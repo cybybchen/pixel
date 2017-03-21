@@ -11,8 +11,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Prop;
-import com.trans.pixel.protoc.Commands.PropList;
+import com.trans.pixel.protoc.EquipProto.Prop;
+import com.trans.pixel.protoc.EquipProto.PropList;
 
 @Service
 public class PropRedisService extends RedisService {

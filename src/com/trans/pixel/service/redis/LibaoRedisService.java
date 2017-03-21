@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.JewelPool;
-import com.trans.pixel.protoc.Commands.JewelPoolList;
+import com.trans.pixel.protoc.Base.JewelPool;
+import com.trans.pixel.protoc.Base.JewelPoolList;
 
 @Repository
 public class LibaoRedisService extends RedisService{

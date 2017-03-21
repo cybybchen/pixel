@@ -7,9 +7,9 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class HeartBeatTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(HeartBeatTest.class);

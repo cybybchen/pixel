@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.MessageConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.MessageBoardBean;
-import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
 
 @Repository
 public class MessageRedisService extends RedisService {

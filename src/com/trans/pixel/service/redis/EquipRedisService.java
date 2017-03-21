@@ -8,14 +8,14 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Armor;
-import com.trans.pixel.protoc.Commands.ArmorList;
-import com.trans.pixel.protoc.Commands.Chip;
-import com.trans.pixel.protoc.Commands.ChipList;
-import com.trans.pixel.protoc.Commands.Equip;
-import com.trans.pixel.protoc.Commands.EquipList;
-import com.trans.pixel.protoc.Commands.Equiptucao;
-import com.trans.pixel.protoc.Commands.EquiptucaoList;
+import com.trans.pixel.protoc.EquipProto.Armor;
+import com.trans.pixel.protoc.EquipProto.ArmorList;
+import com.trans.pixel.protoc.EquipProto.Chip;
+import com.trans.pixel.protoc.EquipProto.ChipList;
+import com.trans.pixel.protoc.EquipProto.Equip;
+import com.trans.pixel.protoc.EquipProto.EquipList;
+import com.trans.pixel.protoc.EquipProto.Equiptucao;
+import com.trans.pixel.protoc.EquipProto.EquiptucaoList;
 
 @Service
 public class EquipRedisService extends RedisService {

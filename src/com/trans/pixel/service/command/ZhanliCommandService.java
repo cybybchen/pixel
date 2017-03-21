@@ -6,10 +6,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
-import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.AreaFightService;
 import com.trans.pixel.service.BlackListService;

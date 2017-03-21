@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.CdkeyConfigMapper;
 import com.trans.pixel.model.mapper.CdkeyMapper;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.Cdkey;
+import com.trans.pixel.protoc.ShopProto.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
 import com.trans.pixel.service.redis.RedisService;
 

@@ -11,8 +11,8 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.mapper.UserFriendMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
-import com.trans.pixel.protoc.Commands.UserFriend;
-import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.MailProto.UserFriend;
 import com.trans.pixel.service.redis.UserFriendRedisService;
 
 @Service

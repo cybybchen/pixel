@@ -7,9 +7,9 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestLotteryCommand;
+import com.trans.pixel.protoc.ActivityProto.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class LotteryHeroTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LotteryHeroTest.class);

@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.HeroInfo;
+import com.trans.pixel.protoc.Base.HeroInfo;
 
 public class UserPokedeBean {
 	private long userId = 0;

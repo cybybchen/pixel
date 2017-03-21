@@ -2,19 +2,19 @@ package com.trans.pixel.test;
 
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.PVPMap;
-import com.trans.pixel.protoc.Commands.PVPMine;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPMineCommand;
-import com.trans.pixel.protoc.Commands.RequestAttackPVPMonsterCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestPVPMapListCommand;
-import com.trans.pixel.protoc.Commands.RequestPVPMineInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshPVPMapCommand;
-import com.trans.pixel.protoc.Commands.RequestRefreshPVPMineCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
-import com.trans.pixel.protoc.Commands.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.ResponsePVPMapListCommand;
+import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.PVPProto.PVPMap;
+import com.trans.pixel.protoc.PVPProto.PVPMine;
+import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMineCommand;
+import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMonsterCommand;
+import com.trans.pixel.protoc.PVPProto.RequestPVPMapListCommand;
+import com.trans.pixel.protoc.PVPProto.RequestPVPMineInfoCommand;
+import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMapCommand;
+import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMineCommand;
+import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
+import com.trans.pixel.protoc.PVPProto.ResponsePVPMapListCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class PvpMapTest extends BaseTest {
 

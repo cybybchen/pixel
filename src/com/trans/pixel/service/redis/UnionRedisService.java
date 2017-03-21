@@ -21,17 +21,17 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
-import com.trans.pixel.protoc.Commands.FightResultList;
-import com.trans.pixel.protoc.Commands.Union;
-import com.trans.pixel.protoc.Commands.UnionApply;
-import com.trans.pixel.protoc.Commands.UnionBoss;
-import com.trans.pixel.protoc.Commands.UnionBossList;
-import com.trans.pixel.protoc.Commands.UnionBossRecord;
-import com.trans.pixel.protoc.Commands.UnionBossloot;
-import com.trans.pixel.protoc.Commands.UnionBosslootList;
-import com.trans.pixel.protoc.Commands.UnionBosswin;
-import com.trans.pixel.protoc.Commands.UnionBosswinList;
-import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.AreaProto.FightResultList;
+import com.trans.pixel.protoc.Base.UnionBossRecord;
+import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.UnionProto.Union;
+import com.trans.pixel.protoc.UnionProto.UnionApply;
+import com.trans.pixel.protoc.UnionProto.UnionBoss;
+import com.trans.pixel.protoc.UnionProto.UnionBossList;
+import com.trans.pixel.protoc.UnionProto.UnionBossloot;
+import com.trans.pixel.protoc.UnionProto.UnionBosslootList;
+import com.trans.pixel.protoc.UnionProto.UnionBosswin;
+import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
 import com.trans.pixel.utils.DateUtil;
 
 @Repository

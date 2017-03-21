@@ -12,8 +12,8 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
-import com.trans.pixel.protoc.Commands.EquipIncrease;
-import com.trans.pixel.protoc.Commands.MultiReward;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.EquipProto.EquipIncrease;
 import com.trans.pixel.service.redis.EquipPokedeRedisService;
 
 @Service

@@ -10,9 +10,9 @@ import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
 
-import com.trans.pixel.protoc.Commands.FightResultList;
-import com.trans.pixel.protoc.Commands.Team;
-import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.AreaProto.FightResultList;
+import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.HeroProto.Team;
 import com.trans.pixel.service.redis.RedisService;
 
 /**

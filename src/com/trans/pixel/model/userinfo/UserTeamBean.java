@@ -1,9 +1,9 @@
 package com.trans.pixel.model.userinfo;
 
-import com.trans.pixel.protoc.Commands.UserTeam;
-import com.trans.pixel.utils.TypeTranslatedUtil;
-
 import net.sf.json.JSONObject;
+
+import com.trans.pixel.protoc.HeroProto.UserTeam;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserTeamBean {
 	public int id = 0;

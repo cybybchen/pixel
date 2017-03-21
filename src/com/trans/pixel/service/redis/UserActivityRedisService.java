@@ -4,9 +4,9 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Activity;
-import com.trans.pixel.protoc.Commands.UserKaifu;
-import com.trans.pixel.protoc.Commands.UserRichang;
+import com.trans.pixel.protoc.ActivityProto.Activity;
+import com.trans.pixel.protoc.ActivityProto.UserKaifu;
+import com.trans.pixel.protoc.ActivityProto.UserRichang;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 

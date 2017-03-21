@@ -2,7 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.ResponseLevelLootCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
 
 public class UserLevelBean {
 	public long getUserId() {

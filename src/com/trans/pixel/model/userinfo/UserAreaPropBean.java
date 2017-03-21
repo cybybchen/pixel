@@ -1,7 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
-import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.AreaEquip;
+import com.trans.pixel.protoc.AreaProto.AreaEquip;
 
 
 public class UserAreaPropBean {

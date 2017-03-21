@@ -8,9 +8,9 @@ import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
 
-import com.trans.pixel.model.hero.info.HeroInfoBean;
-import com.trans.pixel.protoc.Commands.Hero;
-import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.model.HeroInfoBean;
+import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.Team;
 import com.trans.pixel.service.UserTeamService;
 
 public class LuaJTest {

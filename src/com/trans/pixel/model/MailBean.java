@@ -7,8 +7,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.constants.MailConst;
-import com.trans.pixel.protoc.Commands.Mail;
-import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.MailProto.Mail;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 

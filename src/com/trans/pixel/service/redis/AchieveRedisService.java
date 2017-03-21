@@ -8,8 +8,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Achieve;
-import com.trans.pixel.protoc.Commands.AchieveList;
+import com.trans.pixel.protoc.ActivityProto.Achieve;
+import com.trans.pixel.protoc.ActivityProto.AchieveList;
 
 @Service
 public class AchieveRedisService extends RedisService {

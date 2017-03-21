@@ -2,7 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.ClearInfo;
+import com.trans.pixel.protoc.Base.ClearInfo;
 
 public class UserClearBean {
 	private int id = 0;

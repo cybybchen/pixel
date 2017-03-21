@@ -6,11 +6,11 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
-import com.trans.pixel.protoc.Commands.RequestAttackLadderModeCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.protoc.LadderProto.RequestAttackLadderModeCommand;
+import com.trans.pixel.protoc.LadderProto.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.test.BaseTest;
 
 public class LadderTest extends BaseTest {

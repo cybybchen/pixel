@@ -2,7 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.UserEquipPokede;
+import com.trans.pixel.protoc.Base.UserEquipPokede;
 
 
 public class UserEquipPokedeBean {

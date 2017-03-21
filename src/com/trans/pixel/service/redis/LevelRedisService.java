@@ -6,22 +6,21 @@ import java.util.TreeMap;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.mapper.UserLevelMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
-import com.trans.pixel.protoc.Commands.Area;
-import com.trans.pixel.protoc.Commands.AreaEvent;
-import com.trans.pixel.protoc.Commands.AreaEventList;
-import com.trans.pixel.protoc.Commands.AreaList;
-import com.trans.pixel.protoc.Commands.Daguan;
-import com.trans.pixel.protoc.Commands.DaguanList;
-import com.trans.pixel.protoc.Commands.Event;
-import com.trans.pixel.protoc.Commands.Loot;
-import com.trans.pixel.protoc.Commands.LootList;
+import com.trans.pixel.protoc.UserInfoProto.Area;
+import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
+import com.trans.pixel.protoc.UserInfoProto.AreaEventList;
+import com.trans.pixel.protoc.UserInfoProto.AreaList;
+import com.trans.pixel.protoc.UserInfoProto.Daguan;
+import com.trans.pixel.protoc.UserInfoProto.DaguanList;
+import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.protoc.UserInfoProto.Loot;
+import com.trans.pixel.protoc.UserInfoProto.LootList;
 
 @Repository
 public class LevelRedisService extends RedisService {

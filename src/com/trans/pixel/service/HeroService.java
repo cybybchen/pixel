@@ -13,11 +13,11 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
-import com.trans.pixel.protoc.Commands.Hero;
-import com.trans.pixel.protoc.Commands.HeroFetter;
-import com.trans.pixel.protoc.Commands.HeroFetters;
-import com.trans.pixel.protoc.Commands.HeroFettersOrder;
-import com.trans.pixel.protoc.Commands.Upgrade;
+import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.HeroFetter;
+import com.trans.pixel.protoc.HeroProto.HeroFetters;
+import com.trans.pixel.protoc.HeroProto.HeroFettersOrder;
+import com.trans.pixel.protoc.HeroProto.Upgrade;
 import com.trans.pixel.service.redis.HeroRedisService;
 
 @Service

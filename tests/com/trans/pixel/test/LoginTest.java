@@ -6,10 +6,10 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestLoginCommand;
-import com.trans.pixel.protoc.Commands.RequestRegisterCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 
 public class LoginTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LoginTest.class);

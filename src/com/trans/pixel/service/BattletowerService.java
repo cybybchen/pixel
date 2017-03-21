@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.model.userinfo.UserBattletowerBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.RewardInfo;
-import com.trans.pixel.protoc.Commands.TowerReward;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.UnionProto.TowerReward;
 import com.trans.pixel.service.redis.BattletowerRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 

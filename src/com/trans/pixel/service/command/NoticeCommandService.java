@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.Notice;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseNoticeCommand;
+import com.trans.pixel.protoc.MessageBoardProto.Notice;
+import com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand;
 import com.trans.pixel.service.NoticeMessageService;
 import com.trans.pixel.service.NoticeService;
 

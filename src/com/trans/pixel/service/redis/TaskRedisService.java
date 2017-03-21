@@ -8,12 +8,12 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Task2TargetHero;
-import com.trans.pixel.protoc.Commands.Task2TargetList;
-import com.trans.pixel.protoc.Commands.Task3OrderList;
-import com.trans.pixel.protoc.Commands.TaskOrder;
-import com.trans.pixel.protoc.Commands.TaskTarget;
-import com.trans.pixel.protoc.Commands.TaskTargetList;
+import com.trans.pixel.protoc.TaskProto.Task2TargetHero;
+import com.trans.pixel.protoc.TaskProto.Task2TargetList;
+import com.trans.pixel.protoc.TaskProto.Task3OrderList;
+import com.trans.pixel.protoc.TaskProto.TaskOrder;
+import com.trans.pixel.protoc.TaskProto.TaskTarget;
+import com.trans.pixel.protoc.TaskProto.TaskTargetList;
 
 @Service
 public class TaskRedisService extends RedisService {

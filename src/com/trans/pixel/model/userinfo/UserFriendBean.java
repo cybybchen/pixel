@@ -2,7 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.UserFriend;
+import com.trans.pixel.protoc.MailProto.UserFriend;
 
 public class UserFriendBean {
 	private long id = 0;

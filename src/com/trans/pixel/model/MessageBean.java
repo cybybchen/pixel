@@ -2,7 +2,7 @@ package com.trans.pixel.model;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.Msg;
+import com.trans.pixel.protoc.MessageBoardProto.Msg;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class MessageBean {

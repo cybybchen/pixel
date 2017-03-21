@@ -8,11 +8,11 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Qiandao;
-import com.trans.pixel.protoc.Commands.SevenLogin;
-import com.trans.pixel.protoc.Commands.SevenLoginList;
-import com.trans.pixel.protoc.Commands.Sign;
-import com.trans.pixel.protoc.Commands.SignList;
+import com.trans.pixel.protoc.ActivityProto.SevenLogin;
+import com.trans.pixel.protoc.ActivityProto.SevenLoginList;
+import com.trans.pixel.protoc.RechargeProto.Qiandao;
+import com.trans.pixel.protoc.RechargeProto.Sign;
+import com.trans.pixel.protoc.RechargeProto.SignList;
 
 @Repository
 public class SignRedisService extends RedisService{

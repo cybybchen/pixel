@@ -16,10 +16,10 @@ import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
-import com.trans.pixel.protoc.Commands.Achieve;
-import com.trans.pixel.protoc.Commands.ActivityOrder;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.RewardInfo;
+import com.trans.pixel.protoc.ActivityProto.Achieve;
+import com.trans.pixel.protoc.ActivityProto.ActivityOrder;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.service.redis.AchieveRedisService;
 
 @Service

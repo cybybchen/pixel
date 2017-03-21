@@ -1,6 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
-import com.trans.pixel.protoc.Commands.UserBattletower;
+import com.trans.pixel.protoc.UnionProto.UserBattletower;
 
 public class UserBattletowerBean {
 	private long id = 0;

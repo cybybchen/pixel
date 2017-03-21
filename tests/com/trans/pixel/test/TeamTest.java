@@ -3,13 +3,12 @@ package com.trans.pixel.test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class TeamTest extends BaseTest {
 //private static Logger logger = Logger.getLogger(TeamTest.class);

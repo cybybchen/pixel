@@ -6,13 +6,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.SkillBean;
+import com.trans.pixel.model.SkillInfoBean;
 import com.trans.pixel.model.SkillLevelBean;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
-import com.trans.pixel.model.hero.info.SkillInfoBean;
-import com.trans.pixel.protoc.Commands.Hero;
-import com.trans.pixel.protoc.Commands.Rankvalue;
-import com.trans.pixel.protoc.Commands.Upgrade;
+import com.trans.pixel.protoc.ActivityProto.Rankvalue;
+import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.Upgrade;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.SkillRedisService;
 

@@ -21,14 +21,14 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
-import com.trans.pixel.protoc.Commands.LadderChongzhi;
-import com.trans.pixel.protoc.Commands.LadderChongzhiList;
-import com.trans.pixel.protoc.Commands.LadderEnemy;
-import com.trans.pixel.protoc.Commands.LadderEnemyList;
-import com.trans.pixel.protoc.Commands.LadderName;
-import com.trans.pixel.protoc.Commands.LadderNameList;
-import com.trans.pixel.protoc.Commands.LadderWinReward;
-import com.trans.pixel.protoc.Commands.LadderWinRewardList;
+import com.trans.pixel.protoc.LadderProto.LadderEnemy;
+import com.trans.pixel.protoc.LadderProto.LadderEnemyList;
+import com.trans.pixel.protoc.LadderProto.LadderName;
+import com.trans.pixel.protoc.LadderProto.LadderNameList;
+import com.trans.pixel.protoc.LadderProto.LadderWinReward;
+import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
+import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
+import com.trans.pixel.protoc.ShopProto.LadderChongzhiList;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository

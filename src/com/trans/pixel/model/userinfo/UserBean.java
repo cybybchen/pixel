@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.trans.pixel.constants.TimeConst;
-import com.trans.pixel.protoc.Commands.JewelPool;
-import com.trans.pixel.protoc.Commands.UnionBossRecord;
-import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Base.JewelPool;
+import com.trans.pixel.protoc.Base.UnionBossRecord;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.service.LibaoService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;

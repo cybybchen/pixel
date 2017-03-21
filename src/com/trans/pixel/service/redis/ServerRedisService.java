@@ -14,7 +14,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.ServerData;
+import com.trans.pixel.protoc.UserInfoProto.ServerData;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository

@@ -3089,7 +3089,7 @@ message RequestCommand {
 	optional RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
 	optional RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;
 }
-////////// Response
+////////// Commands
 message ErrorCommand{
         required string code = 1;
         required string message = 2;

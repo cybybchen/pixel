@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserActivityMapper;
 import com.trans.pixel.model.userinfo.UserActivityBean;
-import com.trans.pixel.protoc.Commands.Kaifu;
-import com.trans.pixel.protoc.Commands.Richang;
-import com.trans.pixel.protoc.Commands.UserKaifu;
-import com.trans.pixel.protoc.Commands.UserRichang;
+import com.trans.pixel.protoc.ActivityProto.Kaifu;
+import com.trans.pixel.protoc.ActivityProto.Richang;
+import com.trans.pixel.protoc.ActivityProto.UserKaifu;
+import com.trans.pixel.protoc.ActivityProto.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.UserActivityRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;

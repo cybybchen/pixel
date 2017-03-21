@@ -1,6 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
-import com.trans.pixel.protoc.Commands.UserTalentSkill;
+import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
 
 
 public class UserTalentSkillBean {

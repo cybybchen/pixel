@@ -1,5 +1,6 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -8,17 +9,14 @@ import javax.annotation.Resource;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.ActivityConst;
-import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.UserInfo;
-import com.trans.pixel.service.UserService;
+import com.trans.pixel.protoc.Base.UserInfo;
 
 @Service
 public class RankRedisService extends RedisService{
 	@Resource
-	private UserService userService;
+	private UserRedisService userRedisService;
 	
 	public void updateZhanliRank(final UserBean user) {
 		zadd(RedisKey.ZHANLI_RANK+user.getServerId(), user.getZhanli(), user.getId()+"");
@@ -41,7 +39,12 @@ public class RankRedisService extends RedisService{
 	
 	public List<UserInfo> getZhanliRanks(final UserBean user, long start, long end) {
 		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK+user.getServerId(), start, end);
-		return userService.getCaches(user.getServerId(), ranks);
+		List<String> userIds = new ArrayList<String>();
+		for(TypedTuple<String> rank : ranks){
+			userIds.add(rank.getValue());
+		}
+		return userRedisService.getCaches(user.getServerId(), userIds);
+//		return userService.getCaches(, ranks);
 	}
 	
 	public Set<TypedTuple<String>> getZhanliRanks(final int serverId, long start, long end) {

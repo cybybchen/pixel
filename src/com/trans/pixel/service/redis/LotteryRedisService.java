@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.protoc.Commands.LotteryActivity;
-import com.trans.pixel.protoc.Commands.LotteryActivityList;
+import com.trans.pixel.protoc.ActivityProto.LotteryActivity;
+import com.trans.pixel.protoc.ActivityProto.LotteryActivityList;
 
 @Service
 public class LotteryRedisService extends RedisService {

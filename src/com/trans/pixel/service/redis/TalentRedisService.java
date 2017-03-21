@@ -8,12 +8,12 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Talent;
-import com.trans.pixel.protoc.Commands.TalentList;
-import com.trans.pixel.protoc.Commands.Talentunlock;
-import com.trans.pixel.protoc.Commands.TalentunlockList;
-import com.trans.pixel.protoc.Commands.Talentupgrade;
-import com.trans.pixel.protoc.Commands.TalentupgradeList;
+import com.trans.pixel.protoc.HeroProto.Talent;
+import com.trans.pixel.protoc.HeroProto.TalentList;
+import com.trans.pixel.protoc.HeroProto.Talentunlock;
+import com.trans.pixel.protoc.HeroProto.TalentunlockList;
+import com.trans.pixel.protoc.HeroProto.Talentupgrade;
+import com.trans.pixel.protoc.HeroProto.TalentupgradeList;
 
 @Service
 public class TalentRedisService extends RedisService {

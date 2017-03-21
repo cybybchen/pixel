@@ -21,9 +21,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.BloodUserBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.TowerReward;
-import com.trans.pixel.protoc.Commands.TowerRewardList;
-import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.UnionProto.TowerReward;
+import com.trans.pixel.protoc.UnionProto.TowerRewardList;
 
 @Service
 public class BloodfightRedisService extends RedisService {

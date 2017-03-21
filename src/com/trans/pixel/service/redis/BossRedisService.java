@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.BossGroupRecord;
-import com.trans.pixel.protoc.Commands.BossRoomRecord;
-import com.trans.pixel.protoc.Commands.Bossgroup;
-import com.trans.pixel.protoc.Commands.BossgroupList;
-import com.trans.pixel.protoc.Commands.BosslootGroup;
-import com.trans.pixel.protoc.Commands.BosslootGroupList;
+import com.trans.pixel.protoc.UnionProto.BossGroupRecord;
+import com.trans.pixel.protoc.UnionProto.BossRoomRecord;
+import com.trans.pixel.protoc.UnionProto.Bossgroup;
+import com.trans.pixel.protoc.UnionProto.BossgroupList;
+import com.trans.pixel.protoc.UnionProto.BosslootGroup;
+import com.trans.pixel.protoc.UnionProto.BosslootGroupList;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 

@@ -3,7 +3,7 @@ package com.trans.pixel.model.userinfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trans.pixel.protoc.Commands.UserKaifu;
+import com.trans.pixel.protoc.ActivityProto.UserKaifu;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserActivityBean {

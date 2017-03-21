@@ -2,7 +2,7 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.UserEquip;
+import com.trans.pixel.protoc.EquipProto.UserEquip;
 
 public class UserEquipBean {
 	private long id = 0;

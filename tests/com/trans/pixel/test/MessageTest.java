@@ -8,9 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.trans.pixel.constants.MessageConst;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class MessageTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(MessageTest.class);

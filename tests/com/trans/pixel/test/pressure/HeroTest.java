@@ -5,12 +5,12 @@ import java.io.InputStream;
 
 import org.junit.Assert;
 
-import com.trans.pixel.protoc.Commands.FenjieHeroInfo;
-import com.trans.pixel.protoc.Commands.HeroInfo;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestFenjieHeroCommand;
-import com.trans.pixel.protoc.Commands.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.HeroProto.FenjieHeroInfo;
+import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
+import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.test.BaseTest;
 
 public class HeroTest extends BaseTest {

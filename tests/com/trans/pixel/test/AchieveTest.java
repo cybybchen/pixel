@@ -7,9 +7,9 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestAchieveRewardCommand;
-import com.trans.pixel.protoc.Commands.RequestCommand;
+import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 
 public class AchieveTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(AchieveTest.class);

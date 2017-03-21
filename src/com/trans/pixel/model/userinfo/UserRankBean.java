@@ -5,8 +5,8 @@ import java.util.List;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.Commands.UserInfo;
-import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserRankBean {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.Commands.Notice;
+import com.trans.pixel.protoc.MessageBoardProto.Notice;
 
 @Repository
 public class NoticeRedisService extends RedisService {

@@ -6,10 +6,10 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.UserEquip;
+import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.EquipProto.UserEquip;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.test.BaseTest;
 
 public class EquipTest extends BaseTest {

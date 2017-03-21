@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.hero.info.HeroInfoBean;
+import com.trans.pixel.model.HeroInfoBean;
 
 @Repository
 public class UserHeroRedisService extends RedisService{

@@ -2,8 +2,8 @@ package com.trans.pixel.test;
 
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestCdkeyCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.RechargeProto.RequestCdkeyCommand;
 
 public class CdkeyTest extends BaseTest {
 	

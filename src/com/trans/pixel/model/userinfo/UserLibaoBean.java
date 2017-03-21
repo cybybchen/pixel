@@ -1,6 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
-import com.trans.pixel.protoc.Commands.Libao;
+import com.trans.pixel.protoc.ShopProto.Libao;
 
 
 public class UserLibaoBean {

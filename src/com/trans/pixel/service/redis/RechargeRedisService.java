@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RechargeBean;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.Rmb;
-import com.trans.pixel.protoc.Commands.RmbList;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.RechargeProto.Rmb;
+import com.trans.pixel.protoc.RechargeProto.RmbList;
 
 @Service
 public class RechargeRedisService extends RedisService {

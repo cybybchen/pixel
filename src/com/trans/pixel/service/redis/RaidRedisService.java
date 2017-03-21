@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.Raid;
-import com.trans.pixel.protoc.Commands.RaidList;
-import com.trans.pixel.protoc.Commands.RaidOrder;
+import com.trans.pixel.protoc.TaskProto.Raid;
+import com.trans.pixel.protoc.TaskProto.RaidList;
+import com.trans.pixel.protoc.TaskProto.RaidOrder;
 
 @Repository
 public class RaidRedisService extends RedisService{

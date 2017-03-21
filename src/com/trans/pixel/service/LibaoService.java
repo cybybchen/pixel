@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.JewelPool;
+import com.trans.pixel.protoc.Base.JewelPool;
 import com.trans.pixel.service.redis.LibaoRedisService;
 
 @Service

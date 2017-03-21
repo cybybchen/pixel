@@ -1,20 +1,16 @@
 package com.trans.pixel.service.command;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.MultiReward;
-import com.trans.pixel.protoc.Commands.RequestQueryRechargeCommand;
-import com.trans.pixel.protoc.Commands.RequestRechargeCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand;
+import com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RechargeService;

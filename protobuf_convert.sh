@@ -19,11 +19,11 @@ function pushCommand()
 	    	then
 	    		echo  "$package"
 	    		echo -e "$packagepath;\n" > pixel_proto/$package.proto
-	    		if [[ $package != "Base" ]] && [[ $package != "Request" ]] && [[ $package != "Response" ]]
+	    		if [[ $package != "Base" ]] && [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
     			then
 		    		echo "import \"Base.proto\";" >> pixel_proto/$package.proto
 		    	fi
-	    		if [[ $package != "Request" ]] && [[ $package != "Response" ]]
+	    		if [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
     			then
 	    			packages[${#packages[@]}]=$package
 			    else

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserTalentSkillBean;
-import com.trans.pixel.protoc.Commands.UserTalent;
-import com.trans.pixel.protoc.Commands.UserTalentSkill;
+import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
 
 @Service
 public class UserTalentRedisService extends RedisService {

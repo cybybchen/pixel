@@ -2,8 +2,8 @@ package com.trans.pixel.test;
 
 import org.junit.Test;
 
-import com.trans.pixel.protoc.Commands.RequestUsePropCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
+import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 
 public class PackageTest extends BaseTest {
 

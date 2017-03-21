@@ -4,18 +4,16 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.ErrorCommand;
-import com.trans.pixel.protoc.Commands.FightInfo;
-import com.trans.pixel.protoc.Commands.RequestFightInfoCommand;
-import com.trans.pixel.protoc.Commands.RequestGetTeamCommand;
-import com.trans.pixel.protoc.Commands.RequestUpdateTeamCommand;
-import com.trans.pixel.protoc.Commands.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseGetTeamCommand;
-import com.trans.pixel.protoc.Commands.ResponseUserInfoCommand;
-import com.trans.pixel.protoc.Commands.Team;
+import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
+import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
+import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
+import com.trans.pixel.protoc.HeroProto.Team;
+import com.trans.pixel.protoc.LadderProto.FightInfo;
+import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;

@@ -1,4 +1,4 @@
-package com.trans.pixel.model.hero;
+package com.trans.pixel.model;
 
 import java.io.File;
 import java.io.FileInputStream;

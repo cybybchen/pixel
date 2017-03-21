@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.model.userinfo.UserRankBean;
-import com.trans.pixel.protoc.Commands.UserInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.RankRedisService;

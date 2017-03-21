@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Commands.JewelPool;
-import com.trans.pixel.protoc.Commands.RequestGetGrowExpCommand;
-import com.trans.pixel.protoc.Commands.RequestGetGrowJewelCommand;
+import com.trans.pixel.protoc.Base.JewelPool;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.RechargeProto.RequestGetGrowExpCommand;
+import com.trans.pixel.protoc.RechargeProto.RequestGetGrowJewelCommand;
 import com.trans.pixel.service.LibaoService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;

@@ -6,11 +6,10 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.protoc.Commands.RequestCommand;
-import com.trans.pixel.protoc.Commands.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
-import com.trans.pixel.protoc.Commands.UserLevel;
-import com.trans.pixel.protoc.Commands.UserRank;
+import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.test.BaseTest;
 import com.trans.pixel.test.PvpMapTest;
 import com.trans.pixel.test.ShopTest;
