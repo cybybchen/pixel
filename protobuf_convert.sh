@@ -12,29 +12,31 @@ function pushCommand()
 		then
 	    	shift
 	    	map[$1]=$1
-	    else
-	    	if [[ $1 == "//////////" ]]
-		    then
-		    	shift
-		    	if [[ $package != "" ]]
-		    	then
-		    		echo  "$package"
-		    		echo -e "$packagepath;\n" > pixel_proto/$package.proto
-		    		if [[ $package != "Request" ]] || [[ $package != "Response" ]]
-	    			then
-			    		for i in ${packages[*]}
-			    		do
-				    		echo "import \"$i.proto\";" >> pixel_proto/$package.proto
-				    	done
-				    else
-				    	packages[${#packages[@]}]=$package
-				    fi
-		    		echo -e $content >> pixel_proto/$package.proto
-		    		content=""
+	    elif [[ $1 == "//////////" ]]
+	    then
+	    	shift
+	    	if [[ $package != "" ]]
+	    	then
+	    		echo  "$package"
+	    		echo -e "$packagepath;\n" > pixel_proto/$package.proto
+	    		if [[ $package != "Base" ]] && [[ $package != "Request" ]] && [[ $package != "Response" ]]
+    			then
+		    		echo "import \"Base.proto\";" >> pixel_proto/$package.proto
 		    	fi
-		    	package=$1
-	    		# package=${package:0:${#package}-1}
-		   fi
+	    		if [[ $package != "Request" ]] && [[ $package != "Response" ]]
+    			then
+	    			packages[${#packages[@]}]=$package
+			    else
+		    		for i in ${packages[*]}
+		    		do
+			    		echo "import \"$i.proto\";" >> pixel_proto/$package.proto
+			    	done
+			    fi
+	    		echo -e $content >> pixel_proto/$package.proto
+	    		content=""
+	    	fi
+	    	package=$1
+    		# package=${package:0:${#package}-1}
 		fi
 	    shift
 	done
@@ -45,14 +47,13 @@ do
 	if [[ $line == "message "* ]]
 		then
 		pushCommand $line
-	fi
-	if [[ $line == "////////// "* ]]
+	elif [[ $line == "////////// "* ]]
 	then
 		pushCommand $line
 	fi
 	if [[ $line == "package "* ]]
 	then
-		packagepath=${line:0:${#line}-2}
+		packagepath=${line:0:${#line}-1}
 	else
 		content+=$line"\n"
 	fi

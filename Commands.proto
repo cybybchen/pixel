@@ -1,6 +1,6 @@
 package com.trans.pixel.protoc;
 
-////////// UserInfo
+////////// Base
 message UserInfo {
 	required int64 id = 1;
 	optional string account = 2;
@@ -60,101 +60,62 @@ message UserInfo {
 	optional int32 task2Record = 72;
 	optional int32 questStatus = 73;//是否参与过问卷调查
 	optional int32 zhaohuanshi = 74;//召唤石
+	optional uint32 zhujueExp = 75;
 }
 
-message HeadInfo 
-{
-	required int32 version = 1;		//  0: version1.1.1 1: version1.2.0 2013-3-28
-	required int64 datetime = 2;
-	required int32 gameVersion = 3;
-	required int32 serverId = 4;
-	required string account = 5;
-	optional int64 userId = 6;
-	optional string session = 7;
-	optional string serverstarttime = 8;
-	optional int32 onlineStatus = 9;	
+message JewelPool {
+	optional int32 order = 1;
+	optional int32 zhanli = 2;
+	optional string description = 3;
+	optional int32 rewardid = 4;
+	optional int32 rewardcount = 5;
+	optional int32 rewarded = 6;
+	optional int32 recharged = 7;
 }
 
-message RewardInfo {
-	optional int32 itemid = 1;
-	optional string itemname = 2;
-	optional int64 count = 3;
-	optional int32 weight = 4;
+message JewelPoolList {
+	repeated JewelPool order = 1;
 }
 
-message Item {
-	required int32 itemId = 1;
-	required int32 itemCount = 2;
+message UnionBossUserRecord {
+	optional int64 userId = 1;
+        optional int32 percent = 2;
 }
 
-message MultiReward {
-	optional int32 id = 1;
-	optional string name = 2;
-	repeated RewardInfo loot = 3;
+message UnionBossRecord {
+	optional int32 bossId = 1;
+	optional int32 hp = 2;
+	optional string endTime = 3;
+	optional int32 myAttackHp = 4;
+	repeated UserRank ranks = 5;
+	optional string startTime = 6;
+	optional int32 count = 7;
+	optional int32 percent = 8;
+	repeated UnionBossUserRecord userRecord = 9;
 }
 
-message MultiRewardList {
-	repeated MultiReward region = 2;
-}
-
-message VipLibao {
-	optional int32 itemid = 1;
-	optional string name = 2;
-	optional string img = 3;
-	optional int32 rare = 4;
-	optional string description = 5;
-	optional int32 value = 6;
-	optional int32 cost = 7;
-	repeated RewardInfo item = 8;
-}
-
-message VipLibaoList {
-	repeated VipLibao libao = 1;
-}
-
-message VipInfo {
-	optional int32 vip = 1;
-	optional int32 rmb = 2;
-	optional string effect = 3;
-	optional int32 dianjin = 4;
-	optional int32 tianti = 5;
-	optional int32 pvp = 6;
-	optional int32 quyu = 7;
-	optional int32 mohua = 8;
-	optional int32 baoxiang = 9;
-	optional int32 zhibao = 10;
-	optional int32 baohu = 11;
-	optional int32 libao1 = 12;
-	optional int32 libao2 = 13;
-	optional int32 zuanshi = 14;
-	optional int32 contract = 15;
-}
-
-message VipList {
-	repeated VipInfo vip = 1;
-}
-
-message Qiandao {
-	repeated Sign order = 1;
-	required int32 id = 2;
-	required string activity = 3;
-}
-
-message SignList {
-	repeated Qiandao sanqian = 1;
-}
-
-message Sign {
-	required int32 order = 1;
-	optional int32 targetid = 3;
-	optional int32 targetcount = 4;
-	required int32 rewardid = 5;
-	required int32 rewardcount = 7;
-}
 message Rank {
 	required UserInfo user = 1;
 	required int32 score = 2;
 	optional int32 rank = 3;
+}
+
+message UserTalent {
+	required int32 id = 1;
+	required int32 level = 2;
+	optional bool isUse = 3;
+	repeated UserTalentOrder skill = 4;
+	repeated UserTalentEquip equip = 5;
+}
+
+message UserTalentOrder {
+	required int32 order = 1;
+	required int32 skillId = 2;
+}
+
+message UserTalentEquip {
+	optional int32 position = 1;
+	optional int32 itemId = 2;
 }
 
 message UserRank {
@@ -167,64 +128,62 @@ message UserRank {
 	optional int32 vip = 7;
 	optional string composeSkill = 8;
 	optional int32 dps = 9;
+	optional UserTalent userTalent = 10;
 }
 
-message UserFriend {
-	required int64 friendId = 1;
-	required string friendName = 2;
-	optional int32 vip = 3;
-	optional int32 zhanli = 4;
-	optional string lastLoginTime = 5;
-	optional int32 countDown = 6;
-	optional int32 icon = 7;
+message ClearInfo {
+	required int32 position = 1;
+	required int32 clearId = 2;
+	required int32 count = 3;
+	optional int32 id = 4;
+	optional int32 rare = 5;
 }
 
-message Mail {
-	required int32 id = 1;
-	required int64 userId = 2;
-	required int64 fromUserId = 3;
-	required string fromUserName = 4;
-	required int32 type = 5;
-	required string startDate = 6;
-	required string endDate = 7;
-	required string content = 8;
-	required int32 relatedId = 10;
-	repeated RewardInfo reward = 9;
-	optional int32 icon = 11;
-	optional int32 vip = 12;
-	optional bool isRead = 13;
+message SkillInfo {
+	required int32 skillId = 1;
+	required int32 skillLevel = 2;
 }
 
-message MailList {
-	required int32 type = 1;
-	repeated Mail mail = 2;
+message UserEquipPokede {
+	required int32 itemId = 1;
+	required int32 level = 2;
 }
 
-message MessageBoard {
-	required int64 id = 1;
-	required int64 timestamp = 2;
-	required int64 userId = 3;
-	required string userName = 4;
-	required string content = 5;
-	repeated Msg msg = 6;
-	required int32 icon = 7;
-	optional int32 vip = 8;
-	optional int32 job = 9;//公会职位
-	optional int32 groupId = 10;
-	optional int32 bossId = 11;
-	optional string startDate = 12;
+message HeroInfo {
+	optional int64 infoId = 1;
+	optional int32 level = 2;
+	optional int32 rare = 3;
+	optional int32 equipId = 4;
+	repeated SkillInfo skill = 5;
+	optional int32 value = 6;
+	optional int32 star = 7;
+	optional int32 heroId = 8;
+	optional int32 position = 9;//useless
+	optional bool isLock = 10;
+	optional int32 count = 11;
+	repeated ClearInfo clear = 12;
+	optional int32 strengthen = 13;
+	optional int32 rank = 14;
+	optional string fetters = 15;
+	optional UserEquipPokede equipPokede = 16;
 }
 
-message Msg {
-	required int32 id = 1;
-	required string content = 2;
+message RewardInfo {
+	optional int32 itemid = 1;
+	optional string itemname = 2;
+	optional int64 count = 3;
+	optional int32 weight = 4;
+	optional int32 counta = 5;
+	optional int32 countb = 6;
+	optional string item = 7;
 }
 
-////////// Shop
-message ServerData {
-	optional int64 AreaBossRefreshTime = 1;
+message MultiReward {
+	optional int32 id = 1;
+	optional string name = 2;
+	repeated RewardInfo loot = 3;
 }
-
+////////// ShopProto
 message ContractWeightList {
 	repeated ContractWeight quality = 1;
 }
@@ -290,6 +249,62 @@ message ShopWill {
 }
 message ShopWillList {
 	repeated ShopWill shop = 1;
+}
+
+message LadderChongzhi {
+	optional int32 count = 1;
+	optional int32 currency = 2;
+	optional int32 cost = 3;
+}
+message LadderChongzhiList {
+	repeated LadderChongzhi count = 1;
+}
+
+message Cdkey {
+	required int32 id = 1;
+	optional string name = 2;
+	optional int32 itemid1 = 3;
+	optional int32 count1 = 4;
+	optional int32 itemid2 = 5;
+	optional int32 count2 = 6;
+	optional int32 itemid3 = 7;
+	optional int32 count3 = 8;
+	repeated RewardInfo reward = 9;
+	optional int32 currentCount = 10;
+	optional int32 count = 11;
+	optional int32 length = 12;
+	optional int32 used = 13;
+}
+message CdkeyList {
+	repeated Cdkey cdkey = 1;
+}
+
+message MultiRewardList {
+	repeated MultiReward region = 2;
+}
+
+message PurchaseCoinReward {
+	optional int32 daguan = 1;
+	optional int32 rewardid1 = 2;
+	optional int32 count11 = 3;
+	optional int32 count12 = 4;
+	optional int32 rewardid2 = 5;
+	optional int32 count21 = 6;
+	optional int32 count22 = 7;
+}
+
+message PurchaseCoinRewardList {
+	repeated PurchaseCoinReward gold = 1;
+}
+
+message PurchaseCoinCost {
+	optional int32 count = 1;
+	optional int32 currency = 2;
+	optional int32 cost = 3;
+}
+
+message PurchaseCoinCostList {
+	repeated PurchaseCoinCost gold = 1;
 }
 
 message RequestDailyShopCommand{//普通商店
@@ -453,98 +468,334 @@ message ResponsePurchaseCoinCommand {
 	optional int32 leftTime = 4;//当日剩余次数
 	optional int32 totalTime = 5;//次数
 }
-
-message Cdkey {
-	required int32 id = 1;
-	optional string name = 2;
-	optional int32 itemid1 = 3;
-	optional int32 count1 = 4;
-	optional int32 itemid2 = 5;
-	optional int32 count2 = 6;
-	optional int32 itemid3 = 7;
-	optional int32 count3 = 8;
-	repeated RewardInfo reward = 9;
-	optional int32 currentCount = 10;
-	optional int32 count = 11;
-	optional int32 length = 12;
-	optional int32 used = 13;
-}
-message CdkeyList {
-	repeated Cdkey cdkey = 1;
+////////// HeroProto
+message UserHero {
+	required int64 userId = 1;
+	required int32 heroId = 2;
+	repeated HeroInfo heroInfo = 3;
 }
 
-message PurchaseCoinReward {
-	optional int32 daguan = 1;
-	optional int32 rewardid1 = 2;
-	optional int32 count11 = 3;
-	optional int32 count12 = 4;
-	optional int32 rewardid2 = 5;
-	optional int32 count21 = 6;
-	optional int32 count22 = 7;
+message FenjieHeroInfo {
+	required int32 heroId = 1;
+	required int64 infoId = 2;
 }
 
-message PurchaseCoinRewardList {
-	repeated PurchaseCoinReward gold = 1;
+message HeroRareLevelupList {
+	repeated HeroRareLevelup id = 1;
 }
 
-message PurchaseCoinCost {
-	optional int32 count = 1;
-	optional int32 currency = 2;
-	optional int32 cost = 3;
+message HeroRareLevelup {
+	optional int32 id = 1;
+	optional int32 position = 2;
+	repeated HeroRareLevelupRank rank = 3;	
 }
 
-message PurchaseCoinCostList {
-	repeated PurchaseCoinCost gold = 1;
+message HeroRareLevelupRank {
+	optional int32 rank = 1;
+	optional int32 equip1 = 4;
+	optional int32 count1 = 5;
+	optional int32 equip2 = 6;
+	optional int32 count2 = 7;
+	optional int32 equip3 = 8;
+	optional int32 count3 = 9;
+	optional int32 equip4 = 10;
+	optional int32 count4 = 11;
+	optional int32 equip5 = 12;
+	optional int32 count5 = 13;
+	optional int32 zhanli = 14;
+	optional int32 levelrequire = 15;
 }
 
-message JewelPool {
+message HeroFettersOrderList {
+	repeated HeroFettersOrder order = 1;
+}
+
+message HeroFettersOrder {
 	optional int32 order = 1;
+	optional int32 id = 2;
+	repeated HeroFetters fetters = 3;
+}
+
+message HeroFetters {
+	optional int32 fettersid = 1;
+	optional string fettersdes = 2;
+	repeated HeroFetter hero = 3;
+}
+
+message HeroFetter {
+	optional int32 heroid = 1;
+	optional int32 herostar = 2;
+	optional int32 herorank = 3;
+}
+
+message HeroChoiceList {
+	repeated HeroChoice id = 1;
+}
+
+message HeroChoice {
+	required int32 id = 1;
+	required int32 heroid = 2;
+	required string description = 3;
+	required int32 level1_1 = 4;
+	required int32 level1_2 = 5;
+	required int32 level2_1 = 6;
+	required int32 level2_2 = 7;
+	required int32 level3_1 = 8;
+	required int32 level3_2 = 9;
+	optional int32 level4 = 10;
+	optional int32 level5 = 11;
+	optional int32 level6 = 12;
+	optional int32 level7 = 13;
+}
+
+message ClearLevelList {
+	repeated ClearLevel level = 1;
+}
+
+message ClearLevel {
+	optional int32 level = 1;
 	optional int32 zhanli = 2;
-	optional string description = 3;
-	optional int32 rewardid = 4;
-	optional int32 rewardcount = 5;
-	optional int32 rewarded = 6;
-	optional int32 recharged = 7;
+	optional int32 count = 3;
 }
 
-message JewelPoolList {
-	repeated JewelPool order = 1;
+message ClearFoodList {
+	repeated ClearFood food = 1;
 }
 
-////////// Hero
-message LadderChongzhi {
-	optional int32 count = 1;
-	optional int32 currency = 2;
+message ClearFood {
+	optional int32 id = 1;
+	optional int32 count = 2;
 	optional int32 cost = 3;
 }
-message LadderChongzhiList {
-	repeated LadderChongzhi count = 1;
+
+message ClearHeroList {
+	repeated ClearHero hero = 1;
 }
 
-message ClearInfo {
-	required int32 position = 1;
-	required int32 clearId = 2;
-	required int32 count = 3;
-	optional int32 id = 4;
-	optional int32 rare = 5;
+message ClearHero {
+	optional int32 id = 1;
+	optional int32 handbook = 2;
+	optional int32 verylove1 = 3;
+	optional int32 love1 = 4;
+	optional int32 love2 = 6;
+	optional int32 normal1 = 5;
+	optional int32 normal2 = 7;
+	optional int32 normal3 = 8;
 }
 
-message HeroInfo {
-	optional int64 infoId = 1;
+message ClearAttributeList {
+	repeated ClearAttribute attribute = 1;
+}
+
+message ClearAttribute {
+	optional int32 id = 1;
+	optional int32 position = 2;
+	optional int32 zuanshi = 3;
+	repeated ClearAttributeOrder order = 4;
+}
+
+message ClearAttributeOrder {
+	optional int32 order = 1;
+	optional int32 type = 2;
+	optional int32 weight = 3;
+	optional int32 count1 = 4;
+	optional int32 count2 = 5;
+	optional int32 interval = 6;
+	optional int32 rare = 7;
+}
+
+message ClearCostList {
+	repeated ClearCost id = 1;
+}
+
+message ClearCost {
+	optional int32 id = 1;
+	optional int32 quality = 2;
+	optional int32 itemid1 = 3;
+	optional int32 itemcount1 = 4;
+	optional int32 itemid2 = 5;
+	optional int32 itemcount2 = 6;
+	optional int32 itemid3 = 7;
+	optional int32 itemcount3 = 8;
+}
+
+message AllheroData {
+	repeated AllheroList id = 1;
+}
+
+message AllheroList {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional int32 img = 3;
+	optional int32 rare = 4;
+	repeated Allhero hero = 5;
+}
+
+message Allhero {
+	optional int32 heroid = 1;
+}
+
+message TalentOrder {
+	optional int32 order = 1;
+	optional int32 skill1 = 2;
+	optional int32 skill2 = 3;
+	optional int32 skill3 = 4;
+}
+
+message Talent {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional string img = 3;
+	repeated TalentOrder order = 4;
+}
+
+message TalentList {
+	repeated Talent id = 1;
+}
+
+message Talentupgrade {
+	optional int32 level = 1;
+	optional int32 itemid = 2;
+	optional int32 itemcount = 3;
+}
+
+message TalentupgradeList {
+	repeated Talentupgrade level = 1;
+}
+
+message Talentunlock {
+	optional int32 order = 1;
 	optional int32 level = 2;
-	optional int32 rare = 3;
-	optional string equipInfo = 4;
-	repeated SkillInfo skill = 5;
-	optional int32 value = 6;
-	optional int32 star = 7;
-	optional int32 heroId = 8;
-	optional int32 position = 9;//useless
-	optional bool isLock = 10;
-	optional int32 count = 11;
-	repeated ClearInfo clear = 12;
-	optional int32 strengthen = 13;
-	optional int32 rank = 14;
-	optional string fetters = 15;
+}
+
+message TalentunlockList {
+	repeated Talentunlock order = 1;
+}
+
+message UserTalentList {
+	repeated UserTalent userTalent = 1;
+}
+
+message UserTalentSkill {
+	required int32 talentId = 1;
+	required int32 orderId = 2;
+	required int32 skillId = 3;
+	required int32 level = 4;
+}
+
+message HeroList {
+	repeated Hero id = 1;
+}
+
+message Hero {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional int32 img = 3;
+	optional string description = 4;
+	optional int32 quality = 5;
+	optional int32 position = 6;
+	optional int32 handbook = 7;
+	optional int32 hp = 8;
+	optional int32 vit = 9;
+	optional int32 power = 10;
+	optional int32 def = 11;
+	optional int32 ad = 12;
+	optional int32 ap = 13;
+	optional int32 arm = 14;
+	optional int32 mr = 15;
+	repeated HeroSkill skill = 16;
+}
+
+message HeroSkill {
+	optional int32 skillid = 1;
+	optional string skill = 2;	
+	optional int32 unlock = 3;
+}
+
+message UpgradeList {
+	repeated Upgrade level = 1;
+}
+
+message Upgrade {
+	optional int32 level = 1;
+	optional int32 sp = 2;
+	optional int64 exp = 3;
+	optional float hp = 4;
+	optional float arm = 5;
+	optional float mr = 6;
+	optional float ad = 7;
+	optional float ap = 8;
+}
+
+message UserFood {
+	required int32 foodId = 1;
+	required int32 count = 2;
+}
+
+message StrengthenList {
+	repeated Strengthen id = 1;
+}
+
+message Strengthen {
+	optional int32 id = 1;
+	optional int32 zhanli_per = 2;
+	optional int32 itemid = 3;
+	optional int32 count = 4;
+	optional int32 success = 5;
+}
+
+message HerolootList {
+	repeated Heroloot id = 1;
+}
+
+message Heroloot {
+	optional int32 itemid = 1;
+	optional int32 heroid = 2;
+	optional int32 star = 3;
+	optional int32 count = 4;
+	optional string name = 5;
+	optional string description = 6;
+}
+
+message RequestLockHeroCommand {
+	required int32 heroId = 2;
+	required int64 infoId = 3;
+	optional bool isLock = 4;
+}
+
+message RequestHeroLevelUpToCommand {
+	required int32 levelUp = 1;
+	required int32 heroId = 2;
+	required int64 infoId = 3;
+}
+
+message RequestHeroLevelUpCommand {
+	required int32 levelUpType = 1; //1:level 2:star 3:rare 4:skill
+	required int32 heroId = 2;
+	required int64 infoId = 3;
+	optional int32 skillId = 4;
+	repeated int64 costInfoId = 5;
+}
+
+message ResponseHeroResultCommand {
+	required int32 heroId = 1;
+	repeated HeroInfo heroInfo = 2;
+}
+
+message ResponseDeleteHeroCommand {
+	repeated FenjieHeroInfo heroInfo = 1;
+}
+
+message RequestResetHeroSkillCommand {
+	required int32 heroId = 1;
+	required int64 infoId = 2;
+}
+
+message Team {
+	optional UserInfo user = 1;
+	repeated HeroInfo heroInfo = 2;
+	optional string composeSkill = 3;
+	optional UserTalent userTalent = 4;
 }
 
 message UserTeam {
@@ -553,16 +804,266 @@ message UserTeam {
 	optional string composeSkill = 3;
 }
 
-message UserHero {
+message RequestGetTeamCommand {
 	required int64 userId = 1;
-	required int32 heroId = 2;
-	repeated HeroInfo heroInfo = 3;
 }
 
-message Team {
-	optional UserInfo user = 1;
-	repeated HeroInfo heroInfo = 2;
+message ResponseGetTeamCommand {
+	required Team team = 1;
+}
+
+message TeamUnlock {//出战人数解锁
+	required int32 id = 1;//普通关卡id
+	required int32 count = 2;//出战人数
+}
+
+message RequestUpdateTeamCommand {
+	required int64 id = 1;
+	required string teamInfo = 2;
 	optional string composeSkill = 3;
+}
+
+message RequestUserTeamListCommand {
+
+}
+
+message ResponseUserTeamListCommand {
+	repeated UserTeam userTeam = 1;
+}
+
+message TeamUnlockList {
+	repeated TeamUnlock xiaoguan = 1;
+}
+
+message ResponseGetUserHeroCommand {
+	repeated HeroInfo userHero = 1;
+}
+
+message RequestFenjieHeroCommand {
+	repeated FenjieHeroInfo fenjieHero = 1;
+}
+
+message RequestUserPokedeCommand {
+
+}
+
+message ResponseUserPokedeCommand {
+	repeated HeroInfo pokede = 1;
+}
+
+message RequestBuyHeroPackageCommand {
+	
+}
+
+message RequestSubmitComposeSkillCommand {
+	required string composeSkill = 1;
+}
+
+message RequestFeedFoodCommand {
+	required int32 heroId = 1;
+	required int32 foodId = 2;
+	required int32 foodCount = 3;
+}
+
+message RequestClearHeroCommand {
+	required int32 heroId = 1;
+	required int32 position = 2;
+	required int32 type = 3;
+	optional int32 count = 4;
+}
+
+message ResponseUserFoodCommand {
+	repeated UserFood userFood = 1;
+}
+
+message ResponseClearInfoCommand {
+	repeated ClearInfo clearInfo = 1;
+}
+
+message RequestChoseClearInfoCommand {
+	required bool refused = 1;
+	optional int32 id = 2;
+}
+
+message RequestHeroStrengthenCommand {
+	required int32 heroId = 1;
+}
+
+message RequestOpenFetterCommand {
+	required int32 heroId = 1;
+	required int32 fetterid = 2;	
+}
+
+message RequestZanHeroMessageBoardCommand {
+        required int32 itemId = 1;
+        required string id = 2;
+        required bool zan = 3;//true:dianzan false:quxiao
+}
+
+message RequestTalentupgradeCommand {
+	required int32 id = 1;
+}
+
+message RequestTalentChangeUseCommand {
+	required int32 id = 1;
+}
+
+message RequestTalentChangeSkillCommand {
+	required int32 id = 1;
+	required int32 order = 2;
+	required int32 skillId = 3;
+}
+
+message ResponseUserTalentCommand {
+	repeated UserTalent userTalent = 1;
+	repeated UserTalentSkill userTalentSkill = 2;
+}
+////////// EquipProto
+message PropList {
+	repeated Prop loot = 1;
+}
+
+message Prop {
+	optional int32 itemid = 1;
+	optional string name = 2;
+	optional int32 img = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 hashero = 6;
+	optional int32 judge = 7;
+	optional string endtime = 8;
+	optional int32 bossid = 9;
+	optional int32 itemcount = 10;
+	optional int32 weightall = 11;
+	repeated RewardInfo item = 12;
+}
+
+message ChipList {
+	repeated Chip id = 1;
+}
+
+message Chip {
+	required int32 itemid = 1;
+	required string itemname = 2;
+	required int32 img = 3;
+	required int32 rare = 4;
+	required int32 cost = 5;
+	optional string description = 7;
+	optional int32 aim = 8;
+	optional int32 count = 9;
+	optional int32 lootid1 = 10;
+	optional int32 loot1 = 11;
+	optional int32 lootid2 = 12;
+	optional int32 loot2 = 13;
+	optional int32 lootid3 = 14;
+	optional int32 loot3 = 15;
+}
+
+message EquipList {
+	repeated Equip id = 1;
+}
+
+message Equip {
+	optional int32 itemid = 1;
+	optional string name = 2;
+	optional int32 level = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 type = 6;
+	optional int32 zhanli = 7;
+	optional int32 ad = 8;
+	optional int32 ap = 9;
+	optional int32 skill = 10;
+}
+
+message EquiptucaoList {
+	repeated Equiptucao equip = 1;
+}
+
+message Equiptucao {
+	optional int32 itemid = 1;
+	optional string itemname = 2;
+	optional int32 rare = 3;
+}
+
+message RequestAddHeroEquipCommand {
+	required int32 heroId = 1;
+	required int64 infoId = 2;
+	optional int32 equipId = 3;
+}
+
+message RequestEquipComposeCommand {
+	required int32 levelUpId = 1;
+	optional int32 count = 2;
+}
+
+message ResponseEquipComposeCommand {
+	required int32 equipId = 1;
+	required int32 count = 2;
+}
+
+message ResponseGetUserEquipCommand {
+        repeated UserEquip userEquip = 1;
+}
+
+message ArmorList {
+	repeated Armor id = 1;
+}
+
+message Armor {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional int32 level = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 type = 6;
+	optional int32 zhanli = 7;
+	optional int32 arm = 8;
+	optional int32 mr = 9;
+	optional int32 reelement = 10;
+	optional int32 ad = 11;
+	optional int32 ap = 12;
+	optional int32 adi = 13;
+	optional int32 api = 14;
+	optional int32 rating = 15;
+	optional int32 ratingdamage = 16;
+	optional int32 fireup = 17;
+	optional int32 iceup = 18;
+	optional int32 lightup = 19;
+	optional int32 darkup = 20;
+	optional int32 atk_damage = 21;
+	optional int32 duochong = 22;
+	optional string skill = 23;
+}
+
+message EquipIncreaseList {
+	repeated EquipIncrease level = 1;
+}
+
+message EquipIncrease {
+	optional int32 level = 1;
+	optional float increase = 2;
+	optional int32 rate = 3;
+	optional int32 zero = 4;
+	repeated CostItem cost = 5;
+}
+
+message CostItem {
+	optional int32 costid = 1;
+	optional int32 costcount = 2;
+}
+
+message Item {
+	required int32 itemId = 1;
+	required int32 itemCount = 2;
+}
+
+message RequestSaleEquipCommand {
+	repeated Item item = 1;
+}
+
+message RequestSubmitZhanliCommand {
+	required int32 zhanli = 1;
 }
 
 message UserEquip {
@@ -576,212 +1077,46 @@ message UserProp {
 	optional string expiredTime = 3;
 }
 
-message SkillInfo {
-	required int32 skillId = 1;
-	required int32 skillLevel = 2;
+message ResponseUserPropCommand { //玩家道具列表
+	repeated UserProp userProp = 1;
 }
 
-message UserMine {
-	required int32 mapId = 1;
-	required int32 mineId = 2;
-	optional int64 relatedUserId = 3;
-	optional int64 preventTime = 4;
-	optional int32 level = 5;
+message RequestUsePropCommand { //打开道具包
+	required int32 propId = 1;
+	required int32 propCount = 2;
 }
 
-////////// Union
-message Union {
+message ResponseUsePropCommand {
+	repeated UserProp userProp = 1;
+}
+
+message RequestFenjieEquipCommand {
+	required int32 equipId = 1;
+	required int32 equipCount = 2;
+}
+
+message ResponseEquipResultCommand {
+	repeated UserEquip userEquip = 1;
+}
+
+message RequestEquipStrenthenCommand {
+	required int32 itemId = 1;
+}
+
+message RequestEquipPokedeCommand {
+
+}
+
+message ResponseEquipPokedeCommand {
+	repeated UserEquipPokede userEquipPokede = 1; 
+}
+
+message RequestTalentChangeEquipCommand {
 	required int32 id = 1;
-	required string name = 2;
-	required int32 icon = 3;
-	required int32 level = 4;
-	optional int32 zhanli = 5;
-	optional int32 rank = 6;
-	optional int32 point = 7;
-	optional int32 count = 8;
-	optional int32 maxCount = 9;
-	repeated UserInfo members = 10;
-	repeated UnionApply applies = 11;
-	optional int32 attackId = 12;
-	optional int64 attackEndTime = 13;
-	optional int64 attackCloseTime = 14;
-	optional int32 defendId = 15;
-	optional int64 defendEndTime = 16;
-	optional int64 defendCloseTime = 17;
-	repeated UserInfo attacks = 18;
-	repeated UserInfo defends = 19;
-	optional bool isApply = 20;
-	optional string killMonsterRecord = 21;
-	optional string costRecord = 22;
-	repeated UnionBossRecord unionBoss = 23;
-	optional string bossRecord = 24;
-	optional string bossEndTime = 25;
+	required int32 position = 2;
+	required int32 itemId = 3;
 }
-
-message UnionApply {
-	required int64 id = 1;
-	required UserInfo user = 2;
-	required int64 endTime = 3;
-	optional int64 timestamp = 4;
-}
-
-////////// Area
-message AreaEquip {//区域道具
-	required int32 id = 1;//道具ID
-	optional string name = 2;//名称
-	optional int32 img = 3;//形象ID
-	optional string description = 4;//描述
-	optional int32 type = 5;//适用区域
-	optional int32 layer = 6;//限制层数
-	optional int32 time = 7;//持续时间
-	optional int32 skill = 8;//对应技能
-	optional int32 count = 10;//拥有数量
-	optional int64 primaryId = 12;
-}
-
-message AreaBuffList {
-	repeated AreaBuff skill = 1;
-}
-message AreaBuff {//区域BUFF
-	optional int32 belongto = 5;//适用区域
-	optional int32 skillid = 8;//对应技能
-	optional int32 level = 9;//当前层数
-	optional int32 time = 10;//持续时间
-	optional int64 endTime = 11;//结束时间
-	optional int32 countlimit = 12;//层数上限
-	optional int32 bufftype = 13;//buff所属
-}
-
-message AreaEquipList {
-	repeated AreaEquip equip = 1;
-}
-
-message AreaResource {//区域资源点
-	required int32 id = 1;//资源点ID
-	required string name = 2;
-	optional int32 belongto = 3;//区域ID
-	optional int32 x = 4;//坐标x
-	optional int32 y = 5;//坐标y
-	optional int32 yield = 6;//开采产量
-	optional int32 bossid = 8;//资源点BOSS
-	///////////////////////////////////
-	optional int32 state = 10;//争夺状态:0正常，1准备战斗
-	optional int64 endtime = 11;//该阶段结束时间
-	optional int64 starttime = 18;//该阶段开始报名时间
-	optional int64 closetime = 19;//该阶段结束报名时间
-	optional UserInfo owner = 12;//占领玩家
-	optional int32 attackerId = 13;//进攻公会
-	optional int32 warDefended = 14;//抵挡波数
-	repeated UserInfo attacks = 15;//进攻方
-	repeated UserInfo defenses = 16;//防守方
-	repeated string message = 17;//进攻信息
-	optional int64 lastRewardTime = 20;//上轮奖励发放时间
-}
-
-message AreaResourceList {
-	repeated AreaResource region = 1;
-}
-
-message AreaBoss {//区域世界BOSS
-	required int32 id = 1;
-	required string name = 2;
-	optional int32 belongto = 3;//区域ID
-	optional int32 x = 4;//坐标x
-	optional int32 y = 5;//坐标y
-	optional int32 positionid = 13;//坐标
-	optional int32 group = 6;
-	optional int32 hpMax = 7;//最大血量
-	optional int32 turn = 8;//回合限制
-	optional int32 count = 9;//次数限制
-	optional int32 pl = 10;
-	optional string img = 11;
-	optional int32 bosslv = 12;
-	///////////////////////////////////
-	optional int32 hp = 14;//当前血量
-	optional UserInfo owner = 15;//击杀者
-	repeated Rank ranks = 16;//伤害排行
-}
-
-message AreaBossList {
-	repeated AreaBoss region = 1;
-}
-
-message AreaRefresh {
-	required int32 level = 1;
-	required int32 time = 2;
-	required int32 limit = 3;
-}
-
-message AreaRefreshList {
-	repeated AreaRefresh level = 1;
-}
-
-message AreaRefresh2 {
-	required int32 time = 1;
-	required int32 group = 2;
-	required int32 count = 3;
-	required int32 condition = 4;
-	optional int32 enemyid = 5;
-}
-
-message AreaRefresh2List {
-	required int32 id = 1;
-	repeated AreaRefresh2 time = 2;
-}
-
-message AreaRefresh2Lists {
-	repeated AreaRefresh2List region = 1;
-}
-
-message AreaMonster {//区域怪物
-	required int32 id = 1;
-	required string name = 2;
-	optional int32 belongto = 3;//区域ID
-	optional int32 positionid = 9;
-	optional int32 x = 4;//坐标x
-	optional int32 y = 5;//坐标y
-	optional int32 level = 8;
-	optional int32 level1 = 11;
-	optional int32 weight = 10;
-	optional int32 pl = 12;
-	optional float level2 = 13;
-}
-
-message AreaMonsterList {
-	repeated AreaMonster region = 1;
-	optional int32 weightall = 2;
-}
-
-message Position {
-	optional int32 position = 1;
-	optional int32 x = 2;
-	optional int32 y = 3;
-}
-
-message AreaPosition {
-	required int32 id = 1;
-	repeated Position position = 2;
-}
-
-message AreaPositionList {
-	repeated AreaPosition region = 1;
-}
-
-message FightDamage {
-	required int64 userId = 1;
-	required int32 damage = 2;
-}
-
-message FightResult {
-	required int32 result = 1;
-	optional FightDamage win = 2;
-	optional FightDamage lose = 3;
-}
-
-message FightResultList {
-	repeated FightResult list = 1;
-}
-
+////////// PVPProto
 message PVPMonsterReward {//pvp怪物奖励
 	required int32 id = 1;
 	optional string name = 2;
@@ -877,73 +1212,6 @@ message PVPMapList{
 	optional int32 buff = 2;
 }
 
-message WeightReward {
-	optional int32 order = 100;
-	optional int32 itemcount = 1;
-	optional int32 weightall = 2;
-	optional int32 itemid1 = 3;
-	optional int32 count1a = 4;
-	optional float count1b = 5;
-	optional int32 weight1a = 6;
-	optional float weight1b = 8;
-	optional string itemid2 = 9;
-	optional string count2a = 10;
-	optional string count2b = 11;
-	optional string weight2a = 12;
-	optional string weight2b = 13;
-	optional string itemid3 = 14;
-	optional string count3a = 15;
-	optional string count3b = 16;
-	optional string weight3a = 17;
-	optional string weight3b = 18;
-}
-
-message AreaMonsterReward {
-	required int32 id = 1;
-	repeated WeightReward loot = 2;
-}
-
-message AreaMonsterRewardList {
-	repeated AreaMonsterReward region = 1;
-}
-
-message AreaRankReward {
-	required int32 ranking = 1;
-	optional int32 itemid1 = 2;
-	optional int32 count1 = 3;
-	optional int32 itemid2 = 4;
-	optional int32 count2 = 5;
-	optional int32 itemid3 = 6;
-	optional int32 count3 = 7;
-	repeated RewardInfo reward = 8;
-}
-
-message AreaBossReward {
-	required int32 id = 1;
-	optional string name = 2;
-	repeated AreaRankReward ranking = 3;
-}
-
-message AreaBossRewardList {
-	repeated AreaBossReward boss = 1;
-}
-
-message AreaInfo {//可争夺区域
-	required int32 id = 1;//区域ID
-	optional string name = 2;
-	optional int32 zhanli = 3;//开放所需等级
-	optional bool opened = 7;//是否开放
-	repeated AreaResource resources = 4;//区域资源点
-	repeated AreaBoss bosses = 5;//区域BOSS
-	repeated AreaMonster monsters = 6;//区域怪物
-	optional int32 level = 8;
-	optional int32 zhanlicount = 9;
-}
-
-message AreaMode {//区域争夺
-	repeated AreaInfo region = 1;//区域
-}
-
 message RequestUnlockPVPMapCommand {//解锁PVP区域
 	required int32 fieldid = 1;
 	required int32 zhanli = 2;
@@ -1016,8 +1284,304 @@ message ResponsePVPMapListCommand {//挂机PVP列表
 	optional int64 endTime = 2;
 	optional int32 buff = 3;
 }
+////////// AreaProto
+message WeightReward {
+	optional int32 order = 100;
+	optional int32 itemcount = 1;
+	optional int32 weightall = 2;
+	optional int32 itemid1 = 3;
+	optional int32 count1a = 4;
+	optional float count1b = 5;
+	optional int32 weight1a = 6;
+	optional float weight1b = 8;
+	optional string itemid2 = 9;
+	optional string count2a = 10;
+	optional string count2b = 11;
+	optional string weight2a = 12;
+	optional string weight2b = 13;
+	optional string itemid3 = 14;
+	optional string count3a = 15;
+	optional string count3b = 16;
+	optional string weight3a = 17;
+	optional string weight3b = 18;
+}
 
-////////// Mohua
+message AreaMonsterReward {
+	required int32 id = 1;
+	repeated WeightReward loot = 2;
+}
+
+message AreaMonsterRewardList {
+	repeated AreaMonsterReward region = 1;
+}
+
+message AreaRankReward {
+	required int32 ranking = 1;
+	optional int32 itemid1 = 2;
+	optional int32 count1 = 3;
+	optional int32 itemid2 = 4;
+	optional int32 count2 = 5;
+	optional int32 itemid3 = 6;
+	optional int32 count3 = 7;
+	repeated RewardInfo reward = 8;
+}
+
+message AreaBossReward {
+	required int32 id = 1;
+	optional string name = 2;
+	repeated AreaRankReward ranking = 3;
+}
+
+message AreaBossRewardList {
+	repeated AreaBossReward boss = 1;
+}
+
+message AreaInfo {//可争夺区域
+	required int32 id = 1;//区域ID
+	optional string name = 2;
+	optional int32 zhanli = 3;//开放所需等级
+	optional bool opened = 7;//是否开放
+	repeated AreaResource resources = 4;//区域资源点
+	repeated AreaBoss bosses = 5;//区域BOSS
+	repeated AreaMonster monsters = 6;//区域怪物
+	optional int32 level = 8;
+	optional int32 zhanlicount = 9;
+}
+
+message AreaMode {//区域争夺
+	repeated AreaInfo region = 1;//区域
+}
+
+message AreaEquip {//区域道具
+	required int32 id = 1;//道具ID
+	optional string name = 2;//名称
+	optional int32 img = 3;//形象ID
+	optional string description = 4;//描述
+	optional int32 type = 5;//适用区域
+	optional int32 layer = 6;//限制层数
+	optional int32 time = 7;//持续时间
+	optional int32 skill = 8;//对应技能
+	optional int32 count = 10;//拥有数量
+	optional int64 primaryId = 12;
+}
+
+message AreaBuffList {
+	repeated AreaBuff skill = 1;
+}
+message AreaBuff {//区域BUFF
+	optional int32 belongto = 5;//适用区域
+	optional int32 skillid = 8;//对应技能
+	optional int32 level = 9;//当前层数
+	optional int32 time = 10;//持续时间
+	optional int64 endTime = 11;//结束时间
+	optional int32 countlimit = 12;//层数上限
+	optional int32 bufftype = 13;//buff所属
+}
+
+message AreaEquipList {
+	repeated AreaEquip equip = 1;
+}
+
+message AreaResource {//区域资源点
+	required int32 id = 1;//资源点ID
+	required string name = 2;
+	optional int32 belongto = 3;//区域ID
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+	optional int32 yield = 6;//开采产量
+	optional int32 bossid = 8;//资源点BOSS
+	optional int32 state = 10;//争夺状态:0正常，1准备战斗
+	optional int64 endtime = 11;//该阶段结束时间
+	optional int64 starttime = 18;//该阶段开始报名时间
+	optional int64 closetime = 19;//该阶段结束报名时间
+	optional UserInfo owner = 12;//占领玩家
+	optional int32 attackerId = 13;//进攻公会
+	optional int32 warDefended = 14;//抵挡波数
+	repeated UserInfo attacks = 15;//进攻方
+	repeated UserInfo defenses = 16;//防守方
+	repeated string message = 17;//进攻信息
+	optional int64 lastRewardTime = 20;//上轮奖励发放时间
+}
+
+message AreaResourceList {
+	repeated AreaResource region = 1;
+}
+
+message AreaBoss {//区域世界BOSS
+	required int32 id = 1;
+	required string name = 2;
+	optional int32 belongto = 3;//区域ID
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+	optional int32 positionid = 13;//坐标
+	optional int32 group = 6;
+	optional int32 hpMax = 7;//最大血量
+	optional int32 turn = 8;//回合限制
+	optional int32 count = 9;//次数限制
+	optional int32 pl = 10;
+	optional string img = 11;
+	optional int32 bosslv = 12;
+	optional int32 hp = 14;//当前血量
+	optional UserInfo owner = 15;//击杀者
+	repeated Rank ranks = 16;//伤害排行
+}
+
+message AreaBossList {
+	repeated AreaBoss region = 1;
+}
+
+message AreaRefresh {
+	required int32 level = 1;
+	required int32 time = 2;
+	required int32 limit = 3;
+}
+
+message AreaRefreshList {
+	repeated AreaRefresh level = 1;
+}
+
+message AreaRefresh2 {
+	required int32 time = 1;
+	required int32 group = 2;
+	required int32 count = 3;
+	required int32 condition = 4;
+	optional int32 enemyid = 5;
+}
+
+message AreaRefresh2List {
+	required int32 id = 1;
+	repeated AreaRefresh2 time = 2;
+}
+
+message AreaRefresh2Lists {
+	repeated AreaRefresh2List region = 1;
+}
+
+message AreaMonster {//区域怪物
+	required int32 id = 1;
+	required string name = 2;
+	optional int32 belongto = 3;//区域ID
+	optional int32 positionid = 9;
+	optional int32 x = 4;//坐标x
+	optional int32 y = 5;//坐标y
+	optional int32 level = 8;
+	optional int32 level1 = 11;
+	optional int32 weight = 10;
+	optional int32 pl = 12;
+	optional float level2 = 13;
+}
+
+message AreaMonsterList {
+	repeated AreaMonster region = 1;
+	optional int32 weightall = 2;
+}
+
+message Position {
+	optional int32 position = 1;
+	optional int32 x = 2;
+	optional int32 y = 3;
+}
+
+message AreaPosition {
+	required int32 id = 1;
+	repeated Position position = 2;
+}
+
+message AreaPositionList {
+	repeated AreaPosition region = 1;
+}
+
+message FightDamage {
+	required int64 userId = 1;
+	required int32 damage = 2;
+}
+
+message FightResult {
+	required int32 result = 1;
+	optional FightDamage win = 2;
+	optional FightDamage lose = 3;
+}
+
+message FightResultList {
+	repeated FightResult list = 1;
+}
+
+message RequestAreaCommand {//区域争夺
+}
+
+message RequestRefreshAreaCommand {//重置区域
+}
+
+message RequestUnlockAreaCommand {//解锁区域
+	required int32 id = 1;
+	required int32 zhanli = 2;
+}
+
+message ResponseAreaCommand {
+	repeated AreaInfo areas = 1;
+	optional int64 endTime = 3;
+	optional bool hasreward = 2;
+}
+
+message RequestAreaResourceCommand {//区域info
+	required int32 resourceId = 1;
+}
+
+message ResponseAreaResourceCommand {
+	required AreaResource resource = 1;
+}
+
+message RequestUseAreaEquipCommand {
+	required int32 equipId = 1;
+}
+
+message ResponseAreaEquipCommand {
+	repeated AreaEquip equips = 1;
+	repeated AreaBuff buffs = 2;
+}
+
+message RequestIsAreaOwnerCommand {
+
+}
+
+message ResponseIsAreaOwnerCommand {
+	optional bool isOwner = 1;
+}
+
+message RequestAttackMonsterCommand {//区域争夺打怪物
+	required int32 positionid = 1;
+	optional bool ret = 2;
+}
+
+message RequestAttackBossCommand {//区域争夺攻击世界BOSS
+	required int32 id = 1;
+	required int32 score = 2;
+}
+
+message RequestAttackResourceCommand {//区域争夺刺杀领主/争夺领主
+	required int32 id = 1;
+	optional bool ret = 2;
+}
+
+message RequestAttackResourceMineCommand {//区域争夺占领矿点
+	required int32 id = 1;
+	required int64 teamid = 2;
+	required bool ret = 3;
+}
+
+message RequestCollectResourceMineCommand {//区域争夺收取矿点
+	optional int32 mineId = 1;
+}
+
+message RequestAttackResourceMineInfoCommand {//区域争夺矿区队伍信息
+	required int32 id = 1;
+}
+
+message ResponseAttackResourceMineInfoCommand {
+	repeated HeroInfo heroInfo = 1;
+	optional UserInfo user = 2;
+}
+////////// MohuaProto
 message MohuaCard {
 	required int32 cardId = 1;
 	required int32 cardCount = 2;
@@ -1143,29 +1707,247 @@ message RequestMohuaSubmitStageCommand {//魔化之地提交记录
 message ResponseMohuaUserDataCommand {
 	optional MohuaUserData user = 1;
 }
-////////// Achieve
-message ChipList {
-	repeated Chip chip = 1;
+////////// RechargeProto
+message Qiandao {
+	repeated Sign order = 1;
+	required int32 id = 2;
+	required string activity = 3;
 }
 
-message Chip {
+message SignList {
+	repeated Qiandao sanqian = 1;
+}
+
+message Sign {
+	required int32 order = 1;
+	optional int32 targetid = 3;
+	optional int32 targetcount = 4;
+	required int32 rewardid = 5;
+	required int32 rewardcount = 7;
+}
+
+message RequestSevenLoginSignCommand {
+	optional int32 chooseId = 1;
+}
+
+message VipLibao {
+	optional int32 itemid = 1;
+	optional string name = 2;
+	optional string img = 3;
+	optional int32 rare = 4;
+	optional string description = 5;
+	optional int32 value = 6;
+	optional int32 cost = 7;
+	repeated RewardInfo item = 8;
+}
+
+message VipLibaoList {
+	repeated VipLibao libao = 1;
+}
+
+message VipInfo {
+	optional int32 vip = 1;
+	optional int32 rmb = 2;
+	optional string effect = 3;
+	optional int32 dianjin = 4;
+	optional int32 tianti = 5;
+	optional int32 pvp = 6;
+	optional int32 quyu = 7;
+	optional int32 mohua = 8;
+	optional int32 baoxiang = 9;
+	optional int32 zhibao = 10;
+	optional int32 baohu = 11;
+	optional int32 libao1 = 12;
+	optional int32 libao2 = 13;
+	optional int32 zuanshi = 14;
+	optional int32 contract = 15;
+}
+
+message VipList {
+	repeated VipInfo vip = 1;
+}
+
+message Rmb {
+	required int32 id = 1;
+	required int32 rmb = 2;
+	required int32 itemid = 3;
+	required int32 zuanshi = 4;
+	optional string name = 5;
+	optional string description = 6;
+	optional string img = 7;
+	optional int32 type = 8;
+	optional int32 zuanshi1 = 9;
+	optional int32 costid = 10;
+}
+
+message RmbList {
+	repeated Rmb rmb = 1;
+}
+
+message ShouchongList {
+	repeated Shouchong task = 1;
+}
+
+message Shouchong {
+	required int32 id = 1;
+	required string activity = 2;
+	required int32 targetid = 3;
+	required int32 targetcount = 4;	
+	repeated ShouchongReward reward = 5;
+}
+
+message ShouchongReward {
+	required int32 rewardid = 1;
+	required int32 count = 2;
+}
+
+message RequestBuyLootPackageCommand {
+	
+}	
+
+message RequestCdkeyCommand {
+	required string key = 1;
+}
+
+message RequestSubmitIconCommand {
+	required int32 icon = 1;
+}
+
+message RequestCheatRechargeCommand{
+	optional int32 itemid = 1;
+}
+
+message RequestRechargeCommand {
 	required int32 itemid = 1;
-	required string itemname = 2;
-	required int32 img = 3;
-	required int32 rare = 4;
-	required int32 cost = 5;
-	required int32 mojing = 6;
-	optional string description = 7;
-	optional int32 aim = 8;
-	optional int32 count = 9;
-	optional int32 lootid1 = 10;
-	optional int32 loot1 = 11;
-	optional int32 lootid2 = 12;
-	optional int32 loot2 = 13;
-	optional int32 lootid3 = 14;
-	optional int32 loot3 = 15;
 }
 
+message RequestBindAccountCommand {
+	required string oldAccount = 1;
+	required string newAccount = 2;
+}
+
+message RequestPurchaseVipLibaoCommand {
+	required int32 vip = 1;
+	required int32 type = 2;
+}
+
+message RequestQueryRechargeCommand {
+	optional string orderId = 1;	
+}
+
+message RequestShouchongRewardCommand {
+
+}
+
+message RequestGetGrowJewelCommand {
+	required int32 order = 1;
+}
+message RequestGetGrowExpCommand {
+	required int32 order = 1;
+}
+
+message RequestSignCommand {
+	
+}
+
+message ResponseSignCommand {
+	repeated RewardInfo reward = 1;
+}
+////////// MessageBoardProto
+message MessageBoard {
+	required int64 id = 1;
+	required int64 timestamp = 2;
+	required int64 userId = 3;
+	required string userName = 4;
+	required string content = 5;
+	repeated Msg msg = 6;
+	required int32 icon = 7;
+	optional int32 vip = 8;
+	optional int32 job = 9;//公会职位
+	optional int32 groupId = 10;
+	optional int32 bossId = 11;
+	optional string startDate = 12;
+	optional int32 replyCount = 13;
+}
+
+message Msg {
+	required int32 id = 1;
+	required string content = 2;
+}
+
+message Notice {
+	required int32 type = 1;//1:system mail 2:friend 3:achieve 4:activity 5:maintask 6:dailytask 7:niticeboard
+	repeated int64 noticeId = 2;//留言板的id
+}
+
+message ResponseNoticeCommand {
+	repeated Notice notice = 1;
+	repeated string message = 2;	
+}
+
+message RequestQueryNoticeBoardCommand {
+	required string messageId = 1;
+}
+
+message RequestHeartBeatCommand {
+
+}
+
+message RequestGreenhandCommand {
+	optional string greenhand = 1;
+	optional int32 advance = 2;
+	optional int32 skill = 3;
+	optional int32 failed = 4;
+}
+
+message RequestLogCommand {
+	required int32 logtype = 1; //0:login 5:recharge
+	optional string phoneuuid = 2;
+	optional int32 logintype = 3;
+	optional string platform = 4;
+	optional string vendor = 5;
+	optional string model = 6;
+	optional string version = 7;
+	optional int32 currency = 8;
+	optional int32 currencyamount = 9;
+	optional int32 stage = 10;
+	optional int32 itemid = 11;
+	optional int32 action = 12;
+	optional string channel = 14;
+	optional int32 rechargetype = 15;
+	optional string idfa = 16;
+}
+
+message RequestMessageBoardListCommand { //获取所有留言板信息
+	required int32 type = 1; //1:普通的 2:公会的 3:英雄
+	optional int32 itemId = 2;//type=3时需要
+}
+
+message ResponseMessageBoardListCommand {
+	required int32 type = 1;
+	repeated MessageBoard messageBoard = 2;
+}
+
+message RequestCreateMessageBoardCommand { //创建一个新的留言板
+	required int32 type = 1;
+	optional string message = 2;
+	optional int32 groupId = 3;
+	optional int32 bossId = 4;
+	optional int32 fightId = 5;
+	optional int32 itemId = 6;//英雄和装备ID
+}
+
+message RequestReplyMessageCommand { //回复留言板
+	required int32 type = 1;
+	required string id = 2;
+	required string message = 3;
+}
+
+message ResponseMessageBoardCommand {
+	required int32 type = 1;
+	required MessageBoard messageBoard = 2;
+}
+////////// ActivityProto
 message AchieveList {
 	repeated Achieve chengjiu = 1; 
 }
@@ -1272,11 +2054,143 @@ message UserKaifu {
 	repeated KaifuOrder orderRecord = 4;
 }
 
-message FenjieHeroInfo {
-	required int32 heroId = 1;
-	required int64 infoId = 2;
+message RequestAchieveRewardCommand {
+	required int32 type = 1;
 }
 
+message RequestAchieveListCommand {
+
+}
+
+message ResponseAchieveListCommand {
+	repeated UserAchieve userAchieve = 1;
+}
+
+message RequestRichangRewardCommand {
+	required int32 id = 1;
+	required int32 order = 2;
+}
+
+message RequestRichangListCommand {
+
+}
+
+message ResponseRichangListCommand {
+	repeated UserRichang userRichang = 1;
+}
+
+message RequestKaifu2ActivityCommand {
+
+}
+
+message ResponseKaifu2ActivityCommand {
+	repeated Kaifu2Rank rank = 1;
+	required int32 accRcPs = 2;//累计充值人数
+	required int32 accRcPsRwRc = 3;//全民福利的领取记录
+}
+
+message RequestKaifuRewardCommand {
+        required int32 id = 1;
+        required int32 order = 2;
+}
+
+message ResponseKaifuRewardCommand {
+        repeated UserKaifu userKaifu = 1;
+}
+
+message RequestKaifuListCommand {
+
+}
+
+message ResponseKaifuListCommand {
+        repeated UserKaifu userKaifu = 1;
+	repeated Kaifu2Rank rank = 2;
+	repeated UserRichang userRichang = 3;
+}
+
+message RequestRankCommand {
+	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge, 4:help
+}
+
+message ResponseRankCommand {
+	repeated UserRank userRank = 1;
+}
+
+message LotteryActivityList {
+	repeated LotteryActivity lottery = 1;
+}
+
+message LotteryActivity {
+	required int32 type = 1;
+	required int32 cost = 2;
+	required int32 count = 3;
+	required int32 judge = 4;
+	required string starttime = 5;
+	required string endtime = 6;
+	repeated LotteryItem item = 7;		
+	optional string errordes = 8;
+	optional int32 id = 9;
+}
+
+message LotteryItem {
+	required int32 id = 1;
+	required int32 itemid = 2;
+	required int32 count = 3;
+	required int32 weight = 4;
+	required int32 will = 5;
+}
+
+message RequestLotteryCommand {
+	required int32 type = 1; //1001:jinbi 1002:zuanshi
+	optional int32 count = 2; //默认是10
+}
+
+message ActivityList {
+	repeated Activity activity = 1;
+}
+
+message Activity {
+	required int32 id = 1;
+	required int32 type = 2;
+	required int32 targetcount = 3;
+	required string des = 4;
+	required string starttime = 5;
+	required string endtime = 6;
+	required int32 activitytype = 7;
+	repeated RewardInfo reward = 8;
+	required string serverfilter = 9;
+}
+
+message SevenLoginList {
+	repeated SevenLogin seven = 1;
+}
+
+message SevenLogin {
+	optional int32 id = 1;
+	optional int32 targetid = 2;
+	optional int32 targetcount = 3;
+	repeated SevenOrder order = 4;
+}
+
+message SevenOrder {
+	optional int32 order = 1;
+	optional int32 itemid = 2;
+	optional int32 count = 3;
+	optional int32 choose = 4;
+}
+
+message RankvalueList {
+	repeated Rankvalue rank = 1;
+}
+
+message Rankvalue {
+	optional int32 rank = 1;
+	optional int32 sp = 2;
+	optional float def = 3;
+	optional float vit = 4;
+	optional float power = 5;
+}
+////////// LadderProto
 message LadderWinReward {
 	optional int32 id = 1;
 	optional int32 reward = 2;
@@ -1325,186 +2239,313 @@ message LadderEnemy {
 	required int32 zhanli1 = 8;
 }
 
-message TeamUnlockList {
-	repeated TeamUnlock xiaoguan = 1;
+message FightInfo {
+	optional int32 id = 3;
+	required string fightInfo = 1;
+	required string fightData = 2;
+}
+message RequestGetFightInfoCommand {
+}
+message RequestFightInfoCommand {
+	required FightInfo info = 1;
+}
+message ResponseFightInfoCommand {
+	repeated FightInfo info = 1;
 }
 
-message TeamUnlock {//出战人数解锁
-	required int32 id = 1;//普通关卡id
-	required int32 count = 2;//出战人数
+message RequestGetLadderRankListCommand {
+
 }
 
-message LootTimeList {
-	repeated LootTime xiaoguan = 1;
+message RequestGetUserLadderRankListCommand {
+
 }
 
-message LootTime {
-	required int32 xiaoguan = 1;
-	required int32 loottime = 2;
+message ResponseGetLadderRankListCommand {
+	repeated UserRank userRank = 1;
+}
+
+message ResponseGetUserLadderRankListCommand {
+	repeated UserRank userRank = 1;
+}
+
+message RequestAttackLadderModeCommand {
+	required int64 rank = 1;
+	required bool ret = 2;
+	required int64 teamId = 3;
+	optional int64 attackUserId = 4;
+}
+
+message ResponseAttackLadderModeCommand {
+	required bool ret = 1;
+	required string msg = 2;
+}
+
+message RequestReadyAttackLadderCommand {
+
+}
+
+message RequestGetLadderUserInfoCommand {
+	required uint64 rank = 1;
+}
+
+message RequestPurchaseLadderTimeCommand {
+}
+
+message ResponseGetLadderUserInfoCommand {
+	required UserRank userRank = 1;
+}
+////////// UserInfoProto
+message HeadInfo 
+{
+	required int32 version = 1;		//  0: version1.1.1 1: version1.2.0 2013-3-28
+	required int64 datetime = 2;
+	required int32 gameVersion = 3;
+	required int32 serverId = 4;
+	required string account = 5;
+	optional int64 userId = 6;
+	optional string session = 7;
+	optional string serverstarttime = 8;
+	optional int32 onlineStatus = 9;	
+}
+
+message ServerData {
+	optional int64 AreaBossRefreshTime = 1;
+}
+
+message RewardCommand {
+	optional int32 id = 1;//用于区分获得来源
+	optional string title = 2;//弹窗标题
+	repeated RewardInfo loot = 3;//奖励列表
+}
+
+message ResponseNeedRegisterCommand {
+
+}
+
+message RequestRegisterCommand {
+	required string userName = 1;
+	optional int32 icon = 2;
+	required int32 heroId = 3;
+}
+
+message RequestUserInfoCommand {
+
+}
+
+message RequestLoginCommand {
+}
+
+message ResponseUserInfoCommand {
+	required UserInfo user = 1;
 }
 
 message UserHead {
 	required int32 headId = 2;
 }
 
-message LotteryActivityList {
-	repeated LotteryActivity lottery = 1;
+message ResponseUserHeadCommand {
+	repeated UserHead userHead = 1;
 }
 
-message LotteryActivity {
-	required int32 type = 1;
-	required int32 cost = 2;
-	required int32 count = 3;
-	required int32 judge = 4;
-	required string starttime = 5;
-	required string endtime = 6;
-	repeated LotteryItem item = 7;		
-	optional string errordes = 8;
-	optional int32 id = 9;
+message ResponsePopupCommand {
+	required int32 popScreen = 1;//1. main menu;
+	optional string flowID = 2;
+	required string text = 3;
+	optional string heading = 4;
+	optional string yesButtonID = 5;
+	optional string noButtonID = 6;
 }
 
-message LotteryItem {
-	required int32 id = 1;
-	required int32 itemid = 2;
-	required int32 count = 3;
-	required int32 weight = 4;
-	required int32 will = 5;
+message Area {
+	optional int32 areaid = 1;
+	optional string name = 2;
+	repeated Daguan id = 3;
 }
-
-message RmbList {
-	repeated Rmb rmb = 1;
+message AreaList {
+	repeated Area area = 1;
 }
-
-message Rmb {
-	required int32 id = 1;
-	required int32 rmb = 2;
-	required int32 itemid = 3;
-	required int32 zuanshi = 4;
-	optional string name = 5;
-	optional string description = 6;
-	optional string img = 7;
-	optional int32 type = 8;
-	optional int32 zuanshi1 = 9;
-	optional int32 costid = 10;
-}
-
-message HeroChoiceList {
-	repeated HeroChoice id = 1;
-}
-
-message HeroChoice {
-	required int32 id = 1;
-	required int32 heroid = 2;
-	required string description = 3;
-	required int32 level1_1 = 4;
-	required int32 level1_2 = 5;
-	required int32 level2_1 = 6;
-	required int32 level2_2 = 7;
-	required int32 level3_1 = 8;
-	required int32 level3_2 = 9;
-	optional int32 level4 = 10;
-	optional int32 level5 = 11;
-	optional int32 level6 = 12;
-	optional int32 level7 = 13;
-}
-
-message ShouchongList {
-	repeated Shouchong task = 1;
-}
-
-message Shouchong {
-	required int32 id = 1;
-	required string activity = 2;
-	required int32 targetid = 3;
-	required int32 targetcount = 4;	
-	repeated ShouchongReward reward = 5;
-}
-
-message ShouchongReward {
-	required int32 rewardid = 1;
-	required int32 count = 2;
-}
-
-message Notice {
-	required int32 type = 1;//1:system mail 2:friend 3:achieve 4:activity 5:maintask 6:dailytask 7:niticeboard
-	repeated int64 noticeId = 2;//留言板的id
-}
-
-message ActivityList {
-	repeated Activity activity = 1;
-}
-
-message Activity {
-	required int32 id = 1;
-	required int32 type = 2;
-	required int32 targetcount = 3;
-	required string des = 4;
-	required string starttime = 5;
-	required string endtime = 6;
-	required int32 activitytype = 7;
-	repeated RewardInfo reward = 8;
-	required string serverfilter = 9;
-}
-
-message ClearLevelList {
-	repeated ClearLevel level = 1;
-}
-
-message ClearLevel {
-	optional int32 level = 1;
-	optional int32 zhanli = 2;
-	optional int32 count = 3;
-}
-
-message ClearFoodList {
-	repeated ClearFood food = 1;
-}
-
-message ClearFood {
+message Daguan {
 	optional int32 id = 1;
-	optional int32 count = 2;
-	optional int32 cost = 3;
+	optional string name = 2;
+	optional string des = 3;
+	optional int32 count = 4;
+	optional int32 gold = 5;
+	optional int32 experience = 6;
+	optional string bg = 7;
+	optional string layer = 8;
+	optional int32 areaid = 9;
+	repeated RewardInfo item = 10;
 }
-
-message ClearHeroList {
-	repeated ClearHero hero = 1;
+message DaguanList {
+	repeated Daguan id = 1;
 }
-
-message ClearHero {
-	optional int32 id = 1;
-	optional int32 handbook = 2;
-	optional int32 verylove1 = 3;
-	optional int32 love1 = 4;
-	optional int32 love2 = 6;
-	optional int32 normal1 = 5;
-	optional int32 normal2 = 7;
-	optional int32 normal3 = 8;
+message EventReward {
+	optional int32 rewardid = 1;
+	optional int32 rewardcount = 2;
+	optional int32 rewardcount1 = 3;
+	optional int32 rewardweight = 4;
 }
-
-message ClearAttributeList {
-	repeated ClearAttribute attribute = 1;
-}
-
-message ClearAttribute {
-	optional int32 id = 1;
-	optional int32 position = 2;
-	optional int32 zuanshi = 3;
-	repeated ClearAttributeOrder order = 4;
-}
-
-message ClearAttributeOrder {
+message Event {
 	optional int32 order = 1;
-	optional int32 type = 2;
+	optional int32 eventid = 2;
+	optional int32 daguan = 3;
+	optional string name = 4;
+	optional string des = 5;
+	optional int32 weight = 6;
+	optional int32 type = 7;
+	optional int32 costid = 8;
+	optional int32 costcount = 9;
+	repeated EventReward reward = 10;
+}
+message AreaEvent {
+	optional int32 id = 1;
+	repeated Event event = 2;
 	optional int32 weight = 3;
-	optional int32 count1 = 4;
-	optional int32 count2 = 5;
-	optional int32 interval = 6;
-	optional int32 rare = 7;
+}
+message AreaEventList {
+	repeated AreaEvent id = 1;
+}
+message Loot {
+	optional int32 id = 1;
+	repeated RewardInfo item = 2;
+}
+message LootList {
+	repeated Loot id = 1;
+}
+message RequestLevelStartCommand {
+	optional int32 id = 1;
+}
+message RequestLevelLootResultCommand {
+}
+message RequestEventResultCommand {
+	optional int32 order = 1;
+	optional string teamInfo = 2;
+	optional string fightInfo = 3;
+	optional int32 turn = 4;
+	optional bool ret = 5;
+}
+message ResponseEventResultCommand {
+	repeated RewardInfo reward = 1;
+}
+message ResponseLevelLootCommand {
+	optional int32 unlockDaguan = 1;
+	optional int32 leftCount = 2;
+	optional int32 lootDaguan = 3;
+	optional int32 lootTime = 4;
+	optional int32 eventTime = 5;
+	repeated Event event = 6;
+}
+////////// MailProto
+message Mail {
+	required int32 id = 1;
+	required int64 userId = 2;
+	required int64 fromUserId = 3;
+	required string fromUserName = 4;
+	required int32 type = 5;
+	required string startDate = 6;
+	required string endDate = 7;
+	required string content = 8;
+	required int32 relatedId = 10;
+	repeated RewardInfo reward = 9;
+	optional int32 icon = 11;
+	optional int32 vip = 12;
+	optional bool isRead = 13;
 }
 
-message UserFood {
-	required int32 foodId = 1;
-	required int32 count = 2;
+message MailList {
+	required int32 type = 1;
+	repeated Mail mail = 2;
+}
+
+message RequestGetUserMailListCommand {
+	optional int32 type = 1; //0:system mail 1:friend
+}
+
+message ResponseGetUserMailListCommand {
+	repeated MailList mailList = 1;
+}
+
+message RequestReadMailCommand {
+	required int32 type = 1;
+	repeated int32 id = 2;
+}
+
+message ResponseSendRewardCommand {
+	repeated RewardInfo reward = 1;
+}
+
+message RequestDeleteMailCommand {
+	required int32 type = 1;
+	repeated int32 id = 2;	
+}
+
+message RequestAddFriendCommand {
+	optional int64 userId = 1;
+	optional string userName = 2;
+}
+
+message RequestReceiveFriendCommand {
+	repeated int32 id = 1;
+	required bool receive = 2;
+}
+
+message RequestDelFriendCommand {
+	required int64 userId = 1;
+}
+
+message UserFriend {
+	required int64 friendId = 1;
+	required string friendName = 2;
+	optional int32 vip = 3;
+	optional int32 zhanli = 4;
+	optional string lastLoginTime = 5;
+	optional int32 countDown = 6;
+	optional int32 icon = 7;
+}
+
+message RequestGetUserFriendListCommand {
+
+}
+
+message ResponseGetUserFriendListCommand {
+	repeated UserFriend friend = 1;	
+}
+
+////////// UnionProto
+message Union {
+	required int32 id = 1;
+	required string name = 2;
+	required int32 icon = 3;
+	required int32 level = 4;
+	optional int32 zhanli = 5;
+	optional int32 rank = 6;
+	optional int32 point = 7;
+	optional int32 count = 8;
+	optional int32 maxCount = 9;
+	repeated UserInfo members = 10;
+	repeated UnionApply applies = 11;
+	optional int32 attackId = 12;
+	optional int64 attackEndTime = 13;
+	optional int64 attackCloseTime = 14;
+	optional int32 defendId = 15;
+	optional int64 defendEndTime = 16;
+	optional int64 defendCloseTime = 17;
+	repeated UserInfo attacks = 18;
+	repeated UserInfo defends = 19;
+	optional bool isApply = 20;
+	optional string killMonsterRecord = 21;
+	optional string costRecord = 22;
+	repeated UnionBossRecord unionBoss = 23;
+	optional string bossRecord = 24;
+	optional string bossEndTime = 25;
+}
+
+message UnionApply {
+	required int64 id = 1;
+	required UserInfo user = 2;
+	required int64 endTime = 3;
+	optional int64 timestamp = 4;
 }
 
 message BossRoomRecord {
@@ -1567,6 +2608,93 @@ message Bossloot {
 	optional int32 itemcount3 = 9;
 	optional int32 weight3 = 10;
 	optional int32 order = 11;
+}
+
+message UserBattletower {
+	optional int64 userId = 1;
+	optional int32 toptower = 2;
+	optional int32 currenttower = 3;
+	optional int32 resettimes = 4;
+	optional int32 lefttimes = 5;
+	optional int32 random = 6;
+}
+
+message TowerReward {
+	optional int32 id = 1;
+	optional int32 floor = 2;
+	optional int32 floora = 3;
+	optional int32 floorb = 4;
+	optional int32 rewardid = 5;
+	optional int32 rewardcount = 6;
+	optional int32 rewardid1 = 7;
+	optional int32 rewardcount1 = 8;
+	optional int32 rewardid2 = 9;
+	optional int32 rewardcount2 = 10;
+	optional int32 rewardid3 = 11;
+	optional int32 rewardcount3 = 12;
+}
+
+message TowerRewardList {
+	repeated TowerReward id = 1;
+}
+
+message RequestSubmitBattletowerCommand {
+	required bool success = 1;
+	optional int32 tower = 2;
+	optional int32 enemyId = 3;
+}
+
+message RequestResetBattletowerCommand {
+	optional int32 enemyId = 1;	
+}
+
+message RequestGetBattletowerCommand {
+	optional UserBattletower ubt = 1;
+}
+
+message ResponseUserBattletowerCommand {
+	optional UserBattletower ubt = 1;
+}
+
+message RequestBloodEnterCommand {
+
+}
+
+message RequestBloodXiazhuCommand {
+	required int64 xiazhuUserId = 1;
+}
+
+message RequestInviteFightBossCommand {
+	repeated int64 userId = 1;
+	optional int32 groupId = 2;
+	optional int32 bossId = 3;
+	optional int64 createUserId = 4;
+	optional string startDate = 5;
+}
+
+message RequestQuitFightBossCommand {
+	required int64 userId = 1;
+}
+
+message ResponseBossRoomRecordCommand {
+	required BossRoomRecord bossRoom = 1;
+}
+
+message RequestSubmitBossRoomScoreCommand {
+	required int32 percent = 1;
+}
+
+message RequestStartBossRoomCommand {
+	
+}
+
+message RequestCreateBossRoomCommand {
+	required int32 groupId = 2;
+	required int32 bossId = 3;
+}
+
+message RequestBossRoomInfoCommand {
+	
 }
 
 message UnionBossList {
@@ -1633,636 +2761,6 @@ message RankItem {
 	optional string des = 9;
 }
 
-message UnionBossUserRecord {
-	optional int64 userId = 1;
-        optional int32 percent = 2;
-}
-
-message UnionBossRecord {
-	optional int32 bossId = 1;
-	optional int32 hp = 2;
-	optional string endTime = 3;
-	optional int32 myAttackHp = 4;
-	repeated UserRank ranks = 5;
-	optional string startTime = 6;
-	optional int32 count = 7;
-	optional int32 percent = 8;
-	repeated UnionBossUserRecord userRecord = 9;
-}
-
-message StrengthenList {
-	repeated Strengthen id = 1;
-}
-
-message Strengthen {
-	optional int32 id = 1;
-	optional int32 zhanli_per = 2;
-	optional int32 itemid = 3;
-	optional int32 count = 4;
-	optional int32 success = 5;
-}
-
-message HerolootList {
-	repeated Heroloot hero = 1;
-}
-
-message Heroloot {
-	optional int32 itemid = 1;
-	optional int32 heroid = 2;
-	optional int32 star = 3;
-	optional int32 count = 4;
-	optional int32 rare = 5;
-}
-
-message SevenLoginList {
-	repeated SevenLogin seven = 1;
-}
-
-message SevenLogin {
-	optional int32 id = 1;
-	optional int32 targetid = 2;
-	optional int32 targetcount = 3;
-	repeated SevenOrder order = 4;
-}
-
-message SevenOrder {
-	optional int32 order = 1;
-	optional int32 itemid = 2;
-	optional int32 count = 3;
-	optional int32 choose = 4;
-}
-
-message HeroRareLevelupList {
-	repeated HeroRareLevelup id = 1;
-}
-
-message HeroRareLevelup {
-	optional int32 id = 1;
-	optional int32 position = 2;
-	repeated HeroRareLevelupRank rank = 3;	
-}
-
-message HeroRareLevelupRank {
-	optional int32 rank = 1;
-	optional int32 rare = 2;
-	optional int32 sp = 3;
-	optional int32 equip1 = 4;
-	optional int32 count1 = 5;
-	optional int32 equip2 = 6;
-	optional int32 count2 = 7;
-	optional int32 equip3 = 8;
-	optional int32 count3 = 9;
-	optional int32 equip4 = 10;
-	optional int32 count4 = 11;
-	optional int32 equip5 = 12;
-	optional int32 count5 = 13;
-	optional int32 zhanli = 14;
-}
-
-message HeroFettersOrderList {
-	repeated HeroFettersOrder order = 1;
-}
-
-message HeroFettersOrder {
-	optional int32 order = 1;
-	optional int32 id = 2;
-	repeated HeroFetters fetters = 3;
-}
-
-message HeroFetters {
-	optional int32 fettersid = 1;
-	optional string fettersdes = 2;
-	repeated HeroFetter hero = 3;
-}
-
-message HeroFetter {
-	optional int32 heroid = 1;
-	optional int32 herostar = 2;
-	optional int32 herorank = 3;
-}
-
-message TaskTargetList {
-	repeated TaskTarget target = 1;
-}
-
-message TaskTarget {
-	optional int32 targetid = 1;
-	repeated TaskOrder order = 2;
-}
-
-message TaskOrder {
-	optional int32 order = 1;
-	optional int32 type = 2;
-	optional string des = 3;
-	optional int32 targetcount = 4;
-	optional int32 rewardid1 = 5;
-	optional int32 rewardcount1 = 6;
-	optional int32 targetid = 7;
-	optional int32 rewardid2 = 8;
-	optional int32 rewardcount2 = 9;
-	optional int32 targetcount1 = 10;
-	optional int32 rewardid3 = 11;
-	optional int32 rewardcount3 = 12;
-}
-
-message Task3OrderList {
-	repeated TaskOrder order = 1;
-}
-
-message Task2TargetHero {
-	optional int32 heroid = 1;
-	repeated TaskTarget target = 2;
-}
-
-message Task2TargetList {
-	repeated Task2TargetHero hero = 1;
-}
-
-message UserTask {
-	optional int32 targetid = 1;
-	optional int32 process = 2;
-	optional int32 status = 3;
-	repeated int32 heroid = 4;
-}
-
-message UserBattletower {
-	optional int64 userId = 1;
-	optional int32 toptower = 2;
-	optional int32 currenttower = 3;
-	optional int32 resettimes = 4;
-	optional int32 lefttimes = 5;
-	optional int32 random = 6;
-}
-
-message TowerReward {
-	optional int32 id = 1;
-	optional int32 floor = 2;
-	optional int32 floora = 3;
-	optional int32 floorb = 4;
-	optional int32 rewardid = 5;
-	optional int32 rewardcount = 6;
-	optional int32 rewardid1 = 7;
-	optional int32 rewardcount1 = 8;
-	optional int32 rewardid2 = 9;
-	optional int32 rewardcount2 = 10;
-	optional int32 rewardid3 = 11;
-	optional int32 rewardcount3 = 12;
-}
-
-message TowerRewardList {
-	repeated TowerReward id = 1;
-}
-
-message ClearCostList {
-	repeated ClearCost id = 1;
-}
-
-message ClearCost {
-	optional int32 id = 1;
-	optional int32 quality = 2;
-	optional int32 itemid1 = 3;
-	optional int32 itemcount1 = 4;
-	optional int32 itemid2 = 5;
-	optional int32 itemcount2 = 6;
-	optional int32 itemid3 = 7;
-	optional int32 itemcount3 = 8;
-}
-
-message AllheroData {
-	repeated AllheroList id = 1;
-}
-
-message AllheroList {
-	optional int32 id = 1;
-	optional string name = 2;
-	optional int32 img = 3;
-	optional int32 rare = 4;
-	repeated Allhero hero = 5;
-}
-
-message Allhero {
-	optional int32 heroid = 1;
-}
-
-message EquiptucaoList {
-	repeated Equiptucao equip = 1;
-}
-
-message Equiptucao {
-	optional int32 itemid = 1;
-	optional string itemname = 2;
-	optional int32 rare = 3;
-}
-
-message TalentOrder {
-	optional int32 order = 1;
-	optional int32 skill1 = 2;
-	optional int32 skill2 = 3;
-	optional int32 skill3 = 4;
-}
-
-message Talent {
-	optional int32 id = 1;
-	optional string name = 2;
-	optional string img = 3;
-	repeated TalentOrder order = 4;
-}
-
-message TalentList {
-	repeated Talent id = 1;
-}
-
-message Talentupgrade {
-	optional int32 level = 1;
-	optional int32 itemid = 2;
-	optional int32 itemcount = 3;
-}
-
-message TalentupgradeList {
-	repeated Talentupgrade level = 1;
-}
-
-message Talentunlock {
-	optional int32 order = 1;
-	optional int32 level = 2;
-}
-
-message TalentunlockList {
-	repeated Talentunlock order = 1;
-}
-
-message UserTalentList {
-	repeated UserTalent userTalent = 1;
-}
-
-message UserTalent {
-	required int32 id = 1;
-	required int32 level = 2;
-	optional bool isUse = 3;
-	repeated UserTalentOrder skill = 4;
-}
-
-message UserTalentOrder {
-	required int32 order = 1;
-	required int32 skillId = 2;
-}
-
-message UserTalentSkill {
-	required int32 talentId = 1;
-	required int32 orderId = 2;
-	required int32 skillId = 3;
-	required int32 level = 4;
-}
-
-message ErrorCommand{
-        required string code = 1;
-        required string message = 2;
-}
-
-message RewardCommand {
-	optional int32 id = 1;//用于区分获得来源
-	optional string title = 2;//弹窗标题
-	repeated RewardInfo loot = 3;//奖励列表
-}
-
-message ResponseNeedRegisterCommand {
-
-}
-
-message RequestRegisterCommand {
-	required string userName = 1;
-	optional int32 icon = 2;
-	required int32 heroId = 3;
-}
-
-message RequestLoginCommand {
-}
-
-message ResponseUserInfoCommand {
-	required UserInfo user = 1;
-}
-
-message ResponsePopupCommand {
-	required int32 popScreen = 1;//1. main menu;
-	optional string flowID = 2;
-	required string text = 3;
-	optional string heading = 4;
-	optional string yesButtonID = 5;
-	optional string noButtonID = 6;
-}
-
-message RequestLevelStartCommand {
-	required int32 levelId = 1;
-}
-
-message RequestLevelPrepareCommand {
-	required int32 levelId = 1;
-}
-
-message RequestLevelPauseCommand {
-	
-}
-
-message RequestLevelResultCommand {
-	required int32 levelId = 1;
-	required string teamInfo = 2;
-	required string fightInfo = 3;
-	optional int32 turn = 4;
-	optional bool ret = 5;
-}
-message FightInfo {
-	optional int32 id = 3;
-        required string fightInfo = 1;
-        required string fightData = 2;
-}
-message RequestGetFightInfoCommand {
-}
-message RequestFightInfoCommand {
-	required FightInfo info = 1;
-}
-message ResponseFightInfoCommand {
-	repeated FightInfo info = 1;
-}
-
-message ResponseLevelResultCommand {
-	repeated RewardInfo reward = 1;
-}
-
-message RequestLevelLootStartCommand {
-	required int32 levelId = 1;
-}
-
-message RequestLevelLootResultCommand {
-
-}
-
-message ResponseLevelLootResultCommand {
-	repeated RewardInfo reward = 1;
-}
-
-message RequestUpdateTeamCommand {
-	required int64 id = 1;
-	required string teamInfo = 2;
-	optional string composeSkill = 3;
-}
-
-message RequestUserTeamListCommand {
-
-}
-
-message ResponseUserTeamListCommand {
-	repeated UserTeam userTeam = 1;
-}
-
-message RequestLockHeroCommand {
-	required int32 heroId = 2;
-	required int64 infoId = 3;
-	optional bool isLock = 4;
-}
-
-message RequestHeroLevelUpToCommand {
-	required int32 levelUp = 1;
-	required int32 heroId = 2;
-	required int64 infoId = 3;
-}
-
-message RequestHeroLevelUpCommand {
-	required int32 levelUpType = 1; //1:level 2:star 3:rare 4:skill
-	required int32 heroId = 2;
-	required int64 infoId = 3;
-	optional int32 skillId = 4;
-	repeated int64 costInfoId = 5;
-}
-
-message ResponseHeroResultCommand {
-	required int32 heroId = 1;
-	repeated HeroInfo heroInfo = 2;
-}
-
-message ResponseDeleteHeroCommand {
-	repeated FenjieHeroInfo heroInfo = 1;
-}
-
-message RequestResetHeroSkillCommand {
-	required int32 heroId = 1;
-	required int64 infoId = 2;
-}
-
-message RequestLootResultCommand {
-
-}
-
-message ResponseLootResultCommand {
-	optional int64 gold = 1;
-	optional int64 exp = 2;
-	optional int32 lastLootTime = 3;
-}
-
-message RequestAddHeroEquipCommand {
-	required int32 heroId = 1;
-	required int64 infoId = 2;
-	optional int32 armId = 3;
-}
-
-message RequestEquipLevelUpCommand {
-        required int32 heroId = 1;
-        required int64 infoId = 2;
-        required int32 armId = 3;
-	required int32 levelUpId = 4;
-}
-
-message RequestEquipComposeCommand {
-	required int32 levelUpId = 1;
-	optional int32 count = 2;
-}
-
-message ResponseEquipComposeCommand {
-	required int32 equipId = 1;
-	required int32 count = 2;
-}
-
-message RequestGetTeamCommand {
-	required int64 userId = 1;
-}
-
-message ResponseGetTeamCommand {
-	repeated HeroInfo heroInfo = 1;
-	optional UserInfo user = 2;
-	optional string composeSkill = 3;
-}
-
-message RequestLotteryCommand {
-	required int32 type = 1; //1001:jinbi 1002:zuanshi
-	optional int32 count = 2; //默认是10
-}
-
-message ResponseGetUserHeroCommand {
-	repeated HeroInfo userHero = 1;
-}
-
-message ResponseGetUserEquipCommand {
-        repeated UserEquip userEquip = 1;
-}
-
-message RequestGetLadderRankListCommand {
-
-}
-
-message RequestGetUserLadderRankListCommand {
-
-}
-
-message ResponseGetLadderRankListCommand {
-	repeated UserRank userRank = 1;
-}
-
-message ResponseGetUserLadderRankListCommand {
-	repeated UserRank userRank = 1;
-}
-
-message RequestAttackLadderModeCommand {
-	required int64 rank = 1;
-	required bool ret = 2;
-	required int64 teamId = 3;
-	optional int64 attackUserId = 4;
-}
-
-message ResponseAttackLadderModeCommand {
-	required bool ret = 1;
-	required string msg = 2;
-}
-
-message RequestReadyAttackLadderCommand {
-
-}
-
-message RequestGetLadderUserInfoCommand {
-	required uint64 rank = 1;
-}
-
-message RequestPurchaseLadderTimeCommand {
-}
-
-message ResponseGetLadderUserInfoCommand {
-	required UserRank userRank = 1;
-}
-
-message RequestGetUserMailListCommand {
-	optional int32 type = 1; //0:system mail 1:friend
-}
-
-message ResponseGetUserMailListCommand {
-	repeated MailList mailList = 1;
-}
-
-message RequestReadMailCommand {
-	required int32 type = 1;
-	repeated int32 id = 2;
-}
-
-message ResponseMessageCommand {
-	required int32 code = 1;
-	required string msg = 2;
-}
-
-message ResponseSendRewardCommand {
-	repeated RewardInfo reward = 1;
-}
-
-message RequestDeleteMailCommand {
-	required int32 type = 1;
-	repeated int32 id = 2;	
-}
-
-message RequestAddFriendCommand {
-	optional int64 userId = 1;
-	optional string userName = 2;
-}
-
-message RequestReceiveFriendCommand {
-	repeated int32 id = 1;
-	required bool receive = 2;
-}
-
-message RequestDelFriendCommand {
-	required int64 userId = 1;
-}
-
-message RequestGetUserFriendListCommand {
-
-}
-
-message ResponseGetUserFriendListCommand {
-	repeated UserFriend friend = 1;	
-}
-
-message RequestAreaCommand {//区域争夺
-}
-
-message RequestRefreshAreaCommand {//重置区域
-}
-
-message RequestUnlockAreaCommand {//解锁区域
-	required int32 id = 1;
-	required int32 zhanli = 2;
-}
-
-message ResponseAreaCommand {
-	repeated AreaInfo areas = 1;
-	optional int64 endTime = 3;
-	optional bool hasreward = 2;
-}
-
-message RequestAreaResourceCommand {//区域info
-	required int32 resourceId = 1;
-}
-
-message ResponseAreaResourceCommand {
-	required AreaResource resource = 1;
-}
-
-message RequestAttackMonsterCommand {//区域争夺打怪物
-	required int32 positionid = 1;
-	optional bool ret = 2;
-}
-
-message RequestAttackBossCommand {//区域争夺攻击世界BOSS
-	required int32 id = 1;
-	required int32 score = 2;
-}
-
-message RequestAttackResourceCommand {//区域争夺刺杀领主/争夺领主
-	required int32 id = 1;
-	optional bool ret = 2;
-}
-
-message RequestAttackResourceMineCommand {//区域争夺占领矿点
-	required int32 id = 1;
-	required int64 teamid = 2;
-	required bool ret = 3;
-}
-
-message RequestCollectResourceMineCommand {//区域争夺收取矿点
-	optional int32 mineId = 1;
-}
-
-message RequestAttackResourceMineInfoCommand {//区域争夺矿区队伍信息
-	required int32 id = 1;
-}
-
-message ResponseAttackResourceMineInfoCommand {
-	repeated HeroInfo heroInfo = 1;
-	optional UserInfo user = 2;
-}
-
-message ResponseUserLevelCommand {
-	required UserLevel userLevel = 1;
-}
-
-message ResponseUserLootLevelCommand {
-	required UserLootLevel userLootLevel = 1;
-}
-
 message RequestCreateUnionCommand {//创建公会
 	optional int32 icon = 1;
 	required string name = 2;
@@ -2312,282 +2810,6 @@ message ResponseUnionListCommand {
 	repeated Union union = 1;
 }
 
-message RequestMessageBoardListCommand { //获取所有留言板信息
-	required int32 type = 1; //1:普通的 2:公会的
-}
-
-message ResponseMessageBoardListCommand {
-	required int32 type = 1;
-	repeated MessageBoard messageBoard = 2;
-}
-
-message RequestCreateMessageBoardCommand { //创建一个新的留言板
-	required int32 type = 1;
-	optional string message = 2;
-	optional int32 groupId = 3;
-	optional int32 bossId = 4;
-	optional int32 fightId = 5;
-}
-
-message RequestReplyMessageCommand { //回复留言板
-	required int32 type = 1;
-	required string id = 2;
-	required string message = 3;
-}
-
-message ResponseMessageBoardCommand {
-	required int32 type = 1;
-	required MessageBoard messageBoard = 2;
-}
-
-message ResponseUserPropCommand { //玩家道具列表
-	repeated UserProp userProp = 1;
-}
-
-message RequestUseAreaEquipCommand {
-	required int32 equipId = 1;
-}
-
-message ResponseAreaEquipCommand {
-	repeated AreaEquip equips = 1;
-	repeated AreaBuff buffs = 2;
-}
-
-message RequestUsePropCommand { //打开道具包
-	required int32 propId = 1;
-	required int32 propCount = 2;
-}
-
-message ResponseUsePropCommand {
-	repeated UserProp userProp = 1;
-}
-
-message RequestFenjieEquipCommand {
-	required int32 equipId = 1;
-	required int32 equipCount = 2;
-}
-
-message ResponseEquipResultCommand {
-	repeated UserEquip userEquip = 1;
-}
-
-message RequestSignCommand {
-	
-}
-
-message ResponseSignCommand {
-	repeated RewardInfo reward = 1;
-}
-
-message RequestFenjieHeroEquipCommand {
-	required int32 heroId = 1;
-	required int64 infoId = 2;
-	required int32 armId = 3;
-}
-
-message RequestFenjieHeroCommand {
-	repeated FenjieHeroInfo fenjieHero = 1;
-}
-
-message RequestSaleEquipCommand {
-	repeated Item item = 1;
-}
-
-message RequestSubmitZhanliCommand {
-	required int32 zhanli = 1;
-}
-
-message RequestAchieveRewardCommand {
-	required int32 type = 1;
-}
-
-message RequestAchieveListCommand {
-
-}
-
-message ResponseAchieveListCommand {
-	repeated UserAchieve userAchieve = 1;
-}
-
-message RequestUnlockLevelCommand {
-	required int32 levelId = 1;
-}
-
-message RequestRichangRewardCommand {
-	required int32 id = 1;
-	required int32 order = 2;
-}
-
-message RequestRichangListCommand {
-
-}
-
-message ResponseRichangListCommand {
-	repeated UserRichang userRichang = 1;
-}
-
-message RequestKaifu2ActivityCommand {
-
-}
-
-message ResponseKaifu2ActivityCommand {
-	repeated Kaifu2Rank rank = 1;
-	required int32 accRcPs = 2;//累计充值人数
-	required int32 accRcPsRwRc = 3;//全民福利的领取记录
-}
-
-message RequestKaifuRewardCommand {
-        required int32 id = 1;
-        required int32 order = 2;
-}
-
-message ResponseKaifuRewardCommand {
-        repeated UserKaifu userKaifu = 1;
-}
-
-message RequestKaifuListCommand {
-
-}
-
-message ResponseKaifuListCommand {
-        repeated UserKaifu userKaifu = 1;
-	repeated Kaifu2Rank rank = 2;
-	repeated UserRichang userRichang = 3;
-}
-
-message RequestUserPokedeCommand {
-
-}
-
-message ResponseUserPokedeCommand {
-	repeated HeroInfo pokede = 1;
-}
-
-message RequestRankCommand {
-	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge, 4:help
-}
-
-message ResponseRankCommand {
-	repeated UserRank userRank = 1;
-}
-
-message RequestBuyHeroPackageCommand {
-	
-}
-
-message RequestSubmitComposeSkillCommand {
-	required string composeSkill = 1;
-}
-
-message RequestBuyLootPackageCommand {
-	
-}	
-
-message RequestCdkeyCommand {
-	required string key = 1;
-}
-
-message RequestSubmitIconCommand {
-	required int32 icon = 1;
-}
-
-message RequestCheatRechargeCommand{
-	optional int32 itemid = 1;
-}
-
-message RequestRechargeCommand {
-	required int32 itemid = 1;
-}
-
-message ResponseUserHeadCommand {
-	repeated UserHead userHead = 1;
-}
-
-message RequestBindAccountCommand {
-	required string oldAccount = 1;
-	required string newAccount = 2;
-}
-
-message RequestPurchaseVipLibaoCommand {
-	required int32 vip = 1;
-	required int32 type = 2;
-}
-
-message RequestQueryRechargeCommand {
-	optional string orderId = 1;	
-}
-
-message RequestShouchongRewardCommand {
-
-}
-
-message ResponseNoticeCommand {
-	repeated Notice notice = 1;
-	repeated string message = 2;	
-}
-
-message RequestHeartBeatCommand {
-
-}
-
-message RequestGreenhandCommand {
-	optional string greenhand = 1;
-	optional int32 advance = 2;
-	optional int32 skill = 3;
-	optional int32 failed = 4;
-}
-
-message RequestLogCommand {
-	required int32 logtype = 1; //0:login 5:recharge
-	optional string phoneuuid = 2;
-	optional int32 logintype = 3;
-	optional string platform = 4;
-	optional string vendor = 5;
-	optional string model = 6;
-	optional string version = 7;
-	optional int32 currency = 8;
-	optional int32 currencyamount = 9;
-	optional int32 stage = 10;
-	optional int32 itemid = 11;
-	optional int32 action = 12;
-	optional string channel = 14;
-	optional int32 rechargetype = 15;
-	optional string idfa = 16;
-}
-
-message RequestGetGrowJewelCommand {
-	required int32 order = 1;
-}
-message RequestGetGrowExpCommand {
-	required int32 order = 1;
-}
-
-message RequestFeedFoodCommand {
-	required int32 heroId = 1;
-	required int32 foodId = 2;
-	required int32 foodCount = 3;
-}
-
-message RequestClearHeroCommand {
-	required int32 heroId = 1;
-	required int32 position = 2;
-	required int32 type = 3;
-	optional int32 count = 4;
-}
-
-message ResponseUserFoodCommand {
-	repeated UserFood userFood = 1;
-}
-
-message ResponseClearInfoCommand {
-	repeated ClearInfo clearInfo = 1;
-}
-
-message RequestChoseClearInfoCommand {
-	required bool refused = 1;
-	optional int32 id = 2;
-}
-
 message RequestSubmitBosskillCommand {
 	required int32 groupId = 1;
 	required int32 bossId = 2;
@@ -2610,28 +2832,50 @@ message RequestUnionBossFightCommand {
 	required int32 hp = 2;
 	optional int32 percent = 3;
 }
-
-message RequestHeroStrengthenCommand {
-	required int32 heroId = 1;
+////////// TaskProto
+message TaskTargetList {
+	repeated TaskTarget target = 1;
 }
 
-message RequestSevenLoginSignCommand {
-	optional int32 chooseId = 1;
+message TaskTarget {
+	optional int32 targetid = 1;
+	repeated TaskOrder order = 2;
 }
 
-message RequestIsAreaOwnerCommand {
-
+message TaskOrder {
+	optional int32 order = 1;
+	optional int32 type = 2;
+	optional string des = 3;
+	optional int32 targetcount = 4;
+	optional int32 rewardid1 = 5;
+	optional int32 rewardcount1 = 6;
+	optional int32 targetid = 7;
+	optional int32 rewardid2 = 8;
+	optional int32 rewardcount2 = 9;
+	optional int32 targetcount1 = 10;
+	optional int32 rewardid3 = 11;
+	optional int32 rewardcount3 = 12;
 }
 
-message ResponseIsAreaOwnerCommand {
-	optional bool isOwner = 1;
+message Task3OrderList {
+	repeated TaskOrder order = 1;
 }
 
-message RequestOpenFetterCommand {
-	required int32 heroId = 1;
-	required int32 fetterid = 2;	
+message Task2TargetHero {
+	optional int32 heroid = 1;
+	repeated TaskTarget target = 2;
 }
 
+message Task2TargetList {
+	repeated Task2TargetHero hero = 1;
+}
+
+message UserTask {
+	optional int32 targetid = 1;
+	optional int32 process = 2;
+	optional int32 status = 3;
+	repeated int32 heroid = 4;
+}
 message RequestUserTaskCommand {
 
 }
@@ -2648,105 +2892,47 @@ message RequestGetTaskRewardCommand {
 	optional int32 heroid = 3;//支线任务的排序
 }
 
-message RequestSubmitBattletowerCommand {
-	required bool success = 1;
-	optional int32 tower = 2;
-	optional int32 enemyId = 3;
+message RaidReward {
+	optional int32 lootid = 1;
+	optional int32 lootcount = 2;
 }
-
-message RequestResetBattletowerCommand {
-	optional int32 enemyId = 1;	
+message RaidOrder {
+	optional int32 order = 1;
+	optional int32 enemyid = 2;
+	repeated RaidReward loot = 3;
 }
-
-message RequestGetBattletowerCommand {
-	optional UserBattletower ubt = 1;
+message Raid {
+	optional int32 id = 1;
+	optional int32 costid = 2;
+	optional int32 costcount = 3;
+	optional string name = 4;
+	repeated RaidOrder order = 5;
 }
-
-message ResponseUserBattletowerCommand {
-	optional UserBattletower ubt = 1;
+message RaidList {
+        repeated Raid id = 1;
 }
-
-message RequestBloodEnterCommand {
-
+message RequestOpenRaidCommand{
+	optional int32 id = 1;
 }
-
-message RequestBloodXiazhuCommand {
-	required int64 xiazhuUserId = 1;
+message RequestStartRaidCommand{
+	optional int32 id = 1;
+	optional bool ret = 2;
 }
-
-message RequestQueryNoticeBoardCommand {
-	required string messageId = 1;
-}
-
-message RequestInviteFightBossCommand {
-	repeated int64 userId = 1;
-	optional int32 groupId = 2;
-	optional int32 bossId = 3;
-	optional int64 createUserId = 4;
-	optional string startDate = 5;
-}
-
-message RequestQuitFightBossCommand {
-	required int64 userId = 1;
-}
-
-message ResponseBossRoomRecordCommand {
-	required BossRoomRecord bossRoom = 1;
-}
-
-message RequestSubmitBossRoomScoreCommand {
-	required int32 percent = 1;
-}
-
-message RequestStartBossRoomCommand {
-	
-}
-
-message RequestCreateBossRoomCommand {
-	required int32 groupId = 2;
-	required int32 bossId = 3;
-}
-
-message RequestBossRoomInfoCommand {
-	
-}
-
-message RequestUserInfoCommand {
-
-}
-
-message RequestTalentupgradeCommand {
-	required int32 id = 1;
-}
-
-message RequestTalentChangeUseCommand {
-	required int32 id = 1;
-}
-
-message RequestTalentChangeSkillCommand {
-	required int32 id = 1;
-	required int32 order = 2;
-	required int32 skillId = 3;
-}
-
-message ResponseUserTalentCommand {
-	repeated UserTalent userTalent = 1;
-	repeated UserTalentSkill userTalentSkill = 2;
+message ResponseRaidCommand{
+	optional int32 id = 1;
 }
 ////////// Request
 message RequestCommand {
 	required HeadInfo head = 1;
 	optional RequestRegisterCommand registerCommand = 2;
 	optional RequestLoginCommand loginCommand = 3;
-	optional RequestLevelResultCommand levelResultCommand = 4;
+	optional RequestEventResultCommand eventResultCommand = 4;
 	optional RequestUpdateTeamCommand updateTeamCommand = 5;
 	optional RequestLevelStartCommand levelStartCommand = 6;
-	optional RequestLevelLootStartCommand levelLootStartCommand = 7;
 	optional RequestLevelLootResultCommand levelLootResultCommand = 8;
 	optional RequestHeroLevelUpCommand heroLevelUpCommand = 9;
 	optional RequestHeroLevelUpToCommand heroLevelUpToCommand = 151;
 	optional RequestLockHeroCommand lockHeroCommand = 131;
-	optional RequestLootResultCommand lootResultCommand = 10;
 	optional RequestAddHeroEquipCommand addHeroEquipCommand = 11;
 	optional RequestLotteryCommand lotteryCommand = 14;
 	optional RequestGetLadderRankListCommand getLadderRankListCommand = 15;
@@ -2757,7 +2943,6 @@ message RequestCommand {
 	optional RequestDeleteMailCommand deleteMailCommand = 20;
 	optional RequestAddFriendCommand addFriendCommand = 21;
 	optional RequestReceiveFriendCommand receiveFriendCommand = 22;
-	optional RequestEquipLevelUpCommand equipLevelUpCommand = 24;
 	optional RequestAreaCommand areaCommand = 26;
 	optional RequestRefreshAreaCommand refreshAreaCommand = 154;
 	optional RequestUseAreaEquipCommand useAreaEquipCommand = 137;
@@ -2818,9 +3003,9 @@ message RequestCommand {
 	optional RequestPurchaseContractCommand purchaseContractCommand = 153;
 	optional RequestFightInfoCommand fightInfoCommand = 155;
 	optional RequestGetFightInfoCommand getFightInfoCommand = 156;
+	optional RequestOpenRaidCommand openRaidCommand = 157;
+	optional RequestStartRaidCommand raidCommand = 158;
 	//////////////////////////////////////////////////////
-	optional RequestLevelPrepareCommand levelPrepareCommand = 34;
-	optional RequestLevelPauseCommand levelPauseCommand = 35;
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
 	optional RequestReplyMessageCommand replyMessageCommand = 38;
@@ -2831,7 +3016,6 @@ message RequestCommand {
 	optional RequestUsePropCommand usePropCommand = 51;
 	optional RequestFenjieEquipCommand fenjieEquipCommand = 52;
 	optional RequestSignCommand signCommand = 53;
-	optional RequestFenjieHeroEquipCommand fenjieHeroEquipCommand = 54;
 	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
 	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
 	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
@@ -2849,7 +3033,6 @@ message RequestCommand {
 	optional RequestSubmitZhanliCommand submitZhanliCommand = 69;
 	optional RequestAchieveRewardCommand achieveRewardCommand = 70;
 	optional RequestAchieveListCommand achieveListCommand = 71;
-	optional RequestUnlockLevelCommand unlockLevelCommand = 72;
 	optional RequestRichangRewardCommand richangRewardCommand = 73;
 	optional RequestRichangListCommand richangListCommand = 74;
 	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
@@ -2901,8 +3084,21 @@ message RequestCommand {
 	optional RequestStartBossRoomCommand startBossRoomCommand = 225;
 	optional RequestCreateBossRoomCommand createBossRoomCommand = 226;
 	optional RequestBossRoomInfoCommand bossRoomInfoCommand = 227;
+	optional RequestEquipStrenthenCommand equipStrenthenCommand = 228;
+	optional RequestEquipPokedeCommand equipPokedeCommand = 229;
+	optional RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
+	optional RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;
 }
 ////////// Response
+message ErrorCommand{
+        required string code = 1;
+        required string message = 2;
+}
+
+message ResponseMessageCommand {
+	required int32 code = 1;
+	required string msg = 2;
+}
 message ResponseCommand {
 	required HeadInfo head = 1;
 	optional ErrorCommand errorCommand = 2;
@@ -2922,13 +3118,13 @@ message ResponseCommand {
 	optional ResponseAreaEquipCommand areaEquipCommand = 137;
 	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
 	optional ResponseFightInfoCommand fightInfoCommand = 155;
+	optional ResponseRaidCommand raidCommand = 158;        
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;
-	optional ResponseLevelResultCommand levelResultCommand = 6;
-	optional ResponseLevelLootResultCommand levelLootResultCommand = 7;
+	optional ResponseEventResultCommand eventResultCommand = 166;
+	optional ResponseLevelLootCommand levelLootCommand = 167;
 	optional ResponseHeroResultCommand heroResultCommand = 8;
-	optional ResponseLootResultCommand lootResultCommand = 9;
 	optional ResponseGetUserHeroCommand getUserHeroCommand = 14;
 	optional ResponseGetLadderRankListCommand getLadderRankListCommand = 15;
 	optional ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;
@@ -2941,8 +3137,6 @@ message ResponseCommand {
 	optional ResponseAreaCommand areaCommand = 24;
 	optional ResponseAreaResourceCommand areaResourceCommand = 136;
 	optional ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;
-	optional ResponseUserLevelCommand userLevelCommand = 25;
-	optional ResponseUserLootLevelCommand userLootLevelCommand = 26;
 	optional ResponseUnionInfoCommand unionInfoCommand = 27;
 	optional ResponseUnionListCommand unionListCommand = 28;
 	optional ResponseMessageBoardListCommand messageBoardListCommand = 29;
@@ -2958,7 +3152,7 @@ message ResponseCommand {
 	optional ResponseRichangListCommand richangListCommand = 42;
 	optional ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;
 	optional ResponseKaifuRewardCommand kaifuRewardCommand = 45;
-    	optional ResponseKaifuListCommand kaifuListCommand = 46;
+	optional ResponseKaifuListCommand kaifuListCommand = 46;
 	optional ResponseUserPokedeCommand userPokedeCommand = 47;
 	optional ResponseRankCommand rankCommand = 48;
 	optional ResponseEquipResultCommand equipResultCommand = 49;
@@ -2975,6 +3169,7 @@ message ResponseCommand {
 	optional ResponseBattletowerShopCommand battletowerShopCommand = 61;
 	optional ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;
 	optional ResponseUserTalentCommand userTalentCommand = 63;
+	optional ResponseEquipPokedeCommand equipPokedeCommand = 64;
 }
 
 ////////// End
