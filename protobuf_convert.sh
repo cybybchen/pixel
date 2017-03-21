@@ -43,7 +43,7 @@ function pushCommand()
 	done
 	return 0;
 }
-cat Commands.proto|while read line
+cat pixel_proto/Commands.proto|while read line
 do
 	if [[ $line == "message "* ]]
 		then
