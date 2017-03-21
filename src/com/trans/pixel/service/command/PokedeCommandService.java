@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
@@ -176,7 +177,8 @@ public class PokedeCommandService extends BaseCommandService {
 		/**
 		 * activity
 		 */
-		activityService.heroStrengthen(user, userPokede.getStrengthen());
+		if (result.getCode() == SuccessConst.HERO_STRENGTHEN_SUCCESS.getCode())
+			activityService.heroStrengthen(user, userPokede.getStrengthen());
 	}
 	
 	public void openFetters(RequestOpenFetterCommand cmd, Builder responseBuilder, UserBean user) {
