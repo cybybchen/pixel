@@ -16457,13 +16457,13 @@ public final class Base {
      */
     com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder();
 
-    // optional uint64 userId = 4;
+    // optional int64 userId = 4;
     /**
-     * <code>optional uint64 userId = 4;</code>
+     * <code>optional int64 userId = 4;</code>
      */
     boolean hasUserId();
     /**
-     * <code>optional uint64 userId = 4;</code>
+     * <code>optional int64 userId = 4;</code>
      */
     long getUserId();
 
@@ -16588,7 +16588,7 @@ public final class Base {
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              userId_ = input.readUInt64();
+              userId_ = input.readInt64();
               break;
             }
             case 42: {
@@ -16705,17 +16705,17 @@ public final class Base {
       return team_;
     }
 
-    // optional uint64 userId = 4;
+    // optional int64 userId = 4;
     public static final int USERID_FIELD_NUMBER = 4;
     private long userId_;
     /**
-     * <code>optional uint64 userId = 4;</code>
+     * <code>optional int64 userId = 4;</code>
      */
     public boolean hasUserId() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional uint64 userId = 4;</code>
+     * <code>optional int64 userId = 4;</code>
      */
     public long getUserId() {
       return userId_;
@@ -16850,7 +16850,7 @@ public final class Base {
         output.writeMessage(3, team_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt64(4, userId_);
+        output.writeInt64(4, userId_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(5, getUserNameBytes());
@@ -16887,7 +16887,7 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, userId_);
+          .computeInt64Size(4, userId_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
@@ -17364,22 +17364,22 @@ public final class Base {
         return teamBuilder_;
       }
 
-      // optional uint64 userId = 4;
+      // optional int64 userId = 4;
       private long userId_ ;
       /**
-       * <code>optional uint64 userId = 4;</code>
+       * <code>optional int64 userId = 4;</code>
        */
       public boolean hasUserId() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional uint64 userId = 4;</code>
+       * <code>optional int64 userId = 4;</code>
        */
       public long getUserId() {
         return userId_;
       }
       /**
-       * <code>optional uint64 userId = 4;</code>
+       * <code>optional int64 userId = 4;</code>
        */
       public Builder setUserId(long value) {
         bitField0_ |= 0x00000008;
@@ -17388,7 +17388,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>optional uint64 userId = 4;</code>
+       * <code>optional int64 userId = 4;</code>
        */
       public Builder clearUserId() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -23849,7 +23849,7 @@ public final class Base {
       "sition\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030\003 " +
       "\001(\005\"\236\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 " +
       "\001(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel.prot" +
-      "oc.Team\022\016\n\006userId\030\004 \001(\004\022\020\n\010userName\030\005 \001(" +
+      "oc.Team\022\016\n\006userId\030\004 \001(\003\022\020\n\010userName\030\005 \001(" +
       "\t\022\016\n\006zhanli\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003vip\030\010" +
       " \001(\r\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007c" +
       "learId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022",
