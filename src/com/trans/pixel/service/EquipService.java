@@ -61,7 +61,7 @@ public class EquipService {
 			Equip equip = getEquip(levelUpId);
 			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip, userEquipList);
 			if (equipLevelUpRet) {
-				userEquipService.addUserEquip(user, equip.getItemid(), 1);
+				userEquipService.addUserEquip(user, equip.getId(), 1);
 				composeEquipId = levelUpId;
 				userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
 			}

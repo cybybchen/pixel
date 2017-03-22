@@ -16443,17 +16443,17 @@ public final class Base {
      */
     int getDps();
 
-    // required .com.trans.pixel.protoc.Team team = 3;
+    // optional .com.trans.pixel.protoc.Team team = 3;
     /**
-     * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
      */
     boolean hasTeam();
     /**
-     * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
      */
     com.trans.pixel.protoc.Base.Team getTeam();
     /**
-     * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
      */
     com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder();
   }
@@ -16603,23 +16603,23 @@ public final class Base {
       return dps_;
     }
 
-    // required .com.trans.pixel.protoc.Team team = 3;
+    // optional .com.trans.pixel.protoc.Team team = 3;
     public static final int TEAM_FIELD_NUMBER = 3;
     private com.trans.pixel.protoc.Base.Team team_;
     /**
-     * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
      */
     public boolean hasTeam() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
      */
     public com.trans.pixel.protoc.Base.Team getTeam() {
       return team_;
     }
     /**
-     * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
      */
     public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
       return team_;
@@ -16635,13 +16635,11 @@ public final class Base {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasTeam()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getTeam().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasTeam()) {
+        if (!getTeam().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -16881,13 +16879,11 @@ public final class Base {
       }
 
       public final boolean isInitialized() {
-        if (!hasTeam()) {
-          
-          return false;
-        }
-        if (!getTeam().isInitialized()) {
-          
-          return false;
+        if (hasTeam()) {
+          if (!getTeam().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -16977,18 +16973,18 @@ public final class Base {
         return this;
       }
 
-      // required .com.trans.pixel.protoc.Team team = 3;
+      // optional .com.trans.pixel.protoc.Team team = 3;
       private com.trans.pixel.protoc.Base.Team team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> teamBuilder_;
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public boolean hasTeam() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public com.trans.pixel.protoc.Base.Team getTeam() {
         if (teamBuilder_ == null) {
@@ -16998,7 +16994,7 @@ public final class Base {
         }
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public Builder setTeam(com.trans.pixel.protoc.Base.Team value) {
         if (teamBuilder_ == null) {
@@ -17014,7 +17010,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public Builder setTeam(
           com.trans.pixel.protoc.Base.Team.Builder builderForValue) {
@@ -17028,7 +17024,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public Builder mergeTeam(com.trans.pixel.protoc.Base.Team value) {
         if (teamBuilder_ == null) {
@@ -17047,7 +17043,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public Builder clearTeam() {
         if (teamBuilder_ == null) {
@@ -17060,7 +17056,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public com.trans.pixel.protoc.Base.Team.Builder getTeamBuilder() {
         bitField0_ |= 0x00000004;
@@ -17068,7 +17064,7 @@ public final class Base {
         return getTeamFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
         if (teamBuilder_ != null) {
@@ -17078,7 +17074,7 @@ public final class Base {
         }
       }
       /**
-       * <code>required .com.trans.pixel.protoc.Team team = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> 
@@ -23372,7 +23368,7 @@ public final class Base {
       "\022\r\n\005level\030\003 \001(\005\"B\n\017UserTalentEquip\022\020\n\010po" +
       "sition\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030\003 " +
       "\001(\005\"Q\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001" +
-      "(\005\022*\n\004team\030\003 \002(\0132\034.com.trans.pixel.proto" +
+      "(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel.proto" +
       "c.Team\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n" +
       "\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(" +
       "\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030" +

@@ -136,7 +136,7 @@ message UserTalentEquip {
 message UserRank {
 	optional int64 rank = 1;
 	optional int32 dps = 2;
-	required Team team = 3;
+	optional Team team = 3;
 }
 
 message ClearInfo {
@@ -966,7 +966,7 @@ message EquipList {
 }
 
 message Equip {
-	optional int32 itemid = 1;
+	optional int32 id = 1;
 	optional string name = 2;
 	optional int32 level = 3;
 	optional int32 rare = 4;
