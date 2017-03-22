@@ -141,6 +141,11 @@ public class UserRankBean {
 		UserRank.Builder builder = UserRank.newBuilder();
 		builder.setRank(rank);
 		builder.setDps(dps);
+		builder.setIcon(icon);
+		builder.setUserId(userId);
+		builder.setUserName(userName);
+		builder.setVip(vip);
+		builder.setZhanli(zhanli);
 		
 		return builder.build();
 	}
