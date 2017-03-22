@@ -155,7 +155,7 @@ public class PressureTest extends BaseTest {
 		UserRank userRank = ladderTest.getUserLadder(request, loginResponse);
 		
 		TeamTest teamTest = new TeamTest();
-		teamTest.gettTeamCacheTest(request, loginResponse, userRank.getUserId());
+		teamTest.gettTeamCacheTest(request, loginResponse, userRank.getTeam().getUser().getId());
 		
 		ladderTest.attackLadder(request, loginResponse, userRank.getRank(), teamId);
 	}

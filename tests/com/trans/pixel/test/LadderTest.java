@@ -28,7 +28,7 @@ public class LadderTest extends BaseTest {
 	private void attackLadder() {
 		int teamid = 1;
 		long rank = ranks.getUserRankList().get(0).getRank();
-		long enemyid = ranks.getUserRankList().get(0).getUserId();
+		long enemyid = ranks.getUserRankList().get(0).getTeam().getUser().getId();
 		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
 		requestBuilder.setHead(head());
 		RequestAttackLadderModeCommand.Builder builder = RequestAttackLadderModeCommand.newBuilder();

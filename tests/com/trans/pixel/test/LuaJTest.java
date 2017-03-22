@@ -9,8 +9,8 @@ import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
 
 import com.trans.pixel.model.HeroInfoBean;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.HeroProto.Hero;
-import com.trans.pixel.protoc.HeroProto.Team;
 import com.trans.pixel.service.UserTeamService;
 
 public class LuaJTest {
