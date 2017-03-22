@@ -3000,7 +3000,10 @@ message RequestOpenRaidCommand{
 }
 message RequestStartRaidCommand{
 	optional int32 id = 1;
-	optional bool ret = 2;
+        optional string teamInfo = 2;
+        optional string fightInfo = 3;
+        optional int32 turn = 4;
+        optional bool ret = 5;
 }
 message ResponseRaidCommand{
 	optional int32 id = 1;

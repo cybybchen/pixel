@@ -70,6 +70,9 @@ public class RaidCommandService extends BaseCommandService{
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			id++;
 			redis.saveRaid(user, id);
+		}else if(!cmd.getRet() && cmd.getTurn() == 0){
+			id = 0;
+			redis.saveRaid(user, id);
 		}
 		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 		builder.setId(id);

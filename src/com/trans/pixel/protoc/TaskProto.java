@@ -11443,13 +11443,53 @@ public final class TaskProto {
      */
     int getId();
 
-    // optional bool ret = 2;
+    // optional string teamInfo = 2;
     /**
-     * <code>optional bool ret = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
+     */
+    boolean hasTeamInfo();
+    /**
+     * <code>optional string teamInfo = 2;</code>
+     */
+    java.lang.String getTeamInfo();
+    /**
+     * <code>optional string teamInfo = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getTeamInfoBytes();
+
+    // optional string fightInfo = 3;
+    /**
+     * <code>optional string fightInfo = 3;</code>
+     */
+    boolean hasFightInfo();
+    /**
+     * <code>optional string fightInfo = 3;</code>
+     */
+    java.lang.String getFightInfo();
+    /**
+     * <code>optional string fightInfo = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getFightInfoBytes();
+
+    // optional int32 turn = 4;
+    /**
+     * <code>optional int32 turn = 4;</code>
+     */
+    boolean hasTurn();
+    /**
+     * <code>optional int32 turn = 4;</code>
+     */
+    int getTurn();
+
+    // optional bool ret = 5;
+    /**
+     * <code>optional bool ret = 5;</code>
      */
     boolean hasRet();
     /**
-     * <code>optional bool ret = 2;</code>
+     * <code>optional bool ret = 5;</code>
      */
     boolean getRet();
   }
@@ -11509,8 +11549,23 @@ public final class TaskProto {
               id_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
+              teamInfo_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              fightInfo_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              turn_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
               ret_ = input.readBool();
               break;
             }
@@ -11570,17 +11625,119 @@ public final class TaskProto {
       return id_;
     }
 
-    // optional bool ret = 2;
-    public static final int RET_FIELD_NUMBER = 2;
-    private boolean ret_;
+    // optional string teamInfo = 2;
+    public static final int TEAMINFO_FIELD_NUMBER = 2;
+    private java.lang.Object teamInfo_;
     /**
-     * <code>optional bool ret = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
      */
-    public boolean hasRet() {
+    public boolean hasTeamInfo() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bool ret = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
+     */
+    public java.lang.String getTeamInfo() {
+      java.lang.Object ref = teamInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          teamInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string teamInfo = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTeamInfoBytes() {
+      java.lang.Object ref = teamInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teamInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string fightInfo = 3;
+    public static final int FIGHTINFO_FIELD_NUMBER = 3;
+    private java.lang.Object fightInfo_;
+    /**
+     * <code>optional string fightInfo = 3;</code>
+     */
+    public boolean hasFightInfo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string fightInfo = 3;</code>
+     */
+    public java.lang.String getFightInfo() {
+      java.lang.Object ref = fightInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fightInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string fightInfo = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFightInfoBytes() {
+      java.lang.Object ref = fightInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fightInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int32 turn = 4;
+    public static final int TURN_FIELD_NUMBER = 4;
+    private int turn_;
+    /**
+     * <code>optional int32 turn = 4;</code>
+     */
+    public boolean hasTurn() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 turn = 4;</code>
+     */
+    public int getTurn() {
+      return turn_;
+    }
+
+    // optional bool ret = 5;
+    public static final int RET_FIELD_NUMBER = 5;
+    private boolean ret_;
+    /**
+     * <code>optional bool ret = 5;</code>
+     */
+    public boolean hasRet() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bool ret = 5;</code>
      */
     public boolean getRet() {
       return ret_;
@@ -11588,6 +11745,9 @@ public final class TaskProto {
 
     private void initFields() {
       id_ = 0;
+      teamInfo_ = "";
+      fightInfo_ = "";
+      turn_ = 0;
       ret_ = false;
     }
     private byte memoizedIsInitialized = -1;
@@ -11606,7 +11766,16 @@ public final class TaskProto {
         output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBool(2, ret_);
+        output.writeBytes(2, getTeamInfoBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getFightInfoBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, turn_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(5, ret_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -11623,7 +11792,19 @@ public final class TaskProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, ret_);
+          .computeBytesSize(2, getTeamInfoBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getFightInfoBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, turn_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, ret_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11743,8 +11924,14 @@ public final class TaskProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        ret_ = false;
+        teamInfo_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        fightInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        turn_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        ret_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -11780,6 +11967,18 @@ public final class TaskProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
+        result.teamInfo_ = teamInfo_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.fightInfo_ = fightInfo_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.turn_ = turn_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.ret_ = ret_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -11799,6 +11998,19 @@ public final class TaskProto {
         if (other == com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
+        }
+        if (other.hasTeamInfo()) {
+          bitField0_ |= 0x00000002;
+          teamInfo_ = other.teamInfo_;
+          onChanged();
+        }
+        if (other.hasFightInfo()) {
+          bitField0_ |= 0x00000004;
+          fightInfo_ = other.fightInfo_;
+          onChanged();
+        }
+        if (other.hasTurn()) {
+          setTurn(other.getTurn());
         }
         if (other.hasRet()) {
           setRet(other.getRet());
@@ -11863,34 +12075,215 @@ public final class TaskProto {
         return this;
       }
 
-      // optional bool ret = 2;
-      private boolean ret_ ;
+      // optional string teamInfo = 2;
+      private java.lang.Object teamInfo_ = "";
       /**
-       * <code>optional bool ret = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
        */
-      public boolean hasRet() {
+      public boolean hasTeamInfo() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional bool ret = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
+       */
+      public java.lang.String getTeamInfo() {
+        java.lang.Object ref = teamInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          teamInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string teamInfo = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTeamInfoBytes() {
+        java.lang.Object ref = teamInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          teamInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string teamInfo = 2;</code>
+       */
+      public Builder setTeamInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        teamInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string teamInfo = 2;</code>
+       */
+      public Builder clearTeamInfo() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        teamInfo_ = getDefaultInstance().getTeamInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string teamInfo = 2;</code>
+       */
+      public Builder setTeamInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        teamInfo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string fightInfo = 3;
+      private java.lang.Object fightInfo_ = "";
+      /**
+       * <code>optional string fightInfo = 3;</code>
+       */
+      public boolean hasFightInfo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string fightInfo = 3;</code>
+       */
+      public java.lang.String getFightInfo() {
+        java.lang.Object ref = fightInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          fightInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string fightInfo = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFightInfoBytes() {
+        java.lang.Object ref = fightInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fightInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string fightInfo = 3;</code>
+       */
+      public Builder setFightInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        fightInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string fightInfo = 3;</code>
+       */
+      public Builder clearFightInfo() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        fightInfo_ = getDefaultInstance().getFightInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string fightInfo = 3;</code>
+       */
+      public Builder setFightInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        fightInfo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 turn = 4;
+      private int turn_ ;
+      /**
+       * <code>optional int32 turn = 4;</code>
+       */
+      public boolean hasTurn() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 turn = 4;</code>
+       */
+      public int getTurn() {
+        return turn_;
+      }
+      /**
+       * <code>optional int32 turn = 4;</code>
+       */
+      public Builder setTurn(int value) {
+        bitField0_ |= 0x00000008;
+        turn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 turn = 4;</code>
+       */
+      public Builder clearTurn() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        turn_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bool ret = 5;
+      private boolean ret_ ;
+      /**
+       * <code>optional bool ret = 5;</code>
+       */
+      public boolean hasRet() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional bool ret = 5;</code>
        */
       public boolean getRet() {
         return ret_;
       }
       /**
-       * <code>optional bool ret = 2;</code>
+       * <code>optional bool ret = 5;</code>
        */
       public Builder setRet(boolean value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000010;
         ret_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool ret = 2;</code>
+       * <code>optional bool ret = 5;</code>
        */
       public Builder clearRet() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000010);
         ret_ = false;
         onChanged();
         return this;
@@ -12431,10 +12824,11 @@ public final class TaskProto {
       "\005\022\014\n\004name\030\004 \001(\t\0220\n\005order\030\005 \003(\0132!.com.tra" +
       "ns.pixel.protoc.RaidOrder\"4\n\010RaidList\022(\n" +
       "\002id\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid\"" +
-      "$\n\026RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\"2\n" +
-      "\027RequestStartRaidCommand\022\n\n\002id\030\001 \001(\005\022\013\n\003" +
-      "ret\030\002 \001(\010\"!\n\023ResponseRaidCommand\022\n\n\002id\030\001" +
-      " \001(\005"
+      "$\n\026RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\"e\n" +
+      "\027RequestStartRaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010" +
+      "teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004tur" +
+      "n\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\"!\n\023ResponseRaidComm" +
+      "and\022\n\n\002id\030\001 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12536,7 +12930,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_descriptor,
-              new java.lang.String[] { "Id", "Ret", });
+              new java.lang.String[] { "Id", "TeamInfo", "FightInfo", "Turn", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_fieldAccessorTable = new

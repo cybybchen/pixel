@@ -15971,157 +15971,156 @@ public final class Commands {
   static {
     java.lang.String[] descriptorData = {
       "\n\016Commands.proto\022\026com.trans.pixel.protoc" +
-      "\032\nBase.proto\032\017ShopProto.proto\032\017HeroProto" +
-      ".proto\032\020EquipProto.proto\032\016PVPProto.proto" +
-      "\032\017AreaProto.proto\032\020MohuaProto.proto\032\023Rec" +
-      "hargeProto.proto\032\027MessageBoardProto.prot" +
-      "o\032\023ActivityProto.proto\032\021LadderProto.prot" +
-      "o\032\023UserInfoProto.proto\032\017MailProto.proto\032" +
-      "\020UnionProto.proto\032\025RewardTaskProto.proto" +
-      "\032\017TaskProto.proto\"-\n\014ErrorCommand\022\014\n\004cod" +
-      "e\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"3\n\026ResponseMess",
-      "ageCommand\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"\345+" +
-      "\n\017ResponseCommand\022.\n\004head\030\001 \002(\0132 .com.tr" +
-      "ans.pixel.protoc.HeadInfo\022:\n\014errorComman" +
-      "d\030\002 \001(\0132$.com.trans.pixel.protoc.ErrorCo" +
-      "mmand\022<\n\rrewardCommand\030e \001(\0132%.com.trans" +
-      ".pixel.protoc.RewardCommand\022J\n\020dailyShop" +
-      "Command\030f \001(\01320.com.trans.pixel.protoc.R" +
-      "esponseDailyShopCommand\022@\n\013shopCommand\030g" +
-      " \001(\0132+.com.trans.pixel.protoc.ResponseSh" +
-      "opCommand\022J\n\020blackShopCommand\030h \001(\01320.co",
-      "m.trans.pixel.protoc.ResponseBlackShopCo" +
-      "mmand\022J\n\020unionShopCommand\030i \001(\01320.com.tr" +
-      "ans.pixel.protoc.ResponseUnionShopComman" +
-      "d\022F\n\016PVPShopCommand\030j \001(\0132..com.trans.pi" +
-      "xel.protoc.ResponsePVPShopCommand\022T\n\025exp" +
-      "editionShopCommand\030k \001(\01325.com.trans.pix" +
-      "el.protoc.ResponseExpeditionShopCommand\022" +
-      "L\n\021ladderShopCommand\030l \001(\01321.com.trans.p" +
-      "ixel.protoc.ResponseLadderShopCommand\022K\n" +
-      "\020libaoShopCommand\030\216\001 \001(\01320.com.trans.pix",
-      "el.protoc.ResponseLibaoShopCommand\022_\n\032fi" +
-      "rstRechargeStatusCommand\030\217\001 \001(\0132:.com.tr" +
-      "ans.pixel.protoc.ResponseFirstRechargeSt" +
-      "atusCommand\022P\n\023purchaseCoinCommand\030z \001(\013" +
-      "23.com.trans.pixel.protoc.ResponsePurcha" +
-      "seCoinCommand\022C\n\013teamCommand\030{ \001(\0132..com" +
-      ".trans.pixel.protoc.ResponseGetTeamComma" +
-      "nd\022L\n\021pvpMapListCommand\030} \001(\01321.com.tran" +
-      "s.pixel.protoc.ResponsePVPMapListCommand" +
-      "\022K\n\020areaEquipCommand\030\211\001 \001(\01320.com.trans.",
-      "pixel.protoc.ResponseAreaEquipCommand\022O\n" +
-      "\022pvpMineInfoCommand\030\212\001 \001(\01322.com.trans.p" +
-      "ixel.protoc.ResponsePVPMineInfoCommand\022K" +
-      "\n\020fightInfoCommand\030\233\001 \001(\01320.com.trans.pi" +
-      "xel.protoc.ResponseFightInfoCommand\022A\n\013r" +
-      "aidCommand\030\236\001 \001(\0132+.com.trans.pixel.prot" +
-      "oc.ResponseRaidCommand\022P\n\023needRegisterCo" +
-      "mmand\030\003 \001(\01323.com.trans.pixel.protoc.Res" +
-      "ponseNeedRegisterCommand\022H\n\017userInfoComm" +
-      "and\030\004 \001(\0132/.com.trans.pixel.protoc.Respo",
-      "nseUserInfoCommand\022O\n\022eventResultCommand" +
-      "\030\246\001 \001(\01322.com.trans.pixel.protoc.Respons" +
-      "eEventResultCommand\022K\n\020levelLootCommand\030" +
-      "\247\001 \001(\01320.com.trans.pixel.protoc.Response" +
-      "LevelLootCommand\022L\n\021heroResultCommand\030\010 " +
-      "\001(\01321.com.trans.pixel.protoc.ResponseHer" +
-      "oResultCommand\022N\n\022getUserHeroCommand\030\016 \001" +
-      "(\01322.com.trans.pixel.protoc.ResponseGetU" +
-      "serHeroCommand\022Z\n\030getLadderRankListComma" +
-      "nd\030\017 \001(\01328.com.trans.pixel.protoc.Respon",
-      "seGetLadderRankListCommand\022b\n\034getUserLad" +
-      "derRankListCommand\030\020 \001(\0132<.com.trans.pix" +
-      "el.protoc.ResponseGetUserLadderRankListC" +
-      "ommand\022X\n\027attackLadderModeCommand\030\021 \001(\0132" +
-      "7.com.trans.pixel.protoc.ResponseAttackL" +
-      "adderModeCommand\022V\n\026getUserMailListComma" +
-      "nd\030\022 \001(\01326.com.trans.pixel.protoc.Respon" +
-      "seGetUserMailListCommand\022L\n\021sendRewardCo" +
-      "mmand\030\023 \001(\01321.com.trans.pixel.protoc.Res" +
-      "ponseSendRewardCommand\022F\n\016messageCommand",
-      "\030\024 \001(\0132..com.trans.pixel.protoc.Response" +
-      "MessageCommand\022Z\n\030getUserFriendListComma" +
-      "nd\030\025 \001(\01328.com.trans.pixel.protoc.Respon" +
-      "seGetUserFriendListCommand\022M\n\020userEquipC" +
-      "ommand\030\027 \001(\01323.com.trans.pixel.protoc.Re" +
-      "sponseGetUserEquipCommand\022@\n\013areaCommand" +
-      "\030\030 \001(\0132+.com.trans.pixel.protoc.Response" +
-      "AreaCommand\022Q\n\023areaResourceCommand\030\210\001 \001(" +
-      "\01323.com.trans.pixel.protoc.ResponseAreaR" +
-      "esourceCommand\022^\n\027resourceMineInfoComman",
-      "d\030| \001(\0132=.com.trans.pixel.protoc.Respons" +
-      "eAttackResourceMineInfoCommand\022J\n\020unionI" +
-      "nfoCommand\030\033 \001(\01320.com.trans.pixel.proto" +
-      "c.ResponseUnionInfoCommand\022J\n\020unionListC" +
-      "ommand\030\034 \001(\01320.com.trans.pixel.protoc.Re" +
-      "sponseUnionListCommand\022X\n\027messageBoardLi" +
-      "stCommand\030\035 \001(\01327.com.trans.pixel.protoc" +
-      ".ResponseMessageBoardListCommand\022P\n\023mess" +
-      "ageBoardCommand\030\036 \001(\01323.com.trans.pixel." +
-      "protoc.ResponseMessageBoardCommand\022P\n\023us",
-      "erTeamListCommand\030\037 \001(\01323.com.trans.pixe" +
-      "l.protoc.ResponseUserTeamListCommand\022W\n\025" +
-      "ladderUserInfoCommand\030  \001(\01328.com.trans." +
-      "pixel.protoc.ResponseGetLadderUserInfoCo" +
-      "mmand\022P\n\023equipComposeCommand\030! \001(\01323.com" +
-      ".trans.pixel.protoc.ResponseEquipCompose" +
-      "Command\022H\n\017userPropCommand\030\" \001(\0132/.com.t" +
-      "rans.pixel.protoc.ResponseUserPropComman" +
-      "d\022F\n\016usePropCommand\030# \001(\0132..com.trans.pi" +
-      "xel.protoc.ResponseUsePropCommand\022@\n\013sig",
-      "nCommand\030% \001(\0132+.com.trans.pixel.protoc." +
-      "ResponseSignCommand\022R\n\024mohuaUserDataComm" +
-      "and\030& \001(\01324.com.trans.pixel.protoc.Respo" +
-      "nseMohuaUserDataCommand\022N\n\022achieveListCo" +
-      "mmand\030( \001(\01322.com.trans.pixel.protoc.Res" +
-      "ponseAchieveListCommand\022N\n\022richangListCo" +
-      "mmand\030* \001(\01322.com.trans.pixel.protoc.Res" +
-      "ponseRichangListCommand\022T\n\025kaifu2Activit" +
-      "yCommand\030+ \001(\01325.com.trans.pixel.protoc." +
-      "ResponseKaifu2ActivityCommand\022N\n\022kaifuRe",
-      "wardCommand\030- \001(\01322.com.trans.pixel.prot" +
-      "oc.ResponseKaifuRewardCommand\022J\n\020kaifuLi" +
-      "stCommand\030. \001(\01320.com.trans.pixel.protoc" +
-      ".ResponseKaifuListCommand\022L\n\021userPokedeC" +
-      "ommand\030/ \001(\01321.com.trans.pixel.protoc.Re" +
-      "sponseUserPokedeCommand\022@\n\013rankCommand\0300" +
-      " \001(\0132+.com.trans.pixel.protoc.ResponseRa" +
-      "nkCommand\022N\n\022equipResultCommand\0301 \001(\01322." +
-      "com.trans.pixel.protoc.ResponseEquipResu" +
-      "ltCommand\022L\n\021deleteHeroCommand\0302 \001(\01321.c",
-      "om.trans.pixel.protoc.ResponseDeleteHero" +
-      "Command\022H\n\017userHeadCommand\0303 \001(\0132/.com.t" +
-      "rans.pixel.protoc.ResponseUserHeadComman" +
-      "d\022D\n\rnoticeCommand\0305 \001(\0132-.com.trans.pix" +
-      "el.protoc.ResponseNoticeCommand\022H\n\017userF" +
-      "oodCommand\0306 \001(\0132/.com.trans.pixel.proto" +
-      "c.ResponseUserFoodCommand\022J\n\020clearInfoCo" +
-      "mmand\0307 \001(\01320.com.trans.pixel.protoc.Res" +
-      "ponseClearInfoCommand\022H\n\017bosskillCommand" +
-      "\0308 \001(\0132/.com.trans.pixel.protoc.Response",
-      "BosskillCommand\022J\n\020unionBossCommand\0309 \001(" +
-      "\01320.com.trans.pixel.protoc.ResponseUnion" +
-      "BossCommand\022N\n\022isAreaOwnerCommand\030: \001(\0132" +
-      "2.com.trans.pixel.protoc.ResponseIsAreaO" +
-      "wnerCommand\022H\n\017userTaskCommand\030; \001(\0132/.c" +
-      "om.trans.pixel.protoc.ResponseUserTaskCo" +
-      "mmand\022V\n\026userBattletowerCommand\030< \001(\01326." +
-      "com.trans.pixel.protoc.ResponseUserBattl" +
-      "etowerCommand\022V\n\026battletowerShopCommand\030" +
-      "= \001(\01326.com.trans.pixel.protoc.ResponseB",
-      "attletowerShopCommand\022T\n\025bossRoomRecordC" +
-      "ommand\030> \001(\01325.com.trans.pixel.protoc.Re" +
-      "sponseBossRoomRecordCommand\022L\n\021userTalen" +
-      "tCommand\030? \001(\01321.com.trans.pixel.protoc." +
-      "ResponseUserTalentCommand\022N\n\022equipPokede" +
-      "Command\030@ \001(\01322.com.trans.pixel.protoc.R" +
-      "esponseEquipPokedeCommand\022T\n\025userRewardT" +
-      "askCommand\030A \001(\01325.com.trans.pixel.proto" +
-      "c.ResponseUserRewardTaskCommand\022\\\n\031userR" +
-      "ewardTaskRoomCommand\030B \001(\01329.com.trans.p",
-      "ixel.protoc.ResponseUserRewardTaskRoomCo" +
-      "mmand"
+      "\032\017ShopProto.proto\032\017HeroProto.proto\032\020Equi" +
+      "pProto.proto\032\016PVPProto.proto\032\017AreaProto." +
+      "proto\032\020MohuaProto.proto\032\023RechargeProto.p" +
+      "roto\032\027MessageBoardProto.proto\032\023ActivityP" +
+      "roto.proto\032\021LadderProto.proto\032\023UserInfoP" +
+      "roto.proto\032\017MailProto.proto\032\020UnionProto." +
+      "proto\032\025RewardTaskProto.proto\032\017TaskProto." +
+      "proto\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(\t\022\017\n\007m" +
+      "essage\030\002 \002(\t\"3\n\026ResponseMessageCommand\022\014",
+      "\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"\345+\n\017ResponseCo" +
+      "mmand\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.pr" +
+      "otoc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$.co" +
+      "m.trans.pixel.protoc.ErrorCommand\022<\n\rrew" +
+      "ardCommand\030e \001(\0132%.com.trans.pixel.proto" +
+      "c.RewardCommand\022J\n\020dailyShopCommand\030f \001(" +
+      "\01320.com.trans.pixel.protoc.ResponseDaily" +
+      "ShopCommand\022@\n\013shopCommand\030g \001(\0132+.com.t" +
+      "rans.pixel.protoc.ResponseShopCommand\022J\n" +
+      "\020blackShopCommand\030h \001(\01320.com.trans.pixe",
+      "l.protoc.ResponseBlackShopCommand\022J\n\020uni" +
+      "onShopCommand\030i \001(\01320.com.trans.pixel.pr" +
+      "otoc.ResponseUnionShopCommand\022F\n\016PVPShop" +
+      "Command\030j \001(\0132..com.trans.pixel.protoc.R" +
+      "esponsePVPShopCommand\022T\n\025expeditionShopC" +
+      "ommand\030k \001(\01325.com.trans.pixel.protoc.Re" +
+      "sponseExpeditionShopCommand\022L\n\021ladderSho" +
+      "pCommand\030l \001(\01321.com.trans.pixel.protoc." +
+      "ResponseLadderShopCommand\022K\n\020libaoShopCo" +
+      "mmand\030\216\001 \001(\01320.com.trans.pixel.protoc.Re",
+      "sponseLibaoShopCommand\022_\n\032firstRechargeS" +
+      "tatusCommand\030\217\001 \001(\0132:.com.trans.pixel.pr" +
+      "otoc.ResponseFirstRechargeStatusCommand\022" +
+      "P\n\023purchaseCoinCommand\030z \001(\01323.com.trans" +
+      ".pixel.protoc.ResponsePurchaseCoinComman" +
+      "d\022C\n\013teamCommand\030{ \001(\0132..com.trans.pixel" +
+      ".protoc.ResponseGetTeamCommand\022L\n\021pvpMap" +
+      "ListCommand\030} \001(\01321.com.trans.pixel.prot" +
+      "oc.ResponsePVPMapListCommand\022K\n\020areaEqui" +
+      "pCommand\030\211\001 \001(\01320.com.trans.pixel.protoc",
+      ".ResponseAreaEquipCommand\022O\n\022pvpMineInfo" +
+      "Command\030\212\001 \001(\01322.com.trans.pixel.protoc." +
+      "ResponsePVPMineInfoCommand\022K\n\020fightInfoC" +
+      "ommand\030\233\001 \001(\01320.com.trans.pixel.protoc.R" +
+      "esponseFightInfoCommand\022A\n\013raidCommand\030\236" +
+      "\001 \001(\0132+.com.trans.pixel.protoc.ResponseR" +
+      "aidCommand\022P\n\023needRegisterCommand\030\003 \001(\0132" +
+      "3.com.trans.pixel.protoc.ResponseNeedReg" +
+      "isterCommand\022H\n\017userInfoCommand\030\004 \001(\0132/." +
+      "com.trans.pixel.protoc.ResponseUserInfoC",
+      "ommand\022O\n\022eventResultCommand\030\246\001 \001(\01322.co" +
+      "m.trans.pixel.protoc.ResponseEventResult" +
+      "Command\022K\n\020levelLootCommand\030\247\001 \001(\01320.com" +
+      ".trans.pixel.protoc.ResponseLevelLootCom" +
+      "mand\022L\n\021heroResultCommand\030\010 \001(\01321.com.tr" +
+      "ans.pixel.protoc.ResponseHeroResultComma" +
+      "nd\022N\n\022getUserHeroCommand\030\016 \001(\01322.com.tra" +
+      "ns.pixel.protoc.ResponseGetUserHeroComma" +
+      "nd\022Z\n\030getLadderRankListCommand\030\017 \001(\01328.c" +
+      "om.trans.pixel.protoc.ResponseGetLadderR",
+      "ankListCommand\022b\n\034getUserLadderRankListC" +
+      "ommand\030\020 \001(\0132<.com.trans.pixel.protoc.Re" +
+      "sponseGetUserLadderRankListCommand\022X\n\027at" +
+      "tackLadderModeCommand\030\021 \001(\01327.com.trans." +
+      "pixel.protoc.ResponseAttackLadderModeCom" +
+      "mand\022V\n\026getUserMailListCommand\030\022 \001(\01326.c" +
+      "om.trans.pixel.protoc.ResponseGetUserMai" +
+      "lListCommand\022L\n\021sendRewardCommand\030\023 \001(\0132" +
+      "1.com.trans.pixel.protoc.ResponseSendRew" +
+      "ardCommand\022F\n\016messageCommand\030\024 \001(\0132..com",
+      ".trans.pixel.protoc.ResponseMessageComma" +
+      "nd\022Z\n\030getUserFriendListCommand\030\025 \001(\01328.c" +
+      "om.trans.pixel.protoc.ResponseGetUserFri" +
+      "endListCommand\022M\n\020userEquipCommand\030\027 \001(\013" +
+      "23.com.trans.pixel.protoc.ResponseGetUse" +
+      "rEquipCommand\022@\n\013areaCommand\030\030 \001(\0132+.com" +
+      ".trans.pixel.protoc.ResponseAreaCommand\022" +
+      "Q\n\023areaResourceCommand\030\210\001 \001(\01323.com.tran" +
+      "s.pixel.protoc.ResponseAreaResourceComma" +
+      "nd\022^\n\027resourceMineInfoCommand\030| \001(\0132=.co",
+      "m.trans.pixel.protoc.ResponseAttackResou" +
+      "rceMineInfoCommand\022J\n\020unionInfoCommand\030\033" +
+      " \001(\01320.com.trans.pixel.protoc.ResponseUn" +
+      "ionInfoCommand\022J\n\020unionListCommand\030\034 \001(\013" +
+      "20.com.trans.pixel.protoc.ResponseUnionL" +
+      "istCommand\022X\n\027messageBoardListCommand\030\035 " +
+      "\001(\01327.com.trans.pixel.protoc.ResponseMes" +
+      "sageBoardListCommand\022P\n\023messageBoardComm" +
+      "and\030\036 \001(\01323.com.trans.pixel.protoc.Respo" +
+      "nseMessageBoardCommand\022P\n\023userTeamListCo",
+      "mmand\030\037 \001(\01323.com.trans.pixel.protoc.Res" +
+      "ponseUserTeamListCommand\022W\n\025ladderUserIn" +
+      "foCommand\030  \001(\01328.com.trans.pixel.protoc" +
+      ".ResponseGetLadderUserInfoCommand\022P\n\023equ" +
+      "ipComposeCommand\030! \001(\01323.com.trans.pixel" +
+      ".protoc.ResponseEquipComposeCommand\022H\n\017u" +
+      "serPropCommand\030\" \001(\0132/.com.trans.pixel.p" +
+      "rotoc.ResponseUserPropCommand\022F\n\016useProp" +
+      "Command\030# \001(\0132..com.trans.pixel.protoc.R" +
+      "esponseUsePropCommand\022@\n\013signCommand\030% \001",
+      "(\0132+.com.trans.pixel.protoc.ResponseSign" +
+      "Command\022R\n\024mohuaUserDataCommand\030& \001(\01324." +
+      "com.trans.pixel.protoc.ResponseMohuaUser" +
+      "DataCommand\022N\n\022achieveListCommand\030( \001(\0132" +
+      "2.com.trans.pixel.protoc.ResponseAchieve" +
+      "ListCommand\022N\n\022richangListCommand\030* \001(\0132" +
+      "2.com.trans.pixel.protoc.ResponseRichang" +
+      "ListCommand\022T\n\025kaifu2ActivityCommand\030+ \001" +
+      "(\01325.com.trans.pixel.protoc.ResponseKaif" +
+      "u2ActivityCommand\022N\n\022kaifuRewardCommand\030",
+      "- \001(\01322.com.trans.pixel.protoc.ResponseK" +
+      "aifuRewardCommand\022J\n\020kaifuListCommand\030. " +
+      "\001(\01320.com.trans.pixel.protoc.ResponseKai" +
+      "fuListCommand\022L\n\021userPokedeCommand\030/ \001(\013" +
+      "21.com.trans.pixel.protoc.ResponseUserPo" +
+      "kedeCommand\022@\n\013rankCommand\0300 \001(\0132+.com.t" +
+      "rans.pixel.protoc.ResponseRankCommand\022N\n" +
+      "\022equipResultCommand\0301 \001(\01322.com.trans.pi" +
+      "xel.protoc.ResponseEquipResultCommand\022L\n" +
+      "\021deleteHeroCommand\0302 \001(\01321.com.trans.pix",
+      "el.protoc.ResponseDeleteHeroCommand\022H\n\017u" +
+      "serHeadCommand\0303 \001(\0132/.com.trans.pixel.p" +
+      "rotoc.ResponseUserHeadCommand\022D\n\rnoticeC" +
+      "ommand\0305 \001(\0132-.com.trans.pixel.protoc.Re" +
+      "sponseNoticeCommand\022H\n\017userFoodCommand\0306" +
+      " \001(\0132/.com.trans.pixel.protoc.ResponseUs" +
+      "erFoodCommand\022J\n\020clearInfoCommand\0307 \001(\0132" +
+      "0.com.trans.pixel.protoc.ResponseClearIn" +
+      "foCommand\022H\n\017bosskillCommand\0308 \001(\0132/.com" +
+      ".trans.pixel.protoc.ResponseBosskillComm",
+      "and\022J\n\020unionBossCommand\0309 \001(\01320.com.tran" +
+      "s.pixel.protoc.ResponseUnionBossCommand\022" +
+      "N\n\022isAreaOwnerCommand\030: \001(\01322.com.trans." +
+      "pixel.protoc.ResponseIsAreaOwnerCommand\022" +
+      "H\n\017userTaskCommand\030; \001(\0132/.com.trans.pix" +
+      "el.protoc.ResponseUserTaskCommand\022V\n\026use" +
+      "rBattletowerCommand\030< \001(\01326.com.trans.pi" +
+      "xel.protoc.ResponseUserBattletowerComman" +
+      "d\022V\n\026battletowerShopCommand\030= \001(\01326.com." +
+      "trans.pixel.protoc.ResponseBattletowerSh",
+      "opCommand\022T\n\025bossRoomRecordCommand\030> \001(\013" +
+      "25.com.trans.pixel.protoc.ResponseBossRo" +
+      "omRecordCommand\022L\n\021userTalentCommand\030? \001" +
+      "(\01321.com.trans.pixel.protoc.ResponseUser" +
+      "TalentCommand\022N\n\022equipPokedeCommand\030@ \001(" +
+      "\01322.com.trans.pixel.protoc.ResponseEquip" +
+      "PokedeCommand\022T\n\025userRewardTaskCommand\030A" +
+      " \001(\01325.com.trans.pixel.protoc.ResponseUs" +
+      "erRewardTaskCommand\022\\\n\031userRewardTaskRoo" +
+      "mCommand\030B \001(\01329.com.trans.pixel.protoc.",
+      "ResponseUserRewardTaskRoomCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -16152,7 +16151,6 @@ public final class Commands {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.trans.pixel.protoc.Base.getDescriptor(),
           com.trans.pixel.protoc.ShopProto.getDescriptor(),
           com.trans.pixel.protoc.HeroProto.getDescriptor(),
           com.trans.pixel.protoc.EquipProto.getDescriptor(),

@@ -5,41 +5,45 @@ package=""
 packages=()
 content=""
 proto_dir=pixel_proto/pb/
+mkdir -p $proto_dir
 function pushCommand()
 {
 	while [ 0 -lt $# ];
 	do
 		if [[ $1 == "message" ]]
 		then
-	    	shift
-	    	map[$1]=$1
-	    elif [[ $1 == "//////////" ]]
-	    then
-	    	shift
-	    	if [[ $package != "" ]]
-	    	then
-	    		echo  "$package"
-	    		echo -e "$packagepath;\n" > ${proto_dir}/$package.proto
-	    		if [[ $package != "Base" ]] && [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
-    			then
-		    		echo "import \"Base.proto\";" >> ${proto_dir}/$package.proto
-		    	fi
-	    		if [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
-    			then
-	    			packages[${#packages[@]}]=$package
-			    else
-		    		for i in ${packages[*]}
-		    		do
-			    		echo "import \"$i.proto\";" >> ${proto_dir}/$package.proto
-			    	done
-			    fi
-	    		echo -e $content >> ${proto_dir}/$package.proto
-	    		content=""
-	    	fi
-	    	package=$1
-    		# package=${package:0:${#package}-1}
+			shift
+			map[$1]=$1
+		elif [[ $1 == "//////////" ]]
+		then
+			shift
+			if [[ $package != "" ]]
+			then
+				echo  "$package"
+				echo -e "$packagepath;\n" > ${proto_dir}/$package.proto
+				if [[ $package != "Base" ]] && [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
+				then
+					echo "import \"Base.proto\";" >> ${proto_dir}/$package.proto
+				fi
+				if [[ $package != "Request" ]] && [[ $package != "Response" ]] && [[ $package != "Commands" ]]
+				then
+					if [[ $package != "Base" ]]
+					then
+						packages[${#packages[@]}]=$package
+					fi
+				else
+					for i in ${packages[*]}
+					do
+						echo "import \"$i.proto\";" >> ${proto_dir}/$package.proto
+					done
+				fi
+				echo -e $content >> ${proto_dir}/$package.proto
+				content=""
+			fi
+			package=$1
+			# package=${package:0:${#package}-1}
 		fi
-	    shift
+		shift
 	done
 	return 0;
 }
