@@ -25,6 +25,10 @@ public class UserEquipPokedeService {
 	
 	public UserEquipPokedeBean selectUserEquipPokede(UserBean user, int itemId) {
 		long userId = user.getId();
+		return selectUserEquipPokede(userId, itemId);
+	}
+	
+	public UserEquipPokedeBean selectUserEquipPokede(long userId, int itemId) {
 		UserEquipPokedeBean userPokede = redis.selectUserEquipPokede(userId, itemId);
 		if (userPokede == null) {
 			if (!redis.isExistPokedeKey(userId)) {

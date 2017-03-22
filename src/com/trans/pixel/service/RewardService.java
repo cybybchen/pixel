@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.protoc.EquipProto.CostItem;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
 

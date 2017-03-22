@@ -43,6 +43,8 @@ import com.trans.pixel.protoc.MailProto.UserFriend;
 import com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMapListCommand;
+import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopCommand;
@@ -68,6 +70,7 @@ import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserPokedeService;
 import com.trans.pixel.service.UserPropService;
+import com.trans.pixel.service.UserRewardTaskService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -113,6 +116,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserEquipPokedeService userEquipPokedeService;
 	@Resource
 	private RaidCommandService raidCommandService;
+	@Resource
+	private UserRewardTaskService userRewardTaskService;
 	
 //	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 //		user = lootService.updateLootResult(user);
@@ -521,5 +526,13 @@ public class PushCommandService extends BaseCommandService {
 		List<UserEquipPokedeBean> userPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
 		builder.addAllUserEquipPokede(buildEquipPokede(userPokedeList));
 		responseBuilder.setEquipPokedeCommand(builder.build());
+	}
+	
+	public void pushUserRewardTask(Builder responseBuilder, UserBean user) {
+		ResponseUserRewardTaskCommand.Builder builder = ResponseUserRewardTaskCommand.newBuilder();
+		List<UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
+		builder.addAllUserRewardTask(list);
+		responseBuilder.setUserRewardTaskCommand(builder.build());
+		
 	}
 }

@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -67,20 +68,20 @@ public class PropCommandService extends BaseCommandService {
 				}
 			}
 		}
-		
-		MultiReward multiReward = propService.useProp(user, propId, propCount);
-		if (prop.getBossid() == 0) {
-			if (multiReward == null) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
-				
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
-	            responseBuilder.setErrorCommand(errorCommand);
-	            return;
-			}else{
-				rewardService.doRewards(user, multiReward);
-				pusher.pushRewardCommand(responseBuilder, user, multiReward);
-			}
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		ResultConst ret = propService.useProp(user, propId, propCount, rewards);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
 		}
+		if (rewards.getLootCount() > 0) {
+			rewardService.doRewards(user, rewards.build());
+			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		}
+		
 		
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
 		if (userProp != null){

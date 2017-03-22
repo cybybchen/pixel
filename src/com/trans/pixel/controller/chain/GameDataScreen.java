@@ -110,6 +110,10 @@ import com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSignCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
@@ -198,6 +202,7 @@ import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.command.RaidCommandService;
 import com.trans.pixel.service.command.RankCommandService;
 import com.trans.pixel.service.command.RechargeCommandService;
+import com.trans.pixel.service.command.RewardTaskCommandService;
 import com.trans.pixel.service.command.ShopCommandService;
 import com.trans.pixel.service.command.SignCommandService;
 import com.trans.pixel.service.command.TalentCommandService;
@@ -284,6 +289,8 @@ public class GameDataScreen extends RequestScreen {
 	private EquipPokedeCommandService equipPokedeCommandService;
 	@Resource
 	private RaidCommandService raidCommandService;
+	@Resource
+	private RewardTaskCommandService rewardTaskCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -985,6 +992,26 @@ public class GameDataScreen extends RequestScreen {
 		raidCommandService.startRaid(cmd, responseBuilder, user);
 		return true;//RaidCommand
 	}//RaidCommand
+	@Override//CreateRewardTaskRoomCommand
+	protected boolean handleCommand(RequestCreateRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.createRoom(cmd, responseBuilder, user);
+		return true;//CreateRewardTaskRoomCommand
+	}//CreateRewardTaskRoomCommand
+	@Override//QuitRewardTaskRoomCommand
+	protected boolean handleCommand(RequestQuitRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.quitRoom(cmd, responseBuilder, user);
+		return true;//QuitRewardTaskRoomCommand
+	}//QuitRewardTaskRoomCommand
+	@Override//InviteToRewardTaskRoomCommand
+	protected boolean handleCommand(RequestInviteToRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.inviteRoom(cmd, responseBuilder, user);
+		return true;//InviteToRewardTaskRoomCommand
+	}//InviteToRewardTaskRoomCommand
+	@Override//SubmitRewardTaskScoreCommand
+	protected boolean handleCommand(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.submitScore(cmd, responseBuilder, user);
+		return true;//SubmitRewardTaskScoreCommand
+	}//SubmitRewardTaskScoreCommand
 	//add handleCommand here
 	
 	@Override

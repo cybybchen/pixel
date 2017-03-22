@@ -8,7 +8,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -46,34 +49,31 @@ public class PropService {
 		}
 	}
 	
-	public MultiReward useProp(UserBean user, int propId, int propCount) {
+	public ResultConst useProp(UserBean user, int propId, int propCount, MultiReward.Builder rewards) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
 		if (userProp == null || userProp.getPropCount() < propCount)
-			return null;
+			return ErrorConst.PROP_USE_ERROR;
 		
 		Prop prop = getProp(userProp.getPropId());
 		if (prop == null)
-			return null;
+			return ErrorConst.PROP_USE_ERROR;
 		
 		if (prop.getBossid() > 0) {
 			bossService.zhaohuanBoss(user, prop.getBossid());
 			userProp.setPropCount(userProp.getPropCount() - propCount);
 			userPropService.updateUserProp(userProp);
-			return null;
+			return SuccessConst.USE_PROP;
 		}
 		
-		MultiReward.Builder multiReward = MultiReward.newBuilder();
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		randomReward(rewardList, prop, propCount);
 		
 		if (!rewardList.isEmpty()) {
-			multiReward.addAllLoot(rewardList);
+			rewards.addAllLoot(rewardList);
 			userProp.setPropCount(userProp.getPropCount() - propCount);
 			userPropService.updateUserProp(userProp);
-			
-			return multiReward.build();
 		}
-		return null;
+		return SuccessConst.USE_PROP;
 	}
 	
 	private RewardInfo randomItem(Prop prop) {

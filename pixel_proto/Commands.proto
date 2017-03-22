@@ -63,6 +63,11 @@ message UserInfo {
 	optional uint32 zhujueExp = 75;
 }
 
+message CostItem {
+	optional int32 costid = 1;
+	optional int32 costcount = 2;
+}
+
 message JewelPool {
 	optional int32 order = 1;
 	optional int32 zhanli = 2;
@@ -117,6 +122,7 @@ message UserTalentOrder {
 message UserTalentEquip {
 	optional int32 position = 1;
 	optional int32 itemId = 2;
+	optional int32 level = 3;
 }
 
 message UserRank {
@@ -130,6 +136,7 @@ message UserRank {
 	optional string composeSkill = 8;
 	optional int32 dps = 9;
 	optional UserTalent userTalent = 10;
+	optional uint32 rolePosition = 11;
 }
 
 message ClearInfo {
@@ -1066,10 +1073,7 @@ message IncreaseRare {
 	repeated CostItem cost = 2;
 }
 
-message CostItem {
-	optional int32 costid = 1;
-	optional int32 costcount = 2;
-}
+
 
 message Item {
 	required int32 itemId = 1;
@@ -2850,6 +2854,76 @@ message RequestUnionBossFightCommand {
 	required int32 hp = 2;
 	optional int32 percent = 3;
 }
+////////// RewardTaskProto
+message RewardTaskEnemy {
+	required int32 enemyid = 1;
+	required int32 weight = 2;
+}
+
+message RewardTask {
+	required uint32 id = 1;
+	required string name = 2;
+	required uint32 type = 3;
+	required uint32 renshu = 4;
+	repeated RewardTaskEnemy enemy = 5;
+	repeated CostItem cost = 6;
+}
+
+message RewardTaskList {
+	repeated RewardTask id = 1;
+}
+
+
+message UserRewardTask {
+	required uint32 id = 1;
+	required uint32 enemyid = 2;
+	optional uint32 status = 3;//0:没打死，1打死, 2可领奖
+	optional uint32 type = 4;
+	optional UserInfo create = 5;//房主user
+	optional uint32 roomStatus = 6;
+	enum REWARDTASK_STATUS {
+		LIVE = 0;
+		END = 1;
+		CANREWARD = 2;
+		FULL = 3;//房间人数已满
+	};
+}
+
+message UserRewardTaskRoom {
+	required uint64 createUserId = 1;
+	repeated UserInfo user = 2;
+	required uint32 bossId = 3;
+	optional uint32 status = 4;
+}
+
+message RequestCreateRewardTaskRoomCommand {
+	required uint32 id = 1;
+}
+
+message RequestQuitRewardTaskRoomCommand {
+	required uint32 id = 1;
+	required uint64 userId = 2;
+}
+
+message RequestInviteToRewardTaskRoomCommand {
+	required uint32 id = 1;
+	repeated uint64 userId = 2;
+	optional uint64 createUserId = 3;
+}
+
+message RequestSubmitRewardTaskScoreCommand {
+	required uint32 id = 1;
+	required bool ret = 2;
+	required uint32 costId = 3;
+}
+
+message ResponseUserRewardTaskCommand {
+	repeated UserRewardTask userRewardTask = 1;
+}
+
+message ResponseUserRewardTaskRoomCommand {
+	repeated UserRewardTaskRoom room = 1;
+}
 ////////// TaskProto
 message TaskTargetList {
 	repeated TaskTarget target = 1;
@@ -3106,6 +3180,10 @@ message RequestCommand {
 	optional RequestEquipPokedeCommand equipPokedeCommand = 229;
 	optional RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
 	optional RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;
+	optional RequestCreateRewardTaskRoomCommand createRewardTaskRoomCommand = 232;
+	optional RequestQuitRewardTaskRoomCommand quitRewardTaskRoomCommand = 233;
+	optional RequestInviteToRewardTaskRoomCommand inviteToRewardTaskRoomCommand = 234;
+	optional RequestSubmitRewardTaskScoreCommand submitRewardTaskScoreCommand = 235;
 }
 ////////// Commands
 message ErrorCommand{
@@ -3188,6 +3266,8 @@ message ResponseCommand {
 	optional ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;
 	optional ResponseUserTalentCommand userTalentCommand = 63;
 	optional ResponseEquipPokedeCommand equipPokedeCommand = 64;
+	optional ResponseUserRewardTaskCommand userRewardTaskCommand = 65;
+	optional ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;
 }
 
 ////////// End

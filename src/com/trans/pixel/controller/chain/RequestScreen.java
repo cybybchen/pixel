@@ -114,6 +114,10 @@ import com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSignCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
@@ -421,6 +425,10 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestStartRaidCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestZanHeroMessageBoardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestCreateRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestQuitRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestInviteToRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
@@ -1261,6 +1269,26 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//RaidCommand
                 result = handleCommand(cmd, responseBuilder, user);//RaidCommand
         }//RaidCommand
+        if (request.hasCreateRewardTaskRoomCommand()) {
+            RequestCreateRewardTaskRoomCommand cmd = request.getCreateRewardTaskRoomCommand();
+            if (result)//CreateRewardTaskRoomCommand
+                result = handleCommand(cmd, responseBuilder, user);//CreateRewardTaskRoomCommand
+        }//CreateRewardTaskRoomCommand
+        if (request.hasQuitRewardTaskRoomCommand()) {
+            RequestQuitRewardTaskRoomCommand cmd = request.getQuitRewardTaskRoomCommand();
+            if (result)//QuitRewardTaskRoomCommand
+                result = handleCommand(cmd, responseBuilder, user);//QuitRewardTaskRoomCommand
+        }//QuitRewardTaskRoomCommand
+        if (request.hasInviteToRewardTaskRoomCommand()) {
+            RequestInviteToRewardTaskRoomCommand cmd = request.getInviteToRewardTaskRoomCommand();
+            if (result)//InviteToRewardTaskRoomCommand
+                result = handleCommand(cmd, responseBuilder, user);//InviteToRewardTaskRoomCommand
+        }//InviteToRewardTaskRoomCommand
+        if (request.hasSubmitRewardTaskScoreCommand()) {
+            RequestSubmitRewardTaskScoreCommand cmd = request.getSubmitRewardTaskScoreCommand();
+            if (result)//SubmitRewardTaskScoreCommand
+                result = handleCommand(cmd, responseBuilder, user);//SubmitRewardTaskScoreCommand
+        }//SubmitRewardTaskScoreCommand
         //call handleCommand here
         if (request.hasGetFightInfoCommand()) {
             RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();

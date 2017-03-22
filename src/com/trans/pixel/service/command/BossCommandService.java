@@ -215,8 +215,8 @@ public class BossCommandService extends BaseCommandService {
 		}
 		BossRoomRecord bossRoomRecord = bossService.createBossRoom(user, cmd.getGroupId(), cmd.getBossId());
 		if (bossRoomRecord == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_START);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_START);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_CREATE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_CREATE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
