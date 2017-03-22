@@ -74,17 +74,19 @@ public class UserEquipService {
 	}
 	
 	public void addUserEquip(UserBean user, int equipId, int equipCount) {
-		long userId = user.getId();
-		UserEquipBean userEquip = selectUserEquip(userId, equipId);
-		if (userEquip == null) {
-			userEquip = initUserEquip(userId, equipId);
-		}
-		
-		userEquip.setEquipCount(userEquip.getEquipCount() + equipCount);
-		updateUserEquip(userEquip);
-		
 		if (equipId < RewardConst.CHIP)
-			userEquipPokedeService.updateUserEquipPokede(userEquip, user);
+			userEquipPokedeService.updateUserEquipPokede(equipId, user);
+		else {
+			long userId = user.getId();
+			UserEquipBean userEquip = selectUserEquip(userId, equipId);
+			if (userEquip == null) {
+				userEquip = initUserEquip(userId, equipId);
+			}
+			
+			userEquip.setEquipCount(userEquip.getEquipCount() + equipCount);
+			updateUserEquip(userEquip);
+		}
+			
 	}
 	
 	private UserEquipBean initUserEquip(long userId, int equipId) {

@@ -69,10 +69,10 @@ public class UserEquipPokedeService {
 		mapper.updateUserEquipPokede(userPokede);
 	}
 	
-	public void updateUserEquipPokede(UserEquipBean equip, UserBean user) {
-		UserEquipPokedeBean pokede = selectUserEquipPokede(user, equip.getEquipId());
+	public void updateUserEquipPokede(int itemId, UserBean user) {
+		UserEquipPokedeBean pokede = selectUserEquipPokede(user, itemId);
 		if (pokede == null) {
-			pokede = initUserPokede(user.getId(), equip.getEquipId());
+			pokede = initUserPokede(user.getId(), itemId);
 			updateUserEquipPokede(pokede, user);
 		}
 	}
