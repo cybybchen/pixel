@@ -44,30 +44,30 @@ public class PropCommandService extends BaseCommandService {
 		ResponseUsePropCommand.Builder builder = ResponseUsePropCommand.newBuilder();
 		int propId = cmd.getPropId();
 		int propCount = cmd.getPropCount();
-		Prop prop = propService.getProp(propId);
-		if (prop.getBossid() > 0) {
-			propCount = 1;
-			BossGroupRecord bossGroupRecord = bossRedisService.getZhaohuanBoss(user);
-			if (bossGroupRecord != null) {
-				for (BossRecord bossRecord : bossGroupRecord.getBossRecordList()) {
-					if (bossRecord.getBossId() == prop.getBossid()) {
-						if (bossRecord.getEndTime().isEmpty()) {
-							logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_HAS_ZHAOHUAN);
-							
-							ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_HAS_ZHAOHUAN);
-				            responseBuilder.setErrorCommand(errorCommand);
-				            return;
-						} else if (DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(bossRecord.getEndTime())) == 0){
-							logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_CANNOT_ZHAOHUAN);
-							
-							ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_CANNOT_ZHAOHUAN);
-				            responseBuilder.setErrorCommand(errorCommand);
-				            return;
-						}
-					}
-				}
-			}
-		}
+//		Prop prop = propService.getProp(propId);
+//		if (prop.getBossid() > 0) {
+//			propCount = 1;
+//			BossGroupRecord bossGroupRecord = bossRedisService.getZhaohuanBoss(user);
+//			if (bossGroupRecord != null) {
+//				for (BossRecord bossRecord : bossGroupRecord.getBossRecordList()) {
+//					if (bossRecord.getBossId() == prop.getBossid()) {
+//						if (bossRecord.getEndTime().isEmpty()) {
+//							logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_HAS_ZHAOHUAN);
+//							
+//							ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_HAS_ZHAOHUAN);
+//				            responseBuilder.setErrorCommand(errorCommand);
+//				            return;
+//						} else if (DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(bossRecord.getEndTime())) == 0){
+//							logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_CANNOT_ZHAOHUAN);
+//							
+//							ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_CANNOT_ZHAOHUAN);
+//				            responseBuilder.setErrorCommand(errorCommand);
+//				            return;
+//						}
+//					}
+//				}
+//			}
+//		}
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		ResultConst ret = propService.useProp(user, propId, propCount, rewards);
 		if (ret instanceof ErrorConst) {

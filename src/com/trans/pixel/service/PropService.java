@@ -30,6 +30,8 @@ public class PropService {
 	private RewardService rewardService;
 	@Resource
 	private BossService bossService;
+	@Resource
+	private RewardTaskService rewardTaskService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -59,10 +61,12 @@ public class PropService {
 			return ErrorConst.PROP_USE_ERROR;
 		
 		if (prop.getBossid() > 0) {
-			bossService.zhaohuanBoss(user, prop.getBossid());
+			ResultConst ret = rewardTaskService.zhaohuanTask(user, prop.getBossid());
+			if (ret instanceof ErrorConst)
+				return ret;
 			userProp.setPropCount(userProp.getPropCount() - propCount);
 			userPropService.updateUserProp(userProp);
-			return SuccessConst.USE_PROP;
+			return ret;
 		}
 		
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
