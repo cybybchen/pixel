@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
@@ -123,23 +124,19 @@ public class LadderService {
 		return rankList;
 	}
 	
-	private List<UserRank> getRankList(int serverId, List<Long> ranks) {
-		List<UserRank> rankList = new ArrayList<UserRank>();
+	private List<UserRankBean> getRankList(int serverId, List<Long> ranks) {
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		for (Long rank : ranks) {
-			UserRankBean userRankBean = ladderRedisService.getUserRankByRank(serverId, rank);
-			if (userRankBean == null) {
+			UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, rank);
+			if (userRank == null) {
 				createLadderData(serverId);
-				userRankBean = ladderRedisService.getUserRankByRank(serverId, rank);
+				userRank = ladderRedisService.getUserRankByRank(serverId, rank);
 			}
-			UserRank.Builder userRank = UserRank.newBuilder();
-			if (userRankBean != null && userRankBean.getUserId() > 0) {
-				userRank = UserRank.newBuilder(userRankBean.buildUserRank());
-				Team team = userTeamService.getTeamCache(userRankBean.getUserId());
-				userRank.setTeam(team);
-				// Team team = userTeamService.getTeamCache(userRank.getUserId());
-				// userRank.setZhanli(team.getUser().getZhanli());
+			if (userRank != null && userRank.getUserId() > 0) {
+				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
+				userRank.initByUserCache(userInfo);	
 			}
-			rankList.add(userRank.build());
+			rankList.add(userRank);
 		}
 		return rankList;
 	}
@@ -152,8 +149,8 @@ public class LadderService {
 		return userTeamService.getTeamCache(userid);
 	}
 	
-	public List<UserRank> getRankListByUserId(int serverId, UserBean user) {
-		List<UserRank> rankList = new ArrayList<UserRank>();
+	public List<UserRankBean> getRankListByUserId(int serverId, UserBean user) {
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		UserRankBean myRankBean = ladderRedisService.getUserRankByUserId(serverId, user.getId());
 		if (myRankBean == null) {
 			myRankBean = initUserRank(user.getId(), user.getUserName());

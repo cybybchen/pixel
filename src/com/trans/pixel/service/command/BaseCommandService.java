@@ -208,9 +208,9 @@ public class BaseCommandService {
 	
 	protected void handleGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {	
 		ResponseGetUserLadderRankListCommand.Builder builder = ResponseGetUserLadderRankListCommand.newBuilder();
-		List<UserRank> rankList = ladderService.getRankListByUserId(user.getServerId(), user);
-//		List<UserRank> userRankBuilderList = buildUserRankList(rankList);
-		builder.addAllUserRank(rankList);
+		List<UserRankBean> rankList = ladderService.getRankListByUserId(user.getServerId(), user);
+		List<UserRank> userRankBuilderList = buildUserRankList(rankList);
+		builder.addAllUserRank(userRankBuilderList);
 		
 		responseBuilder.setGetUserLadderRankListCommand(builder.build());
 	}
