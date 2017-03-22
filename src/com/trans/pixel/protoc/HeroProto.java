@@ -38389,1340 +38389,6 @@ public final class HeroProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestResetHeroSkillCommand)
   }
 
-  public interface TeamOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional .com.trans.pixel.protoc.UserInfo user = 1;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-     */
-    boolean hasUser();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfo getUser();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
-
-    // repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.Base.HeroInfo> 
-        getHeroInfoList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    com.trans.pixel.protoc.Base.HeroInfo getHeroInfo(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    int getHeroInfoCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-        getHeroInfoOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    com.trans.pixel.protoc.Base.HeroInfoOrBuilder getHeroInfoOrBuilder(
-        int index);
-
-    // optional string composeSkill = 3;
-    /**
-     * <code>optional string composeSkill = 3;</code>
-     */
-    boolean hasComposeSkill();
-    /**
-     * <code>optional string composeSkill = 3;</code>
-     */
-    java.lang.String getComposeSkill();
-    /**
-     * <code>optional string composeSkill = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getComposeSkillBytes();
-
-    // optional .com.trans.pixel.protoc.UserTalent userTalent = 4;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-     */
-    boolean hasUserTalent();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-     */
-    com.trans.pixel.protoc.Base.UserTalent getUserTalent();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-     */
-    com.trans.pixel.protoc.Base.UserTalentOrBuilder getUserTalentOrBuilder();
-
-    // optional int32 rolePosition = 5;
-    /**
-     * <code>optional int32 rolePosition = 5;</code>
-     */
-    boolean hasRolePosition();
-    /**
-     * <code>optional int32 rolePosition = 5;</code>
-     */
-    int getRolePosition();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.Team}
-   */
-  public static final class Team extends
-      com.google.protobuf.GeneratedMessage
-      implements TeamOrBuilder {
-    // Use Team.newBuilder() to construct.
-    private Team(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private Team(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Team defaultInstance;
-    public static Team getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Team getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Team(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = user_.toBuilder();
-              }
-              user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(user_);
-                user_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                heroInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.HeroInfo>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              heroInfo_.add(input.readMessage(com.trans.pixel.protoc.Base.HeroInfo.PARSER, extensionRegistry));
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000002;
-              composeSkill_ = input.readBytes();
-              break;
-            }
-            case 34: {
-              com.trans.pixel.protoc.Base.UserTalent.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = userTalent_.toBuilder();
-              }
-              userTalent_ = input.readMessage(com.trans.pixel.protoc.Base.UserTalent.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(userTalent_);
-                userTalent_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000008;
-              rolePosition_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          heroInfo_ = java.util.Collections.unmodifiableList(heroInfo_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_Team_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_Team_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.HeroProto.Team.class, com.trans.pixel.protoc.HeroProto.Team.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Team> PARSER =
-        new com.google.protobuf.AbstractParser<Team>() {
-      public Team parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Team(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Team> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional .com.trans.pixel.protoc.UserInfo user = 1;
-    public static final int USER_FIELD_NUMBER = 1;
-    private com.trans.pixel.protoc.Base.UserInfo user_;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-     */
-    public boolean hasUser() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserInfo getUser() {
-      return user_;
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
-      return user_;
-    }
-
-    // repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;
-    public static final int HEROINFO_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.Base.HeroInfo> heroInfo_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.Base.HeroInfo> getHeroInfoList() {
-      return heroInfo_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-        getHeroInfoOrBuilderList() {
-      return heroInfo_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    public int getHeroInfoCount() {
-      return heroInfo_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    public com.trans.pixel.protoc.Base.HeroInfo getHeroInfo(int index) {
-      return heroInfo_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-     */
-    public com.trans.pixel.protoc.Base.HeroInfoOrBuilder getHeroInfoOrBuilder(
-        int index) {
-      return heroInfo_.get(index);
-    }
-
-    // optional string composeSkill = 3;
-    public static final int COMPOSESKILL_FIELD_NUMBER = 3;
-    private java.lang.Object composeSkill_;
-    /**
-     * <code>optional string composeSkill = 3;</code>
-     */
-    public boolean hasComposeSkill() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional string composeSkill = 3;</code>
-     */
-    public java.lang.String getComposeSkill() {
-      java.lang.Object ref = composeSkill_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          composeSkill_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string composeSkill = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getComposeSkillBytes() {
-      java.lang.Object ref = composeSkill_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        composeSkill_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional .com.trans.pixel.protoc.UserTalent userTalent = 4;
-    public static final int USERTALENT_FIELD_NUMBER = 4;
-    private com.trans.pixel.protoc.Base.UserTalent userTalent_;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-     */
-    public boolean hasUserTalent() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserTalent getUserTalent() {
-      return userTalent_;
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserTalentOrBuilder getUserTalentOrBuilder() {
-      return userTalent_;
-    }
-
-    // optional int32 rolePosition = 5;
-    public static final int ROLEPOSITION_FIELD_NUMBER = 5;
-    private int rolePosition_;
-    /**
-     * <code>optional int32 rolePosition = 5;</code>
-     */
-    public boolean hasRolePosition() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 rolePosition = 5;</code>
-     */
-    public int getRolePosition() {
-      return rolePosition_;
-    }
-
-    private void initFields() {
-      user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-      heroInfo_ = java.util.Collections.emptyList();
-      composeSkill_ = "";
-      userTalent_ = com.trans.pixel.protoc.Base.UserTalent.getDefaultInstance();
-      rolePosition_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (hasUser()) {
-        if (!getUser().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      for (int i = 0; i < getHeroInfoCount(); i++) {
-        if (!getHeroInfo(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasUserTalent()) {
-        if (!getUserTalent().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, user_);
-      }
-      for (int i = 0; i < heroInfo_.size(); i++) {
-        output.writeMessage(2, heroInfo_.get(i));
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(3, getComposeSkillBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(4, userTalent_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(5, rolePosition_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, user_);
-      }
-      for (int i = 0; i < heroInfo_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, heroInfo_.get(i));
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getComposeSkillBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, userTalent_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, rolePosition_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.HeroProto.Team parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.HeroProto.Team prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.Team}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.HeroProto.TeamOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_Team_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_Team_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.HeroProto.Team.class, com.trans.pixel.protoc.HeroProto.Team.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.HeroProto.Team.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getUserFieldBuilder();
-          getHeroInfoFieldBuilder();
-          getUserTalentFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        if (userBuilder_ == null) {
-          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-        } else {
-          userBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (heroInfoBuilder_ == null) {
-          heroInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          heroInfoBuilder_.clear();
-        }
-        composeSkill_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (userTalentBuilder_ == null) {
-          userTalent_ = com.trans.pixel.protoc.Base.UserTalent.getDefaultInstance();
-        } else {
-          userTalentBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rolePosition_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_Team_descriptor;
-      }
-
-      public com.trans.pixel.protoc.HeroProto.Team getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.HeroProto.Team.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.HeroProto.Team build() {
-        com.trans.pixel.protoc.HeroProto.Team result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.HeroProto.Team buildPartial() {
-        com.trans.pixel.protoc.HeroProto.Team result = new com.trans.pixel.protoc.HeroProto.Team(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        if (userBuilder_ == null) {
-          result.user_ = user_;
-        } else {
-          result.user_ = userBuilder_.build();
-        }
-        if (heroInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            heroInfo_ = java.util.Collections.unmodifiableList(heroInfo_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.heroInfo_ = heroInfo_;
-        } else {
-          result.heroInfo_ = heroInfoBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.composeSkill_ = composeSkill_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        if (userTalentBuilder_ == null) {
-          result.userTalent_ = userTalent_;
-        } else {
-          result.userTalent_ = userTalentBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.rolePosition_ = rolePosition_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.HeroProto.Team) {
-          return mergeFrom((com.trans.pixel.protoc.HeroProto.Team)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.HeroProto.Team other) {
-        if (other == com.trans.pixel.protoc.HeroProto.Team.getDefaultInstance()) return this;
-        if (other.hasUser()) {
-          mergeUser(other.getUser());
-        }
-        if (heroInfoBuilder_ == null) {
-          if (!other.heroInfo_.isEmpty()) {
-            if (heroInfo_.isEmpty()) {
-              heroInfo_ = other.heroInfo_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureHeroInfoIsMutable();
-              heroInfo_.addAll(other.heroInfo_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.heroInfo_.isEmpty()) {
-            if (heroInfoBuilder_.isEmpty()) {
-              heroInfoBuilder_.dispose();
-              heroInfoBuilder_ = null;
-              heroInfo_ = other.heroInfo_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              heroInfoBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getHeroInfoFieldBuilder() : null;
-            } else {
-              heroInfoBuilder_.addAllMessages(other.heroInfo_);
-            }
-          }
-        }
-        if (other.hasComposeSkill()) {
-          bitField0_ |= 0x00000004;
-          composeSkill_ = other.composeSkill_;
-          onChanged();
-        }
-        if (other.hasUserTalent()) {
-          mergeUserTalent(other.getUserTalent());
-        }
-        if (other.hasRolePosition()) {
-          setRolePosition(other.getRolePosition());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (hasUser()) {
-          if (!getUser().isInitialized()) {
-            
-            return false;
-          }
-        }
-        for (int i = 0; i < getHeroInfoCount(); i++) {
-          if (!getHeroInfo(i).isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasUserTalent()) {
-          if (!getUserTalent().isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.HeroProto.Team parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.HeroProto.Team) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional .com.trans.pixel.protoc.UserInfo user = 1;
-      private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public boolean hasUser() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo getUser() {
-        if (userBuilder_ == null) {
-          return user_;
-        } else {
-          return userBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          user_ = value;
-          onChanged();
-        } else {
-          userBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public Builder setUser(
-          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          user_ = builderForValue.build();
-          onChanged();
-        } else {
-          userBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
-            user_ =
-              com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
-          } else {
-            user_ = value;
-          }
-          onChanged();
-        } else {
-          userBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public Builder clearUser() {
-        if (userBuilder_ == null) {
-          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-          onChanged();
-        } else {
-          userBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getUserFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
-        if (userBuilder_ != null) {
-          return userBuilder_.getMessageOrBuilder();
-        } else {
-          return user_;
-        }
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
-          getUserFieldBuilder() {
-        if (userBuilder_ == null) {
-          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
-                  user_,
-                  getParentForChildren(),
-                  isClean());
-          user_ = null;
-        }
-        return userBuilder_;
-      }
-
-      // repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;
-      private java.util.List<com.trans.pixel.protoc.Base.HeroInfo> heroInfo_ =
-        java.util.Collections.emptyList();
-      private void ensureHeroInfoIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          heroInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.HeroInfo>(heroInfo_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.HeroInfo, com.trans.pixel.protoc.Base.HeroInfo.Builder, com.trans.pixel.protoc.Base.HeroInfoOrBuilder> heroInfoBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.HeroInfo> getHeroInfoList() {
-        if (heroInfoBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(heroInfo_);
-        } else {
-          return heroInfoBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public int getHeroInfoCount() {
-        if (heroInfoBuilder_ == null) {
-          return heroInfo_.size();
-        } else {
-          return heroInfoBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo getHeroInfo(int index) {
-        if (heroInfoBuilder_ == null) {
-          return heroInfo_.get(index);
-        } else {
-          return heroInfoBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder setHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo value) {
-        if (heroInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureHeroInfoIsMutable();
-          heroInfo_.set(index, value);
-          onChanged();
-        } else {
-          heroInfoBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder setHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo.Builder builderForValue) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          heroInfoBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder addHeroInfo(com.trans.pixel.protoc.Base.HeroInfo value) {
-        if (heroInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(value);
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder addHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo value) {
-        if (heroInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(index, value);
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder addHeroInfo(
-          com.trans.pixel.protoc.Base.HeroInfo.Builder builderForValue) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(builderForValue.build());
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder addHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo.Builder builderForValue) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder addAllHeroInfo(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.HeroInfo> values) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          super.addAll(values, heroInfo_);
-          onChanged();
-        } else {
-          heroInfoBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder clearHeroInfo() {
-        if (heroInfoBuilder_ == null) {
-          heroInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          heroInfoBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public Builder removeHeroInfo(int index) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.remove(index);
-          onChanged();
-        } else {
-          heroInfoBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo.Builder getHeroInfoBuilder(
-          int index) {
-        return getHeroInfoFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfoOrBuilder getHeroInfoOrBuilder(
-          int index) {
-        if (heroInfoBuilder_ == null) {
-          return heroInfo_.get(index);  } else {
-          return heroInfoBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-           getHeroInfoOrBuilderList() {
-        if (heroInfoBuilder_ != null) {
-          return heroInfoBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(heroInfo_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo.Builder addHeroInfoBuilder() {
-        return getHeroInfoFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.Base.HeroInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo.Builder addHeroInfoBuilder(
-          int index) {
-        return getHeroInfoFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.Base.HeroInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 2;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.HeroInfo.Builder> 
-           getHeroInfoBuilderList() {
-        return getHeroInfoFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.HeroInfo, com.trans.pixel.protoc.Base.HeroInfo.Builder, com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-          getHeroInfoFieldBuilder() {
-        if (heroInfoBuilder_ == null) {
-          heroInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.Base.HeroInfo, com.trans.pixel.protoc.Base.HeroInfo.Builder, com.trans.pixel.protoc.Base.HeroInfoOrBuilder>(
-                  heroInfo_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          heroInfo_ = null;
-        }
-        return heroInfoBuilder_;
-      }
-
-      // optional string composeSkill = 3;
-      private java.lang.Object composeSkill_ = "";
-      /**
-       * <code>optional string composeSkill = 3;</code>
-       */
-      public boolean hasComposeSkill() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string composeSkill = 3;</code>
-       */
-      public java.lang.String getComposeSkill() {
-        java.lang.Object ref = composeSkill_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          composeSkill_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string composeSkill = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getComposeSkillBytes() {
-        java.lang.Object ref = composeSkill_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          composeSkill_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string composeSkill = 3;</code>
-       */
-      public Builder setComposeSkill(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        composeSkill_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string composeSkill = 3;</code>
-       */
-      public Builder clearComposeSkill() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        composeSkill_ = getDefaultInstance().getComposeSkill();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string composeSkill = 3;</code>
-       */
-      public Builder setComposeSkillBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        composeSkill_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional .com.trans.pixel.protoc.UserTalent userTalent = 4;
-      private com.trans.pixel.protoc.Base.UserTalent userTalent_ = com.trans.pixel.protoc.Base.UserTalent.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserTalent, com.trans.pixel.protoc.Base.UserTalent.Builder, com.trans.pixel.protoc.Base.UserTalentOrBuilder> userTalentBuilder_;
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public boolean hasUserTalent() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserTalent getUserTalent() {
-        if (userTalentBuilder_ == null) {
-          return userTalent_;
-        } else {
-          return userTalentBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public Builder setUserTalent(com.trans.pixel.protoc.Base.UserTalent value) {
-        if (userTalentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          userTalent_ = value;
-          onChanged();
-        } else {
-          userTalentBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public Builder setUserTalent(
-          com.trans.pixel.protoc.Base.UserTalent.Builder builderForValue) {
-        if (userTalentBuilder_ == null) {
-          userTalent_ = builderForValue.build();
-          onChanged();
-        } else {
-          userTalentBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public Builder mergeUserTalent(com.trans.pixel.protoc.Base.UserTalent value) {
-        if (userTalentBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              userTalent_ != com.trans.pixel.protoc.Base.UserTalent.getDefaultInstance()) {
-            userTalent_ =
-              com.trans.pixel.protoc.Base.UserTalent.newBuilder(userTalent_).mergeFrom(value).buildPartial();
-          } else {
-            userTalent_ = value;
-          }
-          onChanged();
-        } else {
-          userTalentBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public Builder clearUserTalent() {
-        if (userTalentBuilder_ == null) {
-          userTalent_ = com.trans.pixel.protoc.Base.UserTalent.getDefaultInstance();
-          onChanged();
-        } else {
-          userTalentBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserTalent.Builder getUserTalentBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getUserTalentFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserTalentOrBuilder getUserTalentOrBuilder() {
-        if (userTalentBuilder_ != null) {
-          return userTalentBuilder_.getMessageOrBuilder();
-        } else {
-          return userTalent_;
-        }
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserTalent userTalent = 4;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserTalent, com.trans.pixel.protoc.Base.UserTalent.Builder, com.trans.pixel.protoc.Base.UserTalentOrBuilder> 
-          getUserTalentFieldBuilder() {
-        if (userTalentBuilder_ == null) {
-          userTalentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.Base.UserTalent, com.trans.pixel.protoc.Base.UserTalent.Builder, com.trans.pixel.protoc.Base.UserTalentOrBuilder>(
-                  userTalent_,
-                  getParentForChildren(),
-                  isClean());
-          userTalent_ = null;
-        }
-        return userTalentBuilder_;
-      }
-
-      // optional int32 rolePosition = 5;
-      private int rolePosition_ ;
-      /**
-       * <code>optional int32 rolePosition = 5;</code>
-       */
-      public boolean hasRolePosition() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 rolePosition = 5;</code>
-       */
-      public int getRolePosition() {
-        return rolePosition_;
-      }
-      /**
-       * <code>optional int32 rolePosition = 5;</code>
-       */
-      public Builder setRolePosition(int value) {
-        bitField0_ |= 0x00000010;
-        rolePosition_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rolePosition = 5;</code>
-       */
-      public Builder clearRolePosition() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        rolePosition_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Team)
-    }
-
-    static {
-      defaultInstance = new Team(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Team)
-  }
-
   public interface UserTeamOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -40862,11 +39528,11 @@ public final class HeroProto {
     /**
      * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.Team getTeam();
+    com.trans.pixel.protoc.Base.Team getTeam();
     /**
      * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.TeamOrBuilder getTeamOrBuilder();
+    com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseGetTeamCommand}
@@ -40920,11 +39586,11 @@ public final class HeroProto {
               break;
             }
             case 10: {
-              com.trans.pixel.protoc.HeroProto.Team.Builder subBuilder = null;
+              com.trans.pixel.protoc.Base.Team.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = team_.toBuilder();
               }
-              team_ = input.readMessage(com.trans.pixel.protoc.HeroProto.Team.PARSER, extensionRegistry);
+              team_ = input.readMessage(com.trans.pixel.protoc.Base.Team.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(team_);
                 team_ = subBuilder.buildPartial();
@@ -40974,7 +39640,7 @@ public final class HeroProto {
     private int bitField0_;
     // required .com.trans.pixel.protoc.Team team = 1;
     public static final int TEAM_FIELD_NUMBER = 1;
-    private com.trans.pixel.protoc.HeroProto.Team team_;
+    private com.trans.pixel.protoc.Base.Team team_;
     /**
      * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
      */
@@ -40984,18 +39650,18 @@ public final class HeroProto {
     /**
      * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.Team getTeam() {
+    public com.trans.pixel.protoc.Base.Team getTeam() {
       return team_;
     }
     /**
      * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.TeamOrBuilder getTeamOrBuilder() {
+    public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
       return team_;
     }
 
     private void initFields() {
-      team_ = com.trans.pixel.protoc.HeroProto.Team.getDefaultInstance();
+      team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -41151,7 +39817,7 @@ public final class HeroProto {
       public Builder clear() {
         super.clear();
         if (teamBuilder_ == null) {
-          team_ = com.trans.pixel.protoc.HeroProto.Team.getDefaultInstance();
+          team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
         } else {
           teamBuilder_.clear();
         }
@@ -41247,9 +39913,9 @@ public final class HeroProto {
       private int bitField0_;
 
       // required .com.trans.pixel.protoc.Team team = 1;
-      private com.trans.pixel.protoc.HeroProto.Team team_ = com.trans.pixel.protoc.HeroProto.Team.getDefaultInstance();
+      private com.trans.pixel.protoc.Base.Team team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.HeroProto.Team, com.trans.pixel.protoc.HeroProto.Team.Builder, com.trans.pixel.protoc.HeroProto.TeamOrBuilder> teamBuilder_;
+          com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> teamBuilder_;
       /**
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
@@ -41259,7 +39925,7 @@ public final class HeroProto {
       /**
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Team getTeam() {
+      public com.trans.pixel.protoc.Base.Team getTeam() {
         if (teamBuilder_ == null) {
           return team_;
         } else {
@@ -41269,7 +39935,7 @@ public final class HeroProto {
       /**
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
-      public Builder setTeam(com.trans.pixel.protoc.HeroProto.Team value) {
+      public Builder setTeam(com.trans.pixel.protoc.Base.Team value) {
         if (teamBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -41286,7 +39952,7 @@ public final class HeroProto {
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
       public Builder setTeam(
-          com.trans.pixel.protoc.HeroProto.Team.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.Team.Builder builderForValue) {
         if (teamBuilder_ == null) {
           team_ = builderForValue.build();
           onChanged();
@@ -41299,12 +39965,12 @@ public final class HeroProto {
       /**
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
-      public Builder mergeTeam(com.trans.pixel.protoc.HeroProto.Team value) {
+      public Builder mergeTeam(com.trans.pixel.protoc.Base.Team value) {
         if (teamBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              team_ != com.trans.pixel.protoc.HeroProto.Team.getDefaultInstance()) {
+              team_ != com.trans.pixel.protoc.Base.Team.getDefaultInstance()) {
             team_ =
-              com.trans.pixel.protoc.HeroProto.Team.newBuilder(team_).mergeFrom(value).buildPartial();
+              com.trans.pixel.protoc.Base.Team.newBuilder(team_).mergeFrom(value).buildPartial();
           } else {
             team_ = value;
           }
@@ -41320,7 +39986,7 @@ public final class HeroProto {
        */
       public Builder clearTeam() {
         if (teamBuilder_ == null) {
-          team_ = com.trans.pixel.protoc.HeroProto.Team.getDefaultInstance();
+          team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
           onChanged();
         } else {
           teamBuilder_.clear();
@@ -41331,7 +39997,7 @@ public final class HeroProto {
       /**
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Team.Builder getTeamBuilder() {
+      public com.trans.pixel.protoc.Base.Team.Builder getTeamBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getTeamFieldBuilder().getBuilder();
@@ -41339,7 +40005,7 @@ public final class HeroProto {
       /**
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.TeamOrBuilder getTeamOrBuilder() {
+      public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
         if (teamBuilder_ != null) {
           return teamBuilder_.getMessageOrBuilder();
         } else {
@@ -41350,11 +40016,11 @@ public final class HeroProto {
        * <code>required .com.trans.pixel.protoc.Team team = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.HeroProto.Team, com.trans.pixel.protoc.HeroProto.Team.Builder, com.trans.pixel.protoc.HeroProto.TeamOrBuilder> 
+          com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> 
           getTeamFieldBuilder() {
         if (teamBuilder_ == null) {
           teamBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.HeroProto.Team, com.trans.pixel.protoc.HeroProto.Team.Builder, com.trans.pixel.protoc.HeroProto.TeamOrBuilder>(
+              com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder>(
                   team_,
                   getParentForChildren(),
                   isClean());
@@ -54969,11 +53635,6 @@ public final class HeroProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestResetHeroSkillCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_Team_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_Team_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_UserTeam_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -55227,56 +53888,51 @@ public final class HeroProto {
       "roCommand\0228\n\010heroInfo\030\001 \003(\0132&.com.trans." +
       "pixel.protoc.FenjieHeroInfo\">\n\034RequestRe" +
       "setHeroSkillCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006i" +
-      "nfoId\030\002 \002(\003\"\316\001\n\004Team\022.\n\004user\030\001 \001(\0132 .com" +
-      ".trans.pixel.protoc.UserInfo\0222\n\010heroInfo" +
-      "\030\002 \003(\0132 .com.trans.pixel.protoc.HeroInfo" +
-      "\022\024\n\014composeSkill\030\003 \001(\t\0226\n\nuserTalent\030\004 \001" +
-      "(\0132\".com.trans.pixel.protoc.UserTalent\022\024",
-      "\n\014rolePosition\030\005 \001(\005\">\n\010UserTeam\022\n\n\002id\030\001" +
-      " \002(\003\022\020\n\010teaminfo\030\002 \002(\t\022\024\n\014composeSkill\030\003" +
-      " \001(\t\"\'\n\025RequestGetTeamCommand\022\016\n\006userId\030" +
-      "\001 \002(\003\"D\n\026ResponseGetTeamCommand\022*\n\004team\030" +
-      "\001 \002(\0132\034.com.trans.pixel.protoc.Team\"\'\n\nT" +
-      "eamUnlock\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"d\n\030" +
-      "RequestUpdateTeamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010" +
-      "teamInfo\030\002 \002(\t\022\024\n\014composeSkill\030\003 \001(\t\022\024\n\014" +
-      "rolePosition\030\004 \001(\005\"\034\n\032RequestUserTeamLis" +
-      "tCommand\"Q\n\033ResponseUserTeamListCommand\022",
-      "2\n\010userTeam\030\001 \003(\0132 .com.trans.pixel.prot" +
-      "oc.UserTeam\"F\n\016TeamUnlockList\0224\n\010xiaogua" +
-      "n\030\001 \003(\0132\".com.trans.pixel.protoc.TeamUnl" +
-      "ock\"P\n\032ResponseGetUserHeroCommand\0222\n\010use" +
-      "rHero\030\001 \003(\0132 .com.trans.pixel.protoc.Her" +
-      "oInfo\"V\n\030RequestFenjieHeroCommand\022:\n\nfen" +
-      "jieHero\030\001 \003(\0132&.com.trans.pixel.protoc.F" +
-      "enjieHeroInfo\"\032\n\030RequestUserPokedeComman" +
-      "d\"M\n\031ResponseUserPokedeCommand\0220\n\006pokede" +
-      "\030\001 \003(\0132 .com.trans.pixel.protoc.HeroInfo",
-      "\"\036\n\034RequestBuyHeroPackageCommand\"8\n Requ" +
-      "estSubmitComposeSkillCommand\022\024\n\014composeS" +
-      "kill\030\001 \002(\t\"K\n\026RequestFeedFoodCommand\022\016\n\006" +
-      "heroId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCoun" +
-      "t\030\003 \002(\005\"X\n\027RequestClearHeroCommand\022\016\n\006he" +
-      "roId\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002" +
-      "(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoodCom" +
-      "mand\0222\n\010userFood\030\001 \003(\0132 .com.trans.pixel" +
-      ".protoc.UserFood\"P\n\030ResponseClearInfoCom" +
-      "mand\0224\n\tclearInfo\030\001 \003(\0132!.com.trans.pixe",
-      "l.protoc.ClearInfo\";\n\034RequestChoseClearI" +
-      "nfoCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\"" +
-      ".\n\034RequestHeroStrengthenCommand\022\016\n\006heroI" +
-      "d\030\001 \002(\005\"<\n\030RequestOpenFetterCommand\022\016\n\006h" +
-      "eroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!Request" +
-      "ZanHeroMessageBoardCommand\022\016\n\006itemId\030\001 \002" +
-      "(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTa" +
-      "lentupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035Reques" +
-      "tTalentChangeUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037R" +
-      "equestTalentChangeSkillCommand\022\n\n\002id\030\001 \002",
-      "(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031R" +
-      "esponseUserTalentCommand\0226\n\nuserTalent\030\001" +
-      " \003(\0132\".com.trans.pixel.protoc.UserTalent" +
-      "\022@\n\017userTalentSkill\030\002 \003(\0132\'.com.trans.pi" +
-      "xel.protoc.UserTalentSkill"
+      "nfoId\030\002 \002(\003\">\n\010UserTeam\022\n\n\002id\030\001 \002(\003\022\020\n\010t" +
+      "eaminfo\030\002 \002(\t\022\024\n\014composeSkill\030\003 \001(\t\"\'\n\025R" +
+      "equestGetTeamCommand\022\016\n\006userId\030\001 \002(\003\"D\n\026" +
+      "ResponseGetTeamCommand\022*\n\004team\030\001 \002(\0132\034.c" +
+      "om.trans.pixel.protoc.Team\"\'\n\nTeamUnlock",
+      "\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"d\n\030RequestUp" +
+      "dateTeamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamInfo\030" +
+      "\002 \002(\t\022\024\n\014composeSkill\030\003 \001(\t\022\024\n\014rolePosit" +
+      "ion\030\004 \001(\005\"\034\n\032RequestUserTeamListCommand\"" +
+      "Q\n\033ResponseUserTeamListCommand\0222\n\010userTe" +
+      "am\030\001 \003(\0132 .com.trans.pixel.protoc.UserTe" +
+      "am\"F\n\016TeamUnlockList\0224\n\010xiaoguan\030\001 \003(\0132\"" +
+      ".com.trans.pixel.protoc.TeamUnlock\"P\n\032Re" +
+      "sponseGetUserHeroCommand\0222\n\010userHero\030\001 \003" +
+      "(\0132 .com.trans.pixel.protoc.HeroInfo\"V\n\030",
+      "RequestFenjieHeroCommand\022:\n\nfenjieHero\030\001" +
+      " \003(\0132&.com.trans.pixel.protoc.FenjieHero" +
+      "Info\"\032\n\030RequestUserPokedeCommand\"M\n\031Resp" +
+      "onseUserPokedeCommand\0220\n\006pokede\030\001 \003(\0132 ." +
+      "com.trans.pixel.protoc.HeroInfo\"\036\n\034Reque" +
+      "stBuyHeroPackageCommand\"8\n RequestSubmit" +
+      "ComposeSkillCommand\022\024\n\014composeSkill\030\001 \002(" +
+      "\t\"K\n\026RequestFeedFoodCommand\022\016\n\006heroId\030\001 " +
+      "\002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030\003 \002(\005\"X" +
+      "\n\027RequestClearHeroCommand\022\016\n\006heroId\030\001 \002(",
+      "\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\r\n\005cou" +
+      "nt\030\004 \001(\005\"M\n\027ResponseUserFoodCommand\0222\n\010u" +
+      "serFood\030\001 \003(\0132 .com.trans.pixel.protoc.U" +
+      "serFood\"P\n\030ResponseClearInfoCommand\0224\n\tc" +
+      "learInfo\030\001 \003(\0132!.com.trans.pixel.protoc." +
+      "ClearInfo\";\n\034RequestChoseClearInfoComman" +
+      "d\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n\034Reques" +
+      "tHeroStrengthenCommand\022\016\n\006heroId\030\001 \002(\005\"<" +
+      "\n\030RequestOpenFetterCommand\022\016\n\006heroId\030\001 \002" +
+      "(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!RequestZanHeroMe",
+      "ssageBoardCommand\022\016\n\006itemId\030\001 \002(\005\022\n\n\002id\030" +
+      "\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTalentupgra" +
+      "deCommand\022\n\n\002id\030\001 \002(\005\"+\n\035RequestTalentCh" +
+      "angeUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037RequestTal" +
+      "entChangeSkillCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005ord" +
+      "er\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031ResponseUs" +
+      "erTalentCommand\0226\n\nuserTalent\030\001 \003(\0132\".co" +
+      "m.trans.pixel.protoc.UserTalent\022@\n\017userT" +
+      "alentSkill\030\002 \003(\0132\'.com.trans.pixel.proto" +
+      "c.UserTalentSkill"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -55583,164 +54239,158 @@ public final class HeroProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestResetHeroSkillCommand_descriptor,
               new java.lang.String[] { "HeroId", "InfoId", });
-          internal_static_com_trans_pixel_protoc_Team_descriptor =
-            getDescriptor().getMessageTypes().get(50);
-          internal_static_com_trans_pixel_protoc_Team_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_Team_descriptor,
-              new java.lang.String[] { "User", "HeroInfo", "ComposeSkill", "UserTalent", "RolePosition", });
           internal_static_com_trans_pixel_protoc_UserTeam_descriptor =
-            getDescriptor().getMessageTypes().get(51);
+            getDescriptor().getMessageTypes().get(50);
           internal_static_com_trans_pixel_protoc_UserTeam_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTeam_descriptor,
               new java.lang.String[] { "Id", "Teaminfo", "ComposeSkill", });
           internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_descriptor =
-            getDescriptor().getMessageTypes().get(52);
+            getDescriptor().getMessageTypes().get(51);
           internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_descriptor,
               new java.lang.String[] { "UserId", });
           internal_static_com_trans_pixel_protoc_ResponseGetTeamCommand_descriptor =
-            getDescriptor().getMessageTypes().get(53);
+            getDescriptor().getMessageTypes().get(52);
           internal_static_com_trans_pixel_protoc_ResponseGetTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetTeamCommand_descriptor,
               new java.lang.String[] { "Team", });
           internal_static_com_trans_pixel_protoc_TeamUnlock_descriptor =
-            getDescriptor().getMessageTypes().get(54);
+            getDescriptor().getMessageTypes().get(53);
           internal_static_com_trans_pixel_protoc_TeamUnlock_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TeamUnlock_descriptor,
               new java.lang.String[] { "Id", "Count", });
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor =
-            getDescriptor().getMessageTypes().get(55);
+            getDescriptor().getMessageTypes().get(54);
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor,
               new java.lang.String[] { "Id", "TeamInfo", "ComposeSkill", "RolePosition", });
           internal_static_com_trans_pixel_protoc_RequestUserTeamListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(56);
+            getDescriptor().getMessageTypes().get(55);
           internal_static_com_trans_pixel_protoc_RequestUserTeamListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserTeamListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseUserTeamListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(57);
+            getDescriptor().getMessageTypes().get(56);
           internal_static_com_trans_pixel_protoc_ResponseUserTeamListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserTeamListCommand_descriptor,
               new java.lang.String[] { "UserTeam", });
           internal_static_com_trans_pixel_protoc_TeamUnlockList_descriptor =
-            getDescriptor().getMessageTypes().get(58);
+            getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_TeamUnlockList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TeamUnlockList_descriptor,
               new java.lang.String[] { "Xiaoguan", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserHeroCommand_descriptor =
-            getDescriptor().getMessageTypes().get(59);
+            getDescriptor().getMessageTypes().get(58);
           internal_static_com_trans_pixel_protoc_ResponseGetUserHeroCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserHeroCommand_descriptor,
               new java.lang.String[] { "UserHero", });
           internal_static_com_trans_pixel_protoc_RequestFenjieHeroCommand_descriptor =
-            getDescriptor().getMessageTypes().get(60);
+            getDescriptor().getMessageTypes().get(59);
           internal_static_com_trans_pixel_protoc_RequestFenjieHeroCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestFenjieHeroCommand_descriptor,
               new java.lang.String[] { "FenjieHero", });
           internal_static_com_trans_pixel_protoc_RequestUserPokedeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(61);
+            getDescriptor().getMessageTypes().get(60);
           internal_static_com_trans_pixel_protoc_RequestUserPokedeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserPokedeCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseUserPokedeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(62);
+            getDescriptor().getMessageTypes().get(61);
           internal_static_com_trans_pixel_protoc_ResponseUserPokedeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserPokedeCommand_descriptor,
               new java.lang.String[] { "Pokede", });
           internal_static_com_trans_pixel_protoc_RequestBuyHeroPackageCommand_descriptor =
-            getDescriptor().getMessageTypes().get(63);
+            getDescriptor().getMessageTypes().get(62);
           internal_static_com_trans_pixel_protoc_RequestBuyHeroPackageCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBuyHeroPackageCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestSubmitComposeSkillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(64);
+            getDescriptor().getMessageTypes().get(63);
           internal_static_com_trans_pixel_protoc_RequestSubmitComposeSkillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitComposeSkillCommand_descriptor,
               new java.lang.String[] { "ComposeSkill", });
           internal_static_com_trans_pixel_protoc_RequestFeedFoodCommand_descriptor =
-            getDescriptor().getMessageTypes().get(65);
+            getDescriptor().getMessageTypes().get(64);
           internal_static_com_trans_pixel_protoc_RequestFeedFoodCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestFeedFoodCommand_descriptor,
               new java.lang.String[] { "HeroId", "FoodId", "FoodCount", });
           internal_static_com_trans_pixel_protoc_RequestClearHeroCommand_descriptor =
-            getDescriptor().getMessageTypes().get(66);
+            getDescriptor().getMessageTypes().get(65);
           internal_static_com_trans_pixel_protoc_RequestClearHeroCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestClearHeroCommand_descriptor,
               new java.lang.String[] { "HeroId", "Position", "Type", "Count", });
           internal_static_com_trans_pixel_protoc_ResponseUserFoodCommand_descriptor =
-            getDescriptor().getMessageTypes().get(67);
+            getDescriptor().getMessageTypes().get(66);
           internal_static_com_trans_pixel_protoc_ResponseUserFoodCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserFoodCommand_descriptor,
               new java.lang.String[] { "UserFood", });
           internal_static_com_trans_pixel_protoc_ResponseClearInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(68);
+            getDescriptor().getMessageTypes().get(67);
           internal_static_com_trans_pixel_protoc_ResponseClearInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseClearInfoCommand_descriptor,
               new java.lang.String[] { "ClearInfo", });
           internal_static_com_trans_pixel_protoc_RequestChoseClearInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(69);
+            getDescriptor().getMessageTypes().get(68);
           internal_static_com_trans_pixel_protoc_RequestChoseClearInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestChoseClearInfoCommand_descriptor,
               new java.lang.String[] { "Refused", "Id", });
           internal_static_com_trans_pixel_protoc_RequestHeroStrengthenCommand_descriptor =
-            getDescriptor().getMessageTypes().get(70);
+            getDescriptor().getMessageTypes().get(69);
           internal_static_com_trans_pixel_protoc_RequestHeroStrengthenCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHeroStrengthenCommand_descriptor,
               new java.lang.String[] { "HeroId", });
           internal_static_com_trans_pixel_protoc_RequestOpenFetterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(71);
+            getDescriptor().getMessageTypes().get(70);
           internal_static_com_trans_pixel_protoc_RequestOpenFetterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestOpenFetterCommand_descriptor,
               new java.lang.String[] { "HeroId", "Fetterid", });
           internal_static_com_trans_pixel_protoc_RequestZanHeroMessageBoardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(72);
+            getDescriptor().getMessageTypes().get(71);
           internal_static_com_trans_pixel_protoc_RequestZanHeroMessageBoardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestZanHeroMessageBoardCommand_descriptor,
               new java.lang.String[] { "ItemId", "Id", "Zan", });
           internal_static_com_trans_pixel_protoc_RequestTalentupgradeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(73);
+            getDescriptor().getMessageTypes().get(72);
           internal_static_com_trans_pixel_protoc_RequestTalentupgradeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestTalentupgradeCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestTalentChangeUseCommand_descriptor =
-            getDescriptor().getMessageTypes().get(74);
+            getDescriptor().getMessageTypes().get(73);
           internal_static_com_trans_pixel_protoc_RequestTalentChangeUseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestTalentChangeUseCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestTalentChangeSkillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(75);
+            getDescriptor().getMessageTypes().get(74);
           internal_static_com_trans_pixel_protoc_RequestTalentChangeSkillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestTalentChangeSkillCommand_descriptor,
               new java.lang.String[] { "Id", "Order", "SkillId", });
           internal_static_com_trans_pixel_protoc_ResponseUserTalentCommand_descriptor =
-            getDescriptor().getMessageTypes().get(76);
+            getDescriptor().getMessageTypes().get(75);
           internal_static_com_trans_pixel_protoc_ResponseUserTalentCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserTalentCommand_descriptor,

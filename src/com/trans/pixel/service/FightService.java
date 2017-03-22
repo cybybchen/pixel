@@ -11,8 +11,8 @@ import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
 
 import com.trans.pixel.protoc.AreaProto.FightResultList;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
-import com.trans.pixel.protoc.HeroProto.Team;
 import com.trans.pixel.service.redis.RedisService;
 
 /**

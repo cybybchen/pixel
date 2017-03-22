@@ -20,7 +20,7 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
-import com.trans.pixel.protoc.HeroProto.Team;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.HeroProto.TeamUnlock;
 import com.trans.pixel.protoc.HeroProto.TeamUnlockList;
 import com.trans.pixel.protoc.LadderProto.FightInfo;

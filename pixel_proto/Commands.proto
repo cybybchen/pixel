@@ -113,6 +113,14 @@ message UserTalent {
 	repeated UserTalentEquip equip = 5;
 }
 
+message Team {
+        optional UserInfo user = 1;
+        repeated HeroInfo heroInfo = 2;
+        optional string composeSkill = 3;
+        optional UserTalent userTalent = 4;
+        optional int32 rolePosition = 5;
+}
+
 message UserTalentOrder {
 	required int32 order = 1;
 	required int32 skillId = 2;
@@ -126,17 +134,9 @@ message UserTalentEquip {
 }
 
 message UserRank {
-	optional int64 userId = 1;
-	optional string userName = 2;
-	optional int64 rank = 3;
-	repeated HeroInfo heroInfo = 4;
-	optional int32 zhanli = 5;
-	optional int32 icon = 6;
-	optional int32 vip = 7;
-	optional string composeSkill = 8;
-	optional int32 dps = 9;
-	optional UserTalent userTalent = 10;
-	optional uint32 rolePosition = 11;
+	optional int64 rank = 1;
+	optional int32 dps = 2;
+	required Team team = 3;
 }
 
 message ClearInfo {
@@ -797,14 +797,6 @@ message ResponseDeleteHeroCommand {
 message RequestResetHeroSkillCommand {
 	required int32 heroId = 1;
 	required int64 infoId = 2;
-}
-
-message Team {
-	optional UserInfo user = 1;
-	repeated HeroInfo heroInfo = 2;
-	optional string composeSkill = 3;
-	optional UserTalent userTalent = 4;
-	optional int32 rolePosition = 5;
 }
 
 message UserTeam {

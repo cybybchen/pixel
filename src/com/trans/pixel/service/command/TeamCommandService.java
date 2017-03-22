@@ -5,12 +5,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
-import com.trans.pixel.protoc.HeroProto.Team;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;

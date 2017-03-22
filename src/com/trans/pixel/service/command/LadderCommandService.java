@@ -13,11 +13,11 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
-import com.trans.pixel.protoc.HeroProto.Team;
 import com.trans.pixel.protoc.LadderProto.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand;
@@ -141,13 +141,7 @@ public class LadderCommandService extends BaseCommandService {
 		UserRankBean userRank = ladderService.getUserRankByRank(user.getServerId(), rank);
 		UserRank.Builder userrank = UserRank.newBuilder(userRank.buildUserRank());
 		Team team = ladderService.getTeamCache(userRank.getUserId());
-		userrank.addAllHeroInfo(team.getHeroInfoList());
-		if (team.hasComposeSkill())
-			userrank.setComposeSkill(team.getComposeSkill());
-		if (team.hasUserTalent())
-			userrank.setUserTalent(team.getUserTalent());
-		if (team.hasRolePosition())
-			userrank.setRolePosition(team.getRolePosition());
+		userrank.setTeam(team);
 		builder.setUserRank(userrank);
 		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}
