@@ -35,8 +35,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class LadderRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(LadderRedisService.class);
 	private static final String LADDER_RANKING_FILE_NAME = "lol_ladderenemy.xml";
-	private static final String LADDER_NAME_FILE_NAME = "lol_laddername.xml";
-	private static final String LADDER_NAME_FILE_NAME2 = "lol_laddername2.xml";
+	private static final String LADDER_NAME_FILE_NAME = "ld_name1.xml";
+	private static final String LADDER_NAME_FILE_NAME2 = "ld_name2.xml";
 	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
