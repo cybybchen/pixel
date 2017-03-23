@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -36,8 +37,8 @@ public class CostService {
 	@Resource
 	private UnionService unionService;
 	
-	private Comparator<CostItem> comparator = new Comparator<CostItem>() {
-        public int compare(CostItem cost1, CostItem cost2) {
+	private Comparator<CostItem.Builder> comparator = new Comparator<CostItem.Builder>() {
+        public int compare(CostItem.Builder cost1, CostItem.Builder cost2) {
                 if (cost1.getOrder() < cost2.getOrder()) {
                         return -1;
                 } else {
@@ -66,9 +67,10 @@ public class CostService {
 	}
 	
 	public int canCostOnly(UserBean user, List<CostItem> costList) { //返回消费的道具id
-		Collections.sort(costList, comparator);
-		for (int i = 0; i < costList.size(); ++i) {
-			CostItem cost = costList.get(i);
+		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+		Collections.sort(builderList, comparator);
+		for (int i = 0; i < builderList.size(); ++i) {
+			CostItem cost = builderList.get(i).build();
 			if (canCost(user, cost.getCostid(), cost.getCostcount()))
 				return cost.getCostid();
 		}
@@ -77,9 +79,10 @@ public class CostService {
 	}
 	
 	public boolean costOnly(UserBean user, List<CostItem> costList) {
-		Collections.sort(costList, comparator);
-		for (int i = 0; i < costList.size(); ++i) {
-			CostItem cost = costList.get(i);
+		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+		Collections.sort(builderList, comparator);
+		for (int i = 0; i < builderList.size(); ++i) {
+			CostItem cost = builderList.get(i).build();
 			if (costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
 				return true;
 		}
@@ -225,5 +228,14 @@ public class CostService {
 			}
 		}
 		return false;
+	}
+	
+	private List<CostItem.Builder> convertCostBuilder(List<CostItem> costList) {
+		List<CostItem.Builder> builderList = new ArrayList<CostItem.Builder>();
+		for (CostItem cost : costList) {
+			builderList.add(CostItem.newBuilder(cost));
+		}
+		
+		return builderList;
 	}
 }

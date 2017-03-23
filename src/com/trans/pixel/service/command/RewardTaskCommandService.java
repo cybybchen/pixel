@@ -54,11 +54,11 @@ public class RewardTaskCommandService extends BaseCommandService {
 		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getId(), cmd.getRet(), rewards, errorUser, userPropList);
 		if (ret instanceof ErrorConst) {
 			if (ret.getCode() == ErrorConst.NOT_ENOUGH_PROP.getCode()) {
-				
+				pusher.pushUserInfoCommand(responseBuilder, errorUser.build());
 			}
 			
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}

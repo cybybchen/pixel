@@ -26,6 +26,7 @@ import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand;
@@ -203,6 +204,12 @@ public class PushCommandService extends BaseCommandService {
 //		lootService.updateLootResult(user);
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 		buildUserInfo(builder, user);
+		responseBuilder.setUserInfoCommand(builder.build());
+	}
+	
+	public void pushUserInfoCommand(Builder responseBuilder, UserInfo user) {
+		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
+		builder.setUser(user);
 		responseBuilder.setUserInfoCommand(builder.build());
 	}
 	
