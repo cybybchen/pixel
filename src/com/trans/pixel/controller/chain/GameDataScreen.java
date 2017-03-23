@@ -113,7 +113,9 @@ import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
@@ -1012,6 +1014,16 @@ public class GameDataScreen extends RequestScreen {
 		rewardTaskCommandService.submitScore(cmd, responseBuilder, user);
 		return true;//SubmitRewardTaskScoreCommand
 	}//SubmitRewardTaskScoreCommand
+	@Override//UserRewardTaskCommand
+	protected boolean handleCommand(RequestUserRewardTaskCommand cmd, Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.getUserRewardTask(cmd, responseBuilder, user);
+		return true;//UserRewardTaskCommand
+	}//UserRewardTaskCommand
+	@Override//RewardTaskRewardCommand
+	protected boolean handleCommand(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.getUserRewardTaskReward(cmd, responseBuilder, user);
+		return true;//RewardTaskRewardCommand
+	}//RewardTaskRewardCommand
 	//add handleCommand here
 	
 	@Override

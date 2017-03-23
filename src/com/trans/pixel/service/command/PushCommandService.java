@@ -548,6 +548,5 @@ public class PushCommandService extends BaseCommandService {
 		List<UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
 		builder.addAllUserRewardTask(list);
 		responseBuilder.setUserRewardTaskCommand(builder.build());
-		
 	}
 }

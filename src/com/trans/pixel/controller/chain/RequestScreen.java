@@ -117,7 +117,9 @@ import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
@@ -429,6 +431,8 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestQuitRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestInviteToRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUserRewardTaskCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	//add handleCommand here
 	
 	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
@@ -1289,6 +1293,16 @@ public abstract class RequestScreen implements RequestHandle {
             if (result)//SubmitRewardTaskScoreCommand
                 result = handleCommand(cmd, responseBuilder, user);//SubmitRewardTaskScoreCommand
         }//SubmitRewardTaskScoreCommand
+        if (request.hasUserRewardTaskCommand()) {
+            RequestUserRewardTaskCommand cmd = request.getUserRewardTaskCommand();
+            if (result)//UserRewardTaskCommand
+                result = handleCommand(cmd, responseBuilder, user);//UserRewardTaskCommand
+        }//UserRewardTaskCommand
+        if (request.hasRewardTaskRewardCommand()) {
+            RequestRewardTaskRewardCommand cmd = request.getRewardTaskRewardCommand();
+            if (result)//RewardTaskRewardCommand
+                result = handleCommand(cmd, responseBuilder, user);//RewardTaskRewardCommand
+        }//RewardTaskRewardCommand
         //call handleCommand here
         if (request.hasGetFightInfoCommand()) {
             RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();

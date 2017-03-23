@@ -1,5 +1,9 @@
 package com.trans.pixel.service;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -9,6 +13,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -31,6 +36,16 @@ public class CostService {
 	@Resource
 	private UnionService unionService;
 	
+	private Comparator<CostItem> comparator = new Comparator<CostItem>() {
+        public int compare(CostItem cost1, CostItem cost2) {
+                if (cost1.getOrder() < cost2.getOrder()) {
+                        return -1;
+                } else {
+                        return 1;
+                }
+        }
+	};
+	
 	public boolean costAndUpdate(UserBean user, int itemId, long itemCount) {
 		boolean needUpdateUser = cost(user, itemId, itemCount);
 		if (needUpdateUser)
@@ -48,6 +63,28 @@ public class CostService {
 			cost(user, cost.getItemid(), cost.getCount());
 		}
 		return true;
+	}
+	
+	public int canCostOnly(UserBean user, List<CostItem> costList) { //返回消费的道具id
+		Collections.sort(costList, comparator);
+		for (int i = 0; i < costList.size(); ++i) {
+			CostItem cost = costList.get(i);
+			if (canCost(user, cost.getCostid(), cost.getCostcount()))
+				return cost.getCostid();
+		}
+		
+		return 0;
+	}
+	
+	public boolean costOnly(UserBean user, List<CostItem> costList) {
+		Collections.sort(costList, comparator);
+		for (int i = 0; i < costList.size(); ++i) {
+			CostItem cost = costList.get(i);
+			if (costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	/**

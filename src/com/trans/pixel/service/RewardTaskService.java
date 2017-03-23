@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,7 +15,10 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
@@ -23,6 +27,9 @@ import com.trans.pixel.protoc.RewardTaskProto.RewardTaskEnemy;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
+import com.trans.pixel.protoc.UnionProto.Bossloot;
+import com.trans.pixel.protoc.UnionProto.BosslootGroup;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 
 @Service
@@ -40,6 +47,10 @@ public class RewardTaskService {
 	private UserService userService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private LevelRedisService userLevelService;
+	@Resource
+	private LogService logService;
 	
 	public ResultConst zhaohuanTask(UserBean user, int id) {
 		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
@@ -52,28 +63,29 @@ public class RewardTaskService {
 		return SuccessConst.USE_PROP;
 	}
 	
-	public ResultConst submitRewardTaskScore(UserBean user, int id, int costId, boolean ret, MultiReward.Builder rewards) {
+	public ResultConst submitRewardTaskScore(UserBean user, int id, boolean ret, MultiReward.Builder rewards, UserInfo.Builder errorUser, List<UserPropBean> userPropList) {
 		RewardTask rewardTask = rewardTaskRedisService.getRewardTask(id);
 		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, id);
 		if (ut == null || ut.getStatus() == 1) {
 			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
 		}
-		for (CostItem cost : rewardTask.getCostList()) {
-			if (cost.getCostid() == costId) {
-				if (!costService.costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
-					return ErrorConst.NOT_ENOUGH_PROP;
-				
-				UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
-				builder.setStatus(1);
-				userRewardTaskService.updateUserRewardTask(user, ut);
-				
-				handleRewardTaskRoom(user, id);
-				
-				return SuccessConst.BOSS_SUBMIT_SUCCESS;
-			}
+		
+		int costId = costService.canCostOnly(user, rewardTask.getCostList());
+		if (costId == 0) {
+			errorUser = UserInfo.newBuilder(user.build());
+			return ErrorConst.NOT_ENOUGH_PROP;
 		}
 		
-		return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
+		ResultConst result = handleRewardTaskRoom(user, id, rewardTask.getCostList(), errorUser);
+		if (result instanceof ErrorConst)
+			return result;
+		
+		UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
+		builder.setStatus(1);
+		userRewardTaskService.updateUserRewardTask(user, ut);
+		userPropList.add(UserPropBean.initUserProp(user.getId(), costId, ""));
+		
+		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
 	
 	public UserRewardTaskRoom createRoom(UserBean user, int id) {
@@ -99,20 +111,33 @@ public class RewardTaskService {
 		
 	}
 	
-	private void handleRewardTaskRoom(UserBean user, int id) {
+	private ResultConst handleRewardTaskRoom(UserBean user, int id, List<CostItem> costList, UserInfo.Builder errorUser) {
 		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), id);
 		if (room == null)
-			return;
+			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
 		
 		for (UserInfo userinfo : room.getUserList()) {
 			if (userinfo.getId() == user.getId())
 				continue;
+			
+			UserBean other = userService.getOther(userinfo.getId());
+			int costId = costService.canCostOnly(other, costList);
+			if (costId == 0) {
+				errorUser = UserInfo.newBuilder(userinfo);
+				return ErrorConst.NOT_ENOUGH_PROP;
+			}
+		}
+		
+		for (UserInfo userinfo : room.getUserList()) {
+			costService.costOnly(user, costList);
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), id));
 			builder.setRoomStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
 			userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
 		}
 		
 		rewardTaskRedisService.delUserRewardTaskRoom(user, id);
+		
+		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
 	
 	public UserRewardTaskRoom getUserRoom(UserBean user, int id) {
@@ -212,6 +237,98 @@ public class RewardTaskService {
 		}
 		
 		return SuccessConst.BOSS_ROOM_QUIT_SUCCESS;
+	}
+	
+	public List<RewardBean> getRewardList(UserBean user, int id) {
+		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), id);
+		if (userRewardTask.getRoomStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
+			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
+			builder.setRoomStatus(REWARDTASK_STATUS.END_VALUE);
+			userRewardTaskService.updateUserRewardTask(user, builder.build());
+			
+			return getBossloot(id, user, 0, 0);
+		}
+		
+		return new ArrayList<RewardBean>();
+	}
+	
+	private List<RewardBean> getBossloot(int id, UserBean user, int team, int dps) {
+		int itemid1 = 0;
+		int itemcount1 = 0;
+		int itemid2 = 0;
+		int itemcount2 = 0;
+		int itemid3 = 0;
+		int itemcount3 = 0;
+		int itemid4 = 0;
+		int itemcount4 = 0;
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		BosslootGroup bosslootGroup = rewardTaskRedisService.getBosslootGroup(id);
+		for (int i = 0; i < bosslootGroup.getLootList().size(); ++i) {
+			Bossloot bossloot = bosslootGroup.getLoot(i);
+			int randomWeight = RandomUtils.nextInt(bossloot.getWeightall()) + 1;
+			if (randomWeight <= bossloot.getWeight1()) {
+				if (i == 0) {
+					itemid1 = bossloot.getItemid1();
+					itemcount1 = bossloot.getItemcount1();
+				} else if (i == 1) {
+					itemid2 = bossloot.getItemid1();
+					itemcount2 = bossloot.getItemcount1();
+				} else if (i == 2) {
+					itemid3 = bossloot.getItemid1();
+					itemcount3 = bossloot.getItemcount1();
+				} else if (i == 3) {
+					itemid4 = bossloot.getItemid1();
+					itemcount4 = bossloot.getItemcount1();
+				}
+				rewardList.add(RewardBean.init(bossloot.getItemid1(), bossloot.getItemcount1()));
+				continue;
+			}
+			
+			randomWeight -= bossloot.getWeight1();
+			if (randomWeight <= bossloot.getWeight2()) {
+				if (i == 0) {
+					itemid1 = bossloot.getItemid2();
+					itemcount1 = bossloot.getItemcount2();
+				} else if (i == 1) {
+					itemid2 = bossloot.getItemid2();
+					itemcount2 = bossloot.getItemcount2();
+				} else if (i == 2) {
+					itemid3 = bossloot.getItemid2();
+					itemcount3 = bossloot.getItemcount2();
+				} else if (i == 3) {
+					itemid4 = bossloot.getItemid2();
+					itemcount4 = bossloot.getItemcount2();
+				}
+				rewardList.add(RewardBean.init(bossloot.getItemid2(), bossloot.getItemcount2()));
+				continue;
+			}
+			
+			randomWeight -= bossloot.getWeight2();
+			if (randomWeight <= bossloot.getWeight3()) {
+				if (i == 0) {
+					itemid1 = bossloot.getItemid3();
+					itemcount1 = bossloot.getItemcount3();
+				} else if (i == 1) {
+					itemid2 = bossloot.getItemid3();
+					itemcount2 = bossloot.getItemcount3();
+				} else if (i == 2) {
+					itemid3 = bossloot.getItemid3();
+					itemcount3 = bossloot.getItemcount3();
+				} else if (i == 3) {
+					itemid4 = bossloot.getItemid3();
+					itemcount4 = bossloot.getItemcount3();
+				}
+				rewardList.add(RewardBean.init(bossloot.getItemid3(), bossloot.getItemcount3()));
+				continue;
+			}
+		}
+	
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
+		if(userLevel != null)
+		logService.sendWorldbossLog(user.getServerId(), user.getId(), id, team, 1, dps, itemid1, itemcount1, 
+				itemid2, itemcount2, itemid3, itemcount3, itemid4, itemcount4, userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
+		
+		return rewardList;
 	}
 	
 	private UserRewardTask initUserRewardTask(UserBean user, int id) {

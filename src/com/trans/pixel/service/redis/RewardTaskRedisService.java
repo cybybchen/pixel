@@ -13,12 +13,15 @@ import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.protoc.UnionProto.BossRoomRecord;
+import com.trans.pixel.protoc.UnionProto.BosslootGroup;
+import com.trans.pixel.protoc.UnionProto.BosslootGroupList;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class RewardTaskRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(RewardTaskRedisService.class);
 	private static final String REWARDTASK_FILE_NAME = "ld_rewardtask.xml";
+	private static final String REWARDTASK_REWARD_FILE_NAME = "lol_bossloot.xml";
 	
 	//bossgroup activity
 	public RewardTask getRewardTask(int id) {
@@ -94,5 +97,56 @@ public class RewardTaskRedisService extends RedisService {
 	public void delUserRewardTaskRoom(UserBean user, int id) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + user.getId();
 		hdelete(key, "" + id);
+	}
+	
+	//rewardtask reward
+	public BosslootGroup getBosslootGroup(int id) {
+		String value = hget(RedisKey.BOSS_LOOT_KEY, "" + id);
+		if (value == null) {
+			Map<String, BosslootGroup> config = getBosslootGroupConfig();
+			return config.get("" + id);
+		} else {
+			BosslootGroup.Builder builder = BosslootGroup.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, BosslootGroup> getBosslootGroupConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.BOSS_LOOT_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, BosslootGroup> map = buildBosslootGroupConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, BosslootGroup> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.BOSS_LOOT_KEY, redismap);
+			return map;
+		}else{
+			Map<String, BosslootGroup> map = new HashMap<String, BosslootGroup>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				BosslootGroup.Builder builder = BosslootGroup.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, BosslootGroup> buildBosslootGroupConfig(){
+		String xml = ReadConfig(REWARDTASK_REWARD_FILE_NAME);
+		BosslootGroupList.Builder builder = BosslootGroupList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + REWARDTASK_REWARD_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, BosslootGroup> map = new HashMap<String, BosslootGroup>();
+		for(BosslootGroup.Builder bosslootGroup : builder.getBossBuilderList()){
+			map.put("" + bosslootGroup.getId(), bosslootGroup.build());
+		}
+		return map;
 	}
 }

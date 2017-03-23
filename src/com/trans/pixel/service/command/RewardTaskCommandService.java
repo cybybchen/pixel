@@ -9,15 +9,19 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
@@ -45,8 +49,14 @@ public class RewardTaskCommandService extends BaseCommandService {
 	
 	public void submitScore(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getId(), cmd.getCostId(), cmd.getRet(), rewards);
+		UserInfo.Builder errorUser = UserInfo.newBuilder();
+		List<UserPropBean> userPropList = new ArrayList<UserPropBean>();
+		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getId(), cmd.getRet(), rewards, errorUser, userPropList);
 		if (ret instanceof ErrorConst) {
+			if (ret.getCode() == ErrorConst.NOT_ENOUGH_PROP.getCode()) {
+				
+			}
+			
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -59,8 +69,6 @@ public class RewardTaskCommandService extends BaseCommandService {
 
 		pusher.pushUserRewardTask(responseBuilder, user);
 		
-		List<UserPropBean> userPropList = new ArrayList<UserPropBean>();
-		userPropList.add(UserPropBean.initUserProp(user.getId(), cmd.getCostId(), ""));
 		pusher.pushUserPropListCommand(responseBuilder, user, userPropList);
 	}
 	
@@ -137,6 +145,25 @@ public class RewardTaskCommandService extends BaseCommandService {
 			ResponseUserRewardTaskCommand.Builder userRewardTaskBuilder = ResponseUserRewardTaskCommand.newBuilder();
 			userRewardTaskBuilder.addUserRewardTask(userRewardTaskService.getUserRewardTask(user, id));
 			responseBuilder.setUserRewardTaskCommand(userRewardTaskBuilder.build());
+		}
+	}
+	
+	public void getUserRewardTask(RequestUserRewardTaskCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseUserRewardTaskCommand.Builder builder = ResponseUserRewardTaskCommand.newBuilder();
+		List<UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
+		builder.addAllUserRewardTask(list);
+		responseBuilder.setUserRewardTaskCommand(builder.build());
+	}
+	
+	public void getUserRewardTaskReward(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		List<RewardBean> rewardList = rewardTaskService.getRewardList(user, cmd.getId());
+		if (rewardList != null && rewardList.size() > 0) {
+			rewardService.doRewards(user, rewardList);
+			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+		} else {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
 		}
 	}
 }
