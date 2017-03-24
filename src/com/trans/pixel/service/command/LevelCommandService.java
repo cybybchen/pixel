@@ -155,6 +155,7 @@ public class LevelCommandService extends BaseCommandService {
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		Event event = redis.getEvent(user, cmd.getOrder());
+		redis.productEvent(user, userLevel);
 		if(event == null){//illegal event order
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENEMY);
@@ -187,7 +188,6 @@ public class LevelCommandService extends BaseCommandService {
 			}else if(event.getOrder() >= 100 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event.getOrder());
 		}
-		redis.productEvent(user, userLevel);
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
 		for(Event.Builder e : redis.getEvents(user).values())
 			builder.addEvent(e);
