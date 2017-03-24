@@ -48,7 +48,7 @@ public enum ErrorConst implements ResultConst {
     BOSS_ROOM_HAS_START(4014, "房间已开始战斗"), BOSS_ROOM_CAN_NOT_QUIT_OTHER(4015, "你不是房主，无法踢出别人"), BOSS_ROOM_IS_NOT_START_OTHER(4016, "房间还没开始"),
     USER_HAS_EXIST(4017, "该绑定帐号已存在"), BOSS_COUNT_IS_USED_ERROR(4018, "今日该boss次数已用尽"), BOSS_ROOM_IS_FULL_ERROR(4019, "房间人数已满"),
     BOSS_IS_NOT_EXIST_ERROR(4020, "boss不存在"), EQUIP_IS_NOT_EXIST_ERROR(4021, "装备不存在"), EQUIP_CHANGE_ERROR(4022, "装备切换异常"),
-    ROOM_IS_NOT_EXIST_ERROR(4023, "房间不存在"),
+    ROOM_IS_NOT_EXIST_ERROR(4023, "房间不存在"),ROOM_NEED_CREATE_ERROR(4024, "请先创建一个房间"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 
