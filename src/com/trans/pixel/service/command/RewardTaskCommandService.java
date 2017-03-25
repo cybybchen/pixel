@@ -113,9 +113,15 @@ public class RewardTaskCommandService extends BaseCommandService {
 		int id = cmd.getId();
 		long createUserId = cmd.getCreateUserId();
 		UserRewardTaskRoom room = rewardTaskService.getUserRoom(user, id);
-		if(room == null){
+		if(room == null && !userIds.isEmpty()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_NEED_CREATE_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_NEED_CREATE_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		if(room != null && userIds.isEmpty()){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HASIN);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
