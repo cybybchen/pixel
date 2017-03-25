@@ -240,7 +240,10 @@ function buildUserJson(key, value){
             json["pvpMonster"] = 1;
             json["pvpMine"] = 1;
             json["pvpBuff"] = 1;
-        }else{
+        } else if (datatype == "talent") {
+        		json["talent"] = 1;
+            json["talentskill"] = 1;
+        } else{
             json["mailList0"] = 1;
             json["mailList1"] = 1;
             json["mailList2"] = 1;
@@ -337,6 +340,12 @@ function appendUserDatas(message, dirty){
     }
     if(message["pvpBuff"]!=null){
         appendUserData("pvpBuff", message["pvpBuff"]);
+    }
+    if(message["talent"]!=null){
+        appendUserData("talent", message["talent"]);
+    }
+    if(message["talentskill"]!=null){
+        appendUserData("talentskill", message["talentskill"]);
     }
     if(message["mailList0"]!=null){
         appendUserData("mailList0", message["mailList0"]);
