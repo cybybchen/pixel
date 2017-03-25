@@ -101,12 +101,13 @@ public class TalentService {
 				UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
 				builder.setIsUse(false);
 				returnUserTalentList.add(builder.build());
-			} else if (userTalent.getId() == id) {
-				UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
-				builder.setIsUse(true);
-				returnUserTalentList.add(builder.build());
+				break;
 			}
 		}
+		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+		builder.setIsUse(true);
+		returnUserTalentList.add(builder.build());
 		
 		return returnUserTalentList;
 	}
