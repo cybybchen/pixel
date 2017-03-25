@@ -106,10 +106,7 @@ public class LevelCommandService extends BaseCommandService {
 			userLevel.setLootDaguan(id);
 			redis.saveUserLevel(userLevel);
 		}
-		ResponseLevelLootCommand.Builder builder = userLevel.build();
-		for(Event.Builder event : redis.getEvents(user).values())
-			builder.addEvent(event);
-		responseBuilder.setLevelLootCommand(builder.build());
+		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	public void levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
 		long time = redis.now() - userLevel.getLootTime();
@@ -134,10 +131,7 @@ public class LevelCommandService extends BaseCommandService {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		levelLoot(userLevel, responseBuilder, user);
 		redis.productEvent(user, userLevel);
-		ResponseLevelLootCommand.Builder builder = userLevel.build();
-		for(Event.Builder event : redis.getEvents(user).values())
-			builder.addEvent(event);
-		responseBuilder.setLevelLootCommand(builder.build());
+		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 
 	public void eventReward(Event event, Builder responseBuilder, UserBean user){
@@ -188,190 +182,19 @@ public class LevelCommandService extends BaseCommandService {
 			}else if(event.getOrder() >= 100 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event.getOrder());
 		}
+		pushLevelLootCommand(responseBuilder, userLevel, user);
+	}
+	
+	public void pushLevelLootCommand(Builder responseBuilder, UserLevelBean userLevel, UserBean user){
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
 		for(Event.Builder e : redis.getEvents(user).values())
 			builder.addEvent(e);
+		if(builder.getEventCount() >= 20)
+			builder.setEventTime(0);
+		else
+			builder.setEventTime(builder.getEventTime()+60);
 		responseBuilder.setLevelLootCommand(builder.build());
 	}
-// 	public void levelStartFirstTime(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
-// 		int levelId = cmd.getLevelId();
-// 		long userId = user.getId();
-// 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
-// 		if (levelService.isCheatLevelFirstTime(levelId, userLevel)) {
-// 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-			
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
-//             responseBuilder.setErrorCommand(errorCommand);
-// 		}else if (!levelService.isPreparad(userLevel, levelId)) {
-// 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_PREPARA_ERROR);
-			
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_PREPARA_ERROR);
-//             responseBuilder.setErrorCommand(errorCommand);
-// 		}else if (userLevel.getLastLevelResultTime() > 0) {
-// 			userLevel.setLevelPrepareTime(userLevel.getLevelPrepareTime() + 
-// 					(int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - userLevel.getLastLevelResultTime());
-// 			userLevel.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
-// 			userLevelService.updateUserLevelRecord(userLevel);
-// 		}
-// 		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
-// 		builder.setUserLevel(userLevel.buildUserLevel());
-// 		responseBuilder.setUserLevelCommand(builder.build());
-// 	}
-	
-// 	public void levelPrepara(RequestLevelPrepareCommand cmd, Builder responseBuilder, UserBean user) {
-// 		int levelId = cmd.getLevelId();
-// 		long userId = user.getId();
-// 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
-// 		if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
-// 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-			
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
-//             responseBuilder.setErrorCommand(errorCommand);
-// 		}else{
-// 			userLevelRecord.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
-// 			userLevelService.updateUserLevelRecord(userLevelRecord);
-// 			userLevelLootRecordService.switchLootLevel(levelId, userId);
-// 		}
-// 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
-// 	}
-	
-// 	public void levelPause(RequestLevelPauseCommand cmd, Builder responseBuilder, UserBean user) {
-// 		long userId = user.getId();
-// 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
-		
-// 		if (userLevelRecord.getLastLevelResultTime() != 0)
-// 			userLevelRecord.setLevelPrepareTime(userLevelRecord.getLevelPrepareTime() + (int)(System.currentTimeMillis() / 1000) - userLevelRecord.getLastLevelResultTime());
-// 		userLevelRecord.setLastLevelResultTime(0);
-// 		userLevelService.updateUserLevelRecord(userLevelRecord);
-// 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
-// 	}
-	
-// 	public void levelResultFirstTime(RequestLevelResultCommand cmd, Builder responseBuilder, UserBean user) {
-// 		/**
-// 		 * send pve log
-// 		 */
-// 		boolean ret = false;
-// 		int turn = 0;
-// 		int levelId = cmd.getLevelId();
-// 		if (cmd.hasRet())
-// 			ret = cmd.getRet();
-// 		if (cmd.hasTurn())
-// 			turn = cmd.getTurn();
-// 		logService.sendPveLog(user.getServerId(), ret ? 1 : 0, user.getId(), turn, levelId);
-		
-// 		if (ret) {
-// 	//		ResponseLevelResultCommand.Builder builder = ResponseLevelResultCommand.newBuilder();
-// 			long userId = user.getId();
-// 			UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
-// 			if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
-// 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-				
-// 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
-// 	            responseBuilder.setErrorCommand(errorCommand);
-// 			}else{
-// 				userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, user);
-// 				userLevelRecord.setLevelPrepareTime(0);
-// 				userLevelRecord.setLastLevelResultTime(0);
-// 				userLevelService.updateUserLevelRecord(userLevelRecord);
-// 				log.debug("levelId is:" + levelId);
-// 				WinBean winBean = winService.getWinByLevelId(levelId);
-// 				List<RewardBean> rewardList = new ArrayList<RewardBean>();
-// 				if (winBean != null)
-// 					rewardList = winBean.getRewardList();
-				
-// 				rewardList.addAll(levelService.getNewplayReward(user, levelId));
-				
-// 				rewardService.doRewards(user, rewardList);
-// 				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
-// 			}
-// 		}
-
-// 		user.addMyactive();
-// 		if(user.getMyactive() >= 100){
-// 			user.setMyactive(user.getMyactive() - 100);
-// 			pvpMapService.refreshAMine(user);
-// 		}
-// 		userService.updateUser(user);
-
-// 		pushCommandService.pushUserLevelCommand(responseBuilder, user);
-// 	}
-	
-// 	public void levelLootStart(RequestLevelLootStartCommand cmd, Builder responseBuilder, UserBean user) {
-// 		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
-// 		int levelId = cmd.getLevelId();
-// 		long userId = user.getId();
-// 		log.debug("1|" + System.currentTimeMillis());
-// 		UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(userId);
-// 		log.debug("2|" + System.currentTimeMillis());
-// 		if (levelService.isCheatLevelLoot(levelId, userLevelRecord)) {
-// 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-			
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
-//             responseBuilder.setErrorCommand(errorCommand);
-// 		}else{
-// 			log.debug("4|" + System.currentTimeMillis());
-// 			UserLevelLootBean userLevelLoot = userLevelLootRecordService.switchLootLevel(levelId, userId);
-// 			log.debug("3|" + System.currentTimeMillis());
-// 			builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
-// 			responseBuilder.setUserLootLevelCommand(builder.build());
-// 		}
-// 	}
-	
-// 	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
-// 		userLevelLootRecordService.calLootReward(user.getId());
-// 		List<RewardBean> lootRewardList = userLevelLootRecordService.getLootRewards(user);
-// 		rewardService.doRewards(user, lootRewardList);
-// 		pushCommandService.pushRewardCommand(responseBuilder, user, lootRewardList);
-// 		pushCommandService.pushUserLootLevelCommand(responseBuilder, user);
-		
-// 		/**
-// 		 * 收取挂机背包的活动
-// 		 */
-// 		if (!lootRewardList.isEmpty()) {
-// 			activityService.getLootPackageActivity(user);
-// 		}
-// 	}
-	
-// 	public void levelUnlock(RequestUnlockLevelCommand cmd, Builder responseBuilder, UserBean user) {
-// 		ResponseUserLevelCommand.Builder builder = ResponseUserLevelCommand.newBuilder();
-// 		int daguanId = cmd.getLevelId();
-// 		long userId = user.getId();
-// 		UserLevelBean userLevel = userLevelService.selectUserLevelRecord(userId);
-// 		if (levelService.isCheatLevelUnlock(daguanId, userLevel, user)) {
-// 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-			
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
-//             responseBuilder.setErrorCommand(errorCommand);
-// 		}else{
-// 			userLevel.setUnlockedLevel(daguanId);
-// 			userLevelService.updateUserLevelRecord(userLevel);
-			
-// 			builder.setUserLevel(userLevel.buildUserLevel());
-// 			responseBuilder.setUserLevelCommand(builder.build());
-// 		}
-// 	}
-	
-// 	public void buyLootPackage(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user) {
-// 		if (!costService.costAndUpdate(user, RewardConst.JEWEL, BUY_LOOT_PACKAGE_COST)) {
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
-//             responseBuilder.setErrorCommand(errorCommand);
-// 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
-//             return;
-// 		}
-		
-// 		UserLevelLootBean userLevelLoot = userLevelLootRecordService.selectUserLevelLootRecord(user.getId());
-// 		if (userLevelLoot.getPackageCount() + BUY_LOOT_PACKAGE_COUNT > LOOT_PACKAGE_LIMIT) {
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LOOT_PACKAGE_LIMIT_ERROR);
-//             responseBuilder.setErrorCommand(errorCommand);
-// 		}else{
-// 			userLevelLoot.setPackageCount(userLevelLoot.getPackageCount() + BUY_LOOT_PACKAGE_COUNT);
-// 			userLevelLootRecordService.updateUserLevelLootRecord(userLevelLoot);
-// 		}
-// 		ResponseUserLootLevelCommand.Builder builder = ResponseUserLootLevelCommand.newBuilder();
-// 		builder.setUserLootLevel(userLevelLoot.buildUserLootLevel());
-// 		responseBuilder.setUserLootLevelCommand(builder.build());
-// 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-// 	}
 	
 	public void helpLevelResult(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user) {
 // 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
