@@ -61,6 +61,7 @@ message UserInfo {
 	optional int32 questStatus = 73;//是否参与过问卷调查
 	optional int32 zhaohuanshi = 74;//召唤石
 	optional uint32 zhujueExp = 75;
+	optional uint32 vipExp = 76;
 }
 
 message CostItem {
@@ -322,15 +323,15 @@ message PurchaseCoinCostList {
 	repeated PurchaseCoinCost gold = 1;
 }
 
-message RequestDailyShopCommand{//普通商店
+message RequestDailyShopCommand {//普通商店
 }
-message RequestDailyShopPurchaseCommand{//普通商店购买
+message RequestDailyShopPurchaseCommand {//普通商店购买
 	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
 }
-message RequestDailyShopRefreshCommand{//普通商店刷新
+message RequestDailyShopRefreshCommand {//普通商店刷新
 }
-message ResponseDailyShopCommand{
+message ResponseDailyShopCommand {
 	repeated Commodity items = 1;//商品列表
 	optional int64 endTime = 2;//商品列表过期时间
 	optional int32 refreshCost = 3;//刷新消耗
@@ -1190,17 +1191,17 @@ message PVPPosition {//pvp位置
 	optional int32 y = 3;//坐标y
 }
 
-message PVPPositionList{
+message PVPPositionList {
 	optional int32 fieldid = 1;
 	optional int32 name = 2;
 	repeated PVPPosition xiaoguai = 3;
 }
 
-message PVPPositionLists{
+message PVPPositionLists {
 	repeated PVPPositionList field = 1;
 }
 
-message PVPMine{//pvp矿点
+message PVPMine {//pvp矿点
 	required int32 id = 1;
 	optional int32 x = 2;
 	optional int32 y = 3;
@@ -1214,7 +1215,7 @@ message PVPMine{//pvp矿点
 	optional int32 pvpyield = 12;
 }
 
-message PVPMap{
+message PVPMap {
 	optional int32 fieldid = 1;
 	optional string name = 2;
 	optional int32 bufflimit = 6;//buff层数上限
@@ -1228,7 +1229,7 @@ message PVPMap{
 	repeated PVPMonster monster = 4;
 }
 
-message PVPMapList{
+message PVPMapList {
 	repeated PVPMap field = 1;
 	optional int32 buff = 2;
 }
@@ -1834,7 +1835,7 @@ message RequestSubmitIconCommand {
 	required int32 icon = 1;
 }
 
-message RequestCheatRechargeCommand{
+message RequestCheatRechargeCommand {
 	optional int32 itemid = 1;
 }
 
@@ -3013,17 +3014,17 @@ message Raid {
 message RaidList {
         repeated Raid id = 1;
 }
-message RequestOpenRaidCommand{
+message RequestOpenRaidCommand {
 	optional int32 id = 1;
 }
-message RequestStartRaidCommand{
+message RequestStartRaidCommand {
 	optional int32 id = 1;
         optional string teamInfo = 2;
         optional string fightInfo = 3;
         optional int32 turn = 4;
         optional bool ret = 5;
 }
-message ResponseRaidCommand{
+message ResponseRaidCommand {
 	optional int32 id = 1;
 }
 ////////// Request
@@ -3202,7 +3203,7 @@ message RequestCommand {
 	optional RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;
 }
 ////////// Commands
-message ErrorCommand{
+message ErrorCommand {
         required string code = 1;
         required string message = 2;
 }

@@ -133,6 +133,10 @@ public class RewardService {
 				case RewardConst.ZHUJUEEXP:
 					user.setZhujueExp(user.getZhujueExp() + (int)rewardCount);
 					return true;
+				case RewardConst.VIPEXP:
+					user.setVipExp(user.getRechargeRecord() + (int)rewardCount);
+					rechargeService.handleVipExp(user);
+					return true;
 				default:
 					break;
 			}

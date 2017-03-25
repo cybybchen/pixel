@@ -72,50 +72,33 @@ public class RechargeService {
 	private CostService costService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
-    	int complete = user.getRechargeRecord()+rmb*10;
-    	while(true){
-	    	VipInfo vip = userService.getVip(user.getVip()+1);
-	    	if(vip == null || complete < vip.getZuanshi())
-	    		break;
-	    	VipInfo oldvip = userService.getVip(user.getVip());
-	    	if(oldvip == null)
-	    		oldvip = VipInfo.newBuilder().build();
-	    	user.setVip(user.getVip()+1);
-	    	achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_VIP, user.getVip());
-			if(vip != null){
-				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin() - oldvip.getDianjin());
-				user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract() - oldvip.getContract());
-				user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti() - oldvip.getTianti());
-				user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvp() - oldvip.getPvp());
-				user.setPurchaseTireLeftTime(user.getPurchaseTireLeftTime() + vip.getQuyu() - oldvip.getQuyu());
-				user.setRefreshExpeditionLeftTime(user.getRefreshExpeditionLeftTime() + vip.getMohua() - oldvip.getMohua());
-				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());
-				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
-				UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
-				if (userProp == null)
-					userProp = UserPropBean.initUserProp(user.getId(), 40022, "");
-				userProp.setPropCount(userProp.getPropCount() + vip.getBaohu() - oldvip.getBaohu());
-				userPropService.updateUserProp(userProp);
-			}
-	    }
-//    	userAchieveService.updateUserAchieve(bean);
+    	int addExp = rmb * 10;
+
+    	addVipExp(user, addExp);
 		
-		activityService.rechargeActivity(user, rmb*10);
+		activityService.rechargeActivity(user, addExp);
 		
 		/**
 		 * 记录用户的累计充值金额
 		 */
-		user.setRechargeRecord(complete);
+		user.setRechargeRecord(user.getRechargeRecord() + addExp);
 		userService.updateUser(user);
 		
 		return rmb;
 	}
 	
-	public int buchangVip(UserBean user, int rmb, int jewel) {
-    	int complete = user.getRechargeRecord()+jewel;
-    	while(true){
+	public void addVipExp(UserBean user, int exp) {
+		int complete = user.getVipExp() + exp;
+		user.setVipExp(complete);
+		handleVipExp(user);
+    	
+		userService.updateUser(user);
+	}
+	
+	public void handleVipExp(UserBean user) {
+		while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
-	    	if(vip == null || complete < vip.getZuanshi())
+	    	if(vip == null || user.getVipExp() < vip.getZuanshi())
 	    		break;
 	    	VipInfo oldvip = userService.getVip(user.getVip());
 	    	if(oldvip == null)
@@ -138,11 +121,16 @@ public class RechargeService {
 				userPropService.updateUserProp(userProp);
 			}
 	    }
+	}
+	
+	public int buchangVip(UserBean user, int rmb, int jewel) {
+    	int addExp = jewel;
+    	addVipExp(user, addExp);
 		
 		/**
 		 * 记录用户的累计充值金额
 		 */
-		user.setRechargeRecord(user.getRechargeRecord() + jewel);
+		user.setRechargeRecord(user.getRechargeRecord() + addExp);
 		userService.updateUser(user);
 		
 		return rmb;

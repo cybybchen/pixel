@@ -53,6 +53,7 @@
 		<result property="task1Order" column="task1_order" />
 		<result property="task2Record" column="task2_record" />
 		<result property="zhujueExp" column="zhujue_exp" />
+		<result property="vipExp" column="vip_exp" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -97,7 +98,7 @@
 		greenhand=#{greenhand}, advance=#{advance}, skill=#{skill}, failed=#{failed}, shouchong_is_complete=#{shouchongIsComplete}, shouchong_is_get_reward=#{shouchongIsGetReward}, current_teamid=#{currentTeamid}, grow_jewel_count=#{growJewelCount}, 
 		grow_jewel_count_status=#{growJewelCountStatus}, grow_exp_count=#{growExpCount}, grow_exp_count_status=#{growExpCountStatus},
 		lottery_status=#{lotteryStatus}, zhanli_max=#{zhanliMax}, seven_login_days=#{sevenLoginDays}, quest_status=#{questStatus},
-		zhaohuanshi=#{zhaohuanshi}, task1_order=#{task1Order}, task2_record=#{task2Record}, zhujue_exp=#{zhujueExp}
+		zhaohuanshi=#{zhaohuanshi}, task1_order=#{task1Order}, task2_record=#{task2Record}, zhujue_exp=#{zhujueExp}, vip_exp=#{vipExp}
 		WHERE id=#{id}
 	</update>
 

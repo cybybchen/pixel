@@ -112,6 +112,7 @@ public class UserBean {
 	private long bossRoomUserId = 0;
 	private int zhaohuanshi = 0;
 	private int zhujueExp = 0;
+	private int vipExp = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1114,6 +1115,12 @@ public class UserBean {
 	public void setZhujueExp(int zhujueExp) {
 		this.zhujueExp = zhujueExp;
 	}
+	public int getVipExp() {
+		return vipExp;
+	}
+	public void setVipExp(int vipExp) {
+		this.vipExp = vipExp;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1259,6 +1266,7 @@ public class UserBean {
 		builder.setQuestStatus(questStatus);
 		builder.setZhaohuanshi(zhaohuanshi);
 		builder.setZhujueExp(zhujueExp);
+		builder.setVipExp(vipExp);
 		
 		return builder.build();
 	}
