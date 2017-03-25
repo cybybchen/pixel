@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
@@ -170,6 +171,17 @@ public class RewardTaskCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
+		}
+	}
+	
+	public void getUserRewardTaskRoom(RequestUserRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		int id = cmd.getId();
+		UserRewardTaskRoom room = rewardTaskService.getUserRoom(user, id);
+		
+		if (room != null) {
+			ResponseUserRewardTaskRoomCommand.Builder builder = ResponseUserRewardTaskRoomCommand.newBuilder();
+			builder.addRoom(room);
+			responseBuilder.setUserRewardTaskRoomCommand(builder.build());
 		}
 	}
 }

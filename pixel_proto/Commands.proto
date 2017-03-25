@@ -2930,6 +2930,10 @@ message RequestUserRewardTaskCommand {
 message RequestRewardTaskRewardCommand {
 	required uint32 id = 1;
 }
+
+message RequestUserRewardTaskRoomCommand {
+	required uint32 id = 1;
+}
 ////////// TaskProto
 message TaskTargetList {
 	repeated TaskTarget target = 1;
@@ -3195,6 +3199,7 @@ message RequestCommand {
 	optional RequestSubmitRewardTaskScoreCommand submitRewardTaskScoreCommand = 235;
 	optional RequestUserRewardTaskCommand userRewardTaskCommand = 236;
 	optional RequestRewardTaskRewardCommand rewardTaskRewardCommand = 237;
+	optional RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;
 }
 ////////// Commands
 message ErrorCommand{

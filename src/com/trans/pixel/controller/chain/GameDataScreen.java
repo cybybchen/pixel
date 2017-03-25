@@ -116,6 +116,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
@@ -1024,6 +1025,11 @@ public class GameDataScreen extends RequestScreen {
 		rewardTaskCommandService.getUserRewardTaskReward(cmd, responseBuilder, user);
 		return true;//RewardTaskRewardCommand
 	}//RewardTaskRewardCommand
+	@Override//UserRewardTaskRoomCommand
+	protected boolean handleCommand(RequestUserRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.getUserRewardTaskRoom(cmd, responseBuilder, user);
+		return true;//UserRewardTaskRoomCommand
+	}//UserRewardTaskRoomCommand
 	//add handleCommand here
 	
 	@Override
