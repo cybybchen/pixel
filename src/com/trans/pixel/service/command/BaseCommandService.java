@@ -56,9 +56,9 @@ public class BaseCommandService {
 	@Resource
 	private UserClearService userClearService;
 	
-	protected void buildUserInfo(ResponseUserInfoCommand.Builder builder, UserBean user) {
-		builder.setUser(user.build());
-	}
+//	protected void buildUserInfo(ResponseUserInfoCommand.Builder builder, UserBean user) {
+//		builder.setUser(user.build());
+//	}
 	
 	// protected void buildMessageOrErrorCommand(Builder responseBuilder, ResultConst result) {
 	// 	if(result instanceof SuccessConst)

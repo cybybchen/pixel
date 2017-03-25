@@ -62,6 +62,7 @@ do
 	else
 		content+=$line"\n"
 	fi
+	# echo ${map[@]} 
 	# echo $line
 	# sleep 1
 done

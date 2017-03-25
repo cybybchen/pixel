@@ -75,6 +75,7 @@ import com.trans.pixel.service.UserRewardTaskService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class PushCommandService extends BaseCommandService {
@@ -201,15 +202,18 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserInfoCommand(Builder responseBuilder, UserBean user) {
-//		lootService.updateLootResult(user);
-		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
-		buildUserInfo(builder, user);
-		responseBuilder.setUserInfoCommand(builder.build());
+		pushUserInfoCommand(responseBuilder, user.build());
 	}
 	
 	public void pushUserInfoCommand(Builder responseBuilder, UserInfo user) {
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
-		builder.setUser(user);
+		UserInfo.Builder userInfo = UserInfo.newBuilder(user);
+		UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+		if(userLevel != null){//cal loot result
+			userInfo.setExp(userInfo.getExp() + (RedisService.now()-userLevel.getLootTime())*userLevel.getExp());
+			userInfo.setCoin(userInfo.getCoin() + (RedisService.now()-userLevel.getLootTime())*userLevel.getCoin());
+		}
+		builder.setUser(userInfo);
 		responseBuilder.setUserInfoCommand(builder.build());
 	}
 	

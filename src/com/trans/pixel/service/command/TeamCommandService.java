@@ -48,9 +48,7 @@ public class TeamCommandService extends BaseCommandService {
 		// }else
 			userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill, user, rolePosition);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
-		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
-		builder.setUser(user.build());
-		responseBuilder.setUserInfoCommand(builder.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 
 	public void submitFightInfo(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user) {

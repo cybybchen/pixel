@@ -1013,45 +1013,45 @@ public class RedisService {
 	/**
 	 * 下个星期0点
 	 */
-	public Date nextWeek(){
+	public static Date nextWeek(){
 		Date date = new Date((System.currentTimeMillis()/1000L+(8+3*24)*3600)/7/24/3600L*7*24*3600L*1000L+(24*4-8)*3600L*1000L);
 		return date;
 	}
 	/**
 	 * 第二天0点
 	 */
-	public Date nextDay(){
+	public static Date nextDay(){
 		Date date = new Date(nextDay(0)*1000L);
 		return date;
 	}
-	public long caltoday(long time, int hour){
+	public static long caltoday(long time, int hour){
 		return (time+8*3600)/24/3600L*24*3600L+(hour-8)*3600L;
 	}
 	/**
 	 * 今天几点
 	 */
-	public long today(int hour){
+	public static long today(int hour){
 		return caltoday(now(), hour);
 	}
 	/**
 	 * 第二天几点
 	 */
-	public long nextDay(int hour){
+	public static long nextDay(int hour){
 		return caltoday(now(), hour+24);
 	}
 	/**
 	 * 当前秒数
 	 */
-	public long now(){
+	public static long now(){
 		return System.currentTimeMillis()/1000L;
 	}
 	/**
 	 * 当前周几
 	*/
-	public int weekday(){
+	public static int weekday(){
 		return (int)((System.currentTimeMillis()/1000L+8*3600)/24/3600L+3)%7+1;
 	}
-	public int currentIndex(){
+	public static int currentIndex(){
 		return (int)(System.currentTimeMillis()%1073741824 +1024);
 	}
 
@@ -1062,7 +1062,7 @@ public class RedisService {
 			return RandomUtils.nextInt(value);
 	}
 	
-	public String toJson(Object object) {
+	public static String toJson(Object object) {
 		JSONObject json = JSONObject.fromObject(object);
 		
 		return json.toString();

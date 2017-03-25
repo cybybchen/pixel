@@ -103,14 +103,11 @@ public class UserCommandService extends BaseCommandService {
 		
 		userService.cache(user.getServerId(), user.buildShort());
 		pushCommand(responseBuilder, user);
-		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
-		userInfoBuilder.setUser(user.build());
-		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {
 		RequestRegisterCommand registerCommand = request.getRegisterCommand();
-		ResponseUserInfoCommand.Builder userInfoBuilder = ResponseUserInfoCommand.newBuilder();
 		HeadInfo head = request.getHead();
 		if (blackService.isNoaccount(head.getAccount())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
@@ -157,8 +154,7 @@ public class UserCommandService extends BaseCommandService {
 		}
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
-		userInfoBuilder.setUser(user.build());
-		responseBuilder.setUserInfoCommand(userInfoBuilder.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		pushCommand(responseBuilder, user);
 	}

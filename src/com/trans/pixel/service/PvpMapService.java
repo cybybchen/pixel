@@ -35,7 +35,7 @@ import com.trans.pixel.protoc.PVPProto.PVPMine;
 import com.trans.pixel.protoc.PVPProto.PVPMonster;
 import com.trans.pixel.protoc.PVPProto.PVPMonsterReward;
 import com.trans.pixel.protoc.PVPProto.PVPMonsterRewardLoot;
-import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
+import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -67,6 +67,8 @@ public class PvpMapService {
 	private UnionService unionService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
+	@Resource
+	private PushCommandService pushCommandService;
 
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
@@ -298,9 +300,7 @@ public class PvpMapService {
 			}
 		}
 		if(gainMine(maplist, user)){
-			ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
-			builder.setUser(user.build());
-			responseBuilder.setUserInfoCommand(builder.build());
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}
 		return maplist.build();
 	}
