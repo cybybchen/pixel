@@ -109,7 +109,7 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	public void levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
-		long time = redis.now() - userLevel.getLootTime();
+		long time = RedisService.now() - userLevel.getLootTime();
 		if(time >= 60){
 			Daguan.Builder daguan = redis.getDaguan(userLevel.getLootDaguan());
 			for(RewardInfo.Builder reward : daguan.getItemBuilderList())

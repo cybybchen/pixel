@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -69,6 +70,9 @@ public class RaidCommandService extends BaseCommandService{
 			rewardService.doRewards(user, rewards.build());
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			id++;
+			order = redis.getRaidOrder(id);
+			if(!redis.hasRaidOrder(id))
+				id = 0;
 			redis.saveRaid(user, id);
 		}else if(!cmd.getRet() && cmd.getTurn() == 0){
 			id = 0;

@@ -857,6 +857,9 @@ public class RaidRedisService extends RedisService{
 		return null;
 	}
 
+	public boolean hasRaidOrder(int id){
+		return hget(RedisKey.RAIDORDER_CONFIG, id+"") != null;
+	}
 	public RaidOrder getRaidOrder(int id){
 		String value = hget(RedisKey.RAIDORDER_CONFIG, id+"");
 		RaidOrder.Builder builder = RaidOrder.newBuilder();
