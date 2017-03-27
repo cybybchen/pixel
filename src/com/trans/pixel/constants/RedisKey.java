@@ -196,15 +196,15 @@ public class RedisKey {
 	public static final String HERO_MESSAGE_BOARD_VALUE_PREFIX = "hero_message_value_";
 	
 	//skill
-	public static final String SKILL_KEY = CONFIG_PREFIX+"skill";
-	public static final String SKILLLEVEL_KEY = CONFIG_PREFIX+"skilllevel";
+	public static final String SKILL_KEY = PREFIX + CONFIG_PREFIX+"skill";
+	public static final String SKILLLEVEL_KEY = PREFIX + CONFIG_PREFIX+"skilllevel";
 	
 	//prop
-	public static final String PROP_KEY = CONFIG_PREFIX + "prop";
-	public static final String SYNTHETISE_KEY = CONFIG_PREFIX + "synthetise";
+	public static final String PROP_KEY = PREFIX + CONFIG_PREFIX + "prop";
+	public static final String SYNTHETISE_KEY = PREFIX + CONFIG_PREFIX + "synthetise";
 	
 	//fenjie
-	public static final String FENJIE_KEY = CONFIG_PREFIX+"fenjie";
+	public static final String FENJIE_KEY = PREFIX + CONFIG_PREFIX+"fenjie";
 	
 	//sign
 	public static final String SIGN_KEY = PREFIX + CONFIG_PREFIX+"sign";
