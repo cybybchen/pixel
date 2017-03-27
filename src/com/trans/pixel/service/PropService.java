@@ -12,11 +12,16 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Prop;
+import com.trans.pixel.protoc.EquipProto.Synthetise;
+import com.trans.pixel.protoc.EquipProto.SynthetiseCover;
 import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
@@ -32,6 +37,10 @@ public class PropService {
 	private BossService bossService;
 	@Resource
 	private RewardTaskService rewardTaskService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private CostService costService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -101,5 +110,42 @@ public class PropService {
 		}
 		
 		return null;
+	}
+	
+	public ResultConst synthetiseCompose(UserBean user, int synthetiseId, MultiReward.Builder rewards, MultiReward.Builder costs) {
+		Synthetise syn = propRedisService.getSynthetise(synthetiseId);
+		if (syn == null)
+			return ErrorConst.NOT_ENOUGH_PROP;
+		
+		UserEquipPokedeBean equipPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getTarget());
+		if (equipPokede == null)
+			return ErrorConst.NOT_ENOUGH_EQUIP;
+		
+		List<CostItem> costList = buildCostList(syn);
+		if (!costService.canCostAll(user, costList)) 
+			return ErrorConst.NOT_ENOUGH_PROP;
+		
+		costService.costAll(user, costList);
+		
+		rewards.addLoot(RewardBean.init(syn.getTarget(), 1).buildRewardInfo());
+		costs.addAllLoot(RewardBean.buildCostList(costList));
+		
+		return SuccessConst.PROP_COMPOSE_SUCCESS;
+	}
+	
+	private List<CostItem> buildCostList(Synthetise syn) {
+		List<CostItem> costList = new ArrayList<CostItem>();
+		CostItem.Builder builder = CostItem.newBuilder();
+		builder.setCostid(syn.getId());
+		builder.setCostcount(1);
+		costList.add(builder.build());
+		for (SynthetiseCover cover : syn.getCoverList()) {
+			builder = CostItem.newBuilder();
+			builder.setCostid(cover.getCover());
+			builder.setCostcount(cover.getCount());
+			costList.add(builder.build());
+		}
+		
+		return costList;
 	}
 }

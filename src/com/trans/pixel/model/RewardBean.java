@@ -14,6 +14,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.trans.pixel.constants.DirConst;
+import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -144,30 +145,6 @@ public class RewardBean {
 		return list;
 	}
 	
-	public static List<RewardBean> xmlParseLotteryEquip(int type) {
-		Logger logger = Logger.getLogger(WinBean.class);
-		List<RewardBean> list = new ArrayList<RewardBean>();
-		String fileName = LOTTERY_EQUIP_FILE_PREFIX + type + ".xml";
-		try {
-			String filePath = DirConst.getConfigXmlPath(fileName);
-			SAXReader reader = new SAXReader();
-			InputStream inStream = new FileInputStream(new File(filePath));
-			Document doc = reader.read(inStream);
-			// 获取根节点
-			Element root = doc.getRootElement();
-			List<?> rootList = root.elements();
-			for (int i = 0; i < rootList.size(); i++) {
-				Element rewardElement = (Element) rootList.get(i);
-				RewardBean reward = RewardBean.xmlParse(rewardElement);
-				list.add(reward);
-			}
-		} catch (Exception e) {
-			logger.error("parse " + fileName + " failed");
-		}
-
-		return list;
-	}
-	
 	public static List<RewardInfo> buildRewardInfoList(List<RewardBean> rewardList) {
 		List<RewardInfo> rewardInfoList = new ArrayList<RewardInfo>();
 		if (rewardList == null || rewardList.size() == 0)
@@ -176,6 +153,20 @@ public class RewardBean {
 			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
 			rewardInfo.setItemid(reward.getItemid());
 			rewardInfo.setCount(reward.getCount());
+			rewardInfoList.add(rewardInfo.build());
+		}
+		
+		return rewardInfoList;
+	}
+	
+	public static List<RewardInfo> buildCostList(List<CostItem> costList) {
+		List<RewardInfo> rewardInfoList = new ArrayList<RewardInfo>();
+		if (costList == null || costList.isEmpty())
+			return rewardInfoList;
+		for (CostItem reward : costList) {
+			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
+			rewardInfo.setItemid(reward.getCostid());
+			rewardInfo.setCount(reward.getCostcount());
 			rewardInfoList.add(rewardInfo.build());
 		}
 		
@@ -201,7 +192,6 @@ public class RewardBean {
 	}
 	
 	private static final String LOTTERY_FILE_PREFIX = "lol_lottery_";
-	private static final String LOTTERY_EQUIP_FILE_PREFIX = "lol_lottery_equip_";
 	private static final String ID = "id";
 	private static final String ITEM_ID = "itemid";
 	private static final String NAME = "name";

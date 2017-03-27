@@ -69,6 +69,7 @@ import com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.HeroProto.RequestLockHeroCommand;
+import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAttackMonsterCommand;
@@ -153,7 +154,6 @@ import com.trans.pixel.protoc.ShopProto.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
 import com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand;
-import com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopRefreshCommand;
@@ -252,6 +252,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestMohuaHpRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLockHeroCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSynthetiseComposeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackMonsterCommand cmd, Builder responseBuilder, UserBean user);
@@ -336,7 +337,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQuitRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestIsAreaOwnerCommand cmd, Builder responseBuilder, UserBean user);
-	protected abstract boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEndMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
@@ -634,6 +634,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasLockHeroCommand()) {
 			RequestLockHeroCommand cmd = request.getLockHeroCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasSynthetiseComposeCommand()) {
+			RequestSynthetiseComposeCommand cmd = request.getSynthetiseComposeCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBindAccountCommand()) {
@@ -970,10 +974,6 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasIsAreaOwnerCommand()) {
 			RequestIsAreaOwnerCommand cmd = request.getIsAreaOwnerCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
-		}
-		if (request.hasBuyLootPackageCommand()) {
-			RequestBuyLootPackageCommand cmd = request.getBuyLootPackageCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionShopPurchaseCommand()) {

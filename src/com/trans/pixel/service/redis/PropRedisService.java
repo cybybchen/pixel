@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.PropList;
+import com.trans.pixel.protoc.EquipProto.Synthetise;
+import com.trans.pixel.protoc.EquipProto.SynthetiseList;
 
 @Service
 public class PropRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(PropRedisService.class);
 	private static final String PACKAGE_FILE_NAME = "ld_package.xml";
+	private static final String SYNTHETISE_FILE_NAME = "ld_synthetise.xml";
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
 	
@@ -68,6 +71,57 @@ public class PropRedisService extends RedisService {
 		Map<String, Prop> map = new HashMap<String, Prop>();
 		for(Prop.Builder prop : builder.getLootBuilderList()){
 			map.put("" + prop.getItemid(), prop.build());
+		}
+		return map;
+	}
+	
+	//hero
+	public Synthetise getSynthetise(int id) {
+		String value = hget(RedisKey.SYNTHETISE_KEY, "" + id);
+		if (value == null) {
+			Map<String, Synthetise> config = getSynthetiseConfig();
+			return config.get("" + id);
+		} else {
+			Synthetise.Builder builder = Synthetise.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	private Map<String, Synthetise> getSynthetiseConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.SYNTHETISE_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Synthetise> map = buildSynthetiseConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Synthetise> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.SYNTHETISE_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Synthetise> map = new HashMap<String, Synthetise>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Synthetise.Builder builder = Synthetise.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Synthetise> buildSynthetiseConfig(){
+		String xml = ReadConfig(SYNTHETISE_FILE_NAME);
+		SynthetiseList.Builder builder = SynthetiseList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + SYNTHETISE_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Synthetise> map = new HashMap<String, Synthetise>();
+		for(Synthetise.Builder syn : builder.getIdBuilderList()){
+			map.put("" + syn.getId(), syn.build());
 		}
 		return map;
 	}

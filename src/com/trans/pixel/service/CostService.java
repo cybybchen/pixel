@@ -66,6 +66,30 @@ public class CostService {
 		return true;
 	}
 	
+	public boolean canCostAll(UserBean user, List<CostItem> costList) { //返回消费的道具id
+		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+		Collections.sort(builderList, comparator);
+		for (int i = 0; i < builderList.size(); ++i) {
+			CostItem cost = builderList.get(i).build();
+			if (!canCost(user, cost.getCostid(), cost.getCostcount()))
+				return false;
+		}
+		
+		return true;
+	}
+	
+	public boolean costAll(UserBean user, List<CostItem> costList) { //返回消费的道具id
+		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+		Collections.sort(builderList, comparator);
+		for (int i = 0; i < builderList.size(); ++i) {
+			CostItem cost = builderList.get(i).build();
+			if (!costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
+				return false;
+		}
+		
+		return true;
+	}
+	
 	public int canCostOnly(UserBean user, List<CostItem> costList) { //返回消费的道具id
 		List<CostItem.Builder> builderList = convertCostBuilder(costList);
 		Collections.sort(builderList, comparator);

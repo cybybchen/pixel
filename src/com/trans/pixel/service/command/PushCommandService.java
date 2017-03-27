@@ -163,6 +163,8 @@ public class PushCommandService extends BaseCommandService {
 	
 	public void pushUserEquipListCommand(Builder responseBuilder, UserBean user, List<UserEquipBean> userEquipList) {
 		ResponseGetUserEquipCommand.Builder builder = ResponseGetUserEquipCommand.newBuilder();
+		if (responseBuilder.hasUserEquipCommand())
+			builder = responseBuilder.getUserEquipCommandBuilder();
 		builder.addAllUserEquip(buildUserEquipList(userEquipList));
 		responseBuilder.setUserEquipCommand(builder.build());
 	}

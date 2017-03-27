@@ -11484,315 +11484,6 @@ public final class RechargeProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ShouchongReward)
   }
 
-  public interface RequestBuyLootPackageCommandOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.RequestBuyLootPackageCommand}
-   */
-  public static final class RequestBuyLootPackageCommand extends
-      com.google.protobuf.GeneratedMessage
-      implements RequestBuyLootPackageCommandOrBuilder {
-    // Use RequestBuyLootPackageCommand.newBuilder() to construct.
-    private RequestBuyLootPackageCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private RequestBuyLootPackageCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final RequestBuyLootPackageCommand defaultInstance;
-    public static RequestBuyLootPackageCommand getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public RequestBuyLootPackageCommand getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RequestBuyLootPackageCommand(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand.class, com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<RequestBuyLootPackageCommand> PARSER =
-        new com.google.protobuf.AbstractParser<RequestBuyLootPackageCommand>() {
-      public RequestBuyLootPackageCommand parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RequestBuyLootPackageCommand(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RequestBuyLootPackageCommand> getParserForType() {
-      return PARSER;
-    }
-
-    private void initFields() {
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.RequestBuyLootPackageCommand}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommandOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand.class, com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_descriptor;
-      }
-
-      public com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand build() {
-        com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand buildPartial() {
-        com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand result = new com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand(this);
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand) {
-          return mergeFrom((com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand other) {
-        if (other == com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestBuyLootPackageCommand)
-    }
-
-    static {
-      defaultInstance = new RequestBuyLootPackageCommand(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestBuyLootPackageCommand)
-  }
-
   public interface RequestCdkeyCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -17249,11 +16940,6 @@ public final class RechargeProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_ShouchongReward_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -17355,22 +17041,21 @@ public final class RechargeProto {
       "ctivity\030\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\0227\n\006rewar" +
       "d\030\005 \003(\0132\'.com.trans.pixel.protoc.Shoucho" +
       "ngReward\"2\n\017ShouchongReward\022\020\n\010rewardid\030" +
-      "\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\036\n\034RequestBuyLootPa" +
-      "ckageCommand\"\"\n\023RequestCdkeyCommand\022\013\n\003k" +
-      "ey\030\001 \002(\t\"(\n\030RequestSubmitIconCommand\022\014\n\004" +
-      "icon\030\001 \002(\005\"-\n\033RequestCheatRechargeComman" +
-      "d\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRechargeComm" +
-      "and\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBindAccoun" +
-      "tCommand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccou",
-      "nt\030\002 \002(\t\";\n\036RequestPurchaseVipLibaoComma" +
-      "nd\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n\033Request" +
-      "QueryRechargeCommand\022\017\n\007orderId\030\001 \001(\t\"\037\n" +
-      "\035RequestShouchongRewardCommand\"+\n\032Reques" +
-      "tGetGrowJewelCommand\022\r\n\005order\030\001 \002(\005\")\n\030R" +
-      "equestGetGrowExpCommand\022\r\n\005order\030\001 \002(\005\"\024" +
-      "\n\022RequestSignCommand\"I\n\023ResponseSignComm" +
-      "and\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.RewardInfo"
+      "\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\"\n\023RequestCdkeyComm" +
+      "and\022\013\n\003key\030\001 \002(\t\"(\n\030RequestSubmitIconCom" +
+      "mand\022\014\n\004icon\030\001 \002(\005\"-\n\033RequestCheatRechar" +
+      "geCommand\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRech" +
+      "argeCommand\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBi" +
+      "ndAccountCommand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\n" +
+      "newAccount\030\002 \002(\t\";\n\036RequestPurchaseVipLi",
+      "baoCommand\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n" +
+      "\033RequestQueryRechargeCommand\022\017\n\007orderId\030" +
+      "\001 \001(\t\"\037\n\035RequestShouchongRewardCommand\"+" +
+      "\n\032RequestGetGrowJewelCommand\022\r\n\005order\030\001 " +
+      "\002(\005\")\n\030RequestGetGrowExpCommand\022\r\n\005order" +
+      "\030\001 \002(\005\"\024\n\022RequestSignCommand\"I\n\023Response" +
+      "SignCommand\0222\n\006reward\030\001 \003(\0132\".com.trans." +
+      "pixel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17455,80 +17140,74 @@ public final class RechargeProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ShouchongReward_descriptor,
               new java.lang.String[] { "Rewardid", "Count", });
-          internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
-          internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_RequestBuyLootPackageCommand_descriptor,
-              new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_descriptor,
               new java.lang.String[] { "Key", });
           internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_descriptor,
               new java.lang.String[] { "Icon", });
           internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor,
               new java.lang.String[] { "OldAccount", "NewAccount", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor,
               new java.lang.String[] { "Vip", "Type", });
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor,
               new java.lang.String[] { "OrderId", });
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_RequestSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor,

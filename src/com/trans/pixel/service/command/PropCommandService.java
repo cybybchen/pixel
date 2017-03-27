@@ -11,18 +11,15 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.EquipProto.Prop;
+import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand;
-import com.trans.pixel.protoc.UnionProto.BossGroupRecord;
-import com.trans.pixel.protoc.UnionProto.BossRecord;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.redis.BossRedisService;
 import com.trans.pixel.service.redis.RedisService;
-import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class PropCommandService extends BaseCommandService {
@@ -89,5 +86,22 @@ public class PropCommandService extends BaseCommandService {
 			responseBuilder.setUsePropCommand(builder.build());
 		}
 //		pusher.pushUserPropListCommand(responseBuilder, user);
+	}
+	
+	public void synthetiseCompose(RequestSynthetiseComposeCommand cmd, Builder responseBuilder, UserBean user) {
+		int synthetiseId = cmd.getSynthetiseId();
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		MultiReward.Builder costs = MultiReward.newBuilder();
+		ResultConst ret = propService.synthetiseCompose(user, synthetiseId, rewards, costs);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
 	}
 }

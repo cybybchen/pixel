@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
@@ -97,7 +98,6 @@ import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestSendMailCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
-import com.trans.pixel.protoc.RechargeProto.RequestBuyLootPackageCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestCdkeyCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestGetGrowExpCommand;
@@ -194,7 +194,6 @@ import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LibaoCommandService;
 import com.trans.pixel.service.command.LogCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
-import com.trans.pixel.service.command.LotteryEquipCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
 import com.trans.pixel.service.command.MohuaCommandService;
@@ -238,8 +237,6 @@ public class GameDataScreen extends RequestScreen {
 	private FriendCommandService friendCommandService;
 	@Resource
 	private LadderCommandService ladderCommandService;
-	@Resource
-	private LotteryEquipCommandService lotteryEquipCommandService;
 	@Resource
 	private AreaCommandService areaCommandService;
 	@Resource
@@ -1286,9 +1283,10 @@ public class GameDataScreen extends RequestScreen {
 	}
 
 	@Override
-	protected boolean handleCommand(RequestBuyLootPackageCommand cmd, Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return false;
+	protected boolean handleCommand(RequestSynthetiseComposeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		propCommandService.synthetiseCompose(cmd, responseBuilder, user);
+		return true;
 	}
 
 }

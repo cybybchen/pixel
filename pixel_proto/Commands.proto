@@ -997,6 +997,26 @@ message Equiptucao {
 	optional int32 rare = 3;
 }
 
+message SynthetiseList {
+	repeated Synthetise id = 1;
+}
+
+message Synthetise {
+	required uint32 id = 1;
+	optional string name = 2;
+	optional string description = 3;
+	required uint32 rare = 4;
+	required uint32 img = 5;
+	required uint32 target = 6;
+	required uint32 needid = 7;
+	repeated SynthetiseCover cover = 8;
+}
+
+message SynthetiseCover {
+	required uint32 cover = 1;
+	required uint32 count = 2;
+}
+
 message RequestAddHeroEquipCommand {
 	required int32 heroId = 1;
 	required int64 infoId = 2;
@@ -1137,6 +1157,10 @@ message RequestTalentChangeEquipCommand {
 	required int32 id = 1;
 	required int32 position = 2;
 	required int32 itemId = 3;
+}
+
+message RequestSynthetiseComposeCommand {
+	required uint32 synthetiseId = 1;
 }
 ////////// PVPProto
 message PVPMonsterReward {//pvp怪物奖励
@@ -1821,10 +1845,6 @@ message ShouchongReward {
 	required int32 rewardid = 1;
 	required int32 count = 2;
 }
-
-message RequestBuyLootPackageCommand {
-	
-}	
 
 message RequestCdkeyCommand {
 	required string key = 1;
@@ -3176,7 +3196,6 @@ message RequestCommand {
 	optional RequestRankCommand rankCommand = 81;
 	optional RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;
 	optional RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;
-	optional RequestBuyLootPackageCommand buyLootPackageCommand = 84;
 	optional RequestSubmitIconCommand submitIconCommand = 85;
 	optional RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;
 	optional RequestBindAccountCommand bindAccountCommand = 87;
@@ -3229,6 +3248,7 @@ message RequestCommand {
 	optional RequestUserRewardTaskCommand userRewardTaskCommand = 236;
 	optional RequestRewardTaskRewardCommand rewardTaskRewardCommand = 237;
 	optional RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;
+	optional RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;
 }
 ////////// Commands
 message ErrorCommand {
