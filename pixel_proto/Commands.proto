@@ -1003,10 +1003,6 @@ message SynthetiseList {
 
 message Synthetise {
 	required uint32 id = 1;
-	optional string name = 2;
-	optional string description = 3;
-	required uint32 rare = 4;
-	required uint32 img = 5;
 	required uint32 target = 6;
 	required uint32 needid = 7;
 	repeated SynthetiseCover cover = 8;
@@ -2024,19 +2020,19 @@ message ActivityOrder {
 	required uint32 order = 1;
 	required string description = 2;
 	required uint32 targetcount = 3;
-	required int32 targetcount1 = 17;
-	required int32 rewardid0 = 5;
+	optional int32 targetcount1 = 17;
+	optional int32 rewardid0 = 5;
 	optional string rewardname0 = 6;
-	required int32 rewardcount0 = 7;
-	required int32 rewardid1 = 8;
+	optional int32 rewardcount0 = 7;
+	optional int32 rewardid1 = 8;
 	optional string rewardname1 = 9;
-	required int32 rewardcount1 = 10;
-	required int32 rewardid2 = 11;
+	optional int32 rewardcount1 = 10;
+	optional int32 rewardid2 = 11;
 	optional string rewardname2 = 12;
-	required int32 rewardcount2 = 13;
-	required int32 rewardid3 = 14;
+	optional int32 rewardcount2 = 13;
+	optional int32 rewardid3 = 14;
 	optional string rewardname3 = 15;
-	required int32 rewardcount3 = 16;
+	optional int32 rewardcount3 = 16;
 	optional int32 consumeid = 19;
 	optional int32 limit = 18;
 	repeated RewardInfo reward = 20;

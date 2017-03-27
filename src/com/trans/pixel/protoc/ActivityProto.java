@@ -1984,23 +1984,23 @@ public final class ActivityProto {
      */
     int getTargetcount();
 
-    // required int32 targetcount1 = 17;
+    // optional int32 targetcount1 = 17;
     /**
-     * <code>required int32 targetcount1 = 17;</code>
+     * <code>optional int32 targetcount1 = 17;</code>
      */
     boolean hasTargetcount1();
     /**
-     * <code>required int32 targetcount1 = 17;</code>
+     * <code>optional int32 targetcount1 = 17;</code>
      */
     int getTargetcount1();
 
-    // required int32 rewardid0 = 5;
+    // optional int32 rewardid0 = 5;
     /**
-     * <code>required int32 rewardid0 = 5;</code>
+     * <code>optional int32 rewardid0 = 5;</code>
      */
     boolean hasRewardid0();
     /**
-     * <code>required int32 rewardid0 = 5;</code>
+     * <code>optional int32 rewardid0 = 5;</code>
      */
     int getRewardid0();
 
@@ -2019,23 +2019,23 @@ public final class ActivityProto {
     com.google.protobuf.ByteString
         getRewardname0Bytes();
 
-    // required int32 rewardcount0 = 7;
+    // optional int32 rewardcount0 = 7;
     /**
-     * <code>required int32 rewardcount0 = 7;</code>
+     * <code>optional int32 rewardcount0 = 7;</code>
      */
     boolean hasRewardcount0();
     /**
-     * <code>required int32 rewardcount0 = 7;</code>
+     * <code>optional int32 rewardcount0 = 7;</code>
      */
     int getRewardcount0();
 
-    // required int32 rewardid1 = 8;
+    // optional int32 rewardid1 = 8;
     /**
-     * <code>required int32 rewardid1 = 8;</code>
+     * <code>optional int32 rewardid1 = 8;</code>
      */
     boolean hasRewardid1();
     /**
-     * <code>required int32 rewardid1 = 8;</code>
+     * <code>optional int32 rewardid1 = 8;</code>
      */
     int getRewardid1();
 
@@ -2054,23 +2054,23 @@ public final class ActivityProto {
     com.google.protobuf.ByteString
         getRewardname1Bytes();
 
-    // required int32 rewardcount1 = 10;
+    // optional int32 rewardcount1 = 10;
     /**
-     * <code>required int32 rewardcount1 = 10;</code>
+     * <code>optional int32 rewardcount1 = 10;</code>
      */
     boolean hasRewardcount1();
     /**
-     * <code>required int32 rewardcount1 = 10;</code>
+     * <code>optional int32 rewardcount1 = 10;</code>
      */
     int getRewardcount1();
 
-    // required int32 rewardid2 = 11;
+    // optional int32 rewardid2 = 11;
     /**
-     * <code>required int32 rewardid2 = 11;</code>
+     * <code>optional int32 rewardid2 = 11;</code>
      */
     boolean hasRewardid2();
     /**
-     * <code>required int32 rewardid2 = 11;</code>
+     * <code>optional int32 rewardid2 = 11;</code>
      */
     int getRewardid2();
 
@@ -2089,23 +2089,23 @@ public final class ActivityProto {
     com.google.protobuf.ByteString
         getRewardname2Bytes();
 
-    // required int32 rewardcount2 = 13;
+    // optional int32 rewardcount2 = 13;
     /**
-     * <code>required int32 rewardcount2 = 13;</code>
+     * <code>optional int32 rewardcount2 = 13;</code>
      */
     boolean hasRewardcount2();
     /**
-     * <code>required int32 rewardcount2 = 13;</code>
+     * <code>optional int32 rewardcount2 = 13;</code>
      */
     int getRewardcount2();
 
-    // required int32 rewardid3 = 14;
+    // optional int32 rewardid3 = 14;
     /**
-     * <code>required int32 rewardid3 = 14;</code>
+     * <code>optional int32 rewardid3 = 14;</code>
      */
     boolean hasRewardid3();
     /**
-     * <code>required int32 rewardid3 = 14;</code>
+     * <code>optional int32 rewardid3 = 14;</code>
      */
     int getRewardid3();
 
@@ -2124,13 +2124,13 @@ public final class ActivityProto {
     com.google.protobuf.ByteString
         getRewardname3Bytes();
 
-    // required int32 rewardcount3 = 16;
+    // optional int32 rewardcount3 = 16;
     /**
-     * <code>required int32 rewardcount3 = 16;</code>
+     * <code>optional int32 rewardcount3 = 16;</code>
      */
     boolean hasRewardcount3();
     /**
-     * <code>required int32 rewardcount3 = 16;</code>
+     * <code>optional int32 rewardcount3 = 16;</code>
      */
     int getRewardcount3();
 
@@ -2446,33 +2446,33 @@ public final class ActivityProto {
       return targetcount_;
     }
 
-    // required int32 targetcount1 = 17;
+    // optional int32 targetcount1 = 17;
     public static final int TARGETCOUNT1_FIELD_NUMBER = 17;
     private int targetcount1_;
     /**
-     * <code>required int32 targetcount1 = 17;</code>
+     * <code>optional int32 targetcount1 = 17;</code>
      */
     public boolean hasTargetcount1() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 targetcount1 = 17;</code>
+     * <code>optional int32 targetcount1 = 17;</code>
      */
     public int getTargetcount1() {
       return targetcount1_;
     }
 
-    // required int32 rewardid0 = 5;
+    // optional int32 rewardid0 = 5;
     public static final int REWARDID0_FIELD_NUMBER = 5;
     private int rewardid0_;
     /**
-     * <code>required int32 rewardid0 = 5;</code>
+     * <code>optional int32 rewardid0 = 5;</code>
      */
     public boolean hasRewardid0() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 rewardid0 = 5;</code>
+     * <code>optional int32 rewardid0 = 5;</code>
      */
     public int getRewardid0() {
       return rewardid0_;
@@ -2521,33 +2521,33 @@ public final class ActivityProto {
       }
     }
 
-    // required int32 rewardcount0 = 7;
+    // optional int32 rewardcount0 = 7;
     public static final int REWARDCOUNT0_FIELD_NUMBER = 7;
     private int rewardcount0_;
     /**
-     * <code>required int32 rewardcount0 = 7;</code>
+     * <code>optional int32 rewardcount0 = 7;</code>
      */
     public boolean hasRewardcount0() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required int32 rewardcount0 = 7;</code>
+     * <code>optional int32 rewardcount0 = 7;</code>
      */
     public int getRewardcount0() {
       return rewardcount0_;
     }
 
-    // required int32 rewardid1 = 8;
+    // optional int32 rewardid1 = 8;
     public static final int REWARDID1_FIELD_NUMBER = 8;
     private int rewardid1_;
     /**
-     * <code>required int32 rewardid1 = 8;</code>
+     * <code>optional int32 rewardid1 = 8;</code>
      */
     public boolean hasRewardid1() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>required int32 rewardid1 = 8;</code>
+     * <code>optional int32 rewardid1 = 8;</code>
      */
     public int getRewardid1() {
       return rewardid1_;
@@ -2596,33 +2596,33 @@ public final class ActivityProto {
       }
     }
 
-    // required int32 rewardcount1 = 10;
+    // optional int32 rewardcount1 = 10;
     public static final int REWARDCOUNT1_FIELD_NUMBER = 10;
     private int rewardcount1_;
     /**
-     * <code>required int32 rewardcount1 = 10;</code>
+     * <code>optional int32 rewardcount1 = 10;</code>
      */
     public boolean hasRewardcount1() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>required int32 rewardcount1 = 10;</code>
+     * <code>optional int32 rewardcount1 = 10;</code>
      */
     public int getRewardcount1() {
       return rewardcount1_;
     }
 
-    // required int32 rewardid2 = 11;
+    // optional int32 rewardid2 = 11;
     public static final int REWARDID2_FIELD_NUMBER = 11;
     private int rewardid2_;
     /**
-     * <code>required int32 rewardid2 = 11;</code>
+     * <code>optional int32 rewardid2 = 11;</code>
      */
     public boolean hasRewardid2() {
       return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>required int32 rewardid2 = 11;</code>
+     * <code>optional int32 rewardid2 = 11;</code>
      */
     public int getRewardid2() {
       return rewardid2_;
@@ -2671,33 +2671,33 @@ public final class ActivityProto {
       }
     }
 
-    // required int32 rewardcount2 = 13;
+    // optional int32 rewardcount2 = 13;
     public static final int REWARDCOUNT2_FIELD_NUMBER = 13;
     private int rewardcount2_;
     /**
-     * <code>required int32 rewardcount2 = 13;</code>
+     * <code>optional int32 rewardcount2 = 13;</code>
      */
     public boolean hasRewardcount2() {
       return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>required int32 rewardcount2 = 13;</code>
+     * <code>optional int32 rewardcount2 = 13;</code>
      */
     public int getRewardcount2() {
       return rewardcount2_;
     }
 
-    // required int32 rewardid3 = 14;
+    // optional int32 rewardid3 = 14;
     public static final int REWARDID3_FIELD_NUMBER = 14;
     private int rewardid3_;
     /**
-     * <code>required int32 rewardid3 = 14;</code>
+     * <code>optional int32 rewardid3 = 14;</code>
      */
     public boolean hasRewardid3() {
       return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
-     * <code>required int32 rewardid3 = 14;</code>
+     * <code>optional int32 rewardid3 = 14;</code>
      */
     public int getRewardid3() {
       return rewardid3_;
@@ -2746,17 +2746,17 @@ public final class ActivityProto {
       }
     }
 
-    // required int32 rewardcount3 = 16;
+    // optional int32 rewardcount3 = 16;
     public static final int REWARDCOUNT3_FIELD_NUMBER = 16;
     private int rewardcount3_;
     /**
-     * <code>required int32 rewardcount3 = 16;</code>
+     * <code>optional int32 rewardcount3 = 16;</code>
      */
     public boolean hasRewardcount3() {
       return ((bitField0_ & 0x00008000) == 0x00008000);
     }
     /**
-     * <code>required int32 rewardcount3 = 16;</code>
+     * <code>optional int32 rewardcount3 = 16;</code>
      */
     public int getRewardcount3() {
       return rewardcount3_;
@@ -2865,42 +2865,6 @@ public final class ActivityProto {
         return false;
       }
       if (!hasTargetcount()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTargetcount1()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardid0()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardcount0()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardid1()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardcount1()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardid2()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardcount2()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardid3()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardcount3()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3444,42 +3408,6 @@ public final class ActivityProto {
           
           return false;
         }
-        if (!hasTargetcount1()) {
-          
-          return false;
-        }
-        if (!hasRewardid0()) {
-          
-          return false;
-        }
-        if (!hasRewardcount0()) {
-          
-          return false;
-        }
-        if (!hasRewardid1()) {
-          
-          return false;
-        }
-        if (!hasRewardcount1()) {
-          
-          return false;
-        }
-        if (!hasRewardid2()) {
-          
-          return false;
-        }
-        if (!hasRewardcount2()) {
-          
-          return false;
-        }
-        if (!hasRewardid3()) {
-          
-          return false;
-        }
-        if (!hasRewardcount3()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -3642,22 +3570,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 targetcount1 = 17;
+      // optional int32 targetcount1 = 17;
       private int targetcount1_ ;
       /**
-       * <code>required int32 targetcount1 = 17;</code>
+       * <code>optional int32 targetcount1 = 17;</code>
        */
       public boolean hasTargetcount1() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 targetcount1 = 17;</code>
+       * <code>optional int32 targetcount1 = 17;</code>
        */
       public int getTargetcount1() {
         return targetcount1_;
       }
       /**
-       * <code>required int32 targetcount1 = 17;</code>
+       * <code>optional int32 targetcount1 = 17;</code>
        */
       public Builder setTargetcount1(int value) {
         bitField0_ |= 0x00000008;
@@ -3666,7 +3594,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 targetcount1 = 17;</code>
+       * <code>optional int32 targetcount1 = 17;</code>
        */
       public Builder clearTargetcount1() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -3675,22 +3603,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardid0 = 5;
+      // optional int32 rewardid0 = 5;
       private int rewardid0_ ;
       /**
-       * <code>required int32 rewardid0 = 5;</code>
+       * <code>optional int32 rewardid0 = 5;</code>
        */
       public boolean hasRewardid0() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 rewardid0 = 5;</code>
+       * <code>optional int32 rewardid0 = 5;</code>
        */
       public int getRewardid0() {
         return rewardid0_;
       }
       /**
-       * <code>required int32 rewardid0 = 5;</code>
+       * <code>optional int32 rewardid0 = 5;</code>
        */
       public Builder setRewardid0(int value) {
         bitField0_ |= 0x00000010;
@@ -3699,7 +3627,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardid0 = 5;</code>
+       * <code>optional int32 rewardid0 = 5;</code>
        */
       public Builder clearRewardid0() {
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -3782,22 +3710,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardcount0 = 7;
+      // optional int32 rewardcount0 = 7;
       private int rewardcount0_ ;
       /**
-       * <code>required int32 rewardcount0 = 7;</code>
+       * <code>optional int32 rewardcount0 = 7;</code>
        */
       public boolean hasRewardcount0() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required int32 rewardcount0 = 7;</code>
+       * <code>optional int32 rewardcount0 = 7;</code>
        */
       public int getRewardcount0() {
         return rewardcount0_;
       }
       /**
-       * <code>required int32 rewardcount0 = 7;</code>
+       * <code>optional int32 rewardcount0 = 7;</code>
        */
       public Builder setRewardcount0(int value) {
         bitField0_ |= 0x00000040;
@@ -3806,7 +3734,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardcount0 = 7;</code>
+       * <code>optional int32 rewardcount0 = 7;</code>
        */
       public Builder clearRewardcount0() {
         bitField0_ = (bitField0_ & ~0x00000040);
@@ -3815,22 +3743,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardid1 = 8;
+      // optional int32 rewardid1 = 8;
       private int rewardid1_ ;
       /**
-       * <code>required int32 rewardid1 = 8;</code>
+       * <code>optional int32 rewardid1 = 8;</code>
        */
       public boolean hasRewardid1() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>required int32 rewardid1 = 8;</code>
+       * <code>optional int32 rewardid1 = 8;</code>
        */
       public int getRewardid1() {
         return rewardid1_;
       }
       /**
-       * <code>required int32 rewardid1 = 8;</code>
+       * <code>optional int32 rewardid1 = 8;</code>
        */
       public Builder setRewardid1(int value) {
         bitField0_ |= 0x00000080;
@@ -3839,7 +3767,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardid1 = 8;</code>
+       * <code>optional int32 rewardid1 = 8;</code>
        */
       public Builder clearRewardid1() {
         bitField0_ = (bitField0_ & ~0x00000080);
@@ -3922,22 +3850,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardcount1 = 10;
+      // optional int32 rewardcount1 = 10;
       private int rewardcount1_ ;
       /**
-       * <code>required int32 rewardcount1 = 10;</code>
+       * <code>optional int32 rewardcount1 = 10;</code>
        */
       public boolean hasRewardcount1() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>required int32 rewardcount1 = 10;</code>
+       * <code>optional int32 rewardcount1 = 10;</code>
        */
       public int getRewardcount1() {
         return rewardcount1_;
       }
       /**
-       * <code>required int32 rewardcount1 = 10;</code>
+       * <code>optional int32 rewardcount1 = 10;</code>
        */
       public Builder setRewardcount1(int value) {
         bitField0_ |= 0x00000200;
@@ -3946,7 +3874,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardcount1 = 10;</code>
+       * <code>optional int32 rewardcount1 = 10;</code>
        */
       public Builder clearRewardcount1() {
         bitField0_ = (bitField0_ & ~0x00000200);
@@ -3955,22 +3883,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardid2 = 11;
+      // optional int32 rewardid2 = 11;
       private int rewardid2_ ;
       /**
-       * <code>required int32 rewardid2 = 11;</code>
+       * <code>optional int32 rewardid2 = 11;</code>
        */
       public boolean hasRewardid2() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>required int32 rewardid2 = 11;</code>
+       * <code>optional int32 rewardid2 = 11;</code>
        */
       public int getRewardid2() {
         return rewardid2_;
       }
       /**
-       * <code>required int32 rewardid2 = 11;</code>
+       * <code>optional int32 rewardid2 = 11;</code>
        */
       public Builder setRewardid2(int value) {
         bitField0_ |= 0x00000400;
@@ -3979,7 +3907,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardid2 = 11;</code>
+       * <code>optional int32 rewardid2 = 11;</code>
        */
       public Builder clearRewardid2() {
         bitField0_ = (bitField0_ & ~0x00000400);
@@ -4062,22 +3990,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardcount2 = 13;
+      // optional int32 rewardcount2 = 13;
       private int rewardcount2_ ;
       /**
-       * <code>required int32 rewardcount2 = 13;</code>
+       * <code>optional int32 rewardcount2 = 13;</code>
        */
       public boolean hasRewardcount2() {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>required int32 rewardcount2 = 13;</code>
+       * <code>optional int32 rewardcount2 = 13;</code>
        */
       public int getRewardcount2() {
         return rewardcount2_;
       }
       /**
-       * <code>required int32 rewardcount2 = 13;</code>
+       * <code>optional int32 rewardcount2 = 13;</code>
        */
       public Builder setRewardcount2(int value) {
         bitField0_ |= 0x00001000;
@@ -4086,7 +4014,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardcount2 = 13;</code>
+       * <code>optional int32 rewardcount2 = 13;</code>
        */
       public Builder clearRewardcount2() {
         bitField0_ = (bitField0_ & ~0x00001000);
@@ -4095,22 +4023,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardid3 = 14;
+      // optional int32 rewardid3 = 14;
       private int rewardid3_ ;
       /**
-       * <code>required int32 rewardid3 = 14;</code>
+       * <code>optional int32 rewardid3 = 14;</code>
        */
       public boolean hasRewardid3() {
         return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
-       * <code>required int32 rewardid3 = 14;</code>
+       * <code>optional int32 rewardid3 = 14;</code>
        */
       public int getRewardid3() {
         return rewardid3_;
       }
       /**
-       * <code>required int32 rewardid3 = 14;</code>
+       * <code>optional int32 rewardid3 = 14;</code>
        */
       public Builder setRewardid3(int value) {
         bitField0_ |= 0x00002000;
@@ -4119,7 +4047,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardid3 = 14;</code>
+       * <code>optional int32 rewardid3 = 14;</code>
        */
       public Builder clearRewardid3() {
         bitField0_ = (bitField0_ & ~0x00002000);
@@ -4202,22 +4130,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // required int32 rewardcount3 = 16;
+      // optional int32 rewardcount3 = 16;
       private int rewardcount3_ ;
       /**
-       * <code>required int32 rewardcount3 = 16;</code>
+       * <code>optional int32 rewardcount3 = 16;</code>
        */
       public boolean hasRewardcount3() {
         return ((bitField0_ & 0x00008000) == 0x00008000);
       }
       /**
-       * <code>required int32 rewardcount3 = 16;</code>
+       * <code>optional int32 rewardcount3 = 16;</code>
        */
       public int getRewardcount3() {
         return rewardcount3_;
       }
       /**
-       * <code>required int32 rewardcount3 = 16;</code>
+       * <code>optional int32 rewardcount3 = 16;</code>
        */
       public Builder setRewardcount3(int value) {
         bitField0_ |= 0x00008000;
@@ -4226,7 +4154,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>required int32 rewardcount3 = 16;</code>
+       * <code>optional int32 rewardcount3 = 16;</code>
        */
       public Builder clearRewardcount3() {
         bitField0_ = (bitField0_ & ~0x00008000);
@@ -32971,13 +32899,13 @@ public final class ActivityProto {
       ".trans.pixel.protoc.ActivityOrder\"\254\003\n\rAc" +
       "tivityOrder\022\r\n\005order\030\001 \002(\r\022\023\n\013descriptio" +
       "n\030\002 \002(\t\022\023\n\013targetcount\030\003 \002(\r\022\024\n\014targetco" +
-      "unt1\030\021 \002(\005\022\021\n\trewardid0\030\005 \002(\005\022\023\n\013rewardn" +
-      "ame0\030\006 \001(\t\022\024\n\014rewardcount0\030\007 \002(\005\022\021\n\trewa",
-      "rdid1\030\010 \002(\005\022\023\n\013rewardname1\030\t \001(\t\022\024\n\014rewa" +
-      "rdcount1\030\n \002(\005\022\021\n\trewardid2\030\013 \002(\005\022\023\n\013rew" +
-      "ardname2\030\014 \001(\t\022\024\n\014rewardcount2\030\r \002(\005\022\021\n\t" +
-      "rewardid3\030\016 \002(\005\022\023\n\013rewardname3\030\017 \001(\t\022\024\n\014" +
-      "rewardcount3\030\020 \002(\005\022\021\n\tconsumeid\030\023 \001(\005\022\r\n" +
+      "unt1\030\021 \001(\005\022\021\n\trewardid0\030\005 \001(\005\022\023\n\013rewardn" +
+      "ame0\030\006 \001(\t\022\024\n\014rewardcount0\030\007 \001(\005\022\021\n\trewa",
+      "rdid1\030\010 \001(\005\022\023\n\013rewardname1\030\t \001(\t\022\024\n\014rewa" +
+      "rdcount1\030\n \001(\005\022\021\n\trewardid2\030\013 \001(\005\022\023\n\013rew" +
+      "ardname2\030\014 \001(\t\022\024\n\014rewardcount2\030\r \001(\005\022\021\n\t" +
+      "rewardid3\030\016 \001(\005\022\023\n\013rewardname3\030\017 \001(\t\022\024\n\014" +
+      "rewardcount3\030\020 \001(\005\022\021\n\tconsumeid\030\023 \001(\005\022\r\n" +
       "\005limit\030\022 \001(\005\0222\n\006reward\030\024 \003(\0132\".com.trans" +
       ".pixel.protoc.RewardInfo\"?\n\013RichangList\022" +
       "0\n\007richang\030\001 \003(\0132\037.com.trans.pixel.proto" +
