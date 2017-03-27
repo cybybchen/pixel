@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
@@ -165,7 +166,7 @@ public class PvpCommandService extends BaseCommandService {
 			/**
 			 * 征战世界成功支援的活动
 			 */
-			activityService.aidActivity(user, 0);
+			activityService.aidActivity(user, ActivityConst.AID_PVP);
 			
 			//支援排行榜
 			rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_HELP, 1, true);

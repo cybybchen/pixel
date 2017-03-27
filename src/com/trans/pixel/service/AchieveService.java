@@ -16,6 +16,7 @@ import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
+import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.ActivityProto.Achieve;
 import com.trans.pixel.protoc.ActivityProto.ActivityOrder;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -28,34 +29,43 @@ public class AchieveService {
 	@Resource
 	private UserAchieveService userAchieveService;
 	@Resource
-	private AchieveRedisService achieveRedidService;
+	private AchieveRedisService achieveRedisService;
 	@Resource
 	private NoticeService noticeService;
 	
-	public void sendAchieveScore(long userId, int type) {
-		sendAchieveScore(userId, type, 1);
+	public void sendAchieveScore(long userId, int targetId) {
+		sendAchieveScore(userId, targetId, 1);
 	}
-	public void sendAchieveScore(long userId, int type, int count) {
-		UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, type);
-		if (type == AchieveConst.TYPE_ZHANLI || type == AchieveConst.TYPE_VIP)
-			ua.setCompleteCount(count);
-		else
-			ua.setCompleteCount(ua.getCompleteCount() + count);
-		
-		userAchieveService.updateUserAchieve(ua);
-		
-		if (isCompleteNew(ua)) {
-			noticeService.pushNotice(userId, NoticeConst.TYPE_ACHIEVE);
+	public void sendAchieveScore(long userId, int targetId, int count) {
+		Map<String, Achieve> map = achieveRedisService.getAchieveConfig();
+		Iterator<Entry<String, Achieve>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Achieve> entry = it.next();
+			Achieve achieve = entry.getValue();
+			if (achieve.getTargetid() == targetId) {
+				UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, achieve.getId());
+				if (targetId == ACTIVITY_TYPE.TYPE_VIP_VALUE || targetId == ACTIVITY_TYPE.TYPE_ZHANLI_VALUE ||
+						targetId == ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE)
+					ua.setCompleteCount(Math.max(count, ua.getCompleteCount()));
+				else
+					ua.setCompleteCount(ua.getCompleteCount() + count);
+				
+				userAchieveService.updateUserAchieve(ua);
+				
+				if (isCompleteNew(ua)) {
+					noticeService.pushNotice(userId, NoticeConst.TYPE_ACHIEVE);
+				}
+			}
 		}
 	}
 	
-	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int type) {
-		ActivityOrder order = getAchieveOrder(type, ua.getCompleteId() + 1);
+	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int id) {
+		ActivityOrder order = getAchieveOrder(id, ua.getCompleteId() + 1);
 		if (ua.getCompleteCount() < order.getTargetcount()) {
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		}
-
-		multiReward.mergeFrom(getMultiReward(order));	
+		multiReward.addAllLoot(order.getRewardList());
+//		multiReward.mergeFrom(getMultiReward(order));	
 			
 		updateNextAchieve(ua);
 		
@@ -94,13 +104,13 @@ public class AchieveService {
 		return multiReward.build();
 	}
 	
-	private ActivityOrder getAchieveOrder(int type, int achieveId) {
-		Achieve achieve = achieveRedidService.getAchieve(type);
+	private ActivityOrder getAchieveOrder(int id, int order) {
+		Achieve achieve = achieveRedisService.getAchieve(id);
 		if (achieve == null)
 			return null;
 		List<ActivityOrder> achieveOrderList = achieve.getOrderList();
 		for (ActivityOrder achieveOrder : achieveOrderList) {
-			if (achieveOrder.getOrder() == achieveId) {
+			if (achieveOrder.getOrder() == order) {
 				return achieveOrder;
 			}
 		}
@@ -127,7 +137,7 @@ public class AchieveService {
 	}
 	
 	private void isDeleteNotice(long userId) {
-		Map<String, Achieve> map = achieveRedidService.getAchieveConfig();
+		Map<String, Achieve> map = achieveRedisService.getAchieveConfig();
 		Iterator<Entry<String, Achieve>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, Achieve> entry = it.next();

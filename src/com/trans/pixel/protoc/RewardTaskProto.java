@@ -8,6 +8,118 @@ public final class RewardTaskProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code com.trans.pixel.protoc.REWARDTASK_TYPE}
+   *
+   * <pre>
+   *&#47;/////// RewardTaskProto
+   * </pre>
+   */
+  public enum REWARDTASK_TYPE
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>TYPE_1 = 1;</code>
+     */
+    TYPE_1(0, 1),
+    /**
+     * <code>TYPE_2 = 2;</code>
+     */
+    TYPE_2(1, 2),
+    /**
+     * <code>TYPE_3 = 3;</code>
+     *
+     * <pre>
+     *深渊
+     * </pre>
+     */
+    TYPE_3(2, 3),
+    /**
+     * <code>TYPE_4 = 4;</code>
+     */
+    TYPE_4(3, 4),
+    ;
+
+    /**
+     * <code>TYPE_1 = 1;</code>
+     */
+    public static final int TYPE_1_VALUE = 1;
+    /**
+     * <code>TYPE_2 = 2;</code>
+     */
+    public static final int TYPE_2_VALUE = 2;
+    /**
+     * <code>TYPE_3 = 3;</code>
+     *
+     * <pre>
+     *深渊
+     * </pre>
+     */
+    public static final int TYPE_3_VALUE = 3;
+    /**
+     * <code>TYPE_4 = 4;</code>
+     */
+    public static final int TYPE_4_VALUE = 4;
+
+
+    public final int getNumber() { return value; }
+
+    public static REWARDTASK_TYPE valueOf(int value) {
+      switch (value) {
+        case 1: return TYPE_1;
+        case 2: return TYPE_2;
+        case 3: return TYPE_3;
+        case 4: return TYPE_4;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<REWARDTASK_TYPE>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<REWARDTASK_TYPE>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<REWARDTASK_TYPE>() {
+            public REWARDTASK_TYPE findValueByNumber(int number) {
+              return REWARDTASK_TYPE.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RewardTaskProto.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final REWARDTASK_TYPE[] VALUES = values();
+
+    public static REWARDTASK_TYPE valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private REWARDTASK_TYPE(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.REWARDTASK_TYPE)
+  }
+
   public interface RewardTaskEnemyOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -33,10 +145,6 @@ public final class RewardTaskProto {
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RewardTaskEnemy}
-   *
-   * <pre>
-   *&#47;/////// RewardTaskProto
-   * </pre>
    */
   public static final class RewardTaskEnemy extends
       com.google.protobuf.GeneratedMessage
@@ -295,10 +403,6 @@ public final class RewardTaskProto {
     }
     /**
      * Protobuf type {@code com.trans.pixel.protoc.RewardTaskEnemy}
-     *
-     * <pre>
-     *&#47;/////// RewardTaskProto
-     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -9396,7 +9500,9 @@ public final class RewardTaskProto {
       "xel.protoc.UserRewardTaskRoom\"\036\n\034Request" +
       "UserRewardTaskCommand\",\n\036RequestRewardTa",
       "skRewardCommand\022\n\n\002id\030\001 \002(\r\".\n RequestUs" +
-      "erRewardTaskRoomCommand\022\n\n\002id\030\001 \002(\r"
+      "erRewardTaskRoomCommand\022\n\n\002id\030\001 \002(\r*A\n\017R" +
+      "EWARDTASK_TYPE\022\n\n\006TYPE_1\020\001\022\n\n\006TYPE_2\020\002\022\n" +
+      "\n\006TYPE_3\020\003\022\n\n\006TYPE_4\020\004"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

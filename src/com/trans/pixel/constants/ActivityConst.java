@@ -172,4 +172,7 @@ public class ActivityConst {
 	 */
 	public static final int ACTIVITY_TYPE_LOGIN = 1;
 	public static final int ACTIVITY_TYPE_REGISTER = 2;
+	
+	public static final int AID_PVP = 0;
+	public static final int AID_LEVEL = 1;
 }

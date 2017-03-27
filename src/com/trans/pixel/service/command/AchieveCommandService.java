@@ -42,10 +42,10 @@ public class AchieveCommandService extends BaseCommandService {
 	
 	public void achieveReward(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseAchieveListCommand.Builder builder = ResponseAchieveListCommand.newBuilder();
-		int type = cmd.getType();
+		int id = cmd.getId();
 		MultiReward.Builder multiReward = MultiReward.newBuilder();
-		UserAchieveBean ua = userAchieveService.selectUserAchieve(user.getId(), type);
-		ResultConst result = achieveService.getAchieveReward(multiReward, ua, type);
+		UserAchieveBean ua = userAchieveService.selectUserAchieve(user.getId(), id);
+		ResultConst result = achieveService.getAchieveReward(multiReward, ua, id);
 		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
@@ -57,7 +57,7 @@ public class AchieveCommandService extends BaseCommandService {
 			/**
 			 * send log
 			 */
-			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACHIEVE, type, ua.getCompleteId());
+			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACHIEVE, id, ua.getCompleteId());
 		}
 		
 		List<UserAchieveBean> uaList = userAchieveService.selectUserAchieveList(user.getId());

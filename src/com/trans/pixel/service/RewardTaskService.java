@@ -51,6 +51,8 @@ public class RewardTaskService {
 	private LevelRedisService userLevelService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ActivityService activityService;
 	
 	public ResultConst zhaohuanTask(UserBean user, int id) {
 		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
@@ -76,7 +78,7 @@ public class RewardTaskService {
 			return ErrorConst.NOT_ENOUGH_PROP;
 		}
 		
-		ResultConst result = handleRewardTaskRoom(user, id, rewardTask.getCostList(), errorUser);
+		ResultConst result = handleRewardTaskRoom(user, id, rewardTask, errorUser);
 		if (result instanceof ErrorConst)
 			return result;
 		
@@ -111,7 +113,7 @@ public class RewardTaskService {
 		
 	}
 	
-	private ResultConst handleRewardTaskRoom(UserBean user, int id, List<CostItem> costList, UserInfo.Builder errorUser) {
+	private ResultConst handleRewardTaskRoom(UserBean user, int id, RewardTask rewardTask, UserInfo.Builder errorUser) {
 		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), id);
 		if (room == null)
 			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
@@ -121,7 +123,7 @@ public class RewardTaskService {
 				continue;
 			
 			UserBean other = userService.getOther(userinfo.getId());
-			int costId = costService.canCostOnly(other, costList);
+			int costId = costService.canCostOnly(other, rewardTask.getCostList());
 			if (costId == 0) {
 				errorUser = UserInfo.newBuilder(userinfo);
 				return ErrorConst.NOT_ENOUGH_PROP;
@@ -129,10 +131,11 @@ public class RewardTaskService {
 		}
 		
 		for (UserInfo userinfo : room.getUserList()) {
-			costService.costOnly(user, costList);
+			costService.costOnly(user, rewardTask.getCostList());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), id));
 			builder.setRoomStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
 			userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
+			activityService.completeRewardTask(userinfo.getId(), rewardTask.getType());
 		}
 		
 		rewardTaskRedisService.delUserRewardTaskRoom(user, id);

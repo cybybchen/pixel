@@ -17,10 +17,10 @@ import com.trans.pixel.protoc.RechargeProto.SignList;
 @Repository
 public class SignRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(SignRedisService.class);
-	private static final String SIGN_FILE_NAME1 = "lol_tasksanqian.xml";
-	private static final String TOTAL_SIGN_FILE_NAME = "lol_taskleijiqiandao.xml";
-	private static final String SIGN_FILE_NAME2 = "lol_tasksanqian2.xml";
-	private static final String SEVEN_SIGN_FILE_NAME = "lol_taskseven.xml";
+	private static final String SIGN_FILE_NAME1 = "ld_tasksanqian1.xml";
+	private static final String TOTAL_SIGN_FILE_NAME = "ld_taskleiji.xml";
+	private static final String SIGN_FILE_NAME2 = "ld_tasksanqian2.xml";
+	private static final String SEVEN_SIGN_FILE_NAME = "ld_taskseven.xml";
 	
 	public Sign getSign(int count) {
 		String value = hget(RedisKey.SIGN_KEY, "" + count);
@@ -66,7 +66,7 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for(Qiandao.Builder qiandao : builder.getSanqianBuilderList()){
+		for(Qiandao.Builder qiandao : builder.getOrderBuilderList()){
 			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
 				map.put("" + sign.getOrder(), sign.build());
 			}
@@ -118,7 +118,7 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for(Qiandao.Builder qiandao : builder.getSanqianBuilderList()){
+		for(Qiandao.Builder qiandao : builder.getOrderBuilderList()){
 			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
 				map.put("" + sign.getOrder(), sign.build());
 			}
@@ -170,7 +170,7 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for(Qiandao.Builder qiandao : builder.getSanqianBuilderList()){
+		for(Qiandao.Builder qiandao : builder.getOrderBuilderList()){
 			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
 				map.put("" + sign.getTargetcount(), sign.build());
 			}

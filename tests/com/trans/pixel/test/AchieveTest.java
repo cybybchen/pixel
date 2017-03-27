@@ -22,7 +22,7 @@ public class AchieveTest extends BaseTest {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
 		RequestAchieveRewardCommand.Builder b = RequestAchieveRewardCommand.newBuilder();
-		b.setType(101);
+		b.setId(101);
 		builder.setAchieveRewardCommand(b.build());
 		
 		RequestCommand reqcmd = builder.build();

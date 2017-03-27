@@ -74,6 +74,10 @@ public class UserEquipPokedeService {
 		if (pokede == null) {
 			pokede = initUserPokede(user.getId(), itemId);
 			updateUserEquipPokede(pokede, user);
+			/**
+			 * 获得新装备
+			 */
+			activityService.getEquip(user, itemId);
 		}
 	}
 	

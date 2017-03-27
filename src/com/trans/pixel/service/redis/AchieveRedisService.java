@@ -14,7 +14,7 @@ import com.trans.pixel.protoc.ActivityProto.AchieveList;
 @Service
 public class AchieveRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(AchieveRedisService.class);
-	private static final String ACHIEVE_FILE_NAME = "lol_taskchengjiu.xml";
+	private static final String ACHIEVE_FILE_NAME = "ld_taskchengjiu.xml";
 	
 	public Achieve getAchieve(int id) {
 		String value = hget(RedisKey.ACHIEVE_KEY, "" + id);
@@ -60,7 +60,7 @@ public class AchieveRedisService extends RedisService {
 		}
 		
 		Map<String, Achieve> map = new HashMap<String, Achieve>();
-		for(Achieve.Builder achieve : builder.getChengjiuBuilderList()){
+		for(Achieve.Builder achieve : builder.getIdBuilderList()){
 			map.put("" + achieve.getId(), achieve.build());
 		}
 		return map;

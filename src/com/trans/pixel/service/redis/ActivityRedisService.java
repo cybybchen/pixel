@@ -32,7 +32,7 @@ public class ActivityRedisService extends RedisService {
 	private static final String ACTIVITY_RICHANG_FILE_NAME = "lol_taskrichang.xml";
 	private static final String ACTIVITY_KAIFU2_FILE_NAME = "lol_taskkaifu2.xml";
 	private static final String ACTIVITY_KAIFU_FILE_NAME = "lol_taskkaifu1.xml";
-	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "lol_taskshouchong.xml";
+	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "ld_taskshouchong.xml";
 	private static final String ACTIVITY_FILE_PREFIX = "activity/activity_";
 	
 	//richang activity
@@ -310,7 +310,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Shouchong> map = new HashMap<String, Shouchong>();
-		for(Shouchong.Builder kaifu : builder.getTaskBuilderList()){
+		for(Shouchong.Builder kaifu : builder.getIdBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;

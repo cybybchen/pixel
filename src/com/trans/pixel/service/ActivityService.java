@@ -29,8 +29,10 @@ import com.trans.pixel.constants.TaskConst;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.ActivityProto.Activity;
 import com.trans.pixel.protoc.ActivityProto.ActivityOrder;
 import com.trans.pixel.protoc.ActivityProto.Kaifu;
@@ -48,6 +50,7 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.RechargeProto.Shouchong;
 import com.trans.pixel.protoc.RechargeProto.ShouchongReward;
+import com.trans.pixel.protoc.RewardTaskProto.REWARDTASK_TYPE;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -90,6 +93,8 @@ public class ActivityService {
 	private HeroService heroService;
 	@Resource
 	private LevelRedisService userLevelService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -254,7 +259,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的成就
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_COST_JEWEL, count);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEIJI_COST_JEWEL_VALUE, count);
 		/**
 		 * 消耗钻石的日常
 		 */
@@ -270,7 +275,7 @@ public class ActivityService {
 		 * achieve type 106
 		 */
 		if (costType == RewardConst.JEWEL || costType == LotteryConst.LOOTERY_SPECIAL_TYPE) {
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOTTERY, count);
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LOTTERY_VALUE, count);
 			
 			/**
 			 * 累计钻石抽奖的日常
@@ -300,7 +305,7 @@ public class ActivityService {
 		 * achieve type 109
 		 */
 		if (ret)
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LADDER);
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LADDER_SUCCESS_VALUE);
 		
 		/**
 		 * 热血竞技
@@ -316,7 +321,7 @@ public class ActivityService {
 		 * achieve type 110
 		 */
 		if (ret)
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_ATTACK);
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_PVP_ATTACK_SUCCESS_VALUE);
 		
 		/**
 		 * 参与pk
@@ -345,7 +350,7 @@ public class ActivityService {
 		/**
 		 * achieve type 112
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_GET_MOJING, count);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_MOJING_GET_VALUE, count);
 		
 		/**
 		 * 收集魔晶
@@ -473,7 +478,7 @@ public class ActivityService {
 		/**
 		 * achieve type 107
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LEVEL);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEVEL_VALUE);
 		
 		/**
 		 * kaifu2 的过关排行
@@ -694,7 +699,7 @@ public class ActivityService {
 		/**
 		 * 累计登录的成就
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOGIN);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEIJI_LOGIN_VALUE);
 //		/**
 //		 * 累计登录的开服活动
 //		 */
@@ -710,7 +715,7 @@ public class ActivityService {
 		/**
 		 * 累计充值钻石的成就
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_RECHARGE_JEWEL, count);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEIJI_RECHARGE_VALUE, count);
 		/**
 		 * 首次单笔充值的开服活动
 		 */
@@ -739,12 +744,12 @@ public class ActivityService {
 	
 	public void heroStoreActivity(UserBean user) {
 		/**
-		 * 收集英雄的成就
+		 * 收集不同英雄的成就
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_HERO_GET);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_HERO_GET_VALUE);
 		
 		/**
-		 * 收集英雄的开服活动
+		 * 收集不同英雄的开服活动
 		 */
 		sendKaifuScore(user, ActivityConst.KAIFU_DAY_1);
 	}
@@ -835,7 +840,7 @@ public class ActivityService {
 		 * achieve type 119
 		 */
 		if (start < HeroConst.ACHIEVE_HERO_LEVEL && level >= HeroConst.ACHIEVE_HERO_LEVEL) {
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_HERO_LEVELUP);
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_HERO_LEVELUP_50_VALUE);
 		}
 		
 		/**
@@ -900,6 +905,9 @@ public class ActivityService {
 			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_MINE_AID);
 		
 		sendRichangScore(user, ActivityConst.AID);
+		
+		if (type == ActivityConst.AID_LEVEL)
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_PVP_HELP_VALUE);
 	}
 	
 	/**
@@ -1067,8 +1075,17 @@ public class ActivityService {
 	/**
 	 * 强化装备的活动
 	 */
-	public void levelupEquip(UserBean user) {
-		
+	public void levelupEquip(UserBean user, int level) {
+		if (level == 10) {
+			List<UserEquipPokedeBean> equipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+			int count = 0;
+			for (UserEquipPokedeBean equipPokede : equipPokedeList) {
+				if (equipPokede.getLevel() >= 10)
+					++count;
+			}
+			
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE, count);
+		}
 	}
 	
 	/**
@@ -1095,6 +1112,26 @@ public class ActivityService {
 		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_4, heroId);
 	}
 	
+	/**
+	 * 完成悬赏任务
+	 * @param userId
+	 * @param type
+	 */
+	public void completeRewardTask(long userId, int type) {
+		achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_VALUE);
+		if (type == REWARDTASK_TYPE.TYPE_3_VALUE)//深渊
+			achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_SHENYUAN_VALUE);
+	}
+	
+	/**
+	 * 获得新装备的活动	
+	 * @param user
+	 * @param itemId
+	 */
+	public void getEquip(UserBean user, int itemId) {
+		if (itemId < RewardConst.ARMOR)
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_WUQI_GET_VALUE);
+	}
 	/**
 	 * activity and achieve log
 	 */

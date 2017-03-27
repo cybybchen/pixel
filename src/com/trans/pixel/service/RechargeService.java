@@ -25,6 +25,7 @@ import com.trans.pixel.model.mapper.RechargeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
@@ -104,7 +105,7 @@ public class RechargeService {
 	    	if(oldvip == null)
 	    		oldvip = VipInfo.newBuilder().build();
 	    	user.setVip(user.getVip()+1);
-	    	achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_VIP, user.getVip());
+	    	achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_VIP_VALUE, user.getVip());
 			if(vip != null){
 				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin() - oldvip.getDianjin());
 				user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract() - oldvip.getContract());

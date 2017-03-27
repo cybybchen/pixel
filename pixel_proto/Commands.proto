@@ -1737,7 +1737,7 @@ message Qiandao {
 }
 
 message SignList {
-	repeated Qiandao sanqian = 1;
+	repeated Qiandao order = 1;
 }
 
 message Sign {
@@ -1807,14 +1807,13 @@ message RmbList {
 }
 
 message ShouchongList {
-	repeated Shouchong task = 1;
+	repeated Shouchong id = 1;
 }
 
 message Shouchong {
 	required int32 id = 1;
 	required string activity = 2;
 	required int32 targetid = 3;
-	required int32 targetcount = 4;	
 	repeated ShouchongReward reward = 5;
 }
 
@@ -1970,20 +1969,41 @@ message ResponseMessageBoardCommand {
 	required MessageBoard messageBoard = 2;
 }
 ////////// ActivityProto
+enum ACTIVITY_TYPE{
+	TYPE_LEIJI_LOGIN = 1;
+	TYPE_LEIJI_RECHARGE = 2;
+	TYPE_LEIJI_COST_JEWEL = 3;
+	TYPE_VIP = 4;
+	TYPE_LOTTERY = 5;
+	TYPE_HERO_GET = 6;
+	TYPE_HERO_LEVELUP_50 = 7;
+	TYPE_LEVEL = 8;
+	TYPE_ZHANLI = 9;
+	TYPE_LADDER_SUCCESS = 10;
+	TYPE_PVP_ATTACK_SUCCESS = 11;
+	TYPE_MOJING_GET = 12;
+	TYPE_REWARDTASK = 13;
+	TYPE_SHENYUAN = 14;
+	TYPE_WUQI_GET = 15;
+	TYPE_EQUIP_LEVELUP_10 = 16;
+	TYPE_PVP_HELP = 17;
+}
+
 message AchieveList {
-	repeated Achieve chengjiu = 1; 
+	repeated Achieve id = 1; 
 }
 
 message Achieve {
-	required int32 id = 1;
+	required uint32 id = 1;
 	required string achievement = 2;
-	repeated ActivityOrder order = 3;
+	required uint32 targetid = 3;
+	repeated ActivityOrder order = 4;
 }
 
 message ActivityOrder {
-	required int32 order = 1;
+	required uint32 order = 1;
 	required string description = 2;
-	required int32 targetcount = 4;
+	required uint32 targetcount = 3;
 	required int32 targetcount1 = 17;
 	required int32 rewardid0 = 5;
 	optional string rewardname0 = 6;
@@ -1999,6 +2019,7 @@ message ActivityOrder {
 	required int32 rewardcount3 = 16;
 	optional int32 consumeid = 19;
 	optional int32 limit = 18;
+	repeated RewardInfo reward = 20;
 }
 
 message RichangList {
@@ -2077,7 +2098,7 @@ message UserKaifu {
 }
 
 message RequestAchieveRewardCommand {
-	required int32 type = 1;
+	required int32 id = 1;
 }
 
 message RequestAchieveListCommand {
@@ -2195,7 +2216,7 @@ message SevenLogin {
 }
 
 message SevenOrder {
-	optional int32 order = 1;
+	optional uint32 order = 1;
 	optional int32 itemid = 2;
 	optional int32 count = 3;
 	optional int32 choose = 4;
@@ -2855,6 +2876,13 @@ message RequestUnionBossFightCommand {
 	optional int32 percent = 3;
 }
 ////////// RewardTaskProto
+enum REWARDTASK_TYPE{
+	TYPE_1 = 1;
+	TYPE_2 = 2;
+	TYPE_3 = 3;//深渊
+	TYPE_4 = 4;
+}
+
 message RewardTaskEnemy {
 	required int32 enemyid = 1;
 	required int32 weight = 2;

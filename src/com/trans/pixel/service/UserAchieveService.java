@@ -19,20 +19,20 @@ public class UserAchieveService {
 	@Resource
 	private NoticeService noticeService;
 	
-	public UserAchieveBean selectUserAchieve(long userId, int type) {
-		UserAchieveBean userAchieve = userAchieveRedisService.selectUserAchieve(userId, type);
+	public UserAchieveBean selectUserAchieve(long userId, int id) {
+		UserAchieveBean userAchieve = userAchieveRedisService.selectUserAchieve(userId, id);
 		if (userAchieve == null) {
 			if (!userAchieveRedisService.isExistAchieveKey(userId)) {
 				List<UserAchieveBean> userAchieveList = userAchieveMapper.selectUserAchieveList(userId);
 				if (userAchieveList != null && userAchieveList.size() > 0)
 					userAchieveRedisService.updateUserAchieveList(userAchieveList, userId);
 				
-				userAchieve = userAchieveRedisService.selectUserAchieve(userId, type);
+				userAchieve = userAchieveRedisService.selectUserAchieve(userId, id);
 			}
 		}
 		
 		if (userAchieve == null)
-			userAchieve = initUserAchieve(userId, type);
+			userAchieve = initUserAchieve(userId, id);
 		
 		return userAchieve;
 	}

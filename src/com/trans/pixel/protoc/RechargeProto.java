@@ -961,29 +961,29 @@ public final class RechargeProto {
   public interface SignListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;
+    // repeated .com.trans.pixel.protoc.Qiandao order = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> 
-        getSanqianList();
+        getOrderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.Qiandao getSanqian(int index);
+    com.trans.pixel.protoc.RechargeProto.Qiandao getOrder(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
-    int getSanqianCount();
+    int getOrderCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
-        getSanqianOrBuilderList();
+        getOrderOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getSanqianOrBuilder(
+    com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getOrderOrBuilder(
         int index);
   }
   /**
@@ -1039,10 +1039,10 @@ public final class RechargeProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                sanqian_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Qiandao>();
+                order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Qiandao>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              sanqian_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.Qiandao.PARSER, extensionRegistry));
+              order_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.Qiandao.PARSER, extensionRegistry));
               break;
             }
           }
@@ -1054,7 +1054,7 @@ public final class RechargeProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          sanqian_ = java.util.Collections.unmodifiableList(sanqian_);
+          order_ = java.util.Collections.unmodifiableList(order_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1087,52 +1087,52 @@ public final class RechargeProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;
-    public static final int SANQIAN_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> sanqian_;
+    // repeated .com.trans.pixel.protoc.Qiandao order = 1;
+    public static final int ORDER_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> order_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> getSanqianList() {
-      return sanqian_;
+    public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> getOrderList() {
+      return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
-        getSanqianOrBuilderList() {
-      return sanqian_;
+        getOrderOrBuilderList() {
+      return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
-    public int getSanqianCount() {
-      return sanqian_.size();
+    public int getOrderCount() {
+      return order_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.Qiandao getSanqian(int index) {
-      return sanqian_.get(index);
+    public com.trans.pixel.protoc.RechargeProto.Qiandao getOrder(int index) {
+      return order_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getSanqianOrBuilder(
+    public com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getOrderOrBuilder(
         int index) {
-      return sanqian_.get(index);
+      return order_.get(index);
     }
 
     private void initFields() {
-      sanqian_ = java.util.Collections.emptyList();
+      order_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getSanqianCount(); i++) {
-        if (!getSanqian(i).isInitialized()) {
+      for (int i = 0; i < getOrderCount(); i++) {
+        if (!getOrder(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -1144,8 +1144,8 @@ public final class RechargeProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < sanqian_.size(); i++) {
-        output.writeMessage(1, sanqian_.get(i));
+      for (int i = 0; i < order_.size(); i++) {
+        output.writeMessage(1, order_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1156,9 +1156,9 @@ public final class RechargeProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < sanqian_.size(); i++) {
+      for (int i = 0; i < order_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, sanqian_.get(i));
+          .computeMessageSize(1, order_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1268,7 +1268,7 @@ public final class RechargeProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getSanqianFieldBuilder();
+          getOrderFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1277,11 +1277,11 @@ public final class RechargeProto {
 
       public Builder clear() {
         super.clear();
-        if (sanqianBuilder_ == null) {
-          sanqian_ = java.util.Collections.emptyList();
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          sanqianBuilder_.clear();
+          orderBuilder_.clear();
         }
         return this;
       }
@@ -1310,14 +1310,14 @@ public final class RechargeProto {
       public com.trans.pixel.protoc.RechargeProto.SignList buildPartial() {
         com.trans.pixel.protoc.RechargeProto.SignList result = new com.trans.pixel.protoc.RechargeProto.SignList(this);
         int from_bitField0_ = bitField0_;
-        if (sanqianBuilder_ == null) {
+        if (orderBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            sanqian_ = java.util.Collections.unmodifiableList(sanqian_);
+            order_ = java.util.Collections.unmodifiableList(order_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.sanqian_ = sanqian_;
+          result.order_ = order_;
         } else {
-          result.sanqian_ = sanqianBuilder_.build();
+          result.order_ = orderBuilder_.build();
         }
         onBuilt();
         return result;
@@ -1334,29 +1334,29 @@ public final class RechargeProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.SignList other) {
         if (other == com.trans.pixel.protoc.RechargeProto.SignList.getDefaultInstance()) return this;
-        if (sanqianBuilder_ == null) {
-          if (!other.sanqian_.isEmpty()) {
-            if (sanqian_.isEmpty()) {
-              sanqian_ = other.sanqian_;
+        if (orderBuilder_ == null) {
+          if (!other.order_.isEmpty()) {
+            if (order_.isEmpty()) {
+              order_ = other.order_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureSanqianIsMutable();
-              sanqian_.addAll(other.sanqian_);
+              ensureOrderIsMutable();
+              order_.addAll(other.order_);
             }
             onChanged();
           }
         } else {
-          if (!other.sanqian_.isEmpty()) {
-            if (sanqianBuilder_.isEmpty()) {
-              sanqianBuilder_.dispose();
-              sanqianBuilder_ = null;
-              sanqian_ = other.sanqian_;
+          if (!other.order_.isEmpty()) {
+            if (orderBuilder_.isEmpty()) {
+              orderBuilder_.dispose();
+              orderBuilder_ = null;
+              order_ = other.order_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              sanqianBuilder_ = 
+              orderBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getSanqianFieldBuilder() : null;
+                   getOrderFieldBuilder() : null;
             } else {
-              sanqianBuilder_.addAllMessages(other.sanqian_);
+              orderBuilder_.addAllMessages(other.order_);
             }
           }
         }
@@ -1365,8 +1365,8 @@ public final class RechargeProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getSanqianCount(); i++) {
-          if (!getSanqian(i).isInitialized()) {
+        for (int i = 0; i < getOrderCount(); i++) {
+          if (!getOrder(i).isInitialized()) {
             
             return false;
           }
@@ -1393,244 +1393,244 @@ public final class RechargeProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;
-      private java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> sanqian_ =
+      // repeated .com.trans.pixel.protoc.Qiandao order = 1;
+      private java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> order_ =
         java.util.Collections.emptyList();
-      private void ensureSanqianIsMutable() {
+      private void ensureOrderIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          sanqian_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Qiandao>(sanqian_);
+          order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Qiandao>(order_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.RechargeProto.Qiandao, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder, com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> sanqianBuilder_;
+          com.trans.pixel.protoc.RechargeProto.Qiandao, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder, com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> orderBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> getSanqianList() {
-        if (sanqianBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(sanqian_);
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> getOrderList() {
+        if (orderBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(order_);
         } else {
-          return sanqianBuilder_.getMessageList();
+          return orderBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public int getSanqianCount() {
-        if (sanqianBuilder_ == null) {
-          return sanqian_.size();
+      public int getOrderCount() {
+        if (orderBuilder_ == null) {
+          return order_.size();
         } else {
-          return sanqianBuilder_.getCount();
+          return orderBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao getSanqian(int index) {
-        if (sanqianBuilder_ == null) {
-          return sanqian_.get(index);
+      public com.trans.pixel.protoc.RechargeProto.Qiandao getOrder(int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);
         } else {
-          return sanqianBuilder_.getMessage(index);
+          return orderBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder setSanqian(
+      public Builder setOrder(
           int index, com.trans.pixel.protoc.RechargeProto.Qiandao value) {
-        if (sanqianBuilder_ == null) {
+        if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSanqianIsMutable();
-          sanqian_.set(index, value);
+          ensureOrderIsMutable();
+          order_.set(index, value);
           onChanged();
         } else {
-          sanqianBuilder_.setMessage(index, value);
+          orderBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder setSanqian(
+      public Builder setOrder(
           int index, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder builderForValue) {
-        if (sanqianBuilder_ == null) {
-          ensureSanqianIsMutable();
-          sanqian_.set(index, builderForValue.build());
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.set(index, builderForValue.build());
           onChanged();
         } else {
-          sanqianBuilder_.setMessage(index, builderForValue.build());
+          orderBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder addSanqian(com.trans.pixel.protoc.RechargeProto.Qiandao value) {
-        if (sanqianBuilder_ == null) {
+      public Builder addOrder(com.trans.pixel.protoc.RechargeProto.Qiandao value) {
+        if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSanqianIsMutable();
-          sanqian_.add(value);
+          ensureOrderIsMutable();
+          order_.add(value);
           onChanged();
         } else {
-          sanqianBuilder_.addMessage(value);
+          orderBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder addSanqian(
+      public Builder addOrder(
           int index, com.trans.pixel.protoc.RechargeProto.Qiandao value) {
-        if (sanqianBuilder_ == null) {
+        if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSanqianIsMutable();
-          sanqian_.add(index, value);
+          ensureOrderIsMutable();
+          order_.add(index, value);
           onChanged();
         } else {
-          sanqianBuilder_.addMessage(index, value);
+          orderBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder addSanqian(
+      public Builder addOrder(
           com.trans.pixel.protoc.RechargeProto.Qiandao.Builder builderForValue) {
-        if (sanqianBuilder_ == null) {
-          ensureSanqianIsMutable();
-          sanqian_.add(builderForValue.build());
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(builderForValue.build());
           onChanged();
         } else {
-          sanqianBuilder_.addMessage(builderForValue.build());
+          orderBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder addSanqian(
+      public Builder addOrder(
           int index, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder builderForValue) {
-        if (sanqianBuilder_ == null) {
-          ensureSanqianIsMutable();
-          sanqian_.add(index, builderForValue.build());
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(index, builderForValue.build());
           onChanged();
         } else {
-          sanqianBuilder_.addMessage(index, builderForValue.build());
+          orderBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder addAllSanqian(
+      public Builder addAllOrder(
           java.lang.Iterable<? extends com.trans.pixel.protoc.RechargeProto.Qiandao> values) {
-        if (sanqianBuilder_ == null) {
-          ensureSanqianIsMutable();
-          super.addAll(values, sanqian_);
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          super.addAll(values, order_);
           onChanged();
         } else {
-          sanqianBuilder_.addAllMessages(values);
+          orderBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder clearSanqian() {
-        if (sanqianBuilder_ == null) {
-          sanqian_ = java.util.Collections.emptyList();
+      public Builder clearOrder() {
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          sanqianBuilder_.clear();
+          orderBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public Builder removeSanqian(int index) {
-        if (sanqianBuilder_ == null) {
-          ensureSanqianIsMutable();
-          sanqian_.remove(index);
+      public Builder removeOrder(int index) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.remove(index);
           onChanged();
         } else {
-          sanqianBuilder_.remove(index);
+          orderBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder getSanqianBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder getOrderBuilder(
           int index) {
-        return getSanqianFieldBuilder().getBuilder(index);
+        return getOrderFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getSanqianOrBuilder(
+      public com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getOrderOrBuilder(
           int index) {
-        if (sanqianBuilder_ == null) {
-          return sanqian_.get(index);  } else {
-          return sanqianBuilder_.getMessageOrBuilder(index);
+        if (orderBuilder_ == null) {
+          return order_.get(index);  } else {
+          return orderBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
-           getSanqianOrBuilderList() {
-        if (sanqianBuilder_ != null) {
-          return sanqianBuilder_.getMessageOrBuilderList();
+           getOrderOrBuilderList() {
+        if (orderBuilder_ != null) {
+          return orderBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(sanqian_);
+          return java.util.Collections.unmodifiableList(order_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder addSanqianBuilder() {
-        return getSanqianFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder addOrderBuilder() {
+        return getOrderFieldBuilder().addBuilder(
             com.trans.pixel.protoc.RechargeProto.Qiandao.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder addSanqianBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder addOrderBuilder(
           int index) {
-        return getSanqianFieldBuilder().addBuilder(
+        return getOrderFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.RechargeProto.Qiandao.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao sanqian = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao.Builder> 
-           getSanqianBuilderList() {
-        return getSanqianFieldBuilder().getBuilderList();
+           getOrderBuilderList() {
+        return getOrderFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.RechargeProto.Qiandao, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder, com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
-          getSanqianFieldBuilder() {
-        if (sanqianBuilder_ == null) {
-          sanqianBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getOrderFieldBuilder() {
+        if (orderBuilder_ == null) {
+          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.RechargeProto.Qiandao, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder, com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder>(
-                  sanqian_,
+                  order_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          sanqian_ = null;
+          order_ = null;
         }
-        return sanqianBuilder_;
+        return orderBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.SignList)
@@ -9277,29 +9277,29 @@ public final class RechargeProto {
   public interface ShouchongListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Shouchong task = 1;
+    // repeated .com.trans.pixel.protoc.Shouchong id = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> 
-        getTaskList();
+        getIdList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.Shouchong getTask(int index);
+    com.trans.pixel.protoc.RechargeProto.Shouchong getId(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
-    int getTaskCount();
+    int getIdCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder> 
-        getTaskOrBuilderList();
+        getIdOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder getTaskOrBuilder(
+    com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder getIdOrBuilder(
         int index);
   }
   /**
@@ -9355,10 +9355,10 @@ public final class RechargeProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                task_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Shouchong>();
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Shouchong>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              task_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.Shouchong.PARSER, extensionRegistry));
+              id_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.Shouchong.PARSER, extensionRegistry));
               break;
             }
           }
@@ -9370,7 +9370,7 @@ public final class RechargeProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          task_ = java.util.Collections.unmodifiableList(task_);
+          id_ = java.util.Collections.unmodifiableList(id_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -9403,52 +9403,52 @@ public final class RechargeProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Shouchong task = 1;
-    public static final int TASK_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> task_;
+    // repeated .com.trans.pixel.protoc.Shouchong id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> id_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> getTaskList() {
-      return task_;
+    public java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> getIdList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder> 
-        getTaskOrBuilderList() {
-      return task_;
+        getIdOrBuilderList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
-    public int getTaskCount() {
-      return task_.size();
+    public int getIdCount() {
+      return id_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.Shouchong getTask(int index) {
-      return task_.get(index);
+    public com.trans.pixel.protoc.RechargeProto.Shouchong getId(int index) {
+      return id_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder getTaskOrBuilder(
+    public com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder getIdOrBuilder(
         int index) {
-      return task_.get(index);
+      return id_.get(index);
     }
 
     private void initFields() {
-      task_ = java.util.Collections.emptyList();
+      id_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getTaskCount(); i++) {
-        if (!getTask(i).isInitialized()) {
+      for (int i = 0; i < getIdCount(); i++) {
+        if (!getId(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -9460,8 +9460,8 @@ public final class RechargeProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < task_.size(); i++) {
-        output.writeMessage(1, task_.get(i));
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -9472,9 +9472,9 @@ public final class RechargeProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < task_.size(); i++) {
+      for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, task_.get(i));
+          .computeMessageSize(1, id_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9584,7 +9584,7 @@ public final class RechargeProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getTaskFieldBuilder();
+          getIdFieldBuilder();
         }
       }
       private static Builder create() {
@@ -9593,11 +9593,11 @@ public final class RechargeProto {
 
       public Builder clear() {
         super.clear();
-        if (taskBuilder_ == null) {
-          task_ = java.util.Collections.emptyList();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          taskBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
@@ -9626,14 +9626,14 @@ public final class RechargeProto {
       public com.trans.pixel.protoc.RechargeProto.ShouchongList buildPartial() {
         com.trans.pixel.protoc.RechargeProto.ShouchongList result = new com.trans.pixel.protoc.RechargeProto.ShouchongList(this);
         int from_bitField0_ = bitField0_;
-        if (taskBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            task_ = java.util.Collections.unmodifiableList(task_);
+            id_ = java.util.Collections.unmodifiableList(id_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.task_ = task_;
+          result.id_ = id_;
         } else {
-          result.task_ = taskBuilder_.build();
+          result.id_ = idBuilder_.build();
         }
         onBuilt();
         return result;
@@ -9650,29 +9650,29 @@ public final class RechargeProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.ShouchongList other) {
         if (other == com.trans.pixel.protoc.RechargeProto.ShouchongList.getDefaultInstance()) return this;
-        if (taskBuilder_ == null) {
-          if (!other.task_.isEmpty()) {
-            if (task_.isEmpty()) {
-              task_ = other.task_;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureTaskIsMutable();
-              task_.addAll(other.task_);
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
             }
             onChanged();
           }
         } else {
-          if (!other.task_.isEmpty()) {
-            if (taskBuilder_.isEmpty()) {
-              taskBuilder_.dispose();
-              taskBuilder_ = null;
-              task_ = other.task_;
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              taskBuilder_ = 
+              idBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getTaskFieldBuilder() : null;
+                   getIdFieldBuilder() : null;
             } else {
-              taskBuilder_.addAllMessages(other.task_);
+              idBuilder_.addAllMessages(other.id_);
             }
           }
         }
@@ -9681,8 +9681,8 @@ public final class RechargeProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getTaskCount(); i++) {
-          if (!getTask(i).isInitialized()) {
+        for (int i = 0; i < getIdCount(); i++) {
+          if (!getId(i).isInitialized()) {
             
             return false;
           }
@@ -9709,244 +9709,244 @@ public final class RechargeProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Shouchong task = 1;
-      private java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> task_ =
+      // repeated .com.trans.pixel.protoc.Shouchong id = 1;
+      private java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> id_ =
         java.util.Collections.emptyList();
-      private void ensureTaskIsMutable() {
+      private void ensureIdIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          task_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Shouchong>(task_);
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Shouchong>(id_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.RechargeProto.Shouchong, com.trans.pixel.protoc.RechargeProto.Shouchong.Builder, com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder> taskBuilder_;
+          com.trans.pixel.protoc.RechargeProto.Shouchong, com.trans.pixel.protoc.RechargeProto.Shouchong.Builder, com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder> idBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> getTaskList() {
-        if (taskBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(task_);
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
         } else {
-          return taskBuilder_.getMessageList();
+          return idBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public int getTaskCount() {
-        if (taskBuilder_ == null) {
-          return task_.size();
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
         } else {
-          return taskBuilder_.getCount();
+          return idBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Shouchong getTask(int index) {
-        if (taskBuilder_ == null) {
-          return task_.get(index);
+      public com.trans.pixel.protoc.RechargeProto.Shouchong getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
         } else {
-          return taskBuilder_.getMessage(index);
+          return idBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder setTask(
+      public Builder setId(
           int index, com.trans.pixel.protoc.RechargeProto.Shouchong value) {
-        if (taskBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureTaskIsMutable();
-          task_.set(index, value);
+          ensureIdIsMutable();
+          id_.set(index, value);
           onChanged();
         } else {
-          taskBuilder_.setMessage(index, value);
+          idBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder setTask(
+      public Builder setId(
           int index, com.trans.pixel.protoc.RechargeProto.Shouchong.Builder builderForValue) {
-        if (taskBuilder_ == null) {
-          ensureTaskIsMutable();
-          task_.set(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
           onChanged();
         } else {
-          taskBuilder_.setMessage(index, builderForValue.build());
+          idBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder addTask(com.trans.pixel.protoc.RechargeProto.Shouchong value) {
-        if (taskBuilder_ == null) {
+      public Builder addId(com.trans.pixel.protoc.RechargeProto.Shouchong value) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureTaskIsMutable();
-          task_.add(value);
+          ensureIdIsMutable();
+          id_.add(value);
           onChanged();
         } else {
-          taskBuilder_.addMessage(value);
+          idBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder addTask(
+      public Builder addId(
           int index, com.trans.pixel.protoc.RechargeProto.Shouchong value) {
-        if (taskBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureTaskIsMutable();
-          task_.add(index, value);
+          ensureIdIsMutable();
+          id_.add(index, value);
           onChanged();
         } else {
-          taskBuilder_.addMessage(index, value);
+          idBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder addTask(
+      public Builder addId(
           com.trans.pixel.protoc.RechargeProto.Shouchong.Builder builderForValue) {
-        if (taskBuilder_ == null) {
-          ensureTaskIsMutable();
-          task_.add(builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
           onChanged();
         } else {
-          taskBuilder_.addMessage(builderForValue.build());
+          idBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder addTask(
+      public Builder addId(
           int index, com.trans.pixel.protoc.RechargeProto.Shouchong.Builder builderForValue) {
-        if (taskBuilder_ == null) {
-          ensureTaskIsMutable();
-          task_.add(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
           onChanged();
         } else {
-          taskBuilder_.addMessage(index, builderForValue.build());
+          idBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder addAllTask(
+      public Builder addAllId(
           java.lang.Iterable<? extends com.trans.pixel.protoc.RechargeProto.Shouchong> values) {
-        if (taskBuilder_ == null) {
-          ensureTaskIsMutable();
-          super.addAll(values, task_);
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
           onChanged();
         } else {
-          taskBuilder_.addAllMessages(values);
+          idBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder clearTask() {
-        if (taskBuilder_ == null) {
-          task_ = java.util.Collections.emptyList();
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          taskBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public Builder removeTask(int index) {
-        if (taskBuilder_ == null) {
-          ensureTaskIsMutable();
-          task_.remove(index);
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
           onChanged();
         } else {
-          taskBuilder_.remove(index);
+          idBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Shouchong.Builder getTaskBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Shouchong.Builder getIdBuilder(
           int index) {
-        return getTaskFieldBuilder().getBuilder(index);
+        return getIdFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder getTaskOrBuilder(
+      public com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder getIdOrBuilder(
           int index) {
-        if (taskBuilder_ == null) {
-          return task_.get(index);  } else {
-          return taskBuilder_.getMessageOrBuilder(index);
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder> 
-           getTaskOrBuilderList() {
-        if (taskBuilder_ != null) {
-          return taskBuilder_.getMessageOrBuilderList();
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(task_);
+          return java.util.Collections.unmodifiableList(id_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Shouchong.Builder addTaskBuilder() {
-        return getTaskFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Shouchong.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
             com.trans.pixel.protoc.RechargeProto.Shouchong.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Shouchong.Builder addTaskBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Shouchong.Builder addIdBuilder(
           int index) {
-        return getTaskFieldBuilder().addBuilder(
+        return getIdFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.RechargeProto.Shouchong.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Shouchong task = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Shouchong id = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.RechargeProto.Shouchong.Builder> 
-           getTaskBuilderList() {
-        return getTaskFieldBuilder().getBuilderList();
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.RechargeProto.Shouchong, com.trans.pixel.protoc.RechargeProto.Shouchong.Builder, com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder> 
-          getTaskFieldBuilder() {
-        if (taskBuilder_ == null) {
-          taskBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.RechargeProto.Shouchong, com.trans.pixel.protoc.RechargeProto.Shouchong.Builder, com.trans.pixel.protoc.RechargeProto.ShouchongOrBuilder>(
-                  task_,
+                  id_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          task_ = null;
+          id_ = null;
         }
-        return taskBuilder_;
+        return idBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ShouchongList)
@@ -9997,16 +9997,6 @@ public final class RechargeProto {
      * <code>required int32 targetid = 3;</code>
      */
     int getTargetid();
-
-    // required int32 targetcount = 4;
-    /**
-     * <code>required int32 targetcount = 4;</code>
-     */
-    boolean hasTargetcount();
-    /**
-     * <code>required int32 targetcount = 4;</code>
-     */
-    int getTargetcount();
 
     // repeated .com.trans.pixel.protoc.ShouchongReward reward = 5;
     /**
@@ -10099,15 +10089,10 @@ public final class RechargeProto {
               targetid_ = input.readInt32();
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              targetcount_ = input.readInt32();
-              break;
-            }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 reward_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.ShouchongReward>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000008;
               }
               reward_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.ShouchongReward.PARSER, extensionRegistry));
               break;
@@ -10120,7 +10105,7 @@ public final class RechargeProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           reward_ = java.util.Collections.unmodifiableList(reward_);
         }
         this.unknownFields = unknownFields.build();
@@ -10230,22 +10215,6 @@ public final class RechargeProto {
       return targetid_;
     }
 
-    // required int32 targetcount = 4;
-    public static final int TARGETCOUNT_FIELD_NUMBER = 4;
-    private int targetcount_;
-    /**
-     * <code>required int32 targetcount = 4;</code>
-     */
-    public boolean hasTargetcount() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required int32 targetcount = 4;</code>
-     */
-    public int getTargetcount() {
-      return targetcount_;
-    }
-
     // repeated .com.trans.pixel.protoc.ShouchongReward reward = 5;
     public static final int REWARD_FIELD_NUMBER = 5;
     private java.util.List<com.trans.pixel.protoc.RechargeProto.ShouchongReward> reward_;
@@ -10286,7 +10255,6 @@ public final class RechargeProto {
       id_ = 0;
       activity_ = "";
       targetid_ = 0;
-      targetcount_ = 0;
       reward_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -10303,10 +10271,6 @@ public final class RechargeProto {
         return false;
       }
       if (!hasTargetid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTargetcount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -10332,9 +10296,6 @@ public final class RechargeProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, targetid_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, targetcount_);
-      }
       for (int i = 0; i < reward_.size(); i++) {
         output.writeMessage(5, reward_.get(i));
       }
@@ -10358,10 +10319,6 @@ public final class RechargeProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, targetid_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, targetcount_);
       }
       for (int i = 0; i < reward_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -10490,11 +10447,9 @@ public final class RechargeProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         targetid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        targetcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           rewardBuilder_.clear();
         }
@@ -10538,14 +10493,10 @@ public final class RechargeProto {
           to_bitField0_ |= 0x00000004;
         }
         result.targetid_ = targetid_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.targetcount_ = targetcount_;
         if (rewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             reward_ = java.util.Collections.unmodifiableList(reward_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.reward_ = reward_;
         } else {
@@ -10578,14 +10529,11 @@ public final class RechargeProto {
         if (other.hasTargetid()) {
           setTargetid(other.getTargetid());
         }
-        if (other.hasTargetcount()) {
-          setTargetcount(other.getTargetcount());
-        }
         if (rewardBuilder_ == null) {
           if (!other.reward_.isEmpty()) {
             if (reward_.isEmpty()) {
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureRewardIsMutable();
               reward_.addAll(other.reward_);
@@ -10598,7 +10546,7 @@ public final class RechargeProto {
               rewardBuilder_.dispose();
               rewardBuilder_ = null;
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
               rewardBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRewardFieldBuilder() : null;
@@ -10621,10 +10569,6 @@ public final class RechargeProto {
           return false;
         }
         if (!hasTargetid()) {
-          
-          return false;
-        }
-        if (!hasTargetcount()) {
           
           return false;
         }
@@ -10796,46 +10740,13 @@ public final class RechargeProto {
         return this;
       }
 
-      // required int32 targetcount = 4;
-      private int targetcount_ ;
-      /**
-       * <code>required int32 targetcount = 4;</code>
-       */
-      public boolean hasTargetcount() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required int32 targetcount = 4;</code>
-       */
-      public int getTargetcount() {
-        return targetcount_;
-      }
-      /**
-       * <code>required int32 targetcount = 4;</code>
-       */
-      public Builder setTargetcount(int value) {
-        bitField0_ |= 0x00000008;
-        targetcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 targetcount = 4;</code>
-       */
-      public Builder clearTargetcount() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        targetcount_ = 0;
-        onChanged();
-        return this;
-      }
-
       // repeated .com.trans.pixel.protoc.ShouchongReward reward = 5;
       private java.util.List<com.trans.pixel.protoc.RechargeProto.ShouchongReward> reward_ =
         java.util.Collections.emptyList();
       private void ensureRewardIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           reward_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.ShouchongReward>(reward_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -10984,7 +10895,7 @@ public final class RechargeProto {
       public Builder clearReward() {
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           rewardBuilder_.clear();
@@ -11061,7 +10972,7 @@ public final class RechargeProto {
           rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.RechargeProto.ShouchongReward, com.trans.pixel.protoc.RechargeProto.ShouchongReward.Builder, com.trans.pixel.protoc.RechargeProto.ShouchongRewardOrBuilder>(
                   reward_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           reward_ = null;
@@ -17414,53 +17325,52 @@ public final class RechargeProto {
       "\n\023RechargeProto.proto\022\026com.trans.pixel.p" +
       "rotoc\032\nBase.proto\"T\n\007Qiandao\022+\n\005order\030\001 " +
       "\003(\0132\034.com.trans.pixel.protoc.Sign\022\n\n\002id\030" +
-      "\002 \002(\005\022\020\n\010activity\030\003 \002(\t\"<\n\010SignList\0220\n\007s" +
-      "anqian\030\001 \003(\0132\037.com.trans.pixel.protoc.Qi" +
-      "andao\"c\n\004Sign\022\r\n\005order\030\001 \002(\005\022\020\n\010targetid" +
-      "\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010rewardid\030" +
-      "\005 \002(\005\022\023\n\013rewardcount\030\007 \002(\005\"0\n\034RequestSev" +
-      "enLoginSignCommand\022\020\n\010chooseId\030\001 \001(\005\"\247\001\n" +
-      "\010VipLibao\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022",
-      "\013\n\003img\030\003 \001(\t\022\014\n\004rare\030\004 \001(\005\022\023\n\013descriptio" +
-      "n\030\005 \001(\t\022\r\n\005value\030\006 \001(\005\022\014\n\004cost\030\007 \001(\005\0220\n\004" +
-      "item\030\010 \003(\0132\".com.trans.pixel.protoc.Rewa" +
-      "rdInfo\"?\n\014VipLibaoList\022/\n\005libao\030\001 \003(\0132 ." +
-      "com.trans.pixel.protoc.VipLibao\"\362\001\n\007VipI" +
-      "nfo\022\013\n\003vip\030\001 \001(\005\022\013\n\003rmb\030\002 \001(\005\022\016\n\006effect\030" +
-      "\003 \001(\t\022\017\n\007dianjin\030\004 \001(\005\022\016\n\006tianti\030\005 \001(\005\022\013" +
-      "\n\003pvp\030\006 \001(\005\022\014\n\004quyu\030\007 \001(\005\022\r\n\005mohua\030\010 \001(\005" +
-      "\022\020\n\010baoxiang\030\t \001(\005\022\016\n\006zhibao\030\n \001(\005\022\r\n\005ba" +
-      "ohu\030\013 \001(\005\022\016\n\006libao1\030\014 \001(\005\022\016\n\006libao2\030\r \001(",
-      "\005\022\017\n\007zuanshi\030\016 \001(\005\022\020\n\010contract\030\017 \001(\005\"7\n\007" +
-      "VipList\022,\n\003vip\030\001 \003(\0132\037.com.trans.pixel.p" +
-      "rotoc.VipInfo\"\237\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb" +
-      "\030\002 \002(\005\022\016\n\006itemid\030\003 \002(\005\022\017\n\007zuanshi\030\004 \002(\005\022" +
-      "\014\n\004name\030\005 \001(\t\022\023\n\013description\030\006 \001(\t\022\013\n\003im" +
-      "g\030\007 \001(\t\022\014\n\004type\030\010 \001(\005\022\020\n\010zuanshi1\030\t \001(\005\022" +
-      "\016\n\006costid\030\n \001(\005\"3\n\007RmbList\022(\n\003rmb\030\001 \003(\0132" +
-      "\033.com.trans.pixel.protoc.Rmb\"@\n\rShouchon" +
-      "gList\022/\n\004task\030\001 \003(\0132!.com.trans.pixel.pr" +
-      "otoc.Shouchong\"\211\001\n\tShouchong\022\n\n\002id\030\001 \002(\005",
-      "\022\020\n\010activity\030\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\022\023\n\013" +
-      "targetcount\030\004 \002(\005\0227\n\006reward\030\005 \003(\0132\'.com." +
-      "trans.pixel.protoc.ShouchongReward\"2\n\017Sh" +
-      "ouchongReward\022\020\n\010rewardid\030\001 \002(\005\022\r\n\005count" +
-      "\030\002 \002(\005\"\036\n\034RequestBuyLootPackageCommand\"\"" +
-      "\n\023RequestCdkeyCommand\022\013\n\003key\030\001 \002(\t\"(\n\030Re" +
-      "questSubmitIconCommand\022\014\n\004icon\030\001 \002(\005\"-\n\033" +
-      "RequestCheatRechargeCommand\022\016\n\006itemid\030\001 " +
-      "\001(\005\"(\n\026RequestRechargeCommand\022\016\n\006itemid\030" +
-      "\001 \002(\005\"C\n\031RequestBindAccountCommand\022\022\n\nol",
-      "dAccount\030\001 \002(\t\022\022\n\nnewAccount\030\002 \002(\t\";\n\036Re" +
-      "questPurchaseVipLibaoCommand\022\013\n\003vip\030\001 \002(" +
-      "\005\022\014\n\004type\030\002 \002(\005\".\n\033RequestQueryRechargeC" +
-      "ommand\022\017\n\007orderId\030\001 \001(\t\"\037\n\035RequestShouch" +
-      "ongRewardCommand\"+\n\032RequestGetGrowJewelC" +
-      "ommand\022\r\n\005order\030\001 \002(\005\")\n\030RequestGetGrowE" +
-      "xpCommand\022\r\n\005order\030\001 \002(\005\"\024\n\022RequestSignC" +
-      "ommand\"I\n\023ResponseSignCommand\0222\n\006reward\030" +
-      "\001 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
-      "o"
+      "\002 \002(\005\022\020\n\010activity\030\003 \002(\t\":\n\010SignList\022.\n\005o" +
+      "rder\030\001 \003(\0132\037.com.trans.pixel.protoc.Qian" +
+      "dao\"c\n\004Sign\022\r\n\005order\030\001 \002(\005\022\020\n\010targetid\030\003" +
+      " \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010rewardid\030\005 " +
+      "\002(\005\022\023\n\013rewardcount\030\007 \002(\005\"0\n\034RequestSeven" +
+      "LoginSignCommand\022\020\n\010chooseId\030\001 \001(\005\"\247\001\n\010V" +
+      "ipLibao\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n",
+      "\003img\030\003 \001(\t\022\014\n\004rare\030\004 \001(\005\022\023\n\013description\030" +
+      "\005 \001(\t\022\r\n\005value\030\006 \001(\005\022\014\n\004cost\030\007 \001(\005\0220\n\004it" +
+      "em\030\010 \003(\0132\".com.trans.pixel.protoc.Reward" +
+      "Info\"?\n\014VipLibaoList\022/\n\005libao\030\001 \003(\0132 .co" +
+      "m.trans.pixel.protoc.VipLibao\"\362\001\n\007VipInf" +
+      "o\022\013\n\003vip\030\001 \001(\005\022\013\n\003rmb\030\002 \001(\005\022\016\n\006effect\030\003 " +
+      "\001(\t\022\017\n\007dianjin\030\004 \001(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003" +
+      "pvp\030\006 \001(\005\022\014\n\004quyu\030\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020" +
+      "\n\010baoxiang\030\t \001(\005\022\016\n\006zhibao\030\n \001(\005\022\r\n\005baoh" +
+      "u\030\013 \001(\005\022\016\n\006libao1\030\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022",
+      "\017\n\007zuanshi\030\016 \001(\005\022\020\n\010contract\030\017 \001(\005\"7\n\007Vi" +
+      "pList\022,\n\003vip\030\001 \003(\0132\037.com.trans.pixel.pro" +
+      "toc.VipInfo\"\237\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002" +
+      " \002(\005\022\016\n\006itemid\030\003 \002(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n" +
+      "\004name\030\005 \001(\t\022\023\n\013description\030\006 \001(\t\022\013\n\003img\030" +
+      "\007 \001(\t\022\014\n\004type\030\010 \001(\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n" +
+      "\006costid\030\n \001(\005\"3\n\007RmbList\022(\n\003rmb\030\001 \003(\0132\033." +
+      "com.trans.pixel.protoc.Rmb\">\n\rShouchongL" +
+      "ist\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.protoc" +
+      ".Shouchong\"t\n\tShouchong\022\n\n\002id\030\001 \002(\005\022\020\n\010a",
+      "ctivity\030\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\0227\n\006rewar" +
+      "d\030\005 \003(\0132\'.com.trans.pixel.protoc.Shoucho" +
+      "ngReward\"2\n\017ShouchongReward\022\020\n\010rewardid\030" +
+      "\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\036\n\034RequestBuyLootPa" +
+      "ckageCommand\"\"\n\023RequestCdkeyCommand\022\013\n\003k" +
+      "ey\030\001 \002(\t\"(\n\030RequestSubmitIconCommand\022\014\n\004" +
+      "icon\030\001 \002(\005\"-\n\033RequestCheatRechargeComman" +
+      "d\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRechargeComm" +
+      "and\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBindAccoun" +
+      "tCommand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccou",
+      "nt\030\002 \002(\t\";\n\036RequestPurchaseVipLibaoComma" +
+      "nd\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n\033Request" +
+      "QueryRechargeCommand\022\017\n\007orderId\030\001 \001(\t\"\037\n" +
+      "\035RequestShouchongRewardCommand\"+\n\032Reques" +
+      "tGetGrowJewelCommand\022\r\n\005order\030\001 \002(\005\")\n\030R" +
+      "equestGetGrowExpCommand\022\r\n\005order\030\001 \002(\005\"\024" +
+      "\n\022RequestSignCommand\"I\n\023ResponseSignComm" +
+      "and\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17478,7 +17388,7 @@ public final class RechargeProto {
           internal_static_com_trans_pixel_protoc_SignList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SignList_descriptor,
-              new java.lang.String[] { "Sanqian", });
+              new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_Sign_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_Sign_fieldAccessorTable = new
@@ -17532,13 +17442,13 @@ public final class RechargeProto {
           internal_static_com_trans_pixel_protoc_ShouchongList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ShouchongList_descriptor,
-              new java.lang.String[] { "Task", });
+              new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_Shouchong_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_Shouchong_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Shouchong_descriptor,
-              new java.lang.String[] { "Id", "Activity", "Targetid", "Targetcount", "Reward", });
+              new java.lang.String[] { "Id", "Activity", "Targetid", "Reward", });
           internal_static_com_trans_pixel_protoc_ShouchongReward_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_ShouchongReward_fieldAccessorTable = new
