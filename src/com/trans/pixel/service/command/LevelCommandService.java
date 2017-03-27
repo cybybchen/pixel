@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
@@ -59,8 +60,8 @@ public class LevelCommandService extends BaseCommandService {
 	// private UserService userService;
 	// @Resource
 	// private PvpMapService pvpMapService;
-	// @Resource
-	// private ActivityService activityService;
+	 @Resource
+	 private ActivityService activityService;
 	// @Resource
 	// private UserPropService userPropService;
 	// @Resource
@@ -100,6 +101,8 @@ public class LevelCommandService extends BaseCommandService {
 						redis.saveEvent(user, event.build());
 					}
 				}
+				
+				activityService.levelActivity(user, id);
 			}
 		}else if(id != userLevel.getLootDaguan() && id != 0){
 			levelLoot(userLevel, responseBuilder, user);

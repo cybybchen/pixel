@@ -475,9 +475,6 @@ public class ActivityService {
 	 * 过关的成就和开服活动
 	 */
 	public void levelActivity(UserBean user, int levelId) {
-		/**
-		 * achieve type 107
-		 */
 		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEVEL_VALUE);
 		
 		/**
