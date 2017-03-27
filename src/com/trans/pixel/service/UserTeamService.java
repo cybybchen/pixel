@@ -249,10 +249,10 @@ public class UserTeamService {
 		if(team.getHeroInfoCount() == 0){
 			Team currentTeam = getTeam(user, user.getCurrentTeamid());
 			team.mergeFrom(currentTeam);
-			if(team.getHeroInfoCount() == 0){
-				HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
-				team.addHeroInfo(heroInfo.buildRankHeroInfo());
-			}
+//			if(team.getHeroInfoCount() == 0){
+//				HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(heroService.getHero(1));
+//				team.addHeroInfo(heroInfo.buildRankHeroInfo());
+//			}
 			// saveTeamCache(user, 0, team.build());
 		}
 		
