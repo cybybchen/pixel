@@ -2937,7 +2937,6 @@ message UserRewardTask {
 	optional uint32 status = 3;//0:没打死，1打死, 2可领奖
 	optional uint32 type = 4;
 	optional RoomInfo roomInfo = 5;
-	optional uint32 roomStatus = 6;
 	enum REWARDTASK_STATUS {
 		LIVE = 0;
 		END = 1;

@@ -142,7 +142,7 @@ public class RewardTaskService {
 			UserInfo userinfo = roomInfo.getUser();
 			costService.costOnly(user, rewardTask.getCostList());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), index));
-			builder.setRoomStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
+			builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
 			userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
 			activityService.completeRewardTask(userinfo.getId(), rewardTask.getType());
 		}
@@ -260,11 +260,11 @@ public class RewardTaskService {
 		return SuccessConst.BOSS_ROOM_QUIT_SUCCESS;
 	}
 	
-	public List<RewardBean> getRewardList(UserBean user, int index) {
+	public List<RewardBean> getRewardList(UserBean user, int index, UserRewardTask.Builder builder) {
 		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
-		if (userRewardTask.getRoomStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
-			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
-			builder.setRoomStatus(REWARDTASK_STATUS.END_VALUE);
+		if (userRewardTask.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
+			builder.mergeFrom(userRewardTask);
+			builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			userRewardTaskService.updateUserRewardTask(user, builder.build());
 			
 			return getBossloot(userRewardTask.getId(), user, 0, 0);

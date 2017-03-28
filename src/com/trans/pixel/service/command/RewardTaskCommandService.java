@@ -164,10 +164,15 @@ public class RewardTaskCommandService extends BaseCommandService {
 	}
 	
 	public void getUserRewardTaskReward(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
-		List<RewardBean> rewardList = rewardTaskService.getRewardList(user, cmd.getIndex());
+		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
+		List<RewardBean> rewardList = rewardTaskService.getRewardList(user, cmd.getIndex(), builder);
 		if (rewardList != null && rewardList.size() > 0) {
 			rewardService.doRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+			
+			ResponseUserRewardTaskCommand.Builder userRewardTaskBuilder = ResponseUserRewardTaskCommand.newBuilder();
+			userRewardTaskBuilder.addUserRewardTask(builder.build());
+			responseBuilder.setUserRewardTaskCommand(userRewardTaskBuilder.build());
 		} else {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
