@@ -1191,34 +1191,40 @@ message PVPMonster {//pvp怪物Config
 	optional string starttime = 13;
 	optional string endtime = 14;
 }
-
 message PVPMonsterList {
-	repeated PVPMonster enemy = 1;
+	repeated PVPMonster id = 1;
 }
 
 message PVPBoss {
 	required int32 id = 1;
 	optional int32 day = 2;
 }
-
 message PVPBossList {
 	repeated PVPBoss boss = 1;
 }
 
+message PVPDayConfig {
+	optional int32 day = 1;
+}
+message PVPBossConfig {
+	required int32 id = 1;
+	repeated PVPDayConfig day = 2;
+}
+message PVPBossConfigList {
+	repeated PVPBossConfig id = 1;
+}
+
 message PVPPosition {//pvp位置
-	optional int32 id = 1;
+	required int32 order = 1;
 	optional int32 x = 2;//坐标x
 	optional int32 y = 3;//坐标y
 }
-
 message PVPPositionList {
 	optional int32 fieldid = 1;
-	optional int32 name = 2;
-	repeated PVPPosition xiaoguai = 3;
+	repeated PVPPosition order = 3;
 }
-
 message PVPPositionLists {
-	repeated PVPPositionList field = 1;
+	repeated PVPPositionList id = 1;
 }
 
 message PVPMine {//pvp矿点
@@ -1240,15 +1246,15 @@ message PVPMap {
 	optional string name = 2;
 	optional int32 bufflimit = 6;//buff层数上限
 	optional int32 yield = 7;//基础产量
-	optional int32 zhanli = 8;//开放战力
+	optional int32 merlevel = 8;
 	optional int32 buffid = 9;//buffid
 	optional int32 buff = 10;//buff层数
 	optional bool opened = 11;//是否开放
-	optional int32 img = 112;
+	optional string img = 12;
+	optional string buffimg = 13;
 	repeated PVPMine kuangdian = 3;
 	repeated PVPMonster monster = 4;
 }
-
 message PVPMapList {
 	repeated PVPMap field = 1;
 	optional int32 buff = 2;
@@ -2456,6 +2462,9 @@ message Event {
 	optional int32 costid = 8;
 	optional int32 costcount = 9;
 	repeated EventReward reward = 10;
+	optional int32 targetid = 11;
+	//optional int32 call = 12;
+	optional int32 count = 13;
 }
 message AreaEvent {
 	optional int32 id = 1;
