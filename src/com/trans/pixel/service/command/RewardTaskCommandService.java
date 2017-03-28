@@ -164,7 +164,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 	}
 	
 	public void getUserRewardTaskReward(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
-		List<RewardBean> rewardList = rewardTaskService.getRewardList(user, cmd.getId());
+		List<RewardBean> rewardList = rewardTaskService.getRewardList(user, cmd.getIndex());
 		if (rewardList != null && rewardList.size() > 0) {
 			rewardService.doRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
@@ -176,8 +176,8 @@ public class RewardTaskCommandService extends BaseCommandService {
 	}
 	
 	public void getUserRewardTaskRoom(RequestUserRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
-		int id = cmd.getId();
-		UserRewardTaskRoom room = rewardTaskService.getUserRoom(user, id);
+		int index = cmd.getIndex();
+		UserRewardTaskRoom room = rewardTaskService.getUserRoom(user, index);
 		
 		if (room != null) {
 			ResponseUserRewardTaskRoomCommand.Builder builder = ResponseUserRewardTaskRoomCommand.newBuilder();

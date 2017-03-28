@@ -2916,13 +2916,17 @@ message RewardTaskList {
 	repeated RewardTask id = 1;
 }
 
+message RoomInfo {
+	optional uint32 index = 1;
+	optional UserInfo user = 2;
+}
 
 message UserRewardTask {
 	required uint32 id = 1;//悬赏令id
 	required uint32 enemyid = 2;
 	optional uint32 status = 3;//0:没打死，1打死, 2可领奖
 	optional uint32 type = 4;
-	optional UserInfo create = 5;
+	optional RoomInfo roomInfo = 5;
 	optional uint32 roomStatus = 6;
 	enum REWARDTASK_STATUS {
 		LIVE = 0;
@@ -2939,10 +2943,6 @@ message UserRewardTaskRoom {
 	required uint32 bossId = 3;
 	optional uint32 status = 4;
 	optional uint32 index = 5;
-	message RoomInfo {
-		optional uint32 index = 1;
-		optional UserInfo user = 2;
-	}
 	repeated RoomInfo roomInfo = 6; 
 }
 
@@ -2980,13 +2980,11 @@ message RequestUserRewardTaskCommand {
 }
 
 message RequestRewardTaskRewardCommand {
-	required uint32 id = 1;
-	required uint32 roomId = 2;
+	required uint32 index = 2;
 }
 
 message RequestUserRewardTaskRoomCommand {
-	required uint32 id = 1;
-	required uint32 roomId = 2;
+	required uint32 index = 1;
 }
 ////////// TaskProto
 message TaskTargetList {
