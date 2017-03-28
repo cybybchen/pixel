@@ -74,7 +74,7 @@ public class PvpMapService {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() == fieldid){
-				if(zhanli >= map.getZhanli()){
+				if(zhanli >= 0/*map.getZhanli()*/){
 					map.setOpened(true);
 					redis.saveMapList(maplist.build(), user.getId());
 					if(map.getFieldid() > user.getPvpUnlock()){
@@ -234,7 +234,7 @@ public class PvpMapService {
 			Iterator<UserInfo> it = ranks.iterator();
 			while(it.hasNext()){
 				UserInfo userinfo = it.next();
-				if(userinfo.getZhanli() < map.getZhanli())
+				if(userinfo.getZhanli() < /*map.getZhanli()*/0)
 					it.remove();
 			}
 			if(ranks.isEmpty())

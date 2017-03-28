@@ -117,17 +117,29 @@ public class LevelRedisService extends RedisService {
 			saveUserLevel(userLevel);
 		}else if(time >= 60){
 			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
-			if(events != null)
-			for(int i = 0; i < Math.min(20-eventsize,time/60); i++){
-				int weight = nextInt(events.getWeight());
-				for(Event.Builder event : events.getEventBuilderList()){
-					if(event.getWeight() >= weight){
-						event.setOrder(currentIndex()+i);
-						event.setDaguan(userLevel.getLootDaguan());
-						saveEvent(user, event.build());
-						break;
-					}else{
-						weight -= event.getWeight();
+			if(events != null){
+				for(Event.Builder myevent : getEvents(user).values()){
+					for(Event.Builder event : events.getEventBuilderList()){
+						if(event.getCount() > 0 && myevent.getEventid() == event.getEventid()){
+							event.setCount(event.getCount()-1);
+							if(event.getCount() == 0){
+								events.setWeight(events.getWeight()-event.getWeight());
+								event.setWeight(0);
+							}
+						}
+					}
+				}
+				for(int i = 0; i < Math.min(20-eventsize,time/60); i++){
+					int weight = nextInt(events.getWeight());
+					for(Event.Builder event : events.getEventBuilderList()){
+						if(event.getWeight() >= weight){
+							event.setOrder(currentIndex()+i);
+							event.setDaguan(userLevel.getLootDaguan());
+							saveEvent(user, event.build());
+							break;
+						}else{
+							weight -= event.getWeight();
+						}
 					}
 				}
 			}
@@ -178,6 +190,9 @@ public class LevelRedisService extends RedisService {
 		String xml = ReadConfig("ld_event.xml");
 		AreaEventList.Builder list = AreaEventList.newBuilder();
 		parseXml(xml, list);
+		String xml1 = ReadConfig("ld_event1.xml");
+		AreaEventList.Builder list1 = AreaEventList.newBuilder();
+		parseXml(xml1, list1);
 		Map<Integer, AreaEvent.Builder> map = new HashMap<Integer, AreaEvent.Builder>();
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		for(AreaEvent.Builder area : list.getIdBuilderList()){
@@ -200,6 +215,22 @@ public class LevelRedisService extends RedisService {
 						event.setWeight(0);
 						builder.addEvent(event);
 						// builder.setWeight(builder.getWeight()+event.getWeight());
+					}
+				}
+			}
+		}
+		for(AreaEvent.Builder area : list1.getIdBuilderList()){
+			for(Event.Builder event : area.getEventBuilderList()){
+				// event.clearName();
+				event.clearDes();
+				keyvalue2.put(event.getEventid()+"", formatJson(event.build()));
+				event.clearReward();
+				if(event.getDaguan() != 0){
+					AreaEvent.Builder builder = map.get(event.getDaguan());
+					if(builder != null){
+//						event.setWeight(0);
+						builder.addEvent(event);
+						builder.setWeight(builder.getWeight()+event.getWeight());
 					}
 				}
 			}
