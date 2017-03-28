@@ -3402,13 +3402,13 @@ public final class RewardTaskProto {
      */
     int getId();
 
-    // required uint32 enemyid = 2;
+    // optional uint32 enemyid = 2;
     /**
-     * <code>required uint32 enemyid = 2;</code>
+     * <code>optional uint32 enemyid = 2;</code>
      */
     boolean hasEnemyid();
     /**
-     * <code>required uint32 enemyid = 2;</code>
+     * <code>optional uint32 enemyid = 2;</code>
      */
     int getEnemyid();
 
@@ -3748,17 +3748,17 @@ public final class RewardTaskProto {
       return id_;
     }
 
-    // required uint32 enemyid = 2;
+    // optional uint32 enemyid = 2;
     public static final int ENEMYID_FIELD_NUMBER = 2;
     private int enemyid_;
     /**
-     * <code>required uint32 enemyid = 2;</code>
+     * <code>optional uint32 enemyid = 2;</code>
      */
     public boolean hasEnemyid() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required uint32 enemyid = 2;</code>
+     * <code>optional uint32 enemyid = 2;</code>
      */
     public int getEnemyid() {
       return enemyid_;
@@ -3881,10 +3881,6 @@ public final class RewardTaskProto {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasEnemyid()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -4204,10 +4200,6 @@ public final class RewardTaskProto {
           
           return false;
         }
-        if (!hasEnemyid()) {
-          
-          return false;
-        }
         if (!hasIndex()) {
           
           return false;
@@ -4289,22 +4281,22 @@ public final class RewardTaskProto {
         return this;
       }
 
-      // required uint32 enemyid = 2;
+      // optional uint32 enemyid = 2;
       private int enemyid_ ;
       /**
-       * <code>required uint32 enemyid = 2;</code>
+       * <code>optional uint32 enemyid = 2;</code>
        */
       public boolean hasEnemyid() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required uint32 enemyid = 2;</code>
+       * <code>optional uint32 enemyid = 2;</code>
        */
       public int getEnemyid() {
         return enemyid_;
       }
       /**
-       * <code>required uint32 enemyid = 2;</code>
+       * <code>optional uint32 enemyid = 2;</code>
        */
       public Builder setEnemyid(int value) {
         bitField0_ |= 0x00000002;
@@ -4313,7 +4305,7 @@ public final class RewardTaskProto {
         return this;
       }
       /**
-       * <code>required uint32 enemyid = 2;</code>
+       * <code>optional uint32 enemyid = 2;</code>
        */
       public Builder clearEnemyid() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -10372,7 +10364,7 @@ public final class RewardTaskProto {
       "om.trans.pixel.protoc.RewardTask\"I\n\010Room" +
       "Info\022\r\n\005index\030\001 \001(\r\022.\n\004user\030\002 \001(\0132 .com.",
       "trans.pixel.protoc.UserInfo\"\343\001\n\016UserRewa" +
-      "rdTask\022\n\n\002id\030\001 \002(\r\022\017\n\007enemyid\030\002 \002(\r\022\016\n\006s" +
+      "rdTask\022\n\n\002id\030\001 \002(\r\022\017\n\007enemyid\030\002 \001(\r\022\016\n\006s" +
       "tatus\030\003 \001(\r\022\014\n\004type\030\004 \001(\r\0222\n\010roomInfo\030\005 " +
       "\001(\0132 .com.trans.pixel.protoc.RoomInfo\022\022\n" +
       "\nroomStatus\030\006 \001(\r\022\r\n\005index\030\007 \002(\r\"?\n\021REWA" +

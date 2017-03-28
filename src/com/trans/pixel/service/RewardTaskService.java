@@ -231,7 +231,7 @@ public class RewardTaskService {
 			return ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER;
 		}
 		
-		rewardTaskBuilder = UserRewardTask.newBuilder(userRewardTask);
+		rewardTaskBuilder.mergeFrom(userRewardTask);
 		builder = UserRewardTaskRoom.newBuilder(room);
 		if (builder.getCreateUserId() == user.getId() && user.getId() == quitUserId) {
 			rewardTaskRedisService.delUserRewardTaskRoom(user, builder.getBossId());

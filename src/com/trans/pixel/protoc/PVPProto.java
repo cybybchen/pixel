@@ -6086,13 +6086,13 @@ public final class PVPProto {
   public interface PVPPositionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 id = 1;
+    // optional int32 id = 1;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     boolean hasId();
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     int getId();
 
@@ -6242,17 +6242,17 @@ public final class PVPProto {
     }
 
     private int bitField0_;
-    // required int32 id = 1;
+    // optional int32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     public int getId() {
       return id_;
@@ -6316,10 +6316,6 @@ public final class PVPProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6553,10 +6549,6 @@ public final class PVPProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -6579,22 +6571,22 @@ public final class PVPProto {
       }
       private int bitField0_;
 
-      // required int32 id = 1;
+      // optional int32 id = 1;
       private int id_ ;
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public Builder setId(int value) {
         bitField0_ |= 0x00000001;
@@ -6603,7 +6595,7 @@ public final class PVPProto {
         return this;
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -6959,12 +6951,6 @@ public final class PVPProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getXiaoguaiCount(); i++) {
-        if (!getXiaoguai(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7227,12 +7213,6 @@ public final class PVPProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getXiaoguaiCount(); i++) {
-          if (!getXiaoguai(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -7745,12 +7725,6 @@ public final class PVPProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getFieldCount(); i++) {
-        if (!getField(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7979,12 +7953,6 @@ public final class PVPProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getFieldCount(); i++) {
-          if (!getField(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -20775,7 +20743,7 @@ public final class PVPProto {
       "VPMonster\"\"\n\007PVPBoss\022\n\n\002id\030\001 \002(\005\022\013\n\003day\030" +
       "\002 \001(\005\"<\n\013PVPBossList\022-\n\004boss\030\001 \003(\0132\037.com" +
       ".trans.pixel.protoc.PVPBoss\"/\n\013PVPPositi" +
-      "on\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\"g\n\017",
+      "on\022\n\n\002id\030\001 \001(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\"g\n\017",
       "PVPPositionList\022\017\n\007fieldid\030\001 \001(\005\022\014\n\004name" +
       "\030\002 \001(\005\0225\n\010xiaoguai\030\003 \003(\0132#.com.trans.pix" +
       "el.protoc.PVPPosition\"J\n\020PVPPositionList" +

@@ -1206,18 +1206,19 @@ message PVPBossList {
 }
 
 message PVPPosition {//pvp位置
-	required int32 order = 1;
+	optional int32 id = 1;
 	optional int32 x = 2;//坐标x
 	optional int32 y = 3;//坐标y
 }
 
 message PVPPositionList {
-	optional int32 id = 1;
-	repeated PVPPosition order = 3;
+	optional int32 fieldid = 1;
+	optional int32 name = 2;
+	repeated PVPPosition xiaoguai = 3;
 }
 
 message PVPPositionLists {
-	repeated PVPPositionList id = 1;
+	repeated PVPPositionList field = 1;
 }
 
 message PVPMine {//pvp矿点
@@ -2923,7 +2924,7 @@ message RoomInfo {
 
 message UserRewardTask {
 	required uint32 id = 1;//悬赏令id
-	required uint32 enemyid = 2;
+	optional uint32 enemyid = 2;
 	optional uint32 status = 3;//0:没打死，1打死, 2可领奖
 	optional uint32 type = 4;
 	optional RoomInfo roomInfo = 5;
