@@ -181,6 +181,14 @@ public class LevelRedisService extends RedisService {
 		Map<Integer, AreaEvent.Builder> map = new HashMap<Integer, AreaEvent.Builder>();
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		for(AreaEvent.Builder area : list.getIdBuilderList()){
+			for(int id : areaMap.keySet()){
+				if(areaMap.get(id) == area.getId()){
+					AreaEvent.Builder builder = AreaEvent.newBuilder();
+					builder = AreaEvent.newBuilder();
+					builder.setId(id);
+					map.put(builder.getId(), builder);
+				}
+			}
 			for(Event.Builder event : area.getEventBuilderList()){
 				// event.clearName();
 				event.clearDes();
@@ -188,14 +196,11 @@ public class LevelRedisService extends RedisService {
 				event.clearReward();
 				if(event.getDaguan() != 0){
 					AreaEvent.Builder builder = map.get(event.getDaguan());
-					if(builder == null){
-						builder = AreaEvent.newBuilder();
-						builder.setId(event.getDaguan());
-						map.put(builder.getId(), builder);
+					if(builder != null){
+						event.setWeight(0);
+						builder.addEvent(event);
+						// builder.setWeight(builder.getWeight()+event.getWeight());
 					}
-					event.setWeight(0);
-					builder.addEvent(event);
-					// builder.setWeight(builder.getWeight()+event.getWeight());
 				}
 			}
 			for(Event.Builder event : area.getEventBuilderList()){

@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
@@ -21,7 +23,7 @@ import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
 public class CostService {
-
+	private static final Logger log = LoggerFactory.getLogger(CostService.class);
 	@Resource
 	private UserService userService;
 	@Resource
@@ -220,10 +222,10 @@ public class CostService {
 		} else {
 			switch (itemId) {
 				case RewardConst.EXP:
-					if(itemCount > user.getExp()) return false;
+					if(itemCount > user.getExp()+lootService.getExp(user)) return false;
 					return true;
 				case RewardConst.COIN:
-					if(itemCount > user.getCoin()) return false;
+					if(itemCount > user.getCoin()+lootService.getCoin(user)) return false;
 					return true;
 				case RewardConst.JEWEL:
 					if(itemCount > user.getJewel()) return false;

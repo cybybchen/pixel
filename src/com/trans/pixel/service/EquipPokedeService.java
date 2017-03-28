@@ -60,7 +60,7 @@ public class EquipPokedeService {
 				break;
 			}
 		}
-		
+
 		if (!costService.cost(user, rewards.build()))
 			return ErrorConst.NOT_ENOUGH_COIN;
 		
