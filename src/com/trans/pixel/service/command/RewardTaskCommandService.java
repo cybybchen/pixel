@@ -74,7 +74,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 	}
 	
 	public void createRoom(RequestCreateRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
-		UserRewardTaskRoom room = rewardTaskService.createRoom(user, cmd.getId());
+		UserRewardTaskRoom room = rewardTaskService.createRoom(user, cmd.getIndex());
 		if (room == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_CREATE_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_CREATE_ERROR);

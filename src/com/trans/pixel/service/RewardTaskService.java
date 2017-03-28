@@ -62,8 +62,9 @@ public class RewardTaskService {
 		user.setRewardTaskIndex(user.getRewardTaskIndex() + 1);
 		userService.updateUser(user);
 		
-		UserRewardTask newTask = initUserRewardTask(user, id, user.getRewardTaskIndex());
-		userRewardTaskService.updateUserRewardTask(user, newTask);
+		UserRewardTask.Builder newTask = UserRewardTask.newBuilder(initUserRewardTask(user, id, user.getRewardTaskIndex()));
+//		newTask.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
+		userRewardTaskService.updateUserRewardTask(user, newTask.build());
 		
 		return SuccessConst.USE_PROP;
 	}
@@ -85,7 +86,7 @@ public class RewardTaskService {
 			return result;
 		
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
-		builder.setStatus(1);
+		builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 		userRewardTaskService.updateUserRewardTask(user, ut);
 		userPropList.add(UserPropBean.initUserProp(user.getId(), costId, ""));
 		
@@ -222,7 +223,7 @@ public class RewardTaskService {
 		if (userRewardTask.getRoomInfo() == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		
-		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(userRewardTask.getRoomInfo().getUser().getId(), index);
+		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(userRewardTask.getRoomInfo().getUser().getId(), userRewardTask.getRoomInfo().getIndex());
 		if (room == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		

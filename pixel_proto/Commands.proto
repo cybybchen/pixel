@@ -1756,7 +1756,7 @@ message Qiandao {
 }
 
 message SignList {
-	repeated Qiandao order = 1;
+	repeated Sign order = 1;
 }
 
 message Sign {
@@ -2220,13 +2220,13 @@ message Activity {
 }
 
 message SevenLoginList {
-	repeated SevenLogin seven = 1;
+	repeated SevenLogin id = 1;
 }
 
 message SevenLogin {
-	optional int32 id = 1;
-	optional int32 targetid = 2;
-	optional int32 targetcount = 3;
+	optional uint32 id = 1;
+	optional uint32 targetid = 2;
+	optional uint32 targetcount = 3;
 	repeated SevenOrder order = 4;
 }
 
@@ -2947,7 +2947,7 @@ message UserRewardTaskRoom {
 }
 
 message RequestCreateRewardTaskRoomCommand {
-	required uint32 id = 1;
+	required uint32 index = 1;
 }
 
 message RequestQuitRewardTaskRoomCommand {

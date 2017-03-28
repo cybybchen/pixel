@@ -29058,29 +29058,29 @@ public final class ActivityProto {
   public interface SevenLoginListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.SevenLogin seven = 1;
+    // repeated .com.trans.pixel.protoc.SevenLogin id = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> 
-        getSevenList();
+        getIdList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
-    com.trans.pixel.protoc.ActivityProto.SevenLogin getSeven(int index);
+    com.trans.pixel.protoc.ActivityProto.SevenLogin getId(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
-    int getSevenCount();
+    int getIdCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder> 
-        getSevenOrBuilderList();
+        getIdOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
-    com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder getSevenOrBuilder(
+    com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder getIdOrBuilder(
         int index);
   }
   /**
@@ -29136,10 +29136,10 @@ public final class ActivityProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                seven_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.SevenLogin>();
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.SevenLogin>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              seven_.add(input.readMessage(com.trans.pixel.protoc.ActivityProto.SevenLogin.PARSER, extensionRegistry));
+              id_.add(input.readMessage(com.trans.pixel.protoc.ActivityProto.SevenLogin.PARSER, extensionRegistry));
               break;
             }
           }
@@ -29151,7 +29151,7 @@ public final class ActivityProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          seven_ = java.util.Collections.unmodifiableList(seven_);
+          id_ = java.util.Collections.unmodifiableList(id_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -29184,44 +29184,44 @@ public final class ActivityProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.SevenLogin seven = 1;
-    public static final int SEVEN_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> seven_;
+    // repeated .com.trans.pixel.protoc.SevenLogin id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> id_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> getSevenList() {
-      return seven_;
+    public java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> getIdList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder> 
-        getSevenOrBuilderList() {
-      return seven_;
+        getIdOrBuilderList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
-    public int getSevenCount() {
-      return seven_.size();
+    public int getIdCount() {
+      return id_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
-    public com.trans.pixel.protoc.ActivityProto.SevenLogin getSeven(int index) {
-      return seven_.get(index);
+    public com.trans.pixel.protoc.ActivityProto.SevenLogin getId(int index) {
+      return id_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
      */
-    public com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder getSevenOrBuilder(
+    public com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder getIdOrBuilder(
         int index) {
-      return seven_.get(index);
+      return id_.get(index);
     }
 
     private void initFields() {
-      seven_ = java.util.Collections.emptyList();
+      id_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -29235,8 +29235,8 @@ public final class ActivityProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < seven_.size(); i++) {
-        output.writeMessage(1, seven_.get(i));
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -29247,9 +29247,9 @@ public final class ActivityProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < seven_.size(); i++) {
+      for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, seven_.get(i));
+          .computeMessageSize(1, id_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -29359,7 +29359,7 @@ public final class ActivityProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getSevenFieldBuilder();
+          getIdFieldBuilder();
         }
       }
       private static Builder create() {
@@ -29368,11 +29368,11 @@ public final class ActivityProto {
 
       public Builder clear() {
         super.clear();
-        if (sevenBuilder_ == null) {
-          seven_ = java.util.Collections.emptyList();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          sevenBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
@@ -29401,14 +29401,14 @@ public final class ActivityProto {
       public com.trans.pixel.protoc.ActivityProto.SevenLoginList buildPartial() {
         com.trans.pixel.protoc.ActivityProto.SevenLoginList result = new com.trans.pixel.protoc.ActivityProto.SevenLoginList(this);
         int from_bitField0_ = bitField0_;
-        if (sevenBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            seven_ = java.util.Collections.unmodifiableList(seven_);
+            id_ = java.util.Collections.unmodifiableList(id_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.seven_ = seven_;
+          result.id_ = id_;
         } else {
-          result.seven_ = sevenBuilder_.build();
+          result.id_ = idBuilder_.build();
         }
         onBuilt();
         return result;
@@ -29425,29 +29425,29 @@ public final class ActivityProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.ActivityProto.SevenLoginList other) {
         if (other == com.trans.pixel.protoc.ActivityProto.SevenLoginList.getDefaultInstance()) return this;
-        if (sevenBuilder_ == null) {
-          if (!other.seven_.isEmpty()) {
-            if (seven_.isEmpty()) {
-              seven_ = other.seven_;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureSevenIsMutable();
-              seven_.addAll(other.seven_);
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
             }
             onChanged();
           }
         } else {
-          if (!other.seven_.isEmpty()) {
-            if (sevenBuilder_.isEmpty()) {
-              sevenBuilder_.dispose();
-              sevenBuilder_ = null;
-              seven_ = other.seven_;
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              sevenBuilder_ = 
+              idBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getSevenFieldBuilder() : null;
+                   getIdFieldBuilder() : null;
             } else {
-              sevenBuilder_.addAllMessages(other.seven_);
+              idBuilder_.addAllMessages(other.id_);
             }
           }
         }
@@ -29478,244 +29478,244 @@ public final class ActivityProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.SevenLogin seven = 1;
-      private java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> seven_ =
+      // repeated .com.trans.pixel.protoc.SevenLogin id = 1;
+      private java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> id_ =
         java.util.Collections.emptyList();
-      private void ensureSevenIsMutable() {
+      private void ensureIdIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          seven_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.SevenLogin>(seven_);
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.SevenLogin>(id_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.ActivityProto.SevenLogin, com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder, com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder> sevenBuilder_;
+          com.trans.pixel.protoc.ActivityProto.SevenLogin, com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder, com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder> idBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> getSevenList() {
-        if (sevenBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(seven_);
+      public java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
         } else {
-          return sevenBuilder_.getMessageList();
+          return idBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public int getSevenCount() {
-        if (sevenBuilder_ == null) {
-          return seven_.size();
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
         } else {
-          return sevenBuilder_.getCount();
+          return idBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public com.trans.pixel.protoc.ActivityProto.SevenLogin getSeven(int index) {
-        if (sevenBuilder_ == null) {
-          return seven_.get(index);
+      public com.trans.pixel.protoc.ActivityProto.SevenLogin getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
         } else {
-          return sevenBuilder_.getMessage(index);
+          return idBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder setSeven(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ActivityProto.SevenLogin value) {
-        if (sevenBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSevenIsMutable();
-          seven_.set(index, value);
+          ensureIdIsMutable();
+          id_.set(index, value);
           onChanged();
         } else {
-          sevenBuilder_.setMessage(index, value);
+          idBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder setSeven(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder builderForValue) {
-        if (sevenBuilder_ == null) {
-          ensureSevenIsMutable();
-          seven_.set(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
           onChanged();
         } else {
-          sevenBuilder_.setMessage(index, builderForValue.build());
+          idBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder addSeven(com.trans.pixel.protoc.ActivityProto.SevenLogin value) {
-        if (sevenBuilder_ == null) {
+      public Builder addId(com.trans.pixel.protoc.ActivityProto.SevenLogin value) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSevenIsMutable();
-          seven_.add(value);
+          ensureIdIsMutable();
+          id_.add(value);
           onChanged();
         } else {
-          sevenBuilder_.addMessage(value);
+          idBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder addSeven(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ActivityProto.SevenLogin value) {
-        if (sevenBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSevenIsMutable();
-          seven_.add(index, value);
+          ensureIdIsMutable();
+          id_.add(index, value);
           onChanged();
         } else {
-          sevenBuilder_.addMessage(index, value);
+          idBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder addSeven(
+      public Builder addId(
           com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder builderForValue) {
-        if (sevenBuilder_ == null) {
-          ensureSevenIsMutable();
-          seven_.add(builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
           onChanged();
         } else {
-          sevenBuilder_.addMessage(builderForValue.build());
+          idBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder addSeven(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder builderForValue) {
-        if (sevenBuilder_ == null) {
-          ensureSevenIsMutable();
-          seven_.add(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
           onChanged();
         } else {
-          sevenBuilder_.addMessage(index, builderForValue.build());
+          idBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder addAllSeven(
+      public Builder addAllId(
           java.lang.Iterable<? extends com.trans.pixel.protoc.ActivityProto.SevenLogin> values) {
-        if (sevenBuilder_ == null) {
-          ensureSevenIsMutable();
-          super.addAll(values, seven_);
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
           onChanged();
         } else {
-          sevenBuilder_.addAllMessages(values);
+          idBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder clearSeven() {
-        if (sevenBuilder_ == null) {
-          seven_ = java.util.Collections.emptyList();
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          sevenBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public Builder removeSeven(int index) {
-        if (sevenBuilder_ == null) {
-          ensureSevenIsMutable();
-          seven_.remove(index);
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
           onChanged();
         } else {
-          sevenBuilder_.remove(index);
+          idBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder getSevenBuilder(
+      public com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder getIdBuilder(
           int index) {
-        return getSevenFieldBuilder().getBuilder(index);
+        return getIdFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder getSevenOrBuilder(
+      public com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder getIdOrBuilder(
           int index) {
-        if (sevenBuilder_ == null) {
-          return seven_.get(index);  } else {
-          return sevenBuilder_.getMessageOrBuilder(index);
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder> 
-           getSevenOrBuilderList() {
-        if (sevenBuilder_ != null) {
-          return sevenBuilder_.getMessageOrBuilderList();
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(seven_);
+          return java.util.Collections.unmodifiableList(id_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder addSevenBuilder() {
-        return getSevenFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
             com.trans.pixel.protoc.ActivityProto.SevenLogin.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
-      public com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder addSevenBuilder(
+      public com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder addIdBuilder(
           int index) {
-        return getSevenFieldBuilder().addBuilder(
+        return getIdFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.ActivityProto.SevenLogin.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SevenLogin seven = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.SevenLogin id = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder> 
-           getSevenBuilderList() {
-        return getSevenFieldBuilder().getBuilderList();
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.ActivityProto.SevenLogin, com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder, com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder> 
-          getSevenFieldBuilder() {
-        if (sevenBuilder_ == null) {
-          sevenBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.ActivityProto.SevenLogin, com.trans.pixel.protoc.ActivityProto.SevenLogin.Builder, com.trans.pixel.protoc.ActivityProto.SevenLoginOrBuilder>(
-                  seven_,
+                  id_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          seven_ = null;
+          id_ = null;
         }
-        return sevenBuilder_;
+        return idBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.SevenLoginList)
@@ -29732,33 +29732,33 @@ public final class ActivityProto {
   public interface SevenLoginOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int32 id = 1;
+    // optional uint32 id = 1;
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     boolean hasId();
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     int getId();
 
-    // optional int32 targetid = 2;
+    // optional uint32 targetid = 2;
     /**
-     * <code>optional int32 targetid = 2;</code>
+     * <code>optional uint32 targetid = 2;</code>
      */
     boolean hasTargetid();
     /**
-     * <code>optional int32 targetid = 2;</code>
+     * <code>optional uint32 targetid = 2;</code>
      */
     int getTargetid();
 
-    // optional int32 targetcount = 3;
+    // optional uint32 targetcount = 3;
     /**
-     * <code>optional int32 targetcount = 3;</code>
+     * <code>optional uint32 targetcount = 3;</code>
      */
     boolean hasTargetcount();
     /**
-     * <code>optional int32 targetcount = 3;</code>
+     * <code>optional uint32 targetcount = 3;</code>
      */
     int getTargetcount();
 
@@ -29840,17 +29840,17 @@ public final class ActivityProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
+              id_ = input.readUInt32();
               break;
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              targetid_ = input.readInt32();
+              targetid_ = input.readUInt32();
               break;
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              targetcount_ = input.readInt32();
+              targetcount_ = input.readUInt32();
               break;
             }
             case 34: {
@@ -29904,49 +29904,49 @@ public final class ActivityProto {
     }
 
     private int bitField0_;
-    // optional int32 id = 1;
+    // optional uint32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     public int getId() {
       return id_;
     }
 
-    // optional int32 targetid = 2;
+    // optional uint32 targetid = 2;
     public static final int TARGETID_FIELD_NUMBER = 2;
     private int targetid_;
     /**
-     * <code>optional int32 targetid = 2;</code>
+     * <code>optional uint32 targetid = 2;</code>
      */
     public boolean hasTargetid() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 targetid = 2;</code>
+     * <code>optional uint32 targetid = 2;</code>
      */
     public int getTargetid() {
       return targetid_;
     }
 
-    // optional int32 targetcount = 3;
+    // optional uint32 targetcount = 3;
     public static final int TARGETCOUNT_FIELD_NUMBER = 3;
     private int targetcount_;
     /**
-     * <code>optional int32 targetcount = 3;</code>
+     * <code>optional uint32 targetcount = 3;</code>
      */
     public boolean hasTargetcount() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int32 targetcount = 3;</code>
+     * <code>optional uint32 targetcount = 3;</code>
      */
     public int getTargetcount() {
       return targetcount_;
@@ -30007,13 +30007,13 @@ public final class ActivityProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, id_);
+        output.writeUInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, targetid_);
+        output.writeUInt32(2, targetid_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, targetcount_);
+        output.writeUInt32(3, targetcount_);
       }
       for (int i = 0; i < order_.size(); i++) {
         output.writeMessage(4, order_.get(i));
@@ -30029,15 +30029,15 @@ public final class ActivityProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
+          .computeUInt32Size(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, targetid_);
+          .computeUInt32Size(2, targetid_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, targetcount_);
+          .computeUInt32Size(3, targetcount_);
       }
       for (int i = 0; i < order_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -30299,22 +30299,22 @@ public final class ActivityProto {
       }
       private int bitField0_;
 
-      // optional int32 id = 1;
+      // optional uint32 id = 1;
       private int id_ ;
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public Builder setId(int value) {
         bitField0_ |= 0x00000001;
@@ -30323,7 +30323,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -30332,22 +30332,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // optional int32 targetid = 2;
+      // optional uint32 targetid = 2;
       private int targetid_ ;
       /**
-       * <code>optional int32 targetid = 2;</code>
+       * <code>optional uint32 targetid = 2;</code>
        */
       public boolean hasTargetid() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 targetid = 2;</code>
+       * <code>optional uint32 targetid = 2;</code>
        */
       public int getTargetid() {
         return targetid_;
       }
       /**
-       * <code>optional int32 targetid = 2;</code>
+       * <code>optional uint32 targetid = 2;</code>
        */
       public Builder setTargetid(int value) {
         bitField0_ |= 0x00000002;
@@ -30356,7 +30356,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>optional int32 targetid = 2;</code>
+       * <code>optional uint32 targetid = 2;</code>
        */
       public Builder clearTargetid() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -30365,22 +30365,22 @@ public final class ActivityProto {
         return this;
       }
 
-      // optional int32 targetcount = 3;
+      // optional uint32 targetcount = 3;
       private int targetcount_ ;
       /**
-       * <code>optional int32 targetcount = 3;</code>
+       * <code>optional uint32 targetcount = 3;</code>
        */
       public boolean hasTargetcount() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int32 targetcount = 3;</code>
+       * <code>optional uint32 targetcount = 3;</code>
        */
       public int getTargetcount() {
         return targetcount_;
       }
       /**
-       * <code>optional int32 targetcount = 3;</code>
+       * <code>optional uint32 targetcount = 3;</code>
        */
       public Builder setTargetcount(int value) {
         bitField0_ |= 0x00000004;
@@ -30389,7 +30389,7 @@ public final class ActivityProto {
         return this;
       }
       /**
-       * <code>optional int32 targetcount = 3;</code>
+       * <code>optional uint32 targetcount = 3;</code>
        */
       public Builder clearTargetcount() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -32977,27 +32977,27 @@ public final class ActivityProto {
       "\n\003des\030\004 \002(\t\022\021\n\tstarttime\030\005 \002(\t\022\017\n\007endtim" +
       "e\030\006 \002(\t\022\024\n\014activitytype\030\007 \002(\005\0222\n\006reward\030" +
       "\010 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
-      "o\022\024\n\014serverfilter\030\t \002(\t\"C\n\016SevenLoginLis" +
-      "t\0221\n\005seven\030\001 \003(\0132\".com.trans.pixel.proto" +
-      "c.SevenLogin\"r\n\nSevenLogin\022\n\n\002id\030\001 \001(\005\022\020" +
-      "\n\010targetid\030\002 \001(\005\022\023\n\013targetcount\030\003 \001(\005\0221\n",
-      "\005order\030\004 \003(\0132\".com.trans.pixel.protoc.Se" +
-      "venOrder\"J\n\nSevenOrder\022\r\n\005order\030\001 \001(\r\022\016\n" +
-      "\006itemid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\016\n\006choose\030\004" +
-      " \001(\005\"@\n\rRankvalueList\022/\n\004rank\030\001 \003(\0132!.co" +
-      "m.trans.pixel.protoc.Rankvalue\"N\n\tRankva" +
-      "lue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001" +
-      "(\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\373\002\n\rACTIV" +
-      "ITY_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n\023TYPE_L" +
-      "EIJI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COST_JEWEL" +
-      "\020\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTY",
-      "PE_HERO_GET\020\006\022\030\n\024TYPE_HERO_LEVELUP_50\020\007\022" +
-      "\016\n\nTYPE_LEVEL\020\010\022\017\n\013TYPE_ZHANLI\020\t\022\027\n\023TYPE" +
-      "_LADDER_SUCCESS\020\n\022\033\n\027TYPE_PVP_ATTACK_SUC" +
-      "CESS\020\013\022\023\n\017TYPE_MOJING_GET\020\014\022\023\n\017TYPE_REWA" +
-      "RDTASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTYPE_WUQI" +
-      "_GET\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020\022\021\n\rTYP" +
-      "E_PVP_HELP\020\021"
+      "o\022\024\n\014serverfilter\030\t \002(\t\"@\n\016SevenLoginLis" +
+      "t\022.\n\002id\030\001 \003(\0132\".com.trans.pixel.protoc.S" +
+      "evenLogin\"r\n\nSevenLogin\022\n\n\002id\030\001 \001(\r\022\020\n\010t" +
+      "argetid\030\002 \001(\r\022\023\n\013targetcount\030\003 \001(\r\0221\n\005or",
+      "der\030\004 \003(\0132\".com.trans.pixel.protoc.Seven" +
+      "Order\"J\n\nSevenOrder\022\r\n\005order\030\001 \001(\r\022\016\n\006it" +
+      "emid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\016\n\006choose\030\004 \001(" +
+      "\005\"@\n\rRankvalueList\022/\n\004rank\030\001 \003(\0132!.com.t" +
+      "rans.pixel.protoc.Rankvalue\"N\n\tRankvalue" +
+      "\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(\002\022" +
+      "\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\373\002\n\rACTIVITY" +
+      "_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n\023TYPE_LEIJ" +
+      "I_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COST_JEWEL\020\003\022" +
+      "\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTYPE_",
+      "HERO_GET\020\006\022\030\n\024TYPE_HERO_LEVELUP_50\020\007\022\016\n\n" +
+      "TYPE_LEVEL\020\010\022\017\n\013TYPE_ZHANLI\020\t\022\027\n\023TYPE_LA" +
+      "DDER_SUCCESS\020\n\022\033\n\027TYPE_PVP_ATTACK_SUCCES" +
+      "S\020\013\022\023\n\017TYPE_MOJING_GET\020\014\022\023\n\017TYPE_REWARDT" +
+      "ASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTYPE_WUQI_GE" +
+      "T\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020\022\021\n\rTYPE_P" +
+      "VP_HELP\020\021"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33219,7 +33219,7 @@ public final class ActivityProto {
           internal_static_com_trans_pixel_protoc_SevenLoginList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SevenLoginList_descriptor,
-              new java.lang.String[] { "Seven", });
+              new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_SevenLogin_descriptor =
             getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_SevenLogin_fieldAccessorTable = new

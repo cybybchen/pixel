@@ -66,10 +66,8 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for(Qiandao.Builder qiandao : builder.getOrderBuilderList()){
-			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
-				map.put("" + sign.getOrder(), sign.build());
-			}
+		for (Sign.Builder sign : builder.getOrderBuilderList()) {
+			map.put("" + sign.getOrder(), sign.build());
 		}
 		return map;
 	}
@@ -118,10 +116,8 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for(Qiandao.Builder qiandao : builder.getOrderBuilderList()){
-			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
-				map.put("" + sign.getOrder(), sign.build());
-			}
+		for (Sign.Builder sign : builder.getOrderBuilderList()) {
+			map.put("" + sign.getOrder(), sign.build());
 		}
 		return map;
 	}
@@ -170,10 +166,8 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for(Qiandao.Builder qiandao : builder.getOrderBuilderList()){
-			for (Sign.Builder sign : qiandao.getOrderBuilderList()) {
-				map.put("" + sign.getTargetcount(), sign.build());
-			}
+		for (Sign.Builder sign : builder.getOrderBuilderList()) {
+			map.put("" + sign.getTargetcount(), sign.build());
 		}
 		return map;
 	}
@@ -223,7 +217,7 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, SevenLogin> map = new HashMap<String, SevenLogin>();
-		for(SevenLogin.Builder sevenLogin : builder.getSevenBuilderList()){
+		for(SevenLogin.Builder sevenLogin : builder.getIdBuilderList()){
 			map.put("" + sevenLogin.getId(), sevenLogin.build());
 		}
 		return map;

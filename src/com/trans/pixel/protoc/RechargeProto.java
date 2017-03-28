@@ -961,29 +961,29 @@ public final class RechargeProto {
   public interface SignListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Qiandao order = 1;
+    // repeated .com.trans.pixel.protoc.Sign order = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> 
+    java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> 
         getOrderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.Qiandao getOrder(int index);
+    com.trans.pixel.protoc.RechargeProto.Sign getOrder(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
     int getOrderCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
+    java.util.List<? extends com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
         getOrderOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getOrderOrBuilder(
+    com.trans.pixel.protoc.RechargeProto.SignOrBuilder getOrderOrBuilder(
         int index);
   }
   /**
@@ -1039,10 +1039,10 @@ public final class RechargeProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Qiandao>();
+                order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Sign>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              order_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.Qiandao.PARSER, extensionRegistry));
+              order_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.Sign.PARSER, extensionRegistry));
               break;
             }
           }
@@ -1087,38 +1087,38 @@ public final class RechargeProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Qiandao order = 1;
+    // repeated .com.trans.pixel.protoc.Sign order = 1;
     public static final int ORDER_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> order_;
+    private java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> order_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> getOrderList() {
+    public java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> getOrderList() {
       return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
+    public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
         getOrderOrBuilderList() {
       return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
     public int getOrderCount() {
       return order_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.Qiandao getOrder(int index) {
+    public com.trans.pixel.protoc.RechargeProto.Sign getOrder(int index) {
       return order_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getOrderOrBuilder(
+    public com.trans.pixel.protoc.RechargeProto.SignOrBuilder getOrderOrBuilder(
         int index) {
       return order_.get(index);
     }
@@ -1393,23 +1393,23 @@ public final class RechargeProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Qiandao order = 1;
-      private java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> order_ =
+      // repeated .com.trans.pixel.protoc.Sign order = 1;
+      private java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> order_ =
         java.util.Collections.emptyList();
       private void ensureOrderIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Qiandao>(order_);
+          order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Sign>(order_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.RechargeProto.Qiandao, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder, com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> orderBuilder_;
+          com.trans.pixel.protoc.RechargeProto.Sign, com.trans.pixel.protoc.RechargeProto.Sign.Builder, com.trans.pixel.protoc.RechargeProto.SignOrBuilder> orderBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao> getOrderList() {
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> getOrderList() {
         if (orderBuilder_ == null) {
           return java.util.Collections.unmodifiableList(order_);
         } else {
@@ -1417,7 +1417,7 @@ public final class RechargeProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public int getOrderCount() {
         if (orderBuilder_ == null) {
@@ -1427,9 +1427,9 @@ public final class RechargeProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao getOrder(int index) {
+      public com.trans.pixel.protoc.RechargeProto.Sign getOrder(int index) {
         if (orderBuilder_ == null) {
           return order_.get(index);
         } else {
@@ -1437,10 +1437,10 @@ public final class RechargeProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder setOrder(
-          int index, com.trans.pixel.protoc.RechargeProto.Qiandao value) {
+          int index, com.trans.pixel.protoc.RechargeProto.Sign value) {
         if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1454,10 +1454,10 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder setOrder(
-          int index, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.RechargeProto.Sign.Builder builderForValue) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           order_.set(index, builderForValue.build());
@@ -1468,9 +1468,9 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public Builder addOrder(com.trans.pixel.protoc.RechargeProto.Qiandao value) {
+      public Builder addOrder(com.trans.pixel.protoc.RechargeProto.Sign value) {
         if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1484,10 +1484,10 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder addOrder(
-          int index, com.trans.pixel.protoc.RechargeProto.Qiandao value) {
+          int index, com.trans.pixel.protoc.RechargeProto.Sign value) {
         if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1501,10 +1501,10 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder addOrder(
-          com.trans.pixel.protoc.RechargeProto.Qiandao.Builder builderForValue) {
+          com.trans.pixel.protoc.RechargeProto.Sign.Builder builderForValue) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           order_.add(builderForValue.build());
@@ -1515,10 +1515,10 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder addOrder(
-          int index, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.RechargeProto.Sign.Builder builderForValue) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           order_.add(index, builderForValue.build());
@@ -1529,10 +1529,10 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder addAllOrder(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.RechargeProto.Qiandao> values) {
+          java.lang.Iterable<? extends com.trans.pixel.protoc.RechargeProto.Sign> values) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           super.addAll(values, order_);
@@ -1543,7 +1543,7 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
@@ -1556,7 +1556,7 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
       public Builder removeOrder(int index) {
         if (orderBuilder_ == null) {
@@ -1569,16 +1569,16 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder getOrderBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Sign.Builder getOrderBuilder(
           int index) {
         return getOrderFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder getOrderOrBuilder(
+      public com.trans.pixel.protoc.RechargeProto.SignOrBuilder getOrderOrBuilder(
           int index) {
         if (orderBuilder_ == null) {
           return order_.get(index);  } else {
@@ -1586,9 +1586,9 @@ public final class RechargeProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
+      public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
            getOrderOrBuilderList() {
         if (orderBuilder_ != null) {
           return orderBuilder_.getMessageOrBuilderList();
@@ -1597,33 +1597,33 @@ public final class RechargeProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder addOrderBuilder() {
+      public com.trans.pixel.protoc.RechargeProto.Sign.Builder addOrderBuilder() {
         return getOrderFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.RechargeProto.Qiandao.getDefaultInstance());
+            com.trans.pixel.protoc.RechargeProto.Sign.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.Qiandao.Builder addOrderBuilder(
+      public com.trans.pixel.protoc.RechargeProto.Sign.Builder addOrderBuilder(
           int index) {
         return getOrderFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.RechargeProto.Qiandao.getDefaultInstance());
+            index, com.trans.pixel.protoc.RechargeProto.Sign.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Qiandao order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Sign order = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.RechargeProto.Qiandao.Builder> 
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.Sign.Builder> 
            getOrderBuilderList() {
         return getOrderFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.RechargeProto.Qiandao, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder, com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder> 
+          com.trans.pixel.protoc.RechargeProto.Sign, com.trans.pixel.protoc.RechargeProto.Sign.Builder, com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
           getOrderFieldBuilder() {
         if (orderBuilder_ == null) {
           orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.RechargeProto.Qiandao, com.trans.pixel.protoc.RechargeProto.Qiandao.Builder, com.trans.pixel.protoc.RechargeProto.QiandaoOrBuilder>(
+              com.trans.pixel.protoc.RechargeProto.Sign, com.trans.pixel.protoc.RechargeProto.Sign.Builder, com.trans.pixel.protoc.RechargeProto.SignOrBuilder>(
                   order_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -16995,51 +16995,51 @@ public final class RechargeProto {
       "\n\023RechargeProto.proto\022\026com.trans.pixel.p" +
       "rotoc\032\nBase.proto\"T\n\007Qiandao\022+\n\005order\030\001 " +
       "\003(\0132\034.com.trans.pixel.protoc.Sign\022\n\n\002id\030" +
-      "\002 \002(\005\022\020\n\010activity\030\003 \002(\t\":\n\010SignList\022.\n\005o" +
-      "rder\030\001 \003(\0132\037.com.trans.pixel.protoc.Qian" +
-      "dao\"[\n\004Sign\022\r\n\005order\030\001 \002(\005\022\020\n\010targetid\030\003" +
-      " \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\016\n\006itemid\030\005 \001(" +
-      "\005\022\r\n\005count\030\007 \001(\005\"0\n\034RequestSevenLoginSig" +
-      "nCommand\022\020\n\010chooseId\030\001 \001(\005\"\247\001\n\010VipLibao\022" +
-      "\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001",
-      "(\t\022\014\n\004rare\030\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\r\n" +
-      "\005value\030\006 \001(\005\022\014\n\004cost\030\007 \001(\005\0220\n\004item\030\010 \003(\013" +
-      "2\".com.trans.pixel.protoc.RewardInfo\"?\n\014" +
-      "VipLibaoList\022/\n\005libao\030\001 \003(\0132 .com.trans." +
-      "pixel.protoc.VipLibao\"\362\001\n\007VipInfo\022\013\n\003vip" +
-      "\030\001 \001(\005\022\013\n\003rmb\030\002 \001(\005\022\016\n\006effect\030\003 \001(\t\022\017\n\007d" +
-      "ianjin\030\004 \001(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003pvp\030\006 \001(" +
-      "\005\022\014\n\004quyu\030\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020\n\010baoxia" +
-      "ng\030\t \001(\005\022\016\n\006zhibao\030\n \001(\005\022\r\n\005baohu\030\013 \001(\005\022" +
-      "\016\n\006libao1\030\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022\017\n\007zuans",
-      "hi\030\016 \001(\005\022\020\n\010contract\030\017 \001(\005\"7\n\007VipList\022,\n" +
-      "\003vip\030\001 \003(\0132\037.com.trans.pixel.protoc.VipI" +
-      "nfo\"\237\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002 \002(\005\022\016\n\006" +
-      "itemid\030\003 \002(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n\004name\030\005 " +
-      "\001(\t\022\023\n\013description\030\006 \001(\t\022\013\n\003img\030\007 \001(\t\022\014\n" +
-      "\004type\030\010 \001(\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n\006costid\030" +
-      "\n \001(\005\"3\n\007RmbList\022(\n\003rmb\030\001 \003(\0132\033.com.tran" +
-      "s.pixel.protoc.Rmb\">\n\rShouchongList\022-\n\002i" +
-      "d\030\001 \003(\0132!.com.trans.pixel.protoc.Shoucho" +
-      "ng\"t\n\tShouchong\022\n\n\002id\030\001 \002(\005\022\020\n\010activity\030",
-      "\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\0227\n\006reward\030\005 \003(\0132" +
-      "\'.com.trans.pixel.protoc.ShouchongReward" +
-      "\"2\n\017ShouchongReward\022\020\n\010rewardid\030\001 \002(\005\022\r\n" +
-      "\005count\030\002 \002(\005\"\"\n\023RequestCdkeyCommand\022\013\n\003k" +
-      "ey\030\001 \002(\t\"(\n\030RequestSubmitIconCommand\022\014\n\004" +
-      "icon\030\001 \002(\005\"-\n\033RequestCheatRechargeComman" +
-      "d\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRechargeComm" +
-      "and\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBindAccoun" +
-      "tCommand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccou" +
-      "nt\030\002 \002(\t\";\n\036RequestPurchaseVipLibaoComma",
-      "nd\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n\033Request" +
-      "QueryRechargeCommand\022\017\n\007orderId\030\001 \001(\t\"\037\n" +
-      "\035RequestShouchongRewardCommand\"+\n\032Reques" +
-      "tGetGrowJewelCommand\022\r\n\005order\030\001 \002(\005\")\n\030R" +
-      "equestGetGrowExpCommand\022\r\n\005order\030\001 \002(\005\"\024" +
-      "\n\022RequestSignCommand\"I\n\023ResponseSignComm" +
-      "and\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.RewardInfo"
+      "\002 \002(\005\022\020\n\010activity\030\003 \002(\t\"7\n\010SignList\022+\n\005o" +
+      "rder\030\001 \003(\0132\034.com.trans.pixel.protoc.Sign" +
+      "\"[\n\004Sign\022\r\n\005order\030\001 \002(\005\022\020\n\010targetid\030\003 \001(" +
+      "\005\022\023\n\013targetcount\030\004 \001(\005\022\016\n\006itemid\030\005 \001(\005\022\r" +
+      "\n\005count\030\007 \001(\005\"0\n\034RequestSevenLoginSignCo" +
+      "mmand\022\020\n\010chooseId\030\001 \001(\005\"\247\001\n\010VipLibao\022\016\n\006" +
+      "itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\t\022",
+      "\014\n\004rare\030\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\r\n\005va" +
+      "lue\030\006 \001(\005\022\014\n\004cost\030\007 \001(\005\0220\n\004item\030\010 \003(\0132\"." +
+      "com.trans.pixel.protoc.RewardInfo\"?\n\014Vip" +
+      "LibaoList\022/\n\005libao\030\001 \003(\0132 .com.trans.pix" +
+      "el.protoc.VipLibao\"\362\001\n\007VipInfo\022\013\n\003vip\030\001 " +
+      "\001(\005\022\013\n\003rmb\030\002 \001(\005\022\016\n\006effect\030\003 \001(\t\022\017\n\007dian" +
+      "jin\030\004 \001(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003pvp\030\006 \001(\005\022\014" +
+      "\n\004quyu\030\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020\n\010baoxiang\030" +
+      "\t \001(\005\022\016\n\006zhibao\030\n \001(\005\022\r\n\005baohu\030\013 \001(\005\022\016\n\006" +
+      "libao1\030\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022\017\n\007zuanshi\030",
+      "\016 \001(\005\022\020\n\010contract\030\017 \001(\005\"7\n\007VipList\022,\n\003vi" +
+      "p\030\001 \003(\0132\037.com.trans.pixel.protoc.VipInfo" +
+      "\"\237\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002 \002(\005\022\016\n\006ite" +
+      "mid\030\003 \002(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n\004name\030\005 \001(\t" +
+      "\022\023\n\013description\030\006 \001(\t\022\013\n\003img\030\007 \001(\t\022\014\n\004ty" +
+      "pe\030\010 \001(\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n\006costid\030\n \001" +
+      "(\005\"3\n\007RmbList\022(\n\003rmb\030\001 \003(\0132\033.com.trans.p" +
+      "ixel.protoc.Rmb\">\n\rShouchongList\022-\n\002id\030\001" +
+      " \003(\0132!.com.trans.pixel.protoc.Shouchong\"" +
+      "t\n\tShouchong\022\n\n\002id\030\001 \002(\005\022\020\n\010activity\030\002 \002",
+      "(\t\022\020\n\010targetid\030\003 \002(\005\0227\n\006reward\030\005 \003(\0132\'.c" +
+      "om.trans.pixel.protoc.ShouchongReward\"2\n" +
+      "\017ShouchongReward\022\020\n\010rewardid\030\001 \002(\005\022\r\n\005co" +
+      "unt\030\002 \002(\005\"\"\n\023RequestCdkeyCommand\022\013\n\003key\030" +
+      "\001 \002(\t\"(\n\030RequestSubmitIconCommand\022\014\n\004ico" +
+      "n\030\001 \002(\005\"-\n\033RequestCheatRechargeCommand\022\016" +
+      "\n\006itemid\030\001 \001(\005\"(\n\026RequestRechargeCommand" +
+      "\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBindAccountCo" +
+      "mmand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccount\030" +
+      "\002 \002(\t\";\n\036RequestPurchaseVipLibaoCommand\022",
+      "\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n\033RequestQue" +
+      "ryRechargeCommand\022\017\n\007orderId\030\001 \001(\t\"\037\n\035Re" +
+      "questShouchongRewardCommand\"+\n\032RequestGe" +
+      "tGrowJewelCommand\022\r\n\005order\030\001 \002(\005\")\n\030Requ" +
+      "estGetGrowExpCommand\022\r\n\005order\030\001 \002(\005\"\024\n\022R" +
+      "equestSignCommand\"I\n\023ResponseSignCommand" +
+      "\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
