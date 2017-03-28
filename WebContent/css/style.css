@@ -5,7 +5,7 @@
    /* opacity: .4;
     filter: Alpha(Opacity=40);*/
 }
-.ui-page-active {
+.ui-mobile .ui-page-active {
     overflow: hidden;
 }
 .ui-controlgroup .ui-controlgroup-controls .new-tab:first-child {
