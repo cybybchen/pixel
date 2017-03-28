@@ -5,6 +5,9 @@
    /* opacity: .4;
     filter: Alpha(Opacity=40);*/
 }
+.ui-page-active {
+    overflow: hidden;
+}
 .ui-controlgroup .ui-controlgroup-controls .new-tab:first-child {
     border-radius: 0px;
 }
@@ -66,6 +69,7 @@
   overflow: hidden;
 }
 .jqm-demos .jqm-content {
+    overflow: hidden;
     /*width: 75%;*/
     padding: 0;
     /*float: right;*/

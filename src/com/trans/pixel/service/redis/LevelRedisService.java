@@ -12,6 +12,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.mapper.UserLevelMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.UserInfoProto.Area;
 import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.AreaEventList;
@@ -68,6 +69,16 @@ public class LevelRedisService extends RedisService {
 		}
 		saveUserLevel(userLevel);
 		return userLevel;
+	}
+	public MultiReward.Builder getLootReward(UserBean user){
+		MultiReward.Builder builder = MultiReward.newBuilder();
+		String value = hget(RedisKey.USERDATA+user.getId(), "LootReward");
+		if(value != null)
+			parseJson(value, builder);
+		return builder;
+	}
+	public void saveLootReward(MultiReward.Builder rewards, UserBean user){
+		hput(RedisKey.USERDATA+user.getId(), "LootReward", formatJson(rewards.build()));
 	}
 	public int getCoin(UserBean user){
 		UserLevelBean userLevel = getUserLevel(user);
