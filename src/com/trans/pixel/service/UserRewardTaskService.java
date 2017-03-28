@@ -22,12 +22,12 @@ public class UserRewardTaskService {
 	@Resource
 	private UserTalentMapper userTalentMapper;
 	
-	public UserRewardTask getUserRewardTask(UserBean user, int id) {
-		return getUserRewardTask(user.getId(), id);
+	public UserRewardTask getUserRewardTask(UserBean user, int index) {
+		return getUserRewardTask(user.getId(), index);
 	}
 	
-	public UserRewardTask getUserRewardTask(long userId, int id) {
-		UserRewardTask ut = userRewardTaskRedisService.getUserRewardTask(userId, id);
+	public UserRewardTask getUserRewardTask(long userId, int index) {
+		UserRewardTask ut = userRewardTaskRedisService.getUserRewardTask(userId, index);
 
 		return ut;
 	}

@@ -18,16 +18,16 @@ public class UserRewardTaskRedisService extends RedisService {
 
 	public void updateUserRewardTask(long userId, UserRewardTask ut) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		this.hput(key, "" + ut.getId(), formatJson(ut));
+		this.hput(key, "" + ut.getIndex(), formatJson(ut));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		
 		if (ut.getType() != 1)
-			sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getId());
+			sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
 	}
 	
-	public UserRewardTask getUserRewardTask(long userId, int id) {
+	public UserRewardTask getUserRewardTask(long userId, int index) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		String value = hget(key, "" + id);
+		String value = hget(key, "" + index);
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 		if(value!= null && parseJson(value, builder))
 			return builder.build();
@@ -69,7 +69,7 @@ public class UserRewardTaskRedisService extends RedisService {
 	private Map<String, String> composeUserRewardTaskMap(List<UserRewardTask> utList) {
 		Map<String, String> map = new HashMap<String, String>();
 		for (UserRewardTask ut : utList) {
-			map.put("" + ut.getId(), formatJson(ut));
+			map.put("" + ut.getIndex(), formatJson(ut));
 		}
 		
 		return map;

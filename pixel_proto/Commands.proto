@@ -1206,19 +1206,18 @@ message PVPBossList {
 }
 
 message PVPPosition {//pvp位置
-	required int32 id = 1;
+	required int32 order = 1;
 	optional int32 x = 2;//坐标x
 	optional int32 y = 3;//坐标y
 }
 
 message PVPPositionList {
-	optional int32 fieldid = 1;
-	optional int32 name = 2;
-	repeated PVPPosition xiaoguai = 3;
+	optional int32 id = 1;
+	repeated PVPPosition order = 3;
 }
 
 message PVPPositionLists {
-	repeated PVPPositionList field = 1;
+	repeated PVPPositionList id = 1;
 }
 
 message PVPMine {//pvp矿点
@@ -2919,11 +2918,11 @@ message RewardTaskList {
 
 
 message UserRewardTask {
-	required uint32 id = 1;
+	required uint32 id = 1;//悬赏令id
 	required uint32 enemyid = 2;
 	optional uint32 status = 3;//0:没打死，1打死, 2可领奖
 	optional uint32 type = 4;
-	optional UserInfo create = 5;//房主user
+	optional UserInfo create = 5;
 	optional uint32 roomStatus = 6;
 	enum REWARDTASK_STATUS {
 		LIVE = 0;
@@ -2931,13 +2930,20 @@ message UserRewardTask {
 		CANREWARD = 2;
 		FULL = 3;//房间人数已满
 	};
+	required uint32 index = 7;//boss的一个序列
 }
 
 message UserRewardTaskRoom {
 	required uint64 createUserId = 1;
-	repeated UserInfo user = 2;
+	//repeated UserInfo user = 2;
 	required uint32 bossId = 3;
 	optional uint32 status = 4;
+	optional uint32 index = 5;
+	message RoomInfo {
+		optional uint32 index = 1;
+		optional UserInfo user = 2;
+	}
+	repeated RoomInfo roomInfo = 6; 
 }
 
 message RequestCreateRewardTaskRoomCommand {
@@ -2945,7 +2951,7 @@ message RequestCreateRewardTaskRoomCommand {
 }
 
 message RequestQuitRewardTaskRoomCommand {
-	required uint32 id = 1;
+	required uint32 index = 1;
 	required uint64 userId = 2;
 }
 
@@ -2953,10 +2959,11 @@ message RequestInviteToRewardTaskRoomCommand {
 	required uint32 id = 1;
 	repeated uint64 userId = 2;
 	optional uint64 createUserId = 3;
+	optional uint32 index = 4;
 }
 
 message RequestSubmitRewardTaskScoreCommand {
-	required uint32 id = 1;
+	required uint32 index = 1;
 	required bool ret = 2;
 }
 
@@ -2974,10 +2981,12 @@ message RequestUserRewardTaskCommand {
 
 message RequestRewardTaskRewardCommand {
 	required uint32 id = 1;
+	required uint32 roomId = 2;
 }
 
 message RequestUserRewardTaskRoomCommand {
 	required uint32 id = 1;
+	required uint32 roomId = 2;
 }
 ////////// TaskProto
 message TaskTargetList {

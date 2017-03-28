@@ -2787,10 +2787,18 @@ public final class RewardTaskProto {
     // required uint32 id = 1;
     /**
      * <code>required uint32 id = 1;</code>
+     *
+     * <pre>
+     *悬赏令id
+     * </pre>
      */
     boolean hasId();
     /**
      * <code>required uint32 id = 1;</code>
+     *
+     * <pre>
+     *悬赏令id
+     * </pre>
      */
     int getId();
 
@@ -2835,26 +2843,14 @@ public final class RewardTaskProto {
     // optional .com.trans.pixel.protoc.UserInfo create = 5;
     /**
      * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-     *
-     * <pre>
-     *房主user
-     * </pre>
      */
     boolean hasCreate();
     /**
      * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-     *
-     * <pre>
-     *房主user
-     * </pre>
      */
     com.trans.pixel.protoc.Base.UserInfo getCreate();
     /**
      * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-     *
-     * <pre>
-     *房主user
-     * </pre>
      */
     com.trans.pixel.protoc.Base.UserInfoOrBuilder getCreateOrBuilder();
 
@@ -2867,6 +2863,24 @@ public final class RewardTaskProto {
      * <code>optional uint32 roomStatus = 6;</code>
      */
     int getRoomStatus();
+
+    // required uint32 index = 7;
+    /**
+     * <code>required uint32 index = 7;</code>
+     *
+     * <pre>
+     *boss的一个序列
+     * </pre>
+     */
+    boolean hasIndex();
+    /**
+     * <code>required uint32 index = 7;</code>
+     *
+     * <pre>
+     *boss的一个序列
+     * </pre>
+     */
+    int getIndex();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserRewardTask}
@@ -2955,6 +2969,11 @@ public final class RewardTaskProto {
             case 48: {
               bitField0_ |= 0x00000020;
               roomStatus_ = input.readUInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              index_ = input.readUInt32();
               break;
             }
           }
@@ -3110,12 +3129,20 @@ public final class RewardTaskProto {
     private int id_;
     /**
      * <code>required uint32 id = 1;</code>
+     *
+     * <pre>
+     *悬赏令id
+     * </pre>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>required uint32 id = 1;</code>
+     *
+     * <pre>
+     *悬赏令id
+     * </pre>
      */
     public int getId() {
       return id_;
@@ -3182,30 +3209,18 @@ public final class RewardTaskProto {
     private com.trans.pixel.protoc.Base.UserInfo create_;
     /**
      * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-     *
-     * <pre>
-     *房主user
-     * </pre>
      */
     public boolean hasCreate() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-     *
-     * <pre>
-     *房主user
-     * </pre>
      */
     public com.trans.pixel.protoc.Base.UserInfo getCreate() {
       return create_;
     }
     /**
      * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-     *
-     * <pre>
-     *房主user
-     * </pre>
      */
     public com.trans.pixel.protoc.Base.UserInfoOrBuilder getCreateOrBuilder() {
       return create_;
@@ -3227,6 +3242,30 @@ public final class RewardTaskProto {
       return roomStatus_;
     }
 
+    // required uint32 index = 7;
+    public static final int INDEX_FIELD_NUMBER = 7;
+    private int index_;
+    /**
+     * <code>required uint32 index = 7;</code>
+     *
+     * <pre>
+     *boss的一个序列
+     * </pre>
+     */
+    public boolean hasIndex() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required uint32 index = 7;</code>
+     *
+     * <pre>
+     *boss的一个序列
+     * </pre>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
     private void initFields() {
       id_ = 0;
       enemyid_ = 0;
@@ -3234,6 +3273,7 @@ public final class RewardTaskProto {
       type_ = 0;
       create_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
       roomStatus_ = 0;
+      index_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3245,6 +3285,10 @@ public final class RewardTaskProto {
         return false;
       }
       if (!hasEnemyid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIndex()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3279,6 +3323,9 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(6, roomStatus_);
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeUInt32(7, index_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3311,6 +3358,10 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, roomStatus_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, index_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3445,6 +3496,8 @@ public final class RewardTaskProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         roomStatus_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        index_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -3501,6 +3554,10 @@ public final class RewardTaskProto {
           to_bitField0_ |= 0x00000020;
         }
         result.roomStatus_ = roomStatus_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.index_ = index_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3535,6 +3592,9 @@ public final class RewardTaskProto {
         if (other.hasRoomStatus()) {
           setRoomStatus(other.getRoomStatus());
         }
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -3545,6 +3605,10 @@ public final class RewardTaskProto {
           return false;
         }
         if (!hasEnemyid()) {
+          
+          return false;
+        }
+        if (!hasIndex()) {
           
           return false;
         }
@@ -3580,18 +3644,30 @@ public final class RewardTaskProto {
       private int id_ ;
       /**
        * <code>required uint32 id = 1;</code>
+       *
+       * <pre>
+       *悬赏令id
+       * </pre>
        */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>required uint32 id = 1;</code>
+       *
+       * <pre>
+       *悬赏令id
+       * </pre>
        */
       public int getId() {
         return id_;
       }
       /**
        * <code>required uint32 id = 1;</code>
+       *
+       * <pre>
+       *悬赏令id
+       * </pre>
        */
       public Builder setId(int value) {
         bitField0_ |= 0x00000001;
@@ -3601,6 +3677,10 @@ public final class RewardTaskProto {
       }
       /**
        * <code>required uint32 id = 1;</code>
+       *
+       * <pre>
+       *悬赏令id
+       * </pre>
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -3730,20 +3810,12 @@ public final class RewardTaskProto {
           com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> createBuilder_;
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public boolean hasCreate() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.UserInfo getCreate() {
         if (createBuilder_ == null) {
@@ -3754,10 +3826,6 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public Builder setCreate(com.trans.pixel.protoc.Base.UserInfo value) {
         if (createBuilder_ == null) {
@@ -3774,10 +3842,6 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public Builder setCreate(
           com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
@@ -3792,10 +3856,6 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public Builder mergeCreate(com.trans.pixel.protoc.Base.UserInfo value) {
         if (createBuilder_ == null) {
@@ -3815,10 +3875,6 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public Builder clearCreate() {
         if (createBuilder_ == null) {
@@ -3832,10 +3888,6 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.UserInfo.Builder getCreateBuilder() {
         bitField0_ |= 0x00000010;
@@ -3844,10 +3896,6 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.UserInfoOrBuilder getCreateOrBuilder() {
         if (createBuilder_ != null) {
@@ -3858,10 +3906,6 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional .com.trans.pixel.protoc.UserInfo create = 5;</code>
-       *
-       * <pre>
-       *房主user
-       * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
@@ -3910,6 +3954,55 @@ public final class RewardTaskProto {
         return this;
       }
 
+      // required uint32 index = 7;
+      private int index_ ;
+      /**
+       * <code>required uint32 index = 7;</code>
+       *
+       * <pre>
+       *boss的一个序列
+       * </pre>
+       */
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required uint32 index = 7;</code>
+       *
+       * <pre>
+       *boss的一个序列
+       * </pre>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>required uint32 index = 7;</code>
+       *
+       * <pre>
+       *boss的一个序列
+       * </pre>
+       */
+      public Builder setIndex(int value) {
+        bitField0_ |= 0x00000040;
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 index = 7;</code>
+       *
+       * <pre>
+       *boss的一个序列
+       * </pre>
+       */
+      public Builder clearIndex() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserRewardTask)
     }
 
@@ -3934,38 +4027,21 @@ public final class RewardTaskProto {
      */
     long getCreateUserId();
 
-    // repeated .com.trans.pixel.protoc.UserInfo user = 2;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.Base.UserInfo> 
-        getUserList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfo getUser(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    int getUserCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
-        getUserOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder(
-        int index);
-
     // required uint32 bossId = 3;
     /**
      * <code>required uint32 bossId = 3;</code>
+     *
+     * <pre>
+     *repeated UserInfo user = 2;
+     * </pre>
      */
     boolean hasBossId();
     /**
      * <code>required uint32 bossId = 3;</code>
+     *
+     * <pre>
+     *repeated UserInfo user = 2;
+     * </pre>
      */
     int getBossId();
 
@@ -3978,6 +4054,41 @@ public final class RewardTaskProto {
      * <code>optional uint32 status = 4;</code>
      */
     int getStatus();
+
+    // optional uint32 index = 5;
+    /**
+     * <code>optional uint32 index = 5;</code>
+     */
+    boolean hasIndex();
+    /**
+     * <code>optional uint32 index = 5;</code>
+     */
+    int getIndex();
+
+    // repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo> 
+        getRoomInfoList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo getRoomInfo(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    int getRoomInfoCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder> 
+        getRoomInfoOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder getRoomInfoOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserRewardTaskRoom}
@@ -4035,14 +4146,6 @@ public final class RewardTaskProto {
               createUserId_ = input.readUInt64();
               break;
             }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                user_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.UserInfo>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              user_.add(input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry));
-              break;
-            }
             case 24: {
               bitField0_ |= 0x00000002;
               bossId_ = input.readUInt32();
@@ -4053,6 +4156,19 @@ public final class RewardTaskProto {
               status_ = input.readUInt32();
               break;
             }
+            case 40: {
+              bitField0_ |= 0x00000008;
+              index_ = input.readUInt32();
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                roomInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              roomInfo_.add(input.readMessage(com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4061,8 +4177,8 @@ public final class RewardTaskProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          user_ = java.util.Collections.unmodifiableList(user_);
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          roomInfo_ = java.util.Collections.unmodifiableList(roomInfo_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4095,6 +4211,606 @@ public final class RewardTaskProto {
       return PARSER;
     }
 
+    public interface RoomInfoOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // optional uint32 index = 1;
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      boolean hasIndex();
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      int getIndex();
+
+      // optional .com.trans.pixel.protoc.UserInfo user = 2;
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       */
+      boolean hasUser();
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       */
+      com.trans.pixel.protoc.Base.UserInfo getUser();
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       */
+      com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo}
+     */
+    public static final class RoomInfo extends
+        com.google.protobuf.GeneratedMessage
+        implements RoomInfoOrBuilder {
+      // Use RoomInfo.newBuilder() to construct.
+      private RoomInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private RoomInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final RoomInfo defaultInstance;
+      public static RoomInfo getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public RoomInfo getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private RoomInfo(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 8: {
+                bitField0_ |= 0x00000001;
+                index_ = input.readUInt32();
+                break;
+              }
+              case 18: {
+                com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
+                if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                  subBuilder = user_.toBuilder();
+                }
+                user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(user_);
+                  user_ = subBuilder.buildPartial();
+                }
+                bitField0_ |= 0x00000002;
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.class, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<RoomInfo> PARSER =
+          new com.google.protobuf.AbstractParser<RoomInfo>() {
+        public RoomInfo parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new RoomInfo(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<RoomInfo> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // optional uint32 index = 1;
+      public static final int INDEX_FIELD_NUMBER = 1;
+      private int index_;
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+
+      // optional .com.trans.pixel.protoc.UserInfo user = 2;
+      public static final int USER_FIELD_NUMBER = 2;
+      private com.trans.pixel.protoc.Base.UserInfo user_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       */
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo getUser() {
+        return user_;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+        return user_;
+      }
+
+      private void initFields() {
+        index_ = 0;
+        user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        if (hasUser()) {
+          if (!getUser().isInitialized()) {
+            memoizedIsInitialized = 0;
+            return false;
+          }
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeUInt32(1, index_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeMessage(2, user_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, index_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(2, user_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.class, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder.class);
+        }
+
+        // Construct using com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+            getUserFieldBuilder();
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          index_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000001);
+          if (userBuilder_ == null) {
+            user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+          } else {
+            userBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_descriptor;
+        }
+
+        public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo getDefaultInstanceForType() {
+          return com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.getDefaultInstance();
+        }
+
+        public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo build() {
+          com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo buildPartial() {
+          com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo result = new com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.index_ = index_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          if (userBuilder_ == null) {
+            result.user_ = user_;
+          } else {
+            result.user_ = userBuilder_.build();
+          }
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo) {
+            return mergeFrom((com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo other) {
+          if (other == com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.getDefaultInstance()) return this;
+          if (other.hasIndex()) {
+            setIndex(other.getIndex());
+          }
+          if (other.hasUser()) {
+            mergeUser(other.getUser());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          if (hasUser()) {
+            if (!getUser().isInitialized()) {
+              
+              return false;
+            }
+          }
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // optional uint32 index = 1;
+        private int index_ ;
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public boolean hasIndex() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public int getIndex() {
+          return index_;
+        }
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public Builder setIndex(int value) {
+          bitField0_ |= 0x00000001;
+          index_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public Builder clearIndex() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          index_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // optional .com.trans.pixel.protoc.UserInfo user = 2;
+        private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+        private com.google.protobuf.SingleFieldBuilder<
+            com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public boolean hasUser() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public com.trans.pixel.protoc.Base.UserInfo getUser() {
+          if (userBuilder_ == null) {
+            return user_;
+          } else {
+            return userBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
+          if (userBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            user_ = value;
+            onChanged();
+          } else {
+            userBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000002;
+          return this;
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public Builder setUser(
+            com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
+          if (userBuilder_ == null) {
+            user_ = builderForValue.build();
+            onChanged();
+          } else {
+            userBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000002;
+          return this;
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
+          if (userBuilder_ == null) {
+            if (((bitField0_ & 0x00000002) == 0x00000002) &&
+                user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
+              user_ =
+                com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
+            } else {
+              user_ = value;
+            }
+            onChanged();
+          } else {
+            userBuilder_.mergeFrom(value);
+          }
+          bitField0_ |= 0x00000002;
+          return this;
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public Builder clearUser() {
+          if (userBuilder_ == null) {
+            user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+            onChanged();
+          } else {
+            userBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return getUserFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+          if (userBuilder_ != null) {
+            return userBuilder_.getMessageOrBuilder();
+          } else {
+            return user_;
+          }
+        }
+        /**
+         * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
+            getUserFieldBuilder() {
+          if (userBuilder_ == null) {
+            userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
+                    user_,
+                    getParentForChildren(),
+                    isClean());
+            user_ = null;
+          }
+          return userBuilder_;
+        }
+
+        // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo)
+      }
+
+      static {
+        defaultInstance = new RoomInfo(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo)
+    }
+
     private int bitField0_;
     // required uint64 createUserId = 1;
     public static final int CREATEUSERID_FIELD_NUMBER = 1;
@@ -4112,53 +4828,25 @@ public final class RewardTaskProto {
       return createUserId_;
     }
 
-    // repeated .com.trans.pixel.protoc.UserInfo user = 2;
-    public static final int USER_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.Base.UserInfo> user_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.Base.UserInfo> getUserList() {
-      return user_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
-        getUserOrBuilderList() {
-      return user_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    public int getUserCount() {
-      return user_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserInfo getUser(int index) {
-      return user_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder(
-        int index) {
-      return user_.get(index);
-    }
-
     // required uint32 bossId = 3;
     public static final int BOSSID_FIELD_NUMBER = 3;
     private int bossId_;
     /**
      * <code>required uint32 bossId = 3;</code>
+     *
+     * <pre>
+     *repeated UserInfo user = 2;
+     * </pre>
      */
     public boolean hasBossId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>required uint32 bossId = 3;</code>
+     *
+     * <pre>
+     *repeated UserInfo user = 2;
+     * </pre>
      */
     public int getBossId() {
       return bossId_;
@@ -4180,11 +4868,64 @@ public final class RewardTaskProto {
       return status_;
     }
 
+    // optional uint32 index = 5;
+    public static final int INDEX_FIELD_NUMBER = 5;
+    private int index_;
+    /**
+     * <code>optional uint32 index = 5;</code>
+     */
+    public boolean hasIndex() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional uint32 index = 5;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    // repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;
+    public static final int ROOMINFO_FIELD_NUMBER = 6;
+    private java.util.List<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo> roomInfo_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo> getRoomInfoList() {
+      return roomInfo_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder> 
+        getRoomInfoOrBuilderList() {
+      return roomInfo_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    public int getRoomInfoCount() {
+      return roomInfo_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo getRoomInfo(int index) {
+      return roomInfo_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder getRoomInfoOrBuilder(
+        int index) {
+      return roomInfo_.get(index);
+    }
+
     private void initFields() {
       createUserId_ = 0L;
-      user_ = java.util.Collections.emptyList();
       bossId_ = 0;
       status_ = 0;
+      index_ = 0;
+      roomInfo_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4199,8 +4940,8 @@ public final class RewardTaskProto {
         memoizedIsInitialized = 0;
         return false;
       }
-      for (int i = 0; i < getUserCount(); i++) {
-        if (!getUser(i).isInitialized()) {
+      for (int i = 0; i < getRoomInfoCount(); i++) {
+        if (!getRoomInfo(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -4215,14 +4956,17 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeUInt64(1, createUserId_);
       }
-      for (int i = 0; i < user_.size(); i++) {
-        output.writeMessage(2, user_.get(i));
-      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(3, bossId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeUInt32(4, status_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt32(5, index_);
+      }
+      for (int i = 0; i < roomInfo_.size(); i++) {
+        output.writeMessage(6, roomInfo_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4237,10 +4981,6 @@ public final class RewardTaskProto {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(1, createUserId_);
       }
-      for (int i = 0; i < user_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, user_.get(i));
-      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, bossId_);
@@ -4248,6 +4988,14 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(4, status_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, index_);
+      }
+      for (int i = 0; i < roomInfo_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, roomInfo_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4357,7 +5105,7 @@ public final class RewardTaskProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getUserFieldBuilder();
+          getRoomInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4368,16 +5116,18 @@ public final class RewardTaskProto {
         super.clear();
         createUserId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (userBuilder_ == null) {
-          user_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          userBuilder_.clear();
-        }
         bossId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        index_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (roomInfoBuilder_ == null) {
+          roomInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          roomInfoBuilder_.clear();
+        }
         return this;
       }
 
@@ -4410,23 +5160,27 @@ public final class RewardTaskProto {
           to_bitField0_ |= 0x00000001;
         }
         result.createUserId_ = createUserId_;
-        if (userBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            user_ = java.util.Collections.unmodifiableList(user_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.user_ = user_;
-        } else {
-          result.user_ = userBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
         result.bossId_ = bossId_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
         result.status_ = status_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.index_ = index_;
+        if (roomInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            roomInfo_ = java.util.Collections.unmodifiableList(roomInfo_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.roomInfo_ = roomInfo_;
+        } else {
+          result.roomInfo_ = roomInfoBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4446,37 +5200,40 @@ public final class RewardTaskProto {
         if (other.hasCreateUserId()) {
           setCreateUserId(other.getCreateUserId());
         }
-        if (userBuilder_ == null) {
-          if (!other.user_.isEmpty()) {
-            if (user_.isEmpty()) {
-              user_ = other.user_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureUserIsMutable();
-              user_.addAll(other.user_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.user_.isEmpty()) {
-            if (userBuilder_.isEmpty()) {
-              userBuilder_.dispose();
-              userBuilder_ = null;
-              user_ = other.user_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              userBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getUserFieldBuilder() : null;
-            } else {
-              userBuilder_.addAllMessages(other.user_);
-            }
-          }
-        }
         if (other.hasBossId()) {
           setBossId(other.getBossId());
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
+        }
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
+        }
+        if (roomInfoBuilder_ == null) {
+          if (!other.roomInfo_.isEmpty()) {
+            if (roomInfo_.isEmpty()) {
+              roomInfo_ = other.roomInfo_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureRoomInfoIsMutable();
+              roomInfo_.addAll(other.roomInfo_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.roomInfo_.isEmpty()) {
+            if (roomInfoBuilder_.isEmpty()) {
+              roomInfoBuilder_.dispose();
+              roomInfoBuilder_ = null;
+              roomInfo_ = other.roomInfo_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              roomInfoBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRoomInfoFieldBuilder() : null;
+            } else {
+              roomInfoBuilder_.addAllMessages(other.roomInfo_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4491,8 +5248,8 @@ public final class RewardTaskProto {
           
           return false;
         }
-        for (int i = 0; i < getUserCount(); i++) {
-          if (!getUser(i).isInitialized()) {
+        for (int i = 0; i < getRoomInfoCount(); i++) {
+          if (!getRoomInfo(i).isInitialized()) {
             
             return false;
           }
@@ -4552,274 +5309,50 @@ public final class RewardTaskProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.UserInfo user = 2;
-      private java.util.List<com.trans.pixel.protoc.Base.UserInfo> user_ =
-        java.util.Collections.emptyList();
-      private void ensureUserIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          user_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.UserInfo>(user_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.UserInfo> getUserList() {
-        if (userBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(user_);
-        } else {
-          return userBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public int getUserCount() {
-        if (userBuilder_ == null) {
-          return user_.size();
-        } else {
-          return userBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo getUser(int index) {
-        if (userBuilder_ == null) {
-          return user_.get(index);
-        } else {
-          return userBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder setUser(
-          int index, com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureUserIsMutable();
-          user_.set(index, value);
-          onChanged();
-        } else {
-          userBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder setUser(
-          int index, com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          ensureUserIsMutable();
-          user_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          userBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder addUser(com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureUserIsMutable();
-          user_.add(value);
-          onChanged();
-        } else {
-          userBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder addUser(
-          int index, com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureUserIsMutable();
-          user_.add(index, value);
-          onChanged();
-        } else {
-          userBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder addUser(
-          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          ensureUserIsMutable();
-          user_.add(builderForValue.build());
-          onChanged();
-        } else {
-          userBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder addUser(
-          int index, com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          ensureUserIsMutable();
-          user_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          userBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder addAllUser(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.UserInfo> values) {
-        if (userBuilder_ == null) {
-          ensureUserIsMutable();
-          super.addAll(values, user_);
-          onChanged();
-        } else {
-          userBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder clearUser() {
-        if (userBuilder_ == null) {
-          user_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          userBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public Builder removeUser(int index) {
-        if (userBuilder_ == null) {
-          ensureUserIsMutable();
-          user_.remove(index);
-          onChanged();
-        } else {
-          userBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder(
-          int index) {
-        return getUserFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder(
-          int index) {
-        if (userBuilder_ == null) {
-          return user_.get(index);  } else {
-          return userBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
-           getUserOrBuilderList() {
-        if (userBuilder_ != null) {
-          return userBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(user_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo.Builder addUserBuilder() {
-        return getUserFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo.Builder addUserBuilder(
-          int index) {
-        return getUserFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UserInfo user = 2;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.UserInfo.Builder> 
-           getUserBuilderList() {
-        return getUserFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
-          getUserFieldBuilder() {
-        if (userBuilder_ == null) {
-          userBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
-                  user_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          user_ = null;
-        }
-        return userBuilder_;
-      }
-
       // required uint32 bossId = 3;
       private int bossId_ ;
       /**
        * <code>required uint32 bossId = 3;</code>
+       *
+       * <pre>
+       *repeated UserInfo user = 2;
+       * </pre>
        */
       public boolean hasBossId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>required uint32 bossId = 3;</code>
+       *
+       * <pre>
+       *repeated UserInfo user = 2;
+       * </pre>
        */
       public int getBossId() {
         return bossId_;
       }
       /**
        * <code>required uint32 bossId = 3;</code>
+       *
+       * <pre>
+       *repeated UserInfo user = 2;
+       * </pre>
        */
       public Builder setBossId(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         bossId_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>required uint32 bossId = 3;</code>
+       *
+       * <pre>
+       *repeated UserInfo user = 2;
+       * </pre>
        */
       public Builder clearBossId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         bossId_ = 0;
         onChanged();
         return this;
@@ -4831,7 +5364,7 @@ public final class RewardTaskProto {
        * <code>optional uint32 status = 4;</code>
        */
       public boolean hasStatus() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional uint32 status = 4;</code>
@@ -4843,7 +5376,7 @@ public final class RewardTaskProto {
        * <code>optional uint32 status = 4;</code>
        */
       public Builder setStatus(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         status_ = value;
         onChanged();
         return this;
@@ -4852,10 +5385,283 @@ public final class RewardTaskProto {
        * <code>optional uint32 status = 4;</code>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         status_ = 0;
         onChanged();
         return this;
+      }
+
+      // optional uint32 index = 5;
+      private int index_ ;
+      /**
+       * <code>optional uint32 index = 5;</code>
+       */
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional uint32 index = 5;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>optional uint32 index = 5;</code>
+       */
+      public Builder setIndex(int value) {
+        bitField0_ |= 0x00000008;
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 index = 5;</code>
+       */
+      public Builder clearIndex() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;
+      private java.util.List<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo> roomInfo_ =
+        java.util.Collections.emptyList();
+      private void ensureRoomInfoIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          roomInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo>(roomInfo_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder> roomInfoBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo> getRoomInfoList() {
+        if (roomInfoBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(roomInfo_);
+        } else {
+          return roomInfoBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public int getRoomInfoCount() {
+        if (roomInfoBuilder_ == null) {
+          return roomInfo_.size();
+        } else {
+          return roomInfoBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo getRoomInfo(int index) {
+        if (roomInfoBuilder_ == null) {
+          return roomInfo_.get(index);
+        } else {
+          return roomInfoBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder setRoomInfo(
+          int index, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo value) {
+        if (roomInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRoomInfoIsMutable();
+          roomInfo_.set(index, value);
+          onChanged();
+        } else {
+          roomInfoBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder setRoomInfo(
+          int index, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder builderForValue) {
+        if (roomInfoBuilder_ == null) {
+          ensureRoomInfoIsMutable();
+          roomInfo_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          roomInfoBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder addRoomInfo(com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo value) {
+        if (roomInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRoomInfoIsMutable();
+          roomInfo_.add(value);
+          onChanged();
+        } else {
+          roomInfoBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder addRoomInfo(
+          int index, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo value) {
+        if (roomInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRoomInfoIsMutable();
+          roomInfo_.add(index, value);
+          onChanged();
+        } else {
+          roomInfoBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder addRoomInfo(
+          com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder builderForValue) {
+        if (roomInfoBuilder_ == null) {
+          ensureRoomInfoIsMutable();
+          roomInfo_.add(builderForValue.build());
+          onChanged();
+        } else {
+          roomInfoBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder addRoomInfo(
+          int index, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder builderForValue) {
+        if (roomInfoBuilder_ == null) {
+          ensureRoomInfoIsMutable();
+          roomInfo_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          roomInfoBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder addAllRoomInfo(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo> values) {
+        if (roomInfoBuilder_ == null) {
+          ensureRoomInfoIsMutable();
+          super.addAll(values, roomInfo_);
+          onChanged();
+        } else {
+          roomInfoBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder clearRoomInfo() {
+        if (roomInfoBuilder_ == null) {
+          roomInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          roomInfoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public Builder removeRoomInfo(int index) {
+        if (roomInfoBuilder_ == null) {
+          ensureRoomInfoIsMutable();
+          roomInfo_.remove(index);
+          onChanged();
+        } else {
+          roomInfoBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder getRoomInfoBuilder(
+          int index) {
+        return getRoomInfoFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder getRoomInfoOrBuilder(
+          int index) {
+        if (roomInfoBuilder_ == null) {
+          return roomInfo_.get(index);  } else {
+          return roomInfoBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder> 
+           getRoomInfoOrBuilderList() {
+        if (roomInfoBuilder_ != null) {
+          return roomInfoBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(roomInfo_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder addRoomInfoBuilder() {
+        return getRoomInfoFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder addRoomInfoBuilder(
+          int index) {
+        return getRoomInfoFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRewardTaskRoom.RoomInfo roomInfo = 6;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder> 
+           getRoomInfoBuilderList() {
+        return getRoomInfoFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder> 
+          getRoomInfoFieldBuilder() {
+        if (roomInfoBuilder_ == null) {
+          roomInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfo.Builder, com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom.RoomInfoOrBuilder>(
+                  roomInfo_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          roomInfo_ = null;
+        }
+        return roomInfoBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserRewardTaskRoom)
@@ -5276,15 +6082,15 @@ public final class RewardTaskProto {
   public interface RequestQuitRewardTaskRoomCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 id = 1;
+    // required uint32 index = 1;
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    boolean hasId();
+    boolean hasIndex();
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    int getId();
+    int getIndex();
 
     // required uint64 userId = 2;
     /**
@@ -5349,7 +6155,7 @@ public final class RewardTaskProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              id_ = input.readUInt32();
+              index_ = input.readUInt32();
               break;
             }
             case 16: {
@@ -5397,20 +6203,20 @@ public final class RewardTaskProto {
     }
 
     private int bitField0_;
-    // required uint32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    // required uint32 index = 1;
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private int index_;
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasIndex() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    public int getId() {
-      return id_;
+    public int getIndex() {
+      return index_;
     }
 
     // required uint64 userId = 2;
@@ -5430,7 +6236,7 @@ public final class RewardTaskProto {
     }
 
     private void initFields() {
-      id_ = 0;
+      index_ = 0;
       userId_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
@@ -5438,7 +6244,7 @@ public final class RewardTaskProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
+      if (!hasIndex()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -5454,7 +6260,7 @@ public final class RewardTaskProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, id_);
+        output.writeUInt32(1, index_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt64(2, userId_);
@@ -5470,7 +6276,7 @@ public final class RewardTaskProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, id_);
+          .computeUInt32Size(1, index_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5592,7 +6398,7 @@ public final class RewardTaskProto {
 
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        index_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         userId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -5627,7 +6433,7 @@ public final class RewardTaskProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
+        result.index_ = index_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -5648,8 +6454,8 @@ public final class RewardTaskProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand other) {
         if (other == com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
         }
         if (other.hasUserId()) {
           setUserId(other.getUserId());
@@ -5659,7 +6465,7 @@ public final class RewardTaskProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
+        if (!hasIndex()) {
           
           return false;
         }
@@ -5689,35 +6495,35 @@ public final class RewardTaskProto {
       }
       private int bitField0_;
 
-      // required uint32 id = 1;
-      private int id_ ;
+      // required uint32 index = 1;
+      private int index_ ;
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasIndex() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public int getIndex() {
+        return index_;
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public Builder setId(int value) {
+      public Builder setIndex(int value) {
         bitField0_ |= 0x00000001;
-        id_ = value;
+        index_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public Builder clearId() {
+      public Builder clearIndex() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
+        index_ = 0;
         onChanged();
         return this;
       }
@@ -5802,6 +6608,16 @@ public final class RewardTaskProto {
      * <code>optional uint64 createUserId = 3;</code>
      */
     long getCreateUserId();
+
+    // optional uint32 index = 4;
+    /**
+     * <code>optional uint32 index = 4;</code>
+     */
+    boolean hasIndex();
+    /**
+     * <code>optional uint32 index = 4;</code>
+     */
+    int getIndex();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestInviteToRewardTaskRoomCommand}
@@ -5883,6 +6699,11 @@ public final class RewardTaskProto {
             case 24: {
               bitField0_ |= 0x00000002;
               createUserId_ = input.readUInt64();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              index_ = input.readUInt32();
               break;
             }
           }
@@ -5983,10 +6804,27 @@ public final class RewardTaskProto {
       return createUserId_;
     }
 
+    // optional uint32 index = 4;
+    public static final int INDEX_FIELD_NUMBER = 4;
+    private int index_;
+    /**
+     * <code>optional uint32 index = 4;</code>
+     */
+    public boolean hasIndex() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 index = 4;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
     private void initFields() {
       id_ = 0;
       userId_ = java.util.Collections.emptyList();
       createUserId_ = 0L;
+      index_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6013,6 +6851,9 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt64(3, createUserId_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(4, index_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6038,6 +6879,10 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(3, createUserId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, index_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6161,6 +7006,8 @@ public final class RewardTaskProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         createUserId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
+        index_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -6202,6 +7049,10 @@ public final class RewardTaskProto {
           to_bitField0_ |= 0x00000002;
         }
         result.createUserId_ = createUserId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.index_ = index_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6233,6 +7084,9 @@ public final class RewardTaskProto {
         }
         if (other.hasCreateUserId()) {
           setCreateUserId(other.getCreateUserId());
+        }
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -6397,6 +7251,39 @@ public final class RewardTaskProto {
         return this;
       }
 
+      // optional uint32 index = 4;
+      private int index_ ;
+      /**
+       * <code>optional uint32 index = 4;</code>
+       */
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional uint32 index = 4;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>optional uint32 index = 4;</code>
+       */
+      public Builder setIndex(int value) {
+        bitField0_ |= 0x00000008;
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 index = 4;</code>
+       */
+      public Builder clearIndex() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestInviteToRewardTaskRoomCommand)
     }
 
@@ -6411,15 +7298,15 @@ public final class RewardTaskProto {
   public interface RequestSubmitRewardTaskScoreCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 id = 1;
+    // required uint32 index = 1;
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    boolean hasId();
+    boolean hasIndex();
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    int getId();
+    int getIndex();
 
     // required bool ret = 2;
     /**
@@ -6484,7 +7371,7 @@ public final class RewardTaskProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              id_ = input.readUInt32();
+              index_ = input.readUInt32();
               break;
             }
             case 16: {
@@ -6532,20 +7419,20 @@ public final class RewardTaskProto {
     }
 
     private int bitField0_;
-    // required uint32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    // required uint32 index = 1;
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private int index_;
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasIndex() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required uint32 index = 1;</code>
      */
-    public int getId() {
-      return id_;
+    public int getIndex() {
+      return index_;
     }
 
     // required bool ret = 2;
@@ -6565,7 +7452,7 @@ public final class RewardTaskProto {
     }
 
     private void initFields() {
-      id_ = 0;
+      index_ = 0;
       ret_ = false;
     }
     private byte memoizedIsInitialized = -1;
@@ -6573,7 +7460,7 @@ public final class RewardTaskProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
+      if (!hasIndex()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6589,7 +7476,7 @@ public final class RewardTaskProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, id_);
+        output.writeUInt32(1, index_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBool(2, ret_);
@@ -6605,7 +7492,7 @@ public final class RewardTaskProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, id_);
+          .computeUInt32Size(1, index_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -6727,7 +7614,7 @@ public final class RewardTaskProto {
 
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        index_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         ret_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -6762,7 +7649,7 @@ public final class RewardTaskProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
+        result.index_ = index_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -6783,8 +7670,8 @@ public final class RewardTaskProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand other) {
         if (other == com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
         }
         if (other.hasRet()) {
           setRet(other.getRet());
@@ -6794,7 +7681,7 @@ public final class RewardTaskProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
+        if (!hasIndex()) {
           
           return false;
         }
@@ -6824,35 +7711,35 @@ public final class RewardTaskProto {
       }
       private int bitField0_;
 
-      // required uint32 id = 1;
-      private int id_ ;
+      // required uint32 index = 1;
+      private int index_ ;
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasIndex() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public int getIndex() {
+        return index_;
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public Builder setId(int value) {
+      public Builder setIndex(int value) {
         bitField0_ |= 0x00000001;
-        id_ = value;
+        index_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required uint32 index = 1;</code>
        */
-      public Builder clearId() {
+      public Builder clearIndex() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
+        index_ = 0;
         onChanged();
         return this;
       }
@@ -8594,6 +9481,16 @@ public final class RewardTaskProto {
      * <code>required uint32 id = 1;</code>
      */
     int getId();
+
+    // required uint32 roomId = 2;
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    boolean hasRoomId();
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    int getRoomId();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestRewardTaskRewardCommand}
@@ -8649,6 +9546,11 @@ public final class RewardTaskProto {
             case 8: {
               bitField0_ |= 0x00000001;
               id_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              roomId_ = input.readUInt32();
               break;
             }
           }
@@ -8707,8 +9609,25 @@ public final class RewardTaskProto {
       return id_;
     }
 
+    // required uint32 roomId = 2;
+    public static final int ROOMID_FIELD_NUMBER = 2;
+    private int roomId_;
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    public boolean hasRoomId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    public int getRoomId() {
+      return roomId_;
+    }
+
     private void initFields() {
       id_ = 0;
+      roomId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8716,6 +9635,10 @@ public final class RewardTaskProto {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRoomId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -8729,6 +9652,9 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeUInt32(1, id_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, roomId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -8741,6 +9667,10 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, roomId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8860,6 +9790,8 @@ public final class RewardTaskProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        roomId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -8892,6 +9824,10 @@ public final class RewardTaskProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.roomId_ = roomId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8911,12 +9847,19 @@ public final class RewardTaskProto {
         if (other.hasId()) {
           setId(other.getId());
         }
+        if (other.hasRoomId()) {
+          setRoomId(other.getRoomId());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasRoomId()) {
           
           return false;
         }
@@ -8975,6 +9918,39 @@ public final class RewardTaskProto {
         return this;
       }
 
+      // required uint32 roomId = 2;
+      private int roomId_ ;
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public boolean hasRoomId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public int getRoomId() {
+        return roomId_;
+      }
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public Builder setRoomId(int value) {
+        bitField0_ |= 0x00000002;
+        roomId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public Builder clearRoomId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        roomId_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestRewardTaskRewardCommand)
     }
 
@@ -8998,6 +9974,16 @@ public final class RewardTaskProto {
      * <code>required uint32 id = 1;</code>
      */
     int getId();
+
+    // required uint32 roomId = 2;
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    boolean hasRoomId();
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    int getRoomId();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestUserRewardTaskRoomCommand}
@@ -9053,6 +10039,11 @@ public final class RewardTaskProto {
             case 8: {
               bitField0_ |= 0x00000001;
               id_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              roomId_ = input.readUInt32();
               break;
             }
           }
@@ -9111,8 +10102,25 @@ public final class RewardTaskProto {
       return id_;
     }
 
+    // required uint32 roomId = 2;
+    public static final int ROOMID_FIELD_NUMBER = 2;
+    private int roomId_;
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    public boolean hasRoomId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 roomId = 2;</code>
+     */
+    public int getRoomId() {
+      return roomId_;
+    }
+
     private void initFields() {
       id_ = 0;
+      roomId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9120,6 +10128,10 @@ public final class RewardTaskProto {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRoomId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -9133,6 +10145,9 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeUInt32(1, id_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, roomId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9145,6 +10160,10 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, roomId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9264,6 +10283,8 @@ public final class RewardTaskProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        roomId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -9296,6 +10317,10 @@ public final class RewardTaskProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.roomId_ = roomId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9315,12 +10340,19 @@ public final class RewardTaskProto {
         if (other.hasId()) {
           setId(other.getId());
         }
+        if (other.hasRoomId()) {
+          setRoomId(other.getRoomId());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasRoomId()) {
           
           return false;
         }
@@ -9379,6 +10411,39 @@ public final class RewardTaskProto {
         return this;
       }
 
+      // required uint32 roomId = 2;
+      private int roomId_ ;
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public boolean hasRoomId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public int getRoomId() {
+        return roomId_;
+      }
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public Builder setRoomId(int value) {
+        bitField0_ |= 0x00000002;
+        roomId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 roomId = 2;</code>
+       */
+      public Builder clearRoomId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        roomId_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestUserRewardTaskRoomCommand)
     }
 
@@ -9415,6 +10480,11 @@ public final class RewardTaskProto {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_descriptor;
   private static
@@ -9477,32 +10547,37 @@ public final class RewardTaskProto {
       "com.trans.pixel.protoc.RewardTaskEnemy\022." +
       "\n\004cost\030\006 \003(\0132 .com.trans.pixel.protoc.Co" +
       "stItem\"@\n\016RewardTaskList\022.\n\002id\030\001 \003(\0132\".c" +
-      "om.trans.pixel.protoc.RewardTask\"\322\001\n\016Use" +
+      "om.trans.pixel.protoc.RewardTask\"\341\001\n\016Use" +
       "rRewardTask\022\n\n\002id\030\001 \002(\r\022\017\n\007enemyid\030\002 \002(\r",
       "\022\016\n\006status\030\003 \001(\r\022\014\n\004type\030\004 \001(\r\0220\n\006create" +
       "\030\005 \001(\0132 .com.trans.pixel.protoc.UserInfo" +
-      "\022\022\n\nroomStatus\030\006 \001(\r\"?\n\021REWARDTASK_STATU" +
-      "S\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n\004F" +
-      "ULL\020\003\"z\n\022UserRewardTaskRoom\022\024\n\014createUse" +
-      "rId\030\001 \002(\004\022.\n\004user\030\002 \003(\0132 .com.trans.pixe" +
-      "l.protoc.UserInfo\022\016\n\006bossId\030\003 \002(\r\022\016\n\006sta" +
-      "tus\030\004 \001(\r\"0\n\"RequestCreateRewardTaskRoom" +
-      "Command\022\n\n\002id\030\001 \002(\r\">\n RequestQuitReward" +
-      "TaskRoomCommand\022\n\n\002id\030\001 \002(\r\022\016\n\006userId\030\002 ",
-      "\002(\004\"X\n$RequestInviteToRewardTaskRoomComm" +
-      "and\022\n\n\002id\030\001 \002(\r\022\016\n\006userId\030\002 \003(\004\022\024\n\014creat" +
-      "eUserId\030\003 \001(\004\">\n#RequestSubmitRewardTask" +
-      "ScoreCommand\022\n\n\002id\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n" +
-      "\035ResponseUserRewardTaskCommand\022>\n\016userRe" +
-      "wardTask\030\001 \003(\0132&.com.trans.pixel.protoc." +
-      "UserRewardTask\"]\n!ResponseUserRewardTask" +
-      "RoomCommand\0228\n\004room\030\001 \003(\0132*.com.trans.pi" +
-      "xel.protoc.UserRewardTaskRoom\"\036\n\034Request" +
-      "UserRewardTaskCommand\",\n\036RequestRewardTa",
-      "skRewardCommand\022\n\n\002id\030\001 \002(\r\".\n RequestUs" +
-      "erRewardTaskRoomCommand\022\n\n\002id\030\001 \002(\r*A\n\017R" +
-      "EWARDTASK_TYPE\022\n\n\006TYPE_1\020\001\022\n\n\006TYPE_2\020\002\022\n" +
-      "\n\006TYPE_3\020\003\022\n\n\006TYPE_4\020\004"
+      "\022\022\n\nroomStatus\030\006 \001(\r\022\r\n\005index\030\007 \002(\r\"?\n\021R" +
+      "EWARDTASK_STATUS\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tC" +
+      "ANREWARD\020\002\022\010\n\004FULL\020\003\"\353\001\n\022UserRewardTaskR" +
+      "oom\022\024\n\014createUserId\030\001 \002(\004\022\016\n\006bossId\030\003 \002(" +
+      "\r\022\016\n\006status\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\022E\n\010room" +
+      "Info\030\006 \003(\01323.com.trans.pixel.protoc.User" +
+      "RewardTaskRoom.RoomInfo\032I\n\010RoomInfo\022\r\n\005i" +
+      "ndex\030\001 \001(\r\022.\n\004user\030\002 \001(\0132 .com.trans.pix",
+      "el.protoc.UserInfo\"0\n\"RequestCreateRewar" +
+      "dTaskRoomCommand\022\n\n\002id\030\001 \002(\r\"A\n RequestQ" +
+      "uitRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\022" +
+      "\016\n\006userId\030\002 \002(\004\"g\n$RequestInviteToReward" +
+      "TaskRoomCommand\022\n\n\002id\030\001 \002(\r\022\016\n\006userId\030\002 " +
+      "\003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r" +
+      "\"A\n#RequestSubmitRewardTaskScoreCommand\022" +
+      "\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035ResponseU" +
+      "serRewardTaskCommand\022>\n\016userRewardTask\030\001" +
+      " \003(\0132&.com.trans.pixel.protoc.UserReward",
+      "Task\"]\n!ResponseUserRewardTaskRoomComman" +
+      "d\0228\n\004room\030\001 \003(\0132*.com.trans.pixel.protoc" +
+      ".UserRewardTaskRoom\"\036\n\034RequestUserReward" +
+      "TaskCommand\"<\n\036RequestRewardTaskRewardCo" +
+      "mmand\022\n\n\002id\030\001 \002(\r\022\016\n\006roomId\030\002 \002(\r\">\n Req" +
+      "uestUserRewardTaskRoomCommand\022\n\n\002id\030\001 \002(" +
+      "\r\022\016\n\006roomId\030\002 \002(\r*A\n\017REWARDTASK_TYPE\022\n\n\006" +
+      "TYPE_1\020\001\022\n\n\006TYPE_2\020\002\022\n\n\006TYPE_3\020\003\022\n\n\006TYPE" +
+      "_4\020\004"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9532,13 +10607,19 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_UserRewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTask_descriptor,
-              new java.lang.String[] { "Id", "Enemyid", "Status", "Type", "Create", "RoomStatus", });
+              new java.lang.String[] { "Id", "Enemyid", "Status", "Type", "Create", "RoomStatus", "Index", });
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor,
-              new java.lang.String[] { "CreateUserId", "User", "BossId", "Status", });
+              new java.lang.String[] { "CreateUserId", "BossId", "Status", "Index", "RoomInfo", });
+          internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_descriptor =
+            internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor.getNestedTypes().get(0);
+          internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_RoomInfo_descriptor,
+              new java.lang.String[] { "Index", "User", });
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_fieldAccessorTable = new
@@ -9550,19 +10631,19 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_descriptor,
-              new java.lang.String[] { "Id", "UserId", });
+              new java.lang.String[] { "Index", "UserId", });
           internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_descriptor,
-              new java.lang.String[] { "Id", "UserId", "CreateUserId", });
+              new java.lang.String[] { "Id", "UserId", "CreateUserId", "Index", });
           internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_descriptor,
-              new java.lang.String[] { "Id", "Ret", });
+              new java.lang.String[] { "Index", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_fieldAccessorTable = new
@@ -9586,13 +10667,13 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Id", "RoomId", });
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_descriptor =
             getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Id", "RoomId", });
           return null;
         }
       };

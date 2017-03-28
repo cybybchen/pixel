@@ -74,9 +74,9 @@ public class RewardTaskRedisService extends RedisService {
 		return map;
 	}
 	
-	public UserRewardTaskRoom getUserRewardTaskRoom(long userId, int id) {
+	public UserRewardTaskRoom getUserRewardTaskRoom(long userId, int index) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + userId;
-		String value = hget(key, "" + id);
+		String value = hget(key, "" + index);
 		if (value == null)
 			return null;
 		
@@ -90,13 +90,13 @@ public class RewardTaskRedisService extends RedisService {
 	
 	public void setUserRewardTaskRoom(UserRewardTaskRoom room) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + room.getCreateUserId();
-		hput(key, "" + room.getBossId(), formatJson(room));
+		hput(key, "" + room.getIndex(), formatJson(room));
 		expireAt(key, DateUtil.getEndDateOfD());
 	}
 	
-	public void delUserRewardTaskRoom(UserBean user, int id) {
+	public void delUserRewardTaskRoom(UserBean user, int index) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + user.getId();
-		hdelete(key, "" + id);
+		hdelete(key, "" + index);
 	}
 	
 	//rewardtask reward

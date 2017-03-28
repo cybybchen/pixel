@@ -113,6 +113,7 @@ public class UserBean {
 	private int zhaohuanshi = 0;
 	private int zhujueExp = 0;
 	private int vipExp = 0;
+	private int rewardTaskIndex = 0;
 	/**
 	 * 当前活跃度
 	 */
@@ -1120,6 +1121,12 @@ public class UserBean {
 	}
 	public void setVipExp(int vipExp) {
 		this.vipExp = vipExp;
+	}
+	public int getRewardTaskIndex() {
+		return rewardTaskIndex;
+	}
+	public void setRewardTaskIndex(int rewardTaskIndex) {
+		this.rewardTaskIndex = rewardTaskIndex;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
