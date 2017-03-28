@@ -130,8 +130,8 @@ public class SignService {
 	
 	private RewardBean buildRewardBySign(Sign sign) {
 		RewardBean reward = new RewardBean();
-		reward.setItemid(sign.getRewardid());
-		reward.setCount(sign.getRewardcount());
+		reward.setItemid(sign.getItemid());
+		reward.setCount(sign.getCount());
 		
 		return reward;
 	}

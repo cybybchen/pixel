@@ -1764,8 +1764,8 @@ message Sign {
 	required int32 order = 1;
 	optional int32 targetid = 3;
 	optional int32 targetcount = 4;
-	required int32 rewardid = 5;
-	required int32 rewardcount = 7;
+	optional int32 itemid = 5;
+	optional int32 count = 7;
 }
 
 message RequestSevenLoginSignCommand {

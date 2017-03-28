@@ -1677,25 +1677,25 @@ public final class RechargeProto {
      */
     int getTargetcount();
 
-    // required int32 rewardid = 5;
+    // optional int32 itemid = 5;
     /**
-     * <code>required int32 rewardid = 5;</code>
+     * <code>optional int32 itemid = 5;</code>
      */
-    boolean hasRewardid();
+    boolean hasItemid();
     /**
-     * <code>required int32 rewardid = 5;</code>
+     * <code>optional int32 itemid = 5;</code>
      */
-    int getRewardid();
+    int getItemid();
 
-    // required int32 rewardcount = 7;
+    // optional int32 count = 7;
     /**
-     * <code>required int32 rewardcount = 7;</code>
+     * <code>optional int32 count = 7;</code>
      */
-    boolean hasRewardcount();
+    boolean hasCount();
     /**
-     * <code>required int32 rewardcount = 7;</code>
+     * <code>optional int32 count = 7;</code>
      */
-    int getRewardcount();
+    int getCount();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Sign}
@@ -1765,12 +1765,12 @@ public final class RechargeProto {
             }
             case 40: {
               bitField0_ |= 0x00000008;
-              rewardid_ = input.readInt32();
+              itemid_ = input.readInt32();
               break;
             }
             case 56: {
               bitField0_ |= 0x00000010;
-              rewardcount_ = input.readInt32();
+              count_ = input.readInt32();
               break;
             }
           }
@@ -1861,44 +1861,44 @@ public final class RechargeProto {
       return targetcount_;
     }
 
-    // required int32 rewardid = 5;
-    public static final int REWARDID_FIELD_NUMBER = 5;
-    private int rewardid_;
+    // optional int32 itemid = 5;
+    public static final int ITEMID_FIELD_NUMBER = 5;
+    private int itemid_;
     /**
-     * <code>required int32 rewardid = 5;</code>
+     * <code>optional int32 itemid = 5;</code>
      */
-    public boolean hasRewardid() {
+    public boolean hasItemid() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 rewardid = 5;</code>
+     * <code>optional int32 itemid = 5;</code>
      */
-    public int getRewardid() {
-      return rewardid_;
+    public int getItemid() {
+      return itemid_;
     }
 
-    // required int32 rewardcount = 7;
-    public static final int REWARDCOUNT_FIELD_NUMBER = 7;
-    private int rewardcount_;
+    // optional int32 count = 7;
+    public static final int COUNT_FIELD_NUMBER = 7;
+    private int count_;
     /**
-     * <code>required int32 rewardcount = 7;</code>
+     * <code>optional int32 count = 7;</code>
      */
-    public boolean hasRewardcount() {
+    public boolean hasCount() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 rewardcount = 7;</code>
+     * <code>optional int32 count = 7;</code>
      */
-    public int getRewardcount() {
-      return rewardcount_;
+    public int getCount() {
+      return count_;
     }
 
     private void initFields() {
       order_ = 0;
       targetid_ = 0;
       targetcount_ = 0;
-      rewardid_ = 0;
-      rewardcount_ = 0;
+      itemid_ = 0;
+      count_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1906,14 +1906,6 @@ public final class RechargeProto {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasOrder()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRewardcount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1934,10 +1926,10 @@ public final class RechargeProto {
         output.writeInt32(4, targetcount_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(5, rewardid_);
+        output.writeInt32(5, itemid_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(7, rewardcount_);
+        output.writeInt32(7, count_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1962,11 +1954,11 @@ public final class RechargeProto {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, rewardid_);
+          .computeInt32Size(5, itemid_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, rewardcount_);
+          .computeInt32Size(7, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2090,9 +2082,9 @@ public final class RechargeProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         targetcount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        rewardid_ = 0;
+        itemid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        rewardcount_ = 0;
+        count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
@@ -2137,11 +2129,11 @@ public final class RechargeProto {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.rewardid_ = rewardid_;
+        result.itemid_ = itemid_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.rewardcount_ = rewardcount_;
+        result.count_ = count_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2167,11 +2159,11 @@ public final class RechargeProto {
         if (other.hasTargetcount()) {
           setTargetcount(other.getTargetcount());
         }
-        if (other.hasRewardid()) {
-          setRewardid(other.getRewardid());
+        if (other.hasItemid()) {
+          setItemid(other.getItemid());
         }
-        if (other.hasRewardcount()) {
-          setRewardcount(other.getRewardcount());
+        if (other.hasCount()) {
+          setCount(other.getCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2179,14 +2171,6 @@ public final class RechargeProto {
 
       public final boolean isInitialized() {
         if (!hasOrder()) {
-          
-          return false;
-        }
-        if (!hasRewardid()) {
-          
-          return false;
-        }
-        if (!hasRewardcount()) {
           
           return false;
         }
@@ -2311,68 +2295,68 @@ public final class RechargeProto {
         return this;
       }
 
-      // required int32 rewardid = 5;
-      private int rewardid_ ;
+      // optional int32 itemid = 5;
+      private int itemid_ ;
       /**
-       * <code>required int32 rewardid = 5;</code>
+       * <code>optional int32 itemid = 5;</code>
        */
-      public boolean hasRewardid() {
+      public boolean hasItemid() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 rewardid = 5;</code>
+       * <code>optional int32 itemid = 5;</code>
        */
-      public int getRewardid() {
-        return rewardid_;
+      public int getItemid() {
+        return itemid_;
       }
       /**
-       * <code>required int32 rewardid = 5;</code>
+       * <code>optional int32 itemid = 5;</code>
        */
-      public Builder setRewardid(int value) {
+      public Builder setItemid(int value) {
         bitField0_ |= 0x00000008;
-        rewardid_ = value;
+        itemid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 rewardid = 5;</code>
+       * <code>optional int32 itemid = 5;</code>
        */
-      public Builder clearRewardid() {
+      public Builder clearItemid() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        rewardid_ = 0;
+        itemid_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 rewardcount = 7;
-      private int rewardcount_ ;
+      // optional int32 count = 7;
+      private int count_ ;
       /**
-       * <code>required int32 rewardcount = 7;</code>
+       * <code>optional int32 count = 7;</code>
        */
-      public boolean hasRewardcount() {
+      public boolean hasCount() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 rewardcount = 7;</code>
+       * <code>optional int32 count = 7;</code>
        */
-      public int getRewardcount() {
-        return rewardcount_;
+      public int getCount() {
+        return count_;
       }
       /**
-       * <code>required int32 rewardcount = 7;</code>
+       * <code>optional int32 count = 7;</code>
        */
-      public Builder setRewardcount(int value) {
+      public Builder setCount(int value) {
         bitField0_ |= 0x00000010;
-        rewardcount_ = value;
+        count_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 rewardcount = 7;</code>
+       * <code>optional int32 count = 7;</code>
        */
-      public Builder clearRewardcount() {
+      public Builder clearCount() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        rewardcount_ = 0;
+        count_ = 0;
         onChanged();
         return this;
       }
@@ -17013,49 +16997,49 @@ public final class RechargeProto {
       "\003(\0132\034.com.trans.pixel.protoc.Sign\022\n\n\002id\030" +
       "\002 \002(\005\022\020\n\010activity\030\003 \002(\t\":\n\010SignList\022.\n\005o" +
       "rder\030\001 \003(\0132\037.com.trans.pixel.protoc.Qian" +
-      "dao\"c\n\004Sign\022\r\n\005order\030\001 \002(\005\022\020\n\010targetid\030\003" +
-      " \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010rewardid\030\005 " +
-      "\002(\005\022\023\n\013rewardcount\030\007 \002(\005\"0\n\034RequestSeven" +
-      "LoginSignCommand\022\020\n\010chooseId\030\001 \001(\005\"\247\001\n\010V" +
-      "ipLibao\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n",
-      "\003img\030\003 \001(\t\022\014\n\004rare\030\004 \001(\005\022\023\n\013description\030" +
-      "\005 \001(\t\022\r\n\005value\030\006 \001(\005\022\014\n\004cost\030\007 \001(\005\0220\n\004it" +
-      "em\030\010 \003(\0132\".com.trans.pixel.protoc.Reward" +
-      "Info\"?\n\014VipLibaoList\022/\n\005libao\030\001 \003(\0132 .co" +
-      "m.trans.pixel.protoc.VipLibao\"\362\001\n\007VipInf" +
-      "o\022\013\n\003vip\030\001 \001(\005\022\013\n\003rmb\030\002 \001(\005\022\016\n\006effect\030\003 " +
-      "\001(\t\022\017\n\007dianjin\030\004 \001(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003" +
-      "pvp\030\006 \001(\005\022\014\n\004quyu\030\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020" +
-      "\n\010baoxiang\030\t \001(\005\022\016\n\006zhibao\030\n \001(\005\022\r\n\005baoh" +
-      "u\030\013 \001(\005\022\016\n\006libao1\030\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022",
-      "\017\n\007zuanshi\030\016 \001(\005\022\020\n\010contract\030\017 \001(\005\"7\n\007Vi" +
-      "pList\022,\n\003vip\030\001 \003(\0132\037.com.trans.pixel.pro" +
-      "toc.VipInfo\"\237\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002" +
-      " \002(\005\022\016\n\006itemid\030\003 \002(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n" +
-      "\004name\030\005 \001(\t\022\023\n\013description\030\006 \001(\t\022\013\n\003img\030" +
-      "\007 \001(\t\022\014\n\004type\030\010 \001(\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n" +
-      "\006costid\030\n \001(\005\"3\n\007RmbList\022(\n\003rmb\030\001 \003(\0132\033." +
-      "com.trans.pixel.protoc.Rmb\">\n\rShouchongL" +
-      "ist\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.protoc" +
-      ".Shouchong\"t\n\tShouchong\022\n\n\002id\030\001 \002(\005\022\020\n\010a",
-      "ctivity\030\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\0227\n\006rewar" +
-      "d\030\005 \003(\0132\'.com.trans.pixel.protoc.Shoucho" +
-      "ngReward\"2\n\017ShouchongReward\022\020\n\010rewardid\030" +
-      "\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\"\n\023RequestCdkeyComm" +
-      "and\022\013\n\003key\030\001 \002(\t\"(\n\030RequestSubmitIconCom" +
-      "mand\022\014\n\004icon\030\001 \002(\005\"-\n\033RequestCheatRechar" +
-      "geCommand\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRech" +
-      "argeCommand\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBi" +
-      "ndAccountCommand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\n" +
-      "newAccount\030\002 \002(\t\";\n\036RequestPurchaseVipLi",
-      "baoCommand\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n" +
-      "\033RequestQueryRechargeCommand\022\017\n\007orderId\030" +
-      "\001 \001(\t\"\037\n\035RequestShouchongRewardCommand\"+" +
-      "\n\032RequestGetGrowJewelCommand\022\r\n\005order\030\001 " +
-      "\002(\005\")\n\030RequestGetGrowExpCommand\022\r\n\005order" +
-      "\030\001 \002(\005\"\024\n\022RequestSignCommand\"I\n\023Response" +
-      "SignCommand\0222\n\006reward\030\001 \003(\0132\".com.trans." +
-      "pixel.protoc.RewardInfo"
+      "dao\"[\n\004Sign\022\r\n\005order\030\001 \002(\005\022\020\n\010targetid\030\003" +
+      " \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\016\n\006itemid\030\005 \001(" +
+      "\005\022\r\n\005count\030\007 \001(\005\"0\n\034RequestSevenLoginSig" +
+      "nCommand\022\020\n\010chooseId\030\001 \001(\005\"\247\001\n\010VipLibao\022" +
+      "\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001",
+      "(\t\022\014\n\004rare\030\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\r\n" +
+      "\005value\030\006 \001(\005\022\014\n\004cost\030\007 \001(\005\0220\n\004item\030\010 \003(\013" +
+      "2\".com.trans.pixel.protoc.RewardInfo\"?\n\014" +
+      "VipLibaoList\022/\n\005libao\030\001 \003(\0132 .com.trans." +
+      "pixel.protoc.VipLibao\"\362\001\n\007VipInfo\022\013\n\003vip" +
+      "\030\001 \001(\005\022\013\n\003rmb\030\002 \001(\005\022\016\n\006effect\030\003 \001(\t\022\017\n\007d" +
+      "ianjin\030\004 \001(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003pvp\030\006 \001(" +
+      "\005\022\014\n\004quyu\030\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020\n\010baoxia" +
+      "ng\030\t \001(\005\022\016\n\006zhibao\030\n \001(\005\022\r\n\005baohu\030\013 \001(\005\022" +
+      "\016\n\006libao1\030\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022\017\n\007zuans",
+      "hi\030\016 \001(\005\022\020\n\010contract\030\017 \001(\005\"7\n\007VipList\022,\n" +
+      "\003vip\030\001 \003(\0132\037.com.trans.pixel.protoc.VipI" +
+      "nfo\"\237\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002 \002(\005\022\016\n\006" +
+      "itemid\030\003 \002(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n\004name\030\005 " +
+      "\001(\t\022\023\n\013description\030\006 \001(\t\022\013\n\003img\030\007 \001(\t\022\014\n" +
+      "\004type\030\010 \001(\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n\006costid\030" +
+      "\n \001(\005\"3\n\007RmbList\022(\n\003rmb\030\001 \003(\0132\033.com.tran" +
+      "s.pixel.protoc.Rmb\">\n\rShouchongList\022-\n\002i" +
+      "d\030\001 \003(\0132!.com.trans.pixel.protoc.Shoucho" +
+      "ng\"t\n\tShouchong\022\n\n\002id\030\001 \002(\005\022\020\n\010activity\030",
+      "\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\0227\n\006reward\030\005 \003(\0132" +
+      "\'.com.trans.pixel.protoc.ShouchongReward" +
+      "\"2\n\017ShouchongReward\022\020\n\010rewardid\030\001 \002(\005\022\r\n" +
+      "\005count\030\002 \002(\005\"\"\n\023RequestCdkeyCommand\022\013\n\003k" +
+      "ey\030\001 \002(\t\"(\n\030RequestSubmitIconCommand\022\014\n\004" +
+      "icon\030\001 \002(\005\"-\n\033RequestCheatRechargeComman" +
+      "d\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRechargeComm" +
+      "and\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBindAccoun" +
+      "tCommand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccou" +
+      "nt\030\002 \002(\t\";\n\036RequestPurchaseVipLibaoComma",
+      "nd\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n\033Request" +
+      "QueryRechargeCommand\022\017\n\007orderId\030\001 \001(\t\"\037\n" +
+      "\035RequestShouchongRewardCommand\"+\n\032Reques" +
+      "tGetGrowJewelCommand\022\r\n\005order\030\001 \002(\005\")\n\030R" +
+      "equestGetGrowExpCommand\022\r\n\005order\030\001 \002(\005\"\024" +
+      "\n\022RequestSignCommand\"I\n\023ResponseSignComm" +
+      "and\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17079,7 +17063,7 @@ public final class RechargeProto {
           internal_static_com_trans_pixel_protoc_Sign_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Sign_descriptor,
-              new java.lang.String[] { "Order", "Targetid", "Targetcount", "Rewardid", "Rewardcount", });
+              new java.lang.String[] { "Order", "Targetid", "Targetcount", "Itemid", "Count", });
           internal_static_com_trans_pixel_protoc_RequestSevenLoginSignCommand_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_RequestSevenLoginSignCommand_fieldAccessorTable = new
