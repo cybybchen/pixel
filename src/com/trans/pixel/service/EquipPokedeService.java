@@ -62,7 +62,7 @@ public class EquipPokedeService {
 		}
 		
 		if (!costService.cost(user, rewards.build()))
-			return ErrorConst.NOT_ENOUGH_PROP;
+			return ErrorConst.NOT_ENOUGH_COIN;
 		
 		if (RandomUtils.nextInt(10000) >= equipIncrease.getRate()) {
 			if (equipIncrease.getZero() == 1) {
