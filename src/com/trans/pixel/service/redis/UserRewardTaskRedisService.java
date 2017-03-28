@@ -12,17 +12,27 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 
 @Service
 public class UserRewardTaskRedisService extends RedisService {
 
 	public void updateUserRewardTask(long userId, UserRewardTask ut) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		this.hput(key, "" + ut.getIndex(), formatJson(ut));
+		if (ut.getEnemyid() == 0 && ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
+			hdelete(key, "" + ut.getIndex());
+		else
+			this.hput(key, "" + ut.getIndex(), formatJson(ut));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		
 		if (ut.getType() != 1)
 			sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
+	}
+	
+	public void deleteUserRewardTask(long userId, UserRewardTask ut) {
+		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
+		hdelete(key, "" + ut.getIndex());
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public UserRewardTask getUserRewardTask(long userId, int index) {

@@ -12,6 +12,7 @@ import com.trans.pixel.model.mapper.UserRewardTaskMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRewardTaskBean;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.service.redis.UserRewardTaskRedisService;
 
 @Service
@@ -50,8 +51,13 @@ public class UserRewardTaskService {
 	
 	public void updateToDB(long userId, int index) {
 		UserRewardTask ut = userRewardTaskRedisService.getUserRewardTask(userId, index);
-		if(ut != null && ut.getEnemyid() != 0)
+		if(ut != null && ut.getEnemyid() != 0) {
 			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut));
+			
+			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
+				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);
+		}
+		
 	}
 	
 	public String popDBKey(){

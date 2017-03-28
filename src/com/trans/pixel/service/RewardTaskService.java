@@ -63,7 +63,6 @@ public class RewardTaskService {
 		userService.updateUser(user);
 		
 		UserRewardTask.Builder newTask = UserRewardTask.newBuilder(initUserRewardTask(user, id, user.getRewardTaskIndex()));
-//		newTask.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
 		userRewardTaskService.updateUserRewardTask(user, newTask.build());
 		
 		return SuccessConst.USE_PROP;
@@ -71,7 +70,7 @@ public class RewardTaskService {
 	
 	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, UserInfo.Builder errorUser, List<UserPropBean> userPropList) {
 		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
-		if (ut == null || ut.getStatus() == REWARDTASK_STATUS.LIVE_VALUE) {
+		if (ut == null || ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || ut.getEnemyid() == 0) {
 			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
 		}
 		RewardTask rewardTask = rewardTaskRedisService.getRewardTask(ut.getId());
@@ -178,7 +177,6 @@ public class RewardTaskService {
 			
 			user.setRewardTaskIndex(user.getRewardTaskIndex() + 1);
 			UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(initUserRewardTask(user, id, user.getRewardTaskIndex()));
-			userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
 				if (builder.getRoomInfo(i).getUser().getId() == createUserId) {
 					userRewardTaskBuilder.setRoomInfo(builder.getRoomInfo(i));
@@ -241,19 +239,23 @@ public class RewardTaskService {
 			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
 				if (builder.getRoomInfo(i).getUser().getId() == quitUserId) {
 					builder.removeRoomInfo(i);
-					UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(quitUserId, builder.getRoomInfo(i).getIndex()));
-					userRewardTaskBuilder.clearRoomInfo();
-//					userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
-					userRewardTaskService.updateUserRewardTask(quitUserId, userRewardTaskBuilder.build());
+					if (quitUserId != user.getId()) {
+						UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(quitUserId, builder.getRoomInfo(i).getIndex()));
+						userRewardTaskBuilder.clearRoomInfo();
+						userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+						userRewardTaskService.updateUserRewardTask(quitUserId, userRewardTaskBuilder.build());	
+					}
 					break;
 				}
 			}
 			rewardTaskRedisService.setUserRewardTaskRoom(builder.build());
 			if (quitUserId == user.getId()) {
 				rewardTaskBuilder.clearRoomInfo();
-//				rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+				rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			}
 		}
+		
+		userRewardTaskService.updateUserRewardTask(user, rewardTaskBuilder.build());
 		
 		return SuccessConst.BOSS_ROOM_QUIT_SUCCESS;
 	}
@@ -356,6 +358,7 @@ public class RewardTaskService {
 		builder.setId(id);
 		builder.setType(rewardTask.getType());
 		builder.setIndex(index);
+		builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
 		int weightall = 0;
 		for (RewardTaskEnemy enemy : rewardTask.getEnemyList()) {
 			weightall += enemy.getWeight();

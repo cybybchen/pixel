@@ -21,7 +21,7 @@
 	
 	<select id="selectUserRewardTaskList" parameterType="long" resultMap="resultMap">
 		SELECT *
-		from user_rewardtask where user_id=#{userId}
+		from user_rewardtask where user_id=#{userId} and status!=1
 	</select>
 	
 	<select id="selectUserRewardTask" resultMap="resultMap">
