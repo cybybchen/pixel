@@ -1115,7 +1115,10 @@ public class ManagerService extends RedisService{
 			req.put("talentskill", 1);
 		}
 		if(req.containsKey("talentskill") && gmaccountBean.getCanview() == 1){
-			Map<String, String> map = hget(RedisKey.USER_TALENTSKILL_PREFIX + userId);
+			Map<String, String> skillmap = hget(RedisKey.USER_TALENTSKILL_PREFIX + userId);
+			Map<String, String> map = new TreeMap<String, String>();
+			for(Entry<String, String> entry : skillmap.entrySet())
+				map.put(entry.getKey(), entry.getValue());
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("talentskill", object);
