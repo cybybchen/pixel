@@ -62,7 +62,7 @@ public class UserRewardTaskRedisService extends RedisService {
 		return exists(RedisKey.USER_REWARD_TASK_PREFIX + userId);
 	}
 	
-	public String popTalentDBKey(){
+	public String popDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX);
 	}
 	

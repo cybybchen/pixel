@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserRewardTaskMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserRewardTaskBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="rewardTaskId" column="reward_task_id" />
+		<result property="rewardTaskIndex" column="reward_task_index" />
+		<result property="enemyId" column="enemy_id" />
+		<result property="status" column="status" />
+	</resultMap>
+	
+	<update id="updateUserRewardTask" parameterType="com.trans.pixel.model.userinfo.UserRewardTaskBean">
+		INSERT INTO user_rewardtask(user_id, reward_task_id, reward_task_index, enemy_id, status)
+	    VALUES(#{userId}, #{rewardTaskId}, #{rewardTaskIndex}, #{enemyId}, #{status})
+		ON 
+	    duplicate key update
+	    status=#{status}
+	</update>
+	
+	<select id="selectUserRewardTaskList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_rewardtask where user_id=#{userId}
+	</select>
+	
+	<select id="selectUserRewardTask" resultMap="resultMap">
+		SELECT *
+		from user_rewardtask where user_id=#{userId} and reward_task_index=#{rewardTaskIndex}
+	</select>
+	
+</mapper>

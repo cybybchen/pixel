@@ -8,8 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.mapper.UserTalentMapper;
+import com.trans.pixel.model.mapper.UserRewardTaskMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserRewardTaskBean;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.service.redis.UserRewardTaskRedisService;
 
@@ -20,7 +21,7 @@ public class UserRewardTaskService {
 	@Resource
 	private UserRewardTaskRedisService userRewardTaskRedisService;
 	@Resource
-	private UserTalentMapper userTalentMapper;
+	private UserRewardTaskMapper mapper;
 	
 	public UserRewardTask getUserRewardTask(UserBean user, int index) {
 		return getUserRewardTask(user.getId(), index);
@@ -45,5 +46,15 @@ public class UserRewardTaskService {
 		
 
 		return utList;
+	}
+	
+	public void updateToDB(long userId, int index) {
+		UserRewardTask ut = userRewardTaskRedisService.getUserRewardTask(userId, index);
+		if(ut != null && ut.getEnemyid() != 0)
+			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut));
+	}
+	
+	public String popDBKey(){
+		return userRewardTaskRedisService.popDBKey();
 	}
 }
