@@ -792,8 +792,17 @@ public class ManagerService extends RedisService{
 				}
 			}
 			map = new HashMap<String, String>();
+			int infoId = 0;
 			for(Object key : object.keySet()){
-				map.put(key.toString(), object.get(key).toString());
+				String value = object.get(key).toString();
+				HeroInfoBean bean = HeroInfoBean.fromJson(value);
+				infoId = Math.max(infoId, (int)bean.getId());
+				map.put(key.toString(), value);
+			}
+			UserBean user = userService.getOther(userId);
+			if(infoId > user.getHeroInfoId()){
+				user.setHeroInfoId(infoId);
+				userService.updateUser(user);
 			}
 			if(!map.isEmpty()){
 				hputAll(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId, map);
