@@ -77,7 +77,7 @@ public class MailCommandService extends BaseCommandService {
 		int relatedId = 0;
 		int type = cmd.getType();
 		
-		if (type == MailConst.TYPE_CALL_BROTHER_MAILL) {
+		if (type == MailConst.TYPE_CALL_BROTHER_MAILL || type == MailConst.TYPE_HELP_EVENT) {
 			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
 			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BROTHER_VIP_IS_NOT_ENOUGH);
