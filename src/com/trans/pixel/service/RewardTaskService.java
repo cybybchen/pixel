@@ -286,7 +286,7 @@ public class RewardTaskService {
 			builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			userRewardTaskService.updateUserRewardTask(user, builder.build());
 			
-			return getBossloot(userRewardTask.getId(), user, 0, 0);
+			return getBossloot(userRewardTask.getEnemyid(), user, 0, 0);
 		}
 		
 		return new ArrayList<RewardBean>();
