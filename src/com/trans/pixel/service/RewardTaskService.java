@@ -236,7 +236,7 @@ public class RewardTaskService {
 		}
 		
 		rewardTaskBuilder.mergeFrom(userRewardTask);
-		builder = UserRewardTaskRoom.newBuilder(room);
+		builder.mergeFrom(room);
 		if (builder.getCreateUserId() == user.getId() && user.getId() == quitUserId) {
 			rewardTaskRedisService.delUserRewardTaskRoom(user, builder.getBossId());
 			builder.clearRoomInfo();
@@ -244,13 +244,13 @@ public class RewardTaskService {
 		} else {
 			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
 				if (builder.getRoomInfo(i).getUser().getId() == quitUserId) {
-					builder.removeRoomInfo(i);
 					if (quitUserId != user.getId()) {
 						UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(quitUserId, builder.getRoomInfo(i).getIndex()));
 						userRewardTaskBuilder.clearRoomInfo();
 						userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 						userRewardTaskService.updateUserRewardTask(quitUserId, userRewardTaskBuilder.build());	
 					}
+					builder.removeRoomInfo(i);
 					break;
 				}
 			}
