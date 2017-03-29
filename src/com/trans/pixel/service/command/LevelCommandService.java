@@ -14,7 +14,6 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
-import com.trans.pixel.model.WinBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
@@ -158,7 +157,7 @@ public class LevelCommandService extends BaseCommandService {
 		for(EventReward eventreward : event.getRewardList()){
 			RewardBean bean = new RewardBean();
 			bean.setItemid(eventreward.getRewardid());
-			bean.setCount(eventreward.getRewardcount()+redis.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
+			bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
 			rewards.add(bean);
 		}
 		rewardService.doRewards(user, rewards);
@@ -273,7 +272,7 @@ public class LevelCommandService extends BaseCommandService {
 				for(EventReward eventreward : eventconfig.getRewardList()){
 					RewardBean bean = new RewardBean();
 					bean.setItemid(eventreward.getRewardid());
-					bean.setCount(eventreward.getRewardcount()+redis.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
+					bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
 					rewardList.add(bean);
 				}
 //				if (winBean != null)
