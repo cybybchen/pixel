@@ -53,6 +53,8 @@ public class RewardTaskService {
 	private LogService logService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public ResultConst zhaohuanTask(UserBean user, int id) {
 		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
@@ -86,8 +88,10 @@ public class RewardTaskService {
 		
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
 		builder.setStatus(REWARDTASK_STATUS.END_VALUE);
-		userRewardTaskService.updateUserRewardTask(user, ut);
-		userPropList.add(UserPropBean.initUserProp(user.getId(), costId, ""));
+		userRewardTaskService.updateUserRewardTask(user, builder.build());
+		
+		userPropList.add(userPropService.selectUserProp(user.getId(), costId));
+		rewards.addAllLoot(RewardBean.buildRewardInfoList(getBossloot(ut.getEnemyid(), user, 0 , 0)));
 		
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
@@ -124,7 +128,7 @@ public class RewardTaskService {
 	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, UserInfo.Builder errorUser) {
 		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null)
-			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
+			return SuccessConst.BOSS_SUBMIT_SUCCESS;;
 		
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
 			UserInfo userinfo = roomInfo.getUser();
@@ -142,7 +146,7 @@ public class RewardTaskService {
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
 			UserInfo userinfo = roomInfo.getUser();
 			costService.costOnly(user, rewardTask.getCostList());
-			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), index));
+			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex()));
 			builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
 			userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
 			activityService.completeRewardTask(userinfo.getId(), rewardTask.getType());

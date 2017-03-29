@@ -169,7 +169,8 @@ public class BaseCommandService {
 	protected List<UserProp> buildUserPropList(List<UserPropBean> userPropList) {
 		List<UserProp> userPropBuilderList = new ArrayList<UserProp>();
 		for (UserPropBean userProp : userPropList) {
-			userPropBuilderList.add(userProp.buildUserProp());
+			if (userProp != null && userProp.getPropId() > 0)
+				userPropBuilderList.add(userProp.buildUserProp());
 		}
 		
 		return userPropBuilderList;
