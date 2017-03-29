@@ -2484,6 +2484,13 @@ message LootList {
 message RequestLevelStartCommand {
 	optional int32 id = 1;
 }
+message RequestEventCommand {
+        optional int32 userId = 1;
+        optional int32 order = 2;
+}
+message ResponseEventCommand {
+        optional Event event = 1;
+}
 message RequestLevelLootResultCommand {
 }
 message RequestEventResultCommand {
@@ -2942,6 +2949,7 @@ message UserRewardTask {
 		END = 1;
 		CANREWARD = 2;
 		FULL = 3;//房间人数已满
+		HAS_IN = 4;//已经加入了
 	};
 	required uint32 index = 7;//boss的一个序列
 }
@@ -3093,6 +3101,7 @@ message RequestCommand {
 	optional RequestRegisterCommand registerCommand = 2;
 	optional RequestLoginCommand loginCommand = 3;
 	optional RequestEventResultCommand eventResultCommand = 4;
+	optional RequestEventCommand eventCommand = 10; 
 	optional RequestUpdateTeamCommand updateTeamCommand = 5;
 	optional RequestLevelStartCommand levelStartCommand = 6;
 	optional RequestLevelLootResultCommand levelLootResultCommand = 8;
@@ -3291,7 +3300,8 @@ message ResponseCommand {
 	optional ResponseAreaEquipCommand areaEquipCommand = 137;
 	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
 	optional ResponseFightInfoCommand fightInfoCommand = 155;
-	optional ResponseRaidCommand raidCommand = 158;        
+	optional ResponseRaidCommand raidCommand = 158;
+	optional ResponseEventCommand eventCommand = 159;        
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

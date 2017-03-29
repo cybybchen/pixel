@@ -127,7 +127,8 @@ public class RewardTaskCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		room = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, id, index);
+		UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder();
+		room = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, id, index, userRewardTaskBuilder);
 		
 		if (room == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_NOT);
@@ -145,14 +146,22 @@ public class RewardTaskCommandService extends BaseCommandService {
             return;
 		}
 		
+		if (room.hasStatus() && room.getStatus() == REWARDTASK_STATUS.HAS_IN_VALUE) { // 已经加入该房间
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HAS_BEIN_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HAS_BEIN_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
 		ResponseUserRewardTaskRoomCommand.Builder builder = ResponseUserRewardTaskRoomCommand.newBuilder();
 		builder.addRoom(room);
 		responseBuilder.setUserRewardTaskRoomCommand(builder.build());
 		
 		if (userIds.isEmpty()) {
-			ResponseUserRewardTaskCommand.Builder userRewardTaskBuilder = ResponseUserRewardTaskCommand.newBuilder();
-			userRewardTaskBuilder.addUserRewardTask(userRewardTaskService.getUserRewardTask(user, id));
-			responseBuilder.setUserRewardTaskCommand(userRewardTaskBuilder.build());
+			ResponseUserRewardTaskCommand.Builder commandBuilder = ResponseUserRewardTaskCommand.newBuilder();
+			commandBuilder.addUserRewardTask(userRewardTaskBuilder.build());
+			responseBuilder.setUserRewardTaskCommand(commandBuilder.build());
 		}
 	}
 	

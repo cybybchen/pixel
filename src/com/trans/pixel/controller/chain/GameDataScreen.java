@@ -171,6 +171,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
@@ -1287,6 +1288,13 @@ public class GameDataScreen extends RequestScreen {
 			Builder responseBuilder, UserBean user) {
 		propCommandService.synthetiseCompose(cmd, responseBuilder, user);
 		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEventCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

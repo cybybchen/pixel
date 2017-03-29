@@ -36,6 +36,7 @@ import com.trans.pixel.protoc.ShopProto.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopCommand;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand;
@@ -219,6 +220,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAddHeroEquipCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeartBeatCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEventCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestMohuaSubmitStageCommand cmd, Builder responseBuilder, UserBean user);
@@ -502,6 +504,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasHeartBeatCommand()) {
 			RequestHeartBeatCommand cmd = request.getHeartBeatCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasEventCommand()) {
+			RequestEventCommand cmd = request.getEventCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasFenjieHeroCommand()) {
