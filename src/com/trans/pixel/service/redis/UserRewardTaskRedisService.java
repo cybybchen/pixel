@@ -19,7 +19,7 @@ public class UserRewardTaskRedisService extends RedisService {
 
 	public void updateUserRewardTask(long userId, UserRewardTask ut) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		if (ut.getEnemyid() == 0 && ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
+		if (ut.getRoomInfo() != null && ut.getRoomInfo().getUser().getId() != userId && ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
 			hdelete(key, "" + ut.getIndex());
 		else
 			this.hput(key, "" + ut.getIndex(), formatJson(ut));
