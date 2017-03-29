@@ -76,7 +76,7 @@ public class RewardTaskService {
 		RewardTask rewardTask = rewardTaskRedisService.getRewardTask(ut.getId());
 		int costId = costService.canCostOnly(user, rewardTask.getCostList());
 		if (costId == 0) {
-			errorUser = UserInfo.newBuilder(user.build());
+			errorUser.mergeFrom(user.build());
 			return ErrorConst.NOT_ENOUGH_PROP;
 		}
 		
@@ -134,7 +134,7 @@ public class RewardTaskService {
 			UserBean other = userService.getOther(userinfo.getId());
 			int costId = costService.canCostOnly(other, rewardTask.getCostList());
 			if (costId == 0) {
-				errorUser = UserInfo.newBuilder(userinfo);
+				errorUser.mergeFrom(userinfo);
 				return ErrorConst.NOT_ENOUGH_PROP;
 			}
 		}
@@ -240,7 +240,7 @@ public class RewardTaskService {
 		rewardTaskBuilder.mergeFrom(userRewardTask);
 		builder.mergeFrom(room);
 		if (builder.getCreateUserId() == user.getId() && user.getId() == quitUserId) {
-			rewardTaskRedisService.delUserRewardTaskRoom(user, builder.getBossId());
+			rewardTaskRedisService.delUserRewardTaskRoom(user, builder.getIndex());
 			for (RoomInfo roomInfo :builder.getRoomInfoList()) {
 				if (roomInfo.getUser().getId() != user.getId()) {
 					UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(roomInfo.getUser().getId(), roomInfo.getIndex()));
