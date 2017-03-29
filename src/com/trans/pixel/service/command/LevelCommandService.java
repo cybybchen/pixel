@@ -8,12 +8,19 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
+import com.trans.pixel.model.WinBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
@@ -21,15 +28,24 @@ import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventReward;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.NoticeMessageService;
+import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.UserPropService;
+import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -56,22 +72,22 @@ public class LevelCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	 @Resource
 	 private LogService logService;
-	// @Resource
-	// private UserService userService;
-	// @Resource
-	// private PvpMapService pvpMapService;
+	 @Resource
+	 private UserService userService;
+	 @Resource
+	 private PvpMapService pvpMapService;
 	 @Resource
 	 private ActivityService activityService;
-	// @Resource
-	// private UserPropService userPropService;
-	// @Resource
-	// private UserTeamService userTeamService;
-	// @Resource
-	// private MailService mailService;
-	// @Resource
-	// private NoticeMessageService noticeMessageService;
-	// @Resource
-	// private RankRedisService rankRedisService;
+	 @Resource
+	 private UserPropService userPropService;
+	 @Resource
+	 private UserTeamService userTeamService;
+	 @Resource
+	 private MailService mailService;
+	 @Resource
+	 private NoticeMessageService noticeMessageService;
+	 @Resource
+	 private RankRedisService rankRedisService;
 	
 	public void levelStart(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
@@ -149,13 +165,26 @@ public class LevelCommandService extends BaseCommandService {
 		pusher.pushRewardCommand(responseBuilder, user, rewards);
 	}
 
+	public void getEvent(RequestEventCommand cmd, Builder responseBuilder, UserBean user) {
+		Event event = redis.getEvent(cmd.getUserId(), cmd.getOrder());
+		if(event == null){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		ResponseEventCommand.Builder eventCommand = ResponseEventCommand.newBuilder();
+		eventCommand.setEvent(event);
+		responseBuilder.setEventCommand(eventCommand);
+	}
+	
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		Event event = redis.getEvent(user, cmd.getOrder());
 		redis.productEvent(user, userLevel);
 		if(event == null){//illegal event order
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENEMY);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(event.getOrder() >= 100 || cmd.getRet()){
 			if(event.getType() == 1){//buy event
@@ -185,6 +214,13 @@ public class LevelCommandService extends BaseCommandService {
 			}else if(event.getOrder() >= 100 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event.getOrder());
 		}
+		user.addMyactive();
+ 		if(user.getMyactive() >= 100){
+ 			user.setMyactive(user.getMyactive() - 100);
+ 			pvpMapService.refreshAMine(user);
+ 		}
+ 		userService.updateUser(user);
+ 		
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	
@@ -200,93 +236,103 @@ public class LevelCommandService extends BaseCommandService {
 	}
 	
 	public void helpLevelResult(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user) {
-// 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
-// 		if (userProp.getPropCount() < 1) {
-// 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
-			
-// 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
-//             responseBuilder.setErrorCommand(errorCommand);
-//             return;
-// 		}
-// 		long teamid = cmd.getTeamid();
-// 		long friendUserId = cmd.getUserId();
-// 		UserBean friend = userService.getOther(friendUserId);
-// 		Team team = userTeamService.getTeam(user, teamid);
-// 		userTeamService.saveTeamCache(user, teamid, team);
+		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
+		if (userProp.getPropCount() < 1) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		long teamid = cmd.getTeamid();
+		long friendUserId = cmd.getUserId();
+		UserBean friend = userService.getOther(friendUserId);
+		Team team = userTeamService.getTeam(user, teamid);
+		userTeamService.saveTeamCache(user, teamid, team);
 		
-// 		if (cmd.getRet()) {
-// 			int levelId = cmd.getId();
-// 			UserLevelBean userLevelRecord = userLevelService.selectUserLevelRecord(friendUserId);
-// 			if (levelService.isCheatLevelFirstTime(levelId, userLevelRecord)) {
-// 				logService.sendErrorLog(friendUserId, user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+		if (cmd.getRet()) {
+			Event event = redis.getEvent(friendUserId, cmd.getId());
+			if (event == null) {
+				logService.sendErrorLog(friendUserId, user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+			}else{
+				UserLevelBean userLevel = redis.getUserLevel(friendUserId);
+				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
+					userLevel.setLeftCount(userLevel.getLeftCount()-1);
+					redis.saveUserLevel(userLevel);
+				}
+				Event eventconfig = redis.getEvent(event.getEventid());
+//				eventReward(eventconfig, responseBuilder, user);
+//				userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, friend);
+//				userLevelRecord.setLevelPrepareTime(0);
+//				userLevelRecord.setLastLevelResultTime(0);
+//				userLevelService.updateUserLevelRecord(userLevelRecord);
+//				log.debug("levelId is:" + levelId);
+//				WinBean winBean = winService.getWinByLevelId(levelId);
+				List<RewardBean> rewardList = new ArrayList<RewardBean>();
+				for(EventReward eventreward : eventconfig.getRewardList()){
+					RewardBean bean = new RewardBean();
+					bean.setItemid(eventreward.getRewardid());
+					bean.setCount(eventreward.getRewardcount()+redis.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
+					rewardList.add(bean);
+				}
+//				if (winBean != null)
+//					rewardList = winBean.getRewardList();
+//				
+//				rewardList.addAll(levelService.getNewplayReward(user, levelId));
 				
-// 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
-// 	            responseBuilder.setErrorCommand(errorCommand);
-// 			}else{
-// 				userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, friend);
-// 				userLevelRecord.setLevelPrepareTime(0);
-// 				userLevelRecord.setLastLevelResultTime(0);
-// 				userLevelService.updateUserLevelRecord(userLevelRecord);
-// 				log.debug("levelId is:" + levelId);
-// 				WinBean winBean = winService.getWinByLevelId(levelId);
-// 				List<RewardBean> rewardList = new ArrayList<RewardBean>();
-// 				if (winBean != null)
-// 					rewardList = winBean.getRewardList();
-				
-// 				rewardList.addAll(levelService.getNewplayReward(user, levelId));
-				
-// 				userProp.setPropCount(userProp.getPropCount() - 1);
-// 				userPropService.updateUserProp(userProp);
+				userProp.setPropCount(userProp.getPropCount() - 1);
+				userPropService.updateUserProp(userProp);
 			
-// 				sendHelpMail(friend, user, rewardList);
+				sendHelpMail(friend, user, rewardList);
 			
-// 				responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
-// 				pushCommandService.pushUserPropListCommand(responseBuilder, user);
+				responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
+				pusher.pushUserPropListCommand(responseBuilder, user);
 				
-// //				rewardService.doRewards(user, rewardList);
-// //				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+//				rewardService.doRewards(user, rewardList);
+//				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 				
-// 				//全服通告
-// 				noticeMessageService.composeCallBrotherHelpLevelResult(user, levelId);
+				//全服通告
+				noticeMessageService.composeCallBrotherHelpLevelResult(user, event.getName());
 				
-// 				//支援排行榜
-// 				rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_HELP, 1, true);
-// 			}
+				//支援排行榜
+				rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_HELP, 1, true);
+			}
 
-// //			user.addMyactive();
-// //			if(user.getMyactive() >= 100){
-// //				user.setMyactive(user.getMyactive() - 100);
-// //				pvpMapService.refreshAMine(user);
-// //			}
-// //			userService.updateUser(user);
+//			user.addMyactive();
+//			if(user.getMyactive() >= 100){
+//				user.setMyactive(user.getMyactive() - 100);
+//				pvpMapService.refreshAMine(user);
+//			}
+//			userService.updateUser(user);
 		
-// //			pushCommandService.pushUserLevelCommand(responseBuilder, user);
-// //		RewardInfo reward = pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time, false);
-// //		if(reward == null) {
-// //			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);
-// //			
-// //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
-// //			return;
-// //		}
+//			pushCommandService.pushUserLevelCommand(responseBuilder, user);
+//		RewardInfo reward = pvpMapService.attackMine(friend, cmd.getId(), cmd.getRet(), time, false);
+//		if(reward == null) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+//			
+//			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+//			return;
+//		}
 		
 			
 			
-// 			/**
-// 			 * 征战世界成功支援的活动
-// 			 */
-// 			activityService.aidActivity(user, 1);
-// 		}
+			/**
+			 * 征战世界成功支援的活动
+			 */
+			activityService.aidActivity(user, 1);
+		}
 		
-// 		/**
-// 		 * send help attack log
-// 		 */
-// 		logService.sendCallBrotherLog(user.getServerId(), cmd.getRet() ? 1 : 2, user.getId(), friendUserId);
+		/**
+		 * send help attack log
+		 */
+		logService.sendCallBrotherLog(user.getServerId(), cmd.getRet() ? 1 : 2, user.getId(), friendUserId);
 	}
-	
-// 	private void sendHelpMail(UserBean friend, UserBean user, List<RewardBean> rewardList) {
-// 		String content = user.getUserName() + "帮你过关啦！"; 
-// 		MailBean mail = MailBean.buildMail(friend.getId(), user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
-// 		mailService.addMail(mail);
-// 	}
+	 
+	private void sendHelpMail(UserBean friend, UserBean user, List<RewardBean> rewardList) {
+		String content = user.getUserName() + "帮你过关啦！"; 
+		MailBean mail = MailBean.buildMail(friend.getId(), user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
+		mailService.addMail(mail);
+	}
 
 }

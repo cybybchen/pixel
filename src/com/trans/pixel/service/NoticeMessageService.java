@@ -104,16 +104,9 @@ public class NoticeMessageService {
 		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	
-	public void composeCallBrotherHelpLevelResult(UserBean user, int level) {
+	public void composeCallBrotherHelpLevelResult(UserBean user, String content) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("%s").append(user.getUserName()).append("帮助好友通关");
-		if (level > 3000)
-			sb.append("地狱");
-		else if (level > 2000)
-			sb.append("困难");
-		
-		level = level % 1000;
-		sb.append(1 + level / 5).append("-").append(level % 5 == 0 ? 5 : level % 5).append(",6,战报:");
+		sb.append("%s").append(user.getUserName()).append("帮助好友通关"+content+",6,战报:");
 		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	

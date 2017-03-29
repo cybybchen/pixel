@@ -147,12 +147,15 @@ public class LevelRedisService extends RedisService {
 			saveUserLevel(userLevel);
 		}
 	}
-	public Event getEvent(UserBean user, int order) {
-		String value = hget(RedisKey.USEREVENT_PREFIX+user.getId(), order+"");
+	public Event getEvent(long userId, int order) {
+		String value = hget(RedisKey.USEREVENT_PREFIX+userId, order+"");
 		Event.Builder builder = Event.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		return null;
+	}
+	public Event getEvent(UserBean user, int order) {
+		return getEvent(user.getId(), order);
 	}
 	public void saveEvent(UserBean user, Event event) {
 		hput(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"", formatJson(event));
