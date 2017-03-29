@@ -169,14 +169,14 @@ public class RewardTaskService {
 				return null;
 			
 			UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder(room);
-			RewardTask rewardTask = rewardTaskRedisService.getRewardTask(id);
+			RewardTask rewardTask = rewardTaskRedisService.getRewardTask(room.getBossId());
 			if (builder.getRoomInfoCount() >= rewardTask.getRenshu()) {
 				builder.setStatus(REWARDTASK_STATUS.FULL_VALUE);//房间人数已满
 				return builder.build();
 			}
 			
 			user.setRewardTaskIndex(user.getRewardTaskIndex() + 1);
-			UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(initUserRewardTask(user, id, user.getRewardTaskIndex()));
+			UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(initUserRewardTask(user, room.getBossId(), user.getRewardTaskIndex()));
 			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
 				if (builder.getRoomInfo(i).getUser().getId() == createUserId) {
 					userRewardTaskBuilder.setRoomInfo(builder.getRoomInfo(i));
@@ -208,7 +208,7 @@ public class RewardTaskService {
 			}
 			
 			for (long userId : userIds) {
-				sendInviteMail(user, userId, id);
+				sendInviteMail(user, userId, index);
 			}
 			
 			return room;
