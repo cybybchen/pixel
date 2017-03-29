@@ -6486,13 +6486,13 @@ public final class RewardTaskProto {
   public interface RequestInviteToRewardTaskRoomCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 id = 1;
+    // optional uint32 id = 1;
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     boolean hasId();
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     int getId();
 
@@ -6660,17 +6660,17 @@ public final class RewardTaskProto {
     }
 
     private int bitField0_;
-    // required uint32 id = 1;
+    // optional uint32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>optional uint32 id = 1;</code>
      */
     public int getId() {
       return id_;
@@ -6742,10 +6742,6 @@ public final class RewardTaskProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7004,10 +7000,6 @@ public final class RewardTaskProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -7030,22 +7022,22 @@ public final class RewardTaskProto {
       }
       private int bitField0_;
 
-      // required uint32 id = 1;
+      // optional uint32 id = 1;
       private int id_ ;
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public Builder setId(int value) {
         bitField0_ |= 0x00000001;
@@ -7054,7 +7046,7 @@ public final class RewardTaskProto {
         return this;
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>optional uint32 id = 1;</code>
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -10295,7 +10287,7 @@ public final class RewardTaskProto {
       "wardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"A\n Re" +
       "questQuitRewardTaskRoomCommand\022\r\n\005index\030" +
       "\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"g\n$RequestInviteTo" +
-      "RewardTaskRoomCommand\022\n\n\002id\030\001 \002(\r\022\016\n\006use" +
+      "RewardTaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006use" +
       "rId\030\002 \003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index" +
       "\030\004 \001(\r\"A\n#RequestSubmitRewardTaskScoreCo" +
       "mmand\022\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035Res" +

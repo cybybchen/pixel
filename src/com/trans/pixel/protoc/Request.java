@@ -9281,12 +9281,6 @@ public final class Request {
           return false;
         }
       }
-      if (hasInviteToRewardTaskRoomCommand()) {
-        if (!getInviteToRewardTaskRoomCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasSubmitRewardTaskScoreCommand()) {
         if (!getSubmitRewardTaskScoreCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -14366,12 +14360,6 @@ public final class Request {
         }
         if (hasQuitRewardTaskRoomCommand()) {
           if (!getQuitRewardTaskRoomCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasInviteToRewardTaskRoomCommand()) {
-          if (!getInviteToRewardTaskRoomCommand().isInitialized()) {
             
             return false;
           }

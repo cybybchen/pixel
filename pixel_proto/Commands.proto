@@ -2965,7 +2965,7 @@ message RequestQuitRewardTaskRoomCommand {
 }
 
 message RequestInviteToRewardTaskRoomCommand {
-	required uint32 id = 1;
+	optional uint32 id = 1;
 	repeated uint64 userId = 2;
 	optional uint64 createUserId = 3;
 	optional uint32 index = 4;
