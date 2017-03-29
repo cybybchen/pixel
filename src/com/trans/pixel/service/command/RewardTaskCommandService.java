@@ -55,7 +55,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getIndex(), cmd.getRet(), rewards, errorUser, userPropList);
 		if (ret instanceof ErrorConst) {
 			if (ret.getCode() == ErrorConst.NOT_ENOUGH_PROP.getCode()) {
-				pusher.pushUserInfoCommand(responseBuilder, errorUser.build());
+				pusher.pushOtherUserInfoCommand(responseBuilder, errorUser.build());
 			}
 			
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);

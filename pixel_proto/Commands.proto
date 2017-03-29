@@ -1840,12 +1840,7 @@ message Shouchong {
 	required int32 id = 1;
 	required string activity = 2;
 	required int32 targetid = 3;
-	repeated ShouchongReward reward = 5;
-}
-
-message ShouchongReward {
-	required int32 rewardid = 1;
-	required int32 count = 2;
+	repeated RewardInfo reward = 5;
 }
 
 message RequestCdkeyCommand {
@@ -2078,7 +2073,7 @@ message UserAchieve {
 }
 
 message Kaifu2List {
-	repeated Kaifu2 kaifu2 = 1;
+	repeated Kaifu2 id = 1;
 }
 
 message Kaifu2 {
@@ -2096,7 +2091,7 @@ message Kaifu2Rank {
 }
 
 message KaifuList {
-	repeated Kaifu kaifu1 = 1;
+	repeated Kaifu id = 1;
 }
 
 message Kaifu {
@@ -2108,8 +2103,11 @@ message Kaifu {
 }
 
 message KaifuOrder {
+	optional uint32 order = 3;
+	optional string description = 4;
 	optional int32 targetcount = 1;
 	optional int32 targetcount1 = 2;
+	repeated RewardInfo reward = 5;
 }
 
 message UserKaifu {
@@ -2403,6 +2401,10 @@ message RequestLoginCommand {
 
 message ResponseUserInfoCommand {
 	required UserInfo user = 1;
+}
+
+message ResponseOtherUserInfoCommand {
+	repeated UserInfo user = 1;
 }
 
 message UserHead {
@@ -3356,6 +3358,7 @@ message ResponseCommand {
 	optional ResponseEquipPokedeCommand equipPokedeCommand = 64;
 	optional ResponseUserRewardTaskCommand userRewardTaskCommand = 65;
 	optional ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;
+	optional ResponseOtherUserInfoCommand otherUserInfoCommand = 67;
 }
 
 ////////// End

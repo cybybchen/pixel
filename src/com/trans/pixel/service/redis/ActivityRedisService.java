@@ -30,8 +30,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class ActivityRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(ActivityRedisService.class);
 	private static final String ACTIVITY_RICHANG_FILE_NAME = "lol_taskrichang.xml";
-	private static final String ACTIVITY_KAIFU2_FILE_NAME = "lol_taskkaifu2.xml";
-	private static final String ACTIVITY_KAIFU_FILE_NAME = "lol_taskkaifu1.xml";
+	private static final String ACTIVITY_KAIFU2_FILE_NAME = "ld_taskkaifu2.xml";
+	private static final String ACTIVITY_KAIFU_FILE_NAME = "ld_taskkaifu1.xml";
 	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "ld_taskshouchong.xml";
 	private static final String ACTIVITY_FILE_PREFIX = "activity/activity_";
 	
@@ -132,7 +132,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Kaifu2> map = new HashMap<String, Kaifu2>();
-		for(Kaifu2.Builder kaifu : builder.getKaifu2BuilderList()){
+		for(Kaifu2.Builder kaifu : builder.getIdBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;
@@ -183,7 +183,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Kaifu> map = new HashMap<String, Kaifu>();
-		for(Kaifu.Builder kaifu : builder.getKaifu1BuilderList()){
+		for(Kaifu.Builder kaifu : builder.getIdBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;

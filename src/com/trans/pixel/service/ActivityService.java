@@ -49,7 +49,6 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.RechargeProto.Shouchong;
-import com.trans.pixel.protoc.RechargeProto.ShouchongReward;
 import com.trans.pixel.protoc.RewardTaskProto.REWARDTASK_TYPE;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
@@ -209,19 +208,6 @@ public class ActivityService {
 		}
 		
 		return false;
-	}
-	
-	private List<RewardInfo> getShouchongRewardList(List<ShouchongReward> shouchongRewardList) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		
-		for (ShouchongReward shouchongReward : shouchongRewardList) {
-			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(shouchongReward.getRewardid());
-			reward.setCount(shouchongReward.getCount());
-			rewardList.add(reward.build());
-		}
-		
-		return rewardList;
 	}
 	
 	private List<RewardInfo> getRewardList(ActivityOrder order) {
@@ -650,7 +636,7 @@ public class ActivityService {
 		
 		uk.addRewardOrder(order);
 		userActivityService.updateUserKaifu(user.getId(), uk.build());
-		rewards.addAllLoot(getRewardList(activityorder));
+		rewards.addAllLoot(activityorder.getRewardList());
 		
 		isDeleteNotice(user);
 		
@@ -1163,7 +1149,7 @@ public class ActivityService {
 			Entry<String, Shouchong> entry = it.next();
 			Shouchong shouchong = entry.getValue();
 			
-			rewards.addAllLoot(getShouchongRewardList(shouchong.getRewardList()));
+			rewards.addAllLoot(shouchong.getRewardList());
 			user.setShouchongIsGetReward(1);
 			userService.updateUser(user);
 			

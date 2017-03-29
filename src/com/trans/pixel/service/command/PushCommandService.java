@@ -54,6 +54,7 @@ import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.UnionProto.BossGroupRecord;
 import com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.RewardCommand;
@@ -217,6 +218,12 @@ public class PushCommandService extends BaseCommandService {
 		}
 		builder.setUser(userInfo);
 		responseBuilder.setUserInfoCommand(builder.build());
+	}
+	
+	public void pushOtherUserInfoCommand(Builder responseBuilder, UserInfo user) {
+		ResponseOtherUserInfoCommand.Builder builder = ResponseOtherUserInfoCommand.newBuilder();
+		builder.addUser(user);
+		responseBuilder.setOtherUserInfoCommand(builder.build());
 	}
 	
 	public void pushUserMailListCommand(Builder responseBuilder, UserBean user, int type) {
