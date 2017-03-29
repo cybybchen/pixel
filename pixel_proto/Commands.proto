@@ -2961,6 +2961,7 @@ message UserRewardTaskRoom {
 	optional uint32 status = 4;
 	optional uint32 index = 5;
 	repeated RoomInfo roomInfo = 6; 
+	optional uint32 enemyId = 7;
 }
 
 message RequestCreateRewardTaskRoomCommand {

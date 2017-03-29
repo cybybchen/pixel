@@ -4617,6 +4617,16 @@ public final class RewardTaskProto {
      */
     com.trans.pixel.protoc.RewardTaskProto.RoomInfoOrBuilder getRoomInfoOrBuilder(
         int index);
+
+    // optional uint32 enemyId = 7;
+    /**
+     * <code>optional uint32 enemyId = 7;</code>
+     */
+    boolean hasEnemyId();
+    /**
+     * <code>optional uint32 enemyId = 7;</code>
+     */
+    int getEnemyId();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserRewardTaskRoom}
@@ -4695,6 +4705,11 @@ public final class RewardTaskProto {
                 mutable_bitField0_ |= 0x00000010;
               }
               roomInfo_.add(input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RoomInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000010;
+              enemyId_ = input.readUInt32();
               break;
             }
           }
@@ -4848,12 +4863,29 @@ public final class RewardTaskProto {
       return roomInfo_.get(index);
     }
 
+    // optional uint32 enemyId = 7;
+    public static final int ENEMYID_FIELD_NUMBER = 7;
+    private int enemyId_;
+    /**
+     * <code>optional uint32 enemyId = 7;</code>
+     */
+    public boolean hasEnemyId() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional uint32 enemyId = 7;</code>
+     */
+    public int getEnemyId() {
+      return enemyId_;
+    }
+
     private void initFields() {
       createUserId_ = 0L;
       bossId_ = 0;
       status_ = 0;
       index_ = 0;
       roomInfo_ = java.util.Collections.emptyList();
+      enemyId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4896,6 +4928,9 @@ public final class RewardTaskProto {
       for (int i = 0; i < roomInfo_.size(); i++) {
         output.writeMessage(6, roomInfo_.get(i));
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(7, enemyId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -4924,6 +4959,10 @@ public final class RewardTaskProto {
       for (int i = 0; i < roomInfo_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, roomInfo_.get(i));
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, enemyId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5056,6 +5095,8 @@ public final class RewardTaskProto {
         } else {
           roomInfoBuilder_.clear();
         }
+        enemyId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -5109,6 +5150,10 @@ public final class RewardTaskProto {
         } else {
           result.roomInfo_ = roomInfoBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.enemyId_ = enemyId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5162,6 +5207,9 @@ public final class RewardTaskProto {
               roomInfoBuilder_.addAllMessages(other.roomInfo_);
             }
           }
+        }
+        if (other.hasEnemyId()) {
+          setEnemyId(other.getEnemyId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5590,6 +5638,39 @@ public final class RewardTaskProto {
           roomInfo_ = null;
         }
         return roomInfoBuilder_;
+      }
+
+      // optional uint32 enemyId = 7;
+      private int enemyId_ ;
+      /**
+       * <code>optional uint32 enemyId = 7;</code>
+       */
+      public boolean hasEnemyId() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional uint32 enemyId = 7;</code>
+       */
+      public int getEnemyId() {
+        return enemyId_;
+      }
+      /**
+       * <code>optional uint32 enemyId = 7;</code>
+       */
+      public Builder setEnemyId(int value) {
+        bitField0_ |= 0x00000020;
+        enemyId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 enemyId = 7;</code>
+       */
+      public Builder clearEnemyId() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        enemyId_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserRewardTaskRoom)
@@ -10297,27 +10378,28 @@ public final class RewardTaskProto {
       "\001(\0132 .com.trans.pixel.protoc.RoomInfo\022\r\n" +
       "\005index\030\007 \002(\r\"K\n\021REWARDTASK_STATUS\022\010\n\004LIV" +
       "E\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n\004FULL\020\003\022\n\n" +
-      "\006HAS_IN\020\004\"\215\001\n\022UserRewardTaskRoom\022\024\n\014crea" +
+      "\006HAS_IN\020\004\"\236\001\n\022UserRewardTaskRoom\022\024\n\014crea" +
       "teUserId\030\001 \002(\004\022\016\n\006bossId\030\003 \002(\r\022\016\n\006status" +
       "\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010roomInfo\030\006 \003(\0132" +
-      " .com.trans.pixel.protoc.RoomInfo\"3\n\"Req",
-      "uestCreateRewardTaskRoomCommand\022\r\n\005index" +
-      "\030\001 \002(\r\"A\n RequestQuitRewardTaskRoomComma" +
-      "nd\022\r\n\005index\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"g\n$Req" +
-      "uestInviteToRewardTaskRoomCommand\022\n\n\002id\030" +
-      "\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024\n\014createUserId\030\003 " +
-      "\001(\004\022\r\n\005index\030\004 \001(\r\"A\n#RequestSubmitRewar" +
-      "dTaskScoreCommand\022\r\n\005index\030\001 \002(\r\022\013\n\003ret\030" +
-      "\002 \002(\010\"_\n\035ResponseUserRewardTaskCommand\022>" +
-      "\n\016userRewardTask\030\001 \003(\0132&.com.trans.pixel" +
-      ".protoc.UserRewardTask\"]\n!ResponseUserRe",
-      "wardTaskRoomCommand\0228\n\004room\030\001 \003(\0132*.com." +
-      "trans.pixel.protoc.UserRewardTaskRoom\"\036\n" +
-      "\034RequestUserRewardTaskCommand\"/\n\036Request" +
-      "RewardTaskRewardCommand\022\r\n\005index\030\002 \002(\r\"1" +
-      "\n RequestUserRewardTaskRoomCommand\022\r\n\005in" +
-      "dex\030\001 \002(\r*A\n\017REWARDTASK_TYPE\022\n\n\006TYPE_1\020\001" +
-      "\022\n\n\006TYPE_2\020\002\022\n\n\006TYPE_3\020\003\022\n\n\006TYPE_4\020\004"
+      " .com.trans.pixel.protoc.RoomInfo\022\017\n\007ene",
+      "myId\030\007 \001(\r\"3\n\"RequestCreateRewardTaskRoo" +
+      "mCommand\022\r\n\005index\030\001 \002(\r\"A\n RequestQuitRe" +
+      "wardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\022\016\n\006us" +
+      "erId\030\002 \002(\004\"g\n$RequestInviteToRewardTaskR" +
+      "oomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024" +
+      "\n\014createUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"A\n#R" +
+      "equestSubmitRewardTaskScoreCommand\022\r\n\005in" +
+      "dex\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035ResponseUserRe" +
+      "wardTaskCommand\022>\n\016userRewardTask\030\001 \003(\0132" +
+      "&.com.trans.pixel.protoc.UserRewardTask\"",
+      "]\n!ResponseUserRewardTaskRoomCommand\0228\n\004" +
+      "room\030\001 \003(\0132*.com.trans.pixel.protoc.User" +
+      "RewardTaskRoom\"\036\n\034RequestUserRewardTaskC" +
+      "ommand\"/\n\036RequestRewardTaskRewardCommand" +
+      "\022\r\n\005index\030\002 \002(\r\"1\n RequestUserRewardTask" +
+      "RoomCommand\022\r\n\005index\030\001 \002(\r*A\n\017REWARDTASK" +
+      "_TYPE\022\n\n\006TYPE_1\020\001\022\n\n\006TYPE_2\020\002\022\n\n\006TYPE_3\020" +
+      "\003\022\n\n\006TYPE_4\020\004"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10359,7 +10441,7 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor,
-              new java.lang.String[] { "CreateUserId", "BossId", "Status", "Index", "RoomInfo", });
+              new java.lang.String[] { "CreateUserId", "BossId", "Status", "Index", "RoomInfo", "EnemyId", });
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_fieldAccessorTable = new
