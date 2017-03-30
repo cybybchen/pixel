@@ -253,7 +253,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.LEIJI_COST_JEWEL, count);
+		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_LEIJI_COST_JEWEL_VALUE, count);
 	}
 	
 	public void lotteryActivity(UserBean user, int count, int costType, int cost, boolean free) {
@@ -568,7 +568,7 @@ public class ActivityService {
 			Kaifu kaifu = entry.getValue();
 			if (kaifu.getTargetid() == type) {
 				UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), kaifu.getId()));
-				if (type == ActivityConst.HERO_RARE) {
+				if (type == ACTIVITY_TYPE.TYPE_HERO_RAREUP_VALUE) {
 					List<KaifuOrder> orderRecordList = uk.getOrderRecordList();
 					if (orderRecordList == null || orderRecordList.isEmpty()) {
 						orderRecordList = new ArrayList<KaifuOrder>();
@@ -596,7 +596,7 @@ public class ActivityService {
 							}
 						}
 					}
-				} else if (type == ActivityConst.KAIFU_DAY_6 || type == ActivityConst.DANBI_RECHARGE) {
+				} else if (type == ActivityConst.KAIFU_DAY_6 || type == ACTIVITY_TYPE.TYPE_DANBI_RECHARGE_VALUE) {
 					uk.setCompleteCount(Math.max(count, uk.getCompleteCount()));
 				} else
 					uk.setCompleteCount(uk.getCompleteCount() + count);
@@ -702,11 +702,11 @@ public class ActivityService {
 		/**
 		 * 首次单笔充值的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.DANBI_RECHARGE, count);
+		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_DANBI_RECHARGE_VALUE, count);
 		/**
 		 * 累计充值的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.LEIJI_RECHARGE, count);
+		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_LEIJI_RECHARGE_VALUE, count);
 		/**
 		 * 累计充值的日常
 		 */

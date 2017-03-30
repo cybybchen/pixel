@@ -85,6 +85,14 @@ public final class ActivityProto {
      * <code>TYPE_PVP_HELP = 17;</code>
      */
     TYPE_PVP_HELP(16, 17),
+    /**
+     * <code>TYPE_DANBI_RECHARGE = 18;</code>
+     */
+    TYPE_DANBI_RECHARGE(17, 18),
+    /**
+     * <code>TYPE_HERO_RAREUP = 19;</code>
+     */
+    TYPE_HERO_RAREUP(18, 19),
     ;
 
     /**
@@ -155,6 +163,14 @@ public final class ActivityProto {
      * <code>TYPE_PVP_HELP = 17;</code>
      */
     public static final int TYPE_PVP_HELP_VALUE = 17;
+    /**
+     * <code>TYPE_DANBI_RECHARGE = 18;</code>
+     */
+    public static final int TYPE_DANBI_RECHARGE_VALUE = 18;
+    /**
+     * <code>TYPE_HERO_RAREUP = 19;</code>
+     */
+    public static final int TYPE_HERO_RAREUP_VALUE = 19;
 
 
     public final int getNumber() { return value; }
@@ -178,6 +194,8 @@ public final class ActivityProto {
         case 15: return TYPE_WUQI_GET;
         case 16: return TYPE_EQUIP_LEVELUP_10;
         case 17: return TYPE_PVP_HELP;
+        case 18: return TYPE_DANBI_RECHARGE;
+        case 19: return TYPE_HERO_RAREUP;
         default: return null;
       }
     }
@@ -33588,7 +33606,7 @@ public final class ActivityProto {
       "(\005\"@\n\rRankvalueList\022/\n\004rank\030\001 \003(\0132!.com." +
       "trans.pixel.protoc.Rankvalue\"N\n\tRankvalu" +
       "e\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(\002" +
-      "\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\373\002\n\rACTIVIT" +
+      "\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\252\003\n\rACTIVIT" +
       "Y_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n\023TYPE_LEI",
       "JI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COST_JEWEL\020\003" +
       "\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTYPE" +
@@ -33598,7 +33616,8 @@ public final class ActivityProto {
       "SS\020\013\022\023\n\017TYPE_MOJING_GET\020\014\022\023\n\017TYPE_REWARD" +
       "TASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTYPE_WUQI_G" +
       "ET\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020\022\021\n\rTYPE_" +
-      "PVP_HELP\020\021"
+      "PVP_HELP\020\021\022\027\n\023TYPE_DANBI_RECHARGE\020\022\022\024\n\020T" +
+      "YPE_HERO_RAREUP\020\023"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
