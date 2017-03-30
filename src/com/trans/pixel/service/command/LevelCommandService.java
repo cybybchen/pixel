@@ -237,8 +237,8 @@ public class LevelCommandService extends BaseCommandService {
 	public void helpLevelResult(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
 		if (userProp.getPropCount() < 1) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
@@ -251,8 +251,8 @@ public class LevelCommandService extends BaseCommandService {
 		if (cmd.getRet()) {
 			Event event = redis.getEvent(friendUserId, cmd.getId());
 			if (event == null) {
-				logService.sendErrorLog(friendUserId, user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+				logService.sendErrorLog(friendUserId, user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else{
 				UserLevelBean userLevel = redis.getUserLevel(friendUserId);
@@ -260,6 +260,7 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
+				redis.delEvent(friend, cmd.getId());
 				Event eventconfig = redis.getEvent(event.getEventid());
 //				eventReward(eventconfig, responseBuilder, user);
 //				userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, friend);

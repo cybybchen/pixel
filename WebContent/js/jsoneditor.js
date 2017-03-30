@@ -252,6 +252,8 @@ function buildUserJson(key, value){
             json["mailList5"] = 1;
             json["mailList6"] = 1;
             json["mailList7"] = 1;
+            json["mailList8"] = 1;
+            json["mailList9"] = 1;
             json["friendList"] = 1;
             // json["DAILYSHOP"] = 1;
             // json["BLACKSHOP"] = 1;
@@ -370,6 +372,12 @@ function appendUserDatas(message, dirty){
     }
     if(message["mailList7"]!=null){
         appendUserData("mailList7", message["mailList7"]);
+    }
+    if(message["mailList8"]!=null){
+        appendUserData("mailList8", message["mailList8"]);
+    }
+    if(message["mailList9"]!=null){
+        appendUserData("mailList9", message["mailList9"]);
     }
     if(message["friendList"]!=null){
         appendUserData("friendList", message["friendList"]);
