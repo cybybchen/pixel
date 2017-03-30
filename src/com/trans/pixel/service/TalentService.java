@@ -13,6 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
@@ -40,25 +43,24 @@ public class TalentService {
 	@Resource
 	private CostService costService;
 	
-	public UserTalent talentUpgrade(UserBean user, int id) {
+	public ResultConst talentUpgrade(UserBean user, int id, UserTalent.Builder talentBuilder) {
 		UserTalent userTalent = userTalentService.getUserTalent(user, id);
-		if (userTalent == null)
-			return null;
+		
 		int originalLevel = userTalent.getLevel();
 		Talentupgrade talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel() + 1);
 		if (talentupgrade == null)
-			return null;
+			return ErrorConst.HERO_LEVEL_MAX;
 		if (!costService.costAndUpdate(user, talentupgrade.getItemid(), talentupgrade.getItemcount())) {
-			return null;
+			return ErrorConst.TALENTUPGRADE_ERROR;
 		}
 		
-		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
-		builder.setLevel(builder.getLevel() + 1);
-		userTalentService.updateUserTalent(user.getId(), unlockTalent(user, builder, originalLevel));
+		talentBuilder.mergeFrom(userTalent);
+		talentBuilder.setLevel(talentBuilder.getLevel() + 1);
+		userTalentService.updateUserTalent(user.getId(), unlockTalent(user, talentBuilder, originalLevel));
 		
-		levelupTalentSkill(user, id, builder.getLevel() - originalLevel);
+		levelupTalentSkill(user, id, talentBuilder.getLevel() - originalLevel);
 		
-		return builder.build();
+		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
 	
 	public void levelupTalentSkill(UserBean user, int talentId, int level) {

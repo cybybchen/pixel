@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -35,14 +36,15 @@ public class TalentCommandService extends BaseCommandService {
 
 	public void talentupgrade(RequestTalentupgradeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
-		UserTalent userTalent = talentService.talentUpgrade(user, cmd.getId());
-		if (userTalent == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.TALENTUPGRADE_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.TALENTUPGRADE_ERROR);
+		UserTalent.Builder talentBuilder = UserTalent.newBuilder();
+		ResultConst ret = talentService.talentUpgrade(user, cmd.getId(), talentBuilder);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		builder.addUserTalent(userTalent);
+		builder.addUserTalent(talentBuilder.build());
 		builder.addAllUserTalentSkill(userTalentService.getUserTalentSkillListByTalentId(user, cmd.getId()));
 		responseBuilder.setUserTalentCommand(builder.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
