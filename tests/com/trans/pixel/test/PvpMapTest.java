@@ -26,7 +26,7 @@ public class PvpMapTest extends BaseTest {
 	
 	public void testPvp(RequestCommand request) {
 //		submitZhanliTest(request);
-		unlockMap(request);
+//		unlockMap(request);
 		testPvpMap(request);
 		attackMonster(request);
 		testGetMineInfo(request);
