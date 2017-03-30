@@ -772,7 +772,13 @@ public class UnionService extends FightService{
 		
 		logService.sendUnionbossLog(user.getServerId(), user.getId(), union.getId(), bossId, percent);
 		
-		
+		if (unionBossRecord.getPercent() < 10000) {
+			UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
+			if (userRankBean == null)
+				userRankBean = new UserRankBean(user);
+			userRankBean.setDps(userRankBean.getDps() + hp);
+			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
+		}
 		
 		if (unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
 			if (!redis.setLock("UnionBoss_" + bossId, 10))
@@ -787,11 +793,6 @@ public class UnionService extends FightService{
 			redis.clearLock("Union_"+union.getId());
 			redis.clearLock("UnionBoss_" + bossId);
 		} else {
-			UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
-			if (userRankBean == null)
-				userRankBean = new UserRankBean(user);
-			userRankBean.setDps(userRankBean.getDps() + hp);
-			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
 		}
 		
