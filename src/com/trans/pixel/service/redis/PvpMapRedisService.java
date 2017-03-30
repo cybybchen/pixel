@@ -41,6 +41,10 @@ public class PvpMapRedisService extends RedisService{
 	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
 		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
+		for(PVPMap.Builder map : builder.getFieldBuilderList()){
+			// if(map.getFieldid() <= pvpUnlock)
+				map.setOpened(true);
+		}
 		if(value != null && parseJson(value, builder) && builder.getField(0).getBufflimit() > 100){
 			return builder;
 		}
@@ -54,14 +58,14 @@ public class PvpMapRedisService extends RedisService{
 		return maplist;
 	}
 	
-	public boolean isMapOpen(UserBean user, int mapId){
-		PVPMapList.Builder maplist = getMapList(user.getId(), user.getPvpUnlock());
-		for(PVPMap map : maplist.getFieldList()){
-			if(map.getFieldid() == mapId && map.getOpened())
-				return true;
-		}
-		return false;
-	}
+//	public boolean isMapOpen(UserBean user, int mapId){
+//		PVPMapList.Builder maplist = getMapList(user.getId(), user.getPvpUnlock());
+//		for(PVPMap map : maplist.getFieldList()){
+//			if(map.getFieldid() == mapId && map.getOpened())
+//				return true;
+//		}
+//		return false;
+//	}
 	
 	public void saveMapList(PVPMapList maplist, long userId) {
 		hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(maplist));
