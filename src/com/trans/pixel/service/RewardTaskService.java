@@ -17,8 +17,8 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
@@ -54,7 +54,7 @@ public class RewardTaskService {
 	@Resource
 	private ActivityService activityService;
 	@Resource
-	private UserPropService userPropService;
+	private UserEquipService userEquipService;
 	
 	public ResultConst zhaohuanTask(UserBean user, int id) {
 		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
@@ -70,7 +70,7 @@ public class RewardTaskService {
 		return SuccessConst.USE_PROP;
 	}
 	
-	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, UserInfo.Builder errorUser, List<UserPropBean> userPropList) {
+	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, UserInfo.Builder errorUser, List<UserEquipBean> userEquipList) {
 		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null || ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || ut.getEnemyid() == 0) {
 			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
@@ -90,7 +90,7 @@ public class RewardTaskService {
 		builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 		userRewardTaskService.updateUserRewardTask(user, builder.build());
 		
-		userPropList.add(userPropService.selectUserProp(user.getId(), costId));
+		userEquipList.add(userEquipService.selectUserEquip(user.getId(), costId));
 		rewards.addAllLoot(RewardBean.buildRewardInfoList(getBossloot(ut.getEnemyid(), user, 0 , 0)));
 		
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;

@@ -11,7 +11,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -51,8 +51,8 @@ public class RewardTaskCommandService extends BaseCommandService {
 	public void submitScore(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		UserInfo.Builder errorUser = UserInfo.newBuilder();
-		List<UserPropBean> userPropList = new ArrayList<UserPropBean>();
-		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getIndex(), cmd.getRet(), rewards, errorUser, userPropList);
+		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
+		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getIndex(), cmd.getRet(), rewards, errorUser, userEquipList);
 		if (ret instanceof ErrorConst) {
 			if (ret.getCode() == ErrorConst.NOT_ENOUGH_PROP.getCode()) {
 				pusher.pushOtherUserInfoCommand(responseBuilder, errorUser.build());
@@ -70,7 +70,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 
 		pusher.pushUserRewardTask(responseBuilder, user);
 		
-		pusher.pushUserPropListCommand(responseBuilder, user, userPropList);
+		pusher.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 	}
 	
 	public void createRoom(RequestCreateRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
