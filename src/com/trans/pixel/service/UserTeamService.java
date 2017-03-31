@@ -360,7 +360,7 @@ public class UserTeamService {
 							if(herobean.getId() == infoId){
 								team.addHeroInfo(herobean.buildTeamHeroInfo(
 										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId(), user),
-										userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId(), user)));
+										userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId())));
 								break;
 							}
 						}

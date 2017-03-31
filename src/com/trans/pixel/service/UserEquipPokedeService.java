@@ -54,7 +54,7 @@ public class UserEquipPokedeService {
 		return userPokedeList;
 	}
 	
-	public UserEquipPokedeBean getUserEquipPokede(List<UserEquipPokedeBean> pokedeList, int itemId, UserBean user) {
+	public UserEquipPokedeBean getUserEquipPokede(List<UserEquipPokedeBean> pokedeList, int itemId) {
 		for (UserEquipPokedeBean pokede : pokedeList) {
 			if (pokede.getItemId() == itemId) {
 				return pokede;

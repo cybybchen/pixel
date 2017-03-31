@@ -124,9 +124,10 @@ public class UserTalentService {
 						builder.setLevel(skill.getLevel());
 					utBuilder.setSkill(i, builder.build());
 				}
+				List<UserEquipPokedeBean> userEquipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(userId);
 				for (int i = 0; i < utBuilder.getEquipCount(); ++i) {
 					UserTalentEquip.Builder builder = UserTalentEquip.newBuilder(utBuilder.getEquip(i));
-					UserEquipPokedeBean userEquipPokede = userEquipPokedeService.selectUserEquipPokede(userId, builder.getItemId());
+					UserEquipPokedeBean userEquipPokede = userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, builder.getItemId());
 					if (userEquipPokede != null)
 						builder.setLevel(userEquipPokede.getLevel());
 					utBuilder.setEquip(i, builder.build());
