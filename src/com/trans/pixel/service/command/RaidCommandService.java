@@ -44,6 +44,7 @@ public class RaidCommandService extends BaseCommandService{
 			ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 			builder.setId(id);
 			responseBuilder.setRaidCommand(builder);
+			pusher.pushUserDataByRewardId(responseBuilder, user, raid.getCostid());
 		}else{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH);
