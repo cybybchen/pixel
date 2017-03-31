@@ -93,6 +93,8 @@ public class CostService {
 	}
 	
 	public int canCostOnly(UserBean user, List<CostItem> costList) { //返回消费的道具id
+		if (costList.isEmpty())
+			return -1;
 		List<CostItem.Builder> builderList = convertCostBuilder(costList);
 		Collections.sort(builderList, comparator);
 		for (int i = 0; i < builderList.size(); ++i) {
