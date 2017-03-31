@@ -232,6 +232,7 @@ function buildUserJson(key, value){
         }else if(datatype == "equip"){
             json["equip"] = 1;
             json["prop"] = 1;
+            json["equippokede"] = 1;
         }else if(datatype == "pvp"){
             json["areaMonster"] = 1;
             json["areaBossTime"] = 1;
@@ -303,6 +304,9 @@ function appendUserDatas(message, dirty){
     }
     if(message["prop"]!=null){
         appendUserData("prop", message["prop"]);
+    }
+    if(message["equippokede"]!=null){
+        appendUserData("equippokede", message["equippokede"]);
     }
     if(message["LevelRecord"]!=null){
         appendUserData("LevelRecord", message["LevelRecord"]);

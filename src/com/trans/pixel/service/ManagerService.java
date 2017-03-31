@@ -890,6 +890,41 @@ public class ManagerService extends RedisService{
 			result.put("prop", object);
 		}
 		
+		if(req.containsKey("update-equippokede") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.USER_EQUIP_POKEDE_PREFIX + userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-equippokede"));
+			for(Entry<String, String> entry : map.entrySet()){
+				String key = entry.getKey();
+				if(!object.keySet().contains(key)){
+//					UserEquipBean bean = UserEquipBean.fromJson(map.get(key));
+//					userEquipService.delUserEquip(bean);
+////					hdelete(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId, key);
+//					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-equip", map.get(key));
+				}else if(entry.getValue().equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.USER_EQUIP_POKEDE_PREFIX + userId, map);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-equippokede", map.toString());
+			}
+			req.put("equippokede", 1);
+		}else if(req.containsKey("del-equippokede") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.USER_EQUIP_POKEDE_PREFIX + userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-equippokede", "");
+			req.put("equippokede", 1);
+		}
+		if(req.containsKey("equippokede") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.USER_EQUIP_POKEDE_PREFIX + userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("equippokede", object);
+		}
+		
 		if(req.containsKey("update-pokede") && gmaccountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.USER_POKEDE_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pokede"));
