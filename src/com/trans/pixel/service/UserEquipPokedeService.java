@@ -61,7 +61,7 @@ public class UserEquipPokedeService {
 			}
 		}
 		
-		return selectUserEquipPokede(user, itemId);
+		return null;
 	}
 	
 	public void updateUserEquipPokede(UserEquipPokedeBean userPokede, UserBean user) {
