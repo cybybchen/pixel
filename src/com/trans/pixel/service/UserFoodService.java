@@ -22,7 +22,10 @@ public class UserFoodService {
 	private ActivityService activityService;
 	
 	public UserFoodBean selectUserFood(UserBean user, int foodId) {
-		long userId = user.getId();
+	return selectUserFood(user.getId(), foodId);
+	}
+	
+	public UserFoodBean selectUserFood(long userId, int foodId) {
 		UserFoodBean userFood = userFoodRedisService.selectUserFood(userId, foodId);
 		if (userFood == null) {
 			if (!userFoodRedisService.isExistFoodKey(userId)) {

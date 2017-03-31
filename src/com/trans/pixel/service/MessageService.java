@@ -13,7 +13,7 @@ import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
-import com.trans.pixel.protoc.UnionProto.BossRoomRecord;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.service.redis.MessageRedisService;
 
 @Service
@@ -25,7 +25,7 @@ public class MessageService {
 	@Resource
 	private NoticeService noticeService;
 	@Resource
-	private BossService bossService;
+	private RewardTaskService rewardTaskService;
 	@Resource
 	private UserTeamService userTeamService;
 
@@ -134,8 +134,6 @@ public class MessageService {
 		messageBoard.setGroupId(groupId);
 		messageBoard.setBossId(bossId);
 		if (groupId != 0 && bossId != 0) {
-			BossRoomRecord bossRoom = bossService.getBossRoomRecord(user);
-			messageBoard.setStartDate(bossRoom.getCreateTime());
 			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 			messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 		}else if(fightId !=0) {

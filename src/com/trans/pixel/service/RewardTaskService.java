@@ -145,7 +145,7 @@ public class RewardTaskService {
 		
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
 			UserInfo userinfo = roomInfo.getUser();
-			costService.costOnly(user, rewardTask.getCostList());
+			costService.costOnly(userinfo.getId(), rewardTask.getCostList());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex()));
 			builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
 			userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
