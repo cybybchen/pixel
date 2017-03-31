@@ -73,7 +73,7 @@ public class PropService {
 			ResultConst ret = rewardTaskService.zhaohuanTask(user, prop.getBossid());
 			if (ret instanceof ErrorConst)
 				return ret;
-			userProp.setPropCount(userProp.getPropCount() - propCount);
+			userProp.setPropCount(userProp.getPropCount() - 1);
 			userPropService.updateUserProp(userProp);
 			return ret;
 		}
