@@ -101,9 +101,9 @@ public class RewardTaskService {
 		if (ut == null || ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE) {
 			return null;
 		}
-//		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), id);
-//		if (room != null)
-//			return room;
+		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
+		if (room != null)
+			return room;
 		
 		UserInfo create = userService.getCache(user.getServerId(), user.getId());
 		UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder();
