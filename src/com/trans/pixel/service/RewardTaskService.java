@@ -86,6 +86,7 @@ public class RewardTaskService {
 		if (result instanceof ErrorConst)
 			return result;
 		
+		costService.costOnly(user, rewardTask.getCostList());
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
 		builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 		userRewardTaskService.updateUserRewardTask(user, builder.build());
@@ -145,10 +146,12 @@ public class RewardTaskService {
 		
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
 			UserInfo userinfo = roomInfo.getUser();
-			costService.costOnly(userinfo.getId(), rewardTask.getCostList());
-			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex()));
-			builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
-			userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
+			if (userinfo.getId() != user.getId()) {
+				costService.costOnly(userinfo.getId(), rewardTask.getCostList());
+				UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex()));
+				builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
+				userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
+			}
 			activityService.completeRewardTask(userinfo.getId(), rewardTask.getType());
 		}
 		

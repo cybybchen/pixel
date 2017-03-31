@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +14,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRewardTaskBean;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
+import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRewardTaskRedisService;
 
 @Service
@@ -23,6 +26,8 @@ public class UserRewardTaskService {
 	private UserRewardTaskRedisService userRewardTaskRedisService;
 	@Resource
 	private UserRewardTaskMapper mapper;
+	@Resource
+	private RewardTaskRedisService rewardTaskRedisService;
 	
 	public UserRewardTask getUserRewardTask(UserBean user, int index) {
 		return getUserRewardTask(user.getId(), index);
@@ -43,8 +48,25 @@ public class UserRewardTaskService {
 	}
 	
 	public List<UserRewardTask> getUserRewardTaskList(UserBean user) {
-		List<UserRewardTask> utList = userRewardTaskRedisService.getUserRewardTaskList(user.getId());
-		
+		List<UserRewardTask> utList = new ArrayList<UserRewardTask>();
+		for (UserRewardTask ut : userRewardTaskRedisService.getUserRewardTaskList(user.getId())) {
+			if (ut.hasRoomInfo()) {
+				log.debug("" + RedisService.formatJson(ut));
+				if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {
+					if (ut.getRoomInfo().getUser().getId() != user.getId())
+						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
+					else {
+						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
+						builder.clearRoomInfo();
+						utList.add(builder.build());
+					}
+					
+					continue;
+				}
+			}
+			
+			utList.add(ut);
+		}
 
 		return utList;
 	}
