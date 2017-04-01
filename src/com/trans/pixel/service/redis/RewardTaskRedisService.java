@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
@@ -91,7 +92,8 @@ public class RewardTaskRedisService extends RedisService {
 	public void setUserRewardTaskRoom(UserRewardTaskRoom room) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + room.getCreateUserId();
 		hput(key, "" + room.getIndex(), formatJson(room));
-		expireAt(key, DateUtil.getEndDateOfD());
+//		expireAt(key, DateUtil.getEndDateOfD());
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public void delUserRewardTaskRoom(UserBean user, int index) {
