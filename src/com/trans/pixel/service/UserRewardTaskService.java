@@ -53,7 +53,7 @@ public class UserRewardTaskService {
 			if (ut.hasRoomInfo()) {
 				log.debug("" + RedisService.formatJson(ut));
 				if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {
-					if (ut.getRoomInfo().getUser().getId() != user.getId())
+					if (ut.getRoomInfo().getUser().getId() != user.getId() && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE)
 						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
 					else {
 						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);

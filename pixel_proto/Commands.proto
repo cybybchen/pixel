@@ -3010,12 +3010,13 @@ message RequestUserRewardTaskRoomCommand {
 }
 ////////// TaskProto
 message TaskTargetList {
-	repeated TaskTarget target = 1;
+	repeated TaskTarget id = 1;
 }
 
 message TaskTarget {
 	optional int32 targetid = 1;
 	repeated TaskOrder order = 2;
+	optional uint32 skip = 3;
 }
 
 message TaskOrder {
@@ -3031,19 +3032,22 @@ message TaskOrder {
 	optional int32 targetcount1 = 10;
 	optional int32 rewardid3 = 11;
 	optional int32 rewardcount3 = 12;
+	optional string name = 13;
+	repeated RewardInfo reward = 14;
+	optional uint32 skip = 15;
 }
 
 message Task3OrderList {
-	repeated TaskOrder order = 1;
+	repeated TaskOrder id = 1;
 }
-
+	
 message Task2TargetHero {
 	optional int32 heroid = 1;
 	repeated TaskTarget target = 2;
 }
 
 message Task2TargetList {
-	repeated Task2TargetHero hero = 1;
+	repeated Task2TargetHero id = 1;
 }
 
 message UserTask {

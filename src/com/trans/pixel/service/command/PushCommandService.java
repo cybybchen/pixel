@@ -221,9 +221,9 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setUserInfoCommand(builder.build());
 	}
 	
-	public void pushOtherUserInfoCommand(Builder responseBuilder, UserInfo user) {
+	public void pushOtherUserInfoCommand(Builder responseBuilder, List<UserInfo> userList) {
 		ResponseOtherUserInfoCommand.Builder builder = ResponseOtherUserInfoCommand.newBuilder();
-		builder.addUser(user);
+		builder.addAllUser(userList);
 		responseBuilder.setOtherUserInfoCommand(builder.build());
 	}
 	

@@ -50,12 +50,16 @@ public class RewardTaskCommandService extends BaseCommandService {
 	
 	public void submitScore(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		UserInfo.Builder errorUser = UserInfo.newBuilder();
+		List<UserInfo> errorUserList = new ArrayList<UserInfo>();
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
-		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getIndex(), cmd.getRet(), rewards, errorUser, userEquipList);
+		ResultConst ret = rewardTaskService.submitRewardTaskScore(user, cmd.getIndex(), cmd.getRet(), rewards, errorUserList, userEquipList);
 		if (ret instanceof ErrorConst) {
 			if (ret.getCode() == ErrorConst.NOT_ENOUGH_PROP.getCode()) {
-				pusher.pushOtherUserInfoCommand(responseBuilder, errorUser.build());
+				pusher.pushOtherUserInfoCommand(responseBuilder, errorUserList);
+				
+				ResponseUserRewardTaskRoomCommand.Builder roombuilder = ResponseUserRewardTaskRoomCommand.newBuilder();
+				roombuilder.addRoom(rewardTaskService.getUserRoom(user, cmd.getIndex()));
+				responseBuilder.setUserRewardTaskRoomCommand(roombuilder.build());
 			}
 			
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
@@ -115,18 +119,18 @@ public class RewardTaskCommandService extends BaseCommandService {
 		long createUserId = cmd.getCreateUserId();
 		int index = cmd.getIndex();
 		UserRewardTaskRoom room = rewardTaskService.getUserRoom(user, index);
-		if(room == null && !userIds.isEmpty()){
+		if(room == null && !userIds.isEmpty()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_NEED_CREATE_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_NEED_CREATE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		if(room != null && userIds.isEmpty()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HASIN);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
-            responseBuilder.setErrorCommand(errorCommand);
-			return;
-		}
+//		if(room != null && userIds.isEmpty() && room.getIndex() == index) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HASIN);
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
+//            responseBuilder.setErrorCommand(errorCommand);
+//			return;
+//		}
 		UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder();
 		room = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, id, index, userRewardTaskBuilder);
 		

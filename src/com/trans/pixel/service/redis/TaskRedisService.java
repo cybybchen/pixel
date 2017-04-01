@@ -18,9 +18,9 @@ import com.trans.pixel.protoc.TaskProto.TaskTargetList;
 @Service
 public class TaskRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(TaskRedisService.class);
-	private static final String TASK1_FILE_NAME = "lol_task1.xml";
-	private static final String TASK2_FILE_NAME = "lol_task2.xml";
-	private static final String TASK3_FILE_NAME = "lol_task3.xml";
+	private static final String TASK1_FILE_NAME = "ld_task1.xml";
+	private static final String TASK2_FILE_NAME = "ld_task2.xml";
+	private static final String TASK3_FILE_NAME = "ld_task3.xml";
 	
 	//task1
 	public TaskTarget getTask1Target(int targetId) {
@@ -68,7 +68,7 @@ public class TaskRedisService extends RedisService {
 		
 		Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
 		Map<String, String> redismap = new HashMap<String, String>();
-		for(TaskTarget.Builder task : builder.getTargetBuilderList()){
+		for(TaskTarget.Builder task : builder.getIdBuilderList()){
 			map.put("" + task.getTargetid(), task.build());
 			for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 				order.setTargetid(task.getTargetid());
@@ -139,7 +139,7 @@ public class TaskRedisService extends RedisService {
 		}
 		
 		Map<String, TaskOrder> map = new HashMap<String, TaskOrder>();
-		for(TaskOrder.Builder task : builder.getOrderBuilderList()){
+		for(TaskOrder.Builder task : builder.getIdBuilderList()){
 			map.put("" + task.getOrder(), task.build());
 		}
 		return map;
@@ -190,7 +190,7 @@ public class TaskRedisService extends RedisService {
 		}
 		
 		Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
-		for (Task2TargetHero.Builder hero : builder.getHeroBuilderList()) {
+		for (Task2TargetHero.Builder hero : builder.getIdBuilderList()) {
 			Map<String, String> redismap = new HashMap<String, String>();
 			for (TaskTarget.Builder task : hero.getTargetBuilderList()) {
 				map.put("" + task.getTargetid(), task.build());

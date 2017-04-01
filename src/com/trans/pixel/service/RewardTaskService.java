@@ -70,20 +70,21 @@ public class RewardTaskService {
 		return SuccessConst.USE_PROP;
 	}
 	
-	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, UserInfo.Builder errorUser, List<UserEquipBean> userEquipList) {
+	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, List<UserInfo> errorUserList, List<UserEquipBean> userEquipList) {
 		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null || ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || ut.getEnemyid() == 0) {
 			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
 		}
 		RewardTask rewardTask = rewardTaskRedisService.getRewardTask(ut.getId());
 		int costId = costService.canCostOnly(user, rewardTask.getCostList());
+		ResultConst result = SuccessConst.BOSS_SUBMIT_SUCCESS;
 		if (costId == 0) {
-			errorUser.mergeFrom(user.build());
-			return ErrorConst.NOT_ENOUGH_PROP;
+			errorUserList.add(user.buildShort());
+			result = ErrorConst.NOT_ENOUGH_PROP;
 		}
 		
-		ResultConst result = handleRewardTaskRoom(user, index, rewardTask, errorUser);
-		if (result instanceof ErrorConst)
+		ResultConst result2 = handleRewardTaskRoom(user, index, rewardTask, errorUserList);
+		if (result instanceof ErrorConst || result2 instanceof ErrorConst)
 			return result;
 		
 		costService.costOnly(user, rewardTask.getCostList());
@@ -91,7 +92,9 @@ public class RewardTaskService {
 		builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 		userRewardTaskService.updateUserRewardTask(user, builder.build());
 		
-		userEquipList.add(userEquipService.selectUserEquip(user.getId(), costId));
+		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), costId);
+		if (userEquip != null)
+			userEquipList.add(userEquip);
 		rewards.addAllLoot(RewardBean.buildRewardInfoList(getBossloot(ut.getEnemyid(), user, 0 , 0)));
 		
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;
@@ -126,11 +129,12 @@ public class RewardTaskService {
 		
 	}
 	
-	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, UserInfo.Builder errorUser) {
+	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, List<UserInfo> errorUserList) {
 		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null)
 			return SuccessConst.BOSS_SUBMIT_SUCCESS;;
 		
+		boolean enoughProp = true;
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
 			UserInfo userinfo = roomInfo.getUser();
 			if (userinfo.getId() == user.getId())
@@ -139,10 +143,14 @@ public class RewardTaskService {
 			UserBean other = userService.getOther(userinfo.getId());
 			int costId = costService.canCostOnly(other, rewardTask.getCostList());
 			if (costId == 0) {
-				errorUser.mergeFrom(userinfo);
-				return ErrorConst.NOT_ENOUGH_PROP;
+				errorUserList.add(userinfo);
+				enoughProp = false;
+				
 			}
 		}
+		
+		if (!enoughProp)
+			return ErrorConst.NOT_ENOUGH_PROP;
 		
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
 			UserInfo userinfo = roomInfo.getUser();
