@@ -131,6 +131,15 @@ public class UnionService extends FightService{
 
 		int index = 0;
 		int zhanli = 0;
+		members.sort(new Comparator<UserInfo>() {
+			public int compare(UserInfo bean1, UserInfo bean2) {
+				if (bean1.getZhanli() < bean2.getZhanli()) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+		});
 		for(UserInfo member : members){
 			if(index < 10)
 				zhanli += member.getZhanli()*6/10;
