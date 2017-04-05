@@ -167,11 +167,10 @@ public class UserCommandService extends BaseCommandService {
 	private void addRegisterTeam(UserBean user) {
 		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 		String teamRecord = "";
-		String composeSkill = "";
 		for (HeroInfoBean hero : userHeroList) {
 			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
-			int skillid = hero.getSkillInfoList().get(0).getSkillId();
-			composeSkill = hero.getHeroId()+","+hero.getId()+","+skillid+"_"+skillid+"_组合技";
+//			int skillid = hero.getSkillInfoList().get(0).getSkillId();
+//			composeSkill = hero.getHeroId()+","+hero.getId()+","+skillid+"_"+skillid+"_组合技";
 //			switch(hero.getHeroId()){
 //			case 82:
 //				composeSkill = "82,"+hero.getId()+",8201_8201_组合技";
@@ -189,7 +188,7 @@ public class UserCommandService extends BaseCommandService {
 			break;
 		}
 		
-		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, composeSkill, null, 0);
+		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, null, 0);
 		// userTeamService.updateUserTeam(user.getId(), 2, "", "");
 		// userTeamService.updateUserTeam(user.getId(), 3, "", "");
 		// userTeamService.updateUserTeam(user.getId(), 4, "", "");

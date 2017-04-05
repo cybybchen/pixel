@@ -36,17 +36,14 @@ public class TeamCommandService extends BaseCommandService {
 		long userId = user.getId();
 		int id = (int)cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
-		String composeSkill = "";
 		int rolePosition = cmd.getRolePosition();
-		if (cmd.hasComposeSkill())
-			composeSkill = cmd.getComposeSkill();
 		// if (!userTeamService.canUpdateTeam(user, teamInfo)) {
 		// 	logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
 			
 		// 	ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
   //           responseBuilder.setErrorCommand(errorCommand);
 		// }else
-			userTeamService.updateUserTeam(userId, id, teamInfo, composeSkill, user, rolePosition);
+			userTeamService.updateUserTeam(userId, id, teamInfo, user, rolePosition, cmd.getTeamEngineList());
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}

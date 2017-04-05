@@ -117,12 +117,17 @@ message UserTalent {
 	repeated UserTalentEquip equip = 5;
 }
 
+message TeamEngine {
+	optional uint32 id = 1;
+	optional string composeSkill = 2;
+}
+
 message Team {
         optional UserInfo user = 1;
         repeated HeroInfo heroInfo = 2;
-        optional string composeSkill = 3;
         optional UserTalent userTalent = 4;
         optional int32 rolePosition = 5;
+	repeated TeamEngine teamEngine = 6;
 }
 
 message UserTalentOrder {
@@ -237,7 +242,7 @@ message Commodity {
 	optional int32 discost = 12;
 }
 message CommodityList {
-	repeated Commodity item = 1;
+	repeated Commodity id = 1;
 }
 message ShopList {
 	repeated Commodity items = 1;//商品列表
@@ -255,17 +260,15 @@ message ShopRefreshList {
 }
 message Will {
 	required int32 will = 1;
-	optional int32 weight = 2;
 	optional int32 position = 3;
 }
 message ShopWill {
 	required int32 id = 1;
-	repeated Will loot = 2;
-	optional int32 judge = 3;
-	optional int32 judge1 = 4;
+	optional int32 merlevel = 2;
+	repeated Will will = 3;
 }
 message ShopWillList {
-	repeated ShopWill shop = 1;
+	repeated ShopWill id = 1;
 }
 
 message LadderChongzhi {
@@ -373,6 +376,20 @@ message ResponseUnionShopCommand {
 	repeated Commodity items = 1;//商品列表
 	optional int64 endTime = 2;//商品列表过期时间
 	optional int32 refreshCost = 3;//刷新消耗
+}
+
+message RequestRaidShopCommand {//挂机副本商店
+}
+message RequestRaidShopPurchaseCommand {//挂机副本商店购买
+        required int32 index = 1;//第几个商品(0~7)
+        required int32 id = 2;
+}
+message RequestRaidShopRefreshCommand {//挂机副本商店刷新
+}
+message ResponseRaidShopCommand {
+        repeated Commodity items = 1;//商品列表
+        optional int64 endTime = 2;//商品列表过期时间
+        optional int32 refreshCost = 3;//刷新消耗
 }
 
 message RequestPVPShopCommand {//挂机PVP商店
@@ -811,7 +828,7 @@ message RequestResetHeroSkillCommand {
 message UserTeam {
 	required int64 id = 1;
 	required string teaminfo = 2;
-	optional string composeSkill = 3;
+	repeated TeamEngine teamEngine = 3;
 }
 
 message RequestGetTeamCommand {
@@ -830,8 +847,8 @@ message TeamUnlock {//出战人数解锁
 message RequestUpdateTeamCommand {
 	required int64 id = 1;
 	required string teamInfo = 2;
-	optional string composeSkill = 3;
 	optional int32 rolePosition = 4;
+	repeated TeamEngine teamEngine = 5;
 }
 
 message RequestUserTeamListCommand {
@@ -3190,6 +3207,9 @@ message RequestCommand {
 	optional RequestPVPShopCommand PVPShopCommand = 113;
 	optional RequestPVPShopPurchaseCommand PVPShopPurchaseCommand = 114;
 	optional RequestPVPShopRefreshCommand PVPShopRefreshCommand = 115;
+	optional RequestRaidShopCommand raidShopCommand = 159;
+        optional RequestRaidShopPurchaseCommand raidShopPurchaseCommand = 160;
+        optional RequestRaidShopRefreshCommand raidShopRefreshCommand = 161;
 	optional RequestExpeditionShopCommand expeditionShopCommand = 116;
 	optional RequestExpeditionShopPurchaseCommand expeditionShopPurchaseCommand = 117;
 	optional RequestExpeditionShopRefreshCommand expeditionShopRefreshCommand = 118;
@@ -3327,6 +3347,7 @@ message ResponseCommand {
 	optional ResponseBlackShopCommand blackShopCommand = 104;
 	optional ResponseUnionShopCommand unionShopCommand = 105;
 	optional ResponsePVPShopCommand PVPShopCommand = 106;
+	optional ResponseRaidShopCommand raidShopCommand = 160;
 	optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
 	optional ResponseLadderShopCommand ladderShopCommand = 108;
 	optional ResponseLibaoShopCommand libaoShopCommand = 142;

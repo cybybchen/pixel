@@ -192,8 +192,6 @@ public class PvpCommandService extends BaseCommandService {
 			if(team.hasUser())
 				builder.setUser(team.getUser());
 			builder.setMineInfo(mine);
-			if (team.hasComposeSkill())
-				builder.setComposeSkill(team.getComposeSkill());
 			
 			responseBuilder.setPvpMineInfoCommand(builder);
 		}
@@ -233,8 +231,6 @@ public class PvpCommandService extends BaseCommandService {
 				ResponsePVPMineInfoCommand.Builder builder= ResponsePVPMineInfoCommand.newBuilder();
 				builder.addAllHeroInfo(team.getHeroInfoList());
 				builder.setUser(team.getUser());
-				if (team.hasComposeSkill())
-					builder.setComposeSkill(team.getComposeSkill());
 				builder.setMineInfo(mine);
 				responseBuilder.setPvpMineInfoCommand(builder);
 				pusher.pushUserInfoCommand(responseBuilder, user);

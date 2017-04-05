@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.SkillInfo;
 import com.trans.pixel.protoc.Base.Team;
+import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.ClearLevel;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelup;
@@ -87,16 +88,20 @@ public class UserTeamService {
 	public void delUserTeam(long userId, int id) {
 		// userTeamMapper.delUserTeam(id);
 		// userTeamRedisService.delUserTeam(userId, id);
-		updateUserTeam(userId, id, "", "", null, 0);
+		updateUserTeam(userId, id, "", null, 0);
 	}
 	
-	public void updateUserTeam(long userId, int id,  String record, String composeSkill, UserBean user, int rolePosition) {
+	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition) {
+		updateUserTeam(userId, id, record, user, rolePosition, new ArrayList<TeamEngine>());
+	}
+	
+	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition, List<TeamEngine> teamEngineList) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setId(id);
 		userTeam.setUserId(userId);
 		userTeam.setTeamRecord(record);
-		userTeam.setComposeSkill(composeSkill);
 		userTeam.setRolePosition(rolePosition);
+		userTeam.composeEngine(teamEngineList);
 		userTeamRedisService.updateUserTeam(userTeam);
 //		userTeamMapper.updateUserTeam(userTeam);
 		if(user != null){
@@ -147,20 +152,20 @@ public class UserTeamService {
 					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
 					break;
 				}
-				updateUserTeam(userId, 1, teamRecord, "", null, 0);
+				updateUserTeam(userId, 1, teamRecord, null, 0);
 				ids.add(1);
 			}else if(!ids.contains(1))
-				updateUserTeam(userId, 1, "", "", null, 0);
+				updateUserTeam(userId, 1, "", null, 0);
 			if(!ids.contains(2))
-				updateUserTeam(userId, 2, "", "", null, 0);
+				updateUserTeam(userId, 2, "", null, 0);
 			if(!ids.contains(3))
-				updateUserTeam(userId, 3, "", "", null, 0);
+				updateUserTeam(userId, 3, "",  null, 0);
 			if(!ids.contains(4))
-				updateUserTeam(userId, 4, "", "", null, 0);
+				updateUserTeam(userId, 4, "", null, 0);
 			if(!ids.contains(5))
-				updateUserTeam(userId, 5, "", "", null, 0);
+				updateUserTeam(userId, 5, "", null, 0);
 			if(!ids.contains(1000))
-				updateUserTeam(userId, 1000, "", "", null, 0);
+				updateUserTeam(userId, 1000, "", null, 0);
 			userTeamList = userTeamRedisService.selectUserTeamList(userId);
 		}
 		
@@ -186,7 +191,7 @@ public class UserTeamService {
 		for(HeroInfo hero : team.getHeroInfoList()){
 			str+=luaHeroInfo(hero);
 		}
-		str+="}},composeSkill=\""+team.getComposeSkill()+"\",";
+		
 		return str;
 	}
 
@@ -345,7 +350,7 @@ public class UserTeamService {
 		List<UserTeamBean> userTeamList = selectUserTeamList(user);
 		for(UserTeamBean userTeam : userTeamList){
 			if(teamid == userTeam.getId()){
-				team.setComposeSkill(userTeam.getComposeSkill());
+				team.addAllTeamEngine(userTeam.buildTeamEngine());
 				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 				List<UserClearBean> userClearList = userClearService.selectUserClearList(user.getId());
 				List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
