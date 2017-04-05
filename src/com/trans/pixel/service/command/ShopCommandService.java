@@ -234,14 +234,14 @@ public class ShopCommandService extends BaseCommandService{
 	// }
 
 	public void BlackShop(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getVip() < 6)
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NEED_VIP6));
-		else
+		// if(user.getVip() < 6)
+		// 	responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NEED_VIP6));
+		// else
 			BlackShop(responseBuilder, user);
 	}
 	public void BlackShop(Builder responseBuilder, UserBean user){
-		if(user.getVip() < 6)
-			return;
+		// if(user.getVip() < 6)
+		// 	return;
 		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
@@ -256,8 +256,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void BlackShopPurchase(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getVip() < 6)
-			return;
+		// if(user.getVip() < 6)
+		// 	return;
 		ShopList.Builder shoplist = ShopList.newBuilder(service.getBlackShop(user));
 		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 			shoplist = ShopList.newBuilder(service.refreshBlackShop(user));
@@ -294,8 +294,8 @@ public class ShopCommandService extends BaseCommandService{
 	}
 
 	public void BlackShopRefresh(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
-		if(user.getVip() < 6)
-			return;
+		// if(user.getVip() < 6)
+		// 	return;
 		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();
 		if(costService.cost(user, RewardConst.JEWEL, service.getBlackShopRefreshCost(refreshtime))) {
