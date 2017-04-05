@@ -168,6 +168,22 @@ public class RewardTaskService {
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
 	
+	public List<UserInfo> getNotEnoughPropUser(UserRewardTaskRoom room) {
+		List<UserInfo> userInfoList = new ArrayList<UserInfo>();
+		RewardTask rewardTask = rewardTaskRedisService.getRewardTask(room.getBossId());
+		for (RoomInfo roomInfo : room.getRoomInfoList()) {
+			UserInfo userinfo = roomInfo.getUser();
+
+			UserBean other = userService.getOther(userinfo.getId());
+			int costId = costService.canCostOnly(other, rewardTask.getCostList());
+			if (costId == 0) {
+				userInfoList.add(userinfo);
+			}
+		}
+		
+		return userInfoList;
+	}
+	
 	public UserRewardTaskRoom getUserRoom(UserBean user, int index) {
 		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null || ut.getRoomInfo() == null)

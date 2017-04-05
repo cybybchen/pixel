@@ -202,5 +202,9 @@ public class RewardTaskCommandService extends BaseCommandService {
 			builder.addRoom(room);
 			responseBuilder.setUserRewardTaskRoomCommand(builder.build());
 		}
+		
+		if (user.getId() == room.getCreateUserId()) {
+			pusher.pushOtherUserInfoCommand(responseBuilder, rewardTaskService.getNotEnoughPropUser(room));
+		}
 	}
 }
