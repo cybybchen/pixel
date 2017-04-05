@@ -38,6 +38,7 @@ import com.trans.pixel.protoc.PVPProto.PVPMonsterRewardLoot;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -74,7 +75,8 @@ public class PvpMapService {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() == fieldid){
-				if(zhanli >= 0/*map.getZhanli()*/){
+//				if(zhanli >= map.getZhanli()){
+				if(user.getMerlevel() >= map.getMerlevel()){
 					map.setOpened(true);
 					redis.saveMapList(maplist.build(), user.getId());
 					if(map.getFieldid() > user.getPvpUnlock()){
@@ -88,7 +90,7 @@ public class PvpMapService {
 						for(PVPMine mine : map.getKuangdianList()){
 							if(ranks.size() > 0){
 								PVPMine.Builder builder = PVPMine.newBuilder(mine);
-								int index = redis.nextInt(ranks.size());
+								int index = RedisService.nextInt(ranks.size());
 								builder.setOwner(ranks.get(index));
 								mineMap.put(builder.getId()+"", builder.build());
 								ranks.remove(index);

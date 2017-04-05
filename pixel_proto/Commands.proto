@@ -2443,10 +2443,19 @@ message ResponsePopupCommand {
 	optional string noButtonID = 6;
 }
 
+message Merlevel {
+	optional int32 level = 1;
+	optional int32 score = 2;
+}
+message MerlevelList {
+	repeated Merlevel level = 1;
+}
+
 message Area {
 	optional int32 areaid = 1;
 	optional string name = 2;
 	repeated Daguan id = 3;
+	optional int32 merlevel = 4;
 }
 message AreaList {
 	repeated Area area = 1;
@@ -2462,6 +2471,7 @@ message Daguan {
 	optional string layer = 8;
 	optional int32 areaid = 9;
 	repeated RewardInfo item = 10;
+	optional int32 merlevel = 11;
 }
 message DaguanList {
 	repeated Daguan id = 1;

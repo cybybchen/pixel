@@ -93,14 +93,18 @@ public class LevelCommandService extends BaseCommandService {
 		int id = cmd.getId();
 		redis.productEvent(user, userLevel);
 		if(id > userLevel.getUnlockDaguan() && userLevel.getLeftCount() > 0){//illegal next level
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_FIRST);
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getLeftCount() <= 0){//next level
 			Daguan.Builder daguan = redis.getDaguan(id);
 			if(daguan == null){
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_FIRST);
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LEVEL_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	        }else if(daguan.getMerlevel() > user.getMerlevel()){
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MERLEVEL_FIRST);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MERLEVEL_FIRST);
 	            responseBuilder.setErrorCommand(errorCommand);
 	        }else{//goto next level
 				AreaEvent.Builder events = redis.getDaguanEvent(id);

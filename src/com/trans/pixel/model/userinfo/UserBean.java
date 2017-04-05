@@ -114,6 +114,16 @@ public class UserBean {
 	private int zhujueExp = 0;
 	private int vipExp = 0;
 	private int rewardTaskIndex = 0;
+	private int merlevel = 0;
+	/**
+	 * 佣兵团等级
+	 */
+	public int getMerlevel() {
+		return merlevel;
+	}
+	public void setMerlevel(int merlevel) {
+		this.merlevel = merlevel;
+	}
 	/**
 	 * 当前活跃度
 	 */

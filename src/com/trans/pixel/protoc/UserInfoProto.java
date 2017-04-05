@@ -7958,6 +7958,1157 @@ public final class UserInfoProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponsePopupCommand)
   }
 
+  public interface MerlevelOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 level = 1;
+    /**
+     * <code>optional int32 level = 1;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 1;</code>
+     */
+    int getLevel();
+
+    // optional int32 score = 2;
+    /**
+     * <code>optional int32 score = 2;</code>
+     */
+    boolean hasScore();
+    /**
+     * <code>optional int32 score = 2;</code>
+     */
+    int getScore();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.Merlevel}
+   */
+  public static final class Merlevel extends
+      com.google.protobuf.GeneratedMessage
+      implements MerlevelOrBuilder {
+    // Use Merlevel.newBuilder() to construct.
+    private Merlevel(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Merlevel(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Merlevel defaultInstance;
+    public static Merlevel getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Merlevel getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Merlevel(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              level_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              score_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Merlevel_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Merlevel_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.UserInfoProto.Merlevel.class, com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Merlevel> PARSER =
+        new com.google.protobuf.AbstractParser<Merlevel>() {
+      public Merlevel parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Merlevel(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Merlevel> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 level = 1;
+    public static final int LEVEL_FIELD_NUMBER = 1;
+    private int level_;
+    /**
+     * <code>optional int32 level = 1;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 level = 1;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // optional int32 score = 2;
+    public static final int SCORE_FIELD_NUMBER = 2;
+    private int score_;
+    /**
+     * <code>optional int32 score = 2;</code>
+     */
+    public boolean hasScore() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 score = 2;</code>
+     */
+    public int getScore() {
+      return score_;
+    }
+
+    private void initFields() {
+      level_ = 0;
+      score_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, level_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, score_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, level_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, score_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.Merlevel parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.Merlevel prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.Merlevel}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Merlevel_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Merlevel_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.UserInfoProto.Merlevel.class, com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.UserInfoProto.Merlevel.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        score_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Merlevel_descriptor;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.Merlevel getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.UserInfoProto.Merlevel.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.Merlevel build() {
+        com.trans.pixel.protoc.UserInfoProto.Merlevel result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.Merlevel buildPartial() {
+        com.trans.pixel.protoc.UserInfoProto.Merlevel result = new com.trans.pixel.protoc.UserInfoProto.Merlevel(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.score_ = score_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.UserInfoProto.Merlevel) {
+          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.Merlevel)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.Merlevel other) {
+        if (other == com.trans.pixel.protoc.UserInfoProto.Merlevel.getDefaultInstance()) return this;
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasScore()) {
+          setScore(other.getScore());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.UserInfoProto.Merlevel parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.Merlevel) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 level = 1;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 1;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 level = 1;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 1;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000001;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 1;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 score = 2;
+      private int score_ ;
+      /**
+       * <code>optional int32 score = 2;</code>
+       */
+      public boolean hasScore() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 score = 2;</code>
+       */
+      public int getScore() {
+        return score_;
+      }
+      /**
+       * <code>optional int32 score = 2;</code>
+       */
+      public Builder setScore(int value) {
+        bitField0_ |= 0x00000002;
+        score_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 score = 2;</code>
+       */
+      public Builder clearScore() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        score_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Merlevel)
+    }
+
+    static {
+      defaultInstance = new Merlevel(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Merlevel)
+  }
+
+  public interface MerlevelListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.Merlevel level = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.UserInfoProto.Merlevel> 
+        getLevelList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.Merlevel getLevel(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    int getLevelCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder> 
+        getLevelOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder getLevelOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.MerlevelList}
+   */
+  public static final class MerlevelList extends
+      com.google.protobuf.GeneratedMessage
+      implements MerlevelListOrBuilder {
+    // Use MerlevelList.newBuilder() to construct.
+    private MerlevelList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MerlevelList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MerlevelList defaultInstance;
+    public static MerlevelList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MerlevelList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MerlevelList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                level_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Merlevel>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              level_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.Merlevel.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          level_ = java.util.Collections.unmodifiableList(level_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_MerlevelList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_MerlevelList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.UserInfoProto.MerlevelList.class, com.trans.pixel.protoc.UserInfoProto.MerlevelList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MerlevelList> PARSER =
+        new com.google.protobuf.AbstractParser<MerlevelList>() {
+      public MerlevelList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MerlevelList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MerlevelList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.Merlevel level = 1;
+    public static final int LEVEL_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.UserInfoProto.Merlevel> level_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.UserInfoProto.Merlevel> getLevelList() {
+      return level_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder> 
+        getLevelOrBuilderList() {
+      return level_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    public int getLevelCount() {
+      return level_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.Merlevel getLevel(int index) {
+      return level_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder getLevelOrBuilder(
+        int index) {
+      return level_.get(index);
+    }
+
+    private void initFields() {
+      level_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < level_.size(); i++) {
+        output.writeMessage(1, level_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < level_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, level_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.MerlevelList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.MerlevelList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.MerlevelList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.UserInfoProto.MerlevelListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_MerlevelList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_MerlevelList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.UserInfoProto.MerlevelList.class, com.trans.pixel.protoc.UserInfoProto.MerlevelList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.UserInfoProto.MerlevelList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getLevelFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (levelBuilder_ == null) {
+          level_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          levelBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_MerlevelList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.MerlevelList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.UserInfoProto.MerlevelList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.MerlevelList build() {
+        com.trans.pixel.protoc.UserInfoProto.MerlevelList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.MerlevelList buildPartial() {
+        com.trans.pixel.protoc.UserInfoProto.MerlevelList result = new com.trans.pixel.protoc.UserInfoProto.MerlevelList(this);
+        int from_bitField0_ = bitField0_;
+        if (levelBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            level_ = java.util.Collections.unmodifiableList(level_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.level_ = level_;
+        } else {
+          result.level_ = levelBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.UserInfoProto.MerlevelList) {
+          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.MerlevelList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.MerlevelList other) {
+        if (other == com.trans.pixel.protoc.UserInfoProto.MerlevelList.getDefaultInstance()) return this;
+        if (levelBuilder_ == null) {
+          if (!other.level_.isEmpty()) {
+            if (level_.isEmpty()) {
+              level_ = other.level_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureLevelIsMutable();
+              level_.addAll(other.level_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.level_.isEmpty()) {
+            if (levelBuilder_.isEmpty()) {
+              levelBuilder_.dispose();
+              levelBuilder_ = null;
+              level_ = other.level_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              levelBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getLevelFieldBuilder() : null;
+            } else {
+              levelBuilder_.addAllMessages(other.level_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.UserInfoProto.MerlevelList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.MerlevelList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.Merlevel level = 1;
+      private java.util.List<com.trans.pixel.protoc.UserInfoProto.Merlevel> level_ =
+        java.util.Collections.emptyList();
+      private void ensureLevelIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          level_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Merlevel>(level_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.Merlevel, com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder, com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder> levelBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Merlevel> getLevelList() {
+        if (levelBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(level_);
+        } else {
+          return levelBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public int getLevelCount() {
+        if (levelBuilder_ == null) {
+          return level_.size();
+        } else {
+          return levelBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.Merlevel getLevel(int index) {
+        if (levelBuilder_ == null) {
+          return level_.get(index);
+        } else {
+          return levelBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder setLevel(
+          int index, com.trans.pixel.protoc.UserInfoProto.Merlevel value) {
+        if (levelBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLevelIsMutable();
+          level_.set(index, value);
+          onChanged();
+        } else {
+          levelBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder setLevel(
+          int index, com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder builderForValue) {
+        if (levelBuilder_ == null) {
+          ensureLevelIsMutable();
+          level_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          levelBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder addLevel(com.trans.pixel.protoc.UserInfoProto.Merlevel value) {
+        if (levelBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLevelIsMutable();
+          level_.add(value);
+          onChanged();
+        } else {
+          levelBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder addLevel(
+          int index, com.trans.pixel.protoc.UserInfoProto.Merlevel value) {
+        if (levelBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLevelIsMutable();
+          level_.add(index, value);
+          onChanged();
+        } else {
+          levelBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder addLevel(
+          com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder builderForValue) {
+        if (levelBuilder_ == null) {
+          ensureLevelIsMutable();
+          level_.add(builderForValue.build());
+          onChanged();
+        } else {
+          levelBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder addLevel(
+          int index, com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder builderForValue) {
+        if (levelBuilder_ == null) {
+          ensureLevelIsMutable();
+          level_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          levelBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder addAllLevel(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.Merlevel> values) {
+        if (levelBuilder_ == null) {
+          ensureLevelIsMutable();
+          super.addAll(values, level_);
+          onChanged();
+        } else {
+          levelBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder clearLevel() {
+        if (levelBuilder_ == null) {
+          level_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          levelBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public Builder removeLevel(int index) {
+        if (levelBuilder_ == null) {
+          ensureLevelIsMutable();
+          level_.remove(index);
+          onChanged();
+        } else {
+          levelBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder getLevelBuilder(
+          int index) {
+        return getLevelFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder getLevelOrBuilder(
+          int index) {
+        if (levelBuilder_ == null) {
+          return level_.get(index);  } else {
+          return levelBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder> 
+           getLevelOrBuilderList() {
+        if (levelBuilder_ != null) {
+          return levelBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(level_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder addLevelBuilder() {
+        return getLevelFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.UserInfoProto.Merlevel.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder addLevelBuilder(
+          int index) {
+        return getLevelFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.UserInfoProto.Merlevel.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Merlevel level = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder> 
+           getLevelBuilderList() {
+        return getLevelFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.Merlevel, com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder, com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder> 
+          getLevelFieldBuilder() {
+        if (levelBuilder_ == null) {
+          levelBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.UserInfoProto.Merlevel, com.trans.pixel.protoc.UserInfoProto.Merlevel.Builder, com.trans.pixel.protoc.UserInfoProto.MerlevelOrBuilder>(
+                  level_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          level_ = null;
+        }
+        return levelBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.MerlevelList)
+    }
+
+    static {
+      defaultInstance = new MerlevelList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.MerlevelList)
+  }
+
   public interface AreaOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -8010,6 +9161,16 @@ public final class UserInfoProto {
      */
     com.trans.pixel.protoc.UserInfoProto.DaguanOrBuilder getIdOrBuilder(
         int index);
+
+    // optional int32 merlevel = 4;
+    /**
+     * <code>optional int32 merlevel = 4;</code>
+     */
+    boolean hasMerlevel();
+    /**
+     * <code>optional int32 merlevel = 4;</code>
+     */
+    int getMerlevel();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Area}
@@ -8078,6 +9239,11 @@ public final class UserInfoProto {
                 mutable_bitField0_ |= 0x00000004;
               }
               id_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.Daguan.PARSER, extensionRegistry));
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              merlevel_ = input.readInt32();
               break;
             }
           }
@@ -8218,10 +9384,27 @@ public final class UserInfoProto {
       return id_.get(index);
     }
 
+    // optional int32 merlevel = 4;
+    public static final int MERLEVEL_FIELD_NUMBER = 4;
+    private int merlevel_;
+    /**
+     * <code>optional int32 merlevel = 4;</code>
+     */
+    public boolean hasMerlevel() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 merlevel = 4;</code>
+     */
+    public int getMerlevel() {
+      return merlevel_;
+    }
+
     private void initFields() {
       areaid_ = 0;
       name_ = "";
       id_ = java.util.Collections.emptyList();
+      merlevel_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8244,6 +9427,9 @@ public final class UserInfoProto {
       for (int i = 0; i < id_.size(); i++) {
         output.writeMessage(3, id_.get(i));
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(4, merlevel_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -8264,6 +9450,10 @@ public final class UserInfoProto {
       for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, id_.get(i));
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, merlevel_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8392,6 +9582,8 @@ public final class UserInfoProto {
         } else {
           idBuilder_.clear();
         }
+        merlevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -8437,6 +9629,10 @@ public final class UserInfoProto {
         } else {
           result.id_ = idBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.merlevel_ = merlevel_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8486,6 +9682,9 @@ public final class UserInfoProto {
               idBuilder_.addAllMessages(other.id_);
             }
           }
+        }
+        if (other.hasMerlevel()) {
+          setMerlevel(other.getMerlevel());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8859,6 +10058,39 @@ public final class UserInfoProto {
           id_ = null;
         }
         return idBuilder_;
+      }
+
+      // optional int32 merlevel = 4;
+      private int merlevel_ ;
+      /**
+       * <code>optional int32 merlevel = 4;</code>
+       */
+      public boolean hasMerlevel() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 merlevel = 4;</code>
+       */
+      public int getMerlevel() {
+        return merlevel_;
+      }
+      /**
+       * <code>optional int32 merlevel = 4;</code>
+       */
+      public Builder setMerlevel(int value) {
+        bitField0_ |= 0x00000008;
+        merlevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 merlevel = 4;</code>
+       */
+      public Builder clearMerlevel() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        merlevel_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Area)
@@ -9683,6 +10915,16 @@ public final class UserInfoProto {
      */
     com.trans.pixel.protoc.Base.RewardInfoOrBuilder getItemOrBuilder(
         int index);
+
+    // optional int32 merlevel = 11;
+    /**
+     * <code>optional int32 merlevel = 11;</code>
+     */
+    boolean hasMerlevel();
+    /**
+     * <code>optional int32 merlevel = 11;</code>
+     */
+    int getMerlevel();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Daguan}
@@ -9786,6 +11028,11 @@ public final class UserInfoProto {
                 mutable_bitField0_ |= 0x00000200;
               }
               item_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000200;
+              merlevel_ = input.readInt32();
               break;
             }
           }
@@ -10119,6 +11366,22 @@ public final class UserInfoProto {
       return item_.get(index);
     }
 
+    // optional int32 merlevel = 11;
+    public static final int MERLEVEL_FIELD_NUMBER = 11;
+    private int merlevel_;
+    /**
+     * <code>optional int32 merlevel = 11;</code>
+     */
+    public boolean hasMerlevel() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 merlevel = 11;</code>
+     */
+    public int getMerlevel() {
+      return merlevel_;
+    }
+
     private void initFields() {
       id_ = 0;
       name_ = "";
@@ -10130,6 +11393,7 @@ public final class UserInfoProto {
       layer_ = "";
       areaid_ = 0;
       item_ = java.util.Collections.emptyList();
+      merlevel_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -10172,6 +11436,9 @@ public final class UserInfoProto {
       }
       for (int i = 0; i < item_.size(); i++) {
         output.writeMessage(10, item_.get(i));
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(11, merlevel_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -10221,6 +11488,10 @@ public final class UserInfoProto {
       for (int i = 0; i < item_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, item_.get(i));
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, merlevel_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10363,6 +11634,8 @@ public final class UserInfoProto {
         } else {
           itemBuilder_.clear();
         }
+        merlevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -10436,6 +11709,10 @@ public final class UserInfoProto {
         } else {
           result.item_ = itemBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.merlevel_ = merlevel_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -10512,6 +11789,9 @@ public final class UserInfoProto {
               itemBuilder_.addAllMessages(other.item_);
             }
           }
+        }
+        if (other.hasMerlevel()) {
+          setMerlevel(other.getMerlevel());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -11239,6 +12519,39 @@ public final class UserInfoProto {
           item_ = null;
         }
         return itemBuilder_;
+      }
+
+      // optional int32 merlevel = 11;
+      private int merlevel_ ;
+      /**
+       * <code>optional int32 merlevel = 11;</code>
+       */
+      public boolean hasMerlevel() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional int32 merlevel = 11;</code>
+       */
+      public int getMerlevel() {
+        return merlevel_;
+      }
+      /**
+       * <code>optional int32 merlevel = 11;</code>
+       */
+      public Builder setMerlevel(int value) {
+        bitField0_ |= 0x00000400;
+        merlevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 merlevel = 11;</code>
+       */
+      public Builder clearMerlevel() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        merlevel_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Daguan)
@@ -21636,6 +22949,16 @@ public final class UserInfoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_ResponsePopupCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_Merlevel_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_Merlevel_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_MerlevelList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_MerlevelList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_Area_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -21752,46 +23075,49 @@ public final class UserInfoProto {
       "esponsePopupCommand\022\021\n\tpopScreen\030\001 \002(\005\022\016" +
       "\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading\030" +
       "\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoButtonID" +
-      "\030\006 \001(\t\"P\n\004Area\022\016\n\006areaid\030\001 \001(\005\022\014\n\004name\030\002" +
-      " \001(\t\022*\n\002id\030\003 \003(\0132\036.com.trans.pixel.proto" +
-      "c.Daguan\"6\n\010AreaList\022*\n\004area\030\001 \003(\0132\034.com" +
-      ".trans.pixel.protoc.Area\"\275\001\n\006Daguan\022\n\n\002i" +
-      "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\r\n\005co" +
-      "unt\030\004 \001(\005\022\014\n\004gold\030\005 \001(\005\022\022\n\nexperience\030\006 " +
-      "\001(\005\022\n\n\002bg\030\007 \001(\t\022\r\n\005layer\030\010 \001(\t\022\016\n\006areaid",
-      "\030\t \001(\005\0220\n\004item\030\n \003(\0132\".com.trans.pixel.p" +
-      "rotoc.RewardInfo\"8\n\nDaguanList\022*\n\002id\030\001 \003" +
-      "(\0132\036.com.trans.pixel.protoc.Daguan\"`\n\013Ev" +
-      "entReward\022\020\n\010rewardid\030\001 \001(\005\022\023\n\013rewardcou" +
-      "nt\030\002 \001(\005\022\024\n\014rewardcount1\030\003 \001(\005\022\024\n\014reward" +
-      "weight\030\004 \001(\005\"\351\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n" +
-      "\007eventid\030\002 \001(\005\022\016\n\006daguan\030\003 \001(\005\022\014\n\004name\030\004" +
-      " \001(\t\022\013\n\003des\030\005 \001(\t\022\016\n\006weight\030\006 \001(\005\022\014\n\004typ" +
-      "e\030\007 \001(\005\022\016\n\006costid\030\010 \001(\005\022\021\n\tcostcount\030\t \001" +
-      "(\005\0223\n\006reward\030\n \003(\0132#.com.trans.pixel.pro",
-      "toc.EventReward\022\020\n\010targetid\030\013 \001(\005\022\r\n\005cou" +
-      "nt\030\r \001(\005\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005eve" +
-      "nt\030\002 \003(\0132\035.com.trans.pixel.protoc.Event\022" +
-      "\016\n\006weight\030\003 \001(\005\">\n\rAreaEventList\022-\n\002id\030\001" +
-      " \003(\0132!.com.trans.pixel.protoc.AreaEvent\"" +
-      "D\n\004Loot\022\n\n\002id\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com." +
-      "trans.pixel.protoc.RewardInfo\"4\n\010LootLis" +
-      "t\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc.L" +
-      "oot\"&\n\030RequestLevelStartCommand\022\n\n\002id\030\001 " +
-      "\001(\005\"4\n\023RequestEventCommand\022\016\n\006userId\030\001 \001",
-      "(\005\022\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventComman" +
-      "d\022,\n\005event\030\001 \001(\0132\035.com.trans.pixel.proto" +
-      "c.Event\"\037\n\035RequestLevelLootResultCommand" +
-      "\"j\n\031RequestEventResultCommand\022\r\n\005order\030\001" +
-      " \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(" +
-      "\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032Response" +
-      "EventResultCommand\0222\n\006reward\030\001 \003(\0132\".com" +
-      ".trans.pixel.protoc.RewardInfo\"\252\001\n\030Respo" +
-      "nseLevelLootCommand\022\024\n\014unlockDaguan\030\001 \001(" +
-      "\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005",
-      "\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022,\n" +
-      "\005event\030\006 \003(\0132\035.com.trans.pixel.protoc.Ev" +
-      "ent"
+      "\030\006 \001(\t\"(\n\010Merlevel\022\r\n\005level\030\001 \001(\005\022\r\n\005sco" +
+      "re\030\002 \001(\005\"?\n\014MerlevelList\022/\n\005level\030\001 \003(\0132" +
+      " .com.trans.pixel.protoc.Merlevel\"b\n\004Are" +
+      "a\022\016\n\006areaid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022*\n\002id\030\003 " +
+      "\003(\0132\036.com.trans.pixel.protoc.Daguan\022\020\n\010m" +
+      "erlevel\030\004 \001(\005\"6\n\010AreaList\022*\n\004area\030\001 \003(\0132" +
+      "\034.com.trans.pixel.protoc.Area\"\317\001\n\006Daguan",
+      "\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022" +
+      "\r\n\005count\030\004 \001(\005\022\014\n\004gold\030\005 \001(\005\022\022\n\nexperien" +
+      "ce\030\006 \001(\005\022\n\n\002bg\030\007 \001(\t\022\r\n\005layer\030\010 \001(\t\022\016\n\006a" +
+      "reaid\030\t \001(\005\0220\n\004item\030\n \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo\022\020\n\010merlevel\030\013 \001(\005\"" +
+      "8\n\nDaguanList\022*\n\002id\030\001 \003(\0132\036.com.trans.pi" +
+      "xel.protoc.Daguan\"`\n\013EventReward\022\020\n\010rewa" +
+      "rdid\030\001 \001(\005\022\023\n\013rewardcount\030\002 \001(\005\022\024\n\014rewar" +
+      "dcount1\030\003 \001(\005\022\024\n\014rewardweight\030\004 \001(\005\"\351\001\n\005" +
+      "Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\016\n",
+      "\006daguan\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\022\013\n\003des\030\005 \001(\t" +
+      "\022\016\n\006weight\030\006 \001(\005\022\014\n\004type\030\007 \001(\005\022\016\n\006costid" +
+      "\030\010 \001(\005\022\021\n\tcostcount\030\t \001(\005\0223\n\006reward\030\n \003(" +
+      "\0132#.com.trans.pixel.protoc.EventReward\022\020" +
+      "\n\010targetid\030\013 \001(\005\022\r\n\005count\030\r \001(\005\"U\n\tAreaE" +
+      "vent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.com.tr" +
+      "ans.pixel.protoc.Event\022\016\n\006weight\030\003 \001(\005\">" +
+      "\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!.com.trans." +
+      "pixel.protoc.AreaEvent\"D\n\004Loot\022\n\n\002id\030\001 \001" +
+      "(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pixel.proto",
+      "c.RewardInfo\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.c" +
+      "om.trans.pixel.protoc.Loot\"&\n\030RequestLev" +
+      "elStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEve" +
+      "ntCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005" +
+      "\"D\n\024ResponseEventCommand\022,\n\005event\030\001 \001(\0132" +
+      "\035.com.trans.pixel.protoc.Event\"\037\n\035Reques" +
+      "tLevelLootResultCommand\"j\n\031RequestEventR" +
+      "esultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030" +
+      "\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013" +
+      "\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResultComman",
+      "d\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.prot" +
+      "oc.RewardInfo\"\252\001\n\030ResponseLevelLootComma" +
+      "nd\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 " +
+      "\001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(" +
+      "\005\022\021\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.co" +
+      "m.trans.pixel.protoc.Event"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -21870,104 +23196,116 @@ public final class UserInfoProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePopupCommand_descriptor,
               new java.lang.String[] { "PopScreen", "FlowID", "Text", "Heading", "YesButtonID", "NoButtonID", });
-          internal_static_com_trans_pixel_protoc_Area_descriptor =
+          internal_static_com_trans_pixel_protoc_Merlevel_descriptor =
             getDescriptor().getMessageTypes().get(12);
+          internal_static_com_trans_pixel_protoc_Merlevel_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_Merlevel_descriptor,
+              new java.lang.String[] { "Level", "Score", });
+          internal_static_com_trans_pixel_protoc_MerlevelList_descriptor =
+            getDescriptor().getMessageTypes().get(13);
+          internal_static_com_trans_pixel_protoc_MerlevelList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_MerlevelList_descriptor,
+              new java.lang.String[] { "Level", });
+          internal_static_com_trans_pixel_protoc_Area_descriptor =
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_Area_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Area_descriptor,
-              new java.lang.String[] { "Areaid", "Name", "Id", });
+              new java.lang.String[] { "Areaid", "Name", "Id", "Merlevel", });
           internal_static_com_trans_pixel_protoc_AreaList_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_AreaList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaList_descriptor,
               new java.lang.String[] { "Area", });
           internal_static_com_trans_pixel_protoc_Daguan_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_Daguan_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Daguan_descriptor,
-              new java.lang.String[] { "Id", "Name", "Des", "Count", "Gold", "Experience", "Bg", "Layer", "Areaid", "Item", });
+              new java.lang.String[] { "Id", "Name", "Des", "Count", "Gold", "Experience", "Bg", "Layer", "Areaid", "Item", "Merlevel", });
           internal_static_com_trans_pixel_protoc_DaguanList_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_DaguanList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_DaguanList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_EventReward_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_EventReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventReward_descriptor,
               new java.lang.String[] { "Rewardid", "Rewardcount", "Rewardcount1", "Rewardweight", });
           internal_static_com_trans_pixel_protoc_Event_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
               new java.lang.String[] { "Order", "Eventid", "Daguan", "Name", "Des", "Weight", "Type", "Costid", "Costcount", "Reward", "Targetid", "Count", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEvent_descriptor,
               new java.lang.String[] { "Id", "Event", "Weight", });
           internal_static_com_trans_pixel_protoc_AreaEventList_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_AreaEventList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEventList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_Loot_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_Loot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Loot_descriptor,
               new java.lang.String[] { "Id", "Item", });
           internal_static_com_trans_pixel_protoc_LootList_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_LootList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_RequestEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor,
               new java.lang.String[] { "UserId", "Order", });
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor,
               new java.lang.String[] { "Event", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
               new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,

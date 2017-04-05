@@ -264,12 +264,14 @@ public class LevelRedisService extends RedisService {
 		DaguanList.Builder list = DaguanList.newBuilder();
 		parseXml(xml, list);
 		Map<Integer, Integer> areaMap = getAreaConfig();
+		Map<Integer, Integer> merlevelMap = getMerlevelConfig();
 		Map<Integer, Loot> lootMap = getLootConfig();
 		Map<Integer, Daguan.Builder> map = new HashMap<Integer, Daguan.Builder>();
 		for(Daguan.Builder daguan : list.getIdBuilderList()){
 			// daguan.clearName();
 			daguan.clearDes();
 			daguan.setAreaid(areaMap.get(daguan.getId()));
+			daguan.setMerlevel(merlevelMap.get(daguan.getId()));
 			daguan.addAllItem(lootMap.get(daguan.getId()).getItemList());
 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
 			map.put(daguan.getId(), daguan);
@@ -297,6 +299,19 @@ public class LevelRedisService extends RedisService {
 		for(Area.Builder area : list.getAreaBuilderList()){
 			for(Daguan.Builder daguan : area.getIdBuilderList()){
 				map.put(daguan.getId(), area.getAreaid());
+			}
+		}
+		return map;
+	}
+
+	public Map<Integer, Integer> getMerlevelConfig(){
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		String xml = ReadConfig("ld_area.xml");
+		AreaList.Builder list = AreaList.newBuilder();
+		parseXml(xml, list);
+		for(Area.Builder area : list.getAreaBuilderList()){
+			for(Daguan.Builder daguan : area.getIdBuilderList()){
+				map.put(daguan.getId(), area.getMerlevel());
 			}
 		}
 		return map;

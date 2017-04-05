@@ -80,6 +80,8 @@ public class RedisKey {
 	public final static String RAID_CONFIG = PREFIX+CONFIG_PREFIX+"Raid";
 	public final static String RAIDORDER_CONFIG = PREFIX+CONFIG_PREFIX+"RaidOrder";
 	public final static String TEAMRAID_CONFIG = PREFIX+CONFIG_PREFIX+"TeamRaid";
+	public final static String MERLEVEL_CONFIG = PREFIX+CONFIG_PREFIX+"MerLevel";
+	public final static String MERCENARY_CONFIG = PREFIX+CONFIG_PREFIX+"Mercenary";
 
 	//shop
 	public final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";

@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.UserInfoProto.Merlevel;
+import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.AreaFightService;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RankRedisService;
+import com.trans.pixel.service.redis.ZhanliRedisService;
 
 @Service
 public class ZhanliCommandService extends BaseCommandService {
@@ -30,6 +33,8 @@ public class ZhanliCommandService extends BaseCommandService {
 	private BlackListService blackService;
 	@Resource
 	private AreaFightService areaService;
+	@Resource
+	private ZhanliRedisService redis;
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
 		log.debug("00 ||" + System.currentTimeMillis());
@@ -51,6 +56,12 @@ public class ZhanliCommandService extends BaseCommandService {
 //			zhanli = team.getUser().getZhanli();
 			user.setZhanli(zhanli);
 			user.setZhanliMax(zhanli);
+			
+			MerlevelList.Builder list = redis.getMerlevel();
+			for(Merlevel level : list.getLevelList()){
+				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel())
+					user.setMerlevel(level.getLevel());
+			}
 			if(!blackService.isNoranklist(user.getId())) {
 				rankRedisService.updateZhanliRank(user);
 				/**
