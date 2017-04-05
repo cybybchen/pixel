@@ -51,6 +51,7 @@ public class UserTeamBean {
 		json.put(USER_ID, userId);
 		json.put(TEAM_RECORD, teamRecord);
 		json.put(ROLE_POSITION, rolePosition);
+		json.put(ENGINE, engine);
 		
 		return json.toString();
 	}
@@ -64,6 +65,7 @@ public class UserTeamBean {
 		bean.setUserId(json.getLong(USER_ID));
 		bean.setTeamRecord(json.getString(TEAM_RECORD));
 		bean.setRolePosition(TypeTranslatedUtil.jsonGetInt(json, ROLE_POSITION));
+		bean.setEngine(TypeTranslatedUtil.jsonGetString(json, ENGINE));
 
 		return bean;
 	}
@@ -88,6 +90,8 @@ public class UserTeamBean {
 	
 	public List<TeamEngine> buildTeamEngine() {
 		List<TeamEngine> teamEngineList = new ArrayList<TeamEngine>();
+		if (engine.isEmpty())
+			return teamEngineList;
 		String[] engineArray = engine.split(",");
 		for (String engineStr : engineArray) {
 			String[] teamEngine = engineStr.split("_");
@@ -104,4 +108,5 @@ public class UserTeamBean {
 	private static final String USER_ID = "user_id";
 	private static final String TEAM_RECORD = "team_record";
 	private static final String ROLE_POSITION = "role_position";
+	private static final String ENGINE = "engine";
 }
