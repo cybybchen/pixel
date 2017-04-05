@@ -4239,29 +4239,29 @@ public final class ShopProto {
   public interface CommodityListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Commodity item = 1;
+    // repeated .com.trans.pixel.protoc.Commodity id = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> 
-        getItemList();
+        getIdList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
-    com.trans.pixel.protoc.ShopProto.Commodity getItem(int index);
+    com.trans.pixel.protoc.ShopProto.Commodity getId(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
-    int getItemCount();
+    int getIdCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
-        getItemOrBuilderList();
+        getIdOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
-    com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getItemOrBuilder(
+    com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getIdOrBuilder(
         int index);
   }
   /**
@@ -4317,10 +4317,10 @@ public final class ShopProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                item_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Commodity>();
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Commodity>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              item_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Commodity.PARSER, extensionRegistry));
+              id_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Commodity.PARSER, extensionRegistry));
               break;
             }
           }
@@ -4332,7 +4332,7 @@ public final class ShopProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          item_ = java.util.Collections.unmodifiableList(item_);
+          id_ = java.util.Collections.unmodifiableList(id_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4365,52 +4365,52 @@ public final class ShopProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Commodity item = 1;
-    public static final int ITEM_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> item_;
+    // repeated .com.trans.pixel.protoc.Commodity id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> id_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> getItemList() {
-      return item_;
+    public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> getIdList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
-        getItemOrBuilderList() {
-      return item_;
+        getIdOrBuilderList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
-    public int getItemCount() {
-      return item_.size();
+    public int getIdCount() {
+      return id_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
-    public com.trans.pixel.protoc.ShopProto.Commodity getItem(int index) {
-      return item_.get(index);
+    public com.trans.pixel.protoc.ShopProto.Commodity getId(int index) {
+      return id_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
      */
-    public com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getItemOrBuilder(
+    public com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getIdOrBuilder(
         int index) {
-      return item_.get(index);
+      return id_.get(index);
     }
 
     private void initFields() {
-      item_ = java.util.Collections.emptyList();
+      id_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemCount(); i++) {
-        if (!getItem(i).isInitialized()) {
+      for (int i = 0; i < getIdCount(); i++) {
+        if (!getId(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -4422,8 +4422,8 @@ public final class ShopProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < item_.size(); i++) {
-        output.writeMessage(1, item_.get(i));
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4434,9 +4434,9 @@ public final class ShopProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < item_.size(); i++) {
+      for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, item_.get(i));
+          .computeMessageSize(1, id_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4546,7 +4546,7 @@ public final class ShopProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getItemFieldBuilder();
+          getIdFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4555,11 +4555,11 @@ public final class ShopProto {
 
       public Builder clear() {
         super.clear();
-        if (itemBuilder_ == null) {
-          item_ = java.util.Collections.emptyList();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          itemBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
@@ -4588,14 +4588,14 @@ public final class ShopProto {
       public com.trans.pixel.protoc.ShopProto.CommodityList buildPartial() {
         com.trans.pixel.protoc.ShopProto.CommodityList result = new com.trans.pixel.protoc.ShopProto.CommodityList(this);
         int from_bitField0_ = bitField0_;
-        if (itemBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            item_ = java.util.Collections.unmodifiableList(item_);
+            id_ = java.util.Collections.unmodifiableList(id_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.item_ = item_;
+          result.id_ = id_;
         } else {
-          result.item_ = itemBuilder_.build();
+          result.id_ = idBuilder_.build();
         }
         onBuilt();
         return result;
@@ -4612,29 +4612,29 @@ public final class ShopProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.CommodityList other) {
         if (other == com.trans.pixel.protoc.ShopProto.CommodityList.getDefaultInstance()) return this;
-        if (itemBuilder_ == null) {
-          if (!other.item_.isEmpty()) {
-            if (item_.isEmpty()) {
-              item_ = other.item_;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureItemIsMutable();
-              item_.addAll(other.item_);
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
             }
             onChanged();
           }
         } else {
-          if (!other.item_.isEmpty()) {
-            if (itemBuilder_.isEmpty()) {
-              itemBuilder_.dispose();
-              itemBuilder_ = null;
-              item_ = other.item_;
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              itemBuilder_ = 
+              idBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getItemFieldBuilder() : null;
+                   getIdFieldBuilder() : null;
             } else {
-              itemBuilder_.addAllMessages(other.item_);
+              idBuilder_.addAllMessages(other.id_);
             }
           }
         }
@@ -4643,8 +4643,8 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemCount(); i++) {
-          if (!getItem(i).isInitialized()) {
+        for (int i = 0; i < getIdCount(); i++) {
+          if (!getId(i).isInitialized()) {
             
             return false;
           }
@@ -4671,244 +4671,244 @@ public final class ShopProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Commodity item = 1;
-      private java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> item_ =
+      // repeated .com.trans.pixel.protoc.Commodity id = 1;
+      private java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> id_ =
         java.util.Collections.emptyList();
-      private void ensureItemIsMutable() {
+      private void ensureIdIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          item_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Commodity>(item_);
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Commodity>(id_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.ShopProto.Commodity, com.trans.pixel.protoc.ShopProto.Commodity.Builder, com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> itemBuilder_;
+          com.trans.pixel.protoc.ShopProto.Commodity, com.trans.pixel.protoc.ShopProto.Commodity.Builder, com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> idBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> getItemList() {
-        if (itemBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(item_);
+      public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
         } else {
-          return itemBuilder_.getMessageList();
+          return idBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public int getItemCount() {
-        if (itemBuilder_ == null) {
-          return item_.size();
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
         } else {
-          return itemBuilder_.getCount();
+          return idBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Commodity getItem(int index) {
-        if (itemBuilder_ == null) {
-          return item_.get(index);
+      public com.trans.pixel.protoc.ShopProto.Commodity getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
         } else {
-          return itemBuilder_.getMessage(index);
+          return idBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder setItem(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ShopProto.Commodity value) {
-        if (itemBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemIsMutable();
-          item_.set(index, value);
+          ensureIdIsMutable();
+          id_.set(index, value);
           onChanged();
         } else {
-          itemBuilder_.setMessage(index, value);
+          idBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder setItem(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ShopProto.Commodity.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.set(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
           onChanged();
         } else {
-          itemBuilder_.setMessage(index, builderForValue.build());
+          idBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder addItem(com.trans.pixel.protoc.ShopProto.Commodity value) {
-        if (itemBuilder_ == null) {
+      public Builder addId(com.trans.pixel.protoc.ShopProto.Commodity value) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemIsMutable();
-          item_.add(value);
+          ensureIdIsMutable();
+          id_.add(value);
           onChanged();
         } else {
-          itemBuilder_.addMessage(value);
+          idBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder addItem(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ShopProto.Commodity value) {
-        if (itemBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemIsMutable();
-          item_.add(index, value);
+          ensureIdIsMutable();
+          id_.add(index, value);
           onChanged();
         } else {
-          itemBuilder_.addMessage(index, value);
+          idBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder addItem(
+      public Builder addId(
           com.trans.pixel.protoc.ShopProto.Commodity.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.add(builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
           onChanged();
         } else {
-          itemBuilder_.addMessage(builderForValue.build());
+          idBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder addItem(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ShopProto.Commodity.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.add(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
           onChanged();
         } else {
-          itemBuilder_.addMessage(index, builderForValue.build());
+          idBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder addAllItem(
+      public Builder addAllId(
           java.lang.Iterable<? extends com.trans.pixel.protoc.ShopProto.Commodity> values) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          super.addAll(values, item_);
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
           onChanged();
         } else {
-          itemBuilder_.addAllMessages(values);
+          idBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder clearItem() {
-        if (itemBuilder_ == null) {
-          item_ = java.util.Collections.emptyList();
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          itemBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public Builder removeItem(int index) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.remove(index);
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
           onChanged();
         } else {
-          itemBuilder_.remove(index);
+          idBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Commodity.Builder getItemBuilder(
+      public com.trans.pixel.protoc.ShopProto.Commodity.Builder getIdBuilder(
           int index) {
-        return getItemFieldBuilder().getBuilder(index);
+        return getIdFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getItemOrBuilder(
+      public com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getIdOrBuilder(
           int index) {
-        if (itemBuilder_ == null) {
-          return item_.get(index);  } else {
-          return itemBuilder_.getMessageOrBuilder(index);
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
-           getItemOrBuilderList() {
-        if (itemBuilder_ != null) {
-          return itemBuilder_.getMessageOrBuilderList();
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(item_);
+          return java.util.Collections.unmodifiableList(id_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Commodity.Builder addItemBuilder() {
-        return getItemFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.ShopProto.Commodity.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
             com.trans.pixel.protoc.ShopProto.Commodity.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Commodity.Builder addItemBuilder(
+      public com.trans.pixel.protoc.ShopProto.Commodity.Builder addIdBuilder(
           int index) {
-        return getItemFieldBuilder().addBuilder(
+        return getIdFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.ShopProto.Commodity.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Commodity item = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Commodity id = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity.Builder> 
-           getItemBuilderList() {
-        return getItemFieldBuilder().getBuilderList();
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.ShopProto.Commodity, com.trans.pixel.protoc.ShopProto.Commodity.Builder, com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
-          getItemFieldBuilder() {
-        if (itemBuilder_ == null) {
-          itemBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.ShopProto.Commodity, com.trans.pixel.protoc.ShopProto.Commodity.Builder, com.trans.pixel.protoc.ShopProto.CommodityOrBuilder>(
-                  item_,
+                  id_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          item_ = null;
+          id_ = null;
         }
-        return itemBuilder_;
+        return idBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.CommodityList)
@@ -7275,16 +7275,6 @@ public final class ShopProto {
      */
     int getWill();
 
-    // optional int32 weight = 2;
-    /**
-     * <code>optional int32 weight = 2;</code>
-     */
-    boolean hasWeight();
-    /**
-     * <code>optional int32 weight = 2;</code>
-     */
-    int getWeight();
-
     // optional int32 position = 3;
     /**
      * <code>optional int32 position = 3;</code>
@@ -7351,13 +7341,8 @@ public final class ShopProto {
               will_ = input.readInt32();
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              weight_ = input.readInt32();
-              break;
-            }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               position_ = input.readInt32();
               break;
             }
@@ -7417,22 +7402,6 @@ public final class ShopProto {
       return will_;
     }
 
-    // optional int32 weight = 2;
-    public static final int WEIGHT_FIELD_NUMBER = 2;
-    private int weight_;
-    /**
-     * <code>optional int32 weight = 2;</code>
-     */
-    public boolean hasWeight() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 weight = 2;</code>
-     */
-    public int getWeight() {
-      return weight_;
-    }
-
     // optional int32 position = 3;
     public static final int POSITION_FIELD_NUMBER = 3;
     private int position_;
@@ -7440,7 +7409,7 @@ public final class ShopProto {
      * <code>optional int32 position = 3;</code>
      */
     public boolean hasPosition() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional int32 position = 3;</code>
@@ -7451,7 +7420,6 @@ public final class ShopProto {
 
     private void initFields() {
       will_ = 0;
-      weight_ = 0;
       position_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -7474,9 +7442,6 @@ public final class ShopProto {
         output.writeInt32(1, will_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, weight_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, position_);
       }
       getUnknownFields().writeTo(output);
@@ -7493,10 +7458,6 @@ public final class ShopProto {
           .computeInt32Size(1, will_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, weight_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, position_);
       }
@@ -7618,10 +7579,8 @@ public final class ShopProto {
         super.clear();
         will_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        weight_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         position_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -7657,10 +7616,6 @@ public final class ShopProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.weight_ = weight_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.position_ = position_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -7680,9 +7635,6 @@ public final class ShopProto {
         if (other == com.trans.pixel.protoc.ShopProto.Will.getDefaultInstance()) return this;
         if (other.hasWill()) {
           setWill(other.getWill());
-        }
-        if (other.hasWeight()) {
-          setWeight(other.getWeight());
         }
         if (other.hasPosition()) {
           setPosition(other.getPosition());
@@ -7751,46 +7703,13 @@ public final class ShopProto {
         return this;
       }
 
-      // optional int32 weight = 2;
-      private int weight_ ;
-      /**
-       * <code>optional int32 weight = 2;</code>
-       */
-      public boolean hasWeight() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 weight = 2;</code>
-       */
-      public int getWeight() {
-        return weight_;
-      }
-      /**
-       * <code>optional int32 weight = 2;</code>
-       */
-      public Builder setWeight(int value) {
-        bitField0_ |= 0x00000002;
-        weight_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weight = 2;</code>
-       */
-      public Builder clearWeight() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        weight_ = 0;
-        onChanged();
-        return this;
-      }
-
       // optional int32 position = 3;
       private int position_ ;
       /**
        * <code>optional int32 position = 3;</code>
        */
       public boolean hasPosition() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional int32 position = 3;</code>
@@ -7802,7 +7721,7 @@ public final class ShopProto {
        * <code>optional int32 position = 3;</code>
        */
       public Builder setPosition(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         position_ = value;
         onChanged();
         return this;
@@ -7811,7 +7730,7 @@ public final class ShopProto {
        * <code>optional int32 position = 3;</code>
        */
       public Builder clearPosition() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         position_ = 0;
         onChanged();
         return this;
@@ -7841,50 +7760,40 @@ public final class ShopProto {
      */
     int getId();
 
-    // repeated .com.trans.pixel.protoc.Will loot = 2;
+    // optional int32 merlevel = 2;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+     * <code>optional int32 merlevel = 2;</code>
+     */
+    boolean hasMerlevel();
+    /**
+     * <code>optional int32 merlevel = 2;</code>
+     */
+    int getMerlevel();
+
+    // repeated .com.trans.pixel.protoc.Will will = 3;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
      */
     java.util.List<com.trans.pixel.protoc.ShopProto.Will> 
-        getLootList();
+        getWillList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
      */
-    com.trans.pixel.protoc.ShopProto.Will getLoot(int index);
+    com.trans.pixel.protoc.ShopProto.Will getWill(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
      */
-    int getLootCount();
+    int getWillCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.ShopProto.WillOrBuilder> 
-        getLootOrBuilderList();
+        getWillOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
      */
-    com.trans.pixel.protoc.ShopProto.WillOrBuilder getLootOrBuilder(
+    com.trans.pixel.protoc.ShopProto.WillOrBuilder getWillOrBuilder(
         int index);
-
-    // optional int32 judge = 3;
-    /**
-     * <code>optional int32 judge = 3;</code>
-     */
-    boolean hasJudge();
-    /**
-     * <code>optional int32 judge = 3;</code>
-     */
-    int getJudge();
-
-    // optional int32 judge1 = 4;
-    /**
-     * <code>optional int32 judge1 = 4;</code>
-     */
-    boolean hasJudge1();
-    /**
-     * <code>optional int32 judge1 = 4;</code>
-     */
-    int getJudge1();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ShopWill}
@@ -7942,22 +7851,17 @@ public final class ShopProto {
               id_ = input.readInt32();
               break;
             }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                loot_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Will>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              loot_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Will.PARSER, extensionRegistry));
-              break;
-            }
-            case 24: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              judge_ = input.readInt32();
+              merlevel_ = input.readInt32();
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000004;
-              judge1_ = input.readInt32();
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                will_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Will>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              will_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Will.PARSER, extensionRegistry));
               break;
             }
           }
@@ -7968,8 +7872,8 @@ public final class ShopProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          loot_ = java.util.Collections.unmodifiableList(loot_);
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          will_ = java.util.Collections.unmodifiableList(will_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -8019,79 +7923,62 @@ public final class ShopProto {
       return id_;
     }
 
-    // repeated .com.trans.pixel.protoc.Will loot = 2;
-    public static final int LOOT_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.ShopProto.Will> loot_;
+    // optional int32 merlevel = 2;
+    public static final int MERLEVEL_FIELD_NUMBER = 2;
+    private int merlevel_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+     * <code>optional int32 merlevel = 2;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.ShopProto.Will> getLootList() {
-      return loot_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.ShopProto.WillOrBuilder> 
-        getLootOrBuilderList() {
-      return loot_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
-     */
-    public int getLootCount() {
-      return loot_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
-     */
-    public com.trans.pixel.protoc.ShopProto.Will getLoot(int index) {
-      return loot_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
-     */
-    public com.trans.pixel.protoc.ShopProto.WillOrBuilder getLootOrBuilder(
-        int index) {
-      return loot_.get(index);
-    }
-
-    // optional int32 judge = 3;
-    public static final int JUDGE_FIELD_NUMBER = 3;
-    private int judge_;
-    /**
-     * <code>optional int32 judge = 3;</code>
-     */
-    public boolean hasJudge() {
+    public boolean hasMerlevel() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 judge = 3;</code>
+     * <code>optional int32 merlevel = 2;</code>
      */
-    public int getJudge() {
-      return judge_;
+    public int getMerlevel() {
+      return merlevel_;
     }
 
-    // optional int32 judge1 = 4;
-    public static final int JUDGE1_FIELD_NUMBER = 4;
-    private int judge1_;
+    // repeated .com.trans.pixel.protoc.Will will = 3;
+    public static final int WILL_FIELD_NUMBER = 3;
+    private java.util.List<com.trans.pixel.protoc.ShopProto.Will> will_;
     /**
-     * <code>optional int32 judge1 = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
      */
-    public boolean hasJudge1() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public java.util.List<com.trans.pixel.protoc.ShopProto.Will> getWillList() {
+      return will_;
     }
     /**
-     * <code>optional int32 judge1 = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
      */
-    public int getJudge1() {
-      return judge1_;
+    public java.util.List<? extends com.trans.pixel.protoc.ShopProto.WillOrBuilder> 
+        getWillOrBuilderList() {
+      return will_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
+     */
+    public int getWillCount() {
+      return will_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
+     */
+    public com.trans.pixel.protoc.ShopProto.Will getWill(int index) {
+      return will_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
+     */
+    public com.trans.pixel.protoc.ShopProto.WillOrBuilder getWillOrBuilder(
+        int index) {
+      return will_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
-      loot_ = java.util.Collections.emptyList();
-      judge_ = 0;
-      judge1_ = 0;
+      merlevel_ = 0;
+      will_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8102,8 +7989,8 @@ public final class ShopProto {
         memoizedIsInitialized = 0;
         return false;
       }
-      for (int i = 0; i < getLootCount(); i++) {
-        if (!getLoot(i).isInitialized()) {
+      for (int i = 0; i < getWillCount(); i++) {
+        if (!getWill(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -8118,14 +8005,11 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
-      for (int i = 0; i < loot_.size(); i++) {
-        output.writeMessage(2, loot_.get(i));
-      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(3, judge_);
+        output.writeInt32(2, merlevel_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(4, judge1_);
+      for (int i = 0; i < will_.size(); i++) {
+        output.writeMessage(3, will_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -8140,17 +8024,13 @@ public final class ShopProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      for (int i = 0; i < loot_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, loot_.get(i));
-      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, judge_);
+          .computeInt32Size(2, merlevel_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      for (int i = 0; i < will_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, judge1_);
+          .computeMessageSize(3, will_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8260,7 +8140,7 @@ public final class ShopProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getLootFieldBuilder();
+          getWillFieldBuilder();
         }
       }
       private static Builder create() {
@@ -8271,16 +8151,14 @@ public final class ShopProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (lootBuilder_ == null) {
-          loot_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+        merlevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (willBuilder_ == null) {
+          will_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
-          lootBuilder_.clear();
+          willBuilder_.clear();
         }
-        judge_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        judge1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -8313,23 +8191,19 @@ public final class ShopProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
-        if (lootBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            loot_ = java.util.Collections.unmodifiableList(loot_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.loot_ = loot_;
-        } else {
-          result.loot_ = lootBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.judge_ = judge_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000004;
+        result.merlevel_ = merlevel_;
+        if (willBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            will_ = java.util.Collections.unmodifiableList(will_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.will_ = will_;
+        } else {
+          result.will_ = willBuilder_.build();
         }
-        result.judge1_ = judge1_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8349,37 +8223,34 @@ public final class ShopProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (lootBuilder_ == null) {
-          if (!other.loot_.isEmpty()) {
-            if (loot_.isEmpty()) {
-              loot_ = other.loot_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+        if (other.hasMerlevel()) {
+          setMerlevel(other.getMerlevel());
+        }
+        if (willBuilder_ == null) {
+          if (!other.will_.isEmpty()) {
+            if (will_.isEmpty()) {
+              will_ = other.will_;
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
-              ensureLootIsMutable();
-              loot_.addAll(other.loot_);
+              ensureWillIsMutable();
+              will_.addAll(other.will_);
             }
             onChanged();
           }
         } else {
-          if (!other.loot_.isEmpty()) {
-            if (lootBuilder_.isEmpty()) {
-              lootBuilder_.dispose();
-              lootBuilder_ = null;
-              loot_ = other.loot_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              lootBuilder_ = 
+          if (!other.will_.isEmpty()) {
+            if (willBuilder_.isEmpty()) {
+              willBuilder_.dispose();
+              willBuilder_ = null;
+              will_ = other.will_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              willBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getLootFieldBuilder() : null;
+                   getWillFieldBuilder() : null;
             } else {
-              lootBuilder_.addAllMessages(other.loot_);
+              willBuilder_.addAllMessages(other.will_);
             }
           }
-        }
-        if (other.hasJudge()) {
-          setJudge(other.getJudge());
-        }
-        if (other.hasJudge1()) {
-          setJudge1(other.getJudge1());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8390,8 +8261,8 @@ public final class ShopProto {
           
           return false;
         }
-        for (int i = 0; i < getLootCount(); i++) {
-          if (!getLoot(i).isInitialized()) {
+        for (int i = 0; i < getWillCount(); i++) {
+          if (!getWill(i).isInitialized()) {
             
             return false;
           }
@@ -8451,310 +8322,277 @@ public final class ShopProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.Will loot = 2;
-      private java.util.List<com.trans.pixel.protoc.ShopProto.Will> loot_ =
+      // optional int32 merlevel = 2;
+      private int merlevel_ ;
+      /**
+       * <code>optional int32 merlevel = 2;</code>
+       */
+      public boolean hasMerlevel() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 merlevel = 2;</code>
+       */
+      public int getMerlevel() {
+        return merlevel_;
+      }
+      /**
+       * <code>optional int32 merlevel = 2;</code>
+       */
+      public Builder setMerlevel(int value) {
+        bitField0_ |= 0x00000002;
+        merlevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 merlevel = 2;</code>
+       */
+      public Builder clearMerlevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        merlevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.Will will = 3;
+      private java.util.List<com.trans.pixel.protoc.ShopProto.Will> will_ =
         java.util.Collections.emptyList();
-      private void ensureLootIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          loot_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Will>(loot_);
-          bitField0_ |= 0x00000002;
+      private void ensureWillIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          will_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Will>(will_);
+          bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.ShopProto.Will, com.trans.pixel.protoc.ShopProto.Will.Builder, com.trans.pixel.protoc.ShopProto.WillOrBuilder> lootBuilder_;
+          com.trans.pixel.protoc.ShopProto.Will, com.trans.pixel.protoc.ShopProto.Will.Builder, com.trans.pixel.protoc.ShopProto.WillOrBuilder> willBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.ShopProto.Will> getLootList() {
-        if (lootBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(loot_);
+      public java.util.List<com.trans.pixel.protoc.ShopProto.Will> getWillList() {
+        if (willBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(will_);
         } else {
-          return lootBuilder_.getMessageList();
+          return willBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public int getLootCount() {
-        if (lootBuilder_ == null) {
-          return loot_.size();
+      public int getWillCount() {
+        if (willBuilder_ == null) {
+          return will_.size();
         } else {
-          return lootBuilder_.getCount();
+          return willBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Will getLoot(int index) {
-        if (lootBuilder_ == null) {
-          return loot_.get(index);
+      public com.trans.pixel.protoc.ShopProto.Will getWill(int index) {
+        if (willBuilder_ == null) {
+          return will_.get(index);
         } else {
-          return lootBuilder_.getMessage(index);
+          return willBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder setLoot(
+      public Builder setWill(
           int index, com.trans.pixel.protoc.ShopProto.Will value) {
-        if (lootBuilder_ == null) {
+        if (willBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLootIsMutable();
-          loot_.set(index, value);
+          ensureWillIsMutable();
+          will_.set(index, value);
           onChanged();
         } else {
-          lootBuilder_.setMessage(index, value);
+          willBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder setLoot(
+      public Builder setWill(
           int index, com.trans.pixel.protoc.ShopProto.Will.Builder builderForValue) {
-        if (lootBuilder_ == null) {
-          ensureLootIsMutable();
-          loot_.set(index, builderForValue.build());
+        if (willBuilder_ == null) {
+          ensureWillIsMutable();
+          will_.set(index, builderForValue.build());
           onChanged();
         } else {
-          lootBuilder_.setMessage(index, builderForValue.build());
+          willBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder addLoot(com.trans.pixel.protoc.ShopProto.Will value) {
-        if (lootBuilder_ == null) {
+      public Builder addWill(com.trans.pixel.protoc.ShopProto.Will value) {
+        if (willBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLootIsMutable();
-          loot_.add(value);
+          ensureWillIsMutable();
+          will_.add(value);
           onChanged();
         } else {
-          lootBuilder_.addMessage(value);
+          willBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder addLoot(
+      public Builder addWill(
           int index, com.trans.pixel.protoc.ShopProto.Will value) {
-        if (lootBuilder_ == null) {
+        if (willBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLootIsMutable();
-          loot_.add(index, value);
+          ensureWillIsMutable();
+          will_.add(index, value);
           onChanged();
         } else {
-          lootBuilder_.addMessage(index, value);
+          willBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder addLoot(
+      public Builder addWill(
           com.trans.pixel.protoc.ShopProto.Will.Builder builderForValue) {
-        if (lootBuilder_ == null) {
-          ensureLootIsMutable();
-          loot_.add(builderForValue.build());
+        if (willBuilder_ == null) {
+          ensureWillIsMutable();
+          will_.add(builderForValue.build());
           onChanged();
         } else {
-          lootBuilder_.addMessage(builderForValue.build());
+          willBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder addLoot(
+      public Builder addWill(
           int index, com.trans.pixel.protoc.ShopProto.Will.Builder builderForValue) {
-        if (lootBuilder_ == null) {
-          ensureLootIsMutable();
-          loot_.add(index, builderForValue.build());
+        if (willBuilder_ == null) {
+          ensureWillIsMutable();
+          will_.add(index, builderForValue.build());
           onChanged();
         } else {
-          lootBuilder_.addMessage(index, builderForValue.build());
+          willBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder addAllLoot(
+      public Builder addAllWill(
           java.lang.Iterable<? extends com.trans.pixel.protoc.ShopProto.Will> values) {
-        if (lootBuilder_ == null) {
-          ensureLootIsMutable();
-          super.addAll(values, loot_);
+        if (willBuilder_ == null) {
+          ensureWillIsMutable();
+          super.addAll(values, will_);
           onChanged();
         } else {
-          lootBuilder_.addAllMessages(values);
+          willBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder clearLoot() {
-        if (lootBuilder_ == null) {
-          loot_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+      public Builder clearWill() {
+        if (willBuilder_ == null) {
+          will_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
-          lootBuilder_.clear();
+          willBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public Builder removeLoot(int index) {
-        if (lootBuilder_ == null) {
-          ensureLootIsMutable();
-          loot_.remove(index);
+      public Builder removeWill(int index) {
+        if (willBuilder_ == null) {
+          ensureWillIsMutable();
+          will_.remove(index);
           onChanged();
         } else {
-          lootBuilder_.remove(index);
+          willBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Will.Builder getLootBuilder(
+      public com.trans.pixel.protoc.ShopProto.Will.Builder getWillBuilder(
           int index) {
-        return getLootFieldBuilder().getBuilder(index);
+        return getWillFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.WillOrBuilder getLootOrBuilder(
+      public com.trans.pixel.protoc.ShopProto.WillOrBuilder getWillOrBuilder(
           int index) {
-        if (lootBuilder_ == null) {
-          return loot_.get(index);  } else {
-          return lootBuilder_.getMessageOrBuilder(index);
+        if (willBuilder_ == null) {
+          return will_.get(index);  } else {
+          return willBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.ShopProto.WillOrBuilder> 
-           getLootOrBuilderList() {
-        if (lootBuilder_ != null) {
-          return lootBuilder_.getMessageOrBuilderList();
+           getWillOrBuilderList() {
+        if (willBuilder_ != null) {
+          return willBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(loot_);
+          return java.util.Collections.unmodifiableList(will_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Will.Builder addLootBuilder() {
-        return getLootFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.ShopProto.Will.Builder addWillBuilder() {
+        return getWillFieldBuilder().addBuilder(
             com.trans.pixel.protoc.ShopProto.Will.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Will.Builder addLootBuilder(
+      public com.trans.pixel.protoc.ShopProto.Will.Builder addWillBuilder(
           int index) {
-        return getLootFieldBuilder().addBuilder(
+        return getWillFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.ShopProto.Will.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Will loot = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.Will will = 3;</code>
        */
       public java.util.List<com.trans.pixel.protoc.ShopProto.Will.Builder> 
-           getLootBuilderList() {
-        return getLootFieldBuilder().getBuilderList();
+           getWillBuilderList() {
+        return getWillFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.ShopProto.Will, com.trans.pixel.protoc.ShopProto.Will.Builder, com.trans.pixel.protoc.ShopProto.WillOrBuilder> 
-          getLootFieldBuilder() {
-        if (lootBuilder_ == null) {
-          lootBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getWillFieldBuilder() {
+        if (willBuilder_ == null) {
+          willBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.ShopProto.Will, com.trans.pixel.protoc.ShopProto.Will.Builder, com.trans.pixel.protoc.ShopProto.WillOrBuilder>(
-                  loot_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  will_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
-          loot_ = null;
+          will_ = null;
         }
-        return lootBuilder_;
-      }
-
-      // optional int32 judge = 3;
-      private int judge_ ;
-      /**
-       * <code>optional int32 judge = 3;</code>
-       */
-      public boolean hasJudge() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 judge = 3;</code>
-       */
-      public int getJudge() {
-        return judge_;
-      }
-      /**
-       * <code>optional int32 judge = 3;</code>
-       */
-      public Builder setJudge(int value) {
-        bitField0_ |= 0x00000004;
-        judge_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 judge = 3;</code>
-       */
-      public Builder clearJudge() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        judge_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 judge1 = 4;
-      private int judge1_ ;
-      /**
-       * <code>optional int32 judge1 = 4;</code>
-       */
-      public boolean hasJudge1() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 judge1 = 4;</code>
-       */
-      public int getJudge1() {
-        return judge1_;
-      }
-      /**
-       * <code>optional int32 judge1 = 4;</code>
-       */
-      public Builder setJudge1(int value) {
-        bitField0_ |= 0x00000008;
-        judge1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 judge1 = 4;</code>
-       */
-      public Builder clearJudge1() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        judge1_ = 0;
-        onChanged();
-        return this;
+        return willBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ShopWill)
@@ -8771,29 +8609,29 @@ public final class ShopProto {
   public interface ShopWillListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.ShopWill shop = 1;
+    // repeated .com.trans.pixel.protoc.ShopWill id = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> 
-        getShopList();
+        getIdList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
-    com.trans.pixel.protoc.ShopProto.ShopWill getShop(int index);
+    com.trans.pixel.protoc.ShopProto.ShopWill getId(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
-    int getShopCount();
+    int getIdCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder> 
-        getShopOrBuilderList();
+        getIdOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
-    com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder getShopOrBuilder(
+    com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder getIdOrBuilder(
         int index);
   }
   /**
@@ -8849,10 +8687,10 @@ public final class ShopProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                shop_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.ShopWill>();
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.ShopWill>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              shop_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.ShopWill.PARSER, extensionRegistry));
+              id_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.ShopWill.PARSER, extensionRegistry));
               break;
             }
           }
@@ -8864,7 +8702,7 @@ public final class ShopProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          shop_ = java.util.Collections.unmodifiableList(shop_);
+          id_ = java.util.Collections.unmodifiableList(id_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -8897,52 +8735,52 @@ public final class ShopProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.ShopWill shop = 1;
-    public static final int SHOP_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> shop_;
+    // repeated .com.trans.pixel.protoc.ShopWill id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> id_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> getShopList() {
-      return shop_;
+    public java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> getIdList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder> 
-        getShopOrBuilderList() {
-      return shop_;
+        getIdOrBuilderList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
-    public int getShopCount() {
-      return shop_.size();
+    public int getIdCount() {
+      return id_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
-    public com.trans.pixel.protoc.ShopProto.ShopWill getShop(int index) {
-      return shop_.get(index);
+    public com.trans.pixel.protoc.ShopProto.ShopWill getId(int index) {
+      return id_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
      */
-    public com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder getShopOrBuilder(
+    public com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder getIdOrBuilder(
         int index) {
-      return shop_.get(index);
+      return id_.get(index);
     }
 
     private void initFields() {
-      shop_ = java.util.Collections.emptyList();
+      id_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getShopCount(); i++) {
-        if (!getShop(i).isInitialized()) {
+      for (int i = 0; i < getIdCount(); i++) {
+        if (!getId(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -8954,8 +8792,8 @@ public final class ShopProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < shop_.size(); i++) {
-        output.writeMessage(1, shop_.get(i));
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -8966,9 +8804,9 @@ public final class ShopProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < shop_.size(); i++) {
+      for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, shop_.get(i));
+          .computeMessageSize(1, id_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9078,7 +8916,7 @@ public final class ShopProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getShopFieldBuilder();
+          getIdFieldBuilder();
         }
       }
       private static Builder create() {
@@ -9087,11 +8925,11 @@ public final class ShopProto {
 
       public Builder clear() {
         super.clear();
-        if (shopBuilder_ == null) {
-          shop_ = java.util.Collections.emptyList();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          shopBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
@@ -9120,14 +8958,14 @@ public final class ShopProto {
       public com.trans.pixel.protoc.ShopProto.ShopWillList buildPartial() {
         com.trans.pixel.protoc.ShopProto.ShopWillList result = new com.trans.pixel.protoc.ShopProto.ShopWillList(this);
         int from_bitField0_ = bitField0_;
-        if (shopBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            shop_ = java.util.Collections.unmodifiableList(shop_);
+            id_ = java.util.Collections.unmodifiableList(id_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.shop_ = shop_;
+          result.id_ = id_;
         } else {
-          result.shop_ = shopBuilder_.build();
+          result.id_ = idBuilder_.build();
         }
         onBuilt();
         return result;
@@ -9144,29 +8982,29 @@ public final class ShopProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.ShopWillList other) {
         if (other == com.trans.pixel.protoc.ShopProto.ShopWillList.getDefaultInstance()) return this;
-        if (shopBuilder_ == null) {
-          if (!other.shop_.isEmpty()) {
-            if (shop_.isEmpty()) {
-              shop_ = other.shop_;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureShopIsMutable();
-              shop_.addAll(other.shop_);
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
             }
             onChanged();
           }
         } else {
-          if (!other.shop_.isEmpty()) {
-            if (shopBuilder_.isEmpty()) {
-              shopBuilder_.dispose();
-              shopBuilder_ = null;
-              shop_ = other.shop_;
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              shopBuilder_ = 
+              idBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getShopFieldBuilder() : null;
+                   getIdFieldBuilder() : null;
             } else {
-              shopBuilder_.addAllMessages(other.shop_);
+              idBuilder_.addAllMessages(other.id_);
             }
           }
         }
@@ -9175,8 +9013,8 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getShopCount(); i++) {
-          if (!getShop(i).isInitialized()) {
+        for (int i = 0; i < getIdCount(); i++) {
+          if (!getId(i).isInitialized()) {
             
             return false;
           }
@@ -9203,244 +9041,244 @@ public final class ShopProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.ShopWill shop = 1;
-      private java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> shop_ =
+      // repeated .com.trans.pixel.protoc.ShopWill id = 1;
+      private java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> id_ =
         java.util.Collections.emptyList();
-      private void ensureShopIsMutable() {
+      private void ensureIdIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          shop_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.ShopWill>(shop_);
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.ShopWill>(id_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.ShopProto.ShopWill, com.trans.pixel.protoc.ShopProto.ShopWill.Builder, com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder> shopBuilder_;
+          com.trans.pixel.protoc.ShopProto.ShopWill, com.trans.pixel.protoc.ShopProto.ShopWill.Builder, com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder> idBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> getShopList() {
-        if (shopBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(shop_);
+      public java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
         } else {
-          return shopBuilder_.getMessageList();
+          return idBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public int getShopCount() {
-        if (shopBuilder_ == null) {
-          return shop_.size();
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
         } else {
-          return shopBuilder_.getCount();
+          return idBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.ShopWill getShop(int index) {
-        if (shopBuilder_ == null) {
-          return shop_.get(index);
+      public com.trans.pixel.protoc.ShopProto.ShopWill getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
         } else {
-          return shopBuilder_.getMessage(index);
+          return idBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder setShop(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ShopProto.ShopWill value) {
-        if (shopBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureShopIsMutable();
-          shop_.set(index, value);
+          ensureIdIsMutable();
+          id_.set(index, value);
           onChanged();
         } else {
-          shopBuilder_.setMessage(index, value);
+          idBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder setShop(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ShopProto.ShopWill.Builder builderForValue) {
-        if (shopBuilder_ == null) {
-          ensureShopIsMutable();
-          shop_.set(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
           onChanged();
         } else {
-          shopBuilder_.setMessage(index, builderForValue.build());
+          idBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder addShop(com.trans.pixel.protoc.ShopProto.ShopWill value) {
-        if (shopBuilder_ == null) {
+      public Builder addId(com.trans.pixel.protoc.ShopProto.ShopWill value) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureShopIsMutable();
-          shop_.add(value);
+          ensureIdIsMutable();
+          id_.add(value);
           onChanged();
         } else {
-          shopBuilder_.addMessage(value);
+          idBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder addShop(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ShopProto.ShopWill value) {
-        if (shopBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureShopIsMutable();
-          shop_.add(index, value);
+          ensureIdIsMutable();
+          id_.add(index, value);
           onChanged();
         } else {
-          shopBuilder_.addMessage(index, value);
+          idBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder addShop(
+      public Builder addId(
           com.trans.pixel.protoc.ShopProto.ShopWill.Builder builderForValue) {
-        if (shopBuilder_ == null) {
-          ensureShopIsMutable();
-          shop_.add(builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
           onChanged();
         } else {
-          shopBuilder_.addMessage(builderForValue.build());
+          idBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder addShop(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ShopProto.ShopWill.Builder builderForValue) {
-        if (shopBuilder_ == null) {
-          ensureShopIsMutable();
-          shop_.add(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
           onChanged();
         } else {
-          shopBuilder_.addMessage(index, builderForValue.build());
+          idBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder addAllShop(
+      public Builder addAllId(
           java.lang.Iterable<? extends com.trans.pixel.protoc.ShopProto.ShopWill> values) {
-        if (shopBuilder_ == null) {
-          ensureShopIsMutable();
-          super.addAll(values, shop_);
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
           onChanged();
         } else {
-          shopBuilder_.addAllMessages(values);
+          idBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder clearShop() {
-        if (shopBuilder_ == null) {
-          shop_ = java.util.Collections.emptyList();
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          shopBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public Builder removeShop(int index) {
-        if (shopBuilder_ == null) {
-          ensureShopIsMutable();
-          shop_.remove(index);
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
           onChanged();
         } else {
-          shopBuilder_.remove(index);
+          idBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.ShopWill.Builder getShopBuilder(
+      public com.trans.pixel.protoc.ShopProto.ShopWill.Builder getIdBuilder(
           int index) {
-        return getShopFieldBuilder().getBuilder(index);
+        return getIdFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder getShopOrBuilder(
+      public com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder getIdOrBuilder(
           int index) {
-        if (shopBuilder_ == null) {
-          return shop_.get(index);  } else {
-          return shopBuilder_.getMessageOrBuilder(index);
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder> 
-           getShopOrBuilderList() {
-        if (shopBuilder_ != null) {
-          return shopBuilder_.getMessageOrBuilderList();
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(shop_);
+          return java.util.Collections.unmodifiableList(id_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.ShopWill.Builder addShopBuilder() {
-        return getShopFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.ShopProto.ShopWill.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
             com.trans.pixel.protoc.ShopProto.ShopWill.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.ShopWill.Builder addShopBuilder(
+      public com.trans.pixel.protoc.ShopProto.ShopWill.Builder addIdBuilder(
           int index) {
-        return getShopFieldBuilder().addBuilder(
+        return getIdFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.ShopProto.ShopWill.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.ShopWill shop = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.ShopWill id = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.ShopProto.ShopWill.Builder> 
-           getShopBuilderList() {
-        return getShopFieldBuilder().getBuilderList();
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.ShopProto.ShopWill, com.trans.pixel.protoc.ShopProto.ShopWill.Builder, com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder> 
-          getShopFieldBuilder() {
-        if (shopBuilder_ == null) {
-          shopBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.ShopProto.ShopWill, com.trans.pixel.protoc.ShopProto.ShopWill.Builder, com.trans.pixel.protoc.ShopProto.ShopWillOrBuilder>(
-                  shop_,
+                  id_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          shop_ = null;
+          id_ = null;
         }
-        return shopBuilder_;
+        return idBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ShopWillList)
@@ -24705,6 +24543,2200 @@ public final class ShopProto {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseUnionShopCommand)
+  }
+
+  public interface RequestRaidShopCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestRaidShopCommand}
+   *
+   * <pre>
+   *挂机副本商店
+   * </pre>
+   */
+  public static final class RequestRaidShopCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestRaidShopCommandOrBuilder {
+    // Use RequestRaidShopCommand.newBuilder() to construct.
+    private RequestRaidShopCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestRaidShopCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestRaidShopCommand defaultInstance;
+    public static RequestRaidShopCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestRaidShopCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestRaidShopCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand.class, com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestRaidShopCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestRaidShopCommand>() {
+      public RequestRaidShopCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestRaidShopCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestRaidShopCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestRaidShopCommand}
+     *
+     * <pre>
+     *挂机副本商店
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.RequestRaidShopCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand.class, com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand build() {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand buildPartial() {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand result = new com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand other) {
+        if (other == com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestRaidShopCommand)
+    }
+
+    static {
+      defaultInstance = new RequestRaidShopCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestRaidShopCommand)
+  }
+
+  public interface RequestRaidShopPurchaseCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 index = 1;
+    /**
+     * <code>required int32 index = 1;</code>
+     *
+     * <pre>
+     *第几个商品(0~7)
+     * </pre>
+     */
+    boolean hasIndex();
+    /**
+     * <code>required int32 index = 1;</code>
+     *
+     * <pre>
+     *第几个商品(0~7)
+     * </pre>
+     */
+    int getIndex();
+
+    // required int32 id = 2;
+    /**
+     * <code>required int32 id = 2;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int32 id = 2;</code>
+     */
+    int getId();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestRaidShopPurchaseCommand}
+   *
+   * <pre>
+   *挂机副本商店购买
+   * </pre>
+   */
+  public static final class RequestRaidShopPurchaseCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestRaidShopPurchaseCommandOrBuilder {
+    // Use RequestRaidShopPurchaseCommand.newBuilder() to construct.
+    private RequestRaidShopPurchaseCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestRaidShopPurchaseCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestRaidShopPurchaseCommand defaultInstance;
+    public static RequestRaidShopPurchaseCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestRaidShopPurchaseCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestRaidShopPurchaseCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              index_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              id_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand.class, com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestRaidShopPurchaseCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestRaidShopPurchaseCommand>() {
+      public RequestRaidShopPurchaseCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestRaidShopPurchaseCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestRaidShopPurchaseCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 index = 1;
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private int index_;
+    /**
+     * <code>required int32 index = 1;</code>
+     *
+     * <pre>
+     *第几个商品(0~7)
+     * </pre>
+     */
+    public boolean hasIndex() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 index = 1;</code>
+     *
+     * <pre>
+     *第几个商品(0~7)
+     * </pre>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    // required int32 id = 2;
+    public static final int ID_FIELD_NUMBER = 2;
+    private int id_;
+    /**
+     * <code>required int32 id = 2;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 id = 2;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    private void initFields() {
+      index_ = 0;
+      id_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasIndex()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, index_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, id_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, index_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, id_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestRaidShopPurchaseCommand}
+     *
+     * <pre>
+     *挂机副本商店购买
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand.class, com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        index_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand build() {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand buildPartial() {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand result = new com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.index_ = index_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.id_ = id_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand other) {
+        if (other == com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand.getDefaultInstance()) return this;
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
+        }
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasIndex()) {
+          
+          return false;
+        }
+        if (!hasId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 index = 1;
+      private int index_ ;
+      /**
+       * <code>required int32 index = 1;</code>
+       *
+       * <pre>
+       *第几个商品(0~7)
+       * </pre>
+       */
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 index = 1;</code>
+       *
+       * <pre>
+       *第几个商品(0~7)
+       * </pre>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>required int32 index = 1;</code>
+       *
+       * <pre>
+       *第几个商品(0~7)
+       * </pre>
+       */
+      public Builder setIndex(int value) {
+        bitField0_ |= 0x00000001;
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 index = 1;</code>
+       *
+       * <pre>
+       *第几个商品(0~7)
+       * </pre>
+       */
+      public Builder clearIndex() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 id = 2;
+      private int id_ ;
+      /**
+       * <code>required int32 id = 2;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 id = 2;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required int32 id = 2;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000002;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 id = 2;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestRaidShopPurchaseCommand)
+    }
+
+    static {
+      defaultInstance = new RequestRaidShopPurchaseCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestRaidShopPurchaseCommand)
+  }
+
+  public interface RequestRaidShopRefreshCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestRaidShopRefreshCommand}
+   *
+   * <pre>
+   *挂机副本商店刷新
+   * </pre>
+   */
+  public static final class RequestRaidShopRefreshCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestRaidShopRefreshCommandOrBuilder {
+    // Use RequestRaidShopRefreshCommand.newBuilder() to construct.
+    private RequestRaidShopRefreshCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestRaidShopRefreshCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestRaidShopRefreshCommand defaultInstance;
+    public static RequestRaidShopRefreshCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestRaidShopRefreshCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestRaidShopRefreshCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand.class, com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestRaidShopRefreshCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestRaidShopRefreshCommand>() {
+      public RequestRaidShopRefreshCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestRaidShopRefreshCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestRaidShopRefreshCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestRaidShopRefreshCommand}
+     *
+     * <pre>
+     *挂机副本商店刷新
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand.class, com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand build() {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand buildPartial() {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand result = new com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand other) {
+        if (other == com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestRaidShopRefreshCommand)
+    }
+
+    static {
+      defaultInstance = new RequestRaidShopRefreshCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestRaidShopRefreshCommand)
+  }
+
+  public interface ResponseRaidShopCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.Commodity items = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> 
+        getItemsList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    com.trans.pixel.protoc.ShopProto.Commodity getItems(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    int getItemsCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
+        getItemsOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getItemsOrBuilder(
+        int index);
+
+    // optional int64 endTime = 2;
+    /**
+     * <code>optional int64 endTime = 2;</code>
+     *
+     * <pre>
+     *商品列表过期时间
+     * </pre>
+     */
+    boolean hasEndTime();
+    /**
+     * <code>optional int64 endTime = 2;</code>
+     *
+     * <pre>
+     *商品列表过期时间
+     * </pre>
+     */
+    long getEndTime();
+
+    // optional int32 refreshCost = 3;
+    /**
+     * <code>optional int32 refreshCost = 3;</code>
+     *
+     * <pre>
+     *刷新消耗
+     * </pre>
+     */
+    boolean hasRefreshCost();
+    /**
+     * <code>optional int32 refreshCost = 3;</code>
+     *
+     * <pre>
+     *刷新消耗
+     * </pre>
+     */
+    int getRefreshCost();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.ResponseRaidShopCommand}
+   */
+  public static final class ResponseRaidShopCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements ResponseRaidShopCommandOrBuilder {
+    // Use ResponseRaidShopCommand.newBuilder() to construct.
+    private ResponseRaidShopCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResponseRaidShopCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResponseRaidShopCommand defaultInstance;
+    public static ResponseRaidShopCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResponseRaidShopCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResponseRaidShopCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                items_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Commodity>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              items_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Commodity.PARSER, extensionRegistry));
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000001;
+              endTime_ = input.readInt64();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              refreshCost_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          items_ = java.util.Collections.unmodifiableList(items_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand.class, com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResponseRaidShopCommand> PARSER =
+        new com.google.protobuf.AbstractParser<ResponseRaidShopCommand>() {
+      public ResponseRaidShopCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResponseRaidShopCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResponseRaidShopCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // repeated .com.trans.pixel.protoc.Commodity items = 1;
+    public static final int ITEMS_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> items_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> getItemsList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
+        getItemsOrBuilderList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public int getItemsCount() {
+      return items_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public com.trans.pixel.protoc.ShopProto.Commodity getItems(int index) {
+      return items_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getItemsOrBuilder(
+        int index) {
+      return items_.get(index);
+    }
+
+    // optional int64 endTime = 2;
+    public static final int ENDTIME_FIELD_NUMBER = 2;
+    private long endTime_;
+    /**
+     * <code>optional int64 endTime = 2;</code>
+     *
+     * <pre>
+     *商品列表过期时间
+     * </pre>
+     */
+    public boolean hasEndTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int64 endTime = 2;</code>
+     *
+     * <pre>
+     *商品列表过期时间
+     * </pre>
+     */
+    public long getEndTime() {
+      return endTime_;
+    }
+
+    // optional int32 refreshCost = 3;
+    public static final int REFRESHCOST_FIELD_NUMBER = 3;
+    private int refreshCost_;
+    /**
+     * <code>optional int32 refreshCost = 3;</code>
+     *
+     * <pre>
+     *刷新消耗
+     * </pre>
+     */
+    public boolean hasRefreshCost() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 refreshCost = 3;</code>
+     *
+     * <pre>
+     *刷新消耗
+     * </pre>
+     */
+    public int getRefreshCost() {
+      return refreshCost_;
+    }
+
+    private void initFields() {
+      items_ = java.util.Collections.emptyList();
+      endTime_ = 0L;
+      refreshCost_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getItemsCount(); i++) {
+        if (!getItems(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < items_.size(); i++) {
+        output.writeMessage(1, items_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(2, endTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(3, refreshCost_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < items_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, items_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, endTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, refreshCost_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponseRaidShopCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand.class, com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getItemsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          itemsBuilder_.clear();
+        }
+        endTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        refreshCost_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand build() {
+        com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand buildPartial() {
+        com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand result = new com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (itemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            items_ = java.util.Collections.unmodifiableList(items_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.items_ = items_;
+        } else {
+          result.items_ = itemsBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.endTime_ = endTime_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.refreshCost_ = refreshCost_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand other) {
+        if (other == com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand.getDefaultInstance()) return this;
+        if (itemsBuilder_ == null) {
+          if (!other.items_.isEmpty()) {
+            if (items_.isEmpty()) {
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureItemsIsMutable();
+              items_.addAll(other.items_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.items_.isEmpty()) {
+            if (itemsBuilder_.isEmpty()) {
+              itemsBuilder_.dispose();
+              itemsBuilder_ = null;
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              itemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getItemsFieldBuilder() : null;
+            } else {
+              itemsBuilder_.addAllMessages(other.items_);
+            }
+          }
+        }
+        if (other.hasEndTime()) {
+          setEndTime(other.getEndTime());
+        }
+        if (other.hasRefreshCost()) {
+          setRefreshCost(other.getRefreshCost());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getItemsCount(); i++) {
+          if (!getItems(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.Commodity items = 1;
+      private java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> items_ =
+        java.util.Collections.emptyList();
+      private void ensureItemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          items_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Commodity>(items_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ShopProto.Commodity, com.trans.pixel.protoc.ShopProto.Commodity.Builder, com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> itemsBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity> getItemsList() {
+        if (itemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(items_);
+        } else {
+          return itemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public int getItemsCount() {
+        if (itemsBuilder_ == null) {
+          return items_.size();
+        } else {
+          return itemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Commodity getItems(int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);
+        } else {
+          return itemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder setItems(
+          int index, com.trans.pixel.protoc.ShopProto.Commodity value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.set(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder setItems(
+          int index, com.trans.pixel.protoc.ShopProto.Commodity.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(com.trans.pixel.protoc.ShopProto.Commodity value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(
+          int index, com.trans.pixel.protoc.ShopProto.Commodity value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(
+          com.trans.pixel.protoc.ShopProto.Commodity.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(
+          int index, com.trans.pixel.protoc.ShopProto.Commodity.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addAllItems(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.ShopProto.Commodity> values) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          super.addAll(values, items_);
+          onChanged();
+        } else {
+          itemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder clearItems() {
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder removeItems(int index) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.remove(index);
+          onChanged();
+        } else {
+          itemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Commodity.Builder getItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.CommodityOrBuilder getItemsOrBuilder(
+          int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);  } else {
+          return itemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
+           getItemsOrBuilderList() {
+        if (itemsBuilder_ != null) {
+          return itemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(items_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Commodity.Builder addItemsBuilder() {
+        return getItemsFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.ShopProto.Commodity.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Commodity.Builder addItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.ShopProto.Commodity.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Commodity items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public java.util.List<com.trans.pixel.protoc.ShopProto.Commodity.Builder> 
+           getItemsBuilderList() {
+        return getItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ShopProto.Commodity, com.trans.pixel.protoc.ShopProto.Commodity.Builder, com.trans.pixel.protoc.ShopProto.CommodityOrBuilder> 
+          getItemsFieldBuilder() {
+        if (itemsBuilder_ == null) {
+          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.ShopProto.Commodity, com.trans.pixel.protoc.ShopProto.Commodity.Builder, com.trans.pixel.protoc.ShopProto.CommodityOrBuilder>(
+                  items_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          items_ = null;
+        }
+        return itemsBuilder_;
+      }
+
+      // optional int64 endTime = 2;
+      private long endTime_ ;
+      /**
+       * <code>optional int64 endTime = 2;</code>
+       *
+       * <pre>
+       *商品列表过期时间
+       * </pre>
+       */
+      public boolean hasEndTime() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int64 endTime = 2;</code>
+       *
+       * <pre>
+       *商品列表过期时间
+       * </pre>
+       */
+      public long getEndTime() {
+        return endTime_;
+      }
+      /**
+       * <code>optional int64 endTime = 2;</code>
+       *
+       * <pre>
+       *商品列表过期时间
+       * </pre>
+       */
+      public Builder setEndTime(long value) {
+        bitField0_ |= 0x00000002;
+        endTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 endTime = 2;</code>
+       *
+       * <pre>
+       *商品列表过期时间
+       * </pre>
+       */
+      public Builder clearEndTime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        endTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 refreshCost = 3;
+      private int refreshCost_ ;
+      /**
+       * <code>optional int32 refreshCost = 3;</code>
+       *
+       * <pre>
+       *刷新消耗
+       * </pre>
+       */
+      public boolean hasRefreshCost() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 refreshCost = 3;</code>
+       *
+       * <pre>
+       *刷新消耗
+       * </pre>
+       */
+      public int getRefreshCost() {
+        return refreshCost_;
+      }
+      /**
+       * <code>optional int32 refreshCost = 3;</code>
+       *
+       * <pre>
+       *刷新消耗
+       * </pre>
+       */
+      public Builder setRefreshCost(int value) {
+        bitField0_ |= 0x00000004;
+        refreshCost_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 refreshCost = 3;</code>
+       *
+       * <pre>
+       *刷新消耗
+       * </pre>
+       */
+      public Builder clearRefreshCost() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        refreshCost_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseRaidShopCommand)
+    }
+
+    static {
+      defaultInstance = new ResponseRaidShopCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseRaidShopCommand)
   }
 
   public interface RequestPVPShopCommandOrBuilder
@@ -40822,6 +42854,26 @@ public final class ShopProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_ResponseUnionShopCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestPVPShopCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -40979,109 +43031,114 @@ public final class ShopProto {
       "\n\005count\030\003 \002(\005\022\020\n\010currency\030\004 \002(\005\022\014\n\004cost\030" +
       "\005 \002(\005\022\014\n\004will\030\006 \001(\005\022\r\n\005isOut\030\007 \001(\010\022\n\n\002id" +
       "\030\010 \001(\005\022\016\n\006sortid\030\t \001(\005\022\r\n\005judge\030\n \001(\005\022\020\n" +
-      "\010discount\030\013 \001(\005\022\017\n\007discost\030\014 \001(\005\"@\n\rComm" +
-      "odityList\022/\n\004item\030\001 \003(\0132!.com.trans.pixe" +
-      "l.protoc.Commodity\"b\n\010ShopList\0220\n\005items\030" +
-      "\001 \003(\0132!.com.trans.pixel.protoc.Commodity" +
-      "\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshTime\030\003 \001(\005\"L" +
-      "\n\013ShopRefresh\022\r\n\005count\030\001 \001(\005\022\016\n\006count1\030\002",
-      " \001(\005\022\020\n\010currency\030\003 \001(\005\022\014\n\004cost\030\004 \001(\005\"E\n\017" +
-      "ShopRefreshList\0222\n\005count\030\001 \003(\0132#.com.tra" +
-      "ns.pixel.protoc.ShopRefresh\"6\n\004Will\022\014\n\004w" +
-      "ill\030\001 \002(\005\022\016\n\006weight\030\002 \001(\005\022\020\n\010position\030\003 " +
-      "\001(\005\"a\n\010ShopWill\022\n\n\002id\030\001 \002(\005\022*\n\004loot\030\002 \003(" +
-      "\0132\034.com.trans.pixel.protoc.Will\022\r\n\005judge" +
-      "\030\003 \001(\005\022\016\n\006judge1\030\004 \001(\005\">\n\014ShopWillList\022." +
-      "\n\004shop\030\001 \003(\0132 .com.trans.pixel.protoc.Sh" +
-      "opWill\"?\n\016LadderChongzhi\022\r\n\005count\030\001 \001(\005\022" +
-      "\020\n\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001(\005\"K\n\022Ladde",
-      "rChongzhiList\0225\n\005count\030\001 \003(\0132&.com.trans" +
-      ".pixel.protoc.LadderChongzhi\"\373\001\n\005Cdkey\022\n" +
-      "\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007itemid1\030\003 \001(" +
-      "\005\022\016\n\006count1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\016\n\006co" +
-      "unt2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\016\n\006count3\030\010 " +
-      "\001(\005\0222\n\006reward\030\t \003(\0132\".com.trans.pixel.pr" +
-      "otoc.RewardInfo\022\024\n\014currentCount\030\n \001(\005\022\r\n" +
-      "\005count\030\013 \001(\005\022\016\n\006length\030\014 \001(\005\022\014\n\004used\030\r \001" +
-      "(\005\"9\n\tCdkeyList\022,\n\005cdkey\030\001 \003(\0132\035.com.tra" +
-      "ns.pixel.protoc.Cdkey\"F\n\017MultiRewardList",
-      "\0223\n\006region\030\002 \003(\0132#.com.trans.pixel.proto" +
-      "c.MultiReward\"\216\001\n\022PurchaseCoinReward\022\016\n\006" +
-      "daguan\030\001 \001(\005\022\021\n\trewardid1\030\002 \001(\005\022\017\n\007count" +
-      "11\030\003 \001(\005\022\017\n\007count12\030\004 \001(\005\022\021\n\trewardid2\030\005" +
-      " \001(\005\022\017\n\007count21\030\006 \001(\005\022\017\n\007count22\030\007 \001(\005\"R" +
-      "\n\026PurchaseCoinRewardList\0228\n\004gold\030\001 \003(\0132*" +
-      ".com.trans.pixel.protoc.PurchaseCoinRewa" +
-      "rd\"A\n\020PurchaseCoinCost\022\r\n\005count\030\001 \001(\005\022\020\n" +
-      "\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001(\005\"N\n\024Purchas" +
-      "eCoinCostList\0226\n\004gold\030\001 \003(\0132(.com.trans.",
-      "pixel.protoc.PurchaseCoinCost\"\031\n\027Request" +
-      "DailyShopCommand\"<\n\037RequestDailyShopPurc" +
-      "haseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" " +
-      "\n\036RequestDailyShopRefreshCommand\"r\n\030Resp" +
-      "onseDailyShopCommand\0220\n\005items\030\001 \003(\0132!.co" +
-      "m.trans.pixel.protoc.Commodity\022\017\n\007endTim" +
-      "e\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\024\n\022RequestS" +
-      "hopCommand\"(\n\032RequestShopPurchaseCommand" +
-      "\022\n\n\002id\030\001 \002(\005\"G\n\023ResponseShopCommand\0220\n\005i" +
-      "tems\030\001 \003(\0132!.com.trans.pixel.protoc.Comm",
-      "odity\"\031\n\027RequestBlackShopCommand\"<\n\037Requ" +
-      "estBlackShopPurchaseCommand\022\r\n\005index\030\001 \002" +
-      "(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestBlackShopRefres" +
-      "hCommand\"r\n\030ResponseBlackShopCommand\0220\n\005" +
-      "items\030\001 \003(\0132!.com.trans.pixel.protoc.Com" +
-      "modity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003" +
-      " \001(\005\"\031\n\027RequestUnionShopCommand\"<\n\037Reque" +
-      "stUnionShopPurchaseCommand\022\r\n\005index\030\001 \002(" +
-      "\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestUnionShopRefresh" +
-      "Command\"r\n\030ResponseUnionShopCommand\0220\n\005i",
-      "tems\030\001 \003(\0132!.com.trans.pixel.protoc.Comm" +
-      "odity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 " +
-      "\001(\005\"\027\n\025RequestPVPShopCommand\":\n\035RequestP" +
-      "VPShopPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002" +
-      "id\030\002 \002(\005\"\036\n\034RequestPVPShopRefreshCommand" +
-      "\"p\n\026ResponsePVPShopCommand\0220\n\005items\030\001 \003(" +
-      "\0132!.com.trans.pixel.protoc.Commodity\022\017\n\007" +
-      "endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\036\n\034Re" +
-      "questExpeditionShopCommand\"A\n$RequestExp" +
-      "editionShopPurchaseCommand\022\r\n\005index\030\001 \002(",
-      "\005\022\n\n\002id\030\002 \002(\005\"%\n#RequestExpeditionShopRe" +
-      "freshCommand\"w\n\035ResponseExpeditionShopCo" +
-      "mmand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.p" +
-      "rotoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refr" +
-      "eshCost\030\003 \001(\005\"\032\n\030RequestLadderShopComman" +
-      "d\"=\n RequestLadderShopPurchaseCommand\022\r\n" +
-      "\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"!\n\037RequestLadde" +
-      "rShopRefreshCommand\"s\n\031ResponseLadderSho" +
-      "pCommand\0220\n\005items\030\001 \003(\0132!.com.trans.pixe" +
-      "l.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013r",
-      "efreshCost\030\003 \001(\005\"\037\n\035RequestBattletowerSh" +
-      "opCommand\"B\n%RequestBattletowerShopPurch" +
-      "aseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"&\n" +
-      "$RequestBattletowerShopRefreshCommand\"x\n" +
-      "\036ResponseBattletowerShopCommand\0220\n\005items" +
-      "\030\001 \003(\0132!.com.trans.pixel.protoc.Commodit" +
-      "y\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"" +
-      "\231\001\n\005YueKa\022\016\n\006itemid\030\001 \002(\005\022\020\n\010rewardid\030\002 " +
-      "\001(\005\022\023\n\013rewardcount\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022" +
-      "\014\n\004name\030\005 \001(\t\022\021\n\trewardid1\030\006 \001(\005\022\024\n\014rewa",
-      "rdcount1\030\007 \001(\005\022\023\n\013jingyan_per\030\t \001(\005\"8\n\tY" +
-      "ueKaList\022+\n\004item\030\001 \003(\0132\035.com.trans.pixel" +
-      ".protoc.YueKa\"\201\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nr" +
-      "echargeid\030\002 \001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\tsta" +
-      "rttime\030\004 \001(\t\022\017\n\007endtime\030\005 \001(\t\022\021\n\tvalidti" +
-      "me\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"9\n\tLibaoList\022," +
-      "\n\005libao\030\003 \003(\0132\035.com.trans.pixel.protoc.L" +
-      "ibao\"\031\n\027RequestLibaoShopCommand\"H\n\030Respo" +
-      "nseLibaoShopCommand\022,\n\005items\030\001 \003(\0132\035.com" +
-      ".trans.pixel.protoc.Libao\")\n\006Status\022\n\n\002i",
-      "d\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010\"T\n\"Response" +
-      "FirstRechargeStatusCommand\022.\n\006status\030\001 \003" +
-      "(\0132\036.com.trans.pixel.protoc.Status\"0\n\036Re" +
-      "questPurchaseContractCommand\022\016\n\006heroid\030\001" +
-      " \002(\005\"\034\n\032RequestPurchaseCoinCommand\"Q\n\033Re" +
-      "sponsePurchaseCoinCommand\022\r\n\005jewel\030\003 \001(\005" +
-      "\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
+      "\010discount\030\013 \001(\005\022\017\n\007discost\030\014 \001(\005\">\n\rComm" +
+      "odityList\022-\n\002id\030\001 \003(\0132!.com.trans.pixel." +
+      "protoc.Commodity\"b\n\010ShopList\0220\n\005items\030\001 " +
+      "\003(\0132!.com.trans.pixel.protoc.Commodity\022\017" +
+      "\n\007endTime\030\002 \001(\003\022\023\n\013refreshTime\030\003 \001(\005\"L\n\013" +
+      "ShopRefresh\022\r\n\005count\030\001 \001(\005\022\016\n\006count1\030\002 \001",
+      "(\005\022\020\n\010currency\030\003 \001(\005\022\014\n\004cost\030\004 \001(\005\"E\n\017Sh" +
+      "opRefreshList\0222\n\005count\030\001 \003(\0132#.com.trans" +
+      ".pixel.protoc.ShopRefresh\"&\n\004Will\022\014\n\004wil" +
+      "l\030\001 \002(\005\022\020\n\010position\030\003 \001(\005\"T\n\010ShopWill\022\n\n" +
+      "\002id\030\001 \002(\005\022\020\n\010merlevel\030\002 \001(\005\022*\n\004will\030\003 \003(" +
+      "\0132\034.com.trans.pixel.protoc.Will\"<\n\014ShopW" +
+      "illList\022,\n\002id\030\001 \003(\0132 .com.trans.pixel.pr" +
+      "otoc.ShopWill\"?\n\016LadderChongzhi\022\r\n\005count" +
+      "\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001(\005\"K" +
+      "\n\022LadderChongzhiList\0225\n\005count\030\001 \003(\0132&.co",
+      "m.trans.pixel.protoc.LadderChongzhi\"\373\001\n\005" +
+      "Cdkey\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007itemi" +
+      "d1\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(" +
+      "\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\016\n\006co" +
+      "unt3\030\010 \001(\005\0222\n\006reward\030\t \003(\0132\".com.trans.p" +
+      "ixel.protoc.RewardInfo\022\024\n\014currentCount\030\n" +
+      " \001(\005\022\r\n\005count\030\013 \001(\005\022\016\n\006length\030\014 \001(\005\022\014\n\004u" +
+      "sed\030\r \001(\005\"9\n\tCdkeyList\022,\n\005cdkey\030\001 \003(\0132\035." +
+      "com.trans.pixel.protoc.Cdkey\"F\n\017MultiRew" +
+      "ardList\0223\n\006region\030\002 \003(\0132#.com.trans.pixe",
+      "l.protoc.MultiReward\"\216\001\n\022PurchaseCoinRew" +
+      "ard\022\016\n\006daguan\030\001 \001(\005\022\021\n\trewardid1\030\002 \001(\005\022\017" +
+      "\n\007count11\030\003 \001(\005\022\017\n\007count12\030\004 \001(\005\022\021\n\trewa" +
+      "rdid2\030\005 \001(\005\022\017\n\007count21\030\006 \001(\005\022\017\n\007count22\030" +
+      "\007 \001(\005\"R\n\026PurchaseCoinRewardList\0228\n\004gold\030" +
+      "\001 \003(\0132*.com.trans.pixel.protoc.PurchaseC" +
+      "oinReward\"A\n\020PurchaseCoinCost\022\r\n\005count\030\001" +
+      " \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001(\005\"N\n\024" +
+      "PurchaseCoinCostList\0226\n\004gold\030\001 \003(\0132(.com" +
+      ".trans.pixel.protoc.PurchaseCoinCost\"\031\n\027",
+      "RequestDailyShopCommand\"<\n\037RequestDailyS" +
+      "hopPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030" +
+      "\002 \002(\005\" \n\036RequestDailyShopRefreshCommand\"" +
+      "r\n\030ResponseDailyShopCommand\0220\n\005items\030\001 \003" +
+      "(\0132!.com.trans.pixel.protoc.Commodity\022\017\n" +
+      "\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\024\n\022R" +
+      "equestShopCommand\"(\n\032RequestShopPurchase" +
+      "Command\022\n\n\002id\030\001 \002(\005\"G\n\023ResponseShopComma" +
+      "nd\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.prot" +
+      "oc.Commodity\"\031\n\027RequestBlackShopCommand\"",
+      "<\n\037RequestBlackShopPurchaseCommand\022\r\n\005in" +
+      "dex\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestBlackSho" +
+      "pRefreshCommand\"r\n\030ResponseBlackShopComm" +
+      "and\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.pro" +
+      "toc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refres" +
+      "hCost\030\003 \001(\005\"\031\n\027RequestUnionShopCommand\"<" +
+      "\n\037RequestUnionShopPurchaseCommand\022\r\n\005ind" +
+      "ex\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestUnionShop" +
+      "RefreshCommand\"r\n\030ResponseUnionShopComma" +
+      "nd\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.prot",
+      "oc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refresh" +
+      "Cost\030\003 \001(\005\"\030\n\026RequestRaidShopCommand\";\n\036" +
+      "RequestRaidShopPurchaseCommand\022\r\n\005index\030" +
+      "\001 \002(\005\022\n\n\002id\030\002 \002(\005\"\037\n\035RequestRaidShopRefr" +
+      "eshCommand\"q\n\027ResponseRaidShopCommand\0220\n" +
+      "\005items\030\001 \003(\0132!.com.trans.pixel.protoc.Co" +
+      "mmodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030" +
+      "\003 \001(\005\"\027\n\025RequestPVPShopCommand\":\n\035Reques" +
+      "tPVPShopPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n" +
+      "\n\002id\030\002 \002(\005\"\036\n\034RequestPVPShopRefreshComma",
+      "nd\"p\n\026ResponsePVPShopCommand\0220\n\005items\030\001 " +
+      "\003(\0132!.com.trans.pixel.protoc.Commodity\022\017" +
+      "\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\036\n\034" +
+      "RequestExpeditionShopCommand\"A\n$RequestE" +
+      "xpeditionShopPurchaseCommand\022\r\n\005index\030\001 " +
+      "\002(\005\022\n\n\002id\030\002 \002(\005\"%\n#RequestExpeditionShop" +
+      "RefreshCommand\"w\n\035ResponseExpeditionShop" +
+      "Command\0220\n\005items\030\001 \003(\0132!.com.trans.pixel" +
+      ".protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013re" +
+      "freshCost\030\003 \001(\005\"\032\n\030RequestLadderShopComm",
+      "and\"=\n RequestLadderShopPurchaseCommand\022" +
+      "\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"!\n\037RequestLad" +
+      "derShopRefreshCommand\"s\n\031ResponseLadderS" +
+      "hopCommand\0220\n\005items\030\001 \003(\0132!.com.trans.pi" +
+      "xel.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n" +
+      "\013refreshCost\030\003 \001(\005\"\037\n\035RequestBattletower" +
+      "ShopCommand\"B\n%RequestBattletowerShopPur" +
+      "chaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"" +
+      "&\n$RequestBattletowerShopRefreshCommand\"" +
+      "x\n\036ResponseBattletowerShopCommand\0220\n\005ite",
+      "ms\030\001 \003(\0132!.com.trans.pixel.protoc.Commod" +
+      "ity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(" +
+      "\005\"\231\001\n\005YueKa\022\016\n\006itemid\030\001 \002(\005\022\020\n\010rewardid\030" +
+      "\002 \001(\005\022\023\n\013rewardcount\030\003 \001(\005\022\r\n\005count\030\004 \001(" +
+      "\005\022\014\n\004name\030\005 \001(\t\022\021\n\trewardid1\030\006 \001(\005\022\024\n\014re" +
+      "wardcount1\030\007 \001(\005\022\023\n\013jingyan_per\030\t \001(\005\"8\n" +
+      "\tYueKaList\022+\n\004item\030\001 \003(\0132\035.com.trans.pix" +
+      "el.protoc.YueKa\"\201\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n" +
+      "\nrechargeid\030\002 \001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\ts" +
+      "tarttime\030\004 \001(\t\022\017\n\007endtime\030\005 \001(\t\022\021\n\tvalid",
+      "time\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"9\n\tLibaoList" +
+      "\022,\n\005libao\030\003 \003(\0132\035.com.trans.pixel.protoc" +
+      ".Libao\"\031\n\027RequestLibaoShopCommand\"H\n\030Res" +
+      "ponseLibaoShopCommand\022,\n\005items\030\001 \003(\0132\035.c" +
+      "om.trans.pixel.protoc.Libao\")\n\006Status\022\n\n" +
+      "\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010\"T\n\"Respon" +
+      "seFirstRechargeStatusCommand\022.\n\006status\030\001" +
+      " \003(\0132\036.com.trans.pixel.protoc.Status\"0\n\036" +
+      "RequestPurchaseContractCommand\022\016\n\006heroid" +
+      "\030\001 \002(\005\"\034\n\032RequestPurchaseCoinCommand\"Q\n\033",
+      "ResponsePurchaseCoinCommand\022\r\n\005jewel\030\003 \001" +
+      "(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -41123,7 +43180,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_CommodityList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_CommodityList_descriptor,
-              new java.lang.String[] { "Item", });
+              new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ShopList_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_ShopList_fieldAccessorTable = new
@@ -41147,19 +43204,19 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Will_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Will_descriptor,
-              new java.lang.String[] { "Will", "Weight", "Position", });
+              new java.lang.String[] { "Will", "Position", });
           internal_static_com_trans_pixel_protoc_ShopWill_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_ShopWill_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ShopWill_descriptor,
-              new java.lang.String[] { "Id", "Loot", "Judge", "Judge1", });
+              new java.lang.String[] { "Id", "Merlevel", "Will", });
           internal_static_com_trans_pixel_protoc_ShopWillList_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_ShopWillList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ShopWillList_descriptor,
-              new java.lang.String[] { "Shop", });
+              new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_LadderChongzhi_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_LadderChongzhi_fieldAccessorTable = new
@@ -41304,164 +43361,188 @@ public final class ShopProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionShopCommand_descriptor,
               new java.lang.String[] { "Items", "EndTime", "RefreshCost", });
-          internal_static_com_trans_pixel_protoc_RequestPVPShopCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_descriptor =
             getDescriptor().getMessageTypes().get(36);
+          internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestRaidShopCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_descriptor =
+            getDescriptor().getMessageTypes().get(37);
+          internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestRaidShopPurchaseCommand_descriptor,
+              new java.lang.String[] { "Index", "Id", });
+          internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_descriptor =
+            getDescriptor().getMessageTypes().get(38);
+          internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestRaidShopRefreshCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_descriptor =
+            getDescriptor().getMessageTypes().get(39);
+          internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponseRaidShopCommand_descriptor,
+              new java.lang.String[] { "Items", "EndTime", "RefreshCost", });
+          internal_static_com_trans_pixel_protoc_RequestPVPShopCommand_descriptor =
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_RequestPVPShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPShopCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestPVPShopPurchaseCommand_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_RequestPVPShopPurchaseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPShopPurchaseCommand_descriptor,
               new java.lang.String[] { "Index", "Id", });
           internal_static_com_trans_pixel_protoc_RequestPVPShopRefreshCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_RequestPVPShopRefreshCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPShopRefreshCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponsePVPShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_ResponsePVPShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPShopCommand_descriptor,
               new java.lang.String[] { "Items", "EndTime", "RefreshCost", });
           internal_static_com_trans_pixel_protoc_RequestExpeditionShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_RequestExpeditionShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestExpeditionShopCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestExpeditionShopPurchaseCommand_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_com_trans_pixel_protoc_RequestExpeditionShopPurchaseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestExpeditionShopPurchaseCommand_descriptor,
               new java.lang.String[] { "Index", "Id", });
           internal_static_com_trans_pixel_protoc_RequestExpeditionShopRefreshCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_RequestExpeditionShopRefreshCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestExpeditionShopRefreshCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseExpeditionShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_ResponseExpeditionShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseExpeditionShopCommand_descriptor,
               new java.lang.String[] { "Items", "EndTime", "RefreshCost", });
           internal_static_com_trans_pixel_protoc_RequestLadderShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_com_trans_pixel_protoc_RequestLadderShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderShopCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestLadderShopPurchaseCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(49);
           internal_static_com_trans_pixel_protoc_RequestLadderShopPurchaseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderShopPurchaseCommand_descriptor,
               new java.lang.String[] { "Index", "Id", });
           internal_static_com_trans_pixel_protoc_RequestLadderShopRefreshCommand_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(50);
           internal_static_com_trans_pixel_protoc_RequestLadderShopRefreshCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderShopRefreshCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseLadderShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(51);
           internal_static_com_trans_pixel_protoc_ResponseLadderShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLadderShopCommand_descriptor,
               new java.lang.String[] { "Items", "EndTime", "RefreshCost", });
           internal_static_com_trans_pixel_protoc_RequestBattletowerShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(52);
           internal_static_com_trans_pixel_protoc_RequestBattletowerShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBattletowerShopCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestBattletowerShopPurchaseCommand_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(53);
           internal_static_com_trans_pixel_protoc_RequestBattletowerShopPurchaseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBattletowerShopPurchaseCommand_descriptor,
               new java.lang.String[] { "Index", "Id", });
           internal_static_com_trans_pixel_protoc_RequestBattletowerShopRefreshCommand_descriptor =
-            getDescriptor().getMessageTypes().get(50);
+            getDescriptor().getMessageTypes().get(54);
           internal_static_com_trans_pixel_protoc_RequestBattletowerShopRefreshCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBattletowerShopRefreshCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseBattletowerShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(51);
+            getDescriptor().getMessageTypes().get(55);
           internal_static_com_trans_pixel_protoc_ResponseBattletowerShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseBattletowerShopCommand_descriptor,
               new java.lang.String[] { "Items", "EndTime", "RefreshCost", });
           internal_static_com_trans_pixel_protoc_YueKa_descriptor =
-            getDescriptor().getMessageTypes().get(52);
+            getDescriptor().getMessageTypes().get(56);
           internal_static_com_trans_pixel_protoc_YueKa_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_YueKa_descriptor,
               new java.lang.String[] { "Itemid", "Rewardid", "Rewardcount", "Count", "Name", "Rewardid1", "Rewardcount1", "JingyanPer", });
           internal_static_com_trans_pixel_protoc_YueKaList_descriptor =
-            getDescriptor().getMessageTypes().get(53);
+            getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_YueKaList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_YueKaList_descriptor,
               new java.lang.String[] { "Item", });
           internal_static_com_trans_pixel_protoc_Libao_descriptor =
-            getDescriptor().getMessageTypes().get(54);
+            getDescriptor().getMessageTypes().get(58);
           internal_static_com_trans_pixel_protoc_Libao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Libao_descriptor,
               new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Starttime", "Endtime", "Validtime", "Refresh", });
           internal_static_com_trans_pixel_protoc_LibaoList_descriptor =
-            getDescriptor().getMessageTypes().get(55);
+            getDescriptor().getMessageTypes().get(59);
           internal_static_com_trans_pixel_protoc_LibaoList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LibaoList_descriptor,
               new java.lang.String[] { "Libao", });
           internal_static_com_trans_pixel_protoc_RequestLibaoShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(56);
+            getDescriptor().getMessageTypes().get(60);
           internal_static_com_trans_pixel_protoc_RequestLibaoShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLibaoShopCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseLibaoShopCommand_descriptor =
-            getDescriptor().getMessageTypes().get(57);
+            getDescriptor().getMessageTypes().get(61);
           internal_static_com_trans_pixel_protoc_ResponseLibaoShopCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLibaoShopCommand_descriptor,
               new java.lang.String[] { "Items", });
           internal_static_com_trans_pixel_protoc_Status_descriptor =
-            getDescriptor().getMessageTypes().get(58);
+            getDescriptor().getMessageTypes().get(62);
           internal_static_com_trans_pixel_protoc_Status_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Status_descriptor,
               new java.lang.String[] { "Id", "Canpurchase", });
           internal_static_com_trans_pixel_protoc_ResponseFirstRechargeStatusCommand_descriptor =
-            getDescriptor().getMessageTypes().get(59);
+            getDescriptor().getMessageTypes().get(63);
           internal_static_com_trans_pixel_protoc_ResponseFirstRechargeStatusCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseFirstRechargeStatusCommand_descriptor,
               new java.lang.String[] { "Status", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseContractCommand_descriptor =
-            getDescriptor().getMessageTypes().get(60);
+            getDescriptor().getMessageTypes().get(64);
           internal_static_com_trans_pixel_protoc_RequestPurchaseContractCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseContractCommand_descriptor,
               new java.lang.String[] { "Heroid", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseCoinCommand_descriptor =
-            getDescriptor().getMessageTypes().get(61);
+            getDescriptor().getMessageTypes().get(65);
           internal_static_com_trans_pixel_protoc_RequestPurchaseCoinCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseCoinCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponsePurchaseCoinCommand_descriptor =
-            getDescriptor().getMessageTypes().get(62);
+            getDescriptor().getMessageTypes().get(66);
           internal_static_com_trans_pixel_protoc_ResponsePurchaseCoinCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePurchaseCoinCommand_descriptor,

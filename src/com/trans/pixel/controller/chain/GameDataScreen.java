@@ -138,6 +138,9 @@ import com.trans.pixel.protoc.ShopProto.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
@@ -623,6 +626,25 @@ public class GameDataScreen extends RequestScreen {
 		shopCommandService.PVPShopRefresh(cmd, responseBuilder, user);
 		return true;//PVPShopRefreshCommand
 	}//PVPShopRefreshCommand
+
+
+	@Override
+	protected boolean handleCommand(RequestRaidShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.RaidShop(responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRaidShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.RaidShopRefresh(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRaidShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.RaidShopPurchase(cmd, responseBuilder, user);
+		return false;
+	}
 	@Override//ExpeditionShopCommand
 	protected boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user) {
 		shopCommandService.ExpeditionShop(cmd, responseBuilder, user);

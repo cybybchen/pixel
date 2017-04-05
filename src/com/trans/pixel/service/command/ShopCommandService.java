@@ -38,6 +38,9 @@ import com.trans.pixel.protoc.ShopProto.RequestPVPShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPurchaseCoinCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPurchaseContractCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
@@ -50,6 +53,7 @@ import com.trans.pixel.protoc.ShopProto.ResponseExpeditionShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseLadderShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponsePVPShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponsePurchaseCoinCommand;
+import com.trans.pixel.protoc.ShopProto.ResponseRaidShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseUnionShopCommand;
 import com.trans.pixel.protoc.ShopProto.ShopList;
@@ -421,6 +425,102 @@ public class ShopCommandService extends BaseCommandService{
 		shop.setEndTime(shoplist.getEndTime());
 		shop.setRefreshCost(getUnionShopRefreshCost(refreshtime));
 		responseBuilder.setUnionShopCommand(shop);
+	}
+
+	public int getRaidShopRefreshCost(int time){
+		final int factor = 1;
+		if(time < 1){
+			return 10*factor;
+		}
+		if(time < 3){
+			return 20*factor;
+		}
+		if(time < 6){
+			return 50*factor;
+		}
+		if(time < 10){
+			return 100*factor;
+		}
+		if(time < 20){
+			return 200*factor;
+		}
+		return 500*factor;
+	}
+	
+	public void RaidShop(Builder responseBuilder, UserBean user){
+		ShopList shoplist = service.getRaidShop(user);
+		int refreshtime = user.getRaidShopRefreshTime();
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = service.refreshRaidShop(user);
+		}
+
+		ResponseRaidShopCommand.Builder shop = ResponseRaidShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getRaidShopRefreshCost(refreshtime));
+		responseBuilder.setRaidShopCommand(shop);
+	}
+
+	public void RaidShopPurchase(RequestRaidShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
+		ShopList.Builder shoplist = ShopList.newBuilder(service.getRaidShop(user));
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = ShopList.newBuilder(service.refreshRaidShop(user));
+		}
+		int refreshtime = user.getRaidShopRefreshTime();
+		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
+		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
+			
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+		}/*else if(!RaidMapRedisService.isMapOpen(user, commbuilder.getJudge())){
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_RaidCONDITION);
+			
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_RaidCONDITION));
+		}else*/ if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost())){
+			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
+			responseBuilder.setErrorCommand(buildErrorCommand(error));
+		}else{
+			commbuilder.setIsOut(true);
+			rewardService.doReward(user, commbuilder.getItemid(), commbuilder.getCount());
+			rewardService.updateUser(user);
+            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
+            service.saveRaidShop(shoplist.build(), user);
+            pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
+            pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
+            logService.sendShopLog(user.getServerId(), user.getId(), 2, commbuilder.getItemid(), commbuilder.getCurrency(), commbuilder.getCost());
+		}
+		
+		ResponseRaidShopCommand.Builder shop = ResponseRaidShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getRaidShopRefreshCost(refreshtime));
+		responseBuilder.setRaidShopCommand(shop);
+	}
+
+	public void RaidShopRefresh(RequestRaidShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
+		ShopList shoplist = service.getRaidShop(user);
+		int refreshtime = user.getRaidShopRefreshTime();
+		if(costService.cost(user, RewardConst.JEWEL, getRaidShopRefreshCost(refreshtime))) {
+			shoplist = service.refreshRaidShop(user);
+            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
+			refreshtime++;
+			user.setDailyShopRefreshTime(refreshtime);
+			rewardService.updateUser(user);
+			pusher.pushUserInfoCommand(responseBuilder, user);
+		}else{
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+		}
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = service.refreshRaidShop(user);
+		}
+
+		ResponseRaidShopCommand.Builder shop = ResponseRaidShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		shop.setRefreshCost(getRaidShopRefreshCost(refreshtime));
+		responseBuilder.setRaidShopCommand(shop);
 	}
 
 	public int getPVPShopRefreshCost(int time){

@@ -278,10 +278,10 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushDailyShopCommand(responseBuilder, user);
 		pushCommandService.pushBlackShopCommand(responseBuilder, user);
 		pushCommandService.pushPVPShopCommand(responseBuilder, user);
-		pushCommandService.pushExpeditionShopCommand(responseBuilder, user);
+		// pushCommandService.pushExpeditionShopCommand(responseBuilder, user);
 		pushCommandService.pushLadderShopCommand(responseBuilder, user);
-		pushCommandService.pushUnionShopCommand(responseBuilder, user);
-		pushCommandService.pushBattletowerShopCommand(responseBuilder, user);
+		// pushCommandService.pushUnionShopCommand(responseBuilder, user);
+		// pushCommandService.pushBattletowerShopCommand(responseBuilder, user);
 //		pushCommandService.pushUserMailListCommand(responseBuilder, user);
 		pushCommandService.pushPurchaseCoinCommand(responseBuilder, user);
 		pushCommandService.pushUserPropListCommand(responseBuilder, user);

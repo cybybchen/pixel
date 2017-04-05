@@ -101,6 +101,20 @@ public class ShopService {
 		return shoplist;
 	}
 
+	public ShopList getRaidShop(UserBean user){
+		return redis.getRaidShop(user);
+	}
+	
+	public void saveRaidShop(ShopList shoplist, UserBean user){
+		redis.saveRaidShop(shoplist, user);
+	}
+	
+	public ShopList refreshRaidShop(UserBean user){
+		ShopList shoplist = redis.buildRaidShop(user);
+		redis.saveRaidShop(shoplist, user);
+		return shoplist;
+	}
+
 	public ShopList getPVPShop(UserBean user){
 		return redis.getPVPShop(user);
 	}

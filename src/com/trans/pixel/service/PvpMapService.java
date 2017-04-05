@@ -264,8 +264,8 @@ public class PvpMapService {
 	
 	public PVPMapList getMapList(Builder responseBuilder, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
-		/*if(user.getPvpUnlock() == 0){
-		}else*/{
+		if(user.getPvpUnlock() == 0){
+		}else{
 			Map<String, String> pvpMap = redis.getUserBuffs(user);
 			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 			List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);

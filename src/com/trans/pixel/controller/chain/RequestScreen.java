@@ -104,6 +104,7 @@ import com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.MailProto.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand;
 import com.trans.pixel.protoc.AreaProto.RequestRefreshAreaCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSignCommand;
@@ -133,6 +134,7 @@ import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAttackBossCommand;
 import com.trans.pixel.protoc.AreaProto.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAreaCommand;
@@ -178,6 +180,7 @@ import com.trans.pixel.protoc.ShopProto.RequestLadderShopRefreshCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand;
+import com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand;
 import com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
@@ -288,6 +291,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRaidShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBattletowerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSignCommand cmd, Builder responseBuilder, UserBean user);
@@ -317,6 +321,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRaidShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -362,6 +367,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetBattletowerCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRaidShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
@@ -778,6 +784,10 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestOpenRaidCommand cmd = request.getOpenRaidCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
+		if (request.hasRaidShopCommand()) {
+			RequestRaidShopCommand cmd = request.getRaidShopCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
 		if (request.hasRefreshAreaCommand()) {
 			RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
@@ -892,6 +902,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasSubmitBosskillCommand()) {
 			RequestSubmitBosskillCommand cmd = request.getSubmitBosskillCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasRaidShopRefreshCommand()) {
+			RequestRaidShopRefreshCommand cmd = request.getRaidShopRefreshCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackBossCommand()) {
@@ -1072,6 +1086,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasGetBattletowerCommand()) {
 			RequestGetBattletowerCommand cmd = request.getGetBattletowerCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasRaidShopPurchaseCommand()) {
+			RequestRaidShopPurchaseCommand cmd = request.getRaidShopPurchaseCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetTaskRewardCommand()) {

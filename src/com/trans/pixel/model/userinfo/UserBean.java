@@ -53,6 +53,7 @@ public class UserBean {
 	private int blackShopRefreshTime = 0;
 	private int unionShopRefreshTime = 0;
 	private int PVPShopRefreshTime = 0;
+	private int raidShopRefreshTime = 0;
 	private int ladderShopRefreshTime = 0;
 	private int battletowerShopRefreshTime = 0;
 	private int expeditionShopRefreshTime = 0;
@@ -114,7 +115,7 @@ public class UserBean {
 	private int zhujueExp = 0;
 	private int vipExp = 0;
 	private int rewardTaskIndex = 0;
-	private int merlevel = 0;
+	private int merlevel = 1;
 	/**
 	 * 佣兵团等级
 	 */
@@ -823,6 +824,13 @@ public class UserBean {
 	public void setPVPShopRefreshTime(int refreshTime) {
 		PVPShopRefreshTime = refreshTime;
 	}
+	public int getRaidShopRefreshTime() {
+		return raidShopRefreshTime;
+	}
+	public void setRaidShopRefreshTime(int raidShopRefreshTime) {
+		this.raidShopRefreshTime = raidShopRefreshTime;
+	}
+
 	/**
 	 * 天梯商店刷新次数
 	 */

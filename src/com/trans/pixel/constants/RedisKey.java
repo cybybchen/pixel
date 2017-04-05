@@ -94,6 +94,7 @@ public class RedisKey {
 	public final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
 	public final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
 	public final static String BATTLETOWERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BattletowerShop";
+	public final static String RAIDSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"RaidShop";
 
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "mysql_update:";

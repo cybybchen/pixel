@@ -309,6 +309,10 @@ public class PushCommandService extends BaseCommandService {
 		shopCommandService.BlackShop(responseBuilder, user);
 	}
 	
+	public void pushRaidShopCommand(Builder responseBuilder, UserBean user) {
+		shopCommandService.RaidShop(responseBuilder, user);
+	}
+	
 	public void pushUnionShopCommand(Builder responseBuilder, UserBean user) {
 		RequestUnionShopCommand.Builder cmd = RequestUnionShopCommand.newBuilder();
 		shopCommandService.UnionShop(cmd.build(), responseBuilder, user);
