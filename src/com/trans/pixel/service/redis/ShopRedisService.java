@@ -60,6 +60,7 @@ public class ShopRedisService extends RedisService{
 	
 	public ShopList.Builder buildComms(ShopWill shopwill, Map<Integer, CommodityList.Builder> commsmap){
 		ShopList.Builder builder = ShopList.newBuilder();
+		if(shopwill!=null)
 		for(Will will : shopwill.getWillList()){
 			CommodityList.Builder commsbuilder = commsmap.get(will.getWill());
 			int index = nextInt(commsbuilder.getIdCount());
@@ -167,7 +168,7 @@ public class ShopRedisService extends RedisService{
 			parseXml(xml, willsbuilder);
 			set(RedisKey.DAILYSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
-		ShopWill shopwill = null;
+		ShopWill shopwill = willsbuilder.getId(0);
 		for(ShopWill will : willsbuilder.getIdList()){
 			if(will.getMerlevel() <= Math.max(1, user.getMerlevel()))
 				shopwill = will;
@@ -304,7 +305,7 @@ public class ShopRedisService extends RedisService{
 			parseXml(xml, willsbuilder);
 			set(RedisKey.BLACKSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
-		ShopWill shopwill = null;
+		ShopWill shopwill = willsbuilder.getId(0);
 		for(ShopWill will : willsbuilder.getIdList()){
 			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
@@ -588,7 +589,7 @@ public class ShopRedisService extends RedisService{
 			parseXml(xml, willsbuilder);
 			set(RedisKey.PVPSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
-		ShopWill shopwill = null;
+		ShopWill shopwill = willsbuilder.getId(0);
 		for(ShopWill will : willsbuilder.getIdList()){
 			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
@@ -773,7 +774,7 @@ public class ShopRedisService extends RedisService{
 			parseXml(xml, willsbuilder);
 			set(RedisKey.LADDERSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
 		}
-		ShopWill shopwill = null;
+		ShopWill shopwill = willsbuilder.getId(0);
 		for(ShopWill will : willsbuilder.getIdList()){
 			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
