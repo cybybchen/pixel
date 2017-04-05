@@ -143,6 +143,11 @@ public class ShopCommandService extends BaseCommandService{
             pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
             pusher.pushRewardCommand(responseBuilder, user, commbuilder.getItemid(), commbuilder.getName(), commbuilder.getCount());
             logService.sendShopLog(user.getServerId(), user.getId(), 0, commbuilder.getItemid(), commbuilder.getCurrency(), cost);
+            
+            /**
+             * 普通商店购买
+             */
+            activityService.shopBuy(user, 0);
 		}
 		
 		ResponseDailyShopCommand.Builder shop = ResponseDailyShopCommand.newBuilder();

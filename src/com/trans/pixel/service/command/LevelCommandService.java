@@ -210,6 +210,11 @@ public class LevelCommandService extends BaseCommandService {
 				Event eventconfig = redis.getEvent(event.getEventid());
 				eventReward(eventconfig, responseBuilder, user);
 				redis.delEvent(user, event.getOrder());
+				
+				/**
+				 * 完成事件的活动
+				 */
+				activityService.completeEvent(user, event.getEventid());
 			}else if(event.getOrder() >= 100 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event.getOrder());
 		}

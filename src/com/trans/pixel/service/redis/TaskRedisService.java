@@ -146,7 +146,7 @@ public class TaskRedisService extends RedisService {
 	}
 	
 	//task2
-	public TaskTarget getTask2Target(int targetId) {
+	private TaskTarget getTask2Target(int targetId) {
 		String value = hget(RedisKey.TASK2_CONFIG_KEY, "" + targetId);
 		if (value == null) {
 			Map<String, TaskTarget> config = getTask2TargetConfig();
@@ -193,7 +193,7 @@ public class TaskRedisService extends RedisService {
 		for (Task2TargetHero.Builder hero : builder.getIdBuilderList()) {
 			Map<String, String> redismap = new HashMap<String, String>();
 			for (TaskTarget.Builder task : hero.getTargetBuilderList()) {
-				map.put("" + task.getTargetid(), task.build());
+				map.put("" + hero.getHeroid() + task.getTargetid(), task.build());
 				for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 					order.setTargetid(task.getTargetid());
 					redismap.put("" + order.getOrder(), formatJson(order.build()));

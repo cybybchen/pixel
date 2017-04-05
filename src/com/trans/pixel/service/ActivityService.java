@@ -282,7 +282,7 @@ public class ActivityService {
 		sendKaifuScore(user, ActivityConst.KAIFU_DAY_2, count);
 		
 		if (costType == RewardConst.COIN) {
-			taskService.sendTask3Score(user, TaskConst.TARGET_LOTTERY_COIN);
+			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_LOTTERY_COIN_VALUE);
 		}
 	}
 	
@@ -299,7 +299,7 @@ public class ActivityService {
 		if (ret)
 			sendRichangScore(user, ActivityConst.LADDER_ATTACK);
 		
-		taskService.sendTask3Score(user, TaskConst.TARGET_LADDER_FIGHT);
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_LADDER_FIGHT_VALUE);
 	}
 	
 	public void pvpAttackEnemyActivity(UserBean user, boolean ret) {
@@ -317,7 +317,7 @@ public class ActivityService {
 			sendRichangScore(user, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
 		
 		if (ret)
-			taskService.sendTask3Score(user, TaskConst.TARGET_DUOHUI_MINE);
+			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_DUOHUI_MINE_VALUE);
 	}
 	
 	public void pvpAttackBossSuccessActivity(UserBean user) {
@@ -475,7 +475,7 @@ public class ActivityService {
 		/**
 		 * 任务系统
 		 */
-		taskService.sendTask1Score(user, TaskConst.TARGET_PUTONG_LEVEL, levelId, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_TASK_LEVEL_VALUE, levelId, false);
 	}
 	
 	public int getKaifu2AccRcPs(int serverId, int type) {//获取kaifu2累计充值人数
@@ -792,30 +792,7 @@ public class ActivityService {
 		if (rare == 13) {
 			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_13);
 		}
-		taskService.sendTask2Score(user, TaskConst.TARGET_ZHAOXIN_RARE_5, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_JINKESI_5, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_ANNI_5, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_GULAJIASI_5, heroId, rare);
-		
-		taskService.sendTask2Score(user, TaskConst.TARGET_JIAWENSISHI_RARE_7, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_YIZERUIER_7, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_CUISITE_7, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_YILISI_7, heroId, rare);
-		
-		taskService.sendTask2Score(user, TaskConst.TARGET_SUNWUKONG_RARE_9, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_EYUNXIAOJIE_9, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_AZIER_9, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_LULU_9, heroId, rare);
-		
-		taskService.sendTask2Score(user, TaskConst.TARGET_DELAIESI_RARE_11, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_WEILUSI_11, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_FEIZI_11, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_ALI_11, heroId, rare);
-		
-		taskService.sendTask2Score(user, TaskConst.TARGET_JIAKESI_RARE_13, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_WEIEN_13, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_KATELINNA_13, heroId, rare);
-		taskService.sendTask2Score(user, TaskConst.TARGET_CHUISHI_13, heroId, rare);
+		taskService.sendTask2Score(user, ACTIVITY_TYPE.TYPE_TASK_HERO_RAREUP_VALUE, heroId, rare);
 	}
 	
 	public void heroLevelupActivity(UserBean user, int start, int level) {
@@ -917,7 +894,7 @@ public class ActivityService {
 		/**
 		 * 上阵英雄数量
 		 */
-		taskService.sendTask1Score(user, TaskConst.TARGET_SHANGZHEN_HERO, heroList.size(), false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UP_HERO_VALUE, heroList.size(), false);
 	
 		int quality3Count = 0;
 		int quality4Count = 0;
@@ -1015,7 +992,7 @@ public class ActivityService {
 			taskService.sendTask1Score(user, TaskConst.TARGET_GAILUN_SKILL_2, skillLevel, false);
 		}
 		
-		taskService.sendTask3Score(user, TaskConst.TARGET_SKILL_LEVELUP);
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_SKILL_LEVELUP_VALUE);
 	}
 	
 	/**
@@ -1069,13 +1046,15 @@ public class ActivityService {
 			
 			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE, count);
 		}
+		
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_VALUE);
 	}
 	
 	/**
 	 * 征战天下攻击怪物
 	 */
 	public void attackMonster(UserBean user) {
-		taskService.sendTask3Score(user, TaskConst.TARGET_KILL_MONSTER);
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_KILL_MONSTER_VALUE);
 	}
 	
 	/**
@@ -1089,10 +1068,7 @@ public class ActivityService {
 	 * 获得英雄
 	 */
 	public void getHeroActivity(UserBean user, int heroId) {
-		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_1, heroId);
-		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_2, heroId);
-		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_3, heroId);
-		taskService.sendTask2Score(user, TaskConst.TARGET_GET_HERO_4, heroId);
+		taskService.sendTask2Score(user, ACTIVITY_TYPE.TYPE_GET_HERO_VALUE, heroId);
 	}
 	
 	/**
@@ -1104,6 +1080,8 @@ public class ActivityService {
 		achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_VALUE);
 		if (type == REWARDTASK_TYPE.TYPE_3_VALUE)//深渊
 			achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_SHENYUAN_VALUE);
+		
+		taskService.sendTask3Score(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_COMPLETE_VALUE);
 	}
 	
 	/**
@@ -1115,6 +1093,26 @@ public class ActivityService {
 		if (itemId < RewardConst.ARMOR)
 			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_WUQI_GET_VALUE);
 	}
+	
+	public void zhujueLevelup(UserBean user, int level) {
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVEL_VALUE, level, false);
+	}
+	
+	public void completeEvent(UserBean user, int eventId) {
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE, eventId, false);
+		
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_DAILY_VALUE);
+	}
+	
+	public void shopBuy(UserBean user, int type) {
+		if (type == 0)
+			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_PUTONGSHOP_BUY_VALUE);
+	}
+	
+	public void raidKill(UserBean user) {
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_FUBEN_KILL_BOSS_VALUE);
+	}
+	
 	/**
 	 * activity and achieve log
 	 */

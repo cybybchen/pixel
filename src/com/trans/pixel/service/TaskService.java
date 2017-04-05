@@ -19,6 +19,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TaskConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.TaskProto.TaskOrder;
@@ -49,19 +50,27 @@ public class TaskService {
 	/** task1*/
 	/****************************************************************************************/
 	
-	public void sendTask1Score(UserBean user, TaskConst taskConst, boolean isAdded) {
-		sendTask1Score(user, taskConst, 1, isAdded);
+	public void sendTask1Score(UserBean user, TaskConst task) {
+		
 	}
 	
-	public void sendTask1Score(UserBean user, TaskConst taskConst) {
-		sendTask1Score(user, taskConst, true);
+	public void sendTask1Score(UserBean user, TaskConst task, int count, boolean isAdded) {
+		
 	}
 	
-	public void sendTask1Score(UserBean user, TaskConst taskConst, int count) {
-		sendTask1Score(user, taskConst, count, true);
+	public void sendTask1Score(UserBean user, int targetId, boolean isAdded) {
+		sendTask1Score(user, targetId, 1, isAdded);
 	}
 	
-	public void sendTask1Score(UserBean user, TaskConst taskConst, int count, boolean isAdded) {
+	public void sendTask1Score(UserBean user, int targetId) {
+		sendTask1Score(user, targetId, true);
+	}
+	
+	public void sendTask1Score(UserBean user, int targetId, int count) {
+		sendTask1Score(user, targetId, count, true);
+	}
+	
+	public void sendTask1Score(UserBean user, int targetId, int count, boolean isAdded) {
 		long userId = user.getId();
 		Map<String, TaskTarget> map = taskRedisService.getTask1TargetConfig();
 		Iterator<Entry<String, TaskTarget>> it = map.entrySet().iterator();
@@ -69,7 +78,7 @@ public class TaskService {
 			Entry<String, TaskTarget> entry = it.next();
 			TaskTarget task = entry.getValue();
 			
-			if (task.getTargetid() == taskConst.getTargetid()) {
+			if (task.getTargetid() == targetId) {
 				if (isAllFinished(task, user))
 					return;
 				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask(userId, task.getTargetid()));
@@ -90,25 +99,36 @@ public class TaskService {
 	 * task 3
 	 */
 	
-	public void sendTask3Score(UserBean user, TaskConst taskConst) {
-		sendTask3Score(user, taskConst, 1);
+	public void sendTask3Score(UserBean user, TaskConst task) {
+		
 	}
 	
-	public void sendTask3Score(UserBean user, TaskConst taskConst, int count) {
-		long userId = user.getId();
+	public void sendTask3Score(UserBean user, int targetId) {
+		sendTask3Score(user, targetId, 1);
+	}
+	
+	public void sendTask3Score(UserBean user, int targetId, int count) {
+		sendTask3Score(user.getId(), targetId, count);
+	}
+	
+	public void sendTask3Score(long userId, int targetId) {
+		sendTask3Score(userId, targetId, 1);
+	}
+	
+	public void sendTask3Score(long userId, int targetId, int count) {
 		Map<String, TaskOrder> map = taskRedisService.getTask3OrderConfig();
 		Iterator<Entry<String, TaskOrder>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, TaskOrder> entry = it.next();
 			TaskOrder task = entry.getValue();
 			
-			if (task.getTargetid() == taskConst.getTargetid()) {
+			if (task.getTargetid() == targetId) {
 				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask3(userId, task.getTargetid()));
 				ut.setProcess(ut.getProcess() + count);
 				
 				userTaskService.updateUserTask3(userId, ut.build());
 				
-				if (isCompleteNewTaskByTask3(ut.build(), user, task))
+				if (isCompleteNewTaskByTask3(ut.build(), task))
 					noticeService.pushNotice(userId, NoticeConst.TYPE_DAILYTASK);
 			}
 		}
@@ -118,11 +138,11 @@ public class TaskService {
 	 * task 2
 	 */
 	
-	public void sendTask2Score(UserBean user, TaskConst taskConst, int heroId) {
-		sendTask2Score(user, taskConst, heroId, 1);
+	public void sendTask2Score(UserBean user, int targetId, int heroId) {
+		sendTask2Score(user, targetId, heroId, 1);
 	}
 	
-	public void sendTask2Score(UserBean user, TaskConst taskConst, int heroId, int count) {
+	public void sendTask2Score(UserBean user, int targetId, int heroId, int count) {
 		long userId = user.getId();
 		Map<String, TaskTarget> map = taskRedisService.getTask2TargetConfig();
 		Iterator<Entry<String, TaskTarget>> it = map.entrySet().iterator();
@@ -130,7 +150,7 @@ public class TaskService {
 			Entry<String, TaskTarget> entry = it.next();
 			TaskTarget task = entry.getValue();
 			
-			if (task.getTargetid() == taskConst.getTargetid()) {
+			if (task.getTargetid() == targetId) {
 				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask2(userId, task.getTargetid()));
 				boolean hasModify = false;
 				if (task.getTargetid() % 1000 == 700 && !ut.getHeroidList().contains(heroId)) {
@@ -233,7 +253,7 @@ public class TaskService {
 		} else if (type == 3) {
 			userTask.setStatus(1);
 			userTaskService.updateUserTask3(user.getId(), userTask.build());
-			sendTask3Score(user, TaskConst.TARGET_COMPLETE_ALL_DAILY);
+			sendTask3Score(user, ACTIVITY_TYPE.TYPE_DAILY_ALL_VALUE);
 			
 			UserLevelBean userLevel = userLevelService.getUserLevel(user);
 			logService.sendDailyquestLog(user.getServerId(), user.getId(), userTask.getTargetid(), userLevel.getUnlockDaguan(), user.getZhanliMax(), user.getVip());
@@ -254,7 +274,7 @@ public class TaskService {
 		return false;
 	}
 	
-	private boolean isCompleteNewTaskByTask3(UserTask ut, UserBean user, TaskOrder task) {
+	private boolean isCompleteNewTaskByTask3(UserTask ut, TaskOrder task) {
 		if (ut.hasStatus() && ut.getStatus() == 1)
 			return false;
 		if (task.getTargetcount() <= ut.getProcess())
@@ -342,7 +362,7 @@ public class TaskService {
 			Entry<String, TaskOrder> entry = it.next();
 			TaskOrder taskOrder = entry.getValue();
 			UserTask ut = userTaskService.selectUserTask3(userId, taskOrder.getTargetid());
-			if (isCompleteNewTaskByTask3(ut, user, taskOrder))
+			if (isCompleteNewTaskByTask3(ut, taskOrder))
 				return;
 		}
 		log.debug("444");

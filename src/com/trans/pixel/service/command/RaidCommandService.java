@@ -16,6 +16,7 @@ import com.trans.pixel.protoc.TaskProto.RaidReward;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
 import com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand;
 import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
+import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardService;
@@ -34,6 +35,8 @@ public class RaidCommandService extends BaseCommandService{
     private RewardService rewardService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ActivityService activityService;
 
 
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
@@ -74,6 +77,12 @@ public class RaidCommandService extends BaseCommandService{
 			if(!redis.hasRaidOrder(id))
 				id = 0;
 			redis.saveRaid(user, id);
+			
+			/**
+			 * 副本击杀boss的活动
+			 */
+			activityService.raidKill(user);
+			
 		}else if(!cmd.getRet() && cmd.getTurn() == 0){
 			id = 0;
 			redis.saveRaid(user, id);

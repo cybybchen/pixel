@@ -42,6 +42,8 @@ public class TalentService {
 	private NoticeService noticeService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private ActivityService activityService;
 	
 	public ResultConst talentUpgrade(UserBean user, int id, UserTalent.Builder talentBuilder) {
 		UserTalent userTalent = userTalentService.getUserTalent(user, id);
@@ -59,6 +61,11 @@ public class TalentService {
 		userTalentService.updateUserTalent(user.getId(), unlockTalent(user, talentBuilder, originalLevel));
 		
 		levelupTalentSkill(user, id, talentBuilder.getLevel() - originalLevel);
+		
+		/**
+		 * 主角升级的活动
+		 */
+		activityService.zhujueLevelup(user, talentBuilder.getLevel());
 		
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
