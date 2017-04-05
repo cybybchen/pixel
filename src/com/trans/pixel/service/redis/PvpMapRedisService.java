@@ -42,16 +42,16 @@ public class PvpMapRedisService extends RedisService{
 		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		if(value != null && parseJson(value, builder)){
-			for(PVPMap.Builder map : builder.getFieldBuilderList()){
-				// if(map.getFieldid() <= pvpUnlock)
-					map.setOpened(true);
-			}
+//			for(PVPMap.Builder map : builder.getFieldBuilderList()){
+//				// if(map.getFieldid() <= pvpUnlock)
+//					map.setOpened(true);
+//			}
 			return builder;
 		}
 		PVPMapList.Builder maplist = getBasePvpMapList();
 //		maplist.getFieldBuilder(0).setOpened(true);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
-			// if(map.getFieldid() <= pvpUnlock)
+			 if(map.getFieldid() <= pvpUnlock)
 				map.setOpened(true);
 		}
 		saveMapList(maplist.build(), userId);

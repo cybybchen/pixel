@@ -62,6 +62,7 @@ message UserInfo {
 	optional int32 zhaohuanshi = 74;//召唤石
 	optional uint32 zhujueExp = 75;
 	optional uint32 vipExp = 76;
+	optional int32 merlevel = 77;
 }
 
 message CostItem {

@@ -236,7 +236,7 @@ public class PvpMapService {
 			Iterator<UserInfo> it = ranks.iterator();
 			while(it.hasNext()){
 				UserInfo userinfo = it.next();
-				if(userinfo.getZhanli() < /*map.getZhanli()*/0)
+				if(userinfo.getMerlevel() < map.getMerlevel())
 					it.remove();
 			}
 			if(ranks.isEmpty())
@@ -264,13 +264,13 @@ public class PvpMapService {
 	
 	public PVPMapList getMapList(Builder responseBuilder, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
-		/*if(user.getPvpUnlock() == 0){
+		if(user.getPvpUnlock() == 0){
 //			int fieldid = maplist.getField(0).getFieldid();
 //			user.setPvpUnlock(fieldid);
 //			userService.updateUserDailyData(user);
 //			unlockMap(fieldid, 1000, user);
-			// return maplist.build();
-		}else*/{
+//			return maplist.build();
+		}else{
 			Map<String, String> pvpMap = redis.getUserBuffs(user);
 			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 			List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);

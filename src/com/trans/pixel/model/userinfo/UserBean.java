@@ -1284,6 +1284,7 @@ public class UserBean {
 		builder.setZhaohuanshi(zhaohuanshi);
 		builder.setZhujueExp(zhujueExp);
 		builder.setVipExp(vipExp);
+		builder.setMerlevel(merlevel);
 		
 		return builder.build();
 	}
