@@ -55,6 +55,8 @@ import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.UnionProto.BossGroupRecord;
 import com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand;
+import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
@@ -95,7 +97,7 @@ public class PushCommandService extends BaseCommandService {
 	@Resource
 	private UserFriendService userFriendService;
 	@Resource
-	private LevelRedisService userLevelService;
+	private LevelCommandService levelCommandService;
 	@Resource
 	private MessageService messageService;
 	@Resource
@@ -212,7 +214,7 @@ public class PushCommandService extends BaseCommandService {
 	public void pushUserInfoCommand(Builder responseBuilder, UserInfo user) {
 		ResponseUserInfoCommand.Builder builder = ResponseUserInfoCommand.newBuilder();
 		UserInfo.Builder userInfo = UserInfo.newBuilder(user);
-		UserLevelBean userLevel = userLevelService.getUserLevel(user.getId());
+		UserLevelBean userLevel = levelCommandService.getUserLevel(user.getId());
 		if(userLevel != null){//cal loot result
 			userInfo.setExp(userInfo.getExp() + (RedisService.now()-userLevel.getLootTime())*userLevel.getExp());
 			userInfo.setCoin(userInfo.getCoin() + (RedisService.now()-userLevel.getLootTime())*userLevel.getCoin());
@@ -258,14 +260,8 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserBean user) {
-		UserLevelBean userLevel = userLevelService.getUserLevel(user);
-//		if (userLevel.getLastLevelResultTime() > 0) {
-//			userLevel.setLevelPrepareTime(userLevel.getLevelPrepareTime() + 
-//					(int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND) - userLevel.getLastLevelResultTime());
-//			userLevel.setLastLevelResultTime((int)(System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
-//			userLevelService.updateUserLevelRecord(userLevel);
-//		}
-		responseBuilder.setLevelLootCommand(userLevel.build());
+		UserLevelBean userLevel = levelCommandService.getUserLevel(user.getId());
+		levelCommandService.pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	
 //	public void pushUserLootLevelCommand(Builder responseBuilder, UserBean user) {
