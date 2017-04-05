@@ -3,10 +3,13 @@ package com.trans.pixel.model.userinfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.HeroProto.UserTeam;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserTeamBean {
@@ -82,19 +85,19 @@ public class UserTeamBean {
 	public void composeEngine(List<TeamEngine> teamEngineList) {
 		engine = "";
 		for (TeamEngine teamEngine : teamEngineList) {
-			engine += "," + teamEngine.getId() + "_" + teamEngine.getComposeSkill();
+			engine += "--" + teamEngine.getId() + "::" + teamEngine.getComposeSkill();
 		}
 		if (engine.length() > 0)
-			engine = engine.substring(1);
+			engine = engine.substring(2);
 	}
 	
 	public List<TeamEngine> buildTeamEngine() {
 		List<TeamEngine> teamEngineList = new ArrayList<TeamEngine>();
 		if (engine.isEmpty())
 			return teamEngineList;
-		String[] engineArray = engine.split(",");
+		String[] engineArray = engine.split("--");
 		for (String engineStr : engineArray) {
-			String[] teamEngine = engineStr.split("_");
+			String[] teamEngine = engineStr.split("::");
 			TeamEngine.Builder builder = TeamEngine.newBuilder();
 			builder.setId(TypeTranslatedUtil.stringToInt(teamEngine[0]));
 			builder.setComposeSkill(teamEngine[1]);
