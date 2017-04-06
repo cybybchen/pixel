@@ -273,11 +273,11 @@ public class ShopRedisService extends RedisService{
 		ShopRefreshList.Builder builder = ShopRefreshList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 		}else{
-			String xml = ReadConfig("lol_shopblackshuaxin.xml");
+			String xml = ReadConfig("ld_shopshuaxin.xml");
 			parseXml(xml, builder);
 			set(RedisKey.BLACKSHOPCOST_CONFIG, formatJson(builder.build()));
 		}
-		for(ShopRefresh refresh : builder.getCountList()){
+		for(ShopRefresh refresh : builder.getIdList()){
 			if(time >= refresh.getCount()-1 && (time < refresh.getCount1() || refresh.getCount1()<0))
 				return refresh.getCost();
 		}

@@ -5,6 +5,15 @@ import net.sf.json.JSONObject;
 import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
 
 public class UserLevelBean {
+	private long userId = 0;
+	private int lootTime = 0;
+	private int eventTime = 0;
+	private int unlockDaguan = 0;
+	private int leftCount = 0;
+	private int lootDaguan = 0;
+	private int coin = 0;
+	private int exp = 0;
+	private int eventRandom = 0;
 	public long getUserId() {
 		return userId;
 	}
@@ -53,14 +62,12 @@ public class UserLevelBean {
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
-	private long userId = 0;
-	private int lootTime = 0;
-	private int eventTime = 0;
-	private int unlockDaguan = 0;
-	private int leftCount = 0;
-	private int lootDaguan = 0;
-	private int coin = 0;
-	private int exp = 0;
+	public int getEventRandom() {
+		return eventRandom;
+	}
+	public void setEventRandom(int eventRandom) {
+		this.eventRandom = eventRandom;
+	}
 	public static UserLevelBean fromJson(String value) {
 		JSONObject json = JSONObject.fromObject(value);
 		Object object = JSONObject.toBean(json, UserLevelBean.class);

@@ -257,7 +257,7 @@ message ShopRefresh {
 	optional int32 cost = 4;
 }
 message ShopRefreshList {
-	repeated ShopRefresh count = 1;
+	repeated ShopRefresh id = 1;
 }
 message Will {
 	required int32 will = 1;
@@ -2495,11 +2495,26 @@ message Daguan {
 message DaguanList {
 	repeated Daguan id = 1;
 }
+message EventLevel {
+	optional int32 level = 1;
+	optional int32 count = 2;
+}
+message EventLevelList {
+	repeated EventLevel level = 1;
+}
+message EventRandoms {
+	optional int32 id = 1;
+	repeated EventLevel order = 2;
+}
+message EventRandomsList {
+	repeated EventRandoms id = 1;
+}
 message EventReward {
 	optional int32 rewardid = 1;
 	optional int32 rewardcount = 2;
 	optional int32 rewardcount1 = 3;
 	optional int32 rewardweight = 4;
+	optional int32 rewarddouble = 5;
 }
 message Event {
 	optional int32 order = 1;

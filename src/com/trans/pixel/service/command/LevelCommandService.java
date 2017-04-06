@@ -162,6 +162,8 @@ public class LevelCommandService extends BaseCommandService {
 			RewardBean bean = new RewardBean();
 			bean.setItemid(eventreward.getRewardid());
 			bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
+			if(event.getLevel() > 0)
+				bean.setCount(bean.getCount()*event.getCount());
 			rewards.add(bean);
 		}
 		rewardService.doRewards(user, rewards);
