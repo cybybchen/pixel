@@ -59,8 +59,10 @@ public class ZhanliCommandService extends BaseCommandService {
 			
 			MerlevelList.Builder list = redis.getMerlevel();
 			for(Merlevel level : list.getLevelList()){
-				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel())
+				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel()) {
 					user.setMerlevel(level.getLevel());
+					activityService.merLevel(user, user.getMerlevel());
+				}
 			}
 			if(!blackService.isNoranklist(user.getId())) {
 				rankRedisService.updateZhanliRank(user);

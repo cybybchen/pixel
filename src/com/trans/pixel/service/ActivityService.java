@@ -1113,6 +1113,10 @@ public class ActivityService {
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_FUBEN_KILL_BOSS_VALUE);
 	}
 	
+	public void merLevel(UserBean user, int level) {
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_ZHANLI_VALUE, level);
+	}
+	
 	/**
 	 * activity and achieve log
 	 */
