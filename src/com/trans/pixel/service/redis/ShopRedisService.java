@@ -934,7 +934,7 @@ public class ShopRedisService extends RedisService{
 	
 	private LibaoList buildLibaoShop(){
 		LibaoList.Builder itemsbuilder = LibaoList.newBuilder();
-		String xml = ReadConfig("lol_shoplibao.xml");
+		String xml = ReadConfig("ld_shoplibao.xml");
 		parseXml(xml, itemsbuilder);
 		set(RedisKey.LIBAOSHOP_CONFIG, formatJson(itemsbuilder.build()));
 		return itemsbuilder.build();
@@ -1095,11 +1095,11 @@ public class ShopRedisService extends RedisService{
 		String value = hget(RedisKey.VIPLIBAO_CONFIG, id+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		String xml = ReadConfig("lol_libao.xml");
+		String xml = ReadConfig("ld_libao.xml");
 		VipLibaoList.Builder list = VipLibaoList.newBuilder();
 		Map<String, String> keyvalue = new HashMap<String, String>();
 		parseXml(xml, list);
-		for(VipLibao libao : list.getLibaoList()){
+		for(VipLibao libao : list.getIdList()){
 			keyvalue.put(libao.getItemid()+"", formatJson(libao));
 			if(libao.getItemid() == id)
 				builder = VipLibao.newBuilder(libao);
@@ -1137,7 +1137,7 @@ public class ShopRedisService extends RedisService{
 	}
 
 	public Map<Integer, YueKa> buildYueKa(){
-		String xml = ReadConfig("lol_yueka.xml");
+		String xml = ReadConfig("ld_yueka.xml");
 		YueKaList.Builder listbuilder = YueKaList.newBuilder();
 		Map<String, String> keyvalue = new HashMap<String, String>();
 		Map<Integer, YueKa> map = new HashMap<Integer, YueKa>();

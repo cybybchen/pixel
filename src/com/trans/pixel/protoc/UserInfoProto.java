@@ -14016,23 +14016,35 @@ public final class UserInfoProto {
      */
     int getTargetid();
 
+    // optional int32 level = 12;
+    /**
+     * <code>optional int32 level = 12;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 12;</code>
+     */
+    int getLevel();
+
     // optional int32 count = 13;
     /**
      * <code>optional int32 count = 13;</code>
-     *
-     * <pre>
-     *optional int32 call = 12;
-     * </pre>
      */
     boolean hasCount();
     /**
      * <code>optional int32 count = 13;</code>
-     *
-     * <pre>
-     *optional int32 call = 12;
-     * </pre>
      */
     int getCount();
+
+    // optional int32 call = 14;
+    /**
+     * <code>optional int32 call = 14;</code>
+     */
+    boolean hasCall();
+    /**
+     * <code>optional int32 call = 14;</code>
+     */
+    int getCall();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Event}
@@ -14143,9 +14155,19 @@ public final class UserInfoProto {
               targetid_ = input.readInt32();
               break;
             }
-            case 104: {
+            case 96: {
               bitField0_ |= 0x00000400;
+              level_ = input.readInt32();
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00000800;
               count_ = input.readInt32();
+              break;
+            }
+            case 112: {
+              bitField0_ |= 0x00001000;
+              call_ = input.readInt32();
               break;
             }
           }
@@ -14441,28 +14463,52 @@ public final class UserInfoProto {
       return targetid_;
     }
 
+    // optional int32 level = 12;
+    public static final int LEVEL_FIELD_NUMBER = 12;
+    private int level_;
+    /**
+     * <code>optional int32 level = 12;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional int32 level = 12;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
     // optional int32 count = 13;
     public static final int COUNT_FIELD_NUMBER = 13;
     private int count_;
     /**
      * <code>optional int32 count = 13;</code>
-     *
-     * <pre>
-     *optional int32 call = 12;
-     * </pre>
      */
     public boolean hasCount() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional int32 count = 13;</code>
-     *
-     * <pre>
-     *optional int32 call = 12;
-     * </pre>
      */
     public int getCount() {
       return count_;
+    }
+
+    // optional int32 call = 14;
+    public static final int CALL_FIELD_NUMBER = 14;
+    private int call_;
+    /**
+     * <code>optional int32 call = 14;</code>
+     */
+    public boolean hasCall() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional int32 call = 14;</code>
+     */
+    public int getCall() {
+      return call_;
     }
 
     private void initFields() {
@@ -14477,7 +14523,9 @@ public final class UserInfoProto {
       costcount_ = 0;
       reward_ = java.util.Collections.emptyList();
       targetid_ = 0;
+      level_ = 0;
       count_ = 0;
+      call_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -14525,7 +14573,13 @@ public final class UserInfoProto {
         output.writeInt32(11, targetid_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeInt32(12, level_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeInt32(13, count_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeInt32(14, call_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -14582,7 +14636,15 @@ public final class UserInfoProto {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, level_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(13, count_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, call_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -14727,8 +14789,12 @@ public final class UserInfoProto {
         }
         targetid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
-        count_ = 0;
+        level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000800);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        call_ = 0;
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
 
@@ -14809,7 +14875,15 @@ public final class UserInfoProto {
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000400;
         }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00000800;
+        }
         result.count_ = count_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.call_ = call_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -14886,8 +14960,14 @@ public final class UserInfoProto {
         if (other.hasTargetid()) {
           setTargetid(other.getTargetid());
         }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
         if (other.hasCount()) {
           setCount(other.getCount());
+        }
+        if (other.hasCall()) {
+          setCall(other.getCall());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -15568,51 +15648,101 @@ public final class UserInfoProto {
         return this;
       }
 
+      // optional int32 level = 12;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 12;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional int32 level = 12;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 12;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000800;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 12;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional int32 count = 13;
       private int count_ ;
       /**
        * <code>optional int32 count = 13;</code>
-       *
-       * <pre>
-       *optional int32 call = 12;
-       * </pre>
        */
       public boolean hasCount() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional int32 count = 13;</code>
-       *
-       * <pre>
-       *optional int32 call = 12;
-       * </pre>
        */
       public int getCount() {
         return count_;
       }
       /**
        * <code>optional int32 count = 13;</code>
-       *
-       * <pre>
-       *optional int32 call = 12;
-       * </pre>
        */
       public Builder setCount(int value) {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         count_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>optional int32 count = 13;</code>
-       *
-       * <pre>
-       *optional int32 call = 12;
-       * </pre>
        */
       public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 call = 14;
+      private int call_ ;
+      /**
+       * <code>optional int32 call = 14;</code>
+       */
+      public boolean hasCall() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional int32 call = 14;</code>
+       */
+      public int getCall() {
+        return call_;
+      }
+      /**
+       * <code>optional int32 call = 14;</code>
+       */
+      public Builder setCall(int value) {
+        bitField0_ |= 0x00002000;
+        call_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 call = 14;</code>
+       */
+      public Builder clearCall() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        call_ = 0;
         onChanged();
         return this;
       }
@@ -23090,34 +23220,35 @@ public final class UserInfoProto {
       "8\n\nDaguanList\022*\n\002id\030\001 \003(\0132\036.com.trans.pi" +
       "xel.protoc.Daguan\"`\n\013EventReward\022\020\n\010rewa" +
       "rdid\030\001 \001(\005\022\023\n\013rewardcount\030\002 \001(\005\022\024\n\014rewar" +
-      "dcount1\030\003 \001(\005\022\024\n\014rewardweight\030\004 \001(\005\"\351\001\n\005" +
+      "dcount1\030\003 \001(\005\022\024\n\014rewardweight\030\004 \001(\005\"\206\002\n\005" +
       "Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\016\n",
       "\006daguan\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\022\013\n\003des\030\005 \001(\t" +
       "\022\016\n\006weight\030\006 \001(\005\022\014\n\004type\030\007 \001(\005\022\016\n\006costid" +
       "\030\010 \001(\005\022\021\n\tcostcount\030\t \001(\005\0223\n\006reward\030\n \003(" +
       "\0132#.com.trans.pixel.protoc.EventReward\022\020" +
-      "\n\010targetid\030\013 \001(\005\022\r\n\005count\030\r \001(\005\"U\n\tAreaE" +
-      "vent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.com.tr" +
-      "ans.pixel.protoc.Event\022\016\n\006weight\030\003 \001(\005\">" +
-      "\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!.com.trans." +
-      "pixel.protoc.AreaEvent\"D\n\004Loot\022\n\n\002id\030\001 \001" +
-      "(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pixel.proto",
-      "c.RewardInfo\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.c" +
-      "om.trans.pixel.protoc.Loot\"&\n\030RequestLev" +
-      "elStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEve" +
-      "ntCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005" +
-      "\"D\n\024ResponseEventCommand\022,\n\005event\030\001 \001(\0132" +
-      "\035.com.trans.pixel.protoc.Event\"\037\n\035Reques" +
-      "tLevelLootResultCommand\"j\n\031RequestEventR" +
-      "esultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030" +
-      "\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013" +
-      "\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResultComman",
-      "d\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.prot" +
-      "oc.RewardInfo\"\252\001\n\030ResponseLevelLootComma" +
-      "nd\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 " +
-      "\001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(" +
-      "\005\022\021\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.co" +
-      "m.trans.pixel.protoc.Event"
+      "\n\010targetid\030\013 \001(\005\022\r\n\005level\030\014 \001(\005\022\r\n\005count" +
+      "\030\r \001(\005\022\014\n\004call\030\016 \001(\005\"U\n\tAreaEvent\022\n\n\002id\030" +
+      "\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.com.trans.pixel.p" +
+      "rotoc.Event\022\016\n\006weight\030\003 \001(\005\">\n\rAreaEvent" +
+      "List\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.proto" +
+      "c.AreaEvent\"D\n\004Loot\022\n\n\002id\030\001 \001(\005\0220\n\004item\030",
+      "\002 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
+      "o\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com.trans.pi" +
+      "xel.protoc.Loot\"&\n\030RequestLevelStartComm" +
+      "and\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventCommand\022\016" +
+      "\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024Respons" +
+      "eEventCommand\022,\n\005event\030\001 \001(\0132\035.com.trans" +
+      ".pixel.protoc.Event\"\037\n\035RequestLevelLootR" +
+      "esultCommand\"j\n\031RequestEventResultComman" +
+      "d\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfi" +
+      "ghtInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010",
+      "\"P\n\032ResponseEventResultCommand\0222\n\006reward" +
+      "\030\001 \003(\0132\".com.trans.pixel.protoc.RewardIn" +
+      "fo\"\252\001\n\030ResponseLevelLootCommand\022\024\n\014unloc" +
+      "kDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nloot" +
+      "Daguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventT" +
+      "ime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans.pix" +
+      "el.protoc.Event"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23243,7 +23374,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
-              new java.lang.String[] { "Order", "Eventid", "Daguan", "Name", "Des", "Weight", "Type", "Costid", "Costcount", "Reward", "Targetid", "Count", });
+              new java.lang.String[] { "Order", "Eventid", "Daguan", "Name", "Des", "Weight", "Type", "Costid", "Costcount", "Reward", "Targetid", "Level", "Count", "Call", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
             getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new

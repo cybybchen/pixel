@@ -38357,29 +38357,29 @@ public final class ShopProto {
   public interface LibaoListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Libao libao = 3;
+    // repeated .com.trans.pixel.protoc.Libao id = 3;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
     java.util.List<com.trans.pixel.protoc.ShopProto.Libao> 
-        getLibaoList();
+        getIdList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
-    com.trans.pixel.protoc.ShopProto.Libao getLibao(int index);
+    com.trans.pixel.protoc.ShopProto.Libao getId(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
-    int getLibaoCount();
+    int getIdCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
-        getLibaoOrBuilderList();
+        getIdOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
-    com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getLibaoOrBuilder(
+    com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getIdOrBuilder(
         int index);
   }
   /**
@@ -38435,10 +38435,10 @@ public final class ShopProto {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                libao_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Libao>();
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Libao>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              libao_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Libao.PARSER, extensionRegistry));
+              id_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Libao.PARSER, extensionRegistry));
               break;
             }
           }
@@ -38450,7 +38450,7 @@ public final class ShopProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          libao_ = java.util.Collections.unmodifiableList(libao_);
+          id_ = java.util.Collections.unmodifiableList(id_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -38483,44 +38483,44 @@ public final class ShopProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Libao libao = 3;
-    public static final int LIBAO_FIELD_NUMBER = 3;
-    private java.util.List<com.trans.pixel.protoc.ShopProto.Libao> libao_;
+    // repeated .com.trans.pixel.protoc.Libao id = 3;
+    public static final int ID_FIELD_NUMBER = 3;
+    private java.util.List<com.trans.pixel.protoc.ShopProto.Libao> id_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.ShopProto.Libao> getLibaoList() {
-      return libao_;
+    public java.util.List<com.trans.pixel.protoc.ShopProto.Libao> getIdList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
-        getLibaoOrBuilderList() {
-      return libao_;
+        getIdOrBuilderList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
-    public int getLibaoCount() {
-      return libao_.size();
+    public int getIdCount() {
+      return id_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
-    public com.trans.pixel.protoc.ShopProto.Libao getLibao(int index) {
-      return libao_.get(index);
+    public com.trans.pixel.protoc.ShopProto.Libao getId(int index) {
+      return id_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
      */
-    public com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getLibaoOrBuilder(
+    public com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getIdOrBuilder(
         int index) {
-      return libao_.get(index);
+      return id_.get(index);
     }
 
     private void initFields() {
-      libao_ = java.util.Collections.emptyList();
+      id_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -38534,8 +38534,8 @@ public final class ShopProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < libao_.size(); i++) {
-        output.writeMessage(3, libao_.get(i));
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(3, id_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -38546,9 +38546,9 @@ public final class ShopProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < libao_.size(); i++) {
+      for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, libao_.get(i));
+          .computeMessageSize(3, id_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -38658,7 +38658,7 @@ public final class ShopProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getLibaoFieldBuilder();
+          getIdFieldBuilder();
         }
       }
       private static Builder create() {
@@ -38667,11 +38667,11 @@ public final class ShopProto {
 
       public Builder clear() {
         super.clear();
-        if (libaoBuilder_ == null) {
-          libao_ = java.util.Collections.emptyList();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          libaoBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
@@ -38700,14 +38700,14 @@ public final class ShopProto {
       public com.trans.pixel.protoc.ShopProto.LibaoList buildPartial() {
         com.trans.pixel.protoc.ShopProto.LibaoList result = new com.trans.pixel.protoc.ShopProto.LibaoList(this);
         int from_bitField0_ = bitField0_;
-        if (libaoBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            libao_ = java.util.Collections.unmodifiableList(libao_);
+            id_ = java.util.Collections.unmodifiableList(id_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.libao_ = libao_;
+          result.id_ = id_;
         } else {
-          result.libao_ = libaoBuilder_.build();
+          result.id_ = idBuilder_.build();
         }
         onBuilt();
         return result;
@@ -38724,29 +38724,29 @@ public final class ShopProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.LibaoList other) {
         if (other == com.trans.pixel.protoc.ShopProto.LibaoList.getDefaultInstance()) return this;
-        if (libaoBuilder_ == null) {
-          if (!other.libao_.isEmpty()) {
-            if (libao_.isEmpty()) {
-              libao_ = other.libao_;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureLibaoIsMutable();
-              libao_.addAll(other.libao_);
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
             }
             onChanged();
           }
         } else {
-          if (!other.libao_.isEmpty()) {
-            if (libaoBuilder_.isEmpty()) {
-              libaoBuilder_.dispose();
-              libaoBuilder_ = null;
-              libao_ = other.libao_;
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              libaoBuilder_ = 
+              idBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getLibaoFieldBuilder() : null;
+                   getIdFieldBuilder() : null;
             } else {
-              libaoBuilder_.addAllMessages(other.libao_);
+              idBuilder_.addAllMessages(other.id_);
             }
           }
         }
@@ -38777,244 +38777,244 @@ public final class ShopProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Libao libao = 3;
-      private java.util.List<com.trans.pixel.protoc.ShopProto.Libao> libao_ =
+      // repeated .com.trans.pixel.protoc.Libao id = 3;
+      private java.util.List<com.trans.pixel.protoc.ShopProto.Libao> id_ =
         java.util.Collections.emptyList();
-      private void ensureLibaoIsMutable() {
+      private void ensureIdIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          libao_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Libao>(libao_);
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Libao>(id_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.ShopProto.Libao, com.trans.pixel.protoc.ShopProto.Libao.Builder, com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> libaoBuilder_;
+          com.trans.pixel.protoc.ShopProto.Libao, com.trans.pixel.protoc.ShopProto.Libao.Builder, com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> idBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.ShopProto.Libao> getLibaoList() {
-        if (libaoBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(libao_);
+      public java.util.List<com.trans.pixel.protoc.ShopProto.Libao> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
         } else {
-          return libaoBuilder_.getMessageList();
+          return idBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public int getLibaoCount() {
-        if (libaoBuilder_ == null) {
-          return libao_.size();
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
         } else {
-          return libaoBuilder_.getCount();
+          return idBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Libao getLibao(int index) {
-        if (libaoBuilder_ == null) {
-          return libao_.get(index);
+      public com.trans.pixel.protoc.ShopProto.Libao getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
         } else {
-          return libaoBuilder_.getMessage(index);
+          return idBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder setLibao(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ShopProto.Libao value) {
-        if (libaoBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLibaoIsMutable();
-          libao_.set(index, value);
+          ensureIdIsMutable();
+          id_.set(index, value);
           onChanged();
         } else {
-          libaoBuilder_.setMessage(index, value);
+          idBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder setLibao(
+      public Builder setId(
           int index, com.trans.pixel.protoc.ShopProto.Libao.Builder builderForValue) {
-        if (libaoBuilder_ == null) {
-          ensureLibaoIsMutable();
-          libao_.set(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
           onChanged();
         } else {
-          libaoBuilder_.setMessage(index, builderForValue.build());
+          idBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder addLibao(com.trans.pixel.protoc.ShopProto.Libao value) {
-        if (libaoBuilder_ == null) {
+      public Builder addId(com.trans.pixel.protoc.ShopProto.Libao value) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLibaoIsMutable();
-          libao_.add(value);
+          ensureIdIsMutable();
+          id_.add(value);
           onChanged();
         } else {
-          libaoBuilder_.addMessage(value);
+          idBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder addLibao(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ShopProto.Libao value) {
-        if (libaoBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLibaoIsMutable();
-          libao_.add(index, value);
+          ensureIdIsMutable();
+          id_.add(index, value);
           onChanged();
         } else {
-          libaoBuilder_.addMessage(index, value);
+          idBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder addLibao(
+      public Builder addId(
           com.trans.pixel.protoc.ShopProto.Libao.Builder builderForValue) {
-        if (libaoBuilder_ == null) {
-          ensureLibaoIsMutable();
-          libao_.add(builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
           onChanged();
         } else {
-          libaoBuilder_.addMessage(builderForValue.build());
+          idBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder addLibao(
+      public Builder addId(
           int index, com.trans.pixel.protoc.ShopProto.Libao.Builder builderForValue) {
-        if (libaoBuilder_ == null) {
-          ensureLibaoIsMutable();
-          libao_.add(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
           onChanged();
         } else {
-          libaoBuilder_.addMessage(index, builderForValue.build());
+          idBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder addAllLibao(
+      public Builder addAllId(
           java.lang.Iterable<? extends com.trans.pixel.protoc.ShopProto.Libao> values) {
-        if (libaoBuilder_ == null) {
-          ensureLibaoIsMutable();
-          super.addAll(values, libao_);
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
           onChanged();
         } else {
-          libaoBuilder_.addAllMessages(values);
+          idBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder clearLibao() {
-        if (libaoBuilder_ == null) {
-          libao_ = java.util.Collections.emptyList();
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          libaoBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public Builder removeLibao(int index) {
-        if (libaoBuilder_ == null) {
-          ensureLibaoIsMutable();
-          libao_.remove(index);
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
           onChanged();
         } else {
-          libaoBuilder_.remove(index);
+          idBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Libao.Builder getLibaoBuilder(
+      public com.trans.pixel.protoc.ShopProto.Libao.Builder getIdBuilder(
           int index) {
-        return getLibaoFieldBuilder().getBuilder(index);
+        return getIdFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getLibaoOrBuilder(
+      public com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getIdOrBuilder(
           int index) {
-        if (libaoBuilder_ == null) {
-          return libao_.get(index);  } else {
-          return libaoBuilder_.getMessageOrBuilder(index);
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
-           getLibaoOrBuilderList() {
-        if (libaoBuilder_ != null) {
-          return libaoBuilder_.getMessageOrBuilderList();
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(libao_);
+          return java.util.Collections.unmodifiableList(id_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Libao.Builder addLibaoBuilder() {
-        return getLibaoFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.ShopProto.Libao.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
             com.trans.pixel.protoc.ShopProto.Libao.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
-      public com.trans.pixel.protoc.ShopProto.Libao.Builder addLibaoBuilder(
+      public com.trans.pixel.protoc.ShopProto.Libao.Builder addIdBuilder(
           int index) {
-        return getLibaoFieldBuilder().addBuilder(
+        return getIdFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.ShopProto.Libao.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Libao libao = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Libao id = 3;</code>
        */
       public java.util.List<com.trans.pixel.protoc.ShopProto.Libao.Builder> 
-           getLibaoBuilderList() {
-        return getLibaoFieldBuilder().getBuilderList();
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.ShopProto.Libao, com.trans.pixel.protoc.ShopProto.Libao.Builder, com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
-          getLibaoFieldBuilder() {
-        if (libaoBuilder_ == null) {
-          libaoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.ShopProto.Libao, com.trans.pixel.protoc.ShopProto.Libao.Builder, com.trans.pixel.protoc.ShopProto.LibaoOrBuilder>(
-                  libao_,
+                  id_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          libao_ = null;
+          id_ = null;
         }
-        return libaoBuilder_;
+        return idBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LibaoList)
@@ -43127,18 +43127,18 @@ public final class ShopProto {
       "el.protoc.YueKa\"\201\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n" +
       "\nrechargeid\030\002 \001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\ts" +
       "tarttime\030\004 \001(\t\022\017\n\007endtime\030\005 \001(\t\022\021\n\tvalid",
-      "time\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"9\n\tLibaoList" +
-      "\022,\n\005libao\030\003 \003(\0132\035.com.trans.pixel.protoc" +
-      ".Libao\"\031\n\027RequestLibaoShopCommand\"H\n\030Res" +
-      "ponseLibaoShopCommand\022,\n\005items\030\001 \003(\0132\035.c" +
-      "om.trans.pixel.protoc.Libao\")\n\006Status\022\n\n" +
-      "\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010\"T\n\"Respon" +
-      "seFirstRechargeStatusCommand\022.\n\006status\030\001" +
-      " \003(\0132\036.com.trans.pixel.protoc.Status\"0\n\036" +
-      "RequestPurchaseContractCommand\022\016\n\006heroid" +
-      "\030\001 \002(\005\"\034\n\032RequestPurchaseCoinCommand\"Q\n\033",
-      "ResponsePurchaseCoinCommand\022\r\n\005jewel\030\003 \001" +
-      "(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
+      "time\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"6\n\tLibaoList" +
+      "\022)\n\002id\030\003 \003(\0132\035.com.trans.pixel.protoc.Li" +
+      "bao\"\031\n\027RequestLibaoShopCommand\"H\n\030Respon" +
+      "seLibaoShopCommand\022,\n\005items\030\001 \003(\0132\035.com." +
+      "trans.pixel.protoc.Libao\")\n\006Status\022\n\n\002id" +
+      "\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010\"T\n\"ResponseF" +
+      "irstRechargeStatusCommand\022.\n\006status\030\001 \003(" +
+      "\0132\036.com.trans.pixel.protoc.Status\"0\n\036Req" +
+      "uestPurchaseContractCommand\022\016\n\006heroid\030\001 " +
+      "\002(\005\"\034\n\032RequestPurchaseCoinCommand\"Q\n\033Res",
+      "ponsePurchaseCoinCommand\022\r\n\005jewel\030\003 \001(\005\022" +
+      "\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -43504,7 +43504,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_LibaoList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LibaoList_descriptor,
-              new java.lang.String[] { "Libao", });
+              new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestLibaoShopCommand_descriptor =
             getDescriptor().getMessageTypes().get(60);
           internal_static_com_trans_pixel_protoc_RequestLibaoShopCommand_fieldAccessorTable = new

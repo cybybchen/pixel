@@ -17,7 +17,7 @@ public class RechargeRedisService extends RedisService {
 	
 	public Rmb getRmb(int id) {
 		RmbList list = getRmbConfig(RedisKey.RMB_KEY);
-		for(Rmb rmb : list.getRmbList()){
+		for(Rmb rmb : list.getIdList()){
 			if(rmb.getId() == id)
 				return rmb;
 		}
@@ -26,7 +26,7 @@ public class RechargeRedisService extends RedisService {
 
 	public Rmb getRmb1(int id) {
 		RmbList list = getRmbConfig(RedisKey.RMB1_KEY);
-		for(Rmb rmb : list.getRmbList()){
+		for(Rmb rmb : list.getIdList()){
 			if(rmb.getId() == id)
 				return rmb;
 		}
@@ -39,9 +39,9 @@ public class RechargeRedisService extends RedisService {
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		else{
-			String xml = ReadConfig("lol_"+rmbKey+".xml");
+			String xml = ReadConfig("ld_"+rmbKey+".xml");
 			parseXml(xml, builder);
-			for(Rmb.Builder rmb : builder.getRmbBuilderList()){
+			for(Rmb.Builder rmb : builder.getIdBuilderList()){
 //				rmb.clearName();
 				rmb.clearImg();
 				rmb.clearDescription();

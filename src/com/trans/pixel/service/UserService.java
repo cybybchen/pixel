@@ -147,7 +147,7 @@ public class UserService {
 		}
 		LibaoList libaolist = shopService.getLibaoShop(user, true);
 		Map<Integer, YueKa> map = shopService.getYueKas();
-		for(Libao libao : libaolist.getLibaoList()){
+		for(Libao libao : libaolist.getIdList()){
 			long time = 0;
 			if(libao.hasValidtime() && libao.getValidtime().length() > 5){
 				try {

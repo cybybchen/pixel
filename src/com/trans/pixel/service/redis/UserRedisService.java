@@ -189,7 +189,7 @@ public class UserRedisService extends RedisService{
 	}
 	
 	public VipInfo buildVip(int id){
-		String xml = ReadConfig("lol_vip.xml");
+		String xml = ReadConfig("ld_vip.xml");
 		VipList.Builder builder = VipList.newBuilder();
 		parseXml(xml, builder);
 		Map<String, String> keyvalue = new HashMap<String, String>();

@@ -198,7 +198,7 @@ public class RechargeService {
 			Libao config = shopService.getLibaoConfig(productid);
 			libaobuilder.setValidtime(config.getStarttime());
 			VipLibao viplibao = shopService.getVipLibao(itemId);
-			rewardList = viplibao.getItemList();
+			rewardList = viplibao.getOrderList();
 		}
 
 		rechargeVip(user, rmb.getRmb(), jewel);
@@ -278,7 +278,7 @@ public class RechargeService {
 			return null;	
 
 		VipLibao viplibao = shopService.getVipLibao(itemId);
-		rewardList = viplibao.getItemList();
+		rewardList = viplibao.getOrderList();
 
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(rewardList.isEmpty()){

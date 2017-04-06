@@ -473,7 +473,7 @@ message Libao {
 	optional int32 refresh = 7;
 }
 message LibaoList {
-	repeated Libao libao = 3;
+	repeated Libao id = 3;
 }
 message RequestLibaoShopCommand {//vip礼包商店
 }
@@ -1805,11 +1805,11 @@ message VipLibao {
 	optional string description = 5;
 	optional int32 value = 6;
 	optional int32 cost = 7;
-	repeated RewardInfo item = 8;
+	repeated RewardInfo order = 8;
 }
 
 message VipLibaoList {
-	repeated VipLibao libao = 1;
+	repeated VipLibao id = 1;
 }
 
 message VipInfo {
@@ -1848,7 +1848,7 @@ message Rmb {
 }
 
 message RmbList {
-	repeated Rmb rmb = 1;
+	repeated Rmb id = 1;
 }
 
 message ShouchongList {
@@ -2513,8 +2513,9 @@ message Event {
 	optional int32 costcount = 9;
 	repeated EventReward reward = 10;
 	optional int32 targetid = 11;
-	//optional int32 call = 12;
+	optional int32 level = 12;
 	optional int32 count = 13;
+	optional int32 call = 14;
 }
 message AreaEvent {
 	optional int32 id = 1;
