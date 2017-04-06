@@ -340,8 +340,8 @@ public class LevelRedisService extends RedisService {
 		if(value == null)
 			value = buildEventLevel();
 		EventRandomsList.Builder list = EventRandomsList.newBuilder();
-		userLevel.setEventRandom(list.getId((nextInt(list.getIdCount()))).getId());
 		parseJson(value, list);
+		userLevel.setEventRandom(list.getId((nextInt(list.getIdCount()))).getId());
 		value = hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
 		parseJson(value, builder);
 		return builder.build();
