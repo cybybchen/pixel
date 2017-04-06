@@ -45,6 +45,36 @@ public class TalentService {
 	@Resource
 	private ActivityService activityService;
 	
+	public void talentUpgrade(UserBean user, int exp) {
+		UserTalent userTalent = userTalentService.getUsingTalent(user.getId());
+		if (userTalent == null)
+			return;
+		
+		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+		builder.setExp(builder.getExp() + exp);
+		Map<String,Talentupgrade> map = talentRedisService.getTalentupgradeConfig();
+		while (true) {
+			Talentupgrade talentupgrade = map.get("" + (builder.getLevel() + 1));
+			if (talentupgrade == null)
+				break;
+			if (builder.getExp() >= talentupgrade.getItemcount()) {
+				builder.setLevel(builder.getLevel() + 1);
+				builder.setExp(builder.getExp() - talentupgrade.getItemcount());
+			} else
+				break;
+		}
+		
+		userTalentService.updateUserTalent(user.getId(), unlockTalent(user, builder, userTalent.getLevel()));
+		
+		levelupTalentSkill(user, builder.getId(), builder.getLevel() - userTalent.getLevel());
+		
+		/**
+		 * 主角升级的活动
+		 */
+		activityService.zhujueLevelup(user, builder.getLevel());
+		
+	}
+	
 	public ResultConst talentUpgrade(UserBean user, int id, UserTalent.Builder talentBuilder) {
 		UserTalent userTalent = userTalentService.getUserTalent(user, id);
 		

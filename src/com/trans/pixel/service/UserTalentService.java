@@ -94,6 +94,34 @@ public class UserTalentService {
 		return userTalentList;
 	}
 	
+	public UserTalent getUsingTalent(long userId) {
+		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(userId);
+		if (userTalentList.isEmpty()) {
+			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(userId);
+			if (utBeanList == null || utBeanList.isEmpty()) {
+				return null;
+			} else {
+				for (UserTalentBean ut : utBeanList) {
+					UserTalent userTalent = ut.buildUserTalent();
+					if (userTalent != null) {
+						userTalentList.add(userTalent);
+						updateUserTalent(userId, userTalent);
+					}
+				}
+				
+				userTalentList = userTalentRedisService.getUserTalentList(userId);
+			}
+		}
+		
+		for (UserTalent ut : userTalentList) {
+			if (ut != null && ut.getIsUse()) {
+				return ut;
+			}
+		}
+		
+		return null;
+	}
+	
 	public UserTalent getOtherUsingTalent(long userId) {
 		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(userId);
 		if (userTalentList.isEmpty()) {

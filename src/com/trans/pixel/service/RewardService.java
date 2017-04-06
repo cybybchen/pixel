@@ -42,6 +42,8 @@ public class RewardService {
 	private ShopService shopService;
 	@Resource
 	private HeroRedisService heroRedisService;
+	@Resource
+	private TalentService talentService;
 	
 	public void doRewards(long userId, List<RewardBean> rewardList) {
 		UserBean bean = userService.getOther(userId);
@@ -131,7 +133,7 @@ public class RewardService {
 					user.setZhaohuanshi(user.getZhaohuanshi() + (int)rewardCount);
 					return true;
 				case RewardConst.ZHUJUEEXP:
-					user.setZhujueExp(user.getZhujueExp() + (int)rewardCount);
+					talentService.talentUpgrade(user, (int)rewardCount);
 					return true;
 				case RewardConst.VIPEXP:
 					user.setVipExp(user.getRechargeRecord() + (int)rewardCount);

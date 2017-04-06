@@ -115,6 +115,7 @@ message UserTalent {
 	optional bool isUse = 3;
 	repeated UserTalentOrder skill = 4;
 	repeated UserTalentEquip equip = 5;
+	optional uint32 exp = 6;//当前一级的经验，升级之后清0
 }
 
 message TeamEngine {

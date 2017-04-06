@@ -27,6 +27,7 @@ import com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand;
@@ -55,8 +56,6 @@ import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.UnionProto.BossGroupRecord;
 import com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand;
-import com.trans.pixel.protoc.UserInfoProto.Event;
-import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
@@ -78,7 +77,6 @@ import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserRewardTaskService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
-import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -380,6 +378,7 @@ public class PushCommandService extends BaseCommandService {
 		List<UserHeadBean> headList = new ArrayList<UserHeadBean>();
 		List<UserFoodBean> foodList = new ArrayList<UserFoodBean>();
 		List<UserEquipPokedeBean> equipPokedeList = new ArrayList<UserEquipPokedeBean>();
+		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
 		long userId = user.getId();
 		if (rewardId > RewardConst.FOOD) {
 			foodList.add(userFoodService.selectUserFood(user, rewardId));
@@ -399,6 +398,9 @@ public class PushCommandService extends BaseCommandService {
 		} else if (rewardId > RewardConst.EQUIPMENT) {
 			equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			this.pushUserEquipPokedeList(responseBuilder, user, equipPokedeList);
+		} else if (rewardId == RewardConst.ZHUJUEEXP) {
+			userTalentList.add(userTalentService.getUsingTalent(user.getId()));
+			this.pushUserTalentList(responseBuilder, user, userTalentList);
 		} else {
 			this.pushUserInfoCommand(responseBuilder, user);
 		}
@@ -416,6 +418,7 @@ public class PushCommandService extends BaseCommandService {
 		List<Integer> pushRewardIdList = new ArrayList<Integer>();
 		List<UserFoodBean> foodList = new ArrayList<UserFoodBean>();
 		List<UserEquipPokedeBean> equipPokedeList = new ArrayList<UserEquipPokedeBean>();
+		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
 		boolean isUserUpdated = false;
 		long userId = user.getId();
 		for(RewardInfo reward : rewards.getLootList()){
@@ -438,6 +441,8 @@ public class PushCommandService extends BaseCommandService {
 				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
 			} else if (rewardId > RewardConst.EQUIPMENT) {
 				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
+			} else if (rewardId == RewardConst.ZHUJUEEXP) {
+				userTalentList.add(userTalentService.getUsingTalent(user.getId()));
 			} else {
 				isUserUpdated = true;
 			}
@@ -462,6 +467,8 @@ public class PushCommandService extends BaseCommandService {
 			this.pushUserFoodListCommand(responseBuilder, user, foodList);
 		if (!equipPokedeList.isEmpty())
 			this.pushUserEquipPokedeList(responseBuilder, user, equipPokedeList);
+		if (!userTalentList.isEmpty())
+			this.pushUserTalentList(responseBuilder, user, userTalentList);
 		if(isUserUpdated)
 			this.pushUserInfoCommand(responseBuilder, user);
 	}
@@ -547,6 +554,15 @@ public class PushCommandService extends BaseCommandService {
 		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
 		builder.addAllUserTalent(userTalentService.getUserTalentList(user));
 		builder.addAllUserTalentSkill(userTalentService.getUserTalentSkillList(user));
+		responseBuilder.setUserTalentCommand(builder.build());
+	}
+	
+	public void pushUserTalentList(Builder responseBuilder, UserBean user, List<UserTalent> userTalentList) {
+		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+		builder.addAllUserTalent(userTalentList);
+		for (UserTalent userTalent : userTalentList) {
+			builder.addAllUserTalentSkill(userTalentService.getUserTalentSkillListByTalentId(user, userTalent.getId()));
+		}
 		responseBuilder.setUserTalentCommand(builder.build());
 	}
 	
