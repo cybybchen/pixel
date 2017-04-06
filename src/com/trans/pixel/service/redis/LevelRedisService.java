@@ -39,17 +39,13 @@ public class LevelRedisService extends RedisService {
 	}
 	public UserLevelBean getUserLevel(long userId){
 		String value = hget(RedisKey.USERDATA+userId, "UserLevel");
-		return UserLevelBean.fromJson(value);
-	}
-	public UserLevelBean getUserLevel(UserBean user){
-		UserLevelBean userLevel = getUserLevel(user.getId());
-		if(userLevel != null)
-			return userLevel;
-		userLevel = mapper.getUserLevel(user.getId());
+		if(value != null)
+			return UserLevelBean.fromJson(value);
+		UserLevelBean userLevel = mapper.getUserLevel(userId);
 		if(userLevel == null){
 			userLevel = new UserLevelBean();
 			Daguan.Builder daguan = getDaguan(1);
-			userLevel.setUserId(user.getId());
+			userLevel.setUserId(userId);
 			userLevel.setLootTime((int)now());
 			userLevel.setEventTime((int)now());
 			userLevel.setUnlockDaguan(daguan.getId());
@@ -60,7 +56,7 @@ public class LevelRedisService extends RedisService {
 			AreaEvent.Builder events = getDaguanEvent(daguan.getId());
 			for(Event.Builder event : events.getEventBuilderList()){
 				if(daguan.getId() == event.getDaguan())
-					saveEvent(user, event.build());
+					saveEvent(userId, event.build());
 			}
 		}else{
 			Daguan.Builder daguan = getDaguan(userLevel.getLootDaguan());
@@ -68,6 +64,13 @@ public class LevelRedisService extends RedisService {
 			userLevel.setExp(daguan.getExperience());
 		}
 		saveUserLevel(userLevel);
+		return userLevel;
+	}
+	public UserLevelBean getUserLevel(UserBean user){
+		UserLevelBean userLevel = getUserLevel(user.getId());
+		if(userLevel != null)
+			return userLevel;
+		
 		return userLevel;
 	}
 	public MultiReward.Builder getLootReward(UserBean user){
@@ -157,8 +160,11 @@ public class LevelRedisService extends RedisService {
 	public Event getEvent(UserBean user, int order) {
 		return getEvent(user.getId(), order);
 	}
+	public void saveEvent(long userId, Event event) {
+		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event));
+	}
 	public void saveEvent(UserBean user, Event event) {
-		hput(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"", formatJson(event));
+		saveEvent(user.getId(), event);
 	}
 	public void delEvent(UserBean user, int order) {
 		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), order+"");
