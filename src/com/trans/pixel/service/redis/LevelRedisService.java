@@ -145,6 +145,7 @@ public class LevelRedisService extends RedisService {
 							EventLevel level = nextEventLevel(userLevel);
 							event.setLevel(level.getLevel());
 							event.setCount(level.getCount());
+							event.clearWeight();
 							saveEvent(user, event.build());
 							break;
 						}else{

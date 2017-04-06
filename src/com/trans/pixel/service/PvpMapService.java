@@ -100,7 +100,7 @@ public class PvpMapService {
 					}
 					return SuccessConst.UNLOCK_AREA;
 				}else
-					return ErrorConst.NOT_ENOUGH_ZHANLI;
+					return ErrorConst.MERLEVEL_FIRST;
 			}
 		}
 		return ErrorConst.UNLOCK_ORDER_ERROR;
