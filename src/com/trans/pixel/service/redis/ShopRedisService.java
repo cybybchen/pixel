@@ -170,7 +170,7 @@ public class ShopRedisService extends RedisService{
 		}
 		ShopWill shopwill = willsbuilder.getId(0);
 		for(ShopWill will : willsbuilder.getIdList()){
-			if(will.getMerlevel() <= Math.max(1, user.getMerlevel()))
+			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
 		}
 		ShopList.Builder builder = buildComms(shopwill, getDailyShopComms());

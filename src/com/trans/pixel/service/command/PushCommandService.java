@@ -258,7 +258,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserBean user) {
-		UserLevelBean userLevel = levelCommandService.getUserLevel(user.getId());
+		UserLevelBean userLevel = levelCommandService.getUserLevel(user);
 		levelCommandService.pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	
