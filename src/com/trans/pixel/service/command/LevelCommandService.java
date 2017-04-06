@@ -232,8 +232,8 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	
-	public UserLevelBean getUserLevel(long userId){
-		return redis.getUserLevel(userId);
+	public UserLevelBean getUserLevel(UserBean user){
+		return redis.getUserLevel(user);
 	}
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserLevelBean userLevel, UserBean user){
