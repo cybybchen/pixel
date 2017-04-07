@@ -54,7 +54,7 @@ public class TalentService {
 		builder.setExp(builder.getExp() + exp);
 		Map<String,Talentupgrade> map = talentRedisService.getTalentupgradeConfig();
 		while (true) {
-			Talentupgrade talentupgrade = map.get("" + (builder.getLevel() + 1));
+			Talentupgrade talentupgrade = map.get("" + (builder.getLevel()));
 			if (talentupgrade == null)
 				break;
 			if (builder.getExp() >= talentupgrade.getItemcount()) {
@@ -79,7 +79,7 @@ public class TalentService {
 		UserTalent userTalent = userTalentService.getUserTalent(user, id);
 		
 		int originalLevel = userTalent.getLevel();
-		Talentupgrade talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel() + 1);
+		Talentupgrade talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel());
 		if (talentupgrade == null)
 			return ErrorConst.HERO_LEVEL_MAX;
 		if (!costService.costAndUpdate(user, talentupgrade.getItemid(), talentupgrade.getItemcount())) {
