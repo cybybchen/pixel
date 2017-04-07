@@ -58,6 +58,7 @@ public class RechargeCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
             responseBuilder.setErrorCommand(errorCommand);
+            return;
 		}
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards);
 	}
