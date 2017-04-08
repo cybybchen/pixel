@@ -3285,7 +3285,7 @@ message RequestCommand {
 	optional RequestRichangRewardCommand richangRewardCommand = 73;
 	optional RequestRichangListCommand richangListCommand = 74;
 	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
-	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
+	optional RequestKaifuRewardCommand kaifuRewardCommand = 77; 
 	optional RequestKaifuListCommand kaifuListCommand = 78;
 	optional RequestUserPokedeCommand userPokedeCommand = 80;
 	optional RequestRankCommand rankCommand = 81;

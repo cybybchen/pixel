@@ -79,9 +79,10 @@ public class TalentService {
 		UserTalent userTalent = userTalentService.getUserTalent(user, id);
 		
 		int originalLevel = userTalent.getLevel();
-		Talentupgrade talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel());
+		Talentupgrade talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel()+1);
 		if (talentupgrade == null)
 			return ErrorConst.HERO_LEVEL_MAX;
+		talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel());
 		if (!costService.costAndUpdate(user, talentupgrade.getItemid(), talentupgrade.getItemcount())) {
 			return ErrorConst.TALENTUPGRADE_ERROR;
 		}
