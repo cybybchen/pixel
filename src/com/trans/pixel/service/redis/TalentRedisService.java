@@ -18,9 +18,9 @@ import com.trans.pixel.protoc.HeroProto.TalentupgradeList;
 @Service
 public class TalentRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(TalentRedisService.class);
-	private static final String TALENT_FILE_NAME = "lol_talent.xml";
-	private static final String TALENTUPGRADE_FILE_NAME = "lol_talentupgrade.xml";
-	private static final String TALENTUNLOCK_FILE_NAME = "lol_talentunlock.xml";
+	private static final String TALENT_FILE_NAME = "ld_talent.xml";
+	private static final String TALENTUPGRADE_FILE_NAME = "ld_talentupgrade.xml";
+	private static final String TALENTUNLOCK_FILE_NAME = "ld_talentunlock.xml";
 	
 	//talent
 	public Talent getTalent(int id) {

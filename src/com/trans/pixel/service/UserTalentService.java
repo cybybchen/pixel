@@ -58,7 +58,7 @@ public class UserTalentService {
 			}
 		}
 		if (userTalent == null) {
-			userTalent = initUserTalent(user, id);
+			userTalent = initUserTalent(user, id).build();
 		}
 		return userTalent;	
 	}
@@ -74,11 +74,15 @@ public class UserTalentService {
 			if (utBeanList == null || utBeanList.isEmpty()) {
 				Map<String, Talent> map = talentRedisService.getTalentConfig();
 				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
+				boolean needUse = true;
 				while (it.hasNext()) {
 					Entry<String, Talent> entry = it.next();
-					UserTalent userTalent = initUserTalent(user, entry.getValue().getId());
-					userTalentList.add(userTalent);
-					updateUserTalent(user.getId(), userTalent);
+					UserTalent.Builder userTalent = initUserTalent(user, entry.getValue().getId());
+					if(needUse)
+						userTalent.setIsUse(needUse);
+					needUse = false;
+					userTalentList.add(userTalent.build());
+					updateUserTalent(user.getId(), userTalent.build());
 				}
 			} else {
 				for (UserTalentBean ut : utBeanList) {
@@ -239,7 +243,7 @@ public class UserTalentService {
 		return builder.build();
 	}
 	
-	private UserTalent initUserTalent(UserBean user, int id) {
+	private UserTalent.Builder initUserTalent(UserBean user, int id) {
 		UserTalent.Builder builder = UserTalent.newBuilder();
 		builder.setId(id);
 		builder.setLevel(0);
@@ -265,6 +269,6 @@ public class UserTalentService {
 			builder.addEquip(equipBuilder.build());
 		}
 		
-		return builder.build();
+		return builder;
 	}
 }

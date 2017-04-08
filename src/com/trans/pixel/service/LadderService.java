@@ -1,8 +1,6 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +22,6 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.HeroInfoBean;
-import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
@@ -38,12 +35,13 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
-import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
+import com.trans.pixel.protoc.ShopProto.LadderDaily;
+import com.trans.pixel.protoc.ShopProto.LadderDailyList;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -74,19 +72,19 @@ public class LadderService {
 	@Resource
 	private NoticeMessageService noticeMessageService;
 	
-	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
-        public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
-        			 if (bean1.getRanking() == -1)
-        				 return 1;
-        			 if (bean2.getRanking() == -1)
-        				 return -1;
-                if (bean1.getRanking() < bean2.getRanking()) {
-                        return -1;
-                } else {
-                        return 1;
-                }
-        }
-	};
+//	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
+//        public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
+//        			 if (bean1.getRanking() == -1)
+//        				 return 1;
+//        			 if (bean2.getRanking() == -1)
+//        				 return -1;
+//                if (bean1.getRanking() < bean2.getRanking()) {
+//                        return -1;
+//                } else {
+//                        return 1;
+//                }
+//        }
+//	};
 
 	public LadderChongzhi getLadderChongzhi(int count){
 		return ladderRedisService.getLadderChongzhi(count);
@@ -316,11 +314,11 @@ public class LadderService {
 	}
 	
 	public void sendLadderDailyReward(int serverId) {
-		List<LadderDailyBean> ladderDailyList = getLadderDailyList();
-		Collections.sort(ladderDailyList, comparator);
+		LadderDailyList ladderDailyList = getLadderDailyList();
+//		Collections.sort(ladderDailyList, comparator);
 		try {	
-			log.error("ladderDailyList size is:" + ladderDailyList.size());
-			for (LadderDailyBean ladderDaily : ladderDailyList) {
+			log.error("ladderDailyList size is:" + ladderDailyList.getIdCount());
+			for (LadderDaily ladderDaily : ladderDailyList.getIdList()) {
 	//			log.debug("ladder daily is:" + ladderDaily.toJson());
 				for (long i = ladderDaily.getRanking(); i <= ladderDaily.getRanking1(); ++ i) {
 					UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
@@ -464,7 +462,7 @@ public class LadderService {
 		return myRank;
 	}
 	
-	private MailBean buildLadderDailyMail(long userId, LadderDailyBean ladderDaily) {
+	private MailBean buildLadderDailyMail(long userId, LadderDaily ladderDaily) {
 		MailBean mail = new MailBean();
 		mail.setContent("天梯每日奖励");
 		mail.setRewardList(buildRewardList(ladderDaily));
@@ -475,21 +473,14 @@ public class LadderService {
 		return mail;
 	}
 	
-	private List<RewardBean> buildRewardList(LadderDailyBean ladderDaily) {
+	private List<RewardBean> buildRewardList(LadderDaily ladderDaily) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		RewardBean reward = new RewardBean();
-		reward.setItemid(ladderDaily.getItemid1());
-		reward.setCount(ladderDaily.getCount1());
-		rewardList.add(reward);
-		reward = new RewardBean();
-		reward.setItemid(ladderDaily.getItemid2());
-		reward.setCount(ladderDaily.getCount2());
-		rewardList.add(reward);
-		reward = new RewardBean();
-		reward.setItemid(ladderDaily.getItemid3());
-		reward.setCount(ladderDaily.getCount3());
-		rewardList.add(reward);
-		
+		for(RewardInfo info : ladderDaily.getOrderList()){
+			RewardBean reward = new RewardBean();
+			reward.setItemid(info.getItemid());
+			reward.setCount(info.getCount());
+			rewardList.add(reward);
+		}
 		return rewardList;
 	}
 	
@@ -523,13 +514,7 @@ public class LadderService {
 		return ladderRankingMap;
 	}
 	
-	private List<LadderDailyBean> getLadderDailyList() {
-		List<LadderDailyBean> ladderDailyList = ladderRedisService.getLadderDailyList();
-		if (ladderDailyList == null || ladderDailyList.size() == 0) {
-			ladderDailyList = LadderDailyBean.xmlParse();
-			ladderRedisService.setLadderDailyList(ladderDailyList);
-		}
-		
-		return ladderDailyList;
+	private LadderDailyList getLadderDailyList() {
+		return ladderRedisService.getLadderDailyList();
 	}
 }

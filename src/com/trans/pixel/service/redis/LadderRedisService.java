@@ -18,7 +18,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.LadderDailyBean;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
@@ -29,6 +28,7 @@ import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhiList;
+import com.trans.pixel.protoc.ShopProto.LadderDailyList;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
@@ -46,7 +46,7 @@ public class LadderRedisService extends RedisService{
 		LadderChongzhi.Builder builder = LadderChongzhi.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		String xml = ReadConfig("lol_ladderchongzhi.xml");
+		String xml = ReadConfig("ld_ladderchongzhi.xml");
 		LadderChongzhiList.Builder listbuilder = LadderChongzhiList.newBuilder();
 		parseXml(xml, listbuilder);
 		Map<String, String> keyvalue = new HashMap<String, String>();
@@ -182,50 +182,57 @@ public class LadderRedisService extends RedisService{
 		});
 	}
 	
-	public List<LadderDailyBean> getLadderDailyList() {
-		return redisTemplate.execute(new RedisCallback<List<LadderDailyBean>>() {
-			@Override
-			public List<LadderDailyBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.LADDER_DAILY_CONFIG_KEY);
-				
-				List<LadderDailyBean> ladderDailyList = new ArrayList<LadderDailyBean>();
-				Iterator<Entry<String, String>> it = bhOps.entries().entrySet().iterator();
-				while (it.hasNext()) {
-					Entry<String, String> entry = it.next();
-					LadderDailyBean ladderRanking = LadderDailyBean.fromJson(entry.getValue());
-//					if (ladderRanking != null)
-						ladderDailyList.add(ladderRanking);
-				}
-				return ladderDailyList;
-			}
-		});
+	public LadderDailyList getLadderDailyList() {
+		String value = get(RedisKey.LADDER_DAILY_CONFIG_KEY);
+		LadderDailyList.Builder builder = LadderDailyList.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		String xml = ReadConfig("ld_ladderdaily.xml");
+		parseXml(xml, builder);
+		return builder.build();
+//		return redisTemplate.execute(new RedisCallback<List<LadderDailyBean>>() {
+//			@Override
+//			public List<LadderDailyBean> doInRedis(RedisConnection arg0)
+//					throws DataAccessException {
+//				BoundHashOperations<String, String, String> bhOps = redisTemplate
+//						.boundHashOps();
+//				
+//				List<LadderDailyBean> ladderDailyList = new ArrayList<LadderDailyBean>();
+//				Iterator<Entry<String, String>> it = bhOps.entries().entrySet().iterator();
+//				while (it.hasNext()) {
+//					Entry<String, String> entry = it.next();
+//					LadderDailyBean ladderRanking = LadderDailyBean.fromJson(entry.getValue());
+////					if (ladderRanking != null)
+//						ladderDailyList.add(ladderRanking);
+//				}
+//				return ladderDailyList;
+//			}
+//		});
 	}
 	
-	public void setLadderDailyList(final List<LadderDailyBean> ladderDailyList) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.LADDER_DAILY_CONFIG_KEY);
-				
-				bhOps.putAll(convertLadderDailyMap(ladderDailyList));
-				
-				return null;
-			}
-		});
-	}
+//	public void setLadderDailyList(final List<LadderDailyBean> ladderDailyList) {
+//		redisTemplate.execute(new RedisCallback<Object>() {
+//			@Override
+//			public Object doInRedis(RedisConnection arg0)
+//					throws DataAccessException {
+//				BoundHashOperations<String, String, String> bhOps = redisTemplate
+//						.boundHashOps(RedisKey.LADDER_DAILY_CONFIG_KEY);
+//				
+//				bhOps.putAll(convertLadderDailyMap(ladderDailyList));
+//				
+//				return null;
+//			}
+//		});
+//	}
 	
-	private Map<String, String> convertLadderDailyMap(List<LadderDailyBean> ladderDailyList) {
-		Map<String, String> map = new HashMap<String, String>();
-		for (LadderDailyBean ladderRanking : ladderDailyList) {
-			map.put("" + ladderRanking.getId(), ladderRanking.toJson());
-		}
-		
-		return map;
-	}
+//	private Map<String, String> convertLadderDailyMap(List<LadderDailyBean> ladderDailyList) {
+//		Map<String, String> map = new HashMap<String, String>();
+//		for (LadderDaily ladderRanking : ladderDailyList) {
+//			map.put("" + ladderRanking.getId(), ladderRanking.toJson());
+//		}
+//		
+//		return map;
+//	}
 	
 	public boolean lockRankRedis(int serverId, int second) {
 		return this.setLock(buildRankRedisKey(serverId), second);

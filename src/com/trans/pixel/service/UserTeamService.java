@@ -147,7 +147,7 @@ public class UserTeamService {
 			}
 			if(ids.isEmpty()){
 				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
-				String teamRecord = "";
+				String teamRecord = "0,0|";
 				for (HeroInfoBean hero : userHeroList) {
 					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
 					break;

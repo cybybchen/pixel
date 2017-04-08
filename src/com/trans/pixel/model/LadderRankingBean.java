@@ -98,7 +98,7 @@ public class LadderRankingBean {
 		return map;
 	}
 	
-	private final static String FILE_NAME = "lol_ladderranking.xml";
+	private final static String FILE_NAME = "ld_ladderranking.xml";
 	private static final String ID = "id";
 	private static final String RANKING = "ranking";
 	private static final String ITEMID = "itemid";

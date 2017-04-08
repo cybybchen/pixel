@@ -272,6 +272,15 @@ message ShopWillList {
 	repeated ShopWill id = 1;
 }
 
+message LadderDaily {
+	optional int32 id = 1;
+	optional int32 ranking = 2;
+	optional int32 ranking1 = 3;
+	repeated RewardInfo order = 4; 
+}
+message LadderDailyList {
+	repeated LadderDaily id = 1;
+}
 message LadderChongzhi {
 	optional int32 count = 1;
 	optional int32 currency = 2;
@@ -3285,7 +3294,7 @@ message RequestCommand {
 	optional RequestRichangRewardCommand richangRewardCommand = 73;
 	optional RequestRichangListCommand richangListCommand = 74;
 	optional RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;
-	optional RequestKaifuRewardCommand kaifuRewardCommand = 77; 
+	optional RequestKaifuRewardCommand kaifuRewardCommand = 77;
 	optional RequestKaifuListCommand kaifuListCommand = 78;
 	optional RequestUserPokedeCommand userPokedeCommand = 80;
 	optional RequestRankCommand rankCommand = 81;
