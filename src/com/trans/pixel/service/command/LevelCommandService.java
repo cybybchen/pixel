@@ -116,7 +116,7 @@ public class LevelCommandService extends BaseCommandService {
 				redis.saveUserLevel(userLevel);
 				for(Event.Builder event : events.getEventBuilderList()){
 					if(id == event.getDaguan() && event.getWeight() == 0){
-						event.setOrder(RedisService.currentIndex()+event.getOrder());
+						event.setOrder(/*RedisService.currentIndex()+*/event.getOrder());
 						redis.saveEvent(user, event.build());
 					}
 				}
@@ -192,9 +192,11 @@ public class LevelCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(event.getOrder() >= 100 || cmd.getRet()){
+			Event eventconfig = redis.getEvent(event.getEventid());
+			if(cmd.getRet() && (eventconfig.getTargetid() == 1 || eventconfig.getTargetid() == 202 || eventconfig.getTargetid() == 203))
+				pvpMapService.unlockMap(eventconfig.getTargetid()%100, 0, user);
 			if(event.getType() == 1){//buy event
 				if(cmd.getRet()){
-					Event eventconfig = redis.getEvent(event.getEventid());
 					if(costService.cost(user, eventconfig.getCostid(), eventconfig.getCostcount())){
 						eventReward(eventconfig, responseBuilder, user);
 						if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
@@ -213,7 +215,6 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
-				Event eventconfig = redis.getEvent(event.getEventid());
 				eventReward(eventconfig, responseBuilder, user);
 				redis.delEvent(user, event.getOrder());
 				

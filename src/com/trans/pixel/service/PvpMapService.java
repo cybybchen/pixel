@@ -71,12 +71,12 @@ public class PvpMapService {
 	@Resource
 	private PushCommandService pushCommandService;
 
-	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user){
+	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user) {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() == fieldid){
 //				if(zhanli >= map.getZhanli()){
-				if(user.getMerlevel() >= map.getMerlevel()){
+//				if(user.getMerlevel() >= map.getMerlevel()){
 					map.setOpened(true);
 					redis.saveMapList(maplist.build(), user.getId());
 					if(map.getFieldid() > user.getPvpUnlock()){
@@ -99,8 +99,8 @@ public class PvpMapService {
 						redis.saveMines(user.getId(), mineMap);
 					}
 					return SuccessConst.UNLOCK_AREA;
-				}else
-					return ErrorConst.MERLEVEL_FIRST;
+//				}else
+//					return ErrorConst.MERLEVEL_FIRST;
 			}
 		}
 		return ErrorConst.UNLOCK_ORDER_ERROR;
