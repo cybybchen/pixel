@@ -139,17 +139,22 @@ public class LevelRedisService extends RedisService {
 				for(int i = 0; i < Math.min(20-eventsize,time/60); i++){
 					int weight = nextInt(events.getWeight());
 					for(Event.Builder event : events.getEventBuilderList()){
-						if(event.getWeight() >= weight){
-							event.setOrder(currentIndex()+i);
-							event.setDaguan(userLevel.getLootDaguan());
+						weight -= event.getWeight();
+						if(weight <= 0){
+							Event.Builder builder = Event.newBuilder(event.build());
+							builder.setOrder(currentIndex()+i);
+							builder.setDaguan(userLevel.getLootDaguan());
 							EventLevel level = nextEventLevel(userLevel);
-							event.setLevel(level.getLevel());
-							event.setCount(level.getCount());
-							event.clearWeight();
-							saveEvent(user, event.build());
+							builder.setLevel(level.getLevel());
+							builder.setCount(level.getCount());
+							builder.clearWeight();
+							saveEvent(user, builder.build());
+							event.setCount(event.getCount()-1);
+							if(event.getCount() == 0){
+								events.setWeight(events.getWeight()-event.getWeight());
+								event.setWeight(0);
+							}
 							break;
-						}else{
-							weight -= event.getWeight();
 						}
 					}
 				}
