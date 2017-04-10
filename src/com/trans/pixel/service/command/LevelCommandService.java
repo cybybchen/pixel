@@ -193,6 +193,11 @@ public class LevelCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(event.getOrder() >= 100 || cmd.getRet()){
 			Event eventconfig = redis.getEvent(event.getEventid());
+			if(eventconfig == null){
+				redis.delEvent(user, event.getOrder());
+				pushLevelLootCommand(responseBuilder, userLevel, user);
+				return;
+			}
 			if(cmd.getRet() && (eventconfig.getTargetid() == 1 || eventconfig.getTargetid() == 202 || eventconfig.getTargetid() == 203))
 				pvpMapService.unlockMap(eventconfig.getTargetid()%100, 0, user);
 			if(event.getType() == 1){//buy event
