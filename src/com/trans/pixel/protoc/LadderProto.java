@@ -21,35 +21,30 @@ public final class LadderProto {
      */
     int getId();
 
-    // optional int32 reward = 2;
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
     /**
-     * <code>optional int32 reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    boolean hasReward();
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
     /**
-     * <code>optional int32 reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    int getReward();
-
-    // optional int32 count = 3;
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
     /**
-     * <code>optional int32 count = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    boolean hasCount();
+    int getRewardCount();
     /**
-     * <code>optional int32 count = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    int getCount();
-
-    // optional int32 weight = 4;
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
     /**
-     * <code>optional int32 weight = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    boolean hasWeight();
-    /**
-     * <code>optional int32 weight = 4;</code>
-     */
-    int getWeight();
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.LadderWinReward}
@@ -111,19 +106,12 @@ public final class LadderProto {
               id_ = input.readInt32();
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              reward_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              count_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              weight_ = input.readInt32();
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
           }
@@ -134,6 +122,9 @@ public final class LadderProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -182,59 +173,45 @@ public final class LadderProto {
       return id_;
     }
 
-    // optional int32 reward = 2;
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
     public static final int REWARD_FIELD_NUMBER = 2;
-    private int reward_;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
     /**
-     * <code>optional int32 reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    public boolean hasReward() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 reward = 2;</code>
-     */
-    public int getReward() {
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
       return reward_;
     }
-
-    // optional int32 count = 3;
-    public static final int COUNT_FIELD_NUMBER = 3;
-    private int count_;
     /**
-     * <code>optional int32 count = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    public boolean hasCount() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
     }
     /**
-     * <code>optional int32 count = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    public int getCount() {
-      return count_;
-    }
-
-    // optional int32 weight = 4;
-    public static final int WEIGHT_FIELD_NUMBER = 4;
-    private int weight_;
-    /**
-     * <code>optional int32 weight = 4;</code>
-     */
-    public boolean hasWeight() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+    public int getRewardCount() {
+      return reward_.size();
     }
     /**
-     * <code>optional int32 weight = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
      */
-    public int getWeight() {
-      return weight_;
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
-      reward_ = 0;
-      count_ = 0;
-      weight_ = 0;
+      reward_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -251,14 +228,8 @@ public final class LadderProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, reward_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, count_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, weight_);
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(2, reward_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -273,17 +244,9 @@ public final class LadderProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      for (int i = 0; i < reward_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, reward_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, count_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, weight_);
+          .computeMessageSize(2, reward_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -397,6 +360,7 @@ public final class LadderProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -407,12 +371,12 @@ public final class LadderProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        reward_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        count_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        weight_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          rewardBuilder_.clear();
+        }
         return this;
       }
 
@@ -445,18 +409,15 @@ public final class LadderProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
         }
-        result.reward_ = reward_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.count_ = count_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.weight_ = weight_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -476,14 +437,31 @@ public final class LadderProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasReward()) {
-          setReward(other.getReward());
-        }
-        if (other.hasCount()) {
-          setCount(other.getCount());
-        }
-        if (other.hasWeight()) {
-          setWeight(other.getWeight());
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -545,103 +523,244 @@ public final class LadderProto {
         return this;
       }
 
-      // optional int32 reward = 2;
-      private int reward_ ;
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
+
       /**
-       * <code>optional int32 reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
        */
-      public boolean hasReward() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>optional int32 reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
        */
-      public int getReward() {
-        return reward_;
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
       }
       /**
-       * <code>optional int32 reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
        */
-      public Builder setReward(int value) {
-        bitField0_ |= 0x00000002;
-        reward_ = value;
-        onChanged();
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>optional int32 reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
        */
       public Builder clearReward() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        reward_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count = 3;
-      private int count_ ;
-      /**
-       * <code>optional int32 count = 3;</code>
-       */
-      public boolean hasCount() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 count = 3;</code>
-       */
-      public int getCount() {
-        return count_;
-      }
-      /**
-       * <code>optional int32 count = 3;</code>
-       */
-      public Builder setCount(int value) {
-        bitField0_ |= 0x00000004;
-        count_ = value;
-        onChanged();
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
         return this;
       }
       /**
-       * <code>optional int32 count = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
        */
-      public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        count_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 weight = 4;
-      private int weight_ ;
-      /**
-       * <code>optional int32 weight = 4;</code>
-       */
-      public boolean hasWeight() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 weight = 4;</code>
-       */
-      public int getWeight() {
-        return weight_;
-      }
-      /**
-       * <code>optional int32 weight = 4;</code>
-       */
-      public Builder setWeight(int value) {
-        bitField0_ |= 0x00000008;
-        weight_ = value;
-        onChanged();
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
         return this;
       }
       /**
-       * <code>optional int32 weight = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
        */
-      public Builder clearWeight() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        weight_ = 0;
-        onChanged();
-        return this;
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderWinReward)
@@ -682,16 +801,6 @@ public final class LadderProto {
      */
     com.trans.pixel.protoc.LadderProto.LadderWinRewardOrBuilder getIdOrBuilder(
         int index);
-
-    // optional int32 weightall = 2;
-    /**
-     * <code>optional int32 weightall = 2;</code>
-     */
-    boolean hasWeightall();
-    /**
-     * <code>optional int32 weightall = 2;</code>
-     */
-    int getWeightall();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.LadderWinRewardList}
@@ -752,11 +861,6 @@ public final class LadderProto {
               id_.add(input.readMessage(com.trans.pixel.protoc.LadderProto.LadderWinReward.PARSER, extensionRegistry));
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000001;
-              weightall_ = input.readInt32();
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -799,7 +903,6 @@ public final class LadderProto {
       return PARSER;
     }
 
-    private int bitField0_;
     // repeated .com.trans.pixel.protoc.LadderWinReward id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private java.util.List<com.trans.pixel.protoc.LadderProto.LadderWinReward> id_;
@@ -836,25 +939,8 @@ public final class LadderProto {
       return id_.get(index);
     }
 
-    // optional int32 weightall = 2;
-    public static final int WEIGHTALL_FIELD_NUMBER = 2;
-    private int weightall_;
-    /**
-     * <code>optional int32 weightall = 2;</code>
-     */
-    public boolean hasWeightall() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int32 weightall = 2;</code>
-     */
-    public int getWeightall() {
-      return weightall_;
-    }
-
     private void initFields() {
       id_ = java.util.Collections.emptyList();
-      weightall_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -871,9 +957,6 @@ public final class LadderProto {
       for (int i = 0; i < id_.size(); i++) {
         output.writeMessage(1, id_.get(i));
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(2, weightall_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -886,10 +969,6 @@ public final class LadderProto {
       for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, id_.get(i));
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, weightall_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1014,8 +1093,6 @@ public final class LadderProto {
         } else {
           idBuilder_.clear();
         }
-        weightall_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1043,7 +1120,6 @@ public final class LadderProto {
       public com.trans.pixel.protoc.LadderProto.LadderWinRewardList buildPartial() {
         com.trans.pixel.protoc.LadderProto.LadderWinRewardList result = new com.trans.pixel.protoc.LadderProto.LadderWinRewardList(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (idBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             id_ = java.util.Collections.unmodifiableList(id_);
@@ -1053,11 +1129,6 @@ public final class LadderProto {
         } else {
           result.id_ = idBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.weightall_ = weightall_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1098,9 +1169,6 @@ public final class LadderProto {
               idBuilder_.addAllMessages(other.id_);
             }
           }
-        }
-        if (other.hasWeightall()) {
-          setWeightall(other.getWeightall());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1367,39 +1435,6 @@ public final class LadderProto {
           id_ = null;
         }
         return idBuilder_;
-      }
-
-      // optional int32 weightall = 2;
-      private int weightall_ ;
-      /**
-       * <code>optional int32 weightall = 2;</code>
-       */
-      public boolean hasWeightall() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 weightall = 2;</code>
-       */
-      public int getWeightall() {
-        return weightall_;
-      }
-      /**
-       * <code>optional int32 weightall = 2;</code>
-       */
-      public Builder setWeightall(int value) {
-        bitField0_ |= 0x00000002;
-        weightall_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weightall = 2;</code>
-       */
-      public Builder clearWeightall() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        weightall_ = 0;
-        onChanged();
-        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderWinRewardList)
@@ -12954,45 +12989,45 @@ public final class LadderProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\021LadderProto.proto\022\026com.trans.pixel.pro" +
-      "toc\032\nBase.proto\"L\n\017LadderWinReward\022\n\n\002id" +
-      "\030\001 \001(\005\022\016\n\006reward\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\016\n" +
-      "\006weight\030\004 \001(\005\"]\n\023LadderWinRewardList\0223\n\002" +
-      "id\030\001 \003(\0132\'.com.trans.pixel.protoc.Ladder" +
-      "WinReward\022\021\n\tweightall\030\002 \001(\005\"K\n\021LadderRa" +
-      "nkingList\0226\n\007ranking\030\001 \003(\0132%.com.trans.p" +
-      "ixel.protoc.LadderRanking\"[\n\rLadderRanki" +
-      "ng\022\017\n\007rankink\030\001 \002(\005\022\014\n\004star\030\002 \002(\005\022\n\n\002lv\030" +
-      "\003 \002(\005\022\014\n\004rare\030\004 \002(\005\022\021\n\therocount\030\005 \002(\005\"B",
-      "\n\016LadderNameList\0220\n\004name\030\001 \003(\0132\".com.tra" +
-      "ns.pixel.protoc.LadderName\"(\n\nLadderName" +
-      "\022\014\n\004type\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\"G\n\017LadderEn" +
-      "emyList\0224\n\007ranking\030\001 \003(\0132#.com.trans.pix" +
-      "el.protoc.LadderEnemy\"\214\001\n\013LadderEnemy\022\017\n" +
-      "\007ranking\030\001 \002(\005\022\020\n\010ranking1\030\002 \002(\005\022\014\n\004star" +
-      "\030\003 \002(\005\022\n\n\002lv\030\004 \002(\005\022\014\n\004rare\030\005 \002(\005\022\021\n\thero" +
-      "count\030\006 \002(\005\022\016\n\006zhanli\030\007 \002(\005\022\017\n\007zhanli1\030\010" +
-      " \002(\005\"=\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022\021\n\tfightIn" +
-      "fo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032RequestGe",
-      "tFightInfoCommand\"J\n\027RequestFightInfoCom" +
-      "mand\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.pro" +
-      "toc.FightInfo\"K\n\030ResponseFightInfoComman" +
-      "d\022/\n\004info\030\001 \003(\0132!.com.trans.pixel.protoc" +
-      ".FightInfo\"!\n\037RequestGetLadderRankListCo" +
-      "mmand\"%\n#RequestGetUserLadderRankListCom" +
-      "mand\"V\n ResponseGetLadderRankListCommand" +
-      "\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixel.pro" +
-      "toc.UserRank\"Z\n$ResponseGetUserLadderRan" +
-      "kListCommand\0222\n\010userRank\030\001 \003(\0132 .com.tra",
-      "ns.pixel.protoc.UserRank\"a\n\036RequestAttac" +
-      "kLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030" +
-      "\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 " +
-      "\001(\003\";\n\037ResponseAttackLadderModeCommand\022\013" +
-      "\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReady" +
-      "AttackLadderCommand\"/\n\037RequestGetLadderU" +
-      "serInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestP" +
-      "urchaseLadderTimeCommand\"V\n ResponseGetL" +
-      "adderUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 " +
-      ".com.trans.pixel.protoc.UserRank"
+      "toc\032\nBase.proto\"Q\n\017LadderWinReward\022\n\n\002id" +
+      "\030\001 \001(\005\0222\n\006reward\030\002 \003(\0132\".com.trans.pixel" +
+      ".protoc.RewardInfo\"J\n\023LadderWinRewardLis" +
+      "t\0223\n\002id\030\001 \003(\0132\'.com.trans.pixel.protoc.L" +
+      "adderWinReward\"K\n\021LadderRankingList\0226\n\007r" +
+      "anking\030\001 \003(\0132%.com.trans.pixel.protoc.La" +
+      "dderRanking\"[\n\rLadderRanking\022\017\n\007rankink\030" +
+      "\001 \002(\005\022\014\n\004star\030\002 \002(\005\022\n\n\002lv\030\003 \002(\005\022\014\n\004rare\030" +
+      "\004 \002(\005\022\021\n\therocount\030\005 \002(\005\"B\n\016LadderNameLi",
+      "st\0220\n\004name\030\001 \003(\0132\".com.trans.pixel.proto" +
+      "c.LadderName\"(\n\nLadderName\022\014\n\004type\030\001 \002(\005" +
+      "\022\014\n\004name\030\002 \002(\t\"G\n\017LadderEnemyList\0224\n\007ran" +
+      "king\030\001 \003(\0132#.com.trans.pixel.protoc.Ladd" +
+      "erEnemy\"\214\001\n\013LadderEnemy\022\017\n\007ranking\030\001 \002(\005" +
+      "\022\020\n\010ranking1\030\002 \002(\005\022\014\n\004star\030\003 \002(\005\022\n\n\002lv\030\004" +
+      " \002(\005\022\014\n\004rare\030\005 \002(\005\022\021\n\therocount\030\006 \002(\005\022\016\n" +
+      "\006zhanli\030\007 \002(\005\022\017\n\007zhanli1\030\010 \002(\005\"=\n\tFightI" +
+      "nfo\022\n\n\002id\030\003 \001(\005\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tfi" +
+      "ghtData\030\002 \002(\t\"\034\n\032RequestGetFightInfoComm",
+      "and\"J\n\027RequestFightInfoCommand\022/\n\004info\030\001" +
+      " \002(\0132!.com.trans.pixel.protoc.FightInfo\"" +
+      "K\n\030ResponseFightInfoCommand\022/\n\004info\030\001 \003(" +
+      "\0132!.com.trans.pixel.protoc.FightInfo\"!\n\037" +
+      "RequestGetLadderRankListCommand\"%\n#Reque" +
+      "stGetUserLadderRankListCommand\"V\n Respon" +
+      "seGetLadderRankListCommand\0222\n\010userRank\030\001" +
+      " \003(\0132 .com.trans.pixel.protoc.UserRank\"Z" +
+      "\n$ResponseGetUserLadderRankListCommand\0222" +
+      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto",
+      "c.UserRank\"a\n\036RequestAttackLadderModeCom" +
+      "mand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamI" +
+      "d\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(\003\";\n\037Respons" +
+      "eAttackLadderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n" +
+      "\003msg\030\002 \002(\t\"!\n\037RequestReadyAttackLadderCo" +
+      "mmand\"/\n\037RequestGetLadderUserInfoCommand" +
+      "\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPurchaseLadderT" +
+      "imeCommand\"V\n ResponseGetLadderUserInfoC" +
+      "ommand\0222\n\010userRank\030\001 \002(\0132 .com.trans.pix" +
+      "el.protoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13004,13 +13039,13 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_LadderWinReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderWinReward_descriptor,
-              new java.lang.String[] { "Id", "Reward", "Count", "Weight", });
+              new java.lang.String[] { "Id", "Reward", });
           internal_static_com_trans_pixel_protoc_LadderWinRewardList_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_LadderWinRewardList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderWinRewardList_descriptor,
-              new java.lang.String[] { "Id", "Weightall", });
+              new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_LadderRankingList_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_LadderRankingList_fieldAccessorTable = new

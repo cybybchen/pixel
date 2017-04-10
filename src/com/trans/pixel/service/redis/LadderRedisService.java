@@ -24,7 +24,6 @@ import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderEnemyList;
 import com.trans.pixel.protoc.LadderProto.LadderName;
 import com.trans.pixel.protoc.LadderProto.LadderNameList;
-import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhiList;
@@ -67,13 +66,9 @@ public class LadderRedisService extends RedisService{
 		String value = get(RedisKey.LADDERWIN_CONFIG);
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		String xml = ReadConfig("lol_ladderwin.xml");
+		String xml = ReadConfig("ld_ladderwin.xml");
 		parseXml(xml, builder);
 		int weight = 0;
-		for(LadderWinReward reward : builder.getIdList()){
-			weight += reward.getWeight();
-		}
-		builder.setWeightall(weight);
 		set(RedisKey.LADDERWIN_CONFIG, formatJson(builder.build()));
 		return builder.build();
 	}

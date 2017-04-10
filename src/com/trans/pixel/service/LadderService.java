@@ -239,19 +239,13 @@ public class LadderService {
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
 
-	public MultiReward getRandLadderWinReward(){
+	public MultiReward getRandLadderWinReward(int id){
 		LadderWinRewardList list = ladderRedisService.getLadderWinRewardList();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		int index = ladderRedisService.nextInt(list.getWeightall());
 		for(LadderWinReward win : list.getIdList()){
-			if(index < win.getWeight()){
-				RewardInfo.Builder reward = RewardInfo.newBuilder();
-				reward.setItemid(win.getReward());
-				reward.setCount(win.getCount());
-				rewards.addLoot(reward);
+			if(win.getId() == id){
+				rewards.addAllLoot(win.getRewardList());
 				return rewards.build();
-			}else{
-				index -= win.getWeight();
 			}
 		}
 		return rewards.build();
