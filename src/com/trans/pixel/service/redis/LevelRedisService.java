@@ -361,10 +361,12 @@ public class LevelRedisService extends RedisService {
 		EventLevelList.Builder list = EventLevelList.newBuilder();
 		parseXml(xml, list);
 		for(EventRandoms.Builder randoms : builder.getIdBuilderList()){
+			int i = 0;
 			for(EventLevel.Builder eventlevel : randoms.getOrderBuilderList()){
+				i++;
 				for(EventLevel level : list.getLevelList()){
 					if(level.getLevel() == eventlevel.getLevel())
-						hput(RedisKey.EVENTLEVEL_CONFIG, randoms.getId()*100+level.getLevel()+"", formatJson(level));
+						hput(RedisKey.EVENTLEVEL_CONFIG, randoms.getId()*100+i+"", formatJson(level));
 				}
 			}
 			randoms.clearOrder();
