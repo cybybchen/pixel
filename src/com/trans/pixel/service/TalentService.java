@@ -54,9 +54,10 @@ public class TalentService {
 		builder.setExp(builder.getExp() + exp);
 		Map<String,Talentupgrade> map = talentRedisService.getTalentupgradeConfig();
 		while (true) {
-			Talentupgrade talentupgrade = map.get("" + (builder.getLevel()));
-			if (talentupgrade == null)
+			Talentupgrade nextTalentupgrade = map.get("" + (builder.getLevel() + 1));
+			if (nextTalentupgrade == null)
 				break;
+			Talentupgrade talentupgrade = map.get("" + (builder.getLevel()));
 			if (builder.getExp() >= talentupgrade.getItemcount()) {
 				builder.setLevel(builder.getLevel() + 1);
 				builder.setExp(builder.getExp() - talentupgrade.getItemcount());
