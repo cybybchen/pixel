@@ -61,7 +61,7 @@ public class LevelRedisService extends RedisService {
 			userLevel.setExp(daguan.getExperience());
 			AreaEvent.Builder events = getDaguanEvent(daguan.getId());
 			for(Event.Builder event : events.getEventBuilderList()){
-				if(daguan.getId() == event.getDaguan())
+				if(daguan.getId() == event.getDaguan() && event.getWeight() == 0)
 					saveEvent(userId, event.build());
 			}
 		}else{
