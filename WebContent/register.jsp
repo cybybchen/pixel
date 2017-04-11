@@ -40,7 +40,7 @@ if (account!=null && account!="" && password!=null){
    //session_comm.setAttribute("password", password);
    //session_comm.setMaxInactiveInterval(3600*3);//单位：秒（实际经常到20秒以后才超时）
    //response.sendRedirect("index.jsp");
-   out.print("<script>alert(\"请求已提交！我们会尽快与您取得联系\");</script>");
+   out.print("<script>alert(\"请求已提交,请等待审核通过！我们会尽快与您取得联系\");</script>");
    String qm ="ltsgxwotqbzabbed"; //您的QQ密码
    String tu = "qq.com"; //你邮箱的后缀域名
    String tto="xinji.wang@transmension.com"; //接收邮件的邮箱
