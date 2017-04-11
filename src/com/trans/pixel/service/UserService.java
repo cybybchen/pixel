@@ -277,13 +277,8 @@ public class UserService {
 		return result;
 	}
 
-	public void updateUserDailyData(UserBean user) {
-		userRedisService.updateUser(user);
-	}
-	
 	public void updateUser(UserBean user) {
 		userRedisService.updateUser(user);
-//		userMapper.updateUser(user);
 	}
 	
 	public void updateUserToMysql(UserBean user) {

@@ -2,7 +2,6 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -45,15 +44,10 @@ public class RewardService {
 	@Resource
 	private TalentService talentService;
 	
-	public void doRewards(long userId, List<RewardBean> rewardList) {
-		UserBean bean = userService.getOther(userId);
-		doRewards(bean, rewardList);
-	}
-	
-	public void doReward(long userId, RewardBean reward) {
-		UserBean bean = userService.getOther(userId);
-		doReward(bean, reward);
-	}
+//	public void doReward(long userId, RewardBean reward) {
+//		UserBean bean = userService.getOther(userId);
+//		doReward(bean, reward);
+//	}
 	
 	public void doReward(long userId, int rewardId, long rewardCount) {
 		UserBean bean = userService.getOther(userId);
@@ -61,20 +55,17 @@ public class RewardService {
 			userService.updateUser(bean);
 	}
 	
-	public void doRewards(UserBean user, List<RewardBean> rewardList) {
-		boolean needUpdateUser = false;
-		for (RewardBean reward : rewardList) {
-			boolean ret = doReward(user, reward.getItemid(), reward.getCount());
-			if (ret)
-				needUpdateUser = ret;
-		}
-		
-		if (needUpdateUser) {
-			userService.updateUser(user);
-		}
-	}
+//	public void doReward(long userId, RewardInfo reward) {
+//		UserBean bean = userService.getOther(userId);
+//		if(doReward(bean, reward))
+//			userService.updateUser(user);
+//	}
 
-	public void doReward(UserBean user, RewardBean reward) {
+//	public void doReward(UserBean user, RewardBean reward) {
+//		if(doReward(user, reward.getItemid(), reward.getCount()))
+//			userService.updateUser(user);
+//	}
+	public void doReward(UserBean user, RewardInfo reward) {
 		if(doReward(user, reward.getItemid(), reward.getCount()))
 			userService.updateUser(user);
 	}
@@ -146,73 +137,28 @@ public class RewardService {
 		return false;
 	}
 	
-//	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord, UserBean user) {
-//		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-//		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
-//		for (int lootLevel : rewardRecordList) {
-//			LootBean loot = lootService.getLootByLevelId(lootLevel);
-//			if (loot != null){
-//				RewardBean reward = randomReward(loot.getRewardList());
-//				if(user.getVip() >= 3 && RandomUtils.nextInt(100) < 10)
-//					reward.setCount(reward.getCount()*2);
-//				rewardList.add(reward);
-//			}
-//			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
-//				break;
-//		}
-//		
-//		userLevelLootRecord.clearRewardRecord();
-//		return rewardList;
+//	public void doRewards(long userId, MultiReward rewards) {
+//		UserBean bean = userService.getOther(userId);
+//		doRewards(bean, rewards);
 //	}
 	
-	public RewardBean randomReward(List<RewardBean> rewardList) {
-		if(rewardList.isEmpty())
-			return null;
-		int totalWeight = 0;
+	public void doRewards(UserBean user, List<RewardBean> rewardList) {
+		boolean needUpdateUser = false;
 		for (RewardBean reward : rewardList) {
-			totalWeight += reward.getWeight();
-		}
-		Random rand = new Random();
-		int randomNum = rand.nextInt(totalWeight);
-		totalWeight = 0;
-		for (RewardBean reward : rewardList) {
-			if (randomNum < totalWeight + reward.getWeight())
-				return reward;
-			
-			totalWeight += reward.getWeight();
+			boolean ret = doReward(user, reward.getItemid(), reward.getCount());
+			if (ret)
+				needUpdateUser = ret;
 		}
 		
-		return null;
+		if (needUpdateUser) {
+			userService.updateUser(user);
+		}
 	}
 	
-	public List<RewardBean> randomRewardList(List<RewardBean> rewardList, int count) {
-		int totalWeight = 0;
-    	for (RewardBean lottery : rewardList) {
-    		totalWeight += lottery.getWeight();
-    	}
-    	
-    	Random rand = new Random();
-    	List<RewardBean> randomRewardList = new ArrayList<RewardBean>();
-
-    	while (randomRewardList.size() < count) {
-    		int randNum = rand.nextInt(rewardList.size());
-    		RewardBean reward = rewardList.get(randNum);
-    		if (rand.nextInt(totalWeight) <= reward.getWeight())
-    			randomRewardList.add(reward);
-    	}
-    	
-    	return randomRewardList;
-	}
-	
-	public void doRewards(long userId, MultiReward rewards) {
-		UserBean bean = userService.getOther(userId);
-		doRewards(bean, rewards);
-	}
-	
-	public void doReward(long userId, RewardInfo reward) {
-		UserBean bean = userService.getOther(userId);
-		doReward(bean, reward);
-	}
+//	public void doRewards(long userId, List<RewardBean> rewardList) {
+//		UserBean bean = userService.getOther(userId);
+//		doRewards(bean, rewardList);
+//	}
 	
 	public void doRewards(UserBean user, MultiReward rewards) {
 		boolean needUpdateUser = false;
@@ -225,11 +171,6 @@ public class RewardService {
 		if (needUpdateUser) {
 			userService.updateUser(user);
 		}
-	}
-	
-	public void doReward(UserBean user, RewardInfo reward) {
-		if(doReward(user, reward.getItemid(), reward.getCount()))
-			userService.updateUser(user);
 	}
 	
 	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {
@@ -250,44 +191,98 @@ public class RewardService {
 		return rewardList;
 	}
 	
-	public List<RewardBean> mergeReward(List<RewardBean> rewardList, List<RewardBean> mergeRewardList) {
-		if (mergeRewardList == null || mergeRewardList.size() == 0)
-			return rewardList;
-		
-		for (RewardBean mergeReward : mergeRewardList) {
-			boolean hasMerge = false;
-			for (RewardBean reward : rewardList) {
-				if (reward.getItemid() == mergeReward.getItemid()) {
-					reward.setCount(reward.getCount() + mergeReward.getCount());
-					hasMerge = true;
-					break;
-				}
-			}
-			
-			if (!hasMerge)
-				rewardList.add(mergeReward);
-		}
-		
-		return rewardList;
-	}
+//	public List<RewardBean> mergeReward(List<RewardBean> rewardList, List<RewardBean> mergeRewardList) {
+//		if (mergeRewardList == null || mergeRewardList.size() == 0)
+//			return rewardList;
+//		
+//		for (RewardBean mergeReward : mergeRewardList) {
+//			boolean hasMerge = false;
+//			for (RewardBean reward : rewardList) {
+//				if (reward.getItemid() == mergeReward.getItemid()) {
+//					reward.setCount(reward.getCount() + mergeReward.getCount());
+//					hasMerge = true;
+//					break;
+//				}
+//			}
+//			
+//			if (!hasMerge)
+//				rewardList.add(mergeReward);
+//		}
+//		
+//		return rewardList;
+//	}
 	
 	public void updateUser(UserBean user){
 		userService.updateUser(user);
 	}
 
-	public void updateUserDailyData(UserBean user) {
-		userService.updateUserDailyData(user);
-	}
+//	public List<RewardInfo> convertCost(List<CostItem> costList) {
+//		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+//		for (CostItem cost : costList) {
+//			RewardInfo.Builder reward = RewardInfo.newBuilder();
+//			reward.setItemid(cost.getCostid());
+//			reward.setCount(cost.getCostcount());
+//			rewardList.add(reward.build());
+//		}
+//		
+//		return rewardList;
+//	}
 	
-	public List<RewardInfo> convertCost(List<CostItem> costList) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		for (CostItem cost : costList) {
-			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(cost.getCostid());
-			reward.setCount(cost.getCostcount());
-			rewardList.add(reward.build());
-		}
-		
-		return rewardList;
-	}
+//	public List<RewardBean> getLootRewards(UserLevelLootBean userLevelLootRecord, UserBean user) {
+//		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+//		List<Integer> rewardRecordList = userLevelLootRecord.getRewardRecordList();
+//		for (int lootLevel : rewardRecordList) {
+//			LootBean loot = lootService.getLootByLevelId(lootLevel);
+//			if (loot != null){
+//				RewardBean reward = randomReward(loot.getRewardList());
+//				if(user.getVip() >= 3 && RandomUtils.nextInt(100) < 10)
+//					reward.setCount(reward.getCount()*2);
+//				rewardList.add(reward);
+//			}
+//			if (rewardList.size() >= userLevelLootRecord.getPackageCount())
+//				break;
+//		}
+//		
+//		userLevelLootRecord.clearRewardRecord();
+//		return rewardList;
+//	}
+	
+//	public RewardBean randomReward(List<RewardBean> rewardList) {
+//		if(rewardList.isEmpty())
+//			return null;
+//		int totalWeight = 0;
+//		for (RewardBean reward : rewardList) {
+//			totalWeight += reward.getWeight();
+//		}
+//		Random rand = new Random();
+//		int randomNum = rand.nextInt(totalWeight);
+//		totalWeight = 0;
+//		for (RewardBean reward : rewardList) {
+//			if (randomNum < totalWeight + reward.getWeight())
+//				return reward;
+//			
+//			totalWeight += reward.getWeight();
+//		}
+//		
+//		return null;
+//	}
+//	
+//	public List<RewardBean> randomRewardList(List<RewardBean> rewardList, int count) {
+//		int totalWeight = 0;
+//    	for (RewardBean lottery : rewardList) {
+//    		totalWeight += lottery.getWeight();
+//    	}
+//    	
+//    	Random rand = new Random();
+//    	List<RewardBean> randomRewardList = new ArrayList<RewardBean>();
+//
+//    	while (randomRewardList.size() < count) {
+//    		int randNum = rand.nextInt(rewardList.size());
+//    		RewardBean reward = rewardList.get(randNum);
+//    		if (rand.nextInt(totalWeight) <= reward.getWeight())
+//    			randomRewardList.add(reward);
+//    	}
+//    	
+//    	return randomRewardList;
+//	}
 }

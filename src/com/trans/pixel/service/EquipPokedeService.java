@@ -1,5 +1,8 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
@@ -13,7 +16,9 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
+import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.EquipIncrease;
@@ -29,10 +34,22 @@ public class EquipPokedeService {
 	private EquipPokedeRedisService equipPokedeRedisService;
 	@Resource
 	private CostService costService;
-	@Resource
-	private RewardService rewardService;
+//	@Resource
+//	private RewardService rewardService;
 	@Resource
 	private EquipService equipService;
+
+	public List<RewardInfo> convertCost(List<CostItem> costList) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		for (CostItem cost : costList) {
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(cost.getCostid());
+			reward.setCount(cost.getCostcount());
+			rewardList.add(reward.build());
+		}
+		
+		return rewardList;
+	}
 	
 	public ResultConst heroStrengthen(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder rewards) {
 		if (pokede == null)
@@ -56,7 +73,7 @@ public class EquipPokedeService {
 		IncreaseLevel increaseLevel = equipPokedeRedisService.getIncreaseLevel(ilevel);
 		for (IncreaseRare increaseRare : increaseLevel.getRareList()) {
 			if (increaseRare.getRare() == rare) {
-				rewards.addAllLoot(rewardService.convertCost(increaseRare.getCostList()));
+				rewards.addAllLoot(convertCost(increaseRare.getCostList()));
 				break;
 			}
 		}

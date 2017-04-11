@@ -23,6 +23,8 @@ public class RewardConst {
 	public static final int CAILIAO = 24000;
 	
 	public static final int PACKAGE = 30000;	
+
+	public static final int SYNTHETISE = 30000;	
 	
 	public static final int PROP = 40000;
 	

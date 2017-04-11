@@ -566,7 +566,7 @@ public class AreaFightService extends FightService{
 				if(zhanli >= areainfo.getZhanli()){
 					areainfo.setOpened(true);
 					user.setAreaUnlock(id);
-					userService.updateUserDailyData(user);
+					userService.updateUser(user);
 					redis.saveAreaMode(areamode.build(), user);
 					return true;
 				}

@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -58,6 +59,45 @@ public class LotteryService {
 //		
 //		return lottery;
 //    }
+
+	public RewardBean randomReward(List<RewardBean> rewardList) {
+		if(rewardList.isEmpty())
+			return null;
+		int totalWeight = 0;
+		for (RewardBean reward : rewardList) {
+			totalWeight += reward.getWeight();
+		}
+		Random rand = new Random();
+		int randomNum = rand.nextInt(totalWeight);
+		totalWeight = 0;
+		for (RewardBean reward : rewardList) {
+			if (randomNum < totalWeight + reward.getWeight())
+				return reward;
+			
+			totalWeight += reward.getWeight();
+		}
+		
+		return null;
+	}
+	
+	public List<RewardBean> randomRewardList(List<RewardBean> rewardList, int count) {
+		int totalWeight = 0;
+    	for (RewardBean lottery : rewardList) {
+    		totalWeight += lottery.getWeight();
+    	}
+    	
+    	Random rand = new Random();
+    	List<RewardBean> randomRewardList = new ArrayList<RewardBean>();
+
+    	while (randomRewardList.size() < count) {
+    		int randNum = rand.nextInt(rewardList.size());
+    		RewardBean reward = rewardList.get(randNum);
+    		if (rand.nextInt(totalWeight) <= reward.getWeight())
+    			randomRewardList.add(reward);
+    	}
+    	
+    	return randomRewardList;
+	}
 	
 	public List<RewardBean> randomLotteryList(int type, int count, UserBean user) {
     	List<RewardBean> lotteryList = getLotteryList(type);
@@ -73,7 +113,7 @@ public class LotteryService {
    
     	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
     	if(count > 1){
-	    	RewardBean willReward = rewardService.randomReward(willLotteryList);
+	    	RewardBean willReward = randomReward(willLotteryList);
 	    	if (willReward != null) {
 	    		randomLotteryList.add(willReward);
 	    	}
@@ -87,7 +127,7 @@ public class LotteryService {
     	while (randomLotteryList.size() < count) {
     		if (type == RewardConst.JEWEL || type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
     			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD()) * 2) {
-    				RewardBean reward = rewardService.randomReward(prdLotteryList);
+    				RewardBean reward = randomReward(prdLotteryList);
     				if (reward != null) {
     					randomLotteryList.add(reward);
     				}
@@ -104,7 +144,7 @@ public class LotteryService {
     			}	
     		}
     		
-    		RewardBean reward = rewardService.randomReward(lotteryList);
+    		RewardBean reward = randomReward(lotteryList);
     		randomLotteryList.add(reward);
     	}
     	

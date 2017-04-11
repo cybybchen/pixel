@@ -81,7 +81,7 @@ public class PvpMapService {
 					redis.saveMapList(maplist.build(), user.getId());
 					if(map.getFieldid() > user.getPvpUnlock()){
 						user.setPvpUnlock(map.getFieldid());
-						userService.updateUserDailyData(user);
+						userService.updateUser(user);
 					}
 					
 					List<UserInfo> ranks = getRandUser(-10, 0, user);
@@ -169,7 +169,7 @@ public class PvpMapService {
 		if(count > 18)
 			count = 18;
 		if(count > 0)
-			userService.updateUserDailyData(user);
+			userService.updateUser(user);
 		return count;
 	}
 
@@ -320,7 +320,7 @@ public class PvpMapService {
 				resource = (int)(resource * 1.1);
 			rewardService.doReward(user, RewardConst.PVPCOIN, resource);
 			user.setPvpMineGainTime(time);
-			userService.updateUserDailyData(user);
+			userService.updateUser(user);
 			return true;
 		}
 		return false;
@@ -493,7 +493,7 @@ public class PvpMapService {
 		redis.getMonsters(user, new HashMap<String, String>(), true);
 
 		user.setRefreshPvpMapTime(now+48*3600);
-		userService.updateUserDailyData(user);
+		userService.updateUser(user);
 		return true;
 	}
 	
@@ -504,7 +504,7 @@ public class PvpMapService {
 		PVPMine.Builder builder = PVPMine.newBuilder(mine);
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
-			userService.updateUserDailyData(user);
+			userService.updateUser(user);
 			List<UserInfo> ranks = getRandUser(0, 10, user);
 			// UserInfo owner = builder.getOwner();
 			if(!ranks.isEmpty()){
