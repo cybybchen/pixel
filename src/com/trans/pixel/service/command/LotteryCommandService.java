@@ -269,7 +269,7 @@ public class LotteryCommandService extends BaseCommandService {
 				break;
 			case RewardConst.JEWEL :
 				user.setLotteryStatus(user.getLotteryStatus() + (1 << 2));
-				rewardList.add(RewardBean.init(53078, 1));
+				rewardList.add(RewardBean.init(51231, 1));
 				user.setJewelPRD(user.getJewelPRD() + 1);
 				break;
 			default:
