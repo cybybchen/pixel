@@ -1,6 +1,8 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -193,6 +195,19 @@ public class LevelRedisService extends RedisService {
 			return builder.build();
 		else
 			return null;
+	}
+	public List<Event> getEvents(){
+		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
+		if(keyvalue.isEmpty())
+			buildEvent();
+		keyvalue = hget(RedisKey.EVENT_CONFIG);
+		List<Event> events = new ArrayList<Event>();
+		for(String value : keyvalue.values()) {
+			Event.Builder builder = Event.newBuilder();
+			if(parseJson(value, builder))
+				events.add(builder.build());
+		}
+		return events;
 	}
 	public AreaEvent.Builder getDaguanEvent(int daguanid){
 		String value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");

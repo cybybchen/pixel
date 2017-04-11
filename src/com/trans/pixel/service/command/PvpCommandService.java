@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -91,14 +93,27 @@ public class PvpCommandService extends BaseCommandService {
 	}
 
 	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
+		List<Event> events = levelRedisService.getEvents();
 		Map<Integer, Event.Builder> eventmap = levelRedisService.getEvents(user);
-		for(Event.Builder event : eventmap.values()) {
-			Event eventconfig = levelRedisService.getEvent(event.getEventid());
+		for(Event eventconfig : events){
 			if(eventconfig.getTargetid()%100 == cmd.getFieldid()){
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MERLEVEL_FIRST);
-				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.MERLEVEL_FIRST));
-				getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
-				return;
+				boolean isError = false;
+				UserLevelBean userLevel = levelRedisService.getUserLevel(user.getId());
+				if(eventconfig.getDaguan() > userLevel.getUnlockDaguan())
+					isError = true;
+				else
+					for(Event.Builder event : eventmap.values()) {
+						if(event.getEventid() == eventconfig.getEventid()) {
+							isError = true;
+						}
+					}
+				if(isError) {
+					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
+					responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.EVENT_FIRST));
+					getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
+					return;
+				}
+				break;
 			}
 		}
 		ResultConst result = pvpMapService.unlockMap(cmd.getFieldid(), cmd.getZhanli(), user);
