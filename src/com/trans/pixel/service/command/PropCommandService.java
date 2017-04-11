@@ -75,7 +75,7 @@ public class PropCommandService extends BaseCommandService {
             return;
 		}
 		if (rewards.getLootCount() > 0) {
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
 		

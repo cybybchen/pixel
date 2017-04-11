@@ -482,44 +482,6 @@ public class PushCommandService extends BaseCommandService {
 		builder.setName(title);
 		builder.addAllLoot(RewardBean.buildRewardInfoList(rewards));
 		pushRewardCommand(responseBuilder, user, builder.build());
-//		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
-//		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
-//		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
-//		List<UserHeadBean> headList = new ArrayList<UserHeadBean>();
-//		List<Integer> pushRewardIdList = new ArrayList<Integer>();
-//		boolean isUserUpdated = false;
-//		long userId = user.getId();
-//		RewardCommand.Builder rewardbuilder = RewardCommand.newBuilder();
-//		for(RewardBean reward : rewards){
-//			rewardbuilder.addLoot(reward.buildRewardInfo());
-//			int rewardId = reward.getItemid();
-//			if (pushRewardIdList.contains(rewardId))
-//				continue;
-//			if (rewardId > RewardConst.HEAD) {
-//				headList.add(userHeadService.selectUserHead(userId, rewardId));
-//			} else if (rewardId > RewardConst.HERO) {
-//				heroList.addAll(userHeroService.selectUserNewHero(userId));
-//			} else if (rewardId > RewardConst.PACKAGE) {
-//				propList.add(userPropService.selectUserProp(userId, rewardId));
-//			} else if (rewardId > RewardConst.EQUIPMENT) {
-//				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
-//			} else {
-//				isUserUpdated = true;
-//			}
-//			pushRewardIdList.add(rewardId);
-//		}
-//		rewardbuilder.setTitle(title);
-//		responseBuilder.setRewardCommand(rewardbuilder);
-//		if (headList.size() > 0)
-//			this.pushUserHeadCommand(responseBuilder, user, headList);
-//		if(heroList.size() > 0)
-//			this.pushUserHeroListCommand(responseBuilder, user, heroList);
-//		if(propList.size() > 0)
-//			this.pushUserPropListCommand(responseBuilder, user, propList);
-//		if(equipList.size() > 0)
-//			this.pushUserEquipListCommand(responseBuilder, user, equipList);
-//		if(isUserUpdated)
-//			this.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void pushPurchaseCoinCommand(Builder responseBuilder, UserBean user) {

@@ -81,7 +81,7 @@ public class CdkeyCommandService extends BaseCommandService {
 			rewards.setId(cdkey.getId());
 			rewards.setName(cdkey.getName());
 			rewards.addAllLoot(cdkey.getRewardList());
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 			service.saveCdkeyRewarded(user, rewarded);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.CDKEY_SUCCESS));

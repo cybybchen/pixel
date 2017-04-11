@@ -214,7 +214,7 @@ public class RechargeService {
 			logger.debug("exp is" + user.getGrowExpCount());
 		}else{
 			rewards.addAllLoot(rewardList);
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 		}
 		
 		activityService.sendShouchongScore(user);
@@ -285,7 +285,7 @@ public class RechargeService {
 			return null;
 		}else{
 			rewards.addAllLoot(rewardList);
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 		}
 		
 		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getItemid(), rmb.getCostid(), rmb.getRmb());

@@ -1,6 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,11 +9,14 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Base.CostItem;
+import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
+import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
 public class RewardService {
@@ -43,17 +45,13 @@ public class RewardService {
 	private HeroRedisService heroRedisService;
 	@Resource
 	private TalentService talentService;
+	@Resource
+	private PropRedisService propRedisService;
 	
 //	public void doReward(long userId, RewardBean reward) {
 //		UserBean bean = userService.getOther(userId);
 //		doReward(bean, reward);
 //	}
-	
-	public void doReward(long userId, int rewardId, long rewardCount) {
-		UserBean bean = userService.getOther(userId);
-		if(doReward(bean, rewardId, rewardCount))
-			userService.updateUser(bean);
-	}
 	
 //	public void doReward(long userId, RewardInfo reward) {
 //		UserBean bean = userService.getOther(userId);
@@ -65,6 +63,12 @@ public class RewardService {
 //		if(doReward(user, reward.getItemid(), reward.getCount()))
 //			userService.updateUser(user);
 //	}
+	
+	public void doReward(long userId, int rewardId, long rewardCount) {
+		UserBean bean = userService.getOther(userId);
+		if(doReward(bean, rewardId, rewardCount))
+			userService.updateUser(bean);
+	}
 	public void doReward(UserBean user, RewardInfo reward) {
 		if(doReward(user, reward.getItemid(), reward.getCount()))
 			userService.updateUser(user);
@@ -85,7 +89,7 @@ public class RewardService {
 //			int heroId = rewardId % RewardConst.HERO_STAR;
 			userHeroService.addUserHero(user, heroloot.getHeroid(), heroloot.getStar(), (int)(heroloot.getCount() * rewardCount));
 		} else if (rewardId > RewardConst.PACKAGE) {
-			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
+			
 		} else if (rewardId > RewardConst.CHIP) {
 			userEquipService.addUserEquip(user, rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
@@ -142,12 +146,27 @@ public class RewardService {
 //		doRewards(bean, rewards);
 //	}
 	
-	public void doRewards(UserBean user, List<RewardBean> rewardList) {
+	public void doRewards(UserBean user, List<RewardBean> rewards) {
+		for(int i = rewards.size() - 1; i >= 0; i--) {
+			int itemid = rewards.get(i).getItemid();
+			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+				UserPropBean prop = userPropService.selectUserProp(user.getId(), itemid);
+				if(prop != null){
+					Synthetise synthetise = propRedisService.getSynthetise(itemid);
+					itemid = synthetise.getTarget();
+				}
+			}
+			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+				UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
+				if(userEquipBean != null)
+					rewards.remove(i);
+			}
+		}
+		
 		boolean needUpdateUser = false;
-		for (RewardBean reward : rewardList) {
-			boolean ret = doReward(user, reward.getItemid(), reward.getCount());
-			if (ret)
-				needUpdateUser = ret;
+		for (RewardBean reward : rewards) {
+			if(doReward(user, reward.getItemid(), reward.getCount()))
+			needUpdateUser = true;
 		}
 		
 		if (needUpdateUser) {
@@ -160,12 +179,27 @@ public class RewardService {
 //		doRewards(bean, rewardList);
 //	}
 	
-	public void doRewards(UserBean user, MultiReward rewards) {
+	public void doRewards(UserBean user, MultiReward.Builder rewards) {
+		for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+			int itemid = rewards.getLoot(i).getItemid();
+			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+				UserPropBean prop = userPropService.selectUserProp(user.getId(), itemid);
+				if(prop != null){
+					Synthetise synthetise = propRedisService.getSynthetise(itemid);
+					itemid = synthetise.getTarget();
+				}
+			}
+			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+				UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
+				if(userEquipBean != null)
+					rewards.removeLoot(i);
+			}
+		}
+		
 		boolean needUpdateUser = false;
 		for (RewardInfo reward : rewards.getLootList()) {
-			boolean ret = doReward(user, reward.getItemid(), reward.getCount());
-			if (ret)
-				needUpdateUser = ret;
+			if(doReward(user, reward.getItemid(), reward.getCount()))
+				needUpdateUser = true;
 		}
 		
 		if (needUpdateUser) {

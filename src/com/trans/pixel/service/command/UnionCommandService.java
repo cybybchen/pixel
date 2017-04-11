@@ -229,7 +229,7 @@ public class UnionCommandService extends BaseCommandService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		UnionBossRecord unionBoss = unionService.attackUnionBoss(user, union, bossId, hp, percent, rewards);
 		
-		rewardService.doRewards(user, rewards.build());
+		rewardService.doRewards(user, rewards);
 		ResponseUnionBossCommand.Builder builder = ResponseUnionBossCommand.newBuilder();
 		builder.addUnionBoss(unionBoss);
 		responseBuilder.setUnionBossCommand(builder.build());

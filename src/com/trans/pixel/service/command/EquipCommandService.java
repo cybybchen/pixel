@@ -101,7 +101,7 @@ public class EquipCommandService extends BaseCommandService {
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			rewards.addAllLoot(rewardList);
 			rewards.setName("恭喜获得");
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
 		pushCommandService.pushRewardCommand(responseBuilder, user, costItems.build(), false);

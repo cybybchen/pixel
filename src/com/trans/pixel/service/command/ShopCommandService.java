@@ -946,7 +946,7 @@ public class ShopCommandService extends BaseCommandService{
 				index -= weight.getWeight();
 			}
 		}
-		rewardService.doRewards(user, rewards.build());
+		rewardService.doRewards(user, rewards);
 		rewardService.updateUser(user);
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
@@ -1036,10 +1036,9 @@ public class ShopCommandService extends BaseCommandService{
 		for(RewardInfo reward : libao.getOrderList()){
 			builder.addLoot(reward);
 		}
-		MultiReward rewards = builder.build();
-		rewardService.doRewards(user, rewards);
+		rewardService.doRewards(user, builder);
 		userService.updateUser(user);
-		pusher.pushRewardCommand(responseBuilder, user, rewards);
+		pusher.pushRewardCommand(responseBuilder, user, builder.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 }

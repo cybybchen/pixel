@@ -52,7 +52,7 @@ public class AchieveCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			rewardService.doRewards(user, multiReward.build());
+			rewardService.doRewards(user, multiReward);
 			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
 			/**
 			 * send log

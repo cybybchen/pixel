@@ -147,7 +147,7 @@ public class AreaFightService extends FightService{
 		for(WeightReward weightreward : monsterreward.getLootList()){
 			rewards.addLoot(randReward(weightreward, monster.getLevel()));
 		}
-		rewardService.doRewards(user, rewards.build());
+		rewardService.doRewards(user, rewards);
 
 //		AreaMode.Builder areamode = redis.getAreaMode(user);
 		String[] level = redis.addLevel(monster.getBelongto(), monster.getLevel2(), user);
@@ -187,7 +187,7 @@ public class AreaFightService extends FightService{
 			for(WeightReward weightreward : monsterreward.getLootList()){
 				rewards.addLoot(randReward(weightreward, boss.getBosslv()));
 			}
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 //			//排行奖励
 //			Set<TypedTuple<String>> ranks = redis.getBossRank(id, user);
 //			AreaBossReward bossreward = redis.getBossReward(id);

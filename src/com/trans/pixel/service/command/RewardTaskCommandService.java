@@ -68,7 +68,7 @@ public class RewardTaskCommandService extends BaseCommandService {
             return;
 		}
 		
-		rewardService.doRewards(user, rewards.build());
+		rewardService.doRewards(user, rewards);
 		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 
 

@@ -142,7 +142,7 @@ public class LevelCommandService extends BaseCommandService {
 			pusher.pushUserInfoCommand(responseBuilder, user);
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			rewards.addAllLoot(daguan.getItemList());
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);

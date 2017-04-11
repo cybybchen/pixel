@@ -49,7 +49,7 @@ public class BattletowerCommandService extends BaseCommandService {
 		builder.setUbt(ubt.build());
 		responseBuilder.setUserBattletowerCommand(builder.build());
 		if (!rewards.getLootList().isEmpty()) {
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 			push.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
 	}
@@ -67,7 +67,7 @@ public class BattletowerCommandService extends BaseCommandService {
 		builder.setUbt(ubt.build());
 		responseBuilder.setUserBattletowerCommand(builder.build());
 		if (!rewards.getLootList().isEmpty()) {
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 			push.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
 	}

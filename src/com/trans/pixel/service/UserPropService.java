@@ -26,7 +26,7 @@ public class UserPropService {
 			userProp = userPropMapper.selectUserProp(userId, propId);
 //		userProp  = new UserPropBean();
 //		userProp.setPropId(propId);//for test
-//		userProp.setPropCount(2);
+//		userProp.setPropCount(0);
 //		userProp.setUserId(userId);
 		return userProp;
 	}

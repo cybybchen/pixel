@@ -355,7 +355,7 @@ public class PvpMapService {
 						rewards.addLoot(rewardinfo);
 				}
 			}
-			rewardService.doRewards(user, rewards.build());
+			rewardService.doRewards(user, rewards);
 			int buff = redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
 			if (monster.getId()/1000 == 2) {
 				/**
