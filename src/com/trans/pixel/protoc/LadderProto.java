@@ -21,29 +21,29 @@ public final class LadderProto {
      */
     int getId();
 
-    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+    // repeated .com.trans.pixel.protoc.LadderReward order = 2;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
-        getRewardList();
+    java.util.List<com.trans.pixel.protoc.LadderProto.LadderReward> 
+        getOrderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    com.trans.pixel.protoc.LadderProto.LadderReward getOrder(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    int getRewardCount();
+    int getOrderCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-        getRewardOrBuilderList();
+    java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder> 
+        getOrderOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+    com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder getOrderOrBuilder(
         int index);
   }
   /**
@@ -108,10 +108,10 @@ public final class LadderProto {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                order_ = new java.util.ArrayList<com.trans.pixel.protoc.LadderProto.LadderReward>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              order_.add(input.readMessage(com.trans.pixel.protoc.LadderProto.LadderReward.PARSER, extensionRegistry));
               break;
             }
           }
@@ -123,7 +123,7 @@ public final class LadderProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          reward_ = java.util.Collections.unmodifiableList(reward_);
+          order_ = java.util.Collections.unmodifiableList(order_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -173,45 +173,45 @@ public final class LadderProto {
       return id_;
     }
 
-    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
-    public static final int REWARD_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    // repeated .com.trans.pixel.protoc.LadderReward order = 2;
+    public static final int ORDER_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.LadderProto.LadderReward> order_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
-      return reward_;
+    public java.util.List<com.trans.pixel.protoc.LadderProto.LadderReward> getOrderList() {
+      return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-        getRewardOrBuilderList() {
-      return reward_;
+    public java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder> 
+        getOrderOrBuilderList() {
+      return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    public int getRewardCount() {
-      return reward_.size();
+    public int getOrderCount() {
+      return order_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
-      return reward_.get(index);
+    public com.trans.pixel.protoc.LadderProto.LadderReward getOrder(int index) {
+      return order_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
      */
-    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+    public com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder getOrderOrBuilder(
         int index) {
-      return reward_.get(index);
+      return order_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
-      reward_ = java.util.Collections.emptyList();
+      order_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -228,8 +228,8 @@ public final class LadderProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
-      for (int i = 0; i < reward_.size(); i++) {
-        output.writeMessage(2, reward_.get(i));
+      for (int i = 0; i < order_.size(); i++) {
+        output.writeMessage(2, order_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -244,9 +244,9 @@ public final class LadderProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      for (int i = 0; i < reward_.size(); i++) {
+      for (int i = 0; i < order_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, reward_.get(i));
+          .computeMessageSize(2, order_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -360,7 +360,7 @@ public final class LadderProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRewardFieldBuilder();
+          getOrderFieldBuilder();
         }
       }
       private static Builder create() {
@@ -371,11 +371,11 @@ public final class LadderProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (rewardBuilder_ == null) {
-          reward_ = java.util.Collections.emptyList();
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          rewardBuilder_.clear();
+          orderBuilder_.clear();
         }
         return this;
       }
@@ -409,14 +409,14 @@ public final class LadderProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
-        if (rewardBuilder_ == null) {
+        if (orderBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            reward_ = java.util.Collections.unmodifiableList(reward_);
+            order_ = java.util.Collections.unmodifiableList(order_);
             bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.reward_ = reward_;
+          result.order_ = order_;
         } else {
-          result.reward_ = rewardBuilder_.build();
+          result.order_ = orderBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -437,29 +437,29 @@ public final class LadderProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (rewardBuilder_ == null) {
-          if (!other.reward_.isEmpty()) {
-            if (reward_.isEmpty()) {
-              reward_ = other.reward_;
+        if (orderBuilder_ == null) {
+          if (!other.order_.isEmpty()) {
+            if (order_.isEmpty()) {
+              order_ = other.order_;
               bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureRewardIsMutable();
-              reward_.addAll(other.reward_);
+              ensureOrderIsMutable();
+              order_.addAll(other.order_);
             }
             onChanged();
           }
         } else {
-          if (!other.reward_.isEmpty()) {
-            if (rewardBuilder_.isEmpty()) {
-              rewardBuilder_.dispose();
-              rewardBuilder_ = null;
-              reward_ = other.reward_;
+          if (!other.order_.isEmpty()) {
+            if (orderBuilder_.isEmpty()) {
+              orderBuilder_.dispose();
+              orderBuilder_ = null;
+              order_ = other.order_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              rewardBuilder_ = 
+              orderBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getRewardFieldBuilder() : null;
+                   getOrderFieldBuilder() : null;
             } else {
-              rewardBuilder_.addAllMessages(other.reward_);
+              orderBuilder_.addAllMessages(other.order_);
             }
           }
         }
@@ -523,13 +523,852 @@ public final class LadderProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+      // repeated .com.trans.pixel.protoc.LadderReward order = 2;
+      private java.util.List<com.trans.pixel.protoc.LadderProto.LadderReward> order_ =
+        java.util.Collections.emptyList();
+      private void ensureOrderIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          order_ = new java.util.ArrayList<com.trans.pixel.protoc.LadderProto.LadderReward>(order_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.LadderReward, com.trans.pixel.protoc.LadderProto.LadderReward.Builder, com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder> orderBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.LadderProto.LadderReward> getOrderList() {
+        if (orderBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(order_);
+        } else {
+          return orderBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public int getOrderCount() {
+        if (orderBuilder_ == null) {
+          return order_.size();
+        } else {
+          return orderBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderReward getOrder(int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);
+        } else {
+          return orderBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder setOrder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderReward value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.set(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder setOrder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderReward.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder addOrder(com.trans.pixel.protoc.LadderProto.LadderReward value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder addOrder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderReward value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder addOrder(
+          com.trans.pixel.protoc.LadderProto.LadderReward.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder addOrder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderReward.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder addAllOrder(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.LadderProto.LadderReward> values) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          super.addAll(values, order_);
+          onChanged();
+        } else {
+          orderBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder clearOrder() {
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          orderBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public Builder removeOrder(int index) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.remove(index);
+          onChanged();
+        } else {
+          orderBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderReward.Builder getOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder getOrderOrBuilder(
+          int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);  } else {
+          return orderBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder> 
+           getOrderOrBuilderList() {
+        if (orderBuilder_ != null) {
+          return orderBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(order_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderReward.Builder addOrderBuilder() {
+        return getOrderFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.LadderProto.LadderReward.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderReward.Builder addOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.LadderProto.LadderReward.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderReward order = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.LadderProto.LadderReward.Builder> 
+           getOrderBuilderList() {
+        return getOrderFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.LadderReward, com.trans.pixel.protoc.LadderProto.LadderReward.Builder, com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder> 
+          getOrderFieldBuilder() {
+        if (orderBuilder_ == null) {
+          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.LadderReward, com.trans.pixel.protoc.LadderProto.LadderReward.Builder, com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder>(
+                  order_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          order_ = null;
+        }
+        return orderBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderWinReward)
+    }
+
+    static {
+      defaultInstance = new LadderWinReward(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.LadderWinReward)
+  }
+
+  public interface LadderRewardOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 order = 1;
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    boolean hasOrder();
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    int getOrder();
+
+    // optional int32 weight = 2;
+    /**
+     * <code>optional int32 weight = 2;</code>
+     */
+    boolean hasWeight();
+    /**
+     * <code>optional int32 weight = 2;</code>
+     */
+    int getWeight();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 3;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.LadderReward}
+   */
+  public static final class LadderReward extends
+      com.google.protobuf.GeneratedMessage
+      implements LadderRewardOrBuilder {
+    // Use LadderReward.newBuilder() to construct.
+    private LadderReward(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private LadderReward(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final LadderReward defaultInstance;
+    public static LadderReward getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public LadderReward getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LadderReward(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              order_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              weight_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderReward_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderReward_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.LadderProto.LadderReward.class, com.trans.pixel.protoc.LadderProto.LadderReward.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<LadderReward> PARSER =
+        new com.google.protobuf.AbstractParser<LadderReward>() {
+      public LadderReward parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LadderReward(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LadderReward> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 order = 1;
+    public static final int ORDER_FIELD_NUMBER = 1;
+    private int order_;
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    public boolean hasOrder() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    public int getOrder() {
+      return order_;
+    }
+
+    // optional int32 weight = 2;
+    public static final int WEIGHT_FIELD_NUMBER = 2;
+    private int weight_;
+    /**
+     * <code>optional int32 weight = 2;</code>
+     */
+    public boolean hasWeight() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 weight = 2;</code>
+     */
+    public int getWeight() {
+      return weight_;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 3;
+    public static final int REWARD_FIELD_NUMBER = 3;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
+    private void initFields() {
+      order_ = 0;
+      weight_ = 0;
+      reward_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, order_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, weight_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(3, reward_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, order_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, weight_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, reward_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderReward parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.LadderProto.LadderReward prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.LadderReward}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.LadderProto.LadderRewardOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderReward_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderReward_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.LadderProto.LadderReward.class, com.trans.pixel.protoc.LadderProto.LadderReward.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.LadderProto.LadderReward.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        order_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        weight_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderReward_descriptor;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderReward getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.LadderProto.LadderReward.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderReward build() {
+        com.trans.pixel.protoc.LadderProto.LadderReward result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderReward buildPartial() {
+        com.trans.pixel.protoc.LadderProto.LadderReward result = new com.trans.pixel.protoc.LadderProto.LadderReward(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.order_ = order_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.weight_ = weight_;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.LadderProto.LadderReward) {
+          return mergeFrom((com.trans.pixel.protoc.LadderProto.LadderReward)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.LadderProto.LadderReward other) {
+        if (other == com.trans.pixel.protoc.LadderProto.LadderReward.getDefaultInstance()) return this;
+        if (other.hasOrder()) {
+          setOrder(other.getOrder());
+        }
+        if (other.hasWeight()) {
+          setWeight(other.getWeight());
+        }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.LadderProto.LadderReward parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.LadderProto.LadderReward) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 order = 1;
+      private int order_ ;
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public boolean hasOrder() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public int getOrder() {
+        return order_;
+      }
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public Builder setOrder(int value) {
+        bitField0_ |= 0x00000001;
+        order_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public Builder clearOrder() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        order_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 weight = 2;
+      private int weight_ ;
+      /**
+       * <code>optional int32 weight = 2;</code>
+       */
+      public boolean hasWeight() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 weight = 2;</code>
+       */
+      public int getWeight() {
+        return weight_;
+      }
+      /**
+       * <code>optional int32 weight = 2;</code>
+       */
+      public Builder setWeight(int value) {
+        bitField0_ |= 0x00000002;
+        weight_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 weight = 2;</code>
+       */
+      public Builder clearWeight() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        weight_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 3;
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
         java.util.Collections.emptyList();
       private void ensureRewardIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -537,7 +1376,7 @@ public final class LadderProto {
           com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
         if (rewardBuilder_ == null) {
@@ -547,7 +1386,7 @@ public final class LadderProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public int getRewardCount() {
         if (rewardBuilder_ == null) {
@@ -557,7 +1396,7 @@ public final class LadderProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
         if (rewardBuilder_ == null) {
@@ -567,7 +1406,7 @@ public final class LadderProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder setReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo value) {
@@ -584,7 +1423,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder setReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
@@ -598,7 +1437,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
         if (rewardBuilder_ == null) {
@@ -614,7 +1453,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder addReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo value) {
@@ -631,7 +1470,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder addReward(
           com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
@@ -645,7 +1484,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder addReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
@@ -659,7 +1498,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder addAllReward(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
@@ -673,12 +1512,12 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder clearReward() {
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           rewardBuilder_.clear();
@@ -686,7 +1525,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public Builder removeReward(int index) {
         if (rewardBuilder_ == null) {
@@ -699,14 +1538,14 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
           int index) {
         return getRewardFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
           int index) {
@@ -716,7 +1555,7 @@ public final class LadderProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
            getRewardOrBuilderList() {
@@ -727,14 +1566,14 @@ public final class LadderProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
         return getRewardFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
           int index) {
@@ -742,7 +1581,7 @@ public final class LadderProto {
             index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 3;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
            getRewardBuilderList() {
@@ -755,7 +1594,7 @@ public final class LadderProto {
           rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   reward_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           reward_ = null;
@@ -763,15 +1602,15 @@ public final class LadderProto {
         return rewardBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderWinReward)
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderReward)
     }
 
     static {
-      defaultInstance = new LadderWinReward(true);
+      defaultInstance = new LadderReward(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.LadderWinReward)
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.LadderReward)
   }
 
   public interface LadderWinRewardListOrBuilder
@@ -12875,6 +13714,11 @@ public final class LadderProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_LadderWinReward_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_LadderReward_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_LadderReward_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_LadderWinRewardList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -12989,45 +13833,47 @@ public final class LadderProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\021LadderProto.proto\022\026com.trans.pixel.pro" +
-      "toc\032\nBase.proto\"Q\n\017LadderWinReward\022\n\n\002id" +
-      "\030\001 \001(\005\0222\n\006reward\030\002 \003(\0132\".com.trans.pixel" +
-      ".protoc.RewardInfo\"J\n\023LadderWinRewardLis" +
-      "t\0223\n\002id\030\001 \003(\0132\'.com.trans.pixel.protoc.L" +
-      "adderWinReward\"K\n\021LadderRankingList\0226\n\007r" +
-      "anking\030\001 \003(\0132%.com.trans.pixel.protoc.La" +
-      "dderRanking\"[\n\rLadderRanking\022\017\n\007rankink\030" +
-      "\001 \002(\005\022\014\n\004star\030\002 \002(\005\022\n\n\002lv\030\003 \002(\005\022\014\n\004rare\030" +
-      "\004 \002(\005\022\021\n\therocount\030\005 \002(\005\"B\n\016LadderNameLi",
-      "st\0220\n\004name\030\001 \003(\0132\".com.trans.pixel.proto" +
-      "c.LadderName\"(\n\nLadderName\022\014\n\004type\030\001 \002(\005" +
-      "\022\014\n\004name\030\002 \002(\t\"G\n\017LadderEnemyList\0224\n\007ran" +
-      "king\030\001 \003(\0132#.com.trans.pixel.protoc.Ladd" +
-      "erEnemy\"\214\001\n\013LadderEnemy\022\017\n\007ranking\030\001 \002(\005" +
-      "\022\020\n\010ranking1\030\002 \002(\005\022\014\n\004star\030\003 \002(\005\022\n\n\002lv\030\004" +
-      " \002(\005\022\014\n\004rare\030\005 \002(\005\022\021\n\therocount\030\006 \002(\005\022\016\n" +
-      "\006zhanli\030\007 \002(\005\022\017\n\007zhanli1\030\010 \002(\005\"=\n\tFightI" +
-      "nfo\022\n\n\002id\030\003 \001(\005\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tfi" +
-      "ghtData\030\002 \002(\t\"\034\n\032RequestGetFightInfoComm",
-      "and\"J\n\027RequestFightInfoCommand\022/\n\004info\030\001" +
-      " \002(\0132!.com.trans.pixel.protoc.FightInfo\"" +
-      "K\n\030ResponseFightInfoCommand\022/\n\004info\030\001 \003(" +
-      "\0132!.com.trans.pixel.protoc.FightInfo\"!\n\037" +
-      "RequestGetLadderRankListCommand\"%\n#Reque" +
-      "stGetUserLadderRankListCommand\"V\n Respon" +
-      "seGetLadderRankListCommand\0222\n\010userRank\030\001" +
-      " \003(\0132 .com.trans.pixel.protoc.UserRank\"Z" +
-      "\n$ResponseGetUserLadderRankListCommand\0222" +
-      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto",
-      "c.UserRank\"a\n\036RequestAttackLadderModeCom" +
-      "mand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamI" +
-      "d\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(\003\";\n\037Respons" +
-      "eAttackLadderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n" +
-      "\003msg\030\002 \002(\t\"!\n\037RequestReadyAttackLadderCo" +
-      "mmand\"/\n\037RequestGetLadderUserInfoCommand" +
-      "\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPurchaseLadderT" +
-      "imeCommand\"V\n ResponseGetLadderUserInfoC" +
-      "ommand\0222\n\010userRank\030\001 \002(\0132 .com.trans.pix" +
-      "el.protoc.UserRank"
+      "toc\032\nBase.proto\"R\n\017LadderWinReward\022\n\n\002id" +
+      "\030\001 \001(\005\0223\n\005order\030\002 \003(\0132$.com.trans.pixel." +
+      "protoc.LadderReward\"a\n\014LadderReward\022\r\n\005o" +
+      "rder\030\001 \001(\005\022\016\n\006weight\030\002 \001(\005\0222\n\006reward\030\003 \003" +
+      "(\0132\".com.trans.pixel.protoc.RewardInfo\"J" +
+      "\n\023LadderWinRewardList\0223\n\002id\030\001 \003(\0132\'.com." +
+      "trans.pixel.protoc.LadderWinReward\"K\n\021La" +
+      "dderRankingList\0226\n\007ranking\030\001 \003(\0132%.com.t" +
+      "rans.pixel.protoc.LadderRanking\"[\n\rLadde",
+      "rRanking\022\017\n\007rankink\030\001 \002(\005\022\014\n\004star\030\002 \002(\005\022" +
+      "\n\n\002lv\030\003 \002(\005\022\014\n\004rare\030\004 \002(\005\022\021\n\therocount\030\005" +
+      " \002(\005\"B\n\016LadderNameList\0220\n\004name\030\001 \003(\0132\".c" +
+      "om.trans.pixel.protoc.LadderName\"(\n\nLadd" +
+      "erName\022\014\n\004type\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\"G\n\017La" +
+      "dderEnemyList\0224\n\007ranking\030\001 \003(\0132#.com.tra" +
+      "ns.pixel.protoc.LadderEnemy\"\214\001\n\013LadderEn" +
+      "emy\022\017\n\007ranking\030\001 \002(\005\022\020\n\010ranking1\030\002 \002(\005\022\014" +
+      "\n\004star\030\003 \002(\005\022\n\n\002lv\030\004 \002(\005\022\014\n\004rare\030\005 \002(\005\022\021" +
+      "\n\therocount\030\006 \002(\005\022\016\n\006zhanli\030\007 \002(\005\022\017\n\007zha",
+      "nli1\030\010 \002(\005\"=\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022\021\n\tf" +
+      "ightInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032Req" +
+      "uestGetFightInfoCommand\"J\n\027RequestFightI" +
+      "nfoCommand\022/\n\004info\030\001 \002(\0132!.com.trans.pix" +
+      "el.protoc.FightInfo\"K\n\030ResponseFightInfo" +
+      "Command\022/\n\004info\030\001 \003(\0132!.com.trans.pixel." +
+      "protoc.FightInfo\"!\n\037RequestGetLadderRank" +
+      "ListCommand\"%\n#RequestGetUserLadderRankL" +
+      "istCommand\"V\n ResponseGetLadderRankListC" +
+      "ommand\0222\n\010userRank\030\001 \003(\0132 .com.trans.pix",
+      "el.protoc.UserRank\"Z\n$ResponseGetUserLad" +
+      "derRankListCommand\0222\n\010userRank\030\001 \003(\0132 .c" +
+      "om.trans.pixel.protoc.UserRank\"a\n\036Reques" +
+      "tAttackLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013" +
+      "\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUse" +
+      "rId\030\004 \001(\003\";\n\037ResponseAttackLadderModeCom" +
+      "mand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037Reques" +
+      "tReadyAttackLadderCommand\"/\n\037RequestGetL" +
+      "adderUserInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n Re" +
+      "questPurchaseLadderTimeCommand\"V\n Respon",
+      "seGetLadderUserInfoCommand\0222\n\010userRank\030\001" +
+      " \002(\0132 .com.trans.pixel.protoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13039,129 +13885,135 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_LadderWinReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderWinReward_descriptor,
-              new java.lang.String[] { "Id", "Reward", });
-          internal_static_com_trans_pixel_protoc_LadderWinRewardList_descriptor =
+              new java.lang.String[] { "Id", "Order", });
+          internal_static_com_trans_pixel_protoc_LadderReward_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_com_trans_pixel_protoc_LadderReward_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_LadderReward_descriptor,
+              new java.lang.String[] { "Order", "Weight", "Reward", });
+          internal_static_com_trans_pixel_protoc_LadderWinRewardList_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_LadderWinRewardList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderWinRewardList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_LadderRankingList_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_LadderRankingList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderRankingList_descriptor,
               new java.lang.String[] { "Ranking", });
           internal_static_com_trans_pixel_protoc_LadderRanking_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_LadderRanking_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderRanking_descriptor,
               new java.lang.String[] { "Rankink", "Star", "Lv", "Rare", "Herocount", });
           internal_static_com_trans_pixel_protoc_LadderNameList_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_LadderNameList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderNameList_descriptor,
               new java.lang.String[] { "Name", });
           internal_static_com_trans_pixel_protoc_LadderName_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_LadderName_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderName_descriptor,
               new java.lang.String[] { "Type", "Name", });
           internal_static_com_trans_pixel_protoc_LadderEnemyList_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_LadderEnemyList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderEnemyList_descriptor,
               new java.lang.String[] { "Ranking", });
           internal_static_com_trans_pixel_protoc_LadderEnemy_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_LadderEnemy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderEnemy_descriptor,
               new java.lang.String[] { "Ranking", "Ranking1", "Star", "Lv", "Rare", "Herocount", "Zhanli", "Zhanli1", });
           internal_static_com_trans_pixel_protoc_FightInfo_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_FightInfo_descriptor,
               new java.lang.String[] { "Id", "FightInfo", "FightData", });
           internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_descriptor,
               new java.lang.String[] { "Info", });
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_descriptor,
               new java.lang.String[] { "Info", });
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Rank", "Ret", "TeamId", "AttackUserId", });
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Ret", "Msg", });
           internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_descriptor,
               new java.lang.String[] { "Rank", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_descriptor,

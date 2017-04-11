@@ -2303,7 +2303,12 @@ message Rankvalue {
 ////////// LadderProto
 message LadderWinReward {
 	optional int32 id = 1;
-	repeated RewardInfo reward = 2;
+	repeated LadderReward order = 2;
+}
+message LadderReward {
+	optional int32 order = 1;
+	optional int32 weight = 2;
+	repeated RewardInfo reward = 3;
 }
 
 message LadderWinRewardList {

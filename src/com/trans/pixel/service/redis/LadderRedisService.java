@@ -20,10 +20,13 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderEnemyList;
 import com.trans.pixel.protoc.LadderProto.LadderName;
 import com.trans.pixel.protoc.LadderProto.LadderNameList;
+import com.trans.pixel.protoc.LadderProto.LadderReward;
+import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhiList;
@@ -68,7 +71,14 @@ public class LadderRedisService extends RedisService{
 			return builder.build();
 		String xml = ReadConfig("ld_ladderwin.xml");
 		parseXml(xml, builder);
-		int weight = 0;
+		for(LadderWinReward.Builder win : builder.getIdBuilderList()){
+			for(LadderReward.Builder ladderreward : win.getOrderBuilderList()){
+				int weight = 0;
+				for(RewardInfo reward: ladderreward.getRewardList())
+					weight += reward.getWeight();
+				ladderreward.setWeight(weight);
+			}
+		}
 		set(RedisKey.LADDERWIN_CONFIG, formatJson(builder.build()));
 		return builder.build();
 	}

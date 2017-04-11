@@ -37,12 +37,14 @@ import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
+import com.trans.pixel.protoc.LadderProto.LadderReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
 import com.trans.pixel.protoc.ShopProto.LadderDaily;
 import com.trans.pixel.protoc.ShopProto.LadderDailyList;
 import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -244,7 +246,16 @@ public class LadderService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		for(LadderWinReward win : list.getIdList()){
 			if(win.getId() == id){
-				rewards.addAllLoot(win.getRewardList());
+				for(LadderReward ladderreward : win.getOrderList()){
+					int weight = RedisService.nextInt(ladderreward.getWeight());
+					for(RewardInfo reward: ladderreward.getRewardList()){
+						weight -= reward.getWeight();
+						if(weight <= 0){
+							rewards.addLoot(reward);
+							break;
+						}
+					}
+				}
 				return rewards.build();
 			}
 		}
