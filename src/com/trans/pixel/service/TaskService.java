@@ -210,14 +210,15 @@ public class TaskService {
 		UserTask.Builder userTask = UserTask.newBuilder(getUserTask(user, type, taskOrder.getTargetid()));
 		if (userTask.getStatus() == 1)
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
-		if (type == 2 && taskOrder.getTargetid() % 1000 == 700) {
+		if (type == 2) {
 			if (!userTask.getHeroidList().contains(taskOrder.getTargetcount())) {
 				return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 			}
 		} else if (userTask.getProcess() < taskOrder.getTargetcount())
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
-		rewards.addAllLoot(getRewardList(taskOrder));
+//		rewards.addAllLoot(getRewardList(taskOrder));
+		rewards.addAllLoot(taskOrder.getRewardList());
 		updateUserTaskProcess(userTask, user, type, heroId);
 		
 		if (type == 3) {
