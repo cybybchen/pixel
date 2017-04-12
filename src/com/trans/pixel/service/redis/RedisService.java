@@ -1052,7 +1052,7 @@ public class RedisService {
 		return (int)((System.currentTimeMillis()/1000L+8*3600)/24/3600L+3)%7+1;
 	}
 	public static int currentIndex(){
-		return (int)(System.currentTimeMillis()%1073741824 +1024);
+		return (int)(System.currentTimeMillis()%1073741824 +10240);
 	}
 
 	public static int nextInt(int value){

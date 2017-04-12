@@ -116,7 +116,7 @@ public class LevelCommandService extends BaseCommandService {
 				redis.saveUserLevel(userLevel);
 				for(Event.Builder event : events.getEventBuilderList()){
 					if(id == event.getDaguan() && event.getWeight() == 0){
-//						event.setOrder(RedisService.currentIndex()+event.getOrder());
+						event.setOrder(events.getId()*30+event.getOrder());
 						redis.saveEvent(user, event.build());
 					}
 				}
@@ -193,7 +193,7 @@ public class LevelCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
             responseBuilder.setErrorCommand(errorCommand);
-		}else if(event.getOrder() >= 100 || cmd.getRet()){
+		}else if(event.getOrder() >= 10000 || cmd.getRet()){
 			Event eventconfig = redis.getEvent(event.getEventid());
 			if(eventconfig == null){
 				redis.delEvent(user, event.getOrder());
@@ -229,7 +229,7 @@ public class LevelCommandService extends BaseCommandService {
 				 * 完成事件的活动
 				 */
 				activityService.completeEvent(user, event.getEventid());
-			}else if(event.getOrder() >= 100 && !cmd.hasTurn())//give up fight event
+			}else if(event.getOrder() >= 10000 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event.getOrder());
 		}
 		user.addMyactive();
