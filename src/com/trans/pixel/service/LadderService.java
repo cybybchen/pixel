@@ -20,6 +20,7 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.LadderRankingBean;
@@ -27,6 +28,7 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
@@ -35,15 +37,16 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
-import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
 import com.trans.pixel.protoc.ShopProto.LadderDaily;
 import com.trans.pixel.protoc.ShopProto.LadderDailyList;
 import com.trans.pixel.service.redis.LadderRedisService;
+import com.trans.pixel.service.redis.PropRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -73,6 +76,10 @@ public class LadderService {
 	private PvpMapService pvpMapService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
+	@Resource
+	private UserEquipService userEquipService;
+	@Resource
+	private PropRedisService propRedisService;
 	
 //	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
 //        public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -241,22 +248,33 @@ public class LadderService {
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}
 
-	public MultiReward getRandLadderWinReward(int id){
-		LadderWinRewardList list = ladderRedisService.getLadderWinRewardList();
+	public MultiReward getRandLadderWinReward(UserBean user, int id){
+		LadderWinReward.Builder win = ladderRedisService.getLadderWinReward(id);
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		for(LadderWinReward win : list.getIdList()){
-			if(win.getId() == id){
-				for(LadderReward ladderreward : win.getOrderList()){
-					int weight = RedisService.nextInt(ladderreward.getWeight());
-					for(RewardInfo reward: ladderreward.getRewardList()){
-						weight -= reward.getWeight();
-						if(weight <= 0){
-							rewards.addLoot(reward);
-							break;
-						}
+		for(LadderReward.Builder ladderreward : win.getOrderBuilderList()){
+			for(RewardInfo.Builder reward: ladderreward.getRewardBuilderList()){
+				int itemid = reward.getItemid();
+				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+					Synthetise synthetise = propRedisService.getSynthetise(itemid);
+					itemid = synthetise.getTarget();
+				}
+				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+					UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
+					if(userEquipBean != null){
+						ladderreward.setWeight(ladderreward.getWeight()-reward.getWeight());
+						reward.setWeight(0);
 					}
 				}
-				return rewards.build();
+			}
+		}
+		for(LadderReward ladderreward : win.getOrderList()){
+			int weight = RedisService.nextInt(ladderreward.getWeight());
+			for(RewardInfo reward: ladderreward.getRewardList()){
+				weight -= reward.getWeight();
+				if(weight <= 0){
+					rewards.addLoot(reward);
+					break;
+				}
 			}
 		}
 		return rewards.build();
@@ -386,7 +404,7 @@ public class LadderService {
 				if (robot == null) {
 					robot = new UserBean();
 					String robotName = randomRobotName(name2List, nameList);
-					robot.init(serverId, "account", robotName, ladderRedisService.nextInt(5) + 61001);
+					robot.init(serverId, "account", robotName, RedisService.nextInt(5) + 61001);
 					robot.setId(userId);
 					Team.Builder team = Team.newBuilder();
 					List<HeroInfo> heroInfoList = getHeroInfoList(heroMap, ladderEnemy);

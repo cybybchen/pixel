@@ -95,7 +95,7 @@ public class LadderCommandService extends BaseCommandService {
 			if (result.getCode() == SuccessConst.LADDER_ATTACK_SUCCESS.getCode()) {
 				pushCommandService.pushGetUserLadderRankListCommand(responseBuilder, user);
 				MultiReward.Builder rewards = updateUserLadderHistoryTop(user, attackRank, responseBuilder);
-				MultiReward winrewards = ladderService.getRandLadderWinReward(1);
+				MultiReward winrewards = ladderService.getRandLadderWinReward(user, 1);
 				rewards.addAllLoot(winrewards.getLootList());
 				if(!rewards.hasName())
 					rewards.setName("天梯获胜奖励");
@@ -105,7 +105,7 @@ public class LadderCommandService extends BaseCommandService {
 				}
 			} else if(result.getCode() == SuccessConst.LADDER_ATTACK_FAIL.getCode()) {
 				MultiReward.Builder rewards = MultiReward.newBuilder();
-				MultiReward winrewards = ladderService.getRandLadderWinReward(2);
+				MultiReward winrewards = ladderService.getRandLadderWinReward(user, 2);
 				rewards.addAllLoot(winrewards.getLootList());
 				if(!rewards.hasName())
 					rewards.setName("天梯参与奖励");

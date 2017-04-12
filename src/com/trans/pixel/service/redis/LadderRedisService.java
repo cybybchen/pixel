@@ -64,23 +64,28 @@ public class LadderRedisService extends RedisService{
 			return builder.build();
 	}
 
-	public LadderWinRewardList getLadderWinRewardList(){
-		LadderWinRewardList.Builder builder = LadderWinRewardList.newBuilder();
-		String value = get(RedisKey.LADDERWIN_CONFIG);
+	public LadderWinReward.Builder getLadderWinReward(int id){
+		LadderWinReward.Builder builder = LadderWinReward.newBuilder();
+		String value = hget(RedisKey.LADDERWIN_CONFIG, id+"");
 		if(value != null && parseJson(value, builder))
-			return builder.build();
+			return builder;
 		String xml = ReadConfig("ld_ladderwin.xml");
-		parseXml(xml, builder);
-		for(LadderWinReward.Builder win : builder.getIdBuilderList()){
+		LadderWinRewardList.Builder list = LadderWinRewardList.newBuilder();
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		parseXml(xml, list);
+		for(LadderWinReward.Builder win : list.getIdBuilderList()){
 			for(LadderReward.Builder ladderreward : win.getOrderBuilderList()){
 				int weight = 0;
 				for(RewardInfo reward: ladderreward.getRewardList())
 					weight += reward.getWeight();
 				ladderreward.setWeight(weight);
 			}
+			if(win.getId() == id)
+				builder = win;
+			keyvalue.put(win.getId()+"", formatJson(win.build()));
 		}
-		set(RedisKey.LADDERWIN_CONFIG, formatJson(builder.build()));
-		return builder.build();
+		hputAll(RedisKey.LADDERWIN_CONFIG, keyvalue);
+		return builder;
 	}
 	
 	

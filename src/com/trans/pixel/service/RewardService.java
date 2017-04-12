@@ -10,7 +10,6 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
@@ -150,11 +149,8 @@ public class RewardService {
 		for(int i = rewards.size() - 1; i >= 0; i--) {
 			int itemid = rewards.get(i).getItemid();
 			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
-				UserPropBean prop = userPropService.selectUserProp(user.getId(), itemid);
-				if(prop != null){
-					Synthetise synthetise = propRedisService.getSynthetise(itemid);
-					itemid = synthetise.getTarget();
-				}
+				Synthetise synthetise = propRedisService.getSynthetise(itemid);
+				itemid = synthetise.getTarget();
 			}
 			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
 				UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
@@ -183,11 +179,8 @@ public class RewardService {
 		for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
 			int itemid = rewards.getLoot(i).getItemid();
 			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
-				UserPropBean prop = userPropService.selectUserProp(user.getId(), itemid);
-				if(prop != null){
-					Synthetise synthetise = propRedisService.getSynthetise(itemid);
-					itemid = synthetise.getTarget();
-				}
+				Synthetise synthetise = propRedisService.getSynthetise(itemid);
+				itemid = synthetise.getTarget();
 			}
 			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
 				UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);

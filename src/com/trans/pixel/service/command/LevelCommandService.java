@@ -159,12 +159,14 @@ public class LevelCommandService extends BaseCommandService {
 	public void eventReward(Event event, Builder responseBuilder, UserBean user){
 		List<RewardBean> rewards = new ArrayList<RewardBean>();
 		for(EventReward eventreward : event.getRewardList()){
-			RewardBean bean = new RewardBean();
-			bean.setItemid(eventreward.getRewardid());
-			bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
-			if(event.getLevel() > 0 && eventreward.getRewarddouble() == 0)
-				bean.setCount(bean.getCount()*event.getCount());
-			rewards.add(bean);
+			if(RedisService.nextInt(100) <= eventreward.getRewardweight()) {
+				RewardBean bean = new RewardBean();
+				bean.setItemid(eventreward.getRewardid());
+				bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
+				if(event.getLevel() > 0 && eventreward.getRewarddouble() == 0)
+					bean.setCount(bean.getCount()*event.getCount());
+				rewards.add(bean);
+			}
 		}
 		rewardService.doRewards(user, rewards);
 		pusher.pushRewardCommand(responseBuilder, user, rewards);

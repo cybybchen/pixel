@@ -73,12 +73,9 @@ public class LevelRedisService extends RedisService {
 		return userLevel;
 	}
 	public UserLevelBean getUserLevel(UserBean user){
-		UserLevelBean userLevel = getUserLevel(user.getId());
-		if(userLevel != null)
-			return userLevel;
-		
-		return userLevel;
+		return getUserLevel(user.getId());
 	}
+	
 	public MultiReward.Builder getLootReward(UserBean user){
 		MultiReward.Builder builder = MultiReward.newBuilder();
 		String value = hget(RedisKey.USERDATA+user.getId(), "LootReward");
