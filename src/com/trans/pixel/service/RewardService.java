@@ -225,7 +225,7 @@ public class RewardService {
 		if (reward.getCounta() == reward.getCountb())
 			return reward.getCounta();
 		
-		return RandomUtils.nextInt(Math.abs(reward.getCountb() - reward.getCounta())) + Math.min(reward.getCountb(), reward.getCounta());
+		return RandomUtils.nextInt(Math.abs(reward.getCountb() - reward.getCounta()) + 1) + Math.min(reward.getCountb(), reward.getCounta());
 	}
 	
 //	public List<RewardBean> mergeReward(List<RewardBean> rewardList, List<RewardBean> mergeRewardList) {
