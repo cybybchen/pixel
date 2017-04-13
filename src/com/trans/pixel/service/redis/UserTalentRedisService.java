@@ -124,17 +124,33 @@ public class UserTalentRedisService extends RedisService {
 		return userTalentSkillList;
 	}
 	
-	public void updateUserTalentSkillList(long userId, List<UserTalentSkillBean> utList) {
+	public void updateUserTalentSkillBeanList(long userId, List<UserTalentSkillBean> utList) {
+		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
+		Map<String,String> map = composeUserTalentSkillBeanMap(utList);
+		this.hputAll(key, map);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public void updateUserTalentSkillList(long userId, List<UserTalentSkill> utList) {
 		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
 		Map<String,String> map = composeUserTalentSkillMap(utList);
 		this.hputAll(key, map);
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
-	private Map<String, String> composeUserTalentSkillMap(List<UserTalentSkillBean> utList) {
+	private Map<String, String> composeUserTalentSkillBeanMap(List<UserTalentSkillBean> utList) {
 		Map<String, String> map = new HashMap<String, String>();
 		for (UserTalentSkillBean ut : utList) {
 			map.put("" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId(), formatJson(ut.buildUserTalentSkill()));
+		}
+		
+		return map;
+	}
+	
+	private Map<String, String> composeUserTalentSkillMap(List<UserTalentSkill> utList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (UserTalentSkill ut : utList) {
+			map.put("" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId(), formatJson(ut));
 		}
 		
 		return map;

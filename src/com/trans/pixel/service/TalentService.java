@@ -105,14 +105,18 @@ public class TalentService {
 	public void levelupTalentSkill(UserBean user, int talentId, int level) {
 		List<UserTalentSkill> userTalentSkillList = userTalentService.getUserTalentSkillListByTalentId(user, talentId);
 		while (level > 0) {
+			int randomNum = RandomUtils.nextInt(userTalentSkillList.size());
 			UserTalentSkill.Builder builder = UserTalentSkill.newBuilder(
-					userTalentSkillList.get(RandomUtils.nextInt(userTalentSkillList.size())));
+					userTalentSkillList.get(randomNum));
 			if (builder.getLevel() >= 20)
 				continue;
 			builder.setLevel(builder.getLevel() + 1);
-			userTalentService.updateUserTalentSkill(user, builder.build());
+			userTalentSkillList.remove(randomNum);
+			userTalentSkillList.add(builder.build());
 			level--;
 		}
+		
+		userTalentService.updateUserTalentSkillList(user, userTalentSkillList);
 	}
 	
 	private UserTalent unlockTalent(UserBean user, UserTalent.Builder utBuilder, int originalLevel) {

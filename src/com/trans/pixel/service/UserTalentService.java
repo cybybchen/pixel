@@ -175,6 +175,10 @@ public class UserTalentService {
 		userTalentRedisService.updateUserTalentSkill(user.getId(), ut);
 	}
 	
+	public void updateUserTalentSkillList(UserBean user, List<UserTalentSkill> utList) {
+		userTalentRedisService.updateUserTalentSkillList(user.getId(), utList);
+	}
+	
 	public List<UserTalentSkill> getUserTalentSkillListByTalentId(UserBean user, int talentId) {
 		List<UserTalentSkill> userTalentSkillList = getUserTalentSkillList(user);
 		List<UserTalentSkill> userTalentSkillList2 = new ArrayList<UserTalentSkill>();
@@ -194,7 +198,7 @@ public class UserTalentService {
 			List<UserTalentSkillBean> utBeanList = userTalentSkillMapper.selectUserTalentSkillList(user.getId());
 			log.debug("12 + size:" + utBeanList.size());
 			if (utBeanList != null && !utBeanList.isEmpty()) {
-				userTalentRedisService.updateUserTalentSkillList(user.getId(), utBeanList);
+				userTalentRedisService.updateUserTalentSkillBeanList(user.getId(), utBeanList);
 				userTalentSkillList = userTalentRedisService.getUserTalentSkillList(user.getId());
 			} 
 		}
