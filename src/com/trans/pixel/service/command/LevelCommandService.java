@@ -168,7 +168,7 @@ public class LevelCommandService extends BaseCommandService {
 				rewards.add(bean);
 			}
 		}
-		rewardService.doRewards(user, rewards);
+		rewardService.doFilterRewards(user, rewards);
 		pusher.pushRewardCommand(responseBuilder, user, rewards);
 	}
 

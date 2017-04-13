@@ -44,7 +44,7 @@ public class BossCommandService extends BaseCommandService {
 	public void bossKill(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardBean> rewardList = bossService.submitBosskill(user, cmd.getGroupId(), cmd.getBossId());
 		if (rewardList != null && rewardList.size() > 0) {
-			rewardService.doRewards(user, rewardList);
+			rewardService.doFilterRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
 		} else {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
@@ -188,7 +188,7 @@ public class BossCommandService extends BaseCommandService {
 			responseBuilder.setBossRoomRecordCommand(roombuilder.build());
 		}
 		if (!rewardList.isEmpty()) {
-			rewardService.doRewards(user, rewardList);
+			rewardService.doFilterRewards(user, rewardList);
 			pusher.pushRewardCommand(responseBuilder, user, rewardList);
 			
 			pusher.pushUserBosskillRecord(responseBuilder, user);

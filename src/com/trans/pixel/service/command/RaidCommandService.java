@@ -70,7 +70,7 @@ public class RaidCommandService extends BaseCommandService{
 				reward.setCount(raidReward.getLootcount());
 				rewards.addLoot(reward);
 			}
-			rewardService.doRewards(user, rewards);
+			rewardService.doFilterRewards(user, rewards);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			id++;
 			order = redis.getRaidOrder(id);

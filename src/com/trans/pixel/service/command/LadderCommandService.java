@@ -100,7 +100,7 @@ public class LadderCommandService extends BaseCommandService {
 				if(!rewards.hasName())
 					rewards.setName("天梯获胜奖励");
 				if (rewards.getLootList().size() > 0) {
-					rewardService.doRewards(user, rewards);
+					rewardService.doFilterRewards(user, rewards);
 					pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 				}
 			} else if(result.getCode() == SuccessConst.LADDER_ATTACK_FAIL.getCode()) {
@@ -110,7 +110,7 @@ public class LadderCommandService extends BaseCommandService {
 				if(!rewards.hasName())
 					rewards.setName("天梯参与奖励");
 				if (rewards.getLootList().size() > 0) {
-					rewardService.doRewards(user, rewards);
+					rewardService.doFilterRewards(user, rewards);
 					pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 				}
 			}

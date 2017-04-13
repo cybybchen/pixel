@@ -146,7 +146,7 @@ public class RewardService {
 //		doRewards(bean, rewards);
 //	}
 	
-	public void doRewards(UserBean user, List<RewardBean> rewards) {
+	public void doFilterRewards(UserBean user, List<RewardBean> rewards) {
 		for(int i = rewards.size() - 1; i >= 0; i--) {
 			int itemid = rewards.get(i).getItemid();
 			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
@@ -159,7 +159,10 @@ public class RewardService {
 					rewards.remove(i);
 			}
 		}
-		
+		doRewards(user, rewards);
+	}
+	
+	public void doRewards(UserBean user, List<RewardBean> rewards) {
 		boolean needUpdateUser = false;
 		for (RewardBean reward : rewards) {
 			if(doReward(user, reward.getItemid(), reward.getCount()))
@@ -176,7 +179,7 @@ public class RewardService {
 //		doRewards(bean, rewardList);
 //	}
 	
-	public void doRewards(UserBean user, MultiReward.Builder rewards) {
+	public void doFilterRewards(UserBean user, MultiReward.Builder rewards) {
 		for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
 			int itemid = rewards.getLoot(i).getItemid();
 			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
@@ -189,7 +192,9 @@ public class RewardService {
 					rewards.removeLoot(i);
 			}
 		}
-		
+		doRewards(user, rewards);
+	}
+	public void doRewards(UserBean user, MultiReward.Builder rewards) {
 		boolean needUpdateUser = false;
 		for (RewardInfo reward : rewards.getLootList()) {
 			if(doReward(user, reward.getItemid(), reward.getCount()))
