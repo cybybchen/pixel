@@ -341,7 +341,7 @@ public class TaskService {
 		long userId = user.getId();
 		
 		//task 2
-		for (int i = 1; i <= 4; ++i) {
+		for (int i = 1; i <= 7; ++i) {
 			int nextOrder = (user.getTask2Record() >> (4 * (i - 1)) & 15) + 1;
 			TaskOrder taskOrder = taskRedisService.getTask2Order(nextOrder, i);
 			if (taskOrder == null)
