@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
@@ -201,21 +202,30 @@ public class RewardService {
 	}
 	
 	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {
+		RewardInfo.Builder builder = RewardInfo.newBuilder(mergeReward);
+		builder.setCount(randomRewardCount(mergeReward));
 		for (int i = 0; i < rewardList.size(); i++) {
 			RewardInfo reward = rewardList.get(i);
 			RewardInfo.Builder nReward = RewardInfo.newBuilder(reward);
 			nReward.setItemid(reward.getItemid());
 			nReward.setCount(reward.getCount());
-			if (reward.getItemid() == mergeReward.getItemid()) {
-				nReward.setCount(nReward.getCount() + mergeReward.getCount());
+			if (reward.getItemid() == builder.getItemid()) {
+				nReward.setCount(nReward.getCount() + builder.getCount());
 				rewardList.set(i, nReward.build());
 				return rewardList;
 			}
 		}
 		
-		rewardList.add(mergeReward);
+		rewardList.add(builder.build());
 		
 		return rewardList;
+	}
+	
+	public int randomRewardCount(RewardInfo reward) {
+		if (reward.getCounta() == reward.getCountb())
+			return reward.getCounta();
+		
+		return RandomUtils.nextInt(Math.abs(reward.getCountb() - reward.getCounta())) + Math.min(reward.getCountb(), reward.getCounta());
 	}
 	
 //	public List<RewardBean> mergeReward(List<RewardBean> rewardList, List<RewardBean> mergeRewardList) {

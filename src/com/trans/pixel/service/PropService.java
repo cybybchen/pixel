@@ -26,7 +26,7 @@ import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
 public class PropService {
-
+	
 	@Resource
 	private UserPropService userPropService;
 	@Resource
@@ -53,12 +53,14 @@ public class PropService {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
 				RewardInfo reward = randomReward(prop);
 				if(reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001){
-					randomReward(rewardList, getProp(reward.getItemid()), (int)reward.getCount());
+					randomReward(rewardList, getProp(reward.getItemid()), rewardService.randomRewardCount(reward));
 				}else
 					rewardService.mergeReward(rewardList, reward);
 			}
 		}
 	}
+	
+	
 	
 	public ResultConst useProp(UserBean user, int propId, int propCount, MultiReward.Builder rewards) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
@@ -92,7 +94,7 @@ public class PropService {
 	private RewardInfo randomItem(Prop prop) {
 		Random rand = new Random();
 		int randWeight = rand.nextInt(prop.getWeightall());
-		for (int i = 0; i < prop.getItemCount(); ++i) {
+		for (int i = 0; i < prop.getItemcount(); ++i) {
 			RewardInfo item = prop.getItem(i);
 			if (randWeight < item.getWeight())
 				return item;
