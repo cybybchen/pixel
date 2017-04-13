@@ -136,6 +136,9 @@ public class UserTalentRedisService extends RedisService {
 		Map<String,String> map = composeUserTalentSkillMap(utList);
 		this.hputAll(key, map);
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		for (UserTalentSkill uts : utList) {
+			sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENTSKILL_PREFIX, userId + "#" + uts.getTalentId() + "-" + uts.getOrderId() + "-" + uts.getSkillId());
+		}
 	}
 	
 	private Map<String, String> composeUserTalentSkillBeanMap(List<UserTalentSkillBean> utList) {
