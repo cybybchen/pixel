@@ -128,7 +128,7 @@ public class TalentService {
 			if (talentunlock.getLevel() > originalLevel && talentunlock.getLevel() <= utBuilder.getLevel()) {
 				UserTalentOrder.Builder builder = UserTalentOrder.newBuilder();
 				builder.setOrder(talentunlock.getOrder());
-				builder.setSkillId(0);
+				builder.setSkillId(1);
 				utBuilder.addSkill(builder.build());
 				
 				userTalentService.unlockUserTalentSkill(user, utBuilder.getId(), talentunlock.getOrder());
