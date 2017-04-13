@@ -88,7 +88,7 @@ public class RewardService {
 //			int heroId = rewardId % RewardConst.HERO_STAR;
 			userHeroService.addUserHero(user, heroloot.getHeroid(), heroloot.getStar(), (int)(heroloot.getCount() * rewardCount));
 		} else if (rewardId > RewardConst.PACKAGE) {
-			
+			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {
 			userEquipService.addUserEquip(user, rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
