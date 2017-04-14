@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -20,6 +22,7 @@ import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.TalentService;
 import com.trans.pixel.service.UserTalentService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -33,6 +36,10 @@ public class TalentCommandService extends BaseCommandService {
 	private UserTalentService userTalentService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserTeamService userTeamService;
+	@Resource
+	private PushCommandService pushCommandService;
 
 	public void talentupgrade(RequestTalentupgradeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
@@ -61,6 +68,13 @@ public class TalentCommandService extends BaseCommandService {
 		}
 		builder.addAllUserTalent(userTalentList);
 		responseBuilder.setUserTalentCommand(builder.build());
+		
+		userTeamService.changeUserTeamTalentId(user, cmd.getId());
+//		if (userTeam != null) {
+//			List<UserTeamBean> userTeamList = new ArrayList<UserTeamBean>();
+//			userTeamList.add(userTeam);
+//			pushCommandService.pushUserTeamListCommand(responseBuilder, user, userTeamList);
+//		}
 	}
 	
 	public void talentChangeSkill(RequestTalentChangeSkillCommand cmd, Builder responseBuilder, UserBean user) {

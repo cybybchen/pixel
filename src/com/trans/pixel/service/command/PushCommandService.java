@@ -289,6 +289,13 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setUserTeamListCommand(builder.build());
 	}
 	
+	public void pushUserTeamListCommand(Builder responseBuilder, UserBean user, List<UserTeamBean> userTeamList) {
+		ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
+		builder.addAllUserTeam(buildUserTeamList(userTeamList));
+		
+		responseBuilder.setUserTeamListCommand(builder.build());
+	}
+	
 	public void pushShopCommand(Builder responseBuilder, UserBean user) {
 		RequestShopCommand.Builder cmd = RequestShopCommand.newBuilder();
 		shopCommandService.Shop(cmd.build(), responseBuilder, user);

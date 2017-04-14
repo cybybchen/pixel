@@ -32,6 +32,7 @@ import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.UserTeamRedisService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserTeamService {
@@ -126,6 +127,16 @@ public class UserTeamService {
 		if (userTeam.getTalentId() == 0)
 			return null;
 		return talentService.changeUseTalent(user, userTeam.getTalentId());
+	}
+	
+	public UserTeamBean changeUserTeamTalentId(UserBean user, int talentId) {
+		UserTeamBean userTeam = getUserTeam(user.getId(), TypeTranslatedUtil.stringToInt(user.getComposeSkill()));
+		if (userTeam.getTalentId() == talentId)
+			return null;
+		
+		userTeam.setTalentId(talentId);
+		userTeamRedisService.updateUserTeam(userTeam);
+		return userTeam;
 	}
 	
 	public UserTeamBean getUserTeam(long userId, long id) {
