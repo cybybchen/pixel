@@ -11,10 +11,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.UserLevelMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.HeroProto.HeroChoice;
 import com.trans.pixel.protoc.UserInfoProto.Area;
 import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.AreaEventList;
@@ -32,8 +34,13 @@ import com.trans.pixel.protoc.UserInfoProto.LootList;
 @Repository
 public class LevelRedisService extends RedisService {
 //	private static Logger logger = Logger.getLogger(LevelRedisService.class);
+	private static final int NEWPLAY_LEVEL_1 = 1002;
+	private static final int NEWPLAY_LEVEL_2 = 1004;
+	private static final int NEWPLAY_LEVEL_3 = 1005;
 	@Resource
 	private UserLevelMapper mapper;
+	@Resource
+	private HeroRedisService heroRedisService;
 	
 	public void updateToDB(long userId){
 		UserLevelBean bean = getUserLevel(userId);
@@ -389,5 +396,30 @@ public class LevelRedisService extends RedisService {
 		String value = formatJson(builder.build());
 		set(RedisKey.EVENTLEVELSEED_CONFIG, value);
 		return value;
+	}
+	
+	public List<RewardBean> getNewplayReward(UserBean user, int levelId) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		
+		if (user.getFirstGetHeroId() == 0)
+			return rewardList;
+		HeroChoice heroChoice = heroRedisService.getHerochoice(user.getFirstGetHeroId());
+		switch (levelId) {
+			case NEWPLAY_LEVEL_1:
+				rewardList.add(RewardBean.init(heroChoice.getEvent1(), 1));
+				break;
+			case NEWPLAY_LEVEL_2:
+				rewardList.add(RewardBean.init(heroChoice.getEvent2(), 1));
+				rewardList.add(RewardBean.init(heroChoice.getEvent3(), 1));
+				break;
+			case NEWPLAY_LEVEL_3:
+				rewardList.add(RewardBean.init(heroChoice.getEvent4(), 1));			
+				rewardList.add(RewardBean.init(heroChoice.getEvent5(), 1));
+				break;
+			default:
+				break;
+		}
+		
+		return rewardList;
 	}
 }

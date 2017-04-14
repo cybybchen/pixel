@@ -577,19 +577,13 @@ message HeroChoiceList {
 }
 
 message HeroChoice {
-	required int32 id = 1;
-	required int32 heroid = 2;
-	required string description = 3;
-	required int32 level1_1 = 4;
-	required int32 level1_2 = 5;
-	required int32 level2_1 = 6;
-	required int32 level2_2 = 7;
-	required int32 level3_1 = 8;
-	required int32 level3_2 = 9;
-	optional int32 level4 = 10;
-	optional int32 level5 = 11;
-	optional int32 level6 = 12;
-	optional int32 level7 = 13;
+	required int32 order = 1;
+	required int32 id = 2;
+	required uint32 event1 = 4;
+	required uint32 event2 = 5;
+	required uint32 event3 = 6;
+	required uint32 event4 = 7;
+	required uint32 event5 = 8;
 }
 
 message ClearLevelList {

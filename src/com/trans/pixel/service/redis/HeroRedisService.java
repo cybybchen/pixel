@@ -26,7 +26,7 @@ import com.trans.pixel.protoc.HeroProto.UpgradeList;
 @Repository
 public class HeroRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(HeroRedisService.class);
-	private static final String HEROCHOICE_FILE_NAME = "lol_herochoice.xml";
+	private static final String HEROCHOICE_FILE_NAME = "ld_herochoice.xml";
 	private static final String HEROLOOT_FILE_NAME = "ld_heroloot.xml";
 	private static final String RANK_FILE_NAME = "ld_rank.xml";
 	private static final String HERO_FETTERS_FILE_NAME = "lol_herofetters.xml";
@@ -80,7 +80,7 @@ public class HeroRedisService extends RedisService {
 		
 		Map<String, HeroChoice> map = new HashMap<String, HeroChoice>();
 		for(HeroChoice.Builder herochoice : builder.getIdBuilderList()){
-			map.put("" + herochoice.getHeroid(), herochoice.build());
+			map.put("" + herochoice.getId(), herochoice.build());
 		}
 		return map;
 	}

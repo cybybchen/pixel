@@ -7931,140 +7931,75 @@ public final class HeroProto {
   public interface HeroChoiceOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 id = 1;
+    // required int32 order = 1;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required int32 order = 1;</code>
+     */
+    boolean hasOrder();
+    /**
+     * <code>required int32 order = 1;</code>
+     */
+    int getOrder();
+
+    // required int32 id = 2;
+    /**
+     * <code>required int32 id = 2;</code>
      */
     boolean hasId();
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required int32 id = 2;</code>
      */
     int getId();
 
-    // required int32 heroid = 2;
+    // required uint32 event1 = 4;
     /**
-     * <code>required int32 heroid = 2;</code>
+     * <code>required uint32 event1 = 4;</code>
      */
-    boolean hasHeroid();
+    boolean hasEvent1();
     /**
-     * <code>required int32 heroid = 2;</code>
+     * <code>required uint32 event1 = 4;</code>
      */
-    int getHeroid();
+    int getEvent1();
 
-    // required string description = 3;
+    // required uint32 event2 = 5;
     /**
-     * <code>required string description = 3;</code>
+     * <code>required uint32 event2 = 5;</code>
      */
-    boolean hasDescription();
+    boolean hasEvent2();
     /**
-     * <code>required string description = 3;</code>
+     * <code>required uint32 event2 = 5;</code>
      */
-    java.lang.String getDescription();
-    /**
-     * <code>required string description = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
+    int getEvent2();
 
-    // required int32 level1_1 = 4;
+    // required uint32 event3 = 6;
     /**
-     * <code>required int32 level1_1 = 4;</code>
+     * <code>required uint32 event3 = 6;</code>
      */
-    boolean hasLevel11();
+    boolean hasEvent3();
     /**
-     * <code>required int32 level1_1 = 4;</code>
+     * <code>required uint32 event3 = 6;</code>
      */
-    int getLevel11();
+    int getEvent3();
 
-    // required int32 level1_2 = 5;
+    // required uint32 event4 = 7;
     /**
-     * <code>required int32 level1_2 = 5;</code>
+     * <code>required uint32 event4 = 7;</code>
      */
-    boolean hasLevel12();
+    boolean hasEvent4();
     /**
-     * <code>required int32 level1_2 = 5;</code>
+     * <code>required uint32 event4 = 7;</code>
      */
-    int getLevel12();
+    int getEvent4();
 
-    // required int32 level2_1 = 6;
+    // required uint32 event5 = 8;
     /**
-     * <code>required int32 level2_1 = 6;</code>
+     * <code>required uint32 event5 = 8;</code>
      */
-    boolean hasLevel21();
+    boolean hasEvent5();
     /**
-     * <code>required int32 level2_1 = 6;</code>
+     * <code>required uint32 event5 = 8;</code>
      */
-    int getLevel21();
-
-    // required int32 level2_2 = 7;
-    /**
-     * <code>required int32 level2_2 = 7;</code>
-     */
-    boolean hasLevel22();
-    /**
-     * <code>required int32 level2_2 = 7;</code>
-     */
-    int getLevel22();
-
-    // required int32 level3_1 = 8;
-    /**
-     * <code>required int32 level3_1 = 8;</code>
-     */
-    boolean hasLevel31();
-    /**
-     * <code>required int32 level3_1 = 8;</code>
-     */
-    int getLevel31();
-
-    // required int32 level3_2 = 9;
-    /**
-     * <code>required int32 level3_2 = 9;</code>
-     */
-    boolean hasLevel32();
-    /**
-     * <code>required int32 level3_2 = 9;</code>
-     */
-    int getLevel32();
-
-    // optional int32 level4 = 10;
-    /**
-     * <code>optional int32 level4 = 10;</code>
-     */
-    boolean hasLevel4();
-    /**
-     * <code>optional int32 level4 = 10;</code>
-     */
-    int getLevel4();
-
-    // optional int32 level5 = 11;
-    /**
-     * <code>optional int32 level5 = 11;</code>
-     */
-    boolean hasLevel5();
-    /**
-     * <code>optional int32 level5 = 11;</code>
-     */
-    int getLevel5();
-
-    // optional int32 level6 = 12;
-    /**
-     * <code>optional int32 level6 = 12;</code>
-     */
-    boolean hasLevel6();
-    /**
-     * <code>optional int32 level6 = 12;</code>
-     */
-    int getLevel6();
-
-    // optional int32 level7 = 13;
-    /**
-     * <code>optional int32 level7 = 13;</code>
-     */
-    boolean hasLevel7();
-    /**
-     * <code>optional int32 level7 = 13;</code>
-     */
-    int getLevel7();
+    int getEvent5();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.HeroChoice}
@@ -8119,67 +8054,37 @@ public final class HeroProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
+              order_ = input.readInt32();
               break;
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              heroid_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              description_ = input.readBytes();
+              id_ = input.readInt32();
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000008;
-              level11_ = input.readInt32();
+              bitField0_ |= 0x00000004;
+              event1_ = input.readUInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
-              level12_ = input.readInt32();
+              bitField0_ |= 0x00000008;
+              event2_ = input.readUInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
-              level21_ = input.readInt32();
+              bitField0_ |= 0x00000010;
+              event3_ = input.readUInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
-              level22_ = input.readInt32();
+              bitField0_ |= 0x00000020;
+              event4_ = input.readUInt32();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000080;
-              level31_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              level32_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              level4_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              level5_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000800;
-              level6_ = input.readInt32();
-              break;
-            }
-            case 104: {
-              bitField0_ |= 0x00001000;
-              level7_ = input.readInt32();
+              bitField0_ |= 0x00000040;
+              event5_ = input.readUInt32();
               break;
             }
           }
@@ -8222,294 +8127,157 @@ public final class HeroProto {
     }
 
     private int bitField0_;
-    // required int32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    // required int32 order = 1;
+    public static final int ORDER_FIELD_NUMBER = 1;
+    private int order_;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required int32 order = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasOrder() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required int32 order = 1;</code>
+     */
+    public int getOrder() {
+      return order_;
+    }
+
+    // required int32 id = 2;
+    public static final int ID_FIELD_NUMBER = 2;
+    private int id_;
+    /**
+     * <code>required int32 id = 2;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 id = 2;</code>
      */
     public int getId() {
       return id_;
     }
 
-    // required int32 heroid = 2;
-    public static final int HEROID_FIELD_NUMBER = 2;
-    private int heroid_;
+    // required uint32 event1 = 4;
+    public static final int EVENT1_FIELD_NUMBER = 4;
+    private int event1_;
     /**
-     * <code>required int32 heroid = 2;</code>
+     * <code>required uint32 event1 = 4;</code>
      */
-    public boolean hasHeroid() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required int32 heroid = 2;</code>
-     */
-    public int getHeroid() {
-      return heroid_;
-    }
-
-    // required string description = 3;
-    public static final int DESCRIPTION_FIELD_NUMBER = 3;
-    private java.lang.Object description_;
-    /**
-     * <code>required string description = 3;</code>
-     */
-    public boolean hasDescription() {
+    public boolean hasEvent1() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required string description = 3;</code>
+     * <code>required uint32 event1 = 4;</code>
      */
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string description = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getEvent1() {
+      return event1_;
     }
 
-    // required int32 level1_1 = 4;
-    public static final int LEVEL1_1_FIELD_NUMBER = 4;
-    private int level11_;
+    // required uint32 event2 = 5;
+    public static final int EVENT2_FIELD_NUMBER = 5;
+    private int event2_;
     /**
-     * <code>required int32 level1_1 = 4;</code>
+     * <code>required uint32 event2 = 5;</code>
      */
-    public boolean hasLevel11() {
+    public boolean hasEvent2() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 level1_1 = 4;</code>
+     * <code>required uint32 event2 = 5;</code>
      */
-    public int getLevel11() {
-      return level11_;
+    public int getEvent2() {
+      return event2_;
     }
 
-    // required int32 level1_2 = 5;
-    public static final int LEVEL1_2_FIELD_NUMBER = 5;
-    private int level12_;
+    // required uint32 event3 = 6;
+    public static final int EVENT3_FIELD_NUMBER = 6;
+    private int event3_;
     /**
-     * <code>required int32 level1_2 = 5;</code>
+     * <code>required uint32 event3 = 6;</code>
      */
-    public boolean hasLevel12() {
+    public boolean hasEvent3() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 level1_2 = 5;</code>
+     * <code>required uint32 event3 = 6;</code>
      */
-    public int getLevel12() {
-      return level12_;
+    public int getEvent3() {
+      return event3_;
     }
 
-    // required int32 level2_1 = 6;
-    public static final int LEVEL2_1_FIELD_NUMBER = 6;
-    private int level21_;
+    // required uint32 event4 = 7;
+    public static final int EVENT4_FIELD_NUMBER = 7;
+    private int event4_;
     /**
-     * <code>required int32 level2_1 = 6;</code>
+     * <code>required uint32 event4 = 7;</code>
      */
-    public boolean hasLevel21() {
+    public boolean hasEvent4() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>required int32 level2_1 = 6;</code>
+     * <code>required uint32 event4 = 7;</code>
      */
-    public int getLevel21() {
-      return level21_;
+    public int getEvent4() {
+      return event4_;
     }
 
-    // required int32 level2_2 = 7;
-    public static final int LEVEL2_2_FIELD_NUMBER = 7;
-    private int level22_;
+    // required uint32 event5 = 8;
+    public static final int EVENT5_FIELD_NUMBER = 8;
+    private int event5_;
     /**
-     * <code>required int32 level2_2 = 7;</code>
+     * <code>required uint32 event5 = 8;</code>
      */
-    public boolean hasLevel22() {
+    public boolean hasEvent5() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required int32 level2_2 = 7;</code>
+     * <code>required uint32 event5 = 8;</code>
      */
-    public int getLevel22() {
-      return level22_;
-    }
-
-    // required int32 level3_1 = 8;
-    public static final int LEVEL3_1_FIELD_NUMBER = 8;
-    private int level31_;
-    /**
-     * <code>required int32 level3_1 = 8;</code>
-     */
-    public boolean hasLevel31() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>required int32 level3_1 = 8;</code>
-     */
-    public int getLevel31() {
-      return level31_;
-    }
-
-    // required int32 level3_2 = 9;
-    public static final int LEVEL3_2_FIELD_NUMBER = 9;
-    private int level32_;
-    /**
-     * <code>required int32 level3_2 = 9;</code>
-     */
-    public boolean hasLevel32() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>required int32 level3_2 = 9;</code>
-     */
-    public int getLevel32() {
-      return level32_;
-    }
-
-    // optional int32 level4 = 10;
-    public static final int LEVEL4_FIELD_NUMBER = 10;
-    private int level4_;
-    /**
-     * <code>optional int32 level4 = 10;</code>
-     */
-    public boolean hasLevel4() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <code>optional int32 level4 = 10;</code>
-     */
-    public int getLevel4() {
-      return level4_;
-    }
-
-    // optional int32 level5 = 11;
-    public static final int LEVEL5_FIELD_NUMBER = 11;
-    private int level5_;
-    /**
-     * <code>optional int32 level5 = 11;</code>
-     */
-    public boolean hasLevel5() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional int32 level5 = 11;</code>
-     */
-    public int getLevel5() {
-      return level5_;
-    }
-
-    // optional int32 level6 = 12;
-    public static final int LEVEL6_FIELD_NUMBER = 12;
-    private int level6_;
-    /**
-     * <code>optional int32 level6 = 12;</code>
-     */
-    public boolean hasLevel6() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <code>optional int32 level6 = 12;</code>
-     */
-    public int getLevel6() {
-      return level6_;
-    }
-
-    // optional int32 level7 = 13;
-    public static final int LEVEL7_FIELD_NUMBER = 13;
-    private int level7_;
-    /**
-     * <code>optional int32 level7 = 13;</code>
-     */
-    public boolean hasLevel7() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
-    }
-    /**
-     * <code>optional int32 level7 = 13;</code>
-     */
-    public int getLevel7() {
-      return level7_;
+    public int getEvent5() {
+      return event5_;
     }
 
     private void initFields() {
+      order_ = 0;
       id_ = 0;
-      heroid_ = 0;
-      description_ = "";
-      level11_ = 0;
-      level12_ = 0;
-      level21_ = 0;
-      level22_ = 0;
-      level31_ = 0;
-      level32_ = 0;
-      level4_ = 0;
-      level5_ = 0;
-      level6_ = 0;
-      level7_ = 0;
+      event1_ = 0;
+      event2_ = 0;
+      event3_ = 0;
+      event4_ = 0;
+      event5_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasOrder()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasId()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasHeroid()) {
+      if (!hasEvent1()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasDescription()) {
+      if (!hasEvent2()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasLevel11()) {
+      if (!hasEvent3()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasLevel12()) {
+      if (!hasEvent4()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasLevel21()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasLevel22()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasLevel31()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasLevel32()) {
+      if (!hasEvent5()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -8521,43 +8289,25 @@ public final class HeroProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, id_);
+        output.writeInt32(1, order_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, heroid_);
+        output.writeInt32(2, id_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getDescriptionBytes());
+        output.writeUInt32(4, event1_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, level11_);
+        output.writeUInt32(5, event2_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, level12_);
+        output.writeUInt32(6, event3_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, level21_);
+        output.writeUInt32(7, event4_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, level22_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, level31_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, level32_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, level4_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, level5_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(12, level6_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(13, level7_);
+        output.writeUInt32(8, event5_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -8570,55 +8320,31 @@ public final class HeroProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
+          .computeInt32Size(1, order_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, heroid_);
+          .computeInt32Size(2, id_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getDescriptionBytes());
+          .computeUInt32Size(4, event1_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, level11_);
+          .computeUInt32Size(5, event2_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, level12_);
+          .computeUInt32Size(6, event3_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, level21_);
+          .computeUInt32Size(7, event4_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, level22_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, level31_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, level32_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, level4_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, level5_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, level6_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, level7_);
+          .computeUInt32Size(8, event5_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8736,32 +8462,20 @@ public final class HeroProto {
 
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        order_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        heroid_ = 0;
+        id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        description_ = "";
+        event1_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        level11_ = 0;
+        event2_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        level12_ = 0;
+        event3_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        level21_ = 0;
+        event4_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        level22_ = 0;
+        event5_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        level31_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        level32_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        level4_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        level5_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        level6_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
-        level7_ = 0;
-        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -8793,55 +8507,31 @@ public final class HeroProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
+        result.order_ = order_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.heroid_ = heroid_;
+        result.id_ = id_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.description_ = description_;
+        result.event1_ = event1_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.level11_ = level11_;
+        result.event2_ = event2_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.level12_ = level12_;
+        result.event3_ = event3_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.level21_ = level21_;
+        result.event4_ = event4_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.level22_ = level22_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.level31_ = level31_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.level32_ = level32_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.level4_ = level4_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.level5_ = level5_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.level6_ = level6_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00001000;
-        }
-        result.level7_ = level7_;
+        result.event5_ = event5_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8858,85 +8548,57 @@ public final class HeroProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.HeroProto.HeroChoice other) {
         if (other == com.trans.pixel.protoc.HeroProto.HeroChoice.getDefaultInstance()) return this;
+        if (other.hasOrder()) {
+          setOrder(other.getOrder());
+        }
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasHeroid()) {
-          setHeroid(other.getHeroid());
+        if (other.hasEvent1()) {
+          setEvent1(other.getEvent1());
         }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000004;
-          description_ = other.description_;
-          onChanged();
+        if (other.hasEvent2()) {
+          setEvent2(other.getEvent2());
         }
-        if (other.hasLevel11()) {
-          setLevel11(other.getLevel11());
+        if (other.hasEvent3()) {
+          setEvent3(other.getEvent3());
         }
-        if (other.hasLevel12()) {
-          setLevel12(other.getLevel12());
+        if (other.hasEvent4()) {
+          setEvent4(other.getEvent4());
         }
-        if (other.hasLevel21()) {
-          setLevel21(other.getLevel21());
-        }
-        if (other.hasLevel22()) {
-          setLevel22(other.getLevel22());
-        }
-        if (other.hasLevel31()) {
-          setLevel31(other.getLevel31());
-        }
-        if (other.hasLevel32()) {
-          setLevel32(other.getLevel32());
-        }
-        if (other.hasLevel4()) {
-          setLevel4(other.getLevel4());
-        }
-        if (other.hasLevel5()) {
-          setLevel5(other.getLevel5());
-        }
-        if (other.hasLevel6()) {
-          setLevel6(other.getLevel6());
-        }
-        if (other.hasLevel7()) {
-          setLevel7(other.getLevel7());
+        if (other.hasEvent5()) {
+          setEvent5(other.getEvent5());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasOrder()) {
+          
+          return false;
+        }
         if (!hasId()) {
           
           return false;
         }
-        if (!hasHeroid()) {
+        if (!hasEvent1()) {
           
           return false;
         }
-        if (!hasDescription()) {
+        if (!hasEvent2()) {
           
           return false;
         }
-        if (!hasLevel11()) {
+        if (!hasEvent3()) {
           
           return false;
         }
-        if (!hasLevel12()) {
+        if (!hasEvent4()) {
           
           return false;
         }
-        if (!hasLevel21()) {
-          
-          return false;
-        }
-        if (!hasLevel22()) {
-          
-          return false;
-        }
-        if (!hasLevel31()) {
-          
-          return false;
-        }
-        if (!hasLevel32()) {
+        if (!hasEvent5()) {
           
           return false;
         }
@@ -8962,472 +8624,233 @@ public final class HeroProto {
       }
       private int bitField0_;
 
-      // required int32 id = 1;
-      private int id_ ;
+      // required int32 order = 1;
+      private int order_ ;
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 order = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasOrder() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 order = 1;</code>
+       */
+      public int getOrder() {
+        return order_;
+      }
+      /**
+       * <code>required int32 order = 1;</code>
+       */
+      public Builder setOrder(int value) {
+        bitField0_ |= 0x00000001;
+        order_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 order = 1;</code>
+       */
+      public Builder clearOrder() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        order_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 id = 2;
+      private int id_ ;
+      /**
+       * <code>required int32 id = 2;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 id = 2;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 id = 2;</code>
        */
       public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 id = 2;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         id_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 heroid = 2;
-      private int heroid_ ;
+      // required uint32 event1 = 4;
+      private int event1_ ;
       /**
-       * <code>required int32 heroid = 2;</code>
+       * <code>required uint32 event1 = 4;</code>
        */
-      public boolean hasHeroid() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required int32 heroid = 2;</code>
-       */
-      public int getHeroid() {
-        return heroid_;
-      }
-      /**
-       * <code>required int32 heroid = 2;</code>
-       */
-      public Builder setHeroid(int value) {
-        bitField0_ |= 0x00000002;
-        heroid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 heroid = 2;</code>
-       */
-      public Builder clearHeroid() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        heroid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required string description = 3;
-      private java.lang.Object description_ = "";
-      /**
-       * <code>required string description = 3;</code>
-       */
-      public boolean hasDescription() {
+      public boolean hasEvent1() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required string description = 3;</code>
+       * <code>required uint32 event1 = 4;</code>
        */
-      public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          description_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getEvent1() {
+        return event1_;
       }
       /**
-       * <code>required string description = 3;</code>
+       * <code>required uint32 event1 = 4;</code>
        */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          description_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string description = 3;</code>
-       */
-      public Builder setDescription(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        description_ = value;
+      public Builder setEvent1(int value) {
+        bitField0_ |= 0x00000004;
+        event1_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string description = 3;</code>
+       * <code>required uint32 event1 = 4;</code>
        */
-      public Builder clearDescription() {
+      public Builder clearEvent1() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string description = 3;</code>
-       */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        description_ = value;
+        event1_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 level1_1 = 4;
-      private int level11_ ;
+      // required uint32 event2 = 5;
+      private int event2_ ;
       /**
-       * <code>required int32 level1_1 = 4;</code>
+       * <code>required uint32 event2 = 5;</code>
        */
-      public boolean hasLevel11() {
+      public boolean hasEvent2() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 level1_1 = 4;</code>
+       * <code>required uint32 event2 = 5;</code>
        */
-      public int getLevel11() {
-        return level11_;
+      public int getEvent2() {
+        return event2_;
       }
       /**
-       * <code>required int32 level1_1 = 4;</code>
+       * <code>required uint32 event2 = 5;</code>
        */
-      public Builder setLevel11(int value) {
+      public Builder setEvent2(int value) {
         bitField0_ |= 0x00000008;
-        level11_ = value;
+        event2_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 level1_1 = 4;</code>
+       * <code>required uint32 event2 = 5;</code>
        */
-      public Builder clearLevel11() {
+      public Builder clearEvent2() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        level11_ = 0;
+        event2_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 level1_2 = 5;
-      private int level12_ ;
+      // required uint32 event3 = 6;
+      private int event3_ ;
       /**
-       * <code>required int32 level1_2 = 5;</code>
+       * <code>required uint32 event3 = 6;</code>
        */
-      public boolean hasLevel12() {
+      public boolean hasEvent3() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 level1_2 = 5;</code>
+       * <code>required uint32 event3 = 6;</code>
        */
-      public int getLevel12() {
-        return level12_;
+      public int getEvent3() {
+        return event3_;
       }
       /**
-       * <code>required int32 level1_2 = 5;</code>
+       * <code>required uint32 event3 = 6;</code>
        */
-      public Builder setLevel12(int value) {
+      public Builder setEvent3(int value) {
         bitField0_ |= 0x00000010;
-        level12_ = value;
+        event3_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 level1_2 = 5;</code>
+       * <code>required uint32 event3 = 6;</code>
        */
-      public Builder clearLevel12() {
+      public Builder clearEvent3() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        level12_ = 0;
+        event3_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 level2_1 = 6;
-      private int level21_ ;
+      // required uint32 event4 = 7;
+      private int event4_ ;
       /**
-       * <code>required int32 level2_1 = 6;</code>
+       * <code>required uint32 event4 = 7;</code>
        */
-      public boolean hasLevel21() {
+      public boolean hasEvent4() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>required int32 level2_1 = 6;</code>
+       * <code>required uint32 event4 = 7;</code>
        */
-      public int getLevel21() {
-        return level21_;
+      public int getEvent4() {
+        return event4_;
       }
       /**
-       * <code>required int32 level2_1 = 6;</code>
+       * <code>required uint32 event4 = 7;</code>
        */
-      public Builder setLevel21(int value) {
+      public Builder setEvent4(int value) {
         bitField0_ |= 0x00000020;
-        level21_ = value;
+        event4_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 level2_1 = 6;</code>
+       * <code>required uint32 event4 = 7;</code>
        */
-      public Builder clearLevel21() {
+      public Builder clearEvent4() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        level21_ = 0;
+        event4_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 level2_2 = 7;
-      private int level22_ ;
+      // required uint32 event5 = 8;
+      private int event5_ ;
       /**
-       * <code>required int32 level2_2 = 7;</code>
+       * <code>required uint32 event5 = 8;</code>
        */
-      public boolean hasLevel22() {
+      public boolean hasEvent5() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required int32 level2_2 = 7;</code>
+       * <code>required uint32 event5 = 8;</code>
        */
-      public int getLevel22() {
-        return level22_;
+      public int getEvent5() {
+        return event5_;
       }
       /**
-       * <code>required int32 level2_2 = 7;</code>
+       * <code>required uint32 event5 = 8;</code>
        */
-      public Builder setLevel22(int value) {
+      public Builder setEvent5(int value) {
         bitField0_ |= 0x00000040;
-        level22_ = value;
+        event5_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 level2_2 = 7;</code>
+       * <code>required uint32 event5 = 8;</code>
        */
-      public Builder clearLevel22() {
+      public Builder clearEvent5() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        level22_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 level3_1 = 8;
-      private int level31_ ;
-      /**
-       * <code>required int32 level3_1 = 8;</code>
-       */
-      public boolean hasLevel31() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>required int32 level3_1 = 8;</code>
-       */
-      public int getLevel31() {
-        return level31_;
-      }
-      /**
-       * <code>required int32 level3_1 = 8;</code>
-       */
-      public Builder setLevel31(int value) {
-        bitField0_ |= 0x00000080;
-        level31_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 level3_1 = 8;</code>
-       */
-      public Builder clearLevel31() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        level31_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 level3_2 = 9;
-      private int level32_ ;
-      /**
-       * <code>required int32 level3_2 = 9;</code>
-       */
-      public boolean hasLevel32() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>required int32 level3_2 = 9;</code>
-       */
-      public int getLevel32() {
-        return level32_;
-      }
-      /**
-       * <code>required int32 level3_2 = 9;</code>
-       */
-      public Builder setLevel32(int value) {
-        bitField0_ |= 0x00000100;
-        level32_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 level3_2 = 9;</code>
-       */
-      public Builder clearLevel32() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        level32_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 level4 = 10;
-      private int level4_ ;
-      /**
-       * <code>optional int32 level4 = 10;</code>
-       */
-      public boolean hasLevel4() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      /**
-       * <code>optional int32 level4 = 10;</code>
-       */
-      public int getLevel4() {
-        return level4_;
-      }
-      /**
-       * <code>optional int32 level4 = 10;</code>
-       */
-      public Builder setLevel4(int value) {
-        bitField0_ |= 0x00000200;
-        level4_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 level4 = 10;</code>
-       */
-      public Builder clearLevel4() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        level4_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 level5 = 11;
-      private int level5_ ;
-      /**
-       * <code>optional int32 level5 = 11;</code>
-       */
-      public boolean hasLevel5() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 level5 = 11;</code>
-       */
-      public int getLevel5() {
-        return level5_;
-      }
-      /**
-       * <code>optional int32 level5 = 11;</code>
-       */
-      public Builder setLevel5(int value) {
-        bitField0_ |= 0x00000400;
-        level5_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 level5 = 11;</code>
-       */
-      public Builder clearLevel5() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        level5_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 level6 = 12;
-      private int level6_ ;
-      /**
-       * <code>optional int32 level6 = 12;</code>
-       */
-      public boolean hasLevel6() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional int32 level6 = 12;</code>
-       */
-      public int getLevel6() {
-        return level6_;
-      }
-      /**
-       * <code>optional int32 level6 = 12;</code>
-       */
-      public Builder setLevel6(int value) {
-        bitField0_ |= 0x00000800;
-        level6_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 level6 = 12;</code>
-       */
-      public Builder clearLevel6() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        level6_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 level7 = 13;
-      private int level7_ ;
-      /**
-       * <code>optional int32 level7 = 13;</code>
-       */
-      public boolean hasLevel7() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
-      }
-      /**
-       * <code>optional int32 level7 = 13;</code>
-       */
-      public int getLevel7() {
-        return level7_;
-      }
-      /**
-       * <code>optional int32 level7 = 13;</code>
-       */
-      public Builder setLevel7(int value) {
-        bitField0_ |= 0x00001000;
-        level7_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 level7 = 13;</code>
-       */
-      public Builder clearLevel7() {
-        bitField0_ = (bitField0_ & ~0x00001000);
-        level7_ = 0;
+        event5_ = 0;
         onChanged();
         return this;
       }
@@ -54291,143 +53714,140 @@ public final class HeroProto {
       "s.pixel.protoc.HeroFetter\"@\n\nHeroFetter\022" +
       "\016\n\006heroid\030\001 \001(\005\022\020\n\010herostar\030\002 \001(\005\022\020\n\010her" +
       "orank\030\003 \001(\005\"@\n\016HeroChoiceList\022.\n\002id\030\001 \003(" +
-      "\0132\".com.trans.pixel.protoc.HeroChoice\"\351\001" +
-      "\n\nHeroChoice\022\n\n\002id\030\001 \002(\005\022\016\n\006heroid\030\002 \002(\005" +
-      "\022\023\n\013description\030\003 \002(\t\022\020\n\010level1_1\030\004 \002(\005\022" +
-      "\020\n\010level1_2\030\005 \002(\005\022\020\n\010level2_1\030\006 \002(\005\022\020\n\010l" +
-      "evel2_2\030\007 \002(\005\022\020\n\010level3_1\030\010 \002(\005\022\020\n\010level",
-      "3_2\030\t \002(\005\022\016\n\006level4\030\n \001(\005\022\016\n\006level5\030\013 \001(" +
-      "\005\022\016\n\006level6\030\014 \001(\005\022\016\n\006level7\030\r \001(\005\"C\n\016Cle" +
-      "arLevelList\0221\n\005level\030\001 \003(\0132\".com.trans.p" +
-      "ixel.protoc.ClearLevel\":\n\nClearLevel\022\r\n\005" +
-      "level\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\r\n\005count\030\003 \001" +
-      "(\005\"@\n\rClearFoodList\022/\n\004food\030\001 \003(\0132!.com." +
-      "trans.pixel.protoc.ClearFood\"4\n\tClearFoo" +
-      "d\022\n\n\002id\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\014\n\004cost\030\003 \001" +
-      "(\005\"@\n\rClearHeroList\022/\n\004hero\030\001 \003(\0132!.com." +
-      "trans.pixel.protoc.ClearHero\"\215\001\n\tClearHe",
-      "ro\022\n\n\002id\030\001 \001(\005\022\020\n\010handbook\030\002 \001(\005\022\021\n\tvery" +
-      "love1\030\003 \001(\005\022\r\n\005love1\030\004 \001(\005\022\r\n\005love2\030\006 \001(" +
-      "\005\022\017\n\007normal1\030\005 \001(\005\022\017\n\007normal2\030\007 \001(\005\022\017\n\007n" +
-      "ormal3\030\010 \001(\005\"O\n\022ClearAttributeList\0229\n\tat" +
-      "tribute\030\001 \003(\0132&.com.trans.pixel.protoc.C" +
-      "learAttribute\"{\n\016ClearAttribute\022\n\n\002id\030\001 " +
-      "\001(\005\022\020\n\010position\030\002 \001(\005\022\017\n\007zuanshi\030\003 \001(\005\022:" +
-      "\n\005order\030\004 \003(\0132+.com.trans.pixel.protoc.C" +
-      "learAttributeOrder\"\202\001\n\023ClearAttributeOrd" +
-      "er\022\r\n\005order\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\016\n\006weigh",
-      "t\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\016\n\006count2\030\005 \001(\005\022" +
-      "\020\n\010interval\030\006 \001(\005\022\014\n\004rare\030\007 \001(\005\">\n\rClear" +
-      "CostList\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.p" +
-      "rotoc.ClearCost\"\227\001\n\tClearCost\022\n\n\002id\030\001 \001(" +
-      "\005\022\017\n\007quality\030\002 \001(\005\022\017\n\007itemid1\030\003 \001(\005\022\022\n\ni" +
-      "temcount1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\022\n\nitem" +
-      "count2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\022\n\nitemcou" +
-      "nt3\030\010 \001(\005\">\n\013AllheroData\022/\n\002id\030\001 \003(\0132#.c" +
-      "om.trans.pixel.protoc.AllheroList\"q\n\013All" +
-      "heroList\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003im",
-      "g\030\003 \001(\005\022\014\n\004rare\030\004 \001(\005\022-\n\004hero\030\005 \003(\0132\037.co" +
-      "m.trans.pixel.protoc.Allhero\"\031\n\007Allhero\022" +
-      "\016\n\006heroid\030\001 \001(\005\"L\n\013TalentOrder\022\r\n\005order\030" +
-      "\001 \001(\005\022\016\n\006skill1\030\002 \001(\005\022\016\n\006skill2\030\003 \001(\005\022\016\n" +
-      "\006skill3\030\004 \001(\005\"c\n\006Talent\022\n\n\002id\030\001 \001(\005\022\014\n\004n" +
-      "ame\030\002 \001(\t\022\013\n\003img\030\003 \001(\t\0222\n\005order\030\004 \003(\0132#." +
-      "com.trans.pixel.protoc.TalentOrder\"8\n\nTa" +
-      "lentList\022*\n\002id\030\001 \003(\0132\036.com.trans.pixel.p" +
-      "rotoc.Talent\"A\n\rTalentupgrade\022\r\n\005level\030\001" +
-      " \001(\005\022\016\n\006itemid\030\002 \001(\005\022\021\n\titemcount\030\003 \001(\005\"",
-      "I\n\021TalentupgradeList\0224\n\005level\030\001 \003(\0132%.co" +
-      "m.trans.pixel.protoc.Talentupgrade\",\n\014Ta" +
-      "lentunlock\022\r\n\005order\030\001 \001(\005\022\r\n\005level\030\002 \001(\005" +
-      "\"G\n\020TalentunlockList\0223\n\005order\030\001 \003(\0132$.co" +
-      "m.trans.pixel.protoc.Talentunlock\"H\n\016Use" +
-      "rTalentList\0226\n\nuserTalent\030\001 \003(\0132\".com.tr" +
-      "ans.pixel.protoc.UserTalent\"T\n\017UserTalen" +
-      "tSkill\022\020\n\010talentId\030\001 \002(\005\022\017\n\007orderId\030\002 \002(" +
-      "\005\022\017\n\007skillId\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\"4\n\010Her" +
-      "oList\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.prot",
-      "oc.Hero\"\217\002\n\004Hero\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001" +
-      "(\t\022\013\n\003img\030\003 \001(\005\022\023\n\013description\030\004 \001(\t\022\017\n\007" +
-      "quality\030\005 \001(\005\022\020\n\010position\030\006 \001(\005\022\020\n\010handb" +
-      "ook\030\007 \001(\005\022\n\n\002hp\030\010 \001(\005\022\013\n\003vit\030\t \001(\005\022\r\n\005po" +
-      "wer\030\n \001(\005\022\013\n\003def\030\013 \001(\005\022\n\n\002ad\030\014 \001(\005\022\n\n\002ap" +
-      "\030\r \001(\005\022\013\n\003arm\030\016 \001(\005\022\n\n\002mr\030\017 \001(\005\0220\n\005skill" +
-      "\030\020 \003(\0132!.com.trans.pixel.protoc.HeroSkil" +
-      "l\";\n\tHeroSkill\022\017\n\007skillid\030\001 \001(\005\022\r\n\005skill" +
-      "\030\002 \001(\t\022\016\n\006unlock\030\003 \001(\005\"=\n\013UpgradeList\022.\n" +
-      "\005level\030\001 \003(\0132\037.com.trans.pixel.protoc.Up",
-      "grade\"n\n\007Upgrade\022\r\n\005level\030\001 \001(\005\022\n\n\002sp\030\002 " +
-      "\001(\005\022\013\n\003exp\030\003 \001(\003\022\n\n\002hp\030\004 \001(\002\022\013\n\003arm\030\005 \001(" +
-      "\002\022\n\n\002mr\030\006 \001(\002\022\n\n\002ad\030\007 \001(\002\022\n\n\002ap\030\010 \001(\002\")\n" +
-      "\010UserFood\022\016\n\006foodId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005" +
-      "\"@\n\016StrengthenList\022.\n\002id\030\001 \003(\0132\".com.tra" +
-      "ns.pixel.protoc.Strengthen\"\\\n\nStrengthen" +
-      "\022\n\n\002id\030\001 \001(\005\022\022\n\nzhanli_per\030\002 \001(\005\022\016\n\006item" +
-      "id\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\017\n\007success\030\005 \001(\005" +
-      "\"<\n\014HerolootList\022,\n\002id\030\001 \003(\0132 .com.trans" +
-      ".pixel.protoc.Heroloot\"j\n\010Heroloot\022\016\n\006it",
-      "emid\030\001 \001(\005\022\016\n\006heroid\030\002 \001(\005\022\014\n\004star\030\003 \001(\005" +
-      "\022\r\n\005count\030\004 \001(\005\022\014\n\004name\030\005 \001(\t\022\023\n\013descrip" +
-      "tion\030\006 \001(\t\"H\n\026RequestLockHeroCommand\022\016\n\006" +
-      "heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\003\022\016\n\006isLock\030\004" +
-      " \001(\010\"N\n\033RequestHeroLevelUpToCommand\022\017\n\007l" +
-      "evelUp\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003" +
-      " \002(\003\"u\n\031RequestHeroLevelUpCommand\022\023\n\013lev" +
-      "elUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId" +
-      "\030\003 \002(\003\022\017\n\007skillId\030\004 \001(\005\022\022\n\ncostInfoId\030\005 " +
-      "\003(\003\"_\n\031ResponseHeroResultCommand\022\016\n\006hero",
-      "Id\030\001 \002(\005\0222\n\010heroInfo\030\002 \003(\0132 .com.trans.p" +
-      "ixel.protoc.HeroInfo\"U\n\031ResponseDeleteHe" +
-      "roCommand\0228\n\010heroInfo\030\001 \003(\0132&.com.trans." +
-      "pixel.protoc.FenjieHeroInfo\">\n\034RequestRe" +
-      "setHeroSkillCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006i" +
-      "nfoId\030\002 \002(\003\"`\n\010UserTeam\022\n\n\002id\030\001 \002(\003\022\020\n\010t" +
-      "eaminfo\030\002 \002(\t\0226\n\nteamEngine\030\003 \003(\0132\".com." +
-      "trans.pixel.protoc.TeamEngine\"\'\n\025Request" +
-      "GetTeamCommand\022\016\n\006userId\030\001 \002(\003\"D\n\026Respon" +
-      "seGetTeamCommand\022*\n\004team\030\001 \002(\0132\034.com.tra",
-      "ns.pixel.protoc.Team\"\'\n\nTeamUnlock\022\n\n\002id" +
-      "\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030RequestUpdateT" +
-      "eamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamInfo\030\002 \002(\t" +
-      "\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamEngine\030\005 \003" +
-      "(\0132\".com.trans.pixel.protoc.TeamEngine\022\020" +
-      "\n\010talentId\030\006 \001(\r\"\034\n\032RequestUserTeamListC" +
-      "ommand\"Q\n\033ResponseUserTeamListCommand\0222\n" +
-      "\010userTeam\030\001 \003(\0132 .com.trans.pixel.protoc" +
-      ".UserTeam\"F\n\016TeamUnlockList\0224\n\010xiaoguan\030" +
-      "\001 \003(\0132\".com.trans.pixel.protoc.TeamUnloc",
-      "k\"P\n\032ResponseGetUserHeroCommand\0222\n\010userH" +
-      "ero\030\001 \003(\0132 .com.trans.pixel.protoc.HeroI" +
-      "nfo\"V\n\030RequestFenjieHeroCommand\022:\n\nfenji" +
-      "eHero\030\001 \003(\0132&.com.trans.pixel.protoc.Fen" +
-      "jieHeroInfo\"\032\n\030RequestUserPokedeCommand\"" +
-      "M\n\031ResponseUserPokedeCommand\0220\n\006pokede\030\001" +
-      " \003(\0132 .com.trans.pixel.protoc.HeroInfo\"\036" +
-      "\n\034RequestBuyHeroPackageCommand\"8\n Reques" +
-      "tSubmitComposeSkillCommand\022\024\n\014composeSki" +
-      "ll\030\001 \002(\t\"K\n\026RequestFeedFoodCommand\022\016\n\006he",
-      "roId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030" +
-      "\003 \002(\005\"X\n\027RequestClearHeroCommand\022\016\n\006hero" +
-      "Id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002(\005" +
-      "\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoodComma" +
-      "nd\0222\n\010userFood\030\001 \003(\0132 .com.trans.pixel.p" +
-      "rotoc.UserFood\"P\n\030ResponseClearInfoComma" +
-      "nd\0224\n\tclearInfo\030\001 \003(\0132!.com.trans.pixel." +
-      "protoc.ClearInfo\";\n\034RequestChoseClearInf" +
-      "oCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n" +
-      "\034RequestHeroStrengthenCommand\022\016\n\006heroId\030",
-      "\001 \002(\005\"<\n\030RequestOpenFetterCommand\022\016\n\006her" +
-      "oId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!RequestZa" +
-      "nHeroMessageBoardCommand\022\016\n\006itemId\030\001 \002(\005" +
-      "\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTale" +
-      "ntupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035RequestT" +
-      "alentChangeUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037Req" +
-      "uestTalentChangeSkillCommand\022\n\n\002id\030\001 \002(\005" +
-      "\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031Res" +
-      "ponseUserTalentCommand\0226\n\nuserTalent\030\001 \003" +
-      "(\0132\".com.trans.pixel.protoc.UserTalent\022@",
-      "\n\017userTalentSkill\030\002 \003(\0132\'.com.trans.pixe" +
-      "l.protoc.UserTalentSkill"
+      "\0132\".com.trans.pixel.protoc.HeroChoice\"w\n" +
+      "\nHeroChoice\022\r\n\005order\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\022\016" +
+      "\n\006event1\030\004 \002(\r\022\016\n\006event2\030\005 \002(\r\022\016\n\006event3" +
+      "\030\006 \002(\r\022\016\n\006event4\030\007 \002(\r\022\016\n\006event5\030\010 \002(\r\"C" +
+      "\n\016ClearLevelList\0221\n\005level\030\001 \003(\0132\".com.tr",
+      "ans.pixel.protoc.ClearLevel\":\n\nClearLeve" +
+      "l\022\r\n\005level\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\r\n\005coun" +
+      "t\030\003 \001(\005\"@\n\rClearFoodList\022/\n\004food\030\001 \003(\0132!" +
+      ".com.trans.pixel.protoc.ClearFood\"4\n\tCle" +
+      "arFood\022\n\n\002id\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\014\n\004cos" +
+      "t\030\003 \001(\005\"@\n\rClearHeroList\022/\n\004hero\030\001 \003(\0132!" +
+      ".com.trans.pixel.protoc.ClearHero\"\215\001\n\tCl" +
+      "earHero\022\n\n\002id\030\001 \001(\005\022\020\n\010handbook\030\002 \001(\005\022\021\n" +
+      "\tverylove1\030\003 \001(\005\022\r\n\005love1\030\004 \001(\005\022\r\n\005love2" +
+      "\030\006 \001(\005\022\017\n\007normal1\030\005 \001(\005\022\017\n\007normal2\030\007 \001(\005",
+      "\022\017\n\007normal3\030\010 \001(\005\"O\n\022ClearAttributeList\022" +
+      "9\n\tattribute\030\001 \003(\0132&.com.trans.pixel.pro" +
+      "toc.ClearAttribute\"{\n\016ClearAttribute\022\n\n\002" +
+      "id\030\001 \001(\005\022\020\n\010position\030\002 \001(\005\022\017\n\007zuanshi\030\003 " +
+      "\001(\005\022:\n\005order\030\004 \003(\0132+.com.trans.pixel.pro" +
+      "toc.ClearAttributeOrder\"\202\001\n\023ClearAttribu" +
+      "teOrder\022\r\n\005order\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\016\n\006" +
+      "weight\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\016\n\006count2\030\005" +
+      " \001(\005\022\020\n\010interval\030\006 \001(\005\022\014\n\004rare\030\007 \001(\005\">\n\r" +
+      "ClearCostList\022-\n\002id\030\001 \003(\0132!.com.trans.pi",
+      "xel.protoc.ClearCost\"\227\001\n\tClearCost\022\n\n\002id" +
+      "\030\001 \001(\005\022\017\n\007quality\030\002 \001(\005\022\017\n\007itemid1\030\003 \001(\005" +
+      "\022\022\n\nitemcount1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\022\n" +
+      "\nitemcount2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\022\n\nit" +
+      "emcount3\030\010 \001(\005\">\n\013AllheroData\022/\n\002id\030\001 \003(" +
+      "\0132#.com.trans.pixel.protoc.AllheroList\"q" +
+      "\n\013AllheroList\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022" +
+      "\013\n\003img\030\003 \001(\005\022\014\n\004rare\030\004 \001(\005\022-\n\004hero\030\005 \003(\013" +
+      "2\037.com.trans.pixel.protoc.Allhero\"\031\n\007All" +
+      "hero\022\016\n\006heroid\030\001 \001(\005\"L\n\013TalentOrder\022\r\n\005o",
+      "rder\030\001 \001(\005\022\016\n\006skill1\030\002 \001(\005\022\016\n\006skill2\030\003 \001" +
+      "(\005\022\016\n\006skill3\030\004 \001(\005\"c\n\006Talent\022\n\n\002id\030\001 \001(\005" +
+      "\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\t\0222\n\005order\030\004 \003" +
+      "(\0132#.com.trans.pixel.protoc.TalentOrder\"" +
+      "8\n\nTalentList\022*\n\002id\030\001 \003(\0132\036.com.trans.pi" +
+      "xel.protoc.Talent\"A\n\rTalentupgrade\022\r\n\005le" +
+      "vel\030\001 \001(\005\022\016\n\006itemid\030\002 \001(\005\022\021\n\titemcount\030\003" +
+      " \001(\005\"I\n\021TalentupgradeList\0224\n\005level\030\001 \003(\013" +
+      "2%.com.trans.pixel.protoc.Talentupgrade\"" +
+      ",\n\014Talentunlock\022\r\n\005order\030\001 \001(\005\022\r\n\005level\030",
+      "\002 \001(\005\"G\n\020TalentunlockList\0223\n\005order\030\001 \003(\013" +
+      "2$.com.trans.pixel.protoc.Talentunlock\"H" +
+      "\n\016UserTalentList\0226\n\nuserTalent\030\001 \003(\0132\".c" +
+      "om.trans.pixel.protoc.UserTalent\"T\n\017User" +
+      "TalentSkill\022\020\n\010talentId\030\001 \002(\005\022\017\n\007orderId" +
+      "\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\"4" +
+      "\n\010HeroList\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel" +
+      ".protoc.Hero\"\217\002\n\004Hero\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
+      "e\030\002 \001(\t\022\013\n\003img\030\003 \001(\005\022\023\n\013description\030\004 \001(" +
+      "\t\022\017\n\007quality\030\005 \001(\005\022\020\n\010position\030\006 \001(\005\022\020\n\010",
+      "handbook\030\007 \001(\005\022\n\n\002hp\030\010 \001(\005\022\013\n\003vit\030\t \001(\005\022" +
+      "\r\n\005power\030\n \001(\005\022\013\n\003def\030\013 \001(\005\022\n\n\002ad\030\014 \001(\005\022" +
+      "\n\n\002ap\030\r \001(\005\022\013\n\003arm\030\016 \001(\005\022\n\n\002mr\030\017 \001(\005\0220\n\005" +
+      "skill\030\020 \003(\0132!.com.trans.pixel.protoc.Her" +
+      "oSkill\";\n\tHeroSkill\022\017\n\007skillid\030\001 \001(\005\022\r\n\005" +
+      "skill\030\002 \001(\t\022\016\n\006unlock\030\003 \001(\005\"=\n\013UpgradeLi" +
+      "st\022.\n\005level\030\001 \003(\0132\037.com.trans.pixel.prot" +
+      "oc.Upgrade\"n\n\007Upgrade\022\r\n\005level\030\001 \001(\005\022\n\n\002" +
+      "sp\030\002 \001(\005\022\013\n\003exp\030\003 \001(\003\022\n\n\002hp\030\004 \001(\002\022\013\n\003arm" +
+      "\030\005 \001(\002\022\n\n\002mr\030\006 \001(\002\022\n\n\002ad\030\007 \001(\002\022\n\n\002ap\030\010 \001",
+      "(\002\")\n\010UserFood\022\016\n\006foodId\030\001 \002(\005\022\r\n\005count\030" +
+      "\002 \002(\005\"@\n\016StrengthenList\022.\n\002id\030\001 \003(\0132\".co" +
+      "m.trans.pixel.protoc.Strengthen\"\\\n\nStren" +
+      "gthen\022\n\n\002id\030\001 \001(\005\022\022\n\nzhanli_per\030\002 \001(\005\022\016\n" +
+      "\006itemid\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\017\n\007success\030" +
+      "\005 \001(\005\"<\n\014HerolootList\022,\n\002id\030\001 \003(\0132 .com." +
+      "trans.pixel.protoc.Heroloot\"j\n\010Heroloot\022" +
+      "\016\n\006itemid\030\001 \001(\005\022\016\n\006heroid\030\002 \001(\005\022\014\n\004star\030" +
+      "\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\014\n\004name\030\005 \001(\t\022\023\n\013de" +
+      "scription\030\006 \001(\t\"H\n\026RequestLockHeroComman",
+      "d\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\003\022\016\n\006isL" +
+      "ock\030\004 \001(\010\"N\n\033RequestHeroLevelUpToCommand" +
+      "\022\017\n\007levelUp\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006inf" +
+      "oId\030\003 \002(\003\"u\n\031RequestHeroLevelUpCommand\022\023" +
+      "\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006i" +
+      "nfoId\030\003 \002(\003\022\017\n\007skillId\030\004 \001(\005\022\022\n\ncostInfo" +
+      "Id\030\005 \003(\003\"_\n\031ResponseHeroResultCommand\022\016\n" +
+      "\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \003(\0132 .com.tr" +
+      "ans.pixel.protoc.HeroInfo\"U\n\031ResponseDel" +
+      "eteHeroCommand\0228\n\010heroInfo\030\001 \003(\0132&.com.t",
+      "rans.pixel.protoc.FenjieHeroInfo\">\n\034Requ" +
+      "estResetHeroSkillCommand\022\016\n\006heroId\030\001 \002(\005" +
+      "\022\016\n\006infoId\030\002 \002(\003\"`\n\010UserTeam\022\n\n\002id\030\001 \002(\003" +
+      "\022\020\n\010teaminfo\030\002 \002(\t\0226\n\nteamEngine\030\003 \003(\0132\"" +
+      ".com.trans.pixel.protoc.TeamEngine\"\'\n\025Re" +
+      "questGetTeamCommand\022\016\n\006userId\030\001 \002(\003\"D\n\026R" +
+      "esponseGetTeamCommand\022*\n\004team\030\001 \002(\0132\034.co" +
+      "m.trans.pixel.protoc.Team\"\'\n\nTeamUnlock\022" +
+      "\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030RequestUp" +
+      "dateTeamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamInfo\030",
+      "\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamEngin" +
+      "e\030\005 \003(\0132\".com.trans.pixel.protoc.TeamEng" +
+      "ine\022\020\n\010talentId\030\006 \001(\r\"\034\n\032RequestUserTeam" +
+      "ListCommand\"Q\n\033ResponseUserTeamListComma" +
+      "nd\0222\n\010userTeam\030\001 \003(\0132 .com.trans.pixel.p" +
+      "rotoc.UserTeam\"F\n\016TeamUnlockList\0224\n\010xiao" +
+      "guan\030\001 \003(\0132\".com.trans.pixel.protoc.Team" +
+      "Unlock\"P\n\032ResponseGetUserHeroCommand\0222\n\010" +
+      "userHero\030\001 \003(\0132 .com.trans.pixel.protoc." +
+      "HeroInfo\"V\n\030RequestFenjieHeroCommand\022:\n\n",
+      "fenjieHero\030\001 \003(\0132&.com.trans.pixel.proto" +
+      "c.FenjieHeroInfo\"\032\n\030RequestUserPokedeCom" +
+      "mand\"M\n\031ResponseUserPokedeCommand\0220\n\006pok" +
+      "ede\030\001 \003(\0132 .com.trans.pixel.protoc.HeroI" +
+      "nfo\"\036\n\034RequestBuyHeroPackageCommand\"8\n R" +
+      "equestSubmitComposeSkillCommand\022\024\n\014compo" +
+      "seSkill\030\001 \002(\t\"K\n\026RequestFeedFoodCommand\022" +
+      "\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodC" +
+      "ount\030\003 \002(\005\"X\n\027RequestClearHeroCommand\022\016\n" +
+      "\006heroId\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030",
+      "\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFood" +
+      "Command\0222\n\010userFood\030\001 \003(\0132 .com.trans.pi" +
+      "xel.protoc.UserFood\"P\n\030ResponseClearInfo" +
+      "Command\0224\n\tclearInfo\030\001 \003(\0132!.com.trans.p" +
+      "ixel.protoc.ClearInfo\";\n\034RequestChoseCle" +
+      "arInfoCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001" +
+      "(\005\".\n\034RequestHeroStrengthenCommand\022\016\n\006he" +
+      "roId\030\001 \002(\005\"<\n\030RequestOpenFetterCommand\022\016" +
+      "\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!Requ" +
+      "estZanHeroMessageBoardCommand\022\016\n\006itemId\030",
+      "\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033Reques" +
+      "tTalentupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035Req" +
+      "uestTalentChangeUseCommand\022\n\n\002id\030\001 \002(\005\"M" +
+      "\n\037RequestTalentChangeSkillCommand\022\n\n\002id\030" +
+      "\001 \002(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001" +
+      "\n\031ResponseUserTalentCommand\0226\n\nuserTalen" +
+      "t\030\001 \003(\0132\".com.trans.pixel.protoc.UserTal" +
+      "ent\022@\n\017userTalentSkill\030\002 \003(\0132\'.com.trans" +
+      ".pixel.protoc.UserTalentSkill"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -54499,7 +53919,7 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_HeroChoice_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeroChoice_descriptor,
-              new java.lang.String[] { "Id", "Heroid", "Description", "Level11", "Level12", "Level21", "Level22", "Level31", "Level32", "Level4", "Level5", "Level6", "Level7", });
+              new java.lang.String[] { "Order", "Id", "Event1", "Event2", "Event3", "Event4", "Event5", });
           internal_static_com_trans_pixel_protoc_ClearLevelList_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_ClearLevelList_fieldAccessorTable = new
