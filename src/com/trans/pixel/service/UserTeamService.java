@@ -276,61 +276,61 @@ public class UserTeamService {
 			return team.build();
 		}
 		
-		int myzhanli = 0;
-//		List<HeroBean> heroList = heroService.getHeroList();
-		Map<String, Strengthen> strengthehConfig = clearRedisService.getStrengthenConfig();
-		Map<String, ClearLevel> clearLevelConfig = clearRedisService.getClearLevelConfig();
-		List<HeroInfoBean> heroInfoList = userHeroService.selectUserHeroList(user);
-		Map<String, HeroRareLevelup> herorareConfig = heroRedisService.getHeroRareLevelupConfig();
-//		List<HeroUpgradeBean> huList = new ArrayList<HeroUpgradeBean>();//heroService.getHeroUpgradeList();
-//		Map<String, EquipmentBean> equipConfig = equipService.getEquipConfig();
-		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
-		for (HeroInfo hero : team.getHeroInfoList()) {
-//			Hero base = heroService.getHero(heroList, hero.getHeroId());
-//			if (base == null)
-//				continue;
-			int star = hero.getStar();
-//			if (base.getStarList().size() < star)
-//				star = base.getStarList().size();
-			int pre = 100;
-			Strengthen strengthen = strengthehConfig.get("" + hero.getStrengthen());
-			if (strengthen != null)
-				pre = 100 + strengthen.getZhanliPer();
-//			 log.debug(strengthen+" : "+pre);
-			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
-//			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
-//			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(huList, hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
-			double zhanli = 0;
-//			for(String equipid : hero.getEquipInfo().split("\\|")){
-//				int id = TypeTranslatedUtil.stringToInt(equipid);
-//				if(id == 0)
-//					continue;
-//				EquipmentBean equip = equipService.getEquip(equipConfig, id);
-//				zhanli += equip.getZhanli();
-//				// log.debug(equip.getZhanli());
+//		int myzhanli = 0;
+////		List<HeroBean> heroList = heroService.getHeroList();
+//		Map<String, Strengthen> strengthehConfig = clearRedisService.getStrengthenConfig();
+//		Map<String, ClearLevel> clearLevelConfig = clearRedisService.getClearLevelConfig();
+//		List<HeroInfoBean> heroInfoList = userHeroService.selectUserHeroList(user);
+//		Map<String, HeroRareLevelup> herorareConfig = heroRedisService.getHeroRareLevelupConfig();
+////		List<HeroUpgradeBean> huList = new ArrayList<HeroUpgradeBean>();//heroService.getHeroUpgradeList();
+////		Map<String, EquipmentBean> equipConfig = equipService.getEquipConfig();
+//		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
+//		for (HeroInfo hero : team.getHeroInfoList()) {
+////			Hero base = heroService.getHero(heroList, hero.getHeroId());
+////			if (base == null)
+////				continue;
+//			int star = hero.getStar();
+////			if (base.getStarList().size() < star)
+////				star = base.getStarList().size();
+//			int pre = 100;
+//			Strengthen strengthen = strengthehConfig.get("" + hero.getStrengthen());
+//			if (strengthen != null)
+//				pre = 100 + strengthen.getZhanliPer();
+////			 log.debug(strengthen+" : "+pre);
+//			HeroInfoBean heroInfo = userHeroService.getUserHero(heroInfoList, hero.getInfoId(), user);
+////			HeroRareLevelupRank herorareRank = heroRareService.getCurrentHeroRare(herorareConfig, base, heroInfo);
+////			double zhanli = base.getZhanli() + base.getStarList().get(star - 1).getStarvalue() * heroService.getHeroUpgrade(huList, hero.getLevel()).getZhanli() + (herorareRank == null ? 0 : herorareRank.getZhanli());
+//			double zhanli = 0;
+////			for(String equipid : hero.getEquipInfo().split("\\|")){
+////				int id = TypeTranslatedUtil.stringToInt(equipid);
+////				if(id == 0)
+////					continue;
+////				EquipmentBean equip = equipService.getEquip(equipConfig, id);
+////				zhanli += equip.getZhanli();
+////				// log.debug(equip.getZhanli());
+////			}
+//			zhanli += clearService.getClearLevelZhanli(hero.getHeroId(), clearLevelConfig, userPokedeList);
+//			zhanli = zhanli * pre / 100;
+//			log.debug("111|||" + zhanli);
+//			myzhanli += zhanli;
+//			  // log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
+//		}
+//		log.debug("zhanli:"+myzhanli);
+//		if(myzhanli != user.getZhanli()){
+//			user.setZhanli(myzhanli);
+//			if(myzhanli > user.getZhanliMax()){
+//				user.setZhanliMax(myzhanli);
+//				if(!blackService.isNoranklist(user.getId())) {
+//					rankRedisService.updateZhanliRank(user);
+//					/**
+//					 * zhanli activity
+//					 */
+//					if (user.getId() > 0)
+//						activityService.zhanliActivity(user, myzhanli);
+//				}
 //			}
-			zhanli += clearService.getClearLevelZhanli(hero.getHeroId(), clearLevelConfig, userPokedeList);
-			zhanli = zhanli * pre / 100;
-			log.debug("111|||" + zhanli);
-			myzhanli += zhanli;
-			  // log.debug(hero.getInfoId()+" : "+base.getZhanli()+" + "+base.getStarList().get(star-1).getStarvalue()+" + "+hero.getLevel()+" + "+hero.getRare()+" = zhanli+ "+zhanli+" = "+myzhanli);
-		}
-		log.debug("zhanli:"+myzhanli);
-		if(myzhanli != user.getZhanli()){
-			user.setZhanli(myzhanli);
-			if(myzhanli > user.getZhanliMax()){
-				user.setZhanliMax(myzhanli);
-				if(!blackService.isNoranklist(user.getId())) {
-					rankRedisService.updateZhanliRank(user);
-					/**
-					 * zhanli activity
-					 */
-					if (user.getId() > 0)
-						activityService.zhanliActivity(user, myzhanli);
-				}
-			}
-			userService.cache(user.getServerId(), user.buildShort());
-		}
+//			userService.cache(user.getServerId(), user.buildShort());
+//		}
 		team.setUser(user.buildShort());
 //		UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
 //		if (userTalent != null)
