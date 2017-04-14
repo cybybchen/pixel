@@ -214,6 +214,8 @@ public class LevelCommandService extends BaseCommandService {
 						ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(event.getCostid()));
 			            responseBuilder.setErrorCommand(errorCommand);
 			            pusher.pushUserInfoCommand(responseBuilder, user);
+						pushLevelLootCommand(responseBuilder, userLevel, user);
+						return;
 					}
 				}
 				redis.delEvent(user, event.getOrder());
