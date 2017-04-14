@@ -26,7 +26,7 @@ import com.trans.pixel.protoc.HeroProto.UpgradeList;
 @Repository
 public class HeroRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(HeroRedisService.class);
-	private static final String HEROCHOICE_FILE_NAME = "ld_herochoice.xml";
+	private static final String HEROCHOICE_FILE_NAME = "ld_choose.xml";
 	private static final String HEROLOOT_FILE_NAME = "ld_heroloot.xml";
 	private static final String RANK_FILE_NAME = "ld_rank.xml";
 	private static final String HERO_FETTERS_FILE_NAME = "lol_herofetters.xml";
