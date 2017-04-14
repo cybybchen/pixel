@@ -383,15 +383,10 @@ public class HeroCommandService extends BaseCommandService {
 	
 	public void submitComposeSkill(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user) {
 		user.setComposeSkill(cmd.getComposeSkill());
+		userTeamService.changeUserTeam(user, TypeTranslatedUtil.stringToInt(cmd.getComposeSkill()));
+		
 		userService.updateUser(user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
-		
-		List<UserTalent> userTalentList = userTeamService.changeUserTeam(user, TypeTranslatedUtil.stringToInt(cmd.getComposeSkill()));
-		if (userTalentList != null && !userTalentList.isEmpty()) {
-			ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
-			builder.addAllUserTalent(userTalentList);
-			responseBuilder.setUserTalentCommand(builder.build());
-		}
 	}
 }

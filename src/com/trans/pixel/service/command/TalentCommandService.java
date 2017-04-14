@@ -58,23 +58,20 @@ public class TalentCommandService extends BaseCommandService {
 	}
 	
 	public void talentChangeUse(RequestTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
-		List<UserTalent> userTalentList = talentService.changeUseTalent(user, cmd.getId());
-		if (userTalentList.size() < 1) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.TALENTCHANGEUSE_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.TALENTCHANGEUSE_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
-		builder.addAllUserTalent(userTalentList);
-		responseBuilder.setUserTalentCommand(builder.build());
+		user.setUseTalentId(cmd.getId());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+//		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+//		List<UserTalent> userTalentList = talentService.changeUseTalent(user, cmd.getId());
+//		if (userTalentList.size() < 1) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.TALENTCHANGEUSE_ERROR);
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.TALENTCHANGEUSE_ERROR);
+//            responseBuilder.setErrorCommand(errorCommand);
+//            return;
+//		}
+//		builder.addAllUserTalent(userTalentList);
+//		responseBuilder.setUserTalentCommand(builder.build());
 		
 		userTeamService.changeUserTeamTalentId(user, cmd.getId());
-//		if (userTeam != null) {
-//			List<UserTeamBean> userTeamList = new ArrayList<UserTeamBean>();
-//			userTeamList.add(userTeam);
-//			pushCommandService.pushUserTeamListCommand(responseBuilder, user, userTeamList);
-//		}
 	}
 	
 	public void talentChangeSkill(RequestTalentChangeSkillCommand cmd, Builder responseBuilder, UserBean user) {

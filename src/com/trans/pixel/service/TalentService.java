@@ -46,7 +46,7 @@ public class TalentService {
 	private ActivityService activityService;
 	
 	public void talentUpgrade(UserBean user, int exp) {
-		UserTalent userTalent = userTalentService.getUsingTalent(user.getId());
+		UserTalent userTalent = userTalentService.getUsingTalent(user);
 		if (userTalent == null)
 			return;
 		
@@ -138,27 +138,27 @@ public class TalentService {
 		return utBuilder.build();
 	}
 	
-	public List<UserTalent> changeUseTalent(UserBean user, int id) {
-		List<UserTalent> returnUserTalentList = new ArrayList<UserTalent>();
-		List<UserTalent> userTalentList = userTalentService.getUserTalentList(user);
-		for (UserTalent userTalent : userTalentList) {
-			if (userTalent.getIsUse()) {
-				UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
-				builder.setIsUse(false);
-				returnUserTalentList.add(builder.build());
-				break;
-			}
-		}
-		UserTalent userTalent = userTalentService.getUserTalent(user, id);
-		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
-		builder.setIsUse(true);
-		returnUserTalentList.add(builder.build());
-		
-		if (!returnUserTalentList.isEmpty())
-			userTalentService.updateUserTalentList(user, returnUserTalentList);
-		
-		return returnUserTalentList;
-	}
+//	public List<UserTalent> changeUseTalent(UserBean user, int id) {
+//		List<UserTalent> returnUserTalentList = new ArrayList<UserTalent>();
+//		List<UserTalent> userTalentList = userTalentService.getUserTalentList(user);
+//		for (UserTalent userTalent : userTalentList) {
+//			if (userTalent.getIsUse()) {
+//				UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+//				builder.setIsUse(false);
+//				returnUserTalentList.add(builder.build());
+//				break;
+//			}
+//		}
+//		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+//		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+//		builder.setIsUse(true);
+//		returnUserTalentList.add(builder.build());
+//		
+//		if (!returnUserTalentList.isEmpty())
+//			userTalentService.updateUserTalentList(user, returnUserTalentList);
+//		
+//		return returnUserTalentList;
+//	}
 	
 	public UserTalent changeTalentSkill(UserBean user, int id, int order, int skillId) {
 		UserTalent userTalent = userTalentService.getUserTalent(user, id);

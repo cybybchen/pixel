@@ -1,7 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -12,9 +10,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.TimeConst;
-import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
@@ -25,7 +23,6 @@ import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
-import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.LogService;
@@ -34,6 +31,7 @@ import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -64,6 +62,8 @@ public class UserCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -135,7 +135,8 @@ public class UserCommandService extends BaseCommandService {
 			}
 		}else{
 			int addHeroId = registerCommand.getHeroId();
-			addRegisterHero(user, addHeroId);
+			UserTalent userTalent = addRegisterTalent(user, addHeroId);
+			pushCommandService.pushUserTalent(responseBuilder, user, userTalent);
 //			addRegisterTeam(user);
 			user.setFirstGetHeroId(addHeroId);
 			
@@ -159,9 +160,9 @@ public class UserCommandService extends BaseCommandService {
 		pushCommand(responseBuilder, user);
 	}
 	
-	private void addRegisterHero(UserBean user, int heroId) {
-		userHeroService.addUserHero(user, heroId, 1, 1);
-		userHeroService.selectUserNewHero(user.getId());
+	private UserTalent addRegisterTalent(UserBean user, int id) {
+		user.setUseTalentId(id);
+		return userTalentService.getRegisterTalent(user, id);
 	}
 	
 //	private void addRegisterTeam(UserBean user) {

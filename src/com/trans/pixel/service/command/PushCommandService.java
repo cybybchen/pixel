@@ -406,7 +406,7 @@ public class PushCommandService extends BaseCommandService {
 			equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			this.pushUserEquipPokedeList(responseBuilder, user, equipPokedeList);
 		} else if (rewardId == RewardConst.ZHUJUEEXP) {
-			userTalentList.add(userTalentService.getUsingTalent(user.getId()));
+			userTalentList.add(userTalentService.getUsingTalent(user));
 			this.pushUserTalentList(responseBuilder, user, userTalentList);
 		} else {
 			this.pushUserInfoCommand(responseBuilder, user);
@@ -449,7 +449,7 @@ public class PushCommandService extends BaseCommandService {
 			} else if (rewardId > RewardConst.EQUIPMENT) {
 				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			} else if (rewardId == RewardConst.ZHUJUEEXP) {
-				userTalentList.add(userTalentService.getUsingTalent(user.getId()));
+				userTalentList.add(userTalentService.getUsingTalent(user));
 			} else {
 				isUserUpdated = true;
 			}
@@ -532,6 +532,13 @@ public class PushCommandService extends BaseCommandService {
 		for (UserTalent userTalent : userTalentList) {
 			builder.addAllUserTalentSkill(userTalentService.getUserTalentSkillListByTalentId(user, userTalent.getId()));
 		}
+		responseBuilder.setUserTalentCommand(builder.build());
+	}
+	
+	public void pushUserTalent(Builder responseBuilder, UserBean user, UserTalent userTalent) {
+		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+		builder.addUserTalent(userTalent);
+		
 		responseBuilder.setUserTalentCommand(builder.build());
 	}
 	

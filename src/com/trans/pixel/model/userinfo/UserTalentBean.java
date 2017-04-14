@@ -17,14 +17,12 @@ public class UserTalentBean {
 	private int level = 0;
 	private String talentSkill = "";
 	private String talentEquip = "";
-	private int isUse = 0;
 	public static UserTalentBean init(long userId, UserTalent ut) {
 		UserTalentBean utBean = new UserTalentBean();
 		utBean.setLevel(ut.getLevel());
 		utBean.setUserId(userId);
 		utBean.setTalentId(ut.getId());
 		utBean.setTalentSkill(composeTalentSkill(ut.getSkillList()));
-		utBean.setIsUse(ut.hasIsUse() ? (ut.getIsUse() ? 1 : 0) : 0);
 		utBean.setTalentEquip(composeTalentEquip(ut.getEquipList()));
 		
 		return utBean;
@@ -49,7 +47,6 @@ public class UserTalentBean {
 		JSONObject json = JSONObject.fromObject(talentSkill);
 		UserTalent.Builder builder = UserTalent.newBuilder();
 		builder.setId(talentId);
-		builder.setIsUse(isUse == 1 ? true : false);
 		builder.setLevel(level);
 		@SuppressWarnings("unchecked")
 		Set<Object> set = json.keySet();
@@ -102,12 +99,6 @@ public class UserTalentBean {
 	}
 	public void setTalentSkill(String talentSkill) {
 		this.talentSkill = talentSkill;
-	}
-	public int getIsUse() {
-		return isUse;
-	}
-	public void setIsUse(int isUse) {
-		this.isUse = isUse;
 	}
 	public String getTalentEquip() {
 		return talentEquip;

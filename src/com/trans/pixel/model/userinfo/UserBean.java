@@ -116,6 +116,7 @@ public class UserBean {
 	private int vipExp = 0;
 	private int rewardTaskIndex = 0;
 	private int merlevel = 1;
+	private int useTalentId = 0;
 	/**
 	 * 佣兵团等级
 	 */
@@ -1146,6 +1147,12 @@ public class UserBean {
 	public void setRewardTaskIndex(int rewardTaskIndex) {
 		this.rewardTaskIndex = rewardTaskIndex;
 	}
+	public int getUseTalentId() {
+		return useTalentId;
+	}
+	public void setUseTalentId(int useTalentId) {
+		this.useTalentId = useTalentId;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1293,6 +1300,7 @@ public class UserBean {
 		builder.setZhujueExp(zhujueExp);
 		builder.setVipExp(vipExp);
 		builder.setMerlevel(merlevel);
+		builder.setUseTalentId(useTalentId);
 		
 		return builder.build();
 	}

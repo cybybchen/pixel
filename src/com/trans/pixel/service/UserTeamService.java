@@ -122,11 +122,12 @@ public class UserTeamService {
 			activityService.upHero(user, record);
 	}
 
-	public List<UserTalent> changeUserTeam(UserBean user, int teamId) {
+	public void changeUserTeam(UserBean user, int teamId) {
 		UserTeamBean userTeam = getUserTeam(user.getId(), teamId);
 		if (userTeam.getTalentId() == 0)
-			return null;
-		return talentService.changeUseTalent(user, userTeam.getTalentId());
+			return;
+		
+		user.setUseTalentId(userTeam.getTalentId());
 	}
 	
 	public UserTeamBean changeUserTeamTalentId(UserBean user, int talentId) {

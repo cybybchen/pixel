@@ -63,6 +63,7 @@ message UserInfo {
 	optional uint32 zhujueExp = 75;
 	optional uint32 vipExp = 76;
 	optional int32 merlevel = 77;
+	optional uint32 useTalentId = 78;
 }
 
 message CostItem {
@@ -112,7 +113,6 @@ message Rank {
 message UserTalent {
 	required int32 id = 1;
 	required int32 level = 2;
-	optional bool isUse = 3;
 	repeated UserTalentOrder skill = 4;
 	repeated UserTalentEquip equip = 5;
 	optional uint32 exp = 6;//当前一级的经验，升级之后清0

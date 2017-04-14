@@ -8,16 +8,15 @@
 		<result property="talentId" column="talent_id" />
 		<result property="level" column="talent_level" />
 		<result property="talentSkill" column="talent_skill" />
-		<result property="isUse" column="is_use" />
 		<result property="talentEquip" column="talent_equip" />
 	</resultMap>
 	
 	<update id="updateUserTalent" parameterType="com.trans.pixel.model.userinfo.UserTalentBean">
-		INSERT INTO user_talent(user_id, talent_id, talent_level, talent_skill, is_use, talent_equip)
-	    VALUES(#{userId}, #{talentId}, #{level}, #{talentSkill}, #{isUse}, #{talentEquip})
+		INSERT INTO user_talent(user_id, talent_id, talent_level, talent_skill, talent_equip)
+	    VALUES(#{userId}, #{talentId}, #{level}, #{talentSkill}, #{talentEquip})
 		ON 
 	    duplicate key update
-	    talent_level=#{level}, is_use=#{isUse}, talent_skill=#{talentSkill}, talent_equip=#{talentEquip}
+	    talent_level=#{level}, talent_skill=#{talentSkill}, talent_equip=#{talentEquip}
 	</update>
 	
 	<select id="selectUserTalentList" parameterType="long" resultMap="resultMap">
