@@ -155,7 +155,7 @@ public class TalentService {
 		returnUserTalentList.add(builder.build());
 		
 		if (!returnUserTalentList.isEmpty())
-			userTalentService.updateUserTalentList(user, userTalentList);
+			userTalentService.updateUserTalentList(user, returnUserTalentList);
 		
 		return returnUserTalentList;
 	}
