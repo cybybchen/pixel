@@ -259,7 +259,7 @@ public class UserTalentService {
 			if (talentunlock.getLevel() <= builder.getLevel()) {
 				UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
 				skillBuilder.setOrder(talentunlock.getOrder());
-				skillBuilder.setSkillId(0);
+				skillBuilder.setSkillId(1);
 				builder.addSkill(skillBuilder.build());
 				
 				unlockUserTalentSkill(user, id, talentunlock.getOrder());

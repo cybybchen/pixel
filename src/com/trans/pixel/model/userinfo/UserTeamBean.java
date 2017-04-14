@@ -18,6 +18,7 @@ public class UserTeamBean {
 	public String teamRecord = "";
 	public int rolePosition = 0;
 	private String engine = "";
+	private int talentId = 0;
 	public int getId() {
 		return id;
 	}
@@ -48,6 +49,12 @@ public class UserTeamBean {
 	public void setEngine(String engine) {
 		this.engine = engine;
 	}
+	public int getTalentId() {
+		return talentId;
+	}
+	public void setTalentId(int talentId) {
+		this.talentId = talentId;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -55,6 +62,7 @@ public class UserTeamBean {
 		json.put(TEAM_RECORD, teamRecord);
 		json.put(ROLE_POSITION, rolePosition);
 		json.put(ENGINE, engine);
+		json.put(TALENTID, talentId);
 		
 		return json.toString();
 	}
@@ -69,6 +77,7 @@ public class UserTeamBean {
 		bean.setTeamRecord(json.getString(TEAM_RECORD));
 		bean.setRolePosition(TypeTranslatedUtil.jsonGetInt(json, ROLE_POSITION));
 		bean.setEngine(TypeTranslatedUtil.jsonGetString(json, ENGINE));
+		bean.setTalentId(TypeTranslatedUtil.jsonGetInt(json, TALENTID));
 
 		return bean;
 	}
@@ -112,4 +121,5 @@ public class UserTeamBean {
 	private static final String TEAM_RECORD = "team_record";
 	private static final String ROLE_POSITION = "role_position";
 	private static final String ENGINE = "engine";
+	private static final String TALENTID = "talentId";
 }

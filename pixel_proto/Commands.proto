@@ -859,6 +859,7 @@ message RequestUpdateTeamCommand {
 	required string teamInfo = 2;
 	optional int32 rolePosition = 4;
 	repeated TeamEngine teamEngine = 5;
+	optional uint32 talentId = 6;
 }
 
 message RequestUserTeamListCommand {

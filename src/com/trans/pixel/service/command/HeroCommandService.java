@@ -19,6 +19,7 @@ import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
@@ -32,6 +33,7 @@ import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand;
+import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
@@ -41,8 +43,10 @@ import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class HeroCommandService extends BaseCommandService {
@@ -75,6 +79,8 @@ public class HeroCommandService extends BaseCommandService {
 	private UserTeamService userTeamService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 	public void heroLevelUpTo(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user) {
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), cmd.getInfoId());
@@ -380,5 +386,12 @@ public class HeroCommandService extends BaseCommandService {
 		userService.updateUser(user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
+		
+		List<UserTalent> userTalentList = userTeamService.changeUserTeam(user, TypeTranslatedUtil.stringToInt(cmd.getComposeSkill()));
+		if (userTalentList != null && !userTalentList.isEmpty()) {
+			ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+			builder.addAllUserTalent(userTalentList);
+			responseBuilder.setUserTalentCommand(builder.build());
+		}
 	}
 }

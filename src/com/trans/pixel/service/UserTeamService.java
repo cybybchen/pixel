@@ -72,6 +72,8 @@ public class UserTeamService {
 	private UserEquipPokedeService userEquipPokedeService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private TalentService talentService;
 	
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
@@ -92,16 +94,17 @@ public class UserTeamService {
 	}
 	
 	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition) {
-		updateUserTeam(userId, id, record, user, rolePosition, new ArrayList<TeamEngine>());
+		updateUserTeam(userId, id, record, user, rolePosition, new ArrayList<TeamEngine>(), 1);
 	}
 	
-	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition, List<TeamEngine> teamEngineList) {
+	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition, List<TeamEngine> teamEngineList, int talentId) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setId(id);
 		userTeam.setUserId(userId);
 		userTeam.setTeamRecord(record);
 		userTeam.setRolePosition(rolePosition);
 		userTeam.composeEngine(teamEngineList);
+		userTeam.setTalentId(talentId);
 		userTeamRedisService.updateUserTeam(userTeam);
 //		userTeamMapper.updateUserTeam(userTeam);
 		if(user != null){
@@ -118,6 +121,13 @@ public class UserTeamService {
 			activityService.upHero(user, record);
 	}
 
+	public List<UserTalent> changeUserTeam(UserBean user, int teamId) {
+		UserTeamBean userTeam = getUserTeam(user.getId(), teamId);
+		if (userTeam.getTalentId() == 0)
+			return null;
+		return talentService.changeUseTalent(user, userTeam.getTalentId());
+	}
+	
 	public UserTeamBean getUserTeam(long userId, long id) {
 		return userTeamRedisService.getUserTeam(userId, id);
 	}
@@ -322,9 +332,9 @@ public class UserTeamService {
 			userService.cache(user.getServerId(), user.buildShort());
 		}
 		team.setUser(user.buildShort());
-		UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
-		if (userTalent != null)
-			team.setUserTalent(userTalent);
+//		UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
+//		if (userTalent != null)
+//			team.setUserTalent(userTalent);
 		return team.build();
 	}
 
@@ -371,7 +381,7 @@ public class UserTeamService {
 						}
 					}
 				}
-				UserTalent userTalent = userTalentService.getOtherUsingTalent(user.getId());
+				UserTalent userTalent = userTalentService.getUserTalent(user, userTeam.getTalentId());
 				if (userTalent != null)
 					team.setUserTalent(userTalent);
 				team.setRolePosition(userTeam.getRolePosition());

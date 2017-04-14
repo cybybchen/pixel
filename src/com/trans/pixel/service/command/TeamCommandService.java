@@ -13,8 +13,8 @@ import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
-import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.TalentService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
@@ -43,7 +43,8 @@ public class TeamCommandService extends BaseCommandService {
 		// 	ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
   //           responseBuilder.setErrorCommand(errorCommand);
 		// }else
-			userTeamService.updateUserTeam(userId, id, teamInfo, user, rolePosition, cmd.getTeamEngineList());
+			userTeamService.updateUserTeam(userId, id, teamInfo, user, rolePosition, cmd.getTeamEngineList(), cmd.getTalentId());
+			
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}

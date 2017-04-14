@@ -61,8 +61,6 @@ public class TalentCommandService extends BaseCommandService {
 		}
 		builder.addAllUserTalent(userTalentList);
 		responseBuilder.setUserTalentCommand(builder.build());
-		
-		userTalentService.updateUserTalentList(user, userTalentList);
 	}
 	
 	public void talentChangeSkill(RequestTalentChangeSkillCommand cmd, Builder responseBuilder, UserBean user) {
