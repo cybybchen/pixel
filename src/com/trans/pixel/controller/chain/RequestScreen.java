@@ -155,6 +155,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomComma
 import com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
 import com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopPurchaseCommand;
@@ -342,6 +343,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestGiveupRewardTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQuitRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestIsAreaOwnerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
@@ -986,6 +988,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasUnionListCommand()) {
 			RequestUnionListCommand cmd = request.getUnionListCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasGiveupRewardTaskCommand()) {
+			RequestGiveupRewardTaskCommand cmd = request.getGiveupRewardTaskCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasQuitRewardTaskRoomCommand()) {

@@ -21,6 +21,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.RewardTaskProto.REWARDTASK_TYPE;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskEnemy;
 import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
@@ -304,6 +305,20 @@ public class RewardTaskService {
 		userRewardTaskService.updateUserRewardTask(user, rewardTaskBuilder.build());
 		
 		return SuccessConst.BOSS_ROOM_QUIT_SUCCESS;
+	}
+	
+	public ResultConst giveupRewardtask(UserBean user, int index, UserRewardTask.Builder rewardTaskBuilder, UserRewardTaskRoom.Builder builder) {
+		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
+		
+		if (userRewardTask.getRoomInfo() != null && userRewardTask.getRoomInfo().getUser().getId() != user.getId())
+			return ErrorConst.CAN_NOT_GIVEUP_REWARDTASK_ERROR;
+		
+		rewardTaskBuilder = UserRewardTask.newBuilder(userRewardTask);
+		rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+		
+		userRewardTaskService.updateUserRewardTask(user, rewardTaskBuilder.build());
+		
+		return SuccessConst.REWARDTASK_GIVEUP_SUCCESS;
 	}
 	
 	public List<RewardBean> getRewardList(UserBean user, int index, UserRewardTask.Builder builder) {

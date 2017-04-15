@@ -111,6 +111,7 @@ import com.trans.pixel.protoc.RechargeProto.RequestSignCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
@@ -1316,6 +1317,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestEventCommand cmd, Builder responseBuilder, UserBean user) {
 		levelCommandService.getEvent(cmd, responseBuilder, user);
 		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGiveupRewardTaskCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		rewardTaskCommandService.giveupRewardTask(cmd, responseBuilder, user);
+		return true;
 	}
 
 }
