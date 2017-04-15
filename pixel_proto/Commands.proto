@@ -833,6 +833,8 @@ message UserTeam {
 	required int64 id = 1;
 	required string teaminfo = 2;
 	repeated TeamEngine teamEngine = 3;
+	optional uint32 rolePosition = 4;
+	optional uint32 talentId = 5;
 }
 
 message RequestGetTeamCommand {

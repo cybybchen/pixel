@@ -87,6 +87,8 @@ public class UserTeamBean {
 		builder.setId(id);
 		builder.setTeaminfo(teamRecord);
 		builder.addAllTeamEngine(buildTeamEngine());
+		builder.setRolePosition(rolePosition);
+		builder.setTalentId(talentId);
 		
 		return builder.build();
 	}
