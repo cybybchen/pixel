@@ -4,8 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -22,17 +24,24 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.UserLibaoMapper;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLibaoBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
+import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.protoc.ShopProto.YueKa;
+import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserService {
@@ -58,6 +67,12 @@ public class UserService {
 	private HeartBeatService heartBeatService;
 	@Resource
 	private BattletowerService battletowerService;
+	@Resource
+	private RewardTaskRedisService rewardTaskRedisService;
+	@Resource
+	private LevelRedisService levelRedisService;
+	@Resource
+	private UserEquipService userEquipService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -129,6 +144,20 @@ public class UserService {
 		user.setLotteryCoinCount(0);
 		user.setBlackShopRefreshTime(0);
 		user.setUnionBossMap(new HashMap<String, Integer>());
+		
+		handleVipDailyReward(user);
+		handleLibaoDailyReward(user, today0);
+		handleRewardTaskDailyReward(user);	
+		
+		//累计登录的活动
+		activityService.loginActivity(user);
+		
+		battletowerService.refreshUserBattletower(user);
+		
+		return true;
+	}
+	
+	private void handleVipDailyReward(UserBean user) {
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
 			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
@@ -145,6 +174,41 @@ public class UserService {
 			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
 			userPropService.updateUserProp(userProp);
 		}
+	}
+	
+	private void handleRewardTaskDailyReward(UserBean user) {
+		int addCount = 0;
+		int addId = 0;
+		UserLevelBean userLevel = levelRedisService.getUserLevel(user);
+		List<Event> userEventList = levelRedisService.getEventList(user);
+		Map<String, Event> eventMap = levelRedisService.getEventMap();
+		Map<String, RewardTaskDaily> map = rewardTaskRedisService.getRewardTaskDailyConfig();
+		Iterator<Entry<String, RewardTaskDaily>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, RewardTaskDaily> entry = it.next();
+			Event event = eventMap.get(entry.getKey());
+			if (event.getDaguan() > userLevel.getLootDaguan())
+				continue;
+			
+			boolean hasComplete = levelRedisService.judgeEventComplete(userEventList, TypeTranslatedUtil.stringToInt(entry.getKey()));
+			if (!hasComplete)
+				continue;
+			
+			addId = entry.getValue().getItemid();
+			addCount = Math.max(addCount, entry.getValue().getCount());
+		}
+		
+		if (addId > 0 && addCount > 0) {
+			UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), addId);
+			if (userEquip.getEquipCount() >= addCount)
+				return;
+			
+			userEquip.setEquipCount(addCount);
+			userEquipService.updateUserEquip(userEquip);
+		}
+	}
+	
+	private void handleLibaoDailyReward(UserBean user, long today0) {
 		LibaoList libaolist = shopService.getLibaoShop(user, true);
 		Map<Integer, YueKa> map = shopService.getYueKas();
 		for(Libao libao : libaolist.getIdList()){
@@ -187,13 +251,6 @@ public class UserService {
 				}
 			}
 		}
-			
-		//累计登录的活动
-		activityService.loginActivity(user);
-		
-		battletowerService.refreshUserBattletower(user);
-		
-		return true;
 	}
 	
 	public UserBean getRobotUser(long userId) {

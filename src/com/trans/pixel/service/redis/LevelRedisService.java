@@ -2,8 +2,10 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.annotation.Resource;
@@ -26,6 +28,7 @@ import com.trans.pixel.protoc.UserInfoProto.AreaList;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.DaguanList;
 import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.protoc.UserInfoProto.Event.Builder;
 import com.trans.pixel.protoc.UserInfoProto.EventLevel;
 import com.trans.pixel.protoc.UserInfoProto.EventLevelList;
 import com.trans.pixel.protoc.UserInfoProto.EventRandoms;
@@ -134,6 +137,18 @@ public class LevelRedisService extends RedisService {
 		}
 		return map;
 	}
+	
+	public List<Event> getEventList(UserBean user) {
+		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+user.getId());
+		List<Event> eventList = new ArrayList<Event>();
+		for(String value : keyvalue.values()){
+			Event.Builder event = Event.newBuilder();
+			if(parseJson(value, event))
+				eventList.add(event.build());
+		}
+		return eventList;
+	}
+	
 	// public boolean hasEvent(UserBean user){
 	// 	for(Event.Builder event : getEvents(user).values()){
 	// 		if(event.getOrder() < 100)
@@ -252,6 +267,23 @@ public class LevelRedisService extends RedisService {
 				events.add(builder.build());
 		}
 		return events;
+	}
+	public Map<String, Event> getEventMap(){
+		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
+		if(keyvalue.isEmpty()){
+			buildEvent();
+			keyvalue = hget(RedisKey.EVENT_CONFIG);
+			
+		}
+		
+		Map<String, Event> map = new HashMap<String, Event>();
+		for(Entry<String, String> entry : keyvalue.entrySet()){
+			Event.Builder builder = Event.newBuilder();
+			if(parseJson(entry.getValue(), builder))
+				map.put(entry.getKey(), builder.build());
+		}
+		return map;
+		
 	}
 	public AreaEvent.Builder getDaguanEvent(int daguanid){
 		String value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
@@ -459,5 +491,14 @@ public class LevelRedisService extends RedisService {
 		}
 		
 		return rewardList;
+	}
+	
+	public boolean judgeEventComplete(List<Event> userEventList, int eventId) {
+		for (Event event : userEventList) {
+			if (event.getEventid() == eventId)
+				return false;
+		}
+		
+		return true;
 	}
 }

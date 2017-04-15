@@ -11,20 +11,21 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
+import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily;
+import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
-import com.trans.pixel.protoc.UnionProto.BossRoomRecord;
 import com.trans.pixel.protoc.UnionProto.BosslootGroup;
 import com.trans.pixel.protoc.UnionProto.BosslootGroupList;
-import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class RewardTaskRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(RewardTaskRedisService.class);
 	private static final String REWARDTASK_FILE_NAME = "ld_rewardtask.xml";
 	private static final String REWARDTASK_REWARD_FILE_NAME = "lol_bossloot.xml";
+	private static final String REWARDTASKDAILY_FILE_NAME = "ld_rewardtaskdaily.xml";
 	
-	//bossgroup activity
+	//rewardtask 
 	public RewardTask getRewardTask(int id) {
 		String value = hget(RedisKey.REWARDTASK_KEY, "" + id);
 		if (value == null) {
@@ -148,6 +149,43 @@ public class RewardTaskRedisService extends RedisService {
 		Map<String, BosslootGroup> map = new HashMap<String, BosslootGroup>();
 		for(BosslootGroup.Builder bosslootGroup : builder.getBossBuilderList()){
 			map.put("" + bosslootGroup.getId(), bosslootGroup.build());
+		}
+		return map;
+	}
+	
+	//rewardtask daily
+	public Map<String, RewardTaskDaily> getRewardTaskDailyConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.REWARDTASKDAILY_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, RewardTaskDaily> map = buildRewardTaskDailyConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, RewardTaskDaily> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.REWARDTASKDAILY_KEY, redismap);
+			return map;
+		}else{
+			Map<String, RewardTaskDaily> map = new HashMap<String, RewardTaskDaily>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				RewardTaskDaily.Builder builder = RewardTaskDaily.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, RewardTaskDaily> buildRewardTaskDailyConfig(){
+		String xml = ReadConfig(REWARDTASKDAILY_FILE_NAME);
+		RewardTaskDailyList.Builder builder = RewardTaskDailyList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + REWARDTASKDAILY_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, RewardTaskDaily> map = new HashMap<String, RewardTaskDaily>();
+		for(RewardTaskDaily.Builder rewardtask : builder.getIdBuilderList()){
+			map.put("" + rewardtask.getId(), rewardtask.build());
 		}
 		return map;
 	}

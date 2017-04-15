@@ -2980,6 +2980,16 @@ message RequestUnionBossFightCommand {
 	optional int32 percent = 3;
 }
 ////////// RewardTaskProto
+message RewardTaskDailyList {
+	repeated RewardTaskDaily id = 1;
+}
+
+message RewardTaskDaily {
+	required uint32 id = 1;
+	required uint32 itemid = 2;
+	required uint32 count = 3;
+}
+
 enum REWARDTASK_TYPE{
 	TYPE_1 = 1;
 	TYPE_2 = 2;

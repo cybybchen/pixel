@@ -10,10 +10,6 @@ public final class RewardTaskProto {
   }
   /**
    * Protobuf enum {@code com.trans.pixel.protoc.REWARDTASK_TYPE}
-   *
-   * <pre>
-   *&#47;/////// RewardTaskProto
-   * </pre>
    */
   public enum REWARDTASK_TYPE
       implements com.google.protobuf.ProtocolMessageEnum {
@@ -118,6 +114,1282 @@ public final class RewardTaskProto {
     }
 
     // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.REWARDTASK_TYPE)
+  }
+
+  public interface RewardTaskDailyListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily> 
+        getIdList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily getId(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    int getIdCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder> 
+        getIdOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder getIdOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RewardTaskDailyList}
+   *
+   * <pre>
+   *&#47;/////// RewardTaskProto
+   * </pre>
+   */
+  public static final class RewardTaskDailyList extends
+      com.google.protobuf.GeneratedMessage
+      implements RewardTaskDailyListOrBuilder {
+    // Use RewardTaskDailyList.newBuilder() to construct.
+    private RewardTaskDailyList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RewardTaskDailyList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RewardTaskDailyList defaultInstance;
+    public static RewardTaskDailyList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RewardTaskDailyList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RewardTaskDailyList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              id_.add(input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          id_ = java.util.Collections.unmodifiableList(id_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDailyList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDailyList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList.class, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RewardTaskDailyList> PARSER =
+        new com.google.protobuf.AbstractParser<RewardTaskDailyList>() {
+      public RewardTaskDailyList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RewardTaskDailyList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RewardTaskDailyList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily> id_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily> getIdList() {
+      return id_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder> 
+        getIdOrBuilderList() {
+      return id_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    public int getIdCount() {
+      return id_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily getId(int index) {
+      return id_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder getIdOrBuilder(
+        int index) {
+      return id_.get(index);
+    }
+
+    private void initFields() {
+      id_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getIdCount(); i++) {
+        if (!getId(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < id_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, id_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RewardTaskDailyList}
+     *
+     * <pre>
+     *&#47;/////// RewardTaskProto
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDailyList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDailyList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList.class, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIdFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          idBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDailyList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList build() {
+        com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList buildPartial() {
+        com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList result = new com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList(this);
+        int from_bitField0_ = bitField0_;
+        if (idBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            id_ = java.util.Collections.unmodifiableList(id_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.id_ = id_;
+        } else {
+          result.id_ = idBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList) {
+          return mergeFrom((com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList other) {
+        if (other == com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList.getDefaultInstance()) return this;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              idBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getIdFieldBuilder() : null;
+            } else {
+              idBuilder_.addAllMessages(other.id_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getIdCount(); i++) {
+          if (!getId(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;
+      private java.util.List<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily> id_ =
+        java.util.Collections.emptyList();
+      private void ensureIdIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily>(id_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder> idBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
+        } else {
+          return idBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
+        } else {
+          return idBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
+        } else {
+          return idBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder setId(
+          int index, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.set(index, value);
+          onChanged();
+        } else {
+          idBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder setId(
+          int index, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder addId(com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.add(value);
+          onChanged();
+        } else {
+          idBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder addId(
+          int index, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.add(index, value);
+          onChanged();
+        } else {
+          idBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder addId(
+          com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder addId(
+          int index, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder addAllId(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily> values) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
+          onChanged();
+        } else {
+          idBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          idBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
+          onChanged();
+        } else {
+          idBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder getIdBuilder(
+          int index) {
+        return getIdFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder getIdOrBuilder(
+          int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder> 
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(id_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder addIdBuilder(
+          int index) {
+        return getIdFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardTaskDaily id = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder> 
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder> 
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder>(
+                  id_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          id_ = null;
+        }
+        return idBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RewardTaskDailyList)
+    }
+
+    static {
+      defaultInstance = new RewardTaskDailyList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RewardTaskDailyList)
+  }
+
+  public interface RewardTaskDailyOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required uint32 id = 1;
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    int getId();
+
+    // required uint32 itemid = 2;
+    /**
+     * <code>required uint32 itemid = 2;</code>
+     */
+    boolean hasItemid();
+    /**
+     * <code>required uint32 itemid = 2;</code>
+     */
+    int getItemid();
+
+    // required uint32 count = 3;
+    /**
+     * <code>required uint32 count = 3;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>required uint32 count = 3;</code>
+     */
+    int getCount();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RewardTaskDaily}
+   */
+  public static final class RewardTaskDaily extends
+      com.google.protobuf.GeneratedMessage
+      implements RewardTaskDailyOrBuilder {
+    // Use RewardTaskDaily.newBuilder() to construct.
+    private RewardTaskDaily(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RewardTaskDaily(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RewardTaskDaily defaultInstance;
+    public static RewardTaskDaily getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RewardTaskDaily getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RewardTaskDaily(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              itemid_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              count_ = input.readUInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDaily_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDaily_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.class, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RewardTaskDaily> PARSER =
+        new com.google.protobuf.AbstractParser<RewardTaskDaily>() {
+      public RewardTaskDaily parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RewardTaskDaily(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RewardTaskDaily> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required uint32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // required uint32 itemid = 2;
+    public static final int ITEMID_FIELD_NUMBER = 2;
+    private int itemid_;
+    /**
+     * <code>required uint32 itemid = 2;</code>
+     */
+    public boolean hasItemid() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 itemid = 2;</code>
+     */
+    public int getItemid() {
+      return itemid_;
+    }
+
+    // required uint32 count = 3;
+    public static final int COUNT_FIELD_NUMBER = 3;
+    private int count_;
+    /**
+     * <code>required uint32 count = 3;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required uint32 count = 3;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
+    private void initFields() {
+      id_ = 0;
+      itemid_ = 0;
+      count_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasItemid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, itemid_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(3, count_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, itemid_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, count_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RewardTaskDaily}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDaily_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDaily_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.class, com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        itemid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_RewardTaskDaily_descriptor;
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily build() {
+        com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily buildPartial() {
+        com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily result = new com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.itemid_ = itemid_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily) {
+          return mergeFrom((com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily other) {
+        if (other == com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasItemid()) {
+          setItemid(other.getItemid());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasItemid()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required uint32 id = 1;
+      private int id_ ;
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 itemid = 2;
+      private int itemid_ ;
+      /**
+       * <code>required uint32 itemid = 2;</code>
+       */
+      public boolean hasItemid() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 itemid = 2;</code>
+       */
+      public int getItemid() {
+        return itemid_;
+      }
+      /**
+       * <code>required uint32 itemid = 2;</code>
+       */
+      public Builder setItemid(int value) {
+        bitField0_ |= 0x00000002;
+        itemid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 itemid = 2;</code>
+       */
+      public Builder clearItemid() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        itemid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 count = 3;
+      private int count_ ;
+      /**
+       * <code>required uint32 count = 3;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required uint32 count = 3;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>required uint32 count = 3;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000004;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 count = 3;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RewardTaskDaily)
+    }
+
+    static {
+      defaultInstance = new RewardTaskDaily(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RewardTaskDaily)
   }
 
   public interface RewardTaskEnemyOrBuilder
@@ -10700,6 +11972,16 @@ public final class RewardTaskProto {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RewardTaskDailyList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RewardTaskDailyList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RewardTaskDaily_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RewardTaskDaily_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RewardTaskEnemy_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -10789,142 +12071,158 @@ public final class RewardTaskProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\025RewardTaskProto.proto\022\026com.trans.pixel" +
-      ".protoc\032\nBase.proto\"2\n\017RewardTaskEnemy\022\017" +
-      "\n\007enemyid\030\001 \002(\005\022\016\n\006weight\030\002 \002(\005\"\254\001\n\nRewa" +
-      "rdTask\022\n\n\002id\030\001 \002(\r\022\014\n\004name\030\002 \002(\t\022\014\n\004type" +
-      "\030\003 \002(\r\022\016\n\006renshu\030\004 \002(\r\0226\n\005enemy\030\005 \003(\0132\'." +
-      "com.trans.pixel.protoc.RewardTaskEnemy\022." +
-      "\n\004cost\030\006 \003(\0132 .com.trans.pixel.protoc.Co" +
-      "stItem\"@\n\016RewardTaskList\022.\n\002id\030\001 \003(\0132\".c" +
-      "om.trans.pixel.protoc.RewardTask\"I\n\010Room" +
-      "Info\022\r\n\005index\030\001 \001(\r\022.\n\004user\030\002 \001(\0132 .com.",
-      "trans.pixel.protoc.UserInfo\"\346\001\n\016UserRewa" +
-      "rdTask\022\n\n\002id\030\001 \002(\r\022\017\n\007enemyid\030\002 \001(\r\022\016\n\006s" +
-      "tatus\030\003 \001(\r\022\014\n\004type\030\004 \001(\r\0222\n\010roomInfo\030\005 " +
-      "\001(\0132 .com.trans.pixel.protoc.RoomInfo\022\r\n" +
-      "\005index\030\007 \002(\r\"V\n\021REWARDTASK_STATUS\022\010\n\004LIV" +
-      "E\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n\004FULL\020\003\022\n\n" +
-      "\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\236\001\n\022UserRewardTaskR" +
-      "oom\022\024\n\014createUserId\030\001 \002(\004\022\016\n\006bossId\030\003 \002(" +
-      "\r\022\016\n\006status\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010room" +
-      "Info\030\006 \003(\0132 .com.trans.pixel.protoc.Room",
-      "Info\022\017\n\007enemyId\030\007 \001(\r\"3\n\"RequestCreateRe" +
-      "wardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"A\n Re" +
-      "questQuitRewardTaskRoomCommand\022\r\n\005index\030" +
-      "\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"g\n$RequestInviteTo" +
-      "RewardTaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006use" +
-      "rId\030\002 \003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index" +
-      "\030\004 \001(\r\"A\n#RequestSubmitRewardTaskScoreCo" +
-      "mmand\022\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035Res" +
-      "ponseUserRewardTaskCommand\022>\n\016userReward" +
-      "Task\030\001 \003(\0132&.com.trans.pixel.protoc.User",
-      "RewardTask\"]\n!ResponseUserRewardTaskRoom" +
-      "Command\0228\n\004room\030\001 \003(\0132*.com.trans.pixel." +
-      "protoc.UserRewardTaskRoom\"\036\n\034RequestUser" +
-      "RewardTaskCommand\"/\n\036RequestRewardTaskRe" +
-      "wardCommand\022\r\n\005index\030\002 \002(\r\"1\n RequestUse" +
-      "rRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n" +
-      "\036RequestGiveupRewardTaskCommand\022\r\n\005index" +
-      "\030\001 \002(\r*A\n\017REWARDTASK_TYPE\022\n\n\006TYPE_1\020\001\022\n\n" +
-      "\006TYPE_2\020\002\022\n\n\006TYPE_3\020\003\022\n\n\006TYPE_4\020\004"
+      ".protoc\032\nBase.proto\"J\n\023RewardTaskDailyLi" +
+      "st\0223\n\002id\030\001 \003(\0132\'.com.trans.pixel.protoc." +
+      "RewardTaskDaily\"<\n\017RewardTaskDaily\022\n\n\002id" +
+      "\030\001 \002(\r\022\016\n\006itemid\030\002 \002(\r\022\r\n\005count\030\003 \002(\r\"2\n" +
+      "\017RewardTaskEnemy\022\017\n\007enemyid\030\001 \002(\005\022\016\n\006wei" +
+      "ght\030\002 \002(\005\"\254\001\n\nRewardTask\022\n\n\002id\030\001 \002(\r\022\014\n\004" +
+      "name\030\002 \002(\t\022\014\n\004type\030\003 \002(\r\022\016\n\006renshu\030\004 \002(\r" +
+      "\0226\n\005enemy\030\005 \003(\0132\'.com.trans.pixel.protoc" +
+      ".RewardTaskEnemy\022.\n\004cost\030\006 \003(\0132 .com.tra",
+      "ns.pixel.protoc.CostItem\"@\n\016RewardTaskLi" +
+      "st\022.\n\002id\030\001 \003(\0132\".com.trans.pixel.protoc." +
+      "RewardTask\"I\n\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n" +
+      "\004user\030\002 \001(\0132 .com.trans.pixel.protoc.Use" +
+      "rInfo\"\346\001\n\016UserRewardTask\022\n\n\002id\030\001 \002(\r\022\017\n\007" +
+      "enemyid\030\002 \001(\r\022\016\n\006status\030\003 \001(\r\022\014\n\004type\030\004 " +
+      "\001(\r\0222\n\010roomInfo\030\005 \001(\0132 .com.trans.pixel." +
+      "protoc.RoomInfo\022\r\n\005index\030\007 \002(\r\"V\n\021REWARD" +
+      "TASK_STATUS\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANREW" +
+      "ARD\020\002\022\010\n\004FULL\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\236",
+      "\001\n\022UserRewardTaskRoom\022\024\n\014createUserId\030\001 " +
+      "\002(\004\022\016\n\006bossId\030\003 \002(\r\022\016\n\006status\030\004 \001(\r\022\r\n\005i" +
+      "ndex\030\005 \001(\r\0222\n\010roomInfo\030\006 \003(\0132 .com.trans" +
+      ".pixel.protoc.RoomInfo\022\017\n\007enemyId\030\007 \001(\r\"" +
+      "3\n\"RequestCreateRewardTaskRoomCommand\022\r\n" +
+      "\005index\030\001 \002(\r\"A\n RequestQuitRewardTaskRoo" +
+      "mCommand\022\r\n\005index\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"" +
+      "g\n$RequestInviteToRewardTaskRoomCommand\022" +
+      "\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024\n\014createUse" +
+      "rId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"A\n#RequestSubmi",
+      "tRewardTaskScoreCommand\022\r\n\005index\030\001 \002(\r\022\013" +
+      "\n\003ret\030\002 \002(\010\"_\n\035ResponseUserRewardTaskCom" +
+      "mand\022>\n\016userRewardTask\030\001 \003(\0132&.com.trans" +
+      ".pixel.protoc.UserRewardTask\"]\n!Response" +
+      "UserRewardTaskRoomCommand\0228\n\004room\030\001 \003(\0132" +
+      "*.com.trans.pixel.protoc.UserRewardTaskR" +
+      "oom\"\036\n\034RequestUserRewardTaskCommand\"/\n\036R" +
+      "equestRewardTaskRewardCommand\022\r\n\005index\030\002" +
+      " \002(\r\"1\n RequestUserRewardTaskRoomCommand" +
+      "\022\r\n\005index\030\001 \002(\r\"/\n\036RequestGiveupRewardTa",
+      "skCommand\022\r\n\005index\030\001 \002(\r*A\n\017REWARDTASK_T" +
+      "YPE\022\n\n\006TYPE_1\020\001\022\n\n\006TYPE_2\020\002\022\n\n\006TYPE_3\020\003\022" +
+      "\n\n\006TYPE_4\020\004"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_trans_pixel_protoc_RewardTaskEnemy_descriptor =
+          internal_static_com_trans_pixel_protoc_RewardTaskDailyList_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_com_trans_pixel_protoc_RewardTaskDailyList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RewardTaskDailyList_descriptor,
+              new java.lang.String[] { "Id", });
+          internal_static_com_trans_pixel_protoc_RewardTaskDaily_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_com_trans_pixel_protoc_RewardTaskDaily_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RewardTaskDaily_descriptor,
+              new java.lang.String[] { "Id", "Itemid", "Count", });
+          internal_static_com_trans_pixel_protoc_RewardTaskEnemy_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_RewardTaskEnemy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardTaskEnemy_descriptor,
               new java.lang.String[] { "Enemyid", "Weight", });
           internal_static_com_trans_pixel_protoc_RewardTask_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_RewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardTask_descriptor,
               new java.lang.String[] { "Id", "Name", "Type", "Renshu", "Enemy", "Cost", });
           internal_static_com_trans_pixel_protoc_RewardTaskList_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_RewardTaskList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardTaskList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RoomInfo_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_RoomInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RoomInfo_descriptor,
               new java.lang.String[] { "Index", "User", });
           internal_static_com_trans_pixel_protoc_UserRewardTask_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_UserRewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTask_descriptor,
               new java.lang.String[] { "Id", "Enemyid", "Status", "Type", "RoomInfo", "Index", });
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor,
               new java.lang.String[] { "CreateUserId", "BossId", "Status", "Index", "RoomInfo", "EnemyId", });
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Index", });
           internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Index", "UserId", });
           internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Id", "UserId", "CreateUserId", "Index", });
           internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_descriptor,
               new java.lang.String[] { "Index", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_descriptor,
               new java.lang.String[] { "UserRewardTask", });
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Room", });
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserRewardTaskCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_descriptor,
               new java.lang.String[] { "Index", });
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Index", });
           internal_static_com_trans_pixel_protoc_RequestGiveupRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestGiveupRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGiveupRewardTaskCommand_descriptor,
