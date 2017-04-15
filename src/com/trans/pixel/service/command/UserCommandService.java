@@ -136,8 +136,10 @@ public class UserCommandService extends BaseCommandService {
 		}else{
 			int addHeroId = registerCommand.getHeroId();
 			UserTalent userTalent = addRegisterTalent(user, addHeroId);
-			pushCommandService.pushUserTalent(responseBuilder, user, userTalent);
 //			addRegisterTeam(user);
+			if (userTalent != null)
+				user.setUseTalentId(addHeroId);
+				
 			user.setFirstGetHeroId(addHeroId);
 			
 			/**
@@ -161,7 +163,6 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	private UserTalent addRegisterTalent(UserBean user, int id) {
-		user.setUseTalentId(id);
 		return userTalentService.getRegisterTalent(user, id);
 	}
 	

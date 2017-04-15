@@ -65,6 +65,8 @@ public class UserTalentService {
 	
 	public UserTalent getRegisterTalent(UserBean user, int id) {
 		UserTalent.Builder builder = initUserTalent(user, id);
+		if (builder == null)
+			return null;
 		updateUserTalent(user.getId(), builder.build());
 		
 		return builder.build();
@@ -254,6 +256,9 @@ public class UserTalentService {
 	
 	private UserTalent.Builder initUserTalent(UserBean user, int id) {
 		UserTalent.Builder builder = UserTalent.newBuilder();
+		Talent talent = talentRedisService.getTalent(id);
+		if (talent == null)
+			return null;
 		builder.setId(id);
 		builder.setLevel(0);
 		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
