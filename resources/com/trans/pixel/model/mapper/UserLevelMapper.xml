@@ -10,6 +10,13 @@
 		<result property="leftCount" column="leftCount" />
 		<result property="lootDaguan" column="lootDaguan" />
 	</resultMap>
+	<resultMap id="eventMap" type="com.trans.pixel.model.userinfo.EventBean">
+		<id property="userId" column="userId" />
+		<result property="eventid" column="eventid" />
+		<result property="daguan" column="daguan" />
+		<result property="level" column="level" />
+		<result property="count" column="count" />
+	</resultMap>
 
 	<update id="updateUserLevel" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
 		INSERT INTO user_level(userId, lootTime, eventTime, unlockDaguan, leftCount, lootDaguan)
@@ -22,5 +29,23 @@
 	<select id="getUserLevel" parameterType="long" resultMap="resultMap">
 		SELECT *
 		from user_level where userId = #{userId}
+	</select>
+
+	<update id="updateEvent" parameterType="com.trans.pixel.model.userinfo.EventBean">
+		INSERT INTO user_event(userId, eventid, daguan, level, count)
+	    VALUES(#{userId}, #{eventid}, #{daguan}, #{level}, #{count})
+	    ON 
+	    duplicate key update
+	    daguan=#{daguan},level=#{level},count=#{count}
+	</update>
+
+	<select id="getEvents" parameterType="long" resultMap="eventMap">
+		SELECT *
+		from user_event where userId = #{userId}
+	</select>
+
+	<select id="delEvent" parameterType="long">
+		DELETE
+		from user_event where userId = #{userId} and eventid = #{eventid}
 	</select>
 </mapper>

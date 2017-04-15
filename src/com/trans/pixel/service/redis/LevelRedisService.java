@@ -10,9 +10,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.UserLevelMapper;
+import com.trans.pixel.model.userinfo.EventBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -107,9 +109,24 @@ public class LevelRedisService extends RedisService {
 		hput(RedisKey.USERDATA+bean.getUserId(), "UserLevel", toJson(bean));
 		sadd(RedisKey.PUSH_MYSQL_KEY+"UserLevel", bean.getUserId()+"");
 	}
-	public Map<Integer, Event.Builder> getEvents(UserBean user) {
-		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+user.getId());
+	public Map<Integer, Event.Builder> getEvents(UserLevelBean userLevel) {
+		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
 		Map<Integer, Event.Builder> map = new TreeMap<Integer, Event.Builder>();
+		if(keyvalue.isEmpty() && now() - userLevel.getEventTime() > 24*3600){
+			List<EventBean> list = mapper.getEvents(userLevel.getUserId());
+			for(EventBean bean : list){
+				Event.Builder event = bean.build();
+				Event config = getEvent(event.getEventid());
+				event.setOrder(config.getDaguan()*30+config.getOrder());
+				event.setName(config.getName());
+				event.setType(config.getType());
+				event.setCostid(config.getCostid());
+				event.setCostcount(event.getCostcount());
+				event.setCall(config.getCall());
+				saveEvent(userLevel.getUserId(), event.build());
+				map.put(event.getOrder(), event);
+			}
+		}
 		for(String value : keyvalue.values()){
 			Event.Builder event = Event.newBuilder();
 			if(parseJson(value, event))
@@ -133,7 +150,7 @@ public class LevelRedisService extends RedisService {
 		}else if(time >= 60){
 			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
 			if(events != null){
-				for(Event.Builder myevent : getEvents(user).values()){
+				for(Event.Builder myevent : getEvents(userLevel).values()){
 					for(Event.Builder event : events.getEventBuilderList()){
 						if(event.getCount() > 0 && myevent.getEventid() == event.getEventid()){
 							event.setCount(event.getCount()-1);
@@ -181,14 +198,35 @@ public class LevelRedisService extends RedisService {
 	public Event getEvent(UserBean user, int order) {
 		return getEvent(user.getId(), order);
 	}
+	public String popEventKey() {
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX);
+	}
+	public void updateEventToDB(long userId, int order){
+		Event event = getEvent(userId, order);
+		if(event != null){
+			EventBean bean = new EventBean();
+			mapper.updateEvent(bean);
+		}
+	}
+	public String popDelEventKey() {
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del");
+	}
+	public void updateDelEventToDB(long userId, int eventid){
+		mapper.delEvent(userId, eventid);
+	}
 	public void saveEvent(long userId, Event event) {
 		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event));
+		expire(RedisKey.USEREVENT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		if(event.getOrder() < 10000)
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX, userId+"|"+event.getOrder());
 	}
 	public void saveEvent(UserBean user, Event event) {
 		saveEvent(user.getId(), event);
 	}
-	public void delEvent(UserBean user, int order) {
-		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), order+"");
+	public void delEvent(UserBean user, Event event) {
+		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"");
+		if(event.getOrder() < 10000)
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"|"+event.getEventid());
 	}
 	public Event getEvent(int eventid){
 		String value = hget(RedisKey.EVENT_CONFIG, eventid+"");

@@ -197,7 +197,7 @@ public class LevelCommandService extends BaseCommandService {
 		}else if(event.getOrder() >= 10000 || cmd.getRet()){
 			Event eventconfig = redis.getEvent(event.getEventid());
 			if(eventconfig == null){
-				redis.delEvent(user, event.getOrder());
+				redis.delEvent(user, event);
 				pushLevelLootCommand(responseBuilder, userLevel, user);
 				return;
 			}
@@ -219,14 +219,14 @@ public class LevelCommandService extends BaseCommandService {
 						return;
 					}
 				}
-				redis.delEvent(user, event.getOrder());
+				redis.delEvent(user, event);
 			}else if(cmd.getRet()){//fight event
 				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
 				eventReward(eventconfig, responseBuilder, user);
-				redis.delEvent(user, event.getOrder());
+				redis.delEvent(user, event);
 				
 				/**
 				 * 完成事件的活动
@@ -234,7 +234,7 @@ public class LevelCommandService extends BaseCommandService {
 				if(event.getOrder() < 10000)
 					activityService.completeEvent(user, event.getEventid());
 			}else if(event.getOrder() >= 10000 && !cmd.hasTurn())//give up fight event
-				redis.delEvent(user, event.getOrder());
+				redis.delEvent(user, event);
 		}
 		user.addMyactive();
  		if(user.getMyactive() >= 100){
@@ -252,7 +252,7 @@ public class LevelCommandService extends BaseCommandService {
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserLevelBean userLevel, UserBean user){
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
-		for(Event.Builder e : redis.getEvents(user).values())
+		for(Event.Builder e : redis.getEvents(userLevel).values())
 			builder.addEvent(e);
 		if(builder.getEventCount() >= 20)
 			builder.setEventTime(0);
@@ -287,7 +287,7 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
-				redis.delEvent(friend, cmd.getId());
+				redis.delEvent(friend, event);
 				Event eventconfig = redis.getEvent(event.getEventid());
 //				eventReward(eventconfig, responseBuilder, user);
 //				userLevelRecord = userLevelService.updateUserLevelRecord(levelId, userLevelRecord, friend);

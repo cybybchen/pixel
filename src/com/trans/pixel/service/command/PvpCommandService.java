@@ -94,11 +94,11 @@ public class PvpCommandService extends BaseCommandService {
 
 	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Event> events = levelRedisService.getEvents();
-		Map<Integer, Event.Builder> eventmap = levelRedisService.getEvents(user);
 		for(Event eventconfig : events){
 			if(eventconfig.getTargetid()%100 == cmd.getFieldid()){
 				boolean isError = false;
 				UserLevelBean userLevel = levelRedisService.getUserLevel(user.getId());
+				Map<Integer, Event.Builder> eventmap = levelRedisService.getEvents(userLevel);
 				if(eventconfig.getDaguan() > userLevel.getUnlockDaguan())
 					isError = true;
 				else
