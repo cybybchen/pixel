@@ -34,9 +34,9 @@ import com.trans.pixel.protoc.UserInfoProto.LootList;
 @Repository
 public class LevelRedisService extends RedisService {
 //	private static Logger logger = Logger.getLogger(LevelRedisService.class);
-	private static final int NEWPLAY_LEVEL_1 = 1002;
-	private static final int NEWPLAY_LEVEL_2 = 1004;
-	private static final int NEWPLAY_LEVEL_3 = 1005;
+	private static final int NEWPLAY_LEVEL_1 = 1012;
+	private static final int NEWPLAY_LEVEL_2 = 1013;
+	private static final int NEWPLAY_LEVEL_3 = 1014;
 	@Resource
 	private UserLevelMapper mapper;
 	@Resource
