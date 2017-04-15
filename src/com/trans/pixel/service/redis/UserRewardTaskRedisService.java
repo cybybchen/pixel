@@ -25,8 +25,7 @@ public class UserRewardTaskRedisService extends RedisService {
 			this.hput(key, "" + ut.getIndex(), formatJson(ut));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		
-		if (ut.getType() != 1)
-			sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
+		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
 	}
 	
 	public void deleteUserRewardTask(long userId, UserRewardTask ut) {
