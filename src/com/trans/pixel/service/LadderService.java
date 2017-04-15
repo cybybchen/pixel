@@ -403,7 +403,7 @@ public class LadderService {
 				UserBean robot = userService.getRobotUser(userId);
 				if (robot == null) {
 					robot = new UserBean();
-					String robotName = randomRobotName(name2List, nameList);
+					String robotName = randomRobotName(nameList, name2List);
 					robot.init(serverId, "account", robotName, RedisService.nextInt(5) + 61001);
 					robot.setId(userId);
 					Team.Builder team = Team.newBuilder();
