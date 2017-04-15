@@ -58,9 +58,18 @@ public class RewardTaskService {
 	private UserEquipService userEquipService;
 	
 	public ResultConst zhaohuanTask(UserBean user, int id) {
-		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
-		if (oldTask != null && oldTask.getStatus() == 0) 
-			return ErrorConst.BOSS_HAS_ZHAOHUAN;
+//		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
+//		if (oldTask != null && oldTask.getStatus() == 0) 
+//			return ErrorConst.BOSS_HAS_ZHAOHUAN;
+		List<UserRewardTask> userRewardTaskList = userRewardTaskService.getUserRewardTaskList(user);
+		int rewardTaskCount = 0;
+		for (UserRewardTask urt : userRewardTaskList) {
+			if (urt.getStatus() != REWARDTASK_STATUS.END_VALUE)
+				rewardTaskCount++;
+		}
+		
+		if (rewardTaskCount >= 20) 
+			return ErrorConst.REWARDTASK_IS_LIMIT_ERROR;
 		
 		user.setRewardTaskIndex(user.getRewardTaskIndex() + 1);
 		userService.updateUser(user);
