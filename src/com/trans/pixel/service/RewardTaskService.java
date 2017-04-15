@@ -211,6 +211,19 @@ public class RewardTaskService {
 				return null;
 			
 			UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder(room);
+			
+			List<UserRewardTask> userRewardTaskList = userRewardTaskService.getUserRewardTaskList(user);
+			int rewardTaskCount = 0;
+			for (UserRewardTask urt : userRewardTaskList) {
+				if (urt.getStatus() != REWARDTASK_STATUS.END_VALUE)
+					rewardTaskCount++;
+			}
+			if (rewardTaskCount >= 20) {
+				builder.setStatus(REWARDTASK_STATUS.LIMIT_VALUE);
+				return builder.build();
+			}
+			
+			
 			for (RoomInfo roomInfo : builder.getRoomInfoList()) {
 				if (roomInfo.getUser().getId() == user.getId()) {
 					builder.setStatus(REWARDTASK_STATUS.HAS_IN_VALUE);

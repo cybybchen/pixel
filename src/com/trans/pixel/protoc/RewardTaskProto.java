@@ -3633,6 +3633,14 @@ public final class RewardTaskProto {
        * </pre>
        */
       HAS_IN(4, 4),
+      /**
+       * <code>LIMIT = 5;</code>
+       *
+       * <pre>
+       *悬赏任务已达上限
+       * </pre>
+       */
+      LIMIT(5, 5),
       ;
 
       /**
@@ -3663,6 +3671,14 @@ public final class RewardTaskProto {
        * </pre>
        */
       public static final int HAS_IN_VALUE = 4;
+      /**
+       * <code>LIMIT = 5;</code>
+       *
+       * <pre>
+       *悬赏任务已达上限
+       * </pre>
+       */
+      public static final int LIMIT_VALUE = 5;
 
 
       public final int getNumber() { return value; }
@@ -3674,6 +3690,7 @@ public final class RewardTaskProto {
           case 2: return CANREWARD;
           case 3: return FULL;
           case 4: return HAS_IN;
+          case 5: return LIMIT;
           default: return null;
         }
       }
@@ -10781,35 +10798,35 @@ public final class RewardTaskProto {
       "stItem\"@\n\016RewardTaskList\022.\n\002id\030\001 \003(\0132\".c" +
       "om.trans.pixel.protoc.RewardTask\"I\n\010Room" +
       "Info\022\r\n\005index\030\001 \001(\r\022.\n\004user\030\002 \001(\0132 .com.",
-      "trans.pixel.protoc.UserInfo\"\333\001\n\016UserRewa" +
+      "trans.pixel.protoc.UserInfo\"\346\001\n\016UserRewa" +
       "rdTask\022\n\n\002id\030\001 \002(\r\022\017\n\007enemyid\030\002 \001(\r\022\016\n\006s" +
       "tatus\030\003 \001(\r\022\014\n\004type\030\004 \001(\r\0222\n\010roomInfo\030\005 " +
       "\001(\0132 .com.trans.pixel.protoc.RoomInfo\022\r\n" +
-      "\005index\030\007 \002(\r\"K\n\021REWARDTASK_STATUS\022\010\n\004LIV" +
+      "\005index\030\007 \002(\r\"V\n\021REWARDTASK_STATUS\022\010\n\004LIV" +
       "E\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n\004FULL\020\003\022\n\n" +
-      "\006HAS_IN\020\004\"\236\001\n\022UserRewardTaskRoom\022\024\n\014crea" +
-      "teUserId\030\001 \002(\004\022\016\n\006bossId\030\003 \002(\r\022\016\n\006status" +
-      "\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010roomInfo\030\006 \003(\0132" +
-      " .com.trans.pixel.protoc.RoomInfo\022\017\n\007ene",
-      "myId\030\007 \001(\r\"3\n\"RequestCreateRewardTaskRoo" +
-      "mCommand\022\r\n\005index\030\001 \002(\r\"A\n RequestQuitRe" +
-      "wardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\022\016\n\006us" +
-      "erId\030\002 \002(\004\"g\n$RequestInviteToRewardTaskR" +
-      "oomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024" +
-      "\n\014createUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"A\n#R" +
-      "equestSubmitRewardTaskScoreCommand\022\r\n\005in" +
-      "dex\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035ResponseUserRe" +
-      "wardTaskCommand\022>\n\016userRewardTask\030\001 \003(\0132" +
-      "&.com.trans.pixel.protoc.UserRewardTask\"",
-      "]\n!ResponseUserRewardTaskRoomCommand\0228\n\004" +
-      "room\030\001 \003(\0132*.com.trans.pixel.protoc.User" +
-      "RewardTaskRoom\"\036\n\034RequestUserRewardTaskC" +
-      "ommand\"/\n\036RequestRewardTaskRewardCommand" +
-      "\022\r\n\005index\030\002 \002(\r\"1\n RequestUserRewardTask" +
-      "RoomCommand\022\r\n\005index\030\001 \002(\r\"/\n\036RequestGiv" +
-      "eupRewardTaskCommand\022\r\n\005index\030\001 \002(\r*A\n\017R" +
-      "EWARDTASK_TYPE\022\n\n\006TYPE_1\020\001\022\n\n\006TYPE_2\020\002\022\n" +
-      "\n\006TYPE_3\020\003\022\n\n\006TYPE_4\020\004"
+      "\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\236\001\n\022UserRewardTaskR" +
+      "oom\022\024\n\014createUserId\030\001 \002(\004\022\016\n\006bossId\030\003 \002(" +
+      "\r\022\016\n\006status\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010room" +
+      "Info\030\006 \003(\0132 .com.trans.pixel.protoc.Room",
+      "Info\022\017\n\007enemyId\030\007 \001(\r\"3\n\"RequestCreateRe" +
+      "wardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"A\n Re" +
+      "questQuitRewardTaskRoomCommand\022\r\n\005index\030" +
+      "\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"g\n$RequestInviteTo" +
+      "RewardTaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006use" +
+      "rId\030\002 \003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index" +
+      "\030\004 \001(\r\"A\n#RequestSubmitRewardTaskScoreCo" +
+      "mmand\022\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035Res" +
+      "ponseUserRewardTaskCommand\022>\n\016userReward" +
+      "Task\030\001 \003(\0132&.com.trans.pixel.protoc.User",
+      "RewardTask\"]\n!ResponseUserRewardTaskRoom" +
+      "Command\0228\n\004room\030\001 \003(\0132*.com.trans.pixel." +
+      "protoc.UserRewardTaskRoom\"\036\n\034RequestUser" +
+      "RewardTaskCommand\"/\n\036RequestRewardTaskRe" +
+      "wardCommand\022\r\n\005index\030\002 \002(\r\"1\n RequestUse" +
+      "rRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n" +
+      "\036RequestGiveupRewardTaskCommand\022\r\n\005index" +
+      "\030\001 \002(\r*A\n\017REWARDTASK_TYPE\022\n\n\006TYPE_1\020\001\022\n\n" +
+      "\006TYPE_2\020\002\022\n\n\006TYPE_3\020\003\022\n\n\006TYPE_4\020\004"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

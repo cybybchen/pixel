@@ -143,6 +143,14 @@ public class RewardTaskCommandService extends BaseCommandService {
             return;
 		} 
 		
+		if (room.hasStatus() && room.getStatus() == REWARDTASK_STATUS.LIMIT_VALUE) { // 悬赏任务已达上限
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.REWARDTASK_IS_LIMIT_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.REWARDTASK_IS_LIMIT_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
 		if (room.hasStatus() && room.getStatus() == REWARDTASK_STATUS.FULL_VALUE) { // 房间人数已满
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_FULL_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_FULL_ERROR);
