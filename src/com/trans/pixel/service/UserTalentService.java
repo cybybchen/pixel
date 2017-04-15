@@ -19,6 +19,7 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserTalentBean;
 import com.trans.pixel.model.userinfo.UserTalentSkillBean;
 import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.Base.UserTalent.Builder;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
 import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.HeroProto.Talent;
@@ -58,7 +59,9 @@ public class UserTalentService {
 			}
 		}
 		if (userTalent == null) {
-			userTalent = initUserTalent(user, id).build();
+			UserTalent.Builder builder = initUserTalent(user, id);
+			if (builder != null)
+				return builder.build();
 		}
 		return userTalent;	
 	}
