@@ -217,9 +217,9 @@ public class LevelRedisService extends RedisService {
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX);
 	}
 	public void updateEventToDB(long userId, int order){
-		Event event = getEvent(userId, order);
-		if(event != null){
-			EventBean bean = new EventBean();
+		String value = hget(RedisKey.USEREVENT_PREFIX+userId, order+"");
+		if(value != null){
+			EventBean bean = EventBean.fromJson(userId, value);
 			mapper.updateEvent(bean);
 		}
 	}
