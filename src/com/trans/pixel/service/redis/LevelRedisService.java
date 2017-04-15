@@ -233,7 +233,7 @@ public class LevelRedisService extends RedisService {
 		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event));
 		expire(RedisKey.USEREVENT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		if(event.getOrder() < 10000)
-			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX, userId+"|"+event.getOrder());
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX, userId+"#"+event.getOrder());
 	}
 	public void saveEvent(UserBean user, Event event) {
 		saveEvent(user.getId(), event);
@@ -241,7 +241,7 @@ public class LevelRedisService extends RedisService {
 	public void delEvent(UserBean user, Event event) {
 		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"");
 		if(event.getOrder() < 10000)
-			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"|"+event.getEventid());
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"#"+event.getEventid());
 	}
 	public Event getEvent(int eventid){
 		String value = hget(RedisKey.EVENT_CONFIG, eventid+"");
