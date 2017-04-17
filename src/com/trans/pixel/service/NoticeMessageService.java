@@ -110,6 +110,16 @@ public class NoticeMessageService {
 		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 	}
 	
+	public void composeEquipStrengthen(UserBean user, String name, int level, int rare) {
+		if (level >= 11) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("恭喜").append(user.getUserName()).append("将").append("%s").append(",%s").append("，小伙伴们都惊呆了！").append("," + rare + "," + name)
+				.append(",6,强化到了").append(level).append("级");
+			
+			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+		}	
+	}
+	
 	public List<String> getNoticeMessageList(UserBean user) {
 		List<String> messageList = redis.getNoticeMessageList(user.getServerId(), user.getReceiveNoticeMessageTimeStamp());
 		user.setReceiveNoticeMessageTimeStamp(System.currentTimeMillis());

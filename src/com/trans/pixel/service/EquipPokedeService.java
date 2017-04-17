@@ -38,6 +38,8 @@ public class EquipPokedeService {
 //	private RewardService rewardService;
 	@Resource
 	private EquipService equipService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
 
 	public List<RewardInfo> convertCost(List<CostItem> costList) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
@@ -57,16 +59,19 @@ public class EquipPokedeService {
 		
 		EquipIncrease equipIncrease = equipPokedeRedisService.getEquipIncrease(pokede.getLevel() + 1);
 		if (equipIncrease == null)
-			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
+			return ErrorConst.EQUIP_LEVEL_IS_LIMIT_ERROR;
 		
 		int rare = 0;
 		int ilevel = 0;
+		String name = "";
 		if (pokede.getItemId() < RewardConst.ARMOR) {
 			Equip equip = equipService.getEquip(pokede.getItemId());
+			name = equip.getName();
 			rare = equip.getRare();
 			ilevel = equip.getIlevel();
 		} else {
 			Armor armor = equipService.getArmor(pokede.getItemId());
+			name = armor.getName();
 			rare = armor.getRare();
 			ilevel = armor.getIlevel();
 		}
@@ -81,15 +86,17 @@ public class EquipPokedeService {
 		if (!costService.cost(user, rewards.build()))
 			return ErrorConst.NOT_ENOUGH_COIN;
 		
-		if (RandomUtils.nextInt(10000) >= equipIncrease.getRate()) {
-			if (equipIncrease.getZero() == 1) {
-				pokede.setLevel(0);
-			}
-			
-			return SuccessConst.EQUIP_STRENGTHEN_FALIED_SUCCESS;
-		}
+//		if (RandomUtils.nextInt(10000) >= equipIncrease.getRate()) {
+//			if (equipIncrease.getZero() == 1) {
+//				pokede.setLevel(0);
+//			}
+//			
+//			return SuccessConst.EQUIP_STRENGTHEN_FALIED_SUCCESS;
+//		}
 		
 		pokede.setLevel(pokede.getLevel() + 1);
+		noticeMessageService.composeEquipStrengthen(user, name, pokede.getLevel(), rare);
+		
 		return SuccessConst.EQUIP_STRENGTHEN_SUCCESS;
 	}
 }
