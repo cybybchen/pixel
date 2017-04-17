@@ -280,7 +280,7 @@ public class UserCommandService extends BaseCommandService {
 		int status = cmd.getStatus();
 		if (status == 2) {
 			if (System.currentTimeMillis() - user.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
-				List<RewardBean> rewardList = RewardBean.initRewardList(35002, 1);
+				List<RewardBean> rewardList = RewardBean.initRewardList(35003, 1);
 				rewardService.doRewards(user, rewardList);
 				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 			}
