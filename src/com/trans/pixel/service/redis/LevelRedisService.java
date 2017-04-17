@@ -475,6 +475,8 @@ public class LevelRedisService extends RedisService {
 		if (user.getFirstGetHeroId() == 0)
 			return rewardList;
 		HeroChoice heroChoice = heroRedisService.getHerochoice(user.getFirstGetHeroId());
+		if (heroChoice == null)
+			return rewardList;
 		switch (levelId) {
 			case NEWPLAY_LEVEL_1:
 				rewardList.add(RewardBean.init(heroChoice.getEvent1(), 1));
