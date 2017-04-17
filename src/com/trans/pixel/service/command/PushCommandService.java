@@ -449,7 +449,9 @@ public class PushCommandService extends BaseCommandService {
 			} else if (rewardId > RewardConst.EQUIPMENT) {
 				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			} else if (rewardId == RewardConst.ZHUJUEEXP) {
-				userTalentList.add(userTalentService.getUsingTalent(user));
+				UserTalent userTalent = userTalentService.getUsingTalent(user);
+				if (userTalent != null)
+					userTalentList.add(userTalent);
 			} else {
 				isUserUpdated = true;
 			}
