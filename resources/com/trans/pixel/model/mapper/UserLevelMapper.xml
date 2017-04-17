@@ -44,7 +44,7 @@
 		from user_event where userId = #{userId}
 	</select>
 
-	<select id="delEvent" parameterType="long">
+	<select id="delEvent">
 		DELETE
 		from user_event where userId = #{userId} and eventid = #{eventid}
 	</select>
