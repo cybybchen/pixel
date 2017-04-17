@@ -131,11 +131,11 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	public void levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
-		long time = (RedisService.now()-userLevel.getLootTime())/60*60;
-		if(time >= 60){
+		long time = (RedisService.now()-userLevel.getLootTime())/LevelRedisService.EVENTTIME*LevelRedisService.EVENTTIME;
+		if(time >= LevelRedisService.EVENTTIME){
 			Daguan.Builder daguan = redis.getDaguan(userLevel.getLootDaguan());
 			for(RewardInfo.Builder reward : daguan.getItemBuilderList())
-				reward.setCount(reward.getCount()*time/60);
+				reward.setCount(reward.getCount()*time/LevelRedisService.EVENTTIME);
 			rewardService.doReward(user, RewardConst.COIN, daguan.getGold()*(time));
 			rewardService.doReward(user, RewardConst.EXP, daguan.getExperience()*(time));
 			rewardService.updateUser(user);
@@ -257,7 +257,7 @@ public class LevelCommandService extends BaseCommandService {
 		if(builder.getEventCount() >= 20)
 			builder.setEventTime(0);
 		else
-			builder.setEventTime(builder.getEventTime()+60);
+			builder.setEventTime(builder.getEventTime()+LevelRedisService.EVENTTIME);
 		responseBuilder.setLevelLootCommand(builder.build());
 	}
 	

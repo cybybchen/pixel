@@ -42,6 +42,7 @@ public class LevelRedisService extends RedisService {
 	private static final int NEWPLAY_LEVEL_1 = 1012;
 	private static final int NEWPLAY_LEVEL_2 = 1013;
 	private static final int NEWPLAY_LEVEL_3 = 1014;
+	public static final int EVENTTIME = 1200;
 	@Resource
 	private UserLevelMapper mapper;
 	@Resource
@@ -162,7 +163,7 @@ public class LevelRedisService extends RedisService {
 		if(eventsize >= 20){
 			userLevel.setEventTime((int)now());
 			saveUserLevel(userLevel);
-		}else if(time >= 60){
+		}else if(time >= EVENTTIME){
 			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
 			if(events != null){
 				for(Event.Builder myevent : getEvents(userLevel).values()){
@@ -176,7 +177,7 @@ public class LevelRedisService extends RedisService {
 						}
 					}
 				}
-				for(int i = 0; i < Math.min(20-eventsize,time/60); i++){
+				for(int i = 0; i < Math.min(20-eventsize,time/EVENTTIME); i++){
 					int weight = nextInt(events.getWeight());
 					for(Event.Builder event : events.getEventBuilderList()){
 						weight -= event.getWeight();
@@ -199,7 +200,7 @@ public class LevelRedisService extends RedisService {
 					}
 				}
 			}
-			userLevel.setEventTime(userLevel.getEventTime()+(int)time/60*60);
+			userLevel.setEventTime(userLevel.getEventTime()+(int)time/EVENTTIME*EVENTTIME);
 			saveUserLevel(userLevel);
 		}
 	}
