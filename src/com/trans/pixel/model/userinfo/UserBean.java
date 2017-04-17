@@ -117,6 +117,7 @@ public class UserBean {
 	private int rewardTaskIndex = 0;
 	private int merlevel = 1;
 	private int useTalentId = 0;
+	private long extraTimeStamp = 0;
 	/**
 	 * 佣兵团等级
 	 */
@@ -1153,6 +1154,12 @@ public class UserBean {
 	public void setUseTalentId(int useTalentId) {
 		this.useTalentId = useTalentId;
 	}
+	public long getExtraTimeStamp() {
+		return extraTimeStamp;
+	}
+	public void setExtraTimeStamp(long extraTimeStamp) {
+		this.extraTimeStamp = extraTimeStamp;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1301,6 +1308,7 @@ public class UserBean {
 		builder.setVipExp(vipExp);
 		builder.setMerlevel(merlevel);
 		builder.setUseTalentId(useTalentId);
+		builder.setExtraTimeStamp(extraTimeStamp + 25 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
 		
 		return builder.build();
 	}

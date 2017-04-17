@@ -64,6 +64,7 @@ message UserInfo {
 	optional uint32 vipExp = 76;
 	optional int32 merlevel = 77;
 	optional uint32 useTalentId = 78;
+	optional uint64 extraTimeStamp = 79;
 }
 
 message CostItem {
@@ -2454,6 +2455,10 @@ message RequestUserInfoCommand {
 
 }
 
+message RequestExtraRewardCommand {
+	required uint32 status = 1;//1：start 2:end
+}
+
 message RequestLoginCommand {
 }
 
@@ -3380,6 +3385,7 @@ message RequestCommand {
 	optional RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;
 	optional RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;
 	optional RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;
+	optional RequestExtraRewardCommand extraRewardCommand = 241;
 }
 ////////// Commands
 message ErrorCommand {

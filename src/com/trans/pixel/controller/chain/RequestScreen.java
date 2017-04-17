@@ -148,6 +148,7 @@ import com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopCommand;
@@ -336,6 +337,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBattletowerShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUserRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestExtraRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestShouchongRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUsePropCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -960,6 +962,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasUserRewardTaskRoomCommand()) {
 			RequestUserRewardTaskRoomCommand cmd = request.getUserRewardTaskRoomCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasExtraRewardCommand()) {
+			RequestExtraRewardCommand cmd = request.getExtraRewardCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasShouchongRewardCommand()) {

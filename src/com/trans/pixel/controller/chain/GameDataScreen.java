@@ -177,6 +177,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
@@ -1323,6 +1324,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestGiveupRewardTaskCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		rewardTaskCommandService.giveupRewardTask(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestExtraRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		userCommandService.extra(cmd, responseBuilder, user);
 		return true;
 	}
 

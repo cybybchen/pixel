@@ -1,5 +1,7 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.protoc.Base.UserTalent;
@@ -20,12 +23,14 @@ import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
+import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
@@ -64,6 +69,8 @@ public class UserCommandService extends BaseCommandService {
 	private ServerService serverService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private RewardService rewardService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -266,6 +273,24 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	public void userInfo(RequestUserInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void extra(RequestExtraRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		int status = cmd.getStatus();
+		if (status == 2) {
+			if (System.currentTimeMillis() - user.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
+				List<RewardBean> rewardList = RewardBean.initRewardList(35002, 1);
+				rewardService.doRewards(user, rewardList);
+				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+			}
+			
+			user.setExtraTimeStamp(0);
+		} else if (status == 1) {
+			user.setExtraTimeStamp(System.currentTimeMillis());
+		}
+		
+		userService.updateUser(user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
