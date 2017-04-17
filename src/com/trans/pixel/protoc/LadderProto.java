@@ -5716,15 +5716,15 @@ public final class LadderProto {
      */
     int getLv();
 
-    // required int32 rare = 5;
+    // required int32 rank = 5;
     /**
-     * <code>required int32 rare = 5;</code>
+     * <code>required int32 rank = 5;</code>
      */
-    boolean hasRare();
+    boolean hasRank();
     /**
-     * <code>required int32 rare = 5;</code>
+     * <code>required int32 rank = 5;</code>
      */
-    int getRare();
+    int getRank();
 
     // required int32 herocount = 6;
     /**
@@ -5736,25 +5736,145 @@ public final class LadderProto {
      */
     int getHerocount();
 
-    // required int32 zhanli = 7;
+    // optional uint32 leadlv = 7;
     /**
-     * <code>required int32 zhanli = 7;</code>
+     * <code>optional uint32 leadlv = 7;</code>
      */
-    boolean hasZhanli();
+    boolean hasLeadlv();
     /**
-     * <code>required int32 zhanli = 7;</code>
+     * <code>optional uint32 leadlv = 7;</code>
      */
-    int getZhanli();
+    int getLeadlv();
 
-    // required int32 zhanli1 = 8;
+    // optional uint32 leadskill = 8;
     /**
-     * <code>required int32 zhanli1 = 8;</code>
+     * <code>optional uint32 leadskill = 8;</code>
      */
-    boolean hasZhanli1();
+    boolean hasLeadskill();
     /**
-     * <code>required int32 zhanli1 = 8;</code>
+     * <code>optional uint32 leadskill = 8;</code>
      */
-    int getZhanli1();
+    int getLeadskill();
+
+    // optional uint32 equip1 = 9;
+    /**
+     * <code>optional uint32 equip1 = 9;</code>
+     */
+    boolean hasEquip1();
+    /**
+     * <code>optional uint32 equip1 = 9;</code>
+     */
+    int getEquip1();
+
+    // optional uint32 equip2 = 10;
+    /**
+     * <code>optional uint32 equip2 = 10;</code>
+     */
+    boolean hasEquip2();
+    /**
+     * <code>optional uint32 equip2 = 10;</code>
+     */
+    int getEquip2();
+
+    // optional uint32 equip3 = 11;
+    /**
+     * <code>optional uint32 equip3 = 11;</code>
+     */
+    boolean hasEquip3();
+    /**
+     * <code>optional uint32 equip3 = 11;</code>
+     */
+    int getEquip3();
+
+    // optional uint32 equip4 = 12;
+    /**
+     * <code>optional uint32 equip4 = 12;</code>
+     */
+    boolean hasEquip4();
+    /**
+     * <code>optional uint32 equip4 = 12;</code>
+     */
+    int getEquip4();
+
+    // optional uint32 equip5 = 13;
+    /**
+     * <code>optional uint32 equip5 = 13;</code>
+     */
+    boolean hasEquip5();
+    /**
+     * <code>optional uint32 equip5 = 13;</code>
+     */
+    int getEquip5();
+
+    // optional uint32 equip6 = 14;
+    /**
+     * <code>optional uint32 equip6 = 14;</code>
+     */
+    boolean hasEquip6();
+    /**
+     * <code>optional uint32 equip6 = 14;</code>
+     */
+    int getEquip6();
+
+    // optional uint32 equip7 = 15;
+    /**
+     * <code>optional uint32 equip7 = 15;</code>
+     */
+    boolean hasEquip7();
+    /**
+     * <code>optional uint32 equip7 = 15;</code>
+     */
+    int getEquip7();
+
+    // optional uint32 equip8 = 16;
+    /**
+     * <code>optional uint32 equip8 = 16;</code>
+     */
+    boolean hasEquip8();
+    /**
+     * <code>optional uint32 equip8 = 16;</code>
+     */
+    int getEquip8();
+
+    // optional uint32 equip9 = 17;
+    /**
+     * <code>optional uint32 equip9 = 17;</code>
+     */
+    boolean hasEquip9();
+    /**
+     * <code>optional uint32 equip9 = 17;</code>
+     */
+    int getEquip9();
+
+    // optional uint32 equip10 = 18;
+    /**
+     * <code>optional uint32 equip10 = 18;</code>
+     */
+    boolean hasEquip10();
+    /**
+     * <code>optional uint32 equip10 = 18;</code>
+     */
+    int getEquip10();
+
+    // optional uint32 score = 19;
+    /**
+     * <code>optional uint32 score = 19;</code>
+     */
+    boolean hasScore();
+    /**
+     * <code>optional uint32 score = 19;</code>
+     */
+    int getScore();
+
+    // optional uint32 score1 = 20;
+    /**
+     * <code>optional uint32 score1 = 20;</code>
+     */
+    boolean hasScore1();
+    /**
+     * <code>optional uint32 score1 = 20;</code>
+     */
+    int getScore1();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.LadderEnemy}
@@ -5829,7 +5949,7 @@ public final class LadderProto {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              rare_ = input.readInt32();
+              rank_ = input.readInt32();
               break;
             }
             case 48: {
@@ -5839,12 +5959,72 @@ public final class LadderProto {
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              zhanli_ = input.readInt32();
+              leadlv_ = input.readUInt32();
               break;
             }
             case 64: {
               bitField0_ |= 0x00000080;
-              zhanli1_ = input.readInt32();
+              leadskill_ = input.readUInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
+              equip1_ = input.readUInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              equip2_ = input.readUInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              equip3_ = input.readUInt32();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
+              equip4_ = input.readUInt32();
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00001000;
+              equip5_ = input.readUInt32();
+              break;
+            }
+            case 112: {
+              bitField0_ |= 0x00002000;
+              equip6_ = input.readUInt32();
+              break;
+            }
+            case 120: {
+              bitField0_ |= 0x00004000;
+              equip7_ = input.readUInt32();
+              break;
+            }
+            case 128: {
+              bitField0_ |= 0x00008000;
+              equip8_ = input.readUInt32();
+              break;
+            }
+            case 136: {
+              bitField0_ |= 0x00010000;
+              equip9_ = input.readUInt32();
+              break;
+            }
+            case 144: {
+              bitField0_ |= 0x00020000;
+              equip10_ = input.readUInt32();
+              break;
+            }
+            case 152: {
+              bitField0_ |= 0x00040000;
+              score_ = input.readUInt32();
+              break;
+            }
+            case 160: {
+              bitField0_ |= 0x00080000;
+              score1_ = input.readUInt32();
               break;
             }
           }
@@ -5951,20 +6131,20 @@ public final class LadderProto {
       return lv_;
     }
 
-    // required int32 rare = 5;
-    public static final int RARE_FIELD_NUMBER = 5;
-    private int rare_;
+    // required int32 rank = 5;
+    public static final int RANK_FIELD_NUMBER = 5;
+    private int rank_;
     /**
-     * <code>required int32 rare = 5;</code>
+     * <code>required int32 rank = 5;</code>
      */
-    public boolean hasRare() {
+    public boolean hasRank() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 rare = 5;</code>
+     * <code>required int32 rank = 5;</code>
      */
-    public int getRare() {
-      return rare_;
+    public int getRank() {
+      return rank_;
     }
 
     // required int32 herocount = 6;
@@ -5983,36 +6163,228 @@ public final class LadderProto {
       return herocount_;
     }
 
-    // required int32 zhanli = 7;
-    public static final int ZHANLI_FIELD_NUMBER = 7;
-    private int zhanli_;
+    // optional uint32 leadlv = 7;
+    public static final int LEADLV_FIELD_NUMBER = 7;
+    private int leadlv_;
     /**
-     * <code>required int32 zhanli = 7;</code>
+     * <code>optional uint32 leadlv = 7;</code>
      */
-    public boolean hasZhanli() {
+    public boolean hasLeadlv() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required int32 zhanli = 7;</code>
+     * <code>optional uint32 leadlv = 7;</code>
      */
-    public int getZhanli() {
-      return zhanli_;
+    public int getLeadlv() {
+      return leadlv_;
     }
 
-    // required int32 zhanli1 = 8;
-    public static final int ZHANLI1_FIELD_NUMBER = 8;
-    private int zhanli1_;
+    // optional uint32 leadskill = 8;
+    public static final int LEADSKILL_FIELD_NUMBER = 8;
+    private int leadskill_;
     /**
-     * <code>required int32 zhanli1 = 8;</code>
+     * <code>optional uint32 leadskill = 8;</code>
      */
-    public boolean hasZhanli1() {
+    public boolean hasLeadskill() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>required int32 zhanli1 = 8;</code>
+     * <code>optional uint32 leadskill = 8;</code>
      */
-    public int getZhanli1() {
-      return zhanli1_;
+    public int getLeadskill() {
+      return leadskill_;
+    }
+
+    // optional uint32 equip1 = 9;
+    public static final int EQUIP1_FIELD_NUMBER = 9;
+    private int equip1_;
+    /**
+     * <code>optional uint32 equip1 = 9;</code>
+     */
+    public boolean hasEquip1() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional uint32 equip1 = 9;</code>
+     */
+    public int getEquip1() {
+      return equip1_;
+    }
+
+    // optional uint32 equip2 = 10;
+    public static final int EQUIP2_FIELD_NUMBER = 10;
+    private int equip2_;
+    /**
+     * <code>optional uint32 equip2 = 10;</code>
+     */
+    public boolean hasEquip2() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional uint32 equip2 = 10;</code>
+     */
+    public int getEquip2() {
+      return equip2_;
+    }
+
+    // optional uint32 equip3 = 11;
+    public static final int EQUIP3_FIELD_NUMBER = 11;
+    private int equip3_;
+    /**
+     * <code>optional uint32 equip3 = 11;</code>
+     */
+    public boolean hasEquip3() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional uint32 equip3 = 11;</code>
+     */
+    public int getEquip3() {
+      return equip3_;
+    }
+
+    // optional uint32 equip4 = 12;
+    public static final int EQUIP4_FIELD_NUMBER = 12;
+    private int equip4_;
+    /**
+     * <code>optional uint32 equip4 = 12;</code>
+     */
+    public boolean hasEquip4() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional uint32 equip4 = 12;</code>
+     */
+    public int getEquip4() {
+      return equip4_;
+    }
+
+    // optional uint32 equip5 = 13;
+    public static final int EQUIP5_FIELD_NUMBER = 13;
+    private int equip5_;
+    /**
+     * <code>optional uint32 equip5 = 13;</code>
+     */
+    public boolean hasEquip5() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional uint32 equip5 = 13;</code>
+     */
+    public int getEquip5() {
+      return equip5_;
+    }
+
+    // optional uint32 equip6 = 14;
+    public static final int EQUIP6_FIELD_NUMBER = 14;
+    private int equip6_;
+    /**
+     * <code>optional uint32 equip6 = 14;</code>
+     */
+    public boolean hasEquip6() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>optional uint32 equip6 = 14;</code>
+     */
+    public int getEquip6() {
+      return equip6_;
+    }
+
+    // optional uint32 equip7 = 15;
+    public static final int EQUIP7_FIELD_NUMBER = 15;
+    private int equip7_;
+    /**
+     * <code>optional uint32 equip7 = 15;</code>
+     */
+    public boolean hasEquip7() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>optional uint32 equip7 = 15;</code>
+     */
+    public int getEquip7() {
+      return equip7_;
+    }
+
+    // optional uint32 equip8 = 16;
+    public static final int EQUIP8_FIELD_NUMBER = 16;
+    private int equip8_;
+    /**
+     * <code>optional uint32 equip8 = 16;</code>
+     */
+    public boolean hasEquip8() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional uint32 equip8 = 16;</code>
+     */
+    public int getEquip8() {
+      return equip8_;
+    }
+
+    // optional uint32 equip9 = 17;
+    public static final int EQUIP9_FIELD_NUMBER = 17;
+    private int equip9_;
+    /**
+     * <code>optional uint32 equip9 = 17;</code>
+     */
+    public boolean hasEquip9() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
+    }
+    /**
+     * <code>optional uint32 equip9 = 17;</code>
+     */
+    public int getEquip9() {
+      return equip9_;
+    }
+
+    // optional uint32 equip10 = 18;
+    public static final int EQUIP10_FIELD_NUMBER = 18;
+    private int equip10_;
+    /**
+     * <code>optional uint32 equip10 = 18;</code>
+     */
+    public boolean hasEquip10() {
+      return ((bitField0_ & 0x00020000) == 0x00020000);
+    }
+    /**
+     * <code>optional uint32 equip10 = 18;</code>
+     */
+    public int getEquip10() {
+      return equip10_;
+    }
+
+    // optional uint32 score = 19;
+    public static final int SCORE_FIELD_NUMBER = 19;
+    private int score_;
+    /**
+     * <code>optional uint32 score = 19;</code>
+     */
+    public boolean hasScore() {
+      return ((bitField0_ & 0x00040000) == 0x00040000);
+    }
+    /**
+     * <code>optional uint32 score = 19;</code>
+     */
+    public int getScore() {
+      return score_;
+    }
+
+    // optional uint32 score1 = 20;
+    public static final int SCORE1_FIELD_NUMBER = 20;
+    private int score1_;
+    /**
+     * <code>optional uint32 score1 = 20;</code>
+     */
+    public boolean hasScore1() {
+      return ((bitField0_ & 0x00080000) == 0x00080000);
+    }
+    /**
+     * <code>optional uint32 score1 = 20;</code>
+     */
+    public int getScore1() {
+      return score1_;
     }
 
     private void initFields() {
@@ -6020,10 +6392,22 @@ public final class LadderProto {
       ranking1_ = 0;
       star_ = 0;
       lv_ = 0;
-      rare_ = 0;
+      rank_ = 0;
       herocount_ = 0;
-      zhanli_ = 0;
-      zhanli1_ = 0;
+      leadlv_ = 0;
+      leadskill_ = 0;
+      equip1_ = 0;
+      equip2_ = 0;
+      equip3_ = 0;
+      equip4_ = 0;
+      equip5_ = 0;
+      equip6_ = 0;
+      equip7_ = 0;
+      equip8_ = 0;
+      equip9_ = 0;
+      equip10_ = 0;
+      score_ = 0;
+      score1_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6046,19 +6430,11 @@ public final class LadderProto {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasRare()) {
+      if (!hasRank()) {
         memoizedIsInitialized = 0;
         return false;
       }
       if (!hasHerocount()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasZhanli()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasZhanli1()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6082,16 +6458,52 @@ public final class LadderProto {
         output.writeInt32(4, lv_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, rare_);
+        output.writeInt32(5, rank_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(6, herocount_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, zhanli_);
+        output.writeUInt32(7, leadlv_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, zhanli1_);
+        output.writeUInt32(8, leadskill_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeUInt32(9, equip1_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeUInt32(10, equip2_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeUInt32(11, equip3_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeUInt32(12, equip4_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeUInt32(13, equip5_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeUInt32(14, equip6_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeUInt32(15, equip7_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        output.writeUInt32(16, equip8_);
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        output.writeUInt32(17, equip9_);
+      }
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
+        output.writeUInt32(18, equip10_);
+      }
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
+        output.writeUInt32(19, score_);
+      }
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        output.writeUInt32(20, score1_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -6120,7 +6532,7 @@ public final class LadderProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, rare_);
+          .computeInt32Size(5, rank_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -6128,11 +6540,59 @@ public final class LadderProto {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, zhanli_);
+          .computeUInt32Size(7, leadlv_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, zhanli1_);
+          .computeUInt32Size(8, leadskill_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(9, equip1_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(10, equip2_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(11, equip3_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(12, equip4_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(13, equip5_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(14, equip6_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(15, equip7_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(16, equip8_);
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(17, equip9_);
+      }
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(18, equip10_);
+      }
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(19, score_);
+      }
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(20, score1_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6258,14 +6718,38 @@ public final class LadderProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         lv_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        rare_ = 0;
+        rank_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
         herocount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        zhanli_ = 0;
+        leadlv_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        zhanli1_ = 0;
+        leadskill_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        equip1_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        equip2_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        equip3_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        equip4_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        equip5_ = 0;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        equip6_ = 0;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        equip7_ = 0;
+        bitField0_ = (bitField0_ & ~0x00004000);
+        equip8_ = 0;
+        bitField0_ = (bitField0_ & ~0x00008000);
+        equip9_ = 0;
+        bitField0_ = (bitField0_ & ~0x00010000);
+        equip10_ = 0;
+        bitField0_ = (bitField0_ & ~0x00020000);
+        score_ = 0;
+        bitField0_ = (bitField0_ & ~0x00040000);
+        score1_ = 0;
+        bitField0_ = (bitField0_ & ~0x00080000);
         return this;
       }
 
@@ -6313,7 +6797,7 @@ public final class LadderProto {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.rare_ = rare_;
+        result.rank_ = rank_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
@@ -6321,11 +6805,59 @@ public final class LadderProto {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.zhanli_ = zhanli_;
+        result.leadlv_ = leadlv_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.zhanli1_ = zhanli1_;
+        result.leadskill_ = leadskill_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.equip1_ = equip1_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.equip2_ = equip2_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.equip3_ = equip3_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.equip4_ = equip4_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.equip5_ = equip5_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
+        result.equip6_ = equip6_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
+        result.equip7_ = equip7_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
+        result.equip8_ = equip8_;
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00010000;
+        }
+        result.equip9_ = equip9_;
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00020000;
+        }
+        result.equip10_ = equip10_;
+        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
+          to_bitField0_ |= 0x00040000;
+        }
+        result.score_ = score_;
+        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
+          to_bitField0_ |= 0x00080000;
+        }
+        result.score1_ = score1_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6354,17 +6886,53 @@ public final class LadderProto {
         if (other.hasLv()) {
           setLv(other.getLv());
         }
-        if (other.hasRare()) {
-          setRare(other.getRare());
+        if (other.hasRank()) {
+          setRank(other.getRank());
         }
         if (other.hasHerocount()) {
           setHerocount(other.getHerocount());
         }
-        if (other.hasZhanli()) {
-          setZhanli(other.getZhanli());
+        if (other.hasLeadlv()) {
+          setLeadlv(other.getLeadlv());
         }
-        if (other.hasZhanli1()) {
-          setZhanli1(other.getZhanli1());
+        if (other.hasLeadskill()) {
+          setLeadskill(other.getLeadskill());
+        }
+        if (other.hasEquip1()) {
+          setEquip1(other.getEquip1());
+        }
+        if (other.hasEquip2()) {
+          setEquip2(other.getEquip2());
+        }
+        if (other.hasEquip3()) {
+          setEquip3(other.getEquip3());
+        }
+        if (other.hasEquip4()) {
+          setEquip4(other.getEquip4());
+        }
+        if (other.hasEquip5()) {
+          setEquip5(other.getEquip5());
+        }
+        if (other.hasEquip6()) {
+          setEquip6(other.getEquip6());
+        }
+        if (other.hasEquip7()) {
+          setEquip7(other.getEquip7());
+        }
+        if (other.hasEquip8()) {
+          setEquip8(other.getEquip8());
+        }
+        if (other.hasEquip9()) {
+          setEquip9(other.getEquip9());
+        }
+        if (other.hasEquip10()) {
+          setEquip10(other.getEquip10());
+        }
+        if (other.hasScore()) {
+          setScore(other.getScore());
+        }
+        if (other.hasScore1()) {
+          setScore1(other.getScore1());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -6387,19 +6955,11 @@ public final class LadderProto {
           
           return false;
         }
-        if (!hasRare()) {
+        if (!hasRank()) {
           
           return false;
         }
         if (!hasHerocount()) {
-          
-          return false;
-        }
-        if (!hasZhanli()) {
-          
-          return false;
-        }
-        if (!hasZhanli1()) {
           
           return false;
         }
@@ -6557,35 +7117,35 @@ public final class LadderProto {
         return this;
       }
 
-      // required int32 rare = 5;
-      private int rare_ ;
+      // required int32 rank = 5;
+      private int rank_ ;
       /**
-       * <code>required int32 rare = 5;</code>
+       * <code>required int32 rank = 5;</code>
        */
-      public boolean hasRare() {
+      public boolean hasRank() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 rare = 5;</code>
+       * <code>required int32 rank = 5;</code>
        */
-      public int getRare() {
-        return rare_;
+      public int getRank() {
+        return rank_;
       }
       /**
-       * <code>required int32 rare = 5;</code>
+       * <code>required int32 rank = 5;</code>
        */
-      public Builder setRare(int value) {
+      public Builder setRank(int value) {
         bitField0_ |= 0x00000010;
-        rare_ = value;
+        rank_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 rare = 5;</code>
+       * <code>required int32 rank = 5;</code>
        */
-      public Builder clearRare() {
+      public Builder clearRank() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        rare_ = 0;
+        rank_ = 0;
         onChanged();
         return this;
       }
@@ -6623,68 +7183,464 @@ public final class LadderProto {
         return this;
       }
 
-      // required int32 zhanli = 7;
-      private int zhanli_ ;
+      // optional uint32 leadlv = 7;
+      private int leadlv_ ;
       /**
-       * <code>required int32 zhanli = 7;</code>
+       * <code>optional uint32 leadlv = 7;</code>
        */
-      public boolean hasZhanli() {
+      public boolean hasLeadlv() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required int32 zhanli = 7;</code>
+       * <code>optional uint32 leadlv = 7;</code>
        */
-      public int getZhanli() {
-        return zhanli_;
+      public int getLeadlv() {
+        return leadlv_;
       }
       /**
-       * <code>required int32 zhanli = 7;</code>
+       * <code>optional uint32 leadlv = 7;</code>
        */
-      public Builder setZhanli(int value) {
+      public Builder setLeadlv(int value) {
         bitField0_ |= 0x00000040;
-        zhanli_ = value;
+        leadlv_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 zhanli = 7;</code>
+       * <code>optional uint32 leadlv = 7;</code>
        */
-      public Builder clearZhanli() {
+      public Builder clearLeadlv() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        zhanli_ = 0;
+        leadlv_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 zhanli1 = 8;
-      private int zhanli1_ ;
+      // optional uint32 leadskill = 8;
+      private int leadskill_ ;
       /**
-       * <code>required int32 zhanli1 = 8;</code>
+       * <code>optional uint32 leadskill = 8;</code>
        */
-      public boolean hasZhanli1() {
+      public boolean hasLeadskill() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>required int32 zhanli1 = 8;</code>
+       * <code>optional uint32 leadskill = 8;</code>
        */
-      public int getZhanli1() {
-        return zhanli1_;
+      public int getLeadskill() {
+        return leadskill_;
       }
       /**
-       * <code>required int32 zhanli1 = 8;</code>
+       * <code>optional uint32 leadskill = 8;</code>
        */
-      public Builder setZhanli1(int value) {
+      public Builder setLeadskill(int value) {
         bitField0_ |= 0x00000080;
-        zhanli1_ = value;
+        leadskill_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 zhanli1 = 8;</code>
+       * <code>optional uint32 leadskill = 8;</code>
        */
-      public Builder clearZhanli1() {
+      public Builder clearLeadskill() {
         bitField0_ = (bitField0_ & ~0x00000080);
-        zhanli1_ = 0;
+        leadskill_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip1 = 9;
+      private int equip1_ ;
+      /**
+       * <code>optional uint32 equip1 = 9;</code>
+       */
+      public boolean hasEquip1() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional uint32 equip1 = 9;</code>
+       */
+      public int getEquip1() {
+        return equip1_;
+      }
+      /**
+       * <code>optional uint32 equip1 = 9;</code>
+       */
+      public Builder setEquip1(int value) {
+        bitField0_ |= 0x00000100;
+        equip1_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip1 = 9;</code>
+       */
+      public Builder clearEquip1() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        equip1_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip2 = 10;
+      private int equip2_ ;
+      /**
+       * <code>optional uint32 equip2 = 10;</code>
+       */
+      public boolean hasEquip2() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional uint32 equip2 = 10;</code>
+       */
+      public int getEquip2() {
+        return equip2_;
+      }
+      /**
+       * <code>optional uint32 equip2 = 10;</code>
+       */
+      public Builder setEquip2(int value) {
+        bitField0_ |= 0x00000200;
+        equip2_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip2 = 10;</code>
+       */
+      public Builder clearEquip2() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        equip2_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip3 = 11;
+      private int equip3_ ;
+      /**
+       * <code>optional uint32 equip3 = 11;</code>
+       */
+      public boolean hasEquip3() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional uint32 equip3 = 11;</code>
+       */
+      public int getEquip3() {
+        return equip3_;
+      }
+      /**
+       * <code>optional uint32 equip3 = 11;</code>
+       */
+      public Builder setEquip3(int value) {
+        bitField0_ |= 0x00000400;
+        equip3_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip3 = 11;</code>
+       */
+      public Builder clearEquip3() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        equip3_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip4 = 12;
+      private int equip4_ ;
+      /**
+       * <code>optional uint32 equip4 = 12;</code>
+       */
+      public boolean hasEquip4() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional uint32 equip4 = 12;</code>
+       */
+      public int getEquip4() {
+        return equip4_;
+      }
+      /**
+       * <code>optional uint32 equip4 = 12;</code>
+       */
+      public Builder setEquip4(int value) {
+        bitField0_ |= 0x00000800;
+        equip4_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip4 = 12;</code>
+       */
+      public Builder clearEquip4() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        equip4_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip5 = 13;
+      private int equip5_ ;
+      /**
+       * <code>optional uint32 equip5 = 13;</code>
+       */
+      public boolean hasEquip5() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>optional uint32 equip5 = 13;</code>
+       */
+      public int getEquip5() {
+        return equip5_;
+      }
+      /**
+       * <code>optional uint32 equip5 = 13;</code>
+       */
+      public Builder setEquip5(int value) {
+        bitField0_ |= 0x00001000;
+        equip5_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip5 = 13;</code>
+       */
+      public Builder clearEquip5() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        equip5_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip6 = 14;
+      private int equip6_ ;
+      /**
+       * <code>optional uint32 equip6 = 14;</code>
+       */
+      public boolean hasEquip6() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional uint32 equip6 = 14;</code>
+       */
+      public int getEquip6() {
+        return equip6_;
+      }
+      /**
+       * <code>optional uint32 equip6 = 14;</code>
+       */
+      public Builder setEquip6(int value) {
+        bitField0_ |= 0x00002000;
+        equip6_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip6 = 14;</code>
+       */
+      public Builder clearEquip6() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        equip6_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip7 = 15;
+      private int equip7_ ;
+      /**
+       * <code>optional uint32 equip7 = 15;</code>
+       */
+      public boolean hasEquip7() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>optional uint32 equip7 = 15;</code>
+       */
+      public int getEquip7() {
+        return equip7_;
+      }
+      /**
+       * <code>optional uint32 equip7 = 15;</code>
+       */
+      public Builder setEquip7(int value) {
+        bitField0_ |= 0x00004000;
+        equip7_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip7 = 15;</code>
+       */
+      public Builder clearEquip7() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        equip7_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip8 = 16;
+      private int equip8_ ;
+      /**
+       * <code>optional uint32 equip8 = 16;</code>
+       */
+      public boolean hasEquip8() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
+      /**
+       * <code>optional uint32 equip8 = 16;</code>
+       */
+      public int getEquip8() {
+        return equip8_;
+      }
+      /**
+       * <code>optional uint32 equip8 = 16;</code>
+       */
+      public Builder setEquip8(int value) {
+        bitField0_ |= 0x00008000;
+        equip8_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip8 = 16;</code>
+       */
+      public Builder clearEquip8() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        equip8_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip9 = 17;
+      private int equip9_ ;
+      /**
+       * <code>optional uint32 equip9 = 17;</code>
+       */
+      public boolean hasEquip9() {
+        return ((bitField0_ & 0x00010000) == 0x00010000);
+      }
+      /**
+       * <code>optional uint32 equip9 = 17;</code>
+       */
+      public int getEquip9() {
+        return equip9_;
+      }
+      /**
+       * <code>optional uint32 equip9 = 17;</code>
+       */
+      public Builder setEquip9(int value) {
+        bitField0_ |= 0x00010000;
+        equip9_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip9 = 17;</code>
+       */
+      public Builder clearEquip9() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        equip9_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 equip10 = 18;
+      private int equip10_ ;
+      /**
+       * <code>optional uint32 equip10 = 18;</code>
+       */
+      public boolean hasEquip10() {
+        return ((bitField0_ & 0x00020000) == 0x00020000);
+      }
+      /**
+       * <code>optional uint32 equip10 = 18;</code>
+       */
+      public int getEquip10() {
+        return equip10_;
+      }
+      /**
+       * <code>optional uint32 equip10 = 18;</code>
+       */
+      public Builder setEquip10(int value) {
+        bitField0_ |= 0x00020000;
+        equip10_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 equip10 = 18;</code>
+       */
+      public Builder clearEquip10() {
+        bitField0_ = (bitField0_ & ~0x00020000);
+        equip10_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 score = 19;
+      private int score_ ;
+      /**
+       * <code>optional uint32 score = 19;</code>
+       */
+      public boolean hasScore() {
+        return ((bitField0_ & 0x00040000) == 0x00040000);
+      }
+      /**
+       * <code>optional uint32 score = 19;</code>
+       */
+      public int getScore() {
+        return score_;
+      }
+      /**
+       * <code>optional uint32 score = 19;</code>
+       */
+      public Builder setScore(int value) {
+        bitField0_ |= 0x00040000;
+        score_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 score = 19;</code>
+       */
+      public Builder clearScore() {
+        bitField0_ = (bitField0_ & ~0x00040000);
+        score_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 score1 = 20;
+      private int score1_ ;
+      /**
+       * <code>optional uint32 score1 = 20;</code>
+       */
+      public boolean hasScore1() {
+        return ((bitField0_ & 0x00080000) == 0x00080000);
+      }
+      /**
+       * <code>optional uint32 score1 = 20;</code>
+       */
+      public int getScore1() {
+        return score1_;
+      }
+      /**
+       * <code>optional uint32 score1 = 20;</code>
+       */
+      public Builder setScore1(int value) {
+        bitField0_ |= 0x00080000;
+        score1_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 score1 = 20;</code>
+       */
+      public Builder clearScore1() {
+        bitField0_ = (bitField0_ & ~0x00080000);
+        score1_ = 0;
         onChanged();
         return this;
       }
@@ -13848,32 +14804,37 @@ public final class LadderProto {
       "om.trans.pixel.protoc.LadderName\"(\n\nLadd" +
       "erName\022\014\n\004type\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\"G\n\017La" +
       "dderEnemyList\0224\n\007ranking\030\001 \003(\0132#.com.tra" +
-      "ns.pixel.protoc.LadderEnemy\"\214\001\n\013LadderEn" +
+      "ns.pixel.protoc.LadderEnemy\"\316\002\n\013LadderEn" +
       "emy\022\017\n\007ranking\030\001 \002(\005\022\020\n\010ranking1\030\002 \002(\005\022\014" +
-      "\n\004star\030\003 \002(\005\022\n\n\002lv\030\004 \002(\005\022\014\n\004rare\030\005 \002(\005\022\021" +
-      "\n\therocount\030\006 \002(\005\022\016\n\006zhanli\030\007 \002(\005\022\017\n\007zha",
-      "nli1\030\010 \002(\005\"=\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022\021\n\tf" +
-      "ightInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032Req" +
-      "uestGetFightInfoCommand\"J\n\027RequestFightI" +
-      "nfoCommand\022/\n\004info\030\001 \002(\0132!.com.trans.pix" +
-      "el.protoc.FightInfo\"K\n\030ResponseFightInfo" +
-      "Command\022/\n\004info\030\001 \003(\0132!.com.trans.pixel." +
-      "protoc.FightInfo\"!\n\037RequestGetLadderRank" +
-      "ListCommand\"%\n#RequestGetUserLadderRankL" +
-      "istCommand\"V\n ResponseGetLadderRankListC" +
-      "ommand\0222\n\010userRank\030\001 \003(\0132 .com.trans.pix",
-      "el.protoc.UserRank\"Z\n$ResponseGetUserLad" +
-      "derRankListCommand\0222\n\010userRank\030\001 \003(\0132 .c" +
-      "om.trans.pixel.protoc.UserRank\"a\n\036Reques" +
-      "tAttackLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013" +
-      "\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUse" +
-      "rId\030\004 \001(\003\";\n\037ResponseAttackLadderModeCom" +
-      "mand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037Reques" +
-      "tReadyAttackLadderCommand\"/\n\037RequestGetL" +
-      "adderUserInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n Re" +
-      "questPurchaseLadderTimeCommand\"V\n Respon",
-      "seGetLadderUserInfoCommand\0222\n\010userRank\030\001" +
-      " \002(\0132 .com.trans.pixel.protoc.UserRank"
+      "\n\004star\030\003 \002(\005\022\n\n\002lv\030\004 \002(\005\022\014\n\004rank\030\005 \002(\005\022\021" +
+      "\n\therocount\030\006 \002(\005\022\016\n\006leadlv\030\007 \001(\r\022\021\n\tlea",
+      "dskill\030\010 \001(\r\022\016\n\006equip1\030\t \001(\r\022\016\n\006equip2\030\n" +
+      " \001(\r\022\016\n\006equip3\030\013 \001(\r\022\016\n\006equip4\030\014 \001(\r\022\016\n\006" +
+      "equip5\030\r \001(\r\022\016\n\006equip6\030\016 \001(\r\022\016\n\006equip7\030\017" +
+      " \001(\r\022\016\n\006equip8\030\020 \001(\r\022\016\n\006equip9\030\021 \001(\r\022\017\n\007" +
+      "equip10\030\022 \001(\r\022\r\n\005score\030\023 \001(\r\022\016\n\006score1\030\024" +
+      " \001(\r\"=\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022\021\n\tfightIn" +
+      "fo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032RequestGe" +
+      "tFightInfoCommand\"J\n\027RequestFightInfoCom" +
+      "mand\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.pro" +
+      "toc.FightInfo\"K\n\030ResponseFightInfoComman",
+      "d\022/\n\004info\030\001 \003(\0132!.com.trans.pixel.protoc" +
+      ".FightInfo\"!\n\037RequestGetLadderRankListCo" +
+      "mmand\"%\n#RequestGetUserLadderRankListCom" +
+      "mand\"V\n ResponseGetLadderRankListCommand" +
+      "\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixel.pro" +
+      "toc.UserRank\"Z\n$ResponseGetUserLadderRan" +
+      "kListCommand\0222\n\010userRank\030\001 \003(\0132 .com.tra" +
+      "ns.pixel.protoc.UserRank\"a\n\036RequestAttac" +
+      "kLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030" +
+      "\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 ",
+      "\001(\003\";\n\037ResponseAttackLadderModeCommand\022\013" +
+      "\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReady" +
+      "AttackLadderCommand\"/\n\037RequestGetLadderU" +
+      "serInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestP" +
+      "urchaseLadderTimeCommand\"V\n ResponseGetL" +
+      "adderUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 " +
+      ".com.trans.pixel.protoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13933,7 +14894,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_LadderEnemy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderEnemy_descriptor,
-              new java.lang.String[] { "Ranking", "Ranking1", "Star", "Lv", "Rare", "Herocount", "Zhanli", "Zhanli1", });
+              new java.lang.String[] { "Ranking", "Ranking1", "Star", "Lv", "Rank", "Herocount", "Leadlv", "Leadskill", "Equip1", "Equip2", "Equip3", "Equip4", "Equip5", "Equip6", "Equip7", "Equip8", "Equip9", "Equip10", "Score", "Score1", });
           internal_static_com_trans_pixel_protoc_FightInfo_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new

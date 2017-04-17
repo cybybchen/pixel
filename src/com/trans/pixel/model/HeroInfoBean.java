@@ -21,7 +21,7 @@ public class HeroInfoBean {
 	private int level = 1;
 	private int starLevel = 1;
 	private int value = 1;
-	private int rare = 1;
+//	private int rare = 1;
 	private boolean isLock = false;
 	private int equipId = 0;
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
@@ -82,12 +82,12 @@ public class HeroInfoBean {
 	public void setValue(int value) {
 		this.value = value;
 	}
-	public int getRare() {
-		return rare;
-	}
-	public void setRare(int rare) {
-		this.rare = rare;
-	}
+//	public int getRare() {
+//		return rare;
+//	}
+//	public void setRare(int rare) {
+//		this.rare = rare;
+//	}
 	public int getEquipId() {
 		return equipId;
 	}
@@ -116,7 +116,7 @@ public class HeroInfoBean {
 		level = hero.getLevel();
 		starLevel = hero.getStarLevel();
 		equipId = hero.getEquipId();
-		rare = hero.getRare();
+//		rare = hero.getRare();
 		value = hero.getValue();
 		isLock = hero.isLock();
 		skillInfoList = hero.getSkillInfoList();
@@ -130,7 +130,7 @@ public class HeroInfoBean {
 		json.put(LEVEL, level);
 		json.put(STAR_LEVEL, starLevel);
 		json.put(VALUE, value);
-		json.put(RARE, rare);
+//		json.put(RARE, rare);
 		json.put(LOCK, isLock);
 		json.put(EQUIP_ID, equipId);
 		json.put(SKILL_INFO_LIST, skillInfoList);
@@ -159,7 +159,7 @@ public class HeroInfoBean {
 		bean.setStarLevel(json.getInt(STAR_LEVEL));
 		bean.setValue(TypeTranslatedUtil.jsonGetInt(json, VALUE));
 		bean.setEquipId(json.getInt(EQUIP_ID));
-		bean.setRare(json.getInt(RARE));
+//		bean.setRare(json.getInt(RARE));
 		bean.setLock(TypeTranslatedUtil.jsonGetBoolean(json, LOCK));
 		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
 		bean.setUserId(TypeTranslatedUtil.jsonGetInt(json, USER_ID));
@@ -182,7 +182,7 @@ public class HeroInfoBean {
 		builder.setEquipId(equipId);
 		builder.setInfoId(id);
 		builder.setLevel(level);
-		builder.setRare(rare);
+//		builder.setRare(rare);
 		builder.setValue(value);
 		builder.setStar(starLevel);
 		builder.setIsLock(isLock);
@@ -198,7 +198,7 @@ public class HeroInfoBean {
 		builder.setEquipId(equipId);
 		builder.setHeroId(heroId);
 		builder.setLevel(level);
-		builder.setRare(rare);
+//		builder.setRare(rare);
 		builder.setValue(value);
 		builder.setStar(starLevel);
 		builder.addAllSkill(buildSkillList());
@@ -212,7 +212,7 @@ public class HeroInfoBean {
 		builder.setEquipId(equipId);
 		builder.setHeroId(heroId);
 		builder.setLevel(level);
-		builder.setRare(rare);
+//		builder.setRare(rare);
 		builder.setValue(value);
 		builder.setStar(starLevel);
 		builder.addAllSkill(buildSkillList());
@@ -265,14 +265,14 @@ public class HeroInfoBean {
 		return heroInfo;
 	}
 	
-	public static HeroInfoBean initHeroInfo(Hero hero, int star, int rare, int level) {
+	public static HeroInfoBean initHeroInfo(Hero hero, int star, int rank, int level) {
 		HeroInfoBean heroInfo = new HeroInfoBean();
 		heroInfo.setId(0);
 		heroInfo.setHeroId(hero.getId());
 		heroInfo.setLevel(level);
 		heroInfo.setStarLevel(star);
 		heroInfo.setValue(0);
-		heroInfo.setRare(rare);
+		heroInfo.setRank(rank);
 		if (hero.getQuality() >= 5)
 			heroInfo.setLock(true);
 		else

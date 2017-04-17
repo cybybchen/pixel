@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
@@ -25,6 +26,7 @@ import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.HeroProto.Talent;
 import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
+import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.service.redis.TalentRedisService;
 import com.trans.pixel.service.redis.UserTalentRedisService;
 
@@ -258,12 +260,12 @@ public class UserTalentService {
 	
 	public void unlockUserTalentSkill(UserBean user, int talentId, int orderId) {
 		for (int i = 1; i < 4; i++) {
-			UserTalentSkill userTalentSkill = initUserTalentSkill(user, talentId, orderId, i);
+			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, orderId, i);
 			userTalentRedisService.updateUserTalentSkill(user.getId(), userTalentSkill);
 		}
 	}
 	
-	private UserTalentSkill initUserTalentSkill(UserBean user, int talentId, int orderId, int skillId) {
+	private UserTalentSkill initUserTalentSkill(int talentId, int orderId, int skillId) {
 		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
 		builder.setLevel(1);
 		builder.setOrderId(orderId);
@@ -303,5 +305,78 @@ public class UserTalentService {
 		}
 		
 		return builder;
+	}
+	
+	public UserTalent initRobotTalent(LadderEnemy ladderEnemy) {
+		UserTalent.Builder builder = UserTalent.newBuilder();
+		Random rand = new Random();
+		builder.setId(rand.nextInt(9) + 1);
+		builder.setLevel(ladderEnemy.getLeadlv());
+		
+		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Iterator<Entry<String, Talentunlock>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Talentunlock> entry = it.next();
+			Talentunlock talentunlock = entry.getValue();
+			if (talentunlock.getLevel() <= builder.getLevel()) {
+				UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
+				skillBuilder.setOrder(talentunlock.getOrder());
+				skillBuilder.setSkillId(rand.nextInt(3) + 1);
+				skillBuilder.setLevel(ladderEnemy.getLeadskill());
+				builder.addSkill(skillBuilder.build());
+			}
+		}
+		
+		UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
+		equipBuilder.setPosition(0);
+		equipBuilder.setItemId(ladderEnemy.getEquip1());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(1);
+		equipBuilder.setItemId(ladderEnemy.getEquip2());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(2);
+		equipBuilder.setItemId(ladderEnemy.getEquip3());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(3);
+		equipBuilder.setItemId(ladderEnemy.getEquip4());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(4);
+		equipBuilder.setItemId(ladderEnemy.getEquip5());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(5);
+		equipBuilder.setItemId(ladderEnemy.getEquip6());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(6);
+		equipBuilder.setItemId(ladderEnemy.getEquip7());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(7);
+		equipBuilder.setItemId(ladderEnemy.getEquip8());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(8);
+		equipBuilder.setItemId(ladderEnemy.getEquip9());
+		builder.addEquip(equipBuilder.build());
+		
+		equipBuilder.clear();
+		equipBuilder.setPosition(9);
+		equipBuilder.setItemId(ladderEnemy.getEquip10());
+		builder.addEquip(equipBuilder.build());
+		
+		return builder.build();
 	}
 }

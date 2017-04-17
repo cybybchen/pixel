@@ -253,7 +253,7 @@ public class HeroLevelUpService {
 		/**
 		 * send rareup log
 		 */
-		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getRare());
+		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getRank());
 		
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}

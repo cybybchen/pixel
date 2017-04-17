@@ -2342,10 +2342,22 @@ message LadderEnemy {
 	required int32 ranking1 = 2;
 	required int32 star = 3;
 	required int32 lv = 4;
-	required int32 rare = 5;
+	required int32 rank = 5;
 	required int32 herocount = 6;
-	required int32 zhanli = 7;
-	required int32 zhanli1 = 8;
+	optional uint32 leadlv = 7;
+	optional uint32 leadskill = 8;
+	optional uint32 equip1 = 9;
+	optional uint32 equip2 = 10;
+	optional uint32 equip3 = 11;
+	optional uint32 equip4 = 12;
+	optional uint32 equip5 = 13;
+	optional uint32 equip6 = 14;
+	optional uint32 equip7 = 15;
+	optional uint32 equip8 = 16;
+	optional uint32 equip9 = 17;
+	optional uint32 equip10 = 18;
+	optional uint32 score = 19;
+	optional uint32 score1 = 20;
 }
 
 message FightInfo {

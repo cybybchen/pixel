@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -37,8 +38,12 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.Base.UserTalentEquip;
+import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
@@ -49,6 +54,7 @@ import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
+import com.trans.pixel.service.redis.TalentRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -80,6 +86,8 @@ public class LadderService {
 	private UserEquipService userEquipService;
 	@Resource
 	private PropRedisService propRedisService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 //	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
 //        public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
@@ -409,10 +417,11 @@ public class LadderService {
 					Team.Builder team = Team.newBuilder();
 					List<HeroInfo> heroInfoList = getHeroInfoList(heroMap, ladderEnemy);
 					team.addAllHeroInfo(heroInfoList);
+					team.setUserTalent(userTalentService.initRobotTalent(ladderEnemy));
 					userTeamService.saveTeamCacheWithoutExpire(robot, team.build());
-					// int zhanli = ladderEnemy.getZhanli() + RandomUtils.nextInt(ladderEnemy.getZhanli1() - ladderEnemy.getZhanli());
-					Team myteam = userTeamService.getTeamCache(robot.getId());
-					int zhanli = myteam.getUser().getZhanli();
+					 int zhanli = ladderEnemy.getScore() + RandomUtils.nextInt(ladderEnemy.getScore1() - ladderEnemy.getScore());
+//					Team myteam = userTeamService.getTeamCache(robot.getId());
+//					int zhanli = myteam.getUser().getZhanli();
 					robot.setZhanli(zhanli);
 					robot.setZhanliMax(zhanli);
 					userService.updateRobotUser(robot);
@@ -426,6 +435,8 @@ public class LadderService {
 		long endTime = System.currentTimeMillis();
 		log.debug("deltime :" + (endTime - startTime));
 	}
+	
+	
 	
 	private String randomRobotName(List<String> name1List, List<String> name2List) {
 		return name1List.get(RandomUtils.nextInt(name1List.size())) + name2List.get(RandomUtils.nextInt(name2List.size()));
@@ -443,7 +454,7 @@ public class LadderService {
 			if (originalCount == null)
 				originalCount = 0;
 			if (originalCount < 3) {
-				heroInfoList.add(HeroInfoBean.initHeroInfo(randomHero, ladderEnemy.getStar(), ladderEnemy.getRare(), 
+				heroInfoList.add(HeroInfoBean.initHeroInfo(randomHero, ladderEnemy.getStar(), ladderEnemy.getRank(), 
 						ladderEnemy.getLv()).buildTeamHeroInfo(new ArrayList<UserClearBean>(), new UserPokedeBean(), new UserEquipPokedeBean()));
 				heroInfoMap.put(randomHero.getId(), originalCount + 1);
 			}
