@@ -132,6 +132,8 @@ public class UserTeamService {
 	
 	public UserTeamBean changeUserTeamTalentId(UserBean user, int talentId) {
 		UserTeamBean userTeam = getUserTeam(user.getId(), TypeTranslatedUtil.stringToInt(user.getComposeSkill()));
+		if (userTeam == null)
+			return null;
 		if (userTeam.getTalentId() == talentId)
 			return null;
 		
