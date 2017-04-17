@@ -47,16 +47,16 @@ public class EventBean {
 		bean.setUserId(userId);
 		bean.setEventid(json.getInt("eventid"));
 		bean.setDaguan(json.getInt("daguan"));
-		bean.setLevel(json.getInt("level"));
-		bean.setCount(json.getInt("count"));
+//		bean.setLevel(json.getInt("level"));
+//		bean.setCount(json.getInt("count"));
 		return bean;
 	}
 	public Event.Builder build() {
 		Event.Builder builder = Event.newBuilder();
 		builder.setEventid(eventid);
 		builder.setDaguan(daguan);
-		builder.setLevel(level);
-		builder.setCount(count);
+//		builder.setLevel(level);
+//		builder.setCount(count);
 		return builder;
 	}
 }

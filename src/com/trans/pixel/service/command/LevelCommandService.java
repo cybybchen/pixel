@@ -156,15 +156,15 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 
-	public void eventReward(Event event, Builder responseBuilder, UserBean user){
+	public void eventReward(Event event, Builder responseBuilder, UserBean user, int count){
 		List<RewardBean> rewards = new ArrayList<RewardBean>();
 		for(EventReward eventreward : event.getRewardList()){
 			if(RedisService.nextInt(100) <= eventreward.getRewardweight()) {
 				RewardBean bean = new RewardBean();
 				bean.setItemid(eventreward.getRewardid());
 				bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
-				if(event.getLevel() > 0 && eventreward.getRewarddouble() == 0)
-					bean.setCount(bean.getCount()*event.getCount());
+				if(count > 0 && eventreward.getRewarddouble() == 0)
+					bean.setCount(bean.getCount()*count);
 				rewards.add(bean);
 			}
 		}
@@ -206,7 +206,7 @@ public class LevelCommandService extends BaseCommandService {
 			if(event.getType() == 1){//buy event
 				if(cmd.getRet()){
 					if(costService.cost(user, eventconfig.getCostid(), eventconfig.getCostcount())){
-						eventReward(eventconfig, responseBuilder, user);
+						eventReward(eventconfig, responseBuilder, user, event.getCount());
 						if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 							userLevel.setLeftCount(userLevel.getLeftCount()-1);
 							redis.saveUserLevel(userLevel);
@@ -225,7 +225,7 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
-				eventReward(eventconfig, responseBuilder, user);
+				eventReward(eventconfig, responseBuilder, user, event.getCount());
 				redis.delEvent(user, event);
 				
 				/**
