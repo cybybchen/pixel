@@ -58,6 +58,22 @@ public class UserTalentService {
 				userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
 			}
 		}
+		
+		if (userTalent != null) {
+			List<UserEquipPokedeBean> ueList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+			UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+			for (int i = 0; i < builder.getEquipCount(); ++i) {
+				UserTalentEquip.Builder uteBuilder = builder.getEquipBuilder(i);
+				UserEquipPokedeBean ueBean = userEquipPokedeService.getUserEquipPokede(ueList, uteBuilder.getItemId());
+				if (ueBean != null) {
+					uteBuilder.setLevel(ueBean.getLevel());
+					builder.setEquip(i, uteBuilder.build());
+				}
+			}
+			
+			return builder.build();
+		}
+		
 		if (userTalent == null) {
 			UserTalent.Builder builder = initUserTalent(user, id);
 			if (builder != null)
