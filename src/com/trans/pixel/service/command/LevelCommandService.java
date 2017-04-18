@@ -121,7 +121,7 @@ public class LevelCommandService extends BaseCommandService {
 					}
 				}
 				
-				activityService.levelActivity(user, id);
+				activityService.levelActivity(user, id, daguan.getAreaid());
 			}
 		}else if(id != userLevel.getLootDaguan() && id != 0){
 			levelLoot(userLevel, responseBuilder, user);

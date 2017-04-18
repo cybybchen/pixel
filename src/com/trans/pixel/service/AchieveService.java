@@ -45,7 +45,7 @@ public class AchieveService {
 			if (achieve.getTargetid() == targetId) {
 				UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, achieve.getId());
 				if (targetId == ACTIVITY_TYPE.TYPE_VIP_VALUE || targetId == ACTIVITY_TYPE.TYPE_ZHANLI_VALUE ||
-						targetId == ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE)
+						targetId == ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE || targetId == ACTIVITY_TYPE.TYPE_LEVEL_VALUE)
 					ua.setCompleteCount(Math.max(count, ua.getCompleteCount()));
 				else
 					ua.setCompleteCount(ua.getCompleteCount() + count);

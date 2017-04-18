@@ -460,8 +460,8 @@ public class ActivityService {
 	/**
 	 * 过关的成就和开服活动
 	 */
-	public void levelActivity(UserBean user, int levelId) {
-		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEVEL_VALUE);
+	public void levelActivity(UserBean user, int daguanId, int areaId) {
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEVEL_VALUE, areaId);
 		
 		/**
 		 * kaifu2 的过关排行
@@ -475,7 +475,7 @@ public class ActivityService {
 		/**
 		 * 任务系统
 		 */
-		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_TASK_LEVEL_VALUE, levelId, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_TASK_LEVEL_VALUE, daguanId, false);
 	}
 	
 	public int getKaifu2AccRcPs(int serverId, int type) {//获取kaifu2累计充值人数
