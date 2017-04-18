@@ -17,7 +17,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
@@ -501,16 +504,14 @@ public class UserService {
 		return userRedisService.nextDay(hour);
 	}
 	
-	public List<RewardBean> handleExtra(UserBean user, int status, int type) {
-		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+	public ResultConst handleExtra(UserBean user, int status, int type, List<RewardBean> rewardList) {
 		long current = System.currentTimeMillis();
 		if (status == 3) {//pause
 			user.setExtraHasLootTime(current - user.getExtraTimeStamp());
 			user.setExtraTimeStamp(0);
 		} else if (status == 2) {//end
 			if (System.currentTimeMillis() + user.getExtraHasLootTime() - user.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
-				rewardList = RewardBean.initRewardList(35003, 1);
-				
+				rewardList.add(RewardBean.init(35003, 1));
 				switch (type) {
 				case 1:
 					user.setExtraCount1(EXTRAREWARDID1);
@@ -523,17 +524,21 @@ public class UserService {
 					break;
 				default:
 					break;
-			}
+				}
 			}
 			
 			user.setExtraTimeStamp(0);
 			user.setExtraHasLootTime(0);
+			user.setExtraLastTimeStamp(current);
 		} else if (status == 1) {//start
+			if (user.getExtraLastTimeStamp() + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() > 0)
+				return ErrorConst.TIME_IS_NOT_OVER_ERROR;
+			
 			user.setExtraType(type);
 			user.setExtraTimeStamp(current);
 		}
 		
 		updateUser(user);
-		return rewardList;
+		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 }

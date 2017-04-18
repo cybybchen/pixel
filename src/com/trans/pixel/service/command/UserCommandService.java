@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -280,7 +281,14 @@ public class UserCommandService extends BaseCommandService {
 	public void extra(RequestExtraRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int status = cmd.getStatus();
 		int type = 0;
-		List<RewardBean> rewardList = userService.handleExtra(user, status, type);
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		ResultConst ret = userService.handleExtra(user, status, type, rewardList);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+			responseBuilder.setErrorCommand(errorCommand);
+		}
 		if (!rewardList.isEmpty()) {
 			rewardService.doRewards(user, rewardList);
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);

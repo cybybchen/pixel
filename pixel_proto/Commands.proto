@@ -70,6 +70,7 @@ message UserInfo {
 	optional uint32 extraCount3 = 82;
 	optional uint64 extraHasLootTime = 83;
 	optional uint32 extraType = 84;
+	optional uint64 extraLastTimeStamp = 85;
 }
 
 message CostItem {
