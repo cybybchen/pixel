@@ -24,6 +24,7 @@ import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.Item;
+import com.trans.pixel.protoc.EquipProto.Material;
 import com.trans.pixel.protoc.HeroProto.ClearFood;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
@@ -223,6 +224,9 @@ public class EquipService {
 		if (itemId > RewardConst.FOOD) {
 			ClearFood food = clearRedisService.getClearFood(itemId);
 			rewardCount = food.getCost();
+		} else if (itemId > RewardConst.CAILIAO) {
+			Material material = equipRedisService.getMaterial(itemId);
+			rewardCount = material.getCost();
 		} else if(itemId > RewardConst.CHIP) {
 			Chip chip = equipRedisService.getChip(itemId);
 			rewardCount = chip.getCost();	

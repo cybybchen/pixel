@@ -191,6 +191,7 @@ public class RedisKey {
 	public static final String ARMOR_CONFIG = PREFIX + CONFIG_PREFIX + "armor";
 	public static final String EQUIP_INCREASE_CONFIG = PREFIX + CONFIG_PREFIX + "equipincrease";
 	public static final String EQUIP_INCREASELEVEL_CONFIG = PREFIX + CONFIG_PREFIX + "increaseleve";
+	public static final String MATERIAL_CONFIG = PREFIX + CONFIG_PREFIX + "material";
 	
 	//message board
 	public static final String MESSAGE_BOARD_KEY = "message_key";

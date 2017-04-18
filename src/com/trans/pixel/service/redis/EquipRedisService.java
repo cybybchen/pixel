@@ -16,6 +16,8 @@ import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.EquipList;
 import com.trans.pixel.protoc.EquipProto.Equiptucao;
 import com.trans.pixel.protoc.EquipProto.EquiptucaoList;
+import com.trans.pixel.protoc.EquipProto.Material;
+import com.trans.pixel.protoc.EquipProto.MaterialList;
 
 @Service
 public class EquipRedisService extends RedisService {
@@ -24,6 +26,7 @@ public class EquipRedisService extends RedisService {
 	private static final String EQUIP_FILE_NAME = "ld_equip.xml";
 	private static final String EQUIPTUCAO_FILE_NAME = "lol_equiptucao.xml";
 	private static final String ARMOR_FILE_NAME = "ld_armor.xml";
+	private static final String MATERIAL_FILE_NAME = "ld_material.xml";
 	
 	public Chip getChip(int itemId) {
 		String value = hget(RedisKey.CHIP_CONFIG, "" + itemId);
@@ -224,6 +227,57 @@ public class EquipRedisService extends RedisService {
 		Map<String, Armor> map = new HashMap<String, Armor>();
 		for(Armor.Builder armor : builder.getIdBuilderList()){
 			map.put("" + armor.getId(), armor.build());
+		}
+		return map;
+	}
+	
+	//equip
+	public Material getMaterial(int itemId) {
+		String value = hget(RedisKey.MATERIAL_CONFIG, "" + itemId);
+		if (value == null) {
+			Map<String, Material> config = getMaterialConfig();
+			return config.get("" + itemId);
+		} else {
+			Material.Builder builder = Material.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Material> getMaterialConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.MATERIAL_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, Material> map = buildMaterialConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Material> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.MATERIAL_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, Material> map = new HashMap<String, Material>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Material.Builder builder = Material.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Material> buildMaterialConfig(){
+		String xml = ReadConfig(MATERIAL_FILE_NAME);
+		MaterialList.Builder builder = MaterialList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + MATERIAL_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Material> map = new HashMap<String, Material>();
+		for(Material.Builder material : builder.getIdBuilderList()){
+			map.put("" + material.getId(), material.build());
 		}
 		return map;
 	}
