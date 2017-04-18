@@ -119,6 +119,11 @@ public class PropService {
 		if (syn == null)
 			return ErrorConst.NOT_ENOUGH_PROP;
 		
+		if (syn.getNeedid() >0) {
+			UserEquipPokedeBean needPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getNeedid());
+			if (needPokede == null)
+				return ErrorConst.NOT_ENOUGH_PROP;
+		}
 		UserEquipPokedeBean equipPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getTarget());
 		if (equipPokede != null)
 			return ErrorConst.EQUIP_IS_EXIST_ERROR;

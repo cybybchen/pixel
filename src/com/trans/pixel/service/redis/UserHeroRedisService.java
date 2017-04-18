@@ -133,7 +133,8 @@ public class UserHeroRedisService extends RedisService{
 						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId);
 				
 				List<HeroInfoBean> userHeroList = new ArrayList<HeroInfoBean>();
-				Iterator<Entry<String, String>> ite = bhOps.entries().entrySet().iterator();
+				Map<String, String> map = bhOps.entries();
+				Iterator<Entry<String, String>> ite = map.entrySet().iterator();
 				while (ite.hasNext()) {
 					Entry<String, String> entry = ite.next();
 					HeroInfoBean userHero = HeroInfoBean.fromJson(entry.getValue());

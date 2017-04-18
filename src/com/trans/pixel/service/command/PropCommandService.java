@@ -101,6 +101,7 @@ public class PropCommandService extends BaseCommandService {
             return;
 		}
 		
+		rewardService.doFilterRewards(user, rewards);
 		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 		pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
 	}
