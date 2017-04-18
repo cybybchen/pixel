@@ -50,6 +50,7 @@ public enum ErrorConst implements ResultConst {
     BOSS_IS_NOT_EXIST_ERROR(4020, "boss不存在"), EQUIP_IS_NOT_EXIST_ERROR(4021, "装备不存在"), EQUIP_CHANGE_ERROR(4022, "装备切换异常"),
     ROOM_IS_NOT_EXIST_ERROR(4023, "房间不存在"), ROOM_NEED_CREATE_ERROR(4024, "请先创建一个房间"), BOSS_ROOM_HAS_BEIN_ERROR(4025, "已经加入该房间"),
     CAN_NOT_GIVEUP_REWARDTASK_ERROR(4026, "无法放弃该悬赏"), REWARDTASK_IS_LIMIT_ERROR(4027, "悬赏任务已达上限"), EQUIP_LEVEL_IS_LIMIT_ERROR(4028, "装备等级已达上限"),
+    EQUIP_IS_EXIST_ERROR(4029, "装备已存在，无法合成第二件"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

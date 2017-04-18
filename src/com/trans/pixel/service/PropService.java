@@ -120,8 +120,8 @@ public class PropService {
 			return ErrorConst.NOT_ENOUGH_PROP;
 		
 		UserEquipPokedeBean equipPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getTarget());
-		if (equipPokede == null)
-			return ErrorConst.NOT_ENOUGH_EQUIP;
+		if (equipPokede != null)
+			return ErrorConst.EQUIP_IS_EXIST_ERROR;
 		
 		List<CostItem> costList = buildCostList(syn);
 		if (!costService.canCostAll(user, costList)) 
