@@ -279,7 +279,7 @@ public class LadderService {
 			int weight = RedisService.nextInt(ladderreward.getWeight());
 			for(RewardInfo reward: ladderreward.getRewardList()){
 				weight -= reward.getWeight();
-				if(weight <= 0){
+				if(weight < 0){
 					rewards.addLoot(reward);
 					break;
 				}

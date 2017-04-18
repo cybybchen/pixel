@@ -181,7 +181,7 @@ public class LevelRedisService extends RedisService {
 					int weight = nextInt(events.getWeight());
 					for(Event.Builder event : events.getEventBuilderList()){
 						weight -= event.getWeight();
-						if(weight <= 0){
+						if(weight < 0){
 							Event.Builder builder = Event.newBuilder(event.build());
 							builder.setOrder(currentIndex()+i);
 							builder.setDaguan(userLevel.getLootDaguan());
