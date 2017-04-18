@@ -47,6 +47,10 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class UserService {
 	Logger logger = LoggerFactory.getLogger(UserService.class);
 	
+	private static final int EXTRAREWARDID1 = 40001;
+	private static final int EXTRAREWARDID2 = 40002;
+	private static final int EXTRAREWARDID3 = 40003;
+	
 	@Resource
     private UserRedisService userRedisService;
 	@Resource
@@ -495,5 +499,41 @@ public class UserService {
 	}
 	public long nextDay(int hour){
 		return userRedisService.nextDay(hour);
+	}
+	
+	public List<RewardBean> handleExtra(UserBean user, int status, int type) {
+		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		long current = System.currentTimeMillis();
+		if (status == 3) {//pause
+			user.setExtraHasLootTime(current - user.getExtraTimeStamp());
+			user.setExtraTimeStamp(0);
+		} else if (status == 2) {//end
+			if (System.currentTimeMillis() + user.getExtraHasLootTime() - user.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
+				rewardList = RewardBean.initRewardList(35003, 1);
+				
+				switch (type) {
+				case 1:
+					user.setExtraCount1(EXTRAREWARDID1);
+					break;
+				case 2:
+					user.setExtraCount2(EXTRAREWARDID2);
+					break;
+				case 3:
+					user.setExtraCount3(EXTRAREWARDID3);
+					break;
+				default:
+					break;
+			}
+			}
+			
+			user.setExtraTimeStamp(0);
+			user.setExtraHasLootTime(0);
+		} else if (status == 1) {//start
+			user.setExtraType(type);
+			user.setExtraTimeStamp(current);
+		}
+		
+		updateUser(user);
+		return rewardList;
 	}
 }

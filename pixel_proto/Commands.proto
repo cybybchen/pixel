@@ -65,6 +65,11 @@ message UserInfo {
 	optional int32 merlevel = 77;
 	optional uint32 useTalentId = 78;
 	optional uint64 extraTimeStamp = 79;
+	optional uint32 extraCount1 = 80;
+	optional uint32 extraCount2 = 81;
+	optional uint32 extraCount3 = 82;
+	optional uint64 extraHasLootTime = 83;
+	optional uint32 extraType = 84;
 }
 
 message CostItem {
@@ -2470,7 +2475,8 @@ message RequestUserInfoCommand {
 }
 
 message RequestExtraRewardCommand {
-	required uint32 status = 1;//1：start 2:end
+	required uint32 status = 1;//1：start 2:end 3:pause
+	optional uint32 extraType = 2; //1,2,3
 }
 
 message RequestLoginCommand {

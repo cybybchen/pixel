@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -278,19 +279,12 @@ public class UserCommandService extends BaseCommandService {
 	
 	public void extra(RequestExtraRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int status = cmd.getStatus();
-		if (status == 2) {
-			if (System.currentTimeMillis() - user.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
-				List<RewardBean> rewardList = RewardBean.initRewardList(35003, 1);
-				rewardService.doRewards(user, rewardList);
-				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
-			}
-			
-			user.setExtraTimeStamp(0);
-		} else if (status == 1) {
-			user.setExtraTimeStamp(System.currentTimeMillis());
+		int type = 0;
+		List<RewardBean> rewardList = userService.handleExtra(user, status, type);
+		if (!rewardList.isEmpty()) {
+			rewardService.doRewards(user, rewardList);
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
 		}
-		
-		userService.updateUser(user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
