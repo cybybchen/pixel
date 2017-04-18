@@ -1223,6 +1223,7 @@ public class UserBean {
 		else
 			builder.setZhanli(zhanliMax);
 		builder.setZhanliMax(zhanliMax);
+		builder.setMerlevel(merlevel);
 		builder.setUnionId(unionId);
 		builder.setUnionName(unionName);
 		builder.setUnionJob(unionJob);
@@ -1254,6 +1255,7 @@ public class UserBean {
 		builder.setUnionId(unionId);
 		builder.setUnionJob(unionJob);
 		builder.setZhanli(zhanliMax);
+		builder.setMerlevel(merlevel);
 		builder.setLastLoginTime(lastLoginTime);
 		return builder.build();
 	}
