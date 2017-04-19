@@ -510,7 +510,11 @@ public class UserService {
 	
 	public ResultConst handleExtra(UserBean user, int status, int type, List<RewardBean> rewardList) {
 		long current = System.currentTimeMillis();
-		if (status == 3) {//pause
+		if (status == 4) {
+			user.setExtraTimeStamp(0);
+			user.setExtraHasLootTime(0);
+			user.setExtraLastTimeStamp(current);
+		} if (status == 3) {//pause
 			user.setExtraHasLootTime(current - user.getExtraTimeStamp());
 			user.setExtraTimeStamp(0);
 		} else if (status == 2) {//end
