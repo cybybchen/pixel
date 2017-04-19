@@ -513,7 +513,8 @@ public class UserService {
 		if (status == 5) {//giveup
 			user.setExtraTimeStamp(0);
 			user.setExtraHasLootTime(0);
-			user.setExtraLastTimeStamp(current);
+			user.setExtraLastTimeStamp(0);
+			user.setExtraType(0);
 		} else if (status == 4) {//continue
 			user.setExtraTimeStamp(current);;
 		} else if (status == 3) {//pause
