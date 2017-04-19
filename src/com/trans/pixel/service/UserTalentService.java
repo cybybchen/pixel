@@ -76,7 +76,7 @@ public class UserTalentService {
 			List<UserTalentSkill> userTalentSkillList = userTalentRedisService.getUserTalentSkillList(user.getId());
 			for (int i = 0 ; i < builder.getSkillCount(); ++i) {
 				UserTalentOrder.Builder skillbuilder = UserTalentOrder.newBuilder(builder.getSkill(i));
-				UserTalentSkill skill = getUserTalentSkill(userTalentSkillList, skillbuilder.getOrder(), skillbuilder.getSkillId());
+				UserTalentSkill skill = getUserTalentSkill(userTalentSkillList, id, skillbuilder.getOrder(), skillbuilder.getSkillId());
 				if (skill != null)
 					skillbuilder.setLevel(skill.getLevel());
 				builder.setSkill(i, skillbuilder.build());
@@ -93,9 +93,9 @@ public class UserTalentService {
 		return userTalent;	
 	}
 	
-	private UserTalentSkill getUserTalentSkill(List<UserTalentSkill> list, int order, int skillId) {
+	private UserTalentSkill getUserTalentSkill(List<UserTalentSkill> list, int talentId, int order, int skillId) {
 		for (UserTalentSkill skill : list) {
-			if (skill.getOrderId() == order && skill.getSkillId() == skillId) {
+			if (skill.getTalentId() == talentId && skill.getOrderId() == order && skill.getSkillId() == skillId) {
 				return skill;
 			}
 		}
