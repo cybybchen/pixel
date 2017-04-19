@@ -941,13 +941,13 @@ public final class Base {
      */
     int getUseTalentId();
 
-    // optional uint64 extraTimeStamp = 79;
+    // optional int64 extraTimeStamp = 79;
     /**
-     * <code>optional uint64 extraTimeStamp = 79;</code>
+     * <code>optional int64 extraTimeStamp = 79;</code>
      */
     boolean hasExtraTimeStamp();
     /**
-     * <code>optional uint64 extraTimeStamp = 79;</code>
+     * <code>optional int64 extraTimeStamp = 79;</code>
      */
     long getExtraTimeStamp();
 
@@ -981,13 +981,13 @@ public final class Base {
      */
     int getExtraCount3();
 
-    // optional uint64 extraHasLootTime = 83;
+    // optional int64 extraHasLootTime = 83;
     /**
-     * <code>optional uint64 extraHasLootTime = 83;</code>
+     * <code>optional int64 extraHasLootTime = 83;</code>
      */
     boolean hasExtraHasLootTime();
     /**
-     * <code>optional uint64 extraHasLootTime = 83;</code>
+     * <code>optional int64 extraHasLootTime = 83;</code>
      */
     long getExtraHasLootTime();
 
@@ -1001,13 +1001,13 @@ public final class Base {
      */
     int getExtraType();
 
-    // optional uint64 extraLastTimeStamp = 85;
+    // optional int64 extraLastTimeStamp = 85;
     /**
-     * <code>optional uint64 extraLastTimeStamp = 85;</code>
+     * <code>optional int64 extraLastTimeStamp = 85;</code>
      */
     boolean hasExtraLastTimeStamp();
     /**
-     * <code>optional uint64 extraLastTimeStamp = 85;</code>
+     * <code>optional int64 extraLastTimeStamp = 85;</code>
      */
     long getExtraLastTimeStamp();
   }
@@ -1389,7 +1389,7 @@ public final class Base {
             }
             case 632: {
               bitField1_ |= 0x08000000;
-              extraTimeStamp_ = input.readUInt64();
+              extraTimeStamp_ = input.readInt64();
               break;
             }
             case 640: {
@@ -1409,7 +1409,7 @@ public final class Base {
             }
             case 664: {
               bitField1_ |= 0x80000000;
-              extraHasLootTime_ = input.readUInt64();
+              extraHasLootTime_ = input.readInt64();
               break;
             }
             case 672: {
@@ -1419,7 +1419,7 @@ public final class Base {
             }
             case 680: {
               bitField2_ |= 0x00000002;
-              extraLastTimeStamp_ = input.readUInt64();
+              extraLastTimeStamp_ = input.readInt64();
               break;
             }
           }
@@ -2988,17 +2988,17 @@ public final class Base {
       return useTalentId_;
     }
 
-    // optional uint64 extraTimeStamp = 79;
+    // optional int64 extraTimeStamp = 79;
     public static final int EXTRATIMESTAMP_FIELD_NUMBER = 79;
     private long extraTimeStamp_;
     /**
-     * <code>optional uint64 extraTimeStamp = 79;</code>
+     * <code>optional int64 extraTimeStamp = 79;</code>
      */
     public boolean hasExtraTimeStamp() {
       return ((bitField1_ & 0x08000000) == 0x08000000);
     }
     /**
-     * <code>optional uint64 extraTimeStamp = 79;</code>
+     * <code>optional int64 extraTimeStamp = 79;</code>
      */
     public long getExtraTimeStamp() {
       return extraTimeStamp_;
@@ -3052,17 +3052,17 @@ public final class Base {
       return extraCount3_;
     }
 
-    // optional uint64 extraHasLootTime = 83;
+    // optional int64 extraHasLootTime = 83;
     public static final int EXTRAHASLOOTTIME_FIELD_NUMBER = 83;
     private long extraHasLootTime_;
     /**
-     * <code>optional uint64 extraHasLootTime = 83;</code>
+     * <code>optional int64 extraHasLootTime = 83;</code>
      */
     public boolean hasExtraHasLootTime() {
       return ((bitField1_ & 0x80000000) == 0x80000000);
     }
     /**
-     * <code>optional uint64 extraHasLootTime = 83;</code>
+     * <code>optional int64 extraHasLootTime = 83;</code>
      */
     public long getExtraHasLootTime() {
       return extraHasLootTime_;
@@ -3084,17 +3084,17 @@ public final class Base {
       return extraType_;
     }
 
-    // optional uint64 extraLastTimeStamp = 85;
+    // optional int64 extraLastTimeStamp = 85;
     public static final int EXTRALASTTIMESTAMP_FIELD_NUMBER = 85;
     private long extraLastTimeStamp_;
     /**
-     * <code>optional uint64 extraLastTimeStamp = 85;</code>
+     * <code>optional int64 extraLastTimeStamp = 85;</code>
      */
     public boolean hasExtraLastTimeStamp() {
       return ((bitField2_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional uint64 extraLastTimeStamp = 85;</code>
+     * <code>optional int64 extraLastTimeStamp = 85;</code>
      */
     public long getExtraLastTimeStamp() {
       return extraLastTimeStamp_;
@@ -3380,7 +3380,7 @@ public final class Base {
         output.writeUInt32(78, useTalentId_);
       }
       if (((bitField1_ & 0x08000000) == 0x08000000)) {
-        output.writeUInt64(79, extraTimeStamp_);
+        output.writeInt64(79, extraTimeStamp_);
       }
       if (((bitField1_ & 0x10000000) == 0x10000000)) {
         output.writeUInt32(80, extraCount1_);
@@ -3392,13 +3392,13 @@ public final class Base {
         output.writeUInt32(82, extraCount3_);
       }
       if (((bitField1_ & 0x80000000) == 0x80000000)) {
-        output.writeUInt64(83, extraHasLootTime_);
+        output.writeInt64(83, extraHasLootTime_);
       }
       if (((bitField2_ & 0x00000001) == 0x00000001)) {
         output.writeUInt32(84, extraType_);
       }
       if (((bitField2_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt64(85, extraLastTimeStamp_);
+        output.writeInt64(85, extraLastTimeStamp_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3659,7 +3659,7 @@ public final class Base {
       }
       if (((bitField1_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(79, extraTimeStamp_);
+          .computeInt64Size(79, extraTimeStamp_);
       }
       if (((bitField1_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3675,7 +3675,7 @@ public final class Base {
       }
       if (((bitField1_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(83, extraHasLootTime_);
+          .computeInt64Size(83, extraHasLootTime_);
       }
       if (((bitField2_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3683,7 +3683,7 @@ public final class Base {
       }
       if (((bitField2_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(85, extraLastTimeStamp_);
+          .computeInt64Size(85, extraLastTimeStamp_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8172,22 +8172,22 @@ public final class Base {
         return this;
       }
 
-      // optional uint64 extraTimeStamp = 79;
+      // optional int64 extraTimeStamp = 79;
       private long extraTimeStamp_ ;
       /**
-       * <code>optional uint64 extraTimeStamp = 79;</code>
+       * <code>optional int64 extraTimeStamp = 79;</code>
        */
       public boolean hasExtraTimeStamp() {
         return ((bitField1_ & 0x40000000) == 0x40000000);
       }
       /**
-       * <code>optional uint64 extraTimeStamp = 79;</code>
+       * <code>optional int64 extraTimeStamp = 79;</code>
        */
       public long getExtraTimeStamp() {
         return extraTimeStamp_;
       }
       /**
-       * <code>optional uint64 extraTimeStamp = 79;</code>
+       * <code>optional int64 extraTimeStamp = 79;</code>
        */
       public Builder setExtraTimeStamp(long value) {
         bitField1_ |= 0x40000000;
@@ -8196,7 +8196,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>optional uint64 extraTimeStamp = 79;</code>
+       * <code>optional int64 extraTimeStamp = 79;</code>
        */
       public Builder clearExtraTimeStamp() {
         bitField1_ = (bitField1_ & ~0x40000000);
@@ -8304,22 +8304,22 @@ public final class Base {
         return this;
       }
 
-      // optional uint64 extraHasLootTime = 83;
+      // optional int64 extraHasLootTime = 83;
       private long extraHasLootTime_ ;
       /**
-       * <code>optional uint64 extraHasLootTime = 83;</code>
+       * <code>optional int64 extraHasLootTime = 83;</code>
        */
       public boolean hasExtraHasLootTime() {
         return ((bitField2_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional uint64 extraHasLootTime = 83;</code>
+       * <code>optional int64 extraHasLootTime = 83;</code>
        */
       public long getExtraHasLootTime() {
         return extraHasLootTime_;
       }
       /**
-       * <code>optional uint64 extraHasLootTime = 83;</code>
+       * <code>optional int64 extraHasLootTime = 83;</code>
        */
       public Builder setExtraHasLootTime(long value) {
         bitField2_ |= 0x00000004;
@@ -8328,7 +8328,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>optional uint64 extraHasLootTime = 83;</code>
+       * <code>optional int64 extraHasLootTime = 83;</code>
        */
       public Builder clearExtraHasLootTime() {
         bitField2_ = (bitField2_ & ~0x00000004);
@@ -8370,22 +8370,22 @@ public final class Base {
         return this;
       }
 
-      // optional uint64 extraLastTimeStamp = 85;
+      // optional int64 extraLastTimeStamp = 85;
       private long extraLastTimeStamp_ ;
       /**
-       * <code>optional uint64 extraLastTimeStamp = 85;</code>
+       * <code>optional int64 extraLastTimeStamp = 85;</code>
        */
       public boolean hasExtraLastTimeStamp() {
         return ((bitField2_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional uint64 extraLastTimeStamp = 85;</code>
+       * <code>optional int64 extraLastTimeStamp = 85;</code>
        */
       public long getExtraLastTimeStamp() {
         return extraLastTimeStamp_;
       }
       /**
-       * <code>optional uint64 extraLastTimeStamp = 85;</code>
+       * <code>optional int64 extraLastTimeStamp = 85;</code>
        */
       public Builder setExtraLastTimeStamp(long value) {
         bitField2_ |= 0x00000010;
@@ -8394,7 +8394,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>optional uint64 extraLastTimeStamp = 85;</code>
+       * <code>optional int64 extraLastTimeStamp = 85;</code>
        */
       public Builder clearExtraLastTimeStamp() {
         bitField2_ = (bitField2_ & ~0x00000010);
@@ -25593,10 +25593,10 @@ public final class Base {
       " \001(\005\022\023\n\013zhaohuanshi\030J \001(\005\022\021\n\tzhujueExp\030K" +
       " \001(\r\022\016\n\006vipExp\030L \001(\r\022\020\n\010merlevel\030M \001(\005\022\023" +
       "\n\013useTalentId\030N \001(\r\022\026\n\016extraTimeStamp\030O " +
-      "\001(\004\022\023\n\013extraCount1\030P \001(\r\022\023\n\013extraCount2\030" +
+      "\001(\003\022\023\n\013extraCount1\030P \001(\r\022\023\n\013extraCount2\030" +
       "Q \001(\r\022\023\n\013extraCount3\030R \001(\r\022\030\n\020extraHasLo" +
-      "otTime\030S \001(\004\022\021\n\textraType\030T \001(\r\022\032\n\022extra",
-      "LastTimeStamp\030U \001(\004\"J\n\010CostItem\022\016\n\006costi" +
+      "otTime\030S \001(\003\022\021\n\textraType\030T \001(\r\022\032\n\022extra",
+      "LastTimeStamp\030U \001(\003\"J\n\010CostItem\022\016\n\006costi" +
       "d\030\001 \001(\005\022\021\n\tcostcount\030\002 \001(\005\022\014\n\004show\030\003 \001(\r" +
       "\022\r\n\005order\030\004 \001(\r\"\213\001\n\tJewelPool\022\r\n\005order\030\001" +
       " \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\023\n\013description\030\003 \001(" +

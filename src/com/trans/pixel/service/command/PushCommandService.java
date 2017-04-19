@@ -403,8 +403,8 @@ public class PushCommandService extends BaseCommandService {
 			equipList.add(userEquipService.selectUserEquip(userId, rewardId));
 			this.pushUserEquipListCommand(responseBuilder, user, equipList);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
-			equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
-			this.pushUserEquipPokedeList(responseBuilder, user, equipPokedeList);
+//			equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
+//			this.pushUserEquipPokedeList(responseBuilder, user, equipPokedeList);
 		} else if (rewardId == RewardConst.ZHUJUEEXP) {
 			userTalentList.add(userTalentService.getUsingTalent(user));
 			this.pushUserTalentList(responseBuilder, user, userTalentList);
@@ -447,7 +447,7 @@ public class PushCommandService extends BaseCommandService {
 			} else if (rewardId > RewardConst.CHIP) {
 				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
 			} else if (rewardId > RewardConst.EQUIPMENT) {
-				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
+//				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			} else if (rewardId == RewardConst.ZHUJUEEXP) {
 				UserTalent userTalent = userTalentService.getUsingTalent(user);
 				if (userTalent != null)

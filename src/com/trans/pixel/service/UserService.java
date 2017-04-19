@@ -152,6 +152,10 @@ public class UserService {
 		user.setBlackShopRefreshTime(0);
 		user.setUnionBossMap(new HashMap<String, Integer>());
 		
+		user.setExtraCount1(4);
+		user.setExtraCount2(4);
+		user.setExtraCount2(4);
+		
 		handleVipDailyReward(user);
 		handleLibaoDailyReward(user, today0);
 		handleRewardTaskDailyReward(user);	
@@ -511,20 +515,24 @@ public class UserService {
 			user.setExtraTimeStamp(0);
 		} else if (status == 2) {//end
 			if (System.currentTimeMillis() + user.getExtraHasLootTime() - user.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
-				rewardList.add(RewardBean.init(35003, 1));
-				switch (type) {
+				
+				switch (user.getExtraType()) {
 				case 1:
-					user.setExtraCount1(EXTRAREWARDID1);
+					user.setExtraCount1(user.getExtraCount1() - 1);
 					break;
 				case 2:
-					user.setExtraCount2(EXTRAREWARDID2);
+					user.setExtraCount2(user.getExtraCount2() - 1);
 					break;
 				case 3:
-					user.setExtraCount3(EXTRAREWARDID3);
+					user.setExtraCount3(user.getExtraCount3() - 1);
 					break;
 				default:
 					break;
 				}
+				if (user.getExtraCount1() <= 0 || user.getExtraCount2() <= 0 || user.getExtraCount3() <= 0)
+					return ErrorConst.NOT_ENOUGH_PROP;
+				
+				rewardList.add(RewardBean.init(35003, 1));
 			}
 			
 			user.setExtraTimeStamp(0);
