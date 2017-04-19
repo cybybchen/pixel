@@ -206,7 +206,7 @@ public class LevelCommandService extends BaseCommandService {
 			if(event.getType() == 1){//buy event
 				if(cmd.getRet()){
 					if(costService.cost(user, eventconfig.getCostid(), eventconfig.getCostcount())){
-			            pusher.pushUserInfoCommand(responseBuilder, user);
+			            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCostid());
 						eventReward(eventconfig, responseBuilder, user, event.getCount());
 						if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 							userLevel.setLeftCount(userLevel.getLeftCount()-1);
@@ -215,7 +215,7 @@ public class LevelCommandService extends BaseCommandService {
 					}else{
 						ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(event.getCostid()));
 			            responseBuilder.setErrorCommand(errorCommand);
-			            pusher.pushUserInfoCommand(responseBuilder, user);
+			            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCostid());
 						pushLevelLootCommand(responseBuilder, userLevel, user);
 						return;
 					}
