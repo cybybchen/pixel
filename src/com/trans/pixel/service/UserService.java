@@ -154,7 +154,7 @@ public class UserService {
 		
 		user.setExtraCount1(4);
 		user.setExtraCount2(4);
-		user.setExtraCount2(4);
+		user.setExtraCount3(4);
 		
 		handleVipDailyReward(user);
 		handleLibaoDailyReward(user, today0);
@@ -529,7 +529,7 @@ public class UserService {
 				default:
 					break;
 				}
-				if (user.getExtraCount1() <= 0 || user.getExtraCount2() <= 0 || user.getExtraCount3() <= 0)
+				if (user.getExtraCount1() < 0 || user.getExtraCount2() < 0 || user.getExtraCount3() < 0)
 					return ErrorConst.NOT_ENOUGH_PROP;
 				
 				rewardList.add(RewardBean.init(35003, 1));
