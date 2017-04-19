@@ -178,6 +178,11 @@ public class UserCommandService extends BaseCommandService {
 	
 	private void addRegisterTeam(UserBean user, int roleId) {
 		String teamRecord = "0,0|";
+		
+//		userTeamService.updateUserTeam(user.getId(), 2, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
+//		userTeamService.updateUserTeam(user.getId(), 3, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
+//		userTeamService.updateUserTeam(user.getId(), 4, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
+//		userTeamService.updateUserTeam(user.getId(), 5, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
 		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
 //		userTeamService.updateUserTeam(user.getId(), 2, "", "");
 //		userTeamService.updateUserTeam(user.getId(), 3, "", "");
