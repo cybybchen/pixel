@@ -515,32 +515,32 @@ public class ManagerService extends RedisService{
 			result.put("Event", object);
 		}
 		
-		if(req.containsKey("update-LevelRecord") && gmaccountBean.getCanwrite() == 1){
-			hput(USERDATA+userId, "LevelRecord", req.get("update-LevelRecord").toString());
-			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-LevelRecord", req.get("update-LevelRecord").toString());
-			req.put("LevelRecord", 1);
-		}else if(req.containsKey("del-LevelRecord") && gmaccountBean.getCanwrite() == 1){
-			hdelete(USERDATA+userId, "LevelRecord");
-			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-LevelRecord", "");
-			req.put("LevelRecord", 1);
-		}
-		if(req.containsKey("LevelRecord") && gmaccountBean.getCanview() == 1){
-			String value = hgetJson(USERDATA+userId, "LevelRecord");
-			result.put("LevelRecord", value);
-		}
-		if(req.containsKey("update-LootLevel") && gmaccountBean.getCanwrite() == 1){
-			hput(USERDATA+userId, "LootLevel", req.get("update-LootLevel").toString());
-			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-LootLevel", req.get("update-LootLevel").toString());
-			req.put("LootLevel", 1);
-		}else if(req.containsKey("del-LootLevel") && gmaccountBean.getCanwrite() == 1){
-			hdelete(USERDATA+userId, "LootLevel");
-			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-LootLevel", "");
-			req.put("LootLevel", 1);
-		}
-		if(req.containsKey("LootLevel") && gmaccountBean.getCanview() == 1){
-			String value = hgetJson(USERDATA+userId, "LootLevel");
-			result.put("LootLevel", value);
-		}
+//		if(req.containsKey("update-LevelRecord") && gmaccountBean.getCanwrite() == 1){
+//			hput(USERDATA+userId, "LevelRecord", req.get("update-LevelRecord").toString());
+//			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-LevelRecord", req.get("update-LevelRecord").toString());
+//			req.put("LevelRecord", 1);
+//		}else if(req.containsKey("del-LevelRecord") && gmaccountBean.getCanwrite() == 1){
+//			hdelete(USERDATA+userId, "LevelRecord");
+//			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-LevelRecord", "");
+//			req.put("LevelRecord", 1);
+//		}
+//		if(req.containsKey("LevelRecord") && gmaccountBean.getCanview() == 1){
+//			String value = hgetJson(USERDATA+userId, "LevelRecord");
+//			result.put("LevelRecord", value);
+//		}
+//		if(req.containsKey("update-LootLevel") && gmaccountBean.getCanwrite() == 1){
+//			hput(USERDATA+userId, "LootLevel", req.get("update-LootLevel").toString());
+//			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-LootLevel", req.get("update-LootLevel").toString());
+//			req.put("LootLevel", 1);
+//		}else if(req.containsKey("del-LootLevel") && gmaccountBean.getCanwrite() == 1){
+//			hdelete(USERDATA+userId, "LootLevel");
+//			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-LootLevel", "");
+//			req.put("LootLevel", 1);
+//		}
+//		if(req.containsKey("LootLevel") && gmaccountBean.getCanview() == 1){
+//			String value = hgetJson(USERDATA+userId, "LootLevel");
+//			result.put("LootLevel", value);
+//		}
 		if(req.containsKey("update-DAILYSHOP") && gmaccountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "DAILYSHOP", req.get("update-DAILYSHOP").toString());
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-DAILYSHOP", req.get("update-DAILYSHOP").toString());
