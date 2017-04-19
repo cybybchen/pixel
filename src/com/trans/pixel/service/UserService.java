@@ -545,6 +545,7 @@ public class UserService {
 			user.setExtraTimeStamp(0);
 			user.setExtraHasLootTime(0);
 			user.setExtraLastTimeStamp(current);
+			user.setExtraType(0);
 		} else if (status == 1) {//start
 			if (user.getExtraLastTimeStamp() + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() > 0)
 				return ErrorConst.TIME_IS_NOT_OVER_ERROR;
