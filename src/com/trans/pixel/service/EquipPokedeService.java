@@ -86,13 +86,13 @@ public class EquipPokedeService {
 		if (!costService.cost(user, rewards.build()))
 			return ErrorConst.NOT_ENOUGH_COIN;
 		
-//		if (RandomUtils.nextInt(10000) >= equipIncrease.getRate()) {
-//			if (equipIncrease.getZero() == 1) {
-//				pokede.setLevel(0);
-//			}
-//			
-//			return SuccessConst.EQUIP_STRENGTHEN_FALIED_SUCCESS;
-//		}
+		if (RandomUtils.nextInt(10000) >= equipIncrease.getRate()) {
+			if (equipIncrease.getZero() == 1) {
+				pokede.setLevel(0);
+			}
+			
+			return SuccessConst.EQUIP_STRENGTHEN_FALIED_SUCCESS;
+		}
 		
 		pokede.setLevel(pokede.getLevel() + 1);
 		noticeMessageService.composeEquipStrengthen(user, name, pokede.getLevel(), rare);
