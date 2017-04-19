@@ -17,6 +17,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
+import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -145,12 +146,12 @@ public class UserCommandService extends BaseCommandService {
 		}else{
 			int addHeroId = registerCommand.getHeroId();
 			UserTalent userTalent = addRegisterTalent(user, addHeroId);
-//			addRegisterTeam(user);
+			
 			if (userTalent != null)
 				user.setUseTalentId(addHeroId);
 				
 			user.setFirstGetHeroId(addHeroId);
-			
+			addRegisterTeam(user, user.getUseTalentId());
 			/**
 			 * register activity
 			 */
@@ -175,36 +176,14 @@ public class UserCommandService extends BaseCommandService {
 		return userTalentService.getRegisterTalent(user, id);
 	}
 	
-//	private void addRegisterTeam(UserBean user) {
-//		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
-//		String teamRecord = "";
-//		for (HeroInfoBean hero : userHeroList) {
-//			teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
-////			int skillid = hero.getSkillInfoList().get(0).getSkillId();
-////			composeSkill = hero.getHeroId()+","+hero.getId()+","+skillid+"_"+skillid+"_组合技";
-////			switch(hero.getHeroId()){
-////			case 82:
-////				composeSkill = "82,"+hero.getId()+",8201_8201_组合技";
-////				break;
-////			case 72:
-////				composeSkill = "72,"+hero.getId()+",7201_7201_组合技";
-////				break;
-////			case 55:
-////				composeSkill = "55,"+hero.getId()+",5501_5501_组合技";
-////				break;
-////			case 42:
-////				composeSkill = "42,"+hero.getId()+",4201_4201_组合技";
-////				break;
-////			}
-//			break;
-//		}
-//		
-//		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, null, 0);
-//		// userTeamService.updateUserTeam(user.getId(), 2, "", "");
-//		// userTeamService.updateUserTeam(user.getId(), 3, "", "");
-//		// userTeamService.updateUserTeam(user.getId(), 4, "", "");
-//		// userTeamService.updateUserTeam(user.getId(), 5, "", "");
-//	}
+	private void addRegisterTeam(UserBean user, int roleId) {
+		String teamRecord = "0,0|";
+		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
+//		userTeamService.updateUserTeam(user.getId(), 2, "", "");
+//		userTeamService.updateUserTeam(user.getId(), 3, "", "");
+//		userTeamService.updateUserTeam(user.getId(), 4, "", "");
+//		userTeamService.updateUserTeam(user.getId(), 5, "", "");
+	}
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
 		int icon = cmd.getIcon();
