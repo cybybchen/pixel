@@ -36,9 +36,9 @@ import com.trans.pixel.utils.DateUtil;
 
 @Repository
 public class UnionRedisService extends RedisService{
-	private static final String UNION_BOSS_FILE_NAME = "lol_guildboss.xml";
-	private static final String UNION_BOSSLOOT_FILE_NAME = "lol_guildbossloot.xml";
-	private static final String UNION_BOSSWIN_FILE_NAME = "lol_guildbosswin.xml";
+	private static final String UNION_BOSS_FILE_NAME = "ld_guildboss.xml";
+	private static final String UNION_BOSSLOOT_FILE_NAME = "ld_guildbossloot.xml";
+	private static final String UNION_BOSSWIN_FILE_NAME = "ld_guildbosswin.xml";
 	private static Logger logger = Logger.getLogger(UnionRedisService.class);
 	@Resource
 	public UserRedisService userRedisService;

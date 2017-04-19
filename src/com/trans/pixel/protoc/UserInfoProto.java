@@ -4134,7 +4134,7 @@ public final class UserInfoProto {
      * <code>required uint32 status = 1;</code>
      *
      * <pre>
-     *1：start 2:end 3:pause
+     *1：start 2:end 3:pause 4:continue 5:giveup
      * </pre>
      */
     boolean hasStatus();
@@ -4142,7 +4142,7 @@ public final class UserInfoProto {
      * <code>required uint32 status = 1;</code>
      *
      * <pre>
-     *1：start 2:end 3:pause
+     *1：start 2:end 3:pause 4:continue 5:giveup
      * </pre>
      */
     int getStatus();
@@ -4273,7 +4273,7 @@ public final class UserInfoProto {
      * <code>required uint32 status = 1;</code>
      *
      * <pre>
-     *1：start 2:end 3:pause
+     *1：start 2:end 3:pause 4:continue 5:giveup
      * </pre>
      */
     public boolean hasStatus() {
@@ -4283,7 +4283,7 @@ public final class UserInfoProto {
      * <code>required uint32 status = 1;</code>
      *
      * <pre>
-     *1：start 2:end 3:pause
+     *1：start 2:end 3:pause 4:continue 5:giveup
      * </pre>
      */
     public int getStatus() {
@@ -4572,7 +4572,7 @@ public final class UserInfoProto {
        * <code>required uint32 status = 1;</code>
        *
        * <pre>
-       *1：start 2:end 3:pause
+       *1：start 2:end 3:pause 4:continue 5:giveup
        * </pre>
        */
       public boolean hasStatus() {
@@ -4582,7 +4582,7 @@ public final class UserInfoProto {
        * <code>required uint32 status = 1;</code>
        *
        * <pre>
-       *1：start 2:end 3:pause
+       *1：start 2:end 3:pause 4:continue 5:giveup
        * </pre>
        */
       public int getStatus() {
@@ -4592,7 +4592,7 @@ public final class UserInfoProto {
        * <code>required uint32 status = 1;</code>
        *
        * <pre>
-       *1：start 2:end 3:pause
+       *1：start 2:end 3:pause 4:continue 5:giveup
        * </pre>
        */
       public Builder setStatus(int value) {
@@ -4605,7 +4605,7 @@ public final class UserInfoProto {
        * <code>required uint32 status = 1;</code>
        *
        * <pre>
-       *1：start 2:end 3:pause
+       *1：start 2:end 3:pause 4:continue 5:giveup
        * </pre>
        */
       public Builder clearStatus() {

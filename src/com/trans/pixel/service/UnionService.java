@@ -833,10 +833,10 @@ public class UnionService extends FightService{
 	
 	private void doUnionBossRankReward(int unionId, int bossId, int serverId) {
 		UnionBosswin unionBosswin = redis.getUnionBosswin(bossId);
-		List<RankItem> rankList = unionBosswin.getItemList();
+		List<RankItem> rankList = unionBosswin.getRankList();
 		List<UserRankBean> userRankList = getUnionBossRankList(unionId, bossId, serverId);
 		for (RankItem item : rankList) {
-			List<RewardInfo> rewardList = getRankRewardList(item);
+			List<RewardInfo> rewardList = item.getRewardList();
 			for (int i = item.getRank() - 1; i < item.getRank1(); ++ i) {
 				if (i >= userRankList.size())
 					return;
@@ -857,30 +857,6 @@ public class UnionService extends FightService{
 //				mailService.addMail(mail);
 //			}
 		}
-	}
-	
-	private List<RewardInfo> getRankRewardList(RankItem rankItem) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		RewardInfo.Builder builder = RewardInfo.newBuilder();
-		if (rankItem.getItemid1() > 0) {
-			builder.setItemid(rankItem.getItemid1());
-			builder.setCount(rankItem.getCount1());
-			rewardList.add(builder.build());
-			builder.clear();
-		}
-		if (rankItem.getItemid2() > 0) {
-			builder.setItemid(rankItem.getItemid2());
-			builder.setCount(rankItem.getCount2());
-			rewardList.add(builder.build());
-			builder.clear();
-		}
-		if (rankItem.getItemid3() > 0) {
-			builder.setItemid(rankItem.getItemid3());
-			builder.setCount(rankItem.getCount3());
-			rewardList.add(builder.build());
-		}
-		
-		return rewardList;
 	}
 	
 	private List<RewardInfo> calUnionBossReward(int bossId) {

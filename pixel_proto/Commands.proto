@@ -2476,7 +2476,7 @@ message RequestUserInfoCommand {
 }
 
 message RequestExtraRewardCommand {
-	required uint32 status = 1;//1：start 2:end 3:pause
+	required uint32 status = 1;//1：start 2:end 3:pause 4:continue 5:giveup
 	optional uint32 extraType = 2; //1,2,3
 }
 
@@ -2915,6 +2915,7 @@ message UnionBossloot {
 }
 
 message UnionBosslootItem {
+	optional uint32 order = 11;
 	optional int32 weightall = 1;
 	optional int32 itemid1 = 2;
 	optional int32 count1 = 3;
@@ -2933,19 +2934,14 @@ message UnionBosswinList {
 
 message UnionBosswin {
 	optional int32 id = 1;
-	repeated RankItem item = 2;
+	repeated RankItem rank = 2;
 }
 
 message RankItem {
 	optional int32 rank = 1;
 	optional int32 rank1 = 2;
-	optional int32 itemid1 = 3;
-	optional int32 count1 = 4;
-	optional int32 itemid2 = 5;
-	optional int32 count2 = 6;
-	optional int32 itemid3 = 7;
-	optional int32 count3 = 8;
 	optional string des = 9;
+	repeated RewardInfo reward = 10;
 }
 
 message RequestCreateUnionCommand {//创建公会

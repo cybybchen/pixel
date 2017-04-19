@@ -25663,6 +25663,16 @@ public final class UnionProto {
   public interface UnionBosslootItemOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
+    // optional uint32 order = 11;
+    /**
+     * <code>optional uint32 order = 11;</code>
+     */
+    boolean hasOrder();
+    /**
+     * <code>optional uint32 order = 11;</code>
+     */
+    int getOrder();
+
     // optional int32 weightall = 1;
     /**
      * <code>optional int32 weightall = 1;</code>
@@ -25815,53 +25825,58 @@ public final class UnionProto {
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+              bitField0_ |= 0x00000002;
               weightall_ = input.readInt32();
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               itemid1_ = input.readInt32();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               count1_ = input.readInt32();
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               weight1_ = input.readInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               itemid2_ = input.readInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               count2_ = input.readInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               weight2_ = input.readInt32();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               itemid3_ = input.readInt32();
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               count3_ = input.readInt32();
               break;
             }
             case 80: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               weight3_ = input.readInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000001;
+              order_ = input.readUInt32();
               break;
             }
           }
@@ -25904,6 +25919,22 @@ public final class UnionProto {
     }
 
     private int bitField0_;
+    // optional uint32 order = 11;
+    public static final int ORDER_FIELD_NUMBER = 11;
+    private int order_;
+    /**
+     * <code>optional uint32 order = 11;</code>
+     */
+    public boolean hasOrder() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint32 order = 11;</code>
+     */
+    public int getOrder() {
+      return order_;
+    }
+
     // optional int32 weightall = 1;
     public static final int WEIGHTALL_FIELD_NUMBER = 1;
     private int weightall_;
@@ -25911,7 +25942,7 @@ public final class UnionProto {
      * <code>optional int32 weightall = 1;</code>
      */
     public boolean hasWeightall() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional int32 weightall = 1;</code>
@@ -25927,7 +25958,7 @@ public final class UnionProto {
      * <code>optional int32 itemid1 = 2;</code>
      */
     public boolean hasItemid1() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 itemid1 = 2;</code>
@@ -25943,7 +25974,7 @@ public final class UnionProto {
      * <code>optional int32 count1 = 3;</code>
      */
     public boolean hasCount1() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 count1 = 3;</code>
@@ -25959,7 +25990,7 @@ public final class UnionProto {
      * <code>optional int32 weight1 = 4;</code>
      */
     public boolean hasWeight1() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 weight1 = 4;</code>
@@ -25975,7 +26006,7 @@ public final class UnionProto {
      * <code>optional int32 itemid2 = 5;</code>
      */
     public boolean hasItemid2() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 itemid2 = 5;</code>
@@ -25991,7 +26022,7 @@ public final class UnionProto {
      * <code>optional int32 count2 = 6;</code>
      */
     public boolean hasCount2() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 count2 = 6;</code>
@@ -26007,7 +26038,7 @@ public final class UnionProto {
      * <code>optional int32 weight2 = 7;</code>
      */
     public boolean hasWeight2() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 weight2 = 7;</code>
@@ -26023,7 +26054,7 @@ public final class UnionProto {
      * <code>optional int32 itemid3 = 8;</code>
      */
     public boolean hasItemid3() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional int32 itemid3 = 8;</code>
@@ -26039,7 +26070,7 @@ public final class UnionProto {
      * <code>optional int32 count3 = 9;</code>
      */
     public boolean hasCount3() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional int32 count3 = 9;</code>
@@ -26055,7 +26086,7 @@ public final class UnionProto {
      * <code>optional int32 weight3 = 10;</code>
      */
     public boolean hasWeight3() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional int32 weight3 = 10;</code>
@@ -26065,6 +26096,7 @@ public final class UnionProto {
     }
 
     private void initFields() {
+      order_ = 0;
       weightall_ = 0;
       itemid1_ = 0;
       count1_ = 0;
@@ -26088,35 +26120,38 @@ public final class UnionProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(1, weightall_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(2, itemid1_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(3, count1_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(4, weight1_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(5, itemid2_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(6, count2_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(7, weight2_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeInt32(8, itemid3_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(9, count3_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeInt32(10, weight3_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(11, order_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -26127,45 +26162,49 @@ public final class UnionProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, weightall_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, itemid1_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, count1_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, weight1_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, itemid2_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, count2_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, weight2_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, itemid3_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, count3_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, weight3_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(11, order_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -26283,26 +26322,28 @@ public final class UnionProto {
 
       public Builder clear() {
         super.clear();
-        weightall_ = 0;
+        order_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemid1_ = 0;
+        weightall_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        count1_ = 0;
+        itemid1_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        weight1_ = 0;
+        count1_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        itemid2_ = 0;
+        weight1_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        count2_ = 0;
+        itemid2_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        weight2_ = 0;
+        count2_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        itemid3_ = 0;
+        weight2_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
-        count3_ = 0;
+        itemid3_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        weight3_ = 0;
+        count3_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
+        weight3_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -26334,41 +26375,45 @@ public final class UnionProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.weightall_ = weightall_;
+        result.order_ = order_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.itemid1_ = itemid1_;
+        result.weightall_ = weightall_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.count1_ = count1_;
+        result.itemid1_ = itemid1_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.weight1_ = weight1_;
+        result.count1_ = count1_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.itemid2_ = itemid2_;
+        result.weight1_ = weight1_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.count2_ = count2_;
+        result.itemid2_ = itemid2_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.weight2_ = weight2_;
+        result.count2_ = count2_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.itemid3_ = itemid3_;
+        result.weight2_ = weight2_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.count3_ = count3_;
+        result.itemid3_ = itemid3_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
+        }
+        result.count3_ = count3_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
         }
         result.weight3_ = weight3_;
         result.bitField0_ = to_bitField0_;
@@ -26387,6 +26432,9 @@ public final class UnionProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.UnionBosslootItem other) {
         if (other == com.trans.pixel.protoc.UnionProto.UnionBosslootItem.getDefaultInstance()) return this;
+        if (other.hasOrder()) {
+          setOrder(other.getOrder());
+        }
         if (other.hasWeightall()) {
           setWeightall(other.getWeightall());
         }
@@ -26444,13 +26492,46 @@ public final class UnionProto {
       }
       private int bitField0_;
 
+      // optional uint32 order = 11;
+      private int order_ ;
+      /**
+       * <code>optional uint32 order = 11;</code>
+       */
+      public boolean hasOrder() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint32 order = 11;</code>
+       */
+      public int getOrder() {
+        return order_;
+      }
+      /**
+       * <code>optional uint32 order = 11;</code>
+       */
+      public Builder setOrder(int value) {
+        bitField0_ |= 0x00000001;
+        order_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 order = 11;</code>
+       */
+      public Builder clearOrder() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        order_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional int32 weightall = 1;
       private int weightall_ ;
       /**
        * <code>optional int32 weightall = 1;</code>
        */
       public boolean hasWeightall() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional int32 weightall = 1;</code>
@@ -26462,7 +26543,7 @@ public final class UnionProto {
        * <code>optional int32 weightall = 1;</code>
        */
       public Builder setWeightall(int value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         weightall_ = value;
         onChanged();
         return this;
@@ -26471,7 +26552,7 @@ public final class UnionProto {
        * <code>optional int32 weightall = 1;</code>
        */
       public Builder clearWeightall() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         weightall_ = 0;
         onChanged();
         return this;
@@ -26483,7 +26564,7 @@ public final class UnionProto {
        * <code>optional int32 itemid1 = 2;</code>
        */
       public boolean hasItemid1() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 itemid1 = 2;</code>
@@ -26495,7 +26576,7 @@ public final class UnionProto {
        * <code>optional int32 itemid1 = 2;</code>
        */
       public Builder setItemid1(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         itemid1_ = value;
         onChanged();
         return this;
@@ -26504,7 +26585,7 @@ public final class UnionProto {
        * <code>optional int32 itemid1 = 2;</code>
        */
       public Builder clearItemid1() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         itemid1_ = 0;
         onChanged();
         return this;
@@ -26516,7 +26597,7 @@ public final class UnionProto {
        * <code>optional int32 count1 = 3;</code>
        */
       public boolean hasCount1() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 count1 = 3;</code>
@@ -26528,7 +26609,7 @@ public final class UnionProto {
        * <code>optional int32 count1 = 3;</code>
        */
       public Builder setCount1(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         count1_ = value;
         onChanged();
         return this;
@@ -26537,7 +26618,7 @@ public final class UnionProto {
        * <code>optional int32 count1 = 3;</code>
        */
       public Builder clearCount1() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         count1_ = 0;
         onChanged();
         return this;
@@ -26549,7 +26630,7 @@ public final class UnionProto {
        * <code>optional int32 weight1 = 4;</code>
        */
       public boolean hasWeight1() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 weight1 = 4;</code>
@@ -26561,7 +26642,7 @@ public final class UnionProto {
        * <code>optional int32 weight1 = 4;</code>
        */
       public Builder setWeight1(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         weight1_ = value;
         onChanged();
         return this;
@@ -26570,7 +26651,7 @@ public final class UnionProto {
        * <code>optional int32 weight1 = 4;</code>
        */
       public Builder clearWeight1() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         weight1_ = 0;
         onChanged();
         return this;
@@ -26582,7 +26663,7 @@ public final class UnionProto {
        * <code>optional int32 itemid2 = 5;</code>
        */
       public boolean hasItemid2() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 itemid2 = 5;</code>
@@ -26594,7 +26675,7 @@ public final class UnionProto {
        * <code>optional int32 itemid2 = 5;</code>
        */
       public Builder setItemid2(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         itemid2_ = value;
         onChanged();
         return this;
@@ -26603,7 +26684,7 @@ public final class UnionProto {
        * <code>optional int32 itemid2 = 5;</code>
        */
       public Builder clearItemid2() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         itemid2_ = 0;
         onChanged();
         return this;
@@ -26615,7 +26696,7 @@ public final class UnionProto {
        * <code>optional int32 count2 = 6;</code>
        */
       public boolean hasCount2() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 count2 = 6;</code>
@@ -26627,7 +26708,7 @@ public final class UnionProto {
        * <code>optional int32 count2 = 6;</code>
        */
       public Builder setCount2(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         count2_ = value;
         onChanged();
         return this;
@@ -26636,7 +26717,7 @@ public final class UnionProto {
        * <code>optional int32 count2 = 6;</code>
        */
       public Builder clearCount2() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         count2_ = 0;
         onChanged();
         return this;
@@ -26648,7 +26729,7 @@ public final class UnionProto {
        * <code>optional int32 weight2 = 7;</code>
        */
       public boolean hasWeight2() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 weight2 = 7;</code>
@@ -26660,7 +26741,7 @@ public final class UnionProto {
        * <code>optional int32 weight2 = 7;</code>
        */
       public Builder setWeight2(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         weight2_ = value;
         onChanged();
         return this;
@@ -26669,7 +26750,7 @@ public final class UnionProto {
        * <code>optional int32 weight2 = 7;</code>
        */
       public Builder clearWeight2() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         weight2_ = 0;
         onChanged();
         return this;
@@ -26681,7 +26762,7 @@ public final class UnionProto {
        * <code>optional int32 itemid3 = 8;</code>
        */
       public boolean hasItemid3() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional int32 itemid3 = 8;</code>
@@ -26693,7 +26774,7 @@ public final class UnionProto {
        * <code>optional int32 itemid3 = 8;</code>
        */
       public Builder setItemid3(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         itemid3_ = value;
         onChanged();
         return this;
@@ -26702,7 +26783,7 @@ public final class UnionProto {
        * <code>optional int32 itemid3 = 8;</code>
        */
       public Builder clearItemid3() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         itemid3_ = 0;
         onChanged();
         return this;
@@ -26714,7 +26795,7 @@ public final class UnionProto {
        * <code>optional int32 count3 = 9;</code>
        */
       public boolean hasCount3() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional int32 count3 = 9;</code>
@@ -26726,7 +26807,7 @@ public final class UnionProto {
        * <code>optional int32 count3 = 9;</code>
        */
       public Builder setCount3(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         count3_ = value;
         onChanged();
         return this;
@@ -26735,7 +26816,7 @@ public final class UnionProto {
        * <code>optional int32 count3 = 9;</code>
        */
       public Builder clearCount3() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         count3_ = 0;
         onChanged();
         return this;
@@ -26747,7 +26828,7 @@ public final class UnionProto {
        * <code>optional int32 weight3 = 10;</code>
        */
       public boolean hasWeight3() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional int32 weight3 = 10;</code>
@@ -26759,7 +26840,7 @@ public final class UnionProto {
        * <code>optional int32 weight3 = 10;</code>
        */
       public Builder setWeight3(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         weight3_ = value;
         onChanged();
         return this;
@@ -26768,7 +26849,7 @@ public final class UnionProto {
        * <code>optional int32 weight3 = 10;</code>
        */
       public Builder clearWeight3() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         weight3_ = 0;
         onChanged();
         return this;
@@ -27472,29 +27553,29 @@ public final class UnionProto {
      */
     int getId();
 
-    // repeated .com.trans.pixel.protoc.RankItem item = 2;
+    // repeated .com.trans.pixel.protoc.RankItem rank = 2;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
     java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> 
-        getItemList();
+        getRankList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
-    com.trans.pixel.protoc.UnionProto.RankItem getItem(int index);
+    com.trans.pixel.protoc.UnionProto.RankItem getRank(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
-    int getItemCount();
+    int getRankCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.UnionProto.RankItemOrBuilder> 
-        getItemOrBuilderList();
+        getRankOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
-    com.trans.pixel.protoc.UnionProto.RankItemOrBuilder getItemOrBuilder(
+    com.trans.pixel.protoc.UnionProto.RankItemOrBuilder getRankOrBuilder(
         int index);
   }
   /**
@@ -27555,10 +27636,10 @@ public final class UnionProto {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                item_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.RankItem>();
+                rank_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.RankItem>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              item_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.RankItem.PARSER, extensionRegistry));
+              rank_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.RankItem.PARSER, extensionRegistry));
               break;
             }
           }
@@ -27570,7 +27651,7 @@ public final class UnionProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          item_ = java.util.Collections.unmodifiableList(item_);
+          rank_ = java.util.Collections.unmodifiableList(rank_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -27620,45 +27701,45 @@ public final class UnionProto {
       return id_;
     }
 
-    // repeated .com.trans.pixel.protoc.RankItem item = 2;
-    public static final int ITEM_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> item_;
+    // repeated .com.trans.pixel.protoc.RankItem rank = 2;
+    public static final int RANK_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> rank_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> getItemList() {
-      return item_;
+    public java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> getRankList() {
+      return rank_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.UnionProto.RankItemOrBuilder> 
-        getItemOrBuilderList() {
-      return item_;
+        getRankOrBuilderList() {
+      return rank_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
-    public int getItemCount() {
-      return item_.size();
+    public int getRankCount() {
+      return rank_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.RankItem getItem(int index) {
-      return item_.get(index);
+    public com.trans.pixel.protoc.UnionProto.RankItem getRank(int index) {
+      return rank_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.RankItemOrBuilder getItemOrBuilder(
+    public com.trans.pixel.protoc.UnionProto.RankItemOrBuilder getRankOrBuilder(
         int index) {
-      return item_.get(index);
+      return rank_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
-      item_ = java.util.Collections.emptyList();
+      rank_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -27675,8 +27756,8 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
-      for (int i = 0; i < item_.size(); i++) {
-        output.writeMessage(2, item_.get(i));
+      for (int i = 0; i < rank_.size(); i++) {
+        output.writeMessage(2, rank_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -27691,9 +27772,9 @@ public final class UnionProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      for (int i = 0; i < item_.size(); i++) {
+      for (int i = 0; i < rank_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, item_.get(i));
+          .computeMessageSize(2, rank_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -27803,7 +27884,7 @@ public final class UnionProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getItemFieldBuilder();
+          getRankFieldBuilder();
         }
       }
       private static Builder create() {
@@ -27814,11 +27895,11 @@ public final class UnionProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (itemBuilder_ == null) {
-          item_ = java.util.Collections.emptyList();
+        if (rankBuilder_ == null) {
+          rank_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          itemBuilder_.clear();
+          rankBuilder_.clear();
         }
         return this;
       }
@@ -27852,14 +27933,14 @@ public final class UnionProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
-        if (itemBuilder_ == null) {
+        if (rankBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            item_ = java.util.Collections.unmodifiableList(item_);
+            rank_ = java.util.Collections.unmodifiableList(rank_);
             bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.item_ = item_;
+          result.rank_ = rank_;
         } else {
-          result.item_ = itemBuilder_.build();
+          result.rank_ = rankBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -27880,29 +27961,29 @@ public final class UnionProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (itemBuilder_ == null) {
-          if (!other.item_.isEmpty()) {
-            if (item_.isEmpty()) {
-              item_ = other.item_;
+        if (rankBuilder_ == null) {
+          if (!other.rank_.isEmpty()) {
+            if (rank_.isEmpty()) {
+              rank_ = other.rank_;
               bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureItemIsMutable();
-              item_.addAll(other.item_);
+              ensureRankIsMutable();
+              rank_.addAll(other.rank_);
             }
             onChanged();
           }
         } else {
-          if (!other.item_.isEmpty()) {
-            if (itemBuilder_.isEmpty()) {
-              itemBuilder_.dispose();
-              itemBuilder_ = null;
-              item_ = other.item_;
+          if (!other.rank_.isEmpty()) {
+            if (rankBuilder_.isEmpty()) {
+              rankBuilder_.dispose();
+              rankBuilder_ = null;
+              rank_ = other.rank_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              itemBuilder_ = 
+              rankBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getItemFieldBuilder() : null;
+                   getRankFieldBuilder() : null;
             } else {
-              itemBuilder_.addAllMessages(other.item_);
+              rankBuilder_.addAllMessages(other.rank_);
             }
           }
         }
@@ -27966,244 +28047,244 @@ public final class UnionProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.RankItem item = 2;
-      private java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> item_ =
+      // repeated .com.trans.pixel.protoc.RankItem rank = 2;
+      private java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> rank_ =
         java.util.Collections.emptyList();
-      private void ensureItemIsMutable() {
+      private void ensureRankIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          item_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.RankItem>(item_);
+          rank_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.RankItem>(rank_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.RankItem, com.trans.pixel.protoc.UnionProto.RankItem.Builder, com.trans.pixel.protoc.UnionProto.RankItemOrBuilder> itemBuilder_;
+          com.trans.pixel.protoc.UnionProto.RankItem, com.trans.pixel.protoc.UnionProto.RankItem.Builder, com.trans.pixel.protoc.UnionProto.RankItemOrBuilder> rankBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> getItemList() {
-        if (itemBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(item_);
+      public java.util.List<com.trans.pixel.protoc.UnionProto.RankItem> getRankList() {
+        if (rankBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(rank_);
         } else {
-          return itemBuilder_.getMessageList();
+          return rankBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public int getItemCount() {
-        if (itemBuilder_ == null) {
-          return item_.size();
+      public int getRankCount() {
+        if (rankBuilder_ == null) {
+          return rank_.size();
         } else {
-          return itemBuilder_.getCount();
+          return rankBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.RankItem getItem(int index) {
-        if (itemBuilder_ == null) {
-          return item_.get(index);
+      public com.trans.pixel.protoc.UnionProto.RankItem getRank(int index) {
+        if (rankBuilder_ == null) {
+          return rank_.get(index);
         } else {
-          return itemBuilder_.getMessage(index);
+          return rankBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder setItem(
+      public Builder setRank(
           int index, com.trans.pixel.protoc.UnionProto.RankItem value) {
-        if (itemBuilder_ == null) {
+        if (rankBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemIsMutable();
-          item_.set(index, value);
+          ensureRankIsMutable();
+          rank_.set(index, value);
           onChanged();
         } else {
-          itemBuilder_.setMessage(index, value);
+          rankBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder setItem(
+      public Builder setRank(
           int index, com.trans.pixel.protoc.UnionProto.RankItem.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.set(index, builderForValue.build());
+        if (rankBuilder_ == null) {
+          ensureRankIsMutable();
+          rank_.set(index, builderForValue.build());
           onChanged();
         } else {
-          itemBuilder_.setMessage(index, builderForValue.build());
+          rankBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder addItem(com.trans.pixel.protoc.UnionProto.RankItem value) {
-        if (itemBuilder_ == null) {
+      public Builder addRank(com.trans.pixel.protoc.UnionProto.RankItem value) {
+        if (rankBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemIsMutable();
-          item_.add(value);
+          ensureRankIsMutable();
+          rank_.add(value);
           onChanged();
         } else {
-          itemBuilder_.addMessage(value);
+          rankBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder addItem(
+      public Builder addRank(
           int index, com.trans.pixel.protoc.UnionProto.RankItem value) {
-        if (itemBuilder_ == null) {
+        if (rankBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemIsMutable();
-          item_.add(index, value);
+          ensureRankIsMutable();
+          rank_.add(index, value);
           onChanged();
         } else {
-          itemBuilder_.addMessage(index, value);
+          rankBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder addItem(
+      public Builder addRank(
           com.trans.pixel.protoc.UnionProto.RankItem.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.add(builderForValue.build());
+        if (rankBuilder_ == null) {
+          ensureRankIsMutable();
+          rank_.add(builderForValue.build());
           onChanged();
         } else {
-          itemBuilder_.addMessage(builderForValue.build());
+          rankBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder addItem(
+      public Builder addRank(
           int index, com.trans.pixel.protoc.UnionProto.RankItem.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.add(index, builderForValue.build());
+        if (rankBuilder_ == null) {
+          ensureRankIsMutable();
+          rank_.add(index, builderForValue.build());
           onChanged();
         } else {
-          itemBuilder_.addMessage(index, builderForValue.build());
+          rankBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder addAllItem(
+      public Builder addAllRank(
           java.lang.Iterable<? extends com.trans.pixel.protoc.UnionProto.RankItem> values) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          super.addAll(values, item_);
+        if (rankBuilder_ == null) {
+          ensureRankIsMutable();
+          super.addAll(values, rank_);
           onChanged();
         } else {
-          itemBuilder_.addAllMessages(values);
+          rankBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder clearItem() {
-        if (itemBuilder_ == null) {
-          item_ = java.util.Collections.emptyList();
+      public Builder clearRank() {
+        if (rankBuilder_ == null) {
+          rank_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
-          itemBuilder_.clear();
+          rankBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public Builder removeItem(int index) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.remove(index);
+      public Builder removeRank(int index) {
+        if (rankBuilder_ == null) {
+          ensureRankIsMutable();
+          rank_.remove(index);
           onChanged();
         } else {
-          itemBuilder_.remove(index);
+          rankBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.RankItem.Builder getItemBuilder(
+      public com.trans.pixel.protoc.UnionProto.RankItem.Builder getRankBuilder(
           int index) {
-        return getItemFieldBuilder().getBuilder(index);
+        return getRankFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.RankItemOrBuilder getItemOrBuilder(
+      public com.trans.pixel.protoc.UnionProto.RankItemOrBuilder getRankOrBuilder(
           int index) {
-        if (itemBuilder_ == null) {
-          return item_.get(index);  } else {
-          return itemBuilder_.getMessageOrBuilder(index);
+        if (rankBuilder_ == null) {
+          return rank_.get(index);  } else {
+          return rankBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.UnionProto.RankItemOrBuilder> 
-           getItemOrBuilderList() {
-        if (itemBuilder_ != null) {
-          return itemBuilder_.getMessageOrBuilderList();
+           getRankOrBuilderList() {
+        if (rankBuilder_ != null) {
+          return rankBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(item_);
+          return java.util.Collections.unmodifiableList(rank_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.RankItem.Builder addItemBuilder() {
-        return getItemFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.UnionProto.RankItem.Builder addRankBuilder() {
+        return getRankFieldBuilder().addBuilder(
             com.trans.pixel.protoc.UnionProto.RankItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.RankItem.Builder addItemBuilder(
+      public com.trans.pixel.protoc.UnionProto.RankItem.Builder addRankBuilder(
           int index) {
-        return getItemFieldBuilder().addBuilder(
+        return getRankFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.UnionProto.RankItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RankItem item = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RankItem rank = 2;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UnionProto.RankItem.Builder> 
-           getItemBuilderList() {
-        return getItemFieldBuilder().getBuilderList();
+           getRankBuilderList() {
+        return getRankFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.UnionProto.RankItem, com.trans.pixel.protoc.UnionProto.RankItem.Builder, com.trans.pixel.protoc.UnionProto.RankItemOrBuilder> 
-          getItemFieldBuilder() {
-        if (itemBuilder_ == null) {
-          itemBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getRankFieldBuilder() {
+        if (rankBuilder_ == null) {
+          rankBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.UnionProto.RankItem, com.trans.pixel.protoc.UnionProto.RankItem.Builder, com.trans.pixel.protoc.UnionProto.RankItemOrBuilder>(
-                  item_,
+                  rank_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
-          item_ = null;
+          rank_ = null;
         }
-        return itemBuilder_;
+        return rankBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UnionBosswin)
@@ -28240,66 +28321,6 @@ public final class UnionProto {
      */
     int getRank1();
 
-    // optional int32 itemid1 = 3;
-    /**
-     * <code>optional int32 itemid1 = 3;</code>
-     */
-    boolean hasItemid1();
-    /**
-     * <code>optional int32 itemid1 = 3;</code>
-     */
-    int getItemid1();
-
-    // optional int32 count1 = 4;
-    /**
-     * <code>optional int32 count1 = 4;</code>
-     */
-    boolean hasCount1();
-    /**
-     * <code>optional int32 count1 = 4;</code>
-     */
-    int getCount1();
-
-    // optional int32 itemid2 = 5;
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    boolean hasItemid2();
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    int getItemid2();
-
-    // optional int32 count2 = 6;
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    boolean hasCount2();
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    int getCount2();
-
-    // optional int32 itemid3 = 7;
-    /**
-     * <code>optional int32 itemid3 = 7;</code>
-     */
-    boolean hasItemid3();
-    /**
-     * <code>optional int32 itemid3 = 7;</code>
-     */
-    int getItemid3();
-
-    // optional int32 count3 = 8;
-    /**
-     * <code>optional int32 count3 = 8;</code>
-     */
-    boolean hasCount3();
-    /**
-     * <code>optional int32 count3 = 8;</code>
-     */
-    int getCount3();
-
     // optional string des = 9;
     /**
      * <code>optional string des = 9;</code>
@@ -28314,6 +28335,31 @@ public final class UnionProto {
      */
     com.google.protobuf.ByteString
         getDesBytes();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 10;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RankItem}
@@ -28376,39 +28422,17 @@ public final class UnionProto {
               rank1_ = input.readInt32();
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              itemid1_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              count1_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              itemid2_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              count2_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              itemid3_ = input.readInt32();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              count3_ = input.readInt32();
-              break;
-            }
             case 74: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000004;
               des_ = input.readBytes();
+              break;
+            }
+            case 82: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
           }
@@ -28419,6 +28443,9 @@ public final class UnionProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -28483,102 +28510,6 @@ public final class UnionProto {
       return rank1_;
     }
 
-    // optional int32 itemid1 = 3;
-    public static final int ITEMID1_FIELD_NUMBER = 3;
-    private int itemid1_;
-    /**
-     * <code>optional int32 itemid1 = 3;</code>
-     */
-    public boolean hasItemid1() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional int32 itemid1 = 3;</code>
-     */
-    public int getItemid1() {
-      return itemid1_;
-    }
-
-    // optional int32 count1 = 4;
-    public static final int COUNT1_FIELD_NUMBER = 4;
-    private int count1_;
-    /**
-     * <code>optional int32 count1 = 4;</code>
-     */
-    public boolean hasCount1() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 count1 = 4;</code>
-     */
-    public int getCount1() {
-      return count1_;
-    }
-
-    // optional int32 itemid2 = 5;
-    public static final int ITEMID2_FIELD_NUMBER = 5;
-    private int itemid2_;
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    public boolean hasItemid2() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    public int getItemid2() {
-      return itemid2_;
-    }
-
-    // optional int32 count2 = 6;
-    public static final int COUNT2_FIELD_NUMBER = 6;
-    private int count2_;
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    public boolean hasCount2() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    public int getCount2() {
-      return count2_;
-    }
-
-    // optional int32 itemid3 = 7;
-    public static final int ITEMID3_FIELD_NUMBER = 7;
-    private int itemid3_;
-    /**
-     * <code>optional int32 itemid3 = 7;</code>
-     */
-    public boolean hasItemid3() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional int32 itemid3 = 7;</code>
-     */
-    public int getItemid3() {
-      return itemid3_;
-    }
-
-    // optional int32 count3 = 8;
-    public static final int COUNT3_FIELD_NUMBER = 8;
-    private int count3_;
-    /**
-     * <code>optional int32 count3 = 8;</code>
-     */
-    public boolean hasCount3() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 count3 = 8;</code>
-     */
-    public int getCount3() {
-      return count3_;
-    }
-
     // optional string des = 9;
     public static final int DES_FIELD_NUMBER = 9;
     private java.lang.Object des_;
@@ -28586,7 +28517,7 @@ public final class UnionProto {
      * <code>optional string des = 9;</code>
      */
     public boolean hasDes() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional string des = 9;</code>
@@ -28622,16 +28553,47 @@ public final class UnionProto {
       }
     }
 
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 10;
+    public static final int REWARD_FIELD_NUMBER = 10;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
     private void initFields() {
       rank_ = 0;
       rank1_ = 0;
-      itemid1_ = 0;
-      count1_ = 0;
-      itemid2_ = 0;
-      count2_ = 0;
-      itemid3_ = 0;
-      count3_ = 0;
       des_ = "";
+      reward_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -28652,25 +28614,10 @@ public final class UnionProto {
         output.writeInt32(2, rank1_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, itemid1_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, count1_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, itemid2_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, count2_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, itemid3_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, count3_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBytes(9, getDesBytes());
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(10, reward_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -28691,31 +28638,11 @@ public final class UnionProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, itemid1_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, count1_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, itemid2_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, count2_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, itemid3_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, count3_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(9, getDesBytes());
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, reward_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -28825,6 +28752,7 @@ public final class UnionProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -28837,20 +28765,14 @@ public final class UnionProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         rank1_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        itemid1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        count1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        itemid2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        count2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        itemid3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        count3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
         des_ = "";
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          rewardBuilder_.clear();
+        }
         return this;
       }
 
@@ -28890,31 +28812,16 @@ public final class UnionProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.itemid1_ = itemid1_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.count1_ = count1_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.itemid2_ = itemid2_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.count2_ = count2_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.itemid3_ = itemid3_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.count3_ = count3_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
         result.des_ = des_;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -28937,28 +28844,36 @@ public final class UnionProto {
         if (other.hasRank1()) {
           setRank1(other.getRank1());
         }
-        if (other.hasItemid1()) {
-          setItemid1(other.getItemid1());
-        }
-        if (other.hasCount1()) {
-          setCount1(other.getCount1());
-        }
-        if (other.hasItemid2()) {
-          setItemid2(other.getItemid2());
-        }
-        if (other.hasCount2()) {
-          setCount2(other.getCount2());
-        }
-        if (other.hasItemid3()) {
-          setItemid3(other.getItemid3());
-        }
-        if (other.hasCount3()) {
-          setCount3(other.getCount3());
-        }
         if (other.hasDes()) {
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000004;
           des_ = other.des_;
           onChanged();
+        }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -29053,211 +28968,13 @@ public final class UnionProto {
         return this;
       }
 
-      // optional int32 itemid1 = 3;
-      private int itemid1_ ;
-      /**
-       * <code>optional int32 itemid1 = 3;</code>
-       */
-      public boolean hasItemid1() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 itemid1 = 3;</code>
-       */
-      public int getItemid1() {
-        return itemid1_;
-      }
-      /**
-       * <code>optional int32 itemid1 = 3;</code>
-       */
-      public Builder setItemid1(int value) {
-        bitField0_ |= 0x00000004;
-        itemid1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 itemid1 = 3;</code>
-       */
-      public Builder clearItemid1() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        itemid1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count1 = 4;
-      private int count1_ ;
-      /**
-       * <code>optional int32 count1 = 4;</code>
-       */
-      public boolean hasCount1() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 count1 = 4;</code>
-       */
-      public int getCount1() {
-        return count1_;
-      }
-      /**
-       * <code>optional int32 count1 = 4;</code>
-       */
-      public Builder setCount1(int value) {
-        bitField0_ |= 0x00000008;
-        count1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count1 = 4;</code>
-       */
-      public Builder clearCount1() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        count1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 itemid2 = 5;
-      private int itemid2_ ;
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public boolean hasItemid2() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public int getItemid2() {
-        return itemid2_;
-      }
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public Builder setItemid2(int value) {
-        bitField0_ |= 0x00000010;
-        itemid2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public Builder clearItemid2() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        itemid2_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count2 = 6;
-      private int count2_ ;
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public boolean hasCount2() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public int getCount2() {
-        return count2_;
-      }
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public Builder setCount2(int value) {
-        bitField0_ |= 0x00000020;
-        count2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public Builder clearCount2() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        count2_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 itemid3 = 7;
-      private int itemid3_ ;
-      /**
-       * <code>optional int32 itemid3 = 7;</code>
-       */
-      public boolean hasItemid3() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional int32 itemid3 = 7;</code>
-       */
-      public int getItemid3() {
-        return itemid3_;
-      }
-      /**
-       * <code>optional int32 itemid3 = 7;</code>
-       */
-      public Builder setItemid3(int value) {
-        bitField0_ |= 0x00000040;
-        itemid3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 itemid3 = 7;</code>
-       */
-      public Builder clearItemid3() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        itemid3_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count3 = 8;
-      private int count3_ ;
-      /**
-       * <code>optional int32 count3 = 8;</code>
-       */
-      public boolean hasCount3() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 count3 = 8;</code>
-       */
-      public int getCount3() {
-        return count3_;
-      }
-      /**
-       * <code>optional int32 count3 = 8;</code>
-       */
-      public Builder setCount3(int value) {
-        bitField0_ |= 0x00000080;
-        count3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count3 = 8;</code>
-       */
-      public Builder clearCount3() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        count3_ = 0;
-        onChanged();
-        return this;
-      }
-
       // optional string des = 9;
       private java.lang.Object des_ = "";
       /**
        * <code>optional string des = 9;</code>
        */
       public boolean hasDes() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional string des = 9;</code>
@@ -29297,7 +29014,7 @@ public final class UnionProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000004;
         des_ = value;
         onChanged();
         return this;
@@ -29306,7 +29023,7 @@ public final class UnionProto {
        * <code>optional string des = 9;</code>
        */
       public Builder clearDes() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000004);
         des_ = getDefaultInstance().getDes();
         onChanged();
         return this;
@@ -29319,10 +29036,250 @@ public final class UnionProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000004;
         des_ = value;
         onChanged();
         return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 10;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RankItem)
@@ -37885,43 +37842,42 @@ public final class UnionProto {
       "oss\030\001 \003(\0132%.com.trans.pixel.protoc.Union" +
       "Bossloot\"T\n\rUnionBossloot\022\n\n\002id\030\001 \001(\005\0227\n" +
       "\004item\030\002 \003(\0132).com.trans.pixel.protoc.Uni" +
-      "onBosslootItem\"\274\001\n\021UnionBosslootItem\022\021\n\t" +
-      "weightall\030\001 \001(\005\022\017\n\007itemid1\030\002 \001(\005\022\016\n\006coun",
-      "t1\030\003 \001(\005\022\017\n\007weight1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001" +
-      "(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007weight2\030\007 \001(\005\022\017\n\007i" +
-      "temid3\030\010 \001(\005\022\016\n\006count3\030\t \001(\005\022\017\n\007weight3\030" +
-      "\n \001(\005\"F\n\020UnionBosswinList\0222\n\004boss\030\001 \003(\0132" +
-      "$.com.trans.pixel.protoc.UnionBosswin\"J\n" +
-      "\014UnionBosswin\022\n\n\002id\030\001 \001(\005\022.\n\004item\030\002 \003(\0132" +
-      " .com.trans.pixel.protoc.RankItem\"\227\001\n\010Ra" +
-      "nkItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\017\n\007i" +
-      "temid1\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\017\n\007itemid2\030" +
-      "\005 \001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\016",
-      "\n\006count3\030\010 \001(\005\022\013\n\003des\030\t \001(\t\"7\n\031RequestCr" +
-      "eateUnionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002" +
-      " \002(\t\"+\n\030RequestApplyUnionCommand\022\017\n\007unio" +
-      "nId\030\001 \002(\005\"7\n\030RequestReplyUnionCommand\022\n\n" +
-      "\002id\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037RequestHan" +
-      "dleUnionMemberCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job" +
-      "\030\002 \002(\005\"\034\n\032RequestUpgradeUnionCommand\"%\n\027" +
-      "RequestQuitUnionCommand\022\n\n\002id\030\001 \001(\003\"\031\n\027R" +
-      "equestUnionInfoCommand\"<\n\031RequestAttackU" +
-      "nionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006teamid\030\002",
-      " \002(\003\"+\n\031RequestDefendUnionCommand\022\016\n\006tea" +
-      "mid\030\002 \002(\003\"H\n\030ResponseUnionInfoCommand\022,\n" +
-      "\005union\030\001 \001(\0132\035.com.trans.pixel.protoc.Un" +
-      "ion\"\031\n\027RequestUnionListCommand\"H\n\030Respon" +
-      "seUnionListCommand\022,\n\005union\030\001 \003(\0132\035.com." +
-      "trans.pixel.protoc.Union\"?\n\034RequestSubmi" +
-      "tBosskillCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bos" +
-      "sId\030\002 \002(\005\"\030\n\026RequestBosskillCommand\"R\n\027R" +
-      "esponseBosskillCommand\0227\n\006record\030\001 \003(\0132\'" +
-      ".com.trans.pixel.protoc.BossGroupRecord\"",
-      "V\n\030ResponseUnionBossCommand\022:\n\tunionBoss" +
-      "\030\001 \003(\0132\'.com.trans.pixel.protoc.UnionBos" +
-      "sRecord\"K\n\034RequestUnionBossFightCommand\022" +
-      "\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007percent\030\003" +
-      " \001(\005"
+      "onBosslootItem\"\313\001\n\021UnionBosslootItem\022\r\n\005" +
+      "order\030\013 \001(\r\022\021\n\tweightall\030\001 \001(\005\022\017\n\007itemid",
+      "1\030\002 \001(\005\022\016\n\006count1\030\003 \001(\005\022\017\n\007weight1\030\004 \001(\005" +
+      "\022\017\n\007itemid2\030\005 \001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007wei" +
+      "ght2\030\007 \001(\005\022\017\n\007itemid3\030\010 \001(\005\022\016\n\006count3\030\t " +
+      "\001(\005\022\017\n\007weight3\030\n \001(\005\"F\n\020UnionBosswinList" +
+      "\0222\n\004boss\030\001 \003(\0132$.com.trans.pixel.protoc." +
+      "UnionBosswin\"J\n\014UnionBosswin\022\n\n\002id\030\001 \001(\005" +
+      "\022.\n\004rank\030\002 \003(\0132 .com.trans.pixel.protoc." +
+      "RankItem\"h\n\010RankItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005ra" +
+      "nk1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006reward\030\n \003(\0132\"" +
+      ".com.trans.pixel.protoc.RewardInfo\"7\n\031Re",
+      "questCreateUnionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n" +
+      "\004name\030\002 \002(\t\"+\n\030RequestApplyUnionCommand\022" +
+      "\017\n\007unionId\030\001 \002(\005\"7\n\030RequestReplyUnionCom" +
+      "mand\022\n\n\002id\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037Req" +
+      "uestHandleUnionMemberCommand\022\n\n\002id\030\001 \002(\003" +
+      "\022\013\n\003job\030\002 \002(\005\"\034\n\032RequestUpgradeUnionComm" +
+      "and\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001" +
+      "(\003\"\031\n\027RequestUnionInfoCommand\"<\n\031Request" +
+      "AttackUnionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006t" +
+      "eamid\030\002 \002(\003\"+\n\031RequestDefendUnionCommand",
+      "\022\016\n\006teamid\030\002 \002(\003\"H\n\030ResponseUnionInfoCom" +
+      "mand\022,\n\005union\030\001 \001(\0132\035.com.trans.pixel.pr" +
+      "otoc.Union\"\031\n\027RequestUnionListCommand\"H\n" +
+      "\030ResponseUnionListCommand\022,\n\005union\030\001 \003(\013" +
+      "2\035.com.trans.pixel.protoc.Union\"?\n\034Reque" +
+      "stSubmitBosskillCommand\022\017\n\007groupId\030\001 \002(\005" +
+      "\022\016\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskillComma" +
+      "nd\"R\n\027ResponseBosskillCommand\0227\n\006record\030" +
+      "\001 \003(\0132\'.com.trans.pixel.protoc.BossGroup" +
+      "Record\"V\n\030ResponseUnionBossCommand\022:\n\tun",
+      "ionBoss\030\001 \003(\0132\'.com.trans.pixel.protoc.U" +
+      "nionBossRecord\"K\n\034RequestUnionBossFightC" +
+      "ommand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007pe" +
+      "rcent\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -38125,7 +38081,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_UnionBosslootItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBosslootItem_descriptor,
-              new java.lang.String[] { "Weightall", "Itemid1", "Count1", "Weight1", "Itemid2", "Count2", "Weight2", "Itemid3", "Count3", "Weight3", });
+              new java.lang.String[] { "Order", "Weightall", "Itemid1", "Count1", "Weight1", "Itemid2", "Count2", "Weight2", "Itemid3", "Count3", "Weight3", });
           internal_static_com_trans_pixel_protoc_UnionBosswinList_descriptor =
             getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_UnionBosswinList_fieldAccessorTable = new
@@ -38137,13 +38093,13 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_UnionBosswin_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBosswin_descriptor,
-              new java.lang.String[] { "Id", "Item", });
+              new java.lang.String[] { "Id", "Rank", });
           internal_static_com_trans_pixel_protoc_RankItem_descriptor =
             getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_RankItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RankItem_descriptor,
-              new java.lang.String[] { "Rank", "Rank1", "Itemid1", "Count1", "Itemid2", "Count2", "Itemid3", "Count3", "Des", });
+              new java.lang.String[] { "Rank", "Rank1", "Des", "Reward", });
           internal_static_com_trans_pixel_protoc_RequestCreateUnionCommand_descriptor =
             getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_RequestCreateUnionCommand_fieldAccessorTable = new

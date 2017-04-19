@@ -226,7 +226,10 @@ public class RewardService {
 		return rewardList;
 	}
 	
-	public int randomRewardCount(RewardInfo reward) {
+	public long randomRewardCount(RewardInfo reward) {
+		if (reward.getCounta() == 0 && reward.getCountb() == 0)
+			return reward.getCount();
+		
 		if (reward.getCounta() == reward.getCountb())
 			return reward.getCounta();
 		

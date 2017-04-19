@@ -1358,7 +1358,10 @@ public class UserBean {
 		builder.setVipExp(vipExp);
 		builder.setMerlevel(merlevel);
 		builder.setUseTalentId(useTalentId);
-		builder.setExtraTimeStamp(extraTimeStamp + 25 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() - extraHasLootTime);
+		if (extraTimeStamp == 0)
+			builder.setExtraTimeStamp(0);
+		else
+			builder.setExtraTimeStamp(extraTimeStamp + 25 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() - extraHasLootTime);
 		builder.setExtraCount1(extraCount1);
 		builder.setExtraCount2(extraCount2);
 		builder.setExtraCount3(extraCount3);
