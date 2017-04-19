@@ -206,6 +206,7 @@ public class LevelCommandService extends BaseCommandService {
 			if(event.getType() == 1){//buy event
 				if(cmd.getRet()){
 					if(costService.cost(user, eventconfig.getCostid(), eventconfig.getCostcount())){
+			            pusher.pushUserInfoCommand(responseBuilder, user);
 						eventReward(eventconfig, responseBuilder, user, event.getCount());
 						if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 							userLevel.setLeftCount(userLevel.getLeftCount()-1);
