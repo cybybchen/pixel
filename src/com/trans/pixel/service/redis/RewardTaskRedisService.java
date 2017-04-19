@@ -22,7 +22,7 @@ import com.trans.pixel.protoc.UnionProto.BosslootGroupList;
 public class RewardTaskRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(RewardTaskRedisService.class);
 	private static final String REWARDTASK_FILE_NAME = "ld_rewardtask.xml";
-	private static final String REWARDTASK_REWARD_FILE_NAME = "lol_bossloot.xml";
+	private static final String REWARDTASK_REWARD_FILE_NAME = "ld_rewardloot.xml";
 	private static final String REWARDTASKDAILY_FILE_NAME = "ld_rewardtaskdaily.xml";
 	
 	//rewardtask 
