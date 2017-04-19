@@ -265,6 +265,8 @@ public class UserCommandService extends BaseCommandService {
 	public void extra(RequestExtraRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		int status = cmd.getStatus();
 		int type = 0;
+		if (cmd.hasExtraType())
+			type = cmd.getExtraType();
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		ResultConst ret = userService.handleExtra(user, status, type, rewardList);
 		if (ret instanceof ErrorConst) {
