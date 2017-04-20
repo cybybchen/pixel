@@ -84,7 +84,14 @@ public class TaskService {
 				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask(userId, task.getTargetid()));
 				if (isAdded)
 					ut.setProcess(ut.getProcess() + count);
-				else 
+				else if (targetId == ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE) {
+					for (TaskOrder taskOrder : task.getOrderList()) {
+						if (taskOrder.getTargetcount() == count) {
+							ut.setProcess(Math.max(ut.getProcess(), count));
+							break;
+						}
+					}
+				} else
 					ut.setProcess(Math.max(ut.getProcess(), count));
 				
 				userTaskService.updateUserTask(userId, ut.build());
