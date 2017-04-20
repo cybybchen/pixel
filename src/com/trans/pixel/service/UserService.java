@@ -39,10 +39,13 @@ import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.protoc.UserInfoProto.Merlevel;
+import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRedisService;
+import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -80,6 +83,8 @@ public class UserService {
 	private LevelRedisService levelRedisService;
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private ZhanliRedisService zhanliRedisService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -107,6 +112,13 @@ public class UserService {
     			if(cache != null && cache.getZhanli() > user.getZhanli()){
     				user.setZhanli(cache.getZhanli());
     				user.setZhanliMax(cache.getZhanliMax());
+    			}
+    			MerlevelList.Builder list = zhanliRedisService.getMerlevel();
+    			for(Merlevel level : list.getLevelList()){
+    				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel()) {
+    					user.setMerlevel(level.getLevel());
+    					activityService.merLevel(user, user.getMerlevel());
+    				}
     			}
     			userRedisService.cache(user.getServerId(), user.buildShort());
     			userRedisService.updateUser(user);
@@ -289,9 +301,15 @@ public class UserService {
     			if(cache != null && cache.getZhanli() > user.getZhanli()){
     				user.setZhanli(cache.getZhanli());
     				user.setZhanliMax(cache.getZhanli());
-    			} else{
-    				userRedisService.cache(serverId, user.buildShort());
     			}
+    			MerlevelList.Builder list = zhanliRedisService.getMerlevel();
+    			for(Merlevel level : list.getLevelList()){
+    				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel()) {
+    					user.setMerlevel(level.getLevel());
+    					activityService.merLevel(user, user.getMerlevel());
+    				}
+    			}
+				userRedisService.cache(serverId, user.buildShort());
     			refreshUserDailyData(user);
 				userRedisService.updateUser(user);
 			}
@@ -320,9 +338,15 @@ public class UserService {
     			if(cache != null && cache.getZhanli() > user.getZhanli()){
     				user.setZhanli(cache.getZhanli());
     				user.setZhanliMax(cache.getZhanli());
-    			}else{
-    				userRedisService.cache(serverId, user.buildShort());
     			}
+    			MerlevelList.Builder list = zhanliRedisService.getMerlevel();
+    			for(Merlevel level : list.getLevelList()){
+    				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel()) {
+    					user.setMerlevel(level.getLevel());
+    					activityService.merLevel(user, user.getMerlevel());
+    				}
+    			}
+				userRedisService.cache(serverId, user.buildShort());
 //    			userRedisService.refreshUserDailyData(user);
 				userRedisService.updateUser(user);
 			}

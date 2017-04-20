@@ -11,8 +11,6 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,10 +44,15 @@ import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBossloot;
 import com.trans.pixel.protoc.UnionProto.UnionBosslootItem;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
+import com.trans.pixel.protoc.UserInfoProto.Merlevel;
+import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.AreaRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
+import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+
+import net.sf.json.JSONObject;
 
 @Service
 public class UnionService extends FightService{
@@ -76,6 +79,8 @@ public class UnionService extends FightService{
 	private LogService logService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private ZhanliRedisService zhanliRedisService;
 	
 	Comparator<UserRankBean> comparator = new Comparator<UserRankBean>() {
         public int compare(UserRankBean bean1, UserRankBean bean2) {
@@ -110,6 +115,13 @@ public class UnionService extends FightService{
 					UserInfo userinfo = userService.getCache(bean.getServerId(), bean.getId());
 					if(userinfo.getZhanli() == 0) {
 						userinfo = bean.buildShort();
+		    			MerlevelList.Builder list = zhanliRedisService.getMerlevel();
+		    			for(Merlevel level : list.getLevelList()){
+		    				if(bean.getZhanliMax() >= level.getScore() && bean.getMerlevel() < level.getLevel()) {
+		    					bean.setMerlevel(level.getLevel());
+		    					activityService.merLevel(bean, bean.getMerlevel());
+		    				}
+		    			}
 						userService.cache(bean.getServerId(), userinfo);
 					}
 					members.add(userinfo);
