@@ -314,11 +314,18 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getBlackShopEndTime(){
-		long time = today(21);
-		if(now() < time)
-			return time;
-		else//第二天21点
-			return time+24*3600;
+//		long times[] = {today(0), today(3), today(6), today(9), today(12), today(15), today(18), today(21)};
+		long now = now();
+		for(int time = 0; time < 24; time++){
+			if(now < today(time))
+				return today(time);
+		}
+		return today(24);
+//		long time = today(21);
+//		if(now() < time)
+//			return time;
+//		else//第二天21点
+//			return time+24*3600;
 	}
 	
 	public ShopList buildBlackShop(UserBean user){
