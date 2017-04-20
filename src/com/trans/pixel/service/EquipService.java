@@ -18,6 +18,7 @@ import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Armor;
@@ -25,11 +26,13 @@ import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.Item;
 import com.trans.pixel.protoc.EquipProto.Material;
+import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.HeroProto.ClearFood;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.EquipRedisService;
+import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
 public class EquipService {
@@ -37,6 +40,8 @@ public class EquipService {
 	
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private UserPropService userPropService;
 	@Resource
 	private EquipRedisService equipRedisService;
 	@Resource
@@ -51,6 +56,8 @@ public class EquipService {
 	private HeroService heroService;
 	@Resource
 	private UserHeroService userHeroService;
+	@Resource
+	private PropRedisService propRedisService;
 	
 	public Equip getEquip(int itemId) {
 		return equipRedisService.getEquip(itemId);
@@ -180,7 +187,12 @@ public class EquipService {
 			if (itemId > RewardConst.FOOD) {
 				UserFoodBean userFood = userFoodService.addUserFood(user, itemId, -itemCount);
 				builder.setCount(userFood.getCount());
-			} else {
+			} else if(item.getItemId()/1000*1000 == RewardConst.SYNTHETISE) {
+				UserPropBean userProp = userPropService.selectUserProp(user.getId(), item.getItemId());
+				userProp.setPropCount(userProp.getPropCount()-item.getItemCount());
+				userPropService.updateUserProp(userProp);
+				builder.setCount(userProp.getPropCount());
+			}else {
 				UserEquipBean userEquip = userEquipService.useUserEquip(user.getId(), itemId, itemCount);
 				builder.setCount(userEquip.getEquipCount());
 			}
@@ -221,7 +233,10 @@ public class EquipService {
 	
 	private int getSaleRewardCount(int itemId, int itemCount) {
 		int rewardCount = 0;
-		if (itemId > RewardConst.FOOD) {
+		if(itemId/1000*1000 == RewardConst.SYNTHETISE) {
+			Prop prop = propRedisService.getPackage(itemId);
+			rewardCount = prop.getCost();
+		} else if (itemId > RewardConst.FOOD) {
 			ClearFood food = clearRedisService.getClearFood(itemId);
 			rewardCount = food.getCost();
 		} else if (itemId > RewardConst.CAILIAO) {
@@ -243,6 +258,10 @@ public class EquipService {
 			if (item.getItemId() > RewardConst.FOOD) {
 				UserFoodBean userFood = userFoodService.selectUserFood(user, item.getItemId());
 				if (userFood.getCount() < item.getItemCount())
+					return false;
+			} else if(item.getItemId()/1000*1000 == RewardConst.SYNTHETISE) {
+				UserPropBean userProp = userPropService.selectUserProp(user.getId(), item.getItemId());
+				if (userProp.getPropCount() < item.getItemCount())
 					return false;
 			} else {
 				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), item.getItemId());

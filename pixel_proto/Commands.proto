@@ -970,7 +970,8 @@ message Prop {
 	optional string name = 2;
 	optional int32 img = 3;
 	optional int32 rare = 4;
-	optional string description = 5;
+	optional int32 cost = 5;
+	//optional string description = 5;
 	optional int32 hashero = 6;
 	optional int32 judge = 7;
 	optional string endtime = 8;

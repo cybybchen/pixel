@@ -738,28 +738,31 @@ public final class EquipProto {
      */
     int getRare();
 
-    // optional string description = 5;
+    // optional int32 cost = 5;
     /**
-     * <code>optional string description = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
-    boolean hasDescription();
+    boolean hasCost();
     /**
-     * <code>optional string description = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
-    java.lang.String getDescription();
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
+    int getCost();
 
     // optional int32 hashero = 6;
     /**
      * <code>optional int32 hashero = 6;</code>
+     *
+     * <pre>
+     *optional string description = 5;
+     * </pre>
      */
     boolean hasHashero();
     /**
      * <code>optional int32 hashero = 6;</code>
+     *
+     * <pre>
+     *optional string description = 5;
+     * </pre>
      */
     int getHashero();
 
@@ -914,9 +917,9 @@ public final class EquipProto {
               rare_ = input.readInt32();
               break;
             }
-            case 42: {
+            case 40: {
               bitField0_ |= 0x00000010;
-              description_ = input.readBytes();
+              cost_ = input.readInt32();
               break;
             }
             case 48: {
@@ -1091,47 +1094,20 @@ public final class EquipProto {
       return rare_;
     }
 
-    // optional string description = 5;
-    public static final int DESCRIPTION_FIELD_NUMBER = 5;
-    private java.lang.Object description_;
+    // optional int32 cost = 5;
+    public static final int COST_FIELD_NUMBER = 5;
+    private int cost_;
     /**
-     * <code>optional string description = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
-    public boolean hasDescription() {
+    public boolean hasCost() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional string description = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getCost() {
+      return cost_;
     }
 
     // optional int32 hashero = 6;
@@ -1139,12 +1115,20 @@ public final class EquipProto {
     private int hashero_;
     /**
      * <code>optional int32 hashero = 6;</code>
+     *
+     * <pre>
+     *optional string description = 5;
+     * </pre>
      */
     public boolean hasHashero() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 hashero = 6;</code>
+     *
+     * <pre>
+     *optional string description = 5;
+     * </pre>
      */
     public int getHashero() {
       return hashero_;
@@ -1298,7 +1282,7 @@ public final class EquipProto {
       name_ = "";
       img_ = 0;
       rare_ = 0;
-      description_ = "";
+      cost_ = 0;
       hashero_ = 0;
       judge_ = 0;
       endtime_ = "";
@@ -1332,7 +1316,7 @@ public final class EquipProto {
         output.writeInt32(4, rare_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getDescriptionBytes());
+        output.writeInt32(5, cost_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(6, hashero_);
@@ -1382,7 +1366,7 @@ public final class EquipProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getDescriptionBytes());
+          .computeInt32Size(5, cost_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1537,7 +1521,7 @@ public final class EquipProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         rare_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        description_ = "";
+        cost_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
         hashero_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -1604,7 +1588,7 @@ public final class EquipProto {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.description_ = description_;
+        result.cost_ = cost_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
@@ -1668,10 +1652,8 @@ public final class EquipProto {
         if (other.hasRare()) {
           setRare(other.getRare());
         }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000010;
-          description_ = other.description_;
-          onChanged();
+        if (other.hasCost()) {
+          setCost(other.getCost());
         }
         if (other.hasHashero()) {
           setHashero(other.getHashero());
@@ -1919,76 +1901,35 @@ public final class EquipProto {
         return this;
       }
 
-      // optional string description = 5;
-      private java.lang.Object description_ = "";
+      // optional int32 cost = 5;
+      private int cost_ ;
       /**
-       * <code>optional string description = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
-      public boolean hasDescription() {
+      public boolean hasCost() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional string description = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
-      public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          description_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getCost() {
+        return cost_;
       }
       /**
-       * <code>optional string description = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          description_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder setDescription(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        description_ = value;
+      public Builder setCost(int value) {
+        bitField0_ |= 0x00000010;
+        cost_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string description = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
-      public Builder clearDescription() {
+      public Builder clearCost() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        description_ = value;
+        cost_ = 0;
         onChanged();
         return this;
       }
@@ -1997,18 +1938,30 @@ public final class EquipProto {
       private int hashero_ ;
       /**
        * <code>optional int32 hashero = 6;</code>
+       *
+       * <pre>
+       *optional string description = 5;
+       * </pre>
        */
       public boolean hasHashero() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 hashero = 6;</code>
+       *
+       * <pre>
+       *optional string description = 5;
+       * </pre>
        */
       public int getHashero() {
         return hashero_;
       }
       /**
        * <code>optional int32 hashero = 6;</code>
+       *
+       * <pre>
+       *optional string description = 5;
+       * </pre>
        */
       public Builder setHashero(int value) {
         bitField0_ |= 0x00000020;
@@ -2018,6 +1971,10 @@ public final class EquipProto {
       }
       /**
        * <code>optional int32 hashero = 6;</code>
+       *
+       * <pre>
+       *optional string description = 5;
+       * </pre>
        */
       public Builder clearHashero() {
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -29261,91 +29218,91 @@ public final class EquipProto {
     java.lang.String[] descriptorData = {
       "\n\020EquipProto.proto\022\026com.trans.pixel.prot" +
       "oc\032\nBase.proto\"6\n\010PropList\022*\n\004loot\030\001 \003(\013" +
-      "2\034.com.trans.pixel.protoc.Prop\"\355\001\n\004Prop\022" +
+      "2\034.com.trans.pixel.protoc.Prop\"\346\001\n\004Prop\022" +
       "\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001" +
-      "(\005\022\014\n\004rare\030\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\017\n" +
-      "\007hashero\030\006 \001(\005\022\r\n\005judge\030\007 \001(\005\022\017\n\007endtime" +
-      "\030\010 \001(\t\022\016\n\006bossid\030\t \001(\005\022\021\n\titemcount\030\n \001(" +
-      "\005\022\021\n\tweightall\030\013 \001(\005\0220\n\004item\030\014 \003(\0132\".com" +
-      ".trans.pixel.protoc.RewardInfo\"4\n\010ChipLi" +
-      "st\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc.",
-      "Chip\"\342\001\n\004Chip\022\016\n\006itemid\030\001 \002(\005\022\020\n\010itemnam" +
-      "e\030\002 \002(\t\022\013\n\003img\030\003 \002(\005\022\014\n\004rare\030\004 \002(\005\022\014\n\004co" +
-      "st\030\005 \002(\005\022\023\n\013description\030\007 \001(\t\022\013\n\003aim\030\010 \001" +
-      "(\005\022\r\n\005count\030\t \001(\005\022\017\n\007lootid1\030\n \001(\005\022\r\n\005lo" +
-      "ot1\030\013 \001(\005\022\017\n\007lootid2\030\014 \001(\005\022\r\n\005loot2\030\r \001(" +
-      "\005\022\017\n\007lootid3\030\016 \001(\005\022\r\n\005loot3\030\017 \001(\005\"<\n\014Mat" +
-      "erialList\022,\n\002id\030\001 \003(\0132 .com.trans.pixel." +
-      "protoc.Material\"k\n\010Material\022\n\n\002id\030\001 \001(\r\022" +
-      "\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\r\022\014\n\004rare\030\004 \001(\r" +
-      "\022\014\n\004cost\030\005 \001(\r\022\013\n\003des\030\006 \001(\r\022\017\n\007endtime\030\007",
-      " \001(\t\"6\n\tEquipList\022)\n\002id\030\001 \003(\0132\035.com.tran" +
-      "s.pixel.protoc.Equip\"\250\001\n\005Equip\022\n\n\002id\030\001 \001" +
-      "(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005level\030\003 \001(\005\022\014\n\004rare\030" +
-      "\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\014\n\004type\030\006 \001(\005" +
-      "\022\016\n\006zhanli\030\007 \001(\005\022\n\n\002ad\030\010 \001(\005\022\n\n\002ap\030\t \001(\005" +
-      "\022\r\n\005skill\030\n \001(\005\022\016\n\006ilevel\030\013 \001(\005\"C\n\016Equip" +
-      "tucaoList\0221\n\005equip\030\001 \003(\0132\".com.trans.pix" +
-      "el.protoc.Equiptucao\"<\n\nEquiptucao\022\016\n\006it" +
-      "emid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\014\n\004rare\030\003 \001" +
-      "(\005\"@\n\016SynthetiseList\022.\n\002id\030\001 \003(\0132\".com.t",
-      "rans.pixel.protoc.Synthetise\"p\n\nSyntheti" +
-      "se\022\n\n\002id\030\001 \002(\r\022\016\n\006target\030\006 \002(\r\022\016\n\006needid" +
-      "\030\007 \002(\r\0226\n\005cover\030\010 \003(\0132\'.com.trans.pixel." +
-      "protoc.SynthetiseCover\"/\n\017SynthetiseCove" +
-      "r\022\r\n\005cover\030\001 \002(\r\022\r\n\005count\030\002 \002(\r\"M\n\032Reque" +
-      "stAddHeroEquipCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n" +
-      "\006infoId\030\002 \002(\003\022\017\n\007equipId\030\003 \001(\005\">\n\032Reques" +
-      "tEquipComposeCommand\022\021\n\tlevelUpId\030\001 \002(\005\022" +
-      "\r\n\005count\030\002 \001(\005\"=\n\033ResponseEquipComposeCo" +
-      "mmand\022\017\n\007equipId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"S\n",
-      "\033ResponseGetUserEquipCommand\0224\n\tuserEqui" +
-      "p\030\001 \003(\0132!.com.trans.pixel.protoc.UserEqu" +
-      "ip\"6\n\tArmorList\022)\n\002id\030\001 \003(\0132\035.com.trans." +
-      "pixel.protoc.Armor\"\372\002\n\005Armor\022\n\n\002id\030\001 \001(\005" +
-      "\022\014\n\004name\030\002 \001(\t\022\r\n\005level\030\003 \001(\005\022\014\n\004rare\030\004 " +
-      "\001(\005\022\023\n\013description\030\005 \001(\t\022\014\n\004type\030\006 \001(\005\022\016" +
-      "\n\006zhanli\030\007 \001(\005\022\013\n\003arm\030\010 \001(\005\022\n\n\002mr\030\t \001(\005\022" +
-      "\021\n\treelement\030\n \001(\005\022\n\n\002ad\030\013 \001(\005\022\n\n\002ap\030\014 \001" +
-      "(\005\022\013\n\003adi\030\r \001(\005\022\013\n\003api\030\016 \001(\005\022\016\n\006rating\030\017" +
-      " \001(\005\022\024\n\014ratingdamage\030\020 \001(\005\022\016\n\006fireup\030\021 \001",
-      "(\005\022\r\n\005iceup\030\022 \001(\005\022\017\n\007lightup\030\023 \001(\005\022\016\n\006da" +
-      "rkup\030\024 \001(\005\022\022\n\natk_damage\030\025 \001(\005\022\020\n\010duocho" +
-      "ng\030\026 \001(\005\022\r\n\005skill\030\027 \001(\t\022\016\n\006ilevel\030\030 \001(\005\"" +
-      "I\n\021EquipIncreaseList\0224\n\005level\030\001 \003(\0132%.co" +
-      "m.trans.pixel.protoc.EquipIncrease\"L\n\rEq" +
-      "uipIncrease\022\r\n\005level\030\001 \001(\005\022\020\n\010increase\030\002" +
-      " \001(\002\022\014\n\004rate\030\003 \001(\005\022\014\n\004zero\030\004 \001(\005\"I\n\021Incr" +
-      "easeLevelList\0224\n\005level\030\001 \003(\0132%.com.trans" +
-      ".pixel.protoc.IncreaseLevel\"R\n\rIncreaseL" +
-      "evel\022\r\n\005level\030\001 \001(\005\0222\n\004rare\030\002 \003(\0132$.com.",
-      "trans.pixel.protoc.IncreaseRare\"L\n\014Incre" +
-      "aseRare\022\014\n\004rare\030\001 \001(\005\022.\n\004cost\030\002 \003(\0132 .co" +
-      "m.trans.pixel.protoc.CostItem\")\n\004Item\022\016\n" +
-      "\006itemId\030\001 \002(\005\022\021\n\titemCount\030\002 \002(\005\"E\n\027Requ" +
-      "estSaleEquipCommand\022*\n\004item\030\001 \003(\0132\034.com." +
-      "trans.pixel.protoc.Item\",\n\032RequestSubmit" +
-      "ZhanliCommand\022\016\n\006zhanli\030\001 \002(\005\"0\n\tUserEqu" +
-      "ip\022\017\n\007equipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"" +
-      "B\n\010UserProp\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount" +
-      "\030\002 \002(\005\022\023\n\013expiredTime\030\003 \001(\t\"M\n\027ResponseU",
-      "serPropCommand\0222\n\010userProp\030\001 \003(\0132 .com.t" +
-      "rans.pixel.protoc.UserProp\":\n\025RequestUse" +
-      "PropCommand\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount" +
-      "\030\002 \002(\005\"L\n\026ResponseUsePropCommand\0222\n\010user" +
-      "Prop\030\001 \003(\0132 .com.trans.pixel.protoc.User" +
-      "Prop\"@\n\031RequestFenjieEquipCommand\022\017\n\007equ" +
-      "ipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"R\n\032Respon" +
-      "seEquipResultCommand\0224\n\tuserEquip\030\001 \003(\0132" +
-      "!.com.trans.pixel.protoc.UserEquip\".\n\034Re" +
-      "questEquipStrenthenCommand\022\016\n\006itemId\030\001 \002",
-      "(\005\"\033\n\031RequestEquipPokedeCommand\"^\n\032Respo" +
-      "nseEquipPokedeCommand\022@\n\017userEquipPokede" +
-      "\030\001 \003(\0132\'.com.trans.pixel.protoc.UserEqui" +
-      "pPokede\"O\n\037RequestTalentChangeEquipComma" +
-      "nd\022\n\n\002id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006item" +
-      "Id\030\003 \002(\005\"7\n\037RequestSynthetiseComposeComm" +
-      "and\022\024\n\014synthetiseId\030\001 \002(\r"
+      "(\005\022\014\n\004rare\030\004 \001(\005\022\014\n\004cost\030\005 \001(\005\022\017\n\007hasher" +
+      "o\030\006 \001(\005\022\r\n\005judge\030\007 \001(\005\022\017\n\007endtime\030\010 \001(\t\022" +
+      "\016\n\006bossid\030\t \001(\005\022\021\n\titemcount\030\n \001(\005\022\021\n\twe" +
+      "ightall\030\013 \001(\005\0220\n\004item\030\014 \003(\0132\".com.trans." +
+      "pixel.protoc.RewardInfo\"4\n\010ChipList\022(\n\002i" +
+      "d\030\001 \003(\0132\034.com.trans.pixel.protoc.Chip\"\342\001",
+      "\n\004Chip\022\016\n\006itemid\030\001 \002(\005\022\020\n\010itemname\030\002 \002(\t" +
+      "\022\013\n\003img\030\003 \002(\005\022\014\n\004rare\030\004 \002(\005\022\014\n\004cost\030\005 \002(" +
+      "\005\022\023\n\013description\030\007 \001(\t\022\013\n\003aim\030\010 \001(\005\022\r\n\005c" +
+      "ount\030\t \001(\005\022\017\n\007lootid1\030\n \001(\005\022\r\n\005loot1\030\013 \001" +
+      "(\005\022\017\n\007lootid2\030\014 \001(\005\022\r\n\005loot2\030\r \001(\005\022\017\n\007lo" +
+      "otid3\030\016 \001(\005\022\r\n\005loot3\030\017 \001(\005\"<\n\014MaterialLi" +
+      "st\022,\n\002id\030\001 \003(\0132 .com.trans.pixel.protoc." +
+      "Material\"k\n\010Material\022\n\n\002id\030\001 \001(\r\022\014\n\004name" +
+      "\030\002 \001(\t\022\013\n\003img\030\003 \001(\r\022\014\n\004rare\030\004 \001(\r\022\014\n\004cos" +
+      "t\030\005 \001(\r\022\013\n\003des\030\006 \001(\r\022\017\n\007endtime\030\007 \001(\t\"6\n",
+      "\tEquipList\022)\n\002id\030\001 \003(\0132\035.com.trans.pixel" +
+      ".protoc.Equip\"\250\001\n\005Equip\022\n\n\002id\030\001 \001(\005\022\014\n\004n" +
+      "ame\030\002 \001(\t\022\r\n\005level\030\003 \001(\005\022\014\n\004rare\030\004 \001(\005\022\023" +
+      "\n\013description\030\005 \001(\t\022\014\n\004type\030\006 \001(\005\022\016\n\006zha" +
+      "nli\030\007 \001(\005\022\n\n\002ad\030\010 \001(\005\022\n\n\002ap\030\t \001(\005\022\r\n\005ski" +
+      "ll\030\n \001(\005\022\016\n\006ilevel\030\013 \001(\005\"C\n\016EquiptucaoLi" +
+      "st\0221\n\005equip\030\001 \003(\0132\".com.trans.pixel.prot" +
+      "oc.Equiptucao\"<\n\nEquiptucao\022\016\n\006itemid\030\001 " +
+      "\001(\005\022\020\n\010itemname\030\002 \001(\t\022\014\n\004rare\030\003 \001(\005\"@\n\016S" +
+      "ynthetiseList\022.\n\002id\030\001 \003(\0132\".com.trans.pi",
+      "xel.protoc.Synthetise\"p\n\nSynthetise\022\n\n\002i" +
+      "d\030\001 \002(\r\022\016\n\006target\030\006 \002(\r\022\016\n\006needid\030\007 \002(\r\022" +
+      "6\n\005cover\030\010 \003(\0132\'.com.trans.pixel.protoc." +
+      "SynthetiseCover\"/\n\017SynthetiseCover\022\r\n\005co" +
+      "ver\030\001 \002(\r\022\r\n\005count\030\002 \002(\r\"M\n\032RequestAddHe" +
+      "roEquipCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId" +
+      "\030\002 \002(\003\022\017\n\007equipId\030\003 \001(\005\">\n\032RequestEquipC" +
+      "omposeCommand\022\021\n\tlevelUpId\030\001 \002(\005\022\r\n\005coun" +
+      "t\030\002 \001(\005\"=\n\033ResponseEquipComposeCommand\022\017" +
+      "\n\007equipId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"S\n\033Respon",
+      "seGetUserEquipCommand\0224\n\tuserEquip\030\001 \003(\013" +
+      "2!.com.trans.pixel.protoc.UserEquip\"6\n\tA" +
+      "rmorList\022)\n\002id\030\001 \003(\0132\035.com.trans.pixel.p" +
+      "rotoc.Armor\"\372\002\n\005Armor\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
+      "e\030\002 \001(\t\022\r\n\005level\030\003 \001(\005\022\014\n\004rare\030\004 \001(\005\022\023\n\013" +
+      "description\030\005 \001(\t\022\014\n\004type\030\006 \001(\005\022\016\n\006zhanl" +
+      "i\030\007 \001(\005\022\013\n\003arm\030\010 \001(\005\022\n\n\002mr\030\t \001(\005\022\021\n\treel" +
+      "ement\030\n \001(\005\022\n\n\002ad\030\013 \001(\005\022\n\n\002ap\030\014 \001(\005\022\013\n\003a" +
+      "di\030\r \001(\005\022\013\n\003api\030\016 \001(\005\022\016\n\006rating\030\017 \001(\005\022\024\n" +
+      "\014ratingdamage\030\020 \001(\005\022\016\n\006fireup\030\021 \001(\005\022\r\n\005i",
+      "ceup\030\022 \001(\005\022\017\n\007lightup\030\023 \001(\005\022\016\n\006darkup\030\024 " +
+      "\001(\005\022\022\n\natk_damage\030\025 \001(\005\022\020\n\010duochong\030\026 \001(" +
+      "\005\022\r\n\005skill\030\027 \001(\t\022\016\n\006ilevel\030\030 \001(\005\"I\n\021Equi" +
+      "pIncreaseList\0224\n\005level\030\001 \003(\0132%.com.trans" +
+      ".pixel.protoc.EquipIncrease\"L\n\rEquipIncr" +
+      "ease\022\r\n\005level\030\001 \001(\005\022\020\n\010increase\030\002 \001(\002\022\014\n" +
+      "\004rate\030\003 \001(\005\022\014\n\004zero\030\004 \001(\005\"I\n\021IncreaseLev" +
+      "elList\0224\n\005level\030\001 \003(\0132%.com.trans.pixel." +
+      "protoc.IncreaseLevel\"R\n\rIncreaseLevel\022\r\n" +
+      "\005level\030\001 \001(\005\0222\n\004rare\030\002 \003(\0132$.com.trans.p",
+      "ixel.protoc.IncreaseRare\"L\n\014IncreaseRare" +
+      "\022\014\n\004rare\030\001 \001(\005\022.\n\004cost\030\002 \003(\0132 .com.trans" +
+      ".pixel.protoc.CostItem\")\n\004Item\022\016\n\006itemId" +
+      "\030\001 \002(\005\022\021\n\titemCount\030\002 \002(\005\"E\n\027RequestSale" +
+      "EquipCommand\022*\n\004item\030\001 \003(\0132\034.com.trans.p" +
+      "ixel.protoc.Item\",\n\032RequestSubmitZhanliC" +
+      "ommand\022\016\n\006zhanli\030\001 \002(\005\"0\n\tUserEquip\022\017\n\007e" +
+      "quipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"B\n\010User" +
+      "Prop\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022" +
+      "\023\n\013expiredTime\030\003 \001(\t\"M\n\027ResponseUserProp",
+      "Command\0222\n\010userProp\030\001 \003(\0132 .com.trans.pi" +
+      "xel.protoc.UserProp\":\n\025RequestUsePropCom" +
+      "mand\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\"" +
+      "L\n\026ResponseUsePropCommand\0222\n\010userProp\030\001 " +
+      "\003(\0132 .com.trans.pixel.protoc.UserProp\"@\n" +
+      "\031RequestFenjieEquipCommand\022\017\n\007equipId\030\001 " +
+      "\002(\005\022\022\n\nequipCount\030\002 \002(\005\"R\n\032ResponseEquip" +
+      "ResultCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.t" +
+      "rans.pixel.protoc.UserEquip\".\n\034RequestEq" +
+      "uipStrenthenCommand\022\016\n\006itemId\030\001 \002(\005\"\033\n\031R",
+      "equestEquipPokedeCommand\"^\n\032ResponseEqui" +
+      "pPokedeCommand\022@\n\017userEquipPokede\030\001 \003(\0132" +
+      "\'.com.trans.pixel.protoc.UserEquipPokede" +
+      "\"O\n\037RequestTalentChangeEquipCommand\022\n\n\002i" +
+      "d\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002(" +
+      "\005\"7\n\037RequestSynthetiseComposeCommand\022\024\n\014" +
+      "synthetiseId\030\001 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29363,7 +29320,7 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_Prop_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Prop_descriptor,
-              new java.lang.String[] { "Itemid", "Name", "Img", "Rare", "Description", "Hashero", "Judge", "Endtime", "Bossid", "Itemcount", "Weightall", "Item", });
+              new java.lang.String[] { "Itemid", "Name", "Img", "Rare", "Cost", "Hashero", "Judge", "Endtime", "Bossid", "Itemcount", "Weightall", "Item", });
           internal_static_com_trans_pixel_protoc_ChipList_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_ChipList_fieldAccessorTable = new
