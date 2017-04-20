@@ -1,19 +1,22 @@
 package com.trans.pixel.service.redis;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBattletowerBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.RechargeProto.VipLibaoList;
 import com.trans.pixel.protoc.ShopProto.Commodity;
@@ -34,11 +37,16 @@ import com.trans.pixel.protoc.ShopProto.ShopWillList;
 import com.trans.pixel.protoc.ShopProto.Will;
 import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.protoc.ShopProto.YueKaList;
+import com.trans.pixel.service.UserEquipService;
 
 @Repository
 public class ShopRedisService extends RedisService{
 	Logger logger = Logger.getLogger(ShopRedisService.class);
 	private final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
+	@Resource
+	private PropRedisService propRedisService;
+	@Resource
+	private UserEquipService userEquipService;
 	
 	//普通商店
 	public ShopList getDailyShop(UserBean user) {
@@ -58,11 +66,27 @@ public class ShopRedisService extends RedisService{
 			this.hput(USERDATA+user.getId(), "DAILYSHOP", formatJson(shoplist));
 	}
 	
-	public ShopList.Builder buildComms(ShopWill shopwill, Map<Integer, CommodityList.Builder> commsmap){
+	public ShopList.Builder buildComms(UserBean user, ShopWill shopwill, Map<Integer, CommodityList.Builder> commsmap){
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(shopwill!=null)
 		for(Will will : shopwill.getWillList()){
 			CommodityList.Builder commsbuilder = commsmap.get(will.getWill());
+			if(will.getWill() >= 100){
+				for(int i = commsbuilder.getIdCount() - 1; i >= 0; i--) {
+					int itemid = commsbuilder.getId(i).getItemid();
+					if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+						Synthetise synthetise = propRedisService.getSynthetise(itemid);
+						itemid = synthetise.getTarget();
+					}
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
+						if(userEquipBean != null)
+							commsbuilder.removeId(i);
+					}
+				}
+				if(commsbuilder.getIdCount() == 0)
+					commsbuilder = commsmap.get(will.getWill()-100);
+			}
 			int index = nextInt(commsbuilder.getIdCount());
 			builder.addItems(commsbuilder.getIdBuilder(index));
 		}
@@ -173,7 +197,7 @@ public class ShopRedisService extends RedisService{
 			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
 		}
-		ShopList.Builder builder = buildComms(shopwill, getDailyShopComms());
+		ShopList.Builder builder = buildComms(user, shopwill, getDailyShopComms());
 		
 //		if(user.getVip() >= 5){
 //			List<Integer> list = new ArrayList<Integer>();
@@ -310,7 +334,7 @@ public class ShopRedisService extends RedisService{
 			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
 		}
-		ShopList.Builder builder = buildComms(shopwill, getBlackShopComms());
+		ShopList.Builder builder = buildComms(user, shopwill, getBlackShopComms());
 //		if(user.getVip() >= 12){
 //			List<Integer> list = new ArrayList<Integer>();
 //			int index = nextInt(builder.getItemsCount());
@@ -594,7 +618,7 @@ public class ShopRedisService extends RedisService{
 			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
 		}
-		ShopList.Builder builder = buildComms(shopwill, getPVPShopComms());
+		ShopList.Builder builder = buildComms(user, shopwill, getPVPShopComms());
 		builder.setEndTime(getPVPShopEndTime());
 		return builder.build();
 	}
@@ -779,7 +803,7 @@ public class ShopRedisService extends RedisService{
 			if(will.getMerlevel() <= user.getMerlevel())
 				shopwill = will;
 		}
-		ShopList.Builder builder = buildComms(shopwill, getLadderShopComms());
+		ShopList.Builder builder = buildComms(user, shopwill, getLadderShopComms());
 		builder.setEndTime(getLadderShopEndTime());
 		return builder.build();
 	}
