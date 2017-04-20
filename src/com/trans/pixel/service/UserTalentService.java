@@ -85,11 +85,11 @@ public class UserTalentService {
 			return builder.build();
 		}
 		
-		if (userTalent == null) {
-			UserTalent.Builder builder = initUserTalent(user, id);
-			if (builder != null)
-				return builder.build();
-		}
+//		if (userTalent == null) {
+//			UserTalent.Builder builder = initUserTalent(user, id);
+//			if (builder != null)
+//				return builder.build();
+//		}
 		return userTalent;	
 	}
 	

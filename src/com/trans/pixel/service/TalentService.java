@@ -44,6 +44,8 @@ public class TalentService {
 	private CostService costService;
 	@Resource
 	private ActivityService activityService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public void talentUpgrade(UserBean user, int exp) {
 		UserTalent userTalent = userTalentService.getUsingTalent(user);
@@ -136,6 +138,17 @@ public class TalentService {
 		}
 		
 		return utBuilder.build();
+	}
+	
+	public UserTalent changeUseTalent(UserBean user, int id) {
+		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+		if (userTalent != null) {
+			user.setUseTalentId(id);
+			userTeamService.changeUserTeamTalentId(user, id);
+			userService.updateUser(user);
+		}
+		
+		return userTalent;	
 	}
 	
 //	public List<UserTalent> changeUseTalent(UserBean user, int id) {

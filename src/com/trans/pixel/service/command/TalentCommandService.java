@@ -1,8 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -10,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -22,7 +18,6 @@ import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.TalentService;
 import com.trans.pixel.service.UserTalentService;
-import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -36,8 +31,6 @@ public class TalentCommandService extends BaseCommandService {
 	private UserTalentService userTalentService;
 	@Resource
 	private LogService logService;
-	@Resource
-	private UserTeamService userTeamService;
 	@Resource
 	private PushCommandService pushCommandService;
 
@@ -58,7 +51,13 @@ public class TalentCommandService extends BaseCommandService {
 	}
 	
 	public void talentChangeUse(RequestTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user) {
-		user.setUseTalentId(cmd.getId());
+		UserTalent userTalent = talentService.changeUseTalent(user, cmd.getId());
+		if (userTalent == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.TALENT_NOT_EXIST_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.TALENT_NOT_EXIST_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 //		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
 //		List<UserTalent> userTalentList = talentService.changeUseTalent(user, cmd.getId());
@@ -70,8 +69,6 @@ public class TalentCommandService extends BaseCommandService {
 //		}
 //		builder.addAllUserTalent(userTalentList);
 //		responseBuilder.setUserTalentCommand(builder.build());
-		
-		userTeamService.changeUserTeamTalentId(user, cmd.getId());
 	}
 	
 	public void talentChangeSkill(RequestTalentChangeSkillCommand cmd, Builder responseBuilder, UserBean user) {
