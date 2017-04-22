@@ -67,6 +67,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
             
             return;
 		}
+		activityService.levelupEquip(user, pokede.getLevel());
 		
 		userEquipPokedeService.updateUserEquipPokede(pokede, user);
 		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
