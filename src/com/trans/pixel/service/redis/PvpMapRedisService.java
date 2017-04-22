@@ -471,11 +471,11 @@ public class PvpMapRedisService extends RedisService{
 				logger.warn("cannot build PVPMapList");
 				return null;
 			}
-			for(PVPMap.Builder map : builder.getFieldBuilderList()){
-				for(PVPMine.Builder mine : map.getKuangdianBuilderList()){
-					mine.setId(mine.getId()+map.getFieldid()*100);
-				}
-			}
+//			for(PVPMap.Builder map : builder.getFieldBuilderList()){
+//				for(PVPMine.Builder mine : map.getKuangdianBuilderList()){
+//					mine.setId(mine.getId()+map.getFieldid()*100);
+//				}
+//			}
 			set(RedisKey.PVPMAP_CONFIG, formatJson(builder.build()));
 			return builder;
 		}
