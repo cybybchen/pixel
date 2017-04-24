@@ -223,10 +223,11 @@ public class UserService {
 		
 		if (addId > 0 && addCount > 0) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), addId);
-			if (userEquip == null || userEquip.getEquipCount() >= addCount)
+			if (userEquip != null && userEquip.getEquipCount() >= addCount)
 				return;
 			
-			userEquip.setEquipCount(addCount);
+			userEquip = UserEquipBean.initUserEquip(addId, addCount);
+			userEquip.setUserId(user.getId());
 			userEquipService.updateUserEquip(userEquip);
 		}
 	}
