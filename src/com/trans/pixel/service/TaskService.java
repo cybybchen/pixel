@@ -1,6 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +20,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.Base.MultiReward;
-import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.TaskProto.TaskOrder;
 import com.trans.pixel.protoc.TaskProto.TaskTarget;
 import com.trans.pixel.protoc.TaskProto.UserTask;
@@ -84,14 +82,16 @@ public class TaskService {
 				UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask(userId, task.getTargetid()));
 				if (isAdded)
 					ut.setProcess(ut.getProcess() + count);
-				else if (targetId == ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE) {
+				else if (targetId == ACTIVITY_TYPE.TYPE_PVP_BUFF_LEVELUP5_VALUE || targetId == ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE) {
+					ut.addHeroid(count);
+				} /*else if (targetId == ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE) {
 					for (TaskOrder taskOrder : task.getOrderList()) {
 						if (taskOrder.getTargetcount() == count) {
 							ut.setProcess(Math.max(ut.getProcess(), count));
 							break;
 						}
 					}
-				} else
+				} */else
 					ut.setProcess(Math.max(ut.getProcess(), count));
 				
 				userTaskService.updateUserTask(userId, ut.build());
@@ -217,7 +217,8 @@ public class TaskService {
 		UserTask.Builder userTask = UserTask.newBuilder(getUserTask(user, type, taskOrder.getTargetid()));
 		if (userTask.getStatus() == 1)
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
-		if (type == 2) {
+		if (type == 2 || taskOrder.getTargetid() == ACTIVITY_TYPE.TYPE_PVP_BUFF_LEVELUP5_VALUE
+				|| taskOrder.getTargetid() == ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE) {
 			if (!userTask.getHeroidList().contains(taskOrder.getTargetcount())) {
 				return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 			}
@@ -241,7 +242,7 @@ public class TaskService {
 			return taskRedisService.getTask1Order(user.getTask1Order() + 1);
 		} else if (type == 2) {
 			int originalOrder = user.getTask2Record() >> (4 * (heroId - 1)) & 15;
-		log.debug("originalOrder is:" + originalOrder);
+			log.debug("originalOrder is:" + originalOrder);
 			return taskRedisService.getTask2Order(originalOrder + 1, heroId);
 		} else if (type == 3) {
 			return taskRedisService.getTask3Order(order);
@@ -317,31 +318,6 @@ public class TaskService {
 		}
 		
 		return false;
-	}
-	
-	private List<RewardInfo> getRewardList(TaskOrder order) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		RewardInfo.Builder reward = RewardInfo.newBuilder();
-		
-		if (order.getRewardid1() > 0) {
-			reward.setItemid(order.getRewardid1());
-			reward.setCount(order.getRewardcount1());
-			rewardList.add(reward.build());
-		}
-		
-		if (order.getRewardid2() > 0) {
-			reward.setItemid(order.getRewardid2());
-			reward.setCount(order.getRewardcount2());
-			rewardList.add(reward.build());
-		}
-		
-		if (order.getRewardid3() > 0) {
-			reward.setItemid(order.getRewardid3());
-			reward.setCount(order.getRewardcount3());
-			rewardList.add(reward.build());
-		}
-		
-		return rewardList;
 	}
 	
 	public void isDeleteMainTaskNotice(UserBean user) {

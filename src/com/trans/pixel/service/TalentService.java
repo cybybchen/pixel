@@ -74,7 +74,7 @@ public class TalentService {
 		/**
 		 * 主角升级的活动
 		 */
-		activityService.zhujueLevelup(user, builder.getLevel());
+		activityService.zhujueLevelup(user, builder.getId(), builder.getLevel());
 		
 	}
 	
@@ -99,7 +99,7 @@ public class TalentService {
 		/**
 		 * 主角升级的活动
 		 */
-		activityService.zhujueLevelup(user, talentBuilder.getLevel());
+		activityService.zhujueLevelup(user, talentBuilder.getId(), talentBuilder.getLevel());
 		
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}

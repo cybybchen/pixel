@@ -87,6 +87,11 @@ public class HeroLevelUpService {
 		heroInfo.setEquipId(equipId);
 		result = SuccessConst.ADD_EQUIP_SUCCESS;
 			
+		/**
+		 * 添加英雄装备的活动
+		 */
+		activityService.addHeroEquip(user, heroId, equipId);
+		
 		return result;
 	}
 	

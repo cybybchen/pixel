@@ -72,17 +72,17 @@ public class RaidCommandService extends BaseCommandService{
 			}
 			rewardService.doFilterRewards(user, rewards);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+			
+			/**
+			 * 通关副本的活动
+			 */
+			activityService.raidKill(user, id);
+			
 			id++;
 			order = redis.getRaidOrder(id);
 			if(!redis.hasRaidOrder(id))
 				id = 0;
 			redis.saveRaid(user, id);
-			
-			/**
-			 * 副本击杀boss的活动
-			 */
-			activityService.raidKill(user);
-			
 		}else if(!cmd.getRet() && cmd.getTurn() == 0){
 			id = 0;
 			redis.saveRaid(user, id);

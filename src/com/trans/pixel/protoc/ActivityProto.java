@@ -94,73 +94,229 @@ public final class ActivityProto {
      */
     TYPE_HERO_RAREUP(18, 19),
     /**
+     * <code>TYPE_TEAMUP_ARUISI = 10000;</code>
+     */
+    TYPE_TEAMUP_ARUISI(19, 10000),
+    /**
+     * <code>TYPE_ARUISI_SKILL1_LEVELUP = 10001;</code>
+     */
+    TYPE_ARUISI_SKILL1_LEVELUP(20, 10001),
+    /**
+     * <code>TYPE_ARUISI_EQUIP_ADD10001 = 10002;</code>
+     */
+    TYPE_ARUISI_EQUIP_ADD10001(21, 10002),
+    /**
+     * <code>TYPE_ARUISI_SKILL2_LEVELUP = 10003;</code>
+     */
+    TYPE_ARUISI_SKILL2_LEVELUP(22, 10003),
+    /**
      * <code>TYPE_TASK_LEVEL = 10100;</code>
      */
-    TYPE_TASK_LEVEL(19, 10100),
+    TYPE_TASK_LEVEL(23, 10100),
     /**
-     * <code>TYPE_ZHUJUE_LEVEL = 10200;</code>
+     * <code>TYPE_TEAM_UPCHAFENQI = 10200;</code>
      */
-    TYPE_ZHUJUE_LEVEL(20, 10200),
+    TYPE_TEAM_UPCHAFENQI(24, 10200),
     /**
-     * <code>TYPE_EVENT_COMPLETE = 10400;</code>
+     * <code>TYPE_PVP_BUFF_LEVELUP5 = 10300;</code>
      */
-    TYPE_EVENT_COMPLETE(21, 10400),
+    TYPE_PVP_BUFF_LEVELUP5(25, 10300),
     /**
-     * <code>TYPE_UP_HERO = 10500;</code>
+     * <code>TYPE_EQUIP_LEVELUP1 = 10401;</code>
      */
-    TYPE_UP_HERO(22, 10500),
+    TYPE_EQUIP_LEVELUP1(26, 10401),
+    /**
+     * <code>TYPE_EQUIP_LEVELUP3 = 10403;</code>
+     */
+    TYPE_EQUIP_LEVELUP3(27, 10403),
+    /**
+     * <code>TYPE_EQUIP_LEVELUP5 = 10405;</code>
+     */
+    TYPE_EQUIP_LEVELUP5(28, 10405),
+    /**
+     * <code>TYPE_EQUIP_LEVELUP10 = 10410;</code>
+     */
+    TYPE_EQUIP_LEVELUP10(29, 10410),
+    /**
+     * <code>TYPE_UPHERO_QUALITY1 = 10501;</code>
+     */
+    TYPE_UPHERO_QUALITY1(30, 10501),
+    /**
+     * <code>TYPE_UPHERO_QUALITY2 = 10502;</code>
+     */
+    TYPE_UPHERO_QUALITY2(31, 10502),
+    /**
+     * <code>TYPE_UPHERO_QUALITY3 = 10503;</code>
+     */
+    TYPE_UPHERO_QUALITY3(32, 10503),
+    /**
+     * <code>TYPE_UPHERO_QUALITY4 = 10504;</code>
+     */
+    TYPE_UPHERO_QUALITY4(33, 10504),
+    /**
+     * <code>TYPE_UPHERO_QUALITY5 = 10505;</code>
+     */
+    TYPE_UPHERO_QUALITY5(34, 10505),
+    /**
+     * <code>TYPE_HERO_LEVELUP5 = 10605;</code>
+     */
+    TYPE_HERO_LEVELUP5(35, 10605),
+    /**
+     * <code>TYPE_HERO_LEVELUP10 = 10610;</code>
+     */
+    TYPE_HERO_LEVELUP10(36, 10610),
+    /**
+     * <code>TYPE_HERO_LEVELUP15 = 10615;</code>
+     */
+    TYPE_HERO_LEVELUP15(37, 10615),
+    /**
+     * <code>TYPE_HERO_LEVELUP20 = 10620;</code>
+     */
+    TYPE_HERO_LEVELUP20(38, 10620),
+    /**
+     * <code>TYPE_HERO_LEVELUP22 = 10622;</code>
+     */
+    TYPE_HERO_LEVELUP22(39, 10622),
+    /**
+     * <code>TYPE_HERO_LEVELUP25 = 10625;</code>
+     */
+    TYPE_HERO_LEVELUP25(40, 10625),
+    /**
+     * <code>TYPE_HERO_LEVELUP30 = 10630;</code>
+     */
+    TYPE_HERO_LEVELUP30(41, 10630),
+    /**
+     * <code>TYPE_HERO_LEVELUP35 = 10635;</code>
+     */
+    TYPE_HERO_LEVELUP35(42, 10635),
+    /**
+     * <code>TYPE_HERO_LEVELUP40 = 10640;</code>
+     */
+    TYPE_HERO_LEVELUP40(43, 10640),
+    /**
+     * <code>TYPE_HERO_LEVELUP45 = 10645;</code>
+     */
+    TYPE_HERO_LEVELUP45(44, 10645),
+    /**
+     * <code>TYPE_HERO_LEVELUP50 = 10650;</code>
+     */
+    TYPE_HERO_LEVELUP50(45, 10650),
+    /**
+     * <code>TYPE_HERO_LEVELUP55 = 10655;</code>
+     */
+    TYPE_HERO_LEVELUP55(46, 10655),
+    /**
+     * <code>TYPE_HERO_LEVELUP60 = 10660;</code>
+     */
+    TYPE_HERO_LEVELUP60(47, 10660),
+    /**
+     * <code>TYPE_FIGHT_FUBEN = 10700;</code>
+     */
+    TYPE_FIGHT_FUBEN(48, 10700),
+    /**
+     * <code>TYPE_HERO_RAREUP1 = 10801;</code>
+     */
+    TYPE_HERO_RAREUP1(49, 10801),
+    /**
+     * <code>TYPE_HERO_RAREUP2 = 10802;</code>
+     */
+    TYPE_HERO_RAREUP2(50, 10802),
+    /**
+     * <code>TYPE_HERO_RAREUP3 = 10803;</code>
+     */
+    TYPE_HERO_RAREUP3(51, 10803),
+    /**
+     * <code>TYPE_HERO_RAREUP5 = 10805;</code>
+     */
+    TYPE_HERO_RAREUP5(52, 10805),
+    /**
+     * <code>TYPE_HERO_RAREUP7 = 10807;</code>
+     */
+    TYPE_HERO_RAREUP7(53, 10807),
+    /**
+     * <code>TYPE_HERO_RAREUP9 = 10809;</code>
+     */
+    TYPE_HERO_RAREUP9(54, 10809),
+    /**
+     * <code>TYPE_HERO_RAREUP11 = 10811;</code>
+     */
+    TYPE_HERO_RAREUP11(55, 10811),
+    /**
+     * <code>TYPE_HERO_RAREUP12 = 10812;</code>
+     */
+    TYPE_HERO_RAREUP12(56, 10812),
+    /**
+     * <code>TYPE_HERO_RAREUP13 = 10813;</code>
+     */
+    TYPE_HERO_RAREUP13(57, 10813),
+    /**
+     * <code>TYPE_HERO_RAREUP15 = 10815;</code>
+     */
+    TYPE_HERO_RAREUP15(58, 10815),
+    /**
+     * <code>TYPE_ZHUJUE_LEVELUP = 10900;</code>
+     */
+    TYPE_ZHUJUE_LEVELUP(59, 10900),
+    /**
+     * <code>TYPE_ZHUJUE_LEVELUP5 = 11005;</code>
+     */
+    TYPE_ZHUJUE_LEVELUP5(60, 11005),
+    /**
+     * <code>TYPE_FETTERS_OPEN = 11100;</code>
+     */
+    TYPE_FETTERS_OPEN(61, 11100),
     /**
      * <code>TYPE_GET_HERO = 121;</code>
      */
-    TYPE_GET_HERO(23, 121),
+    TYPE_GET_HERO(62, 121),
     /**
      * <code>TYPE_TASK_HERO_RAREUP = 122;</code>
      */
-    TYPE_TASK_HERO_RAREUP(24, 122),
+    TYPE_TASK_HERO_RAREUP(63, 122),
     /**
      * <code>TYPE_EVENT_COMPLETE_DAILY = 201;</code>
      */
-    TYPE_EVENT_COMPLETE_DAILY(25, 201),
+    TYPE_EVENT_COMPLETE_DAILY(64, 201),
     /**
      * <code>TYPE_REWARDTASK_COMPLETE = 202;</code>
      */
-    TYPE_REWARDTASK_COMPLETE(26, 202),
+    TYPE_REWARDTASK_COMPLETE(65, 202),
     /**
      * <code>TYPE_KILL_MONSTER = 203;</code>
      */
-    TYPE_KILL_MONSTER(27, 203),
+    TYPE_KILL_MONSTER(66, 203),
     /**
      * <code>TYPE_DUOHUI_MINE = 204;</code>
      */
-    TYPE_DUOHUI_MINE(28, 204),
+    TYPE_DUOHUI_MINE(67, 204),
     /**
      * <code>TYPE_EQUIP_LEVELUP = 205;</code>
      */
-    TYPE_EQUIP_LEVELUP(29, 205),
+    TYPE_EQUIP_LEVELUP(68, 205),
     /**
      * <code>TYPE_SKILL_LEVELUP = 206;</code>
      */
-    TYPE_SKILL_LEVELUP(30, 206),
+    TYPE_SKILL_LEVELUP(69, 206),
     /**
      * <code>TYPE_LADDER_FIGHT = 207;</code>
      */
-    TYPE_LADDER_FIGHT(31, 207),
+    TYPE_LADDER_FIGHT(70, 207),
     /**
      * <code>TYPE_LOTTERY_COIN = 208;</code>
      */
-    TYPE_LOTTERY_COIN(32, 208),
+    TYPE_LOTTERY_COIN(71, 208),
     /**
      * <code>TYPE_PUTONGSHOP_BUY = 209;</code>
      */
-    TYPE_PUTONGSHOP_BUY(33, 209),
+    TYPE_PUTONGSHOP_BUY(72, 209),
     /**
      * <code>TYPE_FUBEN_KILL_BOSS = 210;</code>
      */
-    TYPE_FUBEN_KILL_BOSS(34, 210),
+    TYPE_FUBEN_KILL_BOSS(73, 210),
     /**
      * <code>TYPE_DAILY_ALL = 211;</code>
      */
-    TYPE_DAILY_ALL(35, 211),
+    TYPE_DAILY_ALL(74, 211),
     ;
 
     /**
@@ -240,21 +396,177 @@ public final class ActivityProto {
      */
     public static final int TYPE_HERO_RAREUP_VALUE = 19;
     /**
+     * <code>TYPE_TEAMUP_ARUISI = 10000;</code>
+     */
+    public static final int TYPE_TEAMUP_ARUISI_VALUE = 10000;
+    /**
+     * <code>TYPE_ARUISI_SKILL1_LEVELUP = 10001;</code>
+     */
+    public static final int TYPE_ARUISI_SKILL1_LEVELUP_VALUE = 10001;
+    /**
+     * <code>TYPE_ARUISI_EQUIP_ADD10001 = 10002;</code>
+     */
+    public static final int TYPE_ARUISI_EQUIP_ADD10001_VALUE = 10002;
+    /**
+     * <code>TYPE_ARUISI_SKILL2_LEVELUP = 10003;</code>
+     */
+    public static final int TYPE_ARUISI_SKILL2_LEVELUP_VALUE = 10003;
+    /**
      * <code>TYPE_TASK_LEVEL = 10100;</code>
      */
     public static final int TYPE_TASK_LEVEL_VALUE = 10100;
     /**
-     * <code>TYPE_ZHUJUE_LEVEL = 10200;</code>
+     * <code>TYPE_TEAM_UPCHAFENQI = 10200;</code>
      */
-    public static final int TYPE_ZHUJUE_LEVEL_VALUE = 10200;
+    public static final int TYPE_TEAM_UPCHAFENQI_VALUE = 10200;
     /**
-     * <code>TYPE_EVENT_COMPLETE = 10400;</code>
+     * <code>TYPE_PVP_BUFF_LEVELUP5 = 10300;</code>
      */
-    public static final int TYPE_EVENT_COMPLETE_VALUE = 10400;
+    public static final int TYPE_PVP_BUFF_LEVELUP5_VALUE = 10300;
     /**
-     * <code>TYPE_UP_HERO = 10500;</code>
+     * <code>TYPE_EQUIP_LEVELUP1 = 10401;</code>
      */
-    public static final int TYPE_UP_HERO_VALUE = 10500;
+    public static final int TYPE_EQUIP_LEVELUP1_VALUE = 10401;
+    /**
+     * <code>TYPE_EQUIP_LEVELUP3 = 10403;</code>
+     */
+    public static final int TYPE_EQUIP_LEVELUP3_VALUE = 10403;
+    /**
+     * <code>TYPE_EQUIP_LEVELUP5 = 10405;</code>
+     */
+    public static final int TYPE_EQUIP_LEVELUP5_VALUE = 10405;
+    /**
+     * <code>TYPE_EQUIP_LEVELUP10 = 10410;</code>
+     */
+    public static final int TYPE_EQUIP_LEVELUP10_VALUE = 10410;
+    /**
+     * <code>TYPE_UPHERO_QUALITY1 = 10501;</code>
+     */
+    public static final int TYPE_UPHERO_QUALITY1_VALUE = 10501;
+    /**
+     * <code>TYPE_UPHERO_QUALITY2 = 10502;</code>
+     */
+    public static final int TYPE_UPHERO_QUALITY2_VALUE = 10502;
+    /**
+     * <code>TYPE_UPHERO_QUALITY3 = 10503;</code>
+     */
+    public static final int TYPE_UPHERO_QUALITY3_VALUE = 10503;
+    /**
+     * <code>TYPE_UPHERO_QUALITY4 = 10504;</code>
+     */
+    public static final int TYPE_UPHERO_QUALITY4_VALUE = 10504;
+    /**
+     * <code>TYPE_UPHERO_QUALITY5 = 10505;</code>
+     */
+    public static final int TYPE_UPHERO_QUALITY5_VALUE = 10505;
+    /**
+     * <code>TYPE_HERO_LEVELUP5 = 10605;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP5_VALUE = 10605;
+    /**
+     * <code>TYPE_HERO_LEVELUP10 = 10610;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP10_VALUE = 10610;
+    /**
+     * <code>TYPE_HERO_LEVELUP15 = 10615;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP15_VALUE = 10615;
+    /**
+     * <code>TYPE_HERO_LEVELUP20 = 10620;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP20_VALUE = 10620;
+    /**
+     * <code>TYPE_HERO_LEVELUP22 = 10622;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP22_VALUE = 10622;
+    /**
+     * <code>TYPE_HERO_LEVELUP25 = 10625;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP25_VALUE = 10625;
+    /**
+     * <code>TYPE_HERO_LEVELUP30 = 10630;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP30_VALUE = 10630;
+    /**
+     * <code>TYPE_HERO_LEVELUP35 = 10635;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP35_VALUE = 10635;
+    /**
+     * <code>TYPE_HERO_LEVELUP40 = 10640;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP40_VALUE = 10640;
+    /**
+     * <code>TYPE_HERO_LEVELUP45 = 10645;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP45_VALUE = 10645;
+    /**
+     * <code>TYPE_HERO_LEVELUP50 = 10650;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP50_VALUE = 10650;
+    /**
+     * <code>TYPE_HERO_LEVELUP55 = 10655;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP55_VALUE = 10655;
+    /**
+     * <code>TYPE_HERO_LEVELUP60 = 10660;</code>
+     */
+    public static final int TYPE_HERO_LEVELUP60_VALUE = 10660;
+    /**
+     * <code>TYPE_FIGHT_FUBEN = 10700;</code>
+     */
+    public static final int TYPE_FIGHT_FUBEN_VALUE = 10700;
+    /**
+     * <code>TYPE_HERO_RAREUP1 = 10801;</code>
+     */
+    public static final int TYPE_HERO_RAREUP1_VALUE = 10801;
+    /**
+     * <code>TYPE_HERO_RAREUP2 = 10802;</code>
+     */
+    public static final int TYPE_HERO_RAREUP2_VALUE = 10802;
+    /**
+     * <code>TYPE_HERO_RAREUP3 = 10803;</code>
+     */
+    public static final int TYPE_HERO_RAREUP3_VALUE = 10803;
+    /**
+     * <code>TYPE_HERO_RAREUP5 = 10805;</code>
+     */
+    public static final int TYPE_HERO_RAREUP5_VALUE = 10805;
+    /**
+     * <code>TYPE_HERO_RAREUP7 = 10807;</code>
+     */
+    public static final int TYPE_HERO_RAREUP7_VALUE = 10807;
+    /**
+     * <code>TYPE_HERO_RAREUP9 = 10809;</code>
+     */
+    public static final int TYPE_HERO_RAREUP9_VALUE = 10809;
+    /**
+     * <code>TYPE_HERO_RAREUP11 = 10811;</code>
+     */
+    public static final int TYPE_HERO_RAREUP11_VALUE = 10811;
+    /**
+     * <code>TYPE_HERO_RAREUP12 = 10812;</code>
+     */
+    public static final int TYPE_HERO_RAREUP12_VALUE = 10812;
+    /**
+     * <code>TYPE_HERO_RAREUP13 = 10813;</code>
+     */
+    public static final int TYPE_HERO_RAREUP13_VALUE = 10813;
+    /**
+     * <code>TYPE_HERO_RAREUP15 = 10815;</code>
+     */
+    public static final int TYPE_HERO_RAREUP15_VALUE = 10815;
+    /**
+     * <code>TYPE_ZHUJUE_LEVELUP = 10900;</code>
+     */
+    public static final int TYPE_ZHUJUE_LEVELUP_VALUE = 10900;
+    /**
+     * <code>TYPE_ZHUJUE_LEVELUP5 = 11005;</code>
+     */
+    public static final int TYPE_ZHUJUE_LEVELUP5_VALUE = 11005;
+    /**
+     * <code>TYPE_FETTERS_OPEN = 11100;</code>
+     */
+    public static final int TYPE_FETTERS_OPEN_VALUE = 11100;
     /**
      * <code>TYPE_GET_HERO = 121;</code>
      */
@@ -332,10 +644,49 @@ public final class ActivityProto {
         case 17: return TYPE_PVP_HELP;
         case 18: return TYPE_DANBI_RECHARGE;
         case 19: return TYPE_HERO_RAREUP;
+        case 10000: return TYPE_TEAMUP_ARUISI;
+        case 10001: return TYPE_ARUISI_SKILL1_LEVELUP;
+        case 10002: return TYPE_ARUISI_EQUIP_ADD10001;
+        case 10003: return TYPE_ARUISI_SKILL2_LEVELUP;
         case 10100: return TYPE_TASK_LEVEL;
-        case 10200: return TYPE_ZHUJUE_LEVEL;
-        case 10400: return TYPE_EVENT_COMPLETE;
-        case 10500: return TYPE_UP_HERO;
+        case 10200: return TYPE_TEAM_UPCHAFENQI;
+        case 10300: return TYPE_PVP_BUFF_LEVELUP5;
+        case 10401: return TYPE_EQUIP_LEVELUP1;
+        case 10403: return TYPE_EQUIP_LEVELUP3;
+        case 10405: return TYPE_EQUIP_LEVELUP5;
+        case 10410: return TYPE_EQUIP_LEVELUP10;
+        case 10501: return TYPE_UPHERO_QUALITY1;
+        case 10502: return TYPE_UPHERO_QUALITY2;
+        case 10503: return TYPE_UPHERO_QUALITY3;
+        case 10504: return TYPE_UPHERO_QUALITY4;
+        case 10505: return TYPE_UPHERO_QUALITY5;
+        case 10605: return TYPE_HERO_LEVELUP5;
+        case 10610: return TYPE_HERO_LEVELUP10;
+        case 10615: return TYPE_HERO_LEVELUP15;
+        case 10620: return TYPE_HERO_LEVELUP20;
+        case 10622: return TYPE_HERO_LEVELUP22;
+        case 10625: return TYPE_HERO_LEVELUP25;
+        case 10630: return TYPE_HERO_LEVELUP30;
+        case 10635: return TYPE_HERO_LEVELUP35;
+        case 10640: return TYPE_HERO_LEVELUP40;
+        case 10645: return TYPE_HERO_LEVELUP45;
+        case 10650: return TYPE_HERO_LEVELUP50;
+        case 10655: return TYPE_HERO_LEVELUP55;
+        case 10660: return TYPE_HERO_LEVELUP60;
+        case 10700: return TYPE_FIGHT_FUBEN;
+        case 10801: return TYPE_HERO_RAREUP1;
+        case 10802: return TYPE_HERO_RAREUP2;
+        case 10803: return TYPE_HERO_RAREUP3;
+        case 10805: return TYPE_HERO_RAREUP5;
+        case 10807: return TYPE_HERO_RAREUP7;
+        case 10809: return TYPE_HERO_RAREUP9;
+        case 10811: return TYPE_HERO_RAREUP11;
+        case 10812: return TYPE_HERO_RAREUP12;
+        case 10813: return TYPE_HERO_RAREUP13;
+        case 10815: return TYPE_HERO_RAREUP15;
+        case 10900: return TYPE_ZHUJUE_LEVELUP;
+        case 11005: return TYPE_ZHUJUE_LEVELUP5;
+        case 11100: return TYPE_FETTERS_OPEN;
         case 121: return TYPE_GET_HERO;
         case 122: return TYPE_TASK_HERO_RAREUP;
         case 201: return TYPE_EVENT_COMPLETE_DAILY;
@@ -33759,7 +34110,7 @@ public final class ActivityProto {
       "(\005\"@\n\rRankvalueList\022/\n\004rank\030\001 \003(\0132!.com." +
       "trans.pixel.protoc.Rankvalue\"N\n\tRankvalu" +
       "e\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(\002" +
-      "\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\315\006\n\rACTIVIT" +
+      "\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\325\016\n\rACTIVIT" +
       "Y_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n\023TYPE_LEI",
       "JI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COST_JEWEL\020\003" +
       "\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTYPE" +
@@ -33770,17 +34121,43 @@ public final class ActivityProto {
       "TASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTYPE_WUQI_G" +
       "ET\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020\022\021\n\rTYPE_" +
       "PVP_HELP\020\021\022\027\n\023TYPE_DANBI_RECHARGE\020\022\022\024\n\020T" +
-      "YPE_HERO_RAREUP\020\023\022\024\n\017TYPE_TASK_LEVEL\020\364N\022",
-      "\026\n\021TYPE_ZHUJUE_LEVEL\020\330O\022\030\n\023TYPE_EVENT_CO" +
-      "MPLETE\020\240Q\022\021\n\014TYPE_UP_HERO\020\204R\022\021\n\rTYPE_GET" +
-      "_HERO\020y\022\031\n\025TYPE_TASK_HERO_RAREUP\020z\022\036\n\031TY" +
-      "PE_EVENT_COMPLETE_DAILY\020\311\001\022\035\n\030TYPE_REWAR" +
-      "DTASK_COMPLETE\020\312\001\022\026\n\021TYPE_KILL_MONSTER\020\313" +
-      "\001\022\025\n\020TYPE_DUOHUI_MINE\020\314\001\022\027\n\022TYPE_EQUIP_L" +
-      "EVELUP\020\315\001\022\027\n\022TYPE_SKILL_LEVELUP\020\316\001\022\026\n\021TY" +
-      "PE_LADDER_FIGHT\020\317\001\022\026\n\021TYPE_LOTTERY_COIN\020" +
-      "\320\001\022\030\n\023TYPE_PUTONGSHOP_BUY\020\321\001\022\031\n\024TYPE_FUB" +
-      "EN_KILL_BOSS\020\322\001\022\023\n\016TYPE_DAILY_ALL\020\323\001"
+      "YPE_HERO_RAREUP\020\023\022\027\n\022TYPE_TEAMUP_ARUISI\020",
+      "\220N\022\037\n\032TYPE_ARUISI_SKILL1_LEVELUP\020\221N\022\037\n\032T" +
+      "YPE_ARUISI_EQUIP_ADD10001\020\222N\022\037\n\032TYPE_ARU" +
+      "ISI_SKILL2_LEVELUP\020\223N\022\024\n\017TYPE_TASK_LEVEL" +
+      "\020\364N\022\031\n\024TYPE_TEAM_UPCHAFENQI\020\330O\022\033\n\026TYPE_P" +
+      "VP_BUFF_LEVELUP5\020\274P\022\030\n\023TYPE_EQUIP_LEVELU" +
+      "P1\020\241Q\022\030\n\023TYPE_EQUIP_LEVELUP3\020\243Q\022\030\n\023TYPE_" +
+      "EQUIP_LEVELUP5\020\245Q\022\031\n\024TYPE_EQUIP_LEVELUP1" +
+      "0\020\252Q\022\031\n\024TYPE_UPHERO_QUALITY1\020\205R\022\031\n\024TYPE_" +
+      "UPHERO_QUALITY2\020\206R\022\031\n\024TYPE_UPHERO_QUALIT" +
+      "Y3\020\207R\022\031\n\024TYPE_UPHERO_QUALITY4\020\210R\022\031\n\024TYPE",
+      "_UPHERO_QUALITY5\020\211R\022\027\n\022TYPE_HERO_LEVELUP" +
+      "5\020\355R\022\030\n\023TYPE_HERO_LEVELUP10\020\362R\022\030\n\023TYPE_H" +
+      "ERO_LEVELUP15\020\367R\022\030\n\023TYPE_HERO_LEVELUP20\020" +
+      "\374R\022\030\n\023TYPE_HERO_LEVELUP22\020\376R\022\030\n\023TYPE_HER" +
+      "O_LEVELUP25\020\201S\022\030\n\023TYPE_HERO_LEVELUP30\020\206S" +
+      "\022\030\n\023TYPE_HERO_LEVELUP35\020\213S\022\030\n\023TYPE_HERO_" +
+      "LEVELUP40\020\220S\022\030\n\023TYPE_HERO_LEVELUP45\020\225S\022\030" +
+      "\n\023TYPE_HERO_LEVELUP50\020\232S\022\030\n\023TYPE_HERO_LE" +
+      "VELUP55\020\237S\022\030\n\023TYPE_HERO_LEVELUP60\020\244S\022\025\n\020" +
+      "TYPE_FIGHT_FUBEN\020\314S\022\026\n\021TYPE_HERO_RAREUP1",
+      "\020\261T\022\026\n\021TYPE_HERO_RAREUP2\020\262T\022\026\n\021TYPE_HERO" +
+      "_RAREUP3\020\263T\022\026\n\021TYPE_HERO_RAREUP5\020\265T\022\026\n\021T" +
+      "YPE_HERO_RAREUP7\020\267T\022\026\n\021TYPE_HERO_RAREUP9" +
+      "\020\271T\022\027\n\022TYPE_HERO_RAREUP11\020\273T\022\027\n\022TYPE_HER" +
+      "O_RAREUP12\020\274T\022\027\n\022TYPE_HERO_RAREUP13\020\275T\022\027" +
+      "\n\022TYPE_HERO_RAREUP15\020\277T\022\030\n\023TYPE_ZHUJUE_L" +
+      "EVELUP\020\224U\022\031\n\024TYPE_ZHUJUE_LEVELUP5\020\375U\022\026\n\021" +
+      "TYPE_FETTERS_OPEN\020\334V\022\021\n\rTYPE_GET_HERO\020y\022" +
+      "\031\n\025TYPE_TASK_HERO_RAREUP\020z\022\036\n\031TYPE_EVENT" +
+      "_COMPLETE_DAILY\020\311\001\022\035\n\030TYPE_REWARDTASK_CO",
+      "MPLETE\020\312\001\022\026\n\021TYPE_KILL_MONSTER\020\313\001\022\025\n\020TYP" +
+      "E_DUOHUI_MINE\020\314\001\022\027\n\022TYPE_EQUIP_LEVELUP\020\315" +
+      "\001\022\027\n\022TYPE_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_LADDE" +
+      "R_FIGHT\020\317\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022\030\n\023TY" +
+      "PE_PUTONGSHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_" +
+      "BOSS\020\322\001\022\023\n\016TYPE_DAILY_ALL\020\323\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

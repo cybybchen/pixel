@@ -46,6 +46,7 @@ import com.trans.pixel.protoc.ActivityProto.UserRichang;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.Rank;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.RechargeProto.Shouchong;
@@ -742,21 +743,7 @@ public class ActivityService {
 		 * achieve type 115,116,117,118
 		 *  开服活动英雄进阶
 		 */
-		long userId = user.getId();
 		switch (rare) {
-//		case HeroConst.RARE_GREEN:
-//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_2);
-//			sendKaifuScore(user, ActivityConst.KAIFU_DAY_3);
-//			break;
-//		case HeroConst.RARE_BLUE:
-//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_4);
-//			break;
-//		case HeroConst.RARE_PURPLE:
-//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_7);
-//			break;
-//		case HeroConst.RARE_ORANGE:
-//			achieveService.sendAchieveScore(userId, AchieveConst.TYPE_HERO_RARE_10);
-//			break;
 			case HeroConst.RARE_LEVEL_1:
 			case HeroConst.RARE_LEVEL_3:
 			case HeroConst.RARE_LEVEL_5:
@@ -768,30 +755,37 @@ public class ActivityService {
 				break;
 		}
 		
+		if (rare == 1) {
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP1_VALUE);
+		}
+		if (rare == 2) {
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP2_VALUE);
+		}
 		if (rare == 3) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_3);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP3_VALUE);
 		}
 		if (rare == 5) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_5);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP5_VALUE);
 		}
-		if (rare == 6)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_6);
 		if (rare == 7) {
-			
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP7_VALUE);
 		}
-		if (rare == 8)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_8);
 		if (rare == 9) {
-			
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP9_VALUE);
 		}
-		if (rare == 10)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_10);
 		if (rare == 11) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_11);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP11_VALUE);
+		}
+		if (rare == 12) {
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP12_VALUE);
 		}
 		if (rare == 13) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RANK_13);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP13_VALUE);
 		}
+		if (rare == 15) {
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_RAREUP15_VALUE);
+		}
+		
 		taskService.sendTask2Score(user, ACTIVITY_TYPE.TYPE_TASK_HERO_RAREUP_VALUE, heroId, rare);
 	}
 	
@@ -810,44 +804,33 @@ public class ActivityService {
 			sendKaifuScore(user, ActivityConst.KAIFU_DAY_4);
 		
 		if (start < 5 && level >= 5) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_5);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP5_VALUE);
 		}
 		if (start < 10 && level >= 10) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_10);
-		}
-		if (start < 12 && level >= 12) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_12);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP10_VALUE);
 		}
 		if (start < 15 && level >= 15)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_15);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP15_VALUE);
 		if (start < 20 && level >= 20)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_20);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP20_VALUE);
 		if (start < 22 && level >= 22)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_22);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP22_VALUE);
 		if (start < 25 && level >= 25)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_25);
-		if (start < 28 && level >= 28)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_28);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP25_VALUE);
 		if (start < 30 && level >= 30)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_30);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP30_VALUE);
 		if (start < 35 && level >= 35)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_35);
-		if (start < 38 && level >= 38)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_38);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP35_VALUE);
 		if (start < 40 && level >= 40)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_40);
-		if (start < 42 && level >= 42)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_42);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP40_VALUE);
 		if (start < 45 && level >= 45)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_45);
-		if (start < 48 && level >= 48)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_48);
-		if (start < 52 && level >= 52)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_52);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP45_VALUE);
+		if (start < 50 && level >= 50)
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP50_VALUE);
 		if (start < 55 && level >= 55)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_55);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP55_VALUE);
 		if (start < 60 && level >= 60)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_LEVELUP_60);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP60_VALUE);
 		
 		taskService.sendTask3Score(user, TaskConst.TARGET_HERO_LEVELUP);
 	}
@@ -891,24 +874,28 @@ public class ActivityService {
 			if (heroInfo.length > 1)
 				heroInfoList.add(TypeTranslatedUtil.stringToInt(heroInfo[1]));
 		}
-		/**
-		 * 上阵英雄数量
-		 */
-		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UP_HERO_VALUE, heroList.size(), false);
 	
+		int quality1Count = 0;
+		int quality2Count = 0;
 		int quality3Count = 0;
 		int quality4Count = 0;
 		int quality5Count = 0;
 		/**
-		 * 上阵盖伦
+		 * 上阵阿瑞斯
 		 */
+		Map<String, Hero> map = heroService.getHeroMap();
 		for (int heroId : heroList) {
-			if (heroId == 17)
-				taskService.sendTask1Score(user, TaskConst.TARGET_SHANGZHEN_GAILUN, heroId, false);
+			if (heroId == 20)
+				taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_TEAMUP_ARUISI_VALUE, heroId, false);
 			
-			Hero hero = heroService.getHero(heroId);
+			if (heroId == 0)
+				continue;
+			Hero hero = map.get("" + heroId);
 			if (hero == null)
 				continue;
+			++quality1Count;
+			if (hero.getQuality() >= 2)
+				++quality2Count;
 			if (hero.getQuality() >= 3)
 				++quality3Count;
 			if (hero.getQuality() >= 4)
@@ -917,9 +904,11 @@ public class ActivityService {
 				++quality5Count;
 		}
 		
-		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_QUALITY_3, quality3Count, false);
-		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_QUALITY_4, quality4Count, false);
-		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_QUALITY_5, quality5Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UPHERO_QUALITY1_VALUE, quality1Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UPHERO_QUALITY2_VALUE, quality2Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UPHERO_QUALITY3_VALUE, quality3Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UPHERO_QUALITY4_VALUE, quality4Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UPHERO_QUALITY5_VALUE, quality5Count, false);
 		
 		int star2Count = 0;
 		int star3Count = 0;
@@ -988,19 +977,34 @@ public class ActivityService {
 		if (heroId == user.getFirstGetHeroId() && skillIndex == 1)
 			taskService.sendTask1Score(user, TaskConst.TARGET_START_HERO_SKILL_1, skillLevel, false);
 		
-		if (heroId == 17 && skillIndex == 2) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_GAILUN_SKILL_2, skillLevel, false);
+		/**
+		 * 升级阿瑞斯技能
+		 */
+		if (heroId == 20 && skillIndex == 1) {
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ARUISI_SKILL1_LEVELUP_VALUE, skillLevel, false);
+		}
+		
+		if (heroId == 20 && skillIndex == 2) {
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ARUISI_SKILL1_LEVELUP_VALUE, skillLevel, false);
 		}
 		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_SKILL_LEVELUP_VALUE);
 	}
 	
 	/**
+	 * 添加英雄装备
+	 */
+	public void addHeroEquip(UserBean user, int heroId, int equipId) {
+		if (heroId == 20 && equipId == 10001)
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ARUISI_EQUIP_ADD10001_VALUE, false);
+	}
+	
+	/**
 	 * 提升征战天下区域buff
 	 */
 	public void upPvpBuff(UserBean user, int fieldId, int buff) {
-		if (fieldId == 101) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_MINE_1_BUFF, buff, false);
+		if (buff == 5) {
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_PVP_BUFF_LEVELUP5_VALUE, fieldId, false);
 		}
 	}
 	
@@ -1008,7 +1012,7 @@ public class ActivityService {
 	 * 激活羁绊
 	 */
 	public void openFetters(UserBean user) {
-		taskService.sendTask1Score(user, TaskConst.TARGET_OPEN_FETTERS);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_FETTERS_OPEN_VALUE);
 	}
 	
 	/**
@@ -1036,16 +1040,28 @@ public class ActivityService {
 	 * 强化装备的活动
 	 */
 	public void levelupEquip(UserBean user, int level) {
-		if (level == 10) {
-			List<UserEquipPokedeBean> equipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
-			int count = 0;
-			for (UserEquipPokedeBean equipPokede : equipPokedeList) {
-				if (equipPokede.getLevel() >= 10)
-					++count;
-			}
-			
-			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE, count);
+		int level1Count = 0;
+		int level3Count = 0;
+		int level5Count = 0;
+		int level10Count = 0;
+		List<UserEquipPokedeBean> equipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+		for (UserEquipPokedeBean equipPokede : equipPokedeList) {
+			if (equipPokede.getLevel() >= 1)
+				++level1Count;
+			if (equipPokede.getLevel() >= 3)
+				++level3Count;
+			if (equipPokede.getLevel() >= 5)
+				++level5Count;
+			if (equipPokede.getLevel() >= 10)
+				++level10Count;
 		}
+		
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE, level10Count);
+		
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP1_VALUE, level1Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP3_VALUE, level3Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP5_VALUE, level5Count, false);
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP10_VALUE, level10Count, false);
 		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_VALUE);
 	}
@@ -1094,12 +1110,15 @@ public class ActivityService {
 			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_WUQI_GET_VALUE);
 	}
 	
-	public void zhujueLevelup(UserBean user, int level) {
-		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVEL_VALUE, level, false);
+	public void zhujueLevelup(UserBean user, int talentId, int level) {
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP_VALUE, level, false);
+		
+		if (talentId >=5)
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE, talentId, false);
 	}
 	
 	public void completeEvent(UserBean user, int eventId) {
-		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE, eventId, false);
+//		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE, eventId, false);
 		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_DAILY_VALUE);
 	}
@@ -1109,12 +1128,18 @@ public class ActivityService {
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_PUTONGSHOP_BUY_VALUE);
 	}
 	
-	public void raidKill(UserBean user) {
+	public void raidKill(UserBean user, int id) {
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_FUBEN_KILL_BOSS_VALUE);
+		
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_FIGHT_FUBEN_VALUE, id, false);
 	}
 	
 	public void merLevel(UserBean user, int level) {
 		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_ZHANLI_VALUE, level);
+	}
+	
+	public void equipChafenqi(UserBean user, List<TeamEngine> teamEngineList) {
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_TEAM_UPCHAFENQI_VALUE, teamEngineList.size(), false);
 	}
 	
 	/**
