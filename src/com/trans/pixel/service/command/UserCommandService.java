@@ -173,7 +173,7 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	private UserTalent addRegisterTalent(UserBean user, int id) {
-		return userTalentService.getRegisterTalent(user, id);
+		return userTalentService.initTalent(user, id);
 	}
 	
 	private void addRegisterTeam(UserBean user, int roleId) {

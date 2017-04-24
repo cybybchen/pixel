@@ -2,7 +2,6 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -20,6 +19,7 @@ import com.trans.pixel.model.userinfo.EventBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.HeroChoice;
 import com.trans.pixel.protoc.UserInfoProto.Area;
 import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
@@ -28,13 +28,13 @@ import com.trans.pixel.protoc.UserInfoProto.AreaList;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.DaguanList;
 import com.trans.pixel.protoc.UserInfoProto.Event;
-import com.trans.pixel.protoc.UserInfoProto.Event.Builder;
 import com.trans.pixel.protoc.UserInfoProto.EventLevel;
 import com.trans.pixel.protoc.UserInfoProto.EventLevelList;
 import com.trans.pixel.protoc.UserInfoProto.EventRandoms;
 import com.trans.pixel.protoc.UserInfoProto.EventRandomsList;
 import com.trans.pixel.protoc.UserInfoProto.Loot;
 import com.trans.pixel.protoc.UserInfoProto.LootList;
+import com.trans.pixel.service.UserTalentService;
 
 @Repository
 public class LevelRedisService extends RedisService {
@@ -47,6 +47,8 @@ public class LevelRedisService extends RedisService {
 	private UserLevelMapper mapper;
 	@Resource
 	private HeroRedisService heroRedisService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 	public void updateToDB(long userId){
 		UserLevelBean bean = getUserLevel(userId);
@@ -503,5 +505,29 @@ public class LevelRedisService extends RedisService {
 		}
 		
 		return true;
+	}
+	
+	public List<UserTalent> unlockZhujue(UserBean user, Event event) {
+		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
+		int targetId = event.getTargetid();
+		if (targetId < 500 || targetId > 509) 
+			return userTalentList;
+		
+		if (targetId == 500) {
+			Map<String, HeroChoice> map = heroRedisService.getHerochoiceConfig();
+			for (HeroChoice choice : map.values()) {
+				if (choice.getId() != user.getFirstGetHeroId()) {
+					UserTalent userTalent = userTalentService.initTalent(user, choice.getId());
+					if (userTalent != null)
+						userTalentList.add(userTalent);
+				}
+			}
+		} else {
+			UserTalent userTalent = userTalentService.initTalent(user, targetId - 500);
+			if (userTalent != null)
+				userTalentList.add(userTalent);
+		}
+		
+		return userTalentList;
 	}
 }

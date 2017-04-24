@@ -103,7 +103,7 @@ public class UserTalentService {
 		return null;
 	}
 	
-	public UserTalent getRegisterTalent(UserBean user, int id) {
+	public UserTalent initTalent(UserBean user, int id) {
 		UserTalent.Builder builder = initUserTalent(user, id);
 		if (builder == null)
 			return null;

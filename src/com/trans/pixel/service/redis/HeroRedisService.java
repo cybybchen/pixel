@@ -49,7 +49,7 @@ public class HeroRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, HeroChoice> getHerochoiceConfig() {
+	public Map<String, HeroChoice> getHerochoiceConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.HERO_CHOICE_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, HeroChoice> map = buildHerochoiceConfig();

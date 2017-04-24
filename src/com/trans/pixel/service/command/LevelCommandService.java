@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
@@ -233,6 +234,13 @@ public class LevelCommandService extends BaseCommandService {
 				 * 完成事件的活动
 				 */
 				activityService.completeEvent(user, event.getEventid());
+				
+				/**
+				 * 解锁主角
+				 */
+				List<UserTalent> userTalentList = redis.unlockZhujue(user, event);
+				if (!userTalentList.isEmpty())
+					pusher.pushUserTalentListNotPushSkill(responseBuilder, user, userTalentList);
 			}else if(event.getOrder() >= 10000 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event);
 		}

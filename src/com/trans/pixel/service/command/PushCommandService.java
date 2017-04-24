@@ -537,6 +537,12 @@ public class PushCommandService extends BaseCommandService {
 		responseBuilder.setUserTalentCommand(builder.build());
 	}
 	
+	public void pushUserTalentListNotPushSkill(Builder responseBuilder, UserBean user, List<UserTalent> userTalentList) {
+		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+		builder.addAllUserTalent(userTalentList);
+		responseBuilder.setUserTalentCommand(builder.build());
+	}
+	
 	public void pushUserTalent(Builder responseBuilder, UserBean user, UserTalent userTalent) {
 		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
 		builder.addUserTalent(userTalent);
