@@ -122,6 +122,9 @@ public class LevelCommandService extends BaseCommandService {
 					}
 				}
 				
+				/**
+				 * 过关的活动
+				 */
 				activityService.levelActivity(user, id, daguan.getAreaid());
 			}
 		}else if(id != userLevel.getLootDaguan() && id != 0){

@@ -332,10 +332,13 @@ public class RewardTaskService {
 	public ResultConst giveupRewardtask(UserBean user, int index, UserRewardTask.Builder rewardTaskBuilder, UserRewardTaskRoom.Builder builder) {
 		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		
-		if (userRewardTask.getRoomInfo() != null && userRewardTask.getRoomInfo().getUser().getId() != user.getId())
-			return ErrorConst.CAN_NOT_GIVEUP_REWARDTASK_ERROR;
+		if (userRewardTask.hasRoomInfo() && userRewardTask.getRoomInfo() != null) {
+			ResultConst ret = quitRoom(user, user.getId(), index, rewardTaskBuilder, builder);
+			if (ret instanceof ErrorConst)
+				return ret;
+		}
 		
-		rewardTaskBuilder = UserRewardTask.newBuilder(userRewardTask);
+		rewardTaskBuilder.mergeFrom(userRewardTask);
 		rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 		
 		userRewardTaskService.updateUserRewardTask(user, rewardTaskBuilder.build());
