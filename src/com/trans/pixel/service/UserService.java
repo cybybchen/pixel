@@ -199,7 +199,7 @@ public class UserService {
 		}
 	}
 	
-	private void handleRewardTaskDailyReward(UserBean user) {
+	public void handleRewardTaskDailyReward(UserBean user) {
 		int addCount = 0;
 		int addId = 0;
 		UserLevelBean userLevel = levelRedisService.getUserLevel(user);

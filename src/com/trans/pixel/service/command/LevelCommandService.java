@@ -244,6 +244,11 @@ public class LevelCommandService extends BaseCommandService {
 				List<UserTalent> userTalentList = redis.unlockZhujue(user, event);
 				if (!userTalentList.isEmpty())
 					pusher.pushUserTalentListNotPushSkill(responseBuilder, user, userTalentList);
+				
+				/**
+				 * 完成事件解锁每日奖励
+				 */
+				userService.handleRewardTaskDailyReward(user);
 			}else if(event.getOrder() >= 10000 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event);
 		}

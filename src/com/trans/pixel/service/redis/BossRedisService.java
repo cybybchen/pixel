@@ -124,7 +124,7 @@ public class BossRedisService extends RedisService {
 		}
 		
 		Map<String, BosslootGroup> map = new HashMap<String, BosslootGroup>();
-		for(BosslootGroup.Builder bosslootGroup : builder.getBossBuilderList()){
+		for(BosslootGroup.Builder bosslootGroup : builder.getIdBuilderList()){
 			map.put("" + bosslootGroup.getId(), bosslootGroup.build());
 		}
 		return map;
