@@ -2500,6 +2500,20 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestExtraRewardCommand extraRewardCommand = 241;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommandOrBuilder getExtraRewardCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+     */
+    boolean hasEventBuyCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand getEventBuyCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommandOrBuilder getEventBuyCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -4860,6 +4874,19 @@ public final class Request {
                 extraRewardCommand_ = subBuilder.buildPartial();
               }
               bitField5_ |= 0x00010000;
+              break;
+            }
+            case 1938: {
+              com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder subBuilder = null;
+              if (((bitField5_ & 0x00020000) == 0x00020000)) {
+                subBuilder = eventBuyCommand_.toBuilder();
+              }
+              eventBuyCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(eventBuyCommand_);
+                eventBuyCommand_ = subBuilder.buildPartial();
+              }
+              bitField5_ |= 0x00020000;
               break;
             }
           }
@@ -8813,6 +8840,28 @@ public final class Request {
       return extraRewardCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;
+    public static final int EVENTBUYCOMMAND_FIELD_NUMBER = 242;
+    private com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand eventBuyCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+     */
+    public boolean hasEventBuyCommand() {
+      return ((bitField5_ & 0x00020000) == 0x00020000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand getEventBuyCommand() {
+      return eventBuyCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommandOrBuilder getEventBuyCommandOrBuilder() {
+      return eventBuyCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.UserInfoProto.HeadInfo.getDefaultInstance();
       registerCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand.getDefaultInstance();
@@ -8991,6 +9040,7 @@ public final class Request {
       synthetiseComposeCommand_ = com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand.getDefaultInstance();
       giveupRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.getDefaultInstance();
       extraRewardCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.getDefaultInstance();
+      eventBuyCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9623,6 +9673,12 @@ public final class Request {
           return false;
         }
       }
+      if (hasEventBuyCommand()) {
+        if (!getEventBuyCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -10160,6 +10216,9 @@ public final class Request {
       }
       if (((bitField5_ & 0x00010000) == 0x00010000)) {
         output.writeMessage(241, extraRewardCommand_);
+      }
+      if (((bitField5_ & 0x00020000) == 0x00020000)) {
+        output.writeMessage(242, eventBuyCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -10878,6 +10937,10 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(241, extraRewardCommand_);
       }
+      if (((bitField5_ & 0x00020000) == 0x00020000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(242, eventBuyCommand_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -11167,6 +11230,7 @@ public final class Request {
           getSynthetiseComposeCommandFieldBuilder();
           getGiveupRewardTaskCommandFieldBuilder();
           getExtraRewardCommandFieldBuilder();
+          getEventBuyCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -12237,6 +12301,12 @@ public final class Request {
           extraRewardCommandBuilder_.clear();
         }
         bitField5_ = (bitField5_ & ~0x00010000);
+        if (eventBuyCommandBuilder_ == null) {
+          eventBuyCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance();
+        } else {
+          eventBuyCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00020000);
         return this;
       }
 
@@ -13691,6 +13761,14 @@ public final class Request {
         } else {
           result.extraRewardCommand_ = extraRewardCommandBuilder_.build();
         }
+        if (((from_bitField5_ & 0x00020000) == 0x00020000)) {
+          to_bitField5_ |= 0x00020000;
+        }
+        if (eventBuyCommandBuilder_ == null) {
+          result.eventBuyCommand_ = eventBuyCommand_;
+        } else {
+          result.eventBuyCommand_ = eventBuyCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -14242,6 +14320,9 @@ public final class Request {
         }
         if (other.hasExtraRewardCommand()) {
           mergeExtraRewardCommand(other.getExtraRewardCommand());
+        }
+        if (other.hasEventBuyCommand()) {
+          mergeEventBuyCommand(other.getEventBuyCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -14870,6 +14951,12 @@ public final class Request {
         }
         if (hasExtraRewardCommand()) {
           if (!getExtraRewardCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasEventBuyCommand()) {
+          if (!getEventBuyCommand().isInitialized()) {
             
             return false;
           }
@@ -35646,6 +35733,123 @@ public final class Request {
         return extraRewardCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;
+      private com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand eventBuyCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand, com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder, com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommandOrBuilder> eventBuyCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public boolean hasEventBuyCommand() {
+        return ((bitField5_ & 0x00020000) == 0x00020000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand getEventBuyCommand() {
+        if (eventBuyCommandBuilder_ == null) {
+          return eventBuyCommand_;
+        } else {
+          return eventBuyCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public Builder setEventBuyCommand(com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand value) {
+        if (eventBuyCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          eventBuyCommand_ = value;
+          onChanged();
+        } else {
+          eventBuyCommandBuilder_.setMessage(value);
+        }
+        bitField5_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public Builder setEventBuyCommand(
+          com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder builderForValue) {
+        if (eventBuyCommandBuilder_ == null) {
+          eventBuyCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBuyCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField5_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public Builder mergeEventBuyCommand(com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand value) {
+        if (eventBuyCommandBuilder_ == null) {
+          if (((bitField5_ & 0x00020000) == 0x00020000) &&
+              eventBuyCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance()) {
+            eventBuyCommand_ =
+              com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.newBuilder(eventBuyCommand_).mergeFrom(value).buildPartial();
+          } else {
+            eventBuyCommand_ = value;
+          }
+          onChanged();
+        } else {
+          eventBuyCommandBuilder_.mergeFrom(value);
+        }
+        bitField5_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public Builder clearEventBuyCommand() {
+        if (eventBuyCommandBuilder_ == null) {
+          eventBuyCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          eventBuyCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00020000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder getEventBuyCommandBuilder() {
+        bitField5_ |= 0x00020000;
+        onChanged();
+        return getEventBuyCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommandOrBuilder getEventBuyCommandOrBuilder() {
+        if (eventBuyCommandBuilder_ != null) {
+          return eventBuyCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return eventBuyCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand, com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder, com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommandOrBuilder> 
+          getEventBuyCommandFieldBuilder() {
+        if (eventBuyCommandBuilder_ == null) {
+          eventBuyCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand, com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder, com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommandOrBuilder>(
+                  eventBuyCommand_,
+                  getParentForChildren(),
+                  isClean());
+          eventBuyCommand_ = null;
+        }
+        return eventBuyCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
     }
 
@@ -35679,7 +35883,7 @@ public final class Request {
       "oto.proto\032\021LadderProto.proto\032\023UserInfoPr" +
       "oto.proto\032\017MailProto.proto\032\020UnionProto.p" +
       "roto\032\025RewardTaskProto.proto\032\017TaskProto.p" +
-      "roto\"\237r\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 ." +
+      "roto\"\351r\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 ." +
       "com.trans.pixel.protoc.HeadInfo\022G\n\017regis",
       "terCommand\030\002 \001(\0132..com.trans.pixel.proto" +
       "c.RequestRegisterCommand\022A\n\014loginCommand" +
@@ -36044,7 +36248,9 @@ public final class Request {
       "Command\030\360\001 \001(\01326.com.trans.pixel.protoc." +
       "RequestGiveupRewardTaskCommand\022N\n\022extraR" +
       "ewardCommand\030\361\001 \001(\01321.com.trans.pixel.pr" +
-      "otoc.RequestExtraRewardCommand"
+      "otoc.RequestExtraRewardCommand\022H\n\017eventB" +
+      "uyCommand\030\362\001 \001(\0132..com.trans.pixel.proto" +
+      "c.RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -36056,7 +36262,7 @@ public final class Request {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", });
           return null;
         }
       };

@@ -43,6 +43,7 @@ public class LevelRedisService extends RedisService {
 	private static final int NEWPLAY_LEVEL_2 = 1013;
 	private static final int NEWPLAY_LEVEL_3 = 1014;
 	public static final int EVENTTIME = 1200;
+	private static final long EVENT_BUY_COUNT = 5;
 	@Resource
 	private UserLevelMapper mapper;
 	@Resource
@@ -160,13 +161,17 @@ public class LevelRedisService extends RedisService {
 	// 	return false;
 	// }
 	public void productEvent(UserBean user, UserLevelBean userLevel){
+		productEvent(user, userLevel, userLevel.getLootDaguan(), false);
+	}
+	
+	public void productEvent(UserBean user, UserLevelBean userLevel, int daguan, boolean isBuy){
 		long time = now() - userLevel.getEventTime();
 		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId());
-		if(eventsize >= 20){
+		if(!isBuy && eventsize >= 20){
 			userLevel.setEventTime((int)now());
 			saveUserLevel(userLevel);
 		}else if(time >= EVENTTIME){
-			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
+			AreaEvent.Builder events = getDaguanEvent(daguan);
 			if(events != null){
 				for(Event.Builder myevent : getEvents(userLevel).values()){
 					for(Event.Builder event : events.getEventBuilderList()){
@@ -179,14 +184,15 @@ public class LevelRedisService extends RedisService {
 						}
 					}
 				}
-				for(int i = 0; i < Math.min(20-eventsize,time/EVENTTIME); i++){
+				
+				for(int i = 0; i < getProductEvnentCount(eventsize, time, isBuy); i++){
 					int weight = nextInt(events.getWeight());
 					for(Event.Builder event : events.getEventBuilderList()){
 						weight -= event.getWeight();
 						if(weight < 0){
 							Event.Builder builder = Event.newBuilder(event.build());
 							builder.setOrder(currentIndex()+i);
-							builder.setDaguan(userLevel.getLootDaguan());
+							builder.setDaguan(daguan);
 							EventLevel level = nextEventLevel(userLevel);
 							builder.setLevel(level.getLevel());
 							builder.setCount(level.getCount());
@@ -202,10 +208,20 @@ public class LevelRedisService extends RedisService {
 					}
 				}
 			}
-			userLevel.setEventTime(userLevel.getEventTime()+(int)time/EVENTTIME*EVENTTIME);
-			saveUserLevel(userLevel);
+			if (!isBuy) {
+				userLevel.setEventTime(userLevel.getEventTime()+(int)time/EVENTTIME*EVENTTIME);
+				saveUserLevel(userLevel);
+			}
 		}
 	}
+	
+	private long getProductEvnentCount(long eventsize, long time, boolean isBuy) {
+		if (isBuy)
+			return EVENT_BUY_COUNT;
+		
+		return Math.min(20 - eventsize, time / EVENTTIME);
+	}
+	
 	public Event getEvent(long userId, int order) {
 		String value = hget(RedisKey.USEREVENT_PREFIX+userId, order+"");
 		Event.Builder builder = Event.newBuilder();

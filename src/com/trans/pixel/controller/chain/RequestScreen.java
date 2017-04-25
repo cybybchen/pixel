@@ -103,6 +103,7 @@ import com.trans.pixel.protoc.RechargeProto.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.MailProto.RequestReceiveFriendCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
 import com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand;
 import com.trans.pixel.protoc.AreaProto.RequestRefreshAreaCommand;
@@ -292,6 +293,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBrotherMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEventBuyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRaidShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
@@ -782,6 +784,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasLevelLootResultCommand()) {
 			RequestLevelLootResultCommand cmd = request.getLevelLootResultCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasEventBuyCommand()) {
+			RequestEventBuyCommand cmd = request.getEventBuyCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasOpenRaidCommand()) {

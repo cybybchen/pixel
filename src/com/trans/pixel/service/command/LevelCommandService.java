@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventReward;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
@@ -372,6 +373,12 @@ public class LevelCommandService extends BaseCommandService {
 		logService.sendCallBrotherLog(user.getServerId(), cmd.getRet() ? 1 : 2, user.getId(), friendUserId);
 	}
 	 
+	public void eventBuy(RequestEventBuyCommand cmd, Builder responseBuilder, UserBean user) {
+		UserLevelBean userLevel = redis.getUserLevel(user);
+		redis.productEvent(user, userLevel, cmd.getDaguan(), true);
+		pushLevelLootCommand(responseBuilder, userLevel, user);
+	}
+	
 	private void sendHelpMail(UserBean friend, UserBean user, List<RewardBean> rewardList) {
 		String content = user.getUserName() + "帮你过关啦！"; 
 		MailBean mail = MailBean.buildMail(friend.getId(), user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);

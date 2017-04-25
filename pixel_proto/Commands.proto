@@ -2664,6 +2664,10 @@ message ResponseLevelLootCommand {
 	optional int32 eventTime = 5;
 	repeated Event event = 6;
 }
+
+message RequestEventBuyCommand {
+	required uint32 daguan = 1;	
+}
 ////////// MailProto
 message Mail {
 	required int32 id = 1;
@@ -3444,6 +3448,7 @@ message RequestCommand {
 	optional RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;
 	optional RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;
 	optional RequestExtraRewardCommand extraRewardCommand = 241;
+	optional RequestEventBuyCommand eventBuyCommand = 242;
 }
 ////////// Commands
 message ErrorCommand {

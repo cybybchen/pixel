@@ -175,6 +175,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
@@ -1331,6 +1332,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestExtraRewardCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		userCommandService.extra(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEventBuyCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		levelCommandService.eventBuy(cmd, responseBuilder, user);
 		return true;
 	}
 
