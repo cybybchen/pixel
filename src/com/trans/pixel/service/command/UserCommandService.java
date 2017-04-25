@@ -244,7 +244,7 @@ public class UserCommandService extends BaseCommandService {
 			/**
 			 * send greenhand log
 			 */
-			logService.sendGreenhandLog(user.getServerId(), user.getId(), cmd.getGreenhand());
+//			logService.sendGreenhandLog(user.getServerId(), user.getId(), cmd.getGreenhand());
 		}
 		if (cmd.hasAdvance())
 			user.setAdvance(cmd.getAdvance());

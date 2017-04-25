@@ -34,13 +34,14 @@ public class LogString {
 	public static final String DEFENSE_TEAM_LIST = "defenseteamlist";
 	public static final String RESULT = "result";
 	public static final String RANK = "rank";
+	public static final String NEWRANK = "newrank";
 	public static final String ATTACK_TIME = "attackTime";
 	public static final String OPERATION = "operation";
 	public static final String TEAM_LIST = "teamlist";
 	public static final String ENEMY_LIST = "enemylist";
 	public static final String ENEMYID = "enemyid";
 	public static final String TYPE = "type";
-	public static final String MISSION_TYPE = "missiontype";
+	public static final String MISSIONLEVEL = "missionlevel";
 	public static final String MISSIONID = "missionid";
 	public static final String MISSIONSTEP = "missionstep";
 	public static final String CURRENCY = "currency";
@@ -64,7 +65,9 @@ public class LogString {
 	public static final String LEVEL = "level";
 	public static final String IDFA = "idfa";
 	public static final String ZHANLI = "zhanli";
-	
+	public static final String PRELEVEL = "prelevel";
+	public static final String EQUIPRARE = "equiprare";
+	public static final String COINCOST = "coincost";
 	public static final String MODE = "mode";
 	public static final String PHONEUUID = "phoneuuid";
 	public static final String LOGINTYPE = "logintype";
@@ -86,9 +89,12 @@ public class LogString {
 	
 	public static final String SHOPID = "shopid";
 	
-	public static final String GREENHAND = "greenhand";
+	public static final String ID = "id";
+	public static final String ORDERID = "orderid";
 	public static final String HEROID = "heroid";
 	public static final String RARE = "rare";
+	public static final String GRADE = "grade";
+	public static final String HEROTYPE = "herotype";
 	public static final String STAR = "star";
 	public static final String VALUE = "value";
 	public static final String SKILLID = "skillid";
@@ -132,6 +138,14 @@ public class LogString {
 	public static final String ADVISE = "advise";
 	public static final String FLOOR = "floor";
 	public static final String MAXFLOOR = "maxfloor";
+    public static final String EVENTID = "eventid";
+    public static final String EVENTTYPE = "eventtype";
+    public static final String MAP = "map";
+    public static final String INSTANCEID = "instanceid";
+    public static final String PREINSTANCEID = "preinstanceid";
+    public static final String POKEDEX = "pokedex";
+    public static final String ROLEID = "roleid";
+    public static final String TALENTID = "talentid";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -149,7 +163,7 @@ public class LogString {
 	public static final int LOGTYPE_PVE = 12;
 	public static final int LOGTYPE_GREENHAND = 13;
 	public static final int LOGTYPE_LEVELUP = 14;
-	public static final int LOGTYPE_RAREUP = 15;
+	public static final int LOGTYPE_GRADEUP = 15;
 	public static final int LOGTYPE_STARUP = 16;
 	public static final int LOGTYPE_SKILLUP = 17;
 	public static final int LOGTYPE_EQUIPUP = 18;
@@ -164,6 +178,11 @@ public class LogString {
 	public static final int LOGTYPE_WORLDBOSS = 27;
 	public static final int LOGTYPE_QUESTION = 28;
 	public static final int LOGTYPE_BATTLETOWER = 29;
+	public static final int LOGTYPE_EVENT = 30;
+	public static final int LOGTYPE_RAID = 31;
+	public static final int LOGTYPE_ROLELEVELUP = 32;
+	public static final int LOGTYPE_HERORES = 33;
+	public static final int LOGTYPE_REWARDBOSS = 34;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -180,9 +199,10 @@ public class LogString {
 	public static final String LOGTYPE_PVE_STR = "Pve";
 	public static final String LOGTYPE_GREENHAND_STR = "Greenhand";
 	public static final String LOGTYPE_LEVELUP_STR = "Levelup";
-	public static final String LOGTYPE_RAREUP_STR = "Rareup";
+	public static final String LOGTYPE_GRADEUP_STR = "Gradeup";
 	public static final String LOGTYPE_STARUP_STR = "Starup";
 	public static final String LOGTYPE_SKILLUP_STR = "Skillup";
+	public static final String LOGTYPE_HERORES_STR = "Herores";
 	public static final String LOGTYPE_EQUIPUP_STR = "Equipup";
 	public static final String LOGTYPE_QIYUE_STR = "Qiyue";
 	public static final String LOGTYPE_QIANGHUA_STR = "Qianghua";
@@ -195,6 +215,10 @@ public class LogString {
 	public static final String LOGTYPE_WORLDBOSS_STR = "Worldboss";
 	public static final String LOGTYPE_QUESTION_STR = "Question";
 	public static final String LOGTYPE_BATTLETOWER_STR = "Battletower";
+	public static final String LOGTYPE_EVENT_STR = "Event";
+	public static final String LOGTYPE_RAID_STR = "Raid";
+	public static final String LOGTYPE_ROLELEVELUP_STR = "Rolelevelup";
+	public static final String LOGTYPE_REWARDBOSS_STR = "Rewardboss";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;
