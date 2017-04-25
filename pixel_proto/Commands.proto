@@ -2423,6 +2423,7 @@ message LadderEnemy {
 
 message FightInfo {
 	optional int32 id = 3;
+	optional UserInfo enemy = 4;
 	required string fightInfo = 1;
 	required string fightData = 2;
 }
@@ -2815,7 +2816,7 @@ message Boss {
 }
 
 message BosslootGroupList {
-	repeated BosslootGroup boss = 1;
+	repeated BosslootGroup id = 1;
 }
 
 message BosslootGroup {

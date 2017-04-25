@@ -10272,29 +10272,29 @@ public final class UnionProto {
   public interface BosslootGroupListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;
+    // repeated .com.trans.pixel.protoc.BosslootGroup id = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> 
-        getBossList();
+        getIdList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
-    com.trans.pixel.protoc.UnionProto.BosslootGroup getBoss(int index);
+    com.trans.pixel.protoc.UnionProto.BosslootGroup getId(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
-    int getBossCount();
+    int getIdCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder> 
-        getBossOrBuilderList();
+        getIdOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
-    com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder getBossOrBuilder(
+    com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder getIdOrBuilder(
         int index);
   }
   /**
@@ -10350,10 +10350,10 @@ public final class UnionProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                boss_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.BosslootGroup>();
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.BosslootGroup>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              boss_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.BosslootGroup.PARSER, extensionRegistry));
+              id_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.BosslootGroup.PARSER, extensionRegistry));
               break;
             }
           }
@@ -10365,7 +10365,7 @@ public final class UnionProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          boss_ = java.util.Collections.unmodifiableList(boss_);
+          id_ = java.util.Collections.unmodifiableList(id_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -10398,44 +10398,44 @@ public final class UnionProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;
-    public static final int BOSS_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> boss_;
+    // repeated .com.trans.pixel.protoc.BosslootGroup id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> id_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> getBossList() {
-      return boss_;
+    public java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> getIdList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder> 
-        getBossOrBuilderList() {
-      return boss_;
+        getIdOrBuilderList() {
+      return id_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
-    public int getBossCount() {
-      return boss_.size();
+    public int getIdCount() {
+      return id_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.BosslootGroup getBoss(int index) {
-      return boss_.get(index);
+    public com.trans.pixel.protoc.UnionProto.BosslootGroup getId(int index) {
+      return id_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder getBossOrBuilder(
+    public com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder getIdOrBuilder(
         int index) {
-      return boss_.get(index);
+      return id_.get(index);
     }
 
     private void initFields() {
-      boss_ = java.util.Collections.emptyList();
+      id_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -10449,8 +10449,8 @@ public final class UnionProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < boss_.size(); i++) {
-        output.writeMessage(1, boss_.get(i));
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -10461,9 +10461,9 @@ public final class UnionProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < boss_.size(); i++) {
+      for (int i = 0; i < id_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, boss_.get(i));
+          .computeMessageSize(1, id_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10573,7 +10573,7 @@ public final class UnionProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getBossFieldBuilder();
+          getIdFieldBuilder();
         }
       }
       private static Builder create() {
@@ -10582,11 +10582,11 @@ public final class UnionProto {
 
       public Builder clear() {
         super.clear();
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          bossBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
@@ -10615,14 +10615,14 @@ public final class UnionProto {
       public com.trans.pixel.protoc.UnionProto.BosslootGroupList buildPartial() {
         com.trans.pixel.protoc.UnionProto.BosslootGroupList result = new com.trans.pixel.protoc.UnionProto.BosslootGroupList(this);
         int from_bitField0_ = bitField0_;
-        if (bossBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            boss_ = java.util.Collections.unmodifiableList(boss_);
+            id_ = java.util.Collections.unmodifiableList(id_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.boss_ = boss_;
+          result.id_ = id_;
         } else {
-          result.boss_ = bossBuilder_.build();
+          result.id_ = idBuilder_.build();
         }
         onBuilt();
         return result;
@@ -10639,29 +10639,29 @@ public final class UnionProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.BosslootGroupList other) {
         if (other == com.trans.pixel.protoc.UnionProto.BosslootGroupList.getDefaultInstance()) return this;
-        if (bossBuilder_ == null) {
-          if (!other.boss_.isEmpty()) {
-            if (boss_.isEmpty()) {
-              boss_ = other.boss_;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureBossIsMutable();
-              boss_.addAll(other.boss_);
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
             }
             onChanged();
           }
         } else {
-          if (!other.boss_.isEmpty()) {
-            if (bossBuilder_.isEmpty()) {
-              bossBuilder_.dispose();
-              bossBuilder_ = null;
-              boss_ = other.boss_;
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              bossBuilder_ = 
+              idBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getBossFieldBuilder() : null;
+                   getIdFieldBuilder() : null;
             } else {
-              bossBuilder_.addAllMessages(other.boss_);
+              idBuilder_.addAllMessages(other.id_);
             }
           }
         }
@@ -10692,244 +10692,244 @@ public final class UnionProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;
-      private java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> boss_ =
+      // repeated .com.trans.pixel.protoc.BosslootGroup id = 1;
+      private java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> id_ =
         java.util.Collections.emptyList();
-      private void ensureBossIsMutable() {
+      private void ensureIdIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          boss_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.BosslootGroup>(boss_);
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.BosslootGroup>(id_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.BosslootGroup, com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder, com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder> bossBuilder_;
+          com.trans.pixel.protoc.UnionProto.BosslootGroup, com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder, com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder> idBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> getBossList() {
-        if (bossBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(boss_);
+      public java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
         } else {
-          return bossBuilder_.getMessageList();
+          return idBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public int getBossCount() {
-        if (bossBuilder_ == null) {
-          return boss_.size();
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
         } else {
-          return bossBuilder_.getCount();
+          return idBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.BosslootGroup getBoss(int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);
+      public com.trans.pixel.protoc.UnionProto.BosslootGroup getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
         } else {
-          return bossBuilder_.getMessage(index);
+          return idBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder setBoss(
+      public Builder setId(
           int index, com.trans.pixel.protoc.UnionProto.BosslootGroup value) {
-        if (bossBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureBossIsMutable();
-          boss_.set(index, value);
+          ensureIdIsMutable();
+          id_.set(index, value);
           onChanged();
         } else {
-          bossBuilder_.setMessage(index, value);
+          idBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder setBoss(
+      public Builder setId(
           int index, com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.set(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
           onChanged();
         } else {
-          bossBuilder_.setMessage(index, builderForValue.build());
+          idBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder addBoss(com.trans.pixel.protoc.UnionProto.BosslootGroup value) {
-        if (bossBuilder_ == null) {
+      public Builder addId(com.trans.pixel.protoc.UnionProto.BosslootGroup value) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureBossIsMutable();
-          boss_.add(value);
+          ensureIdIsMutable();
+          id_.add(value);
           onChanged();
         } else {
-          bossBuilder_.addMessage(value);
+          idBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder addBoss(
+      public Builder addId(
           int index, com.trans.pixel.protoc.UnionProto.BosslootGroup value) {
-        if (bossBuilder_ == null) {
+        if (idBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureBossIsMutable();
-          boss_.add(index, value);
+          ensureIdIsMutable();
+          id_.add(index, value);
           onChanged();
         } else {
-          bossBuilder_.addMessage(index, value);
+          idBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder addBoss(
+      public Builder addId(
           com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
           onChanged();
         } else {
-          bossBuilder_.addMessage(builderForValue.build());
+          idBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder addBoss(
+      public Builder addId(
           int index, com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(index, builderForValue.build());
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
           onChanged();
         } else {
-          bossBuilder_.addMessage(index, builderForValue.build());
+          idBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder addAllBoss(
+      public Builder addAllId(
           java.lang.Iterable<? extends com.trans.pixel.protoc.UnionProto.BosslootGroup> values) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          super.addAll(values, boss_);
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
           onChanged();
         } else {
-          bossBuilder_.addAllMessages(values);
+          idBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder clearBoss() {
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          bossBuilder_.clear();
+          idBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public Builder removeBoss(int index) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.remove(index);
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
           onChanged();
         } else {
-          bossBuilder_.remove(index);
+          idBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder getBossBuilder(
+      public com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder getIdBuilder(
           int index) {
-        return getBossFieldBuilder().getBuilder(index);
+        return getIdFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder getBossOrBuilder(
+      public com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder getIdOrBuilder(
           int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);  } else {
-          return bossBuilder_.getMessageOrBuilder(index);
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder> 
-           getBossOrBuilderList() {
-        if (bossBuilder_ != null) {
-          return bossBuilder_.getMessageOrBuilderList();
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(boss_);
+          return java.util.Collections.unmodifiableList(id_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder addBossBuilder() {
-        return getBossFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
             com.trans.pixel.protoc.UnionProto.BosslootGroup.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder addBossBuilder(
+      public com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder addIdBuilder(
           int index) {
-        return getBossFieldBuilder().addBuilder(
+        return getIdFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.UnionProto.BosslootGroup.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.BosslootGroup boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.BosslootGroup id = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder> 
-           getBossBuilderList() {
-        return getBossFieldBuilder().getBuilderList();
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.UnionProto.BosslootGroup, com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder, com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder> 
-          getBossFieldBuilder() {
-        if (bossBuilder_ == null) {
-          bossBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.UnionProto.BosslootGroup, com.trans.pixel.protoc.UnionProto.BosslootGroup.Builder, com.trans.pixel.protoc.UnionProto.BosslootGroupOrBuilder>(
-                  boss_,
+                  id_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          boss_ = null;
+          id_ = null;
         }
-        return bossBuilder_;
+        return idBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.BosslootGroupList)
@@ -37789,95 +37789,95 @@ public final class UnionProto {
       "d\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\021\n\tbosscount\030\003 \001" +
       "(\005\022\r\n\005count\030\004 \001(\005\022*\n\004boss\030\005 \003(\0132\034.com.tr" +
       "ans.pixel.protoc.Boss\022\014\n\004time\030\006 \001(\005\"\026\n\004B" +
-      "oss\022\016\n\006bossid\030\001 \001(\005\"H\n\021BosslootGroupList" +
-      "\0223\n\004boss\030\001 \003(\0132%.com.trans.pixel.protoc." +
-      "BosslootGroup\"K\n\rBosslootGroup\022\n\n\002id\030\001 \001" +
-      "(\005\022.\n\004loot\030\002 \003(\0132 .com.trans.pixel.proto" +
-      "c.Bossloot\"\316\001\n\010Bossloot\022\021\n\tweightall\030\001 \001",
-      "(\005\022\017\n\007itemid1\030\002 \001(\005\022\022\n\nitemcount1\030\003 \001(\005\022" +
-      "\017\n\007weight1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\022\n\nite" +
-      "mcount2\030\006 \001(\005\022\017\n\007weight2\030\007 \001(\005\022\017\n\007itemid" +
-      "3\030\010 \001(\005\022\022\n\nitemcount3\030\t \001(\005\022\017\n\007weight3\030\n" +
-      " \001(\005\022\r\n\005order\030\013 \001(\005\"\200\001\n\017UserBattletower\022" +
-      "\016\n\006userId\030\001 \001(\003\022\020\n\010toptower\030\002 \001(\005\022\024\n\014cur" +
-      "renttower\030\003 \001(\005\022\022\n\nresettimes\030\004 \001(\005\022\021\n\tl" +
-      "efttimes\030\005 \001(\005\022\016\n\006random\030\006 \001(\005\"\352\001\n\013Tower" +
-      "Reward\022\n\n\002id\030\001 \001(\005\022\r\n\005floor\030\002 \001(\005\022\016\n\006flo" +
-      "ora\030\003 \001(\005\022\016\n\006floorb\030\004 \001(\005\022\020\n\010rewardid\030\005 ",
-      "\001(\005\022\023\n\013rewardcount\030\006 \001(\005\022\021\n\trewardid1\030\007 " +
-      "\001(\005\022\024\n\014rewardcount1\030\010 \001(\005\022\021\n\trewardid2\030\t" +
-      " \001(\005\022\024\n\014rewardcount2\030\n \001(\005\022\021\n\trewardid3\030" +
-      "\013 \001(\005\022\024\n\014rewardcount3\030\014 \001(\005\"B\n\017TowerRewa" +
-      "rdList\022/\n\002id\030\001 \003(\0132#.com.trans.pixel.pro" +
-      "toc.TowerReward\"R\n\037RequestSubmitBattleto" +
-      "werCommand\022\017\n\007success\030\001 \002(\010\022\r\n\005tower\030\002 \001" +
-      "(\005\022\017\n\007enemyId\030\003 \001(\005\"1\n\036RequestResetBattl" +
-      "etowerCommand\022\017\n\007enemyId\030\001 \001(\005\"T\n\034Reques" +
-      "tGetBattletowerCommand\0224\n\003ubt\030\001 \001(\0132\'.co",
-      "m.trans.pixel.protoc.UserBattletower\"V\n\036" +
-      "ResponseUserBattletowerCommand\0224\n\003ubt\030\001 " +
-      "\001(\0132\'.com.trans.pixel.protoc.UserBattlet" +
-      "ower\"\032\n\030RequestBloodEnterCommand\"1\n\031Requ" +
-      "estBloodXiazhuCommand\022\024\n\014xiazhuUserId\030\001 " +
-      "\002(\003\"y\n\035RequestInviteFightBossCommand\022\016\n\006" +
-      "userId\030\001 \003(\003\022\017\n\007groupId\030\002 \001(\005\022\016\n\006bossId\030" +
-      "\003 \001(\005\022\024\n\014createUserId\030\004 \001(\003\022\021\n\tstartDate" +
-      "\030\005 \001(\t\"-\n\033RequestQuitFightBossCommand\022\016\n" +
-      "\006userId\030\001 \002(\003\"Y\n\035ResponseBossRoomRecordC",
-      "ommand\0228\n\010bossRoom\030\001 \002(\0132&.com.trans.pix" +
-      "el.protoc.BossRoomRecord\"4\n!RequestSubmi" +
-      "tBossRoomScoreCommand\022\017\n\007percent\030\001 \002(\005\"\035" +
-      "\n\033RequestStartBossRoomCommand\"?\n\034Request" +
-      "CreateBossRoomCommand\022\017\n\007groupId\030\002 \002(\005\022\016" +
-      "\n\006bossId\030\003 \002(\005\"\034\n\032RequestBossRoomInfoCom" +
-      "mand\"@\n\rUnionBossList\022/\n\004boss\030\001 \003(\0132!.co" +
-      "m.trans.pixel.protoc.UnionBoss\"\205\002\n\tUnion" +
-      "Boss\022\n\n\002id\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\020\n\010target" +
-      "id\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010lasttim",
-      "e\030\005 \001(\005\022\n\n\002HP\030\006 \001(\005\0226\n\005skill\030\007 \003(\0132\'.com" +
-      ".trans.pixel.protoc.UnionBoss.Skill\022\023\n\013r" +
-      "efreshtime\030\010 \001(\005\022\r\n\005count\030\t \001(\005\022\020\n\010handb" +
-      "ook\030\n \001(\005\032+\n\005Skill\022\016\n\006skilid\030\001 \001(\005\022\022\n\nsk" +
-      "illlevel\030\002 \001(\005\"H\n\021UnionBosslootList\0223\n\004b" +
-      "oss\030\001 \003(\0132%.com.trans.pixel.protoc.Union" +
-      "Bossloot\"T\n\rUnionBossloot\022\n\n\002id\030\001 \001(\005\0227\n" +
-      "\004item\030\002 \003(\0132).com.trans.pixel.protoc.Uni" +
-      "onBosslootItem\"\313\001\n\021UnionBosslootItem\022\r\n\005" +
-      "order\030\013 \001(\r\022\021\n\tweightall\030\001 \001(\005\022\017\n\007itemid",
-      "1\030\002 \001(\005\022\016\n\006count1\030\003 \001(\005\022\017\n\007weight1\030\004 \001(\005" +
-      "\022\017\n\007itemid2\030\005 \001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007wei" +
-      "ght2\030\007 \001(\005\022\017\n\007itemid3\030\010 \001(\005\022\016\n\006count3\030\t " +
-      "\001(\005\022\017\n\007weight3\030\n \001(\005\"F\n\020UnionBosswinList" +
-      "\0222\n\004boss\030\001 \003(\0132$.com.trans.pixel.protoc." +
-      "UnionBosswin\"J\n\014UnionBosswin\022\n\n\002id\030\001 \001(\005" +
-      "\022.\n\004rank\030\002 \003(\0132 .com.trans.pixel.protoc." +
-      "RankItem\"h\n\010RankItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005ra" +
-      "nk1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006reward\030\n \003(\0132\"" +
-      ".com.trans.pixel.protoc.RewardInfo\"7\n\031Re",
-      "questCreateUnionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n" +
-      "\004name\030\002 \002(\t\"+\n\030RequestApplyUnionCommand\022" +
-      "\017\n\007unionId\030\001 \002(\005\"7\n\030RequestReplyUnionCom" +
-      "mand\022\n\n\002id\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037Req" +
-      "uestHandleUnionMemberCommand\022\n\n\002id\030\001 \002(\003" +
-      "\022\013\n\003job\030\002 \002(\005\"\034\n\032RequestUpgradeUnionComm" +
-      "and\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001" +
-      "(\003\"\031\n\027RequestUnionInfoCommand\"<\n\031Request" +
-      "AttackUnionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006t" +
-      "eamid\030\002 \002(\003\"+\n\031RequestDefendUnionCommand",
-      "\022\016\n\006teamid\030\002 \002(\003\"H\n\030ResponseUnionInfoCom" +
-      "mand\022,\n\005union\030\001 \001(\0132\035.com.trans.pixel.pr" +
-      "otoc.Union\"\031\n\027RequestUnionListCommand\"H\n" +
-      "\030ResponseUnionListCommand\022,\n\005union\030\001 \003(\013" +
-      "2\035.com.trans.pixel.protoc.Union\"?\n\034Reque" +
-      "stSubmitBosskillCommand\022\017\n\007groupId\030\001 \002(\005" +
-      "\022\016\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskillComma" +
-      "nd\"R\n\027ResponseBosskillCommand\0227\n\006record\030" +
-      "\001 \003(\0132\'.com.trans.pixel.protoc.BossGroup" +
-      "Record\"V\n\030ResponseUnionBossCommand\022:\n\tun",
-      "ionBoss\030\001 \003(\0132\'.com.trans.pixel.protoc.U" +
-      "nionBossRecord\"K\n\034RequestUnionBossFightC" +
-      "ommand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007pe" +
-      "rcent\030\003 \001(\005"
+      "oss\022\016\n\006bossid\030\001 \001(\005\"F\n\021BosslootGroupList" +
+      "\0221\n\002id\030\001 \003(\0132%.com.trans.pixel.protoc.Bo" +
+      "sslootGroup\"K\n\rBosslootGroup\022\n\n\002id\030\001 \001(\005" +
+      "\022.\n\004loot\030\002 \003(\0132 .com.trans.pixel.protoc." +
+      "Bossloot\"\316\001\n\010Bossloot\022\021\n\tweightall\030\001 \001(\005",
+      "\022\017\n\007itemid1\030\002 \001(\005\022\022\n\nitemcount1\030\003 \001(\005\022\017\n" +
+      "\007weight1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\022\n\nitemc" +
+      "ount2\030\006 \001(\005\022\017\n\007weight2\030\007 \001(\005\022\017\n\007itemid3\030" +
+      "\010 \001(\005\022\022\n\nitemcount3\030\t \001(\005\022\017\n\007weight3\030\n \001" +
+      "(\005\022\r\n\005order\030\013 \001(\005\"\200\001\n\017UserBattletower\022\016\n" +
+      "\006userId\030\001 \001(\003\022\020\n\010toptower\030\002 \001(\005\022\024\n\014curre" +
+      "nttower\030\003 \001(\005\022\022\n\nresettimes\030\004 \001(\005\022\021\n\tlef" +
+      "ttimes\030\005 \001(\005\022\016\n\006random\030\006 \001(\005\"\352\001\n\013TowerRe" +
+      "ward\022\n\n\002id\030\001 \001(\005\022\r\n\005floor\030\002 \001(\005\022\016\n\006floor" +
+      "a\030\003 \001(\005\022\016\n\006floorb\030\004 \001(\005\022\020\n\010rewardid\030\005 \001(",
+      "\005\022\023\n\013rewardcount\030\006 \001(\005\022\021\n\trewardid1\030\007 \001(" +
+      "\005\022\024\n\014rewardcount1\030\010 \001(\005\022\021\n\trewardid2\030\t \001" +
+      "(\005\022\024\n\014rewardcount2\030\n \001(\005\022\021\n\trewardid3\030\013 " +
+      "\001(\005\022\024\n\014rewardcount3\030\014 \001(\005\"B\n\017TowerReward" +
+      "List\022/\n\002id\030\001 \003(\0132#.com.trans.pixel.proto" +
+      "c.TowerReward\"R\n\037RequestSubmitBattletowe" +
+      "rCommand\022\017\n\007success\030\001 \002(\010\022\r\n\005tower\030\002 \001(\005" +
+      "\022\017\n\007enemyId\030\003 \001(\005\"1\n\036RequestResetBattlet" +
+      "owerCommand\022\017\n\007enemyId\030\001 \001(\005\"T\n\034RequestG" +
+      "etBattletowerCommand\0224\n\003ubt\030\001 \001(\0132\'.com.",
+      "trans.pixel.protoc.UserBattletower\"V\n\036Re" +
+      "sponseUserBattletowerCommand\0224\n\003ubt\030\001 \001(" +
+      "\0132\'.com.trans.pixel.protoc.UserBattletow" +
+      "er\"\032\n\030RequestBloodEnterCommand\"1\n\031Reques" +
+      "tBloodXiazhuCommand\022\024\n\014xiazhuUserId\030\001 \002(" +
+      "\003\"y\n\035RequestInviteFightBossCommand\022\016\n\006us" +
+      "erId\030\001 \003(\003\022\017\n\007groupId\030\002 \001(\005\022\016\n\006bossId\030\003 " +
+      "\001(\005\022\024\n\014createUserId\030\004 \001(\003\022\021\n\tstartDate\030\005" +
+      " \001(\t\"-\n\033RequestQuitFightBossCommand\022\016\n\006u" +
+      "serId\030\001 \002(\003\"Y\n\035ResponseBossRoomRecordCom",
+      "mand\0228\n\010bossRoom\030\001 \002(\0132&.com.trans.pixel" +
+      ".protoc.BossRoomRecord\"4\n!RequestSubmitB" +
+      "ossRoomScoreCommand\022\017\n\007percent\030\001 \002(\005\"\035\n\033" +
+      "RequestStartBossRoomCommand\"?\n\034RequestCr" +
+      "eateBossRoomCommand\022\017\n\007groupId\030\002 \002(\005\022\016\n\006" +
+      "bossId\030\003 \002(\005\"\034\n\032RequestBossRoomInfoComma" +
+      "nd\"@\n\rUnionBossList\022/\n\004boss\030\001 \003(\0132!.com." +
+      "trans.pixel.protoc.UnionBoss\"\205\002\n\tUnionBo" +
+      "ss\022\n\n\002id\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\020\n\010targetid" +
+      "\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010lasttime\030",
+      "\005 \001(\005\022\n\n\002HP\030\006 \001(\005\0226\n\005skill\030\007 \003(\0132\'.com.t" +
+      "rans.pixel.protoc.UnionBoss.Skill\022\023\n\013ref" +
+      "reshtime\030\010 \001(\005\022\r\n\005count\030\t \001(\005\022\020\n\010handboo" +
+      "k\030\n \001(\005\032+\n\005Skill\022\016\n\006skilid\030\001 \001(\005\022\022\n\nskil" +
+      "llevel\030\002 \001(\005\"H\n\021UnionBosslootList\0223\n\004bos" +
+      "s\030\001 \003(\0132%.com.trans.pixel.protoc.UnionBo" +
+      "ssloot\"T\n\rUnionBossloot\022\n\n\002id\030\001 \001(\005\0227\n\004i" +
+      "tem\030\002 \003(\0132).com.trans.pixel.protoc.Union" +
+      "BosslootItem\"\313\001\n\021UnionBosslootItem\022\r\n\005or" +
+      "der\030\013 \001(\r\022\021\n\tweightall\030\001 \001(\005\022\017\n\007itemid1\030",
+      "\002 \001(\005\022\016\n\006count1\030\003 \001(\005\022\017\n\007weight1\030\004 \001(\005\022\017" +
+      "\n\007itemid2\030\005 \001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007weigh" +
+      "t2\030\007 \001(\005\022\017\n\007itemid3\030\010 \001(\005\022\016\n\006count3\030\t \001(" +
+      "\005\022\017\n\007weight3\030\n \001(\005\"F\n\020UnionBosswinList\0222" +
+      "\n\004boss\030\001 \003(\0132$.com.trans.pixel.protoc.Un" +
+      "ionBosswin\"J\n\014UnionBosswin\022\n\n\002id\030\001 \001(\005\022." +
+      "\n\004rank\030\002 \003(\0132 .com.trans.pixel.protoc.Ra" +
+      "nkItem\"h\n\010RankItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005rank" +
+      "1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006reward\030\n \003(\0132\".c" +
+      "om.trans.pixel.protoc.RewardInfo\"7\n\031Requ",
+      "estCreateUnionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n\004n" +
+      "ame\030\002 \002(\t\"+\n\030RequestApplyUnionCommand\022\017\n" +
+      "\007unionId\030\001 \002(\005\"7\n\030RequestReplyUnionComma" +
+      "nd\022\n\n\002id\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037Reque" +
+      "stHandleUnionMemberCommand\022\n\n\002id\030\001 \002(\003\022\013" +
+      "\n\003job\030\002 \002(\005\"\034\n\032RequestUpgradeUnionComman" +
+      "d\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001(\003" +
+      "\"\031\n\027RequestUnionInfoCommand\"<\n\031RequestAt" +
+      "tackUnionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006tea" +
+      "mid\030\002 \002(\003\"+\n\031RequestDefendUnionCommand\022\016",
+      "\n\006teamid\030\002 \002(\003\"H\n\030ResponseUnionInfoComma" +
+      "nd\022,\n\005union\030\001 \001(\0132\035.com.trans.pixel.prot" +
+      "oc.Union\"\031\n\027RequestUnionListCommand\"H\n\030R" +
+      "esponseUnionListCommand\022,\n\005union\030\001 \003(\0132\035" +
+      ".com.trans.pixel.protoc.Union\"?\n\034Request" +
+      "SubmitBosskillCommand\022\017\n\007groupId\030\001 \002(\005\022\016" +
+      "\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskillCommand" +
+      "\"R\n\027ResponseBosskillCommand\0227\n\006record\030\001 " +
+      "\003(\0132\'.com.trans.pixel.protoc.BossGroupRe" +
+      "cord\"V\n\030ResponseUnionBossCommand\022:\n\tunio",
+      "nBoss\030\001 \003(\0132\'.com.trans.pixel.protoc.Uni" +
+      "onBossRecord\"K\n\034RequestUnionBossFightCom" +
+      "mand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007perc" +
+      "ent\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -37937,7 +37937,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_BosslootGroupList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_BosslootGroupList_descriptor,
-              new java.lang.String[] { "Boss", });
+              new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_BosslootGroup_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_BosslootGroup_fieldAccessorTable = new

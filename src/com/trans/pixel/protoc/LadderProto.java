@@ -7669,6 +7669,20 @@ public final class LadderProto {
      */
     int getId();
 
+    // optional .com.trans.pixel.protoc.UserInfo enemy = 4;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    boolean hasEnemy();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfo getEnemy();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfoOrBuilder getEnemyOrBuilder();
+
     // required string fightInfo = 1;
     /**
      * <code>required string fightInfo = 1;</code>
@@ -7751,18 +7765,31 @@ public final class LadderProto {
               break;
             }
             case 10: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               fightInfo_ = input.readBytes();
               break;
             }
             case 18: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               fightData_ = input.readBytes();
               break;
             }
             case 24: {
               bitField0_ |= 0x00000001;
               id_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = enemy_.toBuilder();
+              }
+              enemy_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(enemy_);
+                enemy_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
               break;
             }
           }
@@ -7821,6 +7848,28 @@ public final class LadderProto {
       return id_;
     }
 
+    // optional .com.trans.pixel.protoc.UserInfo enemy = 4;
+    public static final int ENEMY_FIELD_NUMBER = 4;
+    private com.trans.pixel.protoc.Base.UserInfo enemy_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    public boolean hasEnemy() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfo getEnemy() {
+      return enemy_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getEnemyOrBuilder() {
+      return enemy_;
+    }
+
     // required string fightInfo = 1;
     public static final int FIGHTINFO_FIELD_NUMBER = 1;
     private java.lang.Object fightInfo_;
@@ -7828,7 +7877,7 @@ public final class LadderProto {
      * <code>required string fightInfo = 1;</code>
      */
     public boolean hasFightInfo() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required string fightInfo = 1;</code>
@@ -7871,7 +7920,7 @@ public final class LadderProto {
      * <code>required string fightData = 2;</code>
      */
     public boolean hasFightData() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>required string fightData = 2;</code>
@@ -7909,6 +7958,7 @@ public final class LadderProto {
 
     private void initFields() {
       id_ = 0;
+      enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
       fightInfo_ = "";
       fightData_ = "";
     }
@@ -7925,6 +7975,12 @@ public final class LadderProto {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (hasEnemy()) {
+        if (!getEnemy().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7932,14 +7988,17 @@ public final class LadderProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(1, getFightInfoBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(2, getFightDataBytes());
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(3, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(4, enemy_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7950,17 +8009,21 @@ public final class LadderProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(1, getFightInfoBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getFightDataBytes());
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, enemy_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8070,6 +8133,7 @@ public final class LadderProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getEnemyFieldBuilder();
         }
       }
       private static Builder create() {
@@ -8080,10 +8144,16 @@ public final class LadderProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        fightInfo_ = "";
+        if (enemyBuilder_ == null) {
+          enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+        } else {
+          enemyBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000002);
-        fightData_ = "";
+        fightInfo_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
+        fightData_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -8119,9 +8189,17 @@ public final class LadderProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.fightInfo_ = fightInfo_;
+        if (enemyBuilder_ == null) {
+          result.enemy_ = enemy_;
+        } else {
+          result.enemy_ = enemyBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
+        }
+        result.fightInfo_ = fightInfo_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         result.fightData_ = fightData_;
         result.bitField0_ = to_bitField0_;
@@ -8143,13 +8221,16 @@ public final class LadderProto {
         if (other.hasId()) {
           setId(other.getId());
         }
+        if (other.hasEnemy()) {
+          mergeEnemy(other.getEnemy());
+        }
         if (other.hasFightInfo()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           fightInfo_ = other.fightInfo_;
           onChanged();
         }
         if (other.hasFightData()) {
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
           fightData_ = other.fightData_;
           onChanged();
         }
@@ -8165,6 +8246,12 @@ public final class LadderProto {
         if (!hasFightData()) {
           
           return false;
+        }
+        if (hasEnemy()) {
+          if (!getEnemy().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -8221,13 +8308,130 @@ public final class LadderProto {
         return this;
       }
 
+      // optional .com.trans.pixel.protoc.UserInfo enemy = 4;
+      private com.trans.pixel.protoc.Base.UserInfo enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> enemyBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public boolean hasEnemy() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo getEnemy() {
+        if (enemyBuilder_ == null) {
+          return enemy_;
+        } else {
+          return enemyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder setEnemy(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (enemyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          enemy_ = value;
+          onChanged();
+        } else {
+          enemyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder setEnemy(
+          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
+        if (enemyBuilder_ == null) {
+          enemy_ = builderForValue.build();
+          onChanged();
+        } else {
+          enemyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder mergeEnemy(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (enemyBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              enemy_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
+            enemy_ =
+              com.trans.pixel.protoc.Base.UserInfo.newBuilder(enemy_).mergeFrom(value).buildPartial();
+          } else {
+            enemy_ = value;
+          }
+          onChanged();
+        } else {
+          enemyBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder clearEnemy() {
+        if (enemyBuilder_ == null) {
+          enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          enemyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo.Builder getEnemyBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getEnemyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getEnemyOrBuilder() {
+        if (enemyBuilder_ != null) {
+          return enemyBuilder_.getMessageOrBuilder();
+        } else {
+          return enemy_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
+          getEnemyFieldBuilder() {
+        if (enemyBuilder_ == null) {
+          enemyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
+                  enemy_,
+                  getParentForChildren(),
+                  isClean());
+          enemy_ = null;
+        }
+        return enemyBuilder_;
+      }
+
       // required string fightInfo = 1;
       private java.lang.Object fightInfo_ = "";
       /**
        * <code>required string fightInfo = 1;</code>
        */
       public boolean hasFightInfo() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required string fightInfo = 1;</code>
@@ -8267,7 +8471,7 @@ public final class LadderProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         fightInfo_ = value;
         onChanged();
         return this;
@@ -8276,7 +8480,7 @@ public final class LadderProto {
        * <code>required string fightInfo = 1;</code>
        */
       public Builder clearFightInfo() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         fightInfo_ = getDefaultInstance().getFightInfo();
         onChanged();
         return this;
@@ -8289,7 +8493,7 @@ public final class LadderProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         fightInfo_ = value;
         onChanged();
         return this;
@@ -8301,7 +8505,7 @@ public final class LadderProto {
        * <code>required string fightData = 2;</code>
        */
       public boolean hasFightData() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>required string fightData = 2;</code>
@@ -8341,7 +8545,7 @@ public final class LadderProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
         fightData_ = value;
         onChanged();
         return this;
@@ -8350,7 +8554,7 @@ public final class LadderProto {
        * <code>required string fightData = 2;</code>
        */
       public Builder clearFightData() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         fightData_ = getDefaultInstance().getFightData();
         onChanged();
         return this;
@@ -8363,7 +8567,7 @@ public final class LadderProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
         fightData_ = value;
         onChanged();
         return this;
@@ -14813,28 +15017,30 @@ public final class LadderProto {
       "equip5\030\r \001(\r\022\016\n\006equip6\030\016 \001(\r\022\016\n\006equip7\030\017" +
       " \001(\r\022\016\n\006equip8\030\020 \001(\r\022\016\n\006equip9\030\021 \001(\r\022\017\n\007" +
       "equip10\030\022 \001(\r\022\r\n\005score\030\023 \001(\r\022\016\n\006score1\030\024" +
-      " \001(\r\"=\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022\021\n\tfightIn" +
-      "fo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032RequestGe" +
-      "tFightInfoCommand\"J\n\027RequestFightInfoCom" +
-      "mand\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.pro" +
-      "toc.FightInfo\"K\n\030ResponseFightInfoComman",
-      "d\022/\n\004info\030\001 \003(\0132!.com.trans.pixel.protoc" +
-      ".FightInfo\"!\n\037RequestGetLadderRankListCo" +
-      "mmand\"%\n#RequestGetUserLadderRankListCom" +
-      "mand\"V\n ResponseGetLadderRankListCommand" +
-      "\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixel.pro" +
-      "toc.UserRank\"Z\n$ResponseGetUserLadderRan" +
-      "kListCommand\0222\n\010userRank\030\001 \003(\0132 .com.tra" +
-      "ns.pixel.protoc.UserRank\"a\n\036RequestAttac" +
-      "kLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030" +
-      "\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 ",
-      "\001(\003\";\n\037ResponseAttackLadderModeCommand\022\013" +
-      "\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReady" +
-      "AttackLadderCommand\"/\n\037RequestGetLadderU" +
-      "serInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestP" +
-      "urchaseLadderTimeCommand\"V\n ResponseGetL" +
-      "adderUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 " +
-      ".com.trans.pixel.protoc.UserRank"
+      " \001(\r\"n\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004" +
+      " \001(\0132 .com.trans.pixel.protoc.UserInfo\022\021" +
+      "\n\tfightInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032" +
+      "RequestGetFightInfoCommand\"J\n\027RequestFig" +
+      "htInfoCommand\022/\n\004info\030\001 \002(\0132!.com.trans.",
+      "pixel.protoc.FightInfo\"K\n\030ResponseFightI" +
+      "nfoCommand\022/\n\004info\030\001 \003(\0132!.com.trans.pix" +
+      "el.protoc.FightInfo\"!\n\037RequestGetLadderR" +
+      "ankListCommand\"%\n#RequestGetUserLadderRa" +
+      "nkListCommand\"V\n ResponseGetLadderRankLi" +
+      "stCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans." +
+      "pixel.protoc.UserRank\"Z\n$ResponseGetUser" +
+      "LadderRankListCommand\0222\n\010userRank\030\001 \003(\0132" +
+      " .com.trans.pixel.protoc.UserRank\"a\n\036Req" +
+      "uestAttackLadderModeCommand\022\014\n\004rank\030\001 \002(",
+      "\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attack" +
+      "UserId\030\004 \001(\003\";\n\037ResponseAttackLadderMode" +
+      "Command\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037Req" +
+      "uestReadyAttackLadderCommand\"/\n\037RequestG" +
+      "etLadderUserInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n" +
+      " RequestPurchaseLadderTimeCommand\"V\n Res" +
+      "ponseGetLadderUserInfoCommand\0222\n\010userRan" +
+      "k\030\001 \002(\0132 .com.trans.pixel.protoc.UserRan" +
+      "k"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -14900,7 +15106,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_FightInfo_descriptor,
-              new java.lang.String[] { "Id", "FightInfo", "FightData", });
+              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", });
           internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_fieldAccessorTable = new
