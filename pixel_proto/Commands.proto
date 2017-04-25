@@ -2666,7 +2666,6 @@ message ResponseLevelLootCommand {
 }
 
 message RequestEventBuyCommand {
-	required uint32 daguan = 1;	
 }
 ////////// MailProto
 message Mail {

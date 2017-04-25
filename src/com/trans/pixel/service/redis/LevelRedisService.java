@@ -161,17 +161,17 @@ public class LevelRedisService extends RedisService {
 	// 	return false;
 	// }
 	public void productEvent(UserBean user, UserLevelBean userLevel){
-		productEvent(user, userLevel, userLevel.getLootDaguan(), false);
+		productEvent(user, userLevel,  false);
 	}
 	
-	public void productEvent(UserBean user, UserLevelBean userLevel, int daguan, boolean isBuy){
+	public void productEvent(UserBean user, UserLevelBean userLevel, boolean isBuy){
 		long time = now() - userLevel.getEventTime();
 		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId());
 		if(!isBuy && eventsize >= 20){
 			userLevel.setEventTime((int)now());
 			saveUserLevel(userLevel);
 		}else if(time >= EVENTTIME){
-			AreaEvent.Builder events = getDaguanEvent(daguan);
+			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
 			if(events != null){
 				for(Event.Builder myevent : getEvents(userLevel).values()){
 					for(Event.Builder event : events.getEventBuilderList()){
@@ -192,7 +192,7 @@ public class LevelRedisService extends RedisService {
 						if(weight < 0){
 							Event.Builder builder = Event.newBuilder(event.build());
 							builder.setOrder(currentIndex()+i);
-							builder.setDaguan(daguan);
+							builder.setDaguan(userLevel.getLootDaguan());
 							EventLevel level = nextEventLevel(userLevel);
 							builder.setLevel(level.getLevel());
 							builder.setCount(level.getCount());

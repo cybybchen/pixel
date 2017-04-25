@@ -26233,16 +26233,6 @@ public final class UserInfoProto {
 
   public interface RequestEventBuyCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
-    // required uint32 daguan = 1;
-    /**
-     * <code>required uint32 daguan = 1;</code>
-     */
-    boolean hasDaguan();
-    /**
-     * <code>required uint32 daguan = 1;</code>
-     */
-    int getDaguan();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestEventBuyCommand}
@@ -26277,7 +26267,6 @@ public final class UserInfoProto {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -26293,11 +26282,6 @@ public final class UserInfoProto {
                                      extensionRegistry, tag)) {
                 done = true;
               }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              daguan_ = input.readUInt32();
               break;
             }
           }
@@ -26339,35 +26323,13 @@ public final class UserInfoProto {
       return PARSER;
     }
 
-    private int bitField0_;
-    // required uint32 daguan = 1;
-    public static final int DAGUAN_FIELD_NUMBER = 1;
-    private int daguan_;
-    /**
-     * <code>required uint32 daguan = 1;</code>
-     */
-    public boolean hasDaguan() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required uint32 daguan = 1;</code>
-     */
-    public int getDaguan() {
-      return daguan_;
-    }
-
     private void initFields() {
-      daguan_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasDaguan()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -26375,9 +26337,6 @@ public final class UserInfoProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, daguan_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -26387,10 +26346,6 @@ public final class UserInfoProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, daguan_);
-      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -26507,8 +26462,6 @@ public final class UserInfoProto {
 
       public Builder clear() {
         super.clear();
-        daguan_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -26535,13 +26488,6 @@ public final class UserInfoProto {
 
       public com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand buildPartial() {
         com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand result = new com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.daguan_ = daguan_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -26557,18 +26503,11 @@ public final class UserInfoProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand other) {
         if (other == com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance()) return this;
-        if (other.hasDaguan()) {
-          setDaguan(other.getDaguan());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasDaguan()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -26587,40 +26526,6 @@ public final class UserInfoProto {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-      private int bitField0_;
-
-      // required uint32 daguan = 1;
-      private int daguan_ ;
-      /**
-       * <code>required uint32 daguan = 1;</code>
-       */
-      public boolean hasDaguan() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required uint32 daguan = 1;</code>
-       */
-      public int getDaguan() {
-        return daguan_;
-      }
-      /**
-       * <code>required uint32 daguan = 1;</code>
-       */
-      public Builder setDaguan(int value) {
-        bitField0_ |= 0x00000001;
-        daguan_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 daguan = 1;</code>
-       */
-      public Builder clearDaguan() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        daguan_ = 0;
-        onChanged();
         return this;
       }
 
@@ -26904,8 +26809,7 @@ public final class UserInfoProto {
       "\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005" +
       "\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022,\n" +
       "\005event\030\006 \003(\0132\035.com.trans.pixel.protoc.Ev" +
-      "ent\"(\n\026RequestEventBuyCommand\022\016\n\006daguan\030" +
-      "\001 \002(\r"
+      "ent\"\030\n\026RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -27133,7 +27037,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor,
-              new java.lang.String[] { "Daguan", });
+              new java.lang.String[] { });
           return null;
         }
       };

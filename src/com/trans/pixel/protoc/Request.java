@@ -9673,12 +9673,6 @@ public final class Request {
           return false;
         }
       }
-      if (hasEventBuyCommand()) {
-        if (!getEventBuyCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -14951,12 +14945,6 @@ public final class Request {
         }
         if (hasExtraRewardCommand()) {
           if (!getExtraRewardCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasEventBuyCommand()) {
-          if (!getEventBuyCommand().isInitialized()) {
             
             return false;
           }

@@ -375,7 +375,7 @@ public class LevelCommandService extends BaseCommandService {
 	 
 	public void eventBuy(RequestEventBuyCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
-		redis.productEvent(user, userLevel, cmd.getDaguan(), true);
+		redis.productEvent(user, userLevel, true);
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	
