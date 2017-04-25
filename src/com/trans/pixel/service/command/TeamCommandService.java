@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.Team;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
@@ -14,7 +15,6 @@ import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.TalentService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
@@ -51,6 +51,11 @@ public class TeamCommandService extends BaseCommandService {
 
 	public void submitFightInfo(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		FightInfo.Builder builder = FightInfo.newBuilder(cmd.getInfo());
+		if(builder.hasId()) {
+			UserInfo.Builder userinfo = UserInfo.newBuilder();
+			userinfo.setId(builder.getId());
+			builder.setEnemy(userinfo);
+		}
 		builder.setId((int)((System.currentTimeMillis()+12345)%10000000));
 		userTeamService.saveFightInfo(RedisService.formatJson(builder.build()), user);
 	}

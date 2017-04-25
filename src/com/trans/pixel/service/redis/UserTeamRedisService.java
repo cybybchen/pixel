@@ -170,13 +170,13 @@ public class UserTeamRedisService extends RedisService {
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
-	public List<FightInfo> getFightInfoList(UserBean user){
-		List<FightInfo> list = new ArrayList<FightInfo>();
+	public List<FightInfo.Builder> getFightInfoList(UserBean user){
+		List<FightInfo.Builder> list = new ArrayList<FightInfo.Builder>();
 		List<String> values = lrange(RedisKey.USER_FIGHT_PREFIX+user.getId());
 		for(String value : values){
 			FightInfo.Builder builder = FightInfo.newBuilder();
 			if(parseJson(value, builder))
-				list.add(builder.build());
+				list.add(builder);
 		}
 		return list;
 	}

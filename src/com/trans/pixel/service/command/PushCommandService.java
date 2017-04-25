@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand;
+import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.protoc.MailProto.MailList;
 import com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand;
@@ -552,7 +553,8 @@ public class PushCommandService extends BaseCommandService {
 	
 	public void pushFightInfoList(Builder responseBuilder, UserBean user) {
 		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand.newBuilder();
-		builder.addAllInfo(userTeamService.getFightInfoList(user));
+		for(FightInfo.Builder info : userTeamService.getFightInfoList(user))
+			builder.addInfo(info);
 		responseBuilder.setFightInfoCommand(builder.build());
 	}
 	

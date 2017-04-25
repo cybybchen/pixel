@@ -2,7 +2,6 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -21,10 +20,8 @@ import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.SkillInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.TeamEngine;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
-import com.trans.pixel.protoc.HeroProto.ClearLevel;
-import com.trans.pixel.protoc.HeroProto.HeroRareLevelup;
-import com.trans.pixel.protoc.HeroProto.Strengthen;
 import com.trans.pixel.protoc.HeroProto.TeamUnlock;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.service.redis.ClearRedisService;
@@ -447,7 +444,12 @@ public class UserTeamService {
 	public void saveFightInfo(String info, UserBean user){
 		userTeamRedisService.saveFightInfo(info, user);
 	}
-	public List<FightInfo> getFightInfoList(UserBean user){
-		return userTeamRedisService.getFightInfoList(user);
+	public List<FightInfo.Builder> getFightInfoList(UserBean user){
+		List<FightInfo.Builder> infos = userTeamRedisService.getFightInfoList(user);
+		for(FightInfo.Builder info : infos) {
+			if(info.hasEnemy())
+				info.setEnemy(userService.getCache(user.getServerId(), info.getEnemy().getId()));
+		}
+		return infos;
 	}
 }

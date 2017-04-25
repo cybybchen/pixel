@@ -137,8 +137,8 @@ public class MessageService {
 			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 			messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 		}else if(fightId !=0) {
-			List<FightInfo> list = userTeamService.getFightInfoList(user);
-			for(FightInfo info : list){
+			List<FightInfo.Builder> list = userTeamService.getFightInfoList(user);
+			for(FightInfo.Builder info : list){
 				if(fightId == info.getId()){
 					messageBoard.setMessage(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());
 					messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
