@@ -8670,6 +8670,16 @@ public final class TaskProto {
      * <code>optional int32 lootcount = 2;</code>
      */
     int getLootcount();
+
+    // optional int32 weight = 3;
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    boolean hasWeight();
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    int getWeight();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RaidReward}
@@ -8730,6 +8740,11 @@ public final class TaskProto {
             case 16: {
               bitField0_ |= 0x00000002;
               lootcount_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              weight_ = input.readInt32();
               break;
             }
           }
@@ -8804,9 +8819,26 @@ public final class TaskProto {
       return lootcount_;
     }
 
+    // optional int32 weight = 3;
+    public static final int WEIGHT_FIELD_NUMBER = 3;
+    private int weight_;
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    public boolean hasWeight() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    public int getWeight() {
+      return weight_;
+    }
+
     private void initFields() {
       lootid_ = 0;
       lootcount_ = 0;
+      weight_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8826,6 +8858,9 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, lootcount_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, weight_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -8842,6 +8877,10 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, lootcount_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, weight_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8963,6 +9002,8 @@ public final class TaskProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         lootcount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        weight_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -8999,6 +9040,10 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000002;
         }
         result.lootcount_ = lootcount_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.weight_ = weight_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9020,6 +9065,9 @@ public final class TaskProto {
         }
         if (other.hasLootcount()) {
           setLootcount(other.getLootcount());
+        }
+        if (other.hasWeight()) {
+          setWeight(other.getWeight());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9110,6 +9158,39 @@ public final class TaskProto {
       public Builder clearLootcount() {
         bitField0_ = (bitField0_ & ~0x00000002);
         lootcount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 weight = 3;
+      private int weight_ ;
+      /**
+       * <code>optional int32 weight = 3;</code>
+       */
+      public boolean hasWeight() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 weight = 3;</code>
+       */
+      public int getWeight() {
+        return weight_;
+      }
+      /**
+       * <code>optional int32 weight = 3;</code>
+       */
+      public Builder setWeight(int value) {
+        bitField0_ |= 0x00000004;
+        weight_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 weight = 3;</code>
+       */
+      public Builder clearWeight() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        weight_ = 0;
         onChanged();
         return this;
       }
@@ -13498,19 +13579,19 @@ public final class TaskProto {
       "\n\tuserTask3\030\003 \003(\0132 .com.trans.pixel.prot" +
       "oc.UserTask\"J\n\033RequestGetTaskRewardComma" +
       "nd\022\014\n\004type\030\001 \002(\005\022\r\n\005order\030\002 \001(\005\022\016\n\006heroi" +
-      "d\030\003 \001(\005\"/\n\nRaidReward\022\016\n\006lootid\030\001 \001(\005\022\021\n" +
-      "\tlootcount\030\002 \001(\005\"]\n\tRaidOrder\022\r\n\005order\030\001",
-      " \001(\005\022\017\n\007enemyid\030\002 \001(\005\0220\n\004loot\030\003 \003(\0132\".co" +
-      "m.trans.pixel.protoc.RaidReward\"u\n\004Raid\022" +
-      "\n\n\002id\030\001 \001(\005\022\016\n\006costid\030\002 \001(\005\022\021\n\tcostcount" +
-      "\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\0220\n\005order\030\005 \003(\0132!.co" +
-      "m.trans.pixel.protoc.RaidOrder\"4\n\010RaidLi" +
-      "st\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc." +
-      "Raid\"$\n\026RequestOpenRaidCommand\022\n\n\002id\030\001 \001" +
-      "(\005\"e\n\027RequestStartRaidCommand\022\n\n\002id\030\001 \001(" +
-      "\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014" +
-      "\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\"!\n\023ResponseRai",
-      "dCommand\022\n\n\002id\030\001 \001(\005"
+      "d\030\003 \001(\005\"?\n\nRaidReward\022\016\n\006lootid\030\001 \001(\005\022\021\n" +
+      "\tlootcount\030\002 \001(\005\022\016\n\006weight\030\003 \001(\005\"]\n\tRaid",
+      "Order\022\r\n\005order\030\001 \001(\005\022\017\n\007enemyid\030\002 \001(\005\0220\n" +
+      "\004loot\030\003 \003(\0132\".com.trans.pixel.protoc.Rai" +
+      "dReward\"u\n\004Raid\022\n\n\002id\030\001 \001(\005\022\016\n\006costid\030\002 " +
+      "\001(\005\022\021\n\tcostcount\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\0220\n\005" +
+      "order\030\005 \003(\0132!.com.trans.pixel.protoc.Rai" +
+      "dOrder\"4\n\010RaidList\022(\n\002id\030\001 \003(\0132\034.com.tra" +
+      "ns.pixel.protoc.Raid\"$\n\026RequestOpenRaidC" +
+      "ommand\022\n\n\002id\030\001 \001(\005\"e\n\027RequestStartRaidCo" +
+      "mmand\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tf" +
+      "ightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(",
+      "\010\"!\n\023ResponseRaidCommand\022\n\n\002id\030\001 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13582,7 +13663,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_RaidReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RaidReward_descriptor,
-              new java.lang.String[] { "Lootid", "Lootcount", });
+              new java.lang.String[] { "Lootid", "Lootcount", "Weight", });
           internal_static_com_trans_pixel_protoc_RaidOrder_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RaidOrder_fieldAccessorTable = new

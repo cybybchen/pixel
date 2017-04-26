@@ -236,7 +236,7 @@ public class LadderService {
 		 * send log
 		 */
 		sendLog(user.getId(), user.getServerId(), userTeamService.getTeamCache(user.getId()).getHeroInfoList(),
-				userTeamService.getTeamCache(attackRankBean.getUserId()).getHeroInfoList(), result ? 1 : 0, attackRank);
+				userTeamService.getTeamCache(attackRankBean.getUserId()).getHeroInfoList(), result ? 1 : 0, result ? attackRank : myRank, myRank);
 		
 		if (!result)
 			return SuccessConst.LADDER_ATTACK_FAIL;
@@ -288,7 +288,7 @@ public class LadderService {
 		return rewards.build();
 	}
 	
-	private void sendLog(long userId, int serverId, List<HeroInfo> attackHeroList, List<HeroInfo> defenseHeroList, int result, long rank) {
+	private void sendLog(long userId, int serverId, List<HeroInfo> attackHeroList, List<HeroInfo> defenseHeroList, int result, long rank, long newrank) {
 		Map<String, String> logMap = new HashMap<String, String>();
 		logMap.put(LogString.USERID, "" + userId);
 		logMap.put(LogString.SERVERID, "" + serverId);
@@ -296,6 +296,7 @@ public class LadderService {
 		logMap.put(LogString.DEFENSE_TEAM_LIST, userTeamService.getTeamString(defenseHeroList));
 		logMap.put(LogString.RESULT, "" + result);
 		logMap.put(LogString.RANK, "" + rank);
+		logMap.put(LogString.NEWRANK, "" + newrank);
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_LADDER);
 	}

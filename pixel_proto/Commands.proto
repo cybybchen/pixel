@@ -3242,6 +3242,7 @@ message RequestGetTaskRewardCommand {
 message RaidReward {
 	optional int32 lootid = 1;
 	optional int32 lootcount = 2;
+	optional int32 weight = 3;
 }
 message RaidOrder {
 	optional int32 order = 1;

@@ -66,9 +66,11 @@ public class RaidCommandService extends BaseCommandService{
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			for(RaidReward raidReward : order.getLootList()){
-				reward.setItemid(raidReward.getLootid());
-				reward.setCount(raidReward.getLootcount());
-				rewards.addLoot(reward);
+				if(RedisService.nextInt(100) < raidReward.getWeight()) {
+					reward.setItemid(raidReward.getLootid());
+					reward.setCount(raidReward.getLootcount());
+					rewards.addLoot(reward);
+				}
 			}
 			rewardService.doFilterRewards(user, rewards);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
