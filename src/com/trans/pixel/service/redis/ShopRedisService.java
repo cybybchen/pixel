@@ -13,7 +13,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBattletowerBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
@@ -37,7 +37,7 @@ import com.trans.pixel.protoc.ShopProto.ShopWillList;
 import com.trans.pixel.protoc.ShopProto.Will;
 import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.protoc.ShopProto.YueKaList;
-import com.trans.pixel.service.UserEquipService;
+import com.trans.pixel.service.UserEquipPokedeService;
 
 @Repository
 public class ShopRedisService extends RedisService{
@@ -46,7 +46,7 @@ public class ShopRedisService extends RedisService{
 	@Resource
 	private PropRedisService propRedisService;
 	@Resource
-	private UserEquipService userEquipService;
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	//普通商店
 	public ShopList getDailyShop(UserBean user) {
@@ -79,8 +79,8 @@ public class ShopRedisService extends RedisService{
 						itemid = synthetise.getTarget();
 					}
 					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-						UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
-						if(userEquipBean != null)
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null)
 							commsbuilder.removeId(i);
 					}
 				}

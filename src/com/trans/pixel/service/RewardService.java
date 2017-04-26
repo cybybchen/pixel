@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
@@ -25,6 +25,8 @@ public class RewardService {
 	private UserHeroService userHeroService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	@Resource
 	private UserEquipService userEquipService;
 	@Resource
@@ -154,8 +156,8 @@ public class RewardService {
 				itemid = synthetise.getTarget();
 			}
 			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-				UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
-				if(userEquipBean != null)
+				UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+				if(bean != null)
 					rewards.remove(i);
 			}
 		}
@@ -187,8 +189,8 @@ public class RewardService {
 				itemid = synthetise.getTarget();
 			}
 			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-				UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
-				if(userEquipBean != null)
+				UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+				if(bean != null)
 					rewards.removeLoot(i);
 			}
 		}

@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -29,7 +28,6 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserClearBean;
-import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
@@ -38,12 +36,8 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
-import com.trans.pixel.protoc.Base.UserTalent;
-import com.trans.pixel.protoc.Base.UserTalentEquip;
-import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.Hero;
-import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
@@ -54,7 +48,6 @@ import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
-import com.trans.pixel.service.redis.TalentRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -83,7 +76,7 @@ public class LadderService {
 	@Resource
 	private NoticeMessageService noticeMessageService;
 	@Resource
-	private UserEquipService userEquipService;
+	private UserEquipPokedeService userEquipPokedeService;
 	@Resource
 	private PropRedisService propRedisService;
 	@Resource
@@ -267,8 +260,8 @@ public class LadderService {
 					itemid = synthetise.getTarget();
 				}
 				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-					UserEquipBean userEquipBean = userEquipService.selectUserEquip(user.getId(), itemid);
-					if(userEquipBean != null){
+					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+					if(bean != null) {
 						ladderreward.setWeight(ladderreward.getWeight()-reward.getWeight());
 						reward.setWeight(0);
 					}
