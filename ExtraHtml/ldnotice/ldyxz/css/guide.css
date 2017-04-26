@@ -1,0 +1,64 @@
+/*.ul-wapper {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 303px;
+    margin: 0 auto;
+    border-width: 27px;
+    border-style: solid;
+    border-image: url(images/bottoms.png) 27 fill stretch;
+}
+.ul-wapper .ui-detailview {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 318px;
+    position: relative;
+}
+.ui-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+#background-page {
+    border-width: 100px 0 90px;
+    border-style: solid;
+    border-image: url(images/main_bg.jpg) 100 0 90 0 fill stretch;
+}
+body, .ui-page {
+    margin: 0;
+    padding: 0;
+    width: 360px;
+    overflow: hidden;
+    margin-left: -180px;
+}*/
+
+select{
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: solid 1px #000;
+
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+
+
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px;
+  padding-left: 14px;
+  font-size:20px
+}
+
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+
+body,td,th {
+           font-size: 18px;
+}
+#menu{height:30px;background: repeat-x;border:1px solid #dde7d4;margin-bottom:5px;OVERFLOW:hidden}
+#menu ul{float:left;list-style:none;margin:0px;}
+#menu ul li{float:left;margin:0 6px;display:block;line-height:30px}
+#menu ul li a:link,#menu ul li a:visited{font-weight:bold;color:#666;display:block;text-decoration:none;padding:0 5px}
+

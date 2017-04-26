@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1">
+	<title>乱斗公告配置</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<link rel="shortcut icon" href="css/favicon.ico">
+	<link rel="stylesheet" href="css/guide.css?v=13"/>
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+                function sub() { 
+		for(var i=0;i<document.form.elements.length-1;i++)  
+               {  
+                  if(document.form.elements[i].value=="")  
+                  {  
+                     alert("当前表单不能有空项");  
+                     document.form.elements[i].focus();  
+                     return false;  
+                  }  
+               }  	
+ 
+                $.ajax({  
+                        cache: true,  
+                        type: "POST",  
+                        url:"http://localhost/ldyxz/channel.php",  
+                        data:$('#formid').serialize(),// 你的formid  
+                        async: false,  
+                        error: function(request) {  
+                            alert("Connection error:"+request.error);  
+                        },  
+                        success: function(data) {  
+				alert('配置成功！');
+                        }  
+                    });  
+                }
+
+		function save() {  
+        select = $("#formid select").val();  
+        document.cookie = 'select =' + select;  
+    }  
+    window.onload = function () {  
+        var cooki = document.cookie;  
+        if (cooki != "") {  
+            cooki = "{\"" + cooki + "\"}";  
+            cooki = cooki.replace(/\s*/g, "").replace(/=/g, '":"').replace(/;/g, '","');  
+            var json = eval("(" + cooki + ")"); //将coolies转成json对象 
+            $("#formid select").val(json.select);
+        }  
+        else  
+            save();  
+    }   
+        </script>
+</head>
+
+<body>
+	<center>
+	<h1>乱斗公告配置查询</h1>
+	<div id="menu" style="width:200px;margin-left:auto;margin-right:auto;margin-top:auto;">
+	<ul>
+	<li><a href="query.php" class="hover">查询</a></li>
+	<li><a href="index.php">配置</a></li>
+	</ul>
+	</div>
+	</center>
+</body>
+</html>
