@@ -142,8 +142,8 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 	public void levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
-		long time = (RedisService.now()-userLevel.getLootTime())/LevelRedisService.EVENTTIME*LevelRedisService.EVENTTIME;
-		if(time >= LevelRedisService.EVENTTIME){
+		long time = (RedisService.now()-userLevel.getLootTime())/TimeConst.SECONDS_PER_HOUR*TimeConst.SECONDS_PER_HOUR;
+		if(time >= TimeConst.SECONDS_PER_HOUR){
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 			Daguan.Builder unlockDaguan = redis.getDaguan(userLevel.getUnlockDaguan());
@@ -157,21 +157,20 @@ public class LevelCommandService extends BaseCommandService {
 						continue;
 					
 					RewardInfo.Builder rewardBuilder = RewardInfo.newBuilder(reward);
-					rewardBuilder.setCount(calLootCount(TypeTranslatedUtil.stringToInt(entry.getKey()), unlockDaguan.build()) * time / TimeConst.SECONDS_PER_HOUR);
+					rewardBuilder.setCount(calLootCount(TypeTranslatedUtil.stringToInt(entry.getKey()), 
+							unlockDaguan.build()) * time / TimeConst.SECONDS_PER_HOUR);
 					rewardService.mergeReward(rewardList, rewardBuilder.build());
 				}
 			}
 			rewards.addAllLoot(rewardList);
-			rewardService.doReward(user, RewardConst.COIN, unlockDaguan.getGold()*(time));
-			rewardService.doReward(user, RewardConst.EXP, unlockDaguan.getExperience()*(time));
+			rewardService.doReward(user, RewardConst.COIN, userLevel.getCoin()*(time));
+			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
 			rewardService.doRewards(user, rewards);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);
-			
-			
 		}
 	}
 
