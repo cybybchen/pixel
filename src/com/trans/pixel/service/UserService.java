@@ -202,18 +202,12 @@ public class UserService {
 	public void handleRewardTaskDailyReward(UserBean user) {
 		int addCount = 0;
 		int addId = 0;
-		UserLevelBean userLevel = levelRedisService.getUserLevel(user);
-		List<Event> userEventList = levelRedisService.getEventList(user);
-		Map<String, Event> eventMap = levelRedisService.getEventMap();
 		Map<String, RewardTaskDaily> map = rewardTaskRedisService.getRewardTaskDailyConfig();
 		Iterator<Entry<String, RewardTaskDaily>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, RewardTaskDaily> entry = it.next();
-			Event event = eventMap.get(entry.getKey());
-			if (event.getDaguan() > userLevel.getLootDaguan())
-				continue;
 			
-			boolean hasComplete = levelRedisService.judgeEventComplete(userEventList, TypeTranslatedUtil.stringToInt(entry.getKey()));
+			boolean hasComplete = levelRedisService.hasCompleteEvent(user, TypeTranslatedUtil.stringToInt(entry.getKey()));
 			if (!hasComplete)
 				continue;
 			

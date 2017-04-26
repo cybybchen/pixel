@@ -523,6 +523,21 @@ public class LevelRedisService extends RedisService {
 		return true;
 	}
 	
+	public boolean hasCompleteEvent(UserBean user, int eventId) {
+		UserLevelBean userLevel = getUserLevel(user);
+		Event event = getEvent(eventId);
+		if (event.getDaguan() > userLevel.getUnlockDaguan())
+			return false;
+		
+		List<Event> userEventList = getEventList(user);
+		for (Event userEvent : userEventList) {
+			if (userEvent.getEventid() == eventId)
+				return false;
+		}
+		
+		return true;
+	}
+	
 	public List<UserTalent> unlockZhujue(UserBean user, Event event) {
 		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
 		int targetId = event.getTargetid();
