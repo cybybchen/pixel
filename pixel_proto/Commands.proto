@@ -206,6 +206,7 @@ message RewardInfo {
 	optional int32 counta = 5;
 	optional int32 countb = 6;
 	optional string item = 7;
+	optional uint32 eventid = 8;
 }
 
 message MultiReward {
@@ -2576,8 +2577,11 @@ message Daguan {
 	optional string bg = 7;
 	optional string layer = 8;
 	optional int32 areaid = 9;
-	repeated RewardInfo item = 10;
 	optional int32 merlevel = 11;
+	optional uint32 loot1 = 12;
+	optional uint32 loot2 = 13;
+	optional uint32 loot3 = 14;
+	optional uint32 loot4 = 15;
 }
 message DaguanList {
 	repeated Daguan id = 1;
@@ -2628,7 +2632,7 @@ message AreaEventList {
 	repeated AreaEvent id = 1;
 }
 message Loot {
-	optional int32 id = 1;
+	optional int32 order = 1;
 	repeated RewardInfo item = 2;
 }
 message LootList {

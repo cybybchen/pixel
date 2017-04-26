@@ -1,7 +1,10 @@
 package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -12,6 +15,7 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -28,6 +32,7 @@ import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventReward;
+import com.trans.pixel.protoc.UserInfoProto.Loot;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
@@ -48,6 +53,7 @@ import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class LevelCommandService extends BaseCommandService {
@@ -138,22 +144,47 @@ public class LevelCommandService extends BaseCommandService {
 	public void levelLoot(UserLevelBean userLevel, Builder responseBuilder, UserBean user) {
 		long time = (RedisService.now()-userLevel.getLootTime())/LevelRedisService.EVENTTIME*LevelRedisService.EVENTTIME;
 		if(time >= LevelRedisService.EVENTTIME){
-			Daguan.Builder daguan = redis.getDaguan(userLevel.getLootDaguan());
-			for(RewardInfo.Builder reward : daguan.getItemBuilderList())
-				reward.setCount(reward.getCount()*time/LevelRedisService.EVENTTIME);
-			rewardService.doReward(user, RewardConst.COIN, daguan.getGold()*(time));
-			rewardService.doReward(user, RewardConst.EXP, daguan.getExperience()*(time));
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+			Daguan.Builder unlockDaguan = redis.getDaguan(userLevel.getUnlockDaguan());
+			Map<String, Loot> lootMap = redis.getLootConfig();
+			Iterator<Entry<String, Loot>> it = lootMap.entrySet().iterator();
+			while (it.hasNext()) {
+				Entry<String, Loot> entry = it.next();
+				Loot loot = entry.getValue();
+				for (RewardInfo reward : loot.getItemList()) {
+					if (!redis.hasCompleteEvent(user, reward.getEventid()))
+						continue;
+					
+					RewardInfo.Builder rewardBuilder = RewardInfo.newBuilder(reward);
+					rewardBuilder.setCount(calLootCount(TypeTranslatedUtil.stringToInt(entry.getKey()), unlockDaguan.build()) * time / TimeConst.SECONDS_PER_HOUR);
+					rewardService.mergeReward(rewardList, rewardBuilder.build());
+				}
+			}
+			rewards.addAllLoot(rewardList);
+			rewardService.doReward(user, RewardConst.COIN, unlockDaguan.getGold()*(time));
+			rewardService.doReward(user, RewardConst.EXP, unlockDaguan.getExperience()*(time));
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
-			MultiReward.Builder rewards = MultiReward.newBuilder();
-			rewards.addAllLoot(daguan.getItemList());
 			rewardService.doRewards(user, rewards);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);
+			
+			
 		}
 	}
 
+	private int calLootCount(int id, Daguan daguan) {
+		switch (id) {
+			case 1:return daguan.getLoot1();
+			case 2:return daguan.getLoot2();
+			case 3:return daguan.getLoot3();
+			case 4:return daguan.getLoot4();
+			default:return 0;
+		}
+	}
+	
 	public void levelLootResult(RequestLevelLootResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		levelLoot(userLevel, responseBuilder, user);

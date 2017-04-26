@@ -394,14 +394,12 @@ public class LevelRedisService extends RedisService {
 		parseXml(xml, list);
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		Map<Integer, Integer> merlevelMap = getMerlevelConfig();
-		Map<Integer, Loot> lootMap = getLootConfig();
 		Map<Integer, Daguan.Builder> map = new HashMap<Integer, Daguan.Builder>();
 		for(Daguan.Builder daguan : list.getIdBuilderList()){
 			// daguan.clearName();
 			daguan.clearDes();
 			daguan.setAreaid(areaMap.get(daguan.getId()));
 			daguan.setMerlevel(merlevelMap.get(daguan.getId()));
-			daguan.addAllItem(lootMap.get(daguan.getId()).getItemList());
 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
 			map.put(daguan.getId(), daguan);
 		}
@@ -409,14 +407,27 @@ public class LevelRedisService extends RedisService {
 		return map.get(id);
 	}
 
-	public Map<Integer, Loot> getLootConfig(){
-		Map<Integer, Loot> map = new HashMap<Integer, Loot>();
-		String xml = ReadConfig("ld_loot.xml");
-		LootList.Builder list = LootList.newBuilder();
-		parseXml(xml, list);
-		for(Loot loot : list.getIdList()){
-			map.put(loot.getId(), loot);
+	public Map<String, Loot> getLootConfig(){
+		Map<String, String> keyvalue = hget(RedisKey.LOOT_CONFIG);
+		Map<String, Loot> map = new HashMap<String, Loot>();
+		if (keyvalue.isEmpty()) {
+			Map<String, String> redismap = new HashMap<String, String>();
+			String xml = ReadConfig("ld_loot.xml");
+			LootList.Builder list = LootList.newBuilder();
+			parseXml(xml, list);
+			for(Loot loot : list.getIdList()){
+				map.put("" + loot.getOrder(), loot);
+				redismap.put("" + loot.getOrder(), formatJson(loot));
+			}
+			hputAll(RedisKey.LOOT_CONFIG, redismap);
+		} else {
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Loot.Builder builder = Loot.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
 		}
+		
 		return map;
 	}
 
@@ -512,15 +523,6 @@ public class LevelRedisService extends RedisService {
 		}
 		
 		return rewardList;
-	}
-	
-	public boolean judgeEventComplete(List<Event> userEventList, int eventId) {
-		for (Event event : userEventList) {
-			if (event.getEventid() == eventId)
-				return false;
-		}
-		
-		return true;
 	}
 	
 	public boolean hasCompleteEvent(UserBean user, int eventId) {

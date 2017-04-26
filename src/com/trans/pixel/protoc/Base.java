@@ -23588,6 +23588,16 @@ public final class Base {
      */
     com.google.protobuf.ByteString
         getItemBytes();
+
+    // optional uint32 eventid = 8;
+    /**
+     * <code>optional uint32 eventid = 8;</code>
+     */
+    boolean hasEventid();
+    /**
+     * <code>optional uint32 eventid = 8;</code>
+     */
+    int getEventid();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RewardInfo}
@@ -23673,6 +23683,11 @@ public final class Base {
             case 58: {
               bitField0_ |= 0x00000040;
               item_ = input.readBytes();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              eventid_ = input.readUInt32();
               break;
             }
           }
@@ -23881,6 +23896,22 @@ public final class Base {
       }
     }
 
+    // optional uint32 eventid = 8;
+    public static final int EVENTID_FIELD_NUMBER = 8;
+    private int eventid_;
+    /**
+     * <code>optional uint32 eventid = 8;</code>
+     */
+    public boolean hasEventid() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional uint32 eventid = 8;</code>
+     */
+    public int getEventid() {
+      return eventid_;
+    }
+
     private void initFields() {
       itemid_ = 0;
       itemname_ = "";
@@ -23889,6 +23920,7 @@ public final class Base {
       counta_ = 0;
       countb_ = 0;
       item_ = "";
+      eventid_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -23922,6 +23954,9 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeBytes(7, getItemBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeUInt32(8, eventid_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -23959,6 +23994,10 @@ public final class Base {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(7, getItemBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(8, eventid_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -24090,6 +24129,8 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000020);
         item_ = "";
         bitField0_ = (bitField0_ & ~0x00000040);
+        eventid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -24146,6 +24187,10 @@ public final class Base {
           to_bitField0_ |= 0x00000040;
         }
         result.item_ = item_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.eventid_ = eventid_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -24186,6 +24231,9 @@ public final class Base {
           bitField0_ |= 0x00000040;
           item_ = other.item_;
           onChanged();
+        }
+        if (other.hasEventid()) {
+          setEventid(other.getEventid());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -24523,6 +24571,39 @@ public final class Base {
   }
   bitField0_ |= 0x00000040;
         item_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 eventid = 8;
+      private int eventid_ ;
+      /**
+       * <code>optional uint32 eventid = 8;</code>
+       */
+      public boolean hasEventid() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional uint32 eventid = 8;</code>
+       */
+      public int getEventid() {
+        return eventid_;
+      }
+      /**
+       * <code>optional uint32 eventid = 8;</code>
+       */
+      public Builder setEventid(int value) {
+        bitField0_ |= 0x00000080;
+        eventid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 eventid = 8;</code>
+       */
+      public Builder clearEventid() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        eventid_ = 0;
         onChanged();
         return this;
       }
@@ -25646,12 +25727,13 @@ public final class Base {
       "ans.pixel.protoc.ClearInfo\022\022\n\nstrengthen" +
       "\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n" +
       "\013equipPokede\030\020 \001(\0132\'.com.trans.pixel.pro",
-      "toc.UserEquipPokede\"{\n\nRewardInfo\022\016\n\006ite" +
-      "mid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\r\n\005count\030\003 \001" +
-      "(\003\022\016\n\006weight\030\004 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006co" +
-      "untb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\"Y\n\013MultiReward\022" +
-      "\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132" +
-      "\".com.trans.pixel.protoc.RewardInfo"
+      "toc.UserEquipPokede\"\214\001\n\nRewardInfo\022\016\n\006it" +
+      "emid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\r\n\005count\030\003 " +
+      "\001(\003\022\016\n\006weight\030\004 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006c" +
+      "ountb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010 \001" +
+      "(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 " +
+      "\001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel.prot" +
+      "oc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -25765,7 +25847,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_RewardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardInfo_descriptor,
-              new java.lang.String[] { "Itemid", "Itemname", "Count", "Weight", "Counta", "Countb", "Item", });
+              new java.lang.String[] { "Itemid", "Itemname", "Count", "Weight", "Counta", "Countb", "Item", "Eventid", });
           internal_static_com_trans_pixel_protoc_MultiReward_descriptor =
             getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_MultiReward_fieldAccessorTable = new
