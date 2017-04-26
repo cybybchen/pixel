@@ -526,7 +526,12 @@ public class LevelRedisService extends RedisService {
 	}
 	
 	public boolean hasCompleteEvent(UserBean user, int eventId) {
-		UserLevelBean userLevel = getUserLevel(user);
+		return hasCompleteEvent(user, eventId, null);
+	}
+	
+	public boolean hasCompleteEvent(UserBean user, int eventId, UserLevelBean userLevel) {
+		if (userLevel == null)
+			userLevel = getUserLevel(user);
 		Event event = getEvent(eventId);
 		if (event.getDaguan() > userLevel.getUnlockDaguan())
 			return false;

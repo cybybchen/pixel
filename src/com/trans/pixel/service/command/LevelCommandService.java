@@ -153,7 +153,7 @@ public class LevelCommandService extends BaseCommandService {
 				Entry<String, Loot> entry = it.next();
 				Loot loot = entry.getValue();
 				for (RewardInfo reward : loot.getItemList()) {
-					if (!redis.hasCompleteEvent(user, reward.getEventid()))
+					if (!redis.hasCompleteEvent(user, reward.getEventid(), userLevel))
 						continue;
 					
 					RewardInfo.Builder rewardBuilder = RewardInfo.newBuilder(reward);
