@@ -124,6 +124,7 @@ public class UserBean {
 	private long extraHasLootTime = 0;
 	private int extraType = 0;
 	private long extraLastTimeStamp = 0;
+	private int userType = 0;
 	/**
 	 * 佣兵团等级
 	 */
@@ -1208,6 +1209,12 @@ public class UserBean {
 	public void setExtraLastTimeStamp(long extraLastTimeStamp) {
 		this.extraLastTimeStamp = extraLastTimeStamp;
 	}
+	public int getUserType() {
+		return userType;
+	}
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1368,6 +1375,7 @@ public class UserBean {
 		builder.setExtraType(extraType);
 		builder.setExtraHasLootTime(extraHasLootTime);
 		builder.setExtraLastTimeStamp(extraLastTimeStamp + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
+		builder.setUserType(userType);
 		
 		return builder.build();
 	}

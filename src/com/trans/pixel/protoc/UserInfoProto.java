@@ -17220,6 +17220,16 @@ public final class UserInfoProto {
      * <code>optional int32 call = 14;</code>
      */
     int getCall();
+
+    // optional int32 frontid = 15;
+    /**
+     * <code>optional int32 frontid = 15;</code>
+     */
+    boolean hasFrontid();
+    /**
+     * <code>optional int32 frontid = 15;</code>
+     */
+    int getFrontid();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Event}
@@ -17343,6 +17353,11 @@ public final class UserInfoProto {
             case 112: {
               bitField0_ |= 0x00001000;
               call_ = input.readInt32();
+              break;
+            }
+            case 120: {
+              bitField0_ |= 0x00002000;
+              frontid_ = input.readInt32();
               break;
             }
           }
@@ -17686,6 +17701,22 @@ public final class UserInfoProto {
       return call_;
     }
 
+    // optional int32 frontid = 15;
+    public static final int FRONTID_FIELD_NUMBER = 15;
+    private int frontid_;
+    /**
+     * <code>optional int32 frontid = 15;</code>
+     */
+    public boolean hasFrontid() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>optional int32 frontid = 15;</code>
+     */
+    public int getFrontid() {
+      return frontid_;
+    }
+
     private void initFields() {
       order_ = 0;
       eventid_ = 0;
@@ -17701,6 +17732,7 @@ public final class UserInfoProto {
       level_ = 0;
       count_ = 0;
       call_ = 0;
+      frontid_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -17755,6 +17787,9 @@ public final class UserInfoProto {
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeInt32(14, call_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeInt32(15, frontid_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -17820,6 +17855,10 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(14, call_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(15, frontid_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -17970,6 +18009,8 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00001000);
         call_ = 0;
         bitField0_ = (bitField0_ & ~0x00002000);
+        frontid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
 
@@ -18059,6 +18100,10 @@ public final class UserInfoProto {
           to_bitField0_ |= 0x00001000;
         }
         result.call_ = call_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00002000;
+        }
+        result.frontid_ = frontid_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -18143,6 +18188,9 @@ public final class UserInfoProto {
         }
         if (other.hasCall()) {
           setCall(other.getCall());
+        }
+        if (other.hasFrontid()) {
+          setFrontid(other.getFrontid());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -18918,6 +18966,39 @@ public final class UserInfoProto {
       public Builder clearCall() {
         bitField0_ = (bitField0_ & ~0x00002000);
         call_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 frontid = 15;
+      private int frontid_ ;
+      /**
+       * <code>optional int32 frontid = 15;</code>
+       */
+      public boolean hasFrontid() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>optional int32 frontid = 15;</code>
+       */
+      public int getFrontid() {
+        return frontid_;
+      }
+      /**
+       * <code>optional int32 frontid = 15;</code>
+       */
+      public Builder setFrontid(int value) {
+        bitField0_ |= 0x00004000;
+        frontid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 frontid = 15;</code>
+       */
+      public Builder clearFrontid() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        frontid_ = 0;
         onChanged();
         return this;
       }
@@ -26743,36 +26824,36 @@ public final class UserInfoProto {
       "m.trans.pixel.protoc.EventRandoms\"v\n\013Eve" +
       "ntReward\022\020\n\010rewardid\030\001 \001(\005\022\023\n\013rewardcoun" +
       "t\030\002 \001(\005\022\024\n\014rewardcount1\030\003 \001(\005\022\024\n\014rewardw" +
-      "eight\030\004 \001(\005\022\024\n\014rewarddouble\030\005 \001(\005\"\206\002\n\005Ev" +
+      "eight\030\004 \001(\005\022\024\n\014rewarddouble\030\005 \001(\005\"\227\002\n\005Ev" +
       "ent\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\016\n\006d" +
       "aguan\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\022\013\n\003des\030\005 \001(\t\022\016",
       "\n\006weight\030\006 \001(\005\022\014\n\004type\030\007 \001(\005\022\016\n\006costid\030\010" +
       " \001(\005\022\021\n\tcostcount\030\t \001(\005\0223\n\006reward\030\n \003(\0132" +
       "#.com.trans.pixel.protoc.EventReward\022\020\n\010" +
       "targetid\030\013 \001(\005\022\r\n\005level\030\014 \001(\005\022\r\n\005count\030\r" +
-      " \001(\005\022\014\n\004call\030\016 \001(\005\"U\n\tAreaEvent\022\n\n\002id\030\001 " +
-      "\001(\005\022,\n\005event\030\002 \003(\0132\035.com.trans.pixel.pro" +
-      "toc.Event\022\016\n\006weight\030\003 \001(\005\">\n\rAreaEventLi" +
-      "st\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.protoc." +
-      "AreaEvent\"G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item" +
-      "\030\002 \003(\0132\".com.trans.pixel.protoc.RewardIn",
-      "fo\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com.trans.p" +
-      "ixel.protoc.Loot\"&\n\030RequestLevelStartCom" +
-      "mand\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventCommand\022" +
-      "\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024Respon" +
-      "seEventCommand\022,\n\005event\030\001 \001(\0132\035.com.tran" +
-      "s.pixel.protoc.Event\"\037\n\035RequestLevelLoot" +
-      "ResultCommand\"j\n\031RequestEventResultComma" +
-      "nd\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tf" +
-      "ightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(" +
-      "\010\"P\n\032ResponseEventResultCommand\0222\n\006rewar",
-      "d\030\001 \003(\0132\".com.trans.pixel.protoc.RewardI" +
-      "nfo\"\252\001\n\030ResponseLevelLootCommand\022\024\n\014unlo" +
-      "ckDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nloo" +
-      "tDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\tevent" +
-      "Time\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans.pi" +
-      "xel.protoc.Event\"\030\n\026RequestEventBuyComma" +
-      "nd"
+      " \001(\005\022\014\n\004call\030\016 \001(\005\022\017\n\007frontid\030\017 \001(\005\"U\n\tA" +
+      "reaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.co" +
+      "m.trans.pixel.protoc.Event\022\016\n\006weight\030\003 \001" +
+      "(\005\">\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!.com.tr" +
+      "ans.pixel.protoc.AreaEvent\"G\n\004Loot\022\r\n\005or" +
+      "der\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pixe",
+      "l.protoc.RewardInfo\"4\n\010LootList\022(\n\002id\030\001 " +
+      "\003(\0132\034.com.trans.pixel.protoc.Loot\"&\n\030Req" +
+      "uestLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023Req" +
+      "uestEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005orde" +
+      "r\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005event" +
+      "\030\001 \001(\0132\035.com.trans.pixel.protoc.Event\"\037\n" +
+      "\035RequestLevelLootResultCommand\"j\n\031Reques" +
+      "tEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010te" +
+      "amInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030" +
+      "\004 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResul",
+      "tCommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pix" +
+      "el.protoc.RewardInfo\"\252\001\n\030ResponseLevelLo" +
+      "otCommand\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftC" +
+      "ount\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTi" +
+      "me\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003" +
+      "(\0132\035.com.trans.pixel.protoc.Event\"\030\n\026Req" +
+      "uestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -26928,7 +27009,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
-              new java.lang.String[] { "Order", "Eventid", "Daguan", "Name", "Des", "Weight", "Type", "Costid", "Costcount", "Reward", "Targetid", "Level", "Count", "Call", });
+              new java.lang.String[] { "Order", "Eventid", "Daguan", "Name", "Des", "Weight", "Type", "Costid", "Costcount", "Reward", "Targetid", "Level", "Count", "Call", "Frontid", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
             getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new

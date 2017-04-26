@@ -56,6 +56,7 @@
 		<result property="vipExp" column="vip_exp" />
 		<result property="rewardTaskIndex" column="reward_task_index" />
 		<result property="useTalentId" column="use_talent_id" />
+		<result property="userType" column="user_type" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -82,11 +83,11 @@
 		INSERT INTO user(account, icon, name, server_id, union_id, jewel, coin, exp, point_pvp, point_ladder, point_expedition, 
 		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, 
 		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count, greenhand, advance,
-		skill, failed, shouchong_is_complete, shouchong_is_get_reward, current_teamid, use_talent_id)
+		skill, failed, shouchong_is_complete, shouchong_is_get_reward, current_teamid, use_talent_id, user_type)
 		VALUES(#{account}, #{icon}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
 		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId},
-		#{totalSignCount}, #{greenhand}, #{advance}, #{skill}, #{failed}, #{shouchongIsComplete}, #{shouchongIsGetReward}, #{currentTeamid}, #{useTalentId})
+		#{totalSignCount}, #{greenhand}, #{advance}, #{skill}, #{failed}, #{shouchongIsComplete}, #{shouchongIsGetReward}, #{currentTeamid}, #{useTalentId}, #{userType})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
@@ -101,7 +102,7 @@
 		grow_jewel_count_status=#{growJewelCountStatus}, grow_exp_count=#{growExpCount}, grow_exp_count_status=#{growExpCountStatus},
 		lottery_status=#{lotteryStatus}, zhanli_max=#{zhanliMax}, seven_login_days=#{sevenLoginDays}, quest_status=#{questStatus},
 		zhaohuanshi=#{zhaohuanshi}, task1_order=#{task1Order}, task2_record=#{task2Record}, zhujue_exp=#{zhujueExp}, vip_exp=#{vipExp},
-		reward_task_index=#{rewardTaskIndex}, use_talent_id=#{useTalentId}
+		reward_task_index=#{rewardTaskIndex}, use_talent_id=#{useTalentId}, user_type=#{userType}
 		WHERE id=#{id}
 	</update>
 
