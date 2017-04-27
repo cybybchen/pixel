@@ -31812,6 +31812,16 @@ public final class ActivityProto {
      * <code>optional int32 choose = 4;</code>
      */
     int getChoose();
+
+    // optional uint32 rmbid = 5;
+    /**
+     * <code>optional uint32 rmbid = 5;</code>
+     */
+    boolean hasRmbid();
+    /**
+     * <code>optional uint32 rmbid = 5;</code>
+     */
+    int getRmbid();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.SevenOrder}
@@ -31882,6 +31892,11 @@ public final class ActivityProto {
             case 32: {
               bitField0_ |= 0x00000008;
               choose_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              rmbid_ = input.readUInt32();
               break;
             }
           }
@@ -31988,11 +32003,28 @@ public final class ActivityProto {
       return choose_;
     }
 
+    // optional uint32 rmbid = 5;
+    public static final int RMBID_FIELD_NUMBER = 5;
+    private int rmbid_;
+    /**
+     * <code>optional uint32 rmbid = 5;</code>
+     */
+    public boolean hasRmbid() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional uint32 rmbid = 5;</code>
+     */
+    public int getRmbid() {
+      return rmbid_;
+    }
+
     private void initFields() {
       order_ = 0;
       itemid_ = 0;
       count_ = 0;
       choose_ = 0;
+      rmbid_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -32018,6 +32050,9 @@ public final class ActivityProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, choose_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(5, rmbid_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -32042,6 +32077,10 @@ public final class ActivityProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, choose_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, rmbid_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -32167,6 +32206,8 @@ public final class ActivityProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         choose_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        rmbid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -32211,6 +32252,10 @@ public final class ActivityProto {
           to_bitField0_ |= 0x00000008;
         }
         result.choose_ = choose_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.rmbid_ = rmbid_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -32238,6 +32283,9 @@ public final class ActivityProto {
         }
         if (other.hasChoose()) {
           setChoose(other.getChoose());
+        }
+        if (other.hasRmbid()) {
+          setRmbid(other.getRmbid());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -32394,6 +32442,39 @@ public final class ActivityProto {
       public Builder clearChoose() {
         bitField0_ = (bitField0_ & ~0x00000008);
         choose_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 rmbid = 5;
+      private int rmbid_ ;
+      /**
+       * <code>optional uint32 rmbid = 5;</code>
+       */
+      public boolean hasRmbid() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional uint32 rmbid = 5;</code>
+       */
+      public int getRmbid() {
+        return rmbid_;
+      }
+      /**
+       * <code>optional uint32 rmbid = 5;</code>
+       */
+      public Builder setRmbid(int value) {
+        bitField0_ |= 0x00000010;
+        rmbid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 rmbid = 5;</code>
+       */
+      public Builder clearRmbid() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        rmbid_ = 0;
         onChanged();
         return this;
       }
@@ -34105,59 +34186,60 @@ public final class ActivityProto {
       "SevenLogin\"r\n\nSevenLogin\022\n\n\002id\030\001 \001(\r\022\020\n\010" +
       "targetid\030\002 \001(\r\022\023\n\013targetcount\030\003 \001(\r\0221\n\005o" +
       "rder\030\004 \003(\0132\".com.trans.pixel.protoc.Seve" +
-      "nOrder\"J\n\nSevenOrder\022\r\n\005order\030\001 \001(\r\022\016\n\006i" +
+      "nOrder\"Y\n\nSevenOrder\022\r\n\005order\030\001 \001(\r\022\016\n\006i" +
       "temid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\016\n\006choose\030\004 \001" +
-      "(\005\"@\n\rRankvalueList\022/\n\004rank\030\001 \003(\0132!.com." +
-      "trans.pixel.protoc.Rankvalue\"N\n\tRankvalu" +
-      "e\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(\002" +
-      "\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\325\016\n\rACTIVIT" +
-      "Y_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n\023TYPE_LEI",
-      "JI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COST_JEWEL\020\003" +
-      "\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTYPE" +
-      "_HERO_GET\020\006\022\030\n\024TYPE_HERO_LEVELUP_50\020\007\022\016\n" +
-      "\nTYPE_LEVEL\020\010\022\017\n\013TYPE_ZHANLI\020\t\022\027\n\023TYPE_L" +
-      "ADDER_SUCCESS\020\n\022\033\n\027TYPE_PVP_ATTACK_SUCCE" +
-      "SS\020\013\022\023\n\017TYPE_MOJING_GET\020\014\022\023\n\017TYPE_REWARD" +
-      "TASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTYPE_WUQI_G" +
-      "ET\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020\022\021\n\rTYPE_" +
-      "PVP_HELP\020\021\022\027\n\023TYPE_DANBI_RECHARGE\020\022\022\024\n\020T" +
-      "YPE_HERO_RAREUP\020\023\022\027\n\022TYPE_TEAMUP_ARUISI\020",
-      "\220N\022\037\n\032TYPE_ARUISI_SKILL1_LEVELUP\020\221N\022\037\n\032T" +
-      "YPE_ARUISI_EQUIP_ADD10001\020\222N\022\037\n\032TYPE_ARU" +
-      "ISI_SKILL2_LEVELUP\020\223N\022\024\n\017TYPE_TASK_LEVEL" +
-      "\020\364N\022\031\n\024TYPE_TEAM_UPCHAFENQI\020\330O\022\033\n\026TYPE_P" +
-      "VP_BUFF_LEVELUP5\020\274P\022\030\n\023TYPE_EQUIP_LEVELU" +
-      "P1\020\241Q\022\030\n\023TYPE_EQUIP_LEVELUP3\020\243Q\022\030\n\023TYPE_" +
-      "EQUIP_LEVELUP5\020\245Q\022\031\n\024TYPE_EQUIP_LEVELUP1" +
-      "0\020\252Q\022\031\n\024TYPE_UPHERO_QUALITY1\020\205R\022\031\n\024TYPE_" +
-      "UPHERO_QUALITY2\020\206R\022\031\n\024TYPE_UPHERO_QUALIT" +
-      "Y3\020\207R\022\031\n\024TYPE_UPHERO_QUALITY4\020\210R\022\031\n\024TYPE",
-      "_UPHERO_QUALITY5\020\211R\022\027\n\022TYPE_HERO_LEVELUP" +
-      "5\020\355R\022\030\n\023TYPE_HERO_LEVELUP10\020\362R\022\030\n\023TYPE_H" +
-      "ERO_LEVELUP15\020\367R\022\030\n\023TYPE_HERO_LEVELUP20\020" +
-      "\374R\022\030\n\023TYPE_HERO_LEVELUP22\020\376R\022\030\n\023TYPE_HER" +
-      "O_LEVELUP25\020\201S\022\030\n\023TYPE_HERO_LEVELUP30\020\206S" +
-      "\022\030\n\023TYPE_HERO_LEVELUP35\020\213S\022\030\n\023TYPE_HERO_" +
-      "LEVELUP40\020\220S\022\030\n\023TYPE_HERO_LEVELUP45\020\225S\022\030" +
-      "\n\023TYPE_HERO_LEVELUP50\020\232S\022\030\n\023TYPE_HERO_LE" +
-      "VELUP55\020\237S\022\030\n\023TYPE_HERO_LEVELUP60\020\244S\022\025\n\020" +
-      "TYPE_FIGHT_FUBEN\020\314S\022\026\n\021TYPE_HERO_RAREUP1",
-      "\020\261T\022\026\n\021TYPE_HERO_RAREUP2\020\262T\022\026\n\021TYPE_HERO" +
-      "_RAREUP3\020\263T\022\026\n\021TYPE_HERO_RAREUP5\020\265T\022\026\n\021T" +
-      "YPE_HERO_RAREUP7\020\267T\022\026\n\021TYPE_HERO_RAREUP9" +
-      "\020\271T\022\027\n\022TYPE_HERO_RAREUP11\020\273T\022\027\n\022TYPE_HER" +
-      "O_RAREUP12\020\274T\022\027\n\022TYPE_HERO_RAREUP13\020\275T\022\027" +
-      "\n\022TYPE_HERO_RAREUP15\020\277T\022\030\n\023TYPE_ZHUJUE_L" +
-      "EVELUP\020\224U\022\031\n\024TYPE_ZHUJUE_LEVELUP5\020\375U\022\026\n\021" +
-      "TYPE_FETTERS_OPEN\020\334V\022\021\n\rTYPE_GET_HERO\020y\022" +
-      "\031\n\025TYPE_TASK_HERO_RAREUP\020z\022\036\n\031TYPE_EVENT" +
-      "_COMPLETE_DAILY\020\311\001\022\035\n\030TYPE_REWARDTASK_CO",
-      "MPLETE\020\312\001\022\026\n\021TYPE_KILL_MONSTER\020\313\001\022\025\n\020TYP" +
-      "E_DUOHUI_MINE\020\314\001\022\027\n\022TYPE_EQUIP_LEVELUP\020\315" +
-      "\001\022\027\n\022TYPE_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_LADDE" +
-      "R_FIGHT\020\317\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022\030\n\023TY" +
-      "PE_PUTONGSHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_" +
-      "BOSS\020\322\001\022\023\n\016TYPE_DAILY_ALL\020\323\001"
+      "(\005\022\r\n\005rmbid\030\005 \001(\r\"@\n\rRankvalueList\022/\n\004ra" +
+      "nk\030\001 \003(\0132!.com.trans.pixel.protoc.Rankva" +
+      "lue\"N\n\tRankvalue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001" +
+      "(\005\022\013\n\003def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 " +
+      "\001(\002*\325\016\n\rACTIVITY_TYPE\022\024\n\020TYPE_LEIJI_LOGI",
+      "N\020\001\022\027\n\023TYPE_LEIJI_RECHARGE\020\002\022\031\n\025TYPE_LEI" +
+      "JI_COST_JEWEL\020\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LO" +
+      "TTERY\020\005\022\021\n\rTYPE_HERO_GET\020\006\022\030\n\024TYPE_HERO_" +
+      "LEVELUP_50\020\007\022\016\n\nTYPE_LEVEL\020\010\022\017\n\013TYPE_ZHA" +
+      "NLI\020\t\022\027\n\023TYPE_LADDER_SUCCESS\020\n\022\033\n\027TYPE_P" +
+      "VP_ATTACK_SUCCESS\020\013\022\023\n\017TYPE_MOJING_GET\020\014" +
+      "\022\023\n\017TYPE_REWARDTASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016" +
+      "\022\021\n\rTYPE_WUQI_GET\020\017\022\031\n\025TYPE_EQUIP_LEVELU" +
+      "P_10\020\020\022\021\n\rTYPE_PVP_HELP\020\021\022\027\n\023TYPE_DANBI_" +
+      "RECHARGE\020\022\022\024\n\020TYPE_HERO_RAREUP\020\023\022\027\n\022TYPE",
+      "_TEAMUP_ARUISI\020\220N\022\037\n\032TYPE_ARUISI_SKILL1_" +
+      "LEVELUP\020\221N\022\037\n\032TYPE_ARUISI_EQUIP_ADD10001" +
+      "\020\222N\022\037\n\032TYPE_ARUISI_SKILL2_LEVELUP\020\223N\022\024\n\017" +
+      "TYPE_TASK_LEVEL\020\364N\022\031\n\024TYPE_TEAM_UPCHAFEN" +
+      "QI\020\330O\022\033\n\026TYPE_PVP_BUFF_LEVELUP5\020\274P\022\030\n\023TY" +
+      "PE_EQUIP_LEVELUP1\020\241Q\022\030\n\023TYPE_EQUIP_LEVEL" +
+      "UP3\020\243Q\022\030\n\023TYPE_EQUIP_LEVELUP5\020\245Q\022\031\n\024TYPE" +
+      "_EQUIP_LEVELUP10\020\252Q\022\031\n\024TYPE_UPHERO_QUALI" +
+      "TY1\020\205R\022\031\n\024TYPE_UPHERO_QUALITY2\020\206R\022\031\n\024TYP" +
+      "E_UPHERO_QUALITY3\020\207R\022\031\n\024TYPE_UPHERO_QUAL",
+      "ITY4\020\210R\022\031\n\024TYPE_UPHERO_QUALITY5\020\211R\022\027\n\022TY" +
+      "PE_HERO_LEVELUP5\020\355R\022\030\n\023TYPE_HERO_LEVELUP" +
+      "10\020\362R\022\030\n\023TYPE_HERO_LEVELUP15\020\367R\022\030\n\023TYPE_" +
+      "HERO_LEVELUP20\020\374R\022\030\n\023TYPE_HERO_LEVELUP22" +
+      "\020\376R\022\030\n\023TYPE_HERO_LEVELUP25\020\201S\022\030\n\023TYPE_HE" +
+      "RO_LEVELUP30\020\206S\022\030\n\023TYPE_HERO_LEVELUP35\020\213" +
+      "S\022\030\n\023TYPE_HERO_LEVELUP40\020\220S\022\030\n\023TYPE_HERO" +
+      "_LEVELUP45\020\225S\022\030\n\023TYPE_HERO_LEVELUP50\020\232S\022" +
+      "\030\n\023TYPE_HERO_LEVELUP55\020\237S\022\030\n\023TYPE_HERO_L" +
+      "EVELUP60\020\244S\022\025\n\020TYPE_FIGHT_FUBEN\020\314S\022\026\n\021TY",
+      "PE_HERO_RAREUP1\020\261T\022\026\n\021TYPE_HERO_RAREUP2\020" +
+      "\262T\022\026\n\021TYPE_HERO_RAREUP3\020\263T\022\026\n\021TYPE_HERO_" +
+      "RAREUP5\020\265T\022\026\n\021TYPE_HERO_RAREUP7\020\267T\022\026\n\021TY" +
+      "PE_HERO_RAREUP9\020\271T\022\027\n\022TYPE_HERO_RAREUP11" +
+      "\020\273T\022\027\n\022TYPE_HERO_RAREUP12\020\274T\022\027\n\022TYPE_HER" +
+      "O_RAREUP13\020\275T\022\027\n\022TYPE_HERO_RAREUP15\020\277T\022\030" +
+      "\n\023TYPE_ZHUJUE_LEVELUP\020\224U\022\031\n\024TYPE_ZHUJUE_" +
+      "LEVELUP5\020\375U\022\026\n\021TYPE_FETTERS_OPEN\020\334V\022\021\n\rT" +
+      "YPE_GET_HERO\020y\022\031\n\025TYPE_TASK_HERO_RAREUP\020" +
+      "z\022\036\n\031TYPE_EVENT_COMPLETE_DAILY\020\311\001\022\035\n\030TYP",
+      "E_REWARDTASK_COMPLETE\020\312\001\022\026\n\021TYPE_KILL_MO" +
+      "NSTER\020\313\001\022\025\n\020TYPE_DUOHUI_MINE\020\314\001\022\027\n\022TYPE_" +
+      "EQUIP_LEVELUP\020\315\001\022\027\n\022TYPE_SKILL_LEVELUP\020\316" +
+      "\001\022\026\n\021TYPE_LADDER_FIGHT\020\317\001\022\026\n\021TYPE_LOTTER" +
+      "Y_COIN\020\320\001\022\030\n\023TYPE_PUTONGSHOP_BUY\020\321\001\022\031\n\024T" +
+      "YPE_FUBEN_KILL_BOSS\020\322\001\022\023\n\016TYPE_DAILY_ALL" +
+      "\020\323\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34391,7 +34473,7 @@ public final class ActivityProto {
           internal_static_com_trans_pixel_protoc_SevenOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SevenOrder_descriptor,
-              new java.lang.String[] { "Order", "Itemid", "Count", "Choose", });
+              new java.lang.String[] { "Order", "Itemid", "Count", "Choose", "Rmbid", });
           internal_static_com_trans_pixel_protoc_RankvalueList_descriptor =
             getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RankvalueList_fieldAccessorTable = new

@@ -2347,6 +2347,7 @@ message SevenOrder {
 	optional int32 itemid = 2;
 	optional int32 count = 3;
 	optional int32 choose = 4;
+	optional uint32 rmbid = 5;
 }
 
 message RankvalueList {

@@ -94,6 +94,9 @@ public class SignService {
 		List<SevenOrder> orderList = sevenLogin.getOrderList();
 		for (SevenOrder order : orderList) {
 			if (order.getChoose() == 0) {
+				if (order.getRmbid() != 0 && order.getRmbid() != user.getUserType())
+					continue;
+				
 				rewardList.add(RewardBean.init(order.getItemid(), order.getCount()));
 				continue;
 			}
