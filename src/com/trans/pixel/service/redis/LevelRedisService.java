@@ -174,12 +174,12 @@ public class LevelRedisService extends RedisService {
 			if(parseJson(value, event))
 				eventmap.put(event.getOrder(), event);
 		}
-		keyvalue = hget(RedisKey.USEREVENTREADY_PREFIX);
+		keyvalue = hget(RedisKey.USEREVENTREADY_PREFIX + userId);
 		for(String value : keyvalue.values()) {
 			Event.Builder builder = Event.newBuilder();
 			parseJson(value, builder);
 			if(builder.getFrontid() == 0 || hasCompleteEvent(userId, builder.getFrontid(), userLevel, eventmap)) {
-				hdelete(RedisKey.USEREVENTREADY_PREFIX, builder.getOrder()+"");
+				hdelete(RedisKey.USEREVENTREADY_PREFIX + userId, builder.getOrder()+"");
 //				builder.setOrder(currentIndex()+(i++));
 				saveEvent(userId, builder.build());
 			}
